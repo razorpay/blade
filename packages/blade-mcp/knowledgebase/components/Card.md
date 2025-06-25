@@ -341,8 +341,9 @@ import {
   Box,
   Text,
   Amount,
+  ArrowSquareUpIcon,
+  ArrowRightIcon
 } from '@razorpay/blade/components';
-import { ArrowSquareUpIcon, ArrowRightIcon } from '@razorpay/blade/components/Icons';
 
 const MetricCard = () => {
   const isMobile = window.innerWidth < 768;
@@ -397,102 +398,194 @@ const MetricCard = () => {
 };
 ```
 
-### Selectable Card Group
-A group of selectable cards functioning as radio buttons, demonstrating form integration with proper accessibility support.
+### Multi-Selectable Product Cards
+This example demonstrates how to create a group of cards that can be multi-selected using checkboxes or radio buttons, with validation, error states, and proper accessibility support.
 
 ```tsx
 import {
   Card,
   CardBody,
+  CardHeaderLeading,
+  CardHeaderIcon,
   Box,
   Text,
-  Amount,
-  VisuallyHidden,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  CheckboxGroup,
+  Checkbox,
+  RadioGroup,
+  Radio,
+  RazorpayIcon,
 } from '@razorpay/blade/components';
 import React from 'react';
 
-type HiddenInputProps = {
-  onChange: (value: string) => void;
+type ProductOption = {
   value: string;
-  name: string;
-  type?: 'radio' | 'checkbox';
+  title: string;
+  subtitle: string;
+  features: string[];
 };
 
-const HiddenInput = ({
-  onChange,
-  value,
-  name,
-  type = 'radio',
-}: HiddenInputProps): React.ReactElement => (
-  <VisuallyHidden>
-    <input
-      type={type}
-      onChange={(e) => onChange(e.target.value)}
-      name={name}
-      value={value}
-    />
-  </VisuallyHidden>
+const productOptions: ProductOption[] = [
+  {
+    value: 'payment-gateway',
+    title: 'Payment Gateway',
+    subtitle: 'Accept online payments',
+    features: [
+      '100+ payment methods',
+      'UPI, Cards, Netbanking, Wallets',
+      'Industry-leading success rates',
+      'Real-time payment tracking',
+    ],
+  },
+  {
+    value: 'payment-links',
+    title: 'Payment Links',
+    subtitle: 'Share & collect payments',
+    features: [
+      'No coding required',
+      'Share via SMS, email, WhatsApp',
+      'Instant payment collection',
+      'Custom branding options',
+    ],
+  },
+  {
+    value: 'payment-pages',
+    title: 'Payment Pages',
+    subtitle: 'Create online store',
+    features: [
+      'Ready-to-use online store',
+      'Product catalog management',
+      'Inventory tracking',
+      'Mobile-optimized checkout',
+    ],
+  },
+];
+
+const ProductCard = ({
+  option,
+  isSelected,
+  children,
+}: {
+  option: ProductOption;
+  isSelected: boolean;
+  children: React.ReactNode;
+}) => (
+  <Card
+    as="label"
+    isSelected={isSelected}
+    marginBottom="spacing.3"
+    width={{ s: '100%', m: '400px' }}
+    shouldScaleOnHover
+    accessibilityLabel={`Select ${option.title}`}
+  >
+    <CardBody>
+      <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+        <CardHeaderLeading
+          title={option.title}
+          subtitle={option.subtitle}
+          prefix={<CardHeaderIcon icon={RazorpayIcon} />}
+        />
+        {children}
+      </Box>
+      <Divider marginY="spacing.3" />
+      <List variant="unordered">
+        {option.features.map((feature, index) => (
+          <ListItem key={index}>
+            <ListItemText>{feature}</ListItemText>
+          </ListItem>
+        ))}
+      </List>
+    </CardBody>
+  </Card>
 );
 
-const SelectableCardGroup = () => {
-  const [selected, setSelected] = React.useState('free');
+const ProductSelection = () => {
+  // For multi-select with checkboxes
+  const [selectedProducts, setSelectedProducts] = React.useState<string[]>([]);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  // For single-select with radio
+  const [selectedProduct, setSelectedProduct] = React.useState('');
+
+  const hasError = isSubmitted && selectedProducts.length === 0;
+  const hasMaxError = selectedProducts.length > 3;
+  const validationState = hasError || hasMaxError ? 'error' : 'none';
+  const errorText = hasError
+    ? 'Please select at least one product'
+    : hasMaxError
+    ? 'Maximum 3 products allowed'
+    : undefined;
 
   return (
-    <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
-      <Card
-        as="label"
-        accessibilityLabel="Free Tier"
-        shouldScaleOnHover
-        isSelected={selected === 'free'}
-        minHeight="100%"
-      >
-        <CardBody>
-          <HiddenInput
-            onChange={(value) => setSelected(value)}
-            value="free"
-            name="pricing-card"
-          />
-          <Amount marginBottom="spacing.1" value={0} currency="USD" size="large" />
-          <Box paddingX="spacing.2">
-            <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
-              Free
-            </Text>
-            <Text>
-              For individuals or teams just getting started with payments.
-              No setup fees, no monthly or annual fees.
-            </Text>
-          </Box>
-        </CardBody>
-      </Card>
+    <Box display="flex" gap="spacing.6" flexDirection="column">
+      <Box>
+        <Text marginBottom="spacing.4" weight="semibold" size="large">
+          Multi-Select Products
+        </Text>
+        <CheckboxGroup
+          value={selectedProducts}
+          onChange={({ values }) => setSelectedProducts(values)}
+          label="Which products do you want to use?"
+          necessityIndicator="required"
+          validationState={validationState}
+          errorText={errorText}
+          helpText="Select 1-3 products to start with"
+          orientation="horizontal"
+          flexWrap="wrap"
+        >
+          {productOptions.map((option) => (
+            <ProductCard
+              key={option.value}
+              option={option}
+              isSelected={selectedProducts.includes(option.value)}
+            >
+              <Checkbox value={option.value} />
+            </ProductCard>
+          ))}
+        </CheckboxGroup>
 
-      <Card
-        as="label"
-        accessibilityLabel="Premium Tier"
-        shouldScaleOnHover
-        isSelected={selected === 'premium'}
-        minHeight="100%"
-      >
-        <CardBody>
-          <HiddenInput
-            onChange={(value) => setSelected(value)}
-            value="premium"
-            name="pricing-card"
-          />
-          <Amount marginBottom="spacing.1" value={20} currency="USD" size="large" />
-          <Box paddingX="spacing.2">
-            <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
-              Premium
+        <Box marginTop="spacing.4" display="flex" justifyContent="space-between" alignItems="center">
+          <Button onClick={() => setIsSubmitted(true)} variant="primary">
+            Continue
+          </Button>
+          {selectedProducts.length > 0 && (
+            <Text color="surface.text.gray.subtle">
+              Selected: {selectedProducts.length}/3
             </Text>
-            <Text>
-              Best suited for businesses that need a dedicated account
-              manager and 24x7 support.
-            </Text>
-          </Box>
-        </CardBody>
-      </Card>
+          )}
+        </Box>
+      </Box>
+
+      <Box>
+        <Text marginBottom="spacing.4" weight="semibold" size="large">
+          Single-Select Product
+        </Text>
+        <RadioGroup
+          value={selectedProduct}
+          onChange={({ value }) => setSelectedProduct(value)}
+          label="Select primary product"
+          necessityIndicator="required"
+          orientation="horizontal"
+          flexWrap="wrap"
+        >
+          {productOptions.map((option) => (
+            <ProductCard
+              key={option.value}
+              option={option}
+              isSelected={selectedProduct === option.value}
+            >
+              <Radio value={option.value} />
+            </ProductCard>
+          ))}
+        </RadioGroup>
+      </Box>
     </Box>
   );
 };
 
-export default SelectableCardGroup;
+export default ProductSelection;
 ```
