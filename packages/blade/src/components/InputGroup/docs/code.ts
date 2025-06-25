@@ -4,7 +4,9 @@ import {
   InputRow,
   TextInput,
   DatePicker,
-  Button
+  Button,
+  Box,
+  PasswordInput
 } from '@razorpay/blade/components';
 
 const InputGroupExample = () => {
@@ -27,27 +29,31 @@ const InputGroupExample = () => {
   };
 
   return (
+    <>
       <InputGroup label="Payment Details" hintText="Enter your payment details">
         <InputRow gridTemplateColumns="1fr">
           <TextInput 
             placeholder="1234 5678 9012 3456" 
+            format="#### #### #### ####"
             label="Card Number"
             value={formData.cardNumber}
             onChange={({ value }) => handleInputChange('cardNumber', value)}
           />
         </InputRow>
         <InputRow gridTemplateColumns="1fr">
-          <DatePicker 
-            inputPlaceHolder="MM/YY" 
+          <TextInput 
+            placeholder="MM/YY" 
+            format="##/##"
             label="Expiry Date"
             value={formData.expiryDate}
             onChange={({ value }) => handleInputChange('expiryDate', value)}
           />
         </InputRow>
         <InputRow gridTemplateColumns="1fr 1fr">
-          <TextInput 
+          <PasswordInput 
             placeholder="123" 
             label="CVV"
+            maxCharacters={3}
             value={formData.cvv}
             onChange={({ value }) => handleInputChange('cvv', value)}
           />
@@ -58,12 +64,13 @@ const InputGroupExample = () => {
             onChange={({ value }) => handleInputChange('cardholderName', value)}
           />
         </InputRow>
-        <InputRow gridTemplateColumns="1fr">
-          <Button onClick={handleSubmit} variant="primary">
-            Submit Payment
-          </Button>
-        </InputRow>
       </InputGroup>
+      <Box display="flex" justifyContent="flex-end" alignItems="center" marginTop="spacing.4">
+        <Button onClick={handleSubmit} variant="primary">
+          Submit Payment
+        </Button>
+      </Box>
+    </>
   );
 };
 

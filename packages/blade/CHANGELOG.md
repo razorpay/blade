@@ -1,5 +1,59 @@
 # @razorpay/blade
 
+## 12.38.0
+
+### Minor Changes
+
+- 4fd463368: feat(blade): card variants enhancement & docs
+- a839567f9: fix(blade): types in list , prefix color
+
+### Patch Changes
+
+- 6fa5fca1d: fix(blade): expose inputType in tableEditableCell
+
+## 12.37.0
+
+### Minor Changes
+
+- d8f9ddec9: feat(Typography): add `textTransform` support for typography components
+
+### Patch Changes
+
+- eda617bc3: fix(Tooltip): re-render issue on mobile tooltip
+
+## 12.36.0
+
+### Minor Changes
+
+- eb7381a21: feat: Selectable Card
+
+## 12.35.0
+
+### Minor Changes
+
+- 1801b3865: feat: Payment Component
+
+## 12.34.1
+
+### Patch Changes
+
+- 9e5c6ef04: fix(blade): table editable cell dropdown issue
+
+## 12.34.0
+
+### Minor Changes
+
+- b933afc11: feat: add toast container offset prop
+
+## 12.33.2
+
+### Patch Changes
+
+- b03d34fdf: feat(blade): update input styles
+- 2807550e3: feat(blade): add Dropdown in TextInput and SearchInput
+- b8453bbcf: fix(blade): leading and trailing in textInput
+- 11fb3afe7: feat(accordion): UI enhancement
+
 ## 12.33.1
 
 ### Patch Changes

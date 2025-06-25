@@ -6,6 +6,7 @@ import { BaseInput } from '../BaseInput';
 import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
 import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
 import { useTaggedInput } from '../BaseInput/useTaggedInput';
+import { useFormattedInput } from './useFormattedInput';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
@@ -28,6 +29,7 @@ import { hintMarginTop } from '~components/Form/formTokens';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { DropdownOverlay } from '~components/Dropdown';
+import type { FormInputOnEvent } from '~components/Form/FormTypes';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -111,6 +113,34 @@ type TextInputCommonProps = Pick<
    * Icon or React Element to be rendered at the beginning of the input field
    */
   leading?: React.ReactElement | IconComponent;
+  /**
+   * Format pattern where # represents input characters and other symbols act as delimiters
+   * When provided, input will be automatically formatted and onChange will include rawValue
+   *
+   * **Note:**
+   * 1. Format pattern should only contain # symbols and special characters as delimiters.
+   *    Alphanumeric characters (letters and numbers) are not allowed in the format pattern.
+   * 2. When format is provided, user input is restricted to alphanumeric characters only.
+   *    Special characters and symbols will be filtered out automatically from user input.
+   *
+   * @example "#### #### #### ####" for card numbers
+   * @example "##/##" for expiry dates
+   * @example "(###) ###-####" for phone numbers
+   */
+  format?:
+    | '#### #### #### ####'
+    | '##/##'
+    | '##/##/####'
+    | '(###) ###-####'
+    | '###-##-####'
+    | '##:##'
+    | '##:##:##'
+    | '#### #### ####'
+    | '###.###.###.###'
+    | '## ## ####'
+    | '##-###-##'
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    | (string & {});
 } & TaggedInputProps &
   StyledPropsBlade;
 
@@ -162,6 +192,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     name,
     value,
     maxCharacters,
+    format,
     onChange,
     onClick,
     onFocus,
@@ -201,6 +232,39 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
   const [isInputFocussed, setIsInputFocussed] = useState(autoFocus ?? false);
+
+  if (__DEV__) {
+    if (format) {
+      const hasAlphanumeric = /[a-zA-Z0-9]/.test(format);
+      if (hasAlphanumeric) {
+        throw new Error(
+          `[Blade: TextInput] Invalid format "${format}". Only # and special characters allowed, no letters/numbers.`,
+        );
+      }
+    }
+  }
+
+  const formattingResult = useFormattedInput({
+    format,
+    onChange,
+    value,
+    defaultValue,
+  });
+
+  const inputValue = format ? formattingResult.formattedValue : value;
+  const effectiveMaxCharacters = format ? formattingResult.maxLength : maxCharacters;
+
+  const handleOnChange: FormInputOnEvent = React.useCallback(
+    ({ name, value: inputValue }) => {
+      if (format) {
+        formattingResult.handleChange({ name, value: inputValue });
+      } else {
+        onChange?.({ name, value: inputValue });
+      }
+    },
+    [format, formattingResult.handleChange, onChange],
+  );
+
   const {
     activeTagIndex,
     setActiveTagIndex,
@@ -213,9 +277,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     tags,
     onTagChange,
     isDisabled,
-    onChange,
+    onChange: handleOnChange,
     name,
-    value,
+    value: inputValue,
     inputRef: textInputRef,
   });
   const [isTrailingDropDownOpen, setIsTrailingDropDownOpen] = React.useState(false);
@@ -297,8 +361,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   );
 
   React.useEffect(() => {
-    setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
-  }, [showClearButton, defaultValue, value]);
+    setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? inputValue)));
+  }, [showClearButton, defaultValue, inputValue]);
 
   const renderClearButton = (): React.ReactElement => {
     return (
@@ -306,7 +370,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         size="medium"
         icon={CloseIcon}
         onClick={() => {
-          if (isEmpty(value) && textInputRef.current) {
+          if (isEmpty(inputValue) && textInputRef.current) {
             // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
             if (isReactNative(textInputRef.current)) {
               textInputRef.current.clear();
@@ -372,10 +436,28 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       placeholder={placeholder}
-      defaultValue={defaultValue}
-      value={value}
+      // CONTROLLED/UNCONTROLLED INPUT LOGIC:
+      // For inputs WITHOUT format:
+      //   - Use standard React controlled/uncontrolled logic
+      //   - Controlled: user provides `value` prop → use `value` prop
+      //   - Uncontrolled: user provides `defaultValue` prop → use `defaultValue` prop
+      //
+      // For inputs WITH format:
+      //   - Formatting requires controlled mode to re-render and show formatted values
+      //   - Case 1: Only `value` provided → defaultValue: undefined, value: formattedValue (normal controlled)
+      //   - Case 2: Only `defaultValue` provided → defaultValue: undefined, value: formattedValue (convert to controlled)
+      //   - Case 3: Both `value` and `defaultValue` provided → defaultValue: defaultValue, value: formattedValue (let BaseInput detect conflict and throw error)
+      //
+      defaultValue={
+        format
+          ? value !== undefined && defaultValue !== undefined
+            ? defaultValue
+            : undefined
+          : defaultValue
+      }
+      value={format ? inputValue : value}
       name={name}
-      maxCharacters={maxCharacters}
+      maxCharacters={effectiveMaxCharacters}
       isDropdownTrigger={isTaggedInput}
       tags={isTaggedInput ? getTags({ size }) : undefined}
       showAllTags={isInputFocussed}
@@ -387,7 +469,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       leadingInteractionElement={
         hasLeadingInteractionElement ? (leading as React.ReactElement) : null
       }
-      onChange={({ name, value }) => {
+      onChange={({ name, value }: { name?: string; value?: string }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
           setShouldShowClearButton(true);
@@ -399,7 +481,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         }
 
         handleTaggedInputChange({ name, value });
-        onChange?.({ name, value });
+        handleOnChange({ name, value });
       }}
       onClick={onClick}
       onFocus={(e) => {
@@ -412,6 +494,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       }}
       onKeyDown={(e) => {
         handleTaggedInputKeydown(e);
+        if (format) {
+          formattingResult.handleKeyDown(e.event);
+        }
       }}
       onSubmit={onSubmit}
       isDisabled={isDisabled}
@@ -427,11 +512,11 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       helpText={helpText}
       successText={successText}
       trailingFooterSlot={(value) => {
-        return maxCharacters ? (
+        return format ? null : effectiveMaxCharacters ? (
           <BaseBox marginTop={hintMarginTop[size]} marginRight="spacing.1">
             <CharacterCounter
               currentCount={value?.length ?? 0}
-              maxCount={maxCharacters}
+              maxCount={effectiveMaxCharacters}
               size={size}
             />
           </BaseBox>
