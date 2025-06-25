@@ -19,10 +19,10 @@ const StyledTabButton = styled(BaseBox)<{
     alignItems: 'center',
     flexDirection: 'row',
     width: isFullWidthTabItem ? '100%' : undefined,
-    paddingTop: makeSpace(get(theme, paddingTop[_variant].horizontal.mobile[size!])),
-    paddingBottom: makeSpace(get(theme, paddingBottom[_variant].horizontal.mobile[size!])),
-    paddingLeft: makeSpace(get(theme, paddingX[_variant].horizontal.mobile[size!])),
-    paddingRight: makeSpace(get(theme, paddingX[_variant].horizontal.mobile[size!])),
+    paddingTop: makeSpace(get(theme, paddingTop[_variant].horizontal[size!])),
+    paddingBottom: makeSpace(get(theme, paddingBottom[_variant].horizontal[size!])),
+    paddingLeft: makeSpace(get(theme, paddingX[_variant].horizontal[size!])),
+    paddingRight: makeSpace(get(theme, paddingX[_variant].horizontal[size!])),
   };
 });
 

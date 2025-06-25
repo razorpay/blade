@@ -1,6 +1,5 @@
 import type { TabsProps } from './types';
 import type { DotNotationSpacingStringToken } from '~utils/types';
-import type { DeviceType } from '~utils';
 
 type TabSizes = NonNullable<TabsProps['size']>;
 type TabVariants = Exclude<NonNullable<TabsProps['variant']>, 'borderless'>;
@@ -8,60 +7,32 @@ type TabOrientation = 'horizontal' | 'vertical';
 
 type TabItemPadding = Record<
   TabVariants,
-  Record<TabOrientation, Record<DeviceType, Record<TabSizes, DotNotationSpacingStringToken>>>
+  Record<TabOrientation, Record<TabSizes, DotNotationSpacingStringToken>>
 >;
 
 const paddingTop: TabItemPadding = {
   bordered: {
     horizontal: {
-      desktop: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.4',
-      },
-      mobile: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.3',
-      },
+      small: 'spacing.0',
+      medium: 'spacing.2',
+      large: 'spacing.4',
     },
     vertical: {
-      desktop: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.2',
-      },
-      mobile: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.2',
-      },
+      small: 'spacing.1',
+      medium: 'spacing.2',
+      large: 'spacing.3',
     },
   },
   filled: {
     horizontal: {
-      desktop: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.3',
-      },
-      mobile: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.2',
-      },
+      small: 'spacing.1',
+      medium: 'spacing.2',
+      large: 'spacing.3',
     },
     vertical: {
-      desktop: {
-        small: 'spacing.4',
-        medium: 'spacing.4',
-        large: 'spacing.4',
-      },
-      mobile: {
-        small: 'spacing.4',
-        medium: 'spacing.4',
-        large: 'spacing.3',
-      },
+      small: 'spacing.3',
+      medium: 'spacing.4',
+      large: 'spacing.4',
     },
   },
 };
@@ -69,54 +40,26 @@ const paddingTop: TabItemPadding = {
 const paddingBottom: TabItemPadding = {
   bordered: {
     horizontal: {
-      desktop: {
-        small: 'spacing.4',
-        medium: 'spacing.4',
-        large: 'spacing.4',
-      },
-      mobile: {
-        small: 'spacing.4',
-        medium: 'spacing.4',
-        large: 'spacing.3',
-      },
+      small: 'spacing.3',
+      medium: 'spacing.4',
+      large: 'spacing.4',
     },
     vertical: {
-      desktop: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.2',
-      },
-      mobile: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.2',
-      },
+      small: 'spacing.1',
+      medium: 'spacing.2',
+      large: 'spacing.3',
     },
   },
   filled: {
     horizontal: {
-      desktop: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.3',
-      },
-      mobile: {
-        small: 'spacing.2',
-        medium: 'spacing.2',
-        large: 'spacing.2',
-      },
+      small: 'spacing.1',
+      medium: 'spacing.2',
+      large: 'spacing.3',
     },
     vertical: {
-      desktop: {
-        small: 'spacing.4',
-        medium: 'spacing.4',
-        large: 'spacing.4',
-      },
-      mobile: {
-        small: 'spacing.4',
-        medium: 'spacing.4',
-        large: 'spacing.3',
-      },
+      small: 'spacing.3',
+      medium: 'spacing.4',
+      large: 'spacing.4',
     },
   },
 };
@@ -124,54 +67,26 @@ const paddingBottom: TabItemPadding = {
 const paddingX: TabItemPadding = {
   bordered: {
     horizontal: {
-      desktop: {
-        small: 'spacing.0', // TODO: Update with final design tokens
-        medium: 'spacing.0',
-        large: 'spacing.0',
-      },
-      mobile: {
-        small: 'spacing.0', // TODO: Update with final design tokens
-        medium: 'spacing.0',
-        large: 'spacing.0',
-      },
+      small: 'spacing.0',
+      medium: 'spacing.0',
+      large: 'spacing.0',
     },
     vertical: {
-      desktop: {
-        small: 'spacing.3', // TODO: Update with final design tokens
-        medium: 'spacing.4',
-        large: 'spacing.4',
-      },
-      mobile: {
-        small: 'spacing.3', // TODO: Update with final design tokens
-        medium: 'spacing.4',
-        large: 'spacing.4',
-      },
+      small: 'spacing.4',
+      medium: 'spacing.4',
+      large: 'spacing.4',
     },
   },
   filled: {
     horizontal: {
-      desktop: {
-        small: 'spacing.2', // TODO: Update with final design tokens
-        medium: 'spacing.3',
-        large: 'spacing.3',
-      },
-      mobile: {
-        small: 'spacing.1', // TODO: Update with final design tokens
-        medium: 'spacing.2',
-        large: 'spacing.2',
-      },
+      small: 'spacing.3',
+      medium: 'spacing.3',
+      large: 'spacing.3',
     },
     vertical: {
-      desktop: {
-        small: 'spacing.3', // TODO: Update with final design tokens
-        medium: 'spacing.4',
-        large: 'spacing.4',
-      },
-      mobile: {
-        small: 'spacing.2', // TODO: Update with final design tokens
-        medium: 'spacing.3',
-        large: 'spacing.3',
-      },
+      small: 'spacing.4',
+      medium: 'spacing.4',
+      large: 'spacing.4',
     },
   },
 };
