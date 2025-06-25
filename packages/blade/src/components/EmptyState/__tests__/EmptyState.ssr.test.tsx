@@ -4,7 +4,7 @@ import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 const TestAsset = (): React.ReactElement => (
   <img
-    src="https://shorturl.at/M02qe"
+    src="https://cdn.razorpay.com/card-networks/visa.svg"
     alt="List view asset"
     width="90px"
     height="90px"

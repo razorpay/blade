@@ -8,7 +8,7 @@ import { Link } from '~components/Link';
 
 const TestAsset = (): React.ReactElement => (
   <img
-    src="https://shorturl.at/M02qe"
+    src="https://cdn.razorpay.com/card-networks/visa.svg"
     alt="List view asset"
     width="96px"
     height="96px"

@@ -6,11 +6,17 @@ import { EmptyStateStoryCode } from './code';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
-import { Heading } from '~components/Typography';
-import { EcommerceIcon } from '~components/Icons';
+import { Heading, Text } from '~components/Typography';
+import { EcommerceIcon, InfoIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+const listView = require('../assets/list-view.webp');
+const noData = require('../assets/no-data.webp');
+const error = require('../assets/error.webp');
+const noNotification = require('../assets/no-notification.webp');
+const accessDenied = require('../assets/access-denied.webp');
 
 const getEmptyStateArgTypes = (): Record<string, unknown> => ({
   size: {
@@ -82,28 +88,34 @@ const createAssetComponent = (src: string, alt: string) => ({
   return <img src={src} alt={alt} width={width} height={height} style={{ objectFit: 'contain' }} />;
 };
 
-const ListViewAsset = createAssetComponent('https://shorturl.at/M02qe', 'List view');
-const NoDataAsset = createAssetComponent('https://shorturl.at/tCRRX', 'No data');
-const ErrorAsset = createAssetComponent('https://shorturl.at/dzeyS', 'Error');
-const NoNotificationAsset = createAssetComponent('https://shorturl.at/6AMik', 'No notifications');
-const AccessDeniedAsset = createAssetComponent('https://shorturl.at/G9Diy', 'Access denied');
+const ListViewAsset = createAssetComponent(listView, 'List view');
+const NoDataAsset = createAssetComponent(noData, 'No data');
+const ErrorAsset = createAssetComponent(error, 'Error');
+const NoNotificationAsset = createAssetComponent(noNotification, 'No notifications');
+const AccessDeniedAsset = createAssetComponent(accessDenied, 'Access denied');
 
 const BasicTemplate: StoryFn<typeof EmptyState> = (args) => <EmptyState {...args} />;
 
 export const Basic = BasicTemplate.bind({});
 Basic.args = {
   asset: <ErrorAsset />,
-  title: 'We couldn’t find the page you’re looking for',
+  title: "We couldn't find the page you're looking for",
   description: 'The page you are looking for does not exist, or has been moved.',
   children: (
-    <Box display="flex" flexDirection="column" gap="spacing.4" alignItems="center">
-      <Box display="flex" flexDirection="row" gap="spacing.2">
+    <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="center">
+      <Box display="flex" flexDirection="row" gap="spacing.4">
         <Button onClick={() => console.log('Navigate to home')}>Go to Home</Button>
         <Button variant="secondary" onClick={() => console.log('Navigate to docs')}>
           Go to Blade Docs
         </Button>
       </Box>
-      <Link href="/">Need help?</Link>
+      <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+        <Text variant="body" size="small" color="surface.text.gray.muted">
+          Need help?
+        </Text>
+        <Link href="/">Contact Support</Link>
+      </Box>
     </Box>
   ),
 };
@@ -186,11 +198,9 @@ WithMultipleActions.args = {
   title: 'No data available',
   description: 'Get started by importing your data or creating new records.',
   children: (
-    <Box display="flex" flexDirection="column" gap="spacing.3" alignItems="center">
+    <Box display="flex" flexDirection="row" gap="spacing.4" alignItems="center">
       <Button>Import Data</Button>
-      <Button variant="secondary" marginTop="spacing.3">
-        Create New Record
-      </Button>
+      <Button variant="secondary">Create New Record</Button>
     </Box>
   ),
 };
@@ -263,9 +273,9 @@ export const DifferentAssets = (): React.ReactElement => (
         title="Failed to load data"
         description="We couldn't retrieve your data. Please check your connection and try again."
       >
-        <Box display="flex" flexDirection="column" gap="spacing.3" alignItems="center">
+        <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="center">
           <Button>Retry</Button>
-          <Link href="/support">Get Help</Link>
+          <Link href="/">Get Help</Link>
         </Box>
       </EmptyState>
     </Box>
@@ -279,7 +289,7 @@ export const DifferentAssets = (): React.ReactElement => (
         title="No notifications"
         description="You're all caught up! New notifications will appear here."
       >
-        <Link href="/settings/notifications">Notification Settings</Link>
+        <Link href="/">Notification Settings</Link>
       </EmptyState>
     </Box>
 
@@ -292,7 +302,7 @@ export const DifferentAssets = (): React.ReactElement => (
         title="Access denied"
         description="You don't have permission to view this content. Contact your administrator for access."
       >
-        <Link href="/contact">Request Access</Link>
+        <Link href="/">Request Access</Link>
       </EmptyState>
     </Box>
   </Box>

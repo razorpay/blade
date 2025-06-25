@@ -21,11 +21,6 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  max-height: 90px;
-  max-width: 90px;
-}
-
-.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -37,10 +32,10 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -62,7 +57,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   z-index: 1;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -80,7 +75,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -98,7 +93,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -116,7 +111,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -153,24 +148,24 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   position: relative;
 }
 
-.c5.c5.c5.c5.c5:hover {
+.c4.c4.c4.c4.c4:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c5.c5.c5.c5.c5:active {
+.c4.c4.c4.c4.c4:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c5.c5.c5.c5.c5:focus-visible {
+.c4.c4.c4.c4.c4:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c5.c5.c5.c5.c5 * {
+.c4.c4.c4.c4.c4 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -179,7 +174,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -189,7 +184,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   transition-timing-function: 160px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c7.c7.c7.c7.c7 {
   opacity: 1;
 }
 
@@ -198,51 +193,46 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
     class="c0"
     data-blade-component="empty-state"
   >
+    <img
+      alt="List view asset"
+      height="96px"
+      src="https://cdn.razorpay.com/card-networks/visa.svg"
+      style="object-fit: contain;"
+      width="96px"
+    />
     <div
       class="c1"
       data-blade-component="base-box"
     >
-      <img
-        alt="List view asset"
-        height="96px"
-        src="https://shorturl.at/M02qe"
-        style="object-fit: contain;"
-        width="96px"
-      />
-    </div>
-    <div
-      class="c2"
-      data-blade-component="base-box"
-    >
       <h6
-        class="c3"
+        class="c2"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c3"
         data-blade-component="text"
       >
         There's no data to display right now
       </p>
     </div>
     <button
-      class="c5"
+      class="c4"
       data-blade-component="button"
       role="button"
       type="button"
     >
       <div
-        class=" c6"
+        class=" c5"
         data-blade-component="base-box"
       >
         <div
-          class="c7 c8"
+          class="c6 c7"
           data-blade-component="base-box"
         >
           <div
-            class="c9"
+            class="c8"
             data-blade-component="base-text"
           >
             Add Data
@@ -275,11 +265,6 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  max-height: 90px;
-  max-width: 90px;
-}
-
-.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -291,10 +276,10 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -308,7 +293,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   align-items: center;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -326,7 +311,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -344,7 +329,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c6.c6.c6.c6.c6 {
   color: hsla(227,71%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -362,7 +347,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -380,18 +365,18 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   transition-duration: 80ms;
 }
 
-.c5.c5.c5.c5.c5 .content-container {
+.c4.c4.c4.c4.c4 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c5.c5.c5.c5.c5:focus-visible .content-container {
+.c4.c4.c4.c4.c4:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
-.c5.c5.c5.c5.c5 * {
+.c4.c4.c4.c4.c4 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -405,30 +390,25 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
     class="c0"
     data-blade-component="empty-state"
   >
+    <img
+      alt="List view asset"
+      height="96px"
+      src="https://cdn.razorpay.com/card-networks/visa.svg"
+      style="object-fit: contain;"
+      width="96px"
+    />
     <div
       class="c1"
       data-blade-component="base-box"
     >
-      <img
-        alt="List view asset"
-        height="96px"
-        src="https://shorturl.at/M02qe"
-        style="object-fit: contain;"
-        width="96px"
-      />
-    </div>
-    <div
-      class="c2"
-      data-blade-component="base-box"
-    >
       <h6
-        class="c3"
+        class="c2"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c3"
         data-blade-component="text"
       >
         There's no data to display right now
@@ -436,17 +416,17 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
     </div>
     <a
       aria-disabled="false"
-      class="c5"
+      class="c4"
       data-blade-component="link"
       href="/add-data"
       role="link"
     >
       <span
-        class="c6 content-container"
+        class="c5 content-container"
         data-blade-component="base-box"
       >
         <span
-          class="c7"
+          class="c6"
           data-blade-component="base-text"
         >
           Add Data
@@ -478,11 +458,6 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  max-height: 90px;
-  max-width: 90px;
-}
-
-.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -494,10 +469,10 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -515,7 +490,7 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -539,30 +514,25 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
     data-blade-component="empty-state"
     data-testid="empty-state-test"
   >
+    <img
+      alt="List view asset"
+      height="96px"
+      src="https://cdn.razorpay.com/card-networks/visa.svg"
+      style="object-fit: contain;"
+      width="96px"
+    />
     <div
       class="c1"
       data-blade-component="base-box"
     >
-      <img
-        alt="List view asset"
-        height="96px"
-        src="https://shorturl.at/M02qe"
-        style="object-fit: contain;"
-        width="96px"
-      />
-    </div>
-    <div
-      class="c2"
-      data-blade-component="base-box"
-    >
       <h6
-        class="c3"
+        class="c2"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c3"
         data-blade-component="text"
       >
         There's no data to display right now
@@ -593,11 +563,6 @@ exports[`<EmptyState /> should render EmptyState with asset only 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  max-height: 90px;
-  max-width: 90px;
-}
-
-.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -609,7 +574,7 @@ exports[`<EmptyState /> should render EmptyState with asset only 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
 <div>
@@ -617,20 +582,15 @@ exports[`<EmptyState /> should render EmptyState with asset only 1`] = `
     class="c0"
     data-blade-component="empty-state"
   >
+    <img
+      alt="List view asset"
+      height="96px"
+      src="https://cdn.razorpay.com/card-networks/visa.svg"
+      style="object-fit: contain;"
+      width="96px"
+    />
     <div
       class="c1"
-      data-blade-component="base-box"
-    >
-      <img
-        alt="List view asset"
-        height="96px"
-        src="https://shorturl.at/M02qe"
-        style="object-fit: contain;"
-        width="96px"
-      />
-    </div>
-    <div
-      class="c2"
       data-blade-component="base-box"
     />
   </div>
@@ -669,7 +629,7 @@ exports[`<EmptyState /> should render EmptyState with description only 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -742,7 +702,7 @@ exports[`<EmptyState /> should render EmptyState with title only 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -804,11 +764,6 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  max-height: 120px;
-  max-width: 120px;
-}
-
-.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -820,10 +775,10 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
@@ -841,7 +796,7 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -864,30 +819,25 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
     class="c0"
     data-blade-component="empty-state"
   >
+    <img
+      alt="List view asset"
+      height="96px"
+      src="https://cdn.razorpay.com/card-networks/visa.svg"
+      style="object-fit: contain;"
+      width="96px"
+    />
     <div
       class="c1"
       data-blade-component="base-box"
     >
-      <img
-        alt="List view asset"
-        height="96px"
-        src="https://shorturl.at/M02qe"
-        style="object-fit: contain;"
-        width="96px"
-      />
-    </div>
-    <div
-      class="c2"
-      data-blade-component="base-box"
-    >
       <h5
-        class="c3"
+        class="c2"
         data-blade-component="heading"
       >
         No data found
       </h5>
       <p
-        class="c4"
+        class="c3"
         data-blade-component="text"
       >
         There's no data to display right now
@@ -918,11 +868,6 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  max-height: 90px;
-  max-width: 90px;
-}
-
-.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -934,10 +879,10 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -955,7 +900,7 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -978,30 +923,25 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
     class="c0"
     data-blade-component="empty-state"
   >
+    <img
+      alt="List view asset"
+      height="96px"
+      src="https://cdn.razorpay.com/card-networks/visa.svg"
+      style="object-fit: contain;"
+      width="96px"
+    />
     <div
       class="c1"
       data-blade-component="base-box"
     >
-      <img
-        alt="List view asset"
-        height="96px"
-        src="https://shorturl.at/M02qe"
-        style="object-fit: contain;"
-        width="96px"
-      />
-    </div>
-    <div
-      class="c2"
-      data-blade-component="base-box"
-    >
       <h6
-        class="c3"
+        class="c2"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c3"
         data-blade-component="text"
       >
         There's no data to display right now
@@ -1032,11 +972,6 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  max-height: 60px;
-  max-width: 60px;
-}
-
-.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1048,10 +983,10 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
@@ -1069,7 +1004,7 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -1092,30 +1027,25 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
     class="c0"
     data-blade-component="empty-state"
   >
+    <img
+      alt="List view asset"
+      height="96px"
+      src="https://cdn.razorpay.com/card-networks/visa.svg"
+      style="object-fit: contain;"
+      width="96px"
+    />
     <div
       class="c1"
       data-blade-component="base-box"
     >
-      <img
-        alt="List view asset"
-        height="96px"
-        src="https://shorturl.at/M02qe"
-        style="object-fit: contain;"
-        width="96px"
-      />
-    </div>
-    <div
-      class="c2"
-      data-blade-component="base-box"
-    >
       <h6
-        class="c3"
+        class="c2"
         data-blade-component="heading"
       >
         No data found
       </h6>
       <p
-        class="c4"
+        class="c3"
         data-blade-component="text"
       >
         There's no data to display right now
@@ -1146,11 +1076,6 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  max-height: 160px;
-  max-width: 160px;
-}
-
-.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1162,10 +1087,10 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 2rem;
@@ -1183,7 +1108,7 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1206,30 +1131,25 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
     class="c0"
     data-blade-component="empty-state"
   >
+    <img
+      alt="List view asset"
+      height="96px"
+      src="https://cdn.razorpay.com/card-networks/visa.svg"
+      style="object-fit: contain;"
+      width="96px"
+    />
     <div
       class="c1"
       data-blade-component="base-box"
     >
-      <img
-        alt="List view asset"
-        height="96px"
-        src="https://shorturl.at/M02qe"
-        style="object-fit: contain;"
-        width="96px"
-      />
-    </div>
-    <div
-      class="c2"
-      data-blade-component="base-box"
-    >
       <h3
-        class="c3"
+        class="c2"
         data-blade-component="heading"
       >
         No data found
       </h3>
       <p
-        class="c4"
+        class="c3"
         data-blade-component="text"
       >
         There's no data to display right now
