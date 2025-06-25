@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 12.37.0
+
+### Minor Changes
+
+- d8f9ddec9: feat(Typography): add `textTransform` support for typography components
+
+### Patch Changes
+
+- eda617bc3: fix(Tooltip): re-render issue on mobile tooltip
+
 ## 12.36.0
 
 ### Minor Changes
