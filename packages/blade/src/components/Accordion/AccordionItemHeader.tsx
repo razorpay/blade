@@ -30,21 +30,20 @@ const _AccordionItemHeader = ({
   const { size, showNumberPrefix, expandedIndex } = useAccordion();
   const { index, isDisabled } = useAccordionItemIndex();
 
+  const isLeadingIcon =
+    React.isValidElement(leading) &&
+    typeof leading.type === 'function' &&
+    leading.type.name?.endsWith('Icon');
+
   const isLeadingNumberOrIcon = React.useMemo(() => {
     // Check if leading is a number
     if (showNumberPrefix && typeof index === 'number') return true;
 
     // Check if leading is an Icon component (name ends with "Icon")
-    if (
-      leading &&
-      React.isValidElement(leading) &&
-      typeof leading.type === 'function' &&
-      leading.type.name?.endsWith('Icon')
-    )
-      return true;
+    if (isLeadingIcon) return true;
 
     return false;
-  }, [leading, showNumberPrefix, index]);
+  }, [showNumberPrefix, index, isLeadingIcon]);
 
   const shouldAlignHeaderItemsInCenter = Boolean(
     children || (Boolean(leading) && !isLeadingNumberOrIcon),
@@ -89,16 +88,17 @@ const _AccordionItemHeader = ({
           display="flex"
           alignItems="center"
           justifyContent="center"
-          height="100%"
-          marginRight="spacing.3"
+          alignSelf="center"
+          marginRight={isLeadingIcon ? 'spacing.0' : 'spacing.3'}
           marginBottom={makeSize(sizeToken['1'])}
+          height={isLeadingIcon ? makeSize(sizeToken['24']) : '100%'}
         >
           {leading}
         </BaseBox>
       );
     }
     return null;
-  }, [showNumberPrefix, index, leading, size]);
+  }, [showNumberPrefix, index, leading, size, isLeadingIcon]);
 
   return (
     <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItemHeader })} flex="1">
