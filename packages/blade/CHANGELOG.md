@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 12.38.0
+
+### Minor Changes
+
+- 4fd463368: feat(blade): card variants enhancement & docs
+- a839567f9: fix(blade): types in list , prefix color
+
+### Patch Changes
+
+- 6fa5fca1d: fix(blade): expose inputType in tableEditableCell
+
 ## 12.37.0
 
 ### Minor Changes
