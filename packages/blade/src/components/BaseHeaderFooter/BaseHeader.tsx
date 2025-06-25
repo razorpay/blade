@@ -383,19 +383,21 @@ const _BaseHeader = ({
   };
 
   const renderTrailingElement = (): React.ReactNode => {
-    if (removeWrapperInTrailingInteractionElements) {
+    if (removeWrapperInTrailingInteractionElements && validatedTrailingComponent) {
       return (
         <BaseBox marginRight="spacing.5" display="flex" alignItems="center" justifyContent="center">
           <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
         </BaseBox>
       );
     }
-
-    return (
-      <BaseBox marginRight="spacing.5">
-        <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
-      </BaseBox>
-    );
+    if (validatedTrailingComponent) {
+      return (
+        <BaseBox marginRight="spacing.5">
+          <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
+        </BaseBox>
+      );
+    }
+    return null;
   };
 
   return (

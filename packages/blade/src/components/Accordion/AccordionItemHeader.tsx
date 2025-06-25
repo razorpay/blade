@@ -11,6 +11,8 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Box } from '~components/Box';
+import { makeSize } from '~utils/makeSize';
+import { size as sizeToken } from '~tokens/global';
 
 const _AccordionItemHeader = ({
   title,
@@ -81,17 +83,21 @@ const _AccordionItemHeader = ({
         </Text>
       );
     }
-    return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        height="100%"
-        marginRight="spacing.3"
-      >
-        {leading}
-      </Box>
-    );
+    if (leading) {
+      return (
+        <BaseBox
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+          marginRight="spacing.3"
+          marginBottom={makeSize(sizeToken['1'])}
+        >
+          {leading}
+        </BaseBox>
+      );
+    }
+    return null;
   }, [showNumberPrefix, index, leading, size]);
 
   return (
