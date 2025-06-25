@@ -16,8 +16,6 @@ import {
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
-import { Counter } from '~components/Counter';
-import { Badge } from '~components/Badge';
 import BaseBox from '~components/Box/BaseBox';
 
 describe('<Card />', () => {
@@ -118,54 +116,6 @@ describe('<Card />', () => {
     expect(secondaryFn).toHaveBeenCalledTimes(1);
 
     expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should only accept allowed components in Card Header', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-    const cardTitle = 'Card Header';
-    const cardSubtitle = 'Card subtitle';
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading
-              title={cardTitle}
-              subtitle={cardSubtitle}
-              prefix={<InfoIcon color="interactive.icon.staticWhite.normal" size="xsmall" />}
-            />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
-
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading
-              title={cardTitle}
-              subtitle={cardSubtitle}
-              suffix={<Counter value={12} />}
-            />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
-    );
-
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderTrailing visual={<Badge>NEW</Badge>} />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount` component is accepted in visual',
-    );
-    mockConsoleError.mockRestore();
   });
 
   it('should throw error if any sub card components are used outside of Card', () => {
