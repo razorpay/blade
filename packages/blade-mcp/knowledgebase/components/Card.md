@@ -325,3 +325,174 @@ const InteractiveCardExample = () => {
   );
 };
 ```
+
+### Metric Card
+A card displaying metrics with dynamic data visualization, hover effects, and responsive layout. Shows how to combine Card with data display components.
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderLink,
+  CardHeaderBadge,
+  CardBody,
+  Box,
+  Text,
+  Amount,
+} from '@razorpay/blade/components';
+import { ArrowSquareUpIcon, ArrowRightIcon } from '@razorpay/blade/components/Icons';
+
+const MetricCard = () => {
+  const isMobile = window.innerWidth < 768;
+
+  return (
+    <Card
+      backgroundColor="surface.background.gray.intense"
+      maxWidth="500px"
+      minWidth="300px"
+      padding="spacing.5"
+      size="medium"
+    >
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title={isMobile ? 'TPV' : 'Total Payment Volume'}
+          subtitle={isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'}
+        />
+        <CardHeaderTrailing
+          visual={
+            isMobile ? (
+              <CardHeaderLink href="/" icon={ArrowRightIcon} iconPosition="right">
+                Chart settings
+              </CardHeaderLink>
+            ) : (
+              <CardHeaderBadge color="positive">New</CardHeaderBadge>
+            )
+          }
+        />
+      </CardHeader>
+      <CardBody>
+        <Box display="flex" flexDirection={isMobile ? 'row' : 'column'} gap="spacing.5">
+          <Box display="flex" flexDirection="column" justifyContent="flex-end">
+            <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+              <Amount
+                value={1000}
+                color="surface.text.gray.normal"
+                weight="semibold"
+                size="2xlarge"
+                type="heading"
+              />
+              <Box display="flex" flexDirection="row" gap="spacing.1" alignItems="center">
+                <ArrowSquareUpIcon color="interactive.icon.positive.normal" />
+                <Text color="interactive.text.positive.normal">12</Text>
+              </Box>
+            </Box>
+          </Box>
+          {/* Add your chart/graph component here */}
+        </Box>
+      </CardBody>
+    </Card>
+  );
+};
+```
+
+### Selectable Card Group
+A group of selectable cards functioning as radio buttons, demonstrating form integration with proper accessibility support.
+
+```tsx
+import {
+  Card,
+  CardBody,
+  Box,
+  Text,
+  Amount,
+  VisuallyHidden,
+} from '@razorpay/blade/components';
+import React from 'react';
+
+type HiddenInputProps = {
+  onChange: (value: string) => void;
+  value: string;
+  name: string;
+  type?: 'radio' | 'checkbox';
+};
+
+const HiddenInput = ({
+  onChange,
+  value,
+  name,
+  type = 'radio',
+}: HiddenInputProps): React.ReactElement => (
+  <VisuallyHidden>
+    <input
+      type={type}
+      onChange={(e) => onChange(e.target.value)}
+      name={name}
+      value={value}
+    />
+  </VisuallyHidden>
+);
+
+const SelectableCardGroup = () => {
+  const [selected, setSelected] = React.useState('free');
+
+  return (
+    <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
+      <Card
+        as="label"
+        accessibilityLabel="Free Tier"
+        shouldScaleOnHover
+        isSelected={selected === 'free'}
+        minHeight="100%"
+      >
+        <CardBody>
+          <HiddenInput
+            onChange={(value) => setSelected(value)}
+            value="free"
+            name="pricing-card"
+          />
+          <Amount marginBottom="spacing.1" value={0} currency="USD" size="large" />
+          <Box paddingX="spacing.2">
+            <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
+              Free
+            </Text>
+            <Text>
+              For individuals or teams just getting started with payments.
+              No setup fees, no monthly or annual fees.
+            </Text>
+          </Box>
+        </CardBody>
+      </Card>
+
+      <Card
+        as="label"
+        accessibilityLabel="Premium Tier"
+        shouldScaleOnHover
+        isSelected={selected === 'premium'}
+        minHeight="100%"
+      >
+        <CardBody>
+          <HiddenInput
+            onChange={(value) => setSelected(value)}
+            value="premium"
+            name="pricing-card"
+          />
+          <Amount marginBottom="spacing.1" value={20} currency="USD" size="large" />
+          <Box paddingX="spacing.2">
+            <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
+              Premium
+            </Text>
+            <Text>
+              Best suited for businesses that need a dedicated account
+              manager and 24x7 support.
+            </Text>
+          </Box>
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+export default SelectableCardGroup;
+```
