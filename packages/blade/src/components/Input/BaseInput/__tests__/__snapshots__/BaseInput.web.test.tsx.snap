@@ -2293,7 +2293,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="coupon-166-input-167"
+          for="coupon-165-input-166"
           style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -2338,7 +2338,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
             aria-required="false"
             class="c9"
             data-blade-component="styled-base-input"
-            id="coupon-166-input-167"
+            id="coupon-165-input-166"
             type="text"
             value=""
           />
@@ -2721,7 +2721,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
       >
         <label
           data-blade-component="form-label"
-          for="name-556-input-557"
+          for="name-555-input-556"
           style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -2767,7 +2767,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
             class="c9"
             data-analytics-name="base-input"
             data-blade-component="styled-base-input"
-            id="name-556-input-557"
+            id="name-555-input-556"
             type="text"
             value=""
           />
