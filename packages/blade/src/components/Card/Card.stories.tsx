@@ -21,7 +21,6 @@ import {
   CardHeaderText,
 } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { Button } from '~components/Button';
 
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
@@ -31,7 +30,6 @@ import {
   CheckCircleIcon,
   ArrowSquareUpIcon,
   ArrowRightIcon,
-  InfoIcon,
 } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
 
@@ -43,7 +41,6 @@ import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { Amount } from '~components/Amount';
-import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const Page = (): React.ReactElement => {
   return (
