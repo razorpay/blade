@@ -442,7 +442,7 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="name-556-input-557"
+          for="name-555-input-556"
           style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -543,7 +543,7 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
             aria-required="false"
             class="c15"
             data-blade-component="styled-base-input"
-            id="name-556-input-557"
+            id="name-555-input-556"
             type="text"
             value=""
           />
@@ -2994,7 +2994,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="coupon-166-input-167"
+          for="coupon-165-input-166"
           style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -3049,7 +3049,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
             aria-required="false"
             class="c10"
             data-blade-component="styled-base-input"
-            id="coupon-166-input-167"
+            id="coupon-165-input-166"
             type="text"
             value=""
           />
@@ -3459,7 +3459,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
       >
         <label
           data-blade-component="form-label"
-          for="name-574-input-575"
+          for="name-573-input-574"
           style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -3515,7 +3515,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
             class="c10"
             data-analytics-name="base-input"
             data-blade-component="styled-base-input"
-            id="name-574-input-575"
+            id="name-573-input-574"
             type="text"
             value=""
           />

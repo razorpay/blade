@@ -1,5 +1,29 @@
 # @razorpay/blade-mcp
 
+## 1.0.1
+
+### Patch Changes
+
+- 50e2ce3cf: feat(mcp/README): update mcp readme with new tools and troubleshooting
+
+## 1.0.0
+
+### Major Changes
+
+- e5bcc887d: feat(blade-mcp): add figma to code mcp tool
+
+## 0.2.6
+
+### Patch Changes
+
+- 49b1b3cce: docs: trimmed knowledgebase for inputgroup and textinput
+
+## 0.2.5
+
+### Patch Changes
+
+- 21b936ce5: docs: add Input Group, updated text input knowledgebase
+
 ## 0.2.4
 
 ### Patch Changes
