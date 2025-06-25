@@ -310,3 +310,55 @@ Empty state with actions and help text using children.
 
 - **[Ant Design - Empty](https://ant.design/components/empty)**: Uses similar children pattern for actions with `image` prop for assets
 - **[Chakra UI - Empty State](https://chakra-ui.com/docs/components/empty-state)**: Flexible composition-based approach
+- **[Slack Thread - API Discussion](https://razorpay.slack.com/archives/C01H13RTF8V/p1750658833585239)**: Internal team discussion about API design choices, prop naming conventions, and final API decisions
+
+## Team Discussion and Evolution of API
+
+The team had an extensive discussion in Slack about the API design, considering multiple approaches and naming conventions. Here's a summary of the key discussion points:
+
+### Initial API Proposals
+
+1. **Flexible Slot-based API (Initial Proposal)**
+
+```jsx
+<EmptyState
+  asset={<img src="/illustrations/no-data-found.png" alt="No data found" />}
+  title="No data found"
+  description="Try adjusting..."
+  footer={
+    <>
+      <Button>Create New</Button>
+      <Button variant="tertiary" marginTop="spacing.3">
+        Learn More
+      </Button>
+      <Link href="/support" marginTop="spacing.4">
+        Need help? Contact support
+      </Link>
+    </>
+  }
+/>
+```
+
+2. **Children vs Footer Discussion**
+
+- Team discussed whether to use a `footer` prop vs React's children pattern
+- The team noted that calling it "footer" might not make sense since users can omit title/description
+- Team agreed that using children would be more flexible and follow familiar React patterns
+- Ant Design's similar approach was referenced as a successful pattern
+
+3. **Asset Prop Naming Discussion**
+
+- Multiple options were considered:
+  - `visual` (suggested but deemed vague)
+  - `image` (suggested but too restrictive)
+  - `asset` (final choice - generic enough for various content types)
+- The team emphasized keeping it generic to support "image, svg, animated gifs, lottie components etc"
+- Team consensus formed around `asset` as the most flexible and clear option
+
+4. **Evolution to Final API**
+   The discussion led to the current children-based API, which:
+
+- Uses `asset` prop for maximum flexibility
+- Follows React's natural composition patterns
+- Aligns with successful patterns from other design systems
+- Provides clear, intuitive naming
