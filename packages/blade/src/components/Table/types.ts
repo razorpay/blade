@@ -329,6 +329,7 @@ type TableEditableCellProps = Pick<
   | 'successText'
 > & {
   accessibilityLabel: NonNullable<BaseInputProps['accessibilityLabel']>;
+  inputType?: Extract<BaseInputProps['type'], 'text' | 'number' | 'email' | 'tel' | 'url'>;
 };
 
 type TableEditableDropdownCellProps = Pick<
