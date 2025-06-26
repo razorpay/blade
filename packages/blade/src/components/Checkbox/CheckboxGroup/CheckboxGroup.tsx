@@ -115,6 +115,7 @@ const CheckboxGroup = ({
   size = 'medium',
   testID,
   orientation = 'vertical',
+  flexWrap = 'nowrap',
   ...rest
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
@@ -164,6 +165,7 @@ const CheckboxGroup = ({
               display="flex"
               flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
               gap={gap}
+              flexWrap={flexWrap}
             >
               {React.Children.map(children, (child, index) => {
                 return <BaseBox key={index}>{child}</BaseBox>;

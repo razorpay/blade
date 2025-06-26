@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-mcp",
-  "version": "0.2.3",
+  "version": "1.0.1",
   "description": "Model Context Protocol server for Blade",
   "main": "dist/server.js",
   "type": "module",
@@ -38,6 +38,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.11.0",
     "zod": "3.24.3",
+    "dedent": "1.6.0",
     "@sentry/node": "9.19.0",
     "@segment/analytics-node": "2.2.1"
   },

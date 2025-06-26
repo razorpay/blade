@@ -21,6 +21,10 @@ import { isReactNative } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useCheckboxGroupContext } from '~components/Checkbox/CheckboxGroup/CheckboxGroupContext';
+import { useRadioGroupContext } from '~components/Radio/RadioGroup/RadioContext';
+import type { CheckboxGroupContextType } from '~components/Checkbox/CheckboxGroup/CheckboxGroupContext';
+import type { RadioGroupContextType } from '~components/Radio/RadioGroup/RadioContext';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -155,6 +159,12 @@ export type CardProps = {
    */
   onHover?: () => void;
   /**
+   * Sets the size of the card header title
+   *
+   * @default 'large'
+   */
+  size?: 'large' | 'medium';
+  /**
    * Callback triggered when the card is clicked
    */
   onClick?: (
@@ -198,6 +208,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     target,
     rel,
     as,
+    size = 'large',
     ...rest
   },
   ref,
@@ -222,8 +233,21 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   };
   const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
 
+  const checkboxGroupProps = useCheckboxGroupContext();
+  const radioGroupProps = useRadioGroupContext();
+
+  const getGroupProps = (): CheckboxGroupContextType | RadioGroupContextType | undefined => {
+    if (Object.keys(checkboxGroupProps).length > 0) return checkboxGroupProps;
+    if (Object.keys(radioGroupProps).length > 0) return radioGroupProps;
+    return undefined;
+  };
+
+  const groupProps = getGroupProps();
+
+  const _validationState = groupProps?.validationState;
+
   return (
-    <CardProvider>
+    <CardProvider size={size}>
       <CardRoot
         as={as}
         ref={ref as never}
@@ -242,6 +266,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         maxWidth={maxWidth}
         href={href}
         accessibilityLabel={accessibilityLabel}
+        validationState={_validationState}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
