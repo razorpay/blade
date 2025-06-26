@@ -281,50 +281,6 @@ const BasicCardExample = () => {
 };
 ```
 
-### Interactive Cards
-
-A Card that responds to user interaction with hover effects and selection state. Demonstrates how to create clickable cards with proper accessibility support.
-
-```tsx
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardHeaderLeading,
-  CardHeaderIcon,
-  Text,
-  UsersIcon,
-} from '@razorpay/blade/components';
-import React, { useState } from 'react';
-
-const InteractiveCardExample = () => {
-  const [isSelected, setIsSelected] = useState(false);
-
-  return (
-    <Card
-      shouldScaleOnHover
-      isSelected={isSelected}
-      onClick={() => setIsSelected(!isSelected)}
-      accessibilityLabel="User Profile Card"
-    >
-      <CardHeader>
-        <CardHeaderLeading
-          title="User Profile"
-          subtitle="Click to select this profile"
-          prefix={<CardHeaderIcon icon={UsersIcon} />}
-        />
-      </CardHeader>
-      <CardBody>
-        <Text>
-          This is an interactive card that scales on hover and can be selected. Click to toggle the
-          selection state. The card uses accessibility features to ensure it can be used with screen
-          readers.
-        </Text>
-      </CardBody>
-    </Card>
-  );
-};
-```
 
 ### Metric Card
 A card displaying metrics with dynamic data visualization, hover effects, and responsive layout. Shows how to combine Card with data display components.
@@ -403,22 +359,53 @@ const MetricCard = () => {
 };
 ```
 
-### Interactive Cards With Checkbox
+### Interactive Cards
 This example demonstrates how to create a group of cards that can be multi-selected using checkboxes, with validation and error states.
 
 /*
-AI Implementation Note:
-To create a radio button version:
-1. Import { RadioGroup, Radio } from '@razorpay/blade/components'
-2. Replace CheckboxGroup with RadioGroup and Checkbox with Radio
-3. Change state from array to single value:
-   const [selectedProduct, setSelectedProduct] = React.useState('')
-4. Update onChange to use single value:
-   onChange={({ value }) => setSelectedProduct(value)}
-5. Modify isSelected check in ProductCard:
-   isSelected={selectedProduct === option.value}
-6. Update validation logic to check for empty string instead of array length
-7. Remove max selection limit logic as radio only allows one selection
+AI Implementation Notes:
+
+1. For a simple interactive card:
+   - Import basic components:
+     import { Card, CardBody, CardHeader, CardHeaderLeading, CardHeaderIcon, Text } from '@razorpay/blade/components'
+   - Use single boolean state:
+     const [isSelected, setIsSelected] = useState(false)
+   - Basic card structure:
+     <Card
+       shouldScaleOnHover
+       isSelected={isSelected}
+       onClick={() => setIsSelected(!isSelected)}
+       accessibilityLabel="Interactive Card"
+     >
+       <CardHeader>
+         <CardHeaderLeading
+           title="Card Title"
+           subtitle="Card subtitle"
+           prefix={<CardHeaderIcon icon={YourIcon} />}
+         />
+       </CardHeader>
+       <CardBody>
+         <Text>Card content here</Text>
+       </CardBody>
+     </Card>
+   - Key features:
+     * shouldScaleOnHover for hover effect
+     * isSelected for selection state
+     * onClick for interactivity
+     * accessibilityLabel for screen readers
+   - No validation or group management needed
+
+2. To create a radio button version:
+   1. Import { RadioGroup, Radio } from '@razorpay/blade/components'
+   2. Replace CheckboxGroup with RadioGroup and Checkbox with Radio
+   3. Change state from array to single value:
+      const [selectedProduct, setSelectedProduct] = React.useState('')
+   4. Update onChange to use single value:
+      onChange={({ value }) => setSelectedProduct(value)}
+   5. Modify isSelected check in ProductCard:
+      isSelected={selectedProduct === option.value}
+   6. Update validation logic to check for empty string instead of array length
+   7. Remove max selection limit logic as radio only allows one selection
 */
 
 ```tsx
