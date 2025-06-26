@@ -494,7 +494,7 @@ export const NestedGroupingExample: StoryFn<typeof TableComponent> = () => {
                       display="flex"
                       justifyContent="space-between"
                       alignItems="center"
-                      gap="spacing.4"
+                      gap="spacing.11"
                     >
                       <Box>
                         <Text weight="medium">Gateway</Text>
