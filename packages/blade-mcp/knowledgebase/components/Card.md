@@ -403,8 +403,23 @@ const MetricCard = () => {
 };
 ```
 
-### Interactive Cards With Checkbox and Radio Button
-This example demonstrates how to create a group of cards that can be multi-selected using checkboxes or radio buttons, with validation, error states, and proper accessibility support.
+### Interactive Cards With Checkbox
+This example demonstrates how to create a group of cards that can be multi-selected using checkboxes, with validation and error states.
+
+/*
+AI Implementation Note:
+To create a radio button version:
+1. Import { RadioGroup, Radio } from '@razorpay/blade/components'
+2. Replace CheckboxGroup with RadioGroup and Checkbox with Radio
+3. Change state from array to single value:
+   const [selectedProduct, setSelectedProduct] = React.useState('')
+4. Update onChange to use single value:
+   onChange={({ value }) => setSelectedProduct(value)}
+5. Modify isSelected check in ProductCard:
+   isSelected={selectedProduct === option.value}
+6. Update validation logic to check for empty string instead of array length
+7. Remove max selection limit logic as radio only allows one selection
+*/
 
 ```tsx
 import {
@@ -421,8 +436,6 @@ import {
   Divider,
   CheckboxGroup,
   Checkbox,
-  RadioGroup,
-  Radio,
   RazorpayIcon,
 } from '@razorpay/blade/components';
 import React from 'react';
@@ -509,12 +522,8 @@ const ProductCard = ({
 );
 
 const ProductSelection = () => {
-  // For multi-select with checkboxes
   const [selectedProducts, setSelectedProducts] = React.useState<string[]>([]);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
-
-  // For single-select with radio
-  const [selectedProduct, setSelectedProduct] = React.useState('');
 
   const hasError = isSubmitted && selectedProducts.length === 0;
   const hasMaxError = selectedProducts.length > 3;
@@ -563,30 +572,6 @@ const ProductSelection = () => {
             </Text>
           )}
         </Box>
-      </Box>
-
-      <Box>
-        <Text marginBottom="spacing.4" weight="semibold" size="large">
-          Single-Select Product
-        </Text>
-        <RadioGroup
-          value={selectedProduct}
-          onChange={({ value }) => setSelectedProduct(value)}
-          label="Select primary product"
-          necessityIndicator="required"
-          orientation="horizontal"
-          flexWrap="wrap"
-        >
-          {productOptions.map((option) => (
-            <ProductCard
-              key={option.value}
-              option={option}
-              isSelected={selectedProduct === option.value}
-            >
-              <Radio value={option.value} />
-            </ProductCard>
-          ))}
-        </RadioGroup>
       </Box>
     </Box>
   );
