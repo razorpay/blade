@@ -330,6 +330,7 @@ const InteractiveCardExample = () => {
 A card displaying metrics with dynamic data visualization, hover effects, and responsive layout. Shows how to combine Card with data display components.
 
 ```tsx
+import { useEffect, useState } from 'react';
 import {
   Card,
   CardHeader,
@@ -345,8 +346,30 @@ import {
   ArrowRightIcon
 } from '@razorpay/blade/components';
 
+
+const MOBILE_BREAKPOINT = 768;
+
+export const useIsMobile = (): boolean => {
+  // Default to `false` on server to avoid mismatch
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Only runs in browser
+    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+
+    const handleChange = () => setIsMobile(mediaQuery.matches);
+
+    handleChange(); // Set initial value
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  return isMobile;
+};
+
 const MetricCard = () => {
-  const isMobile = window.innerWidth < 768;
+  const isMobile = useIsMobile();
 
   return (
     <Card
