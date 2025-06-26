@@ -444,6 +444,14 @@ const _Virtulized = <Item,>({
   );
 };
 
+const NestedTableRow = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <BaseBox padding="spacing.3" display="contents">
+      {children}
+    </BaseBox>
+  );
+};
+
 const TableRow = assignWithoutSideEffects(_TableRow, {
   componentId: ComponentIds.TableRow,
 });
@@ -451,4 +459,4 @@ const TableRow = assignWithoutSideEffects(_TableRow, {
 const TableVirtualizedWrapper = assignWithoutSideEffects(_Virtulized, {
   componentId: ComponentIds.VirtualizedTable,
 });
-export { TableBody, TableRow, TableCell, TableVirtualizedWrapper };
+export { TableBody, TableRow, TableCell, TableVirtualizedWrapper, NestedTableRow };

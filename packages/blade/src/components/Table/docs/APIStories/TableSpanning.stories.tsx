@@ -2,7 +2,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData, TableProps } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableBody, TableRow, TableCell } from '../../TableBody';
+import { TableBody, TableRow, TableCell, NestedTableRow } from '../../TableBody';
 import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
@@ -123,7 +123,7 @@ const groupedData: TableData<Item> = {
 export const RowSpanExample: StoryFn<typeof TableComponent> = () => {
   return (
     <Box backgroundColor="surface.background.gray.intense" padding="spacing.5" overflow="auto">
-      <TableComponent data={spanningData}>
+      <TableComponent data={spanningData} showBorderedCells>
         {(tableData) => (
           <>
             <TableHeader>
@@ -433,6 +433,104 @@ export const GroupingExample: StoryFn<typeof TableComponent> = () => {
                 <TableCell>₹{tableData[3]?.convenience.toFixed(2)}</TableCell>
                 <TableCell>₹{tableData[3]?.total.toFixed(2)}</TableCell>
               </TableRow>
+            </TableBody>
+          </>
+        )}
+      </TableComponent>
+    </Box>
+  );
+};
+
+export const NestedGroupingExample: StoryFn<typeof TableComponent> = () => {
+  return (
+    <Box backgroundColor="surface.background.gray.intense" padding="spacing.5" overflow="auto">
+      <TableComponent data={groupedData}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Component</TableHeaderCell>
+                <TableHeaderCell>Price</TableHeaderCell>
+                <TableHeaderCell>GST</TableHeaderCell>
+                <TableHeaderCell>Convenience Fees</TableHeaderCell>
+                <TableHeaderCell>Total</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {/* First Row with Nesting */}
+              <TableRow item={tableData[0]}>
+                <TableCell>{tableData[0]?.component}</TableCell>
+                <TableCell>₹{tableData[0]?.price.toFixed(2)}</TableCell>
+                <TableCell>₹{tableData[0]?.gst.toFixed(2)}</TableCell>
+                <TableCell>₹{tableData[0]?.convenience.toFixed(2)}</TableCell>
+                <TableCell>₹{tableData[0]?.total.toFixed(2)}</TableCell>
+              </TableRow>
+
+              {/* Nested Gateway Info for First Row */}
+              {/* <NestedTableRow>
+                <TableRow item={tableData[0]}>
+                  <TableCell backgroundColor="surface.background.gray.moderate">Gateway</TableCell>
+                  <TableCell backgroundColor="surface.background.gray.moderate">
+                    paylater_icici
+                  </TableCell>
+                  <TableCell backgroundColor="surface.background.gray.moderate">
+                    Last Updated
+                  </TableCell>
+                  <TableCell backgroundColor="surface.background.gray.moderate">
+                    Mon, Sept 4, 2023
+                  </TableCell>
+                  <TableCell backgroundColor="surface.background.gray.moderate">Status</TableCell>
+                </TableRow>
+              </NestedTableRow> */}
+              <TableRow item={tableData[0]}>
+                <TableCell gridColumnStart={1} gridColumnEnd={6}>
+                  <Box
+                    backgroundColor="surface.background.gray.subtle"
+                    padding="spacing.3"
+                    borderRadius="medium"
+                    margin="spacing.2"
+                  >
+                    <Box
+                      display="flex"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      gap="spacing.4"
+                    >
+                      <Box>
+                        <Text weight="medium">Gateway</Text>
+                        <Text>paylater_icici_acquirer</Text>
+                      </Box>
+                      <Box>
+                        <Text weight="medium">Last Updated</Text>
+                        <Text>Mon, Sept 4, 2023</Text>
+                      </Box>
+                      <Box>
+                        <Text weight="medium">Status</Text>
+                        <Text>Requested</Text>
+                      </Box>
+                      <Box>
+                        <Text weight="medium">Comments</Text>
+                        <Text>Show Comments</Text>
+                      </Box>
+                      <Box>
+                        <Text weight="medium">Actions</Text>
+                        <Text>Actions</Text>
+                      </Box>
+                    </Box>
+                  </Box>
+                </TableCell>
+              </TableRow>
+
+              {/* Regular Rows */}
+              {tableData.slice(1).map((item) => (
+                <TableRow key={item.id} item={item}>
+                  <TableCell>{item.component}</TableCell>
+                  <TableCell>₹{item.price.toFixed(2)}</TableCell>
+                  <TableCell>₹{item.gst.toFixed(2)}</TableCell>
+                  <TableCell>₹{item.convenience.toFixed(2)}</TableCell>
+                  <TableCell>₹{item.total.toFixed(2)}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </>
         )}
