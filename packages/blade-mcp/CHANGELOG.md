@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.1.0
+
+### Minor Changes
+
+- a78225edf: feat(blade-mcp): update blade mcp docs for metric and selectable card
+
 ## 1.0.1
 
 ### Patch Changes
