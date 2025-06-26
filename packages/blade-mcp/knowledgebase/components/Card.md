@@ -365,47 +365,27 @@ This example demonstrates how to create a group of cards that can be multi-selec
 /*
 AI Implementation Notes:
 
-1. For a simple interactive card:
-   - Import basic components:
-     import { Card, CardBody, CardHeader, CardHeaderLeading, CardHeaderIcon, Text } from '@razorpay/blade/components'
-   - Use single boolean state:
-     const [isSelected, setIsSelected] = useState(false)
-   - Basic card structure:
-     <Card
-       shouldScaleOnHover
-       isSelected={isSelected}
-       onClick={() => setIsSelected(!isSelected)}
-       accessibilityLabel="Interactive Card"
-     >
-       <CardHeader>
-         <CardHeaderLeading
-           title="Card Title"
-           subtitle="Card subtitle"
-           prefix={<CardHeaderIcon icon={YourIcon} />}
-         />
-       </CardHeader>
-       <CardBody>
-         <Text>Card content here</Text>
-       </CardBody>
-     </Card>
-   - Key features:
-     * shouldScaleOnHover for hover effect
-     * isSelected for selection state
-     * onClick for interactivity
-     * accessibilityLabel for screen readers
-   - No validation or group management needed
+1. Simple interactive card:
+   <Card
+     shouldScaleOnHover
+     isSelected={isSelected}
+     onClick={() => setIsSelected(!isSelected)}
+     accessibilityLabel="Card Name"
+   >
+     <CardHeader>
+       <CardHeaderLeading title="Title" subtitle="Subtitle" prefix={<CardHeaderIcon icon={Icon} />} />
+     </CardHeader>
+     <CardBody>
+       <Text>Content</Text>
+     </CardBody>
+   </Card>
 
-2. To create a radio button version:
-   1. Import { RadioGroup, Radio } from '@razorpay/blade/components'
-   2. Replace CheckboxGroup with RadioGroup and Checkbox with Radio
-   3. Change state from array to single value:
-      const [selectedProduct, setSelectedProduct] = React.useState('')
-   4. Update onChange to use single value:
-      onChange={({ value }) => setSelectedProduct(value)}
-   5. Modify isSelected check in ProductCard:
-      isSelected={selectedProduct === option.value}
-   6. Update validation logic to check for empty string instead of array length
-   7. Remove max selection limit logic as radio only allows one selection
+2. Radio button version:
+   - Use RadioGroup instead of CheckboxGroup
+   - Single state: const [selected, setSelected] = useState('')
+   - onChange: ({ value }) => setSelected(value)
+   - isSelected check: selected === option.value
+   - Remove max selection logic
 */
 
 ```tsx
