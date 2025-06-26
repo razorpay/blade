@@ -421,7 +421,7 @@ const MetricCard = () => {
 };
 ```
 
-### Multi-Selectable Product Cards
+### Interactive Cards With Checkbox and Radio Button
 This example demonstrates how to create a group of cards that can be multi-selected using checkboxes or radio buttons, with validation, error states, and proper accessibility support.
 
 ```tsx
