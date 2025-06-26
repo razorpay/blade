@@ -19,6 +19,7 @@ const QuickSelectionItem = ({
       onClick={onClick}
       title={children}
       role="option"
+      data-analytics-name={children}
     />
   );
 };
