@@ -87,6 +87,22 @@ type BaseHeaderProps = {
    * You can use this for adding gradients.
    */
   backgroundImage?: BoxProps['backgroundImage'];
+  /**
+   * So we add a wrapper with custom styles to the leading interaction element.
+   * This is useful when you want to add a custom styles to the leading interaction element
+   * for example, in Accordion, we add a wrapper with flex to center the icon / leading element (in some cases)
+   *
+   * @default false
+   */
+  removeWrapperInLeadingInteractionElements?: boolean;
+  /**
+   * So we add a wrapper with custom styles to the trailing interaction element.
+   * This is useful when you want to add a custom styles to the trailing interaction element
+   * for example, in Accordion, we add a wrapper with flex to center the icon (in some cases)
+   *
+   * @default false
+   */
+  removeWrapperInTrailingInteractionElements?: boolean;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -305,6 +321,8 @@ const _BaseHeader = ({
   backgroundImage,
   alignItems = 'flex-start',
   dividerProps,
+  removeWrapperInLeadingInteractionElements = false,
+  removeWrapperInTrailingInteractionElements = false,
   ...rest
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
@@ -323,6 +341,64 @@ const _BaseHeader = ({
         onPointerMove,
         onPointerUp,
       };
+
+  const renderTrailingInteractionElementWithChildren = (): React.ReactNode => {
+    if (removeWrapperInTrailingInteractionElements && trailingInteractionElement && children) {
+      return trailingInteractionElement;
+    }
+    if (trailingInteractionElement && children) {
+      return (
+        <Box alignSelf="flex-start" {...centerBoxProps[size]}>
+          {trailingInteractionElement}
+        </Box>
+      );
+    }
+    return null;
+  };
+
+  const renderTrailingInteractionElementWithoutChildren = (): React.ReactNode => {
+    if (removeWrapperInTrailingInteractionElements && trailingInteractionElement && !children) {
+      return trailingInteractionElement;
+    }
+
+    if (trailingInteractionElement && !children) {
+      return <Box {...centerBoxProps[size]}>{trailingInteractionElement}</Box>;
+    }
+    return null;
+  };
+
+  const renderLeadingElement = (): React.ReactNode => {
+    if (Boolean(leading) && removeWrapperInLeadingInteractionElements) {
+      return leading;
+    }
+
+    if (Boolean(leading)) {
+      return (
+        <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
+          {leading}
+        </BaseBox>
+      );
+    }
+    return null;
+  };
+
+  const renderTrailingElement = (): React.ReactNode => {
+    if (removeWrapperInTrailingInteractionElements && validatedTrailingComponent) {
+      return (
+        <BaseBox marginRight="spacing.5" display="flex" alignItems="center" justifyContent="center">
+          <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
+        </BaseBox>
+      );
+    }
+    if (validatedTrailingComponent) {
+      return (
+        <BaseBox marginRight="spacing.5">
+          <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
+        </BaseBox>
+      );
+    }
+    return null;
+  };
 
   return (
     <BaseBox
@@ -361,11 +437,7 @@ const _BaseHeader = ({
               flexDirection="row"
               alignItems={alignItems}
             >
-              {leading ? (
-                <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
-                  {leading}
-                </BaseBox>
-              ) : null}
+              {renderLeadingElement()}
               <BaseBox flex="auto">
                 <BaseBox
                   // Explicitly setting maxWidth in React Native because text is not being wrapped properly when multiple fix width components are rendered in header
@@ -423,11 +495,8 @@ const _BaseHeader = ({
               </BaseBox>
             </BaseBox>
           )}
-          {validatedTrailingComponent ? (
-            <BaseBox marginRight="spacing.5">
-              <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
-            </BaseBox>
-          ) : null}
+          {renderTrailingElement()}
+
           {showCloseButton ? (
             <Box {...(hasOnlyChildren ? absolutePositionedButton : centerBoxProps[size])}>
               <IconButton
@@ -439,9 +508,7 @@ const _BaseHeader = ({
               />
             </Box>
           ) : null}
-          {trailingInteractionElement && !children ? (
-            <Box {...centerBoxProps[size]}>{trailingInteractionElement}</Box>
-          ) : null}
+          {renderTrailingInteractionElementWithoutChildren()}
         </BaseBox>
         <BaseBox
           display="flex"
@@ -451,11 +518,7 @@ const _BaseHeader = ({
           justifyContent="space-between"
         >
           <Box width="100%">{children}</Box>
-          {trailingInteractionElement && children ? (
-            <Box alignSelf="flex-start" {...centerBoxProps[size]}>
-              {trailingInteractionElement}
-            </Box>
-          ) : null}
+          {renderTrailingInteractionElementWithChildren()}
         </BaseBox>
       </BaseBox>
       {showDivider ? <Divider {...dividerProps} /> : null}
