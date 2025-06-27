@@ -1,1 +1,1 @@
-export { default as SettingCard } from './SettingCard.web';
+export { default as SettingCard } from './SettingCard';
