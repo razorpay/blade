@@ -55,7 +55,7 @@ interface NavigationSection {
 }
 
 // Custom activation card for the banner slot
-const ActivationCard = () => {
+const ActivationCard = (): React.ReactElement => {
   return (
     <Card href="/activate" padding="spacing.4" elevation="none">
       <CardBody>
@@ -230,7 +230,7 @@ const SideNavigation = (): React.ReactElement => {
             const sectionItems = section.items || [];
             const hasActiveItem = sectionItems.some(
               (item) =>
-                location.pathname.startsWith(item.href || '') ||
+                location.pathname.startsWith(item.href ?? '') ||
                 getAllChildHrefs(item.items).some((childHref) =>
                   location.pathname.startsWith(childHref),
                 ),
@@ -260,7 +260,7 @@ const SideNavigation = (): React.ReactElement => {
                       key={`item-${itemIndex}`}
                       {...item}
                       activeOnLinks={childHrefs}
-                      href={item.items[0]?.href || item.href}
+                      href={item.items[0]?.href ?? item.href}
                     >
                       <SideNavLevel>
                         {item.items?.map((subItem, subIndex) => (
@@ -308,7 +308,7 @@ const SideNavigation = (): React.ReactElement => {
           <NavLink
             title="Settings"
             icon={SettingsIcon}
-            href="/settings"
+            href="/"
             activeOnLinks={['/settings/user', '/settings/account']}
             data-analytics-section="footer"
             data-analytics-element="settings"

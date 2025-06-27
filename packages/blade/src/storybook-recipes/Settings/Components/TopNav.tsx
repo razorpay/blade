@@ -1,38 +1,5 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import {
-//   TopNav,
-//   TopNavBrand,
-//   TopNavContent,
-//   TopNavActions,
-//   TabNav,
-//   TabNavItems,
-//   TabNavItem,
-//   SearchInput,
-//   Button,
-//   Avatar,
-//   Box,
-//   Text,
-//   Menu,
-//   MenuHeader,
-//   MenuItem,
-//   MenuFooter,
-//   MenuOverlay,
-//   Link as BladeLink,
-//   Badge,
-//   Tooltip,
-//   List,
-//   ListItem,
-//   HomeIcon,
-//   ActivityIcon,
-//   AnnouncementIcon,
-//   ChevronDownIcon,
-//   ChevronRightIcon,
-//   AcceptPaymentsIcon,
-//   RazorpayxPayrollIcon,
-//   ShoppingBagIcon,
-//   AwardIcon,
-// } from "@razorpay/blade/components";
 import { Box } from '../../../components/Box';
 import {
   TopNav,
@@ -127,6 +94,7 @@ const TopNavigation = (): React.ReactElement => {
                           title={item.title}
                           icon={item.icon}
                           onClick={() => {
+                            // @ts-expect-error
                             navigate(item.href!);
                             setSelectedProduct(item.href!);
                           }}
@@ -155,6 +123,7 @@ const TopNavigation = (): React.ReactElement => {
                             <MenuItem
                               key={item.href}
                               onClick={() => {
+                                // @ts-expect-error
                                 navigate(item.href!);
                                 setSelectedProduct(item.href!);
                               }}

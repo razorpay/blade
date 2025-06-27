@@ -1,24 +1,12 @@
-// import {
-//   Box,
-//   Text,
-//   Heading,
-//   Switch,
-//   ChevronLeftIcon,
-//   Link as LinkComponent,
-//   Card,
-//   CardBody,
-//   EditIcon,
-//   IconButton,
-//   useTheme,
-// } from "@razorpay/blade/components";
+import { Link } from 'react-router-dom';
 import { Box } from '../../../../../components/Box';
 import { Heading, Text } from '../../../../../components/Typography';
 import { Switch } from '../../../../../components/Switch';
 import { ChevronLeftIcon, EditIcon } from '../../../../../components/Icons';
 import { Link as LinkComponent } from '../../../../../components/Link';
+import { IconButton } from '../../../../../components/Button/IconButton';
 import { Card, CardBody } from '../../../../../components/Card';
 import { useTheme, useBreakpoint } from '../../../../../utils';
-import { Link } from 'react-router-dom';
 
 const SubSectionCard = ({
   title,
@@ -148,6 +136,7 @@ const User = (): React.ReactElement => {
                     icon={EditIcon}
                     size="medium"
                     accessibilityLabel="Edit"
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     onClick={() => {}}
                   />
                 </Box>
@@ -166,6 +155,7 @@ const User = (): React.ReactElement => {
                     icon={EditIcon}
                     size="medium"
                     accessibilityLabel="Edit"
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     onClick={() => {}}
                   />
                 </Box>
@@ -184,6 +174,7 @@ const User = (): React.ReactElement => {
                     icon={EditIcon}
                     size="medium"
                     accessibilityLabel="Edit"
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     onClick={() => {}}
                   />
                 </Box>

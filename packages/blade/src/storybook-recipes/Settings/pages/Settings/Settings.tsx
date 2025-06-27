@@ -125,7 +125,7 @@ const SettingsData = [
   },
 ];
 
-const Settings = () => {
+const Settings = (): React.ReactElement => {
   return (
     <Box
       paddingX="spacing.7"

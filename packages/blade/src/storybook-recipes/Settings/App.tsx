@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Box } from '../../components/Box';
 import TopNavigation from './Components/TopNav';
 import SideNavigation from './Components/SideNav';
@@ -38,17 +38,8 @@ const App = () => {
             >
               <Switch>
                 <Route path="/user-settings" component={UserSettings} />
-                <Route path="/settings" component={Settings} />
-                <Route exact path="/">
-                  <Redirect to="/settings" />
-                </Route>
+                <Route path="/" component={Settings} />
               </Switch>
-              {/* <Routes>
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/settings/user" element={<UserSettings />} />
-                <Route path="/" element={<Navigate to="/settings" replace />} />
-              </Routes> */}
-              {/* {renderContent()} */}
             </Box>
           </Box>
         </Box>

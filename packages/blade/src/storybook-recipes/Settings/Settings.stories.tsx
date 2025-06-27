@@ -1,8 +1,7 @@
 import type { Meta } from '@storybook/react';
 import storyRouterDecorator from 'storybook-react-router';
-import { RecipeSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
-import parameters from '~utils/storybook/recipeParameters';
 import App from './App';
+import parameters from '~utils/storybook/recipeParameters';
 
 export function SimpleForm(): JSX.Element {
   return <App />;
