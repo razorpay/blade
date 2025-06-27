@@ -1,37 +1,12 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Box } from '../../components/Box';
 import TopNavigation from './Components/TopNav';
 import SideNavigation from './Components/SideNav';
 import { Settings, UserSettings } from './pages';
 
-export interface NavigationContextType {
-  currentPath: string;
-  navigate: (path: string) => void;
-}
-
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const App = () => {
-  const [currentPath, setCurrentPath] = React.useState('/settings');
-
-  const renderContent = (): React.ReactNode => {
-    switch (currentPath) {
-      case '/settings':
-        return <Settings />;
-      case '/settings/user':
-        return <UserSettings />;
-      default:
-        setCurrentPath('/settings');
-        return <Settings />;
-    }
-  };
-
-  // Make this context available to child components
-  const navigationContext = {
-    currentPath,
-    navigate: (path: string) => setCurrentPath(path),
-  };
-
   return (
     <BrowserRouter>
       <Box
@@ -40,13 +15,14 @@ const App = () => {
         flexDirection="column"
         overflowX="hidden"
         overflowY="hidden"
+        margin="-2em"
       >
         <Box>
-          <TopNavigation navigationContext={navigationContext} />
+          <TopNavigation />
         </Box>
         <Box flex="1" display="flex" position="relative">
           <Box position="fixed" top="56px" left="spacing.0" bottom="spacing.0" zIndex="1">
-            <SideNavigation navigationContext={navigationContext} />
+            <SideNavigation />
           </Box>
           <Box
             marginLeft={{ base: 'spacing.0', m: '240px', xl: '264px' }}
@@ -60,7 +36,19 @@ const App = () => {
               overflowX="hidden"
               backgroundColor="surface.background.gray.moderate"
             >
-              {renderContent()}
+              <Switch>
+                <Route path="/user-settings" component={UserSettings} />
+                <Route path="/settings" component={Settings} />
+                <Route exact path="/">
+                  <Redirect to="/settings" />
+                </Route>
+              </Switch>
+              {/* <Routes>
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/settings/user" element={<UserSettings />} />
+                <Route path="/" element={<Navigate to="/settings" replace />} />
+              </Routes> */}
+              {/* {renderContent()} */}
             </Box>
           </Box>
         </Box>

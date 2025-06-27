@@ -1,34 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// import {
-//   SideNav,
-//   SideNavBody,
-//   SideNavFooter,
-//   SideNavLink,
-//   SideNavLevel,
-//   SideNavSection,
-//   SideNavItem,
-//   Box,
-//   Card,
-//   CardBody,
-//   Text,
-//   ProgressBar,
-//   Indicator,
-//   Switch,
-//   Button,
-//   Tooltip,
-//   HomeIcon,
-//   SettingsIcon,
-//   UserIcon,
-//   CreditCardIcon,
-//   BillIcon,
-//   WalletIcon,
-//   MenuIcon,
-//   PlusIcon,
-//   BankIcon,
-//   ChevronRightIcon,
-//   ArrowUpRightIcon,
-// } from '../../../components/Icons';
 import {
   SideNav,
   SideNavBody,
@@ -108,14 +79,14 @@ const ActivationCard = () => {
 };
 
 // Navigation link with proper active state handling
-const NavLink = (props: NavLinkProps) => {
+const NavLink = (props: NavLinkProps): React.ReactElement => {
   const location = useLocation();
 
   // Helper function to check if a link is active
   const isItemActive = (
     pathname: string,
     { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] },
-  ) => {
+  ): boolean => {
     if (!href) return false;
 
     const isCurrentPathActive = pathname.startsWith(href);
@@ -137,13 +108,13 @@ const NavLink = (props: NavLinkProps) => {
 };
 
 // Main SideNav component with all features
-const SideNavigation = () => {
+const SideNavigation = (): React.ReactElement => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isTestModeActive, setIsTestModeActive] = useState(false);
   const location = useLocation();
 
   // Helper to get all child hrefs for managing active states
-  const getAllChildHrefs = (items?: NavLinkProps[]) => {
+  const getAllChildHrefs = (items?: NavLinkProps[]): string[] => {
     if (!items) return [];
 
     const hrefs: string[] = [];

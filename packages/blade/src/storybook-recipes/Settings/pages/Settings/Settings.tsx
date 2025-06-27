@@ -14,23 +14,23 @@ const SettingsData = [
     links: [
       {
         label: 'Email & password',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Phone number',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Two factor authentication',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Notifications',
-        link: '/settings/user',
+        link: '/user-settings',
       },
     ],
     assetImage: UserProfileIcon,
-    path: '/settings/user',
+    path: '/user-settings',
   },
   {
     title: 'Business profile',
@@ -38,11 +38,11 @@ const SettingsData = [
     links: [
       {
         label: 'Business details & GST',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Branding & checkout',
-        link: '/settings/user',
+        link: '/user-settings',
       },
     ],
     assetImage: BusinessProfileIcon,
@@ -53,15 +53,15 @@ const SettingsData = [
     links: [
       {
         label: 'API keys',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Webhooks',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Plugins',
-        link: '/settings/user',
+        link: '/user-settings',
       },
     ],
     assetImage: IntegrationsIcon,
@@ -72,15 +72,15 @@ const SettingsData = [
     links: [
       {
         label: 'Payment methods',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Payment preferences',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Payment routing',
-        link: '/settings/user',
+        link: '/user-settings',
       },
     ],
     assetImage: PaymentsIcon,
@@ -91,15 +91,15 @@ const SettingsData = [
     links: [
       {
         label: 'Bank account',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Settlement cycle',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Balance & credit',
-        link: '/settings/user',
+        link: '/user-settings',
       },
     ],
     assetImage: BankAccountIcon,
@@ -110,15 +110,15 @@ const SettingsData = [
     links: [
       {
         label: 'Team members',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Roles & permissions',
-        link: '/settings/user',
+        link: '/user-settings',
       },
       {
         label: 'Activity logs',
-        link: '/settings/user',
+        link: '/user-settings',
       },
     ],
     assetImage: TeamManagementIcon,
