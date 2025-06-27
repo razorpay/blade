@@ -5,7 +5,7 @@ import IntegrationsIcon from '../../assets/png/integrations.png';
 import PaymentsIcon from '../../assets/png/payments.png';
 import BankAccountIcon from '../../assets/png/bank.png';
 import TeamManagementIcon from '../../assets/png/team.png';
-import { SettingCard } from './components/SettingsCard/SettingCard.web';
+import SettingCard from './components/SettingsCard/SettingCard.web';
 
 const SettingsData = [
   {
