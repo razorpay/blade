@@ -13,11 +13,11 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-const listView = require('../assets/list-view.webp');
-const noData = require('../assets/no-data.webp');
-const error = require('../assets/error.webp');
-const noNotification = require('../assets/no-notification.webp');
-const accessDenied = require('../assets/access-denied.webp');
+const listView = require('../assets/list-view.png');
+const noData = require('../assets/no-data.png');
+const error = require('../assets/error.png');
+const noNotification = require('../assets/no-notification.png');
+const accessDenied = require('../assets/access-denied.png');
 /* eslint-enable @typescript-eslint/no-var-requires */
 
 const getEmptyStateArgTypes = (): Record<string, unknown> => ({
