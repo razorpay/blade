@@ -10,7 +10,9 @@
     "**/**.stories.internal.tsx",
     "**/**.web.ts",
     "**/**.web.tsx",
-    "**/ThemePlayground/**/**.tsx"
+    "**/ThemePlayground/**/**.tsx",
+    // Excluding settings template for now. since it a web only recipe
+    "**/storybook-recipes/Settings/**/**.tsx"
   ],
   "compilerOptions": {
     "declarationDir": "build/generated-types/native",

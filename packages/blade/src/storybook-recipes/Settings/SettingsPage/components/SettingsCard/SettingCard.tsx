@@ -1,9 +1,9 @@
 import { Link as LinkComponent } from 'react-router-dom';
-import { Box } from '../../../../../../components/Box';
-import { Heading, Text } from '../../../../../../components/Typography';
-import { Link } from '../../../../../../components/Link';
-import { Card, CardBody } from '../../../../../../components/Card';
-import { Scale } from '../../../../../../components/Scale';
+import { Box } from '../../../../../components/Box';
+import { Heading, Text } from '../../../../../components/Typography';
+import { Link } from '../../../../../components/Link';
+import { Card, CardBody } from '../../../../../components/Card';
+import { Scale } from '../../../../../components/Scale';
 
 interface SettingLink {
   label: string;

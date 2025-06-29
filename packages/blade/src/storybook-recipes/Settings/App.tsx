@@ -3,10 +3,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Box } from '../../components/Box';
 import TopNavigation from './Components/TopNav';
 import SideNavigation from './Components/SideNav';
-import { Settings, UserSettings } from './pages';
+import { Settings } from './SettingsPage';
+import { UserSettings } from './UserSettingPage';
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const App = () => {
+const App = (): React.ReactElement => {
   return (
     <BrowserRouter>
       <Box

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Box } from '../../../../../components/Box';
-import { Heading, Text } from '../../../../../components/Typography';
-import { Switch } from '../../../../../components/Switch';
-import { ChevronLeftIcon, EditIcon } from '../../../../../components/Icons';
-import { Link as LinkComponent } from '../../../../../components/Link';
-import { IconButton } from '../../../../../components/Button/IconButton';
-import { Card, CardBody } from '../../../../../components/Card';
-import { useTheme, useBreakpoint } from '../../../../../utils';
+import { Box } from '../../../components/Box';
+import { Heading, Text } from '../../../components/Typography';
+import { Switch } from '../../../components/Switch';
+import { ChevronLeftIcon, EditIcon } from '../../../components/Icons';
+import { Link as LinkComponent } from '../../../components/Link';
+import { IconButton } from '../../../components/Button/IconButton';
+import { Card, CardBody } from '../../../components/Card';
+import { useTheme, useBreakpoint } from '../../../utils';
 
 const SubSectionCard = ({
   title,
