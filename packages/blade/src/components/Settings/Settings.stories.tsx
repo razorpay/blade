@@ -799,6 +799,7 @@ const Settings = (): React.ReactElement => {
         }}
         gap="spacing.7"
         width="100%"
+        marginBottom="spacing.4"
       >
         {SettingsData.map((setting, index) => (
           <SettingCard key={index} {...setting} />
