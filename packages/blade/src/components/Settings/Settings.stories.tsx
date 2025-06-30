@@ -4,7 +4,7 @@ import storyRouterDecorator from 'storybook-react-router';
 
 import {
   BrowserRouter,
-  Switch,
+  Switch as ReactRouterDomSwitch,
   Route,
   Link as ReactRouterDomLink,
   useLocation,
@@ -57,6 +57,7 @@ import { Text, Heading } from '../Typography';
 import { Badge } from '../Badge';
 import { Tooltip } from '../Tooltip';
 import { Scale } from '../Scale';
+import { Switch } from '../Switch';
 
 import {
   TopNav,
@@ -1081,10 +1082,10 @@ const App = (): React.ReactElement => {
               overflowX="hidden"
               backgroundColor="surface.background.gray.moderate"
             >
-              <Switch>
+              <ReactRouterDomSwitch>
                 <Route path="/user-settings" component={User} />
                 <Route path="/" component={Settings} />
-              </Switch>
+              </ReactRouterDomSwitch>
             </Box>
           </Box>
         </Box>
@@ -1093,13 +1094,13 @@ const App = (): React.ReactElement => {
   );
 };
 
-export function SimpleForm(): JSX.Element {
+export function SimpleSettingsPage(): JSX.Element {
   return <App />;
 }
 
 export default {
   title: 'Patterns/Settings',
-  component: SimpleForm,
+  component: SimpleSettingsPage,
   parameters,
   decorators: [storyRouterDecorator(undefined, { initialEntries: ['/settings'] })] as unknown,
 } as Meta;
