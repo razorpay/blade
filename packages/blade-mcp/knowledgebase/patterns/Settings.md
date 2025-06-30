@@ -1,10 +1,13 @@
 ## Pattern Name
+
 Settings
 
 ## Description
+
 The Settings pattern provides a comprehensive solution for building settings interfaces in applications. It combines navigation (SideNav and TopNav) with content areas to create a cohesive settings experience. The pattern supports both overview pages with categorized settings cards and detailed settings pages, making it ideal for applications that need to manage multiple configuration areas while maintaining a consistent and accessible user experience.
 
 ## Components Used
+
 - Box
 - SideNav
 - TopNav
@@ -27,7 +30,20 @@ The Settings pattern provides a comprehensive solution for building settings int
 ## Example
 
 ### Complete Settings Interface
+
 This example demonstrates a full settings interface with navigation, overview page, and a detailed settings page. It includes responsive layouts, navigation patterns, and proper accessibility implementation.
+
+#### Things while building this pattern
+- We need to use the `Scale` component to animate the card when hovered.
+- We need to use the `Card` component to create the card.
+- We need to use the `Text` component to create the text.
+- We need to use the `Heading` component to create the heading.
+- We need to use the `IconButton` component to create the icon button.
+- We need to use the `Switch` component to create the switch.
+- Take following code as reference and build the settings interface. also make sure to use the `useTheme` and `useBreakpoint` hooks to make the interface responsive. 
+- Try to keep spacing consistent across the interface.
+- We don't have any title on Settings page, just display the settings data using cards.
+- Make sure the styling of the cards are consistent across the interface.
 
 ```tsx
 import React, { useState } from 'react';
@@ -124,16 +140,21 @@ const SettingCard = ({
                 </Box>
               </Box>
             </Box>
-            <Box
-              position="absolute"
-              right="-100px"
-              bottom="-70px"
-              width="249px"
-              height="249px"
-              borderRadius="50%"
+            <div
               style={{
+                position: 'absolute',
+                right: '-100px',
+                bottom: '-70px',
+                width: '249px',
+                height: '249px',
+                borderRadius: '50%',
                 background:
                   'radial-gradient(circle at center, hsla(206, 93%, 95%, 0.9) 0%, hsla(206, 93%, 95%, 0.8) 20%, hsla(209, 95%, 97%, 0.6) 40%, hsla(209, 95%, 97%, 0.4) 60%, hsla(0, 0%, 100%, 0.2) 80%, hsla(0, 0%, 100%, 0) 100%)',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                paddingTop: '40px',
+                overflow: 'hidden',
               }}
             >
               <img
@@ -144,9 +165,10 @@ const SettingCard = ({
                   height: '138px',
                   objectFit: 'contain',
                   transform: 'translateX(-30%)',
+                  marginBottom: '12px',
                 }}
               />
-            </Box>
+            </div>
           </Box>
         </CardBody>
       </Card>
@@ -354,4 +376,5 @@ const SettingsLayout = (): React.ReactElement => {
   );
 };
 
-export default SettingsLayout; 
+export default SettingsLayout;
+```

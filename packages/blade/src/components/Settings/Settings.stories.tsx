@@ -507,10 +507,13 @@ const TopNavigation = (): React.ReactElement => {
           </TabNav>
         </TopNavContent>
         <TopNavActions>
-          <SearchInput
-            placeholder="Search in payments"
-            accessibilityLabel="Search Across Razorpay"
-          />
+          <Box width="200px">
+            <SearchInput
+              placeholder="Search in payments"
+              accessibilityLabel="Search Across Razorpay"
+              showSearchIcon={false}
+            />
+          </Box>
           <Tooltip content="View Ecosystem Health">
             <Button size="medium" variant="tertiary" icon={ActivityIcon} />
           </Tooltip>
