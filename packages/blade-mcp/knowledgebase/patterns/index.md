@@ -15,3 +15,7 @@ FormGroup is a pattern that provides a consistent way to build forms using Blade
 ## ListView
 
 ListView is a pattern that has tables with filters, search, pagination, etc. It uses table component to show the list of items and uses QuickFilter and other ListView components for filtering over the table.
+
+## Settings
+
+Settings is a pattern that provides a structured way to organize and display application configuration options and user preferences. Use this pattern when you need to create a settings interface with multiple categories, each containing related configuration options, with support for both overview and detailed settings pages.
