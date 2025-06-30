@@ -11,6 +11,9 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Link } from '~components/Link';
+import { InfoIcon } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -289,6 +292,21 @@ export const KitchenSink = (): React.ReactElement => {
       </BaseBox>
     </>
   );
+};
+
+export const RadioGroupWithLabelSuffixTrailing = RadioTemplate.bind({});
+RadioGroupWithLabelSuffixTrailing.storyName = 'RadioGroup with Label Suffix & Trailing';
+RadioGroupWithLabelSuffixTrailing.args = {
+  label: 'Select your fruit',
+  labelPosition: 'top',
+  labelSuffix: (
+    <Tooltip content="Select your fruit" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
 };
 
 export const radioRef: StoryFn<typeof RadioComponent> = () => {

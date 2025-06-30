@@ -39,10 +39,37 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -58,7 +85,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   gap: 0px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,593 +104,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   min-height: 36px;
 }
 
-.c14.c14.c14.c14.c14 {
-  margin-top: -4px;
-  width: 100%;
-  min-width: min(20%,60px);
-}
-
-.c16.c16.c16.c16.c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-}
-
-.c17.c17.c17.c17.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  padding-right: 12px;
-}
-
-.c18.c18.c18.c18.c18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.c21.c21.c21.c21.c21 {
-  margin-left: 0px;
-}
-
-.c22.c22.c22.c22.c22 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(211,22%,56%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
-.c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c19.c19.c19.c19.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c20.c20.c20.c20.c20 {
-  display: none;
-}
-
 .c15.c15.c15.c15.c15 {
-  color: hsla(211,26%,34%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background-color: hsla(0,0%,100%,0);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 0px;
-  padding-right: 8px;
-  width: 100%;
-  height: 36px;
-  min-height: 36px;
-  resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c15.c15.c15.c15.c15::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15::placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15:focus {
-  outline: none;
-}
-
-.c10.c10.c10.c10.c10 {
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10:focus-within {
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11 {
-  -webkit-animation: none;
-  animation: none;
-  max-height: 36px;
-}
-
-.c13.c13.c13.c13.c13 {
-  -ms-overflow-style: none;
-  -webkit-scrollbar-width: none;
-  -moz-scrollbar-width: none;
-  -ms-scrollbar-width: none;
-  scrollbar-width: none;
-}
-
-.c13.c13.c13.c13.c13::-webkit-scrollbar {
-  display: none;
-}
-
-.c7.c7.c7.c7.c7 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c9.c9.c9.c9.c9 {
-  border-radius: 4px;
-  width: 100%;
-}
-
-.c9.c9.c9.c9.c9:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
-}
-
-<div>
-  <div
-    class=""
-    data-blade-component="dropdown"
-  >
-    <div
-      class="c0"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c1"
-        data-blade-component="base-box"
-      >
-        <div
-          class=""
-          data-blade-component="autocomplete"
-        >
-          <div
-            class="c2"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c3"
-              data-blade-component="base-box"
-            >
-              <label
-                data-blade-component="form-label"
-                for="dropdown-123"
-                id="dropdown-123-label"
-                style="width: auto; flex-shrink: 0; margin-right: 0px;"
-              >
-                <div
-                  class="c4"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c5"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c6"
-                      data-blade-component="text"
-                    >
-                      Fruits
-                    </p>
-                    <div
-                      class="c7"
-                      data-blade-component="visually-hidden"
-                    >
-                      <p
-                        class="c8"
-                        data-blade-component="text"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </label>
-            </div>
-            <div
-              class=" c9 focus-ring-wrapper"
-              data-blade-component="base-box"
-            >
-              <div
-                class=" c10 c11 __blade-base-input-wrapper"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c12 c13 tags-slot"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c14"
-                    data-blade-component="base-box"
-                  >
-                    <input
-                      aria-controls="dropdown-123-actionlist"
-                      aria-describedby=""
-                      aria-disabled="false"
-                      aria-expanded="false"
-                      aria-haspopup="listbox"
-                      aria-invalid="false"
-                      aria-required="false"
-                      autocomplete="off"
-                      class="c15"
-                      data-analytics-name="dropdown-fruits"
-                      data-blade-component="styled-base-input"
-                      id="dropdown-123"
-                      placeholder="Select Option"
-                      role="combobox"
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-                <div
-                  class="c16"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c16"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c17"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c18"
-                        data-blade-component="base-box"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="c19"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="16px"
-                          viewBox="0 0 24 24"
-                          width="16px"
-                        >
-                          <path
-                            clip-rule="evenodd"
-                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                            data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
-                            fill-rule="evenodd"
-                          />
-                        </svg>
-                        <svg
-                          aria-hidden="true"
-                          class="c20"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="16px"
-                          viewBox="0 0 24 24"
-                          width="16px"
-                        >
-                          <path
-                            clip-rule="evenodd"
-                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                            data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
-                            fill-rule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="c21"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c22"
-              data-blade-component="base-box"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render BottomSheet and make it visible on click 1`] = `
-.c0.c0.c0.c0.c0 {
-  text-align: left;
-  position: relative;
-}
-
-.c1.c1.c1.c1.c1 {
-  position: relative;
-}
-
-.c3.c3.c3.c3.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-}
-
-.c4.c4.c4.c4.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-
-.c5.c5.c5.c5.c5 {
-  margin-bottom: 4px;
-}
-
-.c6.c6.c6.c6.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
@@ -735,303 +176,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   justify-content: flex-end;
 }
 
-.c27.c27.c27.c27.c27 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 100%;
-}
-
-.c29.c29.c29.c29.c29 {
-  overflow: auto;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c30.c30.c30.c30.c30 {
-  padding-right: 16px;
-  padding-left: 16px;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  touch-action: none;
-}
-
-.c31.c31.c31.c31.c31 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c32.c32.c32.c32.c32 {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-}
-
-.c34.c34.c34.c34.c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c35.c35.c35.c35.c35 {
-  width: 100%;
-}
-
-.c39.c39.c39.c39.c39 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c41.c41.c41.c41.c41 {
-  overflow: auto;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
-}
-
-.c45.c45.c45.c45.c45 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.c46.c46.c46.c46.c46 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 20px;
-}
-
-.c47.c47.c47.c47.c47 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding-right: 8px;
-  padding-left: 0px;
-}
-
-.c48.c48.c48.c48.c48 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 20px;
-}
-
-.c50.c50.c50.c50.c50 {
-  margin-left: auto;
-}
-
-.c51.c51.c51.c51.c51 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  z-index: 2;
-  margin-top: auto;
-  width: 100%;
-  background-color: hsla(0,0%,100%,1);
-  touch-action: none;
-}
-
-.c52.c52.c52.c52.c52 {
-  padding: 16px;
-}
-
-.c55.c55.c55.c55.c55 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.c12.c12.c12.c12.c12 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: auto;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 12px;
-  min-height: 36px;
-}
-
-.c42.c42.c42.c42.c42 {
-  overflow: auto;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-right: 8px;
-  padding-left: 8px;
-}
-
-.c24.c24.c24.c24.c24 {
-  position: fixed;
-  z-index: 100;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  background-color: hsla(0,0%,0%,0.56);
-  opacity: 1;
-}
-
-.c53.c53.c53.c53.c53 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c53.c53.c53.c53.c53:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c53.c53.c53.c53.c53:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c53.c53.c53.c53.c53:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c53.c53.c53.c53.c53 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c54.c54.c54.c54.c54 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
-}
-
 .c7.c7.c7.c7.c7 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -1055,7 +199,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   overflow-wrap: break-word;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1070,258 +214,20 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c16.c16.c16.c16.c16 {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
-.c49.c49.c49.c49.c49 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-  word-break: break-all;
-}
-
-.c57.c57.c57.c57.c57 {
-  color: hsla(0,0%,100%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c21.c21.c21.c21.c21 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c20.c20.c20.c20.c20 {
-  display: none;
-}
-
-.c56.c56.c56.c56.c56 {
-  opacity: 1;
-}
-
-.c33.c33.c33.c33.c33 {
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: hsla(211,22%,56%,1);
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c33.c33.c33.c33.c33:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
-  background-color: transparent;
+.c21.c21.c21.c21.c21 {
+  display: none;
 }
 
-.c33.c33.c33.c33.c33:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
-  color: hsla(211,26%,34%,1);
-}
-
-.c33.c33.c33.c33.c33:active {
-  color: hsla(211,26%,34%,1);
-}
-
-.c40.c40.c40.c40.c40 {
-  border-width: 0;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-.c38.c38.c38.c38.c38 {
-  color: hsla(211,26%,34%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background-color: hsla(0,0%,100%,0);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 0px;
-  padding-right: 12px;
-  width: 100%;
-  height: 36px;
-  min-height: 36px;
-  resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c38.c38.c38.c38.c38::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c38.c38.c38.c38.c38::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c38.c38.c38.c38.c38:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c38.c38.c38.c38.c38::placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c38.c38.c38.c38.c38:focus {
-  outline: none;
-}
-
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1354,7 +260,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   cursor: auto;
 }
 
-.c15.c15.c15.c15.c15::-webkit-input-placeholder {
+.c16.c16.c16.c16.c16::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1372,7 +278,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15::-moz-placeholder {
+.c16.c16.c16.c16.c16::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1390,7 +296,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15:-ms-input-placeholder {
+.c16.c16.c16.c16.c16:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1408,7 +314,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15::placeholder {
+.c16.c16.c16.c16.c16::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1426,171 +332,94 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15:focus {
+.c16.c16.c16.c16.c16:focus {
   outline: none;
 }
 
-.c37.c37.c37.c37.c37 {
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c37.c37.c37.c37.c37:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c37.c37.c37.c37.c37:focus-within {
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10 {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
-}
-
-.c10.c10.c10.c10.c10:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10:focus-within {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
-}
-
 .c11.c11.c11.c11.c11 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c12.c12.c12.c12.c12 {
   -webkit-animation: none;
   animation: none;
   max-height: 36px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -1598,11 +427,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   scrollbar-width: none;
 }
 
-.c13.c13.c13.c13.c13::-webkit-scrollbar {
+.c14.c14.c14.c14.c14::-webkit-scrollbar {
   display: none;
 }
 
-.c2.c2.c2.c2.c2 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1619,12 +448,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   word-wrap: normal;
 }
 
-.c36.c36.c36.c36.c36 {
+.c10.c10.c10.c10.c10 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c36.c36.c36.c36.c36:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1634,212 +463,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-}
-
-.c9.c9.c9.c9.c9 {
-  border-radius: 4px;
-  width: 100%;
-}
-
-.c9.c9.c9.c9.c9:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-  z-index: 2;
-}
-
-.c43.c43.c43.c43.c43 {
-  overflow-y: auto;
-}
-
-.c43.c43.c43.c43.c43 [role=group]:last-child > [role=separator]:last-child {
-  display: none;
-}
-
-.c44.c44.c44.c44.c44 {
-  border-width: 0px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  text-align: left;
-  background-color: transparent;
-  border-radius: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  cursor: pointer;
-  width: 100%;
-  padding: 4px;
-}
-
-.c44.c44.c44.c44.c44:hover:not([aria-disabled=true]),
-.c44.c44.c44.c44.c44[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
-}
-
-.c44.c44.c44.c44.c44:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
-}
-
-.c44.c44.c44.c44.c44[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c44.c44.c44.c44.c44[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c25.c25.c25.c25.c25 {
-  -webkit-transition-duration: 280ms;
-  transition-duration: 280ms;
-  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
-  transition-timing-function: cubic-bezier(0,0,0.2,1);
-  pointer-events: all;
-  -webkit-transition-property: opacity;
-  transition-property: opacity;
-}
-
-.c28.c28.c28.c28.c28 {
-  position: relative;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  padding-top: 12px;
-  margin-bottom: 4px;
-  touch-action: none;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 100;
-}
-
-.c28.c28.c28.c28.c28:after {
-  margin: auto;
-  content: '';
-  width: 56px;
-  height: 4px;
-  background-color: hsla(211,20%,52%,0.06);
-  border-radius: 16px;
-}
-
-.c26.c26.c26.c26.c26 {
-  background: hsla(0,0%,100%,1);
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border-color: hsla(211,20%,52%,0.18);
-  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
-  opacity: 0;
-  pointer-events: none;
-  -webkit-transition-duration: 280ms;
-  transition-duration: 280ms;
-  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
-  transition-timing-function: cubic-bezier(.15,0,.24,.97);
-  will-change: transform,opacity,height;
-  -webkit-transition-property: -webkit-transform,opacity,height;
-  -webkit-transition-property: transform,opacity,height;
-  transition-property: transform,opacity,height;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 768px;
-  background-color: hsla(0,0%,100%,1);
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  touch-action: none;
-  overflow: hidden;
-}
-
-@media screen and (min-width:768px) {
-  .c30.c30.c30.c30.c30 {
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-}
-
-@media screen and (min-width:320px) {
-  .c39.c39.c39.c39.c39 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c39.c39.c39.c39.c39 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c39.c39.c39.c39.c39 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c39.c39.c39.c39.c39 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c39.c39.c39.c39.c39 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c52.c52.c52.c52.c52 {
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c44.c44.c44.c44.c44 {
-    padding: 8px;
-  }
-}
-
-@media screen and (min-width:768px) {
-
 }
 
 <div>
@@ -1856,102 +479,94 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
         data-blade-component="base-box"
       >
         <div
-          class="c2"
-          data-blade-component="visually-hidden"
-        >
-          <input
-            aria-hidden="true"
-            tabindex="-1"
-            value=""
-          />
-        </div>
-        <div
           class=""
-          data-blade-component="select-input"
-          data-testid="select"
+          data-blade-component="autocomplete"
         >
           <div
-            class="c3"
+            class="c2"
             data-blade-component="base-box"
           >
             <div
-              class="c4"
+              class="c3"
               data-blade-component="base-box"
             >
               <label
                 data-blade-component="form-label"
                 for="dropdown-123"
                 id="dropdown-123-label"
-                style="width: auto; flex-shrink: 0; margin-right: 0px;"
+                style="width: 100%; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
-                  class="c5"
+                  class="c4"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c6"
+                    class="c5"
                     data-blade-component="base-box"
                   >
-                    <p
-                      class="c7"
-                      data-blade-component="text"
-                    >
-                      Fruits
-                    </p>
                     <div
-                      class="c2"
-                      data-blade-component="visually-hidden"
+                      class=""
+                      data-blade-component="base-box"
                     >
-                      <p
-                        class="c8"
-                        data-blade-component="text"
-                      />
+                      <div
+                        class="c6"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c7"
+                          data-blade-component="text"
+                        >
+                          Fruits
+                        </p>
+                        <div
+                          class="c8"
+                          data-blade-component="visually-hidden"
+                        >
+                          <p
+                            class="c9"
+                            data-blade-component="text"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class=" c10 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class=" c11 c12 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 tags-slot"
+                  class="c13 c14 tags-slot"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c14"
+                    class="c15"
                     data-blade-component="base-box"
                   >
-                    <button
-                      aria-activedescendant="dropdown-123-0"
+                    <input
                       aria-controls="dropdown-123-actionlist"
                       aria-describedby=""
                       aria-disabled="false"
-                      aria-expanded="true"
+                      aria-expanded="false"
                       aria-haspopup="listbox"
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c15"
+                      class="c16"
+                      data-analytics-name="dropdown-fruits"
                       data-blade-component="styled-base-input"
                       id="dropdown-123"
                       placeholder="Select Option"
                       role="combobox"
-                      type="button"
+                      type="text"
                       value=""
-                    >
-                      <p
-                        class="c16"
-                        data-blade-component="text"
-                      >
-                        Select Option
-                      </p>
-                    </button>
+                    />
                   </div>
                 </div>
                 <div
@@ -2022,30 +637,1489 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render BottomSheet and make it visible on click 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 {
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c15.c15.c15.c15.c15 {
+  margin-top: -4px;
+  width: 100%;
+  min-width: min(20%,60px);
+}
+
+.c18.c18.c18.c18.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c19.c19.c19.c19.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c20.c20.c20.c20.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c23.c23.c23.c23.c23 {
+  margin-left: 0px;
+}
+
+.c24.c24.c24.c24.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c28.c28.c28.c28.c28 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.c30.c30.c30.c30.c30 {
+  overflow: auto;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c31.c31.c31.c31.c31 {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  touch-action: none;
+}
+
+.c32.c32.c32.c32.c32 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c33.c33.c33.c33.c33 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.c35.c35.c35.c35.c35 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c36.c36.c36.c36.c36 {
+  width: 100%;
+}
+
+.c40.c40.c40.c40.c40 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c42.c42.c42.c42.c42 {
+  overflow: auto;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c46.c46.c46.c46.c46 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.c47.c47.c47.c47.c47 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 20px;
+}
+
+.c48.c48.c48.c48.c48 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-right: 8px;
+  padding-left: 0px;
+}
+
+.c49.c49.c49.c49.c49 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 20px;
+}
+
+.c51.c51.c51.c51.c51 {
+  margin-left: auto;
+}
+
+.c52.c52.c52.c52.c52 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  z-index: 2;
+  margin-top: auto;
+  width: 100%;
+  background-color: hsla(0,0%,100%,1);
+  touch-action: none;
+}
+
+.c53.c53.c53.c53.c53 {
+  padding: 16px;
+}
+
+.c56.c56.c56.c56.c56 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c13.c13.c13.c13.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c43.c43.c43.c43.c43 {
+  overflow: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c25.c25.c25.c25.c25 {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsla(0,0%,0%,0.56);
+  opacity: 1;
+}
+
+.c54.c54.c54.c54.c54 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c54.c54.c54.c54.c54:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c54.c54.c54.c54.c54:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c54.c54.c54.c54.c54:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c54.c54.c54.c54.c54 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c55.c55.c55.c55.c55 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c17.c17.c17.c17.c17 {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c50.c50.c50.c50.c50 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.c58.c58.c58.c58.c58 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c21.c21.c21.c21.c21 {
+  display: none;
+}
+
+.c57.c57.c57.c57.c57 {
+  opacity: 1;
+}
+
+.c34.c34.c34.c34.c34 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(211,22%,56%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c34.c34.c34.c34.c34:hover:not([disabled]) {
+  color: hsla(211,26%,34%,1);
+  background-color: transparent;
+}
+
+.c34.c34.c34.c34.c34:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  color: hsla(211,26%,34%,1);
+}
+
+.c34.c34.c34.c34.c34:active {
+  color: hsla(211,26%,34%,1);
+}
+
+.c41.c41.c41.c41.c41 {
+  border-width: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c39.c39.c39.c39.c39 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 12px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c39.c39.c39.c39.c39::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c39.c39.c39.c39.c39::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c39.c39.c39.c39.c39:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c39.c39.c39.c39.c39::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c39.c39.c39.c39.c39:focus {
+  outline: none;
+}
+
+.c16.c16.c16.c16.c16 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c16.c16.c16.c16.c16::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16:focus {
+  outline: none;
+}
+
+.c38.c38.c38.c38.c38 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c38.c38.c38.c38.c38:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c38.c38.c38.c38.c38:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11 {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c11.c11.c11.c11.c11:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11:focus-within {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c12.c12.c12.c12.c12 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 36px;
+}
+
+.c14.c14.c14.c14.c14 {
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+}
+
+.c14.c14.c14.c14.c14::-webkit-scrollbar {
+  display: none;
+}
+
+.c2.c2.c2.c2.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c37.c37.c37.c37.c37 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c37.c37.c37.c37.c37:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c10.c10.c10.c10.c10 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+  z-index: 2;
+}
+
+.c44.c44.c44.c44.c44 {
+  overflow-y: auto;
+}
+
+.c44.c44.c44.c44.c44 [role=group]:last-child > [role=separator]:last-child {
+  display: none;
+}
+
+.c45.c45.c45.c45.c45 {
+  border-width: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: left;
+  background-color: transparent;
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 4px;
+}
+
+.c45.c45.c45.c45.c45:hover:not([aria-disabled=true]),
+.c45.c45.c45.c45.c45[aria-expanded="true"] {
+  background-color: hsla(211,20%,52%,0.12);
+}
+
+.c45.c45.c45.c45.c45:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c45.c45.c45.c45.c45[aria-selected=true] {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c45.c45.c45.c45.c45[aria-selected=true]:hover {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c26.c26.c26.c26.c26 {
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
+  pointer-events: all;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.c29.c29.c29.c29.c29 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  touch-action: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.c29.c29.c29.c29.c29:after {
+  margin: auto;
+  content: '';
+  width: 56px;
+  height: 4px;
+  background-color: hsla(211,20%,52%,0.06);
+  border-radius: 16px;
+}
+
+.c27.c27.c27.c27.c27 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(211,20%,52%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 768px;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
+@media screen and (min-width:768px) {
+  .c31.c31.c31.c31.c31 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c40.c40.c40.c40.c40 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c40.c40.c40.c40.c40 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c40.c40.c40.c40.c40 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c40.c40.c40.c40.c40 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c40.c40.c40.c40.c40 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c53.c53.c53.c53.c53 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c45.c45.c45.c45.c45 {
+    padding: 8px;
+  }
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
       <div
-        class="c24 c25"
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c2"
+          data-blade-component="visually-hidden"
+        >
+          <input
+            aria-hidden="true"
+            tabindex="-1"
+            value=""
+          />
+        </div>
+        <div
+          class=""
+          data-blade-component="select-input"
+          data-testid="select"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c4"
+              data-blade-component="base-box"
+            >
+              <label
+                data-blade-component="form-label"
+                for="dropdown-123"
+                id="dropdown-123-label"
+                style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+              >
+                <div
+                  class="c5"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c6"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class=""
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c7"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c8"
+                          data-blade-component="text"
+                        >
+                          Fruits
+                        </p>
+                        <div
+                          class="c2"
+                          data-blade-component="visually-hidden"
+                        >
+                          <p
+                            class="c9"
+                            data-blade-component="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class=" c10 focus-ring-wrapper"
+              data-blade-component="base-box"
+            >
+              <div
+                class=" c11 c12 __blade-base-input-wrapper"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c13 c14 tags-slot"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c15"
+                    data-blade-component="base-box"
+                  >
+                    <button
+                      aria-activedescendant="dropdown-123-0"
+                      aria-controls="dropdown-123-actionlist"
+                      aria-describedby=""
+                      aria-disabled="false"
+                      aria-expanded="true"
+                      aria-haspopup="listbox"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocomplete="off"
+                      class="c16"
+                      data-blade-component="styled-base-input"
+                      id="dropdown-123"
+                      placeholder="Select Option"
+                      role="combobox"
+                      type="button"
+                      value=""
+                    >
+                      <p
+                        class="c17"
+                        data-blade-component="text"
+                      >
+                        Select Option
+                      </p>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="c18"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c18"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c19"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c20"
+                        data-blade-component="base-box"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="c21"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c22"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="c23"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c24"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="c25 c26"
         data-blade-component="base-box"
         data-testid="bottomsheet-backdrop"
         opacity="1"
       />
       <div
         aria-modal="true"
-        class="c26"
+        class="c27"
         data-blade-component="bottom-sheet"
         data-testid="bottomsheet-surface"
         role="dialog"
         style="opacity: 1; pointer-events: all; height: 652.8px; bottom: 0px; z-index: 100;"
       >
         <div
-          class="c27"
+          class="c28"
           data-blade-component="base-box"
         >
           <div
-            class="c28"
+            class="c29"
             data-blade-component="BottomSheetGrabHandle"
           />
           <div
-            class="c29"
+            class="c30"
             data-blade-component="bottom-sheet-header"
           >
             <div
@@ -2053,20 +2127,20 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               data-blade-component="base-box"
             >
               <div
-                class="c30"
+                class="c31"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c31"
+                  class="c32"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c32"
+                    class="c33"
                     data-blade-component="box"
                   >
                     <button
                       aria-label="Close"
-                      class="c33"
+                      class="c34"
                       data-blade-component="icon-button"
                       type="button"
                     >
@@ -2089,11 +2163,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   </div>
                 </div>
                 <div
-                  class="c34"
+                  class="c35"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c35"
+                    class="c36"
                     data-blade-component="box"
                   >
                     <div
@@ -2117,7 +2191,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                               data-blade-component="form-label"
                               for="dropdown-123"
                               id="dropdown-123-label"
-                              style="width: auto; flex-shrink: 0; margin-right: 0px;"
+                              style="width: 100%; flex-shrink: 0; margin-right: 0px;"
                             >
                               <div
                                 class="c5"
@@ -2127,39 +2201,49 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                                   class="c6"
                                   data-blade-component="base-box"
                                 >
-                                  <p
-                                    class="c7"
-                                    data-blade-component="text"
-                                  >
-                                    Fruits
-                                  </p>
                                   <div
-                                    class="c2"
-                                    data-blade-component="visually-hidden"
+                                    class=""
+                                    data-blade-component="base-box"
                                   >
-                                    <p
-                                      class="c8"
-                                      data-blade-component="text"
-                                    />
+                                    <div
+                                      class="c7"
+                                      data-blade-component="base-box"
+                                    >
+                                      <p
+                                        class="c8"
+                                        data-blade-component="text"
+                                      >
+                                        Fruits
+                                      </p>
+                                      <div
+                                        class="c2"
+                                        data-blade-component="visually-hidden"
+                                      >
+                                        <p
+                                          class="c9"
+                                          data-blade-component="text"
+                                        />
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </label>
                           </div>
                           <div
-                            class=" c36 focus-ring-wrapper"
+                            class=" c37 focus-ring-wrapper"
                             data-blade-component="base-box"
                           >
                             <div
-                              class=" c37 c11 __blade-base-input-wrapper"
+                              class=" c38 c12 __blade-base-input-wrapper"
                               data-blade-component="base-box"
                             >
                               <div
-                                class="c12 c13 tags-slot"
+                                class="c13 c14 tags-slot"
                                 data-blade-component="base-box"
                               >
                                 <div
-                                  class="c14"
+                                  class="c15"
                                   data-blade-component="base-box"
                                 >
                                   <input
@@ -2171,7 +2255,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                                     aria-required="false"
                                     autocomplete="off"
                                     autofocus=""
-                                    class="c38"
+                                    class="c39"
                                     data-blade-component="styled-base-input"
                                     id="dropdown-123"
                                     placeholder="Select Option"
@@ -2186,11 +2270,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                           </div>
                         </div>
                         <div
-                          class="c22"
+                          class="c23"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c23"
+                            class="c24"
                             data-blade-component="base-box"
                           />
                         </div>
@@ -2200,29 +2284,29 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 </div>
               </div>
               <div
-                class="c39 c40"
+                class="c40 c41"
                 data-blade-component="divider"
                 role="separator"
               />
             </div>
           </div>
           <div
-            class="c41"
+            class="c42"
             data-blade-component="bottom-sheet-body"
             data-testid="bottomsheet-body"
             style="user-select: auto;"
           >
             <div
-              class="c42"
+              class="c43"
               data-blade-component="base-box"
             >
               <div
-                class=" c43"
+                class=" c44"
                 data-blade-component="base-box"
               >
                 <button
                   aria-selected="false"
-                  class=" c44 active-focus"
+                  class=" c45 active-focus"
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
@@ -2232,23 +2316,23 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c45"
+                    class="c46"
                     data-blade-component="box"
                   >
                     <div
-                      class="c46"
+                      class="c47"
                       data-blade-component="box"
                     />
                     <div
-                      class="c47"
+                      class="c48"
                       data-blade-component="box"
                     >
                       <div
-                        class="c48"
+                        class="c49"
                         data-blade-component="box"
                       >
                         <p
-                          class="c49"
+                          class="c50"
                           data-blade-component="text"
                         >
                           Apple
@@ -2260,14 +2344,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       />
                     </div>
                     <div
-                      class="c50"
+                      class="c51"
                       data-blade-component="box"
                     />
                   </div>
                 </button>
                 <button
                   aria-selected="false"
-                  class=" c44"
+                  class=" c45"
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
@@ -2277,23 +2361,23 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c45"
+                    class="c46"
                     data-blade-component="box"
                   >
                     <div
-                      class="c46"
+                      class="c47"
                       data-blade-component="box"
                     />
                     <div
-                      class="c47"
+                      class="c48"
                       data-blade-component="box"
                     >
                       <div
-                        class="c48"
+                        class="c49"
                         data-blade-component="box"
                       >
                         <p
-                          class="c49"
+                          class="c50"
                           data-blade-component="text"
                         >
                           Mango
@@ -2305,7 +2389,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       />
                     </div>
                     <div
-                      class="c50"
+                      class="c51"
                       data-blade-component="box"
                     />
                   </div>
@@ -2314,16 +2398,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             </div>
           </div>
           <div
-            class="c51"
+            class="c52"
             data-blade-component="bottom-sheet-footer"
           >
             <div
-              class="c39 c40"
+              class="c40 c41"
               data-blade-component="divider"
               role="separator"
             />
             <div
-              class="c52"
+              class="c53"
               data-blade-component="base-box"
             >
               <div
@@ -2331,21 +2415,21 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 data-blade-component="box"
               >
                 <button
-                  class="c53"
+                  class="c54"
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
-                    class=" c54"
+                    class=" c55"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c55 c56"
+                      class="c56 c57"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c57"
+                        class="c58"
                         data-blade-component="base-text"
                       >
                         Apply
@@ -2402,10 +2486,37 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2421,7 +2532,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   gap: 0px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2440,13 +2551,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   min-height: 48px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2463,7 +2574,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   align-self: stretch;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2478,7 +2589,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding-right: 12px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2494,11 +2605,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: 100%;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   margin-left: 0px;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2512,7 +2623,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   justify-content: flex-end;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2535,7 +2646,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   overflow-wrap: break-word;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2552,18 +2663,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: none;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2596,7 +2707,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   cursor: auto;
 }
 
-.c15.c15.c15.c15.c15::-webkit-input-placeholder {
+.c16.c16.c16.c16.c16::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2614,7 +2725,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15::-moz-placeholder {
+.c16.c16.c16.c16.c16::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2632,7 +2743,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15:-ms-input-placeholder {
+.c16.c16.c16.c16.c16:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2650,7 +2761,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15::placeholder {
+.c16.c16.c16.c16.c16::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2668,11 +2779,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15:focus {
+.c16.c16.c16.c16.c16:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -2697,7 +2808,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c11.c11.c11.c11.c11:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -2724,7 +2835,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -2749,13 +2860,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   -webkit-animation: none;
   animation: none;
   max-height: 48px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -2763,11 +2874,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   scrollbar-width: none;
 }
 
-.c13.c13.c13.c13.c13::-webkit-scrollbar {
+.c14.c14.c14.c14.c14::-webkit-scrollbar {
   display: none;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2784,12 +2895,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -2858,7 +2969,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                 data-blade-component="form-label"
                 for="dropdown-123"
                 id="dropdown-123-label"
-                style="width: auto; flex-shrink: 0; margin-right: 0px;"
+                style="width: 100%; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
                   class="c4"
@@ -2868,39 +2979,49 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                     class="c5"
                     data-blade-component="base-box"
                   >
-                    <p
-                      class="c6"
-                      data-blade-component="text"
-                    >
-                      Fruits
-                    </p>
                     <div
-                      class="c7"
-                      data-blade-component="visually-hidden"
+                      class=""
+                      data-blade-component="base-box"
                     >
-                      <p
-                        class="c8"
-                        data-blade-component="text"
-                      />
+                      <div
+                        class="c6"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c7"
+                          data-blade-component="text"
+                        >
+                          Fruits
+                        </p>
+                        <div
+                          class="c8"
+                          data-blade-component="visually-hidden"
+                        >
+                          <p
+                            class="c9"
+                            data-blade-component="text"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class=" c10 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class=" c11 c12 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 tags-slot"
+                  class="c13 c14 tags-slot"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c14"
+                    class="c15"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2912,7 +3033,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c15"
+                      class="c16"
                       data-blade-component="styled-base-input"
                       id="dropdown-123"
                       placeholder="Select Option"
@@ -2923,24 +3044,24 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                   </div>
                 </div>
                 <div
-                  class="c16"
+                  class="c17"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c16"
+                    class="c17"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c17"
+                      class="c18"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c18"
+                        class="c19"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c19"
+                          class="c20"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -2957,7 +3078,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c20"
+                          class="c21"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -2980,11 +3101,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
             </div>
           </div>
           <div
-            class="c21"
+            class="c22"
             data-blade-component="base-box"
           >
             <div
-              class="c22"
+              class="c23"
               data-blade-component="base-box"
             />
           </div>
@@ -3034,10 +3155,37 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3053,13 +3201,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   gap: 0px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3076,7 +3224,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   align-self: stretch;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3091,7 +3239,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding-right: 12px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3107,11 +3255,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: 100%;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   margin-left: 0px;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3125,7 +3273,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   justify-content: flex-end;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3144,7 +3292,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   min-height: 36px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -3167,7 +3315,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   overflow-wrap: break-word;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3184,18 +3332,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: none;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3228,7 +3376,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   cursor: auto;
 }
 
-.c15.c15.c15.c15.c15::-webkit-input-placeholder {
+.c16.c16.c16.c16.c16::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3246,7 +3394,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15::-moz-placeholder {
+.c16.c16.c16.c16.c16::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3264,7 +3412,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15:-ms-input-placeholder {
+.c16.c16.c16.c16.c16:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3282,7 +3430,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15::placeholder {
+.c16.c16.c16.c16.c16::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3300,11 +3448,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15:focus {
+.c16.c16.c16.c16.c16:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -3329,7 +3477,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c11.c11.c11.c11.c11:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -3356,7 +3504,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -3381,13 +3529,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   -webkit-animation: none;
   animation: none;
   max-height: 36px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -3395,11 +3543,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   scrollbar-width: none;
 }
 
-.c13.c13.c13.c13.c13::-webkit-scrollbar {
+.c14.c14.c14.c14.c14::-webkit-scrollbar {
   display: none;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -3416,12 +3564,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -3494,7 +3642,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 data-blade-component="form-label"
                 for="dropdown-123"
                 id="dropdown-123-label"
-                style="width: auto; flex-shrink: 0; margin-right: 0px;"
+                style="width: 100%; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
                   class="c4"
@@ -3504,39 +3652,49 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                     class="c5"
                     data-blade-component="base-box"
                   >
-                    <p
-                      class="c6"
-                      data-blade-component="text"
-                    >
-                      Fruits
-                    </p>
                     <div
-                      class="c7"
-                      data-blade-component="visually-hidden"
+                      class=""
+                      data-blade-component="base-box"
                     >
-                      <p
-                        class="c8"
-                        data-blade-component="text"
-                      />
+                      <div
+                        class="c6"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c7"
+                          data-blade-component="text"
+                        >
+                          Fruits
+                        </p>
+                        <div
+                          class="c8"
+                          data-blade-component="visually-hidden"
+                        >
+                          <p
+                            class="c9"
+                            data-blade-component="text"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class=" c10 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class=" c11 c12 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 tags-slot"
+                  class="c13 c14 tags-slot"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c14"
+                    class="c15"
                     data-blade-component="base-box"
                   >
                     <input
@@ -3549,7 +3707,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c15"
+                      class="c16"
                       data-blade-component="styled-base-input"
                       id="dropdown-123"
                       placeholder="Select Option"
@@ -3560,24 +3718,24 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   </div>
                 </div>
                 <div
-                  class="c16"
+                  class="c17"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c16"
+                    class="c17"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c17"
+                      class="c18"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c18"
+                        class="c19"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c19"
+                          class="c20"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -3594,7 +3752,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c20"
+                          class="c21"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -3617,11 +3775,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
             </div>
           </div>
           <div
-            class="c21"
+            class="c22"
             data-blade-component="base-box"
           >
             <div
-              class="c22"
+              class="c23"
               data-blade-component="base-box"
             />
           </div>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InputGroup should render Inputgroup with default properties 1`] = `"<div id="root"><div data-blade-component="input-group" class="BaseBox-bmPWx StyledInputGroup-sc-11o2n6c-0  jtnRjs"><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="input-group-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:0px" id="input-group-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Test Group</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div class="BaseBox-bmPWx gmTudM __blade-input-row" data-blade-component="base-box"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="text" inputMode="text" enterKeyHint="enter" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eZHqRc"/></div></div></div></div></div><div class="BaseBox-bmPWx gmTudM __blade-input-row" data-blade-component="base-box"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="text" inputMode="text" enterKeyHint="enter" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eZHqRc"/></div></div></div></div><div data-blade-component="password-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="password" autoCapitalize="none" enterKeyHint="done" id="password-field-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gBmLuL"/><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx fTNRoG"><button type="button" aria-label="Show password" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 iuKqDM"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8ZM10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path><path d="M12 3C8.8711 3 6.22807 4.48937 4.23728 6.25113C2.24678 8.01264 0.822273 10.1194 0.105573 11.5528C-0.0351909 11.8343 -0.0351909 12.1657 0.105573 12.4472C0.822273 13.8806 2.24678 15.9874 4.23728 17.7489C6.22807 19.5106 8.8711 21 12 21C15.1289 21 17.7719 19.5106 19.7627 17.7489C21.7532 15.9874 23.1777 13.8806 23.8944 12.4472C24.0352 12.1657 24.0352 11.8343 23.8944 11.5528C23.1777 10.1194 21.7532 8.01264 19.7627 6.25113C17.7719 4.48937 15.1289 3 12 3ZM5.56272 16.2511C3.98954 14.8589 2.80913 13.2146 2.13142 12C2.80913 10.7854 3.98954 9.14106 5.56272 7.74887C7.3386 6.17729 9.5289 5 12 5C14.4711 5 16.6614 6.17729 18.4373 7.74887C20.0105 9.14106 21.1909 10.7854 21.8686 12C21.1909 13.2146 20.0105 14.8589 18.4373 16.2511C16.6614 17.8227 14.4711 19 12 19C9.5289 19 7.3386 17.8227 5.56272 16.2511Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div></div></div></div></div></div></div></div></div>"`;
+exports[`InputGroup should render Inputgroup with default properties 1`] = `"<div id="root"><div data-blade-component="input-group" class="BaseBox-bmPWx StyledInputGroup-sc-11o2n6c-0  jtnRjs"><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="input-group-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="input-group-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Test Group</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div class="BaseBox-bmPWx gmTudM __blade-input-row" data-blade-component="base-box"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="text" inputMode="text" enterKeyHint="enter" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eZHqRc"/></div></div></div></div></div><div class="BaseBox-bmPWx gmTudM __blade-input-row" data-blade-component="base-box"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="text" inputMode="text" enterKeyHint="enter" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eZHqRc"/></div></div></div></div><div data-blade-component="password-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="password" autoCapitalize="none" enterKeyHint="done" id="password-field-undefined-input-undefined" placeholder="Enter text" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gBmLuL"/><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx fTNRoG"><button type="button" aria-label="Show password" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 iuKqDM"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8ZM10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path><path d="M12 3C8.8711 3 6.22807 4.48937 4.23728 6.25113C2.24678 8.01264 0.822273 10.1194 0.105573 11.5528C-0.0351909 11.8343 -0.0351909 12.1657 0.105573 12.4472C0.822273 13.8806 2.24678 15.9874 4.23728 17.7489C6.22807 19.5106 8.8711 21 12 21C15.1289 21 17.7719 19.5106 19.7627 17.7489C21.7532 15.9874 23.1777 13.8806 23.8944 12.4472C24.0352 12.1657 24.0352 11.8343 23.8944 11.5528C23.1777 10.1194 21.7532 8.01264 19.7627 6.25113C17.7719 4.48937 15.1289 3 12 3ZM5.56272 16.2511C3.98954 14.8589 2.80913 13.2146 2.13142 12C2.80913 10.7854 3.98954 9.14106 5.56272 7.74887C7.3386 6.17729 9.5289 5 12 5C14.4711 5 16.6614 6.17729 18.4373 7.74887C20.0105 9.14106 21.1909 10.7854 21.8686 12C21.1909 13.2146 20.0105 14.8589 18.4373 16.2511C16.6614 17.8227 14.4711 19 12 19C9.5289 19 7.3386 17.8227 5.56272 16.2511Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div></div></div></div></div></div></div></div></div>"`;
 
 exports[`InputGroup should render Inputgroup with default properties 2`] = `
 .c1.c1.c1.c1.c1 {
@@ -25,10 +25,37 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -44,12 +71,12 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   gap: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,7 +88,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   width: 100%;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -78,7 +105,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   align-self: center;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -152,7 +179,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   border-radius: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -169,7 +196,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   word-wrap: normal;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -192,7 +219,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   overflow-wrap: break-word;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -207,110 +234,6 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c12.c12.c12.c12.c12 {
-  color: hsla(211,26%,34%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background-color: hsla(0,0%,100%,0);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 100%;
-  height: 36px;
-  min-height: 36px;
-  resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c12.c12.c12.c12.c12::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12::placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12:focus {
-  outline: none;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -335,7 +258,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 12px;
-  padding-right: 8px;
+  padding-right: 12px;
   width: 100%;
   height: 36px;
   min-height: 36px;
@@ -417,7 +340,111 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   outline: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c14.c14.c14.c14.c14 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c14.c14.c14.c14.c14::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14:focus {
+  outline: none;
+}
+
+.c12.c12.c12.c12.c12 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -441,7 +468,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover {
+.c12.c12.c12.c12.c12:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -467,7 +494,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:focus-within {
+.c12.c12.c12.c12.c12:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -491,12 +518,12 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c11.c11.c11.c11.c11:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -508,7 +535,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   z-index: 2;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -535,12 +562,12 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16:hover:not([disabled]) {
+.c17.c17.c17.c17.c17:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
   background-color: transparent;
 }
 
-.c16.c16.c16.c16.c16:focus-visible {
+.c17.c17.c17.c17.c17:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -553,7 +580,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
   color: hsla(211,26%,34%,1);
 }
 
-.c16.c16.c16.c16.c16:active {
+.c17.c17.c17.c17.c17:active {
   color: hsla(211,26%,34%,1);
 }
 
@@ -577,7 +604,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
           data-blade-component="form-label"
           for="input-group-19-input-20"
           id="input-group-25-label"
-          style="width:auto;flex-shrink:0;margin-right:0px"
+          style="width:100%;flex-shrink:0;margin-right:0px"
         >
           <div
             class="c3"
@@ -587,20 +614,30 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
               class="c4"
               data-blade-component="base-box"
             >
-              <p
-                class="c5"
-                data-blade-component="text"
-              >
-                Test Group
-              </p>
               <div
-                class="c6"
-                data-blade-component="visually-hidden"
+                class=""
+                data-blade-component="base-box"
               >
-                <p
-                  class="c7"
-                  data-blade-component="text"
-                />
+                <div
+                  class="c5"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                  >
+                    Test Group
+                  </p>
+                  <div
+                    class="c7"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c8"
+                      data-blade-component="text"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -610,7 +647,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
           data-blade-component="base-box"
         >
           <div
-            class="c8 __blade-input-row"
+            class="c9 __blade-input-row"
             data-blade-component="base-box"
           >
             <div
@@ -618,15 +655,15 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
               data-blade-component="textinput"
             >
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class=" c11 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c12 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -635,7 +672,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c12"
+                      class="c13"
                       data-blade-component="styled-base-input"
                       enterkeyhint="enter"
                       id="textinput-1-input-2"
@@ -650,7 +687,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
             </div>
           </div>
           <div
-            class="c8 __blade-input-row"
+            class="c9 __blade-input-row"
             data-blade-component="base-box"
           >
             <div
@@ -658,15 +695,15 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
               data-blade-component="textinput"
             >
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class=" c11 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c12 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -675,7 +712,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c12"
+                      class="c13"
                       data-blade-component="styled-base-input"
                       enterkeyhint="enter"
                       id="textinput-7-input-8"
@@ -693,15 +730,15 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
               data-blade-component="password-input"
             >
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class=" c11 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c12 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -710,7 +747,7 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
                       aria-invalid="false"
                       aria-required="false"
                       autocapitalize="none"
-                      class="c13"
+                      class="c14"
                       data-blade-component="styled-base-input"
                       enterkeyhint="done"
                       id="password-field-13-input-14"
@@ -719,20 +756,20 @@ exports[`InputGroup should render Inputgroup with default properties 2`] = `
                       value=""
                     />
                     <div
-                      class="c14"
+                      class="c15"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c14"
+                        class="c15"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c15"
+                          class="c16"
                           data-blade-component="base-box"
                         >
                           <button
                             aria-label="Show password"
-                            class="c16"
+                            class="c17"
                             data-blade-component="icon-button"
                             type="button"
                           >
