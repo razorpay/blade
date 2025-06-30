@@ -884,7 +884,7 @@ const OptionCard = ({
     width={{ s: '100%', m: '400px' }}
   >
     <CardBody>
-      <Box display="flex" flexDirection="row" gap="spacing.3">
+      <Box display="flex" flexDirection="row" gap="spacing.3" justifyContent="space-between">
         <CardHeaderLeading
           title={option.title}
           subtitle={option.subtitle}
