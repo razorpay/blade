@@ -1057,6 +1057,9 @@ interface SettingCardProps {
 }
 
 const App = (): React.ReactElement => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
   return (
     <BrowserRouter>
       <Box
@@ -1065,7 +1068,8 @@ const App = (): React.ReactElement => {
         flexDirection="column"
         overflowX="hidden"
         overflowY="hidden"
-        margin="-2em"
+        // Need to remove the margin applied by storybook wrapper
+        margin={isMobile ? '0em' : '-2em'}
       >
         <Box>
           <TopNavigation />
