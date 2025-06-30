@@ -46,6 +46,12 @@ import {
   getFigmaToCodeToolSchema,
   getFigmaToCodeToolCallback,
 } from './tools/getFigmaToCode.js';
+import {
+  getChangelogToolName,
+  getChangelogToolDescription,
+  getChangelogToolSchema,
+  getChangelogToolCallback,
+} from './tools/getChangelog.js';
 
 Sentry.init({
   dsn: process.env.BLADE_MCP_SENTRY_DSN,
@@ -102,6 +108,13 @@ try {
     getFigmaToCodeToolDescription,
     getFigmaToCodeToolSchema,
     getFigmaToCodeToolCallback,
+  );
+
+  server.tool(
+    getChangelogToolName,
+    getChangelogToolDescription,
+    getChangelogToolSchema,
+    getChangelogToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout
