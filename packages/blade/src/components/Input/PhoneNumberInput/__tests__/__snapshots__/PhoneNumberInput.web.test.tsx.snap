@@ -30,10 +30,37 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,7 +76,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -66,7 +93,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   align-self: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -81,17 +108,17 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   padding-left: 8px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   text-align: left;
   position: relative;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   margin-left: -3px;
   width: 45px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -113,7 +140,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   z-index: 1;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -129,15 +156,15 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   padding-left: 2px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   padding-left: 12px;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   margin-left: 0px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -151,7 +178,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   justify-content: flex-end;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -174,7 +201,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   overflow-wrap: break-word;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -191,7 +218,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -208,7 +235,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -225,7 +252,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   word-wrap: normal;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   min-height: 28px;
   width: auto;
   cursor: pointer;
@@ -262,33 +289,33 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   position: relative;
 }
 
-.c14.c14.c14.c14.c14:hover {
+.c15.c15.c15.c15.c15:hover {
   background-color: hsla(211,20%,52%,0.06);
 }
 
-.c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:hover.c15.c15.c15.c15.c15:hover [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14:active {
+.c15.c15.c15.c15.c15:active {
   background-color: hsla(211,20%,52%,0.06);
 }
 
-.c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:active.c15.c15.c15.c15.c15:active [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14:focus-visible {
+.c15.c15.c15.c15.c15:focus-visible {
   background-color: hsla(211,20%,52%,0.06);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c14.c14.c14.c14.c14:focus-visible.c14.c14.c14.c14.c14:focus-visible [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:focus-visible.c15.c15.c15.c15.c15:focus-visible [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14 * {
+.c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -297,7 +324,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -307,16 +334,16 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   transition-timing-function: 160px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   opacity: 1;
 }
 
-.c13.c13.c13.c13.c13 > button {
+.c14.c14.c14.c14.c14 > button {
   padding: 0;
   width: 100%;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -348,7 +375,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   cursor: auto;
 }
 
-.c21.c21.c21.c21.c21::-webkit-input-placeholder {
+.c22.c22.c22.c22.c22::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -365,7 +392,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21::-moz-placeholder {
+.c22.c22.c22.c22.c22::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -382,7 +409,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21:-ms-input-placeholder {
+.c22.c22.c22.c22.c22:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -399,7 +426,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21::placeholder {
+.c22.c22.c22.c22.c22::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -416,11 +443,11 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21:focus {
+.c22.c22.c22.c22.c22:focus {
   outline: none;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -444,7 +471,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -470,7 +497,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -494,12 +521,12 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c7.c7.c7.c7.c7:focus-within {
+.c8.c8.c8.c8.c8:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -531,7 +558,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
         <label
           data-blade-component="form-label"
           for="phone-number-input-127-input-128"
-          style="width: auto; flex-shrink: 0; margin-right: 0px;"
+          style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -541,39 +568,49 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
               class="c3"
               data-blade-component="base-box"
             >
-              <p
-                class="c4"
-                data-blade-component="text"
-              >
-                Enter phone number
-              </p>
               <div
-                class="c5"
-                data-blade-component="visually-hidden"
+                class=""
+                data-blade-component="base-box"
               >
-                <p
-                  class="c6"
-                  data-blade-component="text"
-                />
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c5"
+                    data-blade-component="text"
+                  >
+                    Enter phone number
+                  </p>
+                  <div
+                    class="c6"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class=" c8 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class="c9"
+            class="c10"
             data-blade-component="base-box"
           >
             <div
-              class="c10"
+              class="c11"
               data-blade-component="base-box"
             >
               <div
@@ -581,11 +618,11 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
                 data-blade-component="dropdown"
               >
                 <div
-                  class="c11"
+                  class="c12"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c12 c13"
+                    class="c13 c14"
                     data-blade-component="base-box"
                   >
                     <button
@@ -593,17 +630,17 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
                       aria-expanded="false"
                       aria-haspopup="menu"
                       aria-label="India - Select Country"
-                      class="c14"
+                      class="c15"
                       data-blade-component="button"
                       role="button"
                       type="button"
                     >
                       <div
-                        class=" c15"
+                        class=" c16"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c16 c17"
+                          class="c17 c18"
                           data-blade-component="base-box"
                         >
                           <img
@@ -614,7 +651,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
                             width="20px"
                           />
                           <div
-                            class="c18"
+                            class="c19"
                             data-blade-component="base-box"
                           >
                             <svg
@@ -646,11 +683,11 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
               </div>
             </div>
             <div
-              class="c19"
+              class="c20"
               data-blade-component="base-box"
             >
               <p
-                class="c20"
+                class="c21"
                 data-blade-component="text"
               >
                 +91
@@ -664,7 +701,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
             aria-label="Enter phone number"
             aria-required="false"
             autocomplete="off"
-            class="c21"
+            class="c22"
             data-analytics-name="phone-input"
             data-analytics-value="phone-input-value"
             data-blade-component="styled-base-input"
@@ -680,11 +717,11 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
       </div>
     </div>
     <div
-      class="c22"
+      class="c23"
       data-blade-component="base-box"
     >
       <div
-        class="c23"
+        class="c24"
         data-blade-component="base-box"
       />
     </div>
@@ -722,10 +759,37 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -741,7 +805,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -758,7 +822,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   align-self: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -773,17 +837,17 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   padding-left: 8px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   text-align: left;
   position: relative;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   margin-left: -3px;
   width: 45px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -805,7 +869,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   z-index: 1;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -821,15 +885,15 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   padding-left: 2px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   padding-left: 12px;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   margin-left: 0px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -843,7 +907,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   justify-content: flex-end;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -866,7 +930,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   overflow-wrap: break-word;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -883,7 +947,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -900,7 +964,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -917,7 +981,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   word-wrap: normal;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   min-height: 28px;
   width: auto;
   cursor: pointer;
@@ -954,33 +1018,33 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   position: relative;
 }
 
-.c14.c14.c14.c14.c14:hover {
+.c15.c15.c15.c15.c15:hover {
   background-color: hsla(211,20%,52%,0.06);
 }
 
-.c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:hover.c15.c15.c15.c15.c15:hover [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14:active {
+.c15.c15.c15.c15.c15:active {
   background-color: hsla(211,20%,52%,0.06);
 }
 
-.c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:active.c15.c15.c15.c15.c15:active [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14:focus-visible {
+.c15.c15.c15.c15.c15:focus-visible {
   background-color: hsla(211,20%,52%,0.06);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c14.c14.c14.c14.c14:focus-visible.c14.c14.c14.c14.c14:focus-visible [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:focus-visible.c15.c15.c15.c15.c15:focus-visible [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14 * {
+.c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -989,7 +1053,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -999,16 +1063,16 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   transition-timing-function: 160px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   opacity: 1;
 }
 
-.c13.c13.c13.c13.c13 > button {
+.c14.c14.c14.c14.c14 > button {
   padding: 0;
   width: 100%;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1040,7 +1104,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   cursor: auto;
 }
 
-.c21.c21.c21.c21.c21::-webkit-input-placeholder {
+.c22.c22.c22.c22.c22::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1057,7 +1121,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21::-moz-placeholder {
+.c22.c22.c22.c22.c22::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1074,7 +1138,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21:-ms-input-placeholder {
+.c22.c22.c22.c22.c22:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1091,7 +1155,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21::placeholder {
+.c22.c22.c22.c22.c22::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1108,11 +1172,11 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21:focus {
+.c22.c22.c22.c22.c22:focus {
   outline: none;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1136,7 +1200,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1162,7 +1226,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1186,12 +1250,12 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c7.c7.c7.c7.c7:focus-within {
+.c8.c8.c8.c8.c8:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1223,7 +1287,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
         <label
           data-blade-component="form-label"
           for="phone-number-input-2-input-3"
-          style="width: auto; flex-shrink: 0; margin-right: 0px;"
+          style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -1233,39 +1297,49 @@ exports[`<PhoneNumberInput /> should render 1`] = `
               class="c3"
               data-blade-component="base-box"
             >
-              <p
-                class="c4"
-                data-blade-component="text"
-              >
-                Enter phone number
-              </p>
               <div
-                class="c5"
-                data-blade-component="visually-hidden"
+                class=""
+                data-blade-component="base-box"
               >
-                <p
-                  class="c6"
-                  data-blade-component="text"
-                />
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c5"
+                    data-blade-component="text"
+                  >
+                    Enter phone number
+                  </p>
+                  <div
+                    class="c6"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class=" c8 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class="c9"
+            class="c10"
             data-blade-component="base-box"
           >
             <div
-              class="c10"
+              class="c11"
               data-blade-component="base-box"
             >
               <div
@@ -1273,11 +1347,11 @@ exports[`<PhoneNumberInput /> should render 1`] = `
                 data-blade-component="dropdown"
               >
                 <div
-                  class="c11"
+                  class="c12"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c12 c13"
+                    class="c13 c14"
                     data-blade-component="base-box"
                   >
                     <button
@@ -1285,17 +1359,17 @@ exports[`<PhoneNumberInput /> should render 1`] = `
                       aria-expanded="false"
                       aria-haspopup="menu"
                       aria-label="India - Select Country"
-                      class="c14"
+                      class="c15"
                       data-blade-component="button"
                       role="button"
                       type="button"
                     >
                       <div
-                        class=" c15"
+                        class=" c16"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c16 c17"
+                          class="c17 c18"
                           data-blade-component="base-box"
                         >
                           <img
@@ -1306,7 +1380,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
                             width="20px"
                           />
                           <div
-                            class="c18"
+                            class="c19"
                             data-blade-component="base-box"
                           >
                             <svg
@@ -1338,11 +1412,11 @@ exports[`<PhoneNumberInput /> should render 1`] = `
               </div>
             </div>
             <div
-              class="c19"
+              class="c20"
               data-blade-component="base-box"
             >
               <p
-                class="c20"
+                class="c21"
                 data-blade-component="text"
               >
                 +91
@@ -1356,7 +1430,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
             aria-label="Enter phone number"
             aria-required="false"
             autocomplete="off"
-            class="c21"
+            class="c22"
             data-blade-component="styled-base-input"
             enterkeyhint="done"
             id="phone-number-input-2-input-3"
@@ -1370,11 +1444,11 @@ exports[`<PhoneNumberInput /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c22"
+      class="c23"
       data-blade-component="base-box"
     >
       <div
-        class="c23"
+        class="c24"
         data-blade-component="base-box"
       />
     </div>
@@ -1412,10 +1486,37 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1431,7 +1532,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1448,7 +1549,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   align-self: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1463,17 +1564,17 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   padding-left: 8px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   text-align: left;
   position: relative;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   margin-left: -2px;
   width: 60px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1495,7 +1596,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   z-index: 1;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1511,15 +1612,15 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   padding-left: 8px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   padding-left: 12px;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   margin-left: 0px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1533,7 +1634,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   justify-content: flex-end;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1556,7 +1657,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   overflow-wrap: break-word;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1573,7 +1674,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1590,7 +1691,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1607,7 +1708,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   word-wrap: normal;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -1644,33 +1745,33 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   position: relative;
 }
 
-.c14.c14.c14.c14.c14:hover {
+.c15.c15.c15.c15.c15:hover {
   background-color: hsla(211,20%,52%,0.06);
 }
 
-.c14.c14.c14.c14.c14:hover.c14.c14.c14.c14.c14:hover [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:hover.c15.c15.c15.c15.c15:hover [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14:active {
+.c15.c15.c15.c15.c15:active {
   background-color: hsla(211,20%,52%,0.06);
 }
 
-.c14.c14.c14.c14.c14:active.c14.c14.c14.c14.c14:active [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:active.c15.c15.c15.c15.c15:active [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14:focus-visible {
+.c15.c15.c15.c15.c15:focus-visible {
   background-color: hsla(211,20%,52%,0.06);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c14.c14.c14.c14.c14:focus-visible.c14.c14.c14.c14.c14:focus-visible [data-blade-component="svg-path"] {
+.c15.c15.c15.c15.c15:focus-visible.c15.c15.c15.c15.c15:focus-visible [data-blade-component="svg-path"] {
   fill: hsla(211,26%,34%,1);
 }
 
-.c14.c14.c14.c14.c14 * {
+.c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -1679,7 +1780,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1689,16 +1790,16 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   transition-timing-function: 160px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   opacity: 1;
 }
 
-.c13.c13.c13.c13.c13 > button {
+.c14.c14.c14.c14.c14 > button {
   padding: 0;
   width: 100%;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1730,7 +1831,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   cursor: auto;
 }
 
-.c21.c21.c21.c21.c21::-webkit-input-placeholder {
+.c22.c22.c22.c22.c22::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1747,7 +1848,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21::-moz-placeholder {
+.c22.c22.c22.c22.c22::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1764,7 +1865,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21:-ms-input-placeholder {
+.c22.c22.c22.c22.c22:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1781,7 +1882,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21::placeholder {
+.c22.c22.c22.c22.c22::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1798,11 +1899,11 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21:focus {
+.c22.c22.c22.c22.c22:focus {
   outline: none;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1826,7 +1927,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1852,7 +1953,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1876,12 +1977,12 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c7.c7.c7.c7.c7:focus-within {
+.c8.c8.c8.c8.c8:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1913,7 +2014,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
         <label
           data-blade-component="form-label"
           for="phone-number-input-22-input-23"
-          style="width: auto; flex-shrink: 0; margin-right: 0px;"
+          style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -1923,39 +2024,49 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
               class="c3"
               data-blade-component="base-box"
             >
-              <p
-                class="c4"
-                data-blade-component="text"
-              >
-                Enter phone number
-              </p>
               <div
-                class="c5"
-                data-blade-component="visually-hidden"
+                class=""
+                data-blade-component="base-box"
               >
-                <p
-                  class="c6"
-                  data-blade-component="text"
-                />
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c5"
+                    data-blade-component="text"
+                  >
+                    Enter phone number
+                  </p>
+                  <div
+                    class="c6"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class=" c8 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class="c9"
+            class="c10"
             data-blade-component="base-box"
           >
             <div
-              class="c10"
+              class="c11"
               data-blade-component="base-box"
             >
               <div
@@ -1963,11 +2074,11 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
                 data-blade-component="dropdown"
               >
                 <div
-                  class="c11"
+                  class="c12"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c12 c13"
+                    class="c13 c14"
                     data-blade-component="base-box"
                   >
                     <button
@@ -1975,17 +2086,17 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
                       aria-expanded="false"
                       aria-haspopup="menu"
                       aria-label="India - Select Country"
-                      class="c14"
+                      class="c15"
                       data-blade-component="button"
                       role="button"
                       type="button"
                     >
                       <div
-                        class=" c15"
+                        class=" c16"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c16 c17"
+                          class="c17 c18"
                           data-blade-component="base-box"
                         >
                           <img
@@ -1996,7 +2107,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
                             width="24px"
                           />
                           <div
-                            class="c18"
+                            class="c19"
                             data-blade-component="base-box"
                           >
                             <svg
@@ -2028,11 +2139,11 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
               </div>
             </div>
             <div
-              class="c19"
+              class="c20"
               data-blade-component="base-box"
             >
               <p
-                class="c20"
+                class="c21"
                 data-blade-component="text"
               >
                 +91
@@ -2046,7 +2157,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
             aria-label="Enter phone number"
             aria-required="false"
             autocomplete="off"
-            class="c21"
+            class="c22"
             data-blade-component="styled-base-input"
             enterkeyhint="done"
             id="phone-number-input-22-input-23"
@@ -2060,11 +2171,11 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
       </div>
     </div>
     <div
-      class="c22"
+      class="c23"
       data-blade-component="base-box"
     >
       <div
-        class="c23"
+        class="c24"
         data-blade-component="base-box"
       />
     </div>

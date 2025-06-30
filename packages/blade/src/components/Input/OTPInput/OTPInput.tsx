@@ -31,6 +31,8 @@ export type OTPInputCommonProps = Pick<
   | 'label'
   | 'accessibilityLabel'
   | 'labelPosition'
+  | 'labelSuffix'
+  | 'labelTrailing'
   | 'validationState'
   | 'helpText'
   | 'errorText'
@@ -149,6 +151,8 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
     label,
     accessibilityLabel,
     labelPosition,
+    labelSuffix,
+    labelTrailing,
     name,
     onChange,
     onFocus,
@@ -399,7 +403,14 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
         position="relative"
       >
         {Boolean(label) && (
-          <FormLabel as="label" position={labelPosition} htmlFor={inputId} size={size}>
+          <FormLabel
+            as="label"
+            position={labelPosition}
+            htmlFor={inputId}
+            size={size}
+            labelSuffix={labelSuffix}
+            labelTrailing={labelTrailing}
+          >
             {label}
           </FormLabel>
         )}

@@ -330,6 +330,23 @@ describe('<BaseInput />', () => {
 
     expect(getByTestId('base-input-test')).toBeTruthy();
   });
+
+  it('should have a label & labelSuffix & labelTrailing', () => {
+    const { getByLabelText, getByText, container } = renderWithTheme(
+      <BaseInput
+        id="name"
+        label="Enter name"
+        labelSuffix={<Link>Suffix</Link>}
+        labelTrailing={<Link>Trailing</Link>}
+      />,
+    );
+
+    expect(getByLabelText(/Enter name/i)).toBeTruthy();
+    expect(getByText('Suffix')).toBeTruthy();
+    expect(getByText('Trailing')).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
+
   it('should support passing data-analytics-* attributes to the input field', () => {
     const { getByLabelText, container } = renderWithTheme(
       <BaseInput id="name" label="Enter name" data-analytics-name="base-input" />,

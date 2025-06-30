@@ -28,6 +28,8 @@ type TextAreaCommonProps = Pick<
   | 'label'
   | 'accessibilityLabel'
   | 'labelPosition'
+  | 'labelSuffix'
+  | 'labelTrailing'
   | 'necessityIndicator'
   | 'validationState'
   | 'helpText'
@@ -112,6 +114,8 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     label,
     accessibilityLabel,
     labelPosition,
+    labelSuffix,
+    labelTrailing,
     necessityIndicator,
     errorText,
     helpText,
@@ -218,6 +222,8 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
+      labelSuffix={labelSuffix}
+      labelTrailing={labelTrailing}
       necessityIndicator={necessityIndicator}
       errorText={errorText}
       helpText={helpText}

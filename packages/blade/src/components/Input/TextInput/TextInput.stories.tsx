@@ -16,8 +16,9 @@ import { Link } from '~components/Link';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
 import { ActionList, ActionListItem } from '~components/ActionList';
-import { BankIcon, GlobeIcon } from '~components/Icons';
+import { BankIcon, GlobeIcon, InfoIcon } from '~components/Icons';
 import { Badge } from '~components/Badge';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -163,6 +164,16 @@ export default {
       },
     },
     label: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelSuffix: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelTrailing: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -793,4 +804,19 @@ export const TextInputWithTrailingElement: StoryFn<typeof TextInputComponent> = 
       trailing={<Badge>@oksbi</Badge>}
     />
   );
+};
+
+export const TextInputWithLabelSuffixTrailing = TextInputTemplate.bind({});
+TextInputWithLabelSuffixTrailing.storyName = 'TextInput with Label Suffix & Trailing';
+TextInputWithLabelSuffixTrailing.args = {
+  label: 'Enter GSTIN',
+  placeholder: 'Enter GSTIN',
+  labelSuffix: (
+    <Tooltip content="Your GSTIN is used to generate invoices and receipts" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
 };

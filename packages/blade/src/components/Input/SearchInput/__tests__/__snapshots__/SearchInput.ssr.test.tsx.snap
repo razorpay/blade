@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchInput /> should render SearchInput 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx jjDQyK"><div data-blade-component="search-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx jaAmIu"><label for="searchinput-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:0px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Search here</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></label></div><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  bmOyOx hZVkky __blade-base-input-wrapper" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx hdqaij"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z" clip-rule="evenodd" fill="hsla(211, 22%, 56%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div><div class="BaseBox-bmPWx BaseInputTagSlotweb__TagSlotContainer-sc-1bt1h3t-0 qMgHn dUNBKx tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx eCtGrP"><input type="text" inputMode="search" enterKeyHint="search" autoComplete="off" id="searchinput-undefined-input-undefined" placeholder="Search payment products, settings, and more" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="searchinput-undefined-helptext-undefined" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 evkgUv"/></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx ePSvGO"><div id="searchinput-undefined-helptext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span data-blade-component="base-box" class="BaseBox-bmPWx hnjoEU"><span class="StyledBaseText-dVBfTO fOrNuN" data-blade-component="text">Enter an item to search</span></span></div></div></div></div></div></div>"`;
+exports[`<SearchInput /> should render SearchInput 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx jjDQyK"><div data-blade-component="search-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx jaAmIu"><label for="searchinput-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Search here</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label></div><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  bmOyOx hZVkky __blade-base-input-wrapper" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx hdqaij"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z" clip-rule="evenodd" fill="hsla(211, 22%, 56%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div><div class="BaseBox-bmPWx BaseInputTagSlotweb__TagSlotContainer-sc-1bt1h3t-0 qMgHn dUNBKx tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx eCtGrP"><input type="text" inputMode="search" enterKeyHint="search" autoComplete="off" id="searchinput-undefined-input-undefined" placeholder="Search payment products, settings, and more" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="searchinput-undefined-helptext-undefined" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 evkgUv"/></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx ePSvGO"><div id="searchinput-undefined-helptext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span data-blade-component="base-box" class="BaseBox-bmPWx hnjoEU"><span class="StyledBaseText-dVBfTO fOrNuN" data-blade-component="text">Enter an item to search</span></span></div></div></div></div></div></div>"`;
 
 exports[`<SearchInput /> should render SearchInput 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -36,10 +36,37 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -55,7 +82,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   gap: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -72,7 +99,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   align-self: center;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -80,7 +107,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   padding-left: 12px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -99,17 +126,17 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   min-height: 36px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   margin-left: 0px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -123,11 +150,11 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   justify-content: space-between;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   margin-top: 4px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -142,7 +169,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   gap: 4px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -165,7 +192,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   overflow-wrap: break-word;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -182,7 +209,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -200,7 +227,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   word-break: break-word;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -232,7 +259,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   cursor: auto;
 }
 
-.c16.c16.c16.c16.c16::-webkit-input-placeholder {
+.c17.c17.c17.c17.c17::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -249,7 +276,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::-moz-placeholder {
+.c17.c17.c17.c17.c17::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -266,7 +293,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:-ms-input-placeholder {
+.c17.c17.c17.c17.c17:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -283,7 +310,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::placeholder {
+.c17.c17.c17.c17.c17::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -300,11 +327,11 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:focus {
+.c17.c17.c17.c17.c17:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -329,7 +356,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -356,7 +383,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -381,13 +408,13 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   -webkit-animation: none;
   animation: none;
   max-height: 36px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -395,11 +422,11 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   scrollbar-width: none;
 }
 
-.c14.c14.c14.c14.c14::-webkit-scrollbar {
+.c15.c15.c15.c15.c15::-webkit-scrollbar {
   display: none;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -416,12 +443,12 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
   word-wrap: normal;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -455,7 +482,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
           <label
             data-blade-component="form-label"
             for="searchinput-1-input-2"
-            style="width:auto;flex-shrink:0;margin-right:0px"
+            style="width:100%;flex-shrink:0;margin-right:0px"
           >
             <div
               class="c3"
@@ -465,39 +492,49 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
                 class="c4"
                 data-blade-component="base-box"
               >
-                <p
-                  class="c5"
-                  data-blade-component="text"
-                >
-                  Search here
-                </p>
                 <div
-                  class="c6"
-                  data-blade-component="visually-hidden"
+                  class=""
+                  data-blade-component="base-box"
                 >
-                  <p
-                    class="c7"
-                    data-blade-component="text"
-                  />
+                  <div
+                    class="c5"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c6"
+                      data-blade-component="text"
+                    >
+                      Search here
+                    </p>
+                    <div
+                      class="c7"
+                      data-blade-component="visually-hidden"
+                    >
+                      <p
+                        class="c8"
+                        data-blade-component="text"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </label>
         </div>
         <div
-          class=" c8 focus-ring-wrapper"
+          class=" c9 focus-ring-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class=" c9 c10 __blade-base-input-wrapper"
+            class=" c10 c11 __blade-base-input-wrapper"
             data-blade-component="base-box"
           >
             <div
-              class="c11"
+              class="c12"
               data-blade-component="base-box"
             >
               <div
-                class="c12"
+                class="c13"
                 data-blade-component="base-box"
               >
                 <svg
@@ -520,11 +557,11 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
               </div>
             </div>
             <div
-              class="c13 c14 tags-slot"
+              class="c14 c15 tags-slot"
               data-blade-component="base-box"
             >
               <div
-                class="c15"
+                class="c16"
                 data-blade-component="base-box"
               >
                 <input
@@ -533,7 +570,7 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
                   aria-invalid="false"
                   aria-required="false"
                   autocomplete="off"
-                  class="c16"
+                  class="c17"
                   data-blade-component="styled-base-input"
                   enterkeyhint="search"
                   id="searchinput-1-input-2"
@@ -548,24 +585,24 @@ exports[`<SearchInput /> should render SearchInput 2`] = `
         </div>
       </div>
       <div
-        class="c17"
+        class="c18"
         data-blade-component="base-box"
       >
         <div
-          class="c18"
+          class="c19"
           data-blade-component="base-box"
         >
           <div
-            class="c19"
+            class="c20"
             data-blade-component="base-box"
             id="searchinput-1-helptext-4"
           >
             <span
-              class="c20"
+              class="c21"
               data-blade-component="base-box"
             >
               <span
-                class="c21"
+                class="c22"
                 data-blade-component="text"
               >
                 Enter an item to search
