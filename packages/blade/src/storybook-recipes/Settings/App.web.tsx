@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Box } from '../../components/Box';
-import TopNavigation from './Components/TopNav';
-import SideNavigation from './Components/SideNav';
-import { Settings } from './SettingsPage';
-import { UserSettings } from './UserSettingPage';
+import TopNavigation from './Components/TopNav.web';
+import SideNavigation from './Components/SideNav.web';
+import Settings from './SettingsPage/Settings.web';
+import UserSettings from './UserSettingPage/User.web';
 
 const App = (): React.ReactElement => {
   return (

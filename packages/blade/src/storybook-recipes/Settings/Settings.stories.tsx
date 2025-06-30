@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react';
 import storyRouterDecorator from 'storybook-react-router';
-import App from './App';
+// eslint-disable-next-line blade/no-cross-platform-imports
+import App from './App.web';
 import parameters from '~utils/storybook/recipeParameters';
 
 export function SimpleForm(): JSX.Element {
