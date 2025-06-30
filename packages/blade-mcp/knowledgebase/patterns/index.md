@@ -18,4 +18,4 @@ ListView is a pattern that has tables with filters, search, pagination, etc. It 
 
 ## Settings
 
-Settings is a pattern that provides a structured way to organize and display application configuration options and user preferences. Use this pattern when you need to create a settings interface with multiple categories, each containing related configuration options, with support for both overview and detailed settings pages.
+Settings is a pattern that provides a structured way to organize application configuration options and user preferences. Use this pattern when you need to create a settings interface with navigation, categorized settings cards, and detailed settings pages. The pattern includes both overview and detail views with responsive layouts and accessibility features.
