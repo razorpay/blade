@@ -5,7 +5,7 @@ import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 export type EmptyStateProps = {
   /**
    * Asset slot for custom illustrations, images, or any visual element.
-   * Supports whitelabel PNGs, custom brand illustrations, SVGs, animated gifs, lottie components etc.
+   * Supports PNGs, custom brand illustrations, SVGs, animated gifs, lottie components etc.
    *
    * @example
    * ```jsx
@@ -30,7 +30,6 @@ export type EmptyStateProps = {
 
   /**
    * Children content for actions, links, or any custom content.
-   * Provides maximum flexibility for action layouts and content.
    */
   children?: React.ReactNode;
 

@@ -1,2 +1,2 @@
-export { EmptyState } from './EmptyState.web';
+export { EmptyState } from './EmptyState';
 export type { EmptyStateProps } from './types';

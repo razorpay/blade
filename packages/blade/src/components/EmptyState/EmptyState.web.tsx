@@ -27,13 +27,13 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
       {...getStyledProps(props)}
       {...makeAnalyticsAttribute(props)}
     >
-      {asset && (
+      {asset ? (
         <BaseBox maxWidth={tokens.assetMaxWidth} maxHeight={tokens.assetMaxHeight}>
           {asset}
         </BaseBox>
-      )}
+      ) : null}
       <BaseBox display="flex" flexDirection="column" gap="spacing.1" alignItems="center">
-        {title && (
+        {title ? (
           <Heading
             textAlign="center"
             size={tokens.titleSize}
@@ -42,9 +42,9 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
           >
             {title}
           </Heading>
-        )}
+        ) : null}
 
-        {description && (
+        {description ? (
           <Text
             textAlign="center"
             size={tokens.descriptionSize}
@@ -54,7 +54,7 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
           >
             {description}
           </Text>
-        )}
+        ) : null}
       </BaseBox>
 
       {children}
