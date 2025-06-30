@@ -343,7 +343,6 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
         >
           <div
             class="c4"
-            data-analytics-chip="apple"
             data-blade-component="chip"
           >
             <label
@@ -366,6 +365,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
                     aria-invalid="false"
                     aria-required="false"
                     class="c8"
+                    data-analytics-chip="apple"
                     role="radio"
                     type="radio"
                     value="apple"
@@ -392,7 +392,6 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
           </div>
           <div
             class="c4"
-            data-analytics-chip="mango"
             data-blade-component="chip"
           >
             <label
@@ -415,6 +414,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
                     aria-invalid="false"
                     aria-required="false"
                     class="c8"
+                    data-analytics-chip="mango"
                     role="radio"
                     type="radio"
                     value="mango"

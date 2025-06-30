@@ -91,7 +91,7 @@ Can you create a signup form with best UX practices using Blade?
 
 The AI agents will use the MCP server to retrieve components and generate appropriate code.
 
-## Local Development Setup
+## Local Blade MCP Development Setup 
 
 ### Clone the repository
 
@@ -110,9 +110,9 @@ cd packages/blade-mcp
 yarn build
 ```
 
-### Local Development with Cursor
+### Local Blade MCP Development with Cursor
 
-For local development with Cursor, update your `mcp.json` with the local path:
+For local Blade MCP development with Cursor, update your `mcp.json` with the local path:
 
 ```json
 {

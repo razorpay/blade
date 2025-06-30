@@ -159,6 +159,12 @@ export type CardProps = {
    */
   onHover?: () => void;
   /**
+   * Sets the size of the card header title
+   *
+   * @default 'large'
+   */
+  size?: 'large' | 'medium';
+  /**
    * Callback triggered when the card is clicked
    */
   onClick?: (
@@ -202,6 +208,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     target,
     rel,
     as,
+    size = 'large',
     ...rest
   },
   ref,
@@ -240,7 +247,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   const _validationState = groupProps?.validationState;
 
   return (
-    <CardProvider>
+    <CardProvider size={size}>
       <CardRoot
         as={as}
         ref={ref as never}

@@ -281,47 +281,268 @@ const BasicCardExample = () => {
 };
 ```
 
-### Interactive Cards
 
-A Card that responds to user interaction with hover effects and selection state. Demonstrates how to create clickable cards with proper accessibility support.
+### Metric Card
+A card displaying metrics with dynamic data visualization, hover effects, and responsive layout. Shows how to combine Card with data display components.
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderLink,
+  CardHeaderBadge,
+  CardBody,
+  Box,
+  Text,
+  Amount,
+  ArrowSquareUpIcon,
+  ArrowRightIcon,
+  useTheme,
+} from '@razorpay/blade/components';
+import { useBreakpoint } from '@razorpay/blade/utils';
+
+
+const MetricCard = () => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  return (
+    <Card
+      backgroundColor="surface.background.gray.intense"
+      maxWidth="500px"
+      minWidth="300px"
+      padding="spacing.5"
+      size="medium"
+    >
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title={isMobile ? 'TPV' : 'Total Payment Volume'}
+          subtitle={isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'}
+        />
+        <CardHeaderTrailing
+          visual={
+            isMobile ? (
+              <CardHeaderLink href="/" icon={ArrowRightIcon} iconPosition="right">
+                Chart settings
+              </CardHeaderLink>
+            ) : (
+              <CardHeaderBadge color="positive">New</CardHeaderBadge>
+            )
+          }
+        />
+      </CardHeader>
+      <CardBody>
+        <Box display="flex" flexDirection={isMobile ? 'row' : 'column'} gap="spacing.5">
+          <Box display="flex" flexDirection="column" justifyContent="flex-end">
+            <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+              <Amount
+                value={1000}
+                color="surface.text.gray.normal"
+                weight="semibold"
+                size="2xlarge"
+                type="heading"
+              />
+              <Box display="flex" flexDirection="row" gap="spacing.1" alignItems="center">
+                <ArrowSquareUpIcon color="interactive.icon.positive.normal" />
+                <Text color="interactive.text.positive.normal">12</Text>
+              </Box>
+            </Box>
+          </Box>
+          {/* Add your chart/graph component here */}
+        </Box>
+      </CardBody>
+    </Card>
+  );
+};
+```
+
+### Interactive Cards
+This example demonstrates how to create a group of cards that can be multi-selected using checkboxes, with validation and error states.
+
+/*
+AI Implementation Notes:
+
+1. Simple interactive card:
+   <Card
+     shouldScaleOnHover
+     isSelected={isSelected}
+     onClick={() => setIsSelected(!isSelected)}
+     accessibilityLabel="Card Name"
+   >
+     <CardHeader>
+       <CardHeaderLeading title="Title" subtitle="Subtitle" prefix={<CardHeaderIcon icon={Icon} />} />
+     </CardHeader>
+     <CardBody>
+       <Text>Content</Text>
+     </CardBody>
+   </Card>
+
+2. Radio button version:
+   - Use RadioGroup instead of CheckboxGroup
+   - Single state: const [selected, setSelected] = useState('')
+   - onChange: ({ value }) => setSelected(value)
+   - isSelected check: selected === option.value
+   - Remove max selection logic
+*/
 
 ```tsx
 import {
   Card,
   CardBody,
-  CardHeader,
   CardHeaderLeading,
   CardHeaderIcon,
+  Box,
   Text,
-  UsersIcon,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  CheckboxGroup,
+  Checkbox,
+  RazorpayIcon,
 } from '@razorpay/blade/components';
-import React, { useState } from 'react';
+import React from 'react';
 
-const InteractiveCardExample = () => {
-  const [isSelected, setIsSelected] = useState(false);
+type ProductOption = {
+  value: string;
+  title: string;
+  subtitle: string;
+  features: string[];
+};
+
+const productOptions: ProductOption[] = [
+  {
+    value: 'payment-gateway',
+    title: 'Payment Gateway',
+    subtitle: 'Accept online payments',
+    features: [
+      '100+ payment methods',
+      'UPI, Cards, Netbanking, Wallets',
+      'Industry-leading success rates',
+      'Real-time payment tracking',
+    ],
+  },
+  {
+    value: 'payment-links',
+    title: 'Payment Links',
+    subtitle: 'Share & collect payments',
+    features: [
+      'No coding required',
+      'Share via SMS, email, WhatsApp',
+      'Instant payment collection',
+      'Custom branding options',
+    ],
+  },
+  {
+    value: 'payment-pages',
+    title: 'Payment Pages',
+    subtitle: 'Create online store',
+    features: [
+      'Ready-to-use online store',
+      'Product catalog management',
+      'Inventory tracking',
+      'Mobile-optimized checkout',
+    ],
+  },
+];
+
+const ProductCard = ({
+  option,
+  isSelected,
+  children,
+}: {
+  option: ProductOption;
+  isSelected: boolean;
+  children: React.ReactNode;
+}) => (
+  <Card
+    as="label"
+    isSelected={isSelected}
+    marginBottom="spacing.3"
+    width={{ s: '100%', m: '400px' }}
+    shouldScaleOnHover
+    accessibilityLabel={`Select ${option.title}`}
+  >
+    <CardBody>
+      <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+        <CardHeaderLeading
+          title={option.title}
+          subtitle={option.subtitle}
+          prefix={<CardHeaderIcon icon={RazorpayIcon} />}
+        />
+        {children}
+      </Box>
+      <Divider marginY="spacing.3" />
+      <List variant="unordered">
+        {option.features.map((feature, index) => (
+          <ListItem key={index}>
+            <ListItemText>{feature}</ListItemText>
+          </ListItem>
+        ))}
+      </List>
+    </CardBody>
+  </Card>
+);
+
+const ProductSelection = () => {
+  const [selectedProducts, setSelectedProducts] = React.useState<string[]>([]);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const hasError = isSubmitted && selectedProducts.length === 0;
+  const hasMaxError = selectedProducts.length > 3;
+  const validationState = hasError || hasMaxError ? 'error' : 'none';
+  const errorText = hasError
+    ? 'Please select at least one product'
+    : hasMaxError
+    ? 'Maximum 3 products allowed'
+    : undefined;
 
   return (
-    <Card
-      shouldScaleOnHover
-      isSelected={isSelected}
-      onClick={() => setIsSelected(!isSelected)}
-      accessibilityLabel="User Profile Card"
-    >
-      <CardHeader>
-        <CardHeaderLeading
-          title="User Profile"
-          subtitle="Click to select this profile"
-          prefix={<CardHeaderIcon icon={UsersIcon} />}
-        />
-      </CardHeader>
-      <CardBody>
-        <Text>
-          This is an interactive card that scales on hover and can be selected. Click to toggle the
-          selection state. The card uses accessibility features to ensure it can be used with screen
-          readers.
+    <Box display="flex" gap="spacing.6" flexDirection="column">
+      <Box>
+        <Text marginBottom="spacing.4" weight="semibold" size="large">
+          Multi-Select Products
         </Text>
-      </CardBody>
-    </Card>
+        <CheckboxGroup
+          value={selectedProducts}
+          onChange={({ values }) => setSelectedProducts(values)}
+          label="Which products do you want to use?"
+          necessityIndicator="required"
+          validationState={validationState}
+          errorText={errorText}
+          helpText="Select 1-3 products to start with"
+          orientation="horizontal"
+          flexWrap="wrap"
+        >
+          {productOptions.map((option) => (
+            <ProductCard
+              key={option.value}
+              option={option}
+              isSelected={selectedProducts.includes(option.value)}
+            >
+              <Checkbox value={option.value} />
+            </ProductCard>
+          ))}
+        </CheckboxGroup>
+
+        <Box marginTop="spacing.4" display="flex" justifyContent="space-between" alignItems="center">
+          <Button onClick={() => setIsSubmitted(true)} variant="primary">
+            Continue
+          </Button>
+          {selectedProducts.length > 0 && (
+            <Text color="surface.text.gray.subtle">
+              Selected: {selectedProducts.length}/3
+            </Text>
+          )}
+        </Box>
+      </Box>
+    </Box>
   );
 };
+
+export default ProductSelection;
 ```

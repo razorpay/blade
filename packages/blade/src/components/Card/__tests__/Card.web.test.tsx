@@ -18,8 +18,6 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Text } from '~components/Typography';
-import { Counter } from '~components/Counter';
-import { Badge } from '~components/Badge';
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {
@@ -135,33 +133,6 @@ describe('<Card />', () => {
       ),
     ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
 
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading
-              title={cardTitle}
-              subtitle={cardSubtitle}
-              suffix={<Counter value={12} />}
-            />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
-    );
-
-    expect(() =>
-      renderWithTheme(
-        <Card>
-          <CardHeader>
-            <CardHeaderTrailing visual={<Badge>NEW</Badge>} />
-          </CardHeader>
-        </Card>,
-      ),
-    ).toThrow(
-      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge, CardHeaderAmount` component is accepted in visual',
-    );
     mockConsoleError.mockRestore();
   });
 

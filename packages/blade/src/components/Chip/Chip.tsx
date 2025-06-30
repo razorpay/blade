@@ -155,7 +155,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
       {...getStyledProps(rest)}
-      {...makeAnalyticsAttribute(rest)}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       ref={getOuterMotionRef({ _motionMeta, ref })}
       width={width}
@@ -186,6 +185,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               inputProps={inputProps}
               hasError={hasError}
               ref={getInnerMotionRef({ _motionMeta, ref })}
+              {...makeAnalyticsAttribute(rest)}
             />
             <AnimatedChip
               borderColor={chipBorderColor}
