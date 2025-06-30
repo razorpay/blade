@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx eBHIXa"><div data-blade-component="base-box" class="BaseBox-bmPWx boSJQS"><span opacity="0.64" class="StyledBaseText-dVBfTO eiFYBx" data-blade-component="base-text">INR</span><span class="StyledBaseText-dVBfTO fAQkza" data-blade-component="base-text">10000</span><span opacity="0.64" class="StyledBaseText-dVBfTO eZlGgd" data-blade-component="base-text"></span></div></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx eBHIXa"><div data-blade-component="base-box" class="BaseBox-bmPWx boSJQS"><span opacity="0.64" class="StyledBaseText-dVBfTO eiFYBx" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO fAQkza" data-blade-component="base-text">10,000</span><span opacity="0.64" class="StyledBaseText-dVBfTO eZlGgd" data-blade-component="base-text">.<!-- -->00</span></div></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 .c0.c0.c0.c0.c0 {
