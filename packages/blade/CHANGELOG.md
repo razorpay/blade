@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.39.0
+
+### Minor Changes
+
+- dfe654e76: feat(blade): add `labelSuffix` & `labelTrailing` props in Input family components
+
 ## 12.38.0
 
 ### Minor Changes
