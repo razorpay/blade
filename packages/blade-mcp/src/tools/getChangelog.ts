@@ -18,6 +18,7 @@ Intent examples:
 - help me with upgrades -> read \`package.json\` to get consumer's blade version to use it as \`fromVersion\` and then use \`toVersion\` as \`latest\` version (range)
 - what was changed in x.x.x version? -> Just \`fromVersion\` (set isRange to false & omit toVersion)
 - what was changed between x.x.x and y.y.y versions? -> \`fromVersion\` and \`toVersion\` (set isRange to true)
+- what is the latest version of blade? -> \`fromVersion\` as \`latest\` (set isRange to false & omit toVersion)
 `;
 
 const getChangelogToolSchema = {
@@ -52,7 +53,12 @@ const getChangelogToolCallback: ToolCallback<typeof getChangelogToolSchema> = as
     const isToVersionLatest = toVersion === 'latest';
     if (isToVersionLatest) {
       const latestVersion = getLatestVersion(changelogText);
-      toVersion = latestVersion?.version;
+      toVersion = latestVersion?.version ?? '';
+    }
+    const isFromVersionLatest = fromVersion === 'latest';
+    if (isFromVersionLatest) {
+      const latestVersion = getLatestVersion(changelogText);
+      fromVersion = latestVersion?.version ?? fromVersion;
     }
 
     const parsedChangelog = getRangeChangelogs(changelogText, fromVersion, toVersion);
