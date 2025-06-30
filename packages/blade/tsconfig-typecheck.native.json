@@ -9,9 +9,7 @@
     "**/**.web.tsx",
     "**/**.web.test.ts",
     "**/**.web.test.tsx",
-    "**/ThemePlayground/**/**.tsx",
-    // Excluding settings template for now. since it a web only recipe
-    "**/src/storybook-recipes/Settings/**/*.tsx"
+    "**/ThemePlayground/**/**.tsx"
   ],
   "compilerOptions": {
     "noEmit": true,
