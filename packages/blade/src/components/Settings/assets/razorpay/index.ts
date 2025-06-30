@@ -1,3 +1,3 @@
-import RazorpayLogo from "./razorpay";
+import RazorpayLogo from './razorpay';
 
 export { RazorpayLogo };
