@@ -391,6 +391,10 @@ const TopNavigation = (): React.ReactElement => {
   const navigate = useHistory();
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isDesktop = matchedDeviceType === 'desktop';
+
   const activeUrl = useLocation().pathname;
   React.useEffect(() => {
     setSelectedProduct(activeUrl);
@@ -399,9 +403,14 @@ const TopNavigation = (): React.ReactElement => {
   return (
     <Box backgroundColor="surface.background.gray.subtle">
       <TopNav>
-        <TopNavBrand>
+        {isDesktop ? (
+          <TopNavBrand>
+            <RazorpayLogo />
+          </TopNavBrand>
+        ) : (
           <RazorpayLogo />
-        </TopNavBrand>
+        )}
+
         <TopNavContent>
           <TabNav
             items={[
@@ -506,44 +515,46 @@ const TopNavigation = (): React.ReactElement => {
             }}
           </TabNav>
         </TopNavContent>
-        <TopNavActions>
-          <Box width="200px">
-            <SearchInput
-              placeholder="Search in payments"
-              accessibilityLabel="Search Across Razorpay"
-              showSearchIcon={false}
-            />
-          </Box>
-          <Tooltip content="View Ecosystem Health">
-            <Button size="medium" variant="tertiary" icon={ActivityIcon} />
-          </Tooltip>
-          <Tooltip content="View Announcements">
-            <Button size="medium" variant="tertiary" icon={AnnouncementIcon} />
-          </Tooltip>
-          <Menu openInteraction="click">
-            <Avatar size="medium" name="Anurag Hazra" />
-            <MenuOverlay>
-              <MenuHeader title="Profile" />
-              <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-                <Avatar size="medium" name="John Doe" />
-                <Box display="flex" flexDirection="column" gap="spacing.2">
-                  <Text size="medium" weight="semibold">
-                    John Doe
-                  </Text>
-                  <Text size="xsmall" color="surface.text.gray.muted">
-                    Razorpay Trusted Merchant
-                  </Text>
+        {isDesktop ? (
+          <TopNavActions>
+            <Box width="200px">
+              <SearchInput
+                placeholder="Search in payments"
+                accessibilityLabel="Search Across Razorpay"
+                showSearchIcon={false}
+              />
+            </Box>
+            <Tooltip content="View Ecosystem Health">
+              <Button size="medium" variant="tertiary" icon={ActivityIcon} />
+            </Tooltip>
+            <Tooltip content="View Announcements">
+              <Button size="medium" variant="tertiary" icon={AnnouncementIcon} />
+            </Tooltip>
+            <Menu openInteraction="click">
+              <Avatar size="medium" name="Anurag Hazra" />
+              <MenuOverlay>
+                <MenuHeader title="Profile" />
+                <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                  <Avatar size="medium" name="John Doe" />
+                  <Box display="flex" flexDirection="column" gap="spacing.2">
+                    <Text size="medium" weight="semibold">
+                      John Doe
+                    </Text>
+                    <Text size="xsmall" color="surface.text.gray.muted">
+                      Razorpay Trusted Merchant
+                    </Text>
+                  </Box>
                 </Box>
-              </Box>
-              <MenuItem>
-                <Text color="surface.text.gray.subtle">Settings</Text>
-              </MenuItem>
-              <MenuItem color="negative">
-                <Text color="feedback.text.negative.intense">Logout</Text>
-              </MenuItem>
-            </MenuOverlay>
-          </Menu>
-        </TopNavActions>
+                <MenuItem>
+                  <Text color="surface.text.gray.subtle">Settings</Text>
+                </MenuItem>
+                <MenuItem color="negative">
+                  <Text color="feedback.text.negative.intense">Logout</Text>
+                </MenuItem>
+              </MenuOverlay>
+            </Menu>
+          </TopNavActions>
+        ) : null}
       </TopNav>
       <Box
         overflow="hidden"
