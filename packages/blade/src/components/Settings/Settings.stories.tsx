@@ -105,7 +105,7 @@ interface NavigationSection {
 // Custom activation card for the banner slot
 const ActivationCard = (): React.ReactElement => {
   return (
-    <Card href="/activate" padding="spacing.4" elevation="none">
+    <Card href="/" padding="spacing.4" elevation="none">
       <CardBody>
         <Box display="flex" justifyContent="space-between" marginBottom="spacing.2">
           <Text size="medium" weight="semibold">
