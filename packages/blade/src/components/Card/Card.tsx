@@ -4,7 +4,7 @@ import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
-import type { CardSpacingValueType, LinkOverlayProps } from './types';
+import type { CardSpacingValueType } from './types';
 import { CARD_LINK_OVERLAY_ID } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -208,7 +208,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     allowedComponents: [ComponentIds.CardHeader, ComponentIds.CardBody, ComponentIds.CardFooter],
   });
 
-  const linkOverlayProps: LinkOverlayProps = {
+  const linkOverlayProps = {
     ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
     ...makeAccessible({ label: accessibilityLabel, pressed: href ? undefined : isSelected }),
   };
