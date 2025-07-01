@@ -20,10 +20,6 @@ import { useTheme } from '~components/BladeProvider';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
 import { Divider } from '~components/Divider';
-import { ActionList, ActionListItem } from '~components/ActionList';
-import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton.web';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
-import { IconButton } from '~components/Button/IconButton';
 
 const gradientOverlyContainerWidth = '21px'; // 20px + 1px divider width
 const gradientOverlyContainerHeight = '38px';
