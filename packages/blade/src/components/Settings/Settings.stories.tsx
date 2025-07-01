@@ -605,9 +605,11 @@ const SettingCard = ({
                 >
                   {title}
                 </Heading>
-                <Text weight="regular" color="surface.text.gray.muted">
-                  {description}
-                </Text>
+                <Box minHeight="40px">
+                  <Text weight="regular" color="surface.text.gray.muted">
+                    {description}
+                  </Text>
+                </Box>
               </Box>
 
               <Box display="flex" flexDirection="column" gap="spacing.3">
