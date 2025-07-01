@@ -9,18 +9,19 @@ import { useIsMobile } from '~utils/useIsMobile';
 import type { BladeElementRef } from '~utils/types';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed?: boolean; isMobile: boolean }>(
-  ({ as, theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
+  ({ as, theme, isSelected, shouldScaleOnHover, isPressed, isMobile }) => {
     const selectedColor = isSelected ? theme.colors.surface.border.primary.normal : 'transparent';
     const selectedBorder = `0px 0px 0px ${theme.border.width.thicker}px ${selectedColor}`;
-    //  focused state
-    const focusRing = isFocused
-      ? `, 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`
-      : '';
 
     return {
       // Selected state
-      boxShadow: `${selectedBorder}${focusRing}`,
+      boxShadow: selectedBorder,
       cursor: as === 'label' ? 'pointer' : 'initial',
+
+      // Focus state using CSS :focus-within
+      '&:focus-within': {
+        boxShadow: `${selectedBorder}, 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
+      },
 
       // pressed state for mobile only
       ...(isMobile &&

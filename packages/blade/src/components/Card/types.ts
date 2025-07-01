@@ -8,7 +8,6 @@ type CardSpacingValueType = Extract<
 
 type CardRootProps = {
   isSelected?: boolean;
-  isFocused?: boolean;
   shouldScaleOnHover?: boolean;
   onClick?: CardProps['onClick'];
   children?: React.ReactNode;

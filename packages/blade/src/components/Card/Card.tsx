@@ -202,8 +202,6 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   },
   ref,
 ): React.ReactElement => {
-  const [isFocused, setIsFocused] = React.useState(false);
-
   useVerifyAllowedChildren({
     children,
     componentName: 'Card',
@@ -213,12 +211,6 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   const linkOverlayProps: LinkOverlayProps = {
     ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
     ...makeAccessible({ label: accessibilityLabel, pressed: href ? undefined : isSelected }),
-    onFocus: () => {
-      setIsFocused(true);
-    },
-    onBlur: () => {
-      setIsFocused(false);
-    },
   };
   const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
 
@@ -232,7 +224,6 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         onMouseEnter={onHover as never}
         shouldScaleOnHover={shouldScaleOnHover}
         isSelected={isSelected}
-        isFocused={isFocused}
         // on react native we need to pass onClick to root, because we don't need the LinkOverlay in RN
         onClick={isReactNative() ? onClick : undefined}
         width={width}
