@@ -56,7 +56,6 @@ import { Link as BladeLink } from '../Link';
 import { Text, Heading } from '../Typography';
 import { Badge } from '../Badge';
 import { Tooltip } from '../Tooltip';
-import { Scale } from '../Scale';
 import { Switch } from '../Switch';
 
 import {
@@ -597,78 +596,78 @@ const SettingCard = ({
   assetImage,
 }: SettingCardProps): React.ReactElement => {
   return (
-    <Scale motionTriggers={['hover']}>
-      <Card
-        height="270px"
-        isSelected={false}
-        backgroundColor="surface.background.gray.intense"
-        padding="spacing.0"
-        borderRadius="medium"
-        elevation="none"
-        zIndex={1000}
-      >
-        <CardBody>
-          <Box position="relative" height="270px" overflow="hidden" padding="spacing.7">
-            <Box position="relative" zIndex="1">
-              <Box display="flex" flexDirection="column" gap="spacing.7">
-                <Box>
-                  <Heading
-                    size="medium"
-                    weight="semibold"
-                    marginBottom="spacing.3"
-                    color="surface.text.gray.normal"
-                  >
-                    {title}
-                  </Heading>
-                  <Text weight="regular" color="surface.text.gray.muted">
-                    {description}
-                  </Text>
-                </Box>
+    <Card
+      height="270px"
+      isSelected={false}
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.0"
+      borderRadius="medium"
+      elevation="none"
+      zIndex={1000}
+    >
+      <CardBody>
+        <Box position="relative" height="270px" overflow="hidden" padding="spacing.7">
+          <Box position="relative" zIndex="1">
+            <Box display="flex" flexDirection="column" gap="spacing.7">
+              <Box>
+                <Heading
+                  size="medium"
+                  weight="semibold"
+                  marginBottom="spacing.3"
+                  color="surface.text.gray.normal"
+                >
+                  {title}
+                </Heading>
+                <Text weight="regular" color="surface.text.gray.muted">
+                  {description}
+                </Text>
+              </Box>
 
-                <Box display="flex" flexDirection="column" gap="spacing.3">
-                  {links.map((link, index) => (
+              <Box display="flex" flexDirection="column" gap="spacing.3">
+                {links.map((link, index) => (
+                  <Box width="100%" key={index}>
                     <ReactRouterDomLink key={index} to={link.link}>
                       <BladeLink key={index} color="primary" size="medium">
                         {link.label}
                       </BladeLink>
                     </ReactRouterDomLink>
-                  ))}
-                </Box>
+                  </Box>
+                ))}
               </Box>
             </Box>
-            <div
-              style={{
-                position: 'absolute',
-                right: '-100px',
-                bottom: '-70px',
-                width: '249px',
-                height: '249px',
-                borderRadius: '50%',
-                background:
-                  'radial-gradient(circle at center, hsla(206, 93%, 95%, 0.9) 0%, hsla(206, 93%, 95%, 0.8) 20%, hsla(209, 95%, 97%, 0.6) 40%, hsla(209, 95%, 97%, 0.4) 60%, hsla(0, 0%, 100%, 0.2) 80%, hsla(0, 0%, 100%, 0) 100%)',
-                display: 'flex',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-                paddingTop: '40px',
-                overflow: 'hidden',
-              }}
-            >
-              <img
-                src={assetImage}
-                alt={`${title} illustration`}
-                style={{
-                  width: '138px',
-                  height: '138px',
-                  objectFit: 'contain',
-                  transform: 'translateX(-30%)',
-                  marginBottom: '12px',
-                }}
-              />
-            </div>
           </Box>
-        </CardBody>
-      </Card>
-    </Scale>
+          <div
+            style={{
+              position: 'absolute',
+              right: '-100px',
+              bottom: '-70px',
+              width: '249px',
+              height: '249px',
+              borderRadius: '50%',
+              background:
+                'radial-gradient(circle at center, hsla(206, 93%, 95%, 0.9) 0%, hsla(206, 93%, 95%, 0.8) 20%, hsla(209, 95%, 97%, 0.6) 40%, hsla(209, 95%, 97%, 0.4) 60%, hsla(0, 0%, 100%, 0.2) 80%, hsla(0, 0%, 100%, 0) 100%)',
+              display: 'flex',
+              alignItems: 'flex-start',
+              justifyContent: 'center',
+              paddingTop: '40px',
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              src={assetImage}
+              alt={`${title} illustration`}
+              style={{
+                width: '138px',
+                height: '138px',
+                objectFit: 'contain',
+                transform: 'translateX(-30%)',
+                marginBottom: '12px',
+              }}
+            />
+          </div>
+        </Box>
+      </CardBody>
+    </Card>
   );
 };
 
