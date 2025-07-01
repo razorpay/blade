@@ -8,7 +8,6 @@ import {
   Route,
   Link as ReactRouterDomLink,
   useLocation,
-  useHistory,
 } from 'react-router-dom';
 import { Box } from '../Box';
 
@@ -387,7 +386,6 @@ const SIDE_NAV_EXPANDED_L1_WIDTH_BASE = 240;
 const SIDE_NAV_EXPANDED_L1_WIDTH_XL = 280;
 
 const TopNavigation = (): React.ReactElement => {
-  const navigate = useHistory();
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
   const { theme } = useTheme();
