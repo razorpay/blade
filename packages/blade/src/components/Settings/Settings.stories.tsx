@@ -794,15 +794,7 @@ const SettingsData = [
 
 const Settings = (): React.ReactElement => {
   return (
-    <Box
-      paddingX="spacing.10"
-      marginTop={{
-        xs: 'spacing.7',
-        l: 'spacing.9',
-      }}
-      width="100%"
-      overflow="hidden"
-    >
+    <Box paddingX="spacing.10" marginTop="spacing.6" width="100%" overflow="hidden">
       <Box
         display="grid"
         gridTemplateColumns={{
@@ -813,6 +805,7 @@ const Settings = (): React.ReactElement => {
         gap="spacing.6"
         width="100%"
         marginBottom="spacing.4"
+        marginTop="spacing.6"
       >
         {SettingsData.map((setting, index) => (
           <SettingCard key={index} {...setting} />
