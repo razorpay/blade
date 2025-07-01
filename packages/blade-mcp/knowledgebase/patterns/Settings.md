@@ -39,7 +39,7 @@ This example demonstrates a full settings interface with navigation, overview pa
 - We need to use the `Text` component to create the text.
 - We need to use the `Heading` component to create the heading.
 - We need to use the `IconButton` component to create the icon button.
-- We need to use the `Switch` component to create the switch.
+- We need to use the `Switch` component to create the switch. (use switch from `@razorpay/blade/components` , not from React router dom)
 - Take following code as reference and build the settings interface. also make sure to use the `useTheme` and `useBreakpoint` hooks to make the interface responsive. 
 - Try to keep spacing consistent across the interface.
 - We don't have any title on Settings page, just display the settings data using cards.
