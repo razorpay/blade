@@ -13,7 +13,7 @@ import type { TableData } from '~components/Table/types';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
-import { CheckIcon, CloseIcon, FilterIcon } from '~components/Icons';
+import { CheckIcon, CloseIcon } from '~components/Icons';
 import { Code } from '~components/Typography/Code';
 import { TableEditableCell } from '~components/Table/TableEditableCell';
 import { Amount } from '~components/Amount';
