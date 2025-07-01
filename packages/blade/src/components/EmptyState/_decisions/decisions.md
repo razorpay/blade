@@ -171,7 +171,7 @@ import { EmptyState, Button, Link } from '@razorpay/blade/components';
 type EmptyStateProps = {
   /**
    * Asset slot for custom illustrations, images, or any visual element.
-   * Supports whitelabel PNGs, custom brand illustrations, SVGs, animated gifs, lottie components etc.
+   * Supports PNGs, custom brand illustrations, SVGs, animated gifs, lottie components etc.
    *
    * @example
    * ```jsx
@@ -196,7 +196,6 @@ type EmptyStateProps = {
 
   /**
    * Children content for actions, links, or any custom content.
-   * Provides maximum flexibility for action layouts and content.
    */
   children?: React.ReactNode;
 
