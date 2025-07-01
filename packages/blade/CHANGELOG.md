@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.40.0
+
+### Minor Changes
+
+- a90644a3f: fix(blade): update CompanyRegistrationIcon
+
 ## 12.39.0
 
 ### Minor Changes
