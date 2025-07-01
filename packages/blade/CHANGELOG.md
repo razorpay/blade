@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.40.1
+
+### Patch Changes
+
+- c351b8ba1: fix: alignment of radio, checkbox in selectable card
+
 ## 12.40.0
 
 ### Minor Changes
