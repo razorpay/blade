@@ -599,7 +599,7 @@ const SettingCard = ({
   return (
     <Scale motionTriggers={['hover']}>
       <Card
-        height="250px"
+        height="270px"
         isSelected={false}
         backgroundColor="surface.background.gray.intense"
         padding="spacing.0"
@@ -608,7 +608,7 @@ const SettingCard = ({
         zIndex={1000}
       >
         <CardBody>
-          <Box position="relative" height="250px" overflow="hidden" padding="spacing.7">
+          <Box position="relative" height="270px" overflow="hidden" padding="spacing.7">
             <Box position="relative" zIndex="1">
               <Box display="flex" flexDirection="column" gap="spacing.7">
                 <Box>
