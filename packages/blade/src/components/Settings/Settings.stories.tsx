@@ -606,8 +606,6 @@ const SettingCard = ({
         borderRadius="medium"
         elevation="none"
         zIndex={1000}
-        width="354px"
-        // onClick={handleClick}
       >
         <CardBody>
           <Box position="relative" height="250px" overflow="hidden" padding="spacing.7">
@@ -802,7 +800,8 @@ const Settings = (): React.ReactElement => {
           m: '1fr 1fr',
           l: '1fr 1fr 1fr',
         }}
-        gap="spacing.6"
+        columnGap="spacing.6"
+        rowGap="spacing.6"
         width="100%"
         marginBottom="spacing.4"
         marginTop="spacing.6"
