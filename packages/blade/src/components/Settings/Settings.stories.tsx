@@ -452,11 +452,7 @@ const TopNavigation = (): React.ReactElement => {
                           key={item.title}
                           title={item.title}
                           icon={item.icon}
-                          onClick={() => {
-                            // @ts-expect-error
-                            navigate(item.href!);
-                            setSelectedProduct(item.href!);
-                          }}
+                          isActive={item.href === '/payments'}
                         />
                       );
                     })}
@@ -479,14 +475,7 @@ const TopNavigation = (): React.ReactElement => {
                         />
                         {overflowingItems.map((item) => {
                           return (
-                            <MenuItem
-                              key={item.href}
-                              onClick={() => {
-                                // @ts-expect-error
-                                navigate(item.href!);
-                                setSelectedProduct(item.href!);
-                              }}
-                            >
+                            <MenuItem key={item.href} isActive={item.href === '/payments'}>
                               <Box display="flex" gap="spacing.3" alignItems="center">
                                 {item.icon && <item.icon />}
                                 <Box>
