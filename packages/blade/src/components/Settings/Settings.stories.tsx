@@ -605,17 +605,19 @@ const SettingCard = ({
         padding="spacing.0"
         borderRadius="medium"
         elevation="none"
+        zIndex={1000}
+        width="354px"
         // onClick={handleClick}
       >
         <CardBody>
           <Box position="relative" height="250px" overflow="hidden" padding="spacing.7">
             <Box position="relative" zIndex="1">
-              <Box display="flex" flexDirection="column" gap="spacing.5">
+              <Box display="flex" flexDirection="column" gap="spacing.7">
                 <Box>
                   <Heading
                     size="medium"
                     weight="semibold"
-                    marginBottom="spacing.2"
+                    marginBottom="spacing.3"
                     color="surface.text.gray.normal"
                   >
                     {title}
@@ -625,7 +627,7 @@ const SettingCard = ({
                   </Text>
                 </Box>
 
-                <Box display="flex" flexDirection="column" gap="spacing.4">
+                <Box display="flex" flexDirection="column" gap="spacing.3">
                   {links.map((link, index) => (
                     <ReactRouterDomLink key={index} to={link.link}>
                       <BladeLink key={index} color="primary" size="medium">
@@ -793,7 +795,7 @@ const SettingsData = [
 const Settings = (): React.ReactElement => {
   return (
     <Box
-      paddingX="spacing.7"
+      paddingX="spacing.10"
       marginTop={{
         xs: 'spacing.7',
         l: 'spacing.9',
@@ -808,10 +810,9 @@ const Settings = (): React.ReactElement => {
           m: '1fr 1fr',
           l: '1fr 1fr 1fr',
         }}
-        gap="spacing.7"
+        gap="spacing.6"
         width="100%"
         marginBottom="spacing.4"
-        marginTop="spacing.4"
       >
         {SettingsData.map((setting, index) => (
           <SettingCard key={index} {...setting} />
@@ -891,7 +892,7 @@ const User = (): React.ReactElement => {
             }}
           >
             <ReactRouterDomLink to="/settings">
-              <BladeLink icon={ChevronLeftIcon} size={isMobile ? 'small' : 'medium'}>
+              <BladeLink icon={ChevronLeftIcon} size="small">
                 Back
               </BladeLink>
             </ReactRouterDomLink>
@@ -917,7 +918,11 @@ const User = (): React.ReactElement => {
           >
             <Box display="flex" flexDirection="column" gap="spacing.5">
               {/* Name field */}
-              <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+              <Box
+                display="grid"
+                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
+                alignItems="center"
+              >
                 <Text size="medium" weight="medium" color="surface.text.gray.muted">
                   Name
                 </Text>
@@ -927,7 +932,11 @@ const User = (): React.ReactElement => {
               </Box>
 
               {/* User role field */}
-              <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+              <Box
+                display="grid"
+                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
+                alignItems="center"
+              >
                 <Text size="medium" weight="medium" color="surface.text.gray.muted">
                   User role
                 </Text>
@@ -937,7 +946,11 @@ const User = (): React.ReactElement => {
               </Box>
 
               {/* Email ID field */}
-              <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+              <Box
+                display="grid"
+                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
+                alignItems="center"
+              >
                 <Text size="medium" weight="medium" color="surface.text.gray.muted">
                   Email ID
                 </Text>
@@ -956,13 +969,17 @@ const User = (): React.ReactElement => {
               </Box>
 
               {/* Login password field */}
-              <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+              <Box
+                display="grid"
+                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
+                alignItems="center"
+              >
                 <Text size="medium" weight="medium" color="surface.text.gray.muted">
                   Login password
                 </Text>
                 <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
                   <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
-                    ****************
+                    ***********
                   </Text>
                   <IconButton
                     icon={EditIcon}
@@ -975,7 +992,11 @@ const User = (): React.ReactElement => {
               </Box>
 
               {/* Phone number field */}
-              <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+              <Box
+                display="grid"
+                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
+                alignItems="center"
+              >
                 <Text size="medium" weight="medium" color="surface.text.gray.muted">
                   Phone number
                 </Text>
@@ -1007,7 +1028,7 @@ const User = (): React.ReactElement => {
               subtitle="Secure your account by using a one-time verification code each time you log in"
             >
               <Box display="flex" flexDirection="column" gap="spacing.5">
-                <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+                <Box display="grid" gridTemplateColumns="250px 1fr" alignItems="center">
                   <Text size="medium" weight="medium" color="surface.text.gray.muted">
                     Two factor authentication
                   </Text>
@@ -1029,19 +1050,19 @@ const User = (): React.ReactElement => {
               subtitle="Receive notifications from Razorpay on your phone/email for any account related updates"
             >
               <Box display="flex" flexDirection="column" gap="spacing.5">
-                <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+                <Box display="grid" gridTemplateColumns="250px 1fr" alignItems="center">
                   <Text size="medium" weight="medium" color="surface.text.gray.muted">
                     SMS
                   </Text>
                   <Switch accessibilityLabel="Toggle SMS Notifications" size="medium" />
                 </Box>
-                <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+                <Box display="grid" gridTemplateColumns="250px 1fr" alignItems="center">
                   <Text size="medium" weight="medium" color="surface.text.gray.muted">
                     Email
                   </Text>
                   <Switch accessibilityLabel="Toggle Email Notifications" size="medium" />
                 </Box>
-                <Box display="grid" gridTemplateColumns="200px 1fr" alignItems="center">
+                <Box display="grid" gridTemplateColumns="250px 1fr" alignItems="center">
                   <Text size="medium" weight="medium" color="surface.text.gray.muted">
                     Whatsapp
                   </Text>
