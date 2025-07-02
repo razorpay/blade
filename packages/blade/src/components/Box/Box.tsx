@@ -56,6 +56,7 @@ const makeBoxProps = (
     overflowX: props.overflowX,
     overflowY: props.overflowY,
     whiteSpace: props.whiteSpace,
+    contain: props.contain,
     height: props.height,
     minHeight: props.minHeight,
     maxHeight: props.maxHeight,

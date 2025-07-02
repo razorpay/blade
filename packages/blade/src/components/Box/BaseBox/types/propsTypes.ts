@@ -18,7 +18,7 @@ type LayoutProps = MakeObjectResponsive<
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
   } & PickCSSByPlatform<
-    'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign' | 'whiteSpace'
+    'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign' | 'whiteSpace' | 'contain'
   >
 >;
 
