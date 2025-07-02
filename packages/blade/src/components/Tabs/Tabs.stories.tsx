@@ -708,32 +708,34 @@ const ProductUseCase1Template: StoryFn<(props: StoryControlProps) => React.React
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody height="100%">
-          <Tabs variant="borderless" defaultValue="subscriptions">
-            <TabList marginX="spacing.6">
-              <TabItem value="subscriptions" leading={SubscriptionsIcon}>
-                Subscription
-              </TabItem>
-              <TabItem value="plans" leading={ClipboardIcon}>
-                Plans
-              </TabItem>
-              <TabItem value="settings" leading={SettingsIcon}>
-                Settings
-              </TabItem>
-            </TabList>
-            <Divider />
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs variant="borderless" defaultValue="subscriptions">
+              <TabList>
+                <TabItem value="subscriptions" leading={SubscriptionsIcon}>
+                  Subscription
+                </TabItem>
+                <TabItem value="plans" leading={ClipboardIcon}>
+                  Plans
+                </TabItem>
+                <TabItem value="settings" leading={SettingsIcon}>
+                  Settings
+                </TabItem>
+              </TabList>
+              <Divider />
 
-            <Box paddingX="spacing.6" paddingBottom="spacing.6">
-              <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="plans">
-                <PlansPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="settings">
-                <SettingsPanel isVertical={false} />
-              </TabPanel>
-            </Box>
-          </Tabs>
+              <Box>
+                <TabPanel value="subscriptions">
+                  <SubscriptionPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="plans">
+                  <PlansPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="settings">
+                  <SettingsPanel isVertical={false} />
+                </TabPanel>
+              </Box>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
@@ -794,42 +796,39 @@ const ProductUseCase2Template: StoryFn<(props: StoryControlProps) => React.React
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
-          <Tabs variant="borderless" value={value} onChange={setValue}>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              paddingX="spacing.6"
-            >
-              <TabList>
-                <TabItem value="subscriptions" leading={SubscriptionsIcon}>
-                  Subscription
-                </TabItem>
-                <TabItem value="plans" leading={ClipboardIcon}>
-                  Plans
-                </TabItem>
-                <TabItem value="settings" leading={SettingsIcon}>
-                  Settings
-                </TabItem>
-              </TabList>
-              <Box display="flex" alignItems="center" gap="spacing.5">
-                {actions}
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs variant="borderless" value={value} onChange={setValue}>
+              <Box display="flex" alignItems="center" justifyContent="space-between">
+                <TabList>
+                  <TabItem value="subscriptions" leading={SubscriptionsIcon}>
+                    Subscription
+                  </TabItem>
+                  <TabItem value="plans" leading={ClipboardIcon}>
+                    Plans
+                  </TabItem>
+                  <TabItem value="settings" leading={SettingsIcon}>
+                    Settings
+                  </TabItem>
+                </TabList>
+                <Box display="flex" alignItems="center" gap="spacing.5">
+                  {actions}
+                </Box>
               </Box>
-            </Box>
-            <Divider />
+              <Divider />
 
-            <Box paddingX="spacing.6" paddingBottom="spacing.6">
-              <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="plans">
-                <PlansPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="settings">
-                <SettingsPanel isVertical={false} />
-              </TabPanel>
-            </Box>
-          </Tabs>
+              <Box>
+                <TabPanel value="subscriptions">
+                  <SubscriptionPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="plans">
+                  <PlansPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="settings">
+                  <SettingsPanel isVertical={false} />
+                </TabPanel>
+              </Box>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
@@ -900,49 +899,51 @@ const ReactRouterExample = () => {
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
-          <Tabs variant="borderless" defaultValue="subscriptions">
-            <TabList marginX="spacing.6">
-              <TabItem
-                value="subscriptions"
-                leading={SubscriptionsIcon}
-                href="/accounts/subscriptions"
-                onClick={(e) => navigateTo(e, '/accounts/subscriptions')}
-              >
-                Subscription
-              </TabItem>
-              <TabItem
-                value="plans"
-                leading={ClipboardIcon}
-                href="/accounts/plans"
-                onClick={(e) => navigateTo(e, '/accounts/plans')}
-              >
-                Plans
-              </TabItem>
-              <TabItem
-                value="settings"
-                leading={SettingsIcon}
-                href="/accounts/settings"
-                onClick={(e) => navigateTo(e, '/accounts/settings')}
-              >
-                Settings
-              </TabItem>
-            </TabList>
-            <Divider />
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs variant="borderless" defaultValue="subscriptions">
+              <TabList>
+                <TabItem
+                  value="subscriptions"
+                  leading={SubscriptionsIcon}
+                  href="/accounts/subscriptions"
+                  onClick={(e) => navigateTo(e, '/accounts/subscriptions')}
+                >
+                  Subscription
+                </TabItem>
+                <TabItem
+                  value="plans"
+                  leading={ClipboardIcon}
+                  href="/accounts/plans"
+                  onClick={(e) => navigateTo(e, '/accounts/plans')}
+                >
+                  Plans
+                </TabItem>
+                <TabItem
+                  value="settings"
+                  leading={SettingsIcon}
+                  href="/accounts/settings"
+                  onClick={(e) => navigateTo(e, '/accounts/settings')}
+                >
+                  Settings
+                </TabItem>
+              </TabList>
+              <Divider />
 
-            <Box paddingX="spacing.6" paddingBottom="spacing.6">
-              <Route path="/accounts/:id" component={AccountRoute} />
+              <Box>
+                <Route path="/accounts/:id" component={AccountRoute} />
 
-              <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="plans">
-                <PlansPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="settings">
-                <SettingsPanel isVertical={false} />
-              </TabPanel>
-            </Box>
-          </Tabs>
+                <TabPanel value="subscriptions">
+                  <SubscriptionPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="plans">
+                  <PlansPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="settings">
+                  <SettingsPanel isVertical={false} />
+                </TabPanel>
+              </Box>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
@@ -961,54 +962,56 @@ const ProductUseCase4Template: StoryFn<(props: StoryControlProps) => React.React
     <Box height={isReactNative() ? '100%' : undefined}>
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody height="100%">
-          <Tabs isFullWidthTabItem={false} variant="filled" defaultValue="desktop">
-            <Box
-              padding="spacing.6"
-              minHeight="300px"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              paddingBottom="spacing.6"
-            >
-              <TabPanel value="desktop">
-                <Box
-                  elevation="midRaised"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  width="400px"
-                  height="200px"
-                  borderRadius="large"
-                  borderColor="surface.border.gray.muted"
-                  borderWidth="thin"
-                >
-                  <Text>Desktop Preview</Text>
-                </Box>
-              </TabPanel>
-              <TabPanel value="mobile">
-                <Box
-                  elevation="midRaised"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  width="140px"
-                  height="200px"
-                  borderRadius="large"
-                  borderColor="surface.border.gray.muted"
-                  borderWidth="thin"
-                >
-                  <Text>Mobile Preview</Text>
-                </Box>
-              </TabPanel>
-            </Box>
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs isFullWidthTabItem={false} variant="filled" defaultValue="desktop">
+              <Box
+                padding="spacing.6"
+                minHeight="300px"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                paddingBottom="spacing.6"
+              >
+                <TabPanel value="desktop">
+                  <Box
+                    elevation="midRaised"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    width="400px"
+                    height="200px"
+                    borderRadius="large"
+                    borderColor="surface.border.gray.muted"
+                    borderWidth="thin"
+                  >
+                    <Text>Desktop Preview</Text>
+                  </Box>
+                </TabPanel>
+                <TabPanel value="mobile">
+                  <Box
+                    elevation="midRaised"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    width="140px"
+                    height="200px"
+                    borderRadius="large"
+                    borderColor="surface.border.gray.muted"
+                    borderWidth="thin"
+                  >
+                    <Text>Mobile Preview</Text>
+                  </Box>
+                </TabPanel>
+              </Box>
 
-            <Box width="200px" padding="spacing.6">
-              <TabList>
-                <TabItem value="desktop" leading={MonitorIcon} />
-                <TabItem value="mobile" leading={SmartphoneIcon} />
-              </TabList>
-            </Box>
-          </Tabs>
+              <Box width="200px" padding="spacing.6">
+                <TabList>
+                  <TabItem value="desktop" leading={MonitorIcon} />
+                  <TabItem value="mobile" leading={SmartphoneIcon} />
+                </TabList>
+              </Box>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
