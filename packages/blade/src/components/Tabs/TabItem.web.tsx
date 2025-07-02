@@ -5,13 +5,20 @@ import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
 import type { TabItemProps, TabsProps } from './types';
 import { useTabsContext } from './TabsContext';
-import { backgroundColor, paddingY, paddingX, textColor, iconColor } from './tabTokens';
+import {
+  backgroundColor,
+  paddingTop,
+  paddingBottom,
+  paddingX,
+  textColor,
+  iconColor,
+  textSizeMap,
+} from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { Text } from '~components/Typography';
-import { castWebType, getMediaQuery, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import useInteraction from '~utils/useInteraction';
 import { makeAccessible } from '~utils/makeAccessible';
-import { breakpoints } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -43,17 +50,10 @@ const StyledTabButton = styled.button<{
     width: isFullWidthTabItem ? '100%' : undefined,
 
     // Padding
-    paddingTop: makeSpace(getIn(theme, paddingY[_variant][orientation].desktop[size!])),
-    paddingBottom: makeSpace(getIn(theme, paddingY[_variant][orientation].desktop[size!])),
-    paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation].desktop[size!])),
-    paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation].desktop[size!])),
-
-    [`@media ${getMediaQuery({ min: breakpoints.base, max: breakpoints.m })}`]: {
-      paddingTop: makeSpace(getIn(theme, paddingY[_variant][orientation].mobile[size!])),
-      paddingBottom: makeSpace(getIn(theme, paddingY[_variant][orientation].mobile[size!])),
-      paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation].mobile[size!])),
-      paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation].mobile[size!])),
-    },
+    paddingTop: makeSpace(getIn(theme, paddingTop[_variant][orientation][size!])),
+    paddingBottom: makeSpace(getIn(theme, paddingBottom[_variant][orientation][size!])),
+    paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation][size!])),
+    paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation][size!])),
 
     // colors
     backgroundColor:
@@ -169,7 +169,7 @@ const TabItem = ({
           {children ? (
             <Text
               color={textColor[selectedState][interaction]}
-              size={size === 'medium' ? 'medium' : 'large'}
+              size={textSizeMap[size!]}
               weight="semibold"
             >
               {children}
