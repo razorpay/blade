@@ -660,6 +660,69 @@ const SettingCard = ({
   );
 };
 
+const CardRowValueContainer = ({
+  showEditItem,
+  value,
+}: {
+  showEditItem: boolean;
+  value: string;
+}): React.ReactElement | null => {
+  if (showEditItem) {
+    return (
+      <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
+        <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+          {value}
+        </Text>
+        <IconButton
+          icon={EditIcon}
+          size="medium"
+          accessibilityLabel="Edit"
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onClick={() => {}}
+        />
+      </Box>
+    );
+  }
+
+  return (
+    <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+      {value}
+    </Text>
+  );
+};
+
+const CardRow = ({
+  label,
+  value,
+  trailingElement,
+  showEditIcon = false,
+}: {
+  label: string;
+  value?: string;
+  trailingElement?: React.ReactNode;
+  showEditIcon?: boolean;
+}): React.ReactElement => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+  return (
+    <Box
+      display="grid"
+      gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
+      alignItems="center"
+    >
+      <Text size="medium" weight="medium" color="surface.text.gray.muted">
+        {label}
+      </Text>
+      {trailingElement ? (
+        trailingElement
+      ) : (
+        <CardRowValueContainer showEditItem={showEditIcon} value={value ?? ''} />
+      )}
+    </Box>
+  );
+};
+
 const SettingsData = [
   {
     title: 'User profile',
@@ -836,9 +899,6 @@ const SubSectionCard = ({
 };
 
 const User = (): React.ReactElement => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint(theme);
-  const isMobile = matchedDeviceType === 'mobile';
   return (
     <Box
       display="flex"
@@ -898,101 +958,19 @@ const User = (): React.ReactElement => {
           >
             <Box display="flex" flexDirection="column" gap="spacing.5">
               {/* Name field */}
-              <Box
-                display="grid"
-                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
-                alignItems="center"
-              >
-                <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                  Name
-                </Text>
-                <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
-                  Blade Team
-                </Text>
-              </Box>
+              <CardRow label="Name" value="Blade Team" />
 
               {/* User role field */}
-              <Box
-                display="grid"
-                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
-                alignItems="center"
-              >
-                <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                  User role
-                </Text>
-                <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
-                  Owner
-                </Text>
-              </Box>
+              <CardRow label="User role" value="Owner" />
 
               {/* Email ID field */}
-              <Box
-                display="grid"
-                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
-                alignItems="center"
-              >
-                <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                  Email ID
-                </Text>
-                <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
-                  <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
-                    owner@gmail.com
-                  </Text>
-                  <IconButton
-                    icon={EditIcon}
-                    size="medium"
-                    accessibilityLabel="Edit"
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
-                    onClick={() => {}}
-                  />
-                </Box>
-              </Box>
+              <CardRow label="Email ID" value="owner@gmail.com" showEditIcon />
 
               {/* Login password field */}
-              <Box
-                display="grid"
-                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
-                alignItems="center"
-              >
-                <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                  Login password
-                </Text>
-                <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
-                  <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
-                    ***********
-                  </Text>
-                  <IconButton
-                    icon={EditIcon}
-                    size="medium"
-                    accessibilityLabel="Edit"
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
-                    onClick={() => {}}
-                  />
-                </Box>
-              </Box>
+              <CardRow label="Login password" value="**********" showEditIcon />
 
               {/* Phone number field */}
-              <Box
-                display="grid"
-                gridTemplateColumns={isMobile ? '150px 1fr' : '250px 1fr'}
-                alignItems="center"
-              >
-                <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                  Phone number
-                </Text>
-                <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
-                  <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
-                    +91 9632412347
-                  </Text>
-                  <IconButton
-                    icon={EditIcon}
-                    size="medium"
-                    accessibilityLabel="Edit"
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
-                    onClick={() => {}}
-                  />
-                </Box>
-              </Box>
+              <CardRow label="Phone number" value="+91 9632412347" showEditIcon />
             </Box>
           </SubSectionCard>
 
@@ -1007,14 +985,12 @@ const User = (): React.ReactElement => {
               title="Two factor authentication"
               subtitle="Secure your account by using a one-time verification code each time you log in"
             >
-              <Box display="flex" flexDirection="column" gap="spacing.5">
-                <Box display="grid" gridTemplateColumns="250px 1fr" alignItems="center">
-                  <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                    Two factor authentication
-                  </Text>
+              <CardRow
+                label="Two factor authentication"
+                trailingElement={
                   <Switch accessibilityLabel="Toggle Two Factor Authentication" size="medium" />
-                </Box>
-              </Box>
+                }
+              />
             </SubSectionCard>
           </Box>
 
@@ -1030,24 +1006,24 @@ const User = (): React.ReactElement => {
               subtitle="Receive notifications from Razorpay on your phone/email for any account related updates"
             >
               <Box display="flex" flexDirection="column" gap="spacing.5">
-                <Box display="grid" gridTemplateColumns="250px 1fr" alignItems="center">
-                  <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                    SMS
-                  </Text>
-                  <Switch accessibilityLabel="Toggle SMS Notifications" size="medium" />
-                </Box>
-                <Box display="grid" gridTemplateColumns="250px 1fr" alignItems="center">
-                  <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                    Email
-                  </Text>
-                  <Switch accessibilityLabel="Toggle Email Notifications" size="medium" />
-                </Box>
-                <Box display="grid" gridTemplateColumns="250px 1fr" alignItems="center">
-                  <Text size="medium" weight="medium" color="surface.text.gray.muted">
-                    Whatsapp
-                  </Text>
-                  <Switch accessibilityLabel="Toggle Whatsapp Notifications" size="medium" />
-                </Box>
+                <CardRow
+                  label="Email"
+                  trailingElement={
+                    <Switch accessibilityLabel="Toggle Email Notifications" size="medium" />
+                  }
+                />
+                <CardRow
+                  label="Whatsapp"
+                  trailingElement={
+                    <Switch accessibilityLabel="Toggle Whatsapp Notifications" size="medium" />
+                  }
+                />
+                <CardRow
+                  label="SMS"
+                  trailingElement={
+                    <Switch accessibilityLabel="Toggle SMS Notifications" size="medium" />
+                  }
+                />
               </Box>
             </SubSectionCard>
           </Box>
