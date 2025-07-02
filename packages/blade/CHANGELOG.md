@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.41.1
+
+### Patch Changes
+
+- b86409b12: fix(blade): expose empty state component
+
 ## 12.41.0
 
 ### Minor Changes
