@@ -68,7 +68,7 @@ export default {
   },
 } as Meta<EmptyStateProps>;
 
-const createImageAsset = (src: string, alt: string) => (
+const createImageAsset = (src: string, alt: string): React.ReactElement => (
   <img src={src} alt={alt} width="100%" style={{ aspectRatio: '1/1', objectFit: 'contain' }} />
 );
 
