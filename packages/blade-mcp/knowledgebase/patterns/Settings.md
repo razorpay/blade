@@ -1,391 +1,386 @@
-## Pattern Name
-
-Settings
+# Settings Pattern
 
 ## Description
 
-The Settings pattern provides a structured way to organize application configuration options and user preferences. It combines a grid-based overview page displaying categorized settings cards with detailed settings pages for specific configurations. This pattern is ideal for applications that need to manage multiple configuration areas while maintaining a consistent and accessible user experience.
+The Settings pattern provides a comprehensive interface for managing application configurations and user preferences. It combines a responsive navigation system (TopNav + SideNav) with a grid-based overview page displaying categorized settings cards and detailed settings pages. This pattern is ideal for applications that need to manage multiple configuration areas while maintaining a consistent and accessible user experience across different screen sizes.
 
 ## Components Used
 
 - Box
 - Card
+- SideNav
+- TopNav
+- TabNav
+- Menu
+- Button
+- IconButton
+- Link
 - Text
 - Heading
-- Link
-- IconButton
+- Badge
+- Avatar
 - Switch
-- Button
-- TopNav
-- SideNav
+- SearchInput
+- Indicator
+- ProgressBar
 
 ## Example
 
-### Complete Settings Interface
-
-This example demonstrates a full settings interface with navigation, overview page, and a detailed settings page. It includes responsive layouts, navigation patterns, and proper accessibility implementation.
-
-#### Things while building this pattern
-- We need to use the `Scale` component to animate the card when hovered.
-- We need to use the `Card` component to create the card.
-- We need to use the `Text` component to create the text.
-- We need to use the `Heading` component to create the heading.
-- We need to use the `IconButton` component to create the icon button.
-- We need to use the `Switch` component to create the switch. (use switch from `@razorpay/blade/components` , not from React router dom)
-- Take following code as reference and build the settings interface. also make sure to use the `useTheme` and `useBreakpoint` hooks to make the interface responsive. 
-- Try to keep spacing consistent across the interface.
-- We don't have any title on Settings page, just display the settings data using cards.
-- Make sure the styling of the cards are consistent across the interface.
-
 ```tsx
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Card,
   CardBody,
-  Text,
-  Heading,
-  Link,
-  IconButton,
-  Switch,
-  Button,
-  TopNav,
-  TopNavBrand,
-  TopNavContent,
-  TopNavActions,
   SideNav,
   SideNavBody,
   SideNavFooter,
   SideNavLink,
-  useTheme,
-  useBreakpoint,
-  ChevronLeftIcon,
-  EditIcon,
+  SideNavSection,
+  TopNav,
+  TopNavBrand,
+  TopNavContent,
+  TopNavActions,
+  TabNav,
+  TabNavItems,
+  TabNavItem,
+  Menu,
+  MenuHeader,
+  MenuItem,
+  MenuFooter,
+  MenuOverlay,
+  Button,
+  IconButton,
+  Link,
+  Text,
+  Heading,
+  Badge,
+  Avatar,
+  Switch,
+  SearchInput,
+  Indicator,
+  ProgressBar,
   HomeIcon,
+  WalletIcon,
+  CreditCardIcon,
+  BankIcon,
+  BillIcon,
+  ArrowUpRightIcon,
+  PlusIcon,
   SettingsIcon,
+  EditIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
 } from '@razorpay/blade/components';
+import { useTheme, useBreakpoint } from '@razorpay/blade/utils';
+import { BrowserRouter, Route, Link as RouterLink } from 'react-router-dom';
 
-// Settings Overview Page
-const SettingsOverview = () => {
+// Settings Card Component for Overview Page
+const SettingCard = ({
+  title,
+  description,
+  links,
+  assetImage,
+}: {
+  title: string;
+  description: string;
+  links: Array<{ label: string; link: string }>;
+  assetImage: string;
+}): React.ReactElement => {
+  return (
+    <Card
+      height="285px"
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.0"
+      borderRadius="medium"
+      elevation="none"
+    >
+      <CardBody>
+        <Box position="relative" height="285px" overflow="hidden" padding="spacing.7">
+          <Box position="relative" zIndex="1">
+            <Box display="flex" flexDirection="column" gap="spacing.7">
+              <Box>
+                <Heading
+                  size="medium"
+                  weight="semibold"
+                  marginBottom="spacing.3"
+                  color="surface.text.gray.normal"
+                >
+                  {title}
+                </Heading>
+                <Box minHeight="40px">
+                  <Text weight="regular" color="surface.text.gray.muted">
+                    {description}
+                  </Text>
+                </Box>
+              </Box>
+              <Box display="flex" flexDirection="column" gap="spacing.3">
+                {links.map((link, index) => (
+                  <RouterLink key={index} to={link.link}>
+                    <Link color="primary" size="medium">
+                      {link.label}
+                    </Link>
+                  </RouterLink>
+                ))}
+              </Box>
+            </Box>
+          </Box>
+          <div
+            style={{
+              position: 'absolute',
+              right: '-100px',
+              bottom: '-70px',
+              width: '249px',
+              height: '249px',
+              borderRadius: '50%',
+              background:
+                'radial-gradient(circle at center, hsla(206, 93%, 95%, 0.9) 0%, hsla(206, 93%, 95%, 0.8) 20%, hsla(209, 95%, 97%, 0.6) 40%, hsla(209, 95%, 97%, 0.4) 60%, hsla(0, 0%, 100%, 0.2) 80%, hsla(0, 0%, 100%, 0) 100%)',
+              display: 'flex',
+              alignItems: 'flex-start',
+              justifyContent: 'center',
+              paddingTop: '40px',
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              src={assetImage}
+              alt={`${title} illustration`}
+              style={{
+                width: '138px',
+                height: '138px',
+                objectFit: 'contain',
+                transform: 'translateX(-30%)',
+              }}
+            />
+          </div>
+        </Box>
+      </CardBody>
+    </Card>
+  );
+};
+
+// Settings Navigation Component
+const SettingsNavigation = (): React.ReactElement => {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isTestMode, setIsTestMode] = useState(false);
+
+  return (
+    <SideNav
+      isOpen={isMobileOpen}
+      onDismiss={() => setIsMobileOpen(false)}
+      banner={
+        <Card href="/" padding="spacing.4" elevation="none">
+          <CardBody>
+            <Box display="flex" justifyContent="space-between" marginBottom="spacing.2">
+              <Text size="medium" weight="semibold">
+                Activation Pending
+              </Text>
+              <ChevronRightIcon />
+            </Box>
+            <ProgressBar
+              label="Progress"
+              showPercentage={true}
+              value={50}
+              accessibilityLabel="Activation progress: 50% complete"
+            />
+          </CardBody>
+        </Card>
+      }
+    >
+      <SideNavBody>
+        <SideNavSection title="Main">
+          <SideNavLink
+            icon={HomeIcon}
+            title="Dashboard"
+            href="/dashboard"
+            as={RouterLink}
+            to="/dashboard"
+          />
+          <SideNavLink
+            icon={WalletIcon}
+            title="Payments"
+            href="/payments"
+            as={RouterLink}
+            to="/payments"
+            trailing={
+              <Button
+                icon={PlusIcon}
+                size="xsmall"
+                variant="tertiary"
+                accessibilityLabel="Create new payment"
+              />
+            }
+          />
+        </SideNavSection>
+
+        <SideNavSection title="Banking" maxVisibleItems={3}>
+          <SideNavLink
+            icon={CreditCardIcon}
+            title="Credit Cards"
+            href="/banking/cards"
+            as={RouterLink}
+            to="/banking/cards"
+          />
+          <SideNavLink
+            icon={BankIcon}
+            title="Bank Accounts"
+            href="/banking/accounts"
+            as={RouterLink}
+            to="/banking/accounts"
+          />
+          <SideNavLink
+            icon={BillIcon}
+            title="Statements"
+            href="/banking/statements"
+            as={RouterLink}
+            to="/banking/statements"
+          />
+          <SideNavLink
+            icon={ArrowUpRightIcon}
+            title="Transfers"
+            href="/banking/transfers"
+            as={RouterLink}
+            to="/banking/transfers"
+          />
+        </SideNavSection>
+      </SideNavBody>
+
+      <SideNavFooter>
+        <Box
+          as="label"
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          padding="spacing.4"
+        >
+          <Box display="flex" alignItems="center" gap="spacing.3">
+            <Indicator
+              color={isTestMode ? 'notice' : 'positive'}
+              emphasis="intense"
+              accessibilityLabel={isTestMode ? 'Test mode enabled' : 'Test mode disabled'}
+            />
+            <Text>Test Mode</Text>
+          </Box>
+          <Switch
+            size="small"
+            isChecked={isTestMode}
+            onChange={({ isChecked }) => setIsTestMode(isChecked)}
+            accessibilityLabel="Toggle test mode"
+          />
+        </Box>
+        <SideNavLink
+          icon={SettingsIcon}
+          title="Settings"
+          href="/settings"
+          as={RouterLink}
+          to="/settings"
+          isActive
+        />
+      </SideNavFooter>
+    </SideNav>
+  );
+};
+
+// Main Settings Component
+export const SettingsPage = (): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
   const isMobile = matchedDeviceType === 'mobile';
 
   const settingsData = [
     {
-      title: 'User Profile',
+      title: 'User profile',
       description: 'Manage your personal profile and security settings',
       links: [
-        { label: 'Personal Information', link: '/settings/profile' },
-        { label: 'Security Settings', link: '/settings/security' },
-        { label: 'Notification Preferences', link: '/settings/notifications' },
+        { label: 'Email & password', link: '/settings/profile' },
+        { label: 'Two factor authentication', link: '/settings/security' },
+        { label: 'Notifications', link: '/settings/notifications' },
       ],
+      assetImage: '/assets/user-profile.png',
     },
     {
-      title: 'Business Settings',
-      description: 'Configure your business profile and preferences',
+      title: 'Business profile',
+      description: 'Configure your business details and preferences',
       links: [
-        { label: 'Company Details', link: '/settings/company' },
-        { label: 'Billing Information', link: '/settings/billing' },
+        { label: 'Business details', link: '/settings/business' },
+        { label: 'Branding', link: '/settings/branding' },
       ],
+      assetImage: '/assets/business-profile.png',
     },
     {
-      title: 'Team Management',
+      title: 'Team management',
       description: 'Manage team members and their permissions',
       links: [
-        { label: 'Team Members', link: '/settings/team' },
-        { label: 'Roles & Permissions', link: '/settings/roles' },
+        { label: 'Team members', link: '/settings/team' },
+        { label: 'Roles & permissions', link: '/settings/roles' },
       ],
+      assetImage: '/assets/team-management.png',
     },
   ];
 
   return (
-    <Box
-      padding={{
-        base: 'spacing.5',
-        m: 'spacing.8',
-      }}
-      backgroundColor="surface.background.gray.subtle"
-    >
-      <Box marginBottom="spacing.6">
-        <Heading size="xlarge" weight="semibold">
-          Settings
-        </Heading>
-      </Box>
-      <Box
-        display="grid"
-        gridTemplateColumns={{
-          base: '1fr',
-          m: 'repeat(2, 1fr)',
-          l: 'repeat(3, 1fr)',
-        }}
-        gap="spacing.6"
-      >
-        {settingsData.map((section, index) => (
-          <Card
-            key={index}
-            backgroundColor="surface.background.gray.intense"
+    <BrowserRouter>
+      <Box height="100vh" display="flex" flexDirection="column">
+        <TopNav>
+          <TopNavBrand>
+            <img src="/logo.svg" alt="Company Logo" height={32} />
+          </TopNavBrand>
+          <TopNavContent>
+            <TabNav>
+              <TabNavItems>
+                <TabNavItem title="Dashboard" icon={HomeIcon} />
+                <TabNavItem title="Payments" icon={WalletIcon} isActive />
+                <TabNavItem title="Settings" icon={SettingsIcon} />
+              </TabNavItems>
+            </TabNav>
+          </TopNavContent>
+          <TopNavActions>
+            <SearchInput
+              placeholder="Search settings"
+              accessibilityLabel="Search settings"
+              width="200px"
+            />
+            <Menu>
+              <Avatar size="medium" name="John Doe" />
+              <MenuOverlay>
+                <MenuHeader title="Profile" />
+                <MenuItem>Account settings</MenuItem>
+                <MenuItem color="negative">Logout</MenuItem>
+              </MenuOverlay>
+            </Menu>
+          </TopNavActions>
+        </TopNav>
+
+        <Box flex="1" display="flex">
+          {!isMobile && (
+            <Box width="240px">
+              <SettingsNavigation />
+            </Box>
+          )}
+
+          <Box
+            flex="1"
             padding="spacing.6"
-            elevation="none"
+            backgroundColor="surface.background.gray.subtle"
+            overflowY="auto"
           >
-            <CardBody>
-              <Box display="flex" flexDirection="column" gap="spacing.4">
-                <Heading size="medium" weight="semibold">
-                  {section.title}
-                </Heading>
-                <Text color="surface.text.gray.muted">{section.description}</Text>
-                <Box display="flex" flexDirection="column" gap="spacing.3">
-                  {section.links.map((link, linkIndex) => (
-                    <Link
-                      key={linkIndex}
-                      href={link.link}
-                      color="primary"
-                      size="medium"
-                      accessibilityLabel={`Go to ${link.label}`}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </Box>
-              </Box>
-            </CardBody>
-          </Card>
-        ))}
-      </Box>
-    </Box>
-  );
-};
-
-// Settings Detail Page
-const SettingsDetail = () => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint(theme);
-  const isMobile = matchedDeviceType === 'mobile';
-
-  return (
-    <Box
-      padding={{
-        base: 'spacing.5',
-        m: 'spacing.8',
-      }}
-      maxWidth="800px"
-      margin="0 auto"
-    >
-      <Box display="flex" alignItems="center" marginBottom="spacing.6">
-        <Link
-          href="/settings"
-          icon={ChevronLeftIcon}
-          accessibilityLabel="Back to settings"
-          size={isMobile ? 'small' : 'medium'}
-        >
-          Back to Settings
-        </Link>
-      </Box>
-
-      <Box marginBottom="spacing.8">
-        <Heading size="xlarge" weight="semibold">
-          Profile Settings
-        </Heading>
-      </Box>
-
-      <Card
-        backgroundColor="surface.background.gray.intense"
-        padding={{
-          base: 'spacing.5',
-          m: 'spacing.7',
-        }}
-        elevation="none"
-      >
-        <CardBody>
-          <Box display="flex" flexDirection="column" gap="spacing.6">
-            {/* Personal Information Section */}
-            <Box>
-              <Heading size="medium" weight="semibold" marginBottom="spacing.4">
-                Personal Information
-              </Heading>
-              <Box display="flex" flexDirection="column" gap="spacing.4">
-                <Box
-                  display="grid"
-                  gridTemplateColumns={{
-                    base: '1fr',
-                    m: '200px 1fr',
-                  }}
-                  gap="spacing.2"
-                  alignItems="center"
-                >
-                  <Text color="surface.text.gray.muted">Name</Text>
-                  <Box display="flex" alignItems="center" gap="spacing.2">
-                    <Text>John Doe</Text>
-                    <IconButton
-                      icon={EditIcon}
-                      size="small"
-                      variant="tertiary"
-                      accessibilityLabel="Edit name"
-                      onClick={() => {}}
-                    />
-                  </Box>
-                </Box>
-
-                <Box
-                  display="grid"
-                  gridTemplateColumns={{
-                    base: '1fr',
-                    m: '200px 1fr',
-                  }}
-                  gap="spacing.2"
-                  alignItems="center"
-                >
-                  <Text color="surface.text.gray.muted">Email</Text>
-                  <Box display="flex" alignItems="center" gap="spacing.2">
-                    <Text>john.doe@example.com</Text>
-                    <IconButton
-                      icon={EditIcon}
-                      size="small"
-                      variant="tertiary"
-                      accessibilityLabel="Edit email"
-                      onClick={() => {}}
-                    />
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-
-            {/* Security Settings Section */}
-            <Box>
-              <Heading size="medium" weight="semibold" marginBottom="spacing.4">
-                Security Settings
-              </Heading>
-              <Box display="flex" flexDirection="column" gap="spacing.4">
-                <Box
-                  display="grid"
-                  gridTemplateColumns={{
-                    base: '1fr',
-                    m: '200px 1fr',
-                  }}
-                  gap="spacing.2"
-                  alignItems="center"
-                >
-                  <Text color="surface.text.gray.muted">Two-Factor Authentication</Text>
-                  <Switch
-                    size="medium"
-                    accessibilityLabel="Toggle two-factor authentication"
-                    onChange={({ isChecked }) => console.log('2FA:', isChecked)}
-                  />
-                </Box>
-
-                <Box
-                  display="grid"
-                  gridTemplateColumns={{
-                    base: '1fr',
-                    m: '200px 1fr',
-                  }}
-                  gap="spacing.2"
-                  alignItems="center"
-                >
-                  <Text color="surface.text.gray.muted">Email Notifications</Text>
-                  <Switch
-                    size="medium"
-                    accessibilityLabel="Toggle email notifications"
-                    onChange={({ isChecked }) => console.log('Notifications:', isChecked)}
-                  />
-                </Box>
-              </Box>
-            </Box>
-
-            <Box marginTop="spacing.4">
-              <Button
-                variant="primary"
-                size={isMobile ? 'medium' : 'large'}
-                accessibilityLabel="Save changes"
-                onClick={() => {}}
-              >
-                Save Changes
-              </Button>
+            <Box
+              display="grid"
+              gridTemplateColumns={{
+                base: '1fr',
+                m: 'repeat(2, 1fr)',
+                l: 'repeat(3, 1fr)',
+              }}
+              gap="spacing.6"
+            >
+              {settingsData.map((setting, index) => (
+                <SettingCard key={index} {...setting} />
+              ))}
             </Box>
           </Box>
-        </CardBody>
-      </Card>
-    </Box>
-  );
-};
-
-// Main Settings Layout
-const SettingsLayout = () => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint(theme);
-  const isMobile = matchedDeviceType === 'mobile';
-
-  return (
-    <Box height="100vh" display="flex" flexDirection="column">
-      <TopNav>
-        <TopNavBrand>
-          <img src="/logo.svg" alt="Company Logo" />
-        </TopNavBrand>
-        <TopNavContent />
-        <TopNavActions>
-          <Button
-            variant="tertiary"
-            icon={HomeIcon}
-            accessibilityLabel="Go to dashboard"
-            onClick={() => {}}
-          />
-        </TopNavActions>
-      </TopNav>
-
-      <Box flex="1" display="flex">
-        {!isMobile && (
-          <Box width="240px" borderRight="thin" borderColor="border.neutral.subtle">
-            <SideNav>
-              <SideNavBody>
-                <SideNavLink
-                  icon={HomeIcon}
-                  title="Dashboard"
-                  href="/dashboard"
-                  accessibilityLabel="Go to dashboard"
-                />
-                <SideNavLink
-                  icon={SettingsIcon}
-                  title="Settings"
-                  href="/settings"
-                  isActive
-                  accessibilityLabel="Settings page"
-                />
-              </SideNavBody>
-              <SideNavFooter />
-            </SideNav>
-          </Box>
-        )}
-
-        <Box flex="1" overflowY="auto">
-          <SettingsOverview />
         </Box>
       </Box>
-    </Box>
+    </BrowserRouter>
   );
 };
-
-export { SettingsLayout, SettingsOverview, SettingsDetail };
 ```
-
-The example above demonstrates a complete settings pattern implementation with three main components:
-
-1. `SettingsLayout`: The main layout component that provides:
-   - Responsive navigation with TopNav and SideNav
-   - Mobile-friendly layout adjustments
-   - Proper accessibility labeling for navigation items
-
-2. `SettingsOverview`: A grid-based overview page showing:
-   - Categorized settings cards
-   - Responsive grid layout
-   - Accessible navigation links
-   - Clear visual hierarchy with headings and descriptions
-
-3. `SettingsDetail`: A detailed settings page demonstrating:
-   - Form layout best practices
-   - Responsive input arrangements
-   - Proper accessibility labeling
-   - Interactive elements (IconButton, Switch)
-   - Clear section organization
-   - Save action handling
-
-The pattern uses Blade's design tokens for consistent spacing, colors, and typography while maintaining accessibility through proper ARIA labels and semantic HTML structure. It adapts to different screen sizes and provides a cohesive settings management experience.
