@@ -115,16 +115,18 @@ const ListViewFilters = ({
     >
       {isMobile && showSearchInput && (
         <Box display="flex" gap="spacing.2">
-          <SearchInput
-            label=""
-            value={searchValue}
-            placeholder={searchValuePlaceholder}
-            name={searchNameValue || searchId}
-            onChange={({ name, value }) => onSearchChange?.({ name, value })}
-            onClearButtonClick={onSearchClear}
-            trailing={searchTrailing}
-            showSearchIcon={showSearchIcon}
-          />
+          <Box width="100%">
+            <SearchInput
+              label=""
+              value={searchValue}
+              placeholder={searchValuePlaceholder}
+              name={searchNameValue || searchId}
+              onChange={({ name, value }) => onSearchChange?.({ name, value })}
+              onClearButtonClick={onSearchClear}
+              trailing={searchTrailing}
+              showSearchIcon={showSearchIcon}
+            />
+          </Box>
           {showSearchButton && (
             <Button
               variant="tertiary"
@@ -165,10 +167,6 @@ const ListViewFilters = ({
               paddingLeft={isMobile ? 'spacing.2' : 'spacing.0'}
             >
               {quickFilters}
-              {/* // Invisible Element so elements don't get cut while scrolling */}
-              {isMobile ? (
-                <Box width="spacing.6" height="1px" backgroundColor="transparent" />
-              ) : null}
             </StyledQuickFilterContainer>
             {isMobile && shouldShowDecorationInQuickFilters ? (
               <Box
