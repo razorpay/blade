@@ -88,21 +88,23 @@ type BaseHeaderProps = {
    */
   backgroundImage?: BoxProps['backgroundImage'];
   /**
-   * So we add a wrapper with custom styles to the leading interaction element.
-   * This is useful when you want to add a custom styles to the leading interaction element
-   * for example, in Accordion, we add a wrapper with flex to center the icon / leading element (in some cases)
+   * So we add a wrapper with custom styles in elements like leading, trailing interaction elements and trailing.
+   * this props allows you to control that.
+   *
+   * For example, in Accordion, we add a wrapper with flex to center the icon (in some cases)
    *
    * @default false
    */
-  removeWrapperInLeadingInteractionElements?: boolean;
+  shouldHandlePositionOfDecoratorsInternally?: boolean;
   /**
-   * So we add a wrapper with custom styles to the trailing interaction element.
-   * This is useful when you want to add a custom styles to the trailing interaction element
-   * for example, in Accordion, we add a wrapper with flex to center the icon (in some cases)
-   *
    * @default false
+   *
+   * why we need this prop ?
+   * So in some cases like Accordion, we need to align trailingElementToCenter, but since we have these validations set in palce , that
+   * only allows us to pass certain components as trailing. it would be better if we can have a prop to control this.
+   * so we can validate the trailing element and align it to center if needed, currently it is top aligned.
    */
-  removeWrapperInTrailingInteractionElements?: boolean;
+  shouldAlignTrailingElementToCenter?: boolean;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -321,8 +323,8 @@ const _BaseHeader = ({
   backgroundImage,
   alignItems = 'flex-start',
   dividerProps,
-  removeWrapperInLeadingInteractionElements = false,
-  removeWrapperInTrailingInteractionElements = false,
+  shouldHandlePositionOfDecoratorsInternally = true,
+  shouldAlignTrailingElementToCenter = false,
   ...rest
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
@@ -343,7 +345,7 @@ const _BaseHeader = ({
       };
 
   const renderTrailingInteractionElementWithChildren = (): React.ReactNode => {
-    if (removeWrapperInTrailingInteractionElements && trailingInteractionElement && children) {
+    if (!shouldHandlePositionOfDecoratorsInternally && trailingInteractionElement && children) {
       return trailingInteractionElement;
     }
     if (trailingInteractionElement && children) {
@@ -357,7 +359,7 @@ const _BaseHeader = ({
   };
 
   const renderTrailingInteractionElementWithoutChildren = (): React.ReactNode => {
-    if (removeWrapperInTrailingInteractionElements && trailingInteractionElement && !children) {
+    if (!shouldHandlePositionOfDecoratorsInternally && trailingInteractionElement && !children) {
       return trailingInteractionElement;
     }
 
@@ -368,7 +370,7 @@ const _BaseHeader = ({
   };
 
   const renderLeadingElement = (): React.ReactNode => {
-    if (Boolean(leading) && removeWrapperInLeadingInteractionElements) {
+    if (Boolean(leading) && !shouldHandlePositionOfDecoratorsInternally) {
       return leading;
     }
 
@@ -383,7 +385,7 @@ const _BaseHeader = ({
   };
 
   const renderTrailingElement = (): React.ReactNode => {
-    if (removeWrapperInTrailingInteractionElements && validatedTrailingComponent) {
+    if (shouldAlignTrailingElementToCenter && validatedTrailingComponent) {
       return (
         <BaseBox marginRight="spacing.5" display="flex" alignItems="center" justifyContent="center">
           <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
