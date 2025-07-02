@@ -68,39 +68,15 @@ export default {
   },
 } as Meta<EmptyStateProps>;
 
-// Asset components with size-based dimensions
-type AssetSize = 'small' | 'medium' | 'large' | 'xlarge';
-
-const getAssetDimensions = (size: AssetSize): { width: string; height: string } => {
-  const dimensions = {
-    small: { width: '60px', height: '60px' },
-    medium: { width: '90px', height: '90px' },
-    large: { width: '120px', height: '120px' },
-    xlarge: { width: '160px', height: '160px' },
-  };
-  return dimensions[size];
-};
-
-const createAssetComponent = (src: string, alt: string) => ({
-  size = 'medium',
-}: {
-  size?: AssetSize;
-}) => {
-  const { width, height } = getAssetDimensions(size);
-  return <img src={src} alt={alt} width={width} height={height} style={{ objectFit: 'contain' }} />;
-};
-
-const ListViewAsset = createAssetComponent(listView, 'List view');
-const NoDataAsset = createAssetComponent(noData, 'No data');
-const ErrorAsset = createAssetComponent(error, 'Error');
-const NoNotificationAsset = createAssetComponent(noNotification, 'No notifications');
-const AccessDeniedAsset = createAssetComponent(accessDenied, 'Access denied');
+const createImageAsset = (src: string, alt: string) => (
+  <img src={src} alt={alt} width="100%" style={{ aspectRatio: '1/1', objectFit: 'contain' }} />
+);
 
 const BasicTemplate: StoryFn<typeof EmptyState> = (args) => <EmptyState {...args} />;
 
 export const Basic = BasicTemplate.bind({});
 Basic.args = {
-  asset: <ErrorAsset />,
+  asset: createImageAsset(error, 'Page not found'),
   title: "We couldn't find the page you're looking for",
   description: 'The page you are looking for does not exist, or has been moved.',
   children: (
@@ -124,14 +100,14 @@ Basic.args = {
 
 export const WithTitleAndDescription = BasicTemplate.bind({});
 WithTitleAndDescription.args = {
-  asset: <NoDataAsset />,
+  asset: createImageAsset(noData, 'No data'),
   title: 'No content available',
   description: 'Please try again later',
 };
 
 export const OnlyAsset = BasicTemplate.bind({});
 OnlyAsset.args = {
-  asset: <AccessDeniedAsset />,
+  asset: createImageAsset(accessDenied, 'Access denied'),
 };
 
 export const AllSizes = (): React.ReactElement => (
@@ -142,7 +118,7 @@ export const AllSizes = (): React.ReactElement => (
       </Heading>
       <EmptyState
         size="small"
-        asset={<NoNotificationAsset size="small" />}
+        asset={createImageAsset(noNotification, 'No notifications')}
         title="Small Empty State"
         description="This is a small empty state with reduced spacing and text sizes."
       />
@@ -154,7 +130,7 @@ export const AllSizes = (): React.ReactElement => (
       </Heading>
       <EmptyState
         size="medium"
-        asset={<NoNotificationAsset size="medium" />}
+        asset={createImageAsset(noNotification, 'No notifications')}
         title="Medium Empty State"
         description="This is a medium empty state with default spacing and text sizes."
       />
@@ -166,7 +142,7 @@ export const AllSizes = (): React.ReactElement => (
       </Heading>
       <EmptyState
         size="large"
-        asset={<NoNotificationAsset size="large" />}
+        asset={createImageAsset(noNotification, 'No notifications')}
         title="Large Empty State"
         description="This is a large empty state with increased spacing and text sizes."
       />
@@ -178,7 +154,7 @@ export const AllSizes = (): React.ReactElement => (
       </Heading>
       <EmptyState
         size="xlarge"
-        asset={<NoNotificationAsset size="xlarge" />}
+        asset={createImageAsset(noNotification, 'No notifications')}
         title="XLarge Empty State"
         description="This is an xlarge empty state with maximum spacing and text sizes."
       />
@@ -188,7 +164,7 @@ export const AllSizes = (): React.ReactElement => (
 
 export const WithSingleAction = BasicTemplate.bind({});
 WithSingleAction.args = {
-  asset: <ListViewAsset />,
+  asset: createImageAsset(listView, 'List view'),
   title: 'No payment links found',
   description: 'Create your first payment link to start accepting payments from customers.',
   children: <Button>Create Payment Link</Button>,
@@ -196,7 +172,7 @@ WithSingleAction.args = {
 
 export const WithMultipleActions = BasicTemplate.bind({});
 WithMultipleActions.args = {
-  asset: <NoDataAsset />,
+  asset: createImageAsset(noData, 'No data'),
   title: 'No data available',
   description: 'Get started by importing your data or creating new records.',
   children: (
@@ -209,7 +185,7 @@ WithMultipleActions.args = {
 
 export const WithActionAndLink = BasicTemplate.bind({});
 WithActionAndLink.args = {
-  asset: <ErrorAsset />,
+  asset: createImageAsset(error, 'Error'),
   title: 'Something went wrong',
   description: 'We encountered an error while loading your data. Please try again.',
   children: (
@@ -222,7 +198,7 @@ WithActionAndLink.args = {
 
 export const WithLinkOnly = BasicTemplate.bind({});
 WithLinkOnly.args = {
-  asset: <NoNotificationAsset />,
+  asset: createImageAsset(noNotification, 'No notifications'),
   title: 'No notifications',
   description: "You're all caught up! Check back later for new notifications.",
   children: <Link href="/settings">Manage Notification Settings</Link>,
@@ -245,7 +221,7 @@ export const DifferentAssets = (): React.ReactElement => (
         List View Asset
       </Heading>
       <EmptyState
-        asset={<ListViewAsset size="medium" />}
+        asset={createImageAsset(listView, 'List view')}
         title="No items in list"
         description="Add items to see them appear in your list view."
       >
@@ -258,7 +234,7 @@ export const DifferentAssets = (): React.ReactElement => (
         No Data Asset
       </Heading>
       <EmptyState
-        asset={<NoDataAsset size="medium" />}
+        asset={createImageAsset(noData, 'No data')}
         title="No data available"
         description="Import or create data to get started with your dashboard."
       >
@@ -271,7 +247,7 @@ export const DifferentAssets = (): React.ReactElement => (
         Error Asset
       </Heading>
       <EmptyState
-        asset={<ErrorAsset size="medium" />}
+        asset={createImageAsset(error, 'Error')}
         title="Failed to load data"
         description="We couldn't retrieve your data. Please check your connection and try again."
       >
@@ -287,7 +263,7 @@ export const DifferentAssets = (): React.ReactElement => (
         No Notifications Asset
       </Heading>
       <EmptyState
-        asset={<NoNotificationAsset size="medium" />}
+        asset={createImageAsset(noNotification, 'No notifications')}
         title="No notifications"
         description="You're all caught up! New notifications will appear here."
       >
@@ -300,7 +276,7 @@ export const DifferentAssets = (): React.ReactElement => (
         Access Denied Asset
       </Heading>
       <EmptyState
-        asset={<AccessDeniedAsset size="medium" />}
+        asset={createImageAsset(accessDenied, 'Access denied')}
         title="Access denied"
         description="You don't have permission to view this content. Contact your administrator for access."
       >
