@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+"@razorpay/blade": minor
 ---
 
-feat(EmptyState): add emptystate component
+feat(blade): add EmptyState component
