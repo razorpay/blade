@@ -10,9 +10,17 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { makeSize } from '~utils/makeSize';
 import { size as sizeToken } from '~tokens/global';
+
+const getLeadingElementMaxHeightAndWidth = (
+  size: BaseHeaderProps['size'],
+): BoxProps['maxHeight'] => {
+  if (size === 'large') return makeSize(sizeToken['32']);
+  return makeSize(sizeToken['24']);
+};
 
 const _AccordionItemHeader = ({
   title,
@@ -91,7 +99,9 @@ const _AccordionItemHeader = ({
           alignSelf="center"
           marginRight={isLeadingIcon ? 'spacing.0' : 'spacing.3'}
           marginBottom={makeSize(sizeToken['1'])}
-          height={isLeadingIcon ? makeSize(sizeToken['24']) : '100%'}
+          maxHeight={getLeadingElementMaxHeightAndWidth(size)}
+          maxWidth={getLeadingElementMaxHeightAndWidth(size)}
+          overflow="hidden"
         >
           {leading}
         </BaseBox>
@@ -121,8 +131,8 @@ const _AccordionItemHeader = ({
           marginX: 'spacing.5',
         }}
         trailingInteractionElement={trailingInteractionElement}
-        removeWrapperInTrailingInteractionElements={shouldAlignHeaderItemsInCenter}
-        removeWrapperInLeadingInteractionElements={shouldAlignHeaderItemsInCenter}
+        shouldHandlePositionOfDecoratorsInternally={!shouldAlignHeaderItemsInCenter}
+        shouldAlignTrailingElementToCenter={shouldAlignHeaderItemsInCenter}
         {...makeAnalyticsAttribute(rest)}
       >
         {children}
