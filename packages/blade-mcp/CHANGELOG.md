@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.1.1
+
+### Patch Changes
+
+- d8a9dd202: docs: add EmptyState in knowledgebase
+
 ## 1.1.0
 
 ### Minor Changes
