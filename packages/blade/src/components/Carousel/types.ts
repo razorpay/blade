@@ -44,6 +44,13 @@ type CarouselProps = {
    */
   shouldAddStartEndSpacing?: boolean;
   /**
+   * Enables peek behavior where the active card is centered with adjacent cards peeking from sides.
+   * This prop internally sets visibleItems to 1.
+   *
+   * @default false
+   */
+  showPeek?: boolean;
+  /**
    * If true, the carousel will automatically slide to the next slide, default interval is 6 seconds
    *
    * @default false

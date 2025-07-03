@@ -112,6 +112,7 @@ type TestimonialData = {
   name: string;
   role: string;
   company: string;
+  truncateQuotes?: number;
 };
 
 const testimonialData: TestimonialData[] = [
@@ -210,6 +211,7 @@ const TestimonialCard = ({
   longQuote,
   role,
   company,
+  truncateQuotes,
 }: TestimonialData): React.ReactElement => {
   return (
     <Card height="100%">
@@ -220,7 +222,7 @@ const TestimonialCard = ({
             <Heading weight="semibold" size="large">
               {quote}
             </Heading>
-            <Text size="medium" marginTop="spacing.4">
+            <Text size="medium" marginTop="spacing.4" truncateAfterLines={truncateQuotes}>
               {longQuote}
             </Text>
           </Box>
@@ -576,5 +578,30 @@ const InteractiveCarouselTestimonialTemplate: StoryFn<typeof CarouselComponent> 
 };
 
 export const WithInteractiveCards = InteractiveCarouselTestimonialTemplate.bind({});
+
+export const PeekBehavior: StoryFn<typeof CarouselComponent> = (props) => {
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Heading size="large">Peek Behavior - showPeek: true</Heading>
+      <Text marginTop="spacing.2" color="surface.text.gray.muted">
+        Active card is centered with adjacent cards peeking from the sides.
+      </Text>
+      <Box marginTop="spacing.6">
+        <CarouselComponent
+          {...props}
+          showPeek={true}
+          navigationButtonPosition="side"
+          accessibilityLabel="Testimonials"
+        >
+          {testimonialData.map((testimonial) => (
+            <CarouselItem key={testimonial.name}>
+              <TestimonialCard {...testimonial} truncateQuotes={3} />
+            </CarouselItem>
+          ))}
+        </CarouselComponent>
+      </Box>
+    </Box>
+  );
+};
 
 export default meta;
