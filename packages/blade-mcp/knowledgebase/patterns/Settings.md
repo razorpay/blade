@@ -24,12 +24,9 @@ The Settings pattern provides a comprehensive interface for managing application
 - Indicator
 - ProgressBar
 
-## Example
+## Settings Overview
 
-
-## Settings Page Component
-
-The Settings page component provides a comprehensive overview of all configurable aspects of the application. It presents settings categories in a grid layout using cards, each with its own visual identity and quick access links.
+The Settings Overview provides a comprehensive view of all configurable aspects of the application. It presents settings categories in a grid layout using cards, each with its own visual identity and quick access links.
 
 ### Features
 
@@ -52,6 +49,7 @@ The Settings page component provides a comprehensive overview of all configurabl
    - Bank Account & Settlements
    - Team Management
 
+### Example
 
 ```tsx
 import React, { useState } from 'react';
@@ -412,6 +410,8 @@ export const SettingsPage = (): React.ReactElement => {
 };
 
 ```
+This implementation provides a user-friendly overview of all available settings categories while maintaining consistency with Blade's design system principles.
+
 ### Key Features
 
 1. **Responsive Grid Layout**
@@ -457,11 +457,35 @@ The Settings page component demonstrates best practices for:
 - Accessibility
 - Component composition
 
-This implementation provides a user-friendly overview of all available settings categories while maintaining consistency with Blade's design system principles.
+### Pattern Components
 
-## Settings Detail Page
+The Settings Overview pattern is composed of these reusable components:
 
-The Settings Detail page pattern demonstrates how to structure individual settings pages that users navigate to from the main Settings overview. Using the User Profile settings as an example, this pattern shows how to organize detailed configuration options in a clear, accessible, and user-friendly manner.
+1. `SettingsLayout`: The main layout component that provides:
+   - Responsive navigation with TopNav and SideNav
+   - Mobile-friendly layout adjustments
+   - Proper accessibility labeling for navigation items
+   - Consistent spacing and container widths
+   - Search functionality in the header
+   - User menu integration
+
+2. `SettingsOverview`: A grid-based overview page showing:
+   - Categorized settings cards with consistent styling
+   - Responsive grid layout (1/2/3 columns based on screen size)
+   - Accessible navigation links to detail pages
+   - Clear visual hierarchy with headings and descriptions
+   - Visual illustrations and gradient backgrounds
+   - Quick access links for common actions
+
+3. `SettingCard`: Card component for each settings category
+
+4. Helper Components:
+   - `TopNavigation`: Navigation header with search and user menu
+   - `SideNavigation`: Side navigation with sections and items
+
+## Settings Detail
+
+The Settings Detail pattern demonstrates how to structure individual settings pages that users navigate to from the main Settings overview. Using the User Profile settings as an example, this pattern shows how to organize detailed configuration options in a clear, accessible, and user-friendly manner.
 
 ### Features
 
@@ -499,6 +523,7 @@ import {
   EditIcon,
   ChevronLeftIcon,
 } from '@razorpay/blade/components';
+import type { BoxProps } from '@razorpay/blade/components';
 import { useTheme, useBreakpoint } from '@razorpay/blade/utils';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -572,17 +597,22 @@ const SubSectionCard = ({
   title,
   subtitle,
   children,
+  marginTop = {
+    xs: 'spacing.9',
+    l: '64px',
+  },
 }: {
   title: string;
   subtitle: string;
   children: React.ReactNode;
+  marginTop?: BoxProps['marginTop'];
 }): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
   const isMobile = matchedDeviceType === 'mobile';
   
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
+    <Box display="flex" flexDirection="column" gap="spacing.5" marginTop={marginTop}>
       <Box display="flex" flexDirection="column" gap="spacing.2">
         <Heading size="medium" weight="semibold" color="surface.text.gray.normal">
           {title}
@@ -653,6 +683,7 @@ export const SettingsDetailPage = (): React.ReactElement => {
           <SubSectionCard
             title="Profile details"
             subtitle="These are your personal, user-level details"
+            marginTop="none"
           >
             <Box display="flex" flexDirection="column" gap="spacing.5">
               <CardRow label="Name" value="John Doe" />
@@ -664,7 +695,6 @@ export const SettingsDetailPage = (): React.ReactElement => {
           </SubSectionCard>
 
           {/* Two Factor Authentication */}
-          <Box marginTop={{ xs: 'spacing.9', l: '64px' }}>
             <SubSectionCard
               title="Two factor authentication"
               subtitle="Secure your account by using a one-time verification code each time you log in"
@@ -676,10 +706,10 @@ export const SettingsDetailPage = (): React.ReactElement => {
                 }
               />
             </SubSectionCard>
-          </Box>
+        
 
           {/* Notifications */}
-          <Box marginTop={{ xs: 'spacing.9', l: '64px' }}>
+         
             <SubSectionCard
               title="Notifications"
               subtitle="Receive notifications on your phone/email for any account related updates"
@@ -705,15 +735,13 @@ export const SettingsDetailPage = (): React.ReactElement => {
                 />
               </Box>
             </SubSectionCard>
-          </Box>
         </Box>
       </Box>
     </Box>
   );
 };
 
-```
-
+This implementation can be used as a template for creating other settings detail pages, ensuring consistency across the application while maintaining a user-friendly and accessible interface.
 
 ### Key Features
 
@@ -757,6 +785,25 @@ The Settings Detail page pattern demonstrates best practices for:
 - Component composition
 - Visual hierarchy
 - Navigation patterns
-This implementation can be used as a template for creating other settings detail pages, ensuring consistency across the application while maintaining a user-friendly and accessible interface.
+
+### Pattern Components
+
+The Settings Detail pattern consists of these reusable components:
+
+1. `SettingsDetail`: A detailed settings page demonstrating:
+   - Form layout best practices with consistent spacing
+   - Responsive input arrangements (grid-based layout)
+   - Proper accessibility labeling for all interactive elements
+   - Interactive elements (IconButton, Switch) with hover states
+   - Clear section organization with cards and headings
+   - Save action handling with proper feedback
+   - Back navigation with proper routing
+
+2. Sub Components:
+   - `CardRow`: Consistent form field layout with label and value
+   - `SubSectionCard`: Section grouping with headers and descriptions
+   - `CardRowValueContainer`: Interactive field display with edit functionality
+
+These components are designed to be reusable and customizable while maintaining consistency with Blade's design system principles. They can be used independently in other contexts where similar patterns are needed.
 
 

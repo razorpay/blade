@@ -67,6 +67,7 @@ import {
   TabNavItem,
 } from '../TopNav';
 import { useTheme, useBreakpoint } from '../../utils';
+import type { BoxProps } from '../Box';
 import { RazorpayLogo } from './assets/razorpay';
 import TeamManagementIcon from './assets/png/team.png';
 import BankAccountIcon from './assets/png/bank.png';
@@ -869,16 +870,21 @@ const SubSectionCard = ({
   title,
   subtitle,
   children,
+  marginTop = {
+    xs: 'spacing.9',
+    l: '64px',
+  },
 }: {
   title: string;
   subtitle: string;
   children: React.ReactNode;
+  marginTop?: BoxProps['marginTop'];
 }): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
   const isMobile = matchedDeviceType === 'mobile';
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
+    <Box display="flex" flexDirection="column" gap="spacing.5" marginTop={marginTop} width="100%">
       <Box display="flex" flexDirection="column" gap="spacing.2">
         <Heading size="medium" weight="semibold" color="surface.text.gray.normal">
           {title}
@@ -955,6 +961,7 @@ const User = (): React.ReactElement => {
           <SubSectionCard
             title="Profile details"
             subtitle="These are your personal, user-level details"
+            marginTop="none"
           >
             <Box display="flex" flexDirection="column" gap="spacing.5">
               {/* Name field */}
@@ -975,58 +982,46 @@ const User = (): React.ReactElement => {
           </SubSectionCard>
 
           {/* Two Factor Authentication Card */}
-          <Box
-            marginTop={{
-              xs: 'spacing.9',
-              l: '64px',
-            }}
+
+          <SubSectionCard
+            title="Two factor authentication"
+            subtitle="Secure your account by using a one-time verification code each time you log in"
           >
-            <SubSectionCard
-              title="Two factor authentication"
-              subtitle="Secure your account by using a one-time verification code each time you log in"
-            >
-              <CardRow
-                label="Two factor authentication"
-                trailingElement={
-                  <Switch accessibilityLabel="Toggle Two Factor Authentication" size="medium" />
-                }
-              />
-            </SubSectionCard>
-          </Box>
+            <CardRow
+              label="Two factor authentication"
+              trailingElement={
+                <Switch accessibilityLabel="Toggle Two Factor Authentication" size="medium" />
+              }
+            />
+          </SubSectionCard>
 
           {/* Notifications Card */}
-          <Box
-            marginTop={{
-              xs: 'spacing.9',
-              l: '64px',
-            }}
+
+          <SubSectionCard
+            title="Notifications"
+            subtitle="Receive notifications from Razorpay on your phone/email for any account related updates"
           >
-            <SubSectionCard
-              title="Notifications"
-              subtitle="Receive notifications from Razorpay on your phone/email for any account related updates"
-            >
-              <Box display="flex" flexDirection="column" gap="spacing.5">
-                <CardRow
-                  label="Email"
-                  trailingElement={
-                    <Switch accessibilityLabel="Toggle Email Notifications" size="medium" />
-                  }
-                />
-                <CardRow
-                  label="Whatsapp"
-                  trailingElement={
-                    <Switch accessibilityLabel="Toggle Whatsapp Notifications" size="medium" />
-                  }
-                />
-                <CardRow
-                  label="SMS"
-                  trailingElement={
-                    <Switch accessibilityLabel="Toggle SMS Notifications" size="medium" />
-                  }
-                />
-              </Box>
-            </SubSectionCard>
-          </Box>
+            <Box display="flex" flexDirection="column" gap="spacing.5">
+              <CardRow
+                label="Email"
+                trailingElement={
+                  <Switch accessibilityLabel="Toggle Email Notifications" size="medium" />
+                }
+              />
+              <CardRow
+                label="Whatsapp"
+                trailingElement={
+                  <Switch accessibilityLabel="Toggle Whatsapp Notifications" size="medium" />
+                }
+              />
+              <CardRow
+                label="SMS"
+                trailingElement={
+                  <Switch accessibilityLabel="Toggle SMS Notifications" size="medium" />
+                }
+              />
+            </Box>
+          </SubSectionCard>
         </Box>
       </Box>
     </Box>
