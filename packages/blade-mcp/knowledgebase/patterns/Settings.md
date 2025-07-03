@@ -459,7 +459,7 @@ The Settings page component demonstrates best practices for:
 
 ### Pattern Components
 
-The Settings Overview pattern is composed of these reusable components:
+The Settings Overview pattern is composed of these  components  :
 
 1. `SettingsLayout`: The main layout component that provides:
    - Responsive navigation with TopNav and SideNav
@@ -477,9 +477,9 @@ The Settings Overview pattern is composed of these reusable components:
    - Visual illustrations and gradient backgrounds
    - Quick access links for common actions
 
-3. `SettingCard`: Card component for each settings category
 
-4. Helper Components:
+3. Sub Components:
+   - `SettingCard`: Card component for each settings category
    - `TopNavigation`: Navigation header with search and user menu
    - `SideNavigation`: Side navigation with sections and items
 
