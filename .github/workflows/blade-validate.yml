@@ -128,7 +128,8 @@ jobs:
           fi
       - name: Prepare Coverage Comment
         run: |
-          echo '## 🛡️ Coverage Report' > coverage-comment.md
+          echo '<!-- coverage-report-comment -->' > coverage-comment.md
+          echo '## 🛡️ Coverage Report' >> coverage-comment.md
           echo '' >> coverage-comment.md
           echo '### Summary' >> coverage-comment.md
           echo '```' >> coverage-comment.md
@@ -143,9 +144,18 @@ jobs:
           echo '```' >> coverage-comment.md
           echo '' >> coverage-comment.md
           echo '</details>' >> coverage-comment.md
-      - name: Post Coverage Summary as PR Comment
-        uses: peter-evans/create-or-update-comment@v4
+      - name: Find existing coverage comment
+        uses: peter-evans/find-comment@v3
+        id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'rzpcibot'
+          body-includes: '<!-- coverage-report-comment -->'
+      - name: Create or update coverage comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
           body-file: coverage-comment.md
-          token: ${{ secrets.CI_BOT_TOKEN }}  
+          token: ${{ secrets.CI_BOT_TOKEN }}
+          edit-mode: replace  
