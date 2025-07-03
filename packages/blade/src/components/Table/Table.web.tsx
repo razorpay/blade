@@ -28,6 +28,7 @@ import type {
   TablePaginationType,
   TableHeaderRowProps,
 } from './types';
+import { getTableBodyStyles } from './commonStyles';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -87,21 +88,42 @@ const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): nu
   return 0;
 };
 
-const StyledReactTable = styled(ReactTable)<{ $styledProps?: { height?: BoxProps['height'] } }>(
-  ({ $styledProps }) => {
-    const { theme } = useTheme();
-    const styledPropsCSSObject = getBaseBoxStyles({
-      theme,
-      height: $styledProps?.height,
-    });
-
-    return {
-      '&&&': {
-        ...styledPropsCSSObject,
-      },
-    };
-  },
-);
+const StyledReactTable = styled(ReactTable)<{
+  $styledProps?: {
+    height?: BoxProps['height'];
+    width?: BoxProps['width'];
+    isVirtualized?: boolean;
+    isSelectable?: boolean;
+    showStripedRows?: boolean;
+  };
+}>(({ $styledProps }) => {
+  const { theme } = useTheme();
+  const styledPropsCSSObject = getBaseBoxStyles({
+    theme,
+    height: $styledProps?.height,
+    ...($styledProps?.isVirtualized && {
+      width: '100%',
+    }),
+  });
+  const $isSelectable = $styledProps?.isSelectable;
+  const $showStripedRows = $styledProps?.showStripedRows;
+  return {
+    '&&&': {
+      ...styledPropsCSSObject,
+      overflow: `${$styledProps?.isVirtualized ? 'unset' : 'auto'} !important`,
+    },
+    ...($styledProps?.isVirtualized
+      ? getTableBodyStyles({
+          isVirtualized: $styledProps?.isVirtualized,
+          theme,
+          height: $styledProps?.height,
+          width: '100%',
+          isSelectable: $isSelectable,
+          showStripedRows: $showStripedRows,
+        })
+      : null),
+  };
+});
 
 const RefreshWrapper = styled(BaseBox)<{
   isRefreshSpinnerVisible: boolean;
@@ -112,9 +134,9 @@ const RefreshWrapper = styled(BaseBox)<{
     opacity: isRefreshSpinnerVisible ? 1 : 0,
     transition: `opacity ${makeMotionTime(theme.motion.duration.quick)} ${
       isRefreshSpinnerEntering
-        ? theme.motion.easing.entrance.effective
+        ? theme.motion.easing.entrance
         : isRefreshSpinnerExiting
-        ? theme.motion.easing.exit.effective
+        ? theme.motion.easing.exit
         : ''
     }`,
   };
@@ -141,6 +163,7 @@ const _Table = <Item,>({
   isRefreshing = false,
   showBorderedCells = false,
   defaultSelectedIds = [],
+  backgroundColor = tableBackgroundColor,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -156,9 +179,10 @@ const _Table = <Item,>({
     undefined,
   );
   const [hasHoverActions, setHasHoverActions] = React.useState(false);
+  const tableRootComponent = children([]);
+  const isVirtualized = getComponentId(tableRootComponent) === ComponentIds.VirtualizedTable;
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-  const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
-  const backgroundColor = tableBackgroundColor;
+  const shouldHeaderBeSticky = isVirtualized ?? isHeaderSticky ?? isFirstColumnSticky;
 
   const isMobile = useIsMobile();
   const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
@@ -265,7 +289,7 @@ const _Table = <Item,>({
   }, [data.nodes]);
 
   // Selection Logic
-  const onSelectChange: MiddlewareFunction = (action, state): void => {
+  const onSelectChange: MiddlewareFunction = (_, state): void => {
     const selectedIds: Identifier[] = state.id ? [state.id] : state.ids ?? [];
     setSelectedRows(selectedIds);
     onSelectionChange?.({
@@ -323,7 +347,7 @@ const _Table = <Item,>({
   );
 
   // Sort Logic
-  const handleSortChange: MiddlewareFunction = (action, state) => {
+  const handleSortChange: MiddlewareFunction = (_, state) => {
     onSortChange?.({
       sortKey: state.sortKey,
       isSortReversed: state.reverse,
@@ -341,7 +365,7 @@ const _Table = <Item,>({
     },
   );
 
-  const currentSortedState: TableContextType['currentSortedState'] = useMemo(() => {
+  const currentSortedState: TableContextType<Item>['currentSortedState'] = useMemo(() => {
     return {
       sortKey: sort.state.sortKey,
       isSortReversed: sort.state.reverse,
@@ -409,7 +433,7 @@ const _Table = <Item,>({
   }
 
   // Table Context
-  const tableContext: TableContextType = useMemo(
+  const tableContext: TableContextType<Item> = useMemo(
     () => ({
       selectionType,
       selectedRows,
@@ -434,6 +458,10 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      columnCount,
+      gridTemplateColumns,
+      isVirtualized,
+      tableData: data.nodes,
     }),
     [
       selectionType,
@@ -442,8 +470,10 @@ const _Table = <Item,>({
       toggleRowSelectionById,
       toggleAllRowsSelection,
       deselectAllRows,
+      gridTemplateColumns,
       rowDensity,
       toggleSort,
+      columnCount,
       currentSortedState,
       setPaginationPage,
       setPaginationRowSize,
@@ -459,6 +489,8 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      isVirtualized,
+      data,
     ],
   );
 
@@ -479,10 +511,13 @@ const _Table = <Item,>({
         </BaseBox>
       ) : (
         <BaseBox
+          // ref={ref as never}
           flex={1}
           position="relative"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
+          width={isVirtualized ? `100%` : undefined}
+          {...makeAnalyticsAttribute(rest)}
         >
           {isRefreshSpinnerMounted && (
             <RefreshWrapper
@@ -501,7 +536,8 @@ const _Table = <Item,>({
               <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
             </RefreshWrapper>
           )}
-          {toolbar}
+          {/* wrapping toolbar in BaseBox and passing the same analytics attributes as of table because in analytics POV, events triggered are from table */}
+          <BaseBox {...makeAnalyticsAttribute(rest)}>{toolbar}</BaseBox>
           <StyledReactTable
             role="table"
             layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
@@ -512,6 +548,10 @@ const _Table = <Item,>({
             sort={sortFunctions ? sort : null}
             $styledProps={{
               height,
+              width: isVirtualized ? `100%` : undefined,
+              isVirtualized,
+              isSelectable: selectionType !== 'none',
+              showStripedRows,
             }}
             pagination={hasPagination ? paginationConfig : null}
             {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
@@ -526,7 +566,6 @@ const _Table = <Item,>({
     </TableContext.Provider>
   );
 };
-
 const Table = assignWithoutSideEffects(_Table, {
   componentId: ComponentIds.Table,
 });

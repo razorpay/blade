@@ -110,7 +110,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
           "neutral": {
             "intense": "hsla(220, 22%, 92%, 1)",
-            "subtle": "hsla(216, 27%, 24%, 1)",
+            "subtle": "hsla(215, 20%, 43%, 1)",
           },
           "notice": {
             "intense": "hsla(25, 100%, 63%, 1)",
@@ -126,7 +126,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "background": {
           "gray": {
             "default": "hsla(214, 20%, 84%, 0.12)",
-            "disabled": "hsla(214, 20%, 84%, 0.09)",
+            "disabled": "hsla(214, 20%, 84%, 0.18)",
             "faded": "hsla(214, 20%, 84%, 0.06)",
             "fadedHighlighted": "hsla(214, 20%, 84%, 0.12)",
             "highlighted": "hsla(214, 20%, 84%, 0.18)",
@@ -191,7 +191,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "border": {
           "gray": {
             "default": "hsla(216, 24%, 31%, 1)",
-            "disabled": "hsla(217, 27%, 21%, 1)",
+            "disabled": "hsla(216, 27%, 24%, 1)",
             "faded": "hsla(214, 20%, 84%, 0.18)",
             "highlighted": "hsla(216, 24%, 31%, 1)",
           },
@@ -288,7 +288,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(150, 100%, 37%, 1)",
           },
           "primary": {
-            "disabled": "hsla(240, 20%, 99%, 1)",
+            "disabled": "hsla(332, 100%, 26%, 0.24)",
             "muted": "hsla(240, 20%, 99%, 1)",
             "normal": "hsla(240, 20%, 99%, 1)",
             "subtle": "hsla(240, 20%, 99%, 1)",
@@ -350,7 +350,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(150, 100%, 37%, 1)",
           },
           "primary": {
-            "disabled": "hsla(240, 20%, 99%, 1)",
+            "disabled": "hsla(332, 100%, 26%, 0.24)",
             "muted": "hsla(240, 20%, 99%, 1)",
             "normal": "hsla(240, 20%, 99%, 1)",
             "subtle": "hsla(240, 20%, 99%, 1)",
@@ -377,7 +377,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
       },
       "popup": {
         "background": {
-          "intense": "hsla(217, 27%, 15%, 1)",
+          "intense": "hsla(216, 27%, 24%, 1)",
           "subtle": "hsla(217, 27%, 15%, 1)",
         },
         "border": {
@@ -412,8 +412,8 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(217, 27%, 21%, 1)",
           },
           "primary": {
-            "muted": "hsla(227, 100%, 59%, 0.32)",
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "muted": "hsla(332, 100%, 26%, 0.18)",
+            "normal": "hsl(332, 100%, 26%)",
           },
         },
         "icon": {
@@ -479,7 +479,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
         },
       },
-      "transparent": "hsla(0, 0%, 100%, 0)",
+      "transparent": "hsla(217, 27%, 15%, 0)",
     },
     "onLight": {
       "feedback": {
@@ -576,7 +576,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "background": {
           "gray": {
             "default": "hsla(211, 20%, 52%, 0.12)",
-            "disabled": "hsla(211, 20%, 52%, 0.09)",
+            "disabled": "hsla(211, 20%, 52%, 0.18)",
             "faded": "hsla(211, 20%, 52%, 0.06)",
             "fadedHighlighted": "hsla(211, 20%, 52%, 0.12)",
             "highlighted": "hsla(211, 20%, 52%, 0.18)",
@@ -738,7 +738,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(150, 100%, 32%, 1)",
           },
           "primary": {
-            "disabled": "hsl(332, 100%, 26%)",
+            "disabled": "hsla(332, 100%, 26%, 0.18)",
             "muted": "hsl(332, 100%, 26%)",
             "normal": "hsl(332, 100%, 26%)",
             "subtle": "hsl(332, 100%, 26%)",
@@ -800,7 +800,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(150, 100%, 32%, 1)",
           },
           "primary": {
-            "disabled": "hsl(332, 100%, 26%)",
+            "disabled": "hsla(332, 100%, 26%, 0.18)",
             "muted": "hsl(332, 100%, 26%)",
             "normal": "hsl(332, 100%, 26%)",
             "subtle": "hsl(332, 100%, 26%)",
@@ -862,8 +862,8 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(214, 28%, 84%, 1)",
           },
           "primary": {
-            "muted": "hsla(227, 100%, 59%, 0.18)",
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "muted": "hsla(332, 100%, 26%, 0.18)",
+            "normal": "hsl(332, 100%, 26%)",
           },
         },
         "icon": {
@@ -1020,39 +1020,33 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
   },
   "motion": {
     "delay": {
-      "2xshort": 70,
-      "long": 3000,
-      "short": 180,
-      "xlong": 5000,
-      "xshort": 120,
+      "2xlong": 5000,
+      "2xquick": 80,
+      "gentle": 480,
+      "long": 2000,
+      "moderate": 280,
+      "xgentle": 960,
+      "xlong": 3000,
+      "xquick": 160,
     },
     "duration": {
-      "2xgentle": 900,
-      "2xquick": 70,
-      "gentle": 400,
-      "moderate": 250,
+      "2xgentle": 960,
+      "2xquick": 80,
+      "gentle": 480,
+      "moderate": 280,
       "quick": 200,
-      "xgentle": 600,
-      "xmoderate": 300,
-      "xquick": 150,
+      "xgentle": 640,
+      "xmoderate": 360,
+      "xquick": 160,
     },
     "easing": {
-      "entrance": {
-        "attentive": "0.5 0 0.3 1.5",
-        "effective": "0 0 0.2 1",
-        "revealing": "0 0 0 1",
-      },
-      "exit": {
-        "attentive": "0.7 0 0.5 1",
-        "effective": "0.17 0 1 1",
-        "revealing": "0.5 0 1 1",
-      },
-      "standard": {
-        "attentive": "0.5 0 0.3 1.5",
-        "effective": "0.3 0 0.2 1",
-        "revealing": "0.5 0 0 1",
-        "wary": "1 0.5 0 0.5",
-      },
+      "emphasized": "0.5 0 0 1",
+      "entrance": "0 0 0.2 1",
+      "exit": "0.17 0 1 1",
+      "linear": "0 0 0 0",
+      "overshoot": "0.5 0 0.3 1.5",
+      "shake": "1 0.5 0 0.5",
+      "standard": "0.3 0 0.2 1",
     },
   },
   "name": "custom-83003d",
@@ -1195,6 +1189,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   "a100": "hsla(332, 100%, 26%, 0.12)",
   "a150": "hsla(332, 100%, 26%, 0.09)",
   "a200": "hsla(332, 100%, 26%, 0.18)",
+  "a400": "hsla(332, 100%, 26%, 0.24)",
   "a50": "hsla(332, 100%, 26%, 0.09)",
 }
 `;
@@ -1234,21 +1229,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
+    color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsl(332, 100%, 26%)"
     defaultBorderColor="hsl(332, 100%, 26%)"
     focusBackgroundColor="hsl(332, 100%, 23%)"
     focusBorderColor="hsl(332, 100%, 23%)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(332, 100%, 26%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsl(332, 100%, 23%)"
     hoverBorderColor="hsl(332, 100%, 23%)"
+    hoverIconColor="hsl(0, 0%, 100%)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -1485,7 +1482,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           },
           "neutral": {
             "intense": "hsla(220, 22%, 92%, 1)",
-            "subtle": "hsla(216, 27%, 24%, 1)",
+            "subtle": "hsla(215, 20%, 43%, 1)",
           },
           "notice": {
             "intense": "hsla(25, 100%, 63%, 1)",
@@ -1501,7 +1498,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
         "background": {
           "gray": {
             "default": "hsla(214, 20%, 84%, 0.12)",
-            "disabled": "hsla(214, 20%, 84%, 0.09)",
+            "disabled": "hsla(214, 20%, 84%, 0.18)",
             "faded": "hsla(214, 20%, 84%, 0.06)",
             "fadedHighlighted": "hsla(214, 20%, 84%, 0.12)",
             "highlighted": "hsla(214, 20%, 84%, 0.18)",
@@ -1566,7 +1563,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
         "border": {
           "gray": {
             "default": "hsla(216, 24%, 31%, 1)",
-            "disabled": "hsla(217, 27%, 21%, 1)",
+            "disabled": "hsla(216, 27%, 24%, 1)",
             "faded": "hsla(214, 20%, 84%, 0.18)",
             "highlighted": "hsla(216, 24%, 31%, 1)",
           },
@@ -1663,7 +1660,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(150, 100%, 37%, 1)",
           },
           "primary": {
-            "disabled": "hsl(60, 100%, 55%)",
+            "disabled": "hsla(57, 100%, 52%, 0.24)",
             "muted": "hsl(60, 100%, 55%)",
             "normal": "hsl(60, 100%, 55%)",
             "subtle": "hsl(60, 100%, 55%)",
@@ -1725,7 +1722,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(150, 100%, 37%, 1)",
           },
           "primary": {
-            "disabled": "hsl(60, 100%, 55%)",
+            "disabled": "hsla(57, 100%, 52%, 0.24)",
             "muted": "hsl(60, 100%, 55%)",
             "normal": "hsl(60, 100%, 55%)",
             "subtle": "hsl(60, 100%, 55%)",
@@ -1752,7 +1749,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
       },
       "popup": {
         "background": {
-          "intense": "hsla(217, 27%, 15%, 1)",
+          "intense": "hsla(216, 27%, 24%, 1)",
           "subtle": "hsla(217, 27%, 15%, 1)",
         },
         "border": {
@@ -1787,8 +1784,8 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(217, 27%, 21%, 1)",
           },
           "primary": {
-            "muted": "hsla(227, 100%, 59%, 0.32)",
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "muted": "hsla(57, 100%, 52%, 0.18)",
+            "normal": "hsl(57, 100%, 52%)",
           },
         },
         "icon": {
@@ -1854,7 +1851,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           },
         },
       },
-      "transparent": "hsla(0, 0%, 100%, 0)",
+      "transparent": "hsla(217, 27%, 15%, 0)",
     },
     "onLight": {
       "feedback": {
@@ -1951,7 +1948,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
         "background": {
           "gray": {
             "default": "hsla(211, 20%, 52%, 0.12)",
-            "disabled": "hsla(211, 20%, 52%, 0.09)",
+            "disabled": "hsla(211, 20%, 52%, 0.18)",
             "faded": "hsla(211, 20%, 52%, 0.06)",
             "fadedHighlighted": "hsla(211, 20%, 52%, 0.12)",
             "highlighted": "hsla(211, 20%, 52%, 0.18)",
@@ -2113,7 +2110,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(150, 100%, 32%, 1)",
           },
           "primary": {
-            "disabled": "hsla(211, 33%, 21%, 1)",
+            "disabled": "hsla(57, 100%, 52%, 0.18)",
             "muted": "hsla(211, 33%, 21%, 1)",
             "normal": "hsla(211, 33%, 21%, 1)",
             "subtle": "hsla(211, 33%, 21%, 1)",
@@ -2175,7 +2172,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(150, 100%, 32%, 1)",
           },
           "primary": {
-            "disabled": "hsla(211, 33%, 21%, 1)",
+            "disabled": "hsla(57, 100%, 52%, 0.18)",
             "muted": "hsla(211, 33%, 21%, 1)",
             "normal": "hsla(211, 33%, 21%, 1)",
             "subtle": "hsla(211, 33%, 21%, 1)",
@@ -2237,8 +2234,8 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(214, 28%, 84%, 1)",
           },
           "primary": {
-            "muted": "hsla(227, 100%, 59%, 0.18)",
-            "normal": "hsla(227, 100%, 59%, 1)",
+            "muted": "hsla(57, 100%, 52%, 0.18)",
+            "normal": "hsl(57, 100%, 52%)",
           },
         },
         "icon": {
@@ -2395,39 +2392,33 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   },
   "motion": {
     "delay": {
-      "2xshort": 70,
-      "long": 3000,
-      "short": 180,
-      "xlong": 5000,
-      "xshort": 120,
+      "2xlong": 5000,
+      "2xquick": 80,
+      "gentle": 480,
+      "long": 2000,
+      "moderate": 280,
+      "xgentle": 960,
+      "xlong": 3000,
+      "xquick": 160,
     },
     "duration": {
-      "2xgentle": 900,
-      "2xquick": 70,
-      "gentle": 400,
-      "moderate": 250,
+      "2xgentle": 960,
+      "2xquick": 80,
+      "gentle": 480,
+      "moderate": 280,
       "quick": 200,
-      "xgentle": 600,
-      "xmoderate": 300,
-      "xquick": 150,
+      "xgentle": 640,
+      "xmoderate": 360,
+      "xquick": 160,
     },
     "easing": {
-      "entrance": {
-        "attentive": "0.5 0 0.3 1.5",
-        "effective": "0 0 0.2 1",
-        "revealing": "0 0 0 1",
-      },
-      "exit": {
-        "attentive": "0.7 0 0.5 1",
-        "effective": "0.17 0 1 1",
-        "revealing": "0.5 0 1 1",
-      },
-      "standard": {
-        "attentive": "0.5 0 0.3 1.5",
-        "effective": "0.3 0 0.2 1",
-        "revealing": "0.5 0 0 1",
-        "wary": "1 0.5 0 0.5",
-      },
+      "emphasized": "0.5 0 0 1",
+      "entrance": "0 0 0.2 1",
+      "exit": "0.17 0 1 1",
+      "linear": "0 0 0 0",
+      "overshoot": "0.5 0 0.3 1.5",
+      "shake": "1 0.5 0 0.5",
+      "standard": "0.3 0 0.2 1",
     },
   },
   "name": "custom-fff10a",
@@ -2570,6 +2561,7 @@ exports[`createTheme should create a theme with the correct brand colors 5`] = `
   "a100": "hsla(57, 100%, 52%, 0.12)",
   "a150": "hsla(57, 100%, 52%, 0.09)",
   "a200": "hsla(57, 100%, 52%, 0.18)",
+  "a400": "hsla(57, 100%, 52%, 0.24)",
   "a50": "hsla(57, 100%, 52%, 0.09)",
 }
 `;
@@ -2609,21 +2601,23 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
+    color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsl(57, 100%, 52%)"
     defaultBorderColor="hsl(57, 100%, 52%)"
     focusBackgroundColor="hsl(57, 100%, 47%)"
     focusBorderColor="hsl(57, 100%, 47%)"
-    focusRingColor="hsla(227, 100%, 59%, 0.32)"
+    focusRingColor="hsla(57, 100%, 52%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsl(57, 100%, 47%)"
     hoverBorderColor="hsl(57, 100%, 47%)"
+    hoverIconColor="hsl(0, 0%, 0%)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
+    motionEasing="easing.standard"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}

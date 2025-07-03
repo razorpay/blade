@@ -35,7 +35,7 @@ const StyledToastWrapper = styled(BaseBox)<{
   isExpanded: boolean;
   isPromotional: boolean;
 }>(({ isVisible, index, isExpanded, isPromotional }) => {
-  let opacity = isVisible ? 1 : 0;
+  let opacity: number = isVisible ? 1 : 0;
   // Only make the PEEKING and MAX_TOASTS toasts visible,
   // Every other toasts should be hidden
   if (index < PEEKS + MAX_TOASTS) {
@@ -78,9 +78,7 @@ const getPositionStyle = (
     display: 'flex',
     position: 'absolute',
     transformOrigin: 'center',
-    transition: `${makeMotionTime(theme.motion.duration.gentle)} ${
-      theme.motion.easing.standard.effective
-    }`,
+    transition: `${makeMotionTime(theme.motion.duration.gentle)} ${theme.motion.easing.standard}`,
     transitionProperty: 'transform, opacity, height',
     transform: `translateY(${offset * (top ? 1 : -1)}px) scale(${scale})`,
     ...verticalStyle,
@@ -93,9 +91,10 @@ function isPromotionalToast(toast: Toast): boolean {
   return toast.type == 'promotional';
 }
 
-const Toaster: React.FC<ToasterProps> = ({
+const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
   reverseOrder,
   position = 'top-center',
+  offsetBottom,
   toastOptions,
   containerClassName,
   ...rest
@@ -106,7 +105,8 @@ const Toaster: React.FC<ToasterProps> = ({
   const [hasManuallyExpanded, setHasManuallyExpanded] = React.useState(false);
   const isMobile = useIsMobile();
   const minToasts = isMobile ? MIN_TOAST_MOBILE : MIN_TOAST_DESKTOP;
-  const containerGutter = isMobile ? CONTAINER_GUTTER_MOBILE : CONTAINER_GUTTER_DESKTOP;
+  const defaultGutter = isMobile ? CONTAINER_GUTTER_MOBILE : CONTAINER_GUTTER_DESKTOP;
+  const bottomGutter = offsetBottom ?? defaultGutter;
 
   const infoToasts = React.useMemo(() => toasts.filter((toast) => !isPromotionalToast(toast)), [
     toasts,
@@ -224,11 +224,11 @@ const Toaster: React.FC<ToasterProps> = ({
     <BaseBox
       position="fixed"
       zIndex={TOAST_Z_INDEX}
-      top={makeSize(containerGutter)}
-      left={makeSize(containerGutter)}
-      right={makeSize(containerGutter)}
-      bottom={makeSize(containerGutter)}
-      width={`calc(100% - ${containerGutter * 2}px)`}
+      top={makeSize(defaultGutter)}
+      left={makeSize(defaultGutter)}
+      right={makeSize(defaultGutter)}
+      bottom={makeSize(bottomGutter)}
+      width={`calc(100% - ${defaultGutter * 2}px)`}
       maxWidth={makeSize(TOAST_MAX_WIDTH)}
       pointerEvents="none"
       className={containerClassName}
@@ -315,8 +315,19 @@ const Toaster: React.FC<ToasterProps> = ({
   );
 };
 
-const ToastContainer = (): React.ReactElement => {
-  return <Toaster position="bottom-left" />;
+type ToastContainerProps = {
+  /**
+   * The offset from the bottom of the screen to the toast container.
+   * This is useful when you want to position the toast container at a different
+   * position from the bottom of the screen.
+   *
+   * @default isMobile ? 16px : 24px
+   */
+  offsetBottom?: number;
+};
+
+const ToastContainer = ({ offsetBottom }: ToastContainerProps): React.ReactElement => {
+  return <Toaster offsetBottom={offsetBottom} position="bottom-left" />;
 };
 
 export { ToastContainer };

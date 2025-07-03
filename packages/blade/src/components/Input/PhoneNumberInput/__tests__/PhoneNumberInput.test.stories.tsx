@@ -37,7 +37,9 @@ SelectACountry.play = async () => {
   await expect(queryByRole('menu')).not.toBeInTheDocument();
 
   // expect albania to be selected
-  await expect(getByRole('button', { name: /select country/i })).toHaveAccessibleName(/Albania/i);
+  await expect(getByRole('button', { name: /select country/i })).toHaveAccessibleName(
+    /Åland Islands - Select Country/i,
+  );
 
   await sleep(300);
   // Ensure that input is in focus, input is tel type;
@@ -76,18 +78,21 @@ UncontrolledState.play = async () => {
   // Ensure the value of the input updates
   await expect(input).toHaveValue('1234567890');
 
-  await expect(onChangeFn).toHaveBeenLastCalledWith(
-    expect.objectContaining({
-      country: 'IN',
-      dialCode: '+91',
-      name: undefined,
-      phoneNumber: '1234 567890',
-      value: '1234567890',
-    }),
-  );
+  const expectedValue = {
+    country: 'IN',
+    dialCode: '+91',
+    name: undefined,
+    phoneNumber: '1234 567890',
+    value: '1234567890',
+  };
+
+  const actualValue = onChangeFn.mock.lastCall?.[0];
+  await expect(actualValue).toEqual(expectedValue);
 };
 
-export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
+export const ControlledStateFocusAndDefaultValue: StoryFn<
+  typeof PhoneNumberInput
+> = (): React.ReactElement => {
   const [value, setValue] = React.useState('9876543210');
   return (
     <PhoneNumberInput
@@ -101,7 +106,9 @@ export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.React
   );
 };
 
-ControlledState.play = async () => {
+ControlledStateFocusAndDefaultValue.play = async () => {
+  await sleep(1000);
+
   onChangeFn.mockClear();
   const { getByLabelText } = within(document.body);
 
@@ -116,20 +123,22 @@ ControlledState.play = async () => {
 
   // Type inside input
   await userEvent.clear(input);
+
+  await sleep(100);
+
   await userEvent.type(input, '1234567890');
 
-  // Ensure the value of the input updates
   await expect(input).toHaveValue('1234567890');
 
-  await expect(onChangeFn).toHaveBeenLastCalledWith(
-    expect.objectContaining({
-      country: 'IN',
-      dialCode: '+91',
-      name: undefined,
-      phoneNumber: '1234 567890',
-      value: '1234567890',
-    }),
-  );
+  const expectedValue = {
+    country: 'IN',
+    dialCode: '+91',
+    name: undefined,
+    phoneNumber: '1234 567890',
+    value: '1234567890',
+  };
+  const actualValue = onChangeFn.mock.lastCall?.[0];
+  await expect(actualValue).toEqual(expectedValue);
 };
 
 export const Disabled: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
@@ -175,6 +184,5 @@ export default {
     },
     a11y: { disable: true },
     essentials: { disable: true },
-    actions: { disable: true },
   },
 };

@@ -47,6 +47,7 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -64,10 +65,10 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-right: 16px;
   margin-right: auto;
 }
@@ -211,8 +212,8 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: -webkit-transform;
@@ -240,8 +241,8 @@ exports[`<Accordion /> should render 1`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-property: background-color,box-shadow,border-radius,color;
   transition-property: background-color,box-shadow,border-radius,color;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
@@ -257,21 +258,27 @@ exports[`<Accordion /> should render 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
+.c3.c3.c3.c3.c3:hover [data-blade-component="divider"],
+.c3.c3.c3.c3.c3:focus-visible [data-blade-component="divider"] {
+  opacity: 0;
+}
+
 .c3.c3.c3.c3.c3:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   border-radius: 2px;
 }
 
 .c14.c14.c14.c14.c14 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: height,opacity;
@@ -364,6 +371,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-1"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -512,6 +520,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-2"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -660,6 +669,7 @@ exports[`<Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-3"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -838,6 +848,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -855,10 +866,10 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-right: 16px;
   margin-right: auto;
 }
@@ -1002,8 +1013,8 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: -webkit-transform;
@@ -1031,8 +1042,8 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-property: background-color,box-shadow,border-radius,color;
   transition-property: background-color,box-shadow,border-radius,color;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
@@ -1048,21 +1059,27 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
+.c3.c3.c3.c3.c3:hover [data-blade-component="divider"],
+.c3.c3.c3.c3.c3:focus-visible [data-blade-component="divider"] {
+  opacity: 0;
+}
+
 .c3.c3.c3.c3.c3:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   border-radius: 2px;
 }
 
 .c14.c14.c14.c14.c14 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: height,opacity;
@@ -1155,6 +1172,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-34"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -1303,6 +1321,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-35"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >
@@ -1451,6 +1470,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 aria-controls="collapsible-body-36"
                 aria-expanded="false"
                 class="c3"
+                data-analytics-name="accordion-toggle-button"
                 data-blade-component="accordion-button"
                 type="button"
               >

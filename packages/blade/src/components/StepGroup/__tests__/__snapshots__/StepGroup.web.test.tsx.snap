@@ -9,7 +9,8 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   max-width: 100%;
 }
 
@@ -22,6 +23,8 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-right: 12px;
+  margin-left: 12px;
   width: 100%;
   gap: 4px;
 }
@@ -251,7 +254,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -269,7 +272,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -512,10 +515,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 Header description
               </p>
             </div>
-            <div
-              class=""
-              data-blade-component="box"
-            />
           </div>
         </div>
       </div>
@@ -620,10 +619,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 Person Details description
               </p>
             </div>
-            <div
-              class=""
-              data-blade-component="box"
-            />
           </div>
         </div>
       </div>
@@ -640,10 +635,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
           class="c2"
           data-blade-component="box"
         >
-          <div
-            class="c17"
-            data-blade-component="base-box"
-          />
           <svg
             aria-hidden="true"
             class="c19"
@@ -747,10 +738,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                   data-blade-component="text"
                 />
               </div>
-              <div
-                class=""
-                data-blade-component="box"
-              />
             </div>
           </div>
         </div>
@@ -894,10 +881,6 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                   Person Details description
                 </p>
               </div>
-              <div
-                class=""
-                data-blade-component="box"
-              />
             </div>
           </div>
         </div>
@@ -916,7 +899,8 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   max-width: 100%;
 }
 
@@ -929,6 +913,8 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-right: 12px;
+  margin-left: 12px;
   width: 100%;
   gap: 4px;
 }
@@ -1066,7 +1052,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1084,7 +1070,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -1218,10 +1204,6 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
                 data-blade-component="text"
               />
             </div>
-            <div
-              class=""
-              data-blade-component="box"
-            />
           </div>
         </div>
       </div>

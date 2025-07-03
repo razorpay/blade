@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 
 export const topNavFullExample = {
-  'App.js': dedent`import React from 'react';
+  'App.tsx': dedent`import React from 'react';
   import { BrowserRouter } from 'react-router-dom';
   import { TopNavExample } from './TopNavExample';
   
@@ -15,7 +15,7 @@ export const topNavFullExample = {
 
   export default App;
   `,
-  'TopNavExample.js': dedent`import React from "react";
+  'TopNavExample.tsx': dedent`import React from "react";
   import styled from "styled-components";
   import { Link, useLocation, useNavigate } from "react-router-dom";
   import { SideNavExample } from "./SideNavExample";
@@ -356,7 +356,7 @@ export const topNavFullExample = {
                 height="100vh"
                 padding="spacing.5"
                 overflowY="scroll"
-                backgroundColor="surface.background.gray.intense"
+                backgroundColor="surface.background.gray.moderate"
               >
                 <Box width={{ base: "max-content", m: "100%" }} height="200vh">
                   <Text marginBottom="spacing.4">This demo integrates:</Text>
@@ -378,7 +378,7 @@ export const topNavFullExample = {
 
   export { TopNavExample };
   `,
-  'SideNavExample.js': dedent`import React from "react";
+  'SideNavExample.tsx': dedent`import React from "react";
   import { Link, useLocation } from "react-router-dom";
   import { isItemActive } from "./utils";
   import {
@@ -454,7 +454,7 @@ export const topNavFullExample = {
 
   export { SideNavExample };
 `,
-  'utils.js': dedent`import React from 'react';
+  'utils.tsx': dedent`import React from 'react';
   import { matchPath } from "react-router-dom";
 
   const isItemActive = (
@@ -500,7 +500,7 @@ export const topNavFullExample = {
 };
 
 export const tabNavExample = {
-  'App.js': dedent`import React from 'react';
+  'App.tsx': dedent`import React from 'react';
   import { 
     Box, 
     TabNav, 

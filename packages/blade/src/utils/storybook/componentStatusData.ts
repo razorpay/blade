@@ -108,6 +108,15 @@ const componentData: ComponentStatusDataType = [
     platform: 'all',
   },
   {
+    name: 'InfoGroup',
+    status: 'released',
+    releasedIn: '12.33.0',
+    storybookLink: 'Components/InfoGroup',
+    description:
+      'A structured component for displaying key-value pairs in a consistent, organized format. Provides standardized presentation for transaction details, user data, or any related data pairs.',
+    platform: 'web',
+  },
+  {
     name: 'Link',
     status: 'released',
     releasedIn: '0.13.0',
@@ -434,11 +443,13 @@ const componentData: ComponentStatusDataType = [
     description:
       'Menu displays a list of actions on temporary surfaces. They allow users to action(s) from multiple options. They appear when users interact with a button, action, or other control.',
     releasedIn: '11.22.0',
+    storybookLink: 'Components/Menu',
     platform: 'web',
   },
   {
     name: 'TopNav',
     status: 'released',
+    storybookLink: 'Components/TopNav',
     description:
       'TopNav is a horizontal navigation component that can be used to navigate between pages.',
     releasedIn: '11.23.0',
@@ -530,7 +541,6 @@ const componentData: ComponentStatusDataType = [
       'The popover typically provides additional context about the element or its function. A popover is always triggered by a mouse hover on desktop and on tap on mobile.',
     platform: 'all',
   },
-
   {
     name: 'SpotlightPopoverTour',
     status: 'released',
@@ -538,6 +548,69 @@ const componentData: ComponentStatusDataType = [
     storybookLink: 'Components/SpotlightPopoverTour/Docs',
     description:
       'The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user.',
+    platform: 'web',
+  },
+  {
+    name: 'Fade',
+    status: 'released',
+    releasedIn: '12.0.0',
+    storybookLink: 'Motion/Fade/Docs',
+    description:
+      'The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the UI visually engaging.',
+    platform: 'web',
+  },
+  {
+    name: 'Move',
+    status: 'released',
+    releasedIn: '12.0.0',
+    storybookLink: 'Motion/Move/Docs',
+    description:
+      'The Move component is a motion preset that animates the opacity and position of its children, allowing them to smoothly appear or disappear. It ensures seamless transitions while keeping the UI visually engaging.',
+    platform: 'web',
+  },
+  {
+    name: 'Slide',
+    status: 'released',
+    releasedIn: '12.0.0',
+    storybookLink: 'Motion/Slide/Docs',
+    description:
+      'The Slide component is a motion preset that animates the children by sliding them in from outside of viewport, allowing them to smoothly appear or disappear. Unlike Move, Slide is meant to animate components from outside of viewport',
+    platform: 'web',
+  },
+  {
+    name: 'Morph',
+    status: 'released',
+    releasedIn: '12.0.0',
+    storybookLink: 'Motion/Morph/Docs',
+    description:
+      "Morph component is a abstraction on motion react's layout animations. It allows you to morph between 2 elements",
+    platform: 'web',
+  },
+  {
+    name: 'Scale',
+    status: 'released',
+    releasedIn: '12.0.0',
+    storybookLink: 'Motion/Scale/Docs',
+    description:
+      'Scale component animates over CSS `scale` property and allows you to enlarge or shrink element on certain interactions',
+    platform: 'web',
+  },
+  {
+    name: 'AnimateInteractions',
+    status: 'released',
+    releasedIn: '12.0.0',
+    storybookLink: 'Motion/AnimateInteractions/Docs',
+    description:
+      'AnimateInteractions is a component that allows you to animate child components based on interactions on parent. This is similar to doing `.parent:hover .child {}` styling in CSS.',
+    platform: 'web',
+  },
+  {
+    name: 'Stagger',
+    status: 'released',
+    releasedIn: '12.0.0',
+    storybookLink: 'Motion/Stagger/Docs',
+    description:
+      'Stagger component allows you to stagger children (make them appear one after the other). Its a utility preset. You can use any of the base presets like Move, Fade, Slide inside of it',
     platform: 'web',
   },
 ];

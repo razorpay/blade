@@ -10,6 +10,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { BaseLink } from '~components/Link/BaseLink';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 
 const FileUploadItem = memo(
   ({
@@ -76,7 +77,7 @@ const FileUploadItem = memo(
               </Text>
             </BaseBox>
             {status === 'uploading' ? (
-              <BaseBox>
+              <BaseBox display="flex" alignItems="center">
                 <IconButton
                   accessibilityLabel="Remove File"
                   icon={CloseIcon}
@@ -94,6 +95,7 @@ const FileUploadItem = memo(
                   onClick={() => {
                     onReupload?.({ file });
                   }}
+                  data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
                 >
                   Re-upload
                 </BaseLink>

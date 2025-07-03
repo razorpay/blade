@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 import { Heading, Text, Box, Card, CardBody, ChevronRightIcon } from '../../../components';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import BladeQRCode from './blade-qr-code.png';
 import { CheckoutShell } from './CheckoutShell';
 import { useTheme } from '~components/BladeProvider';
@@ -64,7 +63,7 @@ const ClickableRow = styled.button(({ theme }) => ({
   width: '100%',
   borderBottom: `2px solid ${theme.colors.surface.border.gray.muted}`,
   transition: `background-color ${makeMotionTime(theme.motion.duration.gentle)} ${
-    theme.motion.easing.standard.revealing
+    theme.motion.easing.emphasized
   }}`,
   padding: `${makeSpace(theme.spacing[4])} ${makeSpace(theme.spacing[4])}`,
   '&:hover': {

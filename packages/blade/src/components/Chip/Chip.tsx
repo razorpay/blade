@@ -25,6 +25,7 @@ import { useRadio } from '~components/Radio/useRadio';
 import { isReactNative, makeSize, useBreakpoint } from '~utils';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type OnChange = ({
@@ -38,7 +39,19 @@ type OnChange = ({
 }) => void;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, color, testID, ...rest },
+  {
+    isDisabled,
+    value,
+    children,
+    icon: Icon,
+    color,
+    testID,
+    _motionMeta,
+    width,
+    maxWidth,
+    minWidth,
+    ...rest
+  },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -71,7 +84,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size || 'small';
   const chipColor = color ?? groupProps?.color ?? 'primary';
-
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
       groupProps?.state?.addValue(value!);
@@ -143,8 +155,11 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
       {...getStyledProps(rest)}
-      {...makeAnalyticsAttribute(rest)}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+      ref={getOuterMotionRef({ _motionMeta, ref })}
+      width={width}
+      maxWidth={maxWidth}
+      minWidth={minWidth}
     >
       <SelectorLabel
         componentName={MetaConstants.ChipLabel}
@@ -156,9 +171,12 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         onKeyDown={handleKeyboardPressedIn}
         onKeyUp={handleKeyboardPressedOut}
         inputProps={isReactNative() ? inputProps : {}}
-        style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
+        style={{
+          cursor: _isDisabled ? 'not-allowed' : 'pointer',
+          width: '100%',
+        }}
       >
-        <BaseBox display="flex" flexDirection="column">
+        <BaseBox display="flex" flexDirection="column" width="100%">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
               hoverTokens={getChipInputHoverTokens(chipColor)}
@@ -166,7 +184,8 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isDisabled={_isDisabled}
               inputProps={inputProps}
               hasError={hasError}
-              ref={ref}
+              ref={getInnerMotionRef({ _motionMeta, ref })}
+              {...makeAnalyticsAttribute(rest)}
             />
             <AnimatedChip
               borderColor={chipBorderColor}
@@ -198,15 +217,19 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                   ]
                 }
                 height={makeSize(chipHeightTokens[_size])}
+                gap="spacing.3"
+                width="100%"
               >
                 {Icon ? (
-                  <BaseBox paddingRight="spacing.3" display="flex">
+                  <BaseBox display="flex">
                     <Icon color={chipIconColor} size={chipIconSizes[_size]} />
                   </BaseBox>
                 ) : null}
-                <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
-                  {children}
-                </Text>
+                {children ? (
+                  <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
+                    {children}
+                  </Text>
+                ) : null}
               </StyledChipWrapper>
             </AnimatedChip>
           </BaseBox>

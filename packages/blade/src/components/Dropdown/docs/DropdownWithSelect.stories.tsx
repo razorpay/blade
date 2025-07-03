@@ -16,7 +16,7 @@ import {
 } from './stories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
 import {
   ActionList,
   ActionListItem,
@@ -381,7 +381,7 @@ export const InternalSectionListPerformance = (): React.ReactElement => {
     <Dropdown selectionType="multiple">
       <SelectInput label="Select fruits" />
       <DropdownOverlay>
-        <ActionList>
+        <ActionList isVirtualized>
           <ActionListItem title="Apples" value="Apples" />
           <ActionListItem title="Appricots" value="Appricots" />
           <ActionListItem title="Abc" value="Abc" />
@@ -407,6 +407,26 @@ InternalSectionListPerformance.parameters = {
   chromatic: {
     disableSnapshot: false,
   },
+};
+
+export const InternalDropdownWithSearch = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Select fruits" />
+      <DropdownOverlay>
+        <DropdownHeader>
+          <AutoComplete label="Search Fruits" />
+        </DropdownHeader>
+        <ActionList>
+          <ActionListItem title="Apples" value="Apples" />
+          <ActionListItem title="Appricots" value="Appricots" />
+          <ActionListItem title="Cherries" value="Cherries" />
+          <ActionListItem title="Crab apples" value="Crab apples" />
+          <ActionListItem title="Jambolan" value="Jambolan" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
 };
 
 export const InternalDropdownPerformance = (): React.ReactElement => {
@@ -464,9 +484,9 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
 
   return (
     <Dropdown selectionType="multiple">
-      <SelectInput label="Select fruits" />
+      <AutoComplete label="Select fruits" />
       <DropdownOverlay>
-        <ActionList>
+        <ActionList isVirtualized>
           {fruits.map((fruit) => {
             if (typeof fruit === 'string') {
               return <ActionListItem key={fruit} title={fruit} value={fruit} />;
@@ -476,7 +496,6 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
               <ActionListItem
                 trailing={<ActionListItemText>⌘ + S</ActionListItemText>}
                 leading={<ActionListItemIcon icon={HomeIcon} />}
-                description={fruit.description}
                 key={fruit.name}
                 title={fruit.name}
                 value={fruit.name}
@@ -489,6 +508,108 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
   );
 };
 
+export const WithVirtualization = (): React.ReactElement => {
+  function getRandomString(length: number): string {
+    const chars = 'abcdefghijklmnopqrstuvwxyz';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
+  function generateDropdownData(
+    numEntries: number,
+  ): Record<string, { value: string; label: string }[]> {
+    const dropdownData: Record<string, { value: string; label: string }[]> = {};
+
+    for (let i = 0; i < numEntries; i++) {
+      const city = `${getRandomString(Math.floor(Math.random() * 5) + 5)}ville-${1}`; // Random city name
+      const state = `${getRandomString(Math.floor(Math.random() * 7) + 3)}land-${2}`; // Random state name
+      const country = 'GibberishLand'; // Random country name
+
+      const areas = [];
+      const numAreas = Math.floor(Math.random() * 10);
+
+      for (let j = 0; j < numAreas; j++) {
+        const area = `Area-${city}-${j}`;
+        areas.push({
+          value: `${country.toLowerCase()}-${state.toLowerCase()}-${city.toLowerCase()}-${area.toLowerCase()}`,
+          label: area,
+        });
+      }
+
+      dropdownData[city] = areas;
+    }
+
+    return dropdownData;
+  }
+  const dropdownData = generateDropdownData(20);
+
+  return (
+    <Box padding={'8px'}>
+      <Box> Virtualized with ActionListSection </Box>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList isVirtualized={true}>
+            {Object.keys(dropdownData).map((sectionKey) => {
+              const section = dropdownData[sectionKey];
+              return (
+                <ActionListSection title={sectionKey} key={sectionKey}>
+                  {section.map((item) => (
+                    <ActionListItem title={item.label} value={item.value} key={item.value} />
+                  ))}
+                </ActionListSection>
+              );
+            })}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box> Virtualized</Box>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList isVirtualized={true}>
+            {[...Array(500)].map((_, index) => (
+              <ActionListItem
+                title={`Item ${index}`}
+                value={`Item ${index}`}
+                key={`Item ${index}`}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box> Non Virtualized</Box>
+      <Dropdown selectionType="single">
+        <AutoComplete
+          label="Hierarchy Level"
+          placeholder="Select your location"
+          name="action"
+          maxRows="multiple"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            {[...Array(300)].map((_, index) => (
+              <ActionListItem
+                title={`Item ${index}`}
+                value={`Item ${index}`}
+                key={`Item ${index}`}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
 InternalDropdownPerformance.parameters = {
   chromatic: {
     disableSnapshot: false,
@@ -496,3 +617,34 @@ InternalDropdownPerformance.parameters = {
 };
 
 export default DropdownStoryMeta;
+
+export const WithInputDropDownButton = (): React.ReactElement => {
+  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>('mumbai');
+
+  return (
+    <Dropdown selectionType="single">
+      <SelectInput
+        label="Select City"
+        value={currentSelection}
+        onChange={(args) => {
+          if (args) {
+            setCurrentSelection(args.values[0]);
+            console.log('onChange triggered');
+          }
+        }}
+      />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Mumbai" value="mumbai" />
+          <ActionListItem title="Bangalore" value="bangalore" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+WithInputDropDownButton.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
+};

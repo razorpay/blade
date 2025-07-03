@@ -64,7 +64,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.gray.subtle"
+            color="surface.text.gray.muted"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
@@ -75,7 +75,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(211, 22%, 56%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
@@ -175,11 +175,15 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
+          flexWrap="nowrap"
+          gap="spacing.3"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
+                "flexWrap": "nowrap",
+                "gap": 8,
               },
             ]
           }
@@ -188,9 +192,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 12,
-                },
+                {},
               ]
             }
           >
@@ -359,9 +361,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 12,
-                },
+                {},
               ]
             }
           >
@@ -530,9 +530,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 0,
-                },
+                {},
               ]
             }
           >
@@ -729,7 +727,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               data-blade-component="text"
               fontFamily="text"
               fontSize={50}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -738,7 +736,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     "color": "hsla(211, 22%, 56%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 11,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,
@@ -829,7 +827,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.gray.subtle"
+            color="surface.text.gray.muted"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
@@ -840,7 +838,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(211, 22%, 56%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
@@ -938,11 +936,15 @@ exports[`<RadioGroup /> should render with label 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
+          flexWrap="nowrap"
+          gap="spacing.3"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
+                "flexWrap": "nowrap",
+                "gap": 8,
               },
             ]
           }
@@ -951,9 +953,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 12,
-                },
+                {},
               ]
             }
           >
@@ -1122,9 +1122,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 12,
-                },
+                {},
               ]
             }
           >
@@ -1293,9 +1291,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 0,
-                },
+                {},
               ]
             }
           >

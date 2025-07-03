@@ -21,12 +21,15 @@ import type {
   DataAnalyticsAttribute,
 } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 type TextAreaCommonProps = Pick<
   BaseInputProps,
   | 'label'
   | 'accessibilityLabel'
   | 'labelPosition'
+  | 'labelSuffix'
+  | 'labelTrailing'
   | 'necessityIndicator'
   | 'validationState'
   | 'helpText'
@@ -57,6 +60,16 @@ type TextAreaCommonProps = Pick<
    * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
+
+  onKeyDown?: ({
+    name,
+    value,
+    event,
+  }: {
+    name?: FormInputOnKeyDownEvent['name'];
+    value: string;
+    event: FormInputOnKeyDownEvent['event'];
+  }) => void;
 } & TaggedInputProps &
   StyledPropsBlade;
 
@@ -101,6 +114,8 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     label,
     accessibilityLabel,
     labelPosition,
+    labelSuffix,
+    labelTrailing,
     necessityIndicator,
     errorText,
     helpText,
@@ -114,6 +129,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onFocus,
     onBlur,
     onSubmit,
+    onKeyDown,
     placeholder,
     value,
     maxCharacters,
@@ -206,6 +222,8 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
+      labelSuffix={labelSuffix}
+      labelTrailing={labelTrailing}
       necessityIndicator={necessityIndicator}
       errorText={errorText}
       helpText={helpText}
@@ -244,6 +262,11 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       onKeyDown={(e) => {
         handleTaggedInputKeydown(e);
+        onKeyDown?.({
+          name: e.name,
+          value: e.event.currentTarget.value,
+          event: e.event,
+        });
       }}
       onSubmit={onSubmit}
       trailingFooterSlot={(value) => {

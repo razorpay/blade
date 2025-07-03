@@ -162,6 +162,16 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      */
     onApply?: Type extends 'single' ? (value: DateValue) => void : (value: DatesRangeValue) => void;
     labelPosition?: BaseInputProps['labelPosition'];
+    /**
+     * Sets the date format to be displayed in the input field.
+     * @default 'DD/MM/YYYY'  if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
+     */
+    format?: 'DD/MM/YYYY' | 'MMM' | 'MMMM' | 'YYYY';
+    /**
+     *  Placeholder text for the datepicker input , when no date is selected.
+     * @default 'DD/MM/YYYY'  if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
+     */
+    inputPlaceHolder?: string;
   };
 
 type DatePickerRangeInputProps = {
@@ -190,13 +200,36 @@ type DatePickerCommonInputProps = {
   referenceProps: any;
 } & Pick<
   TextInputProps,
-  'size' | 'isRequired' | 'necessityIndicator' | 'autoFocus' | 'isDisabled' | 'accessibilityLabel'
+  | 'size'
+  | 'isRequired'
+  | 'necessityIndicator'
+  | 'autoFocus'
+  | 'isDisabled'
+  | 'accessibilityLabel'
+  | 'labelSuffix'
+  | 'labelTrailing'
 > &
   FormInputValidationProps;
 
 type DatePickerInputProps = DatePickerCommonInputProps &
-  (DatePickerRangeInputProps | DatePickerSingleInputProps);
+  (DatePickerRangeInputProps | DatePickerSingleInputProps) & {
+    format: string;
+    placeholder?: string;
+  };
 
+type DatePickerFilterChipProps = DatePickerInputProps;
+
+type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'label'> & {
+  /**
+   * Sets the label for the input element.
+   */
+  label: string;
+  /**
+   *
+   * Callback which fires when clear button is clicked
+   */
+  onClearButtonClick?: () => void;
+};
 export type {
   CalendarProps,
   DatePickerProps,
@@ -205,4 +238,6 @@ export type {
   DateValue,
   DateSelectionType,
   DatePickerInputProps,
+  DatePickerFilterChipProps,
+  FilterChipDatePickerProps,
 };

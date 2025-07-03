@@ -12,6 +12,7 @@ import { size as globalSizeTokens } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { useIsMobile } from '~utils/useIsMobile';
+import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtuallyFocused'] }>(
@@ -29,44 +30,20 @@ const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtua
   },
 );
 
-/**
- * ## Tags
- *
- * Tag component can be used to display selected items on UI.
- *
- * ### Usage
- *
- * ***Note:*** _Make sure to handle state when using Tag_
- *
- * ```jsx
- * const [showTag, setShowTag] = React.useState(true);
- *
- * // ...
- *
- * {showTag && (
- *  <Tag
- *    icon={CheckIcon}
- *    onDismiss={() => setShowTag(false)}
- *  >
- *    Transactions
- *  </Tag>
- * )}
- * ```
- *
- * Checkout [Tags Documentation](https://blade.razorpay.com/?path=/story/components-tag--default) for more info.
- *
- */
-const Tag = ({
-  size = 'medium',
-  icon: Icon,
-  onDismiss,
-  children,
-  isDisabled,
-  testID,
-  _isVirtuallyFocused,
-  _isTagInsideInput,
-  ...rest
-}: TagProps): React.ReactElement | null => {
+const _Tag = (
+  {
+    size = 'medium',
+    icon: Icon,
+    onDismiss,
+    children,
+    isDisabled,
+    testID,
+    _isVirtuallyFocused,
+    _isTagInsideInput,
+    ...rest
+  }: TagProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement | null => {
   const isMobile = useIsMobile();
 
   const textColor = isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.subtle';
@@ -95,6 +72,7 @@ const Tag = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
@@ -152,5 +130,34 @@ const Tag = ({
     </BaseBox>
   );
 };
+
+/**
+ * ## Tags
+ *
+ * Tag component can be used to display selected items on UI.
+ *
+ * ### Usage
+ *
+ * ***Note:*** _Make sure to handle state when using Tag_
+ *
+ * ```jsx
+ * const [showTag, setShowTag] = React.useState(true);
+ *
+ * // ...
+ *
+ * {showTag && (
+ *  <Tag
+ *    icon={CheckIcon}
+ *    onDismiss={() => setShowTag(false)}
+ *  >
+ *    Transactions
+ *  </Tag>
+ * )}
+ * ```
+ *
+ * Checkout [Tags Documentation](https://blade.razorpay.com/?path=/story/components-tag--default) for more info.
+ *
+ */
+const Tag = React.forwardRef(_Tag);
 
 export { Tag };

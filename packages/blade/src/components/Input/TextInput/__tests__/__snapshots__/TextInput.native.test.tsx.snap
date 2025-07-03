@@ -82,7 +82,7 @@ exports[`<TextInput /> should render 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.subtle"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
@@ -93,7 +93,7 @@ exports[`<TextInput /> should render 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(211, 26%, 34%, 1)",
+                    "color": "hsla(211, 22%, 56%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
@@ -181,6 +181,7 @@ exports[`<TextInput /> should render 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -238,12 +239,14 @@ exports[`<TextInput /> should render 1`] = `
             autoCompleteType="off"
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="textinput-1-input-2"
             isFocused={false}
             isTableInputCell={false}
             isTextArea={false}
             keyboardType="default"
+            leadingInteractionElement={null}
             multiline={false}
             onBlur={[Function]}
             onChangeText={[Function]}
@@ -402,7 +405,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.subtle"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
@@ -413,7 +416,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(211, 26%, 34%, 1)",
+                    "color": "hsla(211, 22%, 56%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
@@ -501,6 +504,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -674,7 +678,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             >
               <Text
                 accessible={true}
-                color="surface.text.gray.subtle"
+                color="surface.text.gray.muted"
                 data-blade-component="text"
                 fontFamily="text"
                 fontSize={100}
@@ -684,7 +688,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(211, 26%, 34%, 1)",
+                      "color": "hsla(211, 22%, 56%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -723,6 +727,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             autoCompleteType="off"
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="textinput-49-input-50"
             isFocused={false}
@@ -730,6 +735,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             isTextArea={false}
             keyboardType="url"
             leadingIcon={[Function]}
+            leadingInteractionElement={null}
             multiline={false}
             onBlur={[Function]}
             onChangeText={[Function]}

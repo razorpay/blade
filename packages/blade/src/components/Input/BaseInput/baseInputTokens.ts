@@ -40,7 +40,7 @@ export const baseInputBackgroundColor = {
   default: 'surface.background.gray.intense',
   hovered: 'surface.background.gray.moderate',
   focused: 'surface.background.gray.moderate',
-  disabled: 'surface.background.gray.intense',
+  disabled: 'surface.background.gray.subtle',
   error: 'surface.background.gray.intense',
   success: 'surface.background.gray.intense',
 } as const;
@@ -64,8 +64,8 @@ export const baseInputBorderWidth = {
 } as const;
 
 export const baseInputBorderBackgroundMotion = {
-  enter: { duration: 'xgentle', easing: 'standard.revealing' },
-  exit: { duration: 'gentle', easing: 'standard.effective' },
+  enter: { duration: 'xgentle', easing: 'emphasized' },
+  exit: { duration: 'gentle', easing: 'standard' },
 } as const;
 
 export const baseInputPaddingTokens = {

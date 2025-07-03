@@ -4,12 +4,16 @@ import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { I18nProvider } from '@razorpay/i18nify-react';
 import type { DatePickerProps, DatesRangeValue } from './types';
-import { DatePicker as DatePickerComponent } from './';
+import { DatePicker as DatePickerComponent, FilterChipDatePicker } from './';
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Code, Text } from '~components/Typography';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Button } from '~components/Button';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { InfoIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
@@ -83,9 +87,10 @@ export default {
           figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88832-1762629&t=oSH8pSWjSoiOUnXo-0"
         >
           <Title>Usage</Title>
-          <Sandbox>
+          <Sandbox editorHeight={600}>
             {`
               import { DatePicker } from '@razorpay/blade/components';
+import { m } from 'framer-motion';
 
               function App() {
                 return (
@@ -197,10 +202,11 @@ DatePickerPresets.args = {
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [date, setDate] = React.useState<DatesRangeValue>([
-    new Date(),
-    dayjs().add(3, 'day').toDate(),
+  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
+    dayjs().subtract(3, 'months').toDate(),
+    dayjs().add(3, 'day').subtract(3, 'months').toDate(),
   ]);
+  const [date, setDate] = React.useState(dayjs().subtract(3, 'months').toDate());
 
   return (
     <Box>
@@ -210,7 +216,8 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
       </Text>
       <Box marginBottom="spacing.5">
         <Text>
-          Selected: [{dayjs(date[0]).format('DD-MM-YYYY')}, {dayjs(date[1]).format('DD-MM-YYYY')}]
+          Selected: [{dayjs(dateRange[0]).format('DD-MM-YYYY')},{' '}
+          {dayjs(dateRange[1]).format('DD-MM-YYYY')}]
         </Text>
         <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
       </Box>
@@ -219,11 +226,37 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
         selectionType="range"
         isOpen={isOpen}
         onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
-        value={date}
+        value={dateRange}
         onChange={(date) => {
-          setDate(date);
+          setDateRange(date);
         }}
       />
+      <Box marginTop="spacing.5">
+        <Text marginBottom="spacing.5">Single Date Picker</Text>
+        <Text>Selected: {dayjs(date).format('DD-MM-YYYY')}</Text>
+        <DatePickerComponent
+          label="Select a date"
+          selectionType="single"
+          value={date}
+          onChange={(date) => {
+            setDate(date);
+          }}
+        />
+      </Box>
+
+      <Button
+        onClick={() => {
+          setDate(
+            dayjs()
+              .subtract(Math.round(Math.random() * 10), 'month')
+              .toDate(),
+          );
+        }}
+        marginTop="spacing.5"
+      >
+        {' '}
+        Change Date
+      </Button>
     </Box>
   );
 };
@@ -380,3 +413,200 @@ export const Localization: StoryFn<typeof DatePickerComponent> = () => {
 };
 
 Localization.storyName = 'Localization';
+
+export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDatePicker> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="single"
+        onChange={(date) => {
+          console.log('date', date);
+        }}
+      />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStorySingleStory.storyName = 'FilterChipDatePicker (Single Selection)';
+
+export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
+  typeof FilterChipDatePicker
+> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        onChange={(date) => {
+          console.log(date);
+        }}
+      />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
+
+export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
+  typeof FilterChipDatePicker
+> = () => {
+  return (
+    <Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        presets={[
+          { label: 'In 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date] },
+          {
+            label: 'In a month',
+            value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+          },
+        ]}
+        onChange={(date) => {
+          console.log(date);
+        }}
+      />
+    </Box>
+  );
+};
+
+FilterChipDatePickerStorySingleStoryWithPreset.storyName =
+  'FilterChipDatePicker (Single Selection) with Presets';
+
+export const ControlledFilterChipDatePickerSingle: StoryFn<typeof FilterChipDatePicker> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">isOpen</Code>, <Code size="medium">value</Code> and associated
+        event handlers you can control the FilterChipDatePicker.
+      </Text>
+      <Box marginBottom="spacing.5">
+        <Text>Selected: {dayjs(date).format('DD-MM-YYYY')}</Text>
+        <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
+      </Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="single"
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        value={date}
+        onChange={(date) => {
+          setDate(date as Date);
+        }}
+      />
+    </Box>
+  );
+};
+
+export const ControlledFilterChipDatePickerRange: StoryFn<typeof FilterChipDatePicker> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [date, setDate] = React.useState<DatesRangeValue>([
+    new Date(),
+    dayjs().add(3, 'day').toDate(),
+  ]);
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">isOpen</Code>, <Code size="medium">value</Code> and associated
+        event handlers you can control the FilterChipDatePicker.
+      </Text>
+      <Box marginBottom="spacing.5">
+        <Text>
+          Selected: [{dayjs(date[0]).format('DD-MM-YYYY')}, {dayjs(date[1]).format('DD-MM-YYYY')}]
+        </Text>
+        <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
+      </Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        value={date}
+        onChange={(date) => {
+          setDate(date as DatesRangeValue);
+        }}
+        onClearButtonClick={() => {
+          setDate([null, null]);
+        }}
+      />
+    </Box>
+  );
+};
+
+export const DisabledDatePickerWithFilterChipSelectInput: StoryFn<
+  typeof DatePickerComponent
+> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [date, setDate] = React.useState<DatesRangeValue>([
+    new Date(),
+    dayjs().add(3, 'day').toDate(),
+  ]);
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">isOpen</Code>, <Code size="medium">value</Code> and associated
+        event handlers you can control the FilterChipDatePicker.
+      </Text>
+      <Box marginBottom="spacing.5">
+        <Text>
+          Selected: [{dayjs(date[0]).format('DD-MM-YYYY')}, {dayjs(date[1]).format('DD-MM-YYYY')}]
+        </Text>
+        <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
+      </Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        value={date}
+        onChange={(date) => {
+          setDate(date as DatesRangeValue);
+        }}
+        onClearButtonClick={() => {
+          setDate([null, null]);
+        }}
+        isDisabled
+      />
+    </Box>
+  );
+};
+
+export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box>
+      <Box display="flex" gap="spacing.5" flexDirection="column">
+        <DatePickerComponent
+          selectionType="single"
+          labelPosition="left"
+          label="Select a date"
+          labelSuffix={
+            <Tooltip content="Select a date" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+        />
+        <DatePickerComponent
+          labelPosition="left"
+          selectionType="range"
+          label={{ start: 'Select a range' }}
+          labelSuffix={
+            <Tooltip content="Select a date" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+        />
+      </Box>
+    </Box>
+  );
+};

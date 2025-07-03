@@ -69,6 +69,41 @@ type DropdownOverlayProps = {
    * @default 'bottom-start'
    */
   defaultPlacement?: Placement;
+  /**
+   * Nested Dropdown Overlay (Input Search Dropdown)
+   * @default false
+   * @private
+   */
+  _isNestedDropdown?: boolean;
 } & TestID;
 
-export type { DropdownProps, DropdownOverlayProps };
+type FilterChipGroupProps = TestID &
+  DataAnalyticsAttribute & {
+    children: React.ReactNode;
+    /**
+     * Callback which is called when clear button is clicked
+     */
+    onClearButtonClick?: () => void;
+    /**
+     * Boolean to decide if we should show clear button or not.
+     * If true, clear button will be shown when there are selected filters
+     *
+     */
+    showClearButton?: boolean;
+  };
+
+type FilterChipGroupContextType = {
+  /**
+   *  Number of Selected Filters
+   */
+  filterChipGroupSelectedFilters: string[];
+  setFilterChipGroupSelectedFilters: React.Dispatch<React.SetStateAction<string[]>>;
+  clearFilterCallbackTriggerer: number;
+  setClearFilterCallbackTriggerer: React.Dispatch<React.SetStateAction<number>>;
+};
+export type {
+  DropdownProps,
+  DropdownOverlayProps,
+  FilterChipGroupProps,
+  FilterChipGroupContextType,
+};

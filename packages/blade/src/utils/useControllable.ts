@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -13,6 +14,11 @@ type ControllableStateSetter<T> = (
    * If `true`, `onChange` won't be called
    */
   skipUpdate?: boolean,
+  /**
+   * Extra data to be passed to `onChange` callback
+   * Example use case: passing event object to `onChange` callback
+   */
+  extraData?: any,
 ) => void;
 
 type UseControllableStateProps<T> = {
@@ -27,7 +33,7 @@ type UseControllableStateProps<T> = {
   /**
    * The callback fired when the value changes
    */
-  onChange?: (value: T) => void;
+  onChange?: (value: T, extraData: any) => void;
   shouldUpdate?: (prev: T, next: T) => boolean;
 };
 
@@ -57,13 +63,13 @@ function useControllableState<T>(props: UseControllableStateProps<T>) {
   const value = isControlled && typeof valueProp !== 'undefined' ? valueProp : valueState;
 
   const updateValue: ControllableStateSetter<T> = useCallbackRef(
-    (next, skipUpdate = false) => {
+    (next, skipUpdate = false, extraData) => {
       const nextValue = next(value);
       if (!isControlled) setValue(nextValue);
       // We don't want to call onChange if skipUpdate is true or if the value is not changed
       if (!shouldUpdateProp(value, nextValue)) return;
       if (skipUpdate) return;
-      onChangeProp?.(nextValue);
+      onChangeProp?.(nextValue, extraData);
     },
     [isControlled, onChangeProp, value, shouldUpdateProp],
   );

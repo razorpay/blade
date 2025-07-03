@@ -4,7 +4,15 @@ import { Code } from '~components/Typography';
 import { ScrollLink } from '~utils/storybook/ScrollLink';
 
 type PropsTableType<T> = Record<
-  keyof Omit<T, 'testID' | '_hideDivider' | '_sectionChildValues' | '_index'>,
+  keyof Omit<
+    T,
+    | 'testID'
+    | '_hideDivider'
+    | '_sectionChildValues'
+    | '_index'
+    | '_virtualizedIndex'
+    | '_onVirtualizedFocus'
+  >,
   string | React.ReactElement | { note: string; type: string | React.ReactElement }
 >;
 const actionListPropsTables: {
@@ -19,6 +27,10 @@ const actionListPropsTables: {
         <ScrollLink href="#actionlistsection">&lt;ActionListSection[] /&gt;</ScrollLink>
       </>
     ),
+    isVirtualized: {
+      note: 'Currently only works with ActionList and ActionListSection',
+      type: 'boolean',
+    },
   },
   ActionListItem: {
     title: 'string',

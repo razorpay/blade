@@ -13,10 +13,37 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -32,7 +59,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   gap: 0px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -42,14 +69,14 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   flex-direction: row;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,19 +88,19 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   width: 100%;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   margin-left: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -95,7 +122,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   overflow-wrap: break-word;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -112,7 +139,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
@@ -145,7 +172,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   cursor: auto;
 }
 
-.c11.c11.c11.c11.c11::-webkit-input-placeholder {
+.c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -163,7 +190,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::-moz-placeholder {
+.c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -181,7 +208,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:-ms-input-placeholder {
+.c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -199,7 +226,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::placeholder {
+.c12.c12.c12.c12.c12::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -217,11 +244,11 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:focus {
+.c12.c12.c12.c12.c12:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -239,13 +266,13 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c11.c11.c11.c11.c11:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -263,15 +290,15 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -289,13 +316,13 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -312,20 +339,21 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -340,7 +368,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
       <label
         data-blade-component="form-label"
         for="otp-4399-input-4400"
-        style="width: auto; flex-shrink: 0; margin-right: 0px;"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c1"
@@ -350,26 +378,36 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
             class="c2"
             data-blade-component="base-box"
           >
-            <p
-              class="c3"
-              data-blade-component="text"
-            >
-              Enter OTP
-            </p>
             <div
-              class="c4"
-              data-blade-component="visually-hidden"
+              class=""
+              data-blade-component="base-box"
             >
-              <p
-                class="c5"
-                data-blade-component="text"
-              />
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Enter OTP
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </label>
       <div
-        class="c6"
+        class="c7"
         data-blade-component="base-box"
       >
         <input
@@ -379,7 +417,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
           value=""
         />
         <div
-          class="c7"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
@@ -387,15 +425,15 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -405,7 +443,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     aria-label="Enter OTP character 1"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
@@ -422,7 +460,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -430,15 +468,15 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -448,7 +486,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     aria-label=" character 2"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
@@ -465,7 +503,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -473,15 +511,15 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -491,7 +529,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     aria-label=" character 3"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
@@ -508,7 +546,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -516,15 +554,15 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -534,7 +572,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     aria-label=" character 4"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
@@ -553,7 +591,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
       </div>
     </div>
     <div
-      class="c13"
+      class="c14"
       data-blade-component="base-box"
     />
   </div>
@@ -573,10 +611,37 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -592,7 +657,7 @@ exports[`<OTPInput /> should render 1`] = `
   gap: 0px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -602,14 +667,14 @@ exports[`<OTPInput /> should render 1`] = `
   flex-direction: row;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -621,19 +686,19 @@ exports[`<OTPInput /> should render 1`] = `
   width: 100%;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   margin-left: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -655,7 +720,7 @@ exports[`<OTPInput /> should render 1`] = `
   overflow-wrap: break-word;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -672,7 +737,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
@@ -705,7 +770,7 @@ exports[`<OTPInput /> should render 1`] = `
   cursor: auto;
 }
 
-.c11.c11.c11.c11.c11::-webkit-input-placeholder {
+.c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -723,7 +788,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::-moz-placeholder {
+.c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -741,7 +806,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:-ms-input-placeholder {
+.c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -759,7 +824,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::placeholder {
+.c12.c12.c12.c12.c12::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -777,11 +842,11 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:focus {
+.c12.c12.c12.c12.c12:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -799,13 +864,13 @@ exports[`<OTPInput /> should render 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c11.c11.c11.c11.c11:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -823,15 +888,15 @@ exports[`<OTPInput /> should render 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -849,13 +914,13 @@ exports[`<OTPInput /> should render 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -872,20 +937,21 @@ exports[`<OTPInput /> should render 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -900,7 +966,7 @@ exports[`<OTPInput /> should render 1`] = `
       <label
         data-blade-component="form-label"
         for="otp-37-input-38"
-        style="width: auto; flex-shrink: 0; margin-right: 0px;"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c1"
@@ -910,26 +976,36 @@ exports[`<OTPInput /> should render 1`] = `
             class="c2"
             data-blade-component="base-box"
           >
-            <p
-              class="c3"
-              data-blade-component="text"
-            >
-              Enter OTP
-            </p>
             <div
-              class="c4"
-              data-blade-component="visually-hidden"
+              class=""
+              data-blade-component="base-box"
             >
-              <p
-                class="c5"
-                data-blade-component="text"
-              />
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Enter OTP
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </label>
       <div
-        class="c6"
+        class="c7"
         data-blade-component="base-box"
       >
         <input
@@ -939,7 +1015,7 @@ exports[`<OTPInput /> should render 1`] = `
           value=""
         />
         <div
-          class="c7"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
@@ -947,15 +1023,15 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -965,7 +1041,7 @@ exports[`<OTPInput /> should render 1`] = `
                     aria-label="Enter OTP character 1"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-37-input-38-0-49-input-50"
                     inputmode="decimal"
@@ -980,7 +1056,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -988,15 +1064,15 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1006,7 +1082,7 @@ exports[`<OTPInput /> should render 1`] = `
                     aria-label=" character 2"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-37-input-38-1-55-input-56"
                     inputmode="decimal"
@@ -1021,7 +1097,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1029,15 +1105,15 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1047,7 +1123,7 @@ exports[`<OTPInput /> should render 1`] = `
                     aria-label=" character 3"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-37-input-38-2-61-input-62"
                     inputmode="decimal"
@@ -1062,7 +1138,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1070,15 +1146,15 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1088,7 +1164,7 @@ exports[`<OTPInput /> should render 1`] = `
                     aria-label=" character 4"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-37-input-38-3-67-input-68"
                     inputmode="decimal"
@@ -1103,7 +1179,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1111,15 +1187,15 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1129,7 +1205,7 @@ exports[`<OTPInput /> should render 1`] = `
                     aria-label=" character 5"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-37-input-38-4-73-input-74"
                     inputmode="decimal"
@@ -1144,7 +1220,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1152,15 +1228,15 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1170,7 +1246,7 @@ exports[`<OTPInput /> should render 1`] = `
                     aria-label=" character 6"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-37-input-38-5-79-input-80"
                     inputmode="decimal"
@@ -1187,7 +1263,7 @@ exports[`<OTPInput /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c13"
+      class="c14"
       data-blade-component="base-box"
     />
   </div>
@@ -1207,10 +1283,37 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1226,7 +1329,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   gap: 0px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1236,14 +1339,14 @@ exports[`<OTPInput /> should render large size 1`] = `
   flex-direction: row;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1255,19 +1358,19 @@ exports[`<OTPInput /> should render large size 1`] = `
   width: 100%;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   margin-left: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1289,7 +1392,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   overflow-wrap: break-word;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1306,7 +1409,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.5rem;
@@ -1339,7 +1442,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   cursor: auto;
 }
 
-.c11.c11.c11.c11.c11::-webkit-input-placeholder {
+.c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1357,7 +1460,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::-moz-placeholder {
+.c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1375,7 +1478,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:-ms-input-placeholder {
+.c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1393,7 +1496,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::placeholder {
+.c12.c12.c12.c12.c12::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1411,11 +1514,11 @@ exports[`<OTPInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:focus {
+.c12.c12.c12.c12.c12:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1433,13 +1536,13 @@ exports[`<OTPInput /> should render large size 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c11.c11.c11.c11.c11:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1457,15 +1560,15 @@ exports[`<OTPInput /> should render large size 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1483,13 +1586,13 @@ exports[`<OTPInput /> should render large size 1`] = `
   box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1506,20 +1609,21 @@ exports[`<OTPInput /> should render large size 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 <div>
@@ -1534,7 +1638,7 @@ exports[`<OTPInput /> should render large size 1`] = `
       <label
         data-blade-component="form-label"
         for="otp-157-input-158"
-        style="width: auto; flex-shrink: 0; margin-right: 0px;"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c1"
@@ -1544,26 +1648,36 @@ exports[`<OTPInput /> should render large size 1`] = `
             class="c2"
             data-blade-component="base-box"
           >
-            <p
-              class="c3"
-              data-blade-component="text"
-            >
-              Enter OTP
-            </p>
             <div
-              class="c4"
-              data-blade-component="visually-hidden"
+              class=""
+              data-blade-component="base-box"
             >
-              <p
-                class="c5"
-                data-blade-component="text"
-              />
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Enter OTP
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </label>
       <div
-        class="c6"
+        class="c7"
         data-blade-component="base-box"
       >
         <input
@@ -1573,7 +1687,7 @@ exports[`<OTPInput /> should render large size 1`] = `
           value="1234"
         />
         <div
-          class="c7"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
@@ -1581,15 +1695,15 @@ exports[`<OTPInput /> should render large size 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1599,7 +1713,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     aria-label="Enter OTP character 1"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-157-input-158-0-163-input-164"
                     inputmode="decimal"
@@ -1615,7 +1729,7 @@ exports[`<OTPInput /> should render large size 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1623,15 +1737,15 @@ exports[`<OTPInput /> should render large size 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1641,7 +1755,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     aria-label=" character 2"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-157-input-158-1-169-input-170"
                     inputmode="decimal"
@@ -1657,7 +1771,7 @@ exports[`<OTPInput /> should render large size 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1665,15 +1779,15 @@ exports[`<OTPInput /> should render large size 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1683,7 +1797,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     aria-label=" character 3"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-157-input-158-2-175-input-176"
                     inputmode="decimal"
@@ -1699,7 +1813,7 @@ exports[`<OTPInput /> should render large size 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1707,15 +1821,15 @@ exports[`<OTPInput /> should render large size 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1725,7 +1839,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     aria-label=" character 4"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-157-input-158-3-181-input-182"
                     inputmode="decimal"
@@ -1741,7 +1855,7 @@ exports[`<OTPInput /> should render large size 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1749,15 +1863,15 @@ exports[`<OTPInput /> should render large size 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1767,7 +1881,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     aria-label=" character 5"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-157-input-158-4-187-input-188"
                     inputmode="decimal"
@@ -1782,7 +1896,7 @@ exports[`<OTPInput /> should render large size 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -1790,15 +1904,15 @@ exports[`<OTPInput /> should render large size 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
             >
               <div
-                class=" c9"
+                class=" c10 focus-ring-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c10"
+                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
                   data-blade-component="base-box"
                 >
                   <input
@@ -1808,7 +1922,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     aria-label=" character 6"
                     aria-required="true"
                     autocomplete="one-time-code"
-                    class="c11"
+                    class="c12"
                     data-blade-component="styled-base-input"
                     id="otp-157-input-158-5-193-input-194"
                     inputmode="decimal"
@@ -1825,7 +1939,7 @@ exports[`<OTPInput /> should render large size 1`] = `
       </div>
     </div>
     <div
-      class="c13"
+      class="c14"
       data-blade-component="base-box"
     />
   </div>

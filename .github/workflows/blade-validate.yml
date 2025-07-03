@@ -2,6 +2,12 @@ name: Blade Validate
 
 on: [pull_request]
 
+permissions:
+  checks: write
+  pull-requests: write
+  contents: read
+
+
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
@@ -16,6 +22,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.12.1
+      - name: Pre-Generate Documentation Lock File
+        run: yarn generate-docs-lockfile
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Build Blade
@@ -33,7 +41,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1/4, 2/4, 3/4, 4/4]
+        shard: [1, 2, 3, 4]
+        totalShards: [4]
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
@@ -47,4 +56,106 @@ jobs:
         run: yarn test
         working-directory: packages/blade
         env:
-          SHARD: ${{ matrix.shard }}
+          SHARD: ${{ matrix.shard }}/${{ matrix.totalShards }}
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4  
+        with:
+          name: coverage-report-${{ matrix.shard }}
+          path: packages/blade/coverage
+          retention-days: 1          
+  
+  coverage-report:
+    name: Generate Coverage Report
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+      actions: read
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Download Coverage Reports
+        uses: actions/download-artifact@v4
+        with:
+          path: coverage-reports
+      - name: Debug Downloaded Artifacts
+        run: |
+          echo "Checking downloaded coverage reports..."
+          find coverage-reports -type f -name "*.json" | head -20
+          ls -la coverage-reports/
+      - name: Create Merged Coverage Report
+        run: |
+          # Create directory for nyc output
+          mkdir -p .nyc_output
+          
+          # Find and copy all coverage-final.json files to .nyc_output with unique names
+          counter=1
+          find coverage-reports -name "coverage-final.json" | while read file; do
+            cp "$file" ".nyc_output/coverage-final-${counter}.json"
+            counter=$((counter + 1))
+          done
+          
+          # List files in .nyc_output for debugging
+          echo "Files in .nyc_output:"
+          ls -la .nyc_output/
+          
+          # Generate merged report and capture text-summary
+          yarn --silent nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
+          
+          # Generate full coverage report
+          yarn --silent nyc report --reporter=json --reporter=text > coverage-full.txt
+          
+          # Ensure output directory exists
+          mkdir -p packages/blade/coverage
+          
+          # Copy the merged report to expected location
+          if [ -f "coverage/coverage-final.json" ]; then
+            cp coverage/coverage-final.json packages/blade/coverage/
+            echo "Coverage file copied successfully"
+          else
+            echo "Error: coverage/coverage-final.json not found"
+            exit 1
+          fi
+      - name: Prepare Coverage Comment
+        run: |
+          echo '<!-- coverage-report-comment -->' > coverage-comment.md
+          echo '## 🛡️ Coverage Report' >> coverage-comment.md
+          echo '' >> coverage-comment.md
+          echo '### Summary' >> coverage-comment.md
+          echo '```' >> coverage-comment.md
+          cat coverage-summary.txt >> coverage-comment.md
+          echo '```' >> coverage-comment.md
+          echo '' >> coverage-comment.md
+          echo '<details>' >> coverage-comment.md
+          echo '<summary>Full Coverage Details</summary>' >> coverage-comment.md
+          echo '' >> coverage-comment.md
+          echo '```' >> coverage-comment.md
+          cat coverage-full.txt >> coverage-comment.md
+          echo '```' >> coverage-comment.md
+          echo '' >> coverage-comment.md
+          echo '</details>' >> coverage-comment.md
+      - name: Find existing coverage comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'rzpcibot'
+          body-includes: '<!-- coverage-report-comment -->'
+      - name: Create or update coverage comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-file: coverage-comment.md
+          token: ${{ secrets.CI_BOT_TOKEN }}
+          edit-mode: replace  

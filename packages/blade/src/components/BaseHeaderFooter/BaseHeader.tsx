@@ -2,8 +2,9 @@
 import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { Divider } from '~components/Divider';
+import type { DividerProps } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
@@ -51,7 +52,7 @@ type BaseHeaderProps = {
   /**
    * Decides size of the Header
    */
-  size?: 'large' | 'medium';
+  size?: 'xlarge' | 'large' | 'medium';
   /**
    * @default true
    */
@@ -68,6 +69,9 @@ type BaseHeaderProps = {
   marginY?: BoxProps['marginY'];
   marginTop?: BoxProps['marginTop'];
   marginBottom?: BoxProps['marginBottom'];
+  alignItems?: BoxProps['alignItems'];
+  dividerProps?: DividerProps;
+
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
@@ -77,6 +81,12 @@ type BaseHeaderProps = {
    * inner child of BottomSheetHeader. Meant to be used for AutoComplete only
    */
   children?: React.ReactElement | React.ReactElement[];
+  /**
+   * Background image of the header
+   *
+   * You can use this for adding gradients.
+   */
+  backgroundImage?: BoxProps['backgroundImage'];
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -99,7 +109,11 @@ const commonCenterBoxProps: BoxProps = {
   justifyContent: 'center',
 };
 
-const centerBoxProps: { large: BoxProps; medium: BoxProps } = {
+const centerBoxProps: { xlarge: BoxProps; large: BoxProps; medium: BoxProps } = {
+  xlarge: {
+    ...commonCenterBoxProps,
+    height: '28px',
+  },
   large: {
     ...commonCenterBoxProps,
     // We want to align title, icon, titleSuffix, trailing, closeButton to baseline
@@ -114,12 +128,24 @@ const centerBoxProps: { large: BoxProps; medium: BoxProps } = {
   },
 };
 
+const absolutePositionedButton = {
+  position: 'absolute',
+  top: 'spacing.0',
+  right: 'spacing.0',
+} as const;
+
 const sizeTokensMapping = {
+  xlarge: {
+    title: 'small',
+    type: 'heading',
+  },
   large: {
     title: 'large',
+    type: 'text',
   },
   medium: {
     title: 'medium',
+    type: 'text',
   },
 } as const;
 
@@ -129,6 +155,32 @@ const propRestrictionMap = {
     Button: {
       size: 'xsmall',
       variant: 'tertiary',
+    },
+    IconButton: {
+      size: 'large',
+    },
+    Badge: {
+      size: 'medium',
+    },
+    Link: {
+      size: 'medium',
+    },
+    Text: {
+      size: 'medium',
+      variant: 'body',
+    },
+    Amount: {
+      type: 'body',
+      size: 'medium',
+    },
+  },
+  xlarge: {
+    Button: {
+      size: 'xsmall',
+      variant: 'tertiary',
+    },
+    IconButton: {
+      size: 'large',
     },
     Badge: {
       size: 'medium',
@@ -149,6 +201,9 @@ const propRestrictionMap = {
     Button: {
       size: 'xsmall',
       variant: 'tertiary',
+    },
+    IconButton: {
+      size: 'large',
     },
     Badge: {
       size: 'small',
@@ -184,6 +239,7 @@ const useTrailingRestriction = ({
     if (React.isValidElement(trailing)) {
       const trailingComponentType = getComponentId(trailing) as TrailingComponents;
       const restrictedProps = propRestrictionMap[size][trailingComponentType];
+
       const allowedComponents = Object.keys(propRestrictionMap[size]);
       if (__DEV__) {
         if (!restrictedProps) {
@@ -246,10 +302,14 @@ const _BaseHeader = ({
   isDisabled,
   children,
   trailingInteractionElement,
+  backgroundImage,
+  alignItems = 'flex-start',
+  dividerProps,
   ...rest
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
+  const hasOnlyChildren = children && !(title || subtitle || titleSuffix || leading);
 
   const webOnlyEventHandlers: Record<string, any> = isReactNative()
     ? {}
@@ -268,6 +328,7 @@ const _BaseHeader = ({
     <BaseBox
       {...metaAttribute({ name: metaComponentName, testID })}
       {...makeAnalyticsAttribute(rest)}
+      backgroundImage={backgroundImage}
     >
       <BaseBox
         marginY={marginY ?? { base: 'spacing.5', m: 'spacing.6' }}
@@ -277,7 +338,7 @@ const _BaseHeader = ({
         touchAction="none"
         {...webOnlyEventHandlers}
       >
-        <BaseBox display="flex" flexDirection="row" userSelect="none">
+        <BaseBox position="relative" display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (
             <BaseBox overflow="visible" marginRight="spacing.5">
               <Box {...centerBoxProps[size]}>
@@ -291,65 +352,84 @@ const _BaseHeader = ({
               </Box>
             </BaseBox>
           ) : null}
-          <BaseBox
-            paddingRight="spacing.5"
-            marginRight="auto"
-            flex="auto"
-            display="flex"
-            flexDirection="row"
-            alignItems="flex-start"
-          >
-            {leading ? (
-              <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
-                {leading}
-              </BaseBox>
-            ) : null}
-            <BaseBox flex="auto">
-              <BaseBox
-                // Explicitly setting maxWidth in React Native because text is not being wrapped properly when multiple fix width components are rendered in header
-                // In web, flex containers seem to work a expected
-                // @todo: resolve this if we figure out some better solution later
-                maxWidth={isReactNative() && shouldWrapTitle ? '100px' : undefined}
-                flexShrink={0}
-                display="flex"
-                flexDirection="row"
-              >
-                {title ? (
+          {hasOnlyChildren ? null : (
+            <BaseBox
+              paddingRight="spacing.5"
+              marginRight="auto"
+              flex="auto"
+              display="flex"
+              flexDirection="row"
+              alignItems={alignItems}
+            >
+              {leading ? (
+                <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
+                  {leading}
+                </BaseBox>
+              ) : null}
+              <BaseBox flex="auto">
+                <BaseBox
+                  // Explicitly setting maxWidth in React Native because text is not being wrapped properly when multiple fix width components are rendered in header
+                  // In web, flex containers seem to work a expected
+                  // @todo: resolve this if we figure out some better solution later
+                  maxWidth={isReactNative() && shouldWrapTitle ? '100px' : undefined}
+                  flexShrink={0}
+                  display="flex"
+                  flexDirection="row"
+                >
+                  {title ? (
+                    sizeTokensMapping[size].type === 'heading' ? (
+                      <Heading
+                        as="h2"
+                        marginTop={makeSize(sizeToken['1'])}
+                        size={sizeTokensMapping[size].title}
+                        weight="semibold"
+                        color={
+                          isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'
+                        }
+                        wordBreak="break-word"
+                      >
+                        {title}
+                      </Heading>
+                    ) : (
+                      <Text
+                        size={sizeTokensMapping[size].title}
+                        marginTop={makeSize(sizeToken['1'])}
+                        weight="semibold"
+                        color={
+                          isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'
+                        }
+                        wordBreak="break-word"
+                      >
+                        {title}
+                      </Text>
+                    )
+                  ) : null}
+                  {titleSuffix && (
+                    <BaseBox marginLeft="spacing.3">
+                      <Box {...centerBoxProps[size]}>{titleSuffix}</Box>
+                    </BaseBox>
+                  )}
+                </BaseBox>
+                {subtitle ? (
                   <Text
-                    size={sizeTokensMapping[size].title}
-                    marginTop={makeSize(sizeToken['1'])}
-                    weight="semibold"
-                    color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'}
-                    wordBreak="break-word"
+                    variant="body"
+                    size="small"
+                    weight="regular"
+                    color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
                   >
-                    {title}
+                    {subtitle}
                   </Text>
                 ) : null}
-                {titleSuffix && (
-                  <BaseBox marginLeft="spacing.3">
-                    <Box {...centerBoxProps[size]}>{titleSuffix}</Box>
-                  </BaseBox>
-                )}
               </BaseBox>
-              {subtitle ? (
-                <Text
-                  variant="body"
-                  size="small"
-                  weight="regular"
-                  color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
-                >
-                  {subtitle}
-                </Text>
-              ) : null}
             </BaseBox>
-          </BaseBox>
+          )}
           {validatedTrailingComponent ? (
             <BaseBox marginRight="spacing.5">
               <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
             </BaseBox>
           ) : null}
           {showCloseButton ? (
-            <Box {...centerBoxProps[size]}>
+            <Box {...(hasOnlyChildren ? absolutePositionedButton : centerBoxProps[size])}>
               <IconButton
                 ref={closeButtonRef}
                 size="large"
@@ -378,7 +458,7 @@ const _BaseHeader = ({
           ) : null}
         </BaseBox>
       </BaseBox>
-      {showDivider ? <Divider /> : null}
+      {showDivider ? <Divider {...dividerProps} /> : null}
     </BaseBox>
   );
 };

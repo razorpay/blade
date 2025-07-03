@@ -187,11 +187,13 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -199,14 +201,14 @@ exports[`<Accordion /> should render 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",
@@ -744,11 +746,13 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -756,14 +760,14 @@ exports[`<Accordion /> should render 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",
@@ -1301,11 +1305,13 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -1313,14 +1319,14 @@ exports[`<Accordion /> should render 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",
@@ -1907,11 +1913,13 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -1919,14 +1927,14 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",
@@ -2464,11 +2472,13 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -2476,14 +2486,14 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",
@@ -3021,11 +3031,13 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -3033,14 +3045,14 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",
@@ -3626,11 +3638,13 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -3638,14 +3652,14 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",
@@ -4183,11 +4197,13 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -4195,14 +4211,14 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",
@@ -4740,11 +4756,13 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
+                        position="relative"
                         style={
                           [
                             {
                               "display": "flex",
                               "flexDirection": "row",
+                              "position": "relative",
                               "userSelect": "none",
                             },
                           ]
@@ -4752,14 +4770,14 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                         userSelect="none"
                       >
                         <View
-                          alignItems="flex-start"
+                          alignItems="center"
                           data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           style={
                             [
                               {
-                                "alignItems": "flex-start",
+                                "alignItems": "center",
                                 "display": "flex",
                                 "flexBasis": "auto",
                                 "flexDirection": "row",

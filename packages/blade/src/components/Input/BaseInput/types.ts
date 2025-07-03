@@ -29,6 +29,7 @@ export type BaseInputTagSlotProps = {
   size: NonNullable<BaseInputProps['size']>;
   isTextArea?: boolean;
   numberOfLines: BaseInputProps['numberOfLines'];
+  hasLeadingDropDown?: boolean;
 };
 
 export type BaseInputWrapperProps = Pick<
@@ -65,6 +66,7 @@ export type StyledBaseInputProps = {
   $size: NonNullable<BaseInputProps['size']>;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
+  hasLeadingDropdown?: boolean;
 } & Pick<
   BaseInputProps,
   | 'as'
@@ -97,6 +99,7 @@ export type StyledBaseInputProps = {
   | 'shouldIgnoreBlurAnimation'
   | 'autoCapitalize'
   | 'isDropdownTrigger'
+  | 'tabIndex'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

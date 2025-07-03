@@ -7,7 +7,10 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { componentIds as collapsibleComponentIds } from '~components/Collapsible/componentIds';
+import { throwBladeError } from '~utils/logger';
 
 const useChildrenWithIndexes = ({
   _nestingLevel,
@@ -23,8 +26,8 @@ const useChildrenWithIndexes = ({
   const traverseGroupAndAddIndex = (
     groupChildrenProp: StepGroupProps['children'],
     nestingLevelOfGroup = 0,
+    stepItemIndex = 0,
   ): React.ReactNode => {
-    let stepItemIndex = 0;
     return React.Children.map(groupChildrenProp, (child, index) => {
       const componentId = getComponentId(child);
       if (componentId === componentIds.StepItem) {
@@ -33,6 +36,34 @@ const useChildrenWithIndexes = ({
           _totalIndex: totalIndex++,
           _nestingLevel: nestingLevelOfGroup,
           key: index,
+        });
+      }
+
+      if (componentId === collapsibleComponentIds.Collapsible) {
+        if (parentStepGroupProps.orientation !== 'vertical' && __DEV__) {
+          throwBladeError({
+            message: 'Collapsible is not supported in horizontal orientation',
+            moduleName: 'StepGroup',
+          });
+        }
+
+        return React.cloneElement(child, {
+          children: React.Children.map(child.props.children, (nestedChild) => {
+            if (
+              React.isValidElement(nestedChild) &&
+              getComponentId(nestedChild) === collapsibleComponentIds.CollapsibleBody
+            ) {
+              return React.cloneElement(nestedChild as React.ReactElement, {
+                children: traverseGroupAndAddIndex(
+                  (nestedChild.props as { children: React.ReactElement }).children,
+                  nestingLevelOfGroup,
+                  stepItemIndex,
+                ),
+                key: totalIndex,
+              });
+            }
+            return nestedChild;
+          }),
         });
       }
 
@@ -60,17 +91,20 @@ const useChildrenWithIndexes = ({
   return { childrenWithIndex, totalItemsInParentGroupCount };
 };
 
-const _StepGroup = ({
-  size = 'medium',
-  orientation = 'vertical',
-  children,
-  testID,
-  _nestingLevel = 0,
-  width,
-  minWidth,
-  maxWidth,
-  ...rest
-}: StepGroupProps): React.ReactElement => {
+const _StepGroup = (
+  {
+    size = 'medium',
+    orientation = 'vertical',
+    children,
+    testID,
+    _nestingLevel = 0,
+    width,
+    minWidth,
+    maxWidth,
+    ...rest
+  }: StepGroupProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const itemsInGroupCount = React.Children.count(children);
   const { childrenWithIndex, totalItemsInParentGroupCount } = useChildrenWithIndexes({
     children,
@@ -94,14 +128,15 @@ const _StepGroup = ({
   return (
     <StepGroupContext.Provider value={contextValue}>
       <BaseBox
+        ref={ref as never}
         {...getStyledProps(rest)}
         display="inline-flex"
         maxWidth={maxWidth ?? '100%'}
         minWidth={minWidth}
         width={width ?? defaultWidth}
-        padding={_nestingLevel === 0 ? 'spacing.4' : undefined}
-        overflowX={orientation === 'horizontal' ? 'auto' : undefined}
-        flexDirection={orientation === 'vertical' ? 'column' : 'row'}
+        paddingY={_nestingLevel === 0 ? 'spacing.4' : undefined}
+        overflowX={isHorizontal ? 'auto' : undefined}
+        flexDirection={isHorizontal ? 'row' : 'column'}
         {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
         {...makeAnalyticsAttribute(rest)}
       >
@@ -129,7 +164,7 @@ const _StepGroup = ({
  *
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-stepgroup--docs StepGroup Documentation}
  */
-const StepGroup = assignWithoutSideEffects(_StepGroup, {
+const StepGroup = assignWithoutSideEffects(React.forwardRef(_StepGroup), {
   componentId: componentIds.StepGroup,
   displayName: componentIds.StepGroup,
 });

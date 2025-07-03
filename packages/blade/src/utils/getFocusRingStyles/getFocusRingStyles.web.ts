@@ -18,7 +18,8 @@ function getFocusRingStyles({
     outlineOffset: `${negativeOffset ? '-4px' : '1px'}${important}`,
     transitionProperty: 'outline-width',
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard),
+    zIndex: 2, // Prevent focus ring clipping by adjacent inputs in InputGroup
   } as const;
 }
 

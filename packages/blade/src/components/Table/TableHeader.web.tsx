@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
-import { tableHeader, tableRow } from './tokens';
+import { checkboxCellWidth, tableHeader, tableRow } from './tokens';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import type {
@@ -53,7 +53,10 @@ const SortIcon = ({
   const upArrowColor = isSorted && isSortReversed ? activeColor : defaultColor;
   const downArrowColor = isSorted && !isSortReversed ? activeColor : defaultColor;
   return (
-    <SortButton {...makeAccessible({ label: 'Toggle Sort', role: 'button' })}>
+    <SortButton
+      {...metaAttribute({ name: MetaConstants.TableSortButton })}
+      {...makeAccessible({ label: 'Toggle Sort', role: 'button' })}
+    >
       <svg width={20} height={20} fill="none">
         <path
           fill={upArrowColor}
@@ -96,8 +99,11 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $hasPadding: boolean;
-}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding }) => ({
+  $textAlign: 'left' | 'center' | 'right';
+}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign }) => ({
   '&&&': {
+    display: $textAlign ? 'flex' : 'block',
+    justifyContent: $textAlign ? 'space-between' : 'initial',
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
@@ -111,7 +117,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      justifyContent: $textAlign ? $textAlign : 'space-between',
       alignItems: 'center',
       height: '100%',
       paddingLeft: $hasPadding
@@ -130,6 +136,7 @@ const _TableHeaderCell = ({
   children,
   headerKey,
   _hasPadding = true,
+  textAlign,
   ...rest
 }: TableHeaderCellProps): React.ReactElement => {
   const {
@@ -149,6 +156,7 @@ const _TableHeaderCell = ({
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}
       $hasPadding={_hasPadding}
+      $textAlign={textAlign}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);
@@ -157,15 +165,17 @@ const _TableHeaderCell = ({
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
       {...makeAnalyticsAttribute(rest)}
     >
-      {isChildrenString ? (
-        <Text size="medium" weight="medium" color="surface.text.gray.normal">
-          {children}
-        </Text>
-      ) : (
-        children
-      )}
+      <BaseBox display="flex" flexGrow={1} justifyContent={textAlign}>
+        {isChildrenString ? (
+          <Text size="medium" weight="medium" color="surface.text.gray.normal">
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </BaseBox>
       {isSortable && (
-        <BaseBox paddingLeft="spacing.2" backgroundColor="transparent">
+        <BaseBox paddingLeft="spacing.2" backgroundColor="transparent" flexShrink={0}>
           <SortIcon
             isSorted={currentSortedState.sortKey === headerKey}
             isSortReversed={currentSortedState.isSortReversed}
@@ -193,25 +203,57 @@ const TableHeaderCellCheckbox = ({
 }): React.ReactElement => {
   return (
     <TableHeaderCell headerKey="SELECT">
-      <BaseBox display="flex" alignItems="center" justifyContent="center" flex={1}>
+      <BaseBox
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flex={1}
+        width={makeSize(checkboxCellWidth)}
+      >
         <Checkbox
           isChecked={isChecked}
           isDisabled={isDisabled}
           isIndeterminate={isIndeterminate}
           onChange={onChange}
+          {...makeAccessible({ label: 'Select All Rows' })}
         />
       </BaseBox>
     </TableHeaderCell>
   );
 };
 
-const StyledHeaderRow = styled(HeaderRow)<{ $showBorderedCells: boolean }>(
-  ({ theme, $showBorderedCells }) => ({
+const StyledHeaderRow = styled(HeaderRow)<{
+  $showBorderedCells: boolean;
+  $gridTemplateColumns: string | undefined;
+  $hasHoverActions: boolean;
+  $selectionType: TableProps<unknown>['selectionType'];
+  $columnCount: number;
+  $isVirtualized?: boolean;
+}>(
+  ({
+    theme,
+    $showBorderedCells,
+    $gridTemplateColumns,
+    $hasHoverActions,
+    $selectionType,
+    $columnCount,
+    $isVirtualized,
+  }) => ({
     '& th': $showBorderedCells
       ? {
           borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
           borderRightColor: getIn(theme.colors, tableRow.borderColor),
           borderRightStyle: 'solid',
+          ...($isVirtualized && {
+            display: 'grid',
+            gridTemplateColumns: $gridTemplateColumns
+              ? `${$gridTemplateColumns} ${$hasHoverActions ? 'min-content' : ''}`
+              : ` ${
+                  $selectionType === 'multiple' ? 'min-content' : ''
+                } repeat(${$columnCount},minmax(100px, 1fr)) ${
+                  $hasHoverActions ? 'min-content' : ''
+                } !important;`,
+          }),
         }
       : undefined,
     '& th:last-child ': {
@@ -234,6 +276,9 @@ const _TableHeaderRow = ({
     setHeaderRowDensity,
     showBorderedCells,
     hasHoverActions,
+    gridTemplateColumns,
+    columnCount,
+    isVirtualized,
   } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
@@ -248,6 +293,11 @@ const _TableHeaderRow = ({
       {...metaAttribute({ name: MetaConstants.TableHeaderRow })}
       {...makeAnalyticsAttribute(rest)}
       $showBorderedCells={showBorderedCells}
+      $gridTemplateColumns={gridTemplateColumns}
+      $hasHoverActions={hasHoverActions}
+      $selectionType={selectionType}
+      $columnCount={columnCount}
+      $isVirtualized={isVirtualized}
     >
       {isMultiSelect && (
         <TableHeaderCellCheckbox

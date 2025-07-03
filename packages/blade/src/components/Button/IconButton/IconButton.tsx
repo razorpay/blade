@@ -9,6 +9,8 @@ import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type IconButtonProps = {
   /**
@@ -46,6 +48,7 @@ type IconButtonProps = {
   _tabIndex?: number;
 } & DataAnalyticsAttribute &
   BladeCommonEvents &
+  StyledPropsBlade &
   Platform.Select<{
     web: {
       onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -108,11 +111,14 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
       {...makeAnalyticsAttribute(rest)}
+      {...rest}
     />
   );
 };
 
-const IconButton = React.forwardRef(_IconButton);
+const IconButton = assignWithoutSideEffects(React.forwardRef(_IconButton), {
+  componentId: 'IconButton',
+});
 
 export type { IconButtonProps };
 export { IconButton };

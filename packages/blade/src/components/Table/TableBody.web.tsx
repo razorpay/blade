@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
+import { Virtualized } from '@table-library/react-table-library/virtualized';
 import styled from 'styled-components';
 import { useTableContext } from './TableContext';
-import { checkboxCellWidth, classes, tableBackgroundColor, tableRow } from './tokens';
+import { checkboxCellWidth, classes, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
 import type {
   TableProps,
@@ -10,9 +11,13 @@ import type {
   TableRowProps,
   TableCellProps,
   TableBackgroundColors,
+  VirtualizedWrapperProps,
+  RowHeightType,
+  TableNode,
 } from './types';
+import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
+import { getTableBodyStyles } from './commonStyles';
 import getIn from '~utils/lodashButBetter/get';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -24,47 +29,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import type { Theme } from '~components/BladeProvider';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-
-const getTableRowBackgroundTransition = (theme: Theme): string => {
-  const rowBackgroundTransition = `background-color ${makeMotionTime(
-    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
-
-  return rowBackgroundTransition;
-};
-
-const getTableActionsHoverStyles = ({
-  hoverColor,
-  theme,
-  backgroundGradientColor,
-}: {
-  hoverColor: DotNotationToken<Theme['colors']>;
-  backgroundGradientColor?: DotNotationToken<Omit<Theme['colors'], 'name'>>;
-  theme: Theme;
-}): React.CSSProperties => {
-  const rowBackgroundTransition = getTableRowBackgroundTransition(theme);
-
-  return {
-    // Solid layer 1 background - should match the table background
-    [`& .${classes.HOVER_ACTIONS}`]: {
-      backgroundColor: getIn(theme.colors, tableBackgroundColor),
-      transition: rowBackgroundTransition,
-    },
-    // Alpha layer 2 background - Stripped row background, Hover background in selected state, etc
-    [`& .${classes.HOVER_ACTIONS_LAYER2}`]: {
-      backgroundColor: getIn(theme.colors, backgroundGradientColor ?? 'transparent'),
-      transition: rowBackgroundTransition,
-    },
-    // Alpha layer 3 background - Hover, selection, active background
-    [`& .${classes.HOVER_ACTIONS_LAYER3}`]: {
-      backgroundColor: getIn(theme.colors, hoverColor),
-      transition: rowBackgroundTransition,
-    },
-  };
-};
-
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
   $showStripedRows: boolean;
@@ -80,145 +45,20 @@ const StyledBody = styled(Body)<{
         borderBottom: 'none',
       },
 
-      '& .row-select-single-selected .cell-wrapper-base, .row-select-selected .cell-wrapper-base': {
-        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelected),
-      },
-      '& .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base': {
-        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedHover),
-        ...getTableActionsHoverStyles({
-          hoverColor: tableRow.nonStripe.backgroundColorSelectedHover,
-          backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedHover,
+      ...{
+        ...getTableBodyStyles({
+          addCommonStyles: true,
           theme,
+          isSelectable: $isSelectable,
+          showStripedRows: $showStripedRows,
+          isVirtualized: false,
         }),
       },
-      '& .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base': {
-        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedFocus),
-        ...getTableActionsHoverStyles({
-          hoverColor: tableRow.nonStripe.backgroundColorSelectedFocus,
-          backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedFocus,
-          theme,
-        }),
-      },
-      '& .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:active:not(.disabled-row) .cell-wrapper-base': {
-        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedActive),
-        ...getTableActionsHoverStyles({
-          hoverColor: tableRow.nonStripe.backgroundColorSelectedActive,
-          backgroundGradientColor: tableRow.nonStripe.backgroundColorHover,
-          theme,
-        }),
-      },
-
-      ...($isSelectable && {
-        '& tr:active:not(.disabled-row) .cell-wrapper': {
-          backgroundColor: getIn(theme.colors, tableRow.nonStripeWrapper.backgroundColorActive),
-        },
-      }),
-
-      ...($showStripedRows && {
-        '& tr:nth-child(even) .cell-wrapper': {
-          backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColor),
-        },
-        '& tr:nth-child(even) .cell-wrapper-base': {
-          backgroundColor: tableRow.stripe.backgroundColor,
-        },
-      }),
-
-      ...($showStripedRows &&
-        $isSelectable && {
-          '& tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorHover),
-          },
-          '& tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorFocus),
-          },
-          '& tr:nth-child(even):active:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorActive),
-          },
-          '& .row-select-single-selected:nth-child(even) .cell-wrapper, .row-select-selected:nth-child(even) .cell-wrapper': {
-            backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorSelected),
-          },
-          '& .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(
-              theme.colors,
-              tableRow.stripeWrapper.backgroundColorSelectedHover,
-            ),
-          },
-          '& .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(
-              theme.colors,
-              tableRow.stripeWrapper.backgroundColorSelectedFocus,
-            ),
-          },
-          '& .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper': {
-            backgroundColor: getIn(
-              theme.colors,
-              tableRow.stripeWrapper.backgroundColorSelectedActive,
-            ),
-          },
-
-          '& tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorHover),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorHover,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorHover,
-            }),
-          },
-          '& tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorFocus),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorFocus,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorFocus,
-            }),
-          },
-          '& tr:nth-child(even):active:not(.disabled-row) .cell-wrapper-base': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorActive),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorActive,
-              backgroundGradientColor: tableRow.stripe.backgroundColorHover,
-              theme,
-            }),
-          },
-
-          '& .row-select-single-selected:nth-child(even) .cell-wrapper-base, .row-select-selected:nth-child(even) .cell-wrapper-base ': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelected),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorSelected,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelected,
-            }),
-          },
-          '& .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base ': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedHover),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorSelectedHover,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedHover,
-            }),
-          },
-          '& .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base ': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedFocus),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorSelectedFocus,
-              theme,
-              backgroundGradientColor: tableRow.stripeWrapper.backgroundColorSelectedFocus,
-            }),
-          },
-          '& .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base ': {
-            backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedActive),
-            ...getTableActionsHoverStyles({
-              hoverColor: tableRow.stripe.backgroundColorSelectedActive,
-              theme,
-              backgroundGradientColor: tableRow.stripe.backgroundColorHover,
-            }),
-          },
-        }),
     },
   };
 });
 
-const _TableBody = ({ children, ...rest }: TableBodyProps): React.ReactElement => {
+const _TableBody = <Item,>({ children, ...rest }: TableBodyProps<Item>): React.ReactElement => {
   const { showStripedRows, selectionType } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
@@ -256,7 +96,8 @@ export const CellWrapper = styled(BaseBox)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   showStripedRows?: boolean;
   hasPadding?: boolean;
-}>(({ theme, $rowDensity, showStripedRows, hasPadding = true }) => {
+  textAlign?: TableCellProps['textAlign'];
+}>(({ theme, $rowDensity, showStripedRows, hasPadding = true, textAlign }) => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
@@ -272,6 +113,7 @@ export const CellWrapper = styled(BaseBox)<{
       minHeight: makeSize(getIn(size, tableRow.minHeight[$rowDensity])),
       height: '100%',
       width: '100%',
+      justifyContent: textAlign,
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
         borderBottomColor: getIn(theme.colors, tableRow.borderColor),
@@ -281,7 +123,12 @@ export const CellWrapper = styled(BaseBox)<{
   };
 });
 
-const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.ReactElement => {
+const _TableCell = ({
+  children,
+  textAlign,
+  _hasPadding,
+  ...rest
+}: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
@@ -303,12 +150,14 @@ const _TableCell = ({ children, _hasPadding, ...rest }: TableCellProps): React.R
           alignItems="center"
           hasPadding={_hasPadding}
           flex={1}
+          textAlign={textAlign}
           // when a direct string child is passed we want to disable pointer events
           // for custom cells components, consumers can handle pointer events themselves
           pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
           // allow text to wrap, so that if the <Text> overflows it can truncate
           whiteSpace="normal"
           position="relative"
+          {...metaAttribute({ name: MetaConstants.TableCellWrapper })}
         >
           {isChildrenString ? (
             <Text size="medium" truncateAfterLines={1}>
@@ -346,7 +195,12 @@ const TableCheckboxCell = ({
         width={makeSize(checkboxCellWidth)}
         onClick={(e) => e.stopPropagation()}
       >
-        <Checkbox isDisabled={isDisabled} isChecked={isChecked} onChange={onChange} />
+        <Checkbox
+          isDisabled={isDisabled}
+          isChecked={isChecked}
+          onChange={onChange}
+          {...makeAccessible({ label: 'Select Row' })}
+        />
       </BaseBox>
     </TableCell>
   );
@@ -428,11 +282,6 @@ const StyledRow = styled(Row)<{
           transition: rowBackgroundTransition,
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
           cursor: 'pointer',
-          ...getTableActionsHoverStyles({
-            hoverColor: tableRow.nonStripe.backgroundColorActive,
-            backgroundGradientColor: tableRow.nonStripe.backgroundColorHover,
-            theme,
-          }),
         },
       }),
       '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
@@ -457,6 +306,7 @@ const _TableRow = <Item,>({
     setDisabledRows,
     showBorderedCells,
     setHasHoverActions,
+    isVirtualized,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
@@ -488,6 +338,7 @@ const _TableRow = <Item,>({
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
+      $isVirtualized={isVirtualized}
     >
       {isMultiSelect && (
         <TableCheckboxCell
@@ -536,8 +387,45 @@ const _TableRow = <Item,>({
   );
 };
 
+const _Virtulized = <Item,>({
+  headerHeight,
+  rowHeight,
+  children,
+}: VirtualizedWrapperProps): React.ReactElement => {
+  const [parsedHeader = null, parsedBody = null] = React.Children.toArray(children);
+  const { rowDensity, tableData } = useTableContext<Item>();
+  const _tableRow = Number(tableRow.minHeight[rowDensity]);
+
+  const _rowHeight = (item: TableNode<Item>, index: number): number => {
+    if (index === 0) {
+      return headerHeight ?? _tableRow;
+    }
+    return rowHeight ? rowHeight(item, index - 1) : _tableRow;
+  };
+
+  const bodyFunction =
+    React.isValidElement(parsedBody) &&
+    parsedBody.props &&
+    typeof parsedBody.props === 'object' &&
+    'children' in parsedBody.props
+      ? parsedBody.props.children
+      : null;
+
+  return (
+    <Virtualized
+      tableList={tableData}
+      rowHeight={_rowHeight as RowHeightType}
+      header={() => parsedHeader}
+      body={bodyFunction as (node: TableNode<Item>, index: number) => React.ReactNode}
+    />
+  );
+};
+
 const TableRow = assignWithoutSideEffects(_TableRow, {
   componentId: ComponentIds.TableRow,
 });
 
-export { TableBody, TableRow, TableCell };
+const TableVirtualizedWrapper = assignWithoutSideEffects(_Virtulized, {
+  componentId: ComponentIds.VirtualizedTable,
+});
+export { TableBody, TableRow, TableCell, TableVirtualizedWrapper };

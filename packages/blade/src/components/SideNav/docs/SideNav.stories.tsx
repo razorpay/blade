@@ -40,10 +40,17 @@ import {
   StampIcon,
   UserCheckIcon,
   UserIcon,
+  BankIcon,
+  PaymentGatewayIcon,
+  TransactionsIcon,
+  WalletIcon,
+  CustomersIcon,
+  TestIcon,
+  GlobeIcon,
+  DollarIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
-import { Indicator } from '~components/Indicator';
 import { Switch as BladeSwitch } from '~components/Switch';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -52,6 +59,7 @@ import { Card, CardBody } from '~components/Card';
 import { ProgressBar } from '~components/ProgressBar';
 import { Text } from '~components/Typography';
 import { Alert } from '~components/Alert';
+import { Badge } from '~components/Badge';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -74,7 +82,7 @@ const DocsPage = (): React.ReactElement => {
         files={sideNavWithReactRouter}
         editorHeight={600}
         hideNavigation={false}
-        openFile="App.js,navItemsJSON.js,SideNavExample.js"
+        openFile="App.tsx,navItemsJSON.tsx,SideNavExample.tsx"
       />
     </StoryPageWrapper>
   );
@@ -149,7 +157,10 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
   );
 };
 
-type ItemsType = Pick<SideNavLinkProps, 'icon' | 'title' | 'href' | 'trailing' | 'tooltip'>;
+type ItemsType = Pick<
+  SideNavLinkProps,
+  'icon' | 'title' | 'href' | 'trailing' | 'tooltip' | 'onClick' | 'titleSuffix'
+>;
 type NavItemsJSONType = {
   type: 'section';
   title?: SideNavSectionProps['title'];
@@ -190,6 +201,29 @@ const navItemsJSON: NavItemsJSONType[] = [
   },
   {
     type: 'section',
+    title: 'International Payments',
+    items: [
+      {
+        icon: GlobeIcon,
+        title: 'Global',
+        href: '/app/global',
+        titleSuffix: (
+          <Badge color="positive" size="small">
+            New
+          </Badge>
+        ),
+        items: [
+          {
+            icon: DollarIcon,
+            title: 'International Payments',
+            href: '/app/international-payments',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: 'section',
     title: 'Offerings',
     maxItemsVisible: 3,
     items: [
@@ -222,6 +256,56 @@ const navItemsJSON: NavItemsJSONType[] = [
             icon: FilePlusIcon,
             title: 'Billing',
             href: '/app/billing',
+          },
+          {
+            icon: BankIcon,
+            title: 'Bank Accounts',
+            href: '/app/bank-accounts',
+          },
+          {
+            icon: PaymentGatewayIcon,
+            title: 'Payment Gateway',
+            href: '/app/payment-gateway',
+          },
+          {
+            icon: TransactionsIcon,
+            title: 'Transaction History',
+            href: '/app/transaction-history',
+          },
+          {
+            icon: WalletIcon,
+            title: 'Digital Wallet',
+            href: '/app/digital-wallet',
+          },
+          {
+            icon: CreditCardIcon,
+            title: 'Credit Services',
+            href: '/app/credit-services',
+          },
+          {
+            icon: CashIcon,
+            title: 'Cash Management',
+            href: '/app/cash-management',
+          },
+          {
+            icon: ReportsIcon,
+            title: 'Financial Reports',
+            href: '/app/financial-reports',
+          },
+          {
+            icon: UserCheckIcon,
+            title: 'Customer Verification',
+            href: '/app/customer-verification',
+          },
+          {
+            icon: SettingsIcon,
+            title: 'Account Settings',
+            href: '/app/account-settings',
+          },
+          {
+            icon: CustomersIcon,
+            title: 'Customer Support',
+            href: '/app/customer-support',
           },
         ],
       },
@@ -351,6 +435,7 @@ const SideNavExample = ({
 }: SideNavProps & { showExampleContentPadding?: boolean }): React.ReactElement => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
   const [isTestModeActive, setIsTestModeActive] = React.useState(false);
+
   const location = useLocation();
 
   const getSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
@@ -366,7 +451,12 @@ const SideNavExample = ({
 
   return (
     <Box minHeight="500px">
-      <SideNav {...args} isOpen={isMobileOpen} onDismiss={() => setIsMobileOpen(false)}>
+      <SideNav
+        {...args}
+        isOpen={isMobileOpen}
+        onDismiss={() => setIsMobileOpen(false)}
+        onVisibleLevelChange={({ visibleLevel }) => console.log(visibleLevel)}
+      >
         <SideNavBody>
           {navItemsJSON.map((l1Sections) => {
             return (
@@ -383,17 +473,21 @@ const SideNavExample = ({
                     return <NavItem key={l1Item.title} {...l1Item} />;
                   }
 
+                  const { titleSuffix, ...l1ItemWithoutTitleSuffix } = l1Item;
+
                   return (
                     <NavItem
                       key={l1Item.title}
-                      {...l1Item}
+                      {...l1ItemWithoutTitleSuffix}
                       activeOnLinks={getAllChildHrefs(l1Item.items)}
                       href={l1Item.items[0].href}
                     >
-                      <SideNavLevel key={l1Item.title}>
+                      <SideNavLevel key={l1Item.title} titleSuffix={l1Item.titleSuffix}>
                         {l1Item.items?.map((l2Item) => {
                           if (!l2Item.items) {
-                            return <NavItem key={l2Item.title} {...l2Item} />;
+                            return (
+                              <NavItem key={l2Item.title} {...l2Item} description="RBL20I43" />
+                            );
                           }
 
                           return (
@@ -423,14 +517,7 @@ const SideNavExample = ({
           <SideNavItem
             as="label"
             title="Test Mode"
-            leading={
-              <Indicator
-                color={isTestModeActive ? 'notice' : 'positive'}
-                emphasis="intense"
-                accessibilityLabel=""
-              />
-            }
-            backgroundColor={isTestModeActive ? `feedback.background.notice.subtle` : undefined}
+            leading={TestIcon}
             trailing={
               <BladeSwitch
                 accessibilityLabel=""

@@ -2,14 +2,14 @@ import React from 'react';
 import type { BaseMenuItemProps } from '../types';
 import { BaseMenuItemContext } from '../BaseMenuContext';
 import { StyledMenuItemContainer } from './StyledMenuItemContainer';
+import { itemFirstRowHeight } from './tokens';
 import { Box } from '~components/Box';
 import { getTextProps, Text } from '~components/Typography';
-import { size } from '~tokens/global';
-import { makeSize } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeElementRef } from '~utils/types';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTruncationTitle } from '~utils/useTruncationTitle';
+import { makeSize } from '~utils';
 
 const menuItemTitleColor = {
   negative: {
@@ -25,7 +25,6 @@ const menuItemDescriptionColor = {
 } as const;
 
 // This is the height of item excluding the description to make sure description comes at the bottom and other first row items are center aligned
-const itemFirstRowHeight = makeSize(size[20]);
 
 const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuItemProps> = (
   {
@@ -75,7 +74,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
               display="flex"
               justifyContent="center"
               alignItems="center"
-              height={itemFirstRowHeight}
+              height={makeSize(itemFirstRowHeight)}
             >
               {leading}
             </Box>
@@ -89,7 +88,7 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
                 display="flex"
                 alignItems="center"
                 flexDirection="row"
-                height={itemFirstRowHeight}
+                height={makeSize(itemFirstRowHeight)}
                 ref={containerRef as never}
               >
                 <BaseText

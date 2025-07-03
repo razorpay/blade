@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Chip /> should render with icon 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuMdod"><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jYtppM" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD iJHDjQ"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 gtqnRq fbMjsq"><div data-blade-component="base-box" class="BaseBox-bmPWx pZVbf"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(211, 26%, 34%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Apple</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jYtppM" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD iJHDjQ"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 gtqnRq fbMjsq"><div data-blade-component="base-box" class="BaseBox-bmPWx pZVbf"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(211, 26%, 34%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Mango</p></div></div></div></div></label></div></div></div></div></div></div></div>"`;
+exports[`<Chip /> should render with icon 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx gvlLGk"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer;width:100%" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 chflBm" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD kxmMgU"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 bAEHYW cpbSXx"><div data-blade-component="base-box" class="BaseBox-bmPWx pJwXq"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(211, 26%, 34%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Apple</p></div></div></div></div></label></div><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer;width:100%" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 chflBm" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 juMMpD kxmMgU"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 bAEHYW cpbSXx"><div data-blade-component="base-box" class="BaseBox-bmPWx pJwXq"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(211, 26%, 34%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><p class="StyledBaseText-dVBfTO bTXThc" data-blade-component="text">Mango</p></div></div></div></div></label></div></div></div></div></div></div>"`;
 
 exports[`<Chip /> should render with icon 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -24,18 +24,28 @@ exports[`<Chip /> should render with icon 2`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  margin-bottom: 8px;
+  row-gap: 8px;
+  -webkit-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
-  margin-bottom: 8px;
-  margin-right: 8px;
-}
-
-.c5.c5.c5.c5.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -77,6 +87,8 @@ exports[`<Chip /> should render with icon 2`] = `
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
+  width: 100%;
+  gap: 8px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;
@@ -89,7 +101,6 @@ exports[`<Chip /> should render with icon 2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 8px;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -118,14 +129,12 @@ exports[`<Chip /> should render with icon 2`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -142,11 +151,11 @@ exports[`<Chip /> should render with icon 2`] = `
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -194,10 +203,11 @@ exports[`<Chip /> should render with icon 2`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c8.c8.c8.c8.c8:hover + div {
@@ -205,8 +215,8 @@ exports[`<Chip /> should render with icon 2`] = `
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -343,173 +353,163 @@ exports[`<Chip /> should render with icon 2`] = `
         >
           <div
             class="c4"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c5"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor:pointer;width:100%"
             >
-              <label
+              <div
                 class="c6"
-                data-blade-component="chip-label"
-                style="cursor:pointer"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c7"
                   data-blade-component="base-box"
                 >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-1-helptext-2"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    role="radio"
+                    type="radio"
+                    value="apple"
+                  />
                   <div
-                    class="c7"
+                    class="c9 c10"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-1-helptext-2"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c8"
-                      role="radio"
-                      type="radio"
-                      value="apple"
-                    />
                     <div
-                      class="c9 c10"
+                      class="c11 c12"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c11 c12"
+                        class="c13"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c13"
-                          data-blade-component="base-box"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 24 24"
+                          width="12px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="Svgweb__StyledSvg-vcmjs8-0"
-                            data-blade-component="icon"
-                            fill="none"
-                            height="12px"
-                            viewBox="0 0 24 24"
-                            width="12px"
-                          >
-                            <path
-                              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                            />
-                            <path
-                              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                            />
-                            <path
-                              clip-rule="evenodd"
-                              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                              fill-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <p
-                          class="c14"
-                          data-blade-component="text"
-                        >
-                          Apple
-                        </p>
+                          <path
+                            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                          />
+                          <path
+                            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                          />
+                          <path
+                            clip-rule="evenodd"
+                            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                       </div>
+                      <p
+                        class="c14"
+                        data-blade-component="text"
+                      >
+                        Apple
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
           <div
             class="c4"
-            data-blade-component="base-box"
+            data-blade-component="chip"
           >
-            <div
+            <label
               class="c5"
-              data-blade-component="chip"
+              data-blade-component="chip-label"
+              style="cursor:pointer;width:100%"
             >
-              <label
+              <div
                 class="c6"
-                data-blade-component="chip-label"
-                style="cursor:pointer"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c0"
+                  class="c7"
                   data-blade-component="base-box"
                 >
+                  <input
+                    aria-checked="false"
+                    aria-describedby="radio-3-helptext-4"
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="c8"
+                    role="radio"
+                    type="radio"
+                    value="mango"
+                  />
                   <div
-                    class="c7"
+                    class="c9 c10"
                     data-blade-component="base-box"
                   >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-3-helptext-4"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="c8"
-                      role="radio"
-                      type="radio"
-                      value="mango"
-                    />
                     <div
-                      class="c9 c10"
+                      class="c11 c12"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c11 c12"
+                        class="c13"
                         data-blade-component="base-box"
                       >
-                        <div
-                          class="c13"
-                          data-blade-component="base-box"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 24 24"
+                          width="12px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="Svgweb__StyledSvg-vcmjs8-0"
-                            data-blade-component="icon"
-                            fill="none"
-                            height="12px"
-                            viewBox="0 0 24 24"
-                            width="12px"
-                          >
-                            <path
-                              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                            />
-                            <path
-                              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                            />
-                            <path
-                              clip-rule="evenodd"
-                              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                              data-blade-component="svg-path"
-                              fill="hsla(211, 26%, 34%, 1)"
-                              fill-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <p
-                          class="c14"
-                          data-blade-component="text"
-                        >
-                          Mango
-                        </p>
+                          <path
+                            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                          />
+                          <path
+                            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                          />
+                          <path
+                            clip-rule="evenodd"
+                            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(211, 26%, 34%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
                       </div>
+                      <p
+                        class="c14"
+                        data-blade-component="text"
+                      >
+                        Mango
+                      </p>
                     </div>
                   </div>
                 </div>
-              </label>
-            </div>
+              </div>
+            </label>
           </div>
         </div>
       </div>

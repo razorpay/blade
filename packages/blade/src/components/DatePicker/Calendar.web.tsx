@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import dayjs from 'dayjs';
 import React from 'react';
-import type { CalendarLevel } from '@mantine/dates';
+import type { CalendarLevel, DatesRangeValue } from '@mantine/dates';
 import { useDatesContext, DatePicker } from '@mantine/dates';
 import type { CalendarProps, DateSelectionType, PickerType, DateValue } from './types';
 import { CalendarHeader } from './CalendarHeader';
@@ -14,6 +14,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const Calendar = <Type extends DateSelectionType>({
   firstDayOfWeek = 0,
@@ -28,11 +29,15 @@ const Calendar = <Type extends DateSelectionType>({
   onNext,
   onPrevious,
   presets,
+  showLevelChangeLink,
+  selectedValue,
   ...props
 }: CalendarProps<Type> & {
   date?: Date;
   defaultDate?: Date;
   onDateChange?: (date: DateValue) => void;
+  showLevelChangeLink?: boolean;
+  selectedValue: DatesRangeValue | null;
 }): React.ReactElement => {
   const isRange = selectionType === 'range';
 
@@ -62,7 +67,19 @@ const Calendar = <Type extends DateSelectionType>({
 
   const dateContext = useDatesContext();
   const isMobile = useIsMobile();
-  const currentDate = _date ?? shiftTimezone('add', new Date());
+  const currentDate = React.useMemo(() => {
+    if (_date) {
+      return _date;
+    }
+    const isRangeSelection = Array.isArray(selectedValue);
+    if (isRangeSelection && selectedValue[0]) {
+      return selectedValue[0];
+    }
+    if (!isRangeSelection && selectedValue) {
+      return selectedValue;
+    }
+    return shiftTimezone('add', new Date());
+  }, [_date, selectedValue]);
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
 
@@ -113,6 +130,7 @@ const Calendar = <Type extends DateSelectionType>({
       gap="spacing.7"
       pickerType={levelToPicker[level]}
       {...metaAttribute({ name: MetaConstants.Calendar })}
+      {...makeAnalyticsAttribute(props)}
     >
       <CalendarHeader
         isRange={isRange}
@@ -125,12 +143,13 @@ const Calendar = <Type extends DateSelectionType>({
         onPreviousDecade={handlePreviousDecade}
         onNextYear={handleNextYear}
         onPreviousYear={handlePreviousYear}
+        showLevelChangeLink={showLevelChangeLink}
       />
       <CalendarGradientStyles isRange={isRange} date={currentDate}>
         <DatePicker
           withCellSpacing={false}
           type={isRange ? 'range' : 'default'}
-          date={_date}
+          date={currentDate}
           locale={dateContext.locale}
           level={level}
           onDateChange={setDate}

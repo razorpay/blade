@@ -193,8 +193,8 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -209,10 +209,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 
@@ -287,10 +288,10 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
-  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
   pointer-events: none;
   -webkit-transition-property: opacity;
   transition-property: opacity;
@@ -340,8 +341,8 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
   transition-timing-function: cubic-bezier(.15,0,.24,.97);
   will-change: transform,opacity,height;
@@ -398,8 +399,8 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -420,8 +421,8 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 .c1.c1.c1.c1.c1 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -432,8 +433,8 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -479,10 +480,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c18.c18.c18.c18.c18[aria-selected=true] {
@@ -524,10 +526,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c25.c25.c25.c25.c25[aria-selected=true] {
@@ -849,6 +852,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1072,8 +1076,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1088,10 +1092,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 
@@ -1228,10 +1233,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c1.c1.c1.c1.c1 {
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
-  transition-timing-function: cubic-bezier(0,0,0,1);
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
   pointer-events: all;
   -webkit-transition-property: opacity;
   transition-property: opacity;
@@ -1281,8 +1286,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
   transition-timing-function: cubic-bezier(.15,0,.24,.97);
   will-change: transform,opacity,height;
@@ -1355,8 +1360,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -1380,8 +1385,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 .c34.c34.c34.c34.c34 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1392,8 +1397,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c37.c37.c37.c37.c37 {
@@ -1800,8 +1805,8 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1816,10 +1821,11 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 
@@ -1845,10 +1851,10 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
-  transition-timing-function: cubic-bezier(0,0,0,1);
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
+  transition-timing-function: cubic-bezier(0,0,0.2,1);
   pointer-events: all;
   -webkit-transition-property: opacity;
   transition-property: opacity;
@@ -1898,8 +1904,8 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
   transition-timing-function: cubic-bezier(.15,0,.24,.97);
   will-change: transform,opacity,height;

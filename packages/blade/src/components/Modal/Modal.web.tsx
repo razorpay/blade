@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
 import { ModalHeader } from './ModalHeader';
@@ -17,9 +17,9 @@ import {
   modalMaxWidth,
   modalMinWidth,
   modalResponsiveScreenGap,
+  modalMargin,
 } from './modalTokens';
 import type { ModalProps } from './types';
-import { componentIds } from './constants';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -28,44 +28,34 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
-import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const entry = keyframes`
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1) translateY(0px);
-  }
-`;
+const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
+  ({ isVisible, theme, size }) => {
+    const scale = isVisible ? 1 : 0.9;
+    const transform = size !== 'full' ? `translate(-50%, -50%) scale(${scale})` : ``;
 
-const exit = keyframes`
-  from {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1) translateY(0px);
-  }
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9) translateY(20px);
-  }
-`;
+    return css`
+      box-shadow: ${theme.elevation.highRaised};
+      opacity: ${isVisible ? 1 : 0};
+      position: fixed;
+      transform: ${transform};
+      transition-property: opacity, transform;
+      transition-duration: ${castWebType(makeMotionTime(theme.motion.duration.moderate))};
+      transition-timing-function: ${isVisible
+        ? castWebType(theme.motion.easing.entrance)
+        : castWebType(theme.motion.easing.exit)};
 
-const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme }) => {
-  return css`
-    box-shadow: ${theme.elevation.highRaised};
-    position: fixed;
-    transform: translate(-50%, -50%);
-    opacity: ${isVisible ? 1 : 0};
-    animation: ${isVisible ? entry : exit}
-      ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
-      ${isVisible
-        ? castWebType(theme.motion.easing.entrance.revealing)
-        : castWebType(theme.motion.easing.exit.revealing)};
-  `;
-});
+      ${size === 'full' &&
+      css`
+        top: ${makeSize(modalMargin[size])};
+        left: ${makeSize(modalMargin[size])};
+        right: ${makeSize(modalMargin[size])};
+        bottom: ${makeSize(modalMargin[size])};
+      `}
+    `;
+  },
+);
 
 const Modal = ({
   isOpen = false,
@@ -79,7 +69,7 @@ const Modal = ({
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {
-    transitionDuration: theme.motion.duration.xmoderate,
+    transitionDuration: theme.motion.duration.moderate,
     initialEnter: true,
   });
 
@@ -119,13 +109,6 @@ const Modal = ({
     }
   };
 
-  // Only allow ModalHeader, ModalBody and ModalFooter as children
-  useVerifyAllowedChildren({
-    allowedComponents: [componentIds.ModalHeader, componentIds.ModalBody, componentIds.ModalFooter],
-    children,
-    componentName: 'Modal',
-  });
-
   return (
     <FloatingPortal>
       <ModalContext.Provider value={modalContext}>
@@ -136,12 +119,7 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box
-              zIndex={zIndex}
-              position="fixed"
-              testID="modal-wrapper"
-              {...makeAnalyticsAttribute(rest)}
-            >
+            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({
@@ -152,20 +130,26 @@ const Modal = ({
                   modal: true,
                   label: accessibilityLabel,
                 })}
-                maxWidth={makeSize(modalMaxWidth[size])}
+                {...makeAnalyticsAttribute(rest)}
+                maxWidth={size === 'full' ? '100%' : makeSize(modalMaxWidth[size])}
                 minWidth={makeSize(modalMinWidth)}
-                maxHeight={modalMaxHeight}
-                width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
+                maxHeight={modalMaxHeight[size]}
+                width={
+                  size === 'full'
+                    ? `calc(100vw - ${makeSize(modalMargin[size] * 2)})`
+                    : `calc(100vw - ${makeSize(modalResponsiveScreenGap)})`
+                }
                 borderRadius={modalBorderRadius}
                 backgroundColor="popup.background.subtle"
-                position="absolute"
                 display="flex"
                 flexDirection="column"
                 top="50%"
                 left="50%"
                 onKeyDown={handleKeyDown}
                 isVisible={isVisible}
+                size={size}
                 ref={refs.setFloating}
+                overflow="hidden"
               >
                 {children}
               </ModalContent>

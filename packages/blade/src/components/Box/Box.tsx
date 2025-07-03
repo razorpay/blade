@@ -13,11 +13,11 @@ const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (__DEV__) {
     if (
       !stringBackgroundColorValue.startsWith('surface.background') &&
-      !stringBackgroundColorValue.startsWith('brand.') &&
+      !stringBackgroundColorValue.startsWith('overlay.') &&
       stringBackgroundColorValue !== 'transparent'
     ) {
       throwBladeError({
-        message: `Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
+        message: `Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`overlay.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
         moduleName: 'Box',
       });
     }

@@ -269,6 +269,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     buttonPaddingRight="20px"
                     buttonPaddingTop="0px"
                     collapsable={false}
+                    color="primary"
                     data-blade-component="button"
                     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
                     defaultBorderColor="hsla(227, 100%, 59%, 1)"
@@ -278,12 +279,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     focusable={true}
                     hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
                     hoverBorderColor="hsla(227, 100%, 59%, 1)"
+                    hoverIconColor="hsla(227, 100%, 59%, 1)"
                     isFullWidth={true}
                     isLoading={false}
                     isPressed={false}
                     minHeight="36px"
                     motionDuration="duration.xquick"
-                    motionEasing="easing.standard.effective"
+                    motionEasing="easing.standard"
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
@@ -536,11 +538,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
+                  position="relative"
                   style={
                     [
                       {
                         "display": "flex",
                         "flexDirection": "row",
+                        "position": "relative",
                         "userSelect": "none",
                       },
                     ]
@@ -1362,6 +1366,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     buttonPaddingRight="20px"
                     buttonPaddingTop="0px"
                     collapsable={false}
+                    color="primary"
                     data-blade-component="button"
                     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
                     defaultBorderColor="hsla(227, 100%, 59%, 1)"
@@ -1371,12 +1376,13 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     focusable={true}
                     hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
                     hoverBorderColor="hsla(227, 100%, 59%, 1)"
+                    hoverIconColor="hsla(227, 100%, 59%, 1)"
                     isFullWidth={true}
                     isLoading={false}
                     isPressed={false}
                     minHeight="36px"
                     motionDuration="duration.xquick"
-                    motionEasing="easing.standard.effective"
+                    motionEasing="easing.standard"
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}

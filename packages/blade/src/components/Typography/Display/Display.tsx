@@ -1,10 +1,11 @@
+import React from 'react';
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { getPlatformType } from '~utils';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
@@ -21,6 +22,7 @@ export type DisplayProps = {
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
+  textTransform?: BaseTextProps['textTransform'];
 } & TestID &
   StyledPropsBlade;
 
@@ -69,29 +71,38 @@ const getProps = ({
   return props;
 };
 
-export const Display = ({
-  as,
-  size = 'small',
-  weight = 'semibold',
-  color = 'surface.text.gray.normal',
-  children,
-  testID,
-  textAlign,
-  textDecorationLine,
-  ...styledProps
-}: DisplayProps): ReactElement => {
+const _Display = (
+  {
+    as,
+    size = 'small',
+    weight = 'semibold',
+    color = 'surface.text.gray.normal',
+    children,
+    testID,
+    textAlign,
+    textDecorationLine,
+    textTransform,
+    ...styledProps
+  }: DisplayProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   useValidateAsProp({ componentName: 'Display', as, validAsValues });
 
   const props = getProps({ as, size, color, weight, testID });
 
   return (
     <BaseText
+      ref={ref}
       {...props}
       textAlign={textAlign}
       textDecorationLine={textDecorationLine}
+      textTransform={textTransform}
       {...getStyledProps(styledProps)}
     >
       {children}
     </BaseText>
   );
 };
+
+const Display = React.forwardRef(_Display);
+export { Display };

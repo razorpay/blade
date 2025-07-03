@@ -88,6 +88,7 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
     a150: getColorWithOpacity(brandPrimaryColor, opacity[100]),
     a100: getColorWithOpacity(brandPrimaryColor, opacity[200]),
     a200: getColorWithOpacity(brandPrimaryColor, opacity[300]),
+    a400: getColorWithOpacity(brandPrimaryColor, opacity[400]),
   };
 
   return brandColors;
@@ -143,7 +144,7 @@ const getOnLightOverrides = (
       text: {
         primary: {
           normal: foregroundOnSurface,
-          disabled: foregroundOnSurface,
+          disabled: brandColors.a200,
           muted: foregroundOnSurface,
           subtle: foregroundOnSurface,
         },
@@ -157,7 +158,7 @@ const getOnLightOverrides = (
       icon: {
         primary: {
           normal: foregroundOnSurface,
-          disabled: foregroundOnSurface,
+          disabled: brandColors.a200,
           muted: foregroundOnSurface,
           subtle: foregroundOnSurface,
         },
@@ -174,6 +175,12 @@ const getOnLightOverrides = (
         primary: {
           intense: brandColors[600],
           subtle: brandColors[200],
+        },
+      },
+      border: {
+        primary: {
+          normal: brandColors[600],
+          muted: brandColors.a200,
         },
       },
       icon: {
@@ -242,7 +249,7 @@ const getOnDarkOverrides = (
       text: {
         primary: {
           normal: foregroundOnSurface,
-          disabled: foregroundOnSurface,
+          disabled: brandColors.a400,
           muted: foregroundOnSurface,
           subtle: foregroundOnSurface,
         },
@@ -256,7 +263,7 @@ const getOnDarkOverrides = (
       icon: {
         primary: {
           normal: foregroundOnSurface,
-          disabled: foregroundOnSurface,
+          disabled: brandColors.a400,
           muted: foregroundOnSurface,
           subtle: foregroundOnSurface,
         },
@@ -273,6 +280,12 @@ const getOnDarkOverrides = (
         primary: {
           intense: brandColors[600],
           subtle: brandColors[200],
+        },
+      },
+      border: {
+        primary: {
+          normal: brandColors[600],
+          muted: brandColors.a200,
         },
       },
       icon: {

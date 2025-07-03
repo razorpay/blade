@@ -1,5 +1,5 @@
 import type { ReactChild, ReactElement } from 'react';
-import { Fragment, useState } from 'react';
+import React, { Fragment, useState, forwardRef } from 'react';
 
 import { StyledAlert } from './StyledAlert';
 import type { IconComponent } from '~components/Icons';
@@ -21,9 +21,14 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { DataAnalyticsAttribute, DotNotationSpacingStringToken, TestID } from '~utils/types';
+import type {
+  DataAnalyticsAttribute,
+  BladeElementRef,
+  DotNotationSpacingStringToken,
+  TestID,
+} from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { MAKE_ANALYTICS_CONSTANTS, makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type PrimaryAction = {
   text: string;
@@ -126,19 +131,22 @@ const intentIconMap = {
   notice: AlertTriangleIcon,
 };
 
-const Alert = ({
-  description,
-  title,
-  isDismissible = true,
-  onDismiss,
-  emphasis = 'subtle',
-  isFullWidth = false,
-  color = 'neutral',
-  actions,
-  testID,
-  icon,
-  ...rest
-}: AlertProps): ReactElement | null => {
+const _Alert = (
+  {
+    description,
+    title,
+    isDismissible = true,
+    onDismiss,
+    emphasis = 'subtle',
+    isFullWidth = false,
+    color = 'neutral',
+    actions,
+    testID,
+    icon,
+    ...rest
+  }: AlertProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement | null => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const [isVisible, setIsVisible] = useState(true);
@@ -214,6 +222,7 @@ const Alert = ({
         onClick={actions.primary.onClick}
         color={emphasis === 'intense' ? 'white' : color}
         variant="secondary"
+        data-analytics-name={MAKE_ANALYTICS_CONSTANTS.ALERT.PRIMARY_ACTION_BUTTON}
       >
         {actions.primary.text}
       </BaseButton>
@@ -300,6 +309,7 @@ const Alert = ({
 
   return (
     <BaseBox
+      ref={ref as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
       {...getStyledProps(rest)}
@@ -328,6 +338,8 @@ const Alert = ({
     </BaseBox>
   );
 };
+
+const Alert = forwardRef(_Alert);
 
 export type { AlertProps };
 export { Alert };

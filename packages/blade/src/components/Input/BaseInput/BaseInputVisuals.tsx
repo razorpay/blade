@@ -19,6 +19,8 @@ type InputVisuals = Pick<
   | 'trailingInteractionElement'
   | 'onTrailingInteractionElementClick'
   | 'leadingInteractionElement'
+  | 'leadingDropDown'
+  | 'trailingDropDown'
   | 'suffix'
   | 'trailingIcon'
   | 'isDisabled'
@@ -86,17 +88,25 @@ const getPrefixStyles = ({
 const getInteractionElementStyles = ({
   hasTrailingIcon,
   hasLeadingInteractionElement,
+  hasLeadingDropDown,
   hasTrailingInteractionElement,
   hasSuffix,
   hasTrailingButton,
+  hasTrailingDropDown,
 }: {
   hasTrailingIcon: boolean;
   hasLeadingInteractionElement?: boolean;
+  hasLeadingDropDown?: boolean;
   hasTrailingInteractionElement?: boolean;
   hasSuffix: boolean;
   hasTrailingButton: boolean;
+  hasTrailingDropDown?: boolean;
 }): SpacingValueType => {
   if (hasTrailingInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingButton)) {
+    return 'spacing.2';
+  }
+
+  if (hasLeadingDropDown || hasTrailingDropDown) {
     return 'spacing.2';
   }
 
@@ -169,6 +179,8 @@ export const getInputVisualsToBeRendered = ({
   suffix,
   trailingIcon,
   trailingButton,
+  leadingDropDown,
+  trailingDropDown,
 }: InputVisuals) => ({
   hasLeadingIcon: Boolean(leadingIcon),
   hasPrefix: Boolean(prefix),
@@ -177,6 +189,8 @@ export const getInputVisualsToBeRendered = ({
   hasSuffix: Boolean(suffix),
   hasTrailingIcon: Boolean(trailingIcon),
   hasTrailingButton: Boolean(trailingButton),
+  hasLeadingDropDown: Boolean(leadingDropDown),
+  hasTrailingDropDown: Boolean(trailingDropDown),
 });
 
 const getTooltipContent = ({
@@ -233,6 +247,8 @@ export const BaseInputVisuals = ({
   prefix,
   trailingInteractionElement,
   onTrailingInteractionElementClick,
+  leadingDropDown,
+  trailingDropDown,
   leadingInteractionElement,
   suffix,
   trailingIcon: TrailingIcon,
@@ -252,6 +268,8 @@ export const BaseInputVisuals = ({
     hasLeadingInteractionElement,
     hasTrailingIcon,
     hasTrailingButton,
+    hasLeadingDropDown,
+    hasTrailingDropDown,
   } = getInputVisualsToBeRendered({
     leadingIcon: LeadingIcon,
     prefix,
@@ -260,12 +278,19 @@ export const BaseInputVisuals = ({
     suffix,
     trailingIcon: TrailingIcon,
     trailingButton: TrailingButton,
+    leadingDropDown,
+    trailingDropDown,
     size,
   });
 
-  const hasLeadingVisuals = hasLeadingInteractionElement || hasLeadingIcon || hasPrefix;
+  const hasLeadingVisuals =
+    hasLeadingInteractionElement || hasLeadingIcon || hasPrefix || hasLeadingDropDown;
   const hasTrailingVisuals =
-    hasTrailingInteractionElement || hasSuffix || hasTrailingIcon || hasTrailingButton;
+    hasTrailingInteractionElement ||
+    hasSuffix ||
+    hasTrailingIcon ||
+    hasTrailingButton ||
+    hasTrailingDropDown;
 
   if (__DEV__) {
     if (hasTrailingButton && !isValidAllowedChildren(TrailingButton, 'Link')) {
@@ -308,10 +333,15 @@ export const BaseInputVisuals = ({
               size={textSize[size]}
               variant="body"
               weight="regular"
-              color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
+              color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
             >
               {prefix}
             </Text>
+          </BaseBox>
+        ) : null}
+        {leadingDropDown ? (
+          <BaseBox paddingLeft="spacing.2" display="flex">
+            {leadingDropDown}
           </BaseBox>
         ) : null}
       </BaseBox>
@@ -339,6 +369,7 @@ export const BaseInputVisuals = ({
                 hasTrailingInteractionElement,
                 hasSuffix,
                 hasTrailingButton,
+                hasTrailingDropDown,
               })}
               display="flex"
               alignItems="stretch"
@@ -390,6 +421,11 @@ export const BaseInputVisuals = ({
               variant: 'button',
               isDisabled,
             })}
+          </BaseBox>
+        ) : null}
+        {hasTrailingDropDown ? (
+          <BaseBox paddingRight="spacing.2" display="flex">
+            {trailingDropDown}
           </BaseBox>
         ) : null}
       </BaseBox>

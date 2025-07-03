@@ -30,6 +30,7 @@ const getWebInputStyles = (
       size: props.$size,
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
+      hasLeadingDropdown: props.hasLeadingDropdown,
     }),
     outline: 'none',
     border: 'none',
@@ -106,6 +107,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     autoCapitalize,
     $size,
     valueComponentType,
+    tabIndex,
     ...props
   },
   ref,
@@ -154,6 +156,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...props}
       {...accessibilityProps}
       value={props.value}
+      tabIndex={tabIndex}
     >
       <Text
         color={
@@ -196,6 +199,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       autoCapitalize={autoCapitalize}
       $size={$size}
       valueComponentType={valueComponentType}
+      tabIndex={tabIndex}
       {...commonProps}
       {...props}
       {...accessibilityProps}

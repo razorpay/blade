@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx RvefM"><button type="button" data-blade-component="button" aria-controls="collapsible-body-undefined" aria-expanded="true" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ctKBsz"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">View Price Breakdown</div></div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0  rdBDV"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="box" class="BaseBox-bmPWx RDiNQ"><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx eBHIXa"><div data-blade-component="base-box" class="BaseBox-bmPWx boSJQS"><span opacity="0.64" class="StyledBaseText-dVBfTO EkHPR" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO kjFstS" data-blade-component="base-text">1,000</span><span opacity="0.64" class="StyledBaseText-dVBfTO bgVQVB" data-blade-component="base-text">.<!-- -->00</span></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO fBmyfT" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO fBmyfT" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`;
+exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx RvefM"><button type="button" data-blade-component="button" aria-controls="collapsible-body-undefined" aria-expanded="true" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">View Price Breakdown</div></div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0  cJdSZo"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="box" class="BaseBox-bmPWx RDiNQ"><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx eBHIXa"><div data-blade-component="base-box" class="BaseBox-bmPWx boSJQS"><span opacity="0.64" class="StyledBaseText-dVBfTO EkHPR" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO kjFstS" data-blade-component="base-text">1,000</span><span opacity="0.64" class="StyledBaseText-dVBfTO bgVQVB" data-blade-component="base-text">.<!-- -->00</span></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO fBmyfT" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO fBmyfT" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`
 
 exports[`<Collapsible /> should render Collapsible on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -131,8 +131,8 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -156,8 +156,8 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
 .c1.c1.c1.c1.c1 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -168,8 +168,8 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -284,8 +284,8 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: height,opacity;

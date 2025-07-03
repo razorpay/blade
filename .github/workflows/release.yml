@@ -29,16 +29,37 @@ jobs:
         if: github.event_name != 'workflow_dispatch' # only run on master merges
         env:
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+          BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
+          BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
         with:
           publish: yarn release
-          commit: 'build(blade): update version'
-          title: 'build(blade): update version'
+          commit: 'build: update version'
+          title: 'build: update version'
       - name: Publish to public npm registry
         if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
+          BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: yarn publish-npm
       - name: Build Blade if not built by changeset
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
         run: yarn build
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
+        with:
+          token: ${{ env.GITHUB_ACCESS_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: packages/blade
+          storybookBaseDir: packages/blade
+          buildScriptName: react:storybook:build
+          exitOnceUploaded: true
+          onlyChanged: true
+          untraced: '**/package.json'
+          traceChanged: 'expanded'
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF: ${{ github.ref }}

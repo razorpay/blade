@@ -14,14 +14,24 @@ import AlignJustifyIconComponent from './AlignJustifyIcon';
 import AlignLeftIconComponent from './AlignLeftIcon';
 import AlignRightIconComponent from './AlignRightIcon';
 import AnchorIconComponent from './AnchorIcon';
+import AndroidIconComponent from './AndroidIcon';
 import AnnouncementIconComponent from './AnnouncementIcon';
 import ApertureIconComponent from './ApertureIcon';
 import AppStoreIconComponent from './AppStoreIcon';
+import AppleIconComponent from './AppleIcon';
 import ArrowDownIconComponent from './ArrowDownIcon';
 import ArrowDownLeftIconComponent from './ArrowDownLeftIcon';
 import ArrowDownRightIconComponent from './ArrowDownRightIcon';
 import ArrowLeftIconComponent from './ArrowLeftIcon';
 import ArrowRightIconComponent from './ArrowRightIcon';
+import ArrowSquareDownIconComponent from './ArrowSquareDownIcon';
+import ArrowSquareDownLeftIconComponent from './ArrowSquareDownLeftIcon';
+import ArrowSquareDownRightIconComponent from './ArrowSquareDownRightIcon';
+import ArrowSquareLeftIconComponent from './ArrowSquareLeftIcon';
+import ArrowSquareRightIconComponent from './ArrowSquareRightIcon';
+import ArrowSquareUpIconComponent from './ArrowSquareUpIcon';
+import ArrowSquareUpLeftIconComponent from './ArrowSquareUpLeftIcon';
+import ArrowSquareUpRightIconComponent from './ArrowSquareUpRightIcon';
 import ArrowUpIconComponent from './ArrowUpIcon';
 import ArrowUpLeftIconComponent from './ArrowUpLeftIcon';
 import ArrowUpRightIconComponent from './ArrowUpRightIcon';
@@ -70,6 +80,7 @@ import CheckSquareIconComponent from './CheckSquareIcon';
 import ChevronDownIconComponent from './ChevronDownIcon';
 import ChevronLeftIconComponent from './ChevronLeftIcon';
 import ChevronRightIconComponent from './ChevronRightIcon';
+import ChevronUpDownIconComponent from './ChevronUpDownIcon';
 import ChevronUpIconComponent from './ChevronUpIcon';
 import ChevronsDownIconComponent from './ChevronsDownIcon';
 import ChevronsLeftIconComponent from './ChevronsLeftIcon';
@@ -125,12 +136,14 @@ import DollarsIconComponent from './DollarsIcon';
 import DotIconComponent from './DotIcon';
 import DownloadCloudIconComponent from './DownloadCloudIcon';
 import DownloadIconComponent from './DownloadIcon';
+import DragHandleIconComponent from './DragHandleIcon';
 import DropletIconComponent from './DropletIcon';
 import EcommerceIconComponent from './EcommerceIcon';
 import EditComposeIconComponent from './EditComposeIcon';
 import EditIconComponent from './EditIcon';
 import EditInlineIconComponent from './EditInlineIcon';
 import EducationIconComponent from './EducationIcon';
+import EngageIconComponent from './EngageIcon';
 import EqualsIconComponent from './EqualsIcon';
 import EscrowAccountIconComponent from './EscrowAccountIcon';
 import ExportIconComponent from './ExportIcon';
@@ -149,6 +162,7 @@ import FileZipIconComponent from './FileZipIcon';
 import FilmIconComponent from './FilmIcon';
 import FilterIconComponent from './FilterIcon';
 import FlagIconComponent from './FlagIcon';
+import FlaskIconComponent from './FlaskIcon';
 import FolderIconComponent from './FolderIcon';
 import ForexManagementIconComponent from './ForexManagementIcon';
 import FreelanceIconComponent from './FreelanceIcon';
@@ -175,11 +189,15 @@ import InstantSettlementIconComponent from './InstantSettlementIcon';
 import InternationalPaymentsIconComponent from './InternationalPaymentsIcon';
 import InvoicesIconComponent from './InvoicesIcon';
 import ItalicIconComponent from './ItalicIcon';
+import KeyIconComponent from './KeyIcon';
+import KeyboardIconComponent from './KeyboardIcon';
 import LayersIconComponent from './LayersIcon';
 import LayoutIconComponent from './LayoutIcon';
+import LeftCircularCornerIconComponent from './LeftCircularCornerIcon';
 import LifeBuoyIconComponent from './LifeBuoyIcon';
 import LinkIconComponent from './LinkIcon';
 import ListIconComponent from './ListIcon';
+import ListSearchIconComponent from './ListSearchIcon';
 import LoaderIconComponent from './LoaderIcon';
 import LoansForBusinessesIconComponent from './LoansForBusinessesIcon';
 import LockIconComponent from './LockIcon';
@@ -251,8 +269,10 @@ import PocketIconComponent from './PocketIcon';
 import PosIconComponent from './PosIcon';
 import PowerIconComponent from './PowerIcon';
 import PrinterIconComponent from './PrinterIcon';
+import PromptIconComponent from './PromptIcon';
 import QRCodeIconComponent from './QRCodeIcon';
 import RadioIconComponent from './RadioIcon';
+import RayIconComponent from './RayIcon';
 import RazorpayIconComponent from './RazorpayIcon';
 import RazorpayXIconComponent from './RazorpayXIcon';
 import RazorpayxPayrollIconComponent from './RazorpayxPayrollIcon';
@@ -295,6 +315,7 @@ import SlidersIconComponent from './SlidersIcon';
 import SmartCollectIconComponent from './SmartCollectIcon';
 import SmartphoneIconComponent from './SmartphoneIcon';
 import SolutionsIconComponent from './SolutionsIcon';
+import SortIconComponent from './SortIcon';
 import SourceToPayIconComponent from './SourceToPayIcon';
 import SparklesIconComponent from './SparklesIcon';
 import SpeakerIconComponent from './SpeakerIcon';
@@ -319,9 +340,12 @@ import TicketIconComponent from './TicketIcon';
 import ToggleLeftIconComponent from './ToggleLeftIcon';
 import ToggleRightIconComponent from './ToggleRightIcon';
 import TokenHqIconComponent from './TokenHqIcon';
+import TopLeftRoundedCornerIconComponent from './TopLeftRoundedCornerIcon';
+import TopLeftSharpCornerIconComponent from './TopLeftSharpCornerIcon';
 import TrademarkIconComponent from './TrademarkIcon';
 import TrademarkRegisteredIconComponent from './TrademarkRegisteredIcon';
 import TransactionsIconComponent from './TransactionsIcon';
+import TranslateIconComponent from './TranslateIcon';
 import TrashIconComponent from './TrashIcon';
 import TrendingDownIconComponent from './TrendingDownIcon';
 import TrendingUpIconComponent from './TrendingUpIcon';
@@ -380,14 +404,24 @@ const iconMap: Record<string, IconComponent> = {
   AlignLeftIcon: AlignLeftIconComponent,
   AlignRightIcon: AlignRightIconComponent,
   AnchorIcon: AnchorIconComponent,
+  AndroidIcon: AndroidIconComponent,
   AnnouncementIcon: AnnouncementIconComponent,
   ApertureIcon: ApertureIconComponent,
   AppStoreIcon: AppStoreIconComponent,
+  AppleIcon: AppleIconComponent,
   ArrowDownIcon: ArrowDownIconComponent,
   ArrowDownLeftIcon: ArrowDownLeftIconComponent,
   ArrowDownRightIcon: ArrowDownRightIconComponent,
   ArrowLeftIcon: ArrowLeftIconComponent,
   ArrowRightIcon: ArrowRightIconComponent,
+  ArrowSquareDownIcon: ArrowSquareDownIconComponent,
+  ArrowSquareDownLeftIcon: ArrowSquareDownLeftIconComponent,
+  ArrowSquareDownRightIcon: ArrowSquareDownRightIconComponent,
+  ArrowSquareLeftIcon: ArrowSquareLeftIconComponent,
+  ArrowSquareRightIcon: ArrowSquareRightIconComponent,
+  ArrowSquareUpIcon: ArrowSquareUpIconComponent,
+  ArrowSquareUpLeftIcon: ArrowSquareUpLeftIconComponent,
+  ArrowSquareUpRightIcon: ArrowSquareUpRightIconComponent,
   ArrowUpIcon: ArrowUpIconComponent,
   ArrowUpLeftIcon: ArrowUpLeftIconComponent,
   ArrowUpRightIcon: ArrowUpRightIconComponent,
@@ -436,6 +470,7 @@ const iconMap: Record<string, IconComponent> = {
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,
   ChevronRightIcon: ChevronRightIconComponent,
+  ChevronUpDownIcon: ChevronUpDownIconComponent,
   ChevronUpIcon: ChevronUpIconComponent,
   ChevronsDownIcon: ChevronsDownIconComponent,
   ChevronsLeftIcon: ChevronsLeftIconComponent,
@@ -491,12 +526,14 @@ const iconMap: Record<string, IconComponent> = {
   DotIcon: DotIconComponent,
   DownloadCloudIcon: DownloadCloudIconComponent,
   DownloadIcon: DownloadIconComponent,
+  DragHandleIcon: DragHandleIconComponent,
   DropletIcon: DropletIconComponent,
   EcommerceIcon: EcommerceIconComponent,
   EditComposeIcon: EditComposeIconComponent,
   EditIcon: EditIconComponent,
   EditInlineIcon: EditInlineIconComponent,
   EducationIcon: EducationIconComponent,
+  EngageIcon: EngageIconComponent,
   EqualsIcon: EqualsIconComponent,
   EscrowAccountIcon: EscrowAccountIconComponent,
   ExportIcon: ExportIconComponent,
@@ -515,6 +552,7 @@ const iconMap: Record<string, IconComponent> = {
   FilmIcon: FilmIconComponent,
   FilterIcon: FilterIconComponent,
   FlagIcon: FlagIconComponent,
+  FlaskIcon: FlaskIconComponent,
   FolderIcon: FolderIconComponent,
   ForexManagementIcon: ForexManagementIconComponent,
   FreelanceIcon: FreelanceIconComponent,
@@ -541,11 +579,15 @@ const iconMap: Record<string, IconComponent> = {
   InternationalPaymentsIcon: InternationalPaymentsIconComponent,
   InvoicesIcon: InvoicesIconComponent,
   ItalicIcon: ItalicIconComponent,
+  KeyIcon: KeyIconComponent,
+  KeyboardIcon: KeyboardIconComponent,
   LayersIcon: LayersIconComponent,
   LayoutIcon: LayoutIconComponent,
+  LeftCircularCornerIcon: LeftCircularCornerIconComponent,
   LifeBuoyIcon: LifeBuoyIconComponent,
   LinkIcon: LinkIconComponent,
   ListIcon: ListIconComponent,
+  ListSearchIcon: ListSearchIconComponent,
   LoaderIcon: LoaderIconComponent,
   LoansForBusinessesIcon: LoansForBusinessesIconComponent,
   LockIcon: LockIconComponent,
@@ -617,8 +659,10 @@ const iconMap: Record<string, IconComponent> = {
   PosIcon: PosIconComponent,
   PowerIcon: PowerIconComponent,
   PrinterIcon: PrinterIconComponent,
+  PromptIcon: PromptIconComponent,
   QRCodeIcon: QRCodeIconComponent,
   RadioIcon: RadioIconComponent,
+  RayIcon: RayIconComponent,
   RazorpayIcon: RazorpayIconComponent,
   RazorpayXIcon: RazorpayXIconComponent,
   RazorpayxPayrollIcon: RazorpayxPayrollIconComponent,
@@ -661,6 +705,7 @@ const iconMap: Record<string, IconComponent> = {
   SmartCollectIcon: SmartCollectIconComponent,
   SmartphoneIcon: SmartphoneIconComponent,
   SolutionsIcon: SolutionsIconComponent,
+  SortIcon: SortIconComponent,
   SourceToPayIcon: SourceToPayIconComponent,
   SparklesIcon: SparklesIconComponent,
   SpeakerIcon: SpeakerIconComponent,
@@ -685,9 +730,12 @@ const iconMap: Record<string, IconComponent> = {
   ToggleLeftIcon: ToggleLeftIconComponent,
   ToggleRightIcon: ToggleRightIconComponent,
   TokenHqIcon: TokenHqIconComponent,
+  TopLeftRoundedCornerIcon: TopLeftRoundedCornerIconComponent,
+  TopLeftSharpCornerIcon: TopLeftSharpCornerIconComponent,
   TrademarkIcon: TrademarkIconComponent,
   TrademarkRegisteredIcon: TrademarkRegisteredIconComponent,
   TransactionsIcon: TransactionsIconComponent,
+  TranslateIcon: TranslateIconComponent,
   TrashIcon: TrashIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,

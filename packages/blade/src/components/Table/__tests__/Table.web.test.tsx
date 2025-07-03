@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
-import { TableBody, TableCell, TableRow } from '../TableBody';
+import { TableBody, TableCell, TableRow, TableVirtualizedWrapper } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
@@ -10,6 +10,9 @@ import { TablePagination } from '../TablePagination';
 import { TableEditableCell } from '../TableEditableCell';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Amount } from '~components/Amount';
+import { Box } from '~components/Box';
+import { Code } from '~components/Typography';
+import { Badge } from '~components/Badge';
 
 type Item = {
   id: string;
@@ -744,7 +747,7 @@ describe('<Table />', () => {
   it('should render table with single select', async () => {
     const onSelectionChange = jest.fn();
     const user = userEvent.setup();
-    const { getByText } = renderWithTheme(
+    const { getByText, container } = renderWithTheme(
       <Table
         data={{ nodes: nodes.slice(0, 5) }}
         selectionType="single"
@@ -782,15 +785,27 @@ describe('<Table />', () => {
     const firstSelectableRow = getByText('rzp01').closest('td');
     if (firstSelectableRow) await user.click(firstSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]], selectedIds: ['1'] });
+
+    // Check that the selected row has the intended styles
+    const selectedRow = getByText('rzp01').closest('tr');
+    expect(selectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(container).toMatchSnapshot();
+
     const secondSelectableRow = getByText('rzp02').closest('td');
     if (secondSelectableRow) await user.click(secondSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[1]], selectedIds: ['2'] });
+
+    // Check that the new selected row has the intended styles and previous is deselected
+    const newSelectedRow = getByText('rzp02').closest('tr');
+    const previousRow = getByText('rzp01').closest('tr');
+    expect(newSelectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(previousRow).toHaveAttribute('aria-selected', 'false');
   });
 
   it('should render table with multi select', async () => {
     const onSelectionChange = jest.fn();
     const user = userEvent.setup();
-    const { getByText, getAllByRole, getByRole } = renderWithTheme(
+    const { getByText, getAllByRole, getByRole, container } = renderWithTheme(
       <Table
         data={{ nodes: nodes.slice(0, 5) }}
         selectionType="multiple"
@@ -834,6 +849,12 @@ describe('<Table />', () => {
     const firstSelectableRow = getByText('rzp01').closest('td');
     if (firstSelectableRow) await user.click(firstSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]], selectedIds: ['1'] });
+
+    // Check that the first selected row has the intended styles
+    const firstSelectedRow = getByText('rzp01').closest('tr');
+    expect(firstSelectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(container).toMatchSnapshot();
+
     const secondSelectableRow = getByText('rzp02').closest('td');
     if (secondSelectableRow) await user.click(secondSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({
@@ -841,9 +862,21 @@ describe('<Table />', () => {
       selectedIds: ['1', '2'],
     });
     expect(getByText('2 Items Selected')).toBeInTheDocument();
+
+    // Check that both selected rows have the intended styles
+    const secondSelectedRow = getByText('rzp02').closest('tr');
+    expect(firstSelectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(secondSelectedRow).toHaveAttribute('aria-selected', 'true');
+    expect(container).toMatchSnapshot();
+
     const deselectButton = getByText('Deselect');
     await user.click(deselectButton);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [], selectedIds: [] });
+
+    // Check that all rows are deselected after clicking deselect
+    expect(firstSelectedRow).toHaveAttribute('aria-selected', 'false');
+    expect(secondSelectedRow).toHaveAttribute('aria-selected', 'false');
+    expect(container).toMatchSnapshot();
   });
 
   it('should render table with single select and defaultSelectedIds', async () => {
@@ -1194,6 +1227,85 @@ describe('<Table />', () => {
         )}
       </Table>,
     );
+    expect(container).toMatchSnapshot();
+  });
+  it('should render virtualized table', () => {
+    const ReactVirtualTable = (): React.ReactElement => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const [apiData, _] = useState({ nodes: nodes.slice(0, 10) });
+      return (
+        <Box>
+          <Table
+            data={apiData}
+            onSelectionChange={console.log}
+            selectionType="multiple"
+            sortFunctions={{
+              ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+              AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+              PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+              STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+            }}
+            defaultSelectedIds={['1', '3']}
+            rowDensity="normal"
+            isFirstColumnSticky
+            height="500px"
+          >
+            {() => (
+              <TableVirtualizedWrapper>
+                <TableHeader>
+                  <TableHeaderRow>
+                    <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                    <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                    <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                    <TableHeaderCell headerKey="STATUS">Status </TableHeaderCell>
+                  </TableHeaderRow>
+                </TableHeader>
+                <TableBody<Item>>
+                  {(tableItem, index) => (
+                    <TableRow
+                      key={index}
+                      item={tableItem}
+                      onClick={() => {
+                        console.log('where');
+                      }}
+                    >
+                      <TableCell>
+                        <Code size="medium">{tableItem.paymentId}</Code>
+                      </TableCell>
+                      <TableEditableCell
+                        accessibilityLabel="Amount"
+                        placeholder="Enter text"
+                        successText="Amount is valid"
+                      />
+
+                      <TableCell>{tableItem.method}</TableCell>
+                      <TableCell>
+                        <Badge
+                          size="medium"
+                          color={
+                            tableItem.status === 'Completed'
+                              ? 'positive'
+                              : tableItem.status === 'Pending'
+                              ? 'notice'
+                              : tableItem.status === 'Failed'
+                              ? 'negative'
+                              : 'primary'
+                          }
+                        >
+                          {tableItem.status}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </TableVirtualizedWrapper>
+            )}
+          </Table>
+        </Box>
+      );
+    };
+    const { container } = renderWithTheme(<ReactVirtualTable />);
+
     expect(container).toMatchSnapshot();
   });
 });

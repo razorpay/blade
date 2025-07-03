@@ -6,7 +6,7 @@ import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
@@ -23,6 +23,7 @@ type TextCommonProps = {
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
+  textTransform?: BaseTextProps['textTransform'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
@@ -40,13 +41,7 @@ type TextCaptionVariant = TextCommonProps & {
   size?: Extract<BaseTextSizes, 'small' | 'medium'>;
 };
 
-/**
- * Conditionally changing props based on variant.
- * Overloads or union gives wrong intellisense.
- */
-export type TextProps<T> = T extends {
-  variant: infer Variant;
-}
+export type TextProps<T> = T extends { variant: infer Variant }
   ? Variant extends 'caption'
     ? TextCaptionVariant
     : Variant extends 'body'
@@ -57,7 +52,14 @@ export type TextProps<T> = T extends {
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'>;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  'variant' | 'weight' | 'size' | 'color' | 'testID' | 'textAlign' | 'textDecorationLine'
+  | 'variant'
+  | 'weight'
+  | 'size'
+  | 'color'
+  | 'testID'
+  | 'textAlign'
+  | 'textDecorationLine'
+  | 'textTransform'
 >;
 
 const getTextProps = <T extends { variant: TextVariant }>({
@@ -127,30 +129,34 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.lineHeight = 50;
       props.fontWeight = 'regular';
     }
-    props.fontStyle = 'italic';
   }
 
   return props;
 };
 
-const _Text = <T extends { variant: TextVariant }>({
-  as = 'p',
-  variant = 'body',
-  weight = 'regular',
-  size,
-  truncateAfterLines,
-  children,
-  color,
-  testID,
-  textAlign,
-  textDecorationLine,
-  wordBreak,
-  ...styledProps
-}: TextProps<T>): ReactElement => {
+const _Text = <T extends { variant: TextVariant }>(
+  {
+    as = 'p',
+    variant = 'body',
+    weight = 'regular',
+    size,
+    truncateAfterLines,
+    children,
+    color,
+    testID,
+    textAlign,
+    textDecorationLine,
+    wordBreak,
+    textTransform,
+    ...styledProps
+  }: TextProps<T>,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> = {
     as,
     truncateAfterLines,
     wordBreak,
+    textTransform,
     ...getTextProps({
       variant,
       weight,
@@ -165,13 +171,13 @@ const _Text = <T extends { variant: TextVariant }>({
   useValidateAsProp({ componentName: 'Text', as, validAsValues });
 
   return (
-    <BaseText {...props} {...getStyledProps(styledProps)}>
+    <BaseText ref={ref} {...props} {...getStyledProps(styledProps)}>
       {children}
     </BaseText>
   );
 };
 
-const Text = assignWithoutSideEffects(_Text, {
+const Text = assignWithoutSideEffects(React.forwardRef(_Text), {
   displayName: 'Text',
   componentId: 'Text',
 });

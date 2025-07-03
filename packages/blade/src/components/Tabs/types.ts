@@ -34,7 +34,7 @@ type TabsProps = {
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /**
    * The variant of the tabs.
    *
@@ -55,20 +55,11 @@ type TabsProps = {
   isLazy?: boolean;
 } & DataAnalyticsAttribute;
 
-type TabItemProps = {
-  /**
-   * The label of the tab item.
-   */
-  children: React.ReactNode;
+type TabItemCommonProps = {
   /**
    * The value of the tab item.
    */
   value: string;
-  /**
-   * Leading element of the tab item.
-   * Can be used to render an Icon.
-   */
-  leading?: IconComponent;
   /**
    * Trailing element of the tab item.
    * Can be used to render a Badge/Counter component.
@@ -93,6 +84,32 @@ type TabItemProps = {
    */
   onClick?: (event: React.MouseEvent) => void;
 };
+
+type TabItemWithoutLeadingProps = TabItemCommonProps & {
+  /**
+   * The content of the tab item.
+   */
+  children: React.ReactNode;
+  /**
+   * Leading element of the tab item.
+   * Can be used to render an Icon.
+   */
+  leading?: undefined;
+};
+
+type TabItemWithOutChildrenProps = TabItemCommonProps & {
+  /**
+   * Leading element of the tab item.
+   * Can be used to render an Icon.
+   */
+  leading: IconComponent;
+  /**
+   * The content of the tab item.
+   */
+  children?: React.ReactNode;
+};
+
+type TabItemProps = TabItemWithoutLeadingProps | TabItemWithOutChildrenProps;
 
 type TabPanelProps = {
   /**

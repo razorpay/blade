@@ -20,6 +20,8 @@ import type { BladeElementRef, DataAnalyticsAttribute, TestID } from '~utils/typ
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { makeSize, useTheme } from '~utils';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import type { MotionMetaProp } from '~components/BaseMotion';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type OnChange = ({
@@ -112,7 +114,8 @@ type CheckboxProps = {
   tabIndex?: number;
 } & TestID &
   DataAnalyticsAttribute &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  MotionMetaProp;
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
   {
@@ -131,6 +134,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     size = 'medium',
     tabIndex,
     testID,
+    _motionMeta,
     ...rest
   },
   ref,
@@ -224,7 +228,11 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   const helpTextLeftSpacing = makeSize(checkboxSizes.icon[size].width + theme.spacing[3]);
 
   return (
-    <BaseBox {...metaAttribute({ name: MetaConstants.Checkbox, testID })} {...getStyledProps(rest)}>
+    <BaseBox
+      ref={getOuterMotionRef({ _motionMeta, ref })}
+      {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
+      {...getStyledProps(rest)}
+    >
       <SelectorLabel
         componentName={MetaConstants.CheckboxLabel}
         inputProps={state.isReactNative ? inputProps : {}}
@@ -239,7 +247,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               hasError={_hasError}
               inputProps={inputProps}
               tabIndex={tabIndex}
-              ref={ref}
+              ref={getInnerMotionRef({ _motionMeta, ref })}
               {...makeAnalyticsAttribute(rest)}
             />
             <CheckboxIcon

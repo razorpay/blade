@@ -13,18 +13,19 @@ import { makeSize } from '~utils';
 import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BoxProps } from '~components/Box';
-import { Box } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
   return (
-    <Box
+    <BaseBox
       {...rest}
       display="flex"
       width="100%"
       gap="spacing.0"
       position="relative"
       left="-1px"
+      {...metaAttribute({ name: MetaConstants.TabNavItems })}
       {...makeAnalyticsAttribute(rest)}
     >
       {React.Children.map(children, (child, index) => {
@@ -46,15 +47,15 @@ const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
         );
       })}
       <Divider margin="auto" variant="muted" orientation="vertical" height={makeSize(size[16])} />
-    </Box>
+    </BaseBox>
   );
 };
 
 const TabNav = ({
   children,
   items,
-  ...styledProps
-}: TabNavProps & StyledPropsBlade): React.ReactElement => {
+  ...rest
+}: TabNavProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
@@ -108,7 +109,8 @@ const TabNav = ({
         alignItems="center"
         alignSelf="end"
         position="relative"
-        {...getStyledProps(styledProps)}
+        {...getStyledProps(rest)}
+        {...makeAnalyticsAttribute(rest)}
         {...metaAttribute({ name: MetaConstants.TabNav })}
         ref={ref}
       >

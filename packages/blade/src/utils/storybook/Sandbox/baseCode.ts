@@ -2,6 +2,8 @@
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
+// @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
+import deps from './dependencies.json'; // eslint-disable-line
 
 const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
 
@@ -37,9 +39,9 @@ export const tsConfigJSON = JSON.stringify(
       jsx: 'react-jsx',
 
       /* Linting */
-      strict: true,
-      noUnusedLocals: true,
-      noUnusedParameters: true,
+      strict: false,
+      noUnusedLocals: false,
+      noUnusedParameters: false,
       noFallthroughCasesInSwitch: true,
     },
     include: ['src'],
@@ -59,31 +61,11 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
       react: '^18',
       'react-dom': '^18',
       'react-scripts': '4.0.3',
+      'framer-motion': '11.13.3',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
       '@razorpay/i18nify-react': packageJson.peerDependencies['@razorpay/i18nify-react'],
-    },
-  };
-};
-
-export const getViteReactTSDependencies = (): Dependencies => {
-  return {
-    dependencies: {
-      react: '^19',
-      'react-dom': '^19',
-      'react-router-dom': '^6',
-      'react-scripts': '4.0.3',
-      '@types/react': '^19',
-      '@types/react-dom': '^19',
-      '@razorpay/blade': getBladeVersion(),
-      'styled-components': packageJson.peerDependencies['styled-components'],
-      '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
-      '@razorpay/i18nify-react': packageJson.peerDependencies['@razorpay/i18nify-react'],
-    },
-    devDependencies: {
-      vite: '4.5.0',
-      '@vitejs/plugin-react': '4.1.1',
     },
   };
 };
@@ -95,14 +77,24 @@ export const vitePackageJSON = JSON.stringify(
       build: 'vite build',
     },
     stackblitz: {
-      startCommand: 'pnpm install && pnpm dev',
+      startCommand: 'yarn && yarn dev',
       installDependencies: false,
     },
-    ...getViteReactTSDependencies(),
+    dependencies: {
+      ...deps.dependencies,
+      '@razorpay/blade': getBladeVersion(),
+    },
+    devDependencies: deps.devDependencies,
   },
   null,
   4,
 );
+
+export const featuresJS = dedent`// features.js
+import { domMax } from 'framer-motion';
+// ~25kb (Only expose domAnimations instead of domMax if you're not using Morph preset or layout animations in your project)
+export default domMax; 
+`;
 
 export const viteConfigTS = dedent`
 import { defineConfig } from 'vite'
@@ -139,7 +131,7 @@ export const indexHTML = dedent`
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.js"></script>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
 `;
@@ -253,6 +245,10 @@ export const getIndexTSX = ({
 }): string => dedent`
 import React from 'react';
 import { createRoot } from "react-dom/client";
+import { createGlobalStyle } from "styled-components";
+import { LazyMotion } from 'framer-motion';
+
+const loadFeatures = () => import('./features.js').then((res) => res.default);
 
 import { BladeProvider, Box } from "@razorpay/blade/components";
 import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
@@ -279,18 +275,20 @@ const getTheme = () => {
 
 root.render(
   <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
-    <Box 
-      backgroundColor="surface.background.gray.subtle"
-      minHeight="100vh"
-      padding={['spacing.4', 'spacing.7']}
-      display="flex"
-      flexDirection="column"
-    >
-      <Box>
-        <App />
+    <LazyMotion strict features={loadFeatures}>
+      <Box 
+        backgroundColor="surface.background.gray.subtle"
+        minHeight="100vh"
+        padding={['spacing.4', 'spacing.7']}
+        display="flex"
+        flexDirection="column"
+      >
+        <Box>
+          <App />
+        </Box>
+        ${showConsole ? '<Logger />' : ''}
       </Box>
-      ${showConsole ? '<Logger />' : ''}
-    </Box>
+    </LazyMotion>
   </BladeProvider>
 );
 

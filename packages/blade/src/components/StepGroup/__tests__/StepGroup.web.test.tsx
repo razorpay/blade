@@ -2,6 +2,7 @@ import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { StepGroup, StepItem, StepItemIndicator } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { Collapsible, CollapsibleLink, CollapsibleBody } from '~components/Collapsible';
 import { Badge } from '~components/Badge';
 
 describe('<StepGroup />', () => {
@@ -63,6 +64,30 @@ describe('<StepGroup />', () => {
     expect(clickHandler).toBeCalledTimes(1);
   });
 
+  it('should use custom minWidth in horizontal orientation when minWidth is provided', () => {
+    const { container } = renderWithTheme(
+      <StepGroup orientation="horizontal">
+        <StepItem title="Introduction" minWidth="200px" />
+      </StepGroup>,
+    );
+    const stepItem = container.querySelector('.step-item');
+    expect(stepItem).toHaveStyle({
+      minWidth: '200px',
+    });
+  });
+
+  it('should have a default minWidth in horizontal orientation when minWidth is not provided', () => {
+    const { container } = renderWithTheme(
+      <StepGroup orientation="horizontal">
+        <StepItem title="Introduction" />
+      </StepGroup>,
+    );
+    const stepItem = container.querySelector('.step-item');
+    expect(stepItem).toHaveStyle({
+      minWidth: 'min(120px,100%)',
+    });
+  });
+
   it('should throw an error when trailing is passed in horizontal orientation', () => {
     // hiding error from terminal
     const tempConsoleError = console.error;
@@ -105,6 +130,38 @@ describe('<StepGroup />', () => {
     }
     console.error = tempConsoleError;
   });
+
+  it('should render collapsible step group correctly', async () => {
+    const user = userEvents.setup();
+    const { getByText, getByRole } = renderWithTheme(
+      <StepGroup>
+        <StepItem title="Introduction" />
+        <StepItem title="Personal Details" />
+        <Collapsible>
+          <CollapsibleLink>Toggle Show</CollapsibleLink>
+          <CollapsibleBody testID="collapsible-body">
+            <StepItem title="Business Details" />
+            <StepItem title="Needs Response" />
+            <StepItem title="Complete Onboarding" />
+          </CollapsibleBody>
+        </Collapsible>
+      </StepGroup>,
+    );
+
+    // Initial state - collapsed
+    expect(getByText('Introduction')).toBeVisible();
+    expect(getByText('Personal Details')).toBeVisible();
+    expect(getByText('Toggle Show')).toBeVisible();
+    expect(getByText('Business Details')).not.toBeVisible();
+
+    // Click to expand
+    await user.click(getByRole('button', { name: 'Toggle Show' }));
+
+    // Expanded state
+    expect(getByText('Toggle Show')).toBeVisible();
+    expect(getByText('Business Details')).toBeVisible();
+  });
+
   describe('should support adding data-analytics attribute', () => {
     it('should accept data-analytics attribute', () => {
       const { container } = renderWithTheme(

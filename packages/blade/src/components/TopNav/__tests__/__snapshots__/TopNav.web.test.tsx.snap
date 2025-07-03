@@ -31,7 +31,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   margin-top: 12px;
-  width: 245px;
+  width: 240px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -125,7 +125,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   padding: 8px;
   margin-top: 2px;
   gap: 8px;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(210,40%,98%,1);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -289,8 +289,8 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   border-bottom-width: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  transition: 250ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
+  transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: background;
   transition-property: background;
 }
@@ -306,8 +306,8 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   background-color: hsla(212,39%,16%,1);
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  transition: 250ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
+  transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
 }
@@ -378,8 +378,8 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -400,8 +400,8 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 .c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -412,8 +412,8 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -479,12 +479,12 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
     <div
       class="c1"
       data-analytics-topnav="demo"
-      data-blade-component="box"
+      data-blade-component="top-nav"
       data-testid="demo"
     >
       <div
         class="c2"
-        data-blade-component="box"
+        data-blade-component="top-nav-brand"
       >
         <div
           class="c3"
@@ -532,7 +532,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
             >
               <div
                 class="c8"
-                data-blade-component="box"
+                data-blade-component="tab-nav-items"
               >
                 <div
                   class=" c9"
@@ -545,6 +545,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Home"
+                    data-blade-component="tab-nav-item-link"
                     href="/home"
                     to="/home"
                   >
@@ -567,6 +568,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payroll"
+                    data-blade-component="tab-nav-item-link"
                     href="/payroll"
                     to="/payroll"
                   >
@@ -589,6 +591,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payments"
+                    data-blade-component="tab-nav-item-link"
                     href="/payments"
                     to="/payments"
                   >
@@ -611,6 +614,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Magic Checkout"
+                    data-blade-component="tab-nav-item-link"
                     href="/magic-checkout"
                     to="/magic-checkout"
                   >
@@ -635,6 +639,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                   aria-expanded="false"
                   aria-haspopup="menu"
                   class="c11"
+                  data-blade-component="tab-nav-item-link"
                   href="#"
                   id=":rn:"
                   to="#"
@@ -810,7 +815,7 @@ exports[`TopNav should render 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   margin-top: 12px;
-  width: 245px;
+  width: 240px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -904,7 +909,7 @@ exports[`TopNav should render 1`] = `
   padding: 8px;
   margin-top: 2px;
   gap: 8px;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(210,40%,98%,1);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -1068,8 +1073,8 @@ exports[`TopNav should render 1`] = `
   border-bottom-width: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  transition: 250ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
+  transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: background;
   transition-property: background;
 }
@@ -1085,8 +1090,8 @@ exports[`TopNav should render 1`] = `
   background-color: hsla(212,39%,16%,1);
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  transition: 250ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
+  transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
 }
@@ -1157,8 +1162,8 @@ exports[`TopNav should render 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -1179,8 +1184,8 @@ exports[`TopNav should render 1`] = `
 .c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1191,8 +1196,8 @@ exports[`TopNav should render 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -1258,12 +1263,12 @@ exports[`TopNav should render 1`] = `
     <div
       class="c1"
       data-analytics-topnav="demo"
-      data-blade-component="box"
+      data-blade-component="top-nav"
       data-testid="demo"
     >
       <div
         class="c2"
-        data-blade-component="box"
+        data-blade-component="top-nav-brand"
       >
         <div
           class="c3"
@@ -1311,7 +1316,7 @@ exports[`TopNav should render 1`] = `
             >
               <div
                 class="c8"
-                data-blade-component="box"
+                data-blade-component="tab-nav-items"
               >
                 <div
                   class=" c9"
@@ -1324,6 +1329,7 @@ exports[`TopNav should render 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Home"
+                    data-blade-component="tab-nav-item-link"
                     href="/home"
                     to="/home"
                   >
@@ -1346,6 +1352,7 @@ exports[`TopNav should render 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payroll"
+                    data-blade-component="tab-nav-item-link"
                     href="/payroll"
                     to="/payroll"
                   >
@@ -1368,6 +1375,7 @@ exports[`TopNav should render 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payments"
+                    data-blade-component="tab-nav-item-link"
                     href="/payments"
                     to="/payments"
                   >
@@ -1390,6 +1398,7 @@ exports[`TopNav should render 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Magic Checkout"
+                    data-blade-component="tab-nav-item-link"
                     href="/magic-checkout"
                     to="/magic-checkout"
                   >
@@ -1414,6 +1423,7 @@ exports[`TopNav should render 1`] = `
                   aria-expanded="false"
                   aria-haspopup="menu"
                   class="c11"
+                  data-blade-component="tab-nav-item-link"
                   href="#"
                   id=":r2:"
                   to="#"
@@ -1589,7 +1599,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   margin-top: 12px;
-  width: 245px;
+  width: 240px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1683,7 +1693,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
   padding: 8px;
   margin-top: 2px;
   gap: 8px;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(210,40%,98%,1);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -1847,8 +1857,8 @@ exports[`TopNav should support data analytics attributes 1`] = `
   border-bottom-width: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  transition: 250ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
+  transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: background;
   transition-property: background;
 }
@@ -1864,8 +1874,8 @@ exports[`TopNav should support data analytics attributes 1`] = `
   background-color: hsla(212,39%,16%,1);
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: 250ms cubic-bezier(0.3,0,0.2,1);
-  transition: 250ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
+  transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
 }
@@ -1936,8 +1946,8 @@ exports[`TopNav should support data analytics attributes 1`] = `
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   position: relative;
 }
 
@@ -1958,8 +1968,8 @@ exports[`TopNav should support data analytics attributes 1`] = `
 .c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1970,8 +1980,8 @@ exports[`TopNav should support data analytics attributes 1`] = `
   transform: scale(1);
   -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
   transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -2037,12 +2047,12 @@ exports[`TopNav should support data analytics attributes 1`] = `
     <div
       class="c1"
       data-analytics-topnav="demo"
-      data-blade-component="box"
+      data-blade-component="top-nav"
       data-testid="demo"
     >
       <div
         class="c2"
-        data-blade-component="box"
+        data-blade-component="top-nav-brand"
       >
         <div
           class="c3"
@@ -2090,7 +2100,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
             >
               <div
                 class="c8"
-                data-blade-component="box"
+                data-blade-component="tab-nav-items"
               >
                 <div
                   class=" c9"
@@ -2103,6 +2113,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Home"
+                    data-blade-component="tab-nav-item-link"
                     href="/home"
                     to="/home"
                   >
@@ -2125,6 +2136,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payroll"
+                    data-blade-component="tab-nav-item-link"
                     href="/payroll"
                     to="/payroll"
                   >
@@ -2147,6 +2159,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Payments"
+                    data-blade-component="tab-nav-item-link"
                     href="/payments"
                     to="/payments"
                   >
@@ -2169,6 +2182,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   <a
                     class="c11"
                     data-analytics-tabnavitem="Magic Checkout"
+                    data-blade-component="tab-nav-item-link"
                     href="/magic-checkout"
                     to="/magic-checkout"
                   >
@@ -2193,6 +2207,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                   aria-expanded="false"
                   aria-haspopup="menu"
                   class="c11"
+                  data-blade-component="tab-nav-item-link"
                   href="#"
                   id=":rg:"
                   to="#"

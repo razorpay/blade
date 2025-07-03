@@ -1,18 +1,20 @@
 name: Blade Interaction Tests
 
-# Runs the action when 
-# 1. 'Run Interaction Tests' label is added to PR 
+# Runs the action when
+# 1. 'Run Interaction Tests' label is added to PR
 # 2. Workflow is trigerred manually
 # 3. PR is merged to master
+# 4. Any commit is pushed or merged
+
 
 on:
   workflow_dispatch:
+# Interaction tests use Chromatic. Running them on every commit will quickly exhaust limited Chromatic usage.
   pull_request:
     types: [labeled]
   push:
     branches:
       - 'master'
-
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
@@ -30,8 +32,12 @@ jobs:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+      - name: Install Playwright Dependencies Manually
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2t64 libffi8 libx264-dev
       - name: Run Interaction Tests
         run: |
-          npx playwright install chromium firefox webkit --with-deps
-          yarn test:react:interaction:ci 
+          npx playwright install chromium firefox --with-deps
+          yarn test:react:interaction:ci
         working-directory: packages/blade

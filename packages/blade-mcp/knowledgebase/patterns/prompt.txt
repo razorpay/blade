@@ -1,0 +1,14 @@
+Scan this Storybook file, generate a markdown file with below mentioned sections
+## Pattern Name
+
+## Description - this should be 3-4 line description that is understandable by LLMs and MCP clients to pick on when to use this pattern
+
+## Components Used - list down the components that are used for building this pattern. **Note:** List down parent components only (E.g. only list `Modal, ActionList`. Do not list `ModalHeader`, `ActionListItem`, etc)
+
+## Example - Create usage examples by clubbing multiple use cases {PatternName}. Follow best coding practices. Create code that follows accessibility guidelines and uses the right accessibility props defined by components. Create ONE comprehensive example per distinct use case, with each example showing multiple props combined in practical ways. Don't create multiple examples showing similar functionality with minor variations. Focus on showing how different prop combinations work together in real-world scenario for example: default selection, disabled cases, prefix prop, suffix prop, type prop, sizes prop, formatting props, color prop, variant prop, accessibility props etc in single clubbed examples so we don't bloat examples. Put core features and props in one example 
+
+ and not multiple components within one example component. Do not ever use comments `{/* some comment *}` or headings to merge variations in one example. Split examples whenever necessary in their own sections with heading and short description of what each example does. All the examples must show the import statements too required for creating that example. Use Box component only wherever its required and necessary. Focus on comprehensive usage rather than isolated prop demonstrations. Create examples that focuses more on this components use cases and use other components only as supporting components whenever required. This will be fed to LLMs in future when the user ask to build something that involves this component. This example will just act as the blueprint and then referring the types and prompt of user the LLMs will be able to create the required example prompted by a user. Do not pick components that start with `_something` those are private components and never exposed to consumer and meant for internal purposes. All the imports that start with `~/something` should be replaced with named exports of `@razorpay/blade/something` eg: `~components/*` shall be replaced with named absolute imports of `@razorpay/blade/components`. 
+
+Do this only for {PatternName} pattern right now and save it under a directory packages/blade-mcp/knowledgebase/patterns/{PatternName.md}. Do not touch any other file/directory in this project. 
+
+Read the packages/blade-mcp/knowledgebase/patterns/index.md, and add a basic description and pattern name there in the same format as others. Keep description on point and describe when the pattern should be used.

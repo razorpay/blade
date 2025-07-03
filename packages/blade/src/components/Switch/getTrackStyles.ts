@@ -42,7 +42,7 @@ const getTrackStyles = ({
     height,
     borderRadius: makeSize(theme.border.radius.max),
     backgroundColor,
-    transitionTimingFunction: `${theme.motion.easing.standard.effective}`,
+    transitionTimingFunction: `${theme.motion.easing.standard}`,
     transitionDuration: isReactNative()
       ? undefined
       : `${makeMotionTime(theme.motion.duration['2xquick'])}`,

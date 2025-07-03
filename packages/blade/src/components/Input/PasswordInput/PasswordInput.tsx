@@ -51,6 +51,8 @@ type PasswordInputCommonProps = Pick<
   | 'label'
   | 'accessibilityLabel'
   | 'labelPosition'
+  | 'labelSuffix'
+  | 'labelTrailing'
   | 'maxCharacters'
   | 'validationState'
   | 'errorText'
@@ -134,6 +136,8 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
     autoCompleteSuggestionType,
     testID,
     size = 'medium',
+    labelSuffix,
+    labelTrailing,
     ...rest
   },
   ref,
@@ -176,6 +180,8 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       type={type}
+      labelSuffix={labelSuffix}
+      labelTrailing={labelTrailing}
       trailingInteractionElement={revealButton}
       trailingFooterSlot={trailingFooterSlot}
       maxCharacters={maxCharacters}

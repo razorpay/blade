@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+import React from 'react';
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
@@ -6,7 +7,7 @@ import { useValidateAsProp } from '../utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { isReactNative } from '~utils';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadingProps = {
@@ -17,11 +18,13 @@ export type HeadingProps = {
    * **Note** This takes priority over `type` and `contrast` prop to decide color of heading
    */
   color?: BaseTextProps['color'];
-  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'semibold'>;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;
+  textTransform?: BaseTextProps['textTransform'];
+  wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   StyledPropsBlade;
 
@@ -74,17 +77,22 @@ export const getHeadingProps = ({
   return props;
 };
 
-export const Heading = ({
-  as,
-  size = 'small',
-  weight = 'semibold',
-  color = 'surface.text.gray.normal',
-  children,
-  testID,
-  textAlign,
-  textDecorationLine,
-  ...styledProps
-}: HeadingProps): ReactElement => {
+const _Heading = (
+  {
+    as,
+    size = 'small',
+    weight = 'semibold',
+    color = 'surface.text.gray.normal',
+    children,
+    testID,
+    textAlign,
+    textDecorationLine,
+    wordBreak,
+    textTransform,
+    ...styledProps
+  }: HeadingProps,
+  ref: React.Ref<BladeElementRef>,
+): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
 
   const props = getHeadingProps({ as, size, weight, color, testID });
@@ -92,11 +100,18 @@ export const Heading = ({
   return (
     <BaseText
       {...props}
+      ref={ref}
       textAlign={textAlign}
       textDecorationLine={textDecorationLine}
+      textTransform={textTransform}
+      wordBreak={wordBreak}
       {...getStyledProps(styledProps)}
     >
       {children}
     </BaseText>
   );
 };
+
+const Heading = React.forwardRef(_Heading);
+
+export { Heading };

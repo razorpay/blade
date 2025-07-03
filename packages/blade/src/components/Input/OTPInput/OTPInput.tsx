@@ -31,6 +31,8 @@ export type OTPInputCommonProps = Pick<
   | 'label'
   | 'accessibilityLabel'
   | 'labelPosition'
+  | 'labelSuffix'
+  | 'labelTrailing'
   | 'validationState'
   | 'helpText'
   | 'errorText'
@@ -149,6 +151,8 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
     label,
     accessibilityLabel,
     labelPosition,
+    labelSuffix,
+    labelTrailing,
     name,
     onChange,
     onFocus,
@@ -294,8 +298,15 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   }: FormInputOnKeyDownEvent & { currentOtpIndex: number }): void => {
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       event.preventDefault?.();
-      handleOnChange({ value: '', currentOtpIndex });
-      focusOnOtpByIndex(--currentOtpIndex);
+      if (otpValue[currentOtpIndex]) {
+        // Clear the value at the current index if value exists
+        handleOnChange({ value: '', currentOtpIndex });
+      } else {
+        // Move focus to the previous input if the current input is empty
+        // and clear the value at the new active (previous) index
+        focusOnOtpByIndex(--currentOtpIndex);
+        handleOnChange({ value: '', currentOtpIndex });
+      }
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
       event.preventDefault?.();
       focusOnOtpByIndex(--currentOtpIndex);
@@ -392,7 +403,14 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
         position="relative"
       >
         {Boolean(label) && (
-          <FormLabel as="label" position={labelPosition} htmlFor={inputId} size={size}>
+          <FormLabel
+            as="label"
+            position={labelPosition}
+            htmlFor={inputId}
+            size={size}
+            labelSuffix={labelSuffix}
+            labelTrailing={labelTrailing}
+          >
             {label}
           </FormLabel>
         )}

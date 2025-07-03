@@ -8,6 +8,7 @@ import { Heading, Text } from '~components/Typography';
 import { getTextColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { IconColor } from '~components/Button/BaseButton/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import type { BladeElementRef } from '~utils/types';
 
 const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButtonProps> = (
@@ -80,6 +81,9 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
       onPointerEnter={onPointerEnter}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
+      data-analytics-name={
+        as === 'button' ? MAKE_ANALYTICS_CONSTANTS.AVATAR.AVATAR_BUTTON : undefined
+      }
     >
       <BaseBox
         display="flex"
@@ -98,15 +102,17 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
         {/* eslint-disable-next-line jsx-a11y/alt-text -- alt text is provided in imgProps */}
         {imgProps?.src ? <img {...imgProps} /> : null}
 
-        {size === 'xlarge' ? (
-          <Heading size={avatarTextSizeMapping[size]} weight="semibold" color={textColor}>
-            {children}
-          </Heading>
-        ) : (
-          <Text size={avatarTextSizeMapping[size]} weight="semibold" color={textColor}>
-            {children}
-          </Text>
-        )}
+        {children ? (
+          size === 'xlarge' ? (
+            <Heading size={avatarTextSizeMapping[size]} weight="semibold" color={textColor}>
+              {children}
+            </Heading>
+          ) : (
+            <Text size={avatarTextSizeMapping[size]} weight="semibold" color={textColor}>
+              {children}
+            </Text>
+          )
+        ) : null}
       </BaseBox>
     </StyledAvatarButton>
   );

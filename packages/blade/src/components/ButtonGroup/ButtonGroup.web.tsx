@@ -1,4 +1,3 @@
-import type { ReactElement } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import type { ButtonGroupProps } from './types';
@@ -13,9 +12,9 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { Theme } from '~components/BladeProvider';
-import { throwBladeError } from '~utils/logger';
-import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
 const getDividerColorToken = ({
   color,
@@ -52,16 +51,19 @@ const StyledDivider = styled(BaseBox)<Pick<ButtonGroupProps, 'color' | 'isDisabl
   },
 );
 
-const _ButtonGroup = ({
-  children,
-  isDisabled = false,
-  size = 'medium',
-  color = 'primary',
-  variant = 'primary',
-  isFullWidth = false,
-  testID,
-  ...rest
-}: ButtonGroupProps): React.ReactElement => {
+const _ButtonGroup = (
+  {
+    children,
+    isDisabled = false,
+    size = 'medium',
+    color = 'primary',
+    variant = 'primary',
+    isFullWidth = false,
+    testID,
+    ...rest
+  }: ButtonGroupProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const contextValue = {
     isDisabled,
     size,
@@ -70,9 +72,16 @@ const _ButtonGroup = ({
     isFullWidth,
   };
 
+  useVerifyAllowedChildren({
+    allowedComponents: ['Button', 'Dropdown', 'Tooltip', 'Popover'],
+    componentName: 'ButtonGroup',
+    children,
+  });
+
   return (
     <ButtonGroupProvider value={contextValue}>
       <StyledButtonGroup
+        ref={ref as never}
         color={color}
         variant={variant}
         isDisabled={isDisabled}
@@ -83,26 +92,6 @@ const _ButtonGroup = ({
         role="group"
       >
         {React.Children.map(children, (child, index) => {
-          if (__DEV__) {
-            // throw error if child is not a button or dropdown with button trigger
-            /* eslint-disable no-restricted-properties */
-            if (
-              !isValidAllowedChildren(child, 'Button') &&
-              !(
-                isValidAllowedChildren(child, 'Dropdown') &&
-                (child as ReactElement).props.children.some((c: ReactElement) =>
-                  isValidAllowedChildren(c, 'DropdownButton'),
-                )
-              )
-            ) {
-              throwBladeError({
-                moduleName: 'ButtonGroup',
-                message: `Only "Button" or "Dropdown" component with Button trigger are allowed as children.`,
-              });
-            }
-            /* eslint-enable no-restricted-properties */
-          }
-
           return (
             <>
               {child}
@@ -143,7 +132,7 @@ const _ButtonGroup = ({
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-buttongroup FileUpload Documentation}
  * 
  */
-const ButtonGroup = assignWithoutSideEffects(_ButtonGroup, {
+const ButtonGroup = assignWithoutSideEffects(React.forwardRef(_ButtonGroup), {
   displayName: 'ButtonGroup',
   componentId: 'ButtonGroup',
 });

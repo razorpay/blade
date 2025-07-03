@@ -1,5 +1,638 @@
 # @razorpay/blade
 
+## 12.41.1
+
+### Patch Changes
+
+- b86409b12: fix(blade): expose empty state component
+
+## 12.41.0
+
+### Minor Changes
+
+- 2a53e520f: feat(Tabs): sizing enhancements in tab component, add `size="small"`
+
+  > [!NOTE]
+  >
+  > This changes the top padding in existing Tab component. Although this won't cause any functional or visual breakage, it may cause visual change depending on the usage. You can adjust the padding on container if needed
+
+  <table>
+    <tr><th>Before</th><th>After</th></tr>
+    <tr>
+      <td><img width="100%" alt="image" src="https://github.com/user-attachments/assets/3a965299-27df-42f8-8018-907627a86ff3" /></td>
+      <td><img width="100%" alt="image" src="https://github.com/user-attachments/assets/5abc897f-370e-4220-ac95-1302eb9edd21" /></td>
+    </tr>
+  </table>
+
+- 1690286d0: feat(blade): add EmptyState component
+
+## 12.40.0
+
+### Minor Changes
+
+- a90644a3f: fix(blade): update CompanyRegistrationIcon
+
+## 12.39.0
+
+### Minor Changes
+
+- dfe654e76: feat(blade): add `labelSuffix` & `labelTrailing` props in Input family components
+
+## 12.38.0
+
+### Minor Changes
+
+- 4fd463368: feat(blade): card variants enhancement & docs
+- a839567f9: fix(blade): types in list , prefix color
+
+### Patch Changes
+
+- 6fa5fca1d: fix(blade): expose inputType in tableEditableCell
+
+## 12.37.0
+
+### Minor Changes
+
+- d8f9ddec9: feat(Typography): add `textTransform` support for typography components
+
+### Patch Changes
+
+- eda617bc3: fix(Tooltip): re-render issue on mobile tooltip
+
+## 12.36.0
+
+### Minor Changes
+
+- eb7381a21: feat: Selectable Card
+
+## 12.35.0
+
+### Minor Changes
+
+- 1801b3865: feat: Payment Component
+
+## 12.34.1
+
+### Patch Changes
+
+- 9e5c6ef04: fix(blade): table editable cell dropdown issue
+
+## 12.34.0
+
+### Minor Changes
+
+- b933afc11: feat: add toast container offset prop
+
+## 12.33.2
+
+### Patch Changes
+
+- b03d34fdf: feat(blade): update input styles
+- 2807550e3: feat(blade): add Dropdown in TextInput and SearchInput
+- b8453bbcf: fix(blade): leading and trailing in textInput
+- 11fb3afe7: feat(accordion): UI enhancement
+
+## 12.33.1
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
+## 12.33.0
+
+### Minor Changes
+
+- 43cc06167: feat(InfoGroup): add InfoGroup component
+
+### Patch Changes
+
+- 16a8f55c5: feat(InfoGroup): remove keyAlign prop
+  feat(InfoGroup knowledgebase): update knowledgebase to add InfoGroup component
+
+## 12.32.3
+
+### Patch Changes
+
+- c09440955: fix(table): fix table selected styles
+- 5badd6410: fix: label position to 'top' for CheckboxGroup and RadioGroup on mobile viewports
+
+## 12.32.2
+
+### Patch Changes
+
+- a9fdac32f: fix(blade): add disabled prop in filterchip
+
+## 12.32.1
+
+### Patch Changes
+
+- 562c93dac: feat(SideNav): change SideNav width and test mode icon
+  > [!NOTE]
+  >
+  > This changes the width of the SideNav. Make sure to adjust the rest of the layout accordingly if it depends on SideNav width.
+
+## 12.32.0
+
+### Minor Changes
+
+- d956170e9: feat(blade): add inputgroup
+
+### Patch Changes
+
+- 1d14b48c0: fix(blade): remove modal contraints
+
+## 12.31.5
+
+### Patch Changes
+
+- ce5916a56: feat(StepItem): expose minwidth for StepItem
+
+## 12.31.4
+
+### Patch Changes
+
+- 7fa1620e: fix(blade): listviewfilter props
+
+## 12.31.3
+
+### Patch Changes
+
+- be3e0233: fix: build script for node 22
+- 0f0df69c: fix(blade): make children optional for ListViewFilters
+
+## 12.31.2
+
+### Patch Changes
+
+- b42ad547: fix(blade): Display 'Show more filters' only if children are provided
+
+## 12.31.1
+
+### Patch Changes
+
+- 273730ff: fix: surface primary border color when using custom brand color
+
+## 12.31.0
+
+### Minor Changes
+
+- c48acef5: feat(Heading): add medium weight
+
+## 12.30.0
+
+### Minor Changes
+
+- 1de828f1: feat(fileUpload): add new size variant "variable"
+- a48a3a30: feat(blade): add preview component
+
+## 12.29.0
+
+### Minor Changes
+
+- 546aceaa3: feat(Card): add maxWidth property to card
+
+## 12.28.0
+
+### Minor Changes
+
+- b16eb895: feat(Amount): expose `fractionDigits` for control over decimals
+
+## 12.27.0
+
+### Minor Changes
+
+- 0b2b1d7a: fix(create-theme): disabled state colors in createTheme
+- ca378c3c: feat(stepgroup): UI enhancements
+
+### Patch Changes
+
+- bf3c19b0: fix(Tagged Inputs): prevent calling onTagChange twice
+
+## 12.26.0
+
+### Minor Changes
+
+- 06a77475: feat(blade): add orientation in radioGroup and checkbox
+
+## 12.25.2
+
+### Patch Changes
+
+- cc3d510b: - fixed accessibility issues in Avatar, Card and Checkbox.
+
+## 12.25.1
+
+### Patch Changes
+
+- a0132d50: fix(FC-3152): add data-analytics-\* for TabNav
+
+## 12.25.0
+
+### Minor Changes
+
+- 59fb0163: feat(PhoneNumberInput): add virtualization to phone number input
+
+## 12.24.0
+
+### Minor Changes
+
+- f7b868ad: feat(blade): add full page modal
+
+### Patch Changes
+
+- 9eb42df8: fix(StepGroup): extra space because of trailing property
+
+## 12.23.1
+
+### Patch Changes
+
+- c12197be: fix(blade): add accessibilityLabel in show more filters button in list view
+
+## 12.23.0
+
+### Minor Changes
+
+- 97cf1d95: feat(Drawer): add `onUnmount` to Drawer for triggering any state changes after drawer becomes invisible
+
+## 12.22.0
+
+### Minor Changes
+
+- 289a9c19: feat(Drawer): visual changes in Drawer (add border-radius, change stacking visuals)
+
+### Patch Changes
+
+- b514b529: fix(StepGroup): remove universal-base64 library
+
+## 12.21.3
+
+### Patch Changes
+
+- ca5ff972: fix(blade): filter chip keyboard navigation & auto-handling of selected state in controlled mode
+
+## 12.21.2
+
+### Patch Changes
+
+- fa9e437d: fix(blade): actionlistitem padding logic broken
+
+## 12.21.1
+
+### Patch Changes
+
+- fd18c78b: fix(blade): show title filterChipSelectInput, optional search in listview
+
+## 12.21.0
+
+### Minor Changes
+
+- c874d904: feat(StepGroup): support integrating stepgroup and collapsible
+- b64e93ed: feat(Drawer): add children support to DrawerHeader
+- 234b50ca: feat(Dropdown): support AutoComplete in DropdownHeader
+
+### Patch Changes
+
+- da5663e9: fix: reset datepicker to default picker value on close
+- 6345fc04: fix: auto-shifting of the date picker on picker change.
+- d9294055: fix: persists datevalues in case of month and year change
+
+## 12.20.1
+
+### Patch Changes
+
+- 7fdb6598: fix(SideNav): scroll issue in L2 menu
+
+## 12.20.0
+
+### Minor Changes
+
+- 65142216: feat(blade): add `FilterChipSelectInput` & `FilterChipDatePicker` components
+- 65142216: feat(blade): add list view pattern
+
+## 12.19.1
+
+### Patch Changes
+
+- 08ad3279: fix(blade): date picker resetting to prev value
+
+## 12.19.0
+
+### Minor Changes
+
+- 9284a1f9: feat(blade): feat: add virtualization in section list
+
+## 12.18.0
+
+### Minor Changes
+
+- fa1800c4: feat(storybook): pre-generate lock file for documentation examples
+- f211134b: feat(blade) : add keyicon , appleicon, androidicon
+
+## 12.17.1
+
+### Patch Changes
+
+- c28b9182: fix(Modal): remove clashing position of modal on module federated apps
+
+## 12.17.0
+
+### Minor Changes
+
+- 3afdadf3: fix(blade): datepicker autofocus not working on programmatically changing date
+
+## 12.16.2
+
+### Patch Changes
+
+- 89391f8b: fix(Input): fix color differences of label between figma and code
+
+## 12.16.1
+
+### Patch Changes
+
+- 20f744ab: fix(blade): datepicker height change issue
+
+## 12.16.0
+
+### Minor Changes
+
+- 87d37ebf: feat(blade): add table background color prop
+
+## 12.15.1
+
+### Patch Changes
+
+- 1419c1f5: fix(blade): focus on selected date by default in datepicker
+
+## 12.15.0
+
+### Minor Changes
+
+- bbf24c99: feat(blade): add support for table virtualization
+
+## 12.14.0
+
+### Minor Changes
+
+- 0b79d985: feat(QuickFilter): Add QuickFilters component
+
+## 12.13.1
+
+### Patch Changes
+
+- 37392871: feat(blade): add should showNavigationButtons prop in carousel
+
+## 12.13.0
+
+### Minor Changes
+
+- 19119623: feat(blade): add drag handle icon
+
+## 12.12.1
+
+### Patch Changes
+
+- 9dda1513: fix: remove js check that allows brand token for Box backgroundColor
+- 18fe5390: fix(blade): allow consumers to align chips in chipgroup
+- ba66b346: fix(blade): loading single button in buttonGroup
+
+## 12.12.0
+
+### Minor Changes
+
+- 7e155b6f: feat(blade): add engage and translate icons
+
+## 12.11.0
+
+### Minor Changes
+
+- d906838f: feat(blade): add Chat Message component
+
+## 12.10.0
+
+### Minor Changes
+
+- 142afcdf: feat(TextArea): expose `onKeydown` on TextArea and allow `numOfLines={1}`
+
+### Patch Changes
+
+- 6cf03ea3: feat: Improve OTPInput field value clear behaviour
+
+## 12.9.1
+
+### Patch Changes
+
+- 5531ef3f: feat: remove overflowY if L1 sidenav is collapsed
+- 5531ef3f: feat: SideNav improvements & fixes for X migration
+
+  1. Removed overflowY if L1 sidenav is collapsed
+  2. Fixed onVisibleLevelChange not getting called when clicking on a nested submenu
+
+## 12.9.0
+
+### Minor Changes
+
+- e035b38b: feat(DropdownIconButton): add support for DropdownIconButton and tooltip for Dropdown triggers
+
+## 12.8.2
+
+### Patch Changes
+
+- 3be3f0f9: fix(FileUpload): revert to not calling onChange on file remove
+
+  > [!NOTE]
+  >
+  > Check the below timeline if you're upgrading from 11.34.1+ version to this version
+
+  **Timeline of FileUpload changes**
+
+  - In 11.34.1: We did not call onChange on removing of file. Only onRemove was called
+  - In 11:36.2: We added dispatchEvent call which started calling onChange on onRemove (since React treats `input type="file"` differently than `input type="text"` - [CodeSandbox Link](https://codesandbox.io/p/sandbox/friendly-ishizaka-yk7mm3))
+  - In 12.4.0: We released a fix thinking onChange call was expected behaviour and we just updated the state value for it
+  - **This version:** Reverts back to 11.34.1 behaviour. If you're upgrading to this version from 11.34.1 or previous versions, the behaviour will stay same. If you're upgrading from 11.34.1+ and use FileUpload component, its recommended to test out FileUpload instances.
+
+- 3c040f66: feat: add icon only chip
+
+## 12.8.1
+
+### Patch Changes
+
+- 8b5602ba: fix(Avatar): misaligned menu on Avatar with icon
+
+## 12.8.0
+
+### Minor Changes
+
+- 98be8f05: feat(blade): add prompt and sort icon
+
+## 12.7.1
+
+### Patch Changes
+
+- 3b9d4cdd: feat(Elevate): add missing reexport for `Elevate`
+
+## 12.7.0
+
+### Minor Changes
+
+- 214b2121: feat(Motion / Elevate): add `Elevate` component to motion presets
+
+  Docs: https://blade.razorpay.com/?path=/docs/motion-elevate--docs
+
+## 12.6.0
+
+### Minor Changes
+
+- f48096b2: feat(blade): add corner and arrow icons
+
+## 12.5.1
+
+### Patch Changes
+
+- 3a7f55f8: fix(codemod-v12): add missing token map for `standard.attentive` to codemod and manual migration
+- 08c5a4ae: fix(blade): fix: data analytics attribute from another external module
+
+## 12.5.0
+
+### Minor Changes
+
+- 194fffc5: feat(SideNav): add `description` on SideNavLink and `onVisibleLevelChange` callback on `SideNav`
+
+## 12.4.1
+
+### Patch Changes
+
+- 2692d5b6: fix(blade): remove file icon aligment while uploading
+
+## 12.4.0
+
+### Minor Changes
+
+- 964ee14c: feat: ability to align individual table column items
+
+### Patch Changes
+
+- 455e9651: fix(FileUpload): fileupload on remove clashes with onchage
+
+  > [!NOTE]
+  >
+  > Previously, onChange did not provide an updated value when a file was removed. Now, when a file is removed from FileUpload, onChange will return the updated value.
+
+- a87a200b: chore(blade): add data attributes in TabNav & Table components
+
+## 12.3.1
+
+### Patch Changes
+
+- 3a87bd69: fix(blade): unable to use switch inside card body
+
+## 12.3.0
+
+### Minor Changes
+
+- c228d8ca: feat(blade): add flask,keyboard and list-search icons
+
+### Patch Changes
+
+- 2326fa27: feat(tokens): change token values to match figma
+
+## 12.2.1
+
+### Patch Changes
+
+- dbd53024: fix(blade): date picker on level change typo
+
+## 12.2.0
+
+### Minor Changes
+
+- a9e46afb: feat(ActionList): add Virtualization in ActionList
+
+  ```jsx
+  <ActionList isVirtualized></ActionList>
+  ```
+
+  > [!NOTE]
+  >
+  > Current version only supports virtulization of fixed height list where items do not have descriptions. We'll be adding support for dynamic height lists in future versions
+
+### Patch Changes
+
+- 70259329: feat(blade): add dateformat and placeholder prop for datepicker input
+  fix(blade): Removed the chevron icon when the picker prop is used.
+
+## 12.1.1
+
+### Patch Changes
+
+- 6aae282a: chore(blade): change TabNavItem,TopNavActions background color & update examples
+- c676f3ed: fix(SideNav): empty padding in banner when banner component returns null
+
+## 12.1.0
+
+### Minor Changes
+
+- e00172bf: feat(blade): Changes in components for X migration
+
+  **Drawer:**
+
+  - Changed the drawer's showOverlay behaviour to not mandate the overlay on level2 stacking
+  - Exposed ref
+
+  **RadioGroup:**
+
+  - Exposed event in onChange
+
+  **ButtonGroup:**
+
+  - Added styled props
+  - Added support for Tooltip inside ButtonGroup
+
+  **IconButton:**
+
+  - Added styledProps
+
+  **SideNavLink:**
+
+  - Added onClick
+
+### Patch Changes
+
+- 41354f63: fix(blade): cleanup bodyscroll locks if bottomsheet is force unmounted
+
+## 12.0.3
+
+### Patch Changes
+
+- 0b5dc72d: fix: interactive card selected borderRadius
+
+## 12.0.2
+
+### Patch Changes
+
+- 95a58247: fix(blade): Add backwards compat for React17 - fallback for useInsertionEffect
+
+## 12.0.1
+
+### Patch Changes
+
+- 4178c595: docs: remove stackblitz and add story code
+  fix: export Stagger and AnimateInteractions
+
+## 12.0.0
+
+### Major Changes
+
+- 663da58e: feat(Motion): Release Motion Presets
+
+  - Check out [Blade v12 Upgrade Guide](https://github.com/razorpay/blade/blob/master/packages/blade/docs/migration-docs/upgrade-v12.md) for codemod and migration steps
+
+## 11.39.0
+
+### Minor Changes
+
+- 583900a1: feat(blade): add ray icon
+
 ## 11.38.1
 
 ### Patch Changes

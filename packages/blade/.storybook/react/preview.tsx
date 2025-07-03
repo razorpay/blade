@@ -11,6 +11,7 @@ import { DocsContainer } from '@storybook/addon-docs';
 import React from 'react';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import './global.css';
+import { domMax, LazyMotion } from 'framer-motion';
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
@@ -73,13 +74,25 @@ export const parameters = {
         ],
         'Components',
         ['*', 'Interaction Tests', 'KitchenSink'],
+        'Patterns',
+        ['ListView'],
+        'Motion',
+        [
+          'Introduction to Motion',
+          'Fade',
+          'Move',
+          'Slide',
+          '*',
+          'AnimateInteractions',
+          'Stagger',
+          'Recipes',
+        ],
         'Recipes',
       ],
     },
   },
   docs: {
     container: ({ children, context }) => {
-      console.log('----', context);
       const getThemeTokens = () => {
         if (context.store.globals.globals.brandColor) {
           return createTheme({ brandColor: context.store.globals.globals.brandColor }).theme;
@@ -95,13 +108,15 @@ export const parameters = {
       }
       return (
         <DocsContainer context={context}>
-          <BladeProvider
-            key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
-            themeTokens={getThemeTokens()}
-            colorScheme={context.store.globals.globals.colorScheme}
-          >
-            {children}
-          </BladeProvider>
+          <LazyMotion strict features={domMax}>
+            <BladeProvider
+              key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.store.globals.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </LazyMotion>
         </DocsContainer>
       );
     },
@@ -134,29 +149,33 @@ export const parameters = {
   },
 };
 
+const hasFullPageExampleStories = (context) =>
+  context.kind.includes('/Dropdown/With Select') ||
+  context.kind.includes('/Dropdown/With Button') ||
+  context.kind.includes('/Dropdown/With AutoComplete') ||
+  context.kind.includes('/Carousel') ||
+  context.kind.includes('/TopNav') ||
+  context.kind.includes('/Examples') ||
+  context.kind.includes('/SideNav') ||
+  context.kind.includes('/Recipes');
+
 const StoryCanvas = styled.div<{ context }>(
   ({ theme, context }) =>
     `
       width: 100%;
       height: ${context.viewMode === 'story' ? '100vh' : '100%'};
       overflow: auto;
-      padding: ${
-        context.kind.includes('/Dropdown/With Select') ||
-        context.kind.includes('/Dropdown/With Button') ||
-        context.kind.includes('/Dropdown/With AutoComplete') ||
-        context.kind.includes('/Carousel') ||
-        context.kind.includes('/TopNav') ||
-        context.kind.includes('/Examples') ||
-        context.kind.includes('/SideNav')
-          ? '0rem'
-          : '2rem'
-      };
+      padding: ${hasFullPageExampleStories(context) ? '0rem' : '2rem'};
       background-color: ${theme.colors.surface.background.gray.subtle};
       border-radius: ${
         context.viewMode === 'story'
           ? `${theme.border.radius.none}px`
           : `${theme.border.radius.medium}px`
       };
+      
+      @media (max-width: 768px) {
+        padding: ${hasFullPageExampleStories(context) ? '0rem' : '12px'};
+      }
     `,
 );
 
@@ -180,15 +199,18 @@ export const decorators = [
     return (
       <ErrorBoundary>
         <GlobalStyle />
-        <BladeProvider
-          key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
-          themeTokens={getThemeTokens()}
-          colorScheme={context.globals.colorScheme}
-        >
-          <StoryCanvas context={context}>
-            <Story />
-          </StoryCanvas>
-        </BladeProvider>
+        {/* strict in LazyMotion will make sure we don't use excessive `motion` component in blade components and instead use light weight `m` */}
+        <LazyMotion strict features={domMax}>
+          <BladeProvider
+            key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+            themeTokens={getThemeTokens()}
+            colorScheme={context.globals.colorScheme}
+          >
+            <StoryCanvas context={context}>
+              <Story />
+            </StoryCanvas>
+          </BladeProvider>
+        </LazyMotion>
       </ErrorBoundary>
     );
   },
@@ -228,7 +250,6 @@ export const globalTypes = {
       showName: true,
     },
   },
-  // TODO: Rebranding - Uncomment this when we fix white-labeling
   brandColor: {
     name: 'Brand Color',
     description: 'Brand Color (You can pass any valid color to BladeProvider)',
