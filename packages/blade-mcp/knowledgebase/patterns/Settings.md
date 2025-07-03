@@ -428,25 +428,6 @@ This implementation provides a user-friendly overview of all available settings 
    - Proper spacing for content
    - Accessible link structure
 
-3. **Visual Elements**
-   - Category illustrations
-   - Gradient background effects
-   - Consistent typography scale
-   - Clear color contrast
-   - Proper spacing hierarchy
-
-4. **Navigation**
-   - Quick access links for each category
-   - Clear link labeling
-   - Proper routing integration
-   - Consistent link styling
-
-5. **Accessibility**
-   - Semantic HTML structure
-   - Proper heading hierarchy
-   - Alt text for images
-   - Color contrast compliance
-   - Keyboard navigation support
 
 The Settings page component demonstrates best practices for:
 - Grid-based layouts
@@ -765,28 +746,13 @@ This implementation can be used as a template for creating other settings detail
    - Consistent typography
    - Proper spacing between elements
 
-4. **Interactive Elements**
-   - Edit buttons for modifiable fields
-   - Toggle switches for features
-   - Back navigation link
-   - Proper hover states
-
-5. **Accessibility**
-   - Semantic HTML structure
-   - Proper heading hierarchy
-   - Descriptive labels
-   - Keyboard navigation support
-   - ARIA labels for interactive elements
 
 The Settings Detail page pattern demonstrates best practices for:
 - Detailed settings organization
 - Form layout and structure
-- Interactive element placement
 - Responsive design
-- Accessibility
 - Component composition
 - Visual hierarchy
-- Navigation patterns
 
 ### Pattern Components
 
