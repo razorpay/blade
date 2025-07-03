@@ -112,7 +112,6 @@ type TestimonialData = {
   name: string;
   role: string;
   company: string;
-  truncateQuotes?: number;
 };
 
 const testimonialData: TestimonialData[] = [
@@ -212,7 +211,7 @@ const TestimonialCard = ({
   role,
   company,
   truncateQuotes,
-}: TestimonialData): React.ReactElement => {
+}: TestimonialData & { truncateQuotes?: number }): React.ReactElement => {
   return (
     <Card height="100%">
       <CardBody height="100%">
