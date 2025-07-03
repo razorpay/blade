@@ -140,6 +140,39 @@ export const bladeThemeData = {
     'Modal/Footer': {
       key: '3a215359b6cbc947ed0da9d615147e5df1b165d6',
     },
+    'Full Page Modal': {
+      key: '1dfe7ab0e285980e220a2e78e44b883d97f17a84',
+    },
+    'Full Page Modal/Header': {
+      key: 'f991358aabdfe3a26fa9358edff89cc42d5529d9',
+    },
+    'Full Page Modal/Leading Item': {
+      key: '972dc84e31563a45be5f20fd8f940b7e1a2b2b5d',
+    },
+    'Full Page Modal/Supporting Item': {
+      key: 'f4180f4d05fabc9c3c73f70b717617d20c25d19d',
+    },
+    'Full Page Modal/Step Heading': {
+      key: '7f761a81adef1803273dfdff9b99b5cc64cfa1d3',
+    },
+    'Full Page Modal/Footer': {
+      key: 'b4b2615509712d5e02692630d5e6a3ec1937ec4e',
+    },
+    'Preview Pane': {
+      key: 'b719ccc157afbd4ac8de3b7ebccf59a582a07f00',
+    },
+    'Preview Pane/Header': {
+      key: '340970265e1784ef676d23faaef83048f89310c8',
+    },
+    'Preview Pane/Footer': {
+      key: 'b54b83002c286b5247c2c5bc4f48115e55f50975',
+    },
+    'Preview Pane/Controls': {
+      key: '0300f06d4c884f03bfd9606b5a9d713ca245665c',
+    },
+    'Image Placeholder': {
+      key: '41005e0e9f5194725f2fad0ccd934dc6fc1c2cf2',
+    },
     Spacer: {
       key: '32fe4cbbe78df114379f99b331eb210b8f481a68',
     },
@@ -287,6 +320,29 @@ export const bladeThemeData = {
     },
     Pagination: {
       key: '28bda99a354011886eafe8fab61bfea9bf0614de',
+    },
+
+    // Filter Group
+    'Table Filter': {
+      key: '158f3e6965d2ee25935c08cf3051c5c4e4ed3285',
+    },
+    'Table Filter Menu': {
+      key: 'b66c2bd5f64a32e28cb3000f811e2d005432570f',
+    },
+    'Quick Filter Slot': {
+      key: '4bc1101c97c5b924ccdc4833fd32e81b86ef85bb',
+    },
+    'Quick Filter': {
+      key: 'e9ee018b583a0e732f5b91dd6b5e43a95e683f6d',
+    },
+    'Quick Filter Group': {
+      key: '822b63e38215900a58e3d44e0307e00f94738301',
+    },
+    'Filter Panel': {
+      key: '12b53cacf172e1ea76795772a1925f9e9fe0b4be',
+    },
+    'Filter Group': {
+      key: '231c3ec789b2fc20d36406897e657164d7c1c836',
     },
 
     // Spotlight
@@ -1578,6 +1634,7 @@ export const bladeThemeData = {
     'Display/SmallMedium': 'S:eac1051691e134a70334412c9a07f01d3206e06d',
     'Display/SmallRegular': 'S:049b37aef87a7785518cd103dfb004daa0c6b3d1',
     'Heading/2XLargeSemibold': 'S:a712040802b52d03525a5a10b314468dc67650c7',
+    'Heading/2XLargeMedium': 'S:45bf1f3bb26086e9b30289efcbf5a9224705b5b6', // This will be changed and moved to display in future
     'Heading/2XLargeRegular': 'S:3054432f0ddcd5e135d11ada4782c5431c2615a3',
     'Heading/XLargeSemibold': 'S:08f7bc129959115212eba43bc8e0e2d7d8644df6',
     'Heading/XLargeRegular': 'S:f51cb18815b5de98ab4c3ad8e38c04e20e47fbb4',
@@ -1638,6 +1695,10 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components.Carousel,
   bladeThemeData.components.Modal,
   bladeThemeData.components['Modal/Footer'],
+  bladeThemeData.components['Full Page Modal'],
+  bladeThemeData.components['Full Page Modal/Leading Item'],
+  bladeThemeData.components['Preview Pane'],
+  bladeThemeData.components['Preview Pane/Footer'],
   bladeThemeData.components.Popover,
   bladeThemeData.components['Spotlight Popover'],
   bladeThemeData.components.Collapsible,
