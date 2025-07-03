@@ -42,7 +42,7 @@ const SelectorGroupField = ({
         role,
         labelledBy,
       })}
-      alignItems={componentName === 'chip-group' && isLabelLeftPositioned ? 'center' : undefined}
+      alignItems={componentName === 'chip-group' && isLabelLeftPositioned ? 'baseline' : undefined}
       {...metaAttribute({ name: componentName, testID })}
       {...makeAnalyticsAttribute(props)}
     >

@@ -2,7 +2,6 @@ import React from 'react';
 import {
   labelLeftMarginRight,
   labelMarginBottom,
-  labelMarginBottomInChipGroup,
   labelOptionalIndicatorTextSize,
   labelTextSize,
   labelWidth,
@@ -11,7 +10,6 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { getPlatformType, makeSize, useBreakpoint } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
@@ -30,10 +28,6 @@ type CommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-  /**
-   * Name of the component that the label is inside
-   */
-  componentName?: 'chip-group' | 'checkbox-group' | 'radio-group' | 'file-upload';
 };
 
 type LabelProps = CommonProps & {
@@ -72,7 +66,6 @@ const FormLabel = ({
   id,
   htmlFor,
   size = 'medium',
-  componentName,
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -82,16 +75,6 @@ const FormLabel = ({
   let necessityLabel: React.ReactNode = null;
 
   const isLabelLeftPositioned = position === 'left' && isDesktop;
-
-  const textNodeContainerMarginBottom = (): SpacingValueType | undefined => {
-    if (isLabelLeftPositioned && componentName === 'chip-group') {
-      return labelMarginBottomInChipGroup[size];
-    }
-    if (isLabelLeftPositioned) {
-      return undefined;
-    }
-    return labelMarginBottom[size];
-  };
 
   if (necessityIndicator === 'optional') {
     necessityLabel = (
@@ -175,7 +158,9 @@ const FormLabel = ({
       id={id}
       {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
-      <BaseBox marginBottom={textNodeContainerMarginBottom()}>{textNode}</BaseBox>
+      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}>
+        {textNode}
+      </BaseBox>
     </Component>
   );
 };

@@ -88,7 +88,6 @@ const _ChipGroup = (
               id={ids.labelId}
               accessibilityText={accessibilityText && `,${accessibilityText}`}
               size={chipGroupLabelSizeTokens[size]}
-              componentName="chip-group"
             >
               {label}
             </FormLabel>
