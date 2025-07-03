@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.1.2
+
+### Patch Changes
+
+- f0bf2e774: feat: add settings pattern docs
+
 ## 1.1.1
 
 ### Patch Changes
