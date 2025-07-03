@@ -741,6 +741,8 @@ export const SettingsDetailPage = (): React.ReactElement => {
   );
 };
 
+```
+
 This implementation can be used as a template for creating other settings detail pages, ensuring consistency across the application while maintaining a user-friendly and accessible interface.
 
 ### Key Features
