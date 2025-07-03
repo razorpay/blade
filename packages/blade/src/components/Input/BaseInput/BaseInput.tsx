@@ -361,6 +361,7 @@ type BaseInputCommonProps = FormInputLabelProps &
      *
      * @default undefined
      */
+    tabIndex?: number;
 
     /*
      * Gap between leading and prefix
