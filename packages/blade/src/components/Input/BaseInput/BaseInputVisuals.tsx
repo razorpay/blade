@@ -32,6 +32,8 @@ type InputVisuals = Pick<
   | 'successText'
 > & {
   size: NonNullable<BaseInputProps['size']>;
+} & {
+  _gapBetweenLeadingAndPrefix?: SpacingValueType;
 };
 
 const getVisualContainerStyles = ({
@@ -64,10 +66,18 @@ const textSize = {
 const getPrefixStyles = ({
   hasLeadingIcon,
   hasPrefix,
+  _gapBetweenLeadingAndPrefix,
 }: {
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
+  _gapBetweenLeadingAndPrefix?: SpacingValueType;
 }): Pick<BaseBoxProps, 'paddingLeft'> => {
+  if (_gapBetweenLeadingAndPrefix) {
+    return {
+      paddingLeft: _gapBetweenLeadingAndPrefix,
+    };
+  }
+
   if (hasPrefix && hasLeadingIcon) {
     return {
       paddingLeft: 'spacing.3',
@@ -259,6 +269,7 @@ export const BaseInputVisuals = ({
   errorText,
   successText,
   trailingButton: TrailingButton,
+  _gapBetweenLeadingAndPrefix,
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -328,7 +339,7 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasPrefix ? (
-          <BaseBox {...getPrefixStyles({ hasLeadingIcon, hasPrefix })}>
+          <BaseBox {...getPrefixStyles({ hasLeadingIcon, hasPrefix, _gapBetweenLeadingAndPrefix })}>
             <Text
               size={textSize[size]}
               variant="body"

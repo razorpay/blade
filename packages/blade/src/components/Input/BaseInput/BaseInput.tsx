@@ -58,6 +58,7 @@ import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
+import type { SpacingValueType } from '~components/Box/BaseBox/types';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -360,7 +361,12 @@ type BaseInputCommonProps = FormInputLabelProps &
      *
      * @default undefined
      */
-    tabIndex?: number;
+
+    /*
+     * Gap between leading and prefix
+     * @private
+     */
+    _gapBetweenLeadingAndPrefix?: SpacingValueType;
   } & TestID &
   Platform.Select<{
     native: {
@@ -864,6 +870,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingDropDown,
     labelSuffix,
     labelTrailing,
+    _gapBetweenLeadingAndPrefix,
     ...rest
   },
   ref,
@@ -1037,6 +1044,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               isDisabled={_isDisabled}
               leadingInteractionElement={leadingInteractionElement}
               leadingDropDown={leadingDropDown}
+              _gapBetweenLeadingAndPrefix={_gapBetweenLeadingAndPrefix}
             />
             <BaseInputTagSlot
               renderAs={as}
