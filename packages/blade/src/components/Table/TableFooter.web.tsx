@@ -76,7 +76,9 @@ const TableFooterRow = assignWithoutSideEffects(_TableFooterRow, {
   componentId: ComponentIds.TableFooterRow,
 });
 
-const StyledFooterCell = styled(FooterCell)<{
+const StyledFooterCell = styled(FooterCell).withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$') && prop !== 'theme',
+})<{
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $textAlign?: string;
@@ -107,13 +109,25 @@ const StyledFooterCell = styled(FooterCell)<{
 const _TableFooterCell = ({
   children,
   textAlign,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableFooterCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { backgroundColor, rowDensity } = useTableContext();
 
+  const gridStyle: React.CSSProperties = {};
+  if (gridRowStart && gridRowEnd) {
+    gridStyle.gridRow = `${gridRowStart} / ${gridRowEnd}`;
+  }
+
   return (
     <StyledFooterCell
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
+      style={gridStyle}
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
       $textAlign={textAlign}
