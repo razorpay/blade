@@ -1,5 +1,6 @@
 import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { BoxProps } from '~components/Box';
 
 type ListViewCommonProps = {
   children: React.ReactNode;
@@ -47,6 +48,26 @@ type ListViewFilterProps = {
    * you only need this if quick filters are controlled.
    */
   selectedFiltersCount?: number;
+  /**
+   * searchTrailing : trailing element for search input
+   */
+  searchTrailing?: React.ReactNode;
+  /**
+   * showSearchIcon : show search icon in search input
+   */
+  showSearchIcon?: boolean;
+  /**
+   * searchWidth : width of search input
+   */
+  searchContainerWidth?: BoxProps['width'];
+  /**
+   * showSearchButton : show search button in search input
+   */
+  showSearchButton?: boolean;
+  /**
+   * onSearchButtonClick : onClick handler for search button
+   */
+  onSearchButtonClick?: () => void;
 } & TestID &
   DataAnalyticsAttribute;
 
