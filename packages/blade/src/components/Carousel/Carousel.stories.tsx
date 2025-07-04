@@ -213,7 +213,7 @@ const TestimonialCard = ({
   truncateQuotes,
 }: TestimonialData & { truncateQuotes?: number }): React.ReactElement => {
   return (
-    <Card height="100%">
+    <Card height="100%" marginBottom="spacing.4">
       <CardBody height="100%">
         <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
           <QuoteSvg />
@@ -578,7 +578,7 @@ const InteractiveCarouselTestimonialTemplate: StoryFn<typeof CarouselComponent> 
 
 export const WithInteractiveCards = InteractiveCarouselTestimonialTemplate.bind({});
 
-export const PeekBehavior: StoryFn<typeof CarouselComponent> = (props) => {
+export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" padding="spacing.4" width="100%">
       <Heading size="large">Peek Behavior - showPeek: true</Heading>
