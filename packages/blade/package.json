@@ -130,7 +130,8 @@
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
     "generate-docs-lockfile": "node ./scripts/generateDocsLockFile.mjs",
-    "generate-icons": "node ./scripts/generateIcons.mjs"
+    "generate-icons": "node ./scripts/generateIcons.mjs",
+    "fetch-icons": "node ./scripts/getSvgFromFigma.js"
   },
   "dependencies": {
     "@babel/runtime": "7.20.0",
