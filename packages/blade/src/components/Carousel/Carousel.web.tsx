@@ -247,7 +247,6 @@ const _Carousel = (
     navigationButtonPosition = 'bottom',
     children,
     shouldAddStartEndSpacing = false,
-    snapAlign = 'start',
     carouselItemWidth,
     scrollOverlayColor,
     accessibilityLabel,
@@ -259,6 +258,7 @@ const _Carousel = (
     defaultActiveSlide,
     activeSlide: activeSlideProp,
     showNavigationButtons: showNavigationButtonProp = true,
+    snapAlign = 'start',
     ...rest
   }: CarouselProps,
   ref: React.Ref<BladeElementRef>,
@@ -297,7 +297,6 @@ const _Carousel = (
     _visibleItems = 1;
     navigationButtonPosition = 'bottom';
   }
-
   if (isResponsive) {
     _visibleItems = 1;
   }

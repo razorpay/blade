@@ -13,7 +13,6 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { makeMotionTime } from '~utils/makeMotionTime';
 
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
   Pick<CarouselItemProps, 'shouldHaveEndSpacing' | 'shouldHaveStartSpacing' | 'snapAlign'> & {
@@ -46,7 +45,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       // Responsive slider styles, a special case
       ...(isResponsive && {
         width: '100%',
-        scrollSnapAlign: isMobile || !shouldAddStartEndSpacing ? 'start' : snapAlign,
+        scrollSnapAlign: isMobile || !shouldAddStartEndSpacing ? 'start' : 'center',
         marginLeft: shouldHaveStartSpacing ? '40%' : 0,
       }),
     };
@@ -60,9 +59,6 @@ type CarouselItemProps = {
   shouldHaveStartSpacing?: boolean;
   shouldHaveEndSpacing?: boolean;
   snapAlign?: CarouselProps['snapAlign'];
-  isActive?: boolean;
-  isFirst?: boolean;
-  isLast?: boolean;
 } & DataAnalyticsAttribute;
 
 const _CarouselItem = ({

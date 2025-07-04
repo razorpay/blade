@@ -210,8 +210,7 @@ const TestimonialCard = ({
   longQuote,
   role,
   company,
-  truncateQuotes,
-}: TestimonialData & { truncateQuotes?: number }): React.ReactElement => {
+}: TestimonialData): React.ReactElement => {
   return (
     <Card height="100%" marginBottom="spacing.4">
       <CardBody height="100%">
@@ -221,7 +220,7 @@ const TestimonialCard = ({
             <Heading weight="semibold" size="large">
               {quote}
             </Heading>
-            <Text size="medium" marginTop="spacing.4" truncateAfterLines={truncateQuotes}>
+            <Text size="medium" marginTop="spacing.4">
               {longQuote}
             </Text>
           </Box>
@@ -597,7 +596,7 @@ export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
         >
           {testimonialData.map((testimonial) => (
             <CarouselItem key={testimonial.name}>
-              <TestimonialCard {...testimonial} truncateQuotes={3} />
+              <TestimonialCard {...testimonial} />
             </CarouselItem>
           ))}
         </CarouselComponent>
