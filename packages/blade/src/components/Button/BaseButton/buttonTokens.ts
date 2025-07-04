@@ -159,8 +159,8 @@ const textColor = (property: 'icon' | 'text') => {
 const typography: ButtonTypography = {
   fonts: {
     size: {
-      xsmall: 50,
-      small: 50,
+      xsmall: 75,
+      small: 75,
       medium: 100,
       large: 200,
     },

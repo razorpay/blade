@@ -3677,7 +3677,7 @@ exports[`<Button /> should render small size button 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
@@ -4254,7 +4254,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;

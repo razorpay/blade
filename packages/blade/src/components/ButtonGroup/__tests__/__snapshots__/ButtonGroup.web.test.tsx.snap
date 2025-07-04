@@ -1357,7 +1357,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
 .c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
@@ -1594,7 +1594,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
 .c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
