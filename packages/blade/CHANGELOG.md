@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.41.2
+
+### Patch Changes
+
+- 3bab8502b: feat(blade): add changeset icon
+
 ## 12.41.1
 
 ### Patch Changes
