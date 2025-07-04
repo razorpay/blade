@@ -44,6 +44,15 @@ type CarouselProps = {
    */
   shouldAddStartEndSpacing?: boolean;
   /**
+   * Controls how carousel items are aligned within the container.
+   * - 'start': Items align to the start (default behavior)
+   * - 'center': Items are centered with peek behavior (active item centered, adjacent items peek from sides)
+   * - 'end': Items align to the end
+   *
+   * @default 'start'
+   */
+  snapAlign?: 'start' | 'center' | 'end';
+  /**
    * If true, the carousel will automatically slide to the next slide, default interval is 6 seconds
    *
    * @default false

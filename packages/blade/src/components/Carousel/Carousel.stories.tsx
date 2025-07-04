@@ -212,7 +212,7 @@ const TestimonialCard = ({
   company,
 }: TestimonialData): React.ReactElement => {
   return (
-    <Card height="100%">
+    <Card height="100%" marginBottom="spacing.4">
       <CardBody height="100%">
         <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
           <QuoteSvg />
@@ -576,5 +576,33 @@ const InteractiveCarouselTestimonialTemplate: StoryFn<typeof CarouselComponent> 
 };
 
 export const WithInteractiveCards = InteractiveCarouselTestimonialTemplate.bind({});
+
+export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Heading size="large">Peek Behavior - showPeek: true</Heading>
+      <Text marginTop="spacing.2" color="surface.text.gray.muted">
+        Active card is centered with adjacent cards peeking from the sides.
+      </Text>
+      <Box marginTop="spacing.6">
+        <CarouselComponent
+          {...props}
+          navigationButtonPosition="bottom"
+          accessibilityLabel="Testimonials"
+          visibleItems={1}
+          shouldAddStartEndSpacing
+          carouselItemWidth={{ base: '80%', m: '80%' }}
+          snapAlign="center"
+        >
+          {testimonialData.map((testimonial) => (
+            <CarouselItem key={testimonial.name}>
+              <TestimonialCard {...testimonial} />
+            </CarouselItem>
+          ))}
+        </CarouselComponent>
+      </Box>
+    </Box>
+  );
+};
 
 export default meta;

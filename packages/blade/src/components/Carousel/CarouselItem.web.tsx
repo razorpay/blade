@@ -15,13 +15,20 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
-  Pick<CarouselItemProps, 'shouldHaveEndSpacing' | 'shouldHaveStartSpacing'> & {
+  Pick<CarouselItemProps, 'shouldHaveEndSpacing' | 'shouldHaveStartSpacing' | 'snapAlign'> & {
     isMobile?: boolean;
     isResponsive?: boolean;
   };
 
 const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
-  ({ visibleItems, isResponsive, shouldAddStartEndSpacing, shouldHaveStartSpacing, theme }) => {
+  ({
+    visibleItems,
+    isResponsive,
+    shouldAddStartEndSpacing,
+    shouldHaveStartSpacing,
+    theme,
+    snapAlign,
+  }) => {
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isMobile = matchedDeviceType === 'mobile';
 
@@ -33,7 +40,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       flexShrink: 0,
       width: calculatedWidth,
       minHeight: '100%',
-      scrollSnapAlign: 'start',
+      scrollSnapAlign: snapAlign,
 
       // Responsive slider styles, a special case
       ...(isResponsive && {
@@ -51,6 +58,7 @@ type CarouselItemProps = {
   children: React.ReactNode;
   shouldHaveStartSpacing?: boolean;
   shouldHaveEndSpacing?: boolean;
+  snapAlign?: CarouselProps['snapAlign'];
 } & DataAnalyticsAttribute;
 
 const _CarouselItem = ({
@@ -59,6 +67,7 @@ const _CarouselItem = ({
   shouldHaveEndSpacing,
   id,
   index,
+  snapAlign,
   ...rest
 }: CarouselItemProps): React.ReactElement => {
   const itemRef = React.useRef<HTMLDivElement>(null);
@@ -89,6 +98,7 @@ const _CarouselItem = ({
       shouldAddStartEndSpacing={shouldAddStartEndSpacing}
       shouldHaveStartSpacing={shouldHaveStartSpacing}
       shouldHaveEndSpacing={shouldHaveEndSpacing}
+      snapAlign={snapAlign}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
