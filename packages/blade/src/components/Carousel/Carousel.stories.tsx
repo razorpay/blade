@@ -588,9 +588,12 @@ export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
       <Box marginTop="spacing.6">
         <CarouselComponent
           {...props}
-          showPeek={true}
-          navigationButtonPosition="side"
+          navigationButtonPosition="bottom"
           accessibilityLabel="Testimonials"
+          visibleItems={1}
+          shouldAddStartEndSpacing
+          carouselItemWidth={{ base: '80%', m: '80%' }}
+          snapAlign="center"
         >
           {testimonialData.map((testimonial) => (
             <CarouselItem key={testimonial.name}>

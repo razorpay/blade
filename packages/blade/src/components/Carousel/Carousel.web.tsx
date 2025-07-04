@@ -108,8 +108,7 @@ const CarouselContainer = styled(BaseBox)<{
   scrollOverlayColor: CarouselProps['scrollOverlayColor'];
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
-  showPeek?: boolean;
-}>(({ theme, showOverlay, scrollOverlayColor, isScrollAtStart, isScrollAtEnd, showPeek }) => {
+}>(({ theme, showOverlay, scrollOverlayColor, isScrollAtStart, isScrollAtEnd }) => {
   const gradientStop1: string = getIn(theme.colors, scrollOverlayColor!);
   const gradientStop2 = 'hsla(0, 0%, 100%, 0)';
 
@@ -142,12 +141,6 @@ const CarouselContainer = styled(BaseBox)<{
     '&::-webkit-scrollbar': {
       display: 'none',
     },
-
-    // Align items to center when peek is enabled
-    ...(showPeek && {
-      alignItems: 'center',
-    }),
-
     ...(showOverlay && {
       '&::before': {
         ...overlayCommonStyle,
@@ -178,8 +171,7 @@ type CarouselBodyProps = {
   carouselItemAlignment: CarouselProps['carouselItemAlignment'];
   accessibilityLabel?: string;
   startEndMargin: number;
-  showPeek?: boolean;
-  activeSlide?: number;
+  snapAlign?: CarouselProps['snapAlign'];
 };
 
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
@@ -195,8 +187,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       carouselItemAlignment,
       accessibilityLabel,
       startEndMargin,
-      showPeek,
-      activeSlide,
+      snapAlign,
     },
     ref,
   ) => {
@@ -206,11 +197,10 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         ref={ref}
         showOverlay={Boolean(scrollOverlayColor)}
         scrollOverlayColor={scrollOverlayColor}
-        gap={showPeek ? 'spacing.3' : { base: 'spacing.4', m: 'spacing.5' }}
+        gap={{ base: 'spacing.4', m: 'spacing.5' }}
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
         alignItems={carouselItemAlignment}
-        showPeek={showPeek}
         {...makeAccessible({
           role: 'group',
           roleDescription: 'carousel',
@@ -220,10 +210,6 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         {React.Children.map(children, (child, index) => {
           const shouldHaveStartSpacing = shouldAddStartEndSpacing && index === 0;
           const shouldHaveEndSpacing = shouldAddStartEndSpacing && index === totalSlides - 1;
-          const isActive = showPeek ? index === activeSlide : false;
-          const isFirst = index === 0;
-          const isLast = index === totalSlides - 1;
-
           const carouselItemNode: React.ReactElement = React.cloneElement(
             child as React.ReactElement,
             {
@@ -231,10 +217,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
               id: `${idPrefix}-carousel-item-${index}`,
               shouldHaveStartSpacing,
               shouldHaveEndSpacing,
-              showPeek,
-              isActive,
-              isFirst,
-              isLast,
+              snapAlign,
             },
           );
 
@@ -264,7 +247,7 @@ const _Carousel = (
     navigationButtonPosition = 'bottom',
     children,
     shouldAddStartEndSpacing = false,
-    showPeek = false,
+    snapAlign = 'start',
     carouselItemWidth,
     scrollOverlayColor,
     accessibilityLabel,
@@ -315,8 +298,7 @@ const _Carousel = (
     navigationButtonPosition = 'bottom';
   }
 
-  // Force single item display for peek behavior - only one card should be fully visible
-  if (isResponsive || showPeek) {
+  if (isResponsive) {
     _visibleItems = 1;
   }
 
@@ -442,9 +424,9 @@ const _Carousel = (
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
       let xOffset = 0.1;
-      // when the carousel is responsive & has spacing OR when peek is enabled
+      // when the carousel is responsive & has spacing OR when center aligned
       // we want to check the center of the screen
-      if ((isResponsive && shouldAddStartEndSpacing) || showPeek) {
+      if ((isResponsive && shouldAddStartEndSpacing) || snapAlign === 'center') {
         xOffset = 0.5;
       }
 
@@ -468,7 +450,7 @@ const _Carousel = (
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing, showPeek]);
+  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing, snapAlign]);
 
   // auto play
   useInterval(
@@ -590,8 +572,7 @@ const _Carousel = (
             ref={containerRef}
             carouselItemAlignment={carouselItemAlignment}
             accessibilityLabel={accessibilityLabel}
-            showPeek={showPeek}
-            activeSlide={activeSlide}
+            snapAlign={snapAlign}
           >
             {children}
           </CarouselBody>

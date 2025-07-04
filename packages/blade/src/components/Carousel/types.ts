@@ -44,12 +44,14 @@ type CarouselProps = {
    */
   shouldAddStartEndSpacing?: boolean;
   /**
-   * Enables peek behavior where the active card is centered with adjacent cards peeking from sides.
-   * This prop internally sets visibleItems to 1.
+   * Controls how carousel items are aligned within the container.
+   * - 'start': Items align to the start (default behavior)
+   * - 'center': Items are centered with peek behavior (active item centered, adjacent items peek from sides)
+   * - 'end': Items align to the end
    *
-   * @default false
+   * @default 'start'
    */
-  showPeek?: boolean;
+  snapAlign?: 'start' | 'center' | 'end';
   /**
    * If true, the carousel will automatically slide to the next slide, default interval is 6 seconds
    *
