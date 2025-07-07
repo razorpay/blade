@@ -57,6 +57,7 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
       const newDate = new Date(prevDate);
       if (changeValue === 'month') {
         newDate.setMonth(date.getMonth());
+        newDate.setFullYear(date.getFullYear());
       } else if (changeValue === 'year') {
         newDate.setFullYear(date.getFullYear());
       }
