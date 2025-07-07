@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.41.3
+
+### Patch Changes
+
+- 8fdc7e340: fix(blade): update month picker issue
+
 ## 12.41.2
 
 ### Patch Changes
