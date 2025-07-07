@@ -117,6 +117,7 @@ const BaseMotionEntryExit = ({
   }, [children.ref]);
 
   return (
+    //  @ts-expect-error AnimateWrapper might return undefined
     <AnimateWrapper>
       {isMounted ? (
         <BaseMotionBox
