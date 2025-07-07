@@ -76,7 +76,6 @@ const Stagger = ({
   };
 
   return (
-    //  @ts-expect-error AnimateWrapper might return undefined
     <AnimateWrapper>
       {isMounted ? (
         <BaseMotionBox

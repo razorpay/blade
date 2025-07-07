@@ -209,7 +209,6 @@ const ListViewFilters = ({
             )}
           </BaseBox>
         </BaseBox>
-        {/* @ts-expect-error AnimatePresence might return undefined */}
         <AnimatePresence>
           {showFilters && (
             <m.div

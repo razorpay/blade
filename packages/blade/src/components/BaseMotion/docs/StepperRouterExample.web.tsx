@@ -66,7 +66,6 @@ const StepperRouterExample = ({
       </Box>
 
       <Box marginLeft="400px" paddingX="spacing.6" paddingBottom="spacing.6">
-        {/* @ts-expect-error AnimatePresence might return undefined */}
         <AnimatePresence mode="wait">
           <Switch location={location} key={location.pathname}>
             <Route path="/onboarding/:id" component={routeComponent} />

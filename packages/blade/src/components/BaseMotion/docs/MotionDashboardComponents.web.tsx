@@ -365,7 +365,6 @@ export const DashboardWithRoutingExample = ({
                   padding="spacing.6"
                   backgroundColor="surface.background.gray.intense"
                 >
-                  {/* @ts-expect-error AnimatePresence might return undefined  */}
                   <AnimatePresence mode="wait">
                     <Switch location={location} key={location.pathname}>
                       <Route path="/app/:id" component={routeComponent} />
