@@ -18,10 +18,10 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
-      - name: Use Node v18
+      - name: Use Node v20
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 20
       - name: Pre-Generate Documentation Lock File
         run: yarn generate-docs-lockfile
       - name: Setup Cache & Install Dependencies
@@ -46,10 +46,10 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
-      - name: Use Node v18
+      - name: Use Node v20
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 20
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run Unit Tests
@@ -78,10 +78,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Use Node v18
+      - name: Use Node v20
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 20
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Download Coverage Reports
