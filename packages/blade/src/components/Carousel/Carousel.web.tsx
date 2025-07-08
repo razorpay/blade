@@ -172,6 +172,7 @@ type CarouselBodyProps = {
   accessibilityLabel?: string;
   startEndMargin: number;
   snapAlign?: CarouselProps['snapAlign'];
+  gap?: CarouselProps['gap'];
 };
 
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
@@ -188,6 +189,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       accessibilityLabel,
       startEndMargin,
       snapAlign,
+      gap,
     },
     ref,
   ) => {
@@ -197,7 +199,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         ref={ref}
         showOverlay={Boolean(scrollOverlayColor)}
         scrollOverlayColor={scrollOverlayColor}
-        gap={{ base: 'spacing.4', m: 'spacing.5' }}
+        gap={gap ?? { base: 'spacing.4', m: 'spacing.5' }}
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
         alignItems={carouselItemAlignment}
@@ -218,6 +220,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
               shouldHaveStartSpacing,
               shouldHaveEndSpacing,
               snapAlign,
+              gap,
             },
           );
 
@@ -258,7 +261,8 @@ const _Carousel = (
     defaultActiveSlide,
     activeSlide: activeSlideProp,
     showNavigationButtons: showNavigationButtonProp = true,
-    snapAlign = 'start',
+    snapAlign,
+    gap,
     ...rest
   }: CarouselProps,
   ref: React.Ref<BladeElementRef>,
@@ -572,6 +576,7 @@ const _Carousel = (
             carouselItemAlignment={carouselItemAlignment}
             accessibilityLabel={accessibilityLabel}
             snapAlign={snapAlign}
+            gap={gap}
           >
             {children}
           </CarouselBody>

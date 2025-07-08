@@ -53,6 +53,14 @@ type CarouselProps = {
    */
   snapAlign?: 'start' | 'center' | 'end';
   /**
+   * Sets the gap between carousel items.
+   *
+   * Only visible when more than 1 card is seen in viewport, otherwise has no effect.
+   *
+   * @default { base: 'spacing.4', m: 'spacing.5' }
+   */
+  gap?: BoxProps['gap'];
+  /**
    * If true, the carousel will automatically slide to the next slide, default interval is 6 seconds
    *
    * @default false
