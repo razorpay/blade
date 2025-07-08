@@ -46,6 +46,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
             theme,
             typeof gap === 'string' ? 'base' : matchedBreakpoint || 'base',
           ) || '0',
+          10,
         )
       : isMobile
       ? theme.spacing[4]
