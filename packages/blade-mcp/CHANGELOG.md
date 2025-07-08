@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.2.1
+
+### Patch Changes
+
+- 2dfa5355b: chore(blade-mcp): changelog tool prompt
+
 ## 1.2.0
 
 ### Minor Changes
