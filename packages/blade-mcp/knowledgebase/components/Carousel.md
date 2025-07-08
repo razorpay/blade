@@ -106,6 +106,18 @@ type CarouselProps = {
    * Callback when slide changes
    */
   onChange?: (index: number) => void;
+
+  /**
+   * Controls how carousel items are aligned within the container
+   * @default 'start'
+   */
+  snapAlign?: 'start' | 'center' | 'end';
+
+  /**
+   * Sets the gap between carousel items
+   * @default { base: 'spacing.4', m: 'spacing.5' }
+   */
+  gap?: BoxProps['gap'];
 } & StyledPropsBlade &
   TestID;
 
@@ -665,10 +677,10 @@ const CarouselWithPeekExample = () => {
         accessibilityLabel="Payment features with peek"
         visibleItems={1}
         carouselItemWidth={{ base: '80%', m: '80%' }}
-        shouldAddStartEndSpacing={true}
+        snapAlign="center"
+        gap="spacing.7"
         navigationButtonPosition="bottom"
         showIndicators={true}
-        snapAlign="center"
       >
         {features.map((feature) => (
           <CarouselItem key={feature.id}>
