@@ -11,11 +11,13 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import type { ButtonProps } from '~components/Button';
 import { Radio, RadioGroup } from '~components/Radio';
-import { MapIcon, CheckIcon } from '~components/Icons';
+import { MapIcon, CheckIcon, LockIcon } from '~components/Icons';
 import type { IconColors, IconComponent } from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Card, CardBody, CardHeaderIcon } from '~components/Card';
+import { OTPInput } from '~components/Input/OTPInput';
+import { Link } from '~components/Link';
 
 export default {
   title: 'Patterns/Modal',
@@ -278,7 +280,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         onDismiss={() => {
           setIsOpen(false);
         }}
-        size="large"
+        size="medium"
       >
         <ModalHeader>
           <Box padding="spacing.6">
@@ -353,3 +355,68 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
 
 export const FlowSelectionModal = FlowSelectionModalTemplate.bind({});
 FlowSelectionModal.storyName = 'Flow Selection Modal';
+
+const OTPModalTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Modal
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        size="small"
+      >
+        <ModalHeader />
+        <ModalBody spacing="spacing.0">
+          <Box
+            borderColor="surface.border.gray.muted"
+            backgroundColor="surface.background.gray.moderate"
+            width="fit-content"
+            padding="spacing.4"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            borderRadius="medium"
+          >
+            <LockIcon />
+          </Box>
+          <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
+            <Text size="large" weight="semibold">
+              2 Step Verification
+            </Text>
+            <Text size="small" weight="regular" color="surface.text.gray.subtle">
+              This action requires 2-step verification. A 6-digit OTP has been sent via SMS to
+              8757450923. The OTP will expire in 5 minutes.
+            </Text>
+          </Box>
+          <Box marginY="spacing.5">
+            <OTPInput label="Enter the code" otpLength={6} />
+          </Box>
+          <Box
+            marginTop="spacing.5"
+            display="flex"
+            flexDirection="row"
+            gap="spacing.2"
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <Text size="small" weight="regular" color="surface.text.gray.subtle">
+              Didn’t receive OTP?
+            </Text>
+            <Link href="https://www.google.com" size="small" weight="semibold">
+              Resend OTP
+            </Link>
+          </Box>
+        </ModalBody>
+        <ModalFooter>
+          <Button isFullWidth> Confirm </Button>
+        </ModalFooter>
+      </Modal>
+    </Box>
+  );
+};
+
+export const OTPModal = OTPModalTemplate.bind({});
+OTPModal.storyName = 'OTP Modal';
