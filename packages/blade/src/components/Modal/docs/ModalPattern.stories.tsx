@@ -5,19 +5,35 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
 import AlertPng from './assets/alert.png';
 import DonateNow from './assets/donatenow.png';
 import DonationsButton from './assets/donationButton.png';
+import FBIcon from './assets/fb.png';
 import PayNow from './assets/paynow.png';
+import TwitterIcon from './assets/twitter.png';
+import WhatsAppIcon from './assets/whatsapp.png';
+import InstagramIcon from './assets/ig.png';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import type { ButtonProps } from '~components/Button';
 import { Radio, RadioGroup } from '~components/Radio';
-import { MapIcon, CheckIcon, LockIcon } from '~components/Icons';
+import {
+  MapIcon,
+  CheckIcon,
+  LockIcon,
+  ShareIcon,
+  CopyIcon,
+  PhoneCallIcon,
+  PhoneIcon,
+  MailIcon,
+  FacebookIcon,
+} from '~components/Icons';
 import type { IconColors, IconComponent } from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Card, CardBody, CardHeaderIcon } from '~components/Card';
 import { OTPInput } from '~components/Input/OTPInput';
 import { Link } from '~components/Link';
+import { TextInput } from '~components/Input/TextInput';
+import { Divider } from '~components/Divider';
 
 export default {
   title: 'Patterns/Modal',
@@ -420,3 +436,150 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
 
 export const OTPModal = OTPModalTemplate.bind({});
 OTPModal.storyName = 'OTP Modal';
+
+const ShareModalTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Modal
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        size="small"
+      >
+        <ModalHeader />
+        <ModalBody spacing="spacing.0">
+          <Box
+            borderColor="surface.border.gray.muted"
+            backgroundColor="surface.background.gray.moderate"
+            width="fit-content"
+            padding="spacing.4"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            borderRadius="medium"
+          >
+            <ShareIcon />
+          </Box>
+          <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
+            <Text size="large" weight="semibold">
+              Share Payment Link
+            </Text>
+            <Text size="small" weight="regular" color="surface.text.gray.subtle">
+              Subtitle go here, support details helps your customers to easily reach out to you when
+              they face any
+            </Text>
+          </Box>
+          <Box
+            marginTop="spacing.5"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            gap="spacing.4"
+            width="100%"
+          >
+            <Box width="80%">
+              <TextInput value="https://www.google.com" label="" />
+            </Box>
+            <Box>
+              <Button icon={CopyIcon} iconPosition="left">
+                Copy
+              </Button>
+            </Box>
+          </Box>
+          <Box marginTop="spacing.5">
+            <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
+              <Text color="surface.text.gray.muted" size="small" weight="medium">
+                {' '}
+                Share Via{' '}
+              </Text>
+              <Box marginLeft="spacing.5" display="flex" flexDirection="row" gap="spacing.4">
+                <Box
+                  padding="6px"
+                  borderRadius="round"
+                  borderColor="surface.border.gray.muted"
+                  borderWidth="thicker"
+                  height="40px"
+                  width="40px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <img src={FBIcon} alt="Facebook" width="28px" height="28px" />
+                </Box>
+                <Box
+                  padding="6px"
+                  borderRadius="round"
+                  borderColor="surface.border.gray.muted"
+                  borderWidth="thicker"
+                  height="40px"
+                  width="40px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <img src={TwitterIcon} alt="Twitter" width="28px" height="28px" />
+                </Box>
+                <Box
+                  padding="6px"
+                  borderRadius="round"
+                  borderColor="surface.border.gray.muted"
+                  borderWidth="thicker"
+                  height="40px"
+                  width="40px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <img src={WhatsAppIcon} alt="WhatsApp" width="28px" height="28px" />
+                </Box>
+                <Box
+                  padding="6px"
+                  borderRadius="round"
+                  borderColor="surface.border.gray.muted"
+                  borderWidth="thicker"
+                  height="40px"
+                  width="40px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <img src={InstagramIcon} alt="WhatsApp" width="28px" height="28px" />
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            gap="spacing.5"
+            alignItems="center"
+            marginX="spacing.6"
+          >
+            <Divider />
+            <Text color="surface.text.gray.muted" size="small" weight="medium">
+              OR
+            </Text>
+            <Divider />
+          </Box>
+          <Box display="flex" flexDirection="column" gap="spacing.4">
+            <Text size="small" weight="medium" color="surface.text.gray.muted">
+              {' '}
+              Share via SMS or email
+            </Text>
+            <TextInput leadingIcon={PhoneIcon} placeholder="Enter your phone number" label="" />
+            <TextInput leadingIcon={MailIcon} placeholder="Enter Email" label="" />
+          </Box>
+        </ModalBody>
+        <ModalFooter>
+          <Button isFullWidth> Confirm </Button>
+        </ModalFooter>
+      </Modal>
+    </Box>
+  );
+};
+
+export const ShareModal = ShareModalTemplate.bind({});
+ShareModal.storyName = 'Share Modal';
