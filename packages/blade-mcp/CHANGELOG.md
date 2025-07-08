@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.2.0
+
+### Minor Changes
+
+- 6b4729f41: feat(blade-mcp): add changelog tool
+
 ## 1.1.2
 
 ### Patch Changes
