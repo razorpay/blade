@@ -629,6 +629,8 @@ export default AutoPlayProductCarouselExample;
 
 This example demonstrates a carousel with peek behavior where the active card is centered with adjacent cards visible on the sides.
 
+You can achieve peek behavior by setting `visibleItems` to 1, adding `carouselItemWidth` to be less than 100% (eg: 80%), setting `snapAlign` to "center", and adding `gap` for spacing between items.
+
 ```tsx
 import React from 'react';
 import {

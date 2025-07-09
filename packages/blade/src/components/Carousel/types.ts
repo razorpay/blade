@@ -50,6 +50,21 @@ type CarouselProps = {
    * - 'end': Items align to the end
    *
    * @default 'start'
+   *
+   * @example
+   * ```jsx
+   * // Basic peek behavior with centered alignment
+   * <Carousel
+   *   visibleItems={1}
+   *   carouselItemWidth="80%"
+   *   snapAlign="center"
+   *   gap="spacing.5"
+   * >
+   *   <CarouselItem>Card 1</CarouselItem>
+   *   <CarouselItem>Card 2</CarouselItem>
+   *   <CarouselItem>Card 3</CarouselItem>
+   * </Carousel>
+   * ```
    */
   snapAlign?: 'start' | 'center' | 'end';
   /**

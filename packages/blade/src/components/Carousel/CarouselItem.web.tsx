@@ -39,6 +39,8 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
     });
     const isMobile = matchedDeviceType === 'mobile';
 
+    // Resolve gap value: convert spacing token to pixels or use default spacing
+    // Default: spacing.4 (12px) on mobile, spacing.5 (16px) on desktop
     const resolvedGap = gap
       ? parseInt(
           getSpacingValue(
@@ -52,6 +54,8 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       ? theme.spacing[4]
       : theme.spacing[5];
 
+    // Calculate item width: (containerWidth / numberOfItems) - (totalGapSpace / numberOfItems)
+    // This ensures each item gets equal width while accounting for gaps between items
     const calculatedWidth = `calc(100% / ${visibleItems!} - ${resolvedGap}px * (${visibleItems} - 1) / ${visibleItems})`;
     const calculatedMarginLeft = shouldHaveStartSpacing
       ? `calc(${calculatedWidth} + ${resolvedGap}px)`
