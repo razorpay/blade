@@ -53,10 +53,6 @@ type ListViewFilterProps = {
    */
   searchTrailing?: React.ReactNode;
   /**
-   * showSearchIcon : show search icon in search input
-   */
-  showSearchIcon?: boolean;
-  /**
    * searchWidth : width of search input
    */
   searchContainerWidth?: BoxProps['width'];
@@ -64,10 +60,7 @@ type ListViewFilterProps = {
    * showSearchButton : show search button in search input
    */
   showSearchButton?: boolean;
-  /**
-   * onSearchButtonClick : onClick handler for search button
-   */
-  onSearchButtonClick?: () => void;
+
 } & TestID &
   DataAnalyticsAttribute;
 

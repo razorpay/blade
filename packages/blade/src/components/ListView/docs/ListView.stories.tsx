@@ -1921,7 +1921,6 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
     <BaseBox height="100%">
       <ListView>
         <ListViewFilters
-          showSearchIcon={false}
           searchContainerWidth="400px"
           searchTrailing={
             <Dropdown>
@@ -1931,8 +1930,8 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
               />
               <DropdownOverlay>
                 <ActionList>
-                  <ActionListItem title="Additional Item 1" value="additional-1" />
-                  <ActionListItem title="Additional Item 2" value="additional-2" />
+                  <ActionListItem title="All" value="additional-1" />
+                  <ActionListItem title="Some other" value="additional-2" />
                 </ActionList>
               </DropdownOverlay>
             </Dropdown>

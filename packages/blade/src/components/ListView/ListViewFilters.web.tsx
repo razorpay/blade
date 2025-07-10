@@ -6,7 +6,7 @@ import { ListViewFiltersProvider } from './ListViewFiltersContext.web';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import { FilterIcon, SearchIcon } from '~components/Icons';
+import { FilterIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Counter } from '~components/Counter';
 import type { BoxProps } from '~components/Box';
@@ -72,10 +72,7 @@ const ListViewFilters = ({
   onSearchClear,
   selectedFiltersCount = 0,
   searchTrailing,
-  showSearchIcon,
   searchContainerWidth = '256px',
-  showSearchButton = false,
-  onSearchButtonClick,
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
   const [shouldShowDecorationInQuickFilters, setShouldShowDecorationInQuickFilters] = useState(
@@ -114,30 +111,15 @@ const ListViewFilters = ({
       }}
     >
       {isMobile && showSearchInput && (
-        <Box display="flex" gap="spacing.2">
-          <Box width="100%">
-            <SearchInput
-              label=""
-              value={searchValue}
-              placeholder={searchValuePlaceholder}
-              name={searchNameValue || searchId}
-              onChange={({ name, value }) => onSearchChange?.({ name, value })}
-              onClearButtonClick={onSearchClear}
-              trailing={searchTrailing}
-              showSearchIcon={showSearchIcon}
-            />
-          </Box>
-          {showSearchButton && (
-            <Button
-              variant="tertiary"
-              size="medium"
-              color="primary"
-              icon={SearchIcon}
-              accessibilityLabel="Search"
-              onClick={onSearchButtonClick}
-            />
-          )}
-        </Box>
+        <SearchInput
+          label=""
+          value={searchValue}
+          placeholder={searchValuePlaceholder}
+          name={searchNameValue || searchId}
+          onChange={({ name, value }) => onSearchChange?.({ name, value })}
+          onClearButtonClick={onSearchClear}
+          trailing={searchTrailing}
+        />
       )}
       <BaseBox>
         <BaseBox
@@ -216,30 +198,17 @@ const ListViewFilters = ({
               </Box>
             ) : null}
             {!isMobile && showSearchInput && (
-              <Box width={searchContainerWidth as BoxProps['width']} display="flex" gap="spacing.2">
-                <Box width="100%">
-                  <SearchInput
-                    label=""
-                    value={searchValue}
-                    placeholder={searchValuePlaceholder}
-                    name={searchNameValue || searchId}
-                    onChange={({ name, value }) => onSearchChange?.({ name, value })}
-                    onClearButtonClick={onSearchClear}
-                    size="medium"
-                    trailing={searchTrailing}
-                    showSearchIcon={showSearchIcon}
-                  />
-                </Box>
-                {showSearchButton && (
-                  <Button
-                    variant="tertiary"
-                    size="medium"
-                    color="primary"
-                    icon={SearchIcon}
-                    accessibilityLabel="Search"
-                    onClick={onSearchButtonClick}
-                  />
-                )}
+              <Box width="256px">
+                <SearchInput
+                  label=""
+                  value={searchValue}
+                  placeholder={searchValuePlaceholder}
+                  name={searchNameValue || searchId}
+                  onChange={({ name, value }) => onSearchChange?.({ name, value })}
+                  onClearButtonClick={onSearchClear}
+                  size="medium"
+                  trailing={searchTrailing}
+                />
               </Box>
             )}
           </BaseBox>
