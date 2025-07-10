@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.41.4
+
+### Patch Changes
+
+- 66c599d1a: fix(blade): label postion in chip group
+
 ## 12.41.3
 
 ### Patch Changes
