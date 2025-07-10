@@ -70,6 +70,8 @@ const ListViewFilters = ({
   searchName,
   showQuickFilters,
   onShowQuickFiltersChange,
+  showFilters: showFiltersProp,
+  onShowFiltersChange,
   onSearchClear,
   selectedFiltersCount = 0,
   searchTrailing,
@@ -79,9 +81,9 @@ const ListViewFilters = ({
     false,
   );
   const [showFilters, setShowFilters] = useControllableState({
-    defaultValue: showQuickFilters,
-    value: showQuickFilters,
-    onChange: onShowQuickFiltersChange,
+    defaultValue: showQuickFilters || showFiltersProp,
+    value: showQuickFilters || showFiltersProp,
+    onChange: onShowQuickFiltersChange || onShowFiltersChange,
   });
   const [
     listViewSelectedFilters,

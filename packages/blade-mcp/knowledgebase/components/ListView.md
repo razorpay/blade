@@ -46,13 +46,12 @@ type ListViewFilterProps = {
   /**
    * it will show/hide the quick filters
    */
-  showQuickFilters?: boolean;
+  showFilters?: boolean;
   /**
-   * onChange handler for showQuickFilters
+   * onChange handler for showFilters
    */
-  onShowQuickFiltersChange?: (showQuickFilters: boolean) => void;
+  onShowFiltersChange?: (showFilters: boolean) => void;
   /**
-   * onChange handler for showQuickFilters
    * @default 0
    * you only need this if quick filters are controlled.
    */
@@ -565,8 +564,8 @@ function MultiSelectListViewExample() {
           searchName="multiSelectSearch"
           searchValuePlaceholder="Search payments"
           selectedFiltersCount={selectedQuickFilters.length}
-          showQuickFilters={showFilters}
-          onShowQuickFiltersChange={setShowFilters}
+          showFilters={showFilters}
+          onFiltersChange={setShowFilters}
         >
           {/* Filter chips and table similar to first example */}
         </ListViewFilters>

@@ -1924,13 +1924,25 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
           searchTrailing={
             <Dropdown>
               <InputDropdownButton
-                defaultValue="additional-1"
-                onChange={({ value }) => setMethodFilter(value)}
+                value={selectedQuickFilter}
+                onChange={({ value }) => {
+                  const quickFilterData = getQuickFilterData(data, value);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const dateRangeFilterData = getFilterRangeData(searchValueData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter(value);
+                }}
               />
               <DropdownOverlay>
                 <ActionList>
-                  <ActionListItem title="All" value="additional-1" />
-                  <ActionListItem title="Some other" value="additional-2" />
+                  {quickFilters.map((status, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={status}
+                      value={status}
+                      isSelected={selectedQuickFilter === status}
+                    />
+                  ))}
                 </ActionList>
               </DropdownOverlay>
             </Dropdown>
@@ -1987,7 +1999,6 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
             (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
             (selectedQuickFilter !== 'All' ? 1 : 0)
           }
-          showSearchButton
         >
           <FilterChipGroup
             onClearButtonClick={() => {
