@@ -9,6 +9,9 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Counter } from '~components/Counter';
 import { Tooltip } from '~components/Tooltip';
+import { Box } from '~components/Box';
+import { Button } from '~components/Button';
+import { Divider } from '~components/Divider';
 
 const Page = (): React.ReactElement => {
   return (
@@ -221,3 +224,67 @@ const QuickFiltersWithTooltip: StoryFn<typeof QuickFilterGroup> = () => {
 
 export const QuickFiltersWithTooltipStory = QuickFiltersWithTooltip.bind({});
 QuickFiltersWithTooltipStory.storyName = 'QuickFilters with Tooltip';
+
+const ChangeControlledQuickFilter: StoryFn<typeof QuickFilterGroup> = () => {
+  const [value, setValue] = React.useState<string | string[]>('');
+  const [multipleValue, setMultipleValue] = React.useState<string | string[]>([]);
+  console.log('value', value);
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.3">
+      <Box>
+        <Heading size="small">Single Quick Filters Value: {value}</Heading>
+        <Button onClick={() => setValue('Failed')}>Set Value</Button>
+      </Box>
+      <QuickFilterGroup
+        selectionType="single"
+        value={value}
+        onChange={({ values }) => setValue(values[0] ?? '')}
+      >
+        <QuickFilter
+          title="Captured"
+          value="Captured"
+          trailing={<Counter value={234} color="positive" />}
+        />
+        <QuickFilter
+          title="Failed"
+          value="Failed"
+          trailing={<Counter value={234} color="negative" />}
+        />
+        <QuickFilter
+          title="Pending"
+          value="Pending"
+          trailing={<Counter value={234} color="neutral" />}
+        />
+      </QuickFilterGroup>
+      <Divider />
+      <Box>
+        <Heading size="small">Multiple Quick Filters Value: {multipleValue}</Heading>
+        <Button onClick={() => setMultipleValue(['Failed', 'Pending'])}>Set Value</Button>
+      </Box>
+      <QuickFilterGroup
+        selectionType="multiple"
+        value={multipleValue}
+        onChange={({ values }) => setMultipleValue(values ?? [])}
+      >
+        <QuickFilter
+          title="Captured"
+          value="Captured"
+          trailing={<Counter value={234} color="positive" />}
+        />
+        <QuickFilter
+          title="Failed"
+          value="Failed"
+          trailing={<Counter value={234} color="negative" />}
+        />
+        <QuickFilter
+          title="Pending"
+          value="Pending"
+          trailing={<Counter value={234} color="neutral" />}
+        />
+      </QuickFilterGroup>
+    </Box>
+  );
+};
+
+export const ChangeControlledQuickFilterStory = ChangeControlledQuickFilter.bind({});
+ChangeControlledQuickFilterStory.storyName = 'Change Controlled QuickFilter';

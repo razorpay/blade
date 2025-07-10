@@ -18,7 +18,7 @@ const QuickFilterWrapper = ({
   if (selectionType === 'single') {
     return (
       <RadioGroup
-        value={selectedQuickFilters[0]}
+        value={selectedQuickFilters[0] ?? ''}
         onChange={({ value }) => {
           setSelectedQuickFilters(() => [value]);
         }}
