@@ -52,14 +52,6 @@ type ListViewFilterProps = {
    * searchTrailing : trailing element for search input
    */
   searchTrailing?: React.ReactNode;
-  /**
-   * searchWidth : width of search input
-   */
-  searchContainerWidth?: BoxProps['width'];
-  /**
-   * showSearchButton : show search button in search input
-   */
-  showSearchButton?: boolean;
 
 } & TestID &
   DataAnalyticsAttribute;
