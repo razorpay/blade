@@ -282,6 +282,7 @@ export const BaseInputVisuals = ({
     trailingDropDown,
     size,
   });
+  console.log('leadingIcon', LeadingIcon);
 
   const hasLeadingVisuals =
     hasLeadingInteractionElement || hasLeadingIcon || hasPrefix || hasLeadingDropDown;

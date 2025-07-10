@@ -323,6 +323,11 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   const hasTrailingInteractionElement = !_trailingIcon && !trailingDropdown && trailing;
 
+  console.log('leading', _leadingIcon);
+  console.log('trailing', _trailingIcon);
+  console.log('leadingIcon', leadingIcon);
+  console.log('trailingIcon', trailingIcon);
+
   const renderDropdown = (
     dropdown: React.ReactElement,
     isOpen: boolean,
