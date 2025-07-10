@@ -397,6 +397,15 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   };
   const hasTrailingDropDown = Boolean(trailingDropdown);
 
+  type InteractionContent = React.ReactElement | IconComponent | undefined;
+
+  const renderInteractionContent = (content: InteractionContent): ReactNode => {
+    if (!content) return null;
+    if (React.isValidElement(content)) return content;
+    if (typeof content === 'function') return React.createElement(content);
+    return null;
+  };
+
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
       return <Spinner accessibilityLabel="Loading Content" color="primary" />;
@@ -414,11 +423,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       return (
         <BaseBox display="flex" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" />
-          {React.isValidElement(trailing)
-            ? trailing
-            : typeof trailing === 'function'
-            ? React.createElement(trailing)
-            : null}
+          {renderInteractionContent(trailing)}
         </BaseBox>
       );
     }
@@ -428,15 +433,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     }
 
     if (hasTrailingInteractionElement) {
-      return React.isValidElement(trailing)
-        ? trailing
-        : typeof trailing === 'function'
-        ? React.createElement(trailing)
-        : null;
+      return renderInteractionContent(trailing);
     }
 
     return null;
   };
+
   return (
     <BaseInput
       id="textinput"
@@ -483,7 +485,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       leadingDropDown={renderLeadingDropDown}
       trailingDropDown={renderTrailingDropDown}
       leadingInteractionElement={
-        hasLeadingInteractionElement ? (leading as React.ReactElement) : null
+        hasLeadingInteractionElement ? renderInteractionContent(leading) : null
       }
       onChange={({ name, value }: { name?: string; value?: string }) => {
         if (showClearButton && value?.length) {
