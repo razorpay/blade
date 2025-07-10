@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import styled from 'styled-components';
 import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
@@ -20,6 +20,7 @@ import { useTheme } from '~components/BladeProvider';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
 import { Divider } from '~components/Divider';
+import { Dropdown } from '~components/Dropdown';
 
 const gradientOverlyContainerWidth = '21px'; // 20px + 1px divider width
 const gradientOverlyContainerHeight = '38px';
@@ -72,7 +73,6 @@ const ListViewFilters = ({
   onSearchClear,
   selectedFiltersCount = 0,
   searchTrailing,
-  searchContainerWidth = '256px',
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
   const [shouldShowDecorationInQuickFilters, setShouldShowDecorationInQuickFilters] = useState(
@@ -101,6 +101,9 @@ const ListViewFilters = ({
     }
     return 'auto';
   };
+
+  const isSearchTrailingDropDown =
+    React.isValidElement(searchTrailing) && searchTrailing.type === Dropdown;
 
   return (
     <ListViewFiltersProvider
@@ -198,7 +201,7 @@ const ListViewFilters = ({
               </Box>
             ) : null}
             {!isMobile && showSearchInput && (
-              <Box width="256px">
+              <Box width={isSearchTrailingDropDown ? '325px' : '256px'}>
                 <SearchInput
                   label=""
                   value={searchValue}
