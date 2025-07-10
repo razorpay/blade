@@ -9,6 +9,7 @@ import { makeSize } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 import type { IconComponent } from '~components/Icons';
+import { isIconComponent } from '~utils/isIconComponent';
 
 const SideNavItemContainer = styled(BaseBox)((props) => {
   return {
@@ -25,7 +26,7 @@ const SideNavItem = ({
   as = 'div',
   ...rest
 }: SideNavItemProps): React.ReactElement => {
-  const isIcon = typeof leading === 'function' && leading.name?.endsWith('Icon');
+  const isIcon = typeof leading === 'function' && isIconComponent(leading);
   const Icon: IconComponent | undefined = isIcon ? leading : undefined;
 
   return (

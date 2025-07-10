@@ -10,6 +10,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { isIconComponent } from '~utils/isIconComponent';
 
 const _AccordionItemHeader = ({
   title,
@@ -32,13 +33,7 @@ const _AccordionItemHeader = ({
     if (showNumberPrefix && typeof index === 'number') return true;
 
     // Check if leading is an Icon component (name ends with "Icon")
-    if (
-      leading &&
-      React.isValidElement(leading) &&
-      typeof leading.type === 'function' &&
-      leading.type.name?.endsWith('Icon')
-    )
-      return true;
+    if (leading && React.isValidElement(leading) && isIconComponent(leading)) return true;
 
     return false;
   }, [leading, showNumberPrefix, index]);
