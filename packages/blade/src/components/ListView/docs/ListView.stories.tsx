@@ -1921,7 +1921,6 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
     <BaseBox height="100%">
       <ListView>
         <ListViewFilters
-          searchContainerWidth="400px"
           searchTrailing={
             <Dropdown>
               <InputDropdownButton
