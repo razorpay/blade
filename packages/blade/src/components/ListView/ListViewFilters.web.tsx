@@ -203,7 +203,7 @@ const ListViewFilters = ({
               </Box>
             ) : null}
             {!isMobile && showSearchInput && (
-              <Box width={isSearchTrailingDropDown ? '325px' : '256px'}>
+              <Box width={isSearchTrailingDropDown ? '280px' : '208px'}>
                 <SearchInput
                   label=""
                   value={searchValue}
