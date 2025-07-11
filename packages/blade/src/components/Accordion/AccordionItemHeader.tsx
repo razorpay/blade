@@ -10,6 +10,17 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BoxProps } from '~components/Box';
+import { Box } from '~components/Box';
+import { makeSize } from '~utils/makeSize';
+import { size as sizeToken } from '~tokens/global';
+
+const getLeadingElementMaxHeightAndWidth = (
+  size: BaseHeaderProps['size'],
+): BoxProps['maxHeight'] => {
+  if (size === 'large') return makeSize(sizeToken['32']);
+  return makeSize(sizeToken['24']);
+};
 
 const _AccordionItemHeader = ({
   title,
@@ -27,35 +38,82 @@ const _AccordionItemHeader = ({
   const { size, showNumberPrefix, expandedIndex } = useAccordion();
   const { index, isDisabled } = useAccordionItemIndex();
 
+  const isLeadingIcon =
+    React.isValidElement(leading) &&
+    typeof leading.type === 'function' &&
+    leading.type.name?.endsWith('Icon');
+
   const isLeadingNumberOrIcon = React.useMemo(() => {
     // Check if leading is a number
     if (showNumberPrefix && typeof index === 'number') return true;
 
     // Check if leading is an Icon component (name ends with "Icon")
-    if (
-      leading &&
-      React.isValidElement(leading) &&
-      typeof leading.type === 'function' &&
-      leading.type.name?.endsWith('Icon')
-    )
-      return true;
+    if (isLeadingIcon) return true;
 
     return false;
-  }, [leading, showNumberPrefix, index]);
+  }, [showNumberPrefix, index, isLeadingIcon]);
+
+  const shouldAlignHeaderItemsInCenter = Boolean(
+    children || (Boolean(leading) && !isLeadingNumberOrIcon),
+  );
+  const trailingInteractionElement = React.useMemo(() => {
+    if (shouldAlignHeaderItemsInCenter) {
+      return (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+          alignSelf="center"
+        >
+          <CollapsibleChevronIcon
+            color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
+            size="large"
+          />
+        </Box>
+      );
+    }
+
+    return (
+      <CollapsibleChevronIcon
+        color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
+        size="large"
+      />
+    );
+  }, [shouldAlignHeaderItemsInCenter, isDisabled]);
+
+  const leadingElement = React.useMemo(() => {
+    if (showNumberPrefix && typeof index === 'number') {
+      return (
+        <Text size={size} weight="semibold" marginTop="-2px" as="span">
+          {index + 1}.
+        </Text>
+      );
+    }
+    if (leading) {
+      return (
+        <BaseBox
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          alignSelf="center"
+          marginRight={isLeadingIcon ? 'spacing.0' : 'spacing.3'}
+          marginBottom={makeSize(sizeToken['1'])}
+          maxHeight={getLeadingElementMaxHeightAndWidth(size)}
+          maxWidth={getLeadingElementMaxHeightAndWidth(size)}
+          overflow="hidden"
+        >
+          {leading}
+        </BaseBox>
+      );
+    }
+    return null;
+  }, [showNumberPrefix, index, leading, size, isLeadingIcon]);
 
   return (
     <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItemHeader })} flex="1">
       <BaseHeader
-        leading={
-          showNumberPrefix && typeof index === 'number' ? (
-            // we have to add -2px margin to align the number with title of BaseHeader
-            <Text size={size} weight="semibold" marginTop="-2px" as="span">
-              {index + 1}.
-            </Text>
-          ) : (
-            leading
-          )
-        }
+        leading={leadingElement}
         title={title}
         subtitle={subtitle}
         trailing={trailing}
@@ -72,12 +130,9 @@ const _AccordionItemHeader = ({
           thickness: 'thinner',
           marginX: 'spacing.5',
         }}
-        trailingInteractionElement={
-          <CollapsibleChevronIcon
-            color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
-            size="large"
-          />
-        }
+        trailingInteractionElement={trailingInteractionElement}
+        shouldHandlePositionOfDecoratorsInternally={!shouldAlignHeaderItemsInCenter}
+        shouldAlignTrailingElementToCenter={shouldAlignHeaderItemsInCenter}
         {...makeAnalyticsAttribute(rest)}
       >
         {children}
