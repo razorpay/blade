@@ -228,7 +228,6 @@ QuickFiltersWithTooltipStory.storyName = 'QuickFilters with Tooltip';
 const ChangeControlledQuickFilter: StoryFn<typeof QuickFilterGroup> = () => {
   const [value, setValue] = React.useState<string | string[]>('');
   const [multipleValue, setMultipleValue] = React.useState<string | string[]>([]);
-  console.log('value', value);
   return (
     <Box display="flex" flexDirection="column" gap="spacing.3">
       <Box>
