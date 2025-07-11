@@ -171,6 +171,8 @@ type CarouselBodyProps = {
   carouselItemAlignment: CarouselProps['carouselItemAlignment'];
   accessibilityLabel?: string;
   startEndMargin: number;
+  snapAlign?: CarouselProps['snapAlign'];
+  gap?: CarouselProps['gap'];
 };
 
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
@@ -186,6 +188,8 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       carouselItemAlignment,
       accessibilityLabel,
       startEndMargin,
+      snapAlign,
+      gap,
     },
     ref,
   ) => {
@@ -195,7 +199,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         ref={ref}
         showOverlay={Boolean(scrollOverlayColor)}
         scrollOverlayColor={scrollOverlayColor}
-        gap={{ base: 'spacing.4', m: 'spacing.5' }}
+        gap={gap ?? { base: 'spacing.4', m: 'spacing.5' }}
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
         alignItems={carouselItemAlignment}
@@ -215,6 +219,8 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
               id: `${idPrefix}-carousel-item-${index}`,
               shouldHaveStartSpacing,
               shouldHaveEndSpacing,
+              snapAlign,
+              gap,
             },
           );
 
@@ -255,6 +261,8 @@ const _Carousel = (
     defaultActiveSlide,
     activeSlide: activeSlideProp,
     showNavigationButtons: showNavigationButtonProp = true,
+    snapAlign,
+    gap,
     ...rest
   }: CarouselProps,
   ref: React.Ref<BladeElementRef>,
@@ -341,7 +349,7 @@ const _Carousel = (
 
     const carouselItemLeft =
       carouselItem.getBoundingClientRect().left -
-        containerRef.current.getBoundingClientRect().left ?? 0;
+      (containerRef.current.getBoundingClientRect().left ?? 0);
     const left = containerRef.current.scrollLeft + carouselItemLeft;
 
     containerRef.current.scroll({
@@ -419,9 +427,9 @@ const _Carousel = (
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
       let xOffset = 0.1;
-      // when the carousel is responsive & has spacing
+      // when the carousel is responsive & has spacing OR when center aligned
       // we want to check the center of the screen
-      if (isResponsive && shouldAddStartEndSpacing) {
+      if ((isResponsive && shouldAddStartEndSpacing) || snapAlign === 'center') {
         xOffset = 0.5;
       }
 
@@ -445,7 +453,7 @@ const _Carousel = (
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing]);
+  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing, snapAlign]);
 
   // auto play
   useInterval(
@@ -567,6 +575,8 @@ const _Carousel = (
             ref={containerRef}
             carouselItemAlignment={carouselItemAlignment}
             accessibilityLabel={accessibilityLabel}
+            snapAlign={snapAlign}
+            gap={gap}
           >
             {children}
           </CarouselBody>
