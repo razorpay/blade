@@ -73,6 +73,30 @@ type TableHeaderCellProps = {
   textAlign?: 'left' | 'center' | 'right';
 
   _hasPadding?: boolean;
+  /**
+   * Grid column start position (1-based). Used for CSS Grid column spanning.
+   * @example
+   * <TableHeaderCell gridColumnStart={1} gridColumnEnd={4}>Spans columns 1-3</TableHeaderCell>
+   */
+  gridColumnStart?: number;
+  /**
+   * Grid column end position (1-based). Used for CSS Grid column spanning.
+   * @example
+   * <TableHeaderCell gridColumnStart={1} gridColumnEnd={4}>Spans columns 1-3</TableHeaderCell>
+   */
+  gridColumnEnd?: number;
+  /**
+   * Grid row start position (1-based). Used for CSS Grid row spanning.
+   * @example
+   * <TableHeaderCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableHeaderCell>
+   */
+  gridRowStart?: number;
+  /**
+   * Grid row end position (1-based). Used for CSS Grid row spanning.
+   * @example
+   * <TableHeaderCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableHeaderCell>
+   */
+  gridRowEnd?: number;
 } & DataAnalyticsAttribute;
 
 type TableProps<Item> = {
@@ -271,6 +295,11 @@ type TableRowProps<Item> = {
   onClick?: ({ item }: { item: TableNode<Item> }) => void;
 
   hoverActions?: React.ReactElement;
+  /**
+   * The notShowBorderedRows prop determines whether the table should have bordered rows or not.
+   * The default value is `false`.
+   **/
+  notShowBorderedRows?: boolean;
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -299,6 +328,34 @@ type TableCellProps = {
    * @private
    */
   _hasPadding?: boolean;
+  /**
+   * Grid column start position (1-based). Used for CSS Grid column spanning.
+   * @example
+   * <TableCell gridColumnStart={1} gridColumnEnd={4}>Spans columns 1-3</TableCell>
+   */
+  gridColumnStart?: number;
+  /**
+   * Grid column end position (1-based). Used for CSS Grid column spanning.
+   * @example
+   * <TableCell gridColumnStart={1} gridColumnEnd={4}>Spans columns 1-3</TableCell>
+   */
+  gridColumnEnd?: number;
+  /**
+   * Grid row start position (1-based). Used for CSS Grid row spanning.
+   * @example
+   * <TableCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableCell>
+   */
+  gridRowStart?: number;
+  /**
+   * Grid row end position (1-based). Used for CSS Grid row spanning.
+   * @example
+   * <TableCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableCell>
+   */
+  gridRowEnd?: number;
+  /**
+   * The backgroundColor prop determines the background color of the table cell.
+   **/
+  backgroundColor?: TableBackgroundColors | 'transparent';
 } & DataAnalyticsAttribute;
 
 type TableEditableCellProps = Pick<
@@ -374,6 +431,30 @@ type TableFooterCellProps = {
    * The default value is `left`.
    **/
   textAlign?: 'left' | 'center' | 'right';
+  /**
+   * Grid column start position (1-based). Used for CSS Grid column spanning.
+   * @example
+   * <TableFooterCell gridColumnStart={1} gridColumnEnd={4}>Spans columns 1-3</TableFooterCell>
+   */
+  gridColumnStart?: number;
+  /**
+   * Grid column end position (1-based). Used for CSS Grid column spanning.
+   * @example
+   * <TableFooterCell gridColumnStart={1} gridColumnEnd={4}>Spans columns 1-3</TableFooterCell>
+   */
+  gridColumnEnd?: number;
+  /**
+   * Grid row start position (1-based). Used for CSS Grid row spanning.
+   * @example
+   * <TableFooterCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableFooterCell>
+   */
+  gridRowStart?: number;
+  /**
+   * Grid row end position (1-based). Used for CSS Grid row spanning.
+   * @example
+   * <TableFooterCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableFooterCell>
+   */
+  gridRowEnd?: number;
 } & DataAnalyticsAttribute;
 
 type TablePaginationCommonProps = {
