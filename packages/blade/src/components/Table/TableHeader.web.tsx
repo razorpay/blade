@@ -137,6 +137,10 @@ const _TableHeaderCell = ({
   headerKey,
   _hasPadding = true,
   textAlign,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableHeaderCellProps): React.ReactElement => {
   const {
@@ -149,14 +153,22 @@ const _TableHeaderCell = ({
   const isChildrenString = typeof children === 'string';
   const isSortable =
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
+
+  const hasRowSpan = Boolean(gridRowStart && gridRowEnd);
+  const gridRowValue = hasRowSpan ? `${gridRowStart} / ${gridRowEnd}` : undefined;
+
   return (
     <StyledHeaderCell
       tabIndex={0}
+      className={hasRowSpan ? 'has-row-spanning' : ''}
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
       $isSortable={isSortable}
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}
       $hasPadding={_hasPadding}
       $textAlign={textAlign}
+      style={{ gridRow: gridRowValue }}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);

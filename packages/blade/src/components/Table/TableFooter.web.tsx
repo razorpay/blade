@@ -107,16 +107,27 @@ const StyledFooterCell = styled(FooterCell)<{
 const _TableFooterCell = ({
   children,
   textAlign,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableFooterCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { backgroundColor, rowDensity } = useTableContext();
 
+  const hasRowSpan = Boolean(gridRowStart && gridRowEnd);
+  const gridRowValue = hasRowSpan ? `${gridRowStart} / ${gridRowEnd}` : undefined;
+
   return (
     <StyledFooterCell
+      className={hasRowSpan ? 'has-row-spanning' : ''}
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
       $textAlign={textAlign}
+      style={{ gridRow: gridRowValue }}
       {...metaAttribute({ name: MetaConstants.TableFooterCell })}
       {...makeAnalyticsAttribute(rest)}
     >

@@ -127,17 +127,28 @@ const _TableCell = ({
   children,
   textAlign,
   _hasPadding,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
+  const hasRowSpan = Boolean(gridRowStart && gridRowEnd);
+  const gridRowValue = hasRowSpan ? `${gridRowStart} / ${gridRowEnd}` : undefined;
+
   return (
     <StyledCell
       tabIndex={0}
       role="cell"
+      className={hasRowSpan ? 'has-row-spanning' : ''}
       $backgroundColor={backgroundColor}
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
+      style={{ gridRow: gridRowValue }}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
     >
