@@ -95,16 +95,7 @@ type BaseHeaderProps = {
    *
    * @default false
    */
-  shouldHandlePositionOfDecoratorsInternally?: boolean;
-  /**
-   * @default false
-   *
-   * why we need this prop ?
-   * So in some cases like Accordion, we need to align trailingElementToCenter, but since we have these validations set in palce , that
-   * only allows us to pass certain components as trailing. it would be better if we can have a prop to control this.
-   * so we can validate the trailing element and align it to center if needed, currently it is top aligned.
-   */
-  shouldAlignTrailingElementToCenter?: boolean;
+  shouldAlignLeadingAndTrailingElementsToCenter?: boolean;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -323,8 +314,7 @@ const _BaseHeader = ({
   backgroundImage,
   alignItems = 'flex-start',
   dividerProps,
-  shouldHandlePositionOfDecoratorsInternally = true,
-  shouldAlignTrailingElementToCenter = false,
+  shouldAlignLeadingAndTrailingElementsToCenter = false,
   ...rest
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
@@ -345,8 +335,18 @@ const _BaseHeader = ({
       };
 
   const renderTrailingInteractionElementWithChildren = (): React.ReactNode => {
-    if (!shouldHandlePositionOfDecoratorsInternally && trailingInteractionElement && children) {
-      return trailingInteractionElement;
+    if (shouldAlignLeadingAndTrailingElementsToCenter && trailingInteractionElement && children) {
+      return (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+          alignSelf="center"
+        >
+          {trailingInteractionElement}
+        </Box>
+      );
     }
     if (trailingInteractionElement && children) {
       return (
@@ -359,8 +359,18 @@ const _BaseHeader = ({
   };
 
   const renderTrailingInteractionElementWithoutChildren = (): React.ReactNode => {
-    if (!shouldHandlePositionOfDecoratorsInternally && trailingInteractionElement && !children) {
-      return trailingInteractionElement;
+    if (shouldAlignLeadingAndTrailingElementsToCenter && trailingInteractionElement && !children) {
+      return (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+          alignSelf="center"
+        >
+          {trailingInteractionElement}
+        </Box>
+      );
     }
 
     if (trailingInteractionElement && !children) {
@@ -370,8 +380,12 @@ const _BaseHeader = ({
   };
 
   const renderLeadingElement = (): React.ReactNode => {
-    if (Boolean(leading) && !shouldHandlePositionOfDecoratorsInternally) {
-      return leading;
+    if (Boolean(leading) && shouldAlignLeadingAndTrailingElementsToCenter) {
+      return (
+        <Box display="flex" alignItems="center" justifyContent="center" alignSelf="center">
+          {leading}
+        </Box>
+      );
     }
 
     if (Boolean(leading)) {
@@ -385,7 +399,7 @@ const _BaseHeader = ({
   };
 
   const renderTrailingElement = (): React.ReactNode => {
-    if (shouldAlignTrailingElementToCenter && validatedTrailingComponent) {
+    if (shouldAlignLeadingAndTrailingElementsToCenter && validatedTrailingComponent) {
       return (
         <BaseBox marginRight="spacing.5" display="flex" alignItems="center" justifyContent="center">
           <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>

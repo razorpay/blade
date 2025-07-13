@@ -623,8 +623,8 @@ const AccordionWithCustomSlotInHeaderTemplate: StoryFn<typeof AccordionComponent
           leading={
             <img
               src="https://picsum.photos/200/300"
-              height={100}
-              width={100}
+              height={32}
+              width={32}
               style={{ borderRadius: '4px' }}
               alt="Random placeholder"
             />
@@ -647,8 +647,8 @@ const AccordionWithCustomSlotAndTrailingTemplate: StoryFn<typeof AccordionCompon
           leading={
             <img
               src="https://picsum.photos/200/300"
-              height={100}
-              width={100}
+              height={32}
+              width={32}
               style={{ borderRadius: '4px' }}
               alt="Random placeholder"
             />

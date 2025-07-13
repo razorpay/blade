@@ -11,7 +11,6 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BoxProps } from '~components/Box';
-import { Box } from '~components/Box';
 import { makeSize } from '~utils/makeSize';
 import { size as sizeToken } from '~tokens/global';
 
@@ -56,31 +55,6 @@ const _AccordionItemHeader = ({
   const shouldAlignHeaderItemsInCenter = Boolean(
     children || (Boolean(leading) && !isLeadingNumberOrIcon),
   );
-  const trailingInteractionElement = React.useMemo(() => {
-    if (shouldAlignHeaderItemsInCenter) {
-      return (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          height="100%"
-          alignSelf="center"
-        >
-          <CollapsibleChevronIcon
-            color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
-            size="large"
-          />
-        </Box>
-      );
-    }
-
-    return (
-      <CollapsibleChevronIcon
-        color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
-        size="large"
-      />
-    );
-  }, [shouldAlignHeaderItemsInCenter, isDisabled]);
 
   const leadingElement = React.useMemo(() => {
     if (showNumberPrefix && typeof index === 'number') {
@@ -93,12 +67,8 @@ const _AccordionItemHeader = ({
     if (leading) {
       return (
         <BaseBox
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          alignSelf="center"
           marginRight={isLeadingIcon ? 'spacing.0' : 'spacing.3'}
-          marginBottom={makeSize(sizeToken['1'])}
+          marginTop="spacing.1"
           maxHeight={getLeadingElementMaxHeightAndWidth(size)}
           maxWidth={getLeadingElementMaxHeightAndWidth(size)}
           overflow="hidden"
@@ -130,9 +100,13 @@ const _AccordionItemHeader = ({
           thickness: 'thinner',
           marginX: 'spacing.5',
         }}
-        trailingInteractionElement={trailingInteractionElement}
-        shouldHandlePositionOfDecoratorsInternally={!shouldAlignHeaderItemsInCenter}
-        shouldAlignTrailingElementToCenter={shouldAlignHeaderItemsInCenter}
+        trailingInteractionElement={
+          <CollapsibleChevronIcon
+            color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
+            size="large"
+          />
+        }
+        shouldAlignLeadingAndTrailingElementsToCenter={shouldAlignHeaderItemsInCenter}
         {...makeAnalyticsAttribute(rest)}
       >
         {children}
