@@ -335,22 +335,12 @@ const _BaseHeader = ({
       };
 
   const renderTrailingInteractionElementWithChildren = (): React.ReactNode => {
-    if (shouldAlignLeadingAndTrailingElementsToCenter && trailingInteractionElement && children) {
-      return (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          height="100%"
-          alignSelf="center"
-        >
-          {trailingInteractionElement}
-        </Box>
-      );
-    }
     if (trailingInteractionElement && children) {
       return (
-        <Box alignSelf="flex-start" {...centerBoxProps[size]}>
+        <Box
+          alignSelf={shouldAlignLeadingAndTrailingElementsToCenter ? 'center' : 'flex-start'}
+          {...centerBoxProps[size]}
+        >
           {trailingInteractionElement}
         </Box>
       );
@@ -359,38 +349,27 @@ const _BaseHeader = ({
   };
 
   const renderTrailingInteractionElementWithoutChildren = (): React.ReactNode => {
-    if (shouldAlignLeadingAndTrailingElementsToCenter && trailingInteractionElement && !children) {
+    if (trailingInteractionElement && !children) {
       return (
         <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          height="100%"
-          alignSelf="center"
+          {...centerBoxProps[size]}
+          alignSelf={shouldAlignLeadingAndTrailingElementsToCenter ? 'center' : undefined}
         >
           {trailingInteractionElement}
         </Box>
       );
     }
-
-    if (trailingInteractionElement && !children) {
-      return <Box {...centerBoxProps[size]}>{trailingInteractionElement}</Box>;
-    }
     return null;
   };
 
   const renderLeadingElement = (): React.ReactNode => {
-    if (Boolean(leading) && shouldAlignLeadingAndTrailingElementsToCenter) {
-      return (
-        <Box display="flex" alignItems="center" justifyContent="center" alignSelf="center">
-          {leading}
-        </Box>
-      );
-    }
-
     if (Boolean(leading)) {
       return (
-        <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
+        <BaseBox
+          marginRight="spacing.3"
+          {...centerBoxProps[size]}
+          alignSelf={shouldAlignLeadingAndTrailingElementsToCenter ? 'center' : undefined}
+        >
           {leading}
         </BaseBox>
       );

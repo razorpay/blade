@@ -69,6 +69,7 @@ const _AccordionItemHeader = ({
         <BaseBox
           marginRight={isLeadingIcon ? 'spacing.0' : 'spacing.3'}
           marginTop="spacing.1"
+          // So in design, we have set max height and width for the leading element, doing same here
           maxHeight={getLeadingElementMaxHeightAndWidth(size)}
           maxWidth={getLeadingElementMaxHeightAndWidth(size)}
           overflow="hidden"
