@@ -1,11 +1,13 @@
 const { danger, markdown } = require('danger');
 const generateBundleDiff = require('./scripts/generateBundleDiff');
 
+let markdownMessage = '';
+
 const showBundleSizeDiff = async () => {
   const { diffTable } = await generateBundleDiff(danger);
 
   if (diffTable) {
-    markdown(`
+    markdownMessage = `
   ## Bundle Size Report
 
   <details>
@@ -15,13 +17,13 @@ const showBundleSizeDiff = async () => {
 
   </details>
   
-  `);
+  `;
   } else {
-    markdown(`
+    markdownMessage = `
   ## Bundle Size Report
 
   No bundle size changes detected.
-  `);
+  `;
   }
 };
 
@@ -29,9 +31,11 @@ const showBundleSizeDiff = async () => {
 const checkComponentsIndexChanges = () => {
   const componentsIndexFile = 'src/components/index.ts';
   const hasComponentsIndexChanged = danger.git.modified_files.includes(componentsIndexFile);
+  console.log(hasComponentsIndexChanged);
 
   if (hasComponentsIndexChanged) {
-    markdown(`
+    markdownMessage += `
+
 ## Component Status Update Needed
 
 🔔 Changes detected in \`components/index.ts\`. Please remember to:
@@ -40,9 +44,10 @@ const checkComponentsIndexChanges = () => {
 3. Update existing component information if needed
 
 This helps keep our documentation up to date! 📚
-    `);
+    `;
   }
 };
 
 showBundleSizeDiff();
 checkComponentsIndexChanges();
+markdown(markdownMessage);
