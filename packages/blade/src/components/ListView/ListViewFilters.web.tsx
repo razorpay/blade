@@ -21,6 +21,7 @@ import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
 import { Divider } from '~components/Divider';
 import { Dropdown } from '~components/Dropdown';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const gradientOverlyContainerWidth = '21px'; // 20px + 1px divider width
 const gradientOverlyContainerHeight = '38px';
@@ -105,7 +106,8 @@ const ListViewFilters = ({
   };
 
   const isSearchTrailingDropDown =
-    React.isValidElement(searchTrailing) && searchTrailing.type === Dropdown;
+    React.isValidElement(searchTrailing) && getComponentId(searchTrailing) === 'Dropdown';
+
 
   return (
     <ListViewFiltersProvider
