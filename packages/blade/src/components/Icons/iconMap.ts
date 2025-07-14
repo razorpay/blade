@@ -767,7 +767,6 @@ const iconMap: Record<string, IconComponent> = {
   VolumeMuteIcon: VolumeMuteIconComponent,
   WalletIcon: WalletIconComponent,
   WatchIcon: WatchIconComponent,
-  WhatsAppIcon: WhatsAppIconComponent,
   WifiIcon: WifiIconComponent,
   WifiOffIcon: WifiOffIconComponent,
   WindIcon: WindIconComponent,
