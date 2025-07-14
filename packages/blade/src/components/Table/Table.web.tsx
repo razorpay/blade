@@ -371,18 +371,16 @@ const _Table = <Item,>({
     [rowSelectConfig.fns, data.nodes, selectedRows, disabledRows],
   );
 
-  const tree = isGrouped
-    ? useTree(
-        data,
-        {},
-        {
-          // Disable row click expand/collapse (fallback enables unwanted expand/collapse on row click)
-          clickType: undefined,
-          // Disable all indentation for flat appearance
-          treeYLevel: undefined,
-        },
-      )
-    : null;
+  const tree = useTree(
+    isGrouped ? data : { nodes: [] },
+    {},
+    {
+      // Disable row click expand/collapse (fallback enables unwanted expand/collapse on row click)
+      clickType: undefined,
+      // Disable all indentation for flat appearance
+      treeYLevel: undefined,
+    },
+  );
 
   useIsomorphicLayoutEffect(() => {
     if (isGrouped && tree?.fns.onToggleAll) {

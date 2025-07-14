@@ -344,7 +344,9 @@ const _TableRow = <Item,>({
   const isSelected = selectedRows?.includes(item.id);
   const hasHoverActions = Boolean(hoverActions);
   const isGroupHeader =
-    isGrouped && (item as any).treeXLevel === 0 && ((item as any).nodes?.length ?? 0) > 0;
+    isGrouped &&
+    (item as { treeXLevel?: number }).treeXLevel === 0 &&
+    ((item as { nodes?: unknown[] }).nodes?.length ?? 0) > 0;
 
   useEffect(() => {
     if (isDisabled) {

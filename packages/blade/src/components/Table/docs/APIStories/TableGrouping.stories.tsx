@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import { Text } from '~components/Typography';
 import {
   Table,
   TableHeader,
@@ -10,11 +9,11 @@ import {
   TableRow,
   TableCell,
 } from '../../index';
-import type { TableProps } from '../../types';
+import type { TableProps, Identifier } from '../../types';
 import { Box } from '~components/Box';
-import type { Identifier } from '../../types';
+import { Text } from '~components/Typography';
 
-const meta: Meta<TableProps<any>> = {
+const meta: Meta<TableProps<unknown>> = {
   title: 'Components/Table/Grouping',
   component: Table,
   parameters: {
@@ -140,7 +139,7 @@ const GroupingTableTemplate = ({
   onSelectionChange?: ({ selectedIds }: { selectedIds: Identifier[] }) => void;
   gridColumnStart?: number;
   gridColumnEnd?: number;
-}) => {
+}): React.ReactElement => {
   return (
     <Table
       data={data}
@@ -164,13 +163,19 @@ const GroupingTableTemplate = ({
               <TableRow key={index} item={item}>
                 <TableCell
                   gridColumnStart={
-                    (item as any).treeXLevel === 0 ? gridColumnStart ?? 1 : undefined
+                    (item as { treeXLevel?: number }).treeXLevel === 0
+                      ? gridColumnStart ?? 1
+                      : undefined
                   }
-                  gridColumnEnd={(item as any).treeXLevel === 0 ? gridColumnEnd ?? 5 : undefined}
+                  gridColumnEnd={
+                    (item as { treeXLevel?: number }).treeXLevel === 0
+                      ? gridColumnEnd ?? 5
+                      : undefined
+                  }
                 >
                   {item.method}
                 </TableCell>
-                {(item as any).treeXLevel !== 0 && (
+                {(item as { treeXLevel?: number }).treeXLevel !== 0 && (
                   <>
                     <TableCell>
                       <Text>₹{item.amount.toLocaleString('en-IN')}</Text>
@@ -192,7 +197,7 @@ const GroupingTableTemplate = ({
   );
 };
 
-export const BasicGrouping: StoryFn<TableProps<any>> = () => {
+export const BasicGrouping: StoryFn<TableProps<unknown>> = () => {
   return (
     <Box>
       <GroupingTableTemplate data={sampleData} selectionType="none" />
@@ -202,12 +207,12 @@ export const BasicGrouping: StoryFn<TableProps<any>> = () => {
 
 BasicGrouping.storyName = 'Basic Grouping';
 
-export const TableGroupingWithSelection: StoryFn<TableProps<any>> = () => {
-  const [selectedIds, setSelectedIds] = useState<Identifier[]>([]);
+export const TableGroupingWithSelection: StoryFn<TableProps<unknown>> = () => {
+  const [ignoredSelectedIds, setIgnoredSelectedIds] = useState<Identifier[]>([]);
 
-  const handleSelectionChange = ({ selectedIds }: { selectedIds: Identifier[] }) => {
+  const handleSelectionChange = ({ selectedIds }: { selectedIds: Identifier[] }): void => {
     console.log('selectedIds', selectedIds);
-    setSelectedIds(selectedIds);
+    setIgnoredSelectedIds(selectedIds);
   };
 
   return (
