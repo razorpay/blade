@@ -24,6 +24,7 @@ ${diffTable}
 // Check if components/index.ts was modified
 const checkComponentsIndexChanges = () => {
   const componentsIndexFile = 'src/components/index.ts';
+  console.log(danger.git.modified_files);
   const hasComponentsIndexChanged = danger.git.modified_files.includes(componentsIndexFile);
   console.log(hasComponentsIndexChanged);
 
@@ -41,7 +42,7 @@ This helps keep our documentation up to date! 📚
   }
 };
 
-showBundleSizeDiff();
+// showBundleSizeDiff();
 checkComponentsIndexChanges();
 
 // Only post markdown if we have a message
