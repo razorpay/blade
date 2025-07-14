@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import type { BaseBoxProps } from './types';
 import { useMemoizedStyles } from './useMemoizedStyles';
@@ -24,6 +25,6 @@ const _BaseBox = styled.div
   return cssObject;
 });
 
-const BaseBox = assignWithoutSideEffects(_BaseBox, { componentId: 'BaseBox' });
+const BaseBox = assignWithoutSideEffects(React.memo(_BaseBox), { componentId: 'BaseBox' });
 
 export { BaseBox };
