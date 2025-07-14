@@ -1,7 +1,7 @@
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Path, Svg } from '../_Svg';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _RotateCounterClockWiseIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
