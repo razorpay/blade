@@ -12,7 +12,6 @@ import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -49,7 +48,6 @@ const _CardFooter = ({
   showDivider = true,
   ...props
 }: CardFooterProps): React.ReactElement => {
-  const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
   useVerifyAllowedChildren({
     children,
@@ -86,9 +84,9 @@ const _CardFooter = ({
       <BaseBox
         paddingTop={paddingTop}
         display="flex"
-        flexDirection={isMobile ? 'column' : 'row'}
+        flexDirection={{ base: 'column', m: 'row' }}
         justifyContent={baseBoxJustifyContent}
-        alignItems={isMobile ? 'stretch' : 'center'}
+        alignItems={{ base: 'stretch', m: 'center' }}
       >
         {children}
       </BaseBox>
@@ -134,16 +132,15 @@ type CardFooterTrailingProps = {
   };
 } & DataAnalyticsAttribute;
 const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): React.ReactElement => {
-  const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooterTrailing');
 
   return (
     <BaseBox
       display="flex"
       flexDirection="row"
-      alignSelf={isMobile ? 'auto' : 'center'}
-      marginTop={isMobile ? 'spacing.5' : 'spacing.0'}
-      marginLeft={isMobile ? 'spacing.0' : 'spacing.5'}
+      alignSelf={{ base: 'auto', m: 'center' }}
+      marginTop={{ base: 'spacing.5', m: 'spacing.0' }}
+      marginLeft={{ base: 'spacing.0', m: 'spacing.5' }}
       {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox flexGrow={1}>
