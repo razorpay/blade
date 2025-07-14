@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.42.0
+
+### Minor Changes
+
+- 503e47531: feat: add support for dropdown in search
+- aba1bb999: feat(carousel): added peek behaviour in carousel
+
 ## 12.41.5
 
 ### Patch Changes
