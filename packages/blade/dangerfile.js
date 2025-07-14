@@ -23,7 +23,7 @@ ${diffTable}
 
 // Check if components/index.ts was modified
 const checkComponentsIndexChanges = () => {
-  const componentsIndexFile = 'src/components/index.ts';
+  const componentsIndexFile = 'packages/blade/src/components/index.ts';
   console.log(danger.git.modified_files);
   const hasComponentsIndexChanged = danger.git.modified_files.includes(componentsIndexFile);
   console.log(hasComponentsIndexChanged);
