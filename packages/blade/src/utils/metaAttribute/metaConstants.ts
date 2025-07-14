@@ -37,6 +37,7 @@ export const MetaConstants = {
   Display: 'display',
   Divider: 'divider',
   Drawer: 'drawer',
+  EmptyState: 'empty-state',
   Dropdown: 'dropdown',
   DropdownOverlay: 'dropdown-overlay',
   DropdownFooter: 'dropdown-footer',

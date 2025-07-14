@@ -1,5 +1,78 @@
 # @razorpay/blade-mcp
 
+## 1.2.1
+
+### Patch Changes
+
+- 2dfa5355b: chore(blade-mcp): changelog tool prompt
+
+## 1.2.0
+
+### Minor Changes
+
+- 6b4729f41: feat(blade-mcp): add changelog tool
+
+## 1.1.2
+
+### Patch Changes
+
+- f0bf2e774: feat: add settings pattern docs
+
+## 1.1.1
+
+### Patch Changes
+
+- d8a9dd202: docs: add EmptyState in knowledgebase
+
+## 1.1.0
+
+### Minor Changes
+
+- a78225edf: feat(blade-mcp): update blade mcp docs for metric and selectable card
+
+## 1.0.1
+
+### Patch Changes
+
+- 50e2ce3cf: feat(mcp/README): update mcp readme with new tools and troubleshooting
+
+## 1.0.0
+
+### Major Changes
+
+- e5bcc887d: feat(blade-mcp): add figma to code mcp tool
+
+## 0.2.6
+
+### Patch Changes
+
+- 49b1b3cce: docs: trimmed knowledgebase for inputgroup and textinput
+
+## 0.2.5
+
+### Patch Changes
+
+- 21b936ce5: docs: add Input Group, updated text input knowledgebase
+
+## 0.2.4
+
+### Patch Changes
+
+- 8beb5e541: feat(blade-mcp): pass directory name to analytics
+
+## 0.2.3
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
+## 0.2.2
+
+### Patch Changes
+
+- 16a8f55c5: feat(InfoGroup): remove keyAlign prop
+  feat(InfoGroup knowledgebase): update knowledgebase to add InfoGroup component
+
 ## 0.2.1
 
 ### Patch Changes

@@ -80,6 +80,7 @@ import CheckSquareIconComponent from './CheckSquareIcon';
 import ChevronDownIconComponent from './ChevronDownIcon';
 import ChevronLeftIconComponent from './ChevronLeftIcon';
 import ChevronRightIconComponent from './ChevronRightIcon';
+import ChevronUpDownIconComponent from './ChevronUpDownIcon';
 import ChevronUpIconComponent from './ChevronUpIcon';
 import ChevronsDownIconComponent from './ChevronsDownIcon';
 import ChevronsLeftIconComponent from './ChevronsLeftIcon';
@@ -376,6 +377,7 @@ import VolumeLowIconComponent from './VolumeLowIcon';
 import VolumeMuteIconComponent from './VolumeMuteIcon';
 import WalletIconComponent from './WalletIcon';
 import WatchIconComponent from './WatchIcon';
+import WhatsAppIconComponent from './WhatsAppIcon';
 import WifiIconComponent from './WifiIcon';
 import WifiOffIconComponent from './WifiOffIcon';
 import WindIconComponent from './WindIcon';
@@ -469,6 +471,7 @@ const iconMap: Record<string, IconComponent> = {
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,
   ChevronRightIcon: ChevronRightIconComponent,
+  ChevronUpDownIcon: ChevronUpDownIconComponent,
   ChevronUpIcon: ChevronUpIconComponent,
   ChevronsDownIcon: ChevronsDownIconComponent,
   ChevronsLeftIcon: ChevronsLeftIconComponent,
@@ -765,6 +768,7 @@ const iconMap: Record<string, IconComponent> = {
   VolumeMuteIcon: VolumeMuteIconComponent,
   WalletIcon: WalletIconComponent,
   WatchIcon: WatchIconComponent,
+  WhatsAppIcon: WhatsAppIconComponent,
   WifiIcon: WifiIconComponent,
   WifiOffIcon: WifiOffIconComponent,
   WindIcon: WindIconComponent,

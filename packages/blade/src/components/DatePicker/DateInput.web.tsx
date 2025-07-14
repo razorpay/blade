@@ -85,6 +85,8 @@ const _DatePickerInput = (
     date,
     label,
     labelPosition,
+    labelSuffix,
+    labelTrailing,
     autoFocus,
     name,
     size = 'medium',
@@ -139,6 +141,8 @@ const _DatePickerInput = (
           successText={successText}
           errorText={errorText}
           helpText={helpText}
+          labelSuffix={labelSuffix}
+          labelTrailing={labelTrailing}
           {...props}
           {...referenceProps}
         />
@@ -209,6 +213,7 @@ const _DatePickerInput = (
             successText={successText?.start}
             errorText={errorText?.start}
             helpText={helpText?.start}
+            labelSuffix={labelSuffix}
             {...props}
             {...referenceProps}
           />
@@ -248,6 +253,7 @@ const _DatePickerInput = (
             successText={successText?.end}
             errorText={errorText?.end}
             helpText={helpText?.end}
+            labelTrailing={labelTrailing}
             {...props}
             {...referenceProps}
           />

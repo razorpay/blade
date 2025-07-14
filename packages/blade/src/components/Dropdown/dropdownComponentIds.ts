@@ -10,5 +10,6 @@ export const dropdownComponentIds = {
     SearchInput: 'SearchInput',
     DropdownIconButton: 'DropdownIconButton',
     FilterChipSelectInput: 'FilterChipSelectInput',
+    InputDropdownButton: 'InputDropdownButton',
   },
 };

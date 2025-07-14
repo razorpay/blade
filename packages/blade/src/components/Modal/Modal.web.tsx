@@ -119,12 +119,7 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box
-              zIndex={zIndex}
-              position="fixed"
-              testID="modal-wrapper"
-              {...makeAnalyticsAttribute(rest)}
-            >
+            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({
@@ -135,6 +130,7 @@ const Modal = ({
                   modal: true,
                   label: accessibilityLabel,
                 })}
+                {...makeAnalyticsAttribute(rest)}
                 maxWidth={size === 'full' ? '100%' : makeSize(modalMaxWidth[size])}
                 minWidth={makeSize(modalMinWidth)}
                 maxHeight={modalMaxHeight[size]}

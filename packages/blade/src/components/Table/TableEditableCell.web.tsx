@@ -18,6 +18,7 @@ import { BaseInput } from '~components/Input/BaseInput';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Dropdown } from '~components/Dropdown';
+import { getKeyboardAndAutocompleteProps } from '~components/Input/BaseInput/utils';
 
 const StyledEditableCell = styled(StyledCell)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
@@ -68,6 +69,7 @@ const _TableEditableCell = ({
   trailingButton,
   errorText,
   successText,
+  inputType,
 }: TableEditableCellProps): React.ReactElement => {
   const { rowDensity, showStripedRows, backgroundColor } = useTableContext();
 
@@ -93,18 +95,14 @@ const _TableEditableCell = ({
               isTableInputCell={rowDensityToIsTableInputCellMapping[rowDensity]}
               validationState={validationState}
               id="table-editable-cell-input"
-              type="text"
               size={tableEditableCellRowDensityToInputSizeMap[rowDensity]}
               trailingIcon={validationStateToInputTrailingIconMap[validationState]}
               accessibilityLabel={accessibilityLabel}
-              autoCapitalize={autoCapitalize}
-              autoCompleteSuggestionType={autoCompleteSuggestionType}
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus={autoFocus}
               defaultValue={defaultValue}
               isDisabled={isDisabled}
               isRequired={isRequired}
-              keyboardReturnKeyType={keyboardReturnKeyType}
               leadingIcon={leadingIcon}
               maxCharacters={maxCharacters}
               name={name}
@@ -122,6 +120,12 @@ const _TableEditableCell = ({
               errorText={errorText}
               successText={successText}
               showHintsAsTooltip={true}
+              {...getKeyboardAndAutocompleteProps({
+                type: inputType,
+                keyboardReturnKeyType,
+                autoCompleteSuggestionType,
+                autoCapitalize,
+              })}
             />
           </Box>
         </CellWrapper>
@@ -159,7 +163,11 @@ const TableEditableDropdownCell = (
             flex={1}
             hasPadding={false}
           >
-            <Dropdown _width="100%" margin="spacing.2" {...dropdownProps} />
+            <Dropdown
+              _width="calc(100% - 8px)"
+              margin={getEditableInputMargin({ rowDensity })}
+              {...dropdownProps}
+            />
           </CellWrapper>
         </BaseBox>
       </StyledEditableCell>

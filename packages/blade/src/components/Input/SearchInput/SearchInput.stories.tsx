@@ -10,7 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import {
   ActionList,
   ActionListItem,
@@ -36,8 +36,11 @@ import {
   TransactionsIcon,
   HelpCircleIcon,
   BulkPayoutsIcon,
+  InfoIcon,
 } from '~components/Icons';
 import { Spinner } from '~components/Spinner';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'Search Input Props',
@@ -161,6 +164,16 @@ export default {
       },
     },
     labelPosition: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelSuffix: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelTrailing: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -316,6 +329,17 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
         placeholder="Search here"
         {...args}
         onChange={({ value }) => setSearchTerm(value as string)}
+        trailing={
+          <Dropdown>
+            <InputDropdownButton defaultValue="home" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
       />
 
       <DropdownOverlay>
@@ -357,6 +381,120 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
 
 export const SearchInputWithDropdown = SearchInputWithDropdownTemplate.bind({});
 SearchInputWithDropdown.storyName = 'With Dropdown';
+
+const SearchInputWithDisabledDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [isFetching, setIsFetching] = React.useState(false);
+
+  // Set a timeout to simulate fetching data
+  React.useEffect(() => {
+    if (searchTerm.length > 0) {
+      setIsFetching(true);
+      setTimeout(() => {
+        setIsFetching(false);
+      }, 1000);
+    }
+  }, [searchTerm]);
+
+  const popularItems = [
+    { title: 'Transactions', icon: TransactionsIcon },
+    { title: 'Settlements', icon: SettlementsIcon },
+    { title: 'Account & Settings', icon: SettingsIcon },
+  ];
+  const filteredItems = menuItems.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  return (
+    <Dropdown>
+      <SearchInputComponent
+        label="Search"
+        placeholder="Search here"
+        {...args}
+        onChange={({ value }) => setSearchTerm(value as string)}
+        trailing={
+          <Dropdown>
+            <InputDropdownButton isDisabled defaultValue="home" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+
+      <DropdownOverlay>
+        {isFetching ? (
+          <BaseBox display="flex" justifyContent="center" padding="spacing.4">
+            <Spinner accessibilityLabel="Fetching data" />
+          </BaseBox>
+        ) : (
+          <ActionList>
+            {searchTerm.length === 0 ? (
+              <ActionListSection title="Popular Searches">
+                {popularItems.map((item, index) => (
+                  <ActionListItem
+                    key={index}
+                    title={item.title}
+                    value={item.title}
+                    leading={<ActionListItemIcon icon={item.icon} />}
+                  />
+                ))}
+              </ActionListSection>
+            ) : (
+              <ActionListSection title={`${filteredItems.length} items found`}>
+                {filteredItems.map((item, index) => (
+                  <ActionListItem
+                    key={index}
+                    title={item.title}
+                    value={item.title}
+                    leading={<ActionListItemIcon icon={item.icon} />}
+                  />
+                ))}
+              </ActionListSection>
+            )}
+          </ActionList>
+        )}
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+const SearchInputWithControlledDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
+  const [inputDropdownValue, setInputDropdownValue] = React.useState('payment-products');
+  return (
+    <Box display="flex" flexDirection="column">
+      <SearchInputComponent
+        label="Search"
+        placeholder="Search here"
+        {...args}
+        trailing={
+          <Dropdown>
+            <InputDropdownButton
+              value={inputDropdownValue}
+              onChange={({ value }) => setInputDropdownValue(value)}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Payment Products" value="payment-products" />
+                <ActionListItem title="Business Credit Card" value="business-credit-card" />
+                <ActionListItem title="Lending Tech Stack" value="lending-tech-stack" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
+  );
+};
+
+export const SearchInputWithControlledDropdown = SearchInputWithControlledDropdownTemplate.bind({});
+SearchInputWithControlledDropdown.storyName = 'With Controlled Dropdown';
+
+export const SearchInputWithDisabledDropdown = SearchInputWithDisabledDropdownTemplate.bind({});
+SearchInputWithDisabledDropdown.storyName = 'With Dropdown Disabled';
 
 const SearchInputWithTableTemplate: StoryFn<typeof SearchInputComponent> = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -445,3 +583,18 @@ const SearchInputWithTableTemplate: StoryFn<typeof SearchInputComponent> = () =>
 
 export const SearchInputWithTable = SearchInputWithTableTemplate.bind({});
 SearchInputWithTable.storyName = 'With Table';
+
+export const SearchInputWithLabelSuffixTrailing = SearchInputTemplate.bind({});
+SearchInputWithLabelSuffixTrailing.storyName = 'SearchInput with Label Suffix & Trailing';
+SearchInputWithLabelSuffixTrailing.args = {
+  label: 'Search here',
+  placeholder: 'Search here',
+  labelSuffix: (
+    <Tooltip content="Search for payment products, settings, and more" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
+};

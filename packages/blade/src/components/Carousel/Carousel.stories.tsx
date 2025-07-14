@@ -212,7 +212,7 @@ const TestimonialCard = ({
   company,
 }: TestimonialData): React.ReactElement => {
   return (
-    <Card height="100%">
+    <Card height="100%" marginBottom="spacing.4">
       <CardBody height="100%">
         <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
           <QuoteSvg />
@@ -576,5 +576,38 @@ const InteractiveCarouselTestimonialTemplate: StoryFn<typeof CarouselComponent> 
 };
 
 export const WithInteractiveCards = InteractiveCarouselTestimonialTemplate.bind({});
+
+export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Text marginTop="spacing.2" color="surface.text.gray.muted">
+        Active card is centered with adjacent cards peeking from the sides.
+      </Text>
+      <Text marginTop="spacing.4">
+        You can achieve peek behavior by setting <Code size="medium">visibleItems</Code> to 1,
+        adding <Code size="medium">carouselItemWidth</Code> to be less than 100% (eg: 80%), setting{' '}
+        <Code size="medium">snapAlign</Code> to "center", and adding
+        <Code size="medium">gap</Code> for spacing between items.
+      </Text>
+      <Box marginTop="spacing.6">
+        <CarouselComponent
+          {...props}
+          navigationButtonPosition="bottom"
+          accessibilityLabel="Testimonials"
+          visibleItems={1}
+          carouselItemWidth={{ base: '80%', m: '80%' }}
+          snapAlign="center"
+          gap="spacing.7"
+        >
+          {testimonialData.map((testimonial) => (
+            <CarouselItem key={testimonial.name}>
+              <TestimonialCard {...testimonial} />
+            </CarouselItem>
+          ))}
+        </CarouselComponent>
+      </Box>
+    </Box>
+  );
+};
 
 export default meta;

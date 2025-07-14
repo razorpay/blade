@@ -1,5 +1,146 @@
 # @razorpay/blade
 
+## 12.42.0
+
+### Minor Changes
+
+- 503e47531: feat: add support for dropdown in search
+- aba1bb999: feat(carousel): added peek behaviour in carousel
+
+## 12.41.5
+
+### Patch Changes
+
+- 061de8050: fix(blade): quick filter issue
+- 0a0918895: fix: Text sizes in button
+
+## 12.41.4
+
+### Patch Changes
+
+- 66c599d1a: fix(blade): label postion in chip group
+
+## 12.41.3
+
+### Patch Changes
+
+- 8fdc7e340: fix(blade): update month picker issue
+
+## 12.41.2
+
+### Patch Changes
+
+- 3bab8502b: feat(blade): add changeset icon
+
+## 12.41.1
+
+### Patch Changes
+
+- b86409b12: fix(blade): expose empty state component
+
+## 12.41.0
+
+### Minor Changes
+
+- 2a53e520f: feat(Tabs): sizing enhancements in tab component, add `size="small"`
+
+  > [!NOTE]
+  >
+  > This changes the top padding in existing Tab component. Although this won't cause any functional or visual breakage, it may cause visual change depending on the usage. You can adjust the padding on container if needed
+
+  <table>
+    <tr><th>Before</th><th>After</th></tr>
+    <tr>
+      <td><img width="100%" alt="image" src="https://github.com/user-attachments/assets/3a965299-27df-42f8-8018-907627a86ff3" /></td>
+      <td><img width="100%" alt="image" src="https://github.com/user-attachments/assets/5abc897f-370e-4220-ac95-1302eb9edd21" /></td>
+    </tr>
+  </table>
+
+- 1690286d0: feat(blade): add EmptyState component
+
+## 12.40.0
+
+### Minor Changes
+
+- a90644a3f: fix(blade): update CompanyRegistrationIcon
+
+## 12.39.0
+
+### Minor Changes
+
+- dfe654e76: feat(blade): add `labelSuffix` & `labelTrailing` props in Input family components
+
+## 12.38.0
+
+### Minor Changes
+
+- 4fd463368: feat(blade): card variants enhancement & docs
+- a839567f9: fix(blade): types in list , prefix color
+
+### Patch Changes
+
+- 6fa5fca1d: fix(blade): expose inputType in tableEditableCell
+
+## 12.37.0
+
+### Minor Changes
+
+- d8f9ddec9: feat(Typography): add `textTransform` support for typography components
+
+### Patch Changes
+
+- eda617bc3: fix(Tooltip): re-render issue on mobile tooltip
+
+## 12.36.0
+
+### Minor Changes
+
+- eb7381a21: feat: Selectable Card
+
+## 12.35.0
+
+### Minor Changes
+
+- 1801b3865: feat: Payment Component
+
+## 12.34.1
+
+### Patch Changes
+
+- 9e5c6ef04: fix(blade): table editable cell dropdown issue
+
+## 12.34.0
+
+### Minor Changes
+
+- b933afc11: feat: add toast container offset prop
+
+## 12.33.2
+
+### Patch Changes
+
+- b03d34fdf: feat(blade): update input styles
+- 2807550e3: feat(blade): add Dropdown in TextInput and SearchInput
+- b8453bbcf: fix(blade): leading and trailing in textInput
+- 11fb3afe7: feat(accordion): UI enhancement
+
+## 12.33.1
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
+## 12.33.0
+
+### Minor Changes
+
+- 43cc06167: feat(InfoGroup): add InfoGroup component
+
+### Patch Changes
+
+- 16a8f55c5: feat(InfoGroup): remove keyAlign prop
+  feat(InfoGroup knowledgebase): update knowledgebase to add InfoGroup component
+
 ## 12.32.3
 
 ### Patch Changes

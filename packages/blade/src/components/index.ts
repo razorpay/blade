@@ -25,6 +25,7 @@ export * from './Drawer';
 export * from './DatePicker';
 export * from './Dropdown';
 export * from './Elevate';
+export * from './EmptyState';
 export * from './Fade';
 export * from './FileUpload';
 export * from './Icons';

@@ -231,10 +231,16 @@ const PanelWrapper = ({
     </Box>
   );
 };
-const SubscriptionPanel = ({ isVertical }: { isVertical: boolean }) => {
+const SubscriptionPanel = ({
+  isVertical,
+  size = 'medium',
+}: {
+  isVertical: boolean;
+  size?: 'small' | 'medium' | 'large';
+}) => {
   return (
     <PanelWrapper isVertical={isVertical}>
-      <Text>
+      <Text size={size}>
         This is an overview of your active subscriptions. You can click on each subscription to view
         more details.
       </Text>
@@ -274,10 +280,16 @@ const SubscriptionPanel = ({ isVertical }: { isVertical: boolean }) => {
   );
 };
 
-const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
+const PlansPanel = ({
+  isVertical,
+  size = 'medium',
+}: {
+  isVertical: boolean;
+  size?: 'small' | 'medium' | 'large';
+}) => {
   return (
     <PanelWrapper isVertical={isVertical}>
-      <Text>
+      <Text size={size}>
         This is an overview of all your plans. You can click on each plan to view more details.
       </Text>
       <Box
@@ -293,16 +305,24 @@ const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
           <CardBody>
             <Box display="flex" flexDirection="row" gap="spacing.4">
               <Box display="flex" flexDirection="column" gap="spacing.2">
-                <Text weight="semibold">Name</Text>
-                <Text weight="semibold">Description</Text>
-                <Text weight="semibold">Bill Amount</Text>
-                <Text weight="semibold">Bill Frequency</Text>
+                <Text weight="semibold" size={size}>
+                  Name
+                </Text>
+                <Text weight="semibold" size={size}>
+                  Description
+                </Text>
+                <Text weight="semibold" size={size}>
+                  Bill Amount
+                </Text>
+                <Text weight="semibold" size={size}>
+                  Bill Frequency
+                </Text>
               </Box>
               <Box display="flex" flexDirection="column" gap="spacing.2">
-                <Text>Basic Plan</Text>
-                <Text>Basic Plan Description</Text>
-                <Text>$9.99</Text>
-                <Text>Monthly</Text>
+                <Text size={size}>Basic Plan</Text>
+                <Text size={size}>Basic Plan Description</Text>
+                <Text size={size}>$9.99</Text>
+                <Text size={size}>Monthly</Text>
               </Box>
             </Box>
           </CardBody>
@@ -314,16 +334,24 @@ const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
           <CardBody>
             <Box display="flex" flexDirection="row" gap="spacing.4">
               <Box display="flex" flexDirection="column" gap="spacing.2">
-                <Text weight="semibold">Name</Text>
-                <Text weight="semibold">Description</Text>
-                <Text weight="semibold">Bill Amount</Text>
-                <Text weight="semibold">Bill Frequency</Text>
+                <Text weight="semibold" size={size}>
+                  Name
+                </Text>
+                <Text weight="semibold" size={size}>
+                  Description
+                </Text>
+                <Text weight="semibold" size={size}>
+                  Bill Amount
+                </Text>
+                <Text weight="semibold" size={size}>
+                  Bill Frequency
+                </Text>
               </Box>
               <Box display="flex" flexDirection="column" gap="spacing.2">
-                <Text>Premium Plan</Text>
-                <Text>Premium Plan Description</Text>
-                <Text>$19.99</Text>
-                <Text>Monthly</Text>
+                <Text size={size}>Premium Plan</Text>
+                <Text size={size}>Premium Plan Description</Text>
+                <Text size={size}>$19.99</Text>
+                <Text size={size}>Monthly</Text>
               </Box>
             </Box>
           </CardBody>
@@ -337,10 +365,12 @@ const SettingsCard = ({
   title,
   icon: Icon,
   children,
+  size = 'medium',
 }: {
   title: string;
   icon: IconComponent;
   children: React.ReactNode;
+  size?: 'small' | 'medium' | 'large';
 }) => {
   return (
     <Card padding="spacing.5" elevation="none" width="100%">
@@ -354,7 +384,7 @@ const SettingsCard = ({
           >
             <Box display="flex" flexDirection="row" gap="spacing.4" alignItems="center">
               <Icon size="large" color="surface.icon.gray.subtle" />
-              <Heading>{title}</Heading>
+              <Heading size={size}>{title}</Heading>
             </Box>
             <Switch accessibilityLabel="Enable Card" />
           </Box>
@@ -365,10 +395,16 @@ const SettingsCard = ({
   );
 };
 
-const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
+const SettingsPanel = ({
+  isVertical,
+  size = 'medium',
+}: {
+  isVertical: boolean;
+  size?: 'small' | 'medium' | 'large';
+}) => {
   return (
     <PanelWrapper isVertical={isVertical}>
-      <Text>
+      <Text size={size}>
         This is an overview of your settings. You can enable or disable Payment Methods as per your
         requirements.
       </Text>
@@ -378,12 +414,12 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
         flexDirection={{ base: 'column', m: 'row' }}
         gap="spacing.4"
       >
-        <SettingsCard title="Card" icon={CreditCardIcon}>
-          <Text>
+        <SettingsCard title="Card" icon={CreditCardIcon} size={size}>
+          <Text size={size}>
             Accept recurring payments via debit & credit cards for your subscriptions in any of our
             supported international currencies.
           </Text>
-          <Text>
+          <Text size={size}>
             Note: Only limited cards are supported due to new payment regulations by RBI. View
             supported cards
           </Text>
@@ -396,8 +432,8 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
           />
         </SettingsCard>
 
-        <SettingsCard title="UPI" icon={ZapIcon}>
-          <Text>
+        <SettingsCard title="UPI" icon={ZapIcon} size={size}>
+          <Text size={size}>
             Accept recurring payments via UPI apps like PhonePe, Paytm & BHIM for your
             subscriptions. Only supports Indian currency.
           </Text>
@@ -410,8 +446,8 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
           />
         </SettingsCard>
 
-        <SettingsCard title="eMandate" icon={BankIcon}>
-          <Text>
+        <SettingsCard title="eMandate" icon={BankIcon} size={size}>
+          <Text size={size}>
             Accept recurring payments directly via bank accounts for your subscriptions. Only
             supports Indian currency.
           </Text>
@@ -460,13 +496,13 @@ const TabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
               </TabList>
 
               <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={isVertical} />
+                <SubscriptionPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
               <TabPanel value="plans">
-                <PlansPanel isVertical={isVertical} />
+                <PlansPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
               <TabPanel value="settings">
-                <SettingsPanel isVertical={isVertical} />
+                <SettingsPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
             </Tabs>
           </Box>
@@ -529,13 +565,13 @@ const ControlledTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactE
               </TabList>
 
               <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={isVertical} />
+                <SubscriptionPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
               <TabPanel value="plans">
-                <PlansPanel isVertical={isVertical} />
+                <PlansPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
               <TabPanel value="settings">
-                <SettingsPanel isVertical={isVertical} />
+                <SettingsPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
             </Tabs>
           </Box>
@@ -593,13 +629,13 @@ const TabsWithTooltipTemplate: StoryFn<(props: StoryControlProps) => React.React
               </TabList>
 
               <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={isVertical} />
+                <SubscriptionPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
               <TabPanel value="plans">
-                <PlansPanel isVertical={isVertical} />
+                <PlansPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
               <TabPanel value="settings">
-                <SettingsPanel isVertical={isVertical} />
+                <SettingsPanel isVertical={isVertical} size={args.size} />
               </TabPanel>
             </Tabs>
           </Box>
@@ -610,6 +646,12 @@ const TabsWithTooltipTemplate: StoryFn<(props: StoryControlProps) => React.React
 };
 
 export const WithTooltip = TabsWithTooltipTemplate.bind({});
+
+export const Small = TabsTemplate.bind({});
+Small.storyName = 'Size: Small';
+Small.args = {
+  size: 'small',
+};
 
 export const Medium = TabsTemplate.bind({});
 Medium.storyName = 'Size: Medium';
@@ -666,32 +708,34 @@ const ProductUseCase1Template: StoryFn<(props: StoryControlProps) => React.React
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody height="100%">
-          <Tabs variant="borderless" defaultValue="subscriptions">
-            <TabList marginX="spacing.6">
-              <TabItem value="subscriptions" leading={SubscriptionsIcon}>
-                Subscription
-              </TabItem>
-              <TabItem value="plans" leading={ClipboardIcon}>
-                Plans
-              </TabItem>
-              <TabItem value="settings" leading={SettingsIcon}>
-                Settings
-              </TabItem>
-            </TabList>
-            <Divider />
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs variant="borderless" defaultValue="subscriptions">
+              <TabList>
+                <TabItem value="subscriptions" leading={SubscriptionsIcon}>
+                  Subscription
+                </TabItem>
+                <TabItem value="plans" leading={ClipboardIcon}>
+                  Plans
+                </TabItem>
+                <TabItem value="settings" leading={SettingsIcon}>
+                  Settings
+                </TabItem>
+              </TabList>
+              <Divider />
 
-            <Box paddingX="spacing.6" paddingBottom="spacing.6">
-              <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="plans">
-                <PlansPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="settings">
-                <SettingsPanel isVertical={false} />
-              </TabPanel>
-            </Box>
-          </Tabs>
+              <Box>
+                <TabPanel value="subscriptions">
+                  <SubscriptionPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="plans">
+                  <PlansPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="settings">
+                  <SettingsPanel isVertical={false} />
+                </TabPanel>
+              </Box>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
@@ -752,42 +796,39 @@ const ProductUseCase2Template: StoryFn<(props: StoryControlProps) => React.React
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
-          <Tabs variant="borderless" value={value} onChange={setValue}>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              paddingX="spacing.6"
-            >
-              <TabList>
-                <TabItem value="subscriptions" leading={SubscriptionsIcon}>
-                  Subscription
-                </TabItem>
-                <TabItem value="plans" leading={ClipboardIcon}>
-                  Plans
-                </TabItem>
-                <TabItem value="settings" leading={SettingsIcon}>
-                  Settings
-                </TabItem>
-              </TabList>
-              <Box display="flex" alignItems="center" gap="spacing.5">
-                {actions}
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs variant="borderless" value={value} onChange={setValue}>
+              <Box display="flex" alignItems="center" justifyContent="space-between">
+                <TabList>
+                  <TabItem value="subscriptions" leading={SubscriptionsIcon}>
+                    Subscription
+                  </TabItem>
+                  <TabItem value="plans" leading={ClipboardIcon}>
+                    Plans
+                  </TabItem>
+                  <TabItem value="settings" leading={SettingsIcon}>
+                    Settings
+                  </TabItem>
+                </TabList>
+                <Box display="flex" alignItems="center" gap="spacing.5">
+                  {actions}
+                </Box>
               </Box>
-            </Box>
-            <Divider />
+              <Divider />
 
-            <Box paddingX="spacing.6" paddingBottom="spacing.6">
-              <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="plans">
-                <PlansPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="settings">
-                <SettingsPanel isVertical={false} />
-              </TabPanel>
-            </Box>
-          </Tabs>
+              <Box>
+                <TabPanel value="subscriptions">
+                  <SubscriptionPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="plans">
+                  <PlansPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="settings">
+                  <SettingsPanel isVertical={false} />
+                </TabPanel>
+              </Box>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
@@ -858,49 +899,51 @@ const ReactRouterExample = () => {
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
-          <Tabs variant="borderless" defaultValue="subscriptions">
-            <TabList marginX="spacing.6">
-              <TabItem
-                value="subscriptions"
-                leading={SubscriptionsIcon}
-                href="/accounts/subscriptions"
-                onClick={(e) => navigateTo(e, '/accounts/subscriptions')}
-              >
-                Subscription
-              </TabItem>
-              <TabItem
-                value="plans"
-                leading={ClipboardIcon}
-                href="/accounts/plans"
-                onClick={(e) => navigateTo(e, '/accounts/plans')}
-              >
-                Plans
-              </TabItem>
-              <TabItem
-                value="settings"
-                leading={SettingsIcon}
-                href="/accounts/settings"
-                onClick={(e) => navigateTo(e, '/accounts/settings')}
-              >
-                Settings
-              </TabItem>
-            </TabList>
-            <Divider />
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs variant="borderless" defaultValue="subscriptions">
+              <TabList>
+                <TabItem
+                  value="subscriptions"
+                  leading={SubscriptionsIcon}
+                  href="/accounts/subscriptions"
+                  onClick={(e) => navigateTo(e, '/accounts/subscriptions')}
+                >
+                  Subscription
+                </TabItem>
+                <TabItem
+                  value="plans"
+                  leading={ClipboardIcon}
+                  href="/accounts/plans"
+                  onClick={(e) => navigateTo(e, '/accounts/plans')}
+                >
+                  Plans
+                </TabItem>
+                <TabItem
+                  value="settings"
+                  leading={SettingsIcon}
+                  href="/accounts/settings"
+                  onClick={(e) => navigateTo(e, '/accounts/settings')}
+                >
+                  Settings
+                </TabItem>
+              </TabList>
+              <Divider />
 
-            <Box paddingX="spacing.6" paddingBottom="spacing.6">
-              <Route path="/accounts/:id" component={AccountRoute} />
+              <Box>
+                <Route path="/accounts/:id" component={AccountRoute} />
 
-              <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="plans">
-                <PlansPanel isVertical={false} />
-              </TabPanel>
-              <TabPanel value="settings">
-                <SettingsPanel isVertical={false} />
-              </TabPanel>
-            </Box>
-          </Tabs>
+                <TabPanel value="subscriptions">
+                  <SubscriptionPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="plans">
+                  <PlansPanel isVertical={false} />
+                </TabPanel>
+                <TabPanel value="settings">
+                  <SettingsPanel isVertical={false} />
+                </TabPanel>
+              </Box>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
@@ -919,54 +962,56 @@ const ProductUseCase4Template: StoryFn<(props: StoryControlProps) => React.React
     <Box height={isReactNative() ? '100%' : undefined}>
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody height="100%">
-          <Tabs isFullWidthTabItem={false} variant="filled" defaultValue="desktop">
-            <Box
-              padding="spacing.6"
-              minHeight="300px"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              paddingBottom="spacing.6"
-            >
-              <TabPanel value="desktop">
-                <Box
-                  elevation="midRaised"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  width="400px"
-                  height="200px"
-                  borderRadius="large"
-                  borderColor="surface.border.gray.muted"
-                  borderWidth="thin"
-                >
-                  <Text>Desktop Preview</Text>
-                </Box>
-              </TabPanel>
-              <TabPanel value="mobile">
-                <Box
-                  elevation="midRaised"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  width="140px"
-                  height="200px"
-                  borderRadius="large"
-                  borderColor="surface.border.gray.muted"
-                  borderWidth="thin"
-                >
-                  <Text>Mobile Preview</Text>
-                </Box>
-              </TabPanel>
-            </Box>
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs isFullWidthTabItem={false} variant="filled" defaultValue="desktop">
+              <Box
+                padding="spacing.6"
+                minHeight="300px"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                paddingBottom="spacing.6"
+              >
+                <TabPanel value="desktop">
+                  <Box
+                    elevation="midRaised"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    width="400px"
+                    height="200px"
+                    borderRadius="large"
+                    borderColor="surface.border.gray.muted"
+                    borderWidth="thin"
+                  >
+                    <Text>Desktop Preview</Text>
+                  </Box>
+                </TabPanel>
+                <TabPanel value="mobile">
+                  <Box
+                    elevation="midRaised"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    width="140px"
+                    height="200px"
+                    borderRadius="large"
+                    borderColor="surface.border.gray.muted"
+                    borderWidth="thin"
+                  >
+                    <Text>Mobile Preview</Text>
+                  </Box>
+                </TabPanel>
+              </Box>
 
-            <Box width="200px" padding="spacing.6">
-              <TabList>
-                <TabItem value="desktop" leading={MonitorIcon} />
-                <TabItem value="mobile" leading={SmartphoneIcon} />
-              </TabList>
-            </Box>
-          </Tabs>
+              <Box width="200px" padding="spacing.6">
+                <TabList>
+                  <TabItem value="desktop" leading={MonitorIcon} />
+                  <TabItem value="mobile" leading={SmartphoneIcon} />
+                </TabList>
+              </Box>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>

@@ -23,10 +23,37 @@ exports[`InputGroup should handle validation states correctly 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -42,12 +69,12 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   gap: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,11 +86,11 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   width: 100%;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   margin-left: 0px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,11 +104,11 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   justify-content: space-between;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   margin-top: 4px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -96,7 +123,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   gap: 4px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -162,7 +189,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   border-radius: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -179,7 +206,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   word-wrap: normal;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -202,7 +229,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   overflow-wrap: break-word;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -219,12 +246,12 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   padding: 0;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -237,11 +264,11 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   word-break: break-word;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: block;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -273,7 +300,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   cursor: auto;
 }
 
-.c12.c12.c12.c12.c12::-webkit-input-placeholder {
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -290,7 +317,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12::-moz-placeholder {
+.c13.c13.c13.c13.c13::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -307,7 +334,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12:-ms-input-placeholder {
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -324,7 +351,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12::placeholder {
+.c13.c13.c13.c13.c13::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -341,11 +368,11 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12:focus {
+.c13.c13.c13.c13.c13:focus {
   outline: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -369,7 +396,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover {
+.c12.c12.c12.c12.c12:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -395,7 +422,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:focus-within {
+.c12.c12.c12.c12.c12:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -419,12 +446,12 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c11.c11.c11.c11.c11:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -454,7 +481,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
           data-blade-component="form-label"
           for="input-group-255-input-256"
           id="input-group-261-label"
-          style="width: auto; flex-shrink: 0; margin-right: 0px;"
+          style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c3"
@@ -464,20 +491,30 @@ exports[`InputGroup should handle validation states correctly 1`] = `
               class="c4"
               data-blade-component="base-box"
             >
-              <p
-                class="c5"
-                data-blade-component="text"
-              >
-                Test Group
-              </p>
               <div
-                class="c6"
-                data-blade-component="visually-hidden"
+                class=""
+                data-blade-component="base-box"
               >
-                <p
-                  class="c7"
-                  data-blade-component="text"
-                />
+                <div
+                  class="c5"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                  >
+                    Test Group
+                  </p>
+                  <div
+                    class="c7"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c8"
+                      data-blade-component="text"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -487,7 +524,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class="c8 __blade-input-row"
+            class="c9 __blade-input-row"
             data-blade-component="base-box"
           >
             <div
@@ -495,15 +532,15 @@ exports[`InputGroup should handle validation states correctly 1`] = `
               data-blade-component="textinput"
             >
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class=" c11 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c12 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -512,7 +549,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c12"
+                      class="c13"
                       data-blade-component="styled-base-input"
                       enterkeyhint="enter"
                       id="textinput-262-input-263"
@@ -529,29 +566,29 @@ exports[`InputGroup should handle validation states correctly 1`] = `
         </div>
       </div>
       <div
-        class="c13"
+        class="c14"
         data-blade-component="base-box"
       >
         <div
-          class="c14"
+          class="c15"
           data-blade-component="base-box"
         >
           <div
-            class="c15"
+            class="c16"
             data-blade-component="base-box"
             id="input-group-255-errortext-257"
           >
             <span
-              class="c16"
+              class="c17"
               data-blade-component="base-box"
             >
               <div
-                class="c17"
+                class="c18"
                 data-blade-component="box"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c19"
                   data-blade-component="icon"
                   fill="none"
                   height="12px"
@@ -578,7 +615,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
                 </svg>
               </div>
               <span
-                class="c19"
+                class="c20"
                 data-blade-component="text"
               >
                 Error message
@@ -1481,10 +1518,37 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1500,12 +1564,12 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   gap: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1517,7 +1581,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   width: 100%;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1534,7 +1598,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   align-self: center;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1608,7 +1672,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   border-radius: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1625,7 +1689,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   word-wrap: normal;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -1648,7 +1712,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   overflow-wrap: break-word;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1663,110 +1727,6 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c12.c12.c12.c12.c12 {
-  color: hsla(211,26%,34%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background-color: hsla(0,0%,100%,0);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 100%;
-  height: 36px;
-  min-height: 36px;
-  resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c12.c12.c12.c12.c12::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12::placeholder {
-  color: hsla(211,20%,52%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12:focus {
-  outline: none;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -1791,7 +1751,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 12px;
-  padding-right: 8px;
+  padding-right: 12px;
   width: 100%;
   height: 36px;
   min-height: 36px;
@@ -1873,7 +1833,111 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   outline: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c14.c14.c14.c14.c14 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c14.c14.c14.c14.c14::-webkit-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14::-moz-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14:-ms-input-placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14::placeholder {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14:focus {
+  outline: none;
+}
+
+.c12.c12.c12.c12.c12 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1897,7 +1961,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover {
+.c12.c12.c12.c12.c12:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1923,7 +1987,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:focus-within {
+.c12.c12.c12.c12.c12:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1947,12 +2011,12 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c11.c11.c11.c11.c11:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1964,7 +2028,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   z-index: 2;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -1991,12 +2055,12 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16:hover:not([disabled]) {
+.c17.c17.c17.c17.c17:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
   background-color: transparent;
 }
 
-.c16.c16.c16.c16.c16:focus-visible {
+.c17.c17.c17.c17.c17:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -2009,7 +2073,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
-.c16.c16.c16.c16.c16:active {
+.c17.c17.c17.c17.c17:active {
   color: hsla(211,26%,34%,1);
 }
 
@@ -2031,7 +2095,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
           data-blade-component="form-label"
           for="input-group-19-input-20"
           id="input-group-25-label"
-          style="width: auto; flex-shrink: 0; margin-right: 0px;"
+          style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c3"
@@ -2041,20 +2105,30 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
               class="c4"
               data-blade-component="base-box"
             >
-              <p
-                class="c5"
-                data-blade-component="text"
-              >
-                Test Group
-              </p>
               <div
-                class="c6"
-                data-blade-component="visually-hidden"
+                class=""
+                data-blade-component="base-box"
               >
-                <p
-                  class="c7"
-                  data-blade-component="text"
-                />
+                <div
+                  class="c5"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                  >
+                    Test Group
+                  </p>
+                  <div
+                    class="c7"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c8"
+                      data-blade-component="text"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2064,7 +2138,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class="c8 __blade-input-row"
+            class="c9 __blade-input-row"
             data-blade-component="base-box"
           >
             <div
@@ -2072,15 +2146,15 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
               data-blade-component="textinput"
             >
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class=" c11 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c12 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2089,7 +2163,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c12"
+                      class="c13"
                       data-blade-component="styled-base-input"
                       enterkeyhint="enter"
                       id="textinput-1-input-2"
@@ -2104,7 +2178,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
             </div>
           </div>
           <div
-            class="c8 __blade-input-row"
+            class="c9 __blade-input-row"
             data-blade-component="base-box"
           >
             <div
@@ -2112,15 +2186,15 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
               data-blade-component="textinput"
             >
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class=" c11 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c12 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2129,7 +2203,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c12"
+                      class="c13"
                       data-blade-component="styled-base-input"
                       enterkeyhint="enter"
                       id="textinput-7-input-8"
@@ -2147,15 +2221,15 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
               data-blade-component="password-input"
             >
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class=" c11 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c12 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2164,7 +2238,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
                       aria-invalid="false"
                       aria-required="false"
                       autocapitalize="none"
-                      class="c13"
+                      class="c14"
                       data-blade-component="styled-base-input"
                       enterkeyhint="done"
                       id="password-field-13-input-14"
@@ -2173,20 +2247,20 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
                       value=""
                     />
                     <div
-                      class="c14"
+                      class="c15"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c14"
+                        class="c15"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c15"
+                          class="c16"
                           data-blade-component="base-box"
                         >
                           <button
                             aria-label="Show password"
-                            class="c16"
+                            class="c17"
                             data-blade-component="icon-button"
                             type="button"
                           >
@@ -2433,7 +2507,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(213,47%,96%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
@@ -2457,7 +2531,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(213,47%,96%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
@@ -2483,7 +2557,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 }
 
 .c6.c6.c6.c6.c6:focus-within {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(213,47%,96%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;

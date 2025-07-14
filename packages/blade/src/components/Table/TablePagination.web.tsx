@@ -320,6 +320,7 @@ const _TablePagination = ({
               <PageSelectionButton
                 onClick={() => handlePageChange(paginationButtons.firstItem - 1)}
                 isSelected={currentPage === paginationButtons.firstItem - 1}
+                {...makeAccessible({ label: `Page ${paginationButtons.firstItem}` })}
               >
                 <Text
                   size="medium"
@@ -386,6 +387,7 @@ const _TablePagination = ({
               <PageSelectionButton
                 onClick={() => handlePageChange(paginationButtons.lastItem - 1)}
                 isSelected={currentPage === paginationButtons.lastItem - 1}
+                {...makeAccessible({ label: `Page ${paginationButtons.lastItem}` })}
               >
                 <Text
                   size="medium"

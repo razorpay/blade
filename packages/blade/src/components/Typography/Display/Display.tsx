@@ -22,6 +22,7 @@ export type DisplayProps = {
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
+  textTransform?: BaseTextProps['textTransform'];
 } & TestID &
   StyledPropsBlade;
 
@@ -80,6 +81,7 @@ const _Display = (
     testID,
     textAlign,
     textDecorationLine,
+    textTransform,
     ...styledProps
   }: DisplayProps,
   ref: React.Ref<BladeElementRef>,
@@ -94,6 +96,7 @@ const _Display = (
       {...props}
       textAlign={textAlign}
       textDecorationLine={textDecorationLine}
+      textTransform={textTransform}
       {...getStyledProps(styledProps)}
     >
       {children}
