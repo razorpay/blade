@@ -377,7 +377,6 @@ import VolumeLowIconComponent from './VolumeLowIcon';
 import VolumeMuteIconComponent from './VolumeMuteIcon';
 import WalletIconComponent from './WalletIcon';
 import WatchIconComponent from './WatchIcon';
-import WhatsAppIconComponent from './WhatsAppIcon';
 import WifiIconComponent from './WifiIcon';
 import WifiOffIconComponent from './WifiOffIcon';
 import WindIconComponent from './WindIcon';

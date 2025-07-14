@@ -378,7 +378,6 @@ export { default as VolumeLowIcon } from './VolumeLowIcon';
 export { default as VolumeMuteIcon } from './VolumeMuteIcon';
 export { default as WalletIcon } from './WalletIcon';
 export { default as WatchIcon } from './WatchIcon';
-export { default as WhatsAppIcon } from './WhatsAppIcon';
 export { default as WifiIcon } from './WifiIcon';
 export { default as WifiOffIcon } from './WifiOffIcon';
 export { default as WindIcon } from './WindIcon';
