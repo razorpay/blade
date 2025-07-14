@@ -8,22 +8,16 @@ const showBundleSizeDiff = async () => {
 
   if (diffTable) {
     markdownMessage = `
-  ## Bundle Size Report
+## Bundle Size Report
 
-  <details>
-  <summary> Updated Components </summary>
+<details>
+<summary> Updated Components </summary>
 
-  ${diffTable}
+${diffTable}
 
-  </details>
-  
-  `;
-  } else {
-    markdownMessage = `
-  ## Bundle Size Report
+</details>
 
-  No bundle size changes detected.
-  `;
+`;
   }
 };
 
@@ -35,7 +29,6 @@ const checkComponentsIndexChanges = () => {
 
   if (hasComponentsIndexChanged) {
     markdownMessage += `
-
 ## Component Status Update Needed
 
 🔔 Changes detected in \`components/index.ts\`. Please remember to:
@@ -44,10 +37,14 @@ const checkComponentsIndexChanges = () => {
 3. Update existing component information if needed
 
 This helps keep our documentation up to date! 📚
-    `;
+`;
   }
 };
 
 showBundleSizeDiff();
 checkComponentsIndexChanges();
-markdown(markdownMessage);
+
+// Only post markdown if we have a message
+if (markdownMessage.trim()) {
+  markdown(markdownMessage);
+}
