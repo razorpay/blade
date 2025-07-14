@@ -982,29 +982,27 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                     borderRadius="medium"
                   >
                     {selectedPO && (
-                      <>
-                        <Box display="flex" justifyContent="space-between" alignItems="center">
-                          <Box>
-                            <Text weight="semibold" size="large">
-                              {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
-                            </Text>
-                            <Text size="small" color="surface.text.gray.muted">
-                              Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
-                            </Text>
-                          </Box>
-                          <Badge
-                            size="medium"
-                            color={
-                              GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
-                              'Approved'
-                                ? 'positive'
-                                : 'notice'
-                            }
-                          >
-                            {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ?? ''}
-                          </Badge>
+                      <Box display="flex" justifyContent="space-between" alignItems="center">
+                        <Box>
+                          <Text weight="semibold" size="large">
+                            {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
+                          </Text>
+                          <Text size="small" color="surface.text.gray.muted">
+                            Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
+                          </Text>
                         </Box>
-                      </>
+                        <Badge
+                          size="medium"
+                          color={
+                            GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
+                            'Approved'
+                              ? 'positive'
+                              : 'notice'
+                          }
+                        >
+                          {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ?? ''}
+                        </Badge>
+                      </Box>
                     )}
                   </Box>
                 </Box>
