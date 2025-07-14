@@ -27,7 +27,7 @@ const showBundleSizeDiff = async () => {
 
 // Check if components/index.ts was modified
 const checkComponentsIndexChanges = () => {
-  const componentsIndexFile = 'packages/blade/src/components/index.ts';
+  const componentsIndexFile = 'src/components/index.ts';
   const hasComponentsIndexChanged = danger.git.modified_files.includes(componentsIndexFile);
 
   if (hasComponentsIndexChanged) {
