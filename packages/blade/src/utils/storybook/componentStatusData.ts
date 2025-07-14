@@ -18,6 +18,22 @@ type ComponentStatusDataType = {
 
 const componentData: ComponentStatusDataType = [
   {
+    name: 'EmptyState',
+    status: 'released',
+    releasedIn: '12.41.0',
+    storybookLink: 'Components/EmptyState',
+    description: 'EmptyState component for displaying empty state messages and illustrations.',
+    platform: 'all',
+  },
+  {
+    name: 'SelectableCard',
+    status: 'released',
+    releasedIn: '12.36.0',
+    storybookLink: 'Components/Card/SelectableCard',
+    description: 'Card component that can be selected/deselected.',
+    platform: 'all',
+  },
+  {
     name: 'ActionList',
     status: 'released',
     releasedIn: '6.2.0',
@@ -634,7 +650,8 @@ const componentData: ComponentStatusDataType = [
     status: 'released',
     releasedIn: '12.20.0',
     storybookLink: 'Components/Input/FilterChipSelectInput',
-    description: 'FilterChipSelectInput component for selecting multiple values using filter chips.',
+    description:
+      'FilterChipSelectInput component for selecting multiple values using filter chips.',
     platform: 'all',
   },
   {
@@ -650,7 +667,8 @@ const componentData: ComponentStatusDataType = [
     status: 'released',
     releasedIn: '12.20.0',
     storybookLink: 'Patterns/ListView',
-    description: 'ListView pattern for displaying data in a list format with built-in filtering and search capabilities.',
+    description:
+      'ListView pattern for displaying data in a list format with built-in filtering and search capabilities.',
     platform: 'all',
   },
   {
