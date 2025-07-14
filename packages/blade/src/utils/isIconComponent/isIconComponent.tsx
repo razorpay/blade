@@ -1,14 +1,13 @@
 import React from 'react';
 import type { IconComponent } from '~components/Icons';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const isIconComponent = (element: React.ReactNode | IconComponent): boolean => {
   if (typeof element === 'function') {
-    const elementType = React.createElement(element).type;
-    if (typeof elementType === 'function') {
-      return elementType.name?.includes('Icon') ?? false;
-    }
+    const componentId = getComponentId(React.createElement(element));
+    return componentId?.endsWith('Icon') ?? false;
   }
-  return false;
+  return getComponentId(element)?.endsWith('Icon') ?? false;
 };
 
 export { isIconComponent };
