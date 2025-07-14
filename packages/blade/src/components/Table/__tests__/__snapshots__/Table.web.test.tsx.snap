@@ -8298,7 +8298,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                           data-blade-component="base-box"
                         >
                           <input
-                            aria-checked="false"
+                            aria-checked="mixed"
                             aria-disabled="false"
                             aria-invalid="false"
                             aria-required="false"
