@@ -38,6 +38,7 @@ jobs:
         env:
           FIGMA_API_TOKEN: ${{ secrets.FIGMA_API_TOKEN }}
         run: |
+          cd packages/blade
           yarn run fetch-icons
   
   
