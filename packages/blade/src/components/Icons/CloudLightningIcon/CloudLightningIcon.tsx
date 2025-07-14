@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const CloudLightningIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _CloudLightningIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -18,5 +19,9 @@ const CloudLightningIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const CloudLightningIcon = assignWithoutSideEffects(_CloudLightningIcon, {
+  componentId: 'CloudLightningIcon',
+});
 
 export default CloudLightningIcon;

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ViewLiveDemoIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _ViewLiveDemoIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const ViewLiveDemoIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const ViewLiveDemoIcon = assignWithoutSideEffects(_ViewLiveDemoIcon, {
+  componentId: 'ViewLiveDemoIcon',
+});
 
 export default ViewLiveDemoIcon;

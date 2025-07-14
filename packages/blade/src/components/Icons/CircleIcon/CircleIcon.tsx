@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const CircleIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _CircleIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const CircleIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const CircleIcon = assignWithoutSideEffects(_CircleIcon, {
+  componentId: 'CircleIcon',
+});
 
 export default CircleIcon;

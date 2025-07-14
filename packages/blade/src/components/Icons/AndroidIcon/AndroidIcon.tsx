@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const AndroidIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _AndroidIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -24,5 +25,9 @@ const AndroidIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const AndroidIcon = assignWithoutSideEffects(_AndroidIcon, {
+  componentId: 'AndroidIcon',
+});
 
 export default AndroidIcon;

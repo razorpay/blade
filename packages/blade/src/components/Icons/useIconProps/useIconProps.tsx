@@ -20,4 +20,8 @@ function useIconProps({
   return { height, width, iconColor };
 }
 
+const useIconProps = assignWithoutSideEffects(_useIconProps, {
+  componentId: 'useIconProps',
+});
+
 export default useIconProps;

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const DeleteIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _DeleteIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const DeleteIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const DeleteIcon = assignWithoutSideEffects(_DeleteIcon, {
+  componentId: 'DeleteIcon',
+});
 
 export default DeleteIcon;

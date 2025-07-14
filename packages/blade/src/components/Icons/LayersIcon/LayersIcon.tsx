@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const LayersIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _LayersIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -24,5 +25,9 @@ const LayersIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const LayersIcon = assignWithoutSideEffects(_LayersIcon, {
+  componentId: 'LayersIcon',
+});
 
 export default LayersIcon;

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const PettyCashBudgetIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _PettyCashBudgetIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -36,5 +37,9 @@ const PettyCashBudgetIcon: IconComponent = ({ size, color, ...styledProps }) => 
     </Svg>
   );
 };
+
+const PettyCashBudgetIcon = assignWithoutSideEffects(_PettyCashBudgetIcon, {
+  componentId: 'PettyCashBudgetIcon',
+});
 
 export default PettyCashBudgetIcon;

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const BusinessSpendManagementIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _BusinessSpendManagementIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const BusinessSpendManagementIcon: IconComponent = ({ size, color, ...styledProp
     </Svg>
   );
 };
+
+const BusinessSpendManagementIcon = assignWithoutSideEffects(_BusinessSpendManagementIcon, {
+  componentId: 'BusinessSpendManagementIcon',
+});
 
 export default BusinessSpendManagementIcon;

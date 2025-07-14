@@ -1,8 +1,9 @@
 import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const PinIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _PinIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -23,5 +24,9 @@ const PinIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const PinIcon = assignWithoutSideEffects(_PinIcon, {
+  componentId: 'PinIcon',
+});
 
 export default PinIcon;

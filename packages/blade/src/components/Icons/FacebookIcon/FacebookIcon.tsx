@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const FacebookIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _FacebookIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const FacebookIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const FacebookIcon = assignWithoutSideEffects(_FacebookIcon, {
+  componentId: 'FacebookIcon',
+});
 
 export default FacebookIcon;

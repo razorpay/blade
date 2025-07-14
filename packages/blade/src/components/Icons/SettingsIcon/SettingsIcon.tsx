@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const SettingsIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _SettingsIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -22,5 +23,9 @@ const SettingsIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const SettingsIcon = assignWithoutSideEffects(_SettingsIcon, {
+  componentId: 'SettingsIcon',
+});
 
 export default SettingsIcon;
