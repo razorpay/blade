@@ -25,4 +25,24 @@ const showBundleSizeDiff = async () => {
   }
 };
 
+// Check if components/index.ts was modified
+const checkComponentsIndexChanges = () => {
+  const componentsIndexFile = 'packages/blade/src/components/index.ts';
+  const hasComponentsIndexChanged = danger.git.modified_files.includes(componentsIndexFile);
+
+  if (hasComponentsIndexChanged) {
+    markdown(`
+## Component Status Update Needed
+
+🔔 Changes detected in \`components/index.ts\`. Please remember to:
+1. Update the component status in \`src/utils/storybook/componentStatusData.ts\`
+2. Add appropriate status, release version, and description for any new components
+3. Update existing component information if needed
+
+This helps keep our documentation up to date! 📚
+    `);
+  }
+};
+
 showBundleSizeDiff();
+checkComponentsIndexChanges();
