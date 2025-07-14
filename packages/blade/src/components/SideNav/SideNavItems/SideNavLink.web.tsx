@@ -175,7 +175,8 @@ const L3Trigger = ({
         <BaseBox
           className={STYLED_NAV_LINK}
           as={href ? as : 'button'}
-          to={href}
+          // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+          // @ts-ignore - to is not defined in types but works          to={href}
           target={target}
           onClick={(e: React.MouseEvent) => toggleCollapse(e)}
           {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
@@ -311,11 +312,13 @@ const SideNavLink = ({
               <BaseBox
                 className={STYLED_NAV_LINK}
                 as={as ?? 'a'}
+                // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+                // @ts-ignore - to is not defined in types but works
                 to={href}
                 href={as ? undefined : href}
                 target={target}
                 ref={refs.setReference}
-                onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                   // Close the mobile nav when item is clicked and its not trigger for next menu
                   if (!isL2Trigger) {
                     closeMobileNav?.();
@@ -333,7 +336,9 @@ const SideNavLink = ({
 
                   onClick?.(e);
                 }}
-                onFocus={(e: { target: HTMLDivElement }) => {
+                // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+                // @ts-ignore - some issue with onFocus type on Box
+                onFocus={(e: { target: HTMLAnchorElement }) => {
                   // FloatinFocusManager by default focusses on last clicked element when you move to different tab and come back to the original tab
                   // Which can make L1 to expand when tabs / windows are changed
                   // Adding focus-visible check ensures this behaviour of closing menus is only applicable when there is visible focus ring on it (while tabbing)

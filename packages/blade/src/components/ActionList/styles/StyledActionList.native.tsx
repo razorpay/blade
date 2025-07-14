@@ -20,7 +20,8 @@ const StyledActionList = ({
   onPointerEnter,
   pointerEvents,
   ...props
-}: { children: React.ReactNode } & BaseBoxProps & StyledActionListProps): React.ReactElement => {
+}: { children: React.ReactNode } & Omit<BaseBoxProps, 'as'> &
+  StyledActionListProps): React.ReactElement => {
   const { theme } = useTheme();
 
   return (

@@ -30,6 +30,8 @@ const SideNavItem = ({
 
   return (
     <TooltipifyComponent tooltip={tooltip}>
+      {/* eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error */}
+      {/* @ts-ignore - to is not defined in types but works */}
       <SideNavItemContainer
         display="flex"
         flexDirection="row"

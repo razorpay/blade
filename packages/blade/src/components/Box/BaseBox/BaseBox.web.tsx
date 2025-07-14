@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import type { BaseBoxProps } from './types';
 import { useMemoizedStyles } from './useMemoizedStyles';
@@ -6,8 +7,9 @@ import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BladeCommonEvents } from '~components/types';
 
-const _BaseBox = styled.div
+const StyledBaseBox = styled.div
   .attrs<BaseBoxProps>((props) => {
     return {
       ...metaAttribute({
@@ -25,6 +27,17 @@ const _BaseBox = styled.div
   return cssObject;
 });
 
-const BaseBox = assignWithoutSideEffects(React.memo(_BaseBox), { componentId: 'BaseBox' });
+type PolymorphicBaseBoxProps = Omit<ComponentPropsWithoutRef<'div'>, keyof BladeCommonEvents> &
+  BaseBoxProps & {
+    as?: string | React.ElementType;
+  } & BladeCommonEvents;
+
+const _BaseBox = React.forwardRef<HTMLDivElement, PolymorphicBaseBoxProps>((props, ref) => {
+  return <StyledBaseBox {...props} ref={ref} />;
+});
+
+const BaseBox = assignWithoutSideEffects(React.memo<typeof _BaseBox>(_BaseBox), {
+  componentId: 'BaseBox',
+});
 
 export { BaseBox };
