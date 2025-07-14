@@ -24,9 +24,9 @@ jobs:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
-      # - name: Update Bundle Size Data
-      #   run: yarn generate-bundle-size-info
-      #   working-directory: packages/blade
+      - name: Update Bundle Size Data
+        run: yarn generate-bundle-size-info
+        working-directory: packages/blade
       - name: Danger
         run: yarn danger ci
         working-directory: packages/blade

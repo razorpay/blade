@@ -42,7 +42,7 @@ This helps keep our documentation up to date! 📚
   }
 };
 
-// showBundleSizeDiff();
+showBundleSizeDiff();
 checkComponentsIndexChanges();
 
 // Only post markdown if we have a message
