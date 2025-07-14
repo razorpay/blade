@@ -565,7 +565,7 @@ function MultiSelectListViewExample() {
           searchValuePlaceholder="Search payments"
           selectedFiltersCount={selectedQuickFilters.length}
           showFilters={showFilters}
-          onFiltersChange={setShowFilters}
+          onShowFiltersChange={setShowFilters}
         >
           {/* Filter chips and table similar to first example */}
         </ListViewFilters>

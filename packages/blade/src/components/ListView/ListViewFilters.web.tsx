@@ -20,7 +20,6 @@ import { useTheme } from '~components/BladeProvider';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
 import { Divider } from '~components/Divider';
-import { Dropdown } from '~components/Dropdown';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const gradientOverlyContainerWidth = '21px'; // 20px + 1px divider width
@@ -82,9 +81,9 @@ const ListViewFilters = ({
     false,
   );
   const [showFilters, setShowFilters] = useControllableState({
-    defaultValue: showQuickFilters || showFiltersProp,
-    value: showQuickFilters || showFiltersProp,
-    onChange: onShowQuickFiltersChange || onShowFiltersChange,
+    defaultValue: showQuickFilters ?? showFiltersProp,
+    value: showQuickFilters ?? showFiltersProp,
+    onChange: onShowQuickFiltersChange ?? onShowFiltersChange,
   });
   const [
     listViewSelectedFilters,
@@ -107,7 +106,6 @@ const ListViewFilters = ({
 
   const isSearchTrailingDropDown =
     React.isValidElement(searchTrailing) && getComponentId(searchTrailing) === 'Dropdown';
-
 
   return (
     <ListViewFiltersProvider
