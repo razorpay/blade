@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.41.5
+
+### Patch Changes
+
+- 061de8050: fix(blade): quick filter issue
+- 0a0918895: fix: Text sizes in button
+
 ## 12.41.4
 
 ### Patch Changes
