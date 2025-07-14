@@ -44,6 +44,38 @@ type CarouselProps = {
    */
   shouldAddStartEndSpacing?: boolean;
   /**
+   * Controls how carousel items are aligned within the container.
+   * - 'start': Items align to the start (default behavior)
+   * - 'center': Items are centered with peek behavior (active item centered, adjacent items peek from sides)
+   * - 'end': Items align to the end
+   *
+   * @default 'start'
+   *
+   * @example
+   * ```jsx
+   * // Basic peek behavior with centered alignment
+   * <Carousel
+   *   visibleItems={1}
+   *   carouselItemWidth="80%"
+   *   snapAlign="center"
+   *   gap="spacing.5"
+   * >
+   *   <CarouselItem>Card 1</CarouselItem>
+   *   <CarouselItem>Card 2</CarouselItem>
+   *   <CarouselItem>Card 3</CarouselItem>
+   * </Carousel>
+   * ```
+   */
+  snapAlign?: 'start' | 'center' | 'end';
+  /**
+   * Sets the gap between carousel items.
+   *
+   * Only visible when more than 1 card is seen in viewport, otherwise has no effect.
+   *
+   * @default { base: 'spacing.4', m: 'spacing.5' }
+   */
+  gap?: BoxProps['gap'];
+  /**
    * If true, the carousel will automatically slide to the next slide, default interval is 6 seconds
    *
    * @default false
