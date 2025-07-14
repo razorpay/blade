@@ -825,6 +825,49 @@ const TableNestingExample = () => {
 };
 ```
 
+### Table Grouping Pattern
+
+Hierarchical grouped data with automatic tree structure. Use for categorized data with parent-child relationships.
+
+```tsx
+const TableGroupingExample = () => {
+  return (
+    <Table data={groupedData} isGrouped showBorderedCells>
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Category</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+              <TableHeaderCell>Status</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+
+          <TableBody>
+            {tableData.map((item, index) => (
+              <TableRow key={index} item={item}>
+                <TableCell
+                  gridColumnStart={item.treeXLevel === 0 ? 1 : undefined}
+                  gridColumnEnd={item.treeXLevel === 0 ? 4 : undefined}
+                >
+                  {item.name}
+                </TableCell>
+                {item.treeXLevel !== 0 && (
+                  <>
+                    <TableCell>{item.amount}</TableCell>
+                    <TableCell>{item.status}</TableCell>
+                  </>
+                )}
+              </TableRow>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </Table>
+  );
+};
+```
+
 ### Table Spanning Pattern
 
 Row and column spanning for complex layouts with merged cells. Use for grouping related data or creating summary sections.

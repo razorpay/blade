@@ -221,7 +221,9 @@ const StyledRow = styled(Row)<{
   $isSelectable: boolean;
   $isHoverable: boolean;
   $showBorderedCells: boolean;
-}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells }) => {
+  $isGrouped: boolean;
+  $isGroupHeader: boolean;
+}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isGrouped, $isGroupHeader }) => {
   const { hasHoverActions } = useTableContext();
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
@@ -296,6 +298,23 @@ const StyledRow = styled(Row)<{
         },
       }),
       '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
+      ...($isGroupHeader && {
+        '& td': {
+          backgroundColor: getIn(theme.colors, tableRow.groupHeaderBackgroundColor),
+        },
+        '& .cell-wrapper': {
+          borderTopWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
+          borderTopStyle: 'solid',
+          borderTopColor: getIn(theme.colors, tableRow.borderColor),
+          borderRight: 'none',
+        },
+      }),
+      ...($isGrouped &&
+        !$isGroupHeader && {
+          '& .cell-wrapper': {
+            border: 'none',
+          },
+        }),
     },
   };
 });
@@ -318,11 +337,14 @@ const _TableRow = <Item,>({
     showBorderedCells,
     setHasHoverActions,
     isVirtualized,
+    isGrouped,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
   const isSelected = selectedRows?.includes(item.id);
   const hasHoverActions = Boolean(hoverActions);
+  const isGroupHeader =
+    isGrouped && (item as any).treeXLevel === 0 && ((item as any).nodes?.length ?? 0) > 0;
 
   useEffect(() => {
     if (isDisabled) {
@@ -345,11 +367,18 @@ const _TableRow = <Item,>({
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
       onMouseEnter={() => onHover?.({ item })}
-      onClick={() => onClick?.({ item })}
+      onClick={() => {
+        onClick?.({ item });
+        if (selectionType !== 'none' && !isDisabled) {
+          toggleRowSelectionById(item.id);
+        }
+      }}
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
       $isVirtualized={isVirtualized}
+      $isGrouped={isGrouped}
+      $isGroupHeader={isGroupHeader}
     >
       {isMultiSelect && (
         <TableCheckboxCell
