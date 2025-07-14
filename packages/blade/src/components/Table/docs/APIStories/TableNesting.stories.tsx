@@ -9,6 +9,11 @@ import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { Amount } from '~components/Amount';
 import { ChevronDownIcon, ChevronRightIcon } from '~components/Icons';
+import { BaseMotionEntryExit } from '~components/BaseMotion';
+import type { MotionVariantsType } from '~components/BaseMotion';
+import { castWebType, makeSpace, useTheme } from '~utils';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
+import { msToSeconds } from '~utils/msToSeconds';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 type TransactionData = {
@@ -142,6 +147,44 @@ const merchantData: MerchantData[] = [
   },
 ];
 
+// Custom slide down animation component
+const SlideDown = ({ children }: { children: React.ReactElement }): React.ReactElement => {
+  const { theme } = useTheme();
+  const movePx = makeSpace(theme.spacing[3]); // 8px offset from above
+
+  const slideDownVariants: MotionVariantsType = {
+    initial: {
+      opacity: 0,
+      transform: `translateY(-${movePx})`, // Start from above (negative Y)
+    },
+    animate: {
+      opacity: 1,
+      transform: `translateY(${makeSpace(theme.spacing[0])})`, // End at 0
+      transition: {
+        duration: msToSeconds(theme.motion.duration.quick),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
+      },
+    },
+    exit: {
+      opacity: 0,
+      transform: `translateY(-${movePx})`, // Exit upward
+      transition: {
+        duration: msToSeconds(theme.motion.duration.quick),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
+      },
+    },
+  };
+
+  return (
+    <BaseMotionEntryExit
+      motionVariants={slideDownVariants}
+      children={children}
+      type="inout"
+      motionTriggers={['mount']}
+    />
+  );
+};
+
 const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }): JSX.Element => {
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
 
@@ -209,7 +252,9 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                       />
                       {item.merchantName}
                     </TableCell>
-                    <TableCell>{item.totalAmount}</TableCell>
+                    <TableCell>
+                      <Amount value={item.totalAmount} isAffixSubtle={false} />
+                    </TableCell>
                     <TableCell>
                       <Text size="small" color="feedback.text.positive.intense">
                         {item.successRate}%
@@ -225,95 +270,98 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                   {expandedRows.has(item.id) && (
                     <TableRow key={`${item.id}-expanded`} item={item}>
                       <TableCell gridColumnStart={1} gridColumnEnd={5}>
-                        <Box
-                          backgroundColor="surface.background.gray.subtle"
-                          padding="spacing.4"
-                          borderRadius="medium"
-                          margin="spacing.2"
-                          width="100%"
-                        >
-                          {index !== 1 ? (
-                            <Box display="flex" flexDirection="column" gap="spacing.2">
-                              {(item.children as TransactionData[]).map((child) => (
-                                <Box
-                                  key={child.id}
-                                  display="grid"
-                                  gridTemplateColumns="repeat(4, 1fr)"
-                                  gap="spacing.2"
+                        <SlideDown>
+                          <Box
+                            backgroundColor="surface.background.gray.subtle"
+                            padding="spacing.4"
+                            borderRadius="medium"
+                            margin="spacing.2"
+                            width="100%"
+                          >
+                            {index !== 1 ? (
+                              <Box display="flex" flexDirection="column" gap="spacing.2">
+                                {(item.children as TransactionData[]).map((child) => (
+                                  <Box
+                                    key={child.id}
+                                    display="grid"
+                                    gridTemplateColumns="repeat(4, 1fr)"
+                                    gap="spacing.2"
+                                  >
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      {child.paymentId}
+                                    </Text>
+                                    <Amount value={child.amount} isAffixSubtle={false} />
+                                    {child.date}
+                                    <Badge
+                                      size="small"
+                                      color={child.status === 'Completed' ? 'positive' : 'negative'}
+                                    >
+                                      {child.status}
+                                    </Badge>
+                                  </Box>
+                                ))}
+                              </Box>
+                            ) : (
+                              <Box display="flex" flexDirection="column" gap="spacing.4">
+                                <Text
+                                  size="medium"
+                                  weight="semibold"
+                                  color="surface.text.gray.normal"
                                 >
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    {child.paymentId}
-                                  </Text>
-                                  <Amount value={child.amount} />
-                                  {child.date}
-                                  <Badge
-                                    size="small"
-                                    color={child.status === 'Completed' ? 'positive' : 'negative'}
-                                  >
-                                    {child.status}
-                                  </Badge>
-                                </Box>
-                              ))}
-                            </Box>
-                          ) : (
-                            <Box display="flex" flexDirection="column" gap="spacing.4">
-                              <Text
-                                size="medium"
-                                weight="semibold"
-                                color="surface.text.gray.normal"
-                              >
-                                Payment Gateway Summary
-                              </Text>
-                              <Box
-                                display="grid"
-                                gridTemplateColumns="repeat(2, 1fr)"
-                                gap="spacing.4"
-                                backgroundColor="surface.background.gray.moderate"
-                                padding="spacing.3"
-                                borderRadius="medium"
-                              >
-                                <Box display="flex" flexDirection="column" gap="spacing.1">
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    Primary Gateway
-                                  </Text>
-                                  <Badge size="medium" color="information">
-                                    {(item.children[0] as SummaryData).gatewayUsed}
-                                  </Badge>
-                                </Box>
-                                <Box display="flex" flexDirection="column" gap="spacing.1">
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    Transaction Count
-                                  </Text>
-                                  <Text size="medium" weight="semibold">
-                                    {(item
-                                      .children[0] as SummaryData).transactionCount.toLocaleString()}
-                                  </Text>
-                                </Box>
-                                <Box display="flex" flexDirection="column" gap="spacing.1">
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    Total Amount
-                                  </Text>
-                                  <Amount
-                                    value={(item.children[0] as SummaryData).totalAmount}
-                                    size="medium"
-                                  />
-                                </Box>
-                                <Box display="flex" flexDirection="column" gap="spacing.1">
-                                  <Text size="small" color="surface.text.gray.muted">
-                                    Success Rate
-                                  </Text>
-                                  <Text
-                                    size="medium"
-                                    weight="semibold"
-                                    color="feedback.text.positive.intense"
-                                  >
-                                    {(item.children[0] as SummaryData).successRate}%
-                                  </Text>
+                                  Payment Gateway Summary
+                                </Text>
+                                <Box
+                                  display="grid"
+                                  gridTemplateColumns="repeat(2, 1fr)"
+                                  gap="spacing.4"
+                                  backgroundColor="surface.background.gray.moderate"
+                                  padding="spacing.3"
+                                  borderRadius="medium"
+                                >
+                                  <Box display="flex" flexDirection="column" gap="spacing.1">
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      Primary Gateway
+                                    </Text>
+                                    <Badge size="medium" color="information">
+                                      {(item.children[0] as SummaryData).gatewayUsed}
+                                    </Badge>
+                                  </Box>
+                                  <Box display="flex" flexDirection="column" gap="spacing.1">
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      Transaction Count
+                                    </Text>
+                                    <Text size="medium" weight="semibold">
+                                      {(item
+                                        .children[0] as SummaryData).transactionCount.toLocaleString()}
+                                    </Text>
+                                  </Box>
+                                  <Box display="flex" flexDirection="column" gap="spacing.1">
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      Total Amount
+                                    </Text>
+                                    <Amount
+                                      value={(item.children[0] as SummaryData).totalAmount}
+                                      size="medium"
+                                      isAffixSubtle={false}
+                                    />
+                                  </Box>
+                                  <Box display="flex" flexDirection="column" gap="spacing.1">
+                                    <Text size="small" color="surface.text.gray.muted">
+                                      Success Rate
+                                    </Text>
+                                    <Text
+                                      size="medium"
+                                      weight="semibold"
+                                      color="feedback.text.positive.intense"
+                                    >
+                                      {(item.children[0] as SummaryData).successRate}%
+                                    </Text>
+                                  </Box>
                                 </Box>
                               </Box>
-                            </Box>
-                          )}
-                        </Box>
+                            )}
+                          </Box>
+                        </SlideDown>
                       </TableCell>
                     </TableRow>
                   )}

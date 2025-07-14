@@ -5,6 +5,8 @@ import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
 import { TableBody, TableRow, TableCell } from '../../TableBody';
 import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
+import { Amount } from '~components/Amount';
+import { Text } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 
@@ -155,10 +157,18 @@ export const RowSpan: StoryFn<typeof TableComponent> = () => {
                       </TableCell>
                     )}
                     <TableCell>{item.method}</TableCell>
-                    <TableCell>₹{item.amount.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.fee.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.gst.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.settlement.toFixed(2)}</TableCell>
+                    <TableCell>
+                      <Amount value={item.amount} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.fee} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.gst} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.settlement} isAffixSubtle={false} />
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -187,10 +197,18 @@ export const ColumnSpan: StoryFn<typeof TableComponent> = () => {
                 <TableRow key={index} item={item}>
                   <TableCell>{item?.merchant}</TableCell>
                   <TableCell>{item?.method}</TableCell>
-                  <TableCell>₹{item?.amount.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.fee.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.gst.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.settlement.toFixed(2)}</TableCell>
+                  <TableCell>
+                    <Amount value={item?.amount} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.fee} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.gst} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.settlement} isAffixSubtle={false} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -222,10 +240,18 @@ export const HeaderSpan: StoryFn<typeof TableComponent> = () => {
                 <TableRow key={index} item={item}>
                   <TableCell>{item?.merchant}</TableCell>
                   <TableCell>{item?.method}</TableCell>
-                  <TableCell>₹{item?.amount.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.fee.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.gst.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.settlement.toFixed(2)}</TableCell>
+                  <TableCell>
+                    <Amount value={item?.amount} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.fee} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.gst} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.settlement} isAffixSubtle={false} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -251,20 +277,32 @@ export const FooterSpan: StoryFn<typeof TableComponent> = () => {
                 <TableRow key={index} item={item}>
                   <TableCell>{item?.merchant}</TableCell>
                   <TableCell>{item?.method}</TableCell>
-                  <TableCell>₹{item?.amount.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.fee.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.gst.toFixed(2)}</TableCell>
-                  <TableCell>₹{item?.settlement.toFixed(2)}</TableCell>
+                  <TableCell>
+                    <Amount value={item?.amount} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.fee} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.gst} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={item?.settlement} isAffixSubtle={false} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
             <TableFooter>
               <TableFooterRow>
                 <TableFooterCell gridColumnStart={1} gridColumnEnd={6}>
-                  Total Summary ({Object.keys(grouped).length} merchants,{' '}
-                  {razorpayData.nodes.length} transactions)
+                  <Text weight="regular">
+                    Total Summary ({Object.keys(grouped).length} merchants,{' '}
+                    {razorpayData.nodes.length} transactions)
+                  </Text>
                 </TableFooterCell>
-                <TableFooterCell>₹{totalSettlement.toFixed(2)}</TableFooterCell>
+                <TableFooterCell>
+                  <Amount value={totalSettlement} isAffixSubtle={false} />
+                </TableFooterCell>
               </TableFooterRow>
             </TableFooter>
           </>
@@ -301,11 +339,17 @@ export const ColumnRowSpan: StoryFn<typeof TableComponent> = () => {
                     )}
                     {index >= 2 && <TableCell>{item?.method}</TableCell>}
                     <TableCell gridColumnStart={spanInfo.shouldSpan ? 3 : 1}>
-                      ₹{item.amount.toFixed(2)}
+                      <Amount value={item.amount} isAffixSubtle={false} />
                     </TableCell>
-                    <TableCell>₹{item.fee.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.gst.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.settlement.toFixed(2)}</TableCell>
+                    <TableCell>
+                      <Amount value={item.fee} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.gst} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.settlement} isAffixSubtle={false} />
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -334,21 +378,28 @@ export const ColumnSpanWithSelection: StoryFn<typeof TableComponent> = () => {
                 <TableRow key={index} item={item}>
                   <TableCell>{item.merchant}</TableCell>
                   <TableCell>{item.method}</TableCell>
-                  <TableCell>₹{item.amount.toFixed(2)}</TableCell>
-                  <TableCell gridColumnStart={5} gridColumnEnd={7}>
-                    ₹{(Number(item.fee) + Number(item.gst)).toFixed(2)}
+                  <TableCell>
+                    <Amount value={item.amount} isAffixSubtle={false} />
                   </TableCell>
-                  <TableCell>₹{Number(item.settlement).toFixed(2)}</TableCell>
+                  <TableCell gridColumnStart={5} gridColumnEnd={7}>
+                    <Amount value={Number(item.fee) + Number(item.gst)} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={Number(item.settlement)} isAffixSubtle={false} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
             <TableFooter>
               <TableFooterRow>
                 <TableFooterCell gridColumnStart={1} gridColumnEnd={7}>
-                  Summary
+                  <Text weight="regular">Summary</Text>
                 </TableFooterCell>
                 <TableFooterCell>
-                  ₹{razorpayData.nodes.reduce((sum, item) => sum + item.settlement, 0).toFixed(2)}
+                  <Amount
+                    value={razorpayData.nodes.reduce((sum, item) => sum + item.settlement, 0)}
+                    isAffixSubtle={false}
+                  />
                 </TableFooterCell>
               </TableFooterRow>
             </TableFooter>
@@ -378,27 +429,40 @@ export const ColumnSpanWithStickyFirstColumn: StoryFn<typeof TableComponent> = (
                 <TableRow key={index} item={item}>
                   <TableCell>{item.merchant}</TableCell>
                   <TableCell>{item.method}</TableCell>
-                  <TableCell>₹{item.amount.toFixed(2)}</TableCell>
-                  <TableCell gridColumnStart={4} gridColumnEnd={6}>
-                    ₹{(Number(item.fee) + Number(item.gst)).toFixed(2)}
+                  <TableCell>
+                    <Amount value={item.amount} isAffixSubtle={false} />
                   </TableCell>
-                  <TableCell>₹{Number(item.settlement).toFixed(2)}</TableCell>
+                  <TableCell gridColumnStart={4} gridColumnEnd={6}>
+                    <Amount value={Number(item.fee) + Number(item.gst)} isAffixSubtle={false} />
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={Number(item.settlement)} isAffixSubtle={false} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
             <TableFooter>
               <TableFooterRow>
                 <TableFooterCell gridColumnStart={1} gridColumnEnd={3}>
-                  Summary
+                  <Text weight="regular">Summary</Text>
                 </TableFooterCell>
                 <TableFooterCell>
-                  ₹{razorpayData.nodes.reduce((sum, item) => sum + item.amount, 0).toFixed(2)}
+                  <Amount
+                    value={razorpayData.nodes.reduce((sum, item) => sum + item.amount, 0)}
+                    isAffixSubtle={false}
+                  />
                 </TableFooterCell>
                 <TableFooterCell gridColumnStart={4} gridColumnEnd={6}>
-                  ₹{razorpayData.nodes.reduce((sum, item) => sum + item.fee, 0).toFixed(2)}
+                  <Amount
+                    value={razorpayData.nodes.reduce((sum, item) => sum + item.fee, 0)}
+                    isAffixSubtle={false}
+                  />
                 </TableFooterCell>
                 <TableFooterCell>
-                  ₹{razorpayData.nodes.reduce((sum, item) => sum + item.settlement, 0).toFixed(2)}
+                  <Amount
+                    value={razorpayData.nodes.reduce((sum, item) => sum + item.settlement, 0)}
+                    isAffixSubtle={false}
+                  />
                 </TableFooterCell>
               </TableFooterRow>
             </TableFooter>
@@ -437,29 +501,53 @@ export const RowSpanWithStickyFirstColumn: StoryFn<typeof TableComponent> = () =
                       </TableCell>
                     )}
                     <TableCell>{item.method}</TableCell>
-                    <TableCell>₹{item.amount.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.fee.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.gst.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.settlement.toFixed(2)}</TableCell>
+                    <TableCell>
+                      <Amount value={item.amount} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.fee} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.gst} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.settlement} isAffixSubtle={false} />
+                    </TableCell>
                   </TableRow>
                 );
               })}
             </TableBody>
             <TableFooter>
               <TableFooterRow>
-                <TableFooterCell>Summary</TableFooterCell>
-                <TableFooterCell>Items: {razorpayData.nodes.length}</TableFooterCell>
                 <TableFooterCell>
-                  ₹{razorpayData.nodes.reduce((sum, item) => sum + item.amount, 0).toFixed(2)}
+                  <Text weight="regular">Summary</Text>
                 </TableFooterCell>
                 <TableFooterCell>
-                  ₹{razorpayData.nodes.reduce((sum, item) => sum + item.fee, 0).toFixed(2)}
+                  <Text weight="regular">Items: {razorpayData.nodes.length}</Text>
                 </TableFooterCell>
                 <TableFooterCell>
-                  ₹{razorpayData.nodes.reduce((sum, item) => sum + item.gst, 0).toFixed(2)}
+                  <Amount
+                    value={razorpayData.nodes.reduce((sum, item) => sum + item.amount, 0)}
+                    isAffixSubtle={false}
+                  />
                 </TableFooterCell>
                 <TableFooterCell>
-                  ₹{razorpayData.nodes.reduce((sum, item) => sum + item.settlement, 0).toFixed(2)}
+                  <Amount
+                    value={razorpayData.nodes.reduce((sum, item) => sum + item.fee, 0)}
+                    isAffixSubtle={false}
+                  />
+                </TableFooterCell>
+                <TableFooterCell>
+                  <Amount
+                    value={razorpayData.nodes.reduce((sum, item) => sum + item.gst, 0)}
+                    isAffixSubtle={false}
+                  />
+                </TableFooterCell>
+                <TableFooterCell>
+                  <Amount
+                    value={razorpayData.nodes.reduce((sum, item) => sum + item.settlement, 0)}
+                    isAffixSubtle={false}
+                  />
                 </TableFooterCell>
               </TableFooterRow>
             </TableFooter>
@@ -503,11 +591,17 @@ export const RowColumnSpanWithStickyFirstColumn: StoryFn<typeof TableComponent> 
                     )}
                     {index >= 2 && <TableCell>{item?.method}</TableCell>}
                     <TableCell gridColumnStart={spanInfo.shouldSpan ? 3 : 1}>
-                      ₹{item.amount.toFixed(2)}
+                      <Amount value={item.amount} isAffixSubtle={false} />
                     </TableCell>
-                    <TableCell>₹{item.fee.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.gst.toFixed(2)}</TableCell>
-                    <TableCell>₹{item.settlement.toFixed(2)}</TableCell>
+                    <TableCell>
+                      <Amount value={item.fee} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.gst} isAffixSubtle={false} />
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.settlement} isAffixSubtle={false} />
+                    </TableCell>
                   </TableRow>
                 );
               })}

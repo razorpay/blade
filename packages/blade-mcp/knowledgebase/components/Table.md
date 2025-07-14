@@ -739,3 +739,145 @@ const ServerPaginatedTable = () => {
 
 export default ServerPaginatedTable;
 ```
+
+### Table Nesting Pattern
+
+Hierarchical data display with expandable rows and animations. Use for parent-child relationships or detailed information.
+
+```tsx
+const TableNestingExample = () => {
+  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+
+  const toggleRow = (id: string) => {
+    const newExpanded = new Set(expandedRows);
+    newExpanded.has(id) ? newExpanded.delete(id) : newExpanded.add(id);
+    setExpandedRows(newExpanded);
+  };
+
+  return (
+    <Table data={tableData}>
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Name</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+              <TableHeaderCell>Status</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+
+          <TableBody>
+            {tableData.map((item) => (
+              <>
+                <TableRow key={item.id} item={item}>
+                  <TableCell>
+                    <Button
+                      variant="tertiary"
+                      size="xsmall"
+                      icon={expandedRows.has(item.id) ? ChevronDownIcon : ChevronRightIcon}
+                      onClick={() => toggleRow(item.id)}
+                    />
+                    {item.name}
+                  </TableCell>
+                  <TableCell>{item.totalAmount}</TableCell>
+                  <TableCell>
+                    <Badge color="positive">{item.status}</Badge>
+                  </TableCell>
+                </TableRow>
+
+                {expandedRows.has(item.id) && (
+                  <TableRow key={`${item.id}-expanded`} item={item}>
+                    <TableCell gridColumnStart={1} gridColumnEnd={4}>
+                      <BaseMotionEntryExit
+                        motionVariants={{
+                          initial: { opacity: 0, transform: 'translateY(-8px)' },
+                          animate: { opacity: 1, transform: 'translateY(0px)' },
+                          exit: { opacity: 0, transform: 'translateY(-8px)' },
+                        }}
+                        type="inout"
+                        motionTriggers={['mount']}
+                      >
+                        <Box
+                          backgroundColor="surface.background.gray.subtle"
+                          padding="spacing.4"
+                          borderRadius="medium"
+                          margin="spacing.2"
+                        >
+                          {/* Nested content here */}
+                          {item.children.map((child) => (
+                            <Box key={child.id} display="flex" justifyContent="space-between">
+                              <Text>{child.name}</Text>
+                              <Text>{child.totalAmount}</Text>
+                            </Box>
+                          ))}
+                        </Box>
+                      </BaseMotionEntryExit>
+                    </TableCell>
+                  </TableRow>
+                )}
+              </>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </Table>
+  );
+};
+```
+
+### Table Spanning Pattern
+
+Row and column spanning for complex layouts with merged cells. Use for grouping related data or creating summary sections.
+
+```tsx
+const TableSpanningExample = () => {
+  return (
+    <Table data={tableData} showBorderedCells>
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Group</TableHeaderCell>
+              <TableHeaderCell>Item</TableHeaderCell>
+              <TableHeaderCell gridColumnStart={3} gridColumnEnd={5}>
+                Details
+              </TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+
+          <TableBody>
+            <TableRow item={tableData[0]}>
+              <TableCell gridColumnStart={1} gridColumnEnd={6}>
+                Summary Information
+              </TableCell>
+            </TableRow>
+
+            {tableData.map((item, index) => (
+              <TableRow key={item.id} item={item}>
+                {item.shouldSpan && (
+                  <TableCell gridRowStart={index + 3} gridRowEnd={index + 3 + item.rowSpan}>
+                    {item.groupName}
+                  </TableCell>
+                )}
+                <TableCell>{item.itemName}</TableCell>
+                <TableCell>{item.detail1}</TableCell>
+                <TableCell>{item.detail2}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+
+          <TableFooter>
+            <TableFooterRow>
+              <TableFooterCell gridColumnStart={1} gridColumnEnd={3}>
+                Total
+              </TableFooterCell>
+              <TableFooterCell>{totalAmount}</TableFooterCell>
+              <TableFooterCell>{totalFees}</TableFooterCell>
+            </TableFooterRow>
+          </TableFooter>
+        </>
+      )}
+    </Table>
+  );
+};
+```
