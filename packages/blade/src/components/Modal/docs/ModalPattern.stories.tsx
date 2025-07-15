@@ -2,38 +2,28 @@ import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import type { ModalProps } from '../Modal';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
+import { useBreakpoint, useTheme } from '../../../utils';
 import AlertPng from './assets/alert.png';
 import DonateNow from './assets/donatenow.png';
 import DonationsButton from './assets/donationButton.png';
-import FBIcon from './assets/fb.png';
+import Card4 from './assets/card4.png';
 import PayNow from './assets/paynow.png';
-import TwitterIcon from './assets/twitter.png';
-import WhatsAppIcon from './assets/whatsapp.png';
-import InstagramIcon from './assets/ig.png';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import type { ButtonProps } from '~components/Button';
-import { Radio, RadioGroup } from '~components/Radio';
-import {
-  MapIcon,
-  CheckIcon,
-  LockIcon,
-  ShareIcon,
-  CopyIcon,
-  PhoneCallIcon,
-  PhoneIcon,
-  MailIcon,
-  FacebookIcon,
-} from '~components/Icons';
+import { MapIcon, LockIcon, ShareIcon, CopyIcon, PhoneIcon, MailIcon } from '~components/Icons';
 import type { IconColors, IconComponent } from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
-import { Card, CardBody, CardHeaderIcon } from '~components/Card';
+import { Card, CardBody } from '~components/Card';
 import { OTPInput } from '~components/Input/OTPInput';
 import { Link } from '~components/Link';
 import { TextInput } from '~components/Input/TextInput';
 import { Divider } from '~components/Divider';
+import type { BottomSheetBodyProps } from '~components/BottomSheet';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
+import type { ModalBodyProps } from '~components/Modal';
 
 export default {
   title: 'Patterns/Modal',
@@ -58,24 +48,68 @@ const ConformationalModalBody = ({
   icon: Icon,
   title,
   description,
-  primaryButtonText,
-  secondaryButtonText,
 }: {
   type: 'neutral' | 'negative' | 'positive';
   icon: IconComponent;
   title: string;
   description: string;
-  primaryButtonText: string;
-  secondaryButtonText?: string;
 }): React.ReactNode => {
+  const { theme } = useTheme();
   const getIconColor = (): IconColors => {
     if (type === 'neutral') {
-      return 'feedback.icon.neutral.subtle';
+      return 'surface.icon.gray.subtle';
     } else if (type === 'negative') {
       return 'feedback.icon.negative.intense';
     }
     return 'feedback.icon.positive.intense';
   };
+  const getBackgroundColor = (): string => {
+    if (type === 'neutral') {
+      return theme.colors.interactive.background.gray.default;
+    } else if (type === 'negative') {
+      return theme.colors.feedback.background.negative.subtle;
+    }
+    return theme.colors.surface.background.primary.subtle;
+  };
+
+  return (
+    <>
+      {' '}
+      <Box display="flex" flexDirection="column" gap="spacing.5">
+        <div
+          style={{
+            backgroundColor: getBackgroundColor(),
+            width: 'fit-content',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: theme.border.radius.medium,
+            padding: theme.spacing[4],
+          }}
+        >
+          <Icon color={getIconColor()} />
+        </div>
+
+        <Box display="flex" flexDirection="column" gap="spacing.3">
+          <Heading size="large" weight="semibold">
+            {title}
+          </Heading>
+          <Text>{description}</Text>
+        </Box>
+      </Box>
+    </>
+  );
+};
+
+const ConformationModalFooter = ({
+  primaryButtonText,
+  secondaryButtonText,
+  type,
+}: {
+  primaryButtonText: string;
+  secondaryButtonText?: string;
+  type: 'neutral' | 'negative' | 'positive';
+}): React.ReactNode => {
   const getPrimaryButtonColor = (): ButtonProps['color'] => {
     if (type === 'neutral') {
       return 'primary';
@@ -86,46 +120,57 @@ const ConformationalModalBody = ({
   };
 
   return (
-    <>
-      {' '}
-      <Box display="flex" flexDirection="column" gap="spacing.5">
-        <Box
-          borderColor="surface.border.gray.muted"
-          backgroundColor="surface.background.gray.moderate"
-          width="fit-content"
-          padding="spacing.4"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          borderRadius="medium"
-        >
-          <Icon color={getIconColor()} />
-        </Box>
-        <Box display="flex" flexDirection="column" gap="spacing.3">
-          <Heading size="large" weight="semibold">
-            {title}
-          </Heading>
-          <Text>{description}</Text>
-        </Box>
-      </Box>
-      <Box
-        display="flex"
-        flexDirection="row"
-        gap="spacing.3"
-        justifyContent="space-between"
-        marginTop="spacing.6"
-      >
-        {secondaryButtonText && (
-          <Button variant="tertiary" isFullWidth>
-            {secondaryButtonText}
-          </Button>
-        )}
-
-        <Button isFullWidth color={getPrimaryButtonColor()}>
-          {primaryButtonText}
+    <Box display="flex" flexDirection="row" gap="spacing.3" justifyContent="space-between">
+      {secondaryButtonText && (
+        <Button variant="tertiary" isFullWidth>
+          {secondaryButtonText}
         </Button>
-      </Box>
-    </>
+      )}
+
+      <Button isFullWidth color={getPrimaryButtonColor()}>
+        {primaryButtonText}
+      </Button>
+    </Box>
+  );
+};
+
+const ResponsiveModalWrapper = ({
+  children,
+  footer,
+  isOpen,
+  onDismiss,
+  modalBodyPadding,
+  modalSize = 'small',
+}: {
+  children: React.ReactElement | React.ReactElement[];
+  footer?: React.ReactElement;
+  isOpen: boolean;
+  onDismiss: () => void;
+  modalBodyPadding?: ModalBodyProps['padding'];
+  modalSize?: ModalProps['size'];
+}): React.ReactNode => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  if (isMobile) {
+    return (
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={[0.35, 0.5, 0.85]}>
+        <BottomSheetHeader />
+        <BottomSheetBody padding={modalBodyPadding as BottomSheetBodyProps['padding']}>
+          {children}
+          {footer && <Box marginTop="spacing.6">{footer}</Box>}
+        </BottomSheetBody>
+      </BottomSheet>
+    );
+  }
+
+  return (
+    <Modal isOpen={isOpen} onDismiss={onDismiss} size={modalSize}>
+      <ModalHeader />
+      <ModalBody padding={modalBodyPadding}>{children}</ModalBody>
+      {footer && <ModalFooter>{footer}</ModalFooter>}
+    </Modal>
   );
 };
 
@@ -134,25 +179,24 @@ const NeutralModalTemplate: StoryFn<typeof Modal> = () => {
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal
+      <ResponsiveModalWrapper
         isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-        size="small"
-      >
-        <ModalHeader />
-        <ModalBody>
-          <ConformationalModalBody
+        onDismiss={() => setIsOpen(false)}
+        footer={
+          <ConformationModalFooter
             type="neutral"
-            icon={MapIcon}
-            title="Restart the Tour?"
-            description="This tour will give a quick guide on this product"
             primaryButtonText="Yes"
             secondaryButtonText="No"
           />
-        </ModalBody>
-      </Modal>
+        }
+      >
+        <ConformationalModalBody
+          type="neutral"
+          icon={MapIcon}
+          title="Restart the Tour?"
+          description="This tour will give a quick guide on this product"
+        />
+      </ResponsiveModalWrapper>
     </Box>
   );
 };
@@ -165,25 +209,24 @@ const NegativeModalTemplate: StoryFn<typeof Modal> = () => {
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal
+      <ResponsiveModalWrapper
         isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-        size="small"
-      >
-        <ModalHeader />
-        <ModalBody>
-          <ConformationalModalBody
+        onDismiss={() => setIsOpen(false)}
+        footer={
+          <ConformationModalFooter
             type="negative"
-            icon={MapIcon}
-            title="Restart the Tour?"
-            description="This tour will give a quick guide on this product"
             primaryButtonText="Yes"
             secondaryButtonText="No"
           />
-        </ModalBody>
-      </Modal>
+        }
+      >
+        <ConformationalModalBody
+          type="negative"
+          icon={MapIcon}
+          title="Restart the Tour?"
+          description="This tour will give a quick guide on this product"
+        />
+      </ResponsiveModalWrapper>
     </Box>
   );
 };
@@ -191,51 +234,22 @@ const NegativeModalTemplate: StoryFn<typeof Modal> = () => {
 export const NegativeModal = NegativeModalTemplate.bind({});
 NegativeModal.storyName = 'Confirmation Modal - Negative';
 
-const PositiveModalTemplate: StoryFn<typeof Modal> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  return (
-    <Box>
-      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal
-        isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-        size="small"
-      >
-        <ModalHeader />
-        <ModalBody>
-          <ConformationalModalBody
-            type="positive"
-            icon={CheckIcon}
-            title="Success!"
-            description="This tour will give a quick guide on this product"
-            primaryButtonText="Done"
-          />
-        </ModalBody>
-      </Modal>
-    </Box>
-  );
-};
-
-export const PositiveModal = PositiveModalTemplate.bind({});
-PositiveModal.storyName = 'Confirmation Modal - Positive';
-
 const InformationModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal
+      <ResponsiveModalWrapper
         isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-        size="small"
+        onDismiss={() => setIsOpen(false)}
+        modalBodyPadding="spacing.0"
       >
-        <ModalHeader />
         <ModalBody padding="spacing.0">
-          <img src={AlertPng} alt="Alert" width={400} height={200} />
+          <img src={AlertPng} alt="Alert" width={isMobile ? '100%' : '400px'} height={200} />
           <Box margin="spacing.6">
             <Badge color="negative">Action Required </Badge>
             <Box marginTop="spacing.4">
@@ -252,7 +266,7 @@ const InformationModalTemplate: StoryFn<typeof Modal> = () => {
             <Button isFullWidth>Update KYC</Button>
           </Box>
         </ModalBody>
-      </Modal>
+      </ResponsiveModalWrapper>
     </Box>
   );
 };
@@ -286,85 +300,99 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         'Raising money for a good cause?  Supporters can pick from presets or donate amount of their choice',
       img: PayNow,
     },
+    {
+      value: 'custom',
+      title: 'Custom Button',
+      subtitle:
+        'Build your own button with your own design and branding. You can also use our pre-built templates.',
+      img: Card4,
+    },
   ];
+
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
 
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal
+      <ResponsiveModalWrapper
         isOpen={isOpen}
         onDismiss={() => {
           setIsOpen(false);
         }}
-        size="medium"
+        modalSize="large"
+        footer={
+          <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              isDisabled={!selectedMethod}
+              onClick={() => {
+                console.log('Selected payment method:', selectedMethod);
+                setIsOpen(false);
+              }}
+            >
+              Proceed
+            </Button>
+          </Box>
+        }
+        modalBodyPadding="spacing.0"
       >
-        <ModalHeader>
-          <Box padding="spacing.6">
-            <Heading size="xlarge" weight="semibold">
-              Select Payment Method
-            </Heading>
-            <Text color="surface.text.gray.muted">
-              Choose your preferred payment method to proceed
-            </Text>
-          </Box>
-        </ModalHeader>
-        <ModalBody padding="spacing.0">
-          <Box padding="spacing.6">
-            <Box display="flex" flexDirection="row" gap="spacing.4">
-              {paymentMethods.map((method) => (
-                <Card
-                  key={method.value}
-                  isSelected={selectedMethod === method.value}
-                  onClick={() => setSelectedMethod(method.value)}
-                  padding="spacing.0"
-                  accessibilityLabel={`Select ${method.title}`}
-                  width="230px"
-                  borderRadius="medium"
-                >
-                  <CardBody>
-                    <Box overflow="none">
-                      <img src={method.img} alt={method.title} width="230px" height="130px" />
-                    </Box>
-                    <Box
-                      display="flex"
-                      flexDirection="row"
-                      gap="spacing.4"
-                      alignItems="center"
-                      paddingX="spacing.5"
-                      paddingY="spacing.4"
-                    >
-                      <Box>
-                        <Heading size="medium" weight="semibold">
-                          {method.title}
-                        </Heading>
-                        <Text size="small" color="surface.text.gray.muted">
-                          {method.subtitle}
-                        </Text>
-                      </Box>
-                    </Box>
-                  </CardBody>
-                </Card>
-              ))}
-            </Box>
-          </Box>
-          <ModalFooter>
-            <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-              <Button variant="secondary" onClick={() => setIsOpen(false)}>
-                Cancel
-              </Button>
-              <Button
-                isDisabled={!selectedMethod}
-                onClick={() => {
-                  console.log('Selected payment method:', selectedMethod);
-                  setIsOpen(false);
-                }}
+        <Box padding="spacing.6">
+          <Heading size="small" weight="semibold">
+            Pick a Button Type
+          </Heading>
+          <Text color="surface.text.gray.muted">
+            Pick a button which meets your requirements and get a head start on collecting payments
+            or you could build your own
+          </Text>
+        </Box>
+        <Box padding="spacing.6">
+          <Box display="flex" flexDirection="row" gap="spacing.4" flexWrap="wrap">
+            {paymentMethods.map((method) => (
+              <Card
+                key={method.value}
+                isSelected={selectedMethod === method.value}
+                onClick={() => setSelectedMethod(method.value)}
+                padding="spacing.0"
+                accessibilityLabel={`Select ${method.title}`}
+                width={isMobile ? '160px' : '230px'}
+                borderRadius="medium"
               >
-                Proceed
-              </Button>
-            </Box>
-          </ModalFooter>
-        </ModalBody>
-      </Modal>
+                <CardBody>
+                  <Box overflow="none">
+                    <img
+                      src={method.img}
+                      alt={method.title}
+                      width={isMobile ? '160px' : '230px'}
+                      height="130px"
+                    />
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.4"
+                    alignItems="center"
+                    paddingX="spacing.5"
+                    paddingY="spacing.4"
+                  >
+                    <Box>
+                      <Text size="medium" weight="semibold">
+                        {method.title}
+                      </Text>
+                      <Text size="small" color="surface.text.gray.muted">
+                        {method.subtitle}
+                      </Text>
+                    </Box>
+                  </Box>
+                </CardBody>
+              </Card>
+            ))}
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
     </Box>
   );
 };
@@ -374,62 +402,58 @@ FlowSelectionModal.storyName = 'Flow Selection Modal';
 
 const OTPModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal
+      <ResponsiveModalWrapper
         isOpen={isOpen}
         onDismiss={() => {
           setIsOpen(false);
         }}
-        size="small"
+        footer={<Button isFullWidth> Confirm </Button>}
       >
-        <ModalHeader />
-        <ModalBody spacing="spacing.0">
-          <Box
-            borderColor="surface.border.gray.muted"
-            backgroundColor="surface.background.gray.moderate"
-            width="fit-content"
-            padding="spacing.4"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            borderRadius="medium"
-          >
-            <LockIcon />
-          </Box>
-          <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
-            <Text size="large" weight="semibold">
-              2 Step Verification
-            </Text>
-            <Text size="small" weight="regular" color="surface.text.gray.subtle">
-              This action requires 2-step verification. A 6-digit OTP has been sent via SMS to
-              8757450923. The OTP will expire in 5 minutes.
-            </Text>
-          </Box>
-          <Box marginY="spacing.5">
-            <OTPInput label="Enter the code" otpLength={6} />
-          </Box>
-          <Box
-            marginTop="spacing.5"
-            display="flex"
-            flexDirection="row"
-            gap="spacing.2"
-            justifyContent="flex-start"
-            alignItems="center"
-          >
-            <Text size="small" weight="regular" color="surface.text.gray.subtle">
-              Didn’t receive OTP?
-            </Text>
-            <Link href="https://www.google.com" size="small" weight="semibold">
-              Resend OTP
-            </Link>
-          </Box>
-        </ModalBody>
-        <ModalFooter>
-          <Button isFullWidth> Confirm </Button>
-        </ModalFooter>
-      </Modal>
+        <div
+          style={{
+            backgroundColor: theme.colors.interactive.background.gray.default,
+            width: 'fit-content',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: theme.border.radius.medium,
+            padding: theme.spacing[4],
+          }}
+        >
+          <LockIcon color="surface.icon.gray.subtle" />
+        </div>
+        <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
+          <Text size="large" weight="semibold">
+            2 Step Verification
+          </Text>
+          <Text size="small" weight="regular" color="surface.text.gray.subtle">
+            This action requires 2-step verification. A 6-digit OTP has been sent via SMS to
+            8757450923. The OTP will expire in 5 minutes.
+          </Text>
+        </Box>
+        <Box marginY="spacing.5">
+          <OTPInput label="Enter the code" otpLength={6} />
+        </Box>
+        <Box
+          marginTop="spacing.5"
+          display="flex"
+          flexDirection="row"
+          gap="spacing.2"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <Text size="small" weight="regular" color="surface.text.gray.subtle">
+            Didn’t receive OTP?
+          </Text>
+          <Link href="https://www.google.com" size="small" weight="semibold">
+            Resend OTP
+          </Link>
+        </Box>
+      </ResponsiveModalWrapper>
     </Box>
   );
 };
@@ -439,144 +463,160 @@ OTPModal.storyName = 'OTP Modal';
 
 const ShareModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal
+      <ResponsiveModalWrapper
         isOpen={isOpen}
         onDismiss={() => {
           setIsOpen(false);
         }}
-        size="small"
+        footer={<Button isFullWidth> Confirm </Button>}
       >
-        <ModalHeader />
-        <ModalBody spacing="spacing.0">
-          <Box
-            borderColor="surface.border.gray.muted"
-            backgroundColor="surface.background.gray.moderate"
-            width="fit-content"
-            padding="spacing.4"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            borderRadius="medium"
-          >
-            <ShareIcon />
+        <div
+          style={{
+            backgroundColor: theme.colors.interactive.background.gray.default,
+            width: 'fit-content',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: theme.border.radius.medium,
+            padding: theme.spacing[4],
+          }}
+        >
+          <ShareIcon color="surface.icon.gray.subtle" />
+        </div>
+        <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
+          <Text size="large" weight="semibold">
+            Share Payment Link
+          </Text>
+          <Text size="small" weight="regular" color="surface.text.gray.subtle">
+            Subtitle go here, support details helps your customers to easily reach out to you when
+            they face any
+          </Text>
+        </Box>
+        <Box
+          marginTop="spacing.5"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          gap="spacing.4"
+          width="100%"
+        >
+          <Box width="80%">
+            <TextInput value="https://rzp.io/test-ai" label="" />
           </Box>
-          <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
-            <Text size="large" weight="semibold">
-              Share Payment Link
+          <Box>
+            <Button icon={CopyIcon} iconPosition="left">
+              Copy
+            </Button>
+          </Box>
+        </Box>
+        <Box marginTop="spacing.5">
+          <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
+            <Text color="surface.text.gray.muted" size="small" weight="medium">
+              {' '}
+              Share Via{' '}
             </Text>
-            <Text size="small" weight="regular" color="surface.text.gray.subtle">
-              Subtitle go here, support details helps your customers to easily reach out to you when
-              they face any
-            </Text>
-          </Box>
-          <Box
-            marginTop="spacing.5"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            gap="spacing.4"
-            width="100%"
-          >
-            <Box width="80%">
-              <TextInput value="https://www.google.com" label="" />
-            </Box>
-            <Box>
-              <Button icon={CopyIcon} iconPosition="left">
-                Copy
-              </Button>
-            </Box>
-          </Box>
-          <Box marginTop="spacing.5">
-            <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
-              <Text color="surface.text.gray.muted" size="small" weight="medium">
-                {' '}
-                Share Via{' '}
-              </Text>
-              <Box marginLeft="spacing.5" display="flex" flexDirection="row" gap="spacing.4">
-                <Box
-                  padding="6px"
-                  borderRadius="round"
-                  borderColor="surface.border.gray.muted"
-                  borderWidth="thicker"
-                  height="40px"
-                  width="40px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <img src={FBIcon} alt="Facebook" width="28px" height="28px" />
-                </Box>
-                <Box
-                  padding="6px"
-                  borderRadius="round"
-                  borderColor="surface.border.gray.muted"
-                  borderWidth="thicker"
-                  height="40px"
-                  width="40px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <img src={TwitterIcon} alt="Twitter" width="28px" height="28px" />
-                </Box>
-                <Box
-                  padding="6px"
-                  borderRadius="round"
-                  borderColor="surface.border.gray.muted"
-                  borderWidth="thicker"
-                  height="40px"
-                  width="40px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <img src={WhatsAppIcon} alt="WhatsApp" width="28px" height="28px" />
-                </Box>
-                <Box
-                  padding="6px"
-                  borderRadius="round"
-                  borderColor="surface.border.gray.muted"
-                  borderWidth="thicker"
-                  height="40px"
-                  width="40px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <img src={InstagramIcon} alt="WhatsApp" width="28px" height="28px" />
-                </Box>
+            <Box marginLeft="spacing.5" display="flex" flexDirection="row" gap="spacing.4">
+              <Box
+                padding="6px"
+                borderRadius="round"
+                borderColor="surface.border.gray.muted"
+                borderWidth="thicker"
+                height="40px"
+                width="40px"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                  alt="Facebook"
+                  width="28px"
+                  height="28px"
+                />
+              </Box>
+              <Box
+                padding="6px"
+                borderRadius="round"
+                borderColor="surface.border.gray.muted"
+                borderWidth="thicker"
+                height="40px"
+                width="40px"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg"
+                  alt="Twitter"
+                  width="20px"
+                  height="20px"
+                />
+              </Box>
+              <Box
+                padding="6px"
+                borderRadius="round"
+                borderColor="surface.border.gray.muted"
+                borderWidth="thicker"
+                height="40px"
+                width="40px"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                  alt="WhatsApp"
+                  width="30px"
+                  height="30px"
+                />
+              </Box>
+              <Box
+                padding="6px"
+                borderRadius="round"
+                borderColor="surface.border.gray.muted"
+                borderWidth="thicker"
+                height="40px"
+                width="40px"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+                  alt="WhatsApp"
+                  width="24px"
+                  height="24px"
+                />
               </Box>
             </Box>
           </Box>
-          <Box
-            display="flex"
-            flexDirection="row"
-            gap="spacing.5"
-            alignItems="center"
-            marginX="spacing.6"
-          >
-            <Divider />
-            <Text color="surface.text.gray.muted" size="small" weight="medium">
-              OR
-            </Text>
-            <Divider />
-          </Box>
-          <Box display="flex" flexDirection="column" gap="spacing.4">
-            <Text size="small" weight="medium" color="surface.text.gray.muted">
-              {' '}
-              Share via SMS or email
-            </Text>
-            <TextInput leadingIcon={PhoneIcon} placeholder="Enter your phone number" label="" />
-            <TextInput leadingIcon={MailIcon} placeholder="Enter Email" label="" />
-          </Box>
-        </ModalBody>
-        <ModalFooter>
-          <Button isFullWidth> Confirm </Button>
-        </ModalFooter>
-      </Modal>
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap="spacing.5"
+          alignItems="center"
+          marginX="spacing.6"
+        >
+          <Divider />
+          <Text color="surface.text.gray.muted" size="small" weight="medium">
+            OR
+          </Text>
+          <Divider />
+        </Box>
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <Text size="small" weight="medium" color="surface.text.gray.muted">
+            {' '}
+            Share via SMS or email
+          </Text>
+          <TextInput leadingIcon={PhoneIcon} placeholder="Enter your phone number" label="" />
+          <TextInput leadingIcon={MailIcon} placeholder="Enter Email" label="" />
+        </Box>
+      </ResponsiveModalWrapper>
     </Box>
   );
 };
