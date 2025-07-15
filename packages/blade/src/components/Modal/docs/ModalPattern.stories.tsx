@@ -22,7 +22,12 @@ import { Link } from '~components/Link';
 import { TextInput } from '~components/Input/TextInput';
 import { Divider } from '~components/Divider';
 import type { BottomSheetBodyProps } from '~components/BottomSheet';
-import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
+import {
+  BottomSheet,
+  BottomSheetBody,
+  BottomSheetFooter,
+  BottomSheetHeader,
+} from '~components/BottomSheet';
 import type { ModalBodyProps } from '~components/Modal';
 
 export default {
@@ -141,6 +146,7 @@ const ResponsiveModalWrapper = ({
   onDismiss,
   modalBodyPadding,
   modalSize = 'small',
+  wrapInBottomSheetFooter = false,
 }: {
   children: React.ReactElement | React.ReactElement[];
   footer?: React.ReactElement;
@@ -148,6 +154,7 @@ const ResponsiveModalWrapper = ({
   onDismiss: () => void;
   modalBodyPadding?: ModalBodyProps['padding'];
   modalSize?: ModalProps['size'];
+  wrapInBottomSheetFooter?: boolean;
 }): React.ReactNode => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -159,8 +166,9 @@ const ResponsiveModalWrapper = ({
         <BottomSheetHeader />
         <BottomSheetBody padding={modalBodyPadding as BottomSheetBodyProps['padding']}>
           {children}
-          {footer && <Box marginTop="spacing.6">{footer}</Box>}
+          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
         </BottomSheetBody>
+        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
       </BottomSheet>
     );
   }
@@ -339,6 +347,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
           </Box>
         }
         modalBodyPadding="spacing.0"
+        wrapInBottomSheetFooter
       >
         <Box padding="spacing.6">
           <Heading size="small" weight="semibold">
@@ -350,7 +359,14 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
           </Text>
         </Box>
         <Box padding="spacing.6">
-          <Box display="flex" flexDirection="row" gap="spacing.4" flexWrap="wrap">
+          <Box
+            display="flex"
+            flexDirection="row"
+            gap="spacing.4"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+          >
             {paymentMethods.map((method) => (
               <Card
                 key={method.value}
