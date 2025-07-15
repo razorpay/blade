@@ -147,6 +147,7 @@ const ResponsiveModalWrapper = ({
   modalBodyPadding,
   modalSize = 'small',
   wrapInBottomSheetFooter = false,
+  customSnapPoints = [0.35, 0.5, 0.85],
 }: {
   children: React.ReactElement | React.ReactElement[];
   footer?: React.ReactElement;
@@ -155,6 +156,7 @@ const ResponsiveModalWrapper = ({
   modalBodyPadding?: ModalBodyProps['padding'];
   modalSize?: ModalProps['size'];
   wrapInBottomSheetFooter?: boolean;
+  customSnapPoints?: [number, number, number];
 }): React.ReactNode => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -162,7 +164,7 @@ const ResponsiveModalWrapper = ({
 
   if (isMobile) {
     return (
-      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={[0.35, 0.5, 0.85]}>
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
         <BottomSheetHeader />
         <BottomSheetBody padding={modalBodyPadding as BottomSheetBodyProps['padding']}>
           {children}
@@ -348,6 +350,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         }
         modalBodyPadding="spacing.0"
         wrapInBottomSheetFooter
+        customSnapPoints={[0.8, 0.9, 0.95]}
       >
         <Box padding="spacing.6">
           <Heading size="small" weight="semibold">
@@ -428,6 +431,7 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
           setIsOpen(false);
         }}
         footer={<Button isFullWidth> Confirm </Button>}
+        customSnapPoints={[0.5, 0.6, 0.75]}
       >
         <div
           style={{
