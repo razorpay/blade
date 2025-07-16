@@ -1,16 +1,15 @@
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
 import { formatNumberByParts } from '@razorpay/i18nify-js/currency';
-import type { AmountTypeProps } from './amountTokens';
 import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
+import { formatINRFallback } from './formatINRFallback';
+import type { AmountProps, AmountType, ColorProps } from './types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+import type { BladeElementRef } from '~utils/types';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { objectKeysWithType } from '~utils/objectKeysWithType';
@@ -57,67 +56,6 @@ const pollyfilledFormatNumberByParts: typeof formatNumberByParts = (value, optio
   return parts;
 };
 
-type AmountCommonProps = {
-  /**
-   * The value to be rendered within the component.
-   *
-   */
-  value: number;
-  /**
-   * Sets the color of the amount.
-   *
-   * @default undefined
-   */
-  color?: BaseTextProps['color'];
-  /**
-   * Indicates what the suffix of amount should be
-   *
-   * @default 'decimals'
-   */
-  suffix?: 'decimals' | 'none' | 'humanize';
-  /**
-   * Makes the currency indicator(currency symbol/code) and decimal digits small and faded
-   *
-   * @default true
-   */
-  isAffixSubtle?: true | false;
-  /**
-   * Determines the visual representation of the currency, choose between displaying the currency symbol or code.
-   *
-   * Note: Currency symbol and code is determined by the locale set in user's browser or set via @razorpay/i18nify-react library.
-   *
-   * @default 'currency-symbol'
-   */
-  currencyIndicator?: 'currency-symbol' | 'currency-code';
-  /**
-   * The currency of the amount.  Note that this component
-   * only displays the provided value in the specified currency, it does not perform any currency conversion.
-   *
-   * @default 'INR'
-   * */
-  currency?: CurrencyCodeType;
-  /**
-   * If true, the amount text will have a line through it.
-   *
-   * @default false
-   */
-  isStrikethrough?: boolean;
-  /**
-   * Controls the number of decimal places to display when suffix is 'decimals'.
-   *
-   * @default 2
-   */
-  fractionDigits?: number;
-} & TestID &
-  DataAnalyticsAttribute &
-  StyledPropsBlade;
-
-type ColorProps = {
-  amountValueColor: BaseTextProps['color'];
-};
-
-type AmountProps = AmountTypeProps & AmountCommonProps;
-
 const getTextColorProps = ({ color }: { color: AmountProps['color'] }): ColorProps => {
   const props: ColorProps = {
     amountValueColor: 'surface.text.gray.normal',
@@ -126,8 +64,6 @@ const getTextColorProps = ({ color }: { color: AmountProps['color'] }): ColorPro
   props.amountValueColor = color;
   return props;
 };
-
-type AmountType = Partial<ReturnType<typeof formatNumberByParts>>;
 
 interface AmountValue extends Omit<AmountProps, 'value'> {
   amountValueColor: BaseTextProps['color'];
@@ -257,6 +193,14 @@ export const getAmountByParts = ({
       }
     }
   } catch (err: unknown) {
+    console.log('[Amount] Error in getAmountByParts', err);
+    // Use robust fallback for INR, simple fallback for other currencies
+    if (currency === 'INR') {
+      // INR can be formatted without INTL and i18nify dependency
+      return formatINRFallback({ value, suffix, fractionDigits });
+    }
+
+    // Basic fallback for non-INR currencies
     return {
       integer: `${value}`,
       currency,
@@ -332,6 +276,8 @@ const _Amount = (
 
   const currencyPosition = isPrefixSymbol ? 'left' : 'right';
   const currencySymbolOrCode = currencyIndicator === 'currency-symbol' ? currencySymbol : currency;
+  // console.log('renderedValue', renderedValue);
+  // console.log(currencySymbolOrCode);
 
   const currencyFontSize = isAffixSubtle
     ? subtleFontSizes[type][size]
