@@ -349,7 +349,7 @@ const EditAndAddModalTemplate: StoryFn<typeof Modal> = () => {
 export const EditAndAddModal = EditAndAddModalTemplate.bind({});
 EditAndAddModal.storyName = 'Edit and Add Modal';
 
-const FlowSelectionModalTemplate: StoryFn<typeof Modal> = (args) => {
+const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
 
@@ -491,8 +491,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = (args) => {
 export const FlowSelectionModal = FlowSelectionModalTemplate.bind({});
 FlowSelectionModal.storyName = 'Flow Selection Modal';
 
-const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = (args) => {
-  console.log('args', args);
+const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
 
