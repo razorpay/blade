@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.42.1
+
+### Patch Changes
+
+- 6d4b1f6e7: fix(blade): accordion sytling changes
+
 ## 12.42.0
 
 ### Minor Changes
