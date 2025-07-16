@@ -21,6 +21,7 @@ import {
   PhoneIcon,
   MailIcon,
   TrashIcon,
+  ZapIcon,
 } from '~components/Icons';
 import type { IconColors, IconComponent } from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
@@ -346,7 +347,8 @@ const EditAndAddModalTemplate: StoryFn<typeof Modal> = () => {
 export const EditAndAddModal = EditAndAddModalTemplate.bind({});
 EditAndAddModal.storyName = 'Edit and Add Modal';
 
-const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
+const FlowSelectionModalTemplate: StoryFn<typeof Modal> = (args) => {
+  console.log('args', args);
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
 
@@ -419,7 +421,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
           <Heading size="small" weight="semibold">
             Pick a Button Type
           </Heading>
-          <Text color="surface.text.gray.muted">
+          <Text color="surface.text.gray.muted" size="small" weight="regular">
             Pick a button which meets your requirements and get a head start on collecting payments
             or you could build your own
           </Text>
@@ -486,8 +488,158 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const FlowSelectionModal = FlowSelectionModalTemplate.bind({});
-FlowSelectionModal.storyName = 'Flow Selection Modal';
+const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = (args) => {
+  console.log('args', args);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedMethod, setSelectedMethod] = React.useState('');
+
+  const paymentMethods = [
+    {
+      value: 'quickpay',
+      title: 'Quick Pay Button',
+      subtitle:
+        'Accepting fixed price payments?  Customers make quick payments of fixed price through this button',
+      icon: ZapIcon,
+    },
+    {
+      value: 'buynow',
+      title: 'Buy Now Button',
+      subtitle:
+        'Selling products or event tickets?  Sell multiple items with support for quantity using this button.',
+      icon: ZapIcon,
+    },
+    {
+      value: 'custom',
+      title: 'Custom Button',
+      subtitle:
+        'Build your own button with your own design and branding. You can also use our pre-built templates.',
+      icon: ZapIcon,
+      isDisabled: true,
+    },
+  ];
+
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        modalSize="large"
+        footer={
+          <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              isDisabled={!selectedMethod}
+              onClick={() => {
+                console.log('Selected payment method:', selectedMethod);
+                setIsOpen(false);
+              }}
+            >
+              Proceed
+            </Button>
+          </Box>
+        }
+        modalBodyPadding="spacing.0"
+        wrapInBottomSheetFooter
+        customSnapPoints={[0.8, 0.9, 0.95]}
+      >
+        <Box padding="spacing.6">
+          <Heading size="small" weight="semibold">
+            Pick a Button Type
+          </Heading>
+          <Text color="surface.text.gray.muted" size="small" weight="regular">
+            Pick a button which meets your requirements and get a head start on collecting payments
+            or you could build your own
+          </Text>
+        </Box>
+        <Box padding="spacing.6">
+          <Box
+            display="flex"
+            flexDirection="row"
+            gap="spacing.5"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+          >
+            {paymentMethods.map((method, index) => (
+              <Card
+                key={`${method.value}-${index}`}
+                isSelected={selectedMethod === method.value}
+                onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
+                padding="spacing.0"
+                accessibilityLabel={`Select ${method.title}`}
+                width={isMobile ? '160px' : '230px'}
+                borderRadius="medium"
+                elevation="none"
+              >
+                <CardBody>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    marginTop="spacing.6"
+                    marginX="spacing.5"
+                  >
+                    <Box
+                      padding="10px"
+                      backgroundColor="surface.background.primary.subtle"
+                      width="40px"
+                      height="40px"
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      borderRadius="medium"
+                    >
+                      <ZapIcon color="surface.icon.primary.normal" />
+                    </Box>
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.4"
+                    alignItems="center"
+                    paddingX="spacing.5"
+                    paddingY="spacing.4"
+                  >
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      justifyContent="center"
+                      alignItems="center"
+                    >
+                      <Text
+                        size="medium"
+                        weight="semibold"
+                        color={
+                          method.isDisabled ? 'surface.text.gray.muted' : 'surface.text.gray.normal'
+                        }
+                      >
+                        {method.title}
+                      </Text>
+                      <Text size="small" color="surface.text.gray.muted">
+                        {method.subtitle}
+                      </Text>
+                    </Box>
+                  </Box>
+                </CardBody>
+              </Card>
+            ))}
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+export const FlowSelectionModalWithIcon = FlowSelectionModalTemplateWithIcon.bind({});
+FlowSelectionModalWithIcon.storyName = 'Flow Selection Modal - with Icon Cards';
 
 const OTPModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
