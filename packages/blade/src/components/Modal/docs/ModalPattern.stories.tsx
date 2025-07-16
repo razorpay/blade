@@ -6,6 +6,7 @@ import { useBreakpoint, useTheme } from '../../../utils';
 import AlertPng from './assets/alert.png';
 import DonateNow from './assets/donatenow.png';
 import DonationsButton from './assets/donationButton.png';
+import SideImage from './assets/sideImage.png';
 import Card4 from './assets/card4.png';
 import PayNow from './assets/paynow.png';
 import WooCommerceImage from './assets/woocommerce.png';
@@ -39,6 +40,7 @@ import {
   BottomSheetHeader,
 } from '~components/BottomSheet';
 import type { ModalBodyProps } from '~components/Modal';
+import { Chip, ChipGroup } from '~components/Chip';
 
 export default {
   title: 'Patterns/Modal',
@@ -104,7 +106,7 @@ const ConformationalModalBody = ({
           >
             <img src={image} width={42} height={28} alt="logo" />
           </Box>
-        ) : (
+        ) : Icon ? (
           <div
             style={{
               backgroundColor: getBackgroundColor(),
@@ -118,7 +120,7 @@ const ConformationalModalBody = ({
           >
             <Icon color={getIconColor()} />
           </div>
-        )}
+        ) : null}
         <Box display="flex" flexDirection="column" gap="spacing.1">
           <Text size="large" weight="semibold">
             {title}
@@ -644,6 +646,45 @@ FlowSelectionModalWithIcon.storyName = 'Flow Selection Modal - with Icon Cards';
 const OTPModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme } = useTheme();
+  const [isResendOtpTimerRunning, setIsResendOtpTimerRunning] = React.useState(false);
+  const [resendOtpTimer, setResendOtpTimer] = React.useState(30);
+
+  // Start timer when modal opens
+  React.useEffect(() => {
+    if (isOpen) {
+      setIsResendOtpTimerRunning(true);
+      setResendOtpTimer(30);
+    } else {
+      setIsResendOtpTimerRunning(false);
+      setResendOtpTimer(30);
+    }
+  }, [isOpen]);
+
+  // Handle timer countdown
+  React.useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isResendOtpTimerRunning && resendOtpTimer > 0) {
+      timer = setInterval(() => {
+        setResendOtpTimer((prev) => {
+          if (prev <= 1) {
+            setIsResendOtpTimerRunning(false);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [isResendOtpTimerRunning, resendOtpTimer]);
+
+  const handleResendOtp = (): void => {
+    // Reset timer and start countdown
+    setIsResendOtpTimerRunning(true);
+    setResendOtpTimer(30);
+    // Here you would typically trigger the OTP resend API
+    console.log('Resending OTP...');
+  };
+
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
@@ -689,10 +730,15 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
           alignItems="center"
         >
           <Text size="small" weight="regular" color="surface.text.gray.subtle">
-            Didn’t receive OTP?
+            Didn't receive OTP?
           </Text>
-          <Link href="https://www.google.com" size="small" weight="semibold">
-            Resend OTP
+          <Link
+            isDisabled={isResendOtpTimerRunning}
+            onClick={handleResendOtp}
+            size="small"
+            variant="button"
+          >
+            {isResendOtpTimerRunning ? `Resend OTP in ${resendOtpTimer}s` : 'Resend OTP'}
           </Link>
         </Box>
       </ResponsiveModalWrapper>
@@ -865,3 +911,113 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
 
 export const ShareModal = ShareModalTemplate.bind({});
 ShareModal.storyName = 'Share Modal';
+
+const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const shippingTime = [
+    {
+      value: '1-2 days',
+      label: '1-2 days',
+    },
+    {
+      value: '3-5 days',
+      label: '3-5 days',
+    },
+    {
+      value: '6-8 days',
+      label: '6-8 days',
+    },
+    {
+      value: '9-15 days',
+      label: '9-15 days',
+    },
+    {
+      value: 'not applicable',
+      label: 'Not Applicable',
+    },
+  ];
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        modalSize="large"
+        modalBodyPadding="spacing.0"
+      >
+        <Box display="flex" flexDirection="row" gap="spacing.6" width="100%" height="100%">
+          <Box
+            backgroundColor="surface.background.gray.subtle"
+            height="596px"
+            width="400px"
+            display="flex"
+            flexDirection="column"
+            justifyContent="flex-end"
+            overflow="hidden"
+          >
+            <img
+              src={SideImage}
+              height="452px"
+              width="429px"
+              alt="random graphics"
+              style={{ objectFit: 'fill' }}
+            />
+          </Box>
+          <Box height="100%" paddingTop="spacing.6" paddingRight="spacing.6">
+            <Heading size="medium" weight="semibold">
+              Create policy pages with Razorpay
+            </Heading>
+            <Text size="medium" weight="regular" color="surface.text.gray.muted">
+              We need a few details to create the missing policy pages for you
+            </Text>
+            <Box
+              marginTop="spacing.6"
+              display="flex"
+              gap="spacing.7"
+              flexDirection="column"
+              height="100%"
+              width="100%"
+            >
+              <ChipGroup label="Shipping time">
+                {shippingTime.map((time) => (
+                  <Chip key={time.value} value={time.value}>
+                    {time.label}
+                  </Chip>
+                ))}
+              </ChipGroup>
+              <ChipGroup label="Cancellation request time">
+                {shippingTime.map((time) => (
+                  <Chip key={time.value} value={time.value}>
+                    {time.label}
+                  </Chip>
+                ))}
+              </ChipGroup>
+              <ChipGroup label="Refund processing time">
+                {shippingTime.map((time) => (
+                  <Chip key={time.value} value={time.value}>
+                    {time.label}
+                  </Chip>
+                ))}
+              </ChipGroup>
+              <TextInput label="Support contact number" prefix="+91" placeholder="9XXXXXXXXX" />
+              <TextInput label="Support Email ID" placeholder="support@razorpay.com" />
+              <Box display="flex" justifyContent="flex-end" gap="spacing.5" marginTop="spacing.6">
+                <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+                  Back
+                </Button>
+                <Button variant="primary" onClick={() => setIsOpen(false)}>
+                  Continue
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+
+export const SingleStepForm = SingleStepFormTemplate.bind({});
+SingleStepForm.storyName = 'Single Step Form Modal';
