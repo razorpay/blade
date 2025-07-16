@@ -311,6 +311,41 @@ const InformationModalTemplate: StoryFn<typeof Modal> = () => {
 export const InformationModal = InformationModalTemplate.bind({});
 InformationModal.storyName = 'Information Modal';
 
+const EditAndAddModalTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        footer={
+          <Box display="flex" gap="spacing.5" justifyContent="space-between" width="100%">
+            <Button variant="secondary" isFullWidth>
+              Cancel
+            </Button>
+            <Button isFullWidth> Update</Button>
+          </Box>
+        }
+      >
+        <Text size="large" weight="semibold">
+          Edit display name
+        </Text>
+        <Text size="medium" weight="regular" color="surface.text.gray.muted">
+          The new display name will reflect immediately on your dashboard after you update it. It
+          will be visible to you and your team on the Razorpay dashboard.
+        </Text>
+        <Box marginTop="spacing.5">
+          <TextInput label="Enter new display name" placeholder="Enter your display name" />
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+
+export const EditAndAddModal = EditAndAddModalTemplate.bind({});
+EditAndAddModal.storyName = 'Edit and Add Modal';
+
 const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
