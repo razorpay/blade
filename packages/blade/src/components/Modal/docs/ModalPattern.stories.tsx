@@ -262,7 +262,7 @@ const ConfirmationModalWithImageTemplate: StoryFn<typeof Modal> = () => {
           title="Switch to WooCommerce"
           description="Are you sure you want to switch platform? We can allow one platform at a time. This will remove all your previous settings."
         />
-        <ConformationModalFooter type="negative" primaryButtonText="Yes" secondaryButtonText="No" />
+        <ConformationModalFooter type="neutral" primaryButtonText="Yes" secondaryButtonText="No" />
       </ResponsiveModalWrapper>
     </Box>
   );
