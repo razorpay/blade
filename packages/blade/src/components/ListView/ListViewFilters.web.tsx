@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import styled from 'styled-components';
 import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
@@ -21,9 +21,17 @@ import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useWindowSize } from '~utils/useWindowSize';
 
-const gradientOverlyContainerWidth = '21px'; // 20px + 1px divider width
+const gradientOverlyContainerWidth = '38px'; // 37px + 1px divider width
 const gradientOverlyContainerHeight = '38px';
+
+const CHILDREN_COUNTER_WIDTH = 36;
+const SEARCH_SPACING = 12;
+const QUICK_FILTER_SPACING = 4;
+const CHILDREN_TOTAL_WIDTH = CHILDREN_COUNTER_WIDTH + QUICK_FILTER_SPACING;
+const CHILDREN_WITH_SEARCH_WIDTH = CHILDREN_COUNTER_WIDTH + SEARCH_SPACING + QUICK_FILTER_SPACING;
 
 const StyledQuickFilterContainer = styled(BaseBox)({
   /* For Webkit (Chrome, Safari) */
@@ -42,10 +50,10 @@ const GradientOverlay = styled.div<{
   gradientColorRight: string;
 }>`
   height: 100%;
-  width: 20px;
+  width: 37px;
   background: linear-gradient(
     270deg,
-    ${({ gradientColorRight }) => gradientColorRight} 0%,
+    ${({ gradientColorRight }) => gradientColorRight} 30%,
     ${({ gradientColorLeft }) => gradientColorLeft} 100%
   );
   pointer-events: none;
@@ -93,15 +101,38 @@ const ListViewFilters = ({
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
   const { theme } = useTheme();
+  const { width } = useWindowSize();
+  const containerRef = useRef<HTMLElement | null>(null);
+
+  // Recalculate gradient visibility when width changes
+  useIsomorphicLayoutEffect(() => {
+    const node = containerRef.current;
+    if (node instanceof HTMLElement && quickFilters) {
+      const hasChildren = Boolean(children);
+      setShouldShowDecorationInQuickFilters(node.scrollWidth > node.offsetWidth && hasChildren);
+    }
+  }, [width, children]);
+
   const showSearchInput = onSearchChange || onSearchClear || searchValuePlaceholder || searchName;
   const getFilterContainerWidth = (): BoxProps['width'] => {
-    if (isMobile && Boolean(children)) {
-      return '88%';
+    const hasChildren = Boolean(children);
+
+    if (isMobile) {
+      return hasChildren ? '88%' : '100%';
     }
-    if (isMobile && !Boolean(children)) {
-      return '100%';
+
+    const searchInputWidth = isSearchTrailingDropDown ? '280px' : '208px';
+
+    if (showSearchInput && hasChildren) {
+      return `calc(100% - ${searchInputWidth} - ${CHILDREN_WITH_SEARCH_WIDTH}px)`;
     }
-    return 'auto';
+    if (hasChildren) {
+      return `calc(100% - ${CHILDREN_TOTAL_WIDTH}px)`;
+    }
+    if (showSearchInput) {
+      return `calc(100% - ${searchInputWidth} - ${QUICK_FILTER_SPACING}px)`;
+    }
+    return '100%';
   };
 
   const isSearchTrailingDropDown =
@@ -138,24 +169,20 @@ const ListViewFilters = ({
             display="flex"
             flexDirection="column"
             width={getFilterContainerWidth()}
-            marginRight={isMobile ? 'spacing.2' : 'spacing.0'}
+            marginRight="spacing.2"
           >
             <StyledQuickFilterContainer
-              overflow={isMobile ? 'scroll' : 'visible'}
-              width={isMobile ? '100%' : 'auto'}
+              overflow="scroll"
+              width="100%"
               ref={(node) => {
-                if (node instanceof HTMLElement && quickFilters) {
-                  setShouldShowDecorationInQuickFilters(
-                    node.scrollWidth > node.offsetWidth && Boolean(children),
-                  );
-                }
+                containerRef.current = node;
               }}
               paddingY="spacing.4"
-              paddingLeft={isMobile ? 'spacing.2' : 'spacing.0'}
+              paddingLeft="spacing.2"
             >
               {quickFilters}
             </StyledQuickFilterContainer>
-            {isMobile && shouldShowDecorationInQuickFilters ? (
+            {shouldShowDecorationInQuickFilters ? (
               <Box
                 position="absolute"
                 right="-1px"
@@ -166,7 +193,7 @@ const ListViewFilters = ({
                 <GradientOverlay
                   gradientColorLeft={theme.colors.transparent}
                   gradientColorRight={theme.colors.surface.background.gray.intense}
-                  dividerColor={theme.colors.surface.border.gray.normal}
+                  dividerColor={theme.colors.surface.border.gray.muted}
                 />
                 <Divider orientation="vertical" />
               </Box>
