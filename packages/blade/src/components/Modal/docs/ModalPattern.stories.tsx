@@ -287,6 +287,7 @@ const InformationModalTemplate: StoryFn<typeof Modal> = () => {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         modalBodyPadding="spacing.0"
+        customSnapPoints={[0.45, 0.75, 0.95]}
       >
         <ModalBody padding="spacing.0">
           <img src={AlertPng} alt="Alert" width={isMobile ? '100%' : '400px'} height={200} />
