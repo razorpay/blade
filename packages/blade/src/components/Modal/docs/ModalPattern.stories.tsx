@@ -915,6 +915,9 @@ ShareModal.storyName = 'Share Modal';
 
 const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
 
   const shippingTime = [
     {
@@ -947,6 +950,20 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
         onDismiss={() => setIsOpen(false)}
         modalSize="large"
         modalBodyPadding="spacing.0"
+        customSnapPoints={[0.8, 0.9, 0.95]}
+        wrapInBottomSheetFooter
+        footer={
+          isMobile ? (
+            <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+              <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+                Back
+              </Button>
+              <Button variant="primary" onClick={() => setIsOpen(false)}>
+                Continue
+              </Button>
+            </Box>
+          ) : undefined
+        }
       >
         <Box
           display="grid"
@@ -955,24 +972,26 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
           width="100%"
           height="100%"
         >
-          <Box
-            backgroundColor="surface.background.gray.subtle"
-            height="596px"
-            width="100%"
-            display="flex"
-            flexDirection="column"
-            justifyContent="flex-end"
-            overflow="hidden"
-            gridRow="span 2"
-          >
-            <img
-              src={SideImage}
-              height="452px"
+          {!isMobile && (
+            <Box
+              backgroundColor="surface.background.gray.subtle"
+              height="596px"
               width="100%"
-              alt="random graphics"
-              style={{ objectFit: 'fill' }}
-            />
-          </Box>
+              display="flex"
+              flexDirection="column"
+              justifyContent="flex-end"
+              overflow="hidden"
+              gridRow="span 2"
+            >
+              <img
+                src={SideImage}
+                height="452px"
+                width="100%"
+                alt="random graphics"
+                style={{ objectFit: 'fill' }}
+              />
+            </Box>
+          )}
           <Box height="100%" paddingTop="spacing.6" paddingX="spacing.6">
             <Heading size="medium" weight="semibold">
               Create policy pages with Razorpay
@@ -1013,16 +1032,18 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
               <TextInput label="Support Email ID" placeholder="support@razorpay.com" />
             </Box>
           </Box>
-          <ModalFooter>
-            <Box display="flex" justifyContent="flex-end" gap="spacing.5">
-              <Button variant="tertiary" onClick={() => setIsOpen(false)}>
-                Back
-              </Button>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
-                Continue
-              </Button>
-            </Box>
-          </ModalFooter>
+          {!isMobile && (
+            <ModalFooter>
+              <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+                <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+                  Back
+                </Button>
+                <Button variant="primary" onClick={() => setIsOpen(false)}>
+                  Continue
+                </Button>
+              </Box>
+            </ModalFooter>
+          )}
         </Box>
       </ResponsiveModalWrapper>
     </Box>
