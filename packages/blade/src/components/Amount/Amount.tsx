@@ -193,8 +193,6 @@ export const getAmountByParts = ({
       }
     }
   } catch (err: unknown) {
-    console.log('[Amount] Error in getAmountByParts', err);
-    // Use robust fallback for INR, simple fallback for other currencies
     if (currency === 'INR') {
       // INR can be formatted without INTL and i18nify dependency
       return formatINRFallback({ value, suffix, fractionDigits });
@@ -276,8 +274,6 @@ const _Amount = (
 
   const currencyPosition = isPrefixSymbol ? 'left' : 'right';
   const currencySymbolOrCode = currencyIndicator === 'currency-symbol' ? currencySymbol : currency;
-  // console.log('renderedValue', renderedValue);
-  // console.log(currencySymbolOrCode);
 
   const currencyFontSize = isAffixSubtle
     ? subtleFontSizes[type][size]

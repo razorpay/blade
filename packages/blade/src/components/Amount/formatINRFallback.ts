@@ -80,7 +80,7 @@ export const formatINRFallback = ({
 
     const decimalPart = (absoluteValue % 1).toFixed(fractionDigits).split('.')[1];
     if (!decimalPart || decimalPart === '00') {
-      return { decimal: '', fraction: '' };
+      return { decimal: '.', fraction: '00' };
     }
 
     return {
