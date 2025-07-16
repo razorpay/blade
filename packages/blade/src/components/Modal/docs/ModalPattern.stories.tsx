@@ -95,10 +95,10 @@ const ConformationalModalBody = ({
           <Icon color={getIconColor()} />
         </div>
 
-        <Box display="flex" flexDirection="column" gap="spacing.3">
-          <Heading size="large" weight="semibold">
+        <Box display="flex" flexDirection="column" gap="spacing.1">
+          <Text size="large" weight="semibold">
             {title}
-          </Heading>
+          </Text>
           <Text>{description}</Text>
         </Box>
       </Box>
