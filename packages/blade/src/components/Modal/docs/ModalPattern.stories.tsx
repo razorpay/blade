@@ -12,7 +12,15 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import type { ButtonProps } from '~components/Button';
-import { MapIcon, LockIcon, ShareIcon, CopyIcon, PhoneIcon, MailIcon } from '~components/Icons';
+import {
+  MapIcon,
+  LockIcon,
+  ShareIcon,
+  CopyIcon,
+  PhoneIcon,
+  MailIcon,
+  DeleteIcon,
+} from '~components/Icons';
 import type { IconColors, IconComponent } from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
@@ -125,7 +133,13 @@ const ConformationModalFooter = ({
   };
 
   return (
-    <Box display="flex" flexDirection="row" gap="spacing.3" justifyContent="space-between">
+    <Box
+      display="flex"
+      flexDirection="row"
+      gap="spacing.3"
+      justifyContent="space-between"
+      marginTop="spacing.6"
+    >
       {secondaryButtonText && (
         <Button variant="tertiary" isFullWidth>
           {secondaryButtonText}
@@ -192,13 +206,8 @@ const NeutralModalTemplate: StoryFn<typeof Modal> = () => {
       <ResponsiveModalWrapper
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
-        footer={
-          <ConformationModalFooter
-            type="neutral"
-            primaryButtonText="Yes"
-            secondaryButtonText="No"
-          />
-        }
+        // footer={
+        // }
       >
         <ConformationalModalBody
           type="neutral"
@@ -206,6 +215,7 @@ const NeutralModalTemplate: StoryFn<typeof Modal> = () => {
           title="Restart the Tour?"
           description="This tour will give a quick guide on this product"
         />
+        <ConformationModalFooter type="neutral" primaryButtonText="Yes" secondaryButtonText="No" />
       </ResponsiveModalWrapper>
     </Box>
   );
@@ -219,23 +229,14 @@ const NegativeModalTemplate: StoryFn<typeof Modal> = () => {
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <ResponsiveModalWrapper
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-        footer={
-          <ConformationModalFooter
-            type="negative"
-            primaryButtonText="Yes"
-            secondaryButtonText="No"
-          />
-        }
-      >
+      <ResponsiveModalWrapper isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <ConformationalModalBody
           type="negative"
-          icon={MapIcon}
+          icon={DeleteIcon}
           title="Restart the Tour?"
           description="This tour will give a quick guide on this product"
         />
+        <ConformationModalFooter type="negative" primaryButtonText="Yes" secondaryButtonText="No" />
       </ResponsiveModalWrapper>
     </Box>
   );
