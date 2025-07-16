@@ -378,6 +378,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
       subtitle:
         'Build your own button with your own design and branding. You can also use our pre-built templates.',
       img: Card4,
+      isDisabled: true,
     },
   ];
 
@@ -427,20 +428,21 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
           <Box
             display="flex"
             flexDirection="row"
-            gap="spacing.4"
+            gap="spacing.5"
             flexWrap="wrap"
             alignItems="center"
             justifyContent="center"
           >
-            {paymentMethods.map((method) => (
+            {paymentMethods.map((method, index) => (
               <Card
-                key={method.value}
+                key={`${method.value}-${index}`}
                 isSelected={selectedMethod === method.value}
-                onClick={() => setSelectedMethod(method.value)}
+                onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
                 padding="spacing.0"
                 accessibilityLabel={`Select ${method.title}`}
                 width={isMobile ? '160px' : '230px'}
                 borderRadius="medium"
+                elevation="none"
               >
                 <CardBody>
                   <Box overflow="none">
@@ -460,7 +462,13 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                     paddingY="spacing.4"
                   >
                     <Box>
-                      <Text size="medium" weight="semibold">
+                      <Text
+                        size="medium"
+                        weight="semibold"
+                        color={
+                          method.isDisabled ? 'surface.text.gray.muted' : 'surface.text.gray.normal'
+                        }
+                      >
                         {method.title}
                       </Text>
                       <Text size="small" color="surface.text.gray.muted">
