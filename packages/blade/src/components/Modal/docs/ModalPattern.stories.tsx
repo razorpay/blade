@@ -530,7 +530,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = (args) => {
         onDismiss={() => {
           setIsOpen(false);
         }}
-        modalSize="large"
+        modalSize="medium"
         footer={
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
             <Button variant="secondary" onClick={() => setIsOpen(false)}>
@@ -576,7 +576,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = (args) => {
                 onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
                 padding="spacing.0"
                 accessibilityLabel={`Select ${method.title}`}
-                width={isMobile ? '160px' : '230px'}
+                width={isMobile ? '160px' : '200px'}
                 borderRadius="medium"
                 elevation="none"
               >
