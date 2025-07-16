@@ -167,7 +167,7 @@ const _Text = <T extends { variant: TextVariant }>(
   );
 };
 
-const Text = assignWithoutSideEffects(React.forwardRef(_Text), {
+const Text = assignWithoutSideEffects(React.memo(React.forwardRef(_Text)), {
   displayName: 'Text',
   componentId: 'Text',
 });

@@ -95,6 +95,6 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
   );
 };
 
-const BaseText = React.forwardRef(_BaseText);
+const BaseText = React.memo(React.forwardRef(_BaseText));
 
 export { BaseText };
