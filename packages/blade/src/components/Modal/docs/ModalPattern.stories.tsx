@@ -967,8 +967,8 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
       >
         <Box
           display="grid"
-          gridTemplateColumns="1fr auto"
-          gridTemplateRows="1fr auto"
+          gridTemplateColumns={isMobile ? '1fr' : 'auto 1fr'}
+          gridTemplateRows={isMobile ? '1fr' : 'auto 1fr'}
           width="100%"
           height="100%"
         >
@@ -992,7 +992,13 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
               />
             </Box>
           )}
-          <Box height="100%" paddingTop="spacing.6" paddingX="spacing.6">
+          <Box
+            height="520px"
+            paddingTop="spacing.6"
+            paddingX="spacing.6"
+            width="100%"
+            overflow="scroll"
+          >
             <Heading size="medium" weight="semibold">
               Create policy pages with Razorpay
             </Heading>
