@@ -19,7 +19,7 @@ import {
   CopyIcon,
   PhoneIcon,
   MailIcon,
-  DeleteIcon,
+  TrashIcon,
 } from '~components/Icons';
 import type { IconColors, IconComponent } from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
@@ -232,7 +232,7 @@ const NegativeModalTemplate: StoryFn<typeof Modal> = () => {
       <ResponsiveModalWrapper isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <ConformationalModalBody
           type="negative"
-          icon={DeleteIcon}
+          icon={TrashIcon}
           title="Restart the Tour?"
           description="This tour will give a quick guide on this product"
         />
