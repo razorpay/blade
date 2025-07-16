@@ -114,6 +114,9 @@ const ListViewFilters = ({
   }, [width, children]);
 
   const showSearchInput = onSearchChange || onSearchClear || searchValuePlaceholder || searchName;
+  const isSearchTrailingDropDown =
+    React.isValidElement(searchTrailing) && getComponentId(searchTrailing) === 'Dropdown';
+
   const getFilterContainerWidth = (): BoxProps['width'] => {
     const hasChildren = Boolean(children);
 
@@ -134,9 +137,6 @@ const ListViewFilters = ({
     }
     return '100%';
   };
-
-  const isSearchTrailingDropDown =
-    React.isValidElement(searchTrailing) && getComponentId(searchTrailing) === 'Dropdown';
 
   return (
     <ListViewFiltersProvider
