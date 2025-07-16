@@ -8,6 +8,7 @@ import DonateNow from './assets/donatenow.png';
 import DonationsButton from './assets/donationButton.png';
 import Card4 from './assets/card4.png';
 import PayNow from './assets/paynow.png';
+import WooCommerceImage from './assets/woocommerce.png';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -60,12 +61,14 @@ const ConformationalModalBody = ({
   type = 'neutral',
   icon: Icon,
   title,
+  image,
   description,
 }: {
   type: 'neutral' | 'negative' | 'positive';
-  icon: IconComponent;
+  icon?: IconComponent;
   title: string;
   description: string;
+  image?: string;
 }): React.ReactNode => {
   const { theme } = useTheme();
   const getIconColor = (): IconColors => {
@@ -89,20 +92,32 @@ const ConformationalModalBody = ({
     <>
       {' '}
       <Box display="flex" flexDirection="column" gap="spacing.5">
-        <div
-          style={{
-            backgroundColor: getBackgroundColor(),
-            width: 'fit-content',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: theme.border.radius.medium,
-            padding: theme.spacing[4],
-          }}
-        >
-          <Icon color={getIconColor()} />
-        </div>
-
+        {image ? (
+          <Box
+            paddingX="spacing.1"
+            paddingY="10px"
+            borderColor="surface.border.gray.muted"
+            borderRadius="medium"
+            width="48px"
+            height="48px"
+          >
+            <img src={image} width={42} height={28} alt="logo" />
+          </Box>
+        ) : (
+          <div
+            style={{
+              backgroundColor: getBackgroundColor(),
+              width: 'fit-content',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: theme.border.radius.medium,
+              padding: theme.spacing[4],
+            }}
+          >
+            <Icon color={getIconColor()} />
+          </div>
+        )}
         <Box display="flex" flexDirection="column" gap="spacing.1">
           <Text size="large" weight="semibold">
             {title}
@@ -136,19 +151,13 @@ const ConformationModalFooter = ({
     <Box
       display="flex"
       flexDirection="row"
-      gap="spacing.3"
-      justifyContent="space-between"
+      gap="spacing.5"
+      justifyContent="flex-end"
       marginTop="spacing.6"
     >
-      {secondaryButtonText && (
-        <Button variant="tertiary" isFullWidth>
-          {secondaryButtonText}
-        </Button>
-      )}
+      {secondaryButtonText && <Button variant="tertiary">{secondaryButtonText}</Button>}
 
-      <Button isFullWidth color={getPrimaryButtonColor()}>
-        {primaryButtonText}
-      </Button>
+      <Button color={getPrimaryButtonColor()}>{primaryButtonText}</Button>
     </Box>
   );
 };
@@ -203,12 +212,7 @@ const NeutralModalTemplate: StoryFn<typeof Modal> = () => {
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <ResponsiveModalWrapper
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-        // footer={
-        // }
-      >
+      <ResponsiveModalWrapper isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <ConformationalModalBody
           type="neutral"
           icon={MapIcon}
@@ -244,6 +248,28 @@ const NegativeModalTemplate: StoryFn<typeof Modal> = () => {
 
 export const NegativeModal = NegativeModalTemplate.bind({});
 NegativeModal.storyName = 'Confirmation Modal - Negative';
+
+const ConfirmationModalWithImageTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+        <ConformationalModalBody
+          type="negative"
+          image={WooCommerceImage}
+          title="Switch to WooCommerce"
+          description="Are you sure you want to switch platform? We can allow one platform at a time. This will remove all your previous settings."
+        />
+        <ConformationModalFooter type="negative" primaryButtonText="Yes" secondaryButtonText="No" />
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+
+export const ConfirmationnModalWithImage = ConfirmationModalWithImageTemplate.bind({});
+ConfirmationnModalWithImage.storyName = 'Confirmation Modal - with Image';
 
 const InformationModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
