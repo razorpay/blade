@@ -947,25 +947,32 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
         modalSize="large"
         modalBodyPadding="spacing.0"
       >
-        <Box display="flex" flexDirection="row" gap="spacing.6" width="100%" height="100%">
+        <Box
+          display="grid"
+          gridTemplateColumns="1fr auto"
+          gridTemplateRows="1fr auto"
+          width="100%"
+          height="100%"
+        >
           <Box
             backgroundColor="surface.background.gray.subtle"
             height="596px"
-            width="400px"
+            width="100%"
             display="flex"
             flexDirection="column"
             justifyContent="flex-end"
             overflow="hidden"
+            gridRow="span 2"
           >
             <img
               src={SideImage}
               height="452px"
-              width="429px"
+              width="100%"
               alt="random graphics"
               style={{ objectFit: 'fill' }}
             />
           </Box>
-          <Box height="100%" paddingTop="spacing.6" paddingRight="spacing.6">
+          <Box height="100%" paddingTop="spacing.6" paddingX="spacing.6">
             <Heading size="medium" weight="semibold">
               Create policy pages with Razorpay
             </Heading>
@@ -1003,16 +1010,18 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
               </ChipGroup>
               <TextInput label="Support contact number" prefix="+91" placeholder="9XXXXXXXXX" />
               <TextInput label="Support Email ID" placeholder="support@razorpay.com" />
-              <Box display="flex" justifyContent="flex-end" gap="spacing.5" marginTop="spacing.6">
-                <Button variant="tertiary" onClick={() => setIsOpen(false)}>
-                  Back
-                </Button>
-                <Button variant="primary" onClick={() => setIsOpen(false)}>
-                  Continue
-                </Button>
-              </Box>
             </Box>
           </Box>
+          <ModalFooter>
+            <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+              <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+                Back
+              </Button>
+              <Button variant="primary" onClick={() => setIsOpen(false)}>
+                Continue
+              </Button>
+            </Box>
+          </ModalFooter>
         </Box>
       </ResponsiveModalWrapper>
     </Box>
