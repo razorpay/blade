@@ -623,6 +623,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                             ? 'surface.icon.gray.muted'
                             : 'surface.icon.primary.normal'
                         }
+                        size="large"
                       />
                     </Box>
                   </Box>
