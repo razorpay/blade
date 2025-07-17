@@ -370,8 +370,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
     {
       value: 'buynow',
       title: 'Buy Now Button',
-      subtitle:
-        'Selling products or event tickets?  Sell multiple items with support for quantity using this button.',
+      subtitle: 'Selling products or event tickets?  Sell multiple items with  quantity supported.',
       img: DonationsButton,
     },
     {
@@ -451,38 +450,46 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                 accessibilityLabel={`Select ${method.title}`}
                 width={isMobile ? '160px' : '230px'}
                 borderRadius="medium"
-                elevation="none"
+                elevation={selectedMethod === method.value ? 'lowRaised' : 'none'}
               >
                 <CardBody>
-                  <Box overflow="none">
-                    <img
-                      src={method.img}
-                      alt={method.title}
-                      width={isMobile ? '160px' : '230px'}
-                      height="130px"
-                    />
-                  </Box>
-                  <Box
-                    display="flex"
-                    flexDirection="row"
-                    gap="spacing.4"
-                    alignItems="center"
-                    paddingX="spacing.5"
-                    paddingY="spacing.4"
-                  >
-                    <Box display="flex" flexDirection="column" gap="spacing.2">
-                      <Text
-                        size="medium"
-                        weight="semibold"
-                        color={
-                          method.isDisabled ? 'surface.text.gray.muted' : 'surface.text.gray.normal'
-                        }
-                      >
-                        {method.title}
-                      </Text>
-                      <Text size="small" color="surface.text.gray.muted">
-                        {method.subtitle}
-                      </Text>
+                  <Box overflow="hidden">
+                    <div
+                      style={{
+                        backgroundColor: '#263ebb',
+                      }}
+                    >
+                      <img
+                        src={method.img}
+                        alt={method.title}
+                        width={isMobile ? '160px' : '230px'}
+                        height="130px"
+                      />
+                    </div>
+                    <Box
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.4"
+                      alignItems="center"
+                      paddingX="spacing.5"
+                      paddingY="spacing.4"
+                    >
+                      <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Text
+                          size="medium"
+                          weight="semibold"
+                          color={
+                            method.isDisabled
+                              ? 'surface.text.gray.muted'
+                              : 'surface.text.gray.normal'
+                          }
+                        >
+                          {method.title}
+                        </Text>
+                        <Text size="small" color="surface.text.gray.muted">
+                          {method.subtitle}
+                        </Text>
+                      </Box>
                     </Box>
                   </Box>
                 </CardBody>
