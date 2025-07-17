@@ -9,7 +9,6 @@ import DonationsButton from './assets/donationButton.png';
 import SideImage from './assets/sideImage.png';
 import Card4 from './assets/card4.png';
 import PayNow from './assets/paynow.png';
-import WooCommerceImage from './assets/woocommerce.png';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -696,7 +695,11 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
         onDismiss={() => {
           setIsOpen(false);
         }}
-        footer={<Button isFullWidth> Confirm </Button>}
+        footer={
+          <Box display="flex" justifyContent="flex-end" width="100%">
+            <Button> Confirm </Button>
+          </Box>
+        }
         customSnapPoints={[0.5, 0.6, 0.75]}
       >
         <div
