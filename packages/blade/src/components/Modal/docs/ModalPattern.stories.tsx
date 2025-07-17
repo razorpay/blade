@@ -721,15 +721,16 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
         <div
           style={{
             backgroundColor: theme.colors.interactive.background.gray.default,
-            width: 'fit-content',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: theme.border.radius.medium,
             padding: theme.spacing[4],
+            width: '48px',
+            height: '48px',
           }}
         >
-          <LockIcon color="surface.icon.gray.subtle" />
+          <LockIcon color="surface.icon.gray.subtle" size="large" />
         </div>
         <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
           <Text size="large" weight="semibold">
