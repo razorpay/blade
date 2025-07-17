@@ -44,6 +44,7 @@ import {
 } from '~components/BottomSheet';
 import type { ModalBodyProps } from '~components/Modal';
 import { Chip, ChipGroup } from '~components/Chip';
+import { Tooltip } from '~components/Tooltip';
 
 export default {
   title: 'Patterns/Modal',
@@ -829,6 +830,7 @@ OTPModal.storyName = 'OTP Modal';
 
 const ShareModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isCopied, setIsCopied] = React.useState(false);
 
   const { theme } = useTheme();
   return (
@@ -875,7 +877,17 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
             <TextInput value="https://rzp.io/test-ai" label="" />
           </Box>
           <Box>
-            <Button icon={CopyIcon}>Copy</Button>
+            <Tooltip content={isCopied ? 'Copied' : 'Copy to clipboard'}>
+              <Button
+                icon={CopyIcon}
+                onClick={() => {
+                  setIsCopied(true);
+                  setTimeout(() => setIsCopied(false), 5000);
+                }}
+              >
+                Copy
+              </Button>
+            </Tooltip>
           </Box>
         </Box>
         <Box marginTop="spacing.5">
