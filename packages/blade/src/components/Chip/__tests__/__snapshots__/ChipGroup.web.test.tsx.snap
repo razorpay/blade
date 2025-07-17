@@ -293,6 +293,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   overflow-wrap: break-word;
 }
 
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c12.c12.c12.c12.c12 {
     border-style: solid;
@@ -320,6 +326,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 @media screen and (min-width:1200px) {
   .c12.c12.c12.c12.c12 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c14.c14.c14.c14.c14 > * + * {
+    margin-left: 8px;
   }
 }
 
@@ -853,6 +865,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   overflow-wrap: break-word;
 }
 
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c12.c12.c12.c12.c12 {
     border-style: solid;
@@ -880,6 +898,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 @media screen and (min-width:1200px) {
   .c12.c12.c12.c12.c12 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c14.c14.c14.c14.c14 > * + * {
+    margin-left: 8px;
   }
 }
 

@@ -128,18 +128,31 @@ describe('getAllProps', () => {
       display: 'block',
       padding: { base: 'spacing.1', l: '20px' },
       margin: { m: 'spacing.1' },
+      gap: { base: 'spacing.1', m: 'spacing.2' },
       theme: bladeLightTheme,
     };
 
     expect(removeUndefinedValues(getAllProps(baseBoxProps))).toMatchInlineSnapshot(`
       {
+        "@supports not (gap: 1px)": {
+          "& > * + *": {
+            "marginLeft": "2px",
+          },
+        },
         "display": "block",
+        "gap": "2px",
         "padding": "2px",
       }
     `);
 
     expect(removeUndefinedValues(getAllProps(baseBoxProps, 'm'))).toMatchInlineSnapshot(`
       {
+        "@supports not (gap: 1px)": {
+          "& > * + *": {
+            "marginLeft": "4px",
+          },
+        },
+        "gap": "4px",
         "margin": "2px",
       }
     `);

@@ -309,7 +309,7 @@ a:active .c2.c2.c2.c2.c2 {
         type="button"
       >
         <div
-          class=" c2"
+          class="c2"
           data-blade-component="base-box"
         >
           <div
@@ -333,7 +333,7 @@ a:active .c2.c2.c2.c2.c2 {
         role="region"
       >
         <div
-          class=" c6"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
@@ -689,7 +689,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           >
             <div
               aria-hidden="true"
-              class=" c5"
+              class="c5"
               data-blade-component="base-box"
               direction="bottom"
             >
@@ -722,7 +722,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         role="region"
       >
         <div
-          class=" c6"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
@@ -955,7 +955,7 @@ exports[`<Collapsible /> should support adding data-analytics attributes 1`] = `
           >
             <div
               aria-hidden="true"
-              class=" c5"
+              class="c5"
               data-blade-component="base-box"
               direction="bottom"
             >

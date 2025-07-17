@@ -588,7 +588,7 @@ a:active .c2.c2.c2.c2.c2 {
           type="button"
         >
           <div
-            class=" c2"
+            class="c2"
             data-blade-component="base-box"
           >
             <div
@@ -674,13 +674,13 @@ a:active .c2.c2.c2.c2.c2 {
                   </div>
                 </div>
                 <div
-                  class=" c17"
+                  class="c17"
                   data-blade-component="base-box"
                 >
                   <button
                     aria-current="true"
                     aria-selected="true"
-                    class=" c18"
+                    class="c18"
                     data-blade-component="action-list-item"
                     data-index="0"
                     data-value="approve"
@@ -726,7 +726,7 @@ a:active .c2.c2.c2.c2.c2 {
                   <button
                     aria-current="false"
                     aria-selected="false"
-                    class=" c18"
+                    class="c18"
                     data-blade-component="action-list-item"
                     data-index="1"
                     data-value="in-progress"
@@ -772,7 +772,8 @@ a:active .c2.c2.c2.c2.c2 {
                   <button
                     aria-current="false"
                     aria-selected="false"
-                    class=" c25"
+                    class="c25"
+                    color="negative"
                     data-blade-component="action-list-item"
                     data-index="2"
                     data-value="reject"
@@ -1707,7 +1708,7 @@ a:active .c35.c35.c35.c35.c35 {
               type="button"
             >
               <div
-                class=" c35"
+                class="c35"
                 data-blade-component="base-box"
               >
                 <div

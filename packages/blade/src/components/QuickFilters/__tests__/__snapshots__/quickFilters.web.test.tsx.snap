@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<QuickFilters/> should render Values Correctly 1`] = `
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -30,7 +30,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -71,12 +71,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   gap: 8px;
 }
 
-.c3.c3.c3.c3.c3 {
-  display: block;
-  border-radius: 4px;
-}
-
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   text-align: left;
   padding: 0px;
   background-color: hsla(0,0%,100%,1);
@@ -84,7 +79,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   box-shadow: none;
 }
 
-.c7.c7.c7.c7.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -110,7 +105,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   gap: 8px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -129,7 +124,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   gap: 4px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -143,19 +138,19 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   align-items: center;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   min-height: 20px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,7 +171,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   padding-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -193,7 +188,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   padding: 0;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -217,7 +212,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   overflow-wrap: break-word;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -234,7 +229,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   word-wrap: normal;
 }
 
-.c11.c11.c11.c11.c11:focus-visible + div {
+.c10.c10.c10.c10.c10:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -246,7 +241,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   z-index: 2;
 }
 
-.c11.c11.c11.c11.c11:hover + div {
+.c10.c10.c10.c10.c10:hover + div {
   border-color: hsla(214,28%,84%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -255,7 +250,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   transition-duration: 80ms;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -271,32 +266,31 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   box-sizing: border-box;
 }
 
-.c4.c4.c4.c4.c4 {
-  box-shadow: 0px 0px 0px 2px transparent;
+.c3.c3.c3.c3.c3 {
   cursor: pointer;
 }
 
-.c4.c4.c4.c4.c4 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c3.c3.c3.c3.c3 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c4.c4.c4.c4.c4 button:not(button[data-blade-component="card-link-overlay"]) {
+.c3.c3.c3.c3.c3 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c4.c4.c4.c4.c4 label:not(a[data-blade-component="card-link-overlay"]) {
+.c3.c3.c3.c3.c3 label:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c4.c4.c4.c4.c4 label:not(button[data-blade-component="card-link-overlay"]) {
+.c3.c3.c3.c3.c3 label:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -310,6 +304,30 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-top: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 8px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-left: 8px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-left: 4px;
+  }
 }
 
 <div>
@@ -341,11 +359,12 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
             >
               <label
                 aria-label="Title1"
-                class="c3 c4"
+                class="c3"
                 data-blade-component="card"
+                display="block"
               >
                 <div
-                  class="c5 c6"
+                  class="c4 c5"
                   data-blade-component="base-box"
                   elevation="none"
                 >
@@ -354,11 +373,11 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                     data-blade-component="card-body"
                   >
                     <div
-                      class="c7"
+                      class="c6"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c8"
+                        class="c7"
                         data-blade-component="box"
                       >
                         <div
@@ -366,7 +385,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                           data-blade-component="base-box"
                         >
                           <label
-                            class="c9"
+                            class="c8"
                             data-blade-component="radio-label"
                           >
                             <div
@@ -374,7 +393,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                               data-blade-component="base-box"
                             >
                               <div
-                                class="c10"
+                                class="c9"
                                 data-blade-component="base-box"
                               >
                                 <input
@@ -383,14 +402,14 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                                   aria-disabled="false"
                                   aria-invalid="false"
                                   aria-required="false"
-                                  class="c11"
+                                  class="c10"
                                   name="radio-group-5"
                                   role="radio"
                                   type="radio"
                                   value="value1"
                                 />
                                 <div
-                                  class="c12"
+                                  class="c11"
                                   data-blade-component="radio-icon-wrapper"
                                 />
                               </div>
@@ -398,26 +417,26 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                           </label>
                         </div>
                         <p
-                          class="c13"
+                          class="c12"
                           data-blade-component="text"
                         >
                           Title1
                         </p>
                       </div>
                       <div
-                        class="c14"
+                        class="c13"
                         data-blade-component="counter"
                       >
                         <div
-                          class="c15 c16"
+                          class="c14 c15"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c17"
+                            class="c16"
                             data-blade-component="base-box"
                           >
                             <p
-                              class="c18"
+                              class="c17"
                               data-blade-component="text"
                             >
                               234
@@ -431,11 +450,12 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
               </label>
               <label
                 aria-label="Title2"
-                class="c3 c4"
+                class="c3"
                 data-blade-component="card"
+                display="block"
               >
                 <div
-                  class="c5 c6"
+                  class="c4 c5"
                   data-blade-component="base-box"
                   elevation="none"
                 >
@@ -444,11 +464,11 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                     data-blade-component="card-body"
                   >
                     <div
-                      class="c7"
+                      class="c6"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c8"
+                        class="c7"
                         data-blade-component="box"
                       >
                         <div
@@ -456,7 +476,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                           data-blade-component="base-box"
                         >
                           <label
-                            class="c9"
+                            class="c8"
                             data-blade-component="radio-label"
                           >
                             <div
@@ -464,7 +484,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                               data-blade-component="base-box"
                             >
                               <div
-                                class="c10"
+                                class="c9"
                                 data-blade-component="base-box"
                               >
                                 <input
@@ -473,14 +493,14 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                                   aria-disabled="false"
                                   aria-invalid="false"
                                   aria-required="false"
-                                  class="c11"
+                                  class="c10"
                                   name="radio-group-5"
                                   role="radio"
                                   type="radio"
                                   value="value2"
                                 />
                                 <div
-                                  class="c12"
+                                  class="c11"
                                   data-blade-component="radio-icon-wrapper"
                                 />
                               </div>
@@ -488,26 +508,26 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                           </label>
                         </div>
                         <p
-                          class="c13"
+                          class="c12"
                           data-blade-component="text"
                         >
                           Title2
                         </p>
                       </div>
                       <div
-                        class="c14"
+                        class="c13"
                         data-blade-component="counter"
                       >
                         <div
-                          class="c15 c16"
+                          class="c14 c15"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c17"
+                            class="c16"
                             data-blade-component="base-box"
                           >
                             <p
-                              class="c18"
+                              class="c17"
                               data-blade-component="text"
                             >
                               234

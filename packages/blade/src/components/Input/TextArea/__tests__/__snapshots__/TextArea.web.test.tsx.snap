@@ -332,6 +332,12 @@ exports[`<TextArea /> should render 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -378,11 +384,11 @@ exports[`<TextArea /> should render 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -766,6 +772,12 @@ exports[`<TextArea /> should render large size 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -812,11 +824,11 @@ exports[`<TextArea /> should render large size 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -1193,6 +1205,12 @@ exports[`<TextArea /> should set number of lines 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -1239,11 +1257,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -1605,6 +1623,12 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -1651,11 +1675,11 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea

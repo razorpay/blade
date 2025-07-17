@@ -131,6 +131,34 @@ const getBorderStyleValue = (
   return undefined;
 };
 
+const addGapPropertiesWithPolyfills = (
+  props: BaseBoxProps & { theme: Theme },
+  breakpoint?: keyof Breakpoints,
+): CSSObject => {
+  const gapValue = getSpacingValue(props.gap, props.theme, breakpoint);
+  const flexDirection = getResponsiveValue(props.flexDirection, breakpoint) || 'row';
+
+  if (!gapValue) return {};
+
+  return {
+    // For browsers that support gap, use it directly
+    gap: gapValue,
+
+    // Only add margin polyfill for browsers that DON'T support gap
+    '@supports not (gap: 1px)': {
+      '& > * + *': {
+        // Use logical properties with webkit fallbacks for better compatibility
+        ...(flexDirection === 'row' && {
+          marginLeft: gapValue,
+        }),
+        ...(flexDirection === 'column' && {
+          marginTop: gapValue,
+        }),
+      },
+    },
+  };
+};
+
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   breakpoint?: keyof Breakpoints,
@@ -200,13 +228,13 @@ const getAllProps = (
     width: getSpacingValue(props.width, props.theme, breakpoint),
     minWidth: getSpacingValue(props.minWidth, props.theme, breakpoint),
     maxWidth: getSpacingValue(props.maxWidth, props.theme, breakpoint),
-    gap: getSpacingValue(props.gap, props.theme, breakpoint),
-    rowGap: getSpacingValue(props.rowGap, props.theme, breakpoint),
-    columnGap: getSpacingValue(props.columnGap, props.theme, breakpoint),
     top: getSpacingValue(props.top, props.theme, breakpoint),
     right: getSpacingValue(props.right, props.theme, breakpoint),
     bottom: getSpacingValue(props.bottom, props.theme, breakpoint),
     left: getSpacingValue(props.left, props.theme, breakpoint),
+    ...addGapPropertiesWithPolyfills(props, breakpoint),
+    rowGap: getSpacingValue(props.rowGap, props.theme, breakpoint),
+    columnGap: getSpacingValue(props.columnGap, props.theme, breakpoint),
 
     // Visual props
     backgroundColor: getColorValue(props.backgroundColor, props.theme, breakpoint),

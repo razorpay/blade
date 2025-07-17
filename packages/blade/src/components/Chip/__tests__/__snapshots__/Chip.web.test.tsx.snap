@@ -280,6 +280,12 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   }
 }
 
+@supports not (gap:1px) {
+  .c11.c11.c11.c11.c11 > * + * {
+    margin-left: 8px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c11.c11.c11.c11.c11 {
     border-style: solid;
@@ -723,6 +729,12 @@ exports[`<Chip /> should render chip 1`] = `
 @media screen and (min-width:1200px) {
   .c9.c9.c9.c9.c9 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c11.c11.c11.c11.c11 > * + * {
+    margin-left: 8px;
   }
 }
 
@@ -1173,6 +1185,12 @@ exports[`<Chip /> should render chip with icon 1`] = `
 @media screen and (min-width:1200px) {
   .c9.c9.c9.c9.c9 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c11.c11.c11.c11.c11 > * + * {
+    margin-left: 8px;
   }
 }
 
@@ -1813,6 +1831,12 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   }
 }
 
+@supports not (gap:1px) {
+  .c11.c11.c11.c11.c11 > * + * {
+    margin-left: 8px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c11.c11.c11.c11.c11 {
     border-style: solid;
@@ -1870,6 +1894,12 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 @media screen and (min-width:1200px) {
   .c15.c15.c15.c15.c15 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c17.c17.c17.c17.c17 > * + * {
+    margin-left: 8px;
   }
 }
 

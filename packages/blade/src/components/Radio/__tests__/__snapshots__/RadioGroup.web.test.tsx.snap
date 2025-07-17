@@ -210,6 +210,18 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
   transition-duration: 80ms;
 }
 
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 0px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-top: 8px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -565,6 +577,24 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 0px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-top: 8px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c14.c14.c14.c14.c14 > * + * {
+    margin-left: 4px;
+  }
 }
 
 <div>
@@ -1003,6 +1033,18 @@ exports[`<RadioGroup /> should render with label 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 0px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-top: 8px;
+  }
 }
 
 <div>

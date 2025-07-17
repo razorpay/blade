@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AnimateInteractions /> should render its children as expected 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Test</p><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  fFhUjt"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Submit</div></div></div></button></div></div>"`;
+exports[`<AnimateInteractions /> should render its children as expected 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Test</p><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0 fFhUjt" data-blade-component="base-box"><div class="BaseBox-bmPWx LeezU BaseButton__ButtonContent-zf1huq-0 esItiH" data-blade-component="base-box"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Submit</div></div></div></button></div></div>"`;
 
 exports[`<AnimateInteractions /> should render its children as expected 2`] = `
 .c3.c3.c3.c3.c3 {
@@ -172,7 +172,7 @@ a:active .c2.c2.c2.c2.c2 {
       type="button"
     >
       <div
-        class=" c2"
+        class="c2"
         data-blade-component="base-box"
       >
         <div

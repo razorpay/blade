@@ -176,7 +176,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-analytics-avatar-group="blade-team"
     data-blade-component="avatar-group"
     data-testid="data-analytics-test"
@@ -440,7 +440,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="avatar-group"
     role="group"
   >
@@ -702,7 +702,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="avatar-group"
     role="group"
   >
@@ -964,7 +964,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="avatar-group"
     role="group"
   >
@@ -1226,7 +1226,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="avatar-group"
     role="group"
   >
@@ -1488,7 +1488,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="avatar-group"
     role="group"
   >

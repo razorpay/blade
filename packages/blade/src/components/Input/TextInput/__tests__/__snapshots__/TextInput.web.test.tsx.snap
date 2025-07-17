@@ -319,6 +319,12 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -365,11 +371,11 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -722,6 +728,12 @@ exports[`<TextInput /> should render 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -768,11 +780,11 @@ exports[`<TextInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -1268,6 +1280,12 @@ exports[`<TextInput /> should render large size 1`] = `
   transition-duration: 80ms;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -1314,11 +1332,11 @@ exports[`<TextInput /> should render large size 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -1843,6 +1861,12 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -1889,11 +1913,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div

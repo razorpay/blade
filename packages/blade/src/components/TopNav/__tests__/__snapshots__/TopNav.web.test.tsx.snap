@@ -99,8 +99,8 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   display: flex;
   position: relative;
   width: 100%;
-  gap: 0px;
   left: -1px;
+  gap: 0px;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -456,6 +456,12 @@ a:active .c16.c16.c16.c16.c16 {
   }
 }
 
+@supports not (gap:1px) {
+  .c8.c8.c8.c8.c8 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c12.c12.c12.c12.c12 {
     border-left-style: solid;
@@ -483,6 +489,12 @@ a:active .c16.c16.c16.c16.c16 {
 @media screen and (min-width:1200px) {
   .c12.c12.c12.c12.c12 {
     border-left-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c14.c14.c14.c14.c14 > * + * {
+    margin-left: 8px;
   }
 }
 
@@ -550,11 +562,11 @@ a:active .c16.c16.c16.c16.c16 {
                 data-blade-component="tab-nav-items"
               >
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -573,11 +585,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -596,11 +608,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -619,11 +631,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -643,11 +655,11 @@ a:active .c16.c16.c16.c16.c16 {
                 />
               </div>
               <div
-                class=" c9"
+                class="c9"
                 data-blade-component="tab-nav-item"
               >
                 <div
-                  class=" c10"
+                  class="c10"
                   data-blade-component="base-box"
                 />
                 <a
@@ -695,7 +707,7 @@ a:active .c16.c16.c16.c16.c16 {
           type="button"
         >
           <div
-            class=" c16"
+            class="c16"
             data-blade-component="base-box"
           >
             <div
@@ -735,7 +747,7 @@ a:active .c16.c16.c16.c16.c16 {
           type="button"
         >
           <div
-            class=" c16"
+            class="c16"
             data-blade-component="base-box"
           >
             <div
@@ -898,8 +910,8 @@ exports[`TopNav should render 1`] = `
   display: flex;
   position: relative;
   width: 100%;
-  gap: 0px;
   left: -1px;
+  gap: 0px;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -1255,6 +1267,12 @@ a:active .c16.c16.c16.c16.c16 {
   }
 }
 
+@supports not (gap:1px) {
+  .c8.c8.c8.c8.c8 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c12.c12.c12.c12.c12 {
     border-left-style: solid;
@@ -1282,6 +1300,12 @@ a:active .c16.c16.c16.c16.c16 {
 @media screen and (min-width:1200px) {
   .c12.c12.c12.c12.c12 {
     border-left-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c14.c14.c14.c14.c14 > * + * {
+    margin-left: 8px;
   }
 }
 
@@ -1349,11 +1373,11 @@ a:active .c16.c16.c16.c16.c16 {
                 data-blade-component="tab-nav-items"
               >
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -1372,11 +1396,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -1395,11 +1419,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -1418,11 +1442,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -1442,11 +1466,11 @@ a:active .c16.c16.c16.c16.c16 {
                 />
               </div>
               <div
-                class=" c9"
+                class="c9"
                 data-blade-component="tab-nav-item"
               >
                 <div
-                  class=" c10"
+                  class="c10"
                   data-blade-component="base-box"
                 />
                 <a
@@ -1494,7 +1518,7 @@ a:active .c16.c16.c16.c16.c16 {
           type="button"
         >
           <div
-            class=" c16"
+            class="c16"
             data-blade-component="base-box"
           >
             <div
@@ -1534,7 +1558,7 @@ a:active .c16.c16.c16.c16.c16 {
           type="button"
         >
           <div
-            class=" c16"
+            class="c16"
             data-blade-component="base-box"
           >
             <div
@@ -1697,8 +1721,8 @@ exports[`TopNav should support data analytics attributes 1`] = `
   display: flex;
   position: relative;
   width: 100%;
-  gap: 0px;
   left: -1px;
+  gap: 0px;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -2054,6 +2078,12 @@ a:active .c16.c16.c16.c16.c16 {
   }
 }
 
+@supports not (gap:1px) {
+  .c8.c8.c8.c8.c8 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c12.c12.c12.c12.c12 {
     border-left-style: solid;
@@ -2081,6 +2111,12 @@ a:active .c16.c16.c16.c16.c16 {
 @media screen and (min-width:1200px) {
   .c12.c12.c12.c12.c12 {
     border-left-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c14.c14.c14.c14.c14 > * + * {
+    margin-left: 8px;
   }
 }
 
@@ -2148,11 +2184,11 @@ a:active .c16.c16.c16.c16.c16 {
                 data-blade-component="tab-nav-items"
               >
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -2171,11 +2207,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -2194,11 +2230,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -2217,11 +2253,11 @@ a:active .c16.c16.c16.c16.c16 {
                   role="separator"
                 />
                 <div
-                  class=" c9"
+                  class="c9"
                   data-blade-component="tab-nav-item"
                 >
                   <div
-                    class=" c10"
+                    class="c10"
                     data-blade-component="base-box"
                   />
                   <a
@@ -2241,11 +2277,11 @@ a:active .c16.c16.c16.c16.c16 {
                 />
               </div>
               <div
-                class=" c9"
+                class="c9"
                 data-blade-component="tab-nav-item"
               >
                 <div
-                  class=" c10"
+                  class="c10"
                   data-blade-component="base-box"
                 />
                 <a
@@ -2293,7 +2329,7 @@ a:active .c16.c16.c16.c16.c16 {
           type="button"
         >
           <div
-            class=" c16"
+            class="c16"
             data-blade-component="base-box"
           >
             <div
@@ -2333,7 +2369,7 @@ a:active .c16.c16.c16.c16.c16 {
           type="button"
         >
           <div
-            class=" c16"
+            class="c16"
             data-blade-component="base-box"
           >
             <div

@@ -320,6 +320,12 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   padding: 0;
 }
 
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 4px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c3.c3.c3.c3.c3 {
     border-left-style: solid;
@@ -377,6 +383,12 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 @media screen and (min-width:1200px) {
   .c10.c10.c10.c10.c10 {
     border-left-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c13.c13.c13.c13.c13 > * + * {
+    margin-left: 12px;
   }
 }
 
@@ -1099,6 +1111,18 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+}
+
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c13.c13.c13.c13.c13 > * + * {
+    margin-left: 12px;
+  }
 }
 
 <div>

@@ -319,6 +319,12 @@ exports[`<BaseInput /> should render 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -365,11 +371,11 @@ exports[`<BaseInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -504,6 +510,10 @@ exports[`<BaseInput /> should render base input with no borders 1`] = `
   outline: none;
 }
 
+@supports not (gap:1px) {
+
+}
+
 <input
   aria-describedby=""
   aria-disabled="false"
@@ -622,6 +632,14 @@ exports[`<BaseInput /> should render base input with no borders in error state 1
   outline: none;
 }
 
+@supports not (gap:1px) {
+
+}
+
+@supports not (gap:1px) {
+
+}
+
 <input
   aria-describedby="name-91-errortext-93"
   aria-disabled="false"
@@ -738,6 +756,14 @@ exports[`<BaseInput /> should render base input with no borders in success state
 
 .c0.c0.c0.c0.c0:focus {
   outline: none;
+}
+
+@supports not (gap:1px) {
+
+}
+
+@supports not (gap:1px) {
+
 }
 
 <input
@@ -1113,6 +1139,12 @@ exports[`<BaseInput /> should render with icons 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -1159,11 +1191,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -1679,6 +1711,18 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c17.c17.c17.c17.c17 > * + * {
+    margin-left: 4px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -1725,11 +1769,11 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
@@ -2278,6 +2322,12 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   transition-duration: 80ms;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -2324,11 +2374,11 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -2706,6 +2756,12 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -2752,11 +2808,11 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
         </label>
       </div>
       <div
-        class=" c7 focus-ring-wrapper"
+        class="c7 focus-ring-wrapper"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c8 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input

@@ -438,6 +438,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -497,11 +503,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class="c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class="c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1802,6 +1808,12 @@ a:active .c54.c54.c54.c54.c54 {
   overflow: hidden;
 }
 
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c30.c30.c30.c30.c30 {
     padding-right: 20px;
@@ -1927,11 +1939,11 @@ a:active .c54.c54.c54.c54.c54 {
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class="c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class="c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -2162,11 +2174,11 @@ a:active .c54.c54.c54.c54.c54 {
                             </label>
                           </div>
                           <div
-                            class=" c36 focus-ring-wrapper"
+                            class="c36 focus-ring-wrapper"
                             data-blade-component="base-box"
                           >
                             <div
-                              class=" c37 c11 __blade-base-input-wrapper"
+                              class="c37 c11 __blade-base-input-wrapper"
                               data-blade-component="base-box"
                             >
                               <div
@@ -2232,12 +2244,12 @@ a:active .c54.c54.c54.c54.c54 {
               data-blade-component="base-box"
             >
               <div
-                class=" c43"
+                class="c43"
                 data-blade-component="base-box"
               >
                 <button
                   aria-selected="false"
-                  class=" c44 active-focus"
+                  class="c44 active-focus"
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
@@ -2282,7 +2294,7 @@ a:active .c54.c54.c54.c54.c54 {
                 </button>
                 <button
                   aria-selected="false"
-                  class=" c44"
+                  class="c44"
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
@@ -2352,7 +2364,7 @@ a:active .c54.c54.c54.c54.c54 {
                   type="button"
                 >
                   <div
-                    class=" c54"
+                    class="c54"
                     data-blade-component="base-box"
                   >
                     <div
@@ -2816,6 +2828,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:768px) {
 
 }
@@ -2903,11 +2921,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class="c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class="c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -3448,6 +3466,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:768px) {
 
 }
@@ -3539,11 +3563,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class="c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class="c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div

@@ -285,9 +285,33 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   scroll-snap-align: start;
 }
 
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 12px;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c2.c2.c2.c2.c2 {
     gap: 16px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c8.c8.c8.c8.c8 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -310,7 +334,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
         <div
           aria-label="1 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-16-carousel-item-0"
@@ -327,7 +351,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
         <div
           aria-label="2 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-16-carousel-item-1"
@@ -670,9 +694,33 @@ exports[`Carousel Snapshots should render 1`] = `
   scroll-snap-align: start;
 }
 
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 12px;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c2.c2.c2.c2.c2 {
     gap: 16px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -695,7 +743,7 @@ exports[`Carousel Snapshots should render 1`] = `
         <div
           aria-label="1 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-6-carousel-item-0"
@@ -712,7 +760,7 @@ exports[`Carousel Snapshots should render 1`] = `
         <div
           aria-label="2 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-6-carousel-item-1"
@@ -1042,9 +1090,27 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   scroll-snap-align: start;
 }
 
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 12px;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c3.c3.c3.c3.c3 {
     gap: 16px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -1090,7 +1156,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
         <div
           aria-label="1 of 2"
           aria-roledescription="slide"
-          class=" c5"
+          class="c5"
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-14-carousel-item-0"
@@ -1107,7 +1173,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
         <div
           aria-label="2 of 2"
           aria-roledescription="slide"
-          class=" c5"
+          class="c5"
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-14-carousel-item-1"
@@ -1431,6 +1497,18 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   scroll-snap-align: start;
 }
 
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 12px;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c2.c2.c2.c2.c2 {
     gap: 16px;
@@ -1440,6 +1518,18 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 @media screen and (min-width:768px) {
   .c4.c4.c4.c4.c4 {
     max-width: 300px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c9.c9.c9.c9.c9 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -1887,9 +1977,33 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   scroll-snap-align: start;
 }
 
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 12px;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c2.c2.c2.c2.c2 {
     gap: 16px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c8.c8.c8.c8.c8 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -1912,7 +2026,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         <div
           aria-label="1 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-12-carousel-item-0"
@@ -1929,7 +2043,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         <div
           aria-label="2 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-12-carousel-item-1"
@@ -1946,7 +2060,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         <div
           aria-label="3 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="2"
           id="carousel-12-carousel-item-2"
@@ -2297,9 +2411,33 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   scroll-snap-align: start;
 }
 
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 12px;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c2.c2.c2.c2.c2 {
     gap: 16px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -2322,7 +2460,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
         <div
           aria-label="1 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-8-carousel-item-0"
@@ -2339,7 +2477,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
         <div
           aria-label="2 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-8-carousel-item-1"
@@ -2356,7 +2494,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
         <div
           aria-label="3 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
           data-slide-index="2"
           id="carousel-8-carousel-item-2"

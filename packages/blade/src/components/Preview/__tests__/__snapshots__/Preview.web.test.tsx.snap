@@ -239,7 +239,7 @@ a:active .c5.c5.c5.c5.c5 {
             type="button"
           >
             <div
-              class=" c5"
+              class="c5"
               data-blade-component="base-box"
             >
               <div
@@ -667,6 +667,18 @@ a:active .c6.c6.c6.c6.c6 {
   }
 }
 
+@supports not (gap:1px) {
+  .c4.c4.c4.c4.c4 > * + * {
+    margin-left: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c14.c14.c14.c14.c14 > * + * {
+    margin-left: 8px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c15.c15.c15.c15.c15 {
     border-bottom-style: solid;
@@ -724,7 +736,7 @@ a:active .c6.c6.c6.c6.c6 {
               type="button"
             >
               <div
-                class=" c6"
+                class="c6"
                 data-blade-component="base-box"
               >
                 <div
@@ -776,7 +788,7 @@ a:active .c6.c6.c6.c6.c6 {
               type="button"
             >
               <div
-                class=" c6"
+                class="c6"
                 data-blade-component="base-box"
               >
                 <div
@@ -820,7 +832,7 @@ a:active .c6.c6.c6.c6.c6 {
               type="button"
             >
               <div
-                class=" c6"
+                class="c6"
                 data-blade-component="base-box"
               >
                 <div
@@ -883,7 +895,7 @@ a:active .c6.c6.c6.c6.c6 {
               type="button"
             >
               <div
-                class=" c6"
+                class="c6"
                 data-blade-component="base-box"
               >
                 <div

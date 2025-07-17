@@ -141,7 +141,7 @@ exports[`<Slide /> should enhance and render child to add slide 1`] = `
     data-blade-component="tag"
   >
     <div
-      class="Tag__FocussableTag-jmwb4r-0 c1"
+      class="c1 Tag__FocussableTag-jmwb4r-0"
       data-blade-component="base-box"
     >
       <div

@@ -462,6 +462,12 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:768px) {
 
 }
@@ -567,11 +573,11 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class="c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class="c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1144,6 +1150,12 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:768px) {
 
 }
@@ -1245,11 +1257,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class="c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class="c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -1821,6 +1833,12 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c6.c6.c6.c6.c6 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:768px) {
 
 }
@@ -1922,11 +1940,11 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
               </label>
             </div>
             <div
-              class=" c9 focus-ring-wrapper"
+              class="c9 focus-ring-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class=" c10 c11 __blade-base-input-wrapper"
+                class="c10 c11 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
@@ -2557,7 +2575,7 @@ a:active .c2.c2.c2.c2.c2 {
         type="button"
       >
         <div
-          class=" c2"
+          class="c2"
           data-blade-component="base-box"
         >
           <div
@@ -2687,6 +2705,12 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 4px;
+  }
+}
+
 @media screen and (min-width:768px) {
 
 }
@@ -2701,7 +2725,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
       data-blade-component="base-box"
     >
       <div
-        class=" c1"
+        class="c1"
         data-blade-component="base-box"
       >
         <button
@@ -2861,6 +2885,12 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 4px;
+  }
+}
+
 @media screen and (min-width:768px) {
 
 }
@@ -2875,7 +2905,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
       data-blade-component="base-box"
     >
       <div
-        class=" c1"
+        class="c1"
         data-blade-component="base-box"
       >
         <button

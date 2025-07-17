@@ -320,6 +320,12 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
@@ -347,6 +353,12 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
 @media screen and (min-width:1200px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c10.c10.c10.c10.c10 > * + * {
+    margin-top: 6px;
   }
 }
 
@@ -393,6 +405,12 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
 @media screen and (min-width:1200px) {
   .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c19.c19.c19.c19.c19 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -861,6 +879,12 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   transition-duration: 80ms;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
@@ -888,6 +912,12 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 @media screen and (min-width:1200px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c10.c10.c10.c10.c10 > * + * {
+    margin-top: 6px;
   }
 }
 
@@ -934,6 +964,12 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 @media screen and (min-width:1200px) {
   .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c19.c19.c19.c19.c19 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -1400,6 +1436,12 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   transition-duration: 80ms;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
@@ -1427,6 +1469,12 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 @media screen and (min-width:1200px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c10.c10.c10.c10.c10 > * + * {
+    margin-top: 6px;
   }
 }
 
@@ -1473,6 +1521,12 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 @media screen and (min-width:1200px) {
   .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c19.c19.c19.c19.c19 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -1926,6 +1980,12 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 0px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
@@ -1953,6 +2013,12 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 @media screen and (min-width:1200px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c10.c10.c10.c10.c10 > * + * {
+    margin-top: 6px;
   }
 }
 
@@ -1999,6 +2065,12 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 @media screen and (min-width:1200px) {
   .c14.c14.c14.c14.c14 {
     border-bottom-style: solid;
+  }
+}
+
+@supports not (gap:1px) {
+  .c19.c19.c19.c19.c19 > * + * {
+    margin-left: 4px;
   }
 }
 
