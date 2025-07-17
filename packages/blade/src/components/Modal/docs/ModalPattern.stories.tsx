@@ -826,7 +826,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 padding="6px"
                 borderRadius="round"
                 borderColor="surface.border.gray.muted"
-                borderWidth="thicker"
+                borderWidth="thin"
                 height="40px"
                 width="40px"
                 display="flex"
@@ -839,20 +839,20 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 padding="10px"
                 borderRadius="round"
                 borderColor="surface.border.gray.muted"
-                borderWidth="thicker"
+                borderWidth="thin"
                 height="40px"
                 width="40px"
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
               >
-                <img src={Twitter} alt="Twitter" width="30px" height="24px" />
+                <img src={Twitter} alt="Twitter" width="20px" height="20px" />
               </Box>
               <Box
                 padding="7px"
                 borderRadius="round"
                 borderColor="surface.border.gray.muted"
-                borderWidth="thicker"
+                borderWidth="thin"
                 height="40px"
                 width="40px"
                 display="flex"
