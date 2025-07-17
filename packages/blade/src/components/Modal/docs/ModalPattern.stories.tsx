@@ -791,21 +791,22 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
         <div
           style={{
             backgroundColor: theme.colors.interactive.background.gray.default,
-            width: 'fit-content',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: theme.border.radius.medium,
             padding: theme.spacing[4],
+            height: '48px',
+            width: '48px',
           }}
         >
-          <ShareIcon color="surface.icon.gray.subtle" />
+          <ShareIcon color="surface.icon.gray.subtle" size="large" />
         </div>
-        <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
-          <Text size="large" weight="semibold">
+        <Box marginTop="spacing.5" display="flex" flexDirection="column" gap="spacing.3">
+          <Text size="large" weight="semibold" color="surface.text.gray.normal">
             Share Payment Link
           </Text>
-          <Text size="small" weight="regular" color="surface.text.gray.subtle">
+          <Text size="medium" weight="regular" color="surface.text.gray.subtle">
             Subtitle go here, support details helps your customers to easily reach out to you when
             they face any
           </Text>
