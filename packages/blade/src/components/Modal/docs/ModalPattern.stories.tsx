@@ -325,11 +325,10 @@ const EditAndAddModalTemplate: StoryFn<typeof Modal> = () => {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         footer={
-          <Box display="flex" gap="spacing.5" justifyContent="space-between" width="100%">
-            <Button variant="secondary" isFullWidth>
-              Cancel
-            </Button>
-            <Button isFullWidth> Update</Button>
+          //TODO: look into spacing
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary">Cancel</Button>
+            <Button> Update</Button>
           </Box>
         }
       >
