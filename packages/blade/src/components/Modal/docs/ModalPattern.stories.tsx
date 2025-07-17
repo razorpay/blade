@@ -736,7 +736,7 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
           <Text size="large" weight="semibold">
             2 Step Verification
           </Text>
-          <Text size="small" weight="regular" color="surface.text.gray.subtle">
+          <Text size="medium" weight="regular" color="surface.text.gray.subtle">
             This action requires 2-step verification. A 6-digit OTP has been sent via SMS to
             8757450923. The OTP will expire in 5 minutes.
           </Text>
