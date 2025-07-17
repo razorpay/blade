@@ -147,6 +147,10 @@ const ConformationModalFooter = ({
   secondaryButtonText?: string;
   type: 'neutral' | 'negative' | 'positive';
 }): React.ReactNode => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
   const getPrimaryButtonColor = (): ButtonProps['color'] => {
     if (type === 'neutral') {
       return 'primary';
@@ -164,9 +168,15 @@ const ConformationModalFooter = ({
       justifyContent="flex-end"
       marginTop="spacing.6"
     >
-      {secondaryButtonText && <Button variant="tertiary">{secondaryButtonText}</Button>}
+      {secondaryButtonText && (
+        <Button variant="tertiary" isFullWidth={isMobile}>
+          {secondaryButtonText}
+        </Button>
+      )}
 
-      <Button color={getPrimaryButtonColor()}>{primaryButtonText}</Button>
+      <Button color={getPrimaryButtonColor()} isFullWidth={isMobile}>
+        {primaryButtonText}
+      </Button>
     </Box>
   );
 };
@@ -293,7 +303,7 @@ const InformationModalTemplate: StoryFn<typeof Modal> = () => {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         modalBodyPadding="spacing.0"
-        customSnapPoints={[0.45, 0.75, 0.95]}
+        customSnapPoints={[0.6, 0.75, 0.95]}
       >
         <ModalBody padding="spacing.0">
           <img src={AlertPng} alt="Alert" width={isMobile ? '100%' : '400px'} height={200} />
@@ -323,6 +333,9 @@ InformationModal.storyName = 'Information Modal';
 
 const EditAndAddModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
@@ -330,10 +343,11 @@ const EditAndAddModalTemplate: StoryFn<typeof Modal> = () => {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         footer={
-          //TODO: look into spacing
           <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
-            <Button variant="tertiary">Cancel</Button>
-            <Button> Update</Button>
+            <Button variant="tertiary" isFullWidth={isMobile}>
+              Cancel
+            </Button>
+            <Button isFullWidth={isMobile}> Update</Button>
           </Box>
         }
       >
@@ -406,8 +420,8 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         }}
         modalSize="large"
         footer={
-          <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-            <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button
@@ -416,6 +430,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                 console.log('Selected payment method:', selectedMethod);
                 setIsOpen(false);
               }}
+              isFullWidth={isMobile}
             >
               Proceed
             </Button>
@@ -549,8 +564,8 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
         }}
         modalSize="medium"
         footer={
-          <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-            <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button
@@ -559,6 +574,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                 console.log('Selected payment method:', selectedMethod);
                 setIsOpen(false);
               }}
+              isFullWidth={isMobile}
             >
               Proceed
             </Button>
@@ -674,6 +690,8 @@ FlowSelectionModalWithIcon.storyName = 'Flow Selection Modal - with Icon Cards';
 const OTPModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
   const [isResendOtpTimerRunning, setIsResendOtpTimerRunning] = React.useState(false);
   const [resendOtpTimer, setResendOtpTimer] = React.useState(30);
 
@@ -723,7 +741,7 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
         }}
         footer={
           <Box display="flex" justifyContent="flex-end" width="100%">
-            <Button> Confirm </Button>
+            <Button isFullWidth={isMobile}> Confirm </Button>
           </Box>
         }
         customSnapPoints={[0.5, 0.6, 0.75]}
@@ -972,10 +990,10 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
         footer={
           isMobile ? (
             <Box display="flex" justifyContent="flex-end" gap="spacing.5">
-              <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+              <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
                 Back
               </Button>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
+              <Button variant="primary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
                 Continue
               </Button>
             </Box>
