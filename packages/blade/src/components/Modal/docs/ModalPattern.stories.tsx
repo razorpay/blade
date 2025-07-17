@@ -122,7 +122,7 @@ const ConformationalModalBody = ({
               width: '48px',
             }}
           >
-            <Icon color={getIconColor()} size="large" />
+            <Icon color={getIconColor()} size="xlarge" />
           </div>
         ) : null}
         <Box display="flex" flexDirection="column" gap="spacing.1">
@@ -737,7 +737,7 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
             height: '48px',
           }}
         >
-          <LockIcon color="surface.icon.gray.subtle" size="large" />
+          <LockIcon color="surface.icon.gray.subtle" size="xlarge" />
         </div>
         <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
           <Text size="large" weight="semibold">
@@ -807,7 +807,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
             width: '48px',
           }}
         >
-          <ShareIcon color="surface.icon.gray.subtle" size="large" />
+          <ShareIcon color="surface.icon.gray.subtle" size="xlarge" />
         </div>
         <Box marginTop="spacing.5" display="flex" flexDirection="column" gap="spacing.3">
           <Text size="large" weight="semibold" color="surface.text.gray.normal">
