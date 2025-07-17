@@ -186,8 +186,7 @@ const ResponsiveModalWrapper = ({
 }): React.ReactNode => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
-  // const isMobile = matchedDeviceType === 'mobile';
-  const isMobile = false;
+  const isMobile = matchedDeviceType === 'mobile';
 
   if (isMobile) {
     return (
