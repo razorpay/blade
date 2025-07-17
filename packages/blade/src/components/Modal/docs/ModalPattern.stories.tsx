@@ -9,6 +9,10 @@ import DonationsButton from './assets/donationButton.png';
 import SideImage from './assets/sideImage.png';
 import Card4 from './assets/card4.png';
 import PayNow from './assets/paynow.png';
+import Twitter from './assets/x.png';
+import WhatsApp from './assets/whatsapp.png';
+import Instagram from './assets/ig.png';
+import Facebook from './assets/fb.png';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -829,15 +833,10 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
-                  alt="Facebook"
-                  width="28px"
-                  height="28px"
-                />
+                <img src={Facebook} alt="Facebook" width="28px" height="28px" />
               </Box>
               <Box
-                padding="6px"
+                padding="10px"
                 borderRadius="round"
                 borderColor="surface.border.gray.muted"
                 borderWidth="thicker"
@@ -847,15 +846,10 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg"
-                  alt="Twitter"
-                  width="20px"
-                  height="20px"
-                />
+                <img src={Twitter} alt="Twitter" width="20px" height="20px" />
               </Box>
               <Box
-                padding="6px"
+                padding="7px"
                 borderRadius="round"
                 borderColor="surface.border.gray.muted"
                 borderWidth="thicker"
@@ -865,15 +859,10 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                  alt="WhatsApp"
-                  width="30px"
-                  height="30px"
-                />
+                <img src={WhatsApp} alt="WhatsApp" width="26px" height="26px" />
               </Box>
               <Box
-                padding="6px"
+                padding="8px"
                 borderRadius="round"
                 borderColor="surface.border.gray.muted"
                 borderWidth="thicker"
@@ -883,12 +872,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
-                  alt="WhatsApp"
-                  width="24px"
-                  height="24px"
-                />
+                <img src={Instagram} alt="Instagram" width="24px" height="24px" />
               </Box>
             </Box>
           </Box>
