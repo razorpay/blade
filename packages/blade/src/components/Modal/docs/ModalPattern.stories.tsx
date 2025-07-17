@@ -374,20 +374,25 @@ EditAndAddModal.storyName = 'Edit and Add Modal';
 const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
 
-  const paymentMethods = [
+  const standardButtons = [
     {
       value: 'quickpay',
       title: 'Quick Pay Button',
       subtitle:
         'Accepting fixed price payments?  Customers make quick payments of fixed price through this button',
       img: DonateNow,
+      isDisabled: false,
     },
     {
       value: 'buynow',
       title: 'Buy Now Button',
       subtitle: 'Selling products or event tickets?  Sell multiple items with  quantity supported.',
       img: DonationsButton,
+      isDisabled: false,
     },
     {
       value: 'donations',
@@ -395,20 +400,22 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
       subtitle:
         'Raising money for a good cause?  Supporters can pick from presets or donate amount of their choice',
       img: PayNow,
-    },
-    {
-      value: 'custom',
-      title: 'Custom Button',
-      subtitle:
-        'Build your own button with your own design and branding. You can also use our pre-built templates.',
-      img: Card4,
-      isDisabled: true,
+      isDisabled: false,
     },
   ];
+  const customButton = {
+    value: 'custom',
+    title: 'Custom Button',
+    subtitle:
+      'Build your own button with your own design and branding. You can also use our pre-built templates.',
+    img: Card4,
+    isDisabled: true,
+  };
+  const paymentMethods = [...standardButtons];
 
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint(theme);
-  const isMobile = matchedDeviceType === 'mobile';
+  if (!isMobile) {
+    paymentMethods.push(customButton);
+  }
 
   return (
     <Box>
@@ -451,12 +458,15 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         </Box>
         <Box padding="spacing.6">
           <Box
-            display="flex"
-            flexDirection="row"
+            display="grid"
+            gridTemplateColumns={{
+              base: '1fr 1fr',
+              m: '1fr 1fr 1fr',
+              l: '1fr 1fr 1fr 1fr',
+            }}
+            justifyItems="center"
             gap="spacing.5"
-            flexWrap="wrap"
-            alignItems="center"
-            justifyContent="center"
+            width="100%"
           >
             {paymentMethods.map((method, index) => (
               <Card
@@ -466,6 +476,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                 padding="spacing.0"
                 accessibilityLabel={`Select ${method.title}`}
                 width={isMobile ? '160px' : '230px'}
+                height={isMobile ? '250px' : undefined}
                 borderRadius="medium"
                 elevation={selectedMethod === method.value ? 'lowRaised' : 'none'}
               >
@@ -473,14 +484,14 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                   <Box overflow="hidden">
                     <div
                       style={{
-                        backgroundColor: '#263ebb',
+                        backgroundColor: method.isDisabled ? '#263ebb' : undefined,
                       }}
                     >
                       <img
                         src={method.img}
                         alt={method.title}
                         width={isMobile ? '160px' : '230px'}
-                        height="130px"
+                        height={isMobile ? '93px' : '130px'}
                       />
                     </div>
                     <Box
