@@ -262,7 +262,7 @@ const ConfirmationModalWithImageTemplate: StoryFn<typeof Modal> = () => {
       <ResponsiveModalWrapper isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <ConformationalModalBody
           type="negative"
-          image={WooCommerceImage}
+          image="https://logo.svgcdn.com/d/woocommerce-plain-wordmark.svg"
           title="Switch to WooCommerce"
           description="Are you sure you want to switch platform? We can allow one platform at a time. This will remove all your previous settings."
         />
