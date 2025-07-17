@@ -595,12 +595,15 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
         </Box>
         <Box padding="spacing.6">
           <Box
-            display="flex"
-            flexDirection="row"
+            display="grid"
+            gridTemplateColumns={{
+              base: '1fr 1fr',
+              m: '1fr 1fr 1fr',
+              l: '1fr 1fr 1fr',
+            }}
+            justifyItems="center"
             gap="spacing.5"
-            flexWrap="wrap"
-            alignItems="center"
-            justifyContent="center"
+            width="100%"
           >
             {paymentMethods.map((method, index) => (
               <Card
@@ -609,7 +612,8 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                 onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
                 padding="spacing.0"
                 accessibilityLabel={`Select ${method.title}`}
-                width={isMobile ? '160px' : '228px'}
+                width={isMobile ? '165px' : '228px'}
+                height={isMobile ? '184px' : undefined}
                 borderRadius="medium"
                 elevation="none"
               >
@@ -806,6 +810,7 @@ OTPModal.storyName = 'OTP Modal';
 
 const ShareModalTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+
   const { theme } = useTheme();
   return (
     <Box>
@@ -851,9 +856,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
             <TextInput value="https://rzp.io/test-ai" label="" />
           </Box>
           <Box>
-            <Button icon={CopyIcon} iconPosition="left">
-              Copy
-            </Button>
+            <Button icon={CopyIcon}>Copy</Button>
           </Box>
         </Box>
         <Box marginTop="spacing.5">
