@@ -742,7 +742,7 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
           </Text>
         </Box>
         <Box marginY="spacing.5">
-          <OTPInput label="Enter the code" otpLength={6} />
+          <OTPInput label="Enter the code" otpLength={6} size="large" />
         </Box>
         <Box
           marginTop="spacing.5"
