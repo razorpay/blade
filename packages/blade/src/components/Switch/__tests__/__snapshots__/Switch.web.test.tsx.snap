@@ -157,15 +157,15 @@ exports[`<Switch /> should render switch 1`] = `
       />
       <div
         aria-hidden="true"
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
         <div
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
         >
           <div
-            class=" c5"
+            class="c5"
             data-blade-component="base-box"
           >
             <svg
@@ -343,15 +343,15 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
       />
       <div
         aria-hidden="true"
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
         <div
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
         >
           <div
-            class=" c5"
+            class="c5"
             data-blade-component="base-box"
           >
             <svg
@@ -538,15 +538,15 @@ exports[`<Switch /> should support adding data-analytics attribute 1`] = `
       />
       <div
         aria-hidden="true"
-        class=" c3"
+        class="c3"
         data-blade-component="base-box"
       >
         <div
-          class=" c4"
+          class="c4"
           data-blade-component="base-box"
         >
           <div
-            class=" c5"
+            class="c5"
             data-blade-component="base-box"
           >
             <svg

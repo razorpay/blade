@@ -23,32 +23,7 @@ exports[`BottomNav should render 1`] = `
   box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-top: 16px;
-  padding-bottom: 12px;
-  gap: 2px;
-  cursor: pointer;
-}
-
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: currentColor;
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -71,7 +46,7 @@ exports[`BottomNav should render 1`] = `
   overflow-wrap: break-word;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: hsla(211,26%,34%,1);
@@ -83,11 +58,11 @@ exports[`BottomNav should render 1`] = `
   transition: color 80ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2[aria-current="page"] {
+.c1.c1.c1.c1.c1[aria-current="page"] {
   color: hsla(227,100%,59%,1);
 }
 
-.c2.c2.c2.c2.c2:focus-visible {
+.c1.c1.c1.c1.c1:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -137,10 +112,19 @@ exports[`BottomNav should render 1`] = `
     role="navigation"
   >
     <a
+      alignitems="center"
       aria-current="page"
-      class="c1 c2"
+      class="c1"
+      cursor="pointer"
       data-blade-component="bottomnav-item"
+      display="flex"
+      flex="1"
+      flexdirection="column"
+      gap="spacing.1"
       href="/payments"
+      justifycontent="center"
+      paddingbottom="spacing.4"
+      paddingtop="spacing.5"
     >
       <svg
         aria-hidden="true"
@@ -160,16 +144,25 @@ exports[`BottomNav should render 1`] = `
         />
       </svg>
       <p
-        class="c3"
+        class="c2"
         data-blade-component="text"
       >
         Payments
       </p>
     </a>
     <a
-      class="c1 c2"
+      alignitems="center"
+      class="c1"
+      cursor="pointer"
       data-blade-component="bottomnav-item"
+      display="flex"
+      flex="1"
+      flexdirection="column"
+      gap="spacing.1"
       href="/transactions"
+      justifycontent="center"
+      paddingbottom="spacing.4"
+      paddingtop="spacing.5"
     >
       <svg
         aria-hidden="true"
@@ -187,16 +180,25 @@ exports[`BottomNav should render 1`] = `
         />
       </svg>
       <p
-        class="c3"
+        class="c2"
         data-blade-component="text"
       >
         Transactions
       </p>
     </a>
     <a
-      class="c1 c2"
+      alignitems="center"
+      class="c1"
+      cursor="pointer"
       data-blade-component="bottomnav-item"
+      display="flex"
+      flex="1"
+      flexdirection="column"
+      gap="spacing.1"
       href="/payment-links"
+      justifycontent="center"
+      paddingbottom="spacing.4"
+      paddingtop="spacing.5"
     >
       <svg
         aria-hidden="true"
@@ -216,15 +218,17 @@ exports[`BottomNav should render 1`] = `
         />
       </svg>
       <p
-        class="c3"
+        class="c2"
         data-blade-component="text"
       >
         Links
       </p>
     </a>
     <button
-      class="c1 c2"
+      class="c1"
+      cursor="pointer"
       data-blade-component="bottomnav-item"
+      display="flex"
     >
       <svg
         aria-hidden="true"
@@ -244,7 +248,7 @@ exports[`BottomNav should render 1`] = `
         />
       </svg>
       <p
-        class="c3"
+        class="c2"
         data-blade-component="text"
       >
         More

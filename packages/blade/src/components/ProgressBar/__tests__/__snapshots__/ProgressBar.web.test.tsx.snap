@@ -143,7 +143,7 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -246,7 +246,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
             data-blade-component="base-box"
           >
             <div
-              class=" c6"
+              class="c6"
               data-blade-component="base-box"
             />
           </div>
@@ -1197,7 +1197,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -1344,7 +1344,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -1491,7 +1491,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -1638,7 +1638,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -1785,7 +1785,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -1932,7 +1932,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -2079,7 +2079,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -2226,7 +2226,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -2373,7 +2373,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -2520,7 +2520,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />
@@ -2663,7 +2663,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
             data-blade-component="base-box"
           >
             <div
-              class=" c8"
+              class="c8"
               data-blade-component="base-box"
             />
           </div>
@@ -2805,7 +2805,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
             data-blade-component="base-box"
           >
             <div
-              class=" c8"
+              class="c8"
               data-blade-component="base-box"
             />
           </div>
@@ -2947,7 +2947,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
             data-blade-component="base-box"
           >
             <div
-              class=" c8"
+              class="c8"
               data-blade-component="base-box"
             />
           </div>
@@ -3049,7 +3049,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c6"
+              class="c6"
               data-blade-component="base-box"
               type="meter"
             />
@@ -3422,7 +3422,7 @@ a:active .c1.c1.c1.c1.c1 {
     type="button"
   >
     <div
-      class=" c1"
+      class="c1"
       data-blade-component="base-box"
     >
       <div
@@ -3488,7 +3488,7 @@ a:active .c1.c1.c1.c1.c1 {
             data-blade-component="base-box"
           >
             <div
-              class=" c13"
+              class="c13"
               data-blade-component="base-box"
             />
           </div>
@@ -3719,7 +3719,7 @@ a:active .c1.c1.c1.c1.c1 {
     type="button"
   >
     <div
-      class=" c1"
+      class="c1"
       data-blade-component="base-box"
     >
       <div
@@ -3785,7 +3785,7 @@ a:active .c1.c1.c1.c1.c1 {
             data-blade-component="base-box"
           >
             <div
-              class=" c13"
+              class="c13"
               data-blade-component="base-box"
             />
           </div>
@@ -4027,7 +4027,7 @@ a:active .c1.c1.c1.c1.c1 {
     type="button"
   >
     <div
-      class=" c1"
+      class="c1"
       data-blade-component="base-box"
     >
       <div
@@ -4352,7 +4352,7 @@ a:active .c1.c1.c1.c1.c1 {
     type="button"
   >
     <div
-      class=" c1"
+      class="c1"
       data-blade-component="base-box"
     >
       <div

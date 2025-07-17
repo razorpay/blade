@@ -130,7 +130,6 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  box-shadow: 0px 0px 0px 2px transparent;
   cursor: initial;
 }
 
@@ -228,6 +227,12 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
+}
+
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-top: 8px;
+  }
 }
 
 <div>
@@ -577,6 +582,12 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
 
 .c7.c7.c7.c7.c7 {
   display: block;
+}
+
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 4px;
+  }
 }
 
 <div>
@@ -1049,7 +1060,6 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  box-shadow: 0px 0px 0px 2px transparent;
   cursor: initial;
 }
 
@@ -1147,6 +1157,12 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
+}
+
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-top: 8px;
+  }
 }
 
 <div>

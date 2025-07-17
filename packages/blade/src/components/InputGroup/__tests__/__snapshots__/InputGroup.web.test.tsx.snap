@@ -436,9 +436,21 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c4.c4.c4.c4.c4 > * + * {
+    margin-left: 0px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c16.c16.c16.c16.c16 > * + * {
+    margin-left: 4px;
+  }
+}
+
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="input-group"
   >
     <div
@@ -499,11 +511,11 @@ exports[`InputGroup should handle validation states correctly 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class="c10 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c11 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -887,7 +899,7 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="input-group"
   >
     <div
@@ -916,11 +928,11 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c5 focus-ring-wrapper"
+                  class="c5 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c6 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -951,11 +963,11 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c5 focus-ring-wrapper"
+                  class="c5 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c6 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -991,11 +1003,11 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c5 focus-ring-wrapper"
+                  class="c5 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c6 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -1320,7 +1332,7 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="input-group"
   >
     <div
@@ -1349,11 +1361,11 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c5 focus-ring-wrapper"
+                  class="c5 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c6 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -1384,11 +1396,11 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c5 focus-ring-wrapper"
+                  class="c5 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c6 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -1424,11 +1436,11 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c5 focus-ring-wrapper"
+                  class="c5 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c6 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2013,9 +2025,15 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
+@supports not (gap:1px) {
+  .c4.c4.c4.c4.c4 > * + * {
+    margin-left: 0px;
+  }
+}
+
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="input-group"
   >
     <div
@@ -2076,11 +2094,11 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class="c10 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c11 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2116,11 +2134,11 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class="c10 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c11 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2151,11 +2169,11 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c10 focus-ring-wrapper"
+                  class="c10 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c11 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c11 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2525,7 +2543,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 
 <div>
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="input-group"
   >
     <div
@@ -2554,11 +2572,11 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c5 focus-ring-wrapper"
+                  class="c5 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c6 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input
@@ -2595,11 +2613,11 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-                  class=" c5 focus-ring-wrapper"
+                  class="c5 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c6 __blade-base-input-wrapper"
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c6 __blade-base-input-wrapper"
                     data-blade-component="base-box"
                   >
                     <input

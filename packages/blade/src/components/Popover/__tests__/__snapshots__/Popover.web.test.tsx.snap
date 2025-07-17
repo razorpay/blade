@@ -241,6 +241,12 @@ a:active .c1.c1.c1.c1.c1 {
   opacity: 1;
 }
 
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-top: 12px;
+  }
+}
+
 <body>
   <div
     aria-hidden="true"
@@ -256,7 +262,7 @@ a:active .c1.c1.c1.c1.c1 {
       type="button"
     >
       <div
-        class=" c1"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
@@ -296,7 +302,7 @@ a:active .c1.c1.c1.c1.c1 {
       tabindex="-1"
     >
       <div
-        class=" c6"
+        class="c6"
         data-blade-component="base-box"
       >
         <div
@@ -627,6 +633,12 @@ a:active .c1.c1.c1.c1.c1 {
   opacity: 1;
 }
 
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-top: 12px;
+  }
+}
+
 <body>
   <div
     aria-hidden="true"
@@ -642,7 +654,7 @@ a:active .c1.c1.c1.c1.c1 {
       type="button"
     >
       <div
-        class=" c1"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
@@ -682,7 +694,7 @@ a:active .c1.c1.c1.c1.c1 {
       tabindex="-1"
     >
       <div
-        class=" c6"
+        class="c6"
         data-blade-component="base-box"
       >
         <div
@@ -1047,6 +1059,18 @@ a:active .c1.c1.c1.c1.c1 {
   opacity: 1;
 }
 
+@supports not (gap:1px) {
+  .c7.c7.c7.c7.c7 > * + * {
+    margin-top: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c8.c8.c8.c8.c8 > * + * {
+    margin-left: 8px;
+  }
+}
+
 <body>
   <div
     aria-hidden="true"
@@ -1062,7 +1086,7 @@ a:active .c1.c1.c1.c1.c1 {
       type="button"
     >
       <div
-        class=" c1"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
@@ -1102,7 +1126,7 @@ a:active .c1.c1.c1.c1.c1 {
       tabindex="-1"
     >
       <div
-        class=" c6"
+        class="c6"
         data-blade-component="base-box"
       >
         <div

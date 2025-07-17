@@ -149,6 +149,53 @@ describe('<Box />', () => {
     `);
   });
 
+  it('should add pollyfills for gap', () => {
+    const { container } = renderWithTheme(
+      <Box display="flex" flexDirection="row" gap="spacing.3">
+        <Box>Item 1</Box>
+        <Box>Item 2</Box>
+      </Box>,
+    );
+    expect(container).toMatchInlineSnapshot(`
+      .c0.c0.c0.c0.c0 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      @supports not (gap:1px) {
+        .c0.c0.c0.c0.c0 > * + * {
+          margin-left: 8px;
+        }
+      }
+
+      <div>
+        <div
+          class="c0"
+          data-blade-component="box"
+        >
+          <div
+            class=""
+            data-blade-component="box"
+          >
+            Item 1
+          </div>
+          <div
+            class=""
+            data-blade-component="box"
+          >
+            Item 2
+          </div>
+        </div>
+      </div>
+    `);
+  });
+
   it('should support ref on Box', async () => {
     const user = userEvent.setup();
     const boxClickHandler = jest.fn();

@@ -646,7 +646,7 @@ a:active .c1.c1.c1.c1.c1 {
       type="button"
     >
       <div
-        class=" c1"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
@@ -782,8 +782,7 @@ a:active .c1.c1.c1.c1.c1 {
           </p>
         </div>
         <a
-          class=" c21"
-          data-blade-component="base-box"
+          class="c21"
           href="/accounts"
           role="menuitem"
           type="button"
@@ -830,8 +829,7 @@ a:active .c1.c1.c1.c1.c1 {
           </div>
         </a>
         <button
-          class=" c21"
-          data-blade-component="base-box"
+          class="c21"
           role="menuitem"
           type="button"
         >
@@ -893,8 +891,7 @@ a:active .c1.c1.c1.c1.c1 {
           </div>
         </button>
         <button
-          class=" c21"
-          data-blade-component="base-box"
+          class="c21"
           role="menuitem"
           type="button"
         >
@@ -942,8 +939,7 @@ a:active .c1.c1.c1.c1.c1 {
         <button
           aria-expanded="false"
           aria-haspopup="menu"
-          class=" c21"
-          data-blade-component="base-box"
+          class="c21"
           id=":r6:"
           role="menuitem"
           type="button"
@@ -1001,8 +997,8 @@ a:active .c1.c1.c1.c1.c1 {
           </div>
         </button>
         <button
-          class=" c30"
-          data-blade-component="base-box"
+          class="c30"
+          color="negative"
           role="menuitem"
           type="button"
         >
@@ -1721,7 +1717,7 @@ a:active .c1.c1.c1.c1.c1 {
       type="button"
     >
       <div
-        class=" c1"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
@@ -1859,9 +1855,8 @@ a:active .c1.c1.c1.c1.c1 {
           </p>
         </div>
         <a
-          class=" c21"
+          class="c21"
           data-analytics-menu-item="account"
-          data-blade-component="base-box"
           href="/accounts"
           role="menuitem"
           type="button"
@@ -1908,8 +1903,7 @@ a:active .c1.c1.c1.c1.c1 {
           </div>
         </a>
         <button
-          class=" c21"
-          data-blade-component="base-box"
+          class="c21"
           role="menuitem"
           type="button"
         >
@@ -1971,8 +1965,7 @@ a:active .c1.c1.c1.c1.c1 {
           </div>
         </button>
         <button
-          class=" c21"
-          data-blade-component="base-box"
+          class="c21"
           role="menuitem"
           type="button"
         >
@@ -2018,8 +2011,8 @@ a:active .c1.c1.c1.c1.c1 {
           </div>
         </button>
         <button
-          class=" c30"
-          data-blade-component="base-box"
+          class="c30"
+          color="negative"
           role="menuitem"
           type="button"
         >

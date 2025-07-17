@@ -210,6 +210,12 @@ exports[`Tabs should render 1`] = `
   display: none;
 }
 
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 24px;
+  }
+}
+
 @media screen and (min-width:768px) {
   .c5.c5.c5.c5.c5 {
     gap: 32px;
@@ -670,6 +676,12 @@ exports[`Tabs should render with filled variant 1`] = `
   display: none;
 }
 
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 2px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c5.c5.c5.c5.c5 {
     border-style: solid;
@@ -1062,6 +1074,12 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
+}
+
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 24px;
+  }
 }
 
 @media screen and (min-width:768px) {
@@ -1457,6 +1475,12 @@ exports[`Tabs should render with size 1`] = `
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
+}
+
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 24px;
+  }
 }
 
 @media screen and (min-width:768px) {
@@ -1934,6 +1958,12 @@ exports[`Tabs should render with vertical orientation 1`] = `
   }
 }
 
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-top: 0px;
+  }
+}
+
 @media screen and (min-width:0px) and (max-width:768px) {
   .c6.c6.c6.c6.c6 {
     padding-top: 4px;
@@ -2264,6 +2294,12 @@ exports[`Tabs should support adding data-analytics attribute 1`] = `
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
+}
+
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 24px;
+  }
 }
 
 @media screen and (min-width:768px) {

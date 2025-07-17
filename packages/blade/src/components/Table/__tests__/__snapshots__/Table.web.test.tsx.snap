@@ -1479,6 +1479,12 @@ exports[`<Table /> should render table 1`] = `
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 16px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c16.c16.c16.c16.c16 {
     pointer-events: auto;
@@ -3363,7 +3369,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
           role="progressbar"
         >
           <div
-            class=" c4"
+            class="c4"
             data-blade-component="base-box"
           >
             <svg
@@ -3622,11 +3628,11 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
                         data-blade-component="base-box"
                       >
                         <div
-                          class=" c23 focus-ring-wrapper"
+                          class="c23 focus-ring-wrapper"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c24 __blade-base-input-wrapper"
+                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c24 __blade-base-input-wrapper"
                             data-blade-component="base-box"
                           >
                             <input
@@ -3822,11 +3828,11 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
                         data-blade-component="base-box"
                       >
                         <div
-                          class=" c23 focus-ring-wrapper"
+                          class="c23 focus-ring-wrapper"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c24 __blade-base-input-wrapper"
+                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c24 __blade-base-input-wrapper"
                             data-blade-component="base-box"
                           >
                             <input
@@ -6140,7 +6146,7 @@ exports[`<Table /> should render table with isLoading 1`] = `
         role="progressbar"
       >
         <div
-          class=" c2"
+          class="c2"
           data-blade-component="base-box"
         >
           <svg
@@ -6627,7 +6633,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
           role="progressbar"
         >
           <div
-            class=" c4"
+            class="c4"
             data-blade-component="base-box"
           >
             <svg
@@ -8055,6 +8061,10 @@ exports[`<Table /> should render table with multi select 1`] = `
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
+@supports not (gap:1px) {
+
+}
+
 @media screen and (min-width:320px) {
   .c29.c29.c29.c29.c29 {
     pointer-events: auto;
@@ -8112,6 +8122,12 @@ exports[`<Table /> should render table with multi select 1`] = `
 @media screen and (min-width:1200px) {
   .c31.c31.c31.c31.c31 {
     pointer-events: none;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 16px;
   }
 }
 
@@ -10700,6 +10716,10 @@ exports[`<Table /> should render table with multi select 2`] = `
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
+@supports not (gap:1px) {
+
+}
+
 @media screen and (min-width:320px) {
   .c29.c29.c29.c29.c29 {
     pointer-events: auto;
@@ -10757,6 +10777,12 @@ exports[`<Table /> should render table with multi select 2`] = `
 @media screen and (min-width:1200px) {
   .c31.c31.c31.c31.c31 {
     pointer-events: none;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 16px;
   }
 }
 
@@ -13220,6 +13246,12 @@ exports[`<Table /> should render table with multi select 3`] = `
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-left: 16px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c23.c23.c23.c23.c23 {
     pointer-events: auto;
@@ -13278,6 +13310,10 @@ exports[`<Table /> should render table with multi select 3`] = `
   .c25.c25.c25.c25.c25 {
     pointer-events: none;
   }
+}
+
+@supports not (gap:1px) {
+
 }
 
 @media screen and (min-width:320px) {

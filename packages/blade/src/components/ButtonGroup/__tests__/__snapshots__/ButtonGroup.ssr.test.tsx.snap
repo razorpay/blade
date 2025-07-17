@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ButtonGroup /> should render ButtonGroup 1`] = `"<div id="root"><div data-blade-component="button-group" data-testid="button-group-test" role="group" class="BaseBox-bmPWx StyledButtonGroup-gr4xbj-0  hxzFGp"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  fFhUjt"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">One</div></div></div></button><div data-blade-component="base-box" class="BaseBox-bmPWx ButtonGroupweb__StyledDivider-sc-1lc1evg-0  cbYKkw"></div><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  fFhUjt"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Two</div></div></div></button><div data-blade-component="base-box" class="BaseBox-bmPWx ButtonGroupweb__StyledDivider-sc-1lc1evg-0  cbYKkw"></div><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  fFhUjt"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Three</div></div></div></button></div></div>"`;
+exports[`<ButtonGroup /> should render ButtonGroup 1`] = `"<div id="root"><div data-blade-component="button-group" data-testid="button-group-test" role="group" class="BaseBox-bmPWx StyledButtonGroup-gr4xbj-0 hxzFGp"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0 fFhUjt" data-blade-component="base-box"><div class="BaseBox-bmPWx LeezU BaseButton__ButtonContent-zf1huq-0 esItiH" data-blade-component="base-box"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">One</div></div></div></button><div class="BaseBox-bmPWx ButtonGroupweb__StyledDivider-sc-1lc1evg-0 cbYKkw" data-blade-component="base-box"></div><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0 fFhUjt" data-blade-component="base-box"><div class="BaseBox-bmPWx LeezU BaseButton__ButtonContent-zf1huq-0 esItiH" data-blade-component="base-box"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Two</div></div></div></button><div class="BaseBox-bmPWx ButtonGroupweb__StyledDivider-sc-1lc1evg-0 cbYKkw" data-blade-component="base-box"></div><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0 fFhUjt" data-blade-component="base-box"><div class="BaseBox-bmPWx LeezU BaseButton__ButtonContent-zf1huq-0 esItiH" data-blade-component="base-box"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Three</div></div></div></button></div></div>"`;
 
 exports[`<ButtonGroup /> should render ButtonGroup 2`] = `
 .c3.c3.c3.c3.c3 {
@@ -171,7 +171,7 @@ a:active .c2.c2.c2.c2.c2 {
   id="root"
 >
   <div
-    class=" c0"
+    class="c0"
     data-blade-component="button-group"
     data-testid="button-group-test"
     role="group"
@@ -183,7 +183,7 @@ a:active .c2.c2.c2.c2.c2 {
       type="button"
     >
       <div
-        class=" c2"
+        class="c2"
         data-blade-component="base-box"
       >
         <div
@@ -200,7 +200,7 @@ a:active .c2.c2.c2.c2.c2 {
       </div>
     </button>
     <div
-      class=" c6"
+      class="c6"
       data-blade-component="base-box"
     />
     <button
@@ -210,7 +210,7 @@ a:active .c2.c2.c2.c2.c2 {
       type="button"
     >
       <div
-        class=" c2"
+        class="c2"
         data-blade-component="base-box"
       >
         <div
@@ -227,7 +227,7 @@ a:active .c2.c2.c2.c2.c2 {
       </div>
     </button>
     <div
-      class=" c6"
+      class="c6"
       data-blade-component="base-box"
     />
     <button
@@ -237,7 +237,7 @@ a:active .c2.c2.c2.c2.c2 {
       type="button"
     >
       <div
-        class=" c2"
+        class="c2"
         data-blade-component="base-box"
       >
         <div

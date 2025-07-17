@@ -310,6 +310,12 @@ exports[`<Accordion /> should render 1`] = `
   }
 }
 
+@supports not (gap:1px) {
+  .c16.c16.c16.c16.c16 > * + * {
+    margin-top: 16px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
@@ -417,7 +423,7 @@ exports[`<Accordion /> should render 1`] = `
                         >
                           <div
                             aria-hidden="true"
-                            class=" c12"
+                            class="c12"
                             data-blade-component="base-box"
                             direction="bottom"
                           >
@@ -463,7 +469,7 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c14"
+                class="c14"
                 data-blade-component="base-box"
               >
                 <div
@@ -565,7 +571,7 @@ exports[`<Accordion /> should render 1`] = `
                         >
                           <div
                             aria-hidden="true"
-                            class=" c12"
+                            class="c12"
                             data-blade-component="base-box"
                             direction="bottom"
                           >
@@ -611,7 +617,7 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c14"
+                class="c14"
                 data-blade-component="base-box"
               >
                 <div
@@ -713,7 +719,7 @@ exports[`<Accordion /> should render 1`] = `
                         >
                           <div
                             aria-hidden="true"
-                            class=" c12"
+                            class="c12"
                             data-blade-component="base-box"
                             direction="bottom"
                           >
@@ -759,7 +765,7 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c14"
+                class="c14"
                 data-blade-component="base-box"
               >
                 <div
@@ -1108,6 +1114,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   }
 }
 
+@supports not (gap:1px) {
+  .c16.c16.c16.c16.c16 > * + * {
+    margin-top: 16px;
+  }
+}
+
 @media screen and (min-width:320px) {
   .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
@@ -1215,7 +1227,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         >
                           <div
                             aria-hidden="true"
-                            class=" c12"
+                            class="c12"
                             data-blade-component="base-box"
                             direction="bottom"
                           >
@@ -1261,7 +1273,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c14"
+                class="c14"
                 data-blade-component="base-box"
               >
                 <div
@@ -1363,7 +1375,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         >
                           <div
                             aria-hidden="true"
-                            class=" c12"
+                            class="c12"
                             data-blade-component="base-box"
                             direction="bottom"
                           >
@@ -1409,7 +1421,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c14"
+                class="c14"
                 data-blade-component="base-box"
               >
                 <div
@@ -1511,7 +1523,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         >
                           <div
                             aria-hidden="true"
-                            class=" c12"
+                            class="c12"
                             data-blade-component="base-box"
                             direction="bottom"
                           >
@@ -1557,7 +1569,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c14"
+                class="c14"
                 data-blade-component="base-box"
               >
                 <div

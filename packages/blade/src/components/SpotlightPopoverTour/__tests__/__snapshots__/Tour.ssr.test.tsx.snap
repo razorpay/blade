@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 brfoMi"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  fFhUjt"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Open Tour</div></div></div></button><div data-blade-component="box" class="BaseBox-bmPWx">Some other content inside</div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 2</p></div></div></div>"`;
+exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 brfoMi"><div class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0 fFhUjt" data-blade-component="base-box"><div class="BaseBox-bmPWx LeezU BaseButton__ButtonContent-zf1huq-0 esItiH" data-blade-component="base-box"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Open Tour</div></div></div></button><div data-blade-component="box" class="BaseBox-bmPWx">Some other content inside</div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 2</p></div></div></div>"`;
 
 exports[`<Tour /> should render Tour ssr 2`] = `
 .c2.c2.c2.c2.c2 {
@@ -167,7 +167,7 @@ a:active .c1.c1.c1.c1.c1 {
       type="button"
     >
       <div
-        class=" c1"
+        class="c1"
         data-blade-component="base-box"
       >
         <div

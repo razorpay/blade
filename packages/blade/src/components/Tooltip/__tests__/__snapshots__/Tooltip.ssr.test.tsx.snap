@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tooltip /> should render Tooltip ssr 1`] = `"<div id="root"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  fFhUjt"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Hello world</div></div></div></button></div>"`;
+exports[`<Tooltip /> should render Tooltip ssr 1`] = `"<div id="root"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0 fFhUjt" data-blade-component="base-box"><div class="BaseBox-bmPWx LeezU BaseButton__ButtonContent-zf1huq-0 esItiH" data-blade-component="base-box"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Hello world</div></div></div></button></div>"`;
 
 exports[`<Tooltip /> should render Tooltip ssr 2`] = `
 .c2.c2.c2.c2.c2 {
@@ -145,7 +145,7 @@ a:active .c1.c1.c1.c1.c1 {
     type="button"
   >
     <div
-      class=" c1"
+      class="c1"
       data-blade-component="base-box"
     >
       <div

@@ -845,6 +845,12 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   z-index: 2;
 }
 
+@supports not (gap:1px) {
+  .c9.c9.c9.c9.c9 > * + * {
+    margin-left: 4px;
+  }
+}
+
 <div>
   <div
     class=""

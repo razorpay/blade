@@ -400,6 +400,12 @@ exports[`<InfoGroup /> should render InfoGroup with Avatars and apply correct pa
   }
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 4px;
+  }
+}
+
 <div>
   <dl
     class="c0"
@@ -603,7 +609,7 @@ exports[`<InfoGroup /> should render InfoGroup with Avatars and apply correct pa
               data-blade-component="base-box"
             >
               <span
-                class=" c17"
+                class="c17"
                 data-blade-component="code"
               >
                 <code
@@ -892,6 +898,12 @@ exports[`<InfoGroup /> should render InfoGroup with different alignments 1`] = `
   .c0.c0.c0.c0.c0 {
     -webkit-column-gap: 48px;
     column-gap: 48px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -1341,6 +1353,24 @@ exports[`<InfoGroup /> should render InfoGroup with different sizes 1`] = `
   }
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 2px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c9.c9.c9.c9.c9 > * + * {
+    margin-left: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c16.c16.c16.c16.c16 > * + * {
+    margin-left: 8px;
+  }
+}
+
 <div>
   <div
     class=""
@@ -1736,6 +1766,12 @@ exports[`<InfoGroup /> should render InfoGroup with gridTemplateColumns="50% 50%
   }
 }
 
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 4px;
+  }
+}
+
 <div>
   <dl
     class="c0"
@@ -2122,6 +2158,18 @@ exports[`<InfoGroup /> should render InfoGroup with itemOrientation="vertical" 1
   .c0.c0.c0.c0.c0 {
     -webkit-column-gap: 48px;
     column-gap: 48px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c2.c2.c2.c2.c2 > * + * {
+    margin-top: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c4.c4.c4.c4.c4 > * + * {
+    margin-left: 4px;
   }
 }
 
@@ -2929,6 +2977,18 @@ exports[`<InfoGroup /> should render complex InfoGroup with horizontal itemOrien
   }
 }
 
+@supports not (gap:1px) {
+  .c5.c5.c5.c5.c5 > * + * {
+    margin-left: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c12.c12.c12.c12.c12 > * + * {
+    margin-left: 4px;
+  }
+}
+
 <div>
   <dl
     class="c0"
@@ -3554,6 +3614,12 @@ exports[`<InfoGroup /> should render simple InfoGroup 1`] = `
   .c0.c0.c0.c0.c0 {
     -webkit-column-gap: 48px;
     column-gap: 48px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c3.c3.c3.c3.c3 > * + * {
+    margin-left: 4px;
   }
 }
 

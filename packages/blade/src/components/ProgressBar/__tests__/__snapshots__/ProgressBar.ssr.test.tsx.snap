@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBar /> should render linear ProgressBar with default properties 1`] = `"<div id="root"><div data-blade-component="progress-bar" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><p class="StyledBaseText-dVBfTO eETJTC" data-blade-component="text">20%</p></div></div><div id="progress-linear-undefined" role="progressbar" aria-valuenow="20" aria-valuetext="20%" aria-valuemin="0" aria-valuemax="100" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx ArQWZ"><div data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 LpXTJ lFJnf lGSZY"><div type="progress" data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  kbDAvE dVVGWu"></div></div></div></div></div></div></div>"`;
+exports[`<ProgressBar /> should render linear ProgressBar with default properties 1`] = `"<div id="root"><div data-blade-component="progress-bar" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><p class="StyledBaseText-dVBfTO eETJTC" data-blade-component="text">20%</p></div></div><div id="progress-linear-undefined" role="progressbar" aria-valuenow="20" aria-valuetext="20%" aria-valuemin="0" aria-valuemax="100" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx ArQWZ"><div class="BaseBox-bmPWx LpXTJ ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 lFJnf lGSZY" data-blade-component="base-box"><div type="progress" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5 kbDAvE dVVGWu" data-blade-component="base-box"></div></div></div></div></div></div></div>"`;
 
 exports[`<ProgressBar /> should render linear ProgressBar with default properties 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -139,7 +139,7 @@ exports[`<ProgressBar /> should render linear ProgressBar with default propertie
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
               type="progress"
             />

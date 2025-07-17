@@ -12,7 +12,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     borderRadius="medium"
     data-blade-component="card"
     display="block"
-    isFocused={false}
     isSelected={false}
     style={
       [
@@ -141,10 +140,20 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           thickness="thin"
         />
         <View
-          alignItems="stretch"
+          alignItems={
+            {
+              "base": "stretch",
+              "m": "center",
+            }
+          }
           data-blade-component="base-box"
           display="flex"
-          flexDirection="column"
+          flexDirection={
+            {
+              "base": "column",
+              "m": "row",
+            }
+          }
           justifyContent="space-between"
           style={
             [
@@ -239,7 +248,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             </Text>
           </View>
           <View
-            alignSelf="auto"
+            alignSelf={
+              {
+                "base": "auto",
+                "m": "center",
+              }
+            }
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
@@ -643,7 +657,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
     borderRadius="medium"
     data-blade-component="card"
     display="block"
-    isFocused={false}
     isSelected={false}
     style={
       [
@@ -1236,7 +1249,6 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
     borderRadius="medium"
     data-blade-component="card"
     display="block"
-    isFocused={false}
     isSelected={false}
     style={
       [
@@ -1316,7 +1328,6 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
     borderRadius="medium"
     data-blade-component="card"
     display="block"
-    isFocused={false}
     isSelected={false}
     style={
       [
@@ -1432,7 +1443,6 @@ exports[`<Card /> should render a plain Card 1`] = `
     borderRadius="medium"
     data-blade-component="card"
     display="block"
-    isFocused={false}
     isSelected={false}
     style={
       [

@@ -135,6 +135,18 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
   transition-duration: 80ms;
 }
 
+@supports not (gap:1px) {
+  .c0.c0.c0.c0.c0 > * + * {
+    margin-left: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 4px;
+  }
+}
+
 <div>
   <nav
     class=""
@@ -363,6 +375,18 @@ exports[`<Breadcrumb /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
+}
+
+@supports not (gap:1px) {
+  .c0.c0.c0.c0.c0 > * + * {
+    margin-left: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 4px;
+  }
 }
 
 <div>
@@ -601,6 +625,18 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
+}
+
+@supports not (gap:1px) {
+  .c0.c0.c0.c0.c0 > * + * {
+    margin-left: 4px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c1.c1.c1.c1.c1 > * + * {
+    margin-left: 4px;
+  }
 }
 
 <div>

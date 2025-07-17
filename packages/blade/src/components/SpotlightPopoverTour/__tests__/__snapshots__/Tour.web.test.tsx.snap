@@ -372,6 +372,24 @@ a:active .c1.c1.c1.c1.c1 {
   opacity: 1;
 }
 
+@supports not (gap:1px) {
+  .c9.c9.c9.c9.c9 > * + * {
+    margin-top: 12px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c12.c12.c12.c12.c12 > * + * {
+    margin-left: 24px;
+  }
+}
+
+@supports not (gap:1px) {
+  .c14.c14.c14.c14.c14 > * + * {
+    margin-left: 12px;
+  }
+}
+
 <body
   style="overflow: hidden;"
 >
@@ -390,7 +408,7 @@ a:active .c1.c1.c1.c1.c1 {
         type="button"
       >
         <div
-          class=" c1"
+          class="c1"
           data-blade-component="base-box"
         >
           <div
@@ -501,7 +519,7 @@ a:active .c1.c1.c1.c1.c1 {
       tabindex="-1"
     >
       <div
-        class=" c8"
+        class="c8"
         data-blade-component="base-box"
       >
         <div
@@ -573,7 +591,7 @@ a:active .c1.c1.c1.c1.c1 {
                   type="button"
                 >
                   <div
-                    class=" c1"
+                    class="c1"
                     data-blade-component="base-box"
                   >
                     <div
