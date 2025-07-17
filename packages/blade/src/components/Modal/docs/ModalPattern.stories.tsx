@@ -333,13 +333,15 @@ const EditAndAddModalTemplate: StoryFn<typeof Modal> = () => {
           </Box>
         }
       >
-        <Text size="large" weight="semibold">
-          Edit display name
-        </Text>
-        <Text size="medium" weight="regular" color="surface.text.gray.muted">
-          The new display name will reflect immediately on your dashboard after you update it. It
-          will be visible to you and your team on the Razorpay dashboard.
-        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.2">
+          <Text size="large" weight="semibold">
+            Edit display name
+          </Text>
+          <Text size="medium" weight="regular" color="surface.text.gray.muted">
+            The new display name will reflect immediately on your dashboard after you update it. It
+            will be visible to you and your team on the Razorpay dashboard.
+          </Text>
+        </Box>
         <Box marginTop="spacing.5">
           <TextInput label="Enter new display name" placeholder="Enter your display name" />
         </Box>
