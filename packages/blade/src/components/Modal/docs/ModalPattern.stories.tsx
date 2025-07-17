@@ -733,16 +733,20 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
           alignItems="center"
         >
           <Text size="small" weight="regular" color="surface.text.gray.subtle">
-            Didn't receive OTP?
+            {isResendOtpTimerRunning
+              ? `Resend OTP in ${resendOtpTimer} seconds`
+              : "Didn't receive OTP?"}
           </Text>
-          <Link
-            isDisabled={isResendOtpTimerRunning}
-            onClick={handleResendOtp}
-            size="small"
-            variant="button"
-          >
-            {isResendOtpTimerRunning ? `Resend OTP in ${resendOtpTimer}s` : 'Resend OTP'}
-          </Link>
+          {isResendOtpTimerRunning ? null : (
+            <Link
+              isDisabled={isResendOtpTimerRunning}
+              onClick={handleResendOtp}
+              size="small"
+              variant="button"
+            >
+              {isResendOtpTimerRunning ? `Resend OTP in ${resendOtpTimer}s` : 'Resend OTP'}
+            </Link>
+          )}
         </Box>
       </ResponsiveModalWrapper>
     </Box>
