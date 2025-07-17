@@ -424,7 +424,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         wrapInBottomSheetFooter
         customSnapPoints={[0.8, 0.9, 0.95]}
       >
-        <Box padding="spacing.6">
+        <Box paddingX="spacing.6" paddingTop="spacing.6">
           <Heading size="small" weight="semibold">
             Pick a Button Type
           </Heading>
@@ -470,7 +470,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                     paddingX="spacing.5"
                     paddingY="spacing.4"
                   >
-                    <Box>
+                    <Box display="flex" flexDirection="column" gap="spacing.2">
                       <Text
                         size="medium"
                         weight="semibold"
@@ -559,7 +559,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
         wrapInBottomSheetFooter
         customSnapPoints={[0.8, 0.9, 0.95]}
       >
-        <Box padding="spacing.6">
+        <Box paddingX="spacing.6" paddingTop="spacing.6">
           <Heading size="small" weight="semibold">
             Pick a Button Type
           </Heading>
@@ -598,7 +598,11 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                   >
                     <Box
                       padding="10px"
-                      backgroundColor="surface.background.primary.subtle"
+                      backgroundColor={
+                        method.isDisabled
+                          ? 'surface.background.gray.subtle'
+                          : 'surface.background.primary.subtle'
+                      }
                       width="40px"
                       height="40px"
                       display="flex"
@@ -606,7 +610,13 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                       alignItems="center"
                       borderRadius="medium"
                     >
-                      <ZapIcon color="surface.icon.primary.normal" />
+                      <ZapIcon
+                        color={
+                          method.isDisabled
+                            ? 'surface.icon.gray.muted'
+                            : 'surface.icon.primary.normal'
+                        }
+                      />
                     </Box>
                   </Box>
                   <Box
@@ -623,6 +633,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                       justifyContent="center"
                       alignItems="center"
                       maxHeight="95px"
+                      gap="spacing.2"
                     >
                       <Text
                         size="medium"
