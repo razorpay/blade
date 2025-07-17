@@ -129,7 +129,9 @@ const ConformationalModalBody = ({
           <Text size="large" weight="semibold">
             {title}
           </Text>
-          <Text color="surface.text.gray.subtle">{description}</Text>
+          <Text size="medium" weight="regular" color="surface.text.gray.subtle">
+            {description}
+          </Text>
         </Box>
       </Box>
     </>
