@@ -273,9 +273,9 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                         <SlideDown>
                           <Box
                             backgroundColor="surface.background.gray.subtle"
-                            padding="spacing.4"
+                            padding="spacing.5"
                             borderRadius="medium"
-                            margin="spacing.2"
+                            margin={['spacing.4', 'spacing.0']}
                             width="100%"
                           >
                             {index !== 1 ? (
