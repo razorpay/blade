@@ -355,7 +355,7 @@ const _TableRow = <Item,>({
       return { isAllSelected: false, isIndeterminate: false };
     }
 
-    const childNodes = (item as { nodes?: string[] }).nodes || [];
+    const childNodes = (item as { nodes?: string[] }).nodes ?? [];
     if (childNodes.length === 0) {
       return { isAllSelected: false, isIndeterminate: false };
     }
@@ -408,7 +408,7 @@ const _TableRow = <Item,>({
     >
       {isMultiSelect && (
         <TableCheckboxCell
-          isChecked={isSelected || isAllSelected}
+          isChecked={Boolean(isSelected) || Boolean(isAllSelected)}
           onChange={() => !isDisabled && toggleRowSelectionById(item.id)}
           isDisabled={isDisabled}
           isIndeterminate={isIndeterminate}

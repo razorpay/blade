@@ -1556,7 +1556,7 @@ describe('<Table />', () => {
   });
 
   // Nesting Tests
-  it('should render table with nested expandable content', async () => {
+  it('should render table with nested expandable content', () => {
     const { container, getByText } = renderWithTheme(
       <Table data={{ nodes: spanningNodes.slice(0, 2) }}>
         {(tableData) => (
