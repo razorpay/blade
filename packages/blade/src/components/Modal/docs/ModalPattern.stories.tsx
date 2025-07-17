@@ -859,7 +859,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <img src={Twitter} alt="Twitter" width="26px" height="20px" />
+                <img src={Twitter} alt="Twitter" width="32px" height="20px" />
               </Box>
               <Box
                 padding="7px"
