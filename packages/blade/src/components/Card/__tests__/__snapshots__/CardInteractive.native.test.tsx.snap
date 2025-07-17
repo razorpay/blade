@@ -52,7 +52,6 @@ exports[`<Card /> should render a clickable Card 1`] = `
       borderRadius="medium"
       data-blade-component="card"
       display="block"
-      isFocused={false}
       isSelected={false}
       style={
         [
@@ -173,7 +172,6 @@ exports[`<Card /> should render a interactive Card 1`] = `
       borderRadius="medium"
       data-blade-component="card"
       display="block"
-      isFocused={false}
       isSelected={true}
       style={
         [
@@ -295,7 +293,6 @@ exports[`<Card /> should render a linkable Card 1`] = `
       borderRadius="medium"
       data-blade-component="card"
       display="block"
-      isFocused={false}
       isSelected={false}
       style={
         [
@@ -417,7 +414,6 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
       borderRadius="medium"
       data-blade-component="card"
       display="block"
-      isFocused={false}
       isSelected={false}
       style={
         [
