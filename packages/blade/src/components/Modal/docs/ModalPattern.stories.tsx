@@ -771,7 +771,6 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
         onDismiss={() => {
           setIsOpen(false);
         }}
-        footer={<Button isFullWidth> Confirm </Button>}
       >
         <div
           style={{
@@ -894,13 +893,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
             </Box>
           </Box>
         </Box>
-        <Box
-          display="flex"
-          flexDirection="row"
-          gap="spacing.5"
-          alignItems="center"
-          marginX="spacing.6"
-        >
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
           <Divider />
           <Text color="surface.text.gray.muted" size="small" weight="medium">
             OR
