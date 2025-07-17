@@ -313,7 +313,7 @@ const InformationModalTemplate: StoryFn<typeof Modal> = () => {
               <Heading size="large" weight="semibold">
                 Update your KYC by 5th July
               </Heading>
-              <Text>
+              <Text size="medium" weight="regular" color="surface.text.gray.subtle">
                 Subtitle go here, support details helps your customers to easily reach out to you
                 when they face any.
               </Text>
