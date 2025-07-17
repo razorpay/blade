@@ -970,7 +970,7 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
             <Box
               backgroundColor="surface.background.gray.subtle"
               height="596px"
-              width="100%"
+              width="400px"
               display="flex"
               flexDirection="column"
               justifyContent="flex-end"
