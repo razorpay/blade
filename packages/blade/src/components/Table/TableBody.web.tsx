@@ -204,7 +204,13 @@ const TableCheckboxCell = ({
         justifyContent="center"
         flex={1}
         width={makeSize(checkboxCellWidth)}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          /* Make entire 44px checkbox area clickable while preventing row selection */
+          if (e.target === e.currentTarget && !isDisabled) {
+            onChange?.({ isChecked: !isChecked });
+          }
+          e.stopPropagation();
+        }}
       >
         <Checkbox
           isDisabled={isDisabled}

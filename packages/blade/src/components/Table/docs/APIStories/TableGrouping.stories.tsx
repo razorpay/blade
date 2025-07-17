@@ -11,7 +11,7 @@ import {
 } from '../../index';
 import type { TableProps, Identifier } from '../../types';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { Amount } from '~components/Amount';
 
 const meta: Meta<TableProps<unknown>> = {
   title: 'Components/Table/Grouping',
@@ -133,12 +133,16 @@ const GroupingTableTemplate = ({
   onSelectionChange,
   gridColumnStart,
   gridColumnEnd,
+  defaultSelectedIds,
+  disabledIds,
 }: {
   data: typeof sampleData;
   selectionType: 'none' | 'multiple';
   onSelectionChange?: ({ selectedIds }: { selectedIds: Identifier[] }) => void;
   gridColumnStart?: number;
   gridColumnEnd?: number;
+  defaultSelectedIds?: Identifier[];
+  disabledIds?: Identifier[];
 }): React.ReactElement => {
   return (
     <Table
@@ -147,6 +151,7 @@ const GroupingTableTemplate = ({
       isGrouped
       onSelectionChange={onSelectionChange}
       showBorderedCells
+      defaultSelectedIds={defaultSelectedIds}
     >
       {(tableData) => (
         <>
@@ -160,7 +165,7 @@ const GroupingTableTemplate = ({
           </TableHeader>
           <TableBody>
             {tableData.map((item, index) => (
-              <TableRow key={index} item={item}>
+              <TableRow key={index} item={item} isDisabled={disabledIds?.includes(item.id)}>
                 <TableCell
                   gridColumnStart={
                     (item as { treeXLevel?: number }).treeXLevel === 0
@@ -178,13 +183,13 @@ const GroupingTableTemplate = ({
                 {(item as { treeXLevel?: number }).treeXLevel !== 0 && (
                   <>
                     <TableCell>
-                      <Text>₹{item.amount.toLocaleString('en-IN')}</Text>
+                      <Amount value={item.amount} isAffixSubtle={false} />
                     </TableCell>
                     <TableCell>
-                      <Text>₹{item.fees.toLocaleString('en-IN')}</Text>
+                      <Amount value={item.fees} isAffixSubtle={false} />
                     </TableCell>
                     <TableCell>
-                      <Text>₹{item.total.toLocaleString('en-IN')}</Text>
+                      <Amount value={item.total} isAffixSubtle={false} />
                     </TableCell>
                   </>
                 )}
@@ -229,5 +234,32 @@ export const TableGroupingWithSelection: StoryFn<TableProps<unknown>> = () => {
 };
 
 TableGroupingWithSelection.storyName = 'Table Grouping with Selection';
+
+export const TableGroupingWithDisabledRows: StoryFn<TableProps<unknown>> = () => {
+  const [ignoredSelectedIds, setIgnoredSelectedIds] = useState<Identifier[]>([]);
+
+  const handleSelectionChange = ({ selectedIds }: { selectedIds: Identifier[] }): void => {
+    console.log('selectedIds', selectedIds);
+    setIgnoredSelectedIds(selectedIds);
+  };
+
+  const july12GroupIds = ['july12', 'july12-card', 'july12-upi', 'july12-netbanking'];
+
+  return (
+    <Box>
+      <GroupingTableTemplate
+        data={sampleData}
+        selectionType="multiple"
+        onSelectionChange={handleSelectionChange}
+        gridColumnStart={2}
+        gridColumnEnd={6}
+        defaultSelectedIds={july12GroupIds}
+        disabledIds={july12GroupIds}
+      />
+    </Box>
+  );
+};
+
+TableGroupingWithDisabledRows.storyName = 'Table Grouping with Disabled Rows';
 
 export default meta;

@@ -252,6 +252,34 @@ const nodes: Item[] = [
   },
 ];
 
+// Grouped data for testing
+const groupedNodes = [
+  {
+    id: 'group1',
+    name: 'Group 1',
+    amount: 500,
+    treeXLevel: 0,
+    nodes: [
+      { id: 'child1-1', name: 'Child 1-1', amount: 200, treeXLevel: 1, nodes: null },
+      { id: 'child1-2', name: 'Child 1-2', amount: 300, treeXLevel: 1, nodes: null },
+    ],
+  },
+  {
+    id: 'group2',
+    name: 'Group 2',
+    amount: 400,
+    treeXLevel: 0,
+    nodes: [{ id: 'child2-1', name: 'Child 2-1', amount: 400, treeXLevel: 1, nodes: null }],
+  },
+];
+
+// Spanning data for testing
+const spanningNodes = [
+  { id: '1', merchant: 'Flipkart', method: 'UPI', amount: 100 },
+  { id: '2', merchant: 'Flipkart', method: 'Card', amount: 200 },
+  { id: '3', merchant: 'Swiggy', method: 'UPI', amount: 150 },
+];
+
 describe('<Table />', () => {
   it('should render table', () => {
     const { container, getAllByRole } = renderWithTheme(
@@ -1306,6 +1334,266 @@ describe('<Table />', () => {
     };
     const { container } = renderWithTheme(<ReactVirtualTable />);
 
+    expect(container).toMatchSnapshot();
+  });
+
+  // Spanning Tests
+  it('should render table with row spanning', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: spanningNodes }} showBorderedCells>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Merchant</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow key={tableData[0]?.id} item={tableData[0]}>
+                <TableCell gridRowStart={2} gridRowEnd={4}>
+                  {tableData[0]?.merchant}
+                </TableCell>
+                <TableCell>{tableData[0]?.method}</TableCell>
+                <TableCell>{tableData[0]?.amount}</TableCell>
+              </TableRow>
+              <TableRow key={tableData[1]?.id} item={tableData[1]}>
+                <TableCell>{tableData[1]?.method}</TableCell>
+                <TableCell>{tableData[1]?.amount}</TableCell>
+              </TableRow>
+              <TableRow key={tableData[2]?.id} item={tableData[2]}>
+                <TableCell>{tableData[2]?.merchant}</TableCell>
+                <TableCell>{tableData[2]?.method}</TableCell>
+                <TableCell>{tableData[2]?.amount}</TableCell>
+              </TableRow>
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render table with header spanning', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: spanningNodes }} showBorderedCells>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Merchant</TableHeaderCell>
+                <TableHeaderCell gridColumnStart={1} gridColumnEnd={4}>
+                  Transaction Details
+                </TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((item) => (
+                <TableRow key={item.id} item={item}>
+                  <TableCell>{item.merchant}</TableCell>
+                  <TableCell>{item.method}</TableCell>
+                  <TableCell>{item.amount}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render table with footer spanning', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: spanningNodes }} showBorderedCells>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Merchant</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((item) => (
+                <TableRow key={item.id} item={item}>
+                  <TableCell>{item.merchant}</TableCell>
+                  <TableCell>{item.method}</TableCell>
+                  <TableCell>{item.amount}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                <TableFooterCell gridColumnStart={1} gridColumnEnd={3}>
+                  Total Summary
+                </TableFooterCell>
+                <TableFooterCell>450</TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render table with column spanning', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: spanningNodes }} showBorderedCells>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Merchant</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow item={tableData[0]}>
+                <TableCell gridColumnStart={1} gridColumnEnd={4}>
+                  Summary Row - Total Items: {tableData.length}
+                </TableCell>
+              </TableRow>
+              {tableData.map((item) => (
+                <TableRow key={item.id} item={item}>
+                  <TableCell>{item.merchant}</TableCell>
+                  <TableCell>{item.method}</TableCell>
+                  <TableCell>{item.amount}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  // Grouping Tests
+  it('should render table with grouping', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: groupedNodes }} isGrouped showBorderedCells>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((item) => (
+                <TableRow key={item.id} item={item}>
+                  <TableCell
+                    gridColumnStart={item.treeXLevel === 0 ? 1 : undefined}
+                    gridColumnEnd={item.treeXLevel === 0 ? 3 : undefined}
+                  >
+                    {item.name}
+                  </TableCell>
+                  {item.treeXLevel !== 0 && <TableCell>{item.amount}</TableCell>}
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render table with grouping and selection', async () => {
+    const onSelectionChange = jest.fn();
+    const user = userEvent.setup();
+    const { container, getAllByRole } = renderWithTheme(
+      <Table
+        data={{ nodes: groupedNodes }}
+        isGrouped
+        selectionType="multiple"
+        onSelectionChange={onSelectionChange}
+        showBorderedCells
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((item) => (
+                <TableRow key={item.id} item={item}>
+                  <TableCell
+                    gridColumnStart={item.treeXLevel === 0 ? 2 : undefined}
+                    gridColumnEnd={item.treeXLevel === 0 ? 4 : undefined}
+                  >
+                    {item.name}
+                  </TableCell>
+                  {item.treeXLevel !== 0 && <TableCell>{item.amount}</TableCell>}
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const checkboxes = getAllByRole('checkbox');
+    expect(checkboxes).toHaveLength(6); // Header + 5 rows (2 parents + 3 children)
+
+    // Click parent checkbox - should select parent + children
+    await user.click(checkboxes[1]); // First parent group
+    expect(onSelectionChange).toHaveBeenCalledWith({
+      selectedIds: ['group1', 'child1-1', 'child1-2'],
+      values: expect.any(Array),
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  // Nesting Tests
+  it('should render table with nested expandable content', async () => {
+    const { container, getByText } = renderWithTheme(
+      <Table data={{ nodes: spanningNodes.slice(0, 2) }}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Merchant</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((item) => (
+                <>
+                  <TableRow key={item.id} item={item}>
+                    <TableCell>{item.merchant}</TableCell>
+                    <TableCell>{item.method}</TableCell>
+                    <TableCell>{item.amount}</TableCell>
+                  </TableRow>
+                  {item.id === '1' && (
+                    <TableRow key={`${item.id}-details`} item={item}>
+                      <TableCell gridColumnStart={1} gridColumnEnd={4}>
+                        <Box padding="spacing.3" backgroundColor="surface.background.gray.subtle">
+                          Expanded details for {item.merchant}
+                        </Box>
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    expect(getByText('Expanded details for Flipkart')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 });
