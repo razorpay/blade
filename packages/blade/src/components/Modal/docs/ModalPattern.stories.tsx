@@ -516,7 +516,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
       value: 'custom',
       title: 'Custom Button',
       subtitle:
-        'Build your own button with your own design and branding. You can also use our pre-built templates.',
+        'Build your own button with your own design and branding or use our pre-built templates.',
       icon: ZapIcon,
       isDisabled: true,
     },
@@ -580,7 +580,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                 onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
                 padding="spacing.0"
                 accessibilityLabel={`Select ${method.title}`}
-                width={isMobile ? '160px' : '200px'}
+                width={isMobile ? '160px' : '228px'}
                 borderRadius="medium"
                 elevation="none"
               >
@@ -618,6 +618,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                       flexDirection="column"
                       justifyContent="center"
                       alignItems="center"
+                      maxHeight="95px"
                     >
                       <Text
                         size="medium"
