@@ -149,10 +149,10 @@ const addGapPropertiesWithPolyfills = (
       '& > * + *': {
         // Use logical properties with webkit fallbacks for better compatibility
         ...(flexDirection === 'row' && {
-          marginLeft: gapValue,
+          marginLeft: `${gapValue} !important`, // have to add important since children can have some predefined margins
         }),
         ...(flexDirection === 'column' && {
-          marginTop: gapValue,
+          marginTop: `${gapValue} !important`,
         }),
       },
     },
