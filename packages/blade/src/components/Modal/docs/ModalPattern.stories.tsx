@@ -877,7 +877,11 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
             <TextInput value="https://rzp.io/test-ai" label="" />
           </Box>
           <Box>
-            <Tooltip content={isCopied ? 'Copied' : 'Copy to clipboard'}>
+            {isCopied ? (
+              <Tooltip content="Copied">
+                <Button icon={CopyIcon}>Copy</Button>
+              </Tooltip>
+            ) : (
               <Button
                 icon={CopyIcon}
                 onClick={() => {
@@ -887,7 +891,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
               >
                 Copy
               </Button>
-            </Tooltip>
+            )}
           </Box>
         </Box>
         <Box marginTop="spacing.5">
