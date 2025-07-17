@@ -402,7 +402,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         modalSize="large"
         footer={
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+            <Button variant="tertiary" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button
@@ -537,7 +537,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
         modalSize="medium"
         footer={
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+            <Button variant="tertiary" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button
