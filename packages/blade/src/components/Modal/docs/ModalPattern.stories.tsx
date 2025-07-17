@@ -186,7 +186,8 @@ const ResponsiveModalWrapper = ({
 }): React.ReactNode => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
-  const isMobile = matchedDeviceType === 'mobile';
+  // const isMobile = matchedDeviceType === 'mobile';
+  const isMobile = false;
 
   if (isMobile) {
     return (
@@ -628,7 +629,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                       >
                         {method.title}
                       </Text>
-                      <Text size="small" color="surface.text.gray.muted">
+                      <Text size="small" color="surface.text.gray.muted" textAlign="center">
                         {method.subtitle}
                       </Text>
                     </Box>
