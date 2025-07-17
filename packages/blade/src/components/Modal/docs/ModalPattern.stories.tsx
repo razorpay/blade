@@ -110,15 +110,16 @@ const ConformationalModalBody = ({
           <div
             style={{
               backgroundColor: getBackgroundColor(),
-              width: 'fit-content',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: theme.border.radius.medium,
               padding: theme.spacing[4],
+              height: '48px',
+              width: '48px',
             }}
           >
-            <Icon color={getIconColor()} />
+            <Icon color={getIconColor()} size="large" />
           </div>
         ) : null}
         <Box display="flex" flexDirection="column" gap="spacing.1">
