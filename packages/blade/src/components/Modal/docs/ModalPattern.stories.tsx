@@ -9,7 +9,7 @@ import DonationsButton from './assets/donationButton.png';
 import SideImage from './assets/sideImage.png';
 import Card4 from './assets/card4.png';
 import PayNow from './assets/paynow.png';
-import Twitter from './assets/x.png';
+import Twitter from './assets/x-black.png';
 import WhatsApp from './assets/whatsapp.png';
 import Instagram from './assets/ig.png';
 import Facebook from './assets/fb.png';
@@ -816,12 +816,12 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
           </Box>
         </Box>
         <Box marginTop="spacing.5">
-          <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="center">
+          <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
             <Text color="surface.text.gray.muted" size="small" weight="medium">
               {' '}
               Share Via{' '}
             </Text>
-            <Box marginLeft="spacing.5" display="flex" flexDirection="row" gap="spacing.4">
+            <Box display="flex" flexDirection="row" gap="spacing.4">
               <Box
                 padding="6px"
                 borderRadius="round"
@@ -846,7 +846,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <img src={Twitter} alt="Twitter" width="20px" height="20px" />
+                <img src={Twitter} alt="Twitter" width="30px" height="24px" />
               </Box>
               <Box
                 padding="7px"
@@ -859,13 +859,13 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <img src={WhatsApp} alt="WhatsApp" width="26px" height="26px" />
+                <img src={WhatsApp} alt="WhatsApp" width="25.6px" height="26px" />
               </Box>
               <Box
                 padding="8px"
                 borderRadius="round"
                 borderColor="surface.border.gray.muted"
-                borderWidth="thicker"
+                borderWidth="thin"
                 height="40px"
                 width="40px"
                 display="flex"
