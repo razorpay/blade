@@ -488,11 +488,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
               >
                 <CardBody>
                   <Box overflow="hidden">
-                    <div
-                      style={{
-                        backgroundColor: method.isDisabled ? '#263ebb' : undefined,
-                      }}
-                    >
+                    <div>
                       <img
                         src={method.img}
                         alt={method.title}
