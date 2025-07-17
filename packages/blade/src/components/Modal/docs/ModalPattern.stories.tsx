@@ -447,7 +447,13 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         wrapInBottomSheetFooter
         customSnapPoints={[0.8, 0.9, 0.95]}
       >
-        <Box paddingX="spacing.6" paddingTop="spacing.6">
+        <Box
+          paddingX="spacing.6"
+          paddingTop="spacing.6"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.1"
+        >
           <Heading size="small" weight="semibold">
             Pick a Button Type
           </Heading>
@@ -595,7 +601,13 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
         wrapInBottomSheetFooter
         customSnapPoints={[0.8, 0.9, 0.95]}
       >
-        <Box paddingX="spacing.6" paddingTop="spacing.6">
+        <Box
+          paddingX="spacing.6"
+          paddingTop="spacing.6"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.1"
+        >
           <Heading size="small" weight="semibold">
             Pick a Button Type
           </Heading>
