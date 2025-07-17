@@ -789,7 +789,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
         >
           <ShareIcon color="surface.icon.gray.subtle" />
         </div>
-        <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
+        <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
           <Text size="large" weight="semibold">
             Share Payment Link
           </Text>
@@ -799,7 +799,7 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
           </Text>
         </Box>
         <Box
-          marginTop="spacing.5"
+          marginTop="spacing.6"
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -877,7 +877,14 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
             </Box>
           </Box>
         </Box>
-        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap="spacing.5"
+          alignItems="center"
+          marginTop="spacing.6"
+          marginBottom="spacing.6"
+        >
           <Divider />
           <Text color="surface.text.gray.muted" size="small" weight="medium">
             OR
