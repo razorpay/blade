@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import { Virtualized } from '@table-library/react-table-library/virtualized';
 import styled from 'styled-components';
@@ -191,10 +191,12 @@ const TableCheckboxCell = ({
   isChecked,
   onChange,
   isDisabled,
+  isIndeterminate,
 }: {
   isChecked: CheckboxProps['isChecked'];
   onChange: CheckboxProps['onChange'];
   isDisabled?: boolean;
+  isIndeterminate?: boolean;
 }): React.ReactElement => {
   return (
     <TableCell>
@@ -216,6 +218,7 @@ const TableCheckboxCell = ({
           isDisabled={isDisabled}
           isChecked={isChecked}
           onChange={onChange}
+          isIndeterminate={isIndeterminate}
           {...makeAccessible({ label: 'Select Row' })}
         />
       </BaseBox>
@@ -308,19 +311,12 @@ const StyledRow = styled(Row)<{
         '& td': {
           backgroundColor: getIn(theme.colors, tableRow.groupHeaderBackgroundColor),
         },
+      }),
+      ...($isGrouped && {
         '& .cell-wrapper': {
-          borderTopWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
-          borderTopStyle: 'solid',
-          borderTopColor: getIn(theme.colors, tableRow.borderColor),
-          borderRight: 'none',
+          border: 'none',
         },
       }),
-      ...($isGrouped &&
-        !$isGroupHeader && {
-          '& .cell-wrapper': {
-            border: 'none',
-          },
-        }),
     },
   };
 });
@@ -353,6 +349,28 @@ const _TableRow = <Item,>({
     isGrouped &&
     (item as { treeXLevel?: number }).treeXLevel === 0 &&
     ((item as { nodes?: unknown[] }).nodes?.length ?? 0) > 0;
+
+  const getGroupSelectionState = useMemo(() => {
+    if (!isGroupHeader || !isMultiSelect || !selectedRows) {
+      return { isAllSelected: false, isIndeterminate: false };
+    }
+
+    const childNodes = (item as { nodes?: string[] }).nodes || [];
+    if (childNodes.length === 0) {
+      return { isAllSelected: false, isIndeterminate: false };
+    }
+
+    const selectedChildIds = childNodes.filter((child) => selectedRows.includes(child));
+    const selectedCount = selectedChildIds?.length ?? 0;
+    const totalCount = childNodes?.length ?? 0;
+
+    const isAllSelected = selectedCount === totalCount;
+    const isIndeterminate = selectedCount > 0 && selectedCount < totalCount && !isSelected;
+
+    return { isAllSelected, isIndeterminate };
+  }, [isGroupHeader, isMultiSelect, selectedRows, item, isSelected]);
+
+  const { isAllSelected, isIndeterminate } = getGroupSelectionState;
 
   useEffect(() => {
     if (isDisabled) {
@@ -390,9 +408,10 @@ const _TableRow = <Item,>({
     >
       {isMultiSelect && (
         <TableCheckboxCell
-          isChecked={isSelected}
+          isChecked={isSelected || isAllSelected}
           onChange={() => !isDisabled && toggleRowSelectionById(item.id)}
           isDisabled={isDisabled}
+          isIndeterminate={isIndeterminate}
         />
       )}
       {children}
