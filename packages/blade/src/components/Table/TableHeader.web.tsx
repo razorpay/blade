@@ -94,7 +94,9 @@ const TableHeader = assignWithoutSideEffects(_TableHeader, {
   componentId: ComponentIds.TableHeader,
 });
 
-const StyledHeaderCell = styled(HeaderCell)<{
+const StyledHeaderCell = styled(HeaderCell).withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$') && prop !== 'theme',
+})<{
   $isSortable: boolean;
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
@@ -137,6 +139,10 @@ const _TableHeaderCell = ({
   headerKey,
   _hasPadding = true,
   textAlign,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableHeaderCellProps): React.ReactElement => {
   const {
@@ -149,9 +155,18 @@ const _TableHeaderCell = ({
   const isChildrenString = typeof children === 'string';
   const isSortable =
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
+
+  const gridStyle: React.CSSProperties = {};
+  if (gridRowStart && gridRowEnd) {
+    gridStyle.gridRow = `${gridRowStart} / ${gridRowEnd}`;
+  }
+
   return (
     <StyledHeaderCell
       tabIndex={0}
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
+      style={gridStyle}
       $isSortable={isSortable}
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}
