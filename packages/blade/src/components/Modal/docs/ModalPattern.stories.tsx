@@ -809,7 +809,7 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
           justifyContent="flex-start"
           alignItems="center"
         >
-          <Text size="small" weight="regular" color="surface.text.gray.subtle">
+          <Text size="medium" weight="regular" color="surface.text.gray.subtle">
             {isResendOtpTimerRunning
               ? `Resend OTP in ${resendOtpTimer} seconds`
               : "Didn't receive OTP?"}
@@ -818,7 +818,7 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
             <Link
               isDisabled={isResendOtpTimerRunning}
               onClick={handleResendOtp}
-              size="small"
+              size="medium"
               variant="button"
             >
               {isResendOtpTimerRunning ? `Resend OTP in ${resendOtpTimer}s` : 'Resend OTP'}
