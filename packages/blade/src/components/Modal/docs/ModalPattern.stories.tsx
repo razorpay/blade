@@ -13,6 +13,7 @@ import Twitter from './assets/x-black.png';
 import WhatsApp from './assets/whatsapp.png';
 import Instagram from './assets/ig.png';
 import Facebook from './assets/fb.png';
+import ModalSideImage from './assets/modalSideImage.png';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -1061,8 +1062,8 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
               gridRow="span 2"
             >
               <img
-                src={SideImage}
-                height="452px"
+                src={ModalSideImage}
+                height="596px"
                 width="100%"
                 alt="random graphics"
                 style={{ objectFit: 'fill' }}
