@@ -81,10 +81,12 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
 
 export const StyledCell = styled(Cell)<{
   $backgroundColor: TableBackgroundColors;
-}>(({ theme, $backgroundColor }) => ({
+  gridRow?: string;
+}>(({ theme, $backgroundColor, gridRow }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
+    gridRow,
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
@@ -127,17 +129,28 @@ const _TableCell = ({
   children,
   textAlign,
   _hasPadding,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
+  const hasRowSpan = Boolean(gridRowStart && gridRowEnd);
+  const gridRowValue = hasRowSpan ? `${gridRowStart} / ${gridRowEnd}` : undefined;
+
   return (
     <StyledCell
       tabIndex={0}
       role="cell"
+      className={hasRowSpan ? classes.HAS_ROW_SPANNING : ''}
       $backgroundColor={backgroundColor}
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
+      gridRow={gridRowValue}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
     >

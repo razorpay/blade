@@ -1,7 +1,7 @@
 import React from 'react';
 import { Footer, FooterRow, FooterCell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
-import { tableFooter, tableRow } from './tokens';
+import { tableFooter, tableRow, classes } from './tokens';
 import { ComponentIds } from './componentIds';
 import type {
   TableFooterProps,
@@ -80,7 +80,8 @@ const StyledFooterCell = styled(FooterCell)<{
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $textAlign?: string;
-}>(({ theme, $backgroundColor, $rowDensity, $textAlign }) => ({
+  gridRow?: string;
+}>(({ theme, $backgroundColor, $rowDensity, $textAlign, gridRow }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
@@ -90,6 +91,7 @@ const StyledFooterCell = styled(FooterCell)<{
     borderTopColor: getIn(theme.colors, tableFooter.borderBottomAndTopColor),
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
+    gridRow,
     '> div': {
       backgroundColor: getIn(theme.colors, tableFooter.backgroundColor),
       display: 'flex',
@@ -107,13 +109,24 @@ const StyledFooterCell = styled(FooterCell)<{
 const _TableFooterCell = ({
   children,
   textAlign,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableFooterCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { backgroundColor, rowDensity } = useTableContext();
 
+  const hasRowSpan = Boolean(gridRowStart && gridRowEnd);
+  const gridRowValue = hasRowSpan ? `${gridRowStart} / ${gridRowEnd}` : undefined;
+
   return (
     <StyledFooterCell
+      className={hasRowSpan ? classes.HAS_ROW_SPANNING : ''}
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
+      gridRow={gridRowValue}
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
       $textAlign={textAlign}
