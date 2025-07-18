@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const GridIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _GridIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -34,5 +35,9 @@ const GridIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const GridIcon = assignWithoutSideEffects(_GridIcon, {
+  componentId: 'GridIcon',
+});
 
 export default GridIcon;

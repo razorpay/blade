@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const TrendingUpIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _TrendingUpIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -14,5 +15,9 @@ const TrendingUpIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const TrendingUpIcon = assignWithoutSideEffects(_TrendingUpIcon, {
+  componentId: 'TrendingUpIcon',
+});
 
 export default TrendingUpIcon;

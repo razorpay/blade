@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const VolumeMuteIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _VolumeMuteIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const VolumeMuteIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const VolumeMuteIcon = assignWithoutSideEffects(_VolumeMuteIcon, {
+  componentId: 'VolumeMuteIcon',
+});
 
 export default VolumeMuteIcon;

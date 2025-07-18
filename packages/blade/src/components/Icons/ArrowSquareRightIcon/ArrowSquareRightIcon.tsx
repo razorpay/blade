@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ArrowSquareRightIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _ArrowSquareRightIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -26,5 +27,9 @@ const ArrowSquareRightIcon: IconComponent = ({ size, color, ...styledProps }) =>
     </Svg>
   );
 };
+
+const ArrowSquareRightIcon = assignWithoutSideEffects(_ArrowSquareRightIcon, {
+  componentId: 'ArrowSquareRightIcon',
+});
 
 export default ArrowSquareRightIcon;

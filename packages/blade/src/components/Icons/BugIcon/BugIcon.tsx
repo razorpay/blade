@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const BugIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _BugIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -24,5 +25,9 @@ const BugIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const BugIcon = assignWithoutSideEffects(_BugIcon, {
+  componentId: 'BugIcon',
+});
 
 export default BugIcon;

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const WalletIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _WalletIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const WalletIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const WalletIcon = assignWithoutSideEffects(_WalletIcon, {
+  componentId: 'WalletIcon',
+});
 
 export default WalletIcon;

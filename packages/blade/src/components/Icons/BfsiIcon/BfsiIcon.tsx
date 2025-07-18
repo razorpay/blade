@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const BfsiIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _BfsiIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const BfsiIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const BfsiIcon = assignWithoutSideEffects(_BfsiIcon, {
+  componentId: 'BfsiIcon',
+});
 
 export default BfsiIcon;

@@ -183,7 +183,7 @@ const _Table = <Item,>({
   const tableRootComponent = children([]);
   const isVirtualized = getComponentId(tableRootComponent) === ComponentIds.VirtualizedTable;
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-  const shouldHeaderBeSticky = isVirtualized ?? isHeaderSticky ?? isFirstColumnSticky;
+  const shouldHeaderBeSticky = isVirtualized || isHeaderSticky || isFirstColumnSticky;
 
   const isMobile = useIsMobile();
   const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';

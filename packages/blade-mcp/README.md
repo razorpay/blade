@@ -16,7 +16,7 @@ Blade MCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/in
 | `get_blade_component_docs`  | Fetches the Blade Design System documentation for specific components. Useful when adding or modifying components in your project.                               |
 | `get_blade_pattern_docs`    | Fetches the Blade Design System pattern documentation. Use this to get information about design patterns, best practices, and implementation guidelines.         |
 | `get_blade_general_docs`    | Fetches general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines.               |
-| `get_figma_to_code`         | Converts Figma designs into Blade Design System code. Provide a Figma design URL to generate the corresponding React components using Blade's component library. |
+| `get_figma_to_code`         | Converts Figma designs into Blade Design System code. Provide a Figma design URL to generate the corresponding React components using Blade's component library. **[NOTE: figma to code tool can only be accessed by Razorpay employees]** |
 
 ## Prerequisites
 
