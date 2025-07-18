@@ -257,10 +257,14 @@ const NegativeModalTemplate: StoryFn<typeof Modal> = () => {
         <ConformationalModalBody
           type="negative"
           icon={TrashIcon}
-          title="Restart the Tour?"
-          description="This tour will give a quick guide on this product"
+          title="Discard Import ?"
+          description="We do not save the progress, you will need to upload the file again."
         />
-        <ConformationModalFooter type="negative" primaryButtonText="Yes" secondaryButtonText="No" />
+        <ConformationModalFooter
+          type="negative"
+          primaryButtonText="No, Go Back"
+          secondaryButtonText="Discard"
+        />
       </ResponsiveModalWrapper>
     </Box>
   );
