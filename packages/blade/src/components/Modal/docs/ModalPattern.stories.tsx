@@ -1071,63 +1071,69 @@ const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
             </Box>
           )}
           <Box
-            height="520px"
+            height="596px"
             paddingTop="spacing.6"
-            paddingX="spacing.6"
             width="100%"
-            overflow="scroll"
+            overflow="auto"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
           >
-            <Heading size="medium" weight="semibold">
-              Create policy pages with Razorpay
-            </Heading>
-            <Text size="medium" weight="regular" color="surface.text.gray.muted">
-              We need a few details to create the missing policy pages for you
-            </Text>
-            <Box
-              marginTop="spacing.6"
-              display="flex"
-              gap="spacing.7"
-              flexDirection="column"
-              height="100%"
-              width="100%"
-            >
-              <ChipGroup label="Shipping time">
-                {shippingTime.map((time) => (
-                  <Chip key={time.value} value={time.value}>
-                    {time.label}
-                  </Chip>
-                ))}
-              </ChipGroup>
-              <ChipGroup label="Cancellation request time">
-                {shippingTime.map((time) => (
-                  <Chip key={time.value} value={time.value}>
-                    {time.label}
-                  </Chip>
-                ))}
-              </ChipGroup>
-              <ChipGroup label="Refund processing time">
-                {shippingTime.map((time) => (
-                  <Chip key={time.value} value={time.value}>
-                    {time.label}
-                  </Chip>
-                ))}
-              </ChipGroup>
-              <TextInput label="Support contact number" prefix="+91" placeholder="9XXXXXXXXX" />
-              <TextInput label="Support Email ID" placeholder="support@razorpay.com" />
-            </Box>
-          </Box>
-          {!isMobile && (
-            <ModalFooter>
-              <Box display="flex" justifyContent="flex-end" gap="spacing.5">
-                <Button variant="tertiary" onClick={() => setIsOpen(false)}>
-                  Back
-                </Button>
-                <Button variant="primary" onClick={() => setIsOpen(false)}>
-                  Continue
-                </Button>
+            <Box paddingX="spacing.6">
+              <Heading size="medium" weight="semibold">
+                Create policy pages with Razorpay
+              </Heading>
+              <Text size="medium" weight="regular" color="surface.text.gray.muted">
+                We need a few details to create the missing policy pages for you
+              </Text>
+              <Box
+                marginTop="spacing.6"
+                display="flex"
+                gap="spacing.7"
+                flexDirection="column"
+                height="100%"
+                width="100%"
+              >
+                <ChipGroup label="Shipping time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <ChipGroup label="Cancellation request time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <ChipGroup label="Refund processing time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <TextInput label="Support contact number" prefix="+91" placeholder="9XXXXXXXXX" />
+                <TextInput label="Support Email ID" placeholder="support@razorpay.com" />
               </Box>
-            </ModalFooter>
-          )}
+            </Box>
+            {!isMobile && (
+              <Box>
+                <ModalFooter>
+                  <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+                    <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+                      Back
+                    </Button>
+                    <Button variant="primary" onClick={() => setIsOpen(false)}>
+                      Continue
+                    </Button>
+                  </Box>
+                </ModalFooter>
+              </Box>
+            )}
+          </Box>
         </Box>
       </ResponsiveModalWrapper>
     </Box>
