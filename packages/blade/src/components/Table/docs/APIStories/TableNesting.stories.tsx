@@ -9,11 +9,7 @@ import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { Amount } from '~components/Amount';
 import { ChevronDownIcon, ChevronRightIcon } from '~components/Icons';
-import { BaseMotionEntryExit } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
-import { castWebType, makeSpace, useTheme } from '~utils';
-import { cssBezierToArray } from '~utils/cssBezierToArray';
-import { msToSeconds } from '~utils/msToSeconds';
+import { Slide } from '~components/Slide';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 type TransactionData = {
@@ -147,44 +143,6 @@ const merchantData: MerchantData[] = [
   },
 ];
 
-// Custom slide down animation component
-const SlideDown = ({ children }: { children: React.ReactElement }): React.ReactElement => {
-  const { theme } = useTheme();
-  const movePx = makeSpace(theme.spacing[3]); // 8px offset from above
-
-  const slideDownVariants: MotionVariantsType = {
-    initial: {
-      opacity: 0,
-      transform: `translateY(-${movePx})`, // Start from above (negative Y)
-    },
-    animate: {
-      opacity: 1,
-      transform: `translateY(${makeSpace(theme.spacing[0])})`, // End at 0
-      transition: {
-        duration: msToSeconds(theme.motion.duration.quick),
-        ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
-      },
-    },
-    exit: {
-      opacity: 0,
-      transform: `translateY(-${movePx})`, // Exit upward
-      transition: {
-        duration: msToSeconds(theme.motion.duration.quick),
-        ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
-      },
-    },
-  };
-
-  return (
-    <BaseMotionEntryExit
-      motionVariants={slideDownVariants}
-      children={children}
-      type="inout"
-      motionTriggers={['mount']}
-    />
-  );
-};
-
 const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }): JSX.Element => {
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
 
@@ -270,7 +228,7 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                   {expandedRows.has(item.id) && (
                     <TableRow key={`${item.id}-expanded`} item={item}>
                       <TableCell gridColumnStart={1} gridColumnEnd={5}>
-                        <SlideDown>
+                        <Slide direction="top" fromOffset="100%">
                           <Box
                             backgroundColor="surface.background.gray.subtle"
                             padding="spacing.5"
@@ -361,7 +319,7 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                               </Box>
                             )}
                           </Box>
-                        </SlideDown>
+                        </Slide>
                       </TableCell>
                     </TableRow>
                   )}
