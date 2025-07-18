@@ -1,13 +1,18 @@
 import { IMPORTED_SVG_COMPONENTS } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const {{name}}Icon: IconComponent = ({ size, color, ...styledProps }) => {
+const _{{name}}Icon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
     REPLACE_SVG
   );
 };
+
+const {{name}}Icon = assignWithoutSideEffects(_{{name}}Icon, {
+  componentId: '{{name}}Icon',
+});
 
 export default {{name}}Icon;

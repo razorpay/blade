@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const AutomatePayrollIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _AutomatePayrollIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const AutomatePayrollIcon: IconComponent = ({ size, color, ...styledProps }) => 
     </Svg>
   );
 };
+
+const AutomatePayrollIcon = assignWithoutSideEffects(_AutomatePayrollIcon, {
+  componentId: 'AutomatePayrollIcon',
+});
 
 export default AutomatePayrollIcon;

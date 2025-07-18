@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const UploadIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _UploadIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -18,5 +19,9 @@ const UploadIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const UploadIcon = assignWithoutSideEffects(_UploadIcon, {
+  componentId: 'UploadIcon',
+});
 
 export default UploadIcon;

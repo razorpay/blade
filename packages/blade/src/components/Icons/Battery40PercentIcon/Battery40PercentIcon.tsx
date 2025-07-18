@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const Battery40PercentIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _Battery40PercentIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -28,5 +29,9 @@ const Battery40PercentIcon: IconComponent = ({ size, color, ...styledProps }) =>
     </Svg>
   );
 };
+
+const Battery40PercentIcon = assignWithoutSideEffects(_Battery40PercentIcon, {
+  componentId: 'Battery40PercentIcon',
+});
 
 export default Battery40PercentIcon;

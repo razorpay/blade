@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const SkipForwardIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _SkipForwardIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -22,5 +23,9 @@ const SkipForwardIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const SkipForwardIcon = assignWithoutSideEffects(_SkipForwardIcon, {
+  componentId: 'SkipForwardIcon',
+});
 
 export default SkipForwardIcon;

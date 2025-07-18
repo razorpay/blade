@@ -10,6 +10,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { isIconComponent } from '~utils/isIconComponent';
 import type { BoxProps } from '~components/Box';
 import { makeSize } from '~utils/makeSize';
 import { size as sizeToken } from '~tokens/global';
@@ -47,10 +48,11 @@ const _AccordionItemHeader = ({
     if (showNumberPrefix && typeof index === 'number') return true;
 
     // Check if leading is an Icon component (name ends with "Icon")
+    if (leading && React.isValidElement(leading) && isIconComponent(leading)) return true;
     if (isLeadingIcon) return true;
 
     return false;
-  }, [showNumberPrefix, index, isLeadingIcon]);
+  }, [showNumberPrefix, index, leading, isLeadingIcon]);
 
   const shouldAlignHeaderItemsInCenter = Boolean(
     children || (Boolean(leading) && !isLeadingNumberOrIcon),

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const VideoOffIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _VideoOffIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const VideoOffIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const VideoOffIcon = assignWithoutSideEffects(_VideoOffIcon, {
+  componentId: 'VideoOffIcon',
+});
 
 export default VideoOffIcon;
