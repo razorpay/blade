@@ -6,7 +6,6 @@ import { useBreakpoint, useTheme } from '../../../utils';
 import AlertPng from './assets/alert.png';
 import DonateNow from './assets/donatenow.png';
 import DonationsButton from './assets/donationButton.png';
-import SideImage from './assets/sideImage.png';
 import Card4 from './assets/card4.png';
 import PayNow from './assets/paynow.png';
 import Twitter from './assets/x-black.png';
