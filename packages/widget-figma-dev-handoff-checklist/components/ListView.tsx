@@ -58,7 +58,7 @@ function ListView({
         </AutoLayout>
         {helpText ? (
           <AutoLayout direction="horizontal" wrap={true} spacing={4} width="fill-parent">
-            <Text fontSize={11} fontWeight={400} lineHeight={16} fill={'#768EA7'} italic={true}>
+            <Text fontSize={11} fontWeight={400} lineHeight={16} fill="#768EA7" italic={true}>
               {helpText}
             </Text>
           </AutoLayout>
