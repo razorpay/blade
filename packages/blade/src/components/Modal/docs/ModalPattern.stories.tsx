@@ -263,8 +263,8 @@ const NegativeModalTemplate: StoryFn<typeof Modal> = () => {
         />
         <ConformationModalFooter
           type="negative"
-          primaryButtonText="No, Go Back"
-          secondaryButtonText="Discard"
+          secondaryButtonText="No, Go Back"
+          primaryButtonText="Discard"
         />
       </ResponsiveModalWrapper>
     </Box>
