@@ -788,15 +788,7 @@ const TableNestingExample = () => {
                 {expandedRows.has(item.id) && (
                   <TableRow key={`${item.id}-expanded`} item={item}>
                     <TableCell gridColumnStart={1} gridColumnEnd={4}>
-                      <BaseMotionEntryExit
-                        motionVariants={{
-                          initial: { opacity: 0, transform: 'translateY(-8px)' },
-                          animate: { opacity: 1, transform: 'translateY(0px)' },
-                          exit: { opacity: 0, transform: 'translateY(-8px)' },
-                        }}
-                        type="inout"
-                        motionTriggers={['mount']}
-                      >
+                      <Slide direction="top" fromOffset="100%">
                         <Box
                           backgroundColor="surface.background.gray.subtle"
                           padding="spacing.4"
@@ -811,7 +803,7 @@ const TableNestingExample = () => {
                             </Box>
                           ))}
                         </Box>
-                      </BaseMotionEntryExit>
+                      </Slide>
                     </TableCell>
                   </TableRow>
                 )}
@@ -827,57 +819,30 @@ const TableNestingExample = () => {
 
 ### Table Spanning Pattern
 
-Row and column spanning for complex layouts with merged cells. Use for grouping related data or creating summary sections.
+Row and column spanning for complex layouts with merged cells. Use for grouping related data or creating summary sections. Use grid props on TableCell to span across multiple rows or columns for merged cells.
 
 ```tsx
-const TableSpanningExample = () => {
-  return (
-    <Table data={tableData} showBorderedCells>
-      {(tableData) => (
-        <>
-          <TableHeader>
-            <TableHeaderRow>
-              <TableHeaderCell>Group</TableHeaderCell>
-              <TableHeaderCell>Item</TableHeaderCell>
-              <TableHeaderCell gridColumnStart={3} gridColumnEnd={5}>
-                Details
-              </TableHeaderCell>
-            </TableHeaderRow>
-          </TableHeader>
+{/* Header spanning */}
+<TableHeaderCell gridColumnStart={2} gridColumnEnd={4}>
+  Combined Header
+</TableHeaderCell>
 
-          <TableBody>
-            <TableRow item={tableData[0]}>
-              <TableCell gridColumnStart={1} gridColumnEnd={6}>
-                Summary Information
-              </TableCell>
-            </TableRow>
+<TableRow item={item}>
+  {/* Span across multiple columns */}
+  <TableCell gridColumnStart={1} gridColumnEnd={4}>
+    Summary spanning 3 columns
+  </TableCell>
+</TableRow>
 
-            {tableData.map((item, index) => (
-              <TableRow key={item.id} item={item}>
-                {item.shouldSpan && (
-                  <TableCell gridRowStart={index + 3} gridRowEnd={index + 3 + item.rowSpan}>
-                    {item.groupName}
-                  </TableCell>
-                )}
-                <TableCell>{item.itemName}</TableCell>
-                <TableCell>{item.detail1}</TableCell>
-                <TableCell>{item.detail2}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+<TableRow item={item}>
+  {/* Span across multiple rows */}
+  <TableCell gridRowStart={2} gridRowEnd={4}>
+    Group spanning 2 rows
+  </TableCell>
+</TableRow>
 
-          <TableFooter>
-            <TableFooterRow>
-              <TableFooterCell gridColumnStart={1} gridColumnEnd={3}>
-                Total
-              </TableFooterCell>
-              <TableFooterCell>{totalAmount}</TableFooterCell>
-              <TableFooterCell>{totalFees}</TableFooterCell>
-            </TableFooterRow>
-          </TableFooter>
-        </>
-      )}
-    </Table>
-  );
-};
+{/* Footer spanning */}
+<TableFooterCell gridColumnStart={1} gridColumnEnd={3}>
+  Total
+</TableFooterCell>
 ```
