@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.42.2
+
+### Patch Changes
+
+- b46d26bee: fix: table header sticky
+
 ## 12.42.1
 
 ### Patch Changes
