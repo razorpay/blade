@@ -25,13 +25,19 @@ const generateLockFileContent = ({ dependencies, devDependencies }) => {
   try {
     console.log('[lockfile-generation]: Creating package.json');
     fs.writeFileSync(resolve('lock-generation/package.json'), JSON.stringify(packageJSON, null, 2));
-    fs.writeFileSync(resolve('lock-generation/.npmrc'), 'auto-install-peers = false');
+    fs.writeFileSync(
+      resolve('lock-generation/.npmrc'),
+      'auto-install-peers = false\nstrict-peer-dependencies = false',
+    );
 
     console.log('[lockfile-generation]: Installing Dependencies');
-    execSync('yarn', { cwd: resolve('lock-generation'), stdio: 'inherit' });
+    execSync('pnpm install --lockfile-only', { cwd: resolve('lock-generation'), stdio: 'inherit' });
 
-    console.log('[lockfile-generation]: Moving lock file to /public/docs-yarn-lock.yaml');
-    fs.renameSync(resolve('lock-generation/yarn.lock'), resolve('../public/docs-yarn-lock.yaml'));
+    console.log('[lockfile-generation]: Moving lock file to /public/docs-pnpm-lock.yaml');
+    fs.renameSync(
+      resolve('lock-generation/pnpm-lock.yaml'),
+      resolve('../public/docs-pnpm-lock.yaml'),
+    );
   } catch (err) {
     console.error(err);
   } finally {
