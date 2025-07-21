@@ -367,7 +367,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? inputValue)));
   }, [showClearButton, defaultValue, inputValue]);
 
-
   const renderClearButton = (): React.ReactElement => {
     return (
       <IconButton
