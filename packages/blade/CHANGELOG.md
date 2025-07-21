@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.42.3
+
+### Patch Changes
+
+- 88afdb37f: fix: remove logs and add ref
+- abefb18cd: fix(inputgroup): payment card icon jsx error
+
 ## 12.42.2
 
 ### Patch Changes
