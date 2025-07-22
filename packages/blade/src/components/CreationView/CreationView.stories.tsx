@@ -8,6 +8,7 @@ import DonateNow from './assets/donatenow.png';
 import PayNow from './assets/paynow.png';
 import DonationButton from './assets/donationButton.png';
 import cardImage from './assets/card.png';
+import ModalSideImage from './assets/sideImage.png';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -63,6 +64,7 @@ import { Slide } from '~components/Slide';
 import type { ModalBodyProps, ModalProps } from '~components/Modal';
 import { Fade } from '~components/Fade';
 import { useBreakpoint, useTheme } from '~utils';
+import { ChipGroup, Chip } from '~components/Chip';
 
 // Initialize dayjs plugins
 dayjs.extend(customParseFormat);
@@ -2126,3 +2128,149 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
 };
 export const FlowSelectionModal = FlowSelectionModalTemplate.bind({});
 FlowSelectionModal.storyName = 'Flow Selection Modal';
+
+const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  const shippingTime = [
+    {
+      value: '1-2 days',
+      label: '1-2 days',
+    },
+    {
+      value: '3-5 days',
+      label: '3-5 days',
+    },
+    {
+      value: '6-8 days',
+      label: '6-8 days',
+    },
+    {
+      value: '9-15 days',
+      label: '9-15 days',
+    },
+    {
+      value: 'not applicable',
+      label: 'Not Applicable',
+    },
+  ];
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        modalSize="large"
+        modalBodyPadding="spacing.0"
+        customSnapPoints={[0.8, 0.9, 0.95]}
+        wrapInBottomSheetFooter
+        footer={
+          isMobile ? (
+            <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+              <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+                Back
+              </Button>
+              <Button variant="primary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+                Continue
+              </Button>
+            </Box>
+          ) : undefined
+        }
+      >
+        <Box
+          display="grid"
+          gridTemplateColumns={isMobile ? '1fr' : 'auto 1fr'}
+          gridTemplateRows={isMobile ? '1fr' : 'auto 1fr'}
+          width="100%"
+          height="100%"
+        >
+          {!isMobile && (
+            <Box
+              backgroundColor="surface.background.gray.subtle"
+              height="596px"
+              width="400px"
+              display="flex"
+              flexDirection="column"
+              justifyContent="flex-end"
+              overflow="hidden"
+              gridRow="span 2"
+            >
+              <img src={ModalSideImage} height="596px" width="100%" alt="random graphics" />
+            </Box>
+          )}
+          <Box
+            height="596px"
+            paddingTop="spacing.6"
+            width="100%"
+            overflow="auto"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+          >
+            <Box paddingX="spacing.6">
+              <Heading size="medium" weight="semibold">
+                Create policy pages with Razorpay
+              </Heading>
+              <Text size="medium" weight="regular" color="surface.text.gray.muted">
+                We need a few details to create the missing policy pages for you
+              </Text>
+              <Box
+                marginTop="spacing.6"
+                display="flex"
+                gap="spacing.7"
+                flexDirection="column"
+                height="100%"
+                width="100%"
+              >
+                <ChipGroup label="Shipping time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <ChipGroup label="Cancellation request time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <ChipGroup label="Refund processing time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <TextInput label="Support contact number" prefix="+91" placeholder="9XXXXXXXXX" />
+                <TextInput label="Support Email ID" placeholder="support@razorpay.com" />
+              </Box>
+            </Box>
+            {!isMobile && (
+              <Box>
+                <ModalFooter>
+                  <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+                    <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+                      Back
+                    </Button>
+                    <Button variant="primary" onClick={() => setIsOpen(false)}>
+                      Continue
+                    </Button>
+                  </Box>
+                </ModalFooter>
+              </Box>
+            )}
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+
+export const SingleStepForm = SingleStepFormTemplate.bind({});
+SingleStepForm.storyName = 'Single Step Form Modal';
