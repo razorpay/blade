@@ -1,8 +1,10 @@
 # When to Use Patterns
 
+## Confirmation
+A pattern for seeking user confirmation before proceeding with important or irreversible actions. Use this pattern when you need to get explicit user acknowledgment for critical actions like deletions, platform switches, or important changes, with support for different emotional states (neutral, negative, positive) to match the action's impact.
+
 ## Informational
 A pattern for displaying important information, alerts, or updates to users through modals or bottom sheets. Use this pattern when you need to show time-sensitive notifications, system updates, or important user action requirements with a consistent and accessible interface that works across all device types.
-
 
 ## CreationView
 
