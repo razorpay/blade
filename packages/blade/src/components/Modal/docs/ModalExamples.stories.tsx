@@ -1,5 +1,6 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
+import { Modal } from '../Modal';
 import {
   BasicModalStory,
   ModalWithNoBodyPaddingStory,
@@ -9,7 +10,6 @@ import {
   ModalStackingStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { Modal } from '../Modal';
 
 const ModalMeta: Meta = {
   title: 'Components/Modal/Examples',
