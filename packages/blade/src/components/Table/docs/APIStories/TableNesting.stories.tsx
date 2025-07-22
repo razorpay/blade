@@ -9,7 +9,6 @@ import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { Amount } from '~components/Amount';
 import { ChevronDownIcon, ChevronRightIcon } from '~components/Icons';
-import { Slide } from '~components/Slide';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 type TransactionData = {
