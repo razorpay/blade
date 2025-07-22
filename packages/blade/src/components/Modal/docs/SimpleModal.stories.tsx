@@ -8,6 +8,7 @@ import Facebook from './assets/fb.png';
 import Instagram from './assets/ig.png';
 import Twitter from './assets/x.png';
 import WhatsApp from './assets/wa.png';
+import AlertPng from './assets/alert.png';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -29,11 +30,12 @@ import {
 } from '~components/Icons';
 import { Link } from '~components/Link';
 import { OTPInput } from '~components/Input/OTPInput';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { TextInput } from '~components/Input/TextInput';
 import { Tooltip } from '~components/Tooltip';
 import { Divider } from '~components/Divider';
+import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/Modal/SimpleModal',
@@ -469,3 +471,44 @@ const ShareModalTemplate: StoryFn<typeof Modal> = () => {
 
 export const ShareModal = ShareModalTemplate.bind({});
 ShareModal.storyName = 'Share Modal';
+
+const InformationalModalWithImageTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        modalBodyPadding="spacing.0"
+        customSnapPoints={[0.6, 0.75, 0.95]}
+      >
+        <ModalBody padding="spacing.0">
+          <img src={AlertPng} alt="Alert" width={isMobile ? '100%' : '400px'} height={200} />
+          <Box margin="spacing.6">
+            <Badge color="negative">Action Required </Badge>
+            <Box marginTop="spacing.4">
+              <Heading size="large" weight="semibold">
+                Update your KYC by 5th July
+              </Heading>
+              <Text size="medium" weight="regular" color="surface.text.gray.subtle">
+                Subtitle go here, support details helps your customers to easily reach out to you
+                when they face any.
+              </Text>
+            </Box>
+          </Box>
+          <Box marginX="spacing.6" marginBottom="spacing.6">
+            <Button isFullWidth>Update KYC</Button>
+          </Box>
+        </ModalBody>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+
+export const InformationalModalWithImage = InformationalModalWithImageTemplate.bind({});
+InformationalModalWithImage.storyName = 'Informational Modal';
