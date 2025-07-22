@@ -204,6 +204,8 @@ type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor:
     | BackgroundColorString<'surface'>
     | BackgroundColorString<'overlay'>
+    | BackgroundColorString<'feedback'>
+    | BackgroundColorString<'interactive'>
     | 'transparent';
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object

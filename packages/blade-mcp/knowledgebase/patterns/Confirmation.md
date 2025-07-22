@@ -49,15 +49,19 @@ interface ConformationalModalBodyProps {
 }
 
 // ConformationalModalBody component
-const ConformationalModalBody: React.FC<ConformationalModalBodyProps> = ({
+const ConformationalModalBody = ({
   type = 'neutral',
-  icon,
+  icon: Icon,
   title,
   description,
   image,
-}) => {
-  const { theme } = useTheme();
-
+}: {
+  type: ConfirmationType;
+  icon?: React.ReactNode;
+  title: string;
+  description: string;
+  image?: string;
+}): React.ReactNode => {
   const getIconColor = (): IconColors => {
     if (type === 'neutral') {
       return 'surface.icon.gray.subtle';
@@ -67,13 +71,13 @@ const ConformationalModalBody: React.FC<ConformationalModalBodyProps> = ({
     return 'feedback.icon.positive.intense';
   };
 
-  const getBackgroundColor = (): string => {
+  const getBackgroundColor = (): BoxProps['backgroundColor'] => {
     if (type === 'neutral') {
-      return theme.colors.interactive.background.gray.default;
+      return 'interactive.background.gray.default';
     } else if (type === 'negative') {
-      return theme.colors.feedback.background.negative.subtle;
+      return 'feedback.background.negative.subtle';
     }
-    return theme.colors.surface.background.primary.subtle;
+    return 'surface.background.primary.subtle';
   };
 
   return (
@@ -87,20 +91,20 @@ const ConformationalModalBody: React.FC<ConformationalModalBodyProps> = ({
           width="48px"
           height="48px"
         >
-          <img src={image} width={42} height={28} alt="Confirmation Icon" />
+          <img src={image} width={42} height={28} alt="logo" />
         </Box>
-      ) : icon ? (
+      ) : Icon ? (
         <Box
           backgroundColor={getBackgroundColor()}
-          borderRadius="medium"
-          padding="spacing.4"
-          width="48px"
-          height="48px"
           display="flex"
           justifyContent="center"
           alignItems="center"
+          borderRadius="medium"
+          padding="spacing.4"
+          height="48px"
+          width="48px"
         >
-          {React.cloneElement(icon as React.ReactElement, { color: getIconColor(), size: 'xlarge' })}
+          <Icon color={getIconColor()} size="xlarge" />
         </Box>
       ) : null}
       <Box display="flex" flexDirection="column" gap="spacing.1">
@@ -114,7 +118,7 @@ const ConformationalModalBody: React.FC<ConformationalModalBodyProps> = ({
         <Text 
           size="medium" 
           weight="regular" 
-          color="surface.text.gray.subtle"
+          color="surface.text.gray.muted"
           id="confirmation-description"
         >
           {description}

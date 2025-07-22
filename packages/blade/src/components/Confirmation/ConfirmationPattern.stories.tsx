@@ -4,6 +4,7 @@ import type { ModalProps, ModalBodyProps } from '../Modal';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
 import { useBreakpoint, useTheme } from '~utils';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import type { ButtonProps } from '~components/Button';
@@ -49,7 +50,6 @@ const ConformationalModalBody = ({
   description: string;
   image?: string;
 }): React.ReactNode => {
-  const { theme } = useTheme();
   const getIconColor = (): IconColors => {
     if (type === 'neutral') {
       return 'surface.icon.gray.subtle';
@@ -58,13 +58,13 @@ const ConformationalModalBody = ({
     }
     return 'feedback.icon.positive.intense';
   };
-  const getBackgroundColor = (): string => {
+  const getBackgroundColor = (): BoxProps['backgroundColor'] => {
     if (type === 'neutral') {
-      return theme.colors.interactive.background.gray.default;
+      return 'interactive.background.gray.default';
     } else if (type === 'negative') {
-      return theme.colors.feedback.background.negative.subtle;
+      return 'feedback.background.negative.subtle';
     }
-    return theme.colors.surface.background.primary.subtle;
+    return 'surface.background.primary.subtle';
   };
 
   return (
@@ -83,20 +83,18 @@ const ConformationalModalBody = ({
             <img src={image} width={42} height={28} alt="logo" />
           </Box>
         ) : Icon ? (
-          <div
-            style={{
-              backgroundColor: getBackgroundColor(),
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: theme.border.radius.medium,
-              padding: theme.spacing[4],
-              height: '48px',
-              width: '48px',
-            }}
+          <Box
+            backgroundColor={getBackgroundColor()}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            borderRadius="medium"
+            padding="spacing.4"
+            height="48px"
+            width="48px"
           >
             <Icon color={getIconColor()} size="xlarge" />
-          </div>
+          </Box>
         ) : null}
         <Box display="flex" flexDirection="column" gap="spacing.1">
           <Text size="large" weight="semibold">
