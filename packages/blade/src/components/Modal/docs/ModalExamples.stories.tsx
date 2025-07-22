@@ -9,6 +9,7 @@ import {
   ModalStackingStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
+import { Modal } from '../Modal';
 
 const ModalMeta: Meta = {
   title: 'Components/Modal/Examples',
