@@ -1,6 +1,5 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { Modal } from '../Modal';
 import {
   BasicModalStory,
   ModalWithNoBodyPaddingStory,

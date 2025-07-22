@@ -211,7 +211,7 @@ const NeutralModalTemplate: StoryFn<typeof Modal> = () => {
           title="Restart the Tour?"
           description="This tour will give a quick guide on this product"
         />
-        <ConformationModalFooter type="neutral" primaryButtonText="Yes" secondaryButtonText="No" />
+        <ConformationModalFooter type="neutral" primaryButtonText="Okay" secondaryButtonText="No" />
       </ResponsiveModalWrapper>
     </Box>
   );
