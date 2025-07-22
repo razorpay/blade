@@ -867,7 +867,6 @@ import {
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
-// Responsive wrapper component for handling mobile/desktop modal display
 function ResponsiveModalWrapper({
   children,
   footer,
@@ -979,7 +978,6 @@ import {
 import { ZapIcon } from '@razorpay/blade/tokens';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
-// Responsive wrapper component for handling mobile/desktop modal display
 function ResponsiveModalWrapper({
   children,
   footer,
@@ -1227,7 +1225,6 @@ import {
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
-// Responsive wrapper component for handling mobile/desktop modal display
 function ResponsiveModalWrapper({
   children,
   footer,
