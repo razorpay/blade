@@ -788,22 +788,20 @@ const TableNestingExample = () => {
                 {expandedRows.has(item.id) && (
                   <TableRow key={`${item.id}-expanded`} item={item}>
                     <TableCell gridColumnStart={1} gridColumnEnd={4}>
-                      <Slide direction="top" fromOffset="100%">
-                        <Box
-                          backgroundColor="surface.background.gray.subtle"
-                          padding="spacing.4"
-                          borderRadius="medium"
-                          margin="spacing.2"
-                        >
-                          {/* Nested content here */}
-                          {item.children.map((child) => (
-                            <Box key={child.id} display="flex" justifyContent="space-between">
-                              <Text>{child.name}</Text>
-                              <Text>{child.totalAmount}</Text>
-                            </Box>
-                          ))}
-                        </Box>
-                      </Slide>
+                      <Box
+                        backgroundColor="surface.background.gray.subtle"
+                        padding="spacing.4"
+                        borderRadius="medium"
+                        margin="spacing.2"
+                      >
+                        {/* Nested content here */}
+                        {item.children.map((child) => (
+                          <Box key={child.id} display="flex" justifyContent="space-between">
+                            <Text>{child.name}</Text>
+                            <Text>{child.totalAmount}</Text>
+                          </Box>
+                        ))}
+                      </Box>
                     </TableCell>
                   </TableRow>
                 )}

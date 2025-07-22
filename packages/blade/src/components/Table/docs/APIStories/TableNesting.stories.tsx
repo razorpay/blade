@@ -228,98 +228,96 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                   {expandedRows.has(item.id) && (
                     <TableRow key={`${item.id}-expanded`} item={item}>
                       <TableCell gridColumnStart={1} gridColumnEnd={5}>
-                        <Slide direction="top" fromOffset="100%">
-                          <Box
-                            backgroundColor="surface.background.gray.subtle"
-                            padding="spacing.5"
-                            borderRadius="medium"
-                            margin={['spacing.4', 'spacing.0']}
-                            width="100%"
-                          >
-                            {index !== 1 ? (
-                              <Box display="flex" flexDirection="column" gap="spacing.2">
-                                {(item.children as TransactionData[]).map((child) => (
-                                  <Box
-                                    key={child.id}
-                                    display="grid"
-                                    gridTemplateColumns="repeat(4, 1fr)"
-                                    gap="spacing.2"
-                                  >
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      {child.paymentId}
-                                    </Text>
-                                    <Amount value={child.amount} isAffixSubtle={false} />
-                                    {child.date}
-                                    <Badge
-                                      size="small"
-                                      color={child.status === 'Completed' ? 'positive' : 'negative'}
-                                    >
-                                      {child.status}
-                                    </Badge>
-                                  </Box>
-                                ))}
-                              </Box>
-                            ) : (
-                              <Box display="flex" flexDirection="column" gap="spacing.4">
-                                <Text
-                                  size="medium"
-                                  weight="semibold"
-                                  color="surface.text.gray.normal"
-                                >
-                                  Payment Gateway Summary
-                                </Text>
+                        <Box
+                          backgroundColor="surface.background.gray.subtle"
+                          padding="spacing.5"
+                          borderRadius="medium"
+                          margin={['spacing.4', 'spacing.0']}
+                          width="100%"
+                        >
+                          {index !== 1 ? (
+                            <Box display="flex" flexDirection="column" gap="spacing.2">
+                              {(item.children as TransactionData[]).map((child) => (
                                 <Box
+                                  key={child.id}
                                   display="grid"
-                                  gridTemplateColumns="repeat(2, 1fr)"
-                                  gap="spacing.4"
-                                  backgroundColor="surface.background.gray.moderate"
-                                  padding="spacing.3"
-                                  borderRadius="medium"
+                                  gridTemplateColumns="repeat(4, 1fr)"
+                                  gap="spacing.2"
                                 >
-                                  <Box display="flex" flexDirection="column" gap="spacing.1">
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      Primary Gateway
-                                    </Text>
-                                    <Badge size="medium" color="information">
-                                      {(item.children[0] as SummaryData).gatewayUsed}
-                                    </Badge>
-                                  </Box>
-                                  <Box display="flex" flexDirection="column" gap="spacing.1">
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      Transaction Count
-                                    </Text>
-                                    <Text size="medium" weight="semibold">
-                                      {(item
-                                        .children[0] as SummaryData).transactionCount.toLocaleString()}
-                                    </Text>
-                                  </Box>
-                                  <Box display="flex" flexDirection="column" gap="spacing.1">
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      Total Amount
-                                    </Text>
-                                    <Amount
-                                      value={(item.children[0] as SummaryData).totalAmount}
-                                      size="medium"
-                                      isAffixSubtle={false}
-                                    />
-                                  </Box>
-                                  <Box display="flex" flexDirection="column" gap="spacing.1">
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      Success Rate
-                                    </Text>
-                                    <Text
-                                      size="medium"
-                                      weight="semibold"
-                                      color="feedback.text.positive.intense"
-                                    >
-                                      {(item.children[0] as SummaryData).successRate}%
-                                    </Text>
-                                  </Box>
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    {child.paymentId}
+                                  </Text>
+                                  <Amount value={child.amount} isAffixSubtle={false} />
+                                  {child.date}
+                                  <Badge
+                                    size="small"
+                                    color={child.status === 'Completed' ? 'positive' : 'negative'}
+                                  >
+                                    {child.status}
+                                  </Badge>
+                                </Box>
+                              ))}
+                            </Box>
+                          ) : (
+                            <Box display="flex" flexDirection="column" gap="spacing.4">
+                              <Text
+                                size="medium"
+                                weight="semibold"
+                                color="surface.text.gray.normal"
+                              >
+                                Payment Gateway Summary
+                              </Text>
+                              <Box
+                                display="grid"
+                                gridTemplateColumns="repeat(2, 1fr)"
+                                gap="spacing.4"
+                                backgroundColor="surface.background.gray.moderate"
+                                padding="spacing.3"
+                                borderRadius="medium"
+                              >
+                                <Box display="flex" flexDirection="column" gap="spacing.1">
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    Primary Gateway
+                                  </Text>
+                                  <Badge size="medium" color="information">
+                                    {(item.children[0] as SummaryData).gatewayUsed}
+                                  </Badge>
+                                </Box>
+                                <Box display="flex" flexDirection="column" gap="spacing.1">
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    Transaction Count
+                                  </Text>
+                                  <Text size="medium" weight="semibold">
+                                    {(item
+                                      .children[0] as SummaryData).transactionCount.toLocaleString()}
+                                  </Text>
+                                </Box>
+                                <Box display="flex" flexDirection="column" gap="spacing.1">
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    Total Amount
+                                  </Text>
+                                  <Amount
+                                    value={(item.children[0] as SummaryData).totalAmount}
+                                    size="medium"
+                                    isAffixSubtle={false}
+                                  />
+                                </Box>
+                                <Box display="flex" flexDirection="column" gap="spacing.1">
+                                  <Text size="small" color="surface.text.gray.muted">
+                                    Success Rate
+                                  </Text>
+                                  <Text
+                                    size="medium"
+                                    weight="semibold"
+                                    color="feedback.text.positive.intense"
+                                  >
+                                    {(item.children[0] as SummaryData).successRate}%
+                                  </Text>
                                 </Box>
                               </Box>
-                            )}
-                          </Box>
-                        </Slide>
+                            </Box>
+                          )}
+                        </Box>
                       </TableCell>
                     </TableRow>
                   )}
