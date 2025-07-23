@@ -142,6 +142,7 @@ const classes = {
   HOVER_ACTIONS: 'hover-actions',
   HOVER_ACTIONS_LAYER2: 'hover-actions-layer-2',
   HOVER_ACTIONS_LAYER3: 'hover-actions-layer-3',
+  HAS_ROW_SPANNING: 'has-row-spanning',
 };
 
 export {

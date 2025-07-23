@@ -23873,7 +23873,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-1ki2ozv-Table"
+      class="c1 css-3izxgm-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"

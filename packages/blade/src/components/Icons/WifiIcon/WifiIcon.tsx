@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const WifiIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _WifiIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -26,5 +27,9 @@ const WifiIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const WifiIcon = assignWithoutSideEffects(_WifiIcon, {
+  componentId: 'WifiIcon',
+});
 
 export default WifiIcon;

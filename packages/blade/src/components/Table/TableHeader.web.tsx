@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
-import { checkboxCellWidth, tableHeader, tableRow } from './tokens';
+import { checkboxCellWidth, tableHeader, tableRow, classes } from './tokens';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import type {
@@ -100,7 +100,8 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $hasPadding: boolean;
   $textAlign: 'left' | 'center' | 'right';
-}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign }) => ({
+  gridRow?: string;
+}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign, gridRow }) => ({
   '&&&': {
     display: $textAlign ? 'flex' : 'block',
     justifyContent: $textAlign ? 'space-between' : 'initial',
@@ -113,6 +114,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
     cursor: $isSortable ? 'pointer' : 'auto',
+    gridRow,
     '> div': {
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
@@ -160,9 +162,10 @@ const _TableHeaderCell = ({
   return (
     <StyledHeaderCell
       tabIndex={0}
-      className={hasRowSpan ? 'has-row-spanning' : ''}
+      className={hasRowSpan ? classes.HAS_ROW_SPANNING : ''}
       gridColumnStart={gridColumnStart}
       gridColumnEnd={gridColumnEnd}
+      gridRow={gridRowValue}
       $isSortable={isSortable}
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}

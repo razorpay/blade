@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const MobileAppIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _MobileAppIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const MobileAppIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const MobileAppIcon = assignWithoutSideEffects(_MobileAppIcon, {
+  componentId: 'MobileAppIcon',
+});
 
 export default MobileAppIcon;

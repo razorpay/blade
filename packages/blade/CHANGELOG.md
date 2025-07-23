@@ -1,5 +1,38 @@
 # @razorpay/blade
 
+## 12.42.3
+
+### Patch Changes
+
+- 88afdb37f: fix: remove logs and add ref
+- abefb18cd: fix(inputgroup): payment card icon jsx error
+
+## 12.42.2
+
+### Patch Changes
+
+- b46d26bee: fix: table header sticky
+
+## 12.42.1
+
+### Patch Changes
+
+- 6d4b1f6e7: fix(blade): accordion sytling changes
+
+## 12.42.0
+
+### Minor Changes
+
+- 503e47531: feat: add support for dropdown in search
+- aba1bb999: feat(carousel): added peek behaviour in carousel
+
+## 12.41.5
+
+### Patch Changes
+
+- 061de8050: fix(blade): quick filter issue
+- 0a0918895: fix: Text sizes in button
+
 ## 12.41.4
 
 ### Patch Changes

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const FeatherIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _FeatherIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const FeatherIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const FeatherIcon = assignWithoutSideEffects(_FeatherIcon, {
+  componentId: 'FeatherIcon',
+});
 
 export default FeatherIcon;

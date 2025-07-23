@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const FlagIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _FlagIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const FlagIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const FlagIcon = assignWithoutSideEffects(_FlagIcon, {
+  componentId: 'FlagIcon',
+});
 
 export default FlagIcon;

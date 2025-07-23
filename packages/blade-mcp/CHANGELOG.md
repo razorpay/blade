@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.2.2
+
+### Patch Changes
+
+- b42b8479e: Added correct function definition for the blade checkbox onchange function
+
 ## 1.2.1
 
 ### Patch Changes

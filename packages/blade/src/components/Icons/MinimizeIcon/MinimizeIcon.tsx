@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const MinimizeIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _MinimizeIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -18,5 +19,9 @@ const MinimizeIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const MinimizeIcon = assignWithoutSideEffects(_MinimizeIcon, {
+  componentId: 'MinimizeIcon',
+});
 
 export default MinimizeIcon;

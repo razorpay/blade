@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const CopyrightIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _CopyrightIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const CopyrightIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const CopyrightIcon = assignWithoutSideEffects(_CopyrightIcon, {
+  componentId: 'CopyrightIcon',
+});
 
 export default CopyrightIcon;

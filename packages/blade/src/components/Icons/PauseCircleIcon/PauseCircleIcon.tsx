@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const PauseCircleIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _PauseCircleIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -24,5 +25,9 @@ const PauseCircleIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const PauseCircleIcon = assignWithoutSideEffects(_PauseCircleIcon, {
+  componentId: 'PauseCircleIcon',
+});
 
 export default PauseCircleIcon;

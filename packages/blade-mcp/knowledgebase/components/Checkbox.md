@@ -67,7 +67,7 @@ type CheckboxProps = {
   /**
    * Callback fired when the checkbox state changes
    */
-  onChange?: (event: { isChecked: boolean; name?: string; value?: string }) => void;
+  onChange?: (event: { isChecked: boolean; value?: string; event?: React.ChangeEvent }) => void;
 
   /**
    * Size of the checkbox

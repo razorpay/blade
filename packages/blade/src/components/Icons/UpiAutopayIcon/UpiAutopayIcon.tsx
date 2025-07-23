@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const UpiAutopayIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _UpiAutopayIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -40,5 +41,9 @@ const UpiAutopayIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const UpiAutopayIcon = assignWithoutSideEffects(_UpiAutopayIcon, {
+  componentId: 'UpiAutopayIcon',
+});
 
 export default UpiAutopayIcon;
