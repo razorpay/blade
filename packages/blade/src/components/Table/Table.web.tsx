@@ -20,6 +20,7 @@ import {
   refreshWrapperZIndex,
   tableBackgroundColor,
   tablePagination,
+  classes,
 } from './tokens';
 import type {
   TableProps,
@@ -205,6 +206,10 @@ const _Table = <Item,>({
     position: sticky !important;
     z-index: ${firstColumnStickyZIndex} !important;
   }
+  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
+  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
+    z-index: 3 !important;
+  }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
@@ -222,6 +227,10 @@ const _Table = <Item,>({
     position: sticky !important;
     z-index: ${firstColumnStickyZIndex} !important;
   }
+  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
+  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
+    z-index: 3 !important;
+  }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
@@ -238,6 +247,10 @@ const _Table = <Item,>({
     left: 0 !important;
     position: sticky !important;
     z-index: ${firstColumnStickyZIndex} !important;
+  }
+  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
+  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
+    z-index: 3 !important;
   }
   ${
     selectionType === 'multiple' &&
