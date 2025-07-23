@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.43.0
+
+### Minor Changes
+
+- b2467ea18: feat(table): added spanning & nesting
+- d7f4084fa: feat(table): added support for grouping
+
 ## 12.42.3
 
 ### Patch Changes
