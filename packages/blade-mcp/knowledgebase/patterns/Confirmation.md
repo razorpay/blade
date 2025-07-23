@@ -65,19 +65,15 @@ const ConformationalModalBody = ({
   const getIconColor = (): IconColors => {
     if (type === 'neutral') {
       return 'surface.icon.gray.subtle';
-    } else if (type === 'negative') {
+    } 
       return 'feedback.icon.negative.intense';
-    }
-    return 'feedback.icon.positive.intense';
   };
 
   const getBackgroundColor = (): BoxProps['backgroundColor'] => {
     if (type === 'neutral') {
       return 'interactive.background.gray.default';
-    } else if (type === 'negative') {
-      return 'feedback.background.negative.subtle';
     }
-    return 'surface.background.primary.subtle';
+    return 'feedback.background.negative.subtle';
   };
 
   return (
@@ -160,8 +156,7 @@ const ConfirmationDialog: React.FC<{
 
   const getPrimaryButtonColor = () => {
     if (type === 'neutral') return 'primary';
-    if (type === 'negative') return 'negative';
-    return 'positive';
+    return 'negative';
   };
 
   const DialogContent = (

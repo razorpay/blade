@@ -53,18 +53,14 @@ const ConformationalModalBody = ({
   const getIconColor = (): IconColors => {
     if (type === 'neutral') {
       return 'surface.icon.gray.subtle';
-    } else if (type === 'negative') {
-      return 'feedback.icon.negative.intense';
     }
-    return 'feedback.icon.positive.intense';
+    return 'feedback.icon.negative.intense';
   };
   const getBackgroundColor = (): BoxProps['backgroundColor'] => {
     if (type === 'neutral') {
       return 'interactive.background.gray.default';
-    } else if (type === 'negative') {
-      return 'feedback.background.negative.subtle';
     }
-    return 'surface.background.primary.subtle';
+    return 'feedback.background.negative.subtle';
   };
 
   return (
@@ -116,7 +112,7 @@ const ConformationModalFooter = ({
 }: {
   primaryButtonText: string;
   secondaryButtonText?: string;
-  type: 'neutral' | 'negative' | 'positive';
+  type: 'neutral' | 'negative';
 }): React.ReactNode => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -125,10 +121,8 @@ const ConformationModalFooter = ({
   const getPrimaryButtonColor = (): ButtonProps['color'] => {
     if (type === 'neutral') {
       return 'primary';
-    } else if (type === 'negative') {
-      return 'negative';
     }
-    return 'positive';
+    return 'negative';
   };
 
   return (
