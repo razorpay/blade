@@ -256,5 +256,5 @@ const ConfirmationModalWithImageTemplate: StoryFn<typeof Modal> = () => {
   );
 };
 
-export const ConfirmationnModalWithImage = ConfirmationModalWithImageTemplate.bind({});
-ConfirmationnModalWithImage.storyName = 'Confirmation Modal - with Image';
+export const ConfirmationModalWithImage = ConfirmationModalWithImageTemplate.bind({});
+ConfirmationModalWithImage.storyName = 'Confirmation Modal - with Image';
