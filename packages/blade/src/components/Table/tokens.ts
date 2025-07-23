@@ -90,6 +90,7 @@ const tableRow = {
   borderColor: 'surface.border.gray.muted',
   backgroundColorMotionEasing: 'easing.standard',
   backgroundColorMotionDuration: 'duration.xquick',
+  groupHeaderBackgroundColor: 'surface.background.gray.moderate',
 } as const;
 
 const tableToolbar = {

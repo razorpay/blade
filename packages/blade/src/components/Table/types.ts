@@ -238,6 +238,12 @@ type TableProps<Item> = {
    * The backgroundColor prop determines the background color of the table.
    **/
   backgroundColor?: TableBackgroundColors | 'transparent';
+  /**
+   * The isGrouped prop determines whether the table has grouped data with parent-child relationships or not.
+   * When true, enables tree-aware selection where selecting a parent automatically selects all children.
+   * The default value is `false`.
+   **/
+  isGrouped?: boolean;
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 
