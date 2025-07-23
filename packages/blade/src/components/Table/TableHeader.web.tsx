@@ -171,7 +171,6 @@ const _TableHeaderCell = ({
       $rowDensity={headerRowDensity ?? rowDensity}
       $hasPadding={_hasPadding}
       $textAlign={textAlign}
-      style={{ gridRow: gridRowValue }}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);

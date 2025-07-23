@@ -130,7 +130,6 @@ const _TableFooterCell = ({
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
       $textAlign={textAlign}
-      style={{ gridRow: gridRowValue }}
       {...metaAttribute({ name: MetaConstants.TableFooterCell })}
       {...makeAnalyticsAttribute(rest)}
     >

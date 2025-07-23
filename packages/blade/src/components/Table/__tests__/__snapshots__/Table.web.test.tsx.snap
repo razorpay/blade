@@ -20540,6 +20540,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
+  grid-row: 2 / 4;
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 > div:first-child {
@@ -20549,6 +20550,29 @@ exports[`<Table /> should render table with row spanning 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
@@ -20811,8 +20835,8 @@ exports[`<Table /> should render table with row spanning 1`] = `
             class="td c9 has-row-spanning css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
+            gridrow="2 / 4"
             role="cell"
-            style="grid-row: 2 / 4;"
             tabindex="0"
           >
             <div>
@@ -20836,7 +20860,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
             </div>
           </td>
           <td
-            class="td c9 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c14 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -20863,7 +20887,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
             </div>
           </td>
           <td
-            class="td c9 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c14 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -20893,7 +20917,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
           role="row"
         >
           <td
-            class="td c9 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c14 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -20920,7 +20944,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
             </div>
           </td>
           <td
-            class="td c9 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c14 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -20950,7 +20974,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
           role="row"
         >
           <td
-            class="td c9 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c14 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -20977,7 +21001,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
             </div>
           </td>
           <td
-            class="td c9 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c14 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -21004,7 +21028,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
             </div>
           </td>
           <td
-            class="td c9 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c14 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -23891,7 +23915,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           role="rowheader"
         >
           <th
-            class="th c4 css-8n4nip-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1stac2c-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -23914,7 +23938,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-8n4nip-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1stac2c-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -23937,7 +23961,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-8n4nip-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1stac2c-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -23960,7 +23984,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-8n4nip-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1stac2c-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -23983,7 +24007,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-8n4nip-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1stac2c-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -24006,7 +24030,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
             </div>
           </th>
           <th
-            class="th c4 css-8n4nip-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c4 css-1stac2c-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
