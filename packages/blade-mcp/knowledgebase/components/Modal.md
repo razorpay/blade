@@ -334,7 +334,7 @@ function OTPModal() {
               setOtp(value ?? '');
               setError(null);
             }}
-            numberOfDigits={6}
+            otpLength={6}
             validationState={error ? 'error' : 'none'}
           />
           <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -378,14 +378,12 @@ import {
   ActionList,
   ActionListItem,
   Alert,
-} from '@razorpay/blade/components';
-import {
   TwitterIcon,
   FacebookIcon,
   LinkedInIcon,
   WhatsappIcon,
   CopyIcon,
-} from '@razorpay/blade/tokens';
+} from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 // [ResponsiveModalWrapper component code remains the same as above]
