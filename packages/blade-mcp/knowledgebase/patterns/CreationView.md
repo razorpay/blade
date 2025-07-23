@@ -974,8 +974,8 @@ import {
   CardBody,
   Text,
   Heading,
+  ZapIcon,
 } from '@razorpay/blade/components';
-import { ZapIcon } from '@razorpay/blade/tokens';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 function ResponsiveModalWrapper({
@@ -1175,9 +1175,7 @@ function FlowSelectionModal() {
                         size="medium"
                         weight="semibold"
                         color={
-                          method.isDisabled
-                            ? 'surface.text.gray.muted'
-                            : 'surface.text.gray.normal'
+                          method.isDisabled ? 'surface.text.gray.muted' : 'surface.text.gray.normal'
                         }
                       >
                         {method.title}

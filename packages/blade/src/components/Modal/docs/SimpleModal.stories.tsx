@@ -256,20 +256,18 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
         }
         customSnapPoints={[0.5, 0.6, 0.75]}
       >
-        <div
-          style={{
-            backgroundColor: theme.colors.interactive.background.gray.default,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: theme.border.radius.medium,
-            padding: theme.spacing[4],
-            width: '48px',
-            height: '48px',
-          }}
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          borderRadius="medium"
+          padding="spacing.4"
+          width="48px"
+          height="48px"
+          backgroundColor="interactive.background.gray.default"
         >
           <LockIcon color="surface.icon.gray.subtle" size="xlarge" />
-        </div>
+        </Box>
         <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
           <Text size="large" weight="semibold">
             2 Step Verification

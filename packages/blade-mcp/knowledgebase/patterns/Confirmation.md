@@ -32,9 +32,8 @@ import {
   Text,
   MapIcon,
   TrashIcon,
-  useBreakpoint,
-  useTheme,
 } from '@razorpay/blade/components';
+import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 import type { IconColors } from '@razorpay/blade/components';
 
 // Types for our confirmation components
@@ -253,7 +252,8 @@ const ConfirmationExample: React.FC = () => {
         color="negative" 
         onClick={() => setIsDeleteOpen(true)}
         aria-haspopup="dialog"
-        leftIcon={<TrashIcon />}
+        icon={<TrashIcon />}
+        iconPosition="left"
       >
         Delete Account
       </Button>
