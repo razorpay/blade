@@ -326,7 +326,13 @@ function OTPModal() {
             We've sent a 6-digit OTP to +91 98XXXXXX89
           </Text>
           {error && (
-            <Alert color="negative" title="Error" description={error} isDismissible onDismiss={() => setError(null)} />
+            <Alert
+              color="negative"
+              title="Error"
+              description={error}
+              isDismissible
+              onDismiss={() => setError(null)}
+            />
           )}
           <OTPInput
             value={otp}
@@ -339,7 +345,7 @@ function OTPModal() {
           />
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <Text size="small" color="surface.text.gray.muted">
-              {timer > 0 ? `Resend OTP in ${timer}s` : 'Didn't receive OTP?'}
+              {timer > 0 ? `Resend OTP in ${timer}s` : 'Did not receive OTP?'}
             </Text>
             {timer === 0 && (
               <Button variant="tertiary" onClick={handleResend}>
@@ -398,9 +404,21 @@ function ShareModal() {
   const shareUrl = 'https://example.com/share-link';
 
   const shareOptions = [
-    { icon: TwitterIcon, label: 'Twitter', url: `https://twitter.com/intent/tweet?url=${shareUrl}` },
-    { icon: FacebookIcon, label: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}` },
-    { icon: LinkedInIcon, label: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}` },
+    {
+      icon: TwitterIcon,
+      label: 'Twitter',
+      url: `https://twitter.com/intent/tweet?url=${shareUrl}`,
+    },
+    {
+      icon: FacebookIcon,
+      label: 'Facebook',
+      url: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
+    },
+    {
+      icon: LinkedInIcon,
+      label: 'LinkedIn',
+      url: `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`,
+    },
     { icon: WhatsappIcon, label: 'WhatsApp', url: `https://wa.me/?text=${shareUrl}` },
   ];
 
@@ -456,12 +474,7 @@ function ShareModal() {
             </ActionList>
           </Box>
           <Box display="flex" gap="spacing.3">
-            <TextInput
-              value={shareUrl}
-              isReadOnly
-              isFullWidth
-              accessibilityLabel="Share URL"
-            />
+            <TextInput value={shareUrl} isReadOnly isFullWidth accessibilityLabel="Share URL" />
             <Button
               variant="secondary"
               icon={CopyIcon}
@@ -500,8 +513,9 @@ import {
   Badge,
   List,
   ListItem,
+  InfoIcon,
+  CheckIcon,
 } from '@razorpay/blade/components';
-import { InfoIcon, CheckIcon } from '@razorpay/blade/tokens';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 // [ResponsiveModalWrapper component code remains the same as above]
@@ -530,11 +544,7 @@ function InformationalModal() {
         modalSize="medium"
         footer={
           <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
-            <Button
-              variant="primary"
-              isFullWidth={isMobile}
-              onClick={() => setIsOpen(false)}
-            >
+            <Button variant="primary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
               Got it
             </Button>
           </Box>
