@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.43.1
+
+### Patch Changes
+
+- a2cf026c4: fix(carousel): resolve Storybook interaction issues in peek mode
+
 ## 12.43.0
 
 ### Minor Changes
