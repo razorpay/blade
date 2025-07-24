@@ -592,7 +592,6 @@ export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
       <Box marginTop="spacing.6">
         <CarouselComponent
           {...props}
-          navigationButtonPosition="bottom"
           accessibilityLabel="Testimonials"
           visibleItems={1}
           carouselItemWidth={{ base: '80%', m: '80%' }}
