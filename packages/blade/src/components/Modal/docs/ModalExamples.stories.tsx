@@ -8,6 +8,9 @@ import {
   ModalWithScrollableContentStory,
   ModalWithHeaderFooterStory,
   ModalStackingStory,
+  OtpModalStory,
+  ShareModalStory,
+  InformationalModalStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -74,6 +77,30 @@ export const ModalWithNoBodyPadding = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {ModalWithNoBodyPaddingStory}
+    </Sandbox>
+  );
+};
+
+export const OtpModal = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {OtpModalStory}
+    </Sandbox>
+  );
+};
+
+export const ShareModal = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {ShareModalStory}
+    </Sandbox>
+  );
+};
+
+export const InformationalModal = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {InformationalModalStory}
     </Sandbox>
   );
 };
