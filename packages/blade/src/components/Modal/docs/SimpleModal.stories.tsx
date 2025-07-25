@@ -264,7 +264,7 @@ const OTPModalTemplate: StoryFn<typeof Modal> = () => {
           padding="spacing.4"
           width="48px"
           height="48px"
-          backgroundColor="interactive.background.gray.default"
+          backgroundColor="feedback.background.neutral.subtle"
         >
           <LockIcon color="surface.icon.gray.subtle" size="xlarge" />
         </Box>

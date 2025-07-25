@@ -58,7 +58,7 @@ const ConformationalModalBody = ({
   };
   const getBackgroundColor = (): BoxProps['backgroundColor'] => {
     if (type === 'neutral') {
-      return 'interactive.background.gray.default';
+      return 'feedback.background.neutral.subtle';
     }
     return 'feedback.background.negative.subtle';
   };
