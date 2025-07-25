@@ -214,7 +214,8 @@ import {
   BottomSheetFooter,
   Text,
   OTPInput,
-  Alert,
+  Link,
+  LockIcon,
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
@@ -244,13 +245,21 @@ function ResponsiveModalWrapper({
 
   if (isMobile) {
     return (
-      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
+      <BottomSheet
+        isOpen={isOpen}
+        onDismiss={onDismiss}
+        snapPoints={customSnapPoints}
+      >
         <BottomSheetHeader />
         <BottomSheetBody padding={modalBodyPadding}>
           {children}
-          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
+          {footer && !wrapInBottomSheetFooter && (
+            <Box marginTop="spacing.6">{footer}</Box>
+          )}
         </BottomSheetBody>
-        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
+        {footer && wrapInBottomSheetFooter && (
+          <BottomSheetFooter>{footer}</BottomSheetFooter>
+        )}
       </BottomSheet>
     );
   }
@@ -269,19 +278,40 @@ function OTPModal() {
   const [otp, setOtp] = React.useState('');
   const [timer, setTimer] = React.useState(30);
   const [error, setError] = React.useState<string | null>(null);
+  const [isResendOtpTimerRunning, setIsResendOtpTimerRunning] =
+    React.useState(false);
+  const [resendOtpTimer, setResendOtpTimer] = React.useState(30);
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
   const isMobile = matchedDeviceType === 'mobile';
 
+  // Start timer when modal opens
   React.useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isOpen && timer > 0) {
-      interval = setInterval(() => {
-        setTimer((prev) => prev - 1);
+    if (isOpen) {
+      setIsResendOtpTimerRunning(true);
+      setResendOtpTimer(30);
+    } else {
+      setIsResendOtpTimerRunning(false);
+      setResendOtpTimer(30);
+    }
+  }, [isOpen]);
+
+  // Handle timer countdown
+  React.useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isResendOtpTimerRunning && resendOtpTimer > 0) {
+      timer = setInterval(() => {
+        setResendOtpTimer((prev) => {
+          if (prev <= 1) {
+            setIsResendOtpTimerRunning(false);
+            return 0;
+          }
+          return prev - 1;
+        });
       }, 1000);
     }
-    return () => clearInterval(interval);
-  }, [isOpen, timer]);
+    return () => clearInterval(timer);
+  }, [isResendOtpTimerRunning, resendOtpTimer]);
 
   const handleVerify = (): void => {
     if (otp.length !== 6) {
@@ -306,53 +336,88 @@ function OTPModal() {
       <ResponsiveModalWrapper
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
-        modalSize="small"
         footer={
-          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
-            <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+          <Box
+            display="flex"
+            gap="spacing.5"
+            justifyContent="flex-end"
+            width="100%"
+          >
+            <Button
+              variant="tertiary"
+              isFullWidth={isMobile}
+              onClick={() => setIsOpen(false)}
+            >
               Cancel
             </Button>
-            <Button isFullWidth={isMobile} onClick={handleVerify} isDisabled={otp.length !== 6}>
+            <Button
+              isFullWidth={isMobile}
+              onClick={handleVerify}
+              isDisabled={otp.length !== 6}
+            >
               Verify
             </Button>
           </Box>
         }
+        customSnapPoints={[0.5, 0.6, 0.75]}
       >
-        <Box display="flex" flexDirection="column" gap="spacing.4">
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          borderRadius="medium"
+          padding="spacing.4"
+          width="48px"
+          height="48px"
+          // backgroundColor="feedback.background.neutral.subtle"
+        >
+          <LockIcon color="surface.icon.gray.subtle" size="xlarge" />
+        </Box>
+        <Box
+          marginTop="spacing.4"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.2"
+        >
           <Text size="large" weight="semibold">
-            Enter OTP
+            2 Step Verification
           </Text>
-          <Text size="medium" color="surface.text.gray.muted">
-            We've sent a 6-digit OTP to +91 98XXXXXX89
+          <Text size="medium" weight="regular" color="surface.text.gray.subtle">
+            This action requires 2-step verification. A 6-digit OTP has been
+            sent via SMS to 8757450923. The OTP will expire in 5 minutes.
           </Text>
-          {error && (
-            <Alert
-              color="negative"
-              title="Error"
-              description={error}
-              isDismissible
-              onDismiss={() => setError(null)}
-            />
-          )}
+        </Box>
+        <Box marginY="spacing.5">
           <OTPInput
-            value={otp}
-            onChange={({ value }) => {
-              setOtp(value ?? '');
-              setError(null);
-            }}
+            label="Enter the code"
             otpLength={6}
-            validationState={error ? 'error' : 'none'}
+            size="large"
+            aria-label="Enter verification code"
           />
-          <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Text size="small" color="surface.text.gray.muted">
-              {timer > 0 ? `Resend OTP in ${timer}s` : 'Did not receive OTP?'}
-            </Text>
-            {timer === 0 && (
-              <Button variant="tertiary" onClick={handleResend}>
-                Resend OTP
-              </Button>
-            )}
-          </Box>
+        </Box>
+        <Box
+          marginTop="spacing.5"
+          display="flex"
+          flexDirection="row"
+          gap="spacing.2"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <Text size="medium" weight="regular" color="surface.text.gray.subtle">
+            {isResendOtpTimerRunning
+              ? `Resend OTP in ${resendOtpTimer} seconds`
+              : "Didn't receive OTP?"}
+          </Text>
+          {!isResendOtpTimerRunning && (
+            <Link
+              onClick={() => {}}
+              size="medium"
+              variant="button"
+              aria-label="Resend verification code"
+            >
+              Resend OTP
+            </Link>
+          )}
         </Box>
       </ResponsiveModalWrapper>
     </Box>
@@ -360,6 +425,7 @@ function OTPModal() {
 }
 
 export default OTPModal;
+
 ```
 
 ### Share Modal Example
@@ -392,7 +458,7 @@ import {
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
-// [ResponsiveModalWrapper component code remains the same as above]
+// [ResponsiveModalWrapper component code remains the same as above in otp modal example]
 
 function ShareModal() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -518,7 +584,7 @@ import {
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
-// [ResponsiveModalWrapper component code remains the same as above]
+// [ResponsiveModalWrapper component code remains the same as in otp modal example]
 
 function InformationalModal() {
   const [isOpen, setIsOpen] = React.useState(false);
