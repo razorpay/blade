@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.44.0
+
+### Minor Changes
+
+- ea88e1487: '@razorpay/blade': feat: box now supports `feedback.background` tokens
+  '@razorpay/blade-mcp': feat: add confirmation pattern documentation and examples
+
 ## 12.43.1
 
 ### Patch Changes
