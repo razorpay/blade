@@ -668,6 +668,8 @@ const OTPModal = () => {
     // Here you would typically trigger the OTP resend API
     console.log('Resending OTP...');
   };
+  const resendOtpText = "Resend OTP in " + resendOtpTimer + "s";
+
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
@@ -722,7 +724,7 @@ const OTPModal = () => {
         >
           <Text size="medium" weight="regular" color="surface.text.gray.subtle">
             {isResendOtpTimerRunning
-              ? \`Resend OTP in ${resendOtpTimer} seconds\`
+              ? resendOtpText
               : "Didn't receive OTP?"}
           </Text>
           {isResendOtpTimerRunning ? null : (
@@ -733,7 +735,7 @@ const OTPModal = () => {
               variant="button"
             >
               {isResendOtpTimerRunning
-                ? \`Resend OTP in ${resendOtpTimer}s\`
+                ? resendOtpText
                 : 'Resend OTP'}
             </Link>
           )}
