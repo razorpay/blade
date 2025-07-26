@@ -32,7 +32,7 @@ jobs:
           BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
         with:
-          publish: yarn release
+          publish: pnpm release
           commit: 'build: update version'
           title: 'build: update version'
       - name: Publish to public npm registry
@@ -42,11 +42,11 @@ jobs:
           BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
-        run: yarn publish-npm
+        run: pnpm publish-npm
       - name: Build Blade if not built by changeset
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
-        run: yarn build
+        run: pnpm build
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
@@ -58,7 +58,7 @@ jobs:
           buildScriptName: react:storybook:build
           exitOnceUploaded: true
           onlyChanged: true
-          untraced: '**/package.json'
+          untraced: '**/package.json **/pnpm-lock.yaml'
           traceChanged: 'expanded'
         env:
           GITHUB_SHA: ${{ github.sha }}
