@@ -16,6 +16,11 @@ const configs = {
       presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
       plugins: [
         '@babel/plugin-proposal-class-static-block',
+        '@babel/plugin-transform-shorthand-properties',
+        '@babel/plugin-transform-arrow-functions',
+        '@babel/plugin-transform-optional-chaining',
+        '@babel/plugin-transform-nullish-coalescing-operator',
+        ['@babel/plugin-transform-template-literals', { loose: true }],
         [
           'module-resolver',
           {
