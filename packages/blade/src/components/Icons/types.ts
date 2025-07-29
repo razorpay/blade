@@ -17,6 +17,6 @@ export type IconProps = {
    */
   color?: IconColors | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size?: IconSize;
-  variant?: 'filled' | 'colored' | 'demo' | 'other';
+  variant?: 'colored' | 'other';
 } & StyledPropsBlade;
 export type IconComponent = React.ComponentType<IconProps>;
