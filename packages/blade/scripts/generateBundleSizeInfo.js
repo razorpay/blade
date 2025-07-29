@@ -11,7 +11,6 @@ const main = async () => {
 
   const indexPaths = await globby([
     'build/lib/web/production/components/**/index.js',
-    '!build/lib/web/production/components/{Icons,Form}/**/index.js',
     '!build/lib/web/production/components/index.js',
     '!build/lib/web/production/components/Box/styledProps/index.js',
   ]);
