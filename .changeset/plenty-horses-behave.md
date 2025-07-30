@@ -2,4 +2,5 @@
 "@razorpay/blade": patch
 ---
 
-fix(ListView): gradient visibility and scroll in list view filters
+fix(ListView): enable horizontal scroll for filters on desktop, remove gradient overlay
+
