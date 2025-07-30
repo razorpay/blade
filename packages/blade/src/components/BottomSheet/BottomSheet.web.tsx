@@ -122,7 +122,7 @@ const _BottomSheet = ({
       const maxValue = computeMaxContent({
         contentHeight,
         footerHeight,
-        headerHeight: headerHeight + grabHandleHeight,
+        headerHeight: headerHeight + headerHeight > 0 ? grabHandleHeight : 0,
         maxHeight: value,
       });
       _setPositionY(shouldLimitPositionY ? maxValue : value);
