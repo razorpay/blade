@@ -81,14 +81,14 @@ const ListViewFilters = ({
 
   useIsomorphicLayoutEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container) return undefined;
 
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       scrollPositionRef.current = container.scrollLeft;
     };
 
     container.addEventListener('scroll', handleScroll);
-    return () => container.removeEventListener('scroll', handleScroll);
+    return (): void => container.removeEventListener('scroll', handleScroll);
   }, []);
 
   useIsomorphicLayoutEffect(() => {
