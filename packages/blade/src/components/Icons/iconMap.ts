@@ -377,6 +377,7 @@ import VolumeLowIconComponent from './VolumeLowIcon';
 import VolumeMuteIconComponent from './VolumeMuteIcon';
 import WalletIconComponent from './WalletIcon';
 import WatchIconComponent from './WatchIcon';
+import WhatsAppFilledIconComponent from './WhatsAppFilledIcon';
 import WhatsAppIconComponent from './WhatsAppIcon';
 import WifiIconComponent from './WifiIcon';
 import WifiOffIconComponent from './WifiOffIcon';
@@ -768,6 +769,7 @@ const iconMap: Record<string, IconComponent> = {
   VolumeMuteIcon: VolumeMuteIconComponent,
   WalletIcon: WalletIconComponent,
   WatchIcon: WatchIconComponent,
+  WhatsAppFilledIcon: WhatsAppFilledIconComponent,
   WhatsAppIcon: WhatsAppIconComponent,
   WifiIcon: WifiIconComponent,
   WifiOffIcon: WifiOffIconComponent,
