@@ -128,7 +128,7 @@ module.exports = (plop) => {
       actions.push({
         type: 'addMany',
         templateFiles: 'plop/icon/**',
-        destination: `./src/components/Icons/{{name}}Icon`,
+        destination: `./src/components/Icons/{{name}}FilledIcon`,
         base: 'plop/icon',
         data: { name },
         abortOnFail: true,
@@ -138,7 +138,7 @@ module.exports = (plop) => {
       // modify svg -> jsx
       actions.push({
         type: 'modify',
-        path: `./src/components/Icons/{{name}}Icon/{{name}}Icon.tsx`,
+        path: `./src/components/Icons/{{name}}FilledIcon/{{name}}FilledIcon.tsx`,
         data: { name },
         transform(fileContents) {
           let final = fileContents;
