@@ -1,0 +1,43 @@
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const _TaxPaymentsFilledIcon: IconComponent = ({
+  size,
+  color,
+  ...styledProps
+}) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    <Svg
+      {...styledProps}
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18.2929 4.29338C18.6834 3.90286 19.3166 3.90286 19.7071 4.29338C20.0976 4.68391 20.0976 5.31707 19.7071 5.7076L5.70711 19.7076C5.31658 20.0981 4.68342 20.0981 4.29289 19.7076C3.90237 19.3171 3.90237 18.6839 4.29289 18.2934L18.2929 4.29338Z"
+        fill={iconColor}
+      />
+      <Path
+        d="M10 7.00049C10 8.65734 8.65685 10.0005 7 10.0005C5.34315 10.0005 4 8.65734 4 7.00049C4 5.34363 5.34315 4.00049 7 4.00049C8.65685 4.00049 10 5.34363 10 7.00049Z"
+        fill={iconColor}
+      />
+      <Path
+        d="M20 17.0005C20 18.6573 18.6569 20.0005 17 20.0005C15.3431 20.0005 14 18.6573 14 17.0005C14 15.3436 15.3431 14.0005 17 14.0005C18.6569 14.0005 20 15.3436 20 17.0005Z"
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+const TaxPaymentsFilledIcon = assignWithoutSideEffects(_TaxPaymentsFilledIcon, {
+  componentId: 'TaxPaymentsFilledIcon',
+});
+
+export default TaxPaymentsFilledIcon;

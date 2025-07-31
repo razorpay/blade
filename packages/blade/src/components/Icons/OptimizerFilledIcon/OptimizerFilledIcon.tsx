@@ -1,0 +1,35 @@
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const _OptimizerFilledIcon: IconComponent = ({
+  size,
+  color,
+  ...styledProps
+}) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    <Svg
+      {...styledProps}
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7 3.00049C7 2.4482 6.55228 2.00049 6 2.00049C5.44772 2.00049 5 2.4482 5 3.00049V14.1265C3.27477 14.5705 2 16.1366 2 18.0005C2 20.2096 3.79086 22.0005 6 22.0005C7.8779 22.0005 9.45354 20.7064 9.88384 18.9614C12.212 18.7549 14.4052 17.7375 16.0711 16.0716C17.737 14.4057 18.7544 12.2125 18.9609 9.88433C20.7059 9.45403 22 7.87838 22 6.00049C22 3.79135 20.2091 2.00049 18 2.00049C15.7909 2.00049 14 3.79135 14 6.00049C14 7.84754 15.2519 9.40218 16.9535 9.8622C16.758 11.6671 15.9526 13.3616 14.6569 14.6573C13.3611 15.9531 11.6666 16.7585 9.86171 16.954C9.48769 15.5705 8.39006 14.4843 7 14.1265V3.00049Z"
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+const OptimizerFilledIcon = assignWithoutSideEffects(_OptimizerFilledIcon, {
+  componentId: 'OptimizerFilledIcon',
+});
+
+export default OptimizerFilledIcon;
