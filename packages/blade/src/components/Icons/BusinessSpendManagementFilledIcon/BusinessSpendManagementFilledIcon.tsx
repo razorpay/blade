@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _BusinessSpendManagementFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _BusinessSpendManagementFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M18.5 18.7505C18.5 17.784 17.7165 17.0005 16.75 17.0005C15.7835 17.0005 15 17.784 15 18.7505C15 19.717 15.7835 20.5005 16.75 20.5005C17.7165 20.5005 18.5 19.717 18.5 18.7505ZM20.5 18.7505C20.5 20.8216 18.8211 22.5005 16.75 22.5005C14.6789 22.5005 13 20.8216 13 18.7505C13 16.6794 14.6789 15.0005 16.75 15.0005C18.8211 15.0005 20.5 16.6794 20.5 18.7505Z"
         fill={iconColor}
@@ -40,7 +30,7 @@ const BusinessSpendManagementFilledIcon = assignWithoutSideEffects(
   _BusinessSpendManagementFilledIcon,
   {
     componentId: 'BusinessSpendManagementFilledIcon',
-  }
+  },
 );
 
 export default BusinessSpendManagementFilledIcon;

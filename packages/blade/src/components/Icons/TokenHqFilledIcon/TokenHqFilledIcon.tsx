@@ -7,13 +7,7 @@ const _TokenHqFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M9.53027 21.5311V2.67396C9.53027 2.30201 9.8318 2.00049 10.2037 2.00049C10.5757 2.00049 10.8772 2.30201 10.8772 2.67396V21.5311C10.8772 21.903 10.5757 22.2046 10.2037 22.2046C9.8318 22.2046 9.53027 21.903 9.53027 21.5311Z"
         fill={iconColor}

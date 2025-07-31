@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _PaymentButtonFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _PaymentButtonFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -28,11 +18,8 @@ const _PaymentButtonFilledIcon: IconComponent = ({
   );
 };
 
-const PaymentButtonFilledIcon = assignWithoutSideEffects(
-  _PaymentButtonFilledIcon,
-  {
-    componentId: 'PaymentButtonFilledIcon',
-  }
-);
+const PaymentButtonFilledIcon = assignWithoutSideEffects(_PaymentButtonFilledIcon, {
+  componentId: 'PaymentButtonFilledIcon',
+});
 
 export default PaymentButtonFilledIcon;

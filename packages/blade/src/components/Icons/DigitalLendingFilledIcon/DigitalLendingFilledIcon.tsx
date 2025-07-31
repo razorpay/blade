@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _DigitalLendingFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _DigitalLendingFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -54,11 +44,8 @@ const _DigitalLendingFilledIcon: IconComponent = ({
   );
 };
 
-const DigitalLendingFilledIcon = assignWithoutSideEffects(
-  _DigitalLendingFilledIcon,
-  {
-    componentId: 'DigitalLendingFilledIcon',
-  }
-);
+const DigitalLendingFilledIcon = assignWithoutSideEffects(_DigitalLendingFilledIcon, {
+  componentId: 'DigitalLendingFilledIcon',
+});
 
 export default DigitalLendingFilledIcon;

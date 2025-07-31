@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _InternationalPaymentsFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _InternationalPaymentsFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M1.55671 10.7376C1.25939 10.7376 1.0269 10.4792 1.07281 10.1854C1.70072 6.1675 4.37924 2.8534 7.9711 1.41104C8.39592 1.24045 8.75577 1.71346 8.53148 2.11254C7.1284 4.60909 6.24618 7.39024 5.95439 10.2774C5.92816 10.5369 5.71178 10.7376 5.45091 10.7376H1.55671Z"
         fill={iconColor}
@@ -46,11 +36,8 @@ const _InternationalPaymentsFilledIcon: IconComponent = ({
   );
 };
 
-const InternationalPaymentsFilledIcon = assignWithoutSideEffects(
-  _InternationalPaymentsFilledIcon,
-  {
-    componentId: 'InternationalPaymentsFilledIcon',
-  }
-);
+const InternationalPaymentsFilledIcon = assignWithoutSideEffects(_InternationalPaymentsFilledIcon, {
+  componentId: 'InternationalPaymentsFilledIcon',
+});
 
 export default InternationalPaymentsFilledIcon;

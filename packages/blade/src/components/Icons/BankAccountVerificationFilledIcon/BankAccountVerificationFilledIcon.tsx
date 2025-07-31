@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _BankAccountVerificationFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _BankAccountVerificationFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -32,7 +22,7 @@ const BankAccountVerificationFilledIcon = assignWithoutSideEffects(
   _BankAccountVerificationFilledIcon,
   {
     componentId: 'BankAccountVerificationFilledIcon',
-  }
+  },
 );
 
 export default BankAccountVerificationFilledIcon;

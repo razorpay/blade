@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _AutomatePayrollFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _AutomatePayrollFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -32,11 +22,8 @@ const _AutomatePayrollFilledIcon: IconComponent = ({
   );
 };
 
-const AutomatePayrollFilledIcon = assignWithoutSideEffects(
-  _AutomatePayrollFilledIcon,
-  {
-    componentId: 'AutomatePayrollFilledIcon',
-  }
-);
+const AutomatePayrollFilledIcon = assignWithoutSideEffects(_AutomatePayrollFilledIcon, {
+  componentId: 'AutomatePayrollFilledIcon',
+});
 
 export default AutomatePayrollFilledIcon;

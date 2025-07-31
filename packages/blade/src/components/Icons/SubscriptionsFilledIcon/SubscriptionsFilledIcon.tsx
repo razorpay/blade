@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _SubscriptionsFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _SubscriptionsFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -52,11 +42,8 @@ const _SubscriptionsFilledIcon: IconComponent = ({
   );
 };
 
-const SubscriptionsFilledIcon = assignWithoutSideEffects(
-  _SubscriptionsFilledIcon,
-  {
-    componentId: 'SubscriptionsFilledIcon',
-  }
-);
+const SubscriptionsFilledIcon = assignWithoutSideEffects(_SubscriptionsFilledIcon, {
+  componentId: 'SubscriptionsFilledIcon',
+});
 
 export default SubscriptionsFilledIcon;

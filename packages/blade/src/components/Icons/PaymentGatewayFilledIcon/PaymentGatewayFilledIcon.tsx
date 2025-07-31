@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _PaymentGatewayFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _PaymentGatewayFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M22 1L22.1025 1.00488C22.6067 1.05621 23 1.48232 23 2C23 2.51768 22.6067 2.94379 22.1025 2.99512L22 3L2 3C1.44772 3 1 2.55229 1 2C1 1.44772 1.44772 1 2 1L22 1Z"
         fill={iconColor}
@@ -34,11 +24,8 @@ const _PaymentGatewayFilledIcon: IconComponent = ({
   );
 };
 
-const PaymentGatewayFilledIcon = assignWithoutSideEffects(
-  _PaymentGatewayFilledIcon,
-  {
-    componentId: 'PaymentGatewayFilledIcon',
-  }
-);
+const PaymentGatewayFilledIcon = assignWithoutSideEffects(_PaymentGatewayFilledIcon, {
+  componentId: 'PaymentGatewayFilledIcon',
+});
 
 export default PaymentGatewayFilledIcon;

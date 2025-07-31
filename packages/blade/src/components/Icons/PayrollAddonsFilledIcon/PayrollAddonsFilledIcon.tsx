@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _PayrollAddonsFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _PayrollAddonsFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M19 2C20.1046 2 21 2.89543 21 4V21.1787C21 22.1206 19.8169 22.5401 19.2236 21.8086L17.1875 19.2988C16.6386 18.6219 15.6121 18.6055 15.042 19.2646L13.3779 21.1885C12.7797 21.8801 11.7066 21.8801 11.1084 21.1885L9.54297 19.3779C8.9113 18.6476 7.78143 18.6388 7.13867 19.3594L4.74609 22.042C4.13458 22.7275 3 22.2946 3 21.376V4C3 2.89543 3.89543 2 5 2H9C7.78565 2.91221 7 4.36426 7 6C7 8.76142 9.23858 11 12 11C14.7614 11 17 8.76142 17 6C17 4.36426 16.2143 2.91221 15 2H19Z"
         fill={iconColor}
@@ -30,11 +20,8 @@ const _PayrollAddonsFilledIcon: IconComponent = ({
   );
 };
 
-const PayrollAddonsFilledIcon = assignWithoutSideEffects(
-  _PayrollAddonsFilledIcon,
-  {
-    componentId: 'PayrollAddonsFilledIcon',
-  }
-);
+const PayrollAddonsFilledIcon = assignWithoutSideEffects(_PayrollAddonsFilledIcon, {
+  componentId: 'PayrollAddonsFilledIcon',
+});
 
 export default PayrollAddonsFilledIcon;

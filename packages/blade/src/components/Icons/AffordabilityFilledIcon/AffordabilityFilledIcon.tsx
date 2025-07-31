@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _AffordabilityFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _AffordabilityFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M12.7607 9.8833C13.1664 9.88334 13.495 10.212 13.4951 10.6177V11.7563C13.4951 12.4317 13.1483 13.0783 12.54 13.437L12.541 13.438L11.6104 14.0015L11.5439 14.0366C11.2075 14.1962 10.7986 14.0788 10.6016 13.7534C10.3915 13.4064 10.5027 12.9548 10.8496 12.7446L11.7803 12.1812L11.792 12.1743L11.8438 12.1401C11.9573 12.0518 12.0264 11.9117 12.0264 11.7563V10.6177C12.0265 10.212 12.355 9.8833 12.7607 9.8833Z"
         fill={iconColor}
@@ -32,11 +22,8 @@ const _AffordabilityFilledIcon: IconComponent = ({
   );
 };
 
-const AffordabilityFilledIcon = assignWithoutSideEffects(
-  _AffordabilityFilledIcon,
-  {
-    componentId: 'AffordabilityFilledIcon',
-  }
-);
+const AffordabilityFilledIcon = assignWithoutSideEffects(_AffordabilityFilledIcon, {
+  componentId: 'AffordabilityFilledIcon',
+});
 
 export default AffordabilityFilledIcon;

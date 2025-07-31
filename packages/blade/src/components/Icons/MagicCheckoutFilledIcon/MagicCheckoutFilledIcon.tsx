@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _MagicCheckoutFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _MagicCheckoutFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -28,11 +18,8 @@ const _MagicCheckoutFilledIcon: IconComponent = ({
   );
 };
 
-const MagicCheckoutFilledIcon = assignWithoutSideEffects(
-  _MagicCheckoutFilledIcon,
-  {
-    componentId: 'MagicCheckoutFilledIcon',
-  }
-);
+const MagicCheckoutFilledIcon = assignWithoutSideEffects(_MagicCheckoutFilledIcon, {
+  componentId: 'MagicCheckoutFilledIcon',
+});
 
 export default MagicCheckoutFilledIcon;

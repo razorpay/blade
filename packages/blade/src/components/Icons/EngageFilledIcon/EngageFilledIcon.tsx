@@ -7,13 +7,7 @@ const _EngageFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M2.10156 17.0005C2.10156 15.8959 2.99699 15.0005 4.10156 15.0005H20.1016C21.2061 15.0005 22.1016 15.8959 22.1016 17.0005V20.0005C22.1016 21.1051 21.2061 22.0005 20.1016 22.0005H4.10156C2.99699 22.0005 2.10156 21.1051 2.10156 20.0005V17.0005Z"
         fill={iconColor}
