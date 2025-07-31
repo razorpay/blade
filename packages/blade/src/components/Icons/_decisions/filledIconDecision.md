@@ -9,14 +9,14 @@
 
 **Table of Contents**
 
-1.  [Introduction](#introduction)
-2.  [Strategy Options](#strategy-options)
-      * [2.1 Having Variants of the Same Icon](https://www.google.com/search?q=%2321-having-variants-of-the-same-icon)
-      * [2.2 Adding Variants to the End of the Icon Name](https://www.google.com/search?q=%2322-adding-variants-at-the-last-of-icon-name)
-3.  [Recommendation & Rationale](https://www.google.com/search?q=%233-recommendation--rationale)
-4.  [Open Questions](https://www.google.com/search?q=%234-open-questions)
-5.  [Appendix](https://www.google.com/search?q=%235-appendix)
-      * [5.1 References](https://www.google.com/search?q=%2351-references)
+1.  [Introduction](#1-introduction)
+2.  [Strategy Options](#2-strategy-options)
+    * [2.1 Having Variants of the Same Icon](#21-having-variants-of-the-same-icon)
+    * [2.2 Adding Variants to the End of the Icon Name](#22-adding-variants-to-the-end-of-the-icon-name)
+3.  [Recommendation & Rationale](#3-recommendation--rationale)
+4.  [Open Questions](#4-open-questions)
+5.  [Appendix](#5-appendix)
+    * [5.1 References](#51-references)
 
 -----
 
@@ -81,13 +81,13 @@ During the last call, we decided to check the current bundle size of the icon li
 **Action Item:**
 Check the bundle size and determine the increase with each new icon.
 
-| Icon Variants | Size |
-|---------------|------|
+| Icon Variants | Size   |
+|---------------|--------|
 | 1             | 1.67kb |
 | 2             | 2.76kb |
 | 4             | 4.17kb |
 
-Adding each variant increases the size by approximately 0.83KB. If we have 20 icons on a page, adding two variants for each would increase the total size by about $20 \\times 0.83 \\text{KB} = 16.6 \\text{KB}$.
+Adding each variant increases the size by approximately 1kb. If we have 20 icons on a page, adding two variants for each would increase the total size by about 20kb.
 
 We also checked how other icon libraries handle this.
 
