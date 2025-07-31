@@ -3,7 +3,7 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _{{name}}Icon: IconComponent = ({ size, color, ...styledProps }) => {
+const _{{name}}FilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -11,8 +11,8 @@ const _{{name}}Icon: IconComponent = ({ size, color, ...styledProps }) => {
   );
 };
 
-const {{name}}Icon = assignWithoutSideEffects(_{{name}}Icon, {
-  componentId: '{{name}}Icon',
+const {{name}}FilledIcon = assignWithoutSideEffects(_{{name}}FilledIcon, {
+  componentId: '{{name}}FilledIcon',
 });
 
-export default {{name}}Icon;
+export default {{name}}FilledIcon;
