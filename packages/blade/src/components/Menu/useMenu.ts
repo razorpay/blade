@@ -41,6 +41,7 @@ const useFloatingMenuSetup = ({
   openInteraction,
   onOpenChange,
   isOpen,
+  _allowTriggerKeyboardEvents,
 }: UseFloatingMenuProps): UseFloatingMenuReturnType => {
   const [isControllableOpen, setIsControllableOpen] = useControllableState({
     value: isOpen,
@@ -95,13 +96,16 @@ const useFloatingMenuSetup = ({
     focusItemOnHover: false,
   });
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-    hover,
-    click,
-    role,
-    dismiss,
-    listNavigation,
-  ]);
+  const interactions = [hover, click, role, dismiss];
+
+  // Only add list navigation if trigger keyboard events are not allowed
+  // This prevents Menu from capturing arrow keys when trigger needs them (e.g. TimePicker)
+  // See _decisions/decisions.md "Focus Management Issue and Solution" section
+  if (!_allowTriggerKeyboardEvents) {
+    interactions.push(listNavigation);
+  }
+
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(interactions);
 
   const { isMounted, styles: floatingTransitionStyles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,

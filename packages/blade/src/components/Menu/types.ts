@@ -32,6 +32,14 @@ type MenuProps = {
    * @default 'click'
    */
   openInteraction?: 'hover' | 'click';
+
+  /**
+   * @internal
+   * Allows the trigger element to receive keyboard events even when menu is open.
+   * This disables menu's list navigation and focus management.
+   * Used internally for components like TimePicker.
+   */
+  _allowTriggerKeyboardEvents?: boolean;
 };
 
 type MenuItemProps = {
@@ -165,7 +173,10 @@ type MenuContextType = {
   isOpen: boolean;
 };
 
-type UseFloatingMenuProps = Pick<MenuProps, 'openInteraction' | 'onOpenChange' | 'isOpen'> & {
+type UseFloatingMenuProps = Pick<
+  MenuProps,
+  'openInteraction' | 'onOpenChange' | 'isOpen' | '_allowTriggerKeyboardEvents'
+> & {
   elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
 };
 

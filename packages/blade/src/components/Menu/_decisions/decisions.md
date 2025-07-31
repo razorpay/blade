@@ -370,3 +370,169 @@ How migration from deprecated API to recommended API will look like-
   #### Conclusion
 
   We'll build header and footer component but rest things are left to consumer to implement since Menu has multiple usecases
+
+## Focus Management Issue and Solution
+
+### Problem Statement
+
+When building TimePicker component that uses Mantine's `TimeInput` as a trigger for Menu overlay, we encountered a fundamental focus management conflict:
+
+**The Issue:**
+
+- Menu is designed to **take focus away** from the trigger element for keyboard navigation of menu items
+- TimePicker needs the **TimeInput to stay focused** so users can use arrow keys to edit time values
+- Result: Arrow keys didn't work in TimeInput when Menu overlay was open
+
+### Technical Root Cause
+
+Menu's focus management system has two components that interfere with trigger keyboard events:
+
+1. **`useListNavigation` Hook** (in `useMenu.ts`):
+
+   ```tsx
+   const listNavigation = useListNavigation(context, {
+     listRef: elementsRef,
+     activeIndex,
+     nested: isNested,
+     onNavigate: setActiveIndex,
+     focusItemOnHover: false,
+   });
+   ```
+
+   - Captures arrow keys for menu item navigation
+   - Prevents arrow keys from reaching the trigger element
+
+2. **`FloatingFocusManager`** (in `Menu.web.tsx`):
+   ```tsx
+   <FloatingFocusManager
+     context={context}
+     modal={false}
+     initialFocus={-1}
+     returnFocus={!isNested}
+   >
+   ```
+   - Manages focus trapping and movement
+   - Moves focus away from trigger element when menu opens
+
+### Solutions Explored
+
+#### Attempt 1: Event Propagation Control
+
+```tsx
+<TimeInput
+  onKeyDown={(e) => {
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      e.stopPropagation(); // Tried to prevent Menu from handling arrow keys
+    }
+  }}
+/>
+```
+
+**Result:** ❌ Failed - Menu's hooks run before TimeInput's onKeyDown
+
+#### Attempt 2: Raw Floating UI
+
+```tsx
+// Bypassed Menu entirely, used floating UI directly
+const { refs, floatingStyles, context } = useFloating({...});
+const { getReferenceProps, getFloatingProps } = useInteractions([
+  useClick(context),
+  useDismiss(context)
+  // NO useListNavigation = NO keyboard interference!
+]);
+```
+
+**Result:** ✅ Worked but lost Menu's semantic value and accessibility features
+
+### Final Solution: Internal Props Approach
+
+Added `_allowTriggerKeyboardEvents` internal prop to Menu component:
+
+#### 1. **Type Definition** (`types.ts`):
+
+```tsx
+type MenuProps = {
+  // ... existing props
+  /**
+   * @internal
+   * Allows the trigger element to receive keyboard events even when menu is open.
+   * This disables menu's list navigation and focus management.
+   * Used internally for components like TimePicker.
+   */
+  _allowTriggerKeyboardEvents?: boolean;
+};
+```
+
+#### 2. **Conditional List Navigation** (`useMenu.ts`):
+
+```tsx
+const interactions = [hover, click, role, dismiss];
+
+// Only add list navigation if trigger keyboard events are not allowed
+if (!_allowTriggerKeyboardEvents) {
+  interactions.push(listNavigation);
+}
+
+const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(interactions);
+```
+
+#### 3. **Disabled Focus Management** (`Menu.web.tsx`):
+
+```tsx
+<FloatingFocusManager
+  context={context}
+  modal={false}
+  disabled={_allowTriggerKeyboardEvents}  // 🎯 Key solution!
+  initialFocus={-1}
+  returnFocus={!isNested}
+>
+```
+
+### Usage in TimePicker
+
+```tsx
+<Menu
+  openInteraction="click"
+  isOpen={isMenuOpen}
+  onOpenChange={({ isOpen }) => setIsMenuOpen(isOpen)}
+  _allowTriggerKeyboardEvents={true} // 🎯 Disables focus interference
+>
+  <TimeInput
+    onClick={() => setIsMenuOpen(true)}
+    // No onKeyDown interference needed!
+  />
+  <MenuOverlay>{/* Custom time picker UI */}</MenuOverlay>
+</Menu>
+```
+
+### Benefits of This Approach
+
+✅ **Zero Breaking Changes** - Existing Menu usage completely unaffected  
+✅ **Semantic Correctness** - TimePicker uses proper Menu component  
+✅ **Accessibility Preserved** - Menu's dismiss and positioning features still work  
+✅ **Clean API** - Internal prop indicates it's not for external consumption  
+✅ **Future-Ready** - Other components needing this pattern can reuse it
+
+### Behavior Comparison
+
+| Scenario        | `_allowTriggerKeyboardEvents` | Focus Management          | Keyboard Navigation               |
+| --------------- | ----------------------------- | ------------------------- | --------------------------------- |
+| **Normal Menu** | `false` (default)             | ✅ Menu takes focus       | ✅ Arrow keys navigate menu items |
+| **TimePicker**  | `true`                        | ❌ Focus stays on trigger | ✅ Arrow keys edit trigger value  |
+
+### When to Use This Pattern
+
+This internal prop should be used when:
+
+- A component needs a positioned overlay (Menu's strength)
+- The trigger element requires continuous keyboard interaction
+- Standard menu keyboard navigation is not desired
+- Examples: Time pickers, number inputs with steppers, custom controls
+
+### Alternative Considered
+
+We could have used `Popover` instead, but Menu provides:
+
+- Better semantic meaning for action-oriented overlays
+- Consistent API with other Menu usage in Blade
+- Built-in dismiss and positioning logic specifically designed for menu-like interactions

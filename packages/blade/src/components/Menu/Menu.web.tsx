@@ -16,6 +16,7 @@ const MenuTree = ({
   openInteraction = 'click',
   onOpenChange,
   isOpen: isOpenControlled,
+  _allowTriggerKeyboardEvents,
 }: MenuProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
 
@@ -41,6 +42,7 @@ const MenuTree = ({
     openInteraction,
     onOpenChange,
     isOpen: isOpenControlled,
+    _allowTriggerKeyboardEvents,
   });
 
   const referenceProps = {
@@ -96,6 +98,9 @@ const MenuTree = ({
               <FloatingFocusManager
                 context={context}
                 modal={false}
+                // Disable focus management entirely when trigger needs keyboard events (e.g. TimePicker)
+                // See _decisions/decisions.md "Focus Management Issue and Solution" section
+                disabled={_allowTriggerKeyboardEvents}
                 initialFocus={-1}
                 returnFocus={!isNested}
               >
