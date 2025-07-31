@@ -72,6 +72,8 @@ const QuickFilter = forwardRef<BladeElementRef, QuickFilterProps>(
         elevation="none"
         isSelected={isQuickFilterSelected}
         ref={ref}
+        // Add margin to accommodate the box shadow that appears when selected, preventing visual cutoff
+        marginRight={selectedQuickFilters.includes(value) ? 'spacing.1' : 'spacing.0'}
         {...makeAnalyticsAttribute(rest)}
         {...metaAttribute({ testID })}
       >
