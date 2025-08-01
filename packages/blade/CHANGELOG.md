@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.46.0
+
+### Minor Changes
+
+- da2ffba9f: fix(blade): bottom sheet height logic
+
+  > **Note:** This release introduces a change in height of bottom sheet, earlier we were adding header + grabhandle height, even if header don't have title or subtitle. This release fixes that.
+
 ## 12.45.0
 
 ### Minor Changes
