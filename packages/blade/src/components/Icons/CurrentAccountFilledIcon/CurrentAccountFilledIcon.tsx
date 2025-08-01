@@ -1,0 +1,25 @@
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const _CurrentAccountFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M11.0122 2.53617C11.5777 2.04133 12.4221 2.04133 12.9877 2.53617L19.657 8.37179C20.6993 9.28385 20.0542 11.0007 18.6692 11.0007H5.33065C3.94561 11.0007 3.30053 9.28385 4.34289 8.37179L11.0122 2.53617ZM11.9999 9.00066H6.66137H17.3385H11.9999ZM7.99992 12.0007C8.55221 12.0007 8.99992 12.4484 8.99992 13.0007V17.0007C8.99992 17.5529 8.55221 18.0007 7.99992 18.0007C7.44764 18.0007 6.99992 17.5529 6.99992 17.0007V13.0007C6.99992 12.4484 7.44764 12.0007 7.99992 12.0007ZM11.9999 12.0007C12.5522 12.0007 12.9999 12.4484 12.9999 13.0007V17.0007C12.9999 17.5529 12.5522 18.0007 11.9999 18.0007C11.4476 18.0007 10.9999 17.5529 10.9999 17.0007V13.0007C10.9999 12.4484 11.4476 12.0007 11.9999 12.0007ZM15.9999 12.0007C16.5522 12.0007 16.9999 12.4484 16.9999 13.0007V17.0007C16.9999 17.5529 16.5522 18.0007 15.9999 18.0007C15.4476 18.0007 14.9999 17.5529 14.9999 17.0007V13.0007C14.9999 12.4484 15.4476 12.0007 15.9999 12.0007ZM19.9999 20.0007C19.9999 20.5529 19.5522 21.0007 18.9999 21.0007L4.99992 21.0007C4.44764 21.0007 3.99992 20.5529 3.99992 20.0007C3.99992 19.4484 4.44764 19.0007 4.99992 19.0007L18.9999 19.0007C19.5522 19.0007 19.9999 19.4484 19.9999 20.0007Z"
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+const CurrentAccountFilledIcon = assignWithoutSideEffects(_CurrentAccountFilledIcon, {
+  componentId: 'CurrentAccountFilledIcon',
+});
+
+export default CurrentAccountFilledIcon;
