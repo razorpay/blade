@@ -22,3 +22,7 @@ ListView is a pattern that has tables with filters, search, pagination, etc. It 
 ## Settings
 
 Settings is a pattern that provides a structured way to organize application configuration options and user preferences. Use this pattern when you need to create a settings interface with navigation, categorized settings cards, and detailed settings pages. The pattern includes both overview and detail views with responsive layouts and accessibility features.
+
+## Dashboard Template
+
+Dashboard Template is a full dashboard template with SideNav, TopNav and main workspace area. It also includes a navigation structure with sections and items implemented via react-router-dom. 
