@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.4.0
+
+### Minor Changes
+
+- 5c6b0e949: feat(blade-mcp): add dashboard template pattern
+
 ## 1.3.1
 
 ### Patch Changes
