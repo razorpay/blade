@@ -191,6 +191,7 @@ function TimePicker({
   onSave = () => {},
   onCancel = () => {},
   timeFormat = '12h', // Default to 12-hour format
+  showActions = true, // Default to showing apply/cancel buttons
 }: {
   label?: string;
   value?: Date | null;
@@ -204,7 +205,9 @@ function TimePicker({
   onFocus?: () => void;
   onSave?: (timeValue: TimePickerValue) => void;
   onCancel?: () => void;
+  onApply?: (timeValue: TimePickerValue) => void;
   timeFormat?: '12h' | '24h';
+  showActions?: boolean;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedHour, setSelectedHour] = useState(null);
@@ -515,6 +518,13 @@ function TimePicker({
       const newTimeValue = formatTimeValue();
       const newDate = timeStringToDate(newTimeValue);
       onChange({ value: newDate });
+
+      // If showActions is false, auto-apply the selection
+      if (!showActions) {
+        onApply({ value: newDate });
+        setIsOpen(false);
+        setIsInputFocused(false);
+      }
     }, 0);
   };
 
@@ -528,6 +538,13 @@ function TimePicker({
       const newTimeValue = formatTimeValue();
       const newDate = timeStringToDate(newTimeValue);
       onChange({ value: newDate });
+
+      // If showActions is false, auto-apply the selection
+      if (!showActions) {
+        onApply({ value: newDate });
+        setIsOpen(false);
+        setIsInputFocused(false);
+      }
     }, 0);
   };
 
@@ -541,6 +558,13 @@ function TimePicker({
       const newTimeValue = formatTimeValue();
       const newDate = timeStringToDate(newTimeValue);
       onChange({ value: newDate });
+
+      // If showActions is false, auto-apply the selection
+      if (!showActions) {
+        onApply({ value: newDate });
+        setIsOpen(false);
+        setIsInputFocused(false);
+      }
     }, 0);
   };
 
@@ -549,6 +573,15 @@ function TimePicker({
     const newDate = timeStringToDate(timeValue);
     onChange({ value: newDate });
     onSave({ value: newDate });
+    setIsOpen(false);
+    setIsInputFocused(false);
+  };
+
+  const handleApply = () => {
+    const timeValue = formatTimeValue(); // Returns 24h format for TimeInput
+    const newDate = timeStringToDate(timeValue);
+    onChange({ value: newDate });
+    onApply({ value: newDate });
     setIsOpen(false);
     setIsInputFocused(false);
   };
@@ -605,12 +638,18 @@ function TimePicker({
       }
     } else if (event.key === 'Enter') {
       event.preventDefault();
-      if (activeColumn === 0 && hourActiveIndex !== null) {
-        handleHourSelect(hourActiveIndex);
-      } else if (activeColumn === 1 && minuteActiveIndex !== null) {
-        handleMinuteSelect(minuteActiveIndex);
-      } else if (activeColumn === 2 && periodActiveIndex !== null) {
-        handlePeriodSelect(periodActiveIndex);
+      if (showActions) {
+        // When actions are shown, Enter selects the value in the active column
+        if (activeColumn === 0 && hourActiveIndex !== null) {
+          handleHourSelect(hourActiveIndex);
+        } else if (activeColumn === 1 && minuteActiveIndex !== null) {
+          handleMinuteSelect(minuteActiveIndex);
+        } else if (activeColumn === 2 && periodActiveIndex !== null) {
+          handlePeriodSelect(periodActiveIndex);
+        }
+      } else {
+        // When actions are hidden, Enter immediately applies the current selection
+        handleApply();
       }
     }
     // Let ArrowUp/ArrowDown pass through to the active navigation hook
@@ -1024,19 +1063,21 @@ function TimePicker({
                   </BaseBox>
                 </FloatingFocusManager>
 
-                {/* Action Buttons */}
-                <Box
-                  padding="spacing.3"
-                  display="flex"
-                  justifyContent="space-between"
-                  borderTop="thin"
-                  borderColor="surface.border.gray.muted"
-                >
-                  <Button variant="tertiary" onClick={handleCancel}>
-                    {cancelButtonText}
-                  </Button>
-                  <Button onClick={handleSave}>{saveButtonText}</Button>
-                </Box>
+                {/* Action Buttons - Only show when showActions is true */}
+                {showActions && (
+                  <Box
+                    padding="spacing.3"
+                    display="flex"
+                    justifyContent="space-between"
+                    borderTop="thin"
+                    borderColor="surface.border.gray.muted"
+                  >
+                    <Button variant="tertiary" onClick={handleCancel}>
+                      {cancelButtonText}
+                    </Button>
+                    <Button onClick={handleSave}>{saveButtonText}</Button>
+                  </Box>
+                )}
               </BaseBox>
             </FloatingPortal>
           )}

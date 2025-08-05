@@ -111,18 +111,18 @@ type TimePickerProps = BaseInputProps & {
    * Callback fired when user applies time selection
    * @param timeValue - Object containing the confirmed time value
    */
-  // onApply?: ({ value }: TimePickerValue) => void; // Future prop - add when footer design is finalized
+  onApply?: ({ value }: TimePickerValue) => void;
 
   /**
    * Whether to show the apply/cancel buttons
    * @default true
    *
    * When false:
-   * - Clicking outside the dropdown will automatically select the time
-   * - Pressing Enter on any focused item immediately selects and closes
+   * - Clicking on any time value will automatically apply and close
+   * - Pressing Enter immediately applies the current selection and closes
    * - More streamlined interaction experience
    */
-  // showActions?: boolean; // Future prop - add when footer design is finalized
+  showActions?: boolean;
 };
 ```
 
@@ -285,6 +285,7 @@ function ControlledTimePicker() {
       label="Select time"
       value={selectedTime}
       isOpen={isOpen}
+      showActions={true}
       onChange={({ value }) => setSelectedTime(value)}
       onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
       onApply={({ value }) => {
@@ -375,13 +376,28 @@ When the dropdown is open and focused:
 
 ### Example Keyboard Flow
 
+**With Actions (showActions={true} - default):**
+
 ```
 1. Focus input → Arrow keys change time values directly
 2. Click or Space → Opens dropdown with first column focused
 3. Arrow Left/Right → Switch between Hour/Minute/Period columns
 4. Arrow Up/Down → Navigate within active column
-5. Enter → Select current value and close dropdown
-6. Escape → Cancel and close dropdown
+5. Enter → Select current value in active column
+6. Navigate to Save button → Enter applies selection and closes
+7. Escape → Cancel and close dropdown
+```
+
+**Without Actions (showActions={false} - streamlined):**
+
+```
+1. Focus input → Arrow keys change time values directly
+2. Click or Space → Opens dropdown with first column focused
+3. Arrow Left/Right → Switch between Hour/Minute/Period columns
+4. Arrow Up/Down → Navigate within active column
+5. Enter → Immediately apply current selection and close dropdown
+6. Click any value → Immediately apply and close dropdown
+7. Escape → Cancel and close dropdown
 ```
 
 ## Accessibility
@@ -395,25 +411,16 @@ We will just need to make sure the TimePicker component is working correctly & i
 
 TimePicker is designed to integrate seamlessly with ListView patterns for time-based filtering and data display.
 
-This integration will provide:
-
-- Consistent time filtering across data tables
-- Automatic query parameter generation
-- Built-in validation for time ranges
-- Responsive time selection on all devices
-
 ## Open Questions
 
 ### Design Decisions
 
 - **Input vs Dropdown Format**: Should the text input always show 24h format while the dropdown shows 12h/AM-PM format, or should both sync to the same format?
-- **Footer Actions**: Do we need to show apply/cancel footer buttons? If yes, should we add `showActions` prop along with `onApply`?
 
 ### Feature Scope
 
 - How should we approach locale support?
 - Do we need preset time options for common scenarios (Morning, Afternoon, etc.)?
-- Should we support automatic time constraints validation?
 
 ## Integration with i18nify
 
