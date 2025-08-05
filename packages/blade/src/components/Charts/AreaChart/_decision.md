@@ -328,7 +328,7 @@ const chartConfig = {
       * Easy to serialize/deserialize for storage or dynamic generation.
       * Keeps the JSX clean with minimal props.
   * **Cons**
-      * Less discoverable API; developers need to inspect the config object to know what options are available.
+      * Less discoverable API, developers need to inspect the config object to know what options are available.
       * Nested objects can become complex and hard to manage.
       * Passing custom React components (like a tooltip) is more difficult.
       * TypeScript autocompletion is less effective within a deeply nested object.
