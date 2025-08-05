@@ -19,21 +19,21 @@ export default {
 
 // Basic 12-hour TimePicker example
 export const Basic: StoryFn<typeof TimePicker> = () => {
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState<Date | null>(null);
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
       <TimePicker
         label="Select Time"
         value={time}
-        onChange={(newTime) => {
-          setTime(newTime);
-          console.log('Selected time:', newTime);
+        onChange={({ value }) => {
+          setTime(value);
+          console.log('Selected time:', value);
         }}
-        use12Hours={true}
+        timeFormat="12h"
       />
       <Text marginTop="spacing.3" size="small" color="surface.text.gray.muted">
-        Selected: {time || 'None'}
+        Selected: {time ? time.toLocaleTimeString() : 'None'}
       </Text>
     </Box>
   );
@@ -41,21 +41,21 @@ export const Basic: StoryFn<typeof TimePicker> = () => {
 
 // 24-hour format example
 export const TwentyFourHour: StoryFn<typeof TimePicker> = () => {
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState<Date | null>(null);
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
       <TimePicker
         label="Select Time (24h)"
         value={time}
-        onChange={(newTime) => {
-          setTime(newTime);
-          console.log('Selected time:', newTime);
+        onChange={({ value }) => {
+          setTime(value);
+          console.log('Selected time:', value);
         }}
-        use12Hours={false}
+        timeFormat="24h"
       />
       <Text marginTop="spacing.3" size="small" color="surface.text.gray.muted">
-        Selected: {time || 'None'}
+        Selected: {time ? time.toLocaleTimeString([], { hour12: false }) : 'None'}
       </Text>
     </Box>
   );

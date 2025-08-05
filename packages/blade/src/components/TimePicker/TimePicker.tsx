@@ -13,15 +13,174 @@ import {
   offset,
 } from '@floating-ui/react';
 import { Box } from '~components/Box';
-import { TimeInput } from '@mantine/dates';
+import { TimeInput, DatesProvider } from '@mantine/dates';
 import { ClockIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+import { useI18nContext } from '@razorpay/i18nify-react';
+import { MantineProvider } from '@mantine/core';
+const dayjs_locales = [
+  'af',
+  'ar',
+  'ar-dz',
+  'ar-kw',
+  'ar-ly',
+  'ar-ma',
+  'ar-sa',
+  'ar-tn',
+  'az',
+  'be',
+  'bg',
+  'bm',
+  'bn',
+  'bo',
+  'br',
+  'bs',
+  'ca',
+  'cs',
+  'cv',
+  'cy',
+  'da',
+  'de',
+  'de-at',
+  'de-ch',
+  'dv',
+  'el',
+  'en',
+  'en-au',
+  'en-ca',
+  'en-gb',
+  'en-ie',
+  'en-il',
+  'en-nz',
+  'en-SG',
+  'eo',
+  'es',
+  'es-do',
+  'es-us',
+  'et',
+  'eu',
+  'fa',
+  'fi',
+  'fo',
+  'fr',
+  'fr-ca',
+  'fr-ch',
+  'fy',
+  'ga',
+  'gd',
+  'gl',
+  'gom-latn',
+  'gu',
+  'he',
+  'hi',
+  'hr',
+  'hu',
+  'hy-am',
+  'id',
+  'is',
+  'it',
+  'it-ch',
+  'ja',
+  'jv',
+  'ka',
+  'kk',
+  'km',
+  'kn',
+  'ko',
+  'ku',
+  'ky',
+  'lb',
+  'lo',
+  'lt',
+  'lv',
+  'me',
+  'mi',
+  'mk',
+  'ml',
+  'mn',
+  'mr',
+  'ms',
+  'ms-my',
+  'mt',
+  'my',
+  'nb',
+  'ne',
+  'nl',
+  'nl-be',
+  'nn',
+  'oc-lnc',
+  'pa-in',
+  'pl',
+  'pt',
+  'pt-br',
+  'ro',
+  'ru',
+  'sd',
+  'se',
+  'si',
+  'sk',
+  'sl',
+  'sq',
+  'sr',
+  'sr-cyrl',
+  'ss',
+  'sv',
+  'sw',
+  'ta',
+  'te',
+  'tet',
+  'tg',
+  'th',
+  'tl-ph',
+  'tlh',
+  'tr',
+  'tzl',
+  'tzm',
+  'tzm-latn',
+  'ug-cn',
+  'uk',
+  'ur',
+  'uz',
+  'uz-latn',
+  'vi',
+  'x-pseudo',
+  'yo',
+  'zh-cn',
+  'zh-hk',
+  'zh-tw',
+];
+
+// Type definitions based on decisions document
+type TimePickerValue = {
+  value: Date | null;
+  // Future extensibility - can add more properties here
+};
+
+// Helper functions to convert between Date objects and time strings
+const dateToTimeString = (date: Date | null): string => {
+  if (!date) return '';
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  return `${hours}:${minutes}`;
+};
+
+const timeStringToDate = (timeString: string): Date | null => {
+  if (!timeString) return null;
+  const timeRegex = /^(\d{1,2}):(\d{2})$/;
+  const match = timeString.match(timeRegex);
+  if (!match) return null;
+
+  const date = new Date();
+  date.setHours(parseInt(match[1]), parseInt(match[2]), 0, 0);
+  return date;
+};
 
 function TimePicker({
   label,
   value: initialValue = null,
+  defaultValue = null,
   onChange = () => {},
   isDisabled = false,
   placeholder = 'Select Time',
@@ -31,7 +190,21 @@ function TimePicker({
   onFocus = () => {},
   onSave = () => {},
   onCancel = () => {},
-  use12Hours = true, // Default to 12-hour format
+  timeFormat = '12h', // Default to 12-hour format
+}: {
+  label?: string;
+  value?: Date | null;
+  defaultValue?: Date | null;
+  onChange?: (timeValue: TimePickerValue) => void;
+  isDisabled?: boolean;
+  placeholder?: string;
+  name?: string | null;
+  cancelButtonText?: string;
+  saveButtonText?: string;
+  onFocus?: () => void;
+  onSave?: (timeValue: TimePickerValue) => void;
+  onCancel?: () => void;
+  timeFormat?: '12h' | '24h';
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedHour, setSelectedHour] = useState(null);
@@ -42,9 +215,19 @@ function TimePicker({
   const [minuteActiveIndex, setMinuteActiveIndex] = useState(null);
   const [periodActiveIndex, setPeriodActiveIndex] = useState(null);
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const { i18nState } = useI18nContext();
+
+  // Check if using 12-hour format
+  const is12HourFormat = timeFormat === '12h';
+  const dateProviderValue = React.useMemo(() => {
+    const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
+    return {
+      locale,
+    };
+  }, [i18nState?.locale]);
 
   // Generate options based on format
-  const hours = use12Hours
+  const hours = is12HourFormat
     ? Array.from({ length: 12 }, (_, i) => i + 1) // 1-12 for 12-hour
     : Array.from({ length: 24 }, (_, i) => i); // 0-23 for 24-hour
   const minutes = Array.from({ length: 60 }, (_, i) => i); // 0-59
@@ -97,7 +280,7 @@ function TimePicker({
       console.log('qswap2 converted to 12h:', hour12, minute, period);
 
       // Set dropdown active indices based on display mode
-      if (use12Hours) {
+      if (is12HourFormat) {
         // 12-hour dropdown: use 12-hour values (1-12)
         setHourActiveIndex(hours.indexOf(hour12));
         setMinuteActiveIndex(minutes.indexOf(minute));
@@ -113,10 +296,12 @@ function TimePicker({
     }
   };
 
-  // Parse initial value
+  // Parse initial value or defaultValue
   useEffect(() => {
-    parseAndSyncTimeValue(initialValue);
-  }, [initialValue, hours, periods]);
+    const dateValue = initialValue || defaultValue;
+    const timeString = dateToTimeString(dateValue);
+    parseAndSyncTimeValue(timeString);
+  }, [initialValue, defaultValue, hours, periods]);
 
   // Auto-scroll to selected items when dropdown opens
   useEffect(() => {
@@ -140,7 +325,11 @@ function TimePicker({
         }
 
         // Scroll period column to selected period (if in 12-hour mode)
-        if (use12Hours && periodActiveIndex !== null && periodListRef.current[periodActiveIndex]) {
+        if (
+          is12HourFormat &&
+          periodActiveIndex !== null &&
+          periodListRef.current[periodActiveIndex]
+        ) {
           periodListRef.current[periodActiveIndex].scrollIntoView({
             behavior: 'smooth',
             block: 'center',
@@ -148,7 +337,7 @@ function TimePicker({
         }
       }, 100);
     }
-  }, [isOpen, hourActiveIndex, minuteActiveIndex, periodActiveIndex, use12Hours]);
+  }, [isOpen, hourActiveIndex, minuteActiveIndex, periodActiveIndex, is12HourFormat]);
 
   // Scroll event handlers to update selection based on middle position (iOS behavior)
   const handleScrollToCenter = (scrollContainer, listRef, items, onUpdate) => {
@@ -276,7 +465,7 @@ function TimePicker({
       ? hourNavigation
       : activeColumn === 1
       ? minuteNavigation
-      : use12Hours
+      : is12HourFormat
       ? periodNavigation
       : [] // Fallback for 24-hour mode
     : [];
@@ -290,14 +479,19 @@ function TimePicker({
 
   // Format display value - ALWAYS returns 24-hour format for TimeInput
   const formatTimeValue = () => {
-    if (selectedHour === null || selectedHour === undefined) return '';
+    // Use the actual value prop first, fallback to internal state
+    const currentDate =
+      initialValue ||
+      (selectedHour !== null
+        ? (() => {
+            const hour24 = convertTo24Hour(selectedHour, selectedPeriod);
+            const date = new Date();
+            date.setHours(hour24, selectedMinute, 0, 0);
+            return date;
+          })()
+        : null);
 
-    // Convert internal 12-hour to 24-hour format for TimeInput
-    const hour24 = convertTo24Hour(selectedHour, selectedPeriod);
-    const hour = String(hour24).padStart(2, '0');
-    const minute = String(selectedMinute).padStart(2, '0');
-    console.log('Qswap TimePicker format (always 24h for TimeInput)', `${hour}:${minute}`);
-    return `${hour}:${minute}`;
+    return dateToTimeString(currentDate);
   };
 
   // Handle selection for each column and sync to TimeInput
@@ -305,7 +499,7 @@ function TimePicker({
     const dropdownHour = hours[index]; // This is 1-12 for 12h mode, 0-23 for 24h mode
     setHourActiveIndex(null);
 
-    if (use12Hours) {
+    if (is12HourFormat) {
       // 12-hour dropdown: selected hour is 1-12, keep current period
       setSelectedHour(dropdownHour);
       // Period stays the same
@@ -319,7 +513,8 @@ function TimePicker({
     // formatTimeValue() will convert to 24h format for TimeInput
     setTimeout(() => {
       const newTimeValue = formatTimeValue();
-      onChange(newTimeValue);
+      const newDate = timeStringToDate(newTimeValue);
+      onChange({ value: newDate });
     }, 0);
   };
 
@@ -331,7 +526,8 @@ function TimePicker({
     // Use formatTimeValue to ensure proper format for TimeInput
     setTimeout(() => {
       const newTimeValue = formatTimeValue();
-      onChange(newTimeValue);
+      const newDate = timeStringToDate(newTimeValue);
+      onChange({ value: newDate });
     }, 0);
   };
 
@@ -343,14 +539,16 @@ function TimePicker({
     // Use formatTimeValue to ensure proper format for TimeInput
     setTimeout(() => {
       const newTimeValue = formatTimeValue();
-      onChange(newTimeValue);
+      const newDate = timeStringToDate(newTimeValue);
+      onChange({ value: newDate });
     }, 0);
   };
 
   const handleSave = () => {
     const timeValue = formatTimeValue(); // Returns 24h format for TimeInput
-    onChange(timeValue);
-    onSave(timeValue);
+    const newDate = timeStringToDate(timeValue);
+    onChange({ value: newDate });
+    onSave({ value: newDate });
     setIsOpen(false);
     setIsInputFocused(false);
   };
@@ -386,7 +584,7 @@ function TimePicker({
       }
     } else if (event.key === 'ArrowRight' || event.key === 'Tab') {
       event.preventDefault();
-      const maxColumn = use12Hours ? 2 : 1; // 3 columns for 12-hour (0,1,2), 2 columns for 24-hour (0,1)
+      const maxColumn = is12HourFormat ? 2 : 1; // 3 columns for 12-hour (0,1,2), 2 columns for 24-hour (0,1)
       const newColumn = Math.min(maxColumn, activeColumn + 1);
       console.log('🔍 Switching to column:', newColumn);
       setActiveColumn(newColumn);
@@ -417,392 +615,434 @@ function TimePicker({
     }
     // Let ArrowUp/ArrowDown pass through to the active navigation hook
   };
+  function patchLocale(locale: string): string | boolean {
+    if (['en', 'en-us'].includes(locale)) return 'en';
+    if (locale === 'zn') return 'zh-cn';
+    if (locale === 'no') return 'nb';
+    if (dayjs_locales.includes(locale)) return locale;
+    return false;
+  }
 
+  function convertIntlToDayjsLocale(lang: string): string {
+    lang = lang.toLowerCase();
+    const locale = patchLocale(lang) || (lang.includes('-') && patchLocale(lang.split('-')[0]));
+    console.log('qswao', locale);
+    if (!locale) return 'en';
+
+    return `${locale}`;
+  }
   return (
-    <Box>
-      <TimeInput
-        ref={refs.setReference}
-        name={name}
-        value={formatTimeValue()}
-        icon={<ClockIcon size="medium" />}
-        label={label}
-        placeholder={placeholder}
-        disabled={isDisabled}
-        withSeconds={false}
-        {...getReferenceProps({
-          onFocus,
-          onClick: () => {
-            setIsInputFocused(true);
-            setIsOpen(true);
-            setActiveColumn(0);
-          },
-        })}
-        onChange={(event) => {
-          const timeValue = event.target.value;
-          console.log('qswap1 TimeInput onChange (24h format):', timeValue);
-          parseAndSyncTimeValue(timeValue);
-          onChange(timeValue); // Call parent onChange with 24h format
-        }}
-      />
-
-      {isOpen && (
-        <FloatingPortal>
-          <BaseBox
-            ref={refs.setFloating}
-            style={floatingStyles}
-            backgroundColor="surface.background.gray.moderate"
-            boxShadow="0 11px 15px #0005"
-            borderRadius="medium"
-            overflow="hidden"
-            width="320px"
-            zIndex={1000}
-            {...getFloatingProps({
-              onKeyDown: handleKeyDown,
+    <MantineProvider>
+      <DatesProvider settings={dateProviderValue}>
+        <Box>
+          <TimeInput
+            ref={refs.setReference}
+            name={name}
+            value={formatTimeValue()}
+            icon={<ClockIcon size="medium" />}
+            label={label}
+            placeholder={placeholder}
+            disabled={isDisabled}
+            withSeconds={false}
+            {...getReferenceProps({
+              onFocus,
+              onClick: () => {
+                setIsInputFocused(true);
+                setIsOpen(true);
+                setActiveColumn(0);
+              },
             })}
-            onClick={() => setIsInputFocused(false)}
-          >
-            {/* 3-Column Layout - iOS Style */}
-            <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
-              <BaseBox display="flex" height="200px" position="relative">
-                {/* Hour Column */}
-                <BaseBox
-                  flex="1"
-                  borderRight="thin"
-                  borderColor="surface.border.gray.muted"
-                  position="relative"
-                  backgroundColor={
-                    activeColumn === 0 ? 'surface.background.sea.muted' : 'transparent'
-                  }
-                  onClick={() => setActiveColumn(0)}
-                >
-                  {/* Selection overlay - visual indicator for middle item */}
-                  <BaseBox
-                    position="absolute"
-                    top="50%"
-                    left="0"
-                    right="0"
-                    height="40px"
-                    transform="translateY(-50%)"
-                    backgroundColor="surface.background.cloud.intense"
-                    borderRadius="medium"
-                    zIndex={1}
-                    pointerEvents="none"
-                    borderTop="1px solid"
-                    borderBottom="1px solid"
-                    borderColor="surface.border.gray.muted"
-                  />
+            onChange={(event) => {
+              const timeValue = event.target.value;
+              console.log('qswap1 TimeInput onChange (24h format):', timeValue);
+              parseAndSyncTimeValue(timeValue);
+              const newDate = timeStringToDate(timeValue);
+              onChange({ value: newDate }); // Call parent onChange with Date object
+            }}
+          />
 
-                  {/* Scrollable container */}
-                  <BaseBox
-                    height="100%"
-                    overflowY="auto"
-                    paddingY="80px" // Add padding to center items
-                    role="listbox"
-                    aria-label="Select hour"
-                    css={{
-                      scrollSnapType: 'y mandatory',
-                      scrollBehavior: 'smooth',
-                      '&::-webkit-scrollbar': {
-                        display: 'none',
-                      },
-                      scrollbarWidth: 'none',
-                    }}
-                    onScroll={(e) => {
-                      // Update selection based on center position on scroll end
-                      clearTimeout(window.hourScrollTimeout);
-                      window.hourScrollTimeout = setTimeout(() => {
-                        handleScrollToCenter(e.target, hourListRef, hours, (index) => {
-                          setHourActiveIndex(index);
-                          if (use12Hours) {
-                            setSelectedHour(hours[index]);
-                          } else {
-                            const converted = convertTo12Hour(hours[index]);
-                            setSelectedHour(converted.hour);
-                            setSelectedPeriod(converted.period);
-                          }
-                        });
-                      }, 150);
-                    }}
-                  >
-                    {hours.map((hour, index) => {
-                      const isSelected = hour === selectedHour;
-                      const isActive = activeColumn === 0 && hourActiveIndex === index;
-                      // console.log('qswap5 imp', activeColumn, selectedHour, hourActiveIndex);
-                      return (
-                        <BaseBox
-                          key={hour}
-                          ref={(node) => {
-                            hourListRef.current[index] = node;
-                          }}
-                          role="option"
-                          aria-selected={isSelected}
-                          tabIndex={activeColumn === 0 ? (isActive ? 0 : -1) : -1}
-                          height="40px"
-                          display="flex"
-                          alignItems="center"
-                          justifyContent="center"
-                          cursor="pointer"
-                          position="relative"
-                          zIndex={2}
-                          css={{
-                            scrollSnapAlign: 'center',
-                            scrollSnapStop: 'always',
-                          }}
-                          {...getHourItemProps({
-                            onClick: () => handleHourSelect(index),
-                          })}
-                        >
-                          <Text
-                            weight={isSelected ? 'semibold' : 'regular'}
-                            color={
-                              isActive || isSelected ? 'surface.text.primary' : 'surface.text.muted'
-                            }
-                            css={{
-                              transform: isSelected
-                                ? 'scale(1.3)'
-                                : isActive
-                                ? 'scale(1.2)'
-                                : 'scale(1)',
-                              transition: 'all 0.2s ease',
-                            }}
-                          >
-                            {String(hour).padStart(2, '0')}
-                          </Text>
-                        </BaseBox>
-                      );
-                    })}
-                  </BaseBox>
-                </BaseBox>
-
-                {/* Minute Column */}
-                <BaseBox
-                  flex="1"
-                  borderRight="thin"
-                  borderColor="surface.border.gray.muted"
-                  position="relative"
-                  backgroundColor={
-                    activeColumn === 1 ? 'surface.background.sea.muted' : 'transparent'
-                  }
-                  onClick={() => setActiveColumn(1)}
-                >
-                  {/* Selection overlay - visual indicator for middle item */}
-                  <BaseBox
-                    position="absolute"
-                    top="50%"
-                    left="0"
-                    right="0"
-                    height="40px"
-                    transform="translateY(-50%)"
-                    backgroundColor="surface.background.cloud.intense"
-                    borderRadius="medium"
-                    zIndex={1}
-                    pointerEvents="none"
-                    borderTop="1px solid"
-                    borderBottom="1px solid"
-                    borderColor="surface.border.gray.muted"
-                  />
-
-                  {/* Scrollable container */}
-                  <BaseBox
-                    height="100%"
-                    overflowY="auto"
-                    paddingY="80px" // Add padding to center items
-                    role="listbox"
-                    aria-label="Select minute"
-                    css={{
-                      scrollSnapType: 'y mandatory',
-                      scrollBehavior: 'smooth',
-                      '&::-webkit-scrollbar': {
-                        display: 'none',
-                      },
-                      scrollbarWidth: 'none',
-                    }}
-                    onScroll={(e) => {
-                      // Update selection based on center position on scroll end
-                      clearTimeout(window.minuteScrollTimeout);
-                      window.minuteScrollTimeout = setTimeout(() => {
-                        handleScrollToCenter(e.target, minuteListRef, minutes, (index) => {
-                          setMinuteActiveIndex(index);
-                          setSelectedMinute(minutes[index]);
-                        });
-                      }, 150);
-                    }}
-                  >
-                    {minutes.map((minute, index) => {
-                      const isSelected = minute === selectedMinute;
-                      const isActive = activeColumn === 1 && minuteActiveIndex === index;
-
-                      return (
-                        <BaseBox
-                          key={minute}
-                          ref={(node) => {
-                            minuteListRef.current[index] = node;
-                          }}
-                          role="option"
-                          aria-selected={isSelected}
-                          tabIndex={activeColumn === 1 ? (isActive ? 0 : -1) : -1}
-                          height="40px"
-                          display="flex"
-                          alignItems="center"
-                          justifyContent="center"
-                          cursor="pointer"
-                          position="relative"
-                          zIndex={2}
-                          css={{
-                            scrollSnapAlign: 'center',
-                            scrollSnapStop: 'always',
-                          }}
-                          {...getMinuteItemProps({
-                            onClick: () => handleMinuteSelect(index),
-                          })}
-                        >
-                          <Text
-                            weight={isSelected ? 'semibold' : 'regular'}
-                            color={
-                              isActive || isSelected ? 'surface.text.primary' : 'surface.text.muted'
-                            }
-                            css={{
-                              transform: isSelected
-                                ? 'scale(1.3)'
-                                : isActive
-                                ? 'scale(1.2)'
-                                : 'scale(1)',
-                              transition: 'all 0.2s ease',
-                            }}
-                          >
-                            {String(minute).padStart(2, '0')}
-                          </Text>
-                        </BaseBox>
-                      );
-                    })}
-                  </BaseBox>
-                </BaseBox>
-
-                {/* AM/PM Column - Only show in 12-hour mode */}
-                {use12Hours && (
-                  <BaseBox
-                    flex="0 0 80px"
-                    position="relative"
-                    backgroundColor={
-                      activeColumn === 2 ? 'surface.background.sea.muted' : 'transparent'
-                    }
-                    onClick={() => setActiveColumn(2)}
-                  >
-                    {/* Selection overlay - visual indicator for middle item */}
+          {isOpen && (
+            <FloatingPortal>
+              <BaseBox
+                ref={refs.setFloating}
+                style={floatingStyles}
+                backgroundColor="surface.background.gray.moderate"
+                boxShadow="0 11px 15px #0005"
+                borderRadius="medium"
+                overflow="hidden"
+                width="320px"
+                zIndex={1000}
+                {...getFloatingProps({
+                  onKeyDown: handleKeyDown,
+                })}
+                onClick={() => setIsInputFocused(false)}
+              >
+                {/* 3-Column Layout - iOS Style */}
+                <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
+                  <BaseBox display="flex" height="200px" position="relative">
+                    {/* Hour Column */}
                     <BaseBox
-                      position="absolute"
-                      top="50%"
-                      left="0"
-                      right="0"
-                      height="40px"
-                      transform="translateY(-50%)"
-                      backgroundColor="surface.background.cloud.intense"
-                      borderRadius="medium"
-                      zIndex={1}
-                      pointerEvents="none"
-                      borderTop="1px solid"
-                      borderBottom="1px solid"
+                      flex="1"
+                      borderRight="thin"
                       borderColor="surface.border.gray.muted"
-                    />
-
-                    {/* Scrollable container */}
-                    <BaseBox
-                      height="100%"
-                      overflowY="auto"
-                      paddingY="80px" // Add padding to center items
-                      role="listbox"
-                      aria-label="Select AM or PM"
-                      css={{
-                        scrollSnapType: 'y mandatory',
-                        scrollBehavior: 'smooth',
-                        '&::-webkit-scrollbar': {
-                          display: 'none',
-                        },
-                        scrollbarWidth: 'none',
-                      }}
-                      onScroll={(e) => {
-                        // Update selection based on center position on scroll end
-                        clearTimeout(window.periodScrollTimeout);
-                        window.periodScrollTimeout = setTimeout(() => {
-                          handleScrollToCenter(e.target, periodListRef, periods, (index) => {
-                            setPeriodActiveIndex(index);
-                            setSelectedPeriod(periods[index]);
-                          });
-                        }, 150);
-                      }}
+                      position="relative"
+                      backgroundColor={
+                        activeColumn === 0 ? 'surface.background.sea.muted' : 'transparent'
+                      }
+                      onClick={() => setActiveColumn(0)}
                     >
-                      {periods.map((period, index) => {
-                        const isSelected = period === selectedPeriod;
-                        const isActive = activeColumn === 2 && periodActiveIndex === index;
+                      {/* Selection overlay - visual indicator for middle item */}
+                      <BaseBox
+                        position="absolute"
+                        top="50%"
+                        left="0"
+                        right="0"
+                        height="40px"
+                        transform="translateY(-50%)"
+                        backgroundColor="surface.background.cloud.intense"
+                        borderRadius="medium"
+                        zIndex={1}
+                        pointerEvents="none"
+                        borderTop="1px solid"
+                        borderBottom="1px solid"
+                        borderColor="surface.border.gray.muted"
+                      />
 
-                        return (
-                          <BaseBox
-                            key={period}
-                            ref={(node) => {
-                              periodListRef.current[index] = node;
-                            }}
-                            role="option"
-                            aria-selected={isSelected}
-                            tabIndex={activeColumn === 2 ? (isActive ? 0 : -1) : -1}
-                            height="40px"
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="center"
-                            cursor="pointer"
-                            position="relative"
-                            zIndex={2}
-                            css={{
-                              scrollSnapAlign: 'center',
-                              scrollSnapStop: 'always',
-                            }}
-                            {...getPeriodItemProps({
-                              onClick: () => handlePeriodSelect(index),
-                            })}
-                          >
-                            <Text
-                              weight={isSelected ? 'semibold' : 'regular'}
-                              color={
-                                isActive || isSelected
-                                  ? 'surface.text.primary'
-                                  : 'surface.text.muted'
+                      {/* Scrollable container */}
+                      <BaseBox
+                        height="100%"
+                        overflowY="auto"
+                        paddingY="80px" // Add padding to center items
+                        role="listbox"
+                        aria-label="Select hour"
+                        css={{
+                          scrollSnapType: 'y mandatory',
+                          scrollBehavior: 'smooth',
+                          '&::-webkit-scrollbar': {
+                            display: 'none',
+                          },
+                          scrollbarWidth: 'none',
+                        }}
+                        onScroll={(e) => {
+                          // Update selection based on center position on scroll end
+                          clearTimeout(window.hourScrollTimeout);
+                          window.hourScrollTimeout = setTimeout(() => {
+                            handleScrollToCenter(e.target, hourListRef, hours, (index) => {
+                              setHourActiveIndex(index);
+                              if (is12HourFormat) {
+                                setSelectedHour(hours[index]);
+                              } else {
+                                const converted = convertTo12Hour(hours[index]);
+                                setSelectedHour(converted.hour);
+                                setSelectedPeriod(converted.period);
                               }
-                              css={{
-                                transform: isSelected
-                                  ? 'scale(1.3)'
-                                  : isActive
-                                  ? 'scale(1.2)'
-                                  : 'scale(1)',
-                                transition: 'all 0.2s ease',
+                              // Update parent with new Date object
+                              setTimeout(() => {
+                                const timeValue = formatTimeValue();
+                                const newDate = timeStringToDate(timeValue);
+                                onChange({ value: newDate });
+                              }, 0);
+                            });
+                          }, 150);
+                        }}
+                      >
+                        {hours.map((hour, index) => {
+                          const isSelected = hour === selectedHour;
+                          const isActive = activeColumn === 0 && hourActiveIndex === index;
+                          // console.log('qswap5 imp', activeColumn, selectedHour, hourActiveIndex);
+                          return (
+                            <BaseBox
+                              key={hour}
+                              ref={(node) => {
+                                hourListRef.current[index] = node;
                               }}
+                              role="option"
+                              aria-selected={isSelected}
+                              tabIndex={activeColumn === 0 ? (isActive ? 0 : -1) : -1}
+                              height="40px"
+                              display="flex"
+                              alignItems="center"
+                              justifyContent="center"
+                              cursor="pointer"
+                              position="relative"
+                              zIndex={2}
+                              css={{
+                                scrollSnapAlign: 'center',
+                                scrollSnapStop: 'always',
+                              }}
+                              {...getHourItemProps({
+                                onClick: () => handleHourSelect(index),
+                              })}
                             >
-                              {period}
-                            </Text>
-                          </BaseBox>
-                        );
-                      })}
+                              <Text
+                                weight={isSelected ? 'semibold' : 'regular'}
+                                color={
+                                  isActive || isSelected
+                                    ? 'surface.text.primary'
+                                    : 'surface.text.muted'
+                                }
+                                css={{
+                                  transform: isSelected
+                                    ? 'scale(1.3)'
+                                    : isActive
+                                    ? 'scale(1.2)'
+                                    : 'scale(1)',
+                                  transition: 'all 0.2s ease',
+                                }}
+                              >
+                                {String(hour).padStart(2, '0')}
+                              </Text>
+                            </BaseBox>
+                          );
+                        })}
+                      </BaseBox>
                     </BaseBox>
-                  </BaseBox>
-                )}
-              </BaseBox>
-            </FloatingFocusManager>
 
-            {/* Action Buttons */}
-            <Box
-              padding="spacing.3"
-              display="flex"
-              justifyContent="space-between"
-              borderTop="thin"
-              borderColor="surface.border.gray.muted"
-            >
-              <Button variant="tertiary" onClick={handleCancel}>
-                {cancelButtonText}
-              </Button>
-              <Button onClick={handleSave}>{saveButtonText}</Button>
-            </Box>
-          </BaseBox>
-        </FloatingPortal>
-      )}
-    </Box>
+                    {/* Minute Column */}
+                    <BaseBox
+                      flex="1"
+                      borderRight="thin"
+                      borderColor="surface.border.gray.muted"
+                      position="relative"
+                      backgroundColor={
+                        activeColumn === 1 ? 'surface.background.sea.muted' : 'transparent'
+                      }
+                      onClick={() => setActiveColumn(1)}
+                    >
+                      {/* Selection overlay - visual indicator for middle item */}
+                      <BaseBox
+                        position="absolute"
+                        top="50%"
+                        left="0"
+                        right="0"
+                        height="40px"
+                        transform="translateY(-50%)"
+                        backgroundColor="surface.background.cloud.intense"
+                        borderRadius="medium"
+                        zIndex={1}
+                        pointerEvents="none"
+                        borderTop="1px solid"
+                        borderBottom="1px solid"
+                        borderColor="surface.border.gray.muted"
+                      />
+
+                      {/* Scrollable container */}
+                      <BaseBox
+                        height="100%"
+                        overflowY="auto"
+                        paddingY="80px" // Add padding to center items
+                        role="listbox"
+                        aria-label="Select minute"
+                        css={{
+                          scrollSnapType: 'y mandatory',
+                          scrollBehavior: 'smooth',
+                          '&::-webkit-scrollbar': {
+                            display: 'none',
+                          },
+                          scrollbarWidth: 'none',
+                        }}
+                        onScroll={(e) => {
+                          // Update selection based on center position on scroll end
+                          clearTimeout(window.minuteScrollTimeout);
+                          window.minuteScrollTimeout = setTimeout(() => {
+                            handleScrollToCenter(e.target, minuteListRef, minutes, (index) => {
+                              setMinuteActiveIndex(index);
+                              setSelectedMinute(minutes[index]);
+                              // Update parent with new Date object
+                              setTimeout(() => {
+                                const timeValue = formatTimeValue();
+                                const newDate = timeStringToDate(timeValue);
+                                onChange({ value: newDate });
+                              }, 0);
+                            });
+                          }, 150);
+                        }}
+                      >
+                        {minutes.map((minute, index) => {
+                          const isSelected = minute === selectedMinute;
+                          const isActive = activeColumn === 1 && minuteActiveIndex === index;
+
+                          return (
+                            <BaseBox
+                              key={minute}
+                              ref={(node) => {
+                                minuteListRef.current[index] = node;
+                              }}
+                              role="option"
+                              aria-selected={isSelected}
+                              tabIndex={activeColumn === 1 ? (isActive ? 0 : -1) : -1}
+                              height="40px"
+                              display="flex"
+                              alignItems="center"
+                              justifyContent="center"
+                              cursor="pointer"
+                              position="relative"
+                              zIndex={2}
+                              css={{
+                                scrollSnapAlign: 'center',
+                                scrollSnapStop: 'always',
+                              }}
+                              {...getMinuteItemProps({
+                                onClick: () => handleMinuteSelect(index),
+                              })}
+                            >
+                              <Text
+                                weight={isSelected ? 'semibold' : 'regular'}
+                                color={
+                                  isActive || isSelected
+                                    ? 'surface.text.primary'
+                                    : 'surface.text.muted'
+                                }
+                                css={{
+                                  transform: isSelected
+                                    ? 'scale(1.3)'
+                                    : isActive
+                                    ? 'scale(1.2)'
+                                    : 'scale(1)',
+                                  transition: 'all 0.2s ease',
+                                }}
+                              >
+                                {String(minute).padStart(2, '0')}
+                              </Text>
+                            </BaseBox>
+                          );
+                        })}
+                      </BaseBox>
+                    </BaseBox>
+
+                    {/* AM/PM Column - Only show in 12-hour mode */}
+                    {is12HourFormat && (
+                      <BaseBox
+                        flex="0 0 80px"
+                        position="relative"
+                        backgroundColor={
+                          activeColumn === 2 ? 'surface.background.sea.muted' : 'transparent'
+                        }
+                        onClick={() => setActiveColumn(2)}
+                      >
+                        {/* Selection overlay - visual indicator for middle item */}
+                        <BaseBox
+                          position="absolute"
+                          top="50%"
+                          left="0"
+                          right="0"
+                          height="40px"
+                          transform="translateY(-50%)"
+                          backgroundColor="surface.background.cloud.intense"
+                          borderRadius="medium"
+                          zIndex={1}
+                          pointerEvents="none"
+                          borderTop="1px solid"
+                          borderBottom="1px solid"
+                          borderColor="surface.border.gray.muted"
+                        />
+
+                        {/* Scrollable container */}
+                        <BaseBox
+                          height="100%"
+                          overflowY="auto"
+                          paddingY="80px" // Add padding to center items
+                          role="listbox"
+                          aria-label="Select AM or PM"
+                          css={{
+                            scrollSnapType: 'y mandatory',
+                            scrollBehavior: 'smooth',
+                            '&::-webkit-scrollbar': {
+                              display: 'none',
+                            },
+                            scrollbarWidth: 'none',
+                          }}
+                          onScroll={(e) => {
+                            // Update selection based on center position on scroll end
+                            clearTimeout(window.periodScrollTimeout);
+                            window.periodScrollTimeout = setTimeout(() => {
+                              handleScrollToCenter(e.target, periodListRef, periods, (index) => {
+                                setPeriodActiveIndex(index);
+                                setSelectedPeriod(periods[index]);
+                                // Update parent with new Date object
+                                setTimeout(() => {
+                                  const timeValue = formatTimeValue();
+                                  const newDate = timeStringToDate(timeValue);
+                                  onChange({ value: newDate });
+                                }, 0);
+                              });
+                            }, 150);
+                          }}
+                        >
+                          {periods.map((period, index) => {
+                            const isSelected = period === selectedPeriod;
+                            const isActive = activeColumn === 2 && periodActiveIndex === index;
+
+                            return (
+                              <BaseBox
+                                key={period}
+                                ref={(node) => {
+                                  periodListRef.current[index] = node;
+                                }}
+                                role="option"
+                                aria-selected={isSelected}
+                                tabIndex={activeColumn === 2 ? (isActive ? 0 : -1) : -1}
+                                height="40px"
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                                cursor="pointer"
+                                position="relative"
+                                zIndex={2}
+                                css={{
+                                  scrollSnapAlign: 'center',
+                                  scrollSnapStop: 'always',
+                                }}
+                                {...getPeriodItemProps({
+                                  onClick: () => handlePeriodSelect(index),
+                                })}
+                              >
+                                <Text
+                                  weight={isSelected ? 'semibold' : 'regular'}
+                                  color={
+                                    isActive || isSelected
+                                      ? 'surface.text.primary'
+                                      : 'surface.text.muted'
+                                  }
+                                  css={{
+                                    transform: isSelected
+                                      ? 'scale(1.3)'
+                                      : isActive
+                                      ? 'scale(1.2)'
+                                      : 'scale(1)',
+                                    transition: 'all 0.2s ease',
+                                  }}
+                                >
+                                  {period}
+                                </Text>
+                              </BaseBox>
+                            );
+                          })}
+                        </BaseBox>
+                      </BaseBox>
+                    )}
+                  </BaseBox>
+                </FloatingFocusManager>
+
+                {/* Action Buttons */}
+                <Box
+                  padding="spacing.3"
+                  display="flex"
+                  justifyContent="space-between"
+                  borderTop="thin"
+                  borderColor="surface.border.gray.muted"
+                >
+                  <Button variant="tertiary" onClick={handleCancel}>
+                    {cancelButtonText}
+                  </Button>
+                  <Button onClick={handleSave}>{saveButtonText}</Button>
+                </Box>
+              </BaseBox>
+            </FloatingPortal>
+          )}
+        </Box>
+      </DatesProvider>
+    </MantineProvider>
   );
 }
 
