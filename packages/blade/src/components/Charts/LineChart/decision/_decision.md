@@ -9,11 +9,11 @@
 
 ### Table of Contents
 
-1.  [Design Breakdown](https://www.google.com/search?q=%231-design-breakdown)
-2.  [Requirements to Handle](https://www.google.com/search?q=%232-requirements-to-handle)
-3.  [API Specifications](https://www.google.com/search?q=%233-api-specifications)
-4.  [Alternative API's](https://www.google.com/search?q=%234-alternative-apis)
-5.  [Open Questions](https://www.google.com/search?q=%235-open-questions)
+1. [Design Breakdown](#1-design-breakdown)
+2. [Requirements to Handle](#2-requirements-to-handle)
+3. [API Specifications](#3-api-specifications)
+4. [Alternative APIs](#4-alternative-apis-)
+5. [Open Questions](#5-open-questions)
 
 -----
 
@@ -191,7 +191,7 @@ import {
       * Potential for misuse bypassing Blade theming standards.
 
 
-## 4. Alternative API's - 
+## 4. Alternative APIs - 
 
 ### 4.1 Hybrid API (Prop & Config Driven)
 
