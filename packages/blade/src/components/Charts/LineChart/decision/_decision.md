@@ -360,6 +360,18 @@ const CustomTooltip = ({ active, payload, label }) => {
 </ChartContainer>;
 ```
 
+  * **Pros**
+      * Maximum flexibility and control over chart composition and behavior.
+      * Familiar developer experience with direct mapping to recharts API.
+      * Strong TypeScript support with excellent autocompletion.
+      * Extensible and future-proof - easy to add new chart types.
+      * Composable and reusable components for building higher-level abstractions.
+  * **Cons**
+      * Steeper learning curve for developers new to recharts.
+      * Verbose usage requiring multiple component imports for simple charts.
+      * Documentation and guidelines overhead to ensure proper usage.
+      * Potential for misuse bypassing Blade theming standards.
+
 ### 3.4. Color Handling
 
 We will not support sequential colors for line charts. A limited, curated palette of theme colors will be available. A `color` prop will be available in the line configuration. If it is not provided, we will automatically assign a color from the predefined palette. [Rama Krushna Behera](mailto:rama.behera@razorpay.com) will confirm the final color palette.
