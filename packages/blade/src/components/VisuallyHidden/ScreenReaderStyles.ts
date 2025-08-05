@@ -14,7 +14,7 @@ const screenReaderStyles: CSSObject = {
   padding: 0,
   position: 'absolute',
   width: `1px`,
-  left: '-10000px',
+  // left: '-10000px', // Removed: Causes horizontal scroll jump when hidden input receives focus in scrollable containers
   whiteSpace: 'nowrap',
   wordWrap: 'normal',
 };

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import styled from 'styled-components';
 import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
@@ -20,7 +20,6 @@ import { useTheme } from '~components/BladeProvider';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const CHILDREN_COUNTER_WIDTH = 36;
 const GAP_BETWEEN_CHILDREN_AND_SEARCH = 12;
@@ -72,31 +71,10 @@ const ListViewFilters = ({
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
   const { theme } = useTheme();
-  const containerRef = useRef<HTMLElement | null>(null);
-  const scrollPositionRef = useRef<number>(0);
 
   const showSearchInput = onSearchChange || onSearchClear || searchValuePlaceholder || searchName;
   const isSearchTrailingDropDown =
     React.isValidElement(searchTrailing) && getComponentId(searchTrailing) === 'Dropdown';
-
-  useIsomorphicLayoutEffect(() => {
-    const container = containerRef.current;
-    if (!container) return undefined;
-
-    const handleScroll = (): void => {
-      scrollPositionRef.current = container.scrollLeft;
-    };
-
-    container.addEventListener('scroll', handleScroll);
-    return (): void => container.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useIsomorphicLayoutEffect(() => {
-    const container = containerRef.current;
-    if (container && scrollPositionRef.current > 0) {
-      container.scrollLeft = scrollPositionRef.current;
-    }
-  }, [quickFilters]);
 
   const getFilterContainerWidth = (): BoxProps['width'] => {
     const hasChildren = Boolean(children);
@@ -155,9 +133,6 @@ const ListViewFilters = ({
             <StyledQuickFilterContainer
               overflow="scroll"
               width="100%"
-              ref={(node) => {
-                containerRef.current = node;
-              }}
               paddingY="spacing.4"
               paddingLeft="spacing.2"
             >
