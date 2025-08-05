@@ -95,7 +95,6 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -329,7 +328,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -587,7 +585,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -828,7 +825,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1075,7 +1071,6 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

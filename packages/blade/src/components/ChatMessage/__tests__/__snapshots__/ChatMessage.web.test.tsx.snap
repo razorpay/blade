@@ -218,7 +218,6 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1151,7 +1150,6 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

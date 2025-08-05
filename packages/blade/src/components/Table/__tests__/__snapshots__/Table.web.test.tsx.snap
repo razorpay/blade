@@ -7700,7 +7700,6 @@ exports[`<Table /> should render table with multi select 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -7738,7 +7737,6 @@ exports[`<Table /> should render table with multi select 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -10350,7 +10348,6 @@ exports[`<Table /> should render table with multi select 2`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -10388,7 +10385,6 @@ exports[`<Table /> should render table with multi select 2`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -12961,7 +12957,6 @@ exports[`<Table /> should render table with multi select 3`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

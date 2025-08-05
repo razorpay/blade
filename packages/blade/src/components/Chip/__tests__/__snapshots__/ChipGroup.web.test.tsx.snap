@@ -214,7 +214,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -231,7 +230,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -811,7 +809,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -828,7 +825,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

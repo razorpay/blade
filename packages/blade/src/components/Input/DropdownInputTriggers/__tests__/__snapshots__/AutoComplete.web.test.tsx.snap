@@ -443,7 +443,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1678,7 +1677,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -2890,7 +2888,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -3559,7 +3556,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

@@ -167,7 +167,6 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -184,7 +183,6 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -613,7 +611,6 @@ exports[`<Chip /> should render chip 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -630,7 +627,6 @@ exports[`<Chip /> should render chip 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1063,7 +1059,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1080,7 +1075,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1648,7 +1642,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1665,7 +1658,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1694,7 +1686,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

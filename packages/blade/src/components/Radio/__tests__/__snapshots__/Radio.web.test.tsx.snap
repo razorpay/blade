@@ -197,7 +197,6 @@ exports[`<Radio /> should accepnt data-analytics attribute 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -214,7 +213,6 @@ exports[`<Radio /> should accepnt data-analytics attribute 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -556,7 +554,6 @@ exports[`<Radio /> should render radio with label 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -573,7 +570,6 @@ exports[`<Radio /> should render radio with label 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -914,7 +910,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -931,7 +926,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

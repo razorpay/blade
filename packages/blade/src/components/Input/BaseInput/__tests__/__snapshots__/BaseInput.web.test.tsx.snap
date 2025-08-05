@@ -367,7 +367,6 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -887,7 +886,6 @@ exports[`<BaseInput /> should render 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1718,7 +1716,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -2321,7 +2318,6 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -2919,7 +2915,6 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -3422,7 +3417,6 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

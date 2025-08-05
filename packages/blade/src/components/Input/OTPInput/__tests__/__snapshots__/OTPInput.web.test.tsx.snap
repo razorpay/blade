@@ -334,7 +334,6 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -932,7 +931,6 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1604,7 +1602,6 @@ exports[`<OTPInput /> should render large size 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }

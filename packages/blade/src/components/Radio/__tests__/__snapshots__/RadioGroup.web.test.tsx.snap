@@ -197,7 +197,6 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -214,7 +213,6 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -594,7 +592,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -611,7 +608,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1072,7 +1068,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -1089,7 +1084,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
-  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
