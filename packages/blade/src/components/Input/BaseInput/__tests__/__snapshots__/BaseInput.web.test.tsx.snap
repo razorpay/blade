@@ -357,17 +357,15 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -876,17 +874,15 @@ exports[`<BaseInput /> should render 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1706,17 +1702,15 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -2308,17 +2302,15 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -2905,17 +2897,15 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -3407,17 +3397,15 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 

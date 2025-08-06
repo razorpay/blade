@@ -433,17 +433,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1667,17 +1665,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 
 .c2.c2.c2.c2.c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -2878,17 +2874,15 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -3546,17 +3540,15 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 

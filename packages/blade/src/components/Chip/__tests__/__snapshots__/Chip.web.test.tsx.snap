@@ -157,33 +157,29 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
 
 .c1.c1.c1.c1.c1 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -601,33 +597,29 @@ exports[`<Chip /> should render chip 1`] = `
 
 .c1.c1.c1.c1.c1 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1049,33 +1041,29 @@ exports[`<Chip /> should render chip with icon 1`] = `
 
 .c1.c1.c1.c1.c1 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1632,33 +1620,29 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 
 .c1.c1.c1.c1.c1 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1676,17 +1660,15 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 
 .c14.c14.c14.c14.c14 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 

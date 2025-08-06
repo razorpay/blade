@@ -177,17 +177,15 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
 
 .c5.c5.c5.c5.c5 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -202,17 +200,15 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
 
 .c10.c10.c10.c10.c10 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -683,17 +679,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 
 .c5.c5.c5.c5.c5 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -708,17 +702,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 
 .c10.c10.c10.c10.c10 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1248,17 +1240,15 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 .c5.c5.c5.c5.c5 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1273,17 +1263,15 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 .c10.c10.c10.c10.c10 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
