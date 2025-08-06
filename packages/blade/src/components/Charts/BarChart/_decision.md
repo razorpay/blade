@@ -3,7 +3,7 @@
 Author(s): [Gaurav Tewari](mailto:gaurav.tewari@razorpay.com)  
 Team/Pod: Blade  
 BU: Platform  
-Published Date: Aug 4, 2025  
+Published Date: Aug 7, 2025  
   
 
 1. [Design Breakdown](#1-design-breakdown)
@@ -64,6 +64,10 @@ Published Date: Aug 4, 2025
 ### 3.1 Composition API (Re-exporting Styled Components)
 
 This approach follows the precedent set by the Line Chart API. We will re-export styled versions of the underlying `recharts` components. 
+
+
+**note** : In case of Bar Charts We would be handling both Categorical and Sequencial color . Also their will be a limit on Sequencial Colors. 
+- For that best would to have an internal check how many colors are already used. 
 
 
 #### **Component Interfaces**
