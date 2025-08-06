@@ -6,6 +6,10 @@ DatePicker
 
 DatePicker is a component for selecting dates or date ranges with an intuitive calendar interface. It supports single date selection or date range selection modes, with features such as date constraints, presets for quick selection, and validation states. The component also offers a FilterChipDatePicker variant for use in filtering interfaces, making it versatile for various date selection scenarios.
 
+## Important Constraints
+
+- Range DatePicker (`selectionType="range"`) only supports `pickerType="day"` - other picker types like "month" or "year" cannot be used with range selection
+
 ## TypeScript Types
 
 The following types represent the props that the DatePicker component and its variants accept. These allow you to properly configure the component according to your needs.

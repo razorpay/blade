@@ -6,6 +6,10 @@ Table
 
 A table component that displays data in a grid format through rows and columns of cells. Table facilitates data organization and allows users to scan, sort, compare, and take action on large amounts of data. It supports features like row selection, pagination, sorting, sticky headers/footers, and customizable cell content.
 
+## Important Constraints
+
+- `Table` `toolbar` prop only accepts `TableToolbar` component
+
 ## TypeScript Types
 
 These types define the props that the Table component and its subcomponents accept, helping you understand how to use them properly in your application.

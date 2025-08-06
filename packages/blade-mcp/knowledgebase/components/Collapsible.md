@@ -6,6 +6,10 @@ Collapsible
 
 Collapsible is a component that allows users to toggle the visibility of hidden content within a container. It provides an expandable/collapsible section that helps manage space efficiency in user interfaces. The component suite includes the main Collapsible container along with specialized trigger elements (CollapsibleButton, CollapsibleLink) and a content container (CollapsibleBody).
 
+## Important Constraints
+
+- `Collapsible` component only accepts `CollapsibleBody`, `CollapsibleButton`, and `CollapsibleLink` components as children
+
 ## TypeScript Types
 
 The following types represent the props that the Collapsible component and its subcomponents accept. These allow you to properly configure the components according to your needs.

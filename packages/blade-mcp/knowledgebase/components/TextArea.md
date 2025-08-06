@@ -6,6 +6,10 @@ TextArea
 
 TextArea is a component for collecting multi-line text input from users. It supports features like validation states, character counting, and tagging functionality. TextArea is ideal for comments, descriptions, bio information, and other long-form text content where users need more space than a single-line input field.
 
+## Important Constraints
+
+- Either `value` or `defaultValue` can be passed, but not both
+
 ## TypeScript Types
 
 The following types define the props that the TextArea component accepts. These types are essential for proper usage of the component in TypeScript projects.
