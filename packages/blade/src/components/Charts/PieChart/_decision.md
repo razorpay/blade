@@ -53,7 +53,7 @@ Published Date: Aug 4, 2025
 
   ![][image6]
 
-      Need to display Text in the center of the do-nut chart. We should have a standard style of this. 
+      Need to display Text in the center of the donut chart. We should have a standard style of this. 
 
 
 ## 3\. API Specifications
