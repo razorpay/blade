@@ -21,7 +21,7 @@
 
   * **[Figma Design Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188716&p=f&m=dev)**
 
-![][image1]
+![](./images/design.png)
 
 -----
 
@@ -33,36 +33,38 @@
 
 1.  **[Basic Line Chart](https://recharts.org/en-US/examples/SimpleLineChart)** A standard line chart with a grid, X-axis, Y-axis, Tooltip, Legend, and line.
 
-   ![][image2]
+![](./images/basic.png)
+
 
 
 2.  **[Tiny Line Chart](https://recharts.org/en-US/examples/TinyLineChart)** A minimal line chart with only the line, with no grid or axes. Also known as a sparkline.
 
-  ![][image3]
+![](./images/tiny.png)
 
 
 
 3.  **[Line Chart that Connects Nulls](https://recharts.org/en-US/examples/LineChartConnectNulls)** The chart should be able to handle `null` data points by connecting the line over the gap. This is supported in Recharts via the `connectNulls` prop.
 
-  ![][image4]
+![](./images/nullchart.png)
+
 
 
 
 4.  **[Custom Dot Charts](https://recharts.org/en-US/examples/CustomizedDotLineChart)** We will support a limited set of options for customizing the dots on the line chart. Recharts allows passing a `Dot` component as a prop.
 
-  ![][image5]
+![](./images/dot.png)
 
 
 
 5.  **Forecast Line Chart** This requires showing a portion of the line as a dotted or dashed line to represent forecasted data. This can be implemented by rendering two separate lines and hiding the forecast line from the legend. The API design needs to consider how to accept forecast data.
 
-  ![][image6]
+![](./images/forecast.png)
 
 
 
 6.  **[Stepped Line Chart](https://ui.shadcn.com/charts/line#charts)** The chart should support different interpolation types, like 'step'. This can be controlled via a `lineType` prop, which maps to the Recharts `type` prop on the `<Line />` component. We will likely support a limited number of line types initially.
 
-  ![][image7]
+![](./images/stepchart.png)
 
 
 
