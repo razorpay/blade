@@ -407,11 +407,11 @@ const chartConfig = {
 
 ## 5\. Open Questions
 
-### 5.1. Color Handling
+- Color Handling
 
 We will not support sequential colors for line charts. A limited, curated palette of theme colors will be available. A `color` prop will be available in the line configuration. If it is not provided, we will automatically assign a color from the predefined palette. [Rama Krushna Behera](mailto:rama.behera@razorpay.com) will confirm the final color palette.
 
-### 5.2. ToolTip 
+-  ToolTip 
 
 We might need to make custom tooltip. Like ChartsToolTip. Since the tooltip would be different then our blade's tooltip. we still need to check this.
 
