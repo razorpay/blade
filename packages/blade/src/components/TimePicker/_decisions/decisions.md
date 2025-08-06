@@ -1,42 +1,45 @@
 # TimePicker
 
-The TimePicker component allows users to select a specific time from a customizable time interface. It supports both 12-hour and 24-hour formats and provides an intuitive picker interface.
+The TimePicker component allows users to select a specific time from a customizable time interface. It supports both 12-hour and 24-hour formats, provides an intuitive picker interface, and automatically adapts to mobile devices with a BottomSheet experience.
 
 <img src="./timepicker-thumbnail.png" width="380" />
 
 ## Design
 
-[Figma Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=XXXXX) to all variants of the TimePicker component
+- [Figma - TimePicker](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=XXXXX)
 
 ## Anatomy
 
 <img src="./timepicker-anatomy.png" width="60%" alt="TimePicker Anatomy" />
 
-## Components
+The TimePicker consists of:
 
-- TimePickerInput (internal)
-- TimePickerDropdown (internal)
-- TimePicker (main component)
+- **Input Field**: Text input displaying the current time value
+- **Dropdown Trigger**: Click/focus area to open time selection
+- **Time Columns**: Hours, Minutes, and Period (AM/PM) selection areas
+- **Action Buttons**: Apply/Cancel buttons (when `showActions={true}`)
 
-## Basic Usage
+## API
 
 ```jsx
+import { TimePicker } from '@razorpay/blade/components';
+
 <TimePicker
   label="Select time"
   value={new Date('2024-01-01T14:30:00')}
   onChange={({ value }) => {
     console.log('time selected', value);
   }}
-/>
+/>;
 ```
 
-## API
+### Props
 
-### TimePicker API
+#### TimePicker
 
 ```typescript
-type BaseInputProps = Pick<
-  TextInputProps,
+type InputProps = Pick<
+  BaseInputProps,
   | 'labelPosition'
   | 'validationState'
   | 'errorText'
@@ -50,6 +53,7 @@ type BaseInputProps = Pick<
   | 'size'
   | 'autoFocus'
   | 'name'
+  | 'placeholder'
 >;
 
 type TimePickerValue = {
@@ -57,19 +61,19 @@ type TimePickerValue = {
   // Future extensibility - can add more properties here
 };
 
-type TimePickerProps = BaseInputProps & {
+type TimePickerProps = InputProps & {
   /**
    * Label for the time input
    */
   label?: string;
 
   /**
-   * Current time value as Date object
+   * Current time value as Date object (for controlled usage)
    */
   value?: Date;
 
   /**
-   * Default time value as Date object
+   * Default time value as Date object (for uncontrolled usage)
    */
   defaultValue?: Date;
 
@@ -94,11 +98,13 @@ type TimePickerProps = BaseInputProps & {
 
   /**
    * Controls dropdown open state (for controlled usage)
+   * @default false
    */
   isOpen?: boolean;
 
   /**
    * Default open state (for uncontrolled usage)
+   * @default false
    */
   defaultIsOpen?: boolean;
 
@@ -123,12 +129,22 @@ type TimePickerProps = BaseInputProps & {
    * - More streamlined interaction experience
    */
   showActions?: boolean;
+
+  /**
+   * Test ID for testing purposes
+   */
+  testID?: string;
+
+  /**
+   * Accessibility label for screen readers
+   */
+  accessibilityLabel?: string;
 };
 ```
 
 <details>
 
-<summary>Alternative Approaches</summary>
+<summary>Alternative APIs</summary>
 
 ## 1. Composition-based API (Not Recommended)
 
@@ -415,7 +431,8 @@ TimePicker is designed to integrate seamlessly with ListView patterns for time-b
 
 ### Design Decisions
 
-- **Input vs Dropdown Format**: Should the text input always show 24h format while the dropdown shows 12h/AM-PM format, or should both sync to the same format?
+- **Input vs Dropdown Format**: Should the text input always show 12h format while the dropdown shows 24h/AM-PM format, or should both sync to the same format?
+  ✅ Resolved - Both input and dropdown will sync to the same format based on `timeFormat` prop
 
 ### Feature Scope
 
