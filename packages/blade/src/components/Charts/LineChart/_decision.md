@@ -45,7 +45,7 @@
 
 3.  **[Line Chart that Connects Nulls](https://recharts.org/en-US/examples/LineChartConnectNulls)** The chart should be able to handle `null` data points by connecting the line over the gap. This is supported in Recharts via the `connectNulls` prop.
 
-![](./images/nullchart.png)
+![](./images/nullChart.png)
 
 
 
