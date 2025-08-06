@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const CodeSnippetIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _CodeSnippetIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -28,5 +29,9 @@ const CodeSnippetIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const CodeSnippetIcon = assignWithoutSideEffects(_CodeSnippetIcon, {
+  componentId: 'CodeSnippetIcon',
+});
 
 export default CodeSnippetIcon;

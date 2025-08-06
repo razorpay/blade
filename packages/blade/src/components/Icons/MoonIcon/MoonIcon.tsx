@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const MoonIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _MoonIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const MoonIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const MoonIcon = assignWithoutSideEffects(_MoonIcon, {
+  componentId: 'MoonIcon',
+});
 
 export default MoonIcon;

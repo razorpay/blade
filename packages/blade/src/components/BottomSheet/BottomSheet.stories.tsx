@@ -861,6 +861,46 @@ const ZeroPaddingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
 
 export const ZeroPadding = ZeroPaddingTemplate.bind({});
 
+//TODO: remove this after review
+const BottomSheetBodyHeightTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        snapPoints={[0.7, 0.8, 1]}
+      >
+        <BottomSheetHeader />
+        <BottomSheetBody padding="spacing.0">
+          <Box backgroundColor="surface.background.primary.subtle" height="100%">
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+            <Text>This is a demo example</Text>
+          </Box>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const BottomSheetBodyHeightExample = BottomSheetBodyHeightTemplate.bind({});
+
 const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const fruites = [
     'Apple',

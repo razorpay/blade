@@ -1,5 +1,31 @@
 # @razorpay/blade-mcp
 
+## 1.4.0
+
+### Minor Changes
+
+- 5c6b0e949: feat(blade-mcp): add dashboard template pattern
+
+## 1.3.1
+
+### Patch Changes
+
+- ea88e1487: '@razorpay/blade': feat: box now supports `feedback.background` tokens
+  '@razorpay/blade-mcp': feat: add confirmation pattern documentation and examples
+
+## 1.3.0
+
+### Minor Changes
+
+- b2467ea18: feat(table): added spanning & nesting
+- d7f4084fa: feat(table): added support for grouping
+
+## 1.2.2
+
+### Patch Changes
+
+- b42b8479e: Added correct function definition for the blade checkbox onchange function
+
 ## 1.2.1
 
 ### Patch Changes

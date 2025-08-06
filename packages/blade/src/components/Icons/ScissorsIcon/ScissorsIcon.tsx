@@ -1,8 +1,9 @@
 import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ScissorsIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _ScissorsIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -56,5 +57,9 @@ const ScissorsIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const ScissorsIcon = assignWithoutSideEffects(_ScissorsIcon, {
+  componentId: 'ScissorsIcon',
+});
 
 export default ScissorsIcon;

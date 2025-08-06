@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const AirplayIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _AirplayIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const AirplayIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const AirplayIcon = assignWithoutSideEffects(_AirplayIcon, {
+  componentId: 'AirplayIcon',
+});
 
 export default AirplayIcon;

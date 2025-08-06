@@ -76,6 +76,8 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
 
         const result: [Date, Date] = [date, pickedDate];
         result.sort((a, b) => a.getTime() - b.getTime());
+        result[1].setHours(23, 59, 59, 999);
+
         setValue(result);
         setHoveredDate(null);
         setPickedDate(null);

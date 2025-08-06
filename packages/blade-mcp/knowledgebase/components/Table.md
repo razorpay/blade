@@ -739,3 +739,152 @@ const ServerPaginatedTable = () => {
 
 export default ServerPaginatedTable;
 ```
+
+### Table Nesting Pattern
+
+Hierarchical data display with expandable rows and animations. Use for parent-child relationships or detailed information.
+
+```tsx
+const TableNestingExample = () => {
+  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+
+  const toggleRow = (id: string) => {
+    const newExpanded = new Set(expandedRows);
+    newExpanded.has(id) ? newExpanded.delete(id) : newExpanded.add(id);
+    setExpandedRows(newExpanded);
+  };
+
+  return (
+    <Table data={tableData}>
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Name</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+              <TableHeaderCell>Status</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+
+          <TableBody>
+            {tableData.map((item) => (
+              <>
+                <TableRow key={item.id} item={item}>
+                  <TableCell>
+                    <Button
+                      variant="tertiary"
+                      size="xsmall"
+                      icon={expandedRows.has(item.id) ? ChevronDownIcon : ChevronRightIcon}
+                      onClick={() => toggleRow(item.id)}
+                    />
+                    {item.name}
+                  </TableCell>
+                  <TableCell>{item.totalAmount}</TableCell>
+                  <TableCell>
+                    <Badge color="positive">{item.status}</Badge>
+                  </TableCell>
+                </TableRow>
+
+                {expandedRows.has(item.id) && (
+                  <TableRow key={`${item.id}-expanded`} item={item}>
+                    <TableCell gridColumnStart={1} gridColumnEnd={4}>
+                      <Box
+                        backgroundColor="surface.background.gray.subtle"
+                        padding="spacing.4"
+                        borderRadius="medium"
+                        margin="spacing.2"
+                      >
+                        {/* Nested content here */}
+                        {item.children.map((child) => (
+                          <Box key={child.id} display="flex" justifyContent="space-between">
+                            <Text>{child.name}</Text>
+                            <Text>{child.totalAmount}</Text>
+                          </Box>
+                        ))}
+                      </Box>
+                    </TableCell>
+                  </TableRow>
+                )}
+              </>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </Table>
+  );
+};
+```
+
+### Table Spanning Pattern
+
+Row and column spanning for complex layouts with merged cells. Use for grouping related data or creating summary sections. Use grid props on TableCell to span across multiple rows or columns for merged cells.
+
+```tsx
+{/* Header spanning */}
+<TableHeaderCell gridColumnStart={2} gridColumnEnd={4}>
+  Combined Header
+</TableHeaderCell>
+
+<TableRow item={item}>
+  {/* Span across multiple columns */}
+  <TableCell gridColumnStart={1} gridColumnEnd={4}>
+    Summary spanning 3 columns
+  </TableCell>
+</TableRow>
+
+<TableRow item={item}>
+  {/* Span across multiple rows */}
+  <TableCell gridRowStart={2} gridRowEnd={4}>
+    Group spanning 2 rows
+  </TableCell>
+</TableRow>
+
+{/* Footer spanning */}
+<TableFooterCell gridColumnStart={1} gridColumnEnd={3}>
+  Total
+</TableFooterCell>
+```
+
+### Table Grouping Pattern
+
+Hierarchical grouped data with automatic tree structure. Use for categorized data with parent-child relationships.
+
+```tsx
+const TableGroupingExample = () => {
+  return (
+    <Table data={groupedData} isGrouped showBorderedCells>
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Category</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+              <TableHeaderCell>Status</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+
+          <TableBody>
+            {tableData.map((item, index) => (
+              <TableRow key={index} item={item}>
+                <TableCell
+                  gridColumnStart={item.treeXLevel === 0 ? 1 : undefined}
+                  gridColumnEnd={item.treeXLevel === 0 ? 4 : undefined}
+                >
+                  {item.name}
+                </TableCell>
+                {item.treeXLevel !== 0 && (
+                  <>
+                    <TableCell>{item.amount}</TableCell>
+                    <TableCell>{item.status}</TableCell>
+                  </>
+                )}
+              </TableRow>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </Table>
+  );
+};
+```
+

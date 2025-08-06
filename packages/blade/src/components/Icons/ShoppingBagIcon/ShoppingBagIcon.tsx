@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ShoppingBagIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _ShoppingBagIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const ShoppingBagIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const ShoppingBagIcon = assignWithoutSideEffects(_ShoppingBagIcon, {
+  componentId: 'ShoppingBagIcon',
+});
 
 export default ShoppingBagIcon;

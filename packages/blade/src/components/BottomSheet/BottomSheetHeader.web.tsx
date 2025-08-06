@@ -35,6 +35,7 @@ const _BottomSheetHeader = ({
 
   useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
+    if (!title && !subtitle) return;
     setHeaderHeight(ref.current.getBoundingClientRect().height);
   }, [ref, isOpen]);
 

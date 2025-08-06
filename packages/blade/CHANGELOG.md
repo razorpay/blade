@@ -1,5 +1,66 @@
 # @razorpay/blade
 
+## 12.46.1
+
+### Patch Changes
+
+- 17b1be1e2: fix(blade): make promotional toast's leading prop optional
+
+## 12.46.0
+
+### Minor Changes
+
+- da2ffba9f: fix(blade): bottom sheet height logic
+
+  > **Note:** This release introduces a change in height of bottom sheet, earlier we were adding header + grabhandle height, even if header don't have title or subtitle. This release fixes that.
+
+## 12.45.0
+
+### Minor Changes
+
+- 8c9f43777: fix: date picker end date issue
+
+  > **Note:** This release introduces a change in how the DatePicker returns the time for the end date in a date range. Previously, it returned `00:00:00` now it returns `23:59:59` .
+
+## 12.44.0
+
+### Minor Changes
+
+- ea88e1487: '@razorpay/blade': feat: box now supports `feedback.background` tokens
+  '@razorpay/blade-mcp': feat: add confirmation pattern documentation and examples
+
+## 12.43.1
+
+### Patch Changes
+
+- a2cf026c4: fix(carousel): resolve Storybook interaction issues in peek mode
+
+## 12.43.0
+
+### Minor Changes
+
+- b2467ea18: feat(table): added spanning & nesting
+- d7f4084fa: feat(table): added support for grouping
+
+## 12.42.3
+
+### Patch Changes
+
+- 88afdb37f: fix: remove logs and add ref
+- abefb18cd: fix(inputgroup): payment card icon jsx error
+
+## 12.42.2
+
+### Patch Changes
+
+- b46d26bee: fix: table header sticky
+
+## 12.42.1
+
+### Patch Changes
+
+- 6d4b1f6e7: fix(blade): accordion sytling changes
+
 ## 12.42.0
 
 ### Minor Changes

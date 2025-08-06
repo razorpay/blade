@@ -22,6 +22,36 @@ type TableBackgroundColors = `surface.background.gray.${DotNotationToken<
 
 type RowHeightType = number | ((item: TableLibraryTableNode, index: number) => number);
 
+/**
+ * Common grid spanning properties for table cells
+ */
+type TableCellGridSpanningProps = {
+  /**
+   * Grid column start position (1-based). Used for CSS Grid column spanning.
+   * @example
+   * <TableCell gridColumnStart={1} gridColumnEnd={4}>Spans columns 1-3</TableCell>
+   */
+  gridColumnStart?: number;
+  /**
+   * Grid column end position (1-based). Used for CSS Grid column spanning.
+   * @example
+   * <TableCell gridColumnStart={1} gridColumnEnd={4}>Spans columns 1-3</TableCell>
+   */
+  gridColumnEnd?: number;
+  /**
+   * Grid row start position (1-based). Used for CSS Grid row spanning.
+   * @example
+   * <TableCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableCell>
+   */
+  gridRowStart?: number;
+  /**
+   * Grid row end position (1-based). Used for CSS Grid row spanning.
+   * @example
+   * <TableCell gridRowStart={1} gridRowEnd={3}>Spans rows 1-2</TableCell>
+   */
+  gridRowEnd?: number;
+};
+
 type TableHeaderProps = {
   /**
    * The children of TableHeader should be TableHeaderRow
@@ -73,7 +103,8 @@ type TableHeaderCellProps = {
   textAlign?: 'left' | 'center' | 'right';
 
   _hasPadding?: boolean;
-} & DataAnalyticsAttribute;
+} & TableCellGridSpanningProps &
+  DataAnalyticsAttribute;
 
 type TableProps<Item> = {
   /**
@@ -207,6 +238,12 @@ type TableProps<Item> = {
    * The backgroundColor prop determines the background color of the table.
    **/
   backgroundColor?: TableBackgroundColors | 'transparent';
+  /**
+   * The isGrouped prop determines whether the table has grouped data with parent-child relationships or not.
+   * When true, enables tree-aware selection where selecting a parent automatically selects all children.
+   * The default value is `false`.
+   **/
+  isGrouped?: boolean;
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 
@@ -299,7 +336,13 @@ type TableCellProps = {
    * @private
    */
   _hasPadding?: boolean;
-} & DataAnalyticsAttribute;
+  /**
+   * The backgroundColor prop determines the background color of the table cell.
+   * The default value is `transparent`.
+   **/
+  backgroundColor?: TableBackgroundColors | 'transparent';
+} & TableCellGridSpanningProps &
+  DataAnalyticsAttribute;
 
 type TableEditableCellProps = Pick<
   BaseInputProps,
@@ -374,7 +417,8 @@ type TableFooterCellProps = {
    * The default value is `left`.
    **/
   textAlign?: 'left' | 'center' | 'right';
-} & DataAnalyticsAttribute;
+} & TableCellGridSpanningProps &
+  DataAnalyticsAttribute;
 
 type TablePaginationCommonProps = {
   /**
@@ -596,4 +640,5 @@ export type {
   TablePaginationCommonProps,
   VirtualizedWrapperProps,
   RowHeightType,
+  TableCellGridSpanningProps,
 };

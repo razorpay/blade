@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const SubscriptionsIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _SubscriptionsIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -40,5 +41,9 @@ const SubscriptionsIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const SubscriptionsIcon = assignWithoutSideEffects(_SubscriptionsIcon, {
+  componentId: 'SubscriptionsIcon',
+});
 
 export default SubscriptionsIcon;
