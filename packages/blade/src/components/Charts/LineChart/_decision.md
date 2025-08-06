@@ -82,8 +82,7 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 
 interface Line {
   type: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  dot: boolean;
-  activeDot: boolean;
+  dot: React.ReactNode;
   connectNulls: boolean;
   legendType: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'triangleDown' | 'triangleUp' | 'star' | 'wye' | 'none';
   dataKey: string;
@@ -176,6 +175,14 @@ import {
     </ResponsiveContainer>
 ```
 
+
+Recharts chart allows us to pass a custom dot with dot prop. 
+We can think of having a limited set of custom dot's , or we can allow for all. 
+
+
+```ts
+<Line type="monotone" dataKey="pv" dot={<CustomizedDot />} />
+```
 
 
   * **Pros**
