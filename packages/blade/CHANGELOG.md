@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.46.1
+
+### Patch Changes
+
+- 17b1be1e2: fix(blade): make promotional toast's leading prop optional
+
 ## 12.46.0
 
 ### Minor Changes
