@@ -76,7 +76,7 @@ interface Bar {
   stackId?: string; // Used to group bars into a stack
   activeBar?: React.ReactElement | boolean; // Custom component or boolean for active state
   label?: React.ReactElement | boolean; // Custom component or boolean for labels
-  //TODO: onces designs are ready check if we need to expose these props ?
+  //TODO: onces designs are ready check if we need to expose radius props ?
   radius?: number | [number, number, number, number]; // Bar corner radius
 }
 
@@ -128,7 +128,7 @@ import {
   </BarChart>
 </ResponsiveContainer>
 
-// 3. Horizontal Bar Chart
+// 3.  Bar Chart with different Layout.
 <ResponsiveContainer width="100%" height={300}>
   {/* The key is layout="vertical" */}
   <BarChart data={chartData} layout="vertical" margin={{ left: 30 }}>

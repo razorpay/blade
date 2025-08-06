@@ -7,13 +7,12 @@ Published Date: Aug 4, 2025
   
 
 
-[**1\. Design Breakdown**](https://docs.google.com/document/d/1JMvtmevy_K5uGxNUqFgcqWulY6JH7iUUwtaHKyYaYTg/edit?tab=t.0#heading=h.9lh4rmb8r6h0)
+1. [Design Breakdown](#1-design-breakdown)
+2. [Requirements to Handle](#2-requirements-to-handle)
+3. [API Specifications](#3-api-specifications)
+4. [Alternative APIs](#4-alternative-apis-)
+5. [Open Questions](#5-open-questions)
 
-**2\. Cases to Cover** 
-
-**3\. API** 
-
-**4\. Open questions**
 
 1. # Design Breakdown
 
@@ -164,7 +163,7 @@ const COLORS = ['token.chart.primary', 'token.chart.secondary', 'token.chart.ter
 </ResponsiveContainer>
 // Other way would be to use <Label /> component and pass the text. 
 // Something like this:
-```ts
+
  <Label
    content={({ viewBox }) => {
      if (viewBox && "cx" in viewBox && "cy" in viewBox) {

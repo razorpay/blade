@@ -226,7 +226,6 @@ const yAxisConfig = [
  * Defines the shape for a single data point in the chart's data array.
  * Uses a generic index signature to allow for flexible data keys.
  */
-// TODO: update this later
 interface ChartData {
   [key: string]: any;
 }
