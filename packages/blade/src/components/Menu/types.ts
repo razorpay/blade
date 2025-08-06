@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
+import type {
+  UseFloatingReturn,
+  UseInteractionsReturn,
+  useListItem,
+  Placement,
+} from '@floating-ui/react';
 import type React from 'react';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
@@ -32,6 +37,13 @@ type MenuProps = {
    * @default 'click'
    */
   openInteraction?: 'hover' | 'click';
+
+  /**
+   * Sets the placement of the MenuOverlay
+   *
+   * @default 'bottom-start' for top-level menus, 'right-start' for nested menus
+   */
+  placement?: Placement;
 };
 
 type MenuItemProps = {
@@ -165,7 +177,10 @@ type MenuContextType = {
   isOpen: boolean;
 };
 
-type UseFloatingMenuProps = Pick<MenuProps, 'openInteraction' | 'onOpenChange' | 'isOpen'> & {
+type UseFloatingMenuProps = Pick<
+  MenuProps,
+  'openInteraction' | 'onOpenChange' | 'isOpen' | 'placement'
+> & {
   elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
 };
 

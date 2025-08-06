@@ -41,6 +41,7 @@ const useFloatingMenuSetup = ({
   openInteraction,
   onOpenChange,
   isOpen,
+  placement,
 }: UseFloatingMenuProps): UseFloatingMenuReturnType => {
   const [isControllableOpen, setIsControllableOpen] = useControllableState({
     value: isOpen,
@@ -61,7 +62,7 @@ const useFloatingMenuSetup = ({
     nodeId,
     open: isControllableOpen,
     onOpenChange: (_isOpen) => setIsControllableOpen(() => _isOpen),
-    placement: isNested ? 'right-start' : 'bottom-start',
+    placement: placement ?? (isNested ? 'right-start' : 'bottom-start'),
     middleware: [
       offset({ mainAxis: isNested ? 12 : OVERLAY_OFFSET, alignmentAxis: isNested ? -16 : 0 }),
       flip(),

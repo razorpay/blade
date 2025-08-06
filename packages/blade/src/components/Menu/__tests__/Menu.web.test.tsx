@@ -134,4 +134,12 @@ describe('Menu', () => {
     await waitFor(() => expect(getByRole('menu')).toBeVisible());
     expect(document.body).toMatchSnapshot();
   });
+
+  it('should accept placement prop', async () => {
+    const user = userEvents.setup();
+    const { getByRole } = renderWithTheme(<BasicMenu placement="top-start" />);
+    await user.click(getByRole('button', { name: 'Open Menu' }));
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    expect(document.body).toMatchSnapshot();
+  });
 });
