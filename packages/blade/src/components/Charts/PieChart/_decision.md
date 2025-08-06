@@ -6,13 +6,6 @@ BU: Platform
 Published Date: Aug 4, 2025  
   
 
-| Reviewer Name | Reviewed Date | Status |
-| :---- | :---- | ----- |
-| [Swapnil](mailto:swapnil.kr@razorpay.com) |  | Not started |
-| [Saurabh Daware](mailto:saurabh.daware@razorpay.com) |  | Not started |
-| [Anurag Hazra](mailto:anurag.hazra@razorpay.com) |  | Not started |
-|  |  | Not started |
-|  |  | Not started |
 
 [**1\. Design Breakdown**](https://docs.google.com/document/d/1JMvtmevy_K5uGxNUqFgcqWulY6JH7iUUwtaHKyYaYTg/edit?tab=t.0#heading=h.9lh4rmb8r6h0)
 
