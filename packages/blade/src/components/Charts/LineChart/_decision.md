@@ -80,8 +80,6 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 
 interface Line {
   type: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  stroke: string;
-  strokeWidth: number;
   dot: boolean;
   activeDot: boolean;
   connectNulls: boolean;
@@ -237,6 +235,8 @@ const yAxisConfig = [
   // more data
 ];
 
+
+//This is just an example of custom tooltip. we might change it later. according to design.
 const CustomToolTip = ({ active, payload, label }) => {
   // We can handle isVisible logic internally as well.
   const isVisible = active && payload && payload.length;
@@ -285,7 +285,6 @@ type LineType = 'monotone' | 'linear' | 'step' | 'stepBefore' | 'stepAfter';
  * Defines the shape for a single data point in the chart's data array.
  * Uses a generic index signature to allow for flexible data keys.
  */
-// TODO: update this later
 interface ChartData {
   [key: string]: any;
 }
