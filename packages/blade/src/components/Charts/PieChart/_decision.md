@@ -163,7 +163,7 @@ const COLORS = ['token.chart.primary', 'token.chart.secondary', 'token.chart.ter
       dominantBaseline="central"
       fontSize="24"
       fontWeight="bold"
-      fill="var(--your-blade-color-token)"
+      color=""
     >
       Total: 900
     </text>
@@ -185,14 +185,13 @@ const COLORS = ['token.chart.primary', 'token.chart.secondary', 'token.chart.ter
            <tspan
              x={viewBox.cx}
              y={viewBox.cy}
-             className="fill-foreground text-3xl font-bold"
+            
            >
              {totalVisitors.toLocaleString()}
            </tspan>
            <tspan
              x={viewBox.cx}
              y={(viewBox.cy || 0) + 24}
-             className="fill-muted-foreground"
            >
              Visitors
            </tspan>
