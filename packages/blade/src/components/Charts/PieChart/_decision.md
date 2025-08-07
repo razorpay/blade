@@ -57,26 +57,21 @@ Published Date: Aug 7, 2025
 
 This approach involves re-exporting styled versions of the underlying `recharts` components, giving developers full compositional control over the chart's structure and appearance. This is our recommended approach for maximum flexibility.
 
-```ts
-// Interface for Pie props
-interface Pie {
-  dataKey: string;
-  nameKey: string;
-  data: { [key: string]: string | number }[];
-  cx: string | number;
-  cy: string | number;
-  // it is used to control inner and outer radius values internally. 
-  donutRadius?: 'small' | 'medium' | 'large' |'extraLarge' | 'none' ;
-  // it is used to control start and end angle
-  circleType?: 'full' | 'half' | 'quater';
-  paddingAngle?: 'none' | 'small' | 'medium' | 'large' | 'extraLarge';
-  // We would provide an active shape
-   activeShape: React.ReactElement | ((props: any) => React.ReactNode);
-  // Colors for individual slices are passed via <Cell /> components
-}
+#### Pie Props
 
-// for components like ResponsiveContainer, Legend, Tooltip etc. we would be just styling them and re-exporting them . they don't need much changes.
-```
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `dataKey` | `string` | ✅ | - | The key used to identify the data value for each slice |
+| `nameKey` | `string` | ✅ | - | The key used to identify the name/label for each slice |
+| `data` | `{ [key: string]: string \| number }[]` | ✅ | - | Array of data objects containing the pie chart data |
+| `cx` | `string \| number` | ✅ | - | The x-coordinate of the center of the pie chart |
+| `cy` | `string \| number` | ✅ | - | The y-coordinate of the center of the pie chart |
+| `donutRadius` | `'small' \| 'medium' \| 'large' \| 'extraLarge' \| 'none'` | ❌ | `'none'` | Controls the inner and outer radius values internally to create donut charts |
+| `circleType` | `'full' \| 'half' \| 'quarter'` | ❌ | `'full'` | Controls the start and end angle of the pie chart |
+| `paddingAngle` | `'none' \| 'small' \| 'medium' \| 'large' \| 'extraLarge'` | ❌ | `'none'` | Controls the padding angle between pie slices |
+| `activeShape` | `React.ReactElement \| ((props: any) => React.ReactNode)` | ✅ | - | Custom component or render function for the active (hovered) pie slice |
+
+> **Note:** Colors for individual slices are passed via `<Cell />` components. For components like ResponsiveContainer, Legend, Tooltip etc. we would be just styling them and re-exporting them as they don't need much changes.
 
 ```ts
 import {
