@@ -15,6 +15,7 @@ import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';
 import { Button } from '~components/Button';
+import { SparklesIcon } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -601,6 +602,46 @@ export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
           {testimonialData.map((testimonial) => (
             <CarouselItem key={testimonial.name}>
               <TestimonialCard {...testimonial} />
+            </CarouselItem>
+          ))}
+        </CarouselComponent>
+      </Box>
+    </Box>
+  );
+};
+
+const CarouselCard = () => {
+  return (
+    <Box
+      borderWidth="thin"
+      borderRadius="small"
+      width="300px"
+      padding="spacing.5"
+      borderColor="surface.border.gray.subtle"
+      height="72px"
+      display="flex"
+      gap="24px"
+      justifyContent="space-between"
+      alignItems="center"
+    >
+      <SparklesIcon color="surface.icon.onSea.onSubtle" size="large" />
+      <Text size="medium">Give me a recap of yesterday's task </Text>
+    </Box>
+  );
+};
+
+export const WithOverlap: StoryFn<typeof CarouselComponent> = (props) => {
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Box marginTop="spacing.6" paddingX="spacing.8">
+        <CarouselComponent
+          visibleItems="autofit"
+          navigationButtonPosition="overlap"
+          carouselItemWidth="300px"
+        >
+          {Array.from({ length: 10 }).map((_, i) => (
+            <CarouselItem key={i}>
+              <CarouselCard />
             </CarouselItem>
           ))}
         </CarouselComponent>

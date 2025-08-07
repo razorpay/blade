@@ -101,7 +101,7 @@ type CarouselProps = {
    *
    * @default 'bottom'
    */
-  navigationButtonPosition?: 'bottom' | 'side';
+  navigationButtonPosition?: 'bottom' | 'side' | 'overlap';
   /**
    * Variant to be used depending on the emphasis you want to give to the navigation buttons
    *
