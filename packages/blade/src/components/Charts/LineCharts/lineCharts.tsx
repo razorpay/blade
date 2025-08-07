@@ -21,7 +21,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 
 // BladeColorToken type for charts
-export type BladeColorToken = 
+export type BladeColorToken =
   | 'surface.text.gray.normal'
   | 'surface.text.gray.muted'
   | 'interactive.background.primary.default'
@@ -36,7 +36,18 @@ export interface LineProps extends Omit<ComponentProps<typeof RechartsLine>, 'ty
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   dot?: React.ReactNode;
   connectNulls?: boolean;
-  legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'triangleDown' | 'triangleUp' | 'star' | 'wye';
+  legendType?:
+    | 'none'
+    | 'line'
+    | 'square'
+    | 'diamond'
+    | 'circle'
+    | 'cross'
+    | 'triangle'
+    | 'triangleDown'
+    | 'triangleUp'
+    | 'star'
+    | 'wye';
   dataKey: string;
   name?: string;
   color?: BladeColorToken;
@@ -66,8 +77,12 @@ const getChartColors = (theme: Theme): Record<string, string> => ({
 // Helper function to resolve color tokens
 const resolveColorToken = (color: BladeColorToken | undefined, theme: Theme): string => {
   if (!color) return getChartColors(theme).primary;
-  
-  if (color.startsWith('surface.') || color.startsWith('feedback.') || color.startsWith('interactive.')) {
+
+  if (
+    color.startsWith('surface.') ||
+    color.startsWith('feedback.') ||
+    color.startsWith('interactive.')
+  ) {
     const parts = color.split('.');
     let value: any = theme.colors;
     for (const part of parts) {
@@ -75,14 +90,15 @@ const resolveColorToken = (color: BladeColorToken | undefined, theme: Theme): st
     }
     return value || getChartColors(theme).primary;
   }
-  
+
   return color;
 };
 
 // TypeScript prop types
-export type LineChartProps = Omit<ComponentProps<typeof RechartsLineChart>, 'margin'> & StyledPropsBlade & {
-  children?: React.ReactNode;
-};
+export type LineChartProps = Omit<ComponentProps<typeof RechartsLineChart>, 'margin'> &
+  StyledPropsBlade & {
+    children?: React.ReactNode;
+  };
 
 export type XAxisProps = ComponentProps<typeof RechartsXAxis>;
 export type YAxisProps = ComponentProps<typeof RechartsYAxis>;
@@ -118,16 +134,17 @@ export const LineChart: React.FC<LineChartProps> = ({ children, ...props }) => {
   );
 };
 
-export const Line: React.FC<LineProps> = ({ 
+export const Line: React.FC<LineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
-  ...props 
+  ...props
 }) => {
   const { theme } = useTheme();
   const resolvedColor = resolveColorToken(color, theme);
-  
-  const strokeDasharray = strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
+
+  const strokeDasharray =
+    strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
 
   return (
     <RechartsLine
@@ -142,11 +159,7 @@ export const Line: React.FC<LineProps> = ({
   );
 };
 
-export const ReferenceLine: React.FC<ReferenceLineProps> = ({ 
-  color,
-  label,
-  ...props 
-}) => {
+export const ReferenceLine: React.FC<ReferenceLineProps> = ({ color, label, ...props }) => {
   const { theme } = useTheme();
   const resolvedColor = resolveColorToken(color, theme);
 
@@ -163,12 +176,12 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({
 
 export const XAxis: React.FC<XAxisProps> = (props) => {
   const { theme } = useTheme();
-  
+
   return (
     <RechartsXAxis
       axisLine={false}
       tickLine={false}
-      tick={{ 
+      tick={{
         fill: theme.colors.surface.text.gray.normal,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
@@ -180,12 +193,12 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
 
 export const YAxis: React.FC<YAxisProps> = (props) => {
   const { theme } = useTheme();
-  
+
   return (
     <RechartsYAxis
       axisLine={false}
       tickLine={false}
-      tick={{ 
+      tick={{
         fill: theme.colors.surface.text.gray.normal,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
@@ -197,7 +210,7 @@ export const YAxis: React.FC<YAxisProps> = (props) => {
 
 export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
   const { theme } = useTheme();
-  
+
   return (
     <RechartsCartesianGrid
       strokeDasharray="3 3"
@@ -210,7 +223,7 @@ export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
 
 export const Tooltip: React.FC<TooltipProps> = (props) => {
   const { theme } = useTheme();
-  
+
   return (
     <RechartsTooltip
       contentStyle={{
@@ -230,7 +243,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
 
 export const Legend: React.FC<LegendProps> = (props) => {
   const { theme } = useTheme();
-  
+
   return (
     <RechartsLegend
       wrapperStyle={{
