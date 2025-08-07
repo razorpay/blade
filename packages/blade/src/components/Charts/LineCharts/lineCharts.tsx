@@ -32,22 +32,12 @@ export type BladeColorToken =
   | string;
 
 // Chart-specific interfaces based on user specifications
-export interface LineProps extends Omit<ComponentProps<typeof RechartsLine>, 'type'> {
+export interface LineProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  dot?: React.ReactNode;
+  dot?: boolean | { r?: number; fill?: string; stroke?: string; strokeWidth?: number; [key: string]: any };
+  activeDot?: boolean | { r?: number; fill?: string; stroke?: string; strokeWidth?: number; [key: string]: any };
   connectNulls?: boolean;
-  legendType?:
-    | 'none'
-    | 'line'
-    | 'square'
-    | 'diamond'
-    | 'circle'
-    | 'cross'
-    | 'triangle'
-    | 'triangleDown'
-    | 'triangleUp'
-    | 'star'
-    | 'wye';
+  legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'wye';
   dataKey: string;
   name?: string;
   color?: BladeColorToken;
@@ -77,20 +67,20 @@ const getChartColors = (theme: Theme): Record<string, string> => ({
 // Helper function to resolve color tokens
 const resolveColorToken = (color: BladeColorToken | undefined, theme: Theme): string => {
   if (!color) return getChartColors(theme).primary;
-
+  
   if (
     color.startsWith('surface.') ||
     color.startsWith('feedback.') ||
     color.startsWith('interactive.')
   ) {
     const parts = color.split('.');
-    let value: any = theme.colors;
+    let value: Record<string, any> = theme.colors;
     for (const part of parts) {
       value = value[part];
     }
     return value || getChartColors(theme).primary;
   }
-
+  
   return color;
 };
 
@@ -138,6 +128,8 @@ export const Line: React.FC<LineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
+  dot = true,
+  activeDot = true,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -146,14 +138,25 @@ export const Line: React.FC<LineProps> = ({
   const strokeDasharray =
     strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
 
+  // Configure dot and activeDot based on props
+  const dotConfig =
+    dot === false ? false : dot === true ? { fill: resolvedColor, strokeWidth: 0, r: 4 } : dot;
+
+  const activeDotConfig =
+    activeDot === false
+      ? false
+      : activeDot === true
+      ? { r: 6, strokeWidth: 0, fill: resolvedColor }
+      : activeDot;
+
   return (
     <RechartsLine
       stroke={resolvedColor}
       strokeWidth={2}
       strokeDasharray={strokeDasharray}
       type={type}
-      dot={{ fill: resolvedColor, strokeWidth: 0, r: 4 }}
-      activeDot={{ r: 6, strokeWidth: 0 }}
+      dot={dotConfig}
+      activeDot={activeDotConfig}
       {...props}
     />
   );

@@ -117,12 +117,6 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
             strokeStyle="solid"
             color="interactive.background.primary.default"
           />
-          <Line
-            dataKey="teamB"
-            name="Team B"
-            strokeStyle="solid"
-            color="feedback.text.positive.subtle"
-          />
           <ReferenceLine y={2200} label="Minimum" color="surface.text.gray.muted" />
         </LineChart>
       </ResponsiveContainer>
@@ -130,7 +124,7 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
   );
 };
 
-// Tiny Line Chart Example
+// Tiny Line Chart Example (no dots for cleaner look)
 export const TinyLineChart: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '200px', height: '100px' }}>
@@ -140,6 +134,74 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
             dataKey="teamA"
             strokeStyle="solid"
             color="surface.text.gray.normal"
+            dot={false}
+            activeDot={false}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
+// Line Chart with Custom Dots
+export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={chartData}>
+          <CartesianGrid />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            dataKey="teamA"
+            name="Team A (No Dots)"
+            strokeStyle="solid"
+            color="interactive.background.primary.default"
+            dot={false}
+            activeDot={true}
+          />
+          <Line
+            dataKey="teamB"
+            name="Team B (Custom Dots)"
+            strokeStyle="solid"
+            color="feedback.text.positive.subtle"
+            dot={{ r: 6, fill: '#22c55e', stroke: '#16a34a', strokeWidth: 2 }}
+            activeDot={{ r: 8, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
+// Showcase Different Dot Configurations
+export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={chartData}>
+          <CartesianGrid />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          {/* No dots at all */}
+          <Line
+            dataKey="teamA"
+            name="No Dots"
+            color="surface.text.gray.muted"
+            dot={false}
+            activeDot={false}
+          />
+          {/* Default dots */}
+          <Line
+            dataKey="teamB"
+            name="Default Dots"
+            color="interactive.background.primary.default"
+            dot={true}
+            activeDot={true}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -170,7 +232,7 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
             strokeStyle="dashed"
             connectNulls={true}
             legendType="none"
-            color="feedback.text.notice.subtle"
+            color="surface.text.gray.muted"
           />
         </LineChart>
       </ResponsiveContainer>
@@ -180,4 +242,6 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
 
 SimpleLineChart.storyName = 'Simple Line Chart';
 TinyLineChart.storyName = 'Tiny Line Chart';
+LineChartWithCustomDots.storyName = 'Line Chart with Custom Dots';
+DotConfigurationShowcase.storyName = 'Dot Configuration Showcase';
 ForecastLineChart.storyName = 'Forecast Line Chart';
