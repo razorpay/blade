@@ -8,7 +8,6 @@ The Button component is a versatile interactive element used for triggering acti
 
 ## Important Constraints
 
-- `color="transparent"` can only be used with `variant="tertiary"`
 - `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
 
 ## TypeScript Types

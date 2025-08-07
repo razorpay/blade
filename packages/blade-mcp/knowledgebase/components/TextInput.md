@@ -6,10 +6,6 @@ TextInput
 
 TextInput is a component for collecting user input in a text field. It supports various input types (text, email, number, url, etc.), validation states, and visual elements like icons, prefix/suffix text, and character counters. It can be used for names, email addresses, search queries, and other text-based inputs with optional validation and visual feedback.
 
-## Important Constraints
-
-- Either `value` or `defaultValue` can be passed, but not both
-
 ## TypeScript Types
 
 The following types define the props that the TextInput component accepts. These types are essential for proper usage of the component in TypeScript projects.

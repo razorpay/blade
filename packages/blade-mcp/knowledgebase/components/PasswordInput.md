@@ -6,10 +6,6 @@ PasswordInput
 
 PasswordInput is a secure input field designed for entering passwords. It masks the input by default and provides an optional reveal button to toggle visibility, enhancing user experience and security. The component supports accessibility features, validation states, character limits, and integrates seamlessly with browser autofill and password managers. It is highly configurable, supporting various sizes, disabled and required states, and can be used in both controlled and uncontrolled forms.
 
-## Important Constraints
-
-- Either `value` or `defaultValue` can be passed, but not both
-
 ## TypeScript Types
 
 Below are the TypeScript types for the `PasswordInput` component and its relevant subcomponents. These types represent the props that the component and its subcomponents accept. Refer to these when using `PasswordInput` in your application to ensure correct usage and type safety.

@@ -6,10 +6,6 @@ SearchInput
 
 SearchInput is a specialized input component designed for search functionality. It features a built-in search icon, clear button, and loading state, making it ideal for search interfaces, filters, and global application search. The component integrates with Dropdown for displaying search results and can be used within other components like tables for filtering data.
 
-## Important Constraints
-
-- Either `value` or `defaultValue` can be passed, but not both
-
 ## TypeScript Types
 
 The following types define the props that the SearchInput component accepts. These types are essential for proper usage of the component in TypeScript projects.
