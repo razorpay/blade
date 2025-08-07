@@ -183,7 +183,6 @@ import {
 ```
 
 
-We will allow users to modify active dot, not custom 
 
 ```ts
 <Line type="monotone" dataKey="pv" activeDot={<BladeChartDots />} />
@@ -309,7 +308,6 @@ interface ChartData {
 interface LineDefinition {
   dataKey: string;
   name: string;
-  stroke: string;
   type?: LineType;
 }
 
@@ -319,7 +317,6 @@ interface LineDefinition {
 interface ReferenceLineDefinition {
   y: number;
   label: string;
-  stroke: string;
 }
 
 /**
