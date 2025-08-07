@@ -1,16 +1,10 @@
 #!/usr/bin/env node
 
-import * as Sentry from '@sentry/node';
-import { getPackageJSONVersion } from './utils/generalUtils.js';
 import { createServer } from './createServer.js';
 import { createStdioTransport } from './createTransport.js';
+import { captureException, initSentry } from './utils/sentryUtils.js';
 
-Sentry.init({
-  dsn: process.env.BLADE_MCP_SENTRY_DSN,
-  environment: process.env.NODE_ENV ?? 'development',
-  release: getPackageJSONVersion(),
-  sendDefaultPii: false,
-});
+initSentry();
 
 try {
   const server = createServer();
@@ -19,7 +13,7 @@ try {
   // Why console.error? Checkout https://modelcontextprotocol.io/quickstart/server#logging-in-mcp-servers-2
   console.error('Blade MCP connected successfully.');
 } catch (error: unknown) {
-  Sentry.captureException(error);
+  captureException(error);
   console.error('Blade MCP Error', error);
   process.exit(1);
 }
