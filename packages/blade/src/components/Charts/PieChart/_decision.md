@@ -66,10 +66,10 @@ interface Pie {
   cx: string | number;
   cy: string | number;
   // it is used to control inner and outer radius values internally. 
-  donutRadius: 'small' | 'medium' | 'large' |'extraLarge' | 'none' ;
+  donutRadius?: 'small' | 'medium' | 'large' |'extraLarge' | 'none' ;
   // it is used to control start and end angle
-  circleType: 'full' | 'half' | 'quater';
-  paddingAngle: 'none' | 'small' | 'medium' | 'large' | 'extraLarge';
+  circleType?: 'full' | 'half' | 'quater';
+  paddingAngle?: 'none' | 'small' | 'medium' | 'large' | 'extraLarge';
   // We would provide an active shape
    activeShape: React.ReactElement | ((props: any) => React.ReactNode);
   // Colors for individual slices are passed via <Cell /> components
