@@ -69,8 +69,6 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 ```ts
 interface Area {
   type: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  stroke: string;
-  fill: string;
   dataKey: string;
   name: string;
   stackId?: string | number;
