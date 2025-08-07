@@ -81,20 +81,22 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 ```ts
 
 interface Line {
-  type: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  dot: React.ReactNode;
-  connectNulls: boolean;
-  legendType: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'triangleDown' | 'triangleUp' | 'star' | 'wye' | 'none';
+  type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
+  // Will show default dot on line 
+  dot?: React.ReactNode;
+  activeDot?: React.ReactNode; 
+  connectNulls?: boolean;
+  legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'triangleDown' | 'triangleUp' | 'star' | 'wye' | 'none';
   dataKey: string;
   name: string;
-  color: BladeColorToken;
-  strokeStyle: 'dotted' | 'dashed';
+  color?: BladeColorToken;
+  strokeStyle?: 'dotted' | 'dashed';
 }
 
 interface ReferenceLine {
-    y: number;
+    y?: number;
     label: string;
-    color: BladeColorToken;
+    color?: BladeColorToken;
 }
 
 
@@ -181,12 +183,10 @@ import {
 ```
 
 
-Recharts chart allows us to pass a custom dot with dot prop. 
-We can think of having a limited set of custom dot's , or we can allow for all. 
-
+We will allow users to modify active dot, not custom 
 
 ```ts
-<Line type="monotone" dataKey="pv" dot={<BladeChartDots />} />
+<Line type="monotone" dataKey="pv" activeDot={<BladeChartDots />} />
 ```
 
 
