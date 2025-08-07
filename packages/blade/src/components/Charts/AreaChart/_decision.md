@@ -66,22 +66,32 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 **Note:**  AreaChart have this `margin` prop which allows user to set margin from  ResponsiveContainer. We won't we exposing that. we would have predefined values. 
 
 
-```ts
-interface Area {
-  type: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  dataKey: string;
-  name: string;
-  stackId?: string | number;
-  connectNulls?: boolean;
-  color?: BladeColorToken;
-}
+#### Area Props
 
-interface ReferenceLine {
-    y: number;
-    label: string;
-    color: BladeColorToken;
-}
-```
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `dataKey` | `string` | ✅ | - | The key used to identify the data value for this area in the dataset |
+| `name` | `string` | ✅ | - | Display name for the area, shown in legend and tooltips |
+| `type` | `'step' \| 'stepAfter' \| 'stepBefore' \| 'linear' \| 'monotone'` | ✅ | - | The interpolation type for connecting data points in the area |
+| `stackId` | `string \| number` | ❌ | `undefined` | Identifier used to group areas into a stack. Areas with the same stackId will be stacked. Required when using multiple areas |
+| `connectNulls` | `boolean` | ❌ | `false` | Whether to connect the area over null data points |
+| `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the area fill (automatically assigned from palette if not provided) |
+
+#### ReferenceLine Props
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `y` | `number` | ✅ | - | Y-axis value where the reference line should be drawn |
+| `label` | `string` | ✅ | - | Text label to display for the reference line |
+| `color` | `BladeColorToken` | ❌ | - | Color token for the reference line |
+
+#### Additional Notes
+
+> **AreaChart Margin:** The `margin` prop from AreaChart will not be exposed to developers. We will use predefined values that align with our design system.
+
+> **Stacking Behavior:** If you have more than 2 areas, you need to pass `stackId` to each area. Otherwise, all areas will be considered part of a single stack.
+
+> **Color Handling:** Area Charts will not support sequential colors. A limited, curated palette of theme colors will be available. Colors are automatically assigned from the predefined palette if not specified.
 
 ```ts
 import {

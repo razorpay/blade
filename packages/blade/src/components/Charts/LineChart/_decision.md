@@ -78,34 +78,33 @@
 This approach involves re-exporting styled versions of the underlying `recharts` components, giving developers full compositional control.
 
 
-```ts
+#### Line Props
 
-interface Line {
-  type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  // Will show default dot on line 
-  dot?: React.ReactNode;
-  activeDot?: React.ReactNode; 
-  connectNulls?: boolean;
-  legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'triangleDown' | 'triangleUp' | 'star' | 'wye' | 'none';
-  dataKey: string;
-  name: string;
-  color?: BladeColorToken;
-  strokeStyle?: 'dotted' | 'dashed';
-}
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `dataKey` | `string` | ✅ | - | The key used to identify the data value for this line in the dataset |
+| `name` | `string` | ✅ | - | The display name for the line, shown in legend and tooltips |
+| `type` | `'step' \| 'stepAfter' \| 'stepBefore' \| 'linear' \| 'monotone'` | ❌ | `'linear'` | The interpolation type for connecting data points |
+| `dot` | `React.ReactNode` | ❌ | `undefined` | Custom component for rendering dots on the line |
+| `activeDot` | `React.ReactNode` | ❌ | `undefined` | Custom component for rendering the active (hovered) dot |
+| `connectNulls` | `boolean` | ❌ | `false` | Whether to connect the line over null data points |
+| `legendType` | `'none' \| 'line' \| 'square' \| 'diamond' \| 'circle' \| 'cross' \| 'triangle' \| 'triangleDown' \| 'triangleUp' \| 'star' \| 'wye'` | ❌ | `'line'` | The symbol type to display in the legend for this line |
+| `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the line (automatically assigned from palette if not provided) |
+| `strokeStyle` | `'dotted' \| 'dashed'` | ❌ | `'solid'` | Line stroke style for forecast or emphasis |
 
-interface ReferenceLine {
-    y?: number;
-    label: string;
-    color?: BladeColorToken;
-}
+#### ReferenceLine Props
 
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `label` | `string` | ✅ | - | Text label to display for the reference line |
+| `y` | `number` | ✅ | `undefined` | Y-axis value where the reference line should be drawn |
+| `color` | `BladeColorToken` | ❌ | none | Color token for the reference line |
 
-// for components like ResponsiveContainer, Legend, CartesianGrid, XAxis, YAxis etc. we would be just styling them and re-exporting them . they don't need much changes.  
-// since in case of  CartesianGrid, XAxis, YAxis ... you won't be able to change the color of the grid, x-axis, y-axis. 
+#### Additional Notes
 
+> **Component Re-exports:** Components like ResponsiveContainer, Legend, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid, XAxis, YAxis, you won't be able to change individual colors as they follow the design system's predefined styling.
 
-```
-**Note:** LineChart have this `margin` prop which allows user to set margin from  ResponsiveContainer. We won't we exposing that. we would have predefined values. 
+> **LineChart Margin:** The `margin` prop from LineChart will not be exposed to developers. We will use predefined values that align with our design system. 
 
 
 ```ts

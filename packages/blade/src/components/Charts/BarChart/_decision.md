@@ -73,24 +73,25 @@ For that best would to have an internal check how many colors are already used.
 
 
 
-#### **Component Interfaces**
 
-```ts
-// The interface for the main <Bar /> component.
-interface Bar {
-  dataKey: string;
-  name?: string; // Name to display in the legend
-  color?: BladeColorToken; // Will map to `fill` prop
-  stackId?: string; // Used to group bars into a stack
-  activeBar?: React.ReactElement | boolean; // Custom component or boolean for active state
-  label?: React.ReactElement | boolean; // Custom component or boolean for labels
-}
+#### Bar Props
 
-// Note: Interfaces for other components like XAxis, YAxis, Tooltip, etc.,
-// will be the underlying Recharts prop types, as we are primarily
-// applying styles and not changing their core functionality.
-// We will enforce Blade's theme for properties like stroke, fill, etc.
-```
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `dataKey` | `string` | ✅ | - | The key used to identify the data value for this bar in the dataset |
+| `name` | `string` | ❌ | `dataKey` value | Display name for the bar, shown in legend and tooltips |
+| `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the bar (maps to `fill` prop internally) |
+| `stackId` | `string` | ❌ | `undefined` | Identifier used to group bars into a stack. Bars with the same stackId will be stacked |
+| `activeBar` | `React.ReactElement \| boolean` | ❌ | `false` | Custom component or boolean to enable active state styling when bar is hovered |
+| `label` | `React.ReactElement \| boolean` | ❌ | `false` | Custom component or boolean to display labels on bars |
+
+#### Additional Notes
+
+> **Component Interfaces:** Other components like XAxis, YAxis, Tooltip, etc., will use the underlying Recharts prop types as we are primarily applying styles and not changing their core functionality. We will enforce Blade's theme for properties like stroke, fill, etc.
+
+> **BarChart Margin:** The `margin` prop from BarChart will not be exposed to developers. We will use predefined values that align with our design system.
+
+> **Color Handling:** Bar Charts will handle both Categorical and Sequential colors with limits on Sequential colors. An internal check will monitor how many colors are already in use.
 
 #### **Usage Examples**
 
