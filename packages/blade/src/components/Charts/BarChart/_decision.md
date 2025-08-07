@@ -66,8 +66,11 @@ Published Date: Aug 7, 2025
 This approach follows the precedent set by the Line Chart API. We will re-export styled versions of the underlying `recharts` components. 
 
 
-**note** : In case of Bar Charts We would be handling both Categorical and Sequencial color . Also their will be a limit on Sequencial Colors. 
-- For that best would to have an internal check how many colors are already used. 
+**Colors** : In case of Bar Charts We would be handling both Categorical and Sequencial color . Also their will be a limit on Sequencial Colors. 
+For that best would to have an internal check how many colors are already used. 
+
+**Note:**  BarChart have this `margin` prop which allows user to set margin from  ResponsiveContainer. We won't we exposing that. we would have predefined values. 
+
 
 
 #### **Component Interfaces**

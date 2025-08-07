@@ -63,6 +63,9 @@ all area part of a single stack.
 
 This approach involves re-exporting styled versions of the underlying `recharts` components, giving developers full compositional control.
 
+**Note:**  AreaChart have this `margin` prop which allows user to set margin from  ResponsiveContainer. We won't we exposing that. we would have predefined values. 
+
+
 ```ts
 interface Area {
   type: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';

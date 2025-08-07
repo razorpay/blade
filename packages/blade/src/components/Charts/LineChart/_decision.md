@@ -101,7 +101,10 @@ interface ReferenceLine {
 // for components like ResponsiveContainer, Legend, CartesianGrid, XAxis, YAxis etc. we would be just styling them and re-exporting them . they don't need much changes.  
 // since in case of  CartesianGrid, XAxis, YAxis ... you won't be able to change the color of the grid, x-axis, y-axis. 
 
+
 ```
+**Note:** LineChart have this `margin` prop which allows user to set margin from  ResponsiveContainer. We won't we exposing that. we would have predefined values. 
+
 
 ```ts
 import {
@@ -120,6 +123,7 @@ import {
 
 // Simple Line Chart 
   <ResponsiveContainer width="100%" height="100%">
+  // Line 
     <LineChat data={chartData}>
        <CartesianGrid />
        <XAxis dataKey="month" />
@@ -136,7 +140,7 @@ import {
          name="Team B"
          type="solid"
        />
-       <ReferenceLine y={2200} label="Minimum" color="" />
+       <ReferenceLine y={2200} label="Minimum" color="theme.charts.grey" />
     </LineChart>
   </ResponsiveContainer>
 
@@ -146,7 +150,7 @@ import {
        <Line
          dataKey="teamA"
          type="solid"
-         color="blue"
+         color="theme.charts.grey"
        />
      </LineChart>
    </ResponsiveContainer>
@@ -157,7 +161,8 @@ import {
           <CartesianGrid/>
             <XAxis dataKey="date" />
               <YAxis />
-              <Tooltip />
+              // This would be a custom tooltip from blade
+              <ChartToolTip />
               <Legend />
               <Line
                 dataKey="historical"
@@ -181,7 +186,7 @@ We can think of having a limited set of custom dot's , or we can allow for all.
 
 
 ```ts
-<Line type="monotone" dataKey="pv" dot={<CustomizedDot />} />
+<Line type="monotone" dataKey="pv" dot={<BladeChartDots />} />
 ```
 
 
@@ -413,5 +418,9 @@ We will not support sequential colors for line charts. A limited, curated palett
 
 -  ToolTip 
 
-We might need to make custom tooltip. Like ChartsToolTip. Since the tooltip would be different then our blade's tooltip. we still need to check this.
+We might need to make custom tooltip. Like ChartsToolTip. Since the tooltip would be different then our blade's tooltip. We are awaiting Designs on this. 
+
+- BladeChartDots 
+
+Awaiting Designs on this. 
 
