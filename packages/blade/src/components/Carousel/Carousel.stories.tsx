@@ -630,7 +630,7 @@ const CarouselCard = () => {
   );
 };
 
-export const WithOverlap: StoryFn<typeof CarouselComponent> = (props) => {
+export const WithOverlap: StoryFn<typeof CarouselComponent> = () => {
   return (
     <Box margin="auto" padding="spacing.4" width="100%">
       <Box marginTop="spacing.6" paddingX="spacing.8">
