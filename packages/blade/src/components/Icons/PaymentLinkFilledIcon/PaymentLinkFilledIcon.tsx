@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _PaymentLinkFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _PaymentLinkFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M16.1094 11C16.6614 11.0004 17.1094 11.4479 17.1094 12C17.1094 12.5521 16.6614 12.9996 16.1094 13H15.4219C14.5855 13 13.9015 13.6842 13.9014 14.5205C13.9014 15.3536 14.5866 16.042 15.4219 16.042H16.1094C16.6614 16.0423 17.1094 16.4899 17.1094 17.042C17.1092 17.5939 16.6613 18.0416 16.1094 18.042H15.4219C13.4797 18.042 11.9014 16.4558 11.9014 14.5205C11.9015 12.5796 13.4809 11 15.4219 11H16.1094Z"
         fill={iconColor}

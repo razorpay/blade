@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _CompanyRegistrationFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _CompanyRegistrationFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M8 15.9981C8.55186 15.9981 8.99932 16.4464 9 16.9981C9 17.5504 8.55229 17.9981 8 17.9981H6L5.89746 17.9932C5.39339 17.9418 5 17.5157 5 16.9981C5.00064 16.481 5.39374 16.0543 5.89746 16.003L6 15.9981H8Z"
         fill={iconColor}
@@ -44,11 +34,8 @@ const _CompanyRegistrationFilledIcon: IconComponent = ({
   );
 };
 
-const CompanyRegistrationFilledIcon = assignWithoutSideEffects(
-  _CompanyRegistrationFilledIcon,
-  {
-    componentId: 'CompanyRegistrationFilledIcon',
-  }
-);
+const CompanyRegistrationFilledIcon = assignWithoutSideEffects(_CompanyRegistrationFilledIcon, {
+  componentId: 'CompanyRegistrationFilledIcon',
+});
 
 export default CompanyRegistrationFilledIcon;
