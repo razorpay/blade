@@ -12,7 +12,7 @@ Chip and ChipGroup components enable users to make selections, filter content, a
 - `ChipGroup` component only accepts `Chip` components as children
 - The `value` and `defaultValue` props must match the `selectionType` (string for "single", array for "multiple")
 
-The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
 ## TypeScript Types
 

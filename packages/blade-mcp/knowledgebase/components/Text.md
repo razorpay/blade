@@ -6,6 +6,10 @@ Text
 
 The Text component is a versatile typography component used to display main content on a page. It is designed to work seamlessly with Title or Heading components to create hierarchical content structures. The component automatically applies responsive styles based on the device it's being rendered on. It supports different variants (body and caption), weights, sizes, and can be customized with various text properties like color, alignment, and truncation.
 
+## Important Constraints
+
+- `variant="caption"` only accepts `size="small"` or `size="medium"`
+
 ## TypeScript Types
 
 The following types define the props that the Text component and its variants accept. These types help you understand what properties you can pass to customize the Text component's appearance and behavior.

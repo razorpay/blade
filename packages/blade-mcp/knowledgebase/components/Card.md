@@ -12,7 +12,7 @@ Cards are containers that group related content and actions on a single topic. T
 - `CardHeader` component only accepts `CardHeaderLeading`, `CardHeaderTrailing` components as children
 - `CardFooter` component only accepts `CardFooterLeading`, `CardFooterTrailing` components as children
 
-The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
 ## TypeScript Types
 
@@ -281,8 +281,8 @@ const BasicCardExample = () => {
 };
 ```
 
-
 ### Metric Card
+
 A card displaying metrics with dynamic data visualization, hover effects, and responsive layout. Shows how to combine Card with data display components.
 
 ```tsx
@@ -303,7 +303,6 @@ import {
 } from '@razorpay/blade/components';
 import { useBreakpoint } from '@razorpay/blade/utils';
 
-
 const MetricCard = () => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -320,7 +319,9 @@ const MetricCard = () => {
       <CardHeader showDivider={false}>
         <CardHeaderLeading
           title={isMobile ? 'TPV' : 'Total Payment Volume'}
-          subtitle={isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'}
+          subtitle={
+            isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
+          }
         />
         <CardHeaderTrailing
           visual={
@@ -360,33 +361,36 @@ const MetricCard = () => {
 ```
 
 ### Interactive Cards
+
 This example demonstrates how to create a group of cards that can be multi-selected using checkboxes, with validation and error states.
 
-/*
+/\*
 AI Implementation Notes:
 
-1. Simple interactive card:
-   <Card
-     shouldScaleOnHover
-     isSelected={isSelected}
-     onClick={() => setIsSelected(!isSelected)}
-     accessibilityLabel="Card Name"
-   >
-     <CardHeader>
-       <CardHeaderLeading title="Title" subtitle="Subtitle" prefix={<CardHeaderIcon icon={Icon} />} />
-     </CardHeader>
-     <CardBody>
-       <Text>Content</Text>
-     </CardBody>
-   </Card>
+1.  Simple interactive card:
+    <Card
+    shouldScaleOnHover
+    isSelected={isSelected}
+    onClick={() => setIsSelected(!isSelected)}
+    accessibilityLabel="Card Name"
 
-2. Radio button version:
-   - Use RadioGroup instead of CheckboxGroup
-   - Single state: const [selected, setSelected] = useState('')
-   - onChange: ({ value }) => setSelected(value)
-   - isSelected check: selected === option.value
-   - Remove max selection logic
-*/
+    >   <CardHeader>
+
+        <CardHeaderLeading title="Title" subtitle="Subtitle" prefix={<CardHeaderIcon icon={Icon} />} />
+
+      </CardHeader>
+      <CardBody>
+        <Text>Content</Text>
+      </CardBody>
+    </Card>
+
+2.  Radio button version:
+    - Use RadioGroup instead of CheckboxGroup
+    - Single state: const [selected, setSelected] = useState('')
+    - onChange: ({ value }) => setSelected(value)
+    - isSelected check: selected === option.value
+    - Remove max selection logic
+      \*/
 
 ```tsx
 import {
@@ -529,14 +533,17 @@ const ProductSelection = () => {
           ))}
         </CheckboxGroup>
 
-        <Box marginTop="spacing.4" display="flex" justifyContent="space-between" alignItems="center">
+        <Box
+          marginTop="spacing.4"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Button onClick={() => setIsSubmitted(true)} variant="primary">
             Continue
           </Button>
           {selectedProducts.length > 0 && (
-            <Text color="surface.text.gray.subtle">
-              Selected: {selectedProducts.length}/3
-            </Text>
+            <Text color="surface.text.gray.subtle">Selected: {selectedProducts.length}/3</Text>
           )}
         </Box>
       </Box>

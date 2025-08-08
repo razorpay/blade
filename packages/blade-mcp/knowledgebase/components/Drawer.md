@@ -6,6 +6,10 @@ Drawer
 
 The Drawer component is a panel that slides in from the right side of the screen over existing content in the viewport. It helps in providing additional details or context and can also be used to promote product features. Drawers support stacking functionality, allowing up to two drawers to be open at once with a neat UI treatment showing the previous drawer peeking from behind.
 
+## Important Constraints
+
+- `Drawer` component only accepts `DrawerHeader` and `DrawerBody` components as children
+
 ## TypeScript Types
 
 The following types represent the props that the Drawer component and its subcomponents accept. These props allow consumers to configure the drawer behavior, appearance, and content.

@@ -10,7 +10,7 @@ The FileUpload component is used to handle file attachments, including drag-and-
 
 - Custom text props (`actionButtonText`, `dropAreaText`) and dimensions (`height`, `width`) can only be used when `size` is "variable"
 
-The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
 ## TypeScript Types
 

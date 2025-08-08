@@ -13,7 +13,7 @@ The List component displays a set of related items in a structured format. This 
 - List nesting is limited to a maximum of 3 levels
 - Icons can only be used with unordered lists (`variant="unordered"`)
 
-The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
 ## TypeScript Types
 

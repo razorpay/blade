@@ -6,6 +6,10 @@ Code
 
 The Code component is designed for displaying inline code snippets, token names, or variable names within text content. It provides a monospace font with optional highlighting and supports both web and React Native platforms. The component automatically handles proper text alignment and spacing, making it ideal for technical documentation, configuration guides, or any content that needs to display code-like text inline with regular content.
 
+## Important Constraints
+
+- `color` prop cannot be used without `isHighlighted={false}`
+
 ## TypeScript Types
 
 The following types define the props that the Code component accepts. These types help you understand what properties you can pass to customize the Code component's appearance and behavior.

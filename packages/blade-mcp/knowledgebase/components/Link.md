@@ -6,6 +6,10 @@ Link
 
 The Link component is used for navigating between pages or triggering in-page actions. It supports both anchor-style links for navigation and button-style links for actions. Links can be customized with different sizes, colors, and icon positions to match your design requirements, and they can be used standalone or inline within text content.
 
+## Important Constraints
+
+- At least one of `icon` or text content is required to render a link
+
 ## TypeScript Types
 
 The following types represent the props that the Link component accepts. These allow you to properly configure the component according to your needs.

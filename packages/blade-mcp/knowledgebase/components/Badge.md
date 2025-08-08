@@ -6,6 +6,11 @@ Badge
 
 Badges are small, color-coded UI elements used to display concise metadata, designed to draw user attention to important information. They offer visual categorization through different colors, sizes, and emphasis levels, making them ideal for status indicators, counts, or category labels.
 
+## Important Constraints
+
+- `children` prop is required and must contain text content
+- `icon` prop only accepts `IconComponent`
+
 ## TypeScript Types
 
 The following types represent the props that the Badge component accepts. These types allow you to properly configure the component according to your needs.

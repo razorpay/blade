@@ -6,6 +6,10 @@ Dropdown
 
 Dropdown is a versatile component that displays a floating overlay with content beneath a trigger element. It supports various trigger types (buttons, links, inputs) and content patterns including selection menus, filter chips, and autocomplete. Dropdown offers controlled and uncontrolled modes, with built-in positioning logic to ensure the overlay appears in the optimal location regardless of available space.
 
+## Important Constraints
+
+- `Dropdown` component only accepts specific trigger components and overlay components as children: `SelectInput`, `SearchInput`, `DropdownButton`, `DropdownIconButton`, `DropdownLink`, `DropdownOverlay`, `AutoComplete`, `BottomSheet`, `FilterChipSelectInput`, `InputDropdownButton`
+
 ## TypeScript Types
 
 The following types represent the props that the Dropdown component and its subcomponents accept.

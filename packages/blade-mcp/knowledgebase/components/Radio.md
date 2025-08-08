@@ -11,7 +11,7 @@ The Radio and RadioGroup components are used in forms when a user needs to selec
 - `Radio` component cannot be used outside of `RadioGroup` component
 - `RadioGroup` component only accepts `Radio` components as children
 
-The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
 ## TypeScript Types
 

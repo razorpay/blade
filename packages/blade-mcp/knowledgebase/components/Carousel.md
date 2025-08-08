@@ -6,6 +6,10 @@ Carousel
 
 The Carousel is a component that displays a collection of items in a horizontally scrollable container. It enables users to navigate through content items like images, cards, or promotional content with pagination indicators and navigation buttons. The Carousel supports various configurations including multiple visible items, autoplay, and different navigation styles.
 
+## Important Constraints
+
+- `Carousel` component only accepts `CarouselItem` components as children
+
 ## TypeScript Types
 
 The following types represent the props that the Carousel component and its subcomponents accept. These allow you to properly configure the component according to your needs.

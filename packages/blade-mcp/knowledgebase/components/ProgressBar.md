@@ -6,6 +6,13 @@ ProgressBar
 
 A ProgressBar is a visual indicator that displays the progress of a process or task. It can be used to show determinate progress (with a known completion percentage) or indeterminate progress (when the completion time is unknown). The component offers different variants including linear and circular styles, and can be configured as either a progress indicator or a meter depending on the use case.
 
+## Important Constraints
+
+- `isIndeterminate` cannot be set when `type="meter"`
+- `isIndeterminate` cannot be set when `variant="circular"`
+- `size="large"` is not available when `variant="linear"`
+- When `type` prop is set, `variant` can only be `"linear"` or `"circular"` (not `"progress"` or `"meter"`)
+
 ## TypeScript Types
 
 These types represent the props that the component accepts. When using the ProgressBar component, you'll need to understand these types to properly configure it.

@@ -8,6 +8,11 @@ Accordion
 
 An accordion is used to allow users to toggle between different content sections in a compact vertical stack. It provides an expandable and collapsible interface to show/hide content, improving space utilization and organizing related information in a hierarchical structure.
 
+## Important Constraints
+
+- `AccordionItem` only allows `AccordionItemHeader` as the first component and `AccordionItemBody` as the second component
+- `showNumberPrefix` and `icon` props cannot be used together on the same accordion item
+
 ## TypeScript Types
 
 Below are the component props types that Accordion and its subcomponents accept. These types define all the possible properties and configurations you can use when implementing Accordion components in your application.
