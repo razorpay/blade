@@ -16,7 +16,7 @@ import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';
 import { Button } from '~components/Button';
 import { SparklesIcon, AlertTriangleIcon, SearchIcon } from '~components/Icons';
-import type { IconComponent } from '~components/Icons';
+import type { IconComponent, IconColors } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -634,7 +634,7 @@ const CarouselCard = ({
   color,
 }: {
   text: string;
-  color: string;
+  color: IconColors;
   icon: IconComponent;
 }) => {
   return (
