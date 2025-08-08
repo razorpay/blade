@@ -364,7 +364,6 @@ const _DatePickerInput = (
       return startValue !== endValue;
     };
 
-    console.log('qswap', isRange());
     return (
       <BaseBox width="100%">
         <HiddenInput
