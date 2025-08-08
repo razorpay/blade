@@ -1,5 +1,6 @@
 // This file is auto generated
 // Modify at blade/plop/icon/iconMap.ts.hbs
+import AcceptPaymentsFilledIconComponent from './AcceptPaymentsFilledIcon';
 import AcceptPaymentsIconComponent from './AcceptPaymentsIcon';
 import ActivityIconComponent from './ActivityIcon';
 import AddressBookIconComponent from './AddressBookIcon';
@@ -269,6 +270,7 @@ import PaymentButtonIconComponent from './PaymentButtonIcon';
 import PaymentButtonsIconComponent from './PaymentButtonsIcon';
 import PaymentGatewayFilledIconComponent from './PaymentGatewayFilledIcon';
 import PaymentGatewayIconComponent from './PaymentGatewayIcon';
+import PaymentLinkFilledIconComponent from './PaymentLinkFilledIcon';
 import PaymentLinkIconComponent from './PaymentLinkIcon';
 import PaymentLinksIconComponent from './PaymentLinksIcon';
 import PaymentPagesFilledIconComponent from './PaymentPagesFilledIcon';
@@ -281,6 +283,7 @@ import PayrollForCaIconComponent from './PayrollForCaIcon';
 import PayrollForStartupOrSmeFilledIconComponent from './PayrollForStartupOrSmeFilledIcon';
 import PayrollForStartupOrSmeIconComponent from './PayrollForStartupOrSmeIcon';
 import PercentIconComponent from './PercentIcon';
+import PettyCashBudgetFilledIconComponent from './PettyCashBudgetFilledIcon';
 import PettyCashBudgetIconComponent from './PettyCashBudgetIcon';
 import PhoneCallIconComponent from './PhoneCallIcon';
 import PhoneForwardedIconComponent from './PhoneForwardedIcon';
@@ -434,6 +437,7 @@ import ZoomOutIconComponent from './ZoomOutIcon';
 import type { IconComponent } from './';
 
 const iconMap: Record<string, IconComponent> = {
+  AcceptPaymentsFilledIcon: AcceptPaymentsFilledIconComponent,
   AcceptPaymentsIcon: AcceptPaymentsIconComponent,
   ActivityIcon: ActivityIconComponent,
   AddressBookIcon: AddressBookIconComponent,
@@ -703,6 +707,7 @@ const iconMap: Record<string, IconComponent> = {
   PaymentButtonsIcon: PaymentButtonsIconComponent,
   PaymentGatewayFilledIcon: PaymentGatewayFilledIconComponent,
   PaymentGatewayIcon: PaymentGatewayIconComponent,
+  PaymentLinkFilledIcon: PaymentLinkFilledIconComponent,
   PaymentLinkIcon: PaymentLinkIconComponent,
   PaymentLinksIcon: PaymentLinksIconComponent,
   PaymentPagesFilledIcon: PaymentPagesFilledIconComponent,
@@ -715,6 +720,7 @@ const iconMap: Record<string, IconComponent> = {
   PayrollForStartupOrSmeFilledIcon: PayrollForStartupOrSmeFilledIconComponent,
   PayrollForStartupOrSmeIcon: PayrollForStartupOrSmeIconComponent,
   PercentIcon: PercentIconComponent,
+  PettyCashBudgetFilledIcon: PettyCashBudgetFilledIconComponent,
   PettyCashBudgetIcon: PettyCashBudgetIconComponent,
   PhoneCallIcon: PhoneCallIconComponent,
   PhoneForwardedIcon: PhoneForwardedIconComponent,

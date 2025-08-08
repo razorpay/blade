@@ -1,6 +1,7 @@
 // This file is auto generated
 // Modify at blade/plop/icon/iconReexports.ts.hbs
 export * from './types';
+export { default as AcceptPaymentsFilledIcon } from './AcceptPaymentsFilledIcon';
 export { default as AcceptPaymentsIcon } from './AcceptPaymentsIcon';
 export { default as ActivityIcon } from './ActivityIcon';
 export { default as AddressBookIcon } from './AddressBookIcon';
@@ -270,6 +271,7 @@ export { default as PaymentButtonIcon } from './PaymentButtonIcon';
 export { default as PaymentButtonsIcon } from './PaymentButtonsIcon';
 export { default as PaymentGatewayFilledIcon } from './PaymentGatewayFilledIcon';
 export { default as PaymentGatewayIcon } from './PaymentGatewayIcon';
+export { default as PaymentLinkFilledIcon } from './PaymentLinkFilledIcon';
 export { default as PaymentLinkIcon } from './PaymentLinkIcon';
 export { default as PaymentLinksIcon } from './PaymentLinksIcon';
 export { default as PaymentPagesFilledIcon } from './PaymentPagesFilledIcon';
@@ -282,6 +284,7 @@ export { default as PayrollForCaIcon } from './PayrollForCaIcon';
 export { default as PayrollForStartupOrSmeFilledIcon } from './PayrollForStartupOrSmeFilledIcon';
 export { default as PayrollForStartupOrSmeIcon } from './PayrollForStartupOrSmeIcon';
 export { default as PercentIcon } from './PercentIcon';
+export { default as PettyCashBudgetFilledIcon } from './PettyCashBudgetFilledIcon';
 export { default as PettyCashBudgetIcon } from './PettyCashBudgetIcon';
 export { default as PhoneCallIcon } from './PhoneCallIcon';
 export { default as PhoneForwardedIcon } from './PhoneForwardedIcon';

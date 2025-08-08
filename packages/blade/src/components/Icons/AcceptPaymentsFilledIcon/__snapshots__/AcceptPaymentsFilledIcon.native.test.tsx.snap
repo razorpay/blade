@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CompanyRegistrationFilledIcon /> should render CompanyRegistrationFilledIcon 1`] = `
+exports[`<AcceptPaymentsFilledIcon /> should render AcceptPaymentsFilledIcon 1`] = `
 <View
   style={
     {
