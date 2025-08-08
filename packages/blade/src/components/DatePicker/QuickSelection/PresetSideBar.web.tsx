@@ -24,6 +24,7 @@ type PresetSideBarProps = {
   presets: CalendarProps<'single'>['presets'];
   onSelection: (value: (date: Date) => DatesRangeValue) => void;
   selectedPreset: DatesRangeValue | null;
+  isCustomSelected?: (selectedPreset: DatesRangeValue | null, currentDate: Date) => boolean;
 };
 
 const PresetSideBar = ({
@@ -32,6 +33,7 @@ const PresetSideBar = ({
   selectedPreset,
   onSelection,
   isMobile,
+  isCustomSelected,
 }: PresetSideBarProps): React.ReactElement => {
   if (!presets) return <></>;
 
@@ -74,7 +76,10 @@ const PresetSideBar = ({
       {...makeAccessible({ role: 'listbox', label: 'Select Presets' })}
     >
       {presets.map((preset, index) => {
-        const isSelected = isSamePreset(selectedPreset, preset.value(date));
+        const isSelected =
+          preset.label === 'Custom' && isCustomSelected
+            ? isCustomSelected(selectedPreset, date)
+            : isSamePreset(selectedPreset, preset.value(date));
         return (
           <QuickSelectionItem
             key={index}

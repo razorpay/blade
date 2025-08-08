@@ -40,6 +40,9 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
+import { ActionList, ActionListItem } from '~components/ActionList';
 
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -75,6 +78,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   onClearButtonClick,
   labelSuffix,
   labelTrailing,
+  showActions = true,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -89,6 +93,44 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
   const referenceRef = React.useRef<HTMLButtonElement>(null);
+  const enhancedPresets = React.useMemo(() => {
+    return [
+      ...(presets || []),
+      {
+        label: 'Custom',
+        value: () => [null, null] as DatesRangeValue,
+      },
+    ];
+  }, [presets]);
+
+  // Helper function to check if two preset values are the same
+  const isSamePreset = (
+    value1: DatesRangeValue | null,
+    value2: DatesRangeValue | null,
+  ): boolean => {
+    if (!value1?.[0] || !value1?.[1]) return false;
+    if (!value2?.[0] || !value2?.[1]) return false;
+
+    return (
+      value1[0].toDateString() === value2[0].toDateString() &&
+      value1[1].toDateString() === value2[1].toDateString()
+    );
+  };
+
+  // Helper function to check if Custom preset should be selected
+  const isCustomSelected = (selectedPreset: DatesRangeValue | null, currentDate: Date): boolean => {
+    // If no preset is selected, Custom is selected
+    if (!selectedPreset) return true;
+
+    // Check if selectedPreset matches any non-Custom preset
+    const nonCustomPresets = enhancedPresets.filter((p) => p.label !== 'Custom');
+    const matchesAnyPreset = nonCustomPresets.some((preset) =>
+      isSamePreset(selectedPreset, preset.value(currentDate)),
+    );
+
+    // Custom is selected if selectedPreset doesn't match any other preset
+    return !matchesAnyPreset;
+  };
 
   const [_picker, setPicker] = useControllableState<PickerType>({
     defaultValue: defaultPicker,
@@ -281,9 +323,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     <>
       {shouldRenderPresets ? (
         <PresetSideBar
-          presets={presets}
+          presets={enhancedPresets}
           date={currentDate}
           selectedPreset={selectedPreset}
+          isCustomSelected={isCustomSelected}
           onSelection={(preset) => {
             const presetValue = preset?.(currentDate);
             setControlledValue(presetValue);
@@ -347,16 +390,63 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           }}
           selectedValue={controlledValue}
         />
-        {isMobile ? null : (
-          <CalendarFooter
-            isButtonDisabled={applyButtonDisabled}
-            onApply={handleApply}
-            onCancel={handleCancel}
-          />
-        )}
+        {showActions &&
+          (isMobile ? null : (
+            <CalendarFooter
+              isButtonDisabled={applyButtonDisabled}
+              onApply={handleApply}
+              onCancel={handleCancel}
+            />
+          ))}
       </BaseBox>
     </>
   );
+
+  // Get the selected preset label for dropdown button
+  const getSelectedPresetLabel = (): string => {
+    if (!enhancedPresets) return 'Custom';
+
+    // Check if Custom should be selected
+    if (isCustomSelected(selectedPreset, currentDate)) return 'Custom';
+
+    // Find matching non-Custom preset
+    const matchingPreset = enhancedPresets
+      .filter((p) => p.label !== 'Custom')
+      .find((preset) => isSamePreset(selectedPreset, preset.value(currentDate)));
+
+    return matchingPreset?.label || 'Custom';
+  };
+
+  const leadingDropdown =
+    enhancedPresets && !isSingle ? (
+      <Dropdown>
+        <InputDropdownButton defaultValue={getSelectedPresetLabel()} />
+        <DropdownOverlay>
+          <ActionList>
+            {enhancedPresets.map((preset, index) => {
+              const isSelected =
+                preset.label === 'Custom'
+                  ? isCustomSelected(selectedPreset, currentDate)
+                  : isSamePreset(selectedPreset, preset.value(currentDate));
+
+              return (
+                <ActionListItem
+                  key={index}
+                  title={preset.label}
+                  value={preset.label}
+                  isSelected={isSelected}
+                  onClick={() => {
+                    const presetValue = preset.value(currentDate);
+                    setControlledValue(presetValue);
+                    setSelectedPreset(presetValue);
+                  }}
+                />
+              );
+            })}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    ) : undefined;
 
   const dateProviderValue = React.useMemo(() => {
     const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
@@ -418,6 +508,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             <DatePickerInput
               selectionType={_selectionType}
               date={controlledValue}
+              onDateChange={setControlledValue} // Pass controlled date change handler
               ref={referenceRef}
               inputRef={refs.reference}
               referenceProps={getReferenceProps()}
@@ -438,6 +529,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
               placeholder={finalInputPlaceHolder}
               labelSuffix={labelSuffix}
               labelTrailing={labelTrailing}
+              leadingDropdown={leadingDropdown}
               {...makeAnalyticsAttribute(props)}
             />
           )}
@@ -455,9 +547,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 {!isSingle && (
                   <PresetSideBar
                     isMobile
-                    presets={presets}
+                    presets={enhancedPresets}
                     date={currentDate}
                     selectedPreset={selectedPreset}
+                    isCustomSelected={isCustomSelected}
                     onSelection={(preset) => {
                       const presetValue = preset?.(currentDate);
                       setControlledValue(presetValue);
@@ -466,9 +559,11 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                   />
                 )}
               </BottomSheetBody>
-              <BottomSheetFooter>
-                <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
-              </BottomSheetFooter>
+              {showActions && (
+                <BottomSheetFooter>
+                  <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
+                </BottomSheetFooter>
+              )}
             </BottomSheet>
           ) : (
             isMounted && (
