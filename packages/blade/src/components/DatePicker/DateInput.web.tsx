@@ -345,12 +345,26 @@ const _DatePickerInput = (
     };
 
     const finalInputFormat = () => {
-      if (startValue === endValue) {
-        return format;
-      }
-      return `${format} → ${format}`;
+      // Mirror rangeValue logic exactly for format validation
+      return startValue && endValue
+        ? startValue === endValue
+          ? format // Single format when values are same
+          : `${format} → ${format}` // Range format when different
+        : startValue
+        ? `${format} → ` // Partial range format (start only)
+        : endValue
+        ? ` → ${format}` // Partial range format (end only)
+        : ``; // Default range format
     };
 
+    const isRange = () => {
+      if (!startValue || !endValue) {
+        return false;
+      }
+      return startValue !== endValue;
+    };
+
+    console.log('qswap', isRange());
     return (
       <BaseBox width="100%">
         <HiddenInput
@@ -387,7 +401,7 @@ const _DatePickerInput = (
           labelSuffix={labelSuffix}
           labelTrailing={labelTrailing}
           format={finalInputFormat()}
-          isRange={startValue !== endValue}
+          isRange={isRange()}
           leadingDropdown={leadingDropdown}
           date={date as [Date | null, Date | null]}
           setControlledValue={setControlledValue}
