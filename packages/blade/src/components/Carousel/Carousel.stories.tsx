@@ -636,7 +636,7 @@ export const WithOverlap: StoryFn<typeof CarouselComponent> = () => {
       <Box marginTop="spacing.6" paddingX="spacing.8">
         <CarouselComponent
           visibleItems="autofit"
-          navigationButtonPosition="overlap"
+          navigationButtonPosition="side-overlap"
           carouselItemWidth="300px"
         >
           {Array.from({ length: 10 }).map((_, i) => (

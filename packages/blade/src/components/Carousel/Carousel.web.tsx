@@ -16,7 +16,7 @@ import { getCarouselItemId } from './utils';
 import {
   CAROUSEL_AUTOPLAY_INTERVAL,
   componentIds,
-  CAROUSEL_OVERLAP_VALUE_OFFSET,
+  CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET,
 } from './constants';
 import getIn from '~utils/lodashButBetter/get';
 import throttle from '~utils/lodashButBetter/throttle';
@@ -93,7 +93,7 @@ const Controls = ({
 
   if (
     showIndicators &&
-    (navigationButtonPosition === 'side' || navigationButtonPosition === 'overlap')
+    (navigationButtonPosition === 'side' || navigationButtonPosition === 'side-overlap')
   ) {
     return (
       <Box marginTop="spacing.7">
@@ -319,13 +319,13 @@ const _Carousel = (
     showIndicators = false;
   }
   const showNavigationButtons = showNavigationButtonProp || !isMobile;
-  const isNavigationButtonPositionOverlap = navigationButtonPosition === 'overlap';
+  const isNavigationButtonPositionSideOverlap = navigationButtonPosition === 'side-overlap';
 
   const isNavButtonsOnSide =
-    !isResponsive && (navigationButtonPosition === 'side' || isNavigationButtonPositionOverlap);
+    !isResponsive && (navigationButtonPosition === 'side' || isNavigationButtonPositionSideOverlap);
 
   const shouldNavButtonsFloat =
-    isResponsive && (navigationButtonPosition === 'side' || isNavigationButtonPositionOverlap);
+    isResponsive && (navigationButtonPosition === 'side' || isNavigationButtonPositionSideOverlap);
   const totalNumberOfSlides = React.Children.count(children);
   const numberOfIndicators = Math.ceil(totalNumberOfSlides / _visibleItems);
 
@@ -564,7 +564,9 @@ const _Carousel = (
               zIndex={2}
               position="absolute"
               left={
-                isNavigationButtonPositionOverlap ? CAROUSEL_OVERLAP_VALUE_OFFSET : 'spacing.11'
+                isNavigationButtonPositionSideOverlap
+                  ? CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET
+                  : 'spacing.11'
               }
             >
               <NavigationButton
@@ -602,7 +604,9 @@ const _Carousel = (
               zIndex={2}
               position="absolute"
               right={
-                isNavigationButtonPositionOverlap ? CAROUSEL_OVERLAP_VALUE_OFFSET : 'spacing.11'
+                isNavigationButtonPositionSideOverlap
+                  ? CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET
+                  : 'spacing.11'
               }
             >
               <NavigationButton
