@@ -15,7 +15,8 @@ import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';
 import { Button } from '~components/Button';
-import { SparklesIcon } from '~components/Icons';
+import { SparklesIcon, AlertTriangleIcon, SearchIcon } from '~components/Icons';
+import type { IconComponent } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -610,23 +611,43 @@ export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
   );
 };
 
-const CarouselCard = () => {
+const cardContent = [
+  {
+    icon: SparklesIcon,
+    text: 'Give me a recap of Design x Dev meeting',
+    color: 'surface.icon.onSea.onSubtle',
+  },
+  {
+    icon: AlertTriangleIcon,
+    text: 'Show me all recent failed payments',
+    color: 'feedback.icon.negative.intense',
+  },
+  {
+    icon: SearchIcon,
+    text: 'Find recent payments by (contact number)',
+    color: 'feedback.icon.information.intense',
+  },
+];
+const CarouselCard = ({
+  icon: Icon,
+  text,
+  color,
+}: {
+  text: string;
+  color: string;
+  icon: IconComponent;
+}) => {
   return (
-    <Box
-      borderWidth="thin"
-      borderRadius="small"
-      width="300px"
-      padding="spacing.5"
-      borderColor="surface.border.gray.subtle"
-      height="72px"
-      display="flex"
-      gap="24px"
-      justifyContent="space-between"
-      alignItems="center"
-    >
-      <SparklesIcon color="surface.icon.onSea.onSubtle" size="large" />
-      <Text size="medium">Give me a recap of yesterday's task </Text>
-    </Box>
+    <Card elevation="none" padding="spacing.5">
+      <CardBody>
+        <Box display="flex" justifyContent="space-between" alignItems="center" gap="12px">
+          <Icon color={color} size="large" />
+          <Text size="medium" color="surface.text.gray.subtle">
+            {text}
+          </Text>
+        </Box>
+      </CardBody>
+    </Card>
   );
 };
 
@@ -637,13 +658,17 @@ export const WithOverlap: StoryFn<typeof CarouselComponent> = () => {
         <CarouselComponent
           visibleItems="autofit"
           navigationButtonPosition="side-overlap"
-          carouselItemWidth="300px"
+          carouselItemWidth="280px"
         >
-          {Array.from({ length: 10 }).map((_, i) => (
-            <CarouselItem key={i}>
-              <CarouselCard />
-            </CarouselItem>
-          ))}
+          {Array(3)
+            .fill(cardContent)
+            .flat()
+            .slice(0, 7)
+            .map(({ icon, text, color }, index) => (
+              <CarouselItem key={index}>
+                <CarouselCard icon={icon} text={text} color={color} />
+              </CarouselItem>
+            ))}
         </CarouselComponent>
       </Box>
     </Box>

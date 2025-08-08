@@ -321,11 +321,9 @@ const _Carousel = (
   const showNavigationButtons = showNavigationButtonProp || !isMobile;
   const isNavigationButtonPositionSideOverlap = navigationButtonPosition === 'side-overlap';
 
-  const isNavButtonsOnSide =
-    !isResponsive && (navigationButtonPosition === 'side' || isNavigationButtonPositionSideOverlap);
+  const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
 
-  const shouldNavButtonsFloat =
-    isResponsive && (navigationButtonPosition === 'side' || isNavigationButtonPositionSideOverlap);
+  const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
   const totalNumberOfSlides = React.Children.count(children);
   const numberOfIndicators = Math.ceil(totalNumberOfSlides / _visibleItems);
 
@@ -558,8 +556,9 @@ const _Carousel = (
           gap="spacing.4"
           flexDirection="row"
           height="100%"
-        >
-          {shouldShowPrevButton && shouldNavButtonsFloat ? (
+          >
+          {shouldShowPrevButton &&
+          (shouldNavButtonsFloat || isNavigationButtonPositionSideOverlap) ? (
             <BaseBox
               zIndex={2}
               position="absolute"
@@ -599,7 +598,8 @@ const _Carousel = (
           >
             {children}
           </CarouselBody>
-          {shouldShowNextButton && shouldNavButtonsFloat ? (
+          {shouldShowNextButton &&
+          (shouldNavButtonsFloat || isNavigationButtonPositionSideOverlap) ? (
             <BaseBox
               zIndex={2}
               position="absolute"
