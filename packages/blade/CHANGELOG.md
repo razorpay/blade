@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.46.2
+
+### Patch Changes
+
+- b746d9db8: fix(ListView): enable horizontal scroll for filters on desktop, remove gradient overlay
+
 ## 12.46.1
 
 ### Patch Changes
