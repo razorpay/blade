@@ -13,7 +13,11 @@ import type { CarouselProps } from './types';
 import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import { getCarouselItemId } from './utils';
-import { CAROUSEL_AUTOPLAY_INTERVAL, componentIds } from './constants';
+import {
+  CAROUSEL_AUTOPLAY_INTERVAL,
+  componentIds,
+  CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET,
+} from './constants';
 import getIn from '~utils/lodashButBetter/get';
 import throttle from '~utils/lodashButBetter/throttle';
 import debounce from '~utils/lodashButBetter/debounce';
@@ -87,7 +91,10 @@ const Controls = ({
     );
   }
 
-  if (showIndicators && navigationButtonPosition === 'side') {
+  if (
+    showIndicators &&
+    (navigationButtonPosition === 'side' || navigationButtonPosition === 'side-overlap')
+  ) {
     return (
       <Box marginTop="spacing.7">
         <Indicators
@@ -312,8 +319,10 @@ const _Carousel = (
     showIndicators = false;
   }
   const showNavigationButtons = showNavigationButtonProp || !isMobile;
+  const isNavigationButtonPositionSideOverlap = navigationButtonPosition === 'side-overlap';
 
   const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
+
   const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
   const totalNumberOfSlides = React.Children.count(children);
   const numberOfIndicators = Math.ceil(totalNumberOfSlides / _visibleItems);
@@ -548,8 +557,17 @@ const _Carousel = (
           flexDirection="row"
           height="100%"
         >
-          {shouldShowPrevButton && shouldNavButtonsFloat ? (
-            <BaseBox zIndex={2} position="absolute" left="spacing.11">
+          {shouldShowPrevButton &&
+          (shouldNavButtonsFloat || isNavigationButtonPositionSideOverlap) ? (
+            <BaseBox
+              zIndex={2}
+              position="absolute"
+              left={
+                isNavigationButtonPositionSideOverlap
+                  ? CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET
+                  : 'spacing.11'
+              }
+            >
               <NavigationButton
                 type="previous"
                 variant={navigationButtonVariant}
@@ -580,8 +598,17 @@ const _Carousel = (
           >
             {children}
           </CarouselBody>
-          {shouldShowNextButton && shouldNavButtonsFloat ? (
-            <BaseBox zIndex={2} position="absolute" right="spacing.11">
+          {shouldShowNextButton &&
+          (shouldNavButtonsFloat || isNavigationButtonPositionSideOverlap) ? (
+            <BaseBox
+              zIndex={2}
+              position="absolute"
+              right={
+                isNavigationButtonPositionSideOverlap
+                  ? CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET
+                  : 'spacing.11'
+              }
+            >
               <NavigationButton
                 onClick={goToNextSlide}
                 type="next"
