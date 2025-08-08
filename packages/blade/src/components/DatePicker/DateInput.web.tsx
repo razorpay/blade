@@ -59,6 +59,29 @@ const _DateInput = (
     }
   }, [textInputProps.value, isTyping]);
 
+  // Helper: Check if value is already formatted according to the actual format string
+  const isValueAlreadyFormatted = React.useCallback(
+    (value: string, formatStr?: string, isRangeInput?: boolean): boolean => {
+      if (!value || !formatStr) return false;
+
+      if (isRangeInput) {
+        // For range: check if value matches "format → format" pattern
+        const parts = value.split(/\s*→\s*/);
+        if (parts.length !== 2) return false;
+
+        // Check if both parts are valid according to the base format
+        const baseFormat = formatStr.split('→')[0]?.trim() || formatStr;
+        const startValid = dayjs(parts[0].trim(), baseFormat, true).isValid();
+        const endValid = dayjs(parts[1].trim(), baseFormat, true).isValid();
+        return startValid && endValid;
+      } else {
+        // For single date: check if value is valid according to the format
+        return dayjs(value, formatStr, true).isValid();
+      }
+    },
+    [],
+  );
+
   // Helper: Convert format to TextInput pattern
   const getTextInputFormat = React.useCallback(
     (formatStr?: string, isRangeInput?: boolean): string => {
@@ -164,7 +187,11 @@ const _DateInput = (
       value={inputValue}
       leadingIcon={CalendarIcon}
       leading={leadingDropdown}
-      format={isTyping ? getTextInputFormat(format, isRange) : undefined}
+      format={
+        !isValueAlreadyFormatted(String(inputValue), format, isRange)
+          ? getTextInputFormat(format, isRange)
+          : undefined
+      }
       onChange={handleInputChange}
       onBlur={handleBlur}
       onClick={(e) => {
