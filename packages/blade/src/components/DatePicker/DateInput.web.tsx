@@ -67,7 +67,6 @@ const _DateInput = (
       if (isRangeInput) {
         // For range: check if value matches "format → format" pattern
         const parts = value.split(/\s*→\s*/);
-        if (parts.length !== 2) return false;
 
         // Check if both parts are valid according to the base format
         const baseFormat = formatStr.split('→')[0]?.trim() || formatStr;
@@ -346,6 +345,9 @@ const _DatePickerInput = (
     };
 
     const finalInputFormat = () => {
+      if (startValue === endValue) {
+        return format;
+      }
       return `${format} → ${format}`;
     };
 
@@ -385,7 +387,7 @@ const _DatePickerInput = (
           labelSuffix={labelSuffix}
           labelTrailing={labelTrailing}
           format={finalInputFormat()}
-          isRange={true}
+          isRange={startValue !== endValue}
           leadingDropdown={leadingDropdown}
           date={date as [Date | null, Date | null]}
           setControlledValue={setControlledValue}
