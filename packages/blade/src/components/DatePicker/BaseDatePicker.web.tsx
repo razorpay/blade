@@ -40,6 +40,7 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
+import { PresetDropdown } from './QuickSelection/PresetDropdown.web';
 
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -75,6 +76,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   onClearButtonClick,
   labelSuffix,
   labelTrailing,
+  showActions = true,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -252,7 +254,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   }, [clearFilterCallbackTriggerer]);
 
   const isMobile = useIsMobile();
-  const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const titleId = useId('datepicker-title');
   const {
     context,
@@ -347,13 +348,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           }}
           selectedValue={controlledValue}
         />
-        {isMobile ? null : (
-          <CalendarFooter
-            isButtonDisabled={applyButtonDisabled}
-            onApply={handleApply}
-            onCancel={handleCancel}
-          />
-        )}
+        {showActions &&
+          (isMobile ? null : (
+            <CalendarFooter
+              isButtonDisabled={applyButtonDisabled}
+              onApply={handleApply}
+              onCancel={handleCancel}
+            />
+          ))}
       </BaseBox>
     </>
   );
@@ -438,6 +440,22 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
               placeholder={finalInputPlaceHolder}
               labelSuffix={labelSuffix}
               labelTrailing={labelTrailing}
+              setControlledValue={setControlledValue}
+              selectedPreset={selectedPreset}
+              leadingDropdown={
+                presets && !isSingle ? (
+                  <PresetDropdown
+                    presets={presets}
+                    selectedPreset={selectedPreset}
+                    date={currentDate}
+                    onSelection={(preset) => {
+                      const presetValue = preset?.(currentDate);
+                      setControlledValue(presetValue);
+                      setSelectedPreset(presetValue);
+                    }}
+                  />
+                ) : undefined
+              }
               {...makeAnalyticsAttribute(props)}
             />
           )}
@@ -466,18 +484,16 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                   />
                 )}
               </BottomSheetBody>
-              <BottomSheetFooter>
-                <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
-              </BottomSheetFooter>
+              {showActions && (
+                <BottomSheetFooter>
+                  <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
+                </BottomSheetFooter>
+              )}
             </BottomSheet>
           ) : (
             isMounted && (
               <FloatingPortal>
-                <FloatingFocusManager
-                  initialFocus={defaultInitialFocusRef}
-                  context={context}
-                  guards={true}
-                >
+                <FloatingFocusManager initialFocus={-1} context={context} guards={true}>
                   <BaseBox
                     ref={refs.setFloating}
                     style={floatingStyles}

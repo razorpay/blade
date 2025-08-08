@@ -127,6 +127,11 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * @param type - The level of the calendar. ("month" | "year" | "decade")
    */
   onPrevious?: ({ date, type }: { date: Date; type: Level }) => void;
+  /**
+   * Whether to show the footer with apply/cancel buttons
+   * @default true
+   */
+  showActions?: boolean;
 };
 
 type DatePickerProps<Type extends DateSelectionType> = Omit<
@@ -146,7 +151,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     /**
      * Sets the label for the input element.
      */
-    label?: Type extends 'single' ? string : { start: string; end?: string };
+    label?: string;
     /**
      * Sets the HTML [name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) attribute on the input elements.
      * Can be used when submitting a form.
@@ -154,9 +159,9 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * @example 'date' | { start: 'start-date', end: 'end-date' }
      */
     name?: Type extends 'single' ? string : { start: string; end?: string };
-    helpText?: Type extends 'single' ? string : { start: string; end?: string };
-    errorText?: Type extends 'single' ? string : { start: string; end?: string };
-    successText?: Type extends 'single' ? string : { start: string; end?: string };
+    helpText?: string;
+    errorText?: string;
+    successText?: string;
     /**
      * Callback which fires when apply button is clicked
      */
@@ -176,11 +181,11 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
 
 type DatePickerRangeInputProps = {
   selectionType: 'range';
-  label?: { start: string; end?: string };
+  label?: string;
   name?: { start: string; end: string };
-  successText?: { start: string; end?: string };
-  errorText?: { start: string; end?: string };
-  helpText?: { start: string; end?: string };
+  successText?: string;
+  errorText?: string;
+  helpText?: string;
   date: [Date, Date];
 };
 
@@ -215,6 +220,9 @@ type DatePickerInputProps = DatePickerCommonInputProps &
   (DatePickerRangeInputProps | DatePickerSingleInputProps) & {
     format: string;
     placeholder?: string;
+    setControlledValue?: (date: Date | null | [Date | null, Date | null]) => void;
+    leadingDropdown?: React.ReactElement | null;
+    selectedPreset?: DatesRangeValue | null;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
