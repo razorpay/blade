@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _PettyCashBudgetFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _PettyCashBudgetFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M12.8125 21.25C13.3821 21.25 13.8438 21.7117 13.8438 22.2812C13.8438 22.8508 13.3821 23.3125 12.8125 23.3125H9.03127C8.46174 23.3125 8.00002 22.8508 8.00002 22.2812C8.00002 21.7117 8.46174 21.25 9.03127 21.25H12.8125Z"
         fill={iconColor}
@@ -40,11 +30,8 @@ const _PettyCashBudgetFilledIcon: IconComponent = ({
   );
 };
 
-const PettyCashBudgetFilledIcon = assignWithoutSideEffects(
-  _PettyCashBudgetFilledIcon,
-  {
-    componentId: 'PettyCashBudgetFilledIcon',
-  }
-);
+const PettyCashBudgetFilledIcon = assignWithoutSideEffects(_PettyCashBudgetFilledIcon, {
+  componentId: 'PettyCashBudgetFilledIcon',
+});
 
 export default PettyCashBudgetFilledIcon;
