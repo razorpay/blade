@@ -34,97 +34,7 @@ const _DateInput = (
   },
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
-  const [inputValue, setInputValue] = React.useState('');
-  const [isTyping, setIsTyping] = React.useState(false);
-  const [calendarKey, setCalendarKey] = React.useState(0);
-
-  // Sync formatted value from parent to input display
-  React.useEffect(() => {
-    if (!isTyping) {
-      setInputValue(props.value || '');
-      // Force TextInput to re-render when calendar updates value
-      setCalendarKey((prev) => prev + 1);
-    }
-  }, [props.value, isTyping]);
-
-  // Simple: Convert format to TextInput pattern
-  const getTextInputFormat = (format?: string, isRange?: boolean): string => {
-    if (!format) {
-      return isRange ? '##/##/#### → ##/##/####' : '##/##/####';
-    }
-    const pattern = format.replace(/[YMD]/g, '#');
-    return pattern;
-  };
-
-  const handleInputChange = ({ value }: { value?: string }) => {
-    setInputValue(value || '');
-    setIsTyping(true);
-
-    // Handle range input
-    if (props.isRange) {
-      if (value && value.length >= 10) {
-        const [startStr, endStr] = value.split('→').map((s) => s.trim());
-        const baseFormat = props.format?.split('→')[0]?.trim() || props.format;
-
-        // Get current range state to preserve existing values
-        const currentRange = (props.date as [Date | null, Date | null]) || [null, null];
-        let newStartDate = currentRange[0];
-        let newEndDate = currentRange[1];
-
-        // Parse and update start date if valid
-        if (startStr && startStr.length >= 8) {
-          const startDate = dayjs(startStr, baseFormat, true);
-          if (startDate.isValid()) {
-            newStartDate = startDate.toDate();
-          }
-        }
-
-        // Parse and update end date if valid
-        if (endStr && endStr.length >= 8) {
-          const endDate = dayjs(endStr, baseFormat, true);
-          if (endDate.isValid()) {
-            newEndDate = endDate.toDate();
-          }
-        }
-
-        // Update calendar with new range (even if only one date is valid)
-        const rangeHandler = props.setControlledValue as (
-          dates: [Date | null, Date | null],
-        ) => void;
-        rangeHandler?.([newStartDate, newEndDate]);
-        return;
-      }
-
-      // Clear if empty
-      if (!value?.trim()) {
-        const rangeHandler = props.setControlledValue as (
-          dates: [Date | null, Date | null],
-        ) => void;
-        rangeHandler?.([null, null]);
-      }
-      return;
-    }
-
-    // Handle single date input
-    if (value && value.length >= 8) {
-      const parsedDate = dayjs(value, props.format, true);
-      if (parsedDate.isValid()) {
-        props.setControlledValue?.(parsedDate.toDate());
-        return;
-      }
-    }
-
-    // Clear if empty
-    if (!value?.trim()) {
-      props.setControlledValue?.(null);
-    }
-  };
-
-  const handleBlur = () => {
-    setIsTyping(false);
-    // TextInput handles formatting automatically via format prop
-  };
-
+  // Destructure props early for better readability
   const {
     format,
     date,
@@ -136,32 +46,136 @@ const _DateInput = (
     ...textInputProps
   } = props;
 
+  const [inputValue, setInputValue] = React.useState('');
+  const [isTyping, setIsTyping] = React.useState(false);
+  const [inputResetKey, setInputResetKey] = React.useState(0);
+
+  // Sync formatted value from parent to input display
+  React.useEffect(() => {
+    if (!isTyping) {
+      setInputValue(textInputProps.value || '');
+      // Force TextInput to re-render when external value updates
+      setInputResetKey((prev) => prev + 1);
+    }
+  }, [textInputProps.value, isTyping]);
+
+  // Helper: Convert format to TextInput pattern
+  const getTextInputFormat = React.useCallback(
+    (formatStr?: string, isRangeInput?: boolean): string => {
+      if (!formatStr) {
+        return isRangeInput ? '##/##/#### → ##/##/####' : '##/##/####';
+      }
+      return formatStr.replace(/[YMD]/g, '#');
+    },
+    [],
+  );
+
+  // Helper: Parse date string with format validation
+  const parseDate = React.useCallback((dateStr: string, dateFormat?: string): Date | null => {
+    const parsedDate = dayjs(dateStr, dateFormat, true);
+    return parsedDate.isValid() ? parsedDate.toDate() : null;
+  }, []);
+
+  // Type cast range handler once
+  const rangeHandler = React.useMemo(
+    () => setControlledValue as ((dates: [Date | null, Date | null]) => void) | undefined,
+    [setControlledValue],
+  );
+
+  // Helper: Handle range input logic (extracted for clarity)
+  const handleRangeInput = React.useCallback(
+    (value: string) => {
+      if (value.length >= 10) {
+        // Optimized split with regex to handle spacing variations
+        const [startStr, endStr] = value.split(/\s*→\s*/).map((s) => s.trim());
+        const baseFormat = format?.split('→')[0]?.trim() || format;
+
+        // Get current range state to preserve existing values
+        const currentRange = (date as [Date | null, Date | null]) || [null, null];
+        let newStartDate = currentRange[0];
+        let newEndDate = currentRange[1];
+
+        // Parse and update start date if valid
+        if (startStr && startStr.length >= 8) {
+          const startDate = parseDate(startStr, baseFormat);
+          if (startDate) newStartDate = startDate;
+        }
+
+        // Parse and update end date if valid
+        if (endStr && endStr.length >= 8) {
+          const endDate = parseDate(endStr, baseFormat);
+          if (endDate) newEndDate = endDate;
+        }
+
+        // Update calendar with new range
+        rangeHandler?.([newStartDate, newEndDate]);
+        return;
+      }
+
+      // Clear if empty
+      if (!value.trim()) {
+        rangeHandler?.([null, null]);
+      }
+    },
+    [date, format, parseDate, rangeHandler],
+  );
+
+  // Optimized input change handler (memoized)
+  const handleInputChange = React.useCallback(
+    ({ value }: { value?: string }) => {
+      const inputVal = value || '';
+      setInputValue(inputVal);
+      setIsTyping(true);
+
+      // Handle range input
+      if (isRange) {
+        handleRangeInput(inputVal);
+        return;
+      }
+
+      // Handle single date input
+      if (inputVal && inputVal.length >= 8) {
+        const parsedDate = parseDate(inputVal, format);
+        if (parsedDate) {
+          setControlledValue?.(parsedDate);
+          return;
+        }
+      }
+
+      // Clear if empty
+      if (!inputVal.trim()) {
+        setControlledValue?.(null);
+      }
+    },
+    [isRange, format, parseDate, setControlledValue, handleRangeInput],
+  );
+
+  // Optimized blur handler (memoized)
+  const handleBlur = React.useCallback(() => {
+    setIsTyping(false);
+  }, []);
+
   return (
     <TextInput
       {...textInputProps}
       ref={ref}
-      key={calendarKey}
+      key={inputResetKey}
       type="text"
       value={inputValue}
-      trailing={CalendarIcon}
+      leadingIcon={CalendarIcon}
       leading={leadingDropdown}
       format={isTyping ? getTextInputFormat(format, isRange) : undefined}
       onChange={handleInputChange}
       onBlur={handleBlur}
       onClick={(e) => {
-        if (props.isDisabled) {
+        if (textInputProps.isDisabled) {
           return;
         }
-        props.onClick?.(e);
-        setTimeout(() => {
-          if (ref && typeof ref !== 'function') {
-            ref.current?.focus();
-          }
-        }, 10);
+        textInputProps.onClick?.(e);
       }}
       onKeyDown={({ event }) => {
         // @ts-expect-error
-        props.onKeyDown?.(event);
+        textInputProps.onKeyDown?.(event);
       }}
     />
   );
