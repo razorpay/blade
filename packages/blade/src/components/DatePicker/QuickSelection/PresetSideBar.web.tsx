@@ -7,16 +7,7 @@ import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
-
-const isSamePreset = (value1: DatesRangeValue | null, value2: DatesRangeValue | null): boolean => {
-  if (!value1?.[0] || !value1?.[1]) return false;
-  if (!value2?.[0] || !value2?.[1]) return false;
-
-  return (
-    value1[0].toDateString() === value2[0].toDateString() &&
-    value1[1].toDateString() === value2[1].toDateString()
-  );
-};
+import { isCustomSelected, isSamePreset } from './utils';
 
 type PresetSideBarProps = {
   isMobile?: boolean;
@@ -74,7 +65,10 @@ const PresetSideBar = ({
       {...makeAccessible({ role: 'listbox', label: 'Select Presets' })}
     >
       {presets.map((preset, index) => {
-        const isSelected = isSamePreset(selectedPreset, preset.value(date));
+        const isSelected =
+          preset.label === 'Custom' && isCustomSelected
+            ? isCustomSelected(selectedPreset, date, presets)
+            : isSamePreset(selectedPreset, preset.value(date));
         return (
           <QuickSelectionItem
             key={index}
