@@ -556,7 +556,7 @@ const _Carousel = (
           gap="spacing.4"
           flexDirection="row"
           height="100%"
-          >
+        >
           {shouldShowPrevButton &&
           (shouldNavButtonsFloat || isNavigationButtonPositionSideOverlap) ? (
             <BaseBox
