@@ -1,0 +1,588 @@
+{
+    "theme": {
+        "name": "bladeTheme",
+        "border": {
+            "radius": {
+                "none": 0,
+                "xsmall": 1,
+                "small": 2,
+                "medium": 4,
+                "large": 8,
+                "xlarge": 12,
+                "2xlarge": 16,
+                "max": 9999,
+                "round": "50%"
+            },
+            "width": {
+                "none": 0,
+                "thinner": 0.5,
+                "thin": 1,
+                "thick": 1.5,
+                "thicker": 2
+            }
+        },
+        "breakpoints": {
+            "base": 0,
+            "xs": 320,
+            "s": 480,
+            "m": 768,
+            "l": 1024,
+            "xl": 1200
+        },
+        "colors": {
+            "surface": {
+                "background": {
+                    "gray": {
+                        "subtle": "hsla(213, 47%, 96%, 1)",
+                        "moderate": "hsla(210, 40%, 98%, 1)",
+                        "intense": "hsla(0, 0%, 100%, 1)"
+                    },
+                    "primary": {
+                        "subtle": "hsla(227, 100%, 59%, 0.09)",
+                        "intense": "hsla(227, 100%, 59%, 1)"
+                    },
+                    "sea": {
+                        "subtle": "hsla(180, 39%, 95%, 1)",
+                        "intense": "hsla(180, 61%, 20%, 1)"
+                    },
+                    "cloud": {
+                        "subtle": "hsla(198, 39%, 95%, 1)",
+                        "intense": "hsla(200, 61%, 20%, 1)"
+                    }
+                },
+                "border": {
+                    "gray": {
+                        "normal": "hsla(211, 27%, 76%, 1)",
+                        "subtle": "hsla(214, 28%, 84%, 1)",
+                        "muted": "hsla(211, 20%, 52%, 0.18)"
+                    },
+                    "primary": {
+                        "normal": "hsla(227, 100%, 59%, 1)",
+                        "muted": "hsla(227, 100%, 59%, 0.18)"
+                    }
+                },
+                "text": {
+                    "gray": {
+                        "normal": "hsla(212, 39%, 16%, 1)",
+                        "subtle": "hsla(211, 26%, 34%, 1)",
+                        "muted": "hsla(211, 22%, 56%, 1)",
+                        "disabled": "hsla(211, 20%, 52%, 0.32)"
+                    },
+                    "primary": {
+                        "normal": "hsla(227, 100%, 59%, 1)"
+                    },
+                    "onSea": {
+                        "onSubtle": "hsla(155, 100%, 21%, 1)",
+                        "onIntense": "hsla(150, 59%, 82%, 1)"
+                    },
+                    "onCloud": {
+                        "onSubtle": "hsla(227, 71%, 51%, 1)",
+                        "onIntense": "hsla(219, 95%, 85%, 1)"
+                    },
+                    "staticWhite": {
+                        "normal": "hsla(0, 0%, 100%, 1)",
+                        "subtle": "hsla(0, 0%, 100%, 0.88)",
+                        "muted": "hsla(0, 0%, 100%, 0.48)",
+                        "disabled": "hsla(0, 0%, 100%, 0.32)"
+                    },
+                    "staticBlack": {
+                        "normal": "hsla(0, 0%, 0%, 1)",
+                        "subtle": "hsla(0, 0%, 0%, 0.72)",
+                        "muted": "hsla(0, 0%, 0%, 0.56)",
+                        "disabled": "hsla(0, 0%, 0%, 0.32)"
+                    }
+                },
+                "icon": {
+                    "gray": {
+                        "normal": "hsla(212, 39%, 16%, 1)",
+                        "subtle": "hsla(211, 26%, 34%, 1)",
+                        "muted": "hsla(211, 22%, 56%, 1)",
+                        "disabled": "hsla(211, 20%, 52%, 0.32)"
+                    },
+                    "primary": {
+                        "normal": "hsla(227, 100%, 59%, 1)"
+                    },
+                    "onSea": {
+                        "onSubtle": "hsla(155, 100%, 31%, 1)",
+                        "onIntense": "hsla(150, 59%, 55%, 1)"
+                    },
+                    "onCloud": {
+                        "onSubtle": "hsla(223, 100%, 65%, 1)",
+                        "onIntense": "hsla(220, 100%, 73%, 1)"
+                    },
+                    "staticWhite": {
+                        "normal": "hsla(0, 0%, 100%, 1)",
+                        "subtle": "hsla(0, 0%, 100%, 0.88)",
+                        "muted": "hsla(0, 0%, 100%, 0.48)",
+                        "disabled": "hsla(0, 0%, 100%, 0.32)"
+                    },
+                    "staticBlack": {
+                        "normal": "hsla(0, 0%, 0%, 1)",
+                        "subtle": "hsla(0, 0%, 0%, 0.72)",
+                        "muted": "hsla(0, 0%, 0%, 0.56)",
+                        "disabled": "hsla(0, 0%, 0%, 0.32)"
+                    }
+                }
+            },
+            "feedback": {
+                "background": {
+                    "positive": {
+                        "subtle": "hsla(150, 100%, 32%, 0.09)",
+                        "intense": "hsla(150, 100%, 32%, 1)"
+                    },
+                    "negative": {
+                        "subtle": "hsla(4, 74%, 49%, 0.09)",
+                        "intense": "hsla(4, 74%, 49%, 1)"
+                    },
+                    "notice": {
+                        "subtle": "hsla(25, 90%, 48%, 0.09)",
+                        "intense": "hsla(25, 90%, 48%, 1)"
+                    },
+                    "information": {
+                        "subtle": "hsla(200, 84%, 44%, 0.09)",
+                        "intense": "hsla(200, 84%, 44%, 1)"
+                    },
+                    "neutral": {
+                        "subtle": "hsla(211, 20%, 52%, 0.09)",
+                        "intense": "hsla(211, 29%, 26%, 1)"
+                    }
+                },
+                "border": {
+                    "positive": {
+                        "subtle": "hsla(150, 100%, 32%, 0.18)",
+                        "intense": "hsla(150, 100%, 27%, 1)"
+                    },
+                    "negative": {
+                        "subtle": "hsla(4, 74%, 49%, 0.18)",
+                        "intense": "hsla(4, 77%, 40%, 1)"
+                    },
+                    "notice": {
+                        "subtle": "hsla(25, 90%, 48%, 0.18)",
+                        "intense": "hsla(25, 85%, 42%, 1)"
+                    },
+                    "information": {
+                        "subtle": "hsla(200, 84%, 44%, 0.18)",
+                        "intense": "hsla(200, 84%, 37%, 1)"
+                    },
+                    "neutral": {
+                        "subtle": "hsla(211, 20%, 52%, 0.18)",
+                        "intense": "hsla(211, 33%, 21%, 1)"
+                    }
+                },
+                "text": {
+                    "positive": {
+                        "subtle": "hsla(151, 57%, 91%, 1)",
+                        "intense": "hsla(150, 100%, 27%, 1)"
+                    },
+                    "negative": {
+                        "subtle": "hsla(4, 93%, 94%, 1)",
+                        "intense": "hsla(4, 74%, 49%, 1)"
+                    },
+                    "notice": {
+                        "subtle": "hsla(25, 100%, 90%, 1)",
+                        "intense": "hsla(25, 85%, 42%, 1)"
+                    },
+                    "information": {
+                        "subtle": "hsla(200, 88%, 90%, 1)",
+                        "intense": "hsla(200, 84%, 37%, 1)"
+                    },
+                    "neutral": {
+                        "subtle": "hsla(211, 24%, 65%, 1)",
+                        "intense": "hsla(211, 33%, 21%, 1)"
+                    }
+                },
+                "icon": {
+                    "positive": {
+                        "subtle": "hsla(151, 57%, 91%, 1)",
+                        "intense": "hsla(150, 100%, 27%, 1)"
+                    },
+                    "negative": {
+                        "subtle": "hsla(4, 93%, 94%, 1)",
+                        "intense": "hsla(4, 74%, 49%, 1)"
+                    },
+                    "notice": {
+                        "subtle": "hsla(25, 100%, 90%, 1)",
+                        "intense": "hsla(25, 85%, 42%, 1)"
+                    },
+                    "information": {
+                        "subtle": "hsla(200, 88%, 90%, 1)",
+                        "intense": "hsla(200, 84%, 37%, 1)"
+                    },
+                    "neutral": {
+                        "subtle": "hsla(211, 24%, 65%, 1)",
+                        "intense": "hsla(211, 33%, 21%, 1)"
+                    }
+                }
+            },
+            "interactive": {
+                "background": {
+                    "positive": {
+                        "default": "hsla(150, 100%, 32%, 1)",
+                        "highlighted": "hsla(150, 100%, 27%, 1)",
+                        "disabled": "hsla(150, 100%, 32%, 0.09)",
+                        "faded": "hsla(150, 100%, 32%, 0.09)",
+                        "fadedHighlighted": "hsla(150, 100%, 32%, 0.18)"
+                    },
+                    "negative": {
+                        "default": "hsla(4, 74%, 49%, 1)",
+                        "highlighted": "hsla(4, 77%, 40%, 1)",
+                        "disabled": "hsla(4, 74%, 49%, 0.09)",
+                        "faded": "hsla(4, 74%, 49%, 0.09)",
+                        "fadedHighlighted": "hsla(4, 74%, 49%, 0.18)"
+                    },
+                    "notice": {
+                        "default": "hsla(25, 90%, 48%, 1)",
+                        "highlighted": "hsla(25, 85%, 42%, 1)",
+                        "disabled": "hsla(25, 90%, 48%, 0.09)",
+                        "faded": "hsla(25, 90%, 48%, 0.09)",
+                        "fadedHighlighted": "hsla(25, 90%, 48%, 0.18)"
+                    },
+                    "information": {
+                        "default": "hsla(200, 84%, 44%, 1)",
+                        "highlighted": "hsla(200, 84%, 37%, 1)",
+                        "disabled": "hsla(200, 84%, 44%, 0.09)",
+                        "faded": "hsla(200, 84%, 44%, 0.09)",
+                        "fadedHighlighted": "hsla(200, 84%, 44%, 0.18)"
+                    },
+                    "neutral": {
+                        "default": "hsla(211, 29%, 26%, 1)",
+                        "highlighted": "hsla(211, 33%, 21%, 1)",
+                        "disabled": "hsla(211, 20%, 52%, 0.18)",
+                        "faded": "hsla(211, 20%, 52%, 0.18)",
+                        "fadedHighlighted": "hsla(211, 20%, 52%, 0.32)"
+                    },
+                    "gray": {
+                        "default": "hsla(211, 20%, 52%, 0.12)",
+                        "highlighted": "hsla(211, 20%, 52%, 0.18)",
+                        "disabled": "hsla(211, 20%, 52%, 0.18)",
+                        "faded": "hsla(211, 20%, 52%, 0.06)",
+                        "fadedHighlighted": "hsla(211, 20%, 52%, 0.12)"
+                    },
+                    "primary": {
+                        "default": "hsla(227, 100%, 59%, 1)",
+                        "highlighted": "hsla(227, 71%, 51%, 1)",
+                        "disabled": "hsla(227, 100%, 59%, 0.18)",
+                        "faded": "hsla(227, 100%, 59%, 0.09)",
+                        "fadedHighlighted": "hsla(227, 100%, 59%, 0.18)"
+                    },
+                    "staticBlack": {
+                        "default": "hsla(0, 0%, 0%, 1)",
+                        "highlighted": "hsla(0, 0%, 0%, 1)",
+                        "disabled": "hsla(0, 0%, 0%, 0.56)",
+                        "faded": "hsla(0, 0%, 0%, 0.18)",
+                        "fadedHighlighted": "hsla(0, 0%, 0%, 0.32)"
+                    },
+                    "staticWhite": {
+                        "default": "hsla(0, 0%, 100%, 1)",
+                        "highlighted": "hsla(0, 0%, 100%, 0.8)",
+                        "disabled": "hsla(0, 0%, 100%, 0.18)",
+                        "faded": "hsla(0, 0%, 100%, 0.18)",
+                        "fadedHighlighted": "hsla(0, 0%, 100%, 0.32)"
+                    }
+                },
+                "border": {
+                    "positive": {
+                        "default": "hsla(150, 100%, 32%, 1)",
+                        "highlighted": "hsla(150, 100%, 27%, 1)",
+                        "disabled": "hsla(150, 100%, 32%, 0.18)",
+                        "faded": "hsla(150, 100%, 32%, 0.18)"
+                    },
+                    "negative": {
+                        "default": "hsla(4, 74%, 49%, 1)",
+                        "highlighted": "hsla(4, 77%, 40%, 1)",
+                        "disabled": "hsla(4, 74%, 49%, 0.18)",
+                        "faded": "hsla(4, 74%, 49%, 0.18)"
+                    },
+                    "notice": {
+                        "default": "hsla(25, 90%, 48%, 1)",
+                        "highlighted": "hsla(25, 85%, 42%, 1)",
+                        "disabled": "hsla(25, 90%, 48%, 0.18)",
+                        "faded": "hsla(25, 90%, 48%, 0.18)"
+                    },
+                    "information": {
+                        "default": "hsla(200, 84%, 44%, 1)",
+                        "highlighted": "hsla(200, 84%, 37%, 1)",
+                        "disabled": "hsla(200, 84%, 44%, 0.18)",
+                        "faded": "hsla(200, 84%, 44%, 0.18)"
+                    },
+                    "neutral": {
+                        "default": "hsla(211, 20%, 52%, 1)",
+                        "highlighted": "hsla(211, 20%, 52%, 1)",
+                        "disabled": "hsla(214, 28%, 84%, 1)",
+                        "faded": "hsla(211, 20%, 52%, 0.18)"
+                    },
+                    "gray": {
+                        "default": "hsla(214, 28%, 84%, 1)",
+                        "highlighted": "hsla(214, 28%, 84%, 1)",
+                        "disabled": "hsla(214, 40%, 92%, 1)",
+                        "faded": "hsla(211, 20%, 52%, 0.18)"
+                    },
+                    "primary": {
+                        "default": "hsla(227, 100%, 59%, 1)",
+                        "highlighted": "hsla(227, 100%, 59%, 1)",
+                        "disabled": "hsla(227, 100%, 59%, 0.18)",
+                        "faded": "hsla(227, 100%, 59%, 0.18)"
+                    },
+                    "staticWhite": {
+                        "default": "hsla(0, 0%, 100%, 1)",
+                        "highlighted": "hsla(0, 0%, 100%, 0.8)",
+                        "disabled": "hsla(0, 0%, 100%, 0.32)",
+                        "faded": "hsla(0, 0%, 100%, 0.18)"
+                    },
+                    "staticBlack": {
+                        "default": "hsla(0, 0%, 0%, 1)",
+                        "highlighted": "hsla(0, 0%, 0%, 1)",
+                        "disabled": "hsla(0, 0%, 0%, 0.32)",
+                        "faded": "hsla(0, 0%, 0%, 0.32)"
+                    }
+                },
+                "text": {
+                    "positive": {
+                        "normal": "hsla(150, 100%, 27%, 1)",
+                        "subtle": "hsla(150, 100%, 32%, 1)",
+                        "muted": "hsla(150, 59%, 55%, 1)",
+                        "disabled": "hsla(150, 100%, 32%, 0.32)"
+                    },
+                    "negative": {
+                        "normal": "hsla(4, 74%, 49%, 1)",
+                        "subtle": "hsla(4, 86%, 58%, 1)",
+                        "muted": "hsla(4, 93%, 68%, 1)",
+                        "disabled": "hsla(4, 74%, 49%, 0.32)"
+                    },
+                    "notice": {
+                        "normal": "hsla(25, 85%, 42%, 1)",
+                        "subtle": "hsla(25, 90%, 48%, 1)",
+                        "muted": "hsla(25, 100%, 63%, 1)",
+                        "disabled": "hsla(25, 90%, 48%, 0.32)"
+                    },
+                    "information": {
+                        "normal": "hsla(200, 84%, 37%, 1)",
+                        "subtle": "hsla(200, 84%, 44%, 1)",
+                        "muted": "hsla(200, 90%, 65%, 1)",
+                        "disabled": "hsla(200, 84%, 44%, 0.32)"
+                    },
+                    "neutral": {
+                        "normal": "hsla(211, 33%, 21%, 1)",
+                        "subtle": "hsla(211, 26%, 34%, 1)",
+                        "muted": "hsla(211, 22%, 56%, 1)",
+                        "disabled": "hsla(211, 20%, 52%, 0.32)"
+                    },
+                    "gray": {
+                        "normal": "hsla(212, 39%, 16%, 1)",
+                        "subtle": "hsla(211, 26%, 34%, 1)",
+                        "muted": "hsla(211, 22%, 56%, 1)",
+                        "disabled": "hsla(211, 20%, 52%, 0.32)"
+                    },
+                    "primary": {
+                        "normal": "hsla(227, 71%, 51%, 1)",
+                        "subtle": "hsla(227, 100%, 59%, 1)",
+                        "muted": "hsla(223, 100%, 65%, 1)",
+                        "disabled": "hsla(227, 100%, 59%, 0.32)"
+                    },
+                    "onPrimary": {
+                        "normal": "hsla(0, 0%, 100%, 1)",
+                        "subtle": "hsla(0, 0%, 100%, 0.8)",
+                        "muted": "hsla(0, 0%, 100%, 0.64)",
+                        "disabled": "hsla(0, 0%, 100%, 0.32)"
+                    },
+                    "staticWhite": {
+                        "normal": "hsla(0, 0%, 100%, 1)",
+                        "subtle": "hsla(0, 0%, 100%, 0.8)",
+                        "muted": "hsla(0, 0%, 100%, 0.64)",
+                        "disabled": "hsla(0, 0%, 100%, 0.32)"
+                    },
+                    "staticBlack": {
+                        "normal": "hsla(0, 0%, 0%, 1)",
+                        "subtle": "hsla(0, 0%, 0%, 0.8)",
+                        "muted": "hsla(0, 0%, 0%, 0.72)",
+                        "disabled": "hsla(0, 0%, 0%, 0.32)"
+                    }
+                },
+                "icon": {
+                    "positive": {
+                        "normal": "hsla(150, 100%, 27%, 1)",
+                        "subtle": "hsla(150, 100%, 32%, 1)",
+                        "muted": "hsla(150, 59%, 55%, 1)",
+                        "disabled": "hsla(150, 100%, 32%, 0.32)"
+                    },
+                    "negative": {
+                        "normal": "hsla(4, 74%, 49%, 1)",
+                        "subtle": "hsla(4, 86%, 58%, 1)",
+                        "muted": "hsla(4, 93%, 68%, 1)",
+                        "disabled": "hsla(4, 74%, 49%, 0.32)"
+                    },
+                    "notice": {
+                        "normal": "hsla(25, 85%, 42%, 1)",
+                        "subtle": "hsla(25, 90%, 48%, 1)",
+                        "muted": "hsla(25, 100%, 63%, 1)",
+                        "disabled": "hsla(25, 90%, 48%, 0.32)"
+                    },
+                    "information": {
+                        "normal": "hsla(200, 84%, 37%, 1)",
+                        "subtle": "hsla(200, 84%, 44%, 1)",
+                        "muted": "hsla(200, 90%, 65%, 1)",
+                        "disabled": "hsla(200, 84%, 44%, 0.32)"
+                    },
+                    "neutral": {
+                        "normal": "hsla(211, 33%, 21%, 1)",
+                        "subtle": "hsla(211, 26%, 34%, 1)",
+                        "muted": "hsla(211, 22%, 56%, 1)",
+                        "disabled": "hsla(211, 20%, 52%, 0.32)"
+                    },
+                    "gray": {
+                        "normal": "hsla(212, 39%, 16%, 1)",
+                        "subtle": "hsla(211, 26%, 34%, 1)",
+                        "muted": "hsla(211, 22%, 56%, 1)",
+                        "disabled": "hsla(211, 20%, 52%, 0.32)"
+                    },
+                    "primary": {
+                        "normal": "hsla(227, 71%, 51%, 1)",
+                        "subtle": "hsla(227, 100%, 59%, 1)",
+                        "muted": "hsla(223, 100%, 65%, 1)",
+                        "disabled": "hsla(227, 100%, 59%, 0.32)"
+                    },
+                    "onPrimary": {
+                        "normal": "hsla(0, 0%, 100%, 1)",
+                        "subtle": "hsla(0, 0%, 100%, 0.8)",
+                        "muted": "hsla(0, 0%, 100%, 0.64)",
+                        "disabled": "hsla(0, 0%, 100%, 0.32)"
+                    },
+                    "staticWhite": {
+                        "normal": "hsla(0, 0%, 100%, 1)",
+                        "subtle": "hsla(0, 0%, 100%, 0.8)",
+                        "muted": "hsla(0, 0%, 100%, 0.64)",
+                        "disabled": "hsla(0, 0%, 100%, 0.32)"
+                    },
+                    "staticBlack": {
+                        "normal": "hsla(0, 0%, 0%, 1)",
+                        "subtle": "hsla(0, 0%, 0%, 0.8)",
+                        "muted": "hsla(0, 0%, 0%, 0.72)",
+                        "disabled": "hsla(0, 0%, 0%, 0.32)"
+                    }
+                }
+            },
+            "overlay": {
+                "background": {
+                    "moderate": "hsla(211, 20%, 52%, 0.32)",
+                    "subtle": "hsla(0, 0%, 0%, 0.56)"
+                }
+            },
+            "popup": {
+                "background": {
+                    "subtle": "hsla(0, 0%, 100%, 1)",
+                    "intense": "hsla(211, 29%, 26%, 1)"
+                },
+                "border": {
+                    "subtle": "hsla(211, 20%, 52%, 0.18)",
+                    "intense": "hsla(211, 26%, 34%, 1)"
+                }
+            },
+            "transparent": "hsla(0, 0%, 100%, 0)"
+        },
+        "motion": {
+            "delay": {
+                "2xquick": 80,
+                "xquick": 160,
+                "moderate": 280,
+                "gentle": 480,
+                "xgentle": 960,
+                "long": 2000,
+                "xlong": 3000,
+                "2xlong": 5000
+            },
+            "duration": {
+                "2xquick": 80,
+                "xquick": 160,
+                "quick": 200,
+                "moderate": 280,
+                "xmoderate": 360,
+                "gentle": 480,
+                "xgentle": 640,
+                "2xgentle": 960
+            },
+            "easing": {
+                "linear": "cubic-bezier(0, 0, 0, 0)",
+                "entrance": "cubic-bezier(0, 0, 0.2, 1)",
+                "exit": "cubic-bezier(0.17, 0, 1, 1)",
+                "standard": "cubic-bezier(0.3, 0, 0.2, 1)",
+                "emphasized": "cubic-bezier(0.5, 0, 0, 1)",
+                "overshoot": "cubic-bezier(0.5, 0, 0.3, 1.5)",
+                "shake": "cubic-bezier(1, 0.5, 0, 0.5)"
+            }
+        },
+        "spacing": {
+            "0": 0,
+            "1": 2,
+            "2": 4,
+            "3": 8,
+            "4": 12,
+            "5": 16,
+            "6": 20,
+            "7": 24,
+            "8": 32,
+            "9": 40,
+            "10": 48,
+            "11": 56
+        },
+        "elevation": {
+            "none": "none",
+            "lowRaised": "0px 2px 16px 0px hsla(217, 56%, 17%, 0.10)",
+            "midRaised": "0px 8px 24px 0px hsla(217, 56%, 17%, 0.12)",
+            "highRaised": "0px 16px 48px -4px hsla(217, 56%, 17%, 0.18)"
+        },
+        "typography": {
+            "fonts": {
+                "family": {
+                    "text": "\"Inter\", \"Inter Fallback Arial\", Arial",
+                    "heading": "\"TASA Orbiter\", \"TASA Orbiter Fallback Arial\", Arial",
+                    "code": "\"Menlo\", San Francisco Mono, Courier New, Roboto Mono, monospace"
+                },
+                "size": {
+                    "25": 10,
+                    "50": 11,
+                    "75": 12,
+                    "100": 14,
+                    "200": 16,
+                    "300": 18,
+                    "400": 20,
+                    "500": 24,
+                    "600": 32,
+                    "700": 40,
+                    "800": 48,
+                    "900": 56,
+                    "1000": 64,
+                    "1100": 72
+                },
+                "weight": {
+                    "regular": 400,
+                    "medium": 500,
+                    "semibold": 600,
+                    "bold": 700
+                }
+            },
+            "lineHeights": {
+                "0": 0,
+                "25": 14,
+                "50": 16,
+                "75": 18,
+                "100": 20,
+                "200": 24,
+                "300": 24,
+                "400": 26,
+                "500": 32,
+                "600": 38,
+                "700": 46,
+                "800": 56,
+                "900": 64,
+                "1000": 70,
+                "1100": 78
+            },
+            "letterSpacings": {
+                "50": -1,
+                "100": 0
+            }
+        }
+    },
+    "colorScheme": "light",
+    "platform": "onDesktop"
+}
