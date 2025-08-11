@@ -93,6 +93,8 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 
 > **Color Handling:** Area Charts will not support sequential colors. A limited, curated palette of theme colors will be available. Colors are automatically assigned from the predefined palette if not specified.
 
+> **Responsive Container :** The `ResponsiveContainer` may have other options like actions, onResize, onResizeEnd, etc. will write an seprate API doc after discussion with design. 
+
 ```ts
 import {
   ChartContainer,

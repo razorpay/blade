@@ -106,6 +106,7 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 
 > **LineChart Margin:** The `margin` prop from LineChart will not be exposed to developers. We will use predefined values that align with our design system. 
 
+> **Responsive Container :** The `ResponsiveContainer` may have other options like actions, onResize, onResizeEnd, etc. will write an seprate API doc after discussion with design. 
 
 ```ts
 import {
