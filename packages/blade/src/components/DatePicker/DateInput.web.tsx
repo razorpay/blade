@@ -107,36 +107,51 @@ const _DateInput = (
     }
   };
 
+  const applyDateValue = React.useCallback(
+    (inputValue: string, shouldClearWhenEmpty = false) => {
+      if (inputValue && inputValue.trim()) {
+        const parsed = parseInputValue(inputValue);
+        // Only update controlled value if parsing returned a definitive result
+        // undefined means "don't change" (user is still editing)
+        if (parsed !== undefined) {
+          if (isRange && Array.isArray(parsed) && (parsed as any)[1] === 'PRESERVE') {
+            // PRESERVE signal: User is editing incomplete end date (e.g., "25/12/202")
+            // Update start date immediately but preserve existing end date to prevent clearing
+            const currentValue = date;
+            const currentEnd = Array.isArray(currentValue) ? currentValue[1] : null;
+
+            setControlledValue?.([parsed[0] as Date | null, currentEnd]);
+          } else {
+            // single date case
+            setControlledValue?.(parsed);
+          }
+        }
+      } else if (shouldClearWhenEmpty) {
+        // Clear when empty (only for onChange, not onBlur)
+        setControlledValue?.(isRange ? ([null, null] as [Date | null, Date | null]) : null);
+      }
+    },
+    [isRange, date, setControlledValue],
+  );
+
   const handleInputChange = ({ value }: { value?: string }) => {
     const inputVal = value || '';
-
-    if (inputVal.trim()) {
-      const parsed = parseInputValue(inputVal);
-      // Only update controlled value if parsing returned a definitive result
-      // undefined means "don't change" (user is still editing)
-      if (parsed !== undefined) {
-        if (isRange && Array.isArray(parsed) && (parsed as any)[1] === 'PRESERVE') {
-          // PRESERVE signal: User is editing incomplete end date (e.g., "25/12/202")
-          // Update start date immediately but preserve existing end date to prevent clearing
-          const currentValue = date;
-          const currentEnd = Array.isArray(currentValue) ? currentValue[1] : null;
-
-          setControlledValue?.([parsed[0] as Date | null, currentEnd]);
-        } else {
-          setControlledValue?.(parsed);
-        }
-      }
-    } else {
-      // Clear when empty
-      setControlledValue?.(isRange ? ([null, null] as [Date | null, Date | null]) : null);
-    }
+    applyDateValue(inputVal, true); // Clear when empty on change
   };
+
+  const handleBlur = React.useCallback(
+    (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
+      const currentInputValue = params.event?.target.value || params.value || '';
+      applyDateValue(currentInputValue, false); // Don't clear when empty on blur
+    },
+    [applyDateValue],
+  );
 
   return (
     <TextInput
       {...textInputProps}
       ref={ref}
-      type="text"
+      type="number"
       value={isRange ? rangeFormattedValue(inputValue[0], inputValue[1]) : inputValue[0]}
       leadingIcon={CalendarIcon}
       leading={leadingDropdown}
@@ -146,7 +161,7 @@ const _DateInput = (
           : getTextInputFormat(format, false)
       }
       onChange={handleInputChange}
-      // onBlur={handleBlur}
+      onBlur={handleBlur}
       onClick={(e) => {
         if (textInputProps.isDisabled) {
           return;

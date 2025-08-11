@@ -493,7 +493,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           ) : (
             isMounted && (
               <FloatingPortal>
-                <FloatingFocusManager initialFocus={-1} context={context} guards={true}>
+                <FloatingFocusManager initialFocus={0} context={context} guards={true}>
                   <BaseBox
                     ref={refs.setFloating}
                     style={floatingStyles}
