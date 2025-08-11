@@ -6,7 +6,7 @@ The TimePicker component allows users to select a specific time from a customiza
 
 ## Design
 
-- [Figma - TimePicker](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=XXXXX)
+- [Figma - TimePicker](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=110199-7268&p=f&t=aT7zMPeFO88p0TdZ-0)
 
 ## Anatomy
 
@@ -267,7 +267,15 @@ function TimeRangeSelector() {
     // Auto-adjust end time if it's before start time
     if (value >= endTime) {
       const newEndTime = new Date(value);
-      newEndTime.setHours(newEndTime.getHours() + 1);
+      // Handle edge case when start time is 23:30 or later
+      // Add 1 hour but ensure we don't go beyond 23:59 on the same day
+      const newHour = newEndTime.getHours() + 1;
+      if (newHour >= 24) {
+        // If adding 1 hour would go to next day, set to 23:59
+        newEndTime.setHours(23, 59, 0, 0);
+      } else {
+        newEndTime.setHours(newHour);
+      }
       setEndTime(newEndTime);
     }
   };
