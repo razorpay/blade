@@ -7,9 +7,13 @@ import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
 
 type PresetDropdownProps = {
   onSelection: (preset: (date: Date) => DatesRangeValue) => void;
+  onOpenCalendar?: () => void;
 };
 
-const PresetDropdown = ({ onSelection }: PresetDropdownProps): React.ReactElement => {
+const PresetDropdown = ({
+  onSelection,
+  onOpenCalendar,
+}: PresetDropdownProps): React.ReactElement => {
   const { presetStates, selectedPresetLabel } = usePresetContext();
 
   return (
@@ -17,13 +21,19 @@ const PresetDropdown = ({ onSelection }: PresetDropdownProps): React.ReactElemen
       <InputDropdownButton value={selectedPresetLabel ?? 'Custom'} />
       <DropdownOverlay>
         <ActionList>
-          {presetStates.map(({ preset, isSelected }) => (
+          {presetStates.map(({ preset, isSelected, isCustomType }) => (
             <ActionListItem
               key={preset.label}
               title={preset.label}
               value={preset.label}
               isSelected={isSelected}
-              onClick={() => onSelection(preset.value)}
+              onClick={() => {
+                onSelection(preset.value);
+                // If this is a custom preset selection, also trigger calendar opening
+                if (isCustomType && onOpenCalendar) {
+                  onOpenCalendar();
+                }
+              }}
             />
           ))}
         </ActionList>

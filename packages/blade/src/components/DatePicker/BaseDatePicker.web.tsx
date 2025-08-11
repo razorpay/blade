@@ -456,6 +456,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                         setControlledValue(presetValue);
                         setSelectedPreset(presetValue);
                       }}
+                      onOpenCalendar={() => {
+                        controllableSetIsOpen(() => true);
+                      }}
                     />
                   ) : undefined
                 }
