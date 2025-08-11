@@ -16,6 +16,32 @@ import { CalendarIcon } from '~components/Icons';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 dayjs.extend(customParseFormat);
 
+const rangeValue = (startValue: string, endValue: string) => {
+  return startValue && endValue
+    ? startValue === endValue
+      ? startValue
+      : `${startValue} → ${endValue}`
+    : startValue
+    ? `${startValue} → `
+    : endValue
+    ? ` → ${endValue}`
+    : '';
+};
+
+const finalInputPlaceHolder = (placeholder: string | undefined, format: string) => {
+  if (placeholder) {
+    return `${placeholder} → ${placeholder}`;
+  }
+  return `${format} → ${format}`;
+};
+
+const finalInputFormat = (startValue: string, endValue: string, format: string | undefined) => {
+  if (startValue === endValue && startValue) {
+    return format;
+  }
+  return `${format} → ${format}`;
+};
+
 /**
  * CRITICAL BEHAVIOR CASES - Verify when making changes:
  *
@@ -29,57 +55,30 @@ const _DateInput = (
     format?: string;
     date?: Date | null | [Date | null, Date | null];
     setControlledValue?: (date: Date | null | [Date | null, Date | null]) => void;
-    isRange?: boolean;
     leadingDropdown?: React.ReactElement;
+    selectionType: 'single' | 'range';
   },
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
   // Destructure props early for better readability
-  const {
-    format,
-    date,
-    setControlledValue,
-    isRange,
-    leadingDropdown,
-    tags,
-    id,
-    ...textInputProps
-  } = props;
+  const { format, date, setControlledValue, leadingDropdown, tags, id, ...textInputProps } = props;
 
-  const [inputValue, setInputValue] = React.useState('');
-  const [isTyping, setIsTyping] = React.useState(false);
-  const [inputResetKey, setInputResetKey] = React.useState(0);
+  const isRange = props.selectionType === 'range';
+  const [inputValue, setInputValue] = React.useState(['']);
 
-  // Sync formatted value from parent to input display
   React.useEffect(() => {
-    if (!isTyping) {
-      setInputValue(textInputProps.value || '');
-      // Force TextInput to re-render when external value updates
-      setInputResetKey((prev) => prev + 1);
-    }
-  }, [textInputProps.value, isTyping]);
-
-  // Helper: Check if value is already formatted according to the actual format string
-  const isValueAlreadyFormatted = React.useCallback(
-    (value: string, formatStr?: string, isRangeInput?: boolean): boolean => {
-      if (!value || !formatStr) return false;
-
-      if (isRangeInput) {
-        // For range: check if value matches "format → format" pattern
-        const parts = value.split(/\s*→\s*/);
-
-        // Check if both parts are valid according to the base format
-        const baseFormat = formatStr.split('→')[0]?.trim() || formatStr;
-        const startValid = dayjs(parts[0].trim(), baseFormat, true).isValid();
-        const endValid = dayjs(parts[1].trim(), baseFormat, true).isValid();
-        return startValid && endValid;
+    console.log('textInputProps.value', isRange, textInputProps.value);
+    if (textInputProps.value) {
+      if (isRange) {
+        setInputValue([
+          textInputProps.value[0]?.replace(/\//g, ''),
+          textInputProps.value[1]?.replace(/\//g, ''),
+        ]);
       } else {
-        // For single date: check if value is valid according to the format
-        return dayjs(value, formatStr, true).isValid();
+        setInputValue([textInputProps.value[0]?.replace(/\//g, '')]);
       }
-    },
-    [],
-  );
+    }
+  }, [textInputProps.value, isRange]);
 
   // Helper: Convert format to TextInput pattern
   const getTextInputFormat = React.useCallback(
@@ -91,108 +90,110 @@ const _DateInput = (
     },
     [],
   );
-
-  // Helper: Parse date string with format validation
-  const parseDate = React.useCallback((dateStr: string, dateFormat?: string): Date | null => {
-    const parsedDate = dayjs(dateStr, dateFormat, true);
-    return parsedDate.isValid() ? parsedDate.toDate() : null;
-  }, []);
-
-  // Type cast range handler once
-  const rangeHandler = React.useMemo(
-    () => setControlledValue as ((dates: [Date | null, Date | null]) => void) | undefined,
-    [setControlledValue],
-  );
-
-  // Helper: Handle range input logic (extracted for clarity)
-  const handleRangeInput = React.useCallback(
-    (value: string) => {
+  // Parse user input and convert to Date objects
+  const parseInputValue = (value: string): Date | null | [Date | null, Date | null] | undefined => {
+    console.log('Qswap 1', value);
+    if (!value?.trim()) {
+      return isRange ? ([null, null] as [Date | null, Date | null]) : null;
+    }
+    console.log('Qswap 2', isRange);
+    if (isRange) {
+      const parts = value.split(/\s*→\s*/);
+      const baseFormat = format?.split('→')[0]?.trim() || format;
+      console.log('Qswap 3', parts, baseFormat, value.length);
+      // For range, only validate when we have substantial input
       if (value.length >= 10) {
-        // Optimized split with regex to handle spacing variations
-        const [startStr, endStr] = value.split(/\s*→\s*/).map((s) => s.trim());
-        const baseFormat = format?.split('→')[0]?.trim() || format;
+        const startPart = parts[0]?.trim() || '';
+        const endPart = parts[1]?.trim() || '';
 
-        // Get current range state to preserve existing values
-        const currentRange = (date as [Date | null, Date | null]) || [null, null];
-        let newStartDate = currentRange[0];
-        let newEndDate = currentRange[1];
+        const startDate = startPart ? dayjs(startPart, baseFormat, true) : null;
+        const endDate = endPart.length >= 10 ? dayjs(endPart, baseFormat, true) : null;
 
-        // Parse and update start date if valid
-        if (startStr && startStr.length >= 8) {
-          const startDate = parseDate(startStr, baseFormat);
-          if (startDate) newStartDate = startDate;
+        console.log(
+          'Qswao final',
+          startDate?.isValid(),
+          endDate?.isValid(),
+          'endPart.length:',
+          endPart.length,
+        );
+
+        // If end date is being edited (incomplete), return special signal
+        if (endPart.length > 0 && endPart.length < 10) {
+          console.log('Preserving end date, updating start only');
+          return [
+            startDate?.isValid() ? startDate.toDate() : null,
+            'PRESERVE', // Special signal to preserve current end value
+          ] as any;
         }
 
-        // Parse and update end date if valid
-        if (endStr && endStr.length >= 8) {
-          const endDate = parseDate(endStr, baseFormat);
-          if (endDate) newEndDate = endDate;
-        }
-
-        // Update calendar with new range
-        rangeHandler?.([newStartDate, newEndDate]);
-        return;
+        // Both complete or end is empty
+        return [
+          startDate?.isValid() ? startDate.toDate() : null,
+          endDate?.isValid() ? endDate.toDate() : null,
+        ] as [Date | null, Date | null];
       }
-
-      // Clear if empty
-      if (!value.trim()) {
-        rangeHandler?.([null, null]);
-      }
-    },
-    [date, format, parseDate, rangeHandler],
-  );
-
-  // Optimized input change handler (memoized)
-  const handleInputChange = React.useCallback(
-    ({ value }: { value?: string }) => {
-      const inputVal = value || '';
-      setInputValue(inputVal);
-      setIsTyping(true);
-
-      // Handle range input
-      if (isRange) {
-        handleRangeInput(inputVal);
-        return;
-      }
-
-      // Handle single date input
-      if (inputVal && inputVal.length >= 8) {
-        const parsedDate = parseDate(inputVal, format);
-        if (parsedDate) {
-          setControlledValue?.(parsedDate);
-          return;
+      // For incomplete range input during editing, don't clear - return undefined
+      return undefined;
+    } else {
+      // For single date, try to parse if it looks complete
+      if (value.length >= 8) {
+        // Allow parsing from 8+ chars (more lenient)
+        const parsed = dayjs(value, format, true);
+        if (parsed.isValid()) {
+          return parsed.toDate();
         }
       }
 
-      // Clear if empty
-      if (!inputVal.trim()) {
-        setControlledValue?.(null);
-      }
-    },
-    [isRange, format, parseDate, setControlledValue, handleRangeInput],
-  );
+      // For incomplete single date input during editing, don't clear - return undefined
+      // Only return null if we want to explicitly clear (empty input handled above)
+      return undefined;
+    }
+  };
 
-  // Optimized blur handler (memoized)
-  const handleBlur = React.useCallback(() => {
-    setIsTyping(false);
-  }, []);
+  // Simple change handler - parse and update parent
+  const handleInputChange = ({ value }: { value?: string }) => {
+    const inputVal = value || '';
+    console.log('qswap 0.1', inputVal);
+    if (inputVal.trim()) {
+      const parsed = parseInputValue(inputVal);
+      console.log('qswap 4', parsed);
+      // Only update controlled value if parsing returned a definitive result
+      // undefined means "don't change" (user is still editing)
+      if (parsed !== undefined) {
+        if (isRange && Array.isArray(parsed) && (parsed as any)[1] === 'PRESERVE') {
+          // Special case: preserve current end date, update start only
+          console.log('Handling PRESERVE signal');
+          const currentValue = date;
+          const currentEnd = Array.isArray(currentValue) ? currentValue[1] : null;
+
+          setControlledValue?.([parsed[0] as Date | null, currentEnd]);
+        } else {
+          // Normal update
+          setControlledValue?.(parsed);
+        }
+      }
+    } else {
+      // Clear when empty
+      setControlledValue?.(isRange ? ([null, null] as [Date | null, Date | null]) : null);
+    }
+  };
 
   return (
     <TextInput
       {...textInputProps}
       ref={ref}
-      key={inputResetKey}
+      // key={textInputProps.value}
       type="text"
-      value={inputValue}
+      value={isRange ? rangeValue(inputValue[0], inputValue[1]) : inputValue[0]}
       leadingIcon={CalendarIcon}
       leading={leadingDropdown}
       format={
-        !isValueAlreadyFormatted(String(inputValue), format, isRange)
-          ? getTextInputFormat(format, isRange)
-          : undefined
+        isRange
+          ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
+          : getTextInputFormat(format, false)
       }
       onChange={handleInputChange}
-      onBlur={handleBlur}
+      // onBlur={handleBlur}
       onClick={(e) => {
         if (textInputProps.isDisabled) {
           return;
@@ -290,7 +291,7 @@ const _DatePickerInput = (
           isPopupExpanded={referenceProps['aria-expanded']}
           size={size}
           autoFocus={autoFocus}
-          value={dateValue}
+          value={[dateValue]}
           componentName="DatePickerInput"
           necessityIndicator={necessityIndicator}
           successText={successText}
@@ -302,7 +303,7 @@ const _DatePickerInput = (
           date={date as Date | null}
           setControlledValue={setControlledValue}
           format={format}
-          isRange={false}
+          selectionType={selectionType}
           {...props}
           {...referenceProps}
         />
@@ -326,44 +327,6 @@ const _DatePickerInput = (
       locale,
     });
 
-    const rangeValue =
-      startValue && endValue
-        ? startValue === endValue
-          ? startValue
-          : `${startValue} → ${endValue}`
-        : startValue
-        ? `${startValue} → `
-        : endValue
-        ? ` → ${endValue}`
-        : '';
-
-    const finalInputPlaceHolder = () => {
-      if (placeholder) {
-        return `${placeholder} → ${placeholder}`;
-      }
-      return `${format} → ${format}`;
-    };
-
-    const finalInputFormat = () => {
-      // Mirror rangeValue logic exactly for format validation
-      return startValue && endValue
-        ? startValue === endValue
-          ? format // Single format when values are same
-          : `${format} → ${format}` // Range format when different
-        : startValue
-        ? `${format} → ` // Partial range format (start only)
-        : endValue
-        ? ` → ${format}` // Partial range format (end only)
-        : ``; // Default range format
-    };
-
-    const isRange = () => {
-      if (!startValue || !endValue) {
-        return false;
-      }
-      return startValue !== endValue;
-    };
-
     return (
       <BaseBox width="100%">
         <HiddenInput
@@ -386,12 +349,12 @@ const _DatePickerInput = (
           id="range-date"
           labelPosition={labelPosition}
           label={label}
-          placeholder={finalInputPlaceHolder()}
+          placeholder={finalInputPlaceHolder(placeholder, format)}
           popupId={referenceProps['aria-controls']}
           isPopupExpanded={referenceProps['aria-expanded']}
           size={size}
           autoFocus={autoFocus}
-          value={rangeValue}
+          value={[startValue, endValue]}
           componentName="DatePickerInputRange"
           necessityIndicator={necessityIndicator}
           successText={successText}
@@ -399,11 +362,11 @@ const _DatePickerInput = (
           helpText={helpText}
           labelSuffix={labelSuffix}
           labelTrailing={labelTrailing}
-          format={finalInputFormat()}
-          isRange={isRange()}
+          format={format}
           leadingDropdown={leadingDropdown}
           date={date as [Date | null, Date | null]}
           setControlledValue={setControlledValue}
+          selectionType={selectionType}
           {...props}
           {...referenceProps}
         />

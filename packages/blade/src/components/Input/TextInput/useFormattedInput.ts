@@ -87,6 +87,22 @@ export const useFormattedInput = ({
       const emptyFormatted = format('', pattern ?? '');
       setInternalValue(emptyFormatted);
     }
+    // DATEPICKER FIX: Sync internal state when external value changes
+    // This addresses the issue where DatePicker programmatically updates the value prop
+    // (e.g., when user selects date from calendar), but the formatted input's internal
+    // state doesn't update, causing the input to not reflect the new value.
+    // Without this, only user typing and empty resets were handled.
+    if (userValue !== undefined && userValue !== '' && pattern) {
+      // Strip any existing delimiters from userValue to get raw input
+      const rawValue = stripPatternCharacters(userValue);
+      // Apply formatting pattern to the raw value
+      const newFormatted = format(rawValue, pattern);
+
+      // Only update if the formatted value actually changed to avoid unnecessary re-renders
+      if (newFormatted !== internalValue) {
+        setInternalValue(newFormatted);
+      }
+    }
   }, [userValue, pattern]);
 
   // Apply calculated cursor position after value updates
