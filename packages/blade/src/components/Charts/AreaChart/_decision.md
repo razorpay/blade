@@ -76,6 +76,9 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 | `stackId` | `string \| number` | ❌ | `undefined` | Identifier used to group areas into a stack. Areas with the same stackId will be stacked. Required when using multiple areas |
 | `connectNulls` | `boolean` | ❌ | `false` | Whether to connect the area over null data points |
 | `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the area fill (automatically assigned from palette if not provided) |
+| `variant` |  `'solid' \| 'gradient' \|`  | ❌  | solid | we will just have 2 variants for area charts, one is default another one 'gradient' we need gradient for spark chart. 
+
+
 
 #### ReferenceLine Props
 
@@ -94,6 +97,9 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 > **Color Handling:** Area Charts will not support sequential colors. A limited, curated palette of theme colors will be available. Colors are automatically assigned from the predefined palette if not specified.
 
 > **Responsive Container :** The `ResponsiveContainer` may have other options like actions, onResize, onResizeEnd, etc. will write an seprate API doc after discussion with design. 
+
+> **Restrict passing <Defs/> in Recharts :** We will not allow developers to pass <Defs/> in Recharts. Since We would be controlling colors , gradient in our own way.
+
 
 ```ts
 import {
