@@ -142,6 +142,9 @@ const _DateInput = (
   const handleBlur = React.useCallback(
     (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
       const currentInputValue = params.event?.target.value || params.value || '';
+      console.log('qswap2', {
+        currentInputValue,
+      });
       applyDateValue(currentInputValue, false); // Don't clear when empty on blur
     },
     [applyDateValue],

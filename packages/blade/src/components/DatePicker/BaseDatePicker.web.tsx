@@ -152,6 +152,13 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   });
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
 
+  // Sync selectedPreset with controlledValue for initial preset matching
+  React.useEffect(() => {
+    if (!isSingle && controlledValue) {
+      setSelectedPreset(controlledValue as DatesRangeValue);
+    }
+  }, []);
+
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,
     defaultValue: defaultIsOpen,
@@ -270,7 +277,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     open: controllableIsOpen,
     onOpenChange: (isOpen, _, reason) => {
       controllableSetIsOpen(() => isOpen);
-      if (reason === 'escape-key' || reason === 'outside-press') {
+      if (reason === 'escape-key') {
         handleCancel();
       }
     },

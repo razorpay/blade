@@ -142,6 +142,11 @@ RangeDatePicker.args = {
 };
 
 export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
+  const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([
+    dayjs().subtract(7, 'days').toDate(),
+    dayjs().toDate(),
+  ]);
+
   return (
     <Box>
       <Text>
@@ -162,9 +167,12 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
       </Text>
 
       <DatePickerComponent
+        label="Select a date range"
         selectionType="range"
+        value={selectedDates}
         onChange={(date) => {
           console.log(date);
+          setSelectedDates(date as DatesRangeValue);
         }}
         presets={[
           {
@@ -205,17 +213,12 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
             value: () => [null, null] as DatesRangeValue,
           },
         ]}
-        {...args}
       />
     </Box>
   );
 };
 
 DatePickerPresets.storyName = 'With Presets';
-DatePickerPresets.args = {
-  label: 'Select a date range',
-  selectionType: 'range',
-};
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -622,4 +625,12 @@ export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerCompone
       </Box>
     </Box>
   );
+};
+
+export const WithoutActionButtons = DatePickerTemplate.bind({});
+WithoutActionButtons.storyName = 'Without Action Buttons';
+WithoutActionButtons.args = {
+  label: 'Select a date',
+  selectionType: 'single',
+  showActions: false,
 };
