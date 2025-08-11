@@ -151,7 +151,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     /**
      * Sets the label for the input element.
      */
-    label?: string;
+    label?: Type extends 'single' ? string : { start: string; end?: string };
     /**
      * Sets the HTML [name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) attribute on the input elements.
      * Can be used when submitting a form.
@@ -159,9 +159,9 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * @example 'date' | { start: 'start-date', end: 'end-date' }
      */
     name?: Type extends 'single' ? string : { start: string; end?: string };
-    helpText?: string;
-    errorText?: string;
-    successText?: string;
+    helpText?: Type extends 'single' ? string : { start: string; end?: string };
+    errorText?: Type extends 'single' ? string : { start: string; end?: string };
+    successText?: Type extends 'single' ? string : { start: string; end?: string };
     /**
      * Callback which fires when apply button is clicked
      */
@@ -181,11 +181,11 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
 
 type DatePickerRangeInputProps = {
   selectionType: 'range';
-  label?: string;
+  label?: { start: string; end?: string };
   name?: { start: string; end: string };
-  successText?: string;
-  errorText?: string;
-  helpText?: string;
+  successText?: { start: string; end?: string };
+  errorText?: { start: string; end?: string };
+  helpText?: { start: string; end?: string };
   date: [Date, Date];
 };
 

@@ -137,7 +137,7 @@ SingleDatePicker.args = {
 export const RangeDatePicker = DatePickerTemplate.bind({});
 RangeDatePicker.storyName = 'RangeDatePicker';
 RangeDatePicker.args = {
-  label: 'Select a date range',
+  label: { start: 'Select a date range' },
   selectionType: 'range',
 };
 
@@ -167,7 +167,7 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
       </Text>
 
       <DatePickerComponent
-        label="Select a date range"
+        label={{ start: 'Select a date range' }}
         selectionType="range"
         value={selectedDates}
         onChange={(date) => {
@@ -242,7 +242,7 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
         <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
       </Box>
       <DatePickerComponent
-        label="Select a date range"
+        label={{ start: 'Select a date range' }}
         selectionType="range"
         isOpen={isOpen}
         onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
@@ -298,8 +298,8 @@ export const Validations: StoryFn<typeof DatePickerComponent> = () => {
       </Text>
       <DatePickerComponent
         validationState={hasError ? 'error' : 'none'}
-        errorText="Cannot select a range which is more than 3 days"
-        label="Select a date range"
+        errorText={{ start: 'Cannot select a range which is more than 3 days' }}
+        label={{ start: 'Select a date range' }}
         selectionType="range"
         value={date}
         onChange={(date) => {
@@ -330,7 +330,7 @@ export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
         <Text size="small">{`maxDate={dayjs().add(1, 'week').toDate()}`}</Text>
       </Box>
       <DatePickerComponent
-        label="Select a date range"
+        label={{ start: 'Select a date range' }}
         selectionType="range"
         minDate={dayjs().subtract(1, 'week').toDate()}
         maxDate={dayjs().add(1, 'week').toDate()}
@@ -374,7 +374,11 @@ export const LabelPositionLeft: StoryFn<typeof DatePickerComponent> = () => {
         will be rendered on the left with the <Code size="medium">{`{start}`}</Code> string.
       </Text>
       <Box display="flex" gap="spacing.5" flexDirection="column">
-        <DatePickerComponent labelPosition="left" selectionType="range" label="Select a range" />
+        <DatePickerComponent
+          labelPosition="left"
+          selectionType="range"
+          label={{ start: 'Select a date range' }}
+        />
         <DatePickerComponent selectionType="single" labelPosition="left" label="Select a date" />
       </Box>
     </Box>
@@ -612,7 +616,7 @@ export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerCompone
         <DatePickerComponent
           labelPosition="left"
           selectionType="range"
-          label="Select a range"
+          label={{ start: 'Select a date range' }}
           labelSuffix={
             <Tooltip content="Select a date" placement="right">
               <TooltipInteractiveWrapper display="flex">

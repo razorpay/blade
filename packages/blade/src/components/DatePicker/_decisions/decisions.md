@@ -59,7 +59,7 @@ type DatePickerProps = InputProps &
      * If labelPosition is set to "left" on range picker,
      * then we will take the `{ start }` label and render it on the left side of the input ignoring the `{ end }`
      */
-    label?: string;
+    label?: string | { start: string; end?: string };
     /**
      * Sets the HTML name attribute
      */
