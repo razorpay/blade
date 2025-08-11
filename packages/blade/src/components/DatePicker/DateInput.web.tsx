@@ -109,7 +109,7 @@ const _DateInput = (
 
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false) => {
-      if (inputValue && inputValue.trim()) {
+      if (inputValue?.trim()) {
         const parsed = parseInputValue(inputValue);
         // Only update controlled value if parsing returned a definitive result
         // undefined means "don't change" (user is still editing)
@@ -134,14 +134,14 @@ const _DateInput = (
     [isRange, date, setControlledValue],
   );
 
-  const handleInputChange = ({ value }: { value?: string }) => {
-    const inputVal = value || '';
+  const handleInputChange = ({ value }: { value?: string }): void => {
+    const inputVal = value ?? '';
     applyDateValue(inputVal, true); // Clear when empty on change
   };
 
   const handleBlur = React.useCallback(
     (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
-      const currentInputValue = params.event?.target.value || params.value || '';
+      const currentInputValue = params.event?.target.value ?? params.value ?? '';
       console.log('qswap2', {
         currentInputValue,
       });

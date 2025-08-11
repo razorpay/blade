@@ -10,14 +10,16 @@ import { MantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
 import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
 import { Calendar } from './Calendar.web';
-import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
-import { useDatesState } from './useDatesState';
-import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter.web';
-import { convertIntlToDayjsLocale, loadScript } from './utils';
-import { shiftTimezone } from './shiftTimezone';
 import { DatePickerInput } from './DateInput.web';
 import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
+import { PresetDropdown } from './QuickSelection/PresetDropdown.web';
+import { PresetProvider } from './QuickSelection/PresetContext';
+import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
+import { shiftTimezone } from './shiftTimezone';
+import { useDatesState } from './useDatesState';
+import { usePopup } from './usePopup';
+import { convertIntlToDayjsLocale, loadScript } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -40,8 +42,6 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
-import { PresetDropdown } from './QuickSelection/PresetDropdown.web';
-import { PresetProvider } from './QuickSelection/PresetContext';
 
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,

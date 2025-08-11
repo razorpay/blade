@@ -1,13 +1,13 @@
 import type { DatesRangeValue } from '../types';
+import { usePresetContext } from './PresetContext';
 import { QuickSelectionItem } from './QuickSelectionItem.web';
 import { Box } from '~components/Box';
-import { makeSpace } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 import { Chip, ChipGroup } from '~components/Chip';
 import { Divider } from '~components/Divider';
-import BaseBox from '~components/Box/BaseBox';
-import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
-import { usePresetContext } from './PresetContext';
+import { makeSpace } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type PresetSideBarProps = {
   isMobile?: boolean;

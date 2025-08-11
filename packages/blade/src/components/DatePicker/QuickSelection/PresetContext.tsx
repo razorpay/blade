@@ -30,7 +30,7 @@ export const PresetProvider = ({
   presets,
   selectedPreset,
   currentDate,
-}: PresetProviderProps) => {
+}: PresetProviderProps): React.ReactElement => {
   const contextValue = useMemo(() => {
     // No presets provided → return empty state
     if (!presets) {
@@ -106,7 +106,7 @@ export const PresetProvider = ({
   return <PresetContext.Provider value={contextValue}>{children}</PresetContext.Provider>;
 };
 
-export const usePresetContext = () => {
+export const usePresetContext = (): PresetContextValue => {
   const context = useContext(PresetContext);
   if (!context) {
     throw new Error('usePresetContext must be used within PresetProvider');

@@ -1,4 +1,4 @@
-import { DatesRangeValue } from '~components/DatePicker/types';
+import type { DatesRangeValue } from '~components/DatePicker/types';
 
 // Helper function to check if two preset values are the same
 export const isSamePreset = (

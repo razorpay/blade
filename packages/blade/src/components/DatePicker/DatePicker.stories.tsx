@@ -141,7 +141,7 @@ RangeDatePicker.args = {
   selectionType: 'range',
 };
 
-export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
+export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ..._args }) => {
   const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([
     dayjs().subtract(7, 'days').toDate(),
     dayjs().toDate(),
