@@ -24,6 +24,13 @@ This directory contains Blade's chart components built on top of Recharts with d
 - **Label**: Styled labels for center text in donuts
 - **Tooltip/Legend/ResponsiveContainer**: Shared styled components
 
+### AreaChart Components
+
+- **AreaChart**: Main area chart container component with predefined margins
+- **Area**: Area component with auto-color assignment and stacking support
+- **ReferenceLine**: Reference lines for area charts
+- **XAxis/YAxis/CartesianGrid/Tooltip/Legend/ResponsiveContainer**: Shared styled components
+
 ## Usage Examples
 
 ### Simple Line Chart
@@ -39,6 +46,63 @@ This directory contains Blade's chart components built on top of Recharts with d
     <Line dataKey="teamB" name="Team B" strokeStyle="solid" />
     <ReferenceLine y={2200} label="Minimum" />
   </LineChart>
+</ResponsiveContainer>
+```
+
+### Simple Area Chart
+```tsx
+<ResponsiveContainer width="100%" height="100%">
+  <AreaChart data={chartData}>
+    <CartesianGrid />
+    <XAxis dataKey="month" />
+    <YAxis />
+    <Tooltip />
+    <Area dataKey="teamA" name="Team A" type="monotone" />
+  </AreaChart>
+</ResponsiveContainer>
+```
+
+### Stacked Area Chart
+```tsx
+<ResponsiveContainer width="100%" height="100%">
+  <AreaChart data={chartData}>
+    <CartesianGrid />
+    <XAxis dataKey="month" />
+    <YAxis />
+    <Tooltip />
+    <Legend />
+    <Area dataKey="teamA" name="Team A" type="monotone" stackId="1" />
+    <Area dataKey="teamB" name="Team B" type="monotone" stackId="1" />
+    <Area dataKey="teamC" name="Team C" type="monotone" stackId="1" />
+  </AreaChart>
+</ResponsiveContainer>
+```
+
+### Area Chart with Null Connections
+```tsx
+<ResponsiveContainer width="100%" height="100%">
+  <AreaChart data={dataWithNulls}>
+    <CartesianGrid />
+    <XAxis dataKey="month" />
+    <YAxis />
+    <Tooltip />
+    <Area 
+      dataKey="sales" 
+      name="Sales" 
+      type="monotone" 
+      connectNulls={true}
+      color="feedback.text.positive.subtle" 
+    />
+  </AreaChart>
+</ResponsiveContainer>
+```
+
+### Tiny Area Chart (Sparkline)
+```tsx
+<ResponsiveContainer width="100%" height="100%">
+  <AreaChart data={chartData}>
+    <Area dataKey="teamA" name="Team A" type="monotone" />
+  </AreaChart>
 </ResponsiveContainer>
 ```
 
@@ -171,6 +235,31 @@ When using custom dot objects, you can configure:
 - **Interactive Focus**: Show only `activeDot` for hover states
 - **Data Emphasis**: Larger dots for important data points
 
+## Area Component Props
+
+### Required Props
+- `dataKey`: string - Key to identify data value in dataset (required)
+- `name`: string - Display name for legend and tooltips (required)
+- `type`: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone' - Interpolation type (required)
+
+### Optional Props
+- `stackId`: string | number - Groups areas into stacks (required for multiple areas >2)
+- `connectNulls`: boolean - Connect area over null data points (default: false)
+- `color`: BladeColorToken - Color token for area fill (auto-assigned if not provided)
+- `fillOpacity`: number - Opacity of area fill (default: 0.6)
+- `strokeWidth`: number - Width of area border (default: 2)
+
+### Stacking Behavior
+- For **2 or fewer areas**: No stackId needed, areas will naturally overlay
+- For **3+ areas**: Must provide `stackId` to each area for proper stacking
+- Areas with the same `stackId` will be stacked together
+
+### Auto-Color Assignment
+- Colors are automatically assigned from a curated palette of Blade tokens
+- **Curated Palette**: primary → success → warning → info → neutral
+- Colors cycle through the palette for multiple areas
+- Override with `color` prop for specific branding needs
+
 ## Pie Component Props
 
 ### Donut Radius Options
@@ -214,11 +303,15 @@ The components use Blade color tokens:
 - **Pie component with donutRadius, circleType, and paddingAngle**
 - **Cell component with color token support**
 - **Label component for center text in donuts**
+- **AreaChart component with predefined margins**
+- **Area component with auto-color assignment and stacking**
+- **connectNulls support for handling null data points**
+- **Curated color palette with automatic assignment**
 - Styled XAxis, YAxis, CartesianGrid, Tooltip, Legend
 - ResponsiveContainer re-export
 - ChartTooltip component
 - TypeScript interfaces
-- Storybook examples with dot variations and pie chart examples
+- Comprehensive Storybook examples for all chart types
 
 ⚠️ **Known Issues:**
 - Some TypeScript type conflicts between React and Recharts types
@@ -226,8 +319,8 @@ The components use Blade color tokens:
 
 ## Next Steps
 
-1. Fix TypeScript type issues with activeShape and margin props
-2. Add more chart types (Bar, Area, etc.)
+1. Fix TypeScript type issues with margin props across all chart types
+2. Add more chart types (Bar, Scatter, etc.)
 3. Add more comprehensive color token support
 4. Add accessibility features
 5. Add animation presets 
