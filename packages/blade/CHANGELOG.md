@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.47.0
+
+### Minor Changes
+
+- 029964227: feat(blade): add new navigation button position overlap
+
 ## 12.46.2
 
 ### Patch Changes
