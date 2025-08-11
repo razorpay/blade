@@ -211,4 +211,53 @@ function getFormattedDate({ formatter, ...others }: GetFormattedDateInput) {
   return (formatter || defaultDateFormatter)(others);
 }
 
-export { convertIntlToDayjsLocale, loadScript, getFormattedDate };
+const rangeFormattedValue = (startValue: string, endValue: string) => {
+  return startValue && endValue
+    ? startValue === endValue
+      ? startValue
+      : `${startValue} → ${endValue}`
+    : startValue
+    ? `${startValue} → `
+    : endValue
+    ? ` → ${endValue}`
+    : '';
+};
+
+const rangeInputPlaceHolder = (placeholder: string | undefined, format: string) => {
+  if (placeholder) {
+    return `${placeholder} → ${placeholder}`;
+  }
+  return `${format} → ${format}`;
+};
+
+const finalInputFormat = (startValue: string, endValue: string, format: string | undefined) => {
+  // For case: when start and end are the same, return the format
+  if (startValue === endValue && startValue) {
+    return format;
+  }
+  return `${format} → ${format}`;
+};
+
+/**
+ * Converts date format string to TextInput pattern for masking.
+ * TextInput format only recognizes # as input placeholder, so we replace
+ * date characters (Y,M,D) with # while preserving delimiters.
+ *
+ * @example "DD/MM/YYYY" → "##/##/####"
+ */
+const getTextInputFormat = (formatStr?: string, isRangeInput?: boolean): string => {
+  if (!formatStr) {
+    return isRangeInput ? '##/##/#### → ##/##/####' : '##/##/####';
+  }
+  return formatStr.replace(/[YMD]/g, '#');
+};
+
+export {
+  convertIntlToDayjsLocale,
+  loadScript,
+  getFormattedDate,
+  rangeFormattedValue,
+  rangeInputPlaceHolder,
+  finalInputFormat,
+  getTextInputFormat,
+};

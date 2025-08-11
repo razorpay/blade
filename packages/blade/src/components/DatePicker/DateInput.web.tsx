@@ -2,41 +2,178 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useDatesContext } from '@mantine/dates';
 import type { DatePickerInputProps } from './types';
-import { getFormattedDate } from './utils';
+import {
+  getFormattedDate,
+  rangeFormattedValue,
+  rangeInputPlaceHolder,
+  finalInputFormat,
+  getTextInputFormat,
+} from './utils';
 import BaseBox from '~components/Box/BaseBox';
-import { ArrowRightIcon, CalendarIcon } from '~components/Icons';
 import type { BaseInputProps } from '~components/Input/BaseInput';
-import { BaseInput } from '~components/Input/BaseInput';
-import { size as sizeTokens } from '~tokens/global';
-import { isReactNative, makeSize } from '~utils';
+import { TextInput } from '~components/Input/TextInput';
+import { isReactNative } from '~utils';
 import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
-import { useIsMobile } from '~utils/useIsMobile';
+import { CalendarIcon } from '~components/Icons';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+dayjs.extend(customParseFormat);
 
+/**
+ * CRITICAL BEHAVIOR CASES - Verify when making changes:
+ *
+ * 1. VALUE PROP: Already formatted by getFormattedDate() - avoid double formatting
+ * 2. USER TYPING: Should format input AND sync with calendar selection
+ * 3. CALENDAR SELECTION: Should apply formatted value to input without re-formatting
+ * 4. SUBMIT (no footer): Blur/Enter should select current value
+ */
 const _DateInput = (
-  props: BaseInputProps,
+  props: BaseInputProps & {
+    format?: string;
+    date?: Date | null | [Date | null, Date | null];
+    setControlledValue?: (date: Date | null | [Date | null, Date | null]) => void;
+    leadingDropdown?: React.ReactElement;
+    selectionType: 'single' | 'range';
+  },
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
+  const { format, date, setControlledValue, leadingDropdown, tags, id, ...textInputProps } = props;
+  const [inputValue, setInputValue] = React.useState(['']);
+  const isRange = props.selectionType === 'range';
+
+  React.useEffect(() => {
+    if (textInputProps.value) {
+      if (isRange) {
+        // Remove existing delimiters to avoid double formatting
+        setInputValue([
+          textInputProps.value[0]?.replace(/\//g, ''),
+          textInputProps.value[1]?.replace(/\//g, ''),
+        ]);
+      } else {
+        setInputValue([textInputProps.value[0]?.replace(/\//g, '')]);
+      }
+    }
+  }, [textInputProps.value, isRange]);
+
+  // Parse user input and convert to Date objects
+  const parseInputValue = (value: string): Date | null | [Date | null, Date | null] | undefined => {
+    if (!value?.trim()) {
+      return isRange ? ([null, null] as [Date | null, Date | null]) : null;
+    }
+    if (isRange) {
+      const parts = value.split(/\s*→\s*/);
+      const baseFormat = format?.split('→')[0]?.trim() || format;
+      // For range, only validate when we have substantial input
+      if (value.length >= 10) {
+        const startPart = parts[0]?.trim() || '';
+        const endPart = parts[1]?.trim() || '';
+
+        const startDate = startPart ? dayjs(startPart, baseFormat, true) : null;
+        const endDate = endPart.length >= 10 ? dayjs(endPart, baseFormat, true) : null;
+
+        // If end date is being edited (incomplete), return special signal
+        // Why PRESERVE signal? If we return undefined, start date won't update for calendar sync.
+        // If we return [start, null], it clears the existing end date while user is still typing.
+        if (endPart.length > 0 && endPart.length < 10) {
+          return [
+            startDate?.isValid() ? startDate.toDate() : null,
+            'PRESERVE', // Special signal to preserve current end value
+          ] as any;
+        }
+
+        // Both complete or end is empty
+        return [
+          startDate?.isValid() ? startDate.toDate() : null,
+          endDate?.isValid() ? endDate.toDate() : null,
+        ] as [Date | null, Date | null];
+      }
+      // For incomplete range input during editing, don't clear - return undefined
+      return undefined;
+    } else {
+      // For single date, try to parse if it looks complete
+      if (value.length >= 8) {
+        const parsed = dayjs(value, format, true);
+        if (parsed.isValid()) {
+          return parsed.toDate();
+        }
+      }
+
+      // For incomplete single date input during editing, don't clear - return undefined
+      // Only return null if we want to explicitly clear (empty input handled above)
+      return undefined;
+    }
+  };
+
+  const applyDateValue = React.useCallback(
+    (inputValue: string, shouldClearWhenEmpty = false) => {
+      if (inputValue && inputValue.trim()) {
+        const parsed = parseInputValue(inputValue);
+        // Only update controlled value if parsing returned a definitive result
+        // undefined means "don't change" (user is still editing)
+        if (parsed !== undefined) {
+          if (isRange && Array.isArray(parsed) && (parsed as any)[1] === 'PRESERVE') {
+            // PRESERVE signal: User is editing incomplete end date (e.g., "25/12/202")
+            // Update start date immediately but preserve existing end date to prevent clearing
+            const currentValue = date;
+            const currentEnd = Array.isArray(currentValue) ? currentValue[1] : null;
+
+            setControlledValue?.([parsed[0] as Date | null, currentEnd]);
+          } else {
+            // single date case
+            setControlledValue?.(parsed);
+          }
+        }
+      } else if (shouldClearWhenEmpty) {
+        // Clear when empty (only for onChange, not onBlur)
+        setControlledValue?.(isRange ? ([null, null] as [Date | null, Date | null]) : null);
+      }
+    },
+    [isRange, date, setControlledValue],
+  );
+
+  const handleInputChange = ({ value }: { value?: string }) => {
+    const inputVal = value || '';
+    applyDateValue(inputVal, true); // Clear when empty on change
+  };
+
+  const handleBlur = React.useCallback(
+    (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
+      const currentInputValue = params.event?.target.value || params.value || '';
+      console.log('qswap2', {
+        currentInputValue,
+      });
+      applyDateValue(currentInputValue, false); // Don't clear when empty on blur
+    },
+    [applyDateValue],
+  );
+
   return (
-    <BaseInput
-      {...props}
+    <TextInput
+      {...textInputProps}
       ref={ref}
-      as="button"
-      textAlign="left"
-      hideLabelText={props.label?.length === 0}
-      autoCompleteSuggestionType="none"
-      hasPopup="dialog"
+      type="number"
+      value={isRange ? rangeFormattedValue(inputValue[0], inputValue[1]) : inputValue[0]}
+      leadingIcon={CalendarIcon}
+      leading={leadingDropdown}
+      format={
+        isRange
+          ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
+          : getTextInputFormat(format, false)
+      }
+      onChange={handleInputChange}
+      onBlur={handleBlur}
       onClick={(e) => {
-        if (props.isDisabled) {
+        if (textInputProps.isDisabled) {
           return;
         }
-        props.onClick?.(e);
+        textInputProps.onClick?.(e);
       }}
       onKeyDown={({ event }) => {
         // @ts-expect-error
-        props.onKeyDown?.(event);
+        textInputProps.onKeyDown?.(event);
       }}
     />
   );
@@ -71,12 +208,6 @@ const HiddenInput = ({
   );
 };
 
-const iconVerticalMargin = {
-  medium: sizeTokens[14],
-  large: sizeTokens[24],
-} as const;
-const LEFT_LABEL_WIDTH = 132;
-
 const _DatePickerInput = (
   {
     selectionType,
@@ -96,17 +227,13 @@ const _DatePickerInput = (
     helpText,
     format,
     placeholder,
+    setControlledValue,
+    leadingDropdown,
+    selectedPreset,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
 ): React.ReactElement => {
-  const isMobile = useIsMobile();
-  const isLarge = size === 'large';
-  const hasLabel = typeof label === 'string' ? Boolean(label) : Boolean(label?.start || label?.end);
-  const isLabelPositionLeft = labelPosition === 'left';
-  const isLabelPositionTop = labelPosition === 'top';
-  const isLabelPositionVisuallyTop = hasLabel && (isLabelPositionTop || isMobile);
-
   const { locale } = useDatesContext();
 
   if (selectionType == 'single') {
@@ -135,7 +262,7 @@ const _DatePickerInput = (
           isPopupExpanded={referenceProps['aria-expanded']}
           size={size}
           autoFocus={autoFocus}
-          value={dateValue}
+          value={[dateValue]}
           componentName="DatePickerInput"
           necessityIndicator={necessityIndicator}
           successText={successText}
@@ -143,6 +270,11 @@ const _DatePickerInput = (
           helpText={helpText}
           labelSuffix={labelSuffix}
           labelTrailing={labelTrailing}
+          leadingDropdown={leadingDropdown}
+          date={date as Date | null}
+          setControlledValue={setControlledValue}
+          format={format}
+          selectionType={selectionType}
           {...props}
           {...referenceProps}
         />
@@ -151,21 +283,6 @@ const _DatePickerInput = (
   }
 
   if (selectionType == 'range') {
-    const shouldRenderEndLabel = (): string | undefined => {
-      let finalLabel: string | undefined = '';
-
-      const labelEnd = isLabelPositionLeft ? undefined : label?.end;
-      if (isLabelPositionVisuallyTop && labelEnd === undefined) {
-        // Empty space, nbsp;
-        finalLabel = '\u00A0';
-      } else if (isLabelPositionLeft) {
-        finalLabel = undefined;
-      } else {
-        finalLabel = label?.end;
-      }
-      return finalLabel;
-    };
-
     const startValue = getFormattedDate({
       type: 'default',
       date: date[0],
@@ -180,84 +297,50 @@ const _DatePickerInput = (
       labelSeparator: '-',
       locale,
     });
+
     return (
-      <BaseBox
-        width="100%"
-        display="flex"
-        flexDirection="row"
-        gap="spacing.4"
-        alignItems="flex-start"
-        ref={ref as never}
-      >
-        <BaseBox flex={1} flexBasis={isLabelPositionLeft ? LEFT_LABEL_WIDTH : '0px'}>
-          <HiddenInput
-            value={startValue}
-            name={name?.start}
-            isRequired={props.isRequired}
-            isDisabled={props.isDisabled}
-          />
-          <DateInput
-            setInputWrapperRef={(node) => ((inputRef as any)!.current = node)}
-            id="start-date"
-            leadingIcon={CalendarIcon}
-            label={label?.start}
-            labelPosition={labelPosition}
-            placeholder={placeholder}
-            popupId={referenceProps['aria-controls']}
-            isPopupExpanded={referenceProps['aria-expanded']}
-            size={size}
-            autoFocus={autoFocus}
-            value={startValue}
-            componentName="DatePickerInputStart"
-            necessityIndicator={necessityIndicator}
-            successText={successText?.start}
-            errorText={errorText?.start}
-            helpText={helpText?.start}
-            labelSuffix={labelSuffix}
-            {...props}
-            {...referenceProps}
-          />
-        </BaseBox>
-        <BaseBox flexShrink={0} alignSelf="start">
-          <ArrowRightIcon
-            size="medium"
-            marginTop={
-              // Hacky layouting because the we cannot put this inside the internal layout of BaseInput.
-              hasLabel && (!isLabelPositionLeft || isMobile)
-                ? `calc(${makeSize(iconVerticalMargin[size])} + ${makeSize(
-                    isLarge ? sizeTokens[20] : sizeTokens[15],
-                  )})`
-                : makeSize(iconVerticalMargin[size])
-            }
-          />
-        </BaseBox>
-        <BaseBox flex={1}>
-          <HiddenInput
-            value={endValue}
-            name={name?.end}
-            isRequired={props.isRequired}
-            isDisabled={props.isDisabled}
-            {...makeAnalyticsAttribute(props)}
-          />
-          <DateInput
-            id="end-date"
-            placeholder={placeholder}
-            leadingIcon={CalendarIcon}
-            label={shouldRenderEndLabel()}
-            labelPosition={isLabelPositionLeft ? undefined : labelPosition}
-            popupId={referenceProps['aria-controls']}
-            isPopupExpanded={referenceProps['aria-expanded']}
-            size={size}
-            value={endValue}
-            componentName="DatePickerInputEnd"
-            successText={successText?.end}
-            errorText={errorText?.end}
-            helpText={helpText?.end}
-            labelTrailing={labelTrailing}
-            {...props}
-            {...referenceProps}
-          />
-        </BaseBox>
+      <BaseBox width="100%">
+        <HiddenInput
+          value={`${startValue}`}
+          name={name?.start}
+          isRequired={props.isRequired}
+          isDisabled={props.isDisabled}
+        />
+
+        <HiddenInput
+          value={endValue}
+          name={name?.end}
+          isRequired={props.isRequired}
+          isDisabled={props.isDisabled}
+          {...makeAnalyticsAttribute(props)}
+        />
+
+        <DateInput
+          ref={ref as never}
+          id="range-date"
+          labelPosition={labelPosition}
+          label={label}
+          placeholder={rangeInputPlaceHolder(placeholder, format)}
+          popupId={referenceProps['aria-controls']}
+          isPopupExpanded={referenceProps['aria-expanded']}
+          size={size}
+          autoFocus={autoFocus}
+          value={[startValue, endValue]}
+          componentName="DatePickerInputRange"
+          necessityIndicator={necessityIndicator}
+          successText={successText}
+          errorText={errorText}
+          helpText={helpText}
+          labelSuffix={labelSuffix}
+          labelTrailing={labelTrailing}
+          format={format}
+          leadingDropdown={leadingDropdown}
+          date={date as [Date | null, Date | null]}
+          setControlledValue={setControlledValue}
+          selectionType={selectionType}
+          {...props}
+          {...referenceProps}
+        />
       </BaseBox>
     );
   }

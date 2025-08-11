@@ -111,11 +111,6 @@ import { m } from 'framer-motion';
 } as Meta<DatePickerProps<'single' | 'range'>>;
 
 const DatePickerTemplate: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
-  if (args.selectionType === 'range' && typeof args.label === 'string') {
-    throw new Error(
-      '[Storybook Controls]: Cannot use string label for range selection, please switch to the RangeDatePicker story',
-    );
-  }
   if (args.selectionType === 'single' && typeof args.label === 'object') {
     throw new Error(
       '[Storybook Controls]: Cannot use {start,end} label for single selection, please switch to the SingleDatePicker story',
@@ -142,11 +137,16 @@ SingleDatePicker.args = {
 export const RangeDatePicker = DatePickerTemplate.bind({});
 RangeDatePicker.storyName = 'RangeDatePicker';
 RangeDatePicker.args = {
-  label: { start: 'Start Date', end: 'End Date' },
+  label: 'Select a date range',
   selectionType: 'range',
 };
 
 export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
+  const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([
+    dayjs().subtract(7, 'days').toDate(),
+    dayjs().toDate(),
+  ]);
+
   return (
     <Box>
       <Text>
@@ -167,11 +167,22 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
       </Text>
 
       <DatePickerComponent
+        label="Select a date range"
         selectionType="range"
+        value={selectedDates}
         onChange={(date) => {
           console.log(date);
+          setSelectedDates(date as DatesRangeValue);
         }}
         presets={[
+          {
+            label: 'Today',
+            value: (date) => [dayjs(date).startOf('day').toDate(), date],
+          },
+          {
+            label: 'Yesterday',
+            value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+          },
           {
             label: 'Past 7 days',
             value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
@@ -188,17 +199,26 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
             label: 'Past year',
             value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
           },
+          {
+            label: 'Past financial year',
+            value: (date) => {
+              const d = dayjs(date);
+              const year = d.month() >= 3 ? d.year() : d.year() - 1;
+
+              return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+            },
+          },
+          {
+            label: 'Custom',
+            value: () => [null, null] as DatesRangeValue,
+          },
         ]}
-        {...args}
       />
     </Box>
   );
 };
 
 DatePickerPresets.storyName = 'With Presets';
-DatePickerPresets.args = {
-  label: { start: 'Start Date', end: 'End Date' },
-};
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -222,7 +242,7 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
         <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
       </Box>
       <DatePickerComponent
-        label={{ start: 'Start Date', end: 'End Date' }}
+        label="Select a date range"
         selectionType="range"
         isOpen={isOpen}
         onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
@@ -239,7 +259,7 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
           selectionType="single"
           value={date}
           onChange={(date) => {
-            setDate(date);
+            if (date) setDate(date);
           }}
         />
       </Box>
@@ -278,8 +298,8 @@ export const Validations: StoryFn<typeof DatePickerComponent> = () => {
       </Text>
       <DatePickerComponent
         validationState={hasError ? 'error' : 'none'}
-        errorText={{ start: 'Cannot select a range which is more than 3 days' }}
-        label={{ start: 'Start Date', end: 'End Date' }}
+        errorText="Cannot select a range which is more than 3 days"
+        label="Select a date range"
         selectionType="range"
         value={date}
         onChange={(date) => {
@@ -310,7 +330,7 @@ export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
         <Text size="small">{`maxDate={dayjs().add(1, 'week').toDate()}`}</Text>
       </Box>
       <DatePickerComponent
-        label={{ start: 'Start Date', end: 'End Date' }}
+        label="Select a date range"
         selectionType="range"
         minDate={dayjs().subtract(1, 'week').toDate()}
         maxDate={dayjs().add(1, 'week').toDate()}
@@ -354,11 +374,7 @@ export const LabelPositionLeft: StoryFn<typeof DatePickerComponent> = () => {
         will be rendered on the left with the <Code size="medium">{`{start}`}</Code> string.
       </Text>
       <Box display="flex" gap="spacing.5" flexDirection="column">
-        <DatePickerComponent
-          labelPosition="left"
-          selectionType="range"
-          label={{ start: 'Select a range' }}
-        />
+        <DatePickerComponent labelPosition="left" selectionType="range" label="Select a range" />
         <DatePickerComponent selectionType="single" labelPosition="left" label="Select a date" />
       </Box>
     </Box>
@@ -596,7 +612,7 @@ export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerCompone
         <DatePickerComponent
           labelPosition="left"
           selectionType="range"
-          label={{ start: 'Select a range' }}
+          label="Select a range"
           labelSuffix={
             <Tooltip content="Select a date" placement="right">
               <TooltipInteractiveWrapper display="flex">
@@ -609,4 +625,12 @@ export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerCompone
       </Box>
     </Box>
   );
+};
+
+export const WithoutActionButtons = DatePickerTemplate.bind({});
+WithoutActionButtons.storyName = 'Without Action Buttons';
+WithoutActionButtons.args = {
+  label: 'Select a date',
+  selectionType: 'single',
+  showActions: false,
 };
