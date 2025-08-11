@@ -44,17 +44,14 @@ const _DateInput = (
   const [inputValue, setInputValue] = React.useState(['']);
   const isRange = props.selectionType === 'range';
 
+  const stripDelimiters = (str?: string) => str?.replace(/\//g, '') ?? '';
   React.useEffect(() => {
     if (textInputProps.value) {
-      if (isRange) {
-        // Remove existing delimiters to avoid double formatting
-        setInputValue([
-          textInputProps.value[0]?.replace(/\//g, ''),
-          textInputProps.value[1]?.replace(/\//g, ''),
-        ]);
-      } else {
-        setInputValue([textInputProps.value[0]?.replace(/\//g, '')]);
-      }
+      setInputValue(
+        isRange
+          ? [stripDelimiters(textInputProps.value[0]), stripDelimiters(textInputProps.value[1])]
+          : [stripDelimiters(textInputProps.value[0])],
+      );
     }
   }, [textInputProps.value, isRange]);
 
@@ -63,9 +60,11 @@ const _DateInput = (
     if (!value?.trim()) {
       return isRange ? ([null, null] as [Date | null, Date | null]) : null;
     }
+
     if (isRange) {
       const parts = value.split(/\s*→\s*/);
       const baseFormat = format?.split('→')[0]?.trim() || format;
+
       // For range, only validate when we have substantial input
       if (value.length >= 10) {
         const startPart = parts[0]?.trim() || '';
@@ -90,6 +89,7 @@ const _DateInput = (
           endDate?.isValid() ? endDate.toDate() : null,
         ] as [Date | null, Date | null];
       }
+
       // For incomplete range input during editing, don't clear - return undefined
       return undefined;
     } else {
@@ -134,17 +134,14 @@ const _DateInput = (
     [isRange, date, setControlledValue],
   );
 
-  const handleInputChange = ({ value }: { value?: string }): void => {
-    const inputVal = value ?? '';
-    applyDateValue(inputVal, true); // Clear when empty on change
+  const handleInputChange = ({ value }: { value?: string }) => {
+    applyDateValue(value ?? '', true); // Clear when empty on change
   };
 
   const handleBlur = React.useCallback(
     (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
       const currentInputValue = params.event?.target.value ?? params.value ?? '';
-      console.log('qswap2', {
-        currentInputValue,
-      });
+
       applyDateValue(currentInputValue, false); // Don't clear when empty on blur
     },
     [applyDateValue],
