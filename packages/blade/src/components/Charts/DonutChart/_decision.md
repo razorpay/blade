@@ -236,5 +236,5 @@ const chartConfig = {
 
 ### 5.1. Active Shape & Customized Label
 
-The design for the default "active" (hovered) pie slice and the standard customized label needs to be finalized. 
+The design for the default "active" (hovered) donut slice and the standard customized label needs to be finalized. 
 
