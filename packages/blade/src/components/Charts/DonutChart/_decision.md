@@ -122,7 +122,7 @@ import {
       * Verbose usage requiring multiple component imports for simple charts.
 -----
 
-## 4\. Alternative APIs
+## 4. Alternative APIs
 
 ### 4.1 Hybrid API (Prop & Config Driven)
 
