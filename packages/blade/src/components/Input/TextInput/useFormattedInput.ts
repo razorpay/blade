@@ -175,6 +175,14 @@ export const useFormattedInput = ({
 
           if (prevIsDelimiter) {
             infoRef.current.cursorPosition = cursorPosition + nextUserCharIndex + 1;
+          } else {
+            // If we're at a delimiter after typing (not deleting), and there are more chars,
+            // we probably need to move past it unless it's a brand new delimiter
+            const delimiterExistedBefore =
+              currentValue[cursorPosition] === formattedValue[cursorPosition];
+            if (delimiterExistedBefore) {
+              infoRef.current.cursorPosition = cursorPosition + 1;
+            }
           }
         }
       }

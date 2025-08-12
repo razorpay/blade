@@ -2,6 +2,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { DatePickerType, DatePickerValue } from '@mantine/dates';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(customParseFormat);
 
 const dayjs_locales = [
   'af',
@@ -232,7 +235,7 @@ const rangeInputPlaceHolder = (placeholder: string | undefined, format: string) 
 
 const finalInputFormat = (startValue: string, endValue: string, format: string | undefined) => {
   // For case: when start and end are the same, return the format
-  if (startValue === endValue && startValue) {
+  if (startValue === endValue && (startValue || endValue)) {
     return format;
   }
   return `${format} → ${format}`;
@@ -252,6 +255,97 @@ const getTextInputFormat = (formatStr?: string, isRangeInput?: boolean): string 
   return formatStr.replace(/[YMD]/g, '#');
 };
 
+/**
+ * Simple date validation using DayJS with strict parsing
+ * @param dateStr - The date string to validate (e.g., "25/12/2024")
+ * @returns Object with isValid flag, error message if invalid, and parsed date if valid
+ */
+const validateDateComponents = (
+  dateStr: string,
+): {
+  isValid: boolean;
+  error?: string;
+  parsedDate?: Date;
+} => {
+  if (!dateStr?.trim()) {
+    return { isValid: true };
+  }
+
+  const parsed = dayjs(dateStr, 'DD/MM/YYYY', true);
+
+  if (!parsed.isValid()) {
+    return { isValid: false, error: 'Invalid date' };
+  }
+
+  const year = parsed.year();
+  if (year < 1000 || year > 3000) {
+    return { isValid: false, error: 'Invalid year' };
+  }
+
+  return { isValid: true, parsedDate: parsed.toDate() };
+};
+
+/**
+ * Shared validation function for date input blocking
+ * @param inputValue - The input string to validate
+ * @param isRange - Whether this is a range input or single date
+ * @returns Object with shouldBlock flag, optional error message, and parsed values if valid
+ */
+const validateInputAndBlock = (
+  inputValue: string,
+  isRange: boolean,
+): {
+  shouldBlock: boolean;
+  error?: string;
+  parsedValue?: Date | null | [Date | null, Date | null];
+} => {
+  if (!inputValue?.trim()) return { shouldBlock: false };
+
+  if (isRange) {
+    const parts = inputValue.split(/\s*→\s*/);
+
+    // Block if any part is incomplete (between 1-9 characters)
+    if (
+      (parts[0]?.trim() && parts[0].trim().length < 10) ||
+      (parts[1]?.trim() && parts[1].trim().length < 10)
+    ) {
+      return { shouldBlock: true };
+    }
+
+    let startDate: Date | null = null;
+    let endDate: Date | null = null;
+
+    // Validate complete parts (10+ characters) and get parsed dates
+    if (parts[0]?.trim() && parts[0].trim().length >= 10) {
+      const startValidation = validateDateComponents(parts[0].trim());
+      if (!startValidation.isValid) {
+        return { shouldBlock: true, error: `Start date: ${startValidation.error}` };
+      }
+      startDate = startValidation.parsedDate || null;
+    }
+
+    if (parts[1]?.trim() && parts[1].trim().length >= 10) {
+      const endValidation = validateDateComponents(parts[1].trim());
+      if (!endValidation.isValid) {
+        return { shouldBlock: true, error: `End date: ${endValidation.error}` };
+      }
+      endDate = endValidation.parsedDate || null;
+    }
+
+    return { shouldBlock: false, parsedValue: [startDate, endDate] };
+  } else {
+    if (inputValue.length >= 10) {
+      const validation = validateDateComponents(inputValue);
+      if (!validation.isValid) {
+        return { shouldBlock: true, error: validation.error };
+      }
+      return { shouldBlock: false, parsedValue: validation.parsedDate || null };
+    }
+  }
+
+  return { shouldBlock: false };
+};
+
 export {
   convertIntlToDayjsLocale,
   loadScript,
@@ -260,4 +354,6 @@ export {
   rangeInputPlaceHolder,
   finalInputFormat,
   getTextInputFormat,
+  validateDateComponents,
+  validateInputAndBlock,
 };

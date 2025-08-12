@@ -2,8 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useDatesContext } from '@mantine/dates';
 import type { DatePickerInputProps } from './types';
 import {
@@ -12,6 +10,7 @@ import {
   rangeInputPlaceHolder,
   finalInputFormat,
   getTextInputFormat,
+  validateInputAndBlock,
 } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseInputProps } from '~components/Input/BaseInput';
@@ -20,7 +19,6 @@ import { isReactNative } from '~utils';
 import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import { CalendarIcon } from '~components/Icons';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-dayjs.extend(customParseFormat);
 
 /**
  * CRITICAL BEHAVIOR CASES - Verify when making changes:
@@ -42,6 +40,7 @@ const _DateInput = (
 ): React.ReactElement => {
   const { format, date, setControlledValue, leadingDropdown, tags, id, ...textInputProps } = props;
   const [inputValue, setInputValue] = React.useState(['']);
+  const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
   const isRange = props.selectionType === 'range';
 
   const stripDelimiters = (str?: string): string => str?.replace(/\//g, '') ?? '';
@@ -55,86 +54,27 @@ const _DateInput = (
     }
   }, [textInputProps.value, isRange]);
 
-  // Parse user input and convert to Date objects
-  const parseInputValue = (value: string): Date | null | [Date | null, Date | null] | undefined => {
-    if (!value?.trim()) {
-      return isRange ? ([null, null] as [Date | null, Date | null]) : null;
-    }
-
-    if (isRange) {
-      const parts = value.split(/\s*→\s*/);
-      const baseFormat = format?.split('→')[0]?.trim() || format;
-
-      // For range, only validate when we have substantial input
-      if (value.length >= 10) {
-        const startPart = parts[0]?.trim() || '';
-        const endPart = parts[1]?.trim() || '';
-
-        const startDate = startPart ? dayjs(startPart, baseFormat, true) : null;
-        const endDate = endPart.length >= 10 ? dayjs(endPart, baseFormat, true) : null;
-
-        // If end date is being edited (incomplete), return special signal
-        // Why PRESERVE signal? If we return undefined, start date won't update for calendar sync.
-        // If we return [start, null], it clears the existing end date while user is still typing.
-        if (endPart.length > 0 && endPart.length < 10) {
-          return [
-            startDate?.isValid() ? startDate.toDate() : null,
-            'PRESERVE', // Special signal to preserve current end value
-          ] as any;
-        }
-
-        // Both complete or end is empty
-        return [
-          startDate?.isValid() ? startDate.toDate() : null,
-          endDate?.isValid() ? endDate.toDate() : null,
-        ] as [Date | null, Date | null];
-      }
-
-      // For incomplete range input during editing, don't clear - return undefined
-      return undefined;
-    } else {
-      // For single date, try to parse if it looks complete
-      if (value.length >= 8) {
-        const parsed = dayjs(value, format, true);
-        if (parsed.isValid()) {
-          return parsed.toDate();
-        }
-      }
-
-      // For incomplete single date input during editing, don't clear - return undefined
-      // Only return null if we want to explicitly clear (empty input handled above)
-      return undefined;
-    }
-  };
-
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false): void => {
       if (inputValue?.trim()) {
-        const parsed = parseInputValue(inputValue);
-        // Only update controlled value if parsing returned a definitive result
-        // undefined means "don't change" (user is still editing)
-        if (parsed !== undefined) {
-          if (isRange && Array.isArray(parsed) && (parsed as any)[1] === 'PRESERVE') {
-            // PRESERVE signal: User is editing incomplete end date (e.g., "25/12/202")
-            // Update start date immediately but preserve existing end date to prevent clearing
-            const currentValue = date;
-            const currentEnd = Array.isArray(currentValue) ? currentValue[1] : null;
+        const validation = validateInputAndBlock(inputValue, isRange);
+        if (validation.shouldBlock) {
+          return; // Block if validation fails
+        }
 
-            setControlledValue?.([parsed[0] as Date | null, currentEnd]);
-          } else {
-            // single date case
-            setControlledValue?.(parsed);
-          }
+        if (validation.parsedValue !== undefined) {
+          setControlledValue?.(validation.parsedValue);
         }
       } else if (shouldClearWhenEmpty) {
         // Clear when empty (only for onChange, not onBlur)
         setControlledValue?.(isRange ? ([null, null] as [Date | null, Date | null]) : null);
       }
     },
-    [isRange, date, setControlledValue],
+    [isRange, setControlledValue],
   );
 
   const handleInputChange = ({ value }: { value?: string }): void => {
+    setValidationError(undefined);
     applyDateValue(value ?? '', true); // Clear when empty on change
   };
 
@@ -142,9 +82,19 @@ const _DateInput = (
     (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
       const currentInputValue = params.event?.target.value ?? params.value ?? '';
 
+      setValidationError(undefined);
+
+      if (currentInputValue?.trim()) {
+        const validation = validateInputAndBlock(currentInputValue, isRange);
+        if (validation.shouldBlock && validation.error) {
+          setValidationError(validation.error);
+          return;
+        }
+      }
+
       applyDateValue(currentInputValue, false); // Don't clear when empty on blur
     },
-    [applyDateValue],
+    [applyDateValue, isRange],
   );
 
   return (
@@ -160,6 +110,8 @@ const _DateInput = (
           ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
           : getTextInputFormat(format, false)
       }
+      validationState={validationError ? 'error' : textInputProps.validationState}
+      errorText={textInputProps.errorText ?? validationError}
       onChange={handleInputChange}
       onBlur={handleBlur}
       onClick={(e) => {
