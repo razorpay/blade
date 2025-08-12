@@ -14,6 +14,7 @@ type PresetContextValue = {
   selectedPresetIndex: number | null;
   selectedPresetLabel: string | null;
   isCustomSelected: boolean;
+  effectiveSelectionType: 'single' | 'range' | null;
 };
 
 const PresetContext = createContext<PresetContextValue | null>(null);
@@ -39,6 +40,7 @@ export const PresetProvider = ({
         selectedPresetIndex: null,
         selectedPresetLabel: null,
         isCustomSelected: false,
+        effectiveSelectionType: null, // Default when no presets
       };
     }
 
@@ -94,12 +96,33 @@ export const PresetProvider = ({
     const selectedPresetLabel =
       selectedPresetIndex !== -1 ? presetStates[selectedPresetIndex].preset.label : null;
 
+    // STEP 5: Calculate effective selection type based on selected preset
+    // If preset returns same-day range (like "Today"), display as single date
+    let effectiveSelectionType: 'single' | 'range' = 'range'; // Default to range
+
+    if (selectedPresetIndex !== -1) {
+      const selectedPresetState = presetStates[selectedPresetIndex];
+
+      // Check if selected preset represents same day (like "Today" preset)
+      if (
+        selectedPresetState.value &&
+        selectedPresetState.value[0] &&
+        selectedPresetState.value[1] &&
+        selectedPresetState.value[0].toDateString() === selectedPresetState.value[1].toDateString()
+      ) {
+        effectiveSelectionType = 'single'; // Same day = display as single
+      } else {
+        effectiveSelectionType = 'range'; // Different days = display as range
+      }
+    }
+
     // Return final calculated state - this gets shared with all components
     return {
       presetStates, // Array: [{ preset, value, isSelected, isCustomType }, ...]
       selectedPresetIndex, // Number: 0, 1, 2... or null
       selectedPresetLabel, // String: "Last 7 days" or "Custom" or null
       isCustomSelected, // Boolean: true if custom dates selected
+      effectiveSelectionType, // 'single' | 'range' based on preset analysis
     };
   }, [presets, selectedPreset, currentDate]); // Recalculate when any of these change
 

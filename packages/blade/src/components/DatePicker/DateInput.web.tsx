@@ -12,6 +12,7 @@ import {
   getTextInputFormat,
   validateAndParseDateInput,
 } from './utils';
+import { usePresetContext } from './QuickSelection/PresetContext';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { TextInput } from '~components/Input/TextInput';
@@ -41,7 +42,15 @@ const _DateInput = (
   const { format, date, setControlledValue, leadingDropdown, tags, id, ...textInputProps } = props;
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
-  const isRange = props.selectionType === 'range';
+
+  const presetContext = usePresetContext();
+
+  // Determine selection type: prefer preset context calculation over props
+  // This handles "Today" presets that should display as single even though data is range
+  const isRange =
+    presetContext?.effectiveSelectionType === 'single'
+      ? false
+      : presetContext?.effectiveSelectionType === 'range' || props.selectionType === 'range';
 
   // Remove slashes from formatted dates for internal input state management
   const stripDelimiters = (str?: string): string => str?.replace(/\//g, '') ?? '';
@@ -68,14 +77,26 @@ const _DateInput = (
 
         // Apply the pre-parsed date values to controlled state (no redundant parsing)
         if (validation.parsedValue !== undefined) {
-          setControlledValue?.(validation.parsedValue);
+          let finalValue = validation.parsedValue;
+
+          // Special handling: if preset context shows single but props expect range
+          // (like "Today" preset), convert single date back to same-day range
+          if (
+            presetContext?.effectiveSelectionType === 'single' &&
+            props.selectionType === 'range' &&
+            validation.parsedValue instanceof Date
+          ) {
+            finalValue = [validation.parsedValue, validation.parsedValue] as [Date, Date];
+          }
+
+          setControlledValue?.(finalValue);
         }
       } else if (shouldClearWhenEmpty) {
         // Clear controlled value when input is emptied (onChange only, not onBlur)
         setControlledValue?.(isRange ? ([null, null] as [Date | null, Date | null]) : null);
       }
     },
-    [isRange, setControlledValue],
+    [isRange, setControlledValue, presetContext?.effectiveSelectionType, props.selectionType],
   );
 
   const handleInputChange = ({ value }: { value?: string }): void => {
