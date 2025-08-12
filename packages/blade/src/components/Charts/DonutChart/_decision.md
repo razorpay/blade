@@ -29,7 +29,7 @@ Published Date: Aug 7, 2025
 [Data Viz Phase \-1 \- Requirements](https://docs.google.com/document/d/1u7zkzpsQwwYsdtjSDlPgalArT7XkzAC400KqNI7Ibus/edit?tab=t.l3y0g5difjs4)
 
 
-> **Note:** In design doc you can see we are have Pie chart , but during initial discussion with design we have decided to have Donut chart only.
+> **Note:** In design doc you can see we have Pie chart, but during initial discussion with design we have decided to have Donut chart only.
 
 
 
