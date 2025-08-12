@@ -33,7 +33,7 @@ Published Date: Aug 7, 2025
 
 
 
-* [CustomActiveShapePieChart](https://recharts.org/en-US/examples/CustomActiveShapePieChart)  
+* [CustomActiveShapeDonutChart](https://recharts.org/en-US/examples/CustomActiveShapePieChart)  
      ![](./images/customActiveShape.png)
   We will provide custom active shapes for donut charts  
 
