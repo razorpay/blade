@@ -94,7 +94,7 @@ For that best would to have an internal check how many colors are already used.
 
 > **Color Handling:** Bar Charts will handle both Categorical and Sequential colors with limits on Sequential colors. An internal check will monitor how many colors are already in use.
 
-> **Responsive Container :** The `ResponsiveContainer` may have other options like actions, onResize, onResizeEnd, etc. will write an seprate API doc after discussion with design. 
+> **Responsive Container :** The `ResponsiveContainer` may have other options like actions, onResize, onResizeEnd, etc. will write a separate API doc after discussion with design. 
 
 > **Restrict passing <Defs/> in Recharts :** We will not allow developers to pass <Defs/> in Recharts. Since We would be controlling colors , gradient in our own way.
 
