@@ -115,9 +115,9 @@ const CountrySelector = ({
       {isMobile ? (
         <BottomSheet>
           <BottomSheetHeader title="Select A Country" />
-          {/* Action list have it's own overflow. no need to have another  */}
+          {/* Action list has its own overflow. No need to have another  */}
           <BottomSheetBody overflow="hidden">
-            {/* Even we just have one value we should open bottom sheet to an extend.
+            {/* Even if we just have one value we should open bottom sheet to an extent.
             This is to ensure that the bottom sheet is not too small and the user can see the
             entire list of country / countries.
             */}
