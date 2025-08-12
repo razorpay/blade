@@ -230,7 +230,7 @@ const chartConfig = {
 
 -----
 
-## 5\. Open Questions
+## 5. Open Questions
 
 
 
