@@ -114,7 +114,13 @@ const getVirtualItemParams = ({
         return acc + itemHeight;
       }, 0)
     : actionListBoxHeight;
-  const finalActionListBoxHeight = Math.min(actionListBoxHeight, actionListBoxMinHeight);
+  
+  // Ensure minimum usable height for better visibility, especially when few items are present
+  const minimumUsableHeight = actionListItemHeight * 3; // Show at least 3 items worth of height
+  const finalActionListBoxHeight = Math.min(
+    actionListBoxHeight, 
+    Math.max(actionListBoxMinHeight, minimumUsableHeight)
+  );
 
   return {
     actionListItemHeight,
