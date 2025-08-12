@@ -115,7 +115,9 @@ const CountrySelector = ({
       {isMobile ? (
         <BottomSheet>
           <BottomSheetHeader title="Select A Country" />
-          <BottomSheetBody>{actionList}</BottomSheetBody>
+          <BottomSheetBody overflow="hidden">
+            <BaseBox minHeight="284px">{actionList}</BaseBox>
+          </BottomSheetBody>
         </BottomSheet>
       ) : (
         <DropdownOverlay referenceRef={inputWrapperRef}>{actionList}</DropdownOverlay>
