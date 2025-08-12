@@ -45,7 +45,7 @@ Published Date: Aug 7, 2025
       Need to display Text in the center of the donut chart. We should have a standard style of this. 
 
 
-## 3\. API Specifications
+## 3. API Specifications
 
 ### 3.1.0 Composition API (Re-exporting Styled Components)
 
