@@ -1,0 +1,31 @@
+{
+    "name": "blade-token-helper",
+    "displayName": "Blade Token Helper",
+    "description": "VS Code helper extension for Razorpay's Blade design system tokens.",
+    "version": "0.0.1",
+    "publisher": "razorpay",
+    "engines": {
+      "vscode": "^1.85.0"
+    },
+    "categories": [
+      "Other"
+    ],
+    "activationEvents": [
+      "*"
+    ],
+    "main": "./dist/extension.js",
+    "scripts": {
+      "vscode:prepublish": "yarn run compile",
+      "compile": "tsc -p ./",
+      "watch": "tsc -watch -p ./",
+      "test": "echo \"No tests yet\""
+    },
+    "devDependencies": {
+      "@types/node": "20.11.30",
+      "@types/vscode": "1.85.0",
+      "typescript": "5.4.5"
+    },
+    "license": "MIT",
+    "packageManager": "yarn@1.22.22"
+  }
+  
