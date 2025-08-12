@@ -44,7 +44,7 @@ const _DateInput = (
   const [inputValue, setInputValue] = React.useState(['']);
   const isRange = props.selectionType === 'range';
 
-  const stripDelimiters = (str?: string) => str?.replace(/\//g, '') ?? '';
+  const stripDelimiters = (str?: string): string => str?.replace(/\//g, '') ?? '';
   React.useEffect(() => {
     if (textInputProps.value) {
       setInputValue(
@@ -108,7 +108,7 @@ const _DateInput = (
   };
 
   const applyDateValue = React.useCallback(
-    (inputValue: string, shouldClearWhenEmpty = false) => {
+    (inputValue: string, shouldClearWhenEmpty = false): void => {
       if (inputValue?.trim()) {
         const parsed = parseInputValue(inputValue);
         // Only update controlled value if parsing returned a definitive result
@@ -134,7 +134,7 @@ const _DateInput = (
     [isRange, date, setControlledValue],
   );
 
-  const handleInputChange = ({ value }: { value?: string }) => {
+  const handleInputChange = ({ value }: { value?: string }): void => {
     applyDateValue(value ?? '', true); // Clear when empty on change
   };
 
