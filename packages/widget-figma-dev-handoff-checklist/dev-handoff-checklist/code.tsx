@@ -67,7 +67,7 @@ function Widget() {
         <Text fontSize={28} fontWeight={700} fill="#192839">
           ✏️ Dev handoff checklist
         </Text>
-        <ProgressBar cardWidgetWidth={401} numberOfCheckboxes={15} checkedItems={checkedItems} />
+        <ProgressBar cardWidgetWidth={401} numberOfCheckboxes={16} checkedItems={checkedItems} />
       </AutoLayout>
       <AutoLayout direction="vertical" spacing={4} width="fill-parent">
         <SectionHeader title="Reviewers" />
@@ -100,7 +100,7 @@ function Widget() {
         <AutoLayout direction="vertical" spacing={4} width="fill-parent">
           <Checkbox
             id="ds1"
-            optionText="Added Blade coverage card having coverage greater than 90%"
+            optionText="Added Blade coverage card showing over 90% coverage on the 'Handoff' page"
             onCheckboxClick={updateChecklist}
           />
           <Checkbox
@@ -160,6 +160,11 @@ function Widget() {
           />
           <Checkbox
             id="state7"
+            optionText="Ensure all copy has been reviewed using 'ToneBlade' plugin & updated as needed"
+            onCheckboxClick={updateChecklist}
+          />
+          <Checkbox
+            id="state8"
             optionText="Ensured responsive design for both desktop and mobile flows, considering standard screen sizes, safe areas, and keyboard layouts on mobile devices"
             onCheckboxClick={updateChecklist}
           />
