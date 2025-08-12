@@ -24,7 +24,7 @@ Published Date: Aug 7, 2025
 
    
 
-#  2\. Requirements to Handle
+## 2. Requirements to Handle
 
 [Data Viz Phase \-1 \- Requirements](https://docs.google.com/document/d/1u7zkzpsQwwYsdtjSDlPgalArT7XkzAC400KqNI7Ibus/edit?tab=t.l3y0g5difjs4)
 
