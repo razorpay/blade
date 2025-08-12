@@ -238,6 +238,15 @@ type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'labe
    */
   onClearButtonClick?: () => void;
 };
+
+type DateInputProps = BaseInputProps & {
+  format?: string;
+  date?: Date | null | [Date | null, Date | null];
+  setControlledValue?: (date: Date | null | [Date | null, Date | null]) => void;
+  leadingDropdown?: React.ReactElement;
+  selectionType: 'single' | 'range';
+};
+
 export type {
   CalendarProps,
   DatePickerProps,
@@ -248,4 +257,5 @@ export type {
   DatePickerInputProps,
   DatePickerFilterChipProps,
   FilterChipDatePickerProps,
+  DateInputProps,
 };

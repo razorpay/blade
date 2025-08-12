@@ -13,8 +13,8 @@ import {
   validateAndParseDateInput,
 } from './utils';
 import { usePresetContext } from './QuickSelection/PresetContext';
+import type { DateInputProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import type { BaseInputProps } from '~components/Input/BaseInput';
 import { TextInput } from '~components/Input/TextInput';
 import { isReactNative } from '~utils';
 import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
@@ -30,13 +30,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
  * 4. SUBMIT (no footer): Blur/Enter should select current value
  */
 const _DateInput = (
-  props: BaseInputProps & {
-    format?: string;
-    date?: Date | null | [Date | null, Date | null];
-    setControlledValue?: (date: Date | null | [Date | null, Date | null]) => void;
-    leadingDropdown?: React.ReactElement;
-    selectionType: 'single' | 'range';
-  },
+  props: DateInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
   const { format, date, setControlledValue, leadingDropdown, tags, id, ...textInputProps } = props;
