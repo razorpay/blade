@@ -90,7 +90,7 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 | `connectNulls` | `boolean` | ❌ | `false` | Whether to connect the line over null data points |
 | `legendType` | `'none' \| 'line' \| 'square' \| 'diamond' \| 'circle' \| 'cross' \| 'triangle' \| 'triangleDown' \| 'triangleUp' \| 'star' \| 'wye'` | ❌ | `'line'` | The symbol type to display in the legend for this line |
 | `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the line (automatically assigned from palette if not provided) |
-| `strokeStyle` | `'dotted' \| 'dashed'` | ❌ | `'solid'` | Line stroke style for forecast or emphasis |
+| `strokeStyle` | `'solid' \| 'dotted' \| 'dashed'` | ❌ | `'solid'` | Line stroke style for forecast or emphasis |
 
 #### ReferenceLine Props
 
