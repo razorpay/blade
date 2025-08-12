@@ -129,7 +129,7 @@ import {
 // Simple Line Chart 
   <ResponsiveContainer width="100%" height="100%">
   // Line 
-    <LineChat data={chartData}>
+    <LineChart data={chartData}>
        <CartesianGrid />
        <XAxis dataKey="month" />
        <YAxis />
