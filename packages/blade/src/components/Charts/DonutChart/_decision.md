@@ -1,4 +1,4 @@
-# Pie Chart API 
+# Donut Chart API 
 
 Author(s): [Gaurav Tewari](mailto:gaurav.tewari@razorpay.com)  
 Team/Pod: Blade  
@@ -14,7 +14,7 @@ Published Date: Aug 7, 2025
 5. [Open Questions](#5-open-questions)
 
 
-1. # Design Breakdown
+1. # Design Breakdown [Will update with new design]
 
    [Design Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188718&p=f&m=dev) 
 
@@ -28,21 +28,15 @@ Published Date: Aug 7, 2025
 
 [Data Viz Phase \-1 \- Requirements](https://docs.google.com/document/d/1u7zkzpsQwwYsdtjSDlPgalArT7XkzAC400KqNI7Ibus/edit?tab=t.l3y0g5difjs4)
 
-* ### [StraightAngleChart](https://recharts.org/en-US/examples/StraightAnglePieChart)
 
-     ![](./images/straight.png)
+> **Note:** In design doc you can see we are have Pie chart , but during initial discussion with design we have decided to have Donut chart only.
 
-  We just need pie and other grid and x axis components.   
-* [TwoSimplePieChart](https://recharts.org/en-US/examples/TwoSimplePieChart)  
-     ![](./images/twoStraight.png)
 
-  Already supported in Recharts api  
+
 * [CustomActiveShapePieChart](https://recharts.org/en-US/examples/CustomActiveShapePieChart)  
      ![](./images/customActiveShape.png)
-  It has a very custom shape. There is a high chance we would be providing this in blade.  Will confirm with [Rama Krushna Behera](mailto:rama.behera@razorpay.com)  
-* [PieChartWithCustomizedLabel](https://recharts.org/en-US/examples/PieChartWithCustomizedLabel)  
-  ![](./images/pieChartWIthCustomizedLabel.png)  
-  Same with might have a unified label here. In Blade. Will confirm with [Rama Krushna Behera](mailto:rama.behera@razorpay.com)  
+  We will provide custom active shapes for donut charts  
+
 * [DonutWithText](https://ui.shadcn.com/charts/pie#charts)
 
     ![](./images/donutWithText.png)  
@@ -67,9 +61,10 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 | `cx` | `string \| number` | ✅ | - | The x-coordinate of the center of the pie chart |
 | `cy` | `string \| number` | ✅ | - | The y-coordinate of the center of the pie chart |
 | `donutRadius` | `'small' \| 'medium' \| 'large' \| 'extraLarge' \| 'none'` | ❌ | `'none'` | Controls the inner and outer radius values internally to create donut charts |
-| `circleType` | `'full' \| 'half' \| 'quarter'` | ❌ | `'full'` | Controls the start and end angle of the pie chart |
 | `paddingAngle` | `'none' \| 'small' \| 'medium' \| 'large' \| 'extraLarge'` | ❌ | `'none'` | Controls the padding angle between pie slices |
 | `activeShape` | `React.ReactElement \| ((props: any) => React.ReactNode)` | ✅ | - | Custom component or render function for the active (hovered) pie slice |
+| `centerText` | `string` | ❌ | - | Text to display in the center of the donut chart |
+| `size` | `'small' \| 'medium' \| 'large' \| 'extraLarge'` | ❌ | `'medium'` | Controls the size of the donut chart |
 
 > **Note:** Colors for individual slices are passed via `<Cell />` components. For components like ResponsiveContainer, Legend, Tooltip etc. we would be just styling them and re-exporting them as they don't need much changes.
 
@@ -85,36 +80,8 @@ import {
 } from '@razorpay/blade/charts';
 
 
-// 1. Simple Pie Chart
-const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-];
-const COLORS = ['token.chart.primary', 'token.chart.secondary', 'token.chart.tertiary', 'token.chart.quaternary'];
 
-<ResponsiveContainer width="100%" height="100%">
-  <PieChart>
-    <Pie
-      data={data}
-      dataKey="value"
-      nameKey="name"
-      cx="50%"
-      cy="50%"
-      circleType="half"
-      label
-    >
-      {data.map((entry, index) => (
-        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-      ))}
-    </Pie>
-    <Tooltip content={<CustomTooltip />} />
-    <Legend />
-  </PieChart>
-</ResponsiveContainer>
-
-// 2. Donut Chart
+// 1. Donut Chart
 <ResponsiveContainer width="100%" height="100%">
   <PieChart>
     <Pie
@@ -130,7 +97,7 @@ const COLORS = ['token.chart.primary', 'token.chart.secondary', 'token.chart.ter
   </PieChart>
 </ResponsiveContainer>
 
-// 3. Donut with Text in Center
+// 2. Donut with Text in Center
 // This pattern can be achieved by adding a custom <text> element.
 <ResponsiveContainer width="100%" height={300}>
   <PieChart>
@@ -139,57 +106,13 @@ const COLORS = ['token.chart.primary', 'token.chart.secondary', 'token.chart.ter
       dataKey="value"
       donutRadius="large"
       paddingAngle="small"
+      centerText="₹1.05L"
     >
        {/* ... <Cell /> components ... */}
     </Pie>
-    {/* Custom Center Text */}
-    <text
-      x="50%"
-      y="50%"
-      textAnchor="middle"
-      dominantBaseline="central"
-      fontSize="24"
-      fontWeight="bold"
-      color=""
-    >
-      Total: 900
-    </text>
   </PieChart>
 </ResponsiveContainer>
-// Other way would be to use <Label /> component and pass the text. 
-// Something like this:
-
- <Label
-   content={({ viewBox }) => {
-     if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-       return (
-         <text
-           x={viewBox.cx}
-           y={viewBox.cy}
-           textAnchor="middle"
-           dominantBaseline="middle"
-         >
-           <tspan
-             x={viewBox.cx}
-             y={viewBox.cy}
-            
-           >
-             {totalVisitors.toLocaleString()}
-           </tspan>
-           <tspan
-             x={viewBox.cx}
-             y={(viewBox.cy || 0) + 24}
-           >
-             Visitors
-           </tspan>
-         </text>
-       )
-     }
-   }}
- />
 ```
-
-Best would be to have a custom component for the label and pass the text to it. 
 
   * **Pros**
       * Familiar developer experience with direct mapping to recharts API.
@@ -229,7 +152,7 @@ const seriesConfig = [
   seriesConfig={seriesConfig}
   showLegend={true}
   showTooltip={true}
-  chartType="donut" // 'pie' | 'donut'
+  chartType="donut" // 'pie' | 'donut' (in future if we want to support donut chart)
   centerText="₹1.05L" // Text to display in the center of a donut
   customToolTip={<CustomTooltip />}
 />
@@ -314,10 +237,5 @@ const chartConfig = {
 
 ### 5.1. Active Shape & Customized Label
 
-The design for the default "active" (hovered) pie slice and the standard customized label needs to be finalized. Will Blade provide a default `ActiveShape` or `CustomLabel` component that developers can use or override? This needs confirmation from [Rama Krushna Behera](mailto:rama.behera@razorpay.com).
+The design for the default "active" (hovered) pie slice and the standard customized label needs to be finalized. 
 
-### 5.2. Donut Chart Center Content
-
-For Donut charts, displaying text or a value in the center is a common requirement. We need to decide on the best API for this. Should we provide a dedicated `<DonutCenterLabel>` component. 
-
-- Pie charts might have a size variants. 
