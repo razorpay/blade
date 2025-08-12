@@ -61,7 +61,6 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 | `cx` | `string \| number` | ✅ | - | The x-coordinate of the center of the pie chart |
 | `cy` | `string \| number` | ✅ | - | The y-coordinate of the center of the pie chart |
 | `donutRadius` | `'small' \| 'medium' \| 'large' \| 'extraLarge' \| 'none'` | ❌ | `'none'` | Controls the inner and outer radius values internally to create donut charts |
-| `paddingAngle` | `'none' \| 'small' \| 'medium' \| 'large' \| 'extraLarge'` | ❌ | `'none'` | Controls the padding angle between pie slices |
 | `activeShape` | `React.ReactElement \| ((props: any) => React.ReactNode)` | ✅ | - | Custom component or render function for the active (hovered) pie slice |
 | `centerText` | `string` | ❌ | - | Text to display in the center of the donut chart |
 | `size` | `'small' \| 'medium' \| 'large' \| 'extraLarge'` | ❌ | `'medium'` | Controls the size of the donut chart |
