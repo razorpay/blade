@@ -18,6 +18,7 @@ import { makeSize } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
+const COUNTRY_SELECTOR_BOTTOM_SHEET_MIN_HEIGHT = '284px';
 
 type CountryData = {
   code: CountryCodeType;
@@ -121,7 +122,7 @@ const CountrySelector = ({
             This is to ensure that the bottom sheet is not too small and the user can see the
             entire list of country / countries.
             */}
-            <BaseBox minHeight="284px">{actionList}</BaseBox>
+            <BaseBox minHeight={COUNTRY_SELECTOR_BOTTOM_SHEET_MIN_HEIGHT}>{actionList}</BaseBox>
           </BottomSheetBody>
         </BottomSheet>
       ) : (
