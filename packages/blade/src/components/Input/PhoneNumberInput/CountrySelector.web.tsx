@@ -116,6 +116,10 @@ const CountrySelector = ({
         <BottomSheet>
           <BottomSheetHeader title="Select A Country" />
           <BottomSheetBody overflow="hidden">
+            {/* Even we just have one value we should open bottom sheet to an extend.
+            This is to ensure that the bottom sheet is not too small and the user can see the
+            entire list of country / countries.
+            */}
             <BaseBox minHeight="284px">{actionList}</BaseBox>
           </BottomSheetBody>
         </BottomSheet>
