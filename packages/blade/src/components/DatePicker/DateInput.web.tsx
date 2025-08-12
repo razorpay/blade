@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useDatesContext } from '@mantine/dates';
-import type { DatePickerInputProps } from './types';
+import type { DatePickerInputProps, DateInputProps } from './types';
 import {
   getFormattedDate,
   rangeFormattedValue,
@@ -13,7 +13,6 @@ import {
   validateAndParseDateInput,
 } from './utils';
 import { usePresetContext } from './QuickSelection/PresetContext';
-import type { DateInputProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { isReactNative } from '~utils';
