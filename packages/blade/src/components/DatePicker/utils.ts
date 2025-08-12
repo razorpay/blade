@@ -267,31 +267,36 @@ const validateDateComponents = (
   error?: string;
   parsedDate?: Date;
 } => {
+  // Empty strings are considered valid (user hasn't started typing)
   if (!dateStr?.trim()) {
     return { isValid: true };
   }
 
+  // Use DayJS strict parsing to validate DD/MM/YYYY format and date existence
   const parsed = dayjs(dateStr, 'DD/MM/YYYY', true);
 
+  // DayJS strict mode catches invalid days/months and non-existent dates (e.g., Feb 30th)
   if (!parsed.isValid()) {
     return { isValid: false, error: 'Invalid date' };
   }
 
+  // Business rule: restrict year range to reasonable values for most applications
   const year = parsed.year();
   if (year < 1000 || year > 3000) {
     return { isValid: false, error: 'Invalid year' };
   }
 
+  // Return both validation result AND parsed date to avoid double parsing
   return { isValid: true, parsedDate: parsed.toDate() };
 };
 
 /**
- * Shared validation function for date input blocking
- * @param inputValue - The input string to validate
+ * Validates and parses date input, returning validation result with parsed values
+ * @param inputValue - The input string to validate and parse
  * @param isRange - Whether this is a range input or single date
  * @returns Object with shouldBlock flag, optional error message, and parsed values if valid
  */
-const validateInputAndBlock = (
+const validateAndParseDateInput = (
   inputValue: string,
   isRange: boolean,
 ): {
@@ -299,12 +304,14 @@ const validateInputAndBlock = (
   error?: string;
   parsedValue?: Date | null | [Date | null, Date | null];
 } => {
+  // Allow empty input - user hasn't started typing yet
   if (!inputValue?.trim()) return { shouldBlock: false };
 
   if (isRange) {
+    // Split range input on arrow separator (e.g., "25/12/2024 → 31/12/2024")
     const parts = inputValue.split(/\s*→\s*/);
 
-    // Block if any part is incomplete (between 1-9 characters)
+    // Block incomplete input to prevent premature validation (e.g., "25/12/202" is being typed)
     if (
       (parts[0]?.trim() && parts[0].trim().length < 10) ||
       (parts[1]?.trim() && parts[1].trim().length < 10)
@@ -315,34 +322,44 @@ const validateInputAndBlock = (
     let startDate: Date | null = null;
     let endDate: Date | null = null;
 
-    // Validate complete parts (10+ characters) and get parsed dates
+    // Validate and parse start date if it looks complete (10+ chars = DD/MM/YYYY)
     if (parts[0]?.trim() && parts[0].trim().length >= 10) {
       const startValidation = validateDateComponents(parts[0].trim());
       if (!startValidation.isValid) {
         return { shouldBlock: true, error: `Start date: ${startValidation.error}` };
       }
+      // Use the already-parsed date from validation to avoid double parsing
       startDate = startValidation.parsedDate || null;
     }
 
+    // Validate and parse end date if it looks complete
     if (parts[1]?.trim() && parts[1].trim().length >= 10) {
       const endValidation = validateDateComponents(parts[1].trim());
       if (!endValidation.isValid) {
         return { shouldBlock: true, error: `End date: ${endValidation.error}` };
       }
+      // Use the already-parsed date from validation to avoid double parsing
       endDate = endValidation.parsedDate || null;
     }
 
-    return { shouldBlock: false, parsedValue: [startDate, endDate] };
-  } else {
-    if (inputValue.length >= 10) {
-      const validation = validateDateComponents(inputValue);
-      if (!validation.isValid) {
-        return { shouldBlock: true, error: validation.error };
-      }
-      return { shouldBlock: false, parsedValue: validation.parsedDate || null };
+    // Business logic: start date cannot be after end date
+    if (startDate && endDate && startDate > endDate) {
+      return { shouldBlock: true, error: 'Start date cannot be greater than end date' };
     }
+
+    // Return parsed dates ready for setControlledValue
+    return { shouldBlock: false, parsedValue: [startDate, endDate] };
+  } else if (inputValue.length >= 10) {
+    // Single date: validate and parse if it looks complete
+    const validation = validateDateComponents(inputValue);
+    if (!validation.isValid) {
+      return { shouldBlock: true, error: validation.error };
+    }
+    // Return parsed date ready for setControlledValue
+    return { shouldBlock: false, parsedValue: validation.parsedDate || null };
   }
 
+  // Input is incomplete but valid so far - allow continued typing
   return { shouldBlock: false };
 };
 
@@ -355,5 +372,5 @@ export {
   finalInputFormat,
   getTextInputFormat,
   validateDateComponents,
-  validateInputAndBlock,
+  validateAndParseDateInput,
 };

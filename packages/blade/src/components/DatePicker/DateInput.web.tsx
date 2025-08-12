@@ -10,7 +10,7 @@ import {
   rangeInputPlaceHolder,
   finalInputFormat,
   getTextInputFormat,
-  validateInputAndBlock,
+  validateAndParseDateInput,
 } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseInputProps } from '~components/Input/BaseInput';
@@ -43,7 +43,10 @@ const _DateInput = (
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
   const isRange = props.selectionType === 'range';
 
+  // Remove slashes from formatted dates for internal input state management
   const stripDelimiters = (str?: string): string => str?.replace(/\//g, '') ?? '';
+
+  // Sync internal input state with external formatted values from parent component
   React.useEffect(() => {
     if (textInputProps.value) {
       setInputValue(
@@ -57,16 +60,18 @@ const _DateInput = (
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false): void => {
       if (inputValue?.trim()) {
-        const validation = validateInputAndBlock(inputValue, isRange);
+        // Validate input and get parsed dates in one atomic operation
+        const validation = validateAndParseDateInput(inputValue, isRange);
         if (validation.shouldBlock) {
-          return; // Block if validation fails
+          return; // Block invalid input to prevent data corruption
         }
 
+        // Apply the pre-parsed date values to controlled state (no redundant parsing)
         if (validation.parsedValue !== undefined) {
           setControlledValue?.(validation.parsedValue);
         }
       } else if (shouldClearWhenEmpty) {
-        // Clear when empty (only for onChange, not onBlur)
+        // Clear controlled value when input is emptied (onChange only, not onBlur)
         setControlledValue?.(isRange ? ([null, null] as [Date | null, Date | null]) : null);
       }
     },
@@ -75,24 +80,26 @@ const _DateInput = (
 
   const handleInputChange = ({ value }: { value?: string }): void => {
     setValidationError(undefined);
-    applyDateValue(value ?? '', true); // Clear when empty on change
+    // Apply changes immediately during typing (with empty clearing enabled)
+    applyDateValue(value ?? '', true);
   };
 
   const handleBlur = React.useCallback(
     (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
       const currentInputValue = params.event?.target.value ?? params.value ?? '';
-
       setValidationError(undefined);
 
       if (currentInputValue?.trim()) {
-        const validation = validateInputAndBlock(currentInputValue, isRange);
+        // Validate complete input and show errors to user on blur
+        const validation = validateAndParseDateInput(currentInputValue, isRange);
         if (validation.shouldBlock && validation.error) {
           setValidationError(validation.error);
-          return;
+          return; // Don't apply invalid values
         }
       }
 
-      applyDateValue(currentInputValue, false); // Don't clear when empty on blur
+      // Apply final value on blur (without empty clearing to preserve existing dates)
+      applyDateValue(currentInputValue, false);
     },
     [applyDateValue, isRange],
   );
