@@ -105,9 +105,8 @@ export const PresetProvider = ({
 
       // Check if selected preset represents same day (like "Today" preset)
       if (
-        selectedPresetState.value &&
-        selectedPresetState.value[0] &&
-        selectedPresetState.value[1] &&
+        selectedPresetState.value?.[0] &&
+        selectedPresetState.value?.[1] &&
         selectedPresetState.value[0].toDateString() === selectedPresetState.value[1].toDateString()
       ) {
         effectiveSelectionType = 'single'; // Same day = display as single

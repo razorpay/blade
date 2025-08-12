@@ -70,7 +70,7 @@ const _DateInput = (
     (inputValue: string, shouldClearWhenEmpty = false): void => {
       if (inputValue?.trim()) {
         // Validate input and get parsed dates in one atomic operation
-        const validation = validateAndParseDateInput(inputValue, isRange);
+        const validation = validateAndParseDateInput(inputValue, isRange, format);
         if (validation.shouldBlock) {
           return; // Block invalid input to prevent data corruption
         }
@@ -96,7 +96,13 @@ const _DateInput = (
         setControlledValue?.(isRange ? ([null, null] as [Date | null, Date | null]) : null);
       }
     },
-    [isRange, setControlledValue, presetContext?.effectiveSelectionType, props.selectionType],
+    [
+      isRange,
+      setControlledValue,
+      presetContext?.effectiveSelectionType,
+      props.selectionType,
+      format,
+    ],
   );
 
   const handleInputChange = ({ value }: { value?: string }): void => {
@@ -112,7 +118,7 @@ const _DateInput = (
 
       if (currentInputValue?.trim()) {
         // Validate complete input and show errors to user on blur
-        const validation = validateAndParseDateInput(currentInputValue, isRange);
+        const validation = validateAndParseDateInput(currentInputValue, isRange, format);
         if (validation.shouldBlock && validation.error) {
           setValidationError(validation.error);
           return; // Don't apply invalid values

@@ -290,6 +290,42 @@ const validateDateComponents = (
   return { isValid: true, parsedDate: parsed.toDate() };
 };
 
+// Helper to detect and parse special single date formats (MMM, MMMM, YYYY)
+const parseSpecialSingleFormat = (
+  inputValue: string,
+  format?: string,
+): { isSpecialFormat: boolean; parsedDate?: Date } => {
+  if (!format) return { isSpecialFormat: false };
+
+  const trimmedInput = inputValue.trim();
+  const today = new Date();
+
+  // Handle year-only format (YYYY) - keep current month and day, change year
+  if (format === 'YYYY' && /^\d{4}$/.test(trimmedInput)) {
+    const year = parseInt(trimmedInput, 10);
+    if (year >= 1000 && year <= 3000) {
+      return {
+        isSpecialFormat: true,
+        parsedDate: new Date(year, today.getMonth(), today.getDate()),
+      };
+    }
+  }
+
+  // Handle month formats (MMM, MMMM) - keep current day and year, change month
+  if ((format === 'MMM' || format === 'MMMM') && trimmedInput.length >= 3) {
+    // Using DayJS to parse month names (handles both short "Aug" and full "August")
+    const monthDate = dayjs(trimmedInput, format === 'MMM' ? 'MMM' : 'MMMM', true);
+    if (monthDate.isValid()) {
+      return {
+        isSpecialFormat: true,
+        parsedDate: new Date(today.getFullYear(), monthDate.month(), today.getDate()),
+      };
+    }
+  }
+
+  return { isSpecialFormat: false };
+};
+
 /**
  * Validates and parses date input, returning validation result with parsed values
  * @param inputValue - The input string to validate and parse
@@ -299,6 +335,7 @@ const validateDateComponents = (
 const validateAndParseDateInput = (
   inputValue: string,
   isRange: boolean,
+  format?: string,
 ): {
   shouldBlock: boolean;
   error?: string;
@@ -306,6 +343,14 @@ const validateAndParseDateInput = (
 } => {
   // Allow empty input - user hasn't started typing yet
   if (!inputValue?.trim()) return { shouldBlock: false };
+
+  // Handle special single date formats (MMM, MMMM, YYYY) - skip normal validation
+  if (!isRange && format) {
+    const specialParse = parseSpecialSingleFormat(inputValue, format);
+    if (specialParse.isSpecialFormat) {
+      return { shouldBlock: false, parsedValue: specialParse.parsedDate || null };
+    }
+  }
 
   if (isRange) {
     // Split range input on arrow separator (e.g., "25/12/2024 → 31/12/2024")
