@@ -104,7 +104,6 @@ import {
       data={data}
       dataKey="value"
       donutRadius="large"
-      paddingAngle="small"
       centerText="₹1.05L"
     >
        {/* ... <Cell /> components ... */}
