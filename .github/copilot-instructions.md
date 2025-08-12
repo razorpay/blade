@@ -70,31 +70,7 @@ Always reference these instructions first and fallback to search or bash command
   cd packages/blade && yarn typecheck
   ```
 
-## React Native Development Setup
 
-React Native development requires additional setup for iOS and Android. Only set up if contributing to React Native components.
-
-### iOS Setup Requirements
-- Install Xcode with iOS 13+ simulator
-- Install CocoaPods: `sudo gem install cocoapods`
-- Install pods: `cd packages/blade/ios && pod install`
-- For M1 Macs, follow React Native's M1 setup guide
-
-### Android Setup Requirements  
-- Install Android Studio with Android 12 SDK
-- Create AVD with sufficient storage (4GB+) and memory (2GB+)
-- Set `ANDROID_SDK_ROOT` environment variable
-
-### React Native Storybook
-- Start iOS simulator:
-  ```bash
-  cd packages/blade && yarn start:ios
-  ```
-
-- Start Android emulator:
-  ```bash
-  cd packages/blade && yarn start:android
-  ```
 
 ## Validation Scenarios
 
@@ -168,10 +144,7 @@ Set these minimum timeouts for commands:
 - Clear Jest cache: `cd packages/blade && yarn clearCache`
 - Ensure correct Node.js version (>=18.12.1)
 
-### React Native Issues
-- For Android: Clean Gradle cache in `android/` directory with `./gradlew clean`
-- For iOS: Clean derived data and rebuild pods
-- Ensure `ANDROID_SDK_ROOT` is set for Android development
+
 
 ### Import Errors
 - VSCode auto-imports can mix `.web` and `.native` files
@@ -185,7 +158,7 @@ When consuming Blade in applications, these peer dependencies are required:
 - `react-dom` >= 18 (web only)
 - `styled-components` ^5
 - `framer-motion` >= 4
-- React Native specific: `react-native` ^0.72, various RN libraries for native components
+- React Native specific: `react-native` ^0.72, various RN libraries for native components (when developing React Native components)
 
 ## CI/CD Compatibility
 
