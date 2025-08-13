@@ -37,7 +37,7 @@
 ![](./images/area.png)
 
 2.  **[Stacked Area Chart](https://recharts.org/en-US/examples/StackedAreaChart)** The chart should support stacking multiple areas. This is handled by adding a `stackId` prop to the `Area` component in Recharts. Also if we have more then 2 area, user need to pass stackId. otherwise we will consider 
-all area part of a single stack.
+all areas part of a single stack.
 
 
 ![](./images/stacked.png)
