@@ -59,6 +59,13 @@ const _DateInput = (
     }
   }, [textInputProps.value, isRange]);
 
+  // Clear validation error only when the actual selected date changes
+  // (e.g., user selected a valid date from the calendar). This avoids
+  // clearing errors during typing/blur unless the value truly updated.
+  React.useEffect(() => {
+    setValidationError(undefined);
+  }, [date]);
+
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false): void => {
       if (inputValue?.trim()) {

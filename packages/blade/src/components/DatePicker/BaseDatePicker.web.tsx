@@ -282,6 +282,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       }
     },
     referenceRef,
+    crossAxisOffset: -28,
   });
 
   const shouldRenderPresets = !isSingle && !isMobile;
