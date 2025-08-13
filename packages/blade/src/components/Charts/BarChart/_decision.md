@@ -69,7 +69,7 @@ This approach follows the precedent set by the Line Chart API. We will re-export
 **Colors** : In case of Bar Charts We would be handling both Categorical and Sequential color. Also there will be a limit on Sequential Colors. 
 For that, best would be to have an internal check how many colors are already used. 
 
-**Note:**  BarChart have this `margin` prop which allows user to set margin from  ResponsiveContainer. We won't we exposing that. we would have predefined values. 
+**Note:**  BarChart has this `margin` prop which allows user to set margin from ResponsiveContainer. We won't be exposing that. We would have predefined values.
 
 
 
