@@ -181,6 +181,7 @@ import FilterIconComponent from './FilterIcon';
 import FlagIconComponent from './FlagIcon';
 import FlaskIconComponent from './FlaskIcon';
 import FolderIconComponent from './FolderIcon';
+import ForexManagementFilledIconComponent from './ForexManagementFilledIcon';
 import ForexManagementIconComponent from './ForexManagementIcon';
 import FreelanceFilledIconComponent from './FreelanceFilledIcon';
 import FreelanceIconComponent from './FreelanceIcon';
@@ -357,6 +358,7 @@ import SmartphoneIconComponent from './SmartphoneIcon';
 import SolutionsFilledIconComponent from './SolutionsFilledIcon';
 import SolutionsIconComponent from './SolutionsIcon';
 import SortIconComponent from './SortIcon';
+import SourceToPayFilledIconComponent from './SourceToPayFilledIcon';
 import SourceToPayIconComponent from './SourceToPayIcon';
 import SparklesIconComponent from './SparklesIcon';
 import SpeakerIconComponent from './SpeakerIcon';
@@ -411,6 +413,7 @@ import UserMinusIconComponent from './UserMinusIcon';
 import UserPlusIconComponent from './UserPlusIcon';
 import UserXIconComponent from './UserXIcon';
 import UsersIconComponent from './UsersIcon';
+import VendorPaymentsFilledIconComponent from './VendorPaymentsFilledIcon';
 import VendorPaymentsIconComponent from './VendorPaymentsIcon';
 import VideoIconComponent from './VideoIcon';
 import VideoOffIconComponent from './VideoOffIcon';
@@ -421,6 +424,8 @@ import VolumeHighIconComponent from './VolumeHighIcon';
 import VolumeIconComponent from './VolumeIcon';
 import VolumeLowIconComponent from './VolumeLowIcon';
 import VolumeMuteIconComponent from './VolumeMuteIcon';
+import VolumeOffIconComponent from './VolumeOffIcon';
+import VolumeOnIconComponent from './VolumeOnIcon';
 import WalletIconComponent from './WalletIcon';
 import WatchIconComponent from './WatchIcon';
 import WhatsAppIconComponent from './WhatsAppIcon';
@@ -618,6 +623,7 @@ const iconMap: Record<string, IconComponent> = {
   FlagIcon: FlagIconComponent,
   FlaskIcon: FlaskIconComponent,
   FolderIcon: FolderIconComponent,
+  ForexManagementFilledIcon: ForexManagementFilledIconComponent,
   ForexManagementIcon: ForexManagementIconComponent,
   FreelanceFilledIcon: FreelanceFilledIconComponent,
   FreelanceIcon: FreelanceIconComponent,
@@ -794,6 +800,7 @@ const iconMap: Record<string, IconComponent> = {
   SolutionsFilledIcon: SolutionsFilledIconComponent,
   SolutionsIcon: SolutionsIconComponent,
   SortIcon: SortIconComponent,
+  SourceToPayFilledIcon: SourceToPayFilledIconComponent,
   SourceToPayIcon: SourceToPayIconComponent,
   SparklesIcon: SparklesIconComponent,
   SpeakerIcon: SpeakerIconComponent,
@@ -848,6 +855,7 @@ const iconMap: Record<string, IconComponent> = {
   UserPlusIcon: UserPlusIconComponent,
   UserXIcon: UserXIconComponent,
   UsersIcon: UsersIconComponent,
+  VendorPaymentsFilledIcon: VendorPaymentsFilledIconComponent,
   VendorPaymentsIcon: VendorPaymentsIconComponent,
   VideoIcon: VideoIconComponent,
   VideoOffIcon: VideoOffIconComponent,
@@ -858,6 +866,8 @@ const iconMap: Record<string, IconComponent> = {
   VolumeIcon: VolumeIconComponent,
   VolumeLowIcon: VolumeLowIconComponent,
   VolumeMuteIcon: VolumeMuteIconComponent,
+  VolumeOffIcon: VolumeOffIconComponent,
+  VolumeOnIcon: VolumeOnIconComponent,
   WalletIcon: WalletIconComponent,
   WatchIcon: WatchIconComponent,
   WhatsAppIcon: WhatsAppIconComponent,
