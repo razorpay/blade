@@ -287,6 +287,21 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
 
   const shouldRenderPresets = !isSingle && !isMobile;
 
+  // MOBILE: Blur input when bottom sheet opens to prevent keyboard + sheet overlap
+  // Use setTimeout(0) instead of requestAnimationFrame: BottomSheet captures document.activeElement
+  // on open for focus restoration. Deferring blur to next macrotask ensures BottomSheet first
+  // snapshots the focused input, then we blur to hide keyboard. On close, focus auto-restores.
+  React.useEffect(() => {
+    if (isMobile && controllableIsOpen) {
+      const refEl = (refs.reference?.current as unknown) as { blur?: () => void } | null;
+      if (refEl?.blur) {
+        setTimeout(() => {
+          refEl.blur?.();
+        }, 0);
+      }
+    }
+  }, [isMobile, controllableIsOpen, refs.reference]);
+
   const content = (
     <>
       {shouldRenderPresets ? (
