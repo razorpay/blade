@@ -43,6 +43,12 @@ import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
 
+// Calendar dimensions for consistent layout
+const CALENDAR_HEIGHTS = {
+  // Height includes: Calendar grid (6 weeks * ~44px) + header (~48px) + footer actions (~64px) + padding
+  DAY_PICKER_WITH_FOOTER: '447px',
+} as const;
+
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
   allowSingleDateInRange,
@@ -320,8 +326,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         gap="spacing.5"
         padding={{ m: 'spacing.6', s: 'spacing.0' }}
         /* We only need to set height for day picker, for year picker
-         or month  it should be auto. */
-        height={_picker === 'day' && showFooterActions ? '447px' : 'auto'}
+         or month it should be auto. */
+        height={
+          _picker === 'day' && showFooterActions ? CALENDAR_HEIGHTS.DAY_PICKER_WITH_FOOTER : 'auto'
+        }
         backgroundColor="surface.background.gray.intense"
         justifyContent="space-between"
       >

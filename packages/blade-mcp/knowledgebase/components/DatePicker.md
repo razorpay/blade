@@ -4,7 +4,7 @@ DatePicker
 
 ## Description
 
-DatePicker is a component for selecting dates or date ranges with an intuitive calendar interface. It supports single date selection or date range selection modes, with features such as date constraints, presets for quick selection, and validation states. The component also offers a FilterChipDatePicker variant for use in filtering interfaces, making it versatile for various date selection scenarios.
+DatePicker is a component for selecting dates or date ranges with an intuitive calendar interface. It supports single date selection or date range selection modes, with features such as date constraints, presets for quick selection, and validation states. Users can also type dates directly into the input field with automatic formatting and validation. The component also offers a FilterChipDatePicker variant for use in filtering interfaces, making it versatile for various date selection scenarios.
 
 ## TypeScript Types
 
@@ -108,6 +108,18 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
    * Allow selecting a single date in range mode
    */
   allowSingleDateInRange?: boolean;
+
+  /**
+   * Whether to show the footer with apply/cancel buttons
+   * @default true
+   */
+  showFooterActions?: boolean;
+
+  /**
+   * Sets the date format to be displayed in the input field
+   * @default 'DD/MM/YYYY'
+   */
+  format?: 'DD/MM/YYYY' | 'MMM' | 'MMMM' | 'YYYY';
 
   /**
    * Locale for date formatting and calendar text
@@ -386,7 +398,7 @@ const SizeVariantsExample = () => {
   return (
     <Box>
       <Text weight="semibold" marginBottom="spacing.3">
-        Size Variants and Controlled DatePicker
+        Size Variants, Controlled DatePicker and showFooterActions as false
       </Text>
       <Box display="flex" gap="spacing.4" alignItems="flex-start">
         <DatePicker
@@ -397,6 +409,7 @@ const SizeVariantsExample = () => {
           onChange={setDate}
           isOpen={isSingleOpen}
           onOpenChange={({ isOpen }) => setIsSingleOpen(isOpen)}
+          showFooterActions={false}
         />
 
         <DatePicker
