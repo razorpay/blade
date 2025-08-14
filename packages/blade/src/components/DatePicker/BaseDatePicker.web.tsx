@@ -286,7 +286,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   });
 
   const shouldRenderPresets = !isSingle && !isMobile;
-  console.log('Qswap', showActions);
+
   const content = (
     <>
       {shouldRenderPresets ? (
