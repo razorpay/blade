@@ -861,7 +861,6 @@ const ZeroPaddingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
 
 export const ZeroPadding = ZeroPaddingTemplate.bind({});
 
-
 const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const fruites = [
     'Apple',
