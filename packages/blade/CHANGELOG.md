@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.47.1
+
+### Patch Changes
+
+- 3c8584905: fix : update bottom sheet height logic
+
 ## 12.47.0
 
 ### Minor Changes
