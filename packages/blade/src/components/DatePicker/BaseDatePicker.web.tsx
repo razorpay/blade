@@ -286,7 +286,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   });
 
   const shouldRenderPresets = !isSingle && !isMobile;
-
+  console.log('Qswap', showActions);
   const content = (
     <>
       {shouldRenderPresets ? (
@@ -306,7 +306,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         padding={{ m: 'spacing.6', s: 'spacing.0' }}
         /* We only need to set height for day picker, for year picker
          or month  it should be auto. */
-        height={_picker === 'day' ? '447px' : 'auto'}
+        height={_picker === 'day' && showActions ? '447px' : 'auto'}
         backgroundColor="surface.background.gray.intense"
         justifyContent="space-between"
       >
