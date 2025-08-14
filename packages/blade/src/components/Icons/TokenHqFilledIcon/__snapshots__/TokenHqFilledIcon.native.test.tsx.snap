@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TokenHqFilledIcon /> should render TokenHqFilledIcon 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="20px"
+    bbWidth="20px"
+    data-blade-component="icon"
+    fill="none"
+    focusable={false}
+    height="20px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        [
+          {},
+        ],
+        {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+    vbHeight={24}
+    vbWidth={24}
+    width="20px"
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M9.53027 21.5311V2.67396C9.53027 2.30201 9.8318 2.00049 10.2037 2.00049C10.5757 2.00049 10.8772 2.30201 10.8772 2.67396V21.5311C10.8772 21.903 10.5757 22.2046 10.2037 22.2046C9.8318 22.2046 9.53027 21.903 9.53027 21.5311Z"
+        fill={
+          {
+            "payload": 4280563015,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "fill",
+          ]
+        }
+      />
+      <RNSVGPath
+        d="M22.1016 18.8369C22.1016 19.9527 20.7034 20.8573 18.9785 20.8574H10.877V10.7559H22.1016V18.8369Z"
+        fill={
+          {
+            "payload": 4280563015,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "fill",
+          ]
+        }
+      />
+      <RNSVGPath
+        d="M18.9785 4.69434C20.7034 4.69444 22.1016 5.59907 22.1016 6.71484V9.4082H10.877V4.69434H18.9785Z"
+        fill={
+          {
+            "payload": 4280563015,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "fill",
+          ]
+        }
+      />
+      <RNSVGPath
+        clipRule={0}
+        d="M8.63281 20.8575H3.12402C1.95104 20.8575 1 19.9528 1 18.837V6.71488C1 5.59904 1.95104 4.69438 3.12402 4.69438H8.63281V20.8575ZM4.36719 9.41C3.99531 9.41009 3.69434 9.71811 3.69434 10.09C3.69448 10.4618 3.9954 10.7599 4.36719 10.76C4.73905 10.76 5.04088 10.4618 5.04102 10.09C5.04102 9.71805 4.73913 9.41 4.36719 9.41ZM7.06152 9.41C6.68958 9.41 6.3877 9.71805 6.3877 10.09C6.38784 10.4618 6.68966 10.76 7.06152 10.76C7.43325 10.7598 7.73423 10.4617 7.73438 10.09C7.73438 9.71815 7.43333 9.41016 7.06152 9.41Z"
+        fill={
+          {
+            "payload": 4280563015,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
