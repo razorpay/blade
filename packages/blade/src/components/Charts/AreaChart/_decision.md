@@ -100,6 +100,12 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 
 > **Restrict passing <Defs/> in Recharts :** We will not allow developers to pass <Defs/> in Recharts. Since We would be controlling colors , gradient in our own way.  (Design will define if area color would be solid or gradient.)
 
+> **Restrict max Area :**  We will add a check for max. area In Chart Container.(design will tell the number of max area). 
+if more than decided number of max area, we will show an error message. 
+
+> **Animation :**  We will handle Animations like Entry , Exit or Hover internally in area chart (if any).
+
+
 
 ```ts
 import {

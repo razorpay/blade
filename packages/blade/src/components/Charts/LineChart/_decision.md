@@ -110,6 +110,11 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 
 > **Restrict passing <Defs/> in Recharts :** We will not allow developers to pass <Defs/> in Recharts. Since We would be controlling colors , gradient in our own way.
 
+> **Restrict max Lines :**  We will add a check for max. lines In Chart Container.(design will tell the number of max lines). 
+if more than decided number of max lines, we will show an error message. 
+
+> **Animation :**  We will handle Animations like Entry , Exit or Hover internally in line chart (if any).
+
 
 ```ts
 import {

@@ -71,6 +71,10 @@ For that, best would be to have an internal check how many colors are already us
 
 **Note:**  BarChart has this `margin` prop which allows user to set margin from ResponsiveContainer. We won't be exposing that. We would have predefined values.
 
+> **Restrict max Bar :**  We will add a check for max. bars In Chart Container.(design will tell the number of max bars). 
+if more than decided number of max bars, we will show an error message. 
+
+> **Animation :**  We will handle Animations like Entry , Exit or Hover internally in bar chart (if any).
 
 
 
