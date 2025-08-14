@@ -59,7 +59,7 @@ all areas part of a single stack.
 
 ## 3\. API Specifications
 
-### 3.1.0 Composition API (Re-exporting Styled Components)
+### 3.1.0 Composition API (Re-exporting Styled Components) (Recommended 🥇)
 
 This approach involves re-exporting styled versions of the underlying `recharts` components, giving developers full compositional control.
 
@@ -182,7 +182,7 @@ import {
 
 ## 4\. Alternative APIs -
 
-### 4.1 Hybrid API (Prop & Config Driven)
+### 4.1 Hybrid API (Prop & Config Driven) (Not Recommended)
 
 This approach combines component props for high-level control with configuration objects for detailed specifications.
 
@@ -313,7 +313,7 @@ interface CustomAreaChartProps {
       * Can become verbose with many configuration options.
       * The props list can get long for complex charts.
 
-### 4.2 Config-Driven API
+### 4.2 Config-Driven API (Not Recommended)
 
 This approach consolidates all chart settings into a single `config` object.
 

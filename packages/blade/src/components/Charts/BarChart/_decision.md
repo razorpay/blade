@@ -1,4 +1,4 @@
-# Bar Chart API \[1st Draft\]
+# Bar Chart API
 
 Author(s): [Gaurav Tewari](mailto:gaurav.tewari@razorpay.com)  
 Team/Pod: Blade  
@@ -61,7 +61,7 @@ Published Date: Aug 7, 2025
 
 ## 3\. API Specifications
 
-### 3.1 Composition API (Re-exporting Styled Components)
+### 3.1 Composition API (Re-exporting Styled Components) (Recommended 🥇)
 
 This approach follows the precedent set by the Line Chart API. We will re-export styled versions of the underlying `recharts` components. 
 
@@ -185,7 +185,7 @@ import {
 
 ## 4\. Alternative APIs
 
-### 4.1 Hybrid API (Prop & Config Driven)
+### 4.1 Hybrid API (Prop & Config Driven) (Not Recommended)
 
 This approach uses a single `<BarChart />` component, controlling its features via a mix of direct props and configuration objects.
 
@@ -260,7 +260,7 @@ interface CustomBarChartProps {
       * The props list can become very long and complex.
       * Abstracts away the underlying `recharts` API, which could be limiting.
 
-### 4.2 Config-Driven API
+### 4.2 Config-Driven API (Not Recommended)
 
 This approach consolidates all chart settings into a single `config` object passed to the component.
 
