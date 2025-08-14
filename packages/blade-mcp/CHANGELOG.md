@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.4.1
+
+### Patch Changes
+
+- 9cb50cab1: feat(blade-mcp): add constraints to component knowledgebase
+
 ## 1.4.0
 
 ### Minor Changes
