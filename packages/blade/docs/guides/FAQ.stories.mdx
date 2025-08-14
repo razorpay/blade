@@ -19,6 +19,28 @@ export const FAQComponent = () => {
   return (
     <Accordion marginTop="spacing.4" showNumberPrefix>
       <AccordionItem
+        title="How to prevent iOS Safari from zooming when tapping on inputs?"
+        description={
+          <Text>
+            iOS Safari automatically zooms in when users tap on input fields with font-size less
+            than 16px. This can cause layout issues, especially with modals or bottom sheets. To
+            prevent this behavior, add the following meta tag to your HTML:
+            <Code marginTop="spacing.2" marginBottom="spacing.4">
+              {`<meta 
+  name="viewport" 
+  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" 
+/>`}
+            </Code>
+            <Text marginTop="spacing.3">
+              <strong>Note:</strong> This disables user zoom entirely. For better accessibility,
+              consider setting input font-size to 16px or larger instead, or use this approach
+              selectively.
+            </Text>
+            <Text marginTop="spacing.3">In Storybook, this is already configured for testing Blade components. For production apps, add this to your main HTML file.</Text>
+          </Text>
+        }
+      />
+      <AccordionItem
         title="'ResizeObserver is not defined' error when running Jest"
         description={
           <Text>
