@@ -547,7 +547,7 @@ const validateAndParseDateInput = (
 
     // Additional validation for single date constraints
     if (options && parsedDate) {
-      if (options.excludeDate && options.excludeDate(parsedDate)) {
+      if (options.excludeDate?.(parsedDate)) {
         return { shouldBlock: true, error: 'Date is not allowed' };
       }
       if (options.minDate && dayjs(parsedDate).isBefore(dayjs(options.minDate))) {
