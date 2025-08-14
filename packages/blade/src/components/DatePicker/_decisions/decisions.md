@@ -71,7 +71,7 @@ type DatePickerProps = InputProps &
      * Whether to show the apply/cancel buttons
      * @default true
      */
-    showActions?: boolean;
+    showFooterActions?: boolean;
   };
 ```
 

@@ -273,7 +273,7 @@ export const DatePickerRangeSelect: StoryFn<
   return (
     <DatePickerComponent
       selectionType="range"
-      label="Select a date range"
+      label={{ start: 'Select a date range' }}
       onOpenChange={onOpenChange}
     />
   );
@@ -322,7 +322,7 @@ export const DatePickerRangeSelectControlled: StoryFn<
         setValue(date);
       }}
       selectionType="range"
-      label="Select a date range"
+      label={{ start: 'Select a date range' }}
     />
   );
 };

@@ -77,7 +77,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   onClearButtonClick,
   labelSuffix,
   labelTrailing,
-  showActions = true,
+  showFooterActions = true,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -306,7 +306,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         padding={{ m: 'spacing.6', s: 'spacing.0' }}
         /* We only need to set height for day picker, for year picker
          or month  it should be auto. */
-        height={_picker === 'day' && showActions ? '447px' : 'auto'}
+        height={_picker === 'day' && showFooterActions ? '447px' : 'auto'}
         backgroundColor="surface.background.gray.intense"
         justifyContent="space-between"
       >
@@ -354,7 +354,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           }}
           selectedValue={controlledValue}
         />
-        {showActions &&
+        {showFooterActions &&
           (isMobile ? null : (
             <CalendarFooter
               isButtonDisabled={applyButtonDisabled}
@@ -449,6 +449,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 labelTrailing={labelTrailing}
                 setControlledValue={setControlledValue}
                 selectedPreset={selectedPreset}
+                excludeDate={props.excludeDate}
+                minDate={props.minDate}
+                maxDate={props.maxDate}
                 leadingDropdown={
                   presets && !isSingle ? (
                     <PresetDropdown
@@ -488,7 +491,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                     />
                   )}
                 </BottomSheetBody>
-                {showActions && (
+                {showFooterActions && (
                   <BottomSheetFooter>
                     <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
                   </BottomSheetFooter>

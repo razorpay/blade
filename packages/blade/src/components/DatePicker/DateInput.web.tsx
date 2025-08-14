@@ -11,6 +11,7 @@ import {
   finalInputFormat,
   getTextInputFormat,
   validateAndParseDateInput,
+  stripDelimiters,
 } from './utils';
 import { usePresetContext } from './QuickSelection/PresetContext';
 import BaseBox from '~components/Box/BaseBox';
@@ -45,10 +46,10 @@ const _DateInput = (
       ? false
       : presetContext?.effectiveSelectionType === 'range' || props.selectionType === 'range';
 
-  // Remove slashes from formatted dates for internal input state management
-  const stripDelimiters = (str?: string): string => str?.replace(/\//g, '') ?? '';
-
   // Sync internal input state with external formatted values from parent component
+  // textInputProps.value comes from DatePickerInput as formatted strings: ["25/12/2024", "31/12/2024"]
+  // We strip delimiters for internal processing: ["25122024", "31122024"]
+  // This prevents double formatting and helps to validate the input easier during user typing
   React.useEffect(() => {
     if (textInputProps.value) {
       setInputValue(
@@ -57,7 +58,7 @@ const _DateInput = (
           : [stripDelimiters(textInputProps.value[0])],
       );
     }
-  }, [textInputProps.value, isRange]);
+  }, [textInputProps.value, isRange, format]);
 
   // Clear validation error only when the actual selected date changes
   // (e.g., user selected a valid date from the calendar). This avoids
@@ -69,8 +70,12 @@ const _DateInput = (
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false): void => {
       if (inputValue?.trim()) {
-        // Validate input and get parsed dates in one atomic operation
-        const validation = validateAndParseDateInput(inputValue, isRange, format);
+        // Validate input and get parsed dates in one atomic operation (includes all constraints)
+        const validation = validateAndParseDateInput(inputValue, isRange, format, {
+          excludeDate: props.excludeDate,
+          minDate: props.minDate,
+          maxDate: props.maxDate,
+        });
         if (validation.shouldBlock) {
           return; // Block invalid input to prevent data corruption
         }
@@ -102,6 +107,9 @@ const _DateInput = (
       presetContext?.effectiveSelectionType,
       props.selectionType,
       format,
+      props.excludeDate,
+      props.minDate,
+      props.maxDate,
     ],
   );
 
@@ -117,8 +125,13 @@ const _DateInput = (
       setValidationError(undefined);
 
       if (currentInputValue?.trim()) {
-        // Validate complete input and show errors to user on blur
-        const validation = validateAndParseDateInput(currentInputValue, isRange, format);
+        // Validate complete input and show errors to user on blur (includes all constraints)
+        const validation = validateAndParseDateInput(currentInputValue, isRange, format, {
+          excludeDate: props.excludeDate,
+          minDate: props.minDate,
+          maxDate: props.maxDate,
+        });
+
         if (validation.shouldBlock && validation.error) {
           setValidationError(validation.error);
           return; // Don't apply invalid values
@@ -213,6 +226,9 @@ const _DatePickerInput = (
     setControlledValue,
     leadingDropdown,
     selectedPreset,
+    excludeDate,
+    minDate,
+    maxDate,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -258,6 +274,9 @@ const _DatePickerInput = (
           setControlledValue={setControlledValue}
           format={format}
           selectionType={selectionType}
+          excludeDate={excludeDate}
+          minDate={minDate}
+          maxDate={maxDate}
           {...props}
           {...referenceProps}
         />
@@ -302,7 +321,7 @@ const _DatePickerInput = (
           ref={ref as never}
           id="range-date"
           labelPosition={labelPosition}
-          label={label?.start ?? label} // Initially planned to only support string, but supporting both string and object to avoid breaking changes
+          label={typeof label === 'object' ? label?.start : label}
           placeholder={rangeInputPlaceHolder(placeholder, format)}
           popupId={referenceProps['aria-controls']}
           isPopupExpanded={referenceProps['aria-expanded']}
@@ -311,9 +330,17 @@ const _DatePickerInput = (
           value={[startValue, endValue]}
           componentName="DatePickerInputRange"
           necessityIndicator={necessityIndicator}
-          successText={successText?.start ?? successText}
-          errorText={errorText?.start ?? errorText}
-          helpText={helpText?.start ?? helpText}
+          successText={
+            typeof successText === 'object'
+              ? (successText as { start: string })?.start
+              : successText
+          }
+          errorText={
+            typeof errorText === 'object' ? (errorText as { start: string })?.start : errorText
+          }
+          helpText={
+            typeof helpText === 'object' ? (helpText as { start: string })?.start : helpText
+          }
           labelSuffix={labelSuffix}
           labelTrailing={labelTrailing}
           format={format}
@@ -321,6 +348,9 @@ const _DatePickerInput = (
           date={date as [Date | null, Date | null]}
           setControlledValue={setControlledValue}
           selectionType={selectionType}
+          excludeDate={excludeDate}
+          minDate={minDate}
+          maxDate={maxDate}
           {...props}
           {...referenceProps}
         />

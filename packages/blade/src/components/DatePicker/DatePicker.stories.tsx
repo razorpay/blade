@@ -298,7 +298,7 @@ export const Validations: StoryFn<typeof DatePickerComponent> = () => {
       </Text>
       <DatePickerComponent
         validationState={hasError ? 'error' : 'none'}
-        errorText={{ start: 'Cannot select a range which is more than 3 days' }}
+        errorText="Cannot select a range which is more than 3 days"
         label={{ start: 'Select a date range' }}
         selectionType="range"
         value={date}
@@ -405,7 +405,7 @@ export const MonthPicker: StoryFn<typeof DatePickerComponent> = ({ ...args }) =>
       >
         Note: picker is only supported in single selection mode
       </Text>
-      <DatePickerComponent picker="month" selectionType="single" {...args} />
+      <DatePickerComponent format="MMM" picker="month" selectionType="single" {...args} />
     </Box>
   );
 };
@@ -616,7 +616,7 @@ export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerCompone
         <DatePickerComponent
           labelPosition="left"
           selectionType="range"
-          label={{ start: 'Select a date range' }}
+          label="Select a date range"
           labelSuffix={
             <Tooltip content="Select a date" placement="right">
               <TooltipInteractiveWrapper display="flex">
@@ -636,5 +636,5 @@ WithoutActionButtons.storyName = 'Without Action Buttons';
 WithoutActionButtons.args = {
   label: 'Select a date',
   selectionType: 'single',
-  showActions: false,
+  showFooterActions: false,
 };
