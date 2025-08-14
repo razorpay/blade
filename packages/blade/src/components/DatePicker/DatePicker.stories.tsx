@@ -132,6 +132,7 @@ SingleDatePicker.storyName = 'SingleDatePicker';
 SingleDatePicker.args = {
   label: 'Select a date',
   selectionType: 'single',
+  size: 'large',
 };
 
 export const RangeDatePicker = DatePickerTemplate.bind({});
