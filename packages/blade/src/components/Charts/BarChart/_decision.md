@@ -90,9 +90,14 @@ if more than decided number of max bars, we will show an error message.
 | `activeBar` | `React.ReactElement \| boolean` | ❌ | `false` | Custom component or boolean to enable active state styling when bar is hovered |
 | `label` | `React.ReactElement \| boolean` | ❌ | `false` | Custom component or boolean to display labels on bars |
 
+* Apart from this we would be exposing all the event handlers provided by recharts like `onCopy`, `onCopyCapture`, `onCut`, `onDrag` , `onMouseUp` , `onMouseDown` etc. 
+
+
+
 #### Additional Notes
 
-> **Component Interfaces:** Other components like XAxis, YAxis, Tooltip, etc., will use the underlying Recharts prop types as we are primarily applying styles and not changing their core functionality. We will enforce Blade's theme for properties like stroke, fill, etc.
+
+> **Component Re-exports:** Components like ResponsiveContainer, Legend, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid , XAxis, YAxis we won't allow styling (i.e we won't be exposing props like stroke , strokeWidth , strokeDasharray, tick, tickLine and axisLine).
 
 > **BarChart Margin:** The `margin` prop from BarChart will not be exposed to developers. We will use predefined values that align with our design system.
 

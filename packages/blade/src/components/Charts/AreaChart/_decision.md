@@ -77,6 +77,9 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 | `connectNulls` | `boolean` | ❌ | `false` | Whether to connect the area over null data points |
 | `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the area fill (automatically assigned from palette if not provided) |
 
+* Apart from this we would be exposing all the event handlers provided by recharts like `onCopy`, `onCopyCapture`, `onCut`, `onDrag` , `onMouseUp` , `onMouseDown` etc. 
+
+
 
 
 
@@ -89,6 +92,9 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 | `color` | `BladeColorToken` | ❌ | - | Color token for the reference line |
 
 #### Additional Notes
+
+
+> **Component Re-exports:** Components like ResponsiveContainer, Legend, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid , XAxis, YAxis, you won't be able to change individual colors as they follow blade's predefined styling. (i.e we won't be exposing props like stroke , strokeWidth , strokeDasharray, tick, tickLine and axisLine).
 
 > **AreaChart Margin:** The `margin` prop from AreaChart will not be exposed to developers. We will use predefined values that align with our design system.
 

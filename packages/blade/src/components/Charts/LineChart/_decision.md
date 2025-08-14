@@ -92,6 +92,8 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 | `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the line (automatically assigned from palette if not provided) |
 | `strokeStyle` | `'solid' \| 'dotted' \| 'dashed'` | ❌ | `'solid'` | Line stroke style for forecast or emphasis |
 
+* Apart from this we would be exposing all the event handlers provided by recharts like `onCopy`, `onCopyCapture`, `onCut`, `onDrag` , `onMouseUp` , `onMouseDown` etc. 
+
 #### ReferenceLine Props
 
 | Prop | Type | Required | Default | Description |
@@ -100,9 +102,13 @@ This approach involves re-exporting styled versions of the underlying `recharts`
 | `y` | `number` | ✅ | `undefined` | Y-axis value where the reference line should be drawn |
 | `color` | `BladeColorToken` | ❌ | none | Color token for the reference line |
 
+
+
+
 #### Additional Notes
 
-> **Component Re-exports:** Components like ResponsiveContainer, Legend, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid, XAxis, YAxis, you won't be able to change individual colors as they follow the design system's predefined styling.
+
+> **Component Re-exports:** Components like ResponsiveContainer, Legend, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid , XAxis, YAxis we won't allow styling (i.e we won't be exposing props like stroke , strokeWidth , strokeDasharray, tick, tickLine and axisLine).
 
 > **LineChart Margin:** The `margin` prop from LineChart will not be exposed to developers. We will use predefined values that align with our design system. 
 
