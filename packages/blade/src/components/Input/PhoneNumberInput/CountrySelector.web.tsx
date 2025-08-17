@@ -113,7 +113,7 @@ const CountrySelector = ({
         </DropdownButton>
       </CountryDropdownButtonWrapper>
       {isMobile ? (
-        <BottomSheet>
+        <BottomSheet snapPoints={[0.5, 0.8, 1]}>
           <BottomSheetHeader title="Select A Country" />
           <BottomSheetBody>{actionList}</BottomSheetBody>
         </BottomSheet>
