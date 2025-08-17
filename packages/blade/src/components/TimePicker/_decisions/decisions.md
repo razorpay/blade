@@ -17,7 +17,7 @@ The TimePicker consists of:
 - **Input Field**: Text input displaying the current time value
 - **Dropdown Trigger**: Click/focus area to open time selection
 - **Time Columns**: Hours, Minutes, and Period (AM/PM) selection areas
-- **Action Buttons**: Apply/Cancel buttons (when `showActions={true}`)
+- **Action Buttons**: Apply/Cancel buttons (when `showFooterActions={true}`)
 
 ## API
 
@@ -124,11 +124,11 @@ type TimePickerProps = InputProps & {
    * @default true
    *
    * When false:
-   * - Clicking on any time value will automatically apply and close
+   * - On blur selected time will get automatically apply and close the dropdown
    * - Pressing Enter immediately applies the current selection and closes
    * - More streamlined interaction experience
    */
-  showActions?: boolean;
+  showFooterActions?: boolean;
 
   /**
    * Test ID for testing purposes
@@ -382,8 +382,6 @@ When the input field is focused:
 - **Arrow Up/Down**: Increment/decrement time values like a digital input
   - Hours: Arrow up increases hour by 1, arrow down decreases by 1
   - Minutes: When cursor is on minutes, arrows change minute values
-  - Automatic time format handling (12h/24h)
-  - Respect `minuteStep` prop for minute increments
 
 ### Dropdown Focus
 
@@ -400,7 +398,7 @@ When the dropdown is open and focused:
 
 ### Example Keyboard Flow
 
-**With Actions (showActions={true} - default):**
+**With Actions (showFooterActions={true} - default):**
 
 ```
 1. Focus input → Arrow keys change time values directly
@@ -420,7 +418,7 @@ When the dropdown is open and focused:
 3. Arrow Left/Right → Switch between Hour/Minute/Period columns
 4. Arrow Up/Down → Navigate within active column
 5. Enter → Immediately apply current selection and close dropdown
-6. Click any value → Immediately apply and close dropdown
+6. On Blur → Immediately apply and close dropdown
 7. Escape → Cancel and close dropdown
 ```
 
