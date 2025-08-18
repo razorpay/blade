@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.48.0
+
+### Minor Changes
+
+- bf6f929e6: feat(datepicker): add formatted input, preset dropdown, single-field range selection
+
 ## 12.47.1
 
 ### Patch Changes
