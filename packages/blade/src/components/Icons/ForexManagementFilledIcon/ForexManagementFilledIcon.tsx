@@ -3,21 +3,11 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _ForexManagementFilledIcon: IconComponent = ({
-  size,
-  color,
-  ...styledProps
-}) => {
+const _ForexManagementFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      {...styledProps}
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M22 15C22.5523 15 23 15.4477 23 16C23 20.4223 19.4223 24 15 24C14.6399 24 14.3074 23.8064 14.1299 23.4932C13.9524 23.1797 13.9572 22.7943 14.1426 22.4854L15.1924 20.7354C15.4765 20.2618 16.0909 20.1084 16.5645 20.3926C17.0087 20.6591 17.1711 21.2159 16.9551 21.6748C19.3106 20.8653 21 18.6329 21 16C21 15.4477 21.4477 15 22 15Z"
         fill={iconColor}
@@ -44,11 +34,8 @@ const _ForexManagementFilledIcon: IconComponent = ({
   );
 };
 
-const ForexManagementFilledIcon = assignWithoutSideEffects(
-  _ForexManagementFilledIcon,
-  {
-    componentId: 'ForexManagementFilledIcon',
-  }
-);
+const ForexManagementFilledIcon = assignWithoutSideEffects(_ForexManagementFilledIcon, {
+  componentId: 'ForexManagementFilledIcon',
+});
 
 export default ForexManagementFilledIcon;
