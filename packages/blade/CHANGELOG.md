@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.49.0
+
+### Minor Changes
+
+- d21bd1c9a: feat: add filled icons
+
 ## 12.48.0
 
 ### Minor Changes
