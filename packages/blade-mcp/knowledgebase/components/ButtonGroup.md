@@ -6,6 +6,10 @@ ButtonGroup
 
 The ButtonGroup component is used to group related buttons together, creating a cohesive set of actions with consistent styling and spacing. It's ideal for toolbars, segmented controls, or action areas where multiple related options are presented. ButtonGroup automatically handles proper spacing and visual connection between buttons to create a unified control.
 
+## Important Constraints
+
+- `ButtonGroup` component only accepts `Button`, `Dropdown`, `Tooltip`, and `Popover` components as children
+
 ## TypeScript Types
 
 The following types represent the props that the ButtonGroup component accepts. These allow you to properly configure the component according to your needs.

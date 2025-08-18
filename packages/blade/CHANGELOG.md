@@ -1,5 +1,41 @@
 # @razorpay/blade
 
+## 12.49.1
+
+### Patch Changes
+
+- 828d6d4f3: revert: virtualization in phone number input
+
+## 12.49.0
+
+### Minor Changes
+
+- d21bd1c9a: feat: add filled icons
+
+## 12.48.0
+
+### Minor Changes
+
+- bf6f929e6: feat(datepicker): add formatted input, preset dropdown, single-field range selection
+
+## 12.47.1
+
+### Patch Changes
+
+- 3c8584905: fix : update bottom sheet height logic
+
+## 12.47.0
+
+### Minor Changes
+
+- 029964227: feat(blade): add new navigation button position overlap
+
+## 12.46.2
+
+### Patch Changes
+
+- b746d9db8: fix(ListView): enable horizontal scroll for filters on desktop, remove gradient overlay
+
 ## 12.46.1
 
 ### Patch Changes

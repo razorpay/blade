@@ -6,6 +6,13 @@ Avatar and AvatarGroup
 
 Avatar is a standardized visual representation of a user or entity, displayed as a profile picture, icon, or initials. It facilitates user recognition and streamlines interface navigation in applications. AvatarGroup allows you to display multiple avatars together in a compact, overlapping layout, useful for team members or participants.
 
+## Important Constraints
+
+- `src` prop requires either `alt` or `name` prop to be provided
+- `topAddon` prop only accepts `Indicator` component
+- `bottomAddon` prop only accepts `IconComponent`
+- `AvatarGroup` component only accepts `Avatar` components as children
+
 ## TypeScript Types
 
 The following types represent the props that the Avatar and AvatarGroup components accept. These types allow you to properly configure the components according to your needs.
