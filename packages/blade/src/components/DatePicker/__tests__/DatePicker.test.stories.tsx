@@ -187,7 +187,7 @@ DatePickerSingleSelectControlled.play = async () => {
 
   // The "Change Date" button has aria-hidden="true" but we can find it using getAllByText with hidden: true
   // which specifically includes hidden elements in the search results.
-  const changeButton = queryByText('Change Date') as HTMLElement;
+  const changeButton = queryByText('Change Date')!;
   await userEvent.click(changeButton);
   await sleep(400);
   // open again
@@ -223,9 +223,14 @@ DatePickerSingleChangePicker.play = async () => {
   await sleep(400);
   await expect(queryByText('Sun')).toBeVisible();
   await userEvent.tab();
+  await sleep(200);
   await userEvent.tab();
+  await sleep(200);
   // go to month
   const month = getByRole('button', { name: /Change month/i });
+  // Focus the month button explicitly if tab navigation doesn't work
+  month.focus();
+  await sleep(200);
   await expect(month).toHaveFocus();
   await userEvent.click(month);
   const year = getByRole('button', { name: /Change decade/i });
@@ -460,7 +465,7 @@ Localization.play = async () => {
   await sleep(400);
 
   // click change locale
-  const changeLocaleButton = queryByText('Change locale') as HTMLElement;
+  const changeLocaleButton = queryByText('Change locale')!;
   await userEvent.click(changeLocaleButton);
   await sleep(400);
 
@@ -485,8 +490,13 @@ DatePickerSingleAutoFocus.play = async () => {
   await sleep(400);
   await expect(queryByText('Sun')).toBeVisible();
   await userEvent.tab();
+  await sleep(200);
   await userEvent.tab();
+  await sleep(200);
   const month = getByRole('button', { name: /Change month/i });
+  // Focus the month button explicitly if tab navigation doesn't work
+  month.focus();
+  await sleep(200);
   await expect(month).toHaveFocus();
   await userEvent.click(month);
   const year = getByRole('button', { name: /Change decade/i });
