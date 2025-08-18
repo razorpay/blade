@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.49.1
+
+### Patch Changes
+
+- 828d6d4f3: revert: virtualization in phone number input
+
 ## 12.49.0
 
 ### Minor Changes
