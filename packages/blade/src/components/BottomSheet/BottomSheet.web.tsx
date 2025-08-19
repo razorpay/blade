@@ -305,15 +305,7 @@ const _BottomSheet = ({
         // this is cruicial in making the scroll feel natural
         const isContentScrolledAtTop = scrollRef.current && scrollRef.current.scrollTop <= 0;
 
-        // For virtualized elements, we keep sheet at upper snap point when at full height
-        // For normal content, we check if content is scrolled to top
-        if (hasVirtualizedElement) {
-          // For virtualized lists, always keep at upper snap point when dragging content
-          if (lastOffsetY >= upperSnapPoint) {
-            newY = upperSnapPoint;
-          }
-        } else if (lastOffsetY === upperSnapPoint && !isContentScrolledAtTop) {
-          // For normal content, check scroll position
+        if (lastOffsetY === upperSnapPoint && !isContentScrolledAtTop) {
           newY = upperSnapPoint;
         }
         preventScrollingRef.current = newY < upperSnapPoint;
@@ -375,11 +367,10 @@ const _BottomSheet = ({
           target.closest(`[data-blade-component="${MetaConstants.VirtualizedActionListBox}"]`) !==
           null;
 
-        if (isVirtualizedElementEvent) {
-          // Don't preventDefault - let virtualized element scroll
-        } else {
+        if (!isVirtualizedElementEvent) {
           e.preventDefault(); // Block everything else
         }
+        // Don't preventDefault - let virtualized element scroll
       }
     };
 
@@ -407,7 +398,7 @@ const _BottomSheet = ({
     // Only run this hook when we know all the layout calculations are done,
     // Otherwise the scrollRef.current will be null.
     // isReady prop will ensure that we are done measuring the content height
-  }, [isReady, positionY, hasVirtualizedElement, dimensions.height, snapPoints]);
+  }, [isReady, hasVirtualizedElement]);
 
   // usePresence hook waits for the animation to finish before unmounting the component
   // It's similar to motion/react's usePresence hook
