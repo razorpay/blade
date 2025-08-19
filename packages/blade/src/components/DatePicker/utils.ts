@@ -220,17 +220,17 @@ const rangeFormattedValue = (startValue: string, endValue: string) => {
     if (startValue === endValue) {
       return startValue; // Same date, show single value
     }
-    return `${startValue} - ${endValue}`; // Different dates, show range
+    return `${startValue}  –  ${endValue}`; // Different dates, show range
   }
 
   // Only start value exists
   if (startValue) {
-    return `${startValue} - `;
+    return `${startValue}  –  `;
   }
 
   // Only end value exists
   if (endValue) {
-    return ` - ${endValue}`;
+    return `  –  ${endValue}`;
   }
 
   // No values
@@ -239,9 +239,9 @@ const rangeFormattedValue = (startValue: string, endValue: string) => {
 
 const rangeInputPlaceHolder = (placeholder: string | undefined, format: string) => {
   if (placeholder) {
-    return `${placeholder} - ${placeholder}`;
+    return `${placeholder}  –  ${placeholder}`;
   }
-  return `${format} - ${format}`;
+  return `${format}  –  ${format}`;
 };
 
 const finalInputFormat = (startValue: string, endValue: string, format: string | undefined) => {
@@ -249,7 +249,7 @@ const finalInputFormat = (startValue: string, endValue: string, format: string |
   if (startValue === endValue && (startValue || endValue)) {
     return format;
   }
-  return `${format} - ${format}`;
+  return `${format}  –  ${format}`;
 };
 
 /**
@@ -257,13 +257,13 @@ const finalInputFormat = (startValue: string, endValue: string, format: string |
  * TextInput format only recognizes # as input placeholder, so we replace
  * date characters (Y,M,D) with # while preserving delimiters.
  *
- * @example "DD/MM/YYYY" - "##/##/####"
- * @example "MMMM" - "################" (longest month: "September")
- * @example "MMM" - "###"
+ * @example "DD/MM/YYYY" – "##/##/####"
+ * @example "MMMM" – "################" (longest month: "September")
+ * @example "MMM" – "###"
  */
 const getTextInputFormat = (formatStr?: string, isRangeInput?: boolean): string => {
   if (!formatStr) {
-    return isRangeInput ? '##/##/#### - ##/##/####' : '##/##/####';
+    return isRangeInput ? '##/##/####  –  ##/##/####' : '##/##/####';
   } else if (formatStr === 'MMMM') {
     return formatStr.replace(/MMMM/g, '#########');
   }
@@ -426,7 +426,7 @@ const parseSpecialSingleFormat = (
  *
  * @example
  * // Valid range input
- * validateAndParseDateInput("25/12/2024 - 31/12/2024", true, "DD/MM/YYYY")
+ * validateAndParseDateInput("25/12/2024  –  31/12/2024", true, "DD/MM/YYYY")
  * // → { shouldBlock: false, parsedValue: [Date(2024, 11, 25), Date(2024, 11, 31)] }
  *
  * @example
@@ -479,8 +479,8 @@ const validateAndParseDateInput = (
   }
 
   if (isRange) {
-    // Split range input on hyphen separator (e.g., "25/12/2024 - 31/12/2024")
-    const parts = inputValue.split(/\s*-\s*/);
+    // Split range input on en dash separator (e.g., "25/12/2024  –  31/12/2024")
+    const parts = inputValue.split(/\s*–\s*/);
 
     // Block incomplete input to prevent premature validation (e.g., "25/12/202" is being typed)
     if (
