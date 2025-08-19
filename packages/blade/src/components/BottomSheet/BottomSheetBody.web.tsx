@@ -52,6 +52,8 @@ const _BottomSheetBody = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [padding]);
 
+  console.log('demo');
+
   return (
     <BaseBox
       {...metaAttribute({
