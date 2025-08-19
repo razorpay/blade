@@ -6,6 +6,10 @@ BottomNav
 
 BottomNav is a persistent navigation component designed for mobile interfaces, positioned at the bottom of the screen. It provides quick access to core functionalities through icons and labels, allowing users to navigate between primary destinations in an application. The component is optimized for touch interaction and follows mobile UI design patterns with clear visual indicators for active states.
 
+## Important Constraints
+
+- `BottomNav` component must have between 2 and 5 children
+
 ## TypeScript Types
 
 The following types represent the props that the BottomNav component and its subcomponents accept. These types allow you to properly configure the navigation according to your app's structure.

@@ -25,7 +25,7 @@ const CalendarFooter = ({
         marginLeft="auto"
         display="flex"
         flexDirection="row"
-        gap="spacing.4"
+        gap={isMobile ? 'spacing.5' : 'spacing.3'}
       >
         <Button
           isFullWidth={isMobile}

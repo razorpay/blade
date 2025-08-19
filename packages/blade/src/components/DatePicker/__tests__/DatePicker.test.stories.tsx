@@ -273,7 +273,7 @@ export const DatePickerRangeSelect: StoryFn<
   return (
     <DatePickerComponent
       selectionType="range"
-      label={{ start: 'Start Date', end: 'End Date' }}
+      label={{ start: 'Select a date range' }}
       onOpenChange={onOpenChange}
     />
   );
@@ -322,7 +322,7 @@ export const DatePickerRangeSelectControlled: StoryFn<
         setValue(date);
       }}
       selectionType="range"
-      label={{ start: 'Start Date', end: 'End Date' }}
+      label={{ start: 'Select a date range' }}
     />
   );
 };
@@ -362,7 +362,7 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = (): React.
   return (
     <DatePickerComponent
       selectionType="range"
-      label={{ start: 'Start Date', end: 'End Date' }}
+      label="Select a date range"
       presets={[
         {
           label: 'Past 3 days',
@@ -509,9 +509,7 @@ DatePickerSingleAutoFocus.play = async () => {
 export const DatePickerRangeSelectAutoFocus: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  return (
-    <DatePickerComponent selectionType="range" label={{ start: 'Start Date', end: 'End Date' }} />
-  );
+  return <DatePickerComponent selectionType="range" label="Select a date range" />;
 };
 
 DatePickerRangeSelectAutoFocus.play = async () => {

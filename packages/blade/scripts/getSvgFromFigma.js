@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const FILE_ID = 'jubmQL9Z8V7881ayUD95ps';
-const NODE_ID = '103317-3667';
+const NODE_ID = '110782-28621';
 
 async function updateIconsJson(componentNames, svgData) {
   const iconsFilePath = path.join(__dirname, 'icons.json');
