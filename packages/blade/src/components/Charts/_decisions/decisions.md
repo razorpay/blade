@@ -35,6 +35,18 @@
    ![](./images/bar-chart-design.png)
 
 
+ ### 1.d - Donut Chart 
+
+   
+   [Design Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188718&p=f&m=dev) 
+
+   
+
+   ![](./images/donut-design.png)
+
+   
+
+
 
 -----
 
@@ -80,6 +92,9 @@
 #### 2.1.f  **[Stepped Line Chart](https://ui.shadcn.com/charts/line#charts)** The chart should support different interpolation types, like 'step'. This can be controlled via a `lineType` prop, which maps to the Recharts `type` prop on the `<Line />` component. We will likely support a limited number of line types initially.
 
 ![](./images/step-line-chart.png)
+
+
+
 
 
 
@@ -143,6 +158,23 @@ all areas part of a single stack.
 #### 2.5.f [CustomLabelBarChart](https://ui.shadcn.com/charts/bar#charts)  
    We need to use labelList. But we need to style it.
 
+
+
+### 2.4 - Pie Chart
+
+> **Note:** In design doc you can see we have Pie chart, but during initial discussion with design we have decided to have Donut variant of pie chart only. (Pie Chart will be supported in future)
+
+
+* [CustomActiveShapeDonutChart](https://recharts.org/en-US/examples/CustomActiveShapePieChart)  
+     ![](./images/customActiveShape-donut-chart.png)
+
+  We will provide custom active shapes for donut charts  
+
+* [DonutWithText](https://ui.shadcn.com/charts/pie#charts)
+
+    ![](./images/donutWithText-donut-chart.png)  
+
+      Need to display Text in the center of the donut chart. We should have a standard style of this. 
 
 
 
@@ -470,6 +502,131 @@ import {
 
 
 > **Animation :**  We will handle Animations like Entry , Exit or Hover internally in line , area , bar and donut charts  (if any).
+
+
+
+
+#### Donut Props
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `dataKey` | `string` | ✅ | - | The key used to identify the data value for each slice |
+| `nameKey` | `string` | ✅ | - | The key used to identify the name/label for each slice |
+| `data` | `{ [key: string]: string \| number }[]` | ✅ | - | Array of data objects containing the pie chart data |
+| `cx` | `string \| number` | ✅ | - | The x-coordinate of the center of the pie chart |
+| `cy` | `string \| number` | ✅ | - | The y-coordinate of the center of the pie chart |
+| `radius` | `'small' \| 'medium' \| 'large' \| 'extraLarge' \| 'none'` | ❌ | `'medium'` | Controls the inner and outer radius values internally to create donut charts |
+| `activeShape` | `React.ReactElement \| ((props: any) => React.ReactNode)` | ❌ | - | Custom component or render function for the active (hovered) pie slice |
+| `centerText` | `string` | ❌ | - | Text to display in the center of the donut chart |
+| `type` | `donut \| pie` | ❌ | `donut` | ❌ | - | Type of chart to render. (Pie Chart will be supported in future)|
+
+
+```ts
+import { PieChart } from '@razorpay/blade/charts';
+
+const chartData = [
+  { category: 'Electronics', amount: 45000 },
+  { category: 'Apparel', amount: 28000 },
+  { category: 'Groceries', amount: 32000 },
+];
+
+const seriesConfig = [
+  {
+    dataKey: 'amount',
+    nameKey: 'category',
+    innerRadius: '60%',
+    outerRadius: '80%',
+  },
+];
+
+<PieChart
+  data={chartData}
+  seriesConfig={seriesConfig}
+  showLegend={true}
+  showTooltip={true}
+  chartType="donut" // 'pie' | 'donut' (in future if we want to support donut chart)
+  centerText="₹1.05L" // Text to display in the center of a donut
+  customToolTip={<CustomTooltip />}
+/>
+```
+
+#### TypeScript Interface
+
+```ts
+interface ChartData {
+  [key: string]: any;
+}
+
+interface SeriesDefinition {
+  dataKey: string;
+  nameKey: string;
+  innerRadius?: string | number;
+  outerRadius?: string | number;
+  // Colors could be defined here or assigned automatically
+  colors?: string[];
+}
+
+interface CustomPieChartProps {
+  data: ChartData[];
+  seriesConfig: SeriesDefinition[];
+  showTooltip?: boolean;
+  showLegend?: boolean;
+  chartType?: 'pie' | 'donut';
+  centerText?: string;
+  customToolTip?: React.ReactNode;
+}
+```
+
+
+
+Example - 
+
+```ts
+import {
+  ChartContainer,
+  PieChart as RechartsPieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from '@razorpay/blade/charts';
+
+
+
+// 1. Donut Chart
+<ResponsiveContainer width="100%" height="100%">
+  <PieChart>
+    <Pie
+      data={data}
+      dataKey="value"
+      nameKey="name"
+      cx="50%"
+      cy="50%"
+      radius="small"
+    >
+       {/* ... <Cell /> components ... */}
+    </Pie>
+  </PieChart>
+</ResponsiveContainer>
+
+// 2. Donut with Text in Center
+// This pattern can be achieved by adding a custom <text> element.
+<ResponsiveContainer width="100%" height={300}>
+  <PieChart>
+    <Pie
+      data={data}
+      dataKey="value"
+      radius="large"
+      centerText="₹1.05L"
+    >
+       {/* ... <Cell /> components ... */}
+    </Pie>
+  </PieChart>
+</ResponsiveContainer>
+```
+>**Note** - You might think why we have named  it pie chart if it's donut chart ?
+So we have decided to have Donut variant of pie chart only. (Pie Chart will be supported in future). We just want to keep this api future proof. In When we enable it you can use it as pie chart.
 
 
 
@@ -823,6 +980,67 @@ interface CustomBarChartProps {
 }
 ```
 
+#### For Donut Chart - 
+
+
+```ts
+import { PieChart } from '@razorpay/blade/charts';
+
+const chartData = [
+  { category: 'Electronics', amount: 45000 },
+  { category: 'Apparel', amount: 28000 },
+  { category: 'Groceries', amount: 32000 },
+];
+
+const seriesConfig = [
+  {
+    dataKey: 'amount',
+    nameKey: 'category',
+    innerRadius: '60%',
+    outerRadius: '80%',
+  },
+];
+
+<PieChart
+  data={chartData}
+  seriesConfig={seriesConfig}
+  showLegend={true}
+  showTooltip={true}
+  chartType="donut" // 'pie' | 'donut' (in future if we want to support donut chart)
+  centerText="₹1.05L" // Text to display in the center of a donut
+  customToolTip={<CustomTooltip />}
+/>
+```
+
+#### TypeScript Interface
+
+```ts
+interface ChartData {
+  [key: string]: any;
+}
+
+interface SeriesDefinition {
+  dataKey: string;
+  nameKey: string;
+  innerRadius?: string | number;
+  outerRadius?: string | number;
+  // Colors could be defined here or assigned automatically
+  colors?: string[];
+}
+
+interface CustomPieChartProps {
+  data: ChartData[];
+  seriesConfig: SeriesDefinition[];
+  showTooltip?: boolean;
+  showLegend?: boolean;
+  chartType?: 'pie' | 'donut';
+  centerText?: string;
+  customToolTip?: React.ReactNode;
+}
+```
+
+
+
 
 
   * **Pros**
@@ -949,12 +1167,40 @@ const chartConfig = {
 <BarChart config={chartConfig}/>
 ```
 
+
+#### For Donut Chart -  
+
+
+```ts
+const chartConfig = {
+  data: chartData,
+  series: [
+    {
+      dataKey: 'amount',
+      nameKey: 'category',
+      type: 'donut', // 'pie' or 'donut'
+      innerRadius: '60%',
+      outerRadius: '80%',
+    },
+  ],
+  options: {
+    showTooltip: true,
+    showLegend: true,
+    centerText: 'Total: ₹1.05L'
+  },
+};
+
+<PieChart config={chartConfig} />;
+```
+
+
+
   * **Pros**
       * Provides a single source of truth for chart configuration.
       * Easy to serialize/deserialize for storage or dynamic generation.
       * Keeps the JSX clean with minimal props.
   * **Cons**
-      * Less discoverable API; developers need to inspect the config object to know what options are available.
+      * Less discoverable API. Developers need to inspect the config object to know what options are available.
       * Nested objects can become complex and hard to manage.
       * Passing custom React components (like a tooltip) is more difficult.
       * TypeScript autocompletion is less effective within a deeply nested object.
@@ -976,5 +1222,8 @@ We might need to make custom tooltip. Like ChartsToolTip. Since the tooltip woul
 - BladeChartDots  - Awaiting Designs on this. 
 
 -  **Label Customization in case of Bar Chart:** How much control should users have over the `LabelList` component? Should we provide pre-styled variants (e.g., `position="top"`, `position="center"`) or allow developers to pass in their own custom label components? (We might not be doing Label in v1 -  Awaiting Designs on this).
+
+-  **Donut Charts:** 
+The design for the default "active" (hovered) donut slice and the standard customized label needs to be finalized. 
 
 
