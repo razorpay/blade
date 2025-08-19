@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.49.2
+
+### Patch Changes
+
+- 9fd0523f9: fix(datepicker): changed arrow to hyphen in range input field
+
 ## 12.49.1
 
 ### Patch Changes
