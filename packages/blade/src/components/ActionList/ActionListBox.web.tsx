@@ -25,6 +25,7 @@ import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds'
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 import type { ActionListItemProps } from '~components/ActionList';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -248,6 +249,8 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       virtualizedListRef?.current?.scrollToItem(0);
     }, [itemCount]);
 
+    console.log('actionListBoxHeight', actionListBoxHeight);
+
     return (
       <StyledListBoxWrapper
         isInBottomSheet={isInBottomSheet}
@@ -258,10 +261,11 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
           multiSelectable: actionListItemWrapperRole === 'listbox' ? isMultiSelectable : undefined,
         })}
         {...makeAnalyticsAttribute(rest)}
+        {...metaAttribute({ name: MetaConstants.VirtualizedActionListBox })}
       >
         <VirtualizedList<React.ReactNode[]>
           ref={virtualizedListRef}
-          height={actionListBoxHeight}
+          height={900}
           width="100%"
           itemSize={(index) => getItemHeight({ index, itemData, actionListItemHeight })}
           itemCount={itemCount}
