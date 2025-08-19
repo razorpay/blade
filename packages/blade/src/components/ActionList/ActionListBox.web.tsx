@@ -249,6 +249,11 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       virtualizedListRef?.current?.scrollToItem(0);
     }, [itemCount]);
 
+    const paddingY = getActionListPadding(theme);
+    const VirtualizedListHeight = isInBottomSheet
+      ? maxAvailableBodyHeight - paddingY * 2
+      : actionListBoxHeight;
+
     return (
       <StyledListBoxWrapper
         isInBottomSheet={isInBottomSheet}
@@ -263,7 +268,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       >
         <VirtualizedList<React.ReactNode[]>
           ref={virtualizedListRef}
-          height={isInBottomSheet ? maxAvailableBodyHeight : actionListBoxHeight}
+          height={VirtualizedListHeight}
           width="100%"
           itemSize={(index) => getItemHeight({ index, itemData, actionListItemHeight })}
           itemCount={itemCount}
