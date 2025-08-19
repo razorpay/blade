@@ -18,24 +18,24 @@
 -----
 
 ## 1\. Design Breakdown
- ### 1.a - Line Chart
+ ### 1.a\. - Line Chart
   * **[Figma Design Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188716&p=f&m=dev)**
   ![](./images/line-chart-design.png)
 
- ### 1.b - Area Chart
+ ### 1.b\. - Area Chart
 
   * **[Figma Design Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188716&p=f&m=dev)**
 
 ![](./images/area-design.png)
 
- ### 1.c - Bar Chart 
+ ### 1.c\. - Bar Chart 
 
    [Design Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188719&p=f&m=dev) 
 
    ![](./images/bar-chart-design.png)
 
 
- ### 1.d - Donut Chart 
+ ### 1.d\. - Donut Chart 
 
    
    [Design Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188718&p=f&m=dev) 
@@ -58,13 +58,13 @@
 
 ### 2.1 - Line Chart
 
-#### 2.1.a **[Basic Line Chart](https://recharts.org/en-US/examples/SimpleLineChart)** A standard line chart with a grid, X-axis, Y-axis, Tooltip, Legend, and line.
+#### 2.1.a - **[Basic Line Chart](https://recharts.org/en-US/examples/SimpleLineChart)** A standard line chart with a grid, X-axis, Y-axis, Tooltip, Legend, and line.
 
 ![](./images/basic-line-chart.png)
 
 
 
-#### 2.1.b  **[Tiny Line Chart](https://recharts.org/en-US/examples/TinyLineChart)** A minimal line chart with only the line, with no grid or axes.
+#### 2.1.b - **[Tiny Line Chart](https://recharts.org/en-US/examples/TinyLineChart)** A minimal line chart with only the line, with no grid or axes.
 
 ![](./images/tiny-line-chart.png)
 
@@ -77,19 +77,19 @@
 
 
 
-#### 2.1.d  **[Custom Dot Charts](https://recharts.org/en-US/examples/CustomizedDotLineChart)** We will support a limited set of options for customizing the dots on the line chart. Recharts allows passing a `Dot` component as a prop.
+#### 2.1.d - **[Custom Dot Charts](https://recharts.org/en-US/examples/CustomizedDotLineChart)** We will support a limited set of options for customizing the dots on the line chart. Recharts allows passing a `Dot` component as a prop.
 
 ![](./images/dot-line-chart.png)
 
 
 
-#### 2.1.e  **Forecast Line Chart** This requires showing a portion of the line as a dotted or dashed line to represent forecasted data. This can be implemented by rendering two separate lines and hiding the forecast line from the legend. The API design needs to consider how to accept forecast data.
+#### 2.1.e - **Forecast Line Chart** This requires showing a portion of the line as a dotted or dashed line to represent forecasted data. This can be implemented by rendering two separate lines and hiding the forecast line from the legend. The API design needs to consider how to accept forecast data.
 
 ![](./images/forecast-line-chart.png)
 
 
 
-#### 2.1.f  **[Stepped Line Chart](https://ui.shadcn.com/charts/line#charts)** The chart should support different interpolation types, like 'step'. This can be controlled via a `lineType` prop, which maps to the Recharts `type` prop on the `<Line />` component. We will likely support a limited number of line types initially.
+#### 2.1.f - **[Stepped Line Chart](https://ui.shadcn.com/charts/line#charts)** The chart should support different interpolation types, like 'step'. This can be controlled via a `lineType` prop, which maps to the Recharts `type` prop on the `<Line />` component. We will likely support a limited number of line types initially.
 
 ![](./images/step-line-chart.png)
 
@@ -105,10 +105,10 @@
 ### 2.2 - Area Chart
 
 
-#### 2.2.a  **[Simple Area Chart](https://recharts.org/en-US/examples/SimpleAreaChart)** An area chart with a grid, X-axis, Y-axis, Tooltip, Legend, and the area fill.
+#### 2.2.a - **[Simple Area Chart](https://recharts.org/en-US/examples/SimpleAreaChart)** An area chart with a grid, X-axis, Y-axis, Tooltip, Legend, and the area fill.
 ![](./images/area-chart.png)
 
-#### 2.2.b  **[Stacked Area Chart](https://recharts.org/en-US/examples/StackedAreaChart)** The chart should support stacking multiple areas. This is handled by adding a `stackId` prop to the `Area` component in Recharts. Also if we have more then 2 area, user need to pass stackId. otherwise we will consider 
+#### 2.2.b - **[Stacked Area Chart](https://recharts.org/en-US/examples/StackedAreaChart)** The chart should support stacking multiple areas. This is handled by adding a `stackId` prop to the `Area` component in Recharts. Also if we have more then 2 area, user need to pass stackId. otherwise we will consider 
 all areas part of a single stack.
 
 
@@ -116,13 +116,13 @@ all areas part of a single stack.
 
 
 
-#### 2.2.c  **[Area Chart that Connects Nulls](https://recharts.org/en-US/examples/AreaChartConnectNulls)** Similar to line charts, the chart should be able to handle `null` data points by connecting the area over the gap. This is supported in Recharts via the `connectNulls` prop.
+#### 2.2.c - **[Area Chart that Connects Nulls](https://recharts.org/en-US/examples/AreaChartConnectNulls)** Similar to line charts, the chart should be able to handle `null` data points by connecting the area over the gap. This is supported in Recharts via the `connectNulls` prop.
 
 ![](./images/area-connects-null.png)
 
 
 
-#### 2.2.d  **[Tiny Area Chart](https://recharts.org/en-US/examples/TinyAreaChart)** A minimal area chart with only the filled area, with no grid or axes. Also known as a sparkline.
+#### 2.2.d - **[Tiny Area Chart](https://recharts.org/en-US/examples/TinyAreaChart)** A minimal area chart with only the filled area, with no grid or axes. Also known as a sparkline.
 
 ![](./images/tiny-area-chart.png)
 
@@ -134,28 +134,28 @@ all areas part of a single stack.
 
 
 
-#### 2.3.a [TinyBarChart](https://recharts.org/en-US/examples/TinyBarChart)
+#### 2.3.a - [TinyBarChart](https://recharts.org/en-US/examples/TinyBarChart)
 
    ![](./images/tiny-bar-chart.png)
    Simple bar graph with responsive container and BarChart.  
 
-#### 2.3.b [SimpleBarChart](https://recharts.org/en-US/examples/SimpleBarChart)
+#### 2.3.b - [SimpleBarChart](https://recharts.org/en-US/examples/SimpleBarChart)
 
    ![](./images/normal-bar-chart.png)
    Bar Chart with other chart components. Need to discuss ActiveBar here..  With [Rama Krushna Behera](mailto:rama.behera@razorpay.com) . should users be able to change it or not. 
 
-#### 2.3.c [StackedBarChart](https://recharts.org/en-US/examples/StackedBarChart)  
+#### 2.3.c - [StackedBarChart](https://recharts.org/en-US/examples/StackedBarChart)  
 
    ![](./images/stacked-bar-chart.png)
    It would be simple. Just need to use `stackId`  
          
-#### 2.4.d [Vertical Bar Chart](https://ui.shadcn.com/charts/bar#charts)  
+#### 2.4.d - [Vertical Bar Chart](https://ui.shadcn.com/charts/bar#charts)  
    ![](./images/vertical-bar-chart.png)
    We just need to use layout=”vertical” prop  
-#### 2.5.e [NegativeBarChart](https://ui.shadcn.com/charts/bar#charts)  
+#### 2.5.e - [NegativeBarChart](https://ui.shadcn.com/charts/bar#charts)  
    We just need to pass \-ve values recharts will handle it for us.   
 
-#### 2.5.f [CustomLabelBarChart](https://ui.shadcn.com/charts/bar#charts)  
+#### 2.5.f - [CustomLabelBarChart](https://ui.shadcn.com/charts/bar#charts)  
    We need to use labelList. But we need to style it.
 
 
@@ -182,7 +182,7 @@ all areas part of a single stack.
 ## 3\. API Specifications
 
 
-3.1.0 Composition API (Re-exporting Styled Components) (Recommended 🥇)
+### 3.1.0 - Composition API (Re-exporting Styled Components) (Recommended 🥇)
 
 This approach involves re-exporting styled versions of the underlying `recharts` components, giving developers full compositional control.
 
