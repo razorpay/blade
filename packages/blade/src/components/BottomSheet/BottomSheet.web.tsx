@@ -237,7 +237,6 @@ const _BottomSheet = ({
     }
   }, [_isOpen, handleOnClose, handleOnOpen]);
 
-
   // let the Dropdown component know that it's rendering a bottomsheet
   React.useEffect(() => {
     if (!bottomSheetAndDropdownGlue) return;
@@ -436,6 +435,20 @@ const _BottomSheet = ({
     transitionDuration: theme.motion.duration.moderate,
   });
 
+  // Calculate maximum possible height upfront
+  const maxPossibleSheetHeight = React.useMemo(() => {
+    const maxSnapPoint = Math.max(...snapPoints); // Get highest snap point (e.g., 0.85 or 1.0)
+    return dimensions.height * maxSnapPoint;
+  }, [dimensions.height, snapPoints]);
+
+  // Calculate maximum available body height
+  const maxAvailableBodyHeight = React.useMemo(() => {
+    return Math.max(
+      200, // Minimum height
+      maxPossibleSheetHeight - headerHeight - footerHeight - grabHandleHeight,
+    );
+  }, [maxPossibleSheetHeight, headerHeight, footerHeight, grabHandleHeight]);
+
   const isHeaderFloating = !hasBodyPadding && isHeaderEmpty;
   const contextValue: BottomSheetContextProps = React.useMemo(
     () => ({
@@ -455,6 +468,7 @@ const _BottomSheet = ({
       bind,
       defaultInitialFocusRef,
       isHeaderFloating,
+      maxAvailableBodyHeight,
     }),
     [
       isVisible,
@@ -472,6 +486,7 @@ const _BottomSheet = ({
       bind,
       defaultInitialFocusRef,
       isHeaderFloating,
+      maxAvailableBodyHeight,
     ],
   );
 

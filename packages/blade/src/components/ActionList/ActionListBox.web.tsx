@@ -234,12 +234,12 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
     const [visibleStartIndex, setVisibleStartIndex] = React.useState(0);
     const [visibleStopIndex, setVisibleStopIndex] = React.useState(0);
     const items = React.Children.toArray(childrenWithId); // Convert children to an array
-    const { isInBottomSheet } = useBottomSheetContext();
+    const { isInBottomSheet, maxAvailableBodyHeight } = useBottomSheetContext();
     const { itemData, itemCount } = useFilteredItems(items);
 
     const isMobile = useIsMobile();
     const { theme } = useTheme();
-    const { actionListItemHeight, actionListBoxHeight } = React.useMemo(
+    const { actionListItemHeight } = React.useMemo(
       () => getVirtualItemParams({ theme, isMobile, itemCount, itemData }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [theme.name, isMobile, itemCount, itemData],
@@ -248,8 +248,6 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       virtualizedListRef?.current?.resetAfterIndex(0);
       virtualizedListRef?.current?.scrollToItem(0);
     }, [itemCount]);
-
-    console.log('actionListBoxHeight', actionListBoxHeight);
 
     return (
       <StyledListBoxWrapper
@@ -265,7 +263,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       >
         <VirtualizedList<React.ReactNode[]>
           ref={virtualizedListRef}
-          height={900}
+          height={maxAvailableBodyHeight}
           width="100%"
           itemSize={(index) => getItemHeight({ index, itemData, actionListItemHeight })}
           itemCount={itemCount}
