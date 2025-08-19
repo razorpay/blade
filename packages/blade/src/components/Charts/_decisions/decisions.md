@@ -518,7 +518,7 @@ import {
 | `radius` | `'small' \| 'medium' \| 'large' \| 'extraLarge' \| 'none'` | ❌ | `'medium'` | Controls the inner and outer radius values internally to create donut charts |
 | `activeShape` | `React.ReactElement \| ((props: any) => React.ReactNode)` | ❌ | - | Custom component or render function for the active (hovered) pie slice |
 | `centerText` | `string` | ❌ | - | Text to display in the center of the donut chart |
-| `type` | `donut \| pie` | ❌ | `donut` | ❌ | - | Type of chart to render. (Pie Chart will be supported in future)|
+| `type` | `donut \| pie` | ❌ | `donut` | Type of chart to render. (Pie Chart will be supported in future)|
 
 
 ```ts
