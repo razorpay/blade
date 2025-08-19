@@ -500,5 +500,20 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
+  test('Bottom Sheet Body should render element with proper height', () => {
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetHeader />
+          <BottomSheetBody>
+            <Button>BottomSheet </Button>
+          </BottomSheetBody>
+        </BottomSheet>
+      );
+    };
+    const { baseElement } = renderWithTheme(<Example />);
+    expect(baseElement).toMatchSnapshot();
+  });
+
   viewport.cleanup();
 });
