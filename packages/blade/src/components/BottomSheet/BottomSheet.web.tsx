@@ -256,7 +256,6 @@ const _BottomSheet = ({
       dragging,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
-      console.log('lastOffsetY', lastOffsetY);
       setIsDragging(Boolean(dragging));
       // lastOffsetY is the previous position user stopped dragging the sheet
       // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
@@ -265,12 +264,6 @@ const _BottomSheet = ({
 
       const lowerSnapPoint = dimensions.height * snapPoints[0];
       const upperSnapPoint = dimensions.height * snapPoints[snapPoints.length - 1];
-
-      console.log({
-        lowerSnapPoint,
-        upperSnapPoint,
-      });
-      console.log('RawY', rawY);
 
       // predictedY is used to create velocity driven swipe
       // the faster you swipe the more distance you cover
@@ -298,7 +291,6 @@ const _BottomSheet = ({
       }
 
       const isPosAtUpperSnapPoint = newY >= upperSnapPoint;
-      console.log('isPosAtUpperSnapPoint', isPosAtUpperSnapPoint);
 
       if (isContentDragging) {
         if (isPosAtUpperSnapPoint) {
@@ -312,8 +304,6 @@ const _BottomSheet = ({
         // since we always keep updating the newY,
         // this is cruicial in making the scroll feel natural
         const isContentScrolledAtTop = scrollRef.current && scrollRef.current.scrollTop <= 0;
-        console.log('isContentScrolledAtTop', isContentScrolledAtTop);
-        console.log('lastOffsetY === upperSnapPoint', lastOffsetY === upperSnapPoint);
 
         // For virtualized elements, we keep sheet at upper snap point when at full height
         // For normal content, we check if content is scrolled to top
@@ -371,11 +361,8 @@ const _BottomSheet = ({
     if (!scrollElement) return;
 
     const preventScrolling = (e: Event) => {
-      console.log('preventScrollingRef', preventScrollingRef?.current);
-
       if (preventScrollingRef?.current) {
         // NOT at full height - prevent ALL scrolling (including virtualized)
-        console.log('🚫 Not at full height - preventing ALL scroll');
         e.preventDefault();
         return;
       }
@@ -389,16 +376,10 @@ const _BottomSheet = ({
           null;
 
         if (isVirtualizedElementEvent) {
-          console.log('✅ At full height + virtualized element - allowing scroll');
           // Don't preventDefault - let virtualized element scroll
         } else {
-          console.log('🚫 At full height + outside virtualized element - preventing scroll');
           e.preventDefault(); // Block everything else
         }
-      } else {
-        // No virtualized element - allow normal scrolling
-        console.log('✅ At full height + no virtualized element - allowing normal scroll');
-        // Don't preventDefault
       }
     };
 

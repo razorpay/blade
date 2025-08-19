@@ -239,7 +239,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
 
     const isMobile = useIsMobile();
     const { theme } = useTheme();
-    const { actionListItemHeight } = React.useMemo(
+    const { actionListItemHeight, actionListBoxHeight } = React.useMemo(
       () => getVirtualItemParams({ theme, isMobile, itemCount, itemData }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [theme.name, isMobile, itemCount, itemData],
@@ -263,7 +263,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
       >
         <VirtualizedList<React.ReactNode[]>
           ref={virtualizedListRef}
-          height={maxAvailableBodyHeight}
+          height={isInBottomSheet ? maxAvailableBodyHeight : actionListBoxHeight}
           width="100%"
           itemSize={(index) => getItemHeight({ index, itemData, actionListItemHeight })}
           itemCount={itemCount}
