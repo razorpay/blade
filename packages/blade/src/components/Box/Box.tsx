@@ -136,6 +136,7 @@ const makeBoxProps = (
     elevation: props.elevation,
     opacity: props.opacity,
     visibility: props.visibility,
+    backdropFilter: props.backdropFilter,
 
     // Border
     borderWidth: props.borderWidth,
@@ -164,8 +165,8 @@ const makeBoxProps = (
     transformOrigin: props.transformOrigin,
     clipPath: props.clipPath,
 
-    // Backdrop Filter
-    backdropFilter: props.backdropFilter,
+    // Animation
+    transition: props.transition,
 
     // callbacks
     onMouseEnter: props.onMouseEnter,

@@ -217,8 +217,11 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
     },
     backdropFilter: {
       ...commonProperties,
-      description:
-        '**CSS property `backdrop-filter`**\n\nApplies a backdrop filter effect to the area behind the element. Commonly used for blur effects on overlays and glassmorphism designs.\n\n**Note:** This property is web-only and requires modern browser support.\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter">MDN Docs for backdrop-filter</a><br/><br/>',
+      description: `**CSS property \`backdrop-filter\`**\n\n Applies a backdrop filter effect to the area behind the element.`,
+    },
+    transition: {
+      ...commonProperties,
+      description: `**CSS property \`transition\`**\n\n Applies a transition effect to the element.`,
     },
   };
 };
