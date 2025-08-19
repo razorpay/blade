@@ -310,7 +310,7 @@ DatePickerRangeSelect.play = async () => {
   await expect(queryByText('Apply')).toBeNull();
   // assert inputs value
   await expect(rangeInput).toHaveValue(
-    `${startDateToSelect.format('DD/MM/YYYY')} → ${endDateToSelect.format('DD/MM/YYYY')}`,
+    `${startDateToSelect.format('DD/MM/YYYY')}  –  ${endDateToSelect.format('DD/MM/YYYY')}`,
   );
   await expect(onOpenChange).toBeCalledTimes(2);
 };
@@ -341,7 +341,7 @@ DatePickerRangeSelectControlled.play = async () => {
   // assert inputs value
   await sleep(400);
   await expect(rangeInput).toHaveValue(
-    `${dayjs().format('DD/MM/YYYY')} → ${dayjs().add(6, 'day').format('DD/MM/YYYY')}`,
+    `${dayjs().format('DD/MM/YYYY')}  –  ${dayjs().add(6, 'day').format('DD/MM/YYYY')}`,
   );
 
   // open
@@ -363,7 +363,7 @@ DatePickerRangeSelectControlled.play = async () => {
   await expect(queryByText('Apply')).toBeNull();
   // assert inputs value
   await expect(rangeInput).toHaveValue(
-    `${startDateToSelect.format('DD/MM/YYYY')} → ${endDateToSelect.format('DD/MM/YYYY')}`,
+    `${startDateToSelect.format('DD/MM/YYYY')}  –  ${endDateToSelect.format('DD/MM/YYYY')}`,
   );
 };
 
@@ -401,7 +401,7 @@ DatePickerPresets.play = async () => {
   // assert inputs value
   await sleep(400);
   await expect(rangeInput).toHaveValue(
-    `${dayjs().subtract(3, 'day').format('DD/MM/YYYY')} → ${dayjs().format('DD/MM/YYYY')}`,
+    `${dayjs().subtract(3, 'day').format('DD/MM/YYYY')}  –  ${dayjs().format('DD/MM/YYYY')}`,
   );
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
@@ -424,7 +424,7 @@ DatePickerPresets.play = async () => {
   await sleep(400);
   // assert inputs value
   await expect(rangeInput).toHaveValue(
-    `${dayjs().subtract(7, 'day').format('DD/MM/YYYY')} → ${dayjs().format('DD/MM/YYYY')}`,
+    `${dayjs().subtract(7, 'day').format('DD/MM/YYYY')}  –  ${dayjs().format('DD/MM/YYYY')}`,
   );
 };
 
@@ -611,7 +611,7 @@ DatePickerRangeTypingAutoSelect.play = async () => {
   // Type a valid date range
   const startDate = dayjs().add(1, 'day');
   const endDate = dayjs().add(7, 'day');
-  const typedRange = `${startDate.format('DD/MM/YYYY')} → ${endDate.format('DD/MM/YYYY')}`;
+  const typedRange = `${startDate.format('DD/MM/YYYY')}  –  ${endDate.format('DD/MM/YYYY')}`;
 
   await userEvent.type(input, typedRange);
   await sleep(200);
@@ -1009,7 +1009,7 @@ DatePickerRangeCalendarToInput.play = async () => {
   await sleep(400);
 
   // Verify calendar selection appears in input
-  const expectedRange = `${startDate.format('DD/MM/YYYY')} → ${endDate.format('DD/MM/YYYY')}`;
+  const expectedRange = `${startDate.format('DD/MM/YYYY')}  –  ${endDate.format('DD/MM/YYYY')}`;
   await expect(input).toHaveValue(expectedRange);
   await expect(queryByText('Apply')).toBeNull();
 };
