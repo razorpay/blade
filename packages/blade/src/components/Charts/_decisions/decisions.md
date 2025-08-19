@@ -311,7 +311,7 @@ import {
 |------|------|----------|---------|-------------|
 | `dataKey` | `string` | ✅ | - | The key used to identify the data value for this area in the dataset |
 | `name` | `string` | ✅ | - | Display name for the area, shown in legend and tooltips |
-| `type` | `'step' \| 'stepAfter' \| 'stepBefore' \| 'linear' \| 'monotone'` | ✅ | - | The interpolation type for connecting data points in the area |
+| `type` | `'step' \| 'stepAfter' \| 'stepBefore' \| 'linear' \| 'monotone'` | ❌ | `'linear'` | The interpolation type for connecting data points in the area |
 | `stackId` | `string \| number` | ❌ | `undefined` | Identifier used to group areas into a stack. Areas with the same stackId will be stacked. Required when using multiple areas |
 | `connectNulls` | `boolean` | ❌ | `false` | Whether to connect the area over null data points |
 | `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the area fill (automatically assigned from palette if not provided) |
