@@ -157,6 +157,7 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'borderBottomStyle'
     | 'borderLeftStyle'
     | 'borderRightStyle'
+    | 'backdropFilter'
   > & {
       /**
        * Sets the elevation for Box

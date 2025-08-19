@@ -164,6 +164,9 @@ const makeBoxProps = (
     transformOrigin: props.transformOrigin,
     clipPath: props.clipPath,
 
+    // Backdrop Filter
+    backdropFilter: props.backdropFilter,
+
     // callbacks
     onMouseEnter: props.onMouseEnter,
     onMouseLeave: props.onMouseLeave,

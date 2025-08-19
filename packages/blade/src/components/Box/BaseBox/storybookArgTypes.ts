@@ -215,6 +215,11 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
         options: ['lowRaised', 'midRaised', 'highRaised'],
       },
     },
+    backdropFilter: {
+      ...commonProperties,
+      description:
+        '**CSS property `backdrop-filter`**\n\nApplies a backdrop filter effect to the area behind the element. Commonly used for blur effects on overlays and glassmorphism designs.\n\n**Note:** This property is web-only and requires modern browser support.\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter">MDN Docs for backdrop-filter</a><br/><br/>',
+    },
   };
 };
 

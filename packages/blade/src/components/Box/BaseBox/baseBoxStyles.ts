@@ -287,6 +287,7 @@ const getAllProps = (
     transform: getResponsiveValue(props.transform as string, breakpoint),
     transformOrigin: getResponsiveValue(props.transformOrigin, breakpoint),
     clipPath: getResponsiveValue(props.clipPath, breakpoint),
+    backdropFilter: getResponsiveValue(props.backdropFilter, breakpoint),
   };
 };
 
