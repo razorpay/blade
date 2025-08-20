@@ -13,9 +13,9 @@ import { Calendar } from './Calendar.web';
 import { CalendarFooter } from './CalendarFooter.web';
 import { DatePickerInput } from './DateInput.web';
 import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
-import { PresetDropdown } from './QuickSelection/PresetDropdown.web';
-import { PresetProvider } from './QuickSelection/PresetContext';
+import { renderPresetDropdown } from './QuickSelection/renderPresetDropdown.web';
 import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
+import { usePresetState } from './QuickSelection/usePresetState';
 import { shiftTimezone } from './shiftTimezone';
 import { useDatesState } from './useDatesState';
 import { usePopup } from './usePopup';
@@ -177,6 +177,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   });
 
   const currentDate = shiftTimezone('add', new Date());
+
+  // Use the hook to get the calculated preset values
+  const { presetStates, selectedPresetLabel, effectiveSelectionType } = usePresetState({
+    presets: presets || [],
+    selectedPreset,
+    currentDate,
+  });
+
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
   const {
@@ -312,11 +320,12 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     <>
       {shouldRenderPresets ? (
         <PresetSideBar
-          onSelection={(preset) => {
+          onSelection={(preset: (date: Date) => DatesRangeValue) => {
             const presetValue = preset?.(currentDate);
             setControlledValue(presetValue);
             setSelectedPreset(presetValue);
           }}
+          presetStates={presetStates}
         />
       ) : null}
       <BaseBox
@@ -415,147 +424,149 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   return (
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
-        <PresetProvider presets={presets} selectedPreset={selectedPreset} currentDate={currentDate}>
-          <BaseBox
-            width={inputElementType === 'chip' ? 'fit-content' : '100%'}
-            {...getStyledProps(props)}
-            {...metaAttribute({ name: MetaConstants.DatePicker })}
-          >
-            {inputElementType === 'chip' ? (
-              <DatePickerFilterChip
-                selectionType={_selectionType}
-                date={controlledValue}
-                ref={referenceRef}
-                inputRef={refs.reference}
-                referenceProps={getReferenceProps()}
-                name={name as never}
-                label={label as never}
-                labelPosition={labelPosition}
-                accessibilityLabel={accessibilityLabel}
-                size={size}
-                errorText={errorText as never}
-                helpText={helpText as never}
-                successText={successText as never}
-                isDisabled={isDisabled}
-                isRequired={isRequired}
-                validationState={validationState}
-                autoFocus={autoFocus}
-                necessityIndicator={necessityIndicator}
-                format={finalFormat}
-                placeholder={finalInputPlaceHolder}
-                onClearButtonChange={handleClear}
-                {...makeAnalyticsAttribute(props)}
-              />
-            ) : (
-              <DatePickerInput
-                selectionType={_selectionType}
-                date={controlledValue}
-                ref={referenceRef}
-                inputRef={refs.reference}
-                referenceProps={getReferenceProps()}
-                name={name as never}
-                label={label as never}
-                labelPosition={labelPosition}
-                accessibilityLabel={accessibilityLabel}
-                size={size}
-                errorText={errorText as never}
-                helpText={helpText as never}
-                successText={successText as never}
-                isDisabled={isDisabled}
-                isRequired={isRequired}
-                validationState={validationState}
-                autoFocus={autoFocus}
-                necessityIndicator={necessityIndicator}
-                format={finalFormat}
-                placeholder={finalInputPlaceHolder}
-                labelSuffix={labelSuffix}
-                labelTrailing={labelTrailing}
-                setControlledValue={setControlledValue}
-                selectedPreset={selectedPreset}
-                excludeDate={props.excludeDate}
-                minDate={props.minDate}
-                maxDate={props.maxDate}
-                leadingDropdown={
-                  presets && !isSingle ? (
-                    <PresetDropdown
-                      onSelection={(preset) => {
+        <BaseBox
+          width={inputElementType === 'chip' ? 'fit-content' : '100%'}
+          {...getStyledProps(props)}
+          {...metaAttribute({ name: MetaConstants.DatePicker })}
+        >
+          {inputElementType === 'chip' ? (
+            <DatePickerFilterChip
+              selectionType={_selectionType}
+              date={controlledValue}
+              ref={referenceRef}
+              inputRef={refs.reference}
+              referenceProps={getReferenceProps()}
+              name={name as never}
+              label={label as never}
+              labelPosition={labelPosition}
+              accessibilityLabel={accessibilityLabel}
+              size={size}
+              errorText={errorText as never}
+              helpText={helpText as never}
+              successText={successText as never}
+              isDisabled={isDisabled}
+              isRequired={isRequired}
+              validationState={validationState}
+              autoFocus={autoFocus}
+              necessityIndicator={necessityIndicator}
+              format={finalFormat}
+              placeholder={finalInputPlaceHolder}
+              onClearButtonChange={handleClear}
+              {...makeAnalyticsAttribute(props)}
+            />
+          ) : (
+            <DatePickerInput
+              selectionType={_selectionType}
+              date={controlledValue}
+              ref={referenceRef}
+              inputRef={refs.reference}
+              referenceProps={getReferenceProps()}
+              name={name as never}
+              label={label as never}
+              labelPosition={labelPosition}
+              accessibilityLabel={accessibilityLabel}
+              size={size}
+              errorText={errorText as never}
+              helpText={helpText as never}
+              successText={successText as never}
+              isDisabled={isDisabled}
+              isRequired={isRequired}
+              validationState={validationState}
+              autoFocus={autoFocus}
+              necessityIndicator={necessityIndicator}
+              format={finalFormat}
+              placeholder={finalInputPlaceHolder}
+              labelSuffix={labelSuffix}
+              labelTrailing={labelTrailing}
+              setControlledValue={setControlledValue}
+              selectedPreset={selectedPreset}
+              excludeDate={props.excludeDate}
+              minDate={props.minDate}
+              maxDate={props.maxDate}
+              effectiveSelectionType={effectiveSelectionType}
+              leadingDropdown={
+                presets && !isSingle
+                  ? renderPresetDropdown({
+                      onSelection: (preset: (date: Date) => DatesRangeValue) => {
                         const presetValue = preset?.(currentDate);
                         setControlledValue(presetValue);
                         setSelectedPreset(presetValue);
-                      }}
-                      onOpenCalendar={() => {
+                      },
+                      onOpenCalendar: () => {
                         controllableSetIsOpen(() => true);
-                      }}
-                    />
-                  ) : undefined
-                }
-                {...makeAnalyticsAttribute(props)}
-              />
-            )}
-            {isMobile ? (
-              <BottomSheet
-                snapPoints={[0.9, 0.9, 1]}
-                isOpen={controllableIsOpen}
-                onDismiss={() => {
-                  handleCancel();
-                }}
-              >
-                <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
-                <BottomSheetBody>
-                  {content}
-                  {!isSingle && (
-                    <PresetSideBar
-                      isMobile
-                      onSelection={(preset) => {
-                        const presetValue = preset?.(currentDate);
-                        setControlledValue(presetValue);
-                        setSelectedPreset(presetValue);
-                      }}
-                    />
-                  )}
-                </BottomSheetBody>
-                {showFooterActions && (
-                  <BottomSheetFooter>
-                    <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
-                  </BottomSheetFooter>
+                      },
+                      presetStates,
+                      selectedPresetLabel,
+                    })
+                  : undefined
+              }
+              {...makeAnalyticsAttribute(props)}
+            />
+          )}
+          {isMobile ? (
+            <BottomSheet
+              snapPoints={[0.9, 0.9, 1]}
+              isOpen={controllableIsOpen}
+              onDismiss={() => {
+                handleCancel();
+              }}
+            >
+              <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
+              <BottomSheetBody>
+                {content}
+                {!isSingle && presets && (
+                  <PresetSideBar
+                    isMobile
+                    presetStates={presetStates}
+                    onSelection={(preset: (date: Date) => DatesRangeValue) => {
+                      const presetValue = preset?.(currentDate);
+                      setControlledValue(presetValue);
+                      setSelectedPreset(presetValue);
+                    }}
+                  />
                 )}
-              </BottomSheet>
-            ) : (
-              isMounted && (
-                <FloatingPortal>
-                  <FloatingFocusManager
-                    initialFocus={-1}
-                    context={context}
-                    guards={true}
-                    order={['reference', 'content']}
+              </BottomSheetBody>
+              {showFooterActions && (
+                <BottomSheetFooter>
+                  <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
+                </BottomSheetFooter>
+              )}
+            </BottomSheet>
+          ) : (
+            isMounted && (
+              <FloatingPortal>
+                <FloatingFocusManager
+                  initialFocus={-1}
+                  context={context}
+                  guards={true}
+                  order={['reference', 'content']}
+                >
+                  <BaseBox
+                    ref={refs.setFloating}
+                    style={floatingStyles}
+                    zIndex={zIndex}
+                    {...getFloatingProps()}
+                    {...makeAccessible({ labelledBy: titleId })}
                   >
                     <BaseBox
-                      ref={refs.setFloating}
-                      style={floatingStyles}
-                      zIndex={zIndex}
-                      {...getFloatingProps()}
-                      {...makeAccessible({ labelledBy: titleId })}
+                      display="flex"
+                      flexDirection="row"
+                      borderColor="surface.border.gray.subtle"
+                      borderWidth="thin"
+                      borderStyle="solid"
+                      borderRadius="medium"
+                      overflow="hidden"
+                      minWidth="320px"
+                      style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
                     >
-                      <BaseBox
-                        display="flex"
-                        flexDirection="row"
-                        borderColor="surface.border.gray.subtle"
-                        borderWidth="thin"
-                        borderStyle="solid"
-                        borderRadius="medium"
-                        overflow="hidden"
-                        minWidth="320px"
-                        style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
-                      >
-                        {content}
-                      </BaseBox>
+                      {content}
                     </BaseBox>
-                  </FloatingFocusManager>
-                </FloatingPortal>
-              )
-            )}
-          </BaseBox>
-        </PresetProvider>
+                  </BaseBox>
+                </FloatingFocusManager>
+              </FloatingPortal>
+            )
+          )}
+        </BaseBox>
       </DatesProvider>
     </MantineProvider>
   );
