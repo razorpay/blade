@@ -86,8 +86,11 @@ type TimePickerProps = InputProps & {
   /**
    * Time format for display
    * @default "12h"
+   *
+   * Note: Currently only 12h format is supported.
+   * 24h format will be added once we upgrade to Mantine v8.
    */
-  timeFormat?: '12h' | '24h';
+  timeFormat?: '12h';
 
   /**
    * Step interval for minutes
@@ -235,16 +238,18 @@ But still we could expose TimeSelector as a standalone component for advanced us
 />
 ```
 
-### 12-Hour Format
+### 12-Hour Format (Current Support)
 
 ```jsx
 <TimePicker
   label="Appointment time"
-  timeFormat="12h"
+  timeFormat="12h" // Only supported format currently
   defaultValue={new Date('2024-01-01T14:30:00')}
   onChange={({ value }) => console.log(value)}
 />
 ```
+
+> **Note**: Currently, only 12-hour format is supported. 24-hour format will be added in a future release once we upgrade to Mantine v8.
 
 ### Time Range Support
 
@@ -337,7 +342,7 @@ function ControlledTimePicker() {
 ```jsx
 <TimePicker
   label="Meeting time"
-  timeFormat="12h"
+  timeFormat="12h" // Currently only supported format
   minuteStep={5}
   value={new Date('2024-01-01T14:30:00')}
   onChange={({ value }) => console.log('Selected:', value)}
@@ -440,10 +445,33 @@ TimePicker is designed to integrate seamlessly with ListView patterns for time-b
 - **Input vs Dropdown Format**: Should the text input always show 12h format while the dropdown shows 24h/AM-PM format, or should both sync to the same format?
   ✅ Resolved - Both input and dropdown will sync to the same format based on `timeFormat` prop
 
+- **Time Format Support**: Should we support both 12h and 24h formats from the initial release?
+  ✅ Resolved - Starting with 12h format only. 24h format will be added once we upgrade to Mantine v8.
+
 ### Feature Scope
 
 - How should we approach locale support?
 - Do we need preset time options for common scenarios (Morning, Afternoon, etc.)?
+
+## Time Format Decision
+
+**Decision**: For the initial release, we'll provide **only 12h format** support.
+
+**Rationale**:
+
+- Currently, there's no established business case or user requirement for 24h format
+- Mantine v6 (our current version) has limitations with 24h format support
+- Mantine v8 provides better 24h format support, but we cannot upgrade immediately due to technical constraints
+
+**Future Plan**:
+
+- Once we upgrade to Mantine v8, we'll add 24h format support
+- This will be documented and communicated as a feature enhancement
+
+**References**:
+
+- [24h Format Support Discussion](https://razorpay.slack.com/archives/C01H13RTF8V/p1755606723861109) - Discussion on why we're not implementing 24h format currently
+- [Mantine v8 Upgrade Constraints](https://razorpay.slack.com/archives/C01H13RTF8V/p1753818366922869) - Technical reasons for not upgrading to Mantine v8 right now
 
 ## Integration with i18nify
 
@@ -451,6 +479,7 @@ We need to figure out how to integrate the time picker with i18nify,
 
 ```js
 // Consumer will have to handle locale-specific time formatting
+// Currently only 12h format is supported
 <TimePicker locale="my" timeFormat="12h" />
 ```
 
