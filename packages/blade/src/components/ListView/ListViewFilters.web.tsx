@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import styled from 'styled-components';
 import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
@@ -19,10 +19,16 @@ import { msToSeconds } from '~utils/msToSeconds';
 import { useTheme } from '~components/BladeProvider';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
-import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
-const gradientOverlyContainerWidth = '21px'; // 20px + 1px divider width
-const gradientOverlyContainerHeight = '38px';
+const CHILDREN_COUNTER_WIDTH = 36;
+const GAP_BETWEEN_CHILDREN_AND_SEARCH = 12;
+const SPACE_BETWEEN_QUICK_FILTERS_AND_CHILDREN = 8;
+const CHILDREN_TOTAL_WIDTH = CHILDREN_COUNTER_WIDTH + SPACE_BETWEEN_QUICK_FILTERS_AND_CHILDREN;
+const CHILDREN_WITH_SEARCH_WIDTH =
+  CHILDREN_COUNTER_WIDTH +
+  GAP_BETWEEN_CHILDREN_AND_SEARCH +
+  SPACE_BETWEEN_QUICK_FILTERS_AND_CHILDREN;
 
 const StyledQuickFilterContainer = styled(BaseBox)({
   /* For Webkit (Chrome, Safari) */
@@ -35,30 +41,6 @@ const StyledQuickFilterContainer = styled(BaseBox)({
   msOverflowStyle: 'none',
 });
 
-const GradientOverlay = styled.div<{
-  gradientColorLeft: string;
-  dividerColor: string;
-  gradientColorRight: string;
-}>`
-  height: 100%;
-  width: 20px;
-  background: linear-gradient(
-    270deg,
-    ${({ gradientColorRight }) => gradientColorRight} 0%,
-    ${({ gradientColorLeft }) => gradientColorLeft} 100%
-  );
-  pointer-events: none;
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 1px;
-    background-color: ${({ dividerColor }) => dividerColor};
-  }
-`;
-
 const ListViewFilters = ({
   testID,
   children,
@@ -69,17 +51,17 @@ const ListViewFilters = ({
   searchName,
   showQuickFilters,
   onShowQuickFiltersChange,
+  showFilters: showFiltersProp,
+  onShowFiltersChange,
   onSearchClear,
   selectedFiltersCount = 0,
+  searchTrailing,
   ...rest
 }: ListViewFilterProps): React.ReactElement => {
-  const [shouldShowDecorationInQuickFilters, setShouldShowDecorationInQuickFilters] = useState(
-    false,
-  );
   const [showFilters, setShowFilters] = useControllableState({
-    defaultValue: showQuickFilters,
-    value: showQuickFilters,
-    onChange: onShowQuickFiltersChange,
+    defaultValue: showQuickFilters ?? showFiltersProp,
+    value: showQuickFilters ?? showFiltersProp,
+    onChange: onShowQuickFiltersChange ?? onShowFiltersChange,
   });
   const [
     listViewSelectedFilters,
@@ -89,15 +71,30 @@ const ListViewFilters = ({
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
   const { theme } = useTheme();
+
   const showSearchInput = onSearchChange || onSearchClear || searchValuePlaceholder || searchName;
+  const isSearchTrailingDropDown =
+    React.isValidElement(searchTrailing) && getComponentId(searchTrailing) === 'Dropdown';
+
   const getFilterContainerWidth = (): BoxProps['width'] => {
-    if (isMobile && Boolean(children)) {
-      return '88%';
+    const hasChildren = Boolean(children);
+
+    if (isMobile) {
+      return hasChildren ? '88%' : '100%';
     }
-    if (isMobile && !Boolean(children)) {
-      return '100%';
+
+    const searchInputWidth = isSearchTrailingDropDown ? '280px' : '208px';
+
+    if (showSearchInput && hasChildren) {
+      return `calc(100% - ${searchInputWidth} - ${CHILDREN_WITH_SEARCH_WIDTH}px)`;
     }
-    return 'auto';
+    if (hasChildren) {
+      return `calc(100% - ${CHILDREN_TOTAL_WIDTH}px)`;
+    }
+    if (showSearchInput) {
+      return `calc(100% - ${searchInputWidth} - ${SPACE_BETWEEN_QUICK_FILTERS_AND_CHILDREN}px)`;
+    }
+    return '100%';
   };
 
   return (
@@ -116,6 +113,7 @@ const ListViewFilters = ({
           name={searchNameValue || searchId}
           onChange={({ name, value }) => onSearchChange?.({ name, value })}
           onClearButtonClick={onSearchClear}
+          trailing={searchTrailing}
         />
       )}
       <BaseBox>
@@ -130,39 +128,16 @@ const ListViewFilters = ({
             display="flex"
             flexDirection="column"
             width={getFilterContainerWidth()}
-            marginRight={isMobile ? 'spacing.2' : 'spacing.0'}
+            marginRight="spacing.3"
           >
             <StyledQuickFilterContainer
-              overflow={isMobile ? 'scroll' : 'visible'}
-              width={isMobile ? '100%' : 'auto'}
-              ref={(node) => {
-                if (node instanceof HTMLElement && quickFilters) {
-                  setShouldShowDecorationInQuickFilters(
-                    node.scrollWidth > node.offsetWidth && Boolean(children),
-                  );
-                }
-              }}
+              overflow="scroll"
+              width="100%"
               paddingY="spacing.4"
-              paddingLeft={isMobile ? 'spacing.2' : 'spacing.0'}
+              paddingLeft="spacing.2"
             >
               {quickFilters}
             </StyledQuickFilterContainer>
-            {isMobile && shouldShowDecorationInQuickFilters ? (
-              <Box
-                position="absolute"
-                right="-1px"
-                top="spacing.4"
-                width={gradientOverlyContainerWidth}
-                height={gradientOverlyContainerHeight}
-              >
-                <GradientOverlay
-                  gradientColorLeft={theme.colors.transparent}
-                  gradientColorRight={theme.colors.surface.background.gray.intense}
-                  dividerColor={theme.colors.surface.border.gray.normal}
-                />
-                <Divider orientation="vertical" />
-              </Box>
-            ) : null}
           </Box>
 
           <BaseBox display="flex" gap="spacing.4" alignItems="center">
@@ -195,7 +170,7 @@ const ListViewFilters = ({
               </Box>
             ) : null}
             {!isMobile && showSearchInput && (
-              <Box width="256px">
+              <Box width={isSearchTrailingDropDown ? '280px' : '208px'}>
                 <SearchInput
                   label=""
                   value={searchValue}
@@ -204,6 +179,7 @@ const ListViewFilters = ({
                   onChange={({ name, value }) => onSearchChange?.({ name, value })}
                   onClearButtonClick={onSearchClear}
                   size="medium"
+                  trailing={searchTrailing}
                 />
               </Box>
             )}

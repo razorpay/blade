@@ -6,6 +6,11 @@ Checkbox
 
 Checkbox is a form control that allows users to select one or multiple options from a set of choices. It can be used individually or grouped together using CheckboxGroup for managing related options. Checkboxes support various states including checked, unchecked, indeterminate, disabled, and can display help text or error messages to guide users.
 
+## Important Constraints
+
+- When `Checkbox` is inside `CheckboxGroup`, it cannot have individual `validationState`, `name`, `defaultChecked`, `isChecked`, or `onChange` props - these must be set on the `CheckboxGroup` itself
+- When `Checkbox` is inside `CheckboxGroup`, each `Checkbox` must have a unique `value` prop
+
 ## TypeScript Types
 
 The following types represent the props that the Checkbox component and its subcomponents accept. These allow you to properly configure the component according to your needs.
@@ -67,7 +72,7 @@ type CheckboxProps = {
   /**
    * Callback fired when the checkbox state changes
    */
-  onChange?: (event: { isChecked: boolean; name?: string; value?: string }) => void;
+  onChange?: (event: { isChecked: boolean; value?: string; event?: React.ChangeEvent }) => void;
 
   /**
    * Size of the checkbox

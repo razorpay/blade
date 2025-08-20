@@ -1,5 +1,6 @@
 import React from 'react';
 import { CreditCardIcon } from '~components/Icons';
+import type { IconComponent } from '~components/Icons';
 
 export type PaymentCardBrand = 'visa' | 'mastercard' | 'amex' | 'unknown';
 
@@ -41,9 +42,9 @@ export const paymentCardBrandAssets = {
 /**
  * Returns the appropriate icon for the payment card brand
  * @param brand - The payment card brand
- * @returns React element with the brand icon or fallback CreditCardIcon
+ * @returns React element with the brand icon or IconComponent for fallback
  */
-export const getPaymentCardBrandIcon = (brand: string): React.ReactElement => {
+export const getPaymentCardBrandIcon = (brand: string): React.ReactElement | IconComponent => {
   const assetPath = paymentCardBrandAssets[brand as keyof typeof paymentCardBrandAssets];
 
   return assetPath ? (
@@ -57,7 +58,7 @@ export const getPaymentCardBrandIcon = (brand: string): React.ReactElement => {
       }}
     />
   ) : (
-    <CreditCardIcon size="large" />
+    CreditCardIcon
   );
 };
 
@@ -87,7 +88,7 @@ export const getPaymentCardCVVLength = (brand: string): number => {
 
 export const usePaymentCardDetection = (): {
   detectPaymentCardBrand: (cardNumber: string) => PaymentCardBrand;
-  getPaymentCardBrandIcon: (brand: string) => React.ReactElement;
+  getPaymentCardBrandIcon: (brand: string) => React.ReactElement | IconComponent;
   getPaymentCardNumberFormat: (brand: string) => string;
   getPaymentCardCVVLength: (brand: string) => number;
   paymentCardBrandAssets: typeof paymentCardBrandAssets;

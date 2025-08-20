@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const RewindIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _RewindIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const RewindIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const RewindIcon = assignWithoutSideEffects(_RewindIcon, {
+  componentId: 'RewindIcon',
+});
 
 export default RewindIcon;

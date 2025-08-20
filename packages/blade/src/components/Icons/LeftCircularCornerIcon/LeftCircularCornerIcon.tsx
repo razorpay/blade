@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const LeftCircularCornerIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _LeftCircularCornerIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const LeftCircularCornerIcon: IconComponent = ({ size, color, ...styledProps }) 
     </Svg>
   );
 };
+
+const LeftCircularCornerIcon = assignWithoutSideEffects(_LeftCircularCornerIcon, {
+  componentId: 'LeftCircularCornerIcon',
+});
 
 export default LeftCircularCornerIcon;

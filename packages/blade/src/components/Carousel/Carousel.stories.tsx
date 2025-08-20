@@ -15,6 +15,8 @@ import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';
 import { Button } from '~components/Button';
+import { SparklesIcon, AlertTriangleIcon, SearchIcon } from '~components/Icons';
+import type { IconComponent, IconColors } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -212,7 +214,7 @@ const TestimonialCard = ({
   company,
 }: TestimonialData): React.ReactElement => {
   return (
-    <Card height="100%">
+    <Card height="100%" marginBottom="spacing.4">
       <CardBody height="100%">
         <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
           <QuoteSvg />
@@ -253,7 +255,7 @@ const TestimonialCard = ({
 export const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
-    <Box width="100%" height={isReactNative() ? '350px' : 'auto'}>
+    <Box width="100%" height={isReactNative() ? '350px' : 'auto'} padding="spacing.9">
       <CarouselComponent
         {...props}
         key={key}
@@ -576,5 +578,101 @@ const InteractiveCarouselTestimonialTemplate: StoryFn<typeof CarouselComponent> 
 };
 
 export const WithInteractiveCards = InteractiveCarouselTestimonialTemplate.bind({});
+
+export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Text marginTop="spacing.2" color="surface.text.gray.muted">
+        Active card is centered with adjacent cards peeking from the sides.
+      </Text>
+      <Text marginTop="spacing.4">
+        You can achieve peek behavior by setting <Code size="medium">visibleItems</Code> to 1,
+        adding <Code size="medium">carouselItemWidth</Code> to be less than 100% (eg: 80%), setting{' '}
+        <Code size="medium">snapAlign</Code> to "center", and adding
+        <Code size="medium">gap</Code> for spacing between items.
+      </Text>
+      <Box marginTop="spacing.6">
+        <CarouselComponent
+          {...props}
+          accessibilityLabel="Testimonials"
+          visibleItems={1}
+          carouselItemWidth={{ base: '80%', m: '80%' }}
+          snapAlign="center"
+          gap="spacing.7"
+        >
+          {testimonialData.map((testimonial) => (
+            <CarouselItem key={testimonial.name}>
+              <TestimonialCard {...testimonial} />
+            </CarouselItem>
+          ))}
+        </CarouselComponent>
+      </Box>
+    </Box>
+  );
+};
+
+const cardContent = [
+  {
+    icon: SparklesIcon,
+    text: 'Give me a recap of Design x Dev meeting',
+    color: 'surface.icon.onSea.onSubtle',
+  },
+  {
+    icon: AlertTriangleIcon,
+    text: 'Show me all recent failed payments',
+    color: 'feedback.icon.negative.intense',
+  },
+  {
+    icon: SearchIcon,
+    text: 'Find recent payments by (contact number)',
+    color: 'feedback.icon.information.intense',
+  },
+];
+const CarouselCard = ({
+  icon: Icon,
+  text,
+  color,
+}: {
+  text: string;
+  color: IconColors;
+  icon: IconComponent;
+}) => {
+  return (
+    <Card elevation="none" padding="spacing.5">
+      <CardBody>
+        <Box display="flex" justifyContent="space-between" alignItems="center" gap="12px">
+          <Icon color={color} size="large" />
+          <Text size="medium" color="surface.text.gray.subtle">
+            {text}
+          </Text>
+        </Box>
+      </CardBody>
+    </Card>
+  );
+};
+
+export const WithOverlap: StoryFn<typeof CarouselComponent> = () => {
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Box marginTop="spacing.6" paddingX="spacing.8">
+        <CarouselComponent
+          visibleItems="autofit"
+          navigationButtonPosition="side-overlap"
+          carouselItemWidth="280px"
+        >
+          {Array(3)
+            .fill(cardContent)
+            .flat()
+            .slice(0, 7)
+            .map(({ icon, text, color }, index) => (
+              <CarouselItem key={index}>
+                <CarouselCard icon={icon} text={text} color={color} />
+              </CarouselItem>
+            ))}
+        </CarouselComponent>
+      </Box>
+    </Box>
+  );
+};
 
 export default meta;

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const RepeatIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _RepeatIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -18,5 +19,9 @@ const RepeatIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const RepeatIcon = assignWithoutSideEffects(_RepeatIcon, {
+  componentId: 'RepeatIcon',
+});
 
 export default RepeatIcon;

@@ -14,6 +14,7 @@ const validateBackgroundString = (stringBackgroundColorValue: string): void => {
     if (
       !stringBackgroundColorValue.startsWith('surface.background') &&
       !stringBackgroundColorValue.startsWith('overlay.') &&
+      !stringBackgroundColorValue.startsWith('feedback.background') &&
       stringBackgroundColorValue !== 'transparent'
     ) {
       throwBladeError({

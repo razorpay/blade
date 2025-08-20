@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const LogInIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _LogInIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -18,5 +19,9 @@ const LogInIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const LogInIcon = assignWithoutSideEffects(_LogInIcon, {
+  componentId: 'LogInIcon',
+});
 
 export default LogInIcon;

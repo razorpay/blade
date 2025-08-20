@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const CornerDownLeftIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _CornerDownLeftIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -14,5 +15,9 @@ const CornerDownLeftIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const CornerDownLeftIcon = assignWithoutSideEffects(_CornerDownLeftIcon, {
+  componentId: 'CornerDownLeftIcon',
+});
 
 export default CornerDownLeftIcon;

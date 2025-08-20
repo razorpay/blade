@@ -1,0 +1,29 @@
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const _RazorpayxPayrollFilledIcon: IconComponent = ({ size, color, ...styledProps }) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18.7016 1.00049C19.9166 1.00049 20.9016 1.89592 20.9016 3.00049V9.76416C20.9016 10.5217 20.4308 11.2144 19.6855 11.5532L13.0855 14.5532C12.4662 14.8348 11.7369 14.8348 11.1176 14.5532L4.51758 11.5532C3.77232 11.2144 3.30156 10.5217 3.30156 9.76416V3.00049C3.30156 1.89592 4.28654 1.00049 5.50156 1.00049H18.7016ZM9.90156 8.021C9.44593 8.021 9.07656 8.35678 9.07656 8.771C9.07685 9.18499 9.44611 9.521 9.90156 9.521H14.3016L14.3864 9.51709C14.802 9.47848 15.1263 9.15894 15.1266 8.771C15.1266 8.38285 14.8022 8.06355 14.3864 8.0249L14.3016 8.021H9.90156ZM8.80156 4.25049C8.34593 4.25049 7.97656 4.58627 7.97656 5.00049C7.97656 5.4147 8.34593 5.75049 8.80156 5.75049H15.4016L15.4864 5.74658C15.9022 5.70796 16.2266 5.38865 16.2266 5.00049C16.2266 4.61232 15.9022 4.29302 15.4864 4.25439L15.4016 4.25049H8.80156Z"
+        fill={iconColor}
+      />
+      <Path
+        d="M1.10156 15.0509C1.10156 13.5286 2.82265 12.5385 4.28543 13.2193L11.1177 16.3991C11.7371 16.6874 12.4661 16.6874 13.0854 16.3991L19.9177 13.2193C21.3805 12.5385 23.1016 13.5286 23.1016 15.0509V20.9527C23.1016 22.0837 22.1166 23.0005 20.9016 23.0005H3.30156C2.08654 23.0005 1.10156 22.0837 1.10156 20.9527V15.0509Z"
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+const RazorpayxPayrollFilledIcon = assignWithoutSideEffects(_RazorpayxPayrollFilledIcon, {
+  componentId: 'RazorpayxPayrollFilledIcon',
+});
+
+export default RazorpayxPayrollFilledIcon;

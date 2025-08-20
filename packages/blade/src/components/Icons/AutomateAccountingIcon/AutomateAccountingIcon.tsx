@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const AutomateAccountingIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _AutomateAccountingIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const AutomateAccountingIcon: IconComponent = ({ size, color, ...styledProps }) 
     </Svg>
   );
 };
+
+const AutomateAccountingIcon = assignWithoutSideEffects(_AutomateAccountingIcon, {
+  componentId: 'AutomateAccountingIcon',
+});
 
 export default AutomateAccountingIcon;

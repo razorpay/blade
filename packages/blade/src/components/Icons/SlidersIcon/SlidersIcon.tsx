@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const SlidersIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _SlidersIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -34,5 +35,9 @@ const SlidersIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const SlidersIcon = assignWithoutSideEffects(_SlidersIcon, {
+  componentId: 'SlidersIcon',
+});
 
 export default SlidersIcon;

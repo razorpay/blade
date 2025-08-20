@@ -6,6 +6,12 @@ StepGroup
 
 StepGroup visualizes sequential processes with a consistent structure. It can be interactive, guiding users through steps, or function as a timeline for reference. The component supports both vertical and horizontal orientations, customizable progress states, and nested structures for complex workflows.
 
+## Important Constraints
+
+- `Collapsible` component is not supported when `StepGroup` has `orientation="horizontal"`
+- `StepItem` `trailing` prop is not allowed when `StepGroup` has `orientation="horizontal"`
+- Nested `StepGroup` components are not allowed when parent `StepGroup` has `orientation="horizontal"`
+
 ## TypeScript Types
 
 Below are the TypeScript types that define the props that StepGroup and its subcomponents accept:

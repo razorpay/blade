@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const VolumeLowIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _VolumeLowIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -22,5 +23,9 @@ const VolumeLowIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const VolumeLowIcon = assignWithoutSideEffects(_VolumeLowIcon, {
+  componentId: 'VolumeLowIcon',
+});
 
 export default VolumeLowIcon;

@@ -87,8 +87,9 @@ const Toast = ({
   isVisible?: boolean;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const Icon = leading || iconMap[color];
   const isPromotional = type === 'promotional';
+  const Icon = isPromotional ? leading : leading || iconMap[color];
+
   const actionButton = action ? (
     <Box>
       <Button
@@ -145,6 +146,7 @@ const Toast = ({
           display="flex"
           alignItems="center"
           alignSelf={isPromotional ? 'start' : 'center'}
+          marginTop={isPromotional ? 'spacing.1' : 'spacing.0'}
         >
           <Icon
             color={isPromotional ? 'surface.icon.gray.normal' : 'surface.icon.staticWhite.normal'}

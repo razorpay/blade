@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const VoicemailIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _VoicemailIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const VoicemailIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const VoicemailIcon = assignWithoutSideEffects(_VoicemailIcon, {
+  componentId: 'VoicemailIcon',
+});
 
 export default VoicemailIcon;

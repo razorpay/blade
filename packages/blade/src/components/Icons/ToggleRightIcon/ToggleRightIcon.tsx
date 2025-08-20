@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ToggleRightIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _ToggleRightIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -22,5 +23,9 @@ const ToggleRightIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const ToggleRightIcon = assignWithoutSideEffects(_ToggleRightIcon, {
+  componentId: 'ToggleRightIcon',
+});
 
 export default ToggleRightIcon;

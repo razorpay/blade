@@ -7636,7 +7636,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
           accessible={true}
           color="interactive.text.onPrimary.normal"
           data-blade-component="base-text"
-          fontSize={50}
+          fontSize={75}
           fontWeight="medium"
           lineHeight={75}
           style={
@@ -7644,7 +7644,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Inter",
-                "fontSize": 11,
+                "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
@@ -8347,7 +8347,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
           accessible={true}
           color="interactive.text.onPrimary.normal"
           data-blade-component="base-text"
-          fontSize={50}
+          fontSize={75}
           fontWeight="medium"
           lineHeight={75}
           style={
@@ -8355,7 +8355,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Inter",
-                "fontSize": 11,
+                "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,

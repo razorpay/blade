@@ -1,10 +1,20 @@
 ## Component Name
+
 Amount
 
 ## Description
+
 The Amount component is used to display currency values with proper formatting. It shows small amounts of color-coded metadata, which are ideal for getting user attention. This component only displays the provided value in the specified currency with the formatting capabilities enabled by @razorpay/i18nify-react, it does not perform any currency conversion.
 
+## Important Constraints
+
+- `size` options are limited based on the `type` prop:
+  - `type="body"` supports sizes: `xsmall`, `small`, `medium`, `large`
+  - `type="heading"` supports sizes: `small`, `medium`, `large`, `xlarge`, `2xlarge`
+  - `type="display"` supports sizes: `small`, `medium`, `large`, `xlarge`
+
 ## Typescript Types
+
 The following types represent the props that the Amount component and its subcomponents accept. These types allow you to properly configure the Amount component according to your needs.
 
 ```typescript
@@ -83,6 +93,7 @@ type AmountProps = AmountTypeProps & AmountCommonProps;
 ## Examples
 
 ### Display Variations
+
 ```tsx
 import { Amount } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
@@ -94,30 +105,12 @@ const AmountVariationsExample = () => {
       <Box>
         <Text marginBottom="spacing.2">Different types and sizes:</Text>
         <Box display="flex" gap="spacing.4">
-          <Amount 
-            value={12345.67} 
-            type="body" 
-            size="small" 
-            weight="medium"
-            currency="INR" 
-          />
-          <Amount 
-            value={12345.67} 
-            type="heading" 
-            size="large" 
-            weight="semibold"
-            currency="USD" 
-          />
-          <Amount 
-            value={12345.67} 
-            type="display" 
-            size="xlarge" 
-            weight="regular"
-            currency="EUR" 
-          />
+          <Amount value={12345.67} type="body" size="small" weight="medium" currency="INR" />
+          <Amount value={12345.67} type="heading" size="large" weight="semibold" currency="USD" />
+          <Amount value={12345.67} type="display" size="xlarge" weight="regular" currency="EUR" />
         </Box>
       </Box>
-      
+
       <Box>
         <Text marginBottom="spacing.2">Currency variations:</Text>
         <Box display="flex" gap="spacing.4">
@@ -134,6 +127,7 @@ export default AmountVariationsExample;
 ```
 
 ### Formatting and Styling
+
 ```tsx
 import { Amount } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
@@ -152,25 +146,21 @@ const AmountFormattingExample = () => {
             <Amount value={1234567} suffix="humanize" testID="amount-humanize" />
           </Box>
         </Box>
-        
+
         <Box>
           <Text marginBottom="spacing.2">Styling options:</Text>
           <Box display="flex" gap="spacing.4">
-            <Amount 
-              value={12345.67} 
-              isStrikethrough={true} 
+            <Amount
+              value={12345.67}
+              isStrikethrough={true}
               data-analytics-section="pricing"
               data-analytics-action="view"
             />
             <Amount value={12345.67} isAffixSubtle={false} />
-            <Amount 
-              value={12345.67} 
-              color="feedback.text.positive.intense" 
-              isAffixSubtle={true}
-            />
+            <Amount value={12345.67} color="feedback.text.positive.intense" isAffixSubtle={true} />
           </Box>
         </Box>
-        
+
         <Box>
           <Text marginBottom="spacing.2">Color variations:</Text>
           <Box display="flex" gap="spacing.4">
@@ -185,4 +175,5 @@ const AmountFormattingExample = () => {
   );
 };
 
-export default AmountFormattingExample; 
+export default AmountFormattingExample;
+```

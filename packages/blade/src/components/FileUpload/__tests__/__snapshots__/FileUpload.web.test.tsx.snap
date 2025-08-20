@@ -303,35 +303,29 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
 .c13.c13.c13.c13.c13 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -872,35 +866,29 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
 .c13.c13.c13.c13.c13 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1448,35 +1436,29 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
 .c13.c13.c13.c13.c13 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -2020,35 +2002,29 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
 .c13.c13.c13.c13.c13 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 

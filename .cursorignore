@@ -24,15 +24,10 @@ temp/*
 logs/*
 
 # Sensitive Data
-*.xml
-*.properties
-properties.json
 *.sqlite
 *.sqlite3
 *.dbsql
 secrets.*
-*secret*
-*credential*
 .npmrc
 .yarnrc
 .aws/*

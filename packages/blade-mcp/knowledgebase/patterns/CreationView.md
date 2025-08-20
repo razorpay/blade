@@ -29,6 +29,8 @@ CreationView is a pattern used in creation flows to guide users through the proc
 - Text
 - Divider
 - ProgressBar
+- ChipGroup
+- Chip
 
 ## Example
 
@@ -841,4 +843,558 @@ function MultiStepCreationView() {
 }
 
 export default MultiStepCreationView;
+```
+
+### Edit and Add Modal Example
+
+This example demonstrates a simple edit and add modal with responsive design that adapts to mobile and desktop screens.
+
+```tsx
+import React from 'react';
+import {
+  Box,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  BottomSheet,
+  BottomSheetHeader,
+  BottomSheetBody,
+  BottomSheetFooter,
+  Text,
+  TextInput,
+} from '@razorpay/blade/components';
+import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
+
+function ResponsiveModalWrapper({
+  children,
+  footer,
+  isOpen,
+  onDismiss,
+  modalBodyPadding,
+  modalSize = 'small',
+  wrapInBottomSheetFooter = false,
+  customSnapPoints = [0.35, 0.5, 0.85],
+}: {
+  children: React.ReactElement | React.ReactElement[];
+  footer?: React.ReactElement;
+  isOpen: boolean;
+  onDismiss: () => void;
+  modalBodyPadding?: string;
+  modalSize?: 'small' | 'medium' | 'large' | 'full';
+  wrapInBottomSheetFooter?: boolean;
+  customSnapPoints?: [number, number, number];
+}): React.ReactNode {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  if (isMobile) {
+    return (
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
+        <BottomSheetHeader />
+        <BottomSheetBody padding={modalBodyPadding}>
+          {children}
+          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
+        </BottomSheetBody>
+        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
+      </BottomSheet>
+    );
+  }
+
+  return (
+    <Modal isOpen={isOpen} onDismiss={onDismiss} size={modalSize}>
+      <ModalHeader />
+      <ModalBody padding={modalBodyPadding}>{children}</ModalBody>
+      {footer && <ModalFooter>{footer}</ModalFooter>}
+    </Modal>
+  );
+}
+
+function EditAndAddModal() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        footer={
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary" isFullWidth={isMobile}>
+              Cancel
+            </Button>
+            <Button isFullWidth={isMobile}>Update</Button>
+          </Box>
+        }
+      >
+        <Box display="flex" flexDirection="column" gap="spacing.2">
+          <Text size="large" weight="semibold">
+            Edit display name
+          </Text>
+          <Text size="medium" weight="regular" color="surface.text.gray.muted">
+            The new display name will reflect immediately on your dashboard after you update it. It
+            will be visible to you and your team on the Razorpay dashboard.
+          </Text>
+        </Box>
+        <Box marginTop="spacing.5">
+          <TextInput label="Enter new display name" placeholder="Enter your display name" />
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+}
+
+export default EditAndAddModal;
+```
+
+### Flow Selection Modal Example
+
+This example shows a flow selection modal with icon cards and responsive grid layout.
+
+```tsx
+import React from 'react';
+import {
+  Box,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  BottomSheet,
+  BottomSheetHeader,
+  BottomSheetBody,
+  BottomSheetFooter,
+  Card,
+  CardBody,
+  Text,
+  Heading,
+  ZapIcon,
+} from '@razorpay/blade/components';
+import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
+
+function ResponsiveModalWrapper({
+  children,
+  footer,
+  isOpen,
+  onDismiss,
+  modalBodyPadding,
+  modalSize = 'small',
+  wrapInBottomSheetFooter = false,
+  customSnapPoints = [0.35, 0.5, 0.85],
+}: {
+  children: React.ReactElement | React.ReactElement[];
+  footer?: React.ReactElement;
+  isOpen: boolean;
+  onDismiss: () => void;
+  modalBodyPadding?: string;
+  modalSize?: 'small' | 'medium' | 'large' | 'full';
+  wrapInBottomSheetFooter?: boolean;
+  customSnapPoints?: [number, number, number];
+}): React.ReactNode {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  if (isMobile) {
+    return (
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
+        <BottomSheetHeader />
+        <BottomSheetBody padding={modalBodyPadding}>
+          {children}
+          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
+        </BottomSheetBody>
+        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
+      </BottomSheet>
+    );
+  }
+
+  return (
+    <Modal isOpen={isOpen} onDismiss={onDismiss} size={modalSize}>
+      <ModalHeader />
+      <ModalBody padding={modalBodyPadding}>{children}</ModalBody>
+      {footer && <ModalFooter>{footer}</ModalFooter>}
+    </Modal>
+  );
+}
+
+function FlowSelectionModal() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedMethod, setSelectedMethod] = React.useState('');
+
+  const paymentMethods = [
+    {
+      value: 'quickpay',
+      title: 'Quick Pay Button',
+      subtitle:
+        'Accepting fixed price payments? Customers make quick payments of fixed price through this button',
+      icon: ZapIcon,
+    },
+    {
+      value: 'buynow',
+      title: 'Buy Now Button',
+      subtitle:
+        'Selling products or event tickets? Sell multiple items with support for quantity using this button.',
+      icon: ZapIcon,
+    },
+    {
+      value: 'custom',
+      title: 'Custom Button',
+      subtitle:
+        'Build your own button with your own design and branding or use our pre-built templates.',
+      icon: ZapIcon,
+      isDisabled: true,
+    },
+  ];
+
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        modalSize="medium"
+        footer={
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              isDisabled={!selectedMethod}
+              onClick={() => {
+                console.log('Selected payment method:', selectedMethod);
+                setIsOpen(false);
+              }}
+              isFullWidth={isMobile}
+            >
+              Proceed
+            </Button>
+          </Box>
+        }
+        modalBodyPadding="spacing.0"
+        wrapInBottomSheetFooter
+        customSnapPoints={[0.8, 0.9, 0.95]}
+      >
+        <Box
+          paddingX="spacing.6"
+          paddingTop="spacing.6"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.1"
+        >
+          <Heading size="small" weight="semibold">
+            Pick a Button Type
+          </Heading>
+          <Text color="surface.text.gray.muted" size="small" weight="regular">
+            Pick a button which meets your requirements and get a head start on collecting payments
+            or you could build your own
+          </Text>
+        </Box>
+        <Box padding="spacing.6">
+          <Box
+            display="grid"
+            gridTemplateColumns={{
+              base: '1fr 1fr',
+              m: '1fr 1fr 1fr',
+              l: '1fr 1fr 1fr',
+            }}
+            justifyItems="center"
+            gap="spacing.5"
+            width="100%"
+          >
+            {paymentMethods.map((method, index) => (
+              <Card
+                key={`${method.value}-${index}`}
+                isSelected={selectedMethod === method.value}
+                onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
+                padding="spacing.0"
+                accessibilityLabel={`Select ${method.title}`}
+                width={isMobile ? '165px' : '228px'}
+                height={isMobile ? '184px' : undefined}
+                borderRadius="medium"
+                elevation="none"
+              >
+                <CardBody>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    marginTop="spacing.6"
+                    marginX="spacing.5"
+                  >
+                    <Box
+                      padding="10px"
+                      backgroundColor={
+                        method.isDisabled
+                          ? 'surface.background.gray.subtle'
+                          : 'surface.background.primary.subtle'
+                      }
+                      width="40px"
+                      height="40px"
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      borderRadius="medium"
+                    >
+                      <method.icon
+                        color={
+                          method.isDisabled
+                            ? 'surface.icon.gray.muted'
+                            : 'surface.icon.primary.normal'
+                        }
+                        size="large"
+                      />
+                    </Box>
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.4"
+                    alignItems="center"
+                    paddingX="spacing.5"
+                    paddingY="spacing.4"
+                  >
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      justifyContent="center"
+                      alignItems="center"
+                      maxHeight="95px"
+                      gap="spacing.2"
+                    >
+                      <Text
+                        size="medium"
+                        weight="semibold"
+                        color={
+                          method.isDisabled ? 'surface.text.gray.muted' : 'surface.text.gray.normal'
+                        }
+                      >
+                        {method.title}
+                      </Text>
+                      <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                        {method.subtitle}
+                      </Text>
+                    </Box>
+                  </Box>
+                </CardBody>
+              </Card>
+            ))}
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+}
+
+export default FlowSelectionModal;
+```
+
+### Single Step Form Modal Example
+
+This example demonstrates a single step form with chip groups and responsive layout.
+
+```tsx
+import React from 'react';
+import {
+  Box,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  BottomSheet,
+  BottomSheetHeader,
+  BottomSheetBody,
+  BottomSheetFooter,
+  Text,
+  Heading,
+  ChipGroup,
+  Chip,
+  TextInput,
+} from '@razorpay/blade/components';
+import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
+
+function ResponsiveModalWrapper({
+  children,
+  footer,
+  isOpen,
+  onDismiss,
+  modalBodyPadding,
+  modalSize = 'small',
+  wrapInBottomSheetFooter = false,
+  customSnapPoints = [0.35, 0.5, 0.85],
+}: {
+  children: React.ReactElement | React.ReactElement[];
+  footer?: React.ReactElement;
+  isOpen: boolean;
+  onDismiss: () => void;
+  modalBodyPadding?: string;
+  modalSize?: 'small' | 'medium' | 'large' | 'full';
+  wrapInBottomSheetFooter?: boolean;
+  customSnapPoints?: [number, number, number];
+}): React.ReactNode {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  if (isMobile) {
+    return (
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
+        <BottomSheetHeader />
+        <BottomSheetBody padding={modalBodyPadding}>
+          {children}
+          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
+        </BottomSheetBody>
+        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
+      </BottomSheet>
+    );
+  }
+
+  return (
+    <Modal isOpen={isOpen} onDismiss={onDismiss} size={modalSize}>
+      <ModalHeader />
+      <ModalBody padding={modalBodyPadding}>{children}</ModalBody>
+      {footer && <ModalFooter>{footer}</ModalFooter>}
+    </Modal>
+  );
+}
+
+function SingleStepFormModal() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  const shippingTime = [
+    { value: '1-2 days', label: '1-2 days' },
+    { value: '3-5 days', label: '3-5 days' },
+    { value: '6-8 days', label: '6-8 days' },
+    { value: '9-15 days', label: '9-15 days' },
+    { value: 'not applicable', label: 'Not Applicable' },
+  ];
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        modalSize="large"
+        modalBodyPadding="spacing.0"
+        customSnapPoints={[0.8, 0.9, 0.95]}
+        wrapInBottomSheetFooter
+        footer={
+          isMobile ? (
+            <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+              <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+                Back
+              </Button>
+              <Button variant="primary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+                Continue
+              </Button>
+            </Box>
+          ) : undefined
+        }
+      >
+        <Box
+          display="grid"
+          gridTemplateColumns={isMobile ? '1fr' : 'auto 1fr'}
+          gridTemplateRows={isMobile ? '1fr' : 'auto 1fr'}
+          width="100%"
+          height="100%"
+        >
+          {!isMobile && (
+            <Box
+              backgroundColor="surface.background.gray.subtle"
+              height="596px"
+              width="400px"
+              display="flex"
+              flexDirection="column"
+              justifyContent="flex-end"
+              overflow="hidden"
+              gridRow="span 2"
+            >
+              <img src="side-image.png" height="596px" width="100%" alt="Side illustration" />
+            </Box>
+          )}
+          <Box
+            height="596px"
+            paddingTop="spacing.6"
+            width="100%"
+            overflow="auto"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+          >
+            <Box paddingX="spacing.6">
+              <Heading size="medium" weight="semibold">
+                Create policy pages with Razorpay
+              </Heading>
+              <Text size="medium" weight="regular" color="surface.text.gray.muted">
+                We need a few details to create the missing policy pages for you
+              </Text>
+              <Box
+                marginTop="spacing.6"
+                display="flex"
+                gap="spacing.7"
+                flexDirection="column"
+                height="100%"
+                width="100%"
+              >
+                <ChipGroup label="Shipping time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <ChipGroup label="Cancellation request time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <ChipGroup label="Refund processing time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <TextInput label="Support contact number" prefix="+91" placeholder="9XXXXXXXXX" />
+                <TextInput label="Support Email ID" placeholder="support@razorpay.com" />
+              </Box>
+            </Box>
+            {!isMobile && (
+              <Box>
+                <ModalFooter>
+                  <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+                    <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+                      Back
+                    </Button>
+                    <Button variant="primary" onClick={() => setIsOpen(false)}>
+                      Continue
+                    </Button>
+                  </Box>
+                </ModalFooter>
+              </Box>
+            )}
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+}
+
+export default SingleStepFormModal;
 ```

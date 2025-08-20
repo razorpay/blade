@@ -6,6 +6,10 @@ Carousel
 
 The Carousel is a component that displays a collection of items in a horizontally scrollable container. It enables users to navigate through content items like images, cards, or promotional content with pagination indicators and navigation buttons. The Carousel supports various configurations including multiple visible items, autoplay, and different navigation styles.
 
+## Important Constraints
+
+- `Carousel` component only accepts `CarouselItem` components as children
+
 ## TypeScript Types
 
 The following types represent the props that the Carousel component and its subcomponents accept. These allow you to properly configure the component according to your needs.
@@ -106,6 +110,18 @@ type CarouselProps = {
    * Callback when slide changes
    */
   onChange?: (index: number) => void;
+
+  /**
+   * Controls how carousel items are aligned within the container
+   * @default 'start'
+   */
+  snapAlign?: 'start' | 'center' | 'end';
+
+  /**
+   * Sets the gap between carousel items
+   * @default { base: 'spacing.4', m: 'spacing.5' }
+   */
+  gap?: BoxProps['gap'];
 } & StyledPropsBlade &
   TestID;
 
@@ -611,4 +627,83 @@ const AutoPlayProductCarouselExample = () => {
 };
 
 export default AutoPlayProductCarouselExample;
+```
+
+### Carousel with Peek Behavior
+
+This example demonstrates a carousel with peek behavior where the active card is centered with adjacent cards visible on the sides.
+
+You can achieve peek behavior by setting `visibleItems` to 1, adding `carouselItemWidth` to be less than 100% (eg: 80%), setting `snapAlign` to "center", and adding `gap` for spacing between items.
+
+```tsx
+import React from 'react';
+import {
+  Carousel,
+  CarouselItem,
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
+  Box,
+  Text,
+  Heading,
+} from '@razorpay/blade/components';
+
+const CarouselWithPeekExample = () => {
+  const features = [
+    {
+      id: '1',
+      title: 'Instant Settlements',
+      description: 'Get your money in seconds with our instant settlement feature.',
+      benefit: 'Improved cash flow',
+    },
+    {
+      id: '2',
+      title: 'Smart Routing',
+      description: 'AI-powered payment routing for maximum success rates.',
+      benefit: 'Higher conversion',
+    },
+    {
+      id: '3',
+      title: 'Fraud Detection',
+      description: 'Advanced ML models to prevent fraudulent transactions.',
+      benefit: 'Enhanced security',
+    },
+    {
+      id: '4',
+      title: 'Analytics Dashboard',
+      description: 'Real-time insights and detailed payment analytics.',
+      benefit: 'Data-driven decisions',
+    },
+  ];
+
+  return (
+    <Box padding="spacing.5">
+      <Carousel
+        accessibilityLabel="Payment features with peek"
+        visibleItems={1}
+        carouselItemWidth={{ base: '80%', m: '80%' }}
+        snapAlign="center"
+        gap="spacing.7"
+        navigationButtonPosition="bottom"
+        showIndicators={true}
+      >
+        {features.map((feature) => (
+          <CarouselItem key={feature.id}>
+            <Card height="100%" elevation="midRaised">
+              <CardHeader>
+                <CardHeaderLeading title={feature.title} subtitle={feature.benefit} />
+              </CardHeader>
+              <CardBody>
+                <Text>{feature.description}</Text>
+              </CardBody>
+            </Card>
+          </CarouselItem>
+        ))}
+      </Carousel>
+    </Box>
+  );
+};
+
+export default CarouselWithPeekExample;
 ```

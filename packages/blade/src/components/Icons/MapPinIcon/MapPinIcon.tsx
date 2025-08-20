@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const MapPinIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _MapPinIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -26,5 +27,9 @@ const MapPinIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const MapPinIcon = assignWithoutSideEffects(_MapPinIcon, {
+  componentId: 'MapPinIcon',
+});
 
 export default MapPinIcon;
