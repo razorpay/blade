@@ -365,6 +365,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           autoCompleteType="off"
                           data-blade-component="styled-base-input"
                           editable={true}
+                          handleOnPaste={[Function]}
                           hasLeadingDropdown={false}
                           hasTags={false}
                           id="dropdown-7-trigger-1-input-2"
