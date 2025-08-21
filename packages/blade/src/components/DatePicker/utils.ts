@@ -284,12 +284,12 @@ const getTextInputFormat = (formatStr?: string, isRangeInput?: boolean): string 
  * @example
  * // Invalid date (non-existent)
  * validateDateComponents("31/02/2024")
- * // → { isValid: false, error: "Invalid date" }
+ * // → { isValid: false, error: "Please enter a valid date" }
  *
  * @example
  * // Invalid year range
  * validateDateComponents("25/12/999")
- * // → { isValid: false, error: "Invalid year" }
+ * // → { isValid: false, error: "Year must be between 1000 and 3000" }
  *
  * @example
  * // Empty input
@@ -313,13 +313,13 @@ const validateDateComponents = (
 
   // DayJS strict mode catches invalid days/months and non-existent dates (e.g., Feb 30th)
   if (!parsed.isValid()) {
-    return { isValid: false, error: 'Invalid date' };
+    return { isValid: false, error: 'Please enter a valid date' };
   }
 
   // Business rule: restrict year range to reasonable values for most applications
   const year = parsed.year();
   if (year < 1000 || year > 3000) {
-    return { isValid: false, error: 'Invalid year' };
+    return { isValid: false, error: 'Year must be between 1000 and 3000' };
   }
 
   // Return both validation result AND parsed date to avoid double parsing
@@ -432,14 +432,14 @@ const parseSpecialSingleFormat = (
  * @example
  * // Invalid date with error
  * validateAndParseDateInput("31/02/2024", false, "DD/MM/YYYY")
- * // → { shouldBlock: true, error: "Invalid date" }
+ * // → { shouldBlock: true, error: "Please enter a valid date in DD/MM/YYYY format" }
  *
  * @example
  * // Date excluded by constraint
  * validateAndParseDateInput("25/12/2024", false, "DD/MM/YYYY", {
  *   excludeDate: (date) => date.getDay() === 0 // No Sundays
  * })
- * // → { shouldBlock: true, error: "Date is not allowed" }
+ * // → { shouldBlock: true, error: "This date is not available for selection" }
  *
  * @example
  * // Special format - year only
@@ -474,7 +474,7 @@ const validateAndParseDateInput = (
     if (specialParse.isSpecialFormat && !specialParse.shouldBlock) {
       return { shouldBlock: false, parsedValue: specialParse.parsedDate || null };
     } else if (specialParse.shouldBlock) {
-      return { shouldBlock: true, error: 'Invalid date' };
+      return { shouldBlock: true, error: 'Please enter a valid date' };
     }
   }
 
@@ -482,12 +482,29 @@ const validateAndParseDateInput = (
     // Split range input on en dash separator (e.g., "25/12/2024  –  31/12/2024")
     const parts = inputValue.split(/\s*–\s*/);
 
-    // Block incomplete input to prevent premature validation (e.g., "25/12/202" is being typed)
+    // Enhanced: Block incomplete input with partial validation
     if (
       (parts[0]?.trim() && parts[0].trim().length < 10) ||
       (parts[1]?.trim() && parts[1].trim().length < 10)
     ) {
-      return { shouldBlock: true, error: 'Invalid date' };
+      // Check start date part if it exists and has content
+      if (parts[0]?.trim()) {
+        const startPartialValidation = validatePartialDateSimple(parts[0].trim());
+        if (!startPartialValidation.isValid) {
+          return { shouldBlock: true, error: `Start date: ${startPartialValidation.error}` };
+        }
+      }
+
+      // Check end date part if it exists and has content
+      if (parts[1]?.trim()) {
+        const endPartialValidation = validatePartialDateSimple(parts[1].trim());
+        if (!endPartialValidation.isValid) {
+          return { shouldBlock: true, error: `End date: ${endPartialValidation.error}` };
+        }
+      }
+
+      // If partial validation passes, allow continued typing
+      return { shouldBlock: false };
     }
 
     let startDate: Date | null = null;
@@ -521,16 +538,16 @@ const validateAndParseDateInput = (
     // Additional validation for date range constraints
     if (options) {
       if (startDate && options.minDate && dayjs(startDate).isBefore(dayjs(options.minDate))) {
-        return { shouldBlock: true, error: 'Start date is not allowed' };
+        return { shouldBlock: true, error: 'Start date is before the minimum allowed date' };
       }
       if (startDate && options.maxDate && dayjs(startDate).isAfter(dayjs(options.maxDate))) {
-        return { shouldBlock: true, error: 'Start date is not allowed' };
+        return { shouldBlock: true, error: 'Start date is after the maximum allowed date' };
       }
       if (endDate && options.minDate && dayjs(endDate).isBefore(dayjs(options.minDate))) {
-        return { shouldBlock: true, error: 'End date is not allowed' };
+        return { shouldBlock: true, error: 'End date is before the minimum allowed date' };
       }
       if (endDate && options.maxDate && dayjs(endDate).isAfter(dayjs(options.maxDate))) {
-        return { shouldBlock: true, error: 'End date is not allowed' };
+        return { shouldBlock: true, error: 'End date is after the maximum allowed date' };
       }
     }
 
@@ -548,22 +565,136 @@ const validateAndParseDateInput = (
     // Additional validation for single date constraints
     if (options && parsedDate) {
       if (options.excludeDate?.(parsedDate)) {
-        return { shouldBlock: true, error: 'Date is not allowed' };
+        return { shouldBlock: true, error: 'This date is not available for selection' };
       }
       if (options.minDate && dayjs(parsedDate).isBefore(dayjs(options.minDate))) {
-        return { shouldBlock: true, error: 'Date is not allowed' };
+        return { shouldBlock: true, error: 'Date is before the minimum allowed date' };
       }
       if (options.maxDate && dayjs(parsedDate).isAfter(dayjs(options.maxDate))) {
-        return { shouldBlock: true, error: 'Date is not allowed' };
+        return { shouldBlock: true, error: 'Date is after the maximum allowed date' };
       }
     }
 
     // Return parsed date ready for setControlledValue
     return { shouldBlock: false, parsedValue: parsedDate || null };
+  } else {
+    // Partial validation for incomplete single date
+    const partialValidation = validatePartialDateSimple(inputValue);
+    if (!partialValidation.isValid) {
+      return { shouldBlock: true, error: partialValidation.error };
+    }
+
+    // If partial validation passes, allow continued typing
+    return { shouldBlock: false };
   }
 
-  // Input is incomplete but valid so far - allow continued typing
+  // This line should not be reached, but keeping for safety
   return { shouldBlock: false };
+};
+
+/**
+ * Simple partial date validation using / splitting
+ * Since special formats (MMM, MMMM, YYYY) are handled before this function
+ *
+ * @param input - The partial date input to validate
+ * @returns Object with validation result and optional error message
+ *
+ * @example
+ * // Valid partial input
+ * validatePartialDateSimple("15")
+ * // → { isValid: true }
+ *
+ * @example
+ * // Invalid day
+ * validatePartialDateSimple("35")
+ * // → { isValid: false, error: "Day cannot be greater than 31" }
+ *
+ * @example
+ * // Invalid month
+ * validatePartialDateSimple("15/13")
+ * // → { isValid: false, error: "Month cannot be greater than 12" }
+ *
+ * @example
+ * // Invalid day-month combination
+ * validatePartialDateSimple("30/02")
+ * // → { isValid: false, error: "February cannot have more than 29 days" }
+ */
+const validatePartialDateSimple = (input: string): { isValid: boolean; error?: string } => {
+  // Don't validate empty input - let user start typing
+  if (!input?.trim()) {
+    return { isValid: true };
+  }
+
+  // Split by / to get day, month parts
+  const parts = input.split('/');
+
+  // Validate day part (first part)
+  if (parts[0]) {
+    const dayStr = parts[0].trim();
+    if (dayStr.length > 0) {
+      const day = parseInt(dayStr, 10);
+
+      // Day must be valid number
+      if (isNaN(day)) {
+        return { isValid: false, error: 'Please enter a valid day (01-31)' };
+      }
+
+      // Day cannot be greater than 31
+      if (day > 31) {
+        return { isValid: false, error: 'Day cannot be greater than 31' };
+      }
+
+      // Day cannot be 00
+      if (day === 0) {
+        return { isValid: false, error: 'Day cannot be 00, please enter 01-31' };
+      }
+    }
+  }
+
+  // Validate month part (second part)
+  if (parts[1]) {
+    const monthStr = parts[1].trim();
+    if (monthStr.length > 0) {
+      const month = parseInt(monthStr, 10);
+
+      // Month must be valid number
+      if (isNaN(month)) {
+        return { isValid: false, error: 'Please enter a valid month (01-12)' };
+      }
+
+      // Month cannot be greater than 12
+      if (month > 12) {
+        return { isValid: false, error: 'Month cannot be greater than 12' };
+      }
+
+      // Month cannot be 00
+      if (month === 0) {
+        return { isValid: false, error: 'Month cannot be 00, please enter 01-12' };
+      }
+
+      // Basic day-month validation (no DayJS needed)
+      if (parts[0]?.trim()) {
+        const day = parseInt(parts[0].trim(), 10);
+        if (!isNaN(day)) {
+          // February cannot have more than 29 days
+          if (month === 2 && day > 29) {
+            return { isValid: false, error: 'February cannot have more than 29 days' };
+          }
+
+          // Months with 30 days: April(4), June(6), September(9), November(11)
+          if ([4, 6, 9, 11].includes(month) && day > 30) {
+            return {
+              isValid: false,
+              error: `Month ${month.toString().padStart(2, '0')} cannot have more than 30 days`,
+            };
+          }
+        }
+      }
+    }
+  }
+
+  // If we get here, partial input is valid
+  return { isValid: true };
 };
 
 /**
@@ -600,5 +731,6 @@ export {
   getTextInputFormat,
   validateDateComponents,
   validateAndParseDateInput,
+  validatePartialDateSimple,
   stripDelimiters,
 };
