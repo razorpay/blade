@@ -183,6 +183,7 @@ exports[`<BaseInput /> should render 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -499,6 +500,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={true}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -815,6 +817,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={true}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -1300,6 +1303,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -1758,6 +1762,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -2277,6 +2282,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -2961,6 +2967,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
