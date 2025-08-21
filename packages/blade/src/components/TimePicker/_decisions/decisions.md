@@ -89,8 +89,10 @@ type TimePickerProps = InputProps & {
    *
    * Note: Currently only 12h format is supported.
    * 24h format will be added once we upgrade to Mantine v8.
+   *
+   * COMMENTED OUT: No need to expose this prop since we only support one format
    */
-  timeFormat?: '12h';
+  // timeFormat?: '12h';
 
   /**
    * Step interval for minutes
@@ -243,13 +245,12 @@ But still we could expose TimeSelector as a standalone component for advanced us
 ```jsx
 <TimePicker
   label="Appointment time"
-  timeFormat="12h" // Only supported format currently
   defaultValue={new Date('2024-01-01T14:30:00')}
   onChange={({ value }) => console.log(value)}
 />
 ```
 
-> **Note**: Currently, only 12-hour format is supported. 24-hour format will be added in a future release once we upgrade to Mantine v8.
+> **Note**: Currently, only 12-hour format is supported. The `timeFormat` prop has been removed since we only support one format. 24-hour format will be added in a future release once we upgrade to Mantine v8.
 
 ### Time Range Support
 
@@ -342,7 +343,6 @@ function ControlledTimePicker() {
 ```jsx
 <TimePicker
   label="Meeting time"
-  timeFormat="12h" // Currently only supported format
   minuteStep={5}
   value={new Date('2024-01-01T14:30:00')}
   onChange={({ value }) => console.log('Selected:', value)}
@@ -457,15 +457,23 @@ TimePicker is designed to integrate seamlessly with ListView patterns for time-b
 
 **Decision**: For the initial release, we'll provide **only 12h format** support.
 
+**Implementation**:
+
+- The `timeFormat` prop has been commented out from the API since we only support one format
+- TimePicker will default to 12h format without requiring any prop configuration
+- This reduces API complexity and potential confusion for consumers
+
 **Rationale**:
 
 - Currently, there's no established business case or user requirement for 24h format
 - Mantine v6 (our current version) has limitations with 24h format support
 - Mantine v8 provides better 24h format support, but we cannot upgrade immediately due to technical constraints
+- No need to expose a prop when only one option is available
 
 **Future Plan**:
 
 - Once we upgrade to Mantine v8, we'll add 24h format support
+- The `timeFormat` prop will be uncommented and exposed in the API
 - This will be documented and communicated as a feature enhancement
 
 **References**:
@@ -479,8 +487,8 @@ We need to figure out how to integrate the time picker with i18nify,
 
 ```js
 // Consumer will have to handle locale-specific time formatting
-// Currently only 12h format is supported
-<TimePicker locale="my" timeFormat="12h" />
+// Currently only 12h format is supported (timeFormat prop removed)
+<TimePicker locale="my" />
 ```
 
 ## References
