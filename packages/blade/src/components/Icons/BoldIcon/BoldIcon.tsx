@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const BoldIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _BoldIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const BoldIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const BoldIcon = assignWithoutSideEffects(_BoldIcon, {
+  componentId: 'BoldIcon',
+});
 
 export default BoldIcon;

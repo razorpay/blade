@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
-import { checkboxCellWidth, tableHeader, tableRow } from './tokens';
+import { checkboxCellWidth, tableHeader, tableRow, classes } from './tokens';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import type {
@@ -100,7 +100,8 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $hasPadding: boolean;
   $textAlign: 'left' | 'center' | 'right';
-}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign }) => ({
+  gridRow?: string;
+}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign, gridRow }) => ({
   '&&&': {
     display: $textAlign ? 'flex' : 'block',
     justifyContent: $textAlign ? 'space-between' : 'initial',
@@ -113,6 +114,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
     cursor: $isSortable ? 'pointer' : 'auto',
+    gridRow,
     '> div': {
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
@@ -137,6 +139,10 @@ const _TableHeaderCell = ({
   headerKey,
   _hasPadding = true,
   textAlign,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableHeaderCellProps): React.ReactElement => {
   const {
@@ -149,9 +155,17 @@ const _TableHeaderCell = ({
   const isChildrenString = typeof children === 'string';
   const isSortable =
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
+
+  const hasRowSpan = Boolean(gridRowStart && gridRowEnd);
+  const gridRowValue = hasRowSpan ? `${gridRowStart} / ${gridRowEnd}` : undefined;
+
   return (
     <StyledHeaderCell
       tabIndex={0}
+      className={hasRowSpan ? classes.HAS_ROW_SPANNING : ''}
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
+      gridRow={gridRowValue}
       $isSortable={isSortable}
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}

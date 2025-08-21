@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ThumbsDownIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _ThumbsDownIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const ThumbsDownIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const ThumbsDownIcon = assignWithoutSideEffects(_ThumbsDownIcon, {
+  componentId: 'ThumbsDownIcon',
+});
 
 export default ThumbsDownIcon;

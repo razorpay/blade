@@ -6,6 +6,10 @@ Box
 
 Box is a versatile layout primitive component that serves as the foundational building block for creating complex layouts in Blade applications. It provides a comprehensive set of styling and layout properties through a consistent prop-based API, supporting responsive design, flexbox layouts, and styled-system patterns. Box allows developers to create consistent layouts without writing custom CSS while maintaining design system constraints.
 
+## Important Constraints
+
+- `backgroundColor` prop only accepts `transparent`, `surface.background.*`, and `overlay.*` tokens
+
 ## TypeScript Types
 
 The following types represent the props that the Box component accepts. These types allow you to properly configure the component according to your needs.

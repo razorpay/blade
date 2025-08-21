@@ -1,8 +1,9 @@
 import { Svg, Circle } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const DotIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _DotIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -11,5 +12,9 @@ const DotIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const DotIcon = assignWithoutSideEffects(_DotIcon, {
+  componentId: 'DotIcon',
+});
 
 export default DotIcon;

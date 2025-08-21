@@ -6,6 +6,10 @@ IconButton
 
 The IconButton component provides an accessible way to trigger actions using only icons. It is designed for interfaces where space is limited or when a visual-only control is preferred, such as close buttons for modals, action buttons in cards, or compact toolbar controls. IconButton maintains proper accessibility with required labels while offering various visual styles.
 
+## Important Constraints
+
+- `size="large"` is not allowed with `isHighlighted={true}`
+
 ## TypeScript Types
 
 The following types represent the props that the IconButton component accepts. These allow you to properly configure the component according to your needs.

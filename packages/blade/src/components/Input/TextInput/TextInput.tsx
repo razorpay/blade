@@ -30,6 +30,7 @@ import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { DropdownOverlay } from '~components/Dropdown';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
+import { isIconComponent } from '~utils/isIconComponent';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -70,6 +71,11 @@ type TextInputCommonProps = Pick<
   | 'trailingButton'
   | 'trailingIcon'
   | 'textAlign'
+  | 'popupId'
+  | 'isPopupExpanded'
+  | 'hasPopup'
+  | 'componentName'
+  | 'onKeyDown'
   | keyof DataAnalyticsAttribute
 > & {
   /**
@@ -228,6 +234,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     leading,
     labelSuffix,
     labelTrailing,
+    onKeyDown,
     ...rest
   },
   ref,
@@ -310,15 +317,13 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   const trailingDropdown =
     trailing && getComponentId(trailing as React.ReactElement) === 'Dropdown' ? trailing : null;
   // we need to look into name of component and check if it 's and icon or a dropdown
-  const _leadingIcon: IconComponent | undefined =
-    leading && typeof leading === 'function' && leading.name?.endsWith('Icon')
-      ? (leading as IconComponent)
-      : undefined;
+  const _leadingIcon: IconComponent | undefined = isIconComponent(leading)
+    ? (leading as IconComponent)
+    : undefined;
 
-  const _trailingIcon: IconComponent | undefined =
-    trailing && typeof trailing === 'function' && trailing.name?.endsWith('Icon')
-      ? (trailing as IconComponent)
-      : undefined;
+  const _trailingIcon: IconComponent | undefined = isIconComponent(trailing)
+    ? (trailing as IconComponent)
+    : undefined;
   const hasLeadingInteractionElement = !_leadingIcon && !leadingDropDown && leading;
 
   const hasTrailingInteractionElement = !_trailingIcon && !trailingDropdown && trailing;
@@ -500,6 +505,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       }}
       onKeyDown={(e) => {
         handleTaggedInputKeydown(e);
+        onKeyDown?.(e);
         if (format) {
           formattingResult.handleKeyDown(e.event);
         }

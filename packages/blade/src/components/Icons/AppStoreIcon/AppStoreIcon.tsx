@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const AppStoreIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _AppStoreIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -34,5 +35,9 @@ const AppStoreIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const AppStoreIcon = assignWithoutSideEffects(_AppStoreIcon, {
+  componentId: 'AppStoreIcon',
+});
 
 export default AppStoreIcon;

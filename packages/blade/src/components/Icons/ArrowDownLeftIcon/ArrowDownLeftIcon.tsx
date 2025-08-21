@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ArrowDownLeftIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _ArrowDownLeftIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -14,5 +15,9 @@ const ArrowDownLeftIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const ArrowDownLeftIcon = assignWithoutSideEffects(_ArrowDownLeftIcon, {
+  componentId: 'ArrowDownLeftIcon',
+});
 
 export default ArrowDownLeftIcon;

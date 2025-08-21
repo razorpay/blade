@@ -14,6 +14,7 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Heading, Text } from '~components/Typography';
 import { List, ListItem, ListItemCode } from '~components/List';
+import { AnnouncementIcon } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -154,6 +155,7 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
   const showPromotionalToast = () => {
     toast.show({
       type: 'promotional',
+      leading: AnnouncementIcon,
       content: (
         <Box display="flex" gap="spacing.3" flexDirection="column">
           <Heading>Introducing TurboUPI</Heading>

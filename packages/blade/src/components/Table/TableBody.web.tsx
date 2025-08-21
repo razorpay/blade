@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import { Virtualized } from '@table-library/react-table-library/virtualized';
 import styled from 'styled-components';
@@ -81,10 +81,12 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
 
 export const StyledCell = styled(Cell)<{
   $backgroundColor: TableBackgroundColors;
-}>(({ theme, $backgroundColor }) => ({
+  gridRow?: string;
+}>(({ theme, $backgroundColor, gridRow }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
+    gridRow,
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
@@ -127,17 +129,28 @@ const _TableCell = ({
   children,
   textAlign,
   _hasPadding,
+  gridColumnStart,
+  gridColumnEnd,
+  gridRowStart,
+  gridRowEnd,
   ...rest
 }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
+  const hasRowSpan = Boolean(gridRowStart && gridRowEnd);
+  const gridRowValue = hasRowSpan ? `${gridRowStart} / ${gridRowEnd}` : undefined;
+
   return (
     <StyledCell
       tabIndex={0}
       role="cell"
+      className={hasRowSpan ? classes.HAS_ROW_SPANNING : ''}
       $backgroundColor={backgroundColor}
+      gridColumnStart={gridColumnStart}
+      gridColumnEnd={gridColumnEnd}
+      gridRow={gridRowValue}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
     >
@@ -180,10 +193,12 @@ const TableCheckboxCell = ({
   isChecked,
   onChange,
   isDisabled,
+  isIndeterminate,
 }: {
   isChecked: CheckboxProps['isChecked'];
   onChange: CheckboxProps['onChange'];
   isDisabled?: boolean;
+  isIndeterminate?: boolean;
 }): React.ReactElement => {
   return (
     <TableCell>
@@ -193,12 +208,19 @@ const TableCheckboxCell = ({
         justifyContent="center"
         flex={1}
         width={makeSize(checkboxCellWidth)}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          /* Make entire 44px checkbox area clickable while preventing row selection */
+          if (e.target === e.currentTarget && !isDisabled) {
+            onChange?.({ isChecked: !isChecked });
+          }
+          e.stopPropagation();
+        }}
       >
         <Checkbox
           isDisabled={isDisabled}
           isChecked={isChecked}
           onChange={onChange}
+          isIndeterminate={isIndeterminate}
           {...makeAccessible({ label: 'Select Row' })}
         />
       </BaseBox>
@@ -210,7 +232,9 @@ const StyledRow = styled(Row)<{
   $isSelectable: boolean;
   $isHoverable: boolean;
   $showBorderedCells: boolean;
-}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells }) => {
+  $isGrouped: boolean;
+  $isGroupHeader: boolean;
+}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isGrouped, $isGroupHeader }) => {
   const { hasHoverActions } = useTableContext();
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
@@ -285,6 +309,16 @@ const StyledRow = styled(Row)<{
         },
       }),
       '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
+      ...($isGroupHeader && {
+        '& td': {
+          backgroundColor: getIn(theme.colors, tableRow.groupHeaderBackgroundColor),
+        },
+      }),
+      ...($isGrouped && {
+        '& .cell-wrapper': {
+          border: 'none',
+        },
+      }),
     },
   };
 });
@@ -307,11 +341,38 @@ const _TableRow = <Item,>({
     showBorderedCells,
     setHasHoverActions,
     isVirtualized,
+    isGrouped,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
   const isSelected = selectedRows?.includes(item.id);
   const hasHoverActions = Boolean(hoverActions);
+  const isGroupHeader =
+    isGrouped &&
+    (item as { treeXLevel?: number }).treeXLevel === 0 &&
+    ((item as { nodes?: unknown[] }).nodes?.length ?? 0) > 0;
+
+  const getGroupSelectionState = useMemo(() => {
+    if (!isGroupHeader || !isMultiSelect || !selectedRows) {
+      return { isAllSelected: false, isIndeterminate: false };
+    }
+
+    const childNodes = (item as { nodes?: string[] }).nodes ?? [];
+    if (childNodes.length === 0) {
+      return { isAllSelected: false, isIndeterminate: false };
+    }
+
+    const selectedChildIds = childNodes.filter((child) => selectedRows.includes(child));
+    const selectedCount = selectedChildIds?.length ?? 0;
+    const totalCount = childNodes?.length ?? 0;
+
+    const isAllSelected = selectedCount === totalCount;
+    const isIndeterminate = selectedCount > 0 && selectedCount < totalCount && !isSelected;
+
+    return { isAllSelected, isIndeterminate };
+  }, [isGroupHeader, isMultiSelect, selectedRows, item, isSelected]);
+
+  const { isAllSelected, isIndeterminate } = getGroupSelectionState;
 
   useEffect(() => {
     if (isDisabled) {
@@ -334,17 +395,25 @@ const _TableRow = <Item,>({
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
       onMouseEnter={() => onHover?.({ item })}
-      onClick={() => onClick?.({ item })}
+      onClick={() => {
+        onClick?.({ item });
+        if (selectionType !== 'none' && !isDisabled) {
+          toggleRowSelectionById(item.id);
+        }
+      }}
       {...makeAccessible({ selected: isSelected })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
       $isVirtualized={isVirtualized}
+      $isGrouped={isGrouped}
+      $isGroupHeader={isGroupHeader}
     >
       {isMultiSelect && (
         <TableCheckboxCell
-          isChecked={isSelected}
+          isChecked={Boolean(isSelected) || Boolean(isAllSelected)}
           onChange={() => !isDisabled && toggleRowSelectionById(item.id)}
           isDisabled={isDisabled}
+          isIndeterminate={isIndeterminate}
         />
       )}
       {children}
