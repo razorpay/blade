@@ -133,6 +133,7 @@ SingleDatePicker.args = {
   label: 'Select a date',
   selectionType: 'single',
   size: 'large',
+  showPartialPlaceholder: true,
 };
 
 export const RangeDatePicker = DatePickerTemplate.bind({});
@@ -140,6 +141,7 @@ RangeDatePicker.storyName = 'RangeDatePicker';
 RangeDatePicker.args = {
   label: { start: 'Select a date range' },
   selectionType: 'range',
+  showPartialPlaceholder: true,
 };
 
 export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ..._args }) => {
@@ -171,6 +173,7 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ..._arg
         label={{ start: 'Select a date range' }}
         selectionType="range"
         value={selectedDates}
+        showPartialPlaceholder={true}
         onChange={(date) => {
           console.log(date);
           setSelectedDates(date as DatesRangeValue);

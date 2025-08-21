@@ -177,6 +177,12 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * @default 'DD/MM/YYYY'  if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
      */
     inputPlaceHolder?: string;
+    /**
+     * Whether to show partial placeholder overlay (e.g., "03/MM/YYYY" when user types "03")
+     * When false, uses normal placeholder behavior
+     * @default false
+     */
+    showPartialPlaceholder?: boolean;
   };
 
 type DatePickerRangeInputProps = {
@@ -226,6 +232,7 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     excludeDate?: (date: Date) => boolean;
     minDate?: Date;
     maxDate?: Date;
+    showPartialPlaceholder?: boolean;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -251,6 +258,7 @@ type DateInputProps = BaseInputProps & {
   excludeDate?: (date: Date) => boolean;
   minDate?: Date;
   maxDate?: Date;
+  showPartialPlaceholder?: boolean;
 };
 
 export type {

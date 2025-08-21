@@ -20,6 +20,7 @@ import { isReactNative } from '~utils';
 import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import { CalendarIcon } from '~components/Icons';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { SimplePlaceholderOverlay } from './SimplePlaceholderOverlay';
 
 /**
  * CRITICAL BEHAVIOR CASES - Verify when making changes:
@@ -33,9 +34,19 @@ const _DateInput = (
   props: DateInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
-  const { format, date, setControlledValue, leadingDropdown, tags, id, ...textInputProps } = props;
+  const {
+    format,
+    date,
+    setControlledValue,
+    leadingDropdown,
+    tags,
+    id,
+    showPartialPlaceholder,
+    ...textInputProps
+  } = props;
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
+  const [formattedUserInput, setFormattedUserInput] = React.useState(''); // For overlay display
 
   const presetContext = usePresetContext();
 
@@ -66,6 +77,18 @@ const _DateInput = (
   React.useEffect(() => {
     setValidationError(undefined);
   }, [date]);
+
+  // React.useEffect(() => {
+  //   if (textInputProps.value?.[0]) {
+  //     const formattedValue = isRange
+  //       ? rangeFormattedValue(
+  //           stripDelimiters(textInputProps.value[0]),
+  //           stripDelimiters(textInputProps.value[1]),
+  //         )
+  //       : stripDelimiters(textInputProps.value[0]);
+  //     setFormattedUserInput(formattedValue);
+  //   }
+  // }, [textInputProps.value]);
 
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false): void => {
@@ -114,9 +137,26 @@ const _DateInput = (
   );
 
   const handleInputChange = ({ value }: { value?: string }): void => {
+    const inputValue = value ?? '';
     setValidationError(undefined);
+
+    // Store formatted user input for overlay (regardless of validation)
+    setFormattedUserInput(inputValue);
+
+    if (inputValue?.trim()) {
+      const validation = validateAndParseDateInput(inputValue, isRange, format, {
+        excludeDate: props.excludeDate,
+        minDate: props.minDate,
+        maxDate: props.maxDate,
+      });
+
+      if (validation.shouldBlock && validation.error) {
+        setValidationError(validation.error);
+      }
+    }
+
     // Apply changes immediately during typing (with empty clearing enabled)
-    applyDateValue(value ?? '', true);
+    applyDateValue(inputValue, true);
   };
 
   const handleBlur = React.useCallback(
@@ -145,33 +185,45 @@ const _DateInput = (
   );
 
   return (
-    <TextInput
-      {...textInputProps}
-      ref={ref}
-      type="number"
-      value={isRange ? rangeFormattedValue(inputValue[0], inputValue[1]) : inputValue[0]}
-      leadingIcon={CalendarIcon}
-      leading={leadingDropdown}
-      format={
-        isRange
-          ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
-          : getTextInputFormat(format, false)
-      }
-      validationState={validationError ? 'error' : textInputProps.validationState}
-      errorText={textInputProps.errorText ?? validationError}
-      onChange={handleInputChange}
-      onBlur={handleBlur}
-      onClick={(e) => {
-        if (textInputProps.isDisabled) {
-          return;
+    <BaseBox position="relative" width="100%">
+      <TextInput
+        {...textInputProps}
+        ref={ref}
+        type="number"
+        value={isRange ? rangeFormattedValue(inputValue[0], inputValue[1]) : inputValue[0]}
+        leadingIcon={CalendarIcon}
+        leading={leadingDropdown}
+        format={
+          isRange
+            ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
+            : getTextInputFormat(format, false)
         }
-        textInputProps.onClick?.(e);
-      }}
-      onKeyDown={({ event }) => {
-        // @ts-expect-error
-        textInputProps.onKeyDown?.(event);
-      }}
-    />
+        // Hide placeholder only when showPartialPlaceholder is true
+        placeholder={showPartialPlaceholder ? '' : textInputProps.placeholder}
+        validationState={validationError ? 'error' : textInputProps.validationState}
+        errorText={textInputProps.errorText ?? validationError}
+        onChange={handleInputChange}
+        onBlur={handleBlur}
+        onClick={(e) => {
+          if (textInputProps.isDisabled) {
+            return;
+          }
+          textInputProps.onClick?.(e);
+        }}
+        onKeyDown={({ event }) => {
+          // @ts-expect-error
+          textInputProps.onKeyDown?.(event);
+        }}
+      />
+      {/* Simple overlay that shows remaining placeholder */}
+      <SimplePlaceholderOverlay
+        placeholder={textInputProps.placeholder || ''}
+        value={formattedUserInput}
+        size={textInputProps.size}
+        isLabelLeftPositioned={textInputProps.labelPosition === 'left'}
+        showPartialPlaceholder={showPartialPlaceholder}
+      />
+    </BaseBox>
   );
 };
 
@@ -229,6 +281,7 @@ const _DatePickerInput = (
     excludeDate,
     minDate,
     maxDate,
+    showPartialPlaceholder,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -277,6 +330,7 @@ const _DatePickerInput = (
           excludeDate={excludeDate}
           minDate={minDate}
           maxDate={maxDate}
+          showPartialPlaceholder={showPartialPlaceholder}
           {...props}
           {...referenceProps}
         />
@@ -351,6 +405,7 @@ const _DatePickerInput = (
           excludeDate={excludeDate}
           minDate={minDate}
           maxDate={maxDate}
+          showPartialPlaceholder={showPartialPlaceholder}
           {...props}
           {...referenceProps}
         />

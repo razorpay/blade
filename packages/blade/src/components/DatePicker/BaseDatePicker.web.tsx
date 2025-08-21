@@ -84,6 +84,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   labelSuffix,
   labelTrailing,
   showFooterActions = true,
+  showPartialPlaceholder = false,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -475,6 +476,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 excludeDate={props.excludeDate}
                 minDate={props.minDate}
                 maxDate={props.maxDate}
+                showPartialPlaceholder={showPartialPlaceholder}
                 leadingDropdown={
                   presets && !isSingle ? (
                     <PresetDropdown
