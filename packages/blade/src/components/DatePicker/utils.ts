@@ -619,7 +619,7 @@ const validateAndParseDateInput = (
  * validatePartialDateSimple("30/02")
  * // → { isValid: false, error: "February cannot have more than 29 days" }
  */
-const validatePartialDateSimple = (input: string): { isValid: boolean; error?: string } => {
+function validatePartialDateSimple(input: string): { isValid: boolean; error?: string } {
   // Don't validate empty input - let user start typing
   if (!input?.trim()) {
     return { isValid: true };
@@ -673,21 +673,19 @@ const validatePartialDateSimple = (input: string): { isValid: boolean; error?: s
       }
 
       // Basic day-month validation (no DayJS needed)
-      if (parts[0]?.trim()) {
-        const day = parseInt(parts[0].trim(), 10);
-        if (!isNaN(day)) {
-          // February cannot have more than 29 days
-          if (month === 2 && day > 29) {
-            return { isValid: false, error: 'February cannot have more than 29 days' };
-          }
+      const day = parts[0]?.trim() ? parseInt(parts[0].trim(), 10) : NaN;
+      if (!isNaN(day)) {
+        // February cannot have more than 29 days
+        if (month === 2 && day > 29) {
+          return { isValid: false, error: 'February cannot have more than 29 days' };
+        }
 
-          // Months with 30 days: April(4), June(6), September(9), November(11)
-          if ([4, 6, 9, 11].includes(month) && day > 30) {
-            return {
-              isValid: false,
-              error: `Month ${month.toString().padStart(2, '0')} cannot have more than 30 days`,
-            };
-          }
+        // Months with 30 days: April(4), June(6), September(9), November(11)
+        if ([4, 6, 9, 11].includes(month) && day > 30) {
+          return {
+            isValid: false,
+            error: `Month ${month.toString().padStart(2, '0')} cannot have more than 30 days`,
+          };
         }
       }
     }
@@ -695,7 +693,7 @@ const validatePartialDateSimple = (input: string): { isValid: boolean; error?: s
 
   // If we get here, partial input is valid
   return { isValid: true };
-};
+}
 
 /**
  * Removes date delimiters (slashes) from formatted date strings for internal processing
