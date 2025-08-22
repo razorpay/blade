@@ -18,7 +18,7 @@ Generate bi-weekly announcement posts for Blade Design System updates by analyzi
 ### 2. Content Structure
 Follow this exact format for the announcement:
 
-```markdown
+```
 :blade: Design System Enhancement Updates [Start Date - End Date]
 :sparkles: Highlights
   New Components & Features:
