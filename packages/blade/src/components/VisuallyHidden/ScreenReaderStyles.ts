@@ -17,7 +17,7 @@ const screenReaderStyles: CSSObject = {
   wordWrap: 'normal',
 };
 
-// So when we are using screenReaderStyles inside SelectorInput , it is causing wrong layout positioning in bottomSheet. that's why we are using legacyScreenReaderStyles only in SelectorInput. 
+// So when we are using screenReaderStyles inside SelectorInput , it is causing wrong layout positioning in bottomSheet. that's why we are using legacyScreenReaderStyles only in SelectorInput.
 //TODO: figure out and remove `legacyScreenReaderStyles` in future.
 
 const legacyScreenReaderStyles: CSSObject = {
