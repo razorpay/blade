@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.4.2
+
+### Patch Changes
+
+- 64b723a1b: feat(blade-mcp): add userName of user in mcp analytics
+
 ## 1.4.1
 
 ### Patch Changes
