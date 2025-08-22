@@ -1,5 +1,5 @@
 const getUserName = (currentProjectRootDirectory: string): string => {
-  const userName = currentProjectRootDirectory.split('/')[1];
+  const userName = currentProjectRootDirectory?.split('/')?.[1] ?? 'unknown';
   return userName;
 };
 
