@@ -1,0 +1,125 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Bi-Weekly Announcement Rule
+
+## Purpose
+Generate bi-weekly announcement posts for Blade Design System updates by analyzing changelog entries from the past two weeks.
+
+## Instructions
+
+### 1. Data Collection
+- **Source**: Use ```git diff``` command to get the changes we shipped in last 2 week or n weeks.
+- **Scope**: Include   `packages/blade/` and `packages/blade-mcp/`
+- **Time Period**: Calculate the date range for the past two weeks from the current date
+
+### 2. Content Structure
+Follow this exact format for the announcement:
+
+```markdown
+:blade: Design System Enhancement Updates [Start Date - End Date]
+:sparkles: Highlights
+  New Components & Features:
+[Feature 1]: [Brief description]
+[Feature 2]: [Brief description]
+[Feature 3]: [Brief description]
+
+Version Updates
+[Version Number]
+[Component]: [description of change]
+[Component]: [description of change]
+
+[Version Number]
+[Component]: [description of change]
+
+:github: Check out Blade Releases for the Full Changelog
+```
+
+### 3. Content Guidelines
+
+#### Highlights Section
+- **New Components**: List any completely new components added
+- **Major Features**: Include significant feature additions to existing components
+- **Big Fixes**: Include important bug fixes that significantly improve functionality
+- **Breaking Changes**: Highlight any breaking changes with clear explanations
+
+#### Version Updates Section
+- **Chronological Order**: List versions from newest to oldest
+- **Component Focus**: Group changes by component name
+- **Clear Descriptions**: Use concise but descriptive language
+- **Consistent Format**: Follow the pattern `[Component]: [description]`
+
+### 4. Analysis Process
+1. Calculate the two-week period from current date.
+  you can use this git command ```  git diff HEAD@{2.weeks.ago} HEAD -- CHANGELOG.md ``` to get the diff. of changes. make sure you get all the diff from the bottom. and use these diff only to write the annoucement. 
+2. **Categorize Changes**: 
+   - New components/features
+   - Bug fixes
+   - Improvements
+   - Breaking changes
+3. **Prioritize Highlights**: Select the most impactful changes for the highlights section
+4. **Format Entries**: Ensure consistent formatting and clear descriptions
+
+### 5. Quality Checks
+- **Accuracy**: Verify all version numbers and dates are correct
+- **Completeness**: Ensure all significant changes are included
+- **Clarity**: Use clear, non-technical language when possible
+- **Consistency**: Maintain consistent formatting throughout
+
+### 6. Example Output Format
+```
+:blade: Design System Enhancement Updates [8th Feb - 26th Feb]
+:sparkles: Highlights
+  New Components & Features:
+Table Virtualization: Added virtualization support for the Table component.
+Tabs: Introduced support for Icon-only tabs.
+Carousel: Added shouldShowNavigationButton support.
+QuickFilter: Introduced the QuickFilter component.
+
+Version Updates
+12.15.0
+Table: add support for table virtualization
+
+12.14.0
+QuickFilter: Add QuickFilters component
+
+12.13.1
+Carousel: add should showNavigationButtons prop in carousel
+
+12.13.0
+Icon: feat(blade): add drag handle icon
+
+12.12.1
+ChipGroup: allow consumers to align chips in chipgroup.
+ButtonGroup: loading single button in buttonGroup
+Box: remove js check that allows brand token for Box backgroundColor
+
+12.12.0
+Avatar: Resolved misaligned menu when using an icon.
+
+12.11.0
+Icon: add engage and translate icons
+
+:github: Check out Blade Releases for the Full Changelog
+```
+
+### 7. Tools to Use
+- **File Reading & Date Calculation**: 
+  For now just use blade-mcp and blade.
+  Calculate the two-week period from current date.
+  you can use this git command ```  git diff HEAD@{2.weeks.ago} HEAD -- CHANGELOG.md ``` to get the diff. of changes. make sure you get all the diff from the bottom. and use these diff only to write the annoucement. 
+  make sure you only include changes that are done in given timeline
+- **Content Analysis**: Parse and categorize diff changes and include these only
+- **Formatting**: Ensure consistent markdown formatting
+- **Release link** Add link for github release in https://github.com/razorpay/blade/releases at the end of message
+- **Final File Creation** Create a file `announcement.md` in main repo. so it would be easy to copy paste for developers.
+
+### 8. Special Considerations
+- **Breaking Changes**: Always highlight breaking changes prominently
+- **Performance Improvements**: Include significant performance enhancements
+- **Accessibility**: Highlight accessibility improvements
+- **Developer Experience**: Include DX improvements and new APIs
+```
+
