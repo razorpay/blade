@@ -185,7 +185,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     selectedPreset,
     currentDate,
   });
-
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
   const {
@@ -485,7 +484,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 excludeDate={props.excludeDate}
                 minDate={props.minDate}
                 maxDate={props.maxDate}
-                effectiveSelectionType={effectiveSelectionType}
+                // Effective Selection type should only be use for selectionType 'range'
+                effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
                 leadingDropdown={
                   presets && !isSingle
                     ? renderPresetDropdown({
