@@ -5,7 +5,7 @@ Chart is a container that represent data in a graphical format in a container.
 This document outlines the API of Charts component.
 
 
-<img src="./images/bar-chart-design.png" alt="Bar Chart Design"  height="300" width="400"/>
+<img src="./images/bar-chart-design.png" alt="Bar Chart Design"  height="400" width="600"/>
 
 
 
@@ -33,7 +33,7 @@ This document outlines the API of Charts component.
 
 ## 2\. Anatomy
  
- <img src="./images/areaChart.png" alt="Area Chart Design"  height="300" width="400"/>
+ <img src="./images/areaChart.png" alt="Area Chart Design"  height="400" width="600"/>
  
 
 
@@ -224,7 +224,7 @@ const chartConfig = {
 
 ## Line Chart
 
-<img src="./images/linechart.png" alt="Line Chart Design"  height="300" width="400"/>
+<img src="./images/linechart.png" alt="Line Chart Design"  height="400" width="600"/>
 
 
 
@@ -359,7 +359,7 @@ import {
 
 ## Area Chart
 
-<img src="./images/areaChart.png" alt="Area Chart Design"  height="300" width="400"/>
+<img src="./images/areaChart.png" alt="Area Chart Design"  height="400" width="600"/>
 
 
 [Use Cases](./requirement.md#12-area-chart)
@@ -483,7 +483,7 @@ import {
 
 ## Bar Charts
 
-<img src="./images/barChart.png" alt="Bar Chart Design"  height="300" width="400"/>
+<img src="./images/barChart.png" alt="Bar Chart Design"  height="400" width="600"/>
 
 
 [Use Cases](./requirement.md#13-bar-chart)
@@ -622,7 +622,7 @@ import {
 
 ## Donut Chart
 
-<img src="./images/donut.png" alt="Donut Chart Design"  height="300" width="500"/>
+<img src="./images/donut.png" alt="Donut Chart Design"  height="400" width="600"/>
 
 
 [Use Cases](./requirement.md#14-donut-chart)
