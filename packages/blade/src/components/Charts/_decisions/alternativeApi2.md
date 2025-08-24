@@ -1,10 +1,10 @@
 
 
-###  Config-Driven API (Not Recommended)
+##  Config-Driven API (Not Recommended)
 
 This approach consolidates all chart settings into a single `config` object.
 
-#### For Line Chart -  
+### For Line Chart -  
 
 ```ts
 const chartConfig = {
@@ -38,7 +38,7 @@ const chartConfig = {
 <LineChart config={chartConfig} />;
 ```
 
-#### For Area Chart -  
+### For Area Chart -  
 
 
 ```ts
@@ -73,7 +73,7 @@ const chartConfig = {
 <AreaChart config={chartConfig} />;
 ```
 
-#### For Bar Chart -  
+### For Bar Chart -  
 
 ```tsx
 import { BarChart } from '@razorpay/blade/charts';
@@ -114,7 +114,7 @@ const chartConfig = {
 ```
 
 
-#### For Donut Chart -  
+### For Donut Chart -  
 
 
 ```ts

@@ -11,16 +11,15 @@ This document outlines the API of Charts component.
 
 -----
 
-
 - [Charts](#charts)
-  - [Design](#design-1)
-  - [Anatomy](#anatomy-1)
-  - [API](#api)
-    - [`LineChart`](#linechart-1)
-    - [`AreaChart`](#areachart-1)
-    - [`BarChart`](#barchart-1)
-    - [`PieChart`](#piechart-1)
-  - [Open questions](#open-questions-1)
+  - [Design](#1-design)
+  - [Anatomy](#2-anatomy)
+  - [API Specifications](#3-api-specifications)
+    - [`LineChart`](#33-line-chart)
+    - [`AreaChart`](#34-area-chart)
+    - [`BarChart`](#35-bar-chart)
+    - [`DonutChart`](#36-donut-chart)
+  - [Open questions](#4-open-questions)
 
 -----
 
@@ -481,7 +480,7 @@ import {
 
 
 
-### 3.5\. Bar Charts
+### 3.5\. Bar Chart
 
 <img src="./images/barChart.png" alt="Bar Chart Design"  height="400" width="600"/>
 

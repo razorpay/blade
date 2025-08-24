@@ -1,9 +1,9 @@
 
-### Hybrid API (Prop & Config Driven) - (Not Recommended)
+## Hybrid API (Prop & Config Driven) - (Not Recommended)
 
 This approach combines component props for high-level control with configuration objects for detailed specifications.
 
-#### For Line Chart -  
+### For Line Chart -  
 
 ```ts
 // Import statement
@@ -80,7 +80,7 @@ const CustomToolTip = ({ active, payload, label }) => {
 ```
 
 
-#### TypeScript Interface for Line Chart
+### TypeScript Interface for Line Chart
 
 ```ts
 // ============================================================================
@@ -146,7 +146,7 @@ interface CustomLineChartProps {
 }
 ```
 
-#### For Area Chart - 
+### For Area Chart - 
 
 
 ```ts
@@ -205,7 +205,7 @@ const yAxisConfig = [
 />
 ```
 
-#### TypeScript Interface for Area Chart - 
+### TypeScript Interface for Area Chart - 
 
 ```ts
 // ============================================================================
@@ -267,7 +267,7 @@ interface CustomAreaChartProps {
 }
 ```
 
-#### For Bar Chart - 
+### For Bar Chart - 
 
 
 
@@ -309,7 +309,7 @@ const barConfig = [
 ```
 
 
-#### TypeScript Interface for Area Chart - 
+### TypeScript Interface for Area Chart - 
 
 ```ts
 interface BarDefinition {
@@ -334,7 +334,7 @@ interface CustomBarChartProps {
 }
 ```
 
-#### For Donut Chart - 
+### For Donut Chart - 
 
 
 ```ts
@@ -366,7 +366,7 @@ const seriesConfig = [
 />
 ```
 
-#### TypeScript Interface
+### TypeScript Interface for Donut Chart - 
 
 ```ts
 interface ChartData {
