@@ -37,10 +37,10 @@ This document outlines the API of Charts component.
  
 
 
-All charts are built by composing smaller components within a `ChartContainer`. The specific components that are used depend on the type of chart we are creating.
+All charts are built by composing smaller components within a `ResponsiveContainer`. The specific components that are used depend on the type of chart we are creating.
 
 **Components:**
-* `ChartContainer` (The main responsive wrapper for all charts)
+* `ResponsiveContainer` (The main responsive wrapper for all charts)
     * **Chart Type Wrapper** (for `LineChart`, `AreaChart`, `BarChart`, `DonutChart`)
         * **Data Mark Components** (The visual representation of your data)
             * `Line` (For Line Charts)
@@ -55,9 +55,9 @@ All charts are built by composing smaller components within a `ChartContainer`. 
         * **Accessory Components** (For context and interactivity, used in most charts)
             * `Tooltip`
  
-## API Specifications
+## 3\. API Specifications
 
-### Composition API (Recommended 🥇)
+### 3.1\. Composition API (Recommended 🥇)
 
 * **Maximum flexibility and control** over chart composition and behavior.
     * Familiar developer experience with direct mapping to `recharts` API.
@@ -68,7 +68,7 @@ All charts are built by composing smaller components within a `ChartContainer`. 
 
 ```tsx
 import {
-  ChartContainer,
+  ResponsiveContainer,
   AreaChart,
   CartesianGrid,
   XAxis,
@@ -79,7 +79,7 @@ import {
 } from '@razorpay/blade/charts';
 
 // A simple stacked Area Chart example
-<ChartContainer>
+<ResponsiveContainer>
   <AreaChart data={chartData}>
     <CartesianGrid />
     <XAxis dataKey="month" />
@@ -89,17 +89,17 @@ import {
     <Area dataKey="teamA" name="Team A" stackId="1" />
     <Area dataKey="teamB" name="Team B" stackId="1" />
   </AreaChart>
-</ChartContainer>
+</ResponsiveContainer>
 
 ```
 
-### Alternative API Structures
+### 3.2\. Alternative API Structures
 <details>
 <summary>View Alternative (Not Recommended) APIs</summary>
 
 
 
-#### Hybrid API (Prop & Config Driven)
+#### 3.2.1\. Hybrid API (Prop & Config Driven)
 This approach combines component props for high-level control with configuration objects for detailed specifications.
 
 
@@ -163,7 +163,7 @@ const yAxisConfig = [
 
 
 
-#### Config-Driven API
+#### 3.2.2\. Config-Driven API
 This approach consolidates all chart settings into a single config object. It keeps JSX clean but can make the API less discoverable and harder to type-check effectively.
 
 
@@ -171,7 +171,7 @@ This approach consolidates all chart settings into a single `config` object.
 
 
 
-#### For Area Chart -  
+#### 3.2.3\. For Area Chart -  
 
 
 ```ts
@@ -222,7 +222,7 @@ const chartConfig = {
 
 
 
-## Line Chart
+### 3.3\. Line Chart
 
 <img src="./images/linechart.png" alt="Line Chart Design"  height="400" width="600"/>
 
@@ -263,7 +263,7 @@ Example -
 
 ```ts
 import {
-  ChartContainer,
+  ResponsiveContainer,
   LineChart as RechartsLineChart,
   CartesianGrid,
   XAxis,
@@ -305,7 +305,7 @@ import {
 ```ts 
 
 import {
-  ChartContainer,
+  ResponsiveContainer,
   LineChart as RechartsLineChart,
   CartesianGrid,
   XAxis,
@@ -357,7 +357,7 @@ import {
 </details>
 
 
-## Area Chart
+### 3.4\. Area Chart
 
 <img src="./images/areaChart.png" alt="Area Chart Design"  height="400" width="600"/>
 
@@ -394,7 +394,7 @@ Example -
 
 ```ts
 import {
-  ChartContainer,
+  ResponsiveContainer,
   AreaChart as RechartsAreaChart,
   CartesianGrid,
   XAxis,
@@ -428,7 +428,7 @@ import {
 ```ts 
 
 import {
-  ChartContainer,
+  ResponsiveContainer,
   AreaChart as RechartsAreaChart,
   CartesianGrid,
   XAxis,
@@ -481,7 +481,7 @@ import {
 
 
 
-## Bar Charts
+### 3.5\. Bar Charts
 
 <img src="./images/barChart.png" alt="Bar Chart Design"  height="400" width="600"/>
 
@@ -620,7 +620,7 @@ import {
 
 
 
-## Donut Chart
+### 3.6\. Donut Chart
 
 <img src="./images/donut.png" alt="Donut Chart Design"  height="400" width="600"/>
 
@@ -647,7 +647,7 @@ Example -
 
 ```ts
 import {
-  ChartContainer,
+  ResponsiveContainer,
   PieChart as RechartsPieChart,
   Pie,
   Cell,
@@ -694,9 +694,9 @@ import {
 
 
 
-## Axis and Grid Components
+### 3.7\. Axis and Grid Components
 
-### ReferenceLine Component
+#### 3.7.1\. ReferenceLine Component
 
 | Prop | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
@@ -727,3 +727,8 @@ We might need to make custom tooltip. Like ChartsToolTip. Since the tooltip woul
 The design for the default "active" (hovered) donut slice and the standard customized label needs to be finalized. 
 
 
+## 5\. References
+
+- [Recharts](https://recharts.org/)
+- [Shadcn/ui](https://ui.shadcn.com/docs/components/chart)
+- [Material UI](https://mui.com/material-ui/react-chart/)
