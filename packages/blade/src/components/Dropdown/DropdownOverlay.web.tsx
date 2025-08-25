@@ -24,6 +24,7 @@ import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomShe
 import BaseBox from '~components/Box/BaseBox';
 import { componentZIndices } from '~utils/componentZIndices';
 import { OVERLAY_OFFSET, OVERLAY_TRANSITION_OFFSET } from '~components/BaseMenu/tokens';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const OVERLAY_PADDING: number = size['12']; // doesn't have to be exact. Just rough padding for floating ui to decide to show overlay on top or bottom
 
@@ -42,6 +43,7 @@ const _DropdownOverlay = ({
   referenceRef,
   defaultPlacement = 'bottom-start',
   _isNestedDropdown = false,
+  ...dataAnalyticsProps
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
@@ -131,6 +133,7 @@ const _DropdownOverlay = ({
           minWidth={minWidth}
           maxWidth={maxWidth}
           {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+          {...makeAnalyticsAttribute(dataAnalyticsProps)}
         >
           {children}
         </StyledDropdownOverlay>
