@@ -157,7 +157,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c20.c20.c20.c20.c20 {
-  padding-left: 12px;
+  padding-left: 4px;
 }
 
 .c23.c23.c23.c23.c23 {
@@ -883,7 +883,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c20.c20.c20.c20.c20 {
-  padding-left: 12px;
+  padding-left: 4px;
 }
 
 .c23.c23.c23.c23.c23 {
@@ -1607,7 +1607,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c20.c20.c20.c20.c20 {
-  padding-left: 12px;
+  padding-left: 4px;
 }
 
 .c23.c23.c23.c23.c23 {
