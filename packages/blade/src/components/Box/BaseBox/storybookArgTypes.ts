@@ -215,6 +215,14 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
         options: ['lowRaised', 'midRaised', 'highRaised'],
       },
     },
+    backdropFilter: {
+      ...commonProperties,
+      description: `**CSS property \`backdrop-filter\`**\n\nApplies a backdrop filter effect to the area behind the element.\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter">MDN Docs for backdrop-filter</a><br/><br/>`,
+    },
+    transition: {
+      ...commonProperties,
+      description: `**CSS property \`transition\`**\n\nSpecifies the transition effects to use when animating between different states.\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">MDN Docs for transition</a><br/><br/>`,
+    },
   };
 };
 
