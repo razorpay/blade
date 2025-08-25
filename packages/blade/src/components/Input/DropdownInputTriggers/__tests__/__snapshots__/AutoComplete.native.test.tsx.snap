@@ -215,6 +215,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               currentInteraction="default"
               data-blade-component="base-box"
               isTableInputCell={false}
+              shouldAddLimitedFocus={false}
               style={
                 [
                   {},

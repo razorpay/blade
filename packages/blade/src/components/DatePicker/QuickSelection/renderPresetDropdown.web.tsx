@@ -1,24 +1,19 @@
 import React from 'react';
-import type { DatesRangeValue } from '../types';
-import { usePresetContext } from './PresetContext';
+import type { renderPresetDropdownProps } from './types';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
+import { CalendarIcon } from '~components/Icons';
 
-type PresetDropdownProps = {
-  onSelection: (preset: (date: Date) => DatesRangeValue) => void;
-  onOpenCalendar?: () => void;
-};
-
-const PresetDropdown = ({
+const renderPresetDropdown = ({
   onSelection,
   onOpenCalendar,
-}: PresetDropdownProps): React.ReactElement => {
-  const { presetStates, selectedPresetLabel } = usePresetContext();
-
+  presetStates,
+  selectedPresetLabel,
+}: renderPresetDropdownProps): React.ReactElement => {
   return (
     <Dropdown>
-      <InputDropdownButton value={selectedPresetLabel ?? 'Custom'} />
+      <InputDropdownButton value={selectedPresetLabel ?? 'Custom'} icon={CalendarIcon} />
       <DropdownOverlay>
         <ActionList>
           {presetStates.map(({ preset, isSelected, isCustomType }) => (
@@ -42,4 +37,4 @@ const PresetDropdown = ({
   );
 };
 
-export { PresetDropdown };
+export { renderPresetDropdown };
