@@ -40,10 +40,10 @@ const getHoverStyles = ({
 
 const StyledInput = styled.input<
   HoverProps & {
-    isInBottomSheet?: boolean;
+    shouldUseLegacyScreenReaderStyles?: boolean;
   }
->(({ theme, isChecked, isDisabled, hasError, hoverTokens, isInBottomSheet }) => ({
-  ...(isInBottomSheet ? legacyScreenReaderStyles : screenReaderStyles),
+>(({ theme, isChecked, isDisabled, hasError, hoverTokens, shouldUseLegacyScreenReaderStyles }) => ({
+  ...(shouldUseLegacyScreenReaderStyles ? legacyScreenReaderStyles : screenReaderStyles),
   '&:focus-visible + div': {
     ...getFocusRingStyles({ theme }),
   },
@@ -80,7 +80,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
       hasError={hasError}
       tabIndex={tabIndex}
       hoverTokens={hoverTokens}
-      isInBottomSheet={isInBottomSheet}
+      shouldUseLegacyScreenReaderStyles={isInBottomSheet}
       {...inputProps}
       {...makeAccessible({ label: accessibilityLabel })}
       {...makeAnalyticsAttribute(rest)}
