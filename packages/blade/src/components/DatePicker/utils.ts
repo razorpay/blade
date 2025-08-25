@@ -629,7 +629,7 @@ function validatePartialDateSimple(input: string): { isValid: boolean; error?: s
   const parts = input.split('/');
 
   // Validate day part (first part)
-  if (parts[0]) {
+  if (parts[0]?.length >= 2) {
     const dayStr = parts[0].trim();
     if (dayStr.length > 0) {
       const day = parseInt(dayStr, 10);
@@ -652,7 +652,7 @@ function validatePartialDateSimple(input: string): { isValid: boolean; error?: s
   }
 
   // Validate month part (second part)
-  if (parts[1]) {
+  if (parts[1]?.length >= 2) {
     const monthStr = parts[1].trim();
     if (monthStr.length > 0) {
       const month = parseInt(monthStr, 10);
