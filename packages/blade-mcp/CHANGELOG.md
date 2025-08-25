@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.4.3
+
+### Patch Changes
+
+- ea090ffc9: fix(blade-mcp): change index to get correct username in mcp
+
 ## 1.4.2
 
 ### Patch Changes
