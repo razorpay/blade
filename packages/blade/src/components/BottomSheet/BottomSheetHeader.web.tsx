@@ -33,13 +33,14 @@ const _BottomSheetHeader = ({
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const ref = React.useRef<HTMLDivElement>(null);
 
+  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton || children);
+
   useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
-    if (!title && !subtitle) return;
+    // No Need to calculate Header Height if it's empty
+    if (isHeaderEmpty) return;
     setHeaderHeight(ref.current.getBoundingClientRect().height);
   }, [ref, isOpen]);
-
-  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton || children);
 
   React.useEffect(() => {
     setIsHeaderEmpty(isHeaderEmpty);

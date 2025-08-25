@@ -8,6 +8,7 @@ type BottomSheetContextProps = {
   contentHeight: number;
   footerHeight: number;
   isHeaderFloating: boolean;
+  maxAvailableBodyHeight: number;
   setContentHeight: React.Dispatch<React.SetStateAction<number>>;
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
@@ -55,6 +56,7 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   headerHeight: 0,
   contentHeight: 0,
   footerHeight: 0,
+  maxAvailableBodyHeight: 0,
   isHeaderFloating: false,
   setContentHeight: () => {},
   setHeaderHeight: () => {},

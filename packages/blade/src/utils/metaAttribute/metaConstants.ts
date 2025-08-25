@@ -138,6 +138,7 @@ export const MetaConstants = {
   ModalBackdrop: 'modal-backdrop',
   ModalScrollOverlay: 'modal-scroll-overlay',
   VisuallyHidden: 'visually-hidden',
+  VirtualizedActionListBox: 'virtualized-action-list-box',
   FormLabel: 'form-label',
   Switch: 'switch',
   SwitchLabel: 'switch-label',

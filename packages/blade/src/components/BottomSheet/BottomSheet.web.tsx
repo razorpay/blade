@@ -101,6 +101,10 @@ const _BottomSheet = ({
   const totalHeight = React.useMemo(() => {
     return grabHandleHeight + headerHeight + footerHeight + contentHeight;
   }, [contentHeight, footerHeight, grabHandleHeight, headerHeight]);
+  const element = scrollRef.current?.querySelector(
+    `[data-blade-component="${MetaConstants.VirtualizedActionListBox}"]`,
+  );
+  const hasVirtualizedElement = Boolean(element);
 
   const id = useId();
   const {
@@ -159,7 +163,12 @@ const _BottomSheet = ({
   // take the grabHandle's height into headerHeight too
   useIsomorphicLayoutEffect(() => {
     if (!grabHandleRef.current) return;
-    setGrabHandleHeight(grabHandleRef.current.getBoundingClientRect().height);
+    // get computed styled for ':after' pseudo-element
+    const afterStyles = window.getComputedStyle(grabHandleRef.current, '::after');
+    const height = parseFloat(afterStyles.height);
+    const grabHandleHeight = grabHandleRef.current.getBoundingClientRect().height;
+
+    setGrabHandleHeight(grabHandleHeight + height);
   }, [grabHandleRef.current, _isOpen]);
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
@@ -300,6 +309,7 @@ const _BottomSheet = ({
         // since we always keep updating the newY,
         // this is cruicial in making the scroll feel natural
         const isContentScrolledAtTop = scrollRef.current && scrollRef.current.scrollTop <= 0;
+
         if (lastOffsetY === upperSnapPoint && !isContentScrolledAtTop) {
           newY = upperSnapPoint;
         }
@@ -349,7 +359,23 @@ const _BottomSheet = ({
 
     const preventScrolling = (e: Event) => {
       if (preventScrollingRef?.current) {
+        // NOT at full height - prevent ALL scrolling (including virtualized)
         e.preventDefault();
+        return;
+      }
+
+      // AT full height - allow scrolling
+      if (hasVirtualizedElement) {
+        // If we have virtualized element, only allow IT to scroll
+        const target = e.target as HTMLElement;
+        const isVirtualizedElementEvent =
+          target.closest(`[data-blade-component="${MetaConstants.VirtualizedActionListBox}"]`) !==
+          null;
+
+        if (!isVirtualizedElementEvent) {
+          e.preventDefault(); // Block everything else
+        }
+        // Don't preventDefault - let virtualized element scroll
       }
     };
 
@@ -377,7 +403,7 @@ const _BottomSheet = ({
     // Only run this hook when we know all the layout calculations are done,
     // Otherwise the scrollRef.current will be null.
     // isReady prop will ensure that we are done measuring the content height
-  }, [isReady]);
+  }, [isReady, hasVirtualizedElement]);
 
   // usePresence hook waits for the animation to finish before unmounting the component
   // It's similar to motion/react's usePresence hook
@@ -385,6 +411,20 @@ const _BottomSheet = ({
   const { isMounted, isVisible } = usePresence(Boolean(_isOpen), {
     transitionDuration: theme.motion.duration.moderate,
   });
+
+  // Calculate maximum possible height upfront
+  const maxPossibleSheetHeight = React.useMemo(() => {
+    const maxSnapPoint = Math.max(...snapPoints); // Get highest snap point (e.g., 0.85 or 1.0)
+    return dimensions.height * maxSnapPoint;
+  }, [dimensions.height, snapPoints]);
+
+  // Calculate maximum available body height
+  const maxAvailableBodyHeight = React.useMemo(() => {
+    return Math.max(
+      200, // Minimum height
+      maxPossibleSheetHeight - headerHeight - footerHeight - grabHandleHeight,
+    );
+  }, [maxPossibleSheetHeight, headerHeight, footerHeight, grabHandleHeight]);
 
   const isHeaderFloating = !hasBodyPadding && isHeaderEmpty;
   const contextValue: BottomSheetContextProps = React.useMemo(
@@ -405,6 +445,7 @@ const _BottomSheet = ({
       bind,
       defaultInitialFocusRef,
       isHeaderFloating,
+      maxAvailableBodyHeight,
     }),
     [
       isVisible,
@@ -422,6 +463,7 @@ const _BottomSheet = ({
       bind,
       defaultInitialFocusRef,
       isHeaderFloating,
+      maxAvailableBodyHeight,
     ],
   );
 
