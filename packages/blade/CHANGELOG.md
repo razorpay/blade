@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.49.4
+
+### Patch Changes
+
+- 8132ef089: feat(datepicker): added partial validation
+
 ## 12.49.3
 
 ### Patch Changes
