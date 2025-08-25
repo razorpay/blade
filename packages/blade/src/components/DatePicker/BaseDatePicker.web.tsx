@@ -476,7 +476,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 minDate={props.minDate}
                 maxDate={props.maxDate}
                 leadingDropdown={
-                  presets && !isSingle ? (
+                  presets && shouldRenderPresets ? (
                     <PresetDropdown
                       onSelection={(preset) => {
                         const presetValue = preset?.(currentDate);
