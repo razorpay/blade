@@ -160,7 +160,7 @@ const yAxisConfig = [
       * Can become verbose with many configuration options.
       * The props list can get long for complex charts.
 
-
+[More on alternative API](./alternativeApi1.md)
 
 #### 3.2.2\. Config-Driven API
 This approach consolidates all chart settings into a single config object. It keeps JSX clean but can make the API less discoverable and harder to type-check effectively.
@@ -214,6 +214,9 @@ const chartConfig = {
       * Nested objects can become complex and hard to manage.
       * Passing custom React components (like a tooltip) is more difficult.
       * TypeScript autocompletion is less effective within a deeply nested object.
+
+
+[More on alternative API](./alternativeApi2.md)
 
 </details>
 
