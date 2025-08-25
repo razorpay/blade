@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.49.5
+
+### Patch Changes
+
+- 77a78ddd7: chore: update babel version
+
 ## 12.49.4
 
 ### Patch Changes
