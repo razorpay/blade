@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.49.3
+
+### Patch Changes
+
+- 37fbe24ee: fix: wrong layout position in case of bottom sheet
+
 ## 12.49.2
 
 ### Patch Changes
