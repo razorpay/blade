@@ -21,6 +21,7 @@ import { useDatesState } from './useDatesState';
 import { usePopup } from './usePopup';
 import { convertIntlToDayjsLocale, loadScript } from './utils';
 import BaseBox from '~components/Box/BaseBox';
+import styled from 'styled-components';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
 import { useId } from '~utils/useId';
@@ -48,6 +49,19 @@ const CALENDAR_HEIGHTS = {
   // Height includes: Calendar grid (6 weeks * ~44px) + header (~48px) + footer actions (~64px) + padding
   DAY_PICKER_WITH_FOOTER: '447px',
 } as const;
+
+// Styled BaseBox to hide focus rings like StyledInputGroup when preset dropdown is open
+const StyledBaseBox = styled(BaseBox)<{ $isPresetDropdownOpen?: boolean }>`
+  /* Reset all inputs and their focus ring wrappers when preset dropdown is open */
+  ${({ $isPresetDropdownOpen }) =>
+    $isPresetDropdownOpen &&
+    `
+    &.date-picker-base-box .focus-ring-wrapper {
+      outline: none;
+    }
+
+  `}
+`;
 
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -97,6 +111,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const isSingle = _selectionType === 'single';
   const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
+  const [isPresetDropdownOpen, setIsPresetDropdownOpen] = React.useState(false);
   const referenceRef = React.useRef<HTMLButtonElement>(null);
 
   const [_picker, setPicker] = useControllableState<PickerType>({
@@ -416,8 +431,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
         <PresetProvider presets={presets} selectedPreset={selectedPreset} currentDate={currentDate}>
-          <BaseBox
+          <StyledBaseBox
             width={inputElementType === 'chip' ? 'fit-content' : '100%'}
+            className="date-picker-base-box"
+            $isPresetDropdownOpen={isPresetDropdownOpen}
             {...getStyledProps(props)}
             {...metaAttribute({ name: MetaConstants.DatePicker })}
           >
@@ -486,6 +503,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                       onOpenCalendar={() => {
                         controllableSetIsOpen(() => true);
                       }}
+                      onOpenChange={setIsPresetDropdownOpen}
                     />
                   ) : undefined
                 }
@@ -554,7 +572,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 </FloatingPortal>
               )
             )}
-          </BaseBox>
+          </StyledBaseBox>
         </PresetProvider>
       </DatesProvider>
     </MantineProvider>
