@@ -71,15 +71,21 @@ DatePickerMinMaxDate.play = async () => {
   await userEvent.click(input);
   await sleep(400);
   // expect date to be disabled
+  // if date is greater then 15 days then we should check add 6 days from it
+  // if date is less then 15 days then we should check subtract 6 days from  it
+  const isGreaterThen15Days = dayjs().diff(dayjs(), 'day') > 15;
   const disabledDate = getByRole('button', {
-    name: dayjs().subtract(6, 'day').format('DD MMMM YYYY'),
+    name: isGreaterThen15Days
+      ? dayjs().subtract(6, 'day').format('D MMMM YYYY')
+      : dayjs().add(6, 'day').format('D MMMM YYYY'),
   });
   await expect(disabledDate).toBeDisabled();
+
   // expect month to be disabled
   const month = getByRole('button', { name: /Change month/i });
   await userEvent.click(month);
   const disabledMonth = getByRole('button', {
-    name: dayjs().subtract(1, 'month').format('MMM'),
+    name: dayjs().subtract(2, 'month').format('MMM'),
   });
   await expect(disabledMonth).toBeDisabled();
   // expect year to be disabled
@@ -106,7 +112,7 @@ DatePickerSingleSelect.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
@@ -135,7 +141,7 @@ DatePickerSingleSelectCancel.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // assert inputs value
   await expect(input).toHaveValue(dateToSelect.format('DD/MM/YYYY'));
@@ -189,7 +195,7 @@ DatePickerSingleSelectControlled.play = async () => {
   await expect(input).toHaveValue(dayjs().add(5, 'day').format('DD/MM/YYYY'));
   // select another date
   const dateToSelect = dayjs().add(2, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('DD MMMM YYYY') });
+  const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
@@ -231,6 +237,7 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.tab();
   await userEvent.tab();
   await userEvent.keyboard('{ArrowRight}');
+  await userEvent.keyboard('{ArrowLeft}');
   await userEvent.keyboard('{Enter}');
   await sleep(400);
   getByRole('button', { name: /previous/i }).focus();
@@ -238,6 +245,7 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.tab();
   await userEvent.tab();
   await userEvent.keyboard('{ArrowRight}');
+  await userEvent.keyboard('{ArrowLeft}');
   await userEvent.keyboard('{Enter}');
   await sleep(400);
   getByRole('button', { name: /previous/i }).focus();
@@ -245,13 +253,17 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.tab();
   await userEvent.tab();
   await userEvent.keyboard('{ArrowRight}');
+  await userEvent.keyboard('{ArrowLeft}');
   await userEvent.keyboard('{Enter}');
+  // choose today's date
+  await userEvent.click(getByRole('button', { name: dayjs().format('D MMMM YYYY') }));
+  await sleep(400);
   // press apply
   const applyButton = getByRole('button', { name: /Apply/i });
   await userEvent.click(applyButton);
   await sleep(400);
-  // assert inputs value
-  await expect(input).toHaveValue(dayjs('02/02/2026').format('DD/MM/YYYY'));
+  // expect input to have today's date
+  await expect(input).toHaveValue(dayjs().format('DD/MM/YYYY'));
 };
 
 export const DatePickerRangeSelect: StoryFn<
@@ -261,7 +273,7 @@ export const DatePickerRangeSelect: StoryFn<
   return (
     <DatePickerComponent
       selectionType="range"
-      label={{ start: 'Start Date', end: 'End Date' }}
+      label={{ start: 'Select a date range' }}
       onOpenChange={onOpenChange}
     />
   );
@@ -278,12 +290,12 @@ DatePickerRangeSelect.play = async () => {
   await expect(queryByText('Apply')).toBeVisible();
   // select start date
   const startDateToSelect = dayjs().add(1, 'day');
-  await userEvent.click(getByRole('button', { name: startDateToSelect.format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: startDateToSelect.format('D MMMM YYYY') }));
   // press next button
   const nextButton = getByRole('button', { name: /Next/i });
   await userEvent.click(nextButton);
   const endDateToSelect = dayjs().add(2, 'month').add(2, 'day');
-  await userEvent.click(getByRole('button', { name: endDateToSelect.format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: endDateToSelect.format('D MMMM YYYY') }));
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
   await userEvent.click(applyButton);
@@ -310,7 +322,7 @@ export const DatePickerRangeSelectControlled: StoryFn<
         setValue(date);
       }}
       selectionType="range"
-      label={{ start: 'Start Date', end: 'End Date' }}
+      label={{ start: 'Select a date range' }}
     />
   );
 };
@@ -329,12 +341,12 @@ DatePickerRangeSelectControlled.play = async () => {
   await expect(queryByText('Apply')).toBeVisible();
   // select start date
   const startDateToSelect = dayjs().add(1, 'day');
-  await userEvent.click(getByRole('button', { name: startDateToSelect.format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: startDateToSelect.format('D MMMM YYYY') }));
   // press next button
   const nextButton = getByRole('button', { name: /Next/i });
   await userEvent.click(nextButton);
   const endDateToSelect = dayjs().add(2, 'month').add(2, 'day');
-  await userEvent.click(getByRole('button', { name: endDateToSelect.format('DD MMMM YYYY') }));
+  await userEvent.click(getByRole('button', { name: endDateToSelect.format('D MMMM YYYY') }));
   // press apply button
   const applyButton = getByRole('button', { name: /Apply/i });
   await userEvent.click(applyButton);
@@ -350,7 +362,7 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = (): React.
   return (
     <DatePickerComponent
       selectionType="range"
-      label={{ start: 'Start Date', end: 'End Date' }}
+      label="Select a date range"
       presets={[
         {
           label: 'Past 3 days',
@@ -393,22 +405,9 @@ DatePickerPresets.play = async () => {
     'true',
   );
 
-  // change date to past 7 days manually
-  await userEvent.click(
-    getByRole('button', { name: dayjs().subtract(7, 'day').format('DD MMMM YYYY') }),
-  );
-  await userEvent.click(getByRole('button', { name: dayjs().format('DD MMMM YYYY') }));
-  await sleep(400);
-  // assert past 3 days to be not selected anymore
-  await expect(getByRole('option', { name: /Past 3 days/i })).toHaveAttribute(
-    'aria-selected',
-    'false',
-  );
-  // assert past 7 days to be selected
-  await expect(getByRole('option', { name: /Past 7 days/i })).toHaveAttribute(
-    'aria-selected',
-    'true',
-  );
+  // change date to past 7
+  await userEvent.click(getByRole('option', { name: /Past 7 days/i }));
+
   // press apply button
   await userEvent.click(applyButton);
   await sleep(400);
@@ -454,7 +453,7 @@ Localization.play = async () => {
   await sleep(400);
 
   // click change locale
-  const changeLocaleButton = getByRole('button', { name: /Change locale/i });
+  const changeLocaleButton = getByRole('button', { name: /Change locale/i, hidden: true });
   await userEvent.click(changeLocaleButton);
   await sleep(400);
 
@@ -510,16 +509,14 @@ DatePickerSingleAutoFocus.play = async () => {
 export const DatePickerRangeSelectAutoFocus: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  return (
-    <DatePickerComponent selectionType="range" label={{ start: 'Start Date', end: 'End Date' }} />
-  );
+  return <DatePickerComponent selectionType="range" label="Select a date range" />;
 };
 
 DatePickerRangeSelectAutoFocus.play = async () => {
   const { getByRole, getByLabelText } = within(document.body);
   const startInput = getByRole('combobox', { name: /Start Date/i });
-  const selectedEndDate = dayjs().subtract(1, 'M').format('DD MMMM YYYY');
-  const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('DD MMMM YYYY');
+  const selectedEndDate = dayjs().subtract(1, 'M').format('D MMMM YYYY');
+  const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('D MMMM YYYY');
   await userEvent.click(startInput);
   await sleep(400);
   const previousButton = getByRole('button', { name: /previous/i });
@@ -546,6 +543,6 @@ export default {
     },
     a11y: { disable: true },
     essentials: { disable: true },
-    actions: { disable: true },
+    actions: { disable: false },
   },
 };

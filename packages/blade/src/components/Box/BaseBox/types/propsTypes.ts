@@ -204,6 +204,7 @@ type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor:
     | BackgroundColorString<'surface'>
     | BackgroundColorString<'overlay'>
+    | BackgroundColorString<'feedback'>
     | 'transparent';
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
@@ -214,7 +215,7 @@ type BoxVisualProps = MakeObjectResponsive<{
 type StyledPropsBlade = Partial<
   Omit<
     MarginProps &
-      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
+      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order' | 'flexWrap'> &
       PositionProps &
       Pick<
         GridProps,

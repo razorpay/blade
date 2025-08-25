@@ -11,6 +11,9 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Link } from '~components/Link';
+import { InfoIcon } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -109,9 +112,28 @@ const RadioTemplate: StoryFn<typeof RadioGroupComponent> = ({ children, ...args 
 export const Default = RadioTemplate.bind({});
 Default.storyName = 'Default';
 
+export const RadioGroupOrientation = RadioTemplate.bind({});
+RadioGroupOrientation.storyName = 'RadioGroup Orientation';
+RadioGroupOrientation.args = {
+  orientation: 'vertical',
+};
+
+export const RadioGroupOrientationHorizontal = RadioTemplate.bind({});
+RadioGroupOrientationHorizontal.storyName = 'RadioGroup Orientation Horizontal';
+RadioGroupOrientationHorizontal.args = {
+  orientation: 'horizontal',
+};
+
 export const HelpText = RadioTemplate.bind({});
 HelpText.storyName = 'HelpText';
 HelpText.args = {
+  helpText: 'RadioGroup help text',
+};
+
+export const HorizontalRadioGroupWithHelpText = RadioTemplate.bind({});
+HorizontalRadioGroupWithHelpText.storyName = 'HorizontalRadioGroupWithHelpText';
+HorizontalRadioGroupWithHelpText.args = {
+  orientation: 'horizontal',
   helpText: 'RadioGroup help text',
 };
 
@@ -120,6 +142,15 @@ ErrorText.storyName = 'ErrorText';
 ErrorText.args = {
   validationState: 'error',
   errorText: 'RadioGroup help text',
+};
+
+export const RadioGroupOrientationHorizontalWithErrorText = RadioTemplate.bind({});
+RadioGroupOrientationHorizontalWithErrorText.storyName =
+  'RadioGroup Orientation Horizontal With ErrorText';
+RadioGroupOrientationHorizontalWithErrorText.args = {
+  orientation: 'horizontal',
+  validationState: 'error',
+  errorText: 'RadioGroup error text',
 };
 
 export const Disabled = RadioTemplate.bind({});
@@ -261,6 +292,21 @@ export const KitchenSink = (): React.ReactElement => {
       </BaseBox>
     </>
   );
+};
+
+export const RadioGroupWithLabelSuffixTrailing = RadioTemplate.bind({});
+RadioGroupWithLabelSuffixTrailing.storyName = 'RadioGroup with Label Suffix & Trailing';
+RadioGroupWithLabelSuffixTrailing.args = {
+  label: 'Select your fruit',
+  labelPosition: 'top',
+  labelSuffix: (
+    <Tooltip content="Select your fruit" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
 };
 
 export const radioRef: StoryFn<typeof RadioComponent> = () => {

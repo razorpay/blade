@@ -7,12 +7,14 @@ import type { PhoneNumberInputProps } from './types';
 import { PhoneNumberInput } from './PhoneNumberInput';
 import { Box } from '~components/Box';
 import { Code, Text } from '~components/Typography';
-import { PhoneIcon } from '~components/Icons';
+import { InfoIcon, PhoneIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
 import { Button } from '~components/Button';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -157,6 +159,16 @@ const meta: Meta<PhoneNumberInputProps> = {
       },
     },
     labelPosition: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelSuffix: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelTrailing: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -449,5 +461,20 @@ const ValidationTemplate: StoryFn<typeof PhoneNumberInput> = () => {
   );
 };
 export const Validation = ValidationTemplate.bind({});
+
+export const PhoneNumberInputWithLabelSuffixTrailing = PhoneNumberInputTemplate.bind({});
+PhoneNumberInputWithLabelSuffixTrailing.storyName = 'PhoneNumberInput with Label Suffix & Trailing';
+PhoneNumberInputWithLabelSuffixTrailing.args = {
+  label: 'Enter phone number',
+  placeholder: 'Enter phone number',
+  labelSuffix: (
+    <Tooltip content="Enter your phone number" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
+};
 
 export default meta;

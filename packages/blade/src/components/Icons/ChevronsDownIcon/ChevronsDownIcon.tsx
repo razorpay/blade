@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ChevronsDownIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _ChevronsDownIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -18,5 +19,9 @@ const ChevronsDownIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const ChevronsDownIcon = assignWithoutSideEffects(_ChevronsDownIcon, {
+  componentId: 'ChevronsDownIcon',
+});
 
 export default ChevronsDownIcon;

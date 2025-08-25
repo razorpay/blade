@@ -15,6 +15,7 @@ type CardRootProps = {
   href?: string;
   as?: 'label';
   accessibilityLabel?: string;
+  validationState?: 'none' | 'error' | 'success';
 } & BaseBoxProps;
 
 type LinkOverlayProps = {

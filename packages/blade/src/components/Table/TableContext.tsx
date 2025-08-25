@@ -45,6 +45,7 @@ export type TableContextType<Item> = {
   gridTemplateColumns: string | undefined;
   isVirtualized?: boolean;
   tableData: LocalTableNode<Item>[];
+  isGrouped: boolean;
 };
 
 const TableContext = React.createContext<TableContextType<unknown>>({
@@ -75,6 +76,7 @@ const TableContext = React.createContext<TableContextType<unknown>>({
   gridTemplateColumns: undefined,
   isVirtualized: false,
   tableData: [],
+  isGrouped: false,
 });
 
 const useTableContext = <Item,>(): TableContextType<Item> => {

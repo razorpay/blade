@@ -24,19 +24,10 @@ temp/*
 logs/*
 
 # Sensitive Data
-*.json
-*.xml
-*.yml
-*.yaml
-*.properties
-properties.json
 *.sqlite
 *.sqlite3
 *.dbsql
 secrets.*
-*secret*
-*password*
-*credential*
 .npmrc
 .yarnrc
 .aws/*
@@ -70,17 +61,6 @@ authorized_keys
 .env.test
 .env.production
 config/*
-
-# Documentation and Notes
-*.md
-*.mdx
-*.rst
-*.txt
-docs/*
-README*
-CHANGELOG*
-LICENSE*
-CONTRIBUTING*
 
 # Database Files
 *.sql
@@ -141,7 +121,6 @@ CONTRIBUTING*
 node_modules/*
 bower_components/*
 vendor/*
-packages/*
 jspm_packages/*
 .gradle/*
 target/*

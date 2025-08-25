@@ -122,7 +122,8 @@ const _BottomSheet = ({
       const maxValue = computeMaxContent({
         contentHeight,
         footerHeight,
-        headerHeight: headerHeight + grabHandleHeight,
+        // If headerHeight is zero no need to add height of grabHandleHeight.
+        headerHeight: headerHeight > 0 ? headerHeight + grabHandleHeight : 0,
         maxHeight: value,
       });
       _setPositionY(shouldLimitPositionY ? maxValue : value);
@@ -442,11 +443,16 @@ const _BottomSheet = ({
 
   // Disable body scroll lock when the component is unmounted forcefully
   React.useEffect(() => {
-    const lockTarget = scrollRef.current!;
+    const lockTarget = scrollRef.current;
     return () => {
-      enableBodyScroll(lockTarget);
+      if (lockTarget) {
+        enableBodyScroll(lockTarget);
+      }
     };
-  }, []);
+    // when BottomSheet is mounted with isOpen={false}, then BottomSheetBody does not set scrollRef
+    // so, we added scrollRef to dependencies array to ensure that we update lockTarget when scrollRef is updated
+    // which will avoid passing null to enableBodyScroll
+  }, [scrollRef]);
 
   // We will need to reset these values otherwise the next time the bottomsheet opens
   // this will be populated and the animations won't run

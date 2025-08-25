@@ -12,6 +12,9 @@ import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
+import { Link } from '~components/Link';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { InfoIcon } from '~components/Icons';
 
 const Page = (): ReactElement => {
   return (
@@ -64,6 +67,8 @@ const meta: Meta<PasswordInputProps> = {
     autoFocus: { table: { category: propsCategory.BASE_PROPS } },
     label: { table: { category: propsCategory.LABEL_PROPS } },
     labelPosition: { table: { category: propsCategory.LABEL_PROPS } },
+    labelSuffix: { table: { category: propsCategory.LABEL_PROPS } },
+    labelTrailing: { table: { category: propsCategory.LABEL_PROPS } },
     name: { table: { category: propsCategory.BASE_PROPS } },
     placeholder: { table: { category: propsCategory.BASE_PROPS } },
     size: { table: { category: propsCategory.BASE_PROPS } },
@@ -264,6 +269,21 @@ inputRef.parameters = {
         'PasswordInput component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
+};
+
+export const PasswordInputWithLabelSuffixTrailing = PasswordInputTemplate.bind({});
+PasswordInputWithLabelSuffixTrailing.storyName = 'PasswordInput with Label Suffix & Trailing';
+PasswordInputWithLabelSuffixTrailing.args = {
+  label: 'Enter password',
+  placeholder: 'Enter password',
+  labelSuffix: (
+    <Tooltip content="Enter your password" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
 };
 
 export default meta;

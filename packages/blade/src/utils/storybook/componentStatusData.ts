@@ -18,6 +18,22 @@ type ComponentStatusDataType = {
 
 const componentData: ComponentStatusDataType = [
   {
+    name: 'EmptyState',
+    status: 'released',
+    releasedIn: '12.41.0',
+    storybookLink: 'Components/EmptyState',
+    description: 'EmptyState component for displaying empty state messages and illustrations.',
+    platform: 'all',
+  },
+  {
+    name: 'SelectableCard',
+    status: 'released',
+    releasedIn: '12.36.0',
+    storybookLink: 'Components/Card/SelectableCard',
+    description: 'Card component that can be selected/deselected.',
+    platform: 'all',
+  },
+  {
     name: 'ActionList',
     status: 'released',
     releasedIn: '6.2.0',
@@ -106,6 +122,15 @@ const componentData: ComponentStatusDataType = [
     description:
       'Indicators describe the condition of an entity. They can be used to convey semantic meaning, such as statuses and semantical-categories.',
     platform: 'all',
+  },
+  {
+    name: 'InfoGroup',
+    status: 'released',
+    releasedIn: '12.33.0',
+    storybookLink: 'Components/InfoGroup',
+    description:
+      'A structured component for displaying key-value pairs in a consistent, organized format. Provides standardized presentation for transaction details, user data, or any related data pairs.',
+    platform: 'web',
   },
   {
     name: 'Link',
@@ -603,6 +628,64 @@ const componentData: ComponentStatusDataType = [
     description:
       'Stagger component allows you to stagger children (make them appear one after the other). Its a utility preset. You can use any of the base presets like Move, Fade, Slide inside of it',
     platform: 'web',
+  },
+  {
+    name: 'InputGroup',
+    status: 'released',
+    releasedIn: '12.32.0',
+    storybookLink: 'Components/Input/InputGroup',
+    description: 'InputGroup component allows grouping of related input fields together.',
+    platform: 'all',
+  },
+  {
+    name: 'Preview',
+    status: 'released',
+    releasedIn: '12.30.0',
+    storybookLink: 'Components/Preview',
+    description: 'Preview component for displaying content in a preview mode.',
+    platform: 'all',
+  },
+  {
+    name: 'FilterChipSelectInput',
+    status: 'released',
+    releasedIn: '12.20.0',
+    storybookLink: 'Components/Input/FilterChipSelectInput',
+    description:
+      'FilterChipSelectInput component for selecting multiple values using filter chips.',
+    platform: 'all',
+  },
+  {
+    name: 'FilterChipDatePicker',
+    status: 'released',
+    releasedIn: '12.20.0',
+    storybookLink: 'Components/Input/FilterChipDatePicker',
+    description: 'FilterChipDatePicker component for selecting dates using filter chips.',
+    platform: 'all',
+  },
+  {
+    name: 'ListView',
+    status: 'released',
+    releasedIn: '12.20.0',
+    storybookLink: 'Patterns/ListView',
+    description:
+      'ListView pattern for displaying data in a list format with built-in filtering and search capabilities.',
+    platform: 'all',
+  },
+  {
+    name: 'QuickFilter',
+    status: 'released',
+    releasedIn: '12.14.0',
+    storybookLink: 'Components/QuickFilter',
+    description: 'QuickFilter component for quickly filtering content.',
+    platform: 'all',
+  },
+  {
+    name: 'ChatMessage',
+    status: 'released',
+    releasedIn: '12.11.0',
+    storybookLink: 'Components/ChatMessage',
+    description: 'ChatMessage component for displaying chat messages in a conversation interface.',
+    platform: 'all',
   },
 ];
 

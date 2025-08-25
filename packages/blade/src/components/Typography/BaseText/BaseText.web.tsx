@@ -26,6 +26,7 @@ const StyledBaseText = styled.div.withConfig({
     textAlign,
     wordBreak,
     opacity,
+    textTransform,
     ...props
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
@@ -43,6 +44,7 @@ const StyledBaseText = styled.div.withConfig({
         textAlign,
         wordBreak,
         opacity,
+        textTransform,
         theme: props.theme,
       }),
       ...styledPropsCSSObject,
@@ -68,6 +70,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
     wordBreak,
     opacity,
     className,
+    textTransform,
     style,
     accessibilityProps = {},
     componentName = MetaConstants.BaseText,
@@ -96,6 +99,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
       className={className}
       style={style}
       id={id}
+      textTransform={textTransform}
       {...makeAccessible(accessibilityProps)}
       {...metaAttribute({ name: componentName, testID })}
     >

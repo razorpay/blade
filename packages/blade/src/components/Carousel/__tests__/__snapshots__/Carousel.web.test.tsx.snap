@@ -1,46 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   border: none;
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
   background-color: hsla(211,22%,56%,1);
   width: 18px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
-  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -65,6 +32,41 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c11.c11.c11.c11.c11 {
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.32);
+  width: 6px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c11.c11.c11.c11.c11:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -107,11 +109,11 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 12px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   min-width: 0px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -124,7 +126,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 12px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -135,7 +137,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 4px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -170,12 +172,12 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
-.c7.c7.c7.c7.c7:hover {
+.c8.c8.c8.c8.c8:hover {
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
 
-.c7.c7.c7.c7.c7:focus-visible {
+.c8.c8.c8.c8.c8:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -184,11 +186,12 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
 
-.c7.c7.c7.c7.c7:active {
+.c8.c8.c8.c8.c8:active {
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -280,6 +283,24 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -moz-scroll-snap-align: start;
   -ms-scroll-snap-align: start;
   scroll-snap-align: start;
+  margin-left: calc(calc(100% / 1 - 16px * (1 - 1) / 1) + 16px);
+}
+
+.c5.c5.c5.c5.c5 {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  min-height: 100%;
+  -webkit-scroll-snap-align: start;
+  -moz-scroll-snap-align: start;
+  -ms-scroll-snap-align: start;
+  scroll-snap-align: start;
+  margin-left: 0;
 }
 
 @media screen and (min-width:768px) {
@@ -324,7 +345,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
         <div
           aria-label="2 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class=" c5"
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-16-carousel-item-1"
@@ -339,18 +360,18 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           </div>
         </div>
         <div
-          class="c5"
+          class="c6"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c6"
+      class="c7"
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c7"
+        class="c8"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -373,7 +394,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c8"
+        class="c9"
         data-blade-component="base-box"
         role="tablist"
       >
@@ -381,7 +402,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           aria-controls="carousel-16-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c9"
+          class="c10"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -389,14 +410,14 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           aria-controls="carousel-16-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c10"
+          class="c11"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c7"
+        class="c8"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -454,6 +475,7 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -487,6 +509,7 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -602,6 +625,7 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -662,6 +686,7 @@ exports[`Carousel Snapshots should render 1`] = `
   -moz-scroll-snap-align: start;
   -ms-scroll-snap-align: start;
   scroll-snap-align: start;
+  margin-left: 0;
 }
 
 @media screen and (min-width:768px) {
@@ -832,6 +857,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -865,6 +891,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -971,6 +998,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -1031,6 +1059,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -moz-scroll-snap-align: start;
   -ms-scroll-snap-align: start;
   scroll-snap-align: start;
+  margin-left: 0;
 }
 
 @media screen and (min-width:768px) {
@@ -1170,46 +1199,13 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 `;
 
 exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   border: none;
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
   background-color: hsla(211,22%,56%,1);
   width: 18px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c10.c10.c10.c10.c10:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
-  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -1234,6 +1230,41 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c12.c12.c12.c12.c12 {
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.32);
+  width: 6px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c12.c12.c12.c12.c12:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c12.c12.c12.c12.c12:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -1278,6 +1309,444 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 
 .c4.c4.c4.c4.c4 {
   max-width: 90%;
+}
+
+.c7.c7.c7.c7.c7 {
+  min-width: 0px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 9999px;
+  border-color: hsla(0,0%,100%,0);
+  background-color: hsla(0,0%,100%,1);
+  color: hsla(0,0%,0%,0.72);
+  padding: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+}
+
+.c9.c9.c9.c9.c9:hover {
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
+}
+
+.c9.c9.c9.c9.c9:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
+}
+
+.c9.c9.c9.c9.c9:active {
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
+}
+
+.c3.c3.c3.c3.c3 {
+  width: 100%;
+  height: 100%;
+  overflow-x: scroll;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-scroll-snap-type: x mandatory;
+  -moz-scroll-snap-type: x mandatory;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  -webkit-scroll-snap-points-y: repeat(100%);
+  -moz-scroll-snap-points-y: repeat(100%);
+  -ms-scroll-snap-points-y: repeat(100%);
+  scroll-snap-points-y: repeat(100%);
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+  webkit-overflow-scrolling: touch;
+  -ms-scroll-snap-type: mandatory;
+  -webkit-scroll-snap-points-x: repeat(100%);
+  -moz-scroll-snap-points-x: repeat(100%);
+  -ms-scroll-snap-points-x: repeat(100%);
+  scroll-snap-points-x: repeat(100%);
+  -ms-scroll-snap-points-x: repeat(100%);
+}
+
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
+  display: none;
+}
+
+.c5.c5.c5.c5.c5 {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  min-height: 100%;
+  -webkit-scroll-snap-align: start;
+  -moz-scroll-snap-align: start;
+  -ms-scroll-snap-align: start;
+  scroll-snap-align: start;
+  margin-left: calc(calc(100% / 1 - 16px * (1 - 1) / 1) + 16px);
+}
+
+.c6.c6.c6.c6.c6 {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  min-height: 100%;
+  -webkit-scroll-snap-align: start;
+  -moz-scroll-snap-align: start;
+  -ms-scroll-snap-align: start;
+  scroll-snap-align: start;
+  margin-left: 0;
+}
+
+@media screen and (min-width:768px) {
+  .c2.c2.c2.c2.c2 {
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c4.c4.c4.c4.c4 {
+    max-width: 300px;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="carousel"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <div
+        aria-roledescription="carousel"
+        class="c2 c3"
+        data-blade-component="base-box"
+        role="group"
+        tabindex="0"
+      >
+        <div
+          aria-label="1 of 3"
+          aria-roledescription="slide"
+          class="c4 c5"
+          data-blade-component="base-box"
+          data-slide-index="0"
+          id="carousel-10-carousel-item-0"
+          role="tabpanel"
+        >
+          <div>
+            <p
+              data-testid="active-slide"
+            >
+              0
+            </p>
+          </div>
+        </div>
+        <div
+          aria-label="2 of 3"
+          aria-roledescription="slide"
+          class="c4 c6"
+          data-blade-component="base-box"
+          data-slide-index="1"
+          id="carousel-10-carousel-item-1"
+          role="tabpanel"
+        >
+          <div>
+            <p
+              data-testid="active-slide"
+            >
+              0
+            </p>
+          </div>
+        </div>
+        <div
+          aria-label="3 of 3"
+          aria-roledescription="slide"
+          class="c4 c6"
+          data-blade-component="base-box"
+          data-slide-index="2"
+          id="carousel-10-carousel-item-2"
+          role="tabpanel"
+        >
+          <div>
+            <p
+              data-testid="active-slide"
+            >
+              0
+            </p>
+          </div>
+        </div>
+        <div
+          class="c7"
+          data-blade-component="base-box"
+        />
+      </div>
+    </div>
+    <div
+      class="c8"
+      data-blade-component="box"
+    >
+      <button
+        aria-label="Previous Slide"
+        class="c9"
+        data-blade-component="NavigationButton"
+      >
+        <svg
+          aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
+          data-blade-component="icon"
+          fill="none"
+          height="16px"
+          viewBox="0 0 24 24"
+          width="16px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
+            data-blade-component="svg-path"
+            fill="currentColor"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </button>
+      <div
+        aria-label="Slides"
+        class="c10"
+        data-blade-component="base-box"
+        role="tablist"
+      >
+        <button
+          aria-controls="carousel-10-carousel-item-0"
+          aria-label="Slide 1"
+          aria-selected="true"
+          class="c11"
+          data-blade-component="carousel-indicator-button"
+          role="tab"
+        />
+        <button
+          aria-controls="carousel-10-carousel-item-1"
+          aria-label="Slide 2"
+          aria-selected="false"
+          class="c12"
+          data-blade-component="carousel-indicator-button"
+          role="tab"
+        />
+        <button
+          aria-controls="carousel-10-carousel-item-2"
+          aria-label="Slide 3"
+          aria-selected="false"
+          class="c12"
+          data-blade-component="carousel-indicator-button"
+          role="tab"
+        />
+      </div>
+      <button
+        aria-label="Next Slide"
+        class="c9"
+        data-blade-component="NavigationButton"
+      >
+        <svg
+          aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
+          data-blade-component="icon"
+          fill="none"
+          height="16px"
+          viewBox="0 0 24 24"
+          width="16px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
+            data-blade-component="svg-path"
+            fill="currentColor"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel Snapshots should render with showOverlay 1`] = `
+.c10.c10.c10.c10.c10 {
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(211,22%,56%,1);
+  width: 18px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c10.c10.c10.c10.c10:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c11.c11.c11.c11.c11 {
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(211,20%,52%,0.32);
+  width: 6px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c11.c11.c11.c11.c11:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  gap: 12px;
+}
+
+.c2.c2.c2.c2.c2 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  gap: 12px;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1357,428 +1826,12 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
 
 .c8.c8.c8.c8.c8:active {
-  color: hsla(0,0%,0%,0.72);
-  background-color: hsla(0,0%,100%,0.8);
-}
-
-.c3.c3.c3.c3.c3 {
-  width: 100%;
-  height: 100%;
-  overflow-x: scroll;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-scroll-snap-type: x mandatory;
-  -moz-scroll-snap-type: x mandatory;
-  -ms-scroll-snap-type: x mandatory;
-  scroll-snap-type: x mandatory;
-  -webkit-scroll-snap-points-y: repeat(100%);
-  -moz-scroll-snap-points-y: repeat(100%);
-  -ms-scroll-snap-points-y: repeat(100%);
-  scroll-snap-points-y: repeat(100%);
-  -ms-overflow-style: none;
-  -webkit-scrollbar-width: none;
-  -moz-scrollbar-width: none;
-  -ms-scrollbar-width: none;
-  scrollbar-width: none;
-  webkit-overflow-scrolling: touch;
-  -ms-scroll-snap-type: mandatory;
-  -webkit-scroll-snap-points-x: repeat(100%);
-  -moz-scroll-snap-points-x: repeat(100%);
-  -ms-scroll-snap-points-x: repeat(100%);
-  scroll-snap-points-x: repeat(100%);
-  -ms-scroll-snap-points-x: repeat(100%);
-}
-
-.c3.c3.c3.c3.c3::-webkit-scrollbar {
-  display: none;
-}
-
-.c5.c5.c5.c5.c5 {
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: calc(100% / 1 - 16px * (1 - 1) / 1);
-  min-height: 100%;
-  -webkit-scroll-snap-align: start;
-  -moz-scroll-snap-align: start;
-  -ms-scroll-snap-align: start;
-  scroll-snap-align: start;
-}
-
-@media screen and (min-width:768px) {
-  .c2.c2.c2.c2.c2 {
-    gap: 16px;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c4.c4.c4.c4.c4 {
-    max-width: 300px;
-  }
-}
-
-<div>
-  <div
-    class="c0"
-    data-blade-component="carousel"
-  >
-    <div
-      class="c1"
-      data-blade-component="base-box"
-    >
-      <div
-        aria-roledescription="carousel"
-        class="c2 c3"
-        data-blade-component="base-box"
-        role="group"
-        tabindex="0"
-      >
-        <div
-          aria-label="1 of 3"
-          aria-roledescription="slide"
-          class="c4 c5"
-          data-blade-component="base-box"
-          data-slide-index="0"
-          id="carousel-10-carousel-item-0"
-          role="tabpanel"
-        >
-          <div>
-            <p
-              data-testid="active-slide"
-            >
-              0
-            </p>
-          </div>
-        </div>
-        <div
-          aria-label="2 of 3"
-          aria-roledescription="slide"
-          class="c4 c5"
-          data-blade-component="base-box"
-          data-slide-index="1"
-          id="carousel-10-carousel-item-1"
-          role="tabpanel"
-        >
-          <div>
-            <p
-              data-testid="active-slide"
-            >
-              0
-            </p>
-          </div>
-        </div>
-        <div
-          aria-label="3 of 3"
-          aria-roledescription="slide"
-          class="c4 c5"
-          data-blade-component="base-box"
-          data-slide-index="2"
-          id="carousel-10-carousel-item-2"
-          role="tabpanel"
-        >
-          <div>
-            <p
-              data-testid="active-slide"
-            >
-              0
-            </p>
-          </div>
-        </div>
-        <div
-          class="c6"
-          data-blade-component="base-box"
-        />
-      </div>
-    </div>
-    <div
-      class="c7"
-      data-blade-component="box"
-    >
-      <button
-        aria-label="Previous Slide"
-        class="c8"
-        data-blade-component="NavigationButton"
-      >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
-            data-blade-component="svg-path"
-            fill="currentColor"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </button>
-      <div
-        aria-label="Slides"
-        class="c9"
-        data-blade-component="base-box"
-        role="tablist"
-      >
-        <button
-          aria-controls="carousel-10-carousel-item-0"
-          aria-label="Slide 1"
-          aria-selected="true"
-          class="c10"
-          data-blade-component="carousel-indicator-button"
-          role="tab"
-        />
-        <button
-          aria-controls="carousel-10-carousel-item-1"
-          aria-label="Slide 2"
-          aria-selected="false"
-          class="c11"
-          data-blade-component="carousel-indicator-button"
-          role="tab"
-        />
-        <button
-          aria-controls="carousel-10-carousel-item-2"
-          aria-label="Slide 3"
-          aria-selected="false"
-          class="c11"
-          data-blade-component="carousel-indicator-button"
-          role="tab"
-        />
-      </div>
-      <button
-        aria-label="Next Slide"
-        class="c8"
-        data-blade-component="NavigationButton"
-      >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
-            data-blade-component="svg-path"
-            fill="currentColor"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Carousel Snapshots should render with showOverlay 1`] = `
-.c9.c9.c9.c9.c9 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(211,22%,56%,1);
-  width: 18px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
-  width: 6px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c10.c10.c10.c10.c10:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c0.c0.c0.c0.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  gap: 12px;
-}
-
-.c2.c2.c2.c2.c2 {
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
-  gap: 12px;
-}
-
-.c5.c5.c5.c5.c5 {
-  min-width: 0px;
-}
-
-.c6.c6.c6.c6.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-top: 24px;
-  gap: 12px;
-}
-
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  gap: 4px;
-}
-
-.c7.c7.c7.c7.c7 {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 9999px;
-  border-color: hsla(0,0%,100%,0);
-  background-color: hsla(0,0%,100%,1);
-  color: hsla(0,0%,0%,0.72);
-  padding: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
-}
-
-.c7.c7.c7.c7.c7:hover {
-  color: hsla(0,0%,0%,0.72);
-  background-color: hsla(0,0%,100%,0.8);
-}
-
-.c7.c7.c7.c7.c7:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  color: hsla(0,0%,0%,0.72);
-  background-color: hsla(0,0%,100%,0.8);
-}
-
-.c7.c7.c7.c7.c7:active {
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -1870,6 +1923,24 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -moz-scroll-snap-align: start;
   -ms-scroll-snap-align: start;
   scroll-snap-align: start;
+  margin-left: calc(calc(100% / 1 - 16px * (1 - 1) / 1) + 16px);
+}
+
+.c5.c5.c5.c5.c5 {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  min-height: 100%;
+  -webkit-scroll-snap-align: start;
+  -moz-scroll-snap-align: start;
+  -ms-scroll-snap-align: start;
+  scroll-snap-align: start;
+  margin-left: 0;
 }
 
 @media screen and (min-width:768px) {
@@ -1914,7 +1985,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         <div
           aria-label="2 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class=" c5"
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-12-carousel-item-1"
@@ -1931,7 +2002,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         <div
           aria-label="3 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class=" c5"
           data-blade-component="base-box"
           data-slide-index="2"
           id="carousel-12-carousel-item-2"
@@ -1946,18 +2017,18 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           </div>
         </div>
         <div
-          class="c5"
+          class="c6"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c6"
+      class="c7"
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c7"
+        class="c8"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1980,7 +2051,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c8"
+        class="c9"
         data-blade-component="base-box"
         role="tablist"
       >
@@ -1988,7 +2059,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-12-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c9"
+          class="c10"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1996,7 +2067,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-12-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c10"
+          class="c11"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -2004,14 +2075,14 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-12-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c10"
+          class="c11"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c7"
+        class="c8"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -2069,6 +2140,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -2102,6 +2174,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -2217,6 +2290,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(0,0%,0%,0.72);
   background-color: hsla(0,0%,100%,0.8);
 }
@@ -2277,6 +2351,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   -moz-scroll-snap-align: start;
   -ms-scroll-snap-align: start;
   scroll-snap-align: start;
+  margin-left: 0;
 }
 
 @media screen and (min-width:768px) {

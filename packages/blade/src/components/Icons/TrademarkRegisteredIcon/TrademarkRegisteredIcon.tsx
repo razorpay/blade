@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const TrademarkRegisteredIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _TrademarkRegisteredIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -22,5 +23,9 @@ const TrademarkRegisteredIcon: IconComponent = ({ size, color, ...styledProps })
     </Svg>
   );
 };
+
+const TrademarkRegisteredIcon = assignWithoutSideEffects(_TrademarkRegisteredIcon, {
+  componentId: 'TrademarkRegisteredIcon',
+});
 
 export default TrademarkRegisteredIcon;

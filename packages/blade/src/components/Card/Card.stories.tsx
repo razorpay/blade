@@ -24,7 +24,14 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import { UsersIcon, TrashIcon, CheckCircleIcon } from '~components/Icons';
+import {
+  UsersIcon,
+  TrashIcon,
+  CheckCircleIcon,
+  ArrowSquareUpIcon,
+  ArrowRightIcon,
+} from '~components/Icons';
+import { useIsMobile } from '~utils/useIsMobile';
 
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
@@ -33,6 +40,7 @@ import type { Elevation } from '~tokens/global';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
+import { Amount } from '~components/Amount';
 
 const Page = (): React.ReactElement => {
   return (
@@ -429,9 +437,9 @@ const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement
 
 export const CardBodyContent = CardChildrenExample.bind({});
 
-const CardWithoutPaddingExample: StoryFn<typeof Card> = (): React.ReactElement => {
+const CardWithoutPaddingExample: StoryFn<typeof Card> = (args): React.ReactElement => {
   return (
-    <Card elevation="highRaised" padding="spacing.0">
+    <Card {...args}>
       <CardBody>
         <Box display="flex" flexDirection="row">
           <img
@@ -466,3 +474,118 @@ CardWithoutPadding.parameters = {
     disable: true,
   },
 };
+
+CardWithoutPadding.args = {
+  elevation: 'highRaised',
+  padding: 'spacing.0',
+};
+
+export const CardWithMaxWidth = CardWithoutPaddingExample.bind({});
+CardWithMaxWidth.args = {
+  maxWidth: '800px',
+  padding: 'spacing.0',
+};
+
+const GraphSVG = (): React.ReactElement => {
+  return (
+    <Box width="100%" height="100%" display="flex" alignItems="center">
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 546 139"
+        preserveAspectRatio="xMidYMid meet"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          opacity="0.09"
+          d="M32.9065 100.629L2 98.949V138.237H544V40.7617L510.041 42.2896C508.598 42.3545 507.171 42.6144 505.798 43.0623L475.74 52.867C473.114 53.7237 470.31 53.8858 467.603 53.3377L436.728 47.0865C435.977 46.9345 435.216 46.8366 434.451 46.7936L402.384 44.9901C400.455 44.8816 398.522 45.1234 396.68 45.7038L367.358 54.9386C364.72 55.7694 361.912 55.9023 359.207 55.3243L330.544 49.1985C328.34 48.7274 326.06 48.7274 323.856 49.1985L291.067 56.2061L257.144 68.0347C255.678 68.5458 254.146 68.8408 252.595 68.9106L222.608 70.2598C220.104 70.3724 217.609 69.8954 215.324 68.8671L192.115 58.4249C186.366 55.8383 179.634 56.8685 174.922 61.0558L150.475 82.7792C147.915 85.0541 144.692 86.4476 141.281 86.7545L113.756 89.2313C111.543 89.4305 109.313 89.1664 107.207 88.4558L81.6226 79.8226C76.9776 78.2552 71.8704 78.9037 67.7646 81.5823L42.5174 98.0533C39.669 99.9116 36.3025 100.814 32.9065 100.629Z"
+          fill="#305EFF"
+        />
+        <path
+          d="M2 98.949L32.9065 100.629C36.3025 100.814 39.669 99.9116 42.5174 98.0533L67.7646 81.5823C71.8704 78.9037 76.9776 78.2552 81.6226 79.8226L107.207 88.4558C109.313 89.1664 111.543 89.4305 113.756 89.2313L141.281 86.7545C144.692 86.4476 147.915 85.0541 150.475 82.7792L174.922 61.0558C179.634 56.8685 186.366 55.8383 192.115 58.4249L215.324 68.8671C217.609 69.8954 220.104 70.3724 222.608 70.2598L252.595 68.9106C254.146 68.8408 255.678 68.5458 257.144 68.0347L291.067 56.2061L323.856 49.1985C326.06 48.7274 328.34 48.7274 330.544 49.1985L359.207 55.3243C361.912 55.9023 364.72 55.7694 367.358 54.9386L396.679 45.7038C398.522 45.1234 400.455 44.8816 402.384 44.9901L434.451 46.7936C435.216 46.8366 435.977 46.9345 436.728 47.0865L467.603 53.3377C470.31 53.8858 473.114 53.7237 475.74 52.867L505.798 43.0623C507.171 42.6144 508.598 42.3545 510.041 42.2896L544 40.7617"
+          stroke="#305EFF"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+      </svg>
+    </Box>
+  );
+};
+
+const MetricInfo = (): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+      <Amount
+        value={1000}
+        color="surface.text.gray.normal"
+        weight="semibold"
+        size="2xlarge"
+        type="heading"
+      />
+      <Box
+        display="flex"
+        flexDirection="row"
+        gap="spacing.1"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <ArrowSquareUpIcon color="interactive.icon.positive.normal" />
+
+        <Text color="interactive.text.positive.normal">12</Text>
+      </Box>
+    </Box>
+  );
+};
+
+const MetricCardVariantExample = (): React.ReactElement => {
+  const isMobile = useIsMobile();
+  return (
+    <Card
+      backgroundColor="surface.background.gray.intense"
+      maxWidth="500px"
+      minWidth="300px"
+      padding="spacing.5"
+      size="medium"
+    >
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title={isMobile ? 'TPV' : 'Total Payment Volume'}
+          subtitle={
+            isMobile ? 'TPV for the current month' : 'Total Payment Volume for the current month'
+          }
+        />
+        <CardHeaderTrailing
+          visual={
+            isMobile ? (
+              <CardHeaderLink href="/" icon={ArrowRightIcon} iconPosition="right">
+                Chart settings
+              </CardHeaderLink>
+            ) : (
+              <CardHeaderBadge color="positive"> New </CardHeaderBadge>
+            )
+          }
+        />
+      </CardHeader>
+      <CardBody>
+        {isMobile ? (
+          <Box display="flex" flexDirection="row" gap="spacing.5">
+            <Box display="flex" flexDirection="column" justifyContent="flex-end">
+              <MetricInfo />
+            </Box>
+            <GraphSVG />
+          </Box>
+        ) : (
+          <Box display="flex" flexDirection="column" gap="spacing.5">
+            <Box display="flex" flexDirection="column" justifyContent="flex-end">
+              <MetricInfo />
+            </Box>
+            <GraphSVG />
+          </Box>
+        )}
+      </CardBody>
+    </Card>
+  );
+};
+
+export const MetricCardVariant = MetricCardVariantExample.bind({});

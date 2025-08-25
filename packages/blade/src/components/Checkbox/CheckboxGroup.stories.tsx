@@ -9,6 +9,9 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { InfoIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 const Page = (): React.ReactElement => {
   return (
@@ -104,9 +107,23 @@ const CheckboxGroupTemplate: StoryFn<typeof CheckboxGroupComponent> = ({ childre
 export const Default = CheckboxGroupTemplate.bind({});
 Default.storyName = 'Default';
 
+export const CheckboxGroupOrientationHorizontal = CheckboxGroupTemplate.bind({});
+CheckboxGroupOrientationHorizontal.storyName = 'CheckboxGroup Orientation Horizontal';
+CheckboxGroupOrientationHorizontal.args = {
+  orientation: 'horizontal',
+};
+
 export const HelpTextCheckbox = CheckboxGroupTemplate.bind({});
 HelpTextCheckbox.storyName = 'HelpText';
 HelpTextCheckbox.args = {
+  helpText: 'CheckboxGroup help text',
+};
+
+export const CheckboxGroupOrientationHorizontalWithHelpText = CheckboxGroupTemplate.bind({});
+CheckboxGroupOrientationHorizontalWithHelpText.storyName =
+  'CheckboxGroup Orientation Horizontal With HelpText';
+CheckboxGroupOrientationHorizontalWithHelpText.args = {
+  orientation: 'horizontal',
   helpText: 'CheckboxGroup help text',
 };
 
@@ -115,6 +132,15 @@ ErrorText.storyName = 'ErrorText';
 ErrorText.args = {
   validationState: 'error',
   errorText: 'CheckboxGroup help text',
+};
+
+export const CheckboxGroupOrientationHorizontalWithErrorText = CheckboxGroupTemplate.bind({});
+CheckboxGroupOrientationHorizontalWithErrorText.storyName =
+  'CheckboxGroup Orientation Horizontal With ErrorText';
+CheckboxGroupOrientationHorizontalWithErrorText.args = {
+  orientation: 'horizontal',
+  validationState: 'error',
+  errorText: 'CheckboxGroup error text',
 };
 
 export const Disabled = CheckboxGroupTemplate.bind({});
@@ -200,6 +226,21 @@ const IndeterminateTemplate: StoryFn<typeof CheckboxComponent> = () => {
   return <IndeterminateExample />;
 };
 export const Indeterminate = IndeterminateTemplate.bind({});
+
+export const CheckboxGroupWithLabelSuffixTrailing = CheckboxGroupTemplate.bind({});
+CheckboxGroupWithLabelSuffixTrailing.storyName = 'CheckboxGroup with Label Suffix & Trailing';
+CheckboxGroupWithLabelSuffixTrailing.args = {
+  label: 'Select your fruit',
+  labelPosition: 'top',
+  labelSuffix: (
+    <Tooltip content="Select your fruit" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
+};
 
 export const KitchenSink = (): React.ReactElement => {
   const [selected, setSelected] = React.useState(['mango', 'apple']);

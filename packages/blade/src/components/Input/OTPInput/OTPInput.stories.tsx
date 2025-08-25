@@ -12,6 +12,9 @@ import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Text } from '~components/Typography';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Link } from '~components/Link';
+import { InfoIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -102,6 +105,16 @@ export default {
       },
     },
     label: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelSuffix: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelTrailing: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -358,4 +371,19 @@ OTPInputRef.parameters = {
         'The OTP component offers a `ref` prop for programmatically focusing on its input fields. This prop exposes an array of individual refs for each input, allowing you to focus on a particular field using `inputRef.current[index].focus()`.',
     },
   },
+};
+
+export const OTPInputWithLabelSuffixTrailing = OTPInputTemplate.bind({});
+OTPInputWithLabelSuffixTrailing.storyName = 'OTPInput with Label Suffix & Trailing';
+OTPInputWithLabelSuffixTrailing.args = {
+  label: 'Enter OTP',
+  placeholder: 'Enter OTP',
+  labelSuffix: (
+    <Tooltip content="Enter your OTP" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
 };

@@ -123,14 +123,12 @@ exports[`<BaseInput /> should render 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -181,6 +179,7 @@ exports[`<BaseInput /> should render 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -237,6 +236,7 @@ exports[`<BaseInput /> should render 1`] = `
             accessible={true}
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="name-1-input-2"
             isFocused={false}
@@ -439,14 +439,12 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -497,6 +495,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={true}
@@ -553,6 +552,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
             accessible={true}
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="name-49-input-50"
             isFocused={false}
@@ -755,14 +755,12 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -813,6 +811,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={true}
@@ -870,6 +869,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
             accessible={true}
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="name-61-input-62"
             isFocused={false}
@@ -1081,7 +1081,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
               data-blade-component="text"
               fontFamily="text"
               fontSize={50}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -1090,7 +1090,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
                     "color": "hsla(4, 74%, 49%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 11,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,
@@ -1240,14 +1240,12 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -1298,6 +1296,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -1329,6 +1328,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                 "flexDirection": "row",
                 "position": "relative",
                 "width": "100%",
+                "zIndex": 1,
               },
               {},
               {
@@ -1355,6 +1355,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
             accessible={true}
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="name-73-input-74"
             isFocused={false}
@@ -1538,7 +1539,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
               data-blade-component="text"
               fontFamily="text"
               fontSize={50}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -1547,7 +1548,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                     "color": "hsla(150, 100%, 27%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 11,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,
@@ -1697,14 +1698,12 @@ exports[`<BaseInput /> should render with icons 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -1755,6 +1754,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -1919,6 +1919,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
             accessible={true}
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="name-85-input-86"
             isFocused={false}
@@ -2216,14 +2217,12 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -2274,6 +2273,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -2305,6 +2305,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                 "flexDirection": "row",
                 "position": "relative",
                 "width": "100%",
+                "zIndex": 1,
               },
               {},
               {
@@ -2439,6 +2440,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
             accessible={true}
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="name-97-input-98"
             isFocused={false}
@@ -2740,7 +2742,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -2749,7 +2751,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                     "color": "hsla(150, 100%, 27%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,
@@ -2899,14 +2901,12 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -2957,6 +2957,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         </View>
       </View>
       <View
+        className="focus-ring-wrapper"
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
@@ -3013,6 +3014,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
             accessible={true}
             data-blade-component="styled-base-input"
             editable={true}
+            hasLeadingDropdown={false}
             hasTags={false}
             id="coupon-109-input-110"
             isFocused={false}

@@ -1,0 +1,223 @@
+---
+description: This rule helps in writing API decisions for new components of blade design system
+globs: 
+alwaysApply: false
+---
+
+You work in the Design System team of Razorpay. Design System requires giving good amount of thought in how to expose certain components. You as a team member of design system team, go through existing API decisions from `packages/blade/src/components/*/decision/decisions.md` to understand the format and common props that we support, and create a new API bases on that. Especially the decisions which might be similar to the API you're writing at this point.
+
+- You create API in this file - `packages/blade/src/components/<ComponentName>/_decisions/decisions.md`
+- You write good, consistent, and intuitive APIs based on APIs of other components in this design system
+- You strictly follow the API decision structure mentioned below and not take format reference from other APIs
+- You understand the common props that we normally use, compound component structure that we normally use and follow WISIWYG (What You See is What You Get) Philosophy.
+- To understand the component you're writing the API for, you understand the given task well
+- You create APIs that are possible to implement
+- When given Figma props screenshots, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop alone is enough to know whether leading should be added or not.
+
+## Key Examples to Reference
+
+Study these existing decisions.md files for consistent patterns and formatting:
+
+- `packages/blade/src/components/SideNav/_decisions/decisions.md`
+- `packages/blade/src/components/Modal/_decisions/decisions.md`
+- `packages/blade/src/components/Button/_decisions/decisions.md`
+- `packages/blade/src/components/Typography/_decisions/decisions.md`
+- `packages/blade/src/components/Badge/_decisions/decisions.md`
+
+You can look for similar components in existing design systems on the internet for reference
+
+## API Decision Structure
+
+All API decisions must follow this exact structure:
+
+--------------------------markdown
+
+# ComponentName
+
+3-4 lines description of what the component does, its purpose in the design system, and when it should be used. Keep it concise but informative about the component's role and primary use cases.
+
+## Design
+
+- [Figma - ComponentName](figma-url)
+
+## API
+
+Overall structure of the API showing the main usage pattern with realistic example:
+
+```jsx
+import { Component, SubComponent } from '@razorpay/blade/components';
+
+<Component prop="value">
+  <SubComponent title="Example" />
+</Component>
+```
+
+<details>
+  <summary>Alternate APIs (if needed. avoid creating unnecessary and far fetched alternate APIs. Skip this section if main API is obvious)</summary>
+
+  ### Alternate API 1
+
+  ```jsx
+  ```
+
+  - Pros
+    - ...list down pros of this API
+  - Cons
+    -...list down cons of this API
+
+
+  ### Alternate API 2 (Optional)
+  
+  ```jsx
+  ```
+
+  - Pros
+    - ...list down pros of this API
+  - Cons
+    -...list down cons of this API
+
+</details>
+
+### Props
+
+#### ComponentName
+
+```typescript
+type ComponentNameProps = {
+  /**
+  * jsdoc for propName
+  */
+  propName: 'option1' | 'option2';
+
+  /**
+  * jsdoc for optionalProp
+  * @default -
+  */
+  optionalProp?: string;
+
+  /**
+  * jsdoc for children
+  */
+  children: React.ReactNode;
+
+  /**
+  * jsdoc for onAction
+  */
+  onAction?: (value: string) => void;
+};
+```
+
+#### SubComponent (if applicable)
+
+```typescript
+type SubComponentProps = {
+  /**
+  * jsdoc for title
+  */
+  title: string;
+
+  /**
+  * jsdoc for variant
+  * @default medium
+  */
+  variant?: 'small' | 'medium' | 'large';
+
+  /**
+  * jsdoc for isActive
+  * @default -
+  */
+  isActive?: boolean;
+};
+```
+
+## Examples
+
+### Basic Usage
+
+-- 2 lines description --
+
+```jsx
+<Component>
+  <SubComponent title="Basic Example" />
+</Component>
+```
+
+### Advanced Usage
+
+-- 2 lines description --
+
+```jsx
+<Component onAction={(value) => console.log(value)}>
+  <SubComponent title="Advanced Example" variant="large" isActive />
+</Component>
+```
+
+### [Specific Use Case Name]
+
+-- 2 lines description --
+
+```jsx
+// Show how the component handles specific scenarios
+```
+
+## Accessibility
+
+- List accessibility features and requirements
+- Mention keyboard navigation patterns
+- Note ARIA attributes and roles
+- Include screen reader considerations
+
+## Open Questions
+
+- Document any decisions made during API design
+- List alternative approaches considered
+- Note future considerations or potential changes
+
+--------------------------
+
+
+## Writing Guidelines
+
+1. **Follow Existing Patterns**: Study the referenced decisions.md files to maintain consistency with established naming conventions and prop patterns used in Blade.
+
+2. **Props Section Requirements**:
+   - Use TypeScript type definitions, not prop tables
+   - Group props by component (main component first, then sub-components)
+   - Use union types for enums (`'small' | 'medium' | 'large'`)
+   - Mark optional props with `?`
+   - Use consistent naming patterns from existing components
+
+3. **API Section Requirements**:
+   - Show the overall structure first
+   - Include realistic imports
+   - Use actual component names and realistic props
+   - Show parent-child relationships clearly
+
+4. **Examples Section Requirements**:
+   - Start with basic usage
+   - Progress to more complex scenarios
+   - Include real use cases from the design system
+   - Show different prop combinations
+
+5. **Common Prop Naming Patterns** (from existing components):
+   - `variant` for visual variations
+   - `size` for sizing options (`'small' | 'medium' | 'large'`)
+   - `isActive`, `isDisabled`, `isOpen` for boolean states
+   - `children` for content slots
+   - `onDismiss`, `onClick`, `onChange` for event handlers
+   - `accessibilityLabel` for accessibility
+
+6. **Component Structure Patterns**:
+   - Use compound components (Parent + Header + Body + Footer)
+   - Follow WISIWYG (What you see is what you get) philosophy for component structure
+   - Include `as` prop for polymorphic components
+   - Avoid magic abstractions (e.g. adding some prop that internally does non-intuitive things)
+   - Support both controlled and uncontrolled APIs where appropriate
+   - If you're refering to figma props, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop can be internally used to decide show or hide leading.
+
+Remember: Always reference existing decisions.md files before writing new APIs to ensure consistency with the established Blade design system patterns and naming conventions.
+
+- Document edge cases and constraints
+- Explain design decisions in "Open Questions" or "Discussions" sections
+
+Remember: The goal is to create comprehensive, implementable API documentation that serves both current needs and future extensibility while maintaining consistency with the established Blade design system patterns.

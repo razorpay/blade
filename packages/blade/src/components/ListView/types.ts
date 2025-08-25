@@ -8,7 +8,7 @@ type ListViewCommonProps = {
 type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute;
 
 type ListViewFilterProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * Quick Filters Component
    */
@@ -35,21 +35,34 @@ type ListViewFilterProps = {
   onSearchClear?: () => void;
   /**
    * it will show/hide the quick filters
+   * @deprecated use showFilters instead
    */
   showQuickFilters?: boolean;
   /**
+   * it will show/hide the filters
+   */
+  showFilters?: boolean;
+  /**
    * onChange handler for showQuickFilters
+   * @deprecated use onShowFiltersChange instead
    */
   onShowQuickFiltersChange?: (showQuickFilters: boolean) => void;
   /**
-   * onChange handler for showQuickFilters
+   * onChange handler for showFilters
+   */
+  onShowFiltersChange?: (showFilters: boolean) => void;
+  /**
+   *
    * @default 0
    * you only need this if quick filters are controlled.
    */
   selectedFiltersCount?: number;
+  /**
+   * searchTrailing : trailing element for search input
+   */
+  searchTrailing?: React.ReactNode;
 } & TestID &
-  DataAnalyticsAttribute &
-  ListViewCommonProps;
+  DataAnalyticsAttribute;
 
 type ListViewSelectedFiltersType = {
   [key: string]: string[] | string | number[];

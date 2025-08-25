@@ -104,14 +104,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
-                  "clip": "rect(0 0 0 0)",
-                  "clipPath": "inset(50%)",
+                  "clip": "rect(0, 0, 0, 0)",
                   "height": 1,
-                  "left": -10000,
                   "marginBottom": -1,
-                  "marginLeft": 0,
+                  "marginLeft": -1,
                   "marginRight": -1,
-                  "marginTop": 0,
+                  "marginTop": -1,
                   "overflow": "hidden",
                   "paddingBottom": 0,
                   "paddingLeft": 0,
@@ -174,11 +172,15 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
+          flexWrap="nowrap"
+          gap="spacing.3"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
+                "flexWrap": "nowrap",
+                "gap": 8,
               },
             ]
           }
@@ -187,9 +189,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 12,
-                },
+                {},
               ]
             }
           >
@@ -354,9 +354,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 12,
-                },
+                {},
               ]
             }
           >
@@ -521,9 +519,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 0,
-                },
+                {},
               ]
             }
           >
@@ -795,14 +791,12 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
-                  "clip": "rect(0 0 0 0)",
-                  "clipPath": "inset(50%)",
+                  "clip": "rect(0, 0, 0, 0)",
                   "height": 1,
-                  "left": -10000,
                   "marginBottom": -1,
-                  "marginLeft": 0,
+                  "marginLeft": -1,
                   "marginRight": -1,
-                  "marginTop": 0,
+                  "marginTop": -1,
                   "overflow": "hidden",
                   "paddingBottom": 0,
                   "paddingLeft": 0,
@@ -865,11 +859,15 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
+          flexWrap="nowrap"
+          gap="spacing.3"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
+                "flexWrap": "nowrap",
+                "gap": 8,
               },
             ]
           }
@@ -878,9 +876,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 12,
-                },
+                {},
               ]
             }
           >
@@ -1045,9 +1041,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 12,
-                },
+                {},
               ]
             }
           >
@@ -1212,9 +1206,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 0,
-                },
+                {},
               ]
             }
           >
@@ -1407,7 +1399,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               data-blade-component="text"
               fontFamily="text"
               fontSize={50}
-              fontStyle="italic"
+              fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
               style={
@@ -1416,7 +1408,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     "color": "hsla(211, 22%, 56%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 11,
-                    "fontStyle": "italic",
+                    "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
                     "lineHeight": 16,

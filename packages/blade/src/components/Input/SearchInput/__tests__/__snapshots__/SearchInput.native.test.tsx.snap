@@ -134,14 +134,12 @@ exports[`<SearchInput /> should render 1`] = `
                       "borderColor": "black",
                       "borderStyle": "solid",
                       "borderWidth": 0,
-                      "clip": "rect(0 0 0 0)",
-                      "clipPath": "inset(50%)",
+                      "clip": "rect(0, 0, 0, 0)",
                       "height": 1,
-                      "left": -10000,
                       "marginBottom": -1,
-                      "marginLeft": 0,
+                      "marginLeft": -1,
                       "marginRight": -1,
-                      "marginTop": 0,
+                      "marginTop": -1,
                       "overflow": "hidden",
                       "paddingBottom": 0,
                       "paddingLeft": 0,
@@ -192,6 +190,7 @@ exports[`<SearchInput /> should render 1`] = `
           </View>
         </View>
         <View
+          className="focus-ring-wrapper"
           currentInteraction="default"
           data-blade-component="base-box"
           isTableInputCell={false}
@@ -432,6 +431,7 @@ exports[`<SearchInput /> should render 1`] = `
                       autoCompleteType="off"
                       data-blade-component="styled-base-input"
                       editable={true}
+                      hasLeadingDropdown={false}
                       hasTags={false}
                       id="searchinput-1-input-2"
                       isDropdownTrigger={true}

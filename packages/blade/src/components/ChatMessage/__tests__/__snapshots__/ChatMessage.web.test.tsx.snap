@@ -61,7 +61,17 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -83,10 +93,6 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  margin-bottom: 0px;
-}
-
-.c18.c18.c18.c18.c18 {
   grid-column: 2;
 }
 
@@ -202,18 +208,15 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 
 .c13.c13.c13.c13.c13 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -226,6 +229,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c13.c13.c13.c13.c13:hover + div {
@@ -312,11 +316,11 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c9"
+                          class="c10"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c10"
+                            class=""
                             data-blade-component="base-box"
                           >
                             <div
@@ -367,7 +371,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                             </div>
                           </div>
                           <div
-                            class="c10"
+                            class=""
                             data-blade-component="base-box"
                           >
                             <div
@@ -418,7 +422,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                             </div>
                           </div>
                           <div
-                            class="c17"
+                            class=""
                             data-blade-component="base-box"
                           >
                             <div
@@ -478,7 +482,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
           </div>
         </div>
         <div
-          class="c18"
+          class="c17"
           data-blade-component="base-box"
         />
       </div>
@@ -569,7 +573,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -987,7 +991,17 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -1009,10 +1023,6 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  margin-bottom: 0px;
-}
-
-.c18.c18.c18.c18.c18 {
   grid-column: 2;
 }
 
@@ -1128,18 +1138,15 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 
 .c13.c13.c13.c13.c13 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
@@ -1152,6 +1159,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c13.c13.c13.c13.c13:hover + div {
@@ -1238,11 +1246,11 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c9"
+                          class="c10"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c10"
+                            class=""
                             data-blade-component="base-box"
                           >
                             <div
@@ -1293,7 +1301,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                             </div>
                           </div>
                           <div
-                            class="c10"
+                            class=""
                             data-blade-component="base-box"
                           >
                             <div
@@ -1344,7 +1352,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                             </div>
                           </div>
                           <div
-                            class="c17"
+                            class=""
                             data-blade-component="base-box"
                           >
                             <div
@@ -1404,7 +1412,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
           </div>
         </div>
         <div
-          class="c18"
+          class="c17"
           data-blade-component="base-box"
         />
       </div>

@@ -1,39 +1,23 @@
-import type { CalendarProps, DatesRangeValue } from '../types';
+import type { DatesRangeValue } from '../types';
+import { usePresetContext } from './PresetContext';
 import { QuickSelectionItem } from './QuickSelectionItem.web';
 import { Box } from '~components/Box';
-import { makeSpace } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 import { Chip, ChipGroup } from '~components/Chip';
 import { Divider } from '~components/Divider';
-import BaseBox from '~components/Box/BaseBox';
-import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
-
-const isSamePreset = (value1: DatesRangeValue | null, value2: DatesRangeValue | null): boolean => {
-  if (!value1?.[0] || !value1?.[1]) return false;
-  if (!value2?.[0] || !value2?.[1]) return false;
-
-  return (
-    value1[0].toDateString() === value2[0].toDateString() &&
-    value1[1].toDateString() === value2[1].toDateString()
-  );
-};
+import { makeSpace } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type PresetSideBarProps = {
   isMobile?: boolean;
-  date: Date;
-  presets: CalendarProps<'single'>['presets'];
   onSelection: (value: (date: Date) => DatesRangeValue) => void;
-  selectedPreset: DatesRangeValue | null;
 };
 
-const PresetSideBar = ({
-  date,
-  presets,
-  selectedPreset,
-  onSelection,
-  isMobile,
-}: PresetSideBarProps): React.ReactElement => {
-  if (!presets) return <></>;
+const PresetSideBar = ({ onSelection, isMobile }: PresetSideBarProps): React.ReactElement => {
+  const { presetStates } = usePresetContext();
+
+  if (presetStates.length === 0) return <></>;
 
   if (isMobile) {
     return (
@@ -45,12 +29,15 @@ const PresetSideBar = ({
           selectionType="single"
           accessibilityLabel="Select Presets"
           onChange={({ values }) => {
-            onSelection(presets.find((preset) => preset.label === values[0])!.value);
+            const selectedPreset = presetStates.find((state) => state.preset.label === values[0]);
+            if (selectedPreset) {
+              onSelection(selectedPreset.preset.value);
+            }
           }}
         >
-          {presets.map((preset, index) => {
+          {presetStates.map(({ preset }, index) => {
             return (
-              <Chip value={preset.label} key={index}>
+              <Chip value={preset.label} key={index} data-analytics-name={preset.label}>
                 {preset.label}
               </Chip>
             );
@@ -73,8 +60,7 @@ const PresetSideBar = ({
       borderRightWidth="thin"
       {...makeAccessible({ role: 'listbox', label: 'Select Presets' })}
     >
-      {presets.map((preset, index) => {
-        const isSelected = isSamePreset(selectedPreset, preset.value(date));
+      {presetStates.map(({ preset, isSelected }, index) => {
         return (
           <QuickSelectionItem
             key={index}

@@ -11,6 +11,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -377,6 +378,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 
@@ -397,13 +399,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 .c3.c3.c3.c3.c3 {
   box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
-  position: fixed;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
-  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  position: fixed;
+  -webkit-transform: translate(-50%,-50%) scale(0.9);
+  -ms-transform: translate(-50%,-50%) scale(0.9);
+  transform: translate(-50%,-50%) scale(0.9);
+  -webkit-transition-property: opacity,-webkit-transform;
+  -webkit-transition-property: opacity,transform;
+  transition-property: opacity,transform;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
 .c20.c20.c20.c20.c20 {
@@ -789,6 +796,7 @@ exports[`Modal renders a basic Modal 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -838,13 +846,18 @@ exports[`Modal renders a basic Modal 1`] = `
 
 .c3.c3.c3.c3.c3 {
   box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
-  position: fixed;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
-  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  position: fixed;
+  -webkit-transform: translate(-50%,-50%) scale(0.9);
+  -ms-transform: translate(-50%,-50%) scale(0.9);
+  transform: translate(-50%,-50%) scale(0.9);
+  -webkit-transition-property: opacity,-webkit-transform;
+  -webkit-transition-property: opacity,transform;
+  transition-property: opacity,transform;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
 <div
@@ -894,6 +907,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -943,13 +957,18 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 
 .c3.c3.c3.c3.c3 {
   box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
-  position: fixed;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
-  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  position: fixed;
+  -webkit-transform: translate(-50%,-50%) scale(0.9);
+  -ms-transform: translate(-50%,-50%) scale(0.9);
+  transform: translate(-50%,-50%) scale(0.9);
+  -webkit-transition-property: opacity,-webkit-transform;
+  -webkit-transition-property: opacity,transform;
+  transition-property: opacity,transform;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
 <div
@@ -999,6 +1018,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -1048,13 +1068,18 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 
 .c3.c3.c3.c3.c3 {
   box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
-  position: fixed;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
-  animation: hWDQRX-450290765 280ms cubic-bezier(0.17,0,1,1);
+  position: fixed;
+  -webkit-transform: translate(-50%,-50%) scale(0.9);
+  -ms-transform: translate(-50%,-50%) scale(0.9);
+  transform: translate(-50%,-50%) scale(0.9);
+  -webkit-transition-property: opacity,-webkit-transform;
+  -webkit-transition-property: opacity,transform;
+  transition-property: opacity,transform;
+  -webkit-transition-duration: 280ms;
+  transition-duration: 280ms;
+  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
+  transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
 <div

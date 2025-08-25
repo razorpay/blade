@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const DiscIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _DiscIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -22,5 +23,9 @@ const DiscIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const DiscIcon = assignWithoutSideEffects(_DiscIcon, {
+  componentId: 'DiscIcon',
+});
 
 export default DiscIcon;

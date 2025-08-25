@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const Signal4BarIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _Signal4BarIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -14,5 +15,9 @@ const Signal4BarIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const Signal4BarIcon = assignWithoutSideEffects(_Signal4BarIcon, {
+  componentId: 'Signal4BarIcon',
+});
 
 export default Signal4BarIcon;

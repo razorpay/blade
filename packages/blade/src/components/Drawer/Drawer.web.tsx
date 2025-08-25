@@ -85,6 +85,7 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
   {
     isOpen,
     onDismiss,
+    onUnmount,
     zIndex = componentZIndices.drawer,
     children,
     accessibilityLabel,
@@ -126,6 +127,11 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
 
   const { refs, context } = useFloating({
     open: isMounted,
+    onOpenChange: (open) => {
+      if (!open) {
+        onUnmount?.();
+      }
+    },
   });
 
   React.useEffect(() => {

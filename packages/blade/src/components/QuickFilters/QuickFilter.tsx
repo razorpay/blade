@@ -17,6 +17,7 @@ const QuickFilterContent = ({
   trailing,
   selectionType = 'single',
   isSelected = false,
+  ...rest
 }: QuickFilterContentProps): React.ReactElement => {
   return (
     <BaseBox
@@ -37,7 +38,11 @@ const QuickFilterContent = ({
         justifyContent="center"
         alignItems="center"
       >
-        {selectionType === 'single' ? <Radio value={value} /> : <Checkbox value={value} />}
+        {selectionType === 'single' ? (
+          <Radio value={value} {...makeAnalyticsAttribute(rest)} />
+        ) : (
+          <Checkbox value={value} {...makeAnalyticsAttribute(rest)} />
+        )}
         <Text
           variant="body"
           size="medium"
@@ -67,6 +72,8 @@ const QuickFilter = forwardRef<BladeElementRef, QuickFilterProps>(
         elevation="none"
         isSelected={isQuickFilterSelected}
         ref={ref}
+        // Add margin to accommodate the box shadow that appears when selected, preventing visual cutoff
+        marginRight="spacing.1"
         {...makeAnalyticsAttribute(rest)}
         {...metaAttribute({ testID })}
       >

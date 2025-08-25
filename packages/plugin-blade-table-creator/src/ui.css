@@ -1,0 +1,275 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 24px;
+  color: #333;
+  background: #fafafa;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: 72px;
+}
+
+strong {
+  font-size: 18px;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  display: block;
+}
+
+strong.secondary {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.step {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.step.active {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dimensions-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+input,
+select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #18a0fb;
+  box-shadow: 0 0 0 2px rgba(24, 160, 251, 0.1);
+}
+
+input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  color: #999;
+}
+
+input[type='number'] {
+  width: 100%;
+}
+
+.density-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.density-group {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.column-type-group {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-top: 8px;
+}
+
+.column-type-group::-webkit-scrollbar {
+  width: 6px;
+}
+
+.column-type-group::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.column-type-group::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.column-type-group::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.column-headers {
+  display: grid;
+  grid-template-columns: 80px 120px 1fr;
+  gap: 16px;
+  padding: 0 0 8px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 8px;
+}
+
+.column-header {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.column-type-row {
+  padding: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.column-type-row:last-child {
+  border-bottom: none;
+}
+
+.column-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.column-title-input {
+  width: 100%;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #18a0fb;
+  color: white;
+}
+
+button:hover {
+  background: #0d8ee9;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button#back {
+  background: #f5f5f5;
+  color: #333;
+}
+
+button#back:hover {
+  background: #e5e5e5;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #eee;
+  padding: 16px 24px;
+  z-index: 100;
+}
+
+.footer-content {
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.column-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0;
+}
+
+.column-table th,
+.column-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.column-table th {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.column-table th:nth-child(1),
+.column-table td:nth-child(1) {
+  width: 80px;
+}
+
+.column-table th:nth-child(2),
+.column-table td:nth-child(2) {
+  width: 160px;
+}
+
+.column-table th:nth-child(3),
+.column-table td:nth-child(3) {
+  width: 100%;
+}
+
+.column-table tr {
+  width: 100%;
+}
+
+.column-table tr:last-child td {
+  border-bottom: none;
+}
+
+.column-type-select select,
+.column-title-input input {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.column-card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import { useIsMobile } from '~utils/useIsMobile';
 
 type CalendarFooterProps = {
@@ -24,9 +25,15 @@ const CalendarFooter = ({
         marginLeft="auto"
         display="flex"
         flexDirection="row"
-        gap="spacing.4"
+        gap={isMobile ? 'spacing.5' : 'spacing.3'}
       >
-        <Button isFullWidth={isMobile} variant="tertiary" size="medium" onClick={onCancel}>
+        <Button
+          isFullWidth={isMobile}
+          variant="tertiary"
+          size="medium"
+          onClick={onCancel}
+          data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.CANCEL_BUTTON}
+        >
           Cancel
         </Button>
         <Button
@@ -35,6 +42,7 @@ const CalendarFooter = ({
           variant="primary"
           size="medium"
           onClick={onApply}
+          data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.APPLY_BUTTON}
         >
           Apply
         </Button>

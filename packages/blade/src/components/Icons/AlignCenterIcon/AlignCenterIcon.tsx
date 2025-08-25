@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const AlignCenterIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _AlignCenterIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -26,5 +27,9 @@ const AlignCenterIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const AlignCenterIcon = assignWithoutSideEffects(_AlignCenterIcon, {
+  componentId: 'AlignCenterIcon',
+});
 
 export default AlignCenterIcon;

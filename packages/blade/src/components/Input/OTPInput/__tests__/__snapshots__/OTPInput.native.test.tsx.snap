@@ -104,14 +104,12 @@ exports[`<OTPInput /> should render 1`] = `
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
-                  "clip": "rect(0 0 0 0)",
-                  "clipPath": "inset(50%)",
+                  "clip": "rect(0, 0, 0, 0)",
                   "height": 1,
-                  "left": -10000,
                   "marginBottom": -1,
-                  "marginLeft": 0,
+                  "marginLeft": -1,
                   "marginRight": -1,
-                  "marginTop": 0,
+                  "marginTop": -1,
                   "overflow": "hidden",
                   "paddingBottom": 0,
                   "paddingLeft": 0,
@@ -212,6 +210,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -270,6 +269,7 @@ exports[`<OTPInput /> should render 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-37-input-38-0-49-input-50"
                     isFocused={false}
@@ -364,6 +364,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -422,6 +423,7 @@ exports[`<OTPInput /> should render 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-37-input-38-1-55-input-56"
                     isFocused={false}
@@ -516,6 +518,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -574,6 +577,7 @@ exports[`<OTPInput /> should render 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-37-input-38-2-61-input-62"
                     isFocused={false}
@@ -668,6 +672,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -726,6 +731,7 @@ exports[`<OTPInput /> should render 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-37-input-38-3-67-input-68"
                     isFocused={false}
@@ -820,6 +826,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -878,6 +885,7 @@ exports[`<OTPInput /> should render 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-37-input-38-4-73-input-74"
                     isFocused={false}
@@ -972,6 +980,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1030,6 +1039,7 @@ exports[`<OTPInput /> should render 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-37-input-38-5-79-input-80"
                     isFocused={false}
@@ -1205,14 +1215,12 @@ exports[`<OTPInput /> should render large size 1`] = `
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
-                  "clip": "rect(0 0 0 0)",
-                  "clipPath": "inset(50%)",
+                  "clip": "rect(0, 0, 0, 0)",
                   "height": 1,
-                  "left": -10000,
                   "marginBottom": -1,
-                  "marginLeft": 0,
+                  "marginLeft": -1,
                   "marginRight": -1,
-                  "marginTop": 0,
+                  "marginTop": -1,
                   "overflow": "hidden",
                   "paddingBottom": 0,
                   "paddingLeft": 0,
@@ -1313,6 +1321,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1371,6 +1380,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-121-input-122-0-127-input-128"
                     isFocused={false}
@@ -1466,6 +1476,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1524,6 +1535,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-121-input-122-1-133-input-134"
                     isFocused={false}
@@ -1619,6 +1631,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1677,6 +1690,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-121-input-122-2-139-input-140"
                     isFocused={false}
@@ -1772,6 +1786,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1830,6 +1845,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-121-input-122-3-145-input-146"
                     isFocused={false}
@@ -1925,6 +1941,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -1983,6 +2000,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-121-input-122-4-151-input-152"
                     isFocused={false}
@@ -2077,6 +2095,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               width="100%"
             >
               <View
+                className="focus-ring-wrapper"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 isTableInputCell={false}
@@ -2135,6 +2154,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autoCompleteType="sms-otp"
                     data-blade-component="styled-base-input"
                     editable={true}
+                    hasLeadingDropdown={false}
                     hasTags={false}
                     id="otp-121-input-122-5-157-input-158"
                     isFocused={false}
