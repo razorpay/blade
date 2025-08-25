@@ -138,6 +138,21 @@ const dayjs_locales = [
   'zh-tw',
 ];
 
+const MONTH_NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 // https://github.com/iamkun/dayjs/issues/732#issuecomment-554383261
 function patchLocale(locale: string): string | boolean {
   if (['en', 'en-us'].includes(locale)) return 'en';
@@ -684,7 +699,7 @@ function validatePartialDateSimple(input: string): { isValid: boolean; error?: s
         if ([4, 6, 9, 11].includes(month) && day > 30) {
           return {
             isValid: false,
-            error: `Month ${month.toString().padStart(2, '0')} cannot have more than 30 days`,
+            error: `${MONTH_NAMES[month - 1]} cannot have more than 30 days`,
           };
         }
       }
