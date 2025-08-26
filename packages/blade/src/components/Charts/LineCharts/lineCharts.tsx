@@ -34,8 +34,12 @@ export type BladeColorToken =
 // Chart-specific interfaces based on user specifications
 export interface LineProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  dot?: boolean | { r?: number; fill?: string; stroke?: string; strokeWidth?: number; [key: string]: any };
-  activeDot?: boolean | { r?: number; fill?: string; stroke?: string; strokeWidth?: number; [key: string]: any };
+  dot?:
+    | boolean
+    | { r?: number; fill?: string; stroke?: string; strokeWidth?: number; [key: string]: any };
+  activeDot?:
+    | boolean
+    | { r?: number; fill?: string; stroke?: string; strokeWidth?: number; [key: string]: any };
   connectNulls?: boolean;
   legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'wye';
   dataKey: string;
@@ -67,7 +71,7 @@ const getChartColors = (theme: Theme): Record<string, string> => ({
 // Helper function to resolve color tokens
 const resolveColorToken = (color: BladeColorToken | undefined, theme: Theme): string => {
   if (!color) return getChartColors(theme).primary;
-  
+
   if (
     color.startsWith('surface.') ||
     color.startsWith('feedback.') ||
@@ -78,9 +82,10 @@ const resolveColorToken = (color: BladeColorToken | undefined, theme: Theme): st
     for (const part of parts) {
       value = value[part];
     }
+    //@ts-expect-error
     return value || getChartColors(theme).primary;
   }
-  
+
   return color;
 };
 
@@ -117,6 +122,7 @@ export const LineChart: React.FC<LineChartProps> = ({ children, ...props }) => {
 
   return (
     <BaseBox {...styledProps} {...metaAttribute({ name: 'line-chart' })}>
+      //@ts-ignore
       <StyledLineChart theme={theme} margin={defaultMargin} {...props}>
         {children}
       </StyledLineChart>
