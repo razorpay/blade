@@ -1,17 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  ReferenceLine,
-  ChartTooltip,
-} from './lineCharts';
+import { XAxis, YAxis, ReferenceLine, CartesianGrid } from '../BaseChartComponents';
+import { LineChart, Line, Tooltip, Legend, ResponsiveContainer, ChartTooltip } from './lineCharts';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

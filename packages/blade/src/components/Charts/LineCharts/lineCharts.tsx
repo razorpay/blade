@@ -115,7 +115,6 @@ export const LineChart: React.FC<LineChartProps> = ({ children, ...props }) => {
 
   return (
     <BaseBox {...styledProps} {...metaAttribute({ name: 'line-chart' })}>
-      //@ts-ignore
       <StyledLineChart theme={theme} margin={defaultMargin} {...props}>
         {children}
       </StyledLineChart>

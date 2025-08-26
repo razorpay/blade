@@ -80,3 +80,15 @@ export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
     />
   );
 };
+
+export const ReferenceLine: React.FC<ReferenceLineProps> = ({ color, label, ...props }) => {
+  return (
+    <RechartsReferenceLine
+      stroke="#000"
+      strokeWidth={1}
+      strokeDasharray="3 3"
+      label={label}
+      {...props}
+    />
+  );
+};
