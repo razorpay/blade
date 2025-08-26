@@ -1,9 +1,6 @@
 export {
   LineChart,
   Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
   Tooltip,
   Legend,
   ResponsiveContainer,
@@ -14,9 +11,6 @@ export {
 export type {
   LineChartProps,
   LineProps,
-  XAxisProps,
-  YAxisProps,
-  CartesianGridProps,
   TooltipProps,
   LegendProps,
   ResponsiveContainerProps,

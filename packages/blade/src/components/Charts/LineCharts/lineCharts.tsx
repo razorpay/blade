@@ -48,13 +48,6 @@ export interface LineProps {
   strokeStyle?: 'dotted' | 'dashed' | 'solid';
 }
 
-export interface ReferenceLineProps {
-  y?: number;
-  x?: number;
-  label?: string;
-  color?: BladeColorToken;
-}
-
 // Predefined chart colors using Blade tokens
 const getChartColors = (theme: Theme): Record<string, string> => ({
   primary: theme.colors.interactive.background.primary.default,
@@ -163,68 +156,6 @@ export const Line: React.FC<LineProps> = ({
       type={type}
       dot={dotConfig}
       activeDot={activeDotConfig}
-      {...props}
-    />
-  );
-};
-
-export const ReferenceLine: React.FC<ReferenceLineProps> = ({ color, label, ...props }) => {
-  const { theme } = useTheme();
-  const resolvedColor = resolveColorToken(color, theme);
-
-  return (
-    <RechartsReferenceLine
-      stroke={resolvedColor}
-      strokeWidth={1}
-      strokeDasharray="3 3"
-      label={label}
-      {...props}
-    />
-  );
-};
-
-export const XAxis: React.FC<XAxisProps> = (props) => {
-  const { theme } = useTheme();
-
-  return (
-    <RechartsXAxis
-      axisLine={false}
-      tickLine={false}
-      tick={{
-        fill: theme.colors.surface.text.gray.normal,
-        fontSize: theme.typography.fonts.size[75],
-        fontFamily: theme.typography.fonts.family.text,
-      }}
-      {...props}
-    />
-  );
-};
-
-export const YAxis: React.FC<YAxisProps> = (props) => {
-  const { theme } = useTheme();
-
-  return (
-    <RechartsYAxis
-      axisLine={false}
-      tickLine={false}
-      tick={{
-        fill: theme.colors.surface.text.gray.normal,
-        fontSize: theme.typography.fonts.size[75],
-        fontFamily: theme.typography.fonts.family.text,
-      }}
-      {...props}
-    />
-  );
-};
-
-export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
-  const { theme } = useTheme();
-
-  return (
-    <RechartsCartesianGrid
-      strokeDasharray="3 3"
-      stroke={theme.colors.surface.border.gray.muted}
-      vertical={false}
       {...props}
     />
   );
