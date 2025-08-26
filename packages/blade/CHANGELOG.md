@@ -1,5 +1,65 @@
 # @razorpay/blade
 
+## 12.49.5
+
+### Patch Changes
+
+- 77a78ddd7: chore: update babel version
+
+## 12.49.4
+
+### Patch Changes
+
+- 8132ef089: feat(datepicker): added partial validation
+
+## 12.49.3
+
+### Patch Changes
+
+- 37fbe24ee: fix: wrong layout position in case of bottom sheet
+
+## 12.49.2
+
+### Patch Changes
+
+- 9fd0523f9: fix(datepicker): changed arrow to hyphen in range input field
+
+## 12.49.1
+
+### Patch Changes
+
+- 828d6d4f3: revert: virtualization in phone number input
+
+## 12.49.0
+
+### Minor Changes
+
+- d21bd1c9a: feat: add filled icons
+
+## 12.48.0
+
+### Minor Changes
+
+- bf6f929e6: feat(datepicker): add formatted input, preset dropdown, single-field range selection
+
+## 12.47.1
+
+### Patch Changes
+
+- 3c8584905: fix : update bottom sheet height logic
+
+## 12.47.0
+
+### Minor Changes
+
+- 029964227: feat(blade): add new navigation button position overlap
+
+## 12.46.2
+
+### Patch Changes
+
+- b746d9db8: fix(ListView): enable horizontal scroll for filters on desktop, remove gradient overlay
+
 ## 12.46.1
 
 ### Patch Changes

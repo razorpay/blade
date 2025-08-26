@@ -55,18 +55,23 @@ type DatePickerProps = InputProps &
   CalendarProps & {
     /**
      * Label for the input
-     * 
+     *
      * If labelPosition is set to "left" on range picker,
      * then we will take the `{ start }` label and render it on the left side of the input ignoring the `{ end }`
      */
-    label?: string | { start: string, end?: string };
+    label?: string | { start: string; end?: string };
     /**
      * Sets the HTML name attribute
      */
-    name?: string | { start: string, end: string };
+    name?: string | { start: string; end: string };
     isOpen?: boolean;
     defaultIsOpen?: boolean;
     onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
+    /**
+     * Whether to show the apply/cancel buttons
+     * @default true
+     */
+    showFooterActions?: boolean;
   };
 ```
 
@@ -164,9 +169,7 @@ type CalendarProps = {
 DatePicker support two selection mode, `single` and `range`
 
 ```jsx
-<DatePicker
-  selectionType={"single" | "range"}
-/>
+<DatePicker selectionType={'single' | 'range'} />
 ```
 
 <img src="./datepicker-range-example.png" width="600px" alt="DatePicker range" />
@@ -177,7 +180,7 @@ DatePicker support two selection mode, `single` and `range`
 
 ```jsx
 function ControlledDatePicker() {
-  const [selectedDate, setSelectedDate] = React.useState<DateValue>(new Date());
+  const [selectedDate, setSelectedDate] = React.useState < DateValue > new Date();
 
   return (
     <DatePicker
@@ -213,11 +216,9 @@ On mobile the DatePicker will automatically be converted to a BottomSheet, consu
 
 <img src="./datepicker-mobile.png" width="200px" alt="Mobile DatePicker" />
 
-
 <details>
 
 <summary>Alternative Approaches</summary>
-
 
 ## Calendar + Dropdown Composition
 
@@ -298,11 +299,7 @@ API Similar to Popover:
 API Similar to Dropdown:
 
 ```jsx
-<DatePicker
-  isOpen={isOpen}
-  onOpenChange={setIsOpen}
-  {...calendarProps}
->
+<DatePicker isOpen={isOpen} onOpenChange={setIsOpen} {...calendarProps}>
   <Button>Open DatePicker</Button> or <DatePickerInput />
   <DatePickerOverlay>
     <Calendar />

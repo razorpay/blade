@@ -15,6 +15,50 @@ figma.ui.onmessage = async (msg) => {
     let frameTableHeader: FrameNode | null = null;
     let frameTableBody: FrameNode | null = null;
 
+    // Define color keys for Blade colors
+    // const BLADE_COLOR_KEYS = {
+    //   'background.gray.subtle': {
+    //     id: '',
+    //     key: 'c604c75a0e81b6515cafe83104e62d57ac2a8dc8',
+    //   },
+    //   'background.gray.moderate': {
+    //     id: '',
+    //     key: 'b51b233c0c565db1ea4066d1098a4e6fe45670c8',
+    //   },
+    //   'background.gray.intense': {
+    //     id: '',
+    //     key: '908e10764484ef7af93c07b26180a9d2ec9a37ea',
+    //   },
+    // };
+
+    // import color styles/variables and set their id in BLADE_COLOR_KEYS
+    // try {
+    //   const colorEntries = Object.entries(BLADE_COLOR_KEYS) as [
+    //     keyof typeof BLADE_COLOR_KEYS,
+    //     { id: string; key: string },
+    //   ][];
+    //   const importedStyles = await Promise.all(
+    //     colorEntries.map(([, colorObject]) => figma.importStyleByKeyAsync(colorObject.key)),
+    //   );
+    //   importedStyles.forEach((style, index) => {
+    //     const [, colorObject] = colorEntries[index];
+    //     colorObject.id = style.id;
+    //   });
+    // } catch (error: unknown) {
+    //   console.error('Failed to import Blade color styles', error);
+    //   figma.notify(
+    //     'Could not load Blade color styles. Ensure the Blade library is enabled and keys are up to date.',
+    //   );
+    // }
+
+    // import color styles/variables and set their id in BLADE_COLOR_KEYS
+    // for await (const [color, colorObject] of Object.entries(BLADE_COLOR_KEYS)) {
+    //   const colorStyle = await figma.importStyleByKeyAsync(colorObject.key);
+    //   BLADE_COLOR_KEYS[color].id = colorStyle.id;
+    // }
+
+    // const bladeColorBackgroundGrayIntense = BLADE_COLOR_KEYS['background.gray.intense'].id;
+
     frameTable = figma.createFrame();
     frameTable.name = '<table>';
     frameTable.layoutMode = 'VERTICAL';
@@ -78,20 +122,56 @@ figma.ui.onmessage = async (msg) => {
         switch (columnType) {
           case 'CHECKBOX':
             console.log('Bodycheckbox', tableBodyCellTextInstance.componentProperties);
-            tableBodyCellTextInstance.setProperties({ contentType: 'Checkbox' });
+            tableBodyCellTextInstance.setProperties({ contentType: 'checkbox' });
             break;
           case 'SPACER':
             console.log('Bodyspacer', tableBodyCellTextInstance.componentProperties);
-            tableBodyCellTextInstance.setProperties({ contentType: 'Spacer' });
+            tableBodyCellTextInstance.setProperties({ contentType: 'spacer' });
             break;
           case 'AMOUNT':
             console.log('Bodyamount', tableBodyCellTextInstance.componentProperties);
-            tableBodyCellTextInstance.setProperties({ contentType: 'Amount' });
+            tableBodyCellTextInstance.setProperties({ contentType: 'amount' });
+            break;
+          case 'BADGE (GROUP)':
+            console.log('Bodybadge', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'badges-group' });
+            break;
+          case 'BUTTON (GROUP)':
+            console.log('Bodybutton', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'button-group' });
+            break;
+          case 'STATUS':
+            console.log('Bodystatus', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'status' });
+            break;
+          case 'NUMBER':
+            console.log('Bodynumber', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'numbers' });
+            break;
+          case 'ACTIONS/LINKS':
+            console.log('Bodyaction', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'actions-and-link' });
+            break;
+          case 'ICON':
+            console.log('Bodyicon', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'icon' });
+            break;
+          case 'SLOT':
+            console.log('Bodyslot', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'slot' });
+            break;
+          case 'INPUT TEXT':
+            console.log('Bodyinputtext', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'input-text-number)' });
+            break;
+          case 'INPUT SELECT':
+            console.log('Bodyinputselect', tableBodyCellTextInstance.componentProperties);
+            tableBodyCellTextInstance.setProperties({ contentType: 'input-select' });
             break;
           case 'TEXT':
           default:
             console.log('Bodytext', tableBodyCellTextInstance.componentProperties);
-            tableBodyCellTextInstance.setProperties({ contentType: 'Text (Icon & Asset)' });
+            tableBodyCellTextInstance.setProperties({ contentType: 'text-icon-asset' });
             break;
         }
         return tableBodyCellTextInstance;
@@ -103,21 +183,21 @@ figma.ui.onmessage = async (msg) => {
           case 'CHECKBOX':
             console.log('Headercheckbox', tableHeaderCellTextInstance.componentProperties);
             tableHeaderCellTextInstance.setProperties({
-              contentType: 'Selection',
+              contentType: 'selection',
               alignment: 'N/A',
             });
             break;
           case 'SPACER':
             console.log('Headerspacer', tableHeaderCellTextInstance.componentProperties);
             tableHeaderCellTextInstance.setProperties({
-              contentType: 'Spacer',
+              contentType: 'spacer',
               alignment: 'N/A',
             });
             break;
           case 'AMOUNT':
             console.log('Headeramount', tableHeaderCellTextInstance.componentProperties);
             tableHeaderCellTextInstance.setProperties({
-              alignment: 'Right',
+              alignment: 'right',
               'headerTitle#140:6': msg.columnTitles[i] || `Column ${i + 1}`,
             });
             break;
@@ -125,7 +205,7 @@ figma.ui.onmessage = async (msg) => {
           default:
             console.log('Headertext', tableHeaderCellTextInstance.componentProperties);
             tableHeaderCellTextInstance.setProperties({
-              contentType: 'Text',
+              contentType: 'text',
               'headerTitle#140:6': msg.columnTitles[i] || `Column ${i + 1}`,
             });
             break;

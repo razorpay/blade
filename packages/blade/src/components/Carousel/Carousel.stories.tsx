@@ -15,6 +15,8 @@ import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';
 import { Button } from '~components/Button';
+import { SparklesIcon, AlertTriangleIcon, SearchIcon } from '~components/Icons';
+import type { IconComponent, IconColors } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -253,7 +255,7 @@ const TestimonialCard = ({
 export const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
-    <Box width="100%" height={isReactNative() ? '350px' : 'auto'}>
+    <Box width="100%" height={isReactNative() ? '350px' : 'auto'} padding="spacing.9">
       <CarouselComponent
         {...props}
         key={key}
@@ -606,6 +608,70 @@ export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
               <TestimonialCard {...testimonial} />
             </CarouselItem>
           ))}
+        </CarouselComponent>
+      </Box>
+    </Box>
+  );
+};
+
+const cardContent = [
+  {
+    icon: SparklesIcon,
+    text: 'Give me a recap of Design x Dev meeting',
+    color: 'surface.icon.onSea.onSubtle',
+  },
+  {
+    icon: AlertTriangleIcon,
+    text: 'Show me all recent failed payments',
+    color: 'feedback.icon.negative.intense',
+  },
+  {
+    icon: SearchIcon,
+    text: 'Find recent payments by (contact number)',
+    color: 'feedback.icon.information.intense',
+  },
+];
+const CarouselCard = ({
+  icon: Icon,
+  text,
+  color,
+}: {
+  text: string;
+  color: IconColors;
+  icon: IconComponent;
+}) => {
+  return (
+    <Card elevation="none" padding="spacing.5">
+      <CardBody>
+        <Box display="flex" justifyContent="space-between" alignItems="center" gap="12px">
+          <Icon color={color} size="large" />
+          <Text size="medium" color="surface.text.gray.subtle">
+            {text}
+          </Text>
+        </Box>
+      </CardBody>
+    </Card>
+  );
+};
+
+export const WithOverlap: StoryFn<typeof CarouselComponent> = () => {
+  return (
+    <Box margin="auto" padding="spacing.4" width="100%">
+      <Box marginTop="spacing.6" paddingX="spacing.8">
+        <CarouselComponent
+          visibleItems="autofit"
+          navigationButtonPosition="side-overlap"
+          carouselItemWidth="280px"
+        >
+          {Array(3)
+            .fill(cardContent)
+            .flat()
+            .slice(0, 7)
+            .map(({ icon, text, color }, index) => (
+              <CarouselItem key={index}>
+                <CarouselCard icon={icon} text={text} color={color} />
+              </CarouselItem>
+            ))}
         </CarouselComponent>
       </Box>
     </Box>

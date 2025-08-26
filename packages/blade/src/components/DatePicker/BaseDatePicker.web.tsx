@@ -10,14 +10,16 @@ import { MantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
 import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
 import { Calendar } from './Calendar.web';
-import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
-import { useDatesState } from './useDatesState';
-import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter.web';
-import { convertIntlToDayjsLocale, loadScript } from './utils';
-import { shiftTimezone } from './shiftTimezone';
 import { DatePickerInput } from './DateInput.web';
 import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
+import { PresetDropdown } from './QuickSelection/PresetDropdown.web';
+import { PresetProvider } from './QuickSelection/PresetContext';
+import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
+import { shiftTimezone } from './shiftTimezone';
+import { useDatesState } from './useDatesState';
+import { usePopup } from './usePopup';
+import { convertIntlToDayjsLocale, loadScript } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -40,6 +42,12 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
+
+// Calendar dimensions for consistent layout
+const CALENDAR_HEIGHTS = {
+  // Height includes: Calendar grid (6 weeks * ~44px) + header (~48px) + footer actions (~64px) + padding
+  DAY_PICKER_WITH_FOOTER: '447px',
+} as const;
 
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -75,6 +83,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   onClearButtonClick,
   labelSuffix,
   labelTrailing,
+  showFooterActions = true,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -148,6 +157,13 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     },
   });
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
+
+  // Sync selectedPreset with controlledValue for initial preset matching
+  React.useEffect(() => {
+    if (!isSingle && controlledValue) {
+      setSelectedPreset(controlledValue as DatesRangeValue);
+    }
+  }, []);
 
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,
@@ -252,7 +268,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   }, [clearFilterCallbackTriggerer]);
 
   const isMobile = useIsMobile();
-  const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const titleId = useId('datepicker-title');
   const {
     context,
@@ -268,22 +283,35 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     open: controllableIsOpen,
     onOpenChange: (isOpen, _, reason) => {
       controllableSetIsOpen(() => isOpen);
-      if (reason === 'escape-key' || reason === 'outside-press') {
+      if (reason === 'escape-key') {
         handleCancel();
       }
     },
     referenceRef,
+    crossAxisOffset: -28,
   });
 
   const shouldRenderPresets = !isSingle && !isMobile;
+
+  // MOBILE: Blur input when bottom sheet opens to prevent keyboard + sheet overlap
+  // Use setTimeout(0) instead of requestAnimationFrame: BottomSheet captures document.activeElement
+  // on open for focus restoration. Deferring blur to next macrotask ensures BottomSheet first
+  // snapshots the focused input, then we blur to hide keyboard. On close, focus auto-restores.
+  React.useEffect(() => {
+    if (isMobile && controllableIsOpen) {
+      const refEl = (refs.reference?.current as unknown) as { blur?: () => void } | null;
+      if (refEl?.blur) {
+        setTimeout(() => {
+          refEl.blur?.();
+        }, 0);
+      }
+    }
+  }, [isMobile, controllableIsOpen, refs.reference]);
 
   const content = (
     <>
       {shouldRenderPresets ? (
         <PresetSideBar
-          presets={presets}
-          date={currentDate}
-          selectedPreset={selectedPreset}
           onSelection={(preset) => {
             const presetValue = preset?.(currentDate);
             setControlledValue(presetValue);
@@ -298,8 +326,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         gap="spacing.5"
         padding={{ m: 'spacing.6', s: 'spacing.0' }}
         /* We only need to set height for day picker, for year picker
-         or month  it should be auto. */
-        height={_picker === 'day' ? '447px' : 'auto'}
+         or month it should be auto. */
+        height={
+          _picker === 'day' && showFooterActions ? CALENDAR_HEIGHTS.DAY_PICKER_WITH_FOOTER : 'auto'
+        }
         backgroundColor="surface.background.gray.intense"
         justifyContent="space-between"
       >
@@ -347,13 +377,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           }}
           selectedValue={controlledValue}
         />
-        {isMobile ? null : (
-          <CalendarFooter
-            isButtonDisabled={applyButtonDisabled}
-            onApply={handleApply}
-            onCancel={handleCancel}
-          />
-        )}
+        {showFooterActions &&
+          (isMobile ? null : (
+            <CalendarFooter
+              isButtonDisabled={applyButtonDisabled}
+              onApply={handleApply}
+              onCancel={handleCancel}
+            />
+          ))}
       </BaseBox>
     </>
   );
@@ -384,126 +415,147 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   return (
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
-        <BaseBox
-          width={inputElementType === 'chip' ? 'fit-content' : '100%'}
-          {...getStyledProps(props)}
-          {...metaAttribute({ name: MetaConstants.DatePicker })}
-        >
-          {inputElementType === 'chip' ? (
-            <DatePickerFilterChip
-              selectionType={_selectionType}
-              date={controlledValue}
-              ref={referenceRef}
-              inputRef={refs.reference}
-              referenceProps={getReferenceProps()}
-              name={name as never}
-              label={label as never}
-              labelPosition={labelPosition}
-              accessibilityLabel={accessibilityLabel}
-              size={size}
-              errorText={errorText as never}
-              helpText={helpText as never}
-              successText={successText as never}
-              isDisabled={isDisabled}
-              isRequired={isRequired}
-              validationState={validationState}
-              autoFocus={autoFocus}
-              necessityIndicator={necessityIndicator}
-              format={finalFormat}
-              placeholder={finalInputPlaceHolder}
-              onClearButtonChange={handleClear}
-              {...makeAnalyticsAttribute(props)}
-            />
-          ) : (
-            <DatePickerInput
-              selectionType={_selectionType}
-              date={controlledValue}
-              ref={referenceRef}
-              inputRef={refs.reference}
-              referenceProps={getReferenceProps()}
-              name={name as never}
-              label={label as never}
-              labelPosition={labelPosition}
-              accessibilityLabel={accessibilityLabel}
-              size={size}
-              errorText={errorText as never}
-              helpText={helpText as never}
-              successText={successText as never}
-              isDisabled={isDisabled}
-              isRequired={isRequired}
-              validationState={validationState}
-              autoFocus={autoFocus}
-              necessityIndicator={necessityIndicator}
-              format={finalFormat}
-              placeholder={finalInputPlaceHolder}
-              labelSuffix={labelSuffix}
-              labelTrailing={labelTrailing}
-              {...makeAnalyticsAttribute(props)}
-            />
-          )}
-          {isMobile ? (
-            <BottomSheet
-              snapPoints={[0.9, 0.9, 1]}
-              isOpen={controllableIsOpen}
-              onDismiss={() => {
-                handleCancel();
-              }}
-            >
-              <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
-              <BottomSheetBody>
-                {content}
-                {!isSingle && (
-                  <PresetSideBar
-                    isMobile
-                    presets={presets}
-                    date={currentDate}
-                    selectedPreset={selectedPreset}
-                    onSelection={(preset) => {
-                      const presetValue = preset?.(currentDate);
-                      setControlledValue(presetValue);
-                      setSelectedPreset(presetValue);
-                    }}
-                  />
+        <PresetProvider presets={presets} selectedPreset={selectedPreset} currentDate={currentDate}>
+          <BaseBox
+            width={inputElementType === 'chip' ? 'fit-content' : '100%'}
+            {...getStyledProps(props)}
+            {...metaAttribute({ name: MetaConstants.DatePicker })}
+          >
+            {inputElementType === 'chip' ? (
+              <DatePickerFilterChip
+                selectionType={_selectionType}
+                date={controlledValue}
+                ref={referenceRef}
+                inputRef={refs.reference}
+                referenceProps={getReferenceProps()}
+                name={name as never}
+                label={label as never}
+                labelPosition={labelPosition}
+                accessibilityLabel={accessibilityLabel}
+                size={size}
+                errorText={errorText as never}
+                helpText={helpText as never}
+                successText={successText as never}
+                isDisabled={isDisabled}
+                isRequired={isRequired}
+                validationState={validationState}
+                autoFocus={autoFocus}
+                necessityIndicator={necessityIndicator}
+                format={finalFormat}
+                placeholder={finalInputPlaceHolder}
+                onClearButtonChange={handleClear}
+                {...makeAnalyticsAttribute(props)}
+              />
+            ) : (
+              <DatePickerInput
+                selectionType={_selectionType}
+                date={controlledValue}
+                ref={referenceRef}
+                inputRef={refs.reference}
+                referenceProps={getReferenceProps()}
+                name={name as never}
+                label={label as never}
+                labelPosition={labelPosition}
+                accessibilityLabel={accessibilityLabel}
+                size={size}
+                errorText={errorText as never}
+                helpText={helpText as never}
+                successText={successText as never}
+                isDisabled={isDisabled}
+                isRequired={isRequired}
+                validationState={validationState}
+                autoFocus={autoFocus}
+                necessityIndicator={necessityIndicator}
+                format={finalFormat}
+                placeholder={finalInputPlaceHolder}
+                labelSuffix={labelSuffix}
+                labelTrailing={labelTrailing}
+                setControlledValue={setControlledValue}
+                selectedPreset={selectedPreset}
+                excludeDate={props.excludeDate}
+                minDate={props.minDate}
+                maxDate={props.maxDate}
+                leadingDropdown={
+                  presets && shouldRenderPresets ? (
+                    <PresetDropdown
+                      onSelection={(preset) => {
+                        const presetValue = preset?.(currentDate);
+                        setControlledValue(presetValue);
+                        setSelectedPreset(presetValue);
+                      }}
+                      onOpenCalendar={() => {
+                        controllableSetIsOpen(() => true);
+                      }}
+                    />
+                  ) : undefined
+                }
+                {...makeAnalyticsAttribute(props)}
+              />
+            )}
+            {isMobile ? (
+              <BottomSheet
+                snapPoints={[0.9, 0.9, 1]}
+                isOpen={controllableIsOpen}
+                onDismiss={() => {
+                  handleCancel();
+                }}
+              >
+                <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
+                <BottomSheetBody>
+                  {content}
+                  {!isSingle && (
+                    <PresetSideBar
+                      isMobile
+                      onSelection={(preset) => {
+                        const presetValue = preset?.(currentDate);
+                        setControlledValue(presetValue);
+                        setSelectedPreset(presetValue);
+                      }}
+                    />
+                  )}
+                </BottomSheetBody>
+                {showFooterActions && (
+                  <BottomSheetFooter>
+                    <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
+                  </BottomSheetFooter>
                 )}
-              </BottomSheetBody>
-              <BottomSheetFooter>
-                <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
-              </BottomSheetFooter>
-            </BottomSheet>
-          ) : (
-            isMounted && (
-              <FloatingPortal>
-                <FloatingFocusManager
-                  initialFocus={defaultInitialFocusRef}
-                  context={context}
-                  guards={true}
-                >
-                  <BaseBox
-                    ref={refs.setFloating}
-                    style={floatingStyles}
-                    zIndex={zIndex}
-                    {...getFloatingProps()}
-                    {...makeAccessible({ labelledBy: titleId })}
+              </BottomSheet>
+            ) : (
+              isMounted && (
+                <FloatingPortal>
+                  <FloatingFocusManager
+                    initialFocus={-1}
+                    context={context}
+                    guards={true}
+                    order={['reference', 'content']}
                   >
                     <BaseBox
-                      display="flex"
-                      flexDirection="row"
-                      borderColor="surface.border.gray.subtle"
-                      borderWidth="thin"
-                      borderStyle="solid"
-                      borderRadius="medium"
-                      overflow="hidden"
-                      minWidth="320px"
-                      style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+                      ref={refs.setFloating}
+                      style={floatingStyles}
+                      zIndex={zIndex}
+                      {...getFloatingProps()}
+                      {...makeAccessible({ labelledBy: titleId })}
                     >
-                      {content}
+                      <BaseBox
+                        display="flex"
+                        flexDirection="row"
+                        borderColor="surface.border.gray.subtle"
+                        borderWidth="thin"
+                        borderStyle="solid"
+                        borderRadius="medium"
+                        overflow="hidden"
+                        minWidth="320px"
+                        style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+                      >
+                        {content}
+                      </BaseBox>
                     </BaseBox>
-                  </BaseBox>
-                </FloatingFocusManager>
-              </FloatingPortal>
-            )
-          )}
-        </BaseBox>
+                  </FloatingFocusManager>
+                </FloatingPortal>
+              )
+            )}
+          </BaseBox>
+        </PresetProvider>
       </DatesProvider>
     </MantineProvider>
   );
