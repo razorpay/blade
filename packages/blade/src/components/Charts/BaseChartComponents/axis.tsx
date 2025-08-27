@@ -62,13 +62,12 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
 
   return (
     <RechartsXAxis
-      axisLine={false}
-      tickLine={false}
       tick={{
         fill: theme.colors.surface.text.gray.normal,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
       }}
+      stroke="#c5d0db"
       {...props}
     />
   );
@@ -79,13 +78,14 @@ export const YAxis: React.FC<YAxisProps> = (props) => {
 
   return (
     <RechartsYAxis
-      axisLine={false}
-      tickLine={false}
+      // axisLine={false}
+      // tickLine={false}
       tick={{
         fill: theme.colors.surface.text.gray.normal,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
       }}
+      stroke="#c5d0db"
       {...props}
     />
   );
@@ -96,7 +96,6 @@ export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
 
   return (
     <RechartsCartesianGrid
-      strokeDasharray="3 3"
       stroke={theme.colors.surface.border.gray.muted}
       vertical={false}
       {...props}
