@@ -175,7 +175,15 @@ const CustomSquareLegend = (props: any) => {
   const { payload } = props;
 
   return (
-    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center' }}>
+    <ul
+      style={{
+        listStyle: 'none',
+        padding: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '16px',
+      }}
+    >
       {payload.map((entry, index) => (
         <li
           key={`item-${index}`}
