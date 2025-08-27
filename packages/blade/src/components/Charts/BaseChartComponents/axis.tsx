@@ -119,8 +119,8 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({
   return (
     <RechartsReferenceLine
       stroke={resolvedColor}
-      strokeWidth={1}
-      strokeDasharray="3 3"
+      strokeWidth={2}
+      strokeDasharray="4 4"
       label={{
         position: labelPosition,
         offset: labelOffset,
