@@ -136,25 +136,14 @@ export const Line: React.FC<LineProps> = ({
   const strokeDasharray =
     strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
 
-  // Configure dot and activeDot based on props
-  const dotConfig =
-    dot === false ? false : dot === true ? { fill: resolvedColor, strokeWidth: 0, r: 4 } : dot;
-
-  const activeDotConfig =
-    activeDot === false
-      ? false
-      : activeDot === true
-      ? { r: 6, strokeWidth: 0, fill: resolvedColor }
-      : activeDot;
-
   return (
     <RechartsLine
       stroke={resolvedColor}
-      strokeWidth={2}
+      strokeWidth={3}
       strokeDasharray={strokeDasharray}
       type={type}
-      dot={dotConfig}
-      activeDot={activeDotConfig}
+      activeDot={false}
+      dot={false}
       {...props}
     />
   );

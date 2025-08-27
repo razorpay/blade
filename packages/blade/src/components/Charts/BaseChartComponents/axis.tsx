@@ -12,6 +12,7 @@ import {
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
 import { useTheme } from '~components/BladeProvider';
+import type { Theme } from '~components/BladeProvider';
 // BladeColorToken type for charts
 export type BladeColorToken =
   | 'surface.text.gray.normal'
@@ -28,11 +29,33 @@ export interface ReferenceLineProps {
   x?: number;
   label?: string;
   color?: BladeColorToken;
+  labelPosition?: 'left' | 'right' | 'top' | 'bottom';
+  labelOffset?: number;
 }
 
 export type XAxisProps = ComponentProps<typeof RechartsXAxis>;
 export type YAxisProps = ComponentProps<typeof RechartsYAxis>;
 export type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
+
+// Helper function to resolve color tokens
+const resolveColorToken = (color: BladeColorToken | undefined, theme: Theme): string => {
+  if (!color) return theme.colors.interactive.background.primary.default;
+
+  if (
+    color.startsWith('surface.') ||
+    color.startsWith('feedback.') ||
+    color.startsWith('interactive.')
+  ) {
+    const parts = color.split('.');
+    let value: Record<string, unknown> = theme.colors;
+    for (const part of parts) {
+      value = value[part] as Record<string, unknown>;
+    }
+    return ((value as unknown) as string) || theme.colors.interactive.background.primary.default;
+  }
+
+  return color;
+};
 
 export const XAxis: React.FC<XAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -81,13 +104,31 @@ export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
   );
 };
 
-export const ReferenceLine: React.FC<ReferenceLineProps> = ({ color, label, ...props }) => {
+export const ReferenceLine: React.FC<ReferenceLineProps> = ({
+  color,
+  label,
+  labelPosition = 'right',
+  labelOffset = 10,
+  ...props
+}) => {
+  const { theme } = useTheme();
+  const resolvedColor = color
+    ? resolveColorToken(color, theme)
+    : theme.colors.surface.text.gray.normal;
+
   return (
     <RechartsReferenceLine
-      stroke="#000"
+      stroke={resolvedColor}
       strokeWidth={1}
       strokeDasharray="3 3"
-      label={label}
+      label={{
+        position: labelPosition,
+        offset: labelOffset,
+        fill: resolvedColor,
+        fontSize: theme.typography.fonts.size[75],
+        fontFamily: theme.typography.fonts.family.text,
+        value: label,
+      }}
       {...props}
     />
   );
