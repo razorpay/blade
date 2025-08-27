@@ -19,6 +19,8 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
+import { Text } from '~components/Typography';
+import { Box } from '~components/Box';
 
 // BladeColorToken type for charts
 export type BladeColorToken =
@@ -169,6 +171,44 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
   );
 };
 
+const CustomSquareLegend = (props: any) => {
+  const { payload } = props;
+
+  return (
+    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center' }}>
+      {payload.map((entry, index) => (
+        <li
+          key={`item-${index}`}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginRight: '20px', // Adjust spacing between legend items
+          }}
+        >
+          <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
+            <span
+              style={{
+                backgroundColor: entry.color, // Uses the color of the line/bar
+                width: '12px', // Size of the square
+                height: '12px', // Size of the square
+                display: 'inline-block',
+                borderRadius: '2px',
+              }}
+            />
+            {/* Legend text with custom color and size */}
+            {/* <span style={{ fontSize: '16px', color: '#333' }}>{entry.value}</span>{' '} */}
+            <Text size="medium" color="surface.text.gray.muted">
+              {entry.value}
+            </Text>
+          </Box>
+
+          {/* Changed text color to a dark gray */}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 export const Legend: React.FC<LegendProps> = (props) => {
   const { theme } = useTheme();
 
@@ -179,6 +219,7 @@ export const Legend: React.FC<LegendProps> = (props) => {
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
       }}
+      content={<CustomSquareLegend />}
       {...props}
     />
   );
