@@ -1,2 +1,2 @@
-export type { XAxisProps, YAxisProps, CartesianGridProps, ReferenceLineProps } from './axis';
-export { XAxis, YAxis, CartesianGrid, ReferenceLine } from './axis';
+export type { XAxisProps, YAxisProps, CartesianGridProps } from './axis';
+export { XAxis, YAxis, CartesianGrid } from './axis';

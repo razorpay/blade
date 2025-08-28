@@ -47,6 +47,15 @@ export type TooltipProps = ComponentProps<typeof RechartsTooltip>;
 export type LegendProps = ComponentProps<typeof RechartsLegend>;
 export type ResponsiveContainerProps = ComponentProps<typeof RechartsResponsiveContainer>;
 
+export interface ReferenceLineProps {
+  y?: number;
+  x?: number;
+  label?: string;
+  color?: BladeColorToken;
+  labelPosition?: 'left' | 'right' | 'top' | 'bottom';
+  labelOffset?: number;
+}
+
 // Styled wrapper for LineChart with predefined margins
 const StyledLineChart = styled(RechartsLineChart)<{ theme: Theme }>`
   font-family: ${(props) => props.theme.typography.fonts.family.text};
@@ -191,4 +200,59 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = (props) =
 // Custom ChartTooltip component for forecast charts
 export const ChartTooltip: React.FC<TooltipProps> = (props) => {
   return <Tooltip {...props} />;
+};
+
+const CustomReferenceLabel = ({ viewBox, value }) => {
+  const { x, y, width } = viewBox;
+  const { theme } = useTheme();
+
+  return (
+    <g>
+      <rect
+        x={x + width - 80} // Position rectangle to the right
+        y={y - 15}
+        width="80"
+        height="30"
+        rx={theme.border.radius.medium}
+        fill={theme.colors.surface.background.gray.subtle}
+        stroke={theme.colors.surface.border.gray.muted}
+        strokeWidth="1"
+      />
+      <text
+        x={x + width - 40} // Center text in the rectangle
+        y={y + 5}
+        textAnchor="middle"
+        fill={theme.colors.surface.text.gray.normal}
+        fontSize={theme.typography.fonts.size[50]}
+        fontFamily={theme.typography.fonts.family.text}
+        fontWeight={theme.typography.fonts.weight.medium}
+        letterSpacing={theme.typography.letterSpacings[100]}
+      >
+        {value}
+      </text>
+    </g>
+  );
+};
+
+export const ReferenceLine: React.FC<ReferenceLineProps> = ({
+  color,
+  label,
+  labelPosition = 'right',
+  labelOffset = 10,
+  ...props
+}) => {
+  const { theme } = useTheme();
+  const resolvedColor = color
+    ? resolveColorToken(color, theme)
+    : theme.colors.surface.text.gray.normal;
+
+  return (
+    <RechartsReferenceLine
+      stroke={resolvedColor}
+      strokeWidth={2}
+      strokeDasharray="4 4"
+      label={<CustomReferenceLabel value={label} />}
+      {...props}
+    />
+  );
 };
