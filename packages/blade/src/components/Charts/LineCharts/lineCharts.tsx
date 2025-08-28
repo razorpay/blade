@@ -76,7 +76,7 @@ export const LineChart: React.FC<LineChartProps> = ({ children, ...props }) => {
 
   return (
     <BaseBox {...styledProps} {...metaAttribute({ name: 'line-chart' })}>
-      <StyledLineChart theme={theme} margin={defaultMargin} {...props}>
+      <StyledLineChart {...props} theme={theme} margin={defaultMargin}>
         {children}
       </StyledLineChart>
     </BaseBox>
@@ -234,21 +234,12 @@ const CustomReferenceLabel = ({ viewBox, value }) => {
   );
 };
 
-export const ReferenceLine: React.FC<ReferenceLineProps> = ({
-  color,
-  label,
-  labelPosition = 'right',
-  labelOffset = 10,
-  ...props
-}) => {
+export const ReferenceLine: React.FC<ReferenceLineProps> = ({ color, label, ...props }) => {
   const { theme } = useTheme();
-  const resolvedColor = color
-    ? resolveColorToken(color, theme)
-    : theme.colors.surface.text.gray.normal;
 
   return (
     <RechartsReferenceLine
-      stroke={resolvedColor}
+      stroke={getIn(theme.colors, 'surface.text.gray.normal')}
       strokeWidth={2}
       strokeDasharray="4 4"
       label={<CustomReferenceLabel value={label} />}
