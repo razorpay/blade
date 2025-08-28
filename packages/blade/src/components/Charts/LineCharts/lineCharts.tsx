@@ -31,7 +31,7 @@ export interface LineProps {
   dot?: RechartsLineProps['dot'];
   activeDot?: RechartsLineProps['activeDot'];
   connectNulls?: boolean;
-  legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'wye';
+  showLegend?: boolean;
   dataKey: string;
   name?: string;
   color: BladeColorToken;
@@ -88,8 +88,9 @@ export const Line: React.FC<LineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
-  dot,
-  activeDot,
+  dot = false,
+  activeDot = false,
+  showLegend = true,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -104,8 +105,9 @@ export const Line: React.FC<LineProps> = ({
       strokeWidth={3}
       strokeDasharray={strokeDasharray}
       type={type}
-      activeDot={false}
-      dot={false}
+      activeDot={activeDot}
+      dot={dot}
+      legendType={showLegend ? 'line' : 'none'}
       {...props}
     />
   );
@@ -132,13 +134,20 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
 };
 
 const CustomSquareLegend = (props: {
-  payload?: Array<{ value: string; color: string }>;
+  payload?: Array<{
+    payload: {
+      legendType: 'none' | 'line';
+    };
+    value: string;
+    color: string;
+  }>;
 }): JSX.Element | null => {
   const { payload } = props;
 
   if (!payload || payload.length === 0) {
     return null;
   }
+  const filteredPayload = payload.filter((entry) => entry?.payload?.legendType !== 'none');
 
   return (
     <ul
@@ -150,7 +159,7 @@ const CustomSquareLegend = (props: {
         gap: '16px',
       }}
     >
-      {payload.map((entry, index) => (
+      {filteredPayload.map((entry, index) => (
         <li
           key={`item-${index}`}
           style={{

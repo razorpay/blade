@@ -93,8 +93,8 @@ const forecastData = [
   { date: 'Jan', historical: 4000, forecast: null },
   { date: 'Feb', historical: 3000, forecast: null },
   { date: 'Mar', historical: 2000, forecast: null },
-  { date: 'Apr', historical: null, forecast: 2780 },
-  { date: 'May', historical: null, forecast: 1890 },
+  { date: 'Apr', historical: 2500, forecast: 2500 },
+  { date: 'May', historical: null, forecast: 4000 },
   { date: 'Jun', historical: null, forecast: 2390 },
 ];
 
@@ -137,7 +137,7 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
           <Line
             dataKey="teamA"
             strokeStyle="solid"
-            color="chart.background.categorical.cider.intense"
+            color="chart.background.categorical.azure.strong"
             dot={false}
             activeDot={false}
           />
@@ -191,17 +191,9 @@ export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
           <YAxis dataKey="teamA" label="Active Users" />
           <Tooltip />
           <Legend />
-          {/* No dots at all */}
-          <Line
-            dataKey="teamA"
-            name="No Dots"
-            color="chart.background.categorical.emerald.moderate"
-            dot={false}
-            activeDot={false}
-          />
           {/* Default dots */}
           <Line
-            dataKey="teamB"
+            dataKey="teamA"
             name="Default Dots"
             color="chart.background.categorical.azure.moderate"
             dot={true}
@@ -228,15 +220,15 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
             dataKey="historical"
             name="Historical Data"
             connectNulls={true}
-            color="chart.background.categorical.topaz.moderate"
+            color="chart.background.categorical.azure.moderate"
           />
           <Line
             dataKey="forecast"
             name="Forecast"
             strokeStyle="dashed"
             connectNulls={true}
-            legendType="none"
-            color="chart.background.categorical.magenta.moderate"
+            showLegend={false}
+            color="chart.background.categorical.gray.moderate"
           />
         </LineChart>
       </ResponsiveContainer>
