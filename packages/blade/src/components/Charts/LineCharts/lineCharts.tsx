@@ -156,7 +156,6 @@ const CustomSquareLegend = (props: {
           style={{
             display: 'flex',
             alignItems: 'center',
-            marginRight: '20px', // Adjust spacing between legend items
           }}
         >
           <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
@@ -183,7 +182,7 @@ const CustomSquareLegend = (props: {
   );
 };
 
-export const Legend: React.FC<LegendProps> = (props) => {
+export const Legend: React.FC = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -194,6 +193,7 @@ export const Legend: React.FC<LegendProps> = (props) => {
         color: theme.colors.surface.text.gray.normal,
         paddingTop: '16px',
       }}
+      align="center"
       content={<CustomSquareLegend />}
       {...props}
     />

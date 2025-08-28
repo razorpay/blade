@@ -34,24 +34,25 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
         fill: theme.colors.surface.text.gray.normal,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
+        fontWeight: theme.typography.fonts.weight.regular,
+        letterSpacing: theme.typography.letterSpacings[100],
       }}
       stroke={theme.colors.surface.border.gray.muted}
-      label={{
-        //TODO: remove this hardcoding Value
-        value: props?.label,
-        position: 'insideBottom',
-        //TODO: need to change this offset.
-        offset: -10,
-        style: {
-          textAnchor: 'middle',
-          fill: theme.colors.surface.text.gray.subtle,
-          fontSize: theme.typography.fonts.size[75],
-          fontWeight: theme.typography.fonts.weight.medium,
-          fontFamily: theme.typography.fonts.family.text,
-          letterSpacing: theme.typography.letterSpacings[100],
-          lineHeight: theme.typography.lineHeights[500],
-        },
-      }}
+      // eslint-disable-next-line react/no-unused-prop-types
+      label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
+        <text
+          x={viewBox.x + viewBox.width / 2 - 32}
+          y={viewBox.y + 14.5 + 24}
+          textAnchor="middle"
+          fill={theme.colors.surface.text.gray.subtle}
+          fontSize={theme.typography.fonts.size[75]}
+          fontFamily={theme.typography.fonts.family.text}
+          fontWeight={theme.typography.fonts.weight.medium}
+          letterSpacing={theme.typography.letterSpacings[100]}
+        >
+          {props?.label}
+        </text>
+      )}
       dataKey={props?.dataKey}
     />
   );
@@ -62,20 +63,17 @@ export const YAxis: React.FC<YAxisProps> = (props) => {
 
   return (
     <RechartsYAxis
-      // axisLine={false}
-      // tickLine={false}
       tick={{
         fill: theme.colors.surface.text.gray.normal,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
+        fontWeight: theme.typography.fonts.weight.regular,
+        letterSpacing: theme.typography.letterSpacings[100],
       }}
       stroke={theme.colors.surface.border.gray.muted}
       label={{
-        //TODO: remove this hardcoding Value
         value: props?.label,
         position: 'insideLeft',
-        //TODO: need to change this offset.
-        offset: -10,
         style: {
           textAnchor: 'middle',
           fill: theme.colors.surface.text.gray.subtle,
