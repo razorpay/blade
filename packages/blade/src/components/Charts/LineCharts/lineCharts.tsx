@@ -219,21 +219,34 @@ const CustomReferenceLabel = ({
   const { x, y, width } = viewBox ?? { x: 0, y: 0, width: 0 };
   const { theme } = useTheme();
 
+  const RECT_WIDTH = 80;
+  const RECT_HEIGHT = 30;
+  const rectX = x + width - RECT_WIDTH;
+  const rectY = y - 15;
+
+  // Padding for text inside the rectangle (4px vertical, 8px horizontal)
+  const PADDING_VERTICAL = 4;
+  const PADDING_HORIZONTAL = 8;
+
+  // Text position with padding inside the rectangle
+  const textX = rectX + PADDING_HORIZONTAL + (RECT_WIDTH - PADDING_HORIZONTAL * 2) / 2;
+  const textY = rectY + PADDING_VERTICAL + 15; // +15 for text baseline
+
   return (
     <g>
       <rect
-        x={x + width - 80} // Position rectangle to the right
+        x={x + width - 80}
         y={y - 15}
-        width="80"
-        height="30"
+        width={RECT_WIDTH}
+        height={RECT_HEIGHT}
         rx={theme.border.radius.medium}
         fill={theme.colors.surface.background.gray.subtle}
         stroke={theme.colors.surface.border.gray.muted}
         strokeWidth="1"
       />
       <text
-        x={x + width - 40} // Center text in the rectangle
-        y={y + 5}
+        x={textX}
+        y={textY}
         textAnchor="middle"
         fill={theme.colors.surface.text.gray.normal}
         fontSize={theme.typography.fonts.size[50]}
