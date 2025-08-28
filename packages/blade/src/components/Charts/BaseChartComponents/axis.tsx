@@ -15,8 +15,14 @@ export interface ReferenceLineProps {
   labelOffset?: number;
 }
 
-export type XAxisProps = ComponentProps<typeof RechartsXAxis>;
-export type YAxisProps = ComponentProps<typeof RechartsYAxis>;
+export type XAxisProps = {
+  label?: string;
+  dataKey?: string;
+};
+export type YAxisProps = {
+  label?: string;
+  dataKey?: string;
+};
 export type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
 export const XAxis: React.FC<XAxisProps> = (props) => {
@@ -29,10 +35,10 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
       }}
-      stroke="#c5d0db"
+      stroke={theme.colors.surface.border.gray.muted}
       label={{
         //TODO: remove this hardcoding Value
-        value: 'Months',
+        value: props?.label,
         position: 'insideBottom',
         //TODO: need to change this offset.
         offset: -10,
@@ -46,7 +52,7 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
           lineHeight: theme.typography.lineHeights[500],
         },
       }}
-      {...props}
+      dataKey={props?.dataKey}
     />
   );
 };
@@ -63,10 +69,10 @@ export const YAxis: React.FC<YAxisProps> = (props) => {
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
       }}
-      stroke="#c5d0db"
+      stroke={theme.colors.surface.border.gray.muted}
       label={{
         //TODO: remove this hardcoding Value
-        value: 'Active Users',
+        value: props?.label,
         position: 'insideLeft',
         //TODO: need to change this offset.
         offset: -10,
@@ -82,7 +88,7 @@ export const YAxis: React.FC<YAxisProps> = (props) => {
         angle: -90,
         fill: theme.colors.surface.text.gray.subtle,
       }}
-      {...props}
+      dataKey={props?.dataKey}
     />
   );
 };

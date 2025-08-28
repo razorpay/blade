@@ -252,7 +252,7 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({ color, label, ...p
 
   return (
     <RechartsReferenceLine
-      stroke={getIn(theme.colors, 'surface.text.gray.normal')}
+      stroke={getIn(theme.colors, 'chart.background.categorical.gray.intense')}
       strokeWidth={2}
       strokeDasharray="4 4"
       label={<CustomReferenceLabel value={label} />}

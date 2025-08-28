@@ -137,7 +137,7 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
           <Line
             dataKey="teamA"
             strokeStyle="solid"
-            color="chart.background.categorical.gray.moderate"
+            color="chart.background.categorical.cider.intense"
             dot={false}
             activeDot={false}
           />
@@ -187,8 +187,8 @@ export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData}>
           <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
+          <XAxis dataKey="month" label="Months" />
+          <YAxis dataKey="teamA" label="Active Users" />
           <Tooltip />
           <Legend />
           {/* No dots at all */}
