@@ -130,8 +130,14 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
   );
 };
 
-const CustomSquareLegend = (props: unknown) => {
+const CustomSquareLegend = (props: {
+  payload?: Array<{ value: string; color: string }>;
+}): JSX.Element | null => {
   const { payload } = props;
+
+  if (!payload || payload.length === 0) {
+    return null;
+  }
 
   return (
     <ul
@@ -202,8 +208,14 @@ export const ChartTooltip: React.FC<TooltipProps> = (props) => {
   return <Tooltip {...props} />;
 };
 
-const CustomReferenceLabel = ({ viewBox, value }) => {
-  const { x, y, width } = viewBox;
+const CustomReferenceLabel = ({
+  viewBox,
+  value,
+}: {
+  viewBox?: { x: number; y: number; width: number };
+  value: string | undefined;
+}): JSX.Element => {
+  const { x, y, width } = viewBox ?? { x: 0, y: 0, width: 0 };
   const { theme } = useTheme();
 
   return (
