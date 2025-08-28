@@ -500,7 +500,7 @@ const colors: ColorsWithModes = {
           magenta: {
             subtle: globalColors.chromatic.magenta[50],
             moderate: globalColors.chromatic.magenta[200],
-            intense: globalColors.chromatic.magenta[500],
+            intense: globalColors.chromatic.magenta[600],
             faint: globalColors.chromatic.magenta[600],
             strong: globalColors.chromatic.magenta[800],
           },
@@ -1097,21 +1097,21 @@ const colors: ColorsWithModes = {
           cider: {
             faint: globalColors.chromatic.cider[1000],
             subtle: globalColors.chromatic.cider[800],
-            moderate: globalColors.chromatic.cider[700],
+            moderate: globalColors.chromatic.cider[600],
             intense: globalColors.chromatic.cider[300],
             strong: globalColors.chromatic.cider[200],
           },
           sapphire: {
             faint: globalColors.chromatic.sapphire[1000],
             subtle: globalColors.chromatic.sapphire[800],
-            moderate: globalColors.chromatic.sapphire[700],
+            moderate: globalColors.chromatic.sapphire[600],
             intense: globalColors.chromatic.sapphire[300],
             strong: globalColors.chromatic.sapphire[200],
           },
           orchid: {
             faint: globalColors.chromatic.orchid[1000],
             subtle: globalColors.chromatic.orchid[800],
-            moderate: globalColors.chromatic.orchid[700],
+            moderate: globalColors.chromatic.orchid[600],
             intense: globalColors.chromatic.orchid[300],
             strong: globalColors.chromatic.orchid[200],
           },
@@ -1125,7 +1125,7 @@ const colors: ColorsWithModes = {
           topaz: {
             faint: globalColors.chromatic.topaz[1000],
             subtle: globalColors.chromatic.topaz[800],
-            moderate: globalColors.chromatic.topaz[700],
+            moderate: globalColors.chromatic.topaz[600],
             intense: globalColors.chromatic.topaz[300],
             strong: globalColors.chromatic.topaz[200],
           },
