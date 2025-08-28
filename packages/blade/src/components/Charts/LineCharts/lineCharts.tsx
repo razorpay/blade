@@ -226,6 +226,7 @@ export const Legend: React.FC<LegendProps> = (props) => {
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
+        paddingTop: '16px',
       }}
       content={<CustomSquareLegend />}
       {...props}
