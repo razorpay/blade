@@ -127,7 +127,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
       }}
-      cursor={{ fill: 'rgba(0, 0, 0, 0.1)' }}
+      cursor={{ fill: 'rgba(0, 0, 0, 0.1)', stroke: theme.colors.surface.border.gray.muted }}
       {...props}
     />
   );
