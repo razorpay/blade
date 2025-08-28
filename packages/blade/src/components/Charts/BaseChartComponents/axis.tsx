@@ -137,6 +137,38 @@ export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
   );
 };
 
+const CustomReferenceLabel = ({ viewBox, value }) => {
+  const { x, y, width } = viewBox;
+  const { theme } = useTheme();
+
+  return (
+    <g>
+      <rect
+        x={x + width - 80} // Position rectangle to the right
+        y={y - 15}
+        width="80"
+        height="30"
+        rx={theme.border.radius.medium}
+        fill={theme.colors.surface.background.gray.subtle}
+        stroke={theme.colors.surface.border.gray.muted}
+        strokeWidth="1"
+      />
+      <text
+        x={x + width - 40} // Center text in the rectangle
+        y={y + 5}
+        textAnchor="middle"
+        fill={theme.colors.surface.text.gray.normal}
+        fontSize={theme.typography.fonts.size[50]}
+        fontFamily={theme.typography.fonts.family.text}
+        fontWeight={theme.typography.fonts.weight.medium}
+        letterSpacing={theme.typography.letterSpacings[100]}
+      >
+        Avg: {value}
+      </text>
+    </g>
+  );
+};
+
 export const ReferenceLine: React.FC<ReferenceLineProps> = ({
   color,
   label,
@@ -145,6 +177,7 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
+  const [isHover, setIsHover] = React.useState(false);
   const resolvedColor = color
     ? resolveColorToken(color, theme)
     : theme.colors.surface.text.gray.normal;
@@ -154,14 +187,15 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({
       stroke={resolvedColor}
       strokeWidth={2}
       strokeDasharray="4 4"
-      label={{
-        position: labelPosition,
-        offset: labelOffset,
-        fill: resolvedColor,
-        fontSize: theme.typography.fonts.size[75],
-        fontFamily: theme.typography.fonts.family.text,
-        value: label,
+      onMouseEnter={() => {
+        console.log('onMouseEnter');
+        setIsHover(true);
       }}
+      onMouseLeave={() => {
+        console.log('onMouseLeave');
+        setIsHover(false);
+      }}
+      label={<CustomReferenceLabel value={label} />}
       {...props}
     />
   );
