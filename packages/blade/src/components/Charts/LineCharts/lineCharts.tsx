@@ -9,6 +9,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
+import type { LineProps as RechartsLineProps } from 'recharts';
 import { useTheme } from '~components/BladeProvider';
 import type { Theme } from '~components/BladeProvider';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -27,8 +28,8 @@ export type BladeColorToken = `chart.background.categorical.${ChartColorCategori
 // Chart-specific interfaces based on user specifications
 export interface LineProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  dot?: React.ReactNode;
-  activeDot?: React.ReactNode;
+  dot?: RechartsLineProps['dot'];
+  activeDot?: RechartsLineProps['activeDot'];
   connectNulls?: boolean;
   legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'wye';
   dataKey: string;

@@ -1,7 +1,15 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { XAxis, YAxis, ReferenceLine, CartesianGrid } from '../BaseChartComponents';
-import { LineChart, Line, Tooltip, Legend, ResponsiveContainer, ChartTooltip } from './lineCharts';
+import { XAxis, YAxis, CartesianGrid } from '../BaseChartComponents';
+import {
+  LineChart,
+  Line,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  ChartTooltip,
+  ReferenceLine,
+} from './lineCharts';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -113,7 +121,7 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
             strokeStyle="solid"
             color="chart.background.categorical.emerald.moderate"
           />
-          <ReferenceLine y={1500} label="Avg: 1200" color="surface.text.gray.muted" />
+          <ReferenceLine y={1500} label="Avg: 1200" />
         </LineChart>
       </ResponsiveContainer>
     </div>
