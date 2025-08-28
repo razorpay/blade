@@ -68,6 +68,22 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
         fontFamily: theme.typography.fonts.family.text,
       }}
       stroke="#c5d0db"
+      label={{
+        //TODO: remove this hardcoding Value
+        value: 'Months',
+        position: 'insideBottom',
+        //TODO: need to change this offset.
+        offset: -10,
+        style: {
+          textAnchor: 'middle',
+          fill: theme.colors.surface.text.gray.subtle,
+          fontSize: theme.typography.fonts.size[75],
+          fontWeight: theme.typography.fonts.weight.medium,
+          fontFamily: theme.typography.fonts.family.text,
+          letterSpacing: theme.typography.letterSpacings[100],
+          lineHeight: theme.typography.lineHeights[500],
+        },
+      }}
       {...props}
     />
   );
@@ -86,6 +102,24 @@ export const YAxis: React.FC<YAxisProps> = (props) => {
         fontFamily: theme.typography.fonts.family.text,
       }}
       stroke="#c5d0db"
+      label={{
+        //TODO: remove this hardcoding Value
+        value: 'Active Users',
+        position: 'insideLeft',
+        //TODO: need to change this offset.
+        offset: -10,
+        style: {
+          textAnchor: 'middle',
+          fill: theme.colors.surface.text.gray.subtle,
+          fontSize: theme.typography.fonts.size[75],
+          fontWeight: theme.typography.fonts.weight.medium,
+          fontFamily: theme.typography.fonts.family.text,
+          letterSpacing: theme.typography.letterSpacings[100],
+          lineHeight: theme.typography.lineHeights[500],
+        },
+        angle: -90,
+        fill: theme.colors.surface.text.gray.subtle,
+      }}
       {...props}
     />
   );
