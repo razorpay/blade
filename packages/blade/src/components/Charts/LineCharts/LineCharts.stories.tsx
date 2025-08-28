@@ -105,9 +105,15 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
             dataKey="teamA"
             name="Team A"
             strokeStyle="solid"
-            color="interactive.background.primary.default"
+            color="chart.background.categorical.azure.moderate"
           />
-          <ReferenceLine y={2200} label="Minimum" color="surface.text.gray.muted" />
+          <Line
+            dataKey="teamB"
+            name="Team B"
+            strokeStyle="solid"
+            color="chart.background.categorical.emerald.moderate"
+          />
+          <ReferenceLine y={1500} label="Avg: 1200" color="surface.text.gray.muted" />
         </LineChart>
       </ResponsiveContainer>
     </div>

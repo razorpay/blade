@@ -116,7 +116,7 @@ export type Colors = {
   chart: {
     background: {
       categorical: Record<ChartColorCategories, ChartCategoricalEmphasis>;
-      sequential: Record<ChartColorCategories, ChartSequentialEmphasis>;
+      sequential: Record<Exclude<ChartColorCategories, 'gray'>, ChartSequentialEmphasis>;
     };
   };
 };

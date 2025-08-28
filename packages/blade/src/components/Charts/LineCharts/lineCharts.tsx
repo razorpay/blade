@@ -21,27 +21,16 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
+import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
 
-// BladeColorToken type for charts
-export type BladeColorToken =
-  | 'surface.text.gray.normal'
-  | 'surface.text.gray.muted'
-  | 'interactive.background.primary.default'
-  | 'feedback.text.positive.subtle'
-  | 'feedback.text.negative.subtle'
-  | 'feedback.text.notice.subtle'
-  | 'feedback.text.information.subtle'
-  | string;
+// BladeColorToken type for charts - only allows categorical chart colors for line charts
+export type BladeColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
 // Chart-specific interfaces based on user specifications
 export interface LineProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  dot?:
-    | boolean
-    | { r?: number; fill?: string; stroke?: string; strokeWidth?: number; [key: string]: any };
-  activeDot?:
-    | boolean
-    | { r?: number; fill?: string; stroke?: string; strokeWidth?: number; [key: string]: any };
+  dot?: React.ReactNode;
+  activeDot?: React.ReactNode;
   connectNulls?: boolean;
   legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'wye';
   dataKey: string;
@@ -65,13 +54,7 @@ const getChartColors = (theme: Theme): Record<string, string> => ({
 
 // Helper function to resolve color tokens
 const resolveColorToken = (color: BladeColorToken | undefined, theme: Theme): string => {
-  if (!color) return getChartColors(theme).primary;
-
-  if (
-    color.startsWith('surface.') ||
-    color.startsWith('feedback.') ||
-    color.startsWith('interactive.')
-  ) {
+  if (color.startsWith('chart.background.categorical.')) {
     const parts = color.split('.');
     let value: Record<string, any> = theme.colors;
     for (const part of parts) {

@@ -163,7 +163,7 @@ const CustomReferenceLabel = ({ viewBox, value }) => {
         fontWeight={theme.typography.fonts.weight.medium}
         letterSpacing={theme.typography.letterSpacings[100]}
       >
-        Avg: {value}
+        {value}
       </text>
     </g>
   );
