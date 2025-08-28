@@ -4,9 +4,6 @@ import styled from 'styled-components';
 import {
   LineChart as RechartsLineChart,
   Line as RechartsLine,
-  XAxis as RechartsXAxis,
-  YAxis as RechartsYAxis,
-  CartesianGrid as RechartsCartesianGrid,
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
   ResponsiveContainer as RechartsResponsiveContainer,
@@ -22,6 +19,7 @@ import { castWebType } from '~utils';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
+import getIn from '~utils/lodashButBetter/get';
 
 // BladeColorToken type for charts - only allows categorical chart colors for line charts
 export type BladeColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
@@ -35,37 +33,9 @@ export interface LineProps {
   legendType?: 'none' | 'line' | 'square' | 'diamond' | 'circle' | 'cross' | 'triangle' | 'wye';
   dataKey: string;
   name?: string;
-  color?: BladeColorToken;
+  color: BladeColorToken;
   strokeStyle?: 'dotted' | 'dashed' | 'solid';
 }
-
-// Predefined chart colors using Blade tokens
-const getChartColors = (theme: Theme): Record<string, string> => ({
-  primary: theme.colors.interactive.background.primary.default,
-  secondary: theme.colors.surface.text.gray.normal,
-  success: theme.colors.feedback.text.positive.subtle,
-  warning: theme.colors.feedback.text.notice.subtle,
-  error: theme.colors.feedback.text.negative.subtle,
-  info: theme.colors.feedback.text.information.subtle,
-  neutral: theme.colors.surface.text.gray.muted,
-  grid: theme.colors.surface.border.gray.muted,
-  background: theme.colors.surface.background.gray.intense,
-});
-
-// Helper function to resolve color tokens
-const resolveColorToken = (color: BladeColorToken | undefined, theme: Theme): string => {
-  if (color.startsWith('chart.background.categorical.')) {
-    const parts = color.split('.');
-    let value: Record<string, any> = theme.colors;
-    for (const part of parts) {
-      value = value[part];
-    }
-    //@ts-expect-error
-    return value || getChartColors(theme).primary;
-  }
-
-  return color;
-};
 
 // TypeScript prop types
 export type LineChartProps = Omit<ComponentProps<typeof RechartsLineChart>, 'margin'> &
@@ -73,9 +43,6 @@ export type LineChartProps = Omit<ComponentProps<typeof RechartsLineChart>, 'mar
     children?: React.ReactNode;
   };
 
-export type XAxisProps = ComponentProps<typeof RechartsXAxis>;
-export type YAxisProps = ComponentProps<typeof RechartsYAxis>;
-export type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 export type TooltipProps = ComponentProps<typeof RechartsTooltip>;
 export type LegendProps = ComponentProps<typeof RechartsLegend>;
 export type ResponsiveContainerProps = ComponentProps<typeof RechartsResponsiveContainer>;
@@ -111,19 +78,19 @@ export const Line: React.FC<LineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
-  dot = true,
-  activeDot = true,
+  dot,
+  activeDot,
   ...props
 }) => {
   const { theme } = useTheme();
-  const resolvedColor = resolveColorToken(color, theme);
+  const colorToken = getIn(theme.colors, color);
 
   const strokeDasharray =
     strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
 
   return (
     <RechartsLine
-      stroke={resolvedColor}
+      stroke={colorToken}
       strokeWidth={3}
       strokeDasharray={strokeDasharray}
       type={type}
@@ -154,7 +121,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
   );
 };
 
-const CustomSquareLegend = (props: any) => {
+const CustomSquareLegend = (props: unknown) => {
   const { payload } = props;
 
   return (

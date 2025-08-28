@@ -129,7 +129,7 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
           <Line
             dataKey="teamA"
             strokeStyle="solid"
-            color="surface.text.gray.normal"
+            color="chart.background.categorical.gray.moderate"
             dot={false}
             activeDot={false}
           />
@@ -154,7 +154,7 @@ export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
             dataKey="teamA"
             name="Team A (No Dots)"
             strokeStyle="solid"
-            color="interactive.background.primary.default"
+            color="chart.background.categorical.azure.moderate"
             dot={false}
             activeDot={true}
           />
@@ -162,7 +162,7 @@ export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
             dataKey="teamB"
             name="Team B (Custom Dots)"
             strokeStyle="solid"
-            color="feedback.text.positive.subtle"
+            color="chart.background.categorical.crimson.moderate"
             dot={{ r: 6, fill: '#22c55e', stroke: '#16a34a', strokeWidth: 2 }}
             activeDot={{ r: 8, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3 }}
           />
@@ -187,7 +187,7 @@ export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
           <Line
             dataKey="teamA"
             name="No Dots"
-            color="surface.text.gray.muted"
+            color="chart.background.categorical.emerald.moderate"
             dot={false}
             activeDot={false}
           />
@@ -195,7 +195,7 @@ export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
           <Line
             dataKey="teamB"
             name="Default Dots"
-            color="interactive.background.primary.default"
+            color="chart.background.categorical.azure.moderate"
             dot={true}
             activeDot={true}
           />
@@ -220,7 +220,7 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
             dataKey="historical"
             name="Historical Data"
             connectNulls={true}
-            color="interactive.background.primary.default"
+            color="chart.background.categorical.topaz.moderate"
           />
           <Line
             dataKey="forecast"
@@ -228,7 +228,7 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
             strokeStyle="dashed"
             connectNulls={true}
             legendType="none"
-            color="surface.text.gray.muted"
+            color="chart.background.categorical.magenta.moderate"
           />
         </LineChart>
       </ResponsiveContainer>
