@@ -1,0 +1,12 @@
+import { ModalProps } from './Modal';
+import { SpacingValueType } from '../Box/BaseBox';
+import { Border, Size } from '../../tokens/global';
+type ModalSizeWithoutFull = Exclude<NonNullable<ModalProps['size']>, 'full'>;
+declare const modalMaxWidth: Record<ModalSizeWithoutFull, Size[keyof Size]>;
+declare const modalMinWidth = 320;
+declare const modalMaxHeight: Record<NonNullable<ModalProps['size']>, SpacingValueType>;
+declare const modalResponsiveScreenGap: Size[keyof Size];
+declare const modalBorderRadius: keyof Border['radius'];
+declare const modalMargin: Record<NonNullable<ModalProps['size']>, Size[keyof Size]>;
+declare const scrollOverlayHeight: Size[keyof Size];
+export { modalMaxWidth, modalMinWidth, modalResponsiveScreenGap, modalBorderRadius, modalMaxHeight, modalMargin, scrollOverlayHeight, };

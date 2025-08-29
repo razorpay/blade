@@ -1,0 +1,152 @@
+import { Theme } from '../BladeProvider';
+import { BoxProps } from '../Box';
+import { StyledPropsBlade } from '../Box/styledProps';
+import { Platform } from '../../utils';
+import { DotNotationToken } from '../../utils/lodashButBetter/get';
+import { DataAnalyticsAttribute } from '../../utils/types';
+type InteractiveTokens = DotNotationToken<Theme['colors']['interactive']['background']>;
+type FeedbackTokens = DotNotationToken<Theme['colors']['feedback']['background']>;
+type SurfaceTokens = DotNotationToken<Theme['colors']['surface']['background']>;
+type OverlayTokens = DotNotationToken<Theme['colors']['overlay']>;
+type OverlayColor = `interactive.background.${InteractiveTokens}` | `feedback.background.${FeedbackTokens}` | `surface.background.${SurfaceTokens}` | `overlay.${OverlayTokens}`;
+type CarouselProps = {
+    /**
+     * Sets the initial active slide index
+     */
+    defaultActiveSlide?: number;
+    /**
+     * Active slide index, if provided the carousel will be controlled
+     */
+    activeSlide?: number;
+    /**
+     * Accepts CarouselItem
+     */
+    children: React.ReactNode;
+    /**
+     * Total number of carousel items to show at once,
+     * if set to 1,2 or 3 all the CarouselItem's width will remain the same,
+     * but if set to `autofit` the carousel items will take up space responsively
+     *
+     * @default 1
+     */
+    visibleItems?: 1 | 2 | 3 | 'autofit';
+    /**
+     * If true, adds extra margin before and after the first/last slides so that they align in center
+     * This prop is only effective on desktop screen sizes
+     *
+     * @default false
+     */
+    shouldAddStartEndSpacing?: boolean;
+    /**
+     * Controls how carousel items are aligned within the container.
+     * - 'start': Items align to the start (default behavior)
+     * - 'center': Items are centered with peek behavior (active item centered, adjacent items peek from sides)
+     * - 'end': Items align to the end
+     *
+     * @default 'start'
+     *
+     * @example
+     * ```jsx
+     * // Basic peek behavior with centered alignment
+     * <Carousel
+     *   visibleItems={1}
+     *   carouselItemWidth="80%"
+     *   snapAlign="center"
+     *   gap="spacing.5"
+     * >
+     *   <CarouselItem>Card 1</CarouselItem>
+     *   <CarouselItem>Card 2</CarouselItem>
+     *   <CarouselItem>Card 3</CarouselItem>
+     * </Carousel>
+     * ```
+     */
+    snapAlign?: 'start' | 'center' | 'end';
+    /**
+     * Sets the gap between carousel items.
+     *
+     * Only visible when more than 1 card is seen in viewport, otherwise has no effect.
+     *
+     * @default { base: 'spacing.4', m: 'spacing.5' }
+     */
+    gap?: BoxProps['gap'];
+    /**
+     * If true, the carousel will automatically slide to the next slide, default interval is 6 seconds
+     *
+     * @default false
+     */
+    autoPlay?: boolean;
+    /**
+     * Toggles the visibility of indicators
+     *
+     * @default true
+     */
+    showIndicators?: boolean;
+    /**
+     * Changes the color of the overlay, so that carousel can blend with the background color
+     * If set to undefined overlay won't be shown
+     *
+     * This prop is only effective on desktop screen sizes
+     *
+     * @default undefined
+     */
+    scrollOverlayColor?: OverlayColor;
+    /**
+     * Sets the position of navigation button
+     *
+     * @default 'bottom'
+     */
+    navigationButtonPosition?: 'bottom' | 'side' | 'side-overlap';
+    /**
+     * Variant to be used depending on the emphasis you want to give to the navigation buttons
+     *
+     * @default 'filled'
+     */
+    navigationButtonVariant?: 'filled' | 'stroked';
+    /**
+     * Variant to be used depending on the emphasis you want to give to the indicators
+     *
+     * @default 'gray'
+     */
+    indicatorVariant?: 'gray' | 'white' | 'blue';
+    /**
+     * Sets the width of the carousel items, this can be used with visibleItems: auto to achive automatic bleed
+     *
+     * @default undefined
+     */
+    carouselItemWidth?: Platform.Select<{
+        web: BoxProps['width'];
+        native: `${number}%`;
+    }>;
+    /**
+     * Sets the align-items CSS property on carousel container which specifies how the carousel items will align if their heights are different
+     *
+     * @default 'start'
+     */
+    carouselItemAlignment?: BoxProps['alignItems'];
+    /**
+     * Callback which gets fired everytime a slide changes, can be used to to make the carousel controlled
+     *
+     * @default undefined
+     */
+    onChange?: (slideIndex: number) => void;
+    /**
+     * Accessibility label for the carousel, this will let screen reader users know what content the carousel holds (eg: "Product carousel")
+     *
+     * @default undefined
+     */
+    accessibilityLabel?: string;
+    /**
+     * Sets the height of the carousel
+     */
+    height?: BoxProps['height'];
+    /**
+     * If set to true, shows the navigation buttons.
+     *
+     * Note: This prop has no effect on desktop, we only hide navigation buttons on mobile.
+     *
+     * @default true
+     *
+     */
+    showNavigationButtons?: boolean;
+} & StyledPropsBlade & DataAnalyticsAttribute;
+export type { CarouselProps };

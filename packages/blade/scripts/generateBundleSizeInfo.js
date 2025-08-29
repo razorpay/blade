@@ -1,8 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const babelParser = require('@babel/parser');
-const traverse = require('@babel/traverse').default;
-const execa = require('execa');
+import fs from 'fs';
+import path from 'path';
+import * as babelParser from '@babel/parser';
+import traverseModule from '@babel/traverse';
+import execa from 'execa';
+import { fileURLToPath } from 'url';
+const traverse = traverseModule.default;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // eslint-disable-next-line import/no-extraneous-dependencies
 const prettier = require('prettier');
 

@@ -185,6 +185,7 @@ const ListViewFilters = ({
             )}
           </BaseBox>
         </BaseBox>
+        {/* @ts-ignore */}
         <AnimatePresence>
           {showFilters && (
             <m.div

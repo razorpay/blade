@@ -117,6 +117,7 @@ const BaseMotionEntryExit = ({
   }, [children.ref]);
 
   return (
+    // @ts-expect-error: AnimatePresense returns undefined which ts complains about
     <AnimateWrapper>
       {isMounted ? (
         <BaseMotionBox

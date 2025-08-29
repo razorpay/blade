@@ -1,0 +1,43 @@
+import { default as React } from 'react';
+import { TableNode } from '@table-library/react-table-library/table';
+import { TableBackgroundColors, TableProps, TablePaginationType, TableHeaderRowProps, TableNode as LocalTableNode } from './types';
+export type TableContextType<Item> = {
+    selectionType?: TableProps<unknown>['selectionType'];
+    selectedRows?: TableNode['id'][];
+    totalItems: number;
+    toggleRowSelectionById: (id: TableNode['id']) => void;
+    toggleAllRowsSelection: () => void;
+    deselectAllRows: () => void;
+    rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
+    toggleSort: (sortKey: string) => void;
+    currentSortedState: {
+        sortKey: string;
+        isSortReversed: boolean;
+        sortableColumns?: string[];
+    };
+    setPaginationPage: (page: number) => void;
+    setPaginationRowSize: (size: number) => void;
+    currentPaginationState?: {
+        page: number;
+        size: number;
+    };
+    showStripedRows?: boolean;
+    disabledRows: TableNode['id'][];
+    setDisabledRows: React.Dispatch<React.SetStateAction<TableNode['id'][]>>;
+    paginationType: NonNullable<TablePaginationType>;
+    setPaginationType: React.Dispatch<React.SetStateAction<NonNullable<TablePaginationType>>>;
+    backgroundColor: TableBackgroundColors | 'transparent';
+    headerRowDensity?: TableHeaderRowProps['rowDensity'];
+    setHeaderRowDensity: React.Dispatch<React.SetStateAction<TableHeaderRowProps['rowDensity']>>;
+    showBorderedCells: NonNullable<TableProps<unknown>['showBorderedCells']>;
+    hasHoverActions: boolean;
+    setHasHoverActions: (hasHoverActions: boolean) => void;
+    columnCount: number;
+    gridTemplateColumns: string | undefined;
+    isVirtualized?: boolean;
+    tableData: LocalTableNode<Item>[];
+    isGrouped: boolean;
+};
+declare const TableContext: React.Context<TableContextType<unknown>>;
+declare const useTableContext: <Item>() => TableContextType<Item>;
+export { useTableContext, TableContext };

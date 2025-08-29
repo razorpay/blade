@@ -1,0 +1,13 @@
+import { ListProps } from './List';
+import { CodeProps } from '../Typography';
+import { TypographyPlatforms } from '../../tokens/global';
+import { DotNotationSpacingStringToken } from '../../utils/types';
+import { SpacingValueType } from '../Box/BaseBox';
+declare const listItemMarginLeft: Record<NonNullable<ListProps['variant'] | 'unorderedWithIcon'>, Record<number, DotNotationSpacingStringToken>>;
+declare const listItemBulletMarginRight: Record<NonNullable<ListProps['variant']>, SpacingValueType>;
+declare const listItemBulletMarginTop: Record<NonNullable<ListProps['variant'] | 'unorderedWithIcon'>, Record<TypographyPlatforms, Record<NonNullable<ListProps['size']>, SpacingValueType>>>;
+declare const listItemUnorderedBulletSize: Record<TypographyPlatforms, Record<NonNullable<ListProps['size']>, SpacingValueType>>;
+declare const listItemMarginBottom: DotNotationSpacingStringToken;
+declare const listItemOrderedBulletBoxSize: Record<string, Record<TypographyPlatforms, Record<NonNullable<ListProps['size']>, SpacingValueType>>>;
+declare const listItemCodeSize: Record<NonNullable<ListProps['size']>, NonNullable<CodeProps['size']>>;
+export { listItemMarginLeft, listItemMarginBottom, listItemBulletMarginRight, listItemBulletMarginTop, listItemUnorderedBulletSize, listItemOrderedBulletBoxSize, listItemCodeSize, };

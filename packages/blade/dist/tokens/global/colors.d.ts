@@ -1,0 +1,76 @@
+export type ColorChromaticScale = Readonly<{
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    700: string;
+    800: string;
+    900: string;
+    1000: string;
+    a50: string;
+    a100: string;
+    a150: string;
+    a200: string;
+    a400: string;
+}>;
+export type ColorNeutralGrayScale = Readonly<{
+    0: string;
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    700: string;
+    800: string;
+    900: string;
+    1000: string;
+    1100: string;
+    1200: string;
+    1300: string;
+    a25: string;
+    a50: string;
+    a75: string;
+    a100: string;
+    a200: string;
+    a400: string;
+}>;
+export type ColorNeutralStaticScale = Readonly<{
+    10: string;
+    25: string;
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    450: string;
+    500: string;
+}>;
+export type Color = Readonly<{
+    chromatic: {
+        azure: ColorChromaticScale;
+        emerald: ColorChromaticScale;
+        crimson: ColorChromaticScale;
+        cider: ColorChromaticScale;
+        sapphire: ColorChromaticScale;
+        sea: ColorChromaticScale;
+        cloud: ColorChromaticScale;
+        forest: ColorChromaticScale;
+        orchid: ColorChromaticScale;
+        magenta: ColorChromaticScale;
+        topaz: ColorChromaticScale;
+    };
+    neutral: {
+        blueGrayLight: ColorNeutralGrayScale;
+        blueGrayDark: ColorNeutralGrayScale;
+        ashGrayLight: ColorNeutralGrayScale;
+        ashGrayDark: ColorNeutralGrayScale;
+        white: ColorNeutralStaticScale;
+        black: ColorNeutralStaticScale;
+    };
+}>;
+export declare const colors: Color;

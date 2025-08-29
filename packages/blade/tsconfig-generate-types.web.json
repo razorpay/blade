@@ -8,6 +8,7 @@
     "__tests__",
     "**/**.stories.tsx",
     "**/**.stories.internal.tsx",
+    "**/docs/**",
     "**/**.native.ts",
     "**/**.native.tsx",
     "**/ThemePlayground/**/**.tsx"
