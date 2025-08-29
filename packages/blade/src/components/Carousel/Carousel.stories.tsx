@@ -582,7 +582,7 @@ export const WithInteractiveCards = InteractiveCarouselTestimonialTemplate.bind(
 export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" padding="spacing.4" width="100%">
-      <Text marginTop="spacing.1" color="surface.text.gray.muted">
+      <Text marginTop="spacing.2" color="surface.text.gray.muted">
         Active card is centered with adjacent cards peeking from the sides.
       </Text>
       <Text marginTop="spacing.4">
