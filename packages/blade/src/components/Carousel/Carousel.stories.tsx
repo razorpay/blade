@@ -582,7 +582,7 @@ export const WithInteractiveCards = InteractiveCarouselTestimonialTemplate.bind(
 export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" padding="spacing.4" width="100%">
-      <Text marginTop="spacing.1" color="surface.text.primary.normal">
+      <Text marginTop="spacing.1" color="surface.text.gray.muted">
         Active card is centered with adjacent cards peeking from the sides.
       </Text>
       <Text marginTop="spacing.4">
@@ -591,10 +591,7 @@ export const WithPeek: StoryFn<typeof CarouselComponent> = (props) => {
         <Code size="medium">snapAlign</Code> to "center", and adding
         <Code size="medium">gap</Code> for spacing between items.
       </Text>
-      <Box
-        backgroundColor="surface.background.gray.subtle"
-        margin={{ m: 'spacing.2', s: 'spacing.3' }}
-      >
+      <Box marginTop="spacing.6">
         <CarouselComponent
           {...props}
           accessibilityLabel="Testimonials"
