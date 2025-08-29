@@ -1,3 +1,0 @@
-declare const OVERLAY_OFFSET: number;
-declare const OVERLAY_TRANSITION_OFFSET: number;
-export { OVERLAY_OFFSET, OVERLAY_TRANSITION_OFFSET };

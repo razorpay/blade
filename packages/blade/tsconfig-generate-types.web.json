@@ -11,6 +11,8 @@
     "**/docs/**",
     "**/**.native.ts",
     "**/**.native.tsx",
+    "**/**.svelte",
+    "**/**.svelte.ts",
     "**/ThemePlayground/**/**.tsx"
   ],
   "compilerOptions": {

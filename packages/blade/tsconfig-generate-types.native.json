@@ -10,6 +10,8 @@
     "**/**.stories.internal.tsx",
     "**/**.web.ts",
     "**/**.web.tsx",
+    "**/**.svelte",
+    "**/**.svelte.ts",
     "**/ThemePlayground/**/**.tsx"
   ],
   "compilerOptions": {

@@ -1,1 +1,0 @@
-export { getTableBodyStyles } from './tableBodyStyles';

@@ -47,6 +47,11 @@
         "types": "./components.d.ts",
         "default": "./build/lib/native/components/index.js"
       },
+      "svelte": {
+        "development": "./build/lib/svelte/development/index.js",
+        "production": "./build/lib/svelte/production/index.js",
+        "default": "./build/lib/svelte/production/index.js"
+      },
       "default": {
         "types": "./components.d.ts",
         "development": "./build/lib/web/development/components/index.js",
@@ -106,6 +111,9 @@
     "build:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development vite build",
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production vite build",
     "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE vite build",
+    "build:svelte-dev": "cross-env FRAMEWORK=SVELTE NODE_ENV=development vite build",
+    "build:svelte-prod": "cross-env FRAMEWORK=SVELTE NODE_ENV=production vite build",
+    "web:svelte": "run-s build:svelte-prod build:svelte-dev",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-android",
@@ -137,6 +145,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.28.3",
+    "@sveltejs/vite-plugin-svelte": "^2.5.3",
     "body-scroll-lock-upgrade": "1.1.0",
     "ts-deepmerge": "6.2.0",
     "use-presence": "1.3.0",
@@ -300,7 +309,8 @@
     "@babel/plugin-proposal-optional-chaining": "7.21.0",
     "@babel/plugin-transform-arrow-functions": "7.27.1",
     "@babel/plugin-transform-shorthand-properties": "7.27.1",
-    "@babel/plugin-transform-template-literals": "7.27.1"
+    "@babel/plugin-transform-template-literals": "7.27.1",
+    "svelte": "4.2.18"
   },
   "peerDependencies": {
     "react": ">=18",

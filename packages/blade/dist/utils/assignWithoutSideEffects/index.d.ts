@@ -1,1 +1,0 @@
-export { assignWithoutSideEffects } from './assignWithoutSideEffects';

@@ -7,6 +7,8 @@
     "**/**.stories.internal.tsx",
     "**/**.web.ts",
     "**/**.web.tsx",
+    "**/**.svelte",
+    "**/**.svelte.ts",
     "**/**.web.test.ts",
     "**/**.web.test.tsx",
     "**/ThemePlayground/**/**.tsx"

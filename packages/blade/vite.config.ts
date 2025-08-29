@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 import type { PluginOption, LibraryFormats } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import { svelte as sveltePlugin } from '@sveltejs/vite-plugin-svelte';
 
 const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'package.json'), 'utf8'));
 
@@ -46,6 +47,8 @@ const nativeExtensions = [
   '.mjs',
 ];
 
+const svelteExtensions = ['.svelte', '.js', '.ts', '.mjs'];
+
 const packageJsonDeps = Object.keys(packageJson.dependencies || {}).filter(
   (name) => name !== 'patch-package',
 );
@@ -59,6 +62,12 @@ function isExternal(id: string): boolean {
     ? id.split('/').slice(0, 2).join('/')
     : id.split('/')[0];
   return externalDependencies.has(pkgName);
+}
+
+// Treat Svelte runtime packages as external regardless of deps listing
+function isExternalIncludingSvelte(id: string): boolean {
+  if (id === 'svelte' || id.startsWith('svelte/')) return true;
+  return isExternal(id);
 }
 
 // shared aliases
@@ -86,6 +95,7 @@ export default defineConfig(() => {
       tsconfigPath: path.resolve(__dirname, 'tsconfig-generate-types.web.json'),
       // Let tsconfig control declarationDir; we only include our source tree
       include: ['src'],
+      outDir: 'build/generated-types/web',
     }) as PluginOption;
 
     const bundleTypesPlugin: PluginOption = {
@@ -132,6 +142,7 @@ export default defineConfig(() => {
     const dtsPlugin = dts({
       tsconfigPath: path.resolve(__dirname, 'tsconfig-generate-types.native.json'),
       include: ['src'],
+      outDir: 'build/generated-types/native',
     }) as PluginOption;
 
     const bundleTypesPlugin: PluginOption = {
@@ -165,6 +176,37 @@ export default defineConfig(() => {
             preserveModules: true,
             preserveModulesRoot: 'src',
             entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,
+          },
+        },
+      },
+    };
+  }
+
+  if (framework === 'SVELTE') {
+    const webMode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+    return {
+      plugins: [sveltePlugin() as PluginOption],
+      resolve: {
+        alias,
+        extensions: svelteExtensions,
+      },
+      build: {
+        emptyOutDir: false,
+        sourcemap: true,
+        lib: {
+          entry: ({
+            'components/index': path.resolve(__dirname, 'src/components/index.svelte.ts'),
+          } as unknown) as string | string[] | Record<string, string>,
+          formats: (['es'] as unknown) as LibraryFormats[],
+        },
+        rollupOptions: {
+          external: (id) => isExternalIncludingSvelte(id),
+          output: {
+            dir: `${outputRootDirectory}/${libDirectory}/svelte/${webMode}`,
+            preserveModules: true,
+            preserveModulesRoot: 'src',
+            entryFileNames: (chunkInfo) => `${chunkInfo.name.replace(/\.(svelte|ts)$/, '')}.js`,
           },
         },
       },
