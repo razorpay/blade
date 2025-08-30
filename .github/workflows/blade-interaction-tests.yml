@@ -39,5 +39,5 @@ jobs:
       - name: Run Interaction Tests
         run: |
           npx playwright install chromium firefox --with-deps
-          yarn test:react:interaction:ci
+          pnpm test:react:interaction:ci
         working-directory: packages/blade

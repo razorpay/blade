@@ -23,16 +23,16 @@ jobs:
         with:
           node-version: 18.12.1
       - name: Pre-Generate Documentation Lock File
-        run: yarn generate-docs-lockfile
+        run: pnpm generate-docs-lockfile
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Build Blade
-        run: yarn build
+        run: pnpm build
         working-directory: packages/blade
       - name: Lint Source Code
-        run: yarn lint
+        run: pnpm lint
       - name: Run TypeScript Checks
-        run: yarn typecheck
+        run: pnpm typecheck
         working-directory: packages/blade
 
   test:
@@ -53,7 +53,7 @@ jobs:
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run Unit Tests
-        run: yarn test
+        run: pnpm test
         working-directory: packages/blade
         env:
           SHARD: ${{ matrix.shard }}/${{ matrix.totalShards }}
@@ -110,10 +110,10 @@ jobs:
           ls -la .nyc_output/
           
           # Generate merged report and capture text-summary
-          yarn --silent nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
+          pnpm --silent nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
           
           # Generate full coverage report
-          yarn --silent nyc report --reporter=json --reporter=text > coverage-full.txt
+          pnpm --silent nyc report --reporter=json --reporter=text > coverage-full.txt
           
           # Ensure output directory exists
           mkdir -p packages/blade/coverage
