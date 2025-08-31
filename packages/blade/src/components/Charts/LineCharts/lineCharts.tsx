@@ -1,12 +1,12 @@
 import React from 'react';
 import type { ComponentProps } from 'react';
-import styled from 'styled-components';
-import { LineChart as RechartsLineChart, Line as RechartsLine } from 'recharts';
+import {
+  LineChart as RechartsLineChart,
+  Line as RechartsLine,
+  ResponsiveContainer as RechartsResponsiveContainer,
+} from 'recharts';
 import type { LineProps as RechartsLineProps } from 'recharts';
 import { useTheme } from '~components/BladeProvider';
-import type { Theme } from '~components/BladeProvider';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
@@ -29,10 +29,7 @@ export interface LineProps {
 }
 
 // TypeScript prop types
-export type LineChartProps = Omit<ComponentProps<typeof RechartsLineChart>, 'margin'> &
-  StyledPropsBlade & {
-    children?: React.ReactNode;
-  };
+export type LineChartProps = ComponentProps<typeof RechartsLineChart>;
 
 export interface ReferenceLineProps {
   y?: number;
@@ -43,29 +40,13 @@ export interface ReferenceLineProps {
   labelOffset?: number;
 }
 
-// Styled wrapper for LineChart with predefined margins
-const StyledLineChart = styled(RechartsLineChart)<{ theme: Theme }>`
-  font-family: ${(props) => props.theme.typography.fonts.family.text};
-`;
-
 // Main components
 export const LineChart: React.FC<LineChartProps> = ({ children, ...props }) => {
-  const { theme } = useTheme();
-  const styledProps = getStyledProps(props);
-
-  // Predefined margins - not exposed to user
-  const defaultMargin = {
-    top: 16,
-    right: 16,
-    bottom: 16,
-    left: 16,
-  };
-
   return (
-    <BaseBox {...styledProps} {...metaAttribute({ name: 'line-chart' })}>
-      <StyledLineChart {...props} theme={theme} margin={defaultMargin}>
-        {children}
-      </StyledLineChart>
+    <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">
+      <RechartsResponsiveContainer width="100%" height="100%">
+        <RechartsLineChart {...props}>{children}</RechartsLineChart>
+      </RechartsResponsiveContainer>
     </BaseBox>
   );
 };

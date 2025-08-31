@@ -6,7 +6,6 @@ import {
   CartesianGrid,
   ChartToolTip,
   Legend,
-  ResponsiveContainer,
   ReferenceLine,
 } from '../BaseChartComponents';
 import { LineChart, Line } from './lineCharts';
@@ -45,7 +44,6 @@ const Page = (): React.ReactElement => {
           ];
           
           return (
-            <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data}>
                 <CartesianGrid />
                 <XAxis dataKey="name" />
@@ -54,7 +52,6 @@ const Page = (): React.ReactElement => {
                 <Legend />
                 <Line dataKey="sales" name="Sales" />
               </LineChart>
-            </ResponsiveContainer>
           )
         }
 
@@ -102,28 +99,26 @@ const forecastData = [
 export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <ChartToolTip />
-          <Legend />
-          <Line
-            dataKey="teamA"
-            name="Team A"
-            strokeStyle="solid"
-            color="chart.background.categorical.azure.moderate"
-          />
-          <Line
-            dataKey="teamB"
-            name="Team B"
-            strokeStyle="solid"
-            color="chart.background.categorical.emerald.moderate"
-          />
-          <ReferenceLine y={1500} label="Avg: 1200" />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="teamA"
+          name="Team A"
+          strokeStyle="solid"
+          color="chart.background.categorical.azure.moderate"
+        />
+        <Line
+          dataKey="teamB"
+          name="Team B"
+          strokeStyle="solid"
+          color="chart.background.categorical.emerald.moderate"
+        />
+        <ReferenceLine y={1500} label="Avg: 1200" />
+      </LineChart>
     </div>
   );
 };
@@ -132,17 +127,15 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
 export const TinyLineChart: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '200px', height: '100px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <Line
-            dataKey="teamA"
-            strokeStyle="solid"
-            color="chart.background.categorical.azure.strong"
-            dot={false}
-            activeDot={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={chartData}>
+        <Line
+          dataKey="teamA"
+          strokeStyle="solid"
+          color="chart.background.categorical.azure.strong"
+          dot={false}
+          activeDot={false}
+        />
+      </LineChart>
     </div>
   );
 };
@@ -151,31 +144,29 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
 export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <ChartToolTip />
-          <Legend />
-          <Line
-            dataKey="teamA"
-            name="Team A (No Dots)"
-            strokeStyle="solid"
-            color="chart.background.categorical.azure.moderate"
-            dot={false}
-            activeDot={true}
-          />
-          <Line
-            dataKey="teamB"
-            name="Team B (Custom Dots)"
-            strokeStyle="solid"
-            color="chart.background.categorical.crimson.moderate"
-            dot={{ r: 6, fill: '#22c55e', stroke: '#16a34a', strokeWidth: 2 }}
-            activeDot={{ r: 8, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="teamA"
+          name="Team A (No Dots)"
+          strokeStyle="solid"
+          color="chart.background.categorical.azure.moderate"
+          dot={false}
+          activeDot={true}
+        />
+        <Line
+          dataKey="teamB"
+          name="Team B (Custom Dots)"
+          strokeStyle="solid"
+          color="chart.background.categorical.crimson.moderate"
+          dot={{ r: 6, fill: '#22c55e', stroke: '#16a34a', strokeWidth: 2 }}
+          activeDot={{ r: 8, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3 }}
+        />
+      </LineChart>
     </div>
   );
 };
@@ -184,23 +175,21 @@ export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
 export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" label="Months" />
-          <YAxis dataKey="teamA" label="Active Users" />
-          <ChartToolTip />
-          <Legend />
-          {/* Default dots */}
-          <Line
-            dataKey="teamA"
-            name="Default Dots"
-            color="chart.background.categorical.azure.moderate"
-            dot={true}
-            activeDot={true}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" label="Months" />
+        <YAxis dataKey="teamA" label="Active Users" />
+        <ChartToolTip />
+        <Legend />
+        {/* Default dots */}
+        <Line
+          dataKey="teamA"
+          name="Default Dots"
+          color="chart.background.categorical.azure.moderate"
+          dot={true}
+          activeDot={true}
+        />
+      </LineChart>
     </div>
   );
 };
@@ -209,29 +198,27 @@ export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
 export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={forecastData}>
-          <CartesianGrid />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <ChartToolTip />
-          <Legend />
-          <Line
-            dataKey="historical"
-            name="Historical Data"
-            connectNulls={true}
-            color="chart.background.categorical.azure.moderate"
-          />
-          <Line
-            dataKey="forecast"
-            name="Forecast"
-            strokeStyle="dashed"
-            connectNulls={true}
-            showLegend={false}
-            color="chart.background.categorical.gray.moderate"
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={forecastData}>
+        <CartesianGrid />
+        <XAxis dataKey="date" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="historical"
+          name="Historical Data"
+          connectNulls={true}
+          color="chart.background.categorical.azure.moderate"
+        />
+        <Line
+          dataKey="forecast"
+          name="Forecast"
+          strokeStyle="dashed"
+          connectNulls={true}
+          showLegend={false}
+          color="chart.background.categorical.gray.moderate"
+        />
+      </LineChart>
     </div>
   );
 };
