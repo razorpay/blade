@@ -88,7 +88,7 @@
     "typecheck": "pnpm run --parallel types:typecheck:*",
     "test": "npm-run-all test:*",
     "prepare": "pnpm run build",
-    "build": "pm-run-all build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:clean-theme-bundle",
+    "build": "npm-run-all build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:clean-theme-bundle",
     "clearCache": "pnpm run jest --clearCache",
     "build:clean": "rm -rf build",
     "build:generate-types": "npm-run-all types:generate-types:*",
