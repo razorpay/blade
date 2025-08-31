@@ -267,7 +267,7 @@ const CustomReferenceLabel = ({
   );
 };
 
-export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, ...props }) => {
+export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, x, y }) => {
   const { theme } = useTheme();
   return (
     <RechartsReferenceLine
@@ -275,6 +275,8 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, ...props })
       strokeWidth={2}
       strokeDasharray="4 4"
       label={<CustomReferenceLabel value={label} />}
+      x={x}
+      y={y}
     />
   );
 };
