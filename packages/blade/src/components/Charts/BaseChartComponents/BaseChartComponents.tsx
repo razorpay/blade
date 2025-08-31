@@ -9,25 +9,24 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
+import type { XAxisProps as RechartsXAxisProps, YAxisProps as RechartsYAxisProps } from 'recharts';
 import { castWebType } from '~utils';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 
-export interface ReferenceLineProps {
-  y?: number;
-  x?: number;
-  label?: string;
-  labelPosition?: 'left' | 'right' | 'top' | 'bottom';
-  labelOffset?: number;
-}
+export type ReferenceLineProps = {
+  y: number;
+  x: number;
+  label: string;
+};
 
-export type XAxisProps = {
+export type XAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   label?: string;
   dataKey?: string;
 };
-export type YAxisProps = {
+export type YAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   label?: string;
   dataKey?: string;
 };
@@ -43,6 +42,7 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
 
   return (
     <RechartsXAxis
+      {...props}
       tick={{
         fill: theme.colors.surface.text.gray.normal,
         fontSize: theme.typography.fonts.size[75],
@@ -51,7 +51,6 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
         letterSpacing: theme.typography.letterSpacings[100],
       }}
       stroke={theme.colors.surface.border.gray.muted}
-      // eslint-disable-next-line react/no-unused-prop-types
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
           x={viewBox.x + viewBox.width / 2 - 32}
@@ -76,6 +75,7 @@ export const YAxis: React.FC<YAxisProps> = (props) => {
 
   return (
     <RechartsYAxis
+      {...props}
       tick={{
         fill: theme.colors.surface.text.gray.normal,
         fontSize: theme.typography.fonts.size[75],
@@ -269,14 +269,12 @@ const CustomReferenceLabel = ({
 
 export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, ...props }) => {
   const { theme } = useTheme();
-
   return (
     <RechartsReferenceLine
       stroke={getIn(theme.colors, 'chart.background.categorical.gray.intense')}
       strokeWidth={2}
       strokeDasharray="4 4"
       label={<CustomReferenceLabel value={label} />}
-      {...props}
     />
   );
 };
