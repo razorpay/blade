@@ -24,7 +24,7 @@
     "publish-npm": "node ./scripts/publishToNpm.js",
     "release": "node ./scripts/generateGitHubRegistryNpmrc.js && changeset publish",
     "postinstall": "pnpm run build:eslint-plugin-blade",
-    "build": "npm-run-all --parallel build:*",
+    "build": "pnpm exec npm-run-all --parallel build:*",
     "build:blade": "lerna run --scope @razorpay/blade build",
     "build:blade-mcp": "lerna run --scope @razorpay/blade-mcp build",
     "build:eslint-plugin-blade": "lerna run --scope eslint-plugin-blade build",
