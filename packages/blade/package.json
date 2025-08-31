@@ -86,7 +86,7 @@
   },
   "scripts": {
     "typecheck": "pnpm run --parallel types:typecheck:*",
-    "test": "pnpm run --parallel test:*",
+    "test": "run-p test:*",
     "prepare": "pnpm run build",
     "build": "pnpm run run-s build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:clean-theme-bundle",
     "clearCache": "pnpm run jest --clearCache",
