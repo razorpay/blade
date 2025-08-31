@@ -27,8 +27,7 @@ jobs:
       - name: Pre-Generate Documentation Lock File
         run: pnpm generate-docs-lockfile
       - name: Build Blade
-        run: pnpm build
-        working-directory: packages/blade
+        run:  pnpm --filter packages/blade build
       - name: Lint Source Code
         run: pnpm lint
       - name: Run TypeScript Checks
