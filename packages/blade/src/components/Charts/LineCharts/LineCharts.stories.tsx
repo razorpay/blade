@@ -95,6 +95,26 @@ const forecastData = [
   { date: 'Jun', historical: null, forecast: 2390 },
 ];
 
+// Data with null values for connectNulls example
+const dataWithNulls = [
+  { month: 'Jan', sales: 4000 },
+  { month: 'Feb', sales: 3000 },
+  { month: 'Mar', sales: 5000 },
+  { month: 'Apr', sales: null },
+  { month: 'May', sales: 1890 },
+  { month: 'Jun', sales: 2390 },
+];
+
+// Data for stepped line chart example
+const steppedData = [
+  { month: 'Jan', value: 100 },
+  { month: 'Feb', value: 150 },
+  { month: 'Mar', value: 120 },
+  { month: 'Apr', value: 200 },
+  { month: 'May', value: 180 },
+  { month: 'Jun', value: 250 },
+];
+
 // Simple Line Chart Example
 export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
   return (
@@ -223,8 +243,66 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
   );
 };
 
+// Line Chart that Connects Nulls
+export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
+      <LineChart data={dataWithNulls}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="sales"
+          name="Sales (Connects Nulls)"
+          color="chart.background.categorical.emerald.moderate"
+        />
+      </LineChart>
+      <Heading size="small">Line Chart that Connects Nulls</Heading>
+      <LineChart data={dataWithNulls}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="sales"
+          name="Sales (Connects Nulls)"
+          connectNulls={true}
+          color="chart.background.categorical.emerald.moderate"
+        />
+      </LineChart>
+    </div>
+  );
+};
+
+// Stepped Line Chart Example
+export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <LineChart data={steppedData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="value"
+          name="Stepped Line"
+          type="step"
+          color="chart.background.categorical.azure.moderate"
+        />
+      </LineChart>
+    </div>
+  );
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 TinyLineChart.storyName = 'Tiny Line Chart';
 LineChartWithCustomDots.storyName = 'Line Chart with Custom Dots';
 DotConfigurationShowcase.storyName = 'Dot Configuration Showcase';
 ForecastLineChart.storyName = 'Forecast Line Chart';
+LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
+SteppedLineChart.storyName = 'Stepped Line Chart';
