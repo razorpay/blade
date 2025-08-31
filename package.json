@@ -23,7 +23,7 @@
     "lint:fix": "eslint --ext js,jsx,ts,tsx packages --fix && stylelint '**/*.{js,jsx,ts,tsx}' --fix",
     "publish-npm": "node ./scripts/publishToNpm.js",
     "release": "node ./scripts/generateGitHubRegistryNpmrc.js && changeset publish",
-    "postinstall": "yarn build:eslint-plugin-blade",
+    "postinstall": "pnpm run build:eslint-plugin-blade",
     "build": "npm-run-all --parallel build:*",
     "build:blade": "lerna run --scope @razorpay/blade build",
     "build:blade-mcp": "lerna run --scope @razorpay/blade-mcp build",
