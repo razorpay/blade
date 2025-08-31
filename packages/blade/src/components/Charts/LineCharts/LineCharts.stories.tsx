@@ -1,15 +1,15 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { XAxis, YAxis, CartesianGrid } from '../BaseChartComponents';
 import {
-  LineChart,
-  Line,
-  Tooltip,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ChartToolTip,
   Legend,
   ResponsiveContainer,
-  ChartTooltip,
   ReferenceLine,
-} from './lineCharts';
+} from '../BaseChartComponents';
+import { LineChart, Line } from './lineCharts';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -107,7 +107,7 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
           <CartesianGrid />
           <XAxis dataKey="month" />
           <YAxis />
-          <Tooltip />
+          <ChartToolTip />
           <Legend />
           <Line
             dataKey="teamA"
@@ -156,7 +156,7 @@ export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
           <CartesianGrid />
           <XAxis dataKey="month" />
           <YAxis />
-          <Tooltip />
+          <ChartToolTip />
           <Legend />
           <Line
             dataKey="teamA"
@@ -189,7 +189,7 @@ export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
           <CartesianGrid />
           <XAxis dataKey="month" label="Months" />
           <YAxis dataKey="teamA" label="Active Users" />
-          <Tooltip />
+          <ChartToolTip />
           <Legend />
           {/* Default dots */}
           <Line
@@ -214,7 +214,7 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
           <CartesianGrid />
           <XAxis dataKey="date" />
           <YAxis />
-          <ChartTooltip />
+          <ChartToolTip />
           <Legend />
           <Line
             dataKey="historical"
