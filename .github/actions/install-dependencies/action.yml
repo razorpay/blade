@@ -24,13 +24,11 @@ runs:
     - name: install packages if cache miss
       run: |
         pnpm install --frozen-lockfile
-        pnpm add -D npm-run-all
       shell: bash
       if: steps.cache.outputs.cache-hit != 'true'
 
     - name: Run postinstall script and ensure dependencies
       run: |
         pnpm run postinstall
-        pnpm add -D npm-run-all
       shell: bash
       if: steps.cache.outputs.cache-hit == 'true'

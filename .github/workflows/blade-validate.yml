@@ -26,6 +26,9 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Pre-Generate Documentation Lock File
         run: pnpm generate-docs-lockfile
+      # check version of npm run all which is installed
+      - name: Check version of npm-run-all using pnpm
+        run: pnpm list npm-run-all
       - name: Build Blade
         run:  pnpm --filter @razorpay/blade build
       - name: Lint Source Code
