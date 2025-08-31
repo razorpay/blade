@@ -1,7 +1,11 @@
 import React from 'react';
 import type { ComponentProps } from 'react';
 import styled from 'styled-components';
-import { AreaChart as RechartsAreaChart, Area as RechartsArea } from 'recharts';
+import {
+  AreaChart as RechartsAreaChart,
+  Area as RechartsArea,
+  ResponsiveContainer,
+} from 'recharts';
 import type { AreaProps as RechartAreaProps } from 'recharts';
 
 import { useTheme } from '~components/BladeProvider';
@@ -54,10 +58,12 @@ export const AreaChart: React.FC<AreaChartProps> = ({ children, ...props }) => {
   };
 
   return (
-    <BaseBox {...styledProps} {...metaAttribute({ name: 'area-chart' })}>
-      <StyledAreaChart {...props} theme={theme} margin={defaultMargin}>
-        {children}
-      </StyledAreaChart>
+    <BaseBox {...styledProps} {...metaAttribute({ name: 'area-chart' })} width="100%" height="100%">
+      <ResponsiveContainer>
+        <StyledAreaChart {...props} theme={theme} margin={defaultMargin}>
+          {children}
+        </StyledAreaChart>
+      </ResponsiveContainer>
     </BaseBox>
   );
 };

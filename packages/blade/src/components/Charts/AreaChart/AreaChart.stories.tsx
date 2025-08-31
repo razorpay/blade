@@ -1,7 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { XAxis, YAxis, CartesianGrid } from '../BaseChartComponents/axis';
-import { Tooltip, Legend, ResponsiveContainer, ReferenceLine } from '../LineCharts';
+import { Tooltip, Legend, ReferenceLine } from '../LineCharts';
 import { AreaChart, Area } from './AreaCharts';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -133,20 +133,18 @@ const data = [
 export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Area
-            dataKey="teamA"
-            name="Team A"
-            type="monotone"
-            color="chart.background.categorical.azure.intense"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      <AreaChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <Tooltip />
+        <Area
+          dataKey="teamA"
+          name="Team A"
+          type="monotone"
+          color="chart.background.categorical.azure.intense"
+        />
+      </AreaChart>
     </div>
   );
 };
@@ -155,29 +153,27 @@ export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
 export const StackedAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Area
-            dataKey="teamA"
-            name="Team A"
-            type="monotone"
-            stackId="1"
-            color="chart.background.categorical.azure.moderate"
-          />
-          <Area
-            dataKey="teamB"
-            name="Team B"
-            type="monotone"
-            stackId="1"
-            color="chart.background.categorical.emerald.moderate"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      <AreaChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Area
+          dataKey="teamA"
+          name="Team A"
+          type="monotone"
+          stackId="1"
+          color="chart.background.categorical.azure.moderate"
+        />
+        <Area
+          dataKey="teamB"
+          name="Team B"
+          type="monotone"
+          stackId="1"
+          color="chart.background.categorical.emerald.moderate"
+        />
+      </AreaChart>
     </div>
   );
 };
@@ -187,50 +183,46 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
       <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
-      <ResponsiveContainer width="100%" height={200}>
-        <AreaChart width={500} height={200} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="pv"
-            name="Page A"
-            connectNulls
-            color="chart.background.categorical.emerald.moderate"
-          />
-          <Area
-            type="monotone"
-            dataKey="uv"
-            name="Page A"
-            color="chart.background.categorical.azure.moderate"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      <AreaChart width={500} height={200} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Area
+          type="monotone"
+          dataKey="pv"
+          name="Page A"
+          connectNulls
+          color="chart.background.categorical.emerald.moderate"
+        />
+        <Area
+          type="monotone"
+          dataKey="uv"
+          name="Page A"
+          color="chart.background.categorical.azure.moderate"
+        />
+      </AreaChart>
       <Heading size="small">Area Chart that Connects Nulls :- </Heading>
-      <ResponsiveContainer width="100%" height={200}>
-        <AreaChart width={500} height={200} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="pv"
-            name="Page A"
-            connectNulls
-            color="chart.background.categorical.emerald.moderate"
-          />
-          <Area
-            type="monotone"
-            dataKey="uv"
-            name="Page A"
-            connectNulls
-            color="chart.background.categorical.azure.moderate"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      <AreaChart width={500} height={200} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Area
+          type="monotone"
+          dataKey="pv"
+          name="Page A"
+          connectNulls
+          color="chart.background.categorical.emerald.moderate"
+        />
+        <Area
+          type="monotone"
+          dataKey="uv"
+          name="Page A"
+          connectNulls
+          color="chart.background.categorical.azure.moderate"
+        />
+      </AreaChart>
     </div>
   );
 };
@@ -239,16 +231,14 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
 export const TinyAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
     <div style={{ width: '200px', height: '80px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={chartData}>
-          <Area
-            dataKey="teamA"
-            name="Team A"
-            type="monotone"
-            color="chart.background.categorical.azure.intense"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      <AreaChart data={chartData}>
+        <Area
+          dataKey="teamA"
+          name="Team A"
+          type="monotone"
+          color="chart.background.categorical.azure.intense"
+        />
+      </AreaChart>
     </div>
   );
 };
@@ -257,26 +247,20 @@ export const TinyAreaChart: StoryFn<typeof AreaChart> = () => {
 export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Area
-            dataKey="teamA"
-            name="Team A"
-            type="monotone"
-            color="chart.background.categorical.azure.moderate"
-          />
-          <ReferenceLine
-            y={3000}
-            label="Target"
-            color="chart.background.categorical.gray.intense"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      <AreaChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Area
+          dataKey="teamA"
+          name="Team A"
+          type="monotone"
+          color="chart.background.categorical.azure.moderate"
+        />
+        <ReferenceLine y={3000} label="Target" color="chart.background.categorical.gray.intense" />
+      </AreaChart>
     </div>
   );
 };
