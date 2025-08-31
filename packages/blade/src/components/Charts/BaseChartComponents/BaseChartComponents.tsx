@@ -17,8 +17,8 @@ import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 
 export type ReferenceLineProps = {
-  y: number;
-  x: number;
+  y?: number;
+  x?: number;
   label: string;
 };
 
