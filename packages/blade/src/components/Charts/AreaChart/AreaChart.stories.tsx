@@ -186,6 +186,7 @@ export const StackedAreaChart: StoryFn<typeof AreaChart> = () => {
 export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
+      <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
       <ResponsiveContainer width="100%" height={200}>
         <AreaChart width={500} height={200} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -207,6 +208,7 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
           />
         </AreaChart>
       </ResponsiveContainer>
+      <Heading size="small">Area Chart that Connects Nulls :- </Heading>
       <ResponsiveContainer width="100%" height={200}>
         <AreaChart width={500} height={200} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
