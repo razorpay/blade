@@ -100,6 +100,7 @@ export type StyledBaseInputProps = {
   | 'autoCapitalize'
   | 'isDropdownTrigger'
   | 'tabIndex'
+  | 'children'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

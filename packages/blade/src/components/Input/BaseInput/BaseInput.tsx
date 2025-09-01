@@ -84,7 +84,7 @@ type BaseInputCommonProps = FormInputLabelProps &
     /**
      * Determines if it needs to be rendered as input, textarea or button
      */
-    as?: 'input' | 'textarea' | 'button';
+    as?: 'input' | 'textarea' | 'button' | 'custom';
     /**
      * ID that will be used for accessibility
      */
@@ -361,6 +361,7 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default undefined
      */
     tabIndex?: number;
+    children?: ReactNode;
   } & TestID &
   Platform.Select<{
     native: {
@@ -864,6 +865,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingDropDown,
     labelSuffix,
     labelTrailing,
+    children,
     ...rest
   },
   ref,
@@ -1110,6 +1112,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 isTableInputCell={isTableInputCell}
                 tabIndex={tabIndex}
                 hasLeadingDropdown={Boolean(leadingDropDown)}
+                children={children}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                 {...makeAnalyticsAttribute(rest)}
               />
