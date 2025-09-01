@@ -1,7 +1,13 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { XAxis, YAxis, CartesianGrid } from '../BaseChartComponents/axis';
-import { Tooltip, Legend, ReferenceLine } from '../LineCharts';
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ChartToolTip,
+  Legend,
+  ReferenceLine,
+} from '../BaseChartComponents/BaseChartComponents';
 import { AreaChart, Area } from './AreaCharts';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -137,7 +143,7 @@ export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <Tooltip />
+        <ChartToolTip />
         <Area
           dataKey="teamA"
           name="Team A"
@@ -157,7 +163,7 @@ export const StackedAreaChart: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <Tooltip />
+        <ChartToolTip />
         <Legend />
         <Area
           dataKey="teamA"
@@ -187,7 +193,7 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip />
+        <ChartToolTip />
         <Area
           type="monotone"
           dataKey="pv"
@@ -207,7 +213,7 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip />
+        <ChartToolTip />
         <Area
           type="monotone"
           dataKey="pv"
@@ -251,7 +257,7 @@ export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <Tooltip />
+        <ChartToolTip />
         <Legend />
         <Area
           dataKey="teamA"
@@ -259,7 +265,7 @@ export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
           type="monotone"
           color="chart.background.categorical.azure.moderate"
         />
-        <ReferenceLine y={3000} label="Target" color="chart.background.categorical.gray.intense" />
+        <ReferenceLine y={3000} label="Target" />
       </AreaChart>
     </div>
   );

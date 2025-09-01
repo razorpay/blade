@@ -1,15 +1,14 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { XAxis, YAxis, CartesianGrid } from '../BaseChartComponents';
 import {
-  LineChart,
-  Line,
-  Tooltip,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ChartToolTip,
   Legend,
-  ResponsiveContainer,
-  ChartTooltip,
   ReferenceLine,
-} from './lineCharts';
+} from '../BaseChartComponents';
+import { LineChart, Line } from './lineCharts';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -45,7 +44,6 @@ const Page = (): React.ReactElement => {
           ];
           
           return (
-            <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data}>
                 <CartesianGrid />
                 <XAxis dataKey="name" />
@@ -54,7 +52,6 @@ const Page = (): React.ReactElement => {
                 <Legend />
                 <Line dataKey="sales" name="Sales" />
               </LineChart>
-            </ResponsiveContainer>
           )
         }
 
@@ -98,32 +95,50 @@ const forecastData = [
   { date: 'Jun', historical: null, forecast: 2390 },
 ];
 
+// Data with null values for connectNulls example
+const dataWithNulls = [
+  { month: 'Jan', sales: 4000 },
+  { month: 'Feb', sales: 3000 },
+  { month: 'Mar', sales: 5000 },
+  { month: 'Apr', sales: null },
+  { month: 'May', sales: 1890 },
+  { month: 'Jun', sales: 2390 },
+];
+
+// Data for stepped line chart example
+const steppedData = [
+  { month: 'Jan', value: 100 },
+  { month: 'Feb', value: 150 },
+  { month: 'Mar', value: 120 },
+  { month: 'Apr', value: 200 },
+  { month: 'May', value: 180 },
+  { month: 'Jun', value: 250 },
+];
+
 // Simple Line Chart Example
 export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            dataKey="teamA"
-            name="Team A"
-            strokeStyle="solid"
-            color="chart.background.categorical.azure.moderate"
-          />
-          <Line
-            dataKey="teamB"
-            name="Team B"
-            strokeStyle="solid"
-            color="chart.background.categorical.emerald.moderate"
-          />
-          <ReferenceLine y={1500} label="Avg: 1200" />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="teamA"
+          name="Team A"
+          strokeStyle="solid"
+          color="chart.background.categorical.azure.moderate"
+        />
+        <Line
+          dataKey="teamB"
+          name="Team B"
+          strokeStyle="solid"
+          color="chart.background.categorical.emerald.moderate"
+        />
+        <ReferenceLine y={1500} label="Avg: 1200" />
+      </LineChart>
     </div>
   );
 };
@@ -132,17 +147,15 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
 export const TinyLineChart: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '200px', height: '100px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <Line
-            dataKey="teamA"
-            strokeStyle="solid"
-            color="chart.background.categorical.azure.strong"
-            dot={false}
-            activeDot={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={chartData}>
+        <Line
+          dataKey="teamA"
+          strokeStyle="solid"
+          color="chart.background.categorical.azure.strong"
+          dot={false}
+          activeDot={false}
+        />
+      </LineChart>
     </div>
   );
 };
@@ -151,31 +164,29 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
 export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            dataKey="teamA"
-            name="Team A (No Dots)"
-            strokeStyle="solid"
-            color="chart.background.categorical.azure.moderate"
-            dot={false}
-            activeDot={true}
-          />
-          <Line
-            dataKey="teamB"
-            name="Team B (Custom Dots)"
-            strokeStyle="solid"
-            color="chart.background.categorical.crimson.moderate"
-            dot={{ r: 6, fill: '#22c55e', stroke: '#16a34a', strokeWidth: 2 }}
-            activeDot={{ r: 8, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="teamA"
+          name="Team A (No Dots)"
+          strokeStyle="solid"
+          color="chart.background.categorical.azure.moderate"
+          dot={false}
+          activeDot={true}
+        />
+        <Line
+          dataKey="teamB"
+          name="Team B (Custom Dots)"
+          strokeStyle="solid"
+          color="chart.background.categorical.crimson.moderate"
+          dot={{ r: 6, fill: '#22c55e', stroke: '#16a34a', strokeWidth: 2 }}
+          activeDot={{ r: 8, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3 }}
+        />
+      </LineChart>
     </div>
   );
 };
@@ -184,23 +195,21 @@ export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
 export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <CartesianGrid />
-          <XAxis dataKey="month" label="Months" />
-          <YAxis dataKey="teamA" label="Active Users" />
-          <Tooltip />
-          <Legend />
-          {/* Default dots */}
-          <Line
-            dataKey="teamA"
-            name="Default Dots"
-            color="chart.background.categorical.azure.moderate"
-            dot={true}
-            activeDot={true}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" label="Months" />
+        <YAxis dataKey="teamA" label="Active Users" />
+        <ChartToolTip />
+        <Legend />
+        {/* Default dots */}
+        <Line
+          dataKey="teamA"
+          name="Default Dots"
+          color="chart.background.categorical.azure.moderate"
+          dot={true}
+          activeDot={true}
+        />
+      </LineChart>
     </div>
   );
 };
@@ -209,29 +218,83 @@ export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
 export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={forecastData}>
-          <CartesianGrid />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <ChartTooltip />
-          <Legend />
-          <Line
-            dataKey="historical"
-            name="Historical Data"
-            connectNulls={true}
-            color="chart.background.categorical.azure.moderate"
-          />
-          <Line
-            dataKey="forecast"
-            name="Forecast"
-            strokeStyle="dashed"
-            connectNulls={true}
-            showLegend={false}
-            color="chart.background.categorical.gray.moderate"
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={forecastData}>
+        <CartesianGrid />
+        <XAxis dataKey="date" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="historical"
+          name="Historical Data"
+          connectNulls={true}
+          color="chart.background.categorical.azure.moderate"
+        />
+        <Line
+          dataKey="forecast"
+          name="Forecast"
+          strokeStyle="dashed"
+          connectNulls={true}
+          showLegend={false}
+          color="chart.background.categorical.gray.moderate"
+        />
+      </LineChart>
+    </div>
+  );
+};
+
+// Line Chart that Connects Nulls
+export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
+      <LineChart data={dataWithNulls}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="sales"
+          name="Sales (Connects Nulls)"
+          color="chart.background.categorical.emerald.moderate"
+        />
+      </LineChart>
+      <Heading size="small">Line Chart that Connects Nulls</Heading>
+      <LineChart data={dataWithNulls}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="sales"
+          name="Sales (Connects Nulls)"
+          connectNulls={true}
+          color="chart.background.categorical.emerald.moderate"
+        />
+      </LineChart>
+    </div>
+  );
+};
+
+// Stepped Line Chart Example
+export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <LineChart data={steppedData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="value"
+          name="Stepped Line"
+          type="step"
+          color="chart.background.categorical.azure.moderate"
+        />
+      </LineChart>
     </div>
   );
 };
@@ -241,3 +304,5 @@ TinyLineChart.storyName = 'Tiny Line Chart';
 LineChartWithCustomDots.storyName = 'Line Chart with Custom Dots';
 DotConfigurationShowcase.storyName = 'Dot Configuration Showcase';
 ForecastLineChart.storyName = 'Forecast Line Chart';
+LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
+SteppedLineChart.storyName = 'Stepped Line Chart';
