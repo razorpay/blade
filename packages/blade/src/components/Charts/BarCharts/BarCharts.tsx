@@ -66,18 +66,22 @@ const DEFAULT_CATEGORICAL_COLOR_TOKENS: BladeColorToken[] = [
 
 // Arbitrary sequential limit per palette (can be tuned later with design)
 const MAX_SEQUENTIAL_PER_CATEGORY = 6;
+const BAR_CHART_CORNER_RADIUS = 2;
+const DISTANCE_BETWEEN_STACKED_BARS = 2;
 
 // Internal: Check and limit sequential usage; fallback to undefined to allow categorical defaulting
 function enforceSequentialLimit(token?: BladeColorToken): BladeColorToken | undefined {
   if (!token) return token;
-  const match = token.match(/^chart\.background\.sequential\.([^\.]+)\./);
+  const match = token.match(/^chart\.background\.sequential\.([^.]+)\./);
   if (!match) return token;
 
   const category = match[1] as Exclude<ChartColorCategories, 'gray'>;
   // Track sequential counts on a module-level map
   // Note: This resets between renders naturally; it's enforced per render/compose
-  (enforceSequentialLimit as any)._seq = (enforceSequentialLimit as any)._seq ?? new Map();
-  const seqMap: Map<string, number> = (enforceSequentialLimit as any)._seq;
+  (enforceSequentialLimit as { _seq?: Map<string, number> })._seq =
+    (enforceSequentialLimit as { _seq?: Map<string, number> })._seq ?? new Map();
+  const seqMap: Map<string, number> = (enforceSequentialLimit as { _seq?: Map<string, number> })
+    ._seq!;
 
   const current = (seqMap.get(category) ?? 0) + 1;
   seqMap.set(category, current);
@@ -115,22 +119,19 @@ export const Bar: React.FC<BarProps> = ({
       activeBar={activeBar}
       label={label}
       // https://github.com/recharts/recharts/issues/2244#issuecomment-2288572842
-      shape={(props) => {
-        const { fill, x, y, width, height } = props;
-        const gap = 2;
-
-        const isFirst = false;
-        const isLast = false;
+      shape={(props: unknown) => {
+        const { fill, x, y, width, height } = props as RechartsShapeProps;
+        const gap = DISTANCE_BETWEEN_STACKED_BARS;
 
         return (
           <rect
             fill={fill}
             x={x}
-            y={isLast ? y : y + gap / 2}
+            y={y + gap / 2}
             width={width}
-            height={isLast || isFirst ? height - gap / 2 : height - gap}
-            rx={2}
-            ry={2}
+            height={height - gap}
+            rx={BAR_CHART_CORNER_RADIUS}
+            ry={BAR_CHART_CORNER_RADIUS}
           />
         );
       }}
@@ -145,7 +146,8 @@ export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...pr
 
     // Count <Bar /> children
     const barChildren = kids.filter(
-      (child) => React.isValidElement(child) && (child.type as any) === Bar,
+      (child) =>
+        React.isValidElement(child) && (child.type as React.ComponentType<BarProps>) === Bar,
     ) as React.ReactElement<BarProps>[];
 
     if (barChildren.length > maxBars) {
@@ -160,7 +162,7 @@ export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...pr
     let autoColorIdx = 0;
 
     kids.forEach((child) => {
-      if (!React.isValidElement(child) || (child.type as any) !== Bar) {
+      if (!React.isValidElement(child) || (child.type as React.ComponentType<BarProps>) !== Bar) {
         coloredKids.push(child);
         return;
       }
@@ -172,7 +174,7 @@ export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...pr
         DEFAULT_CATEGORICAL_COLOR_TOKENS[autoColorIdx++ % DEFAULT_CATEGORICAL_COLOR_TOKENS.length];
 
       coloredKids.push(
-        React.cloneElement(child, {
+        React.cloneElement(child as React.ReactElement<BarProps>, {
           color: resolvedColor,
           name: child.props.name ?? child.props.dataKey,
         }),
