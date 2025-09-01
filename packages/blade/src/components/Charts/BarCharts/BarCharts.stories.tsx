@@ -42,12 +42,12 @@ export const SimpleBarChart: StoryFn<typeof BarChart> = () => {
         <Bar
           dataKey="seriesA"
           name="Series A"
-          color="chart.background.categorical.magenta.moderate"
+          color="chart.background.categorical.azure.moderate"
         />
         <Bar
           dataKey="seriesB"
           name="Series B"
-          color="chart.background.categorical.sapphire.moderate"
+          color="chart.background.categorical.orchid.moderate"
         />
       </BarChart>
     </div>
@@ -68,7 +68,7 @@ export const StackedBarChart: StoryFn<typeof BarChart> = () => {
           dataKey="seriesA"
           name="Series A"
           stackId="stack-1"
-          color="chart.background.sequential.crimson.300"
+          color="chart.background.sequential.crimson.500"
         />
         <Bar
           dataKey="seriesB"
@@ -80,7 +80,7 @@ export const StackedBarChart: StoryFn<typeof BarChart> = () => {
           dataKey="seriesC"
           name="Series C"
           stackId="stack-1"
-          color="chart.background.sequential.crimson.500"
+          color="chart.background.sequential.crimson.300"
         />
       </BarChart>
     </div>

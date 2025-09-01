@@ -44,6 +44,14 @@ export type BarChartProps = Omit<ComponentProps<typeof RechartsBarChart>, 'margi
 
 const DEFAULT_MARGIN = { top: 16, right: 16, bottom: 16, left: 16 };
 
+export type RechartsShapeProps = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  fill: string;
+};
+
 // Default categorical palette order for auto-assignment when color isn't provided
 const DEFAULT_CATEGORICAL_COLOR_TOKENS: BladeColorToken[] = [
   'chart.background.categorical.azure.moderate',
@@ -106,6 +114,26 @@ export const Bar: React.FC<BarProps> = ({
       legendType="rect"
       activeBar={activeBar}
       label={label}
+      // https://github.com/recharts/recharts/issues/2244#issuecomment-2288572842
+      shape={(props) => {
+        const { fill, x, y, width, height } = props;
+        const gap = 2;
+
+        const isFirst = false;
+        const isLast = false;
+
+        return (
+          <rect
+            fill={fill}
+            x={x}
+            y={isLast ? y : y + gap / 2}
+            width={width}
+            height={isLast || isFirst ? height - gap / 2 : height - gap}
+            rx={2}
+            ry={2}
+          />
+        );
+      }}
     />
   );
 };
