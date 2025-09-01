@@ -16,13 +16,19 @@ const chartData = [
   { name: 'Apr', seriesA: 2780, seriesB: 3908, seriesC: 2200 },
   { name: 'May', seriesA: 1890, seriesB: 4800, seriesC: 1700 },
   { name: 'Jun', seriesA: 2390, seriesB: 3800, seriesC: 2100 },
+  { name: 'Jul', seriesA: 2390, seriesB: 3800, seriesC: 2100 },
+  { name: 'Aug', seriesA: 3000, seriesB: 4800, seriesC: 3000 },
+  { name: 'Sep', seriesA: 3500, seriesB: 3400, seriesC: 5300 },
+  { name: 'Oct', seriesA: 2000, seriesB: 1400, seriesC: 3300 },
+  { name: 'Nov', seriesA: 1400, seriesB: 5400, seriesC: 1300 },
+  { name: 'Dec', seriesA: 1200, seriesB: 4600, seriesC: 2000 },
 ];
 
 // 2.3.a - TinyBarChart
 export const TinyBarChart: StoryFn<typeof BarChart> = () => {
   return (
     <div style={{ width: '100px', height: '50px' }}>
-      <BarChart data={chartData}>
+      <BarChart data={chartData.slice(0, 6)}>
         <Bar dataKey="seriesA" color="chart.background.categorical.azure.moderate" />
       </BarChart>
     </div>
@@ -33,7 +39,7 @@ export const TinyBarChart: StoryFn<typeof BarChart> = () => {
 export const SimpleBarChart: StoryFn<typeof BarChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <BarChart data={chartData}>
+      <BarChart data={chartData.slice(0, 6)}>
         <CartesianGrid />
         <XAxis dataKey="name" />
         <YAxis />
@@ -87,11 +93,28 @@ export const StackedBarChart: StoryFn<typeof BarChart> = () => {
   );
 };
 
+export const GroupedBarChart: StoryFn<typeof BarChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <BarChart data={chartData.slice(0, 5)}>
+        <CartesianGrid />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Bar dataKey="seriesA" name="Series A" color="chart.background.sequential.azure.500" />
+        <Bar dataKey="seriesB" name="Series B" color="chart.background.sequential.crimson.500" />
+        <Bar dataKey="seriesC" name="Series C" color="chart.background.sequential.magenta.500" />
+      </BarChart>
+    </div>
+  );
+};
+
 // 2.4.d - Vertical Bar Chart
 export const VerticalBarChart: StoryFn<typeof BarChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <BarChart data={chartData} layout="vertical">
+    <div style={{ width: '100%', height: '500px' }}>
+      <BarChart data={chartData.slice(0, 5)} layout="vertical">
         <CartesianGrid />
         <XAxis type="number" />
         <YAxis type="category" dataKey="name" />
@@ -100,12 +123,20 @@ export const VerticalBarChart: StoryFn<typeof BarChart> = () => {
         <Bar
           dataKey="seriesA"
           name="Series A"
-          color="chart.background.categorical.azure.moderate"
+          color="chart.background.sequential.azure.400"
+          stackId="2"
         />
         <Bar
           dataKey="seriesB"
           name="Series B"
-          color="chart.background.categorical.cider.moderate"
+          color="chart.background.sequential.azure.500"
+          stackId="2"
+        />
+        <Bar
+          dataKey="seriesC"
+          name="Series C"
+          color="chart.background.sequential.azure.600"
+          stackId="2"
         />
       </BarChart>
     </div>

@@ -5,6 +5,7 @@ import {
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
+import { BarChartContext, useBarChartContext } from './BarChartContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -107,6 +108,7 @@ export const Bar: React.FC<BarProps> = ({
   ...rest
 }) => {
   const { theme } = useTheme();
+  const { layout } = useBarChartContext();
   const fill = color ? getIn(theme.colors, color) : undefined;
 
   return (
@@ -122,7 +124,23 @@ export const Bar: React.FC<BarProps> = ({
       shape={(props: unknown) => {
         const { fill, x, y, width, height } = props as RechartsShapeProps;
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
+        // Check if this is a vertical layout (bars going up/down)
+        const isVertical = layout === 'vertical';
 
+        if (isVertical) {
+          // For vertical bars: x and y stay the same, but width/height are swapped
+          return (
+            <rect
+              fill={fill}
+              x={x + gap / 2}
+              y={y}
+              width={width - gap}
+              height={height}
+              rx={BAR_CHART_CORNER_RADIUS}
+              ry={BAR_CHART_CORNER_RADIUS}
+            />
+          );
+        }
         return (
           <rect
             fill={fill}
@@ -188,31 +206,39 @@ export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...pr
 
   return (
     <BaseBox {...metaAttribute({ name: 'bar-chart' })} width="100%" height="100%">
-      <RechartsResponsiveContainer width="100%" height="100%">
-        {processed.error ? (
-          // Simple centered error message; non-intrusive layout
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              height: '100%',
-              color: '#b91c1c',
-              fontFamily: theme.typography.fonts.family.text,
-              fontSize: theme.typography.fonts.size[100],
-              textAlign: 'center',
-              padding: 16,
-            }}
-          >
-            {processed.error}
-          </div>
-        ) : (
-          <RechartsBarChart {...props} margin={DEFAULT_MARGIN} barSize={49} barGap={2}>
-            {children}
-          </RechartsBarChart>
-        )}
-      </RechartsResponsiveContainer>
+      <BarChartContext.Provider value={{ layout: props.layout }}>
+        <RechartsResponsiveContainer width="100%" height="100%">
+          {processed.error ? (
+            // Simple centered error message; non-intrusive layout
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '100%',
+                color: '#b91c1c',
+                fontFamily: theme.typography.fonts.family.text,
+                fontSize: theme.typography.fonts.size[100],
+                textAlign: 'center',
+                padding: 16,
+              }}
+            >
+              {processed.error}
+            </div>
+          ) : (
+            <RechartsBarChart
+              {...props}
+              margin={DEFAULT_MARGIN}
+              barSize={49}
+              barGap={2}
+              barCategoryGap={2}
+            >
+              {processed.children}
+            </RechartsBarChart>
+          )}
+        </RechartsResponsiveContainer>
+      </BarChartContext.Provider>
     </BaseBox>
   );
 };
