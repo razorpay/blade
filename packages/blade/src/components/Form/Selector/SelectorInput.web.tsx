@@ -7,7 +7,7 @@ import type { HoverProps, SelectorInputProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType } from '~utils';
-import { screenReaderStyles } from '~components/VisuallyHidden';
+import { screenReaderStyles, legacyScreenReaderStyles } from '~components/VisuallyHidden';
 import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeMotionTime } from '~utils/makeMotionTime';
@@ -15,6 +15,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 
 const getHoverStyles = ({
   theme,
@@ -37,17 +38,19 @@ const getHoverStyles = ({
   };
 };
 
-const StyledInput = styled.input<HoverProps>(
-  ({ theme, isChecked, isDisabled, hasError, hoverTokens }) => ({
-    ...screenReaderStyles,
-    '&:focus-visible + div': {
-      ...getFocusRingStyles({ theme }),
-    },
-    '&:hover + div': {
-      ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverTokens }),
-    },
-  }),
-);
+const StyledInput = styled.input<
+  HoverProps & {
+    shouldUseLegacyScreenReaderStyles?: boolean;
+  }
+>(({ theme, isChecked, isDisabled, hasError, hoverTokens, shouldUseLegacyScreenReaderStyles }) => ({
+  ...(shouldUseLegacyScreenReaderStyles ? legacyScreenReaderStyles : screenReaderStyles),
+  '&:focus-visible + div': {
+    ...getFocusRingStyles({ theme }),
+  },
+  '&:hover + div': {
+    ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverTokens }),
+  },
+}));
 
 const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorInputProps> = (
   {
@@ -67,6 +70,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
   // to be able to set the mixed value via setMixed() function
   // TODO: replace with a generic `mergeRefs()` util if we do this in other places
   const mergedRef = useMergeRefs(ref, inputProps.ref);
+  const { isInBottomSheet } = useBottomSheetContext();
 
   return (
     <StyledInput
@@ -76,6 +80,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
       hasError={hasError}
       tabIndex={tabIndex}
       hoverTokens={hoverTokens}
+      shouldUseLegacyScreenReaderStyles={isInBottomSheet}
       {...inputProps}
       {...makeAccessible({ label: accessibilityLabel })}
       {...makeAnalyticsAttribute(rest)}

@@ -114,9 +114,23 @@ const _DateInput = (
   );
 
   const handleInputChange = ({ value }: { value?: string }): void => {
+    const inputValue = value ?? '';
     setValidationError(undefined);
+
+    if (inputValue?.trim()) {
+      const validation = validateAndParseDateInput(inputValue, isRange, format, {
+        excludeDate: props.excludeDate,
+        minDate: props.minDate,
+        maxDate: props.maxDate,
+      });
+
+      if (validation.shouldBlock && validation.error) {
+        setValidationError(validation.error);
+      }
+    }
+
     // Apply changes immediately during typing (with empty clearing enabled)
-    applyDateValue(value ?? '', true);
+    applyDateValue(inputValue, true);
   };
 
   const handleBlur = React.useCallback(
