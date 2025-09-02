@@ -4,48 +4,64 @@ import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import { useIsMobile } from '~utils/useIsMobile';
+import { DateSelectionType } from './types';
 
 type CalendarFooterProps = {
   onApply: () => void;
   onCancel: () => void;
   isButtonDisabled?: boolean;
+  footerSlot?: React.ReactElement;
+  selectionType?: DateSelectionType;
 };
 const CalendarFooter = ({
   onApply,
   onCancel,
   isButtonDisabled,
+  footerSlot,
+  selectionType,
 }: CalendarFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
+
+  const isSingleSelectionOrMobile = isMobile || selectionType === 'single';
+  const footerSlotMaxWidth = React.useMemo(() => {
+    if (isMobile) return '100%';
+    return selectionType === 'single' ? '280px' : '400px';
+  }, [isMobile, selectionType]);
 
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.5">
       {isMobile ? null : <Divider />}
+
       <BaseBox
-        width={{ base: '100%', m: 'auto' }}
-        marginLeft="auto"
         display="flex"
-        flexDirection="row"
-        gap={isMobile ? 'spacing.5' : 'spacing.3'}
+        flexDirection={isSingleSelectionOrMobile ? 'column' : 'row'}
+        gap={isSingleSelectionOrMobile ? 'spacing.5' : 'spacing.3'}
+        justifyContent="space-between"
       >
-        <Button
-          isFullWidth={isMobile}
-          variant="tertiary"
-          size="medium"
-          onClick={onCancel}
-          data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.CANCEL_BUTTON}
-        >
-          Cancel
-        </Button>
-        <Button
-          isDisabled={isButtonDisabled}
-          isFullWidth={isMobile}
-          variant="primary"
-          size="medium"
-          onClick={onApply}
-          data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.APPLY_BUTTON}
-        >
-          Apply
-        </Button>
+        {footerSlot && <BaseBox maxWidth={footerSlotMaxWidth}>{footerSlot}</BaseBox>}
+        <BaseBox width={{ base: '100%', m: 'auto' }} marginLeft="auto">
+          <BaseBox display="flex" flexDirection="row" gap={isMobile ? 'spacing.5' : 'spacing.3'}>
+            <Button
+              isFullWidth={isMobile}
+              variant="tertiary"
+              size="medium"
+              onClick={onCancel}
+              data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.CANCEL_BUTTON}
+            >
+              Cancel
+            </Button>
+            <Button
+              isDisabled={isButtonDisabled}
+              isFullWidth={isMobile}
+              variant="primary"
+              size="medium"
+              onClick={onApply}
+              data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.APPLY_BUTTON}
+            >
+              Apply
+            </Button>
+          </BaseBox>
+        </BaseBox>
       </BaseBox>
     </BaseBox>
   );

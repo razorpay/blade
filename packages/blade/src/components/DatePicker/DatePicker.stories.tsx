@@ -63,6 +63,7 @@ export default {
     onPreviousMonth: baseProp,
     onPreviousYear: baseProp,
     locale: baseProp,
+    footerSlot: baseProp,
     accessibilityLabel: inputProp,
     errorText: inputProp,
     helpText: inputProp,
@@ -630,6 +631,21 @@ export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerCompone
       </Box>
     </Box>
   );
+};
+
+export const DatePickerWithFooterSlot = DatePickerTemplate.bind({});
+DatePickerWithFooterSlot.storyName = 'DatePicker with Footer Slot';
+DatePickerWithFooterSlot.args = {
+  label: 'Select a date',
+  selectionType: 'range',
+  footerSlot: (
+    <Box display="flex" flexDirection="column" gap="spacing.2">
+      <Text size="medium" color="surface.text.gray.normal">
+        This section only displays records from the last 45 days.
+      </Text>
+      <Link href="#">Link to report tab</Link>
+    </Box>
+  ),
 };
 
 export const WithoutActionButtons = DatePickerTemplate.bind({});
