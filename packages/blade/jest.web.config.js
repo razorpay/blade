@@ -15,7 +15,17 @@ const baseConfig = {
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
   testMatch: ['**/*.test.{ts,tsx}'],
   transform: {
-    '\\.(js|ts|tsx)?$': './jest-preprocess.js',
+    '\\.(ts|tsx|js|jsx)$': [
+      '@swc/jest',
+      {
+        jsc: {
+          parser: { syntax: 'typescript', tsx: true },
+          transform: { react: { runtime: 'automatic' } },
+        },
+        module: { type: 'es6' },
+        sourceMaps: true,
+      },
+    ],
   },
   transformIgnorePatterns: ['/node_modules/(?!(@table-library)/)'],
   testEnvironment: 'jsdom',

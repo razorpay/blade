@@ -4,7 +4,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'node:url';
-import { babel as pluginBabel } from '@rollup/plugin-babel';
+import swc from 'rollup-plugin-swc3';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonjs from '@rollup/plugin-commonjs';
@@ -124,11 +124,17 @@ const getWebConfig = (inputs) => {
       depsExternalPlugin({ externalDependencies }),
       pluginResolve({ extensions: webExtensions }),
       pluginCommonjs(),
-      pluginBabel({
-        exclude: 'node_modules/**',
-        babelHelpers: 'runtime',
-        envName: 'production',
-        extensions: webExtensions,
+      swc({
+        cwd: __dirname,
+        include: /\.[mc]?[jt]sx?$/,
+        sourceMaps: true,
+        jsc: {
+          target: 'es2020',
+          parser: { syntax: 'typescript', tsx: true },
+          transform: { react: { runtime: 'automatic' } },
+          externalHelpers: false,
+          loose: true,
+        },
       }),
       aliases,
     ],
@@ -166,11 +172,17 @@ const getBladeCoverageConfig = (inputs) => {
       depsExternalPlugin({ externalDependencies }),
       pluginResolve({ extensions: webExtensions }),
       pluginCommonjs(),
-      pluginBabel({
-        exclude: 'node_modules/**',
-        babelHelpers: 'runtime',
-        envName: 'production',
-        extensions: webExtensions,
+      swc({
+        cwd: __dirname,
+        include: /\.[mc]?[jt]sx?$/,
+        sourceMaps: true,
+        jsc: {
+          target: 'es2020',
+          parser: { syntax: 'typescript', tsx: true },
+          transform: { react: { runtime: 'automatic' } },
+          externalHelpers: false,
+          loose: true,
+        },
       }),
       aliases,
     ],
@@ -196,11 +208,17 @@ const getNativeConfig = (inputs) => {
       depsExternalPlugin({ externalDependencies }),
       pluginResolve({ extensions: nativeExtensions }),
       pluginCommonjs(),
-      pluginBabel({
-        exclude: 'node_modules/**',
-        babelHelpers: 'runtime',
-        envName: 'production',
-        extensions: nativeExtensions,
+      swc({
+        cwd: __dirname,
+        include: /\.[mc]?[jt]sx?$/,
+        sourceMaps: true,
+        jsc: {
+          target: 'es2020',
+          parser: { syntax: 'typescript', tsx: true },
+          transform: { react: { runtime: 'automatic' } },
+          externalHelpers: false,
+          loose: true,
+        },
       }),
       aliases,
     ],

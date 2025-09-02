@@ -75,8 +75,24 @@ const config: StorybookConfig = {
       }),
     ];
 
-    // config.module.rules[0].exclude = new RegExp('/node_modules/(?!(@stackblitz)).*/');
+    // Use swc-loader for TS/JS
+    config.module.rules.push({
+      test: /\.[jt]sx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'swc-loader',
+        options: {
+          jsc: {
+            target: 'es2020',
+            parser: { syntax: 'typescript', tsx: true },
+            transform: { react: { runtime: 'automatic' } },
+          },
+          sourceMaps: true,
+        },
+      },
+    });
 
+    // Keep babel-loader for @stackblitz/sdk
     config.module.rules.push({
       test: /@stackblitz\/sdk[\\/].*\.m?js$/,
       loader: 'babel-loader',

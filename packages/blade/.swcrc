@@ -1,0 +1,14 @@
+{
+  "jsc": {
+    "target": "es2020",
+    "parser": { "syntax": "typescript", "tsx": true, "decorators": false },
+    "transform": { "react": { "runtime": "automatic", "development": false, "useBuiltins": true } },
+    "externalHelpers": true,
+    "loose": true,
+    "keepClassNames": false
+  },
+  "module": { "type": "es6" },
+  "sourceMaps": true,
+  "$schema": "https://swc.rs/schema.json"
+}
+

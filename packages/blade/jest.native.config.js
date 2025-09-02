@@ -15,7 +15,17 @@ module.exports = {
   moduleFileExtensions: ['native.ts', 'native.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
   testMatch: ['**/*.test.{ts,tsx}'],
   transform: {
-    '\\.(js|ts|tsx)?$': './jest-preprocess.js',
+    '\\.(ts|tsx|js|jsx)$': [
+      '@swc/jest',
+      {
+        jsc: {
+          parser: { syntax: 'typescript', tsx: true },
+          transform: { react: { runtime: 'automatic' } },
+        },
+        module: { type: 'es6' },
+        sourceMaps: true,
+      },
+    ],
   },
   testEnvironment: 'node', // Ref: https://github.com/callstack/react-native-testing-library/issues/896#issuecomment-1190249878
   transformIgnorePatterns: [
