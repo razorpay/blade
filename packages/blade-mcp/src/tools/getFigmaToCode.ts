@@ -3,6 +3,7 @@ import dedent from 'dedent';
 import { z } from 'zod';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
+import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 
 const URLS = {
   FIGMA_TO_CODE_URL: {
@@ -48,6 +49,7 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
     const data = await response.json();
     const code = data.code;
     const componentsUsed = data.componentsUsed;
+    const base64Image = data.base64Image;
 
     if (code === undefined) {
       return handleError({
@@ -74,7 +76,7 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
         {
           type: 'text',
           text: dedent`
-          Use the following React code (generated from the Figma design) to fulfill the user's request.
+          Use the following React code (generated from the Figma design) & Figma design's screenshot to fulfill the user's request.
 
           ## React Code: 
           \`\`\`jsx
@@ -86,9 +88,15 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
             ${componentsUsedString}
           \`\`\`
           
-          Note:
-          If you encounter lint errors or need clarification on usage, feel free to fetch component documentation as needed.
+          ## Note:
+          - If you encounter lint errors or need clarification on usage, fetch component documentation as needed with \`${getBladeComponentDocsToolName}\`.
+          - Use the Figma design's screenshot to understand the design better & if any deviation fix the code accordingly.
         `,
+        },
+        {
+          type: 'image',
+          mimeType: 'image/jpeg',
+          data: base64Image,
         },
       ],
     };
