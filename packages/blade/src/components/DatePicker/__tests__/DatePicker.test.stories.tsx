@@ -705,7 +705,7 @@ DatePickerInvalidDateValidation.play = async () => {
   await sleep(200);
 
   // Should show validation error
-  await expect(queryByText('Invalid date')).toBeVisible();
+  await expect(queryByText('Please enter a valid date')).toBeVisible();
 
   // Clear and type another invalid date (invalid format)
   await userEvent.clear(input);
@@ -716,7 +716,7 @@ DatePickerInvalidDateValidation.play = async () => {
   await sleep(200);
 
   // Should show validation error
-  await expect(queryByText('Invalid date')).toBeVisible();
+  await expect(queryByText('Please enter a valid date')).toBeVisible();
 };
 
 // Test cases for range DatePicker with string label support
@@ -875,7 +875,7 @@ DatePickerMinMaxConstraintsValidation.play = async () => {
   await sleep(200);
 
   // Should show validation error
-  await expect(queryByText('Date is not allowed')).toBeVisible();
+  await expect(queryByText('Date is before the minimum allowed date')).toBeVisible();
 
   // Clear and try a date after maxDate
   await userEvent.clear(input);
@@ -887,7 +887,7 @@ DatePickerMinMaxConstraintsValidation.play = async () => {
   await sleep(200);
 
   // Should show validation error
-  await expect(queryByText('Date is not allowed')).toBeVisible();
+  await expect(queryByText('Date is after the maximum allowed date')).toBeVisible();
 
   // Clear and try a valid date within range
   await userEvent.clear(input);
@@ -899,7 +899,7 @@ DatePickerMinMaxConstraintsValidation.play = async () => {
   await sleep(200);
 
   // Should not show any error
-  await expect(queryByText('Date is not allowed')).toBeNull();
+  await expect(queryByText('Date is after the maximum allowed date')).toBeNull();
   await expect(input).toHaveValue(validDate.format('DD/MM/YYYY'));
 };
 
@@ -934,7 +934,7 @@ DatePickerExcludeDates.play = async () => {
   await sleep(200);
 
   // Should show validation error
-  await expect(queryByText('Date is not allowed')).toBeVisible();
+  await expect(queryByText('This date is not available for selection')).toBeVisible();
 
   // Clear and try a valid date (not Sunday)
   await userEvent.clear(input);
@@ -950,7 +950,7 @@ DatePickerExcludeDates.play = async () => {
   await sleep(200);
 
   // Should not show any error
-  await expect(queryByText('Date is not allowed')).toBeNull();
+  await expect(queryByText('This date is not available for selection')).toBeNull();
   await expect(input).toHaveValue(validDate.format('DD/MM/YYYY'));
 };
 
