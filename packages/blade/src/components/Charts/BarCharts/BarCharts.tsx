@@ -15,6 +15,7 @@ import type {
   ChartCategoricalEmphasis,
   ChartSequentialEmphasis,
 } from '~tokens/theme/theme';
+import isNumber from '~utils/lodashButBetter/isNumber';
 
 // Color token that allows both categorical and sequential chart colors
 export type BladeColorToken =
@@ -51,6 +52,7 @@ export type RechartsShapeProps = {
   width: number;
   height: number;
   fill: string;
+  index: number;
 };
 
 // Default categorical palette order for auto-assignment when color isn't provided
@@ -121,16 +123,8 @@ export const Bar: React.FC<BarProps> = ({
       label={label}
       // https://github.com/recharts/recharts/issues/2244#issuecomment-2288572842
       shape={(props: unknown) => {
-        const { fill, x, y, width, height, payload, index: barIndex } = props as RechartsShapeProps;
-        const isActiveIndexSame = barIndex === +activeIndex;
-        const fillOpacity = activeIndex ? (isActiveIndexSame ? 1 : 0.4) : 1;
-        console.log({
-          isActiveIndexSame,
-          barIndex,
-          activeIndex,
-        });
-        console.log('payload', payload);
-        console.log('barIndex', barIndex);
+        const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
+        const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.4) : 1;
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
         // Check if this is a vertical layout (bars going up/down)
         const isVertical = layout === 'vertical';
@@ -147,6 +141,9 @@ export const Bar: React.FC<BarProps> = ({
               rx={BAR_CHART_CORNER_RADIUS}
               ry={BAR_CHART_CORNER_RADIUS}
               fillOpacity={fillOpacity}
+              style={{
+                transition: 'fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
             />
           );
         }
@@ -160,6 +157,9 @@ export const Bar: React.FC<BarProps> = ({
             rx={BAR_CHART_CORNER_RADIUS}
             ry={BAR_CHART_CORNER_RADIUS}
             fillOpacity={fillOpacity}
+            style={{
+              transition: 'fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
           />
         );
       }}
@@ -169,11 +169,12 @@ export const Bar: React.FC<BarProps> = ({
 
 // BarChart wrapper with default margin, auto-color assignment, and max bars guard
 export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...props }) => {
-  const [activeIndex, setActiveIndex] = useState(0)<number | undefined >;
+  const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
   const processed = React.useMemo(() => {
     const kids = React.Children.toArray(children);
 
     // Count <Bar /> children
+    //TODO: Look into this logic before final code review. 
     const barChildren = kids.filter(
       (child) =>
         React.isValidElement(child) && (child.type as React.ComponentType<BarProps>) === Bar,
@@ -245,7 +246,7 @@ export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...pr
               barGap={2}
               barCategoryGap={2}
               onMouseMove={(state) => {
-                setActiveIndex(state?.activeIndex);
+                setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
               }}
             >
               {processed.children}

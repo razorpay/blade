@@ -5,6 +5,9 @@ interface BarChartContextType {
   activeIndex?: number;
 }
 
-export const BarChartContext = createContext<BarChartContextType>({ layout: 'horizontal' , activeIndex : undefined });
+export const BarChartContext = createContext<BarChartContextType>({
+  layout: 'horizontal',
+  activeIndex: undefined,
+});
 
 export const useBarChartContext = (): BarChartContextType => useContext(BarChartContext);
