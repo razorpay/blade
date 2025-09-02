@@ -22,7 +22,7 @@ export const DatePickerShouldShow: StoryFn<typeof DatePickerComponent> = (): Rea
 
 DatePickerShouldShow.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   // open
   await userEvent.click(input);
   await sleep(400);
@@ -46,7 +46,7 @@ export const DatePickerDisabled: StoryFn<typeof DatePickerComponent> = (): React
 
 DatePickerDisabled.play = async () => {
   const { getByRole } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   await userEvent.click(input);
   await sleep(400);
   await expect(onOpenChange).not.toBeCalled();
@@ -66,7 +66,7 @@ export const DatePickerMinMaxDate: StoryFn<typeof DatePickerComponent> = (): Rea
 
 DatePickerMinMaxDate.play = async () => {
   const { getByRole } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   // open
   await userEvent.click(input);
   await sleep(400);
@@ -104,7 +104,7 @@ export const DatePickerSingleSelect: StoryFn<
 
 DatePickerSingleSelect.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   // open
   await userEvent.click(input);
   await sleep(400);
@@ -133,7 +133,7 @@ export const DatePickerSingleSelectCancel: StoryFn<
 
 DatePickerSingleSelectCancel.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   // open
   await userEvent.click(input);
   await sleep(400);
@@ -178,16 +178,18 @@ DatePickerSingleSelectControlled.play = async () => {
   const { getByRole, queryByText } = within(document.body);
   // assert inputs value
   await sleep(200);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   await expect(input).toHaveValue(dayjs().add(1, 'day').format('DD/MM/YYYY'));
   // open
   await userEvent.click(input);
   await sleep(400);
   await expect(queryByText('Sun')).toBeVisible();
 
-  // The "Change Date" button has aria-hidden="true" but we can find it using getAllByText with hidden: true
-  // which specifically includes hidden elements in the search results.
-  const changeButton = queryByText('Change Date')!;
+  // close calendar first so we can access the "Change Date" button
+  await userEvent.click(input);
+  await sleep(400);
+
+  const changeButton = getByRole('button', { name: 'Change Date' });
   await userEvent.click(changeButton);
   await sleep(400);
   // open again
@@ -217,7 +219,7 @@ export const DatePickerSingleChangePicker: StoryFn<
 
 DatePickerSingleChangePicker.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   // open
   await userEvent.click(input);
   await sleep(400);
@@ -289,7 +291,7 @@ export const DatePickerRangeSelect: StoryFn<
 
 DatePickerRangeSelect.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const rangeInput = getByRole('textbox', { name: /Select a date range/i });
+  const rangeInput = getByRole('combobox', { name: /Select a date range/i });
   // open
   await userEvent.click(rangeInput);
   await sleep(400);
@@ -337,7 +339,7 @@ export const DatePickerRangeSelectControlled: StoryFn<
 
 DatePickerRangeSelectControlled.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const rangeInput = getByRole('textbox', { name: /Select a date range/i });
+  const rangeInput = getByRole('combobox', { name: /Select a date range/i });
   // assert inputs value
   await sleep(400);
   await expect(rangeInput).toHaveValue(
@@ -390,7 +392,7 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = (): React.
 
 DatePickerPresets.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const rangeInput = getByRole('textbox', { name: /Select a date range/i });
+  const rangeInput = getByRole('combobox', { name: /Select a date range/i });
   // open
   await userEvent.click(rangeInput);
   await sleep(400);
@@ -450,7 +452,7 @@ export const Localization: StoryFn<typeof DatePickerComponent> = (): React.React
 
 Localization.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   // open
   await userEvent.click(input);
   await sleep(400);
@@ -463,9 +465,11 @@ Localization.play = async () => {
   const applyButton = getByRole('button', { name: /Apply/i });
   await userEvent.click(applyButton);
   await sleep(400);
+  await userEvent.click(input);
+  await sleep(400);
 
   // click change locale
-  const changeLocaleButton = queryByText('Change locale')!;
+  const changeLocaleButton = getByRole('button', { name: 'Change locale' });
   await userEvent.click(changeLocaleButton);
   await sleep(400);
 
@@ -485,7 +489,7 @@ DatePickerSingleAutoFocus.play = async () => {
   const { getByRole, queryByText, getByLabelText } = within(document.body);
   const nextYear = dayjs().add(1, 'year').year();
   const selectedDate = `22 January ${nextYear}`;
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
   await userEvent.click(input);
   await sleep(400);
   await expect(queryByText('Sun')).toBeVisible();
@@ -531,7 +535,7 @@ export const DatePickerRangeSelectAutoFocus: StoryFn<
 
 DatePickerRangeSelectAutoFocus.play = async () => {
   const { getByRole, getByLabelText } = within(document.body);
-  const startInput = getByRole('textbox', { name: /Select a date range/i });
+  const startInput = getByRole('combobox', { name: /Select a date range/i });
   const selectedEndDate = dayjs().subtract(1, 'M').format('D MMMM YYYY');
   const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('D MMMM YYYY');
   await userEvent.click(startInput);
@@ -567,7 +571,7 @@ export const DatePickerSingleTypingAutoSelect: StoryFn<
 
 DatePickerSingleTypingAutoSelect.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
 
   // Type a valid date
   const targetDate = dayjs().add(5, 'day');
@@ -606,7 +610,7 @@ export const DatePickerRangeTypingAutoSelect: StoryFn<
 
 DatePickerRangeTypingAutoSelect.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date Range/i });
+  const input = getByRole('combobox', { name: /Select Date Range/i });
 
   // Type a valid date range
   const startDate = dayjs().add(1, 'day');
@@ -650,7 +654,7 @@ export const DatePickerSingleNoFooter: StoryFn<
 
 DatePickerSingleNoFooter.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
 
   // Open calendar
   await userEvent.click(input);
@@ -690,7 +694,7 @@ export const DatePickerInvalidDateValidation: StoryFn<
 
 DatePickerInvalidDateValidation.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
 
   // Type an invalid date (February 30th)
   await userEvent.type(input, '30/02/2024');
@@ -732,7 +736,7 @@ DatePickerRangeStringLabel.play = async () => {
   const { getByRole, queryByText } = within(document.body);
 
   // Should find input with string label
-  const input = getByRole('textbox', { name: /Select Date Range/i });
+  const input = getByRole('combobox', { name: /Select Date Range/i });
   await expect(input).toBeInTheDocument();
 
   // Should show the string label text
@@ -756,7 +760,7 @@ DatePickerRangeObjectLabel.play = async () => {
   const { getByRole, queryByText } = within(document.body);
 
   // Should find input with string label
-  const input = getByRole('textbox', { name: /Select Date Range/i });
+  const input = getByRole('combobox', { name: /Select Date Range/i });
   await expect(input).toBeInTheDocument();
 
   // Should show the object label text
@@ -779,7 +783,7 @@ export const DatePickerMonthFormat: StoryFn<
 
 DatePickerMonthFormat.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Month/i });
+  const input = getByRole('combobox', { name: /Select Month/i });
 
   // Type a month name
   await userEvent.type(input, 'December');
@@ -817,7 +821,7 @@ export const DatePickerYearFormat: StoryFn<typeof DatePickerComponent> = (): Rea
 
 DatePickerYearFormat.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Year/i });
+  const input = getByRole('combobox', { name: /Select Year/i });
 
   // Type a year
   await userEvent.type(input, '2025');
@@ -859,7 +863,7 @@ export const DatePickerMinMaxConstraintsValidation: StoryFn<
 
 DatePickerMinMaxConstraintsValidation.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
 
   // Try typing a date before minDate
   const beforeMinDate = dayjs().subtract(10, 'day');
@@ -913,7 +917,7 @@ export const DatePickerExcludeDates: StoryFn<
 
 DatePickerExcludeDates.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
 
   // Find the next Sunday
   let nextSunday = dayjs();
@@ -959,7 +963,7 @@ export const DatePickerCalendarToInput: StoryFn<
 
 DatePickerCalendarToInput.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date/i });
+  const input = getByRole('combobox', { name: /Select Date/i });
 
   // Open calendar
   await userEvent.click(input);
@@ -989,7 +993,7 @@ export const DatePickerRangeCalendarToInput: StoryFn<
 
 DatePickerRangeCalendarToInput.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  const input = getByRole('textbox', { name: /Select Date Range/i });
+  const input = getByRole('combobox', { name: /Select Date Range/i });
 
   // Open calendar
   await userEvent.click(input);
