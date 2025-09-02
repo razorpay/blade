@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { ComponentProps } from 'react';
 import {
   BarChart as RechartsBarChart,
@@ -108,9 +108,8 @@ export const Bar: React.FC<BarProps> = ({
   ...rest
 }) => {
   const { theme } = useTheme();
-  const { layout } = useBarChartContext();
+  const { layout, activeIndex } = useBarChartContext();
   const fill = color ? getIn(theme.colors, color) : undefined;
-
   return (
     <RechartsBar
       {...rest}
@@ -122,7 +121,16 @@ export const Bar: React.FC<BarProps> = ({
       label={label}
       // https://github.com/recharts/recharts/issues/2244#issuecomment-2288572842
       shape={(props: unknown) => {
-        const { fill, x, y, width, height } = props as RechartsShapeProps;
+        const { fill, x, y, width, height, payload, index: barIndex } = props as RechartsShapeProps;
+        const isActiveIndexSame = barIndex === +activeIndex;
+        const fillOpacity = activeIndex ? (isActiveIndexSame ? 1 : 0.4) : 1;
+        console.log({
+          isActiveIndexSame,
+          barIndex,
+          activeIndex,
+        });
+        console.log('payload', payload);
+        console.log('barIndex', barIndex);
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
         // Check if this is a vertical layout (bars going up/down)
         const isVertical = layout === 'vertical';
@@ -138,6 +146,7 @@ export const Bar: React.FC<BarProps> = ({
               height={height}
               rx={BAR_CHART_CORNER_RADIUS}
               ry={BAR_CHART_CORNER_RADIUS}
+              fillOpacity={fillOpacity}
             />
           );
         }
@@ -150,6 +159,7 @@ export const Bar: React.FC<BarProps> = ({
             height={height - gap}
             rx={BAR_CHART_CORNER_RADIUS}
             ry={BAR_CHART_CORNER_RADIUS}
+            fillOpacity={fillOpacity}
           />
         );
       }}
@@ -159,6 +169,7 @@ export const Bar: React.FC<BarProps> = ({
 
 // BarChart wrapper with default margin, auto-color assignment, and max bars guard
 export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...props }) => {
+  const [activeIndex, setActiveIndex] = useState(0)<number | undefined >;
   const processed = React.useMemo(() => {
     const kids = React.Children.toArray(children);
 
@@ -206,7 +217,7 @@ export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...pr
 
   return (
     <BaseBox {...metaAttribute({ name: 'bar-chart' })} width="100%" height="100%">
-      <BarChartContext.Provider value={{ layout: props.layout }}>
+      <BarChartContext.Provider value={{ layout: props.layout, activeIndex }}>
         <RechartsResponsiveContainer width="100%" height="100%">
           {processed.error ? (
             // Simple centered error message; non-intrusive layout
@@ -233,6 +244,9 @@ export const BarChart: React.FC<BarChartProps> = ({ children, maxBars = 8, ...pr
               barSize={49}
               barGap={2}
               barCategoryGap={2}
+              onMouseMove={(state) => {
+                setActiveIndex(state?.activeIndex);
+              }}
             >
               {processed.children}
             </RechartsBarChart>
