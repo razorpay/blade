@@ -640,10 +640,12 @@ DatePickerWithFooterSlot.args = {
   selectionType: 'range',
   footerSlot: (
     <Box display="flex" flexDirection="column" gap="spacing.2">
-      <Text size="medium" color="surface.text.gray.normal">
+      <Text size="small" color="surface.text.gray.normal">
         This section only displays records from the last 45 days.
       </Text>
-      <Link href="#">Link to report tab</Link>
+      <Link size="small" href="#">
+        Link to report tab
+      </Link>
     </Box>
   ),
 };
