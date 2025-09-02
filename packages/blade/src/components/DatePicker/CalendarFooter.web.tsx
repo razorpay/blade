@@ -1,10 +1,10 @@
 import React from 'react';
+import type { DateSelectionType } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import { useIsMobile } from '~utils/useIsMobile';
-import { DateSelectionType } from './types';
 
 type CalendarFooterProps = {
   onApply: () => void;
