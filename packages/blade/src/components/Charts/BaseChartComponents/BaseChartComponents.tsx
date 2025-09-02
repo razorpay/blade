@@ -130,7 +130,7 @@ export const ChartToolTip: React.FC<ChartToolTipProps> = (props) => {
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
       }}
-      cursor={{ fill: 'rgba(0, 0, 0, 0.1)', stroke: theme.colors.surface.border.gray.muted }}
+      cursor={false}
       {...props}
     />
   );
