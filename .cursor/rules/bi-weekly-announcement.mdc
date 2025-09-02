@@ -58,6 +58,7 @@ for example -
 ### 4. Analysis Process
 1. Calculate the two-week period from current date.
   you can use this git command ```  git diff HEAD@{2.weeks.ago} HEAD -- CHANGELOG.md ``` to get the diff. of changes. make sure you get all the diff from the bottom. and use these diff only to write the annoucement. 
+  make sure you run this command only on `changelog.md` for blade and blade-mcp projects
 2. **Categorize Changes**: 
    - New components/features
    - Bug fixes
@@ -103,7 +104,7 @@ Promotional Toast Flexibility: Made leading prop optional for better component c
 - **File Reading & Date Calculation**: 
   For now just use blade-mcp and blade.
   Calculate the two-week period from current date.
-  you can use this git command ```  git diff HEAD@{2.weeks.ago} HEAD -- CHANGELOG.md ``` to get the diff. of changes. make sure you get all the diff from the bottom. and use these diff only to write the annoucement. 
+  you can use this git command ```  git diff HEAD@{2.weeks.ago} HEAD -- CHANGELOG.md ``` to get the diff. of changes. make sure you get all the diff from the bottom. and use these diff only to write the annoucement. use this command only on blade and blade-mcp project
   make sure you only include changes that are done in given timeline
 - **Content Analysis**: Parse and categorize diff changes and include these only
 - **Formatting**: Follow the example given to you. it's going to be a slack message. so don't use markdown. just use txt format.
