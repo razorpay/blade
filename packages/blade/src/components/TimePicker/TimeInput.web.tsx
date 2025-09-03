@@ -6,6 +6,7 @@ import { BaseBox } from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~utils/types';
 
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { mergeRefs } from '~utils/useMergeRefs';
 
 import { useLocale } from '@react-aria/i18n';
 import { useTimeFieldState } from '@react-stately/datepicker';
@@ -16,7 +17,7 @@ import { useTheme } from '~components/BladeProvider';
 import { ClockIcon } from '~components/Icons';
 
 // Styled component for time segment with focus styles
-const StyledTimeSegment = styled(BaseBox)<{ isEditable: boolean }>`
+const StyledTimeSegment = styled.div`
   &:focus {
     background-color: #7c3aed !important;
     color: #ffffff !important;
@@ -43,10 +44,11 @@ const StyledTimeSegment = styled(BaseBox)<{ isEditable: boolean }>`
  * - Auto-sizing based on max possible value length
  * - Full keyboard navigation support
  */
-const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentProps> = (
-  { segment, state },
-  forwardedRef,
-) => {
+const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentProps> = ({
+  segment,
+  state,
+}) => {
+  console.log('qswap idk segment', segment);
   let ref = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
 
@@ -55,56 +57,12 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
   // For editable segments, use React Aria's useDateSegment
   let { segmentProps } = useDateSegment(segment, state, ref);
 
-  // Extract only the props we need from segmentProps, avoiding conflicts with BaseBox
-  const {
-    // Accessibility props for screen readers
-    'aria-label': ariaLabel, // Describes what this segment is (e.g., "hour", "minute")
-    'aria-labelledby': ariaLabelledBy, // Points to element that labels this segment
-    'aria-describedby': ariaDescribedBy, // Points to element that describes this segment
-    'aria-valuetext': ariaValueText, // Current value in human-readable format (e.g., "12 hours")
-
-    // Element behavior props
-    role, // ARIA role (usually "spinbutton" for time segments)
-    tabIndex, // Makes element focusable with Tab key (0 = tabbable, -1 = not tabbable)
-    contentEditable, // Makes the div editable so users can type directly (true/false)
-    suppressContentEditableWarning, // Suppresses React warning about contentEditable
-
-    // Event handlers from React Aria
-    onKeyDown, // Handles arrow keys, number typing, backspace, etc.
-    onFocus: ariaOnFocus, // Called when segment receives focus - rename to avoid conflict
-    onBlur: ariaOnBlur, // Called when segment loses focus
-
-    // Styling from React Aria
-    style, // Base styles for the segment
-  } = segmentProps;
-
   return (
     <StyledTimeSegment
       ref={ref}
-      as="div"
-      isEditable={segment.isEditable}
-      // Apply React Aria accessibility props manually
-      {...{
-        'aria-label': ariaLabel,
-        'aria-labelledby': ariaLabelledBy,
-        'aria-describedby': ariaDescribedBy,
-        'aria-valuetext': ariaValueText,
-        role,
-        tabIndex,
-        contentEditable,
-        suppressContentEditableWarning,
-        onKeyDown,
-        onFocus: (e: any) => {
-          setIsFocused(true);
-          ariaOnFocus?.(e); // Call React Aria's focus handler
-        },
-        onBlur: (e: any) => {
-          setIsFocused(false);
-          ariaOnBlur?.(e); // Call React Aria's blur handler
-        },
-      }}
+      {...segmentProps}
       style={{
-        ...style,
+        ...segmentProps.style,
         minWidth: segment.maxValue != null ? String(segment.maxValue).length + 'ch' : undefined,
         paddingLeft: '0.125rem', // px-0.5
         paddingRight: '0.125rem',
@@ -113,7 +71,14 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
         textAlign: 'right', // text-right
         outline: 'none', // outline-none
         borderRadius: '0.125rem', // rounded-sm
-        // color: segment.isEditable ? '#1F2937' : '#6B7280',
+      }}
+      onFocus={(e: any) => {
+        setIsFocused(true);
+        segmentProps.onFocus?.(e); // Call React Aria's focus handler
+      }}
+      onBlur={(e: any) => {
+        setIsFocused(false);
+        segmentProps.onBlur?.(e); // Call React Aria's blur handler
       }}
     >
       {/* Always reserve space for the placeholder, to prevent layout shift when editing. */}
@@ -209,7 +174,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     onChange: onTimeValueChange, // Use TimeValue onChange directly
   });
 
-  let timeFieldRef = useRef();
+  let timeFieldRef = useRef<HTMLDivElement>(null);
   let { fieldProps } = useTimeField(
     {
       label,
@@ -223,8 +188,9 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
   };
 
   return (
-    <BaseBox {...fieldProps} ref={inputRef || ref}>
+    <BaseBox {...fieldProps} ref={mergeRefs(timeFieldRef, ref as any)}>
       <BaseInput
+        ref={inputRef}
         as="custom"
         id="timepicker"
         label={label || 'Select Time'}

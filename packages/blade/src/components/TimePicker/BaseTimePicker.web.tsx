@@ -108,7 +108,6 @@ const _BaseTimePicker = ({
       }
     },
     referenceRef,
-    crossAxisOffset: -28,
   });
   // Mobile: Blur input when bottom sheet opens
   // React.useEffect(() => {
