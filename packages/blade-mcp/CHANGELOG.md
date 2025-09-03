@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.4.4
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
 ## 1.4.3
 
 ### Patch Changes
