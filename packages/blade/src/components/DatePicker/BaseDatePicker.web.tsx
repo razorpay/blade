@@ -46,7 +46,8 @@ import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupC
 // Calendar dimensions for consistent layout
 const CALENDAR_HEIGHTS = {
   // Height includes: Calendar grid (6 weeks * ~44px) + header (~48px) + footer actions (~64px) + padding
-  DAY_PICKER_WITH_FOOTER: '447px',
+  // moved to auto since we are exposing footer slot
+  DAY_PICKER_WITH_FOOTER: 'auto',
 } as const;
 
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
@@ -84,6 +85,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   labelSuffix,
   labelTrailing,
   showFooterActions = true,
+  footer,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -383,6 +385,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
               isButtonDisabled={applyButtonDisabled}
               onApply={handleApply}
               onCancel={handleCancel}
+              footer={footer}
+              selectionType={_selectionType}
             />
           ))}
       </BaseBox>
@@ -516,7 +520,12 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 </BottomSheetBody>
                 {showFooterActions && (
                   <BottomSheetFooter>
-                    <CalendarFooter onCancel={handleCancel} onApply={handleApply} />
+                    <CalendarFooter
+                      onCancel={handleCancel}
+                      onApply={handleApply}
+                      footer={footer}
+                      selectionType={_selectionType}
+                    />
                   </BottomSheetFooter>
                 )}
               </BottomSheet>
