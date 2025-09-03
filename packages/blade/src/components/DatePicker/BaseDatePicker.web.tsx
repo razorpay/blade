@@ -85,7 +85,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   labelSuffix,
   labelTrailing,
   showFooterActions = true,
-  footerSlot,
+  footer,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -385,7 +385,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
               isButtonDisabled={applyButtonDisabled}
               onApply={handleApply}
               onCancel={handleCancel}
-              footerSlot={footerSlot}
+              footer={footer}
               selectionType={_selectionType}
             />
           ))}
@@ -523,7 +523,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                     <CalendarFooter
                       onCancel={handleCancel}
                       onApply={handleApply}
-                      footerSlot={footerSlot}
+                      footer={footer}
                       selectionType={_selectionType}
                     />
                   </BottomSheetFooter>

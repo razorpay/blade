@@ -10,20 +10,20 @@ type CalendarFooterProps = {
   onApply: () => void;
   onCancel: () => void;
   isButtonDisabled?: boolean;
-  footerSlot?: React.ReactElement;
+  footer?: React.ReactElement;
   selectionType?: DateSelectionType;
 };
 const CalendarFooter = ({
   onApply,
   onCancel,
   isButtonDisabled,
-  footerSlot,
+  footer,
   selectionType,
 }: CalendarFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
 
   const isSingleSelectionOrMobile = isMobile || selectionType === 'single';
-  const footerSlotMaxWidth = React.useMemo(() => {
+  const footerMaxWidth = React.useMemo(() => {
     if (isMobile) return '100%';
     return selectionType === 'single' ? '280px' : '400px';
   }, [isMobile, selectionType]);
@@ -35,10 +35,10 @@ const CalendarFooter = ({
       <BaseBox
         display="flex"
         flexDirection={isSingleSelectionOrMobile ? 'column' : 'row'}
-        gap={isSingleSelectionOrMobile ? 'spacing.5' : 'spacing.3'}
+        gap={isSingleSelectionOrMobile ? 'spacing.5' : 'spacing.6'}
         justifyContent="space-between"
       >
-        {footerSlot && <BaseBox maxWidth={footerSlotMaxWidth}>{footerSlot}</BaseBox>}
+        {footer ? <BaseBox maxWidth={footerMaxWidth}>{footer}</BaseBox> : null}
         <BaseBox width={{ base: '100%', m: 'auto' }} marginLeft="auto">
           <BaseBox display="flex" flexDirection="row" gap={isMobile ? 'spacing.5' : 'spacing.3'}>
             <Button

@@ -73,10 +73,10 @@ type DatePickerProps = InputProps &
      */
     showFooterActions?: boolean;
     /**
-     * Custom React element to render in the footer above the action buttons
+     * Custom React element to render in the footer above/side of action buttons
      * Can be used to add custom content like informational text, links, or other components
      */
-    footerSlot?: React.ReactElement;
+    footer?: React.ReactElement;
   };
 ```
 

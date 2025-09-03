@@ -120,10 +120,10 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
   showFooterActions?: boolean;
 
   /**
-   * Custom React element to render in the footer above the action buttons
+   * Custom React element to render in the footer above/side of action buttons
    * Can be used to add custom content like informational text, links, or other components
    */
-  footerSlot?: React.ReactElement;
+  footer?: React.ReactElement;
 
   /**
    * Sets the date format to be displayed in the input field
@@ -420,7 +420,7 @@ const SizeVariantsExample = () => {
           isOpen={isSingleOpen}
           onOpenChange={({ isOpen }) => setIsSingleOpen(isOpen)}
           showFooterActions={false}
-          footerSlot={
+          footer={
             <Text size="small" color="surface.text.gray.muted">
               This section only displays records from the last 45 days. For earlier data, please
               download a report from the Reports section.
