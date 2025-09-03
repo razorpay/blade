@@ -122,7 +122,7 @@ const sendAnalytics = ({
     const analytics = new Analytics({ writeKey: process.env.BLADE_SEGMENT_KEY ?? '' });
     // Get or create machine ID
     const oldUserId = getUniqueIdentifier();
-    const userId = getUserName()
+    const userId = getUserName();
     analytics.track({
       userId,
       event: eventName,
