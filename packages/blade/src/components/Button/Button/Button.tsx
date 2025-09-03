@@ -16,6 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import './Button.css';
 
 type ButtonCommonProps = {
   /**

@@ -132,6 +132,12 @@ export default defineConfig(() => {
             preserveModules: true,
             preserveModulesRoot: 'src',
             entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,
+            assetFileNames: (assetInfo) => {
+              if (assetInfo.name?.endsWith('.css')) {
+                return 'css/[name][extname]';
+              }
+              return '[name][extname]';
+            },
           },
         },
       },
@@ -176,6 +182,12 @@ export default defineConfig(() => {
             preserveModules: true,
             preserveModulesRoot: 'src',
             entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,
+            assetFileNames: (assetInfo) => {
+              if (assetInfo.name?.endsWith('.css')) {
+                return 'css/[name][extname]';
+              }
+              return '[name][extname]';
+            },
           },
         },
       },
@@ -207,6 +219,12 @@ export default defineConfig(() => {
             preserveModules: true,
             preserveModulesRoot: 'src',
             entryFileNames: (chunkInfo) => `${chunkInfo.name.replace(/\.(svelte|ts)$/, '')}.js`,
+            assetFileNames: (assetInfo) => {
+              if (assetInfo.name?.endsWith('.css')) {
+                return 'css/[name][extname]';
+              }
+              return '[name][extname]';
+            },
           },
         },
       },
