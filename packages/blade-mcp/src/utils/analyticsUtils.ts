@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import * as Sentry from '@sentry/node';
 import { Analytics } from '@segment/analytics-node';
 import { getPackageJSONVersion } from './generalUtils.js';
+import { getUserName } from './getUserName.js';
 
 let cachedMachineId: string | null = null;
 
@@ -120,16 +121,22 @@ const sendAnalytics = ({
   try {
     const analytics = new Analytics({ writeKey: process.env.BLADE_SEGMENT_KEY ?? '' });
     // Get or create machine ID
-    const machineId = getUniqueIdentifier();
+    const oldUserId = getUniqueIdentifier();
+    const userId = getUserName()
     analytics.track({
-      userId: machineId,
+      userId,
       event: eventName,
       properties: {
         osType: os.type(),
         nodeVersion: process.version,
         serverVersion: getPackageJSONVersion(),
+        userName: userId,
         ...properties,
       },
+    });
+    analytics.alias({
+      userId,
+      previousId: oldUserId,
     });
   } catch (error: unknown) {
     Sentry.captureException(error);

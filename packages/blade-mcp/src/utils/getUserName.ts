@@ -1,6 +1,8 @@
-const getUserName = (currentProjectRootDirectory: string): string => {
-  const userName = currentProjectRootDirectory?.split('/')?.[2] ?? 'unknown';
-  return userName;
+const os = require('os');
+
+const getUserName = (): string => {
+  const username = os.userInfo().username;
+  return username;
 };
 
 export { getUserName };

@@ -7,7 +7,7 @@ import {
   analyticsToolCallEventName,
   PATTERNS_KNOWLEDGEBASE_DIRECTORY,
 } from '../utils/tokens.js';
-import { getUserName } from '../utils/getUserName.js';
+
 import { getBladeDocsList, hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
@@ -84,7 +84,7 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
         toolName: getBladePatternDocsToolName,
         patternsList,
         rootDirectoryName: basename(currentProjectRootDirectory),
-        userName: getUserName(currentProjectRootDirectory),
+
       },
     });
 
