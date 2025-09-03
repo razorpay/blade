@@ -641,7 +641,8 @@ DatePickerWithFooter.args = {
   footer: (
     <Box display="flex" flexDirection="column" gap="spacing.2">
       <Text size="small" color="surface.text.gray.normal">
-        This section only displays records from the last 45 days.
+        This section only displays records from the last 45 days. This section only displays records
+        from the last 45 days.
       </Text>
       <Link size="small" href="#">
         Link to report tab

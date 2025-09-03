@@ -25,7 +25,7 @@ const CalendarFooter = ({
   const isSingleSelectionOrMobile = isMobile || selectionType === 'single';
   const footerMaxWidth = React.useMemo(() => {
     if (isMobile) return '100%';
-    return selectionType === 'single' ? '280px' : '400px';
+    return selectionType === 'single' ? '280px' : '390px';
   }, [isMobile, selectionType]);
 
   return (
