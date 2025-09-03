@@ -13,6 +13,7 @@ import { useTimeField } from '@react-aria/datepicker';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import { useDateSegment } from '@react-aria/datepicker';
 import { useTheme } from '~components/BladeProvider';
+import { ClockIcon } from '~components/Icons';
 
 // Styled component for time segment with focus styles
 const StyledTimeSegment = styled(BaseBox)<{ isEditable: boolean }>`
@@ -166,82 +167,105 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
  *   { type: "dayPeriod", text: "PM", isEditable: true }    // Editable AM/PM
  * ]
  */
-const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInputProps> = ({
-  time,
-  onChange,
-  label,
-  helpText,
-  errorText,
-  successText,
-
-  validationState,
-  isDisabled,
-  isRequired,
-  necessityIndicator,
-  autoFocus,
-  name,
-  placeholder,
-  size = 'medium',
-  labelPosition,
-  labelSuffix,
-  labelTrailing,
-  timeFormat,
-  testID,
-
-  ...props
-}) =>
-  //ref,
+const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInputProps> = (
   {
-    let { locale } = useLocale();
-    let state = useTimeFieldState({
+    time,
+    timeValue,
+    onChange,
+    onTimeValueChange,
+    label,
+    helpText,
+    errorText,
+    successText,
+    validationState,
+    isDisabled,
+    isRequired,
+    necessityIndicator,
+    autoFocus,
+    name,
+    placeholder,
+    size = 'medium',
+    labelPosition,
+    labelSuffix,
+    labelTrailing,
+    timeFormat,
+    testID,
+    inputRef,
+    referenceProps,
+    onInputClick,
+    createCompleteTime,
+    ...props
+  },
+  ref,
+) => {
+  const currentTimeFormat = timeFormat ?? '12h';
+  let { locale } = useLocale();
+
+  let state = useTimeFieldState({
+    label,
+    locale,
+    hourCycle: currentTimeFormat === '12h' ? 12 : 24,
+    value: timeValue as any, // Use TimeValue directly from hook
+    onChange: onTimeValueChange, // Use TimeValue onChange directly
+  });
+
+  let timeFieldRef = useRef();
+  let { fieldProps } = useTimeField(
+    {
       label,
-      locale,
-      hourCycle: timeFormat === '12h' ? 12 : 24,
-    });
+    },
+    state,
+    timeFieldRef as any,
+  );
 
-    let ref = useRef();
-    let { fieldProps } = useTimeField({ label }, state, ref as any);
-
-    return (
-      <BaseBox {...fieldProps} ref={ref as any}>
-        <BaseInput
-          as="custom"
-          id="timepicker"
-          label={label || 'Select Time'}
-          // onChange={(e) => onChange?.(e.target.value)}
-          helpText={helpText}
-          errorText={errorText}
-          successText={successText}
-          validationState={validationState}
-          isDisabled={isDisabled}
-          isRequired={isRequired}
-          necessityIndicator={necessityIndicator}
-          autoFocus={autoFocus}
-          name={name}
-          // placeholder={placeholder}
-          size={size}
-          labelPosition={labelPosition}
-          labelSuffix={labelSuffix}
-          labelTrailing={labelTrailing}
-          {...props}
-        >
-          {/* Filter out bi-directional text control characters (⁦⁩) that React Aria adds for RTL support
-              but aren't needed for our UI - they appear as extra literal segments in some environments */}
-          {state.segments
-            .filter(
-              (segment) =>
-                segment.isEditable ||
-                (segment.type === 'literal' && segment.text !== '⁦' && segment.text !== '⁩'),
-            )
-            .map((segment, i) => {
-              return <TimeSegment key={i} segment={segment} state={state} />;
-            })}
-        </BaseInput>
-      </BaseBox>
-    );
+  const handleInputClick = () => {
+    onInputClick?.();
   };
 
-const TimeInput = assignWithoutSideEffects(_TimeInput, {
+  return (
+    <BaseBox {...fieldProps} ref={inputRef || ref}>
+      <BaseInput
+        as="custom"
+        id="timepicker"
+        label={label || 'Select Time'}
+        helpText={helpText}
+        errorText={errorText}
+        successText={successText}
+        validationState={validationState}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
+        necessityIndicator={necessityIndicator}
+        autoFocus={autoFocus}
+        name={name}
+        size={size}
+        labelPosition={labelPosition}
+        labelSuffix={labelSuffix}
+        labelTrailing={labelTrailing}
+        leadingIcon={ClockIcon}
+        onClick={handleInputClick}
+        popupId={referenceProps['aria-controls']}
+        isPopupExpanded={referenceProps['aria-expanded']}
+        hasPopup={referenceProps['aria-haspopup']}
+        {...props}
+        {...referenceProps}
+      >
+        {/* Filter out bi-directional text control characters (⁦⁩) that React Aria adds for RTL support
+            but aren't needed for our UI - they appear as extra literal segments in some environments */}
+        {state.segments
+          .filter(
+            (segment) =>
+              segment.isEditable ||
+              (segment.type === 'literal' && segment.text !== '⁦' && segment.text !== '⁩'),
+          )
+          .map((segment, i) => {
+            return <TimeSegment key={i} segment={segment} state={state} />;
+          })}
+      </BaseInput>
+    </BaseBox>
+  );
+};
+
+const TimeInput = assignWithoutSideEffects(React.forwardRef(_TimeInput), {
   displayName: 'TimeInput',
   componentId: 'TimeInput',
 });

@@ -60,9 +60,16 @@ type TimePickerCommonInputProps = {
 type TimePickerInputProps = TimePickerCommonInputProps & {
   setControlledValue?: (time: Date | null) => void;
   time?: Date | null;
+  timeValue?: any; // TimeValue from @internationalized/date
   testID?: string;
   onChange?: (time: Date | null) => void;
+  onTimeValueChange?: (timeValue: any) => void; // TimeValue from @internationalized/date
   timeFormat?: TimeFormat;
+  ref?: React.Ref<any>;
+  inputRef?: React.Ref<any>;
+  referenceProps?: any;
+  onInputClick?: () => void;
+  createCompleteTime?: () => Date | null;
 };
 
 type TimePickerSelectorProps = {

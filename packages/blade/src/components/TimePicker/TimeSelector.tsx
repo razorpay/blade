@@ -22,6 +22,7 @@ import { useI18nContext } from '@razorpay/i18nify-react';
 import { MantineProvider } from '@mantine/core';
 import type { TimePickerSelectorProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useTimePickerContextOptional } from './TimePickerContext';
 
 // Type definitions based on decisions document
 type TimePickerValue = {
@@ -48,6 +49,23 @@ const timeStringToDate = (timeString: string): Date | null => {
   return date;
 };
 
+// Helper function to convert 24-hour to 12-hour format
+const convertTo12Hour = (hour24: number): { hour: number; period: 'AM' | 'PM' } => {
+  if (hour24 === 0) return { hour: 12, period: 'AM' };
+  if (hour24 < 12) return { hour: hour24, period: 'AM' };
+  if (hour24 === 12) return { hour: 12, period: 'PM' };
+  return { hour: hour24 - 12, period: 'PM' };
+};
+
+// Helper function to convert 12-hour to 24-hour format
+const convertTo24Hour = (hour12: number, period: 'AM' | 'PM'): number => {
+  if (period === 'AM') {
+    return hour12 === 12 ? 0 : hour12;
+  } else {
+    return hour12 === 12 ? 12 : hour12 + 12;
+  }
+};
+
 const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerSelectorProps> = ({
   time: initialValue,
   defaultValue,
@@ -61,7 +79,17 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
   showFooterActions,
   onApply,
 }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(isOpen);
+  const timePickerContext = useTimePickerContextOptional();
+
+  // Use context values if available, fallback to props
+  const currentTime = timePickerContext?.selectedTime ?? initialValue;
+  const currentTimeFormat = timePickerContext?.timeFormat ?? timeFormat ?? '12h';
+  const currentMinuteStep = timePickerContext?.minuteStep ?? minuteStep ?? 1;
+  const currentIsOpen = timePickerContext?.isOpen ?? isOpen;
+  const currentShowFooterActions =
+    timePickerContext?.showFooterActions ?? showFooterActions ?? true;
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(currentIsOpen);
   const [selectedHour, setSelectedHour] = useState(null);
   const [selectedMinute, setSelectedMinute] = useState(0);
   const [selectedPeriod, setSelectedPeriod] = useState('AM');
@@ -72,8 +100,13 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
   const [isInputFocused, setIsInputFocused] = useState(false);
   const { i18nState } = useI18nContext();
 
+  // Sync context isOpen state with local state
+  useEffect(() => {
+    setIsDropdownOpen(currentIsOpen);
+  }, [currentIsOpen]);
+
   // Check if using 12-hour format
-  const is12HourFormat = timeFormat === '12h';
+  const is12HourFormat = currentTimeFormat === '12h';
 
   // Generate options based on format
   const hours = is12HourFormat
@@ -86,11 +119,24 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
   const minuteListRef = useRef([]);
   const periodListRef = useRef([]);
 
-  // Parse initial value or defaultValue
+  // Parse initial value or defaultValue and sync with context
   useEffect(() => {
-    const dateValue = initialValue || defaultValue;
-    const timeString = dateToTimeString(dateValue);
-  }, [initialValue, defaultValue, hours, periods]);
+    const dateValue = currentTime || defaultValue;
+    if (dateValue) {
+      const hour = dateValue.getHours();
+      const minute = dateValue.getMinutes();
+
+      if (is12HourFormat) {
+        const converted = convertTo12Hour(hour);
+        setSelectedHour(converted.hour);
+        setSelectedPeriod(converted.period);
+      } else {
+        setSelectedHour(hour);
+        setSelectedPeriod('AM'); // Not used in 24h format
+      }
+      setSelectedMinute(minute);
+    }
+  }, [currentTime, defaultValue, is12HourFormat]);
 
   // Auto-scroll to selected items when dropdown opens
   useEffect(() => {
@@ -306,7 +352,7 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
       onChange({ value: newDate });
 
       // If showActions is false, auto-apply the selection
-      if (!showActions) {
+      if (!currentShowFooterActions) {
         onApply({ value: newDate });
         setIsDropdownOpen(false);
         setIsInputFocused(false);
@@ -319,17 +365,28 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
     setSelectedMinute(newMinute);
     setMinuteActiveIndex(null);
 
-    // Use formatTimeValue to ensure proper format for TimeInput
+    // Update time value via context or onChange
     setTimeout(() => {
       const newTimeValue = formatTimeValue();
       const newDate = timeStringToDate(newTimeValue);
-      onChange({ value: newDate });
 
-      // If showActions is false, auto-apply the selection
-      if (!showActions) {
-        onApply({ value: newDate });
-        setIsDropdownOpen(false);
-        setIsInputFocused(false);
+      // Use context if available, otherwise use prop callback
+      if (timePickerContext) {
+        timePickerContext.setSelectedTime(newDate);
+
+        // Handle auto-apply for context
+        if (!currentShowFooterActions) {
+          timePickerContext.onApply();
+        }
+      } else {
+        onChange?.({ value: newDate });
+
+        // If showActions is false, auto-apply the selection
+        if (!showFooterActions) {
+          onApply?.({ value: newDate });
+          setIsDropdownOpen(false);
+          setIsInputFocused(false);
+        }
       }
     }, 0);
   };
@@ -339,17 +396,28 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
     setSelectedPeriod(newPeriod);
     setPeriodActiveIndex(null);
 
-    // Use formatTimeValue to ensure proper format for TimeInput
+    // Update time value via context or onChange
     setTimeout(() => {
       const newTimeValue = formatTimeValue();
       const newDate = timeStringToDate(newTimeValue);
-      onChange({ value: newDate });
 
-      // If showActions is false, auto-apply the selection
-      if (!showActions) {
-        onApply({ value: newDate });
-        setIsDropdownOpen(false);
-        setIsInputFocused(false);
+      // Use context if available, otherwise use prop callback
+      if (timePickerContext) {
+        timePickerContext.setSelectedTime(newDate);
+
+        // Handle auto-apply for context
+        if (!currentShowFooterActions) {
+          timePickerContext.onApply();
+        }
+      } else {
+        onChange?.({ value: newDate });
+
+        // If showActions is false, auto-apply the selection
+        if (!showFooterActions) {
+          onApply?.({ value: newDate });
+          setIsDropdownOpen(false);
+          setIsInputFocused(false);
+        }
       }
     }, 0);
   };
@@ -357,25 +425,38 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
   const handleSave = () => {
     const timeValue = formatTimeValue(); // Returns 24h format for TimeInput
     const newDate = timeStringToDate(timeValue);
-    onChange({ value: newDate });
-    onSave({ value: newDate });
-    setIsDropdownOpen(false);
-    setIsInputFocused(false);
+
+    if (timePickerContext) {
+      timePickerContext.setSelectedTime(newDate);
+      timePickerContext.onApply();
+    } else {
+      onChange?.({ value: newDate });
+      onApply?.({ value: newDate });
+      setIsDropdownOpen(false);
+      setIsInputFocused(false);
+    }
   };
 
   const handleApply = () => {
-    const timeValue = formatTimeValue(); // Returns 24h format for TimeInput
-    const newDate = timeStringToDate(timeValue);
-    onChange({ value: newDate });
-    onApply({ value: newDate });
-    setIsDropdownOpen(false);
-    setIsInputFocused(false);
+    if (timePickerContext) {
+      timePickerContext.onApply();
+    } else {
+      const timeValue = formatTimeValue(); // Returns 24h format for TimeInput
+      const newDate = timeStringToDate(timeValue);
+      onChange?.({ value: newDate });
+      onApply?.({ value: newDate });
+      setIsDropdownOpen(false);
+      setIsInputFocused(false);
+    }
   };
 
   const handleCancel = () => {
-    onCancel();
-    setIsDropdownOpen(false);
-    setIsInputFocused(false);
+    if (timePickerContext) {
+      timePickerContext.onCancel();
+    } else {
+      setIsDropdownOpen(false);
+      setIsInputFocused(false);
+    }
   };
 
   const handleKeyDown = (event) => {
@@ -424,7 +505,7 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
       }
     } else if (event.key === 'Enter') {
       event.preventDefault();
-      if (showActions) {
+      if (currentShowFooterActions) {
         // When actions are shown, Enter selects the value in the active column
         if (activeColumn === 0 && hourActiveIndex !== null) {
           handleHourSelect(hourActiveIndex);
@@ -802,8 +883,8 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
               </BaseBox>
             </FloatingFocusManager>
 
-            {/* Action Buttons - Only show when showActions is true */}
-            {showActions && (
+            {/* Action Buttons - Only show when showFooterActions is true */}
+            {currentShowFooterActions && (
               <Box
                 padding="spacing.3"
                 display="flex"
@@ -812,9 +893,9 @@ const _TimeSelector: React.ForwardRefRenderFunction<BladeElementRef, TimePickerS
                 borderColor="surface.border.gray.muted"
               >
                 <Button variant="tertiary" onClick={handleCancel}>
-                  {cancelButtonText}
+                  Cancel
                 </Button>
-                <Button onClick={handleSave}>{saveButtonText}</Button>
+                <Button onClick={handleSave}>Apply</Button>
               </Box>
             )}
           </BaseBox>
