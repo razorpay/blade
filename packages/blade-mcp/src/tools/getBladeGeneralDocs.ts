@@ -81,7 +81,6 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
         toolName: getBladeGeneralDocsToolName,
         topicsList,
         rootDirectoryName: basename(currentProjectRootDirectory),
-
       },
     });
 

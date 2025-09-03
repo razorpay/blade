@@ -54,7 +54,6 @@ const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProje
         toolName: createNewBladeProjectToolName,
         projectRootDirectory: currentProjectRootDirectory,
         rootDirectoryName: basename(currentProjectRootDirectory),
-
       },
     });
 

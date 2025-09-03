@@ -74,7 +74,6 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
         toolName: getBladeComponentDocsToolName,
         componentsList,
         rootDirectoryName: basename(currentProjectRootDirectory),
-
       },
     });
 

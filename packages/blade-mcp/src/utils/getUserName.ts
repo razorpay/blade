@@ -1,4 +1,4 @@
-const os = require('os');
+import os from 'os';
 
 const getUserName = (): string => {
   const username = os.userInfo().username;

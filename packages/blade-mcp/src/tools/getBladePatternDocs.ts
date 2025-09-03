@@ -84,7 +84,6 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
         toolName: getBladePatternDocsToolName,
         patternsList,
         rootDirectoryName: basename(currentProjectRootDirectory),
-
       },
     });
 
