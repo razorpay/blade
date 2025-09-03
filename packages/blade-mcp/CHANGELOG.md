@@ -1,5 +1,23 @@
 # @razorpay/blade-mcp
 
+## 1.4.4
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
+## 1.4.3
+
+### Patch Changes
+
+- ea090ffc9: fix(blade-mcp): change index to get correct username in mcp
+
+## 1.4.2
+
+### Patch Changes
+
+- 64b723a1b: feat(blade-mcp): add userName of user in mcp analytics
+
 ## 1.4.1
 
 ### Patch Changes

@@ -1,5 +1,29 @@
 # @razorpay/blade
 
+## 12.49.6
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
+## 12.49.5
+
+### Patch Changes
+
+- 77a78ddd7: chore: update babel version
+
+## 12.49.4
+
+### Patch Changes
+
+- 8132ef089: feat(datepicker): added partial validation
+
+## 12.49.3
+
+### Patch Changes
+
+- 37fbe24ee: fix: wrong layout position in case of bottom sheet
+
 ## 12.49.2
 
 ### Patch Changes

@@ -8,6 +8,7 @@ import {
 } from '../utils/tokens.js';
 import { hasOutDatedRules, getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+import { getUserName } from '../utils/getUserName.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
@@ -73,6 +74,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
         toolName: getBladeComponentDocsToolName,
         componentsList,
         rootDirectoryName: basename(currentProjectRootDirectory),
+        userName: getUserName(currentProjectRootDirectory),
       },
     });
 
