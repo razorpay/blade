@@ -761,33 +761,35 @@ const FocusRingWrapper = styled(BaseBox)<{
   currentInteraction: ActionStates;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   className: string;
-}>(({ theme, currentInteraction, isTableInputCell }) => ({
+  shouldAddLimitedFocus: boolean;
+}>(({ theme, currentInteraction, isTableInputCell, shouldAddLimitedFocus }) => ({
   borderRadius: makeBorderSize(
     isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
   ),
   width: '100%',
-  '&:focus-within': !isTableInputCell
-    ? {
-        ...getFocusRingStyles({
-          theme,
-        }),
-        transitionDuration: castWebType(
-          makeMotionTime(
-            getIn(
-              theme.motion.duration,
-              baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-                .duration,
+  '&:focus-within':
+    !isTableInputCell && (shouldAddLimitedFocus ? currentInteraction === 'focus' : true)
+      ? {
+          ...getFocusRingStyles({
+            theme,
+          }),
+          transitionDuration: castWebType(
+            makeMotionTime(
+              getIn(
+                theme.motion.duration,
+                baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+                  .duration,
+              ),
             ),
           ),
-        ),
-        transitionTimingFunction: castWebType(
-          theme.motion.easing[
-            baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-              .easing
-          ],
-        ),
-      }
-    : {},
+          transitionTimingFunction: castWebType(
+            theme.motion.easing[
+              baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+                .easing
+            ],
+          ),
+        }
+      : {},
 }));
 
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
@@ -962,6 +964,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   }
 
   const isTextArea = as === 'textarea';
+  const hasLeadingDropdown = Boolean(leadingDropDown);
+  const hasTrailingDropdown = Boolean(trailingDropDown);
+
+  const shouldAddLimitedFocus = hasLeadingDropdown || hasTrailingDropdown;
   return (
     <BaseBox
       ref={getOuterMotionRef({ _motionMeta, ref })}
@@ -1004,6 +1010,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           currentInteraction={currentInteraction}
           isTableInputCell={isTableInputCell}
           className="focus-ring-wrapper"
+          shouldAddLimitedFocus={shouldAddLimitedFocus}
         >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
@@ -1061,7 +1068,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               size={_size}
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
-              hasLeadingDropDown={Boolean(leadingDropDown)}
             >
               <StyledBaseInput
                 as={as}

@@ -31,6 +31,7 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { DropdownOverlay } from '~components/Dropdown';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
 import { isIconComponent } from '~utils/isIconComponent';
+import { useDatePickerContext } from '~components/DatePicker/DatePickerContext';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -243,6 +244,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
   const [isInputFocussed, setIsInputFocussed] = useState(autoFocus ?? false);
+  const context = useDatePickerContext();
+  const isDatePickerBodyOpen = context?.isDatePickerBodyOpen;
 
   if (__DEV__) {
     if (format) {
@@ -298,11 +301,14 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   const textInputWrapperRef = useRef<ContainerElementType | null>(null);
 
   useEffect(() => {
-    if (isTrailingDropDownOpen && isLeadingDropDownOpen) {
+    if (
+      (isTrailingDropDownOpen && isLeadingDropDownOpen) ||
+      (isDatePickerBodyOpen && isLeadingDropDownOpen)
+    ) {
       setIsLeadingDropDownOpen(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isTrailingDropDownOpen]);
+  }, [isTrailingDropDownOpen, isDatePickerBodyOpen]);
 
   useEffect(() => {
     if (isLeadingDropDownOpen && isTrailingDropDownOpen) {

@@ -231,6 +231,7 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     excludeDate?: (date: Date) => boolean;
     minDate?: Date;
     maxDate?: Date;
+    effectiveSelectionType?: 'single' | 'range' | null;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -256,6 +257,7 @@ type DateInputProps = BaseInputProps & {
   excludeDate?: (date: Date) => boolean;
   minDate?: Date;
   maxDate?: Date;
+  effectiveSelectionType?: 'single' | 'range' | null;
 };
 
 export type {
