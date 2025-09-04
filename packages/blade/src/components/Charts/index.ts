@@ -2,3 +2,4 @@
 export * from './LineCharts';
 export * from './BaseChartComponents';
 export * from './BarCharts';
+export * from './DonutChart';
