@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.4.5
+
+### Patch Changes
+
+- c1b2b96b7: chore(analytics): replace userId with OS-based userName
+
 ## 1.4.4
 
 ### Patch Changes
