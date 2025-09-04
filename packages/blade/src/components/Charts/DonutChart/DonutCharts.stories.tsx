@@ -129,13 +129,7 @@ export const ExtraLargeRadiusDonutChart: StoryFn<typeof DonutChart> = () => {
 export const CustomActiveShapeDonutChart: StoryFn<typeof DonutChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <DonutChart
-        data={chartData}
-        dataKey="value"
-        nameKey="name"
-        radius="large"
-        activeShape={<CustomActiveShape />}
-      >
+      <DonutChart data={chartData} dataKey="value" nameKey="name" radius="large">
         <Legend />
       </DonutChart>
     </div>
