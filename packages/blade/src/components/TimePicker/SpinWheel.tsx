@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Box } from '~components/Box';
+import styled from 'styled-components';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 
@@ -12,6 +12,22 @@ type SpinWheelProps = {
   label?: string;
   width?: string;
 };
+
+// Styled scroll container with scroll snap
+const StyledScrollContainer = styled(BaseBox)`
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+`;
+
+// Styled scroll item with scroll snap
+const StyledScrollItem = styled(BaseBox)`
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+`;
 
 /**
  * Reusable SpinWheel component for time selection
@@ -30,6 +46,7 @@ const SpinWheel = ({
 }: SpinWheelProps): React.ReactElement => {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Auto-scroll to selected item when dropdown opens or value changes
   useEffect(() => {
@@ -42,6 +59,15 @@ const SpinWheel = ({
     }
   }, [selectedValue, values]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
+
   // Scroll event handler to update selection based on center position
   const handleScroll = () => {
     if (!containerRef.current || !itemRefs.current.length) return;
@@ -52,6 +78,7 @@ const SpinWheel = ({
     let closestIndex = 0;
     let closestDistance = Infinity;
 
+    // Only check actual value items (not padding items)
     values.forEach((_, index) => {
       const item = itemRefs.current[index];
       if (item) {
@@ -66,8 +93,17 @@ const SpinWheel = ({
       }
     });
 
-    // Update active index and trigger value change
+    // Update active index immediately for visual feedback
     onActiveIndexChange?.(closestIndex);
+
+    // Debounce the actual value change to avoid jerky scrolling
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      onValueChange(values[closestIndex], closestIndex);
+    }, 150); // 150ms delay after scroll stops
   };
 
   const handleItemClick = (value: string | number, index: number) => {
@@ -76,7 +112,7 @@ const SpinWheel = ({
   };
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" width={width}>
+    <BaseBox display="flex" flexDirection="column" alignItems="center" style={{ width }}>
       {label && (
         <Text size="small" weight="medium" color="surface.text.gray.muted" marginBottom="spacing.2">
           {label}
@@ -110,27 +146,21 @@ const SpinWheel = ({
         />
 
         {/* Scrollable container */}
-        <BaseBox
+        <StyledScrollContainer
           ref={containerRef as any}
           height="100%"
           overflowY="auto"
-          paddingY="spacing.10" // Extra padding for smooth scrolling
           onScroll={handleScroll}
           role="listbox"
-          css={{
-            scrollSnapType: 'y mandatory',
-            scrollBehavior: 'smooth',
-            '&::-webkit-scrollbar': {
-              display: 'none',
-            },
-            scrollbarWidth: 'none',
-          }}
         >
+          {/* Invisible spacer at top - allows first item to scroll to center */}
+          <div style={{ height: '120px', flexShrink: 0 }} />
+
           {values.map((value, index) => {
             const isSelected = activeIndex === index || String(value) === String(selectedValue);
 
             return (
-              <BaseBox
+              <StyledScrollItem
                 key={`${value}-${index}`}
                 ref={(el) => (itemRefs.current[index] = el as any)}
                 height="40px"
@@ -138,11 +168,7 @@ const SpinWheel = ({
                 alignItems="center"
                 justifyContent="center"
                 onClick={() => handleItemClick(value, index)}
-                css={{
-                  scrollSnapAlign: 'center',
-                  scrollSnapStop: 'always',
-                  cursor: 'pointer',
-                }}
+                style={{ cursor: 'pointer' }}
               >
                 <Text
                   size="medium"
@@ -152,12 +178,15 @@ const SpinWheel = ({
                 >
                   {String(value).padStart(2, '0')}
                 </Text>
-              </BaseBox>
+              </StyledScrollItem>
             );
           })}
-        </BaseBox>
+
+          {/* Invisible spacer at bottom - allows last item to scroll to center */}
+          <div style={{ height: '120px', flexShrink: 0 }} />
+        </StyledScrollContainer>
       </BaseBox>
-    </Box>
+    </BaseBox>
   );
 };
 

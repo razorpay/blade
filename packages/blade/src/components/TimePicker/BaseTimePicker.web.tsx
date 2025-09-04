@@ -9,14 +9,13 @@ import { useTimePickerState } from './useTimePickerState';
 import { TimePickerContent } from './TimePickerContent';
 import { useTimePickerPopup } from './useTimePickerPopup';
 import { useIsMobile } from '~utils/useIsMobile';
-// Bottom sheet imports for mobile (currently commented out)
-// import {
-//   BottomSheet,
-//   BottomSheetBody,
-//   BottomSheetFooter,
-//   BottomSheetHeader,
-// } from '~components/BottomSheet';
-// import { TimePickerFooter } from './TimePickerFooter';
+import {
+  BottomSheet,
+  BottomSheetBody,
+  BottomSheetFooter,
+  BottomSheetHeader,
+} from '~components/BottomSheet';
+import { TimePickerFooter } from './TimePickerFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -110,16 +109,16 @@ const _BaseTimePicker = ({
     referenceRef,
   });
   // Mobile: Blur input when bottom sheet opens
-  // React.useEffect(() => {
-  //   if (isMobile && isOpen) {
-  //     const refEl = (refs.reference?.current as unknown) as { blur?: () => void } | null;
-  //     if (refEl?.blur) {
-  //       setTimeout(() => {
-  //         refEl.blur?.();
-  //       }, 0);
-  //     }
-  //   }
-  // }, [isMobile, isOpen, refs.reference]);
+  React.useEffect(() => {
+    if (isMobile && isOpen) {
+      const refEl = (refs.reference?.current as unknown) as { blur?: () => void } | null;
+      if (refEl?.blur) {
+        setTimeout(() => {
+          refEl.blur?.();
+        }, 0);
+      }
+    }
+  }, [isMobile, isOpen, refs.reference]);
 
   console.log('qswap0 base', selectedHour, selectedMinute, selectedPeriod);
   console.log('qswap0.1 base', selectedTimeValue);
@@ -201,19 +200,30 @@ const _BaseTimePicker = ({
       )}
 
       {/* Mobile Bottom Sheet */}
-      {/* {isMobile && (
-          <BottomSheet snapPoints={[0.6, 0.6, 1]} isOpen={isDropdownOpen} onDismiss={handleCancel}>
-            <BottomSheetHeader title="Select Time" />
-            <BottomSheetBody>
-              <TimePickerContent />
-            </BottomSheetBody>
-            {showActions && (
-              <BottomSheetFooter>
-                <TimePickerFooter onApply={handleApply} onCancel={handleCancel} />
-              </BottomSheetFooter>
-            )}
-          </BottomSheet>
-        )} */}
+      {isMobile && (
+        <BottomSheet snapPoints={[0.6, 0.6, 1]} isOpen={isDropdownOpen} onDismiss={handleCancel}>
+          <BottomSheetHeader title="Select Time" />
+          <BottomSheetBody>
+            <TimePickerContent
+              selectedTime={selectedTime}
+              setSelectedTime={setSelectedTime}
+              selectedHour={selectedHour}
+              selectedMinute={selectedMinute}
+              selectedPeriod={selectedPeriod}
+              timeFormat={timeFormat}
+              minuteStep={minuteStep}
+              showFooterActions={showActions}
+              onApply={handleApply}
+              onCancel={handleCancel}
+            />
+          </BottomSheetBody>
+          {showActions && (
+            <BottomSheetFooter>
+              <TimePickerFooter onApply={handleApply} onCancel={handleCancel} />
+            </BottomSheetFooter>
+          )}
+        </BottomSheet>
+      )}
     </BaseBox>
   );
 };
