@@ -25,6 +25,7 @@ export const Basic: StoryFn<typeof TimePicker> = () => {
     <Box padding="spacing.5" maxWidth="400px">
       <TimePicker
         label="Select Time"
+        size="medium"
         value={time}
         onChange={({ value }) => {
           setTime(value);

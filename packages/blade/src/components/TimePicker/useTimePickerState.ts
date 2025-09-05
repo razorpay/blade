@@ -1,5 +1,5 @@
 import React from 'react';
-import type { TimeFormat, MinuteStep, TimePickerValue } from './types';
+import type { TimeFormat, TimePickerValue } from './types';
 import { useControllableState } from '~utils/useControllable';
 import { Time } from '@internationalized/date';
 
@@ -16,7 +16,6 @@ type UseTimePickerStateProps = {
 
   // Configuration
   timeFormat?: TimeFormat;
-  minuteStep?: MinuteStep;
   showFooterActions?: boolean;
 
   // Apply callback
@@ -35,7 +34,6 @@ export const useTimePickerState = ({
   defaultIsOpen = false,
   onOpenChange,
   timeFormat = '12h',
-  minuteStep = 1,
   showFooterActions = true,
   onApply,
 }: UseTimePickerStateProps) => {
@@ -193,11 +191,6 @@ export const useTimePickerState = ({
     selectedHour,
     selectedMinute,
     selectedPeriod,
-
-    // Configuration
-    timeFormat,
-    minuteStep,
-    showFooterActions,
 
     // Actions
     onApply: handleApply,

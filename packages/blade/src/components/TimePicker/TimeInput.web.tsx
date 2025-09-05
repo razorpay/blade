@@ -16,10 +16,21 @@ import { useDateSegment } from '@react-aria/datepicker';
 import { useTheme } from '~components/BladeProvider';
 import { ClockIcon } from '~components/Icons';
 
-// Styled component for time segment with focus styles
-const StyledTimeSegment = styled.div`
+const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+  box-sizing: content-box;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  outline: none;
+  border-radius: 0.125rem;
+
+  min-width: ${(props: any) =>
+    props.segmentMaxValue != null ? String(props.segmentMaxValue).length + 'ch' : 'auto'};
+
   &:focus {
-    background-color: #7c3aed !important;
+    background-color: ${(props: any) =>
+      props.theme.colors.interactive.background.primary.highlighted} !important;
     color: #ffffff !important;
   }
 `;
@@ -48,51 +59,47 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
   segment,
   state,
 }) => {
-  console.log('qswap idk segment', segment);
+  /* Filter out bi-directional text control characters (⁦⁩) that React Aria adds for RTL support
+            but aren't needed for our UI - they appear as extra literal segments in some environments */
+
+  if ((segment.type === 'literal' && segment.text === '⁦') || segment.text === '⁩') {
+    return null;
+  }
+
   let ref = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
-
   const [isFocused, setIsFocused] = useState(false);
-
-  // For editable segments, use React Aria's useDateSegment
+  const { theme } = useTheme();
   let { segmentProps } = useDateSegment(segment, state, ref);
 
   return (
     <StyledTimeSegment
       ref={ref}
-      {...segmentProps}
-      style={{
-        ...segmentProps.style,
-        minWidth: segment.maxValue != null ? String(segment.maxValue).length + 'ch' : undefined,
-        paddingLeft: '0.125rem', // px-0.5
-        paddingRight: '0.125rem',
-        boxSizing: 'content-box', // box-content
-        fontVariantNumeric: 'tabular-nums', // tabular-nums
-        textAlign: 'right', // text-right
-        outline: 'none', // outline-none
-        borderRadius: '0.125rem', // rounded-sm
-      }}
+      segmentMaxValue={segment.maxValue}
+      theme={theme}
+      style={segmentProps.style}
       onFocus={(e: any) => {
         setIsFocused(true);
-        segmentProps.onFocus?.(e); // Call React Aria's focus handler
+        segmentProps.onFocus?.(e);
       }}
       onBlur={(e: any) => {
         setIsFocused(false);
-        segmentProps.onBlur?.(e); // Call React Aria's blur handler
+        segmentProps.onBlur?.(e);
       }}
+      {...segmentProps}
     >
       {/* Always reserve space for the placeholder, to prevent layout shift when editing. */}
       <BaseBox
         as="span"
+        display="block"
+        width="100%"
+        textAlign="center"
+        visibility={segment.isPlaceholder ? undefined : 'hidden'}
+        height={segment.isPlaceholder ? 'auto' : 'spacing.0'}
+        pointerEvents="none"
         style={{
-          display: 'block', // block
-          width: '100%', // w-full
-          textAlign: 'center', // text-center
-          color: isFocused ? '#ffffff' : theme.colors.surface.text.gray.disabled,
-          // Show placeholder when segment is empty, hide when it has value
-          visibility: segment.isPlaceholder ? undefined : 'hidden',
-          height: segment.isPlaceholder ? 'auto' : 0,
-          pointerEvents: 'none',
+          color: isFocused
+            ? theme.colors.surface.text.gray.normal
+            : theme.colors.surface.text.gray.disabled,
         }}
       >
         {segment.placeholder} {/* Placeholder text like "––" or "am" */}
@@ -121,16 +128,7 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
  * - Tab between segments for navigation
  * - Full keyboard accessibility support
  *
- * SEGMENTS STRUCTURE:
- * [
- *   { type: "literal", text: "⁦", isEditable: false },     // Formatting
- *   { type: "hour", text: "12", isEditable: true },        // Editable hour
- *   { type: "literal", text: ":", isEditable: false },     // Separator
- *   { type: "minute", text: "30", isEditable: true },      // Editable minute
- *   { type: "literal", text: "⁩", isEditable: false },     // Formatting
- *   { type: "literal", text: " ", isEditable: false },     // Space
- *   { type: "dayPeriod", text: "PM", isEditable: true }    // Editable AM/PM
- * ]
+
  */
 const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInputProps> = (
   {
@@ -215,17 +213,9 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         {...props}
         {...referenceProps}
       >
-        {/* Filter out bi-directional text control characters (⁦⁩) that React Aria adds for RTL support
-            but aren't needed for our UI - they appear as extra literal segments in some environments */}
-        {state.segments
-          .filter(
-            (segment) =>
-              segment.isEditable ||
-              (segment.type === 'literal' && segment.text !== '⁦' && segment.text !== '⁩'),
-          )
-          .map((segment, i) => {
-            return <TimeSegment key={i} segment={segment} state={state} />;
-          })}
+        {state.segments.map((segment, i) => {
+          return <TimeSegment key={i} segment={segment} state={state} />;
+        })}
       </BaseInput>
     </BaseBox>
   );

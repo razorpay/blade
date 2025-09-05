@@ -7,20 +7,14 @@ import { TimeInput } from './TimeInput.web';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTimePickerState } from './useTimePickerState';
 import { TimePickerContent } from './TimePickerContent';
-import { useTimePickerPopup } from './useTimePickerPopup';
 import { useIsMobile } from '~utils/useIsMobile';
-import {
-  BottomSheet,
-  BottomSheetBody,
-  BottomSheetFooter,
-  BottomSheetHeader,
-} from '~components/BottomSheet';
-import { TimePickerFooter } from './TimePickerFooter';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
 import { componentZIndices } from '~utils/componentZIndices';
+import { usePopup } from '~components/DatePicker/usePopup';
 
 const _BaseTimePicker = ({
   value,
@@ -62,7 +56,6 @@ const _BaseTimePicker = ({
   const { theme } = useTheme();
   const titleId = useId('timepicker-title');
 
-  // Use the hook instead of context
   const {
     selectedTime,
     setSelectedTime,
@@ -75,7 +68,6 @@ const _BaseTimePicker = ({
     setIsOpen: setIsDropdownOpen,
     onApply: handleApply,
     onCancel: handleCancel,
-    showFooterActions: showActions,
     createCompleteTime,
   } = useTimePickerState({
     value,
@@ -85,7 +77,6 @@ const _BaseTimePicker = ({
     defaultIsOpen,
     onOpenChange,
     timeFormat,
-    minuteStep,
     showFooterActions,
     onApply,
   });
@@ -98,10 +89,12 @@ const _BaseTimePicker = ({
     animationStyles,
     getReferenceProps,
     getFloatingProps,
-  } = useTimePickerPopup({
-    isOpen: !isMobile ? isDropdownOpen : false, // Don't use floating on mobile
-    onOpenChange: (open, _, reason) => {
-      setIsDropdownOpen(open);
+  } = usePopup({
+    enabled: !isMobile,
+    placement: 'bottom-start',
+    open: isDropdownOpen,
+    onOpenChange: (isOpen, _, reason) => {
+      setIsDropdownOpen(isOpen);
       if (reason === 'escape-key') {
         handleCancel();
       }
@@ -120,9 +113,21 @@ const _BaseTimePicker = ({
     }
   }, [isMobile, isOpen, refs.reference]);
 
-  console.log('qswap0 base', selectedHour, selectedMinute, selectedPeriod);
-  console.log('qswap0.1 base', selectedTimeValue);
-  console.log('qswap0.2 base', selectedTime);
+  const content = (
+    <TimePickerContent
+      selectedTime={selectedTime}
+      setSelectedTime={setSelectedTime}
+      selectedHour={selectedHour}
+      selectedMinute={selectedMinute}
+      selectedPeriod={selectedPeriod}
+      timeFormat={timeFormat}
+      minuteStep={minuteStep}
+      showFooterActions={showFooterActions}
+      onApply={handleApply}
+      onCancel={handleCancel}
+    />
+  );
+
   return (
     <BaseBox width="100%">
       <TimeInput
@@ -154,7 +159,6 @@ const _BaseTimePicker = ({
         {...props}
       />
 
-      {/* Desktop Floating Popup */}
       {!isMobile && isMounted && (
         <FloatingPortal>
           <FloatingFocusManager
@@ -171,28 +175,18 @@ const _BaseTimePicker = ({
               {...makeAccessible({ labelledBy: titleId })}
             >
               <BaseBox
-                borderColor="surface.border.gray.subtle"
+                backgroundColor="popup.background.subtle"
+                borderColor="popup.border.subtle"
                 borderWidth="thin"
                 borderStyle="solid"
-                borderRadius="medium"
+                borderRadius="large"
                 overflow="hidden"
                 style={{
                   ...animationStyles,
-                  boxShadow: `${theme.elevation.lowRaised}`,
+                  boxShadow: `${theme.elevation.midRaised}`,
                 }}
               >
-                <TimePickerContent
-                  selectedTime={selectedTime}
-                  setSelectedTime={setSelectedTime}
-                  selectedHour={selectedHour}
-                  selectedMinute={selectedMinute}
-                  selectedPeriod={selectedPeriod}
-                  timeFormat={timeFormat}
-                  minuteStep={minuteStep}
-                  showFooterActions={showActions}
-                  onApply={handleApply}
-                  onCancel={handleCancel}
-                />
+                {content}
               </BaseBox>
             </BaseBox>
           </FloatingFocusManager>
@@ -203,25 +197,7 @@ const _BaseTimePicker = ({
       {isMobile && (
         <BottomSheet snapPoints={[0.6, 0.6, 1]} isOpen={isDropdownOpen} onDismiss={handleCancel}>
           <BottomSheetHeader title="Select Time" />
-          <BottomSheetBody>
-            <TimePickerContent
-              selectedTime={selectedTime}
-              setSelectedTime={setSelectedTime}
-              selectedHour={selectedHour}
-              selectedMinute={selectedMinute}
-              selectedPeriod={selectedPeriod}
-              timeFormat={timeFormat}
-              minuteStep={minuteStep}
-              showFooterActions={showActions}
-              onApply={handleApply}
-              onCancel={handleCancel}
-            />
-          </BottomSheetBody>
-          {showActions && (
-            <BottomSheetFooter>
-              <TimePickerFooter onApply={handleApply} onCancel={handleCancel} />
-            </BottomSheetFooter>
-          )}
+          <BottomSheetBody>{content}</BottomSheetBody>
         </BottomSheet>
       )}
     </BaseBox>

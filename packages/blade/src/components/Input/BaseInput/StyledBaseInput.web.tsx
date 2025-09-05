@@ -161,6 +161,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         }
         handleOnClick?.({ name, value: event as any });
       }}
+      name={name}
       $size={$size}
       valueComponentType={valueComponentType}
       tabIndex={tabIndex}

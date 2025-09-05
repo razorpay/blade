@@ -22,23 +22,23 @@ const TimePickerFooter = ({
   const isMobile = useIsMobile();
 
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.3">
-      {!isMobile && <Divider />}
+    <Box display="flex" flexDirection="column">
+      <Divider />
       <Box
-        width={isMobile ? '100%' : 'auto'}
-        marginLeft="auto"
+        width="100%"
         display="flex"
         flexDirection="row"
-        gap={isMobile ? 'spacing.3' : 'spacing.2'}
+        gap={isMobile ? 'spacing.5' : 'spacing.3'}
+        padding={isMobile ? 'spacing.5' : 'spacing.4'}
       >
-        <Button isFullWidth={isMobile} variant="tertiary" size="medium" onClick={onCancel}>
+        <Button isFullWidth={true} variant="tertiary" size="xsmall" onClick={onCancel}>
           Cancel
         </Button>
         <Button
           isDisabled={isApplyDisabled}
-          isFullWidth={isMobile}
+          isFullWidth={true}
           variant="primary"
-          size="medium"
+          size="xsmall"
           onClick={onApply}
         >
           Apply

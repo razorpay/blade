@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+import { useIsMobile } from '~utils/useIsMobile';
 
 type SpinWheelProps = {
   values: (string | number)[];
@@ -41,12 +42,11 @@ const SpinWheel = ({
   onValueChange,
   activeIndex,
   onActiveIndexChange,
-  label,
-  width = '60px',
 }: SpinWheelProps): React.ReactElement => {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isMobile = useIsMobile();
 
   // Auto-scroll to selected item when dropdown opens or value changes
   useEffect(() => {
@@ -112,35 +112,24 @@ const SpinWheel = ({
   };
 
   return (
-    <BaseBox display="flex" flexDirection="column" alignItems="center" style={{ width }}>
-      {label && (
-        <Text size="small" weight="medium" color="surface.text.gray.muted" marginBottom="spacing.2">
-          {label}
-        </Text>
-      )}
-
+    <BaseBox
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      width={isMobile ? '82px' : '66px'}
+      height="172px"
+    >
       {/* Selection indicator */}
-      <BaseBox
-        position="relative"
-        width="100%"
-        height="200px"
-        overflow="hidden"
-        borderRadius="medium"
-        backgroundColor="surface.background.gray.subtle"
-      >
+      <BaseBox position="relative" width="100%" overflow="hidden">
         {/* Center highlight area */}
         <BaseBox
           position="absolute"
           top="50%"
           left="spacing.0"
           right="spacing.0"
-          height="40px"
+          height="36px"
           transform="translateY(-50%)"
-          backgroundColor="surface.background.primary.subtle"
-          borderColor="surface.border.primary.muted"
-          borderWidth="thin"
-          borderStyle="solid"
-          borderRadius="small"
+          backgroundColor="interactive.background.gray.faded"
           pointerEvents="none"
           zIndex={1}
         />
@@ -154,7 +143,7 @@ const SpinWheel = ({
           role="listbox"
         >
           {/* Invisible spacer at top - allows first item to scroll to center */}
-          <div style={{ height: '120px', flexShrink: 0 }} />
+          <BaseBox height="120px" flexShrink={0} />
 
           {values.map((value, index) => {
             const isSelected = activeIndex === index || String(value) === String(selectedValue);
@@ -163,7 +152,7 @@ const SpinWheel = ({
               <StyledScrollItem
                 key={`${value}-${index}`}
                 ref={(el) => (itemRefs.current[index] = el as any)}
-                height="40px"
+                height="34px"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
@@ -171,9 +160,12 @@ const SpinWheel = ({
                 style={{ cursor: 'pointer' }}
               >
                 <Text
-                  size="medium"
+                  variant="body"
+                  size={isSelected ? 'large' : 'medium'}
                   weight={isSelected ? 'semibold' : 'regular'}
-                  color={isSelected ? 'surface.text.gray.normal' : 'surface.text.gray.muted'}
+                  color={
+                    isSelected ? 'interactive.text.gray.normal' : 'interactive.text.gray.muted'
+                  }
                   textAlign="center"
                 >
                   {String(value).padStart(2, '0')}
@@ -183,7 +175,7 @@ const SpinWheel = ({
           })}
 
           {/* Invisible spacer at bottom - allows last item to scroll to center */}
-          <div style={{ height: '120px', flexShrink: 0 }} />
+          <BaseBox height="120px" flexShrink={0} />
         </StyledScrollContainer>
       </BaseBox>
     </BaseBox>
