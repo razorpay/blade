@@ -1,0 +1,121 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Bi-Weekly Announcement Rule
+
+## Purpose
+Generate bi-weekly announcement posts for Blade Design System updates by analyzing changelog entries from the past two weeks.
+
+## Instructions
+
+### 1. Data Collection
+- **Source**: Use ```git diff``` command to get the changes we shipped in last 2 week or n weeks.
+- **Scope**: Include   `packages/blade/` and `packages/blade-mcp/`
+- **Time Period**: Calculate the date range for the past two weeks from the current date
+
+### 2. Content Structure
+Follow this exact format for the announcement:
+
+```
+:blade: Design System Enhancement Updates [Start Date - End Date]
+:sparkles: Highlights
+
+ New Components & Features:
+[Feature 1]: [Brief description]
+[Feature 2]: [Brief description]
+[Feature 3]: [Brief description]
+for example - 
+QuickFilter: Introduced the QuickFilter component.
+
+
+
+Version Updates - 
+version - component: description 
+
+for example - 
+12.14.0 - QuickFilter: Add QuickFilters component
+
+
+:github: Check out Blade Releases for the Full Changelog
+```
+
+### 3. Content Guidelines
+
+#### Highlights Section
+- **New Components**: List any completely new components added
+- **Major Features**: Include significant feature additions to existing components
+- **Big Fixes**: Include important bug fixes that significantly improve functionality
+- **Breaking Changes**: Highlight any breaking changes with clear explanations
+
+#### Version Updates Section
+- **Chronological Order**: List versions from newest to oldest
+- **Component Focus**: Group changes by component name
+- **Clear Descriptions**: Use concise but descriptive language
+- **Consistent Format**: Follow the pattern `[Component]: [description]`
+
+### 4. Analysis Process
+1. Calculate the two-week period from current date.
+  you can use this git command ```  git diff HEAD@{2.weeks.ago} HEAD -- CHANGELOG.md ``` to get the diff. of changes. make sure you get all the diff from the bottom. and use these diff only to write the annoucement. 
+  make sure you run this command only on `changelog.md` for blade and blade-mcp projects
+2. **Categorize Changes**: 
+   - New components/features
+   - Bug fixes
+   - Improvements
+   - Breaking changes
+3. **Prioritize Highlights**: Select the most impactful changes for the highlights section
+4. **Format Entries**: Ensure consistent formatting and clear descriptions
+
+### 5. Quality Checks
+- **Accuracy**: Verify all version numbers and dates are correct
+- **Completeness**: Ensure all significant changes are included
+- **Clarity**: Use clear, non-technical language when possible
+- **Consistency**: Maintain consistent formatting throughout
+
+### 6. Example Output Format
+```
+:blade:  Design System Enhancement Updates [8th Aug - 22nd Aug]
+:sparkles: Highlights -
+:happy-cat:  New Components & Features:-
+Filled Icons: Introduced 49+ new filled icons.
+DatePicker: Improved UX with editable input, built-in formatting, leading preset dropdown, optional action buttons, and a simplified single-field for range selection.
+Carousel: Introduced a new side navigation button style side-overlap
+:nail_care: Bug Fixes-
+DatePicker UI: Fixed arrow to hyphen conversion in range input field.
+PhoneNumberInput: Reverted virtualization in mobile to maintain stability.
+Bottom Sheet Height Logic: Fixed height calculation logic for more accurate component sizing.
+ListView Filter Enhancement: Improved horizontal scroll for filters on desktop with gradient overlay removal.
+Promotional Toast Flexibility: Made leading prop optional for better component customization.
+:chart_with_upwards_trend: Version Updates -
+12.49.0 - Icons: We've added a new  49+ filled icons to give you more design options.
+12.48.0 - DatePicker: You can now use formatted input, a preset dropdown, and single-field range selection for more flexible date picking.
+12.47.1 - Bottom Sheet: We've updated the height calculation logic of bottom sheet heights to ensure a more consistent and predictable user  & developer experience.
+12.47.0 - Carousel: A new navigation button position has been added that allows the buttons to overlap with the carousel for a cleaner look.
+12.46.2 - ListView: We've improved the desktop experience for ListView by adding horizontal scrolling for filters and removing the distracting gradient overlay for a cleaner, more focused view.
+12.46.1 - Need more flexibility with your notifications? The leading prop for promotional toasts is now optional, giving you more control over your designs.
+:mcp: Blade MCP Updates -
+1.4.1 - Blade MCP: add constraints to component knowledgebase.
+:github: Check out Blade Releases for the Full Changelog
+
+```
+
+### 7. Tools to Use
+- **File Reading & Date Calculation**: 
+  For now just use blade-mcp and blade.
+  Calculate the two-week period from current date.
+  you can use this git command ```  git diff HEAD@{2.weeks.ago} HEAD -- CHANGELOG.md ``` to get the diff. of changes. make sure you get all the diff from the bottom. and use these diff only to write the annoucement. use this command only on blade and blade-mcp project
+  make sure you only include changes that are done in given timeline
+- **Content Analysis**: Parse and categorize diff changes and include these only
+- **Formatting**: Follow the example given to you. it's going to be a slack message. so don't use markdown. just use txt format.
+- **Release link** Add link for github release in https://github.com/razorpay/blade/releases at the end of message
+- **Final File Creation** Create a file `announcement.md` in main repo. so it would be easy to copy paste for developers.
+
+### 8. Special Considerations
+- **Breaking Changes**: Always highlight breaking changes prominently
+- **Performance Improvements**: Include significant performance enhancements
+- **Accessibility**: Highlight accessibility improvements
+- **Developer Experience**: Include DX improvements and new APIs
+- **Regarding Output** So onces you are done writing the announcement , make a txt file and write announcement in it. 
+```
+
