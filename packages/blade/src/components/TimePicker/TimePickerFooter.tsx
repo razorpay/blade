@@ -3,12 +3,7 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
 import { useIsMobile } from '~utils/useIsMobile';
-
-type TimePickerFooterProps = {
-  onApply: () => void;
-  onCancel: () => void;
-  isApplyDisabled?: boolean;
-};
+import type { TimePickerFooterProps } from './types';
 
 /**
  * Footer component for TimePicker with Apply/Cancel buttons
@@ -49,4 +44,3 @@ const TimePickerFooter = ({
 };
 
 export { TimePickerFooter };
-export type { TimePickerFooterProps };

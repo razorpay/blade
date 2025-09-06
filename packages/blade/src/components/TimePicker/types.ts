@@ -227,52 +227,71 @@ type TimeColumnProps = {
 };
 
 /**
- * Props for time picker footer actions (Apply/Cancel buttons)
+ * Props for useTimePickerState hook
  */
-type TimePickerFooterProps = {
+type UseTimePickerStateProps = {
+  // Controlled/uncontrolled time value
+  value?: Date | null;
+  defaultValue?: Date | null;
+  onChange?: (timeValue: TimePickerValue) => void;
+
+  // Controlled/uncontrolled open state
+  isOpen?: boolean;
+  defaultIsOpen?: boolean;
+  onOpenChange?: (state: { isOpen: boolean }) => void;
+
+  // Configuration
+  timeFormat?: TimeFormat;
+  showFooterActions?: boolean;
+
+  // Apply callback
+  onApply?: (timeValue: TimePickerValue) => void;
+};
+
+/**
+ * Props for TimePicker content component
+ */
+type TimePickerContentProps = {
+  selectedTime: Date | null;
+  setSelectedTime: (time: Date | null) => void;
+  selectedHour: number;
+  selectedMinute: number;
+  selectedPeriod: string;
+  timeFormat: TimeFormat;
+  minuteStep: MinuteStep;
+  showFooterActions: boolean;
   onApply: () => void;
   onCancel: () => void;
 };
 
 /**
- * Context value for TimePicker state management
- * Shared across internal components for coordinated behavior
+ * Props for SpinWheel component
  */
-type TimePickerContextValue = {
-  // Core state
-  selectedTime: Date | null;
-  setSelectedTime: (time: Date | null) => void;
-  timeFormat: TimeFormat;
-  minuteStep: MinuteStep;
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  showFooterActions: boolean;
+type SpinWheelProps = {
+  values: (string | number)[];
+  selectedValue: string | number;
+  onValueChange: (value: string | number, index: number) => void;
+  activeIndex?: number | null;
+  onActiveIndexChange?: (index: number | null) => void;
+  label?: string;
+  width?: string;
+  /**
+   * Optional display value for visual positioning when different from selectedValue.
+   *
+   * Used for minute steps: when user types "03" but minuteStep is 15,
+   * selectedValue remains "03" (preserved for form data) while
+   * displayValue becomes "00" (nearest step for visual positioning).
+   */
+  displayValue?: string | number;
+};
 
-  // Actions
+/**
+ * Props for time picker footer actions (Apply/Cancel buttons)
+ */
+type TimePickerFooterProps = {
   onApply: () => void;
   onCancel: () => void;
-
-  // Time formatting and parsing utilities
-  formatTimeForDisplay: (time: Date | null) => string;
-  parseTimeFromInput: (timeString: string) => Date | null;
-
-  // Column values generation based on format and step
-  getHourValues: () => string[];
-  getMinuteValues: () => string[];
-  getPeriodValues: () => string[];
-
-  // Current time parts for individual column management
-  currentHour: string;
-  currentMinute: string;
-  currentPeriod: string;
-
-  // Update individual time parts (triggers recomposition)
-  updateHour: (hour: string) => void;
-  updateMinute: (minute: string) => void;
-  updatePeriod: (period: string) => void;
-
-  // Validation utilities
-  validateTime: (time: Date | null) => { isValid: boolean; error?: string };
+  isApplyDisabled?: boolean;
 };
 
 export type {
@@ -283,9 +302,11 @@ export type {
   TimePickerSelectorProps,
   TimePickerInputProps,
   TimePickerCommonInputProps,
-  TimePickerContextValue,
   TimeColumnProps,
   TimePickerFooterProps,
   TimePart,
   TimeSegmentProps,
+  UseTimePickerStateProps,
+  TimePickerContentProps,
+  SpinWheelProps,
 };

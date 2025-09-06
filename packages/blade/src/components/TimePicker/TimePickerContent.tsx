@@ -1,12 +1,13 @@
 import React from 'react';
 import { SpinWheel } from './SpinWheel';
 import { TimePickerFooter } from './TimePickerFooter';
-import type { TimeFormat, MinuteStep } from './types';
+import type { TimePickerContentProps } from './types';
 import { useIsMobile } from '~utils/useIsMobile';
 import { Divider } from '~components/Divider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import styled from 'styled-components';
+import { getNearestStepValue } from './utils';
 
 /**
  * Helper function for time conversion
@@ -17,19 +18,6 @@ const convertTo24Hour = (hour12: number, period: string): number => {
   } else {
     return hour12 === 12 ? 12 : hour12 + 12;
   }
-};
-
-type TimePickerContentProps = {
-  selectedTime: Date | null;
-  setSelectedTime: (time: Date | null) => void;
-  selectedHour: number;
-  selectedMinute: number;
-  selectedPeriod: string;
-  timeFormat: TimeFormat;
-  minuteStep: MinuteStep;
-  showFooterActions: boolean;
-  onApply: () => void;
-  onCancel: () => void;
 };
 
 // Styled container with fade overlay
@@ -90,7 +78,9 @@ const TimePickerContent = ({
   const minuteValues = Array.from({ length: 60 / minuteStep }, (_, i) => i * minuteStep);
   const periodValues: ('AM' | 'PM')[] = ['AM', 'PM'];
 
-  // No longer need sync effect since we use values directly from hook
+  // Calculate display value for minute wheel positioning when minuteStep > 1
+  // This allows typed values like "03" to position at nearest step "00" while preserving actual value
+  const displayMinute = minuteStep > 1 ? getNearestStepValue(currentMinute, minuteStep) : undefined;
 
   // Create Date object from selection parameters
   const createDateFromSelection = (hour?: number, minute?: number, period?: string): Date => {
@@ -158,6 +148,7 @@ const TimePickerContent = ({
           label="Min"
           values={minuteValues}
           selectedValue={currentMinute}
+          displayValue={displayMinute}
           onValueChange={handleMinuteChange}
         />
         <Divider orientation="vertical" />

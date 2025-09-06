@@ -3,16 +3,7 @@ import styled from 'styled-components';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
-
-type SpinWheelProps = {
-  values: (string | number)[];
-  selectedValue: string | number;
-  onValueChange: (value: string | number, index: number) => void;
-  activeIndex?: number | null;
-  onActiveIndexChange?: (index: number | null) => void;
-  label?: string;
-  width?: string;
-};
+import type { SpinWheelProps } from './types';
 
 // Styled scroll container with scroll snap
 const StyledScrollContainer = styled(BaseBox)`
@@ -42,22 +33,28 @@ const SpinWheel = ({
   onValueChange,
   activeIndex,
   onActiveIndexChange,
+  displayValue,
 }: SpinWheelProps): React.ReactElement => {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
 
-  // Auto-scroll to selected item when dropdown opens or value changes
+  // Use displayValue for visual positioning, selectedValue for actual data
+  // This supports minute steps: user types "03", displayValue shows "00" for positioning,
+  // but selectedValue preserves "03" for form submission
+  const positioningValue = displayValue ?? selectedValue;
+
+  // Auto-scroll to positioned item when dropdown opens or positioning value changes
   useEffect(() => {
-    const selectedIndex = values.findIndex((val) => String(val) === String(selectedValue));
-    if (selectedIndex >= 0 && itemRefs.current[selectedIndex]) {
-      itemRefs.current[selectedIndex]?.scrollIntoView({
+    const positionIndex = values.findIndex((val) => String(val) === String(positioningValue));
+    if (positionIndex >= 0 && itemRefs.current[positionIndex]) {
+      itemRefs.current[positionIndex]?.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
       });
     }
-  }, [selectedValue, values]);
+  }, [positioningValue, values]);
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -107,6 +104,8 @@ const SpinWheel = ({
   };
 
   const handleItemClick = (value: string | number, index: number) => {
+    // Always allow explicit user selection via click, even when displayValue is present
+    // This lets users choose to override their typed value with a step value if desired
     onValueChange(value, index);
     onActiveIndexChange?.(index);
   };
@@ -146,7 +145,10 @@ const SpinWheel = ({
           <BaseBox height="120px" flexShrink={0} />
 
           {values.map((value, index) => {
-            const isSelected = activeIndex === index || String(value) === String(selectedValue);
+            // Show visual selection based on positioning value (for smooth minute steps)
+            // but preserve actual selectedValue for form data integrity
+            const isVisuallySelected =
+              activeIndex === index || String(value) === String(positioningValue);
 
             return (
               <StyledScrollItem
@@ -161,10 +163,12 @@ const SpinWheel = ({
               >
                 <Text
                   variant="body"
-                  size={isSelected ? 'large' : 'medium'}
-                  weight={isSelected ? 'semibold' : 'regular'}
+                  size={isVisuallySelected ? 'large' : 'medium'}
+                  weight={isVisuallySelected ? 'semibold' : 'regular'}
                   color={
-                    isSelected ? 'interactive.text.gray.normal' : 'interactive.text.gray.muted'
+                    isVisuallySelected
+                      ? 'interactive.text.gray.normal'
+                      : 'interactive.text.gray.muted'
                   }
                   textAlign="center"
                 >
@@ -183,4 +187,3 @@ const SpinWheel = ({
 };
 
 export { SpinWheel };
-export type { SpinWheelProps };

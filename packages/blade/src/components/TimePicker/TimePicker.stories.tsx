@@ -27,6 +27,7 @@ export const Basic: StoryFn<typeof TimePicker> = () => {
         label="Select Time"
         size="medium"
         value={time}
+        minuteStep={15}
         onChange={({ value }) => {
           setTime(value);
           console.log('Selected time:', value);

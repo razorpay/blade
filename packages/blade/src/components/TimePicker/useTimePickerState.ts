@@ -1,26 +1,8 @@
 import React from 'react';
-import type { TimeFormat, TimePickerValue } from './types';
+import type { UseTimePickerStateProps } from './types';
 import { useControllableState } from '~utils/useControllable';
 import { Time } from '@internationalized/date';
-
-type UseTimePickerStateProps = {
-  // Controlled/uncontrolled time value
-  value?: Date | null;
-  defaultValue?: Date | null;
-  onChange?: (time: Date | null) => void;
-
-  // Controlled/uncontrolled open state
-  isOpen?: boolean;
-  defaultIsOpen?: boolean;
-  onOpenChange?: (state: { isOpen: boolean }) => void;
-
-  // Configuration
-  timeFormat?: TimeFormat;
-  showFooterActions?: boolean;
-
-  // Apply callback
-  onApply?: (timeValue: TimePickerValue) => void;
-};
+import { dateToTimeValue, timeValueToDate, getTimeComponents, createCompleteTime } from './utils';
 
 /**
  * Custom hook for TimePicker state management
@@ -37,19 +19,6 @@ export const useTimePickerState = ({
   showFooterActions = true,
   onApply,
 }: UseTimePickerStateProps) => {
-  // Helper functions to convert between Date and TimeValue
-  const dateToTimeValue = React.useCallback((date: Date | null): Time | null => {
-    if (!date) return null;
-    return new Time(date.getHours(), date.getMinutes());
-  }, []);
-
-  const timeValueToDate = React.useCallback((timeValue: Time | null): Date | null => {
-    if (!timeValue) return null;
-    const date = new Date();
-    date.setHours(timeValue.hour, timeValue.minute, 0, 0);
-    return date;
-  }, []);
-
   // Internal state uses TimeValue for React Aria compatibility
   const [selectedTimeValue, setSelectedTimeValue] = useControllableState<Time | null>({
     value: dateToTimeValue(value || null),
@@ -57,7 +26,9 @@ export const useTimePickerState = ({
     onChange: (timeValue) => {
       // Convert back to Date when calling user's onChange
       const date = timeValueToDate(timeValue);
-      onChange?.(date);
+      if (date) {
+        onChange?.({ value: date });
+      }
     },
   });
 
@@ -100,7 +71,10 @@ export const useTimePickerState = ({
     if (showFooterActions) {
       // When footer actions are shown, apply the temp time
       setSelectedTimeValue(() => tempTimeValue);
-      onApply?.({ value: tempTime || new Date() });
+      // Only call onApply if we have a valid time
+      if (tempTime) {
+        onApply?.({ value: tempTime });
+      }
     }
     setControllableIsOpen(() => false);
   }, [
@@ -118,62 +92,16 @@ export const useTimePickerState = ({
     setControllableIsOpen(() => false);
   }, [selectedTimeValue, setControllableIsOpen]);
 
-  // Helper function to get individual time components
-  const getTimeComponents = (time: Date | null) => {
-    if (!time) {
-      return {
-        selectedHour: timeFormat === '12h' ? 12 : 0,
-        selectedMinute: 0,
-        selectedPeriod: 'AM' as const,
-      };
-    }
-
-    const hour = time.getHours();
-    const minute = time.getMinutes();
-
-    if (timeFormat === '12h') {
-      const period = hour >= 12 ? 'PM' : 'AM';
-      const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
-      return {
-        selectedHour: displayHour,
-        selectedMinute: minute,
-        selectedPeriod: period,
-      };
-    } else {
-      return {
-        selectedHour: hour,
-        selectedMinute: minute,
-        selectedPeriod: 'AM' as const, // Not used in 24h format
-      };
-    }
-  };
-
   const currentTime = showFooterActions ? tempTime : selectedTime;
   const currentTimeValue = showFooterActions ? tempTimeValue : selectedTimeValue;
-  const { selectedHour, selectedMinute, selectedPeriod } = getTimeComponents(currentTime);
+  const { selectedHour, selectedMinute, selectedPeriod } = getTimeComponents(
+    currentTime,
+    timeFormat,
+  );
 
   // Function to create complete time from current partial/full values
-  const createCompleteTime = React.useCallback(() => {
-    const hour = selectedHour;
-    const minute = selectedMinute;
-    const period = selectedPeriod;
-
-    // Validate values
-    if (timeFormat === '12h') {
-      if (hour < 1 || hour > 12 || minute < 0 || minute > 59) return null;
-    } else {
-      if (hour < 0 || hour > 23 || minute < 0 || minute > 59) return null;
-    }
-
-    const newDate = new Date();
-    if (timeFormat === '12h') {
-      const hour24 = period === 'AM' ? (hour === 12 ? 0 : hour) : hour === 12 ? 12 : hour + 12;
-      newDate.setHours(hour24, minute, 0, 0);
-    } else {
-      newDate.setHours(hour, minute, 0, 0);
-    }
-
-    return newDate;
+  const createCompleteTimeCallback = React.useCallback(() => {
+    return createCompleteTime(selectedHour, selectedMinute, selectedPeriod, timeFormat);
   }, [selectedHour, selectedMinute, selectedPeriod, timeFormat]);
 
   return {
@@ -197,7 +125,7 @@ export const useTimePickerState = ({
     onCancel: handleCancel,
 
     // Time validation and creation
-    createCompleteTime,
+    createCompleteTime: createCompleteTimeCallback,
 
     // Temporary state for footer actions
     tempTime,
