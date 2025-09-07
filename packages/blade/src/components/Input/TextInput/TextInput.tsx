@@ -71,6 +71,11 @@ type TextInputCommonProps = Pick<
   | 'trailingButton'
   | 'trailingIcon'
   | 'textAlign'
+  | 'popupId'
+  | 'isPopupExpanded'
+  | 'hasPopup'
+  | 'componentName'
+  | 'onKeyDown'
   | keyof DataAnalyticsAttribute
 > & {
   /**
@@ -229,6 +234,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     leading,
     labelSuffix,
     labelTrailing,
+    onKeyDown,
     ...rest
   },
   ref,
@@ -367,8 +373,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? inputValue)));
   }, [showClearButton, defaultValue, inputValue]);
 
-  console.log('leading', leading);
-
   const renderClearButton = (): React.ReactElement => {
     return (
       <IconButton
@@ -501,6 +505,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       }}
       onKeyDown={(e) => {
         handleTaggedInputKeydown(e);
+        onKeyDown?.(e);
         if (format) {
           formattingResult.handleKeyDown(e.event);
         }

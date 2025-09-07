@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MobileAppFilledIcon /> should render MobileAppFilledIcon 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="20px"
+    bbWidth="20px"
+    data-blade-component="icon"
+    fill="none"
+    focusable={false}
+    height="20px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        [
+          {},
+        ],
+        {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+    vbHeight={24}
+    vbWidth={24}
+    width="20px"
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M17 1.00049C18.6569 1.00049 20 2.34363 20 4.00049V20.0005C20 21.6573 18.6569 23.0005 17 23.0005H7C5.34315 23.0005 4 21.6573 4 20.0005V4.00049C4 2.34363 5.34315 1.00049 7 1.00049H17ZM9 17.0005C8.44772 17.0005 8 17.4482 8 18.0005C8 18.5528 8.44772 19.0005 9 19.0005H15C15.5523 19.0005 16 18.5528 16 18.0005C16 17.4482 15.5523 17.0005 15 17.0005H9Z"
+        fill={
+          {
+            "payload": 4280563015,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

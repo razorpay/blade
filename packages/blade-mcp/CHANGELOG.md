@@ -1,5 +1,55 @@
 # @razorpay/blade-mcp
 
+## 1.4.5
+
+### Patch Changes
+
+- c1b2b96b7: chore(analytics): replace userId with OS-based userName
+
+## 1.4.4
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
+## 1.4.3
+
+### Patch Changes
+
+- ea090ffc9: fix(blade-mcp): change index to get correct username in mcp
+
+## 1.4.2
+
+### Patch Changes
+
+- 64b723a1b: feat(blade-mcp): add userName of user in mcp analytics
+
+## 1.4.1
+
+### Patch Changes
+
+- 9cb50cab1: feat(blade-mcp): add constraints to component knowledgebase
+
+## 1.4.0
+
+### Minor Changes
+
+- 5c6b0e949: feat(blade-mcp): add dashboard template pattern
+
+## 1.3.1
+
+### Patch Changes
+
+- ea88e1487: '@razorpay/blade': feat: box now supports `feedback.background` tokens
+  '@razorpay/blade-mcp': feat: add confirmation pattern documentation and examples
+
+## 1.3.0
+
+### Minor Changes
+
+- b2467ea18: feat(table): added spanning & nesting
+- d7f4084fa: feat(table): added support for grouping
+
 ## 1.2.2
 
 ### Patch Changes

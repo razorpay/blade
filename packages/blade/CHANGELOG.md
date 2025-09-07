@@ -1,5 +1,120 @@
 # @razorpay/blade
 
+## 12.49.6
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
+## 12.49.5
+
+### Patch Changes
+
+- 77a78ddd7: chore: update babel version
+
+## 12.49.4
+
+### Patch Changes
+
+- 8132ef089: feat(datepicker): added partial validation
+
+## 12.49.3
+
+### Patch Changes
+
+- 37fbe24ee: fix: wrong layout position in case of bottom sheet
+
+## 12.49.2
+
+### Patch Changes
+
+- 9fd0523f9: fix(datepicker): changed arrow to hyphen in range input field
+
+## 12.49.1
+
+### Patch Changes
+
+- 828d6d4f3: revert: virtualization in phone number input
+
+## 12.49.0
+
+### Minor Changes
+
+- d21bd1c9a: feat: add filled icons
+
+## 12.48.0
+
+### Minor Changes
+
+- bf6f929e6: feat(datepicker): add formatted input, preset dropdown, single-field range selection
+
+## 12.47.1
+
+### Patch Changes
+
+- 3c8584905: fix : update bottom sheet height logic
+
+## 12.47.0
+
+### Minor Changes
+
+- 029964227: feat(blade): add new navigation button position overlap
+
+## 12.46.2
+
+### Patch Changes
+
+- b746d9db8: fix(ListView): enable horizontal scroll for filters on desktop, remove gradient overlay
+
+## 12.46.1
+
+### Patch Changes
+
+- 17b1be1e2: fix(blade): make promotional toast's leading prop optional
+
+## 12.46.0
+
+### Minor Changes
+
+- da2ffba9f: fix(blade): bottom sheet height logic
+
+  > **Note:** This release introduces a change in height of bottom sheet, earlier we were adding header + grabhandle height, even if header don't have title or subtitle. This release fixes that.
+
+## 12.45.0
+
+### Minor Changes
+
+- 8c9f43777: fix: date picker end date issue
+
+  > **Note:** This release introduces a change in how the DatePicker returns the time for the end date in a date range. Previously, it returned `00:00:00` now it returns `23:59:59` .
+
+## 12.44.0
+
+### Minor Changes
+
+- ea88e1487: '@razorpay/blade': feat: box now supports `feedback.background` tokens
+  '@razorpay/blade-mcp': feat: add confirmation pattern documentation and examples
+
+## 12.43.1
+
+### Patch Changes
+
+- a2cf026c4: fix(carousel): resolve Storybook interaction issues in peek mode
+
+## 12.43.0
+
+### Minor Changes
+
+- b2467ea18: feat(table): added spanning & nesting
+- d7f4084fa: feat(table): added support for grouping
+
+## 12.42.3
+
+### Patch Changes
+
+- 88afdb37f: fix: remove logs and add ref
+- abefb18cd: fix(inputgroup): payment card icon jsx error
+
 ## 12.42.2
 
 ### Patch Changes

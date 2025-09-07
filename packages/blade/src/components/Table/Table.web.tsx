@@ -9,6 +9,7 @@ import {
   SelectTypes,
   useRowSelect,
 } from '@table-library/react-table-library/select';
+import { useTree } from '@table-library/react-table-library/tree';
 import styled from 'styled-components';
 import usePresence from 'use-presence';
 import type { TableContextType } from './TableContext';
@@ -20,6 +21,7 @@ import {
   refreshWrapperZIndex,
   tableBackgroundColor,
   tablePagination,
+  classes,
 } from './tokens';
 import type {
   TableProps,
@@ -44,6 +46,7 @@ import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -164,6 +167,7 @@ const _Table = <Item,>({
   showBorderedCells = false,
   defaultSelectedIds = [],
   backgroundColor = tableBackgroundColor,
+  isGrouped = false,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -205,6 +209,10 @@ const _Table = <Item,>({
     position: sticky !important;
     z-index: ${firstColumnStickyZIndex} !important;
   }
+  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
+  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
+    z-index: 3 !important;
+  }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
@@ -222,6 +230,10 @@ const _Table = <Item,>({
     position: sticky !important;
     z-index: ${firstColumnStickyZIndex} !important;
   }
+  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
+  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
+    z-index: 3 !important;
+  }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
@@ -238,6 +250,10 @@ const _Table = <Item,>({
     left: 0 !important;
     position: sticky !important;
     z-index: ${firstColumnStickyZIndex} !important;
+  }
+  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
+  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
+    z-index: 3 !important;
   }
   ${
     selectionType === 'multiple' &&
@@ -319,7 +335,15 @@ const _Table = <Item,>({
 
   const toggleRowSelectionById = useMemo(
     () => (id: Identifier): void => {
-      rowSelectConfig.fns.onToggleById(id);
+      // Use recursive selection only for grouped tables with multiple selection
+      if (selectionType === 'multiple' && isGrouped) {
+        rowSelectConfig.fns.onToggleByIdRecursively(id, {
+          // When clicking partially selected parent, select all children
+          isPartialToAll: true,
+        });
+      } else {
+        rowSelectConfig.fns.onToggleById(id);
+      }
     },
     [rowSelectConfig.fns],
   );
@@ -335,6 +359,8 @@ const _Table = <Item,>({
     () => (): void => {
       if (selectedRows.length > 0) {
         rowSelectConfig.fns.onRemoveAll();
+      } else if (isGrouped) {
+        rowSelectConfig.fns.onToggleAll({});
       } else {
         const ids = data.nodes
           .map((item: TableNode<Item>) => (disabledRows.includes(item.id) ? null : item.id))
@@ -345,6 +371,23 @@ const _Table = <Item,>({
     },
     [rowSelectConfig.fns, data.nodes, selectedRows, disabledRows],
   );
+
+  const tree = useTree(
+    isGrouped ? data : { nodes: [] },
+    {},
+    {
+      // Disable row click expand/collapse (fallback enables unwanted expand/collapse on row click)
+      clickType: undefined,
+      // Disable all indentation for flat appearance
+      treeYLevel: undefined,
+    },
+  );
+
+  useIsomorphicLayoutEffect(() => {
+    if (isGrouped && tree?.fns.onToggleAll) {
+      tree.fns.onToggleAll({ ids: [] });
+    }
+  }, []);
 
   // Sort Logic
   const handleSortChange: MiddlewareFunction = (_, state) => {
@@ -462,6 +505,7 @@ const _Table = <Item,>({
       gridTemplateColumns,
       isVirtualized,
       tableData: data.nodes,
+      isGrouped,
     }),
     [
       selectionType,
@@ -491,6 +535,7 @@ const _Table = <Item,>({
       setHasHoverActions,
       isVirtualized,
       data,
+      isGrouped,
     ],
   );
 
@@ -546,6 +591,7 @@ const _Table = <Item,>({
             theme={tableTheme}
             select={selectionType !== 'none' ? rowSelectConfig : null}
             sort={sortFunctions ? sort : null}
+            tree={isGrouped ? tree : null}
             $styledProps={{
               height,
               width: isVirtualized ? `100%` : undefined,

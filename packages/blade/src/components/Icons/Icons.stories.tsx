@@ -112,6 +112,78 @@ Icon.args = {
   icon: 'CreditCardIcon',
 };
 
+export const FilledIcons: StoryFn<ComponentType<IconProps>> = ({ ...args }) => {
+  const filledIcons = Object.keys(iconMap).filter((icon) => icon.includes('FilledIcon'));
+
+  return (
+    <BaseBox>
+      {filledIcons.map((icon, key) => {
+        const IconComponent = iconMap[icon];
+        return (
+          <BaseBox
+            height="95px"
+            width="125px"
+            display="inline-flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="spacing.6"
+            key={key}
+          >
+            <IconComponent {...args} />
+            <BaseBox
+              style={{
+                fontSize: 12,
+                width: '90%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                textAlign: 'center',
+              }}
+            >
+              {icon}
+            </BaseBox>
+          </BaseBox>
+        );
+      })}
+    </BaseBox>
+  );
+};
+
+export const StrokedIcons: StoryFn<ComponentType<IconProps>> = ({ ...args }) => {
+  const outLinedIcons = Object.keys(iconMap).filter((icon) => !icon.includes('FilledIcon'));
+
+  return (
+    <BaseBox>
+      {outLinedIcons.map((icon, key) => {
+        const IconComponent = iconMap[icon];
+        return (
+          <BaseBox
+            height="95px"
+            width="125px"
+            display="inline-flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="spacing.6"
+            key={key}
+          >
+            <IconComponent {...args} />
+            <BaseBox
+              style={{
+                fontSize: 12,
+                width: '90%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                textAlign: 'center',
+              }}
+            >
+              {icon}
+            </BaseBox>
+          </BaseBox>
+        );
+      })}
+    </BaseBox>
+  );
+};
+
 export const AllIcons: StoryFn<ComponentType<IconProps>> = ({ ...args }) => {
   return (
     <BaseBox>

@@ -6,6 +6,10 @@ Button
 
 The Button component is a versatile interactive element used for triggering actions within an application. It supports multiple variants, sizes, and colors to accommodate different UI requirements and hierarchies. Buttons can contain text, icons, or both, and feature various states including disabled and loading to provide clear feedback to users during interactions.
 
+## Important Constraints
+
+- `variant="tertiary"` can only be used with `color="primary"` or `color="white"`
+
 ## TypeScript Types
 
 The following types represent the props that the Button component accepts. These types allow you to properly configure the button according to your needs.

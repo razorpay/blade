@@ -644,6 +644,42 @@ const quickFilterColorMapping: Record<Item['status'], CounterProps['color']> = {
   Completed: 'neutral',
 };
 
+const extendedStatusFilters = [
+  'Pending',
+  'Failed',
+  'Completed',
+  'Processing',
+  'Authorized',
+  'Captured',
+  'Refunded',
+  'Disputed',
+  'LastWeek',
+  'Cancelled',
+  'Expired',
+  'Rejected',
+  'Waiting',
+  'Review',
+  'Hold',
+];
+
+const extendedFilterColorMapping: Record<string, CounterProps['color']> = {
+  Pending: 'notice',
+  Failed: 'negative',
+  Completed: 'positive',
+  Processing: 'information',
+  Authorized: 'neutral',
+  Captured: 'positive',
+  Refunded: 'notice',
+  Disputed: 'negative',
+  LastWeek: 'information',
+  Cancelled: 'neutral',
+  Expired: 'negative',
+  Rejected: 'negative',
+  Waiting: 'notice',
+  Review: 'information',
+  Hold: 'notice',
+};
+
 const DefaultExample: StoryFn<typeof ListView> = (args) => {
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
@@ -1256,17 +1292,56 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
   const [searchValue, setSearchValue] = useState<string | undefined>('');
   const [methodFilter, setMethodFilter] = useState<string | undefined>('');
   const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
+
   const getQuickFilterValueCount = (value: string): number => {
     if (value === 'All') {
       return data.nodes.length;
     }
-    return data.nodes.filter((node) => node.status === value).length;
+
+    const statusMap: Record<string, string[]> = {
+      Pending: ['Pending'],
+      Failed: ['Failed'],
+      Completed: ['Completed'],
+      Processing: ['Pending'],
+      Authorized: ['Completed'],
+      Captured: ['Completed'],
+      Refunded: ['Failed'],
+      Disputed: ['Failed'],
+      Cancelled: ['Failed'],
+      Expired: ['Failed'],
+      Rejected: ['Failed'],
+      Waiting: ['Pending'],
+      Review: ['Pending'],
+      Hold: ['Pending'],
+    };
+
+    const mappedStatuses = statusMap[value] || [value];
+    return data.nodes.filter((node) => mappedStatuses.includes(node.status)).length;
   };
   const getQuickFilterData = (data: TableData<Item>, values?: string[]): TableData<Item> => {
     if (!values?.length) {
       return { nodes: data.nodes };
     }
-    return { nodes: data.nodes.filter((node) => values?.includes(node.status)) };
+
+    const statusMap: Record<string, string[]> = {
+      Pending: ['Pending'],
+      Failed: ['Failed'],
+      Completed: ['Completed'],
+      Processing: ['Pending'],
+      Authorized: ['Completed'],
+      Captured: ['Completed'],
+      Refunded: ['Failed'],
+      Disputed: ['Failed'],
+      Cancelled: ['Failed'],
+      Expired: ['Failed'],
+      Rejected: ['Failed'],
+      Waiting: ['Pending'],
+      Review: ['Pending'],
+      Hold: ['Pending'],
+    };
+
+    const allMappedStatuses = values.flatMap((value) => statusMap[value] || [value]);
+    return { nodes: data.nodes.filter((node) => allMappedStatuses.includes(node.status)) };
   };
   const getSearchedData = (data: TableData<Item>, value?: string): TableData<Item> => {
     if (!value) {
@@ -1358,20 +1433,19 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                 }}
                 value={selectedQuickFilter}
               >
-                {filterChipQuickFilters.map((status, index) => (
+                {extendedStatusFilters.map((status, index) => (
                   <QuickFilter
                     title={status}
                     value={status}
                     trailing={
                       <Counter
                         value={getQuickFilterValueCount(status)}
-                        color={quickFilterColorMapping[status]}
+                        color={extendedFilterColorMapping[status]}
                       />
                     }
                     key={`${index}-${status}`}
                   />
                 ))}
-                <QuickFilter title="Last Week" value="LastWeek" />
               </QuickFilterGroup>
             </Box>
           }
@@ -1474,7 +1548,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
               />
               <DropdownOverlay>
                 <ActionList>
-                  {filterChipQuickFilters.map((method, index) => (
+                  {extendedStatusFilters.map((method, index) => (
                     <ActionListItem
                       key={index}
                       title={method}

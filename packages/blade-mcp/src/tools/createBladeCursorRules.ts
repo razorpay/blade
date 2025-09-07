@@ -7,6 +7,7 @@ import {
   CURSOR_RULES_VERSION,
   analyticsToolCallEventName,
 } from '../utils/tokens.js';
+
 import { hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 
