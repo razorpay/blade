@@ -23,7 +23,7 @@ runs:
     # cache hit - download packages from the cache
     - name: install packages if cache miss
       run: |
-        pnpm install
+        pnpm install --frozen-lockfile
       shell: bash
       if: steps.cache.outputs.cache-hit != 'true'
 
