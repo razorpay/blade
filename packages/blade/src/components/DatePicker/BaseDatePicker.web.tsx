@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DatesProvider } from '@mantine/dates';
+import type { FC } from 'react';
 import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useI18nContext } from '@razorpay/i18nify-react';
@@ -41,8 +42,12 @@ import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
 
-// @ts-ignore
-const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
+const BaseDatePicker: FC<DatePickerProps<DateSelectionType> &
+  StyledPropsBlade &
+  DataAnalyticsAttribute & {
+    inputElementType: 'chip' | 'datePickerInput';
+    onClearButtonClick?: () => void;
+  }> = ({
   selectionType,
   allowSingleDateInRange,
   value,
@@ -77,7 +82,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   labelSuffix,
   labelTrailing,
   ...props
-}: DatePickerProps<Type> &
+}: DatePickerProps<DateSelectionType> &
   StyledPropsBlade &
   DataAnalyticsAttribute & {
     inputElementType: 'chip' | 'datePickerInput';
