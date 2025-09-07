@@ -57,7 +57,7 @@ type InputProps = Pick<
 >;
 
 type TimePickerValue = {
-  value: Date;
+  value: Date | null;
   // Future extensibility - can add more properties here
 };
 

@@ -137,7 +137,7 @@ const _BaseTimePicker = ({
         time={selectedTime}
         timeValue={selectedTimeValue}
         onChange={setSelectedTime}
-        onTimeValueChange={setSelectedTimeValue}
+        onTimeValueChange={(timeValue) => setSelectedTimeValue(() => timeValue)}
         onInputClick={() => setIsDropdownOpen(true)}
         createCompleteTime={createCompleteTime}
         label={label}

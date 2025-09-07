@@ -27,7 +27,7 @@ type TimePickerValue = {
   /**
    * The selected time as a Date object
    */
-  value: Date;
+  value: Date | null;
 };
 
 /**
