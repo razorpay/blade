@@ -1,10 +1,15 @@
+import type { StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledAvatarProps } from './types';
 import { avatarSizeTokens, avatarBorderRadiusTokens } from './avatarTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeBorderSize, makeSize } from '~utils';
 
-const StyledAvatar = styled(BaseBox)<StyledAvatarProps & { isInteractive?: boolean }>(
+const StyledAvatar: StyledComponent<
+  typeof BaseBox,
+  any,
+  StyledAvatarProps & { isInteractive?: boolean }
+> = styled(BaseBox)<StyledAvatarProps & { isInteractive?: boolean }>(
   ({ theme, variant, size, isInteractive }) => {
     return {
       display: 'flex',

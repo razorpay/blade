@@ -1,3 +1,4 @@
+import type {ForwardRefExoticComponent , RefAttributes } from 'react';
 import React from 'react';
 import type { ReactElement } from 'react';
 import type {
@@ -453,7 +454,9 @@ const _InfoGroup = (
  * ----
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-infogroup InfoGroup Documentation}
  */
-const InfoGroup = assignWithoutSideEffects(React.forwardRef(_InfoGroup), {
+const InfoGroup: ForwardRefExoticComponent<
+  InfoGroupProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_InfoGroup), {
   displayName: 'InfoGroup',
   componentId: 'InfoGroup',
 });

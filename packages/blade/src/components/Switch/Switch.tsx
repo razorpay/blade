@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { ThumbIcon } from './ThumbIcon';
 import type { SwitchProps } from './types';
@@ -143,7 +144,9 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
   );
 };
 
-const Switch = assignWithoutSideEffects(React.forwardRef(_Switch), {
+const Switch: ForwardRefExoticComponent<
+  SwitchProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Switch), {
   displayName: 'Switch',
 });
 

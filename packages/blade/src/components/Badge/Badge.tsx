@@ -1,5 +1,5 @@
-import React from 'react';
-import type { ReactElement } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import React, { ReactElement } from 'react';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { iconPadding, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
@@ -173,7 +173,9 @@ const _Badge = (
   );
 };
 
-const Badge = assignWithoutSideEffects(React.forwardRef(_Badge), {
+const Badge: ForwardRefExoticComponent<
+  BadgeProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Badge), {
   displayName: 'Badge',
   componentId: 'Badge',
 });

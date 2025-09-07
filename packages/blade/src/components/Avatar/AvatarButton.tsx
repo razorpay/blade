@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { StyledAvatarButton } from './StyledAvatarButton';
 import type { AvatarButtonProps } from './types';
@@ -118,6 +119,8 @@ const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButto
   );
 };
 
-const AvatarButton = React.forwardRef(_AvatarButton);
+const AvatarButton: ForwardRefExoticComponent<
+  AvatarButtonProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_AvatarButton);
 
 export { AvatarButton };

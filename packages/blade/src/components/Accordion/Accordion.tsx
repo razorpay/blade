@@ -1,4 +1,9 @@
-import type { ReactElement } from 'react';
+import type {
+  ReactElement,
+  ForwardRefRenderFunction,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from 'react';
 import React, { useCallback, useMemo, useState, cloneElement, Children } from 'react';
 import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
@@ -63,7 +68,7 @@ const getVariantStyles = (variant: AccordionProps['variant']): BoxProps => {
  * Checkout https://blade.razorpay.com/?path=/docs/components-accordion--docs
  *
  */
-const _Accordion = (
+const _Accordion: ForwardRefRenderFunction<BladeElementRef, AccordionProps> = (
   {
     defaultExpandedIndex,
     expandedIndex,
@@ -143,6 +148,8 @@ const _Accordion = (
   );
 };
 
-const Accordion = React.forwardRef(_Accordion);
+const Accordion: ForwardRefExoticComponent<
+  AccordionProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_Accordion);
 
 export { Accordion };

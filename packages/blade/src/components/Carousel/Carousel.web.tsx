@@ -6,6 +6,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
@@ -614,6 +615,8 @@ const _Carousel = (
   );
 };
 
-const Carousel = React.forwardRef(_Carousel);
+const Carousel: ForwardRefExoticComponent<
+  CarouselProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_Carousel);
 
 export { Carousel };

@@ -1,3 +1,4 @@
+import type { StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { AvatarButtonProps } from './types';
 import { avatarSizeTokens, avatarColorTokens, avatarBorderRadiusTokens } from './avatarTokens';
@@ -5,7 +6,11 @@ import { makeBorderSize, makeSize } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
-const StyledAvatarButton = styled.button<AvatarButtonProps & { isInteractive?: boolean }>(
+const StyledAvatarButton: StyledComponent<
+  'button',
+  any,
+  AvatarButtonProps & { isInteractive?: boolean }
+> = styled.button<AvatarButtonProps & { isInteractive?: boolean }>(
   ({
     theme,
     size = 'medium',

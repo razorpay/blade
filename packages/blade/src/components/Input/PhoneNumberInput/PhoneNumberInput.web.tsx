@@ -5,6 +5,7 @@ import {
   getDialCodeByCountryCode,
   getFlagsForAllCountries,
 } from '@razorpay/i18nify-js';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { PhoneNumberInputProps } from './types';
 import { countryNameFormatter, CountrySelector } from './CountrySelector';
@@ -232,7 +233,9 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
  * <PhoneNumberInput />
  * ```
  */
-const PhoneNumberInput = assignWithoutSideEffects(React.forwardRef(_PhoneNumberInput), {
+const PhoneNumberInput: ForwardRefExoticComponent<
+  PhoneNumberInputProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_PhoneNumberInput), {
   displayName: 'PhoneNumberInput',
 });
 

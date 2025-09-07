@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-shadow */
+import type {ForwardRefExoticComponent ,RefAttributes} from 'react';
 import React from 'react';
 import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
@@ -153,7 +154,9 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   );
 };
 
-const Radio = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
+const Radio: ForwardRefExoticComponent<
+  RadioProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
 
 export type { RadioProps };
 export { Radio };

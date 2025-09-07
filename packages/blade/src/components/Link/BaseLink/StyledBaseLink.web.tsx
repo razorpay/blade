@@ -1,3 +1,4 @@
+import type { StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
@@ -8,7 +9,12 @@ import { makeBorderSize } from '~utils/makeBorderSize';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
-const StyledLink = styled.button
+const StyledLink: StyledComponent<
+  'button',
+  any,
+  StyledBaseLinkProps,
+  never
+> = styled.button
   .withConfig({
     shouldForwardProp: omitPropsFromHTML,
     displayName: 'StyledLink',

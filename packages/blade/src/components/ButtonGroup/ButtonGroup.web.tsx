@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import type { ButtonGroupProps } from './types';
@@ -132,7 +133,9 @@ const _ButtonGroup = (
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-buttongroup FileUpload Documentation}
  * 
  */
-const ButtonGroup = assignWithoutSideEffects(React.forwardRef(_ButtonGroup), {
+const ButtonGroup: ForwardRefExoticComponent<
+  ButtonGroupProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_ButtonGroup), {
   displayName: 'ButtonGroup',
   componentId: 'ButtonGroup',
 });

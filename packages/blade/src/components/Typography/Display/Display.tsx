@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
@@ -104,5 +105,7 @@ const _Display = (
   );
 };
 
-const Display = React.forwardRef(_Display);
+const Display: ForwardRefExoticComponent<
+  DisplayProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_Display);
 export { Display };

@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import BaseBox from './BaseBox';
 import type { BoxProps, BoxRefType, MakeValueResponsive } from './BaseBox/types';
@@ -261,7 +262,9 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
   );
 };
 
-const Box = assignWithoutSideEffects(React.forwardRef(_Box), {
+const Box: ForwardRefExoticComponent<
+  BoxProps & RefAttributes<BoxRefType>
+> = assignWithoutSideEffects(React.forwardRef(_Box), {
   displayName: 'Box',
   componentId: 'Box',
 });

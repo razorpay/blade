@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { emptyStateSizeTokens } from './emptyStateTokens';
 import type { EmptyStateProps } from './types';
@@ -62,7 +63,9 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
   );
 };
 
-const EmptyState = assignWithoutSideEffects(React.forwardRef(_EmptyState), {
+const EmptyState: ForwardRefExoticComponent<
+  EmptyStateProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_EmptyState), {
   displayName: 'EmptyState',
   componentId: 'EmptyState',
 });

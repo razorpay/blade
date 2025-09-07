@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { StyledCounter } from './StyledCounter';
 import type { StyledCounterProps } from './types';
@@ -153,7 +154,9 @@ const _Counter = (
   );
 };
 
-const Counter = assignWithoutSideEffects(React.forwardRef(_Counter), {
+const Counter: ForwardRefExoticComponent<
+  CounterProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Counter), {
   displayName: 'Counter',
   componentId: 'Counter',
 });

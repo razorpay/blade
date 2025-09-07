@@ -1,3 +1,4 @@
+import type { StyledComponent } from 'styled-components';
 import React, { useEffect } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import { Virtualized } from '@table-library/react-table-library/virtualized';
@@ -92,7 +93,17 @@ export const StyledCell = styled(Cell)<{
   },
 }));
 
-export const CellWrapper = styled(BaseBox)<{
+export const CellWrapper: StyledComponent<
+  typeof BaseBox,
+  any,
+  {
+    $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
+    showStripedRows?: boolean;
+    hasPadding?: boolean;
+    textAlign?: TableCellProps['textAlign'];
+  },
+  never
+> = styled(BaseBox)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   showStripedRows?: boolean;
   hasPadding?: boolean;

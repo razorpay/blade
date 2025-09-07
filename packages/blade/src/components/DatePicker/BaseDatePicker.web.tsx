@@ -41,6 +41,7 @@ import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
 
+// @ts-ignore
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
   allowSingleDateInRange,

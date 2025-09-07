@@ -1,3 +1,4 @@
+import type { StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledBaseMenuItemContainerProps } from '../types';
 import { getBaseMenuItemStyles } from './getBaseMenuItemStyles';
@@ -6,7 +7,11 @@ import { getMediaQuery, makeSize } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import BaseBox from '~components/Box/BaseBox';
 
-const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps>((props) => {
+const StyledMenuItemContainer: StyledComponent<
+  'div',
+  any,
+  StyledBaseMenuItemContainerProps
+> = styled(BaseBox)<StyledBaseMenuItemContainerProps>((props) => {
   return {
     ...getBaseMenuItemStyles({ theme: props.theme }),
     padding: makeSize(getItemPadding(props.theme).itemPaddingMobile),

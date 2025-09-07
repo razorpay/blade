@@ -1,4 +1,5 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-role */
+import type { ForwardRefExoticComponent } from 'react';
 import React from 'react';
 import type { BreadcrumbProps } from './types';
 import { BreadcrumbContext } from './BreadcrumbContext';
@@ -92,6 +93,6 @@ const _Breadcrumb = (
   );
 };
 
-const Breadcrumb = React.forwardRef(_Breadcrumb);
+const Breadcrumb: ForwardRefExoticComponent<BreadcrumbProps> = React.forwardRef(_Breadcrumb);
 
 export { Breadcrumb };

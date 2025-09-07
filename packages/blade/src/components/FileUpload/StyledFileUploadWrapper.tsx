@@ -1,3 +1,4 @@
+import type { StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledFileUploadWrapperProps } from './types';
 import { fileUploadMotionTokens, fileUploadColorTokens } from './fileUploadTokens';
@@ -6,7 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';
 
-const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
+const StyledFileUploadWrapper: StyledComponent<typeof BaseBox, any, StyledFileUploadWrapperProps, never> = styled(BaseBox)<StyledFileUploadWrapperProps>(
   ({ theme, isDisabled, isActive }) => {
     const easing = getIn(theme.motion, fileUploadMotionTokens.easing);
     const duration = castWebType(

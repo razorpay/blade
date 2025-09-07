@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import type { TagProps } from './types';
@@ -117,7 +118,7 @@ const _Tag = (
             accessibilityLabel={`Close ${children} tag`}
             isDisabled={isDisabled}
             _tabIndex={_isTagInsideInput ? -1 : undefined}
-            onClick={(e) => {
+            onClick={(e: { stopPropagation: () => void; }) => {
               // Inside tag input, we stop propagation to avoid opening dropdown on click of close on tag
               if (_isTagInsideInput) {
                 e.stopPropagation();
@@ -158,6 +159,8 @@ const _Tag = (
  * Checkout [Tags Documentation](https://blade.razorpay.com/?path=/story/components-tag--default) for more info.
  *
  */
-const Tag = React.forwardRef(_Tag);
+const Tag: ForwardRefExoticComponent<TagProps & RefAttributes<BladeElementRef>> = React.forwardRef(
+  _Tag,
+);
 
 export { Tag };

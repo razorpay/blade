@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import type { BottomNavItemProps, BottomNavProps } from './types';
@@ -165,6 +166,8 @@ const BottomNavItem = ({
   );
 };
 
-const BottomNav = React.forwardRef(_BottomNav);
+const BottomNav: ForwardRefExoticComponent<
+  BottomNavProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_BottomNav);
 
 export { BottomNav, BottomNavItem };

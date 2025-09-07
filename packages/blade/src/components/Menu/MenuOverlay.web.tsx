@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent , RefAttributes } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import type { MenuOverlayProps } from './types';
@@ -59,6 +60,8 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
   );
 };
 
-const MenuOverlay = React.forwardRef(_MenuOverlay);
+const MenuOverlay: ForwardRefExoticComponent<
+  MenuOverlayProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_MenuOverlay);
 
 export { MenuOverlay };

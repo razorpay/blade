@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
@@ -100,7 +101,9 @@ const _Divider = (
   );
 };
 
-const Divider = React.forwardRef(_Divider);
+const Divider: ForwardRefExoticComponent<
+  DividerProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_Divider);
 
 export { Divider };
 export type { DividerProps };

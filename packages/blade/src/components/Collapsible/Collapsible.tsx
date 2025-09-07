@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode, ForwardRefExoticComponent, RefAttributes } from 'react';
 import { Children, useCallback, useRef, useState, useMemo, forwardRef } from 'react';
 
 import type { CollapsibleContextState } from './CollapsibleContext';
@@ -156,7 +156,9 @@ const _Collapsible = (
   );
 };
 
-const Collapsible = assignWithoutSideEffects(forwardRef(_Collapsible), {
+const Collapsible: ForwardRefExoticComponent<
+  CollapsibleProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(forwardRef(_Collapsible), {
   componentId: componentIds.Collapsible,
 });
 
