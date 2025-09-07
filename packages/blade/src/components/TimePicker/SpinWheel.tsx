@@ -39,6 +39,7 @@ const SpinWheel = ({
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
+  const isProgrammaticScroll = useRef(false);
 
   // Use displayValue for visual positioning, selectedValue for actual data
   // This supports minute steps: user types "03", displayValue shows "00" for positioning,
@@ -49,10 +50,17 @@ const SpinWheel = ({
   useEffect(() => {
     const positionIndex = values.findIndex((val) => String(val) === String(positioningValue));
     if (positionIndex >= 0 && itemRefs.current[positionIndex]) {
+      isProgrammaticScroll.current = true;
+
       itemRefs.current[positionIndex]?.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
       });
+
+      // Reset flag after scroll finishes
+      setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 300); // match smooth scroll duration
     }
   }, [positioningValue, values]);
 
@@ -67,6 +75,7 @@ const SpinWheel = ({
 
   // Scroll event handler to update selection based on center position
   const handleScroll = () => {
+    if (isProgrammaticScroll.current) return;
     if (!containerRef.current || !itemRefs.current.length) return;
 
     const containerRect = containerRef.current.getBoundingClientRect();
