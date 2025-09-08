@@ -1,5 +1,17 @@
 # @razorpay/blade-mcp
 
+## 1.4.5
+
+### Patch Changes
+
+- c1b2b96b7: chore(analytics): replace userId with OS-based userName
+
+## 1.4.4
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
 ## 1.4.3
 
 ### Patch Changes

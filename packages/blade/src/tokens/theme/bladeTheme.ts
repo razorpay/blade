@@ -1070,6 +1070,7 @@ const colors: ColorsWithModes = {
         intense: globalColors.neutral.blueGrayDark.a100,
       },
     },
+    //REVIEW_NOTES: this might change
     chart: {
       background: {
         categorical: {
