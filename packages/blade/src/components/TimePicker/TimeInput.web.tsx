@@ -32,6 +32,10 @@ const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
     background-color: ${(props: any) =>
       props.theme.colors.interactive.background.primary.highlighted} !important;
     color: #ffffff !important;
+
+    span {
+      color: #ffffff !important;
+    }
   }
 `;
 
