@@ -160,60 +160,6 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
   );
 };
 
-// Line Chart with Custom Dots
-export const LineChartWithCustomDots: StoryFn<typeof LineChart> = () => {
-  return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <LineChart data={chartData}>
-        <CartesianGrid />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <ChartToolTip />
-        <Legend />
-        <Line
-          dataKey="teamA"
-          name="Team A (No Dots)"
-          strokeStyle="solid"
-          color="chart.background.categorical.azure.moderate"
-          dot={false}
-          activeDot={true}
-        />
-        <Line
-          dataKey="teamB"
-          name="Team B (Custom Dots)"
-          strokeStyle="solid"
-          color="chart.background.categorical.crimson.moderate"
-          dot={{ r: 6, fill: '#22c55e', stroke: '#16a34a', strokeWidth: 2 }}
-          activeDot={{ r: 8, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3 }}
-        />
-      </LineChart>
-    </div>
-  );
-};
-
-// Showcase Different Dot Configurations
-export const DotConfigurationShowcase: StoryFn<typeof LineChart> = () => {
-  return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <LineChart data={chartData}>
-        <CartesianGrid />
-        <XAxis dataKey="month" label="Months" />
-        <YAxis dataKey="teamA" label="Active Users" />
-        <ChartToolTip />
-        <Legend />
-        {/* Default dots */}
-        <Line
-          dataKey="teamA"
-          name="Default Dots"
-          color="chart.background.categorical.azure.moderate"
-          dot={true}
-          activeDot={true}
-        />
-      </LineChart>
-    </div>
-  );
-};
-
 // Forecast Line Chart Example
 export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
   return (
@@ -299,10 +245,43 @@ export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
   );
 };
 
+// Line Chart with Default Color Theme
+export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <LineChart data={chartData} colorTheme="informational">
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line dataKey="teamA" name="Success" />
+        <Line dataKey="teamB" name="Errors" />
+      </LineChart>
+    </div>
+  );
+};
+
+//Line Chart with X and Y axis labels
+export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <LineChart data={chartData}>
+        <XAxis dataKey="month" label="Month" />
+        <YAxis label="Sales" />
+        <ChartToolTip />
+        <Legend />
+        <Line dataKey="teamA" name="Success" />
+        <Line dataKey="teamB" name="Errors" />
+      </LineChart>
+    </div>
+  );
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 TinyLineChart.storyName = 'Tiny Line Chart';
-LineChartWithCustomDots.storyName = 'Line Chart with Custom Dots';
-DotConfigurationShowcase.storyName = 'Dot Configuration Showcase';
 ForecastLineChart.storyName = 'Forecast Line Chart';
 LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
 SteppedLineChart.storyName = 'Stepped Line Chart';
+LineChartWithDefaultColorTheme.storyName = 'Line Chart with Default Color Theme';
+LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';
