@@ -63,8 +63,8 @@ export const Line: React.FC<LineProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
-  const colorIndex = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
-  const colorToken = color ? getIn(theme.colors, color) : colorIndex[_index ?? 0];
+  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
+  const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
 
   const strokeDasharray =
     strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
