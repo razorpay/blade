@@ -174,6 +174,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     hourCycle: currentTimeFormat === '12h' ? 12 : 24,
     value: timeValue as any, // Use TimeValue directly from hook
     onChange: onTimeValueChange, // Use TimeValue onChange directly
+    isDisabled,
   });
 
   let timeFieldRef = useRef<HTMLDivElement>(null);
@@ -185,15 +186,26 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     timeFieldRef as any,
   );
 
-  const handleInputClick = () => {
-    onInputClick?.();
+  // Extract onKeyDown from referenceProps to handle Enter key for dropdown opening
+  const { onKeyDown: referenceOnKeyDown, ...otherReferenceProps } = referenceProps;
+
+  // Handle Enter key to open dropdown while preserving React Aria's keyboard navigation
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && !isDisabled) {
+      // Trigger dropdown opening (same as clicking the input)
+      referenceOnKeyDown?.(event as any);
+      return;
+    }
+
+    // Let React Aria handle all other keys for segment navigation
+    fieldProps.onKeyDown?.(event as any);
   };
 
   return (
-    <BaseBox {...fieldProps} ref={mergeRefs(timeFieldRef, ref as any)}>
+    <BaseBox {...fieldProps} onKeyDown={handleKeyDown} ref={mergeRefs(timeFieldRef, ref as any)}>
       <BaseInput
         ref={inputRef}
-        as="custom"
+        as="div"
         id="timepicker"
         label={label || 'Select Time'}
         helpText={helpText}
@@ -210,12 +222,11 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         labelSuffix={labelSuffix}
         labelTrailing={labelTrailing}
         leadingIcon={ClockIcon}
-        onClick={handleInputClick}
         popupId={referenceProps['aria-controls']}
         isPopupExpanded={referenceProps['aria-expanded']}
         hasPopup={referenceProps['aria-haspopup']}
         {...props}
-        {...referenceProps}
+        {...otherReferenceProps}
       >
         {state.segments.map((segment, i) => {
           return <TimeSegment key={i} segment={segment} state={state} />;

@@ -47,6 +47,7 @@ export const TwentyFourHour: StoryFn<typeof TimePicker> = () => {
     <Box padding="spacing.5" maxWidth="400px">
       <TimePicker
         label="Select Time (24h)"
+        timeFormat="24h"
         value={time}
         onChange={({ value }) => {
           setTime(value);

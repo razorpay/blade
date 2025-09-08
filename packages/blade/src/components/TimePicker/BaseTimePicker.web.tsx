@@ -94,6 +94,7 @@ const _BaseTimePicker = ({
     placement: 'bottom-start',
     open: isDropdownOpen,
     onOpenChange: (isOpen, _, reason) => {
+      if (isDisabled) return;
       setIsDropdownOpen(isOpen);
       if (reason === 'escape-key') {
         handleCancel();
@@ -103,15 +104,18 @@ const _BaseTimePicker = ({
   });
   // Mobile: Blur input when bottom sheet opens
   React.useEffect(() => {
-    if (isMobile && isOpen) {
-      const refEl = (refs.reference?.current as unknown) as { blur?: () => void } | null;
-      if (refEl?.blur) {
+    if (isMobile && isDropdownOpen) {
+      // Find the currently focused time segment and blur it
+
+      const activeElement = document.activeElement as HTMLElement | null;
+      console.log('Qswap', activeElement);
+      if (activeElement && 'blur' in activeElement && typeof activeElement.blur === 'function') {
         setTimeout(() => {
-          refEl.blur?.();
+          activeElement.blur();
         }, 0);
       }
     }
-  }, [isMobile, isOpen, refs.reference]);
+  }, [isMobile, isDropdownOpen]);
 
   const content = (
     <TimePickerContent
@@ -138,7 +142,6 @@ const _BaseTimePicker = ({
         timeValue={selectedTimeValue}
         onChange={setSelectedTime}
         onTimeValueChange={(timeValue) => setSelectedTimeValue(() => timeValue)}
-        onInputClick={() => setIsDropdownOpen(true)}
         createCompleteTime={createCompleteTime}
         label={label}
         helpText={helpText}
@@ -194,7 +197,7 @@ const _BaseTimePicker = ({
       )}
 
       {/* Mobile Bottom Sheet */}
-      {isMobile && (
+      {isMobile && !isDisabled && (
         <BottomSheet snapPoints={[0.6, 0.6, 1]} isOpen={isDropdownOpen} onDismiss={handleCancel}>
           <BottomSheetHeader title="Select Time" />
           <BottomSheetBody>{content}</BottomSheetBody>

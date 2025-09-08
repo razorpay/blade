@@ -25,7 +25,7 @@ export const timeValueToDate = (timeValue: Time | null): Date | null => {
 export const getTimeComponents = (time: Date | null, timeFormat: TimeFormat) => {
   if (!time) {
     return {
-      selectedHour: timeFormat === '12h' ? 12 : 0,
+      selectedHour: 12,
       selectedMinute: 0,
       selectedPeriod: 'AM' as const,
     };

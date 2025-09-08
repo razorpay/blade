@@ -61,7 +61,7 @@ const StyledBaseNativeButton = styled.button<
   ...getWebInputStyles(props),
 }));
 
-const StyledBaseCustomWrapper = styled.div<
+const StyledBaseDivWrapper = styled.div<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
 >((props) => ({
   ...getWebInputStyles(props),
@@ -143,8 +143,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       : undefined,
   };
 
-  return props.as === 'custom' ? (
-    <StyledBaseCustomWrapper
+  return props.as === 'div' ? (
+    <StyledBaseDivWrapper
       onBlur={(event: React.FocusEvent<HTMLDivElement>): void => {
         if (!shouldIgnoreBlurAnimation) {
           setCurrentInteraction('default');
@@ -169,7 +169,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...accessibilityProps}
     >
       {children}
-    </StyledBaseCustomWrapper>
+    </StyledBaseDivWrapper>
   ) : props.as === 'button' ? (
     <StyledBaseNativeButton
       // @ts-expect-error: TS doesnt understand that this will always be `button`

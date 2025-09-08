@@ -84,7 +84,7 @@ type BaseInputCommonProps = FormInputLabelProps &
     /**
      * Determines if it needs to be rendered as input, textarea or button
      */
-    as?: 'input' | 'textarea' | 'button' | 'custom';
+    as?: 'input' | 'textarea' | 'button' | 'div';
     /**
      * ID that will be used for accessibility
      */
