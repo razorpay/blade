@@ -8,6 +8,7 @@ import {
 } from 'recharts';
 import type { AreaProps as RechartAreaProps } from 'recharts';
 
+import { useChartsColorTheme } from '../utils';
 import { useTheme } from '~components/BladeProvider';
 import type { Theme } from '~components/BladeProvider';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -31,42 +32,15 @@ export interface AreaProps {
   color?: BladeColorToken;
   dot?: RechartAreaProps['dot'];
   activeDot?: RechartAreaProps['activeDot'];
+  /**
+   * @private
+   */
+  _index?: number; // Add this for internal use
+  /**
+   * @private
+   */
+  _colorTheme?: 'default' | 'informational';
 }
-
-// TypeScript prop types
-export type AreaChartProps = Omit<ComponentProps<typeof RechartsAreaChart>, 'margin'> &
-  StyledPropsBlade & {
-    children?: React.ReactNode;
-  };
-
-// Styled wrapper for AreaChart with predefined margins
-const StyledAreaChart = styled(RechartsAreaChart)<{ theme: Theme }>`
-  font-family: ${(props) => props.theme.typography.fonts.family.text};
-`;
-
-// Main components
-export const AreaChart: React.FC<AreaChartProps> = ({ children, ...props }) => {
-  const { theme } = useTheme();
-  const styledProps = getStyledProps(props);
-
-  // Predefined margins - not exposed to user
-  const defaultMargin = {
-    top: 16,
-    right: 16,
-    bottom: 16,
-    left: 16,
-  };
-
-  return (
-    <BaseBox {...styledProps} {...metaAttribute({ name: 'area-chart' })} width="100%" height="100%">
-      <ResponsiveContainer>
-        <StyledAreaChart {...props} theme={theme} margin={defaultMargin}>
-          {children}
-        </StyledAreaChart>
-      </ResponsiveContainer>
-    </BaseBox>
-  );
-};
 
 export const Area: React.FC<AreaProps> = ({
   color,
@@ -76,10 +50,13 @@ export const Area: React.FC<AreaProps> = ({
   stackId = 1,
   dot = false,
   activeDot = false,
+  _index,
+  _colorTheme,
   ...props
 }) => {
   const { theme } = useTheme();
-  const colorToken = color ? getIn(theme.colors, color) : undefined;
+  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
+  const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
 
   return (
     <RechartsArea
@@ -95,5 +72,58 @@ export const Area: React.FC<AreaProps> = ({
       stackId={stackId}
       activeDot={activeDot}
     />
+  );
+};
+
+// TypeScript prop types
+export type AreaChartProps = Omit<ComponentProps<typeof RechartsAreaChart>, 'margin'> &
+  StyledPropsBlade & {
+    children?: React.ReactNode;
+    colorTheme?: 'default' | 'informational';
+  };
+
+// Styled wrapper for AreaChart with predefined margins
+const StyledAreaChart = styled(RechartsAreaChart)<{ theme: Theme }>`
+  font-family: ${(props) => props.theme.typography.fonts.family.text};
+`;
+
+// Main components
+export const AreaChart: React.FC<AreaChartProps> = ({
+  children,
+  colorTheme = 'default',
+  ...props
+}) => {
+  const { theme } = useTheme();
+  const styledProps = getStyledProps(props);
+
+  // Predefined margins - not exposed to user
+  const defaultMargin = {
+    top: 16,
+    right: 16,
+    bottom: 16,
+    left: 16,
+  };
+
+  const modifiedChildren = React.useMemo(() => {
+    let AreaChartIndex = 0;
+    return React.Children.map(children, (child) => {
+      if (React.isValidElement(child) && child.type === Area) {
+        return React.cloneElement(child, {
+          _index: AreaChartIndex++,
+          _colorTheme: colorTheme,
+        } as Partial<AreaProps>);
+      }
+      return child;
+    });
+  }, [children, colorTheme]);
+
+  return (
+    <BaseBox {...styledProps} {...metaAttribute({ name: 'area-chart' })} width="100%" height="100%">
+      <ResponsiveContainer>
+        <StyledAreaChart {...props} theme={theme} margin={defaultMargin}>
+          {modifiedChildren}
+        </StyledAreaChart>
+      </ResponsiveContainer>
+    </BaseBox>
   );
 };
