@@ -6,6 +6,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import type { LineProps as RechartsLineProps } from 'recharts';
+import { useChartsColorTheme } from '../utils';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
@@ -24,8 +25,12 @@ export interface LineProps {
   showLegend?: boolean;
   dataKey: string;
   name?: string;
-  color: BladeColorToken;
+  color?: BladeColorToken;
   strokeStyle?: 'dotted' | 'dashed' | 'solid';
+  /**
+   * @private
+   */
+  _index?: number; // Add this for internal use
 }
 
 // TypeScript prop types
@@ -40,17 +45,6 @@ export interface ReferenceLineProps {
   labelOffset?: number;
 }
 
-// Main components
-export const LineChart: React.FC<LineChartProps> = ({ children, ...props }) => {
-  return (
-    <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">
-      <RechartsResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart {...props}>{children}</RechartsLineChart>
-      </RechartsResponsiveContainer>
-    </BaseBox>
-  );
-};
-
 export const Line: React.FC<LineProps> = ({
   color,
   strokeStyle = 'solid',
@@ -58,10 +52,12 @@ export const Line: React.FC<LineProps> = ({
   dot = false,
   activeDot = false,
   showLegend = true,
+  _index,
   ...props
 }) => {
   const { theme } = useTheme();
-  const colorToken = getIn(theme.colors, color);
+  const colorIndex = useChartsColorTheme();
+  const colorToken = color ? getIn(theme.colors, color) : colorIndex[_index ?? 0];
 
   const strokeDasharray =
     strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
@@ -77,5 +73,26 @@ export const Line: React.FC<LineProps> = ({
       legendType={showLegend ? 'line' : 'none'}
       {...props}
     />
+  );
+};
+
+// Main components
+export const LineChart: React.FC<LineChartProps> = ({ children, ...props }) => {
+  const childrenWithIndex = React.useMemo(() => {
+    let LineChartIndex = 0;
+    return React.Children.map(children, (child) => {
+      if (React.isValidElement(child) && child.type === Line) {
+        return React.cloneElement(child, { _index: LineChartIndex++ } as Partial<LineProps>);
+      }
+      return child;
+    });
+  }, [children]);
+
+  return (
+    <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">
+      <RechartsResponsiveContainer width="100%" height="100%">
+        <RechartsLineChart {...props}>{childrenWithIndex}</RechartsLineChart>
+      </RechartsResponsiveContainer>
+    </BaseBox>
   );
 };
