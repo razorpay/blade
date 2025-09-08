@@ -24,7 +24,6 @@ const chartData = [
   { name: 'Dec', seriesA: 1200, seriesB: 4600, seriesC: 2000 },
 ];
 
-// 2.3.a - TinyBarChart
 export const TinyBarChart: StoryFn<typeof BarChart> = () => {
   return (
     <div style={{ width: '100px', height: '50px' }}>
@@ -35,7 +34,6 @@ export const TinyBarChart: StoryFn<typeof BarChart> = () => {
   );
 };
 
-// 2.3.b - SimpleBarChart
 export const SimpleBarChart: StoryFn<typeof BarChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
@@ -60,7 +58,6 @@ export const SimpleBarChart: StoryFn<typeof BarChart> = () => {
   );
 };
 
-// 2.3.c - StackedBarChart
 export const StackedBarChart: StoryFn<typeof BarChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
@@ -110,7 +107,6 @@ export const GroupedBarChart: StoryFn<typeof BarChart> = () => {
   );
 };
 
-// 2.4.d - Vertical Bar Chart
 export const VerticalBarChart: StoryFn<typeof BarChart> = () => {
   return (
     <div style={{ width: '100%', height: '500px' }}>
@@ -143,7 +139,32 @@ export const VerticalBarChart: StoryFn<typeof BarChart> = () => {
   );
 };
 
+export const BarChartWithInformationalColorTheme: StoryFn<typeof BarChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '500px' }}>
+      <BarChart data={chartData.slice(0, 5)} layout="vertical" colorTheme="informational">
+        <CartesianGrid />
+        <XAxis type="number" />
+        <YAxis type="category" dataKey="name" />
+        <ChartToolTip />
+        <Legend />
+        <Bar dataKey="seriesA" name="Series A" stackId="2" />
+        <Bar dataKey="seriesB" name="Series B" stackId="2" />
+        <Bar dataKey="seriesC" name="Series C" stackId="2" />
+        <Bar dataKey="seriesA" name="Series A" stackId="2" />
+        <Bar dataKey="seriesB" name="Series B" stackId="2" />
+        <Bar dataKey="seriesC" name="Series C" stackId="2" />
+        <Bar dataKey="seriesA" name="Series A" stackId="2" />
+        <Bar dataKey="seriesB" name="Series B" stackId="2" />
+        <Bar dataKey="seriesC" name="Series C" stackId="2" />
+        <Bar dataKey="seriesA" name="Series A" stackId="2" />
+      </BarChart>
+    </div>
+  );
+};
+
 TinyBarChart.storyName = 'Tiny Bar Chart';
 SimpleBarChart.storyName = 'Simple Bar Chart';
 StackedBarChart.storyName = 'Stacked Bar Chart';
 VerticalBarChart.storyName = 'Vertical Bar Chart';
+BarChartWithInformationalColorTheme.storyName = 'Bar Chart With Informational Color Theme';
