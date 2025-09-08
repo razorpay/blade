@@ -283,5 +283,5 @@ TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
 LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
 SteppedLineChart.storyName = 'Stepped Line Chart';
-LineChartWithDefaultColorTheme.storyName = 'Line Chart with Default Color Theme';
+LineChartWithDefaultColorTheme.storyName = 'Line Chart with  Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';
