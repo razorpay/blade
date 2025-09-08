@@ -17,7 +17,9 @@ import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
 import getIn from '~utils/lodashButBetter/get';
+import { throwBladeError } from '~utils/logger';
 
+const MAX_AREAS = 10;
 // BladeColorToken type for charts - only allows categorical chart colors for area charts
 export type BladeColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
@@ -57,6 +59,8 @@ export const Area: React.FC<AreaProps> = ({
   const { theme } = useTheme();
   const themeColors = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
   const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
+  const animationBegin = theme.motion.delay.gentle;
+  const animationDuration = theme.motion.duration.xgentle;
 
   return (
     <RechartsArea
@@ -71,6 +75,8 @@ export const Area: React.FC<AreaProps> = ({
       dot={dot}
       stackId={stackId}
       activeDot={activeDot}
+      animationBegin={animationBegin}
+      animationDuration={animationDuration}
     />
   );
 };
@@ -107,6 +113,12 @@ export const AreaChart: React.FC<AreaChartProps> = ({
   const modifiedChildren = React.useMemo(() => {
     let AreaChartIndex = 0;
     return React.Children.map(children, (child) => {
+      if (__DEV__ && AreaChartIndex >= MAX_AREAS) {
+        throwBladeError({
+          message: `Too many areas configured. Maximum allowed is ${MAX_AREAS}.`,
+          moduleName: 'AreaChart',
+        });
+      }
       if (React.isValidElement(child) && child.type === Area) {
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
