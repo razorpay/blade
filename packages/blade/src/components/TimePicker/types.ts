@@ -7,6 +7,7 @@ import type { TimeFieldState } from '@react-stately/datepicker';
 type TimeSegmentProps = {
   segment: DateSegment;
   state: TimeFieldState;
+  isDisabled?: boolean;
 };
 /**
  * Time format types supported by TimePicker

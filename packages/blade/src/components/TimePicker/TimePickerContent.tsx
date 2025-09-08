@@ -160,7 +160,7 @@ const TimePickerContent = ({
     <BaseBox
       display="flex"
       flexDirection="column"
-      height="249px"
+      height={showFooterActions ? '250px' : '196px'}
       width={isMobile ? '100%' : '198px'}
     >
       {/* Time Selection Wheels */}
@@ -194,17 +194,21 @@ const TimePickerContent = ({
           scrollContainerRef={minuteRef}
           tabIndex={activeWheelIndex === 1 ? 0 : -1}
         />
-        <Divider orientation="vertical" />
         {/* Period Wheel (only for 12-hour format) */}
+
         {is12HourFormat && (
-          <SpinWheel
-            label="Period"
-            values={periodValues}
-            selectedValue={currentPeriod}
-            onValueChange={handlePeriodChange}
-            scrollContainerRef={periodRef}
-            tabIndex={activeWheelIndex === 2 ? 0 : -1}
-          />
+          <>
+            <Divider orientation="vertical" />
+
+            <SpinWheel
+              label="Period"
+              values={periodValues}
+              selectedValue={currentPeriod}
+              onValueChange={handlePeriodChange}
+              scrollContainerRef={periodRef}
+              tabIndex={activeWheelIndex === 2 ? 0 : -1}
+            />
+          </>
         )}
       </StyledFadeContainer>
 

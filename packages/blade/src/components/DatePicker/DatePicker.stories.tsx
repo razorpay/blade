@@ -133,6 +133,7 @@ SingleDatePicker.args = {
   label: 'Select a date',
   selectionType: 'single',
   size: 'large',
+  isDisabled: true,
 };
 
 export const RangeDatePicker = DatePickerTemplate.bind({});

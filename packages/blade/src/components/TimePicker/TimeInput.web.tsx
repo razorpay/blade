@@ -62,6 +62,7 @@ const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
 const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentProps> = ({
   segment,
   state,
+  isDisabled,
 }) => {
   /* Filter out bi-directional text control characters (⁦⁩) that React Aria adds for RTL support
             but aren't needed for our UI - they appear as extra literal segments in some environments */
@@ -109,7 +110,16 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
         {segment.placeholder} {/* Placeholder text like "––" or "am" */}
       </BaseBox>
       {/* Show actual value when not placeholder, empty string when placeholder */}
-      {segment.isPlaceholder ? '' : segment.text}
+      <BaseBox
+        as="span"
+        style={{
+          color: isDisabled
+            ? theme.colors.surface.text.gray.disabled
+            : theme.colors.surface.text.gray.normal,
+        }}
+      >
+        {segment.isPlaceholder ? '' : segment.text}
+      </BaseBox>
     </StyledTimeSegment>
   );
 };
@@ -229,7 +239,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         {...otherReferenceProps}
       >
         {state.segments.map((segment, i) => {
-          return <TimeSegment key={i} segment={segment} state={state} />;
+          return <TimeSegment key={i} segment={segment} state={state} isDisabled={isDisabled} />;
         })}
       </BaseInput>
     </BaseBox>
