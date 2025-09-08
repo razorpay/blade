@@ -245,6 +245,7 @@ export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
   );
 };
 
+// Line Chart with Default Color Theme
 export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
@@ -261,9 +262,26 @@ export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
   );
 };
 
+//Line Chart with X and Y axis labels
+export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <LineChart data={chartData}>
+        <XAxis dataKey="month" label="Month" />
+        <YAxis label="Sales" />
+        <ChartToolTip />
+        <Legend />
+        <Line dataKey="teamA" name="Success" />
+        <Line dataKey="teamB" name="Errors" />
+      </LineChart>
+    </div>
+  );
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
 LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
 SteppedLineChart.storyName = 'Stepped Line Chart';
 LineChartWithDefaultColorTheme.storyName = 'Line Chart with Default Color Theme';
+LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';

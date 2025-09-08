@@ -39,6 +39,9 @@ export type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
 export const XAxis: React.FC<XAxisProps> = (props) => {
   const { theme } = useTheme();
+  const X_OFFSET = 32;
+  const Y_OFFSET = 14.5;
+  const TEXT_BASELINE = 24;
 
   return (
     <RechartsXAxis
@@ -53,8 +56,8 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
       stroke={theme.colors.surface.border.gray.muted}
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
-          x={viewBox.x + viewBox.width / 2 - 32}
-          y={viewBox.y + 14.5 + 24}
+          x={viewBox.x + viewBox.width / 2 - X_OFFSET}
+          y={viewBox.y + Y_OFFSET + TEXT_BASELINE}
           textAnchor="middle"
           fill={theme.colors.surface.text.gray.subtle}
           fontSize={theme.typography.fonts.size[75]}
