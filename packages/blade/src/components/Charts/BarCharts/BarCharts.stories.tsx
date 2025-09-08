@@ -151,13 +151,6 @@ export const BarChartWithInformationalColorTheme: StoryFn<typeof BarChart> = () 
         <Bar dataKey="seriesA" name="Series A" stackId="2" />
         <Bar dataKey="seriesB" name="Series B" stackId="2" />
         <Bar dataKey="seriesC" name="Series C" stackId="2" />
-        <Bar dataKey="seriesA" name="Series A" stackId="2" />
-        <Bar dataKey="seriesB" name="Series B" stackId="2" />
-        <Bar dataKey="seriesC" name="Series C" stackId="2" />
-        <Bar dataKey="seriesA" name="Series A" stackId="2" />
-        <Bar dataKey="seriesB" name="Series B" stackId="2" />
-        <Bar dataKey="seriesC" name="Series C" stackId="2" />
-        <Bar dataKey="seriesA" name="Series A" stackId="2" />
       </BarChart>
     </div>
   );

@@ -72,13 +72,20 @@ export const Bar: React.FC<BarProps> = ({
   dataKey,
   activeBar = false,
   label = false,
-  _index,
+  _index = 0,
   ...rest
 }) => {
   const { theme } = useTheme();
-  const { layout, activeIndex, colorTheme } = useBarChartContext();
+  const { layout, activeIndex, colorTheme, totalBars } = useBarChartContext();
   const defaultColorArray = useChartsColorTheme({ colorTheme });
-  const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index ?? 0];
+  const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
+  const isStacked = rest.stackId !== undefined;
+  const animationBegin = isStacked
+    ? (theme.motion.duration.gentle / totalBars) * _index
+    : theme.motion.duration.gentle;
+  const animationDuration = isStacked
+    ? theme.motion.duration.gentle / totalBars
+    : theme.motion.duration.gentle;
   return (
     <RechartsBar
       {...rest}
@@ -88,6 +95,8 @@ export const Bar: React.FC<BarProps> = ({
       legendType="rect"
       activeBar={activeBar}
       label={label}
+      animationBegin={animationBegin}
+      animationDuration={animationDuration}
       // https://github.com/recharts/recharts/issues/2244#issuecomment-2288572842
       shape={(props: unknown) => {
         const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
@@ -108,9 +117,6 @@ export const Bar: React.FC<BarProps> = ({
               rx={BAR_CHART_CORNER_RADIUS}
               ry={BAR_CHART_CORNER_RADIUS}
               fillOpacity={fillOpacity}
-              style={{
-                transition: 'fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
             />
           );
         }
@@ -124,9 +130,6 @@ export const Bar: React.FC<BarProps> = ({
             rx={BAR_CHART_CORNER_RADIUS}
             ry={BAR_CHART_CORNER_RADIUS}
             fillOpacity={fillOpacity}
-            style={{
-              transition: 'fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
           />
         );
       }}
@@ -142,9 +145,9 @@ export const BarChart: React.FC<BarChartProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
-  const barChartModifiedChildrens = React.useMemo(() => {
+  const { barChartModifiedChildrens, totalBars } = React.useMemo(() => {
     let BarChartIndex = 0;
-    return React.Children.map(children, (child) => {
+    const modifiedChildren = React.Children.map(children, (child) => {
       if (__DEV__ && BarChartIndex >= MAX_BARS) {
         throwBladeError({
           message: `Too many bars configured. Maximum allowed is ${MAX_BARS}.`,
@@ -158,11 +161,17 @@ export const BarChart: React.FC<BarChartProps> = ({
       }
       return child;
     });
-  }, [children]);
 
+    return {
+      barChartModifiedChildrens: modifiedChildren,
+      totalBars: BarChartIndex,
+    };
+  }, [children]);
   return (
     <BaseBox {...metaAttribute({ name: 'bar-chart' })} width="100%" height="100%">
-      <BarChartContext.Provider value={{ layout: props.layout, activeIndex, colorTheme }}>
+      <BarChartContext.Provider
+        value={{ layout: props.layout, activeIndex, colorTheme, totalBars }}
+      >
         <RechartsResponsiveContainer width="100%" height="100%">
           <RechartsBarChart
             {...props}
