@@ -132,6 +132,11 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * @default true
    */
   showFooterActions?: boolean;
+  /**
+   * Custom React element to render in the footer above/side of action buttons
+   * Can be used to add custom content like informational text, links, or other components
+   */
+  footer?: React.ReactElement;
 };
 
 type DatePickerProps<Type extends DateSelectionType> = Omit<

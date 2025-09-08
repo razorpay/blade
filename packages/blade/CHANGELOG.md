@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.49.6
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
 ## 12.49.5
 
 ### Patch Changes
