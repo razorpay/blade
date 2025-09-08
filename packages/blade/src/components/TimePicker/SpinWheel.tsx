@@ -148,7 +148,6 @@ const SpinWheel = ({
           height="100%"
           overflowY="auto"
           onScroll={handleScroll}
-          role="listbox"
         >
           {/* Invisible spacer at top - allows first item to scroll to center */}
           <BaseBox height="120px" flexShrink={0} />

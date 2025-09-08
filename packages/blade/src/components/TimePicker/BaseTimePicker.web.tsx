@@ -164,7 +164,7 @@ const _BaseTimePicker = ({
           <FloatingFocusManager
             initialFocus={-1}
             context={context}
-            guards={true}
+            guards={false}
             order={['reference', 'content']}
           >
             <BaseBox

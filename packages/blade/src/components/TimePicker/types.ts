@@ -159,13 +159,19 @@ type TimePickerSelectorProps = {
  */
 type TimePickerProps = Omit<
   TimePickerInputProps,
-  'inputRef' | 'refrenceProps' | 'successText' | 'errorText' | 'helpText' | 'time'
+  'inputRef' | 'refrenceProps' | 'successText' | 'errorText' | 'helpText' | 'time' | 'onChange'
 > &
   Omit<TimePickerSelectorProps, 'isOpen' | 'defaultIsOpen' | 'onOpenChange' | 'time'> & {
     /**
      * Current time value as Date object (for controlled usage)
      */
     value?: Date | null;
+
+    /**
+     * Callback fired when time value changes
+     * @param timeValue - Object containing the selected time
+     */
+    onChange?: (timeValue: TimePickerValue) => void;
 
     /**
      * Label for the time input
