@@ -182,7 +182,6 @@ const CustomSquareLegend = (props: {
               }}
             />
             {/* Legend text with custom color and size */}
-            {/* <span style={{ fontSize: '16px', color: '#333' }}>{entry.value}</span>{' '} */}
             <Text size="medium" color="surface.text.gray.muted">
               {entry.value}
             </Text>
@@ -229,8 +228,9 @@ const CustomReferenceLabel = ({
 
   const RECT_WIDTH = 80;
   const RECT_HEIGHT = 30;
+  const TEXT_BASELINE = 15;
   const rectX = x + width - RECT_WIDTH;
-  const rectY = y - 15;
+  const rectY = y - TEXT_BASELINE;
 
   // Padding for text inside the rectangle (4px vertical, 8px horizontal)
   const PADDING_VERTICAL = 4;
@@ -238,13 +238,13 @@ const CustomReferenceLabel = ({
 
   // Text position with padding inside the rectangle
   const textX = rectX + PADDING_HORIZONTAL + (RECT_WIDTH - PADDING_HORIZONTAL * 2) / 2;
-  const textY = rectY + PADDING_VERTICAL + 15; // +15 for text baseline
+  const textY = rectY + PADDING_VERTICAL + TEXT_BASELINE; // +15 for text baseline
 
   return (
     <g>
       <rect
-        x={x + width - 80}
-        y={y - 15}
+        x={x + width - RECT_WIDTH}
+        y={y - TEXT_BASELINE}
         width={RECT_WIDTH}
         height={RECT_HEIGHT}
         rx={theme.border.radius.medium}
