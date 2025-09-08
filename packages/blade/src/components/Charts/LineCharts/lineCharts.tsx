@@ -97,7 +97,7 @@ export const LineChart: React.FC<LineChartProps> = ({
   colorTheme = 'default',
   ...props
 }) => {
-  const childrenWithIndex = React.useMemo(() => {
+  const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Line) {
@@ -113,7 +113,7 @@ export const LineChart: React.FC<LineChartProps> = ({
   return (
     <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">
       <RechartsResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart {...props}>{childrenWithIndex}</RechartsLineChart>
+        <RechartsLineChart {...props}>{lineChartModifiedChildrens}</RechartsLineChart>
       </RechartsResponsiveContainer>
     </BaseBox>
   );
