@@ -31,10 +31,16 @@ export interface LineProps {
    * @private
    */
   _index?: number; // Add this for internal use
+  /**
+   * @private
+   */
+  _colorTheme?: 'default' | 'informational';
 }
 
 // TypeScript prop types
-export type LineChartProps = ComponentProps<typeof RechartsLineChart>;
+export type LineChartProps = ComponentProps<typeof RechartsLineChart> & {
+  colorTheme?: 'default' | 'informational';
+};
 
 export interface ReferenceLineProps {
   y?: number;
@@ -53,10 +59,11 @@ export const Line: React.FC<LineProps> = ({
   activeDot = false,
   showLegend = true,
   _index,
+  _colorTheme,
   ...props
 }) => {
   const { theme } = useTheme();
-  const colorIndex = useChartsColorTheme();
+  const colorIndex = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
   const colorToken = color ? getIn(theme.colors, color) : colorIndex[_index ?? 0];
 
   const strokeDasharray =
@@ -77,16 +84,23 @@ export const Line: React.FC<LineProps> = ({
 };
 
 // Main components
-export const LineChart: React.FC<LineChartProps> = ({ children, ...props }) => {
+export const LineChart: React.FC<LineChartProps> = ({
+  children,
+  colorTheme = 'default',
+  ...props
+}) => {
   const childrenWithIndex = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Line) {
-        return React.cloneElement(child, { _index: LineChartIndex++ } as Partial<LineProps>);
+        return React.cloneElement(child, {
+          _index: LineChartIndex++,
+          _colorTheme: colorTheme,
+        } as Partial<LineProps>);
       }
       return child;
     });
-  }, [children]);
+  }, [children, colorTheme]);
 
   return (
     <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">

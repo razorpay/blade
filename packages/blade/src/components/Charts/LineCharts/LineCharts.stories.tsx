@@ -248,14 +248,14 @@ export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
 export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <LineChart data={chartData}>
+      <LineChart data={chartData} colorTheme="informational">
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
         <ChartToolTip />
         <Legend />
-        <Line dataKey="teamA" name="Team A" />
-        <Line dataKey="teamB" name="Team B" />
+        <Line dataKey="teamA" name="Success" />
+        <Line dataKey="teamB" name="Errors" />
       </LineChart>
     </div>
   );
