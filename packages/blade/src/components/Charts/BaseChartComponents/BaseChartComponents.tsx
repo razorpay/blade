@@ -116,6 +116,7 @@ export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
   );
 };
 
+//REVIEW_NOTES: this might change
 export const ChartToolTip: React.FC<ChartToolTipProps> = (props) => {
   const { theme } = useTheme();
 

@@ -5,7 +5,7 @@ const useChartsColorTheme = ({
 }: {
   colorTheme: 'default' | 'informational';
 }): string[] => {
-  console.log('colorTheme', colorTheme);
+  //REVIEW_NOTES: THIS will change
   const { theme } = useTheme();
   const defaultColorThemeArray = [
     theme.colors.chart.background.categorical.azure.strong,
