@@ -69,6 +69,12 @@ export const Line: React.FC<LineProps> = ({
   const strokeDasharray =
     strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
 
+  const isLineDotted = strokeStyle === 'dashed';
+  const animationBegin = isLineDotted
+    ? theme.motion.delay.gentle + theme.motion.duration.xgentle
+    : theme.motion.delay.gentle;
+  const animationDuration = theme.motion.duration.xgentle;
+
   return (
     <RechartsLine
       stroke={colorToken}
@@ -78,6 +84,8 @@ export const Line: React.FC<LineProps> = ({
       activeDot={activeDot}
       dot={dot}
       legendType={showLegend ? 'line' : 'none'}
+      animationBegin={animationBegin}
+      animationDuration={animationDuration}
       {...props}
     />
   );
