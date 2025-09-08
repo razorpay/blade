@@ -70,6 +70,43 @@ const TimePickerContent = ({
 
   const is12HourFormat = timeFormat === '12h';
 
+  // Roving tabindex + focus management across wheels
+  const [activeWheelIndex, setActiveWheelIndex] = React.useState(0);
+  const hourRef = React.useRef<HTMLDivElement>(null);
+  const minuteRef = React.useRef<HTMLDivElement>(null);
+  const periodRef = React.useRef<HTMLDivElement>(null);
+
+  const wheelRefs = is12HourFormat ? [hourRef, minuteRef, periodRef] : [hourRef, minuteRef];
+
+  const focusWheel = (index: number) => {
+    setActiveWheelIndex(index);
+    // ensure tabindex update applies before focusing
+    requestAnimationFrame(() => {
+      wheelRefs[index]?.current?.focus();
+    });
+  };
+
+  const handleContainerKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // Up/Down should be handled by individual wheels; Left/Right move to next wheel
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      const next = Math.min(activeWheelIndex + 1, wheelRefs.length - 1);
+      if (next !== activeWheelIndex) focusWheel(next);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const prev = Math.max(activeWheelIndex - 1, 0);
+      if (prev !== activeWheelIndex) focusWheel(prev);
+    }
+  };
+
+  const handleContainerFocus = (e: React.FocusEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    const idx = wheelRefs.findIndex((ref) => ref.current === target);
+    if (idx !== -1 && idx !== activeWheelIndex) {
+      setActiveWheelIndex(idx);
+    }
+  };
+
   // Generate values for each wheel
   const hourValues = is12HourFormat
     ? Array.from({ length: 12 }, (_, i) => i + 1) // 1-12 for 12-hour
@@ -134,6 +171,8 @@ const TimePickerContent = ({
         justifyContent="center"
         alignItems="flex-start"
         margin={['spacing.4', 'spacing.0']}
+        onKeyDown={handleContainerKeyDown}
+        onFocus={handleContainerFocus}
       >
         {/* Hour Wheel */}
         <SpinWheel
@@ -141,6 +180,8 @@ const TimePickerContent = ({
           values={hourValues}
           selectedValue={currentHour}
           onValueChange={handleHourChange}
+          scrollContainerRef={hourRef}
+          tabIndex={activeWheelIndex === 0 ? 0 : -1}
         />
         <Divider orientation="vertical" />
         {/* Minute Wheel */}
@@ -150,6 +191,8 @@ const TimePickerContent = ({
           selectedValue={currentMinute}
           displayValue={displayMinute}
           onValueChange={handleMinuteChange}
+          scrollContainerRef={minuteRef}
+          tabIndex={activeWheelIndex === 1 ? 0 : -1}
         />
         <Divider orientation="vertical" />
         {/* Period Wheel (only for 12-hour format) */}
@@ -159,6 +202,8 @@ const TimePickerContent = ({
             values={periodValues}
             selectedValue={currentPeriod}
             onValueChange={handlePeriodChange}
+            scrollContainerRef={periodRef}
+            tabIndex={activeWheelIndex === 2 ? 0 : -1}
           />
         )}
       </StyledFadeContainer>

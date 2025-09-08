@@ -282,6 +282,14 @@ type SpinWheelProps = {
   label?: string;
   width?: string;
   /**
+   * Optional: control focus of internal scroll container from parent
+   */
+  scrollContainerRef?: React.Ref<HTMLDivElement>;
+  /**
+   * Optional: control tabIndex of internal scroll container for roving tabindex
+   */
+  tabIndex?: number;
+  /**
    * Optional display value for visual positioning when different from selectedValue.
    *
    * Used for minute steps: when user types "03" but minuteStep is 15,

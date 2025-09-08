@@ -34,6 +34,8 @@ const SpinWheel = ({
   activeIndex,
   onActiveIndexChange,
   displayValue,
+  scrollContainerRef,
+  tabIndex,
 }: SpinWheelProps): React.ReactElement => {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -144,10 +146,18 @@ const SpinWheel = ({
 
         {/* Scrollable container */}
         <StyledScrollContainer
-          ref={containerRef as any}
+          ref={(node: any) => {
+            (containerRef as any).current = node;
+            if (typeof scrollContainerRef === 'function') {
+              scrollContainerRef(node);
+            } else if (scrollContainerRef && 'current' in (scrollContainerRef as any)) {
+              (scrollContainerRef as any).current = node;
+            }
+          }}
           height="100%"
           overflowY="auto"
           onScroll={handleScroll}
+          tabIndex={typeof tabIndex === 'number' ? tabIndex : undefined}
         >
           {/* Invisible spacer at top - allows first item to scroll to center */}
           <BaseBox height="120px" flexShrink={0} />
