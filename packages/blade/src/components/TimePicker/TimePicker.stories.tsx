@@ -110,15 +110,15 @@ export default {
   },
 } as Meta<typeof TimePicker>;
 
-const TimePickerTemplate: StoryFn<typeof TimePicker> = ({ ...args }) => {
-  const [time, setTime] = useState<Date | null>(
-    args.isDisabled ? new Date('2024-01-01T14:30:00') : null,
-  );
+// Basic 12-hour TimePicker example
+export const BasicTimePicker: StoryFn<typeof TimePicker> = () => {
+  const [time, setTime] = useState<Date | null>(null);
 
   return (
     <TimePicker
-      {...args}
-      label="Select Time"
+      label="Select a time"
+      size="medium"
+      timeFormat="12h"
       value={time}
       onChange={({ value }) => {
         setTime(value);
@@ -127,34 +127,46 @@ const TimePickerTemplate: StoryFn<typeof TimePicker> = ({ ...args }) => {
     />
   );
 };
-
-// Basic 12-hour TimePicker example
-export const BasicTimePicker = TimePickerTemplate.bind({});
 BasicTimePicker.storyName = 'Basic';
-BasicTimePicker.args = {
-  label: 'Select a time',
-  size: 'medium',
-  timeFormat: '12h',
-};
 
 // 24-hour format example
-export const TwentyFourHourTimePicker = TimePickerTemplate.bind({});
-TwentyFourHourTimePicker.storyName = 'Twenty-Four Hour';
-TwentyFourHourTimePicker.args = {
-  label: 'Select a time',
-  size: 'medium',
-  timeFormat: '24h',
+export const TwentyFourHourTimePicker: StoryFn<typeof TimePicker> = () => {
+  const [time, setTime] = useState<Date | null>(null);
+
+  return (
+    <TimePicker
+      label="Select a time"
+      size="medium"
+      timeFormat="24h"
+      value={time}
+      onChange={({ value }) => {
+        setTime(value);
+        console.log('Selected time:', value);
+      }}
+    />
+  );
 };
+TwentyFourHourTimePicker.storyName = 'Twenty-Four Hour';
 
 // Disabled state
-export const DisabledTimePicker = TimePickerTemplate.bind({});
-DisabledTimePicker.storyName = 'Disabled';
-DisabledTimePicker.args = {
-  label: 'Select a time',
-  size: 'medium',
-  timeFormat: '24h',
-  isDisabled: true,
+export const DisabledTimePicker: StoryFn<typeof TimePicker> = () => {
+  const [time, setTime] = useState<Date | null>(new Date('2024-01-01T14:30:00'));
+
+  return (
+    <TimePicker
+      label="Select a time"
+      size="medium"
+      timeFormat="24h"
+      isDisabled={true}
+      value={time}
+      onChange={({ value }) => {
+        setTime(value);
+        console.log('Selected time:', value);
+      }}
+    />
+  );
 };
+DisabledTimePicker.storyName = 'Disabled';
 
 // Controlled TimePicker example with state management
 export const ControlledTimePicker: StoryFn<typeof TimePicker> = () => {
@@ -325,7 +337,7 @@ export const LabelPositions: StoryFn<typeof TimePicker> = () => {
 
       <Box display="flex" flexDirection="column" gap="spacing.5">
         {/* Default top position */}
-        <TimePickerTemplate
+        <TimePicker
           label="Meeting Time"
           labelPosition="top"
           labelSuffix={
@@ -339,7 +351,7 @@ export const LabelPositions: StoryFn<typeof TimePicker> = () => {
         />
 
         {/* Left position */}
-        <TimePickerTemplate
+        <TimePicker
           label="Start Time"
           labelPosition="left"
           labelSuffix={
@@ -369,21 +381,17 @@ export const MinuteSteps: StoryFn<typeof TimePicker> = () => {
       </Text>
 
       <Box display="flex" flexDirection="column" gap="spacing.5" maxWidth="400px">
-        <TimePickerTemplate
+        <TimePicker
           label="1-minute intervals (Default)"
           minuteStep={1}
           helpText="All minutes available"
         />
 
-        <TimePickerTemplate
-          label="5-minute intervals"
-          minuteStep={5}
-          helpText="00, 05, 10, 15, 20, etc."
-        />
+        <TimePicker label="5-minute intervals" minuteStep={5} helpText="00, 05, 10, 15, 20, etc." />
 
-        <TimePickerTemplate label="15-minute intervals" minuteStep={15} helpText="00, 15, 30, 45" />
+        <TimePicker label="15-minute intervals" minuteStep={15} helpText="00, 15, 30, 45" />
 
-        <TimePickerTemplate label="30-minute intervals" minuteStep={30} helpText="00, 30" />
+        <TimePicker label="30-minute intervals" minuteStep={30} helpText="00, 30" />
       </Box>
     </Box>
   );
