@@ -48,9 +48,9 @@ export interface CellProps {
 
 // Radius mapping for different sizes
 const RADIUS_MAPPING = {
-  small: { outerRadius: 80, innerRadius: 51 },
-  medium: { outerRadius: 121, innerRadius: 77 },
-  large: { outerRadius: 160, innerRadius: 132 },
+  small: { outerRadius: 80, innerRadius: 52 },
+  medium: { outerRadius: 120, innerRadius: 80 },
+  large: { outerRadius: 162, innerRadius: 100 },
 };
 
 // Cell component - resolves Blade color tokens to actual colors
