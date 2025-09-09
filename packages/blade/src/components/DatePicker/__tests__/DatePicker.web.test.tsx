@@ -44,7 +44,7 @@ describe('<DatePicker/> ', () => {
     const user = userEvent.setup();
     const { getByRole, queryByText } = renderWithTheme(<DatePicker />);
 
-    const input = getByRole('textbox', { name: /Select Date/i });
+    const input = getByRole('combobox', { name: /Select Date/i });
     await user.click(input);
 
     await waitFor(() => expect(queryByText('Sun')).toBeVisible());
