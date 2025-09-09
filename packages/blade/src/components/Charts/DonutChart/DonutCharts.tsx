@@ -32,7 +32,7 @@ export interface DonutChartProps extends Omit<ComponentProps<typeof RechartsPieC
   nameKey: string;
   cx?: string | number;
   cy?: string | number;
-  radius?: 'small' | 'medium' | 'large' | 'extraLarge' | 'none';
+  radius?: 'small' | 'medium' | 'large';
   activeShape?: React.ReactElement | ((props: any) => React.ReactElement);
   centerText?: string;
   type?: 'donut' | 'pie';
@@ -46,25 +46,11 @@ export interface CellProps {
   strokeWidth?: number;
 }
 
-// Default categorical palette order for auto-assignment when color isn't provided
-const DEFAULT_CATEGORICAL_COLOR_TOKENS: BladeColorToken[] = [
-  'chart.background.categorical.azure.moderate',
-  'chart.background.categorical.emerald.moderate',
-  'chart.background.categorical.crimson.moderate',
-  'chart.background.categorical.cider.moderate',
-  'chart.background.categorical.sapphire.moderate',
-  'chart.background.categorical.orchid.moderate',
-  'chart.background.categorical.magenta.moderate',
-  'chart.background.categorical.gray.moderate',
-];
-
 // Radius mapping for different sizes
 const RADIUS_MAPPING = {
-  small: { outerRadius: 60, innerRadius: 40 },
-  medium: { outerRadius: 80, innerRadius: 50 },
-  large: { outerRadius: 100, innerRadius: 60 },
-  extraLarge: { outerRadius: 120, innerRadius: 70 },
-  none: { outerRadius: 80, innerRadius: 0 },
+  small: { outerRadius: 80, innerRadius: 51 },
+  medium: { outerRadius: 121, innerRadius: 77 },
+  large: { outerRadius: 160, innerRadius: 132 },
 };
 
 // Cell component - resolves Blade color tokens to actual colors
@@ -160,36 +146,10 @@ export const DonutChart: React.FC<DonutChartProps> = ({
 }) => {
   const { theme } = useTheme();
 
-  // const processed = React.useMemo(() => {
-  //   const kids = React.Children.toArray(children);
-
-  //   // Assign colors if not provided
-  //   const coloredKids: React.ReactNode[] = [];
-  //   let autoColorIdx = 0;
-
-  //   kids.forEach((child) => {
-  //     if (!React.isValidElement(child) || (child.type as React.ComponentType<CellProps>) !== Cell) {
-  //       coloredKids.push(child);
-  //       return;
-  //     }
-
-  //     const incomingColor = child.props.color as BladeColorToken | undefined;
-  //     const resolvedColor =
-  //       incomingColor ??
-  //       DEFAULT_CATEGORICAL_COLOR_TOKENS[autoColorIdx++ % DEFAULT_CATEGORICAL_COLOR_TOKENS.length];
-
-  //     coloredKids.push(
-  //       React.cloneElement(child as React.ReactElement<CellProps>, {
-  //         color: resolvedColor,
-  //       }),
-  //     );
-  //   });
-
-  //   return { children: coloredKids };
-  // }, [children]);
-
   const radiusConfig = RADIUS_MAPPING[radius];
   const isDonut = type === 'donut';
+
+  // Calculate the diameter based on outerRadius
 
   return (
     <BaseBox {...metaAttribute({ name: 'donut-chart' })} width="100%" height="100%">
