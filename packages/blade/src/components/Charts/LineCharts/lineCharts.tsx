@@ -12,6 +12,9 @@ import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
 import getIn from '~utils/lodashButBetter/get';
+import { throwBladeError } from '~utils/logger';
+
+const MAX_LINES = 10;
 
 // BladeColorToken type for charts - only allows categorical chart colors for line charts
 export type BladeColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
@@ -97,9 +100,16 @@ export const LineChart: React.FC<LineChartProps> = ({
   colorTheme = 'default',
   ...props
 }) => {
-  const childrenWithIndex = React.useMemo(() => {
+  const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
+      if (__DEV__ && LineChartIndex >= MAX_LINES) {
+        throwBladeError({
+          message: `Too many lines configured. Maximum allowed is ${MAX_LINES}.`,
+          moduleName: 'LineChart',
+        });
+      }
+
       if (React.isValidElement(child) && child.type === Line) {
         return React.cloneElement(child, {
           _index: LineChartIndex++,
@@ -113,7 +123,7 @@ export const LineChart: React.FC<LineChartProps> = ({
   return (
     <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">
       <RechartsResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart {...props}>{childrenWithIndex}</RechartsLineChart>
+        <RechartsLineChart {...props}>{lineChartModifiedChildrens}</RechartsLineChart>
       </RechartsResponsiveContainer>
     </BaseBox>
   );

@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.49.7
+
+### Patch Changes
+
+- 781cc325f: fix(blade): Double focus ring in DatePicker and Input
+
 ## 12.49.6
 
 ### Patch Changes
