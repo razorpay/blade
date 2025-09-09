@@ -276,3 +276,22 @@ StackedAreaChart.storyName = 'Stacked Area Chart';
 AreaChartConnectNulls.storyName = 'Area Chart (Connect Nulls)';
 TinyAreaChart.storyName = 'Tiny Area Chart';
 AreaChartWithReferenceLine.storyName = 'Area Chart with Reference Line';
+
+// Area Chart with Default Color Theme
+export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <AreaChart data={chartData} colorTheme="informational">
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Area dataKey="teamA" name="Success" />
+        <Area dataKey="teamB" name="Errors" />
+      </AreaChart>
+    </div>
+  );
+};
+
+AreaChartWithDefaultColorTheme.storyName = 'Area Chart with Color Theme';
