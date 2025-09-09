@@ -85,7 +85,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   gap: 0px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c11.c11.c11.c11.c11 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
+}
+
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -104,13 +109,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   min-height: 36px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -127,7 +132,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   align-self: stretch;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -142,7 +147,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   padding-right: 12px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -158,11 +163,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   height: 100%;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   margin-left: 0px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -216,18 +221,18 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: none;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -260,7 +265,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   cursor: auto;
 }
 
-.c16.c16.c16.c16.c16::-webkit-input-placeholder {
+.c17.c17.c17.c17.c17::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -278,7 +283,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::-moz-placeholder {
+.c17.c17.c17.c17.c17::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -296,7 +301,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:-ms-input-placeholder {
+.c17.c17.c17.c17.c17:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -314,7 +319,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::placeholder {
+.c17.c17.c17.c17.c17::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -332,11 +337,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:focus {
+.c17.c17.c17.c17.c17:focus {
   outline: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -361,7 +366,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover {
+.c12.c12.c12.c12.c12:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -388,7 +393,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:focus-within {
+.c12.c12.c12.c12.c12:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -413,13 +418,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-animation: none;
   animation: none;
   max-height: 36px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -427,7 +432,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   scrollbar-width: none;
 }
 
-.c14.c14.c14.c14.c14::-webkit-scrollbar {
+.c15.c15.c15.c15.c15::-webkit-scrollbar {
   display: none;
 }
 
@@ -535,15 +540,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
               data-blade-component="base-box"
             >
               <div
-                class=" c11 c12 __blade-base-input-wrapper"
+                class="c11 c12 c13 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13 c14 tags-slot"
+                  class="c14 c15 tags-slot"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c15"
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <input
@@ -555,7 +560,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c16"
+                      class="c17"
                       data-analytics-name="dropdown-fruits"
                       data-blade-component="styled-base-input"
                       id="dropdown-123"
@@ -567,24 +572,24 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
                   </div>
                 </div>
                 <div
-                  class="c17"
+                  class="c18"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c17"
+                    class="c18"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c18"
+                      class="c19"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c20"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c20"
+                          class="c21"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -601,7 +606,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c21"
+                          class="c22"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -624,11 +629,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
             </div>
           </div>
           <div
-            class="c22"
+            class="c23"
             data-blade-component="base-box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="base-box"
             />
           </div>
@@ -724,13 +729,18 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   gap: 0px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c11.c11.c11.c11.c11 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
+}
+
+.c16.c16.c16.c16.c16 {
   margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -747,7 +757,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   align-self: stretch;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -762,7 +772,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-right: 12px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -778,11 +788,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 100%;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   margin-left: 0px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -796,7 +806,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   justify-content: flex-end;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -807,14 +817,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 100%;
 }
 
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   overflow: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c31.c31.c31.c31.c31 {
+.c32.c32.c32.c32.c32 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -822,7 +832,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   touch-action: none;
 }
 
-.c32.c32.c32.c32.c32 {
+.c33.c33.c33.c33.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -837,13 +847,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   user-select: none;
 }
 
-.c33.c33.c33.c33.c33 {
+.c34.c34.c34.c34.c34 {
   position: absolute;
   top: 0px;
   right: 0px;
 }
 
-.c35.c35.c35.c35.c35 {
+.c36.c36.c36.c36.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -862,16 +872,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   width: 100%;
 }
 
-.c36.c36.c36.c36.c36 {
+.c37.c37.c37.c37.c37 {
   width: 100%;
 }
 
-.c40.c40.c40.c40.c40 {
+.c41.c41.c41.c41.c41 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c42.c42.c42.c42.c42 {
+.c43.c43.c43.c43.c43 {
   overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -882,7 +892,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-shrink: 1;
 }
 
-.c46.c46.c46.c46.c46 {
+.c47.c47.c47.c47.c47 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -898,7 +908,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   width: 100%;
 }
 
-.c47.c47.c47.c47.c47 {
+.c48.c48.c48.c48.c48 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -914,7 +924,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 20px;
 }
 
-.c48.c48.c48.c48.c48 {
+.c49.c49.c49.c49.c49 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -926,7 +936,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-left: 0px;
 }
 
-.c49.c49.c49.c49.c49 {
+.c50.c50.c50.c50.c50 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -941,11 +951,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 20px;
 }
 
-.c51.c51.c51.c51.c51 {
+.c52.c52.c52.c52.c52 {
   margin-left: auto;
 }
 
-.c52.c52.c52.c52.c52 {
+.c53.c53.c53.c53.c53 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -956,11 +966,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   touch-action: none;
 }
 
-.c53.c53.c53.c53.c53 {
+.c54.c54.c54.c54.c54 {
   padding: 16px;
 }
 
-.c56.c56.c56.c56.c56 {
+.c57.c57.c57.c57.c57 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -982,7 +992,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   z-index: 1;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1001,7 +1011,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   min-height: 36px;
 }
 
-.c43.c43.c43.c43.c43 {
+.c44.c44.c44.c44.c44 {
   overflow: auto;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -1009,7 +1019,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-left: 8px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   position: fixed;
   z-index: 100;
   top: 0px;
@@ -1020,7 +1030,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   opacity: 1;
 }
 
-.c54.c54.c54.c54.c54 {
+.c55.c55.c55.c55.c55 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -1057,24 +1067,24 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   position: relative;
 }
 
-.c54.c54.c54.c54.c54:hover {
+.c55.c55.c55.c55.c55:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c54.c54.c54.c54.c54:active {
+.c55.c55.c55.c55.c55:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c54.c54.c54.c54.c54:focus-visible {
+.c55.c55.c55.c55.c55:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c54.c54.c54.c54.c54 * {
+.c55.c55.c55.c55.c55 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -1083,7 +1093,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c55.c55.c55.c55.c55 {
+.c56.c56.c56.c56.c56 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1133,7 +1143,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1157,7 +1167,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   overflow-wrap: break-word;
 }
 
-.c50.c50.c50.c50.c50 {
+.c51.c51.c51.c51.c51 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1181,7 +1191,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   word-break: break-all;
 }
 
-.c58.c58.c58.c58.c58 {
+.c59.c59.c59.c59.c59 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1199,22 +1209,22 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: none;
 }
 
-.c57.c57.c57.c57.c57 {
+.c58.c58.c58.c58.c58 {
   opacity: 1;
 }
 
-.c34.c34.c34.c34.c34 {
+.c35.c35.c35.c35.c35 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -1241,12 +1251,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c34.c34.c34.c34.c34:hover:not([disabled]) {
+.c35.c35.c35.c35.c35:hover:not([disabled]) {
   color: hsla(211,26%,34%,1);
   background-color: transparent;
 }
 
-.c34.c34.c34.c34.c34:focus-visible {
+.c35.c35.c35.c35.c35:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1259,11 +1269,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   color: hsla(211,26%,34%,1);
 }
 
-.c34.c34.c34.c34.c34:active {
+.c35.c35.c35.c35.c35:active {
   color: hsla(211,26%,34%,1);
 }
 
-.c41.c41.c41.c41.c41 {
+.c42.c42.c42.c42.c42 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -1273,7 +1283,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-grow: 1;
 }
 
-.c39.c39.c39.c39.c39 {
+.c40.c40.c40.c40.c40 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1306,7 +1316,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   cursor: auto;
 }
 
-.c39.c39.c39.c39.c39::-webkit-input-placeholder {
+.c40.c40.c40.c40.c40::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1324,7 +1334,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c39.c39.c39.c39.c39::-moz-placeholder {
+.c40.c40.c40.c40.c40::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1342,7 +1352,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c39.c39.c39.c39.c39:-ms-input-placeholder {
+.c40.c40.c40.c40.c40:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1360,7 +1370,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c39.c39.c39.c39.c39::placeholder {
+.c40.c40.c40.c40.c40::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1378,11 +1388,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c39.c39.c39.c39.c39:focus {
+.c40.c40.c40.c40.c40:focus {
   outline: none;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1415,7 +1425,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   cursor: auto;
 }
 
-.c16.c16.c16.c16.c16::-webkit-input-placeholder {
+.c17.c17.c17.c17.c17::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1433,7 +1443,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::-moz-placeholder {
+.c17.c17.c17.c17.c17::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1451,7 +1461,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:-ms-input-placeholder {
+.c17.c17.c17.c17.c17:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1469,7 +1479,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::placeholder {
+.c17.c17.c17.c17.c17::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1487,11 +1497,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:focus {
+.c17.c17.c17.c17.c17:focus {
   outline: none;
 }
 
-.c38.c38.c38.c38.c38 {
+.c39.c39.c39.c39.c39 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1516,7 +1526,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c38.c38.c38.c38.c38:hover {
+.c39.c39.c39.c39.c39:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1543,7 +1553,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c38.c38.c38.c38.c38:focus-within {
+.c39.c39.c39.c39.c39:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1566,92 +1576,92 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-duration: 480ms;
   -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
   transition-easing: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11 {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
-}
-
-.c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11:focus-within {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 640ms;
-  transition-duration: 640ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c12.c12.c12.c12.c12 {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c12.c12.c12.c12.c12:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c12.c12.c12.c12.c12:focus-within {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c13.c13.c13.c13.c13 {
   -webkit-animation: none;
   animation: none;
   max-height: 36px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -1659,7 +1669,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   scrollbar-width: none;
 }
 
-.c14.c14.c14.c14.c14::-webkit-scrollbar {
+.c15.c15.c15.c15.c15::-webkit-scrollbar {
   display: none;
 }
 
@@ -1677,12 +1687,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   word-wrap: normal;
 }
 
-.c37.c37.c37.c37.c37 {
+.c38.c38.c38.c38.c38 {
   border-radius: 4px;
   width: 100%;
 }
 
-.c37.c37.c37.c37.c37:focus-within {
+.c38.c38.c38.c38.c38:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1711,15 +1721,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   z-index: 2;
 }
 
-.c44.c44.c44.c44.c44 {
+.c45.c45.c45.c45.c45 {
   overflow-y: auto;
 }
 
-.c44.c44.c44.c44.c44 [role=group]:last-child > [role=separator]:last-child {
+.c45.c45.c45.c45.c45 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c45.c45.c45.c45.c45 {
+.c46.c46.c46.c46.c46 {
   border-width: 0px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1740,12 +1750,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 4px;
 }
 
-.c45.c45.c45.c45.c45:hover:not([aria-disabled=true]),
-.c45.c45.c45.c45.c45[aria-expanded="true"] {
+.c46.c46.c46.c46.c46:hover:not([aria-disabled=true]),
+.c46.c46.c46.c46.c46[aria-expanded="true"] {
   background-color: hsla(211,20%,52%,0.12);
 }
 
-.c45.c45.c45.c45.c45:focus-visible {
+.c46.c46.c46.c46.c46:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1757,15 +1767,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   z-index: 2;
 }
 
-.c45.c45.c45.c45.c45[aria-selected=true] {
+.c46.c46.c46.c46.c46[aria-selected=true] {
   background-color: hsla(227,100%,59%,0.09);
 }
 
-.c45.c45.c45.c45.c45[aria-selected=true]:hover {
+.c46.c46.c46.c46.c46[aria-selected=true]:hover {
   background-color: hsla(227,100%,59%,0.18);
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
   -webkit-transition-duration: 280ms;
   transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(0,0,0.2,1);
@@ -1775,7 +1785,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-property: opacity;
 }
 
-.c29.c29.c29.c29.c29 {
+.c30.c30.c30.c30.c30 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1802,7 +1812,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   z-index: 100;
 }
 
-.c29.c29.c29.c29.c29:after {
+.c30.c30.c30.c30.c30:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1811,7 +1821,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   border-radius: 16px;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1846,7 +1856,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 @media screen and (min-width:768px) {
-  .c31.c31.c31.c31.c31 {
+  .c32.c32.c32.c32.c32 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -1855,43 +1865,43 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 @media screen and (min-width:320px) {
-  .c40.c40.c40.c40.c40 {
+  .c41.c41.c41.c41.c41 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c40.c40.c40.c40.c40 {
+  .c41.c41.c41.c41.c41 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c40.c40.c40.c40.c40 {
+  .c41.c41.c41.c41.c41 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c40.c40.c40.c40.c40 {
+  .c41.c41.c41.c41.c41 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c40.c40.c40.c40.c40 {
+  .c41.c41.c41.c41.c41 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c53.c53.c53.c53.c53 {
+  .c54.c54.c54.c54.c54 {
     padding: 20px;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c45.c45.c45.c45.c45 {
+  .c46.c46.c46.c46.c46 {
     padding: 8px;
   }
 }
@@ -1984,15 +1994,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               data-blade-component="base-box"
             >
               <div
-                class=" c11 c12 __blade-base-input-wrapper"
+                class="c11 c12 c13 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13 c14 tags-slot"
+                  class="c14 c15 tags-slot"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c15"
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <button
@@ -2005,7 +2015,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c16"
+                      class="c17"
                       data-blade-component="styled-base-input"
                       id="dropdown-123"
                       placeholder="Select Option"
@@ -2014,7 +2024,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       value=""
                     >
                       <p
-                        class="c17"
+                        class="c18"
                         data-blade-component="text"
                       >
                         Select Option
@@ -2023,24 +2033,24 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   </div>
                 </div>
                 <div
-                  class="c18"
+                  class="c19"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c18"
+                    class="c19"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c19"
+                      class="c20"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c20"
+                        class="c21"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c21"
+                          class="c22"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -2057,7 +2067,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c22"
+                          class="c23"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -2080,40 +2090,40 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             </div>
           </div>
           <div
-            class="c23"
+            class="c24"
             data-blade-component="base-box"
           >
             <div
-              class="c24"
+              class="c25"
               data-blade-component="base-box"
             />
           </div>
         </div>
       </div>
       <div
-        class="c25 c26"
+        class="c26 c27"
         data-blade-component="base-box"
         data-testid="bottomsheet-backdrop"
         opacity="1"
       />
       <div
         aria-modal="true"
-        class="c27"
+        class="c28"
         data-blade-component="bottom-sheet"
         data-testid="bottomsheet-surface"
         role="dialog"
         style="opacity: 1; pointer-events: all; height: 652.8px; bottom: 0px; z-index: 100;"
       >
         <div
-          class="c28"
+          class="c29"
           data-blade-component="base-box"
         >
           <div
-            class="c29"
+            class="c30"
             data-blade-component="BottomSheetGrabHandle"
           />
           <div
-            class="c30"
+            class="c31"
             data-blade-component="bottom-sheet-header"
           >
             <div
@@ -2121,20 +2131,20 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               data-blade-component="base-box"
             >
               <div
-                class="c31"
+                class="c32"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c32"
+                  class="c33"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c33"
+                    class="c34"
                     data-blade-component="box"
                   >
                     <button
                       aria-label="Close"
-                      class="c34"
+                      class="c35"
                       data-blade-component="icon-button"
                       type="button"
                     >
@@ -2157,11 +2167,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   </div>
                 </div>
                 <div
-                  class="c35"
+                  class="c36"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c36"
+                    class="c37"
                     data-blade-component="box"
                   >
                     <div
@@ -2225,19 +2235,19 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             </label>
                           </div>
                           <div
-                            class=" c37 focus-ring-wrapper"
+                            class=" c38 focus-ring-wrapper"
                             data-blade-component="base-box"
                           >
                             <div
-                              class=" c38 c12 __blade-base-input-wrapper"
+                              class="c11 c39 c13 __blade-base-input-wrapper"
                               data-blade-component="base-box"
                             >
                               <div
-                                class="c13 c14 tags-slot"
+                                class="c14 c15 tags-slot"
                                 data-blade-component="base-box"
                               >
                                 <div
-                                  class="c15"
+                                  class="c16"
                                   data-blade-component="base-box"
                                 >
                                   <input
@@ -2249,7 +2259,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                                     aria-required="false"
                                     autocomplete="off"
                                     autofocus=""
-                                    class="c39"
+                                    class="c40"
                                     data-blade-component="styled-base-input"
                                     id="dropdown-123"
                                     placeholder="Select Option"
@@ -2264,11 +2274,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                           </div>
                         </div>
                         <div
-                          class="c23"
+                          class="c24"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c24"
+                            class="c25"
                             data-blade-component="base-box"
                           />
                         </div>
@@ -2278,29 +2288,29 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 </div>
               </div>
               <div
-                class="c40 c41"
+                class="c41 c42"
                 data-blade-component="divider"
                 role="separator"
               />
             </div>
           </div>
           <div
-            class="c42"
+            class="c43"
             data-blade-component="bottom-sheet-body"
             data-testid="bottomsheet-body"
             style="user-select: auto;"
           >
             <div
-              class="c43"
+              class="c44"
               data-blade-component="base-box"
             >
               <div
-                class=" c44"
+                class=" c45"
                 data-blade-component="base-box"
               >
                 <button
                   aria-selected="false"
-                  class=" c45 active-focus"
+                  class=" c46 active-focus"
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
@@ -2310,23 +2320,23 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c46"
+                    class="c47"
                     data-blade-component="box"
                   >
                     <div
-                      class="c47"
+                      class="c48"
                       data-blade-component="box"
                     />
                     <div
-                      class="c48"
+                      class="c49"
                       data-blade-component="box"
                     >
                       <div
-                        class="c49"
+                        class="c50"
                         data-blade-component="box"
                       >
                         <p
-                          class="c50"
+                          class="c51"
                           data-blade-component="text"
                         >
                           Apple
@@ -2338,14 +2348,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       />
                     </div>
                     <div
-                      class="c51"
+                      class="c52"
                       data-blade-component="box"
                     />
                   </div>
                 </button>
                 <button
                   aria-selected="false"
-                  class=" c45"
+                  class=" c46"
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
@@ -2355,23 +2365,23 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c46"
+                    class="c47"
                     data-blade-component="box"
                   >
                     <div
-                      class="c47"
+                      class="c48"
                       data-blade-component="box"
                     />
                     <div
-                      class="c48"
+                      class="c49"
                       data-blade-component="box"
                     >
                       <div
-                        class="c49"
+                        class="c50"
                         data-blade-component="box"
                       >
                         <p
-                          class="c50"
+                          class="c51"
                           data-blade-component="text"
                         >
                           Mango
@@ -2383,7 +2393,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       />
                     </div>
                     <div
-                      class="c51"
+                      class="c52"
                       data-blade-component="box"
                     />
                   </div>
@@ -2392,16 +2402,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             </div>
           </div>
           <div
-            class="c52"
+            class="c53"
             data-blade-component="bottom-sheet-footer"
           >
             <div
-              class="c40 c41"
+              class="c41 c42"
               data-blade-component="divider"
               role="separator"
             />
             <div
-              class="c53"
+              class="c54"
               data-blade-component="base-box"
             >
               <div
@@ -2409,21 +2419,21 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 data-blade-component="box"
               >
                 <button
-                  class="c54"
+                  class="c55"
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
-                    class=" c55"
+                    class=" c56"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c56 c57"
+                      class="c57 c58"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c58"
+                        class="c59"
                         data-blade-component="base-text"
                       >
                         Apply
@@ -2526,7 +2536,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   gap: 0px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c11.c11.c11.c11.c11 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
+}
+
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2545,13 +2560,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   min-height: 48px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2568,7 +2583,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   align-self: stretch;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2583,7 +2598,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding-right: 12px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2599,11 +2614,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: 100%;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   margin-left: 0px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2657,18 +2672,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: none;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2701,7 +2716,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   cursor: auto;
 }
 
-.c16.c16.c16.c16.c16::-webkit-input-placeholder {
+.c17.c17.c17.c17.c17::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2719,7 +2734,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::-moz-placeholder {
+.c17.c17.c17.c17.c17::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2737,7 +2752,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:-ms-input-placeholder {
+.c17.c17.c17.c17.c17:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2755,7 +2770,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::placeholder {
+.c17.c17.c17.c17.c17::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -2773,11 +2788,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:focus {
+.c17.c17.c17.c17.c17:focus {
   outline: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -2802,7 +2817,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover {
+.c12.c12.c12.c12.c12:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -2829,7 +2844,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:focus-within {
+.c12.c12.c12.c12.c12:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -2854,13 +2869,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-animation: none;
   animation: none;
   max-height: 48px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -2868,7 +2883,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   scrollbar-width: none;
 }
 
-.c14.c14.c14.c14.c14::-webkit-scrollbar {
+.c15.c15.c15.c15.c15::-webkit-scrollbar {
   display: none;
 }
 
@@ -3004,15 +3019,15 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
               data-blade-component="base-box"
             >
               <div
-                class=" c11 c12 __blade-base-input-wrapper"
+                class="c11 c12 c13 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13 c14 tags-slot"
+                  class="c14 c15 tags-slot"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c15"
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <input
@@ -3024,7 +3039,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c16"
+                      class="c17"
                       data-blade-component="styled-base-input"
                       id="dropdown-123"
                       placeholder="Select Option"
@@ -3035,24 +3050,24 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                   </div>
                 </div>
                 <div
-                  class="c17"
+                  class="c18"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c17"
+                    class="c18"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c18"
+                      class="c19"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c20"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c20"
+                          class="c21"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -3069,7 +3084,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c21"
+                          class="c22"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -3092,11 +3107,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
             </div>
           </div>
           <div
-            class="c22"
+            class="c23"
             data-blade-component="base-box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="base-box"
             />
           </div>
@@ -3192,13 +3207,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   gap: 0px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c11.c11.c11.c11.c11 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
+}
+
+.c16.c16.c16.c16.c16 {
   margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3215,7 +3235,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   align-self: stretch;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3230,7 +3250,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding-right: 12px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3246,11 +3266,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: 100%;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   margin-left: 0px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3264,7 +3284,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   justify-content: flex-end;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3323,18 +3343,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: none;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3367,7 +3387,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   cursor: auto;
 }
 
-.c16.c16.c16.c16.c16::-webkit-input-placeholder {
+.c17.c17.c17.c17.c17::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3385,7 +3405,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::-moz-placeholder {
+.c17.c17.c17.c17.c17::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3403,7 +3423,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:-ms-input-placeholder {
+.c17.c17.c17.c17.c17:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3421,7 +3441,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16::placeholder {
+.c17.c17.c17.c17.c17::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3439,11 +3459,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16:focus {
+.c17.c17.c17.c17.c17:focus {
   outline: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -3468,7 +3488,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c11.c11.c11.c11.c11:hover {
+.c12.c12.c12.c12.c12:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -3495,7 +3515,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:focus-within {
+.c12.c12.c12.c12.c12:focus-within {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -3520,13 +3540,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-animation: none;
   animation: none;
   max-height: 36px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -3534,7 +3554,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   scrollbar-width: none;
 }
 
-.c14.c14.c14.c14.c14::-webkit-scrollbar {
+.c15.c15.c15.c15.c15::-webkit-scrollbar {
   display: none;
 }
 
@@ -3674,15 +3694,15 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               data-blade-component="base-box"
             >
               <div
-                class=" c11 c12 __blade-base-input-wrapper"
+                class="c11 c12 c13 __blade-base-input-wrapper"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13 c14 tags-slot"
+                  class="c14 c15 tags-slot"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c15"
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <input
@@ -3695,7 +3715,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                       aria-invalid="false"
                       aria-required="false"
                       autocomplete="off"
-                      class="c16"
+                      class="c17"
                       data-blade-component="styled-base-input"
                       id="dropdown-123"
                       placeholder="Select Option"
@@ -3706,24 +3726,24 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   </div>
                 </div>
                 <div
-                  class="c17"
+                  class="c18"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c17"
+                    class="c18"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c18"
+                      class="c19"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c20"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c20"
+                          class="c21"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -3740,7 +3760,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c21"
+                          class="c22"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -3763,11 +3783,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
             </div>
           </div>
           <div
-            class="c22"
+            class="c23"
             data-blade-component="base-box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="base-box"
             />
           </div>

@@ -76,11 +76,16 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   gap: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
-  margin-left: 0px;
+.c9.c9.c9.c9.c9 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
 }
 
 .c12.c12.c12.c12.c12 {
+  margin-left: 0px;
+}
+
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -134,7 +139,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -166,7 +171,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   cursor: auto;
 }
 
-.c10.c10.c10.c10.c10::-webkit-input-placeholder {
+.c11.c11.c11.c11.c11::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -183,7 +188,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::-moz-placeholder {
+.c11.c11.c11.c11.c11::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -200,7 +205,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:-ms-input-placeholder {
+.c11.c11.c11.c11.c11:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -217,7 +222,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::placeholder {
+.c11.c11.c11.c11.c11::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -234,11 +239,11 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:focus {
+.c11.c11.c11.c11.c11:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -262,7 +267,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -288,7 +293,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -358,7 +363,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="textinput-1369-input-1370"
+          for="textinput-1171-input-1172"
           style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -403,7 +408,7 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c9 c10 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -412,11 +417,11 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
             aria-invalid="false"
             aria-required="false"
             autocomplete="off"
-            class="c10"
+            class="c11"
             data-analytics-name="Enter name"
             data-blade-component="styled-base-input"
             enterkeyhint="enter"
-            id="textinput-1369-input-1370"
+            id="textinput-1171-input-1172"
             inputmode="text"
             type="text"
             value=""
@@ -425,11 +430,11 @@ exports[`<TextInput /> should accept data-analytics attribute 1`] = `
       </div>
     </div>
     <div
-      class="c11"
+      class="c12"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="c13"
         data-blade-component="base-box"
       />
     </div>
@@ -513,11 +518,16 @@ exports[`<TextInput /> should render 1`] = `
   gap: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
-  margin-left: 0px;
+.c9.c9.c9.c9.c9 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
 }
 
 .c12.c12.c12.c12.c12 {
+  margin-left: 0px;
+}
+
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -571,7 +581,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -603,7 +613,7 @@ exports[`<TextInput /> should render 1`] = `
   cursor: auto;
 }
 
-.c10.c10.c10.c10.c10::-webkit-input-placeholder {
+.c11.c11.c11.c11.c11::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -620,7 +630,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::-moz-placeholder {
+.c11.c11.c11.c11.c11::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -637,7 +647,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:-ms-input-placeholder {
+.c11.c11.c11.c11.c11:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -654,7 +664,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::placeholder {
+.c11.c11.c11.c11.c11::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -671,11 +681,11 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:focus {
+.c11.c11.c11.c11.c11:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -699,7 +709,7 @@ exports[`<TextInput /> should render 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -725,7 +735,7 @@ exports[`<TextInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -840,7 +850,7 @@ exports[`<TextInput /> should render 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c9 c10 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <input
@@ -849,7 +859,7 @@ exports[`<TextInput /> should render 1`] = `
             aria-invalid="false"
             aria-required="false"
             autocomplete="off"
-            class="c10"
+            class="c11"
             data-blade-component="styled-base-input"
             enterkeyhint="enter"
             id="textinput-1-input-2"
@@ -861,11 +871,11 @@ exports[`<TextInput /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c11"
+      class="c12"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="c13"
         data-blade-component="base-box"
       />
     </div>
@@ -949,7 +959,12 @@ exports[`<TextInput /> should render large size 1`] = `
   gap: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
+}
+
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -966,7 +981,7 @@ exports[`<TextInput /> should render large size 1`] = `
   align-self: center;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -974,15 +989,15 @@ exports[`<TextInput /> should render large size 1`] = `
   padding-left: 12px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   padding-left: 8px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   padding-right: 8px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -998,7 +1013,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding-right: 8px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1006,7 +1021,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding-right: 12px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1020,11 +1035,11 @@ exports[`<TextInput /> should render large size 1`] = `
   align-items: center;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   margin-left: 0px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1078,7 +1093,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1095,7 +1110,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1112,7 +1127,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   color: hsla(227,71%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1130,7 +1145,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1162,7 +1177,7 @@ exports[`<TextInput /> should render large size 1`] = `
   cursor: auto;
 }
 
-.c14.c14.c14.c14.c14::-webkit-input-placeholder {
+.c15.c15.c15.c15.c15::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1179,7 +1194,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14::-moz-placeholder {
+.c15.c15.c15.c15.c15::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1196,7 +1211,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14:-ms-input-placeholder {
+.c15.c15.c15.c15.c15:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1213,7 +1228,7 @@ exports[`<TextInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14::placeholder {
+.c15.c15.c15.c15.c15::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1230,11 +1245,11 @@ exports[`<TextInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14:focus {
+.c15.c15.c15.c15.c15:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1258,7 +1273,7 @@ exports[`<TextInput /> should render large size 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1284,7 +1299,7 @@ exports[`<TextInput /> should render large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1339,7 +1354,7 @@ exports[`<TextInput /> should render large size 1`] = `
   z-index: 2;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -1357,18 +1372,18 @@ exports[`<TextInput /> should render large size 1`] = `
   transition-duration: 80ms;
 }
 
-.c19.c19.c19.c19.c19 .content-container {
+.c20.c20.c20.c20.c20 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c19.c19.c19.c19.c19:focus-visible .content-container {
+.c20.c20.c20.c20.c20:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
-.c19.c19.c19.c19.c19 * {
+.c20.c20.c20.c20.c20 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1437,15 +1452,15 @@ exports[`<TextInput /> should render large size 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c9 c10 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class="c10"
+            class="c11"
             data-blade-component="base-box"
           >
             <div
-              class="c11"
+              class="c12"
               data-blade-component="base-box"
             >
               <svg
@@ -1477,11 +1492,11 @@ exports[`<TextInput /> should render large size 1`] = `
               </svg>
             </div>
             <div
-              class="c12"
+              class="c13"
               data-blade-component="base-box"
             >
               <p
-                class="c13"
+                class="c14"
                 data-blade-component="text"
               >
                 https://
@@ -1495,7 +1510,7 @@ exports[`<TextInput /> should render large size 1`] = `
             aria-required="false"
             autocapitalize="none"
             autocomplete="off"
-            class="c14"
+            class="c15"
             data-blade-component="styled-base-input"
             enterkeyhint="go"
             id="textinput-91-input-92"
@@ -1506,22 +1521,22 @@ exports[`<TextInput /> should render large size 1`] = `
             value=""
           />
           <div
-            class="c10"
+            class="c11"
             data-blade-component="base-box"
           >
             <div
-              class="c15"
+              class="c16"
               data-blade-component="base-box"
             >
               <p
-                class="c16"
+                class="c17"
                 data-blade-component="text"
               >
                 .com
               </p>
             </div>
             <div
-              class="c17"
+              class="c18"
               data-blade-component="base-box"
             >
               <svg
@@ -1553,22 +1568,22 @@ exports[`<TextInput /> should render large size 1`] = `
               </svg>
             </div>
             <div
-              class="c18"
+              class="c19"
               data-blade-component="base-box"
             >
               <button
                 aria-disabled="false"
-                class="c19"
+                class="c20"
                 data-blade-component="link"
                 role="button"
                 type="button"
               >
                 <span
-                  class="c20 content-container"
+                  class="c21 content-container"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c21"
+                    class="c22"
                     data-blade-component="base-text"
                   >
                     Apply
@@ -1581,11 +1596,11 @@ exports[`<TextInput /> should render large size 1`] = `
       </div>
     </div>
     <div
-      class="c22"
+      class="c23"
       data-blade-component="base-box"
     >
       <div
-        class="c23"
+        class="c24"
         data-blade-component="base-box"
       />
     </div>
@@ -1669,7 +1684,12 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   gap: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
+}
+
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1686,7 +1706,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   align-self: center;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1694,19 +1714,19 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding-left: 12px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   padding-left: 8px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   padding-right: 12px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   margin-left: 0px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1760,7 +1780,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1777,7 +1797,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1794,7 +1814,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1826,7 +1846,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   cursor: auto;
 }
 
-.c14.c14.c14.c14.c14::-webkit-input-placeholder {
+.c15.c15.c15.c15.c15::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1843,7 +1863,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14::-moz-placeholder {
+.c15.c15.c15.c15.c15::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1860,7 +1880,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14:-ms-input-placeholder {
+.c15.c15.c15.c15.c15:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1877,7 +1897,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14::placeholder {
+.c15.c15.c15.c15.c15::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1894,11 +1914,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14:focus {
+.c15.c15.c15.c15.c15:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1922,7 +1942,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1948,7 +1968,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -2063,15 +2083,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c9 c10 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <div
-            class="c10"
+            class="c11"
             data-blade-component="base-box"
           >
             <div
-              class="c11"
+              class="c12"
               data-blade-component="base-box"
             >
               <svg
@@ -2103,11 +2123,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               </svg>
             </div>
             <div
-              class="c12"
+              class="c13"
               data-blade-component="base-box"
             >
               <p
-                class="c13"
+                class="c14"
                 data-blade-component="text"
               >
                 https://
@@ -2121,7 +2141,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             aria-required="false"
             autocapitalize="none"
             autocomplete="off"
-            class="c14"
+            class="c15"
             data-blade-component="styled-base-input"
             enterkeyhint="go"
             id="textinput-73-input-74"
@@ -2132,15 +2152,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             value=""
           />
           <div
-            class="c10"
+            class="c11"
             data-blade-component="base-box"
           >
             <div
-              class="c15"
+              class="c16"
               data-blade-component="base-box"
             >
               <p
-                class="c16"
+                class="c17"
                 data-blade-component="text"
               >
                 .com
@@ -2151,11 +2171,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       </div>
     </div>
     <div
-      class="c17"
+      class="c18"
       data-blade-component="base-box"
     >
       <div
-        class="c18"
+        class="c19"
         data-blade-component="base-box"
       />
     </div>
