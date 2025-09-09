@@ -1,5 +1,6 @@
 /// <reference types="@figma/plugin-typings" />
 import { COMPONENT_KEYS } from './componentKeys';
+import { sendAnalytics } from './utils/sendAnalytics';
 
 figma.showUI(__html__, { width: 500, height: 440 });
 
@@ -285,6 +286,15 @@ figma.ui.onmessage = async (msg) => {
       // Select the table
       figma.currentPage.selection = [frameTable];
       figma.viewport.scrollAndZoomIntoView([frameTable]);
+
+      await sendAnalytics({
+        eventName: 'Table Creator Plugin Used',
+        properties: {
+          fileName: figma.root.name,
+          pageName: figma.currentPage.name,
+          pagePath: `${figma.root.name}/${figma.currentPage.name}`,
+        },
+      });
     } catch (error: unknown) {
       console.error(error);
       figma.notify(
