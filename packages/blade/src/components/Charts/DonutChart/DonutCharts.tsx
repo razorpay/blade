@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import type { ComponentProps } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
@@ -8,6 +8,9 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   Sector,
 } from 'recharts';
+import type { PieProps as RechartsPieChartProps } from 'recharts';
+import { useChartsColorTheme } from '../utils';
+import { DonutChartContext, useDonutChartContext } from './DonutChartContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -27,26 +30,13 @@ export type BladeColorToken =
     >}.${keyof ChartSequentialEmphasis}`;
 
 export interface DonutChartProps extends Omit<ComponentProps<typeof RechartsPieChart>, 'margin'> {
-  data: { [key: string]: string | number }[];
-  dataKey: string;
-  nameKey: string;
-  cx?: string | number;
-  cy?: string | number;
-  radius?: 'small' | 'medium' | 'large';
-  activeShape?: React.ReactElement | ((props: any) => React.ReactElement);
   centerText?: string;
   type?: 'donut' | 'pie';
-  children?: React.ReactNode;
-  showAcitveRender?: boolean;
 }
 
 export interface CellProps {
   color?: BladeColorToken;
-  fill?: string;
-  stroke?: string;
-  strokeWidth?: number;
 }
-
 // Radius mapping for different sizes
 const RADIUS_MAPPING = {
   small: { outerRadius: 80, innerRadius: 52 },
@@ -54,42 +44,49 @@ const RADIUS_MAPPING = {
   large: { outerRadius: 162, innerRadius: 100 },
 };
 
-// Cell component - resolves Blade color tokens to actual colors
-export const Cell: React.FC<CellProps> = ({ color, fill, stroke, strokeWidth, ...rest }) => {
-  const { theme } = useTheme();
-  const resolvedFill = color ? getIn(theme.colors, color) : fill;
+export interface PieProps {
+  dataKey: string;
+  nameKey: string;
+  cx?: string | number;
+  cy?: string | number;
+  radius?: 'small' | 'medium' | 'large';
+  showActiveShape?: boolean;
+  children?: React.ReactNode;
+  data: RechartsPieChartProps['data'];
+}
 
-  return <RechartsCell {...rest} fill={resolvedFill} stroke={stroke} strokeWidth={strokeWidth} />;
+// Cell component - resolves Blade color tokens to actual colors
+export const Cell: React.FC<CellProps> = ({ color, ...rest }) => {
+  const { theme } = useTheme();
+  const resolvedFill = color ? getIn(theme.colors, color) : undefined;
+
+  return <RechartsCell {...rest} fill={resolvedFill} />;
 };
 
-const tempColors = [
-  'chart.background.sequential.azure.600',
-  'chart.background.sequential.azure.500',
-  'chart.background.sequential.azure.400',
-  'chart.background.sequential.azure.300',
-  'chart.background.sequential.azure.200',
-];
-
-const renderActiveShape = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  startAngle,
-  endAngle,
-  fill,
-  payload,
-  percent,
-  value,
-}: PieSectorDataItem) => {
+const renderActiveShape = (
+  props: Required<RechartsPieChartProps['activeShape']>,
+): React.ReactElement => {
+  const {
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    startAngle,
+    endAngle,
+    fill,
+    payload = {} as any,
+    percent = 0,
+    value = 0,
+  } = props;
+  console.log('props', props);
   const RADIAN = Math.PI / 180;
-  const sin = Math.sin(-RADIAN * (midAngle ?? 1));
-  const cos = Math.cos(-RADIAN * (midAngle ?? 1));
-  const sx = (cx ?? 0) + ((outerRadius ?? 0) + 10) * cos;
-  const sy = (cy ?? 0) + ((outerRadius ?? 0) + 10) * sin;
-  const mx = (cx ?? 0) + ((outerRadius ?? 0) + 30) * cos;
-  const my = (cy ?? 0) + ((outerRadius ?? 0) + 30) * sin;
+  const sin = Math.sin(-RADIAN * midAngle);
+  const cos = Math.cos(-RADIAN * midAngle);
+  const sx = Number(cx) + (outerRadius + 10) * cos;
+  const sy = Number(cy) + (outerRadius + 10) * sin;
+  const mx = Number(cx) + (outerRadius + 30) * cos;
+  const my = Number(cy) + (outerRadius + 30) * sin;
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
   const ey = my;
   const textAnchor = cos >= 0 ? 'start' : 'end';
@@ -132,70 +129,101 @@ const renderActiveShape = ({
   );
 };
 
-export const DonutChart: React.FC<DonutChartProps> = ({
+export const PieChart: React.FC<DonutChartProps> = ({
   children,
   data,
   dataKey,
-  nameKey,
-  cx = '50%',
-  cy = '50%',
-  radius = 'medium',
-  activeShape,
   centerText,
   type = 'donut',
-  showAcitveRender = true,
   ...props
 }) => {
   const { theme } = useTheme();
-  const [isHovered, setHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const radiusConfig = RADIUS_MAPPING[radius];
   const isDonut = type === 'donut';
-
-  // Calculate the diameter based on outerRadius
 
   return (
     <BaseBox {...metaAttribute({ name: 'donut-chart' })} width="100%" height="100%">
-      <RechartsResponsiveContainer width="100%" height="100%">
-        <RechartsPieChart {...props}>
-          <RechartsPie
-            data={data}
-            dataKey={dataKey}
-            nameKey={nameKey}
-            cx={cx}
-            cy={cy}
-            outerRadius={radiusConfig.outerRadius}
-            innerRadius={isDonut ? radiusConfig.innerRadius : 0}
-            activeShape={showAcitveRender ? renderActiveShape : undefined}
-            onMouseEnter={() => {
-              setHovered(true);
-            }}
-            onMouseLeave={() => {
-              setHovered(false);
-            }}
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={getIn(theme.colors, tempColors[index])} />
-            ))}
-          </RechartsPie>
-
-          {!isHovered && isDonut && centerText && (
-            <text
-              x={cx}
-              y={cy}
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fill={theme.colors.surface.text.gray.normal}
-              fontSize={theme.typography.fonts.size[200]}
-              fontFamily={theme.typography.fonts.family.text}
-              fontWeight={theme.typography.fonts.weight.medium}
-              letterSpacing={theme.typography.letterSpacings[100]}
-            >
-              {centerText}
-            </text>
-          )}
-        </RechartsPieChart>
-      </RechartsResponsiveContainer>
+      <DonutChartContext.Provider value={{ type, isHovered, setIsHovered }}>
+        <RechartsResponsiveContainer width="100%" height="100%">
+          <RechartsPieChart {...props}>
+            {children}
+            {!isHovered && isDonut && centerText && (
+              <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fill={theme.colors.surface.text.gray.normal}
+                fontSize={theme.typography.fonts.size[200]}
+                fontFamily={theme.typography.fonts.family.text}
+                fontWeight={theme.typography.fonts.weight.medium}
+                letterSpacing={theme.typography.letterSpacings[100]}
+              >
+                {centerText}
+              </text>
+            )}
+          </RechartsPieChart>
+        </RechartsResponsiveContainer>
+      </DonutChartContext.Provider>
     </BaseBox>
+  );
+};
+
+export const Pie: React.FC<PieProps> = ({
+  cx = '50%',
+  cy = '50%',
+  radius = 'medium',
+  showActiveShape = true,
+  dataKey,
+  nameKey,
+  children,
+  data,
+  ...rest
+}) => {
+  const { setIsHovered, type } = useDonutChartContext();
+  const isDonut = type === 'donut';
+  const radiusConfig = RADIUS_MAPPING[radius];
+  const themeColors = useChartsColorTheme({ colorTheme: 'default' });
+
+  const modifiedChildren = useMemo(() => {
+    if (Array.isArray(children)) {
+      return children.map((child, index) =>
+        React.cloneElement(child, {
+          color: child.props.color || themeColors[index],
+          key: index,
+        }),
+      );
+    }
+    return data?.map((_, index) =>
+      React.createElement(RechartsCell, {
+        fill: themeColors[index],
+        key: index,
+      }),
+    );
+  }, [children, data, themeColors]);
+
+  return (
+    <RechartsPie
+      {...rest}
+      cx={cx}
+      cy={cy}
+      outerRadius={radiusConfig.outerRadius}
+      innerRadius={isDonut ? radiusConfig.innerRadius : 0}
+      activeShape={
+        showActiveShape
+          ? (props: RechartsPieChartProps['activeShape']) => renderActiveShape(props)
+          : undefined
+      }
+      data={data}
+      onMouseEnter={() => {
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+      }}
+    >
+      {modifiedChildren}
+    </RechartsPie>
   );
 };

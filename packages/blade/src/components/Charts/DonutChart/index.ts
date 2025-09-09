@@ -1,2 +1,2 @@
-export { DonutChart, Cell } from './DonutCharts';
-export type { DonutChartProps, CellProps } from './DonutCharts';
+export { PieChart, Pie } from './DonutCharts';
+export type { PieProps } from './DonutCharts';

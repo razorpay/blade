@@ -1,13 +1,12 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { ChartToolTip, Legend } from '../BaseChartComponents';
-import { DonutChart } from './DonutCharts';
+import { PieChart, Pie } from './DonutCharts';
 
 export default {
   title: 'Components/Charts/DonutChart',
-  component: DonutChart,
+  component: PieChart,
   tags: ['autodocs'],
-} as Meta<typeof DonutChart>;
+} as Meta<typeof PieChart>;
 
 const chartData = [
   { name: 'Group A', value: 400 },
@@ -17,84 +16,68 @@ const chartData = [
   { name: 'Group E', value: 100 },
 ];
 
-const largeChartData = [
-  { name: 'Revenue', value: 4500 },
-  { name: 'Expenses', value: 3200 },
-  { name: 'Profit', value: 1300 },
-  { name: 'Taxes', value: 800 },
-];
-
 // 1. Basic Donut Chart
-export const BasicDonutChart: StoryFn<typeof DonutChart> = () => {
+export const BasicDonutChart: StoryFn<typeof PieChart> = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <DonutChart data={chartData} dataKey="value" nameKey="name" radius="small">
-        <ChartToolTip />
-        <Legend />
-      </DonutChart>
+      <PieChart dataKey="value">
+        <Pie dataKey="value" nameKey="name" data={chartData} />
+      </PieChart>
     </div>
   );
 };
 
 // 2. Donut Chart with Center Text
-export const DonutChartWithCenterText: StoryFn<typeof DonutChart> = () => {
+export const DonutChartWithCenterText: StoryFn<typeof PieChart> = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <DonutChart
-        data={largeChartData}
-        dataKey="value"
-        nameKey="name"
-        radius="small"
-        centerText="₹1.05L"
-      >
-        <ChartToolTip />
-        <Legend />
-      </DonutChart>
+      <PieChart centerText="₹1.05L">
+        <Pie dataKey="value" nameKey="name" data={chartData} />
+      </PieChart>
     </div>
   );
 };
 
 // 3. Small Radius Donut Chart
-export const SmallRadiusDonutChart: StoryFn<typeof DonutChart> = () => {
+export const SmallRadiusDonutChart: StoryFn<typeof PieChart> = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <DonutChart data={chartData.slice(0, 3)} dataKey="value" nameKey="name" radius="small">
-        <ChartToolTip />
-      </DonutChart>
+      <PieChart>
+        <Pie dataKey="value" nameKey="name" data={chartData} />
+      </PieChart>
     </div>
   );
 };
 
 // 4. Extra Large Radius Donut Chart
-export const ExtraLargeRadiusDonutChart: StoryFn<typeof DonutChart> = () => {
+export const ExtraLargeRadiusDonutChart: StoryFn<typeof PieChart> = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <DonutChart data={chartData} dataKey="value" nameKey="name" radius="large">
-        <ChartToolTip />
-        <Legend />
-      </DonutChart>
+      <PieChart>
+        <Pie dataKey="value" nameKey="name" data={chartData} />
+      </PieChart>
     </div>
   );
 };
 
 // 5. Custom Active Shape Donut Chart
-export const CustomActiveShapeDonutChart: StoryFn<typeof DonutChart> = () => {
+export const CustomActiveShapeDonutChart: StoryFn<typeof PieChart> = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <DonutChart data={chartData} dataKey="value" nameKey="name" radius="large">
-        <Legend />
-      </DonutChart>
+      <PieChart>
+        <Pie dataKey="value" nameKey="name" data={chartData} />
+      </PieChart>
     </div>
   );
 };
 
 // 6. Donut Chart with Color Theme
-export const DonutChartWithActiveShape: StoryFn<typeof DonutChart> = () => {
+export const DonutChartWithActiveShape: StoryFn<typeof PieChart> = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <DonutChart data={chartData} dataKey="value" nameKey="name" radius="large">
-        <Legend />
-      </DonutChart>
+      <PieChart>
+        <Pie dataKey="value" nameKey="name" data={chartData} />
+      </PieChart>
     </div>
   );
 };
