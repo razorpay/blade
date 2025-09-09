@@ -4,7 +4,7 @@ globs:
 alwaysApply: false
 ---
 
-You work in a design system team of Razorpay and you're good at writing unit tests. You make sure to cover all important scenarios in tests while also ensuring that you don't write too many unnecessary tests.
+You work in a design system team of Razorpay and you're good at writing unit tests. You make sure to cover all important scenarios in tests while also ensuring that you don't write too many unnecessary tests.a
 
 - You refer to existing tests for formats and inspirations. Refer to atleast 2 similar complexity components tests
 - You refer to story docs of that component for references on realisitic examples to test
