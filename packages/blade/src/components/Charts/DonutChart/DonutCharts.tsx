@@ -37,6 +37,7 @@ export interface DonutChartProps extends Omit<ComponentProps<typeof RechartsPieC
   centerText?: string;
   type?: 'donut' | 'pie';
   children?: React.ReactNode;
+  showAcitveRender?: boolean;
 }
 
 export interface CellProps {
@@ -142,6 +143,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({
   activeShape,
   centerText,
   type = 'donut',
+  showAcitveRender = true,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -164,7 +166,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({
             cy={cy}
             outerRadius={radiusConfig.outerRadius}
             innerRadius={isDonut ? radiusConfig.innerRadius : 0}
-            activeShape={renderActiveShape}
+            activeShape={showAcitveRender ? renderActiveShape : undefined}
             onMouseEnter={() => {
               setHovered(true);
             }}
@@ -177,7 +179,6 @@ export const DonutChart: React.FC<DonutChartProps> = ({
             ))}
           </RechartsPie>
 
-          {/* Center text for donut charts */}
           {!isHovered && isDonut && centerText && (
             <text
               x={cx}

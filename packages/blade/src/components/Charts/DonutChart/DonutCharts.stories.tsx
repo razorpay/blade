@@ -1,7 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { ChartToolTip, Legend } from '../BaseChartComponents';
-import { DonutChart, Pie } from './DonutCharts';
+import { DonutChart } from './DonutCharts';
 
 export default {
   title: 'Components/Charts/DonutChart',
