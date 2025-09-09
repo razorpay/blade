@@ -2774,6 +2774,11 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   width: 100%;
 }
 
+.c24.c24.c24.c24.c24 {
+  -webkit-transition: animation:none;
+  transition: animation:none;
+}
+
 .c4.c4.c4.c4.c4 {
   padding: 1px;
   width: -webkit-max-content;
@@ -3007,25 +3012,25 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   z-index: 2;
 }
 
-.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 {
   background-color: hsla(211,20%,52%,0.12);
 }
 
-.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 tr:last-child th {
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 tr:last-child th {
   border-bottom: none;
 }
 
-.c27.c27.c27.c27.c27 th {
+.c28.c28.c28.c28.c28 th {
   border-right-width: 1px;
   border-right-color: hsla(211,20%,52%,0.18);
   border-right-style: solid;
 }
 
-.c27.c27.c27.c27.c27 th:last-child {
+.c28.c28.c28.c28.c28 th:last-child {
   border-right: none;
 }
 
-.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
@@ -3036,7 +3041,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   border-top-style: solid;
 }
 
-.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28 > div {
+.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29.c29 > div {
   background-color: hsla(211,20%,52%,0.12);
   display: -webkit-box;
   display: -webkit-flex;
@@ -3125,7 +3130,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   border-right: none;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -3157,7 +3162,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   cursor: auto;
 }
 
-.c25.c25.c25.c25.c25::-webkit-input-placeholder {
+.c26.c26.c26.c26.c26::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -3174,7 +3179,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   padding: 0;
 }
 
-.c25.c25.c25.c25.c25::-moz-placeholder {
+.c26.c26.c26.c26.c26::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -3191,7 +3196,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   padding: 0;
 }
 
-.c25.c25.c25.c25.c25:-ms-input-placeholder {
+.c26.c26.c26.c26.c26:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -3208,7 +3213,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   padding: 0;
 }
 
-.c25.c25.c25.c25.c25::placeholder {
+.c26.c26.c26.c26.c26::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -3225,11 +3230,11 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   padding: 0;
 }
 
-.c25.c25.c25.c25.c25:focus {
+.c26.c26.c26.c26.c26:focus {
   outline: none;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   background-color: hsla(0,0%,100%,0);
   border-radius: 0px;
   border-style: solid;
@@ -3253,7 +3258,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c24.c24.c24.c24.c24:hover {
+.c25.c25.c25.c25.c25:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 0px;
   border-style: solid;
@@ -3279,7 +3284,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c24.c24.c24.c24.c24:focus-within {
+.c25.c25.c25.c25.c25:focus-within {
   background-color: hsla(0,0%,100%,0);
   border-radius: 0px;
   border-style: solid;
@@ -3641,7 +3646,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
                           data-blade-component="base-box"
                         >
                           <div
-                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c24 __blade-base-input-wrapper"
+                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c24 c25 __blade-base-input-wrapper"
                             data-blade-component="base-box"
                           >
                             <input
@@ -3651,7 +3656,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
                               aria-label="Amount"
                               aria-required="false"
                               autocomplete="off"
-                              class="c25"
+                              class="c26"
                               data-blade-component="styled-base-input"
                               enterkeyhint="enter"
                               id="table-editable-cell-input-1-input-2"
@@ -3844,7 +3849,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
                           data-blade-component="base-box"
                         >
                           <div
-                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c24 __blade-base-input-wrapper"
+                            class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c24 c25 __blade-base-input-wrapper"
                             data-blade-component="base-box"
                           >
                             <input
@@ -3854,7 +3859,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
                               aria-label="Amount"
                               aria-required="false"
                               autocomplete="off"
-                              class="c25"
+                              class="c26"
                               data-blade-component="styled-base-input"
                               enterkeyhint="enter"
                               id="table-editable-cell-input-7-input-8"
@@ -3983,18 +3988,18 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
         </tr>
       </tbody>
       <tfoot
-        class="c26 css-1a28xfp-Header"
+        class="c27 css-1a28xfp-Header"
         data-blade-component="table-footer"
         role="rowgroup"
       >
         <tr
-          class="tr c27 tr-footer css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
+          class="tr c28 tr-footer css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
           data-blade-component="table-footer-row"
           data-table-library_tr-header=""
           role="rowfooter"
         >
           <th
-            class="th c28 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c29 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4011,7 +4016,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c28 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c29 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4028,7 +4033,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c28 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c29 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4045,7 +4050,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c28 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c29 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4062,7 +4067,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c28 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c29 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -4079,7 +4084,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
             </div>
           </th>
           <th
-            class="th c28 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c29 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
