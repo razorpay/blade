@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-fix(blade): double focus ring in DatePicker and input
+fix(blade): Double focus ring in DatePicker and Input
