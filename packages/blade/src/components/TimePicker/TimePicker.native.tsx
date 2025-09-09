@@ -3,8 +3,8 @@ import { throwBladeError } from '~utils/logger';
 
 const TimePicker = (_props: any): React.ReactElement => {
   throwBladeError({
-    message: 'DatePicker is not yet implemented for native',
-    moduleName: 'DatePicker',
+    message: 'TimePicker is not yet implemented for native',
+    moduleName: 'TimePicker',
   });
 
   return <></>;

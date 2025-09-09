@@ -6,7 +6,6 @@ import { dateToTimeValue, timeValueToDate, getTimeComponents, createCompleteTime
 
 /**
  * Custom hook for TimePicker state management
- * Similar to DatePicker's useDatesState but for time selection
  */
 export const useTimePickerState = ({
   value,
@@ -40,7 +39,7 @@ export const useTimePickerState = ({
     [setSelectedTimeValue],
   );
 
-  // Old value backup for cancel functionality (like DatePicker)
+  // Old value backup for cancel functionality
   const [oldTimeValue, setOldTimeValue] = React.useState<Time | null>(selectedTimeValue);
 
   // Manage controlled/uncontrolled open state
@@ -49,18 +48,18 @@ export const useTimePickerState = ({
     defaultValue: defaultIsOpen,
     onChange: (isOpen) => {
       onOpenChange?.({ isOpen });
-      // Update old value every time timepicker is opened or closed (like DatePicker)
+      // Update old value every time timepicker is opened or closed
       setOldTimeValue(selectedTimeValue);
     },
   });
 
   const handleApply = React.useCallback(() => {
     if (showFooterActions) {
-      // Call onChange with current selectedTime (like DatePicker calls onChange with controlledValue)
+      // Call onChange with current selectedTime
       onChange?.({ value: selectedTime });
-      // Update oldTimeValue to current value (like DatePicker)
+      // Update oldTimeValue to current value
       setOldTimeValue(selectedTimeValue);
-      // Call onApply callback (like DatePicker)
+      // Call onApply callback
       onApply?.({ value: selectedTime });
     }
     setControllableIsOpen(() => false);
@@ -75,7 +74,7 @@ export const useTimePickerState = ({
   ]);
 
   const handleCancel = React.useCallback(() => {
-    // Restore selectedTimeValue from oldTimeValue (like DatePicker restores controlledValue from oldValue)
+    // Restore selectedTimeValue from oldTimeValue
     setSelectedTimeValue(() => oldTimeValue);
     setControllableIsOpen(() => false);
   }, [oldTimeValue, setSelectedTimeValue, setControllableIsOpen]);

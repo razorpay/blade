@@ -83,7 +83,7 @@ export default {
           componentDescription="The TimePicker component is used to select a specific time with support for both 12-hour and 24-hour formats, configurable minute steps, and responsive layouts."
           componentName="TimePicker"
           apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/TimePicker/_decisions/decisions.md"
-          figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88832-1762629&t=oSH8pSWjSoiOUnXo-0"
+          figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=110199-7268&p=f&t=Vkpr2l6vN8DJ0Bnw-0"
         >
           <Sandbox editorHeight={600}>
             {`

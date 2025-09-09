@@ -7,7 +7,6 @@ import type { TimePickerFooterProps } from './types';
 
 /**
  * Footer component for TimePicker with Apply/Cancel buttons
- * Similar to DatePicker footer but for time selection
  */
 const TimePickerFooter = ({
   onApply,
