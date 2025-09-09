@@ -132,6 +132,11 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * @default true
    */
   showFooterActions?: boolean;
+  /**
+   * Custom React element to render in the footer above/side of action buttons
+   * Can be used to add custom content like informational text, links, or other components
+   */
+  footer?: React.ReactElement;
 };
 
 type DatePickerProps<Type extends DateSelectionType> = Omit<
@@ -226,6 +231,7 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     excludeDate?: (date: Date) => boolean;
     minDate?: Date;
     maxDate?: Date;
+    effectiveSelectionType?: 'single' | 'range' | null;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -251,6 +257,7 @@ type DateInputProps = BaseInputProps & {
   excludeDate?: (date: Date) => boolean;
   minDate?: Date;
   maxDate?: Date;
+  effectiveSelectionType?: 'single' | 'range' | null;
 };
 
 export type {

@@ -1,38 +1,14 @@
-import React, { createContext, useContext, useMemo } from 'react';
-import type { DatesRangeValue, CalendarProps } from '../types';
+import { useMemo } from 'react';
+import type { DatesRangeValue } from '../types';
 import { isSamePreset } from './utils';
+import type { PresetState, UsePresetStateProps, UsePresetStateReturn } from './types';
 
-type PresetState = {
-  preset: NonNullable<CalendarProps<'range'>['presets']>[0];
-  value: DatesRangeValue | null;
-  isSelected: boolean;
-  isCustomType: boolean;
-};
-
-type PresetContextValue = {
-  presetStates: PresetState[];
-  selectedPresetIndex: number | null;
-  selectedPresetLabel: string | null;
-  isCustomSelected: boolean;
-  effectiveSelectionType: 'single' | 'range' | null;
-};
-
-const PresetContext = createContext<PresetContextValue | null>(null);
-
-type PresetProviderProps = {
-  children: React.ReactNode;
-  presets: CalendarProps<'range'>['presets'];
-  selectedPreset: DatesRangeValue | null;
-  currentDate: Date;
-};
-
-export const PresetProvider = ({
-  children,
+export const usePresetState = ({
   presets,
   selectedPreset,
   currentDate,
-}: PresetProviderProps): React.ReactElement => {
-  const contextValue = useMemo(() => {
+}: UsePresetStateProps): UsePresetStateReturn => {
+  return useMemo(() => {
     // No presets provided → return empty state
     if (!presets) {
       return {
@@ -124,14 +100,4 @@ export const PresetProvider = ({
       effectiveSelectionType, // 'single' | 'range' based on preset analysis
     };
   }, [presets, selectedPreset, currentDate]); // Recalculate when any of these change
-
-  return <PresetContext.Provider value={contextValue}>{children}</PresetContext.Provider>;
-};
-
-export const usePresetContext = (): PresetContextValue => {
-  const context = useContext(PresetContext);
-  if (!context) {
-    throw new Error('usePresetContext must be used within PresetProvider');
-  }
-  return context;
 };

@@ -13,7 +13,6 @@ import {
   validateAndParseDateInput,
   stripDelimiters,
 } from './utils';
-import { usePresetContext } from './QuickSelection/PresetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { isReactNative } from '~utils';
@@ -33,18 +32,26 @@ const _DateInput = (
   props: DateInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
 ): React.ReactElement => {
-  const { format, date, setControlledValue, leadingDropdown, tags, id, ...textInputProps } = props;
+  const {
+    format,
+    date,
+    setControlledValue,
+    effectiveSelectionType,
+    leadingDropdown,
+    tags,
+    id,
+    ...textInputProps
+  } = props;
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
-
-  const presetContext = usePresetContext();
+  const shouldShowCalendarIcon = !Boolean(leadingDropdown);
 
   // Determine selection type: prefer preset context calculation over props
   // This handles "Today" presets that should display as single even though data is range
   const isRange =
-    presetContext?.effectiveSelectionType === 'single'
+    effectiveSelectionType === 'single'
       ? false
-      : presetContext?.effectiveSelectionType === 'range' || props.selectionType === 'range';
+      : effectiveSelectionType === 'range' || props.selectionType === 'range';
 
   // Sync internal input state with external formatted values from parent component
   // textInputProps.value comes from DatePickerInput as formatted strings: ["25/12/2024", "31/12/2024"]
@@ -87,7 +94,7 @@ const _DateInput = (
           // Special handling: if preset context shows single but props expect range
           // (like "Today" preset), convert single date back to same-day range
           if (
-            presetContext?.effectiveSelectionType === 'single' &&
+            effectiveSelectionType === 'single' &&
             props.selectionType === 'range' &&
             validation.parsedValue instanceof Date
           ) {
@@ -104,7 +111,7 @@ const _DateInput = (
     [
       isRange,
       setControlledValue,
-      presetContext?.effectiveSelectionType,
+      effectiveSelectionType,
       props.selectionType,
       format,
       props.excludeDate,
@@ -164,7 +171,7 @@ const _DateInput = (
       ref={ref}
       type="number"
       value={isRange ? rangeFormattedValue(inputValue[0], inputValue[1]) : inputValue[0]}
-      leadingIcon={CalendarIcon}
+      leadingIcon={shouldShowCalendarIcon ? CalendarIcon : undefined}
       leading={leadingDropdown}
       format={
         isRange
@@ -243,6 +250,7 @@ const _DatePickerInput = (
     excludeDate,
     minDate,
     maxDate,
+    effectiveSelectionType,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -273,6 +281,7 @@ const _DatePickerInput = (
           placeholder={placeholder || format}
           popupId={referenceProps['aria-controls']}
           isPopupExpanded={referenceProps['aria-expanded']}
+          hasPopup={referenceProps['aria-haspopup']}
           size={size}
           autoFocus={autoFocus}
           value={[dateValue]}
@@ -291,6 +300,7 @@ const _DatePickerInput = (
           excludeDate={excludeDate}
           minDate={minDate}
           maxDate={maxDate}
+          effectiveSelectionType={effectiveSelectionType}
           {...props}
           {...referenceProps}
         />
@@ -339,6 +349,7 @@ const _DatePickerInput = (
           placeholder={rangeInputPlaceHolder(placeholder, format)}
           popupId={referenceProps['aria-controls']}
           isPopupExpanded={referenceProps['aria-expanded']}
+          hasPopup={referenceProps['aria-haspopup']}
           size={size}
           autoFocus={autoFocus}
           value={[startValue, endValue]}
@@ -365,6 +376,7 @@ const _DatePickerInput = (
           excludeDate={excludeDate}
           minDate={minDate}
           maxDate={maxDate}
+          effectiveSelectionType={effectiveSelectionType}
           {...props}
           {...referenceProps}
         />

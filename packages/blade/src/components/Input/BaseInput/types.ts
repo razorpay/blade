@@ -29,7 +29,6 @@ export type BaseInputTagSlotProps = {
   size: NonNullable<BaseInputProps['size']>;
   isTextArea?: boolean;
   numberOfLines: BaseInputProps['numberOfLines'];
-  hasLeadingDropDown?: boolean;
 };
 
 export type BaseInputWrapperProps = Pick<
