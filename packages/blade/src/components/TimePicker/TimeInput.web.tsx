@@ -173,7 +173,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     createCompleteTime,
     ...props
   },
-  ref,
+  ref: React.ForwardedRef<any>,
 ) => {
   const currentTimeFormat = timeFormat ?? '12h';
   let { locale } = useLocale();
@@ -239,7 +239,14 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         {...otherReferenceProps}
       >
         {state.segments.map((segment, i) => {
-          return <TimeSegment key={i} segment={segment} state={state} isDisabled={isDisabled} />;
+          return (
+            // Fix for React Aria contentEditable focus issue
+            // Wrapping each segment in a div prevents unwanted focus when clicking outside
+            // See: https://github.com/adobe/react-spectrum/issues/3164
+            <BaseBox>
+              <TimeSegment key={i} segment={segment} state={state} isDisabled={isDisabled} />
+            </BaseBox>
+          );
         })}
       </BaseInput>
     </BaseBox>

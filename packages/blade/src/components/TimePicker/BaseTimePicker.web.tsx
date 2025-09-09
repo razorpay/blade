@@ -15,6 +15,8 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
 import { componentZIndices } from '~utils/componentZIndices';
 import { usePopup } from '~components/DatePicker/usePopup';
+import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const _BaseTimePicker = ({
   value,
@@ -101,7 +103,31 @@ const _BaseTimePicker = ({
       }
     },
     referenceRef,
+    crossAxisOffset: labelPosition === 'left' ? (size === 'large' ? 192 : 132) : 0,
   });
+
+  // Fix for React Aria contentEditable focus issue with Floating UI
+  // React Aria's contentEditable segments don't properly trigger Floating UI's dismiss
+  // See: https://github.com/adobe/react-spectrum/issues/3164
+  React.useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (
+        isDropdownOpen &&
+        referenceRef.current &&
+        !referenceRef.current.contains(e.target as Node) &&
+        !refs.floating.current?.contains(e.target as Node)
+      ) {
+        handleApply();
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('click', handleClick);
+      return () => document.removeEventListener('click', handleClick);
+    }
+    return undefined;
+  }, [isDropdownOpen, showFooterActions, handleCancel, handleApply]);
+
   // Mobile: Blur input when bottom sheet opens
   React.useEffect(() => {
     if (isMobile && isDropdownOpen) {
@@ -133,7 +159,11 @@ const _BaseTimePicker = ({
   );
 
   return (
-    <BaseBox width="100%">
+    <BaseBox
+      width="100%"
+      {...getStyledProps(props)}
+      {...metaAttribute({ name: MetaConstants.TimePicker })}
+    >
       <TimeInput
         ref={referenceRef}
         inputRef={refs.setReference}
