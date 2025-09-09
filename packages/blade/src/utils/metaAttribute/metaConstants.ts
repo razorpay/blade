@@ -149,4 +149,5 @@ export const MetaConstants = {
   PreviewHeader: 'preview-header',
   PreviewBody: 'preview-body',
   PreviewFooter: 'preview-footer',
+  TimePicker: 'time-picker',
 } as const;

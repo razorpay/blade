@@ -61,6 +61,13 @@ const StyledBaseNativeButton = styled.button<
   ...getWebInputStyles(props),
 }));
 
+const StyledBaseDivWrapper = styled.div<
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
+>((props) => ({
+  ...getWebInputStyles(props),
+  display: 'flex',
+}));
+
 const autoCompleteSuggestionTypeMap = {
   none: 'off',
   on: 'on',
@@ -108,6 +115,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     $size,
     valueComponentType,
     tabIndex,
+    children,
     ...props
   },
   ref,
@@ -135,7 +143,34 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       : undefined,
   };
 
-  return props.as === 'button' ? (
+  return props.as === 'div' ? (
+    <StyledBaseDivWrapper
+      onBlur={(event: React.FocusEvent<HTMLDivElement>): void => {
+        if (!shouldIgnoreBlurAnimation) {
+          setCurrentInteraction('default');
+        }
+        handleOnBlur?.({ name, value: event as any });
+      }}
+      onFocus={(event: React.FocusEvent<HTMLDivElement>): void => {
+        setCurrentInteraction('focus');
+        handleOnFocus?.({ name, value: event as any });
+      }}
+      onClick={(event: React.MouseEvent<HTMLDivElement>): void => {
+        if (props.isDropdownTrigger) {
+          event.stopPropagation();
+        }
+        handleOnClick?.({ name, value: event as any });
+      }}
+      name={name}
+      $size={$size}
+      valueComponentType={valueComponentType}
+      tabIndex={tabIndex}
+      {...props}
+      {...accessibilityProps}
+    >
+      {children}
+    </StyledBaseDivWrapper>
+  ) : props.as === 'button' ? (
     <StyledBaseNativeButton
       // @ts-expect-error: TS doesnt understand that this will always be `button`
       ref={ref}
