@@ -1,5 +1,4 @@
-import type { DatesRangeValue } from '../types';
-import { usePresetContext } from './PresetContext';
+import type { PresetSideBarProps } from './types';
 import { QuickSelectionItem } from './QuickSelectionItem.web';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
@@ -9,14 +8,11 @@ import { size } from '~tokens/global';
 import { makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 
-type PresetSideBarProps = {
-  isMobile?: boolean;
-  onSelection: (value: (date: Date) => DatesRangeValue) => void;
-};
-
-const PresetSideBar = ({ onSelection, isMobile }: PresetSideBarProps): React.ReactElement => {
-  const { presetStates } = usePresetContext();
-
+const PresetSideBar = ({
+  onSelection,
+  isMobile,
+  presetStates,
+}: PresetSideBarProps): React.ReactElement => {
   if (presetStates.length === 0) return <></>;
 
   if (isMobile) {
