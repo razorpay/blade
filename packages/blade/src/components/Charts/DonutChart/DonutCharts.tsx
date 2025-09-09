@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { ComponentProps } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
@@ -145,9 +145,13 @@ export const DonutChart: React.FC<DonutChartProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
+  const [isHovered, setHovered] = useState(false);
 
   const radiusConfig = RADIUS_MAPPING[radius];
   const isDonut = type === 'donut';
+
+  console.log('centerText', centerText);
+  console.log('isHovered', isHovered);
 
   // Calculate the diameter based on outerRadius
 
@@ -164,6 +168,12 @@ export const DonutChart: React.FC<DonutChartProps> = ({
             outerRadius={radiusConfig.outerRadius}
             innerRadius={isDonut ? radiusConfig.innerRadius : 0}
             activeShape={renderActiveShape}
+            onMouseEnter={() => {
+              setHovered(true);
+            }}
+            onMouseLeave={() => {
+              setHovered(false);
+            }}
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={getIn(theme.colors, tempColors[index])} />
@@ -171,7 +181,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({
           </RechartsPie>
 
           {/* Center text for donut charts */}
-          {isDonut && centerText && (
+          {!isHovered && isDonut && centerText && (
             <text
               x={cx}
               y={cy}
