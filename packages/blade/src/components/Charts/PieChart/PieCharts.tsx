@@ -53,6 +53,7 @@ export interface PieProps {
   showActiveShape?: boolean;
   children?: React.ReactNode;
   data: RechartsPieChartProps['data'];
+  colorTheme?: 'default' | 'informational';
 }
 
 // Cell component - resolves Blade color tokens to actual colors
@@ -179,12 +180,13 @@ export const Pie: React.FC<PieProps> = ({
   nameKey,
   children,
   data,
+  colorTheme = 'default',
   ...rest
 }) => {
   const { setIsHovered, type } = usePieChartContext();
   const isDonut = type === 'donut';
   const radiusConfig = RADIUS_MAPPING[radius];
-  const themeColors = useChartsColorTheme({ colorTheme: 'default' });
+  const themeColors = useChartsColorTheme({ colorTheme });
 
   const modifiedChildren = useMemo(() => {
     if (Array.isArray(children)) {
