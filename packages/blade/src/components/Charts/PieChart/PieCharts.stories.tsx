@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { PieChart, Pie } from './DonutCharts';
+import { PieChart, Pie } from './PieCharts';
 
 export default {
   title: 'Components/Charts/DonutChart',

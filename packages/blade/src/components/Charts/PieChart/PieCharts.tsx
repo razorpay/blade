@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 import type { PieProps as RechartsPieChartProps } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import { DonutChartContext, useDonutChartContext } from './DonutChartContext';
+import { PieChartContext, usePieChartContext } from './PieChartContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -29,7 +29,7 @@ export type BladeColorToken =
       'gray'
     >}.${keyof ChartSequentialEmphasis}`;
 
-export interface DonutChartProps extends Omit<ComponentProps<typeof RechartsPieChart>, 'margin'> {
+export interface PieChartProps extends Omit<ComponentProps<typeof RechartsPieChart>, 'margin'> {
   centerText?: string;
   type?: 'donut' | 'pie';
 }
@@ -79,7 +79,6 @@ const renderActiveShape = (
     percent = 0,
     value = 0,
   } = props;
-  console.log('props', props);
   const RADIAN = Math.PI / 180;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
@@ -129,7 +128,7 @@ const renderActiveShape = (
   );
 };
 
-export const PieChart: React.FC<DonutChartProps> = ({
+export const PieChart: React.FC<PieChartProps> = ({
   children,
   data,
   dataKey,
@@ -144,7 +143,7 @@ export const PieChart: React.FC<DonutChartProps> = ({
 
   return (
     <BaseBox {...metaAttribute({ name: 'donut-chart' })} width="100%" height="100%">
-      <DonutChartContext.Provider value={{ type, isHovered, setIsHovered }}>
+      <PieChartContext.Provider value={{ type, isHovered, setIsHovered }}>
         <RechartsResponsiveContainer width="100%" height="100%">
           <RechartsPieChart {...props}>
             {children}
@@ -165,7 +164,7 @@ export const PieChart: React.FC<DonutChartProps> = ({
             )}
           </RechartsPieChart>
         </RechartsResponsiveContainer>
-      </DonutChartContext.Provider>
+      </PieChartContext.Provider>
     </BaseBox>
   );
 };
@@ -181,7 +180,7 @@ export const Pie: React.FC<PieProps> = ({
   data,
   ...rest
 }) => {
-  const { setIsHovered, type } = useDonutChartContext();
+  const { setIsHovered, type } = usePieChartContext();
   const isDonut = type === 'donut';
   const radiusConfig = RADIUS_MAPPING[radius];
   const themeColors = useChartsColorTheme({ colorTheme: 'default' });
