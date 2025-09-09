@@ -78,7 +78,8 @@ const renderActiveShape = (
     payload = {} as any,
     percent = 0,
     value = 0,
-  } = props;
+  } = (props as unknown) as any;
+
   const RADIAN = Math.PI / 180;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
