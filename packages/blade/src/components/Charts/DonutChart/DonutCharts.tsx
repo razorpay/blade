@@ -150,9 +150,6 @@ export const DonutChart: React.FC<DonutChartProps> = ({
   const radiusConfig = RADIUS_MAPPING[radius];
   const isDonut = type === 'donut';
 
-  console.log('centerText', centerText);
-  console.log('isHovered', isHovered);
-
   // Calculate the diameter based on outerRadius
 
   return (
