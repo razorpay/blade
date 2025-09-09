@@ -147,6 +147,8 @@
     "@mantine/core": "6.0.21",
     "@mantine/dates": "6.0.21",
     "@mantine/hooks": "6.0.21",
+    "react-aria": "3.42.0",
+    "react-stately": "3.40.0",
     "dayjs": "1.11.10",
     "react-window": "1.8.11",
     "react-zoom-pan-pinch": "3.7.0"

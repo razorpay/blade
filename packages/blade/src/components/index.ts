@@ -63,6 +63,7 @@ export * from './Switch';
 export * from './Table';
 export * from './Tabs';
 export * from './Tag';
+export * from './TimePicker';
 export * from './Tooltip';
 export * from './Toast';
 export * from './TopNav';
