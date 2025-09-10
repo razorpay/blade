@@ -1,6 +1,5 @@
 import React from 'react';
 import type { ComponentProps } from 'react';
-import styled from 'styled-components';
 import {
   AreaChart as RechartsAreaChart,
   Area as RechartsArea,
@@ -10,7 +9,6 @@ import type { AreaProps as RechartAreaProps } from 'recharts';
 
 import { useChartsColorTheme } from '../utils';
 import { useTheme } from '~components/BladeProvider';
-import type { Theme } from '~components/BladeProvider';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -24,7 +22,7 @@ const MAX_AREAS = 10;
 export type BladeColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
 // Chart-specific interfaces based on user specifications
-export interface AreaProps {
+interface AreaProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   connectNulls?: boolean;
   showLegend?: boolean;
@@ -44,7 +42,7 @@ export interface AreaProps {
   _colorTheme?: 'default' | 'informational';
 }
 
-export const Area: React.FC<AreaProps> = ({
+const Area: React.FC<AreaProps> = ({
   color,
   type = 'monotone',
   connectNulls = false,
@@ -81,25 +79,14 @@ export const Area: React.FC<AreaProps> = ({
   );
 };
 
-// TypeScript prop types
-export type AreaChartProps = Omit<ComponentProps<typeof RechartsAreaChart>, 'margin'> &
+type AreaChartProps = Omit<ComponentProps<typeof RechartsAreaChart>, 'margin'> &
   StyledPropsBlade & {
     children?: React.ReactNode;
     colorTheme?: 'default' | 'informational';
   };
 
-// Styled wrapper for AreaChart with predefined margins
-const StyledAreaChart = styled(RechartsAreaChart)<{ theme: Theme }>`
-  font-family: ${(props) => props.theme.typography.fonts.family.text};
-`;
-
 // Main components
-export const AreaChart: React.FC<AreaChartProps> = ({
-  children,
-  colorTheme = 'default',
-  ...props
-}) => {
-  const { theme } = useTheme();
+const AreaChart: React.FC<AreaChartProps> = ({ children, colorTheme = 'default', ...props }) => {
   const styledProps = getStyledProps(props);
 
   // Predefined margins - not exposed to user
@@ -132,10 +119,13 @@ export const AreaChart: React.FC<AreaChartProps> = ({
   return (
     <BaseBox {...styledProps} {...metaAttribute({ name: 'area-chart' })} width="100%" height="100%">
       <ResponsiveContainer>
-        <StyledAreaChart {...props} theme={theme} margin={defaultMargin}>
+        <RechartsAreaChart {...props} margin={defaultMargin}>
           {modifiedChildren}
-        </StyledAreaChart>
+        </RechartsAreaChart>
       </ResponsiveContainer>
     </BaseBox>
   );
 };
+
+export type { AreaChartProps, AreaProps };
+export { AreaChart, Area };
