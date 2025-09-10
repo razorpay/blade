@@ -16,11 +16,10 @@ import { throwBladeError } from '~utils/logger';
 
 const MAX_LINES = 10;
 
-// BladeColorToken type for charts - only allows categorical chart colors for line charts
 export type BladeColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
 // Chart-specific interfaces based on user specifications
-export interface LineProps {
+interface LineProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   dot?: RechartsLineProps['dot'];
   activeDot?: RechartsLineProps['activeDot'];
@@ -41,7 +40,7 @@ export interface LineProps {
 }
 
 // TypeScript prop types
-export type LineChartProps = ComponentProps<typeof RechartsLineChart> & {
+type LineChartProps = ComponentProps<typeof RechartsLineChart> & {
   colorTheme?: 'default' | 'informational';
 };
 
@@ -54,7 +53,7 @@ export interface ReferenceLineProps {
   labelOffset?: number;
 }
 
-export const Line: React.FC<LineProps> = ({
+const Line: React.FC<LineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
@@ -95,11 +94,7 @@ export const Line: React.FC<LineProps> = ({
 };
 
 // Main components
-export const LineChart: React.FC<LineChartProps> = ({
-  children,
-  colorTheme = 'default',
-  ...props
-}) => {
+const LineChart: React.FC<LineChartProps> = ({ children, colorTheme = 'default', ...props }) => {
   const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
@@ -128,3 +123,6 @@ export const LineChart: React.FC<LineChartProps> = ({
     </BaseBox>
   );
 };
+
+export type { LineChartProps, LineProps };
+export { LineChart, Line };
