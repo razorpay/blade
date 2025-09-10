@@ -10,8 +10,7 @@ import {
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
 import type { XAxisProps as RechartsXAxisProps, YAxisProps as RechartsYAxisProps } from 'recharts';
-import { castWebType } from '~utils';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
@@ -125,14 +124,54 @@ const ChartToolTip: React.FC<ChartToolTipProps> = (props) => {
 
   return (
     <RechartsTooltip
-      contentStyle={{
-        backgroundColor: theme.colors.surface.background.gray.intense,
-        border: `1px solid ${theme.colors.surface.border.gray.muted}`,
-        borderRadius: theme.border.radius.medium,
-        boxShadow: castWebType(theme.elevation.lowRaised),
-        fontFamily: theme.typography.fonts.family.text,
-        fontSize: theme.typography.fonts.size[100],
-        color: theme.colors.surface.text.gray.normal,
+      content={({ active, payload, label }) => {
+        console.log({
+          active,
+          payload,
+          label,
+        });
+        return (
+          <div
+            style={{
+              backgroundColor: theme.colors.surface.icon.staticBlack.normal,
+              borderRadius: theme.border.radius.large,
+              border: `1px solid ${theme.colors.surface.border.gray.muted}`,
+              padding: theme.spacing[4],
+            }}
+          >
+            <Heading size="small" weight="semibold" color="surface.text.staticWhite.normal">
+              {label}
+            </Heading>
+            <Box paddingTop="spacing.4">
+              {payload.map((item) => (
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  gap="spacing.4"
+                  key={item.name}
+                >
+                  <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
+                    <div
+                      style={{
+                        width: '12px',
+                        height: '12px',
+                        backgroundColor: item.color,
+                        borderRadius: '2px',
+                      }}
+                    />
+                    <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+                      {item.name}
+                    </Text>
+                  </Box>
+                  <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+                    {item.value}
+                  </Text>
+                </Box>
+              ))}
+            </Box>
+          </div>
+        );
       }}
       cursor={{ fill: 'rgba(0, 0, 0, 0.1)', stroke: theme.colors.surface.border.gray.muted }}
       {...props}
