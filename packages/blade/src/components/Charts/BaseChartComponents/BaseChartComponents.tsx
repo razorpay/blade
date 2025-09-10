@@ -16,28 +16,28 @@ import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 
-export type ReferenceLineProps = {
+type ReferenceLineProps = {
   y?: number;
   x?: number;
   label: string;
 };
 
-export type XAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+type XAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   label?: string;
   dataKey?: string;
 };
-export type YAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+type YAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   label?: string;
   dataKey?: string;
 };
 
-export type ChartToolTipProps = ComponentProps<typeof RechartsTooltip>;
-export type LegendProps = ComponentProps<typeof RechartsLegend>;
-export type ResponsiveContainerProps = ComponentProps<typeof RechartsResponsiveContainer>;
+type ChartToolTipProps = ComponentProps<typeof RechartsTooltip>;
+type LegendProps = ComponentProps<typeof RechartsLegend>;
+type ResponsiveContainerProps = ComponentProps<typeof RechartsResponsiveContainer>;
 
-export type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
+type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
-export const XAxis: React.FC<XAxisProps> = (props) => {
+const XAxis: React.FC<XAxisProps> = (props) => {
   const { theme } = useTheme();
   const X_OFFSET = 32;
   const Y_OFFSET = 14.5;
@@ -73,7 +73,7 @@ export const XAxis: React.FC<XAxisProps> = (props) => {
   );
 };
 
-export const YAxis: React.FC<YAxisProps> = (props) => {
+const YAxis: React.FC<YAxisProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -107,7 +107,7 @@ export const YAxis: React.FC<YAxisProps> = (props) => {
   );
 };
 
-export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
+const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -120,7 +120,7 @@ export const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
 };
 
 //REVIEW_NOTES: this might change
-export const ChartToolTip: React.FC<ChartToolTipProps> = (props) => {
+const ChartToolTip: React.FC<ChartToolTipProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -197,7 +197,7 @@ const CustomSquareLegend = (props: {
   );
 };
 
-export const Legend: React.FC = (props) => {
+const Legend: React.FC = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -215,7 +215,7 @@ export const Legend: React.FC = (props) => {
   );
 };
 
-export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = (props) => {
+const ResponsiveContainer: React.FC<ResponsiveContainerProps> = (props) => {
   return <RechartsResponsiveContainer {...props} />;
 };
 
@@ -284,3 +284,14 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, x, y }) => 
     />
   );
 };
+
+export type {
+  ReferenceLineProps,
+  XAxisProps,
+  YAxisProps,
+  ChartToolTipProps,
+  LegendProps,
+  ResponsiveContainerProps,
+  CartesianGridProps,
+};
+export { XAxis, YAxis, ResponsiveContainer, CartesianGrid, ChartToolTip, Legend };
