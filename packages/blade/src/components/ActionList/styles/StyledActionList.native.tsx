@@ -12,7 +12,9 @@ const BaseStyledActionList = styled(BaseBox)<StyledActionListProps>((props) => {
   };
 });
 
-const StyledActionList = ({
+const StyledActionList: React.FC<
+  { children: React.ReactNode } & BaseBoxProps & StyledActionListProps
+> = ({
   children,
   onTouchEnd,
   onTouchStart,

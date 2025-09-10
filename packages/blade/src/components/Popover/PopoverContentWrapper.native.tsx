@@ -26,7 +26,9 @@ const StyledPopoverContentWrapper = styled(BaseBox)<{
   return getPopoverContentWrapperStyles({ theme, styles, isMobile });
 });
 
-const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>(
+const PopoverContentWrapper: React.ForwardRefExoticComponent<
+  PopoverContentWrapperProps & React.RefAttributes<View>
+> = React.forwardRef<View, PopoverContentWrapperProps>(
   ({ children, styles, side, isVisible, ...props }, ref) => {
     const { theme, platform } = useTheme();
     const isMobile = platform === 'onMobile';
