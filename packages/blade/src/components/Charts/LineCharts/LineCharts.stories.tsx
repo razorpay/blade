@@ -178,7 +178,7 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
         />
         <Line
           dataKey="forecast"
-          name="Forecast"
+          name="Forecasted Data"
           strokeStyle="dashed"
           connectNulls={true}
           showLegend={false}
