@@ -124,12 +124,7 @@ const ChartToolTip: React.FC<ChartToolTipProps> = (props) => {
 
   return (
     <RechartsTooltip
-      content={({ active, payload, label }) => {
-        console.log({
-          active,
-          payload,
-          label,
-        });
+      content={({ payload, label }) => {
         return (
           <div
             style={{
@@ -228,8 +223,6 @@ const CustomSquareLegend = (props: {
               {entry.value}
             </Text>
           </Box>
-
-          {/* Changed text color to a dark gray */}
         </li>
       ))}
     </ul>
