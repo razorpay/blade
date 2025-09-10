@@ -178,7 +178,7 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
         />
         <Line
           dataKey="forecast"
-          name="Forecast"
+          name="Forecasted Data"
           strokeStyle="dashed"
           connectNulls={true}
           showLegend={false}
@@ -271,8 +271,12 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
         <YAxis label="Sales" />
         <ChartToolTip />
         <Legend />
-        <Line dataKey="teamA" name="Success" />
-        <Line dataKey="teamB" name="Errors" />
+        <Line
+          dataKey="teamA"
+          name="Success"
+          color="chart.background.categorical.emerald.moderate"
+        />
+        <Line dataKey="teamB" name="Errors" color="chart.background.categorical.crimson.moderate" />
       </LineChart>
     </div>
   );
