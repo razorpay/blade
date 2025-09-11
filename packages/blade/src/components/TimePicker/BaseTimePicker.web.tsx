@@ -13,7 +13,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
-import { componentZIndices } from '~utils/componentZIndices';
 import { usePopup } from '~components/DatePicker/usePopup';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -45,24 +44,29 @@ const _BaseTimePicker = ({
   minuteStep = 1,
   labelSuffix,
   labelTrailing,
-  zIndex = componentZIndices.popover,
 
   ...props
-}: TimePickerProps &
-  StyledPropsBlade &
-  DataAnalyticsAttribute & {
-    zIndex?: number;
-  }): React.ReactElement => {
+}: TimePickerProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const referenceRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
   const { theme } = useTheme();
   const titleId = useId('timepicker-title');
 
+  // Set default time (12:00 AM / 00:00) when neither value nor defaultValue is provided
+  const effectiveValue = React.useMemo(() => {
+    if (!value && !defaultValue) {
+      const defaultTime = new Date();
+      defaultTime.setHours(0, 0, 0, 0); // Set to midnight (displays as 12:00 AM in 12h, 00:00 in 24h)
+      return defaultTime;
+    }
+    return value;
+  }, [value, defaultValue]);
+
   const {
-    selectedTime,
-    setSelectedTime,
-    selectedTimeValue,
-    setSelectedTimeValue,
+    timeValue,
+    setTimeValue,
+    internalTimeValue,
+    setInternalTimeValue,
     selectedHour,
     selectedMinute,
     selectedPeriod,
@@ -72,7 +76,7 @@ const _BaseTimePicker = ({
     onCancel: handleCancel,
     createCompleteTime,
   } = useTimePickerState({
-    value,
+    value: effectiveValue,
     defaultValue,
     onChange,
     isOpen,
@@ -111,12 +115,13 @@ const _BaseTimePicker = ({
   // See: https://github.com/adobe/react-spectrum/issues/3164
   React.useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (
-        isDropdownOpen &&
-        referenceRef.current &&
-        !referenceRef.current.contains(e.target as Node) &&
-        !refs.floating.current?.contains(e.target as Node)
-      ) {
+      const target = e.target as Node;
+      const isClickOnInput = referenceRef.current?.contains(target);
+      const isClickOnDropdown = refs.floating.current?.contains(target);
+
+      // Only close dropdown if click is outside both input and dropdown
+      // This ensures clicking different segments within the input keeps dropdown open
+      if (isDropdownOpen && !isClickOnInput && !isClickOnDropdown) {
         handleApply();
       }
     };
@@ -134,7 +139,6 @@ const _BaseTimePicker = ({
       // Find the currently focused time segment and blur it
 
       const activeElement = document.activeElement as HTMLElement | null;
-      console.log('Qswap', activeElement);
       if (activeElement && 'blur' in activeElement && typeof activeElement.blur === 'function') {
         setTimeout(() => {
           activeElement.blur();
@@ -145,8 +149,8 @@ const _BaseTimePicker = ({
 
   const content = (
     <TimePickerContent
-      selectedTime={selectedTime}
-      setSelectedTime={setSelectedTime}
+      selectedTime={timeValue}
+      setSelectedTime={setTimeValue}
       selectedHour={selectedHour}
       selectedMinute={selectedMinute}
       selectedPeriod={selectedPeriod}
@@ -168,10 +172,10 @@ const _BaseTimePicker = ({
         ref={referenceRef}
         inputRef={refs.setReference}
         referenceProps={getReferenceProps()}
-        time={selectedTime}
-        timeValue={selectedTimeValue}
-        onChange={setSelectedTime}
-        onTimeValueChange={(timeValue) => setSelectedTimeValue(() => timeValue)}
+        timeValue={timeValue}
+        internalTimeValue={internalTimeValue}
+        onChange={setTimeValue}
+        onTimeValueChange={(timeValue) => setInternalTimeValue(() => timeValue)}
         createCompleteTime={createCompleteTime}
         label={label}
         helpText={helpText}
@@ -189,6 +193,8 @@ const _BaseTimePicker = ({
         labelSuffix={labelSuffix}
         labelTrailing={labelTrailing}
         timeFormat={timeFormat}
+        isDropdownOpen={isDropdownOpen}
+        setIsDropdownOpen={setIsDropdownOpen}
         {...props}
       />
 
@@ -203,7 +209,6 @@ const _BaseTimePicker = ({
             <BaseBox
               ref={refs.setFloating}
               style={floatingStyles}
-              zIndex={zIndex}
               {...getFloatingProps()}
               {...makeAccessible({ labelledBy: titleId })}
             >

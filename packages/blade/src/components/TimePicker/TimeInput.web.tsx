@@ -30,11 +30,11 @@ const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
 
   &:focus {
     background-color: ${(props: any) =>
-      props.theme.colors.interactive.background.primary.highlighted} !important;
+      props.theme.colors.interactive.background.primary.faded} !important;
     color: #ffffff !important;
 
     span {
-      color: #ffffff !important;
+      color: #000000 !important;
     }
   }
 `;
@@ -130,9 +130,8 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
  * A complete time input field built with React Aria for accessibility and keyboard interaction.
  *
  * ARCHITECTURE:
- * - Uses React Aria's useTimeFieldState for time value management
- * - Uses React Aria's useTimeField for field-level behavior
- * - Uses Blade's BaseInput (as="custom") for styling and form integration
+ * - Uses React Aria's useTimeFieldState for time value management & field-level behavior
+ * - Uses Blade's BaseInput (as="div") for styling and form integration
  * - Renders multiple TimeSegment components for individual time parts
  *
  * USER INTERACTION:
@@ -146,8 +145,8 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
  */
 const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInputProps> = (
   {
-    time,
     timeValue,
+    internalTimeValue,
     onChange,
     onTimeValueChange,
     label,
@@ -169,8 +168,8 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     testID,
     inputRef,
     referenceProps,
-    onInputClick,
     createCompleteTime,
+    setIsDropdownOpen,
     ...props
   },
   ref: React.ForwardedRef<any>,
@@ -182,9 +181,10 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     label,
     locale,
     hourCycle: currentTimeFormat === '12h' ? 12 : 24,
-    value: timeValue as any, // Use TimeValue directly from hook
+    value: internalTimeValue, // Use TimeValue directly from hook
     onChange: onTimeValueChange, // Use TimeValue onChange directly
     isDisabled,
+    shouldForceLeadingZeros: true, // Force leading zeros (01, 02, 03...)
   });
 
   let timeFieldRef = useRef<HTMLDivElement>(null);
@@ -211,8 +211,22 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     fieldProps.onKeyDown?.(event as any);
   };
 
+  const handleInputClick = React.useCallback(
+    (e: React.MouseEvent) => {
+      if (isDisabled) return;
+
+      setIsDropdownOpen?.(true);
+    },
+    [isDisabled, setIsDropdownOpen],
+  );
+
   return (
-    <BaseBox {...fieldProps} onKeyDown={handleKeyDown} ref={mergeRefs(timeFieldRef, ref as any)}>
+    <BaseBox
+      {...fieldProps}
+      onClick={handleInputClick}
+      onKeyDown={handleKeyDown}
+      ref={mergeRefs(timeFieldRef, ref as any)}
+    >
       <BaseInput
         ref={inputRef}
         as="div"
@@ -243,8 +257,8 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
             // Fix for React Aria contentEditable focus issue
             // Wrapping each segment in a div prevents unwanted focus when clicking outside
             // See: https://github.com/adobe/react-spectrum/issues/3164
-            <BaseBox>
-              <TimeSegment key={i} segment={segment} state={state} isDisabled={isDisabled} />
+            <BaseBox key={i}>
+              <TimeSegment segment={segment} state={state} isDisabled={isDisabled} />
             </BaseBox>
           );
         })}
