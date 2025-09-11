@@ -106,8 +106,6 @@ const LineChart: React.FC<LineChartProps> = ({ children, colorTheme = 'default',
     });
   }, [children, colorTheme]);
 
-  console.log('lineChartModifiedChildrens', lineChartModifiedChildrens);
-
   return (
     <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">
       <RechartsResponsiveContainer width="100%" height="100%">
