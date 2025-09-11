@@ -18,7 +18,6 @@ import type {
   CartesianGridProps,
 } from './types';
 import {
-  RECT_WIDTH,
   RECT_HEIGHT,
   TEXT_BASELINE,
   PADDING_VERTICAL,
@@ -27,6 +26,7 @@ import {
   Y_OFFSET,
   X_OFFSET,
 } from './tokens';
+import { calculateTextWidth } from './utils';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
@@ -256,6 +256,10 @@ const CustomReferenceLabel = ({
   const { x, y, width } = viewBox ?? { x: 0, y: 0, width: 0 };
   const { theme } = useTheme();
 
+  const { width: RECT_WIDTH, displayText } = value
+    ? calculateTextWidth(value, theme)
+    : { width: 80, displayText: value ?? '' };
+
   const RectX = isVertical ? x + width - RECT_WIDTH / 2 : x + width - RECT_WIDTH;
   const RectY = isVertical ? y : y - TEXT_BASELINE;
 
@@ -285,7 +289,7 @@ const CustomReferenceLabel = ({
         fontWeight={theme.typography.fonts.weight.medium}
         letterSpacing={theme.typography.letterSpacings[100]}
       >
-        {value}
+        {displayText}
       </text>
     </g>
   );
