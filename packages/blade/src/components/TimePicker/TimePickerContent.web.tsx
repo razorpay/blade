@@ -1,12 +1,12 @@
 import React from 'react';
-import { SpinWheel } from './SpinWheel';
-import { TimePickerFooter } from './TimePickerFooter';
-import type { TimePickerContentProps } from './types';
+import styled from 'styled-components';
 import { useIsMobile } from '~utils/useIsMobile';
 import { Divider } from '~components/Divider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import styled from 'styled-components';
+import { SpinWheel } from './SpinWheel';
+import { TimePickerFooter } from './TimePickerFooter';
+import type { TimePickerContentProps } from './types';
 import { getNearestStepValue, createDateFromSelection } from './utils';
 
 // Styled container with fade overlay
@@ -23,10 +23,10 @@ const StyledFadeContainer = styled(BaseBox)`
     bottom: 0;
     background: linear-gradient(
       to bottom,
-      ${(props: any) => props.theme.colors.surface.background.gray.intense} 0px,
+      ${(props: { theme: any }) => props.theme.colors.surface.background.gray.intense} 0px,
       transparent 48px,
       transparent calc(100% - 48px),
-      ${(props: any) => props.theme.colors.surface.background.gray.intense} 100%
+      ${(props: { theme: any }) => props.theme.colors.surface.background.gray.intense} 100%
     );
     pointer-events: none;
     z-index: 10;
@@ -64,7 +64,7 @@ const TimePickerContent = ({
 
   const wheelRefs = is12HourFormat ? [hourRef, minuteRef, periodRef] : [hourRef, minuteRef];
 
-  const focusWheel = (index: number) => {
+  const focusWheel = (index: number): void => {
     setActiveWheelIndex(index);
     // ensure tabindex update applies before focusing
     requestAnimationFrame(() => {
@@ -72,7 +72,7 @@ const TimePickerContent = ({
     });
   };
 
-  const handleContainerKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleContainerKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     // Up/Down should be handled by individual wheels; Left/Right move to next wheel
     if (e.key === 'ArrowRight') {
       e.preventDefault();
@@ -85,7 +85,7 @@ const TimePickerContent = ({
     }
   };
 
-  const handleContainerFocus = (e: React.FocusEvent<HTMLDivElement>) => {
+  const handleContainerFocus = (e: React.FocusEvent<HTMLDivElement>): void => {
     const target = e.target as HTMLElement;
     const idx = wheelRefs.findIndex((ref) => ref.current === target);
     if (idx !== -1 && idx !== activeWheelIndex) {
@@ -108,7 +108,7 @@ const TimePickerContent = ({
   const displayMinute = minuteStep > 1 ? getNearestStepValue(currentMinute, minuteStep) : undefined;
 
   // Handle value changes - directly update selectedTime
-  const handleHourChange = (value: string | number) => {
+  const handleHourChange = (value: string | number): void => {
     const hour = Number(value);
     const newDate = createDateFromSelection(
       currentHour,
@@ -120,7 +120,7 @@ const TimePickerContent = ({
     setSelectedTime(newDate);
   };
 
-  const handleMinuteChange = (value: string | number) => {
+  const handleMinuteChange = (value: string | number): void => {
     const minute = Number(value);
     const newDate = createDateFromSelection(
       currentHour,
@@ -133,7 +133,7 @@ const TimePickerContent = ({
     setSelectedTime(newDate);
   };
 
-  const handlePeriodChange = (value: string | number) => {
+  const handlePeriodChange = (value: string | number): void => {
     const period = value as 'AM' | 'PM';
     const newDate = createDateFromSelection(
       currentHour,
@@ -147,7 +147,7 @@ const TimePickerContent = ({
     setSelectedTime(newDate);
   };
 
-  const handleApply = () => {
+  const handleApply = (): void => {
     const newDate = createDateFromSelection(currentHour, currentMinute, currentPeriod, timeFormat);
     setSelectedTime(newDate);
     onApply();

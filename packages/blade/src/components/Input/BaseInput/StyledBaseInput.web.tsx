@@ -149,17 +149,17 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         if (!shouldIgnoreBlurAnimation) {
           setCurrentInteraction('default');
         }
-        handleOnBlur?.({ name, value: event as any });
+        handleOnBlur?.({ name, value: (event as unknown) as React.ChangeEvent<HTMLInputElement> });
       }}
       onFocus={(event: React.FocusEvent<HTMLDivElement>): void => {
         setCurrentInteraction('focus');
-        handleOnFocus?.({ name, value: event as any });
+        handleOnFocus?.({ name, value: (event as unknown) as React.ChangeEvent<HTMLInputElement> });
       }}
       onClick={(event: React.MouseEvent<HTMLDivElement>): void => {
         if (props.isDropdownTrigger) {
           event.stopPropagation();
         }
-        handleOnClick?.({ name, value: event as any });
+        handleOnClick?.({ name, value: (event as unknown) as React.MouseEvent<HTMLInputElement> });
       }}
       name={name}
       $size={$size}

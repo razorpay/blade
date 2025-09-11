@@ -218,7 +218,7 @@ export const Validations: StoryFn<typeof TimePicker> = () => {
   const [appointmentTime, setAppointmentTime] = useState<Date | null>(null);
   const [hasBusinessError, setHasBusinessError] = useState(false);
 
-  const validateBusinessTime = (selectedTime: Date | null) => {
+  const validateBusinessTime = (selectedTime: Date | null): void => {
     if (!selectedTime) {
       setHasBusinessError(true);
       return;
@@ -487,7 +487,7 @@ export const RangeSelection: StoryFn<typeof TimePicker> = () => {
   });
   const [endTime, setEndTime] = React.useState<Date | null>(() => {
     const now = new Date();
-    now.setHours(11, 0, 0, 0); // 5:00 PM
+    now.setHours(11, 0, 0, 0); // 11:00 AM
     return now;
   });
 
@@ -551,7 +551,7 @@ export const RangeSelection: StoryFn<typeof TimePicker> = () => {
         </Text>
         <Text size="small">End: {endTime ? endTime.toLocaleTimeString() : 'Not selected'}</Text>
         <Text size="small" weight="semibold" marginTop="spacing.2">
-          Duration: {duration || 'Select both times'}
+          Duration: {duration ?? 'Select both times'}
         </Text>
       </Box>
     </Box>

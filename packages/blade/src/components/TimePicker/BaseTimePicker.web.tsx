@@ -1,18 +1,18 @@
 import React, { useRef } from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
-import type { TimePickerProps } from './types';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { DataAnalyticsAttribute } from '~utils/types';
-import { TimeInput } from './TimeInput.web';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { useTimePickerState } from './useTimePickerState';
-import { TimePickerContent } from './TimePickerContent';
-import { useIsMobile } from '~utils/useIsMobile';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import BaseBox from '~components/Box/BaseBox';
-import { useTheme } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
+import { useIsMobile } from '~utils/useIsMobile';
+import { useTheme } from '~utils';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { TimeInput } from './TimeInput.web';
+import { useTimePickerState } from './useTimePickerState';
+import { TimePickerContent } from './TimePickerContent';
+import type { TimePickerProps } from './types';
 import { usePopup } from '~components/DatePicker/usePopup';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -114,7 +114,7 @@ const _BaseTimePicker = ({
   // React Aria's contentEditable segments don't properly trigger Floating UI's dismiss
   // See: https://github.com/adobe/react-spectrum/issues/3164
   React.useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
+    const handleClick = (e: MouseEvent): void => {
       const target = e.target as Node;
       const isClickOnInput = referenceRef.current?.contains(target);
       const isClickOnDropdown = refs.floating.current?.contains(target);
@@ -185,7 +185,7 @@ const _BaseTimePicker = ({
         isDisabled={isDisabled}
         isRequired={isRequired}
         necessityIndicator={necessityIndicator}
-        autoFocus={autoFocus}
+        autoFocus={autoFocus} // eslint-disable-line jsx-a11y/no-autofocus
         name={name}
         placeholder={placeholder}
         size={size}

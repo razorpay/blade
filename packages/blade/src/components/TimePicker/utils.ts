@@ -74,7 +74,14 @@ export const timeValueToDate = (timeValue: Time | null): Date | null => {
  * getTimeComponents(null, '12h')
  * // → { selectedHour: 12, selectedMinute: 0, selectedPeriod: 'AM' }
  */
-export const getTimeComponents = (time: Date | null, timeFormat: TimeFormat) => {
+export const getTimeComponents = (
+  time: Date | null,
+  timeFormat: TimeFormat,
+): {
+  selectedHour: number;
+  selectedMinute: number;
+  selectedPeriod: string;
+} => {
   if (!time) {
     return {
       selectedHour: 12,
@@ -153,9 +160,8 @@ export const createCompleteTime = (
   if (timeFormat === '12h') {
     if (selectedHour < 1 || selectedHour > 12 || selectedMinute < 0 || selectedMinute > 59)
       return null;
-  } else {
-    if (selectedHour < 0 || selectedHour > 23 || selectedMinute < 0 || selectedMinute > 59)
-      return null;
+  } else if (selectedHour < 0 || selectedHour > 23 || selectedMinute < 0 || selectedMinute > 59) {
+    return null;
   }
 
   const newDate = new Date();

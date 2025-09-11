@@ -1,7 +1,7 @@
 import React from 'react';
-import type { UseTimePickerStateProps } from './types';
+import type { Time } from '@internationalized/date';
 import { useControllableState } from '~utils/useControllable';
-import { Time } from '@internationalized/date';
+import type { UseTimePickerStateProps } from './types';
 import { dateToTimeValue, timeValueToDate, getTimeComponents, createCompleteTime } from './utils';
 
 /**
@@ -20,8 +20,8 @@ export const useTimePickerState = ({
 }: UseTimePickerStateProps) => {
   // Internal state uses TimeValue for React Aria compatibility
   const [internalTimeValue, setInternalTimeValue] = useControllableState<Time | null>({
-    value: dateToTimeValue(value || null),
-    defaultValue: dateToTimeValue(defaultValue || null),
+    value: dateToTimeValue(value ?? null),
+    defaultValue: dateToTimeValue(defaultValue ?? null),
     onChange: (timeValue) => {
       // Convert back to Date when calling user's onChange
       const date = timeValueToDate(timeValue);
