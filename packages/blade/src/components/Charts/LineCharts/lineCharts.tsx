@@ -44,21 +44,12 @@ type LineChartProps = ComponentProps<typeof RechartsLineChart> & {
   colorTheme?: 'default' | 'informational';
 };
 
-export interface ReferenceLineProps {
-  y?: number;
-  x?: number;
-  label?: string;
-  color?: BladeColorToken;
-  labelPosition?: 'left' | 'right' | 'top' | 'bottom';
-  labelOffset?: number;
-}
-
 const Line: React.FC<LineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
   dot = false,
-  activeDot = false,
+  activeDot = true,
   showLegend = true,
   _index,
   _colorTheme,
@@ -114,6 +105,8 @@ const LineChart: React.FC<LineChartProps> = ({ children, colorTheme = 'default',
       return child;
     });
   }, [children, colorTheme]);
+
+  console.log('lineChartModifiedChildrens', lineChartModifiedChildrens);
 
   return (
     <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">

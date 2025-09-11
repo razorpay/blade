@@ -143,6 +143,34 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
   );
 };
 
+// Simple Line chart with vertical line
+export const SimpleLineChartWithVerticalLine: StoryFn<typeof LineChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <LineChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartToolTip />
+        <Legend />
+        <Line
+          dataKey="teamA"
+          name="Team A"
+          strokeStyle="solid"
+          color="chart.background.categorical.azure.moderate"
+        />
+        <Line
+          dataKey="teamB"
+          name="Team B"
+          strokeStyle="solid"
+          color="chart.background.categorical.emerald.moderate"
+        />
+        <ReferenceLine x={100} label="Avg: 1200" />
+      </LineChart>
+    </div>
+  );
+};
+
 // Tiny Line Chart Example (no dots for cleaner look)
 export const TinyLineChart: StoryFn<typeof LineChart> = () => {
   return (
@@ -182,7 +210,7 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
           strokeStyle="dashed"
           connectNulls={true}
           showLegend={false}
-          color="chart.background.categorical.gray.moderate"
+          color="chart.background.categorical.azure.moderate"
         />
       </LineChart>
     </div>
@@ -283,6 +311,7 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
 };
 
 SimpleLineChart.storyName = 'Simple Line Chart';
+SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
 LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
