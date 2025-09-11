@@ -141,7 +141,7 @@ const data = [
 // 2.2.a - Simple Area Chart
 export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
-    <Box width="100%" height="100%">
+    <Box width="100%" height="500px">
       <AreaChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -161,7 +161,7 @@ export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
 // 2.2.b - Stacked Area Chart
 export const StackedAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
-    <Box width="100%" height="100%">
+    <Box width="100%" height="500px">
       <AreaChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -192,7 +192,8 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
   return (
     <Box width="100%" height="100%">
       <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
-      <AreaChart width={500} height={200} data={data}>
+      <Box width="500px" height="200px">
+      <AreaChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -211,8 +212,11 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
           color="chart.background.categorical.azure.moderate"
         />
       </AreaChart>
+      </Box>
+
       <Heading size="small">Area Chart that Connects Nulls :- </Heading>
-      <AreaChart width={500} height={200} data={data}>
+      <Box width="500px" height="200px">
+      <AreaChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -232,6 +236,7 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
           color="chart.background.categorical.azure.moderate"
         />
       </AreaChart>
+      </Box>
     </Box>
   );
 };
@@ -239,7 +244,7 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
 // 2.2.d - Tiny Area Chart (Sparkline)
 export const TinyAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
-    <Box width="100%" height="100%">
+    <Box width="100px" height="50px">
       <AreaChart data={chartData}>
         <Area
           dataKey="teamA"
@@ -255,7 +260,7 @@ export const TinyAreaChart: StoryFn<typeof AreaChart> = () => {
 // Area Chart with Reference Line
 export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
   return (
-    <Box width="100%" height="100%">
+    <Box width="100%" height="400px">
       <AreaChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -276,7 +281,7 @@ export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
 
 export const AreaChartWithReferenceLineVertical: StoryFn<typeof AreaChart> = () => {
   return (
-    <Box width="100%" height="100%">
+    <Box width="100%" height="400px">
       <AreaChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -298,7 +303,7 @@ export const AreaChartWithReferenceLineVertical: StoryFn<typeof AreaChart> = () 
 // Area Chart with Default Color Theme
 export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
   return (
-    <Box width="100%" height="100%">
+    <Box width="100%" height="400px">
       <AreaChart data={chartData} colorTheme="informational">
         <CartesianGrid />
         <XAxis dataKey="month" />
