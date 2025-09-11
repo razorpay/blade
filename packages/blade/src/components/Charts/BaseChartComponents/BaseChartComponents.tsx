@@ -1,5 +1,4 @@
 import React from 'react';
-import type { ComponentProps } from 'react';
 import {
   XAxis as RechartsXAxis,
   YAxis as RechartsYAxis,
@@ -9,32 +8,19 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
-import type { XAxisProps as RechartsXAxisProps, YAxisProps as RechartsYAxisProps } from 'recharts';
+import type {
+  ReferenceLineProps,
+  XAxisProps,
+  YAxisProps,
+  ChartTooltipProps,
+  LegendProps,
+  ResponsiveContainerProps,
+  CartesianGridProps,
+} from './types';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
-
-type ReferenceLineProps = {
-  y?: number;
-  x?: number;
-  label: string;
-};
-
-type XAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
-  label?: string;
-  dataKey?: string;
-};
-type YAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
-  label?: string;
-  dataKey?: string;
-};
-
-type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
-type LegendProps = ComponentProps<typeof RechartsLegend>;
-type ResponsiveContainerProps = ComponentProps<typeof RechartsResponsiveContainer>;
-
-type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
 const XAxis: React.FC<XAxisProps> = (props) => {
   const { theme } = useTheme();
