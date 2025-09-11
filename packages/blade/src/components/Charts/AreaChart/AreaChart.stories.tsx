@@ -12,6 +12,7 @@ import { AreaChart, Area } from './AreaCharts';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
@@ -19,8 +20,10 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="AreaChart"
       componentDescription="An Area Chart component built on top of Recharts with Blade design system styling."
-      apiDecisionLink={null}
-      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=100413-32686&t=n9A7LztwEkIsly3v-0"
+      apiDecisionLink={
+        'https://github.com/razorpay/blade/blob/5920fbd32c70793454f8c8c6ff544b2a7413afb5/packages/blade/src/components/Charts/_decisions/decisions.md'
+      }
+      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188717&p=f&m=dev"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
@@ -138,7 +141,7 @@ const data = [
 // 2.2.a - Simple Area Chart
 export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="100%">
       <AreaChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -151,14 +154,14 @@ export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
           color="chart.background.categorical.azure.intense"
         />
       </AreaChart>
-    </div>
+    </Box>
   );
 };
 
 // 2.2.b - Stacked Area Chart
 export const StackedAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="100%">
       <AreaChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -180,14 +183,14 @@ export const StackedAreaChart: StoryFn<typeof AreaChart> = () => {
           color="chart.background.categorical.emerald.moderate"
         />
       </AreaChart>
-    </div>
+    </Box>
   );
 };
 
 // 2.2.c - Area Chart that Connects Nulls
 export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="100%">
       <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
       <AreaChart width={500} height={200} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
@@ -229,14 +232,14 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
           color="chart.background.categorical.azure.moderate"
         />
       </AreaChart>
-    </div>
+    </Box>
   );
 };
 
 // 2.2.d - Tiny Area Chart (Sparkline)
 export const TinyAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
-    <div style={{ width: '200px', height: '80px' }}>
+    <Box width="100%" height="100%">
       <AreaChart data={chartData}>
         <Area
           dataKey="teamA"
@@ -245,14 +248,14 @@ export const TinyAreaChart: StoryFn<typeof AreaChart> = () => {
           color="chart.background.categorical.azure.intense"
         />
       </AreaChart>
-    </div>
+    </Box>
   );
 };
 
 // Area Chart with Reference Line
 export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="100%">
       <AreaChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -267,13 +270,13 @@ export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
         />
         <ReferenceLine y={3000} label="Target" />
       </AreaChart>
-    </div>
+    </Box>
   );
 };
 
 export const AreaChartWithReferenceLineVertical: StoryFn<typeof AreaChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="100%">
       <AreaChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -288,14 +291,14 @@ export const AreaChartWithReferenceLineVertical: StoryFn<typeof AreaChart> = () 
         />
         <ReferenceLine x="Apr" label="Target" />
       </AreaChart>
-    </div>
+    </Box>
   );
 };
 
 // Area Chart with Default Color Theme
 export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="100%">
       <AreaChart data={chartData} colorTheme="informational">
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -305,7 +308,7 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
         <Area dataKey="teamA" name="Success" />
         <Area dataKey="teamB" name="Errors" />
       </AreaChart>
-    </div>
+    </Box>
   );
 };
 
