@@ -1,64 +1,25 @@
 import React from 'react';
-import type { ComponentProps } from 'react';
 import {
   LineChart as RechartsLineChart,
   Line as RechartsLine,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import type { LineProps as RechartsLineProps } from 'recharts';
 import { useChartsColorTheme } from '../utils';
+import type { LineProps, LineChartProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
-import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
 
 const MAX_LINES = 10;
-
-export type BladeColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
-
-// Chart-specific interfaces based on user specifications
-interface LineProps {
-  type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  dot?: RechartsLineProps['dot'];
-  activeDot?: RechartsLineProps['activeDot'];
-  connectNulls?: boolean;
-  showLegend?: boolean;
-  dataKey: string;
-  name?: string;
-  color?: BladeColorToken;
-  strokeStyle?: 'dotted' | 'dashed' | 'solid';
-  /**
-   * @private
-   */
-  _index?: number; // Add this for internal use
-  /**
-   * @private
-   */
-  _colorTheme?: 'default' | 'informational';
-}
-
-// TypeScript prop types
-type LineChartProps = ComponentProps<typeof RechartsLineChart> & {
-  colorTheme?: 'default' | 'informational';
-};
-
-export interface ReferenceLineProps {
-  y?: number;
-  x?: number;
-  label?: string;
-  color?: BladeColorToken;
-  labelPosition?: 'left' | 'right' | 'top' | 'bottom';
-  labelOffset?: number;
-}
 
 const Line: React.FC<LineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
   dot = false,
-  activeDot = false,
+  activeDot = true,
   showLegend = true,
   _index,
   _colorTheme,
