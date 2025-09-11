@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useIsMobile } from '~utils/useIsMobile';
 import { Divider } from '~components/Divider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
+import { useIsMobile } from '~utils/useIsMobile';
 import { SpinWheel } from './SpinWheel';
 import { TimePickerFooter } from './TimePickerFooter';
 import type { TimePickerContentProps } from './types';
@@ -23,10 +23,10 @@ const StyledFadeContainer = styled(BaseBox)`
     bottom: 0;
     background: linear-gradient(
       to bottom,
-      ${(props: { theme: any }) => props.theme.colors.surface.background.gray.intense} 0px,
+      ${({ theme }) => theme.colors.surface.background.gray.intense} 0px,
       transparent 48px,
       transparent calc(100% - 48px),
-      ${(props: { theme: any }) => props.theme.colors.surface.background.gray.intense} 100%
+      ${({ theme }) => theme.colors.surface.background.gray.intense} 100%
     );
     pointer-events: none;
     z-index: 10;

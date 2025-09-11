@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Time } from '@internationalized/date';
-import { useControllableState } from '~utils/useControllable';
 import type { UseTimePickerStateProps } from './types';
+import { useControllableState } from '~utils/useControllable';
 import { dateToTimeValue, timeValueToDate, getTimeComponents, createCompleteTime } from './utils';
 
 /**
@@ -17,7 +17,20 @@ export const useTimePickerState = ({
   timeFormat = '12h',
   showFooterActions = true,
   onApply,
-}: UseTimePickerStateProps) => {
+}: UseTimePickerStateProps): {
+  timeValue: Date | null;
+  setTimeValue: (date: Date | null) => void;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  internalTimeValue: Time | null;
+  setInternalTimeValue: (next: (prevState: Time | null) => Time | null, silent?: boolean) => void;
+  selectedHour: number;
+  selectedMinute: number;
+  selectedPeriod: string;
+  onApply: () => void;
+  onCancel: () => void;
+  createCompleteTime: () => Date | null;
+} => {
   // Internal state uses TimeValue for React Aria compatibility
   const [internalTimeValue, setInternalTimeValue] = useControllableState<Time | null>({
     value: dateToTimeValue(value ?? null),
