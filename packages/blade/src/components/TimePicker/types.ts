@@ -59,18 +59,19 @@ type TimePickerCommonInputProps = {
   FormInputValidationProps;
 
 type TimePickerInputProps = TimePickerCommonInputProps & {
-  setControlledValue?: (time: Date | null) => void;
-  time?: Date | null;
-  timeValue?: any; // TimeValue from @internationalized/date
+  timeValue?: Date | null;
+  internalTimeValue?: any; // TimeValue from @internationalized/date
   testID?: string;
-  onChange?: (time: Date | null) => void;
-  onTimeValueChange?: (timeValue: any) => void; // TimeValue from @internationalized/date
   timeFormat?: TimeFormat;
   ref?: React.Ref<any>;
   inputRef?: React.Ref<any>;
   referenceProps?: any;
-  onInputClick?: () => void;
+  setControlledValue?: (time: Date | null) => void;
+  onChange?: (time: Date | null) => void;
+  onTimeValueChange?: (timeValue: any) => void; // TimeValue from @internationalized/date
   createCompleteTime?: () => Date | null;
+  isDropdownOpen?: boolean;
+  setIsDropdownOpen?: (isOpen: boolean) => void;
 };
 
 type TimePickerSelectorProps = {

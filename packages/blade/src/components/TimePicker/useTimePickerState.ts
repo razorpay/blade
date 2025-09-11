@@ -19,7 +19,7 @@ export const useTimePickerState = ({
   onApply,
 }: UseTimePickerStateProps) => {
   // Internal state uses TimeValue for React Aria compatibility
-  const [selectedTimeValue, setSelectedTimeValue] = useControllableState<Time | null>({
+  const [internalTimeValue, setInternalTimeValue] = useControllableState<Time | null>({
     value: dateToTimeValue(value || null),
     defaultValue: dateToTimeValue(defaultValue || null),
     onChange: (timeValue) => {
@@ -31,16 +31,16 @@ export const useTimePickerState = ({
   });
 
   // For external API, expose as Date
-  const selectedTime = timeValueToDate(selectedTimeValue);
-  const setSelectedTime = React.useCallback(
+  const timeValue = timeValueToDate(internalTimeValue);
+  const setTimeValue = React.useCallback(
     (date: Date | null) => {
-      setSelectedTimeValue(() => dateToTimeValue(date));
+      setInternalTimeValue(() => dateToTimeValue(date));
     },
-    [setSelectedTimeValue],
+    [setInternalTimeValue],
   );
 
   // Old value backup for cancel functionality
-  const [oldTimeValue, setOldTimeValue] = React.useState<Time | null>(selectedTimeValue);
+  const [oldTimeValue, setOldTimeValue] = React.useState<Time | null>(internalTimeValue);
 
   // Manage controlled/uncontrolled open state
   const [controllableIsOpen, setControllableIsOpen] = useControllableState({
@@ -49,23 +49,23 @@ export const useTimePickerState = ({
     onChange: (isOpen) => {
       onOpenChange?.({ isOpen });
       // Update old value every time timepicker is opened or closed
-      setOldTimeValue(selectedTimeValue);
+      setOldTimeValue(internalTimeValue);
     },
   });
 
   const handleApply = React.useCallback(() => {
     if (showFooterActions) {
-      // Call onChange with current selectedTime
-      onChange?.({ value: selectedTime });
+      // Call onChange with current timeValue
+      onChange?.({ value: timeValue });
       // Update oldTimeValue to current value
-      setOldTimeValue(selectedTimeValue);
+      setOldTimeValue(internalTimeValue);
       // Call onApply callback
-      onApply?.({ value: selectedTime });
+      onApply?.({ value: timeValue });
     }
     setControllableIsOpen(() => false);
   }, [
-    selectedTime,
-    selectedTimeValue,
+    timeValue,
+    internalTimeValue,
     onChange,
     setOldTimeValue,
     onApply,
@@ -74,15 +74,12 @@ export const useTimePickerState = ({
   ]);
 
   const handleCancel = React.useCallback(() => {
-    // Restore selectedTimeValue from oldTimeValue
-    setSelectedTimeValue(() => oldTimeValue);
+    // Restore internalTimeValue from oldTimeValue
+    setInternalTimeValue(() => oldTimeValue);
     setControllableIsOpen(() => false);
-  }, [oldTimeValue, setSelectedTimeValue, setControllableIsOpen]);
+  }, [oldTimeValue, setInternalTimeValue, setControllableIsOpen]);
 
-  const { selectedHour, selectedMinute, selectedPeriod } = getTimeComponents(
-    selectedTime,
-    timeFormat,
-  );
+  const { selectedHour, selectedMinute, selectedPeriod } = getTimeComponents(timeValue, timeFormat);
 
   // Function to create complete time from current partial/full values
   const createCompleteTimeCallback = React.useCallback(() => {
@@ -91,14 +88,14 @@ export const useTimePickerState = ({
 
   return {
     // Core state (Date API for external use)
-    selectedTime,
-    setSelectedTime,
+    timeValue,
+    setTimeValue,
     isOpen: controllableIsOpen ?? false,
     setIsOpen: (isOpen: boolean) => setControllableIsOpen(() => isOpen),
 
     // TimeValue for React Aria compatibility
-    selectedTimeValue,
-    setSelectedTimeValue,
+    internalTimeValue,
+    setInternalTimeValue,
 
     // Individual time components for easy access
     selectedHour,

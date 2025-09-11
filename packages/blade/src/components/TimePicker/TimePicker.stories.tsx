@@ -372,6 +372,11 @@ LabelPositions.storyName = 'Label Positions & Accessories';
 
 // Minute step examples
 export const MinuteSteps: StoryFn<typeof TimePicker> = () => {
+  const [time1, setTime1] = React.useState<Date | null>(null);
+  const [time2, setTime2] = React.useState<Date | null>(null);
+  const [time3, setTime3] = React.useState<Date | null>(null);
+  const [time4, setTime4] = React.useState<Date | null>(null);
+
   return (
     <Box>
       <Text marginBottom="spacing.5">
@@ -385,13 +390,33 @@ export const MinuteSteps: StoryFn<typeof TimePicker> = () => {
           label="1-minute intervals (Default)"
           minuteStep={1}
           helpText="All minutes available"
+          value={time1}
+          onChange={({ value }) => setTime1(value)}
         />
 
-        <TimePicker label="5-minute intervals" minuteStep={5} helpText="00, 05, 10, 15, 20, etc." />
+        <TimePicker
+          label="5-minute intervals"
+          minuteStep={5}
+          helpText="00, 05, 10, 15, 20, etc."
+          value={time2}
+          onChange={({ value }) => setTime2(value)}
+        />
 
-        <TimePicker label="15-minute intervals" minuteStep={15} helpText="00, 15, 30, 45" />
+        <TimePicker
+          label="15-minute intervals"
+          minuteStep={15}
+          helpText="00, 15, 30, 45"
+          value={time3}
+          onChange={({ value }) => setTime3(value)}
+        />
 
-        <TimePicker label="30-minute intervals" minuteStep={30} helpText="00, 30" />
+        <TimePicker
+          label="30-minute intervals"
+          minuteStep={30}
+          helpText="00, 30"
+          value={time4}
+          onChange={({ value }) => setTime4(value)}
+        />
       </Box>
     </Box>
   );
@@ -452,4 +477,87 @@ export const FooterActions: StoryFn<typeof TimePicker> = () => {
 };
 
 FooterActions.storyName = 'Footer Actions';
+
+// Range selection example
+export const RangeSelection: StoryFn<typeof TimePicker> = () => {
+  const [startTime, setStartTime] = React.useState<Date | null>(() => {
+    const now = new Date();
+    now.setHours(9, 0, 0, 0); // 9:00 AM
+    return now;
+  });
+  const [endTime, setEndTime] = React.useState<Date | null>(() => {
+    const now = new Date();
+    now.setHours(11, 0, 0, 0); // 5:00 PM
+    return now;
+  });
+
+  // Calculate duration
+  const duration = React.useMemo(() => {
+    if (!startTime || !endTime) return null;
+    const diffMs = endTime.getTime() - startTime.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    if (diffMs < 0) return 'End time must be after start time';
+    if (diffHours === 0 && diffMinutes === 0) return '0 minutes';
+    if (diffHours === 0) return `${diffMinutes} minutes`;
+    if (diffMinutes === 0) return `${diffHours} hours`;
+    return `${diffHours} hours ${diffMinutes} minutes`;
+  }, [startTime, endTime]);
+
+  const isValidRange = startTime && endTime && endTime.getTime() > startTime.getTime();
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        Use multiple TimePicker components to create time range selections for scheduling,
+        appointments, or work shifts.
+      </Text>
+
+      <Box display="flex" flexDirection="row" gap="spacing.5" maxWidth="400px">
+        <TimePicker
+          label="Start Time"
+          value={startTime}
+          onChange={({ value }) => setStartTime(value)}
+          helpText="Select the beginning time"
+          timeFormat="12h"
+        />
+
+        <TimePicker
+          label="End Time"
+          value={endTime}
+          onChange={({ value }) => setEndTime(value)}
+          helpText="Select the ending time"
+          timeFormat="12h"
+          errorText={duration === 'End time must be after start time' ? duration : undefined}
+          validationState={duration === 'End time must be after start time' ? 'error' : undefined}
+        />
+      </Box>
+      {/* Duration Display */}
+      <Box
+        padding="spacing.4"
+        backgroundColor={
+          isValidRange ? 'feedback.background.positive.subtle' : 'surface.background.gray.moderate'
+        }
+        borderRadius="medium"
+        width="30%"
+        margin={['spacing.5', 'spacing.0']}
+      >
+        <Text weight="semibold" size="small">
+          Time Range Summary:
+        </Text>
+        <Text size="small" marginTop="spacing.2">
+          Start: {startTime ? startTime.toLocaleTimeString() : 'Not selected'}
+        </Text>
+        <Text size="small">End: {endTime ? endTime.toLocaleTimeString() : 'Not selected'}</Text>
+        <Text size="small" weight="semibold" marginTop="spacing.2">
+          Duration: {duration || 'Select both times'}
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
+RangeSelection.storyName = 'Time Range Selection';
+
 // Template for storybook controls

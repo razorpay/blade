@@ -7,7 +7,7 @@ import type { SpinWheelProps } from './types';
 
 // Styled scroll container with scroll snap
 const StyledScrollContainer = styled(BaseBox)`
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity; /* Changed from mandatory to proximity for smoother scrolling */
   scroll-behavior: smooth;
   &::-webkit-scrollbar {
     display: none;
@@ -18,14 +18,13 @@ const StyledScrollContainer = styled(BaseBox)`
 // Styled scroll item with scroll snap
 const StyledScrollItem = styled(BaseBox)`
   scroll-snap-align: center;
-  scroll-snap-stop: always;
+  /* Removed scroll-snap-stop: always for smoother interaction */
 `;
 
 /**
  * Reusable SpinWheel component for time selection
  *
  * Creates a scrollable column of values where the center item is selected.
- * Similar to iOS time picker wheels.
  */
 const SpinWheel = ({
   values,
@@ -41,6 +40,13 @@ const SpinWheel = ({
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
+
+  // Flag to prevent onValueChange from being triggered during auto-positioning
+  // Problem: When minuteStep > 1 and user types "03", we auto-position to nearest step "00"
+  // This programmatic scroll triggers handleScroll -> onValueChange -> changes value from "03" to "00"
+  // But we want to preserve the typed value "03" and only visually position at "00"
+  // Solution: Set this flag during programmatic scrolls to prevent onValueChange calls
+  // preserving user's typed value while showing correct visual positioning
   const isProgrammaticScroll = useRef(false);
 
   // Use displayValue for visual positioning, selectedValue for actual data
@@ -62,7 +68,7 @@ const SpinWheel = ({
       // Reset flag after scroll finishes
       setTimeout(() => {
         isProgrammaticScroll.current = false;
-      }, 300); // match smooth scroll duration
+      }, 300);
     }
   }, [positioningValue, values]);
 
@@ -77,8 +83,7 @@ const SpinWheel = ({
 
   // Scroll event handler to update selection based on center position
   const handleScroll = () => {
-    if (isProgrammaticScroll.current) return;
-    if (!containerRef.current || !itemRefs.current.length) return;
+    if (isProgrammaticScroll.current || !containerRef.current || !itemRefs.current.length) return;
 
     const containerRect = containerRef.current.getBoundingClientRect();
     const containerCenter = containerRect.top + containerRect.height / 2;
@@ -111,7 +116,7 @@ const SpinWheel = ({
 
     scrollTimeoutRef.current = setTimeout(() => {
       onValueChange(values[closestIndex], closestIndex);
-    }, 150); // 150ms delay after scroll stops
+    }, 150);
   };
 
   const handleItemClick = (value: string | number, index: number) => {
@@ -129,7 +134,6 @@ const SpinWheel = ({
       width={isMobile ? '82px' : '66px'}
       height="172px"
     >
-      {/* Selection indicator */}
       <BaseBox position="relative" width="100%" overflow="hidden">
         {/* Center highlight area */}
         <BaseBox

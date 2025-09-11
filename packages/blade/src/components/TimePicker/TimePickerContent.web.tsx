@@ -7,18 +7,7 @@ import { Divider } from '~components/Divider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import styled from 'styled-components';
-import { getNearestStepValue } from './utils';
-
-/**
- * Helper function for time conversion
- */
-const convertTo24Hour = (hour12: number, period: string): number => {
-  if (period === 'AM') {
-    return hour12 === 12 ? 0 : hour12;
-  } else {
-    return hour12 === 12 ? 12 : hour12 + 12;
-  }
-};
+import { getNearestStepValue, createDateFromSelection } from './utils';
 
 // Styled container with fade overlay
 const StyledFadeContainer = styled(BaseBox)`
@@ -49,7 +38,6 @@ const StyledFadeContainer = styled(BaseBox)`
  * Contains the time selection wheels and footer
  */
 const TimePickerContent = ({
-  selectedTime,
   setSelectedTime,
   selectedHour,
   selectedMinute,
@@ -63,11 +51,9 @@ const TimePickerContent = ({
   const isMobile = useIsMobile();
   const { theme } = useTheme();
 
-  // Use values from hook instead of local state
   const currentHour = selectedHour;
   const currentMinute = selectedMinute;
   const currentPeriod = selectedPeriod;
-
   const is12HourFormat = timeFormat === '12h';
 
   // Roving tabindex + focus management across wheels
@@ -107,51 +93,62 @@ const TimePickerContent = ({
     }
   };
 
-  // Generate values for each wheel
+  // Generate values for each wheel with leading zeros
   const hourValues = is12HourFormat
-    ? Array.from({ length: 12 }, (_, i) => i + 1) // 1-12 for 12-hour
-    : Array.from({ length: 24 }, (_, i) => i); // 0-23 for 24-hour
+    ? Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0'))
+    : Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'));
 
-  const minuteValues = Array.from({ length: 60 / minuteStep }, (_, i) => i * minuteStep);
+  const minuteValues = Array.from({ length: 60 / minuteStep }, (_, i) =>
+    String(i * minuteStep).padStart(2, '0'),
+  );
   const periodValues: ('AM' | 'PM')[] = ['AM', 'PM'];
 
   // Calculate display value for minute wheel positioning when minuteStep > 1
   // This allows typed values like "03" to position at nearest step "00" while preserving actual value
   const displayMinute = minuteStep > 1 ? getNearestStepValue(currentMinute, minuteStep) : undefined;
 
-  // Create Date object from selection parameters
-  const createDateFromSelection = (hour?: number, minute?: number, period?: string): Date => {
-    const date = new Date();
-    const useHour = hour ?? currentHour;
-    const useMinute = minute ?? currentMinute;
-    const usePeriod = period ?? currentPeriod;
-
-    const hour24 = is12HourFormat ? convertTo24Hour(useHour, usePeriod) : useHour;
-    date.setHours(hour24, useMinute, 0, 0);
-    return date;
-  };
-
   // Handle value changes - directly update selectedTime
   const handleHourChange = (value: string | number) => {
     const hour = Number(value);
-    const newDate = createDateFromSelection(hour, currentMinute, currentPeriod);
+    const newDate = createDateFromSelection(
+      currentHour,
+      currentMinute,
+      currentPeriod,
+      timeFormat,
+      hour,
+    );
     setSelectedTime(newDate);
   };
 
   const handleMinuteChange = (value: string | number) => {
     const minute = Number(value);
-    const newDate = createDateFromSelection(currentHour, minute, currentPeriod);
+    const newDate = createDateFromSelection(
+      currentHour,
+      currentMinute,
+      currentPeriod,
+      timeFormat,
+      undefined,
+      minute,
+    );
     setSelectedTime(newDate);
   };
 
   const handlePeriodChange = (value: string | number) => {
     const period = value as 'AM' | 'PM';
-    const newDate = createDateFromSelection(currentHour, currentMinute, period);
+    const newDate = createDateFromSelection(
+      currentHour,
+      currentMinute,
+      currentPeriod,
+      timeFormat,
+      undefined,
+      undefined,
+      period,
+    );
     setSelectedTime(newDate);
   };
 
   const handleApply = () => {
-    const newDate = createDateFromSelection();
+    const newDate = createDateFromSelection(currentHour, currentMinute, currentPeriod, timeFormat);
     setSelectedTime(newDate);
     onApply();
   };
@@ -178,7 +175,7 @@ const TimePickerContent = ({
         <SpinWheel
           label="Hour"
           values={hourValues}
-          selectedValue={currentHour}
+          selectedValue={String(currentHour).padStart(2, '0')}
           onValueChange={handleHourChange}
           scrollContainerRef={hourRef}
           tabIndex={activeWheelIndex === 0 ? 0 : -1}
@@ -188,8 +185,8 @@ const TimePickerContent = ({
         <SpinWheel
           label="Min"
           values={minuteValues}
-          selectedValue={currentMinute}
-          displayValue={displayMinute}
+          selectedValue={String(currentMinute).padStart(2, '0')}
+          displayValue={displayMinute ? String(displayMinute).padStart(2, '0') : undefined}
           onValueChange={handleMinuteChange}
           scrollContainerRef={minuteRef}
           tabIndex={activeWheelIndex === 1 ? 0 : -1}
@@ -199,7 +196,6 @@ const TimePickerContent = ({
         {is12HourFormat && (
           <>
             <Divider orientation="vertical" />
-
             <SpinWheel
               label="Period"
               values={periodValues}
