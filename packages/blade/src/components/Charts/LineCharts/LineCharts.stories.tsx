@@ -13,6 +13,7 @@ import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
 
 const Page = (): React.ReactElement => {
   return (
@@ -118,7 +119,7 @@ const steppedData = [
 // Simple Line Chart Example
 export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="400px">
       <LineChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -139,14 +140,14 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
         />
         <ReferenceLine y={1500} label="Avg: 1200" />
       </LineChart>
-    </div>
+    </Box>
   );
 };
 
 // Simple Line chart with vertical line
 export const SimpleLineChartWithVerticalLine: StoryFn<typeof LineChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="400px">
       <LineChart data={chartData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -167,14 +168,14 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof LineChart> = () => 
         />
         <ReferenceLine x={100} label="Avg: 1200" />
       </LineChart>
-    </div>
+    </Box>
   );
 };
 
 // Tiny Line Chart Example (no dots for cleaner look)
 export const TinyLineChart: StoryFn<typeof LineChart> = () => {
   return (
-    <div style={{ width: '200px', height: '100px' }}>
+    <Box width="200px" height="100px">
       <LineChart data={chartData}>
         <Line
           dataKey="teamA"
@@ -184,14 +185,14 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
           activeDot={false}
         />
       </LineChart>
-    </div>
+    </Box>
   );
 };
 
 // Forecast Line Chart Example
 export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="400px">
       <LineChart data={forecastData}>
         <CartesianGrid />
         <XAxis dataKey="date" />
@@ -213,14 +214,14 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
           color="chart.background.categorical.azure.moderate"
         />
       </LineChart>
-    </div>
+    </Box>
   );
 };
 
 // Line Chart that Connects Nulls
 export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="400px">
       <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
       <LineChart data={dataWithNulls}>
         <CartesianGrid />
@@ -248,14 +249,14 @@ export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
           color="chart.background.categorical.emerald.moderate"
         />
       </LineChart>
-    </div>
+    </Box>
   );
 };
 
 // Stepped Line Chart Example
 export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="400px">
       <LineChart data={steppedData}>
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -269,14 +270,14 @@ export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
           color="chart.background.categorical.azure.moderate"
         />
       </LineChart>
-    </div>
+    </Box>
   );
 };
 
 // Line Chart with Default Color Theme
 export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="400px">
       <LineChart data={chartData} colorTheme="informational">
         <CartesianGrid />
         <XAxis dataKey="month" />
@@ -286,14 +287,14 @@ export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
         <Line dataKey="teamA" name="Success" />
         <Line dataKey="teamB" name="Errors" />
       </LineChart>
-    </div>
+    </Box>
   );
 };
 
 //Line Chart with X and Y axis labels
 export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <Box width="100%" height="400px">
       <LineChart data={chartData}>
         <XAxis dataKey="month" label="Month" />
         <YAxis label="Sales" />
@@ -306,7 +307,7 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
         />
         <Line dataKey="teamB" name="Errors" color="chart.background.categorical.crimson.moderate" />
       </LineChart>
-    </div>
+    </Box>
   );
 };
 
