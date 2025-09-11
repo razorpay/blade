@@ -4,7 +4,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  ChartToolTip,
+  ChartTooltip,
   Legend,
   ReferenceLine,
 } from '../BaseChartComponents';
@@ -124,7 +124,7 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Line
           dataKey="teamA"
@@ -152,7 +152,7 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof LineChart> = () => 
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Line
           dataKey="teamA"
@@ -197,7 +197,7 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="date" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Line
           dataKey="historical"
@@ -227,7 +227,7 @@ export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Line
           dataKey="sales"
@@ -240,7 +240,7 @@ export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Line
           dataKey="sales"
@@ -261,7 +261,7 @@ export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Line
           dataKey="value"
@@ -282,7 +282,7 @@ export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Line dataKey="teamA" name="Success" />
         <Line dataKey="teamB" name="Errors" />
@@ -298,7 +298,7 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
       <LineChart data={chartData}>
         <XAxis dataKey="month" label="Month" />
         <YAxis label="Sales" />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Line
           dataKey="teamA"

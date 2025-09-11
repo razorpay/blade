@@ -30,7 +30,7 @@ type YAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'strok
   dataKey?: string;
 };
 
-type ChartToolTipProps = ComponentProps<typeof RechartsTooltip>;
+type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type LegendProps = ComponentProps<typeof RechartsLegend>;
 type ResponsiveContainerProps = ComponentProps<typeof RechartsResponsiveContainer>;
 
@@ -118,8 +118,7 @@ const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
   );
 };
 
-//REVIEW_NOTES: this might change
-const ChartToolTip: React.FC<ChartToolTipProps> = (props) => {
+const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -321,9 +320,9 @@ export type {
   ReferenceLineProps,
   XAxisProps,
   YAxisProps,
-  ChartToolTipProps,
+  ChartTooltipProps,
   LegendProps,
   ResponsiveContainerProps,
   CartesianGridProps,
 };
-export { XAxis, YAxis, ResponsiveContainer, CartesianGrid, ChartToolTip, Legend };
+export { XAxis, YAxis, ResponsiveContainer, CartesianGrid, Legend, ChartTooltip };
