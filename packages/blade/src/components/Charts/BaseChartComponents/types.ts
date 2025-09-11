@@ -5,6 +5,7 @@ import type {
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
   ResponsiveContainer as RechartsResponsiveContainer,
+  ReferenceLineProps as RechartsReferenceLineProps,
 } from 'recharts';
 import type { ComponentProps } from 'react';
 import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
@@ -13,11 +14,11 @@ type ReferenceLineProps = {
   /**
    * The y-coordinate of the reference line.
    */
-  y?: number;
+  y?: RechartsReferenceLineProps['y'];
   /**
    * The x-coordinate  of the reference line.
    */
-  x?: number;
+  x?: RechartsReferenceLineProps['x'];
   /**
    * The label of the reference line.
    */

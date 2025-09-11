@@ -166,7 +166,7 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof LineChart> = () => 
           strokeStyle="solid"
           color="chart.background.categorical.emerald.moderate"
         />
-        <ReferenceLine x={100} label="Avg: 1200" />
+        <ReferenceLine x="Apr" label="Avg: 1200" />
       </LineChart>
     </Box>
   );

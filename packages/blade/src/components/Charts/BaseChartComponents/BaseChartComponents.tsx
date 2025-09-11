@@ -17,6 +17,16 @@ import type {
   ResponsiveContainerProps,
   CartesianGridProps,
 } from './types';
+import {
+  RECT_WIDTH,
+  RECT_HEIGHT,
+  TEXT_BASELINE,
+  PADDING_VERTICAL,
+  PADDING_HORIZONTAL,
+  X_AXIS_TEXT_BASELINE,
+  Y_OFFSET,
+  X_OFFSET,
+} from './tokens';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
@@ -24,9 +34,6 @@ import getIn from '~utils/lodashButBetter/get';
 
 const XAxis: React.FC<XAxisProps> = (props) => {
   const { theme } = useTheme();
-  const X_OFFSET = 32;
-  const Y_OFFSET = 14.5;
-  const TEXT_BASELINE = 24;
 
   return (
     <RechartsXAxis
@@ -42,7 +49,7 @@ const XAxis: React.FC<XAxisProps> = (props) => {
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
           x={viewBox.x + viewBox.width / 2 - X_OFFSET}
-          y={viewBox.y + Y_OFFSET + TEXT_BASELINE}
+          y={viewBox.y + Y_OFFSET + X_AXIS_TEXT_BASELINE}
           textAnchor="middle"
           fill={theme.colors.surface.text.gray.subtle}
           fontSize={theme.typography.fonts.size[75]}
@@ -134,10 +141,10 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
                   <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
                     <div
                       style={{
-                        width: '12px',
-                        height: '12px',
+                        width: theme.spacing[4],
+                        height: theme.spacing[4],
                         backgroundColor: item.color,
-                        borderRadius: '2px',
+                        borderRadius: theme.border.radius.small,
                       }}
                     />
                     <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
@@ -169,6 +176,7 @@ const CustomSquareLegend = (props: {
   }>;
 }): JSX.Element | null => {
   const { payload } = props;
+  const { theme } = useTheme();
 
   if (!payload || payload.length === 0) {
     return null;
@@ -182,7 +190,7 @@ const CustomSquareLegend = (props: {
         padding: 0,
         display: 'flex',
         justifyContent: 'center',
-        gap: '16px',
+        gap: theme.spacing[5],
       }}
     >
       {filteredPayload.map((entry, index) => (
@@ -197,10 +205,10 @@ const CustomSquareLegend = (props: {
             <span
               style={{
                 backgroundColor: entry.color, // Uses the color of the line/bar
-                width: '12px', // Size of the square
-                height: '12px', // Size of the square
+                width: theme.spacing[4], // Size of the square
+                height: theme.spacing[4], // Size of the square
                 display: 'inline-block',
-                borderRadius: '2px',
+                borderRadius: theme.border.radius.small,
               }}
             />
             {/* Legend text with custom color and size */}
@@ -223,7 +231,7 @@ const Legend: React.FC = (props) => {
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
-        paddingTop: '16px',
+        paddingTop: theme.spacing[5],
       }}
       align="center"
       content={<CustomSquareLegend />}
@@ -239,32 +247,27 @@ const ResponsiveContainer: React.FC<ResponsiveContainerProps> = (props) => {
 const CustomReferenceLabel = ({
   viewBox,
   value,
+  isVertical,
 }: {
   viewBox?: { x: number; y: number; width: number };
   value: string | undefined;
+  isVertical: boolean;
 }): JSX.Element => {
   const { x, y, width } = viewBox ?? { x: 0, y: 0, width: 0 };
   const { theme } = useTheme();
 
-  const RECT_WIDTH = 80;
-  const RECT_HEIGHT = 30;
-  const TEXT_BASELINE = 15;
-  const rectX = x + width - RECT_WIDTH;
-  const rectY = y - TEXT_BASELINE;
-
-  // Padding for text inside the rectangle (4px vertical, 8px horizontal)
-  const PADDING_VERTICAL = 4;
-  const PADDING_HORIZONTAL = 8;
+  const RectX = isVertical ? x + width - RECT_WIDTH / 2 : x + width - RECT_WIDTH;
+  const RectY = isVertical ? y : y - TEXT_BASELINE;
 
   // Text position with padding inside the rectangle
-  const textX = rectX + PADDING_HORIZONTAL + (RECT_WIDTH - PADDING_HORIZONTAL * 2) / 2;
-  const textY = rectY + PADDING_VERTICAL + TEXT_BASELINE; // +15 for text baseline
+  const textX = RectX + PADDING_HORIZONTAL + (RECT_WIDTH - PADDING_HORIZONTAL * 2) / 2;
+  const textY = RectY + PADDING_VERTICAL + TEXT_BASELINE; // +15 for text baseline
 
   return (
     <g>
       <rect
-        x={x + width - RECT_WIDTH}
-        y={y - TEXT_BASELINE}
+        x={RectX}
+        y={RectY}
         width={RECT_WIDTH}
         height={RECT_HEIGHT}
         rx={theme.border.radius.medium}
@@ -295,7 +298,7 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, x, y }) => 
       stroke={getIn(theme.colors, 'chart.background.categorical.gray.intense')}
       strokeWidth={2}
       strokeDasharray="4 4"
-      label={<CustomReferenceLabel value={label} />}
+      label={<CustomReferenceLabel value={label} isVertical={Boolean(x)} />}
       x={x}
       y={y}
     />
