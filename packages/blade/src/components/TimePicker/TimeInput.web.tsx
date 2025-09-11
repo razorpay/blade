@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { useLocale } from '@react-aria/i18n';
 import { useTimeField, useDateSegment } from '@react-aria/datepicker';
 import { useTimeFieldState } from '@react-stately/datepicker';
+import type { BladeElementRef } from '~utils/types';
+import type { TimePickerInputProps, TimeSegmentProps } from './types';
 import { BaseBox } from '~components/Box/BaseBox';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import { useTheme } from '~components/BladeProvider';
 import { ClockIcon } from '~components/Icons';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { mergeRefs } from '~utils/useMergeRefs';
-import type { BladeElementRef } from '~utils/types';
-import type { TimePickerInputProps, TimeSegmentProps } from './types';
 
 const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
   padding-left: 0.125rem;
@@ -21,12 +21,12 @@ const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
   outline: none;
   border-radius: 0.125rem;
 
-  min-width: ${(props: { segmentMaxValue?: number; theme: any }) =>
+  min-width: ${(props: { segmentMaxValue?: number }) =>
     props.segmentMaxValue != null ? `${String(props.segmentMaxValue).length}ch` : 'auto'};
 
   &:focus {
-    background-color: ${(props: { theme: any }) =>
-      props.theme.colors.interactive.background.primary.faded} !important;
+    background-color: ${({ theme }) =>
+      theme.colors.interactive.background.primary.faded} !important;
     color: #ffffff !important;
 
     span {

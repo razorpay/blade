@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import type { SpinWheelProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
-import type { SpinWheelProps } from './types';
 
 // Styled scroll container with scroll snap
 const StyledScrollContainer = styled(BaseBox)`
@@ -36,7 +36,7 @@ const SpinWheel = ({
   scrollContainerRef,
   tabIndex,
 }: SpinWheelProps): React.ReactElement => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
@@ -82,7 +82,7 @@ const SpinWheel = ({
   }, []);
 
   // Scroll event handler to update selection based on center position
-  const handleScroll = () => {
+  const handleScroll = (): void => {
     if (isProgrammaticScroll.current || !containerRef.current || !itemRefs.current.length) return;
 
     const containerRect = containerRef.current.getBoundingClientRect();
@@ -119,7 +119,7 @@ const SpinWheel = ({
     }, 150);
   };
 
-  const handleItemClick = (value: string | number, index: number) => {
+  const handleItemClick = (value: string | number, index: number): void => {
     // Always allow explicit user selection via click, even when displayValue is present
     // This lets users choose to override their typed value with a step value if desired
     onValueChange(value, index);
@@ -150,12 +150,12 @@ const SpinWheel = ({
 
         {/* Scrollable container */}
         <StyledScrollContainer
-          ref={(node: any) => {
-            (containerRef as any).current = node;
+          ref={(node: HTMLDivElement | null) => {
+            containerRef.current = node;
             if (typeof scrollContainerRef === 'function') {
               scrollContainerRef(node);
-            } else if (scrollContainerRef && 'current' in (scrollContainerRef as any)) {
-              (scrollContainerRef as any).current = node;
+            } else if (scrollContainerRef && 'current' in scrollContainerRef) {
+              (scrollContainerRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
             }
           }}
           height="100%"
@@ -175,7 +175,7 @@ const SpinWheel = ({
             return (
               <StyledScrollItem
                 key={`${value}-${index}`}
-                ref={(el) => (itemRefs.current[index] = el as any)}
+                ref={(el) => (itemRefs.current[index] = el)}
                 height="34px"
                 display="flex"
                 alignItems="center"

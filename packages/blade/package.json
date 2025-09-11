@@ -150,6 +150,7 @@
     "@react-aria/i18n": "3.12.2",
     "@react-aria/datepicker": "3.15.1",
     "@react-stately/datepicker": "3.15.1",
+    "@internationalized/date": "3.9.0",
     "dayjs": "1.11.10",
     "react-window": "1.8.11",
     "react-zoom-pan-pinch": "3.7.0",

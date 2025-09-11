@@ -1,9 +1,9 @@
 import React from 'react';
+import type { TimePickerFooterProps } from './types';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
 import { useIsMobile } from '~utils/useIsMobile';
-import type { TimePickerFooterProps } from './types';
 
 /**
  * Footer component for TimePicker with Apply/Cancel buttons
