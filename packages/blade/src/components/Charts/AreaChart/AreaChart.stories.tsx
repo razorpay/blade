@@ -4,7 +4,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  ChartToolTip,
+  ChartTooltip,
   Legend,
   ReferenceLine,
 } from '../BaseChartComponents/BaseChartComponents';
@@ -143,7 +143,7 @@ export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Area
           dataKey="teamA"
           name="Team A"
@@ -163,7 +163,7 @@ export const StackedAreaChart: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Area
           dataKey="teamA"
@@ -193,7 +193,7 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Area
           type="monotone"
           dataKey="pv"
@@ -213,7 +213,7 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Area
           type="monotone"
           dataKey="pv"
@@ -257,7 +257,7 @@ export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Area
           dataKey="teamA"
@@ -271,11 +271,26 @@ export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
   );
 };
 
-SimpleAreaChart.storyName = 'Simple Area Chart';
-StackedAreaChart.storyName = 'Stacked Area Chart';
-AreaChartConnectNulls.storyName = 'Area Chart (Connect Nulls)';
-TinyAreaChart.storyName = 'Tiny Area Chart';
-AreaChartWithReferenceLine.storyName = 'Area Chart with Reference Line';
+export const AreaChartWithReferenceLineVertical: StoryFn<typeof AreaChart> = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <AreaChart data={chartData}>
+        <CartesianGrid />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <ChartTooltip />
+        <Legend />
+        <Area
+          dataKey="teamA"
+          name="Team A"
+          type="monotone"
+          color="chart.background.categorical.azure.moderate"
+        />
+        <ReferenceLine x="Apr" label="Target" />
+      </AreaChart>
+    </div>
+  );
+};
 
 // Area Chart with Default Color Theme
 export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
@@ -285,7 +300,7 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
         <CartesianGrid />
         <XAxis dataKey="month" />
         <YAxis />
-        <ChartToolTip />
+        <ChartTooltip />
         <Legend />
         <Area dataKey="teamA" name="Success" />
         <Area dataKey="teamB" name="Errors" />
@@ -295,3 +310,9 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
 };
 
 AreaChartWithDefaultColorTheme.storyName = 'Area Chart with Color Theme';
+SimpleAreaChart.storyName = 'Simple Area Chart';
+StackedAreaChart.storyName = 'Stacked Area Chart';
+AreaChartConnectNulls.storyName = 'Area Chart (Connect Nulls)';
+TinyAreaChart.storyName = 'Tiny Area Chart';
+AreaChartWithReferenceLine.storyName = 'Area Chart with Reference Line';
+AreaChartWithReferenceLineVertical.storyName = 'Area Chart with Reference Line (Vertical)';

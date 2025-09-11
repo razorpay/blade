@@ -49,7 +49,7 @@ const Area: React.FC<AreaProps> = ({
   showLegend = true,
   stackId = 1,
   dot = false,
-  activeDot = false,
+  activeDot = true,
   _index,
   _colorTheme,
   ...props
