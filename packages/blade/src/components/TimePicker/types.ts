@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { DateSegment, TimeFieldState } from '@react-stately/datepicker';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { FormInputValidationProps } from '~components/Form';
-import type { DateSegment } from '@react-stately/datepicker';
-import type { TimeFieldState } from '@react-stately/datepicker';
 
 type TimeSegmentProps = {
   segment: DateSegment;

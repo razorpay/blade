@@ -1,20 +1,16 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-
-import type { TimePickerInputProps, TimeSegmentProps } from './types';
-import { BaseBox } from '~components/Box/BaseBox';
-import type { BladeElementRef } from '~utils/types';
-
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { mergeRefs } from '~utils/useMergeRefs';
-
 import { useLocale } from '@react-aria/i18n';
+import { useTimeField, useDateSegment } from '@react-aria/datepicker';
 import { useTimeFieldState } from '@react-stately/datepicker';
-import { useTimeField } from '@react-aria/datepicker';
+import { BaseBox } from '~components/Box/BaseBox';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
-import { useDateSegment } from '@react-aria/datepicker';
 import { useTheme } from '~components/BladeProvider';
 import { ClockIcon } from '~components/Icons';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { mergeRefs } from '~utils/useMergeRefs';
+import type { BladeElementRef } from '~utils/types';
+import type { TimePickerInputProps, TimeSegmentProps } from './types';
 
 const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
   padding-left: 0.125rem;
@@ -25,11 +21,11 @@ const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
   outline: none;
   border-radius: 0.125rem;
 
-  min-width: ${(props: any) =>
-    props.segmentMaxValue != null ? String(props.segmentMaxValue).length + 'ch' : 'auto'};
+  min-width: ${(props: { segmentMaxValue?: number; theme: any }) =>
+    props.segmentMaxValue != null ? `${String(props.segmentMaxValue).length}ch` : 'auto'};
 
   &:focus {
-    background-color: ${(props: any) =>
+    background-color: ${(props: { theme: any }) =>
       props.theme.colors.interactive.background.primary.faded} !important;
     color: #ffffff !important;
 
@@ -64,6 +60,11 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
   state,
   isDisabled,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isFocused, setIsFocused] = useState(false);
+  const { theme } = useTheme();
+  const { segmentProps } = useDateSegment(segment, state, ref);
+
   /* Filter out bi-directional text control characters (⁦⁩) that React Aria adds for RTL support
             but aren't needed for our UI - they appear as extra literal segments in some environments */
 
@@ -71,22 +72,17 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
     return null;
   }
 
-  let ref = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const { theme } = useTheme();
-  let { segmentProps } = useDateSegment(segment, state, ref);
-
   return (
     <StyledTimeSegment
       ref={ref}
       segmentMaxValue={segment.maxValue}
       theme={theme}
       style={segmentProps.style}
-      onFocus={(e: any) => {
+      onFocus={(e: React.FocusEvent<HTMLDivElement>) => {
         setIsFocused(true);
         segmentProps.onFocus?.(e);
       }}
-      onBlur={(e: any) => {
+      onBlur={(e: React.FocusEvent<HTMLDivElement>) => {
         setIsFocused(false);
         segmentProps.onBlur?.(e);
       }}
@@ -172,12 +168,12 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     setIsDropdownOpen,
     ...props
   },
-  ref: React.ForwardedRef<any>,
+  ref: React.ForwardedRef<BladeElementRef>,
 ) => {
   const currentTimeFormat = timeFormat ?? '12h';
-  let { locale } = useLocale();
+  const { locale } = useLocale();
 
-  let state = useTimeFieldState({
+  const state = useTimeFieldState({
     label,
     locale,
     hourCycle: currentTimeFormat === '12h' ? 12 : 24,
@@ -187,32 +183,32 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     shouldForceLeadingZeros: true, // Force leading zeros (01, 02, 03...)
   });
 
-  let timeFieldRef = useRef<HTMLDivElement>(null);
-  let { fieldProps } = useTimeField(
+  const timeFieldRef = useRef<HTMLDivElement>(null);
+  const { fieldProps } = useTimeField(
     {
       label,
     },
     state,
-    timeFieldRef as any,
+    timeFieldRef,
   );
 
   // Extract onKeyDown from referenceProps to handle Enter key for dropdown opening
   const { onKeyDown: referenceOnKeyDown, ...otherReferenceProps } = referenceProps;
 
   // Handle Enter key to open dropdown while preserving React Aria's keyboard navigation
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
     if (event.key === 'Enter' && !isDisabled) {
       // Trigger dropdown opening (same as clicking the input)
-      referenceOnKeyDown?.(event as any);
+      referenceOnKeyDown?.(event);
       return;
     }
 
     // Let React Aria handle all other keys for segment navigation
-    fieldProps.onKeyDown?.(event as any);
+    fieldProps.onKeyDown?.(event);
   };
 
   const handleInputClick = React.useCallback(
-    (e: React.MouseEvent) => {
+    (_e: React.MouseEvent): void => {
       if (isDisabled) return;
 
       setIsDropdownOpen?.(true);
@@ -225,7 +221,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
       {...fieldProps}
       onClick={handleInputClick}
       onKeyDown={handleKeyDown}
-      ref={mergeRefs(timeFieldRef, ref as any)}
+      ref={mergeRefs(timeFieldRef, ref as React.Ref<HTMLDivElement>)}
     >
       <BaseInput
         ref={inputRef}
@@ -239,7 +235,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         isDisabled={isDisabled}
         isRequired={isRequired}
         necessityIndicator={necessityIndicator}
-        autoFocus={autoFocus}
+        autoFocus={autoFocus} // eslint-disable-line jsx-a11y/no-autofocus
         name={name}
         size={size}
         labelPosition={labelPosition}
