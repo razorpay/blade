@@ -1,5 +1,4 @@
-import type { LineProps as RechartsLineProps, LineChart as RechartsLineChart } from 'recharts';
-import type { ComponentProps } from 'react';
+import type { LineProps as RechartsLineProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../BaseChartComponents/types';
 
 interface LineProps {
@@ -54,12 +53,21 @@ interface LineProps {
   _colorTheme?: 'default' | 'informational';
 }
 
+type data = {
+  [key: string]: string | number | null;
+};
+
 // TypeScript prop types
-type LineChartProps = ComponentProps<typeof RechartsLineChart> & {
+type LineChartProps = {
   /**
    * The color theme of the line chart.
    */
   colorTheme?: 'default' | 'informational';
+  /**
+   * Chart data to be rendered
+   */
+  data: data[];
+  children: React.ReactNode;
 };
 
 export type { LineProps, LineChartProps };
