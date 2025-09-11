@@ -11,6 +11,8 @@ import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const MAX_LINES = 10;
 
@@ -55,7 +57,13 @@ const Line: React.FC<LineProps> = ({
 };
 
 // Main components
-const LineChart: React.FC<LineChartProps> = ({ children, colorTheme = 'default', ...props }) => {
+const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
+  children,
+  colorTheme = 'default',
+  testID,
+  data,
+  ...restProps
+}) => {
   const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
@@ -77,9 +85,14 @@ const LineChart: React.FC<LineChartProps> = ({ children, colorTheme = 'default',
   }, [children, colorTheme]);
 
   return (
-    <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">
+    <BaseBox
+      {...metaAttribute({ name: 'line-chart', testID })}
+      {...makeAnalyticsAttribute(restProps)}
+      width="100%"
+      height="100%"
+    >
       <RechartsResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart {...props}>{lineChartModifiedChildrens}</RechartsLineChart>
+        <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>
       </RechartsResponsiveContainer>
     </BaseBox>
   );

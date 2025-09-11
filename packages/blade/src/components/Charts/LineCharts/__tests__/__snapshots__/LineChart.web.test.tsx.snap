@@ -1,0 +1,991 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Line /> should render Line with all line types 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all line types 2`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all line types 3`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all line types 4`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all line types 5`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all stroke styles 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all stroke styles 2`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all stroke styles 3`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with custom activeDot configuration 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with custom dot configuration 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with custom name 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with default props 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should handle data with missing properties 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should handle empty data array 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with connectNulls true 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with custom colors 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with different line types 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with different stroke styles 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with informational color theme 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with showLegend false 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render basic LineChart with single line 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render complete chart with all components 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Integration Tests should handle complex data structure 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Integration Tests should handle mixed data types 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Styling Tests should apply correct animation properties for dashed lines 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Styling Tests should apply correct animation properties for solid lines 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 100%; height: 100%; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

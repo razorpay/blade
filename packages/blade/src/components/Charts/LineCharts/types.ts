@@ -54,7 +54,7 @@ interface LineProps {
 }
 
 type data = {
-  [key: string]: string | number | null;
+  [key: string]: unknown;
 };
 
 // TypeScript prop types
