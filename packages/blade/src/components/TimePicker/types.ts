@@ -82,7 +82,7 @@ type TimePickerSelectorProps = {
   /**
    * Default time value as Date object (for uncontrolled usage)
    */
-  defaultValue?: Date;
+  defaultValue?: Date | null;
 
   /**
    * Callback fired when time value changes during selection

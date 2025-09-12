@@ -143,6 +143,9 @@ export const TwentyFourHourTimePicker: StoryFn<typeof TimePicker> = () => {
         setTime(value);
         console.log('Selected time:', value);
       }}
+      onApply={({ value }) => {
+        console.log('Time applied:', value);
+      }}
     />
   );
 };
@@ -210,11 +213,25 @@ export const ControlledTimePicker: StoryFn<typeof TimePicker> = () => {
 
 ControlledTimePicker.storyName = 'Controlled TimePicker';
 
+// Uncontrolled TimePicker example
+export const UncontrolledTimePicker: StoryFn<typeof TimePicker> = () => {
+  return (
+    <TimePicker
+      label="Meeting Time"
+      defaultValue={new Date('2024-01-01T14:30:00')}
+      onChange={({ value }) => {
+        console.log('Time changed:', value);
+      }}
+    />
+  );
+};
+
+UncontrolledTimePicker.storyName = 'Uncontrolled TimePicker';
+
 // Validation examples
 export const Validations: StoryFn<typeof TimePicker> = () => {
   // Separate state for each TimePicker to avoid conflicts
   const [businessTime, setBusinessTime] = useState<Date | null>(null);
-  const [requiredTime, setRequiredTime] = useState<Date | null>(null);
   const [appointmentTime, setAppointmentTime] = useState<Date | null>(null);
   const [hasBusinessError, setHasBusinessError] = useState(false);
 
@@ -258,19 +275,6 @@ export const Validations: StoryFn<typeof TimePicker> = () => {
           onChange={({ value }) => {
             setBusinessTime(value);
             validateBusinessTime(value);
-          }}
-        />
-
-        {/* Required field with separate state */}
-        <TimePicker
-          label="Required Time"
-          isRequired
-          validationState={!requiredTime ? 'error' : 'none'}
-          errorText={!requiredTime ? 'This field is required' : undefined}
-          necessityIndicator="required"
-          value={requiredTime}
-          onChange={({ value }) => {
-            setRequiredTime(value);
           }}
         />
 
