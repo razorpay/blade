@@ -184,23 +184,9 @@ const CustomSquareLegend = (props: {
   const filteredPayload = payload.filter((entry) => entry?.payload?.legendType !== 'none');
 
   return (
-    <ul
-      style={{
-        listStyle: 'none',
-        padding: 0,
-        display: 'flex',
-        justifyContent: 'center',
-        gap: theme.spacing[5],
-      }}
-    >
+    <Box display="flex" justifyContent="center" gap="spacing.5">
       {filteredPayload.map((entry, index) => (
-        <li
-          key={`item-${index}`}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
+        <Box key={`item-${index}`} display="flex" alignItems="center">
           <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
             <span
               style={{
@@ -216,9 +202,9 @@ const CustomSquareLegend = (props: {
               {entry.value}
             </Text>
           </Box>
-        </li>
+        </Box>
       ))}
-    </ul>
+    </Box>
   );
 };
 
