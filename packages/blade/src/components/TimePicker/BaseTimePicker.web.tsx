@@ -52,16 +52,6 @@ const _BaseTimePicker = ({
   const { theme } = useTheme();
   const titleId = useId('timepicker-title');
 
-  // Set default time (12:00 AM / 00:00) when neither value nor defaultValue is provided
-  const effectiveValue = React.useMemo(() => {
-    if (!value && !defaultValue) {
-      const defaultTime = new Date();
-      defaultTime.setHours(0, 0, 0, 0); // Set to midnight (displays as 12:00 AM in 12h, 00:00 in 24h)
-      return defaultTime;
-    }
-    return value;
-  }, [value, defaultValue]);
-
   const {
     timeValue,
     setTimeValue,
@@ -76,7 +66,7 @@ const _BaseTimePicker = ({
     onCancel: handleCancel,
     createCompleteTime,
   } = useTimePickerState({
-    value: effectiveValue,
+    value,
     defaultValue,
     onChange,
     isOpen,
@@ -175,7 +165,7 @@ const _BaseTimePicker = ({
         timeValue={timeValue}
         internalTimeValue={internalTimeValue}
         onChange={setTimeValue}
-        onTimeValueChange={(timeValue) => setInternalTimeValue(() => timeValue)}
+        onTimeValueChange={(timeValue) => setInternalTimeValue(timeValue)}
         createCompleteTime={createCompleteTime}
         label={label}
         helpText={helpText}
