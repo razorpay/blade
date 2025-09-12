@@ -180,6 +180,11 @@ const CustomSquareLegend = (props: {
   if (!payload || payload.length === 0) {
     return null;
   }
+  /*
+  This is a custom legend component that is used to display the legend for the chart.
+  we need to show the legend only if the legendType is not none. (for example in line chart we don't want to show the legend for the reference line)
+  so we are filtering the payload and then mapping over it to display the legend.
+  */
   const filteredPayload = payload.filter((entry) => entry?.payload?.legendType !== 'none');
 
   return (
