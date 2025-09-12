@@ -74,6 +74,7 @@ const _Accordion = (
     size = 'large',
     maxWidth,
     testID,
+    justifyContent,
     ...rest
   }: AccordionProps,
   ref: React.Ref<BladeElementRef>,
@@ -124,6 +125,7 @@ const _Accordion = (
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
         ref={ref as never}
+        justifyContent={justifyContent}
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}

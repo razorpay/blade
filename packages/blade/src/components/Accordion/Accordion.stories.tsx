@@ -84,6 +84,19 @@ const meta: Meta<AccordionProps> = {
   args: {},
   tags: ['autodocs'],
   argTypes: {
+    justifyContent: {
+      description:
+        '**CSS property `justify-content`**\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">MDN Docs for justify-content</a><br/><br/>',
+      control: {
+        type: 'object',
+      },
+      table: {
+        category: 'StyledProps',
+        type: {
+          summary: `MakeValueResponsive<CSSObject['justifyContent']>`,
+        },
+      },
+    },
     ...getStyledPropsArgTypes(),
   },
   parameters: {
