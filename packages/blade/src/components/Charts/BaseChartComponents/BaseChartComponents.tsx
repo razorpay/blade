@@ -30,7 +30,6 @@ import { calculateTextWidth } from './utils';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
-import getIn from '~utils/lodashButBetter/get';
 
 const XAxis: React.FC<XAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -284,7 +283,7 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, x, y }) => 
   const { theme } = useTheme();
   return (
     <RechartsReferenceLine
-      stroke={getIn(theme.colors, 'chart.background.categorical.gray.intense')}
+      stroke={theme.colors.chart.background.categorical.gray.intense}
       strokeWidth={2}
       strokeDasharray="4 4"
       label={<CustomReferenceLabel value={label} isVertical={Boolean(x)} />}
