@@ -2,7 +2,7 @@ import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import {
   LineChart,
-  Line,
+  LineChartLine,
   LineChartXAxis,
   LineChartYAxis,
   LineChartCartesianGrid,
@@ -29,7 +29,7 @@ const Page = (): React.ReactElement => {
         {`
         import { 
          LineChart,
-         Line,
+         LineChartLine,
          LineChartXAxis,
          LineChartYAxis,
          LineChartCartesianGrid,
@@ -52,7 +52,7 @@ const Page = (): React.ReactElement => {
                 <LineChartYAxis />
                 <LineChartChartTooltip />
                 <LineChartLegend />
-                <Line dataKey="sales" name="Sales" />
+                <LineChartLine dataKey="sales" name="Sales" />
               </LineChart>
           )
         }
@@ -127,13 +127,13 @@ export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
         <LineChartYAxis />
         <LineChartChartTooltip />
         <LineChartLegend />
-        <Line
+        <LineChartLine
           dataKey="teamA"
           name="Team A"
           strokeStyle="solid"
           color="chart.background.categorical.azure.moderate"
         />
-        <Line
+        <LineChartLine
           dataKey="teamB"
           name="Team B"
           strokeStyle="solid"
@@ -155,13 +155,13 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof LineChart> = () => 
         <LineChartYAxis />
         <LineChartChartTooltip />
         <LineChartLegend />
-        <Line
+        <LineChartLine
           dataKey="teamA"
           name="Team A"
           strokeStyle="solid"
           color="chart.background.categorical.azure.moderate"
         />
-        <Line
+        <LineChartLine
           dataKey="teamB"
           name="Team B"
           strokeStyle="solid"
@@ -178,7 +178,7 @@ export const TinyLineChart: StoryFn<typeof LineChart> = () => {
   return (
     <Box width="200px" height="100px">
       <LineChart data={chartData}>
-        <Line
+        <LineChartLine
           dataKey="teamA"
           strokeStyle="solid"
           color="chart.background.categorical.azure.strong"
@@ -200,13 +200,13 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
         <LineChartYAxis />
         <LineChartChartTooltip />
         <LineChartLegend />
-        <Line
+        <LineChartLine
           dataKey="historical"
           name="Historical Data"
           connectNulls={true}
           color="chart.background.categorical.azure.moderate"
         />
-        <Line
+        <LineChartLine
           dataKey="forecast"
           name="Forecasted Data"
           strokeStyle="dashed"
@@ -230,7 +230,7 @@ export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
         <LineChartYAxis />
         <LineChartChartTooltip />
         <LineChartLegend />
-        <Line
+        <LineChartLine
           dataKey="sales"
           name="Sales (Connects Nulls)"
           color="chart.background.categorical.emerald.moderate"
@@ -243,7 +243,7 @@ export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
         <LineChartYAxis />
         <LineChartChartTooltip />
         <LineChartLegend />
-        <Line
+        <LineChartLine
           dataKey="sales"
           name="Sales (Connects Nulls)"
           connectNulls={true}
@@ -264,7 +264,7 @@ export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
         <LineChartYAxis />
         <LineChartChartTooltip />
         <LineChartLegend />
-        <Line
+        <LineChartLine
           dataKey="value"
           name="Stepped Line"
           type="step"
@@ -285,8 +285,8 @@ export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
         <LineChartYAxis />
         <LineChartChartTooltip />
         <LineChartLegend />
-        <Line dataKey="teamA" name="Success" />
-        <Line dataKey="teamB" name="Errors" />
+        <LineChartLine dataKey="teamA" name="Success" />
+        <LineChartLine dataKey="teamB" name="Errors" />
       </LineChart>
     </Box>
   );
@@ -301,12 +301,16 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
         <LineChartYAxis label="Sales" />
         <LineChartChartTooltip />
         <LineChartLegend />
-        <Line
+        <LineChartLine
           dataKey="teamA"
           name="Success"
           color="chart.background.categorical.emerald.moderate"
         />
-        <Line dataKey="teamB" name="Errors" color="chart.background.categorical.crimson.moderate" />
+        <LineChartLine
+          dataKey="teamB"
+          name="Errors"
+          color="chart.background.categorical.crimson.moderate"
+        />
       </LineChart>
     </Box>
   );

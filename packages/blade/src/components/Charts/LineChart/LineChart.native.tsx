@@ -1,16 +1,4 @@
 import React from 'react';
-import type { LineChartLineProps, LineChartProps } from './types';
-import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
-import {
-  XAxis as LineChartXAxis,
-  YAxis as LineChartYAxis,
-  CartesianGrid as LineChartCartesianGrid,
-  ChartTooltip as LineChartChartTooltip,
-  Legend as LineChartLegend,
-  ResponsiveContainer as LineChartResponsiveContainer,
-  ReferenceLine as LineChartReferenceLine,
-} from '../BaseChartComponents';
 import type {
   XAxisProps as LineChartXAxisProps,
   YAxisProps as LineChartYAxisProps,
@@ -20,6 +8,18 @@ import type {
   ResponsiveContainerProps as LineChartResponsiveContainerProps,
   ReferenceLineProps as LineChartReferenceLineProps,
 } from '../BaseChartComponents';
+import {
+  XAxis as LineChartXAxis,
+  YAxis as LineChartYAxis,
+  CartesianGrid as LineChartCartesianGrid,
+  ChartTooltip as LineChartChartTooltip,
+  Legend as LineChartLegend,
+  ResponsiveContainer as LineChartResponsiveContainer,
+  ReferenceLine as LineChartReferenceLine,
+} from '../BaseChartComponents';
+import type { LineChartLineProps, LineChartProps } from './types';
+import { Text } from '~components/Typography';
+import { throwBladeError } from '~utils/logger';
 
 const LineChartLine = (_prop: LineChartLineProps): React.ReactElement => {
   throwBladeError({

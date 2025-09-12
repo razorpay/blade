@@ -7,8 +7,6 @@ import {
   LineChartCartesianGrid,
   LineChartChartTooltip,
   LineChartLegend,
-  LineChartResponsiveContainer,
-  LineChartReferenceLine,
 } from '../LineChart';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
