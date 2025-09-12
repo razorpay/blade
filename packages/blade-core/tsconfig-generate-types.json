@@ -1,0 +1,16 @@
+// Base tsconfig for type generation
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "**/**.test.ts",
+    "**/**.test.tsx",
+    "__tests__",
+    "**/**.stories.tsx",
+    "**/**.stories.internal.tsx"
+  ],
+  "compilerOptions": {
+    "declaration": true /* Generates corresponding '.d.ts' file. */,
+    "emitDeclarationOnly": true /* Only output d.ts files and not JavaScript files.*/,
+    "noEmit": false /* Enable emitting file from a compilation. */
+  }
+}
