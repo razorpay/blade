@@ -73,7 +73,6 @@ const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
       return child;
     });
   }, [children, colorTheme]);
-
   return (
     <BaseBox
       {...metaAttribute({ name: 'line-chart', testID })}

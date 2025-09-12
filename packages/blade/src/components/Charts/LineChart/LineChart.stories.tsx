@@ -8,7 +8,7 @@ import {
   Legend,
   ReferenceLine,
 } from '../BaseChartComponents';
-import { LineChart, Line } from './lineCharts';
+import { LineChart, Line } from './LineChart';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

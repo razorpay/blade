@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line } from '../lineCharts';
+import { LineChart, Line } from '../LineChart';
 import { XAxis, YAxis, CartesianGrid, ChartTooltip, Legend } from '../../BaseChartComponents';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
