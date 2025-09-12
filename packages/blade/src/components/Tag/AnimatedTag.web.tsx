@@ -36,11 +36,11 @@ const tagShowKeyframe = keyframes`
 `;
 
 const AnimatedTagContainer = styled(BaseBox)<{
-  transition: FlattenSimpleInterpolation;
+  animationProps: FlattenSimpleInterpolation;
   isVisible: boolean;
 }>(
   (props) => css`
-    ${props.transition};
+    ${props.animationProps};
     display: inline-block;
     opacity: ${props.isVisible ? TAG_OPACITY_START : TAG_OPACITY_END};
     max-width: ${props.isVisible ? TAG_MAX_WIDTH_START : TAG_MAX_WIDTH_END};
@@ -59,12 +59,12 @@ const AnimatedTag = ({
   const [isTagVisible, setIsTagVisible] = React.useState(true);
   const { theme } = useTheme();
 
-  const hideTagTransition = css`
+  const hideTagAnimationProps = css`
     animation: ${tagDissappearKeyframe} ${makeMotionTime(theme.motion.duration.xquick)}
       ${String(theme.motion.easing.exit)};
   `;
 
-  const showTagTransition = css`
+  const showTagAnimationProps = css`
     animation: ${tagShowKeyframe} ${makeMotionTime(theme.motion.duration.xquick)}
       ${String(theme.motion.easing.entrance)};
   `;
@@ -77,7 +77,7 @@ const AnimatedTag = ({
           onDismiss({ tagIndex: currentTagIndex, tagName: children });
         }
       }}
-      transition={isTagVisible ? showTagTransition : hideTagTransition}
+      animationProps={isTagVisible ? showTagAnimationProps : hideTagAnimationProps}
     >
       <Tag
         _isVirtuallyFocused={currentTagIndex === activeTagIndex}

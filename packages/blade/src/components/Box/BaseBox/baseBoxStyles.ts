@@ -281,8 +281,9 @@ const getAllProps = (
     visibility: getResponsiveValue(props.visibility, breakpoint),
     ...(!isReactNative() && {
       boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
+      backdropFilter: getResponsiveValue(props.backdropFilter, breakpoint),
+      transition: getResponsiveValue(props.transition, breakpoint),
     }),
-    backdropFilter: getResponsiveValue(props.backdropFilter, breakpoint),
 
     // Polygon support
     transform: getResponsiveValue(props.transform as string, breakpoint),
@@ -290,7 +291,6 @@ const getAllProps = (
     clipPath: getResponsiveValue(props.clipPath, breakpoint),
 
     // Animation
-    transition: getResponsiveValue(props.transition, breakpoint),
   };
 };
 
