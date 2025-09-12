@@ -1,0 +1,78 @@
+{
+  "name": "@razorpay/blade-core",
+  "description": "Core utilities and shared functionality for Blade Design System",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/razorpay/blade.git"
+  },
+  "keywords": [
+    "design system",
+    "core",
+    "utilities",
+    "razorpay",
+    "blade"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "typecheck:web": "tsc --noEmit --project tsconfig-typecheck.web.json",
+    "typecheck:native": "tsc --noEmit --project tsconfig-typecheck.native.json",
+    "build": "yarn build:generate-types && yarn build:rollup",
+    "build:generate-types": "yarn build:generate-types:web && yarn build:generate-types:native",
+    "build:generate-types:web": "tsc --project tsconfig-generate-types.web.json",
+    "build:generate-types:native": "tsc --project tsconfig-generate-types.native.json",
+    "build:rollup": "rollup --config rollup.config.mjs",
+    "build:rollup:web": "FRAMEWORK=REACT rollup --config rollup.config.mjs",
+    "build:rollup:native": "FRAMEWORK=REACT_NATIVE rollup --config rollup.config.mjs",
+    "test": "echo 'No tests configured yet'"
+  },
+  "dependencies": {
+    "ts-deepmerge": "6.2.0",
+    "tinycolor2": "1.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.28.3",
+    "@babel/preset-env": "7.28.3",
+    "@babel/preset-react": "7.16.5",
+    "@babel/preset-typescript": "7.16.5",
+    "@babel/plugin-transform-runtime": "7.28.3",
+    "@rollup/plugin-alias": "5.0.0",
+    "@rollup/plugin-babel": "6.0.3",
+    "@rollup/plugin-commonjs": "25.0.4",
+    "@rollup/plugin-node-resolve": "15.2.1",
+    "@rollup/plugin-replace": "5.0.2",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/react-native": "12.2.0",
+    "@types/styled-components": "5.1.34",
+    "@types/tinycolor2": "1.4.3",
+    "ramda": "0.29.1",
+    "react": "18.2.0",
+    "react-native": "0.72.3",
+    "rollup": "3.29.5",
+    "rollup-plugin-dts": "5.3.1",
+    "rollup-plugin-peer-deps-external": "2.2.4",
+    "styled-components": "5.3.5",
+    "typescript": "4.9",
+    "typescript-transform-paths": "3.4.7"
+  },
+  "peerDependencies": {},
+  "files": [
+    "src",
+    "dist",
+    "*.d.ts"
+  ],
+  "exports": {
+    "./tokens": {
+      "types": "./dist/types/tokens/index.d.ts",
+      "default": "./dist/lib/web/production/tokens/index.js"
+    },
+    "./utils": {
+      "types": "./dist/types/utils/index.d.ts",
+      "default": "./dist/lib/web/production/utils/index.js"
+    }
+  }
+}
