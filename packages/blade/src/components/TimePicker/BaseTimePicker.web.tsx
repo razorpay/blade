@@ -44,7 +44,7 @@ const _BaseTimePicker = ({
   minuteStep = 1,
   labelSuffix,
   labelTrailing,
-
+  testID,
   ...props
 }: TimePickerProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const referenceRef = useRef<HTMLElement>(null);
@@ -195,6 +195,8 @@ const _BaseTimePicker = ({
         timeFormat={timeFormat}
         isDropdownOpen={isDropdownOpen}
         setIsDropdownOpen={setIsDropdownOpen}
+        testID={testID}
+        accessibilityLabel={accessibilityLabel}
         {...props}
       />
 

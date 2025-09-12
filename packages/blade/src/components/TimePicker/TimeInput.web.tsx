@@ -162,6 +162,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     labelTrailing,
     timeFormat,
     testID,
+    accessibilityLabel,
     inputRef,
     referenceProps,
     createCompleteTime,
@@ -245,6 +246,8 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         popupId={referenceProps['aria-controls']}
         isPopupExpanded={referenceProps['aria-expanded']}
         hasPopup={referenceProps['aria-haspopup']}
+        testID={testID}
+        accessibilityLabel={accessibilityLabel}
         {...props}
         {...otherReferenceProps}
       >
