@@ -1,3 +1,3 @@
 // Export LineCharts (includes shared components)
-export * from './LineCharts';
+export * from './LineChart';
 export * from './BaseChartComponents';
