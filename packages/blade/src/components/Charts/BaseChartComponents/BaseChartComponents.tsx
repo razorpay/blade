@@ -246,6 +246,9 @@ const CustomReferenceLabel = ({
   const { x, y, width } = viewBox ?? { x: 0, y: 0, width: 0 };
   const { theme } = useTheme();
 
+  // Calculate dynamic text width to ensure the background rectangle fits the text perfectly.
+  // This prevents text overflow for long labels and avoids unnecessarily large rectangles for short text.
+  // The function also handles text truncation with ellipsis if the text exceeds the maximum width.
   const { width: RECT_WIDTH, displayText } = value
     ? calculateTextWidth(value, theme)
     : { width: 80, displayText: value ?? '' };
