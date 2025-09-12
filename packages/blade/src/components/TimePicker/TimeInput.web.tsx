@@ -48,12 +48,6 @@ const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
  * For LITERAL segments (separators):
  * - Just renders static text in a span
  * - No interaction or focus behavior
- *
- * Key features:
- * - Placeholder text that reserves space to prevent layout shifts
- * - Proper ARIA labels for screen readers
- * - Auto-sizing based on max possible value length
- * - Full keyboard navigation support
  */
 const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentProps> = ({
   segment,
@@ -136,8 +130,6 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
  * - Use arrow keys to increment/decrement values
  * - Tab between segments for navigation
  * - Full keyboard accessibility support
- *
-
  */
 const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInputProps> = (
   {
@@ -251,16 +243,18 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         {...props}
         {...otherReferenceProps}
       >
-        {state.segments.map((segment, i) => {
-          return (
-            // Fix for React Aria contentEditable focus issue
-            // Wrapping each segment in a div prevents unwanted focus when clicking outside
-            // See: https://github.com/adobe/react-spectrum/issues/3164
-            <BaseBox key={i}>
-              <TimeSegment segment={segment} state={state} isDisabled={isDisabled} />
-            </BaseBox>
-          );
-        })}
+        <BaseBox display="flex">
+          {state.segments.map((segment, i) => {
+            return (
+              // Fix for React Aria contentEditable focus issue
+              // Wrapping each segment in a div prevents unwanted focus when clicking outside
+              // See: https://github.com/adobe/react-spectrum/issues/3164
+              <BaseBox key={i}>
+                <TimeSegment segment={segment} state={state} isDisabled={isDisabled} />
+              </BaseBox>
+            );
+          })}
+        </BaseBox>
       </BaseInput>
     </BaseBox>
   );
