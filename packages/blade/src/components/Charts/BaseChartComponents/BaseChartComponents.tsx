@@ -243,6 +243,8 @@ const CustomReferenceLabel = ({
   value: string | undefined;
   isVertical: boolean;
 }): JSX.Element => {
+  // Extract viewBox coordinates with fallback values to prevent undefined errors.
+  // viewBox contains the positioning information for the reference line label from Recharts.
   const { x, y, width } = viewBox ?? { x: 0, y: 0, width: 0 };
   const { theme } = useTheme();
 
