@@ -271,6 +271,11 @@ export const createDateFromSelection = (
  * getNearestStepValue(17, 1)
  * // → 17 (exact match, no rounding)
  */
-export const getNearestStepValue = (actualValue: number, step: number): number => {
-  return Math.round(actualValue / step) * step;
+export const getNearestStepValue = (actualValue: number, step: number): string => {
+  const nearestValue = Math.round(actualValue / step) * step;
+
+  // If calculated value is 60 or more, wrap to 0 (since 60 minutes doesn't exist)
+  const finalValue = nearestValue >= 60 ? 0 : nearestValue;
+
+  return String(finalValue).padStart(2, '0');
 };
