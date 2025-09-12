@@ -6,7 +6,7 @@ import type {
   GridProps,
 } from '~components/Box/BaseBox/types/propsTypes';
 
-interface LineProps {
+interface LineChartLineProps {
   /**
    * The type of the line.
    *  @default : 'linear'
@@ -75,4 +75,4 @@ type LineChartProps = {
   children: React.ReactNode;
 } & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
 
-export type { LineProps, LineChartProps };
+export type { LineChartLineProps, LineChartProps };

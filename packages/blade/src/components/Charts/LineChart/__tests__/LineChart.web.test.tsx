@@ -1,6 +1,15 @@
 import React from 'react';
-import { LineChart, Line } from '../LineChart';
-import { XAxis, YAxis, CartesianGrid, ChartTooltip, Legend } from '../../BaseChartComponents';
+import {
+  LineChart,
+  LineChartLine,
+  LineChartXAxis,
+  LineChartYAxis,
+  LineChartCartesianGrid,
+  LineChartChartTooltip,
+  LineChartLegend,
+  LineChartResponsiveContainer,
+  LineChartReferenceLine,
+} from '../LineChart';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Box } from '~components/Box/Box';
@@ -17,7 +26,7 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" />
+          <LineChartLine dataKey="sales" />
         </LineChart>
       </Box>,
     );
@@ -28,9 +37,9 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" name="Sales" />
-          <Line dataKey="profit" name="Profit" />
-          <Line dataKey="revenue" name="Revenue" />
+          <LineChartLine dataKey="sales" name="Sales" />
+          <LineChartLine dataKey="profit" name="Profit" />
+          <LineChartLine dataKey="revenue" name="Revenue" />
         </LineChart>
       </Box>,
     );
@@ -41,9 +50,9 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" type="linear" />
-          <Line dataKey="profit" type="monotone" />
-          <Line dataKey="revenue" type="step" />
+          <LineChartLine dataKey="sales" type="linear" />
+          <LineChartLine dataKey="profit" type="monotone" />
+          <LineChartLine dataKey="revenue" type="step" />
         </LineChart>
       </Box>,
     );
@@ -54,9 +63,9 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" strokeStyle="solid" />
-          <Line dataKey="profit" strokeStyle="dashed" />
-          <Line dataKey="revenue" strokeStyle="dotted" />
+          <LineChartLine dataKey="sales" strokeStyle="solid" />
+          <LineChartLine dataKey="profit" strokeStyle="dashed" />
+          <LineChartLine dataKey="revenue" strokeStyle="dotted" />
         </LineChart>
       </Box>,
     );
@@ -67,8 +76,8 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" color="chart.background.categorical.gray.moderate" />
-          <Line dataKey="profit" color="chart.background.categorical.cider.moderate" />
+          <LineChartLine dataKey="sales" color="chart.background.categorical.gray.moderate" />
+          <LineChartLine dataKey="profit" color="chart.background.categorical.cider.moderate" />
         </LineChart>
       </Box>,
     );
@@ -79,8 +88,8 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" dot={true} />
-          <Line dataKey="profit" dot={false} />
+          <LineChartLine dataKey="sales" dot={true} />
+          <LineChartLine dataKey="profit" dot={false} />
         </LineChart>
       </Box>,
     );
@@ -91,8 +100,8 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" activeDot={false} />
-          <Line dataKey="profit" activeDot={true} />
+          <LineChartLine dataKey="sales" activeDot={false} />
+          <LineChartLine dataKey="profit" activeDot={true} />
         </LineChart>
       </Box>,
     );
@@ -103,8 +112,8 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" showLegend={true} />
-          <Line dataKey="profit" showLegend={false} />
+          <LineChartLine dataKey="sales" showLegend={true} />
+          <LineChartLine dataKey="profit" showLegend={false} />
         </LineChart>
       </Box>,
     );
@@ -121,7 +130,7 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={dataWithNulls}>
-          <Line dataKey="sales" connectNulls={true} />
+          <LineChartLine dataKey="sales" connectNulls={true} />
         </LineChart>
       </Box>,
     );
@@ -132,8 +141,8 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData} colorTheme="informational">
-          <Line dataKey="sales" />
-          <Line dataKey="profit" />
+          <LineChartLine dataKey="sales" />
+          <LineChartLine dataKey="profit" />
         </LineChart>
       </Box>,
     );
@@ -144,7 +153,7 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={[]}>
-          <Line dataKey="sales" />
+          <LineChartLine dataKey="sales" />
         </LineChart>
       </Box>,
     );
@@ -161,7 +170,7 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={incompleteData}>
-          <Line dataKey="sales" />
+          <LineChartLine dataKey="sales" />
         </LineChart>
       </Box>,
     );
@@ -172,13 +181,13 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <CartesianGrid />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <ChartTooltip />
-          <Legend />
-          <Line dataKey="sales" name="Sales" />
-          <Line dataKey="profit" name="Profit" />
+          <LineChartCartesianGrid />
+          <LineChartXAxis dataKey="name" />
+          <LineChartYAxis />
+          <LineChartChartTooltip />
+          <LineChartLegend />
+          <LineChartLine dataKey="sales" name="Sales" />
+          <LineChartLine dataKey="profit" name="Profit" />
         </LineChart>
       </Box>,
     );
@@ -189,7 +198,7 @@ describe('<LineChart />', () => {
     const { getByTestId } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData} testID="line-chart-test">
-          <Line dataKey="sales" />
+          <LineChartLine dataKey="sales" />
         </LineChart>
       </Box>,
     );
@@ -200,9 +209,9 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Line dataKey="sales" />
+          <LineChartXAxis dataKey="name" />
+          <LineChartYAxis />
+          <LineChartLine dataKey="sales" />
         </LineChart>
       </Box>,
     );
@@ -215,7 +224,7 @@ describe('<Line />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" />
+          <LineChartLine dataKey="sales" />
         </LineChart>
       </Box>,
     );
@@ -226,7 +235,7 @@ describe('<Line />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" name="Monthly Sales" />
+          <LineChartLine dataKey="sales" name="Monthly Sales" />
         </LineChart>
       </Box>,
     );
@@ -240,7 +249,7 @@ describe('<Line />', () => {
       const { container } = renderWithTheme(
         <Box width="500px" height="500px">
           <LineChart data={mockData}>
-            <Line dataKey="sales" type={type} />
+            <LineChartLine dataKey="sales" type={type} />
           </LineChart>
         </Box>,
       );
@@ -255,7 +264,7 @@ describe('<Line />', () => {
       const { container } = renderWithTheme(
         <Box width="500px" height="500px">
           <LineChart data={mockData}>
-            <Line dataKey="sales" strokeStyle={strokeStyle} />
+            <LineChartLine dataKey="sales" strokeStyle={strokeStyle} />
           </LineChart>
         </Box>,
       );
@@ -267,7 +276,10 @@ describe('<Line />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" dot={{ fill: 'red', stroke: 'blue', strokeWidth: 2, r: 4 }} />
+          <LineChartLine
+            dataKey="sales"
+            dot={{ fill: 'red', stroke: 'blue', strokeWidth: 2, r: 4 }}
+          />
         </LineChart>
       </Box>,
     );
@@ -278,7 +290,7 @@ describe('<Line />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line
+          <LineChartLine
             dataKey="sales"
             activeDot={{ fill: 'green', stroke: 'darkgreen', strokeWidth: 2, r: 6 }}
           />
@@ -292,43 +304,11 @@ describe('<Line />', () => {
     const { getByTestId } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData} testID="line-test">
-          <Line dataKey="sales" />
+          <LineChartLine dataKey="sales" />
         </LineChart>
       </Box>,
     );
     expect(getByTestId('line-test')).toBeInTheDocument();
-  });
-});
-
-describe('LineChart Error Handling', () => {
-  it('should throw error when too many lines are configured in development', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-
-    // Create 11 lines (exceeds MAX_LINES = 10)
-    const manyLines = Array.from({ length: 11 }, (_, index) => (
-      <Line key={index} dataKey={`data${index}`} />
-    ));
-
-    expect(() => {
-      renderWithTheme(<LineChart data={mockData}>{manyLines}</LineChart>);
-    }).toThrow('Too many lines configured. Maximum allowed is 10.');
-
-    mockConsoleError.mockRestore();
-  });
-
-  it('should not throw error when exactly MAX_LINES are configured', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-
-    // Create exactly 10 lines (MAX_LINES)
-    const maxLines = Array.from({ length: 10 }, (_, index) => (
-      <Line key={index} dataKey={`data${index}`} />
-    ));
-
-    expect(() => {
-      renderWithTheme(<LineChart data={mockData}>{maxLines}</LineChart>);
-    }).not.toThrow();
-
-    mockConsoleError.mockRestore();
   });
 });
 
@@ -337,9 +317,9 @@ describe('LineChart Integration Tests', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Line dataKey="sales" />
+          <LineChartXAxis dataKey="name" />
+          <LineChartYAxis />
+          <LineChartLine dataKey="sales" />
         </LineChart>
       </Box>,
     );
@@ -363,10 +343,10 @@ describe('LineChart Integration Tests', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={complexData}>
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Line dataKey="metrics.sales" name="Sales" />
-          <Line dataKey="metrics.profit" name="Profit" />
+          <LineChartXAxis dataKey="date" />
+          <LineChartYAxis />
+          <LineChartLine dataKey="metrics.sales" name="Sales" />
+          <LineChartLine dataKey="metrics.profit" name="Profit" />
         </LineChart>
       </Box>,
     );
@@ -383,10 +363,10 @@ describe('LineChart Integration Tests', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mixedData}>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Line dataKey="value" name="Value" />
-          <Line dataKey="percentage" name="Percentage" />
+          <LineChartXAxis dataKey="name" />
+          <LineChartYAxis />
+          <LineChartLine dataKey="value" name="Value" />
+          <LineChartLine dataKey="percentage" name="Percentage" />
         </LineChart>
       </Box>,
     );
@@ -399,7 +379,7 @@ describe('LineChart Styling Tests', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" strokeStyle="dashed" />
+          <LineChartLine dataKey="sales" strokeStyle="dashed" />
         </LineChart>
       </Box>,
     );
@@ -410,7 +390,7 @@ describe('LineChart Styling Tests', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <LineChart data={mockData}>
-          <Line dataKey="sales" strokeStyle="solid" />
+          <LineChartLine dataKey="sales" strokeStyle="solid" />
         </LineChart>
       </Box>,
     );

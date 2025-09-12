@@ -23,7 +23,7 @@ import type {
   ResponsiveContainerProps as LineChartResponsiveContainerProps,
   ReferenceLineProps as LineChartReferenceLineProps,
 } from '../BaseChartComponents';
-import type { LineProps, LineChartProps } from './types';
+import type { LineChartLineProps, LineChartProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
@@ -31,7 +31,7 @@ import getIn from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const Line: React.FC<LineProps> = ({
+const LineChartLine: React.FC<LineChartLineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
@@ -82,11 +82,11 @@ const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
   const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && child.type === Line) {
+      if (React.isValidElement(child) && child.type === LineChartLine) {
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
-        } as Partial<LineProps>);
+        } as Partial<LineChartLineProps>);
       }
       return child;
     });
@@ -108,7 +108,7 @@ const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
 
 export type {
   LineChartProps,
-  LineProps,
+  LineChartLineProps,
   LineChartXAxisProps,
   LineChartYAxisProps,
   LineChartCartesianGridProps,
@@ -119,7 +119,7 @@ export type {
 };
 export {
   LineChart,
-  Line,
+  LineChartLine,
   LineChartXAxis,
   LineChartYAxis,
   LineChartCartesianGrid,
