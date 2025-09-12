@@ -260,18 +260,17 @@ const CustomReferenceLabel = ({
     ? calculateTextWidth(value, theme)
     : { width: 80, displayText: value ?? '' };
 
-  const RectX = isVertical ? x + width - RECT_WIDTH / 2 : x + width - RECT_WIDTH;
-  const RectY = isVertical ? y : y - TEXT_BASELINE;
-
+  const rect_x = isVertical ? x + width - RECT_WIDTH / 2 : x + width - RECT_WIDTH;
+  const rect_y = isVertical ? y : y - TEXT_BASELINE;
   // Text position with padding inside the rectangle
-  const textX = RectX + PADDING_HORIZONTAL + (RECT_WIDTH - PADDING_HORIZONTAL * 2) / 2;
-  const textY = RectY + PADDING_VERTICAL + TEXT_BASELINE; // +15 for text baseline
+  const text_x = rect_x + PADDING_HORIZONTAL + (RECT_WIDTH - PADDING_HORIZONTAL * 2) / 2;
+  const text_y = rect_y + PADDING_VERTICAL + TEXT_BASELINE; // +15 for text baseline
 
   return (
     <g>
       <rect
-        x={RectX}
-        y={RectY}
+        x={rect_x}
+        y={rect_y}
         width={RECT_WIDTH}
         height={RECT_HEIGHT}
         rx={theme.border.radius.medium}
@@ -280,8 +279,8 @@ const CustomReferenceLabel = ({
         strokeWidth="1"
       />
       <text
-        x={textX}
-        y={textY}
+        x={text_x}
+        y={text_y}
         textAnchor="middle"
         fill={theme.colors.surface.text.gray.normal}
         fontSize={theme.typography.fonts.size[50]}

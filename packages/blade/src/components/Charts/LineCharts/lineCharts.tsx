@@ -10,11 +10,8 @@ import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
-import { throwBladeError } from '~utils/logger';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-
-const MAX_LINES = 10;
 
 const Line: React.FC<LineProps> = ({
   color,
@@ -67,13 +64,6 @@ const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
   const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
-      if (__DEV__ && LineChartIndex >= MAX_LINES) {
-        throwBladeError({
-          message: `Too many lines configured. Maximum allowed is ${MAX_LINES}.`,
-          moduleName: 'LineChart',
-        });
-      }
-
       if (React.isValidElement(child) && child.type === Line) {
         return React.cloneElement(child, {
           _index: LineChartIndex++,
