@@ -76,16 +76,11 @@ exports[`<TextArea /> should render 1`] = `
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
-  -webkit-transition: animation:none;
-  transition: animation:none;
-}
-
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   margin-left: 0px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -139,7 +134,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -169,7 +164,7 @@ exports[`<TextArea /> should render 1`] = `
   cursor: auto;
 }
 
-.c11.c11.c11.c11.c11::-webkit-input-placeholder {
+.c10.c10.c10.c10.c10::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -186,7 +181,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::-moz-placeholder {
+.c10.c10.c10.c10.c10::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -203,7 +198,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:-ms-input-placeholder {
+.c10.c10.c10.c10.c10:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -220,7 +215,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::placeholder {
+.c10.c10.c10.c10.c10::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -237,11 +232,11 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:focus {
+.c10.c10.c10.c10.c10:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -269,7 +264,7 @@ exports[`<TextArea /> should render 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -299,7 +294,7 @@ exports[`<TextArea /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -418,7 +413,7 @@ exports[`<TextArea /> should render 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c9 c10 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -426,7 +421,7 @@ exports[`<TextArea /> should render 1`] = `
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
-            class="c11"
+            class="c10"
             data-blade-component="styled-base-input"
             id="textarea-1-input-2"
             rows="2"
@@ -436,11 +431,11 @@ exports[`<TextArea /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c12"
+      class="c11"
       data-blade-component="base-box"
     >
       <div
-        class="c13"
+        class="c12"
         data-blade-component="base-box"
       />
     </div>
@@ -524,16 +519,11 @@ exports[`<TextArea /> should render large size 1`] = `
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
-  -webkit-transition: animation:none;
-  transition: animation:none;
-}
-
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   margin-left: 0px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -547,7 +537,7 @@ exports[`<TextArea /> should render large size 1`] = `
   justify-content: flex-end;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   margin-top: 8px;
   margin-right: 2px;
 }
@@ -592,7 +582,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -609,7 +599,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -639,7 +629,7 @@ exports[`<TextArea /> should render large size 1`] = `
   cursor: auto;
 }
 
-.c11.c11.c11.c11.c11::-webkit-input-placeholder {
+.c10.c10.c10.c10.c10::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -656,7 +646,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::-moz-placeholder {
+.c10.c10.c10.c10.c10::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -673,7 +663,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:-ms-input-placeholder {
+.c10.c10.c10.c10.c10:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -690,7 +680,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::placeholder {
+.c10.c10.c10.c10.c10::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -707,11 +697,11 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:focus {
+.c10.c10.c10.c10.c10:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -739,7 +729,7 @@ exports[`<TextArea /> should render large size 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -769,7 +759,7 @@ exports[`<TextArea /> should render large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -888,7 +878,7 @@ exports[`<TextArea /> should render large size 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c9 c10 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -896,7 +886,7 @@ exports[`<TextArea /> should render large size 1`] = `
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
-            class="c11"
+            class="c10"
             data-blade-component="styled-base-input"
             id="textarea-19-input-20"
             maxlength="100"
@@ -907,19 +897,19 @@ exports[`<TextArea /> should render large size 1`] = `
       </div>
     </div>
     <div
-      class="c12"
+      class="c11"
       data-blade-component="base-box"
     >
       <div
-        class="c13"
+        class="c12"
         data-blade-component="base-box"
       >
         <div
-          class="c14"
+          class="c13"
           data-blade-component="base-box"
         >
           <p
-            class="c15"
+            class="c14"
             data-blade-component="text"
           >
             0
@@ -1009,16 +999,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
-  -webkit-transition: animation:none;
-  transition: animation:none;
-}
-
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   margin-left: 0px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1072,7 +1057,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1102,7 +1087,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   cursor: auto;
 }
 
-.c11.c11.c11.c11.c11::-webkit-input-placeholder {
+.c10.c10.c10.c10.c10::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1119,7 +1104,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::-moz-placeholder {
+.c10.c10.c10.c10.c10::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1136,7 +1121,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:-ms-input-placeholder {
+.c10.c10.c10.c10.c10:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1153,7 +1138,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::placeholder {
+.c10.c10.c10.c10.c10::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1170,11 +1155,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:focus {
+.c10.c10.c10.c10.c10:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1202,7 +1187,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1232,7 +1217,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1351,7 +1336,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c9 c10 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -1359,7 +1344,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
-            class="c11"
+            class="c10"
             data-blade-component="styled-base-input"
             id="textarea-157-input-158"
             rows="3"
@@ -1369,11 +1354,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
       </div>
     </div>
     <div
-      class="c12"
+      class="c11"
       data-blade-component="base-box"
     >
       <div
-        class="c13"
+        class="c12"
         data-blade-component="base-box"
       />
     </div>
@@ -1457,16 +1442,11 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
-  -webkit-transition: animation:none;
-  transition: animation:none;
-}
-
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   margin-left: 0px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1520,7 +1500,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1550,7 +1530,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   cursor: auto;
 }
 
-.c11.c11.c11.c11.c11::-webkit-input-placeholder {
+.c10.c10.c10.c10.c10::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1567,7 +1547,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::-moz-placeholder {
+.c10.c10.c10.c10.c10::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1584,7 +1564,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:-ms-input-placeholder {
+.c10.c10.c10.c10.c10:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1601,7 +1581,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11::placeholder {
+.c10.c10.c10.c10.c10::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1618,11 +1598,11 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11:focus {
+.c10.c10.c10.c10.c10:focus {
   outline: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1650,7 +1630,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1680,7 +1660,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -1754,7 +1734,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
       >
         <label
           data-blade-component="form-label"
-          for="textarea-1033-input-1034"
+          for="textarea-1231-input-1232"
           style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -1799,7 +1779,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c9 c10 __blade-base-input-wrapper"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9 __blade-base-input-wrapper"
           data-blade-component="base-box"
         >
           <textarea
@@ -1807,10 +1787,10 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
-            class="c11"
+            class="c10"
             data-analytics-name="text-area"
             data-blade-component="styled-base-input"
-            id="textarea-1033-input-1034"
+            id="textarea-1231-input-1232"
             rows="2"
             type="text"
           />
@@ -1818,11 +1798,11 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
       </div>
     </div>
     <div
-      class="c12"
+      class="c11"
       data-blade-component="base-box"
     >
       <div
-        class="c13"
+        class="c12"
         data-blade-component="base-box"
       />
     </div>
