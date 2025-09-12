@@ -23,7 +23,6 @@ const StyledScrollItem = styled(BaseBox)`
 
 /**
  * Reusable SpinWheel component for time selection
- *
  * Creates a scrollable column of values where the center item is selected.
  */
 const SpinWheel = ({

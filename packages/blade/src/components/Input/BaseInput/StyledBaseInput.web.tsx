@@ -65,7 +65,6 @@ const StyledBaseDivWrapper = styled.div<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
 >((props) => ({
   ...getWebInputStyles(props),
-  display: 'flex',
 }));
 
 const autoCompleteSuggestionTypeMap = {
