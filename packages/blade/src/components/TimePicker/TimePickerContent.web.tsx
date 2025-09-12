@@ -171,6 +171,19 @@ const TimePickerContent = ({
         onKeyDown={handleContainerKeyDown}
         onFocus={handleContainerFocus}
       >
+        {/* Center highlight area */}
+        <BaseBox
+          position="absolute"
+          top="50%"
+          left="spacing.0"
+          right="spacing.0"
+          height="36px"
+          transform="translateY(-50%)"
+          backgroundColor="interactive.background.gray.faded"
+          pointerEvents="none"
+          zIndex={1}
+        />
+
         {/* Hour Wheel */}
         <SpinWheel
           label="Hour"
