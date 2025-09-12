@@ -5,6 +5,24 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
+import {
+  XAxis as LineChartXAxis,
+  YAxis as LineChartYAxis,
+  CartesianGrid as LineChartCartesianGrid,
+  ChartTooltip as LineChartChartTooltip,
+  Legend as LineChartLegend,
+  ResponsiveContainer as LineChartResponsiveContainer,
+  ReferenceLine as LineChartReferenceLine,
+} from '../BaseChartComponents';
+import type {
+  XAxisProps as LineChartXAxisProps,
+  YAxisProps as LineChartYAxisProps,
+  CartesianGridProps as LineChartCartesianGridProps,
+  ChartTooltipProps as LineChartChartTooltipProps,
+  LegendProps as LineChartLegendProps,
+  ResponsiveContainerProps as LineChartResponsiveContainerProps,
+  ReferenceLineProps as LineChartReferenceLineProps,
+} from '../BaseChartComponents';
 import type { LineProps, LineChartProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -87,5 +105,25 @@ const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
   );
 };
 
-export type { LineChartProps, LineProps };
-export { LineChart, Line };
+export type {
+  LineChartProps,
+  LineProps,
+  LineChartXAxisProps,
+  LineChartYAxisProps,
+  LineChartCartesianGridProps,
+  LineChartChartTooltipProps,
+  LineChartLegendProps,
+  LineChartResponsiveContainerProps,
+  LineChartReferenceLineProps,
+};
+export {
+  LineChart,
+  Line,
+  LineChartXAxis,
+  LineChartYAxis,
+  LineChartCartesianGrid,
+  LineChartChartTooltip,
+  LineChartLegend,
+  LineChartResponsiveContainer,
+  LineChartReferenceLine,
+};
