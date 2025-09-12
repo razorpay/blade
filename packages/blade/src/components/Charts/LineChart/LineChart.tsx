@@ -97,6 +97,7 @@ const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
       {...makeAnalyticsAttribute(restProps)}
       width="100%"
       height="100%"
+      {...restProps}
     >
       <RechartsResponsiveContainer width="100%" height="100%">
         <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>

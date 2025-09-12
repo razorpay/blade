@@ -1,5 +1,10 @@
 import type { LineProps as RechartsLineProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../BaseChartComponents/types';
+import type {
+  BaseBoxProps,
+  FlexboxProps,
+  GridProps,
+} from '~components/Box/BaseBox/types/propsTypes';
 
 interface LineProps {
   /**
@@ -68,6 +73,6 @@ type LineChartProps = {
    */
   data: data[];
   children: React.ReactNode;
-};
+} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
 
 export type { LineProps, LineChartProps };
