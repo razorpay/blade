@@ -255,4 +255,26 @@ export const Polygon = (): React.ReactElement => {
   );
 };
 
+export const WithTransition = (): React.ReactElement => {
+  const [hovered, setHovered] = React.useState(false);
+
+  return (
+    <Box
+      backgroundColor={
+        hovered ? 'surface.background.primary.intense' : 'surface.background.gray.intense'
+      }
+      backdropFilter="blur(32px)"
+      padding="spacing.8"
+      borderRadius="medium"
+      transition="all 0.2s ease-in-out"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <Text color={hovered ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal'}>
+        Hover me to see the transition effect!
+      </Text>
+    </Box>
+  );
+};
+
 export default BoxStoryMeta;
