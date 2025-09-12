@@ -6,7 +6,7 @@ LineChart is a data visualization component built on top of Recharts that displa
 
 ## Important Constraints
 
-- `LineChart` component only accepts `LineChartLine`, `LineChartXAxis`, `LineChartYAxis`, `LineChartCartesianGrid`, `LineChartChartTooltip`, `LineChartLegend`, `LineChartReferenceLine`, and `LineChartResponsiveContainer` components as children
+- `LineChart` component only accepts `LineChartLine`, `LineChartXAxis`, `LineChartYAxis`, `LineChartCartesianGrid`, `LineChartChartTooltip`, `LineChartLegend`, `LineChartReferenceLine` components as children
 - `data` prop is required and must be an array of objects
 - Each `LineChartLine` component requires a `dataKey` prop that corresponds to a property in the data array
 - `colorTheme` can only be 'default' or 'informational'

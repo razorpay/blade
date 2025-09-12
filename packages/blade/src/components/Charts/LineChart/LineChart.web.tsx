@@ -11,7 +11,6 @@ import {
   CartesianGrid as LineChartCartesianGrid,
   ChartTooltip as LineChartChartTooltip,
   Legend as LineChartLegend,
-  ResponsiveContainer as LineChartResponsiveContainer,
   ReferenceLine as LineChartReferenceLine,
 } from '../BaseChartComponents';
 import type {
@@ -20,7 +19,6 @@ import type {
   CartesianGridProps as LineChartCartesianGridProps,
   ChartTooltipProps as LineChartChartTooltipProps,
   LegendProps as LineChartLegendProps,
-  ResponsiveContainerProps as LineChartResponsiveContainerProps,
   ReferenceLineProps as LineChartReferenceLineProps,
 } from '../BaseChartComponents';
 import type { LineChartLineProps, LineChartProps } from './types';
@@ -114,7 +112,6 @@ export type {
   LineChartCartesianGridProps,
   LineChartChartTooltipProps,
   LineChartLegendProps,
-  LineChartResponsiveContainerProps,
   LineChartReferenceLineProps,
 };
 export {
@@ -125,6 +122,5 @@ export {
   LineChartCartesianGrid,
   LineChartChartTooltip,
   LineChartLegend,
-  LineChartResponsiveContainer,
   LineChartReferenceLine,
 };

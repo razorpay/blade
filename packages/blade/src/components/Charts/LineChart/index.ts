@@ -6,7 +6,6 @@ export type {
   LineChartCartesianGridProps,
   LineChartChartTooltipProps,
   LineChartLegendProps,
-  LineChartResponsiveContainerProps,
   LineChartReferenceLineProps,
 } from './LineChart';
 export {
@@ -17,6 +16,5 @@ export {
   LineChartCartesianGrid,
   LineChartChartTooltip,
   LineChartLegend,
-  LineChartResponsiveContainer,
   LineChartReferenceLine,
 } from './LineChart';
