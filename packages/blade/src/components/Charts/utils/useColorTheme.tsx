@@ -1,20 +1,16 @@
 import { useTheme } from '~components/BladeProvider';
 
-const useChartsColorTheme = ({
-  colorTheme = 'default',
-}: {
-  colorTheme: 'default' | 'informational';
-}): string[] => {
+const useChartsColorTheme = ({ colorTheme = 'default' }: { colorTheme: 'default' }): string[] => {
   const { theme } = useTheme();
   const defaultColorThemeArray = [
-    theme.colors.chart.background.categorical.azure.strong,
-    theme.colors.chart.background.categorical.topaz.strong,
-    theme.colors.chart.background.categorical.orchid.strong,
-    theme.colors.chart.background.categorical.emerald.strong,
-    theme.colors.chart.background.categorical.cider.strong,
-    theme.colors.chart.background.categorical.sapphire.strong,
-    theme.colors.chart.background.categorical.magenta.strong,
-    theme.colors.chart.background.categorical.crimson.strong,
+    theme.colors.chart.background.categorical.azure.subtle,
+    theme.colors.chart.background.categorical.topaz.moderate,
+    theme.colors.chart.background.categorical.orchid.moderate,
+    theme.colors.chart.background.categorical.emerald.subtle,
+    theme.colors.chart.background.categorical.cider.moderate,
+    theme.colors.chart.background.categorical.sapphire.moderate,
+    theme.colors.chart.background.categorical.magenta.moderate,
+    theme.colors.chart.background.categorical.crimson.subtle,
     theme.colors.chart.background.categorical.azure.intense,
     theme.colors.chart.background.categorical.topaz.intense,
     theme.colors.chart.background.categorical.orchid.intense,
@@ -25,26 +21,12 @@ const useChartsColorTheme = ({
     theme.colors.chart.background.categorical.crimson.intense,
   ];
 
-  const informationalColorThemeArray = [
-    theme.colors.chart.background.categorical.emerald.strong,
-    theme.colors.chart.background.categorical.crimson.strong,
-    theme.colors.chart.background.categorical.orchid.strong,
-    theme.colors.chart.background.categorical.emerald.strong,
-    theme.colors.chart.background.categorical.cider.strong,
-    theme.colors.chart.background.categorical.sapphire.strong,
-    theme.colors.chart.background.categorical.magenta.strong,
-    theme.colors.chart.background.categorical.crimson.strong,
-    theme.colors.chart.background.categorical.azure.intense,
-    theme.colors.chart.background.categorical.topaz.intense,
-    theme.colors.chart.background.categorical.orchid.intense,
-    theme.colors.chart.background.categorical.emerald.intense,
-    theme.colors.chart.background.categorical.sapphire.intense,
-    theme.colors.chart.background.categorical.magenta.intense,
-    theme.colors.chart.background.categorical.cider.intense,
-    theme.colors.chart.background.categorical.crimson.intense,
-  ];
+  if (colorTheme !== 'default') {
+    console.log('Currently we only support default color theme');
+  }
+  //TODO:Currently we only have one color theme will add more color theme later.
 
-  return colorTheme === 'default' ? defaultColorThemeArray : informationalColorThemeArray;
+  return defaultColorThemeArray;
 };
 
 export default useChartsColorTheme;

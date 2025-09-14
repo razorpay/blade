@@ -279,7 +279,7 @@ export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
 export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
   return (
     <Box width="100%" height="400px">
-      <LineChart data={chartData} colorTheme="informational">
+      <LineChart data={chartData} colorTheme="default">
         <LineChartCartesianGrid />
         <LineChartXAxis dataKey="month" />
         <LineChartYAxis />
