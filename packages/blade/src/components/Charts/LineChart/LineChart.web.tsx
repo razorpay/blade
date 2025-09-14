@@ -5,16 +5,31 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import type { LineProps, LineChartProps } from './types';
+import {
+  XAxis as LineChartXAxis,
+  YAxis as LineChartYAxis,
+  CartesianGrid as LineChartCartesianGrid,
+  ChartTooltip as LineChartChartTooltip,
+  Legend as LineChartLegend,
+  ReferenceLine as LineChartReferenceLine,
+} from '../BaseChartComponents';
+import type {
+  XAxisProps as LineChartXAxisProps,
+  YAxisProps as LineChartYAxisProps,
+  CartesianGridProps as LineChartCartesianGridProps,
+  ChartTooltipProps as LineChartChartTooltipProps,
+  LegendProps as LineChartLegendProps,
+  ReferenceLineProps as LineChartReferenceLineProps,
+} from '../BaseChartComponents';
+import type { LineChartLineProps, LineChartProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
-import { throwBladeError } from '~utils/logger';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const MAX_LINES = 10;
-
-const Line: React.FC<LineProps> = ({
+const LineChartLine: React.FC<LineChartLineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
@@ -55,35 +70,57 @@ const Line: React.FC<LineProps> = ({
 };
 
 // Main components
-const LineChart: React.FC<LineChartProps> = ({ children, colorTheme = 'default', ...props }) => {
+const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
+  children,
+  colorTheme = 'default',
+  testID,
+  data,
+  ...restProps
+}) => {
   const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
-      if (__DEV__ && LineChartIndex >= MAX_LINES) {
-        throwBladeError({
-          message: `Too many lines configured. Maximum allowed is ${MAX_LINES}.`,
-          moduleName: 'LineChart',
-        });
-      }
-
-      if (React.isValidElement(child) && child.type === Line) {
+      if (React.isValidElement(child) && child.type === LineChartLine) {
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
-        } as Partial<LineProps>);
+        } as Partial<LineChartLineProps>);
       }
       return child;
     });
   }, [children, colorTheme]);
-
   return (
-    <BaseBox {...metaAttribute({ name: 'line-chart' })} width="100%" height="100%">
+    <BaseBox
+      {...metaAttribute({ name: 'line-chart', testID })}
+      {...makeAnalyticsAttribute(restProps)}
+      width="100%"
+      height="100%"
+      {...restProps}
+    >
       <RechartsResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart {...props}>{lineChartModifiedChildrens}</RechartsLineChart>
+        <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>
       </RechartsResponsiveContainer>
     </BaseBox>
   );
 };
 
-export type { LineChartProps, LineProps };
-export { LineChart, Line };
+export type {
+  LineChartProps,
+  LineChartLineProps,
+  LineChartXAxisProps,
+  LineChartYAxisProps,
+  LineChartCartesianGridProps,
+  LineChartChartTooltipProps,
+  LineChartLegendProps,
+  LineChartReferenceLineProps,
+};
+export {
+  LineChart,
+  LineChartLine,
+  LineChartXAxis,
+  LineChartYAxis,
+  LineChartCartesianGrid,
+  LineChartChartTooltip,
+  LineChartLegend,
+  LineChartReferenceLine,
+};

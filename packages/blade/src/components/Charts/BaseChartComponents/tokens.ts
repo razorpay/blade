@@ -10,6 +10,8 @@ const X_OFFSET = 32;
 const Y_OFFSET = 14.5;
 const X_AXIS_TEXT_BASELINE = 24;
 
+const MIN_WIDTH = RECT_WIDTH;
+const MAX_WIDTH = 200;
 export {
   RECT_WIDTH,
   RECT_HEIGHT,
@@ -19,4 +21,6 @@ export {
   X_OFFSET,
   Y_OFFSET,
   X_AXIS_TEXT_BASELINE,
+  MIN_WIDTH,
+  MAX_WIDTH,
 };

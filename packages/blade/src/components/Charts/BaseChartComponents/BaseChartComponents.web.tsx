@@ -18,7 +18,6 @@ import type {
   CartesianGridProps,
 } from './types';
 import {
-  RECT_WIDTH,
   RECT_HEIGHT,
   TEXT_BASELINE,
   PADDING_VERTICAL,
@@ -27,10 +26,10 @@ import {
   Y_OFFSET,
   X_OFFSET,
 } from './tokens';
+import { calculateTextWidth } from './utils';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
-import getIn from '~utils/lodashButBetter/get';
 
 const XAxis: React.FC<XAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -181,26 +180,17 @@ const CustomSquareLegend = (props: {
   if (!payload || payload.length === 0) {
     return null;
   }
+  /*
+  This is a custom legend component that is used to display the legend for the chart.
+  we need to show the legend only if the legendType is not none. (for example in line chart we don't want to show the legend for the reference line)
+  so we are filtering the payload and then mapping over it to display the legend.
+  */
   const filteredPayload = payload.filter((entry) => entry?.payload?.legendType !== 'none');
 
   return (
-    <ul
-      style={{
-        listStyle: 'none',
-        padding: 0,
-        display: 'flex',
-        justifyContent: 'center',
-        gap: theme.spacing[5],
-      }}
-    >
+    <Box display="flex" justifyContent="center" gap="spacing.5">
       {filteredPayload.map((entry, index) => (
-        <li
-          key={`item-${index}`}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
+        <Box key={`item-${index}`} display="flex" alignItems="center">
           <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
             <span
               style={{
@@ -216,9 +206,9 @@ const CustomSquareLegend = (props: {
               {entry.value}
             </Text>
           </Box>
-        </li>
+        </Box>
       ))}
-    </ul>
+    </Box>
   );
 };
 
@@ -253,21 +243,29 @@ const CustomReferenceLabel = ({
   value: string | undefined;
   isVertical: boolean;
 }): JSX.Element => {
+  // Extract viewBox coordinates with fallback values to prevent undefined errors.
+  // viewBox contains the positioning information for the reference line label from Recharts.
   const { x, y, width } = viewBox ?? { x: 0, y: 0, width: 0 };
   const { theme } = useTheme();
 
-  const RectX = isVertical ? x + width - RECT_WIDTH / 2 : x + width - RECT_WIDTH;
-  const RectY = isVertical ? y : y - TEXT_BASELINE;
+  // Calculate dynamic text width to ensure the background rectangle fits the text perfectly.
+  // This prevents text overflow for long labels and avoids unnecessarily large rectangles for short text.
+  // The function also handles text truncation with ellipsis if the text exceeds the maximum width.
+  const { width: RECT_WIDTH, displayText } = value
+    ? calculateTextWidth(value, theme)
+    : { width: 80, displayText: value ?? '' };
 
+  const rect_x = isVertical ? x + width - RECT_WIDTH / 2 : x + width - RECT_WIDTH;
+  const rect_y = isVertical ? y : y - TEXT_BASELINE;
   // Text position with padding inside the rectangle
-  const textX = RectX + PADDING_HORIZONTAL + (RECT_WIDTH - PADDING_HORIZONTAL * 2) / 2;
-  const textY = RectY + PADDING_VERTICAL + TEXT_BASELINE; // +15 for text baseline
+  const text_x = rect_x + PADDING_HORIZONTAL + (RECT_WIDTH - PADDING_HORIZONTAL * 2) / 2;
+  const text_y = rect_y + PADDING_VERTICAL + TEXT_BASELINE; // +15 for text baseline
 
   return (
     <g>
       <rect
-        x={RectX}
-        y={RectY}
+        x={rect_x}
+        y={rect_y}
         width={RECT_WIDTH}
         height={RECT_HEIGHT}
         rx={theme.border.radius.medium}
@@ -276,8 +274,8 @@ const CustomReferenceLabel = ({
         strokeWidth="1"
       />
       <text
-        x={textX}
-        y={textY}
+        x={text_x}
+        y={text_y}
         textAnchor="middle"
         fill={theme.colors.surface.text.gray.normal}
         fontSize={theme.typography.fonts.size[50]}
@@ -285,7 +283,7 @@ const CustomReferenceLabel = ({
         fontWeight={theme.typography.fonts.weight.medium}
         letterSpacing={theme.typography.letterSpacings[100]}
       >
-        {value}
+        {displayText}
       </text>
     </g>
   );
@@ -295,7 +293,7 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, x, y }) => 
   const { theme } = useTheme();
   return (
     <RechartsReferenceLine
-      stroke={getIn(theme.colors, 'chart.background.categorical.gray.intense')}
+      stroke={theme.colors.chart.background.categorical.gray.intense}
       strokeWidth={2}
       strokeDasharray="4 4"
       label={<CustomReferenceLabel value={label} isVertical={Boolean(x)} />}
