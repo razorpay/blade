@@ -313,7 +313,7 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
         <AreaChartChartTooltip />
         <AreaChartLegend />
         <Area dataKey="teamA" name="Success" />
-        <Area dataKey="teamB" name="Errors" />
+        <Area dataKey="teamB" name="Warnings" />
       </AreaChart>
     </Box>
   );
