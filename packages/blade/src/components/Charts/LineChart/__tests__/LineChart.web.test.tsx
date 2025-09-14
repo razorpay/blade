@@ -135,18 +135,6 @@ describe('<LineChart />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render LineChart with informational color theme', () => {
-    const { container } = renderWithTheme(
-      <Box width="500px" height="500px">
-        <LineChart data={mockData} colorTheme="informational">
-          <LineChartLine dataKey="sales" />
-          <LineChartLine dataKey="profit" />
-        </LineChart>
-      </Box>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
   it('should handle empty data array', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">

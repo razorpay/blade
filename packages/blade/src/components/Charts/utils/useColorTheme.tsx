@@ -1,6 +1,8 @@
 import { useTheme } from '~components/BladeProvider';
 
-const useChartsColorTheme = ({ colorTheme = 'default' }: { colorTheme: 'default' }): string[] => {
+export type colorTheme = 'default';
+
+const useChartsColorTheme = ({ colorTheme = 'default' }: { colorTheme: colorTheme }): string[] => {
   const { theme } = useTheme();
   const defaultColorThemeArray = [
     theme.colors.chart.background.categorical.azure.subtle,

@@ -66,7 +66,7 @@ type LineChartProps = {
   /**
    * The color theme of the line chart.
    */
-  colorTheme?: 'default' | 'informational';
+  colorTheme?: 'default' ;
   /**
    * Chart data to be rendered
    */

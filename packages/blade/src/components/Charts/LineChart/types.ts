@@ -1,5 +1,6 @@
 import type { LineProps as RechartsLineProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../BaseChartComponents/types';
+import type { colorTheme } from '../utils';
 import type {
   BaseBoxProps,
   FlexboxProps,
@@ -55,7 +56,7 @@ interface LineChartLineProps {
   /**
    * @private
    */
-  _colorTheme?: 'default' | 'informational';
+  _colorTheme?: colorTheme;
 }
 
 type data = {
@@ -67,7 +68,7 @@ type LineChartProps = {
   /**
    * The color theme of the line chart.
    */
-  colorTheme?: 'default' | 'informational';
+  colorTheme?: colorTheme;
   /**
    * Chart data to be rendered
    */
