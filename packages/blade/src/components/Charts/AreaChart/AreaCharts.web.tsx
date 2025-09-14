@@ -5,6 +5,22 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
+import {
+  XAxis as AreaChartXAxis,
+  YAxis as AreaChartYAxis,
+  CartesianGrid as AreaChartCartesianGrid,
+  ChartTooltip as AreaChartChartTooltip,
+  Legend as AreaChartLegend,
+  ReferenceLine as AreaChartReferenceLine,
+} from '../BaseChartComponents';
+import type {
+  XAxisProps as AreaChartXAxisProps,
+  YAxisProps as AreaChartYAxisProps,
+  CartesianGridProps as AreaChartCartesianGridProps,
+  ChartTooltipProps as AreaChartChartTooltipProps,
+  LegendProps as AreaChartLegendProps,
+  ReferenceLineProps as AreaChartReferenceLineProps,
+} from '../BaseChartComponents';
 import type { AreaProps, AreaChartProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -81,4 +97,23 @@ const AreaChart: React.FC<AreaChartProps> = ({ data, children, colorTheme = 'def
   );
 };
 
-export { AreaChart, Area };
+export type {
+  AreaChartProps,
+  AreaProps,
+  AreaChartXAxisProps,
+  AreaChartYAxisProps,
+  AreaChartCartesianGridProps,
+  AreaChartChartTooltipProps,
+  AreaChartLegendProps,
+  AreaChartReferenceLineProps,
+};
+export {
+  AreaChart,
+  Area,
+  AreaChartXAxis,
+  AreaChartYAxis,
+  AreaChartCartesianGrid,
+  AreaChartChartTooltip,
+  AreaChartLegend,
+  AreaChartReferenceLine,
+};

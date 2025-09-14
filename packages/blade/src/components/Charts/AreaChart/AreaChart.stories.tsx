@@ -1,14 +1,15 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import {
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  ChartTooltip,
-  Legend,
-  ReferenceLine,
-} from '../BaseChartComponents/BaseChartComponents';
-import { AreaChart, Area } from './AreaCharts';
+  AreaChart,
+  Area,
+  AreaChartXAxis,
+  AreaChartYAxis,
+  AreaChartCartesianGrid,
+  AreaChartChartTooltip,
+  AreaChartLegend,
+  AreaChartReferenceLine,
+} from './AreaCharts';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -29,14 +30,15 @@ const Page = (): React.ReactElement => {
       <Sandbox showConsole>
         {`
         import { 
-          AreaChart, 
-          Area, 
-          XAxis, 
-          YAxis, 
-          CartesianGrid, 
-          Tooltip, 
-          Legend, 
-          ResponsiveContainer 
+         AreaChart,
+         Area,
+         AreaChartXAxis,
+         AreaChartYAxis,
+         AreaChartCartesianGrid,
+         AreaChartChartTooltip,
+         AreaChartLegend,
+         AreaChartReferenceLine,
+         Box,
         } from '@razorpay/blade/components';
         
         function App() {
@@ -50,15 +52,15 @@ const Page = (): React.ReactElement => {
           ];
           
           return (
-            <ResponsiveContainer width="100%" height="100%">
+            <Box width="100%" height="100%">
               <AreaChart data={data}>
-                <CartesianGrid />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
+                <AreaChartCartesianGrid />
+                <AreaChartXAxis dataKey="month" />
+                <AreaChartYAxis />
+                <AreaChartChartTooltip />
                 <Area dataKey="teamA" name="Team A" />
               </AreaChart>
-            </ResponsiveContainer>
+            </Box>
           )
         }
 
@@ -143,10 +145,10 @@ export const SimpleAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
     <Box width="100%" height="500px">
       <AreaChart data={chartData}>
-        <CartesianGrid />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <ChartTooltip />
+        <AreaChartCartesianGrid />
+        <AreaChartXAxis dataKey="month" />
+        <AreaChartYAxis />
+        <AreaChartChartTooltip />
         <Area
           dataKey="teamA"
           name="Team A"
@@ -163,11 +165,11 @@ export const StackedAreaChart: StoryFn<typeof AreaChart> = () => {
   return (
     <Box width="100%" height="500px">
       <AreaChart data={chartData}>
-        <CartesianGrid />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <ChartTooltip />
-        <Legend />
+        <AreaChartCartesianGrid />
+        <AreaChartXAxis dataKey="month" />
+        <AreaChartYAxis />
+        <AreaChartChartTooltip />
+        <AreaChartLegend />
         <Area
           dataKey="teamA"
           name="Team A"
@@ -193,49 +195,49 @@ export const AreaChartConnectNulls: StoryFn<typeof AreaChart> = () => {
     <Box width="100%" height="100%">
       <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
       <Box width="500px" height="200px">
-      <AreaChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <ChartTooltip />
-        <Area
-          type="monotone"
-          dataKey="pv"
-          name="Page A"
-          connectNulls
-          color="chart.background.categorical.emerald.moderate"
-        />
-        <Area
-          type="monotone"
-          dataKey="uv"
-          name="Page A"
-          color="chart.background.categorical.azure.moderate"
-        />
-      </AreaChart>
+        <AreaChart data={data}>
+          <AreaChartCartesianGrid strokeDasharray="3 3" />
+          <AreaChartXAxis dataKey="name" />
+          <AreaChartYAxis />
+          <AreaChartChartTooltip />
+          <Area
+            type="monotone"
+            dataKey="pv"
+            name="Page A"
+            connectNulls
+            color="chart.background.categorical.emerald.moderate"
+          />
+          <Area
+            type="monotone"
+            dataKey="uv"
+            name="Page A"
+            color="chart.background.categorical.azure.moderate"
+          />
+        </AreaChart>
       </Box>
 
       <Heading size="small">Area Chart that Connects Nulls :- </Heading>
       <Box width="500px" height="200px">
-      <AreaChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <ChartTooltip />
-        <Area
-          type="monotone"
-          dataKey="pv"
-          name="Page A"
-          connectNulls
-          color="chart.background.categorical.emerald.moderate"
-        />
-        <Area
-          type="monotone"
-          dataKey="uv"
-          name="Page A"
-          connectNulls
-          color="chart.background.categorical.azure.moderate"
-        />
-      </AreaChart>
+        <AreaChart data={data}>
+          <AreaChartCartesianGrid strokeDasharray="3 3" />
+          <AreaChartXAxis dataKey="name" />
+          <AreaChartYAxis />
+          <AreaChartChartTooltip />
+          <Area
+            type="monotone"
+            dataKey="pv"
+            name="Page A"
+            connectNulls
+            color="chart.background.categorical.emerald.moderate"
+          />
+          <Area
+            type="monotone"
+            dataKey="uv"
+            name="Page A"
+            connectNulls
+            color="chart.background.categorical.azure.moderate"
+          />
+        </AreaChart>
       </Box>
     </Box>
   );
@@ -262,18 +264,18 @@ export const AreaChartWithReferenceLine: StoryFn<typeof AreaChart> = () => {
   return (
     <Box width="100%" height="400px">
       <AreaChart data={chartData}>
-        <CartesianGrid />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <ChartTooltip />
-        <Legend />
+        <Area dataKey="teamA" name="Team A" />
+        <AreaChartXAxis dataKey="month" />
+        <AreaChartYAxis />
+        <AreaChartChartTooltip />
+        <AreaChartLegend />
         <Area
           dataKey="teamA"
           name="Team A"
           type="monotone"
           color="chart.background.categorical.azure.moderate"
         />
-        <ReferenceLine y={3000} label="Target" />
+        <AreaChartReferenceLine y={3000} label="Target" />
       </AreaChart>
     </Box>
   );
@@ -283,18 +285,18 @@ export const AreaChartWithReferenceLineVertical: StoryFn<typeof AreaChart> = () 
   return (
     <Box width="100%" height="400px">
       <AreaChart data={chartData}>
-        <CartesianGrid />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <ChartTooltip />
-        <Legend />
+        <AreaChartCartesianGrid />
+        <AreaChartXAxis dataKey="month" />
+        <AreaChartYAxis />
+        <AreaChartChartTooltip />
+        <AreaChartLegend />
         <Area
           dataKey="teamA"
           name="Team A"
           type="monotone"
           color="chart.background.categorical.azure.moderate"
         />
-        <ReferenceLine x="Apr" label="Target" />
+        <AreaChartReferenceLine x="Apr" label="Target" />
       </AreaChart>
     </Box>
   );
@@ -304,12 +306,12 @@ export const AreaChartWithReferenceLineVertical: StoryFn<typeof AreaChart> = () 
 export const AreaChartWithDefaultColorTheme: StoryFn<typeof AreaChart> = () => {
   return (
     <Box width="100%" height="400px">
-      <AreaChart data={chartData} colorTheme="informational">
-        <CartesianGrid />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <ChartTooltip />
-        <Legend />
+      <AreaChart data={chartData} colorTheme="default">
+        <AreaChartCartesianGrid />
+        <AreaChartXAxis dataKey="month" />
+        <AreaChartYAxis />
+        <AreaChartChartTooltip />
+        <AreaChartLegend />
         <Area dataKey="teamA" name="Success" />
         <Area dataKey="teamB" name="Errors" />
       </AreaChart>

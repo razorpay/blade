@@ -1,5 +1,6 @@
 import type { AreaProps as RechartAreaProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../BaseChartComponents/types';
+import type { colorTheme } from '../utils';
 
 interface AreaProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
@@ -18,7 +19,7 @@ interface AreaProps {
   /**
    * @private
    */
-  _colorTheme?: 'default' | 'informational';
+  _colorTheme?: colorTheme;
 }
 
 type data = {
@@ -27,7 +28,7 @@ type data = {
 
 type AreaChartProps = {
   children?: React.ReactNode;
-  colorTheme?: 'default' | 'informational';
+  colorTheme?: colorTheme;
   data: data[];
 };
 
