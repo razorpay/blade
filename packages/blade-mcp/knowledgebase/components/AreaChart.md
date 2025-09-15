@@ -1,0 +1,146 @@
+# AreaChart
+
+## Component Name
+
+AreaChart
+
+## Description
+
+AreaChart is a data visualization component built on top of Recharts that displays quantitative data as filled areas under curves. It supports single and multiple data series, stacked areas, and various styling options. The component is designed for showing trends over time, comparing multiple datasets, and highlighting data patterns with customizable colors and interactive features.
+
+## Important Constraints
+
+- Maximum of 10 areas can be configured in a single chart (throws error if exceeded)
+- `ChartAreaWrapper` only accepts `ChartArea` components as direct children for proper indexing
+- `dataKey` prop is required for each `ChartArea` component to specify which data field to display
+- `name` prop is required for each `ChartArea` component for legend and tooltip display
+- Data array must contain objects with consistent key structure across all data points
+- `colorTheme` currently only supports 'default' value (other themes will log warning)
+
+## TypeScript Types
+
+These types define the props that the AreaChart component and its subcomponents accept:
+
+```typescript
+interface ChartAreaProps {
+  type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
+  connectNulls?: boolean;
+  showLegend?: boolean;
+  dataKey: string;
+  name: string;
+  stackId?: string | number;
+  color?: ChartsCategoricalColorToken;
+  dot?: RechartAreaProps['dot'];
+  activeDot?: RechartAreaProps['activeDot'];
+  /**
+   * @private
+   */
+  _index?: number;
+  /**
+   * @private
+   */
+  _colorTheme?: colorTheme;
+}
+
+type data = {
+  [key: string]: string | number | null;
+};
+
+type ChartAreaWrapperProps = {
+  children?: React.ReactNode;
+  colorTheme?: colorTheme;
+  data: data[];
+};
+
+type ChartReferenceLineProps = {
+  /**
+   * The y-coordinate of the reference line.
+   */
+  y?: RechartsReferenceLineProps['y'];
+  /**
+   * The x-coordinate  of the reference line.
+   */
+  x?: RechartsReferenceLineProps['x'];
+  /**
+   * The label of the reference line.
+   */
+  label: string;
+};
+
+type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+  /**
+   * The label of the x-axis.
+   */
+  label?: string;
+  /**
+   * The data key of the x-axis.
+   */
+  dataKey?: string;
+};
+
+type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+  /**
+   * The label of the y-axis.
+   */
+  label?: string;
+  /**
+   * The data key of the y-axis.
+   */
+  dataKey?: string;
+};
+
+type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
+
+type ChartLegendProps = ComponentProps<typeof RechartsLegend>;
+
+type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
+
+type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+
+type colorTheme = 'default';
+```
+
+## Examples
+
+### Basic Area Chart with Single Data Series
+
+```typescript
+import React from 'react';
+import {
+  AreaChart,
+  Area,
+  AreaChartXAxis,
+  AreaChartYAxis,
+  AreaChartCartesianGrid,
+  AreaChartTooltip,
+  Box,
+} from '@razorpay/blade/components';
+
+function BasicAreaChart() {
+  const data = [
+    { month: 'Jan', revenue: 4000 },
+    { month: 'Feb', revenue: 3000 },
+    { month: 'Mar', revenue: 2000 },
+    { month: 'Apr', revenue: 2780 },
+    { month: 'May', revenue: 1890 },
+    { month: 'Jun', revenue: 2390 },
+  ];
+
+  return (
+    <Box width="100%" height="400px">
+      <AreaChart data={data}>
+        <AreaChartCartesianGrid strokeDasharray="3 3" />
+        <AreaChartXAxis dataKey="month" />
+        <AreaChartYAxis />
+        <AreaChartTooltip />
+        <Area
+          dataKey="revenue"
+          name="Revenue"
+          type="monotone"
+          color="chart.background.categorical.azure.intense"
+        />
+      </AreaChart>
+    </Box>
+  );
+}
+```
