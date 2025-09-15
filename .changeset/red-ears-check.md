@@ -2,4 +2,6 @@
 '@razorpay/blade': minor
 ---
 
-feat: add area chart
+feat(blade): added Area Chart component
+
+[Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-linechart--docs)
