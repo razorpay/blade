@@ -1,5 +1,5 @@
 import React from 'react';
-import { Area, AreaChart } from '../AreaCharts';
+import { ChartArea, ChartAreaWrapper } from '../AreaCharts';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box/Box';
 
@@ -14,9 +14,9 @@ describe('<AreaChart />', () => {
   it('should render basic LineChart with single line', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <AreaChart data={mockData}>
-          <Area dataKey="sales" name="Sales" />
-        </AreaChart>
+        <ChartAreaWrapper data={mockData}>
+          <ChartArea dataKey="sales" name="Sales" />
+        </ChartAreaWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -25,9 +25,9 @@ describe('<AreaChart />', () => {
   it('should render LineChart with multiple lines', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <AreaChart data={mockData}>
-          <Area dataKey="sales" name="Sales" />
-        </AreaChart>
+        <ChartAreaWrapper data={mockData}>
+          <ChartArea dataKey="sales" name="Sales" />
+        </ChartAreaWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
