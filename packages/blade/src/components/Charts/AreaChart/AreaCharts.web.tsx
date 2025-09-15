@@ -5,7 +5,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import type { ChartAreaProps, ChartAreaWrapperProps,  } from './types';
+import type { ChartAreaProps, ChartAreaWrapperProps } from './types';
 
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
