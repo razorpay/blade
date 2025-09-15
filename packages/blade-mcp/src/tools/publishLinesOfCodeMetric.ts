@@ -80,13 +80,17 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
 > = ({ files, linesOfCodeAddedTotal, linesOfCodeRemovedTotal, currentProjectRootDirectory }) => {
   try {
     // Send analytics event
+    const flattenedFiles = files
+      .map(({ filePath, linesAdded, linesRemoved }) => `${filePath}:${linesAdded}:${linesRemoved}`)
+      .join(',');
+
     sendAnalytics({
       eventName: analyticsToolCallEventName,
       properties: {
         toolName: publishLinesOfCodeMetricToolName,
         linesOfCodeAddedTotal,
         linesOfCodeRemovedTotal,
-        files,
+        files: flattenedFiles,
         rootDirectoryName: currentProjectRootDirectory.split('/').pop(),
       },
     });
