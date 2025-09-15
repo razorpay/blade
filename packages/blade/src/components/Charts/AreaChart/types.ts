@@ -2,7 +2,7 @@ import type { AreaProps as RechartAreaProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../BaseChartComponents/types';
 import type { colorTheme } from '../utils';
 
-interface AreaProps {
+interface ChartAreaProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   connectNulls?: boolean;
   showLegend?: boolean;
@@ -26,10 +26,10 @@ type data = {
   [key: string]: string | number | null;
 };
 
-type AreaChartProps = {
+type ChartAreaWrapperProps = {
   children?: React.ReactNode;
   colorTheme?: colorTheme;
   data: data[];
 };
 
-export type { AreaProps, AreaChartProps };
+export type { ChartAreaProps, ChartAreaWrapperProps };

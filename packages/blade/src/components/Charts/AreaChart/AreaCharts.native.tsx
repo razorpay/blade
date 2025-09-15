@@ -1,58 +1,23 @@
-import type {
-  XAxisProps as AreaChartXAxisProps,
-  YAxisProps as AreaChartYAxisProps,
-  CartesianGridProps as AreaChartCartesianGridProps,
-  ChartTooltipProps as AreaChartChartTooltipProps,
-  LegendProps as AreaChartLegendProps,
-  ReferenceLineProps as AreaChartReferenceLineProps,
-} from '../BaseChartComponents';
-import {
-  XAxis as AreaChartXAxis,
-  YAxis as AreaChartYAxis,
-  CartesianGrid as AreaChartCartesianGrid,
-  ChartTooltip as AreaChartChartTooltip,
-  Legend as AreaChartLegend,
-  ReferenceLine as AreaChartReferenceLine,
-} from '../BaseChartComponents';
-import type { AreaChartProps, AreaProps } from './types';
+import type { ChartAreaWrapperProps, ChartAreaProps } from './types';
 import { throwBladeError } from '~utils/logger';
 import { Text } from '~components/Typography';
 
-const Area = (_prop: AreaProps): React.ReactElement => {
+const ChartAreaWrapper = (_prop: ChartAreaProps): React.ReactElement => {
   throwBladeError({
-    message: 'Area is not yet implemented for native',
-    moduleName: 'Area',
+    message: 'ChartAreaWrapper is not yet implemented for native',
+    moduleName: 'ChartAreaWrapper',
   });
 
-  return <Text>Area is not available for Native mobile apps.</Text>;
+  return <Text>AreaChartWrapper is not available for Native mobile apps.</Text>;
 };
 
-const AreaChart = (_prop: AreaChartProps): React.ReactElement => {
+const ChartArea = (_prop: ChartAreaWrapperProps): React.ReactElement => {
   throwBladeError({
-    message: 'AreaChart is not yet implemented for native',
-    moduleName: 'AreaChart',
+    message: 'ChartArea is not yet implemented for native',
+    moduleName: 'ChartArea',
   });
 
-  return <Text>AreaChart is not available for Native mobile apps.</Text>;
+  return <Text>ChartArea is not available for Native mobile apps.</Text>;
 };
 
-export {
-  Area,
-  AreaChart,
-  AreaChartXAxis,
-  AreaChartYAxis,
-  AreaChartCartesianGrid,
-  AreaChartChartTooltip,
-  AreaChartLegend,
-  AreaChartReferenceLine,
-};
-export type {
-  AreaProps,
-  AreaChartProps,
-  AreaChartXAxisProps,
-  AreaChartYAxisProps,
-  AreaChartCartesianGridProps,
-  AreaChartChartTooltipProps,
-  AreaChartLegendProps,
-  AreaChartReferenceLineProps,
-};
+export { ChartAreaWrapper, ChartArea };

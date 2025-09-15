@@ -5,23 +5,8 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import {
-  XAxis as AreaChartXAxis,
-  YAxis as AreaChartYAxis,
-  CartesianGrid as AreaChartCartesianGrid,
-  ChartTooltip as AreaChartChartTooltip,
-  Legend as AreaChartLegend,
-  ReferenceLine as AreaChartReferenceLine,
-} from '../BaseChartComponents';
-import type {
-  XAxisProps as AreaChartXAxisProps,
-  YAxisProps as AreaChartYAxisProps,
-  CartesianGridProps as AreaChartCartesianGridProps,
-  ChartTooltipProps as AreaChartChartTooltipProps,
-  LegendProps as AreaChartLegendProps,
-  ReferenceLineProps as AreaChartReferenceLineProps,
-} from '../BaseChartComponents';
-import type { AreaProps, AreaChartProps } from './types';
+import type { ChartAreaProps, ChartAreaWrapperProps,  } from './types';
+
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
@@ -30,7 +15,7 @@ import { throwBladeError } from '~utils/logger';
 
 const MAX_AREAS = 10;
 
-const Area: React.FC<AreaProps> = ({
+const ChartArea: React.FC<ChartAreaProps> = ({
   color,
   type = 'monotone',
   connectNulls = false,
@@ -68,7 +53,11 @@ const Area: React.FC<AreaProps> = ({
 };
 
 // Main components
-const AreaChart: React.FC<AreaChartProps> = ({ data, children, colorTheme = 'default' }) => {
+const ChartAreaWrapper: React.FC<ChartAreaWrapperProps> = ({
+  data,
+  children,
+  colorTheme = 'default',
+}) => {
   const modifiedChildren = React.useMemo(() => {
     let AreaChartIndex = 0;
     return React.Children.map(children, (child) => {
@@ -78,11 +67,11 @@ const AreaChart: React.FC<AreaChartProps> = ({ data, children, colorTheme = 'def
           moduleName: 'AreaChart',
         });
       }
-      if (React.isValidElement(child) && child.type === Area) {
+      if (React.isValidElement(child) && child.type === ChartArea) {
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,
-        } as Partial<AreaProps>);
+        } as Partial<ChartAreaProps>);
       }
       return child;
     });
@@ -97,23 +86,5 @@ const AreaChart: React.FC<AreaChartProps> = ({ data, children, colorTheme = 'def
   );
 };
 
-export type {
-  AreaChartProps,
-  AreaProps,
-  AreaChartXAxisProps,
-  AreaChartYAxisProps,
-  AreaChartCartesianGridProps,
-  AreaChartChartTooltipProps,
-  AreaChartLegendProps,
-  AreaChartReferenceLineProps,
-};
-export {
-  AreaChart,
-  Area,
-  AreaChartXAxis,
-  AreaChartYAxis,
-  AreaChartCartesianGrid,
-  AreaChartChartTooltip,
-  AreaChartLegend,
-  AreaChartReferenceLine,
-};
+export type { ChartAreaWrapperProps, ChartAreaProps };
+export { ChartAreaWrapper, ChartArea };

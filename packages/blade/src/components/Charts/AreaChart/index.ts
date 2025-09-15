@@ -1,3 +1,3 @@
-export { AreaChart, Area } from './AreaCharts';
+export { ChartAreaWrapper, ChartArea } from './AreaCharts';
 
-export type { AreaChartProps, AreaProps } from './types';
+export type { ChartAreaWrapperProps, ChartAreaProps } from './types';
