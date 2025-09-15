@@ -26,6 +26,7 @@ const StyledScrollItem = styled(BaseBox)`
  * Creates a scrollable column of values where the center item is selected.
  */
 const SpinWheel = ({
+  className,
   values,
   selectedValue,
   onValueChange,
@@ -127,6 +128,7 @@ const SpinWheel = ({
 
   return (
     <BaseBox
+      className={className}
       display="flex"
       flexDirection="column"
       alignItems="center"
