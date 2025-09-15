@@ -5,17 +5,15 @@ import {
   CartesianGrid as RechartsCartesianGrid,
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
-  ResponsiveContainer as RechartsResponsiveContainer,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
 import type {
-  ReferenceLineProps,
-  XAxisProps,
-  YAxisProps,
+  ChartReferenceLineProps,
+  ChartXAxisProps,
+  ChartYAxisProps,
   ChartTooltipProps,
-  LegendProps,
-  ResponsiveContainerProps,
-  CartesianGridProps,
+  ChartLegendProps,
+  ChartCartesianGridProps,
 } from './types';
 import {
   RECT_HEIGHT,
@@ -31,7 +29,7 @@ import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 
-const XAxis: React.FC<XAxisProps> = (props) => {
+const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -64,7 +62,7 @@ const XAxis: React.FC<XAxisProps> = (props) => {
   );
 };
 
-const YAxis: React.FC<YAxisProps> = (props) => {
+const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -98,7 +96,7 @@ const YAxis: React.FC<YAxisProps> = (props) => {
   );
 };
 
-const CartesianGrid: React.FC<CartesianGridProps> = (props) => {
+const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -212,7 +210,7 @@ const CustomSquareLegend = (props: {
   );
 };
 
-const Legend: React.FC = (props) => {
+const ChartLegend: React.FC = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -228,10 +226,6 @@ const Legend: React.FC = (props) => {
       {...props}
     />
   );
-};
-
-const ResponsiveContainer: React.FC<ResponsiveContainerProps> = (props) => {
-  return <RechartsResponsiveContainer {...props} />;
 };
 
 const CustomReferenceLabel = ({
@@ -289,7 +283,7 @@ const CustomReferenceLabel = ({
   );
 };
 
-export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, x, y }) => {
+const ChartReferenceLine: React.FC<ChartReferenceLineProps> = ({ label, x, y }) => {
   const { theme } = useTheme();
   return (
     <RechartsReferenceLine
@@ -304,12 +298,18 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = ({ label, x, y }) => 
 };
 
 export type {
-  ReferenceLineProps,
-  XAxisProps,
-  YAxisProps,
+  ChartReferenceLineProps,
+  ChartXAxisProps,
+  ChartYAxisProps,
   ChartTooltipProps,
-  LegendProps,
-  ResponsiveContainerProps,
-  CartesianGridProps,
+  ChartLegendProps,
+  ChartCartesianGridProps,
 };
-export { XAxis, YAxis, ResponsiveContainer, CartesianGrid, Legend, ChartTooltip };
+export {
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartLegend,
+  ChartTooltip,
+  ChartReferenceLine,
+};

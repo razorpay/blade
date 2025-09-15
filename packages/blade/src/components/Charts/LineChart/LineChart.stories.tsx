@@ -1,15 +1,14 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import {
-  LineChart,
-  LineChartLine,
-  LineChartXAxis,
-  LineChartYAxis,
-  LineChartCartesianGrid,
-  LineChartChartTooltip,
-  LineChartLegend,
-  LineChartReferenceLine,
-} from './LineChart';
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartTooltip,
+  ChartLegend,
+  ChartReferenceLine,
+} from '../CommonChartComponents';
+import { ChartLine, ChartLineWrapper } from './LineChart';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -28,14 +27,14 @@ const Page = (): React.ReactElement => {
       <Sandbox showConsole>
         {`
         import { 
-         LineChart,
-         LineChartLine,
-         LineChartXAxis,
-         LineChartYAxis,
-         LineChartCartesianGrid,
-         LineChartChartTooltip,
-         LineChartLegend,
-         LineChartReferenceLine,
+         ChartLine,
+         ChartLineWrapper,
+         ChartXAxis,
+         ChartYAxis,
+         ChartCartesianGrid,
+         ChartTooltip,
+         ChartLegend,
+         ChartReferenceLine,
         } from '@razorpay/blade/components';
         
         function App() {
@@ -46,14 +45,14 @@ const Page = (): React.ReactElement => {
           ];
           
           return (
-              <LineChart data={data}>
-                <LineChartCartesianGrid />
-                <LineChartXAxis dataKey="name" />
-                <LineChartYAxis />
-                <LineChartChartTooltip />
-                <LineChartLegend />
-                <LineChartLine dataKey="sales" name="Sales" />
-              </LineChart>
+              <ChartLineWrapper data={data}>
+                <ChartCartesianGrid />
+                <ChartXAxis dataKey="name" />
+                <ChartYAxis />
+                <ChartTooltip />
+                <ChartLegend />
+                <ChartLine dataKey="sales" name="Sales" />
+              </ChartLineWrapper>
           )
         }
 
@@ -66,7 +65,7 @@ const Page = (): React.ReactElement => {
 
 export default {
   title: 'Components/Charts/LineChart',
-  component: LineChart,
+  component: ChartLine,
   tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
@@ -76,7 +75,7 @@ export default {
       page: Page,
     },
   },
-} as Meta<typeof LineChart>;
+} as Meta<typeof ChartLine>;
 
 // Sample data for charts
 const chartData = [
@@ -118,95 +117,95 @@ const steppedData = [
 ];
 
 // Simple Line Chart Example
-export const SimpleLineChart: StoryFn<typeof LineChart> = () => {
+export const SimpleLineChart: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
-      <LineChart data={chartData}>
-        <LineChartCartesianGrid />
-        <LineChartXAxis dataKey="month" />
-        <LineChartYAxis />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine
+      <ChartLineWrapper data={chartData}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
           dataKey="teamA"
           name="Team A"
           strokeStyle="solid"
           color="chart.background.categorical.azure.moderate"
         />
-        <LineChartLine
+        <ChartLine
           dataKey="teamB"
           name="Team B"
           strokeStyle="solid"
           color="chart.background.categorical.emerald.moderate"
         />
-        <LineChartReferenceLine y={1500} label="Avg: 1200" />
-      </LineChart>
+        <ChartReferenceLine y={1500} label="Avg: 1200" />
+      </ChartLineWrapper>
     </Box>
   );
 };
 
 // Simple Line chart with vertical line
-export const SimpleLineChartWithVerticalLine: StoryFn<typeof LineChart> = () => {
+export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
-      <LineChart data={chartData}>
-        <LineChartCartesianGrid />
-        <LineChartXAxis dataKey="month" />
-        <LineChartYAxis />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine
+      <ChartLineWrapper data={chartData}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
           dataKey="teamA"
           name="Team A"
           strokeStyle="solid"
           color="chart.background.categorical.azure.moderate"
         />
-        <LineChartLine
+        <ChartLine
           dataKey="teamB"
           name="Team B"
           strokeStyle="solid"
           color="chart.background.categorical.emerald.moderate"
         />
-        <LineChartReferenceLine x="Apr" label="Avg: 1200" />
-      </LineChart>
+        <ChartReferenceLine x="Apr" label="Avg: 1200" />
+      </ChartLineWrapper>
     </Box>
   );
 };
 
 // Tiny Line Chart Example (no dots for cleaner look)
-export const TinyLineChart: StoryFn<typeof LineChart> = () => {
+export const TinyLineChart: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="200px" height="100px">
-      <LineChart data={chartData}>
-        <LineChartLine
+      <ChartLineWrapper data={chartData}>
+        <ChartLine
           dataKey="teamA"
           strokeStyle="solid"
           color="chart.background.categorical.azure.strong"
           dot={false}
           activeDot={false}
         />
-      </LineChart>
+      </ChartLineWrapper>
     </Box>
   );
 };
 
 // Forecast Line Chart Example
-export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
+export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
-      <LineChart data={forecastData}>
-        <LineChartCartesianGrid />
-        <LineChartXAxis dataKey="date" />
-        <LineChartYAxis />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine
+      <ChartLineWrapper data={forecastData}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="date" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
           dataKey="historical"
           name="Historical Data"
           connectNulls={true}
           color="chart.background.categorical.azure.moderate"
         />
-        <LineChartLine
+        <ChartLine
           dataKey="forecast"
           name="Forecasted Data"
           strokeStyle="dashed"
@@ -214,104 +213,104 @@ export const ForecastLineChart: StoryFn<typeof LineChart> = () => {
           showLegend={false}
           color="chart.background.categorical.azure.moderate"
         />
-      </LineChart>
+      </ChartLineWrapper>
     </Box>
   );
 };
 
 // Line Chart that Connects Nulls
-export const LineChartConnectNulls: StoryFn<typeof LineChart> = () => {
+export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
       <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
-      <LineChart data={dataWithNulls}>
-        <LineChartCartesianGrid />
-        <LineChartXAxis dataKey="month" />
-        <LineChartYAxis />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine
+      <ChartLineWrapper data={dataWithNulls}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
           dataKey="sales"
           name="Sales (Connects Nulls)"
           color="chart.background.categorical.emerald.moderate"
         />
-      </LineChart>
+      </ChartLineWrapper>
       <Heading size="small">Line Chart that Connects Nulls</Heading>
-      <LineChart data={dataWithNulls}>
-        <LineChartCartesianGrid />
-        <LineChartXAxis dataKey="month" />
-        <LineChartYAxis />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine
+      <ChartLineWrapper data={dataWithNulls}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
           dataKey="sales"
           name="Sales (Connects Nulls)"
           connectNulls={true}
           color="chart.background.categorical.emerald.moderate"
         />
-      </LineChart>
+      </ChartLineWrapper>
     </Box>
   );
 };
 
 // Stepped Line Chart Example
-export const SteppedLineChart: StoryFn<typeof LineChart> = () => {
+export const SteppedLineChart: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
-      <LineChart data={steppedData}>
-        <LineChartCartesianGrid />
-        <LineChartXAxis dataKey="month" />
-        <LineChartYAxis />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine
+      <ChartLineWrapper data={steppedData}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
           dataKey="value"
           name="Stepped Line"
           type="step"
           color="chart.background.categorical.azure.moderate"
         />
-      </LineChart>
+      </ChartLineWrapper>
     </Box>
   );
 };
 
 // Line Chart with Default Color Theme
-export const LineChartWithDefaultColorTheme: StoryFn<typeof LineChart> = () => {
+export const LineChartWithDefaultColorTheme: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
-      <LineChart data={chartData} colorTheme="default">
-        <LineChartCartesianGrid />
-        <LineChartXAxis dataKey="month" />
-        <LineChartYAxis />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine dataKey="teamA" name="Success" />
-        <LineChartLine dataKey="teamB" name="Errors" />
-      </LineChart>
+      <ChartLineWrapper data={chartData} colorTheme="default">
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine dataKey="teamA" name="Success" />
+        <ChartLine dataKey="teamB" name="Errors" />
+      </ChartLineWrapper>
     </Box>
   );
 };
 
 //Line Chart with X and Y axis labels
-export const LineChartWithXAndYAxisLabels: StoryFn<typeof LineChart> = () => {
+export const LineChartWithXAndYAxisLabels: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
-      <LineChart data={chartData}>
-        <LineChartXAxis dataKey="month" label="Month" />
-        <LineChartYAxis label="Sales" />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine
+      <ChartLineWrapper data={chartData}>
+        <ChartXAxis dataKey="month" label="Month" />
+        <ChartYAxis label="Sales" />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
           dataKey="teamA"
           name="Success"
           color="chart.background.categorical.emerald.moderate"
         />
-        <LineChartLine
+        <ChartLine
           dataKey="teamB"
           name="Errors"
           color="chart.background.categorical.crimson.moderate"
         />
-      </LineChart>
+      </ChartLineWrapper>
     </Box>
   );
 };

@@ -4,13 +4,12 @@ import type {
   CartesianGrid as RechartsCartesianGrid,
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
-  ResponsiveContainer as RechartsResponsiveContainer,
   ReferenceLineProps as RechartsReferenceLineProps,
 } from 'recharts';
 import type { ComponentProps } from 'react';
 import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
 
-type ReferenceLineProps = {
+type ChartReferenceLineProps = {
   /**
    * The y-coordinate of the reference line.
    */
@@ -25,7 +24,7 @@ type ReferenceLineProps = {
   label: string;
 };
 
-type XAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
    * The label of the x-axis.
    */
@@ -35,7 +34,7 @@ type XAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'strok
    */
   dataKey?: string;
 };
-type YAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
    * The label of the y-axis.
    */
@@ -47,20 +46,18 @@ type YAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'strok
 };
 
 type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
-type LegendProps = ComponentProps<typeof RechartsLegend>;
-type ResponsiveContainerProps = ComponentProps<typeof RechartsResponsiveContainer>;
+type ChartLegendProps = ComponentProps<typeof RechartsLegend>;
 
-type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
+type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
 export type {
-  ReferenceLineProps,
-  XAxisProps,
-  YAxisProps,
+  ChartReferenceLineProps,
+  ChartXAxisProps,
+  ChartYAxisProps,
   ChartTooltipProps,
-  LegendProps,
-  ResponsiveContainerProps,
-  CartesianGridProps,
+  ChartLegendProps,
+  ChartCartesianGridProps,
   ChartsCategoricalColorToken,
 };

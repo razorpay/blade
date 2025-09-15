@@ -5,23 +5,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import {
-  XAxis as LineChartXAxis,
-  YAxis as LineChartYAxis,
-  CartesianGrid as LineChartCartesianGrid,
-  ChartTooltip as LineChartChartTooltip,
-  Legend as LineChartLegend,
-  ReferenceLine as LineChartReferenceLine,
-} from '../BaseChartComponents';
-import type {
-  XAxisProps as LineChartXAxisProps,
-  YAxisProps as LineChartYAxisProps,
-  CartesianGridProps as LineChartCartesianGridProps,
-  ChartTooltipProps as LineChartChartTooltipProps,
-  LegendProps as LineChartLegendProps,
-  ReferenceLineProps as LineChartReferenceLineProps,
-} from '../BaseChartComponents';
-import type { LineChartLineProps, LineChartProps } from './types';
+import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
@@ -29,7 +13,7 @@ import getIn from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const LineChartLine: React.FC<LineChartLineProps> = ({
+const ChartLine: React.FC<ChartLineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
@@ -70,7 +54,7 @@ const LineChartLine: React.FC<LineChartLineProps> = ({
 };
 
 // Main components
-const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
+const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   colorTheme = 'default',
   testID,
@@ -80,11 +64,11 @@ const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
   const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && child.type === LineChartLine) {
+      if (React.isValidElement(child) && child.type === ChartLine) {
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
-        } as Partial<LineChartLineProps>);
+        } as Partial<ChartLineProps>);
       }
       return child;
     });
@@ -104,23 +88,5 @@ const LineChart: React.FC<LineChartProps & TestID & DataAnalyticsAttribute> = ({
   );
 };
 
-export type {
-  LineChartProps,
-  LineChartLineProps,
-  LineChartXAxisProps,
-  LineChartYAxisProps,
-  LineChartCartesianGridProps,
-  LineChartChartTooltipProps,
-  LineChartLegendProps,
-  LineChartReferenceLineProps,
-};
-export {
-  LineChart,
-  LineChartLine,
-  LineChartXAxis,
-  LineChartYAxis,
-  LineChartCartesianGrid,
-  LineChartChartTooltip,
-  LineChartLegend,
-  LineChartReferenceLine,
-};
+export type { ChartLineProps, ChartLineWrapperProps };
+export { ChartLine, ChartLineWrapper };

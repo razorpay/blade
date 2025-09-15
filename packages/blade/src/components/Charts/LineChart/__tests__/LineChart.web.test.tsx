@@ -1,13 +1,12 @@
 import React from 'react';
+import { ChartLineWrapper, ChartLine } from '../LineChart';
 import {
-  LineChart,
-  LineChartLine,
-  LineChartXAxis,
-  LineChartYAxis,
-  LineChartCartesianGrid,
-  LineChartChartTooltip,
-  LineChartLegend,
-} from '../LineChart';
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartTooltip,
+  ChartLegend,
+} from '../../CommonChartComponents';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Box } from '~components/Box/Box';
@@ -23,9 +22,9 @@ describe('<LineChart />', () => {
   it('should render basic LineChart with single line', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -34,11 +33,11 @@ describe('<LineChart />', () => {
   it('should render LineChart with multiple lines', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" name="Sales" />
-          <LineChartLine dataKey="profit" name="Profit" />
-          <LineChartLine dataKey="revenue" name="Revenue" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" name="Sales" />
+          <ChartLine dataKey="profit" name="Profit" />
+          <ChartLine dataKey="revenue" name="Revenue" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -47,11 +46,11 @@ describe('<LineChart />', () => {
   it('should render LineChart with different line types', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" type="linear" />
-          <LineChartLine dataKey="profit" type="monotone" />
-          <LineChartLine dataKey="revenue" type="step" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" type="linear" />
+          <ChartLine dataKey="profit" type="monotone" />
+          <ChartLine dataKey="revenue" type="step" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -60,11 +59,11 @@ describe('<LineChart />', () => {
   it('should render LineChart with different stroke styles', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" strokeStyle="solid" />
-          <LineChartLine dataKey="profit" strokeStyle="dashed" />
-          <LineChartLine dataKey="revenue" strokeStyle="dotted" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" strokeStyle="solid" />
+          <ChartLine dataKey="profit" strokeStyle="dashed" />
+          <ChartLine dataKey="revenue" strokeStyle="dotted" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -73,10 +72,10 @@ describe('<LineChart />', () => {
   it('should render LineChart with custom colors', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" color="chart.background.categorical.gray.moderate" />
-          <LineChartLine dataKey="profit" color="chart.background.categorical.cider.moderate" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" color="chart.background.categorical.gray.moderate" />
+          <ChartLine dataKey="profit" color="chart.background.categorical.cider.moderate" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -85,10 +84,10 @@ describe('<LineChart />', () => {
   it('should render LineChart with dots enabled', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" dot={true} />
-          <LineChartLine dataKey="profit" dot={false} />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" dot={true} />
+          <ChartLine dataKey="profit" dot={false} />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -97,10 +96,10 @@ describe('<LineChart />', () => {
   it('should render LineChart with activeDot disabled', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" activeDot={false} />
-          <LineChartLine dataKey="profit" activeDot={true} />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" activeDot={false} />
+          <ChartLine dataKey="profit" activeDot={true} />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -109,10 +108,10 @@ describe('<LineChart />', () => {
   it('should render LineChart with showLegend false', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" showLegend={true} />
-          <LineChartLine dataKey="profit" showLegend={false} />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" showLegend={true} />
+          <ChartLine dataKey="profit" showLegend={false} />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -127,9 +126,9 @@ describe('<LineChart />', () => {
 
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={dataWithNulls}>
-          <LineChartLine dataKey="sales" connectNulls={true} />
-        </LineChart>
+        <ChartLineWrapper data={dataWithNulls}>
+          <ChartLine dataKey="sales" connectNulls={true} />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -138,9 +137,9 @@ describe('<LineChart />', () => {
   it('should handle empty data array', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={[]}>
-          <LineChartLine dataKey="sales" />
-        </LineChart>
+        <ChartLineWrapper data={[]}>
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -155,9 +154,9 @@ describe('<LineChart />', () => {
 
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={incompleteData}>
-          <LineChartLine dataKey="sales" />
-        </LineChart>
+        <ChartLineWrapper data={incompleteData}>
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -166,15 +165,15 @@ describe('<LineChart />', () => {
   it('should render complete chart with all components', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartCartesianGrid />
-          <LineChartXAxis dataKey="name" />
-          <LineChartYAxis />
-          <LineChartChartTooltip />
-          <LineChartLegend />
-          <LineChartLine dataKey="sales" name="Sales" />
-          <LineChartLine dataKey="profit" name="Profit" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartCartesianGrid />
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="sales" name="Sales" />
+          <ChartLine dataKey="profit" name="Profit" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -183,9 +182,9 @@ describe('<LineChart />', () => {
   it('should accept testID prop', () => {
     const { getByTestId } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData} testID="line-chart-test">
-          <LineChartLine dataKey="sales" />
-        </LineChart>
+        <ChartLineWrapper data={mockData} testID="line-chart-test">
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(getByTestId('line-chart-test')).toBeInTheDocument();
@@ -194,11 +193,10 @@ describe('<LineChart />', () => {
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartXAxis dataKey="name" />
-          <LineChartYAxis />
-          <LineChartLine dataKey="sales" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="name" />
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     await assertAccessible(container);
@@ -209,9 +207,9 @@ describe('<Line />', () => {
   it('should render Line with default props', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -220,9 +218,9 @@ describe('<Line />', () => {
   it('should render Line with custom name', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" name="Monthly Sales" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" name="Monthly Sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -234,9 +232,9 @@ describe('<Line />', () => {
     lineTypes.forEach((type) => {
       const { container } = renderWithTheme(
         <Box width="500px" height="500px">
-          <LineChart data={mockData}>
-            <LineChartLine dataKey="sales" type={type} />
-          </LineChart>
+          <ChartLineWrapper data={mockData}>
+            <ChartLine dataKey="sales" type={type} />
+          </ChartLineWrapper>
         </Box>,
       );
       expect(container).toMatchSnapshot();
@@ -249,9 +247,9 @@ describe('<Line />', () => {
     strokeStyles.forEach((strokeStyle) => {
       const { container } = renderWithTheme(
         <Box width="500px" height="500px">
-          <LineChart data={mockData}>
-            <LineChartLine dataKey="sales" strokeStyle={strokeStyle} />
-          </LineChart>
+          <ChartLineWrapper data={mockData}>
+            <ChartLine dataKey="sales" strokeStyle={strokeStyle} />
+          </ChartLineWrapper>
         </Box>,
       );
       expect(container).toMatchSnapshot();
@@ -261,12 +259,9 @@ describe('<Line />', () => {
   it('should render Line with custom dot configuration', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine
-            dataKey="sales"
-            dot={{ fill: 'red', stroke: 'blue', strokeWidth: 2, r: 4 }}
-          />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" dot={{ fill: 'red', stroke: 'blue', strokeWidth: 2, r: 4 }} />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -275,12 +270,12 @@ describe('<Line />', () => {
   it('should render Line with custom activeDot configuration', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine
+        <ChartLineWrapper data={mockData}>
+          <ChartLine
             dataKey="sales"
             activeDot={{ fill: 'green', stroke: 'darkgreen', strokeWidth: 2, r: 6 }}
           />
-        </LineChart>
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -289,9 +284,9 @@ describe('<Line />', () => {
   it('should accept testID prop', () => {
     const { getByTestId } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData} testID="line-test">
-          <LineChartLine dataKey="sales" />
-        </LineChart>
+        <ChartLineWrapper data={mockData} testID="line-test">
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(getByTestId('line-test')).toBeInTheDocument();
@@ -302,11 +297,11 @@ describe('LineChart Integration Tests', () => {
   it('should render with ResponsiveContainer', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartXAxis dataKey="name" />
-          <LineChartYAxis />
-          <LineChartLine dataKey="sales" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -328,12 +323,12 @@ describe('LineChart Integration Tests', () => {
 
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={complexData}>
-          <LineChartXAxis dataKey="date" />
-          <LineChartYAxis />
-          <LineChartLine dataKey="metrics.sales" name="Sales" />
-          <LineChartLine dataKey="metrics.profit" name="Profit" />
-        </LineChart>
+        <ChartLineWrapper data={complexData}>
+          <ChartXAxis dataKey="date" />
+          <ChartYAxis />
+          <ChartLine dataKey="metrics.sales" name="Sales" />
+          <ChartLine dataKey="metrics.profit" name="Profit" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -348,12 +343,12 @@ describe('LineChart Integration Tests', () => {
 
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mixedData}>
-          <LineChartXAxis dataKey="name" />
-          <LineChartYAxis />
-          <LineChartLine dataKey="value" name="Value" />
-          <LineChartLine dataKey="percentage" name="Percentage" />
-        </LineChart>
+        <ChartLineWrapper data={mixedData}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartLine dataKey="value" name="Value" />
+          <ChartLine dataKey="percentage" name="Percentage" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -364,9 +359,9 @@ describe('LineChart Styling Tests', () => {
   it('should apply correct animation properties for dashed lines', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" strokeStyle="dashed" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" strokeStyle="dashed" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();
@@ -375,9 +370,9 @@ describe('LineChart Styling Tests', () => {
   it('should apply correct animation properties for solid lines', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <LineChart data={mockData}>
-          <LineChartLine dataKey="sales" strokeStyle="solid" />
-        </LineChart>
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" strokeStyle="solid" />
+        </ChartLineWrapper>
       </Box>,
     );
     expect(container).toMatchSnapshot();

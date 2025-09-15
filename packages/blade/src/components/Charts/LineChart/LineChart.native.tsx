@@ -1,59 +1,25 @@
 import React from 'react';
-import type {
-  XAxisProps as LineChartXAxisProps,
-  YAxisProps as LineChartYAxisProps,
-  CartesianGridProps as LineChartCartesianGridProps,
-  ChartTooltipProps as LineChartChartTooltipProps,
-  LegendProps as LineChartLegendProps,
-  ReferenceLineProps as LineChartReferenceLineProps,
-} from '../BaseChartComponents';
-import {
-  XAxis as LineChartXAxis,
-  YAxis as LineChartYAxis,
-  CartesianGrid as LineChartCartesianGrid,
-  ChartTooltip as LineChartChartTooltip,
-  Legend as LineChartLegend,
-  ReferenceLine as LineChartReferenceLine,
-} from '../BaseChartComponents';
-import type { LineChartLineProps, LineChartProps } from './types';
+import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
 
-const LineChartLine = (_prop: LineChartLineProps): React.ReactElement => {
+const ChartLineWrapper = (_prop: ChartLineWrapperProps): React.ReactElement => {
   throwBladeError({
-    message: 'LineChartLine is not yet implemented for native',
-    moduleName: 'LineChartLine',
+    message: 'ChartLineWrapper is not yet implemented for native',
+    moduleName: 'ChartLineWrapper',
   });
 
-  return <Text>LineChartLine is not available for Native mobile apps.</Text>;
+  return <Text>ChartLineWrapper is not available for Native mobile apps.</Text>;
 };
 
-const LineChart = (_prop: LineChartProps): React.ReactElement => {
+const ChartLine = (_prop: ChartLineProps): React.ReactElement => {
   throwBladeError({
-    message: 'LineChart is not yet implemented for native',
-    moduleName: 'LineChart',
+    message: 'ChartLine is not yet implemented for native',
+    moduleName: 'ChartLine',
   });
 
-  return <Text>LineChart is not available for Native mobile apps.</Text>;
+  return <Text>ChartLine is not available for Native mobile apps.</Text>;
 };
 
-export type {
-  LineChartProps,
-  LineChartLineProps,
-  LineChartXAxisProps,
-  LineChartYAxisProps,
-  LineChartCartesianGridProps,
-  LineChartChartTooltipProps,
-  LineChartLegendProps,
-  LineChartReferenceLineProps,
-};
-export {
-  LineChart,
-  LineChartLine,
-  LineChartXAxis,
-  LineChartYAxis,
-  LineChartCartesianGrid,
-  LineChartChartTooltip,
-  LineChartLegend,
-  LineChartReferenceLine,
-};
+export type { ChartLineWrapperProps, ChartLineProps };
+export { ChartLineWrapper, ChartLine };
