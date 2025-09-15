@@ -7,8 +7,8 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
-} from '../CommonChartComponents';
-import { ChartLine, ChartLineWrapper } from './LineChart';
+} from '~components/Charts/CommonChartComponents';
+import { ChartLine, ChartLineWrapper } from '~components/Charts/LineChart';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -284,8 +284,8 @@ export const LineChartWithDefaultColorTheme: StoryFn<typeof ChartLine> = () => {
         <ChartYAxis />
         <ChartTooltip />
         <ChartLegend />
-        <ChartLine dataKey="teamA" name="Success" />
-        <ChartLine dataKey="teamB" name="Errors" />
+        <ChartLine dataKey="teamA" name="value 2" />
+        <ChartLine dataKey="teamB" name="Value 1" />
       </ChartLineWrapper>
     </Box>
   );

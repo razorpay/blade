@@ -88,5 +88,4 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   );
 };
 
-export type { ChartLineProps, ChartLineWrapperProps };
 export { ChartLine, ChartLineWrapper };

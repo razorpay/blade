@@ -5,7 +5,7 @@ export type {
   ChartTooltipProps,
   ChartLegendProps,
   ChartReferenceLineProps,
-} from './CommonChartComponents';
+} from './types';
 export {
   ChartXAxis,
   ChartYAxis,

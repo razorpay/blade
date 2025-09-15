@@ -1,2 +1,2 @@
-export type { ChartLineProps, ChartLineWrapperProps } from './LineChart';
+export type { ChartLineProps, ChartLineWrapperProps } from './types';
 export { ChartLine, ChartLineWrapper } from './LineChart';

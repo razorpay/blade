@@ -210,7 +210,7 @@ const CustomSquareLegend = (props: {
   );
 };
 
-const ChartLegend: React.FC = (props) => {
+const ChartLegend: React.FC<ChartLegendProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -297,14 +297,6 @@ const ChartReferenceLine: React.FC<ChartReferenceLineProps> = ({ label, x, y }) 
   );
 };
 
-export type {
-  ChartReferenceLineProps,
-  ChartXAxisProps,
-  ChartYAxisProps,
-  ChartTooltipProps,
-  ChartLegendProps,
-  ChartCartesianGridProps,
-};
 export {
   ChartXAxis,
   ChartYAxis,
