@@ -21,8 +21,8 @@ const ControlledTimePicker = ({
 }: {
   initialValue?: Date | null;
   timeFormat?: '12h' | '24h';
-  [key: string]: any;
-}) => {
+  [key: string]: unknown;
+}): React.ReactElement => {
   const [time, setTime] = useState<Date | null>(initialValue);
   return (
     <TimePickerComponent
