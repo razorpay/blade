@@ -1,5 +1,5 @@
 import type { LineProps as RechartsLineProps } from 'recharts';
-import type { ChartsCategoricalColorToken } from '../BaseChartComponents/types';
+import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { colorTheme } from '../utils';
 import type {
   BaseBoxProps,
@@ -7,7 +7,7 @@ import type {
   GridProps,
 } from '~components/Box/BaseBox/types/propsTypes';
 
-interface LineChartLineProps {
+interface ChartLineProps {
   /**
    * The type of the line.
    *  @default : 'linear'
@@ -64,7 +64,7 @@ type data = {
 };
 
 // TypeScript prop types
-type LineChartProps = {
+type ChartLineWrapperProps = {
   /**
    * The color theme of the line chart.
    */
@@ -76,4 +76,4 @@ type LineChartProps = {
   children: React.ReactNode;
 } & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
 
-export type { LineChartLineProps, LineChartProps };
+export type { ChartLineProps, ChartLineWrapperProps };

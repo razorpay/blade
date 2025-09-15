@@ -1,17 +1,16 @@
 import React from 'react';
 import type {
-  ReferenceLineProps,
-  XAxisProps,
-  YAxisProps,
+  ChartReferenceLineProps,
+  ChartXAxisProps,
+  ChartYAxisProps,
   ChartTooltipProps,
-  LegendProps,
-  ResponsiveContainerProps,
-  CartesianGridProps,
+  ChartLegendProps,
+  ChartCartesianGridProps,
 } from './types';
 import { throwBladeError } from '~utils/logger';
 import { Text } from '~components/Typography';
 
-const XAxis: React.FC<XAxisProps> = () => {
+const ChartXAxis: React.FC<ChartXAxisProps> = () => {
   throwBladeError({
     message: 'XAxis is not yet implemented for native',
     moduleName: 'XAxis',
@@ -20,7 +19,7 @@ const XAxis: React.FC<XAxisProps> = () => {
   return <Text>LineChart is not available for Native mobile apps.</Text>;
 };
 
-const YAxis: React.FC<YAxisProps> = () => {
+const ChartYAxis: React.FC<ChartYAxisProps> = () => {
   throwBladeError({
     message: 'XAxis is not yet implemented for native',
     moduleName: 'XAxis',
@@ -29,7 +28,7 @@ const YAxis: React.FC<YAxisProps> = () => {
   return <Text>LineChart is not available for Native mobile apps.</Text>;
 };
 
-const CartesianGrid: React.FC<CartesianGridProps> = () => {
+const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = () => {
   throwBladeError({
     message: 'XAxis is not yet implemented for native',
     moduleName: 'XAxis',
@@ -47,7 +46,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = () => {
   return <Text>LineChart is not available for Native mobile apps.</Text>;
 };
 
-const Legend: React.FC = () => {
+const ChartLegend: React.FC<ChartLegendProps> = () => {
   throwBladeError({
     message: 'XAxis is not yet implemented for native',
     moduleName: 'XAxis',
@@ -56,16 +55,7 @@ const Legend: React.FC = () => {
   return <Text>LineChart is not available for Native mobile apps.</Text>;
 };
 
-const ResponsiveContainer: React.FC<ResponsiveContainerProps> = () => {
-  throwBladeError({
-    message: 'XAxis is not yet implemented for native',
-    moduleName: 'XAxis',
-  });
-
-  return <Text>LineChart is not available for Native mobile apps.</Text>;
-};
-
-export const ReferenceLine: React.FC<ReferenceLineProps> = () => {
+const ChartReferenceLine: React.FC<ChartReferenceLineProps> = () => {
   throwBladeError({
     message: 'XAxis is not yet implemented for native',
     moduleName: 'XAxis',
@@ -75,12 +65,18 @@ export const ReferenceLine: React.FC<ReferenceLineProps> = () => {
 };
 
 export type {
-  ReferenceLineProps,
-  XAxisProps,
-  YAxisProps,
+  ChartReferenceLineProps,
+  ChartXAxisProps,
+  ChartYAxisProps,
   ChartTooltipProps,
-  LegendProps,
-  ResponsiveContainerProps,
-  CartesianGridProps,
+  ChartLegendProps,
+  ChartCartesianGridProps,
 };
-export { XAxis, YAxis, ResponsiveContainer, CartesianGrid, Legend, ChartTooltip };
+export {
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartLegend,
+  ChartTooltip,
+  ChartReferenceLine,
+};

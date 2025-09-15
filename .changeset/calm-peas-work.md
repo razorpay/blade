@@ -2,4 +2,6 @@
 "@razorpay/blade": minor
 ---
 
-feat: add line charts
+feat(blade): added Chart subcomponents & Line Chart component
+
+[Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-linechart--docs)

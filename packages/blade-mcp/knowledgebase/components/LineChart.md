@@ -1,37 +1,25 @@
-# Line Chart
+## Component Name
+
+LineChart
 
 ## Description
 
-LineChart is a data visualization component built on top of Recharts that displays data points connected by lines to show trends over time or categories. It supports multiple lines, different line styles (solid, dashed, dotted), various line types (linear, monotone, step), and includes subcomponents for axes, grid, tooltips, legends, and reference lines. The component is designed for web platforms only and throws errors when used in native mobile applications.
+LineChart is a data visualization component built on top of Recharts with Blade design system styling that renders line charts for displaying trends and patterns in continuous data over time. It consists of ChartLineWrapper as the main container and ChartLine components for individual data series, along with supporting chart components like axes, grids, tooltips, and legends. The component supports multiple line series, various line styles (solid, dashed, dotted), stepped lines, null value handling, reference lines, and customizable colors while maintaining accessibility and responsive design principles.
 
 ## Important Constraints
 
-- LineChart component is not available for Native mobile apps and will throw an error if used
-- LineChart only accepts LineChartLine, LineChartXAxis, LineChartYAxis, LineChartCartesianGrid, LineChartChartTooltip, LineChartLegend, and LineChartReferenceLine components as children
-- LineChartLine requires a `dataKey` prop to specify which data property to display
-- ReferenceLine requires a `label` prop to display the reference line label
-- Only 'default' color theme is currently supported, other themes will log a warning
+- `ChartLineWrapper` component only accepts `ChartLine`, `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip`, `ChartLegend`, and `ChartReferenceLine` components as children
+- `dataKey` prop is required for `ChartLine` component and must match a key in the data array
+- `data` prop is required for `ChartLineWrapper` and must be an array of objects
+- `color` prop only accepts chart categorical color tokens in the format `chart.background.categorical.{colorName}.{emphasis}`
+- Currently only supports `colorTheme="default"` - other color themes will fallback to default
 
 ## TypeScript Types
 
-These types define the props that the LineChart component and its subcomponents accept:
+The following types represent the props that the LineChart component and its subcomponents accept. These types allow you to properly configure the component according to your needs.
 
 ```typescript
-// Main LineChart component props
-type LineChartProps = {
-  /**
-   * The color theme of the line chart.
-   */
-  colorTheme?: colorTheme;
-  /**
-   * Chart data to be rendered
-   */
-  data: data[];
-  children: React.ReactNode;
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
-
-/ LineChartLine component props
-interface LineChartLineProps {
+interface ChartLineProps {
   /**
    * The type of the line.
    *  @default : 'linear'
@@ -75,34 +63,23 @@ interface LineChartLineProps {
   strokeStyle?: 'dotted' | 'dashed' | 'solid';
 }
 
-
-// XAxis component props
-type XAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
-  /**
-   * The label of the x-axis.
-   */
-  label?: string;
-  /**
-   * The data key of the x-axis.
-   */
-  dataKey?: string;
+type data = {
+  [key: string]: unknown;
 };
 
-// YAxis component props
-type YAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+type ChartLineWrapperProps = {
   /**
-   * The label of the y-axis.
+   * The color theme of the line chart.
    */
-  label?: string;
+  colorTheme?: colorTheme;
   /**
-   * The data key of the y-axis.
+   * Chart data to be rendered
    */
-  dataKey?: string;
-};
+  data: data[];
+  children: React.ReactNode;
+} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
 
-
-// ReferenceLine component props
-type ReferenceLineProps = {
+type ChartReferenceLineProps = {
   /**
    * The y-coordinate of the reference line.
    */
@@ -117,78 +94,94 @@ type ReferenceLineProps = {
   label: string;
 };
 
-// Other subcomponent props
-type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
-type LegendProps = ComponentProps<typeof RechartsLegend>;
-type ResponsiveContainerProps = ComponentProps<typeof RechartsResponsiveContainer>;
-type CartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
-
-
-// Supporting types
-type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
-type colorTheme = 'default';
-type data = {
-  [key: string]: unknown;
+type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+  /**
+   * The label of the x-axis.
+   */
+  label?: string;
+  /**
+   * The data key of the x-axis.
+   */
+  dataKey?: string;
 };
+
+type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+  /**
+   * The label of the y-axis.
+   */
+  label?: string;
+  /**
+   * The data key of the y-axis.
+   */
+  dataKey?: string;
+};
+
+type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
+
+type ChartLegendProps = ComponentProps<typeof RechartsLegend>;
+
+type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
+
+type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+
+type colorTheme = 'default';
 ```
 
 ## Examples
 
-### Basic Line Chart with Multiple Lines
+### Basic Line Chart with Multiple Series
+
+A comprehensive example showing a line chart with multiple data series, axis labels, grid, tooltip, legend, and reference line with different stroke styles and colors.
 
 ```typescript
 import React from 'react';
 import {
-  LineChart,
-  LineChartLine,
-  LineChartXAxis,
-  LineChartYAxis,
-  LineChartCartesianGrid,
-  LineChartChartTooltip,
-  LineChartLegend,
-  LineChartReferenceLine,
+  ChartLine,
+  ChartLineWrapper,
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartTooltip,
+  ChartLegend,
+  ChartReferenceLine,
 } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
 
 function BasicLineChart() {
   const data = [
-    { month: 'Jan', sales: 4000, profit: 2000, revenue: 6000 },
-    { month: 'Feb', sales: 3000, profit: 1500, revenue: 4500 },
-    { month: 'Mar', sales: 2000, profit: 1000, revenue: 3000 },
-    { month: 'Apr', sales: 5000, profit: 2500, revenue: 7500 },
-    { month: 'May', sales: 3500, profit: 1800, revenue: 5300 },
-    { month: 'Jun', sales: 4200, profit: 2100, revenue: 6300 },
+    { month: 'Jan', revenue: 4000, expenses: 2400 },
+    { month: 'Feb', revenue: 3000, expenses: 1398 },
+    { month: 'Mar', revenue: 2000, expenses: 9800 },
+    { month: 'Apr', revenue: 2780, expenses: 3908 },
+    { month: 'May', revenue: 1890, expenses: 4800 },
+    { month: 'Jun', revenue: 2390, expenses: 3800 },
   ];
 
   return (
     <Box width="100%" height="400px">
-      <LineChart data={data} colorTheme="default">
-        <LineChartCartesianGrid />
-        <LineChartXAxis dataKey="month" label="Month" />
-        <LineChartYAxis label="Amount" />
-        <LineChartChartTooltip />
-        <LineChartLegend />
-        <LineChartLine
-          dataKey="sales"
-          name="Sales"
-          strokeStyle="solid"
-          color="chart.background.categorical.azure.moderate"
-        />
-        <LineChartLine
-          dataKey="profit"
-          name="Profit"
-          strokeStyle="dashed"
-          color="chart.background.categorical.emerald.moderate"
-        />
-        <LineChartLine
+      <ChartLineWrapper data={data}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="month" label="Month" />
+        <ChartYAxis label="Amount ($)" />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
           dataKey="revenue"
           name="Revenue"
           strokeStyle="solid"
+          color="chart.background.categorical.emerald.moderate"
+        />
+        <ChartLine
+          dataKey="expenses"
+          name="Expenses"
+          strokeStyle="solid"
           color="chart.background.categorical.crimson.moderate"
         />
-        <LineChartReferenceLine y={4000} label="Target: 4000" />
-      </LineChart>
+        <ChartReferenceLine y={3000} label="Target: $3000" />
+      </ChartLineWrapper>
     </Box>
   );
 }
+
+export default BasicLineChart;
 ```
