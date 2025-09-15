@@ -37,7 +37,7 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = () => {
   return <Text>LineChart is not available for Native mobile apps.</Text>;
 };
 
-const ChartChartTooltip: React.FC<ChartTooltipProps> = () => {
+const ChartTooltip: React.FC<ChartTooltipProps> = () => {
   throwBladeError({
     message: 'XAxis is not yet implemented for native',
     moduleName: 'XAxis',
@@ -77,6 +77,6 @@ export {
   ChartYAxis,
   ChartCartesianGrid,
   ChartLegend,
-  ChartChartTooltip,
+  ChartTooltip,
   ChartReferenceLine,
 };
