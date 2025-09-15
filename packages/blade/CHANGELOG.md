@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.50.0
+
+### Minor Changes
+
+- b9e48e2ab: feat(Box): add `backgroundFilter` and `transition` prop to Box component
+
 ## 12.49.7
 
 ### Patch Changes
