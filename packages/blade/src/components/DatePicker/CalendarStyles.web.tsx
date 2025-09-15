@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import dayjs from 'dayjs';
 import type { PickerType } from './types';
 import { classes } from './constants';
@@ -90,83 +90,91 @@ const inRangeCell = {
   },
 } as const;
 
-const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>(
-  ({ theme, date, isRange }) => {
-    const isMobile = useIsMobile();
-    // Bail out if datepicker is not in range mode or on mobile
-    if (isMobile || !isRange) return {};
+const CalendarGradientStyles: StyledComponent<
+  typeof BaseBox,
+  any,
+  { date: Date; isRange: boolean },
+  never
+> = styled(BaseBox)<{ date: Date; isRange: boolean }>(({ theme, date, isRange }) => {
+  const isMobile = useIsMobile();
+  // Bail out if datepicker is not in range mode or on mobile
+  if (isMobile || !isRange) return {};
 
-    // Calculate the first and last day of the month for both calendars in range mode
-    // This is to apply the gradient to the first and last day of the month
-    const cal1 = dayjs(date);
-    const cal1FirstDay = cal1.startOf('month');
-    const cal1LastDay = cal1.endOf('month');
-    // Check if the first and last day of the month are at the start or end of the week
-    // If so, we don't apply the gradient, as it will overflow to the previous or next month
-    // Eg: https://github.com/razorpay/blade/assets/35374649/025b8ed9-90b4-49b6-a307-a746ae5b910f
-    const cal1IsFirstDayStartOfTheWeek = cal1FirstDay.day() === 0;
-    const cal1IsLastDayEndOfTheWeek = cal1LastDay.day() === 6;
+  // Calculate the first and last day of the month for both calendars in range mode
+  // This is to apply the gradient to the first and last day of the month
+  const cal1 = dayjs(date);
+  const cal1FirstDay = cal1.startOf('month');
+  const cal1LastDay = cal1.endOf('month');
+  // Check if the first and last day of the month are at the start or end of the week
+  // If so, we don't apply the gradient, as it will overflow to the previous or next month
+  // Eg: https://github.com/razorpay/blade/assets/35374649/025b8ed9-90b4-49b6-a307-a746ae5b910f
+  const cal1IsFirstDayStartOfTheWeek = cal1FirstDay.day() === 0;
+  const cal1IsLastDayEndOfTheWeek = cal1LastDay.day() === 6;
 
-    // Do the same for the second calendar
-    const cal2 = dayjs(date).add(1, 'month');
-    const cal2FirstDay = cal2.startOf('month');
-    const cal2LastDay = cal2.endOf('month');
-    const cal2IsFirstDayStartOfTheWeek = cal2FirstDay.day() === 0;
-    const cal2IsLastDayEndOfTheWeek = cal2LastDay.day() === 6;
+  // Do the same for the second calendar
+  const cal2 = dayjs(date).add(1, 'month');
+  const cal2FirstDay = cal2.startOf('month');
+  const cal2LastDay = cal2.endOf('month');
+  const cal2IsFirstDayStartOfTheWeek = cal2FirstDay.day() === 0;
+  const cal2IsLastDayEndOfTheWeek = cal2LastDay.day() === 6;
 
-    const calendar1FirstGradient = `${cal1.month()}-${cal1FirstDay.date()}`;
-    const calendar1LastGradient = `${cal1.month()}-${cal1LastDay.date()}`;
-    const calendar2FirstGradient = `${cal2.month()}-${cal2FirstDay.date()}`;
-    const calendar2LastGradient = `${cal2.month()}-${cal2LastDay.date()}`;
+  const calendar1FirstGradient = `${cal1.month()}-${cal1FirstDay.date()}`;
+  const calendar1LastGradient = `${cal1.month()}-${cal1LastDay.date()}`;
+  const calendar2FirstGradient = `${cal2.month()}-${cal2FirstDay.date()}`;
+  const calendar2LastGradient = `${cal2.month()}-${cal2LastDay.date()}`;
 
-    const gradientBefore = {
-      content: '""',
-      position: 'absolute',
-      width: '100%',
-      top: 0,
-      bottom: 0,
-      right: 0,
-      pointerEvents: 'none',
-    } as const;
-    const rightGradient = {
-      ...gradientBefore,
-      left: '-100%',
-      background: `linear-gradient(to right, transparent, ${getIn(
-        theme.colors,
-        inRangeCell.background.default,
-      )})`,
-    };
-    const leftGradient = {
-      ...gradientBefore,
-      left: '100%',
-      background: `linear-gradient(to left, transparent, ${getIn(
-        theme.colors,
-        inRangeCell.background.default,
-      )})`,
-    };
+  const gradientBefore = {
+    content: '""',
+    position: 'absolute',
+    width: '100%',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    pointerEvents: 'none',
+  } as const;
+  const rightGradient = {
+    ...gradientBefore,
+    left: '-100%',
+    background: `linear-gradient(to right, transparent, ${getIn(
+      theme.colors,
+      inRangeCell.background.default,
+    )})`,
+  };
+  const leftGradient = {
+    ...gradientBefore,
+    left: '100%',
+    background: `linear-gradient(to left, transparent, ${getIn(
+      theme.colors,
+      inRangeCell.background.default,
+    )})`,
+  };
 
-    return {
-      [`.${classes.dayCell}`]: {
-        // First calendar column
-        [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar1FirstGradient}"]`]: {
-          '&:before': cal1IsFirstDayStartOfTheWeek ? {} : rightGradient,
-        },
-        [`&[data-in-range]:not(&[data-last-in-range])[data-date="${calendar1LastGradient}"]`]: {
-          '&:before': cal1IsLastDayEndOfTheWeek ? {} : leftGradient,
-        },
-        // Second calendar column
-        [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar2FirstGradient}"]`]: {
-          '&:before': cal2IsFirstDayStartOfTheWeek ? {} : rightGradient,
-        },
-        [`&[data-in-range]:not(&[data-last-in-range])[data-date="${calendar2LastGradient}"]`]: {
-          '&:before': cal2IsLastDayEndOfTheWeek ? {} : leftGradient,
-        },
+  return {
+    [`.${classes.dayCell}`]: {
+      // First calendar column
+      [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar1FirstGradient}"]`]: {
+        '&:before': cal1IsFirstDayStartOfTheWeek ? {} : rightGradient,
       },
-    };
-  },
-);
+      [`&[data-in-range]:not(&[data-last-in-range])[data-date="${calendar1LastGradient}"]`]: {
+        '&:before': cal1IsLastDayEndOfTheWeek ? {} : leftGradient,
+      },
+      // Second calendar column
+      [`&[data-in-range]:not(&[data-first-in-range])[data-date="${calendar2FirstGradient}"]`]: {
+        '&:before': cal2IsFirstDayStartOfTheWeek ? {} : rightGradient,
+      },
+      [`&[data-in-range]:not(&[data-last-in-range])[data-date="${calendar2LastGradient}"]`]: {
+        '&:before': cal2IsLastDayEndOfTheWeek ? {} : leftGradient,
+      },
+    },
+  };
+});
 
-const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pickerType }) => {
+const CalendarStyles: StyledComponent<
+  typeof BaseBox,
+  any,
+  { pickerType?: PickerType },
+  never
+> = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pickerType }) => {
   const isMobile = useIsMobile();
   const device = isMobile ? 'mobile' : 'desktop';
   const isDayPicker = pickerType === 'day';

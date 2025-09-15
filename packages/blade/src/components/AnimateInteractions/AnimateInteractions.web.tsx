@@ -49,7 +49,7 @@ const AnimateInteractions = ({
 
   return (
     <AnimateInteractionsContext.Provider value={{ isInsideAnimateInteractionsContainer: true }}>
-      <BaseMotionEnhancerBox ref={baseMotionRef} motionTriggers={motionTriggers} animate={controls}>
+      <BaseMotionEnhancerBox ref={baseMotionRef} motionTriggers={motionTriggers} animate={() => controls}>
         {children}
       </BaseMotionEnhancerBox>
     </AnimateInteractionsContext.Provider>

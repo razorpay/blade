@@ -1,3 +1,4 @@
+import type { StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledChipWrapperProps } from './types';
 import { chipMotionTokens, chipColorTokens } from './chipTokens';
@@ -6,7 +7,12 @@ import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';
 
-const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
+const StyledChipWrapper: StyledComponent<
+  typeof BaseBox,
+  any,
+  StyledChipWrapperProps,
+  never
+> = styled(BaseBox)<StyledChipWrapperProps>(
   ({ theme, borderColor, isChecked, isDisabled, color }) => {
     const easing = getIn(theme.motion, chipMotionTokens.easing);
     const duration = castWebType(makeMotionTime(getIn(theme.motion, chipMotionTokens.duration)));

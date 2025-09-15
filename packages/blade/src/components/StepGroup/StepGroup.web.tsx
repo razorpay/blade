@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { StepGroupContextType, StepGroupProps } from './types';
 import { StepGroupContext, useStepGroup } from './StepGroupContext';
@@ -164,7 +165,9 @@ const _StepGroup = (
  *
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-stepgroup--docs StepGroup Documentation}
  */
-const StepGroup = assignWithoutSideEffects(React.forwardRef(_StepGroup), {
+const StepGroup: ForwardRefExoticComponent<
+  StepGroupProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_StepGroup), {
   componentId: componentIds.StepGroup,
   displayName: componentIds.StepGroup,
 });

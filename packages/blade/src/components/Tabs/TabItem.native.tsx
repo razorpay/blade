@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import React from 'react';
 import type { TabItemProps, TabsProps } from './types';
 import { paddingX, paddingTop, paddingBottom } from './tabTokens';
@@ -7,7 +7,16 @@ import get from '~utils/lodashButBetter/get';
 import { makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 
-const StyledTabButton = styled(BaseBox)<{
+const StyledTabButton: StyledComponent<
+  typeof BaseBox,
+  any,
+  {
+    size: TabsProps['size'];
+    isFullWidthTabItem?: TabsProps['isFullWidthTabItem'];
+    variant: NonNullable<TabsProps['variant']>;
+  },
+  never
+> = styled(BaseBox)<{
   size: TabsProps['size'];
   isFullWidthTabItem?: TabsProps['isFullWidthTabItem'];
   variant: NonNullable<TabsProps['variant']>;

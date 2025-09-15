@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { ReactElement, Ref } from 'react';
 import { indicatorDotSizes, textSizeMapping } from './indicatorTokens';
@@ -126,7 +127,9 @@ const _Indicator = (
   );
 };
 
-const Indicator = assignWithoutSideEffects(React.forwardRef(_Indicator), {
+const Indicator: ForwardRefExoticComponent<
+  IndicatorProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Indicator), {
   componentId: 'Indicator',
 });
 

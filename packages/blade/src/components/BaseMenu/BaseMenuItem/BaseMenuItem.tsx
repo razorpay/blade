@@ -128,6 +128,8 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
   );
 };
 
-const BaseMenuItem = React.forwardRef(_BaseMenuItem);
+const BaseMenuItem: React.ForwardRefExoticComponent<
+  BaseMenuItemProps & React.RefAttributes<BladeElementRef>
+> = React.forwardRef<BladeElementRef, BaseMenuItemProps>(_BaseMenuItem);
 
 export { BaseMenuItem };

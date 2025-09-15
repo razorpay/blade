@@ -1,3 +1,4 @@
+import type {ForwardRefExoticComponent , RefAttributes } from 'react';
 import React, { useMemo } from 'react';
 import type { InputGroupProps } from './types';
 import { StyledInputGroup } from './StyledInputGroup';
@@ -122,7 +123,9 @@ const _InputGroup: React.ForwardRefRenderFunction<BladeElementRef, InputGroupPro
   );
 };
 
-const InputGroup = assignWithoutSideEffects(React.forwardRef(_InputGroup), {
+const InputGroup: ForwardRefExoticComponent<
+  InputGroupProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_InputGroup), {
   displayName: 'InputGroup',
   componentId: 'InputGroup',
 });
