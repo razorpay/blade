@@ -212,6 +212,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
   return (
     <BaseBox
       {...fieldProps}
+      className="timepicker-input"
       onClick={handleInputClick}
       onKeyDown={handleKeyDown}
       ref={mergeRefs(timeFieldRef, ref as React.Ref<HTMLDivElement>)}

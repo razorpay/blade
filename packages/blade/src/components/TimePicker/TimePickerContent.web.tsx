@@ -156,6 +156,7 @@ const TimePickerContent = ({
   return (
     <BaseBox
       display="flex"
+      className="timepicker-content"
       flexDirection="column"
       height={showFooterActions ? '250px' : '196px'}
       width={isMobile ? '100%' : '198px'}
@@ -186,6 +187,7 @@ const TimePickerContent = ({
 
         {/* Hour Wheel */}
         <SpinWheel
+          className="timepicker-hour-wheel"
           label="Hour"
           values={hourValues}
           selectedValue={String(currentHour).padStart(2, '0')}
@@ -196,6 +198,7 @@ const TimePickerContent = ({
         <Divider orientation="vertical" />
         {/* Minute Wheel */}
         <SpinWheel
+          className="timepicker-minute-wheel"
           label="Min"
           values={minuteValues}
           selectedValue={String(currentMinute).padStart(2, '0')}
@@ -210,6 +213,7 @@ const TimePickerContent = ({
           <>
             <Divider orientation="vertical" />
             <SpinWheel
+              className="timepicker-period-wheel"
               label="Period"
               values={periodValues}
               selectedValue={currentPeriod}

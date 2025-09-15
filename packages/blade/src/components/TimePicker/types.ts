@@ -275,6 +275,7 @@ type TimePickerContentProps = {
  * Props for SpinWheel component
  */
 type SpinWheelProps = {
+  className?: string;
   values: (string | number)[];
   selectedValue: string | number;
   onValueChange: (value: string | number, index: number) => void;
