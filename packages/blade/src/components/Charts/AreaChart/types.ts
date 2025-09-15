@@ -1,5 +1,5 @@
 import type { AreaProps as RechartAreaProps } from 'recharts';
-import type { ChartsCategoricalColorToken } from '../BaseChartComponents/types';
+import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { colorTheme } from '../utils';
 
 interface ChartAreaProps {
