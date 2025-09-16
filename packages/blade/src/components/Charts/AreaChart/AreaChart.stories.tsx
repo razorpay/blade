@@ -266,7 +266,7 @@ export const AreaChartWithReferenceLine: StoryFn<typeof ChartArea> = () => {
       <ChartAreaWrapper data={chartData}>
         <ChartCartesianGrid />
         <ChartArea dataKey="teamA" name="Team A" />
-        <ChartXAxis dataKey="month" />
+        <ChartYAxis dataKey="month" />
         <ChartXAxis />
         <ChartTooltip />
         <ChartLegend />
