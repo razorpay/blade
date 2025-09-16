@@ -30,14 +30,14 @@ const Page = (): React.ReactElement => {
       <Sandbox showConsole>
         {`
         import { 
-         AreaChart,
-         Area,
-         AreaChartXAxis,
-         AreaChartYAxis,
-         AreaChartCartesianGrid,
-         AreaChartChartTooltip,
-         AreaChartLegend,
-         AreaChartReferenceLine,
+         ChartAreaWrapper,
+         ChartArea,
+         ChartXAxis,
+         ChartYAxis,
+         ChartCartesianGrid,
+         ChartTooltip,
+         ChartLegend,
+         ChartReferenceLine,
          Box,
         } from '@razorpay/blade/components';
         
@@ -53,13 +53,13 @@ const Page = (): React.ReactElement => {
           
           return (
             <Box width="100%" height="100%">
-              <AreaChart data={data}>
-                <AreaChartCartesianGrid />
-                <AreaChartXAxis dataKey="month" />
-                <AreaChartYAxis />
-                <AreaChartChartTooltip />
-                <Area dataKey="teamA" name="Team A" />
-              </AreaChart>
+              <ChartAreaWrapper data={data}>
+                <ChartCartesianGrid />
+                <ChartXAxis dataKey="month" />
+                <ChartYAxis />
+                <ChartTooltip />
+                <ChartArea dataKey="teamA" name="Team A" />
+              </ChartAreaWrapper>
             </Box>
           )
         }
