@@ -3,14 +3,41 @@ import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types
 import type { colorTheme } from '../utils';
 
 interface ChartAreaProps {
+  /**
+   * The type of the area chart.
+   */
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
+  /**
+   * Whether to connect nulls.
+   */
   connectNulls?: RechartAreaProps['connectNulls'];
+  /**
+   * Whether to show the legend.
+   */
   showLegend?: boolean;
+  /**
+   * The data key of the area chart.
+   */
   dataKey: RechartAreaProps['dataKey'];
+  /**
+   * The name of the area chart.
+   */
   name: RechartAreaProps['name'];
+  /**
+   * The stack id of the area chart.
+   */
   stackId?: RechartAreaProps['stackId'];
+  /**
+   * The color of the area chart.
+   */
   color?: ChartsCategoricalColorToken;
+  /**
+   * Whether to show the dot.
+   */
   dot?: RechartAreaProps['dot'];
+  /**
+   * Whether to show the active dot.
+   */
   activeDot?: RechartAreaProps['activeDot'];
   /**
    * @private
