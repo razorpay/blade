@@ -6,14 +6,17 @@ import {
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
-import { useTheme } from '~components/BladeProvider';
+import { componentIds } from './componentIds';
 import { metaAttribute } from '~utils/metaAttribute';
+import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ChartLine: React.FC<ChartLineProps> = ({
+const Line: React.FC<ChartLineProps> = ({
   color,
   strokeStyle = 'solid',
   type = 'monotone',
@@ -53,6 +56,10 @@ const ChartLine: React.FC<ChartLineProps> = ({
   );
 };
 
+const ChartLine = assignWithoutSideEffects(Line, {
+  componentId: componentIds.ChartLine,
+});
+
 // Main components
 const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
@@ -64,7 +71,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const lineChartModifiedChildrens = React.useMemo(() => {
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && child.type === ChartLine) {
+      if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
