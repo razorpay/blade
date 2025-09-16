@@ -3,17 +3,22 @@
   "version": "1.0.0",
   "description": "A Figma plugin for creating tables",
   "main": "code.js",
+  "author": "rastogi_saurav",
   "scripts": {
     "build": "vite build",
     "watch": "vite build --watch",
     "dev": "vite build --watch"
   },
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@figma/plugin-typings": "^1.116.0",
     "@types/node": "^20.11.24",
     "typescript": "^5.3.3",
     "vite": "^5.1.4"
+  },
+  "dependencies": {
+    "@create-figma-plugin/ui": "2.5.0",
+    "@create-figma-plugin/utilities": "4.0.3",
+    "@segment/analytics-next": "1.53.0"
   }
 }
