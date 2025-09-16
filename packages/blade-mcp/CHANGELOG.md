@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.5.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): update knowledge base to support line chart
+
 ## 1.4.5
 
 ### Patch Changes
