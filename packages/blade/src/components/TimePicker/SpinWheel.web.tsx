@@ -152,7 +152,7 @@ const SpinWheel = ({
           tabIndex={typeof tabIndex === 'number' ? tabIndex : undefined}
         >
           {/* Invisible spacer at top - allows first item to scroll to center */}
-          <BaseBox height="120px" flexShrink={0} />
+          <BaseBox height="68px" />
 
           {values.map((value, index) => {
             // Show visual selection based on positioning value (for smooth minute steps)
@@ -189,7 +189,7 @@ const SpinWheel = ({
           })}
 
           {/* Invisible spacer at bottom - allows last item to scroll to center */}
-          <BaseBox height="120px" flexShrink={0} />
+          <BaseBox height="68px" />
         </StyledScrollContainer>
       </BaseBox>
     </BaseBox>

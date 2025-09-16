@@ -349,7 +349,13 @@ const _BottomSheet = ({
 
     const preventScrolling = (e: Event) => {
       if (preventScrollingRef?.current) {
-        e.preventDefault();
+        // Allow scrolling for components that explicitly need scroll functionality
+        const target = e.target as Element;
+        const isAllowedComponent = target.closest('[data-allow-scroll]');
+
+        if (!isAllowedComponent) {
+          e.preventDefault();
+        }
       }
     };
 

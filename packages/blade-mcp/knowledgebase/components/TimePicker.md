@@ -245,225 +245,92 @@ type TimeSegmentProps = {
 };
 ```
 
-## Examples
+## Example
 
-### Basic Usage with Format Options and Validation
-
-```tsx
-import React, { useState } from 'react';
-import { TimePicker } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { Button } from '@razorpay/blade/components';
-
-function BasicTimePickerExample() {
-  const [meetingTime, setMeetingTime] = useState<Date | null>(null);
-  const [appointmentTime, setAppointmentTime] = useState<Date | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [hasError, setHasError] = useState(false);
-
-  const validateBusinessHours = (selectedTime: Date | null) => {
-    if (!selectedTime) {
-      setHasError(true);
-      return;
-    }
-
-    const hour = selectedTime.getHours();
-    // Business hours: 9 AM to 6 PM
-    if (hour < 9 || hour >= 18) {
-      setHasError(true);
-    } else {
-      setHasError(false);
-    }
-  };
-
-  return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
-      <TimePicker
-        label="Meeting Time (12-hour)"
-        timeFormat="12h"
-        size="medium"
-        value={meetingTime}
-        onChange={({ value }) => setMeetingTime(value)}
-        helpText="Select your preferred meeting time"
-        showFooterActions={false}
-        accessibilityLabel="Select meeting time in 12-hour format"
-      />
-
-      <TimePicker
-        label="Appointment Time (24-hour)"
-        timeFormat="24h"
-        size="large"
-        value={appointmentTime}
-        onChange={({ value }) => {
-          setAppointmentTime(value);
-          validateBusinessHours(value);
-        }}
-        onApply={({ value }) => {
-          console.log('Time confirmed:', value);
-        }}
-        isOpen={isOpen}
-        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
-        isRequired
-        necessityIndicator="required"
-        validationState={hasError ? 'error' : appointmentTime ? 'success' : 'none'}
-        errorText={
-          hasError ? 'Please select a time during business hours (9 AM - 6 PM)' : undefined
-        }
-        successText={!hasError && appointmentTime ? 'Valid appointment time selected' : undefined}
-        showFooterActions={true}
-        accessibilityLabel="Select appointment time during business hours"
-      />
-
-      <Button
-        onClick={() => {
-          const randomTime = new Date();
-          randomTime.setHours(Math.floor(Math.random() * 12) + 9);
-          randomTime.setMinutes(Math.floor(Math.random() * 60));
-          setAppointmentTime(randomTime);
-          validateBusinessHours(randomTime);
-        }}
-      >
-        Set Random Business Hour Time
-      </Button>
-    </Box>
-  );
-}
-```
-
-### Minute Step Intervals with Label Accessories
+### TimePicker Usage
 
 ```tsx
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { TimePicker } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
+import { Box, Text, Button } from '@razorpay/blade/components';
 import { Tooltip, TooltipInteractiveWrapper } from '@razorpay/blade/components';
 import { Link } from '@razorpay/blade/components';
 import { InfoIcon } from '@razorpay/blade/icons';
 
-function MinuteStepExample() {
-  const [meetingTime, setMeetingTime] = useState<Date | null>(null);
-  const [quickTime, setQuickTime] = useState<Date | null>(null);
+function TimePickerExample() {
+  const [basicTime, setBasicTime] = useState<Date | null>(null);
+  const [advancedTime, setAdvancedTime] = useState<Date | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  // Validation for business hours (9 AM - 6 PM)
+  const validateTime = (time: Date | null) => {
+    if (!time) return;
+    const hour = time.getHours();
+    setHasError(hour < 9 || hour >= 18);
+  };
 
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
+      {/* Basic TimePicker - shows common usage */}
       <TimePicker
-        label="Detailed Meeting Time"
+        label="Meeting Time"
+        timeFormat="12h"
+        size="medium"
+        value={basicTime}
+        onChange={({ value }) => setBasicTime(value)}
+        showFooterActions={false}
+        minuteStep={15}
+        helpText="Select your meeting time (15-minute intervals)"
+        placeholder="Select time"
+        accessibilityLabel="Select meeting time"
+      />
+
+      {/* Advanced TimePicker - shows all advanced features */}
+      <TimePicker
+        label="Business Hours Appointment"
         labelPosition="top"
         labelSuffix={
-          <Tooltip content="Select precise meeting time with 5-minute intervals" placement="right">
+          <Tooltip content="Must be during business hours (9 AM - 6 PM)" placement="right">
             <TooltipInteractiveWrapper display="flex">
               <InfoIcon size="small" color="surface.icon.gray.muted" />
             </TooltipInteractiveWrapper>
           </Tooltip>
         }
-        labelTrailing={<Link size="small">Time zone settings</Link>}
-        value={meetingTime}
-        onChange={({ value }) => setMeetingTime(value)}
-        minuteStep={5}
-        timeFormat="12h"
-        showFooterActions={true}
-        size="medium"
-        helpText="Available times: 00, 05, 10, 15, 20, etc."
-        accessibilityLabel="Select meeting time with 5-minute intervals"
-      />
-
-      <TimePicker
-        label="Quick Schedule"
-        labelPosition="left"
-        value={quickTime}
-        onChange={({ value }) => setQuickTime(value)}
-        minuteStep={30}
+        labelTrailing={<Link size="small">Time zones</Link>}
         timeFormat="24h"
-        showFooterActions={false}
         size="large"
-        helpText="Quick 30-minute intervals: 00, 30"
-        accessibilityLabel="Select time with 30-minute intervals"
+        value={advancedTime}
+        defaultValue={new Date('2024-01-01T14:30:00')}
+        onChange={({ value }) => {
+          setAdvancedTime(value);
+          validateTime(value);
+        }}
+        onApply={({ value }) => console.log('Applied:', value)}
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        isRequired
+        necessityIndicator="required"
+        validationState={hasError ? 'error' : advancedTime ? 'success' : 'none'}
+        errorText={hasError ? 'Please select time during business hours (9 AM - 6 PM)' : undefined}
+        successText={!hasError && advancedTime ? 'Valid appointment time' : undefined}
+        showFooterActions={true}
+        minuteStep={30}
+        isDisabled={false}
+        autoFocus={false}
+        name="appointment-time"
+        testID="advanced-timepicker"
+        accessibilityLabel="Select appointment time during business hours"
       />
-    </Box>
-  );
-}
-```
 
-### Time Range Selection
-
-```tsx
-import React, { useState, useMemo } from 'react';
-import { TimePicker } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
-import { Text } from '@razorpay/blade/components';
-
-function TimeRangeExample() {
-  const [startTime, setStartTime] = useState<Date | null>(() => {
-    const time = new Date();
-    time.setHours(9, 0, 0, 0); // 9:00 AM
-    return time;
-  });
-
-  const [endTime, setEndTime] = useState<Date | null>(() => {
-    const time = new Date();
-    time.setHours(17, 0, 0, 0); // 5:00 PM
-    return time;
-  });
-
-  const duration = useMemo(() => {
-    if (!startTime || !endTime) return null;
-    const diffMs = endTime.getTime() - startTime.getTime();
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-
-    if (diffMs < 0) return 'End time must be after start time';
-    if (diffHours === 0 && diffMinutes === 0) return '0 minutes';
-    if (diffHours === 0) return `${diffMinutes} minutes`;
-    if (diffMinutes === 0) return `${diffHours} hours`;
-    return `${diffHours} hours ${diffMinutes} minutes`;
-  }, [startTime, endTime]);
-
-  const isValidRange = startTime && endTime && endTime.getTime() > startTime.getTime();
-
-  return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
-      <Box display="flex" flexDirection="row" gap="spacing.4">
-        <TimePicker
-          label="Shift Start Time"
-          value={startTime}
-          onChange={({ value }) => setStartTime(value)}
-          timeFormat="12h"
-          minuteStep={15}
-          showFooterActions={false}
-          size="medium"
-          helpText="When does your shift begin?"
-          accessibilityLabel="Select shift start time"
-        />
-
-        <TimePicker
-          label="Shift End Time"
-          value={endTime}
-          onChange={({ value }) => setEndTime(value)}
-          timeFormat="12h"
-          minuteStep={15}
-          showFooterActions={false}
-          size="medium"
-          validationState={duration === 'End time must be after start time' ? 'error' : undefined}
-          errorText={duration === 'End time must be after start time' ? duration : undefined}
-          helpText="When does your shift end?"
-          accessibilityLabel="Select shift end time"
-        />
-      </Box>
-
-      <Box
-        padding="spacing.4"
-        backgroundColor={
-          isValidRange ? 'feedback.background.positive.subtle' : 'surface.background.gray.moderate'
-        }
-        borderRadius="medium"
-      >
-        <Text weight="semibold" size="small">
-          Shift Duration: {duration ?? 'Select both times'}
-        </Text>
-        <Text size="small" marginTop="spacing.2">
-          Start: {startTime ? startTime.toLocaleTimeString() : 'Not selected'}
-        </Text>
-        <Text size="small">End: {endTime ? endTime.toLocaleTimeString() : 'Not selected'}</Text>
+      {/* Control buttons to demonstrate programmatic usage */}
+      <Box display="flex" gap="spacing.3">
+        <Button size="small" onClick={() => setAdvancedTime(new Date())}>
+          Set Current Time
+        </Button>
+        <Button size="small" variant="secondary" onClick={() => setIsOpen(!isOpen)}>
+          Toggle Dropdown
+        </Button>
       </Box>
     </Box>
   );

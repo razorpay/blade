@@ -160,6 +160,7 @@ const TimePickerContent = ({
       flexDirection="column"
       height={showFooterActions ? '250px' : '196px'}
       width={isMobile ? '100%' : '198px'}
+      data-allow-scroll="true"
     >
       {/* Time Selection Wheels */}
       <StyledFadeContainer
