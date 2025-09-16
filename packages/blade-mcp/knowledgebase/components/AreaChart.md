@@ -32,14 +32,6 @@ interface ChartAreaProps {
   color?: ChartsCategoricalColorToken;
   dot?: RechartAreaProps['dot'];
   activeDot?: RechartAreaProps['activeDot'];
-  /**
-   * @private
-   */
-  _index?: number;
-  /**
-   * @private
-   */
-  _colorTheme?: colorTheme;
 }
 
 type data = {
@@ -107,12 +99,12 @@ type colorTheme = 'default';
 ```typescript
 import React from 'react';
 import {
-  AreaChart,
-  Area,
-  AreaChartXAxis,
-  AreaChartYAxis,
-  AreaChartCartesianGrid,
-  AreaChartTooltip,
+  ChartAreaWrapper,
+  ChartArea,
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartTooltip,
   Box,
 } from '@razorpay/blade/components';
 
@@ -128,18 +120,18 @@ function BasicAreaChart() {
 
   return (
     <Box width="100%" height="400px">
-      <AreaChart data={data}>
-        <AreaChartCartesianGrid strokeDasharray="3 3" />
-        <AreaChartXAxis dataKey="month" />
-        <AreaChartYAxis />
-        <AreaChartTooltip />
+      <ChartAreaWrapper data={data}>
+        <ChartCartesianGrid strokeDasharray="3 3" />
+        <CharChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartTooltip />
         <Area
           dataKey="revenue"
           name="Revenue"
           type="monotone"
           color="chart.background.categorical.azure.intense"
         />
-      </AreaChart>
+      </ChartAreaWrapper>
     </Box>
   );
 }
