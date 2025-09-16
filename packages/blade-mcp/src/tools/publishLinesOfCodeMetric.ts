@@ -2,6 +2,32 @@ import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { sendAnalytics, handleError } from '../utils/analyticsUtils.js';
+import { hiBladeToolName } from './hiBlade.js';
+import { createNewBladeProjectToolName } from './createNewBladeProject.js';
+import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
+import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
+import { getBladePatternDocsToolName } from './getBladePatternDocs.js';
+import { getBladeGeneralDocsToolName } from './getBladeGeneralDocs.js';
+import { getFigmaToCodeToolName } from './getFigmaToCode.js';
+import { getChangelogToolName } from './getChangelog.js';
+
+// List of Blade MCP tool names excluding this metric tool
+const bladeMcpToolNames = [
+  hiBladeToolName,
+  createNewBladeProjectToolName,
+  createBladeCursorRulesToolName,
+  getBladeComponentDocsToolName,
+  getBladePatternDocsToolName,
+  getBladeGeneralDocsToolName,
+  getFigmaToCodeToolName,
+  getChangelogToolName,
+] as const;
+
+type BladeMcpToolName = typeof bladeMcpToolNames[number];
+// Cast to mutable tuple type expected by z.enum
+const bladeMcpToolEnum = z.enum(
+  (bladeMcpToolNames as unknown) as [BladeMcpToolName, ...BladeMcpToolName[]],
+);
 
 // Tool constants
 const publishLinesOfCodeMetricToolName = 'publish_lines_of_code_metric';
@@ -16,15 +42,6 @@ Call this tool **immediately after** you (the AI / Cursor) apply a code edit in 
 
 Tracking the net churn (additions vs. removals) per edit helps the Blade team understand adoption, measure productivity boosts, and detect unusually large or small edits that may need review.
 
-# Parameters
-
-• \`files\` — Array of objects, each with:
-  • \`filePath\` — string. Absolute or project-relative path of the file edited.
-  • \`linesAdded\` — integer ≥ 0.
-  • \`linesRemoved\` — integer ≥ 0.
-• \`linesOfCodeAddedTotal\` — Integer ≥ 0.  Sum of \`linesAdded\` across all files.
-• \`linesOfCodeRemovedTotal\` — Integer ≥ 0.  Sum of \`linesRemoved\` across all files.
-• \`currentProjectRootDirectory\` — Absolute path to the consumer’s workspace root (never \`'.'\`).  Used only for analytics aggregation.
 
 # Example Invocation
 
@@ -43,7 +60,13 @@ Tracking the net churn (additions vs. removals) per edit helps the Blade team un
 }
 \`\`\`
 
-\`linesOfCodeAdded\` and \`linesOfCodeRemoved\` MUST be non-negative integers.`;
+\`linesOfCodeAdded\` and \`linesOfCodeRemoved\` MUST be non-negative integers.
+
+# Additional Metric: toolsUsed
+
+You may provide \`toolsUsed\`, an array of tool names used during the conversation. Allowed values are:
+${bladeMcpToolNames.map((name) => `- \`${name}\``).join('\n')}
+If omitted, the metric will automatically record all Blade MCP tools.`;
 
 // Tool schema
 const publishLinesOfCodeMetricToolSchema = {
@@ -67,6 +90,11 @@ const publishLinesOfCodeMetricToolSchema = {
     .int()
     .nonnegative()
     .describe('Total lines removed across all files.'),
+  toolsUsed: z
+    .array(bladeMcpToolEnum)
+    .min(1)
+    .optional()
+    .describe('List of Blade MCP tool names that were invoked during the conversation'),
   currentProjectRootDirectory: z
     .string()
     .describe(
@@ -77,7 +105,13 @@ const publishLinesOfCodeMetricToolSchema = {
 // Tool callback
 const publishLinesOfCodeMetricToolCallback: ToolCallback<
   typeof publishLinesOfCodeMetricToolSchema
-> = ({ files, linesOfCodeAddedTotal, linesOfCodeRemovedTotal, currentProjectRootDirectory }) => {
+> = ({
+  files,
+  linesOfCodeAddedTotal,
+  linesOfCodeRemovedTotal,
+  toolsUsed,
+  currentProjectRootDirectory,
+}) => {
   try {
     // Send analytics event
     const flattenedFiles = files
@@ -91,6 +125,7 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
         linesOfCodeAddedTotal,
         linesOfCodeRemovedTotal,
         files: flattenedFiles,
+        toolsUsed: (toolsUsed ?? bladeMcpToolNames).join(','),
         rootDirectoryName: currentProjectRootDirectory.split('/').pop(),
       },
     });
@@ -99,7 +134,9 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
       content: [
         {
           type: 'text',
-          text: `Recorded ${linesOfCodeAddedTotal} lines added and ${linesOfCodeRemovedTotal} lines removed across ${files.length} files.`,
+          text:
+            `Recorded ${linesOfCodeAddedTotal} lines added and ${linesOfCodeRemovedTotal} lines removed across ` +
+            `${files.length} files. Tools used: ${(toolsUsed ?? bladeMcpToolNames).join(', ')}.`,
         },
       ],
     };
