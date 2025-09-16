@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.51.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): added Chart subcomponents & Line Chart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-linechart--docs)
+
 ## 12.50.0
 
 ### Minor Changes
