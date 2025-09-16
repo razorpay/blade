@@ -36,10 +36,9 @@ This document outlines the API of Charts component.
  
 
 
-All charts are built by composing smaller components within a `ResponsiveContainer`. The specific components that are used depend on the type of chart we are creating.
 
 **Components:**
-* `ResponsiveContainer` (The main responsive wrapper for all charts)
+* `ResponsiveContainer` (The main responsive wrapper for all charts)(We decided to merge it with the Chart Type Wrapper)
     * **Chart Type Wrapper** (for `LineChart`, `AreaChart`, `BarChart`, `DonutChart`)
         * **Data Mark Components** (The visual representation of your data)
             * `Line` (For Line Charts)
@@ -64,31 +63,29 @@ All charts are built by composing smaller components within a `ResponsiveContain
     * Extensible and future-proof - easy to add new chart types.
     * Composable and reusable components for building higher-level abstractions.
 
+* While development we saw we were exporting components like `Line`, `Area` which might have confliting names with other component so we decided to add `Chart` prefix and rename chart container to ChartWrapper. (eg - `LineChart` will be name to `ChartLineWrapper`)
 
 ```tsx
 import {
-  ResponsiveContainer,
-  AreaChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  Area,
+  ChartLineWrapper,
+  ChartCartesianGrid,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+  ChartArea,
 } from '@razorpay/blade/charts';
 
 // A simple stacked Area Chart example
-<ResponsiveContainer>
-  <AreaChart data={chartData}>
-    <CartesianGrid />
-    <XAxis dataKey="month" />
-    <YAxis />
-    <Tooltip />
-    <Legend />
-    <Area dataKey="teamA" name="Team A" stackId="1" />
-    <Area dataKey="teamB" name="Team B" stackId="1" />
-  </AreaChart>
-</ResponsiveContainer>
+  <ChartLineWrapper data={chartData}>
+    <ChartCartesianGrid />
+    <ChartXAxis dataKey="month" />
+    <ChartYAxis />
+    <ChartTooltip />
+    <ChartLegend />
+    <ChartArea dataKey="teamA" name="Team A" stackId="1" />
+    <ChartArea dataKey="teamB" name="Team B" stackId="1" />
+  </ChartLineWrapper>
 
 ```
 
@@ -247,7 +244,7 @@ const chartConfig = {
 | `dot` | `React.ReactNode` | ❌ | `undefined` | Custom component for rendering dots on the line |
 | `activeDot` | `React.ReactNode` | ❌ | `undefined` | Custom component for rendering the active (hovered) dot |
 | `connectNulls` | `boolean` | ❌ | `false` | Whether to connect the line over null data points |
-| `legendType` | `'none' \| 'line' \| 'square' \| 'diamond' \| 'circle' \| 'cross' \| 'triangle' \| 'triangleDown' \| 'triangleUp' \| 'star' \| 'wye'` | ❌ | `'line'` | The symbol type to display in the legend for this line |
+| `showLegend` | `boolean` | ❌ | `true` | Whether to show the legend for this line |
 | `color` | `BladeColorToken` | ❌ | Auto-assigned | Color token for the line (automatically assigned from palette if not provided) |
 | `strokeStyle` | `'solid' \| 'dotted' \| 'dashed'` | ❌ | `'solid'` | Line stroke style for forecast or emphasis |
 
@@ -274,32 +271,29 @@ import {
   Legend,
   Line,
   ReferenceLine,
-  ResponsiveContainer,
 } from '@razorpay/blade/charts';
 
 
 // Simple Line Chart 
-  <ResponsiveContainer width="100%" height="100%">
   // Line 
-    <LineChart data={chartData}>
-       <CartesianGrid />
-       <XAxis dataKey="month" />
-       <YAxis />
-       <Tooltip content={<CustomTooltip />} />
-       <Legend />
-       <Line
+    <ChartLineWrapper data={chartData}>
+       <ChartCartesianGrid />
+       <ChartXAxis dataKey="month" />
+       <ChartYAxis />
+       <ChartTooltip content={<CustomTooltip />} />
+       <ChartLegend />
+       <ChartLine
          dataKey="teamA"
          name="Team A"
          type="solid"
        />
-       <Line
+       <ChartLine
          dataKey="teamB"
          name="Team B"
          type="solid"
        />
-       <ReferenceLine y={2200} label="Minimum" color="theme.charts.grey" />
-    </LineChart>
-  </ResponsiveContainer>
+       <ChartReferenceLine y={2200} label="Minimum" color="theme.charts.grey" />
+    </ChartLineWrapper>
 ```
 <details>
 <summary>More examples</summary>
@@ -307,53 +301,46 @@ import {
 ```ts 
 
 import {
-  ResponsiveContainer,
-  LineChart as RechartsLineChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  Line,
-  ReferenceLine,
-  ResponsiveContainer,
+  ChartLineWrapper,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+  ChartLine,
+  ChartReferenceLine,
 } from '@razorpay/blade/charts';
 
 
 // Tiny Line Chart 
-  <ResponsiveContainer width="100%" height="100%">
-     <LineChart data={chartData}>
-       <Line
+     <ChartLineWrapper data={chartData}>
+       <ChartLine
          dataKey="teamA"
          type="solid"
          color="theme.charts.grey"
        />
-     </LineChart>
-   </ResponsiveContainer>
+     </ChartLineWrapper>
 
  // ForeCast line chart 
-  <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={forecastData}>
-          <CartesianGrid/>
-            <XAxis dataKey="date" />
-              <YAxis />
+      <ChartLineWrapper data={forecastData}>
+          <ChartCartesianGrid/>
+            <ChartXAxis dataKey="date" />
+              <ChartYAxis />
               // This would be a custom tooltip from blade
-              <ChartToolTip />
-              <Legend />
-              <Line
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartLine
                 dataKey="historical"
                 name="Historical Data"
                 connectNulls={true}
               />
-              <Line
+              <ChartLine
                 dataKey="forecast"
                 name="Forecast"
                 type="solid"
                 connectNulls={true}
-                legendType="none"
+                showLegend={false}
               />
-      </LineChart>
-    </ResponsiveContainer>
+      </ChartLineWrapper>
 ```
 
 </details>
@@ -396,32 +383,28 @@ Example -
 
 ```ts
 import {
-  ResponsiveContainer,
-  AreaChart as RechartsAreaChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  Area,
-  ReferenceLine,
-  ResponsiveContainer,
+  ChartAreaWrapper,
+  ChartCartesianGrid,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+  ChartArea,
+  ChartReferenceLine,
 } from '@razorpay/blade/charts';
 
 
 // Simple Area Chart
-  <ResponsiveContainer width="100%" height="100%">
-    <AreaChart data={chartData}>
-       <CartesianGrid />
-       <XAxis dataKey="month" />
-       <YAxis />
-       <Tooltip />
-       <Area
+    <ChartAreaWrapper data={chartData}>
+       <ChartCartesianGrid />
+       <ChartXAxis dataKey="month" />
+       <ChartYAxis />
+       <ChartTooltip />
+       <ChartArea
          dataKey="teamA"
          name="Team A"
        />
-    </AreaChart>
-  </ResponsiveContainer>
+    </ChartAreaWrapper>
 ```
 <details>
 <summary> More Examples </summary>
@@ -430,49 +413,43 @@ import {
 ```ts 
 
 import {
-  ResponsiveContainer,
-  AreaChart as RechartsAreaChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  Area,
-  ReferenceLine,
-  ResponsiveContainer,
+  ChartAreaWrapper,
+  ChartCartesianGrid,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+  ChartArea,
+  ChartReferenceLine,
 } from '@razorpay/blade/charts';
 
 
 // Stacked Area Chart
-  <ResponsiveContainer width="100%" height="100%">
-     <AreaChart data={chartData}>
-       <CartesianGrid />
-       <XAxis dataKey="month" />
-       <YAxis />
-       <Tooltip />
-       <Legend />
-       <Area
+     <ChartAreaWrapper data={chartData}>
+       <ChartCartesianGrid />
+       <ChartXAxis dataKey="month" />
+       <ChartYAxis />
+       <ChartTooltip />
+       <ChartLegend />
+       <ChartArea
          dataKey="teamA"
          name="Team A"
          stackId="1"
        />
-       <Area
+       <ChartArea
          dataKey="teamB"
          name="Team B"
          stackId="1"
        />
-     </AreaChart>
-   </ResponsiveContainer>
+     </ChartAreaWrapper>
 
  // Tiny Area Chart
-  <ResponsiveContainer width="100%" height="100%">
-      <AreaChart data={chartData}>
-          <Area
+      <ChartAreaWrapper data={chartData}>
+          <ChartArea
             dataKey="pv"
             type="monotone"
           />
-      </AreaChart>
- </ResponsiveContainer>
+      </ChartAreaWrapper>
 
 ```
 
@@ -524,29 +501,26 @@ if more than decided number of max bars, we will show an error message.
 Example - 
 ```tsx
 import {
-  BarChart,
-  Bar,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  LabelList,
+  ChartBarWrapper,
+  ChartBar,
+  ChartCartesianGrid,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+  ChartLabelList,
 } from '@razorpay/blade/charts';
 
 // Simple Bar Chart
-<ResponsiveContainer width="100%" height={300}>
-  <BarChart data={chartData}>
-    <CartesianGrid vertical={false} />
-    <XAxis dataKey="name" />
-    <YAxis />
-    <Tooltip />
-    <Legend />
-    <Bar dataKey="seriesA" name="Series A" color="surface.action.primary.default" />
-    <Bar dataKey="seriesB" name="Series B" color="surface.action.secondary.default" />
-  </BarChart>
-</ResponsiveContainer>
+  <ChartBarWrapper data={chartData}>
+    <ChartCartesianGrid vertical={false} />
+    <ChartXAxis dataKey="name" />
+    <ChartYAxis />
+    <ChartTooltip />
+    <ChartLegend />
+    <ChartBar dataKey="seriesA" name="Series A" color="surface.action.primary.default" />
+    <ChartBar dataKey="seriesB" name="Series B" color="surface.action.secondary.default" />
+  </ChartBarWrapper>
 ```
 
 #### Additional Notes
@@ -563,57 +537,50 @@ import {
 ```ts 
 
 import {
-  BarChart,
-  Bar,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  LabelList,
+  ChartBarWrapper,
+  ChartBar,
+  ChartCartesianGrid,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+  ChartLabelList,
 } from '@razorpay/blade/charts';
 
 
 // Stacked Bar Chart
-<ResponsiveContainer width="100%" height={300}>
-  <BarChart data={chartData}>
-    <CartesianGrid vertical={false} />
-    <XAxis dataKey="name" />
-    <YAxis />
-    <Tooltip />
-    <Legend />
+  <ChartBarWrapper data={chartData}>
+    <ChartCartesianGrid vertical={false} />
+    <ChartXAxis dataKey="name" />
+    <ChartYAxis />
+    <ChartTooltip />
+    <ChartLegend />
     {/* Both bars share the same stackId */}
-    <Bar dataKey="seriesA" stackId="a" name="Series A" color="surface.action.primary.default" />
-    <Bar dataKey="seriesB" stackId="a" name="Series B" color="surface.action.secondary.default" />
-  </BarChart>
-</ResponsiveContainer>
+    <ChartBar dataKey="seriesA" stackId="a" name="Series A" color="surface.action.primary.default" />
+    <ChartBar dataKey="seriesB" stackId="a" name="Series B" color="surface.action.secondary.default" />
+  </ChartBarWrapper>
 
 // Bar Chart with different Layout.
-<ResponsiveContainer width="100%" height={300}>
   {/* The key is layout="vertical" */}
-  <BarChart data={chartData} layout="vertical" margin={{ left: 30 }}>
-    <CartesianGrid horizontal={false} />
+  <ChartBarWrapper data={chartData} layout="vertical" margin={{ left: 30 }}>
+    <ChartCartesianGrid horizontal={false} />
     {/* Axes are swapped: XAxis is numeric, YAxis is categorical */}
-    <XAxis type="number" />
-    <YAxis dataKey="name" type="category" />
-    <Tooltip />
-    <Legend />
-    <Bar dataKey="seriesA" name="Series A" color="surface.action.primary.default" />
-  </BarChart>
-</ResponsiveContainer>
+    <ChartXAxis type="number" />
+    <ChartYAxis dataKey="name" type="category" />
+    <ChartTooltip />
+    <ChartLegend />
+    <ChartBar dataKey="seriesA" name="Series A" color="surface.action.primary.default" />
+  </ChartBarWrapper>
 
 // Custom Label Bar Chart (note: high chance we might not need this.)
-<ResponsiveContainer width="100%" height={300}>
-    <BarChart data={chartData}>
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Bar dataKey="seriesA" name="Series A" color="surface.action.primary.default">
+    <ChartBarWrapper data={chartData}>
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartBar dataKey="seriesA" name="Series A" color="surface.action.primary.default">
             {/* Blade will provide a styled LabelList component */}
             <LabelList dataKey="seriesA" position="top" />
-        </Bar>
-    </BarChart>
-</ResponsiveContainer>
+        </ChartBar>
+    </ChartBarWrapper>
 ```
 
 </details>
@@ -649,21 +616,18 @@ Example -
 
 ```ts
 import {
-  ResponsiveContainer,
-  PieChart as RechartsPieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
+  ChartPieWrapper,
+  ChartPie,
+  ChartCell,
+  ChartTooltip,
+  ChartLegend,
 } from '@razorpay/blade/charts';
 
 
 
 // 1. Donut Chart
-<ResponsiveContainer width="100%" height="100%">
-  <PieChart>
-    <Pie
+  <ChartPieWrapper>
+    <ChartPie
       data={data}
       dataKey="value"
       nameKey="name"
@@ -672,24 +636,21 @@ import {
       radius="small"
     >
        {/* ... <Cell /> components ... */}
-    </Pie>
-  </PieChart>
-</ResponsiveContainer>
+    </ChartPie>
+  </ChartPieWrapper>
 
 // 2. Donut with Text in Center
 // This pattern can be achieved by adding a custom <text> element.
-<ResponsiveContainer width="100%" height={300}>
-  <PieChart>
-    <Pie
+  <ChartPieWrapper>
+    <ChartPie
       data={data}
       dataKey="value"
       radius="large"
       centerText="₹1.05L"
     >
        {/* ... <Cell /> components ... */}
-    </Pie>
-  </PieChart>
-</ResponsiveContainer>
+    </ChartPie>
+  </ChartPieWrapper>
 ```
 >**Note** - You might think why we have named  it pie chart if it's donut chart ? So we have decided to have Donut variant of pie chart only. (Pie Chart will be supported in future). We just want to keep this api future proof. In When we enable it you can use it as pie chart.
 
