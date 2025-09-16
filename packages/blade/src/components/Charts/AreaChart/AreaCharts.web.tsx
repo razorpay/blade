@@ -7,15 +7,17 @@ import {
 import { useChartsColorTheme } from '../utils';
 import type { ChartAreaProps, ChartAreaWrapperProps } from './types';
 
+import { componentIds } from './componentIds';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const MAX_AREAS = 10;
 
-const ChartArea: React.FC<ChartAreaProps> = ({
+const Area: React.FC<ChartAreaProps> = ({
   color,
   type = 'monotone',
   connectNulls = false,
@@ -52,6 +54,10 @@ const ChartArea: React.FC<ChartAreaProps> = ({
   );
 };
 
+const ChartArea = assignWithoutSideEffects(Area, {
+  componentId: componentIds.ChartArea,
+});
+
 // Main components
 const ChartAreaWrapper: React.FC<ChartAreaWrapperProps> = ({
   data,
@@ -67,7 +73,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps> = ({
           moduleName: 'AreaChart',
         });
       }
-      if (React.isValidElement(child) && child.type === ChartArea) {
+      if (React.isValidElement(child) && child.type === componentIds.ChartArea) {
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,
