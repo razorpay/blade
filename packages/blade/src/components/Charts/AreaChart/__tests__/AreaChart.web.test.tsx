@@ -9,6 +9,18 @@ const mockData = [
   { name: 'Mar', sales: 2000, profit: 1000, revenue: 3000 },
   { name: 'Apr', sales: 5000, profit: 2500, revenue: 7500 },
 ];
+// Thanks to : https://jskim1991.medium.com/react-writing-tests-with-graphs-9b7f2c9eeefc
+jest.mock('recharts', () => {
+  const OriginalModule = jest.requireActual('recharts');
+  return {
+    ...OriginalModule,
+    ResponsiveContainer: ({ children }: { children: React.ReactNode }) => (
+      <OriginalModule.ResponsiveContainer width={800} height={800}>
+        {children}
+      </OriginalModule.ResponsiveContainer>
+    ),
+  };
+});
 
 describe('<AreaChart />', () => {
   it('should render basic LineChart with single line', () => {
