@@ -6,7 +6,8 @@
   "ui": "dist/src/ui.html",
   "editorType": ["figma"],
   "documentAccess": "dynamic-page",
+  "permissions": ["currentuser"],
   "networkAccess": {
-    "allowedDomains": ["none"]
+    "allowedDomains": ["https://api.segment.io"]
   }
 }
