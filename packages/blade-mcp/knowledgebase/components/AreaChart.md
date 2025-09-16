@@ -121,7 +121,7 @@ function BasicAreaChart() {
   return (
     <Box width="100%" height="400px">
       <ChartAreaWrapper data={data}>
-        <ChartCartesianGrid strokeDasharray="3 3" />
+        <ChartCartesianGrid />
         <CharChartXAxis dataKey="month" />
         <ChartYAxis />
         <ChartTooltip />
