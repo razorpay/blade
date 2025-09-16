@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChartArea, ChartAreaWrapper } from '../AreaCharts';
+import { ChartArea, ChartAreaWrapper } from '../AreaChart.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box/Box';
 

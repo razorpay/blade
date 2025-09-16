@@ -84,7 +84,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps> = ({
   }, [children, colorTheme]);
 
   return (
-    <BaseBox {...metaAttribute({ name: 'area-chart' })} width="100%" height="100%">
+    <BaseBox {...metaAttribute({ name: 'chart-area-container' })} width="100%" height="100%">
       <ResponsiveContainer>
         <RechartsAreaChart data={data}>{modifiedChildren}</RechartsAreaChart>
       </ResponsiveContainer>

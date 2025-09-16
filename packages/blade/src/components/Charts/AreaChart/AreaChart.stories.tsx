@@ -196,7 +196,7 @@ export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = () => {
       <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
       <Box width="500px" height="200px">
         <ChartAreaWrapper data={data}>
-          <ChartCartesianGrid strokeDasharray="3 3" />
+          <ChartCartesianGrid />
           <ChartXAxis dataKey="name" />
           <ChartYAxis />
           <ChartTooltip />
@@ -219,7 +219,7 @@ export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = () => {
       <Heading size="small">Area Chart that Connects Nulls :- </Heading>
       <Box width="500px" height="200px">
         <ChartAreaWrapper data={data}>
-          <ChartCartesianGrid strokeDasharray="3 3" />
+          <ChartCartesianGrid />
           <ChartXAxis dataKey="name" />
           <ChartYAxis />
           <ChartTooltip />
@@ -264,6 +264,7 @@ export const AreaChartWithReferenceLine: StoryFn<typeof ChartArea> = () => {
   return (
     <Box width="100%" height="400px">
       <ChartAreaWrapper data={chartData}>
+        <ChartCartesianGrid />
         <ChartArea dataKey="teamA" name="Team A" />
         <ChartXAxis dataKey="month" />
         <ChartXAxis />
