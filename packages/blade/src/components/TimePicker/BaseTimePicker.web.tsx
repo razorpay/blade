@@ -109,9 +109,16 @@ const _BaseTimePicker = ({
       const isClickOnInput = referenceRef.current?.contains(target);
       const isClickOnDropdown = refs.floating.current?.contains(target);
 
-      // Only close dropdown if click is outside both input and dropdown
+      // On mobile, also check if click is inside TimePicker content (BottomSheet)
+      const isClickOnTimePickerContent = (target as Element).closest?.('.timepicker-content');
+
+      // Only close dropdown if click is outside input, dropdown, and TimePicker content
       // This ensures clicking different segments within the input keeps dropdown open
       if (isDropdownOpen && !isClickOnInput && !isClickOnDropdown) {
+        if (isClickOnTimePickerContent && showFooterActions) {
+          // Inside TimePicker with footer actions - don't close
+          return;
+        }
         handleApply();
       }
     };

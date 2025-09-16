@@ -124,6 +124,7 @@ export const BasicTimePicker: StoryFn<typeof TimePicker> = () => {
         setTime(value);
         console.log('Selected time:', value);
       }}
+      showFooterActions={false}
     />
   );
 };
