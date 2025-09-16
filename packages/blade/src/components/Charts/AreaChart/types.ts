@@ -4,11 +4,11 @@ import type { colorTheme } from '../utils';
 
 interface ChartAreaProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
-  connectNulls?: boolean;
+  connectNulls?: RechartAreaProps['connectNulls'];
   showLegend?: boolean;
-  dataKey: string;
-  name: string;
-  stackId?: string | number;
+  dataKey: RechartAreaProps['dataKey'];
+  name: RechartAreaProps['name'];
+  stackId?: RechartAreaProps['stackId'];
   color?: ChartsCategoricalColorToken;
   dot?: RechartAreaProps['dot'];
   activeDot?: RechartAreaProps['activeDot'];
