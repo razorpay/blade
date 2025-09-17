@@ -1,7 +1,7 @@
+import React from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import type { DataAnalyticsAttribute } from '~utils/types';
-import React from 'react';
 
 export type SelectInputValueSuffixType = ({ values }: { values: string[] }) => React.ReactNode;
 
