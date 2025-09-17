@@ -72,7 +72,6 @@ const Page = (): React.ReactElement => {
 
 const propsCategory = {
   CHART_AREA_PROPS: 'ChartArea Props',
-  STYLED_PROPS: 'Styled Props',
 };
 
 export default {
