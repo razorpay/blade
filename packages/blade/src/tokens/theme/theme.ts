@@ -29,7 +29,6 @@ export type ChartCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'i
   faint: string;
   strong: string;
 };
-//REVIEW_NOTES: this might change
 export type ChartSequentialEmphasis = Omit<
   ColorChromaticScale,
   'a50' | 'a150' | 'a100' | 'a200' | 'a400'

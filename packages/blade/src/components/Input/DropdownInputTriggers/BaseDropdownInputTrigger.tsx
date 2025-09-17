@@ -198,6 +198,15 @@ const _BaseDropdownInputTrigger = (
       isRequired={props.isRequired}
       prefix={props.prefix}
       suffix={props.suffix}
+      valueSuffix={
+        typeof props.valueSuffix === 'function'
+          ? props.valueSuffix({
+              values: options
+                .filter((option, index) => selectedIndices.includes(index))
+                .map((option) => option.value),
+            })
+          : undefined
+      }
       autoFocus={props.autoFocus} // eslint-disable-line jsx-a11y/no-autofocus
       value={getValue()}
       onClick={(e) => {
