@@ -14,7 +14,6 @@ import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -71,12 +70,79 @@ const Page = (): React.ReactElement => {
   );
 };
 
+const propsCategory = {
+  CHART_AREA_PROPS: 'ChartArea Props',
+  STYLED_PROPS: 'Styled Props',
+};
+
 export default {
   title: 'Components/Charts/AreaChart',
   component: ChartArea,
   tags: ['autodocs'],
   argTypes: {
-    ...getStyledPropsArgTypes(),
+    // ChartArea specific props
+    type: {
+      control: { type: 'select' },
+      options: ['step', 'stepAfter', 'stepBefore', 'linear', 'monotone'],
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    connectNulls: {
+      control: { type: 'boolean' },
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    showLegend: {
+      control: { type: 'boolean' },
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    dataKey: {
+      control: { type: 'text' },
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    name: {
+      control: { type: 'text' },
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    stackId: {
+      control: { type: 'text' },
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    color: {
+      control: { type: 'text' },
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    dot: {
+      control: { disable: true },
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    activeDot: {
+      control: { disable: true },
+      table: {
+        category: propsCategory.CHART_AREA_PROPS,
+      },
+    },
+    // Hide private props from Storybook
+    _index: {
+      table: { disable: true },
+    },
+    _colorTheme: {
+      table: { disable: true },
+    },
   },
   parameters: {
     docs: {
