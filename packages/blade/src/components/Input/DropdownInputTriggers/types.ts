@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import type { DataAnalyticsAttribute } from '~utils/types';
