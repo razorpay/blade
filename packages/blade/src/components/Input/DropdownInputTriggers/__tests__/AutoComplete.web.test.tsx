@@ -603,4 +603,52 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(handleInput).toBeCalled();
     expect(handleChange).toBeCalled();
   }, 10000);
+
+  it('should handle filtering with numeric values without crashing', async () => {
+    const user = userEvent.setup();
+
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Numbers" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="One" value="1" />
+            <ActionListItem title="Two" value="2" />
+            <ActionListItem title="Ten" value="10" />
+            <ActionListItem title="Twenty" value="20" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const selectInput = getByRole('combobox', { name: 'Numbers' });
+    await user.click(selectInput);
+
+    await waitFor(() => expect(getByRole('listbox', { name: 'Numbers' })).toBeVisible());
+
+    // All elements should be visible initially
+    expect(getByRole('option', { name: 'One' })).toBeVisible();
+    expect(getByRole('option', { name: 'Two' })).toBeVisible();
+    expect(getByRole('option', { name: 'Ten' })).toBeVisible();
+    expect(getByRole('option', { name: 'Twenty' })).toBeVisible();
+
+    // Start typing to filter by numeric value - should not crash
+    await user.keyboard('1');
+
+    // Should filter to show items with value containing "1" (1, 10)
+    expect(getByRole('option', { name: 'One' })).toBeVisible();
+    expect(getByRole('option', { name: 'Ten' })).toBeVisible();
+    expect(queryByRole('option', { name: 'Two' })).toBeFalsy();
+    expect(queryByRole('option', { name: 'Twenty' })).toBeFalsy();
+
+    // Clear and try filtering with "2"
+    await user.keyboard('{BackSpace}');
+    await user.keyboard('2');
+
+    // Should filter to show items with value containing "2" (2, 20)
+    expect(getByRole('option', { name: 'Two' })).toBeVisible();
+    expect(getByRole('option', { name: 'Twenty' })).toBeVisible();
+    expect(queryByRole('option', { name: 'One' })).toBeFalsy();
+    expect(queryByRole('option', { name: 'Ten' })).toBeFalsy();
+  }, 10000);
 });
