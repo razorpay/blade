@@ -14,10 +14,7 @@ import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
-import { throwBladeError } from '~utils/logger';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
-const MAX_AREAS = 10;
 
 const Area: React.FC<ChartAreaProps> = ({
   color,
