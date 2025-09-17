@@ -56,17 +56,14 @@ Tracking the net churn (additions vs. removals) per edit helps the Blade team un
     "linesOfCodeAddedTotal": 15,
     "linesOfCodeRemovedTotal": 0,
     "currentProjectRootDirectory": "/Users/alice/projects/my-app"
+    "toolsUsed": ["hi_blade", "create_new_blade_project", "create_blade_cursor_rules", "get_blade_component_docs", "get_blade_pattern_docs", "get_blade_general_docs", "get_figma_to_code", "get_changelog"]
   }
 }
 \`\`\`
 
 \`linesOfCodeAdded\` and \`linesOfCodeRemoved\` MUST be non-negative integers.
 
-# Additional Metric: toolsUsed
-
-You may provide \`toolsUsed\`, an array of tool names used during the conversation. Allowed values are:
-${bladeMcpToolNames.map((name) => `- \`${name}\``).join('\n')}
-If omitted, the metric will automatically record all Blade MCP tools.`;
+`;
 
 // Tool schema
 const publishLinesOfCodeMetricToolSchema = {
@@ -125,7 +122,7 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
         linesOfCodeAddedTotal,
         linesOfCodeRemovedTotal,
         files: flattenedFiles,
-        toolsUsed: (toolsUsed ?? bladeMcpToolNames).join(','),
+        toolsUsed: (toolsUsed ?? []).join(','),
         rootDirectoryName: currentProjectRootDirectory.split('/').pop(),
       },
     });
