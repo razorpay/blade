@@ -6,8 +6,10 @@ import {
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
 import type { ChartAreaProps, ChartAreaWrapperProps } from './types';
-
 import { componentIds } from './componentIds';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
@@ -59,10 +61,12 @@ const ChartArea = assignWithoutSideEffects(Area, {
 });
 
 // Main components
-const ChartAreaWrapper: React.FC<ChartAreaWrapperProps> = ({
+const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsAttribute> = ({
   data,
   children,
+  testID,
   colorTheme = 'default',
+  ...restProps
 }) => {
   const modifiedChildren = React.useMemo(() => {
     let AreaChartIndex = 0;
@@ -84,7 +88,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps> = ({
   }, [children, colorTheme]);
 
   return (
-    <BaseBox {...metaAttribute({ name: 'chart-area-container' })} width="100%" height="100%">
+    <BaseBox
+      {...metaAttribute({ name: 'chart-area-container', testID })}
+      {...makeAnalyticsAttribute(restProps)}
+      {...restProps}
+      width="100%"
+      height="100%"
+    >
       <ResponsiveContainer>
         <RechartsAreaChart data={data}>{modifiedChildren}</RechartsAreaChart>
       </ResponsiveContainer>
