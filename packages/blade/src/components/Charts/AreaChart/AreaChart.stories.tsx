@@ -263,16 +263,15 @@ export const TinyAreaChart: StoryFn<typeof ChartArea> = ({
 // Area Chart with Reference Line
 export const AreaChartWithReferenceLine: StoryFn<typeof ChartArea> = ({
   dataKey = 'teamA',
-  name = 'Page A',
+  name = 'Team A',
   ...args
 }) => {
   return (
     <Box width="100%" height="400px">
       <ChartAreaWrapper data={chartData}>
         <ChartCartesianGrid />
-        <ChartArea dataKey="teamA" name="Team A" />
-        <ChartYAxis dataKey="month" />
-        <ChartXAxis />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
         <ChartTooltip />
         <ChartLegend />
         <ChartArea
