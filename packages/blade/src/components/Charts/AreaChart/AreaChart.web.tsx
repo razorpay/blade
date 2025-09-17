@@ -71,12 +71,6 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const modifiedChildren = React.useMemo(() => {
     let AreaChartIndex = 0;
     return React.Children.map(children, (child) => {
-      if (__DEV__ && AreaChartIndex >= MAX_AREAS) {
-        throwBladeError({
-          message: `Too many areas configured. Maximum allowed is ${MAX_AREAS}.`,
-          moduleName: 'AreaChart',
-        });
-      }
       if (React.isValidElement(child) && child.type === componentIds.ChartArea) {
         return React.cloneElement(child, {
           _index: AreaChartIndex++,

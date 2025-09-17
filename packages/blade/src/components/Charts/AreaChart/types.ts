@@ -7,7 +7,7 @@ import type {
   GridProps,
 } from '~components/Box/BaseBox/types/propsTypes';
 
-interface ChartAreaProps {
+type ChartAreaProps = {
   /**
    * The type of the area chart.
    */
@@ -52,7 +52,7 @@ interface ChartAreaProps {
    * @private
    */
   _colorTheme?: colorTheme;
-}
+};
 
 type data = {
   [key: string]: string | number | null;

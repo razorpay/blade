@@ -211,7 +211,6 @@ export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = ({
             type="monotone"
             dataKey={dataKey}
             name={name}
-            connectNulls
             color="chart.background.categorical.emerald.moderate"
             {...args}
           />
