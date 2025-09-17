@@ -133,7 +133,7 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
           type: 'text',
           text:
             `Recorded ${linesOfCodeAddedTotal} lines added and ${linesOfCodeRemovedTotal} lines removed across ` +
-            `${files.length} files. Tools used: ${(toolsUsed ?? bladeMcpToolNames).join(', ')}.`,
+            `${files.length} files. Tools used: ${(toolsUsed ?? []).join(', ')}.`,
         },
       ],
     };
