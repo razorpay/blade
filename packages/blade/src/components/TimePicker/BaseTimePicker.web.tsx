@@ -172,7 +172,11 @@ const _BaseTimePicker = ({
         timeValue={timeValue}
         internalTimeValue={internalTimeValue}
         onChange={setTimeValue}
-        onTimeValueChange={(timeValue) => setInternalTimeValue(timeValue)}
+        onTimeValueChange={(timeValue) => {
+          if (timeValue) {
+            setInternalTimeValue(timeValue);
+          }
+        }}
         createCompleteTime={createCompleteTime}
         label={label}
         helpText={helpText}

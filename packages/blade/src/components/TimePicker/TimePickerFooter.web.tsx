@@ -3,7 +3,6 @@ import type { TimePickerFooterProps } from './types';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
-import { useIsMobile } from '~utils/useIsMobile';
 
 /**
  * Footer component for TimePicker with Apply/Cancel buttons
@@ -13,8 +12,6 @@ const TimePickerFooter = ({
   onCancel,
   isApplyDisabled = false,
 }: TimePickerFooterProps): React.ReactElement => {
-  const isMobile = useIsMobile();
-
   return (
     <Box display="flex" flexDirection="column">
       <Divider />
@@ -22,8 +19,8 @@ const TimePickerFooter = ({
         width="100%"
         display="flex"
         flexDirection="row"
-        gap={isMobile ? 'spacing.5' : 'spacing.3'}
-        padding={isMobile ? 'spacing.5' : 'spacing.4'}
+        gap={{ base: 'spacing.5', m: 'spacing.3' }}
+        padding={{ base: 'spacing.5', m: 'spacing.4' }}
       >
         <Button isFullWidth={true} variant="tertiary" size="xsmall" onClick={onCancel}>
           Cancel

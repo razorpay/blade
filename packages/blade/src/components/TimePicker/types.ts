@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { DateSegment, TimeFieldState } from '@react-stately/datepicker';
+import type { Time } from '@internationalized/date';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { FormInputValidationProps } from '~components/Form';
+import type { BladeElementRef } from '~utils/types';
 
 type TimeSegmentProps = {
   segment: DateSegment;
@@ -36,8 +37,14 @@ type TimePickerValue = {
 type TimePart = 'hour' | 'minute' | 'period';
 
 type TimePickerCommonInputProps = {
-  inputRef?: React.Ref<any>;
-  referenceProps?: any;
+  inputRef?: React.Ref<HTMLInputElement>;
+  referenceProps?: {
+    onKeyDown?: (event: React.KeyboardEvent) => void;
+    'aria-controls'?: string;
+    'aria-expanded'?: boolean;
+    'aria-haspopup'?: boolean | 'grid' | 'dialog' | 'menu' | 'listbox' | 'tree';
+    [key: string]: unknown;
+  };
 } & Pick<
   BaseInputProps,
   | 'labelPosition'
@@ -59,15 +66,21 @@ type TimePickerCommonInputProps = {
 
 type TimePickerInputProps = TimePickerCommonInputProps & {
   timeValue?: Date | null;
-  internalTimeValue?: any; // TimeValue from @internationalized/date
+  internalTimeValue?: Time | null; // TimeValue from @internationalized/date
   testID?: string;
   timeFormat?: TimeFormat;
-  ref?: React.Ref<any>;
-  inputRef?: React.Ref<any>;
-  referenceProps?: any;
+  ref?: React.Ref<BladeElementRef>;
+  inputRef?: React.Ref<HTMLInputElement>;
+  referenceProps?: {
+    onKeyDown?: (event: React.KeyboardEvent) => void;
+    'aria-controls'?: string;
+    'aria-expanded'?: boolean;
+    'aria-haspopup'?: boolean | 'grid' | 'dialog' | 'menu' | 'listbox' | 'tree';
+    [key: string]: unknown;
+  };
   setControlledValue?: (time: Date | null) => void;
   onChange?: (time: Date | null) => void;
-  onTimeValueChange?: (timeValue: any) => void; // TimeValue from @internationalized/date
+  onTimeValueChange?: (timeValue: Time | null) => void; // TimeValue from @internationalized/date
   createCompleteTime?: () => Date | null;
   isDropdownOpen?: boolean;
   setIsDropdownOpen?: (isOpen: boolean) => void;
@@ -225,15 +238,6 @@ type TimePickerProps = Omit<
   };
 
 /**
- * Props for individual time column components (Hours, Minutes, Period)
- */
-type TimeColumnProps = {
-  values: string[];
-  selectedValue: string;
-  onValueChange: (value: string) => void;
-};
-
-/**
  * Props for useTimePickerState hook
  */
 type UseTimePickerStateProps = {
@@ -278,11 +282,10 @@ type SpinWheelProps = {
   className?: string;
   values: (string | number)[];
   selectedValue: string | number;
-  onValueChange: (value: string | number, index: number) => void;
+  onChange: (value: string | number, index: number) => void;
   activeIndex?: number | null;
   onActiveIndexChange?: (index: number | null) => void;
   label?: string;
-  width?: string;
   /**
    * Optional: control focus of internal scroll container from parent
    */
@@ -318,7 +321,6 @@ export type {
   TimePickerSelectorProps,
   TimePickerInputProps,
   TimePickerCommonInputProps,
-  TimeColumnProps,
   TimePickerFooterProps,
   TimePart,
   TimeSegmentProps,

@@ -8,6 +8,8 @@ import { Divider } from '~components/Divider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
 
 // Styled container with fade overlay
 const StyledFadeContainer = styled(BaseBox)`
@@ -158,8 +160,8 @@ const TimePickerContent = ({
       display="flex"
       className="timepicker-content"
       flexDirection="column"
-      height={showFooterActions ? '250px' : '196px'}
-      width={isMobile ? '100%' : '198px'}
+      height={showFooterActions ? makeSize(size[250]) : makeSize(size[196])}
+      width={isMobile ? '100%' : makeSize(size[198])}
       data-allow-scroll="true"
     >
       {/* Time Selection Wheels */}
@@ -192,7 +194,7 @@ const TimePickerContent = ({
           label="Hour"
           values={hourValues}
           selectedValue={String(currentHour).padStart(2, '0')}
-          onValueChange={handleHourChange}
+          onChange={handleHourChange}
           scrollContainerRef={hourRef}
           tabIndex={activeWheelIndex === 0 ? 0 : -1}
         />
@@ -204,7 +206,7 @@ const TimePickerContent = ({
           values={minuteValues}
           selectedValue={String(currentMinute).padStart(2, '0')}
           displayValue={displayMinute ? String(displayMinute).padStart(2, '0') : undefined}
-          onValueChange={handleMinuteChange}
+          onChange={handleMinuteChange}
           scrollContainerRef={minuteRef}
           tabIndex={activeWheelIndex === 1 ? 0 : -1}
         />
@@ -218,7 +220,7 @@ const TimePickerContent = ({
               label="Period"
               values={periodValues}
               selectedValue={currentPeriod}
-              onValueChange={handlePeriodChange}
+              onChange={handlePeriodChange}
               scrollContainerRef={periodRef}
               tabIndex={activeWheelIndex === 2 ? 0 : -1}
             />

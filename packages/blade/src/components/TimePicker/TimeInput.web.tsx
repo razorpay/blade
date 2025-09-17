@@ -186,7 +186,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
   );
 
   // Extract onKeyDown from referenceProps to handle Enter key for dropdown opening
-  const { onKeyDown: referenceOnKeyDown, ...otherReferenceProps } = referenceProps;
+  const { onKeyDown: referenceOnKeyDown, ...otherReferenceProps } = referenceProps || {};
 
   // Handle Enter key to open dropdown while preserving React Aria's keyboard navigation
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
@@ -236,11 +236,11 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         labelSuffix={labelSuffix}
         labelTrailing={labelTrailing}
         leadingIcon={ClockIcon}
-        popupId={referenceProps['aria-controls']}
-        isPopupExpanded={referenceProps['aria-expanded']}
-        hasPopup={referenceProps['aria-haspopup']}
+        popupId={referenceProps?.['aria-controls']}
+        isPopupExpanded={referenceProps?.['aria-expanded']}
+        hasPopup={referenceProps?.['aria-haspopup']}
         testID={testID}
-        accessibilityLabel={accessibilityLabel}
+        accessibilityLabel={accessibilityLabel || label || 'Time picker'}
         {...props}
         {...otherReferenceProps}
       >

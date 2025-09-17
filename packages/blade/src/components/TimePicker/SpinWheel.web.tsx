@@ -4,6 +4,8 @@ import type { SpinWheelProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
 
 // Styled scroll container with scroll snap
 const StyledScrollContainer = styled(BaseBox)`
@@ -29,7 +31,7 @@ const SpinWheel = ({
   className,
   values,
   selectedValue,
-  onValueChange,
+  onChange,
   activeIndex,
   onActiveIndexChange,
   displayValue,
@@ -39,6 +41,7 @@ const SpinWheel = ({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const programmaticScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
 
   // Flag to prevent onValueChange from being triggered during auto-positioning
@@ -56,6 +59,11 @@ const SpinWheel = ({
 
   // Auto-scroll to positioned item when dropdown opens or positioning value changes
   useEffect(() => {
+    // Clear any existing programmatic scroll timeout
+    if (programmaticScrollTimeoutRef.current) {
+      clearTimeout(programmaticScrollTimeoutRef.current);
+    }
+
     const positionIndex = values.findIndex((val) => String(val) === String(positioningValue));
     if (positionIndex >= 0 && itemRefs.current[positionIndex]) {
       isProgrammaticScroll.current = true;
@@ -66,17 +74,20 @@ const SpinWheel = ({
       });
 
       // Reset flag after scroll finishes
-      setTimeout(() => {
+      programmaticScrollTimeoutRef.current = setTimeout(() => {
         isProgrammaticScroll.current = false;
       }, 300);
     }
   }, [positioningValue, values]);
 
-  // Cleanup timeout on unmount
+  // Cleanup timeouts on unmount
   useEffect(() => {
     return () => {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
+      }
+      if (programmaticScrollTimeoutRef.current) {
+        clearTimeout(programmaticScrollTimeoutRef.current);
       }
     };
   }, []);
@@ -115,14 +126,14 @@ const SpinWheel = ({
     }
 
     scrollTimeoutRef.current = setTimeout(() => {
-      onValueChange(values[closestIndex], closestIndex);
+      onChange(values[closestIndex], closestIndex);
     }, 150);
   };
 
   const handleItemClick = (value: string | number, index: number): void => {
     // Always allow explicit user selection via click, even when displayValue is present
     // This lets users choose to override their typed value with a step value if desired
-    onValueChange(value, index);
+    onChange(value, index);
     onActiveIndexChange?.(index);
   };
 
@@ -132,8 +143,8 @@ const SpinWheel = ({
       display="flex"
       flexDirection="column"
       alignItems="center"
-      width={isMobile ? '82px' : '66px'}
-      height="172px"
+      width={isMobile ? makeSize(size[82]) : makeSize(size[66])}
+      height={makeSize(size[172])}
     >
       <BaseBox position="relative" width="100%" overflow="hidden">
         {/* Scrollable container */}

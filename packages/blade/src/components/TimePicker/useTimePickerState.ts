@@ -1,6 +1,5 @@
 import React from 'react';
 import { Time } from '@internationalized/date';
-import { useUncontrolled } from '@mantine/hooks';
 import type { UseTimePickerStateProps } from './types';
 import { dateToTimeValue, timeValueToDate, getTimeComponents, createCompleteTime } from './utils';
 import { useControllableState } from '~utils/useControllable';
@@ -41,10 +40,9 @@ export const useTimePickerState = ({
   const convertedValue = value ? dateToTimeValue(value) : undefined;
   const convertedDefaultValue = defaultValue ? dateToTimeValue(defaultValue) : undefined;
 
-  const [internalTimeValue, setInternalTimeValue] = useUncontrolled<Time>({
-    value: convertedValue ?? undefined,
-    defaultValue: convertedDefaultValue ?? undefined,
-    finalValue: getEmptyTimeValue(), // Default to midnight when both value and defaultValue are undefined
+  const [internalTimeValue, setInternalTimeValue] = useControllableState<Time>({
+    value: convertedValue ?? getEmptyTimeValue(),
+    defaultValue: convertedDefaultValue ?? getEmptyTimeValue(),
     onChange: (timeValue) => {
       const date = timeValueToDate(timeValue);
       onChange?.({ value: date });
@@ -55,7 +53,7 @@ export const useTimePickerState = ({
   const timeValue = timeValueToDate(internalTimeValue);
   const setTimeValue = React.useCallback(
     (date: Date | null) => {
-      setInternalTimeValue(dateToTimeValue(date) ?? getEmptyTimeValue());
+      setInternalTimeValue(() => dateToTimeValue(date) ?? getEmptyTimeValue());
     },
     [setInternalTimeValue],
   );
@@ -96,7 +94,7 @@ export const useTimePickerState = ({
 
   const handleCancel = React.useCallback(() => {
     // Restore internalTimeValue from oldTimeValue
-    setInternalTimeValue(oldTimeValue);
+    setInternalTimeValue(() => oldTimeValue);
     setControllableIsOpen(() => false);
   }, [oldTimeValue, setInternalTimeValue, setControllableIsOpen]);
 
@@ -116,7 +114,7 @@ export const useTimePickerState = ({
 
     // TimeValue for React Aria compatibility
     internalTimeValue,
-    setInternalTimeValue: (timeValue: Time) => setInternalTimeValue(timeValue),
+    setInternalTimeValue: (timeValue: Time) => setInternalTimeValue(() => timeValue),
 
     // Individual time components for easy access
     selectedHour,
