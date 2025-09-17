@@ -221,7 +221,7 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
         ref={inputRef}
         as="div"
         id="timepicker"
-        label={label || 'Select Time'}
+        label={label}
         helpText={helpText}
         errorText={errorText}
         successText={successText}
