@@ -55,8 +55,25 @@ Tracking the net churn (additions vs. removals) per edit helps the Blade team un
     ],
     "linesOfCodeAddedTotal": 15,
     "linesOfCodeRemovedTotal": 0,
-    "currentProjectRootDirectory": "/Users/alice/projects/my-app"
-    "toolsUsed": ["hi_blade", "create_new_blade_project", "create_blade_cursor_rules", "get_blade_component_docs", "get_blade_pattern_docs", "get_blade_general_docs", "get_figma_to_code", "get_changelog"]
+    // Optional categorized metrics
+    "bladeUiLinesOfCodeAddedTotal": 12,
+    "bladeUiLinesOfCodeRemovedTotal": 0,
+    "nonBladeUiLinesOfCodeAddedTotal": 3,
+    "nonBladeUiLinesOfCodeRemovedTotal": 1,
+    "nonUiLinesOfCodeAddedTotal": 0,
+    "nonUiLinesOfCodeRemovedTotal": 2,
+
+    "currentProjectRootDirectory": "/Users/alice/projects/my-app",
+    "toolsUsed": [
+      "hi_blade",
+      "create_new_blade_project",
+      "create_blade_cursor_rules",
+      "get_blade_component_docs",
+      "get_blade_pattern_docs",
+      "get_blade_general_docs",
+      "get_figma_to_code",
+      "get_changelog"
+    ]
   }
 }
 \`\`\`
@@ -89,13 +106,61 @@ const publishLinesOfCodeMetricToolSchema = {
     .describe('Total lines removed across all files.'),
   toolsUsed: z
     .array(bladeMcpToolEnum)
-    .min(1)
     .optional()
     .describe('List of Blade MCP tool names that were invoked during the conversation'),
   currentProjectRootDirectory: z
     .string()
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
+    ),
+  // New aggregated metrics for code categorization
+  bladeUiLinesOfCodeAddedTotal: z
+    .number()
+    .int()
+    .nonnegative()
+    .optional()
+    .describe(
+      'Total lines of UI code that import or reference Blade components (e.g., <Button />, <TextInput />) that were added across all files.',
+    ),
+  bladeUiLinesOfCodeRemovedTotal: z
+    .number()
+    .int()
+    .nonnegative()
+    .optional()
+    .describe(
+      'Total lines of UI code that import or reference Blade components that were removed across all files.',
+    ),
+  nonBladeUiLinesOfCodeAddedTotal: z
+    .number()
+    .int()
+    .nonnegative()
+    .optional()
+    .describe(
+      'Total lines of UI component code (React/JSX/TSX) added that do NOT import or use Blade components — e.g., custom components or components from other libraries such as Material UI.',
+    ),
+  nonBladeUiLinesOfCodeRemovedTotal: z
+    .number()
+    .int()
+    .nonnegative()
+    .optional()
+    .describe(
+      'Total lines of UI component code that does NOT use Blade components that were removed across all files.',
+    ),
+  nonUiLinesOfCodeAddedTotal: z
+    .number()
+    .int()
+    .nonnegative()
+    .optional()
+    .describe(
+      'Total lines of non-UI code such as business logic, state management, data fetching, utility functions, etc. that were added.',
+    ),
+  nonUiLinesOfCodeRemovedTotal: z
+    .number()
+    .int()
+    .nonnegative()
+    .optional()
+    .describe(
+      'Total lines of non-UI code such as business logic, state management, data fetching, utility functions, etc. that were removed.',
     ),
 };
 
@@ -108,6 +173,12 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
   linesOfCodeRemovedTotal,
   toolsUsed,
   currentProjectRootDirectory,
+  bladeUiLinesOfCodeAddedTotal = 0,
+  bladeUiLinesOfCodeRemovedTotal = 0,
+  nonBladeUiLinesOfCodeAddedTotal = 0,
+  nonBladeUiLinesOfCodeRemovedTotal = 0,
+  nonUiLinesOfCodeAddedTotal = 0,
+  nonUiLinesOfCodeRemovedTotal = 0,
 }) => {
   try {
     // Send analytics event
@@ -121,6 +192,12 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
         toolName: publishLinesOfCodeMetricToolName,
         linesOfCodeAddedTotal,
         linesOfCodeRemovedTotal,
+        bladeUiLinesOfCodeAddedTotal,
+        bladeUiLinesOfCodeRemovedTotal,
+        nonBladeUiLinesOfCodeAddedTotal,
+        nonBladeUiLinesOfCodeRemovedTotal,
+        nonUiLinesOfCodeAddedTotal,
+        nonUiLinesOfCodeRemovedTotal,
         files: flattenedFiles,
         toolsUsed: (toolsUsed ?? []).join(','),
         rootDirectoryName: currentProjectRootDirectory.split('/').pop(),
