@@ -6,6 +6,7 @@ import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
+import BaseBox from '~components/Box/BaseBox';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &
@@ -88,7 +89,9 @@ const autoCompleteSuggestionTypeMap = {
 
 const _StyledBaseInput: React.ForwardRefRenderFunction<
   HTMLInputElement | HTMLButtonElement,
-  StyledBaseInputProps
+  StyledBaseInputProps & {
+    valueSuffix?: React.ReactNode;
+  }
 > = (
   {
     name,
@@ -114,6 +117,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     $size,
     valueComponentType,
     tabIndex,
+    valueSuffix,
     children,
     ...props
   },
@@ -192,16 +196,19 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       value={props.value}
       tabIndex={tabIndex}
     >
-      <Text
-        color={
-          props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
-        }
-        truncateAfterLines={1}
-        textAlign={props.textAlign}
-        size={$size}
-      >
-        {props.value ? props.value : props.placeholder}
-      </Text>
+      <BaseBox display="flex" alignItems="center" gap="spacing.3">
+        <Text
+          color={
+            props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+          }
+          truncateAfterLines={1}
+          textAlign={props.textAlign}
+          size={$size}
+        >
+          {props.value ? props.value : props.placeholder}
+        </Text>
+        {valueSuffix}
+      </BaseBox>
     </StyledBaseNativeButton>
   ) : (
     <StyledBaseNativeInput

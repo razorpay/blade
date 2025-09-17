@@ -99,6 +99,7 @@ export type StyledBaseInputProps = {
   | 'autoCapitalize'
   | 'isDropdownTrigger'
   | 'tabIndex'
+  | 'valueSuffix'
   | 'children'
 >;
 

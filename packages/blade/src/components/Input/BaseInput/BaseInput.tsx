@@ -361,6 +361,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default undefined
      */
     tabIndex?: number;
+    /**
+     * Slot to be rendered adjacent to the value
+     */
+    valueSuffix?: React.ReactNode;
     children?: ReactNode;
   } & TestID &
   Platform.Select<{
@@ -867,6 +871,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingDropDown,
     labelSuffix,
     labelTrailing,
+    valueSuffix,
     children,
     ...rest
   },
@@ -1095,6 +1100,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 trailingInteractionElement={trailingInteractionElement}
                 leadingInteractionElement={leadingInteractionElement}
                 suffix={suffix}
+                valueSuffix={valueSuffix}
                 trailingIcon={trailingIcon}
                 maxCharacters={maxCharacters}
                 textAlign={textAlign}
