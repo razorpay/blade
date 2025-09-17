@@ -2,4 +2,4 @@
 '@razorpay/blade-mcp': minor
 ---
 
-feat: update knowledge base to support area chart
+feat(blade-mcp): update knowledgebase with AreaChart

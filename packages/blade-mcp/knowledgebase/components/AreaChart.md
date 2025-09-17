@@ -22,7 +22,8 @@ AreaChart is a data visualization component built on top of Recharts that displa
 These types define the props that the AreaChart component and its subcomponents accept:
 
 ```typescript
-interface ChartAreaProps {
+
+type ChartAreaProps {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   connectNulls?: boolean;
   showLegend?: boolean;
