@@ -1,7 +1,7 @@
 import type {
   XAxisProps as RechartsXAxisProps,
   YAxisProps as RechartsYAxisProps,
-  CartesianGrid as RechartsCartesianGrid,
+  CartesianGridProps as RechartsCartesianGridProps,
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
   ReferenceLineProps as RechartsReferenceLineProps,
@@ -48,7 +48,10 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
 type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend>;
 
-type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
+type ChartCartesianGridProps = Omit<
+  RechartsCartesianGridProps,
+  'strokeDasharray' | 'verticalFill' | 'horizontalFill'
+>;
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
