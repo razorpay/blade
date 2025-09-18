@@ -1,0 +1,11 @@
+const RADIUS_MAPPING = {
+  small: { outerRadius: 80, innerRadius: 52 },
+  medium: { outerRadius: 120, innerRadius: 80 },
+  large: { outerRadius: 162, innerRadius: 100 },
+};
+
+const componentId = {
+  pieChart: 'pieChart',
+};
+
+export { RADIUS_MAPPING, componentId };

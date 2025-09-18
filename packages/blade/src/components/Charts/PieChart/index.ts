@@ -1,2 +1,2 @@
-export { PieChart, Pie } from './PieCharts';
-export type { PieProps } from './PieCharts';
+export { ChartPie, ChartPieWrapper } from './PieChart.web';
+export type { ChartPieProps, ChartPieWrapperProps } from './types';
