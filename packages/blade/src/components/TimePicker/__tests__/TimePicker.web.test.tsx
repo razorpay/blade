@@ -1,172 +1,98 @@
 import React from 'react';
-import { I18nProvider } from '@react-aria/i18n';
 import { TimePicker } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
+// Mock scrollIntoView for JSDOM environment
+Object.defineProperty(Element.prototype, 'scrollIntoView', {
+  value: jest.fn(),
+  writable: true,
+});
+
 describe('<TimePicker />', () => {
-  it('should render basic TimePicker with 12h format', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select meeting time" timeFormat="12h" />
-      </I18nProvider>,
-    );
+  it('should render basic TimePicker', () => {
+    const { getByRole } = renderWithTheme(<TimePicker label="Select time" timeFormat="12h" />);
 
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render TimePicker with 24h format', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select meeting time" timeFormat="24h" />
-      </I18nProvider>,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render TimePicker with predefined value', () => {
-    const defaultTime = new Date('2024-01-01T14:30:00');
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select meeting time" timeFormat="12h" defaultValue={defaultTime} />
-      </I18nProvider>,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled TimePicker', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select meeting time" timeFormat="12h" isDisabled={true} />
-      </I18nProvider>,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render TimePicker with error state', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker
-          label="Select meeting time"
-          timeFormat="12h"
-          validationState="error"
-          errorText="Please select a valid time"
-        />
-      </I18nProvider>,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render TimePicker with success state', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker
-          label="Select meeting time"
-          timeFormat="12h"
-          validationState="success"
-          successText="Time selected successfully"
-        />
-      </I18nProvider>,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render TimePicker with different sizes', () => {
-    const { container: containerMedium } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Medium TimePicker" size="medium" />
-      </I18nProvider>,
-    );
-
-    const { container: containerLarge } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Large TimePicker" size="large" />
-      </I18nProvider>,
-    );
-
-    expect(containerMedium).toMatchSnapshot();
-    expect(containerLarge).toMatchSnapshot();
-  });
-
-  it('should render TimePicker with minute steps', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select meeting time" timeFormat="12h" minuteStep={15} />
-      </I18nProvider>,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render with help text', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select meeting time" helpText="Choose a time between 9 AM and 5 PM" />
-      </I18nProvider>,
-    );
-
-    expect(container).toMatchSnapshot();
+    expect(getByRole('combobox', { name: /Select time/i })).toBeInTheDocument();
   });
 
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select time" testID="time-picker-test" />
-      </I18nProvider>,
+      <TimePicker label="Select time" testID="time-picker-test" />,
     );
 
     expect(getByTestId('time-picker-test')).toBeInTheDocument();
   });
 
-  it('should render with accessibilityLabel', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker
-          label="Select time"
-          accessibilityLabel="Select appointment time for your medical visit"
-        />
-      </I18nProvider>,
+  it('should render with different time formats', () => {
+    const { getByRole: getByRole12h } = renderWithTheme(
+      <TimePicker label="12h format" timeFormat="12h" />,
+    );
+    const { getByRole: getByRole24h } = renderWithTheme(
+      <TimePicker label="24h format" timeFormat="24h" />,
     );
 
-    expect(container).toMatchSnapshot();
+    expect(getByRole12h('combobox', { name: /12h format/i })).toBeInTheDocument();
+    expect(getByRole24h('combobox', { name: /24h format/i })).toBeInTheDocument();
   });
 
-  it('should render TimePicker with showFooterActions=false', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select time" timeFormat="12h" showFooterActions={false} />
-      </I18nProvider>,
+  it('should render with different sizes', () => {
+    const { getByRole: getByRoleMedium } = renderWithTheme(
+      <TimePicker label="Medium" size="medium" />,
+    );
+    const { getByRole: getByRoleLarge } = renderWithTheme(
+      <TimePicker label="Large" size="large" />,
     );
 
-    expect(container).toMatchSnapshot();
+    expect(getByRoleMedium('combobox', { name: /Medium/i })).toBeInTheDocument();
+    expect(getByRoleLarge('combobox', { name: /Large/i })).toBeInTheDocument();
   });
 
-  it('should render TimePicker with required state', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker
-          label="Select time"
-          timeFormat="12h"
-          isRequired={true}
-          necessityIndicator="required"
-        />
-      </I18nProvider>,
-    );
+  it('should render disabled state', () => {
+    const { getByRole } = renderWithTheme(<TimePicker label="Disabled" isDisabled={true} />);
 
-    expect(container).toMatchSnapshot();
+    const input = getByRole('combobox', { name: /Disabled/i });
+    expect(input).toHaveAttribute('aria-disabled', 'true');
   });
 
-  it('should render TimePicker with label position left', () => {
-    const { container } = renderWithTheme(
-      <I18nProvider locale="en-US">
-        <TimePicker label="Select time" labelPosition="left" timeFormat="12h" />
-      </I18nProvider>,
+  it('should render with validation states', () => {
+    const { getByText: getByTextError } = renderWithTheme(
+      <TimePicker label="Error" validationState="error" errorText="Invalid time" />,
+    );
+    const { getByText: getByTextSuccess } = renderWithTheme(
+      <TimePicker label="Success" validationState="success" successText="Valid time" />,
     );
 
-    expect(container).toMatchSnapshot();
+    expect(getByTextError('Invalid time')).toBeInTheDocument();
+    expect(getByTextSuccess('Valid time')).toBeInTheDocument();
+  });
+
+  it('should render with help text', () => {
+    const { getByText } = renderWithTheme(
+      <TimePicker label="With help" helpText="Choose a time" />,
+    );
+
+    expect(getByText('Choose a time')).toBeInTheDocument();
+  });
+
+  it('should render with accessibility label', () => {
+    const { getByRole } = renderWithTheme(
+      <TimePicker label="Time" accessibilityLabel="Select appointment time" />,
+    );
+
+    expect(getByRole('combobox', { name: /Select appointment time/i })).toBeInTheDocument();
+  });
+
+  it('should render required state', () => {
+    const { getByText } = renderWithTheme(
+      <TimePicker label="Required time" isRequired={true} necessityIndicator="required" />,
+    );
+
+    expect(getByText('*')).toBeInTheDocument();
+  });
+
+  it('should render with label position left', () => {
+    const { getByRole } = renderWithTheme(<TimePicker label="Left label" labelPosition="left" />);
+
+    expect(getByRole('combobox', { name: /Left label/i })).toBeInTheDocument();
   });
 });

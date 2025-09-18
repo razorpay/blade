@@ -78,7 +78,7 @@ TimePicker12HourFormat.play = async () => {
   // Should display 2:30 PM in the input initially
   await expect(inputScope.queryByText('02')).toBeVisible(); // 2 PM in input
   await expect(inputScope.queryByText('30')).toBeVisible(); // 30 minutes in input
-  await expect(inputScope.getAllByText('pm')[1]).toBeVisible(); // PM in input (actual value, not placeholder)
+  await expect(inputScope.getAllByText('PM')[0]).toBeVisible(); // PM in input (actual value, not placeholder)
 
   await userEvent.click(input);
   await sleep(400);
@@ -112,8 +112,8 @@ TimePicker24HourFormat.play = async () => {
   await expect(inputScope.queryByText('14')).toBeVisible(); // 14 hours in input
   await expect(inputScope.queryByText('30')).toBeVisible(); // 30 minutes in input
   // AM/PM should not be in input for 24h format
-  await expect(inputScope.queryByText('am')).not.toBeInTheDocument();
-  await expect(inputScope.queryByText('pm')).not.toBeInTheDocument();
+  await expect(inputScope.queryByText('AM')).not.toBeInTheDocument();
+  await expect(inputScope.queryByText('PM')).not.toBeInTheDocument();
 
   await userEvent.click(input);
   await sleep(400);
@@ -265,7 +265,7 @@ TimePickerControlledState.play = async () => {
   // Should start with 10:30 AM in input
   await expect(inputScope.queryByText('10')).toBeVisible();
   await expect(inputScope.queryByText('30')).toBeVisible();
-  await expect(inputScope.getAllByText('am')[1]).toBeVisible(); // AM in input (actual value, not placeholder)
+  await expect(inputScope.getAllByText('AM')[0]).toBeVisible(); // AM in input (actual value, not placeholder)
 
   // Click change time button
   const changeButton = getByRole('button', { name: 'Change Time' });
@@ -279,7 +279,7 @@ TimePickerControlledState.play = async () => {
   // Should now show 3:45 PM in input
   await expect(inputScope2.queryByText('03')).toBeVisible();
   await expect(inputScope2.queryByText('45')).toBeVisible();
-  await expect(inputScope2.getAllByText('pm')[1]).toBeVisible(); // PM in input (actual value, not placeholder)
+  await expect(inputScope2.getAllByText('PM')[0]).toBeVisible(); // PM in input (actual value, not placeholder)
 
   // Verify dropdown also shows correct values
 };
