@@ -500,6 +500,5 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
-
   viewport.cleanup();
 });

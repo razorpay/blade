@@ -11,7 +11,7 @@ const BottomSheetCloseButton = (): React.ReactElement => {
       size="large"
       icon={CloseIcon}
       accessibilityLabel="Close"
-      onClick={() => close}
+      onClick={() => close?.()}
     />
   );
 };

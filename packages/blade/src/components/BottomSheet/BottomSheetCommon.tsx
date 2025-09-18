@@ -94,7 +94,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
               size="large"
               icon={CloseIcon}
               accessibilityLabel="Close"
-              onClick={() => close}
+              onClick={() => close?.()}
             />
           </BaseBox>
         )}
