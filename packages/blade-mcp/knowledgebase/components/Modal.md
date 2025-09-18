@@ -30,6 +30,8 @@ type ModalProps = {
   /**
    * Whether the modal can be dismissed by clicking outside or pressing escape key
    * @default true
+   * @note 
+   * If isDismissible is false, the modal will not be dismissed when the user clicks outside the modal or presses the escape key and the close button will not be shown. you need to handle the closing of the modal from your own code. also onDismiss will not be called.
    */
   isDismissible?: boolean;
   /**
