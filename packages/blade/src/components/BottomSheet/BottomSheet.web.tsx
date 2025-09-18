@@ -324,10 +324,20 @@ const _BottomSheet = ({
 
         const shouldClose = rawY < lowerestSnap;
         if (shouldClose) {
-          setIsDragging(false);
-          cancel();
-          close();
-          return;
+          if (isDismissible) {
+            // Allow closing if dismissible
+            setIsDragging(false);
+            cancel();
+            close();
+            return;
+          } else {
+            // If not dismissible, snap back to first snap point instead of closing
+            setIsDragging(false);
+            cancel();
+            const firstSnapPoint = dimensions.height * snapPoints[0];
+            setPositionY(firstSnapPoint, true);
+            return;
+          }
         }
 
         // if we stop dragging assign snap to the nearest point
