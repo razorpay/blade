@@ -9,38 +9,38 @@ type data = {
   [key: string]: unknown;
 };
 
-type ChartPieProps = {
+type ChartDonutProps = {
   /**
-   * The data key of the pie chart.
+   * The data key of the Donut chart.
    */
   dataKey: RechartsPieProps['dataKey'];
   /**
-   * The name key of the pie chart.
+   * The name key of the Donut chart.
    */
   nameKey: RechartsPieProps['name'];
   /**
-   * The x coordinate of the pie chart.
+   * The x coordinate of the Donut chart.
    */
   cx?: RechartsPieProps['cx'];
   cy?: RechartsPieProps['cy'];
   /**
-   * The radius of the pie chart.
+   * The radius of the Donut chart.
    */
   radius?: 'small' | 'medium' | 'large';
   /**
-   * The children of the pie chart.
+   * The children of the Donut chart.
    */
   children?: React.ReactNode;
   /**
-   * The data of the pie chart.
+   * The data of the Donut chart.
    */
   data: data[];
   /**
-   * The color theme of the pie chart.
+   * The color theme of the Donut chart.
    */
   colorTheme?: colorTheme;
   /**
-   * The type of the pie chart.
+   * The type of the Donut chart.
    */
   type?: 'circle' | 'semicircle';
 };
@@ -49,11 +49,11 @@ type CellProps = {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
 };
 
-type ChartPieWrapperProps = {
+type ChartDonutWrapperProps = {
   /**
-   *  Center text of pie chart
+   *  Center text of Donut chart
    */
   centerText?: string;
   children?: React.ReactNode;
 };
-export type { ChartPieWrapperProps, CellProps, ChartPieProps };
+export type { ChartDonutWrapperProps, CellProps, ChartDonutProps };

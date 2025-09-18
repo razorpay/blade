@@ -6,7 +6,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import type { ChartPieWrapperProps, CellProps, ChartPieProps } from './types';
+import type { ChartDonutWrapperProps, CellProps, ChartDonutProps } from './types';
 import { RADIUS_MAPPING, START_AND_END_ANGLES } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -21,7 +21,11 @@ export const Cell: React.FC<CellProps> = ({ color, ...rest }) => {
   return <RechartsCell {...rest} fill={resolvedFill} />;
 };
 
-const ChartPieWrapper: React.FC<ChartPieWrapperProps> = ({ children, centerText, ...props }) => {
+const ChartDonutWrapper: React.FC<ChartDonutWrapperProps> = ({
+  children,
+  centerText,
+  ...props
+}) => {
   const { theme } = useTheme();
 
   return (
@@ -50,7 +54,7 @@ const ChartPieWrapper: React.FC<ChartPieWrapperProps> = ({ children, centerText,
   );
 };
 
-const ChartPie: React.FC<ChartPieProps> = ({
+const ChartDonut: React.FC<ChartDonutProps> = ({
   cx = '50%',
   cy = '50%',
   radius = 'medium',
@@ -98,4 +102,4 @@ const ChartPie: React.FC<ChartPieProps> = ({
   );
 };
 
-export { ChartPie, ChartPieWrapper };
+export { ChartDonut, ChartDonutWrapper };
