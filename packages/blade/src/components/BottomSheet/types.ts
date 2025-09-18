@@ -22,7 +22,7 @@ type BottomSheetProps = {
    */
   onDismiss?: () => void;
   /**
-   * Whether the bottom sheet can be dismissed by tapping backdrop, swiping down, or pressing escape key
+   * Whether the bottom sheet can be dismissed by tapping backdrop, swiping down.
    * @default true
    */
   isDismissible?: boolean;
