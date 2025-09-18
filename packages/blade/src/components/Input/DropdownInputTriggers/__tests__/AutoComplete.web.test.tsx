@@ -612,7 +612,8 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
         <AutoComplete label="Numbers" />
         <DropdownOverlay>
           <ActionList>
-            <ActionListItem title="One" value="1" />
+            {/* @ts-expect-error: sometimes data can come from backend with any type */}
+            <ActionListItem title="One" value={1} />
             <ActionListItem title="Two" value="2" />
             <ActionListItem title="Ten" value="10" />
             <ActionListItem title="Twenty" value="20" />
