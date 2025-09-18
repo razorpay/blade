@@ -46,7 +46,7 @@ Keep these numbers **exactly** as your diff tool reports them—do **not** try t
 ────────────────────────────────────────────────
 # When to Call
 
-Call this tool **immediately after** you (the AI / Cursor) perform a code-edit tool call (e.g., \`edit_file\`).  One invocation per atomic edit is enough.
+Call this tool **immediately after** you (the AI / Cursor) perform a code-edit.  One invocation per atomic edit is enough.
 
 ────────────────────────────────────────────────
 # Example Invocation
