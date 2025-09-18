@@ -12,6 +12,8 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 // Cell component - resolves Blade color tokens to actual colors
 export const Cell: React.FC<CellProps> = ({ color, ...rest }) => {
@@ -21,17 +23,24 @@ export const Cell: React.FC<CellProps> = ({ color, ...rest }) => {
   return <RechartsCell {...rest} fill={resolvedFill} />;
 };
 
-const ChartDonutWrapper: React.FC<ChartDonutWrapperProps> = ({
+const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   centerText,
-  ...props
+  testID,
+  ...restProps
 }) => {
   const { theme } = useTheme();
 
   return (
-    <BaseBox {...metaAttribute({ name: 'donut-chart' })} width="100%" height="100%">
+    <BaseBox
+      {...metaAttribute({ name: 'line-chart', testID })}
+      {...makeAnalyticsAttribute(restProps)}
+      width="100%"
+      height="100%"
+      {...restProps}
+    >
       <RechartsResponsiveContainer width="100%" height="100%">
-        <RechartsPieChart {...props}>
+        <RechartsPieChart>
           {children}
           {centerText && (
             <text
