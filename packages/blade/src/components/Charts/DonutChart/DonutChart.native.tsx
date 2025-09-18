@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ChartDonutWrapperProps,  ChartDonutProps } from './types';
+import type { ChartDonutWrapperProps, ChartDonutProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
 
