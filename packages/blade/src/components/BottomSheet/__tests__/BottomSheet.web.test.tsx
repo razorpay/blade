@@ -500,5 +500,19 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
+  test('BottomSheetHeader - isDismissible', () => {
+    jest.spyOn(console, 'warn').mockImplementation();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true} isDismissible={false}>
+          <BottomSheetHeader title="Address" trailing={<Badge size="large">Hello</Badge>} />
+        </BottomSheet>
+      );
+    };
+    const { queryByRole } = renderWithTheme(<Example />);
+    expect(queryByRole('button', { name: 'Close' })).not.toBeInTheDocument();
+  });
+
   viewport.cleanup();
 });
