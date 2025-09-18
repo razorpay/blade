@@ -88,9 +88,22 @@ export const DonutChartWithActiveShape: StoryFn<typeof ChartDonut> = () => {
   );
 };
 
+// 7. Donut Chart with Semi Circle
+export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = () => {
+  return (
+    <div style={{ width: '100%', height: '100%' }}>
+      <ChartDonutWrapper>
+        <ChartDonut dataKey="value" nameKey="name" data={chartData} type="semicircle" />
+        <ChartTooltip />
+      </ChartDonutWrapper>
+    </div>
+  );
+};
+
 BasicDonutChart.storyName = 'Basic Donut Chart';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
 SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';
 ExtraLargeRadiusDonutChart.storyName = 'Extra Large Radius Donut Chart';
 CustomActiveShapeDonutChart.storyName = 'Custom Active Shape Donut Chart';
 DonutChartWithActiveShape.storyName = 'Donut Chart with Color theme';
+SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
