@@ -154,4 +154,20 @@ for (const [file, fileErrors] of Object.entries(fileErrorsMap)) {
 
 // write to fs
 fs.writeFileSync('./knowledgebase-ts-errors.json', JSON.stringify(errors, null, 2), 'utf-8');
-// console.log(errors);
+
+if (errors.length > 0) {
+  console.log('--------------------------------');
+
+  console.log(`❌ ${errors.length} Files have errors in knowledgebase\n\n`);
+  console.log(JSON.stringify(errors, null, 2));
+
+  console.log('--------------------------------');
+
+  process.exit(1);
+} else {
+  console.log('--------------------------------');
+  console.log('✅ No errors found in knowledgebase');
+  console.log('--------------------------------');
+
+  process.exit(0);
+}
