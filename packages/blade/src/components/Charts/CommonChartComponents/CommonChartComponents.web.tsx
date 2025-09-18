@@ -114,8 +114,6 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   return (
     <RechartsTooltip
       content={({ payload, label }) => {
-        console.log('payload', payload);
-        console.log('label', label);
         return (
           <div
             style={{
