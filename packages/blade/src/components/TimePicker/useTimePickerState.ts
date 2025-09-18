@@ -37,12 +37,13 @@ export const useTimePickerState = ({
   createCompleteTime: () => Date | null;
 } => {
   // Convert values for React Aria Time compatibility
-  const convertedValue = value ? dateToTimeValue(value) : undefined;
-  const convertedDefaultValue = defaultValue ? dateToTimeValue(defaultValue) : undefined;
+  const convertedValue = value !== undefined ? dateToTimeValue(value) : undefined;
+  const convertedDefaultValue =
+    defaultValue !== undefined ? dateToTimeValue(defaultValue) : undefined;
 
   const [internalTimeValue, setInternalTimeValue] = useControllableState<Time>({
-    value: convertedValue ?? getEmptyTimeValue(),
-    defaultValue: convertedDefaultValue ?? getEmptyTimeValue(),
+    value: convertedValue ?? undefined,
+    defaultValue: convertedDefaultValue ?? undefined,
     onChange: (timeValue) => {
       const date = timeValueToDate(timeValue);
       onChange?.({ value: date });

@@ -20,7 +20,7 @@ import type { TimeFormat } from './types';
  * // → null
  */
 export const dateToTimeValue = (date: Date | null): Time | null => {
-  if (!date) return null;
+  if (!date) return new Time(0, 0);
   return new Time(date.getHours(), date.getMinutes());
 };
 
