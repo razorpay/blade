@@ -4,8 +4,13 @@ const RADIUS_MAPPING = {
   large: { outerRadius: 162, innerRadius: 100 },
 };
 
+const START_AND_END_ANGLES = {
+  circle: { startAngle: 90, endAngle: 450 },
+  semicircle: { startAngle: 180, endAngle: 0 },
+};
+
 const componentId = {
   pieChart: 'pieChart',
 };
 
-export { RADIUS_MAPPING, componentId };
+export { RADIUS_MAPPING, componentId, START_AND_END_ANGLES };

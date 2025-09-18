@@ -39,6 +39,10 @@ type ChartPieProps = {
    * The color theme of the pie chart.
    */
   colorTheme?: colorTheme;
+  /**
+   * The type of the pie chart.
+   */
+  type?: 'circle' | 'semicircle';
 };
 
 type CellProps = {
@@ -50,7 +54,6 @@ type ChartPieWrapperProps = {
    *  Center text of pie chart
    */
   centerText?: string;
-  type?: 'donut' | 'pie';
   children?: React.ReactNode;
 };
 export type { ChartPieWrapperProps, CellProps, ChartPieProps };

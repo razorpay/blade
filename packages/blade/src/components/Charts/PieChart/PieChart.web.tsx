@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import {
   PieChart as RechartsPieChart,
   Pie as RechartsPie,
@@ -6,9 +6,8 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import { PieChartContext, usePieChartContext } from './PieChartContext';
 import type { ChartPieWrapperProps, CellProps, ChartPieProps } from './types';
-import { RADIUS_MAPPING } from './tokens';
+import { RADIUS_MAPPING, START_AND_END_ANGLES } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -22,41 +21,31 @@ export const Cell: React.FC<CellProps> = ({ color, ...rest }) => {
   return <RechartsCell {...rest} fill={resolvedFill} />;
 };
 
-const ChartPieWrapper: React.FC<ChartPieWrapperProps> = ({
-  children,
-  centerText,
-  type = 'donut',
-  ...props
-}) => {
+const ChartPieWrapper: React.FC<ChartPieWrapperProps> = ({ children, centerText, ...props }) => {
   const { theme } = useTheme();
-  const [isHovered, setIsHovered] = useState(false);
-
-  const isDonut = type === 'donut';
 
   return (
     <BaseBox {...metaAttribute({ name: 'donut-chart' })} width="100%" height="100%">
-      <PieChartContext.Provider value={{ type, isHovered, setIsHovered }}>
-        <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsPieChart {...props}>
-            {children}
-            {!isHovered && isDonut && centerText && (
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fill={theme.colors.surface.text.gray.normal}
-                fontSize={theme.typography.fonts.size[200]}
-                fontFamily={theme.typography.fonts.family.text}
-                fontWeight={theme.typography.fonts.weight.medium}
-                letterSpacing={theme.typography.letterSpacings[100]}
-              >
-                {centerText}
-              </text>
-            )}
-          </RechartsPieChart>
-        </RechartsResponsiveContainer>
-      </PieChartContext.Provider>
+      <RechartsResponsiveContainer width="100%" height="100%">
+        <RechartsPieChart {...props}>
+          {children}
+          {centerText && (
+            <text
+              x="50%"
+              y="50%"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fill={theme.colors.surface.text.gray.normal}
+              fontSize={theme.typography.fonts.size[200]}
+              fontFamily={theme.typography.fonts.family.text}
+              fontWeight={theme.typography.fonts.weight.medium}
+              letterSpacing={theme.typography.letterSpacings[100]}
+            >
+              {centerText}
+            </text>
+          )}
+        </RechartsPieChart>
+      </RechartsResponsiveContainer>
     </BaseBox>
   );
 };
@@ -70,10 +59,9 @@ const ChartPie: React.FC<ChartPieProps> = ({
   children,
   data,
   colorTheme = 'default',
+  type = 'circle',
   ...rest
 }) => {
-  const { setIsHovered, type } = usePieChartContext();
-  const isDonut = type === 'donut';
   const radiusConfig = RADIUS_MAPPING[radius];
   const themeColors = useChartsColorTheme({ colorTheme: colorTheme ?? 'default' });
 
@@ -100,14 +88,10 @@ const ChartPie: React.FC<ChartPieProps> = ({
       cx={cx}
       cy={cy}
       outerRadius={radiusConfig.outerRadius}
-      innerRadius={isDonut ? radiusConfig.innerRadius : 0}
+      innerRadius={radiusConfig.innerRadius}
       data={data}
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-      }}
+      startAngle={START_AND_END_ANGLES[type].startAngle}
+      endAngle={START_AND_END_ANGLES[type].endAngle}
     >
       {modifiedChildren}
     </RechartsPie>
