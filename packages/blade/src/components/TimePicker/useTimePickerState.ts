@@ -10,19 +10,9 @@ import { useControllableState } from '~utils/useControllable';
 const getEmptyTimeValue = (): Time => new Time(0, 0);
 
 /**
- * Custom hook for TimePicker state management
+ * Return type for useTimePickerState hook
  */
-export const useTimePickerState = ({
-  value,
-  defaultValue,
-  onChange,
-  isOpen,
-  defaultIsOpen = false,
-  onOpenChange,
-  timeFormat = '12h',
-  showFooterActions = true,
-  onApply,
-}: UseTimePickerStateProps): {
+type UseTimePickerStateReturn = {
   timeValue: Date | null;
   setTimeValue: (date: Date | null) => void;
   isOpen: boolean;
@@ -35,7 +25,22 @@ export const useTimePickerState = ({
   onApply: () => void;
   onCancel: () => void;
   createCompleteTime: () => Date | null;
-} => {
+};
+
+/**
+ * Custom hook for TimePicker state management
+ */
+export const useTimePickerState = ({
+  value,
+  defaultValue,
+  onChange,
+  isOpen,
+  defaultIsOpen = false,
+  onOpenChange,
+  timeFormat = '12h',
+  showFooterActions = true,
+  onApply,
+}: UseTimePickerStateProps): UseTimePickerStateReturn => {
   // Convert values for React Aria Time compatibility
   const convertedValue = value !== undefined ? dateToTimeValue(value) : undefined;
   const convertedDefaultValue =

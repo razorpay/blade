@@ -6,6 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
+import debounce from '~utils/lodashButBetter/debounce';
 
 // Styled scroll container with scroll snap
 const StyledScrollContainer = styled(BaseBox)`
@@ -40,9 +41,13 @@ const SpinWheel = ({
 }: SpinWheelProps): React.ReactElement => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const programmaticScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
+
+  // Debounced onChange to avoid jerky scrolling
+  const debouncedOnChange = debounce((value: string | number, index: number) => {
+    onChange(value, index);
+  }, 150);
 
   // Flag to prevent onValueChange from being triggered during auto-positioning
   // Problem: When minuteStep > 1 and user types "03", we auto-position to nearest step "00"
@@ -83,9 +88,6 @@ const SpinWheel = ({
   // Cleanup timeouts on unmount
   useEffect(() => {
     return () => {
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
       if (programmaticScrollTimeoutRef.current) {
         clearTimeout(programmaticScrollTimeoutRef.current);
       }
@@ -94,40 +96,26 @@ const SpinWheel = ({
 
   // Scroll event handler to update selection based on center position
   const handleScroll = (): void => {
-    if (isProgrammaticScroll.current || !containerRef.current || !itemRefs.current.length) return;
+    if (isProgrammaticScroll.current || !containerRef.current) return;
 
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const containerCenter = containerRect.top + containerRect.height / 2;
+    // Use document.elementFromPoint for efficient center detection (similar to Carousel)
+    const containerBB = containerRef.current.getBoundingClientRect();
+    const pointX = containerBB.left + containerBB.width * 0.5; // Center horizontally
+    const pointY = containerBB.top + containerBB.height * 0.5; // Center vertically
 
-    let closestIndex = 0;
-    let closestDistance = Infinity;
+    const element = document.elementFromPoint(pointX, pointY);
+    const spinWheelItem = element?.closest('[data-item-index]');
 
-    // Only check actual value items (not padding items)
-    values.forEach((_, index) => {
-      const item = itemRefs.current[index];
-      if (item) {
-        const itemRect = item.getBoundingClientRect();
-        const itemCenter = itemRect.top + itemRect.height / 2;
-        const distance = Math.abs(containerCenter - itemCenter);
+    if (!spinWheelItem) return;
 
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      }
-    });
+    const itemIndex = Number(spinWheelItem.getAttribute('data-item-index'));
+    if (isNaN(itemIndex) || itemIndex < 0 || itemIndex >= values.length) return;
 
     // Update active index immediately for visual feedback
-    onActiveIndexChange?.(closestIndex);
+    onActiveIndexChange?.(itemIndex);
 
     // Debounce the actual value change to avoid jerky scrolling
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-
-    scrollTimeoutRef.current = setTimeout(() => {
-      onChange(values[closestIndex], closestIndex);
-    }, 150);
+    debouncedOnChange(values[itemIndex], itemIndex);
   };
 
   const handleItemClick = (value: string | number, index: number): void => {
@@ -181,6 +169,7 @@ const SpinWheel = ({
                 justifyContent="center"
                 onClick={() => handleItemClick(value, index)}
                 style={{ cursor: 'pointer' }}
+                data-item-index={index}
               >
                 <Text
                   variant="body"

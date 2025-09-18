@@ -11,18 +11,16 @@ import { useTheme } from '~components/BladeProvider';
 import { ClockIcon } from '~components/Icons';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { mergeRefs } from '~utils/useMergeRefs';
+import { spacing } from '~tokens/global';
 
-const StyledTimeSegment = styled.div<{ segmentMaxValue?: number }>`
-  padding-left: 0.125rem;
-  padding-right: 0.125rem;
+const StyledTimeSegment = styled.div`
+  padding-left: ${spacing[1]}px;
+  padding-right: ${spacing[1]}px;
   box-sizing: content-box;
   font-variant-numeric: tabular-nums;
   text-align: right;
   outline: none;
-  border-radius: 0.125rem;
-
-  min-width: ${(props: { segmentMaxValue?: number }) =>
-    props.segmentMaxValue != null ? `${String(props.segmentMaxValue).length}ch` : 'auto'};
+  border-radius: ${spacing[1]}px;
 
   &:focus {
     background-color: ${({ theme }) =>
@@ -59,19 +57,19 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
   const { theme } = useTheme();
   const { segmentProps } = useDateSegment(segment, state, ref);
 
-  /* Filter out bi-directional text control characters (⁦⁩) that React Aria adds for RTL support
-            but aren't needed for our UI - they appear as extra literal segments in some environments */
+  // Filter out bi-directional text control characters (⁦⁩) that React Aria adds for RTL support but aren't needed for our UI - they appear as extra literal segments in some environments
 
   if ((segment.type === 'literal' && segment.text === '⁦') || segment.text === '⁩') {
     return null;
   }
+  // Calculate minWidth based on segment maxValue to prevent layout shifts
+  const minWidth = segment.maxValue != null ? `${String(segment.maxValue).length}ch` : 'auto';
 
   return (
     <StyledTimeSegment
       ref={ref}
-      segmentMaxValue={segment.maxValue}
       theme={theme}
-      style={segmentProps.style}
+      style={{ ...segmentProps.style, minWidth }}
       onFocus={(e: React.FocusEvent<HTMLDivElement>) => {
         setIsFocused(true);
         segmentProps.onFocus?.(e);

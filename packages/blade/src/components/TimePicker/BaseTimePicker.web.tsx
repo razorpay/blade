@@ -16,6 +16,7 @@ import { useTheme } from '~utils';
 import { usePopup } from '~components/DatePicker/usePopup';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { size as sizeTokens } from '~tokens/global';
 
 const _BaseTimePicker = ({
   value,
@@ -97,7 +98,11 @@ const _BaseTimePicker = ({
       }
     },
     referenceRef,
-    crossAxisOffset: labelPosition === 'left' ? (size === 'large' ? 192 : 132) : 0,
+    // crossAxisOffset calculation for left label positioning:
+    // Medium: 120px (label width) + 12px (padding) = 132px
+    // Large: 176px (label width) + 16px (padding) = 192px
+    crossAxisOffset:
+      labelPosition === 'left' ? (size === 'large' ? sizeTokens[192] : sizeTokens[132]) : 0,
   });
 
   // Fix for React Aria contentEditable focus issue with Floating UI
