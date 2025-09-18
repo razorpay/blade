@@ -252,6 +252,14 @@ const _BottomSheet = ({
       dragging,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
+      // Check if the touch started on a scrollable element inside the BottomSheet
+      const touchTarget = (down as any)?.target as Element;
+      const isScrollableElement = touchTarget?.closest('[data-allow-scroll]');
+
+      // If touch started on scrollable content, don't handle as BottomSheet drag
+      if (isScrollableElement) {
+        return;
+      }
       setIsDragging(Boolean(dragging));
       // lastOffsetY is the previous position user stopped dragging the sheet
       // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
