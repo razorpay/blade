@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { ChartPie, ChartPieWrapper , ChartTooltip} from '~components/Charts';
+import { ChartPie, ChartPieWrapper, ChartTooltip } from '~components/Charts';
 
 export default {
   title: 'Components/Charts/DonutChart',
@@ -47,7 +47,6 @@ export const SmallRadiusDonutChart: StoryFn<typeof ChartPie> = () => {
       <ChartPieWrapper>
         <ChartPie dataKey="value" nameKey="name" data={chartData} radius="small" />
         <ChartTooltip />
-
       </ChartPieWrapper>
     </div>
   );

@@ -114,6 +114,8 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   return (
     <RechartsTooltip
       content={({ payload, label }) => {
+        console.log('payload', payload);
+        console.log('label', label);
         return (
           <div
             style={{
@@ -126,7 +128,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
             <Heading size="small" weight="semibold" color="surface.text.staticWhite.normal">
               {label}
             </Heading>
-            <Box paddingTop="spacing.4">
+            <Box paddingTop={label ? 'spacing.4' : undefined}>
               {payload.map((item) => (
                 <Box
                   display="flex"
@@ -140,7 +142,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
                       style={{
                         width: theme.spacing[4],
                         height: theme.spacing[4],
-                        backgroundColor: item.color,
+                        backgroundColor: item.color || item.payload.fill,
                         borderRadius: theme.border.radius.small,
                       }}
                     />
