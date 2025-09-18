@@ -31,18 +31,24 @@ const bladeMcpToolEnum = z.enum(
 
 // Tool constants
 const publishLinesOfCodeMetricToolName = 'publish_lines_of_code_metric';
+// Detailed description covering how to derive numbers from Git diff statistics.
 const publishLinesOfCodeMetricToolDescription = `
-Publish the number of lines of code added by the user as a metric.
+Report the **diff size** of the most recent code edit.
 
-# When to Use This Tool
+The goal is to capture **net code-churn**—how many lines were added and how many were removed—so that the Blade team can track adoption and productivity.  Use the same convention that \`git diff --numstat\`  outputs:
 
-Call this tool **immediately after** you (the AI / Cursor) apply a code edit in the consumer’s project.  The caller should send both the number of lines **inserted** (\`linesOfCodeAdded\`) *and* the number of lines **deleted** (\`linesOfCodeRemoved\`) in that single operation.
+* **A new line** → counts as **1 _added_** line.
+* **A deleted line** → counts as **1 _removed_** line.
+* **A modified line** (content changed in place) → counts as **1 removed** **and** **1 added** (because the old content vanished and new content appeared).
 
-# Why This Metric Matters
+Keep these numbers **exactly** as your diff tool reports them—do **not** try to compensate for whitespace or formatting tweaks.
 
-Tracking the net churn (additions vs. removals) per edit helps the Blade team understand adoption, measure productivity boosts, and detect unusually large or small edits that may need review.
+────────────────────────────────────────────────
+# When to Call
 
+Call this tool **immediately after** you (the AI / Cursor) perform a code-edit tool call (e.g., \`edit_file\`).  One invocation per atomic edit is enough.
 
+────────────────────────────────────────────────
 # Example Invocation
 
 \`\`\`json
@@ -50,36 +56,27 @@ Tracking the net churn (additions vs. removals) per edit helps the Blade team un
   "name": "publish_lines_of_code_metric",
   "arguments": {
     "files": [
-      { "filePath": "src/components/Button.tsx", "linesAdded": 10, "linesRemoved": 0 },
-      { "filePath": "src/components/Header.tsx", "linesAdded": 5, "linesRemoved": 0 }
+      { "filePath": "src/components/Button.tsx", "linesAdded": 10, "linesRemoved": 2 },
+      { "filePath": "src/utils/helpers.ts", "linesAdded": 3, "linesRemoved": 1 }
     ],
-    "linesOfCodeAddedTotal": 15,
-    "linesOfCodeRemovedTotal": 0,
-    // Optional categorized metrics
-    "bladeUiLinesOfCodeAddedTotal": 12,
-    "bladeUiLinesOfCodeRemovedTotal": 0,
-    "nonBladeUiLinesOfCodeAddedTotal": 3,
-    "nonBladeUiLinesOfCodeRemovedTotal": 1,
-    "nonUiLinesOfCodeAddedTotal": 0,
-    "nonUiLinesOfCodeRemovedTotal": 2,
+    "linesAddedTotal": 13,
+    "linesRemovedTotal": 3,
+
+    // Aggregated optional buckets
+    "bladeUiLinesAddedTotal": 10,
+    "bladeUiLinesRemovedTotal": 2,
+    "nonBladeUiLinesAddedTotal": 3,
+    "nonBladeUiLinesRemovedTotal": 1,
+    "nonUiLinesAddedTotal": 0,
+    "nonUiLinesRemovedTotal": 0,
 
     "currentProjectRootDirectory": "/Users/alice/projects/my-app",
-    "toolsUsed": [
-      "hi_blade",
-      "create_new_blade_project",
-      "create_blade_cursor_rules",
-      "get_blade_component_docs",
-      "get_blade_pattern_docs",
-      "get_blade_general_docs",
-      "get_figma_to_code",
-      "get_changelog"
-    ]
+    "toolsUsed": ["get_blade_component_docs", "get_blade_pattern_docs"]
   }
 }
 \`\`\`
 
-\`linesOfCodeAdded\` and \`linesOfCodeRemoved\` MUST be non-negative integers.
-
+All numeric fields **must be non-negative integers**.
 `;
 
 // Tool schema
@@ -94,12 +91,8 @@ const publishLinesOfCodeMetricToolSchema = {
     )
     .nonempty()
     .describe('Breakdown of line changes per file in this operation.'),
-  linesOfCodeAddedTotal: z
-    .number()
-    .int()
-    .nonnegative()
-    .describe('Total lines added across all files.'),
-  linesOfCodeRemovedTotal: z
+  linesAddedTotal: z.number().int().nonnegative().describe('Total lines added across all files.'),
+  linesRemovedTotal: z
     .number()
     .int()
     .nonnegative()
@@ -114,7 +107,7 @@ const publishLinesOfCodeMetricToolSchema = {
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
   // New aggregated metrics for code categorization
-  bladeUiLinesOfCodeAddedTotal: z
+  bladeUiLinesAddedTotal: z
     .number()
     .int()
     .nonnegative()
@@ -122,7 +115,7 @@ const publishLinesOfCodeMetricToolSchema = {
     .describe(
       'Total lines of UI code that import or reference Blade components (e.g., <Button />, <TextInput />) that were added across all files.',
     ),
-  bladeUiLinesOfCodeRemovedTotal: z
+  bladeUiLinesRemovedTotal: z
     .number()
     .int()
     .nonnegative()
@@ -130,15 +123,15 @@ const publishLinesOfCodeMetricToolSchema = {
     .describe(
       'Total lines of UI code that import or reference Blade components that were removed across all files.',
     ),
-  nonBladeUiLinesOfCodeAddedTotal: z
+  nonBladeUiLinesAddedTotal: z
     .number()
     .int()
     .nonnegative()
     .optional()
     .describe(
-      'Total lines of UI component code (React/JSX/TSX) added that do NOT import or use Blade components — e.g., custom components or components from other libraries such as Material UI.',
+      'Total lines of UI component code (React/JSX/TSX) added that do NOT import or use Blade components — e.g., custom components or components from other libraries such as Material UI',
     ),
-  nonBladeUiLinesOfCodeRemovedTotal: z
+  nonBladeUiLinesRemovedTotal: z
     .number()
     .int()
     .nonnegative()
@@ -146,7 +139,7 @@ const publishLinesOfCodeMetricToolSchema = {
     .describe(
       'Total lines of UI component code that does NOT use Blade components that were removed across all files.',
     ),
-  nonUiLinesOfCodeAddedTotal: z
+  nonUiLinesAddedTotal: z
     .number()
     .int()
     .nonnegative()
@@ -154,7 +147,7 @@ const publishLinesOfCodeMetricToolSchema = {
     .describe(
       'Total lines of non-UI code such as business logic, state management, data fetching, utility functions, etc. that were added.',
     ),
-  nonUiLinesOfCodeRemovedTotal: z
+  nonUiLinesRemovedTotal: z
     .number()
     .int()
     .nonnegative()
@@ -169,16 +162,16 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
   typeof publishLinesOfCodeMetricToolSchema
 > = ({
   files,
-  linesOfCodeAddedTotal,
-  linesOfCodeRemovedTotal,
+  linesAddedTotal,
+  linesRemovedTotal,
   toolsUsed,
   currentProjectRootDirectory,
-  bladeUiLinesOfCodeAddedTotal = 0,
-  bladeUiLinesOfCodeRemovedTotal = 0,
-  nonBladeUiLinesOfCodeAddedTotal = 0,
-  nonBladeUiLinesOfCodeRemovedTotal = 0,
-  nonUiLinesOfCodeAddedTotal = 0,
-  nonUiLinesOfCodeRemovedTotal = 0,
+  bladeUiLinesAddedTotal,
+  bladeUiLinesRemovedTotal,
+  nonBladeUiLinesAddedTotal,
+  nonBladeUiLinesRemovedTotal,
+  nonUiLinesAddedTotal,
+  nonUiLinesRemovedTotal,
 }) => {
   try {
     // Send analytics event
@@ -190,14 +183,14 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
       eventName: analyticsToolCallEventName,
       properties: {
         toolName: publishLinesOfCodeMetricToolName,
-        linesOfCodeAddedTotal,
-        linesOfCodeRemovedTotal,
-        bladeUiLinesOfCodeAddedTotal,
-        bladeUiLinesOfCodeRemovedTotal,
-        nonBladeUiLinesOfCodeAddedTotal,
-        nonBladeUiLinesOfCodeRemovedTotal,
-        nonUiLinesOfCodeAddedTotal,
-        nonUiLinesOfCodeRemovedTotal,
+        linesAddedTotal,
+        linesRemovedTotal,
+        bladeUiLinesAddedTotal: bladeUiLinesAddedTotal ?? 0,
+        bladeUiLinesRemovedTotal: bladeUiLinesRemovedTotal ?? 0,
+        nonBladeUiLinesAddedTotal: nonBladeUiLinesAddedTotal ?? 0,
+        nonBladeUiLinesRemovedTotal: nonBladeUiLinesRemovedTotal ?? 0,
+        nonUiLinesAddedTotal: nonUiLinesAddedTotal ?? 0,
+        nonUiLinesRemovedTotal: nonUiLinesRemovedTotal ?? 0,
         files: flattenedFiles,
         toolsUsed: (toolsUsed ?? []).join(','),
         rootDirectoryName: currentProjectRootDirectory.split('/').pop(),
@@ -209,7 +202,7 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
         {
           type: 'text',
           text:
-            `Recorded ${linesOfCodeAddedTotal} lines added and ${linesOfCodeRemovedTotal} lines removed across ` +
+            `Recorded ${linesAddedTotal} lines added and ${linesRemovedTotal} lines removed across ` +
             `${files.length} files. Tools used: ${(toolsUsed ?? []).join(', ')}.`,
         },
       ],
