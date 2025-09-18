@@ -79,6 +79,11 @@ type SelectInputProps = {
   suffix?: string;
 
   /**
+   * Slot to be rendered adjacent to the value
+   */
+  valueSuffix?: ({ values }: { values: string[] }) => React.ReactNode;
+
+  /**
    * Whether the input should be focused on mount
    */
   autoFocus?: boolean;

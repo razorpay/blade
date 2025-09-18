@@ -1,5 +1,4 @@
 // Export LineCharts (includes shared components)
-export * from './LineCharts';
-export * from './BaseChartComponents';
-export * from './BarCharts';
-export * from './PieChart';
+export * from './LineChart';
+export * from './AreaChart';
+export * from './CommonChartComponents';

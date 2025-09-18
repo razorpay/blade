@@ -1,8 +1,0 @@
-name: Quality Checks
-on:
-  schedule:
-    - cron: "0 17 * * *"
-jobs:
-  Analysis:
-    uses: razorpay/genesis/.github/workflows/quality-checks.yml@master
-    secrets: inherit

@@ -1,0 +1,4297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Line /> should render Line with all line types 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts73-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337L136.66666666666666,268.33333333333337L136.66666666666666,400L400,400L400,531.6666666666667L663.3333333333333,531.6666666666667L663.3333333333333,136.66666666666663L795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rs:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all line types 2`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts76-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337L268.3333333333333,268.33333333333337L268.3333333333333,400L531.6666666666666,400L531.6666666666666,531.6666666666667L795,531.6666666666667L795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rt:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all line types 3`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts79-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337L5,400L268.3333333333333,400L268.3333333333333,531.6666666666667L531.6666666666666,531.6666666666667L531.6666666666666,136.66666666666663L795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:ru:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all line types 4`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts82-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337L268.3333333333333,400L531.6666666666666,531.6666666666667L795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rv:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all line types 5`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts85-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r10:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all stroke styles 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts88-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r11:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px, 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all stroke styles 2`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts91-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r12:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px, 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with all stroke styles 3`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts94-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r13:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with custom activeDot configuration 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts100-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r15:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with custom dot configuration 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts97-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r14:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+                <g
+                  class="recharts-layer recharts-line-dots"
+                >
+                  <circle
+                    class="recharts-dot recharts-line-dot"
+                    cx="5"
+                    cy="268.33333333333337"
+                    fill="red"
+                    height="790"
+                    r="4"
+                    stroke="blue"
+                    stroke-width="2"
+                    width="790"
+                  />
+                  <circle
+                    class="recharts-dot recharts-line-dot"
+                    cx="268.3333333333333"
+                    cy="400"
+                    fill="red"
+                    height="790"
+                    r="4"
+                    stroke="blue"
+                    stroke-width="2"
+                    width="790"
+                  />
+                  <circle
+                    class="recharts-dot recharts-line-dot"
+                    cx="531.6666666666666"
+                    cy="531.6666666666667"
+                    fill="red"
+                    height="790"
+                    r="4"
+                    stroke="blue"
+                    stroke-width="2"
+                    width="790"
+                  />
+                  <circle
+                    class="recharts-dot recharts-line-dot"
+                    cx="795"
+                    cy="136.66666666666663"
+                    fill="red"
+                    height="790"
+                    r="4"
+                    stroke="blue"
+                    stroke-width="2"
+                    width="790"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with custom name 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts70-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rr:"
+                  name="Monthly Sales"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Line /> should render Line with default props 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts67-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rq:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should handle data with missing properties 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts49-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,5ZM795,400Z"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rk:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should handle empty data array 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts48-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts35-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:re:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rf:"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with connectNulls true 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts45-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,5L795,400"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:ri:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with custom colors 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts25-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:ra:"
+                  stroke="hsla(214, 20%, 84%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rb:"
+                  stroke="hsla(25, 100%, 80%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with different line types 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts11-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,400L268.3333333333333,498.75L531.6666666666666,597.5L795,301.25"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r4:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r5:"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,202.5L136.66666666666666,202.5L136.66666666666666,350.625L400,350.625L400,498.75L663.3333333333333,498.75L663.3333333333333,54.375L795,54.375"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r6:"
+                  stroke="hsla(252, 100%, 88%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with different stroke styles 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts18-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,400C92.77777777777777,432.9166666666667,180.55555555555554,465.8333333333333,268.3333333333333,498.75C356.1111111111111,531.6666666666666,443.88888888888886,597.5,531.6666666666666,597.5C619.4444444444445,597.5,707.2222222222222,449.375,795,301.25"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r7:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r8:"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px, 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,202.5C92.77777777777777,251.875,180.55555555555554,301.25,268.3333333333333,350.625C356.1111111111111,400,443.88888888888886,498.75,531.6666666666666,498.75C619.4444444444445,498.75,707.2222222222222,276.5625,795,54.375"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r9:"
+                  stroke="hsla(252, 100%, 88%, 1)"
+                  stroke-dasharray="0px, 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts30-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rc:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+                <g
+                  class="recharts-layer recharts-line-dots"
+                >
+                  <circle
+                    class="recharts-dot recharts-line-dot"
+                    cx="5"
+                    cy="268.33333333333337"
+                    fill="#fff"
+                    height="790"
+                    r="3"
+                    stroke="hsla(219, 95%, 85%, 1)"
+                    stroke-width="3"
+                    width="790"
+                  />
+                  <circle
+                    class="recharts-dot recharts-line-dot"
+                    cx="268.3333333333333"
+                    cy="400"
+                    fill="#fff"
+                    height="790"
+                    r="3"
+                    stroke="hsla(219, 95%, 85%, 1)"
+                    stroke-width="3"
+                    width="790"
+                  />
+                  <circle
+                    class="recharts-dot recharts-line-dot"
+                    cx="531.6666666666666"
+                    cy="531.6666666666667"
+                    fill="#fff"
+                    height="790"
+                    r="3"
+                    stroke="hsla(219, 95%, 85%, 1)"
+                    stroke-width="3"
+                    width="790"
+                  />
+                  <circle
+                    class="recharts-dot recharts-line-dot"
+                    cx="795"
+                    cy="136.66666666666663"
+                    fill="#fff"
+                    height="790"
+                    r="3"
+                    stroke="hsla(219, 95%, 85%, 1)"
+                    stroke-width="3"
+                    width="790"
+                  />
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rd:"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts4-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,400C92.77777777777777,432.9166666666667,180.55555555555554,465.8333333333333,268.3333333333333,498.75C356.1111111111111,531.6666666666666,443.88888888888886,597.5,531.6666666666666,597.5C619.4444444444445,597.5,707.2222222222222,449.375,795,301.25"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1:"
+                  name="Sales"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r2:"
+                  name="Profit"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,202.5C92.77777777777777,251.875,180.55555555555554,301.25,268.3333333333333,350.625C356.1111111111111,400,443.88888888888886,498.75,531.6666666666666,498.75C619.4444444444445,498.75,707.2222222222222,276.5625,795,54.375"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r3:"
+                  name="Revenue"
+                  stroke="hsla(252, 100%, 88%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with showLegend false 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts40-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rg:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rh:"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render basic LineChart with single line 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts1-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r0:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render complete chart with all components 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+.c3.c3.c3.c3.c3 {
+  padding-top: 12px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(0,0%,100%,1);
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <div
+              class="recharts-tooltip-wrapper"
+              style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
+              tabindex="-1"
+              xmlns="http://www.w3.org/1999/xhtml"
+            >
+              <div
+                style="background-color: rgb(0, 0, 0); border-radius: 8px; border: 1px solid hsla(211, 20%, 52%, 0.18); padding: 12px;"
+              >
+                <h6
+                  class="c2"
+                  data-blade-component="heading"
+                />
+                <div
+                  class="c3"
+                  data-blade-component="box"
+                />
+              </div>
+            </div>
+            <div
+              class="recharts-legend-wrapper"
+              style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 16px;"
+            >
+              <div
+                class="c4"
+                data-blade-component="box"
+              >
+                <div
+                  class="c5"
+                  data-blade-component="box"
+                >
+                  <div
+                    class="c6"
+                    data-blade-component="box"
+                  >
+                    <span
+                      style="background-color: rgb(92, 92, 92); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
+                    />
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                    >
+                      Profit
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="c5"
+                  data-blade-component="box"
+                >
+                  <div
+                    class="c6"
+                    data-blade-component="box"
+                  >
+                    <span
+                      style="background-color: rgb(180, 180, 180); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
+                    />
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                    >
+                      Sales
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts52-clip"
+                >
+                  <rect
+                    height="760"
+                    width="730"
+                    x="65"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-cartesian-grid"
+              >
+                <g
+                  class="recharts-cartesian-grid-horizontal"
+                >
+                  <line
+                    fill="none"
+                    height="760"
+                    stroke="hsla(211, 20%, 52%, 0.18)"
+                    width="730"
+                    x="65"
+                    x1="65"
+                    x2="795"
+                    y="5"
+                    y1="765"
+                    y2="765"
+                  />
+                  <line
+                    fill="none"
+                    height="760"
+                    stroke="hsla(211, 20%, 52%, 0.18)"
+                    width="730"
+                    x="65"
+                    x1="65"
+                    x2="795"
+                    y="5"
+                    y1="575"
+                    y2="575"
+                  />
+                  <line
+                    fill="none"
+                    height="760"
+                    stroke="hsla(211, 20%, 52%, 0.18)"
+                    width="730"
+                    x="65"
+                    x1="65"
+                    x2="795"
+                    y="5"
+                    y1="385"
+                    y2="385"
+                  />
+                  <line
+                    fill="none"
+                    height="760"
+                    stroke="hsla(211, 20%, 52%, 0.18)"
+                    width="730"
+                    x="65"
+                    x1="65"
+                    x2="795"
+                    y="5"
+                    y1="195"
+                    y2="195"
+                  />
+                  <line
+                    fill="none"
+                    height="760"
+                    stroke="hsla(211, 20%, 52%, 0.18)"
+                    width="730"
+                    x="65"
+                    x1="65"
+                    x2="795"
+                    y="5"
+                    y1="5"
+                    y2="5"
+                  />
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+              >
+                <line
+                  class="recharts-cartesian-axis-line"
+                  fill="none"
+                  height="30"
+                  orientation="bottom"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="730"
+                  x="65"
+                  x1="65"
+                  x2="795"
+                  y="765"
+                  y1="765"
+                  y2="765"
+                />
+                <g
+                  class="recharts-cartesian-axis-ticks"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="65"
+                      x2="65"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="65"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="65"
+                      >
+                        Jan
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="308.33333333333337"
+                      x2="308.33333333333337"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="308.33333333333337"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="308.33333333333337"
+                      >
+                        Feb
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="551.6666666666667"
+                      x2="551.6666666666667"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="551.6666666666667"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="551.6666666666667"
+                      >
+                        Mar
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="795"
+                      x2="795"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="795"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="795"
+                      >
+                        Apr
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+                <text
+                  fill="hsla(211, 26%, 34%, 1)"
+                  font-family=""Inter", "Inter Fallback Arial", Arial"
+                  font-size="12"
+                  font-weight="500"
+                  letter-spacing="0"
+                  text-anchor="middle"
+                  x="398"
+                  y="803.5"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+              >
+                <line
+                  class="recharts-cartesian-axis-line"
+                  fill="none"
+                  height="760"
+                  orientation="left"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="60"
+                  x="5"
+                  x1="65"
+                  x2="65"
+                  y="5"
+                  y1="5"
+                  y2="765"
+                />
+                <g
+                  class="recharts-cartesian-axis-ticks"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="765"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="765"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        0
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="575"
+                      y2="575"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="575"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        1500
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="385"
+                      y2="385"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="385"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        3000
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="195"
+                      y2="195"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="195"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        4500
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="5"
+                      y2="5"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="5"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        6000
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,258.33333333333337C146.11111111111114,300.55555555555554,227.22222222222223,342.77777777777777,308.33333333333337,385C389.4444444444445,427.22222222222223,470.5555555555556,511.66666666666674,551.6666666666667,511.66666666666674C632.7777777777778,511.66666666666674,713.8888888888889,321.66666666666674,795,131.66666666666663"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:rl:"
+                  name="Sales"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,511.66666666666674C146.11111111111114,532.7777777777778,227.22222222222223,553.8888888888889,308.33333333333337,575C389.4444444444445,596.1111111111111,470.5555555555556,638.3333333333334,551.6666666666667,638.3333333333334C632.7777777777778,638.3333333333334,713.8888888888889,543.3333333333333,795,448.33333333333326"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:rm:"
+                  name="Profit"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="730"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Integration Tests should handle complex data structure 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts110-clip"
+                >
+                  <rect
+                    height="760"
+                    width="730"
+                    x="65"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+              >
+                <line
+                  class="recharts-cartesian-axis-line"
+                  fill="none"
+                  height="30"
+                  orientation="bottom"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="730"
+                  x="65"
+                  x1="65"
+                  x2="795"
+                  y="765"
+                  y1="765"
+                  y2="765"
+                />
+                <g
+                  class="recharts-cartesian-axis-ticks"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="65"
+                      x2="65"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="65"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="65"
+                      >
+                        2023-01-01
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="795"
+                      x2="795"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="795"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="795"
+                      >
+                        2023-02-01
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+                <text
+                  fill="hsla(211, 26%, 34%, 1)"
+                  font-family=""Inter", "Inter Fallback Arial", Arial"
+                  font-size="12"
+                  font-weight="500"
+                  letter-spacing="0"
+                  text-anchor="middle"
+                  x="398"
+                  y="803.5"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+              >
+                <line
+                  class="recharts-cartesian-axis-line"
+                  fill="none"
+                  height="760"
+                  orientation="left"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="60"
+                  x="5"
+                  x1="65"
+                  x2="65"
+                  y="5"
+                  y1="5"
+                  y2="765"
+                />
+                <g
+                  class="recharts-cartesian-axis-ticks"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="765"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="765"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        0
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="575"
+                      y2="575"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="575"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        1000
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="385"
+                      y2="385"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="385"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        2000
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="195"
+                      y2="195"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="195"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        3000
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="5"
+                      y2="5"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="5"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        4000
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,5L795,195"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r18:"
+                  name="Sales"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,385L795,480"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r19:"
+                  name="Profit"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="730"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Integration Tests should handle mixed data types 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts116-clip"
+                >
+                  <rect
+                    height="760"
+                    width="730"
+                    x="65"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+              >
+                <line
+                  class="recharts-cartesian-axis-line"
+                  fill="none"
+                  height="30"
+                  orientation="bottom"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="730"
+                  x="65"
+                  x1="65"
+                  x2="795"
+                  y="765"
+                  y1="765"
+                  y2="765"
+                />
+                <g
+                  class="recharts-cartesian-axis-ticks"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="65"
+                      x2="65"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="65"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="65"
+                      >
+                        Jan
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="430"
+                      x2="430"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="430"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="430"
+                      >
+                        Feb
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="795"
+                      x2="795"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="795"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="795"
+                      >
+                        Mar
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+                <text
+                  fill="hsla(211, 26%, 34%, 1)"
+                  font-family=""Inter", "Inter Fallback Arial", Arial"
+                  font-size="12"
+                  font-weight="500"
+                  letter-spacing="0"
+                  text-anchor="middle"
+                  x="398"
+                  y="803.5"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+              >
+                <line
+                  class="recharts-cartesian-axis-line"
+                  fill="none"
+                  height="760"
+                  orientation="left"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="60"
+                  x="5"
+                  x1="65"
+                  x2="65"
+                  y="5"
+                  y1="5"
+                  y2="765"
+                />
+                <g
+                  class="recharts-cartesian-axis-ticks"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="765"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="765"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        0
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="575"
+                      y2="575"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="575"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        50
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="385"
+                      y2="385"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="385"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        100
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="195"
+                      y2="195"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="195"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        150
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="5"
+                      y2="5"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="5"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        200
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,385C186.66666666666669,195,308.3333333333333,5,430,5C551.6666666666666,5,673.3333333333334,100,795,195"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r1a:"
+                  name="Value"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,764.0500000000001C186.66666666666669,763.575,308.3333333333333,763.1000000000001,430,763.1000000000001C551.6666666666666,763.1000000000001,673.3333333333334,763.3375000000001,795,763.575"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r1b:"
+                  name="Percentage"
+                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="730"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts106-clip"
+                >
+                  <rect
+                    height="760"
+                    width="730"
+                    x="65"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+              >
+                <line
+                  class="recharts-cartesian-axis-line"
+                  fill="none"
+                  height="30"
+                  orientation="bottom"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="730"
+                  x="65"
+                  x1="65"
+                  x2="795"
+                  y="765"
+                  y1="765"
+                  y2="765"
+                />
+                <g
+                  class="recharts-cartesian-axis-ticks"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="65"
+                      x2="65"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="65"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="65"
+                      >
+                        Jan
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="308.33333333333337"
+                      x2="308.33333333333337"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="308.33333333333337"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="308.33333333333337"
+                      >
+                        Feb
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="551.6666666666667"
+                      x2="551.6666666666667"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="551.6666666666667"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="551.6666666666667"
+                      >
+                        Mar
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="30"
+                      orientation="bottom"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="730"
+                      x="65"
+                      x1="795"
+                      x2="795"
+                      y="765"
+                      y1="771"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="30"
+                      letter-spacing="0"
+                      orientation="bottom"
+                      stroke="none"
+                      text-anchor="middle"
+                      width="730"
+                      x="795"
+                      y="773"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="795"
+                      >
+                        Apr
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+                <text
+                  fill="hsla(211, 26%, 34%, 1)"
+                  font-family=""Inter", "Inter Fallback Arial", Arial"
+                  font-size="12"
+                  font-weight="500"
+                  letter-spacing="0"
+                  text-anchor="middle"
+                  x="398"
+                  y="803.5"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+              >
+                <line
+                  class="recharts-cartesian-axis-line"
+                  fill="none"
+                  height="760"
+                  orientation="left"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="60"
+                  x="5"
+                  x1="65"
+                  x2="65"
+                  y="5"
+                  y1="5"
+                  y2="765"
+                />
+                <g
+                  class="recharts-cartesian-axis-ticks"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="765"
+                      y2="765"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="765"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        0
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="575"
+                      y2="575"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="575"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        1500
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="385"
+                      y2="385"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="385"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        3000
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="195"
+                      y2="195"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="195"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        4500
+                      </tspan>
+                    </text>
+                  </g>
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  >
+                    <line
+                      class="recharts-cartesian-axis-tick-line"
+                      fill="none"
+                      height="760"
+                      orientation="left"
+                      stroke="hsla(211, 20%, 52%, 0.18)"
+                      width="60"
+                      x="5"
+                      x1="59"
+                      x2="65"
+                      y="5"
+                      y1="5"
+                      y2="5"
+                    />
+                    <text
+                      class="recharts-text recharts-cartesian-axis-tick-value"
+                      fill="hsla(212, 39%, 16%, 1)"
+                      font-family=""Inter", "Inter Fallback Arial", Arial"
+                      font-size="12"
+                      font-weight="400"
+                      height="760"
+                      letter-spacing="0"
+                      orientation="left"
+                      stroke="none"
+                      text-anchor="end"
+                      width="60"
+                      x="57"
+                      y="5"
+                    >
+                      <tspan
+                        dy="0.355em"
+                        x="57"
+                      >
+                        6000
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,258.33333333333337C146.11111111111114,300.55555555555554,227.22222222222223,342.77777777777777,308.33333333333337,385C389.4444444444445,427.22222222222223,470.5555555555556,511.66666666666674,551.6666666666667,511.66666666666674C632.7777777777778,511.66666666666674,713.8888888888889,321.66666666666674,795,131.66666666666663"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r17:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="730"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Styling Tests should apply correct animation properties for dashed lines 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts122-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1c:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px, 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart Styling Tests should apply correct animation properties for solid lines 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts125-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1d:"
+                  stroke="hsla(219, 95%, 85%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="3"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
