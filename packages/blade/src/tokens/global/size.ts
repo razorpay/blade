@@ -74,7 +74,7 @@ export const size = {
   100: 100,
   /** 120 px */
   120: 120,
-  /** 132 px - TimePicker crossAxisOffset medium size */
+  /** 132 px */
   132: 132,
   /** 140 px */
   140: 140,
@@ -86,7 +86,7 @@ export const size = {
   176: 176,
   /** 196 px */
   196: 196,
-  /** 192 px - TimePicker crossAxisOffset large size */
+  /** 192 px */
   192: 192,
   /** 198 px */
   198: 198,
