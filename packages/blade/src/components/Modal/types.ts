@@ -14,7 +14,12 @@ export type ModalProps = {
   /**
    *  Callback function when user clicks on close button or outside the modal or on pressing escape key.
    */
-  onDismiss: () => void;
+  onDismiss?: () => void;
+  /**
+   * Whether the modal can be dismissed by clicking outside or pressing escape key
+   * @default false
+   */
+  isDismissible?: boolean;
   /**
    *  Ref to the element to be focused on opening the modal.
    */
