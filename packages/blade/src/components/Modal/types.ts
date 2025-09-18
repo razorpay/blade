@@ -17,7 +17,7 @@ export type ModalProps = {
   onDismiss?: () => void;
   /**
    * Whether the modal can be dismissed by clicking outside or pressing escape key
-   * @default false
+   * @default true
    */
   isDismissible?: boolean;
   /**
