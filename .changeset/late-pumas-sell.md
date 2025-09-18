@@ -17,9 +17,9 @@ Introduces a new prop `isDismissible` in `Modal` and `BottomSheet` which can be 
 ```
 
 ```jsx
-<BottomSheetComponent isOpen={isOpen} isDismissible={false}> 
+<BottomSheet isOpen={isOpen} isDismissible={false}> 
 // .... bottomsheet component ....
-</BottomSheetComponent>
+</BottomSheet>
 
 ```
 

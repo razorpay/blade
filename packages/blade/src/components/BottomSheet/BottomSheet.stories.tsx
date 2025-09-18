@@ -1175,10 +1175,6 @@ export const ProductUseCase1 = ProductUseCase1Example.bind({});
 const NonDismissibleTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const handleClose = (): void => {
-    setIsOpen(false);
-  };
-
   return (
     <BaseBox>
       <Button onClick={() => setIsOpen(true)}>Open Non-Dismissible BottomSheet</Button>

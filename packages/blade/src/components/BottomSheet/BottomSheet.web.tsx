@@ -341,7 +341,7 @@ const _BottomSheet = ({
     {
       from: [0, positionY],
       filterTaps: true,
-      enabled: isDismissible && isOnTopOfStack && _isOpen,
+      enabled: isOnTopOfStack && _isOpen,
     },
   );
 
