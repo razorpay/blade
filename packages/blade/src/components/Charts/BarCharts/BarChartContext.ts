@@ -1,11 +1,5 @@
 import { createContext, useContext } from 'react';
-// Context for chart orientation
-interface BarChartContextType {
-  layout?: 'horizontal' | 'vertical';
-  activeIndex?: number;
-  colorTheme: 'default' | 'informational';
-  totalBars: number;
-}
+import type { BarChartContextType } from './types';
 
 export const BarChartContext = createContext<BarChartContextType>({
   layout: 'horizontal',

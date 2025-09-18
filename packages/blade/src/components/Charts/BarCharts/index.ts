@@ -1,1 +1,1 @@
-export * from './BarCharts';
+export { ChartBarWrapper, ChartBar } from './BarCharts';

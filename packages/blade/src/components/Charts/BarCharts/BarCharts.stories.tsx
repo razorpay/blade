@@ -1,13 +1,20 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { XAxis, YAxis, CartesianGrid, ChartToolTip, Legend } from '../BaseChartComponents';
-import { BarChart, Bar } from './BarCharts';
+import {
+  ChartBar,
+  ChartBarWrapper,
+  ChartXAxis,
+  ChartYAxis,
+  ChartCartesianGrid,
+  ChartTooltip,
+  ChartLegend,
+} from '~components/Charts';
 
 export default {
   title: 'Components/Charts/BarChart',
-  component: BarChart,
+  component: ChartBar,
   tags: ['autodocs'],
-} as Meta<typeof BarChart>;
+} as Meta<typeof ChartBar>;
 
 const chartData = [
   { name: 'Jan', seriesA: 4000, seriesB: 2400, seriesC: 1200 },
@@ -24,134 +31,142 @@ const chartData = [
   { name: 'Dec', seriesA: 1200, seriesB: 4600, seriesC: 2000 },
 ];
 
-export const TinyBarChart: StoryFn<typeof BarChart> = () => {
+export const TinyBarChart: StoryFn<typeof ChartBar> = () => {
   return (
     <div style={{ width: '100px', height: '50px' }}>
-      <BarChart data={chartData.slice(0, 6)}>
-        <Bar dataKey="seriesA" color="chart.background.categorical.azure.moderate" />
-      </BarChart>
+      <ChartBarWrapper data={chartData.slice(0, 6)}>
+        <ChartBar dataKey="seriesA" color="chart.background.categorical.azure.moderate" />
+      </ChartBarWrapper>
     </div>
   );
 };
 
-export const SimpleBarChart: StoryFn<typeof BarChart> = () => {
+export const SimpleBarChart: StoryFn<typeof ChartBar> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <BarChart data={chartData.slice(0, 6)}>
-        <CartesianGrid />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <ChartToolTip />
-        <Legend />
-        <Bar
+      <ChartBarWrapper data={chartData.slice(0, 6)}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartBar
           dataKey="seriesA"
           name="Series A"
           color="chart.background.categorical.azure.moderate"
         />
-        <Bar
+        <ChartBar
           dataKey="seriesB"
           name="Series B"
           color="chart.background.categorical.orchid.moderate"
         />
-      </BarChart>
+      </ChartBarWrapper>
     </div>
   );
 };
 
-export const StackedBarChart: StoryFn<typeof BarChart> = () => {
+export const StackedBarChart: StoryFn<typeof ChartBar> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <BarChart data={chartData}>
-        <CartesianGrid />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <ChartToolTip />
-        <Legend />
-        <Bar
+      <ChartBarWrapper data={chartData}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartBar
           dataKey="seriesA"
           name="Series A"
           stackId="stack-1"
           color="chart.background.sequential.crimson.500"
         />
-        <Bar
+        <ChartBar
           dataKey="seriesB"
           name="Series B"
           stackId="stack-1"
           color="chart.background.sequential.crimson.400"
         />
-        <Bar
+        <ChartBar
           dataKey="seriesC"
           name="Series C"
           stackId="stack-1"
           color="chart.background.sequential.crimson.300"
         />
-      </BarChart>
+      </ChartBarWrapper>
     </div>
   );
 };
 
-export const GroupedBarChart: StoryFn<typeof BarChart> = () => {
+export const GroupedBarChart: StoryFn<typeof ChartBar> = () => {
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <BarChart data={chartData.slice(0, 5)}>
-        <CartesianGrid />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <ChartToolTip />
-        <Legend />
-        <Bar dataKey="seriesA" name="Series A" color="chart.background.sequential.azure.500" />
-        <Bar dataKey="seriesB" name="Series B" color="chart.background.sequential.crimson.500" />
-        <Bar dataKey="seriesC" name="Series C" color="chart.background.sequential.magenta.500" />
-      </BarChart>
+      <ChartBarWrapper data={chartData.slice(0, 5)}>
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartBar dataKey="seriesA" name="Series A" color="chart.background.sequential.azure.500" />
+        <ChartBar
+          dataKey="seriesB"
+          name="Series B"
+          color="chart.background.sequential.crimson.500"
+        />
+        <ChartBar
+          dataKey="seriesC"
+          name="Series C"
+          color="chart.background.sequential.magenta.500"
+        />
+      </ChartBarWrapper>
     </div>
   );
 };
 
-export const VerticalBarChart: StoryFn<typeof BarChart> = () => {
+export const VerticalBarChart: StoryFn<typeof ChartBar> = () => {
   return (
     <div style={{ width: '100%', height: '500px' }}>
-      <BarChart data={chartData.slice(0, 5)} layout="vertical">
-        <CartesianGrid />
-        <XAxis type="number" />
-        <YAxis type="category" dataKey="name" />
-        <ChartToolTip />
-        <Legend />
-        <Bar
+      <ChartBarWrapper data={chartData.slice(0, 5)} layout="vertical">
+        <ChartCartesianGrid />
+        <ChartXAxis type="number" />
+        <ChartYAxis type="category" dataKey="name" />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartBar
           dataKey="seriesA"
           name="Series A"
           color="chart.background.sequential.azure.400"
           stackId="2"
         />
-        <Bar
+        <ChartBar
           dataKey="seriesB"
           name="Series B"
           color="chart.background.sequential.azure.500"
           stackId="2"
         />
-        <Bar
+        <ChartBar
           dataKey="seriesC"
           name="Series C"
           color="chart.background.sequential.azure.600"
           stackId="2"
         />
-      </BarChart>
+      </ChartBarWrapper>
     </div>
   );
 };
 
-export const BarChartWithInformationalColorTheme: StoryFn<typeof BarChart> = () => {
+export const BarChartWithInformationalColorTheme: StoryFn<typeof ChartBar> = () => {
   return (
     <div style={{ width: '100%', height: '500px' }}>
-      <BarChart data={chartData.slice(0, 5)} layout="vertical" colorTheme="informational">
-        <CartesianGrid />
-        <XAxis type="number" />
-        <YAxis type="category" dataKey="name" />
-        <ChartToolTip />
-        <Legend />
-        <Bar dataKey="seriesA" name="Series A" stackId="2" />
-        <Bar dataKey="seriesB" name="Series B" stackId="2" />
-        <Bar dataKey="seriesC" name="Series C" stackId="2" />
-      </BarChart>
+      <ChartBarWrapper data={chartData.slice(0, 5)} layout="vertical" colorTheme="default">
+        <ChartCartesianGrid />
+        <ChartXAxis type="number" />
+        <ChartYAxis type="category" dataKey="name" />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartBar dataKey="seriesA" name="Series A" stackId="2" />
+        <ChartBar dataKey="seriesB" name="Series B" stackId="2" />
+        <ChartBar dataKey="seriesC" name="Series C" stackId="2" />
+      </ChartBarWrapper>
     </div>
   );
 };

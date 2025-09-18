@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import type { ComponentProps } from 'react';
 import {
   BarChart as RechartsBarChart,
   Bar as RechartsBar,
@@ -7,50 +6,17 @@ import {
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
+import type { ChartBarProps, ChartBarWrapperProps } from './types';
+import { BAR_CHART_CORNER_RADIUS, DISTANCE_BETWEEN_STACKED_BARS, componentIds } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
-import type {
-  ChartColorCategories,
-  ChartCategoricalEmphasis,
-  ChartSequentialEmphasis,
-} from '~tokens/theme/theme';
 import isNumber from '~utils/lodashButBetter/isNumber';
-import { throwBladeError } from '~utils/logger';
-
-// Color token that allows both categorical and sequential chart colors
-export type BladeColorToken =
-  | `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`
-  | `chart.background.sequential.${Exclude<
-      ChartColorCategories,
-      'gray'
-    >}.${keyof ChartSequentialEmphasis}`;
-
-export interface BarProps
-  extends Omit<
-    ComponentProps<typeof RechartsBar>,
-    'fill' | 'dataKey' | 'name' | 'label' | 'activeBar'
-  > {
-  dataKey: string;
-  name?: string; // default to dataKey
-  color?: BladeColorToken;
-  stackId?: string;
-  activeBar?: React.ReactElement | boolean;
-  label?: React.ReactElement | boolean;
-  /*
-   * @private
-   */
-  _index?: number;
-}
-
-export type BarChartProps = Omit<ComponentProps<typeof RechartsBarChart>, 'margin'> & {
-  children?: React.ReactNode;
-  colorTheme?: 'default' | 'informational';
-};
-
-const DEFAULT_MARGIN = { top: 16, right: 16, bottom: 16, left: 16 };
-const MAX_BARS = 10;
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 export type RechartsShapeProps = {
   x: number;
@@ -61,12 +27,8 @@ export type RechartsShapeProps = {
   index: number;
 };
 
-// Arbitrary sequential limit per palette (can be tuned later with design)
-const BAR_CHART_CORNER_RADIUS = 2;
-const DISTANCE_BETWEEN_STACKED_BARS = 2;
-
 // Bar component - resolves Blade color tokens to actual colors
-export const Bar: React.FC<BarProps> = ({
+const _ChartBar: React.FC<ChartBarProps> = ({
   color,
   name,
   dataKey,
@@ -76,8 +38,8 @@ export const Bar: React.FC<BarProps> = ({
   ...rest
 }) => {
   const { theme } = useTheme();
-  const { layout, activeIndex, colorTheme, totalBars } = useBarChartContext();
-  const defaultColorArray = useChartsColorTheme({ colorTheme });
+  const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
+  const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
   const animationBegin = isStacked
@@ -89,20 +51,21 @@ export const Bar: React.FC<BarProps> = ({
   return (
     <RechartsBar
       {...rest}
-      dataKey={dataKey}
-      name={name ?? dataKey}
       fill={fill}
       legendType="rect"
       activeBar={activeBar}
       label={label}
       animationBegin={animationBegin}
       animationDuration={animationDuration}
+      dataKey={dataKey}
+      name={name}
       // https://github.com/recharts/recharts/issues/2244#issuecomment-2288572842
+      // we have this shape to have distance b/w bar charts
+      // high change we might not have this in updated designs.
       shape={(props: unknown) => {
         const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
         const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.4) : 1;
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
-        // Check if this is a vertical layout (bars going up/down)
         const isVertical = layout === 'vertical';
 
         if (isVertical) {
@@ -126,7 +89,7 @@ export const Bar: React.FC<BarProps> = ({
             x={x}
             y={y + gap / 2}
             width={width}
-            height={height - gap}
+            height={height > gap ? height - gap : 0}
             rx={BAR_CHART_CORNER_RADIUS}
             ry={BAR_CHART_CORNER_RADIUS}
             fillOpacity={fillOpacity}
@@ -137,27 +100,28 @@ export const Bar: React.FC<BarProps> = ({
   );
 };
 
+const ChartBar = assignWithoutSideEffects(_ChartBar, {
+  componentId: componentIds.barChart,
+});
+
 // BarChart wrapper with default margin, auto-color assignment, and max bars guard
-export const BarChart: React.FC<BarChartProps> = ({
+const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   colorTheme = 'default',
-  ...props
+  layout = 'horizontal',
+  testID,
+  data = [],
+  ...restProps
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
   const { barChartModifiedChildrens, totalBars } = React.useMemo(() => {
     let BarChartIndex = 0;
     const modifiedChildren = React.Children.map(children, (child) => {
-      if (__DEV__ && BarChartIndex >= MAX_BARS) {
-        throwBladeError({
-          message: `Too many bars configured. Maximum allowed is ${MAX_BARS}.`,
-          moduleName: 'BarChart',
-        });
-      }
-      if (React.isValidElement(child) && child.type === Bar) {
+      if (React.isValidElement(child) && getComponentId(child) === componentIds.barChart) {
         return React.cloneElement(child, {
           _index: BarChartIndex++,
-        } as Partial<BarProps>);
+        } as Partial<ChartBarProps>);
       }
       return child;
     });
@@ -168,20 +132,24 @@ export const BarChart: React.FC<BarChartProps> = ({
     };
   }, [children]);
   return (
-    <BaseBox {...metaAttribute({ name: 'bar-chart' })} width="100%" height="100%">
-      <BarChartContext.Provider
-        value={{ layout: props.layout, activeIndex, colorTheme, totalBars }}
-      >
+    <BaseBox
+      {...metaAttribute({ name: 'bar-chart', testID })}
+      {...makeAnalyticsAttribute(restProps)}
+      width="100%"
+      height="100%"
+      {...restProps}
+    >
+      <BarChartContext.Provider value={{ layout, activeIndex, colorTheme, totalBars }}>
         <RechartsResponsiveContainer width="100%" height="100%">
           <RechartsBarChart
-            {...props}
-            margin={DEFAULT_MARGIN}
             barSize={49}
             barGap={2}
             barCategoryGap={2}
             onMouseMove={(state) => {
               setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
             }}
+            layout={layout}
+            data={data}
           >
             {barChartModifiedChildrens}
           </RechartsBarChart>
@@ -190,3 +158,5 @@ export const BarChart: React.FC<BarChartProps> = ({
     </BaseBox>
   );
 };
+
+export { ChartBarWrapper, ChartBar };
