@@ -1,20 +1,28 @@
-import { resolve, join } from 'path';
-import { existsSync, readFileSync } from 'fs';
+import { join, basename } from 'path';
+import { existsSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { KNOWLEDGEBASE_DIRECTORY, hasOutDatedRules, getBladeComponentsList } from '../utils.js';
+import {
+  CONSUMER_CURSOR_RULES_RELATIVE_PATH,
+  analyticsToolCallEventName,
+} from '../utils/tokens.js';
+import { hasOutDatedRules, getBladeDocsList } from '../utils/generalUtils.js';
+import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 
-const bladeComponentsList = getBladeComponentsList();
+import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
+import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
-const getBladeComponentDocsDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
+const bladeComponentsList = getBladeDocsList('components');
+const bladeComponentsListString = bladeComponentsList.join(', ');
+const getBladeComponentDocsToolName = 'get_blade_component_docs';
 
-const getBladeComponentDocsSchema = {
+const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
+
+const getBladeComponentDocsToolSchema = {
   componentsList: z
     .string()
     .describe(
-      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsList.join(
-        ', ',
-      )}`,
+      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsListString}`,
     ),
   currentProjectRootDirectory: z
     .string()
@@ -23,77 +31,52 @@ const getBladeComponentDocsSchema = {
     ),
 };
 
-const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSchema> = ({
+const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDocsToolSchema> = ({
   componentsList,
   currentProjectRootDirectory,
 }) => {
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
+  const invalidComponentsString = invalidComponents.join(', ');
   if (invalidComponents.length > 0) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text: `Invalid argument componentsList. Invalid values: ${invalidComponents.join(
-            ', ',
-          )}. Valid component docs values: ${bladeComponentsList.join(
-            ', ',
-          )}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      mcpErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponentsString}. Valid component docs values: ${bladeComponentsListString}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
+    });
   }
 
-  const ruleFilePath = join(currentProjectRootDirectory, '.cursor/rules/frontend-blade-rules.mdc');
+  const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
 
   if (!existsSync(ruleFilePath)) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
+    });
   }
 
   if (hasOutDatedRules(ruleFilePath)) {
-    return {
-      isError: true,
-      content: [
-        {
-          type: 'text',
-          text:
-            'Cursor rules are outdated. Call create_blade_cursor_rules first to update cursor rules',
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      mcpErrorMessage: `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
+    });
   }
 
   try {
-    // Parse the comma-separated string into an array of component names
-    const componentNames = componentsList.split(',').map((name: string) => name.trim());
-
-    // Build the formatted documentation text
-    let responseText = `Blade component documentation for: ${componentsList}\n\n`;
-
-    // Process each component
-    for (const componentName of componentNames) {
-      responseText += `## ${componentName}\n`;
-
-      try {
-        const filePath = resolve(KNOWLEDGEBASE_DIRECTORY, `${componentName}.md`);
-        const content = readFileSync(filePath, 'utf8');
-        responseText += `${content}\n\n`;
-      } catch (error: unknown) {
-        console.error(`Error reading markdown for component ${componentName}:`, error);
-        responseText += `⚠️ Error: Could not read documentation for ${componentName}. The component may not exist or there may be an issue with the file.\n\n`;
-      }
-    }
+    const responseText = getBladeDocsResponseText({
+      docsList: componentsList,
+      documentationType: 'components',
+    });
 
     // Return the formatted response
+    sendAnalytics({
+      eventName: analyticsToolCallEventName,
+      properties: {
+        toolName: getBladeComponentDocsToolName,
+        componentsList,
+        rootDirectoryName: basename(currentProjectRootDirectory),
+      },
+    });
+
     return {
       content: [
         {
@@ -103,22 +86,16 @@ const getBladeComponentDocsCallback: ToolCallback<typeof getBladeComponentDocsSc
       ],
     };
   } catch (error: unknown) {
-    console.error('Error processing component documentation request:', error);
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Error retrieving documentation for components: ${componentsList}. ${
-            error instanceof Error ? error.message : 'Unknown error occurred.'
-          }`,
-        },
-      ],
-    };
+    return handleError({
+      toolName: getBladeComponentDocsToolName,
+      errorObject: error,
+    });
   }
 };
 
 export {
-  getBladeComponentDocsCallback,
-  getBladeComponentDocsSchema,
-  getBladeComponentDocsDescription,
+  getBladeComponentDocsToolName,
+  getBladeComponentDocsToolDescription,
+  getBladeComponentDocsToolSchema,
+  getBladeComponentDocsToolCallback,
 };

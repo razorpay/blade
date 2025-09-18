@@ -129,6 +129,7 @@ exports[`<Tour /> should render 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
   color: hsla(211,26%,34%,1);
 }
 
@@ -191,7 +192,7 @@ exports[`<Tour /> should render 1`] = `
 .c16.c16.c16.c16.c16 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
@@ -552,6 +553,9 @@ exports[`<Tour /> should render 1`] = `
               >
                 <button
                   class="c15"
+                  data-analytics-active-step="1"
+                  data-analytics-name="spotlight-popover-tour-footer-primary-action-button"
+                  data-analytics-total-steps="2"
                   data-blade-component="button"
                   role="button"
                   type="button"

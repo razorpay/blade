@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const EyeIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _EyeIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -22,5 +23,9 @@ const EyeIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const EyeIcon = assignWithoutSideEffects(_EyeIcon, {
+  componentId: 'EyeIcon',
+});
 
 export default EyeIcon;

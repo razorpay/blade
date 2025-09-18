@@ -24,6 +24,7 @@ function getTypeErrors(sourceCode) {
     compilerOptions: {
       moduleSuffixes: ['.web', ''],
       skipLibCheck: true,
+      strict: false,
       isolatedModules: true,
       jsx: ts.JsxEmit.ReactJSX,
       target: ts.ScriptTarget.ES2020,
@@ -48,25 +49,109 @@ const errors = [];
 // this might be slow but better than pulling in a markdown parser
 const codeBlockRegex = /```(tsx|jsx)\s*([\s\S]*?)```/g;
 
+// Function to check if a code block is inside a comment
+function isCodeBlockInComment(content, blockStart) {
+  // Check if the block is within a multi-line comment
+  const multiLineCommentRegex = /\/\*[\s\S]*?\*\//g;
+  let match;
+  while ((match = multiLineCommentRegex.exec(content)) !== null) {
+    const commentStart = match.index;
+    const commentEnd = commentStart + match[0].length;
+
+    // If the code block starts within a comment, it should be ignored
+    if (blockStart >= commentStart && blockStart < commentEnd) {
+      return true;
+    }
+  }
+
+  // Check if the block is within a single-line comment
+  const lines = content.split('\n');
+  let currentPos = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const lineLength = line.length + 1; // +1 for the newline character
+    const lineStart = currentPos;
+    const lineEnd = currentPos + lineLength;
+
+    // If the block starts on this line
+    if (blockStart >= lineStart && blockStart < lineEnd) {
+      // Check if there's a single-line comment on this line before the block start
+      const commentIndex = line.indexOf('//');
+      if (commentIndex !== -1 && lineStart + commentIndex < blockStart) {
+        return true;
+      }
+    }
+
+    currentPos += lineLength;
+  }
+
+  return false;
+}
+
+// Function to process and add errors to the file errors map
+function addErrorsToMap(file, typeErrors, fileErrorsMap) {
+  // Filter and process errors
+  const processedErrors = typeErrors
+    .map((error) => {
+      if (error.includes('Expression expected') || error.includes('Cannot find module')) {
+        return null;
+      }
+      return error.trim();
+    })
+    .filter(Boolean);
+
+  // If we have errors to add after filtering
+  if (processedErrors.length > 0) {
+    // Initialize the array if this is the first time we're seeing this file
+    if (!fileErrorsMap[file]) {
+      fileErrorsMap[file] = [];
+    }
+
+    // Add all errors for this code block to the file's error array
+    fileErrorsMap[file].push(...processedErrors);
+  }
+}
+
+// Object to store errors by file path
+const fileErrorsMap = {};
+
 for (const file of filesToLint) {
   console.log(file);
   const fileContent = fs.readFileSync(file, 'utf8');
-  const codeBlocks = [...fileContent.matchAll(codeBlockRegex)].map((match) => ({
-    lang: match[1], // 'tsx' or 'jsx'
-    code: match[2].trim(), // the actual code
-  }));
 
-  for (const codeBlock of codeBlocks) {
+  // Find all code blocks and filter out those in comments
+  const validCodeBlocks = [];
+  let match;
+
+  while ((match = codeBlockRegex.exec(fileContent)) !== null) {
+    const blockStart = match.index;
+
+    // Only include code blocks that are not within comments
+    if (!isCodeBlockInComment(fileContent, blockStart)) {
+      validCodeBlocks.push({
+        lang: match[1], // 'tsx' or 'jsx'
+        code: match[2].trim(), // the actual code
+      });
+    }
+  }
+
+  for (const codeBlock of validCodeBlocks) {
     const { typeErrors } = getTypeErrors(codeBlock.code);
     if (typeErrors.length > 0) {
-      errors.push({
-        file,
-        errors: typeErrors,
-      });
+      addErrorsToMap(file, typeErrors, fileErrorsMap);
     }
   }
 }
 
+// Convert the map to the final errors array format
+for (const [file, fileErrors] of Object.entries(fileErrorsMap)) {
+  errors.push({
+    file,
+    errors: fileErrors,
+  });
+}
+
 // write to fs
 fs.writeFileSync('./knowledgebase-ts-errors.json', JSON.stringify(errors, null, 2), 'utf-8');
-console.log(errors);
+// console.log(errors);

@@ -369,6 +369,9 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   const hasFilterChipSelectInput =
     dropdownTriggerer === dropdownComponentIds.triggers.FilterChipSelectInput;
 
+  const hasInputDropdownButton =
+    dropdownTriggerer === dropdownComponentIds.triggers.InputDropdownButton;
+
   const renderOnWebAs = props.href ? 'a' : 'button';
   /**
    * In SelectInput, returns the isSelected according to selected indexes in the state
@@ -380,7 +383,8 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     if (
       dropdownTriggerer === dropdownComponentIds.triggers.SelectInput ||
       hasAutoComplete ||
-      hasFilterChipSelectInput
+      hasFilterChipSelectInput ||
+      hasInputDropdownButton
     ) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);

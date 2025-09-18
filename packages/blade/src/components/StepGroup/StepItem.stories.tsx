@@ -47,6 +47,10 @@ export default {
       options: Object.keys(markerMapping),
       mapping: markerMapping,
     },
+    minWidth: {
+      description: 'Minimum width of the StepItem. Only applies in horizontal orientation.',
+      control: 'text',
+    },
     _nestingLevel: {
       table: {
         disable: true,

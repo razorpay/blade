@@ -50,6 +50,7 @@ const _PreviewHeader = ({
             icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
             variant="tertiary"
             onClick={_onFullScreen}
+            accessibilityLabel={isFullScreen ? 'Exit Full Screen' : 'Enter Full Screen'}
           />
         </BaseBox>
         {trailing}
@@ -148,7 +149,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
               icon={ZoomInIcon}
               onClick={handleZoomIn}
               variant="tertiary"
-              aria-label="Zoom in"
+              accessibilityLabel="Zoom In"
               isDisabled={zoom >= 8}
             />
             <Text size="medium"> {Math.round(zoom * 100)}%</Text>
@@ -156,26 +157,26 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
               icon={ZoomOutIcon}
               onClick={handleZoomOut}
               variant="tertiary"
-              aria-label="Zoom out"
+              accessibilityLabel="Zoom Out"
               isDisabled={zoom <= 0.1}
             />
             <Button
               icon={RefreshIcon}
               onClick={() => handleReset()}
               variant="tertiary"
-              aria-label="Reset zoom"
+              accessibilityLabel="Reset Zoom"
             />
           </BaseBox>
         ) : (
           <BaseBox display="flex" alignItems="center" gap="spacing.2">
             <ButtonGroup variant="tertiary">
-              <Button icon={ZoomInIcon} onClick={handleZoomIn} aria-label="Zoom in" />
-              <Button icon={ZoomOutIcon} onClick={handleZoomOut} aria-label="Zoom out" />
+              <Button icon={ZoomInIcon} onClick={handleZoomIn} accessibilityLabel="Zoom In" />
+              <Button icon={ZoomOutIcon} onClick={handleZoomOut} accessibilityLabel="Zoom Out" />
             </ButtonGroup>
             <Button
               icon={RefreshIcon}
               onClick={() => handleReset()}
-              aria-label="Reset zoom"
+              accessibilityLabel="Reset Zoom"
               variant="tertiary"
             />
           </BaseBox>

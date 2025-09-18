@@ -193,7 +193,7 @@ type SideNavItemProps = {
    *
    * Meant for Indicator, Icon, etc
    */
-  leading: React.ReactElement;
+  leading: React.ReactElement | IconComponent;
 
   /**
    * Trailing slot for SideNavItem.
@@ -240,7 +240,10 @@ type SideNavBodyProps = {
   children: React.ReactElement | React.ReactElement[];
 };
 
-type SideNavLevelProps = { children: React.ReactElement | React.ReactElement[] };
+type SideNavLevelProps = {
+  children: React.ReactElement | React.ReactElement[];
+  titleSuffix?: React.ReactElement;
+};
 
 export type {
   SideNavProps,

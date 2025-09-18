@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const BankAccountVerificationIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _BankAccountVerificationIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const BankAccountVerificationIcon: IconComponent = ({ size, color, ...styledProp
     </Svg>
   );
 };
+
+const BankAccountVerificationIcon = assignWithoutSideEffects(_BankAccountVerificationIcon, {
+  componentId: 'BankAccountVerificationIcon',
+});
 
 export default BankAccountVerificationIcon;

@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const TransactionsIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _TransactionsIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -14,5 +15,9 @@ const TransactionsIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const TransactionsIcon = assignWithoutSideEffects(_TransactionsIcon, {
+  componentId: 'TransactionsIcon',
+});
 
 export default TransactionsIcon;

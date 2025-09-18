@@ -157,6 +157,8 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'borderBottomStyle'
     | 'borderLeftStyle'
     | 'borderRightStyle'
+    | 'backdropFilter'
+    | 'transition'
   > & {
       /**
        * Sets the elevation for Box
@@ -204,6 +206,7 @@ type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor:
     | BackgroundColorString<'surface'>
     | BackgroundColorString<'overlay'>
+    | BackgroundColorString<'feedback'>
     | 'transparent';
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
@@ -214,7 +217,7 @@ type BoxVisualProps = MakeObjectResponsive<{
 type StyledPropsBlade = Partial<
   Omit<
     MarginProps &
-      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
+      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order' | 'flexWrap'> &
       PositionProps &
       Pick<
         GridProps,
@@ -332,5 +335,5 @@ type BoxRefType = Platform.Select<{
   native: View;
 }>;
 
-export type { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps };
+export type { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps, GridProps };
 export { validBoxAsValues };

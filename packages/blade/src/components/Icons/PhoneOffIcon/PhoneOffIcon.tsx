@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const PhoneOffIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _PhoneOffIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const PhoneOffIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const PhoneOffIcon = assignWithoutSideEffects(_PhoneOffIcon, {
+  componentId: 'PhoneOffIcon',
+});
 
 export default PhoneOffIcon;

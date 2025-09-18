@@ -223,21 +223,6 @@ describe('Modal', () => {
     expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('should throw error when invalid children are passed', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-    const Example = (): React.ReactElement => {
-      return (
-        <Modal isOpen={true} onDismiss={() => {}}>
-          <Text>I am not supposed to be here</Text>
-        </Modal>
-      );
-    };
-    expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade: Modal]: Only `ModalHeader, ModalBody, ModalFooter` components are accepted in `Modal` children',
-    );
-    mockConsoleError.mockRestore();
-  });
-
   it('renders a Modal with custom zIndex', () => {
     const { getByTestId } = renderWithTheme(
       <Modal isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Modal" zIndex={9999}>
@@ -253,7 +238,7 @@ describe('Modal', () => {
   });
 
   it('should support adding data-analytics attribute', () => {
-    const { getByTestId } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <Modal
         isOpen={true}
         onDismiss={() => {}}
@@ -270,7 +255,7 @@ describe('Modal', () => {
         </ModalFooter>
       </Modal>,
     );
-    const container = getByTestId('modal-wrapper');
+    const container = getByRole('dialog');
     expect(container).toHaveAttribute('data-analytics-modal');
     expect(container).toHaveAttribute('data-analytics-modal', 'test-modal');
   });

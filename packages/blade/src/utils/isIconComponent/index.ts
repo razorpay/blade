@@ -1,0 +1,1 @@
+export { isIconComponent } from './isIconComponent';

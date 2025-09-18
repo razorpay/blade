@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const OptimizerIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _OptimizerIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const OptimizerIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const OptimizerIcon = assignWithoutSideEffects(_OptimizerIcon, {
+  componentId: 'OptimizerIcon',
+});
 
 export default OptimizerIcon;

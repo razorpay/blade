@@ -45,10 +45,12 @@ import {
   TransactionsIcon,
   WalletIcon,
   CustomersIcon,
+  TestIcon,
+  GlobeIcon,
+  DollarIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
-import { Indicator } from '~components/Indicator';
 import { Switch as BladeSwitch } from '~components/Switch';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -57,6 +59,7 @@ import { Card, CardBody } from '~components/Card';
 import { ProgressBar } from '~components/ProgressBar';
 import { Text } from '~components/Typography';
 import { Alert } from '~components/Alert';
+import { Badge } from '~components/Badge';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -156,7 +159,7 @@ const DashboardSkeleton = ({ children }: { children: React.ReactElement }): Reac
 
 type ItemsType = Pick<
   SideNavLinkProps,
-  'icon' | 'title' | 'href' | 'trailing' | 'tooltip' | 'onClick'
+  'icon' | 'title' | 'href' | 'trailing' | 'tooltip' | 'onClick' | 'titleSuffix'
 >;
 type NavItemsJSONType = {
   type: 'section';
@@ -193,6 +196,29 @@ const navItemsJSON: NavItemsJSONType[] = [
         icon: FileTextIcon,
         title: 'Account Statement',
         href: '/app/account-statement',
+      },
+    ],
+  },
+  {
+    type: 'section',
+    title: 'International Payments',
+    items: [
+      {
+        icon: GlobeIcon,
+        title: 'Global',
+        href: '/app/global',
+        titleSuffix: (
+          <Badge color="positive" size="small">
+            New
+          </Badge>
+        ),
+        items: [
+          {
+            icon: DollarIcon,
+            title: 'International Payments',
+            href: '/app/international-payments',
+          },
+        ],
       },
     ],
   },
@@ -409,6 +435,7 @@ const SideNavExample = ({
 }: SideNavProps & { showExampleContentPadding?: boolean }): React.ReactElement => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
   const [isTestModeActive, setIsTestModeActive] = React.useState(false);
+
   const location = useLocation();
 
   const getSectionExpanded = (items: NavItemsJSONType['items']): boolean => {
@@ -446,14 +473,16 @@ const SideNavExample = ({
                     return <NavItem key={l1Item.title} {...l1Item} />;
                   }
 
+                  const { titleSuffix, ...l1ItemWithoutTitleSuffix } = l1Item;
+
                   return (
                     <NavItem
                       key={l1Item.title}
-                      {...l1Item}
+                      {...l1ItemWithoutTitleSuffix}
                       activeOnLinks={getAllChildHrefs(l1Item.items)}
                       href={l1Item.items[0].href}
                     >
-                      <SideNavLevel key={l1Item.title}>
+                      <SideNavLevel key={l1Item.title} titleSuffix={l1Item.titleSuffix}>
                         {l1Item.items?.map((l2Item) => {
                           if (!l2Item.items) {
                             return (
@@ -488,14 +517,7 @@ const SideNavExample = ({
           <SideNavItem
             as="label"
             title="Test Mode"
-            leading={
-              <Indicator
-                color={isTestModeActive ? 'notice' : 'positive'}
-                emphasis="intense"
-                accessibilityLabel=""
-              />
-            }
-            backgroundColor={isTestModeActive ? `feedback.background.notice.subtle` : undefined}
+            leading={TestIcon}
             trailing={
               <BladeSwitch
                 accessibilityLabel=""

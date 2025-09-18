@@ -11,6 +11,9 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { Code, Text } from '~components/Typography';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { InfoIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
@@ -60,6 +63,7 @@ export default {
     onPreviousMonth: baseProp,
     onPreviousYear: baseProp,
     locale: baseProp,
+    footer: baseProp,
     accessibilityLabel: inputProp,
     errorText: inputProp,
     helpText: inputProp,
@@ -108,11 +112,6 @@ import { m } from 'framer-motion';
 } as Meta<DatePickerProps<'single' | 'range'>>;
 
 const DatePickerTemplate: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
-  if (args.selectionType === 'range' && typeof args.label === 'string') {
-    throw new Error(
-      '[Storybook Controls]: Cannot use string label for range selection, please switch to the RangeDatePicker story',
-    );
-  }
   if (args.selectionType === 'single' && typeof args.label === 'object') {
     throw new Error(
       '[Storybook Controls]: Cannot use {start,end} label for single selection, please switch to the SingleDatePicker story',
@@ -134,16 +133,22 @@ SingleDatePicker.storyName = 'SingleDatePicker';
 SingleDatePicker.args = {
   label: 'Select a date',
   selectionType: 'single',
+  size: 'large',
 };
 
 export const RangeDatePicker = DatePickerTemplate.bind({});
 RangeDatePicker.storyName = 'RangeDatePicker';
 RangeDatePicker.args = {
-  label: { start: 'Start Date', end: 'End Date' },
+  label: { start: 'Select a date range' },
   selectionType: 'range',
 };
 
-export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args }) => {
+export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ..._args }) => {
+  const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([
+    dayjs().subtract(7, 'days').toDate(),
+    dayjs().toDate(),
+  ]);
+
   return (
     <Box>
       <Text>
@@ -164,11 +169,22 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
       </Text>
 
       <DatePickerComponent
+        label={{ start: 'Select a date range' }}
         selectionType="range"
+        value={selectedDates}
         onChange={(date) => {
           console.log(date);
+          setSelectedDates(date as DatesRangeValue);
         }}
         presets={[
+          {
+            label: 'Today',
+            value: (date) => [dayjs(date).startOf('day').toDate(), date],
+          },
+          {
+            label: 'Yesterday',
+            value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+          },
           {
             label: 'Past 7 days',
             value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
@@ -185,17 +201,26 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ...args
             label: 'Past year',
             value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
           },
+          {
+            label: 'Past financial year',
+            value: (date) => {
+              const d = dayjs(date);
+              const year = d.month() >= 3 ? d.year() : d.year() - 1;
+
+              return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+            },
+          },
+          {
+            label: 'Custom',
+            value: () => [null, null] as DatesRangeValue,
+          },
         ]}
-        {...args}
       />
     </Box>
   );
 };
 
 DatePickerPresets.storyName = 'With Presets';
-DatePickerPresets.args = {
-  label: { start: 'Start Date', end: 'End Date' },
-};
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -219,7 +244,7 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
         <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
       </Box>
       <DatePickerComponent
-        label={{ start: 'Start Date', end: 'End Date' }}
+        label={{ start: 'Select a date range' }}
         selectionType="range"
         isOpen={isOpen}
         onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
@@ -236,7 +261,7 @@ export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
           selectionType="single"
           value={date}
           onChange={(date) => {
-            setDate(date);
+            if (date) setDate(date);
           }}
         />
       </Box>
@@ -275,8 +300,8 @@ export const Validations: StoryFn<typeof DatePickerComponent> = () => {
       </Text>
       <DatePickerComponent
         validationState={hasError ? 'error' : 'none'}
-        errorText={{ start: 'Cannot select a range which is more than 3 days' }}
-        label={{ start: 'Start Date', end: 'End Date' }}
+        errorText="Cannot select a range which is more than 3 days"
+        label={{ start: 'Select a date range' }}
         selectionType="range"
         value={date}
         onChange={(date) => {
@@ -307,7 +332,7 @@ export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
         <Text size="small">{`maxDate={dayjs().add(1, 'week').toDate()}`}</Text>
       </Box>
       <DatePickerComponent
-        label={{ start: 'Start Date', end: 'End Date' }}
+        label={{ start: 'Select a date range' }}
         selectionType="range"
         minDate={dayjs().subtract(1, 'week').toDate()}
         maxDate={dayjs().add(1, 'week').toDate()}
@@ -354,7 +379,7 @@ export const LabelPositionLeft: StoryFn<typeof DatePickerComponent> = () => {
         <DatePickerComponent
           labelPosition="left"
           selectionType="range"
-          label={{ start: 'Select a range' }}
+          label={{ start: 'Select a date range' }}
         />
         <DatePickerComponent selectionType="single" labelPosition="left" label="Select a date" />
       </Box>
@@ -382,7 +407,7 @@ export const MonthPicker: StoryFn<typeof DatePickerComponent> = ({ ...args }) =>
       >
         Note: picker is only supported in single selection mode
       </Text>
-      <DatePickerComponent picker="month" selectionType="single" {...args} />
+      <DatePickerComponent format="MMM" picker="month" selectionType="single" {...args} />
     </Box>
   );
 };
@@ -533,4 +558,103 @@ export const ControlledFilterChipDatePickerRange: StoryFn<typeof FilterChipDateP
       />
     </Box>
   );
+};
+
+export const DisabledDatePickerWithFilterChipSelectInput: StoryFn<
+  typeof DatePickerComponent
+> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [date, setDate] = React.useState<DatesRangeValue>([
+    new Date(),
+    dayjs().add(3, 'day').toDate(),
+  ]);
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">isOpen</Code>, <Code size="medium">value</Code> and associated
+        event handlers you can control the FilterChipDatePicker.
+      </Text>
+      <Box marginBottom="spacing.5">
+        <Text>
+          Selected: [{dayjs(date[0]).format('DD-MM-YYYY')}, {dayjs(date[1]).format('DD-MM-YYYY')}]
+        </Text>
+        <Text marginTop="spacing.2">IsOpen: {JSON.stringify(isOpen)}</Text>
+      </Box>
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        value={date}
+        onChange={(date) => {
+          setDate(date as DatesRangeValue);
+        }}
+        onClearButtonClick={() => {
+          setDate([null, null]);
+        }}
+        isDisabled
+      />
+    </Box>
+  );
+};
+
+export const DatePickerWithLabelSuffixTrailing: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box>
+      <Box display="flex" gap="spacing.5" flexDirection="column">
+        <DatePickerComponent
+          selectionType="single"
+          labelPosition="left"
+          label="Select a date"
+          labelSuffix={
+            <Tooltip content="Select a date" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+        />
+        <DatePickerComponent
+          labelPosition="left"
+          selectionType="range"
+          label="Select a date range"
+          labelSuffix={
+            <Tooltip content="Select a date" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+export const DatePickerWithFooter = DatePickerTemplate.bind({});
+DatePickerWithFooter.storyName = 'DatePicker with Footer';
+DatePickerWithFooter.args = {
+  label: 'Select a date',
+  selectionType: 'range',
+  footer: (
+    <Box display="flex" flexDirection="column" gap="spacing.2">
+      <Text size="small" color="surface.text.gray.normal">
+        This section only displays records from the last 45 days. This section only displays records
+        from the last 45 days.
+      </Text>
+      <Link size="small" href="#">
+        Link to report tab
+      </Link>
+    </Box>
+  ),
+};
+
+export const WithoutActionButtons = DatePickerTemplate.bind({});
+WithoutActionButtons.storyName = 'Without Action Buttons';
+WithoutActionButtons.args = {
+  label: 'Select a date',
+  selectionType: 'single',
+  showFooterActions: false,
 };

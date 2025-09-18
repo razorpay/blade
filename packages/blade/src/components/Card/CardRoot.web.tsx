@@ -9,8 +9,24 @@ import { useIsMobile } from '~utils/useIsMobile';
 import type { BladeElementRef } from '~utils/types';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
-  ({ as, theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
-    const selectedColor = isSelected ? theme.colors.surface.border.primary.normal : 'transparent';
+  ({
+    as,
+    theme,
+    isSelected,
+    isFocused,
+    shouldScaleOnHover,
+    isPressed,
+    isMobile,
+    validationState,
+  }) => {
+    const getCardBorderColor = (): string => {
+      if (validationState === 'error') return theme.colors.interactive.border.negative.default;
+      if (validationState === 'success') return theme.colors.interactive.border.positive.default;
+      if (isSelected) return theme.colors.surface.border.primary.normal;
+      return 'transparent';
+    };
+
+    const selectedColor = getCardBorderColor();
     const selectedBorder = `0px 0px 0px ${theme.border.width.thicker}px ${selectedColor}`;
     //  focused state
     const focusRing = isFocused

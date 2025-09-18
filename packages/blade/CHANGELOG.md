@@ -1,5 +1,389 @@
 # @razorpay/blade
 
+## 12.53.0
+
+### Minor Changes
+
+- ab1773547: feat(blade): add AreaChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-areachart--docs)
+
+## 12.52.0
+
+### Minor Changes
+
+- fbc71b288: feat(blade): add support for Badge in SelectInput
+
+  Introduces a new prop `valueSuffix` which in `SelectInput` which can be used to render a Badge after the the value.
+
+  ```jsx
+  <SelectInput
+    valueSuffix={({ values }) => {
+      if (values[0] === 'item-1') {
+        return <Badge color="positive">20% Off</Badge>;
+      }
+      return null;
+    }}
+  />
+  ```
+
+## 12.51.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): added Chart subcomponents & Line Chart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-linechart--docs)
+
+## 12.50.0
+
+### Minor Changes
+
+- b9e48e2ab: feat(Box): add `backgroundFilter` and `transition` prop to Box component
+
+## 12.49.7
+
+### Patch Changes
+
+- 781cc325f: fix(blade): Double focus ring in DatePicker and Input
+
+## 12.49.6
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
+## 12.49.5
+
+### Patch Changes
+
+- 77a78ddd7: chore: update babel version
+
+## 12.49.4
+
+### Patch Changes
+
+- 8132ef089: feat(datepicker): added partial validation
+
+## 12.49.3
+
+### Patch Changes
+
+- 37fbe24ee: fix: wrong layout position in case of bottom sheet
+
+## 12.49.2
+
+### Patch Changes
+
+- 9fd0523f9: fix(datepicker): changed arrow to hyphen in range input field
+
+## 12.49.1
+
+### Patch Changes
+
+- 828d6d4f3: revert: virtualization in phone number input
+
+## 12.49.0
+
+### Minor Changes
+
+- d21bd1c9a: feat: add filled icons
+
+## 12.48.0
+
+### Minor Changes
+
+- bf6f929e6: feat(datepicker): add formatted input, preset dropdown, single-field range selection
+
+## 12.47.1
+
+### Patch Changes
+
+- 3c8584905: fix : update bottom sheet height logic
+
+## 12.47.0
+
+### Minor Changes
+
+- 029964227: feat(blade): add new navigation button position overlap
+
+## 12.46.2
+
+### Patch Changes
+
+- b746d9db8: fix(ListView): enable horizontal scroll for filters on desktop, remove gradient overlay
+
+## 12.46.1
+
+### Patch Changes
+
+- 17b1be1e2: fix(blade): make promotional toast's leading prop optional
+
+## 12.46.0
+
+### Minor Changes
+
+- da2ffba9f: fix(blade): bottom sheet height logic
+
+  > **Note:** This release introduces a change in height of bottom sheet, earlier we were adding header + grabhandle height, even if header don't have title or subtitle. This release fixes that.
+
+## 12.45.0
+
+### Minor Changes
+
+- 8c9f43777: fix: date picker end date issue
+
+  > **Note:** This release introduces a change in how the DatePicker returns the time for the end date in a date range. Previously, it returned `00:00:00` now it returns `23:59:59` .
+
+## 12.44.0
+
+### Minor Changes
+
+- ea88e1487: '@razorpay/blade': feat: box now supports `feedback.background` tokens
+  '@razorpay/blade-mcp': feat: add confirmation pattern documentation and examples
+
+## 12.43.1
+
+### Patch Changes
+
+- a2cf026c4: fix(carousel): resolve Storybook interaction issues in peek mode
+
+## 12.43.0
+
+### Minor Changes
+
+- b2467ea18: feat(table): added spanning & nesting
+- d7f4084fa: feat(table): added support for grouping
+
+## 12.42.3
+
+### Patch Changes
+
+- 88afdb37f: fix: remove logs and add ref
+- abefb18cd: fix(inputgroup): payment card icon jsx error
+
+## 12.42.2
+
+### Patch Changes
+
+- b46d26bee: fix: table header sticky
+
+## 12.42.1
+
+### Patch Changes
+
+- 6d4b1f6e7: fix(blade): accordion sytling changes
+
+## 12.42.0
+
+### Minor Changes
+
+- 503e47531: feat: add support for dropdown in search
+- aba1bb999: feat(carousel): added peek behaviour in carousel
+
+## 12.41.5
+
+### Patch Changes
+
+- 061de8050: fix(blade): quick filter issue
+- 0a0918895: fix: Text sizes in button
+
+## 12.41.4
+
+### Patch Changes
+
+- 66c599d1a: fix(blade): label postion in chip group
+
+## 12.41.3
+
+### Patch Changes
+
+- 8fdc7e340: fix(blade): update month picker issue
+
+## 12.41.2
+
+### Patch Changes
+
+- 3bab8502b: feat(blade): add changeset icon
+
+## 12.41.1
+
+### Patch Changes
+
+- b86409b12: fix(blade): expose empty state component
+
+## 12.41.0
+
+### Minor Changes
+
+- 2a53e520f: feat(Tabs): sizing enhancements in tab component, add `size="small"`
+
+  > [!NOTE]
+  >
+  > This changes the top padding in existing Tab component. Although this won't cause any functional or visual breakage, it may cause visual change depending on the usage. You can adjust the padding on container if needed
+
+  <table>
+    <tr><th>Before</th><th>After</th></tr>
+    <tr>
+      <td><img width="100%" alt="image" src="https://github.com/user-attachments/assets/3a965299-27df-42f8-8018-907627a86ff3" /></td>
+      <td><img width="100%" alt="image" src="https://github.com/user-attachments/assets/5abc897f-370e-4220-ac95-1302eb9edd21" /></td>
+    </tr>
+  </table>
+
+- 1690286d0: feat(blade): add EmptyState component
+
+## 12.40.0
+
+### Minor Changes
+
+- a90644a3f: fix(blade): update CompanyRegistrationIcon
+
+## 12.39.0
+
+### Minor Changes
+
+- dfe654e76: feat(blade): add `labelSuffix` & `labelTrailing` props in Input family components
+
+## 12.38.0
+
+### Minor Changes
+
+- 4fd463368: feat(blade): card variants enhancement & docs
+- a839567f9: fix(blade): types in list , prefix color
+
+### Patch Changes
+
+- 6fa5fca1d: fix(blade): expose inputType in tableEditableCell
+
+## 12.37.0
+
+### Minor Changes
+
+- d8f9ddec9: feat(Typography): add `textTransform` support for typography components
+
+### Patch Changes
+
+- eda617bc3: fix(Tooltip): re-render issue on mobile tooltip
+
+## 12.36.0
+
+### Minor Changes
+
+- eb7381a21: feat: Selectable Card
+
+## 12.35.0
+
+### Minor Changes
+
+- 1801b3865: feat: Payment Component
+
+## 12.34.1
+
+### Patch Changes
+
+- 9e5c6ef04: fix(blade): table editable cell dropdown issue
+
+## 12.34.0
+
+### Minor Changes
+
+- b933afc11: feat: add toast container offset prop
+
+## 12.33.2
+
+### Patch Changes
+
+- b03d34fdf: feat(blade): update input styles
+- 2807550e3: feat(blade): add Dropdown in TextInput and SearchInput
+- b8453bbcf: fix(blade): leading and trailing in textInput
+- 11fb3afe7: feat(accordion): UI enhancement
+
+## 12.33.1
+
+### Patch Changes
+
+- 3d513728b: revert: "chore: update dependencies and improve CI workflow"
+
+## 12.33.0
+
+### Minor Changes
+
+- 43cc06167: feat(InfoGroup): add InfoGroup component
+
+### Patch Changes
+
+- 16a8f55c5: feat(InfoGroup): remove keyAlign prop
+  feat(InfoGroup knowledgebase): update knowledgebase to add InfoGroup component
+
+## 12.32.3
+
+### Patch Changes
+
+- c09440955: fix(table): fix table selected styles
+- 5badd6410: fix: label position to 'top' for CheckboxGroup and RadioGroup on mobile viewports
+
+## 12.32.2
+
+### Patch Changes
+
+- a9fdac32f: fix(blade): add disabled prop in filterchip
+
+## 12.32.1
+
+### Patch Changes
+
+- 562c93dac: feat(SideNav): change SideNav width and test mode icon
+  > [!NOTE]
+  >
+  > This changes the width of the SideNav. Make sure to adjust the rest of the layout accordingly if it depends on SideNav width.
+
+## 12.32.0
+
+### Minor Changes
+
+- d956170e9: feat(blade): add inputgroup
+
+### Patch Changes
+
+- 1d14b48c0: fix(blade): remove modal contraints
+
+## 12.31.5
+
+### Patch Changes
+
+- ce5916a56: feat(StepItem): expose minwidth for StepItem
+
+## 12.31.4
+
+### Patch Changes
+
+- 7fa1620e: fix(blade): listviewfilter props
+
+## 12.31.3
+
+### Patch Changes
+
+- be3e0233: fix: build script for node 22
+- 0f0df69c: fix(blade): make children optional for ListViewFilters
+
+## 12.31.2
+
+### Patch Changes
+
+- b42ad547: fix(blade): Display 'Show more filters' only if children are provided
+
+## 12.31.1
+
+### Patch Changes
+
+- 273730ff: fix: surface primary border color when using custom brand color
+
+## 12.31.0
+
+### Minor Changes
+
+- c48acef5: feat(Heading): add medium weight
+
 ## 12.30.0
 
 ### Minor Changes

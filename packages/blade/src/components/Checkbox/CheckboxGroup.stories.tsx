@@ -9,6 +9,9 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { InfoIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 const Page = (): React.ReactElement => {
   return (
@@ -223,6 +226,21 @@ const IndeterminateTemplate: StoryFn<typeof CheckboxComponent> = () => {
   return <IndeterminateExample />;
 };
 export const Indeterminate = IndeterminateTemplate.bind({});
+
+export const CheckboxGroupWithLabelSuffixTrailing = CheckboxGroupTemplate.bind({});
+CheckboxGroupWithLabelSuffixTrailing.storyName = 'CheckboxGroup with Label Suffix & Trailing';
+CheckboxGroupWithLabelSuffixTrailing.args = {
+  label: 'Select your fruit',
+  labelPosition: 'top',
+  labelSuffix: (
+    <Tooltip content="Select your fruit" placement="right">
+      <TooltipInteractiveWrapper display="flex">
+        <InfoIcon size="small" color="surface.icon.gray.muted" />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  ),
+  labelTrailing: <Link size="small">Learn more</Link>,
+};
 
 export const KitchenSink = (): React.ReactElement => {
   const [selected, setSelected] = React.useState(['mango', 'apple']);

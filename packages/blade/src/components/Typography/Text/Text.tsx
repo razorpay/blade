@@ -23,6 +23,7 @@ type TextCommonProps = {
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
+  textTransform?: BaseTextProps['textTransform'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
@@ -51,7 +52,14 @@ export type TextProps<T> = T extends { variant: infer Variant }
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'>;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  'variant' | 'weight' | 'size' | 'color' | 'testID' | 'textAlign' | 'textDecorationLine'
+  | 'variant'
+  | 'weight'
+  | 'size'
+  | 'color'
+  | 'testID'
+  | 'textAlign'
+  | 'textDecorationLine'
+  | 'textTransform'
 >;
 
 const getTextProps = <T extends { variant: TextVariant }>({
@@ -121,7 +129,6 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.lineHeight = 50;
       props.fontWeight = 'regular';
     }
-    props.fontStyle = 'italic';
   }
 
   return props;
@@ -140,6 +147,7 @@ const _Text = <T extends { variant: TextVariant }>(
     textAlign,
     textDecorationLine,
     wordBreak,
+    textTransform,
     ...styledProps
   }: TextProps<T>,
   ref: React.Ref<BladeElementRef>,
@@ -148,6 +156,7 @@ const _Text = <T extends { variant: TextVariant }>(
     as,
     truncateAfterLines,
     wordBreak,
+    textTransform,
     ...getTextProps({
       variant,
       weight,

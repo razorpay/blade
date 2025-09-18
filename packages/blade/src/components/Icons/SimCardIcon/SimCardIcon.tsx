@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const SimCardIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _SimCardIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -40,5 +41,9 @@ const SimCardIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const SimCardIcon = assignWithoutSideEffects(_SimCardIcon, {
+  componentId: 'SimCardIcon',
+});
 
 export default SimCardIcon;

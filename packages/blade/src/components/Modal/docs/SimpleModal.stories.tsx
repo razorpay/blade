@@ -1,14 +1,14 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
-import type { ModalProps } from '../Modal';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
+import { Modal, ModalFooter, ModalHeader, ModalBody } from '../Modal';
+import type { ModalProps } from '../index';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Skeleton } from '~components/Skeleton';
 import { DownloadIcon } from '~components/Icons';
+import { Box } from '~components/Box';
 
 export default {
   title: 'Components/Modal/SimpleModal',

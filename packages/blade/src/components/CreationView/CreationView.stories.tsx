@@ -4,6 +4,11 @@ import storyRouterDecorator from 'storybook-react-router';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import styled from 'styled-components';
+import DonateNow from './assets/donatenow.png';
+import PayNow from './assets/paynow.png';
+import DonationButton from './assets/donationButton.png';
+import cardImage from './assets/card.png';
+import ModalSideImage from './assets/sideImage.png';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -20,6 +25,7 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   InfoIcon,
+  ZapIcon,
 } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import {
@@ -41,6 +47,7 @@ import { Alert } from '~components/Alert';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Preview, PreviewBody, PreviewHeader, PreviewFooter } from '~components/Preview';
+import type { BottomSheetBodyProps } from '~components/BottomSheet';
 import {
   BottomSheet,
   BottomSheetBody,
@@ -54,8 +61,10 @@ import { TextArea } from '~components/Input/TextArea';
 import { Card, CardBody } from '~components/Card';
 import { DatePicker } from '~components/DatePicker';
 import { Slide } from '~components/Slide';
-import type { ModalProps } from '~components/Modal';
+import type { ModalBodyProps, ModalProps } from '~components/Modal';
 import { Fade } from '~components/Fade';
+import { useBreakpoint, useTheme } from '~utils';
+import { ChipGroup, Chip } from '~components/Chip';
 
 // Initialize dayjs plugins
 dayjs.extend(customParseFormat);
@@ -67,72 +76,33 @@ const Page = (): React.ReactElement => {
       componentDescription="Creation View is a pattern that is used in creation flows"
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/design/ZZ2dpcIAsPCEGPwQ2UdgL1/Blade-Cheatsheet?node-id=949-178337&m=dev"
+      codeUrl="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/CreationView/CreationView.stories.tsx"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-      import { useState } from 'react';
-      import {
-        Amount,
-        ListView,
-        ListViewFilters,
-        Box,
-        QuickFilterGroup,
-        QuickFilter,
-        FilterChipGroup,
-        Dropdown,
-        DropdownOverlay,
-        Counter,
-        FilterChipSelectInput,
-        ActionList,
-        ActionListItem,
-        FilterChipDatePicker,
-        Table,
-        TableHeader,
-        TableCell,
-        TableRow,
-        TableHeaderRow,
-        TableHeaderCell,
-        TableBody,
-        TableFooter,
-        TableFooterRow,
-        TableFooterCell,
-        TableEditableCell,
-        Button,
-        IconButton,
-        CheckIcon,
-        CloseIcon,
-        Code,
-        Badge,
-        RadioGroup,
-        Radio,
-        RadioGroupItem,
-        RadioGroupItemLabel,
-        RadioGroupItemDescription,
-        RadioGroupItemIcon,
-        Modal,
-        ModalOverlay,
-        ModalContent,
-        ModalHeader,
-        ModalBody,
-        ModalFooter,
-        ModalCloseButton,
-        ModalTitle,
-        Preview,
-        PreviewHeader,
-        PreviewBody,
-        PreviewFooter,        
-      } from '@razorpay/blade/components';
-      import type {
-        DatesRangeValue,
-        TableData,
-        CounterProps,
-      } from '@razorpay/blade/components';
-      
-      function App() {
-         const [isOpen, setIsOpen] = React.useState(false);
+        import React from 'react';
+        import {
+          Box,
+          Button,
+          RadioGroup,
+          Radio,
+          Modal,
+          ModalHeader,
+          ModalBody,
+          ModalFooter,
+          Preview,
+          PreviewHeader,
+          PreviewBody,
+          PreviewFooter,
+          Heading,
+          Alert,
+          TextInput,
+          Text,
+        } from '@razorpay/blade/components';
+        function App() {
+          const [isOpen, setIsOpen] = React.useState(false);
           const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
-          const isMobile = useIsMobile();
         
           const [formData, setFormData] = React.useState({
             qrUsage: '',
@@ -162,7 +132,8 @@ const Page = (): React.ReactElement => {
             }
         
             if (!formData.acceptFixedAmount) {
-              newErrors.acceptFixedAmount = 'Please select if you want to accept fixed amount';
+              newErrors.acceptFixedAmount =
+                'Please select if you want to accept fixed amount';
             }
         
             setErrors(newErrors);
@@ -188,18 +159,23 @@ const Page = (): React.ReactElement => {
             }
           };
         
-          const renderContent = ({ isMobile }: { isMobile: boolean }): React.ReactElement => (
+          const renderContent = (): React.ReactElement => (
             <Box display="flex" gap="spacing.4" justifyContent="space-between">
               <Box>
                 <form onSubmit={handleSubmit}>
-                  <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
+                  <Box
+                    padding="spacing.4"
+                    display="flex"
+                    flexDirection="column"
+                    gap="spacing.4"
+                  >
                     <Box>
                       <Heading size="medium" weight="regular">
                         Configure your QR code settings
                       </Heading>
                     </Box>
         
-                    {!isMobile && alert && (
+                    {alert && (
                       <Alert
                         color={alert.type}
                         title={alert.title}
@@ -228,7 +204,9 @@ const Page = (): React.ReactElement => {
                         label="Accept Fixed Amount"
                         name="acceptFixedAmount"
                         value={formData.acceptFixedAmount}
-                        onChange={({ value }) => handleChange('acceptFixedAmount', value)}
+                        onChange={({ value }) =>
+                          handleChange('acceptFixedAmount', value)
+                        }
                         validationState={errors.acceptFixedAmount ? 'error' : 'none'}
                         errorText={errors.acceptFixedAmount}
                       >
@@ -245,108 +223,54 @@ const Page = (): React.ReactElement => {
                         helpText="Add a description to identify this QR code"
                       />
         
-                      {!isMobile && (
-                        <Button isFullWidth type="submit" iconPosition="right">
-                          Create QR Code
-                        </Button>
-                      )}
+                      <Button isFullWidth type="submit" iconPosition="right">
+                        Create QR Code
+                      </Button>
                     </Box>
                   </Box>
                 </form>
               </Box>
-              {!isMobile && (
-                <Box width="500px">
-                  <Preview>
-                    <PreviewHeader />
-                    <PreviewBody>
-                      {isQrGenerated ? (
-                        <Box>
-                          <img
-                            src="https://blog.razorpay.in/blog-content/uploads/2021/11/QR-codes-blog-header.png"
-                            alt="QR Code"
-                            height="400px"
-                          />
-                        </Box>
-                      ) : (
-                        <Box>
-                          <Text>QR Code Preview</Text>
-                        </Box>
-                      )}
-                    </PreviewBody>
-                    <PreviewFooter />
-                  </Preview>
-                </Box>
-              )}
-            </Box>
-          );
-        
-          const renderPreview = (): React.ReactElement => (
-            <Box display="flex" flexDirection="column" gap="spacing.4">
-              <Preview>
-                <PreviewHeader />
-                <PreviewBody>
-                  <Box display="flex" flexDirection="column" gap="spacing.4">
-                    <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
-                      <img
-                        src="https://blog.razorpay.in/blog-content/uploads/2021/11/QR-codes-blog-header.png"
-                        alt="QR Code"
-                        height="400px"
-                      />
-                    </Box>
-                    <Box padding="spacing.4">
-                      <Text>QR Code Details:</Text>
-                      <Box marginTop="spacing.3">
-                        <Text>
-                          Usage: {formData.qrUsage === 'single' ? 'Single Payment' : 'Multiple Payments'}
-                        </Text>
-                        <Text>Fixed Amount: {formData.acceptFixedAmount === 'yes' ? 'Yes' : 'No'}</Text>
-                        {formData.description && <Text>Description: {formData.description}</Text>}
+              <Box width="500px">
+                <Preview>
+                  <PreviewHeader />
+                  <PreviewBody>
+                    {isQrGenerated ? (
+                      <Box>
+                        <img
+                          src="https://blog.razorpay.in/blog-content/uploads/2021/11/QR-codes-blog-header.png"
+                          alt="QR Code"
+                          height="400px"
+                        />
                       </Box>
-                    </Box>
-                  </Box>
-                </PreviewBody>
-                <PreviewFooter />
-              </Preview>
+                    ) : (
+                      <Box>
+                        <Text>QR Code Preview</Text>
+                      </Box>
+                    )}
+                  </PreviewBody>
+                  <PreviewFooter />
+                </Preview>
+              </Box>
             </Box>
           );
         
-          const renderFooter = ({ isMobile }: { isMobile: boolean }): React.ReactElement => (
+          const renderFooter = (): React.ReactElement => (
             <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
-              {isMobile && alert && (
-                <Alert
-                  color={alert.type}
-                  title={alert.title}
-                  description={alert.description}
-                  emphasis="subtle"
-                  isDismissible
-                  onDismiss={() => setAlert(null)}
-                  isFullWidth
-                />
-              )}
-              <Box display="flex" gap="spacing.3" justifyContent="space-between" width="100%">
-                {isMobile && (
-                  <Button
-                    variant="tertiary"
-                    icon={FileIcon}
-                    onClick={() => setIsPreviewOpen(true)}
-                    iconPosition="left"
-                  />
-                )}
-                <Box display="flex" width="100%" justifyContent="flex-end" gap="spacing.3">
+              <Box
+                display="flex"
+                gap="spacing.3"
+                justifyContent="space-between"
+                width="100%"
+              >
+                <Box
+                  display="flex"
+                  width="100%"
+                  justifyContent="flex-end"
+                  gap="spacing.3"
+                >
                   <Button variant="tertiary" onClick={() => setIsOpen(false)}>
                     Cancel
                   </Button>
-                  {isMobile && !isQrGenerated && (
-                    <Button onClick={() => handleSubmit()} iconPosition="right">
-                      Create QR Code
-                    </Button>
-                  )}
-        
-                  {!isMobile && (
-                    <Button variant="primary" onClick={() => handleSubmit()} isDisabled={!isQrGenerated}>
-                      Save
-                    </Button>
-                  )}
                 </Box>
               </Box>
             </Box>
@@ -355,40 +279,18 @@ const Page = (): React.ReactElement => {
           return (
             <Box>
               <Button onClick={() => setIsOpen(!isOpen)}>Create QR Code</Button>
-              {isMobile ? (
-                <>
-                  <BottomSheet
-                    isOpen={isOpen}
-                    onDismiss={() => setIsOpen(false)}
-                    snapPoints={[0.75, 0.75, 0.75]}
-                  >
-                    <BottomSheetHeader title="Create QR Code" />
-                    <BottomSheetBody>{renderContent({ isMobile })}</BottomSheetBody>
-                    <BottomSheetFooter>{renderFooter({ isMobile })}</BottomSheetFooter>
-                  </BottomSheet>
-                  <BottomSheet
-                    isOpen={isPreviewOpen}
-                    onDismiss={() => setIsPreviewOpen(false)}
-                    snapPoints={[1, 1, 1]}
-                  >
-                    <BottomSheetHeader title="QR Code Preview" />
-                    <BottomSheetBody>{renderPreview()}</BottomSheetBody>
-                  </BottomSheet>
-                </>
-              ) : (
-                <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
-                  <ModalHeader title="Create QR Code" />
-                  <ModalBody>{renderContent({ isMobile })}</ModalBody>
-                  <ModalFooter>{renderFooter({ isMobile })}</ModalFooter>
-                </Modal>
-              )}
+              <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
+                <ModalHeader title="Create QR Code" />
+                <ModalBody>{renderContent()}</ModalBody>
+                <ModalFooter>{renderFooter()}</ModalFooter>
+              </Modal>
             </Box>
-            );
-              }
-              
-              export default App;
-
-      `}
+          );
+        }
+        
+        export default App;
+        
+        `}
       </Sandbox>
     </StoryPageWrapper>
   );
@@ -1803,3 +1705,572 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
 
 export const MultiStep = MultiStepExample.bind({});
 MultiStep.storyName = 'Multi Step Example (Form Group + Preview + Full Page Modal)';
+
+const ResponsiveModalWrapper = ({
+  children,
+  footer,
+  isOpen,
+  onDismiss,
+  modalBodyPadding,
+  modalSize = 'small',
+  wrapInBottomSheetFooter = false,
+  customSnapPoints = [0.35, 0.5, 0.85],
+}: {
+  children: React.ReactElement | React.ReactElement[];
+  footer?: React.ReactElement;
+  isOpen: boolean;
+  onDismiss: () => void;
+  modalBodyPadding?: ModalBodyProps['padding'];
+  modalSize?: ModalProps['size'];
+  wrapInBottomSheetFooter?: boolean;
+  customSnapPoints?: [number, number, number];
+}): React.ReactNode => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  if (isMobile) {
+    return (
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
+        <BottomSheetHeader />
+        <BottomSheetBody padding={modalBodyPadding as BottomSheetBodyProps['padding']}>
+          {children}
+          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
+        </BottomSheetBody>
+        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
+      </BottomSheet>
+    );
+  }
+
+  return (
+    <Modal isOpen={isOpen} onDismiss={onDismiss} size={modalSize}>
+      <ModalHeader />
+      <ModalBody padding={modalBodyPadding}>{children}</ModalBody>
+      {footer && <ModalFooter>{footer}</ModalFooter>}
+    </Modal>
+  );
+};
+
+const EditAndAddModalTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        footer={
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary" isFullWidth={isMobile}>
+              Cancel
+            </Button>
+            <Button isFullWidth={isMobile}> Update</Button>
+          </Box>
+        }
+      >
+        <Box display="flex" flexDirection="column" gap="spacing.2">
+          <Text size="large" weight="semibold">
+            Edit display name
+          </Text>
+          <Text size="medium" weight="regular" color="surface.text.gray.muted">
+            The new display name will reflect immediately on your dashboard after you update it. It
+            will be visible to you and your team on the Razorpay dashboard.
+          </Text>
+        </Box>
+        <Box marginTop="spacing.5">
+          <TextInput label="Enter new display name" placeholder="Enter your display name" />
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+
+export const EditAndAddModal = EditAndAddModalTemplate.bind({});
+EditAndAddModal.storyName = 'Edit and Add Modal';
+
+const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedMethod, setSelectedMethod] = React.useState('');
+
+  const paymentMethods = [
+    {
+      value: 'quickpay',
+      title: 'Quick Pay Button',
+      subtitle:
+        'Accepting fixed price payments?  Customers make quick payments of fixed price through this button',
+      icon: ZapIcon,
+    },
+    {
+      value: 'buynow',
+      title: 'Buy Now Button',
+      subtitle:
+        'Selling products or event tickets?  Sell multiple items with support for quantity using this button.',
+      icon: ZapIcon,
+    },
+    {
+      value: 'custom',
+      title: 'Custom Button',
+      subtitle:
+        'Build your own button with your own design and branding or use our pre-built templates.',
+      icon: ZapIcon,
+      isDisabled: true,
+    },
+  ];
+
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        modalSize="medium"
+        footer={
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              isDisabled={!selectedMethod}
+              onClick={() => {
+                console.log('Selected payment method:', selectedMethod);
+                setIsOpen(false);
+              }}
+              isFullWidth={isMobile}
+            >
+              Proceed
+            </Button>
+          </Box>
+        }
+        modalBodyPadding="spacing.0"
+        wrapInBottomSheetFooter
+        customSnapPoints={[0.8, 0.9, 0.95]}
+      >
+        <Box
+          paddingX="spacing.6"
+          paddingTop="spacing.6"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.1"
+        >
+          <Heading size="small" weight="semibold">
+            Pick a Button Type
+          </Heading>
+          <Text color="surface.text.gray.muted" size="small" weight="regular">
+            Pick a button which meets your requirements and get a head start on collecting payments
+            or you could build your own
+          </Text>
+        </Box>
+        <Box padding="spacing.6">
+          <Box
+            display="grid"
+            gridTemplateColumns={{
+              base: '1fr 1fr',
+              m: '1fr 1fr 1fr',
+              l: '1fr 1fr 1fr',
+            }}
+            justifyItems="center"
+            gap="spacing.5"
+            width="100%"
+          >
+            {paymentMethods.map((method, index) => (
+              <Card
+                key={`${method.value}-${index}`}
+                isSelected={selectedMethod === method.value}
+                onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
+                padding="spacing.0"
+                accessibilityLabel={`Select ${method.title}`}
+                width={isMobile ? '165px' : '228px'}
+                height={isMobile ? '184px' : undefined}
+                borderRadius="medium"
+                elevation="none"
+              >
+                <CardBody>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    marginTop="spacing.6"
+                    marginX="spacing.5"
+                  >
+                    <Box
+                      padding="10px"
+                      backgroundColor={
+                        method.isDisabled
+                          ? 'surface.background.gray.subtle'
+                          : 'surface.background.primary.subtle'
+                      }
+                      width="40px"
+                      height="40px"
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      borderRadius="medium"
+                    >
+                      <ZapIcon
+                        color={
+                          method.isDisabled
+                            ? 'surface.icon.gray.muted'
+                            : 'surface.icon.primary.normal'
+                        }
+                        size="large"
+                      />
+                    </Box>
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.4"
+                    alignItems="center"
+                    paddingX="spacing.5"
+                    paddingY="spacing.4"
+                  >
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      justifyContent="center"
+                      alignItems="center"
+                      maxHeight="95px"
+                      gap="spacing.2"
+                    >
+                      <Text
+                        size="medium"
+                        weight="semibold"
+                        color={
+                          method.isDisabled ? 'surface.text.gray.muted' : 'surface.text.gray.normal'
+                        }
+                      >
+                        {method.title}
+                      </Text>
+                      <Text size="small" color="surface.text.gray.muted" textAlign="center">
+                        {method.subtitle}
+                      </Text>
+                    </Box>
+                  </Box>
+                </CardBody>
+              </Card>
+            ))}
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+export const FlowSelectionModalWithIcon = FlowSelectionModalTemplateWithIcon.bind({});
+FlowSelectionModalWithIcon.storyName = 'Flow Selection Modal - with Icon Cards';
+
+const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedMethod, setSelectedMethod] = React.useState('');
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  const standardButtons = [
+    {
+      value: 'quickpay',
+      title: 'Quick Pay Button',
+      subtitle:
+        'Accepting fixed price payments?  Customers make quick payments of fixed price through this button',
+      img: DonateNow,
+      isDisabled: false,
+    },
+    {
+      value: 'buynow',
+      title: 'Buy Now Button',
+      subtitle: 'Selling products or event tickets?  Sell multiple items with  quantity supported.',
+      img: DonationButton,
+      isDisabled: false,
+    },
+    {
+      value: 'donations',
+      title: 'Donations Button',
+      subtitle:
+        'Raising money for a good cause?  Supporters can pick from presets or donate amount of their choice',
+      img: PayNow,
+      isDisabled: false,
+    },
+  ];
+  const customButton = {
+    value: 'custom',
+    title: 'Custom Button',
+    subtitle:
+      'Build your own button with your own design and branding. You can also use our pre-built templates.',
+    img: cardImage,
+    isDisabled: true,
+  };
+  const paymentMethods = [...standardButtons];
+
+  if (!isMobile) {
+    paymentMethods.push(customButton);
+  }
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        modalSize="large"
+        footer={
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              isDisabled={!selectedMethod}
+              onClick={() => {
+                console.log('Selected payment method:', selectedMethod);
+                setIsOpen(false);
+              }}
+              isFullWidth={isMobile}
+            >
+              Proceed
+            </Button>
+          </Box>
+        }
+        modalBodyPadding="spacing.0"
+        wrapInBottomSheetFooter
+        customSnapPoints={[0.8, 0.9, 0.95]}
+      >
+        <Box
+          paddingX="spacing.6"
+          paddingTop="spacing.6"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.1"
+        >
+          <Heading size="small" weight="semibold">
+            Pick a Button Type
+          </Heading>
+          <Text color="surface.text.gray.muted" size="small" weight="regular">
+            Pick a button which meets your requirements and get a head start on collecting payments
+            or you could build your own
+          </Text>
+        </Box>
+        <Box padding="spacing.6">
+          <Box
+            display="grid"
+            gridTemplateColumns={{
+              base: '1fr 1fr',
+              m: '1fr 1fr 1fr',
+              l: '1fr 1fr 1fr 1fr',
+            }}
+            justifyItems="center"
+            gap="spacing.5"
+            width="100%"
+          >
+            {paymentMethods.map((method, index) => (
+              <Card
+                key={`${method.value}-${index}`}
+                isSelected={selectedMethod === method.value}
+                onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
+                padding="spacing.0"
+                accessibilityLabel={`Select ${method.title}`}
+                width={isMobile ? '160px' : '230px'}
+                height={isMobile ? '250px' : undefined}
+                borderRadius="medium"
+                elevation={selectedMethod === method.value ? 'lowRaised' : 'none'}
+              >
+                <CardBody>
+                  <Box overflow="hidden">
+                    <div>
+                      <img
+                        src={method.img}
+                        alt={method.title}
+                        width={isMobile ? '160px' : '230px'}
+                        height={isMobile ? '93px' : '130px'}
+                      />
+                    </div>
+                    <Box
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.4"
+                      alignItems="center"
+                      paddingX="spacing.5"
+                      paddingY="spacing.4"
+                    >
+                      <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Text
+                          size="medium"
+                          weight="semibold"
+                          color={
+                            method.isDisabled
+                              ? 'surface.text.gray.muted'
+                              : 'surface.text.gray.normal'
+                          }
+                        >
+                          {method.title}
+                        </Text>
+                        <Text size="small" color="surface.text.gray.muted">
+                          {method.subtitle}
+                        </Text>
+                      </Box>
+                    </Box>
+                  </Box>
+                </CardBody>
+              </Card>
+            ))}
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+export const FlowSelectionModal = FlowSelectionModalTemplate.bind({});
+FlowSelectionModal.storyName = 'Flow Selection Modal';
+
+const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  const shippingTime = [
+    {
+      value: '1-2 days',
+      label: '1-2 days',
+    },
+    {
+      value: '3-5 days',
+      label: '3-5 days',
+    },
+    {
+      value: '6-8 days',
+      label: '6-8 days',
+    },
+    {
+      value: '9-15 days',
+      label: '9-15 days',
+    },
+    {
+      value: 'not applicable',
+      label: 'Not Applicable',
+    },
+  ];
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <ResponsiveModalWrapper
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        modalSize="large"
+        modalBodyPadding="spacing.0"
+        customSnapPoints={[0.8, 0.9, 0.95]}
+        wrapInBottomSheetFooter
+        footer={
+          isMobile ? (
+            <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+              <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+                Back
+              </Button>
+              <Button variant="primary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
+                Continue
+              </Button>
+            </Box>
+          ) : undefined
+        }
+      >
+        <Box
+          display="grid"
+          gridTemplateColumns={isMobile ? '1fr' : 'auto 1fr'}
+          gridTemplateRows={isMobile ? '1fr' : 'auto 1fr'}
+          width="100%"
+          height="100%"
+        >
+          {!isMobile && (
+            <Box
+              backgroundColor="surface.background.gray.subtle"
+              height="596px"
+              width="400px"
+              display="flex"
+              flexDirection="column"
+              justifyContent="flex-end"
+              overflow="hidden"
+              gridRow="span 2"
+            >
+              <img src={ModalSideImage} height="596px" width="100%" alt="random graphics" />
+            </Box>
+          )}
+          <Box
+            height="596px"
+            paddingTop="spacing.6"
+            width="100%"
+            overflow="auto"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+          >
+            <Box paddingX="spacing.6">
+              <Heading size="medium" weight="semibold">
+                Create policy pages with Razorpay
+              </Heading>
+              <Text size="medium" weight="regular" color="surface.text.gray.muted">
+                We need a few details to create the missing policy pages for you
+              </Text>
+              <Box
+                marginTop="spacing.6"
+                display="flex"
+                gap="spacing.7"
+                flexDirection="column"
+                height="100%"
+                width="100%"
+              >
+                <ChipGroup label="Shipping time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <ChipGroup label="Cancellation request time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <ChipGroup label="Refund processing time">
+                  {shippingTime.map((time) => (
+                    <Chip key={time.value} value={time.value}>
+                      {time.label}
+                    </Chip>
+                  ))}
+                </ChipGroup>
+                <TextInput label="Support contact number" prefix="+91" placeholder="9XXXXXXXXX" />
+                <TextInput label="Support Email ID" placeholder="support@razorpay.com" />
+              </Box>
+            </Box>
+            {!isMobile && (
+              <Box>
+                <ModalFooter>
+                  <Box display="flex" justifyContent="flex-end" gap="spacing.5">
+                    <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+                      Back
+                    </Button>
+                    <Button variant="primary" onClick={() => setIsOpen(false)}>
+                      Continue
+                    </Button>
+                  </Box>
+                </ModalFooter>
+              </Box>
+            )}
+          </Box>
+        </Box>
+      </ResponsiveModalWrapper>
+    </Box>
+  );
+};
+
+export const SingleStepForm = SingleStepFormTemplate.bind({});
+SingleStepForm.storyName = 'Single Step Form Modal';

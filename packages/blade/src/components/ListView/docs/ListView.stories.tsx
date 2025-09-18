@@ -24,6 +24,7 @@ import {
   Dropdown,
   DropdownOverlay,
   FilterChipGroup,
+  InputDropdownButton,
 } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import type { DatesRangeValue } from '~components/DatePicker';
@@ -643,6 +644,42 @@ const quickFilterColorMapping: Record<Item['status'], CounterProps['color']> = {
   Completed: 'neutral',
 };
 
+const extendedStatusFilters = [
+  'Pending',
+  'Failed',
+  'Completed',
+  'Processing',
+  'Authorized',
+  'Captured',
+  'Refunded',
+  'Disputed',
+  'LastWeek',
+  'Cancelled',
+  'Expired',
+  'Rejected',
+  'Waiting',
+  'Review',
+  'Hold',
+];
+
+const extendedFilterColorMapping: Record<string, CounterProps['color']> = {
+  Pending: 'notice',
+  Failed: 'negative',
+  Completed: 'positive',
+  Processing: 'information',
+  Authorized: 'neutral',
+  Captured: 'positive',
+  Refunded: 'notice',
+  Disputed: 'negative',
+  LastWeek: 'information',
+  Cancelled: 'neutral',
+  Expired: 'negative',
+  Rejected: 'negative',
+  Waiting: 'notice',
+  Review: 'information',
+  Hold: 'notice',
+};
+
 const DefaultExample: StoryFn<typeof ListView> = (args) => {
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
@@ -1255,17 +1292,56 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
   const [searchValue, setSearchValue] = useState<string | undefined>('');
   const [methodFilter, setMethodFilter] = useState<string | undefined>('');
   const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
+
   const getQuickFilterValueCount = (value: string): number => {
     if (value === 'All') {
       return data.nodes.length;
     }
-    return data.nodes.filter((node) => node.status === value).length;
+
+    const statusMap: Record<string, string[]> = {
+      Pending: ['Pending'],
+      Failed: ['Failed'],
+      Completed: ['Completed'],
+      Processing: ['Pending'],
+      Authorized: ['Completed'],
+      Captured: ['Completed'],
+      Refunded: ['Failed'],
+      Disputed: ['Failed'],
+      Cancelled: ['Failed'],
+      Expired: ['Failed'],
+      Rejected: ['Failed'],
+      Waiting: ['Pending'],
+      Review: ['Pending'],
+      Hold: ['Pending'],
+    };
+
+    const mappedStatuses = statusMap[value] || [value];
+    return data.nodes.filter((node) => mappedStatuses.includes(node.status)).length;
   };
   const getQuickFilterData = (data: TableData<Item>, values?: string[]): TableData<Item> => {
     if (!values?.length) {
       return { nodes: data.nodes };
     }
-    return { nodes: data.nodes.filter((node) => values?.includes(node.status)) };
+
+    const statusMap: Record<string, string[]> = {
+      Pending: ['Pending'],
+      Failed: ['Failed'],
+      Completed: ['Completed'],
+      Processing: ['Pending'],
+      Authorized: ['Completed'],
+      Captured: ['Completed'],
+      Refunded: ['Failed'],
+      Disputed: ['Failed'],
+      Cancelled: ['Failed'],
+      Expired: ['Failed'],
+      Rejected: ['Failed'],
+      Waiting: ['Pending'],
+      Review: ['Pending'],
+      Hold: ['Pending'],
+    };
+
+    const allMappedStatuses = values.flatMap((value) => statusMap[value] || [value]);
+    return { nodes: data.nodes.filter((node) => allMappedStatuses.includes(node.status)) };
   };
   const getSearchedData = (data: TableData<Item>, value?: string): TableData<Item> => {
     if (!value) {
@@ -1357,20 +1433,19 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                 }}
                 value={selectedQuickFilter}
               >
-                {filterChipQuickFilters.map((status, index) => (
+                {extendedStatusFilters.map((status, index) => (
                   <QuickFilter
                     title={status}
                     value={status}
                     trailing={
                       <Counter
                         value={getQuickFilterValueCount(status)}
-                        color={quickFilterColorMapping[status]}
+                        color={extendedFilterColorMapping[status]}
                       />
                     }
                     key={`${index}-${status}`}
                   />
                 ))}
-                <QuickFilter title="Last Week" value="LastWeek" />
               </QuickFilterGroup>
             </Box>
           }
@@ -1473,7 +1548,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
               />
               <DropdownOverlay>
                 <ActionList>
-                  {filterChipQuickFilters.map((method, index) => (
+                  {extendedStatusFilters.map((method, index) => (
                     <ActionListItem
                       key={index}
                       title={method}
@@ -1872,3 +1947,326 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
 
 export const WithoutSearchExampleStory = WithoutSearchExample.bind({});
 WithoutSearchExampleStory.storyName = 'Without Search Example';
+
+const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
+  const [listViewTableData, setListViewTableData] = useState(data);
+  const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
+  const [searchValue, setSearchValue] = useState<string | undefined>('');
+  const [methodFilter, setMethodFilter] = useState<string | undefined>('');
+  const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
+
+  const getQuickFilterValueCount = (value: string): number => {
+    if (value === 'All') {
+      return data.nodes.length;
+    }
+    return data.nodes.filter((node) => node.status === value).length;
+  };
+  const getQuickFilterData = (data: TableData<Item>, value?: string): TableData<Item> => {
+    if (!value || value === 'All') {
+      return { nodes: data.nodes };
+    }
+    return { nodes: data.nodes.filter((node) => node.status === value) };
+  };
+  const getSearchedData = (data: TableData<Item>, value?: string): TableData<Item> => {
+    if (!value) {
+      return { nodes: data.nodes };
+    }
+    return { nodes: data.nodes.filter((node) => node.paymentId.includes(value)) };
+  };
+  const getMethodFilterData = (data: TableData<Item>, value?: string): TableData<Item> => {
+    if (!value) {
+      return { nodes: data.nodes };
+    }
+    return { nodes: data.nodes.filter((node) => node.method.key === value) };
+  };
+
+  const getFilterRangeData = (data: TableData<Item>, value?: DatesRangeValue): TableData<Item> => {
+    if (!value?.[0]) {
+      return { nodes: data.nodes };
+    }
+    return {
+      nodes: data.nodes.filter((node) => {
+        if (!value?.[0] || !value?.[1]) return false;
+        return node.date >= value[0] && node.date <= value[1];
+      }),
+    };
+  };
+  return (
+    <BaseBox height="100%">
+      <ListView>
+        <ListViewFilters
+          searchTrailing={
+            <Dropdown>
+              <InputDropdownButton
+                value={selectedQuickFilter}
+                onChange={({ value }) => {
+                  const quickFilterData = getQuickFilterData(data, value);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const dateRangeFilterData = getFilterRangeData(searchValueData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter(value);
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {quickFilters.map((status, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={status}
+                      value={status}
+                      isSelected={selectedQuickFilter === status}
+                    />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          }
+          quickFilters={
+            <QuickFilterGroup
+              selectionType="single"
+              onChange={({ values }) => {
+                const value = values[0];
+                const quickFilterData = getQuickFilterData(data, value);
+                const searchValueData = getSearchedData(quickFilterData, searchValue);
+                const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+
+                setListViewTableData(dateRangeFilterData);
+                setSelectedQuickFilter(value);
+              }}
+              defaultValue="All"
+              value={selectedQuickFilter}
+            >
+              {quickFilters.map((status, index) => (
+                <QuickFilter
+                  title={status}
+                  value={status}
+                  trailing={
+                    <Counter
+                      value={getQuickFilterValueCount(status)}
+                      color={quickFilterColorMapping[status]}
+                    />
+                  }
+                  key={`${index}-${status}`}
+                />
+              ))}
+            </QuickFilterGroup>
+          }
+          onSearchChange={({ value }) => {
+            const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+            const searchValueData = getSearchedData(quickFilterData, value);
+            const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+            const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+            setListViewTableData(dateRangeFilterData);
+            setSearchValue(value);
+          }}
+          onSearchClear={() => {
+            const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+            const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
+            const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+            setListViewTableData(dateRangeFilterData);
+            setSearchValue('');
+          }}
+          searchValuePlaceholder="Search for Payment Id"
+          selectedFiltersCount={
+            (methodFilter ? 1 : 0) +
+            (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
+            (selectedQuickFilter !== 'All' ? 1 : 0)
+          }
+        >
+          <FilterChipGroup
+            onClearButtonClick={() => {
+              const quickFilterData = getQuickFilterData(data, 'All');
+              const searchValueData = getSearchedData(quickFilterData, searchValue);
+              const methodFilterData = getMethodFilterData(searchValueData, '');
+              const dateRangeFilterData = getFilterRangeData(methodFilterData, undefined);
+              setListViewTableData(dateRangeFilterData);
+              setMethodFilter(undefined);
+              setFilterDateRange(undefined);
+              setSelectedQuickFilter('All');
+            }}
+          >
+            <Dropdown selectionType="single">
+              <FilterChipSelectInput
+                label="Method"
+                onChange={({ values }) => {
+                  const value = values[0];
+                  const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, value);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+
+                  setListViewTableData(dateRangeFilterData);
+                  setMethodFilter(value);
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {MethodFilterValues.map((method, index) => (
+                    <ActionListItem key={index} title={method.title} value={method.key} />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+            <FilterChipDatePicker
+              label="Date Range"
+              selectionType="range"
+              onChange={(value) => {
+                const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+                const searchValueData = getSearchedData(quickFilterData, searchValue);
+                const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                const dateRangeFilterData = getFilterRangeData(
+                  methodFilterData,
+                  Array.isArray(value) ? value : undefined,
+                );
+                setListViewTableData(dateRangeFilterData);
+                setFilterDateRange(value as DatesRangeValue);
+              }}
+            />
+            <Dropdown selectionType="single">
+              <FilterChipSelectInput
+                label="Status"
+                value={selectedQuickFilter !== 'All' ? selectedQuickFilter : undefined}
+                onChange={({ values }) => {
+                  const value = values[0];
+                  const quickFilterData = getQuickFilterData(data, value);
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter(value ? value : 'All');
+                }}
+                onClearButtonClick={() => {
+                  const quickFilterData = getQuickFilterData(data, 'All');
+                  const searchValueData = getSearchedData(quickFilterData, searchValue);
+                  const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+                  const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                  setListViewTableData(dateRangeFilterData);
+                  setSelectedQuickFilter('All');
+                }}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {filterChipQuickFilters.map((method, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={method}
+                      value={method}
+                      isSelected={selectedQuickFilter === method}
+                    />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          </FilterChipGroup>
+        </ListViewFilters>
+        <Table
+          {...args}
+          data={listViewTableData}
+          defaultSelectedIds={['1', '3']}
+          onSelectionChange={console.log}
+          isFirstColumnSticky
+          selectionType="single"
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                  <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow
+                    key={index}
+                    item={tableItem}
+                    hoverActions={
+                      <>
+                        <Button variant="tertiary" size="xsmall">
+                          View Details
+                        </Button>
+                        <IconButton
+                          icon={CheckIcon}
+                          isHighlighted
+                          accessibilityLabel="Approve"
+                          onClick={() => {
+                            console.log('Approved', tableItem.id);
+                          }}
+                        />
+                        <IconButton
+                          icon={CloseIcon}
+                          isHighlighted
+                          accessibilityLabel="Reject"
+                          onClick={() => {
+                            console.log('Rejected', tableItem.id);
+                          }}
+                        />
+                      </>
+                    }
+                    onClick={() => {
+                      console.log('where');
+                    }}
+                  >
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableEditableCell
+                      accessibilityLabel="Amount"
+                      placeholder="Enter text"
+                      successText="Amount is valid"
+                    />
+                    <TableCell>{tableItem.account}</TableCell>
+                    <TableCell>
+                      {tableItem.date?.toLocaleDateString('en-IN', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell>{tableItem.method.title}</TableCell>
+                    <TableCell>
+                      <Badge
+                        size="medium"
+                        color={
+                          tableItem.status === 'Completed'
+                            ? 'positive'
+                            : tableItem.status === 'Pending'
+                            ? 'notice'
+                            : tableItem.status === 'Failed'
+                            ? 'negative'
+                            : 'primary'
+                        }
+                      >
+                        {tableItem.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableFooterRow>
+                  <TableFooterCell>Total</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>
+                    <Amount value={10} />
+                  </TableFooterCell>
+                </TableFooterRow>
+              </TableFooter>
+            </>
+          )}
+        </Table>
+      </ListView>
+    </BaseBox>
+  );
+};
+export const WithDropDownSearchExampleStory = WithDropDownSearchExample.bind({});
+WithDropDownSearchExampleStory.storyName = 'With Dropdown in Search Example';

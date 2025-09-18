@@ -63,7 +63,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
 
 // Styled component with animation
 const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
-  transition?: FlattenSimpleInterpolation;
+  animationProps?: FlattenSimpleInterpolation;
   maxTagRows: BaseInputWrapperProps['maxTagRows'];
   showAllTags: BaseInputWrapperProps['showAllTags'];
   isDropdownTrigger: BaseInputWrapperProps['isDropdownTrigger'];
@@ -71,7 +71,7 @@ const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
 }>((props) =>
   props.isDropdownTrigger && !props.isTableInputCell
     ? css`
-        ${props.transition};
+        ${props.animationProps};
         max-height: ${makeSize(
           getAnimatedBaseInputWrapperMaxHeight({
             maxTagRows: props.maxTagRows,
@@ -111,17 +111,17 @@ to {
 }
 `;
 
-  const expandTransition = css`
+  const expandAnimationProps = css`
     animation: ${expandAnimation} ${makeMotionTime(motion.duration.quick)}
       ${String(motion.easing.entrance)};
   `;
 
-  const collapseTransition = css`
+  const collapseAnimationProps = css`
     animation: ${collapseAnimation} ${makeMotionTime(motion.duration.quick)}
       ${String(motion.easing.exit)};
   `;
 
-  const noTransition = css`
+  const noAnimationProps = css`
     animation: none;
   `;
   return (
@@ -129,12 +129,12 @@ to {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...rest}
-      transition={
+      animationProps={
         maxTagRows !== 'expandable'
-          ? noTransition
+          ? noAnimationProps
           : showAllTags
-          ? expandTransition
-          : collapseTransition
+          ? expandAnimationProps
+          : collapseAnimationProps
       }
       height={
         rest.isTextArea && isDropdownTrigger
@@ -152,6 +152,7 @@ to {
         }
       }}
       isTableInputCell={rest.isTableInputCell}
+      className="__blade-base-input-wrapper"
     />
   );
 };

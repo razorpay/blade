@@ -93,7 +93,6 @@ export const parameters = {
   },
   docs: {
     container: ({ children, context }) => {
-      console.log('----', context);
       const getThemeTokens = () => {
         if (context.store.globals.globals.brandColor) {
           return createTheme({ brandColor: context.store.globals.globals.brandColor }).theme;

@@ -20,7 +20,6 @@ import {
   modalMargin,
 } from './modalTokens';
 import type { ModalProps } from './types';
-import { componentIds } from './constants';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -29,7 +28,6 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
-import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
@@ -111,13 +109,6 @@ const Modal = ({
     }
   };
 
-  // Only allow ModalHeader, ModalBody and ModalFooter as children
-  useVerifyAllowedChildren({
-    allowedComponents: [componentIds.ModalHeader, componentIds.ModalBody, componentIds.ModalFooter],
-    children,
-    componentName: 'Modal',
-  });
-
   return (
     <FloatingPortal>
       <ModalContext.Provider value={modalContext}>
@@ -128,12 +119,7 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box
-              zIndex={zIndex}
-              position="fixed"
-              testID="modal-wrapper"
-              {...makeAnalyticsAttribute(rest)}
-            >
+            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({
@@ -144,6 +130,7 @@ const Modal = ({
                   modal: true,
                   label: accessibilityLabel,
                 })}
+                {...makeAnalyticsAttribute(rest)}
                 maxWidth={size === 'full' ? '100%' : makeSize(modalMaxWidth[size])}
                 minWidth={makeSize(modalMinWidth)}
                 maxHeight={modalMaxHeight[size]}

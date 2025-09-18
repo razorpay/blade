@@ -33,7 +33,8 @@ const getTableBodyStyles = ({
   isSelectable?: boolean;
   showStripedRows?: boolean;
 }): Record<string, unknown> => {
-  const shouldAddCommonStyle = isVirtualized ?? addCommonStyles;
+  const shouldAddCommonStyle = Boolean(isVirtualized) || addCommonStyles;
+
   return {
     ...(isVirtualized && {
       '& > div ': {

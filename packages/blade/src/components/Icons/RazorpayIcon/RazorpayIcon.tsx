@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const RazorpayIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _RazorpayIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -16,5 +17,9 @@ const RazorpayIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const RazorpayIcon = assignWithoutSideEffects(_RazorpayIcon, {
+  componentId: 'RazorpayIcon',
+});
 
 export default RazorpayIcon;

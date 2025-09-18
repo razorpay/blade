@@ -155,14 +155,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           "borderColor": "black",
                           "borderStyle": "solid",
                           "borderWidth": 0,
-                          "clip": "rect(0 0 0 0)",
-                          "clipPath": "inset(50%)",
+                          "clip": "rect(0, 0, 0, 0)",
                           "height": 1,
-                          "left": -10000,
                           "marginBottom": -1,
-                          "marginLeft": 0,
+                          "marginLeft": -1,
                           "marginRight": -1,
-                          "marginTop": 0,
+                          "marginTop": -1,
                           "overflow": "hidden",
                           "paddingBottom": 0,
                           "paddingLeft": 0,
@@ -213,9 +211,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </View>
             </View>
             <View
+              className="focus-ring-wrapper"
               currentInteraction="default"
               data-blade-component="base-box"
               isTableInputCell={false}
+              shouldAddLimitedFocus={false}
               style={
                 [
                   {},
@@ -406,43 +406,59 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             }
                           }
                         >
-                          <Text
-                            accessible={true}
-                            color="surface.text.gray.disabled"
-                            data-blade-component="text"
-                            fontFamily="text"
-                            fontSize={100}
-                            fontStyle="normal"
-                            fontWeight="regular"
-                            lineHeight={100}
-                            numberOfLines={1}
+                          <View
+                            alignItems="center"
+                            data-blade-component="base-box"
+                            display="flex"
+                            gap="spacing.3"
                             style={
                               [
                                 {
-                                  "color": "hsla(211, 20%, 52%, 0.32)",
-                                  "fontFamily": "Inter",
-                                  "fontSize": 14,
-                                  "fontStyle": "normal",
-                                  "fontWeight": "400",
-                                  "letterSpacing": 0,
-                                  "lineHeight": 20,
-                                  "marginBottom": 0,
-                                  "marginLeft": 0,
-                                  "marginRight": 0,
-                                  "marginTop": 0,
-                                  "paddingBottom": 0,
-                                  "paddingLeft": 0,
-                                  "paddingRight": 0,
-                                  "paddingTop": 0,
-                                  "textAlign": "left",
-                                  "textDecorationLine": "none",
+                                  "alignItems": "center",
+                                  "display": "flex",
+                                  "gap": 8,
                                 },
                               ]
                             }
-                            textAlign="left"
                           >
-                            Select Option
-                          </Text>
+                            <Text
+                              accessible={true}
+                              color="surface.text.gray.disabled"
+                              data-blade-component="text"
+                              fontFamily="text"
+                              fontSize={100}
+                              fontStyle="normal"
+                              fontWeight="regular"
+                              lineHeight={100}
+                              numberOfLines={1}
+                              style={
+                                [
+                                  {
+                                    "color": "hsla(211, 20%, 52%, 0.32)",
+                                    "fontFamily": "Inter",
+                                    "fontSize": 14,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "400",
+                                    "letterSpacing": 0,
+                                    "lineHeight": 20,
+                                    "marginBottom": 0,
+                                    "marginLeft": 0,
+                                    "marginRight": 0,
+                                    "marginTop": 0,
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "textAlign": "left",
+                                    "textDecorationLine": "none",
+                                  },
+                                ]
+                              }
+                              textAlign="left"
+                            >
+                              Select Option
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>

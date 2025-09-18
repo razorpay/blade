@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const PieChartIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _PieChartIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -20,5 +21,9 @@ const PieChartIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const PieChartIcon = assignWithoutSideEffects(_PieChartIcon, {
+  componentId: 'PieChartIcon',
+});
 
 export default PieChartIcon;

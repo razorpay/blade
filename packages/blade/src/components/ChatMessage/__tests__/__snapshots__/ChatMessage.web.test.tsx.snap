@@ -60,7 +60,21 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   flex-direction: column;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -74,11 +88,11 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   align-items: center;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   margin-left: 4px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   grid-column: 2;
 }
 
@@ -99,7 +113,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -154,7 +168,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   position: relative;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -183,7 +197,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -192,24 +206,21 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   margin-bottom: 2px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
-.c12.c12.c12.c12.c12:focus-visible + div {
+.c13.c13.c13.c13.c13:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -218,9 +229,10 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
-.c12.c12.c12.c12.c12:hover + div {
+.c13.c13.c13.c13.c13:hover + div {
   border-color: hsla(214,28%,84%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -304,7 +316,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c7"
+                          class="c10"
                           data-blade-component="base-box"
                         >
                           <div
@@ -316,7 +328,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c10"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -324,7 +336,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c11"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -333,22 +345,22 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c12"
+                                      class="c13"
                                       name="radio-group-15"
                                       role="radio"
                                       type="radio"
                                       value="website"
                                     />
                                     <div
-                                      class="c13"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c14"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c15"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       Website
@@ -367,7 +379,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c10"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -375,7 +387,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c11"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -384,22 +396,22 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c12"
+                                      class="c13"
                                       name="radio-group-15"
                                       role="radio"
                                       type="radio"
                                       value="android"
                                     />
                                     <div
-                                      class="c13"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c14"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c15"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       Android App
@@ -418,7 +430,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c10"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -426,7 +438,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c11"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -435,22 +447,22 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c12"
+                                      class="c13"
                                       name="radio-group-15"
                                       role="radio"
                                       type="radio"
                                       value="ios"
                                     />
                                     <div
-                                      class="c13"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c14"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c15"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       iOS App
@@ -470,7 +482,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
           </div>
         </div>
         <div
-          class="c16"
+          class="c17"
           data-blade-component="base-box"
         />
       </div>
@@ -561,7 +573,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -978,7 +990,21 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   flex-direction: column;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -992,11 +1018,11 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   align-items: center;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   margin-left: 4px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   grid-column: 2;
 }
 
@@ -1017,7 +1043,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1072,7 +1098,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   position: relative;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1101,7 +1127,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1110,24 +1136,21 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   margin-bottom: 2px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clip: rect(0,0,0,0);
+  clip: rect(0,0,0,0);
   height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
   width: 1px;
-  left: -10000px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  position: absolute;
   word-wrap: normal;
 }
 
-.c12.c12.c12.c12.c12:focus-visible + div {
+.c13.c13.c13.c13.c13:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1136,9 +1159,10 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   transition-duration: 80ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
-.c12.c12.c12.c12.c12:hover + div {
+.c13.c13.c13.c13.c13:hover + div {
   border-color: hsla(214,28%,84%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1222,7 +1246,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c7"
+                          class="c10"
                           data-blade-component="base-box"
                         >
                           <div
@@ -1234,7 +1258,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c10"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -1242,7 +1266,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c11"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -1251,22 +1275,22 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c12"
+                                      class="c13"
                                       name="radio-group-7"
                                       role="radio"
                                       type="radio"
                                       value="website"
                                     />
                                     <div
-                                      class="c13"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c14"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c15"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       Website
@@ -1285,7 +1309,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c10"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -1293,7 +1317,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c11"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -1302,22 +1326,22 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c12"
+                                      class="c13"
                                       name="radio-group-7"
                                       role="radio"
                                       type="radio"
                                       value="android"
                                     />
                                     <div
-                                      class="c13"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c14"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c15"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       Android App
@@ -1336,7 +1360,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                               data-blade-component="base-box"
                             >
                               <label
-                                class="c10"
+                                class="c11"
                                 data-blade-component="radio-label"
                               >
                                 <div
@@ -1344,7 +1368,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                   data-blade-component="base-box"
                                 >
                                   <div
-                                    class="c11"
+                                    class="c12"
                                     data-blade-component="base-box"
                                   >
                                     <input
@@ -1353,22 +1377,22 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                       aria-disabled="false"
                                       aria-invalid="false"
                                       aria-required="false"
-                                      class="c12"
+                                      class="c13"
                                       name="radio-group-7"
                                       role="radio"
                                       type="radio"
                                       value="ios"
                                     />
                                     <div
-                                      class="c13"
+                                      class="c14"
                                       data-blade-component="radio-icon-wrapper"
                                     />
                                     <div
-                                      class="c14"
+                                      class="c15"
                                       data-blade-component="base-box"
                                     />
                                     <p
-                                      class="c15"
+                                      class="c16"
                                       data-blade-component="text"
                                     >
                                       iOS App
@@ -1388,7 +1412,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
           </div>
         </div>
         <div
-          class="c16"
+          class="c17"
           data-blade-component="base-box"
         />
       </div>

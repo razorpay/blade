@@ -1,8 +1,9 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const LoaderIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const _LoaderIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -42,5 +43,9 @@ const LoaderIcon: IconComponent = ({ size, color, ...styledProps }) => {
     </Svg>
   );
 };
+
+const LoaderIcon = assignWithoutSideEffects(_LoaderIcon, {
+  componentId: 'LoaderIcon',
+});
 
 export default LoaderIcon;

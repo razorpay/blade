@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 import { Heading, Text, Box, Card, CardBody, ChevronRightIcon } from '../../../components';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import BladeQRCode from './blade-qr-code.png';
 import { CheckoutShell } from './CheckoutShell';
 import { useTheme } from '~components/BladeProvider';

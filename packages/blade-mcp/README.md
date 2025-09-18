@@ -8,18 +8,21 @@ Blade MCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/in
 
 ## Available Tools
 
-| Tool Name                   | Description                                                                                                                                           |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hi_blade`                  | Provides a welcome message and overview of Blade MCP capabilities when user greets with "hi blade", "hey blade", etc.                                 |
-| `create_new_blade_project`  | Creates a new project using Blade with Vite, React, and TypeScript setup. Should only be called when creating a new project from scratch.             |
-| `create_blade_cursor_rules` | Creates the cursor rules for Blade to help with code generation. Should be called before getting component docs and when the rule file doesn't exist. |
-| `get_blade_component_docs`  | Fetches the Blade Design System documentation for specific components. Useful when adding or modifying components in your project.                    |
+| Tool Name                   | Description                                                                                                                                                      |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hi_blade`                  | Provides a welcome message and overview of Blade MCP capabilities when user greets with "hi blade", "hey blade", etc.                                            |
+| `create_new_blade_project`  | Creates a new project using Blade with Vite, React, and TypeScript setup. Should only be called when creating a new project from scratch.                        |
+| `create_blade_cursor_rules` | Creates the cursor rules for Blade to help with code generation. Should be called before getting component docs and when the rule file doesn't exist.            |
+| `get_blade_component_docs`  | Fetches the Blade Design System documentation for specific components. Useful when adding or modifying components in your project.                               |
+| `get_blade_pattern_docs`    | Fetches the Blade Design System pattern documentation. Use this to get information about design patterns, best practices, and implementation guidelines.         |
+| `get_blade_general_docs`    | Fetches general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines.               |
+| `get_figma_to_code`         | Converts Figma designs into Blade Design System code. Provide a Figma design URL to generate the corresponding React components using Blade's component library. **[NOTE: figma to code tool can only be accessed by Razorpay employees]** |
 
 ## Prerequisites
 
 - Node.js 18.x or higher ([install using NVM](https://nodejs.org/en/download))
 
-## Integrations
+## Installation
 
 ### Cursor or VS Code
 
@@ -57,6 +60,24 @@ Add the following to `claude_desktop_config.json`:
 > - If you're using `nvm`, you might want to [follow these steps](https://github.com/modelcontextprotocol/servers/issues/64) instead of `npx`
 > - Learn how to install [Claude Desktop](https://claude.ai/download)
 
+## Troubleshooting / Manually Updating the MCP Server
+
+> [!NOTE]
+>
+> The MCP server would auto-update by default after few days if you have followed the steps above.
+
+If your MCP server is failing to start or if you want to manually force update the MCP server to latest version, you can do so by following these steps:
+
+- Step 1: Clear the npx cache
+
+  Run following command in your terminal
+
+  ```sh
+  npx clear-npx-cache
+  ```
+
+- Step 2: Quit and Restart Cursor or Claude Instance
+
 ## How to use
 
 - Follow [Integrations Guide](#integrations) to configure MCP servers in Cursor
@@ -70,7 +91,7 @@ Can you create a signup form with best UX practices using Blade?
 
 The AI agents will use the MCP server to retrieve components and generate appropriate code.
 
-## Local Development Setup
+## Local Blade MCP Development Setup 
 
 ### Clone the repository
 
@@ -89,9 +110,9 @@ cd packages/blade-mcp
 yarn build
 ```
 
-### Local Development with Cursor
+### Local Blade MCP Development with Cursor
 
-For local development with Cursor, update your `mcp.json` with the local path:
+For local Blade MCP development with Cursor, update your `mcp.json` with the local path:
 
 ```json
 {

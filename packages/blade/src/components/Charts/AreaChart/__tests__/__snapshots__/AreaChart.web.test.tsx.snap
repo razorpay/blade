@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AreaChart /> should render LineChart with multiple lines 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="chart-area-container"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts3-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-area"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <defs>
+                    <clippath
+                      id="animationClipPath-recharts-area-:r1:"
+                    >
+                      <rect
+                        height="798"
+                        width="0"
+                        x="5"
+                        y="0"
+                      />
+                    </clippath>
+                  </defs>
+                  <g
+                    class="recharts-layer"
+                    clip-path="url(#animationClipPath-recharts-area-:r1:)"
+                  >
+                    <g
+                      class="recharts-layer"
+                    >
+                      <path
+                        class="recharts-curve recharts-area-area"
+                        d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663L795,795C707.2222222222222,795,619.4444444444445,795,531.6666666666666,795C443.88888888888886,795,356.1111111111111,795,268.3333333333333,795C180.55555555555554,795,92.77777777777777,795,5,795Z"
+                        fill="hsla(219, 95%, 85%, 1)"
+                        fill-opacity="0.09"
+                        height="790"
+                        id="recharts-area-:r1:"
+                        name="Sales"
+                        stroke="none"
+                        stroke-width="3"
+                        width="790"
+                      />
+                      <path
+                        class="recharts-curve recharts-area-curve"
+                        d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                        fill="none"
+                        fill-opacity="0.09"
+                        height="790"
+                        name="Sales"
+                        stroke="hsla(219, 95%, 85%, 1)"
+                        stroke-width="3"
+                        width="790"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<AreaChart /> should render basic LineChart with single line 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="chart-area-container"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts1-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-area"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <defs>
+                    <clippath
+                      id="animationClipPath-recharts-area-:r0:"
+                    >
+                      <rect
+                        height="798"
+                        width="0"
+                        x="5"
+                        y="0"
+                      />
+                    </clippath>
+                  </defs>
+                  <g
+                    class="recharts-layer"
+                    clip-path="url(#animationClipPath-recharts-area-:r0:)"
+                  >
+                    <g
+                      class="recharts-layer"
+                    >
+                      <path
+                        class="recharts-curve recharts-area-area"
+                        d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663L795,795C707.2222222222222,795,619.4444444444445,795,531.6666666666666,795C443.88888888888886,795,356.1111111111111,795,268.3333333333333,795C180.55555555555554,795,92.77777777777777,795,5,795Z"
+                        fill="hsla(219, 95%, 85%, 1)"
+                        fill-opacity="0.09"
+                        height="790"
+                        id="recharts-area-:r0:"
+                        name="Sales"
+                        stroke="none"
+                        stroke-width="3"
+                        width="790"
+                      />
+                      <path
+                        class="recharts-curve recharts-area-curve"
+                        d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                        fill="none"
+                        fill-opacity="0.09"
+                        height="790"
+                        name="Sales"
+                        stroke="hsla(219, 95%, 85%, 1)"
+                        stroke-width="3"
+                        width="790"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

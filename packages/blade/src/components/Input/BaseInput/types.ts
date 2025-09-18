@@ -65,6 +65,7 @@ export type StyledBaseInputProps = {
   $size: NonNullable<BaseInputProps['size']>;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
+  hasLeadingDropdown?: boolean;
 } & Pick<
   BaseInputProps,
   | 'as'
@@ -98,6 +99,7 @@ export type StyledBaseInputProps = {
   | 'autoCapitalize'
   | 'isDropdownTrigger'
   | 'tabIndex'
+  | 'valueSuffix'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

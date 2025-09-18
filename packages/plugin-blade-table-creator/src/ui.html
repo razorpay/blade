@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Table Creator</title>
+  <style>
+    @import url('ui.css');
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <strong>Blade Table Creator</strong>
+
+    <!-- Step 1: Basic Table Settings -->
+    <div id="step1" class="step active">
+      <div class="dimensions-group">
+        <div class="input-group">
+          <label for="table-columns">Number of Columns</label>
+          <input type="number" id="table-columns" value="4" min="1" max="10" placeholder="Enter number of columns">
+        </div>
+        <div class="input-group">
+          <label for="rows">Number of Rows</label>
+          <input type="number" id="rows" min="1" max="100" value="4" />
+        </div>
+        <div class="input-group">
+          <label for="renderType">Render Type</label>
+          <select id="renderType">
+            <option value="row" selected>By Row</option>
+            <option value="column">By Column</option>
+          </select>
+        </div>
+      </div>
+      <div class="density-section">
+        <strong class="secondary">Density Settings</strong>
+        <div class="density-group">
+          <div class="input-group">
+            <label for="header-density">Header Density</label>
+            <select id="header-density">
+              <option value="COMPACT" selected>Compact</option>
+              <option value="NORMAL">Normal</option>
+              <option value="COMFORTABLE">Comfortable</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="body-density">Body Density</label>
+            <select id="body-density">
+              <option value="COMPACT" selected>Compact</option>
+              <option value="NORMAL">Normal</option>
+              <option value="COMFORTABLE">Comfortable</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Column Content Types -->
+    <div id="step2" class="step">
+      <div class="input-group">
+        <strong class="secondary">Column Configuration</strong>
+        <div class="column-card">
+          <table class="column-table">
+            <thead>
+              <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody id="column-types">
+              <!-- Column type selectors will be added here dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <button id="back" style="display: none;">Back</button>
+        <button id="next">Next: Configure Columns</button>
+        <button id="create" style="display: none;">Create Table</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    let columns = 4;
+    let rows = 4;
+    let headerDensity = 'NORMAL';
+    let bodyDensity = 'NORMAL';
+    let columnTypes = [];
+    let columnTitles = [];
+
+    function updateColumnTypes() {
+      const container = document.getElementById('column-types');
+      container.innerHTML = '';
+
+      for (let i = 0; i < columns; i++) {
+        const row = document.createElement('tr');
+        row.className = 'column-type-row';
+
+        const columnLabel = document.createElement('td');
+        columnLabel.className = 'column-label';
+        columnLabel.textContent = `Column ${i + 1}`;
+
+        const select = document.createElement('td');
+        select.className = 'column-type-select';
+        const selectInput = document.createElement('select');
+        selectInput.id = `column-type-${i}`;
+        selectInput.value = columnTypes[i] || 'TEXT';
+
+        const options = ['TEXT', 'AMOUNT', 'NUMBER', 'CHECKBOX', 'SPACER', 'STATUS', 'BADGE (GROUP)', 'BUTTON (GROUP)', 'ACTIONS/LINKS', 'ICON', 'SLOT', 'INPUT TEXT', 'INPUT SELECT'].map(type => {
+          const option = document.createElement('option');
+          option.value = type;
+          option.textContent = type.charAt(0) + type.slice(1).toLowerCase();
+          return option;
+        });
+
+        options.forEach(opt => selectInput.appendChild(opt));
+        selectInput.onchange = () => {
+          columnTypes[i] = selectInput.value;
+          // Disable/enable title input based on column type
+          const titleInput = selectInput.closest('tr').querySelector('.column-title-input input');
+          if (selectInput.value === 'SPACER' || selectInput.value === 'CHECKBOX') {
+            titleInput.disabled = true;
+            titleInput.placeholder = 'Not applicable';
+          } else {
+            titleInput.disabled = false;
+            titleInput.placeholder = 'Enter column title';
+          }
+        };
+
+        select.appendChild(selectInput);
+
+        const titleInput = document.createElement('td');
+        titleInput.className = 'column-title-input';
+        titleInput.innerHTML = `<input type="text" placeholder="Enter column title" value="${columnTitles[i] || ''}" onchange="columnTitles[${i}] = this.value">`;
+
+        row.appendChild(columnLabel);
+        row.appendChild(select);
+        row.appendChild(titleInput);
+        container.appendChild(row);
+      }
+    }
+
+    document.getElementById('next').onclick = () => {
+      columns = parseInt(document.getElementById('table-columns').value);
+      rows = parseInt(document.getElementById('rows').value);
+      headerDensity = document.getElementById('header-density').value;
+      bodyDensity = document.getElementById('body-density').value;
+      const renderType = document.getElementById('renderType').value;
+
+      // Store values for later use
+      window.columns = columns;
+      window.rows = rows;
+      window.headerDensity = headerDensity;
+      window.bodyDensity = bodyDensity;
+      window.renderType = renderType;
+
+      // Initialize column types and titles if not already set
+      if (columnTypes.length === 0) {
+        columnTypes = Array(columns).fill('TEXT');
+        columnTitles = Array(columns).fill('');
+      }
+
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+
+      // Update button visibility
+      document.getElementById('back').style.display = 'block';
+      document.getElementById('next').style.display = 'none';
+      document.getElementById('create').style.display = 'block';
+
+      updateColumnTypes();
+    };
+
+    document.getElementById('back').onclick = () => {
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('step1').classList.add('active');
+
+      // Update button visibility
+      document.getElementById('back').style.display = 'none';
+      document.getElementById('next').style.display = 'block';
+      document.getElementById('create').style.display = 'none';
+    };
+
+    document.getElementById('create').onclick = () => {
+      const columnTypes = [];
+      const columnTitles = [];
+
+      // Get all column configurations
+      const columnRows = document.querySelectorAll('.column-type-row');
+      columnRows.forEach((row) => {
+        const typeSelect = row.querySelector('select');
+        const titleInput = row.querySelector('input[type="text"]');
+        columnTypes.push(typeSelect.value);
+        columnTitles.push(titleInput.value);
+      });
+
+      // Send message to plugin
+      parent.postMessage({
+        pluginMessage: {
+          type: 'create-table',
+          columns,
+          rows,
+          headerDensity,
+          bodyDensity,
+          renderType,
+          columnTypes,
+          columnTitles,
+        },
+      }, '*');
+    };
+  </script>
+</body>
+
+</html>

@@ -1,6 +1,9 @@
+import type React from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import type { DataAnalyticsAttribute } from '~utils/types';
+
+export type SelectInputValueSuffixType = ({ values }: { values: string[] }) => React.ReactNode;
 
 export type SelectChevronIconProps = {
   onClick?: () => void;
@@ -127,22 +130,19 @@ export type BaseDropdownInputTriggerProps = Omit<
    * Internal prop to handle click on input trigger
    */
   onTriggerClick: BaseInputProps['onClick'];
+
+  /**
+   * Slot to be rendered adjacent to the value
+   */
+  valueSuffix?: SelectInputValueSuffixType;
 };
 
-export type useControlledDropdownInputProps = Pick<
-  BaseDropdownInputTriggerProps,
-  | 'onChange'
-  | 'name'
-  | 'value'
-  | 'defaultValue'
-  | 'onInputValueChange'
-  | 'syncInputValueWithSelection'
-  | 'isSelectInput'
-> & {
-  triggererRef: React.RefObject<HTMLElement>;
+export type SelectInputProps = DropdownInputTriggersProps & {
+  /**
+   * Slot to be rendered adjacent to the value
+   */
+  valueSuffix?: SelectInputValueSuffixType;
 };
-
-export type SelectInputProps = DropdownInputTriggersProps;
 
 export type AutoCompleteProps = DropdownInputTriggersCommonProps & {
   /**
