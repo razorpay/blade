@@ -16,7 +16,12 @@ type BottomSheetContextProps = {
   /**
    * Closes the bottomsheet
    */
-  close: () => void;
+  close?: () => void;
+  /**
+   * Whether the bottom sheet can be dismissed by tapping backdrop, swiping down, or pressing escape key
+   * @default true
+   */
+  isDismissible: boolean;
   /**
    * scrollRef is the ref to the BottomSheetBody's scrollable content
    *
@@ -62,6 +67,7 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   setHasBodyPadding: () => {},
   setIsHeaderEmpty: () => {},
   close: () => {},
+  isDismissible: true,
   scrollRef: null,
   bind: null,
   isOpen: false,

@@ -500,5 +500,41 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should not close when isDismissible is false', async () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    const user = userEvents.setup();
+
+    const Example = (): React.ReactElement => {
+      const [isOpen, setIsOpen] = React.useState(false);
+
+      return (
+        <>
+          <Button onClick={() => setIsOpen(true)}>Open</Button>
+          <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)} isDismissible={false}>
+            <BottomSheetHeader title="Non-Dismissible Sheet" />
+            <BottomSheetBody>
+              <Text>This sheet cannot be dismissed</Text>
+              <Button onClick={() => setIsOpen(false)}>Close Manually</Button>
+            </BottomSheetBody>
+          </BottomSheet>
+        </>
+      );
+    };
+    const { getByRole, queryByText, queryByTestId } = renderWithTheme(<Example />);
+    // Try to click backdrop - should not close
+    await user.click(queryByTestId('bottomsheet-backdrop')!);
+    await waitFor(() => expect(queryByText('This sheet cannot be dismissed')).toBeVisible());
+
+    // Try escape key - should not close
+    fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' });
+    await waitFor(() => expect(queryByText('This sheet cannot be dismissed')).toBeVisible());
+
+    // Should only close with explicit button click
+    await user.click(getByRole('button', { name: /close manually/i }));
+    await waitFor(() => expect(queryByText('This sheet cannot be dismissed')).not.toBeVisible());
+
+    mockConsoleError.mockRestore();
+  });
+
   viewport.cleanup();
 });

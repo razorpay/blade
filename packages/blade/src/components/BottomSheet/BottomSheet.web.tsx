@@ -75,6 +75,7 @@ const _BottomSheet = ({
   children,
   initialFocusRef,
   snapPoints = [0.35, 0.5, 0.85],
+  isDismissible = true,
   zIndex = componentZIndices.bottomSheet,
   ...dataAnalyticsProps
 }: BottomSheetProps): React.ReactElement => {
@@ -216,10 +217,12 @@ const _BottomSheet = ({
   }, [setPositionY]);
 
   const close = React.useCallback(() => {
-    onDismiss?.();
-    bottomSheetAndDropdownGlue?.onBottomSheetDismiss();
+    if (isDismissible) {
+      onDismiss?.();
+      bottomSheetAndDropdownGlue?.onBottomSheetDismiss?.();
+    }
     returnFocus();
-  }, [bottomSheetAndDropdownGlue, onDismiss, returnFocus]);
+  }, [isDismissible, onDismiss, bottomSheetAndDropdownGlue, returnFocus]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
@@ -338,7 +341,7 @@ const _BottomSheet = ({
     {
       from: [0, positionY],
       filterTaps: true,
-      enabled: isOnTopOfStack && _isOpen,
+      enabled: isDismissible && isOnTopOfStack && _isOpen,
     },
   );
 
@@ -405,6 +408,7 @@ const _BottomSheet = ({
       bind,
       defaultInitialFocusRef,
       isHeaderFloating,
+      isDismissible,
     }),
     [
       isVisible,
@@ -422,6 +426,7 @@ const _BottomSheet = ({
       bind,
       defaultInitialFocusRef,
       isHeaderFloating,
+      isDismissible,
     ],
   );
 
