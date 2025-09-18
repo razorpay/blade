@@ -12,7 +12,6 @@ import { ChartLine, ChartLineWrapper } from '~components/Charts/LineChart';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 
 const Page = (): React.ReactElement => {
@@ -63,12 +62,78 @@ const Page = (): React.ReactElement => {
   );
 };
 
+const propsCategory = {
+  CHAT_LINE_PROPS: 'ChartLine Props',
+};
+
 export default {
   title: 'Components/Charts/LineChart',
   component: ChartLine,
   tags: ['autodocs'],
   argTypes: {
-    ...getStyledPropsArgTypes(),
+    type: {
+      control: { type: 'select' },
+      options: ['step', 'stepAfter', 'stepBefore', 'linear', 'monotone'],
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    connectNulls: {
+      control: { type: 'boolean' },
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    showLegend: {
+      control: { type: 'boolean' },
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    strokeStyle: {
+      control: { type: 'select' },
+      options: ['dotted', 'dashed', 'solid'],
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    dataKey: {
+      control: { type: 'text' },
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    name: {
+      control: { type: 'text' },
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    color: {
+      control: { type: 'text' },
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    dot: {
+      control: { disable: true },
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    activeDot: {
+      control: { disable: true },
+      table: {
+        category: propsCategory.CHAT_LINE_PROPS,
+      },
+    },
+    // Hide private props from Storybook
+    _index: {
+      table: { disable: true },
+    },
+    _colorTheme: {
+      table: { disable: true },
+    },
   },
   parameters: {
     docs: {
@@ -117,7 +182,11 @@ const steppedData = [
 ];
 
 // Simple Line Chart Example
-export const SimpleLineChart: StoryFn<typeof ChartLine> = () => {
+export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
+  dataKey = 'teamA',
+  name = 'Team A',
+  ...args
+}) => {
   return (
     <Box width="100%" height="400px">
       <ChartLineWrapper data={chartData}>
@@ -127,16 +196,11 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = () => {
         <ChartTooltip />
         <ChartLegend />
         <ChartLine
-          dataKey="teamA"
-          name="Team A"
+          dataKey={dataKey}
+          name={name}
           strokeStyle="solid"
           color="chart.background.categorical.azure.moderate"
-        />
-        <ChartLine
-          dataKey="teamB"
-          name="Team B"
-          strokeStyle="solid"
-          color="chart.background.categorical.emerald.moderate"
+          {...args}
         />
         <ChartReferenceLine y={1500} label="Avg: 1200" />
       </ChartLineWrapper>
@@ -145,7 +209,11 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = () => {
 };
 
 // Simple Line chart with vertical line
-export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = () => {
+export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = ({
+  dataKey = 'teamA',
+  name = 'Team A',
+  ...args
+}) => {
   return (
     <Box width="100%" height="400px">
       <ChartLineWrapper data={chartData}>
@@ -155,16 +223,11 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = () => 
         <ChartTooltip />
         <ChartLegend />
         <ChartLine
-          dataKey="teamA"
-          name="Team A"
+          dataKey={dataKey}
+          name={name}
           strokeStyle="solid"
           color="chart.background.categorical.azure.moderate"
-        />
-        <ChartLine
-          dataKey="teamB"
-          name="Team B"
-          strokeStyle="solid"
-          color="chart.background.categorical.emerald.moderate"
+          {...args}
         />
         <ChartReferenceLine x="Apr" label="Avg: 1200" />
       </ChartLineWrapper>
@@ -173,16 +236,22 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = () => 
 };
 
 // Tiny Line Chart Example (no dots for cleaner look)
-export const TinyLineChart: StoryFn<typeof ChartLine> = () => {
+export const TinyLineChart: StoryFn<typeof ChartLine> = ({
+  dataKey = 'teamA',
+  name = 'Team A',
+  ...args
+}) => {
   return (
     <Box width="200px" height="100px">
       <ChartLineWrapper data={chartData}>
         <ChartLine
-          dataKey="teamA"
+          dataKey={dataKey}
+          name={name}
           strokeStyle="solid"
           color="chart.background.categorical.azure.strong"
           dot={false}
           activeDot={false}
+          {...args}
         />
       </ChartLineWrapper>
     </Box>
@@ -216,6 +285,10 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
       </ChartLineWrapper>
     </Box>
   );
+};
+
+ForecastLineChart.parameters = {
+  controls: { disable: true },
 };
 
 // Line Chart that Connects Nulls
@@ -253,6 +326,10 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
   );
 };
 
+LineChartConnectNulls.parameters = {
+  controls: { disable: true },
+};
+
 // Stepped Line Chart Example
 export const SteppedLineChart: StoryFn<typeof ChartLine> = () => {
   return (
@@ -274,6 +351,10 @@ export const SteppedLineChart: StoryFn<typeof ChartLine> = () => {
   );
 };
 
+SteppedLineChart.parameters = {
+  controls: { disable: true },
+};
+
 // Line Chart with Default Color Theme
 export const LineChartWithDefaultColorTheme: StoryFn<typeof ChartLine> = () => {
   return (
@@ -291,8 +372,16 @@ export const LineChartWithDefaultColorTheme: StoryFn<typeof ChartLine> = () => {
   );
 };
 
+LineChartWithDefaultColorTheme.parameters = {
+  controls: { disable: true },
+};
+
 //Line Chart with X and Y axis labels
-export const LineChartWithXAndYAxisLabels: StoryFn<typeof ChartLine> = () => {
+export const LineChartWithXAndYAxisLabels: StoryFn<typeof ChartLine> = ({
+  dataKey = 'teamA',
+  name = 'Team A',
+  ...args
+}) => {
   return (
     <Box width="100%" height="400px">
       <ChartLineWrapper data={chartData}>
@@ -301,14 +390,16 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof ChartLine> = () => {
         <ChartTooltip />
         <ChartLegend />
         <ChartLine
-          dataKey="teamA"
-          name="Success"
+          dataKey={dataKey}
+          name={name}
           color="chart.background.categorical.emerald.moderate"
+          {...args}
         />
         <ChartLine
-          dataKey="teamB"
-          name="Errors"
+          dataKey={dataKey}
+          name={name}
           color="chart.background.categorical.crimson.moderate"
+          {...args}
         />
       </ChartLineWrapper>
     </Box>
