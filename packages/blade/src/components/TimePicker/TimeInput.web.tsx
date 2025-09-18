@@ -97,7 +97,7 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
             : theme.colors.surface.text.gray.disabled,
         }}
       >
-        {segment.placeholder} {/* Placeholder text like "––" or "am" */}
+        {segment.placeholder} {/* Placeholder text like "––" or ":" */}
       </BaseBox>
       {/* Show actual value when not placeholder, empty string when placeholder */}
       <BaseBox
@@ -108,7 +108,11 @@ const TimeSegment: React.ForwardRefRenderFunction<BladeElementRef, TimeSegmentPr
             : theme.colors.surface.text.gray.normal,
         }}
       >
-        {segment.isPlaceholder ? '' : segment.text}
+        {segment.isPlaceholder
+          ? ''
+          : segment.type === 'dayPeriod'
+          ? segment.text.toUpperCase()
+          : segment.text}
       </BaseBox>
     </StyledTimeSegment>
   );
