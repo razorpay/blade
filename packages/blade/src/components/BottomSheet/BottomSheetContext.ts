@@ -20,6 +20,9 @@ type BottomSheetContextProps = {
   /**
    * Whether the bottom sheet can be dismissed by tapping backdrop, swiping down, or pressing escape key
    * @default true
+   * If isDismissible is false, the bottom sheet will not be dismissed when the user clicks outside the bottom sheet
+   * and the close button will not be shown, it will also not call the onDismiss callback. Consumers will need to handle the
+   * closing of the bottom sheet manually.
    */
   isDismissible: boolean;
   /**
