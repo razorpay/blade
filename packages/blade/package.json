@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.49.7",
+  "version": "12.53.1",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -149,7 +149,8 @@
     "@mantine/hooks": "6.0.21",
     "dayjs": "1.11.10",
     "react-window": "1.8.11",
-    "react-zoom-pan-pinch": "3.7.0"
+    "react-zoom-pan-pinch": "3.7.0",
+    "recharts": "3.1.2"
   },
   "devDependencies": {
     "http-server": "14.1.1",

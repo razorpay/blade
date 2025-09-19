@@ -1,5 +1,52 @@
 # @razorpay/blade
 
+## 12.53.1
+
+### Patch Changes
+
+- 0ff0152b2: fix(ActionListItem): support non-string values in item
+
+## 12.53.0
+
+### Minor Changes
+
+- ab1773547: feat(blade): add AreaChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-areachart--docs)
+
+## 12.52.0
+
+### Minor Changes
+
+- fbc71b288: feat(blade): add support for Badge in SelectInput
+
+  Introduces a new prop `valueSuffix` which in `SelectInput` which can be used to render a Badge after the the value.
+
+  ```jsx
+  <SelectInput
+    valueSuffix={({ values }) => {
+      if (values[0] === 'item-1') {
+        return <Badge color="positive">20% Off</Badge>;
+      }
+      return null;
+    }}
+  />
+  ```
+
+## 12.51.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): added Chart subcomponents & Line Chart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-linechart--docs)
+
+## 12.50.0
+
+### Minor Changes
+
+- b9e48e2ab: feat(Box): add `backgroundFilter` and `transition` prop to Box component
+
 ## 12.49.7
 
 ### Patch Changes
