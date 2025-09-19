@@ -10,7 +10,7 @@ import type {
   GridProps,
 } from '~components/Box/BaseBox/types/propsTypes';
 
-type ChartBarProps = Omit<RechartsBarProps, 'fill' | 'dataKey' | 'name' | 'label' | 'activeBar'> & {
+type ChartBarProps = {
   /**
    * The data key of the bar chart.
    */

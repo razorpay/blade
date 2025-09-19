@@ -21,7 +21,7 @@ const Page = (): React.ReactElement => {
       componentName="AreaChart"
       componentDescription="An Area Chart component built on top of Recharts with Blade design system styling."
       apiDecisionLink={
-        'https://github.com/razorpay/blade/blob/5920fbd32c70793454f8c8c6ff544b2a7413afb5/packages/blade/src/components/Charts/_decisions/decisions.md'
+        'https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md'
       }
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188717&p=f&m=dev"
     >
