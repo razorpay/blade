@@ -84,16 +84,16 @@ const meta: Meta<AccordionProps> = {
   args: {},
   tags: ['autodocs'],
   argTypes: {
-    justifyContent: {
+    minWidth: {
       description:
-        '**CSS property `justify-content`**\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">MDN Docs for justify-content</a><br/><br/>',
+        '**CSS property `min-width`**\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/min-width">MDN Docs for min-width</a><br/><br/>',
       control: {
         type: 'object',
       },
       table: {
         category: 'StyledProps',
         type: {
-          summary: `MakeValueResponsive<CSSObject['justifyContent']>`,
+          summary: `MakeValueResponsive<CSSObject['minWidth']>`,
         },
       },
     },
@@ -387,7 +387,7 @@ const MultiAccordionCompositionTemplate: StoryFn<typeof AccordionComponent> = ({
 export const MultipleAccordionComposition = MultiAccordionCompositionTemplate.bind({});
 
 MultipleAccordionComposition.args = {
-  variant: 'solid',
+  variant: 'filled',
 };
 
 const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
@@ -431,7 +431,7 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
 export const IndividualAccordionItem = IndividualAccordionItemTemplate.bind({});
 
 IndividualAccordionItem.args = {
-  variant: 'solid',
+  variant: 'filled',
 };
 
 const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
@@ -577,7 +577,7 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
 export const AccordionItemHeaderVariants = AccordionItemHeaderVariantsTemplate.bind({});
 
 AccordionItemHeaderVariants.args = {
-  variant: 'solid',
+  variant: 'filled',
 };
 
 const AccordionDeprecatedAPITemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
