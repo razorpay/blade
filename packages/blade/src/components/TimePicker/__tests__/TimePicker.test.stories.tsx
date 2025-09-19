@@ -78,7 +78,11 @@ TimePicker12HourFormat.play = async () => {
   // Should display 2:30 PM in the input initially
   await expect(inputScope.queryByText('02')).toBeVisible(); // 2 PM in input
   await expect(inputScope.queryByText('30')).toBeVisible(); // 30 minutes in input
-  await expect(inputScope.getAllByText('PM')[0]).toBeVisible(); // PM in input (actual value, not placeholder)
+  // Find the visible PM element (not the hidden placeholder)
+  // Use a more specific approach - look for PM text in the time input container
+  const timeInputContainer = inputScope.getByRole('combobox');
+  const pmElement = within(timeInputContainer).getByText('PM');
+  await expect(pmElement).toBeVisible(); // PM in input (actual value, not placeholder)
 
   await userEvent.click(input);
   await sleep(400);
@@ -112,8 +116,13 @@ TimePicker24HourFormat.play = async () => {
   await expect(inputScope.queryByText('14')).toBeVisible(); // 14 hours in input
   await expect(inputScope.queryByText('30')).toBeVisible(); // 30 minutes in input
   // AM/PM should not be in input for 24h format
-  await expect(inputScope.queryByText('AM')).not.toBeInTheDocument();
-  await expect(inputScope.queryByText('PM')).not.toBeInTheDocument();
+  // Check that no visible AM/PM elements exist (not just hidden placeholders)
+  const amElements = inputScope.queryAllByText('AM');
+  const pmElements = inputScope.queryAllByText('PM');
+  const visibleAmElements = amElements.filter((el) => el.offsetHeight > 0);
+  const visiblePmElements = pmElements.filter((el) => el.offsetHeight > 0);
+  expect(visibleAmElements).toHaveLength(0);
+  expect(visiblePmElements).toHaveLength(0);
 
   await userEvent.click(input);
   await sleep(400);
@@ -265,7 +274,11 @@ TimePickerControlledState.play = async () => {
   // Should start with 10:30 AM in input
   await expect(inputScope.queryByText('10')).toBeVisible();
   await expect(inputScope.queryByText('30')).toBeVisible();
-  await expect(inputScope.getAllByText('AM')[0]).toBeVisible(); // AM in input (actual value, not placeholder)
+  // Find the visible AM element (not the hidden placeholder)
+  // Use a more specific approach - look for AM text in the time input container
+  const timeInputContainer = inputScope.getByRole('combobox');
+  const amElement = within(timeInputContainer).getByText('AM');
+  await expect(amElement).toBeVisible(); // AM in input (actual value, not placeholder)
 
   // Click change time button
   const changeButton = getByRole('button', { name: 'Change Time' });
@@ -279,7 +292,11 @@ TimePickerControlledState.play = async () => {
   // Should now show 3:45 PM in input
   await expect(inputScope2.queryByText('03')).toBeVisible();
   await expect(inputScope2.queryByText('45')).toBeVisible();
-  await expect(inputScope2.getAllByText('PM')[0]).toBeVisible(); // PM in input (actual value, not placeholder)
+  // Find the visible PM element (not the hidden placeholder)
+  // Use a more specific approach - look for PM text in the time input container
+  const timeInputContainer2 = inputScope2.getByRole('combobox');
+  const pmElement2 = within(timeInputContainer2).getByText('PM');
+  await expect(pmElement2).toBeVisible(); // PM in input (actual value, not placeholder)
 
   // Verify dropdown also shows correct values
 };
@@ -299,6 +316,9 @@ export const TimePickerDisabled: StoryFn<typeof TimePickerComponent> = (): React
 TimePickerDisabled.play = async () => {
   const { getByRole } = within(document.body);
   const input = getByRole('combobox');
+
+  // Verify the input is actually disabled
+  expect(input).toHaveAttribute('aria-disabled', 'true');
 
   await userEvent.click(input);
   await sleep(400);
