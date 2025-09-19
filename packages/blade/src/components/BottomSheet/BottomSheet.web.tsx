@@ -250,14 +250,15 @@ const _BottomSheet = ({
       lastOffset: [_, lastOffsetY],
       down,
       dragging,
+      event,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
-      // Check if the touch started on a scrollable element inside the BottomSheet
-      const touchTarget = (down as any)?.target as Element;
-      const isScrollableElement = touchTarget?.closest('[data-allow-scroll]');
+      // Check if the touch started on a scrollable element (e.g., SpinWheel in TimePicker)
+      // This prevents BottomSheet drag gestures from interfering with internal scrolling
+      const touchTarget = event?.target as Element | undefined;
+      const isScrollableContent = touchTarget?.closest('[data-allow-scroll]');
 
-      // If touch started on scrollable content, don't handle as BottomSheet drag
-      if (isScrollableElement) {
+      if (isScrollableContent) {
         return;
       }
       setIsDragging(Boolean(dragging));

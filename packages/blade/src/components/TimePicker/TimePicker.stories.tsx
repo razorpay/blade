@@ -116,7 +116,7 @@ export const BasicTimePicker: StoryFn<typeof TimePicker> = () => {
 
   return (
     <TimePicker
-      label="Select a time"
+      label="Select a timeweee"
       size="medium"
       timeFormat="12h"
       value={time}
