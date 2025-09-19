@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import type { SpinWheelProps } from './types';
 import { Text } from '~components/Typography';
@@ -44,10 +44,14 @@ const SpinWheel = ({
   const programmaticScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
 
-  // Debounced onChange to avoid jerky scrolling
-  const debouncedOnChange = debounce((value: string | number, index: number) => {
-    onChange(value, index);
-  }, 150);
+  // Memoized debounced onChange to avoid jerky scrolling and prevent memory leaks
+  const debouncedOnChange = useMemo(
+    () =>
+      debounce((value: string | number, index: number) => {
+        onChange(value, index);
+      }, 150),
+    [onChange],
+  );
 
   // Flag to prevent onValueChange from being triggered during auto-positioning
   // Problem: When minuteStep > 1 and user types "03", we auto-position to nearest step "00"

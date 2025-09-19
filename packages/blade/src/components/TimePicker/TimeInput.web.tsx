@@ -12,15 +12,16 @@ import { ClockIcon } from '~components/Icons';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { spacing } from '~tokens/global';
+import { makeSpace } from '~utils/makeSpace';
 
 const StyledTimeSegment = styled.div`
-  padding-left: ${spacing[1]}px;
-  padding-right: ${spacing[1]}px;
+  padding-left: ${makeSpace(spacing[1])};
+  padding-right: ${makeSpace(spacing[1])};
   box-sizing: content-box;
   font-variant-numeric: tabular-nums;
   text-align: right;
   outline: none;
-  border-radius: ${spacing[1]}px;
+  border-radius: ${makeSpace(spacing[1])};
 
   &:focus {
     background-color: ${({ theme }) =>
