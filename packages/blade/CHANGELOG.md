@@ -1,5 +1,19 @@
 # @razorpay/blade
 
+## 12.53.1
+
+### Patch Changes
+
+- 0ff0152b2: fix(ActionListItem): support non-string values in item
+
+## 12.53.0
+
+### Minor Changes
+
+- ab1773547: feat(blade): add AreaChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-areachart--docs)
+
 ## 12.52.0
 
 ### Minor Changes

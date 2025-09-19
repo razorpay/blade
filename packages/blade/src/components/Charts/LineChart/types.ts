@@ -24,7 +24,7 @@ interface ChartLineProps {
   /**
    * If we don't have data for some points should we connect the line or should skip it.
    */
-  connectNulls?: boolean;
+  connectNulls?: RechartsLineProps['connectNulls'];
   /**
    * Include this particular line in legend.
    *  @default : true
@@ -33,12 +33,12 @@ interface ChartLineProps {
   /**
    *  The data key of the x-axis
    */
-  dataKey: string;
+  dataKey: RechartsLineProps['dataKey'];
   /**
    * Name of the line in line chart.
    * if no provided, we will use the data key as the name.
    */
-  name?: string;
+  name?: RechartsLineProps['name'];
   /**
    * Color of the line in line chart.
    * if no provided, we will pick colors from the default theme colors.
