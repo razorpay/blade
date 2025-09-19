@@ -18,7 +18,7 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 1`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -108,7 +108,7 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 2`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -198,7 +198,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 1`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -288,7 +288,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 2`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -378,7 +378,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 3`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -468,7 +468,7 @@ exports[`<ChartDonut /> should render ChartDonut with custom center coordinates 
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -558,7 +558,7 @@ exports[`<ChartDonut /> should render ChartDonut with custom dataKey and nameKey
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -627,7 +627,7 @@ exports[`<ChartDonut /> should render ChartDonut with default props 1`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -717,7 +717,7 @@ exports[`<DonutChart /> should handle data with missing properties 1`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -803,7 +803,7 @@ exports[`<DonutChart /> should handle data with null values 1`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -893,7 +893,7 @@ exports[`<DonutChart /> should handle empty data array 1`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -962,7 +962,7 @@ exports[`<DonutChart /> should render DonutChart with center text 1`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -1065,7 +1065,7 @@ exports[`<DonutChart /> should render DonutChart with custom center position 1`]
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -1155,7 +1155,7 @@ exports[`<DonutChart /> should render DonutChart with custom colors 1`] = `
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -1245,7 +1245,7 @@ exports[`<DonutChart /> should render DonutChart with different chart types 1`] 
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -1335,7 +1335,7 @@ exports[`<DonutChart /> should render DonutChart with different chart types 2`] 
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -1425,7 +1425,7 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 1`]
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -1515,7 +1515,7 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 2`]
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -1605,7 +1605,7 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 3`]
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
@@ -1695,7 +1695,7 @@ exports[`<DonutChart /> should render basic DonutChart with single data series 1
   >
     <div
       class="c1"
-      data-blade-component="donut-chart"
+      data-blade-component="line-chart"
     >
       <div
         class="recharts-responsive-container"
