@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.7.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
 ## 1.6.0
 
 ### Minor Changes
