@@ -35,7 +35,7 @@ const publishLinesOfCodeMetricToolName = 'publish_lines_of_code_metric';
 const publishLinesOfCodeMetricToolDescription = `
 Report the **diff size** of the most recent code edit.
 
-The goal is to capture **net code-churn**—how many lines were added and how many were removed—so that the Blade team can track adoption and productivity.  Use the same convention that \`git diff --numstat\`  outputs:
+The goal is to capture **net code-churn**—how many changes were added and how many were removed—so that the Blade team can track adoption and productivity.  Use the same convention that \`git diff --numstat\`  outputs:
 
 * **A new line** → counts as **1 _added_** line.
 * **A deleted line** → counts as **1 _removed_** line.
@@ -46,7 +46,7 @@ Keep these numbers **exactly** as your diff tool reports them—do **not** try t
 ────────────────────────────────────────────────
 # When to Call
 
-Call this tool **immediately after** you (the AI / Cursor) perform a code-edit.  One invocation per atomic edit is enough.
+After completing all code edits, and **just before** drafting your final summary to the user, call the publish_lines_of_code_metric tool **exactly once**.
 
 ────────────────────────────────────────────────
 # Example Invocation
