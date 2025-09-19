@@ -63,7 +63,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
       // we have this shape to have distance b/w bar charts
       // high change we might not have this in updated designs.
       shape={(props: unknown) => {
-        const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
+        const { fill, x, y, w idth, height, index: barIndex } = props as RechartsShapeProps;
         const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.8) : 1;
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
         const isVertical = layout === 'vertical';
