@@ -51,6 +51,7 @@ const _BottomSheet = ({
   snapPoints = [0.35, 0.5, 0.85],
   isOpen,
   onDismiss,
+  isDismissible = true,
   initialFocusRef,
   zIndex = componentZIndices.bottomSheet,
 }: BottomSheetProps): React.ReactElement => {
@@ -100,9 +101,11 @@ const _BottomSheet = ({
   ]);
 
   const close = React.useCallback(() => {
-    onDismiss?.();
-    bottomSheetAndDropdownGlue?.onBottomSheetDismiss();
-  }, [bottomSheetAndDropdownGlue, onDismiss]);
+    if (isDismissible) {
+      onDismiss?.();
+      bottomSheetAndDropdownGlue?.onBottomSheetDismiss?.();
+    }
+  }, [isDismissible, onDismiss, bottomSheetAndDropdownGlue]);
 
   const handleOnOpen = React.useCallback(() => {
     sheetRef.current?.snapToIndex(initialSnapPoint.current);
@@ -209,6 +212,7 @@ const _BottomSheet = ({
       setContentHeight,
       setFooterHeight,
       setHeaderHeight,
+      isDismissible,
       scrollRef: () => {},
       bind: {} as never,
       defaultInitialFocusRef,
@@ -216,7 +220,15 @@ const _BottomSheet = ({
       setHasBodyPadding,
       setIsHeaderEmpty,
     }),
-    [_isOpen, contentHeight, footerHeight, handleOnClose, headerHeight, isHeaderFloating],
+    [
+      _isOpen,
+      contentHeight,
+      footerHeight,
+      handleOnClose,
+      headerHeight,
+      isHeaderFloating,
+      isDismissible,
+    ],
   );
 
   // Hack: We need to <Portal> the GorhomBottomSheet to the root of the react-native app
@@ -275,7 +287,7 @@ const _BottomSheet = ({
                   }
                 : {}
             }
-            enablePanDownToClose
+            enablePanDownToClose={isDismissible}
             enableOverDrag
             enableContentPanningGesture
             ref={sheetRef}

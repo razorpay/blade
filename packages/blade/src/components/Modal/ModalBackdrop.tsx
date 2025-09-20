@@ -21,13 +21,15 @@ const StyledModalBackdrop = styled(FloatingOverlay)(({ theme }) => {
 });
 
 const ModalBackdrop = (): React.ReactElement => {
-  const { close } = useModalContext();
+  const { close, isDismissible } = useModalContext();
 
   return (
     <StyledModalBackdrop
       {...metaAttribute({ name: MetaConstants.ModalBackdrop, testID: MetaConstants.ModalBackdrop })}
       onClick={() => {
-        close();
+        if (isDismissible) {
+          close?.();
+        }
       }}
       lockScroll={true}
     />

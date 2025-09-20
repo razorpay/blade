@@ -27,7 +27,7 @@ const _ModalHeader = ({
   trailing,
   ...rest
 }: ModalHeaderProps): React.ReactElement => {
-  const { close, defaultInitialFocusRef } = useModalContext();
+  const { close, defaultInitialFocusRef, isDismissible } = useModalContext();
 
   const isHeaderEmpty = !(title || subtitle || leading || trailing);
   return isHeaderEmpty ? (
@@ -46,13 +46,15 @@ const _ModalHeader = ({
       zIndex={componentZIndices.modal}
       {...makeAnalyticsAttribute(rest)}
     >
-      <IconButton
-        ref={defaultInitialFocusRef}
-        size="large"
-        icon={CloseIcon}
-        accessibilityLabel="Close"
-        onClick={close}
-      />
+      {isDismissible && (
+        <IconButton
+          ref={defaultInitialFocusRef}
+          size="large"
+          icon={CloseIcon}
+          accessibilityLabel="Close"
+          onClick={() => close?.()}
+        />
+      )}
     </BaseBox>
   ) : (
     <BaseHeader
@@ -63,7 +65,7 @@ const _ModalHeader = ({
       trailing={trailing}
       titleSuffix={titleSuffix}
       closeButtonRef={defaultInitialFocusRef}
-      showCloseButton={true}
+      showCloseButton={isDismissible}
       onCloseButtonClick={close}
       {...makeAnalyticsAttribute(rest)}
     />

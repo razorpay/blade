@@ -18,7 +18,12 @@ const _BottomSheetHeader = ({
   onBackButtonClick,
   children,
 }: BottomSheetHeaderProps): React.ReactElement => {
-  const { close, setIsHeaderEmpty, defaultInitialFocusRef } = useBottomSheetContext();
+  const {
+    close,
+    isDismissible,
+    setIsHeaderEmpty,
+    defaultInitialFocusRef,
+  } = useBottomSheetContext();
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton || children);
 
   React.useEffect(() => {
@@ -42,7 +47,7 @@ const _BottomSheetHeader = ({
           showBackButton={showBackButton}
           onBackButtonClick={onBackButtonClick}
           // close button
-          showCloseButton={true}
+          showCloseButton={isDismissible}
           onCloseButtonClick={close}
         >
           {children}

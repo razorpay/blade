@@ -38,7 +38,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
     },
     ref,
   ) => {
-    const { close, isHeaderFloating } = useBottomSheetContext();
+    const { close, isDismissible, isHeaderFloating } = useBottomSheetContext();
     const webOnlyEventHandlers: Record<string, any> = isReactNative()
       ? {}
       : {
@@ -71,31 +71,33 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
         right="spacing.0"
         {...webOnlyEventHandlers}
       >
-        <BaseBox
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          position="absolute"
-          // the bottomsheet handle has a height of 16px + 4px padding
-          // we need to make put the close button at 16px from top so adjusting the 4px
-          // cannot use position=fixed because RN won't support it
-          top={isHeaderFloating ? 'spacing.0' : makeSpace(-size[4])}
-          right="spacing.5"
-          width={makeSize(size[28])}
-          height={makeSize(size[28])}
-          flexShrink={0}
-          backgroundColor="popup.background.subtle"
-          borderRadius="max"
-          zIndex={100}
-        >
-          <IconButton
-            ref={ref}
-            size="large"
-            icon={CloseIcon}
-            accessibilityLabel="Close"
-            onClick={close}
-          />
-        </BaseBox>
+        {isDismissible && (
+          <BaseBox
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            position="absolute"
+            // the bottomsheet handle has a height of 16px + 4px padding
+            // we need to make put the close button at 16px from top so adjusting the 4px
+            // cannot use position=fixed because RN won't support it
+            top={isHeaderFloating ? 'spacing.0' : makeSpace(-size[4])}
+            right="spacing.5"
+            width={makeSize(size[28])}
+            height={makeSize(size[28])}
+            flexShrink={0}
+            backgroundColor="popup.background.subtle"
+            borderRadius="max"
+            zIndex={100}
+          >
+            <IconButton
+              ref={ref}
+              size="large"
+              icon={CloseIcon}
+              accessibilityLabel="Close"
+              onClick={() => close?.()}
+            />
+          </BaseBox>
+        )}
       </BaseBox>
     );
   },

@@ -9,7 +9,11 @@ type ModalContextProps = {
   /**
    * Function to close the Modal
    */
-  close: () => void;
+  close?: () => void;
+  /**
+   * Whether the modal can be dismissed
+   */
+  isDismissible: boolean;
   /**
    * The element that will get focused when the Modal first opens
    */
@@ -23,6 +27,7 @@ type ModalContextProps = {
 const ModalContext = React.createContext<ModalContextProps>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   close: () => {},
+  isDismissible: true,
   defaultInitialFocusRef: { current: null },
   isOpen: false,
   isVisible: false,

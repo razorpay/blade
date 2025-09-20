@@ -500,5 +500,25 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
+  test('BottomSheetHeader - isDismissible', async () => {
+    jest.spyOn(console, 'warn').mockImplementation();
+    const user = userEvents.setup();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true} isDismissible={false}>
+          <BottomSheetHeader title="Address" trailing={<Badge size="large">Hello</Badge>} />
+          <BottomSheetBody>
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+        </BottomSheet>
+      );
+    };
+    const { queryByRole, queryByText, queryByTestId } = renderWithTheme(<Example />);
+    expect(queryByRole('button', { name: 'Close' })).not.toBeInTheDocument();
+    await user.click(queryByTestId('bottomsheet-backdrop')!);
+    await waitFor(() => expect(queryByText('BottomSheet body')).toBeVisible());
+  });
+
   viewport.cleanup();
 });

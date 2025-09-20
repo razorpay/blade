@@ -4,7 +4,7 @@ import { BottomSheetBackdrop as GorhomBottomSheetBackdrop } from '@gorhom/bottom
 import { useTheme } from '~components/BladeProvider';
 
 const BottomSheetBackdrop = (
-  props: BottomSheetBackdropProps & { zIndex: number },
+  props: BottomSheetBackdropProps & { zIndex: number; isDismissible: boolean },
 ): React.ReactElement => {
   const { theme } = useTheme();
 
@@ -13,7 +13,7 @@ const BottomSheetBackdrop = (
       {...props}
       appearsOnIndex={0}
       disappearsOnIndex={-1}
-      pressBehavior="close"
+      pressBehavior={props.isDismissible ? 'close' : 'none'}
       opacity={1}
       style={[
         props.style,

@@ -9,6 +9,8 @@ import { Radio, RadioGroup } from '~components/Radio';
 import { Skeleton } from '~components/Skeleton';
 import { DownloadIcon } from '~components/Icons';
 import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
+import { Alert } from '~components/Alert';
 
 export default {
   title: 'Components/Modal/SimpleModal',
@@ -68,6 +70,52 @@ const ModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
 export const SimpleModal = ModalTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 SimpleModal.storyName = 'Simple Modal';
+
+const NonDismissibleModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleClose = (): void => {
+    setIsOpen(false);
+  };
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(!isOpen)}>Open Non-Dismissible Modal</Button>
+      <Modal isOpen={isOpen} isDismissible={false} size={size}>
+        <ModalHeader
+          title="Important Action Required"
+          subtitle="This modal requires explicit confirmation"
+        />
+        <ModalBody>
+          <Alert
+            title="Notice"
+            description="This modal cannot be dismissed by clicking outside or pressing escape key."
+            color="notice"
+            isDismissible={false}
+            isFullWidth
+          />
+          <Text marginTop="spacing.4" color="surface.text.gray.subtle">
+            Try clicking outside the modal or pressing the escape key - it won't close. You must
+            click one of the buttons below to proceed.
+          </Text>
+        </ModalBody>
+        <ModalFooter>
+          <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
+            <Button variant="secondary" onClick={() => handleClose()}>
+              Cancel
+            </Button>
+            <Button onClick={() => handleClose()} variant="primary">
+              Confirm Action
+            </Button>
+          </Box>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+};
+
+export const NonDismissibleModal = NonDismissibleModalTemplate.bind({});
+NonDismissibleModal.storyName = 'Non-Dismissible Modal';
 
 const FullPageModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
   const [isOpen, setIsOpen] = React.useState(false);

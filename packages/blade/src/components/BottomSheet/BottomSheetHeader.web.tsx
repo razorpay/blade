@@ -15,8 +15,8 @@ const _BottomSheetHeader = ({
   title,
   subtitle,
   leading,
-  titleSuffix,
   trailing,
+  titleSuffix,
   showBackButton = false,
   onBackButtonClick,
   children,
@@ -26,6 +26,7 @@ const _BottomSheetHeader = ({
     setHeaderHeight,
     isOpen,
     close,
+    isDismissible,
     bind,
     setIsHeaderEmpty,
     defaultInitialFocusRef,
@@ -72,7 +73,7 @@ const _BottomSheetHeader = ({
           showBackButton={showBackButton}
           onBackButtonClick={onBackButtonClick}
           // close button
-          showCloseButton={true}
+          showCloseButton={isDismissible}
           onCloseButtonClick={close}
           {...bind?.()}
         >
