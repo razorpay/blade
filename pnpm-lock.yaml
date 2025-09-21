@@ -274,7 +274,7 @@ importers:
         version: 4.1.12(react-native@0.72.3(@babel/core@7.28.3)(@babel/preset-env@7.28.3(@babel/core@7.28.3))(encoding@0.1.13)(react@18.2.0))(react@18.2.0)
       '@react-native/metro-config':
         specifier: 0.72.9
-        version: 0.72.9(@babel/core@7.28.3)
+        version: 0.72.9(@babel/core@7.28.3)(encoding@0.1.13)
       '@rollup/plugin-alias':
         specifier: 5.0.0
         version: 5.0.0(rollup@3.29.5)
@@ -441,7 +441,7 @@ importers:
         specifier: 1.12.0
         version: 1.12.0(styled-components@5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(supports-color@5.5.0)
       canvas:
-        specifier: ^3.2.0
+        specifier: 3.2.0
         version: 3.2.0
       chalk:
         specifier: 4.1.1
@@ -21250,7 +21250,7 @@ snapshots:
 
   '@react-native/js-polyfills@0.72.1': {}
 
-  '@react-native/metro-config@0.72.9(@babel/core@7.28.3)':
+  '@react-native/metro-config@0.72.9(@babel/core@7.28.3)(encoding@0.1.13)':
     dependencies:
       '@react-native/js-polyfills': 0.72.1
       metro-config: 0.76.7(encoding@0.1.13)
@@ -21258,7 +21258,10 @@ snapshots:
       metro-runtime: 0.76.7
     transitivePeerDependencies:
       - '@babel/core'
+      - bufferutil
+      - encoding
       - supports-color
+      - utf-8-validate
 
   '@react-native/normalize-colors@0.72.0': {}
 
@@ -22067,7 +22070,7 @@ snapshots:
       case-sensitive-paths-webpack-plugin: 2.4.0
       core-js: 3.45.1
       css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.101.3(@swc/core@1.13.5(@swc/helpers@0.5.17))(esbuild@0.18.20))
       find-up: 5.0.0
       fork-ts-checker-webpack-plugin: 4.1.6(eslint@8.40.0)(typescript@4.9.5)(webpack@4.47.0)
       glob: 7.2.3
@@ -23103,7 +23106,7 @@ snapshots:
       core-js: 3.45.1
       css-loader: 3.6.0(webpack@4.47.0)
       express: 4.21.2
-      file-loader: 6.2.0(webpack@5.101.3(@swc/core@1.13.5(@swc/helpers@0.5.17))(esbuild@0.18.20))
+      file-loader: 6.2.0(webpack@4.47.0)
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
