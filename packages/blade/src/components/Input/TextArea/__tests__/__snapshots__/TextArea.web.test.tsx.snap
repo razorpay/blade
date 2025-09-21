@@ -1734,7 +1734,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
       >
         <label
           data-blade-component="form-label"
-          for="textarea-1231-input-1232"
+          for="textarea-1225-input-1226"
           style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -1790,7 +1790,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
             class="c10"
             data-analytics-name="text-area"
             data-blade-component="styled-base-input"
-            id="textarea-1231-input-1232"
+            id="textarea-1225-input-1226"
             rows="2"
             type="text"
           />

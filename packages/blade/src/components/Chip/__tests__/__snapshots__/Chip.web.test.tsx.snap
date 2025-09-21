@@ -310,7 +310,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
     data-blade-component="base-box"
   >
     <div
-      aria-labelledby="chip-group-233-label"
+      aria-labelledby="chip-group-205-label"
       class="c0"
       data-analytics-chip-group="fruits"
       data-blade-component="chip-group"
@@ -354,7 +354,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
                 >
                   <input
                     aria-checked="false"
-                    aria-describedby="radio-234-helptext-235"
+                    aria-describedby="radio-206-helptext-207"
                     aria-disabled="false"
                     aria-invalid="false"
                     aria-required="false"
@@ -403,7 +403,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
                 >
                   <input
                     aria-checked="false"
-                    aria-describedby="radio-236-helptext-237"
+                    aria-describedby="radio-208-helptext-209"
                     aria-disabled="false"
                     aria-invalid="false"
                     aria-required="false"
