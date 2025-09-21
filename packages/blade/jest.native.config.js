@@ -19,7 +19,7 @@ module.exports = {
   },
   testEnvironment: 'node', // Ref: https://github.com/callstack/react-native-testing-library/issues/896#issuecomment-1190249878
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native.*|@react-native.*|@?react-navigation.*|@?react-navigation-stack)/)',
+    'node_modules/(?:.pnpm/)?(?!(react-native.*|@react-native.*|@?react-navigation.*|@?react-navigation-stack)/)',
   ],
   setupFilesAfterEnv: [
     '@testing-library/jest-native/extend-expect',
