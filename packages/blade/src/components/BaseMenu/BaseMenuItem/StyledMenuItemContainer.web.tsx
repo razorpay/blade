@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledBaseMenuItemContainerProps } from '../types';
 import { getBaseMenuItemStyles } from './getBaseMenuItemStyles';
@@ -9,7 +9,7 @@ import BaseBox from '~components/Box/BaseBox';
 
 const StyledMenuItemContainer: StyledComponent<
   'div',
-  any,
+  DefaultTheme,
   StyledBaseMenuItemContainerProps
 > = styled(BaseBox)<StyledBaseMenuItemContainerProps>((props) => {
   return {

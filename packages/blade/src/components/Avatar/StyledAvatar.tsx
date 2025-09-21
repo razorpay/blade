@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledAvatarProps } from './types';
 import { avatarSizeTokens, avatarBorderRadiusTokens } from './avatarTokens';
@@ -7,7 +7,7 @@ import { makeBorderSize, makeSize } from '~utils';
 
 const StyledAvatar: StyledComponent<
   typeof BaseBox,
-  any,
+  DefaultTheme,
   StyledAvatarProps & { isInteractive?: boolean }
 > = styled(BaseBox)<StyledAvatarProps & { isInteractive?: boolean }>(
   ({ theme, variant, size, isInteractive }) => {

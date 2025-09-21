@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-shadow */
-import type {ForwardRefExoticComponent ,RefAttributes} from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';

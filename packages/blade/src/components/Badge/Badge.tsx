@@ -1,5 +1,5 @@
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
-import React, { ReactElement } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes, ReactElement } from 'react';
+import React from 'react';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { iconPadding, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';

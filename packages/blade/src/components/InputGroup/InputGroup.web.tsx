@@ -1,4 +1,4 @@
-import type {ForwardRefExoticComponent , RefAttributes } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React, { useMemo } from 'react';
 import type { InputGroupProps } from './types';
 import { StyledInputGroup } from './StyledInputGroup';

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import type { BladeElementRef } from '~utils/types';
 import React from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
+import type { BladeElementRef } from '~utils/types';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';

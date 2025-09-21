@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { BaseBoxProps } from './types';
 import { useMemoizedStyles } from './useMemoizedStyles';
@@ -7,7 +7,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const _BaseBox: StyledComponent<'div', any, BaseBoxProps> = styled.div
+const _BaseBox: StyledComponent<'div', DefaultTheme, BaseBoxProps> = styled.div
   .attrs<BaseBoxProps>((props) => {
     return {
       ...metaAttribute({

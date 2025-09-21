@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
@@ -11,7 +11,7 @@ import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
 const StyledLink: StyledComponent<
   'button',
-  any,
+  DefaultTheme,
   StyledBaseLinkProps,
   never
 > = styled.button

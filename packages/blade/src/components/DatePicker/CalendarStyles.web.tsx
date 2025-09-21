@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import styled, { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import dayjs from 'dayjs';
 import type { PickerType } from './types';
 import { classes } from './constants';
@@ -92,7 +93,7 @@ const inRangeCell = {
 
 const CalendarGradientStyles: StyledComponent<
   typeof BaseBox,
-  any,
+  DefaultTheme,
   { date: Date; isRange: boolean },
   never
 > = styled(BaseBox)<{ date: Date; isRange: boolean }>(({ theme, date, isRange }) => {
@@ -171,7 +172,7 @@ const CalendarGradientStyles: StyledComponent<
 
 const CalendarStyles: StyledComponent<
   typeof BaseBox,
-  any,
+  DefaultTheme,
   { pickerType?: PickerType },
   never
 > = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pickerType }) => {

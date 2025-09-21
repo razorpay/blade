@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import styled, { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import React from 'react';
 import type { TabItemProps, TabsProps } from './types';
 import { paddingX, paddingTop, paddingBottom } from './tabTokens';
@@ -9,7 +10,7 @@ import BaseBox from '~components/Box/BaseBox';
 
 const StyledTabButton: StyledComponent<
   typeof BaseBox,
-  any,
+  DefaultTheme,
   {
     size: TabsProps['size'];
     isFullWidthTabItem?: TabsProps['isFullWidthTabItem'];

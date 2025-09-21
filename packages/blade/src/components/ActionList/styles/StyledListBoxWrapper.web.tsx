@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import styled, { StyledComponent } from 'styled-components';
+import type { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import type { SectionListProps } from 'react-native';
 import { getBaseListBoxWrapperStyles } from './getBaseListBoxWrapperStyles';
 import BaseBox from '~components/Box/BaseBox';

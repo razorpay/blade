@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { AvatarButtonProps } from './types';
 import { avatarSizeTokens, avatarColorTokens, avatarBorderRadiusTokens } from './avatarTokens';
@@ -8,7 +8,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledAvatarButton: StyledComponent<
   'button',
-  any,
+  DefaultTheme,
   AvatarButtonProps & { isInteractive?: boolean }
 > = styled.button<AvatarButtonProps & { isInteractive?: boolean }>(
   ({

@@ -1,6 +1,5 @@
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes, ReactElement } from 'react';
 import React from 'react';
-import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';

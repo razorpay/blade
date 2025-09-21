@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledButtonGroupProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
@@ -6,7 +6,7 @@ import { makeBorderSize } from '~utils';
 
 const StyledButtonGroup: StyledComponent<
   typeof BaseBox,
-  any,
+  DefaultTheme,
   StyledButtonGroupProps,
   never
 > = styled(BaseBox)<StyledButtonGroupProps>(({ theme, variant = 'primary', isFullWidth }) => {

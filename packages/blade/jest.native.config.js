@@ -1,14 +1,5 @@
 const ignores = ['/node_modules/'];
 
-const modulesToTransform = [
-  'react-native',
-  '@react-native',
-  '@react-navigation/.*',
-  'react-navigation-stack',
-  '@react-native/js-polyfills', // <-- Add this line
-  // Add any others you find
-].join('|');
-
 module.exports = {
   preset: 'react-native',
   testPathIgnorePatterns: [...ignores, 'web.test', 'ssr.test'],

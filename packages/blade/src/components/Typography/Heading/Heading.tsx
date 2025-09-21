@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import type { ForwardRefExoticComponent , RefAttributes } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes, ReactElement } from 'react';
 import React from 'react';
-import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';

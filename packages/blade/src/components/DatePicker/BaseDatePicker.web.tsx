@@ -45,7 +45,6 @@ import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
 
-
 // Calendar dimensions for consistent layout
 const CALENDAR_HEIGHTS = {
   // Height includes: Calendar grid (6 weeks * ~44px) + header (~48px) + footer actions (~64px) + padding
@@ -53,13 +52,14 @@ const CALENDAR_HEIGHTS = {
   DAY_PICKER_WITH_FOOTER: 'auto',
 } as const;
 
-
-const BaseDatePicker: FC<DatePickerProps<DateSelectionType> &
-  StyledPropsBlade &
-  DataAnalyticsAttribute & {
-    inputElementType: 'chip' | 'datePickerInput';
-    onClearButtonClick?: () => void;
-  }> = ({
+const BaseDatePicker: FC<
+  DatePickerProps<DateSelectionType> &
+    StyledPropsBlade &
+    DataAnalyticsAttribute & {
+      inputElementType: 'chip' | 'datePickerInput';
+      onClearButtonClick?: () => void;
+    }
+> = ({
   selectionType,
   allowSingleDateInRange,
   value,

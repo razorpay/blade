@@ -1,11 +1,11 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
 
 const StyledDropdownOverlay: StyledComponent<
   typeof BaseBox,
-  any,
+  DefaultTheme,
   {
     isInBottomSheet?: boolean;
   },

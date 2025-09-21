@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ForwardRefExoticComponent, RefAttributes } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { CardRootProps } from './types';
 import { CARD_LINK_OVERLAY_ID, CARD_SCALE_DOWN_VALUE, CARD_SCALE_UP_VALUE } from './constants';

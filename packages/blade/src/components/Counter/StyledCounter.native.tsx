@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import { getStyledCounterStyles } from './getStyledCounterStyles';
 import type { StyledCounterProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import type { StyledComponent } from 'styled-components';
 
-const StyledCounter: StyledComponent<typeof BaseBox, any, StyledCounterProps> = styled(
+const StyledCounter: StyledComponent<typeof BaseBox, DefaultTheme, StyledCounterProps> = styled(
   BaseBox,
 )<StyledCounterProps>((props) => ({
   ...getStyledCounterStyles(props),

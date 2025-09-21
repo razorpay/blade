@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledChipWrapperProps } from './types';
 import { chipMotionTokens, chipColorTokens } from './chipTokens';
@@ -9,7 +9,7 @@ import { castWebType } from '~utils';
 
 const StyledChipWrapper: StyledComponent<
   typeof BaseBox,
-  any,
+  DefaultTheme,
   StyledChipWrapperProps,
   never
 > = styled(BaseBox)<StyledChipWrapperProps>(

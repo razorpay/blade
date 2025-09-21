@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledFileUploadWrapperProps } from './types';
 import { fileUploadMotionTokens, fileUploadColorTokens } from './fileUploadTokens';
@@ -9,7 +9,7 @@ import { castWebType } from '~utils';
 
 const StyledFileUploadWrapper: StyledComponent<
   typeof BaseBox,
-  any,
+  DefaultTheme,
   StyledFileUploadWrapperProps,
   never
 > = styled(BaseBox)<StyledFileUploadWrapperProps>(({ theme, isDisabled, isActive }) => {

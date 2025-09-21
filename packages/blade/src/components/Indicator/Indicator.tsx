@@ -1,6 +1,5 @@
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes, ReactElement, Ref } from 'react';
 import React from 'react';
-import type { ReactElement, Ref } from 'react';
 import { indicatorDotSizes, textSizeMapping } from './indicatorTokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
