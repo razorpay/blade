@@ -17,7 +17,7 @@ const baseConfig = {
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
-  transformIgnorePatterns: ['/node_modules/.pnpm/(?!(@table-library)/)'],
+  transformIgnorePatterns: ['/node_modules/(?!(.pnpm/)?@table-library.*)'],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './jest-setup.web.js'],
   moduleNameMapper: {
