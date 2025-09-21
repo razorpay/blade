@@ -6,6 +6,11 @@
   "engines": {
     "node": ">=18.12.1"
   },
+    "pnpm": {
+      "overrides": {
+        "canvas": "npm:@napi-rs/canvas@0.1.69"
+      }
+    },
   "workspaces": {
     "packages": [
       "packages/blade",
