@@ -1,5 +1,14 @@
 const ignores = ['/node_modules/'];
 
+const modulesToTransform = [
+  'react-native',
+  '@react-native',
+  '@react-navigation/.*',
+  'react-navigation-stack',
+  '@react-native/js-polyfills', // <-- Add this line
+  // Add any others you find
+].join('|');
+
 module.exports = {
   preset: 'react-native',
   testPathIgnorePatterns: [...ignores, 'web.test', 'ssr.test'],
@@ -20,6 +29,7 @@ module.exports = {
   testEnvironment: 'node', // Ref: https://github.com/callstack/react-native-testing-library/issues/896#issuecomment-1190249878
   transformIgnorePatterns: [
     'node_modules/(?:.pnpm/)?(?!(react-native.*|@react-native.*|@?react-navigation.*|@?react-navigation-stack)/)',
+    `node_modules/(?!.pnpm|${modulesToTransform})`,
   ],
   setupFilesAfterEnv: [
     '@testing-library/jest-native/extend-expect',
