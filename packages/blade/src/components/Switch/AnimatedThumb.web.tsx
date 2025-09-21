@@ -1,4 +1,4 @@
-import type { StyledComponent } from 'styled-components';
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled, { css } from 'styled-components';
 import { switchColors, switchMotion } from './switchTokens';
 import type { AnimatedThumbProps } from './types';
@@ -7,9 +7,12 @@ import { BaseBox } from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { makeBorderSize } from '~utils/makeBorderSize';
 
-const AnimatedThumb: StyledComponent<typeof BaseBox, any, AnimatedThumbProps, never> = styled(
-  BaseBox,
-)<AnimatedThumbProps>(({ theme, isChecked, isDisabled, isPressed }) => {
+const AnimatedThumb: StyledComponent<
+  typeof BaseBox,
+  DefaultTheme,
+  AnimatedThumbProps,
+  never
+> = styled(BaseBox)<AnimatedThumbProps>(({ theme, isChecked, isDisabled, isPressed }) => {
   const variant = isDisabled ? 'disabled' : 'default';
   const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
   const duration = makeMotionTime(getIn(theme, switchMotion.duration.thumb));

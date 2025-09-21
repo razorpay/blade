@@ -17,6 +17,6 @@
     "build": "tsc -b",
     "lint": "eslint .",
     "test": "jest",
-    "postinstall": "yarn build"
+    "postinstall": "pnpm build"
   }
 }
