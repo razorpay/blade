@@ -21,6 +21,8 @@ runs:
 
     # cache miss - install packages with pnpm install --frozen-lockfile
     # cache hit - download packages from the cache
+    - name: pnpm rebuild
+      run: pnpm rebuild
     - name: install packages if cache miss
       run: |
         pnpm install --frozen-lockfile
