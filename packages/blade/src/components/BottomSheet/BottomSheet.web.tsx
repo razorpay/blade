@@ -250,8 +250,17 @@ const _BottomSheet = ({
       lastOffset: [_, lastOffsetY],
       down,
       dragging,
+      event,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
+      // Check if the touch started on a scrollable element (e.g., SpinWheel in TimePicker)
+      // This prevents BottomSheet drag gestures from interfering with internal scrolling
+      const touchTarget = event?.target as Element | undefined;
+      const isScrollableContent = touchTarget?.closest('[data-allow-scroll]');
+
+      if (isScrollableContent) {
+        return;
+      }
       setIsDragging(Boolean(dragging));
       // lastOffsetY is the previous position user stopped dragging the sheet
       // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
@@ -349,7 +358,13 @@ const _BottomSheet = ({
 
     const preventScrolling = (e: Event) => {
       if (preventScrollingRef?.current) {
-        e.preventDefault();
+        // Allow scrolling for components that explicitly need scroll functionality
+        const target = e.target as Element;
+        const isAllowedComponent = target.closest('[data-allow-scroll]');
+
+        if (!isAllowedComponent) {
+          e.preventDefault();
+        }
       }
     };
 

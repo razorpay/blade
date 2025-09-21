@@ -14,13 +14,14 @@ import { Calendar } from './Calendar.web';
 import { CalendarFooter } from './CalendarFooter.web';
 import { DatePickerInput } from './DateInput.web';
 import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
-import { PresetDropdown } from './QuickSelection/PresetDropdown.web';
-import { PresetProvider } from './QuickSelection/PresetContext';
+import { renderPresetDropdown } from './QuickSelection/renderPresetDropdown.web';
 import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
+import { usePresetState } from './QuickSelection/usePresetState';
 import { shiftTimezone } from './shiftTimezone';
 import { useDatesState } from './useDatesState';
 import { usePopup } from './usePopup';
 import { convertIntlToDayjsLocale, loadScript } from './utils';
+import { DatePickerProvider } from './DatePickerContext';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -187,6 +188,13 @@ const BaseDatePicker: FC<DatePickerProps<DateSelectionType> &
   });
 
   const currentDate = shiftTimezone('add', new Date());
+
+  // Use the hook to get the calculated preset values
+  const { presetStates, selectedPresetLabel, effectiveSelectionType } = usePresetState({
+    presets: presets || [],
+    selectedPreset,
+    currentDate,
+  });
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
   const {
@@ -322,11 +330,12 @@ const BaseDatePicker: FC<DatePickerProps<DateSelectionType> &
     <>
       {shouldRenderPresets ? (
         <PresetSideBar
-          onSelection={(preset) => {
+          onSelection={(preset: (date: Date) => DatesRangeValue) => {
             const presetValue = preset?.(currentDate);
             setControlledValue(presetValue);
             setSelectedPreset(presetValue);
           }}
+          presetStates={presetStates}
         />
       ) : null}
       <BaseBox
@@ -427,7 +436,7 @@ const BaseDatePicker: FC<DatePickerProps<DateSelectionType> &
   return (
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
-        <PresetProvider presets={presets} selectedPreset={selectedPreset} currentDate={currentDate}>
+        <DatePickerProvider isDatePickerBodyOpen={controllableIsOpen}>
           <BaseBox
             width={inputElementType === 'chip' ? 'fit-content' : '100%'}
             {...getStyledProps(props)}
@@ -487,19 +496,23 @@ const BaseDatePicker: FC<DatePickerProps<DateSelectionType> &
                 excludeDate={props.excludeDate}
                 minDate={props.minDate}
                 maxDate={props.maxDate}
+                // Effective Selection type should only be use for selectionType 'range'
+                effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
                 leadingDropdown={
-                  presets && shouldRenderPresets ? (
-                    <PresetDropdown
-                      onSelection={(preset) => {
-                        const presetValue = preset?.(currentDate);
-                        setControlledValue(presetValue);
-                        setSelectedPreset(presetValue);
-                      }}
-                      onOpenCalendar={() => {
-                        controllableSetIsOpen(() => true);
-                      }}
-                    />
-                  ) : undefined
+                  presets && !isSingle
+                    ? renderPresetDropdown({
+                        onSelection: (preset: (date: Date) => DatesRangeValue) => {
+                          const presetValue = preset?.(currentDate);
+                          setControlledValue(presetValue);
+                          setSelectedPreset(presetValue);
+                        },
+                        onOpenCalendar: () => {
+                          controllableSetIsOpen(() => true);
+                        },
+                        presetStates,
+                        selectedPresetLabel,
+                      })
+                    : undefined
                 }
                 {...makeAnalyticsAttribute(props)}
               />
@@ -515,10 +528,11 @@ const BaseDatePicker: FC<DatePickerProps<DateSelectionType> &
                 <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
                 <BottomSheetBody>
                   {content}
-                  {!isSingle && (
+                  {!isSingle && presets && (
                     <PresetSideBar
                       isMobile
-                      onSelection={(preset) => {
+                      presetStates={presetStates}
+                      onSelection={(preset: (date: Date) => DatesRangeValue) => {
                         const presetValue = preset?.(currentDate);
                         setControlledValue(presetValue);
                         setSelectedPreset(presetValue);
@@ -572,7 +586,7 @@ const BaseDatePicker: FC<DatePickerProps<DateSelectionType> &
               )
             )}
           </BaseBox>
-        </PresetProvider>
+        </DatePickerProvider>
       </DatesProvider>
     </MantineProvider>
   );

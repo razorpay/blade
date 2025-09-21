@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.49.6",
+  "version": "12.54.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -147,9 +147,14 @@
     "@mantine/core": "6.0.21",
     "@mantine/dates": "6.0.21",
     "@mantine/hooks": "6.0.21",
+    "@react-aria/i18n": "3.12.2",
+    "@react-aria/datepicker": "3.15.1",
+    "@react-stately/datepicker": "3.15.1",
+    "@internationalized/date": "3.9.0",
     "dayjs": "1.11.10",
     "react-window": "1.8.11",
-    "react-zoom-pan-pinch": "3.7.0"
+    "react-zoom-pan-pinch": "3.7.0",
+    "recharts": "3.1.2"
   },
   "devDependencies": {
     "http-server": "14.1.1",

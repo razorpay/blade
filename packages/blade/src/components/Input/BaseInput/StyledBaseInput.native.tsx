@@ -19,6 +19,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size as sizeToken } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
 import type { Platform } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -267,6 +268,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     autoCapitalize,
     as: renderAs,
     $size,
+    valueSuffix,
     ...props
   },
   ref,
@@ -302,16 +304,19 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...props}
       {...accessibilityProps}
     >
-      <Text
-        color={
-          props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
-        }
-        truncateAfterLines={1}
-        textAlign={props.textAlign}
-        size={$size}
-      >
-        {buttonValue}
-      </Text>
+      <BaseBox display="flex" alignItems="center" gap="spacing.3">
+        <Text
+          color={
+            props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+          }
+          truncateAfterLines={1}
+          textAlign={props.textAlign}
+          size={$size}
+        >
+          {buttonValue}
+        </Text>
+        {valueSuffix}
+      </BaseBox>
     </StyledNativeBaseButton>
   ) : (
     <StyledNativeBaseInput

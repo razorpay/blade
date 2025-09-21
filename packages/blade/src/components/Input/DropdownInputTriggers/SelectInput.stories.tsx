@@ -7,8 +7,9 @@ import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
+import { ActionList, ActionListItem, ActionListItemBadge } from '~components/ActionList';
 import { Box } from '~components/Box';
+import { Badge } from '~components/Badge';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -224,10 +225,26 @@ const SelectInputTemplate: StoryFn<typeof SelectInput> = ({ icon, ...args }) => 
   return (
     <Box minHeight="150px" padding="spacing.5">
       <Dropdown>
-        <SelectInput {...args} icon={iconMap[(icon as unknown) as string]} />
+        <SelectInput
+          {...args}
+          onChange={({ name, values }) => {
+            console.log(name, values);
+          }}
+          icon={iconMap[(icon as unknown) as string]}
+          valueSuffix={({ values }) => {
+            if (values[0] === 'item-1') {
+              return <Badge color="positive">20% Off</Badge>;
+            }
+            return null;
+          }}
+        />
         <DropdownOverlay>
           <ActionList>
-            <ActionListItem title="Item 1" value="item-1" />
+            <ActionListItem
+              title="Item 1"
+              value="item-1"
+              titleSuffix={<ActionListItemBadge color="positive">20% Off</ActionListItemBadge>}
+            />
             <ActionListItem title="Item 2" value="item-2" />
             <ActionListItem title="Item 3" value="item-3" />
           </ActionList>

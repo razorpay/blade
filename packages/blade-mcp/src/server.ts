@@ -52,6 +52,12 @@ import {
   getChangelogToolSchema,
   getChangelogToolCallback,
 } from './tools/getChangelog.js';
+import {
+  publishLinesOfCodeMetricToolName,
+  publishLinesOfCodeMetricToolDescription,
+  publishLinesOfCodeMetricToolSchema,
+  publishLinesOfCodeMetricToolCallback,
+} from './tools/publishLinesOfCodeMetric.js';
 
 Sentry.init({
   dsn: process.env.BLADE_MCP_SENTRY_DSN,
@@ -115,6 +121,13 @@ try {
     getChangelogToolDescription,
     getChangelogToolSchema,
     getChangelogToolCallback,
+  );
+
+  server.tool(
+    publishLinesOfCodeMetricToolName,
+    publishLinesOfCodeMetricToolDescription,
+    publishLinesOfCodeMetricToolSchema,
+    publishLinesOfCodeMetricToolCallback,
   );
 
   // Start receiving messages on stdin and sending messages on stdout
