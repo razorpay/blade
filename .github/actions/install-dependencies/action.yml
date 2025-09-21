@@ -21,10 +21,6 @@ runs:
 
     # cache miss - install packages with pnpm install --frozen-lockfile
     # cache hit - download packages from the cache
-    - name: pnpm rebuild
-      run: pnpm rebuild
-      shell: bash
-
     - name: install packages if cache miss
       run: |
         pnpm install --frozen-lockfile
@@ -36,3 +32,7 @@ runs:
         pnpm run postinstall
       shell: bash
       if: steps.cache.outputs.cache-hit == 'true'
+
+    - name: pnpm rebuild
+      run: pnpm rebuild
+      shell: bash
