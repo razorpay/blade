@@ -10,6 +10,11 @@ import { Button } from '~components/Button';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
+// Helper: only match visible segment spans (skip placeholder spans with visibility: hidden)
+const visibleSpanSelector = 'span:not([style*="visibility: hidden"])';
+const findVisibleByText = (scope: ReturnType<typeof within>, text: string) =>
+  scope.findByText(text, { selector: visibleSpanSelector });
+
 let onOpenChange: Mock<void, [{ isOpen: boolean }]> | null = null;
 let onApply: Mock<void, [{ value: Date | null }]> | null = null;
 let onChange: Mock<void, [{ value: Date | null }]> | null = null;
@@ -79,9 +84,9 @@ TimePicker12HourFormat.play = async () => {
   const inputScope = timeInput ? within(timeInput as HTMLElement) : within(document.body);
 
   // Should display 2:30 PM in the input initially
-  await expect(inputScope.queryByText('02')).toBeVisible(); // 2 PM in input
-  await expect(inputScope.queryByText('30')).toBeVisible(); // 30 minutes in input
-  await expect(inputScope.getAllByText('PM')[0]).toBeVisible(); // PM in input (actual value, not placeholder)
+  await expect(await findVisibleByText(inputScope, '02')).toBeVisible(); // 2 PM in input
+  await expect(await findVisibleByText(inputScope, '30')).toBeVisible(); // 30 minutes in input
+  await expect(await findVisibleByText(inputScope, 'PM')).toBeVisible(); // PM in input (actual value)
 
   await userEvent.click(input);
   await sleep(400);
@@ -93,7 +98,7 @@ TimePicker12HourFormat.play = async () => {
     : within(document.body);
 
   // Should display PM in 12h format in dropdown
-  await expect(dropdownScope.queryByText('PM')).toBeVisible();
+  await expect(await findVisibleByText(dropdownScope, 'PM')).toBeVisible();
 };
 
 export const TimePicker24HourFormat: StoryFn<
@@ -115,11 +120,15 @@ TimePicker24HourFormat.play = async () => {
   const inputScope = timeInput ? within(timeInput as HTMLElement) : within(document.body);
 
   // Should display 14:30 in the input initially (24h format)
-  await expect(inputScope.queryByText('14')).toBeVisible(); // 14 hours in input
-  await expect(inputScope.queryByText('30')).toBeVisible(); // 30 minutes in input
+  await expect(await findVisibleByText(inputScope, '14')).toBeVisible(); // 14 hours in input
+  await expect(await findVisibleByText(inputScope, '30')).toBeVisible(); // 30 minutes in input
   // AM/PM should not be in input for 24h format
-  await expect(inputScope.queryByText('AM')).not.toBeInTheDocument();
-  await expect(inputScope.queryByText('PM')).not.toBeInTheDocument();
+  await expect(
+    inputScope.queryByText('AM', { selector: visibleSpanSelector }),
+  ).not.toBeInTheDocument();
+  await expect(
+    inputScope.queryByText('PM', { selector: visibleSpanSelector }),
+  ).not.toBeInTheDocument();
 
   await userEvent.click(input);
   await sleep(400);
@@ -131,8 +140,12 @@ TimePicker24HourFormat.play = async () => {
     : within(document.body);
 
   // In 24h format, AM/PM should not be visible in dropdown either
-  await expect(dropdownScope.queryByText('AM')).not.toBeInTheDocument();
-  await expect(dropdownScope.queryByText('PM')).not.toBeInTheDocument();
+  await expect(
+    dropdownScope.queryByText('AM', { selector: visibleSpanSelector }),
+  ).not.toBeInTheDocument();
+  await expect(
+    dropdownScope.queryByText('PM', { selector: visibleSpanSelector }),
+  ).not.toBeInTheDocument();
 };
 
 export const TimePickerApplyCancelActions: StoryFn<
@@ -272,9 +285,9 @@ TimePickerControlledState.play = async () => {
   const inputScope = timeInput ? within(timeInput as HTMLElement) : within(document.body);
 
   // Should start with 10:30 AM in input
-  await expect(inputScope.queryByText('10')).toBeVisible();
-  await expect(inputScope.queryByText('30')).toBeVisible();
-  await expect(inputScope.getAllByText('AM')[0]).toBeVisible(); // AM in input (actual value, not placeholder)
+  await expect(await findVisibleByText(inputScope, '10')).toBeVisible();
+  await expect(await findVisibleByText(inputScope, '30')).toBeVisible();
+  await expect(await findVisibleByText(inputScope, 'AM')).toBeVisible(); // AM in input (actual value)
 
   // Click change time button
   const changeButton = getByRole('button', { name: 'Change Time' });
@@ -286,9 +299,9 @@ TimePickerControlledState.play = async () => {
   const inputScope2 = timeInput2 ? within(timeInput2 as HTMLElement) : within(document.body);
 
   // Should now show 3:45 PM in input
-  await expect(inputScope2.queryByText('03')).toBeVisible();
-  await expect(inputScope2.queryByText('45')).toBeVisible();
-  await expect(inputScope2.getAllByText('PM')[0]).toBeVisible(); // PM in input (actual value, not placeholder)
+  await expect(await findVisibleByText(inputScope2, '03')).toBeVisible();
+  await expect(await findVisibleByText(inputScope2, '45')).toBeVisible();
+  await expect(await findVisibleByText(inputScope2, 'PM')).toBeVisible(); // PM in input (actual value)
 
   // Verify dropdown also shows correct values
 };
@@ -344,7 +357,7 @@ TimePickerSpinWheelInteraction.play = async () => {
     : within(document.body);
 
   // Should see spin wheels with AM/PM period options
-  await expect(dropdownScope.queryByText('AM')).toBeVisible();
+  await expect(await findVisibleByText(dropdownScope, 'AM')).toBeVisible();
 
   // Scope to specific wheels to avoid conflicts
   const hourWheel = document.querySelector('.timepicker-hour-wheel');
