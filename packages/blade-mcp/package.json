@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "prepare": "yarn build",
-    "build": "cross-env NODE_ENV=development sh -c \"tsc && chmod +x dist/server.js && node src/replaceEnv.js\"",
+    "build": "cross-env NODE_ENV=production sh -c \"tsc && chmod +x dist/server.js && node src/replaceEnv.js\"",
     "dev": "tsx src/server.ts",
     "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js",
     "start": "node dist/server.js",
