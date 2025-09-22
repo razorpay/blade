@@ -104,7 +104,7 @@ const ChartDonut: React.FC<ChartDonutProps> = ({
       React.createElement(RechartsCell, {
         key: index,
         fill: themeColors[index],
-        opacity: hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.8 : 1,
+        opacity: hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1,
       }),
     );
   }, [children, data, themeColors, hoveredIndex]);
