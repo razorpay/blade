@@ -19,7 +19,7 @@ const findVisibleByText = (
   scope: ReturnType<typeof within>,
   text: string,
   selector: string = visibleSelector,
-) => scope.findByText(text, { selector });
+): Promise<HTMLElement> => scope.findByText(text, { selector });
 
 let onOpenChange: Mock<void, [{ isOpen: boolean }]> | null = null;
 let onApply: Mock<void, [{ value: Date | null }]> | null = null;
