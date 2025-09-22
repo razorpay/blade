@@ -157,7 +157,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
           </div>
         );
       }}
-      cursor={{ fill: 'transparent', stroke: 'transparent'}}
+      cursor={{ fill: 'transparent', stroke: 'transparent' }}
       {...props}
     />
   );
