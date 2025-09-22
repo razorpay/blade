@@ -35,14 +35,19 @@ type ChartBarProps = {
    * The label of the bar chart.
    */
   label?: RechartsBarProps['label'];
-  /*
+  /**
+   * The show legend of the bar chart.
+   */
+  showLegend?: boolean;
+  /**
+   * The index of the bar chart.
    * @private
    */
   _index?: number;
 };
 
 type data = {
-  [key: string]: unknown;
+  [key: string]: string | number;
 };
 
 type ChartBarWrapperProps = {

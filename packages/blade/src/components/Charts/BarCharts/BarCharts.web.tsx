@@ -7,7 +7,14 @@ import {
 import { useChartsColorTheme } from '../utils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
-import { BAR_CHART_CORNER_RADIUS, DISTANCE_BETWEEN_STACKED_BARS, componentIds } from './tokens';
+import {
+  BAR_CHART_CORNER_RADIUS,
+  DISTANCE_BETWEEN_STACKED_BARS,
+  componentIds,
+  BAR_SIZE,
+  DISTANCE_BETWEEN_BARS,
+  DISTANCE_BETWEEN_CATEGORY_BARS,
+} from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -34,6 +41,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   dataKey,
   activeBar = false,
   label = false,
+  showLegend = true,
   _index = 0,
   ...rest
 }) => {
@@ -52,7 +60,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
     <RechartsBar
       {...rest}
       fill={fill}
-      legendType="rect"
+      legendType={showLegend ? 'rect' : 'none'}
       activeBar={activeBar}
       label={label}
       animationBegin={animationBegin}
@@ -101,7 +109,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
 };
 
 const ChartBar = assignWithoutSideEffects(_ChartBar, {
-  componentId: componentIds.barChart,
+  componentId: componentIds.chartBar,
 });
 
 // BarChart wrapper with default margin, auto-color assignment, and max bars guard
@@ -118,7 +126,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   const { barChartModifiedChildrens, totalBars } = React.useMemo(() => {
     let BarChartIndex = 0;
     const modifiedChildren = React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && getComponentId(child) === componentIds.barChart) {
+      if (React.isValidElement(child) && getComponentId(child) === componentIds.chartBar) {
         return React.cloneElement(child, {
           _index: BarChartIndex++,
         } as Partial<ChartBarProps>);
@@ -142,9 +150,9 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       <BarChartContext.Provider value={{ layout, activeIndex, colorTheme, totalBars }}>
         <RechartsResponsiveContainer width="100%" height="100%">
           <RechartsBarChart
-            barSize={49}
-            barGap={2}
-            barCategoryGap={2}
+            barSize={BAR_SIZE}
+            barGap={DISTANCE_BETWEEN_BARS}
+            barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
             onMouseMove={(state) => {
               setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
             }}

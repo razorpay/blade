@@ -47,6 +47,10 @@ type ChartBarProps = Omit<RechartsBarProps, 'fill' | 'dataKey' | 'name' | 'label
    * The label of the bar chart.
    */
   label?: RechartsBarProps['label'];
+  /**
+   * The show legend of the bar chart.
+  */
+  showLegend?: boolean;
 };
 
 type data = {
