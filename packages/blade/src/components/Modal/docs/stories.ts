@@ -1142,6 +1142,89 @@ const InformationalModalWithImage: StoryFn<typeof Modal> = () => {
 export default InformationalModalWithImage;
 `;
 
+const NonDismissibleModalStory = `
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  ModalFooter,
+  Text,
+  Box,
+  Alert,
+} from "@razorpay/blade/components";
+import React from "react";
+
+function App() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [hasConfirmed, setHasConfirmed] = React.useState(false);
+  
+  const handleClose = () => {
+    if (hasConfirmed) {
+      setIsOpen(false);
+      setHasConfirmed(false);
+    }
+  };
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(!isOpen)}>
+        Open Non-Dismissible Modal
+      </Button>
+      <Modal 
+        isOpen={isOpen} 
+        onDismiss={handleClose}
+        isDismissible={false}
+        size="medium"
+      >
+        <ModalHeader
+          title="Important Action Required"
+        />
+        <ModalBody>
+          <Alert
+            title="Important Notice"
+            description="This modal cannot be dismissed by clicking outside or pressing escape key. You must explicitly confirm or cancel the action."
+            color="notice"
+            isDismissible={false}
+            isFullWidth
+          />
+          <Text marginTop="spacing.4">
+            This is a non-dismissible modal. Try clicking outside the modal or pressing the escape key - it won't close. 
+            You must click one of the buttons below to proceed.
+          </Text>
+          <Text marginTop="spacing.2" color="surface.text.gray.subtle">
+            This pattern is useful for critical actions that require explicit user confirmation.
+          </Text>
+        </ModalBody>
+        <ModalFooter>
+          <Box
+            display="flex"
+            gap="spacing.3"
+            justifyContent="flex-end"
+            width="100%"
+          >
+            <Button 
+              variant="secondary" 
+              onClick={() => setIsOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button 
+              onClick={() => setHasConfirmed(true)}
+              variant={hasConfirmed ? "positive" : "primary"}
+            >
+              {hasConfirmed ? "✓ Confirmed - Click to Close" : "Confirm Action"}
+            </Button>
+          </Box>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+}
+
+export default App;
+`;
+
 export {
   Playground,
   BasicModalStory,
@@ -1153,4 +1236,5 @@ export {
   OtpModalStory,
   ShareModalStory,
   InformationalModalStory,
+  NonDismissibleModalStory,
 };
