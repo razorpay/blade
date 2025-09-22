@@ -18,7 +18,7 @@ const bodyStyles: React.CSSProperties = {
   overscrollBehavior: 'contain',
   WebkitOverflowScrolling: 'touch',
   userSelect: 'auto',
-  touchAction: 'none',
+  touchAction: 'pan-y',
 };
 
 const _BottomSheetBody = ({
