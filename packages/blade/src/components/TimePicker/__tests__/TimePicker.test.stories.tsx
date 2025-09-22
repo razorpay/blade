@@ -71,6 +71,9 @@ TimePicker12HourFormat.play = async () => {
   const { getByRole } = within(document.body);
   const input = getByRole('combobox');
 
+  // Wait for React Aria to initialize the TimePicker segments
+  await sleep(300);
+
   // Check values in the input before opening dropdown
   const timeInput = document.querySelector('.timepicker-input');
   const inputScope = timeInput ? within(timeInput as HTMLElement) : within(document.body);
@@ -103,6 +106,9 @@ export const TimePicker24HourFormat: StoryFn<
 TimePicker24HourFormat.play = async () => {
   const { getByRole } = within(document.body);
   const input = getByRole('combobox');
+
+  // Wait for React Aria to initialize the TimePicker segments
+  await sleep(300);
 
   // Check values in the input before opening dropdown
   const timeInput = document.querySelector('.timepicker-input');
@@ -257,6 +263,9 @@ export const TimePickerControlledState: StoryFn<
 
 TimePickerControlledState.play = async () => {
   const { getByRole } = within(document.body);
+
+  // Wait for React Aria to initialize the TimePicker segments
+  await sleep(300);
 
   // Check initial values in the input
   const timeInput = document.querySelector('.timepicker-input');
