@@ -29,7 +29,6 @@ export type BaseInputTagSlotProps = {
   size: NonNullable<BaseInputProps['size']>;
   isTextArea?: boolean;
   numberOfLines: BaseInputProps['numberOfLines'];
-  hasLeadingDropDown?: boolean;
 };
 
 export type BaseInputWrapperProps = Pick<
@@ -100,6 +99,8 @@ export type StyledBaseInputProps = {
   | 'autoCapitalize'
   | 'isDropdownTrigger'
   | 'tabIndex'
+  | 'valueSuffix'
+  | 'children'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

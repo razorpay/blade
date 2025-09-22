@@ -1,5 +1,41 @@
 # @razorpay/blade-mcp
 
+## 1.8.0
+
+### Minor Changes
+
+- dd7e18b43: feat(server): add publishLinesOfCodeMetric tool integration
+
+## 1.7.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
+## 1.6.0
+
+### Minor Changes
+
+- ab1773547: feat(blade-mcp): update knowledgebase with AreaChart
+
+## 1.5.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): update knowledge base to support line chart
+
+## 1.4.5
+
+### Patch Changes
+
+- c1b2b96b7: chore(analytics): replace userId with OS-based userName
+
+## 1.4.4
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
 ## 1.4.3
 
 ### Patch Changes

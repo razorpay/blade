@@ -6,6 +6,7 @@ import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
+import BaseBox from '~components/Box/BaseBox';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &
@@ -61,6 +62,12 @@ const StyledBaseNativeButton = styled.button<
   ...getWebInputStyles(props),
 }));
 
+const StyledBaseDivWrapper = styled.div<
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
+>((props) => ({
+  ...getWebInputStyles(props),
+}));
+
 const autoCompleteSuggestionTypeMap = {
   none: 'off',
   on: 'on',
@@ -82,7 +89,9 @@ const autoCompleteSuggestionTypeMap = {
 
 const _StyledBaseInput: React.ForwardRefRenderFunction<
   HTMLInputElement | HTMLButtonElement,
-  StyledBaseInputProps
+  StyledBaseInputProps & {
+    valueSuffix?: React.ReactNode;
+  }
 > = (
   {
     name,
@@ -108,6 +117,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     $size,
     valueComponentType,
     tabIndex,
+    valueSuffix,
+    children,
     ...props
   },
   ref,
@@ -135,7 +146,34 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       : undefined,
   };
 
-  return props.as === 'button' ? (
+  return props.as === 'div' ? (
+    <StyledBaseDivWrapper
+      onBlur={(event: React.FocusEvent<HTMLDivElement>): void => {
+        if (!shouldIgnoreBlurAnimation) {
+          setCurrentInteraction('default');
+        }
+        handleOnBlur?.({ name, value: (event as unknown) as React.ChangeEvent<HTMLInputElement> });
+      }}
+      onFocus={(event: React.FocusEvent<HTMLDivElement>): void => {
+        setCurrentInteraction('focus');
+        handleOnFocus?.({ name, value: (event as unknown) as React.ChangeEvent<HTMLInputElement> });
+      }}
+      onClick={(event: React.MouseEvent<HTMLDivElement>): void => {
+        if (props.isDropdownTrigger) {
+          event.stopPropagation();
+        }
+        handleOnClick?.({ name, value: (event as unknown) as React.MouseEvent<HTMLInputElement> });
+      }}
+      name={name}
+      $size={$size}
+      valueComponentType={valueComponentType}
+      tabIndex={tabIndex}
+      {...props}
+      {...accessibilityProps}
+    >
+      {children}
+    </StyledBaseDivWrapper>
+  ) : props.as === 'button' ? (
     <StyledBaseNativeButton
       // @ts-expect-error: TS doesnt understand that this will always be `button`
       ref={ref}
@@ -158,16 +196,19 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       value={props.value}
       tabIndex={tabIndex}
     >
-      <Text
-        color={
-          props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
-        }
-        truncateAfterLines={1}
-        textAlign={props.textAlign}
-        size={$size}
-      >
-        {props.value ? props.value : props.placeholder}
-      </Text>
+      <BaseBox display="flex" alignItems="center" gap="spacing.3">
+        <Text
+          color={
+            props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+          }
+          truncateAfterLines={1}
+          textAlign={props.textAlign}
+          size={$size}
+        >
+          {props.value ? props.value : props.placeholder}
+        </Text>
+        {valueSuffix}
+      </BaseBox>
     </StyledBaseNativeButton>
   ) : (
     <StyledBaseNativeInput

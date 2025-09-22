@@ -652,7 +652,7 @@ const componentData: ComponentStatusDataType = [
     storybookLink: 'Components/Input/FilterChipSelectInput',
     description:
       'FilterChipSelectInput component for selecting multiple values using filter chips.',
-    platform: 'all',
+    platform: 'web',
   },
   {
     name: 'FilterChipDatePicker',
@@ -660,7 +660,7 @@ const componentData: ComponentStatusDataType = [
     releasedIn: '12.20.0',
     storybookLink: 'Components/Input/FilterChipDatePicker',
     description: 'FilterChipDatePicker component for selecting dates using filter chips.',
-    platform: 'all',
+    platform: 'web',
   },
   {
     name: 'ListView',
@@ -669,7 +669,7 @@ const componentData: ComponentStatusDataType = [
     storybookLink: 'Patterns/ListView',
     description:
       'ListView pattern for displaying data in a list format with built-in filtering and search capabilities.',
-    platform: 'all',
+    platform: 'web',
   },
   {
     name: 'QuickFilter',
@@ -677,7 +677,7 @@ const componentData: ComponentStatusDataType = [
     releasedIn: '12.14.0',
     storybookLink: 'Components/QuickFilter',
     description: 'QuickFilter component for quickly filtering content.',
-    platform: 'all',
+    platform: 'web',
   },
   {
     name: 'ChatMessage',
@@ -685,7 +685,24 @@ const componentData: ComponentStatusDataType = [
     releasedIn: '12.11.0',
     storybookLink: 'Components/ChatMessage',
     description: 'ChatMessage component for displaying chat messages in a conversation interface.',
-    platform: 'all',
+    platform: 'web',
+  },
+  {
+    name: 'LineChart',
+    status: 'released',
+    releasedIn: '12.49.7',
+    storybookLink: 'Components/LineChart',
+    description:
+      'A Line Chart component built on top of Recharts with Blade design system styling.',
+    platform: 'web',
+  },
+  {
+    name: 'TimePicker',
+    status: 'in-development',
+    storybookLink: 'Components/TimePicker',
+    description:
+      'TimePicker component allows users to select a specific time from a customizable time interface. It supports both 12-hour and 24-hour formats, provides an intuitive picker interface, and automatically adapts to mobile devices with a BottomSheet experience.',
+    platform: 'web',
   },
 ];
 

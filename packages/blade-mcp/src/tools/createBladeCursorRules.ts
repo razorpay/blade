@@ -7,7 +7,7 @@ import {
   CURSOR_RULES_VERSION,
   analyticsToolCallEventName,
 } from '../utils/tokens.js';
-import { getUserName } from '../utils/getUserName.js';
+
 import { hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 
@@ -59,7 +59,6 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
         toolName: createBladeCursorRulesToolName,
         cursorRulesVersion: CURSOR_RULES_VERSION,
         rootDirectoryName: basename(currentProjectRootDirectory),
-        userName: getUserName(currentProjectRootDirectory),
       },
     });
 
