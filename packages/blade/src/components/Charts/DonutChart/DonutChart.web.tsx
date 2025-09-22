@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   PieChart as RechartsPieChart,
   Pie as RechartsPie,
@@ -16,11 +16,19 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 // Cell component - resolves Blade color tokens to actual colors
-export const Cell: React.FC<CellProps> = ({ color, ...rest }) => {
+export const Cell: React.FC<
+  CellProps & {
+    _isHovered?: boolean;
+    _isOtherHovered?: boolean;
+  }
+> = ({ color, _isHovered = false, _isOtherHovered = false, ...rest }) => {
   const { theme } = useTheme();
+
   const resolvedFill = color ? getIn(theme.colors, color) : undefined;
 
-  return <RechartsCell {...rest} fill={resolvedFill} />;
+  // Calculate opacity based on hover state
+  const opacity = _isHovered ? 1 : _isOtherHovered ? 0.8 : 1;
+  return <RechartsCell {...rest} fill={resolvedFill} opacity={opacity} />;
 };
 
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
@@ -77,23 +85,29 @@ const ChartDonut: React.FC<ChartDonutProps> = ({
 }) => {
   const radiusConfig = RADIUS_MAPPING[radius];
   const themeColors = useChartsColorTheme({ colorTheme: colorTheme ?? 'default' });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const modifiedChildren = useMemo(() => {
     if (Array.isArray(children)) {
       return children.map((child, index) =>
         React.cloneElement(child, {
-          color: child.props.color || themeColors[index],
+          color: child.props.color,
+          _colorTheme: colorTheme,
+          _index: index,
           key: index,
+          isHovered: hoveredIndex === index,
+          isOtherHovered: hoveredIndex !== null && hoveredIndex !== index,
         }),
       );
     }
     return data?.map((_, index) =>
       React.createElement(RechartsCell, {
-        fill: themeColors[index],
         key: index,
+        fill: themeColors[index],
+        opacity: hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.8 : 1,
       }),
     );
-  }, [children, data, themeColors]);
+  }, [children, data, themeColors, hoveredIndex]);
 
   return (
     <RechartsPie
@@ -106,6 +120,12 @@ const ChartDonut: React.FC<ChartDonutProps> = ({
       startAngle={START_AND_END_ANGLES[type].startAngle}
       endAngle={START_AND_END_ANGLES[type].endAngle}
       strokeWidth={0}
+      onMouseEnter={(data, index) => {
+        setHoveredIndex(index);
+      }}
+      onMouseLeave={() => {
+        setHoveredIndex(null);
+      }}
     >
       {modifiedChildren}
     </RechartsPie>
