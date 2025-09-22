@@ -10,7 +10,7 @@ BarChart is a comprehensive data visualization component that renders interactiv
 
 ## Important Constraints
 
-- `ChartBarWrapper` component only accepts `ChartBar` components as direct children
+- `ChartBarWrapper` component only accepts `ChartBar`, `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip`, `ChartLegend`, and `ChartReferenceLine` components as children.
 - `data` prop is required and must be an array of objects with consistent data structure
 - `dataKey` prop is required for each `ChartBar` component and must correspond to a property in the data array
 - `stackId` must be consistent across all bars that should be stacked together
@@ -69,12 +69,6 @@ type ChartBarWrapperProps = {
   data: data[];
 } & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
 
-interface BarChartContextType {
-  layout?: 'horizontal' | 'vertical';
-  activeIndex?: number;
-  colorTheme: colorTheme;
-  totalBars: number;
-}
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
