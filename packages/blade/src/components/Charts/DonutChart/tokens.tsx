@@ -5,7 +5,7 @@ const RADIUS_MAPPING = {
 };
 
 const START_AND_END_ANGLES = {
-  circle: { startAngle: 90, endAngle: 450 },
+  circle: { startAngle: 450, endAngle: 90 },
   semicircle: { startAngle: 180, endAngle: 0 },
 };
 
