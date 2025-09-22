@@ -70,7 +70,6 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
       },
     });
 
-    // TODO: Inject images: https://docs.cursor.com/context/model-context-protocol#image-injection
     return {
       content: [
         {
