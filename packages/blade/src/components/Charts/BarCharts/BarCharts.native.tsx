@@ -5,16 +5,16 @@ import { throwBladeError } from '~utils/logger';
 
 const ChartBar = (_prop: ChartBarProps): React.ReactElement => {
   throwBladeError({
-    message: 'ChartLineWrapper is not yet implemented for native',
+    message: 'ChartBar is not yet implemented for native',
     moduleName: 'ChartBar',
   });
 
-  return <Text>ChartLineWrapper is not available for Native mobile apps.</Text>;
+  return <Text>ChartBar is not available for Native mobile apps.</Text>;
 };
 
 const ChartBarWrapper = (_prop: ChartBarWrapperProps): React.ReactElement => {
   throwBladeError({
-    message: 'ChartBarWrapperProps is not yet implemented for native',
+    message: 'ChartBarWrapper is not yet implemented for native',
     moduleName: 'ChartBarWrapper',
   });
 
