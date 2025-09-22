@@ -65,6 +65,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
       label={label}
       animationBegin={animationBegin}
       animationDuration={animationDuration}
+      animationEasing="linear"
       dataKey={dataKey}
       name={name}
       // https://github.com/recharts/recharts/issues/2244#issuecomment-2288572842
