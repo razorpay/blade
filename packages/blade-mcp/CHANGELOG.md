@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.8.0
+
+### Minor Changes
+
+- dd7e18b43: feat(server): add publishLinesOfCodeMetric tool integration
+
 ## 1.7.0
 
 ### Minor Changes
