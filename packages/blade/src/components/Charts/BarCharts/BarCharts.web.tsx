@@ -169,3 +169,4 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
 };
 
 export { ChartBarWrapper, ChartBar };
+export type { ChartBarProps, ChartBarWrapperProps };
