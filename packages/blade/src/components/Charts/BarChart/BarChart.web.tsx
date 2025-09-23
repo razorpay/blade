@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BarChart as RechartsBarChart,
   Bar as RechartsBar,
@@ -24,6 +24,70 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion';
+
+const MotionRectangle = (props: any) => {
+  const controls = useAnimation();
+  const [animationState, setAnimationState] = useState('idle');
+
+  useEffect(() => {
+    if (props.animationTrigger === 'fadeIn') {
+      setAnimationState('fadingIn');
+      controls.start({
+        fillOpacity: 1,
+        transition: {
+          duration: 0.3,
+          ease: 'easeOut',
+          delay: 0,
+          onComplete: () => {
+            setAnimationState('fadedIn');
+            if (props.onFadeInComplete) props.onFadeInComplete();
+          },
+        },
+      });
+    } else if (props.animationTrigger === 'fadeOut') {
+      setAnimationState('fadingOut');
+      controls.start({
+        fillOpacity: 0.2,
+        transition: {
+          duration: 0.3,
+          ease: 'easeIn',
+          onComplete: () => {
+            setAnimationState('fadedOut');
+            if (props.onFadeOutComplete) props.onFadeOutComplete();
+          },
+        },
+      });
+    } else if (props.animationTrigger === 'reset') {
+      setAnimationState('resetting');
+      controls.start({
+        fillOpacity: props.fillOpacity,
+        transition: {
+          duration: 0.2,
+          ease: 'easeInOut',
+          onComplete: () => {
+            setAnimationState('idle');
+            if (props.onResetComplete) props.onResetComplete();
+          },
+        },
+      });
+    }
+  }, [props.animationTrigger, props.fillOpacity, controls]);
+
+  return (
+    <LazyMotion features={domAnimation}>
+      <m.rect
+        {...props}
+        animate={controls}
+        initial={{ fillOpacity: props.initialOpacity || props.fillOpacity }}
+        style={{
+          cursor: 'pointer',
+          opacity: animationState === 'fadingOut' ? 0.8 : 1,
+        }}
+      ></m.rect>
+    </LazyMotion>
+  );
+};
 
 export type RechartsShapeProps = {
   x: number;
@@ -56,6 +120,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   const animationDuration = isStacked
     ? theme.motion.duration.gentle / totalBars
     : theme.motion.duration.gentle;
+
   return (
     <RechartsBar
       {...rest}
@@ -68,19 +133,22 @@ const _ChartBar: React.FC<ChartBarProps> = ({
       animationEasing="linear"
       dataKey={dataKey}
       name={name}
-      // https://github.com/recharts/recharts/issues/2244#issuecomment-2288572842
-      // we have this shape to have distance b/w bar charts
-      // high change we might not have this in updated designs.
       shape={(props: unknown) => {
         const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
         const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
         const isVertical = orientation === 'vertical';
 
+        // Determine animation trigger
+        const getAnimationTrigger = () => {
+          if (!isNumber(activeIndex)) return 'reset';
+          if (barIndex === activeIndex) return 'fadeIn';
+          return 'fadeOut';
+        };
+
         if (isVertical) {
-          // For vertical bars: x and y stay the same, but width/height are swapped
           return (
-            <rect
+            <MotionRectangle
               fill={fill}
               x={x + gap / 2}
               y={y}
@@ -89,11 +157,13 @@ const _ChartBar: React.FC<ChartBarProps> = ({
               rx={BAR_CHART_CORNER_RADIUS}
               ry={BAR_CHART_CORNER_RADIUS}
               fillOpacity={fillOpacity}
+              animationTrigger={getAnimationTrigger()}
+              initialOpacity={0.2}
             />
           );
         }
         return (
-          <rect
+          <MotionRectangle
             fill={fill}
             x={x}
             y={y + gap / 2}
@@ -102,6 +172,8 @@ const _ChartBar: React.FC<ChartBarProps> = ({
             rx={BAR_CHART_CORNER_RADIUS}
             ry={BAR_CHART_CORNER_RADIUS}
             fillOpacity={fillOpacity}
+            animationTrigger={getAnimationTrigger()}
+            initialOpacity={0.2}
           />
         );
       }}
