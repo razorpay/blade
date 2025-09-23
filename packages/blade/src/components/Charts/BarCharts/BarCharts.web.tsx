@@ -46,7 +46,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   ...rest
 }) => {
   const { theme } = useTheme();
-  const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
+  const { orientation, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
   const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
@@ -75,7 +75,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
         const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
         const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
-        const isVertical = layout === 'vertical';
+        const isVertical = orientation === 'vertical';
 
         if (isVertical) {
           // For vertical bars: x and y stay the same, but width/height are swapped
@@ -117,7 +117,7 @@ const ChartBar = assignWithoutSideEffects(_ChartBar, {
 const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   colorTheme = 'default',
-  layout = 'horizontal',
+  orientation = 'horizontal',
   testID,
   data = [],
   ...restProps
@@ -148,7 +148,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       height="100%"
       {...restProps}
     >
-      <BarChartContext.Provider value={{ layout, activeIndex, colorTheme, totalBars }}>
+      <BarChartContext.Provider value={{ orientation, activeIndex, colorTheme, totalBars }}>
         <RechartsResponsiveContainer width="100%" height="100%">
           <RechartsBarChart
             barSize={BAR_SIZE}
@@ -157,7 +157,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
             onMouseMove={(state) => {
               setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
             }}
-            layout={layout}
+            layout={orientation}
             data={data}
           >
             {barChartModifiedChildrens}

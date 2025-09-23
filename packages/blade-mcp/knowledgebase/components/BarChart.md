@@ -64,9 +64,9 @@ type ChartBarWrapperProps = {
    */
   colorTheme?: colorTheme;
   /**
-   * The layout of the bar chart.
+   * The orientation of the bar chart.
    */
-  layout?: 'horizontal' | 'vertical';
+  orientation?: 'horizontal' | 'vertical';
   /**
    * Chart data to be rendered
    */

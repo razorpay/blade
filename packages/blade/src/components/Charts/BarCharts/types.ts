@@ -59,7 +59,7 @@ type ChartBarWrapperProps = {
   /**
    * The layout of the bar chart.
    */
-  layout?: 'horizontal' | 'vertical';
+  orientation?: 'horizontal' | 'vertical';
   /**
    * Chart data to be rendered
    */
@@ -67,7 +67,7 @@ type ChartBarWrapperProps = {
 } & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
 
 interface BarChartContextType {
-  layout?: 'horizontal' | 'vertical';
+  orientation?: 'horizontal' | 'vertical';
   activeIndex?: number;
   colorTheme: colorTheme;
   totalBars: number;
