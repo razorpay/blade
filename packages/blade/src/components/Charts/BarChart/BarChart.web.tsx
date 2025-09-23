@@ -15,6 +15,7 @@ import {
   BAR_SIZE,
   DISTANCE_BETWEEN_BARS,
   DISTANCE_BETWEEN_CATEGORY_BARS,
+  ANIMATION_TIME_OFFEST,
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -34,10 +35,10 @@ const MotionRectangle = (props: any) => {
     if (props.animationTrigger === 'fadeIn') {
       setAnimationState('fadingIn');
       void controls.start({
-        fillOpacity: 1,
+        fillOpacity: props.fillOpacity,
         transition: {
-          duration: 0.3,
-          ease: 'easeOut',
+          duration: 0.01,
+          ease: 'easeIn',
           delay: 0,
           onComplete: () => {
             setAnimationState('fadedIn');
@@ -113,26 +114,18 @@ const _ChartBar: React.FC<ChartBarProps> = ({
 }) => {
   const { theme } = useTheme();
   const { orientation, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
-  const hasChartMounted = useRef(false);
+  const hasChartAnimationEnded = useRef(false);
   const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
-  const animationBegin = isStacked
-    ? (theme.motion.duration.gentle / totalBars) * _index
-    : theme.motion.duration.gentle;
-  const animationDuration = isStacked
-    ? theme.motion.duration.gentle / totalBars
-    : theme.motion.duration.gentle;
-
-  useEffect(() => {
-    const animationEndTime = animationDuration + animationBegin + 300;
-    if (!hasChartMounted.current) {
-      //Let the initial animation happen
-      setTimeout(() => {
-        hasChartMounted.current = true;
-      }, animationEndTime);
-    }
-  }, [animationDuration, animationBegin]);
+  const animationBegin =
+    isStacked && !hasChartAnimationEnded.current
+      ? (theme.motion.duration.gentle / totalBars) * _index
+      : theme.motion.duration.gentle;
+  const animationDuration =
+    isStacked && !hasChartAnimationEnded.current
+      ? theme.motion.duration.gentle / totalBars
+      : theme.motion.duration.gentle;
 
   return (
     <RechartsBar
@@ -144,6 +137,15 @@ const _ChartBar: React.FC<ChartBarProps> = ({
       animationBegin={animationBegin}
       animationDuration={animationDuration}
       animationEasing="linear"
+      onAnimationStart={() => {
+        hasChartAnimationEnded.current = false;
+      }}
+      onAnimationEnd={() => {
+        // Sometimes  this function is being called before the animation is complete, so we need to wait for the animation to complete
+        setTimeout(() => {
+          hasChartAnimationEnded.current = true;
+        }, ANIMATION_TIME_OFFEST);
+      }}
       dataKey={dataKey}
       name={name}
       shape={(props: unknown) => {
@@ -153,6 +155,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
         const isVertical = orientation === 'vertical';
 
         // Determine animation trigger
+        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
         const getAnimationTrigger = () => {
           if (!isNumber(activeIndex)) return 'reset';
           if (barIndex === activeIndex) return 'fadeIn';
@@ -171,7 +174,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
               ry={BAR_CHART_CORNER_RADIUS}
               fillOpacity={fillOpacity}
               animationTrigger={getAnimationTrigger()}
-              initialOpacity={hasChartMounted.current ? 0.2 : 1}
+              initialOpacity={hasChartAnimationEnded.current ? 1 : 0.2}
             />
           );
         }
@@ -186,7 +189,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
             ry={BAR_CHART_CORNER_RADIUS}
             fillOpacity={fillOpacity}
             animationTrigger={getAnimationTrigger()}
-            initialOpacity={hasChartMounted.current ? 0.2 : 1}
+            initialOpacity={hasChartAnimationEnded.current ? 1 : 0.2}
           />
         );
       }}
