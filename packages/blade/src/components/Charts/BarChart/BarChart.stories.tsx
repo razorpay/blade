@@ -318,4 +318,4 @@ TinyBarChart.storyName = 'Tiny Bar Chart';
 SimpleBarChart.storyName = 'Simple Bar Chart';
 StackedBarChart.storyName = 'Stacked Bar Chart';
 VerticalBarChart.storyName = 'Vertical Bar Chart';
-BarChartWithDefaultColorTheme.storyName = 'Bar Chart With Informational Color Theme';
+BarChartWithDefaultColorTheme.storyName = 'Bar Chart With Default Color Theme';
