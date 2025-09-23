@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   BarChart as RechartsBarChart,
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
+import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion';
 import { useChartsColorTheme } from '../utils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
@@ -24,7 +25,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion';
 
 const MotionRectangle = (props: any) => {
   const controls = useAnimation();
@@ -33,7 +33,7 @@ const MotionRectangle = (props: any) => {
   useEffect(() => {
     if (props.animationTrigger === 'fadeIn') {
       setAnimationState('fadingIn');
-      controls.start({
+      void controls.start({
         fillOpacity: 1,
         transition: {
           duration: 0.3,
@@ -47,7 +47,7 @@ const MotionRectangle = (props: any) => {
       });
     } else if (props.animationTrigger === 'fadeOut') {
       setAnimationState('fadingOut');
-      controls.start({
+      void controls.start({
         fillOpacity: 0.2,
         transition: {
           duration: 0.3,
@@ -60,7 +60,7 @@ const MotionRectangle = (props: any) => {
       });
     } else if (props.animationTrigger === 'reset') {
       setAnimationState('resetting');
-      controls.start({
+      void controls.start({
         fillOpacity: props.fillOpacity,
         transition: {
           duration: 0.2,
@@ -72,19 +72,21 @@ const MotionRectangle = (props: any) => {
         },
       });
     }
-  }, [props.animationTrigger, props.fillOpacity, controls]);
+  }, [props.animationTrigger, props.fillOpacity, controls, props]);
 
   return (
     <LazyMotion features={domAnimation}>
       <m.rect
         {...props}
         animate={controls}
-        initial={{ fillOpacity: props.initialOpacity || props.fillOpacity }}
+        initial={{
+          fillOpacity: props.initialOpacity,
+        }}
         style={{
           cursor: 'pointer',
           opacity: animationState === 'fadingOut' ? 0.8 : 1,
         }}
-      ></m.rect>
+      />
     </LazyMotion>
   );
 };
@@ -111,6 +113,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
 }) => {
   const { theme } = useTheme();
   const { orientation, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
+  const hasChartMounted = useRef(false);
   const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
@@ -120,6 +123,16 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   const animationDuration = isStacked
     ? theme.motion.duration.gentle / totalBars
     : theme.motion.duration.gentle;
+
+  useEffect(() => {
+    const animationEndTime = animationDuration + animationBegin + 300;
+    if (!hasChartMounted.current) {
+      //Let the initial animation happen
+      setTimeout(() => {
+        hasChartMounted.current = true;
+      }, animationEndTime);
+    }
+  }, [animationDuration, animationBegin]);
 
   return (
     <RechartsBar
@@ -158,7 +171,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
               ry={BAR_CHART_CORNER_RADIUS}
               fillOpacity={fillOpacity}
               animationTrigger={getAnimationTrigger()}
-              initialOpacity={0.2}
+              initialOpacity={hasChartMounted.current ? 0.2 : 1}
             />
           );
         }
@@ -173,7 +186,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
             ry={BAR_CHART_CORNER_RADIUS}
             fillOpacity={fillOpacity}
             animationTrigger={getAnimationTrigger()}
-            initialOpacity={0.2}
+            initialOpacity={hasChartMounted.current ? 0.2 : 1}
           />
         );
       }}
