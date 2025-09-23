@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 import type { BarChartContextType } from './types';
 
 export const BarChartContext = createContext<BarChartContextType>({
-  layout: 'horizontal',
+  orientation: 'horizontal',
   activeIndex: undefined,
   colorTheme: 'default',
   totalBars: 0,
