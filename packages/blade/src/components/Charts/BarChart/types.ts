@@ -1,4 +1,6 @@
+import type { ComponentProps } from 'react';
 import type { BarProps as RechartsBarProps } from 'recharts';
+import type { m } from 'framer-motion';
 import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
@@ -71,6 +73,17 @@ interface BarChartContextType {
   activeIndex?: number;
   colorTheme: colorTheme;
   totalBars: number;
+  isFirstActiveIndex?: boolean;
+  shouldPlayResetAnimation?: boolean;
 }
 
-export type { ChartBarProps, ChartBarWrapperProps, BarChartContextType };
+type MotionRectProps = ComponentProps<typeof m.rect> & {
+  animationTrigger: string;
+  initialOpacity?: number;
+  onFadeInComplete?: () => void;
+  onFadeOutComplete?: () => void;
+  onResetComplete?: () => void;
+  fillOpacity: number;
+};
+
+export type { ChartBarProps, ChartBarWrapperProps, BarChartContextType, MotionRectProps };

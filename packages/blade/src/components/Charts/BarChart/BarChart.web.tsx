@@ -7,7 +7,7 @@ import {
 import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion';
 import { useChartsColorTheme } from '../utils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
-import type { ChartBarProps, ChartBarWrapperProps } from './types';
+import type { ChartBarProps, ChartBarWrapperProps, MotionRectProps } from './types';
 import {
   BAR_CHART_CORNER_RADIUS,
   DISTANCE_BETWEEN_STACKED_BARS,
@@ -15,7 +15,7 @@ import {
   BAR_SIZE,
   DISTANCE_BETWEEN_BARS,
   DISTANCE_BETWEEN_CATEGORY_BARS,
-  ANIMATION_TIME_OFFEST,
+  MOTION_TRIGGERS,
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -27,12 +27,12 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
-const MotionRectangle = (props: any) => {
+const MotionRectangle = (props: MotionRectProps): React.ReactNode => {
   const controls = useAnimation();
   const [animationState, setAnimationState] = useState('idle');
 
   useEffect(() => {
-    if (props.animationTrigger === 'fadeIn') {
+    if (props.animationTrigger === MOTION_TRIGGERS.FADE_IN) {
       setAnimationState('fadingIn');
       void controls.start({
         fillOpacity: props.fillOpacity,
@@ -46,7 +46,7 @@ const MotionRectangle = (props: any) => {
           },
         },
       });
-    } else if (props.animationTrigger === 'fadeOut') {
+    } else if (props.animationTrigger === MOTION_TRIGGERS.FADE_OUT) {
       setAnimationState('fadingOut');
       void controls.start({
         fillOpacity: 0.2,
@@ -59,7 +59,7 @@ const MotionRectangle = (props: any) => {
           },
         },
       });
-    } else if (props.animationTrigger === 'reset') {
+    } else if (props.animationTrigger === MOTION_TRIGGERS.RESET) {
       setAnimationState('resetting');
       void controls.start({
         fillOpacity: 1,
@@ -113,17 +113,25 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   ...rest
 }) => {
   const { theme } = useTheme();
-  const { orientation, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
-  const hasChartAnimationEnded = useRef(false);
+  const {
+    orientation,
+    activeIndex,
+    colorTheme: _colorTheme,
+    totalBars,
+    isFirstActiveIndex,
+    shouldPlayResetAnimation,
+  } = useBarChartContext();
   const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
+  const [isHovered, setIsHovered] = useState(false);
+  const isContainerHovered = isNumber(activeIndex);
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
   const animationBegin =
-    isStacked && !hasChartAnimationEnded.current
+    isStacked && !isContainerHovered
       ? (theme.motion.duration.gentle / totalBars) * _index
       : theme.motion.duration.gentle;
   const animationDuration =
-    isStacked && !hasChartAnimationEnded.current
+    isStacked && !isContainerHovered
       ? theme.motion.duration.gentle / totalBars
       : theme.motion.duration.gentle;
 
@@ -136,16 +144,9 @@ const _ChartBar: React.FC<ChartBarProps> = ({
       label={label}
       animationBegin={animationBegin}
       animationDuration={animationDuration}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       animationEasing="linear"
-      onAnimationStart={() => {
-        hasChartAnimationEnded.current = false;
-      }}
-      onAnimationEnd={() => {
-        // Sometimes  this function is being called before the animation is complete, so we need to wait for the animation to complete
-        setTimeout(() => {
-          hasChartAnimationEnded.current = true;
-        }, ANIMATION_TIME_OFFEST);
-      }}
       dataKey={dataKey}
       name={name}
       shape={(props: unknown) => {
@@ -154,12 +155,26 @@ const _ChartBar: React.FC<ChartBarProps> = ({
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
         const isVertical = orientation === 'vertical';
 
-        // Determine animation trigger
-        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-        const getAnimationTrigger = () => {
-          if (!isNumber(activeIndex)) return 'reset';
-          if (barIndex === activeIndex) return 'fadeIn';
-          return 'fadeOut';
+        const getAnimationTrigger = (): string => {
+          if (!isNumber(activeIndex)) return MOTION_TRIGGERS.RESET;
+          if (barIndex === activeIndex) return MOTION_TRIGGERS.FADE_IN;
+          return MOTION_TRIGGERS.FADE_OUT;
+        };
+
+        const getInitialOpacity = (): number => {
+          const animationTrigger = getAnimationTrigger();
+          if (isContainerHovered) {
+            if (animationTrigger === MOTION_TRIGGERS.FADE_IN && isFirstActiveIndex) return 1;
+            if (animationTrigger === MOTION_TRIGGERS.FADE_IN && !isFirstActiveIndex) return 0.2;
+            if (animationTrigger === MOTION_TRIGGERS.FADE_OUT && isFirstActiveIndex) return 1;
+            if (animationTrigger === MOTION_TRIGGERS.FADE_OUT && !isFirstActiveIndex) return 0.2;
+            if (animationTrigger === MOTION_TRIGGERS.RESET && isHovered) return 0.2;
+          }
+          if (shouldPlayResetAnimation) {
+            if (animationTrigger === MOTION_TRIGGERS.RESET) return 0.2;
+          }
+
+          return 1;
         };
 
         if (isVertical) {
@@ -174,7 +189,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
               ry={BAR_CHART_CORNER_RADIUS}
               fillOpacity={fillOpacity}
               animationTrigger={getAnimationTrigger()}
-              initialOpacity={hasChartAnimationEnded.current ? 1 : 0.2}
+              initialOpacity={getInitialOpacity()}
             />
           );
         }
@@ -189,7 +204,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
             ry={BAR_CHART_CORNER_RADIUS}
             fillOpacity={fillOpacity}
             animationTrigger={getAnimationTrigger()}
-            initialOpacity={hasChartAnimationEnded.current ? 1 : 0.2}
+            initialOpacity={getInitialOpacity()}
           />
         );
       }}
@@ -211,6 +226,16 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   ...restProps
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
+  const [shouldPlayResetAnimation, setShouldPlayResetAnimation] = useState(false);
+  const prevActiveIndex = useRef<number | undefined>(undefined);
+
+  // Check if this is the first active index
+  const isFirstActiveIndex = isNumber(activeIndex) && prevActiveIndex.current === undefined;
+
+  // Update previous activeIndex
+  useEffect(() => {
+    prevActiveIndex.current = activeIndex;
+  }, [activeIndex]);
 
   const { barChartModifiedChildrens, totalBars } = React.useMemo(() => {
     let BarChartIndex = 0;
@@ -228,6 +253,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       totalBars: BarChartIndex,
     };
   }, [children]);
+
   return (
     <BaseBox
       {...metaAttribute({ name: 'bar-chart', testID })}
@@ -236,13 +262,28 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       height="100%"
       {...restProps}
     >
-      <BarChartContext.Provider value={{ orientation, activeIndex, colorTheme, totalBars }}>
+      <BarChartContext.Provider
+        value={{
+          orientation,
+          activeIndex,
+          isFirstActiveIndex,
+          shouldPlayResetAnimation,
+          colorTheme,
+          totalBars,
+        }}
+      >
         <RechartsResponsiveContainer width="100%" height="100%">
           <RechartsBarChart
             barSize={BAR_SIZE}
             barGap={DISTANCE_BETWEEN_BARS}
             barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
             onMouseMove={(state) => {
+              if (isNumber(prevActiveIndex.current) && !state?.activeIndex) {
+                setShouldPlayResetAnimation(true);
+                setTimeout(() => {
+                  setShouldPlayResetAnimation(false);
+                }, 1000);
+              }
               setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
             }}
             layout={orientation}
