@@ -292,7 +292,7 @@ VerticalBarChart.parameters = {
   controls: { disable: true },
 };
 
-export const BarChartWithInformationalColorTheme: StoryFn<typeof ChartBar> = () => {
+export const BarChartWithDefaultColorTheme: StoryFn<typeof ChartBar> = () => {
   return (
     <div style={{ width: '100%', height: '500px' }}>
       <ChartBarWrapper data={chartData.slice(0, 5)} orientation="vertical" colorTheme="default">
@@ -309,7 +309,7 @@ export const BarChartWithInformationalColorTheme: StoryFn<typeof ChartBar> = () 
   );
 };
 
-BarChartWithInformationalColorTheme.parameters = {
+BarChartWithDefaultColorTheme.parameters = {
   controls: { disable: true },
 };
 
@@ -318,4 +318,4 @@ TinyBarChart.storyName = 'Tiny Bar Chart';
 SimpleBarChart.storyName = 'Simple Bar Chart';
 StackedBarChart.storyName = 'Stacked Bar Chart';
 VerticalBarChart.storyName = 'Vertical Bar Chart';
-BarChartWithInformationalColorTheme.storyName = 'Bar Chart With Informational Color Theme';
+BarChartWithDefaultColorTheme.storyName = 'Bar Chart With Informational Color Theme';
