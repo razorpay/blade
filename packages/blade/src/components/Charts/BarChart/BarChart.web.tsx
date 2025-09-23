@@ -62,10 +62,10 @@ const MotionRectangle = (props: any) => {
     } else if (props.animationTrigger === 'reset') {
       setAnimationState('resetting');
       void controls.start({
-        fillOpacity: props.fillOpacity,
+        fillOpacity: 1,
         transition: {
           duration: 0.2,
-          ease: 'easeInOut',
+          ease: 'easeOut',
           onComplete: () => {
             setAnimationState('idle');
             if (props.onResetComplete) props.onResetComplete();

@@ -268,7 +268,7 @@ export const VerticalBarChart: StoryFn<typeof ChartBar> = () => {
         <ChartBar
           dataKey="seriesA"
           name="Series A"
-          color="chart.background.sequential.azure.400"
+          color="chart.background.sequential.azure.600"
           stackId="2"
         />
         <ChartBar
@@ -280,7 +280,7 @@ export const VerticalBarChart: StoryFn<typeof ChartBar> = () => {
         <ChartBar
           dataKey="seriesC"
           name="Series C"
-          color="chart.background.sequential.azure.600"
+          color="chart.background.sequential.azure.400"
           stackId="2"
         />
       </ChartBarWrapper>
