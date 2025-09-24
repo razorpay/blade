@@ -67,7 +67,7 @@ type ChartDonutWrapperProps = {
    */
   centerText?: string;
   children?: React.ReactNode;
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BaseBox;
 
 type data = {
   [key: string]: unknown;
@@ -91,12 +91,7 @@ A comprehensive example showing a donut chart with center text, different radius
 
 ```typescript
 import React from 'react';
-import {
-  ChartDonut,
-  ChartDonutWrapper,
-  ChartTooltip,
-  Cell,
-} from '@razorpay/blade/components';
+import { ChartDonut, ChartDonutWrapper, ChartTooltip, Cell } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
 
 function BasicDonutChart() {
@@ -110,13 +105,7 @@ function BasicDonutChart() {
   return (
     <Box width="100%" height="400px">
       <ChartDonutWrapper centerText="Total: 1000">
-        <ChartDonut 
-          dataKey="value" 
-          nameKey="name" 
-          data={data} 
-          radius="medium"
-          type="circle"
-        >
+        <ChartDonut dataKey="value" nameKey="name" data={data} radius="medium" type="circle">
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} color={entry.color} />
           ))}
