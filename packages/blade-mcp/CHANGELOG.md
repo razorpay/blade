@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.10.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade-mcp): update knowledgebase with BarChart
+
 ## 1.9.0
 
 ### Minor Changes
