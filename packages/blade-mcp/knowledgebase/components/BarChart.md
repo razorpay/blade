@@ -66,7 +66,7 @@ type ChartBarWrapperProps = {
   /**
    * The orientation of the bar chart.
    */
-  orientation?: 'horizontal' | 'vertical';
+  layout?: 'horizontal' | 'vertical';
   /**
    * Chart data to be rendered
    */
