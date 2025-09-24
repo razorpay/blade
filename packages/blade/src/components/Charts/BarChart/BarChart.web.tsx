@@ -4,7 +4,7 @@ import {
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { useChartsColorTheme } from '../utils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import type { ChartBarProps, ChartBarWrapperProps, MotionRectProps } from './types';
@@ -15,7 +15,6 @@ import {
   BAR_SIZE,
   DISTANCE_BETWEEN_BARS,
   DISTANCE_BETWEEN_CATEGORY_BARS,
-  MOTION_TRIGGERS,
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -28,65 +27,18 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 const MotionRectangle = (props: MotionRectProps): React.ReactElement => {
-  const controls = useAnimation();
-  const [animationState, setAnimationState] = useState('idle');
-
-  useEffect(() => {
-    if (props.animationTrigger === MOTION_TRIGGERS.FADE_IN) {
-      setAnimationState('fadingIn');
-      void controls.start({
-        fillOpacity: props.fillOpacity,
-        transition: {
-          duration: 0.01,
-          ease: 'easeIn',
-          delay: 0,
-          onComplete: () => {
-            setAnimationState('fadedIn');
-            if (props.onFadeInComplete) props.onFadeInComplete();
-          },
-        },
-      });
-    } else if (props.animationTrigger === MOTION_TRIGGERS.FADE_OUT) {
-      setAnimationState('fadingOut');
-      void controls.start({
-        fillOpacity: 0.2,
-        transition: {
-          duration: 0.3,
-          ease: 'easeIn',
-          onComplete: () => {
-            setAnimationState('fadedOut');
-            if (props.onFadeOutComplete) props.onFadeOutComplete();
-          },
-        },
-      });
-    } else if (props.animationTrigger === MOTION_TRIGGERS.RESET) {
-      setAnimationState('resetting');
-      void controls.start({
-        fillOpacity: 1,
-        transition: {
-          duration: 0.2,
-          ease: 'easeOut',
-          onComplete: () => {
-            setAnimationState('idle');
-            if (props.onResetComplete) props.onResetComplete();
-          },
-        },
-      });
-    }
-  }, [props.animationTrigger, props.fillOpacity, controls, props]);
-
+  const { fillOpacity, barIndex, initialOpacity, ...restProps } = props;
   return (
     <LazyMotion features={domAnimation}>
       <m.rect
-        {...props}
-        animate={controls}
-        initial={{
-          fillOpacity: props.initialOpacity,
+        layoutId={`bar-${barIndex}`}
+        initial={{ fillOpacity: initialOpacity }}
+        animate={{ fillOpacity }}
+        transition={{
+          fillOpacity: { duration: 0.3, ease: 'linear' },
+          layout: { duration: 0.4 },
         }}
-        style={{
-          cursor: 'pointer',
-          opacity: animationState === 'fadingOut' ? 0.8 : 1,
-        }}
+        {...restProps}
       />
     </LazyMotion>
   );
@@ -122,7 +74,6 @@ const _ChartBar: React.FC<ChartBarProps> = ({
     shouldPlayResetAnimation,
   } = useBarChartContext();
   const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
-  const [isHovered, setIsHovered] = useState(false);
   const isContainerHovered = isNumber(activeIndex);
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
@@ -144,8 +95,6 @@ const _ChartBar: React.FC<ChartBarProps> = ({
       label={label}
       animationBegin={animationBegin}
       animationDuration={animationDuration}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       animationEasing="linear"
       dataKey={dataKey}
       name={name}
@@ -155,23 +104,19 @@ const _ChartBar: React.FC<ChartBarProps> = ({
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
         const isVertical = orientation === 'vertical';
 
-        const getAnimationTrigger = (): string => {
-          if (!isNumber(activeIndex)) return MOTION_TRIGGERS.RESET;
-          if (barIndex === activeIndex) return MOTION_TRIGGERS.FADE_IN;
-          return MOTION_TRIGGERS.FADE_OUT;
-        };
-
         const getInitialOpacity = (): number => {
-          const animationTrigger = getAnimationTrigger();
-          if (isContainerHovered) {
-            if (animationTrigger === MOTION_TRIGGERS.FADE_IN && isFirstActiveIndex) return 1;
-            if (animationTrigger === MOTION_TRIGGERS.FADE_IN && !isFirstActiveIndex) return 0.2;
-            if (animationTrigger === MOTION_TRIGGERS.FADE_OUT && isFirstActiveIndex) return 1;
-            if (animationTrigger === MOTION_TRIGGERS.FADE_OUT && !isFirstActiveIndex) return 0.2;
-            if (animationTrigger === MOTION_TRIGGERS.RESET && isHovered) return 0.2;
+          // If container is hovered and it is the first active index (then no need to animate. since the hovered bar will have opacity 1)
+          // for non hovered bar opactiy will go from 1 to 0.2
+          if (isContainerHovered && isFirstActiveIndex) {
+            return 1;
           }
+          // Now if any bar is changing opactiy that means user is hovering over the bar. it's opacity should go from 0.2 to 1.
+          if (isContainerHovered && !isFirstActiveIndex) {
+            return 0.2;
+          }
+          // In case of reset. the opacity should go from 0.2 to 1.
           if (shouldPlayResetAnimation) {
-            if (animationTrigger === MOTION_TRIGGERS.RESET) return 0.2;
+            return 0.2;
           }
 
           return 1;
@@ -188,8 +133,8 @@ const _ChartBar: React.FC<ChartBarProps> = ({
               rx={BAR_CHART_CORNER_RADIUS}
               ry={BAR_CHART_CORNER_RADIUS}
               fillOpacity={fillOpacity}
-              animationTrigger={getAnimationTrigger()}
               initialOpacity={getInitialOpacity()}
+              barIndex={barIndex}
             />
           );
         }
@@ -203,8 +148,8 @@ const _ChartBar: React.FC<ChartBarProps> = ({
             rx={BAR_CHART_CORNER_RADIUS}
             ry={BAR_CHART_CORNER_RADIUS}
             fillOpacity={fillOpacity}
-            animationTrigger={getAnimationTrigger()}
             initialOpacity={getInitialOpacity()}
+            barIndex={barIndex}
           />
         );
       }}
@@ -226,10 +171,12 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   ...restProps
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
+  // Whether to play the reset animation. We play reset animation when user is hovering over the bar chart and then moves the mouse away.
   const [shouldPlayResetAnimation, setShouldPlayResetAnimation] = useState(false);
   const prevActiveIndex = useRef<number | undefined>(undefined);
 
-  // Check if this is the first active index
+  // Check if this is the first active index (user is hovering over bar chart for the first time)
+  // We need this to determine the initial opacity of the bar.
   const isFirstActiveIndex = isNumber(activeIndex) && prevActiveIndex.current === undefined;
 
   // Update previous activeIndex

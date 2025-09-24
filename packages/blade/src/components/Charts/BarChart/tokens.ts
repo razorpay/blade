@@ -10,12 +10,6 @@ const componentIds = {
   chartBar: 'ChartBar',
 };
 
-const MOTION_TRIGGERS = {
-  RESET: 'reset',
-  FADE_IN: 'fadeIn',
-  FADE_OUT: 'fadeOut',
-};
-
 export {
   componentIds,
   DISTANCE_BETWEEN_STACKED_BARS,
@@ -24,5 +18,4 @@ export {
   DISTANCE_BETWEEN_BARS,
   DISTANCE_BETWEEN_CATEGORY_BARS,
   ANIMATION_TIME_OFFEST,
-  MOTION_TRIGGERS,
 };

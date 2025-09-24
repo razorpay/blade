@@ -78,12 +78,12 @@ interface BarChartContextType {
 }
 
 type MotionRectProps = ComponentProps<typeof m.rect> & {
-  animationTrigger: string;
   initialOpacity?: number;
   onFadeInComplete?: () => void;
   onFadeOutComplete?: () => void;
   onResetComplete?: () => void;
   fillOpacity: number;
+  barIndex: number;
 };
 
 export type { ChartBarProps, ChartBarWrapperProps, BarChartContextType, MotionRectProps };
