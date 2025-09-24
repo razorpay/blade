@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.55.1
+
+### Patch Changes
+
+- fa2f47cad: fix(blade): invoke onApply of DatePicker when preset is selected from the preset dropdown
+- 2218df3db: feat(DropdownOverlay): add 'data-analytics' attribute
+
 ## 12.55.0
 
 ### Minor Changes
