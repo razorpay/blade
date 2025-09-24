@@ -27,7 +27,7 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
-const MotionRectangle = (props: MotionRectProps): React.ReactNode => {
+const MotionRectangle = (props: MotionRectProps): React.ReactElement => {
   const controls = useAnimation();
   const [animationState, setAnimationState] = useState('idle');
 
