@@ -46,7 +46,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   ...rest
 }) => {
   const { theme } = useTheme();
-  const { orientation, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
+  const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
   const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
@@ -73,7 +73,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
         const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
         const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;
         const gap = DISTANCE_BETWEEN_STACKED_BARS;
-        const isVertical = orientation === 'vertical';
+        const isVertical = layout === 'vertical';
 
         if (isVertical) {
           return (
@@ -114,7 +114,7 @@ const ChartBar = assignWithoutSideEffects(_ChartBar, {
 const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   colorTheme = 'default',
-  orientation = 'horizontal',
+  layout = 'horizontal',
   testID,
   data = [],
   ...restProps
@@ -148,7 +148,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     >
       <BarChartContext.Provider
         value={{
-          orientation,
+          layout,
           activeIndex,
           colorTheme,
           totalBars,
@@ -162,7 +162,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
             onMouseMove={(state) => {
               setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
             }}
-            layout={orientation}
+            layout={layout}
             data={data}
           >
             {barChartModifiedChildrens}
