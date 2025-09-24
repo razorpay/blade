@@ -146,7 +146,7 @@ type CounterInputCommonProps = Pick<
   /**
    * Event handler called when the value changes via increment, decrement, or manual input
    */
-  onChange?: (args: { name?: string; value: number }) => void;
+  onChange?: (args: { value: number }) => void;
 } & StyledPropsBlade;
 
 /*
