@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChartBarWrapper, ChartBar } from '../BarChart.web';
+import { ChartBarWrapper, ChartBar } from '../BarChart';
 import {
   ChartXAxis,
   ChartYAxis,

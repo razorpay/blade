@@ -6,8 +6,6 @@ export const BarChartContext = createContext<BarChartContextType>({
   activeIndex: undefined,
   colorTheme: 'default',
   totalBars: 0,
-  isFirstActiveIndex: false,
-  shouldPlayResetAnimation: false,
 });
 
 export const useBarChartContext = (): BarChartContextType => useContext(BarChartContext);
