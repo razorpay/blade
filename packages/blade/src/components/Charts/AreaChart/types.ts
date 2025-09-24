@@ -1,11 +1,7 @@
 import type { AreaProps as RechartAreaProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { colorTheme } from '../utils';
-import type {
-  BaseBoxProps,
-  FlexboxProps,
-  GridProps,
-} from '~components/Box/BaseBox/types/propsTypes';
+import type { BoxProps } from '~components/Box';
 
 type ChartAreaProps = {
   /**
@@ -68,6 +64,6 @@ type ChartAreaWrapperProps = {
    * Chart data to be rendered
    */
   data: data[];
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BoxProps;
 
 export type { ChartAreaProps, ChartAreaWrapperProps };
