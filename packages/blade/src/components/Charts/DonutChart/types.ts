@@ -4,11 +4,7 @@ import type {
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
 import type { colorTheme } from '../utils/useColorTheme';
-import type {
-  BaseBoxProps,
-  FlexboxProps,
-  GridProps,
-} from '~components/Box/BaseBox/types/propsTypes';
+import type { BoxProps } from '~components/Box';
 
 type data = {
   [key: string]: unknown;
@@ -60,5 +56,5 @@ type ChartDonutWrapperProps = {
    */
   centerText?: string;
   children?: React.ReactNode;
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BoxProps;
 export type { ChartDonutWrapperProps, CellProps, ChartDonutProps };
