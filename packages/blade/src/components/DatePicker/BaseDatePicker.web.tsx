@@ -497,6 +497,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                           const presetValue = preset?.(currentDate);
                           setControlledValue(presetValue);
                           setSelectedPreset(presetValue);
+                          handleApply();
                         },
                         onOpenCalendar: () => {
                           controllableSetIsOpen(() => true);
