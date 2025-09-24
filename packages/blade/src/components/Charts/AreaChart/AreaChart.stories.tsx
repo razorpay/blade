@@ -252,6 +252,14 @@ export const StackedAreaChart: StoryFn<typeof ChartArea> = ({
           color="chart.background.categorical.azure.moderate"
           {...args}
         />
+        <ChartArea
+          dataKey={dataKey}
+          name={name}
+          type="monotone"
+          stackId="1"
+          color="chart.background.categorical.crimson.moderate"
+          {...args}
+        />
       </ChartAreaWrapper>
     </Box>
   );
