@@ -7,16 +7,18 @@ import {
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
 import type { ChartDonutWrapperProps, CellProps, ChartDonutProps } from './types';
-import { RADIUS_MAPPING, START_AND_END_ANGLES } from './tokens';
+import { RADIUS_MAPPING, START_AND_END_ANGLES, componentId } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 // Cell component - resolves Blade color tokens to actual colors
-export const Cell: React.FC<
+const _Cell: React.FC<
   CellProps & {
     _isHovered?: boolean;
     _isOtherHovered?: boolean;
@@ -30,6 +32,10 @@ export const Cell: React.FC<
   const opacity = _isHovered ? 1 : _isOtherHovered ? 0.8 : 1;
   return <RechartsCell {...rest} fill={resolvedFill} opacity={opacity} />;
 };
+
+const Cell = assignWithoutSideEffects(_Cell, {
+  componentId: componentId.cell,
+});
 
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
@@ -89,16 +95,20 @@ const ChartDonut: React.FC<ChartDonutProps> = ({
 
   const modifiedChildren = useMemo(() => {
     if (Array.isArray(children)) {
-      return children.map((child, index) =>
-        React.cloneElement(child, {
-          color: child.props.color,
-          _colorTheme: colorTheme,
-          _index: index,
-          key: index,
-          isHovered: hoveredIndex === index,
-          isOtherHovered: hoveredIndex !== null && hoveredIndex !== index,
-        }),
-      );
+      return children.map((child, index) => {
+        if (getComponentId(child) === componentId.cell) {
+          return React.cloneElement(child, {
+            color: child.props.color,
+            _colorTheme: colorTheme,
+            _index: index,
+            key: index,
+            isHovered: hoveredIndex === index,
+            isOtherHovered: hoveredIndex !== null && hoveredIndex !== index,
+          });
+        } else {
+          return child;
+        }
+      });
     }
     return data?.map((_, index) =>
       React.createElement(RechartsCell, {
@@ -107,7 +117,7 @@ const ChartDonut: React.FC<ChartDonutProps> = ({
         opacity: hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1,
       }),
     );
-  }, [children, data, themeColors, hoveredIndex]);
+  }, [children, data, colorTheme, hoveredIndex, themeColors]);
 
   return (
     <RechartsPie
@@ -132,4 +142,4 @@ const ChartDonut: React.FC<ChartDonutProps> = ({
   );
 };
 
-export { ChartDonut, ChartDonutWrapper };
+export { ChartDonut, ChartDonutWrapper, Cell };

@@ -11,6 +11,7 @@ const START_AND_END_ANGLES = {
 
 const componentId = {
   pieChart: 'pieChart',
+  cell: 'cell',
 };
 
 export { RADIUS_MAPPING, componentId, START_AND_END_ANGLES };
