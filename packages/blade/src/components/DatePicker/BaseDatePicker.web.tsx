@@ -425,6 +425,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     }
   }, [i18nState?.locale]);
 
+  console.log('Basedatepicker oldValue', oldValue);
+  console.log('Basedatepicker controlledValue', controlledValue);
+  console.log('Basedatepicker selectedPreset', selectedPreset);
+  console.log('Basedatepicker effectiveSelectionType', effectiveSelectionType);
+  console.log('Basedatepicker isSingle', isSingle);
+  console.log('Basedatepicker selectionType', selectionType);
+  console.log('Basedatepicker presets', presets);
+  console.log('Basedatepicker isMobile', isMobile);
   return (
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>

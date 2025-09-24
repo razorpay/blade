@@ -165,6 +165,15 @@ const _DateInput = (
     [applyDateValue, isRange],
   );
 
+  console.log('DateInput inputValue', inputValue);
+  console.log('DateInput isRange', isRange);
+  console.log('DateInput format', format);
+  console.log('DateInput finalInputFormat', finalInputFormat(inputValue[0], inputValue[1], format));
+  console.log(
+    'DateInput getTextInputFormat',
+    getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true),
+  );
+
   return (
     <TextInput
       {...textInputProps}
