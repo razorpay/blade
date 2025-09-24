@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.56.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade): add BarChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-barchart--docs)
+
 ## 12.55.1
 
 ### Patch Changes
