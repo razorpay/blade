@@ -19,13 +19,15 @@ const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme,
 });
 
 const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement => {
-  const { close, isOpen } = useBottomSheetContext();
+  const { close, isOpen, isDismissible } = useBottomSheetContext();
 
   return (
     <StyledBottomSheetBackdrop
       {...metaAttribute({ testID: 'bottomsheet-backdrop' })}
       onClick={() => {
-        close();
+        if (isDismissible) {
+          close?.();
+        }
       }}
       isOpen={isOpen}
       opacity={isOpen ? 1 : 0}

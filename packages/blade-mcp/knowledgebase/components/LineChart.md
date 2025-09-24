@@ -77,7 +77,7 @@ type ChartLineWrapperProps = {
    */
   data: data[];
   children: React.ReactNode;
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BoxProps;
 
 type ChartReferenceLineProps = {
   /**

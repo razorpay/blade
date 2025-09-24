@@ -4,7 +4,7 @@ Modal
 
 ## Description
 
-Modal is a dialog component that appears in front of the app content to provide critical information or request user input. It's designed to focus user attention, disabling all other interactions until explicitly dismissed. Modals are accessible, can be dismissed via escape key, clicking outside, or a close button, and come in three sizes: small, medium, and large.
+Modal is a dialog component that appears in front of the app content to provide critical information or request user input. It's designed to focus user attention, disabling all other interactions until explicitly dismissed. Modals are accessible, can be dismissed via escape key, clicking outside, or a close button (when dismissible), and come in three sizes: small, medium, and large.
 
 ## TypeScript Types
 
@@ -27,6 +27,13 @@ type ModalProps = {
    *  Callback function when user clicks on close button or outside the modal or on pressing escape key.
    */
   onDismiss: () => void;
+  /**
+   * Whether the modal can be dismissed by clicking outside or pressing escape key
+   * @default true
+   * @note 
+   * If isDismissible is false, the modal will not be dismissed when the user clicks outside the modal or presses the escape key and the close button will not be shown. you need to handle the closing of the modal from your own code. also onDismiss will not be called.
+   */
+  isDismissible?: boolean;
   /**
    *  Ref to the element to be focused on opening the modal.
    */

@@ -63,6 +63,11 @@ type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
   'gray'
 >}.${keyof ChartSequentialEmphasis}`;
 
+type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
+  ChartColorCategories,
+  'gray'
+>}.${keyof ChartSequentialEmphasis}`;
+
 export type {
   ChartReferenceLineProps,
   ChartXAxisProps,

@@ -696,6 +696,14 @@ const componentData: ComponentStatusDataType = [
       'A Line Chart component built on top of Recharts with Blade design system styling.',
     platform: 'web',
   },
+  {
+    name: 'TimePicker',
+    status: 'in-development',
+    storybookLink: 'Components/TimePicker',
+    description:
+      'TimePicker component allows users to select a specific time from a customizable time interface. It supports both 12-hour and 24-hour formats, provides an intuitive picker interface, and automatically adapts to mobile devices with a BottomSheet experience.',
+    platform: 'web',
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType };
