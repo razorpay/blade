@@ -71,7 +71,7 @@ type ChartBarWrapperProps = {
    * Chart data to be rendered
    */
   data: data[];
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BoxProps;
 
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;

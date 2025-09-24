@@ -4,11 +4,7 @@ import type {
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
 import type { colorTheme } from '../utils';
-import type {
-  BaseBoxProps,
-  FlexboxProps,
-  GridProps,
-} from '~components/Box/BaseBox/types/propsTypes';
+import type { BoxProps } from '~components/Box';
 
 type ChartBarProps = {
   /**
@@ -64,7 +60,7 @@ type ChartBarWrapperProps = {
    * Chart data to be rendered
    */
   data: data[];
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BoxProps;
 
 interface BarChartContextType {
   layout?: 'horizontal' | 'vertical';
