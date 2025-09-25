@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { PulseAnimation } from './PulseAnimation';
 import type { SkeletonProps } from './types';
@@ -66,6 +67,8 @@ const _Skeleton = (
   );
 };
 
-const Skeleton = React.forwardRef(_Skeleton);
+const Skeleton: ForwardRefExoticComponent<
+  SkeletonProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_Skeleton);
 
 export { Skeleton };

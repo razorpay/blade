@@ -96,6 +96,8 @@ const _CardRoot: React.ForwardRefRenderFunction<BladeElementRef, CardRootProps> 
   );
 };
 
-const CardRoot = React.forwardRef(_CardRoot);
+const CardRoot: React.ForwardRefExoticComponent<
+  CardRootProps & React.RefAttributes<BladeElementRef>
+> = React.forwardRef<BladeElementRef, CardRootProps>(_CardRoot);
 
 export { CardRoot };

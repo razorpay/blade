@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { BoxProps } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
@@ -66,7 +67,9 @@ const _TopNav = (
   );
 };
 
-const TopNav = React.forwardRef(_TopNav);
+const TopNav: ForwardRefExoticComponent<
+  TopNavProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_TopNav);
 
 const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (

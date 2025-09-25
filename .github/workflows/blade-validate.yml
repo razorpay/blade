@@ -22,17 +22,21 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.12.1
-      - name: Pre-Generate Documentation Lock File
-        run: yarn generate-docs-lockfile
+      - name: Install node-canvas dependencies
+        run: sudo apt-get update && sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+      - name: Pre-Generate Documentation Lock File
+        run: pnpm generate-docs-lockfile
+      # check version of npm run all which is installed
+      - name: Check version of npm-run-all using pnpm
+        run: pnpm list npm-run-all
       - name: Build Blade
-        run: yarn build
-        working-directory: packages/blade
+        run:  pnpm --filter @razorpay/blade build
       - name: Lint Source Code
-        run: yarn lint
+        run: pnpm lint
       - name: Run TypeScript Checks
-        run: yarn typecheck
+        run: pnpm typecheck
         working-directory: packages/blade
 
   test:
@@ -53,7 +57,7 @@ jobs:
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run Unit Tests
-        run: yarn test
+        run: pnpm test
         working-directory: packages/blade
         env:
           SHARD: ${{ matrix.shard }}/${{ matrix.totalShards }}
@@ -110,10 +114,10 @@ jobs:
           ls -la .nyc_output/
           
           # Generate merged report and capture text-summary
-          yarn --silent nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
+          pnpm --silent nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
           
           # Generate full coverage report
-          yarn --silent nyc report --reporter=json --reporter=text > coverage-full.txt
+          pnpm --silent nyc report --reporter=json --reporter=text > coverage-full.txt
           
           # Ensure output directory exists
           mkdir -p packages/blade/coverage

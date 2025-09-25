@@ -24,7 +24,9 @@ const StyledTooltipContentWrapper = styled(BaseBox)<{ collapse?: boolean; styles
   },
 );
 
-const TooltipContentWrapper = React.forwardRef<View, TooltipContentWrapperProps>(
+const TooltipContentWrapper: React.ForwardRefExoticComponent<
+  TooltipContentWrapperProps & React.RefAttributes<View>
+> = React.forwardRef<View, TooltipContentWrapperProps>(
   ({ children, styles, side, isVisible, ...props }, ref) => {
     const { theme } = useTheme();
 

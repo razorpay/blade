@@ -1,9 +1,13 @@
-import type { CSSObject } from 'styled-components';
+import type { CSSObject, DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { LinkOverlayProps } from './types';
 
 // https://www.sarasoueidan.com/blog/nested-links/
-const LinkOverlay = styled.a<LinkOverlayProps>(
+const LinkOverlay: StyledComponent<
+  'a',
+  DefaultTheme,
+  LinkOverlayProps
+> = styled.a<LinkOverlayProps>(
   (): CSSObject => {
     return {
       // Need this to reset the button styles

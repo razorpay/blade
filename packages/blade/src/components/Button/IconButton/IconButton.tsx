@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/display-name */
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import StyledIconButton from './StyledIconButton';
@@ -116,7 +117,9 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
   );
 };
 
-const IconButton = assignWithoutSideEffects(React.forwardRef(_IconButton), {
+const IconButton: ForwardRefExoticComponent<
+  IconButtonProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_IconButton), {
   componentId: 'IconButton',
 });
 

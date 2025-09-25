@@ -1,5 +1,5 @@
+import type { ForwardRefExoticComponent, RefAttributes, ReactElement } from 'react';
 import React from 'react';
-import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
@@ -104,5 +104,7 @@ const _Display = (
   );
 };
 
-const Display = React.forwardRef(_Display);
+const Display: ForwardRefExoticComponent<
+  DisplayProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_Display);
 export { Display };
