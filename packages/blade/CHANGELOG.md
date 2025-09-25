@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.56.1
+
+### Patch Changes
+
+- 950c4881f: fix(blade): resolve stale values and button default behaviour in preset dropdown of datepicker
+
 ## 12.56.0
 
 ### Minor Changes
