@@ -7,7 +7,12 @@ import {
   Label,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import type { ChartDonutWrapperProps, CellProps, ChartDonutProps, ChartRadius } from './types';
+import type {
+  ChartDonutWrapperProps,
+  ChartDonutCellProps,
+  ChartDonutProps,
+  ChartRadius,
+} from './types';
 import {
   RADIUS_MAPPING,
   START_AND_END_ANGLES,
@@ -24,23 +29,12 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 
-// Cell component - resolves Blade color tokens to actual colors
-const _Cell: React.FC<
-  CellProps & {
-    _isHovered?: boolean;
-    _isOtherHovered?: boolean;
-  }
-> = ({ color, _isHovered = false, _isOtherHovered = false, ...rest }) => {
-  const { theme } = useTheme();
-
-  const resolvedFill = color ? getIn(theme.colors, color) : undefined;
-
-  // Calculate opacity based on hover state
-  const opacity = _isHovered ? 1 : _isOtherHovered ? 0.8 : 1;
-  return <RechartsCell {...rest} fill={resolvedFill} opacity={opacity} />;
+// Cell component
+const _Cell: React.FC<ChartDonutCellProps> = ({ ...rest }) => {
+  return <RechartsCell {...rest} />;
 };
 
-const Cell = assignWithoutSideEffects(_Cell, {
+const ChartDonutCell = assignWithoutSideEffects(_Cell, {
   componentId: componentId.cell,
 });
 
@@ -140,18 +134,27 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
   const radiusConfig = RADIUS_MAPPING[radius];
   const themeColors = useChartsColorTheme({ colorTheme: colorTheme ?? 'categorical' });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const { theme } = useTheme();
 
   const modifiedChildren = useMemo(() => {
     if (Array.isArray(children)) {
       return children.map((child, index) => {
         if (getComponentId(child) === componentId.cell) {
-          return React.cloneElement(child, {
-            color: child.props.color,
-            _colorTheme: colorTheme,
-            _index: index,
+          /* 
+           Why we are not using React.cloneElement ?  just use ChartDonutCell no?
+           cell can never be  custom component in recharts. (as of v3.1.2)
+           (https://github.com/recharts/recharts/issues/2788)
+           https://github.com/recharts/recharts/discussions/5474
+
+           So we have placeholder component ChartDonutCell. which we replaced by RechartsCell internall so dev can see hover effects
+           working out of box. 
+           */
+          return React.createElement(RechartsCell, {
+            ...child.props,
+            fill: getIn(theme.colors, child.props.color) || themeColors[index],
             key: index,
-            isHovered: hoveredIndex === index,
-            isOtherHovered: hoveredIndex !== null && hoveredIndex !== index,
+            color: themeColors[index],
+            opacity: hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1,
           });
         } else {
           return child;
@@ -165,6 +168,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         opacity: hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1,
       }),
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children, data, colorTheme, hoveredIndex, themeColors]);
 
   return (
@@ -194,4 +198,4 @@ const ChartDonut = assignWithoutSideEffects(_ChartDonut, {
   componentId: componentId.chartDonut,
 });
 
-export { ChartDonut, ChartDonutWrapper, Cell };
+export { ChartDonut, ChartDonutWrapper, ChartDonutCell };

@@ -1,4 +1,4 @@
-import type { PieProps as RechartsPieProps } from 'recharts';
+import type { PieProps as RechartsPieProps, CellProps } from 'recharts';
 import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
@@ -49,10 +49,6 @@ type ChartDonutProps = {
   type?: 'circle' | 'semicircle';
 };
 
-type CellProps = {
-  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
-};
-
 type ChartDonutWrapperProps = {
   /**
    *  text to be displayed at center of donut chart
@@ -66,4 +62,8 @@ type ChartDonutWrapperProps = {
   children?: React.ReactNode;
 } & BoxProps;
 
-export type { ChartDonutWrapperProps, CellProps, ChartDonutProps, ChartRadius };
+type ChartDonutCellProps = CellProps & {
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+};
+
+export type { ChartDonutWrapperProps, ChartDonutCellProps, ChartDonutProps, ChartRadius };

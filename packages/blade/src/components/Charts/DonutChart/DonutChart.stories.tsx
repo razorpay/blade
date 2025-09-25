@@ -1,6 +1,12 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { ChartDonut, ChartDonutWrapper, ChartTooltip, ChartLegend } from '~components/Charts';
+import {
+  ChartDonut,
+  ChartDonutWrapper,
+  ChartTooltip,
+  ChartLegend,
+  ChartDonutCell,
+} from '~components/Charts';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -102,7 +108,7 @@ export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
       <ChartDonutWrapper label="Total" text="1300" width="500px" height="500px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} radius="large" />
+        <ChartDonut dataKey="value" nameKey="name" data={chartData} radius="medium" />
         <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>
@@ -215,6 +221,29 @@ SemiCircleDonutChartWithCenterText.parameters = {
   controls: { disable: true },
 };
 
+// 9. Donut Chart with Custom Colors
+export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = () => {
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
+      <ChartDonutWrapper text="1300" width="500px" height="500px">
+        <ChartDonut dataKey="value" nameKey="name" data={chartData}>
+          <ChartDonutCell color="chart.background.sequential.azure.600" />
+          <ChartDonutCell color="chart.background.sequential.azure.500" />
+          <ChartDonutCell color="chart.background.sequential.azure.400" />
+          <ChartDonutCell color="chart.background.sequential.azure.300" />
+          <ChartDonutCell color="chart.background.sequential.azure.200" />
+        </ChartDonut>
+        <ChartLegend />
+        <ChartTooltip />
+      </ChartDonutWrapper>
+    </Box>
+  );
+};
+
+DonutChartWithCustomColor.parameters = {
+  controls: { disable: true },
+};
+
 BasicDonutChart.storyName = 'Basic Donut Chart';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
 SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';
@@ -223,3 +252,4 @@ ChartWithToolTip.storyName = 'Custom ToolTip Donut Chart';
 DonutChartWithActiveShape.storyName = 'Donut Chart with Color theme';
 SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
 SemiCircleDonutChartWithCenterText.storyName = 'SemiCircle Donut Chart with Label and Text';
+DonutChartWithCustomColor.storyName = 'Donut Chart with custom color';

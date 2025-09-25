@@ -20,9 +20,9 @@ const CENTER_TEXT_POSITION = {
 };
 
 const LABEL_DISTANCE_FROM_CENTER = {
-  small: { normal: 0, withText: -12, withLabel: 4 },
-  medium: { normal: 0, withText: -14, withLabel: 6 },
-  large: { normal: 0, withText: -16, withLabel: 8 },
+  small: { normal: 0, withText: -14, withLabel: 6 },
+  medium: { normal: 0, withText: -16, withLabel: 8 },
+  large: { normal: 0, withText: -18, withLabel: 10 },
 };
 
 const LABEL_FONT_STYLES = {

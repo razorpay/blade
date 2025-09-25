@@ -1026,17 +1026,23 @@ exports[`<DonutChart /> should render DonutChart with center text 1`] = `
                 </g>
               </g>
               <text
-                dominant-baseline="middle"
+                class="recharts-text recharts-label"
                 fill="hsla(212, 39%, 16%, 1)"
-                font-family=""Inter", "Inter Fallback Arial", Arial"
-                font-size="16"
-                font-weight="500"
+                font-family=""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial"
+                font-size="32"
+                font-weight="700"
                 letter-spacing="0"
+                offset="5"
                 text-anchor="middle"
-                x="50%"
-                y="50%"
+                x="200"
+                y="200"
               >
-                Total: 1000
+                <tspan
+                  dy="0.355em"
+                  x="200"
+                >
+                  Total: 1000
+                </tspan>
               </text>
             </svg>
           </div>

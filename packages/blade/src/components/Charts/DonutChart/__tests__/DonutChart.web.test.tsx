@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChartDonutWrapper, ChartDonut, Cell } from '../DonutChart';
+import { ChartDonutWrapper, ChartDonut, ChartDonutCell } from '../DonutChart';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Box } from '~components/Box/Box';
@@ -46,7 +46,7 @@ describe('<DonutChart />', () => {
   it('should render DonutChart with center text', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <ChartDonutWrapper centerText="Total: 1000">
+        <ChartDonutWrapper text="Total: 1000">
           <ChartDonut data={mockData} dataKey="value" nameKey="name" />
         </ChartDonutWrapper>
       </Box>,
@@ -89,8 +89,8 @@ describe('<DonutChart />', () => {
       <Box width="500px" height="500px">
         <ChartDonutWrapper>
           <ChartDonut data={mockData} dataKey="value" nameKey="name">
-            <Cell color="chart.background.categorical.gray.moderate" />
-            <Cell color="chart.background.categorical.cider.moderate" />
+            <ChartDonutCell color="chart.background.categorical.gray.moderate" />
+            <ChartDonutCell color="chart.background.categorical.cider.moderate" />
           </ChartDonut>
         </ChartDonutWrapper>
       </Box>,
