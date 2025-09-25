@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ChartDonutWrapperProps, ChartDonutProps } from './types';
+import type { ChartDonutWrapperProps, ChartDonutProps, ChartDonutCellProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
 
@@ -21,5 +21,14 @@ const ChartDonut = (_prop: ChartDonutProps): React.ReactElement => {
   return <Text>ChartDonut is not available for Native mobile apps.</Text>;
 };
 
-export type { ChartDonutWrapperProps, ChartDonutProps };
-export { ChartDonutWrapper, ChartDonut };
+const ChartDonutCell = (_prop: ChartDonutCellProps): React.ReactElement => {
+  throwBladeError({
+    message: 'ChartDonutCell is not yet implemented for native',
+    moduleName: 'ChartDonutCell',
+  });
+
+  return <Text>ChartDonut is not available for Native mobile apps.</Text>;
+};
+
+export type { ChartDonutWrapperProps, ChartDonutProps, ChartDonutCellProps };
+export { ChartDonutWrapper, ChartDonut, ChartDonutCell };
