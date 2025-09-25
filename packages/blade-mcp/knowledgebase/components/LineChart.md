@@ -124,7 +124,7 @@ type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
-type colorTheme = 'default';
+type colorTheme = 'categorical';
 ```
 
 ## Examples
