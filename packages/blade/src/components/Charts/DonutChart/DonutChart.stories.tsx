@@ -50,7 +50,7 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Charts/ChartDonut',
+  title: 'Components/Charts/DonutChart',
   component: ChartDonut,
   tags: ['autodocs'],
   argTypes: {
