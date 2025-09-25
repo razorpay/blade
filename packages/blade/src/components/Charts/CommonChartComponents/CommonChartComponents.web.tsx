@@ -23,11 +23,13 @@ import {
   X_AXIS_TEXT_BASELINE,
   Y_OFFSET,
   X_OFFSET,
+  componentId,
 } from './tokens';
 import { calculateTextWidth } from './utils';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -210,7 +212,7 @@ const CustomSquareLegend = (props: {
   );
 };
 
-const ChartLegend: React.FC<ChartLegendProps> = (props) => {
+const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -227,6 +229,8 @@ const ChartLegend: React.FC<ChartLegendProps> = (props) => {
     />
   );
 };
+
+const ChartLegend = assignWithoutSideEffects(_ChartLegend, { componentId: componentId.legend });
 
 const CustomReferenceLabel = ({
   viewBox,

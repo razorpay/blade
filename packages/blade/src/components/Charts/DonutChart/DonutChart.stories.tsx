@@ -103,6 +103,7 @@ export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
       <ChartDonutWrapper centerText="₹1.05L" width="500px" height="500px">
         <ChartDonut dataKey="value" nameKey="name" data={chartData} />
+        <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>
     </Box>

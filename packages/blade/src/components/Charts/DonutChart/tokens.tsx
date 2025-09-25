@@ -14,4 +14,9 @@ const componentId = {
   cell: 'cell',
 };
 
-export { RADIUS_MAPPING, componentId, START_AND_END_ANGLES };
+const CENTER_TEXT_POSITION = {
+  withLegend: { x: '50%', y: '48%' },
+  withoutLegend: { x: '50%', y: '50%' },
+};
+
+export { RADIUS_MAPPING, componentId, START_AND_END_ANGLES, CENTER_TEXT_POSITION };

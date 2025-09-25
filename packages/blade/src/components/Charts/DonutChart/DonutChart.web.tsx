@@ -7,7 +7,7 @@ import {
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
 import type { ChartDonutWrapperProps, CellProps, ChartDonutProps } from './types';
-import { RADIUS_MAPPING, START_AND_END_ANGLES, componentId } from './tokens';
+import { RADIUS_MAPPING, START_AND_END_ANGLES, componentId, CENTER_TEXT_POSITION } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -16,6 +16,7 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { componentId as commonChartComponentsId } from '~components/Charts/CommonChartComponents/tokens';
 
 // Cell component - resolves Blade color tokens to actual colors
 const _Cell: React.FC<
@@ -45,6 +46,11 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
 }) => {
   const { theme } = useTheme();
 
+  const isLegendPresent = React.Children.toArray(children).some(
+    (child) => getComponentId(child as React.ReactElement) === commonChartComponentsId.legend,
+  );
+  console.log('isLegendPresent', isLegendPresent);
+
   return (
     <BaseBox
       {...metaAttribute({ name: 'donut-chart', testID })}
@@ -58,8 +64,16 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           {children}
           {centerText && (
             <text
-              x="50%"
-              y="50%"
+              x={
+                isLegendPresent
+                  ? CENTER_TEXT_POSITION.withLegend.x
+                  : CENTER_TEXT_POSITION.withoutLegend.x
+              }
+              y={
+                isLegendPresent
+                  ? CENTER_TEXT_POSITION.withLegend.y
+                  : CENTER_TEXT_POSITION.withoutLegend.y
+              }
               textAnchor="middle"
               dominantBaseline="middle"
               fill={theme.colors.surface.text.gray.normal}
