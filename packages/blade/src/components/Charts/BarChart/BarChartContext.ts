@@ -4,7 +4,7 @@ import type { BarChartContextType } from './types';
 export const BarChartContext = createContext<BarChartContextType>({
   layout: 'horizontal',
   activeIndex: undefined,
-  colorTheme: 'default',
+  colorTheme: 'categorical',
   totalBars: 0,
 });
 

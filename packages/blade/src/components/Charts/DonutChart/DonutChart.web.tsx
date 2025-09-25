@@ -47,7 +47,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
 
   return (
     <BaseBox
-      {...metaAttribute({ name: 'line-chart', testID })}
+      {...metaAttribute({ name: 'donut-chart', testID })}
       {...makeAnalyticsAttribute(restProps)}
       width="100%"
       height="100%"
@@ -85,12 +85,12 @@ const ChartDonut: React.FC<ChartDonutProps> = ({
   nameKey,
   children,
   data,
-  colorTheme = 'default',
+  colorTheme = 'categorical',
   type = 'circle',
   ...rest
 }) => {
   const radiusConfig = RADIUS_MAPPING[radius];
-  const themeColors = useChartsColorTheme({ colorTheme: colorTheme ?? 'default' });
+  const themeColors = useChartsColorTheme({ colorTheme: colorTheme ?? 'categorical' });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const modifiedChildren = useMemo(() => {

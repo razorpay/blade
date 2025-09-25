@@ -57,7 +57,8 @@ type data = {
 type ChartAreaWrapperProps = {
   children?: React.ReactNode;
   /**
-   * The color theme of the line chart.
+   * The color theme of the chart.
+   * @default 'categorical
    */
   colorTheme?: colorTheme;
   /**

@@ -62,7 +62,8 @@ type data = {
 // TypeScript prop types
 type ChartLineWrapperProps = {
   /**
-   * The color theme of the line chart.
+   * The color theme of the chart.
+   * @default 'categorical
    */
   colorTheme?: colorTheme;
   /**

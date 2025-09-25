@@ -394,7 +394,7 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof ChartArea> = ({
 }) => {
   return (
     <Box width="100%" height="400px">
-      <ChartAreaWrapper data={chartData} colorTheme="default">
+      <ChartAreaWrapper data={chartData} colorTheme="categorical">
         <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />

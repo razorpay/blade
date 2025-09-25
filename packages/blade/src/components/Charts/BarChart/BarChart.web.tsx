@@ -113,7 +113,7 @@ const ChartBar = assignWithoutSideEffects(_ChartBar, {
 // BarChart wrapper with default margin, auto-color assignment, and max bars guard
 const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
-  colorTheme = 'default',
+  colorTheme = 'categorical',
   layout = 'horizontal',
   testID,
   data = [],

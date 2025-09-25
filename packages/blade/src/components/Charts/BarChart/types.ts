@@ -49,7 +49,8 @@ type data = {
 type ChartBarWrapperProps = {
   children?: React.ReactNode;
   /**
-   * The color theme of the bar chart.
+   * The color theme of the chart.
+   * @default 'categorical
    */
   colorTheme?: colorTheme;
   /**
