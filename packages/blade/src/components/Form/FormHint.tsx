@@ -25,21 +25,22 @@ const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): Rea
   return (
     <BaseBox marginTop={hintMarginTop[size]} id={id}>
       <FormHintWrapper>
-        {Icon ? (
-          // offset block element 2px down to align with text
-          <Box flexShrink={0} marginTop="spacing.1">
-            <Icon />
-          </Box>
-        ) : null}
-        <Text
-          as={isReactNative ? undefined : 'span'}
-          color={color}
-          size={hintTextSize[size]}
-          variant="caption"
-          wordBreak="break-word"
-        >
-          {children}
-        </Text>
+        <BaseBox display="flex" alignItems="center" gap="4px">
+          {Icon && (
+            <Box flexShrink={0}>
+              <Icon />
+            </Box>
+          )}
+          <Text
+            as={isReactNative ? undefined : 'span'}
+            color={color}
+            size={hintTextSize[size]}
+            variant="caption"
+            wordBreak="break-word"
+          >
+            {children}
+          </Text>
+        </BaseBox>
       </FormHintWrapper>
     </BaseBox>
   );
