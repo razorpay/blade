@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { ChartDonut, ChartDonutWrapper, ChartTooltip } from '~components/Charts';
+import { ChartDonut, ChartDonutWrapper, ChartTooltip, ChartLegend } from '~components/Charts';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -90,6 +90,7 @@ export const BasicDonutChart: StoryFn<typeof ChartDonut> = ({ ...args }) => {
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
       <ChartDonutWrapper width="500px" height="500px">
         <ChartDonut {...args} dataKey="value" nameKey="name" data={chartData} />
+        <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>
     </Box>
@@ -135,6 +136,7 @@ export const ExtraLargeRadiusDonutChart: StoryFn<typeof ChartDonut> = () => {
       <ChartDonutWrapper width="500px" height="500px">
         <ChartDonut dataKey="value" nameKey="name" data={chartData} radius="large" />
         <ChartTooltip />
+        <ChartLegend />
       </ChartDonutWrapper>
     </Box>
   );
@@ -151,6 +153,7 @@ export const ChartWithToolTip: StoryFn<typeof ChartDonut> = () => {
       <ChartDonutWrapper width="500px" height="500px">
         <ChartDonut dataKey="value" nameKey="name" data={chartData} />
         <ChartTooltip />
+        <ChartLegend />
       </ChartDonutWrapper>
     </Box>
   );
@@ -165,8 +168,9 @@ export const DonutChartWithActiveShape: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
       <ChartDonutWrapper width="500px" height="500px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} />
+        <ChartDonut dataKey="value" nameKey="name" data={chartData} colorTheme="categorical" />
         <ChartTooltip />
+        <ChartLegend />
       </ChartDonutWrapper>
     </Box>
   );
@@ -183,6 +187,7 @@ export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = () => {
       <ChartDonutWrapper width="500px" height="500px">
         <ChartDonut dataKey="value" nameKey="name" data={chartData} type="semicircle" />
         <ChartTooltip />
+        <ChartLegend />
       </ChartDonutWrapper>
     </Box>
   );
