@@ -1,24 +1,23 @@
-## Component Name
-
-DonutChart
+# DonutChart
 
 ## Description
 
-DonutChart is a data visualization component built on top of Recharts with Blade design system styling that renders donut charts for displaying categorical data as proportional segments. It consists of ChartDonutWrapper as the main container and ChartDonut components for the data visualization, along with supporting chart components like tooltips. The component supports both full circle and semicircle donut charts, customizable radius sizes, center text display, color themes, and individual cell customization while maintaining accessibility and responsive design principles.
+DonutChart is a circular data visualization component built on top of Recharts with Blade design system styling. It displays data as segments of a donut-shaped chart with customizable radius, colors, and center text. The component supports both full circle and semicircle variants, making it ideal for displaying proportional data, percentages, and categorical information in an intuitive visual format.
 
 ## Important Constraints
 
-- `ChartDonutWrapper` component only accepts `ChartDonut`, `ChartTooltip`, and `Cell` components as children
-- `dataKey` and `nameKey` props are required for `ChartDonut` component and must match keys in the data array
-- `data` prop is required for `ChartDonutWrapper` and must be an array of objects
-- `color` prop only accepts chart categorical or sequential color tokens in the format `chart.background.categorical.{colorName}.{emphasis}` or `chart.background.sequential.{colorName}.{number}`
-- Currently only supports `colorTheme="default"` - other color themes will fallback to default
+- `ChartDonut` component must be wrapped inside `ChartDonutWrapper` component
+- `data` prop is required and must be an array of objects with consistent structure
+- `dataKey` and `nameKey` props are required to specify which properties to use for values and labels
+- `ChartDonutCell` components should be used to customize individual segment colors
 - `radius` prop only accepts 'small', 'medium', or 'large' values
 - `type` prop only accepts 'circle' or 'semicircle' values
+- `colorTheme` prop currently only supports 'categorical' value
+- Center text positioning is automatically calculated based on radius size and presence of legend
 
 ## TypeScript Types
 
-The following types represent the props that the DonutChart component and its subcomponents accept. These types allow you to properly configure the component according to your needs.
+These are the props that the DonutChart component and its subcomponents accept:
 
 ```typescript
 type ChartDonutProps = {
@@ -38,7 +37,7 @@ type ChartDonutProps = {
   /**
    * The radius of the Donut chart.
    */
-  radius?: 'small' | 'medium' | 'large';
+  radius?: ChartRadius;
   /**
    * The children of the Donut chart.
    */
@@ -48,7 +47,8 @@ type ChartDonutProps = {
    */
   data: data[];
   /**
-   * The color theme of the Donut chart.
+   * The color theme of the chart.
+   * @default 'categorical'
    */
   colorTheme?: colorTheme;
   /**
@@ -57,21 +57,30 @@ type ChartDonutProps = {
   type?: 'circle' | 'semicircle';
 };
 
-type CellProps = {
+type ChartDonutWrapperProps = {
+  /**
+   *  text to be displayed at center of donut chart
+   */
+  text?: string;
+  /**
+   *   label to be displayed at center of donut chart
+   */
+  label?: string;
+
+  children?: React.ReactNode;
+} & BoxProps;
+
+type ChartDonutCellProps = CellProps & {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
 };
 
-type ChartDonutWrapperProps = {
-  /**
-   *  Center text of Donut chart
-   */
-  centerText?: string;
-  children?: React.ReactNode;
-} & BaseBox;
+type ChartRadius = 'small' | 'medium' | 'large';
 
 type data = {
   [key: string]: unknown;
 };
+
+type colorTheme = 'categorical';
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
@@ -79,42 +88,59 @@ type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
   ChartColorCategories,
   'gray'
 >}.${keyof ChartSequentialEmphasis}`;
-
-type colorTheme = 'default';
 ```
 
-## Examples
+## Example
 
-### Basic Donut Chart with Center Text
+### Basic Donut Chart with Custom Colors and Center Text
 
-A comprehensive example showing a donut chart with center text, different radius sizes, and custom colors for individual segments.
-
-```typescript
+```tsx
 import React from 'react';
-import { ChartDonut, ChartDonutWrapper, ChartTooltip, Cell } from '@razorpay/blade/components';
+import { 
+  ChartDonut,
+  ChartDonutWrapper,
+  ChartDonutCell,
+  ChartTooltip,
+  ChartLegend,
+} from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
 
-function BasicDonutChart() {
-  const data = [
-    { name: 'Desktop', value: 400, color: 'chart.background.categorical.azure.moderate' },
-    { name: 'Mobile', value: 300, color: 'chart.background.categorical.emerald.moderate' },
-    { name: 'Tablet', value: 200, color: 'chart.background.categorical.orchid.moderate' },
-    { name: 'Other', value: 100, color: 'chart.background.categorical.crimson.moderate' },
+function DonutChartExample() {
+  const chartData = [
+    { name: 'Desktop', value: 400, percentage: 40 },
+    { name: 'Mobile', value: 300, percentage: 30 },
+    { name: 'Tablet', value: 200, percentage: 20 },
+    { name: 'Other', value: 100, percentage: 10 },
   ];
 
   return (
-    <Box width="100%" height="400px">
-      <ChartDonutWrapper centerText="Total: 1000">
-        <ChartDonut dataKey="value" nameKey="name" data={data} radius="medium" type="circle">
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} color={entry.color} />
-          ))}
+    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="400px">
+      <ChartDonutWrapper 
+        label="Total Users" 
+        text="1000" 
+        width="500px" 
+        height="400px"
+        testID="donut-chart-wrapper"
+      >
+        <ChartDonut 
+          dataKey="value" 
+          nameKey="name" 
+          data={chartData} 
+          radius="medium"
+          type="circle"
+          colorTheme="categorical"
+        >
+          <ChartDonutCell color="chart.background.categorical.azure.moderate" />
+          <ChartDonutCell color="chart.background.categorical.topaz.moderate" />
+          <ChartDonutCell color="chart.background.categorical.orchid.moderate" />
+          <ChartDonutCell color="chart.background.categorical.emerald.moderate" />
         </ChartDonut>
         <ChartTooltip />
+        <ChartLegend />
       </ChartDonutWrapper>
     </Box>
   );
 }
 
-export default BasicDonutChart;
+export default DonutChartExample;
 ```

@@ -40,7 +40,7 @@ type ChartDonutProps = {
   data: data[];
   /**
    * The color theme of the chart.
-   * @default 'categorical
+   * @default 'categorical'
    */
   colorTheme?: colorTheme;
   /**

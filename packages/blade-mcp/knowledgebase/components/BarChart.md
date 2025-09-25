@@ -78,7 +78,8 @@ type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCat
 
 type ChartSequentialColorToken = `chart.background.sequential.${Exclude<ChartColorCategories, 'gray'>}.${keyof ChartSequentialEmphasis}`;
 
-type colorTheme = 'default';
+type colorTheme = 'categorical';
+
 
 type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**

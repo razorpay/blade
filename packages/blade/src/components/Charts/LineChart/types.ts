@@ -63,7 +63,7 @@ type data = {
 type ChartLineWrapperProps = {
   /**
    * The color theme of the chart.
-   * @default 'categorical
+   * @default 'categorical'
    */
   colorTheme?: colorTheme;
   /**
