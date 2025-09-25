@@ -101,6 +101,7 @@ type CounterInputCommonProps = Pick<
   | 'onBlur'
   | 'isDisabled'
   | 'testID'
+  | 'isRequired'
   | keyof DataAnalyticsAttribute
 > & {
   /**
