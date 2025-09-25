@@ -428,7 +428,9 @@ export const Localization: StoryFn<typeof DatePickerComponent> = () => {
       </I18nProvider>
 
       <I18nProvider initData={{ locale: 'ms-MY' }}>
-        <DatePickerComponent marginTop="spacing.5" label={`initData={{ locale: 'ms-MY' }}`} />
+        <Box marginTop="spacing.5">
+          <DatePickerComponent label={`initData={{ locale: 'ms-MY' }}`} />
+        </Box>
       </I18nProvider>
     </Box>
   );
@@ -658,3 +660,103 @@ WithoutActionButtons.args = {
   selectionType: 'single',
   showFooterActions: false,
 };
+
+export const UncontrolledWithPresetsAndOnApply = (): React.ReactElement => {
+  const [appliedValue, setAppliedValue] = React.useState<DatesRangeValue | null>(null);
+
+  return (
+    <form>
+      <Box>
+        <Text marginBottom="spacing.4">
+          Uncontrolled DatePicker with presets and onApply callback. When you select a preset from
+          the dropdown, onApply should be called immediately (check console logs).
+        </Text>
+        <DatePickerComponent
+          label={{ start: 'Select a date range' }}
+          selectionType="range"
+          defaultValue={[null, null]}
+          onChange={(date) => {
+            console.log('onChange called:', date);
+          }}
+          onApply={(date) => {
+            console.log('onApply called with:', date);
+            setAppliedValue(date);
+          }}
+          presets={[
+            {
+              label: 'Past 7 days',
+              value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+            },
+            {
+              label: 'Past month',
+              value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+            },
+            {
+              label: 'Custom',
+              value: () => [null, null] as DatesRangeValue,
+            },
+          ]}
+        />
+        {appliedValue && (
+          <Text marginTop="spacing.4" color="feedback.text.positive.intense">
+            Last applied value: {appliedValue[0]?.toLocaleDateString()} -{' '}
+            {appliedValue[1]?.toLocaleDateString()}
+          </Text>
+        )}
+      </Box>
+    </form>
+  );
+};
+UncontrolledWithPresetsAndOnApply.storyName = 'Uncontrolled with Presets and onApply';
+
+export const ControlledWithPresetsAndOnApply = (): React.ReactElement => {
+  const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([null, null]);
+  const [appliedValue, setAppliedValue] = React.useState<DatesRangeValue | null>(null);
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.4">
+        Controlled DatePicker with presets and onApply callback. When you select a preset from the
+        dropdown, onApply should be called immediately (check console logs).
+      </Text>
+      <DatePickerComponent
+        label={{ start: 'Select a date range' }}
+        selectionType="range"
+        value={selectedDates}
+        onChange={(date) => {
+          console.log('onChange called:', date);
+          setSelectedDates(date as DatesRangeValue);
+        }}
+        onApply={(date) => {
+          console.log('onApply called with:', date);
+          setAppliedValue(date);
+        }}
+        presets={[
+          {
+            label: 'Past 7 days',
+            value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+          },
+          {
+            label: 'Past month',
+            value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+          },
+          {
+            label: 'Custom',
+            value: () => [null, null] as DatesRangeValue,
+          },
+        ]}
+      />
+      {appliedValue && (
+        <Text marginTop="spacing.4" color="feedback.text.positive.intense">
+          Last applied value: {appliedValue[0]?.toLocaleDateString()} -{' '}
+          {appliedValue[1]?.toLocaleDateString()}
+        </Text>
+      )}
+      <Text marginTop="spacing.4" color="surface.text.gray.muted">
+        Current controlled value: {selectedDates[0]?.toLocaleDateString()} -{' '}
+        {selectedDates[1]?.toLocaleDateString()}
+      </Text>
+    </Box>
+  );
+};
+ControlledWithPresetsAndOnApply.storyName = 'Controlled with Presets and onApply';

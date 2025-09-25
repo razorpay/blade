@@ -170,13 +170,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     }
   }, []);
 
-  React.useEffect(() => {
-    if (shouldApplyAfterPresetSelection.current) {
-      shouldApplyAfterPresetSelection.current = false;
-      handleApply();
-    }
-  }, [controlledValue]);
-
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,
     defaultValue: defaultIsOpen,
@@ -245,6 +238,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     storeSelectedFiltersAndValueInListViewContext();
     updateSelectedFilters();
   };
+
+  // Apply preset selection after state updates to avoid stale values
+  React.useEffect(() => {
+    if (shouldApplyAfterPresetSelection.current) {
+      shouldApplyAfterPresetSelection.current = false;
+      handleApply();
+    }
+  }, [controlledValue]);
 
   const handleCancel = (): void => {
     setControlledValue(oldValue);
