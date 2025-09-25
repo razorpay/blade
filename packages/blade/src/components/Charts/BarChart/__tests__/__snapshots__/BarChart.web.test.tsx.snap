@@ -615,10 +615,6 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  padding-top: 12px;
-}
-
-.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -630,7 +626,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
   gap: 16px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -641,7 +637,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
   align-items: center;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -674,7 +670,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c6.c6.c6.c6.c6 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -725,7 +721,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                   data-blade-component="heading"
                 />
                 <div
-                  class="c3"
+                  class=""
                   data-blade-component="box"
                 />
               </div>
@@ -735,22 +731,22 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
               style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 16px;"
             >
               <div
-                class="c4"
+                class="c3"
                 data-blade-component="box"
               >
                 <div
-                  class="c5"
+                  class="c4"
                   data-blade-component="box"
                 >
                   <div
-                    class="c6"
+                    class="c5"
                     data-blade-component="box"
                   >
                     <span
                       style="background-color: rgb(92, 92, 92); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
                     />
                     <p
-                      class="c7"
+                      class="c6"
                       data-blade-component="text"
                     >
                       Profit
@@ -758,18 +754,18 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                   </div>
                 </div>
                 <div
-                  class="c5"
+                  class="c4"
                   data-blade-component="box"
                 >
                   <div
-                    class="c6"
+                    class="c5"
                     data-blade-component="box"
                   >
                     <span
                       style="background-color: rgb(180, 180, 180); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
                     />
                     <p
-                      class="c7"
+                      class="c6"
                       data-blade-component="text"
                     >
                       Sales
