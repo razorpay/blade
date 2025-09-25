@@ -428,7 +428,9 @@ export const Localization: StoryFn<typeof DatePickerComponent> = () => {
       </I18nProvider>
 
       <I18nProvider initData={{ locale: 'ms-MY' }}>
-        <DatePickerComponent marginTop="spacing.5" label={`initData={{ locale: 'ms-MY' }}`} />
+        <Box marginTop="spacing.5">
+          <DatePickerComponent label={`initData={{ locale: 'ms-MY' }}`} />
+        </Box>
       </I18nProvider>
     </Box>
   );
