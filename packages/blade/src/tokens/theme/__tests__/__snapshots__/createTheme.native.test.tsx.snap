@@ -684,7 +684,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "emerald": {
               "faint": "hsla(152, 60%, 95%, 1)",
               "intense": "hsla(150, 100%, 32%, 1)",
-              "moderate": "hsla(150, 100%, 37%, 1)",
+              "moderate": "hsla(150, 100%, 32%, 1)",
               "strong": "hsla(150, 100%, 21%, 1)",
               "subtle": "hsla(150, 59%, 82%, 1)",
             },
@@ -2406,7 +2406,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "emerald": {
               "faint": "hsla(152, 60%, 95%, 1)",
               "intense": "hsla(150, 100%, 32%, 1)",
-              "moderate": "hsla(150, 100%, 37%, 1)",
+              "moderate": "hsla(150, 100%, 32%, 1)",
               "strong": "hsla(150, 100%, 21%, 1)",
               "subtle": "hsla(150, 59%, 82%, 1)",
             },

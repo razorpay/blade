@@ -465,7 +465,7 @@ const colors: ColorsWithModes = {
           emerald: {
             faint: globalColors.chromatic.emerald[50],
             subtle: globalColors.chromatic.emerald[200],
-            moderate: globalColors.chromatic.emerald[500],
+            moderate: globalColors.chromatic.emerald[600],
             intense: globalColors.chromatic.emerald[600],
             strong: globalColors.chromatic.emerald[800],
           },
