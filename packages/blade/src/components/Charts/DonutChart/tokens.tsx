@@ -10,7 +10,7 @@ const START_AND_END_ANGLES = {
 };
 
 const componentId = {
-  pieChart: 'pieChart',
+  chartDonut: 'chartDonut',
   cell: 'cell',
 };
 
@@ -19,4 +19,23 @@ const CENTER_TEXT_POSITION = {
   withoutLegend: { x: '50%', y: '50%' },
 };
 
-export { RADIUS_MAPPING, componentId, START_AND_END_ANGLES, CENTER_TEXT_POSITION };
+const LABEL_DISTANCE_FROM_CENTER = {
+  small: { normal: 0, withText: -12, withLabel: 4 },
+  medium: { normal: 0, withText: -14, withLabel: 6 },
+  large: { normal: 0, withText: -16, withLabel: 8 },
+};
+
+const LABEL_FONT_STYLES = {
+  small: { fontSize: { label: 75, text: 500 } },
+  medium: { fontSize: { label: 100, text: 600 } },
+  large: { fontSize: { label: 200, text: 700 } },
+};
+
+export {
+  RADIUS_MAPPING,
+  componentId,
+  START_AND_END_ANGLES,
+  CENTER_TEXT_POSITION,
+  LABEL_DISTANCE_FROM_CENTER,
+  LABEL_FONT_STYLES,
+};

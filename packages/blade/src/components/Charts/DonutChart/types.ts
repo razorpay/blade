@@ -10,6 +10,8 @@ type data = {
   [key: string]: unknown;
 };
 
+type ChartRadius = 'small' | 'medium' | 'large';
+
 type ChartDonutProps = {
   /**
    * The data key of the Donut chart.
@@ -27,7 +29,7 @@ type ChartDonutProps = {
   /**
    * The radius of the Donut chart.
    */
-  radius?: 'small' | 'medium' | 'large';
+  radius?: ChartRadius;
   /**
    * The children of the Donut chart.
    */
@@ -53,9 +55,15 @@ type CellProps = {
 
 type ChartDonutWrapperProps = {
   /**
-   *  Center text of Donut chart
+   *  text to be displayed at center of donut chart
    */
-  centerText?: string;
+  text?: string;
+  /**
+   *   label to be displayed at center of donut chart
+   */
+  label?: string;
+
   children?: React.ReactNode;
 } & BoxProps;
-export type { ChartDonutWrapperProps, CellProps, ChartDonutProps };
+
+export type { ChartDonutWrapperProps, CellProps, ChartDonutProps, ChartRadius };

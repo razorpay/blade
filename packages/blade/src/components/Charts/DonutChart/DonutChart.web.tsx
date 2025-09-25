@@ -1,13 +1,20 @@
-import React, { useMemo, useState } from 'react';
+import React, { isValidElement, useMemo, useState } from 'react';
 import {
   PieChart as RechartsPieChart,
   Pie as RechartsPie,
   Cell as RechartsCell,
   ResponsiveContainer as RechartsResponsiveContainer,
+  Label,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import type { ChartDonutWrapperProps, CellProps, ChartDonutProps } from './types';
-import { RADIUS_MAPPING, START_AND_END_ANGLES, componentId, CENTER_TEXT_POSITION } from './tokens';
+import type { ChartDonutWrapperProps, CellProps, ChartDonutProps, ChartRadius } from './types';
+import {
+  RADIUS_MAPPING,
+  START_AND_END_ANGLES,
+  componentId,
+  LABEL_DISTANCE_FROM_CENTER,
+  LABEL_FONT_STYLES,
+} from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -16,7 +23,6 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { componentId as commonChartComponentsId } from '~components/Charts/CommonChartComponents/tokens';
 
 // Cell component - resolves Blade color tokens to actual colors
 const _Cell: React.FC<
@@ -40,16 +46,23 @@ const Cell = assignWithoutSideEffects(_Cell, {
 
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
-  centerText,
+  label,
+  text,
   testID,
   ...restProps
 }) => {
   const { theme } = useTheme();
 
-  const isLegendPresent = React.Children.toArray(children).some(
-    (child) => getComponentId(child as React.ReactElement) === commonChartComponentsId.legend,
-  );
-  console.log('isLegendPresent', isLegendPresent);
+  const pieChartRadius: ChartRadius = useMemo(() => {
+    if (Array.isArray(children)) {
+      const donutChild = children.find((child) => getComponentId(child) === componentId.chartDonut);
+      if (!donutChild || !isValidElement(donutChild)) {
+        return 'medium';
+      }
+      return donutChild?.props?.radius || 'medium';
+    }
+    return 'medium';
+  }, [children]);
 
   return (
     <BaseBox
@@ -62,28 +75,49 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
       <RechartsResponsiveContainer width="100%" height="100%">
         <RechartsPieChart>
           {children}
-          {centerText && (
-            <text
-              x={
-                isLegendPresent
-                  ? CENTER_TEXT_POSITION.withLegend.x
-                  : CENTER_TEXT_POSITION.withoutLegend.x
+          {label && (
+            <Label
+              position="center"
+              fill={theme.colors.surface.text.gray.muted}
+              fontSize={
+                theme.typography.fonts.size[
+                  LABEL_FONT_STYLES[pieChartRadius].fontSize
+                    .label as keyof typeof theme.typography.fonts.size
+                ]
               }
-              y={
-                isLegendPresent
-                  ? CENTER_TEXT_POSITION.withLegend.y
-                  : CENTER_TEXT_POSITION.withoutLegend.y
-              }
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fill={theme.colors.surface.text.gray.normal}
-              fontSize={theme.typography.fonts.size[200]}
               fontFamily={theme.typography.fonts.family.text}
               fontWeight={theme.typography.fonts.weight.medium}
               letterSpacing={theme.typography.letterSpacings[100]}
+              dy={
+                text
+                  ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withText
+                  : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
+              }
             >
-              {centerText}
-            </text>
+              {label}
+            </Label>
+          )}
+          {text && (
+            <Label
+              position="center"
+              fill={theme.colors.surface.text.gray.normal}
+              fontSize={
+                theme.typography.fonts.size[
+                  LABEL_FONT_STYLES[pieChartRadius].fontSize
+                    .text as keyof typeof theme.typography.fonts.size
+                ]
+              }
+              fontFamily={theme.typography.fonts.family.heading}
+              fontWeight={theme.typography.fonts.weight.bold}
+              letterSpacing={theme.typography.letterSpacings[100]}
+              dy={
+                label
+                  ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withLabel
+                  : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
+              }
+            >
+              {text}
+            </Label>
           )}
         </RechartsPieChart>
       </RechartsResponsiveContainer>
@@ -91,7 +125,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   );
 };
 
-const ChartDonut: React.FC<ChartDonutProps> = ({
+const _ChartDonut: React.FC<ChartDonutProps> = ({
   cx = '50%',
   cy = '50%',
   radius = 'medium',
@@ -155,5 +189,9 @@ const ChartDonut: React.FC<ChartDonutProps> = ({
     </RechartsPie>
   );
 };
+
+const ChartDonut = assignWithoutSideEffects(_ChartDonut, {
+  componentId: componentId.chartDonut,
+});
 
 export { ChartDonut, ChartDonutWrapper, Cell };

@@ -101,8 +101,8 @@ export const BasicDonutChart: StoryFn<typeof ChartDonut> = ({ ...args }) => {
 export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper centerText="₹1.05L" width="500px" height="500px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} />
+      <ChartDonutWrapper label="Total" text="1300" width="500px" height="500px">
+        <ChartDonut dataKey="value" nameKey="name" data={chartData} radius="large" />
         <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>
@@ -198,6 +198,23 @@ SemiCircleDonutChart.parameters = {
   controls: { disable: true },
 };
 
+// 8. Donut Chart with Center Text
+export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
+      <ChartDonutWrapper text="1300" width="500px" height="500px">
+        <ChartDonut dataKey="value" nameKey="name" data={chartData} type="semicircle" />
+        <ChartLegend />
+        <ChartTooltip />
+      </ChartDonutWrapper>
+    </Box>
+  );
+};
+
+SemiCircleDonutChartWithCenterText.parameters = {
+  controls: { disable: true },
+};
+
 BasicDonutChart.storyName = 'Basic Donut Chart';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
 SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';
@@ -205,3 +222,4 @@ ExtraLargeRadiusDonutChart.storyName = 'Extra Large Radius Donut Chart';
 ChartWithToolTip.storyName = 'Custom ToolTip Donut Chart';
 DonutChartWithActiveShape.storyName = 'Donut Chart with Color theme';
 SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
+SemiCircleDonutChartWithCenterText.storyName = 'SemiCircle Donut Chart with Label and Text';
