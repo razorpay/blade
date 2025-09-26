@@ -6,11 +6,13 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartDonutCell,
+  ChartLabel,
 } from '~components/Charts';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Amount } from '~components/Amount';
 
 const Page = (): React.ReactElement => {
   return (
@@ -255,7 +257,40 @@ SemiCircleDonutChartWithCenterText.parameters = {
   controls: { disable: true },
 };
 
-// 9. Donut Chart with Custom Colors
+// 9. Donut Chart with Amount
+export const DonutChartWithCustomComponent: StoryFn<typeof ChartDonut> = () => {
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
+      <ChartDonutWrapper width="500px" height="300px">
+        <ChartDonut dataKey="value" nameKey="name" data={chartData}>
+          <ChartDonutCell color="chart.background.sequential.azure.600" />
+          <ChartDonutCell color="chart.background.sequential.azure.500" />
+          <ChartDonutCell color="chart.background.sequential.azure.400" />
+          <ChartDonutCell color="chart.background.sequential.azure.300" />
+          <ChartDonutCell color="chart.background.sequential.azure.200" />
+        </ChartDonut>
+        <ChartLabel
+          content={() => {
+            return (
+              <g>
+                <foreignObject x={195} y={115} width={120} height={50}>
+                  <Amount value={200} size="2xlarge" type="heading" />
+                </foreignObject>
+              </g>
+            );
+          }}
+        />
+        <ChartLegend />
+        <ChartTooltip />
+      </ChartDonutWrapper>
+    </Box>
+  );
+};
+
+DonutChartWithCustomComponent.parameters = {
+  controls: { disable: true },
+};
+
 export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
@@ -274,10 +309,6 @@ export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = () => {
   );
 };
 
-DonutChartWithCustomColor.parameters = {
-  controls: { disable: true },
-};
-
 BasicDonutChart.storyName = 'Default Donut Chart';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
 SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';
@@ -286,4 +317,4 @@ ChartWithToolTip.storyName = 'Custom ToolTip Donut Chart';
 DonutChartWithColorTheme.storyName = 'Donut Chart with Color theme';
 SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
 SemiCircleDonutChartWithCenterText.storyName = 'SemiCircle Donut Chart with Label and Text';
-DonutChartWithCustomColor.storyName = 'Donut Chart with custom color';
+DonutChartWithCustomColor.storyName = 'Donut Chart with Blade Components';

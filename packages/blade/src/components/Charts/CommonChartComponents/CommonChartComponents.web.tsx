@@ -6,6 +6,7 @@ import {
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
+  Label as RechartsLabel,
 } from 'recharts';
 import type {
   ChartReferenceLineProps,
@@ -304,4 +305,5 @@ export {
   ChartLegend,
   ChartTooltip,
   ChartReferenceLine,
+  RechartsLabel as ChartLabel,
 };
