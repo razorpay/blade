@@ -71,7 +71,7 @@ type ChartLineWrapperProps = {
   /**
    * The color theme of the line chart.
    */
-  colorTheme?: colorTheme;
+  colorTheme?:  'categorical';
   /**
    * Chart data to be rendered
    */
@@ -124,7 +124,7 @@ type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
-type colorTheme = 'default';
+type colorTheme = 'categorical';
 ```
 
 ## Examples

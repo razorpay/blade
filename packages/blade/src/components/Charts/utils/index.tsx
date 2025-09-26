@@ -1,2 +1,2 @@
-export type { colorTheme } from './useColorTheme';
+export type { ColorTheme } from './useColorTheme';
 export { default as useChartsColorTheme } from './useColorTheme';

@@ -5,6 +5,7 @@ import type {
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
   ReferenceLineProps as RechartsReferenceLineProps,
+  LabelProps as RechartsLabelProps,
 } from 'recharts';
 import type { ComponentProps } from 'react';
 import type {
@@ -58,7 +59,6 @@ type ChartCartesianGridProps = Omit<
 >;
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
-
 type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
   ChartColorCategories,
   'gray'
@@ -73,4 +73,5 @@ export type {
   ChartCartesianGridProps,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
+  RechartsLabelProps as ChartLabelProps,
 };

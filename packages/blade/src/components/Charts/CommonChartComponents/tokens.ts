@@ -12,6 +12,7 @@ const X_AXIS_TEXT_BASELINE = 24;
 
 const MIN_WIDTH = RECT_WIDTH;
 const MAX_WIDTH = 200;
+
 export {
   RECT_WIDTH,
   RECT_HEIGHT,

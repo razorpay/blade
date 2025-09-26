@@ -295,7 +295,7 @@ VerticalBarChart.parameters = {
 export const BarChartWithDefaultColorTheme: StoryFn<typeof ChartBar> = () => {
   return (
     <div style={{ width: '100%', height: '500px' }}>
-      <ChartBarWrapper data={chartData.slice(0, 5)} layout="vertical" colorTheme="default">
+      <ChartBarWrapper data={chartData.slice(0, 5)} layout="vertical" colorTheme="categorical">
         <ChartCartesianGrid />
         <ChartXAxis type="number" />
         <ChartYAxis type="category" dataKey="name" />
