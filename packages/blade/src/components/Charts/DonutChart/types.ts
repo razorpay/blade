@@ -3,7 +3,7 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
-import type { colorTheme } from '../utils/useColorTheme';
+import type { ColorTheme } from '../utils/useColorTheme';
 import type { BoxProps } from '~components/Box';
 
 type data = {
@@ -42,7 +42,7 @@ type ChartDonutProps = {
    * The color theme of the chart.
    * @default 'categorical'
    */
-  colorTheme?: colorTheme;
+  colorTheme?: ColorTheme;
   /**
    * The type of the Donut chart.
    */

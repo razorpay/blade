@@ -5,12 +5,12 @@ import { useTheme } from '~components/BladeProvider';
  * @description The color theme of the chart.
  *
  */
-export type colorTheme = 'categorical';
+export type ColorTheme = 'categorical';
 
 const useChartsColorTheme = ({
   colorTheme = 'categorical',
 }: {
-  colorTheme?: colorTheme;
+  colorTheme?: ColorTheme;
 }): string[] => {
   const { theme } = useTheme();
   const categoricalColorThemeArray = [

@@ -3,7 +3,7 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
-import type { colorTheme } from '../utils';
+import type { ColorTheme } from '../utils';
 import type { BoxProps } from '~components/Box';
 
 type ChartBarProps = {
@@ -52,7 +52,7 @@ type ChartBarWrapperProps = {
    * The color theme of the chart.
    * @default 'categorical'
    */
-  colorTheme?: colorTheme;
+  colorTheme?: ColorTheme;
   /**
    * The layout of the bar chart.
    */
@@ -66,7 +66,7 @@ type ChartBarWrapperProps = {
 interface BarChartContextType {
   layout?: 'horizontal' | 'vertical';
   activeIndex?: number;
-  colorTheme: colorTheme;
+  colorTheme: ColorTheme;
   totalBars: number;
 }
 

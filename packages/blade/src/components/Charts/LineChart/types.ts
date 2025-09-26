@@ -1,6 +1,6 @@
 import type { LineProps as RechartsLineProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
-import type { colorTheme } from '../utils';
+import type { ColorTheme } from '../utils';
 import type { BoxProps } from '~components/Box';
 
 interface ChartLineProps {
@@ -52,7 +52,7 @@ interface ChartLineProps {
   /**
    * @private
    */
-  _colorTheme?: colorTheme;
+  _colorTheme?: ColorTheme;
 }
 
 type data = {
@@ -65,7 +65,7 @@ type ChartLineWrapperProps = {
    * The color theme of the chart.
    * @default 'categorical'
    */
-  colorTheme?: colorTheme;
+  colorTheme?: ColorTheme;
   /**
    * Chart data to be rendered
    */
