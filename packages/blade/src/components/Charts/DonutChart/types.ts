@@ -50,7 +50,7 @@ type ChartDonutProps = {
 };
 
 type Content = {
-  text?: string;
+  value?: string;
   label?: string;
 };
 

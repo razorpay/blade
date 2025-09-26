@@ -82,7 +82,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               fontWeight={theme.typography.fonts.weight.medium}
               letterSpacing={theme.typography.letterSpacings[100]}
               dy={
-                content?.text
+                content?.value
                   ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withText
                   : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
               }
@@ -90,7 +90,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               {content?.label}
             </Label>
           )}
-          {content?.text && (
+          {content?.value && (
             <Label
               position="center"
               fill={theme.colors.surface.text.gray.normal}
@@ -109,7 +109,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
                   : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
               }
             >
-              {content?.text}
+              {content?.value}
             </Label>
           )}
         </RechartsPieChart>
