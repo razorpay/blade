@@ -57,20 +57,21 @@ type ChartDonutProps = {
   type?: 'circle' | 'semicircle';
 };
 
+type Content = {
+  text?: string;
+  label?: string;
+};
+
 type ChartDonutWrapperProps = {
   /**
-   *  text to be displayed at center of donut chart
+   * Content to be displayed at center of donut chart
    */
-  text?: string;
-  /**
-   *   label to be displayed at center of donut chart
-   */
-  label?: string;
-
+  content?: Content;
   children?: React.ReactNode;
 } & BoxProps;
 
-type ChartDonutCellProps = CellProps & {
+
+ ChartDonutCellProps = CellProps & {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
 };
 
@@ -116,8 +117,7 @@ function DonutChartExample() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="400px">
       <ChartDonutWrapper 
-        label="Total Users" 
-        text="1000" 
+        content={{ label: 'Total Users', text: '1000' }} 
         width="500px" 
         height="400px"
         testID="donut-chart-wrapper"
