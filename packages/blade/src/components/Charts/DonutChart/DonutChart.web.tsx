@@ -181,7 +181,6 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       data={data}
       startAngle={START_AND_END_ANGLES[type].startAngle}
       endAngle={START_AND_END_ANGLES[type].endAngle}
-      strokeWidth={0}
       onMouseEnter={(data, index) => {
         setHoveredIndex(index);
       }}
