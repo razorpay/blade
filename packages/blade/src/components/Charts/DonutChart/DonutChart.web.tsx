@@ -40,8 +40,7 @@ const ChartDonutCell = assignWithoutSideEffects(_Cell, {
 
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
-  label,
-  text,
+  content,
   testID,
   ...restProps
 }) => {
@@ -69,7 +68,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
       <RechartsResponsiveContainer width="100%" height="100%">
         <RechartsPieChart>
           {children}
-          {label && (
+          {content?.label && (
             <Label
               position="center"
               fill={theme.colors.surface.text.gray.muted}
@@ -83,15 +82,15 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               fontWeight={theme.typography.fonts.weight.medium}
               letterSpacing={theme.typography.letterSpacings[100]}
               dy={
-                text
+                content?.text
                   ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withText
                   : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
               }
             >
-              {label}
+              {content?.label}
             </Label>
           )}
-          {text && (
+          {content?.text && (
             <Label
               position="center"
               fill={theme.colors.surface.text.gray.normal}
@@ -105,12 +104,12 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               fontWeight={theme.typography.fonts.weight.bold}
               letterSpacing={theme.typography.letterSpacings[100]}
               dy={
-                label
+                content?.label
                   ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withLabel
                   : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
               }
             >
-              {text}
+              {content?.text}
             </Label>
           )}
         </RechartsPieChart>

@@ -49,16 +49,16 @@ type ChartDonutProps = {
   type?: 'circle' | 'semicircle';
 };
 
+type Content = {
+  text?: string;
+  label?: string;
+};
+
 type ChartDonutWrapperProps = {
   /**
-   *  text to be displayed at center of donut chart
+   * Content to be displayed at center of donut chart
    */
-  text?: string;
-  /**
-   *   label to be displayed at center of donut chart
-   */
-  label?: string;
-
+  content?: Content;
   children?: React.ReactNode;
 } & BoxProps;
 
