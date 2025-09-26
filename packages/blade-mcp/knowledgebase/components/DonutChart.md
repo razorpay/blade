@@ -117,7 +117,7 @@ function DonutChartExample() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="400px">
       <ChartDonutWrapper 
-        content={{ label: 'Total Users', text: '1000' }} 
+        content={{ value: '1000', label: 'Total Users' }} 
         width="500px" 
         height="400px"
         testID="donut-chart-wrapper"
