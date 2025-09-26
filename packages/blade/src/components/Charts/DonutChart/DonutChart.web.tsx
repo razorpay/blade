@@ -40,7 +40,7 @@ const ChartDonutCell = assignWithoutSideEffects(_Cell, {
 
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
-  content,
+  centerContent,
   testID,
   ...restProps
 }) => {
@@ -68,7 +68,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
       <RechartsResponsiveContainer width="100%" height="100%">
         <RechartsPieChart>
           {children}
-          {content?.label && (
+          {centerContent?.label && (
             <Label
               position="center"
               fill={theme.colors.surface.text.gray.muted}
@@ -82,15 +82,15 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               fontWeight={theme.typography.fonts.weight.medium}
               letterSpacing={theme.typography.letterSpacings[100]}
               dy={
-                content?.value
+                centerContent?.value
                   ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withText
                   : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
               }
             >
-              {content?.label}
+              {centerContent?.label}
             </Label>
           )}
-          {content?.value && (
+          {centerContent?.value && (
             <Label
               position="center"
               fill={theme.colors.surface.text.gray.normal}
@@ -104,12 +104,12 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               fontWeight={theme.typography.fonts.weight.bold}
               letterSpacing={theme.typography.letterSpacings[100]}
               dy={
-                content?.label
+                centerContent?.label
                   ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withLabel
                   : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
               }
             >
-              {content?.value}
+              {centerContent?.value}
             </Label>
           )}
         </RechartsPieChart>

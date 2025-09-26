@@ -46,7 +46,7 @@ describe('<DonutChart />', () => {
   it('should render DonutChart with center text', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
-        <ChartDonutWrapper content={{ value: 'Total: 1000' }}>
+        <ChartDonutWrapper centerContent={{ value: 'Total: 1000' }}>
           <ChartDonut data={mockData} dataKey="value" nameKey="name" />
         </ChartDonutWrapper>
       </Box>,

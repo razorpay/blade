@@ -58,7 +58,7 @@ type ChartDonutWrapperProps = {
   /**
    * Content to be displayed at center of donut chart
    */
-  content?: Content;
+  centerContent?: Content;
   children?: React.ReactNode;
 } & BoxProps;
 

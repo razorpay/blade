@@ -66,7 +66,7 @@ type ChartDonutWrapperProps = {
   /**
    * Content to be displayed at center of donut chart
    */
-  content?: Content;
+  centerContent?: Content;
   children?: React.ReactNode;
 } & BoxProps;
 
@@ -117,7 +117,7 @@ function DonutChartExample() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="400px">
       <ChartDonutWrapper 
-        content={{ value: '1000', label: 'Total Users' }} 
+        centerContent={{ value: '1000', label: 'Total Users' }} 
         width="500px" 
         height="400px"
         testID="donut-chart-wrapper"

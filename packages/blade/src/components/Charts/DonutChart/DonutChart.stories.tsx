@@ -109,7 +109,11 @@ export const BasicDonutChart: StoryFn<typeof ChartDonut> = ({ ...args }) => {
 export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper content={{ label: 'Total', value: '1300' }} width="500px" height="300px">
+      <ChartDonutWrapper
+        centerContent={{ label: 'Total', value: '1300' }}
+        width="500px"
+        height="300px"
+      >
         <ChartDonut dataKey="value" nameKey="name" data={chartData} radius="medium">
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
@@ -239,7 +243,7 @@ SemiCircleDonutChart.parameters = {
 export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px">
+      <ChartDonutWrapper centerContent={{ value: '1300' }} width="500px" height="300px">
         <ChartTooltip />
         <ChartDonut dataKey="value" nameKey="name" data={chartData} type="semicircle">
           <ChartDonutCell color="chart.background.sequential.azure.600" />
@@ -294,7 +298,7 @@ DonutChartWithCustomComponent.parameters = {
 export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px">
+      <ChartDonutWrapper centerContent={{ value: '1300' }} width="500px" height="300px">
         <ChartDonut dataKey="value" nameKey="name" data={chartData}>
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
