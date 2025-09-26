@@ -132,7 +132,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
   ...rest
 }) => {
   const radiusConfig = RADIUS_MAPPING[radius];
-  const themeColors = useChartsColorTheme({ colorTheme: colorTheme ?? 'categorical' });
+  const themeColors = useChartsColorTheme({ colorTheme });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const { theme } = useTheme();
 
@@ -146,28 +146,24 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
            (https://github.com/recharts/recharts/issues/2788)
            https://github.com/recharts/recharts/discussions/5474
 
-           So we have placeholder component ChartDonutCell. which we replaced by RechartsCell internall so dev can see hover effects
+           So we have placeholder component ChartDonutCell. which we replaced by RechartsCell internally so dev can see hover effects
            working out of box. 
            */
-          return React.createElement(RechartsCell, {
-            ...child.props,
-            fill: getIn(theme.colors, child.props.color) || themeColors[index],
-            key: index,
-            color: themeColors[index],
-            opacity: hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1,
-          });
+          const fill = getIn(theme.colors, child.props.color) || themeColors[index];
+          const opacity = hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1;
+          return <RechartsCell {...child.props} fill={fill} key={index} opacity={opacity} />;
         } else {
           return child;
         }
       });
     }
-    return data?.map((_, index) =>
-      React.createElement(RechartsCell, {
-        key: index,
-        fill: themeColors[index],
-        opacity: hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1,
-      }),
-    );
+    return data?.map((_, index) => (
+      <RechartsCell
+        fill={themeColors[index]}
+        key={index}
+        opacity={hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1}
+      />
+    ));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children, data, colorTheme, hoveredIndex, themeColors]);
 

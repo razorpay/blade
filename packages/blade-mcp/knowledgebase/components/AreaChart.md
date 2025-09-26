@@ -41,7 +41,7 @@ type data = {
 
 type ChartAreaWrapperProps = {
   children?: React.ReactNode;
-  colorTheme?: colorTheme;
+  colorTheme?:  'categorical';
   data: data[];
 } & BoxProps;
 

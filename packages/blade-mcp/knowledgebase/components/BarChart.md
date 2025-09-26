@@ -62,7 +62,7 @@ type ChartBarWrapperProps = {
   /**
    * The color theme of the bar chart.
    */
-  colorTheme?: colorTheme;
+  colorTheme?:  'categorical';
   /**
    * The orientation of the bar chart.
    */

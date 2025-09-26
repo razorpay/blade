@@ -50,7 +50,7 @@ type ChartDonutProps = {
    * The color theme of the chart.
    * @default 'categorical'
    */
-  colorTheme?: colorTheme;
+  colorTheme?:  'categorical';;
   /**
    * The type of the Donut chart.
    */

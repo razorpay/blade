@@ -71,7 +71,7 @@ type ChartLineWrapperProps = {
   /**
    * The color theme of the line chart.
    */
-  colorTheme?: colorTheme;
+  colorTheme?:  'categorical';
   /**
    * Chart data to be rendered
    */

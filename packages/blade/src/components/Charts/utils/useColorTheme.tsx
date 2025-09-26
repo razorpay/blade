@@ -1,12 +1,9 @@
 import { useTheme } from '~components/BladeProvider';
 /**
  * The color theme of the chart.
- * @default 'default'
+ * @default 'categorical'
  * @description The color theme of the chart.
- * @example
- * ```tsx
- * const colorTheme = 'categorical';
- * ```
+ *
  */
 export type colorTheme = 'categorical';
 
