@@ -29,7 +29,7 @@ const Area: React.FC<ChartAreaProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
-  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme ?? 'categorical' });
+  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme });
   const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
   const animationBegin = theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
