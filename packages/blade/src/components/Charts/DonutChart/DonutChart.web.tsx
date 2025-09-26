@@ -150,7 +150,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
            working out of box. 
            */
           const fill = getIn(theme.colors, child.props.color) || themeColors[index];
-          const opacity = hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1;
+          const opacity = hoveredIndex !== null && hoveredIndex !== index ? 0.2 : 1;
           return <RechartsCell {...child.props} fill={fill} key={index} opacity={opacity} />;
         } else {
           return child;
@@ -161,7 +161,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       <RechartsCell
         fill={themeColors[index]}
         key={index}
-        opacity={hoveredIndex === index ? 1 : hoveredIndex !== null ? 0.2 : 1}
+        opacity={hoveredIndex !== null && hoveredIndex !== index ? 0.2 : 1}
       />
     ));
     // eslint-disable-next-line react-hooks/exhaustive-deps

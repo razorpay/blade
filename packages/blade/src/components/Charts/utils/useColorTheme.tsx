@@ -10,7 +10,7 @@ export type colorTheme = 'categorical';
 const useChartsColorTheme = ({
   colorTheme = 'categorical',
 }: {
-  colorTheme: colorTheme;
+  colorTheme?: colorTheme;
 }): string[] => {
   const { theme } = useTheme();
   const categoricalColorThemeArray = [
@@ -33,8 +33,9 @@ const useChartsColorTheme = ({
   ];
 
   if (colorTheme !== 'categorical') {
-    console.log('Currently we only categorical  color theme');
+    console.log(`${colorTheme} is not supported. Blade only supports 'categorical'  color theme`);
   }
+
   //TODO:Currently we only have one color theme will add more color theme later.
 
   return categoricalColorThemeArray;
