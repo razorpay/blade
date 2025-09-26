@@ -136,6 +136,12 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const { theme } = useTheme();
 
+  const getCellOpacity = (hoveredIndex: number | null, currentIndex: number): number => {
+    if (hoveredIndex === null) return 1;
+    if (hoveredIndex === currentIndex) return 1;
+    return 0.2;
+  };
+
   const modifiedChildren = useMemo(() => {
     if (Array.isArray(children)) {
       return children.map((child, index) => {
@@ -150,8 +156,14 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
            working out of box. 
            */
           const fill = getIn(theme.colors, child.props.color) || themeColors[index];
-          const opacity = hoveredIndex !== null && hoveredIndex !== index ? 0.2 : 1;
-          return <RechartsCell {...child.props} fill={fill} key={index} opacity={opacity} />;
+          return (
+            <RechartsCell
+              {...child.props}
+              fill={fill}
+              key={index}
+              opacity={getCellOpacity(hoveredIndex, index)}
+            />
+          );
         } else {
           return child;
         }
@@ -161,7 +173,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       <RechartsCell
         fill={themeColors[index]}
         key={index}
-        opacity={hoveredIndex !== null && hoveredIndex !== index ? 0.2 : 1}
+        opacity={getCellOpacity(hoveredIndex, index)}
       />
     ));
     // eslint-disable-next-line react-hooks/exhaustive-deps
