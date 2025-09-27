@@ -73,6 +73,7 @@ const _Accordion = (
     variant = 'transparent',
     size = 'large',
     maxWidth,
+    minWidth,
     testID,
     ...rest
   }: AccordionProps,
@@ -124,6 +125,7 @@ const _Accordion = (
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
         ref={ref as never}
+        minWidth={minWidth}
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
