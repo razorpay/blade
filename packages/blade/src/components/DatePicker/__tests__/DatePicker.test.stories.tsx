@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable import/no-extraneous-dependencies */
 import type { StoryFn } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
