@@ -28,14 +28,13 @@ describe('<Tooltip />', () => {
         <Button>{buttonText}</Button>
       </Tooltip>,
     );
-    console.log('FullHTML', baseElement.innerHTML);
     // Instead of fireEvent.focus(), use the actual DOM focus method
     const button = getByRole('button', { name: buttonText });
     button.focus(); // This actually focuses the element
-    
+
     // Verify the button has focus
     expect(button).toHaveFocus();
-    
+
     // snapshot while on opened
     await act(async () => {
       jest.advanceTimersByTime(5);
@@ -58,11 +57,11 @@ describe('<Tooltip />', () => {
     // Use actual DOM focus
     const button = getByRole('button', { name: buttonText });
     button.focus();
-    
+
     await act(async () => {
       jest.advanceTimersByTime(1);
     });
-    
+
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
@@ -81,11 +80,11 @@ describe('<Tooltip />', () => {
     // Use actual DOM focus
     const button = getByRole('button', { name: buttonText });
     button.focus();
-    
+
     await act(async () => {
       jest.advanceTimersByTime(1);
     });
-    
+
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 9999 });
     expect(baseElement).toMatchSnapshot();
@@ -207,14 +206,14 @@ describe('<Tooltip />', () => {
     await waitForPosition();
 
     const wrapper = getByTestId('tooltip-interactive-wrapper');
-    
+
     // Use actual DOM focus
     wrapper.focus();
-    
+
     await act(async () => {
       jest.advanceTimersByTime(1);
     });
-    
+
     expect(queryByRole('tooltip')).toBeInTheDocument();
 
     // close
@@ -222,11 +221,11 @@ describe('<Tooltip />', () => {
       wrapper.blur();
       jest.advanceTimersByTime(animationDuration);
     });
-    
+
     await act(async () => {
       jest.runAllTimers();
     });
-    
+
     expect(queryByRole('tooltip')).not.toBeInTheDocument();
   });
 
@@ -312,16 +311,16 @@ describe('<Tooltip />', () => {
         <Button>{buttonText}</Button>
       </Tooltip>,
     );
-    
+
     await waitForPosition();
-    
+
     const button = getByRole('button', { name: buttonText });
     button.focus();
-    
+
     await act(async () => {
       jest.advanceTimersByTime(1);
     });
-    
+
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(getByRole('button', { name: buttonText })).toHaveAccessibleDescription(tooltipContent);
     await assertAccessible(getByRole('tooltip'));
@@ -372,16 +371,16 @@ describe('<Tooltip />', () => {
         <Button>{buttonText}</Button>
       </Tooltip>,
     );
-    
+
     await waitForPosition();
-    
+
     const button = getByRole('button', { name: buttonText });
     button.focus();
-    
+
     await act(async () => {
       jest.advanceTimersByTime(1);
     });
-    
+
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveAttribute('data-analytics-tooltip', 'tooltip');
   });
