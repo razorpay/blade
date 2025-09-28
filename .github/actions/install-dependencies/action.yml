@@ -32,7 +32,3 @@ runs:
         pnpm run postinstall
       shell: bash
       if: steps.cache.outputs.cache-hit == 'true'
-
-    - name: pnpm rebuild
-      run: pnpm rebuild
-      shell: bash
