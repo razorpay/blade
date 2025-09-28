@@ -21,22 +21,31 @@ const animationDuration = bladeTheme.motion.duration.quick;
 describe('<Tooltip />', () => {
   jest.useFakeTimers();
 
-  it('should render', () => {
+  it('should render', async () => {
     const buttonText = 'Hover me';
     const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world">
         <Button>{buttonText}</Button>
       </Tooltip>,
     );
-
+    console.log('FullHTML', baseElement.innerHTML);
+    // Instead of fireEvent.focus(), use the actual DOM focus method
+    const button = getByRole('button', { name: buttonText });
+    button.focus(); // This actually focuses the element
+    
+    // Verify the button has focus
+    expect(button).toHaveFocus();
+    
     // snapshot while on opened
-    fireEvent.focus(getByRole('button', { name: buttonText }));
+    await act(async () => {
+      jest.advanceTimersByTime(5);
+    });
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('should render with title', () => {
+  it('should render with title', async () => {
     const buttonText = 'Hover me';
     const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Tooltip title="Tooltip title" content="Hello world">
@@ -44,14 +53,22 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    // snapshot while on opened
-    fireEvent.focus(getByRole('button', { name: buttonText }));
+    await waitForPosition();
+
+    // Use actual DOM focus
+    const button = getByRole('button', { name: buttonText });
+    button.focus();
+    
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+    
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('should render tooltip with custom zIndex', () => {
+  it('should render tooltip with custom zIndex', async () => {
     const buttonText = 'Hover me';
     const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world" zIndex={9999}>
@@ -59,8 +76,16 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    // snapshot while on opened
-    fireEvent.focus(getByRole('button', { name: buttonText }));
+    await waitForPosition();
+
+    // Use actual DOM focus
+    const button = getByRole('button', { name: buttonText });
+    button.focus();
+    
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+    
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 9999 });
     expect(baseElement).toMatchSnapshot();
@@ -182,22 +207,26 @@ describe('<Tooltip />', () => {
     await waitForPosition();
 
     const wrapper = getByTestId('tooltip-interactive-wrapper');
-    fireEvent.focus(wrapper);
-
-    // on focus it should immediately open
+    
+    // Use actual DOM focus
+    wrapper.focus();
+    
     await act(async () => {
       jest.advanceTimersByTime(1);
     });
+    
     expect(queryByRole('tooltip')).toBeInTheDocument();
 
     // close
-    fireEvent.blur(wrapper);
     await act(async () => {
+      wrapper.blur();
       jest.advanceTimersByTime(animationDuration);
     });
+    
     await act(async () => {
       jest.runAllTimers();
     });
+    
     expect(queryByRole('tooltip')).not.toBeInTheDocument();
   });
 
@@ -283,7 +312,16 @@ describe('<Tooltip />', () => {
         <Button>{buttonText}</Button>
       </Tooltip>,
     );
-    fireEvent.focus(getByRole('button', { name: buttonText }));
+    
+    await waitForPosition();
+    
+    const button = getByRole('button', { name: buttonText });
+    button.focus();
+    
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+    
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(getByRole('button', { name: buttonText })).toHaveAccessibleDescription(tooltipContent);
     await assertAccessible(getByRole('tooltip'));
@@ -334,7 +372,16 @@ describe('<Tooltip />', () => {
         <Button>{buttonText}</Button>
       </Tooltip>,
     );
-    fireEvent.focus(getByRole('button', { name: buttonText }));
+    
+    await waitForPosition();
+    
+    const button = getByRole('button', { name: buttonText });
+    button.focus();
+    
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+    
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveAttribute('data-analytics-tooltip', 'tooltip');
   });
