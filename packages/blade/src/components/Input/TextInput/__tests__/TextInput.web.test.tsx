@@ -581,9 +581,8 @@ describe('<TextInput />', () => {
     await userEvent.click(addMoreButton);
     await userEvent.click(addMoreButton);
 
-
     expect(getTag(bladeEmail)).toBeVisible();
-    
+
     // Wait for the layout to be calculated and the "+2 More" text to appear
     await waitFor(() => expect(getByText('+2 More')).toBeInTheDocument(), {
       timeout: 3000, // Increase timeout

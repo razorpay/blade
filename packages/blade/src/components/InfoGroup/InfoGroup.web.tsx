@@ -1,6 +1,5 @@
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes, ReactElement } from 'react';
 import React from 'react';
-import type { ReactElement } from 'react';
 import type {
   InfoGroupProps,
   InfoItemProps,
