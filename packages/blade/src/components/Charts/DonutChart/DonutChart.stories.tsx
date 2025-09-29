@@ -91,6 +91,25 @@ const chartData = [
   { name: 'Group E', value: 100 },
 ];
 
+const chartsLargeData = [
+  { name: 'Group A', value: 400 },
+  { name: 'Group B', value: 300 },
+  { name: 'Group C', value: 300 },
+  { name: 'Group D', value: 200 },
+  { name: 'Group E', value: 100 },
+  { name: 'Group F', value: 100 },
+  { name: 'Group G', value: 100 },
+  { name: 'Group H', value: 100 },
+  { name: 'Group I', value: 100 },
+  { name: 'Group J', value: 100 },
+  { name: 'Group K', value: 100 },
+  { name: 'Group L', value: 100 },
+  { name: 'Group M', value: 100 },
+  { name: 'Group N', value: 100 },
+  { name: 'Group O', value: 100 },
+  { name: 'Group P', value: 100 },
+];
+
 // 1. Basic Donut Chart
 export const BasicDonutChart: StoryFn<typeof ChartDonut> = ({ ...args }) => {
   return (
@@ -329,6 +348,18 @@ export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = () => {
           <ChartDonutCell color="chart.background.sequential.azure.300" />
           <ChartDonutCell color="chart.background.sequential.azure.200" />
         </ChartDonut>
+        <ChartLegend />
+        <ChartTooltip />
+      </ChartDonutWrapper>
+    </Box>
+  );
+};
+
+export const DonutChartWithLargeData: StoryFn<typeof ChartDonut> = () => {
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
+      <ChartDonutWrapper width="500px" height="500px">
+        <ChartDonut dataKey="value" nameKey="name" data={chartsLargeData} />
         <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>

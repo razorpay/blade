@@ -198,6 +198,7 @@ const CustomSquareLegend = (props: {
       gap="spacing.5"
       flexDirection={isVerticalLayout ? 'column' : 'row'}
       width={isVerticalLayout ? '100%' : 'auto'}
+      flexWrap="wrap"
     >
       {filteredPayload.map((entry, index) => (
         <Box key={`item-${index}`} display="flex" alignItems="center">
