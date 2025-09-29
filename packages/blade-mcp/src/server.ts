@@ -135,7 +135,9 @@ try {
 
   // Use Promise handling for async operations
   await server.connect(transport);
-  console.log('Blade MCP connected successfully.');
+
+  // Why console.error? Checkout https://modelcontextprotocol.io/quickstart/server#logging-in-mcp-servers-2
+  console.error('Blade MCP connected successfully.');
 } catch (error: unknown) {
   Sentry.captureException(error);
   console.error('Blade MCP Error', error);
