@@ -187,6 +187,7 @@ export const EmphasisVariants: StoryFn<typeof CounterInputComponent> = () => {
           value={subtleValue}
           onChange={({ value }) => setSubtleValue(value)}
           min={0}
+          max={10}
         />
       </BaseBox>
 
@@ -203,6 +204,7 @@ export const EmphasisVariants: StoryFn<typeof CounterInputComponent> = () => {
           value={intenseValue}
           onChange={({ value }) => setIntenseValue(value)}
           min={0}
+          max={10}
         />
       </BaseBox>
     </BaseBox>

@@ -2,26 +2,30 @@ import { size as sizeTokens } from '~tokens/global';
 
 export const COUNTER_INPUT_TOKEN = {
   width: {
-    xsmall: 78, // Custom value (not in size tokens)
-    medium: 86, // Custom value (not in size tokens)
-    large: 118, // Custom value (not in size tokens)
+    xsmall: sizeTokens[80],
+    medium: sizeTokens[90],
+    large: sizeTokens[120],
   },
   height: {
-    xsmall: sizeTokens[30], // 28px
-    medium: sizeTokens[38], // 36px
-    large: sizeTokens[50], // 48px
+    xsmall: sizeTokens[30],
+    medium: sizeTokens[38],
+    large: sizeTokens[50],
   },
 
-  leftIconMargin: {
-    xsmall: ['spacing.3', 'spacing.0', 'spacing.3', 'spacing.3'],
-    medium: ['10px', 'spacing.0', '10px', '10px'],
-    large: ['spacing.4', 'spacing.0', 'spacing.4', 'spacing.4'],
+  leftIconMargin: ['spacing.2', 'spacing.0', 'spacing.2', 'spacing.2'],
+
+  rightIconMargin: ['spacing.2', 'spacing.2', 'spacing.2', 'spacing.0'],
+
+  leftIconPadding: {
+    xsmall: ['spacing.2', 'spacing.2', 'spacing.2', 'spacing.2'],
+    medium: ['6px', '6px', '6px', '6px'],
+    large: ['spacing.3', 'spacing.3', 'spacing.3', 'spacing.3'],
   },
 
-  rightIconMargin: {
-    xsmall: ['spacing.3', 'spacing.3', 'spacing.3', 'spacing.0'],
-    medium: ['10px', '10px', '10px', 'spacing.0'],
-    large: ['spacing.4', 'spacing.4', 'spacing.4', 'spacing.0'],
+  rightIconPadding: {
+    xsmall: ['spacing.2', 'spacing.2', 'spacing.2', 'spacing.2'],
+    medium: ['6px', '6px', '6px', '6px'],
+    large: ['spacing.3', 'spacing.3', 'spacing.3', 'spacing.3'],
   },
 
   emphasis: {

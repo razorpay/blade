@@ -114,13 +114,13 @@ export const baseInputCounterInputPaddingTokens = {
     large: 3,
   },
   left: {
-    xsmall: 3,
-    medium: 3,
-    large: 4,
+    xsmall: 2,
+    medium: 1,
+    large: 2,
   },
   right: {
-    xsmall: 3,
-    medium: 3,
-    large: 4,
+    xsmall: 2,
+    medium: 1,
+    large: 2,
   },
 } as const;

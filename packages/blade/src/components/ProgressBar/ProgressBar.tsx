@@ -81,6 +81,12 @@ type ProgressBarProgressProps = ProgressBarCommonProps & {
    * @default true
    */
   showPercentage?: boolean;
+  /**
+   * Sets whether the indeterminate progress bar should oscillate (left-to-right-to-left).
+   * When false, uses standard left-to-right animation.
+   * @default false
+   */
+  oscillation?: boolean;
 };
 
 type ProgressBarMeterProps = ProgressBarCommonProps & {
@@ -99,6 +105,11 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
    * @default false
    */
   showPercentage?: undefined;
+  /**
+   * Sets whether the indeterminate progress bar should oscillate.
+   * @default false
+   */
+  oscillation?: undefined;
 };
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
@@ -123,6 +134,7 @@ const _ProgressBar = (
     variant = 'progress',
     min = 0,
     max = 100,
+    oscillation = false,
     testID,
     ...rest
   }: ProgressBarProps,
@@ -260,6 +272,7 @@ const _ProgressBar = (
             />
           ) : (
             <BaseBox
+              className="__progress-bar"
               backgroundColor={unfilledBackgroundColor}
               height={makeSize(progressBarHeight[size])}
               overflow="hidden"
@@ -275,6 +288,7 @@ const _ProgressBar = (
                 motionEasing="easing.emphasized"
                 type={progressType}
                 isIndeterminate={isIndeterminate}
+                oscillation={oscillation}
               />
             </BaseBox>
           )}

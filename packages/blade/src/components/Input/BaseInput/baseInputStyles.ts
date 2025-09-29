@@ -270,7 +270,7 @@ export const getBaseInputStyles = ({
           theme,
         })
       : getTextStyles({
-          size,
+          size: isInsideCounterInput && size === 'xsmall' ? 'small' : size,
           variant: 'body',
           weight: 'regular',
           color: isDisabled

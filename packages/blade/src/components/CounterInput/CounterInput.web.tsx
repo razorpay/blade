@@ -68,7 +68,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
         if (constrainedValue < min) constrainedValue = min;
         if (max !== undefined && constrainedValue > max) constrainedValue = max;
         setInternalValue(() => constrainedValue);
-        onChange?.({ value: constrainedValue as number });
       },
       [min, max, onChange, name],
     );
@@ -80,8 +79,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       const constrainedValue = max !== undefined ? Math.min(newValue, max) : newValue;
 
       setInternalValue(() => constrainedValue);
-
-      onChange?.({ value: constrainedValue as number });
     }, [internalValue, min, max, isDisabled, isLoading, onChange, name]);
 
     const handleDecrement = useCallback(() => {
@@ -91,7 +88,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       const constrainedValue = Math.max(newValue, min);
 
       setInternalValue(() => constrainedValue);
-      onChange?.({ value: constrainedValue });
     }, [internalValue, min, isDisabled, isLoading, onChange, name]);
 
     const isDecrementDisabled = _isDisabled || (internalValue ?? min) <= min;
@@ -111,6 +107,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       <CounterInputProvider value={contextValue}>
         <StyledCounterInput
           className="__blade-counter-input"
+          data-emphasis={emphasis}
           ref={getOuterMotionRef({ _motionMeta, ref })}
           {...metaAttribute({ name: MetaConstants.CounterInput, testID })}
           {...getStyledProps(rest)}
@@ -149,10 +146,13 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
             >
               <BaseBox display="flex" alignItems="center" flexDirection="row">
                 <BaseBox
+                  className="decrement-button"
+                  as="button"
                   display="flex"
                   cursor={isDecrementDisabled ? 'not-allowed' : 'pointer'}
                   onClick={handleDecrement}
-                  margin={COUNTER_INPUT_TOKEN.leftIconMargin[size]}
+                  padding={COUNTER_INPUT_TOKEN.leftIconPadding[size]}
+                  margin={COUNTER_INPUT_TOKEN.leftIconMargin}
                 >
                   <MinusIcon
                     size={size === 'xsmall' ? 'small' : size}
@@ -166,7 +166,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
                 <BaseInput
                   ref={ref}
-                  id="__counter-input"
+                  id={inputId}
                   as="input"
                   name={name}
                   type="number"
@@ -188,11 +188,15 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 />
 
                 <BaseBox
+                  className="increment-button"
+                  as="button"
                   display="flex"
                   alignItems="center"
                   cursor={isIncrementDisabled ? 'not-allowed' : 'pointer'}
                   onClick={handleIncrement}
-                  margin={COUNTER_INPUT_TOKEN.rightIconMargin[size]}
+                  padding={COUNTER_INPUT_TOKEN.rightIconPadding[size]}
+                  margin={COUNTER_INPUT_TOKEN.rightIconMargin}
+                  borderRadius="small"
                 >
                   <PlusIcon
                     size={size === 'xsmall' ? 'small' : size}
@@ -204,13 +208,14 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   />
                 </BaseBox>
               </BaseBox>
-              {isLoading && (
+              {true && (
                 <BaseBox width="100%" position="absolute" bottom="spacing.0">
                   <ProgressBar
                     color={emphasisTokens.progressBarColor}
                     showPercentage={false}
                     value={1}
                     isIndeterminate={true}
+                    oscillation={true}
                   />
                 </BaseBox>
               )}
