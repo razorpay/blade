@@ -12,6 +12,7 @@ const StyledCounterInput = styled(BaseBox)`
   }
 
   /* Hide number input arrows */
+  /* stylelint-disable property-no-vendor-prefix, no-descending-specificity */
   &.__blade-counter-input input[type='number']::-webkit-inner-spin-button,
   &.__blade-counter-input input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -21,6 +22,7 @@ const StyledCounterInput = styled(BaseBox)`
   &.__blade-counter-input input[type='number'] {
     -moz-appearance: textfield; /* Firefox */
   }
+  /* stylelint-enable property-no-vendor-prefix, no-descending-specificity */
 
   /* Remove ProgressBar background */
   &.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
