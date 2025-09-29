@@ -47,7 +47,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
 }) => {
   const { theme } = useTheme();
   const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
-  const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
+  const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme });
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
   const animationBegin = isStacked
@@ -113,7 +113,7 @@ const ChartBar = assignWithoutSideEffects(_ChartBar, {
 // BarChart wrapper with default margin, auto-color assignment, and max bars guard
 const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
-  colorTheme = 'default',
+  colorTheme = 'categorical',
   layout = 'horizontal',
   testID,
   data = [],

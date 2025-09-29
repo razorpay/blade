@@ -49,8 +49,14 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
   dataKey?: string;
 };
 
+type Layout = 'horizontal' | 'vertical';
+type Align = 'left' | 'right';
+
 type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
-type ChartLegendProps = ComponentProps<typeof RechartsLegend>;
+type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
+  layout?: Layout;
+  align?: Align;
+};
 
 type ChartCartesianGridProps = Omit<
   RechartsCartesianGridProps,
@@ -58,7 +64,6 @@ type ChartCartesianGridProps = Omit<
 >;
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
-
 type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
   ChartColorCategories,
   'gray'
@@ -73,4 +78,6 @@ export type {
   ChartCartesianGridProps,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
+  Layout,
+  Align,
 };

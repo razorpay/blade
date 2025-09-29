@@ -28,7 +28,7 @@ const Line: React.FC<ChartLineProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
-  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme ?? 'default' });
+  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme });
   const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
 
   const strokeDasharray =

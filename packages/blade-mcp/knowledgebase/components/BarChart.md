@@ -62,7 +62,7 @@ type ChartBarWrapperProps = {
   /**
    * The color theme of the bar chart.
    */
-  colorTheme?: colorTheme;
+  colorTheme?:  'categorical';
   /**
    * The orientation of the bar chart.
    */
@@ -78,7 +78,8 @@ type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCat
 
 type ChartSequentialColorToken = `chart.background.sequential.${Exclude<ChartColorCategories, 'gray'>}.${keyof ChartSequentialEmphasis}`;
 
-type colorTheme = 'default';
+type colorTheme = 'categorical';
+
 
 type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
@@ -104,7 +105,16 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
 
 type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 
-type ChartLegendProps = ComponentProps<typeof RechartsLegend>;
+
+type Layout = 'horizontal' | 'vertical';
+type Align = 'left' | 'right';
+
+type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
+type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
+  layout?: Layout;
+  align?: Align;
+};
+
 
 type ChartCartesianGridProps = Omit<RechartsCartesianGridProps, 'strokeDasharray' | 'verticalFill' | 'horizontalFill'>;
 

@@ -359,7 +359,7 @@ SteppedLineChart.parameters = {
 export const LineChartWithDefaultColorTheme: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
-      <ChartLineWrapper data={chartData} colorTheme="default">
+      <ChartLineWrapper data={chartData} colorTheme="categorical">
         <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
