@@ -13,6 +13,7 @@ export const baseInputHeight: Record<
   NonNullable<BaseInputProps['size']>,
   typeof size[keyof typeof size]
 > = {
+  xsmall: size['26'],
   medium: size['36'],
   large: size['48'],
 };
@@ -23,6 +24,7 @@ export const baseInputHeight: Record<
  */
 // we don't want exact number but rough number to be able to animate correctly in height.
 export const baseInputWrapperMaxHeight = {
+  xsmall: baseInputHeight.xsmall * BASEINPUT_MAX_ROWS,
   medium: baseInputHeight.medium * BASEINPUT_MAX_ROWS,
   large: baseInputHeight.large * BASEINPUT_MAX_ROWS,
 } as const;
@@ -70,18 +72,22 @@ export const baseInputBorderBackgroundMotion = {
 
 export const baseInputPaddingTokens = {
   top: {
+    xsmall: 2,
     medium: 3,
     large: 4,
   },
   bottom: {
+    xsmall: 2,
     medium: 3,
     large: 4,
   },
   left: {
+    xsmall: 3,
     medium: 4,
     large: 4,
   },
   right: {
+    xsmall: 3,
     medium: 4,
     large: 4,
   },
@@ -91,6 +97,30 @@ export const baseInputPaddingTokens = {
 i.e 176 and then right margin 
 i.e 16 which is the spacing between label and input field */
 export const formHintLeftLabelMarginLeft = {
+  xsmall: 136,
   medium: 136,
   large: 192,
+} as const;
+
+export const baseInputCounterInputPaddingTokens = {
+  top: {
+    xsmall: 2,
+    medium: 3,
+    large: 3,
+  },
+  bottom: {
+    xsmall: 2,
+    medium: 3,
+    large: 3,
+  },
+  left: {
+    xsmall: 3,
+    medium: 3,
+    large: 4,
+  },
+  right: {
+    xsmall: 3,
+    medium: 3,
+    large: 4,
+  },
 } as const;
