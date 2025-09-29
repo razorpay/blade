@@ -103,6 +103,12 @@ const meta: Meta<AccordionProps> = {
       control: {
         type: 'object',
       },
+      table: {
+        category: 'StyledProps',
+        type: {
+          summary: `MakeValueResponsive<CSSObject['maxWidth']>`,
+        },
+      },
     },
     ...getStyledPropsArgTypes(),
   },
