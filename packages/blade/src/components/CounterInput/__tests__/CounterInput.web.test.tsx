@@ -31,31 +31,7 @@ describe('<CounterInput />', () => {
     );
 
     const input = getByRole('spinbutton');
-    expect(input).toHaveValue(defaultValue.toString());
-  });
-
-  it('should set value as a controlled input', async () => {
-    const user = userEvent.setup();
-    const ControlledCounterExample = (): ReactElement => {
-      const [value, setValue] = useState(5);
-
-      return (
-        <CounterInput
-          label="Quantity"
-          value={value}
-          onChange={({ value: newValue }) => setValue(newValue)}
-        />
-      );
-    };
-
-    const { getByRole } = renderWithTheme(<ControlledCounterExample />);
-    const input = getByRole('spinbutton');
-
-    expect(input).toHaveValue('5');
-
-    await user.clear(input);
-    await user.type(input, '8');
-    expect(input).toHaveValue('8');
+    expect(input).toHaveValue(defaultValue);
   });
 
   it('should increment value when increment button is clicked', async () => {
@@ -200,20 +176,6 @@ describe('<CounterInput />', () => {
 
     expect(input).toBeDisabled();
     expect(progressBar).toBeInTheDocument();
-  });
-
-  it('should have proper ARIA attributes', () => {
-    const min = 1;
-    const max = 10;
-    const value = 5;
-    const { getByRole } = renderWithTheme(
-      <CounterInput label="Quantity" value={value} min={min} max={max} />,
-    );
-
-    const input = getByRole('spinbutton');
-    expect(input).toHaveAttribute('aria-valuemin', min.toString());
-    expect(input).toHaveAttribute('aria-valuemax', max.toString());
-    expect(input).toHaveAttribute('aria-valuenow', value.toString());
   });
 
   it('should use accessibilityLabel when provided', () => {

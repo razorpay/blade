@@ -454,7 +454,7 @@ export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () =
 };
 
 // CounterInput with Toast Validation Example
-export const CounterInputWithToastValidation: StoryFn<typeof CounterInputComponent> = () => {
+export const WithToastValidation: StoryFn<typeof CounterInputComponent> = () => {
   const [quantity, setQuantity] = useState(1);
   const toast = useToast();
 
