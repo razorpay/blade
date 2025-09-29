@@ -30,7 +30,7 @@ type CounterSelectorProps = {
   onItemClick: (props: { name: string }) => void;
   flags: ReturnType<typeof getFlagsForAllCountries>;
   isDisabled?: boolean;
-  size: 'medium' | 'large';
+  size: 'xsmall' | 'medium' | 'large';
 };
 
 const CountryDropdownButtonWrapper = styled(BaseBox)(() => {
@@ -74,6 +74,7 @@ const CountrySelector = ({
   );
 
   const flagSize = {
+    xsmall: makeSize(sizes[16]),
     medium: makeSize(sizes[20]),
     large: makeSize(sizes[24]),
   } as const;

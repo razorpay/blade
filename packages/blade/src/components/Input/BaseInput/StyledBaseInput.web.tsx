@@ -32,6 +32,9 @@ const getWebInputStyles = (
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
       hasLeadingDropdown: props.hasLeadingDropdown,
+      color: props.color,
+      disabledColor: props.disabledColor,
+      isInsideCounterInput: props.isInsideCounterInput,
     }),
     outline: 'none',
     border: 'none',
@@ -119,6 +122,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     tabIndex,
     valueSuffix,
     children,
+    color,
+    disabledColor,
+    isInsideCounterInput,
     ...props
   },
   ref,
@@ -241,6 +247,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       $size={$size}
       valueComponentType={valueComponentType}
       tabIndex={tabIndex}
+      color={color}
+      disabledColor={disabledColor}
+      isInsideCounterInput={isInsideCounterInput}
       {...commonProps}
       {...props}
       {...accessibilityProps}

@@ -128,7 +128,10 @@ type CommonBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
     borderWidth: keyof Border['width'];
-    borderColor: BorderColorString<'surface'> | BorderColorString<'popup'>;
+    borderColor:
+      | BorderColorString<'surface'>
+      | BorderColorString<'popup'>
+      | BorderColorString<'interactive'>;
     borderTopWidth: keyof Border['width'];
     borderTopColor: BorderColorString<'surface'>;
     borderRightWidth: keyof Border['width'];

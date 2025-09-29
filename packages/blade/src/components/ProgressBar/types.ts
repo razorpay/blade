@@ -11,6 +11,7 @@ type ProgressBarFilledProps = {
   motionEasing: EasingString;
   type: ProgressBarProps['type'];
   isIndeterminate: boolean;
+  oscillation?: boolean;
 };
 
 type CircularProgressBarFilledProps = Pick<
