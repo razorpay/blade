@@ -88,7 +88,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
       width="100%"
       height="100%"
       {...restProps}
-      position="relative"
+      position={isValidElement(content) ? 'relative' : undefined}
     >
       <RechartsResponsiveContainer width="100%" height="100%">
         <RechartsPieChart>
