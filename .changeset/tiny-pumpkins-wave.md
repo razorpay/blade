@@ -2,4 +2,4 @@
 "@razorpay/blade": minor
 ---
 
-feat(Accordion): add `justifyContent` prop to the Accordion component
+feat(Accordion): add `minWidth` prop to the Accordion component
