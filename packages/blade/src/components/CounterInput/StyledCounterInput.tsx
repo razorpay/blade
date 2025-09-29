@@ -1,5 +1,5 @@
-import BaseBox from '~components/Box/BaseBox';
 import styled from 'styled-components';
+import BaseBox from '~components/Box/BaseBox';
 
 const StyledCounterInput = styled(BaseBox)`
   &.__blade-counter-input .focus-ring-wrapper {

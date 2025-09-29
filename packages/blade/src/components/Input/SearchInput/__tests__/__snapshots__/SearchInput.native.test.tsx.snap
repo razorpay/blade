@@ -437,6 +437,7 @@ exports[`<SearchInput /> should render 1`] = `
                       id="searchinput-1-input-2"
                       isDropdownTrigger={true}
                       isFocused={false}
+                      isInsideCounterInput={false}
                       isTableInputCell={false}
                       isTextArea={false}
                       keyboardType="default"

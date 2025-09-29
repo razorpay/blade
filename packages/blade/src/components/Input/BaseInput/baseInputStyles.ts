@@ -20,7 +20,7 @@ import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
-import { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type GetInputStyles = Pick<
   BaseInputProps,

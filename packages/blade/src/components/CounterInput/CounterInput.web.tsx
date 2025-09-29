@@ -1,5 +1,8 @@
 import React, { useCallback } from 'react';
 import type { CounterInputProps } from './types';
+import { StyledCounterInput } from './StyledCounterInput';
+import { COUNTER_INPUT_TOKEN } from './token';
+import { CounterInputProvider } from './CounterInputContext';
 import { BaseInput } from '~components/Input/BaseInput';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -8,7 +11,6 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
 import { getOuterMotionRef } from '~utils/getMotionRefs';
-import { StyledCounterInput } from './StyledCounterInput';
 import BaseBox from '~components/Box/BaseBox';
 import { FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
@@ -16,9 +18,7 @@ import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
-import { COUNTER_INPUT_TOKEN } from './token';
 import { ProgressBar } from '~components/ProgressBar';
-import { CounterInputProvider } from './CounterInputContext';
 
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
@@ -45,8 +45,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     ref,
   ) => {
     const [internalValue, setInternalValue] = useControllableState({
-      value: value,
-      defaultValue: defaultValue,
+      value,
+      defaultValue,
       onChange: (newValue) => onChange?.({ value: newValue }),
     });
 
@@ -208,7 +208,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   />
                 </BaseBox>
               </BaseBox>
-              {true && (
+              {isLoading && (
                 <BaseBox width="100%" position="absolute" bottom="spacing.0">
                   <ProgressBar
                     color={emphasisTokens.progressBarColor}

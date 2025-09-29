@@ -10,6 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getBladeCommonEventArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import { useToast, ToastContainer } from '~components/Toast';
 
 const Page = (): ReactElement => {
   return (
@@ -49,7 +50,7 @@ const Page = (): ReactElement => {
 };
 
 const meta: Meta<CounterInputProps> = {
-  title: 'Components/CounterInput',
+  title: 'Components/Input/CounterInput',
   component: CounterInputComponent,
   args: {
     label: 'Quantity',
@@ -446,6 +447,70 @@ export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () =
         <Text size="small" color="surface.text.gray.subtle">
           Quantity: {formData.quantity}, Licenses: {formData.licenses}, Team Members:{' '}
           {formData.users}
+        </Text>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+// CounterInput with Toast Validation Example
+export const CounterInputWithToastValidation: StoryFn<typeof CounterInputComponent> = () => {
+  const [quantity, setQuantity] = useState(1);
+  const toast = useToast();
+
+  const handleChange = ({ value }: { value: number }) => {
+    setQuantity(value);
+
+    // Simple validation logic with small thresholds
+    if (value > 5) {
+      toast.show({
+        content: `Quantity ${value} exceeds limit of 5!`,
+        color: 'negative',
+        autoDismiss: true,
+        duration: 3000,
+      });
+    } else if (value >= 3) {
+      toast.show({
+        content: `Bulk discount applied for ${value} items!`,
+        color: 'positive',
+        autoDismiss: true,
+        duration: 3000,
+      });
+    }
+  };
+
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+      <ToastContainer />
+
+      <Text size="large" weight="semibold">
+        Validation with Toast Notifications
+      </Text>
+
+      <CounterInputComponent
+        label="Order Quantity"
+        value={quantity}
+        onChange={handleChange}
+        min={1}
+        max={10}
+      />
+
+      <BaseBox
+        padding="spacing.4"
+        backgroundColor="surface.background.gray.intense"
+        borderRadius="medium"
+      >
+        <Text size="small" weight="medium">
+          Validation Rules (Small Thresholds):
+        </Text>
+        <Text size="small" color="surface.text.gray.subtle">
+          • 1-2 items: No toast
+        </Text>
+        <Text size="small" color="surface.text.gray.subtle">
+          • 3-5 items: Success toast - "Bulk discount applied"
+        </Text>
+        <Text size="small" color="surface.text.gray.subtle">
+          • 6+ items: Error toast - "Exceeds limit of 5"
         </Text>
       </BaseBox>
     </BaseBox>
