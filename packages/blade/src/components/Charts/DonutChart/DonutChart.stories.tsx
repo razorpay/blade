@@ -259,7 +259,42 @@ SemiCircleDonutChartWithCenterText.parameters = {
 // 9. Donut Chart with Amount
 export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = () => {
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      width="100%"
+      height="100%"
+      flexDirection="column"
+    >
+      <Box>
+        <ChartDonutWrapper
+          width="500px"
+          height="300px"
+          content={<Amount value={200} size="2xlarge" type="heading" />}
+        >
+          <ChartDonut dataKey="value" nameKey="name" data={chartData}>
+            <ChartDonutCell color="chart.background.sequential.azure.600" />
+            <ChartDonutCell color="chart.background.sequential.azure.500" />
+            <ChartDonutCell color="chart.background.sequential.azure.400" />
+            <ChartDonutCell color="chart.background.sequential.azure.300" />
+            <ChartDonutCell color="chart.background.sequential.azure.200" />
+          </ChartDonut>
+          <ChartLegend />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </Box>
+  );
+};
+
+DonutChartWithAmount.parameters = {
+  controls: { disable: true },
+};
+
+export const DonutChartWithVerticalLegend: StoryFn<typeof ChartDonut> = () => {
+  return (
+    <Box>
       <ChartDonutWrapper
         width="500px"
         height="300px"
@@ -272,14 +307,14 @@ export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = () => {
           <ChartDonutCell color="chart.background.sequential.azure.300" />
           <ChartDonutCell color="chart.background.sequential.azure.200" />
         </ChartDonut>
-        <ChartLegend />
+        <ChartLegend layout="vertical" align="right" />
         <ChartTooltip />
       </ChartDonutWrapper>
     </Box>
   );
 };
 
-DonutChartWithAmount.parameters = {
+DonutChartWithVerticalLegend.parameters = {
   controls: { disable: true },
 };
 

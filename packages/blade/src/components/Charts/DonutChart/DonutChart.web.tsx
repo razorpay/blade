@@ -7,6 +7,7 @@ import {
   Label,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
+import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
 import type {
   ChartDonutWrapperProps,
   ChartDonutCellProps,
@@ -38,6 +39,20 @@ const ChartDonutCell = assignWithoutSideEffects(_Cell, {
   componentId: componentId.cell,
 });
 
+const getTranslate = (
+  legendLayout: 'horizontal' | 'vertical',
+  legendAlignment: 'left' | 'right',
+  legendWidth: number,
+  legendHeight: number,
+): string => {
+  if (legendLayout === 'vertical') {
+    return `translate(calc(-50% + ${
+      legendAlignment === 'right' ? -legendWidth / 2 : legendWidth / 2
+    }px) ,  calc(-50%))`;
+  }
+  return `translate(-50%, calc(-50% - ${legendHeight / 2}px))`;
+};
+
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   content,
@@ -46,6 +61,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
 }) => {
   const { theme } = useTheme();
   const [legendHeight, setLegendHeight] = useState(0);
+  const [legendWidth, setLegendWidth] = useState(0);
   const chartRef = useRef<HTMLDivElement>(null);
   const isValuePresentInContent = content && typeof content === 'object' && 'value' in content;
   const isLabelPresentInContent = content && typeof content === 'object' && 'label' in content;
@@ -56,7 +72,9 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           const legendWrapper = chartRef.current?.querySelector('.recharts-legend-wrapper');
           if (legendWrapper) {
             const height = legendWrapper.getBoundingClientRect().height;
+            const width = legendWrapper.getBoundingClientRect().width;
             setLegendHeight(height);
+            setLegendWidth(width);
           }
         }
       });
@@ -78,6 +96,32 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
       return donutChild?.props?.radius || 'medium';
     }
     return 'medium';
+  }, [children]);
+
+  const legendLayout = useMemo(() => {
+    if (Array.isArray(children)) {
+      const legendChild = children.find(
+        (child) => getComponentId(child) === commonChartComponentId.chartLegend,
+      );
+      if (!legendChild || !isValidElement(legendChild)) {
+        return 'horizontal';
+      }
+      return legendChild?.props?.layout || 'horizontal';
+    }
+    return 'horizontal';
+  }, [children]);
+
+  const legendAlignment = useMemo(() => {
+    if (Array.isArray(children)) {
+      const legendChild = children.find(
+        (child) => getComponentId(child) === commonChartComponentId.chartLegend,
+      );
+      if (!legendChild || !isValidElement(legendChild)) {
+        return 'right';
+      }
+      return legendChild?.props?.align || 'right';
+    }
+    return 'right';
   }, [children]);
 
   return (
@@ -145,7 +189,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           position="absolute"
           top="50%"
           left="50%"
-          transform={`translate(-50%, calc(-50% - ${legendHeight / 2}px))`}
+          transform={getTranslate(legendLayout, legendAlignment, legendWidth, legendHeight)}
           zIndex={10}
           textAlign="center"
         >
