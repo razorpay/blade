@@ -21,7 +21,7 @@ type CounterInputCommonProps = Pick<
   /**
    * Label to be shown for the counter input
    */
-  label: string;
+  label?: string;
 
   /**
    * The numerical value of the counter input

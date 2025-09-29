@@ -31,7 +31,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       defaultValue,
       min = 0,
       max,
-      emphasis = 'intense',
+      emphasis = 'subtle',
       size = 'medium',
       isLoading = false,
       isDisabled = false,
