@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.57.0
+
+### Minor Changes
+
+- f8be2c8ef: feat(Accordion): add `minWidth` prop to the Accordion component
+
 ## 12.56.1
 
 ### Patch Changes

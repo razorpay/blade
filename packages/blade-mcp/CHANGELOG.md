@@ -1,5 +1,15 @@
 # @razorpay/blade-mcp
 
+## 1.11.0
+
+### Minor Changes
+
+- 4f9b1ebd3: feat(blade-mcp): add figma to code image attachment in mcp tool call
+
+### Patch Changes
+
+- aae0f0d15: fix(blade-mcp): remove console logs
+
 ## 1.10.0
 
 ### Minor Changes
