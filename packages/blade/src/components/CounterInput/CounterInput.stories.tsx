@@ -258,30 +258,28 @@ export const UncontrolledComponent: StoryFn<typeof CounterInputComponent> = () =
 
 // Loading State
 export const LoadingState: StoryFn<typeof CounterInputComponent> = () => {
-  const [value1, setValue1] = useState(5);
-  const [isLoading1, setIsLoading1] = useState(false);
+  const [counters, setCounters] = useState({
+    cartQuantity: { value: 5, isLoading: false },
+    subscriptionSeats: { value: 3, isLoading: false },
+  });
 
-  const [value2, setValue2] = useState(5);
-  const [isLoading2, setIsLoading2] = useState(false);
-
-  const handleChange = ({ value: newValue }: { value: number }) => {
-    setIsLoading1(true);
-    setValue1(newValue);
-
-    // Simulate async operation
-    setTimeout(() => {
-      setIsLoading1(false);
-    }, 2500);
-  };
-
-  const handleChange2 = ({ value: newValue }: { value: number }) => {
-    setIsLoading2(true);
-    setValue2(newValue);
+  const handleChange = (key: keyof typeof counters, loadingDuration: number) => ({
+    value: newValue,
+  }: {
+    value: number;
+  }) => {
+    setCounters((prev) => ({
+      ...prev,
+      [key]: { value: newValue, isLoading: true },
+    }));
 
     // Simulate async operation
     setTimeout(() => {
-      setIsLoading2(false);
-    }, 1000);
+      setCounters((prev) => ({
+        ...prev,
+        [key]: { ...prev[key], isLoading: false },
+      }));
+    }, loadingDuration);
   };
 
   return (
@@ -293,21 +291,22 @@ export const LoadingState: StoryFn<typeof CounterInputComponent> = () => {
         Shows loading indicator and disables interactions during async operations.
       </Text>
       <CounterInputComponent
-        label="Loading Counter"
-        value={value1}
-        onChange={handleChange}
-        isLoading={isLoading1}
+        label="Cart Quantity (2.5s loading)"
+        value={counters.cartQuantity.value}
+        onChange={handleChange('cartQuantity', 2500)}
+        isLoading={counters.cartQuantity.isLoading}
+        emphasis="intense"
         min={0}
         max={10}
       />
       <CounterInputComponent
-        label="Loading Counter"
+        label="Subscription Seats (1s loading)"
+        value={counters.subscriptionSeats.value}
+        onChange={handleChange('subscriptionSeats', 1000)}
+        isLoading={counters.subscriptionSeats.isLoading}
         emphasis="subtle"
-        value={value2}
-        onChange={handleChange2}
-        isLoading={isLoading2}
-        min={0}
-        max={10}
+        min={1}
+        max={20}
       />
     </BaseBox>
   );
@@ -387,9 +386,9 @@ export const LabelPositioning: StoryFn<typeof CounterInputComponent> = () => {
 
 export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () => {
   const [formData, setFormData] = useState({
-    adults: 2,
-    children: 0,
-    rooms: 1,
+    quantity: 2,
+    licenses: 1,
+    users: 5,
   });
 
   const handleFieldChange = (field: keyof typeof formData) => ({ value }: { value: number }) => {
@@ -402,35 +401,35 @@ export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () =
         Multiple Counter Inputs
       </Text>
       <Text size="medium" color="surface.text.gray.muted">
-        Multiple counter inputs working together.
+        Multiple counter inputs for payment and subscription management.
       </Text>
 
       <BaseBox display="flex" flexDirection="column" gap="spacing.4">
         <CounterInputComponent
-          label="Adults"
-          name="adults"
-          value={formData.adults}
-          onChange={handleFieldChange('adults')}
+          label="Product Quantity"
+          name="quantity"
+          value={formData.quantity}
+          onChange={handleFieldChange('quantity')}
           min={1}
-          max={10}
+          max={100}
         />
 
         <CounterInputComponent
-          label="Children"
-          name="children"
-          value={formData.children}
-          onChange={handleFieldChange('children')}
-          min={0}
-          max={8}
+          label="API Licenses"
+          name="licenses"
+          value={formData.licenses}
+          onChange={handleFieldChange('licenses')}
+          min={1}
+          max={20}
         />
 
         <CounterInputComponent
-          label="Rooms"
-          name="rooms"
-          value={formData.rooms}
-          onChange={handleFieldChange('rooms')}
+          label="Team Members"
+          name="users"
+          value={formData.users}
+          onChange={handleFieldChange('users')}
           min={1}
-          max={5}
+          max={50}
         />
       </BaseBox>
 
@@ -440,10 +439,11 @@ export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () =
         borderRadius="medium"
       >
         <Text size="small" weight="medium">
-          Counter Inputs Data:
+          Subscription Details:
         </Text>
         <Text size="small" color="surface.text.gray.subtle">
-          Adults: {formData.adults}, Children: {formData.children}, Rooms: {formData.rooms}
+          Quantity: {formData.quantity}, Licenses: {formData.licenses}, Team Members:{' '}
+          {formData.users}
         </Text>
       </BaseBox>
     </BaseBox>

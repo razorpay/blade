@@ -6,7 +6,6 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type CounterInputCommonProps = Pick<
   BaseInputProps,
-  | 'accessibilityLabel'
   | 'labelPosition'
   | 'name'
   | 'onFocus'
@@ -16,9 +15,13 @@ type CounterInputCommonProps = Pick<
   | keyof DataAnalyticsAttribute
 > & {
   /**
+   * Accessibility label for the input (optional override)
+   */
+  accessibilityLabel?: string;
+  /**
    * Label to be shown for the counter input
    */
-  label?: string;
+  label: string;
 
   /**
    * The numerical value of the counter input
@@ -67,36 +70,7 @@ type CounterInputCommonProps = Pick<
 } & StyledPropsBlade &
   MotionMetaProp;
 
-/*
-  Mandatory accessibilityLabel prop when label is not provided
-*/
-type CounterInputPropsWithA11yLabel = {
-  /**
-   * Label to be shown for the input field
-   */
-  label?: undefined;
-  /**
-   * Accessibility label for the input
-   */
-  accessibilityLabel: string;
-};
-
-/*
-  Optional accessibilityLabel prop when label is provided
-*/
-type CounterInputPropsWithLabel = {
-  /**
-   * Label to be shown for the input field
-   */
-  label: string;
-  /**
-   * Accessibility label for the input
-   */
-  accessibilityLabel?: string;
-};
-
-export type CounterInputProps = (CounterInputPropsWithA11yLabel | CounterInputPropsWithLabel) &
-  CounterInputCommonProps;
+export type CounterInputProps = CounterInputCommonProps;
 
 type CounterInputContextType = {
   /**
