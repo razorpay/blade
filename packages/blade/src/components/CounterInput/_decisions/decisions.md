@@ -150,36 +150,16 @@ type CounterInputCommonProps = Pick<
   onChange?: (args: { value: number }) => void;
 } & StyledPropsBlade;
 
-/*
-  Mandatory accessibilityLabel prop when label is not provided
-*/
-type CounterInputPropsWithA11yLabel = {
+type CounterInputProps = {
   /**
-   * Label to be shown for the input field
-   */
-  label?: undefined;
-  /**
-   * Accessibility label for the input
-   */
-  accessibilityLabel: string;
-};
-
-/*
-  Optional accessibilityLabel prop when label is provided
-*/
-type CounterInputPropsWithLabel = {
-  /**
-   * Label to be shown for the input field
+   * Label to be shown for the counter input
    */
   label: string;
   /**
-   * Accessibility label for the input
+   * Accessibility label for the input (optional override)
    */
   accessibilityLabel?: string;
-};
-
-type CounterInputProps = (CounterInputPropsWithA11yLabel | CounterInputPropsWithLabel) &
-  CounterInputCommonProps;
+} & CounterInputCommonProps;
 ```
 
 ## Usage
