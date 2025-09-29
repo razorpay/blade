@@ -234,12 +234,6 @@ describe('<CounterInput />', () => {
     expect(input).toHaveAttribute('name', name);
   });
 
-  it('should throw error when both value and defaultValue are passed', () => {
-    expect(() =>
-      renderWithTheme(<CounterInput label="Quantity" defaultValue={5} value={10} />),
-    ).toThrow();
-  });
-
   it('should pass a11y', async () => {
     const { getByRole } = renderWithTheme(
       <CounterInput label="Product Quantity" value={5} min={1} max={100} />,

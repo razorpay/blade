@@ -101,6 +101,7 @@ exports[`<CounterInput /> should render 1`] = `
   display: flex;
   padding: 6px 6px 6px 6px;
   margin: 4px 0px 4px 4px;
+  border-radius: 2px;
   cursor: not-allowed;
 }
 
@@ -533,8 +534,10 @@ exports[`<CounterInput /> should render 1`] = `
           data-blade-component="base-box"
         >
           <button
+            aria-label="Decrement value"
             class="c10 decrement-button"
             data-blade-component="base-box"
+            disabled=""
           >
             <svg
               aria-hidden="true"
@@ -597,6 +600,7 @@ exports[`<CounterInput /> should render 1`] = `
             </div>
           </div>
           <button
+            aria-label="Increment value"
             class="c17 increment-button"
             data-blade-component="base-box"
           >
@@ -724,6 +728,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   display: flex;
   padding: 8px 8px 8px 8px;
   margin: 4px 0px 4px 4px;
+  border-radius: 2px;
   cursor: not-allowed;
 }
 
@@ -1156,8 +1161,10 @@ exports[`<CounterInput /> should render large size 1`] = `
           data-blade-component="base-box"
         >
           <button
+            aria-label="Decrement value"
             class="c10 decrement-button"
             data-blade-component="base-box"
+            disabled=""
           >
             <svg
               aria-hidden="true"
@@ -1220,6 +1227,7 @@ exports[`<CounterInput /> should render large size 1`] = `
             </div>
           </div>
           <button
+            aria-label="Increment value"
             class="c17 increment-button"
             data-blade-component="base-box"
           >
@@ -1347,6 +1355,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   display: flex;
   padding: 6px 6px 6px 6px;
   margin: 4px 0px 4px 4px;
+  border-radius: 2px;
   cursor: not-allowed;
 }
 
@@ -1779,8 +1788,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
           data-blade-component="base-box"
         >
           <button
+            aria-label="Decrement value"
             class="c10 decrement-button"
             data-blade-component="base-box"
+            disabled=""
           >
             <svg
               aria-hidden="true"
@@ -1843,6 +1854,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
             </div>
           </div>
           <button
+            aria-label="Increment value"
             class="c17 increment-button"
             data-blade-component="base-box"
           >

@@ -153,6 +153,9 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   onClick={handleDecrement}
                   padding={COUNTER_INPUT_TOKEN.leftIconPadding[size]}
                   margin={COUNTER_INPUT_TOKEN.leftIconMargin}
+                  borderRadius="small"
+                  aria-label="Decrement value"
+                  disabled={isDecrementDisabled}
                 >
                   <MinusIcon
                     size={size === 'xsmall' ? 'small' : size}
@@ -197,6 +200,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   padding={COUNTER_INPUT_TOKEN.rightIconPadding[size]}
                   margin={COUNTER_INPUT_TOKEN.rightIconMargin}
                   borderRadius="small"
+                  aria-label="Increment value"
+                  disabled={isIncrementDisabled}
                 >
                   <PlusIcon
                     size={size === 'xsmall' ? 'small' : size}

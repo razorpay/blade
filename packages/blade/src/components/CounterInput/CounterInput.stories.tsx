@@ -458,7 +458,7 @@ export const CounterInputWithToastValidation: StoryFn<typeof CounterInputCompone
   const [quantity, setQuantity] = useState(1);
   const toast = useToast();
 
-  const handleChange = ({ value }: { value: number }) => {
+  const handleChange = ({ value }: { value: number }): void => {
     setQuantity(value);
 
     // Simple validation logic with small thresholds
