@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.12.0
+
+### Minor Changes
+
+- 6d508bbc8: feat(blade-mcp): add donut chart knowledge base
+
 ## 1.11.0
 
 ### Minor Changes
