@@ -1,6 +1,4 @@
 import userEvent from '@testing-library/user-event';
-import type { ReactElement } from 'react';
-import { useState } from 'react';
 import { CounterInput } from '../CounterInput';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
