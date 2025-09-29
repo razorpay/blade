@@ -97,6 +97,13 @@ const meta: Meta<AccordionProps> = {
         },
       },
     },
+    maxWidth: {
+      description:
+        '**CSS property `max-width`**\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-width">MDN Docs for max-width</a><br/><br/>',
+      control: {
+        type: 'object',
+      },
+    },
     ...getStyledPropsArgTypes(),
   },
   parameters: {
