@@ -1,11 +1,7 @@
 import type { LineProps as RechartsLineProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { colorTheme } from '../utils';
-import type {
-  BaseBoxProps,
-  FlexboxProps,
-  GridProps,
-} from '~components/Box/BaseBox/types/propsTypes';
+import type { BoxProps } from '~components/Box';
 
 interface ChartLineProps {
   /**
@@ -74,6 +70,6 @@ type ChartLineWrapperProps = {
    */
   data: data[];
   children: React.ReactNode;
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BoxProps;
 
 export type { ChartLineProps, ChartLineWrapperProps };

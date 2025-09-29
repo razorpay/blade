@@ -99,13 +99,14 @@ type GridProps = MakeObjectResponsive<
 >;
 
 type ColorObjects = 'feedback' | 'surface' | 'interactive';
+type BorderOnlyColorObjects = 'popup';
 type BackgroundOnlyColorObjects = 'popup' | 'overlay';
 type BackgroundColorString<
   T extends ColorObjects | BackgroundOnlyColorObjects
 > = `${T}.background.${DotNotationToken<Theme['colors'][T]['background']>}`;
-type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationToken<
-  Theme['colors'][T]['border']
->}`;
+type BorderColorString<
+  T extends ColorObjects | BorderOnlyColorObjects
+> = `${T}.border.${DotNotationToken<Theme['colors'][T]['border']>}`;
 
 // Created this as an array so I can reuse it for runtime validation
 const validBoxAsValues = [
@@ -127,7 +128,7 @@ type CommonBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
     borderWidth: keyof Border['width'];
-    borderColor: BorderColorString<'surface'>;
+    borderColor: BorderColorString<'surface'> | BorderColorString<'popup'>;
     borderTopWidth: keyof Border['width'];
     borderTopColor: BorderColorString<'surface'>;
     borderRightWidth: keyof Border['width'];

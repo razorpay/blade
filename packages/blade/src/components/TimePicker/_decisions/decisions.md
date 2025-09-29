@@ -57,7 +57,7 @@ type InputProps = Pick<
 >;
 
 type TimePickerValue = {
-  value: Date;
+  value: Date | null;
   // Future extensibility - can add more properties here
 };
 
@@ -87,12 +87,9 @@ type TimePickerProps = InputProps & {
    * Time format for display
    * @default "12h"
    *
-   * Note: Currently only 12h format is supported.
-   * 24h format will be added once we upgrade to Mantine v8.
-   *
-   * COMMENTED OUT: No need to expose this prop since we only support one format
+   * Supports both 12h and 24h formats built with React Aria
    */
-  // timeFormat?: '12h';
+  timeFormat?: '12h' | '24h';
 
   /**
    * Step interval for minutes
@@ -240,17 +237,29 @@ But still we could expose TimeSelector as a standalone component for advanced us
 />
 ```
 
-### 12-Hour Format (Current Support)
+### 12-Hour Format
 
 ```jsx
 <TimePicker
   label="Appointment time"
+  timeFormat="12h"
   defaultValue={new Date('2024-01-01T14:30:00')}
   onChange={({ value }) => console.log(value)}
 />
 ```
 
-> **Note**: Currently, only 12-hour format is supported. The `timeFormat` prop has been removed since we only support one format. 24-hour format will be added in a future release once we upgrade to Mantine v8.
+### 24-Hour Format
+
+```jsx
+<TimePicker
+  label="Appointment time"
+  timeFormat="24h"
+  defaultValue={new Date('2024-01-01T14:30:00')}
+  onChange={({ value }) => console.log(value)}
+/>
+```
+
+> **Note**: Both 12-hour and 24-hour formats are supported using React Aria. Use the `timeFormat` prop to specify the desired format.
 
 ### Time Range Support
 
@@ -429,8 +438,8 @@ When the dropdown is open and focused:
 
 ## Accessibility
 
-Accessibility will mostly be handled by mantine,
-We will just need to make sure the TimePicker component is working correctly & is usable/accessible with proper focus management, keyboard navigation, and screen reader support.
+Accessibility is comprehensively handled by React Aria,
+We benefit from Adobe's accessibility expertise with built-in ARIA attributes, focus management, keyboard navigation, and screen reader support. React Aria provides industry-leading accessibility patterns out of the box.
 
 ## Future Integrations
 
@@ -455,31 +464,57 @@ TimePicker is designed to integrate seamlessly with ListView patterns for time-b
 
 ## Time Format Decision
 
-**Decision**: For the initial release, we'll provide **only 12h format** support.
+**Decision**: We support **both 12h and 24h formats** using React Aria.
+
+**TimePicker Recent Update** :
+
+- We know Mantine v8 upgrade is not straightforward as its major version upgrade(https://razorpay.slack.com/archives/C01H13RTF8V/p1753818366922869)
+
+- Initially thought Mantine v6 TimeInput would work: even though it uses native `<input type="time">`, it seemed to bypass OS settings and always show 12h format. I verified this by switching my OS to 24h → MDN docs show native input should reflect OS, and indeed native input updated to 24h, but Mantine stayed in 12h :white_check_mark:
+
+- However, after a laptop restart Mantine also switched to 24h :sweat_smile: and on mobile the behavior was inconsistent → so not reliable
+
+- After further discussion, we agreed to lean towards either:
+
+  - A custom implementation, or
+  - A library that supports both date + time so we can migrate our DatePicker later
+
+**Library Exploration**
+
+❌ **Didn't work**:
+
+- react-time-picker → limited styling, clunky AM/PM dropdown
+- react-datetime → requires moment.js (legacy), heavy bundle
+- Most others → React 18 only, poor mobile UX, or styling constraints
+
+✅ **Top Pick: React Aria + React Stately**
+
+- Headless → full UI control (same approach as our DatePicker)
+- React 17 compatible → no upgrade pressure
+- Supports both date + time
+- Mobile-first → works with our BottomSheet pattern
+- Segment-based → Hour | Minute | AM/PM as separate styled parts (no ugly dropdowns)
+- Adobe-maintained, accessibility built-in
 
 **Implementation**:
 
-- The `timeFormat` prop has been commented out from the API since we only support one format
-- TimePicker will default to 12h format without requiring any prop configuration
-- This reduces API complexity and potential confusion for consumers
+- The `timeFormat` prop is now available and supports both `'12h'` and `'24h'`
+- TimePicker defaults to 12h format for backwards compatibility
+- Full control over time format rendering and interaction
+- Consistent behavior across all platforms and OS settings
 
-**Rationale**:
+**Benefits of React Aria Implementation**:
 
-- Currently, there's no established business case or user requirement for 24h format
-- Mantine v6 (our current version) has limitations with 24h format support
-- Mantine v8 provides better 24h format support, but we cannot upgrade immediately due to technical constraints
-- No need to expose a prop when only one option is available
-
-**Future Plan**:
-
-- Once we upgrade to Mantine v8, we'll add 24h format support
-- The `timeFormat` prop will be uncommented and exposed in the API
-- This will be documented and communicated as a feature enhancement
+- **Reliability**: Consistent time format behavior regardless of OS settings
+- **Flexibility**: Both 12h and 24h formats supported from day one
+- **Accessibility**: Industry-leading accessibility patterns built-in
+- **Future-proof**: Headless architecture allows easy customization
+- **Mobile UX**: Better mobile experience with segment-based interaction
 
 **References**:
 
-- [24h Format Support Discussion](https://razorpay.slack.com/archives/C01H13RTF8V/p1755606723861109) - Discussion on why we're not implementing 24h format currently
 - [Mantine v8 Upgrade Constraints](https://razorpay.slack.com/archives/C01H13RTF8V/p1753818366922869) - Technical reasons for not upgrading to Mantine v8 right now
+- [TimePicker Discussion](https://razorpay.slack.com/archives/C01H13RTF8V/p1755606723861109) - TimePicker React Aria implementation discussion and POC results
 
 ## Integration with i18nify
 
@@ -487,11 +522,13 @@ We need to figure out how to integrate the time picker with i18nify,
 
 ```js
 // Consumer will have to handle locale-specific time formatting
-// Currently only 12h format is supported (timeFormat prop removed)
+// Both 12h and 24h formats are supported with timeFormat prop
 <TimePicker locale="my" />
 ```
 
 ## References
 
 - [TimePicker - Mantine Upgrade Exploration](https://razorpay.slack.com/archives/C01H13RTF8V/p1753818366922869)
-  - We will be using [mantine](https://mantine.dev/dates/time-input/) for the TimeInput component as it provides cross-platform consistency and is highly customizable.
+
+- [TimePicker - React Aria Implementation](https://razorpay.slack.com/archives/C01H13RTF8V/p1755606723861109)
+  - We chose [React Aria](https://react-spectrum.adobe.com/react-aria/useTimeField.html) for the TimePicker component as it provides better reliability, accessibility, and supports both 12h/24h formats consistently.

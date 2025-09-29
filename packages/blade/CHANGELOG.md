@@ -1,5 +1,52 @@
 # @razorpay/blade
 
+## 12.56.1
+
+### Patch Changes
+
+- 950c4881f: fix(blade): resolve stale values and button default behaviour in preset dropdown of datepicker
+
+## 12.56.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade): add BarChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-barchart--docs)
+
+## 12.55.1
+
+### Patch Changes
+
+- fa2f47cad: fix(blade): invoke onApply of DatePicker when preset is selected from the preset dropdown
+- 2218df3db: feat(DropdownOverlay): add 'data-analytics' attribute
+
+## 12.55.0
+
+### Minor Changes
+
+- ac1d4fb54: feat(blade): add support for non-dismissible modals & bottomsheet
+
+  Introduces a new prop `isDismissible` in `Modal` and `BottomSheet` which can be used to prevent users from accidentally dismissing modals and bottomSheet by clicking outside or pressing the escape key. When `isDismissible={false}`, the close button is automatically hidden and the modal and bottomSheet can only be closed through explicit user actions.
+
+  ```jsx
+  <Modal isOpen={isOpen} isDismissible={false}>
+    // .... modal content ....
+  </Modal>
+  ```
+
+  ```jsx
+  <BottomSheet isOpen={isOpen} isDismissible={false}>
+    // .... bottomsheet component ....
+  </BottomSheet>
+  ```
+
+## 12.54.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
 ## 12.53.1
 
 ### Patch Changes

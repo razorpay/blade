@@ -21,7 +21,7 @@ type UsePopupProps = {
   open?: boolean;
   placement: UseFloatingOptions['placement'];
   onOpenChange?: UseFloatingOptions['onOpenChange'];
-  referenceRef: React.RefObject<HTMLButtonElement>;
+  referenceRef: React.RefObject<HTMLButtonElement> | React.RefObject<HTMLElement>;
   crossAxisOffset?: number;
 };
 

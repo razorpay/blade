@@ -43,7 +43,7 @@ type ChartAreaWrapperProps = {
   children?: React.ReactNode;
   colorTheme?: colorTheme;
   data: data[];
-};
+} & BoxProps;
 
 type ChartReferenceLineProps = {
   /**

@@ -19,7 +19,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="LineChart"
       componentDescription="A Line Chart component built on top of Recharts with Blade design system styling."
-      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188716&p=f&m=dev"
+      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=93596-46375&m=dev"
       apiDecisionLink="https://github.com/razorpay/blade/blob/5920fbd32c70793454f8c8c6ff544b2a7413afb5/packages/blade/src/components/Charts/_decisions/decisions.md"
     >
       <Heading size="large">Usage</Heading>
