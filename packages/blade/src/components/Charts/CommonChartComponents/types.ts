@@ -5,7 +5,6 @@ import type {
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
   ReferenceLineProps as RechartsReferenceLineProps,
-  LabelProps as RechartsLabelProps,
 } from 'recharts';
 import type { ComponentProps } from 'react';
 import type {
@@ -73,5 +72,4 @@ export type {
   ChartCartesianGridProps,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
-  RechartsLabelProps as ChartLabelProps,
 };

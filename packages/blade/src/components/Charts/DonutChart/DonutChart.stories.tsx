@@ -6,7 +6,6 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartDonutCell,
-  ChartLabel,
 } from '~components/Charts';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography/Heading';
@@ -258,10 +257,14 @@ SemiCircleDonutChartWithCenterText.parameters = {
 };
 
 // 9. Donut Chart with Amount
-export const DonutChartWithCustomComponent: StoryFn<typeof ChartDonut> = () => {
+export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="300px">
+      <ChartDonutWrapper
+        width="500px"
+        height="300px"
+        content={<Amount value={200} size="2xlarge" type="heading" />}
+      >
         <ChartDonut dataKey="value" nameKey="name" data={chartData}>
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
@@ -269,17 +272,6 @@ export const DonutChartWithCustomComponent: StoryFn<typeof ChartDonut> = () => {
           <ChartDonutCell color="chart.background.sequential.azure.300" />
           <ChartDonutCell color="chart.background.sequential.azure.200" />
         </ChartDonut>
-        <ChartLabel
-          content={() => {
-            return (
-              <g>
-                <foreignObject x={195} y={115} width={120} height={50}>
-                  <Amount value={200} size="2xlarge" type="heading" />
-                </foreignObject>
-              </g>
-            );
-          }}
-        />
         <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>
@@ -287,7 +279,7 @@ export const DonutChartWithCustomComponent: StoryFn<typeof ChartDonut> = () => {
   );
 };
 
-DonutChartWithCustomComponent.parameters = {
+DonutChartWithAmount.parameters = {
   controls: { disable: true },
 };
 

@@ -1,4 +1,4 @@
-import React, { isValidElement, useMemo, useState } from 'react';
+import React, { isValidElement, useMemo, useState, useRef, useEffect } from 'react';
 import {
   PieChart as RechartsPieChart,
   Pie as RechartsPie,
@@ -45,6 +45,29 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   ...restProps
 }) => {
   const { theme } = useTheme();
+  const [legendHeight, setLegendHeight] = useState(0);
+  const chartRef = useRef<HTMLDivElement>(null);
+  const isValuePresentInContent = content && typeof content === 'object' && 'value' in content;
+  const isLabelPresentInContent = content && typeof content === 'object' && 'label' in content;
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          const legendWrapper = chartRef.current?.querySelector('.recharts-legend-wrapper');
+          if (legendWrapper) {
+            const height = legendWrapper.getBoundingClientRect().height;
+            setLegendHeight(height);
+          }
+        }
+      });
+    });
+
+    if (chartRef.current) {
+      observer.observe(chartRef.current, { childList: true, subtree: true });
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const pieChartRadius: ChartRadius = useMemo(() => {
     if (Array.isArray(children)) {
@@ -59,16 +82,18 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
 
   return (
     <BaseBox
+      ref={chartRef}
       {...metaAttribute({ name: 'donut-chart', testID })}
       {...makeAnalyticsAttribute(restProps)}
       width="100%"
       height="100%"
       {...restProps}
+      position="relative"
     >
       <RechartsResponsiveContainer width="100%" height="100%">
         <RechartsPieChart>
           {children}
-          {content?.label && (
+          {isLabelPresentInContent && (
             <Label
               position="center"
               fill={theme.colors.surface.text.gray.muted}
@@ -82,7 +107,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               fontWeight={theme.typography.fonts.weight.medium}
               letterSpacing={theme.typography.letterSpacings[100]}
               dy={
-                content?.value
+                isValuePresentInContent
                   ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withText
                   : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
               }
@@ -90,7 +115,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               {content?.label}
             </Label>
           )}
-          {content?.value && (
+          {isValuePresentInContent && (
             <Label
               position="center"
               fill={theme.colors.surface.text.gray.normal}
@@ -104,7 +129,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               fontWeight={theme.typography.fonts.weight.bold}
               letterSpacing={theme.typography.letterSpacings[100]}
               dy={
-                content?.label
+                isLabelPresentInContent
                   ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withLabel
                   : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
               }
@@ -114,6 +139,19 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           )}
         </RechartsPieChart>
       </RechartsResponsiveContainer>
+
+      {isValidElement(content) && (
+        <BaseBox
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform={`translate(-50%, calc(-50% - ${legendHeight / 2}px))`}
+          zIndex={10}
+          textAlign="center"
+        >
+          {content}
+        </BaseBox>
+      )}
     </BaseBox>
   );
 };

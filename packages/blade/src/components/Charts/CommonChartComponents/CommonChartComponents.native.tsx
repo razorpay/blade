@@ -6,7 +6,6 @@ import type {
   ChartTooltipProps,
   ChartLegendProps,
   ChartCartesianGridProps,
-  ChartLabelProps,
 } from './types';
 import { throwBladeError } from '~utils/logger';
 import { Text } from '~components/Typography';
@@ -65,15 +64,6 @@ const ChartReferenceLine: React.FC<ChartReferenceLineProps> = () => {
   return <Text>XAxis is not available for Native mobile apps.</Text>;
 };
 
-const ChartLabel: React.FC<ChartLabelProps> = () => {
-  throwBladeError({
-    message: 'ChartLabel is not yet implemented for native',
-    moduleName: 'ChartLabel',
-  });
-
-  return <Text>ChartLabel is not available for Native mobile apps.</Text>;
-};
-
 export type {
   ChartReferenceLineProps,
   ChartXAxisProps,
@@ -89,5 +79,4 @@ export {
   ChartLegend,
   ChartTooltip,
   ChartReferenceLine,
-  ChartLabel,
 };
