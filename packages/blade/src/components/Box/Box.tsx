@@ -49,7 +49,7 @@ const validateBackgroundProp = (
  */
 const makeBoxProps = (
   props: BoxProps,
-): KeysRequired<Omit<BoxProps, 'testID' | 'id' | '__brand__'>> => {
+): KeysRequired<Omit<BoxProps, 'testID' | 'id' | '__brand__' | 'elementtiming'>> => {
   return {
     // Layout
     display: props.display,
