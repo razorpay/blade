@@ -21,7 +21,7 @@ const Page = (): React.ReactElement => {
       componentName="AreaChart"
       componentDescription="An Area Chart component built on top of Recharts with Blade design system styling."
       apiDecisionLink={
-        'https://github.com/razorpay/blade/blob/5920fbd32c70793454f8c8c6ff544b2a7413afb5/packages/blade/src/components/Charts/_decisions/decisions.md'
+        'https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md'
       }
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188717&p=f&m=dev"
     >
@@ -252,6 +252,14 @@ export const StackedAreaChart: StoryFn<typeof ChartArea> = ({
           color="chart.background.categorical.azure.moderate"
           {...args}
         />
+        <ChartArea
+          dataKey={dataKey}
+          name={name}
+          type="monotone"
+          stackId="1"
+          color="chart.background.categorical.crimson.moderate"
+          {...args}
+        />
       </ChartAreaWrapper>
     </Box>
   );
@@ -386,7 +394,7 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof ChartArea> = ({
 }) => {
   return (
     <Box width="100%" height="400px">
-      <ChartAreaWrapper data={chartData} colorTheme="default">
+      <ChartAreaWrapper data={chartData} colorTheme="categorical">
         <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />

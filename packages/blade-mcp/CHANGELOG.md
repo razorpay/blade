@@ -1,5 +1,59 @@
 # @razorpay/blade-mcp
 
+## 1.12.0
+
+### Minor Changes
+
+- 6d508bbc8: feat(blade-mcp): add donut chart knowledge base
+
+## 1.11.0
+
+### Minor Changes
+
+- 4f9b1ebd3: feat(blade-mcp): add figma to code image attachment in mcp tool call
+
+### Patch Changes
+
+- aae0f0d15: fix(blade-mcp): remove console logs
+
+## 1.10.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade-mcp): update knowledgebase with BarChart
+
+## 1.9.0
+
+### Minor Changes
+
+- ac1d4fb54: feat(blade): add support for non-dismissible modals & bottomsheet
+
+  Introduces a new prop `isDismissible` in `Modal` and `BottomSheet` which can be used to prevent users from accidentally dismissing modals and bottomSheet by clicking outside or pressing the escape key. When `isDismissible={false}`, the close button is automatically hidden and the modal and bottomSheet can only be closed through explicit user actions.
+
+  ```jsx
+  <Modal isOpen={isOpen} isDismissible={false}>
+    // .... modal content ....
+  </Modal>
+  ```
+
+  ```jsx
+  <BottomSheet isOpen={isOpen} isDismissible={false}>
+    // .... bottomsheet component ....
+  </BottomSheet>
+  ```
+
+## 1.8.0
+
+### Minor Changes
+
+- dd7e18b43: feat(server): add publishLinesOfCodeMetric tool integration
+
+## 1.7.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
 ## 1.6.0
 
 ### Minor Changes

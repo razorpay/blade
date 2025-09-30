@@ -52,6 +52,12 @@ import {
   getChangelogToolSchema,
   getChangelogToolCallback,
 } from './tools/getChangelog.js';
+import {
+  publishLinesOfCodeMetricToolName,
+  publishLinesOfCodeMetricToolDescription,
+  publishLinesOfCodeMetricToolSchema,
+  publishLinesOfCodeMetricToolCallback,
+} from './tools/publishLinesOfCodeMetric.js';
 
 Sentry.init({
   dsn: process.env.BLADE_MCP_SENTRY_DSN,
@@ -117,12 +123,21 @@ try {
     getChangelogToolCallback,
   );
 
+  server.tool(
+    publishLinesOfCodeMetricToolName,
+    publishLinesOfCodeMetricToolDescription,
+    publishLinesOfCodeMetricToolSchema,
+    publishLinesOfCodeMetricToolCallback,
+  );
+
   // Start receiving messages on stdin and sending messages on stdout
   const transport = new StdioServerTransport();
 
   // Use Promise handling for async operations
   await server.connect(transport);
-  console.log('Blade MCP connected successfully.');
+
+  // Why console.error? Checkout https://modelcontextprotocol.io/quickstart/server#logging-in-mcp-servers-2
+  console.error('Blade MCP connected successfully.');
 } catch (error: unknown) {
   Sentry.captureException(error);
   console.error('Blade MCP Error', error);

@@ -100,6 +100,7 @@ export type StyledBaseInputProps = {
   | 'isDropdownTrigger'
   | 'tabIndex'
   | 'valueSuffix'
+  | 'children'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

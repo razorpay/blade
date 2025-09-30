@@ -61,6 +61,7 @@ const Modal = ({
   isOpen = false,
   children,
   onDismiss,
+  isDismissible = true,
   initialFocusRef,
   size = 'small',
   accessibilityLabel,
@@ -97,15 +98,17 @@ const Modal = ({
     () => ({
       isOpen,
       close: onDismiss,
+      isDismissible,
       defaultInitialFocusRef,
       isVisible,
     }),
-    [isOpen, onDismiss, defaultInitialFocusRef, isVisible],
+    [isOpen, onDismiss, isDismissible, defaultInitialFocusRef, isVisible],
   );
+
   const handleKeyDown = (event: React.KeyboardEvent): void => {
-    // close modal on escape key press
-    if (event?.key === 'Escape' || event?.code === 'Escape') {
-      onDismiss();
+    // close modal on escape key press only if dismissible
+    if (isDismissible && (event?.key === 'Escape' || event?.code === 'Escape')) {
+      onDismiss?.();
     }
   };
 

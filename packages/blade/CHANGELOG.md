@@ -1,5 +1,97 @@
 # @razorpay/blade
 
+## 12.58.0
+
+### Minor Changes
+
+- 6d508bbc8: ## feat(blade): add donut charts 🍩
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-donutchart--docs)
+
+  ### Deprecation of `colorTheme='default'`
+
+  The `default` option for the `colorTheme` prop has been deprecated to improve clarity and provide a more descriptive API. The new default theme is `'categorical'`. This change makes the theme's purpose—applying a set of distinct colors for different categories—more explicit.
+
+  **Impact**
+
+  Implementation that explicitly sets `colorTheme='default'` will use `'categorical'` as default. Implementations that did not specify a `colorTheme` will automatically use the new `'categorical'` default and should see no change in behavior.
+
+  **How to Upgrade**
+
+  You need to update your code where `colorTheme='default'` is used. You can either remove the prop entirely or change the value to `'categorical'`.
+
+  ```diff
+  - <YourComponent colorTheme='default' />
+  + <YourComponent colorTheme='categorical' />
+
+  // Or, since it's the new default, simply remove the prop:
+  + <YourComponent />
+
+  ```
+
+  ### Updation of color mapping tokens for charts
+
+  We have update color mapping of few token related to charts. you might need to update your snaps.
+
+## 12.57.0
+
+### Minor Changes
+
+- f8be2c8ef: feat(Accordion): add `minWidth` prop to the Accordion component
+
+## 12.56.1
+
+### Patch Changes
+
+- 950c4881f: fix(blade): resolve stale values and button default behaviour in preset dropdown of datepicker
+
+## 12.56.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade): add BarChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-barchart--docs)
+
+## 12.55.1
+
+### Patch Changes
+
+- fa2f47cad: fix(blade): invoke onApply of DatePicker when preset is selected from the preset dropdown
+- 2218df3db: feat(DropdownOverlay): add 'data-analytics' attribute
+
+## 12.55.0
+
+### Minor Changes
+
+- ac1d4fb54: feat(blade): add support for non-dismissible modals & bottomsheet
+
+  Introduces a new prop `isDismissible` in `Modal` and `BottomSheet` which can be used to prevent users from accidentally dismissing modals and bottomSheet by clicking outside or pressing the escape key. When `isDismissible={false}`, the close button is automatically hidden and the modal and bottomSheet can only be closed through explicit user actions.
+
+  ```jsx
+  <Modal isOpen={isOpen} isDismissible={false}>
+    // .... modal content ....
+  </Modal>
+  ```
+
+  ```jsx
+  <BottomSheet isOpen={isOpen} isDismissible={false}>
+    // .... bottomsheet component ....
+  </BottomSheet>
+  ```
+
+## 12.54.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
+## 12.53.1
+
+### Patch Changes
+
+- 0ff0152b2: fix(ActionListItem): support non-string values in item
+
 ## 12.53.0
 
 ### Minor Changes

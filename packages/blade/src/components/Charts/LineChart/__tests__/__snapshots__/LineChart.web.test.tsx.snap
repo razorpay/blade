@@ -1204,7 +1204,7 @@ exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
                   fill="none"
                   height="790"
                   id="recharts-line-:rf:"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -1360,7 +1360,7 @@ exports[`<LineChart /> should render LineChart with custom colors 1`] = `
                   fill="none"
                   height="790"
                   id="recharts-line-:ra:"
-                  stroke="hsla(214, 20%, 84%, 1)"
+                  stroke="hsla(216, 18%, 62%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -1375,7 +1375,7 @@ exports[`<LineChart /> should render LineChart with custom colors 1`] = `
                   fill="none"
                   height="790"
                   id="recharts-line-:rb:"
-                  stroke="hsla(25, 100%, 80%, 1)"
+                  stroke="hsla(25, 90%, 48%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -1468,7 +1468,7 @@ exports[`<LineChart /> should render LineChart with different line types 1`] = `
                   fill="none"
                   height="790"
                   id="recharts-line-:r5:"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -1483,7 +1483,7 @@ exports[`<LineChart /> should render LineChart with different line types 1`] = `
                   fill="none"
                   height="790"
                   id="recharts-line-:r6:"
-                  stroke="hsla(252, 100%, 88%, 1)"
+                  stroke="hsla(252, 57%, 54%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -1576,7 +1576,7 @@ exports[`<LineChart /> should render LineChart with different stroke styles 1`] 
                   fill="none"
                   height="790"
                   id="recharts-line-:r8:"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px, 0px"
                   stroke-width="3"
                   width="790"
@@ -1591,7 +1591,7 @@ exports[`<LineChart /> should render LineChart with different stroke styles 1`] 
                   fill="none"
                   height="790"
                   id="recharts-line-:r9:"
-                  stroke="hsla(252, 100%, 88%, 1)"
+                  stroke="hsla(252, 57%, 54%, 1)"
                   stroke-dasharray="0px, 0px"
                   stroke-width="3"
                   width="790"
@@ -1732,7 +1732,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                   fill="none"
                   height="790"
                   id="recharts-line-:rd:"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -1827,7 +1827,7 @@ exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
                   height="790"
                   id="recharts-line-:r2:"
                   name="Profit"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -1843,7 +1843,7 @@ exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
                   height="790"
                   id="recharts-line-:r3:"
                   name="Revenue"
-                  stroke="hsla(252, 100%, 88%, 1)"
+                  stroke="hsla(252, 57%, 54%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -1936,7 +1936,7 @@ exports[`<LineChart /> should render LineChart with showLegend false 1`] = `
                   fill="none"
                   height="790"
                   id="recharts-line-:rh:"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="790"
@@ -2041,22 +2041,25 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  padding-top: 12px;
-}
-
-.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  width: auto;
   gap: 16px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2067,7 +2070,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
   align-items: center;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2100,7 +2103,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c6.c6.c6.c6.c6 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2151,7 +2154,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   data-blade-component="heading"
                 />
                 <div
-                  class="c3"
+                  class=""
                   data-blade-component="box"
                 />
               </div>
@@ -2161,22 +2164,22 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 16px;"
             >
               <div
-                class="c4"
+                class="c3"
                 data-blade-component="box"
               >
                 <div
-                  class="c5"
+                  class="c4"
                   data-blade-component="box"
                 >
                   <div
-                    class="c6"
+                    class="c5"
                     data-blade-component="box"
                   >
                     <span
-                      style="background-color: rgb(92, 92, 92); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
+                      style="background-color: rgb(0, 0, 0); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
                     />
                     <p
-                      class="c7"
+                      class="c6"
                       data-blade-component="text"
                     >
                       Profit
@@ -2184,18 +2187,18 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   </div>
                 </div>
                 <div
-                  class="c5"
+                  class="c4"
                   data-blade-component="box"
                 >
                   <div
-                    class="c6"
+                    class="c5"
                     data-blade-component="box"
                   >
                     <span
                       style="background-color: rgb(180, 180, 180); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
                     />
                     <p
-                      class="c7"
+                      class="c6"
                       data-blade-component="text"
                     >
                       Sales
@@ -2735,7 +2738,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   height="760"
                   id="recharts-line-:rm:"
                   name="Profit"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="730"
@@ -3164,7 +3167,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                   height="760"
                   id="recharts-line-:r19:"
                   name="Profit"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="730"
@@ -3633,7 +3636,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   height="760"
                   id="recharts-line-:r1b:"
                   name="Percentage"
-                  stroke="hsla(51, 100%, 68%, 1)"
+                  stroke="hsla(50, 100%, 40%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-width="3"
                   width="730"
