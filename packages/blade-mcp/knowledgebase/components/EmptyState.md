@@ -57,11 +57,11 @@ export type EmptyStateSize = 'small' | 'medium' | 'large' | 'xlarge';
 ### Complete EmptyState with Interactive Functionality
 
 ```jsx
+import { useState } from 'react';
 import { EmptyState } from '@razorpay/blade/components';
 import { Button } from '@razorpay/blade/components';
 import { Link } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
-import { useState } from 'react';
 
 const ErrorEmptyState = () => {
   const [isRetrying, setIsRetrying] = useState(false);
@@ -95,7 +95,7 @@ const ErrorEmptyState = () => {
     >
       <Box display="flex" flexDirection="column" gap="spacing.4" alignItems="center">
         <Box display="flex" flexDirection="row" gap="spacing.3">
-          <Button onClick={handleRetry} isLoading={isRetrying} loadingText="Retrying...">
+          <Button onClick={handleRetry} isLoading={isRetrying}>
             Try Again
           </Button>
           <Button variant="secondary" onClick={() => window.history.back()}>

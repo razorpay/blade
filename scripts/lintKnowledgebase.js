@@ -90,14 +90,17 @@ function isCodeBlockInComment(content, blockStart) {
 }
 
 // Function to process and add errors to the file errors map
-function addErrorsToMap(file, typeErrors, fileErrorsMap) {
+function addErrorsToMap(file, typeErrors, fileErrorsMap, markdownLineNumber) {
   // Filter and process errors
   const processedErrors = typeErrors
     .map((error) => {
       if (error.includes('Expression expected') || error.includes('Cannot find module')) {
         return null;
       }
-      return error.trim();
+      return {
+        error: error.trim(),
+        markdownLineNumber,
+      };
     })
     .filter(Boolean);
 
@@ -124,14 +127,22 @@ for (const file of filesToLint) {
   const validCodeBlocks = [];
   let match;
 
+  // Reset regex lastIndex to ensure we start from the beginning
+  codeBlockRegex.lastIndex = 0;
+
   while ((match = codeBlockRegex.exec(fileContent)) !== null) {
     const blockStart = match.index;
 
     // Only include code blocks that are not within comments
     if (!isCodeBlockInComment(fileContent, blockStart)) {
+      // Calculate the line number where the code block starts
+      const textBeforeBlock = fileContent.substring(0, blockStart);
+      const lineNumber = textBeforeBlock.split('\n').length;
+
       validCodeBlocks.push({
         lang: match[1], // 'tsx' or 'jsx'
         code: match[2].trim(), // the actual code
+        markdownLineNumber: lineNumber, // line number in the original markdown file
       });
     }
   }
@@ -139,7 +150,7 @@ for (const file of filesToLint) {
   for (const codeBlock of validCodeBlocks) {
     const { typeErrors } = getTypeErrors(codeBlock.code);
     if (typeErrors.length > 0) {
-      addErrorsToMap(file, typeErrors, fileErrorsMap);
+      addErrorsToMap(file, typeErrors, fileErrorsMap, codeBlock.markdownLineNumber);
     }
   }
 }
