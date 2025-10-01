@@ -444,7 +444,6 @@ import {
   ActionListItem,
   Counter,
   Badge,
-  Button,
   Box,
 } from '@razorpay/blade/components';
 import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/components';
@@ -452,7 +451,56 @@ import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/c
 // Using the same PaymentItem type and data from previous example
 // ... (PaymentItem type, MethodFilterValues, nodes, data definitions)
 
-function MultiSelectListViewExample() {
+type PaymentItem = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  status: string;
+  date: Date;
+  type: string;
+  method: {
+    key: string;
+    title: string;
+  };
+  bank: string;
+  account: string;
+  name: string;
+};
+
+const MethodFilterValues = [
+  { key: 'bank-transfer', title: 'Bank Transfer' },
+  { key: 'credit-card', title: 'Credit Card' },
+  { key: 'paypal', title: 'PayPal' },
+];
+
+const nodes: PaymentItem[] = [
+  ...Array.from({ length: 30 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    label: `Payment ${i + 1}`,
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
+    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
+    method: MethodFilterValues[Math.floor(Math.random() * 3)],
+    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+    name: ['John Doe', 'Jane Doe', 'Bob Smith', 'Alice Smith'][Math.floor(Math.random() * 4)],
+  })),
+];
+
+const data: TableData<PaymentItem> = { nodes };
+
+const quickFilterColorMapping: Record<string, CounterProps['color']> = {
+  All: 'primary',
+  Pending: 'notice',
+  Failed: 'negative',
+  Completed: 'neutral',
+};
+
+const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
+
+function MultiSelectListViewExample(): React.ReactNode {
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string[]>([]);
   const [searchValue, setSearchValue] = useState<string | undefined>('');
@@ -535,7 +583,7 @@ function MultiSelectListViewExample() {
     search: string | undefined,
     method: string | undefined,
     dateRange: DatesRangeValue | undefined,
-  ) => {
+  ): void => {
     const quickFilterData = getQuickFilterData(data, quickFilters);
     const searchValueData = getSearchedData(quickFilterData, search);
     const methodFilterData = getMethodFilterData(searchValueData, method);
@@ -560,10 +608,7 @@ function MultiSelectListViewExample() {
                 const shouldChangeValue = values.includes('LastWeek');
 
                 if (!shouldChangeValue) {
-                  const rangeToUse = compareDateRangeValues(
-                    lastWeekDateRange,
-                    filterDateRange as DatesRangeValue,
-                  )
+                  const rangeToUse = compareDateRangeValues(lastWeekDateRange, filterDateRange!)
                     ? undefined
                     : filterDateRange;
 
@@ -794,7 +839,56 @@ import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/c
 // Using the same PaymentItem type and data from previous examples
 // ... (PaymentItem type, MethodFilterValues, nodes, data definitions)
 
-function MinimalListViewExample() {
+type PaymentItem = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  status: string;
+  date: Date;
+  type: string;
+  method: {
+    key: string;
+    title: string;
+  };
+  bank: string;
+  account: string;
+  name: string;
+};
+
+const MethodFilterValues = [
+  { key: 'bank-transfer', title: 'Bank Transfer' },
+  { key: 'credit-card', title: 'Credit Card' },
+  { key: 'paypal', title: 'PayPal' },
+];
+
+const quickFilters = ['All', 'Pending', 'Failed', 'Completed'];
+
+const nodes: PaymentItem[] = [
+  ...Array.from({ length: 30 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    label: `Payment ${i + 1}`,
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
+    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
+    method: MethodFilterValues[Math.floor(Math.random() * 3)],
+    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+    name: ['John Doe', 'Jane Doe', 'Bob Smith', 'Alice Smith'][Math.floor(Math.random() * 4)],
+  })),
+];
+
+const data: TableData<PaymentItem> = { nodes };
+
+const quickFilterColorMapping: Record<string, CounterProps['color']> = {
+  All: 'primary',
+  Pending: 'notice',
+  Failed: 'negative',
+  Completed: 'neutral',
+};
+
+function MinimalListViewExample(): React.ReactElement {
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
   const [methodFilter, setMethodFilter] = useState<string | undefined>(undefined);
@@ -846,7 +940,7 @@ function MinimalListViewExample() {
     quickFilter: string,
     method: string | undefined,
     dateRange: DatesRangeValue | undefined,
-  ) => {
+  ): void => {
     const quickFilterData = getQuickFilterData(data, quickFilter);
     const methodFilterData = getMethodFilterData(quickFilterData, method);
     const dateRangeFilterData = getFilterRangeData(methodFilterData, dateRange);
