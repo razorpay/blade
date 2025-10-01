@@ -53,7 +53,8 @@ const Page = (): React.ReactElement => {
 };
 
 const propsCategory = {
-  CHAT_DONUT_PROPS: 'ChartDonut Props',
+  CHART_DONUT_PROPS: 'ChartDonut Props',
+  CHART_DONUT_WRAPPER_PROPS: 'ChartDonutWrapper Props',
 };
 
 export default {
@@ -61,24 +62,41 @@ export default {
   component: ChartDonut,
   tags: ['autodocs'],
   argTypes: {
+    // ChartDonut props
     type: {
       control: { type: 'select' },
       options: ['circle', 'semicircle'],
       table: {
-        category: propsCategory.CHAT_DONUT_PROPS,
+        category: propsCategory.CHART_DONUT_PROPS,
       },
     },
     radius: {
       control: { type: 'select' },
       options: ['small', 'medium', 'large'],
       table: {
-        category: propsCategory.CHAT_DONUT_PROPS,
+        category: propsCategory.CHART_DONUT_PROPS,
+      },
+    },
+    // ChartDonutWrapper props
+    content: {
+      control: { type: 'object' },
+      table: {
+        category: propsCategory.CHART_DONUT_WRAPPER_PROPS,
+      },
+    },
+    colorTheme: {
+      control: { type: 'categorical' },
+      table: {
+        category: propsCategory.CHART_DONUT_WRAPPER_PROPS,
       },
     },
   },
   parameters: {
     docs: {
       page: Page,
+    },
+    controls: {
+      exclude: ['dataKey', 'nameKey', 'cx', 'cy', 'children', 'data'],
     },
   },
 } as Meta<typeof ChartDonut>;
@@ -111,11 +129,14 @@ const chartsLargeData = [
 ];
 
 // 1. Basic Donut Chart
-export const BasicDonutChart: StoryFn<typeof ChartDonut> = ({ ...args }) => {
+export const BasicDonutChart: StoryFn<typeof ChartDonut> = (args) => {
+  // Extract ChartDonut props and ChartDonutWrapper props
+  const { type, radius, dataKey, nameKey, data, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="300px">
-        <ChartDonut {...args} dataKey="value" nameKey="name" data={chartData} />
+      <ChartDonutWrapper {...wrapperProps}>
+        <ChartDonut type={type} radius={radius} dataKey="value" nameKey="name" data={chartData} />
         <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>
@@ -124,11 +145,25 @@ export const BasicDonutChart: StoryFn<typeof ChartDonut> = ({ ...args }) => {
 };
 
 // 2. Donut Chart with Center Text
-export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
+export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = (args) => {
+  // Extract ChartDonut props and ChartDonutWrapper props
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper content={{ label: 'Total', value: '1300' }} width="500px" height="300px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} radius="medium">
+      <ChartDonutWrapper
+        content={{ label: 'Total', value: '1300' }}
+        width="500px"
+        height="300px"
+        {...wrapperProps}
+      >
+        <ChartDonut
+          dataKey="value"
+          nameKey="name"
+          data={chartData}
+          radius={radius || 'medium'}
+          type={type}
+        >
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
           <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -140,18 +175,22 @@ export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
       </ChartDonutWrapper>
     </Box>
   );
-};
-
-DonutChartWithCenterText.parameters = {
-  controls: { disable: true },
 };
 
 // 3. Small Radius Donut Chart
-export const SmallRadiusDonutChart: StoryFn<typeof ChartDonut> = () => {
+export const SmallRadiusDonutChart: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="500px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} radius="small">
+      <ChartDonutWrapper width="500px" height="500px" {...wrapperProps}>
+        <ChartDonut
+          dataKey="value"
+          nameKey="name"
+          data={chartData}
+          radius={radius || 'small'}
+          type={type}
+        >
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
           <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -162,18 +201,22 @@ export const SmallRadiusDonutChart: StoryFn<typeof ChartDonut> = () => {
       </ChartDonutWrapper>
     </Box>
   );
-};
-
-SmallRadiusDonutChart.parameters = {
-  controls: { disable: true },
 };
 
 // 4. Extra Large Radius Donut Chart
-export const ExtraLargeRadiusDonutChart: StoryFn<typeof ChartDonut> = () => {
+export const ExtraLargeRadiusDonutChart: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="400px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} radius="large">
+      <ChartDonutWrapper width="500px" height="400px" {...wrapperProps}>
+        <ChartDonut
+          dataKey="value"
+          nameKey="name"
+          data={chartData}
+          radius={radius || 'large'}
+          type={type}
+        >
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
           <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -185,18 +228,22 @@ export const ExtraLargeRadiusDonutChart: StoryFn<typeof ChartDonut> = () => {
       </ChartDonutWrapper>
     </Box>
   );
-};
-
-ExtraLargeRadiusDonutChart.parameters = {
-  controls: { disable: true },
 };
 
 // 5. Custom Active Shape Donut Chart
-export const ChartWithToolTip: StoryFn<typeof ChartDonut> = () => {
+export const ChartWithToolTip: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="300px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData}>
+      <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
+        <ChartDonut
+          dataKey="value"
+          nameKey="name"
+          data={chartData}
+          radius={radius || 'large'}
+          type={type}
+        >
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
           <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -208,18 +255,23 @@ export const ChartWithToolTip: StoryFn<typeof ChartDonut> = () => {
       </ChartDonutWrapper>
     </Box>
   );
-};
-
-ChartWithToolTip.parameters = {
-  controls: { disable: true },
 };
 
 // 6. Donut Chart with Color Theme
-export const DonutChartWithColorTheme: StoryFn<typeof ChartDonut> = () => {
+export const DonutChartWithColorTheme: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="300px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} colorTheme="categorical" />
+      <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
+        <ChartDonut
+          dataKey="value"
+          nameKey="name"
+          data={chartData}
+          colorTheme="categorical"
+          radius={radius}
+          type={type}
+        />
         <ChartTooltip />
         <ChartLegend />
       </ChartDonutWrapper>
@@ -227,16 +279,20 @@ export const DonutChartWithColorTheme: StoryFn<typeof ChartDonut> = () => {
   );
 };
 
-DonutChartWithColorTheme.parameters = {
-  controls: { disable: true },
-};
-
 // 7. Donut Chart with Semi Circle
-export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = () => {
+export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="300px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} type="semicircle">
+      <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
+        <ChartDonut
+          dataKey="value"
+          nameKey="name"
+          data={chartData}
+          radius={radius}
+          type={type || 'semicircle'}
+        >
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
           <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -247,19 +303,23 @@ export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = () => {
       </ChartDonutWrapper>
     </Box>
   );
-};
-
-SemiCircleDonutChart.parameters = {
-  controls: { disable: true },
 };
 
 // 8. Donut Chart with Center Text
-export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = () => {
+export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px">
+      <ChartDonutWrapper content={{ value: '1300' }} {...wrapperProps} width="500px" height="300px">
         <ChartTooltip />
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} type="semicircle">
+        <ChartDonut
+          dataKey="value"
+          nameKey="name"
+          data={chartData}
+          radius={radius}
+          type={type || 'semicircle'}
+        >
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
           <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -271,12 +331,10 @@ export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = ()
   );
 };
 
-SemiCircleDonutChartWithCenterText.parameters = {
-  controls: { disable: true },
-};
-
 // 9. Donut Chart with Amount
-export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = () => {
+export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box
       display="flex"
@@ -291,8 +349,9 @@ export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = () => {
           width="500px"
           height="300px"
           content={<Amount value={200} size="2xlarge" type="heading" />}
+          {...wrapperProps}
         >
-          <ChartDonut dataKey="value" nameKey="name" data={chartData}>
+          <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
             <ChartDonutCell color="chart.background.sequential.azure.600" />
             <ChartDonutCell color="chart.background.sequential.azure.500" />
             <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -307,19 +366,18 @@ export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = () => {
   );
 };
 
-DonutChartWithAmount.parameters = {
-  controls: { disable: true },
-};
+export const DonutChartWithVerticalLegend: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
 
-export const DonutChartWithVerticalLegend: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box>
       <ChartDonutWrapper
         width="500px"
         height="300px"
         content={<Amount value={200} size="2xlarge" type="heading" />}
+        {...wrapperProps}
       >
-        <ChartDonut dataKey="value" nameKey="name" data={chartData}>
+        <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
           <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -333,15 +391,13 @@ export const DonutChartWithVerticalLegend: StoryFn<typeof ChartDonut> = () => {
   );
 };
 
-DonutChartWithVerticalLegend.parameters = {
-  controls: { disable: true },
-};
+export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
 
-export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = () => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartData}>
+      <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px" {...wrapperProps}>
+        <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
           <ChartDonutCell color="chart.background.sequential.azure.600" />
           <ChartDonutCell color="chart.background.sequential.azure.500" />
           <ChartDonutCell color="chart.background.sequential.azure.400" />
@@ -355,11 +411,19 @@ export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = () => {
   );
 };
 
-export const DonutChartWithLargeData: StoryFn<typeof ChartDonut> = () => {
+export const DonutChartWithLargeData: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="500px">
-        <ChartDonut dataKey="value" nameKey="name" data={chartsLargeData} />
+      <ChartDonutWrapper width="500px" height="500px" {...wrapperProps}>
+        <ChartDonut
+          dataKey="value"
+          nameKey="name"
+          data={chartsLargeData}
+          type={type}
+          radius={radius}
+        />
         <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>
