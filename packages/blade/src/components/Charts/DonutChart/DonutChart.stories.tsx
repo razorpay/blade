@@ -85,7 +85,8 @@ export default {
       },
     },
     colorTheme: {
-      control: { type: 'categorical' },
+      control: { type: 'select' },
+      options: ['categorical'],
       table: {
         category: propsCategory.CHART_DONUT_WRAPPER_PROPS,
       },
