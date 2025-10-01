@@ -17,16 +17,15 @@ The Confirmation pattern provides a standardized way to seek user confirmation b
 This example demonstrates a comprehensive confirmation dialog that adapts between modal and bottom sheet based on device type. It uses the `ConformationalModalBody` component to maintain consistent layout and styling across different confirmation types.
 
 ```tsx
+
 import React from 'react';
 import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
-  BottomSheetFooter,
   Box,
   Button,
   Text,
@@ -34,18 +33,10 @@ import {
   TrashIcon,
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
-import type { IconColors } from '@razorpay/blade/components';
+import type { IconColors, BoxProps } from '@razorpay/blade/components';
 
 // Types for our confirmation components
 type ConfirmationType = 'neutral' | 'negative' | 'positive';
-
-interface ConformationalModalBodyProps {
-  type: ConfirmationType;
-  icon?: React.ReactNode;
-  title: string;
-  description: string;
-  image?: string;
-}
 
 // ConformationalModalBody component
 const ConformationalModalBody = ({
@@ -64,8 +55,8 @@ const ConformationalModalBody = ({
   const getIconColor = (): IconColors => {
     if (type === 'neutral') {
       return 'surface.icon.gray.subtle';
-    } 
-      return 'feedback.icon.negative.intense';
+    }
+    return 'feedback.icon.negative.intense';
   };
 
   const getBackgroundColor = (): BoxProps['backgroundColor'] => {
@@ -103,19 +94,10 @@ const ConformationalModalBody = ({
         </Box>
       ) : null}
       <Box display="flex" flexDirection="column" gap="spacing.1">
-        <Text 
-          size="large" 
-          weight="semibold"
-          id="confirmation-title"
-        >
+        <Text size="large" weight="semibold">
           {title}
         </Text>
-        <Text 
-          size="medium" 
-          weight="regular" 
-          color="surface.text.gray.muted"
-          id="confirmation-description"
-        >
+        <Text size="medium" weight="regular" color="surface.text.gray.muted">
           {description}
         </Text>
       </Box>
@@ -153,11 +135,6 @@ const ConfirmationDialog: React.FC<{
   const { matchedDeviceType } = useBreakpoint(theme);
   const isMobile = matchedDeviceType === 'mobile';
 
-  const getPrimaryButtonColor = () => {
-    if (type === 'neutral') return 'primary';
-    return 'negative';
-  };
-
   const DialogContent = (
     <>
       <ConformationalModalBody
@@ -175,8 +152,8 @@ const ConfirmationDialog: React.FC<{
         marginTop="spacing.6"
       >
         {secondaryButtonText && (
-          <Button 
-            variant="tertiary" 
+          <Button
+            variant="tertiary"
             isFullWidth={isMobile}
             onClick={onDismiss}
             aria-describedby="confirmation-description"
@@ -184,8 +161,8 @@ const ConfirmationDialog: React.FC<{
             {secondaryButtonText}
           </Button>
         )}
-        <Button 
-          color={getPrimaryButtonColor()} 
+        <Button
+          color={type === 'neutral' ? 'primary' : 'negative'}
           isFullWidth={isMobile}
           onClick={onConfirm}
           isLoading={isLoading}
@@ -199,31 +176,22 @@ const ConfirmationDialog: React.FC<{
 
   if (isMobile) {
     return (
-      <BottomSheet 
-        isOpen={isOpen} 
+      <BottomSheet
+        isOpen={isOpen}
         onDismiss={onDismiss}
         snapPoints={[0.4, 0.6, 0.8]}
         aria-labelledby="confirmation-title"
       >
         <BottomSheetHeader />
-        <BottomSheetBody padding="spacing.6">
-          {DialogContent}
-        </BottomSheetBody>
+        <BottomSheetBody padding="spacing.5">{DialogContent}</BottomSheetBody>
       </BottomSheet>
     );
   }
 
   return (
-    <Modal 
-      isOpen={isOpen} 
-      onDismiss={onDismiss} 
-      size="small"
-      aria-labelledby="confirmation-title"
-    >
+    <Modal isOpen={isOpen} onDismiss={onDismiss} size="small" aria-labelledby="confirmation-title">
       <ModalHeader />
-      <ModalBody padding="spacing.6">
-        {DialogContent}
-      </ModalBody>
+      <ModalBody padding="spacing.6">{DialogContent}</ModalBody>
     </Modal>
   );
 };
@@ -235,11 +203,11 @@ const ConfirmationExample: React.FC = () => {
   const [isSwitchOpen, setIsSwitchOpen] = React.useState(false);
   const [isTourOpen, setIsTourOpen] = React.useState(false);
 
-  const handleDelete = async () => {
+  const handleDelete = async (): Promise<void> => {
     setIsDeleteLoading(true);
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setIsDeleteOpen(false);
     } finally {
       setIsDeleteLoading(false);
@@ -248,11 +216,10 @@ const ConfirmationExample: React.FC = () => {
 
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
-      <Button 
-        color="negative" 
+      <Button
+        color="negative"
         onClick={() => setIsDeleteOpen(true)}
-        aria-haspopup="dialog"
-        icon={<TrashIcon />}
+        icon={TrashIcon}
         iconPosition="left"
       >
         Delete Account
@@ -270,12 +237,7 @@ const ConfirmationExample: React.FC = () => {
         isLoading={isDeleteLoading}
       />
 
-      <Button 
-        onClick={() => setIsSwitchOpen(true)}
-        aria-haspopup="dialog"
-      >
-        Switch Platform
-      </Button>
+      <Button onClick={() => setIsSwitchOpen(true)}>Switch Platform</Button>
       <ConfirmationDialog
         isOpen={isSwitchOpen}
         onDismiss={() => setIsSwitchOpen(false)}
@@ -288,11 +250,7 @@ const ConfirmationExample: React.FC = () => {
         onConfirm={() => setIsSwitchOpen(false)}
       />
 
-      <Button 
-        onClick={() => setIsTourOpen(true)}
-        aria-haspopup="dialog"
-        leftIcon={<MapIcon />}
-      >
+      <Button onClick={() => setIsTourOpen(true)} icon={MapIcon} iconPosition="left">
         Start Product Tour
       </Button>
       <ConfirmationDialog
@@ -312,7 +270,6 @@ const ConfirmationExample: React.FC = () => {
 
 export default ConfirmationExample;
 ```
-
 This example showcases:
 - Usage of `ConformationalModalBody` component for consistent confirmation dialogs
 - Support for different confirmation types (neutral, negative, positive) with appropriate styling
