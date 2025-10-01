@@ -9,7 +9,10 @@ Box is a versatile layout primitive component that serves as the foundational bu
 ## Important Constraints
 
 - `backgroundColor` prop only accepts `transparent`, `surface.background.*`, and `overlay.*` tokens
-- Prefer `Card` component instead of this for adding card with shadows
+
+## Design Guidelines
+
+- Prefer `Card` component instead of this for adding card with shadows. Box component should be primarily used for non-visual layouts (e.g. creating containers, grids, positioning items, etc)
 
 ## TypeScript Types
 
