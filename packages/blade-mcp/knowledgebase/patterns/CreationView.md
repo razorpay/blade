@@ -234,6 +234,8 @@ This example shows a comprehensive multi-step creation flow that adapts to mobil
 
 ```tsx
 import React from 'react';
+import dayjs from 'dayjs';
+import { useTheme, useBreakpoint } from '@razorpay/blade/utils';
 import {
   Box,
   Button,
@@ -245,7 +247,6 @@ import {
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
-  BottomSheetFooter,
   Preview,
   PreviewHeader,
   PreviewBody,
@@ -275,9 +276,6 @@ import {
   Divider,
   ProgressBar,
   Slide,
-  Fade,
-} from '@razorpay/blade/components';
-import {
   CheckIcon,
   FileIcon,
   LockIcon,
@@ -287,9 +285,7 @@ import {
   CalendarIcon,
   ChevronDownIcon,
   ChevronUpIcon,
-} from '@razorpay/blade/tokens';
-import { useIsMobile } from '@razorpay/blade/utils';
-import dayjs from 'dayjs';
+} from '@razorpay/blade/components';
 
 const steps = [
   { title: 'Select Vendor', description: 'Choose a vendor for the GRN', stepNumber: 1 },
@@ -345,10 +341,13 @@ const tableData = {
   ],
 };
 
-function MultiStepCreationView() {
+function MultiStepCreationView(): React.ReactNode {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isDesktop = matchedDeviceType === 'desktop';
+  const isMobile = !isDesktop;
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
-  const isMobile = useIsMobile();
   const [currentStep, setCurrentStep] = React.useState(1);
   const [showStepGroup, setShowStepGroup] = React.useState(false);
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
@@ -720,12 +719,21 @@ function MultiStepCreationView() {
             zIndex={1000}
           >
             {/* Mobile Header */}
-            <Box
-              padding="spacing.4"
-              backgroundColor="surface.background.gray.subtle"
-              borderBottomWidth="thin"
-              borderBottomColor="surface.border.gray.muted"
+            <div
+              style={{
+                padding: 'spacing.4',
+                backgroundColor: 'surface.background.gray.subtle',
+                borderBottomWidth: 'thin',
+                borderBottomColor: 'surface.border.gray.muted',
+              }}
               onClick={() => setShowStepGroup(!showStepGroup)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setShowStepGroup(!showStepGroup);
+                }
+              }}
+              role="button"
+              tabIndex={0}
             >
               <Box display="flex" alignItems="center" justifyContent="center" gap="spacing.2">
                 <Badge>
@@ -734,7 +742,7 @@ function MultiStepCreationView() {
                 <Heading size="small">{currentStepObj?.title}</Heading>
                 {showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />}
               </Box>
-            </Box>
+            </div>
 
             <ProgressBar value={(currentStep / visibleSteps.length) * 100} />
 
@@ -787,7 +795,7 @@ function MultiStepCreationView() {
             <BottomSheet
               isOpen={isPreviewOpen}
               onDismiss={() => setIsPreviewOpen(false)}
-              snapPoints={[0.9]}
+              snapPoints={[0.4, 0.4, 0.9]}
             >
               <BottomSheetHeader title="Review GRN Details" />
               <BottomSheetBody>{renderStepContent()}</BottomSheetBody>
@@ -881,7 +889,7 @@ function ResponsiveModalWrapper({
   footer?: React.ReactElement;
   isOpen: boolean;
   onDismiss: () => void;
-  modalBodyPadding?: string;
+  modalBodyPadding?: 'spacing.0' | 'spacing.6' | undefined;
   modalSize?: 'small' | 'medium' | 'large' | 'full';
   wrapInBottomSheetFooter?: boolean;
   customSnapPoints?: [number, number, number];
@@ -894,7 +902,7 @@ function ResponsiveModalWrapper({
     return (
       <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
         <BottomSheetHeader />
-        <BottomSheetBody padding={modalBodyPadding}>
+        <BottomSheetBody padding="spacing.5">
           {children}
           {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
         </BottomSheetBody>
@@ -912,7 +920,7 @@ function ResponsiveModalWrapper({
   );
 }
 
-function EditAndAddModal() {
+function EditAndAddModal(): React.ReactNode {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -992,7 +1000,7 @@ function ResponsiveModalWrapper({
   footer?: React.ReactElement;
   isOpen: boolean;
   onDismiss: () => void;
-  modalBodyPadding?: string;
+  modalBodyPadding?: 'spacing.0' | 'spacing.6' | undefined;
   modalSize?: 'small' | 'medium' | 'large' | 'full';
   wrapInBottomSheetFooter?: boolean;
   customSnapPoints?: [number, number, number];
@@ -1005,7 +1013,7 @@ function ResponsiveModalWrapper({
     return (
       <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
         <BottomSheetHeader />
-        <BottomSheetBody padding={modalBodyPadding}>
+        <BottomSheetBody padding="spacing.5">
           {children}
           {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
         </BottomSheetBody>
@@ -1023,7 +1031,7 @@ function ResponsiveModalWrapper({
   );
 }
 
-function FlowSelectionModal() {
+function FlowSelectionModal(): React.ReactNode {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
 
@@ -1237,7 +1245,7 @@ function ResponsiveModalWrapper({
   footer?: React.ReactElement;
   isOpen: boolean;
   onDismiss: () => void;
-  modalBodyPadding?: string;
+  modalBodyPadding?: 'spacing.0' | 'spacing.6' | undefined;
   modalSize?: 'small' | 'medium' | 'large' | 'full';
   wrapInBottomSheetFooter?: boolean;
   customSnapPoints?: [number, number, number];
@@ -1250,7 +1258,7 @@ function ResponsiveModalWrapper({
     return (
       <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
         <BottomSheetHeader />
-        <BottomSheetBody padding={modalBodyPadding}>
+        <BottomSheetBody padding="spacing.0">
           {children}
           {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
         </BottomSheetBody>
@@ -1268,7 +1276,7 @@ function ResponsiveModalWrapper({
   );
 }
 
-function SingleStepFormModal() {
+function SingleStepFormModal(): React.ReactNode {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
