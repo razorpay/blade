@@ -179,10 +179,12 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                     </Box>
                   ) : null}
                 </BaseBox>
-                <ArgsTable
-                  story={props.argTableComponent ? undefined : PRIMARY_STORY}
-                  of={props.argTableComponent}
-                />
+                <Box overflowX="auto">
+                  <ArgsTable
+                    story={props.argTableComponent ? undefined : PRIMARY_STORY}
+                    of={props.argTableComponent}
+                  />
+                </Box>
               </>
             ) : null}
 
