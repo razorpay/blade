@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import { SideNavContext } from './SideNavContext';
@@ -382,6 +383,8 @@ const _SideNav = (
   );
 };
 
-const SideNav = React.forwardRef(_SideNav);
+const SideNav: ForwardRefExoticComponent<
+  SideNavProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_SideNav);
 
 export { SideNav };

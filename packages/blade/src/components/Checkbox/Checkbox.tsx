@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-shadow */
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
@@ -282,7 +283,9 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   );
 };
 
-const Checkbox = assignWithoutSideEffects(React.forwardRef(_Checkbox), {
+const Checkbox: ForwardRefExoticComponent<
+  CheckboxProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Checkbox), {
   displayName: 'Checkbox',
 });
 

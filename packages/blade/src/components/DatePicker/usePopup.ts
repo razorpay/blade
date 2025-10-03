@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { UseFloatingOptions } from '@floating-ui/react';
+import type { CSSProperties } from 'react';
+import type {
+  UseFloatingOptions,
+  UseFloatingReturn,
+  UseInteractionsReturn,
+} from '@floating-ui/react';
 import {
   autoUpdate,
   flip,
@@ -25,6 +30,17 @@ type UsePopupProps = {
   crossAxisOffset?: number;
 };
 
+type UsePopupReturn = {
+  refs: UseFloatingReturn['refs'];
+  context: UseFloatingReturn['context'];
+  isMounted: boolean;
+  floatingStyles: CSSProperties;
+  animationStyles: CSSProperties;
+  getReferenceProps: UseInteractionsReturn['getReferenceProps'];
+  getFloatingProps: UseInteractionsReturn['getFloatingProps'];
+};
+
+// 💡 Step 2: Apply the return type to the function signature
 const usePopup = ({
   enabled = true,
   placement,
@@ -32,7 +48,7 @@ const usePopup = ({
   onOpenChange,
   referenceRef,
   crossAxisOffset = 0,
-}: UsePopupProps) => {
+}: UsePopupProps): UsePopupReturn => {
   const GAP = spacing[4];
   const { theme } = useTheme();
   const [side] = getFloatingPlacementParts(placement!);
@@ -77,7 +93,6 @@ const usePopup = ({
     },
   });
 
-  // remove click handler if popover is controlled
   const click = useClick(context);
   const dismiss = useDismiss(context, { enabled });
   const role = useRole(context);

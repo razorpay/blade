@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import styled from 'styled-components';
-import type { ReactElement } from 'react';
+import type { ReactElement, ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { StyledIconButtonProps } from './types';
 import { highlightedButtonSizeMap, highlightedHoverColorMap } from './tokens';
@@ -14,6 +14,7 @@ import { throwBladeError } from '~utils/logger';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
+import type { BladeElementRef } from '~utils/types';
 
 type StyledButtonProps = {
   emphasis: SubtleOrIntense;
@@ -79,7 +80,9 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
   };
 });
 
-const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonProps>(
+const StyledIconButton: ForwardRefExoticComponent<
+  StyledIconButtonProps & RefAttributes<BladeElementRef>
+> = React.forwardRef<BladeElementRef, StyledIconButtonProps>(
   (
     {
       icon: Icon,
@@ -106,7 +109,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
     ref,
   ): ReactElement => (
     <StyledButton
-      ref={ref}
+      ref={ref as React.Ref<HTMLButtonElement>}
       onClick={castWebType(onClick)}
       emphasis={emphasis}
       type="button"

@@ -93,6 +93,8 @@ const _StyledLink: React.ForwardRefRenderFunction<
   );
 };
 
-const StyledLink = React.forwardRef(_StyledLink);
+const StyledLink: React.ForwardRefExoticComponent<
+  StyledBaseLinkProps & { children: React.ReactNode }
+> = React.forwardRef(_StyledLink);
 
 export default StyledLink;
