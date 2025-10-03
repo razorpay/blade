@@ -748,18 +748,66 @@ export default ServerPaginatedTable;
 
 Hierarchical data display with expandable rows and animations. Use for parent-child relationships or detailed information.
 
-```tsx
-const TableNestingExample = () => {
+```tsx 
+
+import React, { useState } from 'react';
+import {
+  Table,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Button,
+  Badge,
+  Box,
+  Text,
+  ChevronDownIcon,
+  ChevronRightIcon,
+} from '@razorpay/blade/components';
+
+type Data = {
+  id: string;
+  name: string;
+  totalAmount: number;
+  status: string;
+  nestedData: Data[];
+};
+
+type TableData = Data[];
+
+const tableData: TableData = [
+  {
+    id: '1',
+    name: 'John Doe',
+    totalAmount: 100,
+    status: 'Completed',
+    nestedData: [],
+  },
+  {
+    id: '2',
+    name: 'Jane Smith',
+    totalAmount: 200,
+    status: 'Pending',
+    nestedData: [],
+  },
+];
+const TableNestingExample = (): React.ReactElement => {
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
 
-  const toggleRow = (id: string) => {
+  const toggleRow = (id: string): void => {
     const newExpanded = new Set(expandedRows);
-    newExpanded.has(id) ? newExpanded.delete(id) : newExpanded.add(id);
+    if (newExpanded.has(id)) {
+      newExpanded.delete(id);
+    } else {
+      newExpanded.add(id);
+    }
     setExpandedRows(newExpanded);
   };
 
   return (
-    <Table data={tableData}>
+    <Table data={{ nodes: tableData }}>
       {(tableData) => (
         <>
           <TableHeader>
@@ -789,7 +837,7 @@ const TableNestingExample = () => {
                   </TableCell>
                 </TableRow>
 
-                {expandedRows.has(item.id) && (
+                {expandedRows.has(String(item.id)) && (
                   <TableRow key={`${item.id}-expanded`} item={item}>
                     <TableCell gridColumnStart={1} gridColumnEnd={4}>
                       <Box
@@ -799,7 +847,7 @@ const TableNestingExample = () => {
                         margin="spacing.2"
                       >
                         {/* Nested content here */}
-                        {item.children.map((child) => (
+                        {item.nestedData?.map((child) => (
                           <Box key={child.id} display="flex" justifyContent="space-between">
                             <Text>{child.name}</Text>
                             <Text>{child.totalAmount}</Text>
@@ -817,8 +865,10 @@ const TableNestingExample = () => {
     </Table>
   );
 };
-```
 
+export default TableNestingExample;
+
+```
 ### Table Spanning Pattern
 
 Row and column spanning for complex layouts with merged cells. Use for grouping related data or creating summary sections. Use grid props on TableCell to span across multiple rows or columns for merged cells.
