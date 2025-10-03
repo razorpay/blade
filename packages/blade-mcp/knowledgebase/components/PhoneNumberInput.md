@@ -119,7 +119,7 @@ type PhoneNumberInputProps = {
 
 This example demonstrates a simple phone number input with validation and country selection.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import { PhoneNumberInput, Box } from '@razorpay/blade/components';
 import { isValidPhoneNumber } from '@razorpay/i18nify-js';
@@ -176,7 +176,7 @@ function PhoneNumberInputExample() {
 
 This example shows a more complex usage with restricted countries, custom styling, and different display options.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   PhoneNumberInput,
@@ -262,7 +262,7 @@ function AdvancedPhoneNumberExample() {
 
 This example demonstrates how to use PhoneNumberInput with simplified configuration, hiding the country selector and dial code for specific use cases.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import { PhoneNumberInput, Box, Text } from '@razorpay/blade/components';
 
@@ -295,7 +295,7 @@ function SimplifiedPhoneNumberExample() {
 
 This example shows how to integrate PhoneNumberInput into a form with proper validation and error handling.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   PhoneNumberInput,

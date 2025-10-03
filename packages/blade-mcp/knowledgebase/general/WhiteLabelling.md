@@ -22,7 +22,7 @@ To make this possible, Blade allows you to customize the theme of the components
 
 If your application has multiple `BladeProvider` components, you can pass the `brandColor` to each of them to customize the branding of the components inside them.
 
-```tsx
+```jsx
 import { createTheme } from '@razorpay/blade/tokens';
 
 const { theme: customThemeTokens } = createTheme({
@@ -42,7 +42,7 @@ const Wrapper = () => {
 
 Custom branded themes also contain support for light and dark color schemes. You can pass the `colorScheme` prop to `BladeProvider` to switch between light and dark color schemes.
 
-```tsx
+```jsx
 // or colorScheme="light"
 <BladeProvider themeTokens={customThemeTokens} colorScheme="dark">
   <App />

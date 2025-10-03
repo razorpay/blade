@@ -13,12 +13,13 @@ import {
   ArrowRightIcon,
 } from '@razorpay/blade/components';
 
-// Components with icon prop
-<Button icon={AcceptPaymentsIcon}>Button with Icon</Button>
-<Badge icon={AcceptPaymentsIcon}>Badge with Icon</Badge>
-
-// Icons as standalone components
-<ArrowRightIcon size="small" color="surface.icon.primary.normal" />
+<>
+  {/* Components with icon prop */}
+  <Button icon={AcceptPaymentsIcon}>Button with Icon</Button>
+  <Badge icon={AcceptPaymentsIcon}>Badge with Icon</Badge>
+  {/* Icons as standalone components */}
+  <ArrowRightIcon size="small" color="surface.icon.primary.normal" />
+</>;
 ```
 
 ## Note

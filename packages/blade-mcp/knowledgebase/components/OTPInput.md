@@ -190,7 +190,7 @@ function OTPVerificationExample() {
 
 This example demonstrates using OTPInput for PIN entry with masked input for enhanced security.
 
-```jsx
+```tsx
 import { useState, useRef } from 'react';
 import { OTPInput, Box, Button, Text } from '@razorpay/blade/components';
 
@@ -315,7 +315,7 @@ function SecurePINEntryExample() {
 
 This example shows how to use refs with OTPInput to programmatically control focus, useful for complex forms or when specific behaviors are needed.
 
-```jsx
+```tsx
 import { useState, useRef } from 'react';
 import { OTPInput, Box, Button, Text } from '@razorpay/blade/components';
 

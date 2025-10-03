@@ -486,7 +486,6 @@ import {
   Box,
   QuickFilterGroup,
   QuickFilter,
-  FilterChipGroup,
   Counter,
   Table,
   Switch,
@@ -494,9 +493,9 @@ import {
   // ...other imports as needed
 } from '@razorpay/blade/components';
 
-function MultiSelectListViewExample() {
+function MultiSelectListViewExample(): React.ReactElement {
   // Sample data similar to the first example
-  const data = {
+  const data: { nodes: { status: string }[] } = {
     nodes: [
       // ... payment data items
     ],
@@ -508,7 +507,10 @@ function MultiSelectListViewExample() {
   const [showFilters, setShowFilters] = useState(true);
 
   // Filter function for multiple selected status values
-  const getMultipleStatusFilterData = (data, values) => {
+  const getMultipleStatusFilterData = (
+    data: { nodes: { status: string }[] },
+    values: string | string[],
+  ): { nodes: { status: string }[] } => {
     if (!values || values.length === 0) {
       return { nodes: data.nodes };
     }
@@ -535,7 +537,7 @@ function MultiSelectListViewExample() {
               selectionType="multiple"
               onChange={({ values }) => {
                 const filteredData = getMultipleStatusFilterData(data, values);
-                setListViewTableData(filteredData);
+                setListViewTableData(filteredData as { nodes: never[] });
                 setSelectedQuickFilters(values);
               }}
               value={selectedQuickFilters}
@@ -569,10 +571,12 @@ function MultiSelectListViewExample() {
         >
           {/* Filter chips and table similar to first example */}
         </ListViewFilters>
-
+        {/* @ts-expect-error */}
         <Table data={listViewTableData}>{/* Table implementation */}</Table>
       </ListView>
     </Box>
   );
 }
+
+export default MultiSelectListViewExample;
 ```

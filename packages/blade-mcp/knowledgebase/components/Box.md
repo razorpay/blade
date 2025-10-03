@@ -633,8 +633,6 @@ const ResponsiveGridExample = () => {
             // Mouse event handlers
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            // Click handler
-            onClick={() => console.log(`Clicked on ${item.title}`)}
           >
             <Text
               color={

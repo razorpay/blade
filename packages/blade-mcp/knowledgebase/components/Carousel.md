@@ -516,8 +516,7 @@ const MultiItemSelectableCarouselExample = () => {
                 backgroundColor={
                   isSelected ? 'surface.background.gray.intense' : 'surface.background.gray.subtle'
                 }
-                borderColor={isSelected ? 'border.primary' : 'border.secondary'}
-                cursor="pointer"
+                isSelected={isSelected}
                 onClick={() => handleSelect(method.id)}
               >
                 <CardBody>

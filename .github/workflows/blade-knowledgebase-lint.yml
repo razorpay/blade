@@ -1,0 +1,30 @@
+name: Knowledgebase Lint
+
+on: [pull_request]
+
+permissions:
+  checks: write
+  pull-requests: write
+  contents: read
+
+env:
+  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+
+jobs:
+  validate:
+    name: Knowledgebase Lint
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Build Blade
+        run: yarn build
+        working-directory: packages/blade
+      - name: Run Lint Script
+        run: yarn tsc:knowledgebase

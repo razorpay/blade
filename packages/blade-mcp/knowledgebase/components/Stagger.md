@@ -60,7 +60,7 @@ type BaseMotionEntryExitProps = {
 
 This example demonstrates how to create a sequential appearance animation for multiple cards, where each card fades in one after another rather than simultaneously, controlled by a toggle button.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   Stagger,

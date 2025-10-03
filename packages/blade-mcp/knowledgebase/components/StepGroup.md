@@ -144,7 +144,7 @@ type StepItemProps = {
 
 This example demonstrates a standard vertical StepGroup showing a progression of steps with different states, timestamps, icons, and badges to represent a complete onboarding process.
 
-```jsx
+```tsx
 import {
   StepGroup,
   StepItem,
@@ -210,7 +210,7 @@ function MyStepGroup() {
 
 This example shows how to create an interactive StepGroup where steps can be selected via click events, with visual feedback and state management to track the current selected step.
 
-```jsx
+```tsx
 import { StepGroup, StepItem, StepItemIndicator, Button, Box } from '@razorpay/blade/components';
 import { useState } from 'react';
 
@@ -274,7 +274,7 @@ function InteractiveStepGroup() {
 
 This example demonstrates a complex implementation with nested StepGroups and collapsible sections that can be expanded to reveal additional step details, useful for displaying hierarchical processes.
 
-```jsx
+```tsx
 import {
   StepGroup,
   StepItem,
@@ -381,7 +381,7 @@ function NestedStepGroup() {
 
 This example shows a horizontal orientation of the StepGroup component, ideal for representing a linear progression of steps across the page rather than vertically down the page.
 
-```jsx
+```tsx
 import { StepGroup, StepItem, StepItemIndicator, Box } from '@razorpay/blade/components';
 
 function HorizontalStepGroup() {

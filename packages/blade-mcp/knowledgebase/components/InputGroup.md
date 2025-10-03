@@ -102,7 +102,7 @@ type InputGroupContextType = {
 
 Create a payment information form with format validation, different input types, and error handling.
 
-```jsx
+```tsx
 import { InputGroup, InputRow } from '@razorpay/blade/components/InputGroup';
 import { TextInput } from '@razorpay/blade/components/Input/TextInput';
 import { PasswordInput } from '@razorpay/blade/components/Input/PasswordInput';
@@ -197,7 +197,7 @@ function PaymentForm() {
 
 Create a comprehensive business onboarding form with conditional layouts that adapt to different screen sizes.
 
-```jsx
+```tsx
 import { InputGroup, InputRow } from '@razorpay/blade/components/InputGroup';
 import { TextInput } from '@razorpay/blade/components/Input/TextInput';
 import { SelectInput } from '@razorpay/blade/components/Input/DropdownInputTriggers';

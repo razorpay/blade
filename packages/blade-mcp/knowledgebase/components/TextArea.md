@@ -73,17 +73,15 @@ type TextAreaProps = TextAreaPropsWithA11yLabel | TextAreaPropsWithLabel;
 
 This example shows a TextArea component with validation, character limit, and help text. It demonstrates how to handle validation states and provide user feedback.
 
-```jsx
+```tsx 
 import { useState } from 'react';
-import { TextArea } from '@razorpay/blade/components';
-import { Box } from '@razorpay/blade/components';
+import { TextArea, Box } from '@razorpay/blade/components';
 
-function FeedbackForm() {
+function FeedbackForm(): React.ReactElement {
   const [feedback, setFeedback] = useState('');
-  const [validationState, setValidationState] =
-    (useState < 'none') | 'error' | ('success' > 'none');
+  const [validationState, setValidationState] = useState<'none' | 'error' | 'success'>('none');
 
-  const handleChange = ({ value }) => {
+  const handleChange = ({ value }: { value: string }): void => {
     setFeedback(value || '');
 
     if ((value || '').length < 10) {
@@ -102,7 +100,7 @@ function FeedbackForm() {
         placeholder="Please share your thoughts about our service"
         name="feedback"
         value={feedback}
-        onChange={handleChange}
+        onChange={(e) => handleChange({ value: e.value ?? '' })}
         numberOfLines={3}
         maxCharacters={500}
         validationState={validationState}
@@ -123,13 +121,15 @@ function FeedbackForm() {
     </Box>
   );
 }
-```
 
+export default FeedbackForm;
+
+```
 ### TextArea with Various Feature Combinations
 
 This example demonstrates TextArea with different configurations including label position, disabled state, and custom styling.
 
-```jsx
+```tsx
 import { TextArea } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
 
@@ -180,7 +180,7 @@ function ProductDescriptionEditor() {
 
 This example shows a TextArea without a visible label but with proper accessibility support using the accessibilityLabel prop.
 
-```jsx
+```tsx
 import { TextArea } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
 
@@ -212,7 +212,7 @@ function SearchQueryBuilder() {
 
 This example demonstrates a TextArea with tagging functionality, allowing users to enter multiple distinct items.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import { TextArea } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';
@@ -261,7 +261,7 @@ function EmailInviter() {
 
 This example shows how to implement custom keyboard behavior, like submitting on Enter or formatting text.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import { TextArea } from '@razorpay/blade/components';
 import { Box } from '@razorpay/blade/components';

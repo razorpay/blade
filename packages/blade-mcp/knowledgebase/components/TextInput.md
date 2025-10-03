@@ -149,7 +149,7 @@ type TextInputProps = TextInputPropsWithA11yLabel | TextInputPropsWithLabel;
 
 This example demonstrates basic TextInput usage with different validation states.
 
-```jsx
+```tsx
 import { TextInput, Box } from '@razorpay/blade/components';
 
 function TextInputExample() {
@@ -208,7 +208,7 @@ function TextInputExample() {
 
 This example showcases TextInput with combined visual and functional features.
 
-```jsx
+```tsx
 import {
   TextInput,
   Box,
@@ -270,7 +270,7 @@ function FeatureRichTextInputExample() {
 
 This example demonstrates how to create TextInput components without visible labels but with proper accessibility support using the accessibilityLabel prop, useful for compact UI designs.
 
-```jsx
+```tsx
 import { TextInput, Box, SearchIcon, UserIcon } from '@razorpay/blade/components';
 
 function AccessibleTextInputExample() {
@@ -303,7 +303,7 @@ function AccessibleTextInputExample() {
 
 This example demonstrates using TextInput to collect multiple values as tags.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import { TextInput, Box, MailIcon } from '@razorpay/blade/components';
 
@@ -348,7 +348,7 @@ function TaggedTextInputExample() {
 
 This example demonstrates TextInput with leading/trailing elements, formatting patterns, and dynamic trailing icons.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   TextInput,

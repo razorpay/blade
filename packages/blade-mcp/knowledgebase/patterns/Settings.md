@@ -53,6 +53,7 @@ The Settings Overview provides a comprehensive view of all configurable aspects 
 
 ```tsx
 import React, { useState } from 'react';
+import { BrowserRouter, Link as RouterLink } from 'react-router-dom';
 import {
   Box,
   Card,
@@ -72,14 +73,11 @@ import {
   Menu,
   MenuHeader,
   MenuItem,
-  MenuFooter,
   MenuOverlay,
-  Button,
-  IconButton,
   Link,
   Text,
   Heading,
-  Badge,
+  Button,
   Avatar,
   Switch,
   SearchInput,
@@ -93,12 +91,9 @@ import {
   ArrowUpRightIcon,
   PlusIcon,
   SettingsIcon,
-  EditIcon,
-  ChevronLeftIcon,
   ChevronRightIcon,
 } from '@razorpay/blade/components';
 import { useTheme, useBreakpoint } from '@razorpay/blade/utils';
-import { BrowserRouter, Route, Link as RouterLink } from 'react-router-dom';
 
 // Settings Card Component for Overview Page
 const SettingCard = ({
@@ -214,19 +209,12 @@ const SettingsNavigation = (): React.ReactElement => {
     >
       <SideNavBody>
         <SideNavSection title="Main">
-          <SideNavLink
-            icon={HomeIcon}
-            title="Dashboard"
-            href="/dashboard"
-            as={RouterLink}
-            to="/dashboard"
-          />
+          <SideNavLink icon={HomeIcon} title="Dashboard" href="/dashboard" as={RouterLink} />
           <SideNavLink
             icon={WalletIcon}
             title="Payments"
             href="/payments"
             as={RouterLink}
-            to="/payments"
             trailing={
               <Button
                 icon={PlusIcon}
@@ -244,28 +232,24 @@ const SettingsNavigation = (): React.ReactElement => {
             title="Credit Cards"
             href="/banking/cards"
             as={RouterLink}
-            to="/banking/cards"
           />
           <SideNavLink
             icon={BankIcon}
             title="Bank Accounts"
             href="/banking/accounts"
             as={RouterLink}
-            to="/banking/accounts"
           />
           <SideNavLink
             icon={BillIcon}
             title="Statements"
             href="/banking/statements"
             as={RouterLink}
-            to="/banking/statements"
           />
           <SideNavLink
             icon={ArrowUpRightIcon}
             title="Transfers"
             href="/banking/transfers"
             as={RouterLink}
-            to="/banking/transfers"
           />
         </SideNavSection>
       </SideNavBody>
@@ -298,7 +282,6 @@ const SettingsNavigation = (): React.ReactElement => {
           title="Settings"
           href="/settings"
           as={RouterLink}
-          to="/settings"
           isActive
         />
       </SideNavFooter>
@@ -351,20 +334,33 @@ export const SettingsPage = (): React.ReactElement => {
             <img src="/logo.svg" alt="Company Logo" height={32} />
           </TopNavBrand>
           <TopNavContent>
-            <TabNav>
-              <TabNavItems>
-                <TabNavItem title="Dashboard" icon={HomeIcon} />
-                <TabNavItem title="Payments" icon={WalletIcon} isActive />
-                <TabNavItem title="Settings" icon={SettingsIcon} />
-              </TabNavItems>
+            <TabNav
+              items={[
+                { title: 'Dashboard', icon: HomeIcon },
+                { title: 'Payments', icon: WalletIcon, isActive: true },
+                { title: 'Settings', icon: SettingsIcon },
+              ]}
+            >
+              {({ items }) => {
+                return (
+                  <TabNavItems>
+                    {items.map((item) => {
+                      return (
+                        <TabNavItem
+                          key={item.title}
+                          title={item.title}
+                          icon={item.icon}
+                          isActive={item.isActive}
+                        />
+                      );
+                    })}
+                  </TabNavItems>
+                );
+              }}
             </TabNav>
           </TopNavContent>
           <TopNavActions>
-            <SearchInput
-              placeholder="Search settings"
-              accessibilityLabel="Search settings"
-              width="200px"
-            />
+            <SearchInput placeholder="Search settings" accessibilityLabel="Search settings" />
             <Menu>
               <Avatar size="medium" name="John Doe" />
               <MenuOverlay>
@@ -408,8 +404,8 @@ export const SettingsPage = (): React.ReactElement => {
     </BrowserRouter>
   );
 };
-
 ```
+
 This implementation provides a user-friendly overview of all available settings categories while maintaining consistency with Blade's design system principles.
 
 ### Key Features

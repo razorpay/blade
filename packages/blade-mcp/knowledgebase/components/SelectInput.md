@@ -152,7 +152,7 @@ type SelectInputProps = {
 
 This example demonstrates a basic SelectInput with single selection, showing how to use it within a Dropdown component.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   Dropdown,
@@ -206,7 +206,7 @@ function BasicSelectExample() {
 
 This example shows how to implement a SelectInput with multiple selection capability along with validation states.
 
-```jsx
+```tsx
 import { useState, useEffect } from 'react';
 import {
   Dropdown,
@@ -220,10 +220,9 @@ import {
   TagIcon,
 } from '@razorpay/blade/components';
 
-function MultiSelectWithValidationExample() {
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [validationState, setValidationState] =
-    (useState < 'none') | 'error' | ('success' > 'none');
+function MultiSelectWithValidationExample(): React.ReactElement {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [validationState, setValidationState] = useState<'none' | 'error' | 'success'>('none');
 
   // Validate whenever selection changes
   useEffect(() => {
@@ -236,12 +235,13 @@ function MultiSelectWithValidationExample() {
     }
   }, [selectedCategories]);
 
-  const handleCategoryChange = ({ values }) => {
+  const handleCategoryChange = ({ values }: { values: string[] }): void => {
     setSelectedCategories(values);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     if (validationState === 'success') {
+      // eslint-disable-next-line no-alert
       alert(`Selected categories: ${selectedCategories.join(', ')}`);
     }
   };
@@ -305,13 +305,15 @@ function MultiSelectWithValidationExample() {
     </Box>
   );
 }
-```
 
+export default MultiSelectWithValidationExample;
+
+```
 ### Controlled SelectInput with Custom Formatting
 
 This example demonstrates a controlled SelectInput with custom formatting and state management for a more complex use case.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   Dropdown,

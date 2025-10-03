@@ -57,7 +57,7 @@ type SearchInputProps = SearchInputPropsWithA11yLabel | SearchInputPropsWithLabe
 
 This example demonstrates a basic search input with label and help text, showing the most common usage pattern.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import { SearchInput, Box } from '@razorpay/blade/components';
 
@@ -96,7 +96,7 @@ function BasicSearchExample() {
 
 This example shows how to integrate SearchInput with Dropdown to display search results, demonstrating a common pattern for global search functionality.
 
-```jsx
+```tsx
 import { useState, useEffect } from 'react';
 import {
   SearchInput,
