@@ -56,7 +56,7 @@ export type EmptyStateSize = 'small' | 'medium' | 'large' | 'xlarge';
 
 ### Complete EmptyState with Interactive Functionality
 
-```jsx
+```tsx
 import { useState } from 'react';
 import { EmptyState } from '@razorpay/blade/components';
 import { Button } from '@razorpay/blade/components';
@@ -113,7 +113,7 @@ const ErrorEmptyState = () => {
 
 ### Simple EmptyState with Blade Icon
 
-```jsx
+```tsx
 import { EmptyState } from '@razorpay/blade/components';
 import { Button } from '@razorpay/blade/components';
 import { EcommerceIcon } from '@razorpay/blade/components';

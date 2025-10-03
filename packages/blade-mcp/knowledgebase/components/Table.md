@@ -873,7 +873,7 @@ export default TableNestingExample;
 
 Row and column spanning for complex layouts with merged cells. Use for grouping related data or creating summary sections. Use grid props on TableCell to span across multiple rows or columns for merged cells.
 
-```tsx
+```jsx
 {/* Header spanning */}
 <TableHeaderCell gridColumnStart={2} gridColumnEnd={4}>
   Combined Header
@@ -903,7 +903,7 @@ Row and column spanning for complex layouts with merged cells. Use for grouping 
 
 Hierarchical grouped data with automatic tree structure. Use for categorized data with parent-child relationships.
 
-```tsx
+```jsx
 const TableGroupingExample = () => {
   return (
     <Table data={groupedData} isGrouped showBorderedCells>

@@ -47,7 +47,7 @@ function getTypeErrors(sourceCode) {
 
 const errors = [];
 // this might be slow but better than pulling in a markdown parser
-const codeBlockRegex = /```(tsx|jsx)\s*([\s\S]*?)```/g;
+const codeBlockRegex = /```(tsx)\s*([\s\S]*?)```/g;
 
 // Function to check if a code block is inside a comment
 function isCodeBlockInComment(content, blockStart) {

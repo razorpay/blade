@@ -152,7 +152,7 @@ type SelectInputProps = {
 
 This example demonstrates a basic SelectInput with single selection, showing how to use it within a Dropdown component.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   Dropdown,
@@ -313,7 +313,7 @@ export default MultiSelectWithValidationExample;
 
 This example demonstrates a controlled SelectInput with custom formatting and state management for a more complex use case.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   Dropdown,
