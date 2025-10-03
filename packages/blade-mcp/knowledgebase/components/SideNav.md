@@ -10,7 +10,7 @@ The SideNav component provides a responsive side navigation layout positioned al
 
 - `SideNavLink`: `as` prop requires React Router's Link. Always install React Router while using this component. Example:
 
-  ```
+  ```jsx
   import { Link } from 'react-router-dom';
 
   <SideNavLink as={Link} />;
