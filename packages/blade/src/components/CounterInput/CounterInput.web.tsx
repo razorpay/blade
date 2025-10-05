@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import type { CounterInputProps } from './types';
 import { StyledCounterInput } from './StyledCounterInput';
 import { COUNTER_INPUT_TOKEN } from './token';
@@ -58,6 +58,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
     const emphasisTokens = COUNTER_INPUT_TOKEN.emphasis[emphasis];
     const _isDisabled = isDisabled || isLoading;
+    const [animationClass, setAnimationClass] = useState('');
 
     const handleInputChange = useCallback(
       ({ value: inputValue }: { value?: string }) => {
@@ -79,7 +80,10 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       const constrainedValue = max !== undefined ? Math.min(newValue, max) : newValue;
 
       setInternalValue(() => constrainedValue);
-    }, [internalValue, min, max, isDisabled, isLoading, onChange, name]);
+
+      setAnimationClass('animate-slide-up');
+      setTimeout(() => setAnimationClass(''), 300);
+    }, [internalValue, min, max, _isDisabled, setInternalValue]);
 
     const handleDecrement = useCallback(() => {
       if (_isDisabled) return;
@@ -88,7 +92,10 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       const constrainedValue = Math.max(newValue, min);
 
       setInternalValue(() => constrainedValue);
-    }, [internalValue, min, isDisabled, isLoading, onChange, name]);
+
+      setAnimationClass('animate-slide-down');
+      setTimeout(() => setAnimationClass(''), 300);
+    }, [internalValue, min, _isDisabled, setInternalValue]);
 
     const isDecrementDisabled = _isDisabled || (internalValue ?? min) <= min;
     const isIncrementDisabled = _isDisabled || (max !== undefined && (internalValue ?? min) >= max);
@@ -144,15 +151,15 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 _isDisabled ? emphasisTokens.disabledBorderColor : emphasisTokens.borderColor
               }
             >
-              <BaseBox display="flex" alignItems="center" flexDirection="row">
+              <BaseBox display="flex" alignItems="center" flexDirection="row" height="100%">
                 <BaseBox
                   className="decrement-button"
                   as="button"
                   display="flex"
                   cursor={isDecrementDisabled ? 'not-allowed' : 'pointer'}
                   onClick={handleDecrement}
-                  padding={COUNTER_INPUT_TOKEN.leftIconPadding[size]}
-                  margin={COUNTER_INPUT_TOKEN.leftIconMargin}
+                  padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
+                  margin={COUNTER_INPUT_TOKEN.decrementIconMargin}
                   borderRadius="small"
                   aria-label="Decrement value"
                   disabled={isDecrementDisabled}
@@ -167,28 +174,30 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   />
                 </BaseBox>
 
-                <BaseInput
-                  ref={ref}
-                  id={inputId}
-                  as="input"
-                  name={name}
-                  type="number"
-                  componentName={MetaConstants.CounterInput}
-                  label=""
-                  accessibilityLabel={accessibilityLabel}
-                  value={internalValue?.toString() ?? ''}
-                  onChange={handleInputChange}
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  isDisabled={isDisabled}
-                  size={size}
-                  textAlign="center"
-                  // Accessibility attributes for spinbutton
-                  role="spinbutton"
-                  aria-valuemin={min}
-                  aria-valuemax={max}
-                  aria-valuenow={internalValue ?? min}
-                />
+                <BaseBox className={animationClass}>
+                  <BaseInput
+                    ref={ref}
+                    id={inputId}
+                    as="input"
+                    name={name}
+                    type="number"
+                    componentName={MetaConstants.CounterInput}
+                    label=""
+                    accessibilityLabel={accessibilityLabel}
+                    value={internalValue?.toString() ?? ''}
+                    onChange={handleInputChange}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    isDisabled={isDisabled}
+                    size={size}
+                    textAlign="center"
+                    // Accessibility attributes for spinbutton
+                    role="spinbutton"
+                    aria-valuemin={min}
+                    aria-valuemax={max}
+                    aria-valuenow={internalValue ?? min}
+                  />
+                </BaseBox>
 
                 <BaseBox
                   className="increment-button"
@@ -197,8 +206,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   alignItems="center"
                   cursor={isIncrementDisabled ? 'not-allowed' : 'pointer'}
                   onClick={handleIncrement}
-                  padding={COUNTER_INPUT_TOKEN.rightIconPadding[size]}
-                  margin={COUNTER_INPUT_TOKEN.rightIconMargin}
+                  padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
+                  margin={COUNTER_INPUT_TOKEN.incrementIconMargin}
                   borderRadius="small"
                   aria-label="Increment value"
                   disabled={isIncrementDisabled}

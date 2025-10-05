@@ -105,22 +105,22 @@ export const formHintLeftLabelMarginLeft = {
 export const baseInputCounterInputPaddingTokens = {
   top: {
     xsmall: 2,
-    medium: 3,
-    large: 3,
+    medium: 2,
+    large: 2,
   },
   bottom: {
     xsmall: 2,
-    medium: 3,
-    large: 3,
+    medium: 2,
+    large: 2,
   },
   left: {
     xsmall: 2,
-    medium: 1,
+    medium: 2,
     large: 2,
   },
   right: {
     xsmall: 2,
-    medium: 1,
+    medium: 2,
     large: 2,
   },
 } as const;

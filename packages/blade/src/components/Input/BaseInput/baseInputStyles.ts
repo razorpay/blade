@@ -272,7 +272,7 @@ export const getBaseInputStyles = ({
       : getTextStyles({
           size: isInsideCounterInput && size === 'xsmall' ? 'small' : size,
           variant: 'body',
-          weight: 'regular',
+          weight: isInsideCounterInput ? 'semibold' : 'regular',
           color: isDisabled
             ? disabledColor ?? 'surface.text.gray.disabled'
             : color ?? 'surface.text.gray.subtle',

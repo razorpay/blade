@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CounterInput /> should render CounterInput with default properties 1`] = `"<div id="root"><div class="BaseBox-bmPWx StyledCounterInput-ljwv28-0  gbBQVy __blade-counter-input" data-emphasis="subtle" data-blade-component="counter-input"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="counter-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="counter-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Product Quantity</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 AutiL"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx gMDlAX"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><button class="BaseBox-bmPWx ebwbov decrement-button" aria-label="Decrement value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" clip-rule="evenodd" fill="hsla(211, 26%, 34%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button><div data-blade-component="counter-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="number" color="surface.text.gray.subtle" id="counter-input-undefined-input-undefined-undefined-input-undefined" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" role="spinbutton" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 ksWfvk" value="5"/></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div><button class="BaseBox-bmPWx gRYqDn increment-button" aria-label="Increment value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div>"`;
+exports[`<CounterInput /> should render CounterInput with default properties 1`] = `"<div id="root"><div class="BaseBox-bmPWx StyledCounterInput-ljwv28-0  iuNdnm __blade-counter-input" data-emphasis="subtle" data-blade-component="counter-input"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="counter-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="counter-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Product Quantity</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 AutiL"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx lozsHo"><div data-blade-component="base-box" class="BaseBox-bmPWx fekybc"><button class="BaseBox-bmPWx bYuZuH decrement-button" aria-label="Decrement value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" clip-rule="evenodd" fill="hsla(212, 39%, 16%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button><div class="BaseBox-bmPWx" data-blade-component="base-box"><div data-blade-component="counter-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="number" color="surface.text.gray.subtle" id="counter-input-undefined-input-undefined-undefined-input-undefined" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" role="spinbutton" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dboeji" value="5"/></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div><button class="BaseBox-bmPWx eMRcwv increment-button" aria-label="Increment value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z" fill="hsla(212, 39%, 16%, 1)" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div>"`;
 
 exports[`<CounterInput /> should render CounterInput with default properties 2`] = `
 .c1.c1.c1.c1.c1 {
@@ -73,8 +73,8 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 38px;
-  width: 90px;
+  height: 34px;
+  width: 86px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-width: 1px;
@@ -94,6 +94,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  height: 100%;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -101,7 +102,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 6px 6px 6px 6px;
+  padding: 4px;
   margin: 4px 0px 4px 4px;
   border-radius: 2px;
   cursor: pointer;
@@ -146,7 +147,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 6px 6px 6px 6px;
+  padding: 4px;
   margin: 4px 4px 4px 0px;
   border-radius: 2px;
   cursor: pointer;
@@ -159,6 +160,16 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-base-input-wrapper {
   box-shadow: none;
   background-color: transparent !important;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .animate-slide-up {
+  -webkit-animation: fmSSSd-450290765 0.3s ease-out;
+  animation: fmSSSd-450290765 0.3s ease-out;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .animate-slide-down {
+  -webkit-animation: bHYPrA-450290765 0.3s ease-out;
+  animation: bHYPrA-450290765 0.3s ease-out;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input input[type='number']::-webkit-inner-spin-button,
@@ -179,16 +190,22 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
 .c0.c0.c0.c0.c0.__blade-counter-input .increment-button {
   background-color: transparent !important;
   border: none !important;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .decrement-button:hover:not(:disabled),
 .c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(213,47%,96%,1) !important;
+  background-color: hsla(211,20%,52%,0.12) !important;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .decrement-button:hover:not(:disabled),
 .c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.09) !important;
+  background-color: hsla(227,100%,59%,0.18) !important;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -235,7 +252,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -251,10 +268,10 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   -ms-flex: 1;
   flex: 1;
   background-color: hsla(0,0%,100%,0);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
   width: 100%;
   height: 36px;
   min-height: 36px;
@@ -555,51 +572,56 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
                 clip-rule="evenodd"
                 d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 26%, 34%, 1)"
+                fill="hsla(212, 39%, 16%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
           </button>
           <div
             class=""
-            data-blade-component="counter-input"
+            data-blade-component="base-box"
           >
             <div
-              class="c11"
-              data-blade-component="base-box"
+              class=""
+              data-blade-component="counter-input"
             >
               <div
-                class=" c12 focus-ring-wrapper"
+                class="c11"
                 data-blade-component="base-box"
               >
                 <div
-                  class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c13 __blade-base-input-wrapper"
+                  class=" c12 focus-ring-wrapper"
                   data-blade-component="base-box"
                 >
-                  <input
-                    aria-describedby=""
-                    aria-disabled="false"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="c14"
-                    color="surface.text.gray.subtle"
-                    data-blade-component="styled-base-input"
-                    id="counter-input-7-input-8-1-input-2"
-                    role="spinbutton"
-                    type="number"
-                    value="5"
-                  />
+                  <div
+                    class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c13 __blade-base-input-wrapper"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-describedby=""
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c14"
+                      color="surface.text.gray.subtle"
+                      data-blade-component="styled-base-input"
+                      id="counter-input-7-input-8-1-input-2"
+                      role="spinbutton"
+                      type="number"
+                      value="5"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              class="c15"
-              data-blade-component="base-box"
-            >
               <div
-                class="c16"
+                class="c15"
                 data-blade-component="base-box"
-              />
+              >
+                <div
+                  class="c16"
+                  data-blade-component="base-box"
+                />
+              </div>
             </div>
           </div>
           <button
@@ -619,7 +641,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 26%, 34%, 1)"
+                fill="hsla(212, 39%, 16%, 1)"
               />
             </svg>
           </button>
