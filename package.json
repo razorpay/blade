@@ -11,7 +11,8 @@
       "packages/blade",
       "packages/blade-core",
       "packages/eslint-plugin-blade",
-      "packages/blade-mcp"
+      "packages/blade-mcp",
+      "packages/blade-svelte"
     ],
     "nohoist": [
       "**"

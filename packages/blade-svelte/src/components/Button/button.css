@@ -1,0 +1,30 @@
+/* Button base styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Button variants */
+.btn--primary {
+  background-color: var(--interactive-background-primary-default);
+  color: white;
+}
+
+.btn--primary:hover:not(.disabled) {
+  background-color: var(--interactive-background-primary-highlighted);
+}

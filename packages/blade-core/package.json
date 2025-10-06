@@ -47,6 +47,7 @@
     "@rollup/plugin-replace": "5.0.2",
     "@testing-library/react": "13.4.0",
     "@testing-library/react-native": "12.2.0",
+    "@types/react-native": "0.72.2",
     "@types/styled-components": "5.1.34",
     "@types/tinycolor2": "1.4.3",
     "ramda": "0.29.1",
@@ -70,6 +71,7 @@
       "types": "./dist/types/tokens/index.d.ts",
       "default": "./dist/lib/web/production/tokens/index.js"
     },
+    "./tokens/theme.css": "./dist/lib/web/production/tokens/theme.css",
     "./utils": {
       "types": "./dist/types/utils/index.d.ts",
       "default": "./dist/lib/web/production/utils/index.js"
