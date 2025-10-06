@@ -1,17 +1,9 @@
 /* Button base styles */
 .btn {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  padding: var(--spacing-4) var(--spacing-5);
+  border-radius: var(--border-radius-medium);
   border: none;
-  border-radius: 6px;
-  font-family: inherit;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  outline: none;
-  position: relative;
 }
 
 .btn:focus-visible {
@@ -22,7 +14,7 @@
 /* Button variants */
 .btn--primary {
   background-color: var(--interactive-background-primary-default);
-  color: white;
+  color: var(--surface-text-static-white-normal);
 }
 
 .btn--primary:hover:not(.disabled) {
