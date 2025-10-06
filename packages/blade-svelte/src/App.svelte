@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from './components/Button/Button.svelte'
+  import ThemeSwitcher from './ThemeSwitcher.svelte'
   
   function handleClick(): void {
     alert('Button clicked!')
@@ -7,20 +8,22 @@
 </script>
 
 <main>
-  <h1>Blade Svelte Demo</h1>
-  <Button on:click={handleClick}>
-    Click me!
-  </Button>
+  <ThemeSwitcher />
+  <div class="component-container">
+    <Button on:click={handleClick}>
+      Click me!
+    </Button>
+  </div>
 </main>
 
 <style>
   main {
     padding: 2rem;
     text-align: center;
+    background-color: var(--surface-background-gray-intense);
   }
-  
-  h1 {
-    color: #333;
-    margin-bottom: 2rem;
+
+  .component-container {
+    padding: var(--spacing-4);
   }
 </style>
