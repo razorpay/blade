@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable consistent-return */
 /* eslint-disable prefer-template */
-import fs from 'fs';
+import { promises as fs, readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'node:url';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
@@ -16,7 +16,7 @@ import { depsExternalPlugin } from '../blade/dependencies-external-plugin.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const packagejson = JSON.parse(fs.readFileSync(path.resolve(__dirname, './package.json'), 'utf8'));
+const packagejson = JSON.parse(readFileSync(path.resolve(__dirname, './package.json'), 'utf8'));
 
 const webExtensions = [
   '.web.js',
@@ -77,6 +77,19 @@ const aliases = pluginAlias({
   ],
 });
 
+// Plugin to copy CSS files
+const copyCssPlugin = {
+  name: 'copy-css',
+  async generateBundle() {
+    const cssContent = await fs.readFile(path.resolve(__dirname, 'src/tokens/theme.css'), 'utf8');
+    this.emitFile({
+      type: 'asset',
+      fileName: 'tokens/theme.css',
+      source: cssContent,
+    });
+  },
+};
+
 /*
 Build structure: 
 
@@ -126,6 +139,7 @@ const getWebConfig = (inputs) => {
         extensions: webExtensions,
       }),
       aliases,
+      copyCssPlugin,
     ],
   };
 };

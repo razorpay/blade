@@ -26,4 +26,3 @@ function throttle(func: (...args: any[]) => void, wait: number): (...args: any[]
 }
 
 export default throttle;
-
