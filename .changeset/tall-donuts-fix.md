@@ -1,6 +1,6 @@
 ---
-"@razorpay/blade": patch
-"@razorpay/blade-mcp": patch
+"@razorpay/blade": minor
+"@razorpay/blade-mcp": minor
 ---
 
 feat(blade): added counter input component 
