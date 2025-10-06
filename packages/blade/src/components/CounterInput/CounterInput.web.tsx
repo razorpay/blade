@@ -20,6 +20,18 @@ import { useBreakpoint } from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 
+// Helper function to map counter input size to icon size
+const getIconSize = (size: CounterInputProps['size']) => {
+  const sizeMap = {
+    xsmall: 'small',
+    small: 'small',
+    medium: 'medium',
+    large: 'xlarge',
+  } as const;
+
+  return sizeMap[size || 'medium'];
+};
+
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
     {
@@ -151,7 +163,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 _isDisabled ? emphasisTokens.disabledBorderColor : emphasisTokens.borderColor
               }
             >
-              <BaseBox display="flex" alignItems="center" flexDirection="row" height="100%">
+              <BaseBox display="flex" alignItems="center" flexDirection="row">
                 <BaseBox
                   className="decrement-button"
                   as="button"
@@ -165,7 +177,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   disabled={isDecrementDisabled}
                 >
                   <MinusIcon
-                    size={size === 'xsmall' ? 'small' : size}
+                    size={getIconSize(size)}
                     color={
                       isDecrementDisabled
                         ? emphasisTokens.disabledIconColor
@@ -213,7 +225,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   disabled={isIncrementDisabled}
                 >
                   <PlusIcon
-                    size={size === 'xsmall' ? 'small' : size}
+                    size={getIconSize(size)}
                     color={
                       isIncrementDisabled
                         ? emphasisTokens.disabledIconColor

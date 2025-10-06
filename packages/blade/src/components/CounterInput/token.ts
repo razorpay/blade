@@ -3,13 +3,13 @@ import { size as sizeTokens } from '~tokens/global';
 export const COUNTER_INPUT_TOKEN = {
   width: {
     xsmall: sizeTokens[78],
-    medium: sizeTokens[86],
-    large: sizeTokens[114],
+    medium: sizeTokens[94],
+    large: sizeTokens[122],
   },
   height: {
     xsmall: sizeTokens[30],
-    medium: sizeTokens[34],
-    large: sizeTokens[46],
+    medium: sizeTokens[38],
+    large: sizeTokens[50],
   },
 
   decrementIconMargin: ['spacing.2', 'spacing.0', 'spacing.2', 'spacing.2'],
@@ -18,7 +18,7 @@ export const COUNTER_INPUT_TOKEN = {
 
   iconPadding: {
     xsmall: ['spacing.2'],
-    medium: ['spacing.2'],
+    medium: ['6px'],
     large: ['spacing.3'],
   },
 
