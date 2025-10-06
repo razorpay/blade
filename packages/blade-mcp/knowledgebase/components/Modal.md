@@ -6,6 +6,10 @@ Modal
 
 Modal is a dialog component that appears in front of the app content to provide critical information or request user input. It's designed to focus user attention, disabling all other interactions until explicitly dismissed. Modals are accessible, can be dismissed via escape key, clicking outside, or a close button (when dismissible), and come in three sizes: small, medium, and large.
 
+## Important Constraints
+
+- `ModalHeader`'s `trailing` prop only accepts `Button`, `IconButton`, `Badge`, `Link`, `Text` & `Amount` components.
+
 ## TypeScript Types
 
 These types represent the props that the Modal component and its subcomponents accept. When using the Modal component along with its subcomponents, you'll need these type definitions to understand the available props.
