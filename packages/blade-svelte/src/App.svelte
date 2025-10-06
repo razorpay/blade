@@ -21,6 +21,7 @@
     padding: 2rem;
     text-align: center;
     background-color: var(--surface-background-gray-intense);
+    min-height: 100%;
   }
 
   .component-container {
