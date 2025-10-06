@@ -315,6 +315,76 @@ export const LoadingState: StoryFn<typeof CounterInputComponent> = () => {
   );
 };
 
+// Controlled Loading with User Action Control
+export const ControlledLoading: StoryFn<typeof CounterInputComponent> = () => {
+  const [value, setValue] = useState(5);
+  const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
+
+  const handleControlledChange = async ({ value: newValue }: { value: number }) => {
+    setIsLoading(true);
+
+    try {
+      await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (Math.random() > 0.5) {
+            resolve(true);
+          } else {
+            reject(new Error('API call failed'));
+          }
+        }, 1500);
+      });
+
+      setValue(newValue);
+      toast.show({
+        content: `Successfully changed value to ${newValue}`,
+        color: 'positive',
+      });
+    } catch (error) {
+      toast.show({
+        content: `Failed to change value. Please try again.`,
+        color: 'negative',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+      <Text size="large" weight="semibold">
+        Controlled Loading Example
+      </Text>
+      <Text size="medium" color="surface.text.gray.muted">
+        User has full control over when the value changes and loading state. Value only updates
+        after successful async operation.
+      </Text>
+      <CounterInputComponent
+        label="API-Controlled Counter"
+        value={value}
+        onChange={handleControlledChange}
+        isLoading={isLoading}
+        min={1}
+        max={10}
+        emphasis="intense"
+      />
+      <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+        <Text size="small" color="surface.text.gray.subtle">
+          Current value: {value}
+        </Text>
+        <Text size="small" color="surface.text.gray.subtle">
+          Status: {isLoading ? 'Loading...' : 'Ready'}
+        </Text>
+        <Text size="small" color="surface.text.gray.muted">
+          • Loading starts immediately when button is clicked • Value only changes after successful
+          API response • Random 50% failure rate to demonstrate error handling
+        </Text>
+      </BaseBox>
+      <ToastContainer />
+    </BaseBox>
+  );
+};
+
 // Disabled State
 export const DisabledState: StoryFn<typeof CounterInputComponent> = () => {
   const [value, setValue] = useState(5);

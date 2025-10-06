@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import type { CounterInputProps } from './types';
 import { StyledCounterInput } from './StyledCounterInput';
 import { COUNTER_INPUT_TOKEN } from './token';
@@ -19,6 +19,7 @@ import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
+import get from '~utils/lodashButBetter/get';
 
 // Icon size mapping for counter input
 const ICON_SIZE_MAP = {
@@ -67,6 +68,25 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const emphasisTokens = COUNTER_INPUT_TOKEN.emphasis[emphasis];
     const _isDisabled = isDisabled || isLoading;
     const [animationClass, setAnimationClass] = useState('');
+    const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
+    const previousValueRef = useRef<number | undefined>(internalValue);
+
+    // Animation effect - triggers only when value actually changes
+    useEffect(() => {
+      // Only animate if:
+      // 1. We have a stored action (button was clicked)
+      // 2. Value actually changed from previous value
+      // 3. Not currently loading
+      if (lastActionRef.current && !isLoading && internalValue !== previousValueRef.current) {
+        const animationClass =
+          lastActionRef.current === 'increment' ? 'animate-slide-up' : 'animate-slide-down';
+        setAnimationClass(animationClass);
+        setTimeout(() => setAnimationClass(''), 300);
+        lastActionRef.current = null;
+      }
+
+      previousValueRef.current = internalValue;
+    }, [internalValue, isLoading]);
 
     const handleInputChange = useCallback(
       ({ value: inputValue }: { value?: string }) => {
@@ -87,10 +107,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       const newValue = (internalValue ?? min) + 1;
       const constrainedValue = max !== undefined ? Math.min(newValue, max) : newValue;
 
+      lastActionRef.current = 'increment';
       setInternalValue(() => constrainedValue);
-
-      setAnimationClass('animate-slide-up');
-      setTimeout(() => setAnimationClass(''), 300);
     }, [internalValue, min, max, _isDisabled, setInternalValue]);
 
     const handleDecrement = useCallback(() => {
@@ -99,10 +117,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       const newValue = (internalValue ?? min) - 1;
       const constrainedValue = Math.max(newValue, min);
 
+      lastActionRef.current = 'decrement';
       setInternalValue(() => constrainedValue);
-
-      setAnimationClass('animate-slide-down');
-      setTimeout(() => setAnimationClass(''), 300);
     }, [internalValue, min, _isDisabled, setInternalValue]);
 
     const isDecrementDisabled = _isDisabled || (internalValue ?? min) <= min;
@@ -150,7 +166,11 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
               position="relative"
               alignItems="center"
               flexDirection="column"
-              backgroundColor={emphasisTokens.backgroundColor}
+              backgroundColor={
+                isLoading || isDisabled
+                  ? emphasisTokens.loadingOrDisabledBgColor
+                  : emphasisTokens.backgroundColor
+              }
               width={`${COUNTER_INPUT_TOKEN.width[size]}px`}
               height={`${COUNTER_INPUT_TOKEN.height[size]}px`}
               borderRadius="medium"
@@ -171,15 +191,14 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   borderRadius="small"
                   aria-label="Decrement value"
                   disabled={isDecrementDisabled}
+                  style={{
+                    color: isDecrementDisabled
+                      ? get(theme.colors, emphasisTokens.disabledIconColor, '')
+                      : get(theme.colors, emphasisTokens.iconColor, ''),
+                  }}
                 >
-                  <MinusIcon
-                    size={ICON_SIZE_MAP[size]}
-                    color={
-                      isDecrementDisabled
-                        ? emphasisTokens.disabledIconColor
-                        : emphasisTokens.iconColor
-                    }
-                  />
+                  {/* Using currentColor allows CSS hover styles to control icon color */}
+                  <MinusIcon size={ICON_SIZE_MAP[size]} color="currentColor" />
                 </BaseBox>
 
                 <BaseBox className={animationClass}>
@@ -219,15 +238,14 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   borderRadius="small"
                   aria-label="Increment value"
                   disabled={isIncrementDisabled}
+                  style={{
+                    color: isIncrementDisabled
+                      ? get(theme.colors, emphasisTokens.disabledIconColor, '')
+                      : get(theme.colors, emphasisTokens.iconColor, ''),
+                  }}
                 >
-                  <PlusIcon
-                    size={ICON_SIZE_MAP[size]}
-                    color={
-                      isIncrementDisabled
-                        ? emphasisTokens.disabledIconColor
-                        : emphasisTokens.iconColor
-                    }
-                  />
+                  {/* Using currentColor allows CSS hover styles to control icon color */}
+                  <PlusIcon size={ICON_SIZE_MAP[size]} color="currentColor" />
                 </BaseBox>
               </BaseBox>
               {isLoading && (
