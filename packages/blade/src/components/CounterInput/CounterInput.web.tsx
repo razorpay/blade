@@ -45,6 +45,10 @@ const StyledCounterButton = styled.button<{
     castWebType(makeMotionTime(get(theme.motion, 'duration.xquick')))};
   transition-timing-function: ${({ theme }) => get(theme.motion, 'easing.standard')};
 
+  &:focus-visible {
+    ${({ theme }) => getFocusRingStyles({ theme, negativeOffset: true })}
+  }
+
   /* Hover styles based on emphasis */
   &:hover:not(:disabled) {
     ${({ theme, $emphasis }) => {
@@ -60,10 +64,6 @@ const StyledCounterButton = styled.button<{
         `;
       }
     }}
-  }
-
-  &:focus-visible {
-    ${({ theme }) => getFocusRingStyles({ theme, negativeOffset: true })}
   }
 `;
 
