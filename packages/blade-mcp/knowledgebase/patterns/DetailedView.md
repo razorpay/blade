@@ -89,7 +89,7 @@ const KeyValueItem = ({
 }: {
   label: string;
   children: React.ReactNode;
-}): React.ReactNode => (
+}) => (
   <>
     <Text variant="body" size="small" color="surface.text.gray.muted">
       {label}
@@ -98,13 +98,13 @@ const KeyValueItem = ({
   </>
 );
 
-const KeyValueGrid = ({ children }: { children: React.ReactNode }): React.ReactNode => (
+const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
   <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3">
     {children}
   </Box>
 );
 
-const Timeline = ({ status }: { status: string }): React.ReactNode => (
+const Timeline = ({ status }: { status: string }) => (
   <StepGroup orientation="vertical" size="medium">
     <StepItem
       title="Payment Initiated"
@@ -143,7 +143,7 @@ const Timeline = ({ status }: { status: string }): React.ReactNode => (
   </StepGroup>
 );
 
-const TransactionDetailedView = ():React.ReactNode => {
+const TransactionDetailedView = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
 
@@ -452,7 +452,7 @@ const KeyValueItem = ({
 }: {
   label: string;
   children: React.ReactNode;
-}): React.ReactNode => (
+}) => (
   <>
     <Text variant="body" size="small" color="surface.text.gray.muted">
       {label}
@@ -461,13 +461,13 @@ const KeyValueItem = ({
   </>
 );
 
-const KeyValueGrid = ({ children }: { children: React.ReactNode }): React.ReactNode => (
+const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
   <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3">
     {children}
   </Box>
 );
 
-const SettlementDetailedView = (): React.ReactNode => {
+const SettlementDetailedView = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const settlementData = {

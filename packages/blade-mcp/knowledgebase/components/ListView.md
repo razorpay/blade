@@ -493,7 +493,7 @@ import {
   // ...other imports as needed
 } from '@razorpay/blade/components';
 
-function MultiSelectListViewExample(): React.ReactElement {
+function MultiSelectListViewExample() {
   // Sample data similar to the first example
   const data: { nodes: { status: string }[] } = {
     nodes: [
@@ -537,7 +537,7 @@ function MultiSelectListViewExample(): React.ReactElement {
               selectionType="multiple"
               onChange={({ values }) => {
                 const filteredData = getMultipleStatusFilterData(data, values);
-                setListViewTableData(filteredData as { nodes: never[] });
+                setListViewTableData(filteredData);
                 setSelectedQuickFilters(values);
               }}
               value={selectedQuickFilters}

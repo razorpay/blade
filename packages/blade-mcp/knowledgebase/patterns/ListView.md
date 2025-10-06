@@ -500,7 +500,7 @@ const quickFilterColorMapping: Record<string, CounterProps['color']> = {
 
 const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
 
-function MultiSelectListViewExample(): React.ReactNode {
+function MultiSelectListViewExample() {
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string[]>([]);
   const [searchValue, setSearchValue] = useState<string | undefined>('');
@@ -583,7 +583,7 @@ function MultiSelectListViewExample(): React.ReactNode {
     search: string | undefined,
     method: string | undefined,
     dateRange: DatesRangeValue | undefined,
-  ): void => {
+  ) => {
     const quickFilterData = getQuickFilterData(data, quickFilters);
     const searchValueData = getSearchedData(quickFilterData, search);
     const methodFilterData = getMethodFilterData(searchValueData, method);
@@ -888,7 +888,7 @@ const quickFilterColorMapping: Record<string, CounterProps['color']> = {
   Completed: 'neutral',
 };
 
-function MinimalListViewExample(): React.ReactElement {
+function MinimalListViewExample() {
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
   const [methodFilter, setMethodFilter] = useState<string | undefined>(undefined);
@@ -940,7 +940,7 @@ function MinimalListViewExample(): React.ReactElement {
     quickFilter: string,
     method: string | undefined,
     dateRange: DatesRangeValue | undefined,
-  ): void => {
+  ) => {
     const quickFilterData = getQuickFilterData(data, quickFilter);
     const methodFilterData = getMethodFilterData(quickFilterData, method);
     const dateRangeFilterData = getFilterRangeData(methodFilterData, dateRange);

@@ -793,10 +793,10 @@ const tableData: TableData = [
     nestedData: [],
   },
 ];
-const TableNestingExample = (): React.ReactElement => {
+const TableNestingExample = () => {
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
 
-  const toggleRow = (id: string): void => {
+  const toggleRow = (id: string) => {
     const newExpanded = new Set(expandedRows);
     if (newExpanded.has(id)) {
       newExpanded.delete(id);

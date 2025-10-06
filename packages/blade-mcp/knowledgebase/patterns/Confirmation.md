@@ -202,7 +202,7 @@ const ConfirmationExample: React.FC = () => {
   const [isSwitchOpen, setIsSwitchOpen] = React.useState(false);
   const [isTourOpen, setIsTourOpen] = React.useState(false);
 
-  const handleDelete = async (): Promise<void> => {
+  const handleDelete = async () => {
     setIsDeleteLoading(true);
     try {
       // Simulate API call

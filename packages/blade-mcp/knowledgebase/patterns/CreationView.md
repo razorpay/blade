@@ -341,7 +341,7 @@ const tableData = {
   ],
 };
 
-function MultiStepCreationView(): React.ReactNode {
+function MultiStepCreationView() {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isDesktop = matchedDeviceType === 'desktop';
@@ -920,7 +920,7 @@ function ResponsiveModalWrapper({
   );
 }
 
-function EditAndAddModal(): React.ReactNode {
+function EditAndAddModal() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -1031,7 +1031,7 @@ function ResponsiveModalWrapper({
   );
 }
 
-function FlowSelectionModal(): React.ReactNode {
+function FlowSelectionModal() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
 
@@ -1276,7 +1276,7 @@ function ResponsiveModalWrapper({
   );
 }
 
-function SingleStepFormModal(): React.ReactNode {
+function SingleStepFormModal() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
