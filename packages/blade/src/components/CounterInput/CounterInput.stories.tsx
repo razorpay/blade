@@ -359,7 +359,7 @@ export const ControlledLoading: StoryFn<typeof CounterInputComponent> = ({ ...ar
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
 
-  const handleControlledChange = async ({ value: newValue }: { value: number }) => {
+  const handleControlledChange = async ({ value: newValue }: { value: number }): Promise<void> => {
     setIsLoading(true);
 
     try {
