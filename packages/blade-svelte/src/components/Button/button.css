@@ -6,11 +6,6 @@
   border: none;
 }
 
-.btn:focus-visible {
-  outline: 2px solid #007bff;
-  outline-offset: 2px;
-}
-
 /* Button variants */
 .btn--primary {
   background-color: var(--interactive-background-primary-default);
