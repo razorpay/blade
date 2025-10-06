@@ -54,6 +54,7 @@ const meta: Meta<CounterInputProps> = {
   component: CounterInputComponent,
   args: {
     label: 'Quantity',
+    defaultValue: 5,
     min: 0,
     max: 100,
     emphasis: 'subtle',
@@ -75,6 +76,34 @@ const meta: Meta<CounterInputProps> = {
       control: { type: 'select' },
       options: ['xsmall', 'medium', 'large'],
     },
+    value: {
+      control: { disable: true },
+      table: {
+        category: 'State Management',
+      },
+    },
+    defaultValue: {
+      control: { type: 'number' },
+      table: {
+        category: 'State Management',
+      },
+    },
+    labelPosition: {
+      control: { type: 'select' },
+      options: ['top', 'left'],
+    },
+    label: {
+      description: 'Label for the `CounterInput`.',
+      control: {
+        type: 'text',
+      },
+    },
+    accessibilityLabel: {
+      description: 'Accessibility label for the `CounterInput`.',
+      control: {
+        type: 'text',
+      },
+    },
   },
   parameters: {
     docs: {
@@ -83,8 +112,10 @@ const meta: Meta<CounterInputProps> = {
   },
 };
 
+export default meta;
+
 // Basic Usage Example
-export const BasicUsage: StoryFn<typeof CounterInputComponent> = () => {
+export const BasicUsage: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [value, setValue] = useState(5 as number);
 
   return (
@@ -97,6 +128,7 @@ export const BasicUsage: StoryFn<typeof CounterInputComponent> = () => {
       </Text>
       <CounterInputComponent
         label="Basic Counter"
+        {...args}
         value={value}
         onChange={({ value: newValue }) => {
           console.log('newValue', newValue);
@@ -111,7 +143,7 @@ export const BasicUsage: StoryFn<typeof CounterInputComponent> = () => {
 };
 
 // Size Variants
-export const SizeVariants: StoryFn<typeof CounterInputComponent> = () => {
+export const SizeVariants: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [xsmallValue, setXsmallValue] = useState(1);
   const [mediumValue, setMediumValue] = useState(2);
   const [largeValue, setLargeValue] = useState(3);
@@ -128,6 +160,7 @@ export const SizeVariants: StoryFn<typeof CounterInputComponent> = () => {
         </Text>
         <CounterInputComponent
           label="XSmall Counter"
+          {...args}
           size="xsmall"
           value={xsmallValue}
           onChange={({ value }) => setXsmallValue(value)}
@@ -165,7 +198,7 @@ export const SizeVariants: StoryFn<typeof CounterInputComponent> = () => {
 };
 
 // Emphasis Variants
-export const EmphasisVariants: StoryFn<typeof CounterInputComponent> = () => {
+export const EmphasisVariants: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [subtleValue, setSubtleValue] = useState(5);
   const [intenseValue, setIntenseValue] = useState(5);
 
@@ -184,6 +217,7 @@ export const EmphasisVariants: StoryFn<typeof CounterInputComponent> = () => {
         </Text>
         <CounterInputComponent
           label="Subtle Counter"
+          {...args}
           emphasis="subtle"
           value={subtleValue}
           onChange={({ value }) => setSubtleValue(value)}
@@ -213,7 +247,7 @@ export const EmphasisVariants: StoryFn<typeof CounterInputComponent> = () => {
 };
 
 // Min/Max Constraints
-export const MinMaxConstraints: StoryFn<typeof CounterInputComponent> = () => {
+export const MinMaxConstraints: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [value, setValue] = useState(5);
 
   return (
@@ -226,6 +260,7 @@ export const MinMaxConstraints: StoryFn<typeof CounterInputComponent> = () => {
       </Text>
       <CounterInputComponent
         label="Constrained Counter"
+        {...args}
         value={value}
         onChange={({ value: newValue }) => setValue(newValue)}
         min={1}
@@ -239,7 +274,7 @@ export const MinMaxConstraints: StoryFn<typeof CounterInputComponent> = () => {
 };
 
 // Uncontrolled Component
-export const UncontrolledComponent: StoryFn<typeof CounterInputComponent> = () => {
+export const UncontrolledComponent: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.4">
       <Text size="large" weight="semibold">
@@ -250,6 +285,7 @@ export const UncontrolledComponent: StoryFn<typeof CounterInputComponent> = () =
       </Text>
       <CounterInputComponent
         label="Uncontrolled Counter"
+        {...args}
         defaultValue={3}
         min={0}
         max={20}
@@ -260,7 +296,7 @@ export const UncontrolledComponent: StoryFn<typeof CounterInputComponent> = () =
 };
 
 // Loading State
-export const LoadingState: StoryFn<typeof CounterInputComponent> = () => {
+export const LoadingState: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [counters, setCounters] = useState({
     cartQuantity: { value: 5, isLoading: false },
     subscriptionSeats: { value: 3, isLoading: false },
@@ -270,7 +306,7 @@ export const LoadingState: StoryFn<typeof CounterInputComponent> = () => {
     value: newValue,
   }: {
     value: number;
-  }) => {
+  }): void => {
     setCounters((prev) => ({
       ...prev,
       [key]: { value: newValue, isLoading: true },
@@ -295,6 +331,7 @@ export const LoadingState: StoryFn<typeof CounterInputComponent> = () => {
       </Text>
       <CounterInputComponent
         label="Cart Quantity (2.5s loading)"
+        {...args}
         value={counters.cartQuantity.value}
         onChange={handleChange('cartQuantity', 2500)}
         isLoading={counters.cartQuantity.isLoading}
@@ -304,6 +341,7 @@ export const LoadingState: StoryFn<typeof CounterInputComponent> = () => {
       />
       <CounterInputComponent
         label="Subscription Seats (1s loading)"
+        {...args}
         value={counters.subscriptionSeats.value}
         onChange={handleChange('subscriptionSeats', 1000)}
         isLoading={counters.subscriptionSeats.isLoading}
@@ -316,7 +354,7 @@ export const LoadingState: StoryFn<typeof CounterInputComponent> = () => {
 };
 
 // Controlled Loading with User Action Control
-export const ControlledLoading: StoryFn<typeof CounterInputComponent> = () => {
+export const ControlledLoading: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [value, setValue] = useState(5);
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
@@ -346,7 +384,7 @@ export const ControlledLoading: StoryFn<typeof CounterInputComponent> = () => {
         color: 'negative',
       });
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
@@ -361,6 +399,7 @@ export const ControlledLoading: StoryFn<typeof CounterInputComponent> = () => {
       </Text>
       <CounterInputComponent
         label="API-Controlled Counter"
+        {...args}
         value={value}
         onChange={handleControlledChange}
         isLoading={isLoading}
@@ -386,7 +425,7 @@ export const ControlledLoading: StoryFn<typeof CounterInputComponent> = () => {
 };
 
 // Disabled State
-export const DisabledState: StoryFn<typeof CounterInputComponent> = () => {
+export const DisabledState: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [value, setValue] = useState(5);
 
   return (
@@ -399,12 +438,14 @@ export const DisabledState: StoryFn<typeof CounterInputComponent> = () => {
       </Text>
       <CounterInputComponent
         label="Disabled Counter"
+        {...args}
         value={value}
         onChange={({ value: newValue }) => setValue(newValue)}
         isDisabled={true}
       />
       <CounterInputComponent
         label="Disabled Counter"
+        {...args}
         emphasis="subtle"
         value={value}
         onChange={({ value: newValue }) => setValue(newValue)}
@@ -415,7 +456,7 @@ export const DisabledState: StoryFn<typeof CounterInputComponent> = () => {
 };
 
 // Label Positioning
-export const LabelPositioning: StoryFn<typeof CounterInputComponent> = () => {
+export const LabelPositioning: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [topValue, setTopValue] = useState(1);
   const [leftValue, setLeftValue] = useState(2);
 
@@ -431,6 +472,7 @@ export const LabelPositioning: StoryFn<typeof CounterInputComponent> = () => {
         </Text>
         <CounterInputComponent
           label="Top Label"
+          {...args}
           labelPosition="top"
           value={topValue}
           onChange={({ value }) => setTopValue(value)}
@@ -446,6 +488,7 @@ export const LabelPositioning: StoryFn<typeof CounterInputComponent> = () => {
 
         <CounterInputComponent
           label="Left Label"
+          {...args}
           labelPosition="left"
           value={leftValue}
           onChange={({ value }) => setLeftValue(value)}
@@ -457,7 +500,7 @@ export const LabelPositioning: StoryFn<typeof CounterInputComponent> = () => {
   );
 };
 
-export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () => {
+export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [formData, setFormData] = useState({
     quantity: 2,
     licenses: 1,
@@ -480,6 +523,7 @@ export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () =
       <BaseBox display="flex" flexDirection="column" gap="spacing.4">
         <CounterInputComponent
           label="Product Quantity"
+          {...args}
           name="quantity"
           value={formData.quantity}
           onChange={handleFieldChange('quantity')}
@@ -489,6 +533,7 @@ export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () =
 
         <CounterInputComponent
           label="API Licenses"
+          {...args}
           name="licenses"
           value={formData.licenses}
           onChange={handleFieldChange('licenses')}
@@ -498,6 +543,7 @@ export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () =
 
         <CounterInputComponent
           label="Team Members"
+          {...args}
           name="users"
           value={formData.users}
           onChange={handleFieldChange('users')}
@@ -524,7 +570,7 @@ export const MultipleCounterInputs: StoryFn<typeof CounterInputComponent> = () =
 };
 
 // CounterInput with Toast Validation Example
-export const WithToastValidation: StoryFn<typeof CounterInputComponent> = () => {
+export const WithToastValidation: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [quantity, setQuantity] = useState(1);
   const toast = useToast();
 
@@ -559,6 +605,7 @@ export const WithToastValidation: StoryFn<typeof CounterInputComponent> = () => 
 
       <CounterInputComponent
         label="Order Quantity"
+        {...args}
         value={quantity}
         onChange={handleChange}
         min={1}
@@ -586,5 +633,3 @@ export const WithToastValidation: StoryFn<typeof CounterInputComponent> = () => 
     </BaseBox>
   );
 };
-
-export default meta;

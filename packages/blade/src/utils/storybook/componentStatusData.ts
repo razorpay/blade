@@ -707,10 +707,11 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'CounterInput',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '12.59.0',
     storybookLink: 'Components/CounterInput',
     description:
-      'CounterInput component allows users to increment or decrement numerical values using built-in controls with manual text input support.',
+      'CounterInput component allows users to increment or decrement small numerical values (typically 0-99) using built-in controls with manual text input support. Optimized for quantity selection, settings with boundaries, and scenarios requiring clear min/max constraints. For larger values (99+), use TextInput with type="number" instead.',
     platform: 'web',
   },
 ];

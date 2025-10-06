@@ -21,7 +21,6 @@ import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
-import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledCounterButton = styled.button<{
@@ -43,8 +42,8 @@ const StyledCounterButton = styled.button<{
   /* Transitions for smooth hover effects */
   transition-property: background-color, color;
   transition-duration: ${({ theme }) =>
-    castWebType(makeMotionTime(getIn(theme.motion, 'duration.xquick')))};
-  transition-timing-function: ${({ theme }) => getIn(theme.motion, 'easing.standard')};
+    castWebType(makeMotionTime(get(theme.motion, 'duration.xquick')))};
+  transition-timing-function: ${({ theme }) => get(theme.motion, 'easing.standard')};
 
   /* Hover styles based on emphasis */
   &:hover:not(:disabled) {
