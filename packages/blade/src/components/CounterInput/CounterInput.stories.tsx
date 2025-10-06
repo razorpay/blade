@@ -346,7 +346,7 @@ export const ControlledLoading: StoryFn<typeof CounterInputComponent> = () => {
         color: 'negative',
       });
     } finally {
-      setIsLoading(false);
+      setIsLoading(true);
     }
   };
 

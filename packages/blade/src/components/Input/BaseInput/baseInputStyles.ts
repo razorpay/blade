@@ -159,6 +159,9 @@ const getLeftPadding = ({
     return theme.spacing[3];
   }
 
+  /**
+   * CounterInput uses tighter padding (4px vs 8-12px) for compact design
+   */
   if (isInsideCounterInput) {
     return theme.spacing[baseInputCounterInputPaddingTokens.left[size]];
   }
@@ -184,6 +187,8 @@ const getRightPadding = ({
   if (hasTrailingInteractionElement || hasSuffix || hasTrailingIcon) {
     return theme.spacing[3];
   }
+
+  // CounterInput uses compact padding
   if (isInsideCounterInput) {
     return theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
   }
@@ -199,6 +204,7 @@ const getTopPadding = ({
   size: GetInputStyles['size'];
   isInsideCounterInput?: boolean;
 }): number => {
+  // CounterInput uses compact padding
   if (isInsideCounterInput) {
     return theme.spacing[baseInputCounterInputPaddingTokens.top[size]];
   }
@@ -214,6 +220,7 @@ const getBottomPadding = ({
   size: GetInputStyles['size'];
   isInsideCounterInput?: boolean;
 }): number => {
+  // CounterInput uses compact padding
   if (isInsideCounterInput) {
     return theme.spacing[baseInputCounterInputPaddingTokens.top[size]];
   }
@@ -270,6 +277,9 @@ export const getBaseInputStyles = ({
           theme,
         })
       : getTextStyles({
+          /**
+           * CounterInput: uses 'small' size for xsmall and 'semibold' weight for prominence
+           */
           size: isInsideCounterInput && size === 'xsmall' ? 'small' : size,
           variant: 'body',
           weight: isInsideCounterInput ? 'semibold' : 'regular',

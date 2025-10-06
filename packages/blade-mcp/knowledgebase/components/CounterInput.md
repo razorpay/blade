@@ -18,6 +18,23 @@ CounterInput is a specialized numerical input component that allows users to inc
 - Component is disabled for all interactions when `isLoading` or `isDisabled` is true
 - `labelPosition="left"` only applies on desktop devices, falls back to top on mobile
 
+## Usage Guidelines
+
+### When to Use CounterInput
+
+- **Small numerical values only** (typically 0-99)
+- Quantity selection (cart items, subscription seats, etc.)
+- Settings with clear boundaries (retry attempts, timeout values)
+- Any scenario where users need to adjust small numbers with clear min/max constraints
+
+### When NOT to Use CounterInput
+
+- **Large numerical values (99+)** - Use a regular TextInput with `type="number"` instead
+- Complex numerical input (decimals, currency, percentages) - Use specialized input components
+- Values that don't benefit from increment/decrement buttons (IDs, phone numbers, etc.)
+
+**Important:** CounterInput is optimized for small numbers and provides the best user experience when used for values typically under 100. For larger values, the increment/decrement interaction becomes inefficient and a standard numerical text input should be used instead.
+
 ## TypeScript Types
 
 These types define the props that the CounterInput component accepts, along with its context types for internal state management.
@@ -127,26 +144,42 @@ export type { CounterInputContextType };
 
 ## Examples
 
-### Size and Emphasis Variations
+### Comprehensive CounterInput Example
 
-```jsx
+```tsx
+import React from 'react';
 import { CounterInput, Box } from '@razorpay/blade/components';
 import { useState } from 'react';
 
-function SizeEmphasisExample() {
+function CounterInputExample(): React.ReactElement {
   const [values, setValues] = useState({
     xsmall: 1,
     medium: 5,
     large: 10,
     intense: 3,
+    loading: 5,
+    disabled: 3,
+    uncontrolled: 7,
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (key) => ({ value }) => {
+  const handleChange = (key: string) => ({ value }: { value: number }) => {
     setValues((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleLoadingChange = ({ value }: { value: number }) => {
+    setIsLoading(true);
+    setValues((prev) => ({ ...prev, loading: value }));
+
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
   };
 
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
+      {/* Size and Emphasis Variations */}
       <CounterInput
         label="XSmall Size"
         size="xsmall"
@@ -191,37 +224,12 @@ function SizeEmphasisExample() {
         min={0}
         max={20}
       />
-    </Box>
-  );
-}
-```
 
-### Loading, Disabled, and Min/Max States
-
-```jsx
-import { CounterInput, Box } from '@razorpay/blade/components';
-import { useState } from 'react';
-
-function StateExample() {
-  const [quantity, setQuantity] = useState(5);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleChange = ({ value }) => {
-    setIsLoading(true);
-    setQuantity(value);
-
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  };
-
-  return (
-    <Box display="flex" flexDirection="column" gap="spacing.4">
+      {/* Loading, Disabled, and Min/Max States */}
       <CounterInput
         label="Loading State Counter"
-        value={quantity}
-        onChange={handleChange}
+        value={values.loading}
+        onChange={handleLoadingChange}
         isLoading={isLoading}
         min={1}
         max={10}
@@ -231,8 +239,8 @@ function StateExample() {
 
       <CounterInput
         label="Disabled Counter"
-        value={3}
-        onChange={() => {}}
+        value={values.disabled}
+        onChange={handleChange('disabled')}
         isDisabled={true}
         min={0}
         max={20}
@@ -244,7 +252,7 @@ function StateExample() {
         defaultValue={7}
         min={5}
         max={15}
-        onChange={({ value }) => console.log('Value changed:', value)}
+        onChange={({ value }: { value: number }) => console.log('Value changed:', value)}
         name="uncontrolled-counter"
       />
     </Box>

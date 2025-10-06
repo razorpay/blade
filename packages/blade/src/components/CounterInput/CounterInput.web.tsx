@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import type { CounterInputProps } from './types';
 import { StyledCounterInput } from './StyledCounterInput';
 import { COUNTER_INPUT_TOKEN } from './token';
@@ -16,10 +17,56 @@ import { FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
-import { useBreakpoint } from '~utils';
+import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
+import getIn from '~utils/lodashButBetter/get';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+const StyledCounterButton = styled.button<{
+  disabled?: boolean;
+  $padding: number;
+  $margin: readonly number[];
+  $emphasis: 'subtle' | 'intense';
+}>`
+  background-color: transparent;
+  border: none;
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: ${({ theme }) => theme.border.radius.small}px;
+  padding: ${({ $padding }) => makeSpace($padding)};
+  margin: ${({ $margin }) => $margin.map((m) => makeSpace(m)).join(' ')};
+
+  /* Transitions for smooth hover effects */
+  transition-property: background-color, color;
+  transition-duration: ${({ theme }) =>
+    castWebType(makeMotionTime(getIn(theme.motion, 'duration.xquick')))};
+  transition-timing-function: ${({ theme }) => getIn(theme.motion, 'easing.standard')};
+
+  /* Hover styles based on emphasis */
+  &:hover:not(:disabled) {
+    ${({ theme, $emphasis }) => {
+      if ($emphasis === 'subtle') {
+        return `
+          background-color: ${theme.colors.interactive.background.gray.fadedHighlighted} !important;
+          color: ${theme.colors.interactive.icon.gray.normal} !important;
+        `;
+      } else {
+        return `
+          background-color: ${theme.colors.interactive.background.primary.fadedHighlighted} !important;
+          color: ${theme.colors.interactive.icon.primary.normal} !important;
+        `;
+      }
+    }}
+  }
+
+  &:focus-visible {
+    ${({ theme }) => getFocusRingStyles({ theme, negativeOffset: true })}
+  }
+`;
 
 // Icon size mapping for counter input
 const ICON_SIZE_MAP = {
@@ -136,6 +183,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
     return (
       <CounterInputProvider value={contextValue}>
+        {/* __blade-counter-input: CSS selector for animations and component-specific styles */}
         <StyledCounterInput
           className="__blade-counter-input"
           data-emphasis={emphasis}
@@ -180,15 +228,12 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
               }
             >
               <BaseBox display="flex" alignItems="center" flexDirection="row">
-                <BaseBox
+                <StyledCounterButton
                   className="decrement-button"
-                  as="button"
-                  display="flex"
-                  cursor={isDecrementDisabled ? 'not-allowed' : 'pointer'}
                   onClick={handleDecrement}
-                  padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
-                  margin={COUNTER_INPUT_TOKEN.decrementIconMargin}
-                  borderRadius="small"
+                  $padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
+                  $margin={COUNTER_INPUT_TOKEN.decrementIconMargin}
+                  $emphasis={emphasis}
                   aria-label="Decrement value"
                   disabled={isDecrementDisabled}
                   style={{
@@ -199,7 +244,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 >
                   {/* Using currentColor allows CSS hover styles to control icon color */}
                   <MinusIcon size={ICON_SIZE_MAP[size]} color="currentColor" />
-                </BaseBox>
+                </StyledCounterButton>
 
                 <BaseBox className={animationClass}>
                   <BaseInput
@@ -226,16 +271,12 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   />
                 </BaseBox>
 
-                <BaseBox
+                <StyledCounterButton
                   className="increment-button"
-                  as="button"
-                  display="flex"
-                  alignItems="center"
-                  cursor={isIncrementDisabled ? 'not-allowed' : 'pointer'}
                   onClick={handleIncrement}
-                  padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
-                  margin={COUNTER_INPUT_TOKEN.incrementIconMargin}
-                  borderRadius="small"
+                  $padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
+                  $margin={COUNTER_INPUT_TOKEN.incrementIconMargin}
+                  $emphasis={emphasis}
                   aria-label="Increment value"
                   disabled={isIncrementDisabled}
                   style={{
@@ -246,7 +287,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 >
                   {/* Using currentColor allows CSS hover styles to control icon color */}
                   <PlusIcon size={ICON_SIZE_MAP[size]} color="currentColor" />
-                </BaseBox>
+                </StyledCounterButton>
               </BaseBox>
               {isLoading && (
                 <BaseBox width="100%" position="absolute" bottom="spacing.0">
@@ -255,7 +296,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                     showPercentage={false}
                     value={1}
                     isIndeterminate={true}
-                    oscillation={true}
+                    _oscillation={true}
                   />
                 </BaseBox>
               )}

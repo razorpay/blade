@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CounterInput /> should render CounterInput with default properties 1`] = `"<div id="root"><div class="BaseBox-bmPWx StyledCounterInput-ljwv28-0  iuNdnm __blade-counter-input" data-emphasis="subtle" data-blade-component="counter-input"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="counter-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="counter-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Product Quantity</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 AutiL"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx cZfRXj"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><button class="BaseBox-bmPWx glPqqJ decrement-button" aria-label="Decrement value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" clip-rule="evenodd" fill="hsla(212, 39%, 16%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button><div class="BaseBox-bmPWx" data-blade-component="base-box"><div data-blade-component="counter-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="number" color="surface.text.gray.subtle" id="counter-input-undefined-input-undefined-undefined-input-undefined" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" role="spinbutton" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dboeji" value="5"/></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div><button class="BaseBox-bmPWx hCIGip increment-button" aria-label="Increment value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z" fill="hsla(212, 39%, 16%, 1)" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div>"`;
+exports[`<CounterInput /> should render CounterInput with default properties 1`] = `"<div id="root"><div class="BaseBox-bmPWx StyledCounterInput-ljwv28-0  jQReGD __blade-counter-input" data-emphasis="subtle" data-blade-component="counter-input"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="counter-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="counter-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Product Quantity</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 AutiL"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx cZfRXj"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><button class="CounterInputweb__StyledCounterButton-l7imdl-0 fIyOgt decrement-button" aria-label="Decrement value" style="color:hsla(211, 26%, 34%, 1)"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button><div class="BaseBox-bmPWx" data-blade-component="base-box"><div data-blade-component="counter-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="number" color="surface.text.gray.subtle" id="counter-input-undefined-input-undefined-undefined-input-undefined" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" role="spinbutton" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dboeji" value="5"/></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div><button class="CounterInputweb__StyledCounterButton-l7imdl-0 iLfiNF increment-button" aria-label="Increment value" style="color:hsla(211, 26%, 34%, 1)"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div>"`;
 
 exports[`<CounterInput /> should render CounterInput with default properties 2`] = `
 .c1.c1.c1.c1.c1 {
@@ -96,17 +96,6 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 6px;
-  margin: 4px 0px 4px 4px;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
 .c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -135,21 +124,6 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-}
-
-.c17.c17.c17.c17.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 6px;
-  margin: 4px 4px 4px 0px;
-  border-radius: 2px;
-  cursor: pointer;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper {
@@ -183,28 +157,6 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
 
 .c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
   background-color: transparent !important;
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input .decrement-button,
-.c0.c0.c0.c0.c0.__blade-counter-input .increment-button {
-  background-color: transparent !important;
-  border: none !important;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .decrement-button:hover:not(:disabled),
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .decrement-button:hover:not(:disabled),
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.18) !important;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -461,6 +413,94 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   z-index: 2;
 }
 
+.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 2px;
+  padding: 6px;
+  margin: 4px 0px 4px 4px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
+}
+
+.c10.c10.c10.c10.c10:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c17.c17.c17.c17.c17 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 2px;
+  padding: 6px;
+  margin: 4px 4px 4px 0px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
+}
+
+.c17.c17.c17.c17.c17:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
@@ -556,7 +596,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
           <button
             aria-label="Decrement value"
             class="c10 decrement-button"
-            data-blade-component="base-box"
+            style="color:hsla(211, 26%, 34%, 1)"
           >
             <svg
               aria-hidden="true"
@@ -571,7 +611,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
                 clip-rule="evenodd"
                 d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(212, 39%, 16%, 1)"
+                fill="currentColor"
                 fill-rule="evenodd"
               />
             </svg>
@@ -626,7 +666,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
           <button
             aria-label="Increment value"
             class="c17 increment-button"
-            data-blade-component="base-box"
+            style="color:hsla(211, 26%, 34%, 1)"
           >
             <svg
               aria-hidden="true"
@@ -640,7 +680,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                 data-blade-component="svg-path"
-                fill="hsla(212, 39%, 16%, 1)"
+                fill="currentColor"
               />
             </svg>
           </button>

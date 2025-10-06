@@ -94,17 +94,6 @@ exports[`<CounterInput /> should render 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 6px;
-  margin: 4px 0px 4px 4px;
-  border-radius: 2px;
-  cursor: not-allowed;
-}
-
 .c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -133,21 +122,6 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-}
-
-.c17.c17.c17.c17.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 6px;
-  margin: 4px 4px 4px 0px;
-  border-radius: 2px;
-  cursor: pointer;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper {
@@ -181,28 +155,6 @@ exports[`<CounterInput /> should render 1`] = `
 
 .c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
   background-color: transparent !important;
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input .decrement-button,
-.c0.c0.c0.c0.c0.__blade-counter-input .increment-button {
-  background-color: transparent !important;
-  border: none !important;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .decrement-button:hover:not(:disabled),
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .decrement-button:hover:not(:disabled),
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.18) !important;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -459,6 +411,94 @@ exports[`<CounterInput /> should render 1`] = `
   z-index: 2;
 }
 
+.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+  border: none;
+  cursor: not-allowed;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 2px;
+  padding: 6px;
+  margin: 4px 0px 4px 4px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
+}
+
+.c10.c10.c10.c10.c10:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c17.c17.c17.c17.c17 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 2px;
+  padding: 6px;
+  margin: 4px 4px 4px 0px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
+}
+
+.c17.c17.c17.c17.c17:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
@@ -552,8 +592,8 @@ exports[`<CounterInput /> should render 1`] = `
           <button
             aria-label="Decrement value"
             class="c10 decrement-button"
-            data-blade-component="base-box"
             disabled=""
+            style="color: rgba(108, 108, 108, 0.32);"
           >
             <svg
               aria-hidden="true"
@@ -568,7 +608,7 @@ exports[`<CounterInput /> should render 1`] = `
                 clip-rule="evenodd"
                 d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 20%, 52%, 0.32)"
+                fill="currentColor"
                 fill-rule="evenodd"
               />
             </svg>
@@ -623,7 +663,7 @@ exports[`<CounterInput /> should render 1`] = `
           <button
             aria-label="Increment value"
             class="c17 increment-button"
-            data-blade-component="base-box"
+            style="color: rgb(64, 64, 64);"
           >
             <svg
               aria-hidden="true"
@@ -637,7 +677,7 @@ exports[`<CounterInput /> should render 1`] = `
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                 data-blade-component="svg-path"
-                fill="hsla(212, 39%, 16%, 1)"
+                fill="currentColor"
               />
             </svg>
           </button>
@@ -742,17 +782,6 @@ exports[`<CounterInput /> should render large size 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 8px;
-  margin: 4px 0px 4px 4px;
-  border-radius: 2px;
-  cursor: not-allowed;
-}
-
 .c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -781,21 +810,6 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-}
-
-.c17.c17.c17.c17.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 8px;
-  margin: 4px 4px 4px 0px;
-  border-radius: 2px;
-  cursor: pointer;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper {
@@ -829,28 +843,6 @@ exports[`<CounterInput /> should render large size 1`] = `
 
 .c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
   background-color: transparent !important;
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input .decrement-button,
-.c0.c0.c0.c0.c0.__blade-counter-input .increment-button {
-  background-color: transparent !important;
-  border: none !important;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .decrement-button:hover:not(:disabled),
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .decrement-button:hover:not(:disabled),
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.18) !important;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1107,6 +1099,94 @@ exports[`<CounterInput /> should render large size 1`] = `
   z-index: 2;
 }
 
+.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+  border: none;
+  cursor: not-allowed;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 2px;
+  padding: 8px;
+  margin: 4px 0px 4px 4px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
+}
+
+.c10.c10.c10.c10.c10:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c17.c17.c17.c17.c17 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 2px;
+  padding: 8px;
+  margin: 4px 4px 4px 0px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
+}
+
+.c17.c17.c17.c17.c17:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
@@ -1200,8 +1280,8 @@ exports[`<CounterInput /> should render large size 1`] = `
           <button
             aria-label="Decrement value"
             class="c10 decrement-button"
-            data-blade-component="base-box"
             disabled=""
+            style="color: rgba(108, 108, 108, 0.32);"
           >
             <svg
               aria-hidden="true"
@@ -1216,7 +1296,7 @@ exports[`<CounterInput /> should render large size 1`] = `
                 clip-rule="evenodd"
                 d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 20%, 52%, 0.32)"
+                fill="currentColor"
                 fill-rule="evenodd"
               />
             </svg>
@@ -1271,7 +1351,7 @@ exports[`<CounterInput /> should render large size 1`] = `
           <button
             aria-label="Increment value"
             class="c17 increment-button"
-            data-blade-component="base-box"
+            style="color: rgb(64, 64, 64);"
           >
             <svg
               aria-hidden="true"
@@ -1285,7 +1365,7 @@ exports[`<CounterInput /> should render large size 1`] = `
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                 data-blade-component="svg-path"
-                fill="hsla(212, 39%, 16%, 1)"
+                fill="currentColor"
               />
             </svg>
           </button>
@@ -1390,17 +1470,6 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 6px;
-  margin: 4px 0px 4px 4px;
-  border-radius: 2px;
-  cursor: not-allowed;
-}
-
 .c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1429,21 +1498,6 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-}
-
-.c17.c17.c17.c17.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 6px;
-  margin: 4px 4px 4px 0px;
-  border-radius: 2px;
-  cursor: pointer;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper {
@@ -1477,28 +1531,6 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 
 .c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
   background-color: transparent !important;
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input .decrement-button,
-.c0.c0.c0.c0.c0.__blade-counter-input .increment-button {
-  background-color: transparent !important;
-  border: none !important;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .decrement-button:hover:not(:disabled),
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='subtle'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-}
-
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .decrement-button:hover:not(:disabled),
-.c0.c0.c0.c0.c0.__blade-counter-input[data-emphasis='intense'] .increment-button:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.18) !important;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1755,6 +1787,94 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   z-index: 2;
 }
 
+.c10.c10.c10.c10.c10 {
+  background-color: transparent;
+  border: none;
+  cursor: not-allowed;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 2px;
+  padding: 6px;
+  margin: 4px 0px 4px 4px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10.c10.c10.c10.c10:hover:not(:disabled) {
+  background-color: hsla(227,100%,59%,0.18) !important;
+  color: hsla(227,71%,51%,1) !important;
+}
+
+.c10.c10.c10.c10.c10:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c17.c17.c17.c17.c17 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 2px;
+  padding: 6px;
+  margin: 4px 4px 4px 0px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17:hover:not(:disabled) {
+  background-color: hsla(227,100%,59%,0.18) !important;
+  color: hsla(227,71%,51%,1) !important;
+}
+
+.c17.c17.c17.c17.c17:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
     border-style: solid;
@@ -1848,8 +1968,8 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
           <button
             aria-label="Decrement value"
             class="c10 decrement-button"
-            data-blade-component="base-box"
             disabled=""
+            style="color: rgba(46, 46, 46, 0.32);"
           >
             <svg
               aria-hidden="true"
@@ -1864,7 +1984,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
                 clip-rule="evenodd"
                 d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(227, 100%, 59%, 0.32)"
+                fill="currentColor"
                 fill-rule="evenodd"
               />
             </svg>
@@ -1919,7 +2039,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
           <button
             aria-label="Increment value"
             class="c17 increment-button"
-            data-blade-component="base-box"
+            style="color: rgb(46, 46, 46);"
           >
             <svg
               aria-hidden="true"
@@ -1933,7 +2053,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
                 data-blade-component="svg-path"
-                fill="hsla(227, 71%, 51%, 1)"
+                fill="currentColor"
               />
             </svg>
           </button>

@@ -1,4 +1,4 @@
-import { size as sizeTokens } from '~tokens/global';
+import { size as sizeTokens, spacing } from '~tokens/global';
 
 export const COUNTER_INPUT_TOKEN = {
   width: {
@@ -12,14 +12,13 @@ export const COUNTER_INPUT_TOKEN = {
     large: sizeTokens[50],
   },
 
-  decrementIconMargin: ['spacing.2', 'spacing.0', 'spacing.2', 'spacing.2'],
-
-  incrementIconMargin: ['spacing.2', 'spacing.2', 'spacing.2', 'spacing.0'],
+  decrementIconMargin: [spacing[2], spacing[0], spacing[2], spacing[2]],
+  incrementIconMargin: [spacing[2], spacing[2], spacing[2], spacing[0]],
 
   iconPadding: {
-    xsmall: ['spacing.2'],
-    medium: ['6px'],
-    large: ['spacing.3'],
+    xsmall: spacing[2],
+    medium: 6,
+    large: spacing[3],
   },
 
   emphasis: {
