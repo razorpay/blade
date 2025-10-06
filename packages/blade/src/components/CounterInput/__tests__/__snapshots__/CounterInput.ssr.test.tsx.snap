@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CounterInput /> should render CounterInput with default properties 1`] = `"<div id="root"><div class="BaseBox-bmPWx StyledCounterInput-ljwv28-0  iuNdnm __blade-counter-input" data-emphasis="subtle" data-blade-component="counter-input"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="counter-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="counter-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Product Quantity</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 AutiL"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx lozsHo"><div data-blade-component="base-box" class="BaseBox-bmPWx fekybc"><button class="BaseBox-bmPWx bYuZuH decrement-button" aria-label="Decrement value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" clip-rule="evenodd" fill="hsla(212, 39%, 16%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button><div class="BaseBox-bmPWx" data-blade-component="base-box"><div data-blade-component="counter-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="number" color="surface.text.gray.subtle" id="counter-input-undefined-input-undefined-undefined-input-undefined" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" role="spinbutton" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dboeji" value="5"/></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div><button class="BaseBox-bmPWx eMRcwv increment-button" aria-label="Increment value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z" fill="hsla(212, 39%, 16%, 1)" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div>"`;
+exports[`<CounterInput /> should render CounterInput with default properties 1`] = `"<div id="root"><div class="BaseBox-bmPWx StyledCounterInput-ljwv28-0  iuNdnm __blade-counter-input" data-emphasis="subtle" data-blade-component="counter-input"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><label for="counter-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="counter-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Product Quantity</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 AutiL"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx cZfRXj"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><button class="BaseBox-bmPWx glPqqJ decrement-button" aria-label="Decrement value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" clip-rule="evenodd" fill="hsla(212, 39%, 16%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button><div class="BaseBox-bmPWx" data-blade-component="base-box"><div data-blade-component="counter-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  bVlsZC focus-ring-wrapper" data-blade-component="base-box"><div class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kFvakE __blade-base-input-wrapper" data-blade-component="base-box"><input type="number" color="surface.text.gray.subtle" id="counter-input-undefined-input-undefined-undefined-input-undefined" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" role="spinbutton" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dboeji" value="5"/></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div><button class="BaseBox-bmPWx hCIGip increment-button" aria-label="Increment value" data-blade-component="base-box"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z" fill="hsla(212, 39%, 16%, 1)" data-blade-component="svg-path"></path></svg></button></div></div></div></div></div>"`;
 
 exports[`<CounterInput /> should render CounterInput with default properties 2`] = `
 .c1.c1.c1.c1.c1 {
@@ -73,8 +73,8 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 34px;
-  width: 86px;
+  height: 38px;
+  width: 94px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-width: 1px;
@@ -94,7 +94,6 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100%;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -102,7 +101,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 4px;
+  padding: 6px;
   margin: 4px 0px 4px 4px;
   border-radius: 2px;
   cursor: pointer;
@@ -147,7 +146,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 4px;
+  padding: 6px;
   margin: 4px 4px 4px 0px;
   border-radius: 2px;
   cursor: pointer;

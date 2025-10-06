@@ -71,8 +71,8 @@ exports[`<CounterInput /> should render 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 34px;
-  width: 86px;
+  height: 38px;
+  width: 94px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-width: 1px;
@@ -92,7 +92,6 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100%;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -100,7 +99,7 @@ exports[`<CounterInput /> should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 4px;
+  padding: 6px;
   margin: 4px 0px 4px 4px;
   border-radius: 2px;
   cursor: not-allowed;
@@ -145,7 +144,7 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 4px;
+  padding: 6px;
   margin: 4px 4px 4px 0px;
   border-radius: 2px;
   cursor: pointer;
@@ -720,8 +719,8 @@ exports[`<CounterInput /> should render large size 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 46px;
-  width: 114px;
+  height: 50px;
+  width: 122px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-width: 1px;
@@ -741,7 +740,6 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100%;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1210,9 +1208,9 @@ exports[`<CounterInput /> should render large size 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
-              height="20px"
+              height="24px"
               viewBox="0 0 24 24"
-              width="20px"
+              width="24px"
             >
               <path
                 clip-rule="evenodd"
@@ -1280,9 +1278,9 @@ exports[`<CounterInput /> should render large size 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
-              height="20px"
+              height="24px"
               viewBox="0 0 24 24"
-              width="20px"
+              width="24px"
             >
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
@@ -1369,8 +1367,8 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 34px;
-  width: 86px;
+  height: 38px;
+  width: 94px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-width: 1px;
@@ -1390,7 +1388,6 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100%;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1398,7 +1395,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 4px;
+  padding: 6px;
   margin: 4px 0px 4px 4px;
   border-radius: 2px;
   cursor: not-allowed;
@@ -1443,7 +1440,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 4px;
+  padding: 6px;
   margin: 4px 4px 4px 0px;
   border-radius: 2px;
   cursor: pointer;
