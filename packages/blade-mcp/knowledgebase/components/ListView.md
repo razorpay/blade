@@ -478,7 +478,7 @@ export default ListViewExample;
 
 Here's an example demonstrating multiple selection in ListView's quick filters along with the ability to toggle the visibility of quick filters:
 
-```tsx
+```jsx
 import React, { useState } from 'react';
 import {
   ListView,
@@ -571,7 +571,6 @@ function MultiSelectListViewExample(): React.ReactElement {
         >
           {/* Filter chips and table similar to first example */}
         </ListViewFilters>
-        {/* @ts-expect-error */}
         <Table data={listViewTableData}>{/* Table implementation */}</Table>
       </ListView>
     </Box>
