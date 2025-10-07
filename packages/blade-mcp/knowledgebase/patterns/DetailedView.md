@@ -11,6 +11,7 @@ A DetailedView is a pattern that displays comprehensive details of a transaction
 ## Components Used
 
 - Drawer
+- DrawerFooter
 - Table
 - Card
 - Box
@@ -49,6 +50,7 @@ import {
   Drawer,
   DrawerHeader,
   DrawerBody,
+  DrawerFooter,
   Box,
   Amount,
   Badge,
@@ -69,6 +71,7 @@ import {
 import {
   MoreHorizontalIcon,
   DownloadIcon,
+  CloseIcon,
   CopyIcon,
   CheckIcon,
   ClockIcon,
@@ -469,6 +472,7 @@ const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
 
 const SettlementDetailedView = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [showFooter, setShowFooter] = useState(true);
 
   const settlementData = {
     amount: 3120,
@@ -487,6 +491,12 @@ const SettlementDetailedView = () => {
 
   return (
     <Box>
+      <Box display="flex" gap="spacing.4" marginBottom="spacing.4">
+        <Button variant="secondary" onClick={() => setShowFooter(!showFooter)}>
+          {showFooter ? 'Hide Footer' : 'Show Footer'}
+        </Button>
+      </Box>
+
       <Card width={{ base: '100%', m: '500px' }}>
         <CardHeader>
           <CardHeaderLeading
@@ -665,6 +675,23 @@ const SettlementDetailedView = () => {
             </KeyValueItem>
           </KeyValueGrid>
         </DrawerBody>
+
+        <DrawerFooter showFooter={showFooter}>
+          <Box display="flex" gap="spacing.5">
+            <Button
+              variant="tertiary"
+              icon={CloseIcon}
+              iconPosition="left"
+              isFullWidth
+              onClick={() => setIsDrawerOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
+              Process Settlement
+            </Button>
+          </Box>
+        </DrawerFooter>
       </Drawer>
     </Box>
   );

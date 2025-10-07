@@ -1,9 +1,10 @@
 import React from 'react';
 import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
-import type { DrawerHeaderProps } from './types';
+import type { DrawerHeaderProps, DrawerFooterProps } from './types';
 import { useDrawerStack } from './StackProvider';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -33,7 +34,7 @@ const _DrawerHeader = ({
 
   const isAtleastOneDrawerOpen = Object.keys(drawerStack).length > 0;
 
-  const backgroundGradient = `linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background[color].subtle} 30.26%)` as const;
+  const backgroundGradient = `radial-gradient(150% 100% at 50% 100%, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background[color].subtle} 100%)` as const;
   // This condition is to avoid back button disappear while stacked drawer is in the exiting transition
   const isDrawerExiting = isAtleastOneDrawerOpen && isExiting && stackingLevel !== 1;
 
@@ -90,4 +91,39 @@ const DrawerBody = assignWithoutSideEffects(_DrawerBody, {
   componentId: drawerComponentIds.DrawerBody,
 });
 
-export { DrawerHeader, DrawerBody, drawerPadding };
+const _DrawerFooter = ({
+  children,
+  showDivider = true,
+  showFooter = true,
+  ...rest
+}: DrawerFooterProps): React.ReactElement => {
+  if (!showFooter) {
+    return <></>;
+  }
+
+  return (
+    <Box position="sticky" {...makeAnalyticsAttribute(rest)}>
+      <BaseFooter padding="spacing.5" showDivider={showDivider}>
+        {children}
+      </BaseFooter>
+    </Box>
+  );
+};
+
+/**
+ * #### Usage
+ *
+ * ```jsx
+ * <DrawerFooter isVisible={showFooter}>
+ *   <Button variant="primary" isFullWidth>
+ *     Continue
+ *   </Button>
+ * </DrawerFooter>
+ * ```
+ *
+ */
+const DrawerFooter = assignWithoutSideEffects(_DrawerFooter, {
+  componentId: drawerComponentIds.DrawerFooter,
+});
+
+export { DrawerHeader, DrawerBody, DrawerFooter, drawerPadding };

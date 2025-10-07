@@ -103,7 +103,11 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
   useVerifyAllowedChildren({
     children,
     componentName: 'Drawer',
-    allowedComponents: [drawerComponentIds.DrawerHeader, drawerComponentIds.DrawerBody],
+    allowedComponents: [
+      drawerComponentIds.DrawerHeader,
+      drawerComponentIds.DrawerBody,
+      drawerComponentIds.DrawerFooter,
+    ],
   });
 
   const { theme } = useTheme();

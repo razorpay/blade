@@ -31,7 +31,7 @@ type DrawerProps = {
   /**
    * children node.
    *
-   * Supports DrawerHeader and DrawerBody
+   * Supports DrawerHeader, DrawerBody, and DrawerFooter
    */
   children: React.ReactNode;
   /**
@@ -105,4 +105,22 @@ type DrawerHeaderProps = {
   color?: FeedbackColors;
 } & DataAnalyticsAttribute;
 
-export type { DrawerProps, DrawerHeaderProps };
+type DrawerFooterProps = {
+  /**
+   * Content of the footer
+   */
+  children: React.ReactNode;
+  /**
+   * Whether to show the divider above the footer
+   * @default true
+   */
+  showDivider?: boolean;
+  /**
+   * Whether the footer is visible
+   * @default true
+   */
+  showFooter?: boolean;
+} & DataAnalyticsAttribute &
+  TestID;
+
+export type { DrawerProps, DrawerHeaderProps, DrawerFooterProps };
