@@ -9,15 +9,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   }
 >
   <View
-    accessibilityHint="Tap to close the Bottom Sheet"
-    accessibilityLabel="Bottom Sheet backdrop"
-    accessibilityRole="button"
-    accessible={true}
-    collapsable={false}
-    handlerTag={4}
-    handlerType="TapGestureHandler"
-    onGestureHandlerEvent={[Function]}
-    onGestureHandlerStateChange={[Function]}
     pointerEvents="auto"
     style={
       [
@@ -148,7 +139,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       >
         <View
           collapsable={false}
-          handlerTag={2}
+          handlerTag={1}
           handlerType="PanGestureHandler"
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
@@ -421,7 +412,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         accessibilityRole="adjustable"
         accessible={true}
         collapsable={false}
-        handlerTag={3}
+        handlerTag={2}
         handlerType="PanGestureHandler"
         onGestureHandlerEvent={[Function]}
         onGestureHandlerStateChange={[Function]}
@@ -1106,15 +1097,6 @@ exports[`<BottomSheet /> should render empty header 1`] = `
   }
 >
   <View
-    accessibilityHint="Tap to close the Bottom Sheet"
-    accessibilityLabel="Bottom Sheet backdrop"
-    accessibilityRole="button"
-    accessible={true}
-    collapsable={false}
-    handlerTag={8}
-    handlerType="TapGestureHandler"
-    onGestureHandlerEvent={[Function]}
-    onGestureHandlerStateChange={[Function]}
     pointerEvents="auto"
     style={
       [
@@ -1245,7 +1227,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
       >
         <View
           collapsable={false}
-          handlerTag={6}
+          handlerTag={3}
           handlerType="PanGestureHandler"
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
@@ -1518,7 +1500,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
         accessibilityRole="adjustable"
         accessible={true}
         collapsable={false}
-        handlerTag={7}
+        handlerTag={4}
         handlerType="PanGestureHandler"
         onGestureHandlerEvent={[Function]}
         onGestureHandlerStateChange={[Function]}

@@ -26,6 +26,12 @@ type BottomSheetProps = {
   onDismiss: () => void;
 
   /**
+   * Whether the bottom sheet can be dismissed by tapping backdrop, swiping down.
+   * @default true
+   */
+  isDismissible?: boolean;
+
+  /**
    * The content of the BottomSheet
    */
   children: React.ReactNode;

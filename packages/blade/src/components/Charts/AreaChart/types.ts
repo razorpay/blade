@@ -1,11 +1,7 @@
 import type { AreaProps as RechartAreaProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
-import type { colorTheme } from '../utils';
-import type {
-  BaseBoxProps,
-  FlexboxProps,
-  GridProps,
-} from '~components/Box/BaseBox/types/propsTypes';
+import type { ColorTheme } from '../utils';
+import type { BoxProps } from '~components/Box';
 
 type ChartAreaProps = {
   /**
@@ -51,7 +47,7 @@ type ChartAreaProps = {
   /**
    * @private
    */
-  _colorTheme?: colorTheme;
+  _colorTheme?: ColorTheme;
 };
 
 type data = {
@@ -61,13 +57,14 @@ type data = {
 type ChartAreaWrapperProps = {
   children?: React.ReactNode;
   /**
-   * The color theme of the line chart.
+   * The color theme of the chart.
+   * @default 'categorical'
    */
-  colorTheme?: colorTheme;
+  colorTheme?: ColorTheme;
   /**
    * Chart data to be rendered
    */
   data: data[];
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BoxProps;
 
 export type { ChartAreaProps, ChartAreaWrapperProps };

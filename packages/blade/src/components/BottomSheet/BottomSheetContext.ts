@@ -16,7 +16,15 @@ type BottomSheetContextProps = {
   /**
    * Closes the bottomsheet
    */
-  close: () => void;
+  close?: () => void;
+  /**
+   * Whether the bottom sheet can be dismissed by tapping backdrop, swiping down.
+   * @default true
+   * If isDismissible is false, the bottom sheet will not be dismissed when the user clicks outside the bottom sheet
+   * and the close button will not be shown, it will also not call the onDismiss callback. Consumers will need to handle the
+   * closing of the bottom sheet manually.
+   */
+  isDismissible: boolean;
   /**
    * scrollRef is the ref to the BottomSheetBody's scrollable content
    *
@@ -62,6 +70,7 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   setHasBodyPadding: () => {},
   setIsHeaderEmpty: () => {},
   close: () => {},
+  isDismissible: true,
   scrollRef: null,
   bind: null,
   isOpen: false,

@@ -139,7 +139,7 @@ This example demonstrates the most common usage of InfoGroup with horizontal lay
 
 Use this layout for displaying detailed information in forms, dashboards, or detail views.
 
-```jsx
+```tsx
 import {
   InfoGroup,
   InfoItem,
@@ -182,7 +182,7 @@ function BasicInfoGroup() {
 
 This example shows how to use InfoGroup in vertical orientation. With key and value stacked vertically.
 
-```jsx
+```tsx
 import {
   InfoGroup,
   InfoItem,

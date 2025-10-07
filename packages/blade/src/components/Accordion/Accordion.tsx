@@ -73,6 +73,7 @@ const _Accordion = (
     variant = 'transparent',
     size = 'large',
     maxWidth,
+    minWidth,
     testID,
     ...rest
   }: AccordionProps,
@@ -124,16 +125,13 @@ const _Accordion = (
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
         ref={ref as never}
+        minWidth={minWidth ?? MIN_WIDTH}
+        maxWidth={maxWidth ?? MAX_WIDTH}
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
       >
-        <BaseBox
-          {...getVariantStyles(variant)}
-          minWidth={MIN_WIDTH}
-          maxWidth={maxWidth ?? MAX_WIDTH}
-          width="100%"
-        >
+        <BaseBox {...getVariantStyles(variant)} width="100%">
           {Children.map(children, (child, index) =>
             cloneElement(child, { _index: index, key: index }),
           )}

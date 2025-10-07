@@ -1,0 +1,1774 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChartDonut /> should render ChartDonut with all chart types 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts35-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ChartDonut /> should render ChartDonut with all chart types 2`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts37-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ChartDonut /> should render ChartDonut with all radius sizes 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts29-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ChartDonut /> should render ChartDonut with all radius sizes 2`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts31-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ChartDonut /> should render ChartDonut with all radius sizes 3`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts33-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ChartDonut /> should render ChartDonut with custom center coordinates 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts39-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ChartDonut /> should render ChartDonut with custom dataKey and nameKey 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts28-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ChartDonut /> should render ChartDonut with default props 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts26-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should handle data with missing properties 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts22-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should handle data with null values 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts20-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should handle empty data array 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts19-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render DonutChart with center text 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts3-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+              <text
+                class="recharts-text recharts-label"
+                fill="hsla(212, 39%, 16%, 1)"
+                font-family=""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial"
+                font-size="32"
+                font-weight="700"
+                letter-spacing="0"
+                offset="5"
+                text-anchor="middle"
+                x="200"
+                y="200"
+              >
+                <tspan
+                  dy="0.355em"
+                  x="200"
+                >
+                  Total: 1000
+                </tspan>
+              </text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render DonutChart with custom center position 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts17-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render DonutChart with custom colors 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts15-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render DonutChart with different chart types 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts11-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render DonutChart with different chart types 2`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts13-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render DonutChart with different radius sizes 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts5-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render DonutChart with different radius sizes 2`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts7-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render DonutChart with different radius sizes 3`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts9-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DonutChart /> should render basic DonutChart with single data series 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="donut-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 400px; height: 400px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 400px; height: 400px;"
+          >
+            <svg
+              class="recharts-surface"
+              cx="50%"
+              cy="50%"
+              height="400"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 400 400"
+              width="400"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts1-clip"
+                >
+                  <rect
+                    height="390"
+                    width="390"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

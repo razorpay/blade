@@ -31,7 +31,7 @@ import { CounterInput } from '@razorpay/blade/components';
   onChange={({ value }) => setValue(value)}
   min={1}
   max={100}
-  variant="intense"
+  emphasis="intense"
   isLoading={false}
   isDisabled
   size="large"
@@ -127,10 +127,10 @@ type CounterInputCommonProps = Pick<
   max?: number;
 
   /**
-   * Visual variant of the counter input
+   * Visual emphasis of the counter input
    * @default 'subtle'
    */
-  variant?: 'subtle' | 'intense';
+  emphasis?: 'subtle' | 'intense';
 
   /**
    * Size of the counter input
@@ -150,36 +150,16 @@ type CounterInputCommonProps = Pick<
   onChange?: (args: { value: number }) => void;
 } & StyledPropsBlade;
 
-/*
-  Mandatory accessibilityLabel prop when label is not provided
-*/
-type CounterInputPropsWithA11yLabel = {
+type CounterInputProps = {
   /**
-   * Label to be shown for the input field
-   */
-  label?: undefined;
-  /**
-   * Accessibility label for the input
-   */
-  accessibilityLabel: string;
-};
-
-/*
-  Optional accessibilityLabel prop when label is provided
-*/
-type CounterInputPropsWithLabel = {
-  /**
-   * Label to be shown for the input field
+   * Label to be shown for the counter input
    */
   label: string;
   /**
-   * Accessibility label for the input
+   * Accessibility label for the input (optional override)
    */
   accessibilityLabel?: string;
-};
-
-type CounterInputProps = (CounterInputPropsWithA11yLabel | CounterInputPropsWithLabel) &
-  CounterInputCommonProps;
+} & CounterInputCommonProps;
 ```
 
 ## Usage
@@ -203,7 +183,7 @@ const App = () => {
 };
 ```
 
-### With Constraints and Variant
+### With Constraints and Emphasis
 
 ```jsx
 import { CounterInput } from '@razorpay/blade/components';
@@ -218,7 +198,7 @@ const App = () => {
       onChange={({ value }) => setAmount(value)}
       min={0}
       max={1000}
-      variant="intense"
+      emphasis="intense"
     />
   );
 };
@@ -268,21 +248,21 @@ const App = () => {
         value={quantity}
         onChange={({ value }) => setQuantity(value)}
         size="xsmall"
-        variant="subtle"
+        emphasis="subtle"
       />
       <CounterInput
         label="Medium Counter"
         value={quantity}
         onChange={({ value }) => setQuantity(value)}
         size="medium"
-        variant="intense"
+        emphasis="intense"
       />
       <CounterInput
         label="Large Counter"
         value={quantity}
         onChange={({ value }) => setQuantity(value)}
         size="large"
-        variant="subtle"
+        emphasis="subtle"
       />
     </>
   );

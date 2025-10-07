@@ -7,7 +7,11 @@ import type {
   ReferenceLineProps as RechartsReferenceLineProps,
 } from 'recharts';
 import type { ComponentProps } from 'react';
-import type { ChartColorCategories, ChartCategoricalEmphasis } from '~tokens/theme/theme';
+import type {
+  ChartColorCategories,
+  ChartCategoricalEmphasis,
+  ChartSequentialEmphasis,
+} from '~tokens/theme/theme';
 
 type ChartReferenceLineProps = {
   /**
@@ -45,8 +49,14 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
   dataKey?: string;
 };
 
+type Layout = 'horizontal' | 'vertical';
+type Align = 'left' | 'right';
+
 type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
-type ChartLegendProps = ComponentProps<typeof RechartsLegend>;
+type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
+  layout?: Layout;
+  align?: Align;
+};
 
 type ChartCartesianGridProps = Omit<
   RechartsCartesianGridProps,
@@ -54,6 +64,10 @@ type ChartCartesianGridProps = Omit<
 >;
 
 type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
+  ChartColorCategories,
+  'gray'
+>}.${keyof ChartSequentialEmphasis}`;
 
 export type {
   ChartReferenceLineProps,
@@ -63,4 +77,7 @@ export type {
   ChartLegendProps,
   ChartCartesianGridProps,
   ChartsCategoricalColorToken,
+  ChartSequentialColorToken,
+  Layout,
+  Align,
 };

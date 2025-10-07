@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { TimePicker } from './TimePicker';
+import { TimePicker } from '~components/TimePicker';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
 import { Button } from '~components/Button';
