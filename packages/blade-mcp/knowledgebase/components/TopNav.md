@@ -441,7 +441,7 @@ const isActive = (path) => {
 
 The TopNav component adapts to different screen sizes by showing a simplified interface on mobile:
 
-```tsx
+```jsx
 import { useBreakpoint } from '@razorpay/blade/utils';
 import { useTheme, TopNav } from '@razorpay/blade/components';
 

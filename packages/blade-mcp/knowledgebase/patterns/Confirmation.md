@@ -109,7 +109,7 @@ const ConfirmationDialog: React.FC<{
   isOpen: boolean;
   onDismiss: () => void;
   type: ConfirmationType;
-  icon?: React.ReactNode;
+  icon?: IconComponent;
   image?: string;
   title: string;
   description: string;
@@ -227,7 +227,7 @@ const ConfirmationExample: React.FC = () => {
         isOpen={isDeleteOpen}
         onDismiss={() => setIsDeleteOpen(false)}
         type="negative"
-        icon={<TrashIcon />}
+        icon={TrashIcon}
         title="Delete Account?"
         description="This action cannot be undone. All of your data will be permanently deleted. This includes your profile, settings, and all associated information."
         primaryButtonText="Delete Account"
@@ -256,7 +256,7 @@ const ConfirmationExample: React.FC = () => {
         isOpen={isTourOpen}
         onDismiss={() => setIsTourOpen(false)}
         type="positive"
-        icon={<MapIcon />}
+        icon={MapIcon}
         title="Start Product Tour?"
         description="Take a guided tour of our platform's key features. Learn how to make the most of our tools and improve your workflow."
         primaryButtonText="Start Tour"
