@@ -7,7 +7,7 @@ import type {
   TypographyWithPlatforms,
   ElevationWithColorModes,
 } from '~tokens/global';
-import type { ColorChromaticScale } from '~tokens/global/colors';
+import type { ColorChromaticScale, ColorNeutralGrayScale } from '~tokens/global/colors';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
@@ -29,10 +29,9 @@ export type ChartCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'i
   faint: string;
   strong: string;
 };
-export type ChartSequentialEmphasis = Omit<
-  ColorChromaticScale,
-  'a50' | 'a150' | 'a100' | 'a200' | 'a400'
->;
+export type ChartSequentialEmphasis =
+  | Omit<ColorChromaticScale, 'a50' | 'a150' | 'a100' | 'a200' | 'a400'>
+  | Omit<ColorNeutralGrayScale, 'a25' | 'a50' | 'a75' | 'a100' | 'a200' | 'a400'>;
 
 export type ChartColorCategories =
   | 'azure'
@@ -115,7 +114,7 @@ export type Colors = {
   chart: {
     background: {
       categorical: Record<ChartColorCategories, ChartCategoricalEmphasis>;
-      sequential: Record<Exclude<ChartColorCategories, 'gray'>, ChartSequentialEmphasis>;
+      sequential: Record<ChartColorCategories, ChartSequentialEmphasis>;
     };
   };
 };
