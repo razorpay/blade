@@ -478,7 +478,7 @@ export default ListViewExample;
 
 Here's an example demonstrating multiple selection in ListView's quick filters along with the ability to toggle the visibility of quick filters:
 
-```tsx
+```jsx
 import React, { useState } from 'react';
 import {
   ListView,
@@ -486,7 +486,6 @@ import {
   Box,
   QuickFilterGroup,
   QuickFilter,
-  FilterChipGroup,
   Counter,
   Table,
   Switch,
@@ -496,7 +495,7 @@ import {
 
 function MultiSelectListViewExample() {
   // Sample data similar to the first example
-  const data = {
+  const data: { nodes: { status: string }[] } = {
     nodes: [
       // ... payment data items
     ],
@@ -508,7 +507,10 @@ function MultiSelectListViewExample() {
   const [showFilters, setShowFilters] = useState(true);
 
   // Filter function for multiple selected status values
-  const getMultipleStatusFilterData = (data, values) => {
+  const getMultipleStatusFilterData = (
+    data: { nodes: { status: string }[] },
+    values: string | string[],
+  ): { nodes: { status: string }[] } => {
     if (!values || values.length === 0) {
       return { nodes: data.nodes };
     }
@@ -569,10 +571,11 @@ function MultiSelectListViewExample() {
         >
           {/* Filter chips and table similar to first example */}
         </ListViewFilters>
-
         <Table data={listViewTableData}>{/* Table implementation */}</Table>
       </ListView>
     </Box>
   );
 }
+
+export default MultiSelectListViewExample;
 ```

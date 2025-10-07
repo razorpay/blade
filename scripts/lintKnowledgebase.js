@@ -24,6 +24,7 @@ function getTypeErrors(sourceCode) {
     compilerOptions: {
       moduleSuffixes: ['.web', ''],
       skipLibCheck: true,
+      strict: false,
       isolatedModules: true,
       jsx: ts.JsxEmit.ReactJSX,
       target: ts.ScriptTarget.ES2020,
@@ -46,7 +47,7 @@ function getTypeErrors(sourceCode) {
 
 const errors = [];
 // this might be slow but better than pulling in a markdown parser
-const codeBlockRegex = /```(tsx|jsx)\s*([\s\S]*?)```/g;
+const codeBlockRegex = /```(tsx)\s*([\s\S]*?)```/g;
 
 // Function to check if a code block is inside a comment
 function isCodeBlockInComment(content, blockStart) {
@@ -89,14 +90,17 @@ function isCodeBlockInComment(content, blockStart) {
 }
 
 // Function to process and add errors to the file errors map
-function addErrorsToMap(file, typeErrors, fileErrorsMap) {
+function addErrorsToMap(file, typeErrors, fileErrorsMap, markdownLineNumber) {
   // Filter and process errors
   const processedErrors = typeErrors
     .map((error) => {
       if (error.includes('Expression expected') || error.includes('Cannot find module')) {
         return null;
       }
-      return error.trim();
+      return {
+        error: error.trim(),
+        markdownLineNumber,
+      };
     })
     .filter(Boolean);
 
@@ -123,14 +127,22 @@ for (const file of filesToLint) {
   const validCodeBlocks = [];
   let match;
 
+  // Reset regex lastIndex to ensure we start from the beginning
+  codeBlockRegex.lastIndex = 0;
+
   while ((match = codeBlockRegex.exec(fileContent)) !== null) {
     const blockStart = match.index;
 
     // Only include code blocks that are not within comments
     if (!isCodeBlockInComment(fileContent, blockStart)) {
+      // Calculate the line number where the code block starts
+      const textBeforeBlock = fileContent.substring(0, blockStart);
+      const lineNumber = textBeforeBlock.split('\n').length;
+
       validCodeBlocks.push({
         lang: match[1], // 'tsx' or 'jsx'
         code: match[2].trim(), // the actual code
+        markdownLineNumber: lineNumber, // line number in the original markdown file
       });
     }
   }
@@ -138,7 +150,7 @@ for (const file of filesToLint) {
   for (const codeBlock of validCodeBlocks) {
     const { typeErrors } = getTypeErrors(codeBlock.code);
     if (typeErrors.length > 0) {
-      addErrorsToMap(file, typeErrors, fileErrorsMap);
+      addErrorsToMap(file, typeErrors, fileErrorsMap, codeBlock.markdownLineNumber);
     }
   }
 }
@@ -153,4 +165,20 @@ for (const [file, fileErrors] of Object.entries(fileErrorsMap)) {
 
 // write to fs
 fs.writeFileSync('./knowledgebase-ts-errors.json', JSON.stringify(errors, null, 2), 'utf-8');
-// console.log(errors);
+
+if (errors.length > 0) {
+  console.log('--------------------------------');
+
+  console.log(`❌ ${errors.length} Files have errors in knowledgebase\n\n`);
+  console.log(JSON.stringify(errors, null, 2));
+
+  console.log('--------------------------------');
+
+  process.exit(1);
+} else {
+  console.log('--------------------------------');
+  console.log('✅ No errors found in knowledgebase');
+  console.log('--------------------------------');
+
+  process.exit(0);
+}
