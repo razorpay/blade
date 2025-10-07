@@ -25,10 +25,10 @@ jobs:
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Update Bundle Size Data
-        run: yarn generate-bundle-size-info
+        run: pnpm generate-bundle-size-info
         working-directory: packages/blade
       - name: Danger
-        run: yarn danger ci
+        run: pnpm danger ci
         working-directory: packages/blade
         env:
           DANGER_GITHUB_API_TOKEN: ${{ env.GITHUB_ACCESS_TOKEN }}
@@ -51,10 +51,10 @@ jobs:
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Build Blade React Production
-        run: yarn run-s build:clean build:generate-types build:react-prod
+        run: pnpm run-s build:clean build:generate-types build:react-prod
         working-directory: packages/blade
       - name: Update Bundle Size Data
-        run: yarn generate-bundle-size-info
+        run: pnpm generate-bundle-size-info
         working-directory: packages/blade
         env:
           BUNDLE_SIZE_STATS_FILENAME: 'baseBundleSizeStats.json'

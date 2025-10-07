@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
@@ -260,7 +261,9 @@ const _Dropdown = (
   );
 };
 
-const Dropdown = assignWithoutSideEffects(React.forwardRef(_Dropdown), {
+const Dropdown: ForwardRefExoticComponent<
+  DropdownProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Dropdown), {
   componentId: dropdownComponentIds.Dropdown,
 });
 

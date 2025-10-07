@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import { BaseSpinner } from '../BaseSpinner';
 import type { BaseSpinnerProps } from '../BaseSpinner';
@@ -38,7 +39,9 @@ const _Spinner = (
   );
 };
 
-const Spinner = React.forwardRef(_Spinner);
+const Spinner: ForwardRefExoticComponent<
+  SpinnerProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_Spinner);
 
 export type { SpinnerProps };
 export { Spinner };
