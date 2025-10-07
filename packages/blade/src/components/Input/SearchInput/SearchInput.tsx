@@ -45,6 +45,7 @@ type SearchInputCommonProps = Pick<
   | 'onSubmit'
   | 'autoCapitalize'
   | 'testID'
+  | 'elementtiming'
   | 'onClick'
   | 'size'
   | keyof DataAnalyticsAttribute
