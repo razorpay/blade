@@ -3,7 +3,7 @@ import userEvents from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
 import React from 'react';
 import type { DrawerProps } from '../';
-import { Drawer, DrawerBody, DrawerHeader } from '../';
+import { Drawer, DrawerBody, DrawerHeader, DrawerFooter } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
@@ -87,7 +87,7 @@ describe('Drawer', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade: Drawer]: Only `DrawerHeader, DrawerBody` components are accepted in `Drawer` children',
+      '[Blade: Drawer]: Only `DrawerHeader, DrawerBody, DrawerFooter` components are accepted in `Drawer` children',
     );
     mockConsoleError.mockRestore();
   });
@@ -145,5 +145,43 @@ describe('Drawer', () => {
     expect(getByText('Custom Header')).toBeInTheDocument();
     expect(getByText('Custom Content')).toBeInTheDocument();
     expect(getByRole('dialog')).toMatchSnapshot();
+  });
+
+  describe('DrawerFooter', () => {
+    it('renders a Drawer with footer', () => {
+      const { getByRole, getByText } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}}>
+          <DrawerHeader>
+            <Text>Custom Header</Text>
+          </DrawerHeader>
+          <DrawerBody>
+            <Text>Custom Content</Text>
+          </DrawerBody>
+          <DrawerFooter>
+            <Button>Footer Button</Button>
+          </DrawerFooter>
+        </Drawer>,
+      );
+      expect(getByRole('dialog')).toMatchSnapshot();
+      expect(getByText('Footer Button')).toBeInTheDocument();
+    });
+
+    it('hides footer when showFooter is false', () => {
+      const { queryByText } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}}>
+          <DrawerHeader>
+            <Text>Custom Header</Text>
+          </DrawerHeader>
+          <DrawerBody>
+            <Text>Custom Content</Text>
+          </DrawerBody>
+          <DrawerFooter showFooter={false}>
+            <Button>Footer Button</Button>
+          </DrawerFooter>
+        </Drawer>,
+      );
+
+      expect(queryByText('Footer Button')).not.toBeInTheDocument();
+    });
   });
 });
