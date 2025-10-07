@@ -428,7 +428,7 @@ exports[`<CounterInput /> should render 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-radius: 2px;
-  padding: 6px;
+  padding: 4px;
   margin: 4px 0px 4px 4px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
@@ -436,11 +436,6 @@ exports[`<CounterInput /> should render 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-  color: hsla(212,39%,16%,1) !important;
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
@@ -453,6 +448,11 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
+}
+
+.c10.c10.c10.c10.c10:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -472,7 +472,7 @@ exports[`<CounterInput /> should render 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-radius: 2px;
-  padding: 6px;
+  padding: 4px;
   margin: 4px 4px 4px 0px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
@@ -480,11 +480,6 @@ exports[`<CounterInput /> should render 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c17.c17.c17.c17.c17:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-  color: hsla(212,39%,16%,1) !important;
 }
 
 .c17.c17.c17.c17.c17:focus-visible {
@@ -497,6 +492,11 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
+}
+
+.c17.c17.c17.c17.c17:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
 }
 
 @media screen and (min-width:320px) {
@@ -600,9 +600,9 @@ exports[`<CounterInput /> should render 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
-              height="16px"
+              height="20px"
               viewBox="0 0 24 24"
-              width="16px"
+              width="20px"
             >
               <path
                 clip-rule="evenodd"
@@ -670,9 +670,9 @@ exports[`<CounterInput /> should render 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
-              height="16px"
+              height="20px"
               viewBox="0 0 24 24"
-              width="16px"
+              width="20px"
             >
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
@@ -1126,11 +1126,6 @@ exports[`<CounterInput /> should render large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-  color: hsla(212,39%,16%,1) !important;
-}
-
 .c10.c10.c10.c10.c10:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -1141,6 +1136,11 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
+}
+
+.c10.c10.c10.c10.c10:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1170,11 +1170,6 @@ exports[`<CounterInput /> should render large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17.c17.c17.c17.c17:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-  color: hsla(212,39%,16%,1) !important;
-}
-
 .c17.c17.c17.c17.c17:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: -4px;
@@ -1185,6 +1180,11 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
+}
+
+.c17.c17.c17.c17.c17:hover:not(:disabled) {
+  background-color: hsla(211,20%,52%,0.12) !important;
+  color: hsla(212,39%,16%,1) !important;
 }
 
 @media screen and (min-width:320px) {
@@ -1804,7 +1804,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-radius: 2px;
-  padding: 6px;
+  padding: 4px;
   margin: 4px 0px 4px 4px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
@@ -1812,11 +1812,6 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c10.c10.c10.c10.c10:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.18) !important;
-  color: hsla(227,71%,51%,1) !important;
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
@@ -1829,6 +1824,11 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
+}
+
+.c10.c10.c10.c10.c10:hover:not(:disabled) {
+  background-color: hsla(227,100%,59%,0.18) !important;
+  color: hsla(227,71%,51%,1) !important;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1848,7 +1848,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-radius: 2px;
-  padding: 6px;
+  padding: 4px;
   margin: 4px 4px 4px 0px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
@@ -1856,11 +1856,6 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c17.c17.c17.c17.c17:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.18) !important;
-  color: hsla(227,71%,51%,1) !important;
 }
 
 .c17.c17.c17.c17.c17:focus-visible {
@@ -1873,6 +1868,11 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
+}
+
+.c17.c17.c17.c17.c17:hover:not(:disabled) {
+  background-color: hsla(227,100%,59%,0.18) !important;
+  color: hsla(227,71%,51%,1) !important;
 }
 
 @media screen and (min-width:320px) {
@@ -1976,9 +1976,9 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
-              height="16px"
+              height="20px"
               viewBox="0 0 24 24"
-              width="16px"
+              width="20px"
             >
               <path
                 clip-rule="evenodd"
@@ -2046,9 +2046,9 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
-              height="16px"
+              height="20px"
               viewBox="0 0 24 24"
-              width="16px"
+              width="20px"
             >
               <path
                 d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
