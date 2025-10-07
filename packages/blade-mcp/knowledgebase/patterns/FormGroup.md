@@ -38,8 +38,8 @@ import {
   Heading,
   useToast,
   ToastContainer,
+  ArrowRightIcon,
 } from '@razorpay/blade/components';
-import { ArrowRightIcon } from '@razorpay/blade/tokens';
 
 const SimpleContactForm = () => {
   const [formData, setFormData] = useState({
@@ -104,8 +104,7 @@ A comprehensive form demonstrating validation states, error messages, required f
 
 ```tsx
 import React, { useState } from 'react';
-import { Box, TextInput, PasswordInput, Button, Alert, Heading } from '@razorpay/blade/components';
-import { ArrowRightIcon } from '@razorpay/blade/tokens';
+import { Box, TextInput, PasswordInput, Button, Alert, Heading , ArrowRightIcon} from '@razorpay/blade/components';
 
 const ValidationForm = () => {
   const [formData, setFormData] = useState({
@@ -494,7 +493,7 @@ const LongFormWithFixedFooter = () => {
             name="content"
             value={formData.content}
             onChange={({ value }) => handleChange('content', value ?? '')}
-            numberOfLines={15}
+            numberOfLines={5}
             placeholder="Enter the main content of your document"
           />
         </Box>

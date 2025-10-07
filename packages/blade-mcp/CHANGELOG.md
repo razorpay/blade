@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.12.1
+
+### Patch Changes
+
+- b964fb7fb: fix(blade-mcp/Box): improve Box knowledgebase UI quality
+
 ## 1.12.0
 
 ### Minor Changes

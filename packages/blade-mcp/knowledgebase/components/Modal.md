@@ -6,6 +6,10 @@ Modal
 
 Modal is a dialog component that appears in front of the app content to provide critical information or request user input. It's designed to focus user attention, disabling all other interactions until explicitly dismissed. Modals are accessible, can be dismissed via escape key, clicking outside, or a close button (when dismissible), and come in three sizes: small, medium, and large.
 
+## Important Constraints
+
+- `ModalHeader`'s `trailing` prop only accepts `Button`, `IconButton`, `Badge`, `Link`, `Text` & `Amount` components.
+
 ## TypeScript Types
 
 These types represent the props that the Modal component and its subcomponents accept. When using the Modal component along with its subcomponents, you'll need these type definitions to understand the available props.
@@ -30,7 +34,7 @@ type ModalProps = {
   /**
    * Whether the modal can be dismissed by clicking outside or pressing escape key
    * @default true
-   * @note 
+   * @note
    * If isDismissible is false, the modal will not be dismissed when the user clicks outside the modal or presses the escape key and the close button will not be shown. you need to handle the closing of the modal from your own code. also onDismiss will not be called.
    */
   isDismissible?: boolean;
@@ -241,7 +245,7 @@ function ResponsiveModalWrapper({
   footer?: React.ReactElement;
   isOpen: boolean;
   onDismiss: () => void;
-  modalBodyPadding?: string;
+  modalBodyPadding?: 'spacing.0' | 'spacing.6';
   modalSize?: 'small' | 'medium' | 'large' | 'full';
   wrapInBottomSheetFooter?: boolean;
   customSnapPoints?: [number, number, number];
@@ -252,21 +256,13 @@ function ResponsiveModalWrapper({
 
   if (isMobile) {
     return (
-      <BottomSheet
-        isOpen={isOpen}
-        onDismiss={onDismiss}
-        snapPoints={customSnapPoints}
-      >
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
         <BottomSheetHeader />
-        <BottomSheetBody padding={modalBodyPadding}>
+        <BottomSheetBody padding="spacing.5">
           {children}
-          {footer && !wrapInBottomSheetFooter && (
-            <Box marginTop="spacing.6">{footer}</Box>
-          )}
+          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
         </BottomSheetBody>
-        {footer && wrapInBottomSheetFooter && (
-          <BottomSheetFooter>{footer}</BottomSheetFooter>
-        )}
+        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
       </BottomSheet>
     );
   }
@@ -280,13 +276,11 @@ function ResponsiveModalWrapper({
   );
 }
 
-function OTPModal() {
+function OTPModal(): React.ReactElement {
   const [isOpen, setIsOpen] = React.useState(false);
   const [otp, setOtp] = React.useState('');
-  const [timer, setTimer] = React.useState(30);
   const [error, setError] = React.useState<string | null>(null);
-  const [isResendOtpTimerRunning, setIsResendOtpTimerRunning] =
-    React.useState(false);
+  const [isResendOtpTimerRunning, setIsResendOtpTimerRunning] = React.useState(false);
   const [resendOtpTimer, setResendOtpTimer] = React.useState(30);
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -305,7 +299,7 @@ function OTPModal() {
 
   // Handle timer countdown
   React.useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setInterval>;
     if (isResendOtpTimerRunning && resendOtpTimer > 0) {
       timer = setInterval(() => {
         setResendOtpTimer((prev) => {
@@ -330,13 +324,6 @@ function OTPModal() {
     setIsOpen(false);
   };
 
-  const handleResend = (): void => {
-    setTimer(30);
-    setOtp('');
-    setError(null);
-    // Resend OTP logic here
-  };
-
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Verify Phone Number</Button>
@@ -344,24 +331,11 @@ function OTPModal() {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         footer={
-          <Box
-            display="flex"
-            gap="spacing.5"
-            justifyContent="flex-end"
-            width="100%"
-          >
-            <Button
-              variant="tertiary"
-              isFullWidth={isMobile}
-              onClick={() => setIsOpen(false)}
-            >
+          <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
+            <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button
-              isFullWidth={isMobile}
-              onClick={handleVerify}
-              isDisabled={otp.length !== 6}
-            >
+            <Button isFullWidth={isMobile} onClick={handleVerify} isDisabled={otp.length !== 6}>
               Verify
             </Button>
           </Box>
@@ -380,18 +354,13 @@ function OTPModal() {
         >
           <LockIcon color="surface.icon.gray.subtle" size="xlarge" />
         </Box>
-        <Box
-          marginTop="spacing.4"
-          display="flex"
-          flexDirection="column"
-          gap="spacing.2"
-        >
+        <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
           <Text size="large" weight="semibold">
             2 Step Verification
           </Text>
           <Text size="medium" weight="regular" color="surface.text.gray.subtle">
-            This action requires 2-step verification. A 6-digit OTP has been
-            sent via SMS to 8757450923. The OTP will expire in 5 minutes.
+            This action requires 2-step verification. A 6-digit OTP has been sent via SMS to
+            8757450923. The OTP will expire in 5 minutes.
           </Text>
         </Box>
         <Box marginY="spacing.5">
@@ -400,6 +369,9 @@ function OTPModal() {
             otpLength={6}
             size="large"
             aria-label="Enter verification code"
+            value={otp}
+            onChange={(value) => setOtp(value.rawValue ?? '')}
+            errorText={error ?? undefined}
           />
         </Box>
         <Box
@@ -417,7 +389,10 @@ function OTPModal() {
           </Text>
           {!isResendOtpTimerRunning && (
             <Link
-              onClick={() => {}}
+              onClick={() => {
+                setIsResendOtpTimerRunning(true);
+                setResendOtpTimer(30);
+              }}
               size="medium"
               variant="button"
               aria-label="Resend verification code"
@@ -434,7 +409,6 @@ function OTPModal() {
 export default OTPModal;
 
 ```
-
 ### Share Modal Example
 
 This example shows a modal for sharing content with social media options and copy link functionality.
@@ -459,20 +433,61 @@ import {
   Alert,
   TwitterIcon,
   FacebookIcon,
-  LinkedInIcon,
-  WhatsappIcon,
+  WhatsAppIcon,
   CopyIcon,
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 // [ResponsiveModalWrapper component code remains the same as above in otp modal example]
 
-function ShareModal() {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [showCopiedAlert, setShowCopiedAlert] = React.useState(false);
+function ResponsiveModalWrapper({
+  children,
+  footer,
+  isOpen,
+  onDismiss,
+  modalBodyPadding,
+  modalSize = 'small',
+  wrapInBottomSheetFooter = false,
+  customSnapPoints = [0.35, 0.5, 0.85],
+}: {
+  children: React.ReactElement | React.ReactElement[];
+  footer?: React.ReactElement;
+  isOpen: boolean;
+  onDismiss: () => void;
+  modalBodyPadding?: 'spacing.0' | 'spacing.6';
+  modalSize?: 'small' | 'medium' | 'large' | 'full';
+  wrapInBottomSheetFooter?: boolean;
+  customSnapPoints?: [number, number, number];
+}): React.ReactNode {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
   const isMobile = matchedDeviceType === 'mobile';
+
+  if (isMobile) {
+    return (
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
+        <BottomSheetHeader />
+        <BottomSheetBody padding="spacing.5">
+          {children}
+          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
+        </BottomSheetBody>
+        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
+      </BottomSheet>
+    );
+  }
+
+  return (
+    <Modal isOpen={isOpen} onDismiss={onDismiss} size={modalSize}>
+      <ModalHeader />
+      <ModalBody padding={modalBodyPadding}>{children}</ModalBody>
+      {footer && <ModalFooter>{footer}</ModalFooter>}
+    </Modal>
+  );
+}
+
+function ShareModal(): React.ReactElement {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [showCopiedAlert, setShowCopiedAlert] = React.useState(false);
 
   const shareUrl = 'https://example.com/share-link';
 
@@ -487,12 +502,7 @@ function ShareModal() {
       label: 'Facebook',
       url: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
     },
-    {
-      icon: LinkedInIcon,
-      label: 'LinkedIn',
-      url: `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`,
-    },
-    { icon: WhatsappIcon, label: 'WhatsApp', url: `https://wa.me/?text=${shareUrl}` },
+    { icon: WhatsAppIcon, label: 'WhatsApp', url: `https://wa.me/?text=${shareUrl}` },
   ];
 
   const handleShare = (url: string): void => {
@@ -538,16 +548,15 @@ function ShareModal() {
               {shareOptions.map((option) => (
                 <ActionListItem
                   key={option.label}
-                  icon={option.icon}
+                  title={option.label}
                   onClick={() => handleShare(option.url)}
-                >
-                  {option.label}
-                </ActionListItem>
+                  value={option.label}
+                />
               ))}
             </ActionList>
           </Box>
           <Box display="flex" gap="spacing.3">
-            <TextInput value={shareUrl} isReadOnly isFullWidth accessibilityLabel="Share URL" />
+            <TextInput value={shareUrl} accessibilityLabel="Share URL" />
             <Button
               variant="secondary"
               icon={CopyIcon}
@@ -562,8 +571,8 @@ function ShareModal() {
 }
 
 export default ShareModal;
-```
 
+```
 ### Informational Modal Example
 
 This example demonstrates a modal for displaying important information or announcements with rich content.
@@ -593,7 +602,52 @@ import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 // [ResponsiveModalWrapper component code remains the same as in otp modal example]
 
-function InformationalModal() {
+function ResponsiveModalWrapper({
+  children,
+  footer,
+  isOpen,
+  onDismiss,
+  modalBodyPadding,
+  modalSize = 'small',
+  wrapInBottomSheetFooter = false,
+  customSnapPoints = [0.35, 0.5, 0.85],
+}: {
+  children: React.ReactElement | React.ReactElement[];
+  footer?: React.ReactElement;
+  isOpen: boolean;
+  onDismiss: () => void;
+  modalBodyPadding?: 'spacing.0' | 'spacing.6';
+  modalSize?: 'small' | 'medium' | 'large' | 'full';
+  wrapInBottomSheetFooter?: boolean;
+  customSnapPoints?: [number, number, number];
+}): React.ReactNode {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
+
+  if (isMobile) {
+    return (
+      <BottomSheet isOpen={isOpen} onDismiss={onDismiss} snapPoints={customSnapPoints}>
+        <BottomSheetHeader />
+        <BottomSheetBody padding="spacing.5">
+          {children}
+          {footer && !wrapInBottomSheetFooter && <Box marginTop="spacing.6">{footer}</Box>}
+        </BottomSheetBody>
+        {footer && wrapInBottomSheetFooter && <BottomSheetFooter>{footer}</BottomSheetFooter>}
+      </BottomSheet>
+    );
+  }
+
+  return (
+    <Modal isOpen={isOpen} onDismiss={onDismiss} size={modalSize}>
+      <ModalHeader />
+      <ModalBody padding={modalBodyPadding}>{children}</ModalBody>
+      {footer && <ModalFooter>{footer}</ModalFooter>}
+    </Modal>
+  );
+}
+
+function InformationalModal(): React.ReactElement {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -633,7 +687,7 @@ function InformationalModal() {
           </Text>
           <List>
             {features.map((feature) => (
-              <ListItem key={feature} icon={CheckIcon} iconColor="positive">
+              <ListItem key={feature} icon={CheckIcon}>
                 {feature}
               </ListItem>
             ))}
