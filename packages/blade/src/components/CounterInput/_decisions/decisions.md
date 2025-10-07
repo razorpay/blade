@@ -31,7 +31,7 @@ import { CounterInput } from '@razorpay/blade/components';
   onChange={({ value }) => setValue(value)}
   min={1}
   max={100}
-  variant="intense"
+  emphasis="intense"
   isLoading={false}
   isDisabled
   size="large"
@@ -127,10 +127,10 @@ type CounterInputCommonProps = Pick<
   max?: number;
 
   /**
-   * Visual variant of the counter input
+   * Visual emphasis of the counter input
    * @default 'subtle'
    */
-  variant?: 'subtle' | 'intense';
+  emphasis?: 'subtle' | 'intense';
 
   /**
    * Size of the counter input
@@ -183,7 +183,7 @@ const App = () => {
 };
 ```
 
-### With Constraints and Variant
+### With Constraints and Emphasis
 
 ```jsx
 import { CounterInput } from '@razorpay/blade/components';
@@ -198,7 +198,7 @@ const App = () => {
       onChange={({ value }) => setAmount(value)}
       min={0}
       max={1000}
-      variant="intense"
+      emphasis="intense"
     />
   );
 };
@@ -248,21 +248,21 @@ const App = () => {
         value={quantity}
         onChange={({ value }) => setQuantity(value)}
         size="xsmall"
-        variant="subtle"
+        emphasis="subtle"
       />
       <CounterInput
         label="Medium Counter"
         value={quantity}
         onChange={({ value }) => setQuantity(value)}
         size="medium"
-        variant="intense"
+        emphasis="intense"
       />
       <CounterInput
         label="Large Counter"
         value={quantity}
         onChange={({ value }) => setQuantity(value)}
         size="large"
-        variant="subtle"
+        emphasis="subtle"
       />
     </>
   );
