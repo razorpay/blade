@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Accordion /> should render 1`] = `
-.c0.c0.c0.c0.c0 {
+.c1.c1.c1.c1.c1 {
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19,10 +19,6 @@ exports[`<Accordion /> should render 1`] = `
   align-items: flex-start;
   min-width: 0px;
   max-width: none;
-}
-
-.c2.c2.c2.c2.c2 {
-  width: 100%;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -342,11 +338,11 @@ exports[`<Accordion /> should render 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="accordion"
   >
     <div
-      class="c0"
+      class="c1"
       data-blade-component="base-box"
     >
       <div
@@ -358,12 +354,12 @@ exports[`<Accordion /> should render 1`] = `
           data-blade-component="collapsible"
         >
           <div
-            class="c1"
+            class="c2"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c2"
+              class="c1"
               data-blade-component="base-box"
               role="heading"
             >
@@ -447,7 +443,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c2"
+                          class="c1"
                           data-blade-component="box"
                         />
                       </div>
@@ -458,7 +454,7 @@ exports[`<Accordion /> should render 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="c2"
+              class="c1"
               data-blade-component="collapsible-body"
               id="collapsible-body-1"
               role="region"
@@ -507,12 +503,12 @@ exports[`<Accordion /> should render 1`] = `
           data-blade-component="collapsible"
         >
           <div
-            class="c1"
+            class="c2"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c2"
+              class="c1"
               data-blade-component="base-box"
               role="heading"
             >
@@ -596,7 +592,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c2"
+                          class="c1"
                           data-blade-component="box"
                         />
                       </div>
@@ -607,7 +603,7 @@ exports[`<Accordion /> should render 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="c2"
+              class="c1"
               data-blade-component="collapsible-body"
               id="collapsible-body-2"
               role="region"
@@ -656,12 +652,12 @@ exports[`<Accordion /> should render 1`] = `
           data-blade-component="collapsible"
         >
           <div
-            class="c1"
+            class="c2"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c2"
+              class="c1"
               data-blade-component="base-box"
               role="heading"
             >
@@ -745,7 +741,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c2"
+                          class="c1"
                           data-blade-component="box"
                         />
                       </div>
@@ -756,7 +752,7 @@ exports[`<Accordion /> should render 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="c2"
+              class="c1"
               data-blade-component="collapsible-body"
               id="collapsible-body-3"
               role="region"
@@ -802,11 +798,11 @@ exports[`<Accordion /> should render 1`] = `
 `;
 
 exports[`Deprecated <Accordion /> should render 1`] = `
-.c0.c0.c0.c0.c0 {
+.c1.c1.c1.c1.c1 {
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -820,10 +816,6 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   align-items: flex-start;
   min-width: 0px;
   max-width: none;
-}
-
-.c2.c2.c2.c2.c2 {
-  width: 100%;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1143,11 +1135,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="accordion"
   >
     <div
-      class="c0"
+      class="c1"
       data-blade-component="base-box"
     >
       <div
@@ -1159,12 +1151,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           data-blade-component="collapsible"
         >
           <div
-            class="c1"
+            class="c2"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c2"
+              class="c1"
               data-blade-component="base-box"
               role="heading"
             >
@@ -1248,7 +1240,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c2"
+                          class="c1"
                           data-blade-component="box"
                         />
                       </div>
@@ -1308,12 +1300,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           data-blade-component="collapsible"
         >
           <div
-            class="c1"
+            class="c2"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c2"
+              class="c1"
               data-blade-component="base-box"
               role="heading"
             >
@@ -1397,7 +1389,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c2"
+                          class="c1"
                           data-blade-component="box"
                         />
                       </div>
@@ -1457,12 +1449,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           data-blade-component="collapsible"
         >
           <div
-            class="c1"
+            class="c2"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c2"
+              class="c1"
               data-blade-component="base-box"
               role="heading"
             >
@@ -1546,7 +1538,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c2"
+                          class="c1"
                           data-blade-component="box"
                         />
                       </div>

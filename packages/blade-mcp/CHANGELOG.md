@@ -1,5 +1,27 @@
 # @razorpay/blade-mcp
 
+## 1.12.1
+
+### Patch Changes
+
+- b964fb7fb: fix(blade-mcp/Box): improve Box knowledgebase UI quality
+
+## 1.12.0
+
+### Minor Changes
+
+- 6d508bbc8: feat(blade-mcp): add donut chart knowledge base
+
+## 1.11.0
+
+### Minor Changes
+
+- 4f9b1ebd3: feat(blade-mcp): add figma to code image attachment in mcp tool call
+
+### Patch Changes
+
+- aae0f0d15: fix(blade-mcp): remove console logs
+
 ## 1.10.0
 
 ### Minor Changes

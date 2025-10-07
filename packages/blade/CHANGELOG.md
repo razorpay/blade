@@ -1,5 +1,50 @@
 # @razorpay/blade
 
+## 12.58.0
+
+### Minor Changes
+
+- 6d508bbc8: ## feat(blade): add donut charts 🍩
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-donutchart--docs)
+
+  ### Deprecation of `colorTheme='default'`
+
+  The `default` option for the `colorTheme` prop has been deprecated to improve clarity and provide a more descriptive API. The new default theme is `'categorical'`. This change makes the theme's purpose—applying a set of distinct colors for different categories—more explicit.
+
+  **Impact**
+
+  Implementation that explicitly sets `colorTheme='default'` will use `'categorical'` as default. Implementations that did not specify a `colorTheme` will automatically use the new `'categorical'` default and should see no change in behavior.
+
+  **How to Upgrade**
+
+  You need to update your code where `colorTheme='default'` is used. You can either remove the prop entirely or change the value to `'categorical'`.
+
+  ```diff
+  - <YourComponent colorTheme='default' />
+  + <YourComponent colorTheme='categorical' />
+
+  // Or, since it's the new default, simply remove the prop:
+  + <YourComponent />
+
+  ```
+
+  ### Updation of color mapping tokens for charts
+
+  We have update color mapping of few token related to charts. you might need to update your snaps.
+
+## 12.57.0
+
+### Minor Changes
+
+- f8be2c8ef: feat(Accordion): add `minWidth` prop to the Accordion component
+
+## 12.56.1
+
+### Patch Changes
+
+- 950c4881f: fix(blade): resolve stale values and button default behaviour in preset dropdown of datepicker
+
 ## 12.56.0
 
 ### Minor Changes

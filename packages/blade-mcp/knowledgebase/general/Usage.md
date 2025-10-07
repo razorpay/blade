@@ -21,9 +21,9 @@ In some cases, if section of the page is using dark theme while rest of the page
 
 ```jsx
 // index.js
+import App from './App';
 import { BladeProvider } from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
-import App from from './App';
 
 function AppWrapper(): JSX.Element {
   return (

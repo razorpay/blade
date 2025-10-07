@@ -13,6 +13,7 @@ import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
+import { ChipGroup, Chip } from '~components/Chip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -179,6 +180,130 @@ const steppedData = [
   { month: 'Apr', value: 200 },
   { month: 'May', value: 180 },
   { month: 'Jun', value: 250 },
+];
+
+// Data for switchable time periods
+const monthlyData = [
+  { period: 'Jan', revenue: 4500, expenses: 2800 },
+  { period: 'Feb', revenue: 5200, expenses: 3100 },
+  { period: 'Mar', revenue: 4800, expenses: 2900 },
+  { period: 'Apr', revenue: 6100, expenses: 3500 },
+  { period: 'May', revenue: 5800, expenses: 3200 },
+  { period: 'Jun', revenue: 6500, expenses: 3800 },
+];
+
+const yearlyData = [
+  { period: '2019', revenue: 45000, expenses: 28000 },
+  { period: '2020', revenue: 52000, expenses: 31000 },
+  { period: '2021', revenue: 61000, expenses: 35000 },
+  { period: '2022', revenue: 72000, expenses: 42000 },
+  { period: '2023', revenue: 85000, expenses: 48000 },
+  { period: '2024', revenue: 96000, expenses: 52000 },
+];
+
+const minuteData = [
+  { period: '0:00', revenue: 120, expenses: 85 },
+  { period: '0:15', revenue: 135, expenses: 92 },
+  { period: '0:30', revenue: 148, expenses: 98 },
+  { period: '0:45', revenue: 162, expenses: 105 },
+  { period: '1:00', revenue: 178, expenses: 112 },
+  { period: '1:15', revenue: 195, expenses: 125 },
+];
+
+// Data for multiple charts dashboard
+
+// Data for 10+ lines chart - Regional Sales Performance
+const regionalSalesData = [
+  {
+    month: 'Jan',
+    northAmerica: 4200,
+    southAmerica: 2800,
+    europe: 3500,
+    asia: 5200,
+    africa: 1800,
+    oceania: 2100,
+    middleEast: 2400,
+    centralAsia: 1900,
+    eastAsia: 4800,
+    southEastAsia: 3200,
+    caribbean: 1500,
+    scandinavia: 2600,
+  },
+  {
+    month: 'Feb',
+    northAmerica: 4500,
+    southAmerica: 3100,
+    europe: 3800,
+    asia: 5500,
+    africa: 2100,
+    oceania: 2300,
+    middleEast: 2700,
+    centralAsia: 2200,
+    eastAsia: 5100,
+    southEastAsia: 3500,
+    caribbean: 1700,
+    scandinavia: 2900,
+  },
+  {
+    month: 'Mar',
+    northAmerica: 4800,
+    southAmerica: 3400,
+    europe: 4100,
+    asia: 5800,
+    africa: 2400,
+    oceania: 2500,
+    middleEast: 3000,
+    centralAsia: 2500,
+    eastAsia: 5400,
+    southEastAsia: 3800,
+    caribbean: 1900,
+    scandinavia: 3200,
+  },
+  {
+    month: 'Apr',
+    northAmerica: 5200,
+    southAmerica: 3700,
+    europe: 4500,
+    asia: 6200,
+    africa: 2700,
+    oceania: 2800,
+    middleEast: 3300,
+    centralAsia: 2800,
+    eastAsia: 5800,
+    southEastAsia: 4100,
+    caribbean: 2200,
+    scandinavia: 3500,
+  },
+  {
+    month: 'May',
+    northAmerica: 5500,
+    southAmerica: 4000,
+    europe: 4800,
+    asia: 6600,
+    africa: 3000,
+    oceania: 3100,
+    middleEast: 3600,
+    centralAsia: 3100,
+    eastAsia: 6200,
+    southEastAsia: 4400,
+    caribbean: 2500,
+    scandinavia: 3800,
+  },
+  {
+    month: 'Jun',
+    northAmerica: 5900,
+    southAmerica: 4300,
+    europe: 5200,
+    asia: 7000,
+    africa: 3300,
+    oceania: 3400,
+    middleEast: 3900,
+    centralAsia: 3400,
+    eastAsia: 6600,
+    southEastAsia: 4700,
+    caribbean: 2800,
+    scandinavia: 4100,
+  },
 ];
 
 // Simple Line Chart Example
@@ -359,7 +484,7 @@ SteppedLineChart.parameters = {
 export const LineChartWithDefaultColorTheme: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
-      <ChartLineWrapper data={chartData} colorTheme="default">
+      <ChartLineWrapper data={chartData} colorTheme="categorical">
         <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
@@ -406,6 +531,88 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof ChartLine> = ({
   );
 };
 
+// Line Chart with Switchable Time Periods
+export const LineChartWithSwitchableTimePeriods: StoryFn<typeof ChartLine> = () => {
+  const [timePeriod, setTimePeriod] = React.useState<'month' | 'year' | 'minute'>('month');
+
+  const dataMap = {
+    month: { data: monthlyData, label: 'Month' },
+    year: { data: yearlyData, label: 'Year' },
+    minute: { data: minuteData, label: 'Time (Minutes)' },
+  };
+
+  const currentData = dataMap[timePeriod];
+
+  return (
+    <Box>
+      <Box marginBottom="spacing.5">
+        <ChipGroup
+          accessibilityLabel="Select time period"
+          selectionType="single"
+          value={timePeriod}
+          onChange={({ values }) => setTimePeriod(values[0] as 'month' | 'year' | 'minute')}
+        >
+          <Chip value="month">Monthly</Chip>
+          <Chip value="year">Yearly</Chip>
+          <Chip value="minute">Per Minute</Chip>
+        </ChipGroup>
+      </Box>
+
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={currentData.data} colorTheme="categorical">
+          <ChartCartesianGrid />
+          <ChartXAxis dataKey="period" label={currentData.label} />
+          <ChartYAxis label="Amount ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey="revenue"
+            name="Revenue"
+            color="chart.background.categorical.azure.moderate"
+          />
+          <ChartLine
+            dataKey="expenses"
+            name="Expenses"
+            color="chart.background.categorical.azure.strong"
+          />
+        </ChartLineWrapper>
+      </Box>
+    </Box>
+  );
+};
+
+LineChartWithSwitchableTimePeriods.parameters = {
+  controls: { disable: true },
+};
+
+// Line Chart with 10+ Lines - Regional Sales
+export const LineChartWithManyLines: StoryFn<typeof ChartLine> = () => {
+  return (
+    <Box width="100%" height="500px">
+      <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="month" label="Month" />
+        <ChartYAxis label="Sales ($)" />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine dataKey="northAmerica" name="North America" />
+        <ChartLine dataKey="southAmerica" name="South America" />
+        <ChartLine dataKey="europe" name="Europe" />
+        <ChartLine dataKey="asia" name="Asia" />
+        <ChartLine dataKey="africa" name="Africa" />
+        <ChartLine dataKey="oceania" name="Oceania" />
+        <ChartLine dataKey="middleEast" name="Middle East" />
+        <ChartLine dataKey="centralAsia" name="Central Asia" />
+        <ChartLine dataKey="eastAsia" name="East Asia" />
+      </ChartLineWrapper>
+    </Box>
+  );
+};
+
+LineChartWithManyLines.parameters = {
+  controls: { disable: true },
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
@@ -414,3 +621,5 @@ LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
 SteppedLineChart.storyName = 'Stepped Line Chart';
 LineChartWithDefaultColorTheme.storyName = 'Line Chart with  Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';
+LineChartWithSwitchableTimePeriods.storyName = 'Line Chart with Switchable Time Periods';
+LineChartWithManyLines.storyName = 'Line Chart with many lines';

@@ -119,7 +119,7 @@ type SpotlightPopoverStepRenderProps = {
 
 This example demonstrates a simple guided tour with three steps highlighting different UI elements, using a custom footer component to control navigation between steps.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   SpotlightPopoverTour,
@@ -133,40 +133,49 @@ import {
   InfoIcon,
   Amount,
 } from '@razorpay/blade/components';
+import type {
+  SpotlightPopoverTourSteps,
+  SpotlightPopoverStepRenderProps,
+} from '@razorpay/blade/components';
+// Custom footer component that can control the tour
+const CustomTourFooter = ({
+  activeStep,
+  totalSteps,
+  goToNext,
+  goToPrevious,
+  stopTour,
+}: SpotlightPopoverStepRenderProps): React.ReactElement => {
+  const isLast = activeStep === totalSteps - 1;
+  const isFirst = activeStep === 0;
 
-function BasicTourExample() {
+  return (
+    <SpotlightPopoverTourFooter
+      activeStep={activeStep}
+      totalSteps={totalSteps}
+      actions={{
+        primary: isLast
+          ? {
+              text: 'Done',
+              onClick: stopTour,
+            }
+          : {
+              text: 'Next',
+              onClick: goToNext,
+            },
+        secondary: isFirst
+          ? undefined
+          : {
+              text: 'Prev',
+              onClick: goToPrevious,
+            },
+      }}
+    />
+  );
+};
+
+function BasicTourExample(): React.ReactElement {
   const [activeStep, setActiveStep] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-
-  // Custom footer component that can control the tour
-  const CustomTourFooter = ({ activeStep, totalSteps, goToNext, goToPrevious, stopTour }) => {
-    const isLast = activeStep === totalSteps - 1;
-    const isFirst = activeStep === 0;
-
-    return (
-      <SpotlightPopoverTourFooter
-        activeStep={activeStep}
-        totalSteps={totalSteps}
-        actions={{
-          primary: isLast
-            ? {
-                text: 'Done',
-                onClick: stopTour,
-              }
-            : {
-                text: 'Next',
-                onClick: goToNext,
-              },
-          secondary: isFirst
-            ? undefined
-            : {
-                text: 'Prev',
-                onClick: goToPrevious,
-              },
-        }}
-      />
-    );
-  };
 
   // Define the tour steps
   const steps: SpotlightPopoverTourSteps = [
@@ -298,91 +307,98 @@ function BasicTourExample() {
     </Box>
   );
 }
-```
 
+export default BasicTourExample;
+
+```
 ### Interruptible Tour Example
 
 This example shows an advanced implementation of a tour that can be interrupted or skipped, with dynamic step content that changes based on whether the user completed or skipped the tour.
 
-```jsx
+```tsx
 import { useState } from 'react';
 import {
   SpotlightPopoverTour,
   SpotlightPopoverTourStep,
-  SpotlightPopoverTourFooter,
   Box,
   Button,
   Text,
   Code,
 } from '@razorpay/blade/components';
+import type {
+  SpotlightPopoverTourSteps,
+  SpotlightPopoverStepRenderProps,
+} from '@razorpay/blade/components';
 
-function InterruptibleTourExample() {
+const InterruptibleTourFooter = ({
+  activeStep,
+  goToNext,
+  goToStep,
+  stopTour,
+  goToPrevious,
+  totalSteps,
+  setIsTourSkipped,
+}: SpotlightPopoverStepRenderProps & {
+  setIsTourSkipped: (isTourSkipped: boolean) => void;
+}): React.ReactElement => {
+  const isLast = activeStep === totalSteps - 1;
+  const isFirst = activeStep === 0;
+
+  return (
+    <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
+      <Text size="small" weight="semibold">
+        {activeStep + 1} / {totalSteps}
+      </Text>
+      <Box display="flex" gap="spacing.4">
+        <Button
+          size="small"
+          variant="tertiary"
+          onClick={() => {
+            setIsTourSkipped(true);
+            goToStep(totalSteps - 1);
+          }}
+        >
+          Skip Tour
+        </Button>
+        {!isFirst && (
+          <Button
+            size="small"
+            variant="secondary"
+            onClick={() => {
+              goToPrevious();
+            }}
+          >
+            Prev
+          </Button>
+        )}
+        {isLast ? (
+          <Button
+            size="small"
+            onClick={() => {
+              stopTour();
+            }}
+          >
+            Done
+          </Button>
+        ) : (
+          <Button
+            size="small"
+            onClick={() => {
+              goToNext();
+            }}
+          >
+            Next
+          </Button>
+        )}
+      </Box>
+    </Box>
+  );
+};
+
+function InterruptibleTourExample(): React.ReactElement {
   const [activeStep, setActiveStep] = useState(0);
   const [isTourSkipped, setIsTourSkipped] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
-  // Custom footer with skip functionality
-  const InterruptibleTourFooter = ({
-    activeStep,
-    goToNext,
-    goToStep,
-    stopTour,
-    goToPrevious,
-    totalSteps,
-  }) => {
-    const isLast = activeStep === totalSteps - 1;
-    const isFirst = activeStep === 0;
-
-    return (
-      <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
-        <Text size="small" weight="semibold">
-          {activeStep + 1} / {totalSteps}
-        </Text>
-        <Box display="flex" gap="spacing.4">
-          <Button
-            size="small"
-            variant="tertiary"
-            onClick={() => {
-              setIsTourSkipped(true);
-              goToStep(totalSteps - 1);
-            }}
-          >
-            Skip Tour
-          </Button>
-          {!isFirst && (
-            <Button
-              size="small"
-              variant="secondary"
-              onClick={() => {
-                goToPrevious();
-              }}
-            >
-              Prev
-            </Button>
-          )}
-          {isLast ? (
-            <Button
-              size="small"
-              onClick={() => {
-                stopTour();
-              }}
-            >
-              Done
-            </Button>
-          ) : (
-            <Button
-              size="small"
-              onClick={() => {
-                goToNext();
-              }}
-            >
-              Next
-            </Button>
-          )}
-        </Box>
-      </Box>
-    );
-  };
 
   // Define steps dynamically based on state
   const steps: SpotlightPopoverTourSteps = [
@@ -395,7 +411,17 @@ function InterruptibleTourExample() {
         </Box>
       ),
       placement: 'top' as const,
-      footer: (props) => <InterruptibleTourFooter {...props} />,
+      footer: (props) => (
+        <InterruptibleTourFooter
+          activeStep={props.activeStep}
+          goToNext={props.goToNext}
+          goToStep={props.goToStep}
+          stopTour={props.stopTour}
+          goToPrevious={props.goToPrevious}
+          totalSteps={props.totalSteps}
+          setIsTourSkipped={setIsTourSkipped}
+        />
+      ),
     },
     {
       name: 'step-2',
@@ -406,7 +432,17 @@ function InterruptibleTourExample() {
         </Box>
       ),
       placement: 'bottom' as const,
-      footer: (props) => <InterruptibleTourFooter {...props} />,
+      footer: (props) => (
+        <InterruptibleTourFooter
+          activeStep={props.activeStep}
+          goToNext={props.goToNext}
+          goToStep={props.goToStep}
+          stopTour={props.stopTour}
+          goToPrevious={props.goToPrevious}
+          totalSteps={props.totalSteps}
+          setIsTourSkipped={setIsTourSkipped}
+        />
+      ),
     },
     // The final step changes based on whether user skipped or completed
     isTourSkipped
@@ -508,4 +544,7 @@ function InterruptibleTourExample() {
     </Box>
   );
 }
+
+export default InterruptibleTourExample;
+
 ```

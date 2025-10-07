@@ -10,33 +10,34 @@ exports[`<Accordion /> should render 1`] = `
 >
   <View
     data-blade-component="accordion"
+    maxWidth={
+      {
+        "l": "800px",
+        "m": "640px",
+        "s": "710px",
+      }
+    }
+    minWidth={
+      {
+        "l": "360px",
+        "m": "360px",
+        "s": "200px",
+      }
+    }
     style={
       [
-        {},
+        {
+          "maxWidth": 710,
+          "minWidth": 200,
+        },
       ]
     }
   >
     <View
       data-blade-component="base-box"
-      maxWidth={
-        {
-          "l": "800px",
-          "m": "640px",
-          "s": "710px",
-        }
-      }
-      minWidth={
-        {
-          "l": "360px",
-          "m": "360px",
-          "s": "200px",
-        }
-      }
       style={
         [
           {
-            "maxWidth": 710,
-            "minWidth": 200,
             "width": "100%",
           },
         ]
@@ -1735,33 +1736,34 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 >
   <View
     data-blade-component="accordion"
+    maxWidth={
+      {
+        "l": "800px",
+        "m": "640px",
+        "s": "710px",
+      }
+    }
+    minWidth={
+      {
+        "l": "360px",
+        "m": "360px",
+        "s": "200px",
+      }
+    }
     style={
       [
-        {},
+        {
+          "maxWidth": 710,
+          "minWidth": 200,
+        },
       ]
     }
   >
     <View
       data-blade-component="base-box"
-      maxWidth={
-        {
-          "l": "800px",
-          "m": "640px",
-          "s": "710px",
-        }
-      }
-      minWidth={
-        {
-          "l": "360px",
-          "m": "360px",
-          "s": "200px",
-        }
-      }
       style={
         [
           {
-            "maxWidth": 710,
-            "minWidth": 200,
             "width": "100%",
           },
         ]
@@ -3460,33 +3462,34 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
 >
   <View
     data-blade-component="accordion"
+    maxWidth={
+      {
+        "l": "800px",
+        "m": "640px",
+        "s": "710px",
+      }
+    }
+    minWidth={
+      {
+        "l": "360px",
+        "m": "360px",
+        "s": "200px",
+      }
+    }
     style={
       [
-        {},
+        {
+          "maxWidth": 710,
+          "minWidth": 200,
+        },
       ]
     }
   >
     <View
       data-blade-component="base-box"
-      maxWidth={
-        {
-          "l": "800px",
-          "m": "640px",
-          "s": "710px",
-        }
-      }
-      minWidth={
-        {
-          "l": "360px",
-          "m": "360px",
-          "s": "200px",
-        }
-      }
       style={
         [
           {
-            "maxWidth": 710,
-            "minWidth": 200,
             "width": "100%",
           },
         ]

@@ -250,12 +250,16 @@ type TimeSegmentProps = {
 ### TimePicker Usage
 
 ```tsx
-import React, { useState, useMemo } from 'react';
-import { TimePicker } from '@razorpay/blade/components';
-import { Box, Text, Button } from '@razorpay/blade/components';
-import { Tooltip, TooltipInteractiveWrapper } from '@razorpay/blade/components';
-import { Link } from '@razorpay/blade/components';
-import { InfoIcon } from '@razorpay/blade/icons';
+import React, { useState } from 'react';
+import {
+  TimePicker,
+  Box,
+  Button,
+  Link,
+  Tooltip,
+  TooltipInteractiveWrapper,
+  InfoIcon,
+} from '@razorpay/blade/components';
 
 function TimePickerExample() {
   const [basicTime, setBasicTime] = useState<Date | null>(null);

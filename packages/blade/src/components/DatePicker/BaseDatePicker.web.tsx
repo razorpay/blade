@@ -101,6 +101,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const [_, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
   const referenceRef = React.useRef<HTMLButtonElement>(null);
+  // Flag to apply preset selection after state updates (avoids stale values)
+  const shouldApplyAfterPresetSelection = React.useRef(false);
 
   const [_picker, setPicker] = useControllableState<PickerType>({
     defaultValue: defaultPicker,
@@ -236,6 +238,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     storeSelectedFiltersAndValueInListViewContext();
     updateSelectedFilters();
   };
+
+  // Apply preset selection after state updates to avoid stale values
+  React.useEffect(() => {
+    if (shouldApplyAfterPresetSelection.current) {
+      shouldApplyAfterPresetSelection.current = false;
+      handleApply();
+    }
+  }, [controlledValue]);
 
   const handleCancel = (): void => {
     setControlledValue(oldValue);
@@ -497,7 +507,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                           const presetValue = preset?.(currentDate);
                           setControlledValue(presetValue);
                           setSelectedPreset(presetValue);
-                          handleApply();
+                          shouldApplyAfterPresetSelection.current = true;
                         },
                         onOpenCalendar: () => {
                           controllableSetIsOpen(() => true);
