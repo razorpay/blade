@@ -71,7 +71,7 @@ const StyledCounterButton = styled.button<{
 const ICON_SIZE_MAP = {
   xsmall: 'small',
   small: 'small',
-  medium: 'medium',
+  medium: 'large',
   large: 'xlarge',
 } as const;
 
