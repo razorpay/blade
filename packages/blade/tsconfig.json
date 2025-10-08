@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "~utils": ["src/utils"],
       "~utils/*": ["src/utils/*"],
@@ -12,7 +11,7 @@
     },
     // In Blade side we are targeting `.web` types
     // We can't add both `.native` & `.web` at once.
-    "moduleSuffixes": [".all", ".web", ""],
+    "moduleSuffixes": [".all", ".web", ""]
     // Path aliases will be resolved by tsc-alias after compilation
   }
 }
