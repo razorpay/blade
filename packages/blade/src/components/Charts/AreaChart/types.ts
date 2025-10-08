@@ -6,6 +6,7 @@ import type { BoxProps } from '~components/Box';
 type ChartAreaProps = {
   /**
    * The type of the area chart.
+   * @default 'linear'
    */
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   /**
@@ -71,4 +72,22 @@ type ChartAreaWrapperProps = {
   data: data[];
 } & BoxProps;
 
-export type { ChartAreaProps, ChartAreaWrapperProps };
+type ChartColorGradientProps = {
+  index: number;
+  color?: ChartsCategoricalColorToken;
+  key: string;
+  totalAreaChartChildren: number;
+  id: string;
+};
+
+type ChartColorGradientData = {
+  color?: ChartsCategoricalColorToken;
+  dataKey: RechartAreaProps['dataKey'];
+};
+
+export type {
+  ChartAreaProps,
+  ChartAreaWrapperProps,
+  ChartColorGradientProps,
+  ChartColorGradientData,
+};
