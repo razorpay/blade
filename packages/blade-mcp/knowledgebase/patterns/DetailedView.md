@@ -72,6 +72,7 @@ import {
   MoreHorizontalIcon,
   DownloadIcon,
   CloseIcon,
+  ArrowRightIcon,
   CopyIcon,
   CheckIcon,
   ClockIcon,
@@ -454,6 +455,8 @@ import {
   DownloadIcon,
   CheckIcon,
   CopyIcon,
+  CloseIcon,
+  ArrowRightIcon,
 } from '@razorpay/blade/tokens';
 
 const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
