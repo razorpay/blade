@@ -281,6 +281,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
 
           const fill = getIn(
             theme.colors,
+            //@ts-expect-error
             getHighestColorInSequence(child.props.color || themeColors[index]),
           );
           return (
@@ -302,6 +303,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       <RechartsCell
         key={`stroke-${index}`}
         fill="transparent"
+        //@ts-expect-error
         stroke={getIn(theme.colors, getHighestColorInSequence(themeColors[index]))} // Different stroke color for each cell
         strokeWidth={0.75}
         strokeOpacity={getCellOpacity(hoveredIndex, index)}

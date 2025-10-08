@@ -404,7 +404,6 @@ BasicDonutChart.storyName = 'Default Donut Chart';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
 SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';
 ExtraLargeRadiusDonutChart.storyName = 'Extra Large Radius Donut Chart';
-ChartWithToolTip.storyName = 'Custom ToolTip Donut Chart';
 DonutChartWithColorTheme.storyName = 'Donut Chart with Color theme';
 SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
 SemiCircleDonutChartWithCenterText.storyName = 'SemiCircle Donut Chart with Label and Text';

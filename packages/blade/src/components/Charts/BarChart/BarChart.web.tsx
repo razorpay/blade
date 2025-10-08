@@ -59,6 +59,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   const fill = getIn(theme.colors, color ?? defaultColorArray[_index]);
   const strokeFill = getIn(
     theme.colors,
+    //@ts-expect-error
     getHighestColorInSequence(color ?? defaultColorArray[_index]),
   );
   useMotionValueEvent(animationValue, 'change', (latest) => {
