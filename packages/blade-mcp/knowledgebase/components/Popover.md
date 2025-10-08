@@ -103,7 +103,7 @@ type PopoverInteractiveWrapperProps = {
 
 Here's a comprehensive example showing how to use the Popover component with its various props:
 
-```jsx
+```tsx
 import React from 'react';
 import { Popover, Button, Box, Text, InfoIcon } from '@razorpay/blade/components';
 
@@ -139,7 +139,7 @@ export default App;
 
 You can add Popover to non-interactive elements like Icon, Badge, etc using PopoverInteractiveWrapper
 
-```jsx
+```tsx
 import React from 'react';
 import {
   Popover,
@@ -180,7 +180,7 @@ export default App;
 
 You can create custom trigger components for the Popover by forwarding the necessary props:
 
-```jsx
+```tsx
 import React from 'react';
 import {
   Popover,

@@ -125,7 +125,6 @@ type DrawerFooterProps = {
    * @default true
    */
   showFooter?: boolean;
-} & DataAnalyticsAttribute &
-  TestID;
+} & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps, DrawerFooterProps };

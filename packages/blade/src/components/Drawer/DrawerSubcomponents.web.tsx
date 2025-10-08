@@ -114,7 +114,7 @@ const _DrawerFooter = ({
  * #### Usage
  *
  * ```jsx
- * <DrawerFooter isVisible={showFooter}>
+ * <DrawerFooter showFooter={showFooter}>
  *   <Button variant="primary" isFullWidth>
  *     Continue
  *   </Button>

@@ -57,7 +57,6 @@ import {
   Button,
   IconButton,
   Text,
-  Heading,
   Code,
   Link,
   Divider,
@@ -67,8 +66,6 @@ import {
   Collapsible,
   CollapsibleBody,
   CollapsibleLink,
-} from '@razorpay/blade/components';
-import {
   MoreHorizontalIcon,
   DownloadIcon,
   CloseIcon,
@@ -76,8 +73,7 @@ import {
   CopyIcon,
   CheckIcon,
   ClockIcon,
-} from '@razorpay/blade/tokens';
-
+} from '@razorpay/blade/components';
 type Transaction = {
   id: string;
   paymentId: string;
@@ -194,13 +190,7 @@ const TransactionDetailedView = () => {
           </TableToolbar>
         }
         pagination={
-          <TablePagination
-            onPageChange={() => {}}
-            defaultPageSize={10}
-            onPageSizeChange={() => {}}
-            showPageSizePicker
-            showPageNumberSelector
-          />
+          <TablePagination defaultPageSize={10} showPageSizePicker showPageNumberSelector />
         }
       >
         {(tableData) => (
@@ -448,8 +438,6 @@ import {
   Divider,
   Code,
   Link,
-} from '@razorpay/blade/components';
-import {
   RazorpayIcon,
   ExternalLinkIcon,
   DownloadIcon,
@@ -457,7 +445,7 @@ import {
   CopyIcon,
   CloseIcon,
   ArrowRightIcon,
-} from '@razorpay/blade/tokens';
+} from '@razorpay/blade/components';
 
 const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <>

@@ -8,7 +8,7 @@ The Drawer component is a panel that slides in from the right side of the screen
 
 ## Important Constraints
 
-- `Drawer` component accepts `DrawerHeader`, `DrawerBody`, and `DrawerFooter` components as children
+- `Drawer` component only accepts `DrawerHeader`, `DrawerBody`, and `DrawerFooter` components as children
 
 ## TypeScript Types
 
