@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.59.0
+
+### Minor Changes
+
+- ce80fb710: feat(blade): update ts version
+
 ## 12.58.0
 
 ### Minor Changes
