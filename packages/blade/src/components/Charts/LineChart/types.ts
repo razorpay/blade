@@ -6,7 +6,7 @@ import type { BoxProps } from '~components/Box';
 interface ChartLineProps {
   /**
    * The type of the line.
-   *  @default : 'linear'
+   *  @default : 'monotone'
    */
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   /**

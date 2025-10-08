@@ -19,7 +19,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 const Line: React.FC<ChartLineProps> = ({
   color,
   strokeStyle = 'solid',
-  type = 'monotone',
+  type = 'linear',
   dot = false,
   activeDot = true,
   showLegend = true,
@@ -48,7 +48,7 @@ const Line: React.FC<ChartLineProps> = ({
   return (
     <RechartsLine
       stroke={colorToken}
-      strokeWidth={3}
+      strokeWidth={1.5}
       strokeDasharray={strokeDasharray}
       type={type}
       activeDot={activeDot}
