@@ -34,7 +34,7 @@ const Line: React.FC<ChartLineProps> = ({
     chartName: 'line',
     chartDataIndicators: _totalLines,
   });
-  const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
+  const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
 
   const strokeDasharray =
     strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;

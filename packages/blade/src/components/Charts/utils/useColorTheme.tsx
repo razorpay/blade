@@ -1,4 +1,3 @@
-import { useTheme } from '~components/BladeProvider';
 /**
  * The color theme of the chart.
  * @default 'categorical'
@@ -38,12 +37,10 @@ const useChartsColorTheme = ({
   colorTheme?: ColorTheme;
   chartName?: ChartName;
   chartDataIndicators?: number;
-}): string[] => {
-  const { theme } = useTheme();
-
+}): CategoricalColorToken[] => {
   // Single data point should be gray
   if (chartDataIndicators === 1 && chartName !== 'donut') {
-    return [theme.colors.chart.background.categorical.gray.moderate];
+    return ['chart.background.categorical.gray.moderate'];
   }
 
   // Color sequence: azure, emerald, crimson, cider, sapphire, orchid, magenta, topaz, gray
@@ -71,12 +68,13 @@ const useChartsColorTheme = ({
   };
 
   const intensitySequence = getIntensitySequence(chartName);
-  const colorThemeArray: string[] = [];
+  const colorThemeArray: CategoricalColorToken[] = [];
 
   // Generate colors based on sequence and intensity
-  colorSequence.forEach((colorName) => {
-    intensitySequence.forEach((intensity) => {
-      const colorValue = theme.colors.chart.background.categorical[colorName][intensity];
+  // For each intensity level, go through all colors
+  intensitySequence.forEach((intensity) => {
+    colorSequence.forEach((colorName) => {
+      const colorValue = `chart.background.categorical.${colorName}.${intensity}` ;
       colorThemeArray.push(colorValue);
     });
   });
@@ -86,6 +84,62 @@ const useChartsColorTheme = ({
   }
 
   return colorThemeArray;
+};
+
+/**
+ * Color token types for type safety
+ */
+type CategoricalColorToken = `chart.background.categorical.${ColorName}.${ColorIntensity}`;
+type SequentialColorToken = `chart.background.sequential.${Exclude<ColorName, 'gray'>}.${
+  | 50
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 1000}`;
+type ChartColorToken = CategoricalColorToken | SequentialColorToken;
+
+/**
+ * Returns the highest color in a sequence for both categorical and sequential color tokens.
+ *
+ * @param colorToken - The color token to get the highest color for
+ * @returns The highest color token in the sequence
+ *
+ * @example
+ * // Sequential colors
+ * getHighestColorInSequence('chart.background.sequential.azure.200')
+ * // Returns: 'chart.background.sequential.azure.1000'
+ *
+ * @example
+ * // Categorical colors
+ * getHighestColorInSequence('chart.background.categorical.azure.moderate')
+ * // Returns: 'chart.background.categorical.azure.strong'
+ */
+export const getHighestColorInSequence = (colorToken: ChartColorToken): string => {
+  // Check if it's a sequential color token
+  const sequentialMatch = colorToken.match(/^chart\.background\.sequential\.([^.]+)\.(\d+)$/);
+  if (sequentialMatch) {
+    const [, colorName] = sequentialMatch;
+    return `chart.background.sequential.${colorName}.1000` as const;
+  }
+
+  // Check if it's a categorical color token
+  const categoricalMatch = colorToken.match(/^chart\.background\.categorical\.([^.]+)\.([^.]+)$/);
+  if (categoricalMatch) {
+    const [, colorName] = categoricalMatch;
+    return `chart.background.categorical.${colorName}.strong` as const;
+  }
+
+  // This should never happen due to TypeScript typing, but handle gracefully
+  console.warn(
+    `Invalid color token format: ${colorToken}. Expected format: chart.background.{categorical|sequential}.{color}.{intensity|value}`,
+  );
+  return colorToken;
 };
 
 export default useChartsColorTheme;

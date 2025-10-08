@@ -43,7 +43,7 @@ const Area: React.FC<ChartAreaProps> = ({
     chartName: 'area',
     chartDataIndicators: _totalAreas,
   });
-  const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
+  const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
   const animationBegin = theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
@@ -85,7 +85,7 @@ const ChartColorGradient: React.FC<ChartColorGradientProps> = ({
     chartDataIndicators: totalAreaChartChildren,
   });
 
-  const colorToken = color ? getIn(theme.colors, color) : themeColors[index];
+  const colorToken = getIn(theme.colors, color ?? themeColors[index]);
 
   return (
     <linearGradient id={id} key={id} x1="0" y1="0" x2="0" y2="1">

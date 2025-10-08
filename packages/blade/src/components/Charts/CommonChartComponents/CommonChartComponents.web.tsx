@@ -117,6 +117,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   return (
     <RechartsTooltip
       content={({ payload, label }) => {
+        const filteredPayLoad = payload.filter((item) => item.type !== 'none');
         return (
           <div
             style={{
@@ -130,7 +131,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
               {label}
             </Heading>
             <Box paddingTop={label ? 'spacing.4' : undefined}>
-              {payload.map((item) => (
+              {filteredPayLoad.map((item) => (
                 <Box
                   display="flex"
                   alignItems="center"
@@ -170,9 +171,11 @@ const CustomSquareLegend = (props: {
   payload?: Array<{
     payload: {
       legendType: 'none' | 'line';
+      type: 'none' | 'line';
     };
     value: string;
     color: string;
+    type: 'none' | 'line';
   }>;
   layout: Layout;
 }): JSX.Element | null => {
@@ -188,7 +191,9 @@ const CustomSquareLegend = (props: {
   we need to show the legend only if the legendType is not none. (for example in line chart we don't want to show the legend for the reference line)
   so we are filtering the payload and then mapping over it to display the legend.
   */
-  const filteredPayload = payload.filter((entry) => entry?.payload?.legendType !== 'none');
+  const filteredPayload = payload.filter(
+    (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
+  );
   const isVerticalLayout = layout === 'vertical';
 
   return (

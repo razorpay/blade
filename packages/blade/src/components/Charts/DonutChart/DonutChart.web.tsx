@@ -6,7 +6,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
 } from 'recharts';
-import { useChartsColorTheme } from '../utils';
+import { useChartsColorTheme, getHighestColorInSequence } from '../utils';
 import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
 import type {
   ChartDonutWrapperProps,
@@ -239,13 +239,14 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
            So we have placeholder component ChartDonutCell. which we replaced by RechartsCell internally so dev can see hover effects
            working out of box. 
            */
-          const fill = getIn(theme.colors, child.props.color) || themeColors[index];
+          const fill = getIn(theme.colors, child.props.color || themeColors[index]);
           return (
             <RechartsCell
               {...child.props}
               fill={fill}
               key={index}
               opacity={getCellOpacity(hoveredIndex, index)}
+              strokeWidth={0}
             />
           );
         } else {
@@ -255,33 +256,95 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     }
     return data?.map((_, index) => (
       <RechartsCell
-        fill={themeColors[index]}
+        fill={getIn(theme.colors, themeColors[index])}
         key={index}
         opacity={getCellOpacity(hoveredIndex, index)}
+        strokeWidth={0}
+      />
+    ));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [children, data, colorTheme, hoveredIndex, themeColors]);
+
+  const modifiedExternalDonutChildren = useMemo(() => {
+    if (Array.isArray(children)) {
+      return children.map((child, index) => {
+        if (getComponentId(child) === componentId.cell) {
+          /* 
+           Why we are not using React.cloneElement ?  just use ChartDonutCell no?
+           cell can never be  custom component in recharts. (as of v3.1.2)
+           (https://github.com/recharts/recharts/issues/2788)
+           https://github.com/recharts/recharts/discussions/5474
+
+           So we have placeholder component ChartDonutCell. which we replaced by RechartsCell internally so dev can see hover effects
+           working out of box. 
+           */
+
+          const fill = getIn(
+            theme.colors,
+            getHighestColorInSequence(child.props.color || themeColors[index]),
+          );
+          return (
+            <RechartsCell
+              {...child.props}
+              key={`stroke-${index}`}
+              fill="transparent"
+              stroke={fill} // Different stroke color for each cell
+              strokeWidth={0.75}
+              strokeOpacity={getCellOpacity(hoveredIndex, index)}
+            />
+          );
+        } else {
+          return child;
+        }
+      });
+    }
+    return data?.map((_, index) => (
+      <RechartsCell
+        key={`stroke-${index}`}
+        fill="transparent"
+        stroke={getIn(theme.colors, getHighestColorInSequence(themeColors[index]))} // Different stroke color for each cell
+        strokeWidth={0.75}
+        strokeOpacity={getCellOpacity(hoveredIndex, index)}
       />
     ));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children, data, colorTheme, hoveredIndex, themeColors]);
 
   return (
-    <RechartsPie
-      {...rest}
-      cx={cx}
-      cy={cy}
-      outerRadius={radiusConfig.outerRadius}
-      innerRadius={radiusConfig.innerRadius}
-      data={data}
-      startAngle={START_AND_END_ANGLES[type].startAngle}
-      endAngle={START_AND_END_ANGLES[type].endAngle}
-      onMouseEnter={(data, index) => {
-        setHoveredIndex(index);
-      }}
-      onMouseLeave={() => {
-        setHoveredIndex(null);
-      }}
-    >
-      {modifiedChildren}
-    </RechartsPie>
+    <>
+      <RechartsPie
+        {...rest}
+        cx={cx}
+        cy={cy}
+        outerRadius={radiusConfig.outerRadius}
+        innerRadius={radiusConfig.innerRadius}
+        data={data}
+        startAngle={START_AND_END_ANGLES[type].startAngle}
+        endAngle={START_AND_END_ANGLES[type].endAngle}
+        onMouseEnter={(data, index) => {
+          setHoveredIndex(index);
+        }}
+        onMouseLeave={() => {
+          setHoveredIndex(null);
+        }}
+      >
+        {modifiedChildren}
+      </RechartsPie>
+      <RechartsPie
+        cx={cx}
+        cy={cy}
+        outerRadius={radiusConfig.outerRadius}
+        innerRadius={radiusConfig.outerRadius - 0.75} // 1.5px thick stroke
+        data={data}
+        startAngle={START_AND_END_ANGLES[type].startAngle}
+        endAngle={START_AND_END_ANGLES[type].endAngle}
+        fill="transparent"
+        legendType="none"
+        tooltipType="none"
+      >
+        {modifiedExternalDonutChildren}
+      </RechartsPie>
+    </>
   );
 };
 
