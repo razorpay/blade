@@ -315,7 +315,6 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
   return (
     <Box width="100%" height="400px">
       <ChartLineWrapper data={chartData}>
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
         <ChartTooltip />
@@ -342,7 +341,6 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = ({
   return (
     <Box width="100%" height="400px">
       <ChartLineWrapper data={chartData}>
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
         <ChartTooltip />
@@ -388,7 +386,6 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
       <ChartLineWrapper data={forecastData}>
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="date" />
         <ChartYAxis />
         <ChartTooltip />
@@ -422,7 +419,6 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
     <Box width="100%" height="400px">
       <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
       <ChartLineWrapper data={dataWithNulls}>
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
         <ChartTooltip />
@@ -435,7 +431,6 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
       </ChartLineWrapper>
       <Heading size="small">Line Chart that Connects Nulls</Heading>
       <ChartLineWrapper data={dataWithNulls}>
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
         <ChartTooltip />
@@ -460,7 +455,6 @@ export const SteppedLineChart: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
       <ChartLineWrapper data={steppedData}>
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
         <ChartTooltip />
@@ -485,7 +479,6 @@ export const LineChartWithDefaultColorTheme: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="400px">
       <ChartLineWrapper data={chartData} colorTheme="categorical">
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
         <ChartTooltip />
@@ -560,7 +553,6 @@ export const LineChartWithSwitchableTimePeriods: StoryFn<typeof ChartLine> = () 
 
       <Box width="100%" height="400px">
         <ChartLineWrapper data={currentData.data} colorTheme="categorical">
-          <ChartCartesianGrid />
           <ChartXAxis dataKey="period" label={currentData.label} />
           <ChartYAxis label="Amount ($)" />
           <ChartTooltip />
@@ -590,7 +582,6 @@ export const LineChartWithManyLines: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="500px">
       <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="month" label="Month" />
         <ChartYAxis label="Sales ($)" />
         <ChartTooltip />
@@ -610,6 +601,28 @@ export const LineChartWithManyLines: StoryFn<typeof ChartLine> = () => {
 };
 
 LineChartWithManyLines.parameters = {
+  controls: { disable: true },
+};
+
+export const LineChartWithCartesianGrid: StoryFn<typeof ChartLine> = () => {
+  return (
+    <Box width="100%" height="500px">
+      <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+        <ChartXAxis dataKey="month" label="Month" />
+        <ChartYAxis label="Sales ($)" />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine dataKey="northAmerica" name="North America" />
+        <ChartLine dataKey="southAmerica" name="South America" />
+        <ChartLine dataKey="europe" name="Europe" />
+        <ChartLine dataKey="asia" name="Asia" />
+        <ChartCartesianGrid />
+      </ChartLineWrapper>
+    </Box>
+  );
+};
+
+LineChartWithCartesianGrid.parameters = {
   controls: { disable: true },
 };
 
