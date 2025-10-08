@@ -164,13 +164,8 @@ export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = (args) => {
           data={chartData}
           radius={radius || 'medium'}
           type={type}
-        >
-          <ChartDonutCell color="chart.background.sequential.azure.600" />
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
-        </ChartDonut>
+        />
+
         <ChartLegend />
         <ChartTooltip />
       </ChartDonutWrapper>
@@ -192,11 +187,11 @@ export const SmallRadiusDonutChart: StoryFn<typeof ChartDonut> = (args) => {
           radius={radius || 'small'}
           type={type}
         >
-          <ChartDonutCell color="chart.background.sequential.azure.600" />
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
         </ChartDonut>
         <ChartTooltip />
       </ChartDonutWrapper>
@@ -218,11 +213,11 @@ export const ExtraLargeRadiusDonutChart: StoryFn<typeof ChartDonut> = (args) => 
           radius={radius || 'large'}
           type={type}
         >
-          <ChartDonutCell color="chart.background.sequential.azure.600" />
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
         </ChartDonut>
         <ChartTooltip />
         <ChartLegend />
@@ -245,11 +240,11 @@ export const ChartWithToolTip: StoryFn<typeof ChartDonut> = (args) => {
           radius={radius || 'large'}
           type={type}
         >
-          <ChartDonutCell color="chart.background.sequential.azure.600" />
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
         </ChartDonut>
         <ChartTooltip />
         <ChartLegend />
@@ -294,11 +289,11 @@ export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = (args) => {
           radius={radius}
           type={type || 'semicircle'}
         >
-          <ChartDonutCell color="chart.background.sequential.azure.600" />
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
         </ChartDonut>
         <ChartTooltip />
       </ChartDonutWrapper>
@@ -321,11 +316,11 @@ export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = (a
           radius={radius}
           type={type || 'semicircle'}
         >
-          <ChartDonutCell color="chart.background.sequential.azure.600" />
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
         </ChartDonut>
       </ChartDonutWrapper>
     </Box>
@@ -353,11 +348,11 @@ export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = (args) => {
           {...wrapperProps}
         >
           <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-            <ChartDonutCell color="chart.background.sequential.azure.600" />
-            <ChartDonutCell color="chart.background.sequential.azure.500" />
-            <ChartDonutCell color="chart.background.sequential.azure.400" />
-            <ChartDonutCell color="chart.background.sequential.azure.300" />
-            <ChartDonutCell color="chart.background.sequential.azure.200" />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
           </ChartDonut>
           <ChartLegend />
           <ChartTooltip />
@@ -379,11 +374,11 @@ export const DonutChartWithVerticalLegend: StoryFn<typeof ChartDonut> = (args) =
         {...wrapperProps}
       >
         <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-          <ChartDonutCell color="chart.background.sequential.azure.600" />
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
         </ChartDonut>
         <ChartLegend layout="vertical" align="right" />
         <ChartTooltip />
@@ -399,11 +394,11 @@ export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = (args) => {
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
       <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px" {...wrapperProps}>
         <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-          <ChartDonutCell color="chart.background.sequential.azure.600" />
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
+          <ChartDonutCell />
         </ChartDonut>
         <ChartLegend />
         <ChartTooltip />
