@@ -8,16 +8,6 @@ CounterInput
 
 CounterInput is a specialized numerical input component that allows users to increment or decrement values using built-in plus/minus button controls alongside manual text input. It provides automatic value constraint enforcement with min/max limits, supports both controlled and uncontrolled usage patterns, and includes loading states with visual feedback. The component is designed for scenarios like quantity selection, subscription management, and any numerical value adjustment with clear boundaries.
 
-## Important Constraints
-
-- CounterInput component is **not available for React Native** - throws an error when used in native applications
-- Values are automatically constrained between `min` and `max` bounds when provided
-- Invalid or non-numeric input values are automatically converted to the `min` value
-- Increment button is disabled when value reaches the `max` limit (if specified)
-- Decrement button is disabled when value reaches the `min` limit
-- Component is disabled for all interactions when `isLoading` or `isDisabled` is true
-- `labelPosition="left"` only applies on desktop devices, falls back to top on mobile
-
 ## Usage Guidelines
 
 ### When to Use CounterInput

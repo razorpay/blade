@@ -21,6 +21,7 @@ import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
+import { mergeRefs } from '~utils/useMergeRefs';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledCounterButton = styled.button<{
@@ -116,6 +117,32 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const [animationClass, setAnimationClass] = useState('');
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    // Track Tab navigation to show focus ring only on keyboard navigation (not mouse clicks)
+    // Note: :focus-visible doesn't work for text inputs - shows ring on both Tab and click
+    useEffect(() => {
+      const container = containerRef.current;
+      if (!container) return;
+
+      const handleTabKey = (event: KeyboardEvent) => {
+        if (event.key === 'Tab') {
+          container.classList.add('counter-input-keyboard-focus');
+        }
+      };
+
+      const handleMouseDown = () => {
+        container.classList.remove('counter-input-keyboard-focus');
+      };
+
+      document.addEventListener('keydown', handleTabKey, true);
+      document.addEventListener('mousedown', handleMouseDown, true);
+
+      return () => {
+        document.removeEventListener('keydown', handleTabKey, true);
+        document.removeEventListener('mousedown', handleMouseDown, true);
+      };
+    }, []);
 
     // Animation effect - triggers only when value actually changes
     useEffect(() => {
@@ -186,7 +213,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
         <StyledCounterInput
           className="__blade-counter-input"
           data-emphasis={emphasis}
-          ref={getOuterMotionRef({ _motionMeta, ref })}
+          ref={mergeRefs(getOuterMotionRef({ _motionMeta, ref }), containerRef)}
           {...metaAttribute({ name: MetaConstants.CounterInput, testID })}
           {...getStyledProps(rest)}
           {...makeAnalyticsAttribute(rest)}

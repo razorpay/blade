@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 // Keyframes for slide animations
 const slideUp = keyframes`
@@ -25,8 +26,14 @@ const slideDown = keyframes`
 `;
 
 const StyledCounterInput = styled(BaseBox)`
+  /* Hide focus ring by default */
   &.__blade-counter-input .focus-ring-wrapper {
     outline: none;
+  }
+
+  /* Show focus ring only during keyboard navigation */
+  &.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
+    ${({ theme }) => getFocusRingStyles({ theme, negativeOffset: true })}
   }
 
   &.__blade-counter-input .__blade-base-input-wrapper {
