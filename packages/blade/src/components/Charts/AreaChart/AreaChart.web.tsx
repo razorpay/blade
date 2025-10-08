@@ -121,6 +121,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
         const AreaChartColor = child?.props?.color;
+        //@ts-expect-error
         const AreaChartDataKey = child?.props?.dataKey;
         AreaChartGraidentGradientData.push({
           color: AreaChartColor,
