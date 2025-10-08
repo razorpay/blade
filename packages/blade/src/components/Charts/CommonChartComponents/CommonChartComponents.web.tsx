@@ -51,7 +51,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
           x={viewBox.x + viewBox.width / 2 - X_OFFSET}
           y={viewBox.y + Y_OFFSET + X_AXIS_TEXT_BASELINE}
           textAnchor="middle"
-          fill={theme.colors.surface.text.gray.subtle}
+          fill={theme.colors.surface.text.gray.muted}
           fontSize={theme.typography.fonts.size[75]}
           fontFamily={theme.typography.fonts.family.text}
           fontWeight={theme.typography.fonts.weight.medium}
