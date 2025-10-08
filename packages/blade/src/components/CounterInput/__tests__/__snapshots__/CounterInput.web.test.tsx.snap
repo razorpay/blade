@@ -128,6 +128,18 @@ exports[`<CounterInput /> should render 1`] = `
   outline: none;
 }
 
+.c0.c0.c0.c0.c0.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-base-input-wrapper {
   box-shadow: none;
   background-color: transparent !important;
@@ -816,6 +828,18 @@ exports[`<CounterInput /> should render large size 1`] = `
   outline: none;
 }
 
+.c0.c0.c0.c0.c0.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-base-input-wrapper {
   box-shadow: none;
   background-color: transparent !important;
@@ -1502,6 +1526,18 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 
 .c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper {
   outline: none;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-base-input-wrapper {

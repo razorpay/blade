@@ -25,48 +25,45 @@ const slideDown = keyframes`
   }
 `;
 
-const StyledCounterInput = styled(BaseBox)`
+const StyledCounterInput = styled(BaseBox)(({ theme }) => ({
   /* Hide focus ring by default */
-  &.__blade-counter-input .focus-ring-wrapper {
-    outline: none;
-  }
+  '&.__blade-counter-input .focus-ring-wrapper:focus-within': {
+    outline: 'none',
+  },
 
   /* Show focus ring only during keyboard navigation */
-  &.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
-    ${({ theme }) => getFocusRingStyles({ theme, negativeOffset: true })}
-  }
+  '&.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within': {
+    ...getFocusRingStyles({ theme, negativeOffset: true }),
+  },
 
-  &.__blade-counter-input .__blade-base-input-wrapper {
-    box-shadow: none;
-    background-color: transparent !important;
-  }
+  '&.__blade-counter-input .__blade-base-input-wrapper': {
+    boxShadow: 'none',
+    backgroundColor: 'transparent !important',
+  },
 
   /* Animation classes */
-  &.__blade-counter-input .animate-slide-up {
-    animation: ${slideUp} 0.3s ease-out;
-  }
+  '&.__blade-counter-input .animate-slide-up': {
+    animation: `${slideUp} 0.3s ease-out`,
+  },
 
-  &.__blade-counter-input .animate-slide-down {
-    animation: ${slideDown} 0.3s ease-out;
-  }
+  '&.__blade-counter-input .animate-slide-down': {
+    animation: `${slideDown} 0.3s ease-out`,
+  },
 
   /* Hide number input arrows */
-  /* stylelint-disable property-no-vendor-prefix, no-descending-specificity */
-  &.__blade-counter-input input[type='number']::-webkit-inner-spin-button,
-  &.__blade-counter-input input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+  '&.__blade-counter-input input[type="number"]::-webkit-inner-spin-button, &.__blade-counter-input input[type="number"]::-webkit-outer-spin-button': {
+    WebkitAppearance: 'none',
+    margin: 0,
+  },
 
-  &.__blade-counter-input input[type='number'] {
-    -moz-appearance: textfield; /* Firefox */
-  }
-  /* stylelint-enable property-no-vendor-prefix, no-descending-specificity */
+  '&.__blade-counter-input input[type="number"]': {
+    MozAppearance: 'textfield' /* Firefox */,
+  },
 
   /* Remove ProgressBar background */
-  &.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
-    background-color: transparent !important;
-  }
-`;
+  '&.__blade-counter-input [data-blade-component="progress-bar"] .__progress-bar': {
+    backgroundColor: 'transparent !important',
+  },
+}));
 
 export { StyledCounterInput };
