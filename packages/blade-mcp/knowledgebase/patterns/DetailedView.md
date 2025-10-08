@@ -282,6 +282,7 @@ const TransactionDetailedView = () => {
               size="large"
             />
           }
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -575,6 +576,7 @@ const SettlementDetailedView = () => {
           color="positive"
           title="Settlement Details"
           trailing={<Button size="medium" icon={DownloadIcon} />}
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount

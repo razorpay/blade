@@ -357,6 +357,12 @@ exports[`Drawer DrawerFooter renders a Drawer with footer 1`] = `
 }
 
 @media screen and (min-width:768px) {
+  .c14.c14.c14.c14.c14 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:768px) {
   .c1.c1.c1.c1.c1 {
     top: 8px;
     bottom: 8px;
