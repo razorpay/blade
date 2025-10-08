@@ -19,6 +19,7 @@
   "scripts": {
     "tsc:blade": "lerna run --scope @razorpay/blade typecheck",
     "tsc:knowledgebase": "node ./scripts/lintKnowledgebase.js",
+    "genrateLlmsTxt": "node ./scripts/generateLlmsTxt.js",
     "lint": "eslint --ext js,jsx,ts,tsx packages && stylelint '**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --ext js,jsx,ts,tsx packages --fix && stylelint '**/*.{js,jsx,ts,tsx}' --fix",
     "publish-npm": "node ./scripts/publishToNpm.js",
