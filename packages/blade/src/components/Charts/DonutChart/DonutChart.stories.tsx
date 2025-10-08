@@ -226,34 +226,7 @@ export const ExtraLargeRadiusDonutChart: StoryFn<typeof ChartDonut> = (args) => 
   );
 };
 
-// 5. Custom Active Shape Donut Chart
-export const ChartWithToolTip: StoryFn<typeof ChartDonut> = (args) => {
-  const { type, radius, ...wrapperProps } = args;
-
-  return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
-        <ChartDonut
-          dataKey="value"
-          nameKey="name"
-          data={chartData}
-          radius={radius || 'large'}
-          type={type}
-        >
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-        </ChartDonut>
-        <ChartTooltip />
-        <ChartLegend />
-      </ChartDonutWrapper>
-    </Box>
-  );
-};
-
-// 6. Donut Chart with Color Theme
+// Donut Chart with Color Theme
 export const DonutChartWithColorTheme: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
@@ -275,7 +248,7 @@ export const DonutChartWithColorTheme: StoryFn<typeof ChartDonut> = (args) => {
   );
 };
 
-// 7. Donut Chart with Semi Circle
+// Donut Chart with Semi Circle
 export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
@@ -301,7 +274,7 @@ export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = (args) => {
   );
 };
 
-// 8. Donut Chart with Center Text
+// Donut Chart with Center Text
 export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
@@ -327,7 +300,7 @@ export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = (a
   );
 };
 
-// 9. Donut Chart with Amount
+// Donut Chart with Amount
 export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 

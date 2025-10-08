@@ -133,17 +133,11 @@ export const DefaultChart: StoryFn<typeof ChartBar> = ({
   return (
     <div style={{ width: '100%', height: '400px' }}>
       <ChartBarWrapper data={chartData.slice(0, 6)}>
-        <ChartCartesianGrid />
         <ChartXAxis dataKey="name" />
         <ChartYAxis />
         <ChartTooltip />
         <ChartLegend />
-        <ChartBar
-          dataKey={dataKey}
-          name={name}
-          color="chart.background.categorical.azure.moderate"
-          {...props}
-        />
+        <ChartBar dataKey={dataKey} name={name} {...props} />
       </ChartBarWrapper>
     </div>
   );
@@ -175,12 +169,12 @@ export const SimpleBarChart: StoryFn<typeof ChartBar> = () => {
         <ChartBar
           dataKey="seriesA"
           name="Series A"
-          color="chart.background.categorical.azure.moderate"
+          color="chart.background.categorical.azure.faint"
         />
         <ChartBar
           dataKey="seriesB"
           name="Series B"
-          color="chart.background.categorical.orchid.moderate"
+          color="chart.background.categorical.orchid.faint"
         />
       </ChartBarWrapper>
     </div>
@@ -200,24 +194,9 @@ export const StackedBarChart: StoryFn<typeof ChartBar> = () => {
         <ChartYAxis />
         <ChartTooltip />
         <ChartLegend />
-        <ChartBar
-          dataKey="seriesA"
-          name="Series A"
-          stackId="stack-1"
-          color="chart.background.sequential.crimson.500"
-        />
-        <ChartBar
-          dataKey="seriesB"
-          name="Series B"
-          stackId="stack-1"
-          color="chart.background.sequential.crimson.400"
-        />
-        <ChartBar
-          dataKey="seriesC"
-          name="Series C"
-          stackId="stack-1"
-          color="chart.background.sequential.crimson.300"
-        />
+        <ChartBar dataKey="seriesA" name="Series A" stackId="stack-1" />
+        <ChartBar dataKey="seriesB" name="Series B" stackId="stack-1" />
+        <ChartBar dataKey="seriesC" name="Series C" stackId="stack-1" />
       </ChartBarWrapper>
     </div>
   );
@@ -236,17 +215,9 @@ export const GroupedBarChart: StoryFn<typeof ChartBar> = () => {
         <ChartYAxis />
         <ChartTooltip />
         <ChartLegend />
-        <ChartBar dataKey="seriesA" name="Series A" color="chart.background.sequential.azure.500" />
-        <ChartBar
-          dataKey="seriesB"
-          name="Series B"
-          color="chart.background.sequential.crimson.500"
-        />
-        <ChartBar
-          dataKey="seriesC"
-          name="Series C"
-          color="chart.background.sequential.magenta.500"
-        />
+        <ChartBar dataKey="seriesA" name="Series A" />
+        <ChartBar dataKey="seriesB" name="Series B" />
+        <ChartBar dataKey="seriesC" name="Series C" />
       </ChartBarWrapper>
     </div>
   );
@@ -265,24 +236,9 @@ export const VerticalBarChart: StoryFn<typeof ChartBar> = () => {
         <ChartYAxis type="category" dataKey="name" />
         <ChartTooltip />
         <ChartLegend />
-        <ChartBar
-          dataKey="seriesA"
-          name="Series A"
-          color="chart.background.sequential.azure.600"
-          stackId="2"
-        />
-        <ChartBar
-          dataKey="seriesB"
-          name="Series B"
-          color="chart.background.sequential.azure.500"
-          stackId="2"
-        />
-        <ChartBar
-          dataKey="seriesC"
-          name="Series C"
-          color="chart.background.sequential.azure.400"
-          stackId="2"
-        />
+        <ChartBar dataKey="seriesA" name="Series A" stackId="2" />
+        <ChartBar dataKey="seriesB" name="Series B" stackId="2" />
+        <ChartBar dataKey="seriesC" name="Series C" stackId="2" />
       </ChartBarWrapper>
     </div>
   );

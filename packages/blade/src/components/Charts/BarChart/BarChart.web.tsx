@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BarChart as RechartsBarChart,
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import { useChartsColorTheme } from '../utils';
+import { useMotionValue, useMotionValueEvent } from 'framer-motion';
+import { useChartsColorTheme, getHighestColorInSequence } from '../utils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
 import {
-  BAR_CHART_CORNER_RADIUS,
   DISTANCE_BETWEEN_STACKED_BARS,
   componentIds,
   BAR_SIZE,
   DISTANCE_BETWEEN_BARS,
   DISTANCE_BETWEEN_CATEGORY_BARS,
+  ANIMATION_TIME_OFFEST,
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -46,6 +47,8 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   _totalbars,
   ...rest
 }) => {
+  const [animationsComplete, setAnimationsComplete] = useState(false);
+  const animationValue = useMotionValue(0);
   const { theme } = useTheme();
   const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
   const defaultColorArray = useChartsColorTheme({
@@ -53,7 +56,16 @@ const _ChartBar: React.FC<ChartBarProps> = ({
     chartName: 'bar',
     chartDataIndicators: _totalbars,
   });
-  const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
+  const fill = getIn(theme.colors, color ?? defaultColorArray[_index]);
+  const strokeFill = getIn(
+    theme.colors,
+    getHighestColorInSequence(color ?? defaultColorArray[_index]),
+  );
+  useMotionValueEvent(animationValue, 'change', (latest) => {
+    if (latest >= 1) {
+      setAnimationsComplete(true);
+    }
+  });
   const isStacked = rest.stackId !== undefined;
   const animationBegin = isStacked
     ? (theme.motion.duration.gentle / totalBars) * _index
@@ -61,6 +73,17 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   const animationDuration = isStacked
     ? theme.motion.duration.gentle / totalBars
     : theme.motion.duration.gentle;
+  const totalAnimationTime = animationBegin + animationDuration + ANIMATION_TIME_OFFEST * totalBars;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      animationValue.set(1);
+    }, totalAnimationTime);
+
+    return () => clearTimeout(timer);
+  }, [totalAnimationTime, animationValue]);
+
+  console.log('animationsComplete', animationsComplete);
 
   return (
     <RechartsBar
@@ -74,6 +97,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
       animationEasing="linear"
       dataKey={dataKey}
       name={name}
+      onAnimationEndCapture={() => setAnimationsComplete(true)}
       shape={(props: unknown) => {
         const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
         const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;
@@ -82,29 +106,49 @@ const _ChartBar: React.FC<ChartBarProps> = ({
 
         if (isVertical) {
           return (
-            <rect
-              fill={fill}
-              x={x + gap / 2}
-              y={y}
-              width={width - gap}
-              height={height}
-              rx={BAR_CHART_CORNER_RADIUS}
-              ry={BAR_CHART_CORNER_RADIUS}
-              fillOpacity={fillOpacity}
-            />
+            <>
+              <rect
+                fill={fill}
+                x={x + gap / 1.5}
+                y={y}
+                width={width - gap}
+                height={height}
+                fillOpacity={fillOpacity}
+              />
+              {animationsComplete && (
+                <rect
+                  fill={strokeFill}
+                  x={x + gap / 1.5 + (width - gap) - 1.5} // Position at the right end
+                  y={y}
+                  width={1.5}
+                  height={height}
+                  fillOpacity={fillOpacity}
+                />
+              )}
+            </>
           );
         }
         return (
-          <rect
-            fill={fill}
-            x={x}
-            y={y + gap / 2}
-            width={width}
-            height={height > gap ? height - gap : 0}
-            rx={BAR_CHART_CORNER_RADIUS}
-            ry={BAR_CHART_CORNER_RADIUS}
-            fillOpacity={fillOpacity}
-          />
+          <>
+            <rect
+              fill={fill}
+              x={x}
+              y={y + gap / 1.5}
+              width={width}
+              height={height > gap ? height - gap : 0}
+              fillOpacity={fillOpacity}
+            />
+            {animationsComplete && (
+              <rect
+                fill={strokeFill}
+                x={x}
+                y={y + gap / 1.5}
+                width={width}
+                height={1.5}
+                fillOpacity={fillOpacity}
+              />
+            )}
+          </>
         );
       }}
     />
