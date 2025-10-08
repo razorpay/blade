@@ -123,7 +123,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     // Note: :focus-visible doesn't work for text inputs - shows ring on both Tab and click
     useEffect(() => {
       const container = containerRef.current;
-      if (!container) return;
+      if (!container) return undefined;
 
       const handleTabKey = (event: KeyboardEvent): void => {
         if (event.key === 'Tab') {

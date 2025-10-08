@@ -1,4 +1,5 @@
-import styled, { keyframes, css, CSSObject } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+import type { CSSObject } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
