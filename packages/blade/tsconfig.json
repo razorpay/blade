@@ -3,6 +3,7 @@
   "include": ["src"],
   "compilerOptions": {
     "paths": {
+      "baseUrl": ".",
       "~utils": ["src/utils"],
       "~utils/*": ["src/utils/*"],
       "~components/*": ["src/components/*"],
