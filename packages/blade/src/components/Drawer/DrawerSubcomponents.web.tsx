@@ -18,6 +18,7 @@ const _DrawerHeader = ({
   titleSuffix,
   children,
   color = 'information',
+  showDivider = true,
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef, stackingLevel, isExiting } = React.useContext(DrawerContext);
@@ -53,6 +54,7 @@ const _DrawerHeader = ({
       leading={leading}
       trailing={trailing}
       backgroundImage={backgroundGradient}
+      showDivider={showDivider}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
@@ -103,9 +105,7 @@ const _DrawerFooter = ({
 
   return (
     <Box position="sticky" {...makeAnalyticsAttribute(rest)}>
-      <BaseFooter padding="spacing.5" showDivider={showDivider}>
-        {children}
-      </BaseFooter>
+      <BaseFooter showDivider={showDivider}>{children}</BaseFooter>
     </Box>
   );
 };

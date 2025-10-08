@@ -349,6 +349,7 @@ export const WithFooter = (args: DrawerProps): React.ReactElement => {
               size="large"
             />
           }
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount

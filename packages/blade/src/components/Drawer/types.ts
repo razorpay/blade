@@ -103,6 +103,11 @@ type DrawerHeaderProps = {
    * Use this for adding gradients
    */
   color?: FeedbackColors;
+  /**
+   * Whether to show the divider above the header
+   * @default true
+   */
+  showDivider?: boolean;
 } & DataAnalyticsAttribute;
 
 type DrawerFooterProps = {
