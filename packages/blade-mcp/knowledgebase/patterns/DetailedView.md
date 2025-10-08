@@ -429,6 +429,7 @@ import {
   Drawer,
   DrawerHeader,
   DrawerBody,
+  DrawerFooter,
   Box,
   Amount,
   Badge,

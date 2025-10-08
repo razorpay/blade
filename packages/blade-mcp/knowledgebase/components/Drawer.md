@@ -153,8 +153,7 @@ type DrawerFooterProps = {
    * @default true
    */
   showFooter?: boolean;
-} & DataAnalyticsAttribute &
-  TestID;
+} & DataAnalyticsAttribute;
 ```
 
 ## Example
