@@ -524,6 +524,26 @@ AreaChartInCard.parameters = {
   controls: { disable: true },
 };
 
+export const AreaChartWithCartesianGrid: StoryFn<typeof ChartArea> = () => {
+  return (
+    <Box width="100%" height="400px">
+      <ChartAreaWrapper data={chartData} colorTheme="categorical">
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartCartesianGrid />
+        <ChartArea dataKey="teamA" name="Team A" />
+        <ChartArea
+          name="Team B"
+          color="chart.background.categorical.cider.strong"
+          dataKey="teamB"
+        />
+      </ChartAreaWrapper>
+    </Box>
+  );
+};
+
 AreaChartWithDefaultColorTheme.storyName = 'Single Area Chart with Color Theme';
 SimpleAreaChart.storyName = 'Simple Area Chart';
 StackedAreaChart.storyName = 'Stacked Area Chart';
