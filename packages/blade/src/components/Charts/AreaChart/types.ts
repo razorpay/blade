@@ -48,6 +48,10 @@ type ChartAreaProps = {
    * @private
    */
   _colorTheme?: ColorTheme;
+  /**
+   * @private
+   */
+  _totalAreas?: number;
 };
 
 type data = {

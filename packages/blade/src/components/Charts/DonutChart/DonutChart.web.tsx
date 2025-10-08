@@ -213,7 +213,10 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
   ...rest
 }) => {
   const radiusConfig = RADIUS_MAPPING[radius];
-  const themeColors = useChartsColorTheme({ colorTheme });
+  const themeColors = useChartsColorTheme({
+    colorTheme,
+    chartName: 'donut',
+  });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const { theme } = useTheme();
 

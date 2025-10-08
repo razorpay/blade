@@ -15,6 +15,7 @@ import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const Area: React.FC<ChartAreaProps> = ({
   color,
@@ -26,10 +27,15 @@ const Area: React.FC<ChartAreaProps> = ({
   activeDot = true,
   _index,
   _colorTheme,
+  _totalAreas,
   ...props
 }) => {
   const { theme } = useTheme();
-  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme });
+  const themeColors = useChartsColorTheme({
+    colorTheme: _colorTheme,
+    chartName: 'area',
+    chartDataIndicators: _totalAreas,
+  });
   const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
   const animationBegin = theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
@@ -66,12 +72,21 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   ...restProps
 }) => {
   const modifiedChildren = React.useMemo(() => {
+    const childrenArray = React.Children.toArray(children);
+
+    // Count ChartLine components
+    const totalAreas = childrenArray.filter(
+      (child): child is React.ReactElement =>
+        React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea,
+    ).length;
+
     let AreaChartIndex = 0;
     return React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && child.type === componentIds.ChartArea) {
+      if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,
+          _totalAreas: totalAreas,
         } as Partial<ChartAreaProps>);
       }
       return child;

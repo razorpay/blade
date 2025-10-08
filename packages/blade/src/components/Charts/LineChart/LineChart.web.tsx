@@ -25,10 +25,15 @@ const Line: React.FC<ChartLineProps> = ({
   showLegend = true,
   _index,
   _colorTheme,
+  _totalLines,
   ...props
 }) => {
   const { theme } = useTheme();
-  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme });
+  const themeColors = useChartsColorTheme({
+    colorTheme: _colorTheme,
+    chartName: 'line',
+    chartDataIndicators: _totalLines,
+  });
   const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
 
   const strokeDasharray =
@@ -69,12 +74,21 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   ...restProps
 }) => {
   const lineChartModifiedChildrens = React.useMemo(() => {
+    const childrenArray = React.Children.toArray(children);
+
+    // Count ChartLine components
+    const totalLines = childrenArray.filter(
+      (child): child is React.ReactElement =>
+        React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine,
+    ).length;
+
     let LineChartIndex = 0;
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
+          _totaLine: totalLines,
         } as Partial<ChartLineProps>);
       }
       return child;

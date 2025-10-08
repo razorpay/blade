@@ -43,11 +43,16 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   label = false,
   showLegend = true,
   _index = 0,
+  _totalbars,
   ...rest
 }) => {
   const { theme } = useTheme();
   const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
-  const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme });
+  const defaultColorArray = useChartsColorTheme({
+    colorTheme: _colorTheme,
+    chartName: 'bar',
+    chartDataIndicators: _totalbars,
+  });
   const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
   const isStacked = rest.stackId !== undefined;
   const animationBegin = isStacked
@@ -122,11 +127,20 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
   const { barChartModifiedChildrens, totalBars } = React.useMemo(() => {
+    const childrenArray = React.Children.toArray(children);
+
+    // Count ChartBar components
+    const totalBars = childrenArray.filter(
+      (child): child is React.ReactElement =>
+        React.isValidElement(child) && getComponentId(child) === componentIds.chartBar,
+    ).length;
+
     let BarChartIndex = 0;
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.chartBar) {
         return React.cloneElement(child, {
           _index: BarChartIndex++,
+          _totalbars: totalBars,
         } as Partial<ChartBarProps>);
       }
       return child;
@@ -134,7 +148,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
 
     return {
       barChartModifiedChildrens: modifiedChildren,
-      totalBars: BarChartIndex,
+      totalBars,
     };
   }, [children]);
 
