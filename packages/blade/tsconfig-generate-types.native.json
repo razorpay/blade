@@ -13,7 +13,6 @@
     "**/ThemePlayground/**/**.tsx"
   ],
   "compilerOptions": {
-    "outDir": "build/generated-types/native",
     "declarationDir": "build/generated-types/native",
     "moduleSuffixes": [".native", ""]
   }
