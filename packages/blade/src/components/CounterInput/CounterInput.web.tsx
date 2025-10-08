@@ -125,20 +125,20 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       const container = containerRef.current;
       if (!container) return;
 
-      const handleTabKey = (event: KeyboardEvent) => {
+      const handleTabKey = (event: KeyboardEvent): void => {
         if (event.key === 'Tab') {
           container.classList.add('counter-input-keyboard-focus');
         }
       };
 
-      const handleMouseDown = () => {
+      const handleMouseDown = (): void => {
         container.classList.remove('counter-input-keyboard-focus');
       };
 
       document.addEventListener('keydown', handleTabKey, true);
       document.addEventListener('mousedown', handleMouseDown, true);
 
-      return () => {
+      return (): void => {
         document.removeEventListener('keydown', handleTabKey, true);
         document.removeEventListener('mousedown', handleMouseDown, true);
       };

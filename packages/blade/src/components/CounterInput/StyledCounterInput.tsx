@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css, CSSObject } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
@@ -25,45 +25,46 @@ const slideDown = keyframes`
   }
 `;
 
-const StyledCounterInput = styled(BaseBox)(({ theme }) => ({
+const StyledCounterInput = styled(BaseBox)`
   /* Hide focus ring by default */
-  '&.__blade-counter-input .focus-ring-wrapper:focus-within': {
-    outline: 'none',
-  },
+  &.__blade-counter-input .focus-ring-wrapper:focus-within {
+    outline: none;
+  }
 
   /* Show focus ring only during keyboard navigation */
-  '&.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within': {
-    ...getFocusRingStyles({ theme, negativeOffset: true }),
-  },
+  &.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
+    ${({ theme }) => css(getFocusRingStyles({ theme, negativeOffset: true }) as CSSObject)};
+  }
 
-  '&.__blade-counter-input .__blade-base-input-wrapper': {
-    boxShadow: 'none',
-    backgroundColor: 'transparent !important',
-  },
+  &.__blade-counter-input .__blade-base-input-wrapper {
+    box-shadow: none;
+    background-color: transparent !important;
+  }
 
   /* Animation classes */
-  '&.__blade-counter-input .animate-slide-up': {
-    animation: `${slideUp} 0.3s ease-out`,
-  },
+  &.__blade-counter-input .animate-slide-up {
+    animation: ${slideUp} 0.3s ease-out;
+  }
 
-  '&.__blade-counter-input .animate-slide-down': {
-    animation: `${slideDown} 0.3s ease-out`,
-  },
+  &.__blade-counter-input .animate-slide-down {
+    animation: ${slideDown} 0.3s ease-out;
+  }
 
   /* Hide number input arrows */
-  '&.__blade-counter-input input[type="number"]::-webkit-inner-spin-button, &.__blade-counter-input input[type="number"]::-webkit-outer-spin-button': {
-    WebkitAppearance: 'none',
-    margin: 0,
-  },
+  &.__blade-counter-input input[type='number']::-webkit-inner-spin-button,
+  &.__blade-counter-input input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-  '&.__blade-counter-input input[type="number"]': {
-    MozAppearance: 'textfield' /* Firefox */,
-  },
+  &.__blade-counter-input input[type='number'] {
+    -moz-appearance: textfield; /* Firefox */
+  }
 
   /* Remove ProgressBar background */
-  '&.__blade-counter-input [data-blade-component="progress-bar"] .__progress-bar': {
-    backgroundColor: 'transparent !important',
-  },
-}));
+  &.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
+    background-color: transparent !important;
+  }
+`;
 
 export { StyledCounterInput };

@@ -124,7 +124,7 @@ exports[`<CounterInput /> should render 1`] = `
   justify-content: flex-end;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper {
+.c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper:focus-within {
   outline: none;
 }
 
@@ -824,7 +824,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   justify-content: flex-end;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper {
+.c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper:focus-within {
   outline: none;
 }
 
@@ -1524,7 +1524,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   justify-content: flex-end;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper {
+.c0.c0.c0.c0.c0.__blade-counter-input .focus-ring-wrapper:focus-within {
   outline: none;
 }
 
