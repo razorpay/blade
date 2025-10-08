@@ -54,7 +54,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
           fill={theme.colors.surface.text.gray.muted}
           fontSize={theme.typography.fonts.size[75]}
           fontFamily={theme.typography.fonts.family.text}
-          fontWeight={theme.typography.fonts.weight.medium}
+          fontWeight={theme.typography.fonts.weight.regular}
           letterSpacing={theme.typography.letterSpacings[100]}
         >
           {props?.label}
@@ -72,7 +72,7 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
     <RechartsYAxis
       {...props}
       tick={{
-        fill: theme.colors.surface.text.gray.normal,
+        fill: theme.colors.surface.text.gray.muted,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
         fontWeight: theme.typography.fonts.weight.regular,
@@ -86,7 +86,7 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
           textAnchor: 'middle',
           fill: theme.colors.surface.text.gray.subtle,
           fontSize: theme.typography.fonts.size[75],
-          fontWeight: theme.typography.fonts.weight.medium,
+          fontWeight: theme.typography.fonts.weight.regular,
           fontFamily: theme.typography.fonts.family.text,
           letterSpacing: theme.typography.letterSpacings[100],
           lineHeight: theme.typography.lineHeights[500],
