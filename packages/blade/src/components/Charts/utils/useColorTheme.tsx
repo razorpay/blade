@@ -109,6 +109,7 @@ type ChartColorToken = CategoricalColorToken | SequentialColorToken;
  * Returns the highest color in a sequence for both categorical and sequential color tokens.
  *
  * @param colorToken - The color token to get the highest color for
+ * @param isDynamic - Whether to use dynamic color intensity mapping for categorical colors
  * @returns The highest color token in the sequence
  *
  * @example
@@ -117,11 +118,26 @@ type ChartColorToken = CategoricalColorToken | SequentialColorToken;
  * // Returns: 'chart.background.sequential.azure.1000'
  *
  * @example
- * // Categorical colors
+ * // Categorical colors (default behavior)
  * getHighestColorInSequence('chart.background.categorical.azure.moderate')
  * // Returns: 'chart.background.categorical.azure.strong'
+ *
+ * @example
+ * // Categorical colors with dynamic mapping
+ * getHighestColorInSequence('chart.background.categorical.azure.faint', true)
+ * // Returns: 'chart.background.categorical.azure.strong'
+ * getHighestColorInSequence('chart.background.categorical.azure.subtle', true)
+ * // Returns: 'chart.background.categorical.azure.intense'
+ * getHighestColorInSequence('chart.background.categorical.azure.moderate', true)
+ * // Returns: 'chart.background.categorical.azure.moderate'
  */
-export const getHighestColorInSequence = (colorToken: ChartColorToken): string => {
+export const getHighestColorInSequence = ({
+  colorToken,
+  followIntensityMapping = false,
+}: {
+  colorToken: ChartColorToken;
+  followIntensityMapping?: boolean;
+}): string => {
   // Check if it's a sequential color token
   const sequentialMatch = colorToken.match(/^chart\.background\.sequential\.([^.]+)\.(\d+)$/);
   if (sequentialMatch) {
@@ -132,8 +148,24 @@ export const getHighestColorInSequence = (colorToken: ChartColorToken): string =
   // Check if it's a categorical color token
   const categoricalMatch = colorToken.match(/^chart\.background\.categorical\.([^.]+)\.([^.]+)$/);
   if (categoricalMatch) {
-    const [, colorName] = categoricalMatch;
-    return `chart.background.categorical.${colorName}.strong` as const;
+    const [, colorName, intensity] = categoricalMatch;
+
+    if (followIntensityMapping) {
+      // Dynamic color intensity mapping
+      const intensityMapping: Record<string, ColorIntensity> = {
+        faint: 'strong',
+        subtle: 'intense',
+        moderate: 'moderate',
+        intense: 'intense',
+        strong: 'strong',
+      };
+
+      const mappedIntensity = intensityMapping[intensity] || intensity;
+      return `chart.background.categorical.${colorName}.${mappedIntensity}` as const;
+    } else {
+      // Default behavior: always return strong
+      return `chart.background.categorical.${colorName}.strong` as const;
+    }
   }
 
   // This should never happen due to TypeScript typing, but handle gracefully
