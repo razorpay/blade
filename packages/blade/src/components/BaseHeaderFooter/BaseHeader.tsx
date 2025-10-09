@@ -7,7 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID, ElementTiming } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -108,6 +108,7 @@ type BaseHeaderProps = {
   | 'onPointerUp'
 > &
   TestID &
+  ElementTiming &
   DataAnalyticsAttribute;
 
 type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text' | 'Amount';

@@ -7,7 +7,8 @@ import { useValidateAsProp } from '../utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { isReactNative } from '~utils';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadingProps = {
@@ -26,6 +27,7 @@ export type HeadingProps = {
   textTransform?: BaseTextProps['textTransform'];
   wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
+  ElementTiming &
   StyledPropsBlade;
 
 export const getHeadingProps = ({
@@ -106,6 +108,7 @@ const _Heading = (
       textTransform={textTransform}
       wordBreak={wordBreak}
       {...getStyledProps(styledProps)}
+      {...makeAnalyticsAttribute(styledProps)}
     >
       {children}
     </BaseText>
