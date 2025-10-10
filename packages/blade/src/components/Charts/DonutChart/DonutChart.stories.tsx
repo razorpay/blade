@@ -154,7 +154,13 @@ export const BasicDonutChart: StoryFn<typeof ChartDonut> = (args) => {
   return (
     <ChartsWrapper>
       <Box width="100%" height="400px">
-        <ChartDonutWrapper {...wrapperProps}>
+        <ChartDonutWrapper
+          content={{
+            label: 'Total',
+            value: '1300',
+          }}
+          {...wrapperProps}
+        >
           <ChartDonut type={type} radius={radius} dataKey="value" nameKey="name" data={chartData} />
           <ChartLegend />
           <ChartTooltip />
@@ -303,39 +309,6 @@ export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = (args) => {
   );
 };
 
-// Donut Chart with Center Text
-export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = (args) => {
-  const { type, radius, ...wrapperProps } = args;
-
-  return (
-    <ChartsWrapper>
-      <Box width="100%" height="400px">
-        <ChartDonutWrapper
-          content={{ value: '1300' }}
-          {...wrapperProps}
-          width="500px"
-          height="300px"
-        >
-          <ChartTooltip />
-          <ChartDonut
-            dataKey="value"
-            nameKey="name"
-            data={chartData}
-            radius={radius}
-            type={type || 'semicircle'}
-          >
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-          </ChartDonut>
-        </ChartDonutWrapper>
-      </Box>
-    </ChartsWrapper>
-  );
-};
-
 // Donut Chart with Amount
 export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
@@ -473,5 +446,4 @@ SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';
 ExtraLargeRadiusDonutChart.storyName = 'Extra Large Radius Donut Chart';
 DonutChartWithColorTheme.storyName = 'Donut Chart with Color theme';
 SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
-SemiCircleDonutChartWithCenterText.storyName = 'SemiCircle Donut Chart with Label and Text';
 DonutChartWithCustomColor.storyName = 'Donut Chart with Blade Components';
