@@ -1,6 +1,6 @@
 const path = require('path');
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlInlineScriptPlugin = require('html-inline-script-webpack-plugin');
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
@@ -40,9 +40,9 @@ module.exports = (env, argv) => ({
     new HtmlWebpackPlugin({
       template: 'src/app/index.html',
       filename: 'ui.html',
-      inlineSource: '.(js)$',
       chunks: ['ui'],
+      inject: 'body',
     }),
-    new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
+    new HtmlInlineScriptPlugin(),
   ],
 });
