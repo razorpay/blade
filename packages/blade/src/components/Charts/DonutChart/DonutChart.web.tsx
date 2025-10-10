@@ -395,6 +395,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         onMouseLeave={() => {
           setHoveredIndex(null);
         }}
+        paddingAngle={1.5}
       >
         {modifiedChildren}
       </RechartsPie>
@@ -409,6 +410,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         fill="transparent"
         legendType="none"
         tooltipType="none"
+        paddingAngle={1.5}
       >
         {modifiedExternalDonutChildren}
       </RechartsPie>
