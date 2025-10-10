@@ -67,6 +67,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -1517,6 +1518,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -1684,6 +1686,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -1851,6 +1854,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2018,6 +2022,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2185,6 +2190,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2352,6 +2358,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2519,6 +2526,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2686,6 +2694,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2853,6 +2862,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -3020,6 +3030,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -3222,6 +3233,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -3424,6 +3436,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="4px"
           overflow="hidden"
@@ -3626,6 +3639,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -3747,6 +3761,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -4342,6 +4357,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -4711,6 +4727,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       >
         <View
           backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
