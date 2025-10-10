@@ -1,9 +1,10 @@
 import React from 'react';
 import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
-import type { DrawerHeaderProps } from './types';
+import type { DrawerHeaderProps, DrawerFooterProps } from './types';
 import { useDrawerStack } from './StackProvider';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -17,6 +18,7 @@ const _DrawerHeader = ({
   titleSuffix,
   children,
   color = 'information',
+  showDivider = true,
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef, stackingLevel, isExiting } = React.useContext(DrawerContext);
@@ -33,7 +35,7 @@ const _DrawerHeader = ({
 
   const isAtleastOneDrawerOpen = Object.keys(drawerStack).length > 0;
 
-  const backgroundGradient = `linear-gradient(155deg, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background[color].subtle} 30.26%)` as const;
+  const backgroundGradient = `radial-gradient(150% 100% at 50% 100%, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background[color].subtle} 100%)` as const;
   // This condition is to avoid back button disappear while stacked drawer is in the exiting transition
   const isDrawerExiting = isAtleastOneDrawerOpen && isExiting && stackingLevel !== 1;
 
@@ -52,6 +54,7 @@ const _DrawerHeader = ({
       leading={leading}
       trailing={trailing}
       backgroundImage={backgroundGradient}
+      showDivider={showDivider}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
@@ -90,4 +93,32 @@ const DrawerBody = assignWithoutSideEffects(_DrawerBody, {
   componentId: drawerComponentIds.DrawerBody,
 });
 
-export { DrawerHeader, DrawerBody, drawerPadding };
+const _DrawerFooter = ({
+  children,
+  showDivider = true,
+  ...rest
+}: DrawerFooterProps): React.ReactElement => {
+  return (
+    <Box position="sticky" {...makeAnalyticsAttribute(rest)}>
+      <BaseFooter showDivider={showDivider}>{children}</BaseFooter>
+    </Box>
+  );
+};
+
+/**
+ * #### Usage
+ *
+ * ```jsx
+ * <DrawerFooter>
+ *   <Button variant="primary" isFullWidth>
+ *     Continue
+ *   </Button>
+ * </DrawerFooter>
+ * ```
+ *
+ */
+const DrawerFooter = assignWithoutSideEffects(_DrawerFooter, {
+  componentId: drawerComponentIds.DrawerFooter,
+});
+
+export { DrawerHeader, DrawerBody, DrawerFooter, drawerPadding };

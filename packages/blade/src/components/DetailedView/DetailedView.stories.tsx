@@ -24,7 +24,7 @@ import { Code, Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
-import { Drawer, DrawerHeader, DrawerBody } from '~components/Drawer';
+import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from '~components/Drawer';
 import {
   ArrowRightIcon,
   CheckIcon,
@@ -343,6 +343,7 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
               size="large"
             />
           }
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -601,6 +602,7 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
           color="positive"
           title="Settlements"
           trailing={<Button size="medium" icon={DownloadIcon} />}
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -756,6 +758,7 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
           color="notice"
           title="Payment QR Code"
           trailing={<Button size="medium" icon={DownloadIcon} />}
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -989,3 +992,288 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
 };
 
 export const WithQRCode = DetailedViewWithQRCodeTemplate.bind({});
+
+const DetailedViewWithQRCodeAndFooterTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isFooterVisible, setIsFooterVisible] = useState(true);
+  const [isTransactionBreakdownOpen, setIsTransactionBreakdownOpen] = useState(false);
+
+  return (
+    <Box>
+      <Box display="flex" gap="spacing.4" marginBottom="spacing.4">
+        <Button onClick={() => setIsDrawerOpen(true)}>Show QR Details with Footer</Button>
+        <Button variant="secondary" onClick={() => setIsFooterVisible(!isFooterVisible)}>
+          {isFooterVisible ? 'Hide Footer' : 'Show Footer'}
+        </Button>
+      </Box>
+
+      <Drawer
+        {...args}
+        isOpen={isDrawerOpen}
+        onDismiss={() => {
+          setIsDrawerOpen(false);
+        }}
+      >
+        <DrawerHeader
+          color="notice"
+          title="Payment QR Code"
+          trailing={<Button size="medium" icon={DownloadIcon} />}
+          showDivider={false}
+        >
+          <Box marginTop="spacing.6" textAlign="center">
+            <Amount
+              value={dummyData?.amount ?? 0}
+              currency="INR"
+              size="2xlarge"
+              type="heading"
+              weight="semibold"
+              color="surface.text.gray.subtle"
+              suffix="decimals"
+            />
+          </Box>
+          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
+            <Badge icon={ClockIcon} size="medium" color="notice" emphasis="intense">
+              Pending
+            </Badge>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="spacing.4"
+            marginTop="spacing.6"
+            paddingX="spacing.4"
+          >
+            <InfoGroup itemOrientation="vertical" isHighlighted>
+              <InfoItem>
+                <InfoItemKey>Payment ID</InfoItemKey>
+                <InfoItemValue>{dummyData?.paymentId}</InfoItemValue>
+              </InfoItem>
+            </InfoGroup>
+          </Box>
+
+          <Text
+            size="small"
+            marginTop="spacing.6"
+            textAlign="center"
+            color="surface.text.gray.muted"
+          >
+            QR was generated on 24th April 2025
+          </Text>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <Heading marginBottom="spacing.4" size="small" weight="semibold">
+            QR Code
+          </Heading>
+          <Box textAlign="center">
+            <QRCodeImage />
+          </Box>
+          <Button marginTop="spacing.4" variant="secondary" size="small" isFullWidth>
+            Download QR Code
+          </Button>
+
+          <Heading marginTop="spacing.6" size="small" weight="semibold">
+            Timeline
+          </Heading>
+          <Timeline status="Pending" />
+
+          <Box
+            marginTop="spacing.6"
+            marginBottom="spacing.4"
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <Heading size="small" weight="semibold">
+              Transaction Details
+            </Heading>
+            <Link
+              variant="button"
+              size="small"
+              icon={ArrowRightIcon}
+              onClick={() => setIsTransactionBreakdownOpen(true)}
+            >
+              View More
+            </Link>
+          </Box>
+
+          <Alert
+            color="positive"
+            isDismissible={false}
+            isFullWidth
+            description={
+              <Text>
+                Order of{' '}
+                <Amount
+                  value={dummyData.amount}
+                  isAffixSubtle={false}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />{' '}
+                is created successfully. Scan the QR Code to proceed
+              </Text>
+            }
+          />
+
+          <Box marginTop="spacing.4">
+            <Card elevation="none" padding="spacing.4">
+              <CardHeader>
+                <CardHeaderLeading title="UPI" prefix={<CardHeaderIcon icon={UpiIcon} />} />
+                <CardHeaderTrailing
+                  visual={<CardHeaderBadge color="positive">Active</CardHeaderBadge>}
+                />
+              </CardHeader>
+              <CardBody>
+                <InfoGroup gridTemplateColumns="1fr 1fr">
+                  <InfoItem>
+                    <InfoItemKey>VPA ID</InfoItemKey>
+                    <InfoItemValue>example@ybl</InfoItemValue>
+                  </InfoItem>
+                  <InfoItem>
+                    <InfoItemKey>Transaction ID</InfoItemKey>
+                    <InfoItemValue>fa_PEisj2647UW</InfoItemValue>
+                  </InfoItem>
+                  <InfoItem>
+                    <InfoItemKey>Transaction ID</InfoItemKey>
+                    <InfoItemValue>example@ybl</InfoItemValue>
+                  </InfoItem>
+                </InfoGroup>
+              </CardBody>
+            </Card>
+          </Box>
+
+          {/* Add some extra content to demonstrate scrolling */}
+          <Box marginTop="spacing.6">
+            <Heading size="small" weight="semibold" marginBottom="spacing.4">
+              Additional Information
+            </Heading>
+            <Text marginBottom="spacing.4">
+              This QR code is valid for 24 hours from the time of generation. Please ensure that the
+              payment is completed within this timeframe to avoid any issues.
+            </Text>
+            <Text marginBottom="spacing.4">
+              If you encounter any problems with the QR code, please contact our support team for
+              assistance.
+            </Text>
+            <Text marginBottom="spacing.4">
+              The QR code contains encrypted payment information and is secure for transactions.
+            </Text>
+          </Box>
+        </DrawerBody>
+
+        {isFooterVisible && (
+          <DrawerFooter>
+            <Box display="flex" gap="spacing.5">
+              <Button
+                variant="tertiary"
+                icon={CloseIcon}
+                iconPosition="left"
+                isFullWidth
+                onClick={() => setIsDrawerOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
+                Continue
+              </Button>
+            </Box>
+          </DrawerFooter>
+        )}
+      </Drawer>
+
+      <Drawer
+        {...args}
+        isOpen={isTransactionBreakdownOpen}
+        onDismiss={() => {
+          setIsTransactionBreakdownOpen(false);
+        }}
+      >
+        <DrawerHeader title="Transaction Breakdown" />
+        <DrawerBody>
+          <InfoGroup gridTemplateColumns="1fr 1fr">
+            <InfoItem>
+              <InfoItemKey>Amount</InfoItemKey>
+              <InfoItemValue>
+                <Amount
+                  value={dummyData.amount}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
+              </InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>Amount Paid</InfoItemKey>
+              <InfoItemValue>
+                <Amount
+                  value={dummyData.amountPaid}
+                  currency="INR"
+                  weight="semibold"
+                  color="surface.text.gray.subtle"
+                />
+              </InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>Payment Link ID</InfoItemKey>
+              <InfoItemValue trailing={<Link variant="button" size="medium" icon={CopyIcon} />}>
+                <Code size="medium" weight="bold">
+                  {dummyData.paymentId}
+                </Code>
+              </InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>Reference ID</InfoItemKey>
+              <InfoItemValue>{dummyData.referenceId}</InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>Payment for</InfoItemKey>
+              <InfoItemValue>{dummyData.type}</InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>UTR Number</InfoItemKey>
+              <InfoItemValue trailing={<Link variant="button" size="medium" icon={CopyIcon} />}>
+                <Code size="medium" weight="bold">
+                  {dummyData.utr}
+                </Code>
+              </InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>Bank Account</InfoItemKey>
+              <InfoItemValue>{dummyData.bankAccount}</InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>IFSC</InfoItemKey>
+              <InfoItemValue>{dummyData.ifsc}</InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>Partial Payment</InfoItemKey>
+              <InfoItemValue>{dummyData.partialPayment}</InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>Reminders</InfoItemKey>
+              <InfoItemValue>{dummyData.reminders}</InfoItemValue>
+            </InfoItem>
+
+            <InfoItem>
+              <InfoItemKey>Created By</InfoItemKey>
+              <InfoItemValue>{dummyData.createdBy}</InfoItemValue>
+            </InfoItem>
+          </InfoGroup>
+        </DrawerBody>
+      </Drawer>
+    </Box>
+  );
+};
+
+export const WithQRCodeAndFooter = DetailedViewWithQRCodeAndFooterTemplate.bind({});

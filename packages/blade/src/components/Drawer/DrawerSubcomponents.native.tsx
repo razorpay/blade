@@ -1,5 +1,5 @@
 import React from 'react';
-import type { DrawerHeaderProps } from './types';
+import type { DrawerHeaderProps, DrawerFooterProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
 
@@ -20,4 +20,14 @@ const DrawerBody = (_props: { children: React.ReactNode }): React.ReactElement =
 
   return <Text>Drawer Component is not available for Native mobile apps.</Text>;
 };
-export { DrawerHeader, DrawerBody };
+
+const DrawerFooter = (_props: DrawerFooterProps): React.ReactElement => {
+  throwBladeError({
+    message: 'DrawerFooter is not yet implemented for native',
+    moduleName: 'DrawerFooter',
+  });
+
+  return <Text>Drawer Component is not available for Native mobile apps.</Text>;
+};
+
+export { DrawerHeader, DrawerBody, DrawerFooter };

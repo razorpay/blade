@@ -1,5 +1,500 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Drawer DrawerFooter renders a Drawer with footer 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: fixed;
+  width: 90%;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 0px;
+  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+}
+
+.c2.c2.c2.c2.c2 {
+  background-image: radial-gradient(150% 100% at 50% 100%,hsla(0,0%,100%,0) 0%,hsla(200,84%,44%,0.09) 100%);
+}
+
+.c3.c3.c3.c3.c3 {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  touch-action: none;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c5.c5.c5.c5.c5 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c8.c8.c8.c8.c8 {
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10 {
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c12.c12.c12.c12.c12 {
+  overflow: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 20px;
+}
+
+.c13.c13.c13.c13.c13 {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.c14.c14.c14.c14.c14 {
+  padding: 16px;
+}
+
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  opacity: 0;
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
+  -webkit-transition: all 280ms cubic-bezier(0.17,0,1,1);
+  transition: all 280ms cubic-bezier(0.17,0,1,1);
+  -webkit-animation-fill-mode: initial;
+  animation-fill-mode: initial;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 100%;
+  height: auto;
+}
+
+.c11.c11.c11.c11.c11 {
+  border-width: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c19.c19.c19.c19.c19 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c6.c6.c6.c6.c6 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(211,22%,56%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6:hover:not([disabled]) {
+  color: hsla(211,26%,34%,1);
+  background-color: transparent;
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  color: hsla(211,26%,34%,1);
+}
+
+.c6.c6.c6.c6.c6:active {
+  color: hsla(211,26%,34%,1);
+}
+
+.c15.c15.c15.c15.c15 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c15.c15.c15.c15.c15:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c15.c15.c15.c15.c15:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c15.c15.c15.c15.c15:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c15.c15.c15.c15.c15 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c16.c16.c16.c16.c16 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
+}
+
+.c18.c18.c18.c18.c18 {
+  opacity: 1;
+}
+
+@media screen and (min-width:480px) {
+  .c0.c0.c0.c0.c0 {
+    width: 375px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c0.c0.c0.c0.c0 {
+    width: 420px;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c3.c3.c3.c3.c3 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c10.c10.c10.c10.c10 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c14.c14.c14.c14.c14 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c1.c1.c1.c1.c1 {
+    top: 8px;
+    bottom: 8px;
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+
+<div
+  aria-modal="true"
+  class="c0 c1"
+  data-blade-component="base-box"
+  elevation="highRaised"
+  role="dialog"
+  tabindex="-1"
+>
+  <div
+    class="c2"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c3"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c4"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c5"
+          data-blade-component="box"
+        >
+          <button
+            aria-label="Close"
+            class="c6"
+            data-blade-component="icon-button"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="20px"
+              viewBox="0 0 24 24"
+              width="20px"
+            >
+              <path
+                d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                data-blade-component="svg-path"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="box"
+        >
+          <p
+            class="c9"
+            data-blade-component="text"
+          >
+            Custom Header
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="c10 c11"
+      data-blade-component="divider"
+      role="separator"
+    />
+  </div>
+  <div
+    class="c12"
+    data-blade-component="box"
+  >
+    <p
+      class="c9"
+      data-blade-component="text"
+    >
+      Custom Content
+    </p>
+  </div>
+  <div
+    class="c13"
+    data-blade-component="box"
+  >
+    <div
+      class="c10 c11"
+      data-blade-component="divider"
+      role="separator"
+    />
+    <div
+      class="c14"
+      data-blade-component="base-box"
+    >
+      <button
+        class="c15"
+        data-blade-component="button"
+        role="button"
+        type="button"
+      >
+        <div
+          class=" c16"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c17 c18"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c19"
+              data-blade-component="base-text"
+            >
+              Footer Button
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Drawer renders a Drawer 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
@@ -18,7 +513,7 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-image: linear-gradient(155deg,hsla(0,0%,100%,0) 0%,hsla(200,84%,44%,0.09) 30.26%);
+  background-image: radial-gradient(150% 100% at 50% 100%,hsla(0,0%,100%,0) 0%,hsla(200,84%,44%,0.09) 100%);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -762,7 +1257,7 @@ exports[`Drawer should render a Drawer with a custom header 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-image: linear-gradient(155deg,hsla(0,0%,100%,0) 0%,hsla(200,84%,44%,0.09) 30.26%);
+  background-image: radial-gradient(150% 100% at 50% 100%,hsla(0,0%,100%,0) 0%,hsla(200,84%,44%,0.09) 100%);
 }
 
 .c3.c3.c3.c3.c3 {
