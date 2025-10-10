@@ -95,7 +95,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         const dataKey = (child?.props as ChartLineProps)?.dataKey;
         if (dataKey && typeof dataKey === 'string') {
           dataColorMapping[dataKey] = {
-            colorToken: childColor || DEFAULT_COLOR,
+            colorToken: childColor,
             isCustomColor: Boolean(childColor),
           };
         }

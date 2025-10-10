@@ -51,12 +51,6 @@ const getChartColor = (
   dataColorMapping: Record<string, { colorToken: string; isCustomColor: boolean }> | undefined,
   chartName: string | undefined,
 ): string => {
-  console.log({
-    dataKey,
-    name,
-    dataColorMapping,
-    chartName,
-  });
   const colorKey = chartName === 'donut' ? sanitizeString(name ?? '') : dataKey;
   const mappedColorData = dataColorMapping?.[colorKey ?? ''];
   const mappedColor = mappedColorData?.colorToken;
