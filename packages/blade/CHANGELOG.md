@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.60.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
 ## 12.59.0
 
 ### Minor Changes
