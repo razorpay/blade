@@ -306,6 +306,24 @@ const regionalSalesData = [
   },
 ];
 
+const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  return (
+    <Box
+      width="100%"
+      height="100%"
+      backgroundColor="surface.background.gray.intense"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      padding="spacing.8"
+      borderRadius="medium"
+    >
+      {' '}
+      {children}{' '}
+    </Box>
+  );
+};
+
 // Simple Line Chart Example
 export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
   dataKey = 'teamA',
@@ -313,22 +331,24 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="400px">
-      <ChartLineWrapper data={chartData}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine
-          dataKey={dataKey}
-          name={name}
-          strokeStyle="solid"
-          color="chart.background.categorical.azure.moderate"
-          {...args}
-        />
-        <ChartReferenceLine y={1500} label="Avg: 1200" />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="95%" height="400px">
+        <ChartLineWrapper data={chartData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey={dataKey}
+            name={name}
+            strokeStyle="solid"
+            color="chart.background.categorical.azure.moderate"
+            {...args}
+          />
+          <ChartReferenceLine y={1500} label="Avg: 1200" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -339,22 +359,24 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="400px">
-      <ChartLineWrapper data={chartData}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine
-          dataKey={dataKey}
-          name={name}
-          strokeStyle="solid"
-          color="chart.background.categorical.azure.moderate"
-          {...args}
-        />
-        <ChartReferenceLine x="Apr" label="Avg: 1200" />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={chartData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey={dataKey}
+            name={name}
+            strokeStyle="solid"
+            color="chart.background.categorical.azure.moderate"
+            {...args}
+          />
+          <ChartReferenceLine x="Apr" label="Avg: 1200" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -365,47 +387,51 @@ export const TinyLineChart: StoryFn<typeof ChartLine> = ({
   ...args
 }) => {
   return (
-    <Box width="200px" height="100px">
-      <ChartLineWrapper data={chartData}>
-        <ChartLine
-          dataKey={dataKey}
-          name={name}
-          strokeStyle="solid"
-          color="chart.background.categorical.azure.strong"
-          dot={false}
-          activeDot={false}
-          {...args}
-        />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="200px" height="100px">
+        <ChartLineWrapper data={chartData}>
+          <ChartLine
+            dataKey={dataKey}
+            name={name}
+            strokeStyle="solid"
+            color="chart.background.categorical.azure.strong"
+            dot={false}
+            activeDot={false}
+            {...args}
+          />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
 // Forecast Line Chart Example
 export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
   return (
-    <Box width="100%" height="400px">
-      <ChartLineWrapper data={forecastData}>
-        <ChartXAxis dataKey="date" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine
-          dataKey="historical"
-          name="Historical Data"
-          connectNulls={true}
-          color="chart.background.categorical.azure.moderate"
-        />
-        <ChartLine
-          dataKey="forecast"
-          name="Forecasted Data"
-          strokeStyle="dashed"
-          connectNulls={true}
-          showLegend={false}
-          color="chart.background.categorical.orchid.moderate"
-        />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={forecastData}>
+          <ChartXAxis dataKey="date" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey="historical"
+            name="Historical Data"
+            connectNulls={true}
+            color="chart.background.categorical.azure.moderate"
+          />
+          <ChartLine
+            dataKey="forecast"
+            name="Forecasted Data"
+            strokeStyle="dashed"
+            connectNulls={true}
+            showLegend={false}
+            color="chart.background.categorical.orchid.moderate"
+          />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -416,32 +442,40 @@ ForecastLineChart.parameters = {
 // Line Chart that Connects Nulls
 export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
   return (
-    <Box width="100%" height="400px">
-      <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
-      <ChartLineWrapper data={dataWithNulls}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine
-          dataKey="sales"
-          name="Sales (Connects Nulls)"
-          color="chart.background.categorical.emerald.moderate"
-        />
-      </ChartLineWrapper>
-      <Heading size="small">Line Chart that Connects Nulls</Heading>
-      <ChartLineWrapper data={dataWithNulls}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine
-          dataKey="sales"
-          name="Sales (Connects Nulls)"
-          connectNulls={true}
-          color="chart.background.categorical.emerald.moderate"
-        />
-      </ChartLineWrapper>
+    <Box width="100%" height="100%">
+      <ChartsWrapper>
+        <Box display="flex" gap="spacing.4" flexDirection="column" width="100%" height="400px">
+          <Heading size="small">Line Chart that Connects Nulls</Heading>
+          <ChartLineWrapper data={dataWithNulls}>
+            <ChartXAxis dataKey="month" />
+            <ChartYAxis />
+            <ChartTooltip />
+            <ChartLegend />
+            <ChartLine
+              dataKey="sales"
+              name="Sales (Connects Nulls)"
+              connectNulls={true}
+              color="chart.background.categorical.emerald.moderate"
+            />
+          </ChartLineWrapper>
+        </Box>
+      </ChartsWrapper>
+      <ChartsWrapper>
+        <Box display="flex" gap="spacing.4" flexDirection="column" width="100%" height="400px">
+          <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
+          <ChartLineWrapper data={dataWithNulls}>
+            <ChartXAxis dataKey="month" />
+            <ChartYAxis />
+            <ChartTooltip />
+            <ChartLegend />
+            <ChartLine
+              dataKey="sales"
+              name="Sales (Connects Nulls)"
+              color="chart.background.categorical.emerald.moderate"
+            />
+          </ChartLineWrapper>
+        </Box>
+      </ChartsWrapper>
     </Box>
   );
 };
@@ -453,20 +487,22 @@ LineChartConnectNulls.parameters = {
 // Stepped Line Chart Example
 export const SteppedLineChart: StoryFn<typeof ChartLine> = () => {
   return (
-    <Box width="100%" height="400px">
-      <ChartLineWrapper data={steppedData}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine
-          dataKey="value"
-          name="Stepped Line"
-          type="step"
-          color="chart.background.categorical.azure.moderate"
-        />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={steppedData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey="value"
+            name="Stepped Line"
+            type="step"
+            color="chart.background.categorical.azure.moderate"
+          />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -477,16 +513,18 @@ SteppedLineChart.parameters = {
 // Line Chart with Default Color Theme
 export const LineChartWithDefaultColorTheme: StoryFn<typeof ChartLine> = () => {
   return (
-    <Box width="100%" height="400px">
-      <ChartLineWrapper data={chartData} colorTheme="categorical">
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine dataKey="teamA" name="value 2" />
-        <ChartLine dataKey="teamB" name="Value 1" />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={chartData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="teamA" name="value 2" />
+          <ChartLine dataKey="teamB" name="Value 1" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -501,26 +539,22 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof ChartLine> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="400px">
-      <ChartLineWrapper data={chartData}>
-        <ChartXAxis dataKey="month" label="Month" />
-        <ChartYAxis label="Sales" />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine
-          dataKey={dataKey}
-          name={name}
-          color="chart.background.categorical.emerald.moderate"
-          {...args}
-        />
-        <ChartLine
-          dataKey={dataKey}
-          name={name}
-          color="chart.background.categorical.crimson.moderate"
-          {...args}
-        />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={chartData}>
+          <ChartXAxis dataKey="month" label="Month" />
+          <ChartYAxis label="Sales" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey={dataKey}
+            name={name}
+            color="chart.background.categorical.emerald.moderate"
+            {...args}
+          />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -537,39 +571,41 @@ export const LineChartWithSwitchableTimePeriods: StoryFn<typeof ChartLine> = () 
   const currentData = dataMap[timePeriod];
 
   return (
-    <Box>
-      <Box marginBottom="spacing.5">
-        <ChipGroup
-          accessibilityLabel="Select time period"
-          selectionType="single"
-          value={timePeriod}
-          onChange={({ values }) => setTimePeriod(values[0] as 'month' | 'year' | 'minute')}
-        >
-          <Chip value="month">Monthly</Chip>
-          <Chip value="year">Yearly</Chip>
-          <Chip value="minute">Per Minute</Chip>
-        </ChipGroup>
-      </Box>
+    <ChartsWrapper>
+      <Box display="flex" flexDirection="column" width="100%" height="100%">
+        <Box marginBottom="spacing.5">
+          <ChipGroup
+            accessibilityLabel="Select time period"
+            selectionType="single"
+            value={timePeriod}
+            onChange={({ values }) => setTimePeriod(values[0] as 'month' | 'year' | 'minute')}
+          >
+            <Chip value="month">Monthly</Chip>
+            <Chip value="year">Yearly</Chip>
+            <Chip value="minute">Per Minute</Chip>
+          </ChipGroup>
+        </Box>
 
-      <Box width="100%" height="400px">
-        <ChartLineWrapper data={currentData.data} colorTheme="categorical">
-          <ChartXAxis dataKey="period" label={currentData.label} />
-          <ChartYAxis label="Amount ($)" />
-          <ChartTooltip />
-          <ChartLegend />
-          <ChartLine
-            dataKey="revenue"
-            name="Revenue"
-            color="chart.background.categorical.azure.moderate"
-          />
-          <ChartLine
-            dataKey="expenses"
-            name="Expenses"
-            color="chart.background.categorical.crimson.moderate"
-          />
-        </ChartLineWrapper>
+        <Box width="100%" height="400px">
+          <ChartLineWrapper data={currentData.data} colorTheme="categorical">
+            <ChartXAxis dataKey="period" label={currentData.label} />
+            <ChartYAxis label="Amount ($)" />
+            <ChartTooltip />
+            <ChartLegend />
+            <ChartLine
+              dataKey="revenue"
+              name="Revenue"
+              color="chart.background.categorical.azure.strong"
+            />
+            <ChartLine
+              dataKey="expenses"
+              name="Expenses"
+              color="chart.background.categorical.crimson.strong"
+            />
+          </ChartLineWrapper>
+        </Box>
       </Box>
-    </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -580,26 +616,28 @@ LineChartWithSwitchableTimePeriods.parameters = {
 // Line Chart with 10+ Lines - Regional Sales
 export const LineChartWithManyLines: StoryFn<typeof ChartLine> = () => {
   return (
-    <Box width="100%" height="500px">
-      <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
-        <ChartXAxis dataKey="month" label="Month" />
-        <ChartYAxis label="Sales ($)" />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine dataKey="northAmerica" name="North America" />
-        <ChartLine dataKey="southAmerica" name="South America" />
-        <ChartLine dataKey="europe" name="Europe" />
-        <ChartLine dataKey="asia" name="Asia" />
-        <ChartLine dataKey="africa" name="Africa" />
-        <ChartLine dataKey="oceania" name="Oceania" />
-        <ChartLine dataKey="middleEast" name="Middle East" />
-        <ChartLine dataKey="centralAsia" name="Central Asia" />
-        <ChartLine dataKey="eastAsia" name="East Asia" />
-        <ChartLine dataKey="southEastAsia" name="South East Asia" />
-        <ChartLine dataKey="caribbean" name="Caribbean" />
-        <ChartLine dataKey="scandinavia" name="Scandinavia" />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" label="Month" />
+          <ChartYAxis label="Sales ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="northAmerica" name="North America" />
+          <ChartLine dataKey="southAmerica" name="South America" />
+          <ChartLine dataKey="europe" name="Europe" />
+          <ChartLine dataKey="asia" name="Asia" />
+          <ChartLine dataKey="africa" name="Africa" />
+          <ChartLine dataKey="oceania" name="Oceania" />
+          <ChartLine dataKey="middleEast" name="Middle East" />
+          <ChartLine dataKey="centralAsia" name="Central Asia" />
+          <ChartLine dataKey="eastAsia" name="East Asia" />
+          <ChartLine dataKey="southEastAsia" name="South East Asia" />
+          <ChartLine dataKey="caribbean" name="Caribbean" />
+          <ChartLine dataKey="scandinavia" name="Scandinavia" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -609,19 +647,21 @@ LineChartWithManyLines.parameters = {
 
 export const LineChartWithCartesianGrid: StoryFn<typeof ChartLine> = () => {
   return (
-    <Box width="100%" height="500px">
-      <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
-        <ChartXAxis dataKey="month" label="Month" />
-        <ChartYAxis label="Sales ($)" />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartLine dataKey="northAmerica" name="North America" />
-        <ChartLine dataKey="southAmerica" name="South America" />
-        <ChartLine dataKey="europe" name="Europe" />
-        <ChartLine dataKey="asia" name="Asia" />
-        <ChartCartesianGrid />
-      </ChartLineWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" label="Month" />
+          <ChartYAxis label="Sales ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="northAmerica" name="North America" />
+          <ChartLine dataKey="southAmerica" name="South America" />
+          <ChartLine dataKey="europe" name="Europe" />
+          <ChartLine dataKey="asia" name="Asia" />
+          <ChartCartesianGrid />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 

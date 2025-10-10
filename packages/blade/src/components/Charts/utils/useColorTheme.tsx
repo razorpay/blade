@@ -156,8 +156,8 @@ export const getHighestColorInSequence = ({
         faint: 'strong',
         subtle: 'intense',
         moderate: 'moderate',
-        intense: 'intense',
-        strong: 'strong',
+        intense: 'subtle',
+        strong: 'faint',
       };
 
       const mappedIntensity = intensityMapping[intensity] || intensity;

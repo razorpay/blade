@@ -228,6 +228,24 @@ const trafficData = [
   { day: 'Sun', visitors: 4300 },
 ];
 
+const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  return (
+    <Box
+      width="100%"
+      height="100%"
+      backgroundColor="surface.background.gray.intense"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      padding="spacing.8"
+      borderRadius="medium"
+    >
+      {' '}
+      {children}{' '}
+    </Box>
+  );
+};
+
 // 2.2.a - Simple Area Chart
 export const SimpleAreaChart: StoryFn<typeof ChartArea> = ({
   dataKey = 'teamA',
@@ -235,20 +253,22 @@ export const SimpleAreaChart: StoryFn<typeof ChartArea> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="500px">
-      <ChartAreaWrapper data={chartData}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartArea
-          dataKey={dataKey}
-          name={name}
-          type="monotone"
-          color="chart.background.categorical.azure.intense"
-          {...args}
-        />
-      </ChartAreaWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartAreaWrapper data={chartData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartArea
+            dataKey={dataKey}
+            name={name}
+            type="monotone"
+            color="chart.background.categorical.azure.intense"
+            {...args}
+          />
+        </ChartAreaWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -259,30 +279,32 @@ export const StackedAreaChart: StoryFn<typeof ChartArea> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="500px">
-      <ChartAreaWrapper data={chartData}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartArea
-          dataKey={dataKey}
-          name={name}
-          type="monotone"
-          stackId="1"
-          color="chart.background.categorical.azure.moderate"
-          {...args}
-        />
-        <ChartArea
-          dataKey={dataKey}
-          name={name}
-          type="monotone"
-          stackId="1"
-          color="chart.background.categorical.crimson.moderate"
-          {...args}
-        />
-      </ChartAreaWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartAreaWrapper data={chartData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartArea
+            dataKey={dataKey}
+            name={name}
+            type="monotone"
+            stackId="1"
+            color="chart.background.categorical.azure.moderate"
+            {...args}
+          />
+          <ChartArea
+            dataKey="teamB"
+            name="teamB"
+            type="monotone"
+            stackId="1"
+            color="chart.background.categorical.crimson.moderate"
+            {...args}
+          />
+        </ChartAreaWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -293,38 +315,42 @@ export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="100%">
+    <Box width="100%" height="100%" display="flex" flexDirection="column" gap="spacing.4">
       <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
-      <Box width="500px" height="200px">
-        <ChartAreaWrapper data={data}>
-          <ChartXAxis dataKey="name" />
-          <ChartYAxis />
-          <ChartTooltip />
-          <ChartArea
-            type="monotone"
-            dataKey={dataKey}
-            name={name}
-            color="chart.background.categorical.emerald.moderate"
-            {...args}
-          />
-        </ChartAreaWrapper>
+      <Box width="1000px" height="500px">
+        <ChartsWrapper>
+          <ChartAreaWrapper data={data}>
+            <ChartXAxis dataKey="name" />
+            <ChartYAxis />
+            <ChartTooltip />
+            <ChartArea
+              type="monotone"
+              dataKey={dataKey}
+              name={name}
+              color="chart.background.categorical.emerald.moderate"
+              {...args}
+            />
+          </ChartAreaWrapper>
+        </ChartsWrapper>
       </Box>
 
       <Heading size="small">Area Chart that Connects Nulls :- </Heading>
-      <Box width="500px" height="200px">
-        <ChartAreaWrapper data={data}>
-          <ChartXAxis dataKey="name" />
-          <ChartYAxis />
-          <ChartTooltip />
-          <ChartArea
-            type="monotone"
-            dataKey={dataKey}
-            name={name}
-            connectNulls
-            color="chart.background.categorical.emerald.moderate"
-            {...args}
-          />
-        </ChartAreaWrapper>
+      <Box width="1000px" height="500px">
+        <ChartsWrapper>
+          <ChartAreaWrapper data={data}>
+            <ChartXAxis dataKey="name" />
+            <ChartYAxis />
+            <ChartTooltip />
+            <ChartArea
+              type="monotone"
+              dataKey={dataKey}
+              name={name}
+              connectNulls
+              color="chart.background.categorical.emerald.moderate"
+              {...args}
+            />
+          </ChartAreaWrapper>
+        </ChartsWrapper>
       </Box>
     </Box>
   );
@@ -337,18 +363,20 @@ export const TinyAreaChart: StoryFn<typeof ChartArea> = ({
   ...args
 }) => {
   return (
-    <Box width="100px" height="50px">
-      <ChartAreaWrapper data={data}>
-        <ChartArea
-          dataKey={dataKey}
-          name={name}
-          type="monotone"
-          color="chart.background.categorical.azure.intense"
-          connectNulls
-          {...args}
-        />
-      </ChartAreaWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100px" height="50px">
+        <ChartAreaWrapper data={data}>
+          <ChartArea
+            dataKey={dataKey}
+            name={name}
+            type="monotone"
+            color="chart.background.categorical.azure.intense"
+            connectNulls
+            {...args}
+          />
+        </ChartAreaWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -359,22 +387,24 @@ export const AreaChartWithReferenceLine: StoryFn<typeof ChartArea> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="400px">
-      <ChartAreaWrapper data={chartData}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartArea
-          dataKey={dataKey}
-          name={name}
-          type="monotone"
-          color="chart.background.categorical.azure.moderate"
-          {...args}
-        />
-        <ChartReferenceLine y={3000} label="Target" />
-      </ChartAreaWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartAreaWrapper data={chartData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartArea
+            dataKey={dataKey}
+            name={name}
+            type="monotone"
+            color="chart.background.categorical.azure.moderate"
+            {...args}
+          />
+          <ChartReferenceLine y={3000} label="Target" />
+        </ChartAreaWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -384,22 +414,24 @@ export const AreaChartWithReferenceLineVertical: StoryFn<typeof ChartArea> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="400px">
-      <ChartAreaWrapper data={chartData}>
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartArea
-          dataKey={dataKey}
-          name={name}
-          type="monotone"
-          color="chart.background.categorical.azure.moderate"
-          {...args}
-        />
-        <ChartReferenceLine x="Apr" label="Target" />
-      </ChartAreaWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartAreaWrapper data={chartData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartArea
+            dataKey={dataKey}
+            name={name}
+            type="monotone"
+            color="chart.background.categorical.azure.moderate"
+            {...args}
+          />
+          <ChartReferenceLine x="Apr" label="Target" />
+        </ChartAreaWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -410,30 +442,34 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof ChartArea> = ({
   ...args
 }) => {
   return (
-    <Box width="100%" height="400px">
-      <ChartAreaWrapper data={chartData} colorTheme="categorical">
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartArea dataKey={dataKey} name={name} {...args} />
-      </ChartAreaWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartAreaWrapper data={chartData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartArea dataKey={dataKey} name={name} {...args} />
+        </ChartAreaWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
 export const MultipleAreaChartWithDefaultColorTheme: StoryFn<typeof ChartArea> = () => {
   return (
-    <Box width="100%" height="400px">
-      <ChartAreaWrapper data={chartData} colorTheme="categorical">
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartArea dataKey="teamA" name="value1" />
-        <ChartArea dataKey="teamB" name="value2" />
-      </ChartAreaWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartAreaWrapper data={chartData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartArea dataKey="teamA" name="value1" />
+          <ChartArea dataKey="teamB" name="value2" />
+        </ChartAreaWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 // Area Chart with Default Color Theme
@@ -443,21 +479,23 @@ export const AreaChartWithDefaultColorAndCustomColor: StoryFn<typeof ChartArea> 
   ...args
 }) => {
   return (
-    <Box width="100%" height="400px">
-      <ChartAreaWrapper data={chartData} colorTheme="categorical">
-        <ChartXAxis dataKey="month" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartArea dataKey={dataKey} name={name} {...args} />
-        <ChartArea
-          dataKey="teamB"
-          name="Team B"
-          color="chart.background.categorical.cider.strong"
-          {...args}
-        />
-      </ChartAreaWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartAreaWrapper data={chartData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartArea dataKey={dataKey} name={name} {...args} />
+          <ChartArea
+            dataKey="teamB"
+            name="Team B"
+            color="chart.background.categorical.cider.strong"
+            {...args}
+          />
+        </ChartAreaWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 

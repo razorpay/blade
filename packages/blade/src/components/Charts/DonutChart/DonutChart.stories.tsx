@@ -110,6 +110,23 @@ const chartData = [
   { name: 'Group E', value: 100 },
 ];
 
+const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  return (
+    <Box
+      width="100%"
+      height="100%"
+      backgroundColor="surface.background.gray.intense"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      padding="spacing.8"
+      borderRadius="medium"
+    >
+      {children}
+    </Box>
+  );
+};
+
 const chartsLargeData = [
   { name: 'Group A', value: 400 },
   { name: 'Group B', value: 300 },
@@ -135,13 +152,15 @@ export const BasicDonutChart: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, dataKey, nameKey, data, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper {...wrapperProps}>
-        <ChartDonut type={type} radius={radius} dataKey="value" nameKey="name" data={chartData} />
-        <ChartLegend />
-        <ChartTooltip />
-      </ChartDonutWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper {...wrapperProps}>
+          <ChartDonut type={type} radius={radius} dataKey="value" nameKey="name" data={chartData} />
+          <ChartLegend />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -151,25 +170,27 @@ export const DonutChartWithCenterText: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper
-        content={{ label: 'Total', value: '1300' }}
-        width="500px"
-        height="300px"
-        {...wrapperProps}
-      >
-        <ChartDonut
-          dataKey="value"
-          nameKey="name"
-          data={chartData}
-          radius={radius || 'medium'}
-          type={type}
-        />
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper
+          content={{ label: 'Total', value: '1300' }}
+          width="500px"
+          height="300px"
+          {...wrapperProps}
+        >
+          <ChartDonut
+            dataKey="value"
+            nameKey="name"
+            data={chartData}
+            radius={radius || 'medium'}
+            type={type}
+          />
 
-        <ChartLegend />
-        <ChartTooltip />
-      </ChartDonutWrapper>
-    </Box>
+          <ChartLegend />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -178,24 +199,26 @@ export const SmallRadiusDonutChart: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="500px" {...wrapperProps}>
-        <ChartDonut
-          dataKey="value"
-          nameKey="name"
-          data={chartData}
-          radius={radius || 'small'}
-          type={type}
-        >
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-        </ChartDonut>
-        <ChartTooltip />
-      </ChartDonutWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper width="500px" height="500px" {...wrapperProps}>
+          <ChartDonut
+            dataKey="value"
+            nameKey="name"
+            data={chartData}
+            radius={radius || 'small'}
+            type={type}
+          >
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+          </ChartDonut>
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -204,25 +227,27 @@ export const ExtraLargeRadiusDonutChart: StoryFn<typeof ChartDonut> = (args) => 
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="400px" {...wrapperProps}>
-        <ChartDonut
-          dataKey="value"
-          nameKey="name"
-          data={chartData}
-          radius={radius || 'large'}
-          type={type}
-        >
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-        </ChartDonut>
-        <ChartTooltip />
-        <ChartLegend />
-      </ChartDonutWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper width="500px" height="400px" {...wrapperProps}>
+          <ChartDonut
+            dataKey="value"
+            nameKey="name"
+            data={chartData}
+            radius={radius || 'large'}
+            type={type}
+          >
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+          </ChartDonut>
+          <ChartTooltip />
+          <ChartLegend />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -231,20 +256,22 @@ export const DonutChartWithColorTheme: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
-        <ChartDonut
-          dataKey="value"
-          nameKey="name"
-          data={chartData}
-          colorTheme="categorical"
-          radius={radius}
-          type={type}
-        />
-        <ChartTooltip />
-        <ChartLegend />
-      </ChartDonutWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
+          <ChartDonut
+            dataKey="value"
+            nameKey="name"
+            data={chartData}
+            colorTheme="categorical"
+            radius={radius}
+            type={type}
+          />
+          <ChartTooltip />
+          <ChartLegend />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -253,24 +280,26 @@ export const SemiCircleDonutChart: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
-        <ChartDonut
-          dataKey="value"
-          nameKey="name"
-          data={chartData}
-          radius={radius}
-          type={type || 'semicircle'}
-        >
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-        </ChartDonut>
-        <ChartTooltip />
-      </ChartDonutWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
+          <ChartDonut
+            dataKey="value"
+            nameKey="name"
+            data={chartData}
+            radius={radius}
+            type={type || 'semicircle'}
+          >
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+          </ChartDonut>
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -279,24 +308,31 @@ export const SemiCircleDonutChartWithCenterText: StoryFn<typeof ChartDonut> = (a
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper content={{ value: '1300' }} {...wrapperProps} width="500px" height="300px">
-        <ChartTooltip />
-        <ChartDonut
-          dataKey="value"
-          nameKey="name"
-          data={chartData}
-          radius={radius}
-          type={type || 'semicircle'}
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper
+          content={{ value: '1300' }}
+          {...wrapperProps}
+          width="500px"
+          height="300px"
         >
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-        </ChartDonut>
-      </ChartDonutWrapper>
-    </Box>
+          <ChartTooltip />
+          <ChartDonut
+            dataKey="value"
+            nameKey="name"
+            data={chartData}
+            radius={radius}
+            type={type || 'semicircle'}
+          >
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+          </ChartDonut>
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -305,15 +341,8 @@ export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      width="100%"
-      height="100%"
-      flexDirection="column"
-    >
-      <Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
         <ChartDonutWrapper
           width="500px"
           height="300px"
@@ -331,7 +360,7 @@ export const DonutChartWithAmount: StoryFn<typeof ChartDonut> = (args) => {
           <ChartTooltip />
         </ChartDonutWrapper>
       </Box>
-    </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -339,24 +368,26 @@ export const DonutChartWithVerticalLegend: StoryFn<typeof ChartDonut> = (args) =
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box>
-      <ChartDonutWrapper
-        width="500px"
-        height="300px"
-        content={<Amount value={200} size="2xlarge" type="heading" />}
-        {...wrapperProps}
-      >
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-        </ChartDonut>
-        <ChartLegend layout="vertical" align="right" />
-        <ChartTooltip />
-      </ChartDonutWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper
+          width="500px"
+          height="300px"
+          content={<Amount value={200} size="2xlarge" type="heading" />}
+          {...wrapperProps}
+        >
+          <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+          </ChartDonut>
+          <ChartLegend layout="vertical" align="right" />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -364,19 +395,26 @@ export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px" {...wrapperProps}>
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-          <ChartDonutCell color="chart.background.categorical.topaz.faint" />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-        </ChartDonut>
-        <ChartLegend />
-        <ChartTooltip />
-      </ChartDonutWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper
+          content={{ value: '1300' }}
+          width="500px"
+          height="300px"
+          {...wrapperProps}
+        >
+          <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
+            <ChartDonutCell color="chart.background.categorical.topaz.faint" />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+            <ChartDonutCell />
+          </ChartDonut>
+          <ChartLegend />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -384,19 +422,21 @@ export const DonutChartWithLargeData: StoryFn<typeof ChartDonut> = (args) => {
   const { type, radius, ...wrapperProps } = args;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
-      <ChartDonutWrapper width="500px" height="500px" {...wrapperProps}>
-        <ChartDonut
-          dataKey="value"
-          nameKey="name"
-          data={chartsLargeData}
-          type={type}
-          radius={radius}
-        />
-        <ChartLegend />
-        <ChartTooltip />
-      </ChartDonutWrapper>
-    </Box>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper width="500px" height="500px" {...wrapperProps}>
+          <ChartDonut
+            dataKey="value"
+            nameKey="name"
+            data={chartsLargeData}
+            type={type}
+            radius={radius}
+          />
+          <ChartLegend />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 

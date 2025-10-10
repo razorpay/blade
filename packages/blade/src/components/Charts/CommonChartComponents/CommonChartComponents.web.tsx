@@ -49,6 +49,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
         fontWeight: theme.typography.fonts.weight.regular,
         letterSpacing: theme.typography.letterSpacings[100],
       }}
+      tickLine={false}
       stroke={theme.colors.surface.border.gray.muted}
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
@@ -82,6 +83,7 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
         fontWeight: theme.typography.fonts.weight.regular,
         letterSpacing: theme.typography.letterSpacings[100],
       }}
+      tickLine={false}
       stroke={theme.colors.surface.border.gray.muted}
       label={{
         value: props?.label,
@@ -213,7 +215,7 @@ const LegendItem = ({
     (chartName === 'line' || chartName === 'area') && !dataColorMapping?.[entry.dataKey];
   const legendColor = getHighestColorInSequence({
     colorToken:
-      dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)] ||
+      dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)] ??
       'chart.background.categorical.azure.faint',
     followIntensityMapping: shouldFollowIntensityMapping,
   });

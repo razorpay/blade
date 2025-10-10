@@ -4,7 +4,7 @@ import {
   Area as RechartsArea,
   ResponsiveContainer,
 } from 'recharts';
-import { useChartsColorTheme } from '../utils';
+import { getHighestColorInSequence, useChartsColorTheme } from '../utils';
 import type { DataColorMapping } from '../CommonChartComponents';
 import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
@@ -82,7 +82,13 @@ const ChartColorGradient: React.FC<ChartColorGradientProps> = ({
     chartDataIndicators: totalAreaChartChildren,
   });
 
-  const colorToken = getIn(theme.colors, color ?? themeColors[index]);
+  const colorToken = getIn(
+    theme.colors,
+    getHighestColorInSequence({
+      colorToken: color ?? themeColors[index],
+      followIntensityMapping: true,
+    }),
+  );
   //TODO: add support for dark mode
   return (
     <linearGradient id={id} key={id} x1="0" y1="0" x2="0" y2="1">
