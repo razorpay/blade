@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.13.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
 ## 1.12.2
 
 ### Patch Changes
