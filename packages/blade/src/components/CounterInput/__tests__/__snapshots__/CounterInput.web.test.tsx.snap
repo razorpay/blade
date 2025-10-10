@@ -145,12 +145,12 @@ exports[`<CounterInput /> should render 1`] = `
   background-color: transparent !important;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .animate-slide-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-up {
   -webkit-animation: fmSSSd-450290765 0.3s ease-out;
   animation: fmSSSd-450290765 0.3s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .animate-slide-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-down {
   -webkit-animation: bHYPrA-450290765 0.3s ease-out;
   animation: bHYPrA-450290765 0.3s ease-out;
 }
@@ -165,7 +165,7 @@ exports[`<CounterInput /> should render 1`] = `
   -moz-appearance: textfield;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
+.c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__blade-progress-bar-track {
   background-color: transparent !important;
 }
 
@@ -603,7 +603,7 @@ exports[`<CounterInput /> should render 1`] = `
         >
           <button
             aria-label="Decrement value"
-            class="c10 decrement-button"
+            class="c10 __blade-counter-input-decrement-button"
             disabled=""
             style="color: rgba(108, 108, 108, 0.32);"
           >
@@ -674,7 +674,7 @@ exports[`<CounterInput /> should render 1`] = `
           </div>
           <button
             aria-label="Increment value"
-            class="c17 increment-button"
+            class="c17 __blade-counter-input-increment-button"
             style="color: rgb(64, 64, 64);"
           >
             <svg
@@ -845,12 +845,12 @@ exports[`<CounterInput /> should render large size 1`] = `
   background-color: transparent !important;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .animate-slide-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-up {
   -webkit-animation: fmSSSd-450290765 0.3s ease-out;
   animation: fmSSSd-450290765 0.3s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .animate-slide-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-down {
   -webkit-animation: bHYPrA-450290765 0.3s ease-out;
   animation: bHYPrA-450290765 0.3s ease-out;
 }
@@ -865,7 +865,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   -moz-appearance: textfield;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
+.c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__blade-progress-bar-track {
   background-color: transparent !important;
 }
 
@@ -1303,7 +1303,7 @@ exports[`<CounterInput /> should render large size 1`] = `
         >
           <button
             aria-label="Decrement value"
-            class="c10 decrement-button"
+            class="c10 __blade-counter-input-decrement-button"
             disabled=""
             style="color: rgba(108, 108, 108, 0.32);"
           >
@@ -1374,7 +1374,7 @@ exports[`<CounterInput /> should render large size 1`] = `
           </div>
           <button
             aria-label="Increment value"
-            class="c17 increment-button"
+            class="c17 __blade-counter-input-increment-button"
             style="color: rgb(64, 64, 64);"
           >
             <svg
@@ -1545,12 +1545,12 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   background-color: transparent !important;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .animate-slide-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-up {
   -webkit-animation: fmSSSd-450290765 0.3s ease-out;
   animation: fmSSSd-450290765 0.3s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .animate-slide-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-down {
   -webkit-animation: bHYPrA-450290765 0.3s ease-out;
   animation: bHYPrA-450290765 0.3s ease-out;
 }
@@ -1565,7 +1565,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -moz-appearance: textfield;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
+.c0.c0.c0.c0.c0.__blade-counter-input [data-blade-component='progress-bar'] .__blade-progress-bar-track {
   background-color: transparent !important;
 }
 
@@ -2003,7 +2003,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
         >
           <button
             aria-label="Decrement value"
-            class="c10 decrement-button"
+            class="c10 __blade-counter-input-decrement-button"
             disabled=""
             style="color: rgba(46, 46, 46, 0.32);"
           >
@@ -2074,7 +2074,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
           </div>
           <button
             aria-label="Increment value"
-            class="c17 increment-button"
+            class="c17 __blade-counter-input-increment-button"
             style="color: rgb(46, 46, 46);"
           >
             <svg

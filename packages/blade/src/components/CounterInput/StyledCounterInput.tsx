@@ -43,11 +43,11 @@ const StyledCounterInput = styled(BaseBox)`
   }
 
   /* Animation classes */
-  &.__blade-counter-input .animate-slide-up {
+  &.__blade-counter-input .__blade-counter-input-animate-slide-up {
     animation: ${slideUp} 0.3s ease-out;
   }
 
-  &.__blade-counter-input .animate-slide-down {
+  &.__blade-counter-input .__blade-counter-input-animate-slide-down {
     animation: ${slideDown} 0.3s ease-out;
   }
 
@@ -63,7 +63,7 @@ const StyledCounterInput = styled(BaseBox)`
   }
 
   /* Remove ProgressBar background */
-  &.__blade-counter-input [data-blade-component='progress-bar'] .__progress-bar {
+  &.__blade-counter-input [data-blade-component='progress-bar'] .__blade-progress-bar-track {
     background-color: transparent !important;
   }
 `;

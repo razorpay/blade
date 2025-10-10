@@ -278,7 +278,7 @@ const _ProgressBar = (
             />
           ) : (
             <BaseBox
-              className="__progress-bar"
+              className="__blade-progress-bar-track"
               backgroundColor={unfilledBackgroundColor}
               height={makeSize(progressBarHeight[size])}
               overflow="hidden"

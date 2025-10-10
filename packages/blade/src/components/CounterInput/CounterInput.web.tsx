@@ -121,6 +121,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
     // Track Tab navigation to show focus ring only on keyboard navigation (not mouse clicks)
     // Note: :focus-visible doesn't work for text inputs - shows ring on both Tab and click
+    // TODO: Re-evaluate and remove later once focus style is unified from design
     useEffect(() => {
       const container = containerRef.current;
       if (!container) return undefined;
@@ -152,7 +153,9 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       // 3. Not currently loading
       if (lastActionRef.current && !isLoading && internalValue !== previousValueRef.current) {
         const animationClass =
-          lastActionRef.current === 'increment' ? 'animate-slide-up' : 'animate-slide-down';
+          lastActionRef.current === 'increment'
+            ? '__blade-counter-input-animate-slide-up'
+            : '__blade-counter-input-animate-slide-down';
         setAnimationClass(animationClass);
         setTimeout(() => setAnimationClass(''), 300);
         lastActionRef.current = null;
@@ -255,7 +258,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
             >
               <BaseBox display="flex" alignItems="center" flexDirection="row">
                 <StyledCounterButton
-                  className="decrement-button"
+                  className="__blade-counter-input-decrement-button"
                   onClick={handleDecrement}
                   $padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
                   $margin={COUNTER_INPUT_TOKEN.decrementIconMargin}
@@ -298,7 +301,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 </BaseBox>
 
                 <StyledCounterButton
-                  className="increment-button"
+                  className="__blade-counter-input-increment-button"
                   onClick={handleIncrement}
                   $padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
                   $margin={COUNTER_INPUT_TOKEN.incrementIconMargin}
