@@ -124,8 +124,10 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
         const childColor = child?.props?.color;
-        const dataKey = child?.props?.dataKey;
-        dataColorMapping[dataKey] = childColor;
+        const dataKey = (child?.props as ChartAreaProps)?.dataKey;
+        if (dataKey && typeof dataKey === 'string') {
+          dataColorMapping[dataKey] = childColor;
+        }
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,

@@ -192,8 +192,10 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.chartBar) {
         const childColor = child?.props?.color;
-        const dataKey = child?.props?.dataKey;
-        dataColorMapping[dataKey] = childColor;
+        const dataKey = (child?.props as ChartBarProps)?.dataKey;
+        if (dataKey && typeof dataKey === 'string') {
+          dataColorMapping[dataKey] = childColor;
+        }
         return React.cloneElement(child, {
           _index: BarChartIndex++,
           _totalbars: totalBars,
