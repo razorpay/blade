@@ -7,7 +7,7 @@ import {
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
-import { getHighestColorInSequence } from '../utils';
+import { getHighestColorInSequence, isSequentialColor } from '../utils';
 import type {
   ChartReferenceLineProps,
   ChartXAxisProps,
@@ -43,7 +43,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
     <RechartsXAxis
       {...props}
       tick={{
-        fill: theme.colors.surface.text.gray.normal,
+        fill: theme.colors.surface.text.gray.muted,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
         fontWeight: theme.typography.fonts.weight.regular,
@@ -135,13 +135,17 @@ const CustomTooltip = ({
 
   const shouldFollowIntensityMapping =
     (chartName === 'line' || chartName === 'area') && !dataColorMapping?.[item.dataKey];
-  const toolTipColor = getHighestColorInSequence({
-    colorToken:
-      dataColorMapping?.[item.dataKey] ??
-      dataColorMapping?.[sanitizeString(item.name)] ??
-      'chart.background.categorical.azure.faint',
-    followIntensityMapping: shouldFollowIntensityMapping,
-  });
+  const toolTipColor = isSequentialColor(
+    dataColorMapping?.[item.dataKey] ?? dataColorMapping?.[sanitizeString(item.name)] ?? '',
+  )
+    ? dataColorMapping?.[item.dataKey] ?? dataColorMapping?.[sanitizeString(item.name)]
+    : getHighestColorInSequence({
+        colorToken:
+          dataColorMapping?.[item.dataKey] ??
+          dataColorMapping?.[sanitizeString(item.name)] ??
+          'chart.background.categorical.azure.faint',
+        followIntensityMapping: shouldFollowIntensityMapping,
+      });
   return (
     <Box
       display="flex"
@@ -155,6 +159,7 @@ const CustomTooltip = ({
           style={{
             width: theme.spacing[4],
             height: theme.spacing[4],
+            //@ts-expect-error
             backgroundColor: getIn(theme.colors, toolTipColor),
             borderRadius: theme.border.radius.small,
           }}
@@ -213,17 +218,22 @@ const LegendItem = ({
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
   const shouldFollowIntensityMapping =
     (chartName === 'line' || chartName === 'area') && !dataColorMapping?.[entry.dataKey];
-  const legendColor = getHighestColorInSequence({
-    colorToken:
-      dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)] ??
-      'chart.background.categorical.azure.faint',
-    followIntensityMapping: shouldFollowIntensityMapping,
-  });
+  const legendColor = isSequentialColor(
+    dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)] ?? '',
+  )
+    ? dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)]
+    : getHighestColorInSequence({
+        colorToken:
+          dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)] ??
+          'chart.background.categorical.azure.faint',
+        followIntensityMapping: shouldFollowIntensityMapping,
+      });
   return (
     <Box key={`item-${index}`} display="flex" alignItems="center">
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
+            //@ts-expect-error
             backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
             width: theme.spacing[4], // Size of the square
             height: theme.spacing[4], // Size of the square

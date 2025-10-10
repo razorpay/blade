@@ -440,6 +440,33 @@ export const DonutChartWithLargeData: StoryFn<typeof ChartDonut> = (args) => {
   );
 };
 
+export const DonutChartWithSequentialColors: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper
+          width="500px"
+          height="300px"
+          content={<Amount value={200} size="2xlarge" type="heading" />}
+          {...wrapperProps}
+        >
+          <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
+            <ChartDonutCell color="chart.background.sequential.azure.500" />
+            <ChartDonutCell color="chart.background.sequential.azure.400" />
+            <ChartDonutCell color="chart.background.sequential.azure.300" />
+            <ChartDonutCell color="chart.background.sequential.azure.200" />
+            <ChartDonutCell color="chart.background.sequential.azure.100" />
+          </ChartDonut>
+          <ChartLegend />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
 BasicDonutChart.storyName = 'Default Donut Chart';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
 SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';

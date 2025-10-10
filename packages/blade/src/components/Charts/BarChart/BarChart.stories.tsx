@@ -317,6 +317,43 @@ BarChartWithGrid.parameters = {
   controls: { disable: true },
 };
 
+export const BarChartWithSequentialColors: StoryFn<typeof ChartBar> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={chartData.slice(0, 6)}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar
+            dataKey="seriesA"
+            name="Series A"
+            color="chart.background.sequential.azure.500"
+            stackId={1}
+          />
+          <ChartBar
+            dataKey="seriesB"
+            name="Series B"
+            color="chart.background.sequential.azure.200"
+            stackId={1}
+          />
+          <ChartBar
+            dataKey="seriesC"
+            name="Series C"
+            color="chart.background.sequential.azure.100"
+            stackId={1}
+          />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+BarChartWithSequentialColors.parameters = {
+  controls: { disable: true },
+};
+
 DefaultChart.storyName = 'Default Bar Chart';
 TinyBarChart.storyName = 'Tiny Bar Chart';
 SimpleBarChart.storyName = 'Simple Bar Chart';
@@ -324,3 +361,4 @@ StackedBarChart.storyName = 'Stacked Bar Chart';
 VerticalBarChart.storyName = 'Vertical Bar Chart';
 BarChartWithDefaultColorTheme.storyName = 'Bar Chart With Default Color Theme';
 BarChartWithGrid.storyName = 'Bar Chart With Grid';
+BarChartWithSequentialColors.storyName = 'Bar Chart with sequential colors';
