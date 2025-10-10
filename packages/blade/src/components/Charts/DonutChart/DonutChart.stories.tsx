@@ -367,7 +367,7 @@ export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = (args) => {
     <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%">
       <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px" {...wrapperProps}>
         <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-          <ChartDonutCell color="chart.background.categorical.topaz.strong" />
+          <ChartDonutCell color="chart.background.categorical.topaz.faint" />
           <ChartDonutCell />
           <ChartDonutCell />
           <ChartDonutCell />
