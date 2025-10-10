@@ -155,13 +155,19 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           if (Array.isArray(children)) {
             children.forEach((child, index) => {
               if (getComponentId(child) === componentId.cell) {
-                dataColorMapping[sanitizeString(data[index].name)] = child.props.color;
+                dataColorMapping[sanitizeString(data[index].name)] = {
+                  colorToken: child.props.color,
+                  isCustomColor: Boolean(child.props.color),
+                };
               }
             });
           } else {
             // eslint-disable-next-line array-callback-return
             data.map((item: { name: string }, index: number) => {
-              dataColorMapping[sanitizeString(item.name)] = themeColors[index];
+              dataColorMapping[sanitizeString(item.name)] = {
+                colorToken: themeColors[index],
+                isCustomColor: false,
+              };
             });
           }
         }
@@ -170,14 +176,20 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
     if (
       Object.keys(dataColorMapping).length === 1 &&
       /* check if dataColor mapping has only one key and if it does, we need to add the default color to the dataColorMapping if no color is provided. */
-      !dataColorMapping[Object.keys(dataColorMapping)[0]]
+      !dataColorMapping[Object.keys(dataColorMapping)[0]]?.colorToken
     ) {
-      dataColorMapping[Object.keys(dataColorMapping)[0]] = DEFAULT_COLOR;
+      dataColorMapping[Object.keys(dataColorMapping)[0]] = {
+        colorToken: DEFAULT_COLOR,
+        isCustomColor: false,
+      };
     }
     /* assigne theme colors to the dataColorMapping , if  no color is assigned. */
     Object.keys(dataColorMapping).forEach((key) => {
-      if (!dataColorMapping[key]) {
-        dataColorMapping[key] = themeColors[Object.keys(dataColorMapping).indexOf(key)];
+      if (!dataColorMapping[key]?.colorToken) {
+        dataColorMapping[key] = {
+          colorToken: themeColors[Object.keys(dataColorMapping).indexOf(key)],
+          isCustomColor: false,
+        };
       }
     });
 

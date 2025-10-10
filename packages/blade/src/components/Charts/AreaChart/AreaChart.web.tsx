@@ -40,7 +40,10 @@ const Area: React.FC<ChartAreaProps> = ({
     chartName: 'area',
     chartDataIndicators: _totalAreas,
   });
-  const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
+  const colorToken = getIn(
+    theme.colors,
+    color ? getHighestColorInSequence({ colorToken: color }) : themeColors[_index ?? 0],
+  );
   const animationBegin = theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
@@ -126,7 +129,10 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         const childColor = child?.props?.color;
         const dataKey = (child?.props as ChartAreaProps)?.dataKey;
         if (dataKey && typeof dataKey === 'string') {
-          dataColorMapping[dataKey] = childColor;
+          dataColorMapping[dataKey] = {
+            colorToken: childColor,
+            isCustomColor: Boolean(childColor),
+          };
         }
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
@@ -139,19 +145,24 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     /* check if dataColor mapping has only one key and if it does, we need to add the default color to the dataColorMapping if no color is provided. */
     if (
       Object.keys(dataColorMapping).length === 1 &&
-      !dataColorMapping[Object.keys(dataColorMapping)[0]]
+      !dataColorMapping[Object.keys(dataColorMapping)[0]]?.colorToken
     ) {
-      dataColorMapping[Object.keys(dataColorMapping)[0]] = DEFAULT_COLOR;
+      dataColorMapping[Object.keys(dataColorMapping)[0]] = {
+        colorToken: DEFAULT_COLOR,
+        isCustomColor: false,
+      };
     }
     /* assigne theme colors to the dataColorMapping , if  no color is assigned. */
     Object.keys(dataColorMapping).forEach((key) => {
-      if (!dataColorMapping[key]) {
-        dataColorMapping[key] = themeColors[Object.keys(dataColorMapping).indexOf(key)];
+      if (!dataColorMapping[key]?.colorToken) {
+        dataColorMapping[key] = {
+          colorToken: themeColors[Object.keys(dataColorMapping).indexOf(key)],
+          isCustomColor: false,
+        };
       }
     });
     return {
       modifiedChildren,
-      // AreaChartGraidentGradientData,
       totalAreaChartChildren: AreaChartIndex,
       dataColorMapping,
     };
@@ -174,7 +185,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                   key={`color-${index}-${dataKey}`}
                   id={`color-${index}-${dataKey}`}
                   index={index}
-                  color={dataColorMapping[dataKey]}
+                  color={dataColorMapping[dataKey].colorToken}
                   totalAreaChartChildren={totalAreaChartChildren}
                 />
               ))}

@@ -194,7 +194,10 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         const childColor = child?.props?.color;
         const dataKey = (child?.props as ChartBarProps)?.dataKey;
         if (dataKey && typeof dataKey === 'string') {
-          dataColorMapping[dataKey] = childColor;
+          dataColorMapping[dataKey] = {
+            colorToken: childColor,
+            isCustomColor: Boolean(childColor),
+          };
         }
         return React.cloneElement(child, {
           _index: BarChartIndex++,
@@ -206,14 +209,20 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     /* check if dataColor mapping has only one key and if it does, we need to add the default color to the dataColorMapping if no color is provided. */
     if (
       Object.keys(dataColorMapping).length === 1 &&
-      !dataColorMapping[Object.keys(dataColorMapping)[0]]
+      !dataColorMapping[Object.keys(dataColorMapping)[0]]?.colorToken
     ) {
-      dataColorMapping[Object.keys(dataColorMapping)[0]] = DEFAULT_COLOR;
+      dataColorMapping[Object.keys(dataColorMapping)[0]] = {
+        colorToken: DEFAULT_COLOR,
+        isCustomColor: false,
+      };
     }
     /* assigne theme colors to the dataColorMapping , if  no color is assigned. */
     Object.keys(dataColorMapping).forEach((key) => {
-      if (!dataColorMapping[key]) {
-        dataColorMapping[key] = themeColors[Object.keys(dataColorMapping).indexOf(key)];
+      if (!dataColorMapping[key]?.colorToken) {
+        dataColorMapping[key] = {
+          colorToken: themeColors[Object.keys(dataColorMapping).indexOf(key)],
+          isCustomColor: false,
+        };
       }
     });
 

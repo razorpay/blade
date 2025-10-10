@@ -36,6 +36,43 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
 import { sanitizeString } from '~utils';
 
+/**
+ * Helper function to get the appropriate color for chart elements (tooltip, legend)
+ * @param dataKey - The data key for the chart element
+ * @param name - The name/value of the chart element
+ * @param dataColorMapping - Color mapping object
+ * @param chartName - Type of chart (line, area, etc.)
+ * @returns The resolved color token
+ */
+const getChartColor = (
+  dataKey: string | undefined,
+  name: string | undefined,
+  dataColorMapping: Record<string, { colorToken: string; isCustomColor: boolean }> | undefined,
+  chartName: string | undefined,
+): string => {
+  console.log({
+    dataKey,
+    name,
+    dataColorMapping,
+    chartName,
+  });
+  const colorKey = chartName === 'donut' ? sanitizeString(name ?? '') : dataKey;
+  const mappedColorData = dataColorMapping?.[colorKey];
+  const mappedColor = mappedColorData?.colorToken;
+  const isCustomColor = mappedColorData?.isCustomColor ?? false;
+
+  if ((chartName === 'line' || chartName === 'area') && !isCustomColor) {
+    return mappedColor ?? '';
+  }
+
+  return isSequentialColor(mappedColor ?? '')
+    ? mappedColor ?? 'chart.background.categorical.azure.faint'
+    : getHighestColorInSequence({
+        colorToken: mappedColor ?? 'chart.background.categorical.azure.faint',
+        followIntensityMapping: chartName === 'donut' && isCustomColor,
+      });
+};
+
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
 
@@ -133,19 +170,7 @@ const CustomTooltip = ({
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
 
-  const shouldFollowIntensityMapping =
-    (chartName === 'line' || chartName === 'area') && !dataColorMapping?.[item.dataKey];
-  const toolTipColor = isSequentialColor(
-    dataColorMapping?.[item.dataKey] ?? dataColorMapping?.[sanitizeString(item.name)] ?? '',
-  )
-    ? dataColorMapping?.[item.dataKey] ?? dataColorMapping?.[sanitizeString(item.name)]
-    : getHighestColorInSequence({
-        colorToken:
-          dataColorMapping?.[item.dataKey] ??
-          dataColorMapping?.[sanitizeString(item.name)] ??
-          'chart.background.categorical.azure.faint',
-        followIntensityMapping: shouldFollowIntensityMapping,
-      });
+  const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping, chartName);
   return (
     <Box
       display="flex"
@@ -216,18 +241,8 @@ const LegendItem = ({
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
-  const shouldFollowIntensityMapping =
-    (chartName === 'line' || chartName === 'area') && !dataColorMapping?.[entry.dataKey];
-  const legendColor = isSequentialColor(
-    dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)] ?? '',
-  )
-    ? dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)]
-    : getHighestColorInSequence({
-        colorToken:
-          dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)] ??
-          'chart.background.categorical.azure.faint',
-        followIntensityMapping: shouldFollowIntensityMapping,
-      });
+
+  const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping, chartName);
   return (
     <Box key={`item-${index}`} display="flex" alignItems="center">
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">

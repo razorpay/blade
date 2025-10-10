@@ -136,14 +136,14 @@ const chartsLargeData = [
   { name: 'Group F', value: 100 },
   { name: 'Group G', value: 100 },
   { name: 'Group H', value: 100 },
-  { name: 'Group I', value: 100 },
-  { name: 'Group J', value: 100 },
-  { name: 'Group K', value: 100 },
-  { name: 'Group L', value: 100 },
-  { name: 'Group M', value: 100 },
-  { name: 'Group N', value: 100 },
-  { name: 'Group O', value: 100 },
-  { name: 'Group P', value: 100 },
+  // { name: 'Group I', value: 100 },
+  // { name: 'Group J', value: 100 },
+  // { name: 'Group K', value: 100 },
+  // { name: 'Group L', value: 100 },
+  // { name: 'Group M', value: 100 },
+  // { name: 'Group N', value: 100 },
+  // { name: 'Group O', value: 100 },
+  // { name: 'Group P', value: 100 },
 ];
 
 // 1. Basic Donut Chart

@@ -266,6 +266,7 @@ export const SimpleAreaChart: StoryFn<typeof ChartArea> = ({
             color="chart.background.categorical.azure.intense"
             {...args}
           />
+          <ChartLegend />
         </ChartAreaWrapper>
       </Box>
     </ChartsWrapper>

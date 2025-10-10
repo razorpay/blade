@@ -427,7 +427,7 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
             strokeStyle="dashed"
             connectNulls={true}
             showLegend={false}
-            color="chart.background.categorical.orchid.moderate"
+            color="chart.background.categorical.azure.moderate"
           />
         </ChartLineWrapper>
       </Box>
