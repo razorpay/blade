@@ -148,7 +148,9 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
     if (Array.isArray(children)) {
       children.forEach((child) => {
         if (getComponentId(child) === componentId.chartDonut) {
+          //@ts-expect-error
           const data = child.props.data;
+          //@ts-expect-error
           const children = child.props.children;
           if (Array.isArray(children)) {
             children.forEach((child, index) => {
@@ -157,6 +159,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               }
             });
           } else {
+            // eslint-disable-next-line array-callback-return
             data.map((item: { name: string }, index: number) => {
               dataColorMapping[sanitizeString(item.name)] = themeColors[index];
             });
