@@ -215,7 +215,7 @@ const ExploreItem = ({
   );
 };
 
-const DashboardBackground = styled(BaseBox)(() => {
+const DashboardBackground = styled.div(() => {
   return {
     height: '100vh',
     background: 'hsla(210,40%,98%,1)',
