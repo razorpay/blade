@@ -96,13 +96,8 @@ const DrawerBody = assignWithoutSideEffects(_DrawerBody, {
 const _DrawerFooter = ({
   children,
   showDivider = true,
-  showFooter = true,
   ...rest
 }: DrawerFooterProps): React.ReactElement => {
-  if (!showFooter) {
-    return <></>;
-  }
-
   return (
     <Box position="sticky" {...makeAnalyticsAttribute(rest)}>
       <BaseFooter showDivider={showDivider}>{children}</BaseFooter>
@@ -114,11 +109,13 @@ const _DrawerFooter = ({
  * #### Usage
  *
  * ```jsx
- * <DrawerFooter showFooter={showFooter}>
- *   <Button variant="primary" isFullWidth>
- *     Continue
- *   </Button>
- * </DrawerFooter>
+ * {showFooter && (
+ *   <DrawerFooter>
+ *     <Button variant="primary" isFullWidth>
+ *       Continue
+ *     </Button>
+ *   </DrawerFooter>
+ * )}
  * ```
  *
  */

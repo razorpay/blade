@@ -120,11 +120,6 @@ type DrawerFooterProps = {
    * @default true
    */
   showDivider?: boolean;
-  /**
-   * Whether the footer is visible
-   * @default true
-   */
-  showFooter?: boolean;
 } & DataAnalyticsAttribute;
 
 export type { DrawerProps, DrawerHeaderProps, DrawerFooterProps };

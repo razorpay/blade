@@ -1163,22 +1163,24 @@ const DetailedViewWithQRCodeAndFooterTemplate: StoryFn<typeof Drawer> = ({ ...ar
           </Box>
         </DrawerBody>
 
-        <DrawerFooter showFooter={isFooterVisible}>
-          <Box display="flex" gap="spacing.5">
-            <Button
-              variant="tertiary"
-              icon={CloseIcon}
-              iconPosition="left"
-              isFullWidth
-              onClick={() => setIsDrawerOpen(false)}
-            >
-              Cancel
-            </Button>
-            <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
-              Continue
-            </Button>
-          </Box>
-        </DrawerFooter>
+        {isFooterVisible && (
+          <DrawerFooter>
+            <Box display="flex" gap="spacing.5">
+              <Button
+                variant="tertiary"
+                icon={CloseIcon}
+                iconPosition="left"
+                isFullWidth
+                onClick={() => setIsDrawerOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
+                Continue
+              </Button>
+            </Box>
+          </DrawerFooter>
+        )}
       </Drawer>
 
       <Drawer

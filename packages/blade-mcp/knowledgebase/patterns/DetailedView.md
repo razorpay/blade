@@ -670,22 +670,24 @@ const SettlementDetailedView = () => {
           </KeyValueGrid>
         </DrawerBody>
 
-        <DrawerFooter showFooter={showFooter}>
-          <Box display="flex" gap="spacing.5">
-            <Button
-              variant="tertiary"
-              icon={CloseIcon}
-              iconPosition="left"
-              isFullWidth
-              onClick={() => setIsDrawerOpen(false)}
-            >
-              Cancel
-            </Button>
-            <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
-              Process Settlement
-            </Button>
-          </Box>
-        </DrawerFooter>
+        {showFooter && (
+          <DrawerFooter>
+            <Box display="flex" gap="spacing.5">
+              <Button
+                variant="tertiary"
+                icon={CloseIcon}
+                iconPosition="left"
+                isFullWidth
+                onClick={() => setIsDrawerOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
+                Process Settlement
+              </Button>
+            </Box>
+          </DrawerFooter>
+        )}
       </Drawer>
     </Box>
   );

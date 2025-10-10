@@ -147,12 +147,6 @@ type DrawerFooterProps = {
    * @default true
    */
   showDivider?: boolean;
-
-  /**
-   * Whether the footer is visible
-   * @default true
-   */
-  showFooter?: boolean;
 } & DataAnalyticsAttribute;
 ```
 
@@ -241,21 +235,23 @@ const BasicDrawer = () => {
           </Box>
         </DrawerBody>
 
-        <DrawerFooter showFooter={showFooter}>
-          <Box display="flex" gap="spacing.3">
-            <Button
-              variant="tertiary"
-              isFullWidth
-              onClick={handleCloseDrawer}
-              accessibilityLabel="Cancel and close drawer"
-            >
-              Cancel
-            </Button>
-            <Button variant="primary" isFullWidth accessibilityLabel="Process payment for vendor">
-              Process Payment
-            </Button>
-          </Box>
-        </DrawerFooter>
+        {showFooter && (
+          <DrawerFooter>
+            <Box display="flex" gap="spacing.3">
+              <Button
+                variant="tertiary"
+                isFullWidth
+                onClick={handleCloseDrawer}
+                accessibilityLabel="Cancel and close drawer"
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" isFullWidth accessibilityLabel="Process payment for vendor">
+                Process Payment
+              </Button>
+            </Box>
+          </DrawerFooter>
+        )}
       </Drawer>
     </Box>
   );

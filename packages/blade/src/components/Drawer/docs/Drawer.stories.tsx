@@ -564,16 +564,18 @@ export const WithFooter = (args: DrawerProps): React.ReactElement => {
           </Box>
         </DrawerBody>
 
-        <DrawerFooter showFooter={showFooter}>
-          <Box display="flex" gap="spacing.5">
-            <Button variant="tertiary" isFullWidth onClick={() => setIsDrawerOpen(false)}>
-              Cancel Setup
-            </Button>
-            <Button variant="primary" isFullWidth>
-              Complete Setup
-            </Button>
-          </Box>
-        </DrawerFooter>
+        {showFooter && (
+          <DrawerFooter>
+            <Box display="flex" gap="spacing.5">
+              <Button variant="tertiary" isFullWidth onClick={() => setIsDrawerOpen(false)}>
+                Cancel Setup
+              </Button>
+              <Button variant="primary" isFullWidth>
+                Complete Setup
+              </Button>
+            </Box>
+          </DrawerFooter>
+        )}
       </Drawer>
     </Box>
   );

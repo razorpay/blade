@@ -166,7 +166,8 @@ describe('Drawer', () => {
       expect(getByText('Footer Button')).toBeInTheDocument();
     });
 
-    it('hides footer when showFooter is false', () => {
+    it('hides footer when conditionally rendered', () => {
+      const showFooter = false;
       const { queryByText } = renderWithTheme(
         <Drawer isOpen={true} onDismiss={() => {}}>
           <DrawerHeader>
@@ -175,9 +176,11 @@ describe('Drawer', () => {
           <DrawerBody>
             <Text>Custom Content</Text>
           </DrawerBody>
-          <DrawerFooter showFooter={false}>
-            <Button>Footer Button</Button>
-          </DrawerFooter>
+          {showFooter && (
+            <DrawerFooter>
+              <Button>Footer Button</Button>
+            </DrawerFooter>
+          )}
         </Drawer>,
       );
 
