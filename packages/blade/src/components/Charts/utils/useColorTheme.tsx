@@ -43,16 +43,16 @@ const useChartsColorTheme = ({
     return ['chart.background.categorical.gray.moderate'];
   }
 
-  // Color sequence: azure, emerald, crimson, cider, sapphire, orchid, magenta, topaz, gray
+  // Color sequence
   const colorSequence: ColorName[] = [
     'azure',
     'emerald',
-    'crimson',
-    'cider',
-    'sapphire',
-    'orchid',
-    'magenta',
     'topaz',
+    'orchid',
+    'cider',
+    'magenta',
+    'sapphire',
+    'crimson',
     'gray',
   ];
 
