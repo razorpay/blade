@@ -109,13 +109,11 @@ const _DrawerFooter = ({
  * #### Usage
  *
  * ```jsx
- * {showFooter && (
- *   <DrawerFooter>
- *     <Button variant="primary" isFullWidth>
- *       Continue
- *     </Button>
- *   </DrawerFooter>
- * )}
+ * <DrawerFooter>
+ *   <Button variant="primary" isFullWidth>
+ *     Continue
+ *   </Button>
+ * </DrawerFooter>
  * ```
  *
  */
