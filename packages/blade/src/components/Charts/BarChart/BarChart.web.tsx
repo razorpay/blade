@@ -6,6 +6,8 @@ import {
 } from 'recharts';
 import { useMotionValue, useMotionValueEvent } from 'framer-motion';
 import { useChartsColorTheme, getHighestColorInSequence } from '../utils';
+import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
+import type { DataColorMapping } from '../CommonChartComponents';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
 import {
@@ -59,7 +61,6 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   const fill = getIn(theme.colors, color ?? defaultColorArray[_index]);
   const strokeFill = getIn(
     theme.colors,
-    //@ts-expect-error
     getHighestColorInSequence({
       colorToken: color ?? defaultColorArray[_index],
       followIntensityMapping: Boolean(color),
@@ -86,8 +87,6 @@ const _ChartBar: React.FC<ChartBarProps> = ({
 
     return () => clearTimeout(timer);
   }, [totalAnimationTime, animationValue]);
-
-  console.log('animationsComplete', animationsComplete);
 
   return (
     <RechartsBar
@@ -174,8 +173,14 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
-  const { barChartModifiedChildrens, totalBars } = React.useMemo(() => {
+  const themeColors = useChartsColorTheme({
+    colorTheme,
+    chartName: 'bar',
+  });
+
+  const { barChartModifiedChildrens, totalBars, dataColorMapping } = React.useMemo(() => {
     const childrenArray = React.Children.toArray(children);
+    const dataColorMapping: DataColorMapping = {};
 
     // Count ChartBar components
     const totalBars = childrenArray.filter(
@@ -186,6 +191,9 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     let BarChartIndex = 0;
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.chartBar) {
+        const childColor = child?.props?.color;
+        const dataKey = child?.props?.dataKey;
+        dataColorMapping[dataKey] = childColor;
         return React.cloneElement(child, {
           _index: BarChartIndex++,
           _totalbars: totalBars,
@@ -193,45 +201,61 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       }
       return child;
     });
+    /* check if dataColor mapping has only one key and if it does, we need to add the default color to the dataColorMapping if no color is provided. */
+    if (
+      Object.keys(dataColorMapping).length === 1 &&
+      !dataColorMapping[Object.keys(dataColorMapping)[0]]
+    ) {
+      dataColorMapping[Object.keys(dataColorMapping)[0]] = DEFAULT_COLOR;
+    }
+    /* assigne theme colors to the dataColorMapping , if  no color is assigned. */
+    Object.keys(dataColorMapping).forEach((key) => {
+      if (!dataColorMapping[key]) {
+        dataColorMapping[key] = themeColors[Object.keys(dataColorMapping).indexOf(key)];
+      }
+    });
 
     return {
       barChartModifiedChildrens: modifiedChildren,
       totalBars,
+      dataColorMapping,
     };
-  }, [children]);
+  }, [children, themeColors]);
 
   return (
-    <BaseBox
-      {...metaAttribute({ name: 'bar-chart', testID })}
-      {...makeAnalyticsAttribute(restProps)}
-      width="100%"
-      height="100%"
-      {...restProps}
-    >
-      <BarChartContext.Provider
-        value={{
-          layout,
-          activeIndex,
-          colorTheme,
-          totalBars,
-        }}
+    <CommonChartComponentsContext.Provider value={{ chartName: 'bar', dataColorMapping }}>
+      <BaseBox
+        {...metaAttribute({ name: 'bar-chart', testID })}
+        {...makeAnalyticsAttribute(restProps)}
+        width="100%"
+        height="100%"
+        {...restProps}
       >
-        <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsBarChart
-            barSize={BAR_SIZE}
-            barGap={DISTANCE_BETWEEN_BARS}
-            barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
-            onMouseMove={(state) => {
-              setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
-            }}
-            layout={layout}
-            data={data}
-          >
-            {barChartModifiedChildrens}
-          </RechartsBarChart>
-        </RechartsResponsiveContainer>
-      </BarChartContext.Provider>
-    </BaseBox>
+        <BarChartContext.Provider
+          value={{
+            layout,
+            activeIndex,
+            colorTheme,
+            totalBars,
+          }}
+        >
+          <RechartsResponsiveContainer width="100%" height="100%">
+            <RechartsBarChart
+              barSize={BAR_SIZE}
+              barGap={DISTANCE_BETWEEN_BARS}
+              barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
+              onMouseMove={(state) => {
+                setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
+              }}
+              layout={layout}
+              data={data}
+            >
+              {barChartModifiedChildrens}
+            </RechartsBarChart>
+          </RechartsResponsiveContainer>
+        </BarChartContext.Provider>
+      </BaseBox>
+    </CommonChartComponentsContext.Provider>
   );
 };
 

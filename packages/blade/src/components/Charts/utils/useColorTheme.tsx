@@ -137,12 +137,12 @@ export const getHighestColorInSequence = ({
 }: {
   colorToken: ChartColorToken;
   followIntensityMapping?: boolean;
-}): string => {
+}): ChartColorToken => {
   // Check if it's a sequential color token
   const sequentialMatch = colorToken.match(/^chart\.background\.sequential\.([^.]+)\.(\d+)$/);
   if (sequentialMatch) {
     const [, colorName] = sequentialMatch;
-    return `chart.background.sequential.${colorName}.1000` as const;
+    return `chart.background.sequential.${colorName}.1000` as ChartColorToken;
   }
 
   // Check if it's a categorical color token
@@ -161,10 +161,10 @@ export const getHighestColorInSequence = ({
       };
 
       const mappedIntensity = intensityMapping[intensity] || intensity;
-      return `chart.background.categorical.${colorName}.${mappedIntensity}` as const;
+      return `chart.background.categorical.${colorName}.${mappedIntensity}` as ChartColorToken;
     } else {
       // Default behavior: always return strong
-      return `chart.background.categorical.${colorName}.strong` as const;
+      return `chart.background.categorical.${colorName}.strong` as ChartColorToken;
     }
   }
 

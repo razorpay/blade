@@ -402,7 +402,7 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
           strokeStyle="dashed"
           connectNulls={true}
           showLegend={false}
-          color="chart.background.categorical.azure.moderate"
+          color="chart.background.categorical.orchid.moderate"
         />
       </ChartLineWrapper>
     </Box>
@@ -565,7 +565,7 @@ export const LineChartWithSwitchableTimePeriods: StoryFn<typeof ChartLine> = () 
           <ChartLine
             dataKey="expenses"
             name="Expenses"
-            color="chart.background.categorical.azure.strong"
+            color="chart.background.categorical.crimson.moderate"
           />
         </ChartLineWrapper>
       </Box>
@@ -595,6 +595,9 @@ export const LineChartWithManyLines: StoryFn<typeof ChartLine> = () => {
         <ChartLine dataKey="middleEast" name="Middle East" />
         <ChartLine dataKey="centralAsia" name="Central Asia" />
         <ChartLine dataKey="eastAsia" name="East Asia" />
+        <ChartLine dataKey="southEastAsia" name="South East Asia" />
+        <ChartLine dataKey="caribbean" name="Caribbean" />
+        <ChartLine dataKey="scandinavia" name="Scandinavia" />
       </ChartLineWrapper>
     </Box>
   );

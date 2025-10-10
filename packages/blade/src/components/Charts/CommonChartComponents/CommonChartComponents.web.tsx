@@ -7,6 +7,7 @@ import {
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
+import { getHighestColorInSequence } from '../utils';
 import type {
   ChartReferenceLineProps,
   ChartXAxisProps,
@@ -27,10 +28,13 @@ import {
   componentId,
 } from './tokens';
 import { calculateTextWidth } from './utils';
+import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import getIn from '~utils/lodashButBetter/get';
+import { sanitizeString } from '~utils';
 
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -111,9 +115,58 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
   );
 };
 
+const CustomTooltip = ({
+  item,
+  key,
+}: {
+  item: {
+    name: string;
+    value: string;
+    color: string;
+    dataKey: string;
+    payload: { fill: string };
+  };
+  key: string;
+}): JSX.Element => {
+  const { theme } = useTheme();
+  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
+
+  const shouldFollowIntensityMapping =
+    (chartName === 'line' || chartName === 'area') && !dataColorMapping?.[item.dataKey];
+  const toolTipColor = getHighestColorInSequence({
+    colorToken: dataColorMapping?.[item.dataKey] || 'chart.background.categorical.azure.faint',
+    followIntensityMapping: shouldFollowIntensityMapping,
+  });
+  return (
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+      gap="spacing.4"
+      key={key}
+    >
+      <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
+        <div
+          style={{
+            width: theme.spacing[4],
+            height: theme.spacing[4],
+            backgroundColor: getIn(theme.colors, toolTipColor),
+            borderRadius: theme.border.radius.small,
+          }}
+        />
+        <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+          {item.name}
+        </Text>
+      </Box>
+      <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+        {item.value}
+      </Text>
+    </Box>
+  );
+};
+
 const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   const { theme } = useTheme();
-
   return (
     <RechartsTooltip
       content={({ payload, label }) => {
@@ -132,30 +185,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
             </Heading>
             <Box paddingTop={label ? 'spacing.4' : undefined}>
               {filteredPayLoad.map((item) => (
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  gap="spacing.4"
-                  key={item.name}
-                >
-                  <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
-                    <div
-                      style={{
-                        width: theme.spacing[4],
-                        height: theme.spacing[4],
-                        backgroundColor: item.color || item.payload.fill,
-                        borderRadius: theme.border.radius.small,
-                      }}
-                    />
-                    <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-                      {item.name}
-                    </Text>
-                  </Box>
-                  <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-                    {item.value}
-                  </Text>
-                </Box>
+                <CustomTooltip item={item} key={item.name} />
               ))}
             </Box>
           </div>
@@ -164,6 +194,45 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
       cursor={{ fill: 'transparent', stroke: 'transparent' }}
       {...props}
     />
+  );
+};
+
+const LegendItem = ({
+  entry,
+  index,
+}: {
+  entry: { color: string; value: string; dataKey: string };
+  index: number;
+}): JSX.Element => {
+  console.log('entry', entry);
+  const { theme } = useTheme();
+  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
+  const shouldFollowIntensityMapping =
+    (chartName === 'line' || chartName === 'area') && !dataColorMapping?.[entry.dataKey];
+  const legendColor = getHighestColorInSequence({
+    colorToken:
+      dataColorMapping?.[entry.dataKey ?? sanitizeString(entry.value)] ||
+      'chart.background.categorical.azure.faint',
+    followIntensityMapping: shouldFollowIntensityMapping,
+  });
+  return (
+    <Box key={`item-${index}`} display="flex" alignItems="center">
+      <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
+        <span
+          style={{
+            backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
+            width: theme.spacing[4], // Size of the square
+            height: theme.spacing[4], // Size of the square
+            display: 'inline-block',
+            borderRadius: theme.border.radius.small,
+          }}
+        />
+        {/* Legend text with custom color and size */}
+        <Text size="medium" color="surface.text.gray.muted">
+          {entry.value}
+        </Text>
+      </Box>
+    </Box>
   );
 };
 
@@ -176,11 +245,11 @@ const CustomSquareLegend = (props: {
     value: string;
     color: string;
     type: 'none' | 'line';
+    dataKey: string;
   }>;
   layout: Layout;
 }): JSX.Element | null => {
   const { payload, layout } = props;
-  const { theme } = useTheme();
 
   if (!payload || payload.length === 0) {
     return null;
@@ -206,23 +275,7 @@ const CustomSquareLegend = (props: {
       flexWrap="wrap"
     >
       {filteredPayload.map((entry, index) => (
-        <Box key={`item-${index}`} display="flex" alignItems="center">
-          <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
-            <span
-              style={{
-                backgroundColor: entry.color, // Uses the color of the line/bar
-                width: theme.spacing[4], // Size of the square
-                height: theme.spacing[4], // Size of the square
-                display: 'inline-block',
-                borderRadius: theme.border.radius.small,
-              }}
-            />
-            {/* Legend text with custom color and size */}
-            <Text size="medium" color="surface.text.gray.muted">
-              {entry.value}
-            </Text>
-          </Box>
-        </Box>
+        <LegendItem entry={entry} index={index} key={`item-${index}`} />
       ))}
     </Box>
   );

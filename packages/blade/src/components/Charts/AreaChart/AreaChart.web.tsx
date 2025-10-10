@@ -5,12 +5,9 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
-import type {
-  ChartAreaProps,
-  ChartAreaWrapperProps,
-  ChartColorGradientProps,
-  ChartColorGradientData,
-} from './types';
+import type { DataColorMapping } from '../CommonChartComponents';
+import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
+import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
 import { componentIds } from './componentIds';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
@@ -86,11 +83,11 @@ const ChartColorGradient: React.FC<ChartColorGradientProps> = ({
   });
 
   const colorToken = getIn(theme.colors, color ?? themeColors[index]);
-
+  //TODO: add support for dark mode
   return (
     <linearGradient id={id} key={id} x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor={colorToken} stopOpacity={0.8} />
-      <stop offset="95%" stopColor={colorToken} stopOpacity={0} />
+      <stop offset="5%" stopColor={colorToken} stopOpacity={1} />
+      <stop offset="95%" stopColor={colorToken} stopOpacity={0.32} />
     </linearGradient>
   );
 };
@@ -103,13 +100,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   colorTheme = 'categorical',
   ...restProps
 }) => {
-  const {
-    modifiedChildren,
-    AreaChartGraidentGradientData,
-    totalAreaChartChildren,
-  } = React.useMemo(() => {
+  const themeColors = useChartsColorTheme({
+    colorTheme,
+    chartName: 'area',
+  });
+  const { modifiedChildren, totalAreaChartChildren, dataColorMapping } = React.useMemo(() => {
     const childrenArray = React.Children.toArray(children);
-    const AreaChartGraidentGradientData: ChartColorGradientData[] = [];
+    const dataColorMapping: DataColorMapping = {};
 
     // Count ChartLine components
     const totalAreas = childrenArray.filter(
@@ -120,13 +117,9 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     let AreaChartIndex = 0;
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
-        const AreaChartColor = child?.props?.color;
-        //@ts-expect-error
-        const AreaChartDataKey = child?.props?.dataKey;
-        AreaChartGraidentGradientData.push({
-          color: AreaChartColor,
-          dataKey: AreaChartDataKey,
-        });
+        const childColor = child?.props?.color;
+        const dataKey = child?.props?.dataKey;
+        dataColorMapping[dataKey] = childColor;
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,
@@ -135,39 +128,55 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       }
       return child;
     });
+    /* check if dataColor mapping has only one key and if it does, we need to add the default color to the dataColorMapping if no color is provided. */
+    if (
+      Object.keys(dataColorMapping).length === 1 &&
+      !dataColorMapping[Object.keys(dataColorMapping)[0]]
+    ) {
+      dataColorMapping[Object.keys(dataColorMapping)[0]] = DEFAULT_COLOR;
+    }
+    /* assigne theme colors to the dataColorMapping , if  no color is assigned. */
+    Object.keys(dataColorMapping).forEach((key) => {
+      if (!dataColorMapping[key]) {
+        dataColorMapping[key] = themeColors[Object.keys(dataColorMapping).indexOf(key)];
+      }
+    });
     return {
       modifiedChildren,
-      AreaChartGraidentGradientData,
+      // AreaChartGraidentGradientData,
       totalAreaChartChildren: AreaChartIndex,
+      dataColorMapping,
     };
-  }, [children, colorTheme]);
+  }, [children, colorTheme, themeColors]);
 
   return (
-    <BaseBox
-      {...metaAttribute({ name: 'chart-area-container', testID })}
-      {...makeAnalyticsAttribute(restProps)}
-      {...restProps}
-      width="100%"
-      height="100%"
-    >
-      <ResponsiveContainer>
-        <RechartsAreaChart data={data}>
-          <defs>
-            {AreaChartGraidentGradientData.map(({ color, dataKey }, index) => (
-              <ChartColorGradient
-                key={`color-${index}-${dataKey}`}
-                id={`color-${index}-${dataKey}`}
-                index={index}
-                color={color}
-                totalAreaChartChildren={totalAreaChartChildren}
-              />
-            ))}
-          </defs>
+    <CommonChartComponentsContext.Provider value={{ chartName: 'area', dataColorMapping }}>
+      <BaseBox
+        {...metaAttribute({ name: 'chart-area-container', testID })}
+        {...makeAnalyticsAttribute(restProps)}
+        {...restProps}
+        width="100%"
+        height="100%"
+      >
+        <ResponsiveContainer>
+          <RechartsAreaChart data={data}>
+            <defs>
+              {Object.keys(dataColorMapping).map((dataKey, index) => (
+                <ChartColorGradient
+                  key={`color-${index}-${dataKey}`}
+                  id={`color-${index}-${dataKey}`}
+                  index={index}
+                  color={dataColorMapping[dataKey]}
+                  totalAreaChartChildren={totalAreaChartChildren}
+                />
+              ))}
+            </defs>
 
-          {modifiedChildren}
-        </RechartsAreaChart>
-      </ResponsiveContainer>
-    </BaseBox>
+            {modifiedChildren}
+          </RechartsAreaChart>
+        </ResponsiveContainer>
+      </BaseBox>
+    </CommonChartComponentsContext.Provider>
   );
 };
 
