@@ -134,7 +134,10 @@ const CustomTooltip = ({
   const shouldFollowIntensityMapping =
     (chartName === 'line' || chartName === 'area') && !dataColorMapping?.[item.dataKey];
   const toolTipColor = getHighestColorInSequence({
-    colorToken: dataColorMapping?.[item.dataKey] || 'chart.background.categorical.azure.faint',
+    colorToken:
+      dataColorMapping?.[item.dataKey] ??
+      dataColorMapping?.[sanitizeString(item.name)] ??
+      'chart.background.categorical.azure.faint',
     followIntensityMapping: shouldFollowIntensityMapping,
   });
   return (
@@ -204,7 +207,6 @@ const LegendItem = ({
   entry: { color: string; value: string; dataKey: string };
   index: number;
 }): JSX.Element => {
-  console.log('entry', entry);
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
   const shouldFollowIntensityMapping =
