@@ -77,6 +77,7 @@ type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
   'gray'
 >}.${keyof ChartSequentialEmphasis}`;
 
+type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 // State type - contains only the state values
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
@@ -107,4 +108,5 @@ export type {
   Layout,
   Align,
   DataColorMapping,
+  ChartColorToken,
 };

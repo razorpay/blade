@@ -16,6 +16,7 @@ import type {
   ChartLegendProps,
   ChartCartesianGridProps,
   Layout,
+  ChartColorToken,
 } from './types';
 import {
   RECT_HEIGHT,
@@ -57,7 +58,7 @@ const getChartColor = (
     chartName,
   });
   const colorKey = chartName === 'donut' ? sanitizeString(name ?? '') : dataKey;
-  const mappedColorData = dataColorMapping?.[colorKey];
+  const mappedColorData = dataColorMapping?.[colorKey ?? ''];
   const mappedColor = mappedColorData?.colorToken;
   const isCustomColor = mappedColorData?.isCustomColor ?? false;
 
@@ -68,7 +69,8 @@ const getChartColor = (
   return isSequentialColor(mappedColor ?? '')
     ? mappedColor ?? 'chart.background.categorical.azure.faint'
     : getHighestColorInSequence({
-        colorToken: mappedColor ?? 'chart.background.categorical.azure.faint',
+        // @ts-expect-error
+        colorToken: mappedColor ?? ('chart.background.categorical.azure.faint' as ChartColorToken),
         followIntensityMapping: chartName === 'donut' && isCustomColor,
       });
 };
