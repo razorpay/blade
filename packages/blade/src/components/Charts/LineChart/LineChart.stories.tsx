@@ -444,7 +444,7 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
   return (
     <Box width="100%" height="100%">
       <ChartsWrapper>
-        <Box display="flex" gap="spacing.4" flexDirection="column" width="100%" height="400px">
+        <Box display="flex" gap="spacing.4" flexDirection="column" width="50%" height="400px">
           <Heading size="small">Line Chart that Connects Nulls</Heading>
           <ChartLineWrapper data={dataWithNulls}>
             <ChartXAxis dataKey="month" />
@@ -459,9 +459,7 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
             />
           </ChartLineWrapper>
         </Box>
-      </ChartsWrapper>
-      <ChartsWrapper>
-        <Box display="flex" gap="spacing.4" flexDirection="column" width="100%" height="400px">
+        <Box display="flex" gap="spacing.4" flexDirection="column" width="50%" height="400px">
           <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
           <ChartLineWrapper data={dataWithNulls}>
             <ChartXAxis dataKey="month" />
@@ -470,7 +468,7 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
             <ChartLegend />
             <ChartLine
               dataKey="sales"
-              name="Sales (Connects Nulls)"
+              name="Sales (Do Not Connects Nulls)"
               color="chart.background.categorical.emerald.moderate"
             />
           </ChartLineWrapper>

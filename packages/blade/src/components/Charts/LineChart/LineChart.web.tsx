@@ -21,7 +21,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 const Line: React.FC<ChartLineProps> = ({
   color,
   strokeStyle = 'solid',
-  type = 'linear',
+  type = 'monotone',
   dot = false,
   activeDot = true,
   showLegend = true,
@@ -58,6 +58,8 @@ const Line: React.FC<ChartLineProps> = ({
       legendType={showLegend ? 'line' : 'none'}
       animationBegin={animationBegin}
       animationDuration={animationDuration}
+      strokeLinecap="round"
+      strokeLinejoin="round"
       {...props}
     />
   );

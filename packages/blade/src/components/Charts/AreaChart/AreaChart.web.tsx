@@ -21,7 +21,7 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const Area: React.FC<ChartAreaProps> = ({
   color,
-  type = 'linear',
+  type = 'monotone',
   connectNulls = false,
   showLegend = true,
   stackId = 1,

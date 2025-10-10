@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   BarChart as RechartsBarChart,
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import { useMotionValue, useMotionValueEvent } from 'framer-motion';
 import { useChartsColorTheme, getHighestColorInSequence } from '../utils';
 import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents';
@@ -16,7 +15,6 @@ import {
   BAR_SIZE,
   DISTANCE_BETWEEN_BARS,
   DISTANCE_BETWEEN_CATEGORY_BARS,
-  ANIMATION_TIME_OFFEST,
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -38,125 +36,108 @@ export type RechartsShapeProps = {
 };
 
 // Bar component - resolves Blade color tokens to actual colors
-const _ChartBar: React.FC<ChartBarProps> = ({
-  color,
-  name,
-  dataKey,
-  activeBar = false,
-  label = false,
-  showLegend = true,
-  _index = 0,
-  _totalbars,
-  ...rest
-}) => {
-  const [animationsComplete, setAnimationsComplete] = useState(false);
-  const animationValue = useMotionValue(0);
-  const { theme } = useTheme();
-  const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
-  const defaultColorArray = useChartsColorTheme({
-    colorTheme: _colorTheme,
-    chartName: 'bar',
-    chartDataIndicators: _totalbars,
-  });
-  const fill = getIn(theme.colors, color ?? defaultColorArray[_index]);
-  const strokeFill = getIn(
-    theme.colors,
-    getHighestColorInSequence({
-      colorToken: color ?? defaultColorArray[_index],
-      followIntensityMapping: Boolean(color),
-    }),
-  );
-  useMotionValueEvent(animationValue, 'change', (latest) => {
-    if (latest >= 1) {
-      setAnimationsComplete(true);
-    }
-  });
-  const isStacked = rest.stackId !== undefined;
-  const animationBegin = isStacked
-    ? (theme.motion.duration.gentle / totalBars) * _index
-    : theme.motion.duration.gentle;
-  const animationDuration = isStacked
-    ? theme.motion.duration.gentle / totalBars
-    : theme.motion.duration.gentle;
-  const totalAnimationTime = theme.motion.duration.gentle + ANIMATION_TIME_OFFEST;
+const _ChartBar: React.FC<ChartBarProps> = React.memo(
+  ({
+    color,
+    name,
+    dataKey,
+    activeBar = false,
+    label = false,
+    showLegend = true,
+    _index = 0,
+    _totalbars,
+    ...rest
+  }) => {
+    const { theme } = useTheme();
+    const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
+    const defaultColorArray = useChartsColorTheme({
+      colorTheme: _colorTheme,
+      chartName: 'bar',
+      chartDataIndicators: _totalbars,
+    });
+    const fill = getIn(theme.colors, color ?? defaultColorArray[_index]);
+    const strokeFill = getIn(
+      theme.colors,
+      getHighestColorInSequence({
+        colorToken: color ?? defaultColorArray[_index],
+        followIntensityMapping: Boolean(color),
+      }),
+    );
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      animationValue.set(1);
-    }, totalAnimationTime);
+    const isStacked = rest.stackId !== undefined;
+    const animationBegin = isStacked
+      ? (theme.motion.duration.gentle / totalBars) * _index
+      : theme.motion.duration.gentle;
+    const animationDuration = isStacked
+      ? theme.motion.duration.gentle / totalBars
+      : theme.motion.duration.gentle;
 
-    return () => clearTimeout(timer);
-  }, [totalAnimationTime, animationValue]);
+    return (
+      <RechartsBar
+        {...rest}
+        fill={fill}
+        legendType={showLegend ? 'rect' : 'none'}
+        activeBar={activeBar}
+        label={label}
+        animationBegin={animationBegin}
+        animationDuration={animationDuration}
+        animationEasing="linear"
+        dataKey={dataKey}
+        name={name}
+        key={`${dataKey}-${_index}-${name}`}
+        shape={(props: unknown) => {
+          const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
+          const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;
+          const gap = DISTANCE_BETWEEN_STACKED_BARS;
+          const isVertical = layout === 'vertical';
 
-  return (
-    <RechartsBar
-      {...rest}
-      fill={fill}
-      legendType={showLegend ? 'rect' : 'none'}
-      activeBar={activeBar}
-      label={label}
-      animationBegin={animationBegin}
-      animationDuration={animationDuration}
-      animationEasing="linear"
-      dataKey={dataKey}
-      name={name}
-      onAnimationEndCapture={() => setAnimationsComplete(true)}
-      shape={(props: unknown) => {
-        const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
-        const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;
-        const gap = DISTANCE_BETWEEN_STACKED_BARS;
-        const isVertical = layout === 'vertical';
-
-        if (isVertical) {
-          return (
-            <>
-              <rect
-                fill={fill}
-                x={x + gap / 1.5}
-                y={y}
-                width={width - gap}
-                height={height}
-                fillOpacity={fillOpacity}
-              />
-              {animationsComplete && (
+          if (isVertical) {
+            return (
+              <>
+                <rect
+                  fill={fill}
+                  x={x + gap / 1.5}
+                  y={y}
+                  width={width - gap}
+                  height={height}
+                  fillOpacity={fillOpacity}
+                />
                 <rect
                   fill={strokeFill}
                   x={x + gap / 1.5 + (width - gap) - 1.5} // Position at the right end
                   y={y}
-                  width={1.5}
+                  width={width > gap ? 1.5 : 0}
                   height={height}
                   fillOpacity={fillOpacity}
                 />
-              )}
-            </>
-          );
-        }
-        return (
-          <>
-            <rect
-              fill={fill}
-              x={x}
-              y={y + gap / 1.5}
-              width={width}
-              height={height > gap ? height - gap : 0}
-              fillOpacity={fillOpacity}
-            />
-            {animationsComplete && (
+              </>
+            );
+          }
+          return (
+            <>
+              <rect
+                fill={fill}
+                x={x}
+                y={y + gap / 1.5}
+                width={width}
+                height={height > gap ? height - gap : 0}
+                fillOpacity={fillOpacity}
+              />
               <rect
                 fill={strokeFill}
                 x={x}
                 y={y + gap / 1.5}
                 width={width}
-                height={1.5}
+                height={height > gap ? 1.5 : 0}
                 fillOpacity={fillOpacity}
               />
-            )}
-          </>
-        );
-      }}
-    />
-  );
-};
+            </>
+          );
+        }}
+      />
+    );
+  },
+);
 
 const ChartBar = assignWithoutSideEffects(_ChartBar, {
   componentId: componentIds.chartBar,
@@ -257,6 +238,9 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
               barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
               onMouseMove={(state) => {
                 setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
+              }}
+              onMouseLeave={() => {
+                setActiveIndex(undefined);
               }}
               layout={layout}
               data={data}

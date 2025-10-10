@@ -6,7 +6,7 @@ import type { BoxProps } from '~components/Box';
 type ChartAreaProps = {
   /**
    * The type of the area chart.
-   * @default 'linear'
+   * @default 'monotone'
    */
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   /**
