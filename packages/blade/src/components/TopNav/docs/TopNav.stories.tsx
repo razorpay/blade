@@ -215,10 +215,10 @@ const ExploreItem = ({
   );
 };
 
-const DashboardBackground = styled.div(() => {
+const DashboardBackground = styled(BaseBox)(() => {
   return {
     height: '100vh',
-    background: 'radial-gradient(94.74% 64.44% at 29.03% 15.17%, #FFFFFF 0%, #90A5BB 100%)',
+    background: 'hsla(210,40%,98%,1)',
   };
 });
 
@@ -251,7 +251,7 @@ const TopNavFullExample = () => {
                 Payments
               </Heading>
               <Menu openInteraction="click">
-                <Avatar size="medium" name="Anurag Hazra" />
+                <Avatar size="medium" variant="square" name="Anurag Hazra" />
                 <MenuOverlay>
                   <MenuHeader title="Profile" />
                   <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -404,7 +404,7 @@ const TopNavFullExample = () => {
                   />
                 </Tooltip>
                 <Menu openInteraction="click">
-                  <Avatar size="medium" name="Anurag Hazra" />
+                  <Avatar size="medium" variant="square" name="Anurag Hazra" />
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
                     <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -598,7 +598,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
             <Tooltip content="View Announcements">
               <Button variant="tertiary" icon={AnnouncementIcon} />
             </Tooltip>
-            <Avatar size="medium" name="Anurag Hazra" />
+            <Avatar size="medium" variant="square" name="Anurag Hazra" />
           </TopNavActions>
         </TopNav>
       </BaseBox>
