@@ -78,7 +78,7 @@ const _ChartBar: React.FC<ChartBarProps> = ({
   const animationDuration = isStacked
     ? theme.motion.duration.gentle / totalBars
     : theme.motion.duration.gentle;
-  const totalAnimationTime = animationBegin + animationDuration + ANIMATION_TIME_OFFEST * totalBars;
+  const totalAnimationTime = theme.motion.duration.gentle + ANIMATION_TIME_OFFEST;
 
   useEffect(() => {
     const timer = setTimeout(() => {
