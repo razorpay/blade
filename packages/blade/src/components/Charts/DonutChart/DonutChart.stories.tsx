@@ -358,10 +358,10 @@ export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = (args) => {
       <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px" {...wrapperProps}>
         <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
           <ChartDonutCell color="chart.background.categorical.topaz.faint" />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
+          <ChartDonutCell color="chart.background.categorical.azure.faint" />
+          <ChartDonutCell color="chart.background.categorical.cider.faint" />
+          <ChartDonutCell color="chart.background.categorical.crimson.faint" />
+          <ChartDonutCell color="chart.background.categorical.orchid.faint" />
         </ChartDonut>
         <ChartLegend />
         <ChartTooltip />
@@ -421,4 +421,4 @@ SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';
 ExtraLargeRadiusDonutChart.storyName = 'Extra Large Radius Donut Chart';
 DonutChartWithColorTheme.storyName = 'Donut Chart with Color theme';
 SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
-DonutChartWithCustomColor.storyName = 'Donut Chart with Blade Components';
+DonutChartWithCustomColor.storyName = 'Donut Chart with Custom colors';
