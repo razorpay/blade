@@ -315,7 +315,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
-        paddingTop: theme.spacing[5],
+        paddingTop: theme.spacing[7],
       }}
       align="center"
       verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
