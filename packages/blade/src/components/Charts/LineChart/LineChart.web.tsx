@@ -5,6 +5,8 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { useChartsColorTheme } from '../utils';
+import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
+import type { DataColorMapping } from '../CommonChartComponents/types';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -25,11 +27,16 @@ const Line: React.FC<ChartLineProps> = ({
   showLegend = true,
   _index,
   _colorTheme,
+  _totalLines,
   ...props
 }) => {
   const { theme } = useTheme();
-  const themeColors = useChartsColorTheme({ colorTheme: _colorTheme });
-  const colorToken = color ? getIn(theme.colors, color) : themeColors[_index ?? 0];
+  const themeColors = useChartsColorTheme({
+    colorTheme: _colorTheme,
+    chartName: 'line',
+    chartDataIndicators: _totalLines,
+  });
+  const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
 
   const strokeDasharray =
     strokeStyle === 'dashed' ? '5 5' : strokeStyle === 'dotted' ? '2 2' : undefined;
@@ -43,7 +50,7 @@ const Line: React.FC<ChartLineProps> = ({
   return (
     <RechartsLine
       stroke={colorToken}
-      strokeWidth={3}
+      strokeWidth={1.5}
       strokeDasharray={strokeDasharray}
       type={type}
       activeDot={activeDot}
@@ -51,6 +58,8 @@ const Line: React.FC<ChartLineProps> = ({
       legendType={showLegend ? 'line' : 'none'}
       animationBegin={animationBegin}
       animationDuration={animationDuration}
+      strokeLinecap="round"
+      strokeLinejoin="round"
       {...props}
     />
   );
@@ -63,35 +72,80 @@ const ChartLine = assignWithoutSideEffects(Line, {
 // Main components
 const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
-  colorTheme = 'default',
+  colorTheme = 'categorical',
   testID,
   data,
   ...restProps
 }) => {
-  const lineChartModifiedChildrens = React.useMemo(() => {
+  const themeColors = useChartsColorTheme({
+    colorTheme,
+    chartName: 'line',
+  });
+  const { dataColorMapping, lineChartModifiedChildrens } = React.useMemo(() => {
+    const childrenArray = React.Children.toArray(children);
+    const dataColorMapping: DataColorMapping = {};
+    // Count ChartLine components
+    const totalLines = childrenArray.filter(
+      (child): child is React.ReactElement =>
+        React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine,
+    ).length;
+
     let LineChartIndex = 0;
-    return React.Children.map(children, (child) => {
+    const lineChartModifiedChildrens = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
+        const childColor = child?.props?.color;
+        const dataKey = (child?.props as ChartLineProps)?.dataKey;
+        if (dataKey && typeof dataKey === 'string') {
+          dataColorMapping[dataKey] = {
+            colorToken: childColor,
+            isCustomColor: Boolean(childColor),
+          };
+        }
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
+          _totaLine: totalLines,
         } as Partial<ChartLineProps>);
       }
       return child;
     });
-  }, [children, colorTheme]);
+    /* check if dataColor mapping has only one key and if it does, we need to add the default color to the dataColorMapping if no color is provided. */
+    if (
+      Object.keys(dataColorMapping).length === 1 &&
+      !dataColorMapping[Object.keys(dataColorMapping)[0]]?.colorToken
+    ) {
+      dataColorMapping[Object.keys(dataColorMapping)[0]] = {
+        colorToken: DEFAULT_COLOR,
+        isCustomColor: false,
+      };
+    }
+    /* assigne theme colors to the dataColorMapping , if  no color is assigned. */
+    Object.keys(dataColorMapping).forEach((key) => {
+      if (!dataColorMapping[key]?.colorToken) {
+        dataColorMapping[key] = {
+          colorToken: themeColors[Object.keys(dataColorMapping).indexOf(key)],
+          isCustomColor: false,
+        };
+      }
+    });
+
+    return { dataColorMapping, lineChartModifiedChildrens, totalLines };
+  }, [children, colorTheme, themeColors]);
+
   return (
-    <BaseBox
-      {...metaAttribute({ name: 'line-chart', testID })}
-      {...makeAnalyticsAttribute(restProps)}
-      width="100%"
-      height="100%"
-      {...restProps}
-    >
-      <RechartsResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>
-      </RechartsResponsiveContainer>
-    </BaseBox>
+    <CommonChartComponentsContext.Provider value={{ chartName: 'line', dataColorMapping }}>
+      <BaseBox
+        {...metaAttribute({ name: 'line-chart', testID })}
+        {...makeAnalyticsAttribute(restProps)}
+        width="100%"
+        height="100%"
+        {...restProps}
+      >
+        <RechartsResponsiveContainer width="100%" height="100%">
+          <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>
+        </RechartsResponsiveContainer>
+      </BaseBox>
+    </CommonChartComponentsContext.Provider>
   );
 };
 

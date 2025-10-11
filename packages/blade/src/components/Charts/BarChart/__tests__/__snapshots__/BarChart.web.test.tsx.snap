@@ -68,7 +68,7 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(227, 100%, 59%, 1)"
+                        fill="hsla(220, 100%, 73%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -82,7 +82,7 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(227, 100%, 59%, 1)"
+                        fill="hsla(220, 100%, 73%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -96,7 +96,7 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(227, 100%, 59%, 1)"
+                        fill="hsla(220, 100%, 73%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -110,7 +110,7 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(227, 100%, 59%, 1)"
+                        fill="hsla(220, 100%, 73%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -137,7 +137,7 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(25, 90%, 48%, 1)"
+                        fill="hsla(25, 100%, 72%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -151,7 +151,7 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(25, 90%, 48%, 1)"
+                        fill="hsla(25, 100%, 72%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -165,7 +165,7 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(25, 90%, 48%, 1)"
+                        fill="hsla(25, 100%, 72%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -179,7 +179,7 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(25, 90%, 48%, 1)"
+                        fill="hsla(25, 100%, 72%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -338,7 +338,7 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -352,7 +352,7 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -366,7 +366,7 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -380,7 +380,7 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -407,7 +407,7 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(252, 57%, 54%, 1)"
+                        fill="hsla(252, 100%, 80%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -421,7 +421,7 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(252, 57%, 54%, 1)"
+                        fill="hsla(252, 100%, 80%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -435,7 +435,7 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(252, 57%, 54%, 1)"
+                        fill="hsla(252, 100%, 80%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -449,7 +449,7 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(252, 57%, 54%, 1)"
+                        fill="hsla(252, 100%, 80%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -750,7 +750,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                     data-blade-component="box"
                   >
                     <span
-                      style="background-color: rgb(0, 0, 0); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
+                      style="background-color: rgb(92, 92, 92); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
                     />
                     <p
                       class="c6"
@@ -1369,7 +1369,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1383,7 +1383,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1397,7 +1397,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1411,7 +1411,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1570,7 +1570,7 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1584,7 +1584,7 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1598,7 +1598,7 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1612,7 +1612,7 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(50, 100%, 40%, 1)"
+                        fill="hsla(51, 100%, 68%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1639,7 +1639,7 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(252, 57%, 54%, 1)"
+                        fill="hsla(252, 100%, 80%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1653,7 +1653,7 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(252, 57%, 54%, 1)"
+                        fill="hsla(252, 100%, 80%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1667,7 +1667,7 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(252, 57%, 54%, 1)"
+                        fill="hsla(252, 100%, 80%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"
@@ -1681,7 +1681,7 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
                       class="recharts-layer recharts-bar-rectangle"
                     >
                       <rect
-                        fill="hsla(252, 57%, 54%, 1)"
+                        fill="hsla(252, 100%, 80%, 1)"
                         fill-opacity="1"
                         height="0"
                         rx="2"

@@ -53,6 +53,10 @@ interface ChartLineProps {
    * @private
    */
   _colorTheme?: ColorTheme;
+  /**
+   * @private
+   */
+  _totalLines?: number;
 }
 
 type data = {
