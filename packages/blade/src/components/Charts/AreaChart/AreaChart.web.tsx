@@ -78,7 +78,8 @@ const ChartColorGradient: React.FC<ChartColorGradientProps> = ({
   totalAreaChartChildren,
   id,
 }) => {
-  const { theme } = useTheme();
+  const { colorScheme, theme } = useTheme();
+  const isDarkMode = colorScheme === 'dark';
   const themeColors = useChartsColorTheme({
     colorTheme: 'categorical',
     chartName: 'area',
@@ -92,11 +93,10 @@ const ChartColorGradient: React.FC<ChartColorGradientProps> = ({
       followIntensityMapping: true,
     }),
   );
-  //TODO: add support for dark mode
   return (
     <linearGradient id={id} key={id} x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor={colorToken} stopOpacity={1} />
-      <stop offset="95%" stopColor={colorToken} stopOpacity={0.32} />
+      <stop offset="5%" stopColor={colorToken} stopOpacity={isDarkMode ? 0.28 : 1} />
+      <stop offset="95%" stopColor={colorToken} stopOpacity={isDarkMode ? 0.12 : 0.32} />
     </linearGradient>
   );
 };
