@@ -4,7 +4,7 @@ import {
   Area as RechartsArea,
   ResponsiveContainer,
 } from 'recharts';
-import { getHighestColorInSequence, useChartsColorTheme } from '../utils';
+import { getHighestColorInColorRange, useChartsColorTheme } from '../utils';
 import type { DataColorMapping } from '../CommonChartComponents';
 import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
@@ -42,7 +42,7 @@ const Area: React.FC<ChartAreaProps> = ({
   });
   const colorToken = getIn(
     theme.colors,
-    color ? getHighestColorInSequence({ colorToken: color }) : themeColors[_index ?? 0],
+    color ? getHighestColorInColorRange({ colorToken: color }) : themeColors[_index ?? 0],
   );
   const animationBegin = theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
@@ -87,7 +87,7 @@ const ChartColorGradient: React.FC<ChartColorGradientProps> = ({
 
   const colorToken = getIn(
     theme.colors,
-    getHighestColorInSequence({
+    getHighestColorInColorRange({
       colorToken: color ?? themeColors[index],
       followIntensityMapping: true,
     }),

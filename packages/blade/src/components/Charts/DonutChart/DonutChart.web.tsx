@@ -6,7 +6,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
 } from 'recharts';
-import { useChartsColorTheme, getHighestColorInSequence } from '../utils';
+import { useChartsColorTheme, getHighestColorInColorRange } from '../utils';
 import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
 import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents/types';
@@ -355,7 +355,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
 
           const fill = getIn(
             theme.colors,
-            getHighestColorInSequence({
+            getHighestColorInColorRange({
               colorToken: child.props.color || themeColors[index],
               followIntensityMapping: Boolean(child.props.color),
             }),
@@ -381,7 +381,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         fill="transparent"
         stroke={getIn(
           theme.colors,
-          getHighestColorInSequence({
+          getHighestColorInColorRange({
             colorToken: themeColors[index],
             followIntensityMapping: false,
           }),
