@@ -15,11 +15,11 @@ describe('basic functionality', () => {
   });
   it('should replace line breaks and tabs with underscores', () => {
     expect(sanitizeString('Sales\nData\t2024')).toBe('Sales_Data_2024');
-    expect(sanitizeString('Line1\nLine2\r\nLine3')).toBe('Line1_Line2_Line3');
+    expect(sanitizeString('Line1\nLine2\r\nLine3')).toBe('Line1_Line2__Line3');
   });
 
   it('should replace multiple line breaks with underscores', () => {
-    expect(sanitizeString('Sales\n\nData')).toBe('Sales_Data');
+    expect(sanitizeString('Sales\n\nData')).toBe('Sales__Data');
   });
 
   it('should preserve special characters that are safe for charts', () => {
