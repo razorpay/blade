@@ -42,7 +42,6 @@ import type {
   BladeElementRef,
   ContainerElementType,
   DataAnalyticsAttribute,
-  ElementTiming,
   TestID,
 } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
@@ -368,7 +367,6 @@ type BaseInputCommonProps = FormInputLabelProps &
     valueSuffix?: React.ReactNode;
     children?: ReactNode;
   } & TestID &
-  ElementTiming &
   Platform.Select<{
     native: {
       /**

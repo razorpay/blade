@@ -7,7 +7,6 @@ import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
-import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &
@@ -53,30 +52,21 @@ const getWebInputStyles = (
   };
 };
 
-const StyledBaseNativeInput = styled.input.withConfig({
-  shouldForwardProp: omitPropsFromHTML,
-  displayName: 'StyledBaseNativeInput',
-})<Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>>(
-  getWebInputStyles,
-);
+const StyledBaseNativeInput = styled.input<
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
+>(getWebInputStyles);
 
-const StyledBaseNativeButton = styled.button.withConfig({
-  shouldForwardProp: omitPropsFromHTML,
-  displayName: 'StyledBaseNativeButton',
-})<Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>>(
-  (props) => ({
-    ...getWebInputStyles(props),
-  }),
-);
+const StyledBaseNativeButton = styled.button<
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
+>((props) => ({
+  ...getWebInputStyles(props),
+}));
 
-const StyledBaseDivWrapper = styled.div.withConfig({
-  shouldForwardProp: omitPropsFromHTML,
-  displayName: 'StyledBaseDivWrapper',
-})<Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>>(
-  (props) => ({
-    ...getWebInputStyles(props),
-  }),
-);
+const StyledBaseDivWrapper = styled.div<
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
+>((props) => ({
+  ...getWebInputStyles(props),
+}));
 
 const autoCompleteSuggestionTypeMap = {
   none: 'off',

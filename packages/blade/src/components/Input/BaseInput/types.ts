@@ -101,7 +101,6 @@ export type StyledBaseInputProps = {
   | 'tabIndex'
   | 'valueSuffix'
   | 'children'
-  | 'elementtiming'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';
