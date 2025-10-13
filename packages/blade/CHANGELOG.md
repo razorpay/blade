@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.60.1
+
+### Patch Changes
+
+- 5f2750544: feat(blade): update TopNav actions bg color, made profile avatar square
+
 ## 12.60.0
 
 ### Minor Changes
