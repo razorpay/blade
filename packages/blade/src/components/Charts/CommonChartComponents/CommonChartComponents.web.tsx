@@ -17,6 +17,7 @@ import type {
   ChartCartesianGridProps,
   Layout,
   ChartColorToken,
+  DataColorMapping,
 } from './types';
 import {
   RECT_HEIGHT,
@@ -48,9 +49,9 @@ import { sanitizeString } from '~utils';
 const getChartColor = (
   dataKey: string | undefined,
   name: string | undefined,
-  dataColorMapping: Record<string, { colorToken: string; isCustomColor: boolean }> | undefined,
+  dataColorMapping: DataColorMapping,
   chartName: string | undefined,
-): string => {
+): ChartColorToken => {
   const colorKey = chartName === 'donut' ? sanitizeString(name ?? '') : dataKey;
   const mappedColorData = dataColorMapping?.[colorKey ?? ''];
   const mappedColor = mappedColorData?.colorToken;
@@ -60,10 +61,9 @@ const getChartColor = (
     return mappedColor ?? '';
   }
 
-  return isSequentialColor(mappedColor ?? '')
+  return mappedColor && isSequentialColor(mappedColor)
     ? mappedColor ?? 'chart.background.categorical.azure.faint'
     : getHighestColorInColorRange({
-        // @ts-expect-error
         colorToken: mappedColor ?? ('chart.background.categorical.azure.faint' as ChartColorToken),
         followIntensityMapping: chartName === 'donut' && isCustomColor,
       });
@@ -166,7 +166,7 @@ const CustomTooltip = ({
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
 
-  const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping, chartName);
+  const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping ?? {}, chartName);
   return (
     <Box
       display="flex"
@@ -180,7 +180,6 @@ const CustomTooltip = ({
           style={{
             width: theme.spacing[4],
             height: theme.spacing[4],
-            //@ts-expect-error
             backgroundColor: getIn(theme.colors, toolTipColor),
             borderRadius: theme.border.radius.small,
           }}
@@ -238,13 +237,12 @@ const LegendItem = ({
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
 
-  const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping, chartName);
+  const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
   return (
     <Box key={`item-${index}`} display="flex" alignItems="center">
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
-            //@ts-expect-error
             backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
             width: theme.spacing[4], // Size of the square
             height: theme.spacing[4], // Size of the square
