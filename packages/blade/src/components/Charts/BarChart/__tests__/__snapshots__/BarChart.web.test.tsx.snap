@@ -1020,7 +1020,6 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                 class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="30"
@@ -1157,7 +1156,6 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                 class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="760"

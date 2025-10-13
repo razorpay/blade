@@ -2382,7 +2382,6 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="30"
@@ -2519,7 +2518,6 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="760"
@@ -2771,7 +2769,6 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="30"
@@ -2856,7 +2853,6 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="760"
@@ -3108,7 +3104,6 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="30"
@@ -3219,7 +3214,6 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="760"
@@ -3471,7 +3465,6 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                 class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="30"
@@ -3608,7 +3601,6 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                 class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
               >
                 <line
-                  angle="0"
                   class="recharts-cartesian-axis-line"
                   fill="none"
                   height="760"
