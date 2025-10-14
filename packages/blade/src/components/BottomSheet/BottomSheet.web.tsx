@@ -160,7 +160,10 @@ const _BottomSheet = ({
   // take the grabHandle's height into headerHeight too
   useIsomorphicLayoutEffect(() => {
     if (!grabHandleRef.current) return;
-    setGrabHandleHeight(grabHandleRef.current.getBoundingClientRect().height);
+    const marginBottom = window.getComputedStyle(grabHandleRef.current).marginBottom;
+    setGrabHandleHeight(
+      grabHandleRef.current.getBoundingClientRect().height + parseFloat(marginBottom),
+    );
   }, [grabHandleRef.current, _isOpen]);
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
