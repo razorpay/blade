@@ -1031,9 +1031,28 @@ function ResponsiveModalWrapper({
   );
 }
 
-function FlowSelectionModal() {
+function FlowSelectionModal({ cardCount = 3 }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
+
+  // Dynamic modal size and grid layout based on card count
+  const getModalSize = () => {
+    if (cardCount === 2) return 'small';
+    if (cardCount === 3) return 'medium';
+    return 'large';
+  };
+
+  const getGridLayout = () => {
+    if (cardCount === 2) return { base: '1fr 1fr', m: '1fr 1fr' };
+    if (cardCount === 3) return { base: '1fr 1fr', m: '1fr 1fr 1fr' };
+    return { base: '1fr 1fr', m: '1fr 1fr 1fr 1fr' };
+  };
+
+  const getCardWidth = () => {
+    if (cardCount === 2) return isMobile ? '165px' : '160px';
+    if (cardCount === 3) return isMobile ? '165px' : '230px';
+    return isMobile ? '165px' : '220px';
+  };
 
   const paymentMethods = [
     {
@@ -1058,7 +1077,7 @@ function FlowSelectionModal() {
       icon: ZapIcon,
       isDisabled: true,
     },
-  ];
+  ].slice(0, cardCount); // Dynamic content based on cardCount
 
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -1070,7 +1089,7 @@ function FlowSelectionModal() {
       <ResponsiveModalWrapper
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
-        modalSize="medium"
+        modalSize={getModalSize()}
         footer={
           <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
             <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
@@ -1110,11 +1129,7 @@ function FlowSelectionModal() {
         <Box padding="spacing.6">
           <Box
             display="grid"
-            gridTemplateColumns={{
-              base: '1fr 1fr',
-              m: '1fr 1fr 1fr',
-              l: '1fr 1fr 1fr',
-            }}
+            gridTemplateColumns={getGridLayout()}
             justifyItems="center"
             gap="spacing.5"
             width="100%"
@@ -1126,7 +1141,7 @@ function FlowSelectionModal() {
                 onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
                 padding="spacing.0"
                 accessibilityLabel={`Select ${method.title}`}
-                width={isMobile ? '165px' : '228px'}
+                width={getCardWidth()}
                 height={isMobile ? '184px' : undefined}
                 borderRadius="medium"
                 elevation="none"
@@ -1204,6 +1219,27 @@ function FlowSelectionModal() {
 }
 
 export default FlowSelectionModal;
+```
+
+### Flow Selection Modal with Dynamic Layouts
+
+This example demonstrates how to create flow selection modals with varying card counts and corresponding modal sizes:.
+
+```tsx
+// 2 Cards - Small Modal
+const FlowSelection2Cards = () => {
+  return <FlowSelectionModal cardCount={2} />;
+};
+
+// 3 Cards - Medium Modal
+const FlowSelection3Cards = () => {
+  return <FlowSelectionModal cardCount={3} />;
+};
+
+// 4+ Cards - Large Modal
+const FlowSelection4Cards = () => {
+  return <FlowSelectionModal cardCount={4} />;
+};
 ```
 
 ### Single Step Form Modal Example
