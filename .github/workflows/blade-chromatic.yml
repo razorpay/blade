@@ -30,7 +30,7 @@ jobs:
           buildScriptName: react:storybook:build
           exitOnceUploaded: true
           onlyChanged: true
-          untraced: '**/package.json'
+          untraced: '**/package.json **/pnpm-lock.yaml'
           traceChanged: 'expanded'
         env:
           GITHUB_SHA: ${{ github.sha }}

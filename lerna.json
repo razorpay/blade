@@ -1,7 +1,6 @@
 {
   "version": "independent",
-  "npmClient": "yarn",
-  "useWorkspaces": true,
+  "npmClient": "pnpm",
   "command": {
     "bootstrap": {
       "ignoreScripts": true

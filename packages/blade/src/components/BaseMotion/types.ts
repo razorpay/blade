@@ -1,4 +1,5 @@
-import type { AnimationControls, TargetAndTransition, Tween } from 'framer-motion';
+//TODO: check this with @saurab
+import type { animationControls, TargetAndTransition, Tween } from 'framer-motion';
 import type React from 'react';
 import type { Delay } from '~tokens/global/motion';
 
@@ -56,7 +57,7 @@ type BaseMotionBoxProps = {
    * animate={controls}
    * ```
    */
-  animate?: AnimationControls;
+  animate?: typeof animationControls;
 
   /**
    * This is for scenarios where you want to conditionally animate a component instead of it having static defined animation.

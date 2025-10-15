@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import type { DefaultTheme, StyledComponent } from 'styled-components';
 import styled from 'styled-components';
 import type { ThumbProps } from './types';
 import { switchSizes } from './switchTokens';
@@ -9,7 +10,9 @@ import { isReactNative } from '~utils';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
 
-const Thumb = styled(BaseBox)<ThumbProps>(({ theme, size = 'medium', deviceType }) => {
+const Thumb: StyledComponent<typeof BaseBox, DefaultTheme, ThumbProps, never> = styled(
+  BaseBox,
+)<ThumbProps>(({ theme, size = 'medium', deviceType }) => {
   const width = switchSizes.thumb[deviceType][size].width;
   const height = switchSizes.thumb[deviceType][size].height;
 

@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import React from 'react';
 import { Composite } from '@floating-ui/react';
 import styled from 'styled-components';
@@ -19,7 +20,7 @@ const ScrollableArea = styled(BaseBox)(() => {
   };
 });
 
-const TabList = ({
+const TabList: FC<{ children: React.ReactNode } & StyledPropsBlade & DataAnalyticsAttribute> = ({
   children,
   ...rest
 }: { children: React.ReactNode } & StyledPropsBlade &

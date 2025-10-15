@@ -99,6 +99,9 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
   );
 };
 
-const BaseText = React.forwardRef(_BaseText);
+// Explicitly define the type for BaseText to solve the TS2742 error
+const BaseText: React.ForwardRefExoticComponent<
+  BaseTextProps & React.RefAttributes<BladeElementRef>
+> = React.forwardRef(_BaseText);
 
 export { BaseText };

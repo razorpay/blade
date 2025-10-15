@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-
 import React from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
+import type { BladeElementRef } from '~utils/types';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -16,7 +16,10 @@ type DropdownIconButtonProps = Omit<IconButtonProps, 'onClick'> & {
   onClick?: IconButtonProps['onClick'];
 };
 
-const _DropdownIconButton = ({
+const _DropdownIconButton: React.ForwardRefRenderFunction<
+  BladeElementRef,
+  DropdownIconButtonProps
+> = ({
   icon,
   isDisabled = false,
   onClick,
@@ -54,17 +57,17 @@ const _DropdownIconButton = ({
         controls: `${dropdownBaseId}-actionlist`,
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
       }}
-      onClick={(e) => {
+      onClick={(e: any) => {
         onTriggerClick();
         // Setting it for web fails it on native typecheck and vice versa
         onClick?.(e as any);
       }}
-      onBlur={(e) => {
+      onBlur={(e: any) => {
         // With button trigger, there is no "value" as such. It's just clickable items
         // Setting it for web fails it on native typecheck and vice versa
         onBlur?.(e as any);
       }}
-      onKeyDown={(e) => {
+      onKeyDown={(e: any) => {
         onTriggerKeydown?.({ event: e as any });
         // Setting it for web fails it on native typecheck and vice versa
         onKeyDown?.(e as any);

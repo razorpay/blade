@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { AvatarProps } from './types';
 import { StyledAvatar } from './StyledAvatar';
@@ -184,7 +185,9 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-avatar-avatar Avatar Documentation}
  * 
  */
-const Avatar = assignWithoutSideEffects(React.forwardRef(_Avatar), {
+const Avatar: ForwardRefExoticComponent<
+  AvatarProps & RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Avatar), {
   displayName: 'Avatar',
   componentId: 'Avatar',
 });

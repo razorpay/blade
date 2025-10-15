@@ -1,4 +1,4 @@
-import type { ReactChild, ReactElement } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes, ReactChild, ReactElement } from 'react';
 import React, { Fragment, useState, forwardRef } from 'react';
 
 import { StyledAlert } from './StyledAlert';
@@ -339,7 +339,9 @@ const _Alert = (
   );
 };
 
-const Alert = forwardRef(_Alert);
+const Alert: ForwardRefExoticComponent<AlertProps & RefAttributes<BladeElementRef>> = forwardRef(
+  _Alert,
+);
 
 export type { AlertProps };
 export { Alert };
