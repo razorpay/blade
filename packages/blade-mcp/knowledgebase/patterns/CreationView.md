@@ -963,7 +963,7 @@ export default EditAndAddModal;
 
 ### Flow Selection Modal Example
 
-This example shows a flow selection modal with icon cards and responsive grid layout.
+This example demonstrates how to create flow selection modals with varying card counts and corresponding modal sizes:.
 
 ```tsx
 import React from 'react';
@@ -1219,13 +1219,7 @@ function FlowSelectionModal({ cardCount = 3 }) {
 }
 
 export default FlowSelectionModal;
-```
 
-### Flow Selection Modal with Dynamic Layouts
-
-This example demonstrates how to create flow selection modals with varying card counts and corresponding modal sizes:.
-
-```tsx
 // 2 Cards - Small Modal
 const FlowSelection2Cards = () => {
   return <FlowSelectionModal cardCount={2} />;

@@ -62,6 +62,7 @@ import { Card, CardBody } from '~components/Card';
 import { DatePicker } from '~components/DatePicker';
 import { Slide } from '~components/Slide';
 import type { ModalBodyProps, ModalProps } from '~components/Modal';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import { Fade } from '~components/Fade';
 import { useBreakpoint, useTheme } from '~utils';
 import { ChipGroup, Chip } from '~components/Chip';
@@ -692,7 +693,7 @@ const RadioCard = ({
   );
 };
 
-const MultiStepExample: StoryFn<any> = ({ withProgressBar = false }) => {
+const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBar?: boolean }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
   const isMobile = useIsMobile();
@@ -1733,7 +1734,7 @@ MultiStepProgressBar.args = {
 MultiStepProgressBar.storyName =
   'Multi Steps with Progress Bar (Form Group + Preview + Full Page Modal)';
 
-const CompactMultiStepExample: StoryFn<any> = () => {
+const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState(1);
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
@@ -2366,7 +2367,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
 export const FlowSelectionModalWithIcon = FlowSelectionModalTemplateWithIcon.bind({});
 FlowSelectionModalWithIcon.storyName = 'Flow Selection Modal - with Icon Cards';
 
-const FlowSelectionModalTemplate: StoryFn<any> = ({ cardCount = 3 }) => {
+const FlowSelectionModalTemplate: StoryFn = ({ cardCount = 3 }: { cardCount?: number }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
   const { theme } = useTheme();
@@ -2374,14 +2375,14 @@ const FlowSelectionModalTemplate: StoryFn<any> = ({ cardCount = 3 }) => {
   const isMobile = matchedDeviceType === 'mobile';
 
   // Get modal size based on card count
-  const getModalSize = () => {
+  const getModalSize = (): 'small' | 'medium' | 'large' => {
     if (cardCount === 2) return 'small';
     if (cardCount === 3) return 'medium';
     return 'large';
   };
 
   // Get grid layout based on card count
-  const getGridLayout = () => {
+  const getGridLayout = (): { base: string; m: string } => {
     if (cardCount === 2) {
       return {
         base: '1fr 1fr',
@@ -2401,24 +2402,16 @@ const FlowSelectionModalTemplate: StoryFn<any> = ({ cardCount = 3 }) => {
   };
 
   // Get card width based on count and device
-  const getCardWidth = () => {
-    if (cardCount === 2) {
-      return isMobile ? '165px' : '160px';
-    }
-    if (cardCount === 3) {
-      return isMobile ? '165px' : '230px';
-    }
+  const getCardWidth = (): SpacingValueType => {
+    if (cardCount === 2) return isMobile ? '165px' : '160px';
+    if (cardCount === 3) return isMobile ? '165px' : '230px';
     return isMobile ? '165px' : '220px';
   };
 
   // Get card height based on count and device
-  const getCardHeight = () => {
-    if (cardCount === 2) {
-      return isMobile ? '250px' : '300px';
-    }
-    if (cardCount === 3) {
-      return isMobile ? '250px' : '250px';
-    }
+  const getCardHeight = (): SpacingValueType => {
+    if (cardCount === 2) return isMobile ? '250px' : '300px';
+    if (cardCount === 3) return isMobile ? '250px' : '250px';
     return isMobile ? '250px' : '260px';
   };
 
