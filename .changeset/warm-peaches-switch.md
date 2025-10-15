@@ -2,4 +2,4 @@
 "@razorpay/blade": minor
 ---
 
-feat(blade): Creation View V2
+feat(blade): creation view v2
