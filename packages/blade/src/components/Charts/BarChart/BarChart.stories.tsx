@@ -19,9 +19,7 @@ const Page = (): React.ReactElement => {
       componentName="BarChart"
       componentDescription="A Bar Chart component built on top of Recharts with Blade design system styling."
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188719&p=f&m=dev"
-      apiDecisionLink={
-        'https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md'
-      }
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
