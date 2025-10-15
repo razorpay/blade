@@ -55,7 +55,6 @@ import {
   Button,
   IconButton,
   Text,
-  Heading,
   Code,
   Link,
   Divider,
@@ -65,15 +64,12 @@ import {
   Collapsible,
   CollapsibleBody,
   CollapsibleLink,
-} from '@razorpay/blade/components';
-import {
   MoreHorizontalIcon,
   DownloadIcon,
   CopyIcon,
   CheckIcon,
   ClockIcon,
-} from '@razorpay/blade/tokens';
-
+} from '@razorpay/blade/components';
 type Transaction = {
   id: string;
   paymentId: string;
@@ -87,7 +83,13 @@ type Transaction = {
   account: string;
 };
 
-const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
+const KeyValueItem = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => (
   <>
     <Text variant="body" size="small" color="surface.text.gray.muted">
       {label}
@@ -190,13 +192,7 @@ const TransactionDetailedView = () => {
           </TableToolbar>
         }
         pagination={
-          <TablePagination
-            onPageChange={() => {}}
-            defaultPageSize={10}
-            onPageSizeChange={() => {}}
-            showPageSizePicker
-            showPageNumberSelector
-          />
+          <TablePagination defaultPageSize={10} showPageSizePicker showPageNumberSelector />
         }
       >
         {(tableData) => (
@@ -415,8 +411,8 @@ const TransactionDetailedView = () => {
 };
 
 export default TransactionDetailedView;
-```
 
+```
 ### Settlement Details with Card Integration
 
 This example demonstrates a DetailedView pattern triggered from a Card component, showing settlement breakdown and transaction details.
@@ -443,16 +439,20 @@ import {
   Divider,
   Code,
   Link,
-} from '@razorpay/blade/components';
-import {
   RazorpayIcon,
   ExternalLinkIcon,
   DownloadIcon,
   CheckIcon,
   CopyIcon,
-} from '@razorpay/blade/tokens';
+} from '@razorpay/blade/components';
 
-const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
+const KeyValueItem = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => (
   <>
     <Text variant="body" size="small" color="surface.text.gray.muted">
       {label}

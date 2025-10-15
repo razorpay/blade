@@ -12,7 +12,13 @@ const X_AXIS_TEXT_BASELINE = 24;
 
 const MIN_WIDTH = RECT_WIDTH;
 const MAX_WIDTH = 200;
+
+const componentId = {
+  chartLegend: 'chart-legend',
+};
+
 export {
+  componentId,
   RECT_WIDTH,
   RECT_HEIGHT,
   TEXT_BASELINE,

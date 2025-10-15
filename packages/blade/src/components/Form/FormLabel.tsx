@@ -27,7 +27,7 @@ type CommonProps = {
    * Sets the size of the label
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   labelSuffix?: React.ReactNode;
   labelTrailing?: React.ReactNode;
 };

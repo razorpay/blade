@@ -11,6 +11,7 @@ import {
   OtpModalStory,
   ShareModalStory,
   InformationalModalStory,
+  NonDismissibleModalStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -49,14 +50,6 @@ export const ModalWithHeaderFooter = (): React.ReactElement => {
   );
 };
 
-export const ModalWithScrollableBackground = (): React.ReactElement => {
-  return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {ModalWithScrollableBackgroundStory}
-    </Sandbox>
-  );
-};
-
 export const ModalWithScrollableContent = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
@@ -65,10 +58,10 @@ export const ModalWithScrollableContent = (): React.ReactElement => {
   );
 };
 
-export const ModalStacking = (): React.ReactElement => {
+export const ModalWithScrollableBackground = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
-      {ModalStackingStory}
+      {ModalWithScrollableBackgroundStory}
     </Sandbox>
   );
 };
@@ -77,6 +70,14 @@ export const ModalWithNoBodyPadding = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {ModalWithNoBodyPaddingStory}
+    </Sandbox>
+  );
+};
+
+export const ModalStacking = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {ModalStackingStory}
     </Sandbox>
   );
 };
@@ -101,6 +102,14 @@ export const InformationalModal = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {InformationalModalStory}
+    </Sandbox>
+  );
+};
+
+export const NonDismissibleModal = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {NonDismissibleModalStory}
     </Sandbox>
   );
 };

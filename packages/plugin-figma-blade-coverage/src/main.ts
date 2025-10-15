@@ -137,12 +137,12 @@ const renderCoverageCard = async ({
     }
 
     let coverageColorIntent = BLADE_INTENT_COLOR_KEYS.negative.id;
-    let bladeCoverageType = 'Below 90% 😪';
+    let bladeCoverageType = 'Below 95% 😪';
     const PROGRESS_BAR_MAX_WIDTH = 254;
     const bladeCoverageProgress = (bladeCoverage / 100) * PROGRESS_BAR_MAX_WIDTH;
 
     // calculate coverage type and intent colors for coverage
-    if (bladeCoverage > 90) {
+    if (bladeCoverage > 95) {
       bladeCoverageType = `Good 🎉`;
       coverageColorIntent = BLADE_INTENT_COLOR_KEYS.positive.id;
     }

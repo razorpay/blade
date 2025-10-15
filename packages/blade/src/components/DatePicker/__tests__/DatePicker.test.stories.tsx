@@ -1019,6 +1019,154 @@ DatePickerRangeCalendarToInput.play = async () => {
   await expect(queryByText('Apply')).toBeNull();
 };
 
+let handleApply: Mock<unknown, unknown[]> | null = null;
+
+export const DatePickerPresetOnApplyCurrentValues: StoryFn<
+  typeof DatePickerComponent
+> = (): React.ReactElement => {
+  handleApply = jest.fn();
+  const handleChange = jest.fn();
+
+  return (
+    <DatePickerComponent
+      selectionType="range"
+      label={{ start: 'Select date range' }}
+      defaultValue={[null, null]}
+      onChange={handleChange}
+      onApply={handleApply}
+      presets={[
+        {
+          label: 'Past 7 days',
+          value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+        },
+        {
+          label: 'Past 30 days',
+          value: (date) => [dayjs(date).subtract(30, 'days').toDate(), date],
+        },
+      ]}
+    />
+  );
+};
+
+DatePickerPresetOnApplyCurrentValues.play = async () => {
+  const { getByRole, queryByText } = within(document.body);
+
+  // Open the DatePicker
+  const rangeInput = getByRole('combobox', { name: /Select date range/i });
+  await userEvent.click(rangeInput);
+  await sleep(400);
+  await expect(queryByText('Apply')).toBeVisible();
+
+  // First selection: Past 7 days from preset sidebar
+  const firstPresetItem = getByRole('option', { name: /Past 7 days/i });
+  await userEvent.click(firstPresetItem);
+  await sleep(400);
+
+  // Apply the first selection
+  const applyButton = getByRole('button', { name: /Apply/i });
+  await userEvent.click(applyButton);
+  await sleep(400);
+
+  // Second selection: Past 30 days from preset sidebar (this is where stale value issue would occur)
+  const seleectPreset = getByRole('button', { name: /Past 7 days/i });
+  await userEvent.click(seleectPreset);
+  await sleep(1000);
+  const secondPresetItem = getByRole('menuitem', { name: /Past 30 days/i });
+  await userEvent.click(secondPresetItem);
+  await sleep(400);
+
+  // Apply the second selection
+  await userEvent.click(applyButton);
+  await sleep(400);
+
+  // Wait for state updates to complete
+  await sleep(200);
+
+  // Verify onApply was called twice with correct values
+  // This test ensures no stale values are passed to onApply
+  await expect(handleApply).toHaveBeenCalledTimes(2);
+
+  // Check first call (7 days)
+  const firstAppliedValue = handleApply!.mock.calls[0][0] as [Date, Date];
+  const firstDaysDiff = dayjs(firstAppliedValue[1]).diff(dayjs(firstAppliedValue[0]), 'days');
+  await expect(firstDaysDiff).toBe(7);
+
+  // Check second call (30 days) - this should NOT be stale
+  const secondAppliedValue = handleApply!.mock.calls[1][0] as [Date, Date];
+  const secondDaysDiff = dayjs(secondAppliedValue[1]).diff(dayjs(secondAppliedValue[0]), 'days');
+  await expect(secondDaysDiff).toBe(30);
+
+  // Verify both values are different (proving no stale values)
+  await expect(firstAppliedValue[0].getTime()).not.toBe(secondAppliedValue[0].getTime());
+};
+
+// Test case for form submission prevention when preset dropdown is clicked
+let handleFormSubmit: Mock<unknown, unknown[]> | null = null;
+let handleApplyForm: Mock<unknown, unknown[]> | null = null;
+
+export const DatePickerPresetFormSubmissionPrevention: StoryFn<
+  typeof DatePickerComponent
+> = (): React.ReactElement => {
+  handleFormSubmit = jest.fn();
+  handleApplyForm = jest.fn();
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleFormSubmit!(e);
+      }}
+    >
+      <DatePickerComponent
+        selectionType="range"
+        label={{ start: 'Select date range' }}
+        onApply={handleApplyForm}
+        presets={[
+          {
+            label: 'Past 7 days',
+            value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+          },
+        ]}
+      />
+    </form>
+  );
+};
+
+DatePickerPresetFormSubmissionPrevention.play = async () => {
+  const { getByRole, queryByText } = within(document.body);
+
+  // Open the DatePicker (this should NOT trigger form submission)
+  const rangeInput = getByRole('combobox', { name: /Select date range/i });
+  await userEvent.click(rangeInput);
+  await sleep(400);
+  await expect(queryByText('Apply')).toBeVisible();
+
+  // Verify form was NOT submitted when opening DatePicker
+  await expect(handleFormSubmit).not.toHaveBeenCalled();
+
+  // Click on preset item
+  const presetItem = getByRole('option', { name: /Past 7 days/i });
+  await userEvent.click(presetItem);
+  await sleep(400);
+
+  // Apply the selection
+  const applyButton = getByRole('button', { name: /Apply/i });
+  await userEvent.click(applyButton);
+  await sleep(400);
+
+  // Verify form was NOT submitted (handleFormSubmit should not be called)
+  // This test ensures the dropdown button has type="button" to prevent form submission
+  await expect(handleFormSubmit).not.toHaveBeenCalled();
+
+  // Verify onApply was called (preset worked correctly)
+  await expect(handleApplyForm).toHaveBeenCalledTimes(1);
+
+  // Verify the preset value was applied correctly
+  const appliedValue = handleApplyForm!.mock.calls[0][0] as [Date, Date];
+  const daysDiff = dayjs(appliedValue[1]).diff(dayjs(appliedValue[0]), 'days');
+  await expect(daysDiff).toBe(7);
+};
+
 export default {
   title: 'Components/Interaction Tests/DatePicker',
   component: DatePickerComponent,

@@ -68,7 +68,8 @@ type AccordionProps = {
    */
   children: React.ReactElement | React.ReactElement[];
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  Pick<BoxProps, 'minWidth' | 'maxWidth'>;
 
 export type {
   StyledAccordionButtonProps,

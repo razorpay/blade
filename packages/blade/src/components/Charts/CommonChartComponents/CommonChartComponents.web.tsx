@@ -14,6 +14,7 @@ import type {
   ChartTooltipProps,
   ChartLegendProps,
   ChartCartesianGridProps,
+  Layout,
 } from './types';
 import {
   RECT_HEIGHT,
@@ -23,11 +24,13 @@ import {
   X_AXIS_TEXT_BASELINE,
   Y_OFFSET,
   X_OFFSET,
+  componentId,
 } from './tokens';
 import { calculateTextWidth } from './utils';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -126,7 +129,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
             <Heading size="small" weight="semibold" color="surface.text.staticWhite.normal">
               {label}
             </Heading>
-            <Box paddingTop="spacing.4">
+            <Box paddingTop={label ? 'spacing.4' : undefined}>
               {payload.map((item) => (
                 <Box
                   display="flex"
@@ -140,7 +143,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
                       style={{
                         width: theme.spacing[4],
                         height: theme.spacing[4],
-                        backgroundColor: item.color,
+                        backgroundColor: item.color || item.payload.fill,
                         borderRadius: theme.border.radius.small,
                       }}
                     />
@@ -157,7 +160,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
           </div>
         );
       }}
-      cursor={{ fill: 'rgba(0, 0, 0, 0.1)', stroke: theme.colors.surface.border.gray.muted }}
+      cursor={{ fill: 'transparent', stroke: 'transparent' }}
       {...props}
     />
   );
@@ -171,22 +174,32 @@ const CustomSquareLegend = (props: {
     value: string;
     color: string;
   }>;
+  layout: Layout;
 }): JSX.Element | null => {
-  const { payload } = props;
+  const { payload, layout } = props;
   const { theme } = useTheme();
 
   if (!payload || payload.length === 0) {
     return null;
   }
+
   /*
   This is a custom legend component that is used to display the legend for the chart.
   we need to show the legend only if the legendType is not none. (for example in line chart we don't want to show the legend for the reference line)
   so we are filtering the payload and then mapping over it to display the legend.
   */
   const filteredPayload = payload.filter((entry) => entry?.payload?.legendType !== 'none');
+  const isVerticalLayout = layout === 'vertical';
 
   return (
-    <Box display="flex" justifyContent="center" gap="spacing.5">
+    <Box
+      display="flex"
+      justifyContent="center"
+      gap="spacing.5"
+      flexDirection={isVerticalLayout ? 'column' : 'row'}
+      width={isVerticalLayout ? '100%' : 'auto'}
+      flexWrap="wrap"
+    >
       {filteredPayload.map((entry, index) => (
         <Box key={`item-${index}`} display="flex" alignItems="center">
           <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
@@ -210,7 +223,7 @@ const CustomSquareLegend = (props: {
   );
 };
 
-const ChartLegend: React.FC<ChartLegendProps> = (props) => {
+const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
   const { theme } = useTheme();
 
   return (
@@ -222,11 +235,16 @@ const ChartLegend: React.FC<ChartLegendProps> = (props) => {
         paddingTop: theme.spacing[5],
       }}
       align="center"
-      content={<CustomSquareLegend />}
+      verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
+      content={<CustomSquareLegend layout={props.layout ?? 'horizontal'} />}
       {...props}
     />
   );
 };
+
+const ChartLegend = assignWithoutSideEffects(_ChartLegend, {
+  componentId: componentId.chartLegend,
+});
 
 const CustomReferenceLabel = ({
   viewBox,

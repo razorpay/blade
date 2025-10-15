@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.54.0",
+  "version": "12.60.1",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -91,12 +91,12 @@
     "build": "npm-run-all build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:clean-theme-bundle",
     "clearCache": "pnpm run jest --clearCache",
     "build:clean": "rm -rf build",
-    "build:generate-types": "npm-run-all types:generate-types:*",
-    "build:copy-declarations": "npm-run-all types:copy-declarations:*",
-    "types:generate-types:web": "pnpm ttsc -p ./tsconfig-generate-types.web.json",
-    "types:generate-types:native": "pnpm ttsc -p ./tsconfig-generate-types.native.json",
-    "types:typecheck:web": "pnpm tsc -p ./tsconfig-typecheck.web.json",
-    "types:typecheck:native": "pnpm tsc -p ./tsconfig-typecheck.native.json",
+    "build:generate-types": "run-s types:generate-types:*",
+    "build:copy-declarations": "run-s types:copy-declarations:*",
+    "types:generate-types:web": "tsc -p ./tsconfig-generate-types.web.json && pnpm tsc-alias -p ./tsconfig-generate-types.web.json",
+    "types:generate-types:native": "tsc -p ./tsconfig-generate-types.native.json && pnpm tsc-alias -p ./tsconfig-generate-types.native.json",
+    "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
+    "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
     "types:copy-declarations:web": "copyfiles -u 1 build/types/web/components/**/*.d.ts build/components/**/*",
     "types:copy-declarations:native": "copyfiles -u 1 build/types/native/components/**/*.d.ts build/components/**/*",
     "build:generate-root-imports": "node ./scripts/generateRootImports.js",
@@ -299,9 +299,8 @@
     "styled-components": "5.3.5",
     "svgson": "5.3.1",
     "tsconfig-paths-webpack-plugin": "3.5.2",
-    "ttypescript": "1.5.15",
+    "tsc-alias": "^1.8.8",
     "typescript": "4.9",
-    "typescript-transform-paths": "3.4.7",
     "wait-on": "7.2.0"
   },
   "peerDependencies": {

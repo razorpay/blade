@@ -1,11 +1,7 @@
 import type { LineProps as RechartsLineProps } from 'recharts';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
-import type { colorTheme } from '../utils';
-import type {
-  BaseBoxProps,
-  FlexboxProps,
-  GridProps,
-} from '~components/Box/BaseBox/types/propsTypes';
+import type { ColorTheme } from '../utils';
+import type { BoxProps } from '~components/Box';
 
 interface ChartLineProps {
   /**
@@ -56,7 +52,7 @@ interface ChartLineProps {
   /**
    * @private
    */
-  _colorTheme?: colorTheme;
+  _colorTheme?: ColorTheme;
 }
 
 type data = {
@@ -66,14 +62,15 @@ type data = {
 // TypeScript prop types
 type ChartLineWrapperProps = {
   /**
-   * The color theme of the line chart.
+   * The color theme of the chart.
+   * @default 'categorical'
    */
-  colorTheme?: colorTheme;
+  colorTheme?: ColorTheme;
   /**
    * Chart data to be rendered
    */
   data: data[];
   children: React.ReactNode;
-} & Partial<Omit<BaseBoxProps, keyof FlexboxProps | keyof GridProps>>;
+} & BoxProps;
 
 export type { ChartLineProps, ChartLineWrapperProps };

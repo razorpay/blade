@@ -698,10 +698,20 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'TimePicker',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '12.54.0',
     storybookLink: 'Components/TimePicker',
     description:
       'TimePicker component allows users to select a specific time from a customizable time interface. It supports both 12-hour and 24-hour formats, provides an intuitive picker interface, and automatically adapts to mobile devices with a BottomSheet experience.',
+    platform: 'web',
+  },
+  {
+    name: 'CounterInput',
+    status: 'released',
+    releasedIn: '12.59.0',
+    storybookLink: 'Components/CounterInput',
+    description:
+      'CounterInput component allows users to increment or decrement small numerical values (typically 0-99) using built-in controls with manual text input support. Optimized for quantity selection, settings with boundaries, and scenarios requiring clear min/max constraints. For larger values (99+), use TextInput with type="number" instead.',
     platform: 'web',
   },
 ];

@@ -14,6 +14,9 @@ import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
+import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
+import { Amount } from '~components/Amount';
+import { Text } from '~components/Typography/Text';
 
 const Page = (): React.ReactElement => {
   return (
@@ -21,7 +24,7 @@ const Page = (): React.ReactElement => {
       componentName="AreaChart"
       componentDescription="An Area Chart component built on top of Recharts with Blade design system styling."
       apiDecisionLink={
-        'https://github.com/razorpay/blade/blob/5920fbd32c70793454f8c8c6ff544b2a7413afb5/packages/blade/src/components/Charts/_decisions/decisions.md'
+        'https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md'
       }
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188717&p=f&m=dev"
     >
@@ -205,6 +208,26 @@ const data = [
   },
 ];
 
+// Sample data for card examples
+const revenueData = [
+  { month: 'Jan', revenue: 12500 },
+  { month: 'Feb', revenue: 15200 },
+  { month: 'Mar', revenue: 14800 },
+  { month: 'Apr', revenue: 18100 },
+  { month: 'May', revenue: 19500 },
+  { month: 'Jun', revenue: 22300 },
+];
+
+const trafficData = [
+  { day: 'Mon', visitors: 2400 },
+  { day: 'Tue', visitors: 1398 },
+  { day: 'Wed', visitors: 3800 },
+  { day: 'Thu', visitors: 3908 },
+  { day: 'Fri', visitors: 4800 },
+  { day: 'Sat', visitors: 3800 },
+  { day: 'Sun', visitors: 4300 },
+];
+
 // 2.2.a - Simple Area Chart
 export const SimpleAreaChart: StoryFn<typeof ChartArea> = ({
   dataKey = 'teamA',
@@ -250,6 +273,14 @@ export const StackedAreaChart: StoryFn<typeof ChartArea> = ({
           type="monotone"
           stackId="1"
           color="chart.background.categorical.azure.moderate"
+          {...args}
+        />
+        <ChartArea
+          dataKey={dataKey}
+          name={name}
+          type="monotone"
+          stackId="1"
+          color="chart.background.categorical.crimson.moderate"
           {...args}
         />
       </ChartAreaWrapper>
@@ -386,7 +417,7 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof ChartArea> = ({
 }) => {
   return (
     <Box width="100%" height="400px">
-      <ChartAreaWrapper data={chartData} colorTheme="default">
+      <ChartAreaWrapper data={chartData} colorTheme="categorical">
         <ChartCartesianGrid />
         <ChartXAxis dataKey="month" />
         <ChartYAxis />
@@ -398,10 +429,74 @@ export const AreaChartWithDefaultColorTheme: StoryFn<typeof ChartArea> = ({
   );
 };
 
+// Area Chart inside Card - Dashboard Widget Example
+export const AreaChartInCard: StoryFn<typeof ChartArea> = () => {
+  return (
+    <Box display="flex" gap="spacing.5" flexWrap="wrap">
+      {/* Revenue Card */}
+      <Card width="320px">
+        <CardHeader>
+          <CardHeaderLeading title="Monthly Revenue" subtitle="Last 6 months" />
+        </CardHeader>
+        <CardBody>
+          <Box marginBottom="spacing.4">
+            <Amount value={22300} size="large" color="surface.text.gray.normal" />
+            <Text size="small" color="feedback.text.positive.intense">
+              +18% from last month
+            </Text>
+          </Box>
+          <Box height="120px">
+            <ChartAreaWrapper data={revenueData}>
+              <ChartArea
+                dataKey="revenue"
+                name="Revenue"
+                type="monotone"
+                color="chart.background.categorical.emerald.moderate"
+              />
+            </ChartAreaWrapper>
+          </Box>
+        </CardBody>
+      </Card>
+
+      {/* Website Traffic Card */}
+      <Card width="320px">
+        <CardHeader>
+          <CardHeaderLeading title="Website Traffic" subtitle="This week" />
+        </CardHeader>
+        <CardBody>
+          <Box marginBottom="spacing.4">
+            <Text size="large" weight="semibold" color="surface.text.gray.normal">
+              23,194 visitors
+            </Text>
+            <Text size="small" color="feedback.text.negative.intense">
+              -5% from last week
+            </Text>
+          </Box>
+          <Box height="120px">
+            <ChartAreaWrapper data={trafficData}>
+              <ChartArea
+                dataKey="visitors"
+                name="Visitors"
+                type="monotone"
+                color="chart.background.categorical.azure.moderate"
+              />
+            </ChartAreaWrapper>
+          </Box>
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+AreaChartInCard.parameters = {
+  controls: { disable: true },
+};
+
 AreaChartWithDefaultColorTheme.storyName = 'Area Chart with Color Theme';
 SimpleAreaChart.storyName = 'Simple Area Chart';
 StackedAreaChart.storyName = 'Stacked Area Chart';
 AreaChartConnectNulls.storyName = 'Area Chart (Connect Nulls)';
-TinyAreaChart.storyName = 'Tiny Area Chart';
+TinyAreaChart.storyName = 'Tiny Area Chart /  Chart ';
 AreaChartWithReferenceLine.storyName = 'Area Chart with Reference Line';
 AreaChartWithReferenceLineVertical.storyName = 'Area Chart with Reference Line (Vertical)';
+AreaChartInCard.storyName = 'Area Chart / Spark Chart in Card (Dashboard Widget)';

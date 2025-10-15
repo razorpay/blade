@@ -135,7 +135,7 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -238,7 +238,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         role="progressbar"
       >
         <div
-          class="c2"
+          class="c2 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -1189,7 +1189,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -1336,7 +1336,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -1483,7 +1483,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -1630,7 +1630,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -1777,7 +1777,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -1924,7 +1924,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -2071,7 +2071,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -2218,7 +2218,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -2365,7 +2365,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -2512,7 +2512,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -2655,7 +2655,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -2797,7 +2797,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -2939,7 +2939,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
         role="progressbar"
       >
         <div
-          class="c4"
+          class="c4 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -3041,7 +3041,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
         role="meter"
       >
         <div
-          class="c2"
+          class="c2 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -3465,7 +3465,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         role="progressbar"
       >
         <div
-          class="c9"
+          class="c9 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
@@ -3747,7 +3747,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         role="progressbar"
       >
         <div
-          class="c9"
+          class="c9 __blade-progress-bar-track"
           data-blade-component="base-box"
         >
           <div
