@@ -1994,7 +1994,7 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
             </Box>
 
             <Box display="flex" flexDirection="column" gap="spacing.3">
-              <Box display="flex" flexDirection="row" gap="spacing.10">
+              <Box display="grid" gridTemplateColumns="1fr 1fr">
                 <Box>
                   <Text weight="medium">Vendor:</Text>
                   <Text>{GRNVendors.find((v) => v.id === selectedVendor)?.name}</Text>
@@ -2004,7 +2004,7 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
                   <Text>{GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}</Text>
                 </Box>
               </Box>
-              <Box display="flex" flexDirection="row" gap="spacing.10">
+              <Box display="grid" gridTemplateColumns="1fr 1fr">
                 <Box>
                   <Text weight="medium">GRN Number:</Text>
                   <Text>{grnDetails.grnNumber}</Text>
