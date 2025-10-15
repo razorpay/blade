@@ -59,7 +59,7 @@ import { StepGroup, StepItem, StepItemIcon } from '~components/StepGroup';
 import { Divider } from '~components/Divider';
 import { TextArea } from '~components/Input/TextArea';
 import { Card, CardBody } from '~components/Card';
-import { DatePicker } from '~components/DatePicker';
+import { DatePicker, DateValue } from '~components/DatePicker';
 import { Slide } from '~components/Slide';
 import type { ModalBodyProps, ModalProps } from '~components/Modal';
 import type { SpacingValueType } from '~components/Box/BaseBox';
@@ -866,6 +866,16 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
     });
   };
 
+  const handleDateChange = (value: DateValue | undefined): void => {
+    setGrnDetails((prev) => ({
+      ...prev,
+      date: value ? dayjs(value).format('YYYY-MM-DD') : '',
+    }));
+    if (errors.date) {
+      setErrors((prev) => ({ ...prev, date: undefined }));
+    }
+  };
+
   const deskTopFooter = ({ isLastStep }: { isLastStep?: boolean }): React.ReactElement => {
     return (
       <Box
@@ -1374,13 +1384,10 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
                   name="date"
                   value={grnDetails.date ? dayjs(grnDetails.date).toDate() : undefined}
                   onApply={(value) => {
-                    setGrnDetails((prev) => ({
-                      ...prev,
-                      date: value ? dayjs(value).format('YYYY-MM-DD') : '',
-                    }));
-                    if (errors.date) {
-                      setErrors((prev) => ({ ...prev, date: undefined }));
-                    }
+                    handleDateChange(value);
+                  }}
+                  onChange={(value) => {
+                    handleDateChange(value);
                   }}
                   onOpenChange={() => {
                     setIsDatePickerOpen((prev) => !prev);
