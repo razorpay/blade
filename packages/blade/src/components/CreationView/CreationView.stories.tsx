@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import storyRouterDecorator from 'storybook-react-router';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -692,7 +692,7 @@ const RadioCard = ({
   );
 };
 
-const MultiStepExample: StoryFn<typeof Modal> = () => {
+const MultiStepExample: StoryFn<any> = ({ withProgressBar = false }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
   const isMobile = useIsMobile();
@@ -898,6 +898,13 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
       </Box>
     );
   };
+
+  // Move user from step 5 to step 4 when switching to mobile (mobile doesn't show review step)
+  useEffect(() => {
+    if (isMobile && currentStep === 5) {
+      setCurrentStep(4);
+    }
+  }, [isMobile]);
 
   const renderReviewContent = (): React.ReactElement => (
     <Box
@@ -1587,7 +1594,9 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
               role="button"
               tabIndex={0}
               onClick={() => {
-                setShowStepGroup((prev: boolean) => !prev);
+                if (!withProgressBar) {
+                  setShowStepGroup((prev: boolean) => !prev);
+                }
               }}
               // eslint-disable-next-line @typescript-eslint/no-empty-function
               onKeyDown={() => {}}
@@ -1615,7 +1624,7 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
                   </Badge>
                   <Heading size="small">{currentStepObj?.title}</Heading>
 
-                  {showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                  {!withProgressBar && (showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />)}
                 </Box>
               </Box>
             </div>
@@ -1679,16 +1688,27 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
       ) : (
         <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
           <ModalHeader title="New GRN" />
+          {withProgressBar && (
+            <ProgressBar
+              value={(currentStep / lastStep) * 100}
+              showPercentage={false}
+              size="medium"
+              color={alert?.type === 'negative' ? 'negative' : undefined}
+            />
+          )}
           <ModalBody height="100%" padding="spacing.0">
             <Box width="100%" height="100%" display="flex" flexDirection="column">
               <Box display="flex" flex={1}>
-                <Box
-                  width="300px"
-                  padding="spacing.7"
-                  backgroundColor="surface.background.gray.moderate"
-                >
-                  {renderStepGroup()}
-                </Box>
+                {!withProgressBar && (
+                  <Box
+                    width="300px"
+                    padding="spacing.7"
+                    backgroundColor="surface.background.gray.moderate"
+                  >
+                    {renderStepGroup()}
+                  </Box>
+                )}
+
                 <Box width="100%" display="flex" flexDirection="column">
                   <Box flex={1} overflow="auto">
                     {renderStepContent(isMobile)}
@@ -1704,7 +1724,385 @@ const MultiStepExample: StoryFn<typeof Modal> = () => {
 };
 
 export const MultiStep = MultiStepExample.bind({});
-MultiStep.storyName = 'Multi Step Example (Form Group + Preview + Full Page Modal)';
+MultiStep.storyName = 'Multi Steps with StepGroup (Form Group + Preview + Full Page Modal)';
+
+export const MultiStepProgressBar = MultiStepExample.bind({});
+MultiStepProgressBar.args = {
+  withProgressBar: true,
+};
+MultiStepProgressBar.storyName =
+  'Multi Steps with Progress Bar (Form Group + Preview + Full Page Modal)';
+
+const CompactMultiStepExample: StoryFn<any> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [currentStep, setCurrentStep] = React.useState(1);
+  const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
+  const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
+  const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
+  const [errors, setErrors] = React.useState<{
+    vendor?: string;
+    purchaseOrder?: string;
+    referenceNumber?: string;
+  }>({});
+  const [grnDetails, setGrnDetails] = React.useState({
+    grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
+      .toString()
+      .padStart(3, '0')}`,
+    referenceNumber: '',
+  });
+  const [alert, setAlert] = React.useState<{
+    type: 'positive' | 'negative';
+    title: string;
+    description: string;
+  } | null>(null);
+
+  const validateStep = (step: number): boolean => {
+    const newErrors: typeof errors = {};
+
+    if (step === 1 && !selectedVendor) {
+      newErrors.vendor = 'Please select a vendor to proceed';
+    }
+    if (step === 2 && !selectedPO) {
+      newErrors.purchaseOrder = 'Please select a purchase order to proceed';
+    }
+    if (step === 3 && !grnDetails.referenceNumber) {
+      newErrors.referenceNumber = 'Reference number is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleNextStep = (): void => {
+    if (currentStep < GRNSteps.length) {
+      if (validateStep(currentStep)) {
+        setCompletedSteps((prev) => [...prev, currentStep]);
+        setCurrentStep(currentStep + 1);
+        setAlert({
+          type: 'positive',
+          title: 'Success!',
+          description: 'Step completed successfully.',
+        });
+      } else {
+        setAlert({
+          type: 'negative',
+          title: 'Validation Failed',
+          description: 'Please fix the errors and try again.',
+        });
+      }
+    }
+  };
+
+  const handlePreviousStep = (): void => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+      setAlert(null);
+      setErrors({});
+    }
+  };
+
+  const getStepIcon = (stepNumber: number): React.ReactElement => {
+    if (alert?.type === 'negative' && stepNumber === currentStep) {
+      return <StepItemIcon icon={InfoIcon} color="negative" />;
+    }
+    if (completedSteps.includes(stepNumber)) {
+      return <StepItemIcon icon={CheckIcon} color="positive" />;
+    }
+    if (stepNumber === currentStep) {
+      return <StepItemIcon icon={FileIcon} color="primary" />;
+    }
+    return <StepItemIcon icon={LockIcon} color="primary" />;
+  };
+
+  const resetState = (): void => {
+    setCurrentStep(1);
+    setSelectedVendor(null);
+    setSelectedPO(null);
+    setCompletedSteps([]);
+    setErrors({});
+    setAlert(null);
+    setGrnDetails({
+      grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
+        .toString()
+        .padStart(3, '0')}`,
+      referenceNumber: '',
+    });
+  };
+
+  const compactTableData = {
+    nodes: [
+      {
+        id: '1',
+        name: 'Laptop Dell XPS 13',
+        quantity: 2,
+        unitPrice: 85000,
+      },
+      {
+        id: '2',
+        name: 'Wireless Mouse',
+        quantity: 5,
+        unitPrice: 1200,
+      },
+    ],
+  };
+
+  const renderStepContent = (): React.ReactElement | null => {
+    switch (currentStep) {
+      case 1:
+        return (
+          <Box padding="spacing.5" display="flex" flexDirection="column" gap="spacing.4">
+            <Box>
+              <Heading size="medium">Select Vendor</Heading>
+              <Text size="medium" color="surface.text.gray.muted">
+                Choose a vendor from the list below
+              </Text>
+            </Box>
+            <RadioGroup
+              label="Available Vendors"
+              name="vendor"
+              value={selectedVendor ?? ''}
+              onChange={({ value }) => {
+                setSelectedVendor(value);
+                if (errors.vendor) {
+                  setErrors((prev) => ({ ...prev, vendor: undefined }));
+                }
+              }}
+              validationState={errors.vendor ? 'error' : 'none'}
+              errorText={errors.vendor}
+            >
+              {GRNVendors.slice(0, 3).map((vendor) => (
+                <Radio key={vendor.id} value={vendor.id}>
+                  {vendor.name}
+                </Radio>
+              ))}
+            </RadioGroup>
+          </Box>
+        );
+      case 2:
+        return (
+          <Box padding="spacing.5" display="flex" flexDirection="column" gap="spacing.4">
+            <Box>
+              <Heading size="medium">Link Purchase Order</Heading>
+              <Text size="medium" color="surface.text.gray.muted">
+                Select a Purchase Order to link with this GRN
+              </Text>
+            </Box>
+            <RadioGroup
+              label="Available Purchase Orders"
+              name="purchaseOrder"
+              value={selectedPO ?? ''}
+              onChange={({ value }) => {
+                setSelectedPO(value);
+                if (errors.purchaseOrder) {
+                  setErrors((prev) => ({ ...prev, purchaseOrder: undefined }));
+                }
+              }}
+              validationState={errors.purchaseOrder ? 'error' : 'none'}
+              errorText={errors.purchaseOrder}
+            >
+              {GRNPurchaseOrders.slice(0, 3).map((po) => (
+                <Radio key={po.id} value={po.id}>
+                  {po.number} - ₹{po.amount.toLocaleString()}
+                </Radio>
+              ))}
+            </RadioGroup>
+          </Box>
+        );
+      case 3:
+        return (
+          <Box padding="spacing.5" display="flex" flexDirection="column" gap="spacing.4">
+            <Box>
+              <Heading size="medium">GRN Details</Heading>
+              <Text size="medium" color="surface.text.gray.muted">
+                Add basic details for this GRN
+              </Text>
+            </Box>
+            <TextInput
+              label="GRN Number"
+              value={grnDetails.grnNumber}
+              isDisabled
+              helpText="Auto-generated"
+            />
+            <TextInput
+              label="Reference Number"
+              value={grnDetails.referenceNumber}
+              onChange={({ value }) => {
+                setGrnDetails((prev) => ({
+                  ...prev,
+                  referenceNumber: value ?? '',
+                }));
+                if (errors.referenceNumber) {
+                  setErrors((prev) => ({ ...prev, referenceNumber: undefined }));
+                }
+              }}
+              validationState={errors.referenceNumber ? 'error' : 'none'}
+              errorText={errors.referenceNumber}
+              placeholder="Enter reference number"
+              isRequired
+              necessityIndicator="required"
+            />
+          </Box>
+        );
+      case 4:
+        return (
+          <Box padding="spacing.5" display="flex" flexDirection="column" gap="spacing.4">
+            <Box>
+              <Heading size="medium">Line Items</Heading>
+              <Text size="medium" color="surface.text.gray.muted">
+                Review the items for this GRN
+              </Text>
+            </Box>
+            <Box>
+              <Text weight="medium" marginBottom="spacing.3">
+                Selected Items:
+              </Text>
+              {compactTableData.nodes.slice(0, 3).map((item) => (
+                <Box
+                  key={item.id}
+                  padding="spacing.3"
+                  borderWidth="thin"
+                  borderColor="surface.border.gray.muted"
+                  borderRadius="medium"
+                  marginBottom="spacing.2"
+                >
+                  <Box display="flex" justifyContent="space-between">
+                    <Text>{item.name}</Text>
+                    <Text>Qty: {item.quantity}</Text>
+                  </Box>
+                  <Text size="small" color="surface.text.gray.muted">
+                    ₹{item.unitPrice.toLocaleString()} × {item.quantity} = ₹
+                    {(item.quantity * item.unitPrice).toLocaleString()}
+                  </Text>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        );
+      case 5:
+        return (
+          <Box padding="spacing.5" display="flex" flexDirection="column" gap="spacing.4">
+            <Box>
+              <Heading size="medium">Review & Submit</Heading>
+            </Box>
+
+            <Box display="flex" flexDirection="column" gap="spacing.3">
+              <Box display="flex" flexDirection="row" gap="spacing.10">
+                <Box>
+                  <Text weight="medium">Vendor:</Text>
+                  <Text>{GRNVendors.find((v) => v.id === selectedVendor)?.name}</Text>
+                </Box>
+                <Box>
+                  <Text weight="medium">Purchase Order:</Text>
+                  <Text>{GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}</Text>
+                </Box>
+              </Box>
+              <Box display="flex" flexDirection="row" gap="spacing.10">
+                <Box>
+                  <Text weight="medium">GRN Number:</Text>
+                  <Text>{grnDetails.grnNumber}</Text>
+                </Box>
+                <Box>
+                  <Text weight="medium">Reference Number:</Text>
+                  <Text>{grnDetails.referenceNumber}</Text>
+                </Box>
+              </Box>
+
+              <Box>
+                <Text weight="medium">Total Amount:</Text>
+                <Text>
+                  ₹
+                  {compactTableData.nodes
+                    .reduce((acc, item) => acc + item.quantity * item.unitPrice, 0)
+                    .toLocaleString()}
+                </Text>
+              </Box>
+            </Box>
+          </Box>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const renderStepGroup = (): React.ReactElement => {
+    return (
+      <StepGroup orientation="vertical" size="medium">
+        {GRNSteps.map((step) => (
+          <StepItem
+            key={step.stepNumber}
+            title={step.title}
+            marker={getStepIcon(step.stepNumber)}
+            isSelected={currentStep === step.stepNumber}
+            isDisabled={step.stepNumber > currentStep}
+            onClick={() => step.stepNumber <= currentStep && setCurrentStep(step.stepNumber)}
+            stepProgress={
+              completedSteps.includes(step.stepNumber)
+                ? 'full'
+                : currentStep === step.stepNumber
+                ? 'start'
+                : 'none'
+            }
+          />
+        ))}
+      </StepGroup>
+    );
+  };
+
+  const renderFooter = (): React.ReactElement => (
+    <Box display="flex" justifyContent="space-between" width="100%">
+      <Button variant="tertiary" onClick={() => setIsOpen(false)}>
+        Save and Close
+      </Button>
+      <Box display="flex" gap="spacing.3">
+        <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
+          Previous
+        </Button>
+        <Button
+          variant="primary"
+          onClick={
+            currentStep === GRNSteps.length
+              ? () => {
+                  resetState();
+                  setIsOpen(false);
+                }
+              : handleNextStep
+          }
+        >
+          {currentStep === GRNSteps.length ? 'Submit' : 'Next'}
+        </Button>
+      </Box>
+    </Box>
+  );
+
+  return (
+    <Box>
+      <Button onClick={() => setIsOpen(true)}>Create GRN</Button>
+      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="medium">
+        <ModalHeader title="Create GRN" />
+        <ModalBody padding="spacing.0">
+          <Box display="flex" height="100%">
+            <Box
+              width="250px"
+              padding="spacing.5"
+              backgroundColor="surface.background.gray.moderate"
+            >
+              {renderStepGroup()}
+            </Box>
+            <Box flex={1} display="flex" flexDirection="column">
+              <Box flex={1} overflow="auto">
+                {renderStepContent()}
+              </Box>
+            </Box>
+          </Box>
+        </ModalBody>
+        <ModalFooter>{renderFooter()}</ModalFooter>
+      </Modal>
+    </Box>
+  );
+};
+
+export const CompactMultiStep = CompactMultiStepExample.bind({});
+CompactMultiStep.storyName = 'Multi Steps with StepGroup (Form Group + Medium Modal)';
 
 const ResponsiveModalWrapper = ({
   children,
@@ -1964,15 +2362,65 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
     </Box>
   );
 };
+
 export const FlowSelectionModalWithIcon = FlowSelectionModalTemplateWithIcon.bind({});
 FlowSelectionModalWithIcon.storyName = 'Flow Selection Modal - with Icon Cards';
 
-const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
+const FlowSelectionModalTemplate: StoryFn<any> = ({ cardCount = 3 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
   const isMobile = matchedDeviceType === 'mobile';
+
+  // Get modal size based on card count
+  const getModalSize = () => {
+    if (cardCount === 2) return 'small';
+    if (cardCount === 3) return 'medium';
+    return 'large';
+  };
+
+  // Get grid layout based on card count
+  const getGridLayout = () => {
+    if (cardCount === 2) {
+      return {
+        base: '1fr 1fr',
+        m: '1fr 1fr',
+      };
+    }
+    if (cardCount === 3) {
+      return {
+        base: '1fr 1fr',
+        m: '1fr 1fr 1fr',
+      };
+    }
+    return {
+      base: '1fr 1fr',
+      m: '1fr 1fr 1fr 1fr',
+    };
+  };
+
+  // Get card width based on count and device
+  const getCardWidth = () => {
+    if (cardCount === 2) {
+      return isMobile ? '165px' : '160px';
+    }
+    if (cardCount === 3) {
+      return isMobile ? '165px' : '230px';
+    }
+    return isMobile ? '165px' : '220px';
+  };
+
+  // Get card height based on count and device
+  const getCardHeight = () => {
+    if (cardCount === 2) {
+      return isMobile ? '250px' : '300px';
+    }
+    if (cardCount === 3) {
+      return isMobile ? '250px' : '250px';
+    }
+    return isMobile ? '250px' : '260px';
+  };
 
   const standardButtons = [
     {
@@ -2007,11 +2455,10 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
     img: cardImage,
     isDisabled: true,
   };
-  const paymentMethods = [...standardButtons];
 
-  if (!isMobile) {
-    paymentMethods.push(customButton);
-  }
+  // Create all buttons array and slice based on cardCount
+  const allButtons = [...standardButtons, customButton];
+  const paymentMethods = allButtons.slice(0, cardCount);
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
@@ -2020,7 +2467,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         onDismiss={() => {
           setIsOpen(false);
         }}
-        modalSize="large"
+        modalSize={getModalSize()}
         footer={
           <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
             <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
@@ -2060,11 +2507,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
         <Box padding="spacing.6">
           <Box
             display="grid"
-            gridTemplateColumns={{
-              base: '1fr 1fr',
-              m: '1fr 1fr 1fr',
-              l: '1fr 1fr 1fr 1fr',
-            }}
+            gridTemplateColumns={getGridLayout()}
             justifyItems="center"
             gap="spacing.5"
             width="100%"
@@ -2076,21 +2519,22 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                 onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
                 padding="spacing.0"
                 accessibilityLabel={`Select ${method.title}`}
-                width={isMobile ? '160px' : '230px'}
-                height={isMobile ? '250px' : undefined}
+                width={getCardWidth()}
+                height={getCardHeight()}
                 borderRadius="medium"
                 elevation={selectedMethod === method.value ? 'lowRaised' : 'none'}
               >
                 <CardBody>
                   <Box overflow="hidden">
-                    <div>
+                    <Box>
                       <img
                         src={method.img}
                         alt={method.title}
                         width={isMobile ? '160px' : '230px'}
                         height={isMobile ? '93px' : '130px'}
+                        style={{ borderRadius: '4px' }}
                       />
-                    </div>
+                    </Box>
                     <Box
                       display="flex"
                       flexDirection="row"
@@ -2098,6 +2542,8 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                       alignItems="center"
                       paddingX="spacing.5"
                       paddingY="spacing.4"
+                      alignContent="center"
+                      justifyContent="center"
                     >
                       <Box display="flex" flexDirection="column" gap="spacing.2">
                         <Text
@@ -2111,6 +2557,7 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
                         >
                           {method.title}
                         </Text>
+
                         <Text size="small" color="surface.text.gray.muted">
                           {method.subtitle}
                         </Text>
@@ -2126,8 +2573,18 @@ const FlowSelectionModalTemplate: StoryFn<typeof Modal> = () => {
     </Box>
   );
 };
-export const FlowSelectionModal = FlowSelectionModalTemplate.bind({});
-FlowSelectionModal.storyName = 'Flow Selection Modal';
+
+export const FlowSelectionModal2Cards = FlowSelectionModalTemplate.bind({});
+FlowSelectionModal2Cards.args = { cardCount: 2 };
+FlowSelectionModal2Cards.storyName = 'Flow Selection - 2 Cards (Small Modal)';
+
+export const FlowSelectionModal3Cards = FlowSelectionModalTemplate.bind({});
+FlowSelectionModal3Cards.args = { cardCount: 3 };
+FlowSelectionModal3Cards.storyName = 'Flow Selection - 3 Cards (Medium Modal)';
+
+export const FlowSelectionModal4Cards = FlowSelectionModalTemplate.bind({});
+FlowSelectionModal4Cards.args = { cardCount: 4 };
+FlowSelectionModal4Cards.storyName = 'Flow Selection - 4 Cards (Large Modal)';
 
 const SingleStepFormTemplate: StoryFn<typeof Modal> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
