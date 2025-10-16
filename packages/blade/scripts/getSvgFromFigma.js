@@ -1,8 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
-const FILE_ID = 'jubmQL9Z8V7881ayUD95ps';
-const NODE_ID = '110782-28621';
+const FILE_ID = process.env.FIGMA_FILE_ID || 'jubmQL9Z8V7881ayUD95ps';
+const NODE_ID = process.env.FIGMA_NODE_ID || '110782-28621';
 
 async function updateIconsJson(componentNames, svgData) {
   const iconsFilePath = path.join(__dirname, 'icons.json');
