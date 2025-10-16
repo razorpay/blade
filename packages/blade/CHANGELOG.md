@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.60.2
+
+### Patch Changes
+
+- a4717aa85: fix(blade): scroll issue in bottomsheet
+
 ## 12.60.1
 
 ### Patch Changes
