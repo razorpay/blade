@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
 import { useState } from 'react';
+import { fireEvent } from '@testing-library/react';
 import { BaseInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -354,5 +355,106 @@ describe('<BaseInput />', () => {
 
     expect(container).toMatchSnapshot();
     expect(getByLabelText('Enter name')).toHaveAttribute('data-analytics-name', 'base-input');
+  });
+
+  // Tests for new onPaste functionality
+  describe('onPaste functionality', () => {
+    it('should call onPaste prop when paste event occurs', () => {
+      const label = 'Enter name';
+      const onPaste = jest.fn();
+
+      const { getByLabelText } = renderWithTheme(
+        <BaseInput label={label} id="name" name="test-input" onPaste={onPaste} />,
+      );
+
+      const input = getByLabelText(label);
+
+      // Use fireEvent.paste to trigger the paste event
+      fireEvent.paste(input);
+
+      expect(onPaste).toHaveBeenCalledTimes(1);
+      expect(onPaste).toHaveBeenCalledWith({
+        name: 'test-input',
+        value: expect.any(Object), // ClipboardEvent
+      });
+    });
+
+    it('should pass clipboard data to onPaste handler', () => {
+      const label = 'Enter name';
+      const onPaste = jest.fn();
+
+      const { getByLabelText } = renderWithTheme(
+        <BaseInput label={label} id="name" name="clipboard-test" onPaste={onPaste} />,
+      );
+
+      const input = getByLabelText(label);
+
+      // Use fireEvent.paste with mock clipboard data
+      fireEvent.paste(input, {
+        clipboardData: {
+          getData: jest.fn(() => 'Hello World'),
+        },
+      });
+
+      expect(onPaste).toHaveBeenCalledTimes(1);
+      const callArgs = onPaste.mock.calls[0][0];
+      expect(callArgs.name).toBe('clipboard-test');
+      expect(callArgs.value).toEqual(expect.any(Object)); // ClipboardEvent object
+    });
+
+    it('should not call onPaste when prop is not provided', () => {
+      const label = 'Enter name';
+
+      const { getByLabelText } = renderWithTheme(<BaseInput label={label} id="name" />);
+
+      const input = getByLabelText(label);
+
+      // This should not throw an error even without onPaste prop
+      expect(() => fireEvent.paste(input)).not.toThrow();
+    });
+
+    it('should handle paste events with empty clipboard data', () => {
+      const label = 'Enter name';
+      const onPaste = jest.fn();
+
+      const { getByLabelText } = renderWithTheme(
+        <BaseInput label={label} id="name" name="empty-test" onPaste={onPaste} />,
+      );
+
+      const input = getByLabelText(label);
+
+      // Use fireEvent.paste with empty clipboardData
+      fireEvent.paste(input);
+
+      expect(onPaste).toHaveBeenCalledTimes(1);
+      expect(onPaste).toHaveBeenCalledWith({
+        name: 'empty-test',
+        value: expect.any(Object),
+      });
+    });
+
+    it('should handle paste events properly', () => {
+      const label = 'Enter name';
+      const onPaste = jest.fn();
+
+      const { getByLabelText } = renderWithTheme(
+        <BaseInput label={label} id="name" name="paste-test" onPaste={onPaste} />,
+      );
+
+      const input = getByLabelText(label);
+
+      // Use fireEvent.paste which creates the appropriate event
+      fireEvent.paste(input, {
+        clipboardData: {
+          getData: () => 'pasted content',
+        },
+      });
+
+      expect(onPaste).toHaveBeenCalledTimes(1);
+      expect(onPaste).toHaveBeenCalledWith({
+        name: 'paste-test',
+        value: expect.any(Object),
+      });
+    });
   });
 });
