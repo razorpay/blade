@@ -94,6 +94,15 @@ type TestID = {
   testID?: string;
 };
 
+type ElementTiming = {
+  /**
+   * Element timing that can be used to track the performance of the component
+   *
+   * Checkout https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/elementtiming
+   */
+  elementtiming?: string;
+};
+
 /**
  * Similar to `Pick` except this returns `never` when value doesn't exist (native `Pick` returns `unknown`).
  *
@@ -160,6 +169,7 @@ export type {
   StringChildrenType,
   StringWithAutocomplete,
   TestID,
+  ElementTiming,
   PickIfExist,
   PickCSSByPlatform,
   BladeElementRef,

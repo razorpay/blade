@@ -6,7 +6,7 @@ import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
@@ -27,6 +27,7 @@ type TextCommonProps = {
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
+  ElementTiming &
   StyledPropsBlade;
 
 export type TextVariant = 'body' | 'caption';
@@ -148,6 +149,7 @@ const _Text = <T extends { variant: TextVariant }>(
     textDecorationLine,
     wordBreak,
     textTransform,
+    elementtiming,
     ...styledProps
   }: TextProps<T>,
   ref: React.Ref<BladeElementRef>,
@@ -157,6 +159,7 @@ const _Text = <T extends { variant: TextVariant }>(
     truncateAfterLines,
     wordBreak,
     textTransform,
+    elementtiming,
     ...getTextProps({
       variant,
       weight,
