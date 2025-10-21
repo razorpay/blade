@@ -1194,151 +1194,154 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
       case 2:
         return (
           <Box display="flex" width="100%" height="100%">
-            <Box display="flex" width="100%" justifyContent="space-between">
-              <Box
-                flex={6}
-                display="flex"
-                flexDirection="column"
-                height="100%"
-                justifyContent="space-between"
-                width="100%"
-              >
-                <Box display="flex" alignItems="center" justifyContent="center" width="100%">
-                  <Box padding="spacing.7" width="500px">
-                    <Box display="flex" flexDirection="column" gap="spacing.2">
-                      <Heading size="medium">Link PO</Heading>
-                      <Text>Select a Purchase Order to link with this GRN.</Text>
-                    </Box>
+            <Box width="100%">
+              <Box display="flex" width="100%" justifyContent="space-between">
+                <Box
+                  flex={6}
+                  display="flex"
+                  flexDirection="column"
+                  height="100%"
+                  justifyContent="space-between"
+                  width="100%"
+                >
+                  <Box display="flex" alignItems="center" justifyContent="center" width="100%">
+                    <Box padding="spacing.7" width="500px">
+                      <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Heading size="medium">Link PO</Heading>
+                        <Text>Select a Purchase Order to link with this GRN.</Text>
+                      </Box>
 
-                    <Box flex={1} gap="spacing.2" marginTop="spacing.2">
-                      <RadioGroup
-                        label="Purchase Orders"
-                        name="purchaseOrder"
-                        value={selectedPO ?? ''}
-                        onChange={({ value }) => {
-                          setSelectedPO(value);
-                          if (errors.purchaseOrder) {
-                            setErrors((prev) => ({ ...prev, purchaseOrder: undefined }));
-                          }
-                        }}
-                        validationState={errors.purchaseOrder ? 'error' : 'none'}
-                        errorText={errors.purchaseOrder}
-                      >
-                        {GRNPurchaseOrders.map((po) => (
-                          <Card
-                            as="label"
-                            accessibilityLabel={po.number}
-                            isSelected={selectedPO === po.id}
-                            marginBottom="spacing.2"
-                            key={po.id}
-                            elevation="none"
-                          >
-                            <CardBody>
-                              <RadioCard value={po.id} label={po.number}>
-                                <Box display="flex" flexDirection="column" gap="spacing.2">
-                                  <Box display="flex" gap="spacing.2" alignItems="center">
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      {po.vendor}
-                                    </Text>
-                                    <Badge
-                                      size="medium"
-                                      color={po.status === 'Approved' ? 'positive' : 'notice'}
-                                    >
-                                      {po.status || ''}
-                                    </Badge>
-                                  </Box>
-                                  <Box display="flex" gap="spacing.2">
-                                    <Box display="flex" gap="spacing.2">
-                                      <CalendarIcon color="interactive.icon.gray.muted" />
+                      <Box flex={1} gap="spacing.2" marginTop="spacing.2">
+                        <RadioGroup
+                          label="Purchase Orders"
+                          name="purchaseOrder"
+                          value={selectedPO ?? ''}
+                          onChange={({ value }) => {
+                            setSelectedPO(value);
+                            if (errors.purchaseOrder) {
+                              setErrors((prev) => ({ ...prev, purchaseOrder: undefined }));
+                            }
+                          }}
+                          validationState={errors.purchaseOrder ? 'error' : 'none'}
+                          errorText={errors.purchaseOrder}
+                        >
+                          {GRNPurchaseOrders.map((po) => (
+                            <Card
+                              as="label"
+                              accessibilityLabel={po.number}
+                              isSelected={selectedPO === po.id}
+                              marginBottom="spacing.2"
+                              key={po.id}
+                              elevation="none"
+                            >
+                              <CardBody>
+                                <RadioCard value={po.id} label={po.number}>
+                                  <Box display="flex" flexDirection="column" gap="spacing.2">
+                                    <Box display="flex" gap="spacing.2" alignItems="center">
                                       <Text size="small" color="surface.text.gray.muted">
-                                        {po.date}
+                                        {po.vendor}
+                                      </Text>
+                                      <Badge
+                                        size="medium"
+                                        color={po.status === 'Approved' ? 'positive' : 'notice'}
+                                      >
+                                        {po.status || ''}
+                                      </Badge>
+                                    </Box>
+                                    <Box display="flex" gap="spacing.2">
+                                      <Box display="flex" gap="spacing.2">
+                                        <CalendarIcon color="interactive.icon.gray.muted" />
+                                        <Text size="small" color="surface.text.gray.muted">
+                                          {po.date}
+                                        </Text>
+                                      </Box>
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        •
+                                      </Text>
+
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        {po.items} Items
+                                      </Text>
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        •
+                                      </Text>
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        ₹ {po.amount.toLocaleString()}
                                       </Text>
                                     </Box>
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      •
-                                    </Text>
-
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      {po.items} Items
-                                    </Text>
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      •
-                                    </Text>
-                                    <Text size="small" color="surface.text.gray.muted">
-                                      ₹ {po.amount.toLocaleString()}
-                                    </Text>
                                   </Box>
-                                </Box>
-                              </RadioCard>
-                            </CardBody>
-                          </Card>
-                        ))}
-                      </RadioGroup>
+                                </RadioCard>
+                              </CardBody>
+                            </Card>
+                          ))}
+                        </RadioGroup>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
-                {!isMobile && deskTopFooter({})}
+                {!isMobile && (
+                  <Box flex={4}>
+                    <Preview isDragAndZoomDisabled>
+                      <PreviewBody>
+                        <Box
+                          padding="spacing.4"
+                          display="flex"
+                          flexDirection="column"
+                          gap="spacing.4"
+                          backgroundColor="surface.background.gray.moderate"
+                        >
+                          {selectedVendor && (
+                            <>
+                              <Box>
+                                <Text weight="semibold" size="large">
+                                  {GRNVendors.find((v) => v.id === selectedVendor)?.name}
+                                </Text>
+                                <Text size="small" color="surface.text.gray.muted">
+                                  {GRNVendors.find((v) => v.id === selectedVendor)?.email}
+                                </Text>
+                              </Box>
+                              <Box display="flex" flexDirection="column" gap="spacing.2">
+                                <Text size="small">
+                                  Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
+                                </Text>
+                                <Text size="small">
+                                  Address:{' '}
+                                  {GRNVendors.find((v) => v.id === selectedVendor)?.address}
+                                </Text>
+                              </Box>
+                            </>
+                          )}
+                          {selectedPO && (
+                            <Box
+                              marginTop="spacing.4"
+                              paddingTop="spacing.4"
+                              borderTopWidth="thin"
+                              borderTopColor="surface.border.gray.muted"
+                            >
+                              <Text weight="semibold" size="medium">
+                                Selected PO
+                              </Text>
+                              <Box marginTop="spacing.2">
+                                <Text size="small">
+                                  PO Number:{' '}
+                                  {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
+                                </Text>
+                                <Text size="small">
+                                  Amount: ₹
+                                  {GRNPurchaseOrders.find(
+                                    (p) => p.id === selectedPO,
+                                  )?.amount.toLocaleString()}
+                                </Text>
+                              </Box>
+                            </Box>
+                          )}
+                        </Box>
+                      </PreviewBody>
+                    </Preview>
+                  </Box>
+                )}
               </Box>
-              {!isMobile && (
-                <Box flex={4}>
-                  <Preview isDragAndZoomDisabled>
-                    <PreviewBody>
-                      <Box
-                        padding="spacing.4"
-                        display="flex"
-                        flexDirection="column"
-                        gap="spacing.4"
-                        backgroundColor="surface.background.gray.moderate"
-                      >
-                        {selectedVendor && (
-                          <>
-                            <Box>
-                              <Text weight="semibold" size="large">
-                                {GRNVendors.find((v) => v.id === selectedVendor)?.name}
-                              </Text>
-                              <Text size="small" color="surface.text.gray.muted">
-                                {GRNVendors.find((v) => v.id === selectedVendor)?.email}
-                              </Text>
-                            </Box>
-                            <Box display="flex" flexDirection="column" gap="spacing.2">
-                              <Text size="small">
-                                Phone: {GRNVendors.find((v) => v.id === selectedVendor)?.phone}
-                              </Text>
-                              <Text size="small">
-                                Address: {GRNVendors.find((v) => v.id === selectedVendor)?.address}
-                              </Text>
-                            </Box>
-                          </>
-                        )}
-                        {selectedPO && (
-                          <Box
-                            marginTop="spacing.4"
-                            paddingTop="spacing.4"
-                            borderTopWidth="thin"
-                            borderTopColor="surface.border.gray.muted"
-                          >
-                            <Text weight="semibold" size="medium">
-                              Selected PO
-                            </Text>
-                            <Box marginTop="spacing.2">
-                              <Text size="small">
-                                PO Number:{' '}
-                                {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
-                              </Text>
-                              <Text size="small">
-                                Amount: ₹
-                                {GRNPurchaseOrders.find(
-                                  (p) => p.id === selectedPO,
-                                )?.amount.toLocaleString()}
-                              </Text>
-                            </Box>
-                          </Box>
-                        )}
-                      </Box>
-                    </PreviewBody>
-                  </Preview>
-                </Box>
-              )}
+              {!isMobile && deskTopFooter({})}
             </Box>
           </Box>
         );
@@ -1548,7 +1551,7 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
   const renderStepGroup = (): React.ReactElement => {
     return (
       <StepGroup orientation="vertical" size="medium">
-        {GRNSteps.map((step) => (
+        {visibleSteps.map((step) => (
           <StepItem
             key={step.stepNumber}
             title={step.title}
@@ -1627,13 +1630,26 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
                   {alert?.type === 'negative' && (
                     <InfoIcon color="feedback.icon.negative.intense" />
                   )}
-                  <Badge color={alert?.type === 'negative' ? 'negative' : undefined}>
-                    {' '}
-                    {currentStep} / {lastStep}{' '}
-                  </Badge>
-                  <Heading size="small">{currentStepObj?.title}</Heading>
-
-                  {!withProgressBar && (showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />)}
+                  {withProgressBar ? (
+                    <Heading
+                      as="h2"
+                      size="medium"
+                      weight="semibold"
+                      color="surface.text.gray.normal"
+                      wordBreak="break-word"
+                    >
+                      New GRN
+                    </Heading>
+                  ) : (
+                    <>
+                      <Badge color={alert?.type === 'negative' ? 'negative' : undefined}>
+                        {' '}
+                        {currentStep} / {lastStep}{' '}
+                      </Badge>
+                      <Heading size="small">{currentStepObj?.title}</Heading>
+                      {showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                    </>
+                  )}
                 </Box>
               </Box>
             </div>
@@ -1658,7 +1674,7 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
                   backgroundColor="surface.background.gray.intense"
                   zIndex={1005}
                   width="100%"
-                  height="330px"
+                  height="272px"
                   borderBottomLeftRadius="2xlarge"
                   borderBottomRightRadius="2xlarge"
                   padding="spacing.7"
@@ -1748,6 +1764,13 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
   const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
+  const [showStepGroup, setShowStepGroup] = React.useState(false);
+  const isMobile = useIsMobile();
+
+  // Dynamically filter steps for mobile (remove review step)
+  const visibleSteps = GRNSteps;
+  const lastStep = visibleSteps[visibleSteps.length - 1].stepNumber;
+  const currentStepObj = visibleSteps.find((s) => s.stepNumber === currentStep);
   const [errors, setErrors] = React.useState<{
     vendor?: string;
     purchaseOrder?: string;
@@ -1972,7 +1995,7 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
                   borderWidth="thin"
                   borderColor="surface.border.gray.muted"
                   borderRadius="medium"
-                  marginBottom="spacing.2"
+                  marginBottom="spacing.3"
                 >
                   <Box display="flex" justifyContent="space-between">
                     <Text>{item.name}</Text>
@@ -2058,18 +2081,15 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
   };
 
   const renderFooter = (): React.ReactElement => (
-    <Box display="flex" justifyContent="space-between" width="100%">
-      <Button variant="tertiary" onClick={() => setIsOpen(false)}>
-        Save and Close
-      </Button>
-      <Box display="flex" gap="spacing.3">
+    <>
+      <Box display="flex" gap="spacing.4" justifyContent="space-between">
         <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
           Previous
         </Button>
         <Button
           variant="primary"
           onClick={
-            currentStep === GRNSteps.length
+            currentStep === lastStep
               ? () => {
                   resetState();
                   setIsOpen(false);
@@ -2077,35 +2097,151 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
               : handleNextStep
           }
         >
-          {currentStep === GRNSteps.length ? 'Submit' : 'Next'}
+          {currentStep === lastStep ? 'Submit' : 'Next'}
         </Button>
       </Box>
-    </Box>
+    </>
   );
 
   return (
     <Box>
       <Button onClick={() => setIsOpen(true)}>Create GRN</Button>
-      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="medium">
-        <ModalHeader title="Create GRN" />
-        <ModalBody padding="spacing.0">
-          <Box display="flex" height="100%">
-            <Box
-              width="250px"
-              padding="spacing.5"
-              backgroundColor="surface.background.gray.moderate"
+      {isMobile ? (
+        isOpen && (
+          <Box
+            width="100%"
+            minHeight="100%"
+            backgroundColor="surface.background.gray.moderate"
+            display="flex"
+            flexDirection="column"
+            position="fixed"
+            top="spacing.0"
+            left="spacing.0"
+            zIndex={1000}
+          >
+            {/* Header with current step name */}
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => setShowStepGroup((prev: boolean) => !prev)}
+              onKeyDown={() => {}}
+              style={{
+                zIndex: 1006,
+              }}
             >
-              {renderStepGroup()}
-            </Box>
-            <Box flex={1} display="flex" flexDirection="column">
-              <Box flex={1} overflow="auto">
-                {renderStepContent()}
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                padding="spacing.4"
+                backgroundColor="surface.background.gray.subtle"
+                borderBottomWidth="thin"
+                borderBottomColor="surface.border.gray.muted"
+                position="relative"
+              >
+                <Box display="flex" alignItems="center" gap="spacing.4">
+                  {alert?.type === 'negative' && (
+                    <InfoIcon color="feedback.icon.negative.intense" />
+                  )}
+                  <Badge color={alert?.type === 'negative' ? 'negative' : undefined}>
+                    {currentStep} / {lastStep}
+                  </Badge>
+                  <Heading size="small">{currentStepObj?.title}</Heading>
+                  {showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                </Box>
               </Box>
+            </div>
+            <ProgressBar
+              value={(currentStep / lastStep) * 100}
+              showPercentage={false}
+              size="medium"
+              color={alert?.type === 'negative' ? 'negative' : undefined}
+            />
+
+            <Box>
+              <Slide
+                direction="top"
+                fromOffset="100%"
+                motionTriggers={['mount']}
+                isVisible={showStepGroup}
+              >
+                <Box
+                  position="fixed"
+                  top="51px"
+                  left="spacing.0"
+                  backgroundColor="surface.background.gray.intense"
+                  zIndex={1005}
+                  width="100%"
+                  height="240px"
+                  borderBottomLeftRadius="2xlarge"
+                  borderBottomRightRadius="2xlarge"
+                  padding="spacing.7"
+                  paddingTop="spacing.0"
+                >
+                  {renderStepGroup()}
+                </Box>
+              </Slide>
+              <Fade motionTriggers={['mount']} isVisible={showStepGroup} shouldUnmountWhenHidden>
+                <div
+                  style={{
+                    position: 'fixed',
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    zIndex: 1004,
+                  }}
+                  onClick={() => setShowStepGroup((prev: boolean) => !prev)}
+                />
+              </Fade>
+            </Box>
+            {/* Step content */}
+            <Box
+              overflow="auto"
+              height="calc(100vh - 100px)"
+              padding="spacing.4"
+              paddingBottom="spacing.8"
+            >
+              {renderStepContent()}
+            </Box>
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap="spacing.4"
+              padding="spacing.4"
+              backgroundColor="surface.background.gray.subtle"
+              borderTopWidth="thin"
+              borderTopColor="surface.border.gray.muted"
+              position="fixed"
+              bottom="spacing.0"
+              zIndex={1001}
+              width="100%"
+            >
+              {renderFooter()}
             </Box>
           </Box>
-        </ModalBody>
-        <ModalFooter>{renderFooter()}</ModalFooter>
-      </Modal>
+        )
+      ) : (
+        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="medium">
+          <ModalHeader title="Create GRN" />
+          <ModalBody padding="spacing.0">
+            <Box display="flex" height="100%">
+              <Box
+                width="250px"
+                padding="spacing.5"
+                backgroundColor="surface.background.gray.moderate"
+              >
+                {renderStepGroup()}
+              </Box>
+              <Box flex={1} display="flex" flexDirection="column">
+                <Box flex={1} overflow="auto">
+                  {renderStepContent()}
+                </Box>
+              </Box>
+            </Box>
+          </ModalBody>
+          <ModalFooter>{renderFooter()}</ModalFooter>
+        </Modal>
+      )}
     </Box>
   );
 };
@@ -2523,7 +2659,8 @@ const FlowSelectionModalTemplate: StoryFn = ({ cardCount = 3 }: { cardCount?: nu
                 width={getCardWidth()}
                 height={getCardHeight()}
                 borderRadius="medium"
-                elevation={selectedMethod === method.value ? 'lowRaised' : 'none'}
+                elevation="none"
+                cursor={method.isDisabled ? 'not-allowed' : 'pointer'}
               >
                 <CardBody>
                   <Box overflow="hidden">

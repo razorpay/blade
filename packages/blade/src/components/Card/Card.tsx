@@ -25,6 +25,7 @@ import { useCheckboxGroupContext } from '~components/Checkbox/CheckboxGroup/Chec
 import { useRadioGroupContext } from '~components/Radio/RadioGroup/RadioContext';
 import type { CheckboxGroupContextType } from '~components/Checkbox/CheckboxGroup/CheckboxGroupContext';
 import type { RadioGroupContextType } from '~components/Radio/RadioGroup/RadioContext';
+import type { CSSObject } from 'styled-components';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -182,6 +183,7 @@ export type CardProps = {
    * @default undefined
    */
   as?: 'label';
+  cursor?: CSSObject['cursor'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -209,6 +211,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     rel,
     as,
     size = 'large',
+    cursor,
     ...rest
   },
   ref,
@@ -267,6 +270,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         href={href}
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
+        cursor={cursor}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}

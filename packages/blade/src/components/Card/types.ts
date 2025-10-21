@@ -1,3 +1,4 @@
+import type { CSSObject } from 'styled-components';
 import type { CardProps } from './Card';
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
 
@@ -16,6 +17,7 @@ type CardRootProps = {
   as?: 'label';
   accessibilityLabel?: string;
   validationState?: 'none' | 'error' | 'success';
+  cursor?: CSSObject['cursor'];
 } & BaseBoxProps;
 
 type LinkOverlayProps = {
