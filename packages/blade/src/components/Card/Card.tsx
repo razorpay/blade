@@ -270,7 +270,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         href={href}
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
-        cursor={cursor}
+        cursor={isReactNative() ? undefined : cursor}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
