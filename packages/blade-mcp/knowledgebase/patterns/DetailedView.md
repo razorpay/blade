@@ -11,6 +11,7 @@ A DetailedView is a pattern that displays comprehensive details of a transaction
 ## Components Used
 
 - Drawer
+- DrawerFooter
 - Table
 - Card
 - Box
@@ -49,6 +50,7 @@ import {
   Drawer,
   DrawerHeader,
   DrawerBody,
+  DrawerFooter,
   Box,
   Amount,
   Badge,
@@ -66,6 +68,8 @@ import {
   CollapsibleLink,
   MoreHorizontalIcon,
   DownloadIcon,
+  CloseIcon,
+  ArrowRightIcon,
   CopyIcon,
   CheckIcon,
   ClockIcon,
@@ -83,13 +87,7 @@ type Transaction = {
   account: string;
 };
 
-const KeyValueItem = ({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) => (
+const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <>
     <Text variant="body" size="small" color="surface.text.gray.muted">
       {label}
@@ -275,6 +273,7 @@ const TransactionDetailedView = () => {
               size="large"
             />
           }
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -411,8 +410,8 @@ const TransactionDetailedView = () => {
 };
 
 export default TransactionDetailedView;
-
 ```
+
 ### Settlement Details with Card Integration
 
 This example demonstrates a DetailedView pattern triggered from a Card component, showing settlement breakdown and transaction details.
@@ -430,6 +429,7 @@ import {
   Drawer,
   DrawerHeader,
   DrawerBody,
+  DrawerFooter,
   Box,
   Amount,
   Badge,
@@ -444,15 +444,11 @@ import {
   DownloadIcon,
   CheckIcon,
   CopyIcon,
+  CloseIcon,
+  ArrowRightIcon,
 } from '@razorpay/blade/components';
 
-const KeyValueItem = ({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) => (
+const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <>
     <Text variant="body" size="small" color="surface.text.gray.muted">
       {label}
@@ -469,6 +465,7 @@ const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
 
 const SettlementDetailedView = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [showFooter, setShowFooter] = useState(true);
 
   const settlementData = {
     amount: 3120,
@@ -487,6 +484,12 @@ const SettlementDetailedView = () => {
 
   return (
     <Box>
+      <Box display="flex" gap="spacing.4" marginBottom="spacing.4">
+        <Button variant="secondary" onClick={() => setShowFooter(!showFooter)}>
+          {showFooter ? 'Hide Footer' : 'Show Footer'}
+        </Button>
+      </Box>
+
       <Card width={{ base: '100%', m: '500px' }}>
         <CardHeader>
           <CardHeaderLeading
@@ -565,6 +568,7 @@ const SettlementDetailedView = () => {
           color="positive"
           title="Settlement Details"
           trailing={<Button size="medium" icon={DownloadIcon} />}
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -665,6 +669,25 @@ const SettlementDetailedView = () => {
             </KeyValueItem>
           </KeyValueGrid>
         </DrawerBody>
+
+        {showFooter && (
+          <DrawerFooter>
+            <Box display="flex" gap="spacing.5">
+              <Button
+                variant="tertiary"
+                icon={CloseIcon}
+                iconPosition="left"
+                isFullWidth
+                onClick={() => setIsDrawerOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
+                Process Settlement
+              </Button>
+            </Box>
+          </DrawerFooter>
+        )}
       </Drawer>
     </Box>
   );
