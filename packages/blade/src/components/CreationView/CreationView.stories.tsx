@@ -2435,6 +2435,7 @@ const FlowSelectionModalTemplateWithIcon: StoryFn<typeof Modal> = () => {
                 height={isMobile ? '184px' : undefined}
                 borderRadius="medium"
                 elevation="none"
+                cursor={method.isDisabled ? 'not-allowed' : 'pointer'}
               >
                 <CardBody>
                   <Box
