@@ -183,7 +183,10 @@ export type CardProps = {
    * @default undefined
    */
   as?: 'label';
-  cursor?: CSSObject['cursor'];
+  cursor?: Platform.Select<{
+    web: CSSObject['cursor'];
+    native: undefined;
+  }>;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;

@@ -1194,8 +1194,8 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
       case 2:
         return (
           <Box display="flex" width="100%" height="100%">
-            <Box width="100%">
-              <Box display="flex" width="100%" justifyContent="space-between">
+            <Box display="flex" flexDirection="column" width="100%" justifyContent="space-between">
+              <Box display="flex" width="100%" justifyContent="space-between" height="100%">
                 <Box
                   flex={6}
                   display="flex"
@@ -1205,7 +1205,7 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
                   width="100%"
                 >
                   <Box display="flex" alignItems="center" justifyContent="center" width="100%">
-                    <Box padding="spacing.7" width="500px">
+                    <Box padding="spacing.5" width="500px">
                       <Box display="flex" flexDirection="column" gap="spacing.2">
                         <Heading size="medium">Link PO</Heading>
                         <Text>Select a Purchase Order to link with this GRN.</Text>
