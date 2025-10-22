@@ -1,5 +1,6 @@
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
+import type { CSSObject } from 'styled-components';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
@@ -25,7 +26,6 @@ import { useCheckboxGroupContext } from '~components/Checkbox/CheckboxGroup/Chec
 import { useRadioGroupContext } from '~components/Radio/RadioGroup/RadioContext';
 import type { CheckboxGroupContextType } from '~components/Checkbox/CheckboxGroup/CheckboxGroupContext';
 import type { RadioGroupContextType } from '~components/Radio/RadioGroup/RadioContext';
-import type { CSSObject } from 'styled-components';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',

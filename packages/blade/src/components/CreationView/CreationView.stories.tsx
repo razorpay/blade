@@ -2124,6 +2124,7 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
               role="button"
               tabIndex={0}
               onClick={() => setShowStepGroup((prev: boolean) => !prev)}
+              // eslint-disable-next-line @typescript-eslint/no-empty-function
               onKeyDown={() => {}}
               style={{
                 zIndex: 1006,
@@ -2183,6 +2184,8 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
               </Slide>
               <Fade motionTriggers={['mount']} isVisible={showStepGroup} shouldUnmountWhenHidden>
                 <div
+                  role="button"
+                  tabIndex={0}
                   style={{
                     position: 'fixed',
                     width: '100%',
@@ -2191,6 +2194,8 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = () => {
                     zIndex: 1004,
                   }}
                   onClick={() => setShowStepGroup((prev: boolean) => !prev)}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onKeyDown={() => {}}
                 />
               </Fade>
             </Box>
