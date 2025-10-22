@@ -21,10 +21,9 @@ const uploadColorTokens = async () => {
       const bladeTheme = fs.readFileSync(bladeThemePath, 'utf8');
 
       // 3. write the new tokens to bladeTheme file
-      const updatedbladeThemeColors = JSON.stringify(colorTokens.themeColorTokens).replace(
-        /"/g,
-        '',
-      );
+      const updatedbladeThemeColors = JSON.stringify(colorTokens.themeColorTokens, null, 2)
+        .replace(/"([a-zA-Z_$][a-zA-Z0-9_$]*)":/g, '$1:') // Remove quotes only from valid JS identifiers
+        .replace(/: "([^"]+)"/g, ': $1'); // Remove quotes from values
       const updatedbladeTheme = bladeTheme.replace(
         themeColorTokensRegex,
         `const colors: ColorsWithModes = ${updatedbladeThemeColors};`,
@@ -41,10 +40,9 @@ const uploadColorTokens = async () => {
       const globalColorTokensFile = fs.readFileSync(globalColorTokensPath, 'utf8');
 
       // 3. write the new tokens to bladeTheme file
-      const updatedGlobalColorTokens = JSON.stringify(colorTokens.globalColorTokens).replace(
-        /"/g,
-        '',
-      );
+      const updatedGlobalColorTokens = JSON.stringify(colorTokens.globalColorTokens, null, 2)
+        .replace(/"([a-zA-Z_$][a-zA-Z0-9_$]*)":/g, '$1:') // Remove quotes only from valid JS identifiers
+        .replace(/: "([^"]+)"/g, ': $1'); // Remove quotes from values
       const updatedGlobalColorTokensFile = globalColorTokensFile.replace(
         globalColorTokensRegex,
         `export const colors: Color = ${updatedGlobalColorTokens};`,
