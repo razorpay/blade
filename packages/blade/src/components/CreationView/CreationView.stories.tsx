@@ -2602,7 +2602,7 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = ({
               padding="spacing.4"
               paddingBottom="spacing.8"
             >
-              {renderStepContent()}
+              {modalSize === 'large' ? renderLargeStepContent() : renderStepContent()}
             </Box>
             <Box
               display="flex"
