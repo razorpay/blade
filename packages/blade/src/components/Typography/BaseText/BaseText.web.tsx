@@ -8,6 +8,7 @@ import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const StyledBaseText = styled.div.withConfig({
   shouldForwardProp: omitPropsFromHTML,
@@ -102,6 +103,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
       textTransform={textTransform}
       {...makeAccessible(accessibilityProps)}
       {...metaAttribute({ name: componentName, testID })}
+      {...makeAnalyticsAttribute(styledProps)}
     >
       {children}
     </StyledBaseText>
