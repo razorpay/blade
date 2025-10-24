@@ -40,6 +40,10 @@ type ChartBarProps = {
    * @private
    */
   _index?: number;
+  /**
+   * @private
+   */
+  _totalbars?: number;
 };
 
 type data = {

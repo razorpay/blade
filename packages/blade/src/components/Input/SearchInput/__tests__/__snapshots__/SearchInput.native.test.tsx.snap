@@ -216,7 +216,7 @@ exports[`<SearchInput /> should render 1`] = `
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                  "borderColor": "hsla(214, 28%, 84%, 1)",
+                  "borderColor": "hsla(214, 40%, 92%, 1)",
                   "borderRadius": 4,
                   "borderStyle": "solid",
                   "borderWidth": 0,
@@ -231,7 +231,7 @@ exports[`<SearchInput /> should render 1`] = `
                 },
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                  "borderColor": "hsla(214, 28%, 84%, 1)",
+                  "borderColor": "hsla(214, 40%, 92%, 1)",
                   "borderRadius": 4,
                   "borderStyle": "solid",
                   "borderWidth": 1,

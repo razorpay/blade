@@ -74,8 +74,8 @@ describe('<BarChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartBarWrapper data={mockData}>
-          <ChartBar dataKey="sales" color="chart.background.categorical.azure.moderate" />
-          <ChartBar dataKey="profit" color="chart.background.categorical.cider.moderate" />
+          <ChartBar dataKey="sales" color="data.background.categorical.blue.moderate" />
+          <ChartBar dataKey="profit" color="data.background.categorical.blue.moderate" />
         </ChartBarWrapper>
       </Box>,
     );

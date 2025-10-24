@@ -13,12 +13,19 @@ const makeGlobalColorTokenName = (variableName: string): string => {
   return variableName.split('/').slice(1).join('.');
 };
 
-const makeThemeTokenName = (variableName: string): string => {
-  return variableName
+const makeThemeTokenName = (variableName: string, isValue = false): string => {
+  const transformed = variableName
     .replace(/\//g, '.')
     .replace('_global-colors', 'globalColors')
-    .replace('-', '.')
-    .replace(/\.[0-9]+/, (matchedString: any) => `[${matchedString.replace('.', '')}]`);
+    .replace('-', '.');
+
+  // For values, convert numeric keys to bracket notation (e.g., azure.50 -> azure[50])
+  // For keys, keep dot notation so setValue can create nested objects
+  if (isValue) {
+    return transformed.replace(/\.(\d+)/g, '[$1]');
+  }
+
+  return transformed;
 };
 
 const opacityMap = {};
@@ -102,7 +109,7 @@ const makeThemeColorTokens = (): Record<string, any> => {
           setValue(
             themeColorTokens[modeName],
             tokenName,
-            makeThemeTokenName(figma.variables.getVariableById(variableModeValue.id).name),
+            makeThemeTokenName(figma.variables.getVariableById(variableModeValue.id).name, true),
           );
         } else if (
           typeof variableModeValue === 'object' &&

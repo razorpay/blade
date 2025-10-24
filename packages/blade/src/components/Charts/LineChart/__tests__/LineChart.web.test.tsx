@@ -86,8 +86,8 @@ describe('<LineChart />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartLineWrapper data={mockData}>
-          <ChartLine dataKey="sales" color="chart.background.categorical.gray.moderate" />
-          <ChartLine dataKey="profit" color="chart.background.categorical.cider.moderate" />
+          <ChartLine dataKey="sales" color="data.background.categorical.gray.moderate" />
+          <ChartLine dataKey="profit" color="data.background.categorical.blue.moderate" />
         </ChartLineWrapper>
       </Box>,
     );

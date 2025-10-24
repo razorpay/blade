@@ -5,6 +5,7 @@ export type {
   ChartTooltipProps,
   ChartLegendProps,
   ChartReferenceLineProps,
+  DataColorMapping,
 } from './types';
 export {
   ChartXAxis,
@@ -14,3 +15,8 @@ export {
   ChartLegend,
   ChartReferenceLine,
 } from './CommonChartComponents';
+export {
+  CommonChartComponentsContext,
+  useCommonChartComponentsContext,
+} from './CommonChartComponentsContext';
+export { DEFAULT_COLOR } from './tokens';

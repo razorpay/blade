@@ -7,6 +7,7 @@ import {
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
+import { getHighestColorInColorRange, isSequentialColor } from '../utils';
 import type {
   ChartReferenceLineProps,
   ChartXAxisProps,
@@ -15,6 +16,8 @@ import type {
   ChartLegendProps,
   ChartCartesianGridProps,
   Layout,
+  ChartColorToken,
+  DataColorMapping,
 } from './types';
 import {
   RECT_HEIGHT,
@@ -27,10 +30,44 @@ import {
   componentId,
 } from './tokens';
 import { calculateTextWidth } from './utils';
+import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import getIn from '~utils/lodashButBetter/get';
+import { sanitizeString } from '~utils';
+
+/**
+ * Helper function to get the appropriate color for chart elements (tooltip, legend)
+ * @param dataKey - The data key for the chart element
+ * @param name - The name/value of the chart element
+ * @param dataColorMapping - Color mapping object
+ * @param chartName - Type of chart (line, area, etc.)
+ * @returns The resolved color token
+ */
+const getChartColor = (
+  dataKey: string | undefined,
+  name: string | undefined,
+  dataColorMapping: DataColorMapping,
+  chartName: string | undefined,
+): ChartColorToken => {
+  const colorKey = chartName === 'donut' ? sanitizeString(name ?? '') : dataKey;
+  const mappedColorData = dataColorMapping?.[colorKey ?? ''];
+  const mappedColor = mappedColorData?.colorToken;
+  const isCustomColor = mappedColorData?.isCustomColor ?? false;
+
+  if ((chartName === 'line' || chartName === 'area') && !isCustomColor) {
+    return mappedColor ?? '';
+  }
+
+  return mappedColor && isSequentialColor(mappedColor)
+    ? mappedColor ?? 'chart.background.categorical.azure.faint'
+    : getHighestColorInColorRange({
+        colorToken: mappedColor ?? ('chart.background.categorical.azure.faint' as ChartColorToken),
+        followIntensityMapping: chartName === 'donut' && isCustomColor,
+      });
+};
 
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -39,22 +76,23 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
     <RechartsXAxis
       {...props}
       tick={{
-        fill: theme.colors.surface.text.gray.normal,
+        fill: theme.colors.surface.text.gray.muted,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
         fontWeight: theme.typography.fonts.weight.regular,
         letterSpacing: theme.typography.letterSpacings[100],
       }}
+      tickLine={false}
       stroke={theme.colors.surface.border.gray.muted}
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
           x={viewBox.x + viewBox.width / 2 - X_OFFSET}
           y={viewBox.y + Y_OFFSET + X_AXIS_TEXT_BASELINE}
           textAnchor="middle"
-          fill={theme.colors.surface.text.gray.subtle}
+          fill={theme.colors.surface.text.gray.muted}
           fontSize={theme.typography.fonts.size[75]}
           fontFamily={theme.typography.fonts.family.text}
-          fontWeight={theme.typography.fonts.weight.medium}
+          fontWeight={theme.typography.fonts.weight.regular}
           letterSpacing={theme.typography.letterSpacings[100]}
         >
           {props?.label}
@@ -72,21 +110,22 @@ const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
     <RechartsYAxis
       {...props}
       tick={{
-        fill: theme.colors.surface.text.gray.normal,
+        fill: theme.colors.surface.text.gray.muted,
         fontSize: theme.typography.fonts.size[75],
         fontFamily: theme.typography.fonts.family.text,
         fontWeight: theme.typography.fonts.weight.regular,
         letterSpacing: theme.typography.letterSpacings[100],
       }}
+      tickLine={false}
       stroke={theme.colors.surface.border.gray.muted}
       label={{
         value: props?.label,
         position: 'insideLeft',
         style: {
           textAnchor: 'middle',
-          fill: theme.colors.surface.text.gray.subtle,
+          fill: theme.colors.surface.text.gray.muted,
           fontSize: theme.typography.fonts.size[75],
-          fontWeight: theme.typography.fonts.weight.medium,
+          fontWeight: theme.typography.fonts.weight.regular,
           fontFamily: theme.typography.fonts.family.text,
           letterSpacing: theme.typography.letterSpacings[100],
           lineHeight: theme.typography.lineHeights[500],
@@ -111,12 +150,57 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
   );
 };
 
+const CustomTooltip = ({
+  item,
+  key,
+}: {
+  item: {
+    name: string;
+    value: string;
+    color: string;
+    dataKey: string;
+    payload: { fill: string };
+  };
+  key: string;
+}): JSX.Element => {
+  const { theme } = useTheme();
+  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
+
+  const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping ?? {}, chartName);
+  return (
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+      gap="spacing.4"
+      key={key}
+    >
+      <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
+        <div
+          style={{
+            width: theme.spacing[4],
+            height: theme.spacing[4],
+            backgroundColor: getIn(theme.colors, toolTipColor),
+            borderRadius: theme.border.radius.small,
+          }}
+        />
+        <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+          {item.name}
+        </Text>
+      </Box>
+      <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+        {item.value}
+      </Text>
+    </Box>
+  );
+};
+
 const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   const { theme } = useTheme();
-
   return (
     <RechartsTooltip
       content={({ payload, label }) => {
+        const filteredPayLoad = payload.filter((item) => item.type !== 'none');
         return (
           <div
             style={{
@@ -130,31 +214,8 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
               {label}
             </Heading>
             <Box paddingTop={label ? 'spacing.4' : undefined}>
-              {payload.map((item) => (
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  gap="spacing.4"
-                  key={item.name}
-                >
-                  <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
-                    <div
-                      style={{
-                        width: theme.spacing[4],
-                        height: theme.spacing[4],
-                        backgroundColor: item.color || item.payload.fill,
-                        borderRadius: theme.border.radius.small,
-                      }}
-                    />
-                    <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-                      {item.name}
-                    </Text>
-                  </Box>
-                  <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-                    {item.value}
-                  </Text>
-                </Box>
+              {filteredPayLoad.map((item) => (
+                <CustomTooltip item={item} key={item.name} />
               ))}
             </Box>
           </div>
@@ -166,18 +227,52 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
+const LegendItem = ({
+  entry,
+  index,
+}: {
+  entry: { color: string; value: string; dataKey: string };
+  index: number;
+}): JSX.Element => {
+  const { theme } = useTheme();
+  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
+
+  const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
+  return (
+    <Box key={`item-${index}`} display="flex" alignItems="center">
+      <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
+        <span
+          style={{
+            backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
+            width: theme.spacing[4], // Size of the square
+            height: theme.spacing[4], // Size of the square
+            display: 'inline-block',
+            borderRadius: theme.border.radius.small,
+          }}
+        />
+        {/* Legend text with custom color and size */}
+        <Text size="medium" color="surface.text.gray.muted">
+          {entry.value}
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
 const CustomSquareLegend = (props: {
   payload?: Array<{
     payload: {
       legendType: 'none' | 'line';
+      type: 'none' | 'line';
     };
     value: string;
     color: string;
+    type: 'none' | 'line';
+    dataKey: string;
   }>;
   layout: Layout;
 }): JSX.Element | null => {
   const { payload, layout } = props;
-  const { theme } = useTheme();
 
   if (!payload || payload.length === 0) {
     return null;
@@ -188,7 +283,9 @@ const CustomSquareLegend = (props: {
   we need to show the legend only if the legendType is not none. (for example in line chart we don't want to show the legend for the reference line)
   so we are filtering the payload and then mapping over it to display the legend.
   */
-  const filteredPayload = payload.filter((entry) => entry?.payload?.legendType !== 'none');
+  const filteredPayload = payload.filter(
+    (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
+  );
   const isVerticalLayout = layout === 'vertical';
 
   return (
@@ -201,23 +298,7 @@ const CustomSquareLegend = (props: {
       flexWrap="wrap"
     >
       {filteredPayload.map((entry, index) => (
-        <Box key={`item-${index}`} display="flex" alignItems="center">
-          <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
-            <span
-              style={{
-                backgroundColor: entry.color, // Uses the color of the line/bar
-                width: theme.spacing[4], // Size of the square
-                height: theme.spacing[4], // Size of the square
-                display: 'inline-block',
-                borderRadius: theme.border.radius.small,
-              }}
-            />
-            {/* Legend text with custom color and size */}
-            <Text size="medium" color="surface.text.gray.muted">
-              {entry.value}
-            </Text>
-          </Box>
-        </Box>
+        <LegendItem entry={entry} index={index} key={`item-${index}`} />
       ))}
     </Box>
   );
@@ -232,7 +313,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
-        paddingTop: theme.spacing[5],
+        paddingTop: theme.spacing[7],
       }}
       align="center"
       verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
@@ -305,7 +386,7 @@ const ChartReferenceLine: React.FC<ChartReferenceLineProps> = ({ label, x, y }) 
   const { theme } = useTheme();
   return (
     <RechartsReferenceLine
-      stroke={theme.colors.chart.background.categorical.gray.intense}
+      stroke={theme.colors.data.background.categorical.gray.intense}
       strokeWidth={2}
       strokeDasharray="4 4"
       label={<CustomReferenceLabel value={label} isVertical={Boolean(x)} />}

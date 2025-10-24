@@ -46,7 +46,7 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts35-clip"
+                  id="recharts51-clip"
                 >
                   <rect
                     height="390"
@@ -56,6 +56,31 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 1`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -136,7 +161,7 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts37-clip"
+                  id="recharts54-clip"
                 >
                   <rect
                     height="390"
@@ -146,6 +171,31 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 2`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -226,7 +276,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts29-clip"
+                  id="recharts42-clip"
                 >
                   <rect
                     height="390"
@@ -236,6 +286,31 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 1`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -316,7 +391,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts31-clip"
+                  id="recharts45-clip"
                 >
                   <rect
                     height="390"
@@ -326,6 +401,31 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 2`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -406,7 +506,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 3`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts33-clip"
+                  id="recharts48-clip"
                 >
                   <rect
                     height="390"
@@ -416,6 +516,31 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 3`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -496,7 +621,7 @@ exports[`<ChartDonut /> should render ChartDonut with custom center coordinates 
               <desc />
               <defs>
                 <clippath
-                  id="recharts39-clip"
+                  id="recharts57-clip"
                 >
                   <rect
                     height="390"
@@ -506,6 +631,31 @@ exports[`<ChartDonut /> should render ChartDonut with custom center coordinates 
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -586,7 +736,7 @@ exports[`<ChartDonut /> should render ChartDonut with custom dataKey and nameKey
               <desc />
               <defs>
                 <clippath
-                  id="recharts28-clip"
+                  id="recharts41-clip"
                 >
                   <rect
                     height="390"
@@ -596,6 +746,10 @@ exports[`<ChartDonut /> should render ChartDonut with custom dataKey and nameKey
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              />
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -655,7 +809,7 @@ exports[`<ChartDonut /> should render ChartDonut with default props 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts26-clip"
+                  id="recharts38-clip"
                 >
                   <rect
                     height="390"
@@ -665,6 +819,31 @@ exports[`<ChartDonut /> should render ChartDonut with default props 1`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -745,7 +924,7 @@ exports[`<DonutChart /> should handle data with missing properties 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts22-clip"
+                  id="recharts32-clip"
                 >
                   <rect
                     height="390"
@@ -755,6 +934,27 @@ exports[`<DonutChart /> should handle data with missing properties 1`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -831,7 +1031,7 @@ exports[`<DonutChart /> should handle data with null values 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts20-clip"
+                  id="recharts29-clip"
                 >
                   <rect
                     height="390"
@@ -841,6 +1041,31 @@ exports[`<DonutChart /> should handle data with null values 1`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -921,7 +1146,7 @@ exports[`<DonutChart /> should handle empty data array 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts19-clip"
+                  id="recharts28-clip"
                 >
                   <rect
                     height="390"
@@ -931,6 +1156,10 @@ exports[`<DonutChart /> should handle empty data array 1`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              />
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -990,7 +1219,7 @@ exports[`<DonutChart /> should render DonutChart with center text 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts3-clip"
+                  id="recharts4-clip"
                 >
                   <rect
                     height="390"
@@ -1000,6 +1229,31 @@ exports[`<DonutChart /> should render DonutChart with center text 1`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -1099,7 +1353,7 @@ exports[`<DonutChart /> should render DonutChart with custom center position 1`]
               <desc />
               <defs>
                 <clippath
-                  id="recharts17-clip"
+                  id="recharts25-clip"
                 >
                   <rect
                     height="390"
@@ -1109,6 +1363,31 @@ exports[`<DonutChart /> should render DonutChart with custom center position 1`]
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -1189,7 +1468,7 @@ exports[`<DonutChart /> should render DonutChart with custom colors 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts15-clip"
+                  id="recharts22-clip"
                 >
                   <rect
                     height="390"
@@ -1199,6 +1478,31 @@ exports[`<DonutChart /> should render DonutChart with custom colors 1`] = `
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -1279,7 +1583,7 @@ exports[`<DonutChart /> should render DonutChart with different chart types 1`] 
               <desc />
               <defs>
                 <clippath
-                  id="recharts11-clip"
+                  id="recharts16-clip"
                 >
                   <rect
                     height="390"
@@ -1289,6 +1593,31 @@ exports[`<DonutChart /> should render DonutChart with different chart types 1`] 
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -1369,7 +1698,7 @@ exports[`<DonutChart /> should render DonutChart with different chart types 2`] 
               <desc />
               <defs>
                 <clippath
-                  id="recharts13-clip"
+                  id="recharts19-clip"
                 >
                   <rect
                     height="390"
@@ -1379,6 +1708,31 @@ exports[`<DonutChart /> should render DonutChart with different chart types 2`] 
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -1459,7 +1813,7 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 1`]
               <desc />
               <defs>
                 <clippath
-                  id="recharts5-clip"
+                  id="recharts7-clip"
                 >
                   <rect
                     height="390"
@@ -1469,6 +1823,31 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 1`]
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -1549,7 +1928,7 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 2`]
               <desc />
               <defs>
                 <clippath
-                  id="recharts7-clip"
+                  id="recharts10-clip"
                 >
                   <rect
                     height="390"
@@ -1559,6 +1938,31 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 2`]
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -1639,7 +2043,7 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 3`]
               <desc />
               <defs>
                 <clippath
-                  id="recharts9-clip"
+                  id="recharts13-clip"
                 >
                   <rect
                     height="390"
@@ -1649,6 +2053,31 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 3`]
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
@@ -1739,6 +2168,31 @@ exports[`<DonutChart /> should render basic DonutChart with single data series 1
                   />
                 </clippath>
               </defs>
+              <g
+                class="recharts-layer recharts-pie"
+                tabindex="0"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
