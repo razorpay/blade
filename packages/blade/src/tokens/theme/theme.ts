@@ -25,24 +25,24 @@ export type Emphasis = {
   disabled: string;
 };
 
-export type ChartCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'intense'> & {
+export type DataCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'intense'> & {
   faint: string;
   strong: string;
 };
-export type ChartSequentialEmphasis = Omit<
+export type DataSequentialEmphasis = Omit<
   ColorChromaticScale,
   'a50' | 'a150' | 'a100' | 'a200' | 'a400'
 >;
 
-export type ChartColorCategories =
-  | 'azure'
-  | 'emerald'
-  | 'crimson'
-  | 'cider'
-  | 'sapphire'
-  | 'orchid'
-  | 'magenta'
-  | 'topaz'
+export type DataColorCategories =
+  | 'blue'
+  | 'green'
+  | 'red'
+  | 'orange'
+  | 'skyBlue'
+  | 'purple'
+  | 'pink'
+  | 'gold'
   | 'gray';
 
 type SubtleOrIntenseEmphasis = Pick<Emphasis, 'subtle' | 'intense'>;
@@ -112,10 +112,10 @@ export type Colors = {
     border: SubtleOrIntenseEmphasis;
   };
   transparent: string;
-  chart: {
+  data: {
     background: {
-      categorical: Record<ChartColorCategories, ChartCategoricalEmphasis>;
-      sequential: Record<Exclude<ChartColorCategories, 'gray'>, ChartSequentialEmphasis>;
+      categorical: Record<DataColorCategories, DataCategoricalEmphasis>;
+      sequential: Record<Exclude<DataColorCategories, 'gray'>, DataSequentialEmphasis>;
     };
   };
 };
