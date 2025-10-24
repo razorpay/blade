@@ -1,0 +1,218 @@
+import { Meta } from '@storybook/addon-docs';
+import { Box, Heading, Text, Code, List, ListItem } from '../../src/components';
+import { BladeProvider, bladeTheme } from '../../src/tokens';
+
+<Meta title="Guides/Chart Color Themes" />
+
+# Chart Color Themes
+
+Blade's chart components use a sophisticated color theming system that automatically assigns colors to data series based on chart type, data indicators, and predefined color sequences. This guide explains how the color theming works and how to use it effectively.
+
+## Overview
+
+Blade currently supports **categorical** color themes for all chart types. The color system is designed to:
+
+- Provide consistent, accessible colors across all chart types
+- Automatically handle color assignment based on chart type and data
+- Support different intensity levels for optimal visual hierarchy
+- Handle special cases like single data points and donut charts
+
+## Color System Architecture
+
+### Color Categories
+
+Blade uses the following color categories for charts:
+
+```typescript
+type ColorName = 
+  | 'blue'      // Primary blue
+  | 'green'     // Success/positive green  
+  | 'red'       // Error/negative red
+  | 'orange'    // Warning orange
+  | 'skyBlue'   // Light blue variant
+  | 'purple'    // Purple accent
+  | 'pink'      // Pink accent
+  | 'gold'      // Gold/yellow accent
+  | 'gray';     // Neutral gray
+```
+
+### Color Intensities
+
+Each color category supports five intensity levels:
+
+```typescript
+type ColorIntensity = 
+  | 'faint'     // Lightest intensity
+  | 'subtle'    // Light intensity  
+  | 'moderate'  // Medium intensity
+  | 'intense'   // High intensity
+  | 'strong';   // Highest intensity
+```
+
+## Color Sequences
+
+### Base Color Sequence
+
+The primary color sequence used across all charts:
+
+```typescript
+const colorSequence = [
+  'blue',      // 1st priority
+  'green',     // 2nd priority  
+  'gold',      // 3rd priority
+  'purple',    // 4th priority
+  'orange',    // 5th priority
+  'pink',      // 6th priority
+  'blue',      // 7th priority
+  'red',       // 8th priority
+  'gray',      // 9th priority
+];
+```
+
+### Intensity Sequences by Chart Type
+
+Different chart types use different intensity sequences to optimize visual hierarchy:
+
+#### Bar Charts & Donut Charts
+```typescript
+// Default sequence: faint → strong
+['faint', 'subtle', 'moderate', 'intense', 'strong']
+```
+
+#### Line Charts & Area Charts  
+```typescript
+// Reverse sequence: strong → faint
+['strong', 'intense', 'moderate', 'subtle', 'faint']
+```
+
+## How Colors Are Generated
+
+The color generation algorithm works as follows:
+
+1. **For each intensity level** in the sequence
+2. **For each color** in the color sequence  
+3. **Generate a color token** in the format: `data.background.categorical.{colorName}.{intensity}`
+
+This creates a comprehensive palette that ensures:
+- Consistent color assignment across chart types
+- Optimal contrast and accessibility
+- Visual hierarchy through intensity variations
+
+## Special Cases
+
+### Single Data Point
+When a chart has only one data indicator (except donut charts), it automatically uses:
+```typescript
+'data.background.categorical.gray.moderate'
+```
+
+### Donut Charts
+Donut charts follow the same color sequence but use different intensity mapping logic for optimal visual distinction between segments.
+
+## Usage Examples
+
+### Basic Chart with Automatic Colors
+
+```tsx
+import { ChartBarWrapper, ChartBar, ChartXAxis, ChartYAxis } from '@razorpay/blade/components';
+
+function MyChart() {
+  const data = [
+    { name: 'Jan', sales: 4000, profit: 2400 },
+    { name: 'Feb', sales: 3000, profit: 1398 },
+    { name: 'Mar', sales: 2000, profit: 9800 },
+  ];
+
+  return (
+    <ChartBarWrapper data={data}>
+      <ChartXAxis dataKey="name" />
+      <ChartYAxis />
+      <ChartBar dataKey="sales" name="Sales" />
+      <ChartBar dataKey="profit" name="Profit" />
+    </ChartBarWrapper>
+  );
+}
+```
+
+### Explicit Color Theme
+
+```tsx
+<ChartBarWrapper data={data} colorTheme="categorical">
+  <ChartXAxis dataKey="name" />
+  <ChartYAxis />
+  <ChartBar dataKey="sales" name="Sales" />
+  <ChartBar dataKey="profit" name="Profit" />
+</ChartBarWrapper>
+```
+
+## Color Token Format
+
+All chart colors follow this token format:
+
+```
+data.background.categorical.{colorName}.{intensity}
+```
+
+Examples:
+- `data.background.categorical.blue.faint`
+- `data.background.categorical.green.strong`  
+- `data.background.categorical.purple.moderate`
+
+## Best Practices
+
+### 1. Let Blade Handle Color Assignment
+Don't manually assign colors unless you have specific branding requirements. Blade's automatic color assignment ensures:
+- Consistent visual hierarchy
+- Optimal accessibility
+- Proper contrast ratios
+
+### 2. Use Appropriate Chart Types
+Different chart types are optimized for different data visualizations:
+- **Bar Charts**: Best for comparing categories
+- **Line Charts**: Best for showing trends over time
+- **Donut Charts**: Best for showing proportions
+- **Area Charts**: Best for showing cumulative data
+
+### 3. Consider Data Density
+- For charts with many data series, the color system will cycle through the sequence
+- Consider grouping related data to reduce visual complexity
+- Use legends effectively to help users distinguish between series
+
+## Accessibility Considerations
+
+Blade's color system is designed with accessibility in mind:
+
+- **Color Contrast**: All color combinations meet WCAG AA standards
+- **Color Blindness**: The color palette is chosen to be distinguishable for users with color vision deficiencies  
+- **Intensity Variations**: Different intensity levels provide additional visual cues beyond color alone
+
+## Future Enhancements
+
+While Blade currently supports only categorical color themes, future versions may include:
+
+- Sequential color themes for data with inherent ordering
+- Diverging color themes for data with meaningful center points
+- Custom color palette support for brand-specific requirements
+
+## Troubleshooting
+
+### Colors Not Appearing
+- Ensure you're using the latest version of Blade
+- Check that your chart data is properly formatted
+- Verify that you're not overriding colors with custom props
+
+### Inconsistent Colors Across Charts
+- Blade automatically manages color consistency
+- Avoid manually setting colors unless necessary
+- Use the same `colorTheme` prop across related charts
+
+### Single Data Point Issues
+- Single data points automatically use gray color
+- This is intentional for visual clarity
+- Donut charts are an exception and will use the full color sequence
+
+## Related Documentation
+
+- [Chart Components](/docs/components-charts--docs)
+- [Design Tokens](/docs/tokens-colors--docs)  
+- [Accessibility Guidelines](/docs/guides-accessibility--docs)
