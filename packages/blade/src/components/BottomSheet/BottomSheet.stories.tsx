@@ -1178,7 +1178,7 @@ const NonDismissibleTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   return (
     <BaseBox>
       <Button onClick={() => setIsOpen(true)}>Open Non-Dismissible BottomSheet</Button>
-      <BottomSheetComponent isOpen={isOpen} isDismissible={false}>
+      <BottomSheetComponent isOpen={isOpen} isDismissible={false} snapPoints={[0.85, 0.85, 0.85]}>
         <BottomSheetHeader
           title="Important Action Required"
           subtitle="This action requires explicit confirmation"

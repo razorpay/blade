@@ -1,5 +1,36 @@
 # @razorpay/blade
 
+## 12.61.0
+
+### Minor Changes
+
+- c5e3a9237: feat(blade): introduced footer and enhance header background for DetailedView
+
+  - **New Component**: Added `DrawerFooter` component with sticky positioning and optional divider in drawer
+  - **Enhanced DrawerHeader**: Added `showDivider` prop to control header divider visibility and upgraded gradient pattern from linear to radial
+  - **DetailedView Pattern Enhancement**:
+    - Add an option to toggle the footer's visibility
+    - Ensure the footer remains sticky at all times
+    - Upgrade the gradient pattern in the header
+
+## 12.60.2
+
+### Patch Changes
+
+- a4717aa85: fix(blade): scroll issue in bottomsheet
+
+## 12.60.1
+
+### Patch Changes
+
+- 5f2750544: feat(blade): update TopNav actions bg color, made profile avatar square
+
+## 12.60.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
 ## 12.59.0
 
 ### Minor Changes

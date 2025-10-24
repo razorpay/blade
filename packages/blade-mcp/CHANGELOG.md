@@ -1,5 +1,24 @@
 # @razorpay/blade-mcp
 
+## 1.14.0
+
+### Minor Changes
+
+- c5e3a9237: feat(blade): introduced footer and enhance header background for DetailedView
+
+  - **New Component**: Added `DrawerFooter` component with sticky positioning and optional divider in drawer
+  - **Enhanced DrawerHeader**: Added `showDivider` prop to control header divider visibility and upgraded gradient pattern from linear to radial
+  - **DetailedView Pattern Enhancement**:
+    - Add an option to toggle the footer's visibility
+    - Ensure the footer remains sticky at all times
+    - Upgrade the gradient pattern in the header
+
+## 1.13.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
 ## 1.12.2
 
 ### Patch Changes
