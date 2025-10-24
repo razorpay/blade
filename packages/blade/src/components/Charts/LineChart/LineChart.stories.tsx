@@ -342,7 +342,7 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
             dataKey={dataKey}
             name={name}
             strokeStyle="solid"
-            color="chart.background.categorical.azure.moderate"
+            color="data.background.categorical.blue.moderate"
             {...args}
           />
           <ChartReferenceLine y={1500} label="Avg: 1200" />
@@ -370,7 +370,7 @@ export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = ({
             dataKey={dataKey}
             name={name}
             strokeStyle="solid"
-            color="chart.background.categorical.azure.moderate"
+            color="data.background.categorical.blue.moderate"
             {...args}
           />
           <ChartReferenceLine x="Apr" label="Avg: 1200" />
@@ -394,7 +394,7 @@ export const TinyLineChart: StoryFn<typeof ChartLine> = ({
             dataKey={dataKey}
             name={name}
             strokeStyle="solid"
-            color="chart.background.categorical.azure.strong"
+            color="data.background.categorical.blue.strong"
             dot={false}
             activeDot={false}
             {...args}
@@ -419,7 +419,7 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
             dataKey="historical"
             name="Historical Data"
             connectNulls={true}
-            color="chart.background.categorical.azure.moderate"
+            color="data.background.categorical.blue.moderate"
           />
           <ChartLine
             dataKey="forecast"
@@ -427,7 +427,7 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
             strokeStyle="dashed"
             connectNulls={true}
             showLegend={false}
-            color="chart.background.categorical.azure.moderate"
+            color="data.background.categorical.blue.moderate"
           />
         </ChartLineWrapper>
       </Box>
@@ -455,7 +455,7 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
               dataKey="sales"
               name="Sales (Connects Nulls)"
               connectNulls={true}
-              color="chart.background.categorical.emerald.moderate"
+              color="data.background.categorical.green.moderate"
             />
           </ChartLineWrapper>
         </Box>
@@ -469,7 +469,7 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
             <ChartLine
               dataKey="sales"
               name="Sales (Do Not Connects Nulls)"
-              color="chart.background.categorical.emerald.moderate"
+              color="data.background.categorical.green.moderate"
             />
           </ChartLineWrapper>
         </Box>
@@ -496,7 +496,7 @@ export const SteppedLineChart: StoryFn<typeof ChartLine> = () => {
             dataKey="value"
             name="Stepped Line"
             type="step"
-            color="chart.background.categorical.azure.moderate"
+            color="data.background.categorical.blue.moderate"
           />
         </ChartLineWrapper>
       </Box>
@@ -547,7 +547,7 @@ export const LineChartWithXAndYAxisLabels: StoryFn<typeof ChartLine> = ({
           <ChartLine
             dataKey={dataKey}
             name={name}
-            color="chart.background.categorical.emerald.moderate"
+            color="data.background.categorical.green.moderate"
             {...args}
           />
         </ChartLineWrapper>
@@ -593,12 +593,12 @@ export const LineChartWithSwitchableTimePeriods: StoryFn<typeof ChartLine> = () 
             <ChartLine
               dataKey="revenue"
               name="Revenue"
-              color="chart.background.categorical.azure.strong"
+              color="data.background.categorical.blue.strong"
             />
             <ChartLine
               dataKey="expenses"
               name="Expenses"
-              color="chart.background.categorical.crimson.strong"
+              color="data.background.categorical.red.strong"
             />
           </ChartLineWrapper>
         </Box>

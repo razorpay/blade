@@ -263,7 +263,7 @@ export const SimpleAreaChart: StoryFn<typeof ChartArea> = ({
             dataKey={dataKey}
             name={name}
             type="monotone"
-            color="chart.background.categorical.azure.intense"
+            color="data.background.categorical.blue.intense"
             {...args}
           />
           <ChartLegend />
@@ -292,7 +292,7 @@ export const StackedAreaChart: StoryFn<typeof ChartArea> = ({
             name={name}
             type="monotone"
             stackId="1"
-            color="chart.background.categorical.azure.moderate"
+            color="data.background.categorical.blue.moderate"
             {...args}
           />
           <ChartArea
@@ -300,7 +300,7 @@ export const StackedAreaChart: StoryFn<typeof ChartArea> = ({
             name="teamB"
             type="monotone"
             stackId="1"
-            color="chart.background.categorical.crimson.moderate"
+            color="data.background.categorical.red.moderate"
             {...args}
           />
         </ChartAreaWrapper>
@@ -329,7 +329,7 @@ export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = ({
                 type="monotone"
                 dataKey={dataKey}
                 name={name}
-                color="chart.background.categorical.emerald.moderate"
+                color="data.background.categorical.green.moderate"
                 {...args}
               />
             </ChartAreaWrapper>
@@ -349,7 +349,7 @@ export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = ({
                 dataKey={dataKey}
                 name={name}
                 connectNulls
-                color="chart.background.categorical.emerald.moderate"
+                color="data.background.categorical.green.moderate"
                 {...args}
               />
             </ChartAreaWrapper>
@@ -374,7 +374,7 @@ export const TinyAreaChart: StoryFn<typeof ChartArea> = ({
             dataKey={dataKey}
             name={name}
             type="monotone"
-            color="chart.background.categorical.azure.intense"
+            color="data.background.categorical.blue.intense"
             connectNulls
             {...args}
           />
@@ -402,7 +402,7 @@ export const AreaChartWithReferenceLine: StoryFn<typeof ChartArea> = ({
             dataKey={dataKey}
             name={name}
             type="monotone"
-            color="chart.background.categorical.azure.moderate"
+            color="data.background.categorical.blue.moderate"
             {...args}
           />
           <ChartReferenceLine y={3000} label="Target" />
@@ -429,7 +429,7 @@ export const AreaChartWithReferenceLineVertical: StoryFn<typeof ChartArea> = ({
             dataKey={dataKey}
             name={name}
             type="monotone"
-            color="chart.background.categorical.azure.moderate"
+            color="data.background.categorical.blue.moderate"
             {...args}
           />
           <ChartReferenceLine x="Apr" label="Target" />
@@ -494,7 +494,7 @@ export const AreaChartWithDefaultColorAndCustomColor: StoryFn<typeof ChartArea> 
           <ChartArea
             dataKey="teamB"
             name="Team B"
-            color="chart.background.categorical.cider.strong"
+            color="data.background.categorical.orange.strong"
             {...args}
           />
         </ChartAreaWrapper>
@@ -525,7 +525,7 @@ export const AreaChartInCard: StoryFn<typeof ChartArea> = () => {
                 dataKey="revenue"
                 name="Revenue"
                 type="monotone"
-                color="chart.background.categorical.emerald.moderate"
+                color="data.background.categorical.green.moderate"
               />
             </ChartAreaWrapper>
           </Box>
@@ -552,7 +552,7 @@ export const AreaChartInCard: StoryFn<typeof ChartArea> = () => {
                 dataKey="visitors"
                 name="Visitors"
                 type="monotone"
-                color="chart.background.categorical.azure.moderate"
+                color="data.background.categorical.blue.moderate"
               />
             </ChartAreaWrapper>
           </Box>
@@ -578,7 +578,7 @@ export const AreaChartWithCartesianGrid: StoryFn<typeof ChartArea> = () => {
         <ChartArea dataKey="teamA" name="Team A" />
         <ChartArea
           name="Team B"
-          color="chart.background.categorical.cider.strong"
+          color="data.background.categorical.orange.strong"
           dataKey="teamB"
         />
       </ChartAreaWrapper>

@@ -8,9 +8,9 @@ import type {
 } from 'recharts';
 import type { ComponentProps } from 'react';
 import type {
-  ChartColorCategories,
-  ChartCategoricalEmphasis,
-  ChartSequentialEmphasis,
+  DataColorCategories,
+  DataCategoricalEmphasis,
+  DataSequentialEmphasis,
 } from '~tokens/theme/theme';
 
 type ChartReferenceLineProps = {
@@ -71,11 +71,11 @@ type ChartCartesianGridProps = Omit<
   'strokeDasharray' | 'verticalFill' | 'horizontalFill'
 >;
 
-type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
-type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
-  ChartColorCategories,
+type ChartsCategoricalColorToken = `data.background.categorical.${DataColorCategories}.${keyof DataCategoricalEmphasis}`;
+type ChartSequentialColorToken = `data.background.sequential.${Exclude<
+  DataColorCategories,
   'gray'
->}.${keyof ChartSequentialEmphasis}`;
+>}.${keyof DataSequentialEmphasis}`;
 
 type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 // State type - contains only the state values

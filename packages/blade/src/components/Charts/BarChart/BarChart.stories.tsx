@@ -167,7 +167,7 @@ export const TinyBarChart: StoryFn<typeof ChartBar> = () => {
     <ChartsWrapper>
       <Box width="100px" height="50px">
         <ChartBarWrapper data={chartData.slice(0, 6)}>
-          <ChartBar dataKey="seriesA" color="chart.background.categorical.azure.moderate" />
+          <ChartBar dataKey="seriesA" color="data.background.categorical.blue.moderate" />
         </ChartBarWrapper>
       </Box>
     </ChartsWrapper>
@@ -190,12 +190,12 @@ export const SimpleBarChart: StoryFn<typeof ChartBar> = () => {
           <ChartBar
             dataKey="seriesA"
             name="Series A"
-            color="chart.background.categorical.azure.faint"
+            color="data.background.categorical.blue.faint"
           />
           <ChartBar
             dataKey="seriesB"
             name="Series B"
-            color="chart.background.categorical.orchid.faint"
+            color="data.background.categorical.purple.faint"
           />
         </ChartBarWrapper>
       </Box>
@@ -329,19 +329,19 @@ export const BarChartWithSequentialColors: StoryFn<typeof ChartBar> = () => {
           <ChartBar
             dataKey="seriesA"
             name="Series A"
-            color="chart.background.sequential.azure.500"
+            color="data.background.sequential.blue.500"
             stackId={1}
           />
           <ChartBar
             dataKey="seriesB"
             name="Series B"
-            color="chart.background.sequential.azure.200"
+            color="data.background.sequential.blue.200"
             stackId={1}
           />
           <ChartBar
             dataKey="seriesC"
             name="Series C"
-            color="chart.background.sequential.azure.100"
+            color="data.background.sequential.blue.100"
             stackId={1}
           />
         </ChartBarWrapper>

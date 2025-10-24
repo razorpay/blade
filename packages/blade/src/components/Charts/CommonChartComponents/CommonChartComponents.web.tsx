@@ -386,7 +386,7 @@ const ChartReferenceLine: React.FC<ChartReferenceLineProps> = ({ label, x, y }) 
   const { theme } = useTheme();
   return (
     <RechartsReferenceLine
-      stroke={theme.colors.chart.background.categorical.gray.intense}
+      stroke={theme.colors.data.background.categorical.gray.intense}
       strokeWidth={2}
       strokeDasharray="4 4"
       label={<CustomReferenceLabel value={label} isVertical={Boolean(x)} />}

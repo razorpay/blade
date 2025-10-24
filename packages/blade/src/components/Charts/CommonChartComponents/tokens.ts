@@ -13,7 +13,7 @@ const X_AXIS_TEXT_BASELINE = 24;
 const MIN_WIDTH = RECT_WIDTH;
 const MAX_WIDTH = 200;
 
-const DEFAULT_COLOR = 'chart.background.categorical.gray.moderate';
+const DEFAULT_COLOR = 'data.background.categorical.gray.moderate';
 
 const componentId = {
   chartLegend: 'chart-legend',

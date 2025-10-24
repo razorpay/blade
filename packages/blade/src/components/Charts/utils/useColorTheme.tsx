@@ -19,14 +19,14 @@ type ColorIntensity = 'faint' | 'subtle' | 'moderate' | 'intense' | 'strong';
  * Color names in the sequence
  */
 type ColorName =
-  | 'azure'
-  | 'emerald'
-  | 'crimson'
-  | 'cider'
-  | 'sapphire'
-  | 'orchid'
-  | 'magenta'
-  | 'topaz'
+  | 'blue'
+  | 'green'
+  | 'red'
+  | 'orange'
+  | 'skyBlue'
+  | 'purple'
+  | 'pink'
+  | 'gold'
   | 'gray';
 
 const useChartsColorTheme = ({
@@ -40,19 +40,19 @@ const useChartsColorTheme = ({
 }): CategoricalColorToken[] => {
   // Single data point should be gray
   if (chartDataIndicators === 1 && chartName !== 'donut') {
-    return ['chart.background.categorical.gray.moderate'];
+    return ['data.background.categorical.gray.moderate'];
   }
 
   // Color sequence
   const colorSequence: ColorName[] = [
-    'azure',
-    'emerald',
-    'topaz',
-    'orchid',
-    'cider',
-    'magenta',
-    'sapphire',
-    'crimson',
+    'blue',
+    'green',
+    'red',
+    'orange',
+    'skyBlue',
+    'purple',
+    'pink',
+    'gold',
     'gray',
   ];
 
@@ -74,7 +74,7 @@ const useChartsColorTheme = ({
   // For each intensity level, go through all colors
   intensitySequence.forEach((intensity) => {
     colorSequence.forEach((colorName) => {
-      const colorValue = `chart.background.categorical.${colorName}.${intensity}`;
+      const colorValue = `data.background.categorical.${colorName}.${intensity}`;
       //@ts-expect-error
       colorThemeArray.push(colorValue);
     });
@@ -90,6 +90,6 @@ const useChartsColorTheme = ({
 /**
  * Color token types for type safety
  */
-type CategoricalColorToken = `chart.background.categorical.${ColorName}.${ColorIntensity}`;
+type CategoricalColorToken = `data.background.categorical.${ColorName}.${ColorIntensity}`;
 
 export default useChartsColorTheme;

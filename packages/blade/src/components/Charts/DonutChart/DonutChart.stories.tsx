@@ -136,14 +136,6 @@ const chartsLargeData = [
   { name: 'Group F', value: 100 },
   { name: 'Group G', value: 100 },
   { name: 'Group H', value: 100 },
-  // { name: 'Group I', value: 100 },
-  // { name: 'Group J', value: 100 },
-  // { name: 'Group K', value: 100 },
-  // { name: 'Group L', value: 100 },
-  // { name: 'Group M', value: 100 },
-  // { name: 'Group N', value: 100 },
-  // { name: 'Group O', value: 100 },
-  // { name: 'Group P', value: 100 },
 ];
 
 // 1. Basic Donut Chart
@@ -357,11 +349,11 @@ export const DonutChartWithCustomColor: StoryFn<typeof ChartDonut> = (args) => {
     <ChartsWrapper>
       <ChartDonutWrapper content={{ value: '1300' }} width="500px" height="300px" {...wrapperProps}>
         <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-          <ChartDonutCell color="chart.background.categorical.topaz.faint" />
-          <ChartDonutCell color="chart.background.categorical.azure.faint" />
-          <ChartDonutCell color="chart.background.categorical.cider.faint" />
-          <ChartDonutCell color="chart.background.categorical.crimson.faint" />
-          <ChartDonutCell color="chart.background.categorical.orchid.faint" />
+          <ChartDonutCell color="data.background.categorical.gold.faint" />
+          <ChartDonutCell color="data.background.categorical.blue.faint" />
+          <ChartDonutCell color="data.background.categorical.orange.faint" />
+          <ChartDonutCell color="data.background.categorical.red.faint" />
+          <ChartDonutCell color="data.background.categorical.purple.faint" />
         </ChartDonut>
         <ChartLegend />
         <ChartTooltip />
@@ -402,11 +394,11 @@ export const DonutChartWithSequentialColors: StoryFn<typeof ChartDonut> = (args)
         {...wrapperProps}
       >
         <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-          <ChartDonutCell color="chart.background.sequential.azure.500" />
-          <ChartDonutCell color="chart.background.sequential.azure.400" />
-          <ChartDonutCell color="chart.background.sequential.azure.300" />
-          <ChartDonutCell color="chart.background.sequential.azure.200" />
-          <ChartDonutCell color="chart.background.sequential.azure.100" />
+          <ChartDonutCell color="data.background.sequential.blue.500" />
+          <ChartDonutCell color="data.background.sequential.blue.400" />
+          <ChartDonutCell color="data.background.sequential.blue.300" />
+          <ChartDonutCell color="data.background.sequential.blue.200" />
+          <ChartDonutCell color="data.background.sequential.blue.100" />
         </ChartDonut>
         <ChartLegend />
         <ChartTooltip />
