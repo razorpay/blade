@@ -204,7 +204,7 @@ exports[`<TextInput /> should render 1`] = `
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 0,
@@ -216,7 +216,7 @@ exports[`<TextInput /> should render 1`] = `
               {},
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -527,7 +527,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 0,
@@ -539,7 +539,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               {},
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,

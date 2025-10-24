@@ -76,7 +76,7 @@ exports[`<CounterInput /> should render 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-width: 1px;
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   border-style: solid;
 }
 
@@ -333,7 +333,7 @@ exports[`<CounterInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -383,7 +383,7 @@ exports[`<CounterInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -776,7 +776,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-width: 1px;
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   border-style: solid;
 }
 
@@ -1033,7 +1033,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1083,7 +1083,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1733,7 +1733,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1783,7 +1783,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;

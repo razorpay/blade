@@ -756,7 +756,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -905,7 +905,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1326,7 +1326,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -1475,7 +1475,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);

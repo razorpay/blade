@@ -237,7 +237,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   [
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(214, 28%, 84%, 1)",
+                      "borderColor": "hsla(214, 40%, 92%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
                       "borderWidth": 0,
@@ -252,7 +252,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     },
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(214, 28%, 84%, 1)",
+                      "borderColor": "hsla(214, 40%, 92%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
                       "borderWidth": 1,
@@ -1070,7 +1070,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                           {
                                             "alignItems": "center",
                                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                                            "borderColor": "hsla(214, 28%, 84%, 1)",
+                                            "borderColor": "hsla(214, 40%, 92%, 1)",
                                             "borderRadius": 2,
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,
@@ -1374,7 +1374,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                           {
                                             "alignItems": "center",
                                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                                            "borderColor": "hsla(214, 28%, 84%, 1)",
+                                            "borderColor": "hsla(214, 40%, 92%, 1)",
                                             "borderRadius": 2,
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,
@@ -1678,7 +1678,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                           {
                                             "alignItems": "center",
                                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                                            "borderColor": "hsla(214, 28%, 84%, 1)",
+                                            "borderColor": "hsla(214, 40%, 92%, 1)",
                                             "borderRadius": 2,
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,

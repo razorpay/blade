@@ -204,7 +204,7 @@ exports[`<BaseInput /> should render 1`] = `
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 0,
@@ -216,7 +216,7 @@ exports[`<BaseInput /> should render 1`] = `
               {},
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -534,7 +534,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
               {},
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 0,
@@ -1787,7 +1787,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 0,
@@ -1799,7 +1799,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               {},
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -2994,7 +2994,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 0,
@@ -3006,7 +3006,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
               {},
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 28%, 84%, 1)",
+                "borderColor": "hsla(214, 40%, 92%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,
