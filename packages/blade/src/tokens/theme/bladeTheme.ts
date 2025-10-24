@@ -23,7 +23,10 @@ const colors: ColorsWithModes = {
           subtle: globalColors.chromatic.azure.a50,
           intense: globalColors.chromatic.azure[500],
         },
-        sea: { subtle: globalColors.chromatic.sea[50], intense: globalColors.chromatic.sea[800] },
+        sea: {
+          subtle: globalColors.chromatic.sea[50],
+          intense: globalColors.chromatic.sea[800],
+        },
         cloud: {
           subtle: globalColors.chromatic.cloud[50],
           intense: globalColors.chromatic.cloud[800],
@@ -47,7 +50,9 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.blueGrayLight[600],
           disabled: globalColors.neutral.blueGrayLight.a200,
         },
-        primary: { normal: globalColors.chromatic.azure[500] },
+        primary: {
+          normal: globalColors.chromatic.azure[500],
+        },
         onSea: {
           onSubtle: globalColors.chromatic.forest[800],
           onIntense: globalColors.chromatic.forest[200],
@@ -76,7 +81,9 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.blueGrayLight[600],
           disabled: globalColors.neutral.blueGrayLight.a200,
         },
-        primary: { normal: globalColors.chromatic.azure[500] },
+        primary: {
+          normal: globalColors.chromatic.azure[500],
+        },
         onSea: {
           onSubtle: globalColors.chromatic.forest[600],
           onIntense: globalColors.chromatic.forest[400],
@@ -287,7 +294,7 @@ const colors: ColorsWithModes = {
           faded: globalColors.neutral.blueGrayLight.a100,
         },
         gray: {
-          default: globalColors.neutral.blueGrayLight[300],
+          default: globalColors.neutral.blueGrayLight[200],
           highlighted: globalColors.neutral.blueGrayLight[300],
           disabled: globalColors.neutral.blueGrayLight[200],
           faded: globalColors.neutral.blueGrayLight.a100,
@@ -452,59 +459,59 @@ const colors: ColorsWithModes = {
         intense: globalColors.neutral.blueGrayLight[900],
       },
     },
-    chart: {
+    data: {
       background: {
         categorical: {
-          azure: {
+          blue: {
             faint: globalColors.chromatic.azure[100],
             subtle: globalColors.chromatic.azure[200],
             moderate: globalColors.chromatic.azure[300],
             intense: globalColors.chromatic.azure[400],
             strong: globalColors.chromatic.azure[500],
           },
-          emerald: {
+          green: {
             faint: globalColors.chromatic.emerald[100],
             subtle: globalColors.chromatic.emerald[200],
             moderate: globalColors.chromatic.emerald[300],
             intense: globalColors.chromatic.emerald[400],
             strong: globalColors.chromatic.emerald[500],
           },
-          crimson: {
+          red: {
             faint: globalColors.chromatic.crimson[100],
             subtle: globalColors.chromatic.crimson[200],
             moderate: globalColors.chromatic.crimson[300],
             intense: globalColors.chromatic.crimson[400],
             strong: globalColors.chromatic.crimson[500],
           },
-          cider: {
+          orange: {
             faint: globalColors.chromatic.cider[100],
             subtle: globalColors.chromatic.cider[200],
             moderate: globalColors.chromatic.cider[300],
             intense: globalColors.chromatic.cider[400],
             strong: globalColors.chromatic.cider[500],
           },
-          sapphire: {
+          skyBlue: {
             faint: globalColors.chromatic.sapphire[100],
             subtle: globalColors.chromatic.sapphire[200],
             moderate: globalColors.chromatic.sapphire[300],
             intense: globalColors.chromatic.sapphire[400],
             strong: globalColors.chromatic.sapphire[500],
           },
-          orchid: {
+          purple: {
             faint: globalColors.chromatic.orchid[100],
             subtle: globalColors.chromatic.orchid[200],
             moderate: globalColors.chromatic.orchid[300],
             intense: globalColors.chromatic.orchid[400],
             strong: globalColors.chromatic.orchid[500],
           },
-          magenta: {
+          pink: {
             faint: globalColors.chromatic.magenta[100],
             subtle: globalColors.chromatic.magenta[200],
             moderate: globalColors.chromatic.magenta[300],
             intense: globalColors.chromatic.magenta[400],
             strong: globalColors.chromatic.magenta[500],
           },
-          topaz: {
+          gold: {
             faint: globalColors.chromatic.topaz[50],
             subtle: globalColors.chromatic.topaz[100],
             moderate: globalColors.chromatic.topaz[200],
@@ -512,15 +519,15 @@ const colors: ColorsWithModes = {
             strong: globalColors.chromatic.topaz[400],
           },
           gray: {
-            faint: globalColors.neutral.blueGrayDark[0],
-            subtle: globalColors.neutral.blueGrayDark[100],
-            moderate: globalColors.neutral.blueGrayDark[200],
-            intense: globalColors.neutral.blueGrayDark[500],
-            strong: globalColors.neutral.blueGrayDark[800],
+            faint: globalColors.neutral.blueGrayLight[0],
+            subtle: globalColors.neutral.blueGrayLight[100],
+            moderate: globalColors.neutral.blueGrayLight[200],
+            intense: globalColors.neutral.blueGrayLight[500],
+            strong: globalColors.neutral.blueGrayLight[800],
           },
         },
         sequential: {
-          azure: {
+          blue: {
             50: globalColors.chromatic.azure[50],
             100: globalColors.chromatic.azure[100],
             200: globalColors.chromatic.azure[200],
@@ -533,7 +540,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.azure[900],
             1000: globalColors.chromatic.azure[1000],
           },
-          emerald: {
+          green: {
             50: globalColors.chromatic.emerald[50],
             100: globalColors.chromatic.emerald[100],
             200: globalColors.chromatic.emerald[200],
@@ -546,7 +553,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.emerald[900],
             1000: globalColors.chromatic.emerald[1000],
           },
-          crimson: {
+          red: {
             50: globalColors.chromatic.crimson[50],
             100: globalColors.chromatic.crimson[100],
             200: globalColors.chromatic.crimson[200],
@@ -559,7 +566,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.crimson[900],
             1000: globalColors.chromatic.crimson[1000],
           },
-          cider: {
+          orange: {
             50: globalColors.chromatic.cider[50],
             100: globalColors.chromatic.cider[100],
             200: globalColors.chromatic.cider[200],
@@ -572,7 +579,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.cider[900],
             1000: globalColors.chromatic.cider[1000],
           },
-          sapphire: {
+          skyBlue: {
             50: globalColors.chromatic.sapphire[50],
             100: globalColors.chromatic.sapphire[100],
             200: globalColors.chromatic.sapphire[200],
@@ -585,7 +592,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.sapphire[900],
             1000: globalColors.chromatic.sapphire[1000],
           },
-          orchid: {
+          purple: {
             50: globalColors.chromatic.orchid[50],
             100: globalColors.chromatic.orchid[100],
             200: globalColors.chromatic.orchid[200],
@@ -598,7 +605,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.orchid[900],
             1000: globalColors.chromatic.orchid[1000],
           },
-          magenta: {
+          pink: {
             50: globalColors.chromatic.magenta[50],
             100: globalColors.chromatic.magenta[100],
             200: globalColors.chromatic.magenta[200],
@@ -611,7 +618,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.magenta[900],
             1000: globalColors.chromatic.magenta[1000],
           },
-          topaz: {
+          gold: {
             50: globalColors.chromatic.topaz[50],
             100: globalColors.chromatic.topaz[100],
             200: globalColors.chromatic.topaz[200],
@@ -625,18 +632,18 @@ const colors: ColorsWithModes = {
             1000: globalColors.chromatic.topaz[1000],
           },
           gray: {
-            0: globalColors.neutral.blueGrayDark[0],
-            50: globalColors.neutral.blueGrayDark[50],
-            100: globalColors.neutral.blueGrayDark[100],
-            200: globalColors.neutral.blueGrayDark[200],
-            300: globalColors.neutral.blueGrayDark[300],
-            400: globalColors.neutral.blueGrayDark[400],
-            500: globalColors.neutral.blueGrayDark[500],
-            600: globalColors.neutral.blueGrayDark[600],
-            700: globalColors.neutral.blueGrayDark[700],
-            800: globalColors.neutral.blueGrayDark[800],
-            900: globalColors.neutral.blueGrayDark[900],
-            1000: globalColors.neutral.blueGrayDark[1000],
+            0: globalColors.neutral.blueGrayLight[0],
+            50: globalColors.neutral.blueGrayLight[50],
+            100: globalColors.neutral.blueGrayLight[100],
+            200: globalColors.neutral.blueGrayLight[200],
+            300: globalColors.neutral.blueGrayLight[300],
+            400: globalColors.neutral.blueGrayLight[400],
+            500: globalColors.neutral.blueGrayLight[500],
+            600: globalColors.neutral.blueGrayLight[600],
+            700: globalColors.neutral.blueGrayLight[700],
+            800: globalColors.neutral.blueGrayLight[800],
+            900: globalColors.neutral.blueGrayLight[900],
+            1000: globalColors.neutral.blueGrayLight[1000],
           },
         },
       },
@@ -655,7 +662,10 @@ const colors: ColorsWithModes = {
           subtle: globalColors.chromatic.azure.a200,
           intense: globalColors.chromatic.azure[500],
         },
-        sea: { subtle: globalColors.chromatic.sea[900], intense: globalColors.chromatic.sea[100] },
+        sea: {
+          subtle: globalColors.chromatic.sea[900],
+          intense: globalColors.chromatic.sea[100],
+        },
         cloud: {
           subtle: globalColors.chromatic.cloud[900],
           intense: globalColors.chromatic.cloud[100],
@@ -679,7 +689,9 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.blueGrayDark[300],
           disabled: globalColors.neutral.blueGrayDark.a200,
         },
-        primary: { normal: globalColors.chromatic.azure[300] },
+        primary: {
+          normal: globalColors.chromatic.azure[300],
+        },
         onSea: {
           onSubtle: globalColors.chromatic.forest[200],
           onIntense: globalColors.chromatic.forest[800],
@@ -708,7 +720,9 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.blueGrayDark[300],
           disabled: globalColors.neutral.blueGrayDark.a200,
         },
-        primary: { normal: globalColors.chromatic.azure[300] },
+        primary: {
+          normal: globalColors.chromatic.azure[300],
+        },
         onSea: {
           onSubtle: globalColors.chromatic.forest[400],
           onIntense: globalColors.chromatic.forest[600],
@@ -1084,59 +1098,59 @@ const colors: ColorsWithModes = {
         intense: globalColors.neutral.blueGrayDark.a100,
       },
     },
-    chart: {
+    data: {
       background: {
         categorical: {
-          azure: {
+          blue: {
             faint: globalColors.chromatic.azure[800],
             subtle: globalColors.chromatic.azure[700],
             moderate: globalColors.chromatic.azure[600],
             intense: globalColors.chromatic.azure[500],
             strong: globalColors.chromatic.azure[400],
           },
-          emerald: {
+          green: {
             faint: globalColors.chromatic.emerald[800],
             subtle: globalColors.chromatic.emerald[700],
             moderate: globalColors.chromatic.emerald[600],
             intense: globalColors.chromatic.emerald[500],
             strong: globalColors.chromatic.emerald[400],
           },
-          crimson: {
+          red: {
             faint: globalColors.chromatic.crimson[800],
             subtle: globalColors.chromatic.crimson[700],
             moderate: globalColors.chromatic.crimson[600],
             intense: globalColors.chromatic.crimson[500],
             strong: globalColors.chromatic.crimson[400],
           },
-          cider: {
+          orange: {
             faint: globalColors.chromatic.cider[800],
             subtle: globalColors.chromatic.cider[700],
             moderate: globalColors.chromatic.cider[600],
             intense: globalColors.chromatic.cider[500],
             strong: globalColors.chromatic.cider[400],
           },
-          sapphire: {
+          skyBlue: {
             faint: globalColors.chromatic.sapphire[800],
             subtle: globalColors.chromatic.sapphire[700],
             moderate: globalColors.chromatic.sapphire[600],
             intense: globalColors.chromatic.sapphire[500],
             strong: globalColors.chromatic.sapphire[400],
           },
-          orchid: {
+          purple: {
             faint: globalColors.chromatic.orchid[800],
             subtle: globalColors.chromatic.orchid[700],
             moderate: globalColors.chromatic.orchid[600],
             intense: globalColors.chromatic.orchid[500],
             strong: globalColors.chromatic.orchid[400],
           },
-          magenta: {
+          pink: {
             faint: globalColors.chromatic.magenta[800],
             subtle: globalColors.chromatic.magenta[700],
             moderate: globalColors.chromatic.magenta[600],
             intense: globalColors.chromatic.magenta[500],
             strong: globalColors.chromatic.magenta[400],
           },
-          topaz: {
+          gold: {
             faint: globalColors.chromatic.topaz[700],
             subtle: globalColors.chromatic.topaz[600],
             moderate: globalColors.chromatic.topaz[500],
@@ -1152,7 +1166,7 @@ const colors: ColorsWithModes = {
           },
         },
         sequential: {
-          azure: {
+          blue: {
             50: globalColors.chromatic.azure[1000],
             100: globalColors.chromatic.azure[900],
             200: globalColors.chromatic.azure[800],
@@ -1165,7 +1179,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.azure[100],
             1000: globalColors.chromatic.azure[50],
           },
-          emerald: {
+          green: {
             50: globalColors.chromatic.emerald[1000],
             100: globalColors.chromatic.emerald[900],
             200: globalColors.chromatic.emerald[800],
@@ -1178,7 +1192,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.emerald[100],
             1000: globalColors.chromatic.emerald[50],
           },
-          crimson: {
+          red: {
             50: globalColors.chromatic.crimson[1000],
             100: globalColors.chromatic.crimson[900],
             200: globalColors.chromatic.crimson[800],
@@ -1191,7 +1205,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.crimson[100],
             1000: globalColors.chromatic.crimson[50],
           },
-          cider: {
+          orange: {
             50: globalColors.chromatic.cider[1000],
             100: globalColors.chromatic.cider[900],
             200: globalColors.chromatic.cider[800],
@@ -1204,7 +1218,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.cider[100],
             1000: globalColors.chromatic.cider[50],
           },
-          sapphire: {
+          skyBlue: {
             50: globalColors.chromatic.sapphire[1000],
             100: globalColors.chromatic.sapphire[900],
             200: globalColors.chromatic.sapphire[800],
@@ -1217,7 +1231,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.sapphire[100],
             1000: globalColors.chromatic.sapphire[50],
           },
-          orchid: {
+          purple: {
             50: globalColors.chromatic.orchid[1000],
             100: globalColors.chromatic.orchid[900],
             200: globalColors.chromatic.orchid[800],
@@ -1230,7 +1244,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.orchid[100],
             1000: globalColors.chromatic.orchid[50],
           },
-          magenta: {
+          pink: {
             50: globalColors.chromatic.magenta[1000],
             100: globalColors.chromatic.magenta[900],
             200: globalColors.chromatic.magenta[800],
@@ -1243,7 +1257,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.magenta[100],
             1000: globalColors.chromatic.magenta[50],
           },
-          topaz: {
+          gold: {
             50: globalColors.chromatic.topaz[1000],
             100: globalColors.chromatic.topaz[900],
             200: globalColors.chromatic.topaz[800],

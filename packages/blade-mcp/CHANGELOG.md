@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.12.2
+
+### Patch Changes
+
+- 4e11809db: chore(blade-mcp): Update Modal knowledgebase with important constraints
+
 ## 1.12.1
 
 ### Patch Changes

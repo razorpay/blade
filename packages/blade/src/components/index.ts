@@ -21,6 +21,7 @@ export * from './Charts';
 export * from './Chip';
 export * from './Collapsible';
 export * from './Counter';
+export * from './CounterInput';
 export * from './Divider';
 export * from './Drawer';
 export * from './DatePicker';

@@ -78,12 +78,20 @@ const App = (): ReactElement => {
           Cancel
         </button>
       </section>
-      <p className="section-title">Exported Icons:</p>
-      <textarea
-        className="input__field input__field--margin"
-        style={{ width: '100%', height: 200 }}
-        value={svgString}
-      />
+      {svgString ? (
+        <>
+          <label htmlFor="exportedIcons" className="label">
+            Exported Icons:
+          </label>
+          <textarea
+            id="exportedIcons"
+            className="input__field input__field--margin"
+            style={{ height: 200 }}
+            value={svgString}
+            readOnly
+          />
+        </>
+      ) : null}
     </section>
   );
 };
