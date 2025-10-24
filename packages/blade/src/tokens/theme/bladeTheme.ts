@@ -511,7 +511,7 @@ const colors: ColorsWithModes = {
             intense: globalColors.chromatic.magenta[400],
             strong: globalColors.chromatic.magenta[500],
           },
-          brown: {
+          gold: {
             faint: globalColors.chromatic.topaz[50],
             subtle: globalColors.chromatic.topaz[100],
             moderate: globalColors.chromatic.topaz[200],
@@ -618,7 +618,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.magenta[900],
             1000: globalColors.chromatic.magenta[1000],
           },
-          brown: {
+          gold: {
             50: globalColors.chromatic.topaz[50],
             100: globalColors.chromatic.topaz[100],
             200: globalColors.chromatic.topaz[200],
@@ -1150,7 +1150,7 @@ const colors: ColorsWithModes = {
             intense: globalColors.chromatic.magenta[500],
             strong: globalColors.chromatic.magenta[400],
           },
-          brown: {
+          gold: {
             faint: globalColors.chromatic.topaz[700],
             subtle: globalColors.chromatic.topaz[600],
             moderate: globalColors.chromatic.topaz[500],
@@ -1257,7 +1257,7 @@ const colors: ColorsWithModes = {
             900: globalColors.chromatic.magenta[100],
             1000: globalColors.chromatic.magenta[50],
           },
-          brown: {
+          gold: {
             50: globalColors.chromatic.topaz[1000],
             100: globalColors.chromatic.topaz[900],
             200: globalColors.chromatic.topaz[800],

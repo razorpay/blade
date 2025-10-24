@@ -35,14 +35,14 @@ export type DataSequentialEmphasis = Omit<
 >;
 
 export type DataColorCategories =
-  | 'azure'
-  | 'emerald'
-  | 'crimson'
-  | 'cider'
-  | 'sapphire'
-  | 'orchid'
-  | 'magenta'
-  | 'topaz'
+  | 'blue'
+  | 'green'
+  | 'red'
+  | 'orange'
+  | 'skyBlue'
+  | 'purple'
+  | 'pink'
+  | 'gold'
   | 'gray';
 
 type SubtleOrIntenseEmphasis = Pick<Emphasis, 'subtle' | 'intense'>;
