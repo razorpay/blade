@@ -47,12 +47,12 @@ const useChartsColorTheme = ({
   const colorSequence: ColorName[] = [
     'blue',
     'green',
-    'red',
-    'orange',
-    'skyBlue',
-    'purple',
-    'pink',
     'gold',
+    'purple',
+    'orange',
+    'pink',
+    'blue',
+    'red',
     'gray',
   ];
 
