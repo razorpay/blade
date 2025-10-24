@@ -51,7 +51,7 @@ const useChartsColorTheme = ({
     'purple',
     'orange',
     'pink',
-    'blue',
+    'skyBlue',
     'red',
     'gray',
   ];
