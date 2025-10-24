@@ -7,7 +7,7 @@ import type {
   TypographyWithPlatforms,
   ElevationWithColorModes,
 } from '~tokens/global';
-import type { ColorChromaticScale } from '~tokens/global/colors';
+import type { ColorChromaticScale, ColorNeutralGrayScale } from '~tokens/global/colors';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
@@ -115,7 +115,7 @@ export type Colors = {
   data: {
     background: {
       categorical: Record<DataColorCategories, DataCategoricalEmphasis>;
-      sequential: Record<Exclude<DataColorCategories, 'gray'>, DataSequentialEmphasis>;
+      sequential: Record<DataColorCategories, DataSequentialEmphasis | ColorNeutralGrayScale>;
     };
   };
 };
