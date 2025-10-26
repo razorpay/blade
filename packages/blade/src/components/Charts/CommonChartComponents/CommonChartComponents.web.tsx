@@ -7,7 +7,7 @@ import {
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
-import { getHighestColorInColorRange, isSequentialColor, sanitizeString } from '../utils';
+import { getHighestColorInRange, isSequentialColor, sanitizeString } from '../utils';
 import type {
   ChartReferenceLineProps,
   ChartXAxisProps,
@@ -62,7 +62,7 @@ const getChartColor = (
 
   return mappedColor && isSequentialColor(mappedColor)
     ? mappedColor ?? 'chart.background.categorical.azure.faint'
-    : getHighestColorInColorRange({
+    : getHighestColorInRange({
         colorToken: mappedColor ?? ('chart.background.categorical.azure.faint' as ChartColorToken),
         followIntensityMapping: chartName === 'donut' && isCustomColor,
       });

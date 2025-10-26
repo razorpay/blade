@@ -4,7 +4,7 @@ import {
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import { useChartsColorTheme, getHighestColorInColorRange } from '../utils';
+import { useChartsColorTheme, getHighestColorInRange } from '../utils';
 import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
@@ -58,7 +58,7 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
     const fill = getIn(theme.colors, color ?? defaultColorArray[_index]);
     const strokeFill = getIn(
       theme.colors,
-      getHighestColorInColorRange({
+      getHighestColorInRange({
         colorToken: color ?? defaultColorArray[_index],
         followIntensityMapping: Boolean(color),
       }),

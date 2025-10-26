@@ -11,7 +11,7 @@ type ColorIntensity = 'faint' | 'subtle' | 'moderate' | 'intense' | 'strong';
  * @returns The highest color token in the range
  */
 
-export const getHighestColorInColorRange = ({
+export const getHighestColorInRange = ({
   colorToken,
   followIntensityMapping = false,
 }: {

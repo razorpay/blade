@@ -6,7 +6,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
 } from 'recharts';
-import { useChartsColorTheme, getHighestColorInColorRange, sanitizeString } from '../utils';
+import { useChartsColorTheme, getHighestColorInRange, sanitizeString } from '../utils';
 import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
 import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents/types';
@@ -354,7 +354,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
 
           const fill = getIn(
             theme.colors,
-            getHighestColorInColorRange({
+            getHighestColorInRange({
               colorToken: child.props.color || themeColors[index],
               followIntensityMapping: Boolean(child.props.color),
             }),
@@ -380,9 +380,8 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         fill="transparent"
         stroke={getIn(
           theme.colors,
-          getHighestColorInColorRange({
+          getHighestColorInRange({
             colorToken: themeColors[index],
-            followIntensityMapping: false,
           }),
         )} // Different stroke color for each cell
         strokeWidth={0.75}
