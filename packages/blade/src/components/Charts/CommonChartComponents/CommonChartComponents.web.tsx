@@ -7,7 +7,7 @@ import {
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
-import { getHighestColorInColorRange, isSequentialColor } from '../utils';
+import { getHighestColorInColorRange, isSequentialColor, sanitizeString } from '../utils';
 import type {
   ChartReferenceLineProps,
   ChartXAxisProps,
@@ -36,7 +36,6 @@ import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
-import { sanitizeString } from '~utils';
 
 /**
  * Helper function to get the appropriate color for chart elements (tooltip, legend)

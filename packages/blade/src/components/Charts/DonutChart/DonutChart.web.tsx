@@ -6,7 +6,7 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
 } from 'recharts';
-import { useChartsColorTheme, getHighestColorInColorRange } from '../utils';
+import { useChartsColorTheme, getHighestColorInColorRange, sanitizeString } from '../utils';
 import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
 import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents/types';
@@ -31,7 +31,6 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { sanitizeString } from '~utils';
 
 // Cell component
 const _Cell: React.FC<ChartDonutCellProps> = ({ ...rest }) => {

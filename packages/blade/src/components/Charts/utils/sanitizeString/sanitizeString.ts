@@ -6,26 +6,9 @@
  *
  * @param input - The string to sanitize
  * @returns Sanitized string safe for chart data
- *
  * @example
- * // Basic sanitization
- * sanitizeChartData('Sales Data 2024')
- * // Returns: 'Sales Data 2024'
- *
- * @example
- * // Removes line breaks and tabs
- * sanitizeChartData('Sales\nData\t2024')
- * // Returns: 'Sales Data 2024'
- *
- * @example
- * // Handles null/undefined
- * sanitizeChartData(null)
- * // Returns: ''
- *
- * @example
- * // Removes HTML tags
- * sanitizeChartData('<b>Sales</b> Data')
- * // Returns: 'Sales Data'
+ * sanitizeString('Sales Data 2024')
+ * // Returns: 'Sales_Data_2024'
  */
 export const sanitizeString = (input: string | null | undefined): string => {
   // Handle null/undefined input
