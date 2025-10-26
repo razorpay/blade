@@ -147,23 +147,21 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
     if (Array.isArray(children)) {
       children.forEach((child) => {
         if (getComponentId(child) === componentId.chartDonut) {
-          //@ts-expect-error
-          const data = child.props.data;
-          //@ts-expect-error
-          const children = child.props.children;
+          const data = (child as React.ReactElement<ChartDonutProps>).props.data;
+          const children = (child as React.ReactElement<ChartDonutProps>).props.children;
           if (Array.isArray(children)) {
             children.forEach((child, index) => {
-              if (getComponentId(child) === componentId.cell) {
-                dataColorMapping[sanitizeString(data[index].name)] = {
-                  colorToken: child.props.color,
-                  isCustomColor: Boolean(child.props.color),
+              if (getComponentId(child) === componentId.cell && data[index]?.name) {
+                dataColorMapping[sanitizeString(data[index].name as string)] = {
+                  colorToken: child.props?.color,
+                  isCustomColor: Boolean(child.props?.color),
                 };
               }
             });
           } else {
             // eslint-disable-next-line array-callback-return
-            data.map((item: { name: string }, index: number) => {
-              dataColorMapping[sanitizeString(item.name)] = {
+            data.map((item, index: number) => {
+              dataColorMapping[sanitizeString(item.name as string)] = {
                 colorToken: themeColors[index],
                 isCustomColor: false,
               };
