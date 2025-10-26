@@ -25,8 +25,8 @@ export const isSequentialColor = (colorToken: string): boolean => {
   const [, , numericValue] = sequentialMatch;
   const numericValueInt = parseInt(numericValue, 10);
 
-  // Valid sequential color numeric values: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
-  const validSequentialValues = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+  // Valid sequential color numeric values: 0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
+  const validSequentialValues = [0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 
   return validSequentialValues.includes(numericValueInt);
 };

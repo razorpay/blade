@@ -75,8 +75,7 @@ const useChartsColorTheme = ({
   intensitySequence.forEach((intensity) => {
     colorSequence.forEach((colorName) => {
       const colorValue = `data.background.categorical.${colorName}.${intensity}`;
-      //@ts-expect-error
-      colorThemeArray.push(colorValue);
+      colorThemeArray.push(colorValue as CategoricalColorToken);
     });
   });
 
