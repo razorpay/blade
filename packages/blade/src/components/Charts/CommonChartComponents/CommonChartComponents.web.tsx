@@ -60,12 +60,13 @@ const getChartColor = (
     return mappedColor ?? '';
   }
 
-  return mappedColor && isSequentialColor(mappedColor)
-    ? mappedColor ?? 'chart.background.categorical.azure.faint'
-    : getHighestColorInRange({
-        colorToken: mappedColor ?? ('chart.background.categorical.azure.faint' as ChartColorToken),
-        followIntensityMapping: chartName === 'donut' && isCustomColor,
-      });
+  if (mappedColor && isSequentialColor(mappedColor)) {
+    return mappedColor ?? 'chart.background.categorical.azure.faint';
+  }
+  return getHighestColorInRange({
+    colorToken: mappedColor ?? ('chart.background.categorical.azure.faint' as ChartColorToken),
+    followIntensityMapping: chartName === 'donut' && isCustomColor,
+  });
 };
 
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
