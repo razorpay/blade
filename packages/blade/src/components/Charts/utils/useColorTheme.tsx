@@ -1,33 +1,10 @@
+import type { ColorTheme, ChartName, ChartColorTokenNames, ColorIntensity } from './types';
+import { colorSequence } from './tokens';
 /**
  * The color theme of the chart.
  * @default 'categorical'
  * @description The color theme of the chart.
  */
-export type ColorTheme = 'categorical';
-
-/**
- * Chart types that determine color sequence
- */
-export type ChartName = 'bar' | 'donut' | 'line' | 'area';
-
-/**
- * Color intensity levels
- */
-type ColorIntensity = 'faint' | 'subtle' | 'moderate' | 'intense' | 'strong';
-
-/**
- * Color names in the sequence
- */
-type ColorName =
-  | 'blue'
-  | 'green'
-  | 'red'
-  | 'orange'
-  | 'skyBlue'
-  | 'purple'
-  | 'pink'
-  | 'gold'
-  | 'gray';
 
 const useChartsColorTheme = ({
   colorTheme = 'categorical',
@@ -42,19 +19,6 @@ const useChartsColorTheme = ({
   if (chartDataIndicators === 1 && chartName !== 'donut') {
     return ['data.background.categorical.gray.moderate'];
   }
-
-  // Color sequence
-  const colorSequence: ColorName[] = [
-    'blue',
-    'green',
-    'gold',
-    'purple',
-    'orange',
-    'pink',
-    'skyBlue',
-    'red',
-    'gray',
-  ];
 
   // Intensity sequence based on chart type
   const getIntensitySequence = (chartName?: ChartName): ColorIntensity[] => {
@@ -89,6 +53,6 @@ const useChartsColorTheme = ({
 /**
  * Color token types for type safety
  */
-type CategoricalColorToken = `data.background.categorical.${ColorName}.${ColorIntensity}`;
+type CategoricalColorToken = `data.background.categorical.${ChartColorTokenNames}.${ColorIntensity}`;
 
 export default useChartsColorTheme;

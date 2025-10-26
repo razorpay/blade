@@ -1,6 +1,5 @@
 import type { ChartColorToken } from '../CommonChartComponents/types';
-
-type ColorIntensity = 'faint' | 'subtle' | 'moderate' | 'intense' | 'strong';
+import type { ColorIntensity } from './types';
 
 /**
  *
