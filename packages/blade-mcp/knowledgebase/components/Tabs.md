@@ -6,6 +6,10 @@ Tabs
 
 The Tabs component is a navigation element used to switch between different views in the same context. Tabs are contextual to a section or page and are triggered by user interaction. They provide an organized way to display related content while maintaining a clean user interface.
 
+## Important Constraints
+
+- `Tabs` component requires a `TabList` as a child
+
 ## TypeScript Types
 
 These types represent the props that the Tabs component and its subcomponents accept.

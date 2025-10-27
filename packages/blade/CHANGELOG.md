@@ -1,5 +1,247 @@
 # @razorpay/blade
 
+## 12.61.0
+
+### Minor Changes
+
+- c5e3a9237: feat(blade): introduced footer and enhance header background for DetailedView
+
+  - **New Component**: Added `DrawerFooter` component with sticky positioning and optional divider in drawer
+  - **Enhanced DrawerHeader**: Added `showDivider` prop to control header divider visibility and upgraded gradient pattern from linear to radial
+  - **DetailedView Pattern Enhancement**:
+    - Add an option to toggle the footer's visibility
+    - Ensure the footer remains sticky at all times
+    - Upgrade the gradient pattern in the header
+
+## 12.60.2
+
+### Patch Changes
+
+- a4717aa85: fix(blade): scroll issue in bottomsheet
+
+## 12.60.1
+
+### Patch Changes
+
+- 5f2750544: feat(blade): update TopNav actions bg color, made profile avatar square
+
+## 12.60.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
+## 12.59.0
+
+### Minor Changes
+
+- ce80fb710: feat(blade): update ts version
+
+## 12.58.0
+
+### Minor Changes
+
+- 6d508bbc8: ## feat(blade): add donut charts 🍩
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-donutchart--docs)
+
+  ### Deprecation of `colorTheme='default'`
+
+  The `default` option for the `colorTheme` prop has been deprecated to improve clarity and provide a more descriptive API. The new default theme is `'categorical'`. This change makes the theme's purpose—applying a set of distinct colors for different categories—more explicit.
+
+  **Impact**
+
+  Implementation that explicitly sets `colorTheme='default'` will use `'categorical'` as default. Implementations that did not specify a `colorTheme` will automatically use the new `'categorical'` default and should see no change in behavior.
+
+  **How to Upgrade**
+
+  You need to update your code where `colorTheme='default'` is used. You can either remove the prop entirely or change the value to `'categorical'`.
+
+  ```diff
+  - <YourComponent colorTheme='default' />
+  + <YourComponent colorTheme='categorical' />
+
+  // Or, since it's the new default, simply remove the prop:
+  + <YourComponent />
+
+  ```
+
+  ### Updation of color mapping tokens for charts
+
+  We have update color mapping of few token related to charts. you might need to update your snaps.
+
+## 12.57.0
+
+### Minor Changes
+
+- f8be2c8ef: feat(Accordion): add `minWidth` prop to the Accordion component
+
+## 12.56.1
+
+### Patch Changes
+
+- 950c4881f: fix(blade): resolve stale values and button default behaviour in preset dropdown of datepicker
+
+## 12.56.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade): add BarChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-barchart--docs)
+
+## 12.55.1
+
+### Patch Changes
+
+- fa2f47cad: fix(blade): invoke onApply of DatePicker when preset is selected from the preset dropdown
+- 2218df3db: feat(DropdownOverlay): add 'data-analytics' attribute
+
+## 12.55.0
+
+### Minor Changes
+
+- ac1d4fb54: feat(blade): add support for non-dismissible modals & bottomsheet
+
+  Introduces a new prop `isDismissible` in `Modal` and `BottomSheet` which can be used to prevent users from accidentally dismissing modals and bottomSheet by clicking outside or pressing the escape key. When `isDismissible={false}`, the close button is automatically hidden and the modal and bottomSheet can only be closed through explicit user actions.
+
+  ```jsx
+  <Modal isOpen={isOpen} isDismissible={false}>
+    // .... modal content ....
+  </Modal>
+  ```
+
+  ```jsx
+  <BottomSheet isOpen={isOpen} isDismissible={false}>
+    // .... bottomsheet component ....
+  </BottomSheet>
+  ```
+
+## 12.54.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
+## 12.53.1
+
+### Patch Changes
+
+- 0ff0152b2: fix(ActionListItem): support non-string values in item
+
+## 12.53.0
+
+### Minor Changes
+
+- ab1773547: feat(blade): add AreaChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-areachart--docs)
+
+## 12.52.0
+
+### Minor Changes
+
+- fbc71b288: feat(blade): add support for Badge in SelectInput
+
+  Introduces a new prop `valueSuffix` which in `SelectInput` which can be used to render a Badge after the the value.
+
+  ```jsx
+  <SelectInput
+    valueSuffix={({ values }) => {
+      if (values[0] === 'item-1') {
+        return <Badge color="positive">20% Off</Badge>;
+      }
+      return null;
+    }}
+  />
+  ```
+
+## 12.51.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): added Chart subcomponents & Line Chart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-linechart--docs)
+
+## 12.50.0
+
+### Minor Changes
+
+- b9e48e2ab: feat(Box): add `backgroundFilter` and `transition` prop to Box component
+
+## 12.49.7
+
+### Patch Changes
+
+- 781cc325f: fix(blade): Double focus ring in DatePicker and Input
+
+## 12.49.6
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
+## 12.49.5
+
+### Patch Changes
+
+- 77a78ddd7: chore: update babel version
+
+## 12.49.4
+
+### Patch Changes
+
+- 8132ef089: feat(datepicker): added partial validation
+
+## 12.49.3
+
+### Patch Changes
+
+- 37fbe24ee: fix: wrong layout position in case of bottom sheet
+
+## 12.49.2
+
+### Patch Changes
+
+- 9fd0523f9: fix(datepicker): changed arrow to hyphen in range input field
+
+## 12.49.1
+
+### Patch Changes
+
+- 828d6d4f3: revert: virtualization in phone number input
+
+## 12.49.0
+
+### Minor Changes
+
+- d21bd1c9a: feat: add filled icons
+
+## 12.48.0
+
+### Minor Changes
+
+- bf6f929e6: feat(datepicker): add formatted input, preset dropdown, single-field range selection
+
+## 12.47.1
+
+### Patch Changes
+
+- 3c8584905: fix : update bottom sheet height logic
+
+## 12.47.0
+
+### Minor Changes
+
+- 029964227: feat(blade): add new navigation button position overlap
+
+## 12.46.2
+
+### Patch Changes
+
+- b746d9db8: fix(ListView): enable horizontal scroll for filters on desktop, remove gradient overlay
+
 ## 12.46.1
 
 ### Patch Changes

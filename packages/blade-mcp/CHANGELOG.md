@@ -1,5 +1,132 @@
 # @razorpay/blade-mcp
 
+## 1.14.0
+
+### Minor Changes
+
+- c5e3a9237: feat(blade): introduced footer and enhance header background for DetailedView
+
+  - **New Component**: Added `DrawerFooter` component with sticky positioning and optional divider in drawer
+  - **Enhanced DrawerHeader**: Added `showDivider` prop to control header divider visibility and upgraded gradient pattern from linear to radial
+  - **DetailedView Pattern Enhancement**:
+    - Add an option to toggle the footer's visibility
+    - Ensure the footer remains sticky at all times
+    - Upgrade the gradient pattern in the header
+
+## 1.13.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
+## 1.12.2
+
+### Patch Changes
+
+- 4e11809db: chore(blade-mcp): Update Modal knowledgebase with important constraints
+
+## 1.12.1
+
+### Patch Changes
+
+- b964fb7fb: fix(blade-mcp/Box): improve Box knowledgebase UI quality
+
+## 1.12.0
+
+### Minor Changes
+
+- 6d508bbc8: feat(blade-mcp): add donut chart knowledge base
+
+## 1.11.0
+
+### Minor Changes
+
+- 4f9b1ebd3: feat(blade-mcp): add figma to code image attachment in mcp tool call
+
+### Patch Changes
+
+- aae0f0d15: fix(blade-mcp): remove console logs
+
+## 1.10.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade-mcp): update knowledgebase with BarChart
+
+## 1.9.0
+
+### Minor Changes
+
+- ac1d4fb54: feat(blade): add support for non-dismissible modals & bottomsheet
+
+  Introduces a new prop `isDismissible` in `Modal` and `BottomSheet` which can be used to prevent users from accidentally dismissing modals and bottomSheet by clicking outside or pressing the escape key. When `isDismissible={false}`, the close button is automatically hidden and the modal and bottomSheet can only be closed through explicit user actions.
+
+  ```jsx
+  <Modal isOpen={isOpen} isDismissible={false}>
+    // .... modal content ....
+  </Modal>
+  ```
+
+  ```jsx
+  <BottomSheet isOpen={isOpen} isDismissible={false}>
+    // .... bottomsheet component ....
+  </BottomSheet>
+  ```
+
+## 1.8.0
+
+### Minor Changes
+
+- dd7e18b43: feat(server): add publishLinesOfCodeMetric tool integration
+
+## 1.7.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
+## 1.6.0
+
+### Minor Changes
+
+- ab1773547: feat(blade-mcp): update knowledgebase with AreaChart
+
+## 1.5.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): update knowledge base to support line chart
+
+## 1.4.5
+
+### Patch Changes
+
+- c1b2b96b7: chore(analytics): replace userId with OS-based userName
+
+## 1.4.4
+
+### Patch Changes
+
+- 57d2d9ff2: feat(datepicker): exposing footer prop
+
+## 1.4.3
+
+### Patch Changes
+
+- ea090ffc9: fix(blade-mcp): change index to get correct username in mcp
+
+## 1.4.2
+
+### Patch Changes
+
+- 64b723a1b: feat(blade-mcp): add userName of user in mcp analytics
+
+## 1.4.1
+
+### Patch Changes
+
+- 9cb50cab1: feat(blade-mcp): add constraints to component knowledgebase
+
 ## 1.4.0
 
 ### Minor Changes

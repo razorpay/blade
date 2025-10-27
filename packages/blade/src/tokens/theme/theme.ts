@@ -7,6 +7,7 @@ import type {
   TypographyWithPlatforms,
   ElevationWithColorModes,
 } from '~tokens/global';
+import type { ColorChromaticScale } from '~tokens/global/colors';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
@@ -23,6 +24,26 @@ export type Emphasis = {
   muted: string;
   disabled: string;
 };
+
+export type ChartCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'intense'> & {
+  faint: string;
+  strong: string;
+};
+export type ChartSequentialEmphasis = Omit<
+  ColorChromaticScale,
+  'a50' | 'a150' | 'a100' | 'a200' | 'a400'
+>;
+
+export type ChartColorCategories =
+  | 'azure'
+  | 'emerald'
+  | 'crimson'
+  | 'cider'
+  | 'sapphire'
+  | 'orchid'
+  | 'magenta'
+  | 'topaz'
+  | 'gray';
 
 type SubtleOrIntenseEmphasis = Pick<Emphasis, 'subtle' | 'intense'>;
 // Exporting this for usage in other components
@@ -91,6 +112,12 @@ export type Colors = {
     border: SubtleOrIntenseEmphasis;
   };
   transparent: string;
+  chart: {
+    background: {
+      categorical: Record<ChartColorCategories, ChartCategoricalEmphasis>;
+      sequential: Record<Exclude<ChartColorCategories, 'gray'>, ChartSequentialEmphasis>;
+    };
+  };
 };
 
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;

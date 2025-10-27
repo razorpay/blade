@@ -8,6 +8,7 @@ import {
 } from '../utils/tokens.js';
 import { hasOutDatedRules, getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 

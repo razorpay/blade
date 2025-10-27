@@ -21,7 +21,8 @@ type UsePopupProps = {
   open?: boolean;
   placement: UseFloatingOptions['placement'];
   onOpenChange?: UseFloatingOptions['onOpenChange'];
-  referenceRef: React.RefObject<HTMLButtonElement>;
+  referenceRef: React.RefObject<HTMLButtonElement> | React.RefObject<HTMLElement>;
+  crossAxisOffset?: number;
 };
 
 const usePopup = ({
@@ -30,6 +31,7 @@ const usePopup = ({
   open,
   onOpenChange,
   referenceRef,
+  crossAxisOffset = 0,
 }: UsePopupProps) => {
   const GAP = spacing[4];
   const { theme } = useTheme();
@@ -52,7 +54,9 @@ const usePopup = ({
     middleware: [
       shift({ crossAxis: false, padding: GAP }),
       flip({ padding: GAP, fallbackAxisSideDirection: 'end' }),
-      offset(GAP),
+      // Combined offset: default GAP + custom crossAxis adjustment
+      // crossAxisOffset allows fine-tuning calendar position (e.g., align with input text vs input border)
+      offset({ mainAxis: GAP, crossAxis: crossAxisOffset }),
     ],
     whileElementsMounted: (reference, floating, update) =>
       autoUpdate(reference, floating, update, {

@@ -13,11 +13,35 @@
 .input__field--margin {
   margin-bottom: 40px !important;
 }
+
+textarea.input__field {
+  border: 1px solid var(--figma-color-border, #e5e5e5);
+  resize: vertical;
+  font-family: inherit;
+  padding: 8px;
+  border-radius: 2px;
+}
+
+textarea.input__field:focus {
+  outline: none;
+  border-color: var(--figma-color-border-selected, #18a0fb);
+}
+
 .button {
   margin-left: 20px;
 }
 
 .section-title {
   display: block !important;
-  margin-bottom: 30px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--figma-color-text, #000000);
+  line-height: 20px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-color-text, #000000a9) !important;
 }

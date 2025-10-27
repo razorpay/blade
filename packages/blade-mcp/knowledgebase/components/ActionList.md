@@ -8,6 +8,14 @@ ActionList
 
 ActionList contains a list of actionable items that can be used to perform particular actions. It can be used inside Dropdowns, BottomSheets, or as selectable items when combined with SelectInput. ActionList provides a consistent UI pattern for presenting a menu of options with optional icons, badges, and various customization options.
 
+## Important Constraints
+
+- `ActionList` only supports `ActionListItem` and `ActionListSection` as children
+- `ActionListItem` `leading` prop only accepts `ActionListItemIcon`, `ActionListItemAsset`, `ActionListItemAvatar`, and `ActionListItemText` components
+- `ActionListItem` `trailing` prop only accepts `ActionListItemIcon` and `ActionListItemText` components
+- `ActionListItem` `titleSuffix` prop only accepts `ActionListItemBadge` and `ActionListItemBadgeGroup` components
+- `ActionListItem` with `intent="negative"` cannot be used inside Dropdown with SelectInput trigger
+
 ## TypeScript Types
 
 Below are the props that the ActionList component and its subcomponents accept. These types define all possible properties you can use when implementing ActionList in your application.

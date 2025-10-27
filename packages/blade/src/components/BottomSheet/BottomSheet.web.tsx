@@ -75,6 +75,7 @@ const _BottomSheet = ({
   children,
   initialFocusRef,
   snapPoints = [0.35, 0.5, 0.85],
+  isDismissible = true,
   zIndex = componentZIndices.bottomSheet,
   ...dataAnalyticsProps
 }: BottomSheetProps): React.ReactElement => {
@@ -122,7 +123,8 @@ const _BottomSheet = ({
       const maxValue = computeMaxContent({
         contentHeight,
         footerHeight,
-        headerHeight: headerHeight + headerHeight > 0 ? grabHandleHeight : 0,
+        // If headerHeight is zero no need to add height of grabHandleHeight.
+        headerHeight: headerHeight > 0 ? headerHeight + grabHandleHeight : 0,
         maxHeight: value,
       });
       _setPositionY(shouldLimitPositionY ? maxValue : value);
@@ -158,7 +160,10 @@ const _BottomSheet = ({
   // take the grabHandle's height into headerHeight too
   useIsomorphicLayoutEffect(() => {
     if (!grabHandleRef.current) return;
-    setGrabHandleHeight(grabHandleRef.current.getBoundingClientRect().height);
+    const marginBottom = window.getComputedStyle(grabHandleRef.current).marginBottom;
+    setGrabHandleHeight(
+      grabHandleRef.current.getBoundingClientRect().height + parseFloat(marginBottom),
+    );
   }, [grabHandleRef.current, _isOpen]);
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
@@ -215,10 +220,12 @@ const _BottomSheet = ({
   }, [setPositionY]);
 
   const close = React.useCallback(() => {
-    onDismiss?.();
-    bottomSheetAndDropdownGlue?.onBottomSheetDismiss();
+    if (isDismissible) {
+      onDismiss?.();
+      bottomSheetAndDropdownGlue?.onBottomSheetDismiss?.();
+    }
     returnFocus();
-  }, [bottomSheetAndDropdownGlue, onDismiss, returnFocus]);
+  }, [isDismissible, onDismiss, bottomSheetAndDropdownGlue, returnFocus]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
@@ -249,8 +256,17 @@ const _BottomSheet = ({
       lastOffset: [_, lastOffsetY],
       down,
       dragging,
+      event,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
+      // Check if the touch started on a scrollable element (e.g., SpinWheel in TimePicker)
+      // This prevents BottomSheet drag gestures from interfering with internal scrolling
+      const touchTarget = event?.target as Element | undefined;
+      const isScrollableContent = touchTarget?.closest('[data-allow-scroll]');
+
+      if (isScrollableContent) {
+        return;
+      }
       setIsDragging(Boolean(dragging));
       // lastOffsetY is the previous position user stopped dragging the sheet
       // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
@@ -320,10 +336,20 @@ const _BottomSheet = ({
 
         const shouldClose = rawY < lowerestSnap;
         if (shouldClose) {
-          setIsDragging(false);
-          cancel();
-          close();
-          return;
+          if (isDismissible) {
+            // Allow closing if dismissible
+            setIsDragging(false);
+            cancel();
+            close();
+            return;
+          } else {
+            // If not dismissible, snap back to first snap point instead of closing
+            setIsDragging(false);
+            cancel();
+            const firstSnapPoint = dimensions.height * snapPoints[0];
+            setPositionY(firstSnapPoint, true);
+            return;
+          }
         }
 
         // if we stop dragging assign snap to the nearest point
@@ -348,7 +374,13 @@ const _BottomSheet = ({
 
     const preventScrolling = (e: Event) => {
       if (preventScrollingRef?.current) {
-        e.preventDefault();
+        // Allow scrolling for components that explicitly need scroll functionality
+        const target = e.target as Element;
+        const isAllowedComponent = target.closest('[data-allow-scroll]');
+
+        if (!isAllowedComponent) {
+          e.preventDefault();
+        }
       }
     };
 
@@ -404,6 +436,7 @@ const _BottomSheet = ({
       bind,
       defaultInitialFocusRef,
       isHeaderFloating,
+      isDismissible,
     }),
     [
       isVisible,
@@ -421,6 +454,7 @@ const _BottomSheet = ({
       bind,
       defaultInitialFocusRef,
       isHeaderFloating,
+      isDismissible,
     ],
   );
 

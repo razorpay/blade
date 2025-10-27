@@ -127,6 +127,16 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * @param type - The level of the calendar. ("month" | "year" | "decade")
    */
   onPrevious?: ({ date, type }: { date: Date; type: Level }) => void;
+  /**
+   * Whether to show the footer with apply/cancel buttons
+   * @default true
+   */
+  showFooterActions?: boolean;
+  /**
+   * Custom React element to render in the footer above/side of action buttons
+   * Can be used to add custom content like informational text, links, or other components
+   */
+  footer?: React.ReactElement;
 };
 
 type DatePickerProps<Type extends DateSelectionType> = Omit<
@@ -146,7 +156,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     /**
      * Sets the label for the input element.
      */
-    label?: Type extends 'single' ? string : { start: string; end?: string };
+    label?: Type extends 'single' ? string : string | { start: string; end?: string };
     /**
      * Sets the HTML [name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) attribute on the input elements.
      * Can be used when submitting a form.
@@ -154,9 +164,9 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * @example 'date' | { start: 'start-date', end: 'end-date' }
      */
     name?: Type extends 'single' ? string : { start: string; end?: string };
-    helpText?: Type extends 'single' ? string : { start: string; end?: string };
-    errorText?: Type extends 'single' ? string : { start: string; end?: string };
-    successText?: Type extends 'single' ? string : { start: string; end?: string };
+    helpText?: Type extends 'single' ? string : string | { start: string; end?: string };
+    errorText?: Type extends 'single' ? string : string | { start: string; end?: string };
+    successText?: Type extends 'single' ? string : string | { start: string; end?: string };
     /**
      * Callback which fires when apply button is clicked
      */
@@ -176,11 +186,11 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
 
 type DatePickerRangeInputProps = {
   selectionType: 'range';
-  label?: { start: string; end?: string };
+  label?: string | { start: string; end?: string };
   name?: { start: string; end: string };
-  successText?: { start: string; end?: string };
-  errorText?: { start: string; end?: string };
-  helpText?: { start: string; end?: string };
+  successText?: string | { start: string; end?: string };
+  errorText?: string | { start: string; end?: string };
+  helpText?: string | { start: string; end?: string };
   date: [Date, Date];
 };
 
@@ -215,6 +225,13 @@ type DatePickerInputProps = DatePickerCommonInputProps &
   (DatePickerRangeInputProps | DatePickerSingleInputProps) & {
     format: string;
     placeholder?: string;
+    setControlledValue?: (date: Date | null | [Date | null, Date | null]) => void;
+    leadingDropdown?: React.ReactElement | null;
+    selectedPreset?: DatesRangeValue | null;
+    excludeDate?: (date: Date) => boolean;
+    minDate?: Date;
+    maxDate?: Date;
+    effectiveSelectionType?: 'single' | 'range' | null;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -230,6 +247,19 @@ type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'labe
    */
   onClearButtonClick?: () => void;
 };
+
+type DateInputProps = BaseInputProps & {
+  format?: string;
+  date?: Date | null | [Date | null, Date | null];
+  setControlledValue?: (date: Date | null | [Date | null, Date | null]) => void;
+  leadingDropdown?: React.ReactElement;
+  selectionType: 'single' | 'range';
+  excludeDate?: (date: Date) => boolean;
+  minDate?: Date;
+  maxDate?: Date;
+  effectiveSelectionType?: 'single' | 'range' | null;
+};
+
 export type {
   CalendarProps,
   DatePickerProps,
@@ -240,4 +270,5 @@ export type {
   DatePickerInputProps,
   DatePickerFilterChipProps,
   FilterChipDatePickerProps,
+  DateInputProps,
 };

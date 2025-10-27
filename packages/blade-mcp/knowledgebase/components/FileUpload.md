@@ -10,7 +10,7 @@ The FileUpload component is used to handle file attachments, including drag-and-
 
 - Custom text props (`actionButtonText`, `dropAreaText`) and dimensions (`height`, `width`) can only be used when `size` is "variable"
 
-The browser throws an error if you don't follow the above rules. Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
 ## TypeScript Types
 
@@ -184,7 +184,7 @@ import { FileUpload, TextInput, Button, Box } from '@razorpay/blade/components';
 const SingleFileUploadExample = () => {
   const [name, setName] = useState('');
   const [fileList, setFileList] = useState([]);
-  const [validationState, setValidationState] = useState('none');
+  const [validationState, setValidationState] = useState<'none' | 'error'>('none');
 
   const handleFileChange = ({ fileList }) => {
     setFileList(fileList);
@@ -199,7 +199,7 @@ const SingleFileUploadExample = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Form submitted: Name: ${name}, File: ${fileList[0]?.name || 'None'}`);
+    console.log(`Form submitted: Name: ${name}, File: ${fileList[0]?.name || 'None'}`);
   };
 
   return (
@@ -222,7 +222,6 @@ const SingleFileUploadExample = () => {
           isRequired
           validationState={validationState}
           errorText="Please upload a valid image file"
-          successText="File uploaded successfully"
           fileList={fileList}
           onChange={handleFileChange}
           onRemove={() => {
@@ -302,7 +301,9 @@ const MultipleFileUploadExample = () => {
         maxSize={5 * 1024 * 1024}
         fileList={fileList}
         onChange={handleFileChange}
-        onRemove={({ file, fileList: updatedList }) => setFileList(updatedList)}
+        onRemove={({ file: removedFile }) =>
+          setFileList(fileList.filter((file) => removedFile.name !== file.name))
+        }
         size="medium"
       />
     </Box>

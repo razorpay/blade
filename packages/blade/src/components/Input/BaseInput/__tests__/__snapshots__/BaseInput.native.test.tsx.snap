@@ -123,14 +123,12 @@ exports[`<BaseInput /> should render 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -185,6 +183,7 @@ exports[`<BaseInput /> should render 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -242,6 +241,7 @@ exports[`<BaseInput /> should render 1`] = `
             hasTags={false}
             id="name-1-input-2"
             isFocused={false}
+            isInsideCounterInput={false}
             isTableInputCell={false}
             isTextArea={false}
             keyboardType="default"
@@ -441,14 +441,12 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -503,6 +501,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={true}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -560,6 +559,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
             hasTags={false}
             id="name-49-input-50"
             isFocused={false}
+            isInsideCounterInput={false}
             isTableInputCell={true}
             isTextArea={false}
             keyboardType="default"
@@ -759,14 +759,12 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -821,6 +819,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={true}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -879,6 +878,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
             hasTags={false}
             id="name-61-input-62"
             isFocused={false}
+            isInsideCounterInput={false}
             isTableInputCell={true}
             isTextArea={false}
             keyboardType="default"
@@ -1246,14 +1246,12 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -1308,6 +1306,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -1367,6 +1366,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
             hasTags={false}
             id="name-73-input-74"
             isFocused={false}
+            isInsideCounterInput={false}
             isTableInputCell={false}
             isTextArea={false}
             keyboardType="default"
@@ -1706,14 +1706,12 @@ exports[`<BaseInput /> should render with icons 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -1768,6 +1766,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -1933,6 +1932,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
             hasTags={false}
             id="name-85-input-86"
             isFocused={false}
+            isInsideCounterInput={false}
             isTableInputCell={false}
             isTextArea={false}
             keyboardType="default"
@@ -2227,14 +2227,12 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -2289,6 +2287,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -2456,6 +2455,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
             hasTags={false}
             id="name-97-input-98"
             isFocused={false}
+            isInsideCounterInput={false}
             isTableInputCell={false}
             isTextArea={false}
             keyboardType="default"
@@ -2913,14 +2913,12 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
+                    "clip": "rect(0, 0, 0, 0)",
                     "height": 1,
-                    "left": -10000,
                     "marginBottom": -1,
-                    "marginLeft": 0,
+                    "marginLeft": -1,
                     "marginRight": -1,
-                    "marginTop": 0,
+                    "marginTop": -1,
                     "overflow": "hidden",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -2975,6 +2973,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         currentInteraction="default"
         data-blade-component="base-box"
         isTableInputCell={false}
+        shouldAddLimitedFocus={false}
         style={
           [
             {},
@@ -3032,6 +3031,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
             hasTags={false}
             id="coupon-109-input-110"
             isFocused={false}
+            isInsideCounterInput={false}
             isTableInputCell={false}
             isTextArea={false}
             keyboardType="default"

@@ -6,6 +6,10 @@ Drawer
 
 The Drawer component is a panel that slides in from the right side of the screen over existing content in the viewport. It helps in providing additional details or context and can also be used to promote product features. Drawers support stacking functionality, allowing up to two drawers to be open at once with a neat UI treatment showing the previous drawer peeking from behind.
 
+## Important Constraints
+
+- `Drawer` component only accepts `DrawerHeader`, `DrawerBody`, and `DrawerFooter` components as children
+
 ## TypeScript Types
 
 The following types represent the props that the Drawer component and its subcomponents accept. These props allow consumers to configure the drawer behavior, appearance, and content.
@@ -44,7 +48,7 @@ type DrawerProps = {
   /**
    * children node.
    *
-   * Supports DrawerHeader and DrawerBody
+   * Supports DrawerHeader, DrawerBody, and DrawerFooter
    */
   children: React.ReactNode;
 
@@ -121,6 +125,28 @@ type DrawerHeaderProps = {
    * Use this for adding gradients
    */
   color?: FeedbackColors;
+
+  /**
+   * Whether to show the divider below the header
+   * @default true
+   */
+  showDivider?: boolean;
+} & DataAnalyticsAttribute;
+
+/**
+ * Props for the DrawerFooter component
+ */
+type DrawerFooterProps = {
+  /**
+   * Content of the footer
+   */
+  children: React.ReactNode;
+
+  /**
+   * Whether to show the divider above the footer
+   * @default true
+   */
+  showDivider?: boolean;
 } & DataAnalyticsAttribute;
 ```
 
@@ -136,6 +162,7 @@ import {
   Drawer,
   DrawerBody,
   DrawerHeader,
+  DrawerFooter,
   Box,
   Button,
   Badge,
@@ -147,13 +174,19 @@ import {
 
 const BasicDrawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [showFooter, setShowFooter] = useState(true);
 
   const handleOpenDrawer = () => setIsDrawerOpen(true);
   const handleCloseDrawer = () => setIsDrawerOpen(false);
 
   return (
     <Box>
-      <Button onClick={handleOpenDrawer}>Open Drawer</Button>
+      <Box display="flex" gap="spacing.4" marginBottom="spacing.4">
+        <Button onClick={handleOpenDrawer}>Open Drawer</Button>
+        <Button variant="secondary" onClick={() => setShowFooter(!showFooter)}>
+          {showFooter ? 'Hide Footer' : 'Show Footer'}
+        </Button>
+      </Box>
 
       <Drawer
         isOpen={isDrawerOpen}
@@ -201,6 +234,24 @@ const BasicDrawer = () => {
             </Button>
           </Box>
         </DrawerBody>
+
+        {showFooter && (
+          <DrawerFooter>
+            <Box display="flex" gap="spacing.3">
+              <Button
+                variant="tertiary"
+                isFullWidth
+                onClick={handleCloseDrawer}
+                accessibilityLabel="Cancel and close drawer"
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" isFullWidth accessibilityLabel="Process payment for vendor">
+                Process Payment
+              </Button>
+            </Box>
+          </DrawerFooter>
+        )}
       </Drawer>
     </Box>
   );

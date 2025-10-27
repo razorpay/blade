@@ -861,46 +861,6 @@ const ZeroPaddingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
 
 export const ZeroPadding = ZeroPaddingTemplate.bind({});
 
-//TODO: remove this after review
-const BottomSheetBodyHeightTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  return (
-    <BaseBox>
-      <Button onClick={() => setIsOpen(true)}>Open</Button>
-      <BottomSheetComponent
-        isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-        snapPoints={[0.7, 0.8, 1]}
-      >
-        <BottomSheetHeader />
-        <BottomSheetBody padding="spacing.0">
-          <Box backgroundColor="surface.background.primary.subtle" height="100%">
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-            <Text>This is a demo example</Text>
-          </Box>
-        </BottomSheetBody>
-      </BottomSheetComponent>
-    </BaseBox>
-  );
-};
-
-export const BottomSheetBodyHeightExample = BottomSheetBodyHeightTemplate.bind({});
-
 const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const fruites = [
     'Apple',
@@ -1211,3 +1171,55 @@ const ProductUseCase1Example: StoryFn<typeof BottomSheetComponent> = () => {
 };
 
 export const ProductUseCase1 = ProductUseCase1Example.bind({});
+
+const NonDismissibleTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open Non-Dismissible BottomSheet</Button>
+      <BottomSheetComponent isOpen={isOpen} isDismissible={false} snapPoints={[0.85, 0.85, 0.85]}>
+        <BottomSheetHeader
+          title="Important Action Required"
+          subtitle="This action requires explicit confirmation"
+        />
+        <BottomSheetBody>
+          <Box marginBottom="spacing.4">
+            <Badge color="notice">Notice</Badge>
+          </Box>
+          <Text marginBottom="spacing.4">
+            This is a non-dismissible bottom sheet. Notice there's no close button (X) in the
+            header. Try swiping down, tapping outside, or pressing the escape key - it won't close.
+          </Text>
+          <Text color="surface.text.gray.subtle">
+            You must click one of the buttons below to proceed. This pattern is useful for critical
+            actions that require explicit user confirmation.
+          </Text>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Box
+            display="flex"
+            gap="spacing.3"
+            justifyContent="flex-end"
+            width="100%"
+            flexDirection={isReactNative() ? 'column' : 'row'}
+          >
+            <Button
+              variant="secondary"
+              onClick={() => setIsOpen(false)}
+              isFullWidth={isReactNative()}
+            >
+              Cancel
+            </Button>
+            <Button onClick={() => setIsOpen(true)} variant="primary" isFullWidth={isReactNative()}>
+              Confirm Action
+            </Button>
+          </Box>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const NonDismissible = NonDismissibleTemplate.bind({});
+NonDismissible.storyName = 'Non-Dismissible BottomSheet';

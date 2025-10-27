@@ -6,6 +6,7 @@ import {
   baseInputBorderColor,
   baseInputBorderWidth,
   baseInputBorderlessBackgroundColor,
+  baseInputCounterInputPaddingTokens,
   baseInputHeight,
   baseInputPaddingTokens,
   baseInputWrapperMaxHeight,
@@ -19,6 +20,7 @@ import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -42,6 +44,9 @@ type GetInputStyles = Pick<
   size: NonNullable<BaseInputProps['size']>;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   hasLeadingDropdown?: boolean;
+  color?: BaseTextProps['color'];
+  disabledColor?: BaseTextProps['color'];
+  isInsideCounterInput?: boolean;
 };
 
 export const getBaseInputState = ({
@@ -136,6 +141,7 @@ const getLeftPadding = ({
   hasPrefix,
   size,
   hasLeadingDropdown,
+  isInsideCounterInput,
 }: {
   theme: Theme;
   hasLeadingIcon: boolean;
@@ -143,6 +149,7 @@ const getLeftPadding = ({
   isDropdownTrigger: GetInputStyles['isDropdownTrigger'];
   size: GetInputStyles['size'];
   hasLeadingDropdown: boolean;
+  isInsideCounterInput?: boolean;
 }): number => {
   if (isDropdownTrigger) {
     return theme.spacing[0];
@@ -150,6 +157,13 @@ const getLeftPadding = ({
 
   if (hasLeadingIcon || hasPrefix || hasLeadingDropdown) {
     return theme.spacing[3];
+  }
+
+  /**
+   * CounterInput uses tighter padding (4px vs 8-12px) for compact design
+   */
+  if (isInsideCounterInput) {
+    return theme.spacing[baseInputCounterInputPaddingTokens.left[size]];
   }
 
   return theme.spacing[baseInputPaddingTokens.left[size]];
@@ -161,17 +175,56 @@ const getRightPadding = ({
   hasSuffix,
   hasTrailingIcon,
   size,
+  isInsideCounterInput,
 }: {
   theme: Theme;
   hasTrailingInteractionElement: boolean;
   hasSuffix: boolean;
   hasTrailingIcon: boolean;
   size: GetInputStyles['size'];
+  isInsideCounterInput?: boolean;
 }): number => {
   if (hasTrailingInteractionElement || hasSuffix || hasTrailingIcon) {
     return theme.spacing[3];
   }
+
+  // CounterInput uses compact padding
+  if (isInsideCounterInput) {
+    return theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
+  }
   return theme.spacing[baseInputPaddingTokens.right[size]];
+};
+
+const getTopPadding = ({
+  theme,
+  size,
+  isInsideCounterInput,
+}: {
+  theme: Theme;
+  size: GetInputStyles['size'];
+  isInsideCounterInput?: boolean;
+}): number => {
+  // CounterInput uses compact padding
+  if (isInsideCounterInput) {
+    return theme.spacing[baseInputCounterInputPaddingTokens.top[size]];
+  }
+  return theme.spacing[baseInputPaddingTokens.top[size]];
+};
+
+const getBottomPadding = ({
+  theme,
+  size,
+  isInsideCounterInput,
+}: {
+  theme: Theme;
+  size: GetInputStyles['size'];
+  isInsideCounterInput?: boolean;
+}): number => {
+  // CounterInput uses compact padding
+  if (isInsideCounterInput) {
+    return theme.spacing[baseInputCounterInputPaddingTokens.top[size]];
+  }
+  return theme.spacing[baseInputPaddingTokens.bottom[size]];
 };
 
 export const getBaseInputStyles = ({
@@ -190,6 +243,9 @@ export const getBaseInputStyles = ({
   size,
   valueComponentType,
   hasLeadingDropdown = false,
+  color,
+  disabledColor,
+  isInsideCounterInput,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -215,16 +271,21 @@ export const getBaseInputStyles = ({
   return {
     ...(valueComponentType === 'heading'
       ? getHeadingStyles({
-          size,
+          size: size === 'xsmall' ? 'small' : size,
           weight: 'regular',
           color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
           theme,
         })
       : getTextStyles({
-          size,
+          /**
+           * CounterInput: uses 'small' size for xsmall and 'semibold' weight for prominence
+           */
+          size: isInsideCounterInput && size === 'xsmall' ? 'small' : size,
           variant: 'body',
-          weight: 'regular',
-          color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
+          weight: isInsideCounterInput ? 'semibold' : 'regular',
+          color: isDisabled
+            ? disabledColor ?? 'surface.text.gray.disabled'
+            : color ?? 'surface.text.gray.subtle',
           theme,
         })),
 
@@ -232,8 +293,8 @@ export const getBaseInputStyles = ({
     flex: 1,
     backgroundColor: theme.colors.transparent,
 
-    paddingTop: makeSpace(theme.spacing[baseInputPaddingTokens.top[size]]),
-    paddingBottom: makeSpace(theme.spacing[baseInputPaddingTokens.bottom[size]]),
+    paddingTop: makeSpace(getTopPadding({ theme, size, isInsideCounterInput })),
+    paddingBottom: makeSpace(getBottomPadding({ theme, size, isInsideCounterInput })),
     paddingLeft: makeSpace(
       getLeftPadding({
         theme,
@@ -242,6 +303,7 @@ export const getBaseInputStyles = ({
         hasPrefix,
         size,
         hasLeadingDropdown,
+        isInsideCounterInput,
       }),
     ),
     paddingRight: getRightPadding({
@@ -250,6 +312,7 @@ export const getBaseInputStyles = ({
       hasSuffix,
       hasTrailingIcon,
       size,
+      isInsideCounterInput,
     }),
 
     textAlign,

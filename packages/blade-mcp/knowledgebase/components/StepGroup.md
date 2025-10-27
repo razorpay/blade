@@ -6,6 +6,12 @@ StepGroup
 
 StepGroup visualizes sequential processes with a consistent structure. It can be interactive, guiding users through steps, or function as a timeline for reference. The component supports both vertical and horizontal orientations, customizable progress states, and nested structures for complex workflows.
 
+## Important Constraints
+
+- `Collapsible` component is not supported when `StepGroup` has `orientation="horizontal"`
+- `StepItem` `trailing` prop is not allowed when `StepGroup` has `orientation="horizontal"`
+- Nested `StepGroup` components are not allowed when parent `StepGroup` has `orientation="horizontal"`
+
 ## TypeScript Types
 
 Below are the TypeScript types that define the props that StepGroup and its subcomponents accept:
@@ -138,7 +144,7 @@ type StepItemProps = {
 
 This example demonstrates a standard vertical StepGroup showing a progression of steps with different states, timestamps, icons, and badges to represent a complete onboarding process.
 
-```jsx
+```tsx
 import {
   StepGroup,
   StepItem,
@@ -204,7 +210,7 @@ function MyStepGroup() {
 
 This example shows how to create an interactive StepGroup where steps can be selected via click events, with visual feedback and state management to track the current selected step.
 
-```jsx
+```tsx
 import { StepGroup, StepItem, StepItemIndicator, Button, Box } from '@razorpay/blade/components';
 import { useState } from 'react';
 
@@ -268,7 +274,7 @@ function InteractiveStepGroup() {
 
 This example demonstrates a complex implementation with nested StepGroups and collapsible sections that can be expanded to reveal additional step details, useful for displaying hierarchical processes.
 
-```jsx
+```tsx
 import {
   StepGroup,
   StepItem,
@@ -375,7 +381,7 @@ function NestedStepGroup() {
 
 This example shows a horizontal orientation of the StepGroup component, ideal for representing a linear progression of steps across the page rather than vertically down the page.
 
-```jsx
+```tsx
 import { StepGroup, StepItem, StepItemIndicator, Box } from '@razorpay/blade/components';
 
 function HorizontalStepGroup() {
