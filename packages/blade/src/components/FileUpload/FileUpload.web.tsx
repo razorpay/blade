@@ -19,7 +19,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import { screenReaderStyles } from '~components/VisuallyHidden';
+import { legacyScreenReaderStyles } from '~components/VisuallyHidden';
 import { FormHint, FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -286,7 +286,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               onClick={() => setIsActive(true)}
               data-comp="f"
               style={{
-                ...(isOneFileSelectedWithSingleUpload ? screenReaderStyles : {}),
+                ...(isOneFileSelectedWithSingleUpload ? legacyScreenReaderStyles : {}),
               }}
             >
               <Box
