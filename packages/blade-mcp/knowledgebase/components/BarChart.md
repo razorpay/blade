@@ -169,17 +169,17 @@ const BasicBarChart = () => {
         <ChartBar
           dataKey="revenue"
           name="Revenue"
-          color="data.background.categorical.azure.moderate"
+          color="data.background.categorical.blue.moderate"
         />
         <ChartBar
           dataKey="profit"
           name="Profit"
-          color="data.background.categorical.emerald.moderate"
+          color="data.background.categorical.green.moderate"
         />
         <ChartBar
           dataKey="expenses"
           name="Expenses"
-          color="data.background.categorical.crimson.moderate"
+          color="data.background.categorical.gold.moderate"
         />
       </ChartBarWrapper>
     </div>

@@ -130,10 +130,10 @@ function DonutChartExample() {
           type="circle"
           colorTheme="categorical"
         >
-          <ChartDonutCell color="data.background.categorical.azure.moderate" />
-          <ChartDonutCell color="data.background.categorical.topaz.moderate" />
-          <ChartDonutCell color="data.background.categorical.orchid.moderate" />
-          <ChartDonutCell color="data.background.categorical.emerald.moderate" />
+          <ChartDonutCell color="data.background.categorical.blue.moderate" />
+          <ChartDonutCell color="data.background.categorical.green.moderate" />
+          <ChartDonutCell color="data.background.categorical.gold.moderate" />
+          <ChartDonutCell color="data.background.categorical.purple.moderate" />
         </ChartDonut>
         <ChartTooltip />
         <ChartLegend />
