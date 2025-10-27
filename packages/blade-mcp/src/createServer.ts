@@ -48,6 +48,12 @@ import {
   getChangelogToolSchema,
   getChangelogToolCallback,
 } from './tools/getChangelog.js';
+import {
+  publishLinesOfCodeMetricToolName,
+  publishLinesOfCodeMetricToolDescription,
+  publishLinesOfCodeMetricToolSchema,
+  publishLinesOfCodeMetricToolCallback,
+} from './tools/publishLinesOfCodeMetric.js';
 
 export const createServer = (): McpServer => {
   const server = new McpServer({
@@ -104,6 +110,13 @@ export const createServer = (): McpServer => {
     getChangelogToolDescription,
     getChangelogToolSchema,
     getChangelogToolCallback,
+  );
+
+  server.tool(
+    publishLinesOfCodeMetricToolName,
+    publishLinesOfCodeMetricToolDescription,
+    publishLinesOfCodeMetricToolSchema,
+    publishLinesOfCodeMetricToolCallback,
   );
 
   return server;
