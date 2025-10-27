@@ -94,8 +94,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     const lineChartModifiedChildrens = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
         const childColor = child?.props?.color;
-        const dataKey = (child?.props as ChartLineProps)?.dataKey;
-        if (dataKey && typeof dataKey === 'string') {
+        const dataKey = (child?.props as ChartLineProps)?.dataKey as string;
+        if (dataKey) {
           dataColorMapping[dataKey] = {
             colorToken: childColor,
             isCustomColor: Boolean(childColor),

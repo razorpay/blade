@@ -127,8 +127,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
         const childColor = child?.props?.color;
-        const dataKey = (child?.props as ChartAreaProps)?.dataKey;
-        if (dataKey && typeof dataKey === 'string') {
+        const dataKey = (child?.props as ChartAreaProps)?.dataKey as string;
+        if (dataKey) {
           dataColorMapping[dataKey] = {
             colorToken: childColor,
             isCustomColor: Boolean(childColor),
