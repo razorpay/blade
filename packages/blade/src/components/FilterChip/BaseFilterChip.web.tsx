@@ -43,12 +43,12 @@ const getInteractiveFilterItemStyles = ({ theme }: { theme: Theme }): CSSObject 
 const StyledFilterChip = styled(BaseBox)<{ $isSelected?: boolean; $isDisabled?: boolean }>(
   ({ theme, $isDisabled, $isSelected }) => {
     return {
-      borderWidth: makeBorderSize(theme.border.width.thin),
+      borderWidth: makeBorderSize(theme.border.width.thinner),
       borderColor: theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'highlighted'],
       height: FILTER_CHIP_HEIGHT,
       borderRadius: theme.border.radius.max,
       display: 'flex',
-      borderStyle: $isSelected ? 'solid' : 'dashed',
+      borderStyle: 'solid',
       backgroundColor: theme.colors.surface.background.gray.intense,
       color: theme.colors.interactive.text.gray[$isDisabled ? 'disabled' : 'normal'],
       width: 'fit-content',
@@ -98,7 +98,7 @@ const renderValue = (
   return (
     <Text
       as="span"
-      size="small"
+      size="xsmall"
       weight="semibold"
       color={isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.primary.normal'}
     >
@@ -152,14 +152,19 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
         {...metaAttribute({ testID: rest.testID })}
       >
         <Box display="flex" gap="spacing.2" whiteSpace="nowrap">
-          <Text size="small" weight="medium" color="currentColor" truncateAfterLines={1}>
+          <Text
+            size="xsmall"
+            weight="medium"
+            color="interactive.text.gray.subtle"
+            truncateAfterLines={1}
+          >
             {label}
             {isSelected ? ':' : null}
           </Text>
           {isSelected ? renderValue(selectionType, value, isDisabled) : null}
         </Box>
         <Box display="flex" alignItems="center" paddingRight="spacing.1">
-          <ChevronDownIcon size="small" color="currentColor" />
+          <ChevronDownIcon size="small" color="interactive.icon.gray.muted" />
         </Box>
       </StyledFilterTrigger>
       {isSelected ? (
@@ -171,7 +176,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
             onClick={() => onClearButtonClick?.({ value: value ?? '' })}
             disabled={isDisabled}
           >
-            <CloseIcon size="small" color="currentColor" />
+            <CloseIcon size="small" color="interactive.icon.gray.muted" />
           </StyledFilterCloseButton>
         </>
       ) : null}

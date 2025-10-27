@@ -181,7 +181,7 @@ const _TableHeaderCell = ({
     >
       <BaseBox display="flex" flexGrow={1} justifyContent={textAlign}>
         {isChildrenString ? (
-          <Text size="medium" weight="medium" color="surface.text.gray.normal">
+          <Text size="small" weight="medium" color="surface.text.gray.subtle">
             {children}
           </Text>
         ) : (
@@ -298,9 +298,12 @@ const _TableHeaderRow = ({
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
   const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
   const isDisabled = disabledRows && disabledRows.length === totalItems;
-  if (rowDensity) {
-    setHeaderRowDensity(rowDensity);
-  }
+
+  // TODO: Removing rowDensity prop from TableHeader would be a breaking change.
+  // Currently hardcoded to 36px height regardless of the rowDensity value passed.
+  // Consider deprecating this prop in a future major version.
+  setHeaderRowDensity('compact');
+
   return (
     <StyledHeaderRow
       role="rowheader"

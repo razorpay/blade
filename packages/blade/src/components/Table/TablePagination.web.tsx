@@ -255,7 +255,7 @@ const _TablePagination = ({
     >
       {showLabel && !onMobile && (
         <BaseBox display="flex" justifyContent="center" alignItems="center">
-          <Text size="medium" weight="semibold">
+          <Text color="surface.text.gray.subtle" size="small" weight="regular">
             {label ?? defaultLabel}
           </Text>
         </BaseBox>
@@ -312,7 +312,9 @@ const _TablePagination = ({
           />
           {onMobile && (
             <BaseBox flex={1} alignItems="center" justifyContent="center">
-              <Text textAlign="center">{`Showing ${currentPage + 1} of ${totalPages} pages`}</Text>
+              <Text color="surface.text.gray.subtle" size="small" textAlign="center">{`Showing ${
+                currentPage + 1
+              } of ${totalPages} pages`}</Text>
             </BaseBox>
           )}
           {totalPages > 1 && showPageNumberSelector && !onMobile && (
