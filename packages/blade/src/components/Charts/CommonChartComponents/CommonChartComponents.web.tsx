@@ -66,10 +66,10 @@ const getChartColor = (
   }
 
   if (mappedColor && isSequentialColor(mappedColor)) {
-    return mappedColor ?? 'chart.background.categorical.azure.faint';
+    return mappedColor ?? 'data.background.categorical.azure.faint';
   }
   return getHighestColorInRange({
-    colorToken: mappedColor ?? ('chart.background.categorical.azure.faint' as ChartColorToken),
+    colorToken: mappedColor ?? ('data.background.categorical.azure.faint' as ChartColorToken),
     followIntensityMapping:
       chartName === 'donut' &&
       (isCustomColor || Object.keys(dataColorMapping).length > totalChartColors),
