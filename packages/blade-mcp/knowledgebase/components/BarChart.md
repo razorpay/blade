@@ -15,7 +15,7 @@ BarChart is a comprehensive data visualization component that renders interactiv
 - `dataKey` prop is required for each `ChartBar` component and must correspond to a property in the data array
 - `stackId` must be consistent across all bars that should be stacked together
 - `layout="vertical"` requires `ChartXAxis` to have `type="number"` and `ChartYAxis` to have `type="category"`
-- Color tokens must follow the exact format: `chart.background.categorical.{color}.{emphasis}` or `chart.background.sequential.{color}.{number}`
+- Color tokens must follow the exact format: `data.background.categorical.{color}.{emphasis}` or `data.background.sequential.{color}.{number}`
 
 ## TypeScript Types
 
@@ -74,9 +74,9 @@ type ChartBarWrapperProps = {
 } & BoxProps;
 
 
-type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
-type ChartSequentialColorToken = `chart.background.sequential.${Exclude<ChartColorCategories, 'gray'>}.${keyof ChartSequentialEmphasis}`;
+type ChartSequentialColorToken = `data.background.sequential.${Exclude<ChartColorCategories, 'gray'>}.${keyof ChartSequentialEmphasis}`;
 
 type colorTheme = 'categorical';
 
@@ -169,17 +169,17 @@ const BasicBarChart = () => {
         <ChartBar
           dataKey="revenue"
           name="Revenue"
-          color="chart.background.categorical.azure.moderate"
+          color="data.background.categorical.azure.moderate"
         />
         <ChartBar
           dataKey="profit"
           name="Profit"
-          color="chart.background.categorical.emerald.moderate"
+          color="data.background.categorical.emerald.moderate"
         />
         <ChartBar
           dataKey="expenses"
           name="Expenses"
-          color="chart.background.categorical.crimson.moderate"
+          color="data.background.categorical.crimson.moderate"
         />
       </ChartBarWrapper>
     </div>
