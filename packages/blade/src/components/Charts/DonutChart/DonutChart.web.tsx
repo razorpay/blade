@@ -148,9 +148,10 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
       children.forEach((child) => {
         if (getComponentId(child) === componentId.chartDonut) {
           const data = (child as React.ReactElement<ChartDonutProps>).props.data;
-          const children = (child as React.ReactElement<ChartDonutProps>).props.children;
-          if (Array.isArray(children)) {
-            children.forEach((child, index) => {
+          // Donut Chart can also have <Cell/>  which will come under donutChildren.
+          const donutChildren = (child as React.ReactElement<ChartDonutProps>).props.children;
+          if (Array.isArray(donutChildren)) {
+            donutChildren.forEach((child, index) => {
               if (getComponentId(child) === componentId.cell && data[index]?.name) {
                 dataColorMapping[sanitizeString(data[index].name as string)] = {
                   colorToken: child.props?.color,
@@ -159,6 +160,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               }
             });
           } else {
+            // if we don't have cell as child component then we can we directly assign theme colors
             data.forEach((item, index) => {
               dataColorMapping[sanitizeString(item.name as string)] = {
                 colorToken: themeColors[index],
