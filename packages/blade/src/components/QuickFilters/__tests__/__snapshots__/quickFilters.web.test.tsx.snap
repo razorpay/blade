@@ -76,6 +76,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
 
 .c3.c3.c3.c3.c3 {
   display: block;
+  margin-right: 2px;
   border-radius: 4px;
 }
 
