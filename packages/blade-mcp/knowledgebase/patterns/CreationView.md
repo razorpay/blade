@@ -235,6 +235,7 @@ This example shows a comprehensive multi-step creation flow that adapts to mobil
 ```tsx
 import React from 'react';
 import dayjs from 'dayjs';
+import styled from 'styled-components';
 import { useTheme, useBreakpoint } from '@razorpay/blade/utils';
 import {
   Box,
@@ -276,6 +277,7 @@ import {
   Divider,
   ProgressBar,
   Slide,
+  Fade,
   CheckIcon,
   FileIcon,
   LockIcon,
@@ -341,10 +343,18 @@ const tableData = {
   ],
 };
 
-function MultiStepCreationView({ withProgressBar = false, modalSize = 'full' }) {
+function MultiStepCreationView({
+  withProgressBar = false,
+  modalSize = 'full',
+}: {
+  withProgressBar?: boolean;
+  modalSize?: 'small' | 'medium' | 'large' | 'full';
+}) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
-  const isMobile = useIsMobile();
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
   const [currentStep, setCurrentStep] = React.useState(1);
   const [showStepGroup, setShowStepGroup] = React.useState(false);
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
@@ -480,7 +490,7 @@ function MultiStepCreationView({ withProgressBar = false, modalSize = 'full' }) 
     });
   };
 
-  const handleDateChange = (value: DateValue | undefined): void => {
+  const handleDateChange = (value: Date | undefined): void => {
     setGrnDetails((prev) => ({
       ...prev,
       date: value ? dayjs(value).format('YYYY-MM-DD') : '',
@@ -525,11 +535,35 @@ function MultiStepCreationView({ withProgressBar = false, modalSize = 'full' }) 
   };
 
   // Move user from step 5 to step 4 when switching to mobile (mobile doesn't show review step)
-  useEffect(() => {
+  React.useEffect(() => {
     if (isMobile && currentStep === 5) {
       setCurrentStep(4);
     }
   }, [isMobile]);
+
+  const RadioCard = ({
+    value,
+    label,
+    children,
+  }: {
+    value: string;
+    label: string;
+    children?: React.ReactNode;
+  }): React.ReactElement => {
+    return (
+      <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+        <Radio value={value} />
+        <Box display="flex" flexDirection="column" gap="spacing.3">
+          <Box display="flex" flexDirection="row" gap="spacing.4">
+            <Text weight="medium" color="surface.text.gray.subtle">
+              {label}
+            </Text>
+          </Box>
+          {children}
+        </Box>
+      </Box>
+    );
+  };
 
   const renderReviewContent = (): React.ReactElement => (
     <Box
