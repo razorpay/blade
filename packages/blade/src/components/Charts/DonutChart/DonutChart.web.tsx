@@ -159,8 +159,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
               }
             });
           } else {
-            // eslint-disable-next-line array-callback-return
-            data.map((item, index: number) => {
+            data.forEach((item, index) => {
               dataColorMapping[sanitizeString(item.name as string)] = {
                 colorToken: themeColors[index],
                 isCustomColor: false,
