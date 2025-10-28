@@ -324,15 +324,18 @@ exports[`<TextArea /> should render 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -789,15 +792,18 @@ exports[`<TextArea /> should render large size 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -1247,15 +1253,18 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -1690,15 +1699,18 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
 
 .c6.c6.c6.c6.c6 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
