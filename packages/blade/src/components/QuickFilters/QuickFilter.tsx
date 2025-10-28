@@ -39,7 +39,7 @@ const QuickFilterContent = ({
         alignItems="center"
       >
         {selectionType === 'single' ? (
-          <Radio value={value} {...makeAnalyticsAttribute(rest)} />
+          <Radio value={value} _hideRadioIcon {...makeAnalyticsAttribute(rest)} />
         ) : (
           <Checkbox value={value} {...makeAnalyticsAttribute(rest)} />
         )}

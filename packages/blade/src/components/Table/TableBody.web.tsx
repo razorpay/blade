@@ -173,7 +173,7 @@ const _TableCell = ({
           {...metaAttribute({ name: MetaConstants.TableCellWrapper })}
         >
           {isChildrenString ? (
-            <Text size="medium" truncateAfterLines={1}>
+            <Text color="surface.text.gray.subtle" size="small" truncateAfterLines={1}>
               {children}
             </Text>
           ) : (
