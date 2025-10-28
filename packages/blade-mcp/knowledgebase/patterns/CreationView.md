@@ -235,6 +235,7 @@ This example shows a comprehensive multi-step creation flow that adapts to mobil
 ```tsx
 import React from 'react';
 import dayjs from 'dayjs';
+import styled from 'styled-components';
 import { useTheme, useBreakpoint } from '@razorpay/blade/utils';
 import {
   Box,
@@ -276,6 +277,7 @@ import {
   Divider,
   ProgressBar,
   Slide,
+  Fade,
   CheckIcon,
   FileIcon,
   LockIcon,
@@ -341,19 +343,30 @@ const tableData = {
   ],
 };
 
-function MultiStepCreationView() {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const isDesktop = matchedDeviceType === 'desktop';
-  const isMobile = !isDesktop;
+function MultiStepCreationView({
+  withProgressBar = false,
+  modalSize = 'full',
+}: {
+  withProgressBar?: boolean;
+  modalSize?: 'small' | 'medium' | 'large' | 'full';
+}) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint(theme);
+  const isMobile = matchedDeviceType === 'mobile';
   const [currentStep, setCurrentStep] = React.useState(1);
   const [showStepGroup, setShowStepGroup] = React.useState(false);
   const [selectedVendor, setSelectedVendor] = React.useState<string | null>(null);
   const [selectedPO, setSelectedPO] = React.useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
-  const [errors, setErrors] = React.useState<Record<string, string>>({});
+  const [isDatePickerOpen, setIsDatePickerOpen] = React.useState<boolean>(false);
+  const [errors, setErrors] = React.useState<{
+    vendor?: string;
+    purchaseOrder?: string;
+    grnDetails?: string;
+    date?: string;
+  }>({});
   const [grnDetails, setGrnDetails] = React.useState({
     grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
       .toString()
@@ -367,8 +380,22 @@ function MultiStepCreationView() {
     description: string;
   } | null>(null);
 
+  const onStepGroupChange = (): void => {
+    setAlert(null);
+    setErrors({});
+  };
+
+  const handleStepClick = (stepNumber: number): void => {
+    // Allow clicking on any previous step or the current step
+    if (stepNumber <= currentStep) {
+      setCurrentStep(stepNumber);
+    }
+    setShowStepGroup(false);
+    onStepGroupChange();
+  };
+
   const validateStep = (step: number): boolean => {
-    const newErrors: Record<string, string> = {};
+    const newErrors: typeof errors = {};
 
     if (step === 1 && !selectedVendor) {
       newErrors.vendor = 'Please select a vendor to proceed';
@@ -376,8 +403,24 @@ function MultiStepCreationView() {
     if (step === 2 && !selectedPO) {
       newErrors.purchaseOrder = 'Please select a purchase order to proceed';
     }
-    if (step === 3 && !grnDetails.date) {
-      newErrors.date = 'Date is required';
+
+    if (step === 3) {
+      if (!grnDetails.date) {
+        newErrors.date = 'Date is required';
+      } else {
+        // Check date format and validity using dayjs
+        const date = dayjs(grnDetails.date, 'YYYY-MM-DD', true);
+
+        if (!date.isValid()) {
+          newErrors.date = 'Please enter a valid date in YYYY-MM-DD format';
+        } else {
+          // Check if date is in the past
+          const today = dayjs().startOf('day');
+          if (date.isBefore(today)) {
+            newErrors.date = 'Date cannot be in the past';
+          }
+        }
+      }
     }
 
     setErrors(newErrors);
@@ -389,16 +432,18 @@ function MultiStepCreationView() {
       if (validateStep(currentStep)) {
         setCompletedSteps((prev) => [...prev, currentStep]);
         setCurrentStep(currentStep + 1);
-        setAlert({
-          type: 'positive',
-          title: 'Success!',
-          description: 'Step completed successfully.',
-        });
-      } else {
+        if (currentStep === 3) {
+          setAlert({
+            type: 'positive',
+            title: 'Success!',
+            description: 'GRN details have been saved successfully.',
+          });
+        }
+      } else if (currentStep === 3) {
         setAlert({
           type: 'negative',
           title: 'Validation Failed',
-          description: 'Please fix the errors and try again.',
+          description: 'Please fix the errors in the form and try again.',
         });
       }
     }
@@ -407,8 +452,7 @@ function MultiStepCreationView() {
   const handlePreviousStep = (): void => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
-      setAlert(null);
-      setErrors({});
+      onStepGroupChange();
     }
   };
 
@@ -425,421 +469,920 @@ function MultiStepCreationView() {
     return <StepItemIcon icon={LockIcon} color="primary" />;
   };
 
-  const renderStepContent = (): React.ReactElement | null => {
+  // Dynamically filter steps for mobile (remove review step)
+  const visibleSteps = isMobile ? steps.filter((s) => s.stepNumber !== 5) : steps;
+  const lastStep = visibleSteps[visibleSteps.length - 1].stepNumber;
+  const currentStepObj = visibleSteps.find((s) => s.stepNumber === currentStep);
+
+  const resetState = (): void => {
+    setCurrentStep(1);
+    setSelectedVendor(null);
+    setSelectedPO(null);
+    setCompletedSteps([]);
+    setErrors({});
+    setAlert(null);
+    setGrnDetails({
+      grnNumber: `GRN-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000)
+        .toString()
+        .padStart(3, '0')}`,
+      date: '',
+      notes: '',
+    });
+  };
+
+  const handleDateChange = (value: Date | undefined): void => {
+    setGrnDetails((prev) => ({
+      ...prev,
+      date: value ? dayjs(value).format('YYYY-MM-DD') : '',
+    }));
+    if (errors.date) {
+      setErrors((prev) => ({ ...prev, date: undefined }));
+    }
+  };
+
+  const deskTopFooter = ({ isLastStep }: { isLastStep?: boolean }): React.ReactElement => {
+    return (
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        marginTop="spacing.4"
+        padding="spacing.4"
+        borderTopColor="surface.border.gray.muted"
+      >
+        <Button variant="tertiary" onClick={() => setIsOpen(!isOpen)}>
+          Save and Close
+        </Button>
+        <Box display="flex" gap="spacing.4">
+          <Button variant="tertiary" onClick={handlePreviousStep}>
+            Previous
+          </Button>
+          <Button
+            variant="primary"
+            onClick={
+              isLastStep
+                ? () => {
+                    resetState();
+                    setIsOpen(false);
+                  }
+                : handleNextStep
+            }
+          >
+            {isLastStep ? 'Submit' : 'Next'}
+          </Button>
+        </Box>
+      </Box>
+    );
+  };
+
+  // Move user from step 5 to step 4 when switching to mobile (mobile doesn't show review step)
+  React.useEffect(() => {
+    if (isMobile && currentStep === 5) {
+      setCurrentStep(4);
+    }
+  }, [isMobile]);
+
+  const RadioCard = ({
+    value,
+    label,
+    children,
+  }: {
+    value: string;
+    label: string;
+    children?: React.ReactNode;
+  }): React.ReactElement => {
+    return (
+      <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+        <Radio value={value} />
+        <Box display="flex" flexDirection="column" gap="spacing.3">
+          <Box display="flex" flexDirection="row" gap="spacing.4">
+            <Text weight="medium" color="surface.text.gray.subtle">
+              {label}
+            </Text>
+          </Box>
+          {children}
+        </Box>
+      </Box>
+    );
+  };
+
+  const renderReviewContent = (): React.ReactElement => (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.4"
+      width="100%"
+      height="100%"
+      justifyContent="space-between"
+    >
+      <Box
+        display="flex"
+        flexDirection={isMobile ? 'column' : 'row'}
+        padding="spacing.7"
+        gap="spacing.4"
+        width="100%"
+        height="100%"
+        justifyContent="space-between"
+      >
+        <Divider />
+        <Box width="100%" height={isMobile ? '400px' : '600px'}>
+          <Preview defaultZoom={0.5}>
+            <PreviewHeader />
+            <PreviewBody>
+              <Box
+                padding="spacing.4"
+                display="flex"
+                flexDirection="column"
+                gap="spacing.6"
+                backgroundColor="surface.background.gray.intense"
+              >
+                {/* GRN Details Section */}
+                <Box
+                  padding="spacing.4"
+                  borderBottomWidth="thin"
+                  borderBottomColor="surface.border.gray.muted"
+                >
+                  <Heading size="large">Goods Receipt Note</Heading>
+                  <Text size="small" color="surface.text.gray.muted">
+                    {grnDetails.grnNumber}
+                  </Text>
+                  <Text size="small" color="surface.text.gray.muted">
+                    Date: {grnDetails.date}
+                  </Text>
+                </Box>
+                {/* Vendor Details Section */}
+                <Box>
+                  <Heading size="medium">Vendor Details</Heading>
+                  <Box
+                    marginTop="spacing.3"
+                    padding="spacing.4"
+                    backgroundColor="surface.background.gray.intense"
+                    borderRadius="medium"
+                  >
+                    {selectedVendor && (
+                      <>
+                        <Box display="flex" justifyContent="space-between">
+                          <Box>
+                            <Text weight="semibold" size="large">
+                              {vendors.find((v) => v.id === selectedVendor)?.name}
+                            </Text>
+                            <Text size="small" color="surface.text.gray.muted">
+                              {vendors.find((v) => v.id === selectedVendor)?.email}
+                            </Text>
+                          </Box>
+                        </Box>
+                        <Box
+                          marginTop="spacing.3"
+                          display="flex"
+                          flexDirection="column"
+                          gap="spacing.2"
+                        >
+                          <Text size="small">
+                            Phone: {vendors.find((v) => v.id === selectedVendor)?.phone}
+                          </Text>
+                          <Text size="small">
+                            Address: {vendors.find((v) => v.id === selectedVendor)?.address}
+                          </Text>
+                        </Box>
+                      </>
+                    )}
+                  </Box>
+                </Box>
+                {/* PO Details Section */}
+                <Box>
+                  <Heading size="medium">Purchase Order Details</Heading>
+                  <Box
+                    marginTop="spacing.3"
+                    padding="spacing.4"
+                    backgroundColor="surface.background.gray.moderate"
+                    borderRadius="medium"
+                  >
+                    {selectedPO && (
+                      <>
+                        <Box display="flex" justifyContent="space-between" alignItems="center">
+                          <Box>
+                            <Text weight="semibold" size="large">
+                              {purchaseOrders.find((p) => p.id === selectedPO)?.number}
+                            </Text>
+                            <Text size="small" color="surface.text.gray.muted">
+                              Date: {purchaseOrders.find((p) => p.id === selectedPO)?.date}
+                            </Text>
+                          </Box>
+                          <Badge
+                            size="medium"
+                            color={
+                              purchaseOrders.find((p) => p.id === selectedPO)?.status === 'Approved'
+                                ? 'positive'
+                                : 'notice'
+                            }
+                          >
+                            {purchaseOrders.find((p) => p.id === selectedPO)?.status ?? ''}
+                          </Badge>
+                        </Box>
+                      </>
+                    )}
+                  </Box>
+                </Box>
+                {/* Notes Section */}
+                {grnDetails.notes && (
+                  <Box>
+                    <Heading size="medium">Notes</Heading>
+                    <Box
+                      marginTop="spacing.3"
+                      padding="spacing.4"
+                      backgroundColor="surface.background.gray.moderate"
+                      borderRadius="medium"
+                    >
+                      <Text>{grnDetails.notes}</Text>
+                    </Box>
+                  </Box>
+                )}
+                {/* Line Items Section */}
+                <Box>
+                  <Heading size="medium">Line Items</Heading>
+                  <Box marginTop="spacing.3">
+                    <Table data={tableData}>
+                      {(tableData) => (
+                        <>
+                          <TableHeader>
+                            <TableHeaderRow>
+                              <TableHeaderCell>Item Name</TableHeaderCell>
+                              <TableHeaderCell>Quantity</TableHeaderCell>
+                              <TableHeaderCell>Unit Price</TableHeaderCell>
+                              <TableHeaderCell>Total Amount</TableHeaderCell>
+                            </TableHeaderRow>
+                          </TableHeader>
+                          <TableBody>
+                            {tableData.map((item) => (
+                              <TableRow key={item.id} item={item}>
+                                <TableCell>{item.name}</TableCell>
+                                <TableCell>{item.quantity}</TableCell>
+                                <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
+                                <TableCell>
+                                  ₹{(item.quantity * item.unitPrice).toLocaleString()}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                          <TableFooter>
+                            <TableFooterRow>
+                              <TableFooterCell>Total Amount</TableFooterCell>
+                              <TableFooterCell>-</TableFooterCell>
+                              <TableFooterCell>-</TableFooterCell>
+                              <TableFooterCell>
+                                ₹
+                                {tableData
+                                  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                                  .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
+                                  .toLocaleString()}
+                              </TableFooterCell>
+                            </TableFooterRow>
+                          </TableFooter>
+                        </>
+                      )}
+                    </Table>
+                  </Box>
+                </Box>
+              </Box>
+            </PreviewBody>
+            <PreviewFooter />
+          </Preview>
+        </Box>
+      </Box>
+      {!isMobile && deskTopFooter({ isLastStep: true })}
+    </Box>
+  );
+
+  // In renderStepContent, do not show step 5 on mobile
+  const renderStepContent = (isMobile: boolean): React.ReactElement | null => {
+    if (isMobile && currentStep === 5) return null;
     switch (currentStep) {
       case 1:
         return (
-          <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-            <Heading size="medium">Select Vendor</Heading>
-            <Text>Choose a vendor from the list below to proceed with GRN creation.</Text>
-
-            <RadioGroup
-              label="Vendors"
-              name="vendor"
-              value={selectedVendor ?? ''}
-              onChange={({ value }) => setSelectedVendor(value)}
-              validationState={errors.vendor ? 'error' : 'none'}
-              errorText={errors.vendor}
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="spacing.4"
+            width="100%"
+            height="100%"
+            justifyContent="space-between"
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              padding="spacing.7"
+              justifyContent="center"
+              alignItems="center"
             >
-              {vendors.map((vendor) => (
-                <Card key={vendor.id} padding="spacing.4" as="label">
-                  <CardBody>
-                    <Box display="flex" gap="spacing.3" alignItems="flex-start">
-                      <Radio value={vendor.id} />
-                      <Box>
-                        <Text weight="medium">{vendor.name}</Text>
-                        <Box display="flex" gap="spacing.2" alignItems="center">
-                          <MailIcon size="small" />
-                          <Text size="small" color="surface.text.gray.muted">
-                            {vendor.email}
-                          </Text>
-                        </Box>
-                        <Box display="flex" gap="spacing.2" alignItems="center">
-                          <PhoneIcon size="small" />
-                          <Text size="small" color="surface.text.gray.muted">
-                            {vendor.phone}
-                          </Text>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </CardBody>
-                </Card>
-              ))}
-            </RadioGroup>
+              <Box display="flex" flexDirection="column" gap="spacing.4">
+                <Box>
+                  <Heading size="medium">Select Vendor</Heading>
+                  <Text>Choose a vendor from the list below to proceed with GRN creation.</Text>
+                </Box>
+                <Divider />
+                <RadioGroup
+                  label="Vendors"
+                  name="vendor"
+                  value={selectedVendor ?? ''}
+                  onChange={({ value }) => {
+                    setSelectedVendor(value);
+                    if (errors.vendor) {
+                      setErrors((prev) => ({ ...prev, vendor: undefined }));
+                    }
+                  }}
+                  validationState={errors.vendor ? 'error' : 'none'}
+                  errorText={errors.vendor}
+                >
+                  {vendors.map((vendor) => (
+                    <Card
+                      key={vendor.id}
+                      padding="spacing.4"
+                      borderRadius="medium"
+                      elevation="none"
+                      as="label"
+                      accessibilityLabel={vendor.name}
+                      marginBottom="spacing.2"
+                    >
+                      <CardBody>
+                        <RadioCard value={vendor.id} label={vendor.name}>
+                          <Box
+                            display="flex"
+                            gap="spacing.2"
+                            flexDirection={isMobile ? 'column' : 'row'}
+                          >
+                            <Box display="flex" gap="spacing.2">
+                              <MailIcon color="interactive.icon.gray.muted" />
+                              <Text size="small" color="surface.text.gray.muted">
+                                {vendor.email}
+                              </Text>
+                              {!isMobile && (
+                                <Text size="small" color="surface.text.gray.muted">
+                                  •
+                                </Text>
+                              )}
+                            </Box>
+                            <Box display="flex" gap="spacing.2">
+                              <PhoneIcon color="interactive.icon.gray.muted" />
+                              <Text size="small" color="surface.text.gray.muted">
+                                {vendor.phone}
+                              </Text>
+                            </Box>
+                          </Box>
+                        </RadioCard>
+                      </CardBody>
+                    </Card>
+                  ))}
+                </RadioGroup>
+              </Box>
+            </Box>
+            {!isMobile && deskTopFooter({})}
           </Box>
         );
-
       case 2:
         return (
-          <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-            <Heading size="medium">Link Purchase Order</Heading>
-            <Text>Select a Purchase Order to link with this GRN.</Text>
+          <Box display="flex" width="100%" height="100%">
+            <Box display="flex" flexDirection="column" width="100%" justifyContent="space-between">
+              <Box display="flex" width="100%" justifyContent="space-between" height="100%">
+                <Box
+                  flex={6}
+                  display="flex"
+                  flexDirection="column"
+                  height="100%"
+                  justifyContent="space-between"
+                  width="100%"
+                >
+                  <Box display="flex" alignItems="center" justifyContent="center" width="100%">
+                    <Box padding="spacing.5" width="500px">
+                      <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Heading size="medium">Link PO</Heading>
+                        <Text>Select a Purchase Order to link with this GRN.</Text>
+                      </Box>
 
-            <RadioGroup
-              label="Purchase Orders"
-              name="purchaseOrder"
-              value={selectedPO ?? ''}
-              onChange={({ value }) => setSelectedPO(value)}
-              validationState={errors.purchaseOrder ? 'error' : 'none'}
-              errorText={errors.purchaseOrder}
-            >
-              {purchaseOrders.map((po) => (
-                <Card key={po.id} padding="spacing.4" as="label">
-                  <CardBody>
-                    <Box display="flex" gap="spacing.3" alignItems="flex-start">
-                      <Radio value={po.id} />
-                      <Box>
-                        <Text weight="medium">{po.number}</Text>
-                        <Box display="flex" gap="spacing.2" alignItems="center">
-                          <CalendarIcon size="small" />
-                          <Text size="small" color="surface.text.gray.muted">
-                            {po.date}
-                          </Text>
-                          <Badge color={po.status === 'Approved' ? 'positive' : 'notice'}>
-                            {po.status}
-                          </Badge>
-                        </Box>
-                        <Text size="small" color="surface.text.gray.muted">
-                          {po.items} Items • ₹{po.amount.toLocaleString()}
-                        </Text>
+                      <Box flex={1} gap="spacing.2" marginTop="spacing.2">
+                        <RadioGroup
+                          label="Purchase Orders"
+                          name="purchaseOrder"
+                          value={selectedPO ?? ''}
+                          onChange={({ value }) => {
+                            setSelectedPO(value);
+                            if (errors.purchaseOrder) {
+                              setErrors((prev) => ({ ...prev, purchaseOrder: undefined }));
+                            }
+                          }}
+                          validationState={errors.purchaseOrder ? 'error' : 'none'}
+                          errorText={errors.purchaseOrder}
+                        >
+                          {purchaseOrders.map((po) => (
+                            <Card
+                              as="label"
+                              accessibilityLabel={po.number}
+                              isSelected={selectedPO === po.id}
+                              marginBottom="spacing.2"
+                              key={po.id}
+                              elevation="none"
+                            >
+                              <CardBody>
+                                <RadioCard value={po.id} label={po.number}>
+                                  <Box display="flex" flexDirection="column" gap="spacing.2">
+                                    <Box display="flex" gap="spacing.2" alignItems="center">
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        {po.vendor}
+                                      </Text>
+                                      <Badge
+                                        size="medium"
+                                        color={po.status === 'Approved' ? 'positive' : 'notice'}
+                                      >
+                                        {po.status || ''}
+                                      </Badge>
+                                    </Box>
+                                    <Box display="flex" gap="spacing.2">
+                                      <Box display="flex" gap="spacing.2">
+                                        <CalendarIcon color="interactive.icon.gray.muted" />
+                                        <Text size="small" color="surface.text.gray.muted">
+                                          {po.date}
+                                        </Text>
+                                      </Box>
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        •
+                                      </Text>
+
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        {po.items} Items
+                                      </Text>
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        •
+                                      </Text>
+                                      <Text size="small" color="surface.text.gray.muted">
+                                        ₹ {po.amount.toLocaleString()}
+                                      </Text>
+                                    </Box>
+                                  </Box>
+                                </RadioCard>
+                              </CardBody>
+                            </Card>
+                          ))}
+                        </RadioGroup>
                       </Box>
                     </Box>
-                  </CardBody>
-                </Card>
-              ))}
-            </RadioGroup>
+                  </Box>
+                </Box>
+                {!isMobile && (
+                  <Box flex={4}>
+                    <Preview isDragAndZoomDisabled>
+                      <PreviewBody>
+                        <Box
+                          padding="spacing.4"
+                          display="flex"
+                          flexDirection="column"
+                          gap="spacing.4"
+                          backgroundColor="surface.background.gray.moderate"
+                        >
+                          {selectedVendor && (
+                            <>
+                              <Box>
+                                <Text weight="semibold" size="large">
+                                  {vendors.find((v) => v.id === selectedVendor)?.name}
+                                </Text>
+                                <Text size="small" color="surface.text.gray.muted">
+                                  {vendors.find((v) => v.id === selectedVendor)?.email}
+                                </Text>
+                              </Box>
+                              <Box display="flex" flexDirection="column" gap="spacing.2">
+                                <Text size="small">
+                                  Phone: {vendors.find((v) => v.id === selectedVendor)?.phone}
+                                </Text>
+                                <Text size="small">
+                                  Address: {vendors.find((v) => v.id === selectedVendor)?.address}
+                                </Text>
+                              </Box>
+                            </>
+                          )}
+                          {selectedPO && (
+                            <Box
+                              marginTop="spacing.4"
+                              paddingTop="spacing.4"
+                              borderTopWidth="thin"
+                              borderTopColor="surface.border.gray.muted"
+                            >
+                              <Text weight="semibold" size="medium">
+                                Selected PO
+                              </Text>
+                              <Box marginTop="spacing.2">
+                                <Text size="small">
+                                  PO Number:{' '}
+                                  {purchaseOrders.find((p) => p.id === selectedPO)?.number}
+                                </Text>
+                                <Text size="small">
+                                  Amount: ₹
+                                  {purchaseOrders
+                                    .find((p) => p.id === selectedPO)
+                                    ?.amount.toLocaleString()}
+                                </Text>
+                              </Box>
+                            </Box>
+                          )}
+                        </Box>
+                      </PreviewBody>
+                    </Preview>
+                  </Box>
+                )}
+              </Box>
+              {!isMobile && deskTopFooter({})}
+            </Box>
           </Box>
         );
-
       case 3:
         return (
-          <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-            <Heading size="medium">GRN Details</Heading>
-            <Text>Add additional details for this GRN.</Text>
-
-            <TextInput
-              label="GRN Number"
-              value={grnDetails.grnNumber}
-              isDisabled
-              helpText="Auto-generated GRN number"
-            />
-
-            <DatePicker
-              label="Date"
-              value={grnDetails.date ? dayjs(grnDetails.date).toDate() : undefined}
-              onApply={(value) => {
-                setGrnDetails((prev) => ({
-                  ...prev,
-                  date: value ? dayjs(value).format('YYYY-MM-DD') : '',
-                }));
-              }}
-              validationState={errors.date ? 'error' : 'none'}
-              errorText={errors.date}
-              isRequired
-              necessityIndicator="required"
-            />
-
-            <TextArea
-              label="Notes"
-              value={grnDetails.notes}
-              onChange={({ value }) => setGrnDetails((prev) => ({ ...prev, notes: value ?? '' }))}
-              numberOfLines={4}
-              placeholder="Add any additional notes or comments"
-            />
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="spacing.4"
+            width="100%"
+            height="100%"
+            justifyContent="space-between"
+          >
+            <Box padding="spacing.7" display="flex" flexDirection="column" gap="spacing.4">
+              <Box>
+                <Heading size="medium">GRN Details</Heading>
+                <Text>Add additional details for this GRN.</Text>
+              </Box>
+              <Divider />
+              {!isMobile && alert && (
+                <Alert
+                  color={alert.type}
+                  title={alert.title}
+                  description={alert.description}
+                  emphasis="subtle"
+                  isDismissible
+                  onDismiss={() => setAlert(null)}
+                  isFullWidth
+                />
+              )}
+              <Box display="flex" flexDirection="column" gap="spacing.4">
+                <TextInput
+                  label="GRN Number"
+                  name="grnNumber"
+                  value={grnDetails.grnNumber}
+                  onChange={({ value }) =>
+                    setGrnDetails((prev) => ({ ...prev, grnNumber: value ?? '' }))
+                  }
+                  isDisabled
+                  helpText="Auto-generated GRN number"
+                />
+                <DatePicker
+                  label="Date"
+                  name="date"
+                  value={grnDetails.date ? dayjs(grnDetails.date).toDate() : undefined}
+                  onApply={(value) => {
+                    handleDateChange(value);
+                  }}
+                  onChange={(value) => {
+                    handleDateChange(value);
+                  }}
+                  onOpenChange={() => {
+                    setIsDatePickerOpen((prev) => !prev);
+                  }}
+                  validationState={errors.date ? 'error' : 'none'}
+                  errorText={errors.date}
+                  helpText="Select the GRN date"
+                  isRequired
+                  necessityIndicator="required"
+                  minDate={new Date()} // Prevents selecting past dates
+                />
+                <TextArea
+                  label="Notes"
+                  name="notes"
+                  value={grnDetails.notes}
+                  onChange={({ value }) =>
+                    setGrnDetails((prev) => ({ ...prev, notes: value ?? '' }))
+                  }
+                  numberOfLines={4}
+                  placeholder="Add any additional notes or comments"
+                />
+              </Box>
+            </Box>
+            {!isMobile && deskTopFooter({})}
           </Box>
         );
-
       case 4:
         return (
-          <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-            <Heading size="medium">Line Item Details</Heading>
-            <Text>Review and confirm line items for this GRN.</Text>
-
-            <Table data={tableData}>
-              {(tableData) => (
-                <>
-                  <TableHeader>
-                    <TableHeaderRow>
-                      <TableHeaderCell>Item Name</TableHeaderCell>
-                      <TableHeaderCell>Quantity</TableHeaderCell>
-                      <TableHeaderCell>Unit Price</TableHeaderCell>
-                      <TableHeaderCell>Total Amount</TableHeaderCell>
-                    </TableHeaderRow>
-                  </TableHeader>
-                  <TableBody>
-                    {tableData.map((item) => (
-                      <TableRow key={item.id} item={item}>
-                        <TableCell>{item.name}</TableCell>
-                        <TableCell>{item.quantity}</TableCell>
-                        <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
-                        <TableCell>₹{(item.quantity * item.unitPrice).toLocaleString()}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                  <TableFooter>
-                    <TableFooterRow>
-                      <TableFooterCell>Total Amount</TableFooterCell>
-                      <TableFooterCell>-</TableFooterCell>
-                      <TableFooterCell>-</TableFooterCell>
-                      <TableFooterCell>
-                        ₹
-                        {tableData
-                          .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
-                          .toLocaleString()}
-                      </TableFooterCell>
-                    </TableFooterRow>
-                  </TableFooter>
-                </>
-              )}
-            </Table>
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+            gap="spacing.4"
+            height="100%"
+          >
+            <Box padding="spacing.7" display="flex" flexDirection="column" gap="spacing.4">
+              <Box>
+                <Heading size="medium">Line Item Details</Heading>
+                <Text>Add line items and quantities for this GRN.</Text>
+              </Box>
+              <Divider />
+              <Table data={tableData}>
+                {(tableData) => (
+                  <>
+                    <TableHeader>
+                      <TableHeaderRow>
+                        <TableHeaderCell>Item Name</TableHeaderCell>
+                        <TableHeaderCell>Quantity</TableHeaderCell>
+                        <TableHeaderCell>Unit Price</TableHeaderCell>
+                        <TableHeaderCell>Total Amount</TableHeaderCell>
+                      </TableHeaderRow>
+                    </TableHeader>
+                    <TableBody>
+                      {tableData.map((item) => (
+                        <TableRow key={item.id} item={item}>
+                          <TableCell>{item.name}</TableCell>
+                          <TableCell>{item.quantity}</TableCell>
+                          <TableCell>₹{item.unitPrice.toLocaleString()}</TableCell>
+                          <TableCell>
+                            ₹{(item.quantity * item.unitPrice).toLocaleString()}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                    <TableFooter>
+                      <TableFooterRow>
+                        <TableFooterCell>Total Amount</TableFooterCell>
+                        <TableFooterCell>-</TableFooterCell>
+                        <TableFooterCell>-</TableFooterCell>
+                        <TableFooterCell>
+                          ₹
+                          {tableData
+                            // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                            .reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
+                            .toLocaleString()}
+                        </TableFooterCell>
+                      </TableFooterRow>
+                    </TableFooter>
+                  </>
+                )}
+              </Table>
+            </Box>
+            {!isMobile && deskTopFooter({})}
           </Box>
         );
-
       case 5:
-        return (
-          <Box padding="spacing.4">
-            <Preview>
-              <PreviewHeader />
-              <PreviewBody>
-                <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-                  <Heading size="large">Goods Receipt Note</Heading>
-                  <Text>GRN Number: {grnDetails.grnNumber}</Text>
-                  <Text>Date: {grnDetails.date}</Text>
-
-                  <Divider />
-
-                  <Box>
-                    <Heading size="medium">Vendor Details</Heading>
-                    {selectedVendor && (
-                      <Box marginTop="spacing.2">
-                        <Text weight="semibold">
-                          {vendors.find((v) => v.id === selectedVendor)?.name}
-                        </Text>
-                        <Text size="small" color="surface.text.gray.muted">
-                          {vendors.find((v) => v.id === selectedVendor)?.email}
-                        </Text>
-                      </Box>
-                    )}
-                  </Box>
-
-                  <Box>
-                    <Heading size="medium">Purchase Order</Heading>
-                    {selectedPO && (
-                      <Box marginTop="spacing.2">
-                        <Text weight="semibold">
-                          {purchaseOrders.find((p) => p.id === selectedPO)?.number}
-                        </Text>
-                        <Text size="small" color="surface.text.gray.muted">
-                          Amount: ₹
-                          {purchaseOrders.find((p) => p.id === selectedPO)?.amount.toLocaleString()}
-                        </Text>
-                      </Box>
-                    )}
-                  </Box>
-
-                  {grnDetails.notes && (
-                    <Box>
-                      <Heading size="medium">Notes</Heading>
-                      <Text>{grnDetails.notes}</Text>
-                    </Box>
-                  )}
-                </Box>
-              </PreviewBody>
-              <PreviewFooter />
-            </Preview>
-          </Box>
-        );
-
+        // Only show on desktop
+        if (!isMobile) {
+          return renderReviewContent();
+        }
+        return null;
       default:
         return null;
     }
   };
-
-  const renderStepGroup = (): React.ReactElement => (
-    <StepGroup orientation="vertical" size="medium">
-      {steps.map((step) => (
-        <StepItem
-          key={step.stepNumber}
-          title={step.title}
-          description={step.description}
-          marker={getStepIcon(step.stepNumber)}
-          isSelected={currentStep === step.stepNumber}
-          isDisabled={step.stepNumber > currentStep}
-          onClick={() => step.stepNumber <= currentStep && setCurrentStep(step.stepNumber)}
-          stepProgress={
-            completedSteps.includes(step.stepNumber)
-              ? 'full'
-              : currentStep === step.stepNumber
-              ? 'start'
-              : 'none'
-          }
-        />
-      ))}
-    </StepGroup>
-  );
-
-  const renderFooter = (): React.ReactElement => (
-    <Box display="flex" gap="spacing.3" justifyContent="space-between" width="100%">
-      {isMobile && currentStep === steps.length && (
-        <Button variant="tertiary" icon={FileIcon} onClick={() => setIsPreviewOpen(true)}>
-          Preview
-        </Button>
-      )}
-
-      <Box display="flex" gap="spacing.3">
-        <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
-          Previous
-        </Button>
-        <Button
-          variant="primary"
-          onClick={currentStep === steps.length ? () => setIsOpen(false) : handleNextStep}
-        >
-          {currentStep === steps.length ? 'Submit' : 'Next'}
-        </Button>
+  const renderFooter = (): React.ReactElement => {
+    const showPreview = isMobile && currentStep === lastStep;
+    return (
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="spacing.4"
+        padding="spacing.4"
+        backgroundColor="surface.background.gray.subtle"
+        borderTopWidth="thin"
+        borderTopColor="surface.border.gray.muted"
+        position="fixed"
+        bottom="spacing.0"
+        zIndex={1001}
+        width="100%"
+      >
+        {isMobile && alert && (
+          <Alert
+            color={alert.type}
+            title={alert.title}
+            description={alert.description}
+            emphasis="subtle"
+            isDismissible
+            onDismiss={() => setAlert(null)}
+            isFullWidth
+          />
+        )}
+        <Box display="flex" gap="spacing.4" justifyContent="space-between">
+          <Box display="flex" gap="spacing.2">
+            {showPreview && (
+              <Button
+                variant="tertiary"
+                icon={FileIcon}
+                onClick={() => setIsPreviewOpen(true)}
+                iconPosition="left"
+              >
+                Preview
+              </Button>
+            )}
+            <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
+              Previous
+            </Button>
+          </Box>
+          <Button
+            variant="primary"
+            onClick={
+              currentStep === lastStep
+                ? () => {
+                    resetState();
+                    setIsOpen(false);
+                  }
+                : handleNextStep
+            }
+          >
+            {currentStep === lastStep ? 'Submit' : 'Next'}
+          </Button>
+        </Box>
       </Box>
-    </Box>
-  );
+    );
+  };
 
-  const visibleSteps = isMobile ? steps.filter((s) => s.stepNumber !== 5) : steps;
-  const currentStepObj = visibleSteps.find((s) => s.stepNumber === currentStep);
+  const renderStepGroup = (): React.ReactElement => {
+    return (
+      <StepGroup orientation="vertical" size="medium">
+        {visibleSteps.map((step) => (
+          <StepItem
+            key={step.stepNumber}
+            title={step.title}
+            description={step.description}
+            titleColor={
+              alert?.type === 'negative' && step.stepNumber === currentStep
+                ? 'feedback.text.negative.intense'
+                : undefined
+            }
+            marker={getStepIcon(step.stepNumber)}
+            isSelected={alert?.type === 'negative' ? false : currentStep === step.stepNumber}
+            isDisabled={step.stepNumber > currentStep}
+            onClick={() => handleStepClick(step.stepNumber)}
+            stepProgress={
+              completedSteps.includes(step.stepNumber)
+                ? 'full'
+                : currentStep === step.stepNumber
+                ? 'start'
+                : 'none'
+            }
+          />
+        ))}
+      </StepGroup>
+    );
+  };
 
+  const BackdropContainer = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: ${({ theme }) => theme.colors.overlay.background.subtle};
+    z-index: 1004;
+  `;
   return (
     <Box>
-      <Button onClick={() => setIsOpen(true)}>Create GRN</Button>
-
+      <Button onClick={() => setIsOpen(!isOpen)}>Create GNR Details</Button>
       {isMobile ? (
         isOpen && (
           <Box
+            width="100%"
+            minHeight="100%"
+            backgroundColor="surface.background.gray.moderate"
+            display="flex"
+            flexDirection="column"
             position="fixed"
             top="spacing.0"
             left="spacing.0"
-            width="100%"
-            height="100%"
-            backgroundColor="surface.background.gray.moderate"
             zIndex={1000}
           >
-            {/* Mobile Header */}
+            {/* Header with current step name */}
             <div
-              style={{
-                padding: 'spacing.4',
-                backgroundColor: 'surface.background.gray.subtle',
-                borderBottomWidth: 'thin',
-                borderBottomColor: 'surface.border.gray.muted',
-              }}
-              onClick={() => setShowStepGroup(!showStepGroup)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  setShowStepGroup(!showStepGroup);
-                }
-              }}
               role="button"
               tabIndex={0}
+              onClick={() => {
+                if (!withProgressBar) {
+                  setShowStepGroup((prev: boolean) => !prev);
+                }
+              }}
+              // eslint-disable-next-line @typescript-eslint/no-empty-function
+              onKeyDown={() => {}}
+              style={{
+                zIndex: 1006,
+              }}
             >
-              <Box display="flex" alignItems="center" justifyContent="center" gap="spacing.2">
-                <Badge>
-                  {currentStep} / {visibleSteps.length}
-                </Badge>
-                <Heading size="small">{currentStepObj?.title}</Heading>
-                {showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />}
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                padding="spacing.4"
+                backgroundColor="surface.background.gray.subtle"
+                borderBottomWidth="thin"
+                borderBottomColor="surface.border.gray.muted"
+                position="relative"
+              >
+                <Box display="flex" alignItems="center" gap="spacing.4">
+                  {alert?.type === 'negative' && (
+                    <InfoIcon color="feedback.icon.negative.intense" />
+                  )}
+                  {withProgressBar ? (
+                    <Heading
+                      as="h2"
+                      size="medium"
+                      weight="semibold"
+                      color="surface.text.gray.normal"
+                      wordBreak="break-word"
+                    >
+                      New GRN
+                    </Heading>
+                  ) : (
+                    <>
+                      <Badge color={alert?.type === 'negative' ? 'negative' : undefined}>
+                        {' '}
+                        {currentStep} / {lastStep}{' '}
+                      </Badge>
+                      <Heading size="small">{currentStepObj?.title}</Heading>
+                      {showStepGroup ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                    </>
+                  )}
+                </Box>
               </Box>
             </div>
+            <ProgressBar
+              value={(currentStep / lastStep) * 100}
+              showPercentage={false}
+              size="medium"
+              color={alert?.type === 'negative' ? 'negative' : undefined}
+            />
 
-            <ProgressBar value={(currentStep / visibleSteps.length) * 100} />
-
-            {/* Step Group Overlay */}
-            <Slide direction="top" isVisible={showStepGroup}>
-              <Box
-                position="fixed"
-                top="60px"
-                left="spacing.0"
-                width="100%"
-                backgroundColor="surface.background.gray.intense"
-                padding="spacing.4"
-                zIndex={1001}
+            <Box>
+              <Slide
+                direction="top"
+                fromOffset="100%"
+                motionTriggers={['mount']}
+                isVisible={showStepGroup}
               >
-                {renderStepGroup()}
-              </Box>
-            </Slide>
-
-            {/* Content */}
-            <Box overflow="auto" height="calc(100vh - 140px)">
-              {alert && (
-                <Box padding="spacing.4">
-                  <Alert
-                    color={alert.type}
-                    title={alert.title}
-                    description={alert.description}
-                    isDismissible
-                    onDismiss={() => setAlert(null)}
-                  />
+                <Box
+                  position="fixed"
+                  top="51px"
+                  left="spacing.0"
+                  backgroundColor="surface.background.gray.intense"
+                  zIndex={1005}
+                  width="100%"
+                  height="272px"
+                  borderBottomLeftRadius="2xlarge"
+                  borderBottomRightRadius="2xlarge"
+                  padding="spacing.7"
+                  paddingTop="spacing.0"
+                >
+                  {renderStepGroup()}
                 </Box>
-              )}
-              {renderStepContent()}
+              </Slide>
+              <Fade motionTriggers={['mount']} isVisible={showStepGroup} shouldUnmountWhenHidden>
+                <BackdropContainer onClick={() => setShowStepGroup((prev: boolean) => !prev)} />
+              </Fade>
             </Box>
-
-            {/* Footer */}
+            {/* Step content */}
             <Box
-              position="fixed"
-              bottom="spacing.0"
-              left="spacing.0"
-              width="100%"
+              overflow="auto"
+              height="calc(100vh - 100px)"
               padding="spacing.4"
-              backgroundColor="surface.background.gray.subtle"
-              borderTopWidth="thin"
-              borderTopColor="surface.border.gray.muted"
+              paddingBottom="spacing.8"
             >
-              {renderFooter()}
+              {renderStepContent(isMobile)}
             </Box>
-
-            {/* Preview BottomSheet */}
-            <BottomSheet
-              isOpen={isPreviewOpen}
-              onDismiss={() => setIsPreviewOpen(false)}
-              snapPoints={[0.4, 0.4, 0.9]}
-            >
-              <BottomSheetHeader title="Review GRN Details" />
-              <BottomSheetBody>{renderStepContent()}</BottomSheetBody>
-            </BottomSheet>
+            {!isDatePickerOpen && !isPreviewOpen && renderFooter()}
+            {/* Preview BottomSheet for mobile */}
+            {isPreviewOpen && isMobile && (
+              <BottomSheet
+                isOpen={isPreviewOpen}
+                onDismiss={() => setIsPreviewOpen(false)}
+                snapPoints={[0.9, 0.9, 0.9]}
+              >
+                <BottomSheetHeader title="Review GRN Details" />
+                <BottomSheetBody padding="spacing.0">{renderReviewContent()}</BottomSheetBody>
+              </BottomSheet>
+            )}
           </Box>
         )
       ) : (
-        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full">
-          <ModalHeader title="Create GRN" />
-          <ModalBody padding="spacing.0">
-            <Box display="flex" height="100%">
-              {/* Desktop Sidebar */}
-              <Box
-                width="300px"
-                padding="spacing.4"
-                backgroundColor="surface.background.gray.moderate"
-              >
-                {renderStepGroup()}
-              </Box>
-
-              {/* Desktop Content */}
-              <Box flex={1} display="flex" flexDirection="column">
-                {alert && (
-                  <Box padding="spacing.4">
-                    <Alert
-                      color={alert.type}
-                      title={alert.title}
-                      description={alert.description}
-                      isDismissible
-                      onDismiss={() => setAlert(null)}
-                    />
+        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size={modalSize}>
+          <ModalHeader title="New GRN" />
+          {withProgressBar && (
+            <ProgressBar
+              value={(currentStep / lastStep) * 100}
+              showPercentage={false}
+              size="medium"
+              color={alert?.type === 'negative' ? 'negative' : undefined}
+            />
+          )}
+          <ModalBody height="100%" padding="spacing.0">
+            <Box width="100%" height="100%" display="flex" flexDirection="column">
+              <Box display="flex" flex={1}>
+                {!withProgressBar && (
+                  <Box
+                    width="300px"
+                    padding="spacing.7"
+                    backgroundColor="surface.background.gray.moderate"
+                  >
+                    {renderStepGroup()}
                   </Box>
                 )}
 
-                <Box flex={1} overflow="auto">
-                  {renderStepContent()}
-                </Box>
-
-                <Box
-                  padding="spacing.4"
-                  borderTopWidth="thin"
-                  borderTopColor="surface.border.gray.muted"
-                >
-                  {renderFooter()}
+                <Box width="100%" display="flex" flexDirection="column">
+                  <Box flex={1} overflow="auto">
+                    {renderStepContent(isMobile)}
+                  </Box>
                 </Box>
               </Box>
             </Box>
@@ -851,6 +1394,21 @@ function MultiStepCreationView() {
 }
 
 export default MultiStepCreationView;
+
+// With StepGroup + full size modal
+const MultiStepCreationViewStepGroup = () => {
+  return <MultiStepCreationView />;
+};
+
+// With ProgressBar + full size modal
+const MultiStepCreationViewProgressBar = () => {
+  return <MultiStepCreationView withProgressBar />;
+};
+
+// With StepGroup + medium size modal
+const MultiStepCreationViewMediumSizeModal = () => {
+  return <MultiStepCreationView modalSize="medium" />;
+};
 ```
 
 ### Edit and Add Modal Example
@@ -963,7 +1521,7 @@ export default EditAndAddModal;
 
 ### Flow Selection Modal Example
 
-This example shows a flow selection modal with icon cards and responsive grid layout.
+This example demonstrates how to create flow selection modals with varying card counts and corresponding modal sizes:.
 
 ```tsx
 import React from 'react';
@@ -1031,9 +1589,28 @@ function ResponsiveModalWrapper({
   );
 }
 
-function FlowSelectionModal() {
+function FlowSelectionModal({ cardCount = 3 }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedMethod, setSelectedMethod] = React.useState('');
+
+  // Dynamic modal size and grid layout based on card count
+  const getModalSize = () => {
+    if (cardCount === 2) return 'small';
+    if (cardCount === 3) return 'medium';
+    return 'large';
+  };
+
+  const getGridLayout = () => {
+    if (cardCount === 2) return { base: '1fr 1fr', m: '1fr 1fr' };
+    if (cardCount === 3) return { base: '1fr 1fr', m: '1fr 1fr 1fr' };
+    return { base: '1fr 1fr', m: '1fr 1fr 1fr 1fr' };
+  };
+
+  const getCardWidth = () => {
+    if (cardCount === 2) return isMobile ? '165px' : '160px';
+    if (cardCount === 3) return isMobile ? '165px' : '230px';
+    return isMobile ? '165px' : '220px';
+  };
 
   const paymentMethods = [
     {
@@ -1058,7 +1635,7 @@ function FlowSelectionModal() {
       icon: ZapIcon,
       isDisabled: true,
     },
-  ];
+  ].slice(0, cardCount); // Dynamic content based on cardCount
 
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint(theme);
@@ -1070,7 +1647,7 @@ function FlowSelectionModal() {
       <ResponsiveModalWrapper
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
-        modalSize="medium"
+        modalSize={getModalSize()}
         footer={
           <Box display="flex" gap="spacing.5" justifyContent="flex-end" width="100%">
             <Button variant="tertiary" isFullWidth={isMobile} onClick={() => setIsOpen(false)}>
@@ -1110,11 +1687,7 @@ function FlowSelectionModal() {
         <Box padding="spacing.6">
           <Box
             display="grid"
-            gridTemplateColumns={{
-              base: '1fr 1fr',
-              m: '1fr 1fr 1fr',
-              l: '1fr 1fr 1fr',
-            }}
+            gridTemplateColumns={getGridLayout()}
             justifyItems="center"
             gap="spacing.5"
             width="100%"
@@ -1126,10 +1699,11 @@ function FlowSelectionModal() {
                 onClick={method.isDisabled ? undefined : () => setSelectedMethod(method.value)}
                 padding="spacing.0"
                 accessibilityLabel={`Select ${method.title}`}
-                width={isMobile ? '165px' : '228px'}
+                width={getCardWidth()}
                 height={isMobile ? '184px' : undefined}
                 borderRadius="medium"
                 elevation="none"
+                cursor={method.isDisabled ? 'not-allowed' : 'pointer'}
               >
                 <CardBody>
                   <Box
@@ -1204,6 +1778,21 @@ function FlowSelectionModal() {
 }
 
 export default FlowSelectionModal;
+
+// 2 Cards - Small Modal
+const FlowSelection2Cards = () => {
+  return <FlowSelectionModal cardCount={2} />;
+};
+
+// 3 Cards - Medium Modal
+const FlowSelection3Cards = () => {
+  return <FlowSelectionModal cardCount={3} />;
+};
+
+// 4+ Cards - Large Modal
+const FlowSelection4Cards = () => {
+  return <FlowSelectionModal cardCount={4} />;
+};
 ```
 
 ### Single Step Form Modal Example

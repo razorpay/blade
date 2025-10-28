@@ -1,5 +1,6 @@
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
+import type { CSSObject } from 'styled-components';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
@@ -182,6 +183,10 @@ export type CardProps = {
    * @default undefined
    */
   as?: 'label';
+  cursor?: Platform.Select<{
+    web: CSSObject['cursor'];
+    native: undefined;
+  }>;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -209,6 +214,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     rel,
     as,
     size = 'large',
+    cursor,
     ...rest
   },
   ref,
@@ -267,6 +273,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         href={href}
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
+        cursor={isReactNative() ? undefined : cursor}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
