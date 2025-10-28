@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.62.0
+
+### Minor Changes
+
+- 10bea9302: feat(blade): creation view v2
+
+  - **Card**: Added prop to enable `cursor: pointer` for interactive states.
+  - **Creation View**:
+    - Added progress bar in full-page modal for multi-step forms.
+    - Included StepGroup example in medium modal.
+    - Enhanced the **Flow Selection Modal** with responsive behavior
+
 ## 12.61.1
 
 ### Patch Changes
