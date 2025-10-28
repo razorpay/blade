@@ -1,3 +1,9 @@
+import type {
+  DataColorCategories,
+  DataCategoricalEmphasis,
+  DataSequentialEmphasis,
+} from '~tokens/theme/theme';
+
 type ColorTheme = 'categorical';
 
 /**
@@ -24,4 +30,20 @@ type ChartColorTokenNames =
   | 'gold'
   | 'gray';
 
-export type { ColorTheme, ChartName, ColorIntensity, ChartColorTokenNames };
+type ChartsCategoricalColorToken = `data.background.categorical.${DataColorCategories}.${keyof DataCategoricalEmphasis}`;
+type ChartSequentialColorToken = `data.background.sequential.${Exclude<
+  DataColorCategories,
+  'gray'
+>}.${keyof DataSequentialEmphasis}`;
+
+type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
+
+export type {
+  ColorTheme,
+  ChartName,
+  ColorIntensity,
+  ChartColorTokenNames,
+  ChartColorToken,
+  ChartsCategoricalColorToken,
+  ChartSequentialColorToken,
+};

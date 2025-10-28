@@ -4,9 +4,9 @@ import {
   Area as RechartsArea,
   ResponsiveContainer,
 } from 'recharts';
-import { getHighestColorInRange, useChartsColorTheme } from '../utils';
+import { getHighestColorInRange, useChartsColorTheme, assignDataColorMapping } from '../utils';
 import type { DataColorMapping } from '../CommonChartComponents';
-import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
+import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
 import { componentIds } from './componentIds';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -142,25 +142,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       }
       return child;
     });
-    /* check if dataColor mapping has only one key and if it does, we need to add the default color to the dataColorMapping if no color is provided. */
-    if (
-      Object.keys(dataColorMapping).length === 1 &&
-      !dataColorMapping[Object.keys(dataColorMapping)[0]]?.colorToken
-    ) {
-      dataColorMapping[Object.keys(dataColorMapping)[0]] = {
-        colorToken: DEFAULT_COLOR,
-        isCustomColor: false,
-      };
-    }
-    /* assign theme colors to the dataColorMapping , if  no color is assigned. */
-    Object.keys(dataColorMapping).forEach((key, index) => {
-      if (!dataColorMapping[key]?.colorToken) {
-        dataColorMapping[key] = {
-          colorToken: themeColors[index],
-          isCustomColor: false,
-        };
-      }
-    });
+    assignDataColorMapping(dataColorMapping, themeColors);
     return {
       modifiedChildren,
       totalAreaChartChildren: AreaChartIndex,

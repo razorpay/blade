@@ -15,4 +15,6 @@ const colorSequence: ChartColorTokenNames[] = [
 
 const totalChartColors = colorSequence.length;
 
-export { colorSequence, totalChartColors };
+const DEFAULT_COLOR = 'data.background.categorical.gray.moderate';
+
+export { colorSequence, totalChartColors, DEFAULT_COLOR };

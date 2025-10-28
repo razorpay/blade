@@ -1,5 +1,4 @@
-import type { ChartColorToken } from '../CommonChartComponents/types';
-import type { ColorIntensity } from './types';
+import type { ChartColorToken, ColorIntensity } from './types';
 
 /**
  *

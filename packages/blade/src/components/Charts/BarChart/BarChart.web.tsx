@@ -4,8 +4,8 @@ import {
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import { useChartsColorTheme, getHighestColorInRange } from '../utils';
-import { CommonChartComponentsContext, DEFAULT_COLOR } from '../CommonChartComponents';
+import { useChartsColorTheme, getHighestColorInRange, assignDataColorMapping } from '../utils';
+import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
@@ -185,25 +185,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       }
       return child;
     });
-    /* check if dataColor mapping has only one key and if it does, we need to add the default color to the dataColorMapping if no color is provided. */
-    if (
-      Object.keys(dataColorMapping).length === 1 &&
-      !dataColorMapping[Object.keys(dataColorMapping)[0]]?.colorToken
-    ) {
-      dataColorMapping[Object.keys(dataColorMapping)[0]] = {
-        colorToken: DEFAULT_COLOR,
-        isCustomColor: false,
-      };
-    }
-    /* assign theme colors to the dataColorMapping , if  no color is assigned. */
-    Object.keys(dataColorMapping).forEach((key, index) => {
-      if (!dataColorMapping[key]?.colorToken) {
-        dataColorMapping[key] = {
-          colorToken: themeColors[index],
-          isCustomColor: false,
-        };
-      }
-    });
+    assignDataColorMapping(dataColorMapping, themeColors);
 
     return {
       barChartModifiedChildrens: modifiedChildren,
