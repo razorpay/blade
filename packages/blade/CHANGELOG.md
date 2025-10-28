@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.61.1
+
+### Patch Changes
+
+- 46b7a491b: revert: visually hidden changes
+
+  > **Note:** you might need to update your snaps
+
 ## 12.61.0
 
 ### Minor Changes
