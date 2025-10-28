@@ -198,10 +198,10 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       };
     }
     /* assign theme colors to the dataColorMapping , if  no color is assigned. */
-    Object.keys(dataColorMapping).forEach((key) => {
+    Object.keys(dataColorMapping).forEach((key, index) => {
       if (!dataColorMapping[key]?.colorToken) {
         dataColorMapping[key] = {
-          colorToken: themeColors[Object.keys(dataColorMapping).indexOf(key)],
+          colorToken: themeColors[index],
           isCustomColor: false,
         };
       }
