@@ -18,6 +18,7 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
     isPressed,
     isMobile,
     validationState,
+    cursor,
   }) => {
     const getCardBorderColor = (): string => {
       if (validationState === 'error') return theme.colors.interactive.border.negative.default;
@@ -36,7 +37,7 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
     return {
       // Selected state
       boxShadow: `${selectedBorder}${focusRing}`,
-      cursor: as === 'label' ? 'pointer' : 'initial',
+      cursor: cursor ? cursor : as === 'label' ? 'pointer' : 'initial',
 
       // pressed state for mobile only
       ...(isMobile &&
