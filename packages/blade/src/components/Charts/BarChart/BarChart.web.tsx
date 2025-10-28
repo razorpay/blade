@@ -45,7 +45,6 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
     label = false,
     showLegend = true,
     _index = 0,
-    _totalbars,
     ...rest
   }) => {
     const { theme } = useTheme();
@@ -53,7 +52,7 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
     const defaultColorArray = useChartsColorTheme({
       colorTheme: _colorTheme,
       chartName: 'bar',
-      chartDataIndicators: _totalbars,
+      chartDataIndicators: totalBars,
     });
     const fill = getIn(theme.colors, color ?? defaultColorArray[_index]);
     const strokeFill = getIn(
@@ -182,7 +181,6 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         }
         return React.cloneElement(child, {
           _index: BarChartIndex++,
-          _totalbars: totalBars,
         } as Partial<ChartBarProps>);
       }
       return child;
