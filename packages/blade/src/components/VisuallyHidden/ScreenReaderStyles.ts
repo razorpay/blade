@@ -5,22 +5,6 @@ import type { CSSObject } from 'styled-components';
  * https://webaim.org/techniques/css/invisiblecontent/#techniques
  */
 const screenReaderStyles: CSSObject = {
-  border: '0',
-  clip: 'rect(0, 0, 0, 0)',
-  height: '1px',
-  width: '1px',
-  margin: '-1px',
-  padding: '0',
-  overflow: 'hidden',
-  whiteSpace: 'nowrap',
-  position: 'absolute',
-  wordWrap: 'normal',
-};
-
-// So when we are using screenReaderStyles inside SelectorInput , it is causing wrong layout positioning in bottomSheet. that's why we are using legacyScreenReaderStyles only in SelectorInput.
-//TODO: figure out and remove `legacyScreenReaderStyles` in future.
-
-const legacyScreenReaderStyles: CSSObject = {
   border: 0,
   clip: 'rect(0 0 0 0)',
   clipPath: 'inset(50%)',
@@ -35,4 +19,4 @@ const legacyScreenReaderStyles: CSSObject = {
   wordWrap: 'normal',
 };
 
-export { screenReaderStyles, legacyScreenReaderStyles };
+export { screenReaderStyles };
