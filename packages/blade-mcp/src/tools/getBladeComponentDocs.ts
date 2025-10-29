@@ -29,11 +29,13 @@ const getBladeComponentDocsToolSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
+  agentName: z.enum(['claude', 'cursor', 'any other agent name']).optional().default('cursor'),
 };
 
 const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDocsToolSchema> = ({
   componentsList,
   currentProjectRootDirectory,
+  agentName,
 }) => {
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
@@ -47,14 +49,14 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
 
   const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
 
-  if (!existsSync(ruleFilePath)) {
+  if (!existsSync(ruleFilePath) && agentName === 'cursor') {
     return handleError({
       toolName: getBladeComponentDocsToolName,
       mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
     });
   }
 
-  if (hasOutDatedRules(ruleFilePath)) {
+  if (hasOutDatedRules(ruleFilePath) && agentName === 'cursor') {
     return handleError({
       toolName: getBladeComponentDocsToolName,
       mcpErrorMessage: `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
@@ -74,6 +76,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
         toolName: getBladeComponentDocsToolName,
         componentsList,
         rootDirectoryName: basename(currentProjectRootDirectory),
+        agentName,
       },
     });
 
