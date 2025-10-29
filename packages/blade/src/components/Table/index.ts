@@ -22,5 +22,6 @@ export type {
   TableRowProps,
   TableToolbarActionsProps,
   TableToolbarProps,
+  Identifier,
 } from './types';
 export { TableEditableCell, TableEditableDropdownCell } from './TableEditableCell';

@@ -148,11 +148,7 @@ import {
   Badge,
   SearchInput,
   Link,
-  Dropdown,
-  DropdownOverlay,
   SelectInput,
-  ActionList,
-  ActionListItem,
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
@@ -554,25 +550,52 @@ import {
   QuickFilter,
   Counter,
   Table,
+  SearchInput,
   TableHeader,
+  TableCell,
+  TableRow,
   TableHeaderRow,
   TableHeaderCell,
   TableBody,
-  TableRow,
-  TableCell,
-  Code,
   Badge,
-  SearchInput,
+  Amount,
+  Code,
+  TableEditableCell,
+  Link,
 } from '@razorpay/blade/components';
 import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
+// Define data types for strong typing
+type PaymentItem = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  status: 'Completed' | 'Pending' | 'Failed';
+  date: Date;
+  method: string;
+  account: string;
+};
+
+type TableData<T> = {
+  nodes: T[];
+};
 function MultiSelectListViewExample() {
   // Sample data similar to the first example
-  const data: { nodes: { status: string }[] } = {
-    nodes: [
-      // ... payment data items
-    ],
-  };
+  const nodes: PaymentItem[] = [
+    ...Array.from({ length: 20 }, (_, i) => ({
+      id: (i + 1).toString(),
+      paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
+      amount: Number((Math.random() * 10000).toFixed(2)),
+      status: ['Completed', 'Pending', 'Failed'][
+        Math.floor(Math.random() * 3)
+      ] as PaymentItem['status'],
+      date: new Date(2023, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
+      method: ['Bank Transfer', 'Credit Card', 'PayPal'][Math.floor(Math.random() * 3)],
+      account: Math.floor(Math.random() * 1000000000).toString(),
+    })),
+  ];
+
+  const data: TableData<PaymentItem> = { nodes };
 
   // State management
   const [listViewTableData, setListViewTableData] = useState(data);
@@ -586,9 +609,9 @@ function MultiSelectListViewExample() {
 
   // Filter function for multiple selected status values
   const getMultipleStatusFilterData = (
-    data: { nodes: { status: string }[] },
+    data: TableData<PaymentItem>,
     values: string | string[],
-  ): { nodes: { status: string }[] } => {
+  ): TableData<PaymentItem> => {
     if (!values || values.length === 0) {
       return { nodes: data.nodes };
     }
@@ -596,7 +619,6 @@ function MultiSelectListViewExample() {
       nodes: data.nodes.filter((node) => values.includes(node.status)),
     };
   };
-
   const handleSearchChange = (value?: string): void => {
     // Apply search logic here similar to first example
     setSearchValue(value || '');
@@ -664,7 +686,68 @@ function MultiSelectListViewExample() {
           {/* Filter chips and table similar to first example */}
         </ListViewFilters>
         <Table data={listViewTableData}>
-          {/* Table implementation similar to first example */}
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell headerKey="ID">ID</TableHeaderCell>
+                  <TableHeaderCell headerKey="PAYMENT_ID">Payment ID</TableHeaderCell>
+                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow
+                    key={tableItem.id}
+                    item={tableItem}
+                    onClick={() => {
+                      console.log('Row clicked:', tableItem);
+                    }}
+                  >
+                    <TableCell>
+                      <Code size="small">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableEditableCell
+                      accessibilityLabel="Edit payment amount"
+                      placeholder="Enter amount"
+                      successText="Amount is valid"
+                      defaultValue={tableItem.amount.toString()}
+                    />
+                    <TableCell>
+                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                        {tableItem.account}
+                      </Link>
+                    </TableCell>
+                    <TableCell>
+                      {tableItem.date?.toLocaleDateString('en-IN', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>
+                      <Badge
+                        size="xsmall"
+                        color={
+                          tableItem.status === 'Completed'
+                            ? 'positive'
+                            : tableItem.status === 'Pending'
+                            ? 'notice'
+                            : 'negative'
+                        }
+                      >
+                        {tableItem.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
         </Table>
       </ListView>
     </Box>
