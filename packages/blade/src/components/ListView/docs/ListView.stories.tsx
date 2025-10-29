@@ -1456,7 +1456,7 @@ const WithBulkActionExample: StoryFn<typeof ListView> = (args) => {
                   />
                 </Box>
               )}
-              <ButtonGroup isDisabled={selectedIds.length !== 0} variant="tertiary">
+              <ButtonGroup variant="tertiary">
                 <Tooltip content="More options">
                   <Button icon={MoreVerticalIcon} />
                 </Tooltip>

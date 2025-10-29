@@ -18,37 +18,55 @@ type ListViewCommonProps = {
 type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute;
 
 type ListViewFilterProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * Quick Filters Component
    */
   quickFilters: React.ReactNode;
   /**
    * Search value for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   searchValue?: string;
   /**
    * Placeholder for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   searchValuePlaceholder?: string;
   /**
    * Name for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   searchName?: string;
   /**
    * onChange handler for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   onSearchChange?: ({ name, value }: { name?: string; value?: string }) => void;
   /**
    *  onClear handler for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   onSearchClear?: () => void;
   /**
    * it will show/hide the quick filters
+   * @deprecated use showFilters instead
+   */
+  showQuickFilters?: boolean;
+  /**
+   * it will show/hide the filters
+   * @deprecated Filters are now always expanded. This prop will be removed in a future version.
+   * @default true
    */
   showFilters?: boolean;
   /**
+   * onChange handler for showQuickFilters
+   * @deprecated use onShowFiltersChange instead
+   */
+  onShowQuickFiltersChange?: (showQuickFilters: boolean) => void;
+  /**
    * onChange handler for showFilters
+   * @deprecated Filters are now always expanded. This prop will be removed in a future version.
    */
   onShowFiltersChange?: (showFilters: boolean) => void;
   /**
@@ -56,15 +74,24 @@ type ListViewFilterProps = {
    * you only need this if quick filters are controlled.
    */
   selectedFiltersCount?: number;
+  /**
+   * searchTrailing : trailing element for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
+   */
+  searchTrailing?: React.ReactNode;
+  /**
+   * Actions slot for search input and action buttons
+   * This will replace searchValue, onSearchChange, onSearchClear, searchValuePlaceholder, searchName, searchTrailing, and actionButtonGroup in a future major version.
+   */
+  actions?: React.ReactNode;
 } & TestID &
-  DataAnalyticsAttribute &
-  ListViewCommonProps;
+  DataAnalyticsAttribute;
 
 type ListViewSelectedFiltersType = {
   [key: string]: string[] | string | number[];
 };
 
-type ListViewContextType = {
+type ListViewFiltersContextType = {
   /**
    *  Number of Selected Filters
    */
@@ -111,6 +138,7 @@ import {
   TableFooter,
   TableFooterRow,
   TableFooterCell,
+  TablePagination,
   TableEditableCell,
   Button,
   IconButton,
@@ -118,9 +146,15 @@ import {
   CloseIcon,
   Code,
   Badge,
-  Switch,
-  Text,
+  SearchInput,
+  Link,
+  Dropdown,
+  DropdownOverlay,
+  SelectInput,
+  ActionList,
+  ActionListItem,
 } from '@razorpay/blade/components';
+import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 // Define data types for strong typing
 type PaymentItem = {
@@ -161,15 +195,13 @@ function ListViewExample() {
   const [searchValue, setSearchValue] = useState<string>('');
   const [methodFilter, setMethodFilter] = useState<string>('');
   const [filterDateRange, setFilterDateRange] = useState<[Date, Date] | undefined>(undefined);
-  const [showFilters, setShowFilters] = useState(true);
 
-  // Quick filter status colors
-  const quickFilterColorMapping: Record<string, 'primary' | 'notice' | 'negative' | 'positive'> = {
-    All: 'primary',
-    Pending: 'notice',
-    Failed: 'negative',
-    Completed: 'positive',
-  };
+  // Mobile responsive hook
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
+  const isMobile = matchedDeviceType === 'mobile';
 
   // Filter utility functions
   const getQuickFilterValueCount = (value: string): number => {
@@ -224,16 +256,35 @@ function ListViewExample() {
     };
   };
 
+  // Search handlers
+  const handleSearchChange = (value?: string): void => {
+    const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+    const searchValueData = getSearchedData(quickFilterData, value);
+    const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
+    const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+    setListViewTableData(dateRangeFilterData);
+    setSearchValue(value || '');
+  };
+
+  const handleSearchClear = (): void => {
+    const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
+    const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
+    const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+    setListViewTableData(dateRangeFilterData);
+    setSearchValue('');
+  };
+
   return (
     <Box height="100%" testID="payment-list-view">
-      <Box display="flex" padding="spacing.5" alignItems="center" gap="spacing.3">
-        <Text>Show Quick Filters</Text>
-        <Switch
-          isChecked={showFilters}
-          onChange={() => setShowFilters(!showFilters)}
-          accessibilityLabel="Toggle quick filters visibility"
+      {isMobile && (
+        <SearchInput
+          label=""
+          value={searchValue}
+          placeholder="Search by Payment ID"
+          onChange={({ value }) => handleSearchChange(value)}
+          onClearButtonClick={handleSearchClear}
         />
-      </Box>
+      )}
       <ListView>
         <ListViewFilters
           quickFilters={
@@ -257,37 +308,41 @@ function ListViewExample() {
                   key={status}
                   title={status}
                   value={status}
-                  trailing={
-                    <Counter
-                      value={getQuickFilterValueCount(status)}
-                      color={quickFilterColorMapping[status]}
-                    />
-                  }
+                  trailing={<Counter value={getQuickFilterValueCount(status)} color="neutral" />}
                 />
               ))}
             </QuickFilterGroup>
           }
-          searchName="paymentIdSearch"
-          onSearchChange={({ value }) => {
-            const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
-            const searchValueData = getSearchedData(quickFilterData, value);
-            const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
-            const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
-            setListViewTableData(dateRangeFilterData);
-            setSearchValue(value);
-          }}
-          onSearchClear={() => {
-            const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
-            const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
-            const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
-            setListViewTableData(dateRangeFilterData);
-            setSearchValue('');
-          }}
-          searchValuePlaceholder="Search by Payment ID"
           selectedFiltersCount={
             (methodFilter ? 1 : 0) +
             (filterDateRange?.[0] ? 1 : 0) +
             (selectedQuickFilter !== 'All' ? 1 : 0)
+          }
+          actions={
+            !isMobile && (
+              <Box width="280px">
+                <SearchInput
+                  label=""
+                  value={searchValue}
+                  placeholder="Search by Payment ID"
+                  onChange={({ value }) => handleSearchChange(value)}
+                  onClearButtonClick={handleSearchClear}
+                  trailing={
+                    <Dropdown selectionType="single">
+                      <SelectInput label="" placeholder="Filter by method" labelPosition="top" />
+                      <DropdownOverlay>
+                        <ActionList>
+                          <ActionListItem title="All Methods" value="all" />
+                          <ActionListItem title="Bank Transfer" value="bank" />
+                          <ActionListItem title="Credit Card" value="card" />
+                          <ActionListItem title="UPI" value="upi" />
+                        </ActionList>
+                      </DropdownOverlay>
+                    </Dropdown>
+                  }
+                />
+              </Box>
+            )
           }
         >
           <FilterChipGroup
@@ -368,6 +423,16 @@ function ListViewExample() {
           onSelectionChange={(selectedIds) => console.log('Selected rows:', selectedIds)}
           isFirstColumnSticky
           selectionType="single"
+          rowDensity="compact"
+          pagination={
+            <TablePagination
+              onPageChange={console.log}
+              defaultPageSize={10}
+              onPageSizeChange={console.log}
+              showPageSizePicker
+              showPageNumberSelector
+            />
+          }
         >
           {(tableData) => (
             <>
@@ -414,7 +479,7 @@ function ListViewExample() {
                     }}
                   >
                     <TableCell>
-                      <Code size="medium">{tableItem.paymentId}</Code>
+                      <Code size="small">{tableItem.paymentId}</Code>
                     </TableCell>
                     <TableEditableCell
                       accessibilityLabel="Edit payment amount"
@@ -422,7 +487,11 @@ function ListViewExample() {
                       successText="Amount is valid"
                       defaultValue={tableItem.amount.toString()}
                     />
-                    <TableCell>{tableItem.account}</TableCell>
+                    <TableCell>
+                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                        {tableItem.account}
+                      </Link>
+                    </TableCell>
                     <TableCell>
                       {tableItem.date?.toLocaleDateString('en-IN', {
                         year: 'numeric',
@@ -433,7 +502,7 @@ function ListViewExample() {
                     <TableCell>{tableItem.method}</TableCell>
                     <TableCell>
                       <Badge
-                        size="medium"
+                        size="xsmall"
                         color={
                           tableItem.status === 'Completed'
                             ? 'positive'
@@ -452,10 +521,7 @@ function ListViewExample() {
                 <TableFooterRow>
                   <TableFooterCell>Total</TableFooterCell>
                   <TableFooterCell>
-                    <Amount
-                      value={tableData.reduce((sum, item) => sum + item.amount, 0)}
-                      currency="INR"
-                    />
+                    <Amount value={tableData.reduce((sum, item) => sum + item.amount, 0)} />
                   </TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
@@ -474,11 +540,11 @@ function ListViewExample() {
 export default ListViewExample;
 ```
 
-### Multiple Selection Example with Quick Filters Toggle
+### Multiple Selection Example
 
-Here's an example demonstrating multiple selection in ListView's quick filters along with the ability to toggle the visibility of quick filters:
+Here's an example demonstrating multiple selection in ListView's quick filters:
 
-```jsx
+```tsx
 import React, { useState } from 'react';
 import {
   ListView,
@@ -488,10 +554,17 @@ import {
   QuickFilter,
   Counter,
   Table,
-  Switch,
-  Text,
-  // ...other imports as needed
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Code,
+  Badge,
+  SearchInput,
 } from '@razorpay/blade/components';
+import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 function MultiSelectListViewExample() {
   // Sample data similar to the first example
@@ -504,7 +577,12 @@ function MultiSelectListViewExample() {
   // State management
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilters, setSelectedQuickFilters] = useState<string[]>([]);
-  const [showFilters, setShowFilters] = useState(true);
+  const [searchValue, setSearchValue] = useState<string>('');
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
+  const isMobile = matchedDeviceType === 'mobile';
 
   // Filter function for multiple selected status values
   const getMultipleStatusFilterData = (
@@ -519,16 +597,27 @@ function MultiSelectListViewExample() {
     };
   };
 
+  const handleSearchChange = (value?: string): void => {
+    // Apply search logic here similar to first example
+    setSearchValue(value || '');
+  };
+
+  const handleSearchClear = (): void => {
+    // Apply search clear logic here similar to first example
+    setSearchValue('');
+  };
+
   return (
     <Box height="100%">
-      <Box display="flex" padding="spacing.5" alignItems="center" gap="spacing.3">
-        <Text>Show Quick Filters</Text>
-        <Switch
-          isChecked={showFilters}
-          onChange={() => setShowFilters(!showFilters)}
-          accessibilityLabel="Toggle quick filters visibility"
+      {isMobile && (
+        <SearchInput
+          label=""
+          value={searchValue}
+          placeholder="Search payments"
+          onChange={({ value }) => handleSearchChange(value)}
+          onClearButtonClick={handleSearchClear}
         />
-      </Box>
+      )}
 
       <ListView>
         <ListViewFilters
@@ -550,28 +639,33 @@ function MultiSelectListViewExample() {
                   trailing={
                     <Counter
                       value={data.nodes.filter((node) => node.status === status).length}
-                      color={
-                        status === 'Completed'
-                          ? 'positive'
-                          : status === 'Failed'
-                          ? 'negative'
-                          : 'notice'
-                      }
+                      color="neutral"
                     />
                   }
                 />
               ))}
             </QuickFilterGroup>
           }
-          searchName="multiSelectSearch"
-          searchValuePlaceholder="Search payments"
           selectedFiltersCount={selectedQuickFilters.length}
-          showFilters={showFilters}
-          onShowFiltersChange={setShowFilters}
+          actions={
+            !isMobile && (
+              <Box width="208px">
+                <SearchInput
+                  label=""
+                  value={searchValue}
+                  placeholder="Search payments"
+                  onChange={({ value }) => handleSearchChange(value)}
+                  onClearButtonClick={handleSearchClear}
+                />
+              </Box>
+            )
+          }
         >
           {/* Filter chips and table similar to first example */}
         </ListViewFilters>
-        <Table data={listViewTableData}>{/* Table implementation */}</Table>
+        <Table data={listViewTableData}>
+          {/* Table implementation similar to first example */}
+        </Table>
       </ListView>
     </Box>
   );
