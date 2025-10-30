@@ -16,7 +16,7 @@ feat(blade): charts new ui & color token update
   
   **How to Upgrade**
 
-  You need to update your code where `chart.background` prefix in color token is used. You can either remove the prefix entirely to use default color themes or change the value to `data.background`.
+  You need to update your code where `chart.background` prefix in color token. You can either remove the prefix entirely to use default color themes or change the value to `data.background`.
 
   ```diff
   - color="chart.background.categorical.blue.moderate"
