@@ -29,7 +29,7 @@ const getBladeComponentDocsToolSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-  agentName: z.enum(['claude', 'cursor', 'any other agent name']).optional().default('cursor'),
+  clientName: z.enum(['claude', 'cursor', 'unknown']).default('unknown'),
 };
 
 const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDocsToolSchema> = ({
