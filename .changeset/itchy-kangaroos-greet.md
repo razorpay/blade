@@ -21,8 +21,8 @@ feat(blade): charts new ui & color token update
   ```diff
   - color="chart.background.categorical.blue.moderate"
   + color="data.background.categorical.blue.moderate"
+  ```
 
-
-  ### Updation of color mapping tokens for charts
+### Updation of color mapping tokens for charts
 
   We have update color mapping of few token related to charts. you might need to update your snaps.
