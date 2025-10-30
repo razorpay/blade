@@ -6,7 +6,7 @@
 feat(blade): charts new ui & color token update
 
 
-  ### Deprecation of `chart.background` prefix in color token
+### Deprecation of `chart.background` prefix in color token
 
   The `chart.background` prefix in color token has been deprecated to improve clarity and provide a more descriptive API. The new prefix is `data.background`.
 
