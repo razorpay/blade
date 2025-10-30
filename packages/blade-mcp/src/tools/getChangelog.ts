@@ -1,3 +1,4 @@
+import { basename } from 'path';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import dedent from 'dedent';
 import { z } from 'zod';
@@ -57,12 +58,18 @@ const getChangelogToolSchema = {
     .describe(
       'Whether to get the changelog for a range of versions or a specific version, this is based on intent of user.',
     ),
+  currentProjectRootDirectory: z
+    .string()
+    .describe(
+      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
+    ),
 };
 
 const getChangelogToolCallback: ToolCallback<typeof getChangelogToolSchema> = async ({
   fromVersion,
   toVersion,
   isRange,
+  currentProjectRootDirectory,
 }) => {
   try {
     const changelogURL =
@@ -99,6 +106,7 @@ const getChangelogToolCallback: ToolCallback<typeof getChangelogToolSchema> = as
         toolName: getChangelogToolName,
         fromVersion,
         toVersion,
+        rootDirectoryName: basename(currentProjectRootDirectory),
       },
     });
 

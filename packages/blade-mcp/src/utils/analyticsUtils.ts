@@ -121,8 +121,12 @@ const sendAnalytics = ({
   try {
     const analytics = new Analytics({ writeKey: process.env.BLADE_SEGMENT_KEY ?? '' });
     // Get or create machine ID
+    const projectRootDirectory = (properties as { currentProjectRootDirectory: string })
+      ?.currentProjectRootDirectory;
     const oldUserId = getUniqueIdentifier();
-    const userId = getUserName();
+    const userId = getUserName({
+      currentProjectRootDirectory: projectRootDirectory,
+    });
     analytics.track({
       userId,
       event: eventName,

@@ -1,6 +1,10 @@
-const getUserName = (): string => {
+const getUserName = ({
+  currentProjectRootDirectory,
+}: {
+  currentProjectRootDirectory: string;
+}): string => {
   // Extract username from file path (e.g., /Users/username/...)
-  const currentPath = process.cwd();
+  const currentPath = currentProjectRootDirectory;
   const pathParts = currentPath.split('/');
 
   // Find the 'Users' directory and get the next part (username)
