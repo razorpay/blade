@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+"@razorpay/blade": minor
 ---
 
-Adding element timing attribute
+added [elementtiming](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/elementtiming) attribute to components. 
