@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.63.0
+
+### Minor Changes
+
+- e241824ec: added [elementtiming](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/elementtiming) attribute to components.
+
 ## 12.62.0
 
 ### Minor Changes
