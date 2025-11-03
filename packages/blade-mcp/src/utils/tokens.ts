@@ -17,7 +17,6 @@ const BLADE_CURSOR_RULES_FILE_PATH = join(
   'frontend-blade-rules.mdc',
 );
 
-// Cursor rules file name (fixed name, version is in file content)
 const CURSOR_RULES_FILE_NAME = `frontend-blade-rules.mdc`;
 
 const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${CURSOR_RULES_FILE_NAME}`;
