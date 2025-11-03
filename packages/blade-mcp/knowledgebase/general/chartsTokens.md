@@ -118,7 +118,7 @@ function MyChart() {
 
 ### Explicit Color Theme
 
-```tsx
+```jsx
 <ChartBarWrapper data={data} colorTheme="categorical">
   <ChartXAxis dataKey="name" />
   <ChartYAxis />
