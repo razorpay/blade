@@ -17,12 +17,10 @@ const BLADE_CURSOR_RULES_FILE_PATH = join(
   'frontend-blade-rules.mdc',
 );
 
-// Generate cursor rules file name (fixed name, version is in file content)
-const getCursorRulesFileName = (): string => {
-  return `frontend-blade-rules.mdc`;
-};
+// Cursor rules file name (fixed name, version is in file content)
+const CURSOR_RULES_FILE_NAME = `frontend-blade-rules.mdc`;
 
-const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${getCursorRulesFileName()}`;
+const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${CURSOR_RULES_FILE_NAME}`;
 
 // Blade Template
 const BASE_BLADE_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'base-blade-template');
@@ -46,5 +44,5 @@ export {
   PATTERNS_KNOWLEDGEBASE_DIRECTORY,
   GENERAL_KNOWLEDGEBASE_DIRECTORY,
   analyticsToolCallEventName,
-  getCursorRulesFileName,
+  CURSOR_RULES_FILE_NAME,
 };

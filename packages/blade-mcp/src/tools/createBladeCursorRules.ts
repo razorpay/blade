@@ -6,7 +6,7 @@ import {
   BLADE_CURSOR_RULES_FILE_PATH,
   CURSOR_RULES_VERSION,
   analyticsToolCallEventName,
-  getCursorRulesFileName,
+  CURSOR_RULES_FILE_NAME,
 } from '../utils/tokens.js';
 
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
@@ -29,8 +29,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
 }) => {
   try {
     const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
-    const cursorRulesFileName = getCursorRulesFileName();
-    const ruleFilePath = join(ruleFileDir, cursorRulesFileName);
+    const ruleFilePath = join(ruleFileDir, CURSOR_RULES_FILE_NAME);
 
     // Read the cursor rules template from the package's cursorRules directory
     const ruleFileTemplateContent = readFileSync(BLADE_CURSOR_RULES_FILE_PATH, 'utf8').replace(
@@ -57,7 +56,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
 
 **Instructions:**
 1. Create the directory if it doesn't exist: \`.cursor/rules/\`
-2. Create a new file named \`${cursorRulesFileName}\` in that directory.
+2. Create a new file named \`${CURSOR_RULES_FILE_NAME}\` in that directory.
 3. Copy the content below into the file
 
 **Cursor Rules Version:** ${CURSOR_RULES_VERSION}
