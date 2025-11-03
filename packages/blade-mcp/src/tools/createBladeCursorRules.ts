@@ -14,7 +14,7 @@ import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 
 const createBladeCursorRulesToolDescription =
-  'Creates the cursor rules for blade to help with code generation. Returns the cursor rules file content that should be created. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules-v{version}.mdc rule does not already exist).';
+  'Creates the cursor rules for blade to help with code generation. Returns the cursor rules file content that should be created. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
 
 const createBladeCursorRulesToolSchema = {
   currentProjectRootDirectory: z
@@ -57,9 +57,8 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
 
 **Instructions:**
 1. Create the directory if it doesn't exist: \`.cursor/rules/\`
-2. Create a new file named \`${cursorRulesFileName}\` in that directory .
-3. if their is any other file with name frontend-blade-rules-v{version}.mdc delete it first and create a new file. it should only have 1 file with frontend-blade-rules
-4. Copy the content below into the file
+2. Create a new file named \`${cursorRulesFileName}\` in that directory.
+3. Copy the content below into the file
 
 **Cursor Rules Version:** ${CURSOR_RULES_VERSION}
 

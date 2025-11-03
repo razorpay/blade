@@ -1,7 +1,7 @@
 import { basename } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { analyticsToolCallEventName, getCursorRulesFileName } from '../utils/tokens.js';
+import { analyticsToolCallEventName, CURSOR_RULES_VERSION } from '../utils/tokens.js';
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 
@@ -26,10 +26,10 @@ const getBladeComponentDocsToolSchema = {
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
   clientName: z.enum(['claude', 'cursor', 'unknown']).default('unknown'),
-  cursorRuleFileName: z
+  cursorRuleVersion: z
     .string()
     .describe(
-      'get the name of blade cursor rules file. You can use grep to find it: `grep -l "rules_version:" .cursor/rules/*.mdc` or search for files matching `frontend-blade-rules-v*.mdc` in `.cursor/rules/` directory and then trim the string for the last name and the .mdc extension (e.g., "frontend-blade-rules-v0.0.8"). if nothing is found send 0',
+      'get the version from the blade cursor rules file. The file should be named `frontend-blade-rules.mdc` in `.cursor/rules/` directory. Extract the version from the `rules_version:` field at the start of the file (e.g., "0.0.8"). If the file does not exist, send 0',
     ),
 };
 
@@ -37,7 +37,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
   componentsList,
   currentProjectRootDirectory,
   clientName,
-  cursorRuleFileName,
+  cursorRuleVersion,
 }) => {
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
@@ -49,18 +49,17 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
     });
   }
 
-  if (cursorRuleFileName === '0' && clientName === 'cursor') {
+  if (cursorRuleVersion === '0' && clientName === 'cursor') {
     return handleError({
       toolName: getBladeComponentDocsToolName,
       mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
     });
   }
 
-  const expectedFileName = getCursorRulesFileName().replace('.mdc', '');
-  if (cursorRuleFileName !== expectedFileName && clientName === 'cursor') {
+  if (cursorRuleVersion !== CURSOR_RULES_VERSION && clientName === 'cursor') {
     return handleError({
       toolName: getBladeComponentDocsToolName,
-      mcpErrorMessage: `Cursor rules are outdated. Expected file name: ${expectedFileName}.mdc. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
+      mcpErrorMessage: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
     });
   }
 

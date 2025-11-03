@@ -17,9 +17,9 @@ const BLADE_CURSOR_RULES_FILE_PATH = join(
   'frontend-blade-rules.mdc',
 );
 
-// Generate cursor rules file name with version
+// Generate cursor rules file name (fixed name, version is in file content)
 const getCursorRulesFileName = (): string => {
-  return `frontend-blade-rules-v${CURSOR_RULES_VERSION}.mdc`;
+  return `frontend-blade-rules.mdc`;
 };
 
 const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${getCursorRulesFileName()}`;
