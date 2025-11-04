@@ -45,8 +45,14 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
       content: [
         {
           type: 'text',
-          text: `## Run the following bash script to create cursor rules:
-
+          text: `## 
+           **Instructions:**
+          1. Change to the working directory: \`cd "${currentProjectRootDirectory}"\`
+          2. Run the bash script above (copy and execute the commands from the script)
+          3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
+          
+          Run the following bash script to create cursor rules:
+            
           **Working Directory:** \`${currentProjectRootDirectory}\`
           
           **Bash Script:**
@@ -54,11 +60,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
           \`\`\`bash
           ${bashScriptContent}
           \`\`\`
-          
-          **Instructions:**
-          1. Change to the working directory: \`cd "${currentProjectRootDirectory}"\`
-          2. Run the bash script above (copy and execute the commands from the script)
-          3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
+            
           `,
         },
       ],
