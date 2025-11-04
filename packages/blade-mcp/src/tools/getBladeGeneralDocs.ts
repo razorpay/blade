@@ -41,7 +41,7 @@ const getBladeGeneralDocsToolSchema = {
   cursorRuleVersion: z
     .string()
     .describe(
-      'get the version from the blade cursor rules file. The file should be named `frontend-blade-rules.mdc` in `.cursor/rules/` directory. Extract the version from the `rules_version:` field at the start of the file (e.g., "0.0.8"). If the file does not exist, send 0',
+      'get the version from the blade cursor rules file. use grep -o "rules_version: [0-9.]*" .cursor/rules/frontend-blade-rules.mdc  to get the cursor version of cursor rule. If the file does not exist, send 0',
     ),
 };
 
