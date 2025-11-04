@@ -1,20 +1,24 @@
-import { join, basename } from 'path';
-import { readFileSync } from 'fs';
+import { basename } from 'path';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import {
-  BLADE_CURSOR_RULES_FILE_PATH,
-  CURSOR_RULES_VERSION,
-  analyticsToolCallEventName,
-  CURSOR_RULES_FILE_NAME,
-} from '../utils/tokens.js';
-
+import { analyticsToolCallEventName, CURSOR_RULES_VERSION } from '../utils/tokens.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+
+const bashScriptContent = `
+#!/bin/bash
+# Download frontend-blade-rules.mdc from GitHub and save to .cursor/rules
+TARGET_DIR=".cursor/rules"
+URL="https://raw.githubusercontent.com/razorpay/blade/master/packages/blade-mcp/cursorRules/frontend-blade-rules.mdc"
+FILE_PATH="$TARGET_DIR/frontend-blade-rules.mdc"
+# Create directory if it doesn't exist (works even if it already exists)
+mkdir -p "$TARGET_DIR"
+curl -sSL "$URL" -o "$FILE_PATH"
+`;
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 
 const createBladeCursorRulesToolDescription =
-  'Creates the cursor rules for blade to help with code generation. Returns the cursor rules file content that should be created. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
+  'Creates the cursor rules for blade to help with code generation. Returns the bash script that should be executed. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
 
 const createBladeCursorRulesToolSchema = {
   currentProjectRootDirectory: z
@@ -28,15 +32,6 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
   currentProjectRootDirectory,
 }) => {
   try {
-    const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
-    const ruleFilePath = join(ruleFileDir, CURSOR_RULES_FILE_NAME);
-
-    // Read the cursor rules template from the package's cursorRules directory
-    const ruleFileTemplateContent = readFileSync(BLADE_CURSOR_RULES_FILE_PATH, 'utf8').replace(
-      'rules_version: <!-- dynamic_version -->',
-      `rules_version: ${CURSOR_RULES_VERSION}`,
-    );
-
     sendAnalytics({
       eventName: analyticsToolCallEventName,
       properties: {
@@ -50,20 +45,21 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
       content: [
         {
           type: 'text',
-          text: `## Blade Cursor Rules File Content
+          text: `## Run the following bash script to create cursor rules:
 
-**File Path:** \`${ruleFilePath}\`
-
-**Instructions:**
-1. Create the directory if it doesn't exist: \`.cursor/rules/\`
-2. Create a new file named \`${CURSOR_RULES_FILE_NAME}\` in that directory.
-3. Copy the content below into the file
-
-**Cursor Rules Version:** ${CURSOR_RULES_VERSION}
-
----
-
-${ruleFileTemplateContent}`,
+          **Working Directory:** \`${currentProjectRootDirectory}\`
+          
+          **Bash Script:**
+          
+          \`\`\`bash
+          ${bashScriptContent}
+          \`\`\`
+          
+          **Instructions:**
+          1. Change to the working directory: \`cd "${currentProjectRootDirectory}"\`
+          2. Run the bash script above (copy and execute the commands from the script)
+          3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
+          `,
         },
       ],
     };

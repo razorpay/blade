@@ -41,7 +41,7 @@ const getBladePatternDocsToolSchema = {
   cursorRuleVersion: z
     .string()
     .describe(
-      'get the version from the blade cursor rules file. use grep -o "rules_version: [0-9.]*" .cursor/rules/frontend-blade-rules.mdc  to get the cursor version of cursor rule. If the file does not exist, send 0',
+      'get the version from the blade cursor rules file. use grep -o "rules_version: [0-9.]*" .cursor/rules/frontend-blade-rules.mdc  to get the cursor version of cursor rule. If the file does not exist, send 0 . use only grep and not other commands',
     ),
 };
 
