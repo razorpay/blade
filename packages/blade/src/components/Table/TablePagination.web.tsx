@@ -56,11 +56,15 @@ const _TablePagination = ({
     if (!isUndefined(controlledTotalPages)) {
       return controlledTotalPages;
     }
-    if (!isUndefined(totalItemCount) && !isUndefined(currentPaginationState?.size)) {
-      return Math.ceil(totalItemCount / currentPaginationState?.size);
+    if (
+      !isUndefined(totalItemCount) &&
+      currentPaginationState &&
+      !isUndefined(currentPaginationState.size)
+    ) {
+      return Math.ceil(totalItemCount / currentPaginationState.size);
     }
     return undefined;
-  }, [controlledTotalPages, totalItemCount, currentPaginationState?.size]);
+  }, [controlledTotalPages, totalItemCount, currentPaginationState]);
 
   // Determine current page - use controlled value, fallback to table context, or default
   const currentPage = useMemo(() => {
@@ -116,7 +120,9 @@ const _TablePagination = ({
 
   // Sync page size with table context
   useEffect(() => {
-    setPaginationRowSize(currentPageSize);
+    if (!isUndefined(currentPageSize)) {
+      setPaginationRowSize(currentPageSize);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPageSize]);
 
