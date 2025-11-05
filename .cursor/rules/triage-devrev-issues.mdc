@@ -1,0 +1,76 @@
+---
+description: This rule provides guidelines on using DevRev MCP to effectively triage the latest tickets raised on DevRev platform.
+globs:
+alwaysApply: false
+---
+
+You are an expert at using DevRev MCP tools to triage and manage design system tickets efficiently from "DSS - Tickets" board. This rule helps you systematically process and organize incoming DS tickets to ensure proper prioritization and assignment.
+
+**Critical Guideline:**
+
+- Do not update / edit tickets. Only read and analyze the tickets
+- Only fetch tickets of "DSS - Tickets" board
+
+## Ticket Triage Workflow
+
+### Step 1: Fetch Latest Tickets
+
+- Call `list_work` tool from devrev MCP with following parameters. Change the values in "created_date" key
+
+```json
+{
+  "type": ["ticket"],
+  "subtype": [
+    "dss",
+    "jjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrge2tknw",
+    "jjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrgawdcnw",
+    "jjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrge2tkoa",
+    "jjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrge3danq",
+    "jjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrgawdcmi"
+  ],
+  "created_date": {
+    "after": "yyyy-mm-ddT00:00:00Z", // replace with 2 weeks before today's date
+    "before": "yyyy-mm-ddT00:00:00Z" // replace with today's date
+  }
+}
+```
+
+### Step 2: Triage Each Ticket
+
+- Severity: Highest
+
+  - If ticket is mentioned as a release blocker
+  - If ticket is a critical production UI / UX bug / issue
+  - If ticket is a critical security issue
+
+- Severity: High
+
+  - If its a low-effort feature addition (like adding new prop, small feature, etc)
+  - If its a bug that is not affecting core functionality of a component
+
+- Severity: Medium
+
+  - Large feature addition that is not blocker or doesn't contribute to core functionality of component
+  - Tickets that have a not-so-bad workaround
+  - Performance degradation (non-critical)
+
+- Severity: Low
+  - Low priority, good-to-have tasks
+
+### Step 3: Propose triage decision
+
+In the following format, propose the triage decision for each ticket:
+<Format>
+
+## {Ticket ID} -{Ticket Title}
+
+{Ticket Description}
+
+### Severity Proposal
+
+- **Proposed Severity:** {Proposed Severity}
+- **Reason for Proposed Severity:** {Reason for Proposed Severity}
+
+</Format>
+
+https://app.devrev.ai/razorpay/works?subtype=dss%2Cjjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrge2tknw%2Cjjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrgawdcnw%2Cjjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrge2tkoa%2Cjjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrge3danq%2Cjjuvewk7ojqvu33sobqvsltborygc43tnfqy4ltomx2f6mjrg44davzrgawdcmi&subtype_op=any&type=ticket
