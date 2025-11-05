@@ -57,7 +57,7 @@ const _TablePagination = ({
       return controlledTotalPages;
     }
     if (!isUndefined(totalItemCount) && !isUndefined(currentPaginationState?.size)) {
-      return Math.ceil(totalItemCount / currentPaginationState.size);
+      return Math.ceil(totalItemCount / currentPaginationState?.size);
     }
     return undefined;
   }, [controlledTotalPages, totalItemCount, currentPaginationState?.size]);
@@ -68,7 +68,7 @@ const _TablePagination = ({
       return controlledCurrentPage;
     }
     if (!isUndefined(currentPaginationState?.page)) {
-      return currentPaginationState.page;
+      return currentPaginationState?.page;
     }
     return defaultCurrentPage ?? 0;
   }, [controlledCurrentPage, currentPaginationState?.page, defaultCurrentPage]);
@@ -79,7 +79,7 @@ const _TablePagination = ({
       return controlledCurrentPageSize;
     }
     if (!isUndefined(currentPaginationState?.size)) {
-      return currentPaginationState.size;
+      return currentPaginationState?.size;
     }
     return defaultPageSize;
   }, [controlledCurrentPageSize, currentPaginationState?.size, defaultPageSize]);
