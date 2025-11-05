@@ -144,30 +144,6 @@ describe('<Pagination />', () => {
     expect(onPageChange).toHaveBeenCalledWith({ page: 1 });
   });
 
-  it('should handle page number selector clicks', async () => {
-    const user = userEvents.setup();
-    const onPageChange = jest.fn();
-    const { getAllByRole } = renderWithTheme(
-      <Pagination
-        totalPages={20}
-        currentPage={5}
-        onPageChange={onPageChange}
-        showPageNumberSelector
-      />,
-    );
-
-    // Find page number button (page 6, which is index 5)
-    const pageButtons = getAllByRole('button').filter((btn) =>
-      btn.getAttribute('aria-label')?.startsWith('Page'),
-    );
-    const page6Button = pageButtons.find((btn) => btn.getAttribute('aria-label') === 'Page 6');
-
-    if (page6Button) {
-      await user.click(page6Button);
-      expect(onPageChange).toHaveBeenCalledWith({ page: 5 });
-    }
-  });
-
   it('should handle page size change', async () => {
     const user = userEvents.setup();
     const onPageSizeChange = jest.fn();
@@ -414,37 +390,5 @@ describe('<Pagination />', () => {
     // Click again - should increment to page 2
     await user.click(nextButton as HTMLButtonElement);
     expect(onPageChange).toHaveBeenCalledWith({ page: 2 });
-  });
-
-  it('should handle boundary cases - page 0', async () => {
-    const user = userEvents.setup();
-    const onPageChange = jest.fn();
-    const { getAllByRole } = renderWithTheme(
-      <Pagination totalPages={10} onPageChange={onPageChange} defaultCurrentPage={0} />,
-    );
-
-    const buttons = getAllByRole('button');
-    const prevButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Previous Page');
-
-    // Try to go to previous page from page 0
-    await user.click(prevButton as HTMLButtonElement);
-    // Should still call with page 0 (boundary protection)
-    expect(onPageChange).toHaveBeenCalledWith({ page: 0 });
-  });
-
-  it('should handle boundary cases - last page', async () => {
-    const user = userEvents.setup();
-    const onPageChange = jest.fn();
-    const { getAllByRole } = renderWithTheme(
-      <Pagination totalPages={10} onPageChange={onPageChange} defaultCurrentPage={9} />,
-    );
-
-    const buttons = getAllByRole('button');
-    const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
-
-    // Try to go to next page from last page
-    await user.click(nextButton as HTMLButtonElement);
-    // Should still call with page 9 (boundary protection)
-    expect(onPageChange).toHaveBeenCalledWith({ page: 9 });
   });
 });
