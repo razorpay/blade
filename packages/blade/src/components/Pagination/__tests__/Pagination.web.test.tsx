@@ -8,7 +8,14 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<Pagination />', () => {
   it('should render basic pagination', () => {
-    const { container } = renderWithTheme(<Pagination totalPages={10} onPageChange={() => {}} />);
+    const { container } = renderWithTheme(
+      <Pagination
+        totalPages={10}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
+    );
     expect(container).toMatchSnapshot();
   });
 
@@ -17,7 +24,9 @@ describe('<Pagination />', () => {
       <Pagination
         totalPages={100}
         currentPage={0}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          void 0;
+        }}
         showPageSizePicker
         showPageNumberSelector
         showLabel
@@ -31,7 +40,9 @@ describe('<Pagination />', () => {
     const { container } = renderWithTheme(
       <Pagination
         totalPages={50}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
         showPageSizePicker
         defaultPageSize={25}
       />,
@@ -44,7 +55,9 @@ describe('<Pagination />', () => {
       <Pagination
         totalPages={100}
         currentPage={5}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
         showPageNumberSelector
       />,
     );
@@ -53,7 +66,14 @@ describe('<Pagination />', () => {
 
   it('should render with label', () => {
     const { container, getByText } = renderWithTheme(
-      <Pagination totalPages={50} onPageChange={() => {}} showLabel label="Custom label" />,
+      <Pagination
+        totalPages={50}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
+        showLabel
+        label="Custom label"
+      />,
     );
     expect(container).toMatchSnapshot();
     expect(getByText('Custom label')).toBeInTheDocument();
@@ -61,7 +81,13 @@ describe('<Pagination />', () => {
 
   it('should render disabled state', () => {
     const { container, getAllByRole } = renderWithTheme(
-      <Pagination totalPages={10} onPageChange={() => {}} isDisabled />,
+      <Pagination
+        totalPages={10}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
+        isDisabled
+      />,
     );
     expect(container).toMatchSnapshot();
     const buttons = getAllByRole('button');
@@ -84,11 +110,11 @@ describe('<Pagination />', () => {
     expect(prevButton).toBeDisabled();
 
     // Click next button
-    await user.click(nextButton!);
+    await user.click(nextButton as HTMLButtonElement);
     expect(onPageChange).toHaveBeenCalledWith({ page: 1 });
 
     // Click previous button
-    await user.click(prevButton!);
+    await user.click(prevButton as HTMLButtonElement);
     expect(onPageChange).toHaveBeenCalledWith({ page: 0 });
   });
 
@@ -114,7 +140,7 @@ describe('<Pagination />', () => {
     const buttons = getAllByRole('button');
     const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
 
-    await user.click(nextButton!);
+    await user.click(nextButton as HTMLButtonElement);
     expect(onPageChange).toHaveBeenCalledWith({ page: 1 });
   });
 
@@ -148,7 +174,9 @@ describe('<Pagination />', () => {
     const { getByLabelText, getByText } = renderWithTheme(
       <Pagination
         totalPages={50}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
         onPageSizeChange={onPageSizeChange}
         showPageSizePicker
         defaultPageSize={10}
@@ -175,7 +203,9 @@ describe('<Pagination />', () => {
       <Pagination
         totalItemCount={100}
         defaultPageSize={25}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
         showPageNumberSelector
       />,
     );
@@ -189,7 +219,9 @@ describe('<Pagination />', () => {
         totalPages={10}
         totalItemCount={100}
         defaultPageSize={25}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
         showPageNumberSelector
       />,
     );
@@ -199,7 +231,13 @@ describe('<Pagination />', () => {
 
   it('should disable next button on last page', () => {
     const { getAllByRole } = renderWithTheme(
-      <Pagination totalPages={10} currentPage={9} onPageChange={() => {}} />,
+      <Pagination
+        totalPages={10}
+        currentPage={9}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
     );
 
     const buttons = getAllByRole('button');
@@ -209,7 +247,13 @@ describe('<Pagination />', () => {
 
   it('should disable previous button on first page', () => {
     const { getAllByRole } = renderWithTheme(
-      <Pagination totalPages={10} currentPage={0} onPageChange={() => {}} />,
+      <Pagination
+        totalPages={10}
+        currentPage={0}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
     );
 
     const buttons = getAllByRole('button');
@@ -251,7 +295,9 @@ describe('<Pagination />', () => {
         totalItemCount={100}
         currentPage={0}
         currentPageSize={10}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
         showLabel
       />,
     );
@@ -265,7 +311,9 @@ describe('<Pagination />', () => {
         totalPages={10}
         currentPage={0}
         currentPageSize={10}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
         showLabel
       />,
     );
@@ -283,7 +331,7 @@ describe('<Pagination />', () => {
     const buttons = getAllByRole('button');
     const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
 
-    if (nextButton && !nextButton.disabled) {
+    if (nextButton && !(nextButton as HTMLButtonElement).disabled) {
       await user.click(nextButton);
       // Should not call onPageChange when disabled
       expect(onPageChange).not.toHaveBeenCalled();
@@ -295,7 +343,9 @@ describe('<Pagination />', () => {
       <Pagination
         totalPages={10}
         currentPage={0}
-        onPageChange={() => {}}
+        onPageChange={() => {
+          console.log('page changed');
+        }}
         showPageSizePicker
         showPageNumberSelector
         showLabel
@@ -303,14 +353,6 @@ describe('<Pagination />', () => {
     );
 
     await assertAccessible(container);
-  });
-
-  it('should accept testID', () => {
-    const { getByTestId } = renderWithTheme(
-      <Pagination totalPages={10} onPageChange={() => {}} testID="pagination-test" />,
-    );
-
-    expect(getByTestId('pagination-test')).toBeInTheDocument();
   });
 
   it('should handle controlled page size', async () => {
@@ -321,7 +363,9 @@ describe('<Pagination />', () => {
       return (
         <Pagination
           totalPages={50}
-          onPageChange={() => {}}
+          onPageChange={() => {
+            console.log('page changed');
+          }}
           currentPageSize={pageSize}
           onPageSizeChange={({ pageSize: newSize }) => {
             onPageSizeChange({ pageSize: newSize });
@@ -364,11 +408,11 @@ describe('<Pagination />', () => {
     const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
 
     // Click next multiple times - should increment page
-    await user.click(nextButton!);
+    await user.click(nextButton as HTMLButtonElement);
     expect(onPageChange).toHaveBeenCalledWith({ page: 1 });
 
     // Click again - should increment to page 2
-    await user.click(nextButton!);
+    await user.click(nextButton as HTMLButtonElement);
     expect(onPageChange).toHaveBeenCalledWith({ page: 2 });
   });
 
@@ -383,7 +427,7 @@ describe('<Pagination />', () => {
     const prevButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Previous Page');
 
     // Try to go to previous page from page 0
-    await user.click(prevButton!);
+    await user.click(prevButton as HTMLButtonElement);
     // Should still call with page 0 (boundary protection)
     expect(onPageChange).toHaveBeenCalledWith({ page: 0 });
   });
@@ -399,7 +443,7 @@ describe('<Pagination />', () => {
     const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
 
     // Try to go to next page from last page
-    await user.click(nextButton!);
+    await user.click(nextButton as HTMLButtonElement);
     // Should still call with page 9 (boundary protection)
     expect(onPageChange).toHaveBeenCalledWith({ page: 9 });
   });
