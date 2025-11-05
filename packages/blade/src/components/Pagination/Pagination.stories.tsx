@@ -1,8 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { Title, Description } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
-import { Highlight } from '@storybook/design-system';
 import type { PaginationProps } from './types';
 import { Pagination as PaginationComponent } from './Pagination';
 import { Box } from '~components/Box';
@@ -41,46 +40,6 @@ const Page = (): ReactElement => {
         export default App;
       `}
       </Sandbox>
-      <Title>Controlled vs Uncontrolled</Title>
-      <Description markdown="Pagination supports both controlled and uncontrolled modes for both page and page size." />
-      <Highlight language="tsx">
-        {`// Controlled: Both page and page size are controlled
-<Pagination
-  totalPages={100}
-  currentPage={page}
-  currentPageSize={pageSize}
-  onPageChange={({ page }) => setPage(page)}
-  onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
-/>
-
-// Uncontrolled: Component manages its own state
-<Pagination
-  totalPages={100}
-  defaultCurrentPage={0}
-  defaultPageSize={10}
-  onPageChange={({ page }) => console.log('Page changed:', page)}
-/>
-
-// Mixed: Page is controlled, page size is uncontrolled
-<Pagination
-  totalPages={100}
-  currentPage={page}
-  onPageChange={({ page }) => setPage(page)}
-  defaultPageSize={10}
-  showPageSizePicker
-/>`}
-      </Highlight>
-      <Title>Using totalItemCount</Title>
-      <Description markdown="When `totalItemCount` is provided, `totalPages` will be automatically calculated. If both are provided, `totalPages` takes precedence." />
-      <Highlight language="tsx">
-        {`<Pagination
-  totalItemCount={1000}
-  currentPage={0}
-  defaultPageSize={10}
-  // totalPages will be calculated as Math.ceil(1000 / 10) = 100
-  onPageChange={({ page }) => setCurrentPage(page)}
-/>`}
-      </Highlight>
     </StoryPageWrapper>
   );
 };

@@ -93,4 +93,3 @@ export type PaginationCommonProps = {
 } & DataAnalyticsAttribute;
 
 export type PaginationProps = PaginationCommonProps;
-

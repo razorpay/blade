@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { pagination } from './tokens';
 import type { PaginationProps } from './types';
@@ -24,6 +24,7 @@ import { useTheme } from '~components/BladeProvider';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useControllableState } from '~utils/useControllable';
 
 const pageSizeOptions: NonNullable<PaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
@@ -58,6 +59,8 @@ const PageSelectionButton = styled.button.attrs(() => {
       ? getIn(theme.colors, pagination.pageSelectionButton.backgroundColorSelectedActive)
       : getIn(theme.colors, pagination.pageSelectionButton.backgroundColorActive),
     ...getFocusRingStyles({ theme }),
+    outline: 'none',
+    '&:focus-visible': getFocusRingStyles({ theme }),
   },
   '&:active': {
     backgroundColor: isDisabled
@@ -163,24 +166,30 @@ const _Pagination = ({
   isDisabled = false,
   ...rest
 }: PaginationProps): React.ReactElement => {
-  // Internal state for uncontrolled mode
-  const [internalPageSize, setInternalPageSize] = useState<number>(defaultPageSize);
-  const [internalPage, setInternalPage] = useState<number>(defaultCurrentPage);
-
-  // Determine if we're in controlled or uncontrolled mode
-  const isPageControlled = !isUndefined(controlledCurrentPage);
-  const isPageSizeControlled = !isUndefined(controlledCurrentPageSize);
-
-  // Use controlled values if provided, otherwise use internal state
-  const currentPage = isPageControlled ? controlledCurrentPage : internalPage;
-  const currentPageSize = isPageSizeControlled ? controlledCurrentPageSize : internalPageSize;
-
+  const [internalPageSize, setInternalPageSize] = useControllableState<number>({
+    defaultValue: defaultPageSize,
+    value: controlledCurrentPageSize,
+    onChange: (pageSize) => {
+      onPageSizeChange?.({ pageSize });
+    },
+  });
+  const [internalPage, setInternalPage] = useControllableState<number>({
+    defaultValue: defaultCurrentPage,
+    value: controlledCurrentPage,
+    onChange: (page) => {
+      onPageChange?.({ page });
+    },
+  });
   // Calculate totalPages
-  const totalPages = !isUndefined(controlledTotalPages)
-    ? controlledTotalPages
-    : !isUndefined(totalItemCount)
-    ? Math.ceil(totalItemCount / currentPageSize)
-    : 1;
+  const totalPages = useMemo(() => {
+    if (!isUndefined(controlledTotalPages)) {
+      return controlledTotalPages;
+    }
+    if (!isUndefined(totalItemCount)) {
+      return Math.ceil(totalItemCount / internalPageSize);
+    }
+    return 1;
+  }, [controlledTotalPages, totalItemCount, internalPageSize]);
 
   const [currentEllipseHover, setCurrentEllipseHover] = useState<'start' | 'end' | undefined>(
     undefined,
@@ -190,11 +199,13 @@ const _Pagination = ({
   const defaultLabel = label
     ? label
     : totalItemCount
-    ? `Showing ${currentPage * currentPageSize + 1}-${Math.min(
-        (currentPage + 1) * currentPageSize,
+    ? `Showing ${internalPage * internalPageSize + 1}-${Math.min(
+        (internalPage + 1) * internalPageSize,
         totalItemCount,
       )} of ${totalItemCount} items`
-    : `Showing ${currentPage * currentPageSize + 1}-${(currentPage + 1) * currentPageSize} items`;
+    : `Showing ${internalPage * internalPageSize + 1}-${
+        (internalPage + 1) * internalPageSize
+      } items`;
 
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
@@ -210,56 +221,29 @@ const _Pagination = ({
         pageToJumpTo = totalPages - 1;
       }
 
-      // Call the callback
-      onPageChange?.({ page: pageToJumpTo });
-
-      // Update internal state if uncontrolled
-      if (!isPageControlled) {
-        setInternalPage(pageToJumpTo);
-      }
+      setInternalPage(() => pageToJumpTo);
     },
-    [isDisabled, isPageControlled, onPageChange, totalPages],
+    [isDisabled, setInternalPage, totalPages],
   );
-
-  // Sync controlled page changes
-  useEffect(() => {
-    if (isPageControlled && !isUndefined(controlledCurrentPage)) {
-      const pageToSync = Math.max(0, Math.min(controlledCurrentPage, totalPages - 1));
-      if (pageToSync !== internalPage) {
-        setInternalPage(pageToSync);
-      }
-    }
-  }, [controlledCurrentPage, isPageControlled, totalPages, internalPage]);
 
   const handlePageSizeChange = useCallback(
     (pageSize: number): void => {
       if (isDisabled) return;
-
-      // Call the callback
-      onPageSizeChange?.({ pageSize });
-
-      // Update internal state if uncontrolled
-      if (!isPageSizeControlled) {
-        setInternalPageSize(pageSize);
-        // Reset to first page when page size changes
-        if (!isPageControlled) {
-          setInternalPage(0);
-        }
-      }
+      setInternalPageSize(() => pageSize);
     },
-    [isDisabled, isPageSizeControlled, onPageSizeChange, isPageControlled],
+    [isDisabled, setInternalPageSize],
   );
 
   const shouldDisableNextPage = (): boolean => {
-    return currentPage >= totalPages - 1 || isDisabled;
+    return internalPage >= totalPages - 1 || isDisabled;
   };
 
   const shouldDisablePreviousPage = (): boolean => {
-    return currentPage <= 0 || isDisabled;
+    return internalPage <= 0 || isDisabled;
   };
 
   const paginationButtons = getPaginationButtons({
-    currentSelection: currentPage + 1,
+    currentSelection: internalPage + 1,
     totalPages,
   });
 
@@ -297,9 +281,7 @@ const _Pagination = ({
                 onChange={({ values }) => {
                   handlePageSizeChange(Number(values[0]));
                 }}
-                {...(isPageSizeControlled
-                  ? { value: currentPageSize.toString() }
-                  : { defaultValue: currentPageSize.toString() })}
+                value={internalPageSize.toString()}
                 isDisabled={isDisabled}
               />
               <DropdownOverlay>
@@ -311,7 +293,7 @@ const _Pagination = ({
               </DropdownOverlay>
             </Dropdown>
             <BaseBox aria-hidden paddingLeft="spacing.3" paddingRight="spacing.3">
-              <Text>items / page</Text>
+              <Text> items / page </Text>
             </BaseBox>
           </BaseBox>
         )}
@@ -327,27 +309,27 @@ const _Pagination = ({
             accessibilityLabel="Previous Page"
             variant="tertiary"
             onClick={() => {
-              handlePageChange(currentPage - 1);
+              handlePageChange(internalPage - 1);
             }}
             isDisabled={shouldDisablePreviousPage()}
           />
           {onMobile && (
             <BaseBox flex={1} alignItems="center" justifyContent="center">
-              <Text textAlign="center">{`Showing ${currentPage + 1} of ${totalPages} pages`}</Text>
+              <Text textAlign="center">{`Showing ${internalPage + 1} of ${totalPages} pages`}</Text>
             </BaseBox>
           )}
           {totalPages > 1 && showPageNumberSelector && !onMobile && (
             <BaseBox gap="spacing.1" display="flex" flexDirection="row">
               <PageSelectionButton
                 onClick={() => handlePageChange(paginationButtons.firstItem - 1)}
-                isSelected={currentPage === paginationButtons.firstItem - 1}
+                isSelected={internalPage === paginationButtons.firstItem - 1}
                 isDisabled={isDisabled}
                 {...makeAccessible({ label: `Page ${paginationButtons.firstItem}` })}
               >
                 <Text
                   size="medium"
                   color={
-                    currentPage === paginationButtons.firstItem - 1
+                    internalPage === paginationButtons.firstItem - 1
                       ? pagination.pageSelectionButton.textColorSelected
                       : pagination.pageSelectionButton.textColor
                   }
@@ -357,7 +339,7 @@ const _Pagination = ({
               </PageSelectionButton>
               {paginationButtons.showStartEllipsis && (
                 <PageSelectionButton
-                  onClick={() => handlePageChange(currentPage - 5)}
+                  onClick={() => handlePageChange(internalPage - 5)}
                   onMouseOver={() => setCurrentEllipseHover('start')}
                   onMouseLeave={() => setCurrentEllipseHover(undefined)}
                   onFocus={() => setCurrentEllipseHover('start')}
@@ -376,14 +358,14 @@ const _Pagination = ({
                 <PageSelectionButton
                   key={item - 1}
                   onClick={() => handlePageChange(item - 1)}
-                  isSelected={currentPage === item - 1}
+                  isSelected={internalPage === item - 1}
                   isDisabled={isDisabled}
                   {...makeAccessible({ label: `Page ${item}` })}
                 >
                   <Text
                     size="medium"
                     color={
-                      currentPage === item - 1
+                      internalPage === item - 1
                         ? pagination.pageSelectionButton.textColorSelected
                         : pagination.pageSelectionButton.textColor
                     }
@@ -394,7 +376,7 @@ const _Pagination = ({
               ))}
               {paginationButtons.showEndEllipsis && (
                 <PageSelectionButton
-                  onClick={() => handlePageChange(currentPage + 5)}
+                  onClick={() => handlePageChange(internalPage + 5)}
                   onMouseOver={() => setCurrentEllipseHover('end')}
                   onMouseLeave={() => setCurrentEllipseHover(undefined)}
                   onFocus={() => setCurrentEllipseHover('end')}
@@ -411,14 +393,14 @@ const _Pagination = ({
               )}
               <PageSelectionButton
                 onClick={() => handlePageChange(paginationButtons.lastItem - 1)}
-                isSelected={currentPage === paginationButtons.lastItem - 1}
+                isSelected={internalPage === paginationButtons.lastItem - 1}
                 isDisabled={isDisabled}
                 {...makeAccessible({ label: `Page ${paginationButtons.lastItem}` })}
               >
                 <Text
                   size="medium"
                   color={
-                    currentPage === paginationButtons.lastItem - 1
+                    internalPage === paginationButtons.lastItem - 1
                       ? pagination.pageSelectionButton.textColorSelected
                       : pagination.pageSelectionButton.textColor
                   }
@@ -433,7 +415,7 @@ const _Pagination = ({
             icon={ChevronRightIcon}
             accessibilityLabel="Next Page"
             onClick={() => {
-              handlePageChange(currentPage + 1);
+              handlePageChange(internalPage + 1);
             }}
             isDisabled={shouldDisableNextPage()}
           />
