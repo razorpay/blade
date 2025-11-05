@@ -122,9 +122,18 @@ export default {
 } as Meta<PaginationProps>;
 
 const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
+
   return (
     <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-      <PaginationComponent {...args} />
+      <PaginationComponent
+        {...args}
+        currentPage={currentPage}
+        currentPageSize={pageSize}
+        onPageChange={({ page }) => setCurrentPage(page)}
+        onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
+      />
     </Box>
   );
 };
@@ -132,54 +141,11 @@ const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) =>
 export const Default = PaginationTemplate.bind({});
 Default.args = {
   totalPages: 10,
-};
-
-export const WithPageNumberSelector = PaginationTemplate.bind({});
-WithPageNumberSelector.args = {
-  totalPages: 100,
-  showPageNumberSelector: true,
-  currentPage: 5,
-};
-WithPageNumberSelector.storyName = 'With Page Number Selector';
-
-export const WithPageSizePicker = PaginationTemplate.bind({});
-WithPageSizePicker.args = {
-  totalPages: 50,
-  showPageSizePicker: true,
-  defaultPageSize: 25,
-};
-WithPageSizePicker.storyName = 'With Page Size Picker';
-
-export const WithLabel = PaginationTemplate.bind({});
-WithLabel.args = {
-  totalPages: 100,
-  showLabel: true,
-  label: 'Showing 1-10 of 100 items',
   currentPage: 0,
-  currentPageSize: 10,
-};
-WithLabel.storyName = 'With Label';
-
-export const WithAllFeatures = PaginationTemplate.bind({});
-WithAllFeatures.args = {
-  totalPages: 1000,
-  currentPage: 5,
-  showPageSizePicker: true,
   showPageNumberSelector: true,
+  showPageSizePicker: true,
   showLabel: true,
-  defaultPageSize: 25,
 };
-WithAllFeatures.storyName = 'With All Features';
-
-export const Controlled = PaginationTemplate.bind({});
-Controlled.args = {
-  totalPages: 50,
-  currentPage: 2,
-  currentPageSize: 25,
-  showPageSizePicker: true,
-  showPageNumberSelector: true,
-};
-Controlled.storyName = 'Controlled Mode';
 
 const ControlledExample = (): React.ReactElement => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -231,15 +197,6 @@ export const UncontrolledExampleStory: StoryFn<typeof PaginationComponent> = () 
 };
 UncontrolledExampleStory.storyName = 'Uncontrolled Example';
 
-export const WithTotalItemCount = PaginationTemplate.bind({});
-WithTotalItemCount.args = {
-  totalItemCount: 1000,
-  defaultPageSize: 10,
-  showPageNumberSelector: true,
-  showLabel: true,
-};
-WithTotalItemCount.storyName = 'With Total Item Count';
-
 export const Disabled = PaginationTemplate.bind({});
 Disabled.args = {
   totalPages: 10,
@@ -248,19 +205,3 @@ Disabled.args = {
   showPageNumberSelector: true,
 };
 Disabled.storyName = 'Disabled State';
-
-export const LargePageCount = PaginationTemplate.bind({});
-LargePageCount.args = {
-  totalPages: 1000,
-  currentPage: 500,
-  showPageNumberSelector: true,
-  showLabel: true,
-};
-LargePageCount.storyName = 'Large Page Count';
-
-export const SmallPageCount = PaginationTemplate.bind({});
-SmallPageCount.args = {
-  totalPages: 3,
-  showPageNumberSelector: true,
-};
-SmallPageCount.storyName = 'Small Page Count';
