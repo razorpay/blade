@@ -158,6 +158,7 @@ const _Pagination = ({
   onPageChange,
   defaultPageSize = pagination.defaultPageSize,
   currentPageSize: controlledCurrentPageSize,
+  pageSizeLabel = 'items / page',
   onPageSizeChange,
   showPageSizePicker = false,
   showPageNumberSelector = false,
@@ -293,7 +294,7 @@ const _Pagination = ({
               </DropdownOverlay>
             </Dropdown>
             <BaseBox aria-hidden paddingLeft="spacing.3" paddingRight="spacing.3">
-              <Text> items / page </Text>
+              <Text> {pageSizeLabel} </Text>
             </BaseBox>
           </BaseBox>
         )}

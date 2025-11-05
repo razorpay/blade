@@ -172,6 +172,7 @@ const _TablePagination = ({
         showPageNumberSelector={showPageNumberSelector}
         showLabel={showLabel}
         label={defaultLabel}
+        pageSizeLabel="rows / page"
         {...rest}
       />
     </BaseBox>

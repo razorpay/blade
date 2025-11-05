@@ -119,7 +119,13 @@ type PaginationCommonProps = {
 
 } & DataAnalyticsAttribute;
 
-type PaginationProps = PaginationCommonProps;
+type PaginationProps = PaginationCommonProps & {
+  /**
+   * The label to be shown in the page size picker.
+   * @default 'items / page'
+   */
+  pageSizeLabel?: string;
+}
 ```
 
 #### Controlled vs Uncontrolled Behavior

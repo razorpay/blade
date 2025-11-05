@@ -92,4 +92,10 @@ export type PaginationCommonProps = {
   isDisabled?: boolean;
 } & DataAnalyticsAttribute;
 
-export type PaginationProps = PaginationCommonProps;
+export type PaginationProps = PaginationCommonProps & {
+  /**
+   * The label to be shown in the page size picker.
+   * @default 'items / page'
+   */
+  pageSizeLabel?: string;
+};
