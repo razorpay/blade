@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { join, basename } from 'path';
+import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
@@ -90,7 +90,7 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
       properties: {
         toolName: getBladePatternDocsToolName,
         patternsList,
-        rootDirectoryName: basename(currentProjectRootDirectory),
+        rootDirectoryName: currentProjectRootDirectory,
         clientName,
       },
     });

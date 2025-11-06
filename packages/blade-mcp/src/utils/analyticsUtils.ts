@@ -121,8 +121,7 @@ const sendAnalytics = ({
   try {
     const analytics = new Analytics({ writeKey: process.env.BLADE_SEGMENT_KEY ?? '' });
     // Get or create machine ID
-    const projectRootDirectory = (properties as { currentProjectRootDirectory: string })
-      ?.currentProjectRootDirectory;
+    const projectRootDirectory = (properties as { rootDirectoryName: string })?.rootDirectoryName;
     const oldUserId = getUniqueIdentifier();
     const userId = getUserName({
       currentProjectRootDirectory: projectRootDirectory,
@@ -143,6 +142,12 @@ const sendAnalytics = ({
       previousId: oldUserId,
     });
   } catch (error: unknown) {
+    // Use console.error (stderr) to avoid interfering with MCP protocol (stdout)
+    console.error('[Analytics Error]', {
+      eventName,
+      error: error instanceof Error ? error.message : String(error),
+      properties: JSON.stringify(properties),
+    });
     Sentry.captureException(error);
   }
 };

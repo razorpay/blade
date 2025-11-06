@@ -1,4 +1,3 @@
-import { basename } from 'path';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import dedent from 'dedent';
 import { z } from 'zod';
@@ -106,7 +105,7 @@ const getChangelogToolCallback: ToolCallback<typeof getChangelogToolSchema> = as
         toolName: getChangelogToolName,
         fromVersion,
         toVersion,
-        rootDirectoryName: basename(currentProjectRootDirectory),
+        rootDirectoryName: currentProjectRootDirectory,
       },
     });
 

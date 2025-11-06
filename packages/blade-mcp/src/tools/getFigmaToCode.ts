@@ -1,4 +1,3 @@
-import { basename } from 'path';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import dedent from 'dedent';
 import { z } from 'zod';
@@ -74,7 +73,7 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
         toolName: getFigmaToCodeToolName,
         code,
         componentsUsed: componentsUsedString,
-        rootDirectoryName: basename(currentProjectRootDirectory),
+        rootDirectoryName: currentProjectRootDirectory,
       },
     });
 

@@ -1,4 +1,3 @@
-import { basename } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { analyticsToolCallEventName, CURSOR_RULES_VERSION } from '../utils/tokens.js';
@@ -75,7 +74,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
       properties: {
         toolName: getBladeComponentDocsToolName,
         componentsList,
-        rootDirectoryName: basename(currentProjectRootDirectory),
+        rootDirectoryName: currentProjectRootDirectory,
         clientName,
       },
     });

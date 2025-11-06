@@ -1,4 +1,3 @@
-import { basename } from 'path';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { analyticsToolCallEventName, CURSOR_RULES_VERSION } from '../utils/tokens.js';
@@ -37,7 +36,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
       properties: {
         toolName: createBladeCursorRulesToolName,
         cursorRulesVersion: CURSOR_RULES_VERSION,
-        rootDirectoryName: basename(currentProjectRootDirectory),
+        rootDirectoryName: currentProjectRootDirectory,
       },
     });
 
