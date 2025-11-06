@@ -98,7 +98,7 @@ const tableToolbar = {
   backgroundColorSelected: 'interactive.background.primary.faded',
   backgroundColorMotionEasing: 'easing.standard',
   backgroundColorMotionDuration: 'duration.xquick',
-  minHeight: size[36],
+  minHeight: size[37], // 37px to accommodate 1px border, matching TableHeader height
   padding: ['spacing.3', 'spacing.4'],
 } as const;
 

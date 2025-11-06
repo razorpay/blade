@@ -61,6 +61,7 @@ const _TableToolbar = ({
     currentPaginationState,
     totalItems,
     backgroundColor,
+    tableToolbarOverlay,
   } = useTableContext();
   const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
@@ -85,7 +86,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor={backgroundColor}>
+    <BaseBox display={tableToolbarOverlay ? undefined : 'none'} backgroundColor={backgroundColor}>
       <ToolbarWrapper
         display="flex"
         backgroundColor={tableToolbar.backgroundColor}

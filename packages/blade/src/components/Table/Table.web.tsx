@@ -506,6 +506,7 @@ const _Table = <Item,>({
       isVirtualized,
       tableData: data.nodes,
       isGrouped,
+      tableToolbarOverlay: toolbar?.props?.overlay ?? false,
     }),
     [
       selectionType,

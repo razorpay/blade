@@ -519,6 +519,12 @@ type TableToolbarProps = {
    * @default `${selectedRows.length} 'Items'} Selected`
    */
   selectedTitle?: string;
+  /**
+   * Controls whether the TableToolbar is rendered as an overlay on top of the TableHeader.
+   * When set to `true`, the toolbar appears over the TableHeader; otherwise, it renders in its default position above the TableHeader.
+   * Defaults to `false`.
+   */
+  overlay?: boolean;
 } & DataAnalyticsAttribute;
 
 type TableToolbarActionsProps = {

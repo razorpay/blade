@@ -46,6 +46,7 @@ export type TableContextType<Item> = {
   isVirtualized?: boolean;
   tableData: LocalTableNode<Item>[];
   isGrouped: boolean;
+  tableToolbarOverlay: boolean;
 };
 
 const TableContext = React.createContext<TableContextType<unknown>>({
@@ -77,6 +78,7 @@ const TableContext = React.createContext<TableContextType<unknown>>({
   isVirtualized: false,
   tableData: [],
   isGrouped: false,
+  tableToolbarOverlay: false,
 });
 
 const useTableContext = <Item,>(): TableContextType<Item> => {

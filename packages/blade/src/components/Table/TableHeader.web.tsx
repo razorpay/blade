@@ -71,17 +71,23 @@ const SortIcon = ({
   );
 };
 
-const StyledHeader = styled(Header)({
-  '&&&': {
-    '& tr:first-child th': {
-      borderTop: 'none',
+const StyledHeader = styled(Header)<{ $tableToolbarOverlay: boolean }>(
+  ({ $tableToolbarOverlay }) => ({
+    '&&&': {
+      '& tr:first-child th': {
+        borderTop: 'none',
+      },
+      display: $tableToolbarOverlay ? 'none' : undefined,
     },
-  },
-});
+  }),
+);
 
 const _TableHeader = ({ children, ...rest }: TableHeaderRowProps): React.ReactElement => {
+  const { tableToolbarOverlay } = useTableContext();
+
   return (
     <StyledHeader
+      $tableToolbarOverlay={tableToolbarOverlay}
       {...metaAttribute({ name: MetaConstants.TableHeader })}
       {...makeAnalyticsAttribute(rest)}
     >
