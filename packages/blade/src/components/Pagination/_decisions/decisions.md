@@ -148,6 +148,8 @@ type PaginationProps = PaginationCommonProps & {
   totalPages={100}
   currentPage={page}
   currentPageSize={pageSize}
+  showPageSizePicker
+  showPageNumberSelector
   onPageChange={({ page }) => setPage(page)}
   onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
 />
@@ -158,6 +160,8 @@ type PaginationProps = PaginationCommonProps & {
   defaultCurrentPage={0}
   defaultPageSize={10}
   onPageChange={({ page }) => console.log('Page changed:', page)}
+  showPageSizePicker
+  showPageNumberSelector
 />
 
 // Mixed: Page is controlled, page size is uncontrolled
@@ -166,6 +170,8 @@ type PaginationProps = PaginationCommonProps & {
   currentPage={page}
   onPageChange={({ page }) => setPage(page)}
   defaultPageSize={10}
+  showPageSizePicker={true}
+  showPageNumberSelector={true}
 />
 ```
 
