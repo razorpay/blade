@@ -33,6 +33,7 @@ import { Pagination } from '@razorpay/blade/components';
 #### Pagination
 
 ```typescript
+// these props are same as props we have on TablePagination component
 type PaginationCommonProps = {
   /**
    * Total pages in the pagination.
@@ -167,72 +168,6 @@ type PaginationProps = PaginationCommonProps & {
 />
 ```
 
-### TablePagination Component (Wrapper Component)
-
-`TablePagination` is a wrapper component that uses `Pagination` internally. It adds table-specific integrations:
-- Automatic integration with Table context for `totalItemCount` calculation
-- `paginationType` prop to distinguish between client-side and server-side pagination
-- Table-specific label defaults
-
-All props from `Pagination` are passed through to the internal `Pagination` component. `TablePagination` adds table-specific behavior on top.
-
-#### Props
-
-```typescript
-type TablePaginationType = 'client' | 'server';
-
-type TablePaginationServerProps = PaginationCommonProps & {
-  /**
-   * Whether the pagination is happening on client or server.
-   * If the pagination is happening on `client`, the Table component will **divide the data into pages** and show the pages based on the page size.
-   * If the pagination is happening on `server`, the Table component will **not divide the data into pages and will show all the data**. You will have to fetch data for each page as the page changes and pass it to the Table component.
-   * When paginationType is `server`, the `onPageChange` & `totalItemCount` props are required.
-   * @default 'client'
-   */
-  paginationType?: Extract<TablePaginationType, 'server'>;
-
-  /**
-   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server and not all the data is fetched at once.
-   * Only used if totalPages is not provided.
-   * When used within Table context, this may be automatically derived from table data.
-   */
-  totalItemCount: number;
-
-  /**
-   * Callback function that is called when the page is changed.
-   * The page parameter is 0-indexed.
-   * Required when paginationType is 'server'.
-   */
-  onPageChange: ({ page }: { page: number }) => void;
-};
-
-type TablePaginationClientProps = PaginationCommonProps & {
-  /**
-   * Whether the pagination is happening on client or server.
-   * If the pagination is happening on `client`, the Table component will **divide the data into pages** and show the pages based on the page size.
-   * If the pagination is happening on `server`, the Table component will **not divide the data into pages and will show all the data**. You will have to fetch data for each page as the page changes and pass it to the Table component.
-   * When paginationType is `server`, the `onPageChange` & `totalItemCount` props are required.
-   * @default 'client'
-   */
-  paginationType?: Extract<TablePaginationType, 'client'>;
-
-  /**
-   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server and not all the data is fetched at once.
-   * Only used if totalPages is not provided.
-   * When used within Table context, this may be automatically derived from table data.
-   */
-  totalItemCount?: number;
-
-  /**
-   * Callback function that is called when the page is changed.
-   * The page parameter is 0-indexed.
-   */
-  onPageChange?: ({ page }: { page: number }) => void;
-};
-
-type TablePaginationProps = PaginationCommonProps &
-  (TablePaginationServerProps | TablePaginationClientProps);
-```
 
 #### Usage Notes
 
@@ -250,31 +185,6 @@ The `Pagination` component is a **fully-featured standalone component** that con
 - Page size selection (rows per page picker)
 - Labels showing current range
 - Controlled and uncontrolled behavior
-- All features are available in both components
-
-The `TablePagination` component is a **wrapper component** that:
-1. **Uses `Pagination` internally** - All props are passed through to `Pagination`
-2. **Adds table-specific integrations**:
-   - Automatic integration with Table context for `totalItemCount` calculation
-   - `paginationType` prop to distinguish client-side vs server-side pagination
-   - Table-specific label defaults
-
-### Implementation Strategy
-
-```
-┌─────────────────────────────────────┐
-│      TablePagination                │
-│  (Wrapper - adds table integrations)│
-│  ┌──────────────────────────────┐   │
-│  │   Pagination Component       │   │
-│  │   (all features included)   │   │
-│  │   - Page navigation          │   │
-│  │   - Page size picker         │   │
-│  │   - Labels                  │   │
-│  │   - Controlled/Uncontrolled │   │
-│  └──────────────────────────────┘   │
-└─────────────────────────────────────┘
-```
 
 **Key Points:**
 - `Pagination` has **all the same props** as `TablePagination` (minus table-specific ones like `paginationType`)
@@ -290,11 +200,6 @@ The `TablePagination` component is a **wrapper component** that:
 - You don't need table-specific integrations
 - You want to use pagination in any context (not just tables)
 
-**Use `TablePagination` when:**
-- You're working with a Table component
-- You want automatic integration with Table context
-- You need to distinguish between client-side and server-side pagination modes
-- You want table-specific default labels and behavior
 
 ## Examples
 
