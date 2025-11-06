@@ -9,6 +9,7 @@
 - **Deprecated Props:** `searchValue`, `searchValuePlaceholder`, `searchName`, `onSearchChange`, `onSearchClear`, `searchTrailing`, `showFilters`, `onShowFiltersChange`
 - **Introduced Prop:** `actions` (replaces the above search-related props)
 - **FilterChipGroup:** Added `padding` prop
+- **Bulk Action Toolbar:** Added `overlay` prop
 
 ### 🎨 List View Changes
 - **Table Cell**
@@ -39,7 +40,7 @@
   - New layout: Quick Filters on left; Search + Action Buttons (e.g., Download) on right
   - Added tooltips for action buttons
 - **Bulk Action Toolbar**
-  - Shown above table header when multiple items selected; hidden otherwise
+  - When multiple items are selected, the table toolbar overlays (replaces) the table header. Hidden when no selection.  
   - Same behavior on mobile
 - **Mobile**
   - Removed “Show Filter” button
