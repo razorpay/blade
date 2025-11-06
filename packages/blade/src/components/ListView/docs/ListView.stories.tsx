@@ -1577,24 +1577,26 @@ const WithBulkActionExample: StoryFn<typeof ListView> = (args) => {
             />
           }
           toolbar={
-            <TableToolbar overlay={selectedIds.length > 0} title={`${selectedIds.length} selected`}>
-              <TableToolbarActions>
-                <Box
-                  width="100%"
-                  justifyContent="end"
-                  display="flex"
-                  alignItems="center"
-                  gap="spacing.4"
-                >
-                  <Link size="small" icon={CopyIcon}>
-                    Copy
-                  </Link>
-                  <Link size="small" icon={TrashIcon}>
-                    Delete
-                  </Link>
-                </Box>
-              </TableToolbarActions>
-            </TableToolbar>
+            selectedIds.length > 0 ? (
+              <TableToolbar overlay title={`${selectedIds.length} selected`}>
+                <TableToolbarActions>
+                  <Box
+                    width="100%"
+                    justifyContent="end"
+                    display="flex"
+                    alignItems="center"
+                    gap="spacing.4"
+                  >
+                    <Link size="small" icon={CopyIcon}>
+                      Copy
+                    </Link>
+                    <Link size="small" icon={TrashIcon}>
+                      Delete
+                    </Link>
+                  </Box>
+                </TableToolbarActions>
+              </TableToolbar>
+            ) : undefined
           }
         >
           {(tableData) => (

@@ -86,13 +86,13 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox display={tableToolbarOverlay ? undefined : 'none'} backgroundColor={backgroundColor}>
+    <BaseBox backgroundColor={backgroundColor}>
       <ToolbarWrapper
         display="flex"
         backgroundColor={tableToolbar.backgroundColor}
         padding={tableToolbar.padding}
         flexWrap="wrap"
-        flexDirection={onMobile ? 'column' : 'row'}
+        flexDirection={onMobile && !tableToolbarOverlay ? 'column' : 'row'}
         gap="spacing.5"
         borderWidth="thin"
         borderColor="surface.border.gray.muted"
