@@ -1105,7 +1105,7 @@ exports[`<Table /> should render table 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   padding: 8px 12px;
-  min-height: 36px;
+  min-height: 37px;
   gap: 16px;
   background-color: hsla(211,20%,52%,0.06);
   border-width: 1px;
@@ -12125,7 +12125,7 @@ exports[`<Table /> should render table with multi select 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   padding: 8px 12px;
-  min-height: 36px;
+  min-height: 37px;
   gap: 16px;
   background-color: hsla(211,20%,52%,0.06);
   border-width: 1px;
@@ -14827,7 +14827,7 @@ exports[`<Table /> should render table with multi select 2`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   padding: 8px 12px;
-  min-height: 36px;
+  min-height: 37px;
   gap: 16px;
   background-color: hsla(211,20%,52%,0.06);
   border-width: 1px;
@@ -17551,7 +17551,7 @@ exports[`<Table /> should render table with multi select 3`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   padding: 8px 12px;
-  min-height: 36px;
+  min-height: 37px;
   gap: 16px;
   background-color: hsla(211,20%,52%,0.06);
   border-width: 1px;
