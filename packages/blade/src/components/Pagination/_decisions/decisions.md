@@ -2,6 +2,9 @@
 
 Pagination is a navigation component that allows users to navigate through multiple pages of content. It provides page number navigation, page size selection, and direct page jumping capabilities. This component is designed to be independent and reusable across different contexts, not just tables.
 
+<img src="./images/pagination.png" width="380" alt="pagination-thumbnail" />
+
+
 **Architecture**: The `Pagination` component is a fully-featured component with all pagination capabilities (page navigation, page size selection, labels, etc.). `TablePagination` is a wrapper component that uses `Pagination` internally and adds table-specific integrations (table context, paginationType for client/server modes).
 
 ## Design
@@ -33,6 +36,7 @@ import { Pagination } from '@razorpay/blade/components';
 #### Pagination
 
 ```typescript
+// these props are same as props we have on TablePagination component
 type PaginationCommonProps = {
   /**
    * Total pages in the pagination.
@@ -40,8 +44,6 @@ type PaginationCommonProps = {
    * When provided, takes precedence over totalItemCount calculation.
    */
   totalPages?: number;
-
-  /**
 
 
   /**
@@ -119,17 +121,23 @@ type PaginationCommonProps = {
 
 } & DataAnalyticsAttribute;
 
-type PaginationProps = PaginationCommonProps;
+type PaginationProps = PaginationCommonProps & {
+  /**
+   * The label to be shown in the page size picker.
+   * @default 'items / page'
+   */
+  pageSizeLabel?: string;
+}
 ```
 
 #### Controlled vs Uncontrolled Behavior
 
 **Page Control:**
-- **Controlled**: Pass `currentPage` prop. Component will not update page internally; you must handle page changes via `onPageChange`.
+- **Controlled**: Pass `currentPage` prop. Component will not update page internally, you must handle page changes via `onPageChange`.
 - **Uncontrolled**: Omit `currentPage` prop. Component manages page state internally. Use `defaultCurrentPage` to set initial page.
 
 **Page Size Control:**
-- **Controlled**: Pass `currentPageSize` prop. Component will not update page size internally; you must handle page size changes via `onPageSizeChange`.
+- **Controlled**: Pass `currentPageSize` prop. Component will not update page size internally, you must handle page size changes via `onPageSizeChange`.
 - **Uncontrolled**: Omit `currentPageSize` prop. Component manages page size internally using `defaultPageSize`.
 
 **Examples:**
@@ -161,72 +169,6 @@ type PaginationProps = PaginationCommonProps;
 />
 ```
 
-### TablePagination Component (Wrapper Component)
-
-`TablePagination` is a wrapper component that uses `Pagination` internally. It adds table-specific integrations:
-- Automatic integration with Table context for `totalItemCount` calculation
-- `paginationType` prop to distinguish between client-side and server-side pagination
-- Table-specific label defaults
-
-All props from `Pagination` are passed through to the internal `Pagination` component. `TablePagination` adds table-specific behavior on top.
-
-#### Props
-
-```typescript
-type TablePaginationType = 'client' | 'server';
-
-type TablePaginationServerProps = PaginationCommonProps & {
-  /**
-   * Whether the pagination is happening on client or server.
-   * If the pagination is happening on `client`, the Table component will **divide the data into pages** and show the pages based on the page size.
-   * If the pagination is happening on `server`, the Table component will **not divide the data into pages and will show all the data**. You will have to fetch data for each page as the page changes and pass it to the Table component.
-   * When paginationType is `server`, the `onPageChange` & `totalItemCount` props are required.
-   * @default 'client'
-   */
-  paginationType?: Extract<TablePaginationType, 'server'>;
-
-  /**
-   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server and not all the data is fetched at once.
-   * Only used if totalPages is not provided.
-   * When used within Table context, this may be automatically derived from table data.
-   */
-  totalItemCount: number;
-
-  /**
-   * Callback function that is called when the page is changed.
-   * The page parameter is 0-indexed.
-   * Required when paginationType is 'server'.
-   */
-  onPageChange: ({ page }: { page: number }) => void;
-};
-
-type TablePaginationClientProps = PaginationCommonProps & {
-  /**
-   * Whether the pagination is happening on client or server.
-   * If the pagination is happening on `client`, the Table component will **divide the data into pages** and show the pages based on the page size.
-   * If the pagination is happening on `server`, the Table component will **not divide the data into pages and will show all the data**. You will have to fetch data for each page as the page changes and pass it to the Table component.
-   * When paginationType is `server`, the `onPageChange` & `totalItemCount` props are required.
-   * @default 'client'
-   */
-  paginationType?: Extract<TablePaginationType, 'client'>;
-
-  /**
-   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server and not all the data is fetched at once.
-   * Only used if totalPages is not provided.
-   * When used within Table context, this may be automatically derived from table data.
-   */
-  totalItemCount?: number;
-
-  /**
-   * Callback function that is called when the page is changed.
-   * The page parameter is 0-indexed.
-   */
-  onPageChange?: ({ page }: { page: number }) => void;
-};
-
-type TablePaginationProps = PaginationCommonProps &
-  (TablePaginationServerProps | TablePaginationClientProps);
-```
 
 #### Usage Notes
 
@@ -244,31 +186,6 @@ The `Pagination` component is a **fully-featured standalone component** that con
 - Page size selection (rows per page picker)
 - Labels showing current range
 - Controlled and uncontrolled behavior
-- All features are available in both components
-
-The `TablePagination` component is a **wrapper component** that:
-1. **Uses `Pagination` internally** - All props are passed through to `Pagination`
-2. **Adds table-specific integrations**:
-   - Automatic integration with Table context for `totalItemCount` calculation
-   - `paginationType` prop to distinguish client-side vs server-side pagination
-   - Table-specific label defaults
-
-### Implementation Strategy
-
-```
-┌─────────────────────────────────────┐
-│      TablePagination                │
-│  (Wrapper - adds table integrations)│
-│  ┌──────────────────────────────┐   │
-│  │   Pagination Component       │   │
-│  │   (all features included)   │   │
-│  │   - Page navigation          │   │
-│  │   - Page size picker         │   │
-│  │   - Labels                  │   │
-│  │   - Controlled/Uncontrolled │   │
-│  └──────────────────────────────┘   │
-└─────────────────────────────────────┘
-```
 
 **Key Points:**
 - `Pagination` has **all the same props** as `TablePagination` (minus table-specific ones like `paginationType`)
@@ -284,11 +201,6 @@ The `TablePagination` component is a **wrapper component** that:
 - You don't need table-specific integrations
 - You want to use pagination in any context (not just tables)
 
-**Use `TablePagination` when:**
-- You're working with a Table component
-- You want automatic integration with Table context
-- You need to distinguish between client-side and server-side pagination modes
-- You want table-specific default labels and behavior
 
 ## Examples
 
@@ -378,112 +290,6 @@ Pagination in disabled state:
   currentPage={0}
   onPageChange={({ page }) => setCurrentPage(page)}
   isDisabled
-/>
-```
-
-### TablePagination Component Examples
-
-#### Basic Usage (Uncontrolled)
-
-Using TablePagination with table context, component manages its own state:
-
-```jsx
-<Table
-  data={tableData}
-  pagination={
-    <TablePagination
-      defaultPageSize={10}
-      showPageSizePicker
-      showPageNumberSelector
-    />
-  }
->
-  {/* Table content */}
-</Table>
-```
-
-#### Controlled Usage
-
-Fully controlled TablePagination:
-
-```jsx
-<TablePagination
-  totalPages={50}
-  currentPage={page}
-  currentPageSize={pageSize}
-  onPageChange={({ page }) => setPage(page)}
-  onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
-  showPageSizePicker
-  showPageNumberSelector
-/>
-```
-
-#### Client-Side Pagination (with totalItemCount)
-
-Using TablePagination with totalItemCount for automatic calculation:
-
-```jsx
-<TablePagination
-  paginationType="client"
-  totalItemCount={1000}
-  currentPage={0}
-  onPageChange={({ page }) => setCurrentPage(page)}
-  defaultPageSize={25}
-  showPageSizePicker
-  showPageNumberSelector
-  showLabel
-/>
-```
-
-#### Server-Side Pagination
-
-Using TablePagination for server-side pagination:
-
-```jsx
-<TablePagination
-  paginationType="server"
-  totalItemCount={5000}
-  totalPages={500} // Optional: can be calculated from totalItemCount
-  currentPage={0}
-  onPageChange={({ page }) => {
-    // Fetch data for the new page
-    fetchPageData(page);
-    setCurrentPage(page);
-  }}
-  defaultPageSize={10}
-  showPageSizePicker
-  showPageNumberSelector
-  showLabel
-  label="Showing 1-10 of 5000 items"
-/>
-```
-
-#### Using totalPages in TablePagination (Precedence)
-
-When both totalPages and totalItemCount are provided, totalPages takes precedence:
-
-```jsx
-<TablePagination
-  totalPages={100} // This will be used, ignoring totalItemCount calculation
-  totalItemCount={1000} // Ignored when totalPages is provided
-  currentPage={0}
-  onPageChange={({ page }) => setCurrentPage(page)}
-  defaultPageSize={10}
-/>
-```
-
-#### Mixed Controlled/Uncontrolled
-
-Page is controlled, page size is uncontrolled:
-
-```jsx
-<TablePagination
-  totalPages={100}
-  currentPage={page}
-  onPageChange={({ page }) => setPage(page)}
-  defaultPageSize={10}
-  showPageSizePicker
-  // Page size is managed internally by TablePagination
 />
 ```
 
