@@ -2624,7 +2624,7 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
           onSelectionChange={console.log}
           isFirstColumnSticky
           selectionType="single"
-          rowDensity="comfortable"
+          rowDensity="normal"
         >
           {(tableData) => (
             <>
