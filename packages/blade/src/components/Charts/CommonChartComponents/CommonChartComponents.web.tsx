@@ -44,10 +44,20 @@ import getIn from '~utils/lodashButBetter/get';
 
 /**
  * Helper function to get the appropriate color for chart elements (tooltip, legend)
+ *
+ * This function resolves the color token for chart elements based on the chart type and color mapping.
+ * The logic varies by chart type:
+ * - For line/area charts: Returns the mapped color directly if it's not a custom color.
+ *   If it is a custom color, it maps to the highest color in the range (unless it's sequential).
+ * - For sequential colors: Returns the mapped color as-is
+ * - For other cases: Uses getHighestColorInRange to get the highest intensity color from the range,
+ *   with special handling for donut charts when custom colors are used or when there are more
+ *   data points than the default color palette
+ *
  * @param dataKey - The data key for the chart element
  * @param name - The name/value of the chart element
  * @param dataColorMapping - Color mapping object
- * @param chartName - Type of chart (line, area, etc.)
+ * @param chartName - Type of chart (line, area, donut, etc.)
  * @returns The resolved color token
  */
 const getChartColor = (
