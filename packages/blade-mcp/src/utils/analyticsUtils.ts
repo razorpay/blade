@@ -7,6 +7,21 @@ import { getUserName } from './getUserName.js';
 
 let cachedMachineId: string | null = null;
 
+type MCPSSeAnalyticsContext = {
+  isCalledFromMCPSSE: boolean;
+};
+
+// Context to track if the current call is from MCP SSE
+let mcpSseAnalyticsContext: MCPSSeAnalyticsContext = {
+  isCalledFromMCPSSE: false,
+};
+
+const setMcpSseAnalyticsContext = ({ isCalledFromMCPSSE }: MCPSSeAnalyticsContext): void => {
+  mcpSseAnalyticsContext = {
+    isCalledFromMCPSSE,
+  };
+};
+
 const handleError = ({
   toolName,
   errorObject,
@@ -134,6 +149,7 @@ const sendAnalytics = ({
         nodeVersion: process.version,
         serverVersion: getPackageJSONVersion(),
         userName: userId,
+        ...mcpSseAnalyticsContext,
         ...properties,
       },
     });
@@ -152,4 +168,4 @@ const sendAnalytics = ({
   }
 };
 
-export { handleError, sendAnalytics };
+export { handleError, sendAnalytics, setMcpSseAnalyticsContext };
