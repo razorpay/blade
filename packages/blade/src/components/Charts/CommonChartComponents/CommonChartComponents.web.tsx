@@ -51,18 +51,18 @@ import getIn from '~utils/lodashButBetter/get';
  * @returns The resolved color token
  */
 const getChartColor = (
-  dataKey: string | undefined,
-  name: string | undefined,
+  dataKey: string,
+  name: string,
   dataColorMapping: DataColorMapping,
   chartName: string | undefined,
 ): ChartColorToken => {
   const colorKey = chartName === 'donut' ? sanitizeString(name ?? '') : dataKey;
   const mappedColorData = dataColorMapping?.[colorKey ?? ''];
-  const mappedColor = mappedColorData?.colorToken;
-  const isCustomColor = mappedColorData?.isCustomColor ?? false;
+  const mappedColor = mappedColorData.colorToken;
+  const isCustomColor = mappedColorData.isCustomColor;
 
   if ((chartName === 'line' || chartName === 'area') && !isCustomColor) {
-    return mappedColor ?? '';
+    return mappedColor;
   }
 
   if (mappedColor && isSequentialColor(mappedColor)) {

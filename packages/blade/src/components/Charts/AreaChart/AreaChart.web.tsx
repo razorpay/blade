@@ -124,11 +124,18 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     ).length;
 
     let AreaChartIndex = 0;
+    /**
+     * We check child of ChartAreaWrapper. if they have any custom color we store that.
+     * We need these mapping because colors of tooltip & legend is determine based on this
+     *  recharts do provide a color but it is hex code and we need blade color token .
+     */
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
         const childColor = child?.props?.color;
         const dataKey = (child?.props as ChartAreaProps)?.dataKey as string;
         if (dataKey) {
+          //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
+
           dataColorMapping[dataKey] = {
             colorToken: childColor,
             isCustomColor: Boolean(childColor),
@@ -142,6 +149,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       }
       return child;
     });
+
     assignDataColorMapping(dataColorMapping, themeColors);
     return {
       modifiedChildren,

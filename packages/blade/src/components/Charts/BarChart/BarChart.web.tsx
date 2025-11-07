@@ -169,11 +169,17 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     ).length;
 
     let BarChartIndex = 0;
+    /**
+     * We check child of ChartBarWrapper. if they have any custom color we store that.
+     * We need these mapping because colors of tooltip & legend is determine based on this
+     *  recharts do provide a color but it is hex code and we need blade color token .
+     */
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.chartBar) {
         const childColor = child?.props?.color;
         const dataKey = (child?.props as ChartBarProps)?.dataKey as string;
         if (dataKey) {
+          //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
           dataColorMapping[dataKey] = {
             colorToken: childColor,
             isCustomColor: Boolean(childColor),

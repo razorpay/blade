@@ -146,6 +146,11 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
     }
     return 'right';
   }, [children]);
+  /**
+   * We check child of ChartDonutWrapper. if they have any custom color we store that.
+   * We need these mapping because colors of tooltip & legend is determine based on this
+   *  recharts do provide a color but it is hex code and we need blade color token .
+   */
 
   const dataColorMapping = useMemo(() => {
     const dataColorMapping: DataColorMapping = {};
@@ -158,6 +163,8 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           if (Array.isArray(donutChildren)) {
             donutChildren.forEach((child, index) => {
               if (getComponentId(child) === componentId.cell && data[index]?.name) {
+                //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
+
                 dataColorMapping[sanitizeString(data[index].name as string)] = {
                   colorToken: child.props?.color,
                   isCustomColor: Boolean(child.props?.color),
