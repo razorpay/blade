@@ -17,7 +17,7 @@ curl -sSL "$URL" -o "$FILE_PATH"
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 
 const createBladeCursorRulesToolDescription =
-  'Creates the cursor rules for blade to help with code generation. Returns the bash script that should be executed. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
+  'Creates the cursor rules for blade to help with code generation. Returns the bash script that should be executed. while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
 
 const createBladeCursorRulesToolSchema = {
   currentProjectRootDirectory: z
@@ -47,18 +47,20 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
           text: `## 
            **Instructions:**
           1. Change to the working directory: \`cd "${currentProjectRootDirectory}"\`
-          2. Run the bash script above (copy and execute the commands from the script)
+          2. Run the bash script below (copy and execute the commands from the script)
           3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
-          
+
           Run the following bash script to create cursor rules:
             
-          **Working Directory:** \`${currentProjectRootDirectory}\`
           
           **Bash Script:**
           
           \`\`\`bash
           ${bashScriptContent}
           \`\`\`
+
+          **Working Directory:** \`${currentProjectRootDirectory}\`
+
             
           `,
         },

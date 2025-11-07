@@ -8,17 +8,17 @@ import { getUserName } from './getUserName.js';
 let cachedMachineId: string | null = null;
 
 type MCPSSeAnalyticsContext = {
-  isCalledFromMCPSSE: boolean;
+  protocol: 'http' | 'stdio';
 };
 
 // Context to track if the current call is from MCP SSE
 let mcpSseAnalyticsContext: MCPSSeAnalyticsContext = {
-  isCalledFromMCPSSE: false,
+  protocol: 'stdio',
 };
 
-const setMcpSseAnalyticsContext = ({ isCalledFromMCPSSE }: MCPSSeAnalyticsContext): void => {
+const setMcpSseAnalyticsContext = ({ protocol }: MCPSSeAnalyticsContext): void => {
   mcpSseAnalyticsContext = {
-    isCalledFromMCPSSE,
+    protocol,
   };
 };
 
