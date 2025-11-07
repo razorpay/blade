@@ -47,7 +47,7 @@ type PaginationCommonProps = {
 
 
   /**
-   * Current active page (1-indexed).
+   * Current active page (0-indexed).
    * When provided, the component is controlled.
    * When not provided, the component is uncontrolled and manages its own state.
    * @default undefined (uncontrolled)
