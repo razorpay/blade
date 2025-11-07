@@ -170,7 +170,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
 
     let BarChartIndex = 0;
     /**
-     * We check child of ChartBarWrapper. if they have any custom color we store that.
+     * We check to check child of ChartBarWrapper. if they have any custom color we store that.
      * We need these mapping because colors of tooltip & legend is determine based on this
      *  recharts do provide a color but it is hex code and we need blade color token .
      */

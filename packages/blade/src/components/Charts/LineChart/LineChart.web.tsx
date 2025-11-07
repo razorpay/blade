@@ -82,7 +82,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     chartName: 'line',
   });
   /**
-   * We check child of CharLineWrapper. if they have any custom color we store that.
+   * We need to check child of CharLineWrapper. if they have any custom color we store that.
    * We need these mapping because colors of tooltip & legend is determine based on this
    *  recharts do provide a color but it is hex code and we need blade color token .
    */
