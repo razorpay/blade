@@ -4,7 +4,6 @@ Pagination is a navigation component that allows users to navigate through multi
 
 <img src="./images/pagination.png" width="380" alt="pagination-thumbnail" />
 
-
 **Architecture**: The `Pagination` component is a fully-featured component with all pagination capabilities (page navigation, page size selection, labels, etc.). `TablePagination` is a wrapper component that uses `Pagination` internally and adds table-specific integrations (table context, paginationType for client/server modes).
 
 ## Design
@@ -24,9 +23,9 @@ import { Pagination } from '@razorpay/blade/components';
 
 <Pagination
   totalPages={1000}
-  currentPage={1}
-  onPageChange={({ page }) => setCurrentPage(page)}
-  showPageNumberSelector
+  selectedPage={1}
+  onPageChange={({ page }) => setselectedPage(page)}
+  showPageNumbers
   showPageSizePicker
 />;
 ```
@@ -37,35 +36,33 @@ import { Pagination } from '@razorpay/blade/components';
 
 ```typescript
 // these props are same as props we have on TablePagination component
+
 type PaginationCommonProps = {
   /**
    * Total pages in the pagination.
-   * If not provided, will be calculated from totalItemCount and currentPageSize.
-   * When provided, takes precedence over totalItemCount calculation.
    */
   totalPages?: number;
 
-
   /**
-   * Current active page (0-indexed).
+   * Current active page (1-indexed).
    * When provided, the component is controlled.
    * When not provided, the component is uncontrolled and manages its own state.
    * @default undefined (uncontrolled)
    */
-  currentPage?: number;
+  selectedPage?: number;
 
   /**
-   * Default page when uncontrolled.
-   * Only used when currentPage is not provided.
+   * Default page when uncontrolled (1-indexed, where 1 is the first page).
+   * Only used when selectedPage is not provided.
    * @default 1
    */
-  defaultCurrentPage?: number;
+  defaultSelectedPage?: number;
 
   /**
    * Callback fired when the page is changed.
-   * The page parameter is 0-indexed.
+   * The page parameter is 1-indexed.
    */
-  onPageChange?: ({ page }: { page: number }) => void;
+  onSelectedPageChange?: ({ page }: { page: number }) => void;
 
   /**
    * The default page size.
@@ -80,7 +77,7 @@ type PaginationCommonProps = {
    * When not provided, the component manages page size internally.
    * @default undefined (uncontrolled)
    */
-  currentPageSize?: number;
+  pageSize?: number;
 
   /**
    * Callback function that is called when the page size is changed.
@@ -99,7 +96,7 @@ type PaginationCommonProps = {
    * Page number selectors is a group of buttons that allows the user to jump to a specific page.
    * @default false
    */
-  showPageNumberSelector?: boolean;
+  showPageNumbers?: boolean;
 
   /**
    * Content of the label to be shown in the pagination component.
@@ -118,7 +115,6 @@ type PaginationCommonProps = {
    * @default false
    */
   isDisabled?: boolean;
-
 } & DataAnalyticsAttribute;
 
 type PaginationProps = PaginationCommonProps & {
@@ -127,18 +123,20 @@ type PaginationProps = PaginationCommonProps & {
    * @default 'items / page'
    */
   pageSizeLabel?: string;
-}
+};
 ```
 
 #### Controlled vs Uncontrolled Behavior
 
 **Page Control:**
-- **Controlled**: Pass `currentPage` prop. Component will not update page internally, you must handle page changes via `onPageChange`.
-- **Uncontrolled**: Omit `currentPage` prop. Component manages page state internally. Use `defaultCurrentPage` to set initial page.
+
+- **Controlled**: Pass `selectedPage` prop. Component will not update page internally, you must handle page changes via `onPageChange`.
+- **Uncontrolled**: Omit `selectedPage` prop. Component manages page state internally. Use `defaultselectedPage` to set initial page.
 
 **Page Size Control:**
-- **Controlled**: Pass `currentPageSize` prop. Component will not update page size internally, you must handle page size changes via `onPageSizeChange`.
-- **Uncontrolled**: Omit `currentPageSize` prop. Component manages page size internally using `defaultPageSize`.
+
+- **Controlled**: Pass `selectedPageSize` prop. Component will not update page size internally, you must handle page size changes via `onPageSizeChange`.
+- **Uncontrolled**: Omit `selectedPageSize` prop. Component manages page size internally using `defaultPageSize`.
 
 **Examples:**
 
@@ -146,10 +144,10 @@ type PaginationProps = PaginationCommonProps & {
 // Controlled: Both page and page size are controlled
 <Pagination
   totalPages={100}
-  currentPage={page}
-  currentPageSize={pageSize}
+  selectedPage={page}
+  selectedPageSize={pageSize}
   showPageSizePicker
-  showPageNumberSelector
+  showPageNumbers
   onPageChange={({ page }) => setPage(page)}
   onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
 />
@@ -157,30 +155,29 @@ type PaginationProps = PaginationCommonProps & {
 // Uncontrolled: Component manages its own state
 <Pagination
   totalPages={100}
-  defaultCurrentPage={0}
+  defaultselectedPage={0}
   defaultPageSize={10}
   onPageChange={({ page }) => console.log('Page changed:', page)}
   showPageSizePicker
-  showPageNumberSelector
+  showPageNumbers
 />
 
 // Mixed: Page is controlled, page size is uncontrolled
 <Pagination
   totalPages={100}
-  currentPage={page}
+  selectedPage={page}
   onPageChange={({ page }) => setPage(page)}
   defaultPageSize={10}
   showPageSizePicker={true}
-  showPageNumberSelector={true}
+  showPageNumbers={true}
 />
 ```
-
 
 #### Usage Notes
 
 - **All `Pagination` props are supported**: `TablePagination` accepts all props from `Pagination` and passes them through.
 - **Table Context Integration**: When used within a `Table` component, `totalItemCount` may be automatically derived from the table's data if not explicitly provided.
-- **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for both `currentPage` and `currentPageSize`.
+- **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for both `selectedPage` and `selectedPageSize`.
 - **Page Indexing**: Uses 0-indexed pages internally (page 0 is the first page).
 
 ## Component Architecture
@@ -188,12 +185,14 @@ type PaginationProps = PaginationCommonProps & {
 ### Relationship Between Components
 
 The `Pagination` component is a **fully-featured standalone component** that contains all pagination functionality:
+
 - Page navigation (previous/next buttons, page number selector, ellipsis handling)
 - Page size selection (rows per page picker)
 - Labels showing current range
 - Controlled and uncontrolled behavior
 
 **Key Points:**
+
 - `Pagination` has **all the same props** as `TablePagination` (minus table-specific ones like `paginationType`)
 - `TablePagination` is a **thin wrapper** that uses `Pagination` internally
 - Both components support **controlled and uncontrolled** behavior
@@ -202,11 +201,11 @@ The `Pagination` component is a **fully-featured standalone component** that con
 ### When to Use Which Component
 
 **Use `Pagination` when:**
+
 - You need pagination outside of a table context
 - You want full control over pagination behavior
 - You don't need table-specific integrations
 - You want to use pagination in any context (not just tables)
-
 
 ## Examples
 
@@ -217,10 +216,10 @@ The `Pagination` component is a **fully-featured standalone component** that con
 Simple pagination with default settings, component manages its own state:
 
 ```jsx
-<Pagination 
+<Pagination
   totalPages={100}
-  defaultCurrentPage={0}
-  onPageChange={({ page }) => console.log('Page changed:', page)} 
+  defaultselectedPage={0}
+  onPageChange={({ page }) => console.log('Page changed:', page)}
 />
 ```
 
@@ -229,14 +228,14 @@ Simple pagination with default settings, component manages its own state:
 Fully controlled pagination:
 
 ```jsx
-<Pagination 
-  totalPages={100} 
-  currentPage={page}
-  currentPageSize={pageSize}
+<Pagination
+  totalPages={100}
+  selectedPage={page}
+  selectedPageSize={pageSize}
   onPageChange={({ page }) => setPage(page)}
   onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
   showPageSizePicker
-  showPageNumberSelector
+  showPageNumbers
 />
 ```
 
@@ -247,11 +246,11 @@ Full-featured pagination with all controls:
 ```jsx
 <Pagination
   totalPages={1000}
-  currentPage={5}
-  onPageChange={({ page }) => setCurrentPage(page)}
+  selectedPage={5}
+  onPageChange={({ page }) => setselectedPage(page)}
   defaultPageSize={25}
   showPageSizePicker
-  showPageNumberSelector
+  showPageNumbers
   showLabel
   label="Showing 126-150 of 1000 items"
 />
@@ -263,9 +262,8 @@ Pagination with automatic totalPages calculation:
 
 ```jsx
 <Pagination
-  totalItemCount={1000}
-  currentPage={0}
-  onPageChange={({ page }) => setCurrentPage(page)}
+  selectedPage={0}
+  onPageChange={({ page }) => setselectedPage(page)}
   defaultPageSize={10}
   // totalPages will be calculated as Math.ceil(1000 / 10) = 100
 />
@@ -278,7 +276,7 @@ Page is controlled, page size is uncontrolled:
 ```jsx
 <Pagination
   totalPages={100}
-  currentPage={page}
+  selectedPage={page}
   onPageChange={({ page }) => setPage(page)}
   defaultPageSize={10}
   showPageSizePicker
@@ -293,8 +291,8 @@ Pagination in disabled state:
 ```jsx
 <Pagination
   totalPages={100}
-  currentPage={0}
-  onPageChange={({ page }) => setCurrentPage(page)}
+  selectedPage={0}
+  onPageChange={({ page }) => setselectedPage(page)}
   isDisabled
 />
 ```
@@ -310,4 +308,4 @@ Pagination in disabled state:
 
 ## Open Questions
 
-- **Mobile Behavior**: Should page number selector be hidden on mobile by default, or should we have a different mobile-specific layout?
+- Do we need props like `sibilings` and `boundariesCount` ?
