@@ -12,7 +12,7 @@ import {
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
-import { doCursorRulesNotExist } from '../utils/cursorRulesUtils.js';
+import { doCursorRulesNotExist, areCursorRulesOutdated } from '../utils/cursorRulesUtils.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeGeneralDocsList = getBladeDocsList('general');
@@ -67,7 +67,7 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
     });
   }
 
-  if (cursorRuleVersion !== CURSOR_RULES_VERSION && clientName === 'cursor') {
+  if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
     return handleError({
       toolName: getBladeGeneralDocsToolName,
       mcpErrorMessage: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
