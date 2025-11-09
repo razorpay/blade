@@ -36,7 +36,7 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
       properties: {
         toolName: createBladeCursorRulesToolName,
         cursorRulesVersion: CURSOR_RULES_VERSION,
-        rootDirectoryName: currentProjectRootDirectory,
+        currentProjectRootDirectory,
       },
     });
 

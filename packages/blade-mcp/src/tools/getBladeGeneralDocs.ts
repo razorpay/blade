@@ -6,11 +6,13 @@ import {
   analyticsToolCallEventName,
   GENERAL_KNOWLEDGEBASE_DIRECTORY,
   CURSOR_RULES_VERSION,
+  CHECK_CURSOR_RULES_DESCRIPTION,
 } from '../utils/tokens.js';
 
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
+import { doCursorRulesNotExist } from '../utils/cursorRulesUtils.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeGeneralDocsList = getBladeDocsList('general');
@@ -38,11 +40,7 @@ const getBladeGeneralDocsToolSchema = {
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
   clientName: z.enum(['claude', 'cursor', 'unknown']).default('unknown'),
-  cursorRuleVersion: z
-    .string()
-    .describe(
-      'get the version from the blade cursor rules file. use grep -o "rules_version: [0-9.]*" .cursor/rules/frontend-blade-rules.mdc  to get the cursor version of cursor rule. If the file does not exist, send 0 . use only grep and not other commands',
-    ),
+  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
 };
 
 const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsToolSchema> = ({
@@ -62,7 +60,7 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
     });
   }
 
-  if (cursorRuleVersion === '0' && clientName === 'cursor') {
+  if (doCursorRulesNotExist(cursorRuleVersion, clientName)) {
     return handleError({
       toolName: getBladeGeneralDocsToolName,
       mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
@@ -87,7 +85,7 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
       properties: {
         toolName: getBladeGeneralDocsToolName,
         topicsList,
-        rootDirectoryName: currentProjectRootDirectory,
+        currentProjectRootDirectory,
         clientName,
       },
     });

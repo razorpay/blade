@@ -105,7 +105,7 @@ const getChangelogToolCallback: ToolCallback<typeof getChangelogToolSchema> = as
         toolName: getChangelogToolName,
         fromVersion,
         toVersion,
-        rootDirectoryName: currentProjectRootDirectory,
+        currentProjectRootDirectory,
       },
     });
 

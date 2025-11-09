@@ -21,6 +21,15 @@ const CURSOR_RULES_FILE_NAME = `frontend-blade-rules.mdc`;
 
 const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${CURSOR_RULES_FILE_NAME}`;
 
+const CHECK_CURSOR_RULES_DESCRIPTION = `Get the version from the blade cursor rules file. If the file does not exist, send 0. 
+
+
+Use this exact grep command: 
+\`\`\`grep
+grep -o "rules_version: [0-9.]*" .cursor/rules/frontend-blade-rules.mdc
+\`\`\`
+`;
+
 // Blade Template
 const BASE_BLADE_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'base-blade-template');
 
@@ -44,4 +53,5 @@ export {
   GENERAL_KNOWLEDGEBASE_DIRECTORY,
   analyticsToolCallEventName,
   CURSOR_RULES_FILE_NAME,
+  CHECK_CURSOR_RULES_DESCRIPTION,
 };

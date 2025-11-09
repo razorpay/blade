@@ -73,7 +73,7 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
         toolName: getFigmaToCodeToolName,
         code,
         componentsUsed: componentsUsedString,
-        rootDirectoryName: currentProjectRootDirectory,
+        currentProjectRootDirectory,
       },
     });
 
