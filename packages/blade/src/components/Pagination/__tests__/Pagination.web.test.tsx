@@ -11,7 +11,7 @@ describe('<Pagination />', () => {
     const { container } = renderWithTheme(
       <Pagination
         totalPages={10}
-        onPageChange={() => {
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
       />,
@@ -23,8 +23,8 @@ describe('<Pagination />', () => {
     const { container } = renderWithTheme(
       <Pagination
         totalPages={100}
-        currentPage={0}
-        onPageChange={() => {
+        selectedPage={1}
+        onSelectedPageChange={() => {
           void 0;
         }}
         showPageSizePicker
@@ -40,7 +40,7 @@ describe('<Pagination />', () => {
     const { container } = renderWithTheme(
       <Pagination
         totalPages={50}
-        onPageChange={() => {
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         showPageSizePicker
@@ -54,8 +54,8 @@ describe('<Pagination />', () => {
     const { container } = renderWithTheme(
       <Pagination
         totalPages={100}
-        currentPage={5}
-        onPageChange={() => {
+        selectedPage={6}
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         showPageNumberSelector
@@ -68,7 +68,7 @@ describe('<Pagination />', () => {
     const { container, getByText } = renderWithTheme(
       <Pagination
         totalPages={50}
-        onPageChange={() => {
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         showLabel
@@ -83,7 +83,7 @@ describe('<Pagination />', () => {
     const { container, getAllByRole } = renderWithTheme(
       <Pagination
         totalPages={10}
-        onPageChange={() => {
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         isDisabled
@@ -98,9 +98,13 @@ describe('<Pagination />', () => {
 
   it('should handle page change with previous/next buttons (uncontrolled)', async () => {
     const user = userEvents.setup();
-    const onPageChange = jest.fn();
+    const onSelectedPageChange = jest.fn();
     const { getAllByRole } = renderWithTheme(
-      <Pagination totalPages={10} onPageChange={onPageChange} defaultCurrentPage={0} />,
+      <Pagination
+        totalPages={10}
+        onSelectedPageChange={onSelectedPageChange}
+        defaultSelectedPage={1}
+      />,
     );
 
     const buttons = getAllByRole('button');
@@ -111,25 +115,25 @@ describe('<Pagination />', () => {
 
     // Click next button
     await user.click(nextButton as HTMLButtonElement);
-    expect(onPageChange).toHaveBeenCalledWith({ page: 1 });
+    expect(onSelectedPageChange).toHaveBeenCalledWith({ page: 2 });
 
     // Click previous button
     await user.click(prevButton as HTMLButtonElement);
-    expect(onPageChange).toHaveBeenCalledWith({ page: 0 });
+    expect(onSelectedPageChange).toHaveBeenCalledWith({ page: 1 });
   });
 
   it('should handle page change with previous/next buttons (controlled)', async () => {
     const user = userEvents.setup();
-    const onPageChange = jest.fn();
+    const onSelectedPageChange = jest.fn();
     const ControlledPagination = () => {
-      const [currentPage, setCurrentPage] = useState(0);
+      const [selectedPage, setSelectedPage] = useState(1);
       return (
         <Pagination
           totalPages={10}
-          currentPage={currentPage}
-          onPageChange={({ page }) => {
-            onPageChange({ page });
-            setCurrentPage(page);
+          selectedPage={selectedPage}
+          onSelectedPageChange={({ page }) => {
+            onSelectedPageChange({ page });
+            setSelectedPage(page);
           }}
         />
       );
@@ -141,7 +145,7 @@ describe('<Pagination />', () => {
     const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
 
     await user.click(nextButton as HTMLButtonElement);
-    expect(onPageChange).toHaveBeenCalledWith({ page: 1 });
+    expect(onSelectedPageChange).toHaveBeenCalledWith({ page: 2 });
   });
 
   it('should handle page size change', async () => {
@@ -150,7 +154,7 @@ describe('<Pagination />', () => {
     const { getByLabelText, getByText } = renderWithTheme(
       <Pagination
         totalPages={50}
-        onPageChange={() => {
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         onPageSizeChange={onPageSizeChange}
@@ -179,7 +183,7 @@ describe('<Pagination />', () => {
       <Pagination
         totalItemCount={100}
         defaultPageSize={25}
-        onPageChange={() => {
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         showPageNumberSelector
@@ -195,7 +199,7 @@ describe('<Pagination />', () => {
         totalPages={10}
         totalItemCount={100}
         defaultPageSize={25}
-        onPageChange={() => {
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         showPageNumberSelector
@@ -209,8 +213,8 @@ describe('<Pagination />', () => {
     const { getAllByRole } = renderWithTheme(
       <Pagination
         totalPages={10}
-        currentPage={9}
-        onPageChange={() => {
+        selectedPage={10}
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
       />,
@@ -225,8 +229,8 @@ describe('<Pagination />', () => {
     const { getAllByRole } = renderWithTheme(
       <Pagination
         totalPages={10}
-        currentPage={0}
-        onPageChange={() => {
+        selectedPage={1}
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
       />,
@@ -239,12 +243,12 @@ describe('<Pagination />', () => {
 
   it('should handle ellipsis clicks', async () => {
     const user = userEvents.setup();
-    const onPageChange = jest.fn();
+    const onSelectedPageChange = jest.fn();
     const { getAllByRole } = renderWithTheme(
       <Pagination
         totalPages={100}
-        currentPage={50}
-        onPageChange={onPageChange}
+        selectedPage={51}
+        onSelectedPageChange={onSelectedPageChange}
         showPageNumberSelector
       />,
     );
@@ -260,7 +264,7 @@ describe('<Pagination />', () => {
       );
       if (backEllipsis) {
         await user.click(backEllipsis);
-        expect(onPageChange).toHaveBeenCalledWith({ page: 45 });
+        expect(onSelectedPageChange).toHaveBeenCalledWith({ page: 46 });
       }
     }
   });
@@ -269,9 +273,9 @@ describe('<Pagination />', () => {
     const { getByText } = renderWithTheme(
       <Pagination
         totalItemCount={100}
-        currentPage={0}
-        currentPageSize={10}
-        onPageChange={() => {
+        selectedPage={1}
+        pageSize={10}
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         showLabel
@@ -285,9 +289,9 @@ describe('<Pagination />', () => {
     const { getByText } = renderWithTheme(
       <Pagination
         totalPages={10}
-        currentPage={0}
-        currentPageSize={10}
-        onPageChange={() => {
+        selectedPage={1}
+        pageSize={10}
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         showLabel
@@ -297,11 +301,11 @@ describe('<Pagination />', () => {
     expect(getByText(/Showing 1-10 items/)).toBeInTheDocument();
   });
 
-  it('should not call onPageChange when disabled', async () => {
+  it('should not call onSelectedPageChange when disabled', async () => {
     const user = userEvents.setup();
-    const onPageChange = jest.fn();
+    const onSelectedPageChange = jest.fn();
     const { getAllByRole } = renderWithTheme(
-      <Pagination totalPages={10} onPageChange={onPageChange} isDisabled />,
+      <Pagination totalPages={10} onSelectedPageChange={onSelectedPageChange} isDisabled />,
     );
 
     const buttons = getAllByRole('button');
@@ -309,8 +313,8 @@ describe('<Pagination />', () => {
 
     if (nextButton && !(nextButton as HTMLButtonElement).disabled) {
       await user.click(nextButton);
-      // Should not call onPageChange when disabled
-      expect(onPageChange).not.toHaveBeenCalled();
+      // Should not call onSelectedPageChange when disabled
+      expect(onSelectedPageChange).not.toHaveBeenCalled();
     }
   });
 
@@ -318,8 +322,8 @@ describe('<Pagination />', () => {
     const { container } = renderWithTheme(
       <Pagination
         totalPages={10}
-        currentPage={0}
-        onPageChange={() => {
+        selectedPage={1}
+        onSelectedPageChange={() => {
           console.log('page changed');
         }}
         showPageSizePicker
@@ -339,10 +343,10 @@ describe('<Pagination />', () => {
       return (
         <Pagination
           totalPages={50}
-          onPageChange={() => {
+          onSelectedPageChange={() => {
             console.log('page changed');
           }}
-          currentPageSize={pageSize}
+          pageSize={pageSize}
           onPageSizeChange={({ pageSize: newSize }) => {
             onPageSizeChange({ pageSize: newSize });
             setPageSize(newSize);
@@ -370,12 +374,12 @@ describe('<Pagination />', () => {
 
   it('should handle uncontrolled mode', async () => {
     const user = userEvents.setup();
-    const onPageChange = jest.fn();
+    const onSelectedPageChange = jest.fn();
     const { getAllByRole } = renderWithTheme(
       <Pagination
         totalPages={10}
-        onPageChange={onPageChange}
-        defaultCurrentPage={0}
+        onSelectedPageChange={onSelectedPageChange}
+        defaultSelectedPage={1}
         defaultPageSize={10}
       />,
     );
@@ -385,10 +389,10 @@ describe('<Pagination />', () => {
 
     // Click next multiple times - should increment page
     await user.click(nextButton as HTMLButtonElement);
-    expect(onPageChange).toHaveBeenCalledWith({ page: 1 });
+    expect(onSelectedPageChange).toHaveBeenCalledWith({ page: 2 });
 
-    // Click again - should increment to page 2
+    // Click again - should increment to page 3
     await user.click(nextButton as HTMLButtonElement);
-    expect(onPageChange).toHaveBeenCalledWith({ page: 2 });
+    expect(onSelectedPageChange).toHaveBeenCalledWith({ page: 3 });
   });
 });

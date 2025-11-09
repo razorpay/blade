@@ -11,17 +11,14 @@ import { Pagination } from '~components/Pagination';
 
 const _TablePagination = ({
   currentPage: controlledCurrentPage,
-  defaultCurrentPage,
   onPageChange,
   onPageSizeChange,
   defaultPageSize = tablePagination.defaultPageSize,
-  currentPageSize: controlledCurrentPageSize,
   showPageSizePicker = true,
   showPageNumberSelector = false,
   showLabel,
   label,
-  totalItemCount: controlledTotalItemCount,
-  totalPages: controlledTotalPages,
+  totalItemCount,
   paginationType = 'client',
   ...rest
 }: TablePaginationProps): React.ReactElement => {
@@ -40,22 +37,8 @@ const _TablePagination = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paginationType]);
 
-  // Calculate totalItemCount - use provided value, fallback to table context, or undefined
-  const totalItemCount = useMemo(() => {
-    if (!isUndefined(controlledTotalItemCount)) {
-      return controlledTotalItemCount;
-    }
-    if (paginationType === 'client') {
-      return totalItems;
-    }
-    return undefined;
-  }, [controlledTotalItemCount, totalItems, paginationType]);
-
   // Calculate totalPages - use provided value, or calculate from totalItemCount
   const totalPages = useMemo(() => {
-    if (!isUndefined(controlledTotalPages)) {
-      return controlledTotalPages;
-    }
     if (
       !isUndefined(totalItemCount) &&
       currentPaginationState &&
@@ -63,10 +46,13 @@ const _TablePagination = ({
     ) {
       return Math.ceil(totalItemCount / currentPaginationState.size);
     }
+    if (paginationType === 'client' && totalItems) {
+      return Math.ceil(totalItems / defaultPageSize);
+    }
     return undefined;
-  }, [controlledTotalPages, totalItemCount, currentPaginationState]);
+  }, [totalItemCount, currentPaginationState, totalItems, defaultPageSize, paginationType]);
 
-  // Determine current page - use controlled value, fallback to table context, or default
+  // Determine current page - use controlled value, fallback to table context, or default to 0 (0-indexed)
   const currentPage = useMemo(() => {
     if (!isUndefined(controlledCurrentPage)) {
       return controlledCurrentPage;
@@ -74,19 +60,16 @@ const _TablePagination = ({
     if (!isUndefined(currentPaginationState?.page)) {
       return currentPaginationState?.page;
     }
-    return defaultCurrentPage ?? 0;
-  }, [controlledCurrentPage, currentPaginationState?.page, defaultCurrentPage]);
+    return 0;
+  }, [controlledCurrentPage, currentPaginationState?.page]);
 
-  // Determine current page size - use controlled value, fallback to table context, or default
+  // Determine current page size - fallback to table context, or default
   const currentPageSize = useMemo(() => {
-    if (!isUndefined(controlledCurrentPageSize)) {
-      return controlledCurrentPageSize;
-    }
     if (!isUndefined(currentPaginationState?.size)) {
       return currentPaginationState?.size;
     }
     return defaultPageSize;
-  }, [controlledCurrentPageSize, currentPaginationState?.size, defaultPageSize]);
+  }, [currentPaginationState?.size, defaultPageSize]);
 
   // Generate default label for table context
   const defaultLabel = useMemo(() => {
@@ -135,9 +118,12 @@ const _TablePagination = ({
   }, [currentPage, currentPaginationState?.page]);
 
   // Handle page change - update table context and call callback
+  // Pagination component uses 1-indexed pages, but Table uses 0-indexed
   const handlePageChange = ({ page }: { page: number }): void => {
-    onPageChange?.({ page });
-    setPaginationPage(page);
+    // Convert from 1-indexed (Pagination) to 0-indexed (Table)
+    const zeroIndexedPage = page - 1;
+    onPageChange?.({ page: zeroIndexedPage });
+    setPaginationPage(zeroIndexedPage);
   };
 
   // Handle page size change - update table context and call callback
@@ -162,11 +148,11 @@ const _TablePagination = ({
       <Pagination
         totalPages={totalPages}
         totalItemCount={totalItemCount}
-        currentPage={currentPage}
-        defaultCurrentPage={defaultCurrentPage}
-        onPageChange={handlePageChange}
+        selectedPage={currentPage !== undefined ? currentPage + 1 : undefined}
+        defaultSelectedPage={1}
+        onSelectedPageChange={handlePageChange}
         defaultPageSize={defaultPageSize}
-        currentPageSize={currentPageSize}
+        pageSize={currentPageSize}
         onPageSizeChange={handlePageSizeChange}
         showPageSizePicker={showPageSizePicker}
         showPageNumberSelector={showPageNumberSelector}

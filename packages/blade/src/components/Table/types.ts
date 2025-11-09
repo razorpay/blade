@@ -7,7 +7,6 @@ import type { DropdownProps } from '~components/Dropdown';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import type { PaginationCommonProps } from '~components/Pagination/types';
 
 type TableNode<Item> = Item & {
   id: Identifier;
@@ -421,8 +420,6 @@ type TableFooterCellProps = {
 } & TableCellGridSpanningProps &
   DataAnalyticsAttribute;
 
-type TablePaginationCommonProps = PaginationCommonProps;
-
 type TablePaginationType = 'client' | 'server';
 
 type TablePaginationServerProps = TablePaginationCommonProps & {
@@ -462,6 +459,47 @@ type TablePaginationClientProps = TablePaginationCommonProps & {
    */
   onPageChange?: ({ page }: { page: number }) => void;
 };
+
+type TablePaginationCommonProps = {
+  /**
+   * The default page size.
+   * Page size controls how rows are shown per page.
+   * @default 10
+   * consider using virtualization for large page sizes
+   **/
+  defaultPageSize?: 10 | 25 | 50;
+  /**
+   * The current page. Passing this prop will make the component controlled and will not update the page on its own.
+   **/
+  currentPage?: number;
+
+  /**
+   * Callback function that is called when the page size is changed
+   */
+  onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
+  /**
+   * Whether to show the page size picker. It will be always be hidden on mobile.
+   * Page size picker controls how rows are shown per page.
+   * @default true
+   */
+  showPageSizePicker?: boolean;
+  /**
+   * Whether to show the page number selector. It will be always be hidden on mobile.
+   * Page number selectors is a group of buttons that allows the user to jump to a specific page.
+   * @default false
+   */
+  showPageNumberSelector?: boolean;
+  /**
+   * Content of the label to be shown in the pagination component
+   * @default `Showing 1 to ${totalItems} Items`
+   */
+  label?: string;
+  /**
+   * Whether to show the label. It will be always be hidden on mobile.
+   * @default false
+   */
+  showLabel?: boolean;
+} & DataAnalyticsAttribute;
 
 type TablePaginationProps = TablePaginationCommonProps &
   (TablePaginationServerProps | TablePaginationClientProps);

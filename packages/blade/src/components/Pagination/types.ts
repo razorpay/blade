@@ -6,38 +6,36 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 export type PaginationCommonProps = {
   /**
    * Total pages in the pagination.
-   * If not provided, will be calculated from totalItemCount and currentPageSize.
+   * If not provided, will be calculated from totalItemCount and pageSize.
    * When provided, takes precedence over totalItemCount calculation.
    */
   totalPages?: number;
 
   /**
    * Total number of items. Used to calculate totalPages when totalPages is not provided.
-   * Calculation: Math.ceil(totalItemCount / currentPageSize)
-   * Only used if totalPages is not provided.
    */
   totalItemCount?: number;
 
   /**
-   * Current active page (0-indexed, where 0 is the first page).
+   * Current active page (1-indexed).
    * When provided, the component is controlled.
    * When not provided, the component is uncontrolled and manages its own state.
    * @default undefined (uncontrolled)
    */
-  currentPage?: number;
+  selectedPage?: number;
 
   /**
-   * Default page when uncontrolled (0-indexed, where 0 is the first page).
-   * Only used when currentPage is not provided.
-   * @default 0
+   * Default page when uncontrolled (1-indexed, where 1 is the first page).
+   * Only used when selectedPage is not provided.
+   * @default 1
    */
-  defaultCurrentPage?: number;
+  defaultSelectedPage?: number;
 
   /**
    * Callback fired when the page is changed.
-   * The page parameter is 0-indexed.
+   * The page parameter is 1-indexed.
    */
-  onPageChange?: ({ page }: { page: number }) => void;
+  onSelectedPageChange?: ({ page }: { page: number }) => void;
 
   /**
    * The default page size.
@@ -52,7 +50,7 @@ export type PaginationCommonProps = {
    * When not provided, the component manages page size internally.
    * @default undefined (uncontrolled)
    */
-  currentPageSize?: number;
+  pageSize?: number;
 
   /**
    * Callback function that is called when the page size is changed.

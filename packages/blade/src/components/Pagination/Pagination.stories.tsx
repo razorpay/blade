@@ -24,13 +24,13 @@ const Page = (): ReactElement => {
         import { useState } from 'react';
         
         function App() {
-          const [currentPage, setCurrentPage] = useState(0);
+          const [selectedPage, setSelectedPage] = useState(1);
           
           return (
             <Pagination
               totalPages={100}
-              currentPage={currentPage}
-              onPageChange={({ page }) => setCurrentPage(page)}
+              selectedPage={selectedPage}
+              onSelectedPageChange={({ page }) => setSelectedPage(page)}
               showPageNumberSelector
               showPageSizePicker
             />
@@ -49,14 +49,14 @@ export default {
   component: PaginationComponent,
   args: {
     totalPages: 100,
-    currentPage: 0,
-    defaultCurrentPage: 0,
+    selectedPage: 1,
+    defaultSelectedPage: 1,
     defaultPageSize: 10,
     showPageSizePicker: false,
     showPageNumberSelector: false,
     showLabel: false,
     isDisabled: false,
-    onPageChange: ({ page }: { page: number }): void => {
+    onSelectedPageChange: ({ page }: { page: number }): void => {
       console.log('Page changed:', page);
     },
     onPageSizeChange: ({ pageSize }: { pageSize: number }): void => {
@@ -75,20 +75,20 @@ export default {
       description:
         'Total number of items. Used to calculate totalPages when totalPages is not provided.',
     },
-    currentPage: {
+    selectedPage: {
       control: 'number',
-      description: 'Current active page (0-indexed). When provided, component is controlled.',
+      description: 'Current active page (1-indexed). When provided, component is controlled.',
     },
-    defaultCurrentPage: {
+    defaultSelectedPage: {
       control: 'number',
-      description: 'Default page when uncontrolled (0-indexed).',
+      description: 'Default page when uncontrolled (1-indexed, where 1 is the first page).',
     },
     defaultPageSize: {
       control: 'select',
       options: [10, 25, 50],
       description: 'The default page size.',
     },
-    currentPageSize: {
+    pageSize: {
       control: 'select',
       options: [10, 25, 50],
       description: 'Current page size when controlled.',
@@ -122,16 +122,16 @@ export default {
 } as Meta<PaginationProps>;
 
 const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [selectedPage, setSelectedPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
 
   return (
     <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
       <PaginationComponent
         {...args}
-        currentPage={currentPage}
-        currentPageSize={pageSize}
-        onPageChange={({ page }) => setCurrentPage(page)}
+        selectedPage={selectedPage}
+        pageSize={pageSize}
+        onSelectedPageChange={({ page }) => setSelectedPage(page)}
         onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
       />
     </Box>
@@ -141,26 +141,26 @@ const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) =>
 export const Default = PaginationTemplate.bind({});
 Default.args = {
   totalPages: 10,
-  currentPage: 0,
+  selectedPage: 1,
   showPageNumberSelector: true,
   showPageSizePicker: true,
   showLabel: true,
 };
 
 const ControlledExample = (): React.ReactElement => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [selectedPage, setSelectedPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
 
   return (
     <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
       <Text marginBottom="spacing.4">
-        Current Page: {currentPage + 1}, Page Size: {pageSize}
+        Current Page: {selectedPage}, Page Size: {pageSize}
       </Text>
       <PaginationComponent
         totalPages={100}
-        currentPage={currentPage}
-        currentPageSize={pageSize}
-        onPageChange={({ page }) => setCurrentPage(page)}
+        selectedPage={selectedPage}
+        pageSize={pageSize}
+        onSelectedPageChange={({ page }) => setSelectedPage(page)}
         onPageSizeChange={({ pageSize: newSize }) => setPageSize(newSize)}
         showPageSizePicker
         showPageNumberSelector
@@ -180,9 +180,9 @@ const UncontrolledExample = (): React.ReactElement => {
     <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
       <PaginationComponent
         totalPages={100}
-        defaultCurrentPage={0}
+        defaultSelectedPage={1}
         defaultPageSize={10}
-        onPageChange={({ page }) => console.log('Page changed:', page)}
+        onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
         onPageSizeChange={({ pageSize }) => console.log('Page size changed:', pageSize)}
         showPageSizePicker
         showPageNumberSelector

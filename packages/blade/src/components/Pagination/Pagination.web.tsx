@@ -153,11 +153,11 @@ const getPaginationButtons = ({
 const _Pagination = ({
   totalPages: controlledTotalPages,
   totalItemCount,
-  currentPage: controlledCurrentPage,
-  defaultCurrentPage = 0,
-  onPageChange,
+  selectedPage: controlledSelectedPage,
+  defaultSelectedPage = 1,
+  onSelectedPageChange,
   defaultPageSize = pagination.defaultPageSize,
-  currentPageSize: controlledCurrentPageSize,
+  pageSize: controlledPageSize,
   pageSizeLabel = 'items / page',
   onPageSizeChange,
   showPageSizePicker = false,
@@ -169,16 +169,29 @@ const _Pagination = ({
 }: PaginationProps): React.ReactElement => {
   const [internalPageSize, setInternalPageSize] = useControllableState<number>({
     defaultValue: defaultPageSize,
-    value: controlledCurrentPageSize,
+    value: controlledPageSize,
     onChange: (pageSize) => {
       onPageSizeChange?.({ pageSize });
     },
   });
+  // Convert 1-based external page to 0-based internal page
+  const controlledInternalPage = useMemo(() => {
+    if (isUndefined(controlledSelectedPage)) {
+      return undefined;
+    }
+    return controlledSelectedPage - 1;
+  }, [controlledSelectedPage]);
+
+  const defaultInternalPage = useMemo(() => {
+    return defaultSelectedPage - 1;
+  }, [defaultSelectedPage]);
+
   const [internalPage, setInternalPage] = useControllableState<number>({
-    defaultValue: defaultCurrentPage,
-    value: controlledCurrentPage,
+    defaultValue: defaultInternalPage,
+    value: controlledInternalPage,
     onChange: (page) => {
-      onPageChange?.({ page });
+      // Convert 0-based internal page back to 1-based external page
+      onSelectedPageChange?.({ page: page + 1 });
     },
   });
   // Calculate totalPages
@@ -215,6 +228,7 @@ const _Pagination = ({
     (page: number): void => {
       if (isDisabled) return;
 
+      // page is 0-based internally
       let pageToJumpTo = page;
       if (pageToJumpTo < 0) {
         pageToJumpTo = 0;
