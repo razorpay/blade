@@ -6,7 +6,9 @@
 ## feat(blade): list view v2
 
 ### 🔧 Prop Updates
-- **Deprecated Props:** `searchValue`, `searchValuePlaceholder`, `searchName`, `onSearchChange`, `onSearchClear`, `searchTrailing`, `showFilters`, `onShowFiltersChange`
+- **Deprecated Props:** 
+  - List View Filters: `searchValue`, `searchValuePlaceholder`, `searchName`, `onSearchChange`, `onSearchClear`, `searchTrailing`, `showFilters`, `onShowFiltersChange`
+  - Table Header: `rowDensity`
 - **Introduced Prop:** `actions` (replaces the above search-related props)
 - **FilterChipGroup:** Added `padding` prop
 - **Bulk Action Toolbar:** Added `overlay` prop
@@ -17,7 +19,7 @@
   - Font color: Normal → Subtle
   - Link color: Primary → Neutral
 - **Table Header Cell**
-  - Removed `density` prop (headers fixed to 36px height)
+  - Deprecated `rowDensity` prop (headers fixed to 36px height)
   - Background: `interactive.bg.gray.default` → `interactive.bg.gray.faded`
   - Font size: Medium → Small
   - Font color: Normal → Subtle
