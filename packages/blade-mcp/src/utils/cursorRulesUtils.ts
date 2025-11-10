@@ -6,7 +6,7 @@ import { CURSOR_RULES_VERSION } from './tokens.js';
  * @param clientName - The name of the client ('claude', 'cursor', or 'unknown')
  * @returns true if cursor rules don't exist, false otherwise
  */
-export function doCursorRuleFileExist(
+export function doCursorRuleFileNotExist(
   cursorRuleVersion: string,
   clientName: 'claude' | 'cursor' | 'unknown',
 ): boolean {

@@ -12,7 +12,7 @@ import {
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
-import { doCursorRuleFileExist, areCursorRulesOutdated } from '../utils/cursorRulesUtils.js';
+import { doCursorRuleFileNotExist, areCursorRulesOutdated } from '../utils/cursorRulesUtils.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
@@ -62,7 +62,7 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
     });
   }
 
-  if (doCursorRuleFileExist(cursorRuleVersion, clientName)) {
+  if (doCursorRuleFileNotExist(cursorRuleVersion, clientName)) {
     return handleError({
       toolName: getBladePatternDocsToolName,
       mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
