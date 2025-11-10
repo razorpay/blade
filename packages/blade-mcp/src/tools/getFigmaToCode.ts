@@ -27,11 +27,17 @@ const getFigmaToCodeToolSchema = {
     .describe(
       'The specific element or frame ID within your Figma file that you want to convert. Found in the URL as "node-id=xyz123" when you select an element in Figma. For example, in "figma.com/design/file_id/file_name?node-id=ab-1234", the nodeId would be "ab-1234".',
     ),
+  currentProjectRootDirectory: z
+    .string()
+    .describe(
+      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
+    ),
 };
 
 const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> = async ({
   fileKey,
   nodeId,
+  currentProjectRootDirectory,
 }) => {
   try {
     const isProd = process.env.NODE_ENV === 'production';
@@ -67,6 +73,7 @@ const getFigmaToCodeToolCallback: ToolCallback<typeof getFigmaToCodeToolSchema> 
         toolName: getFigmaToCodeToolName,
         code,
         componentsUsed: componentsUsedString,
+        currentProjectRootDirectory,
       },
     });
 
