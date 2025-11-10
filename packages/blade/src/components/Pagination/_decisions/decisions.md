@@ -309,3 +309,4 @@ Pagination in disabled state:
 ## Open Questions
 
 - Do we need props like `sibilings` and `boundariesCount` ?
+- So currently pagination takes full width without label as well can we modify it to take width based on the inner content ?
