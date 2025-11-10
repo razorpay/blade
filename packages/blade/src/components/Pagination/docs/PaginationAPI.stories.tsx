@@ -39,13 +39,13 @@ const PaginationTemplate: StoryFn<typeof Pagination> = ({ ...args }) => {
 export const PaginationAPIStory = PaginationTemplate.bind({});
 PaginationAPIStory.args = {
   totalPages: 100,
-  currentPage: 0,
-  defaultCurrentPage: 0,
+  selectedPage: 1,
+  defaultSelectedPage: 1,
   defaultPageSize: 10,
   showPageSizePicker: true,
   showPageNumberSelector: true,
   showLabel: true,
-  onPageChange: ({ page }: { page: number }): void => {
+  onSelectedPageChange: ({ page }: { page: number }): void => {
     console.log('Page changed:', page);
   },
   onPageSizeChange: ({ pageSize }: { pageSize: number }): void => {
