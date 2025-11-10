@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DatesProvider } from '@mantine/dates';
+import type { FC } from 'react';
 import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useI18nContext } from '@razorpay/i18nify-react';
@@ -51,7 +52,14 @@ const CALENDAR_HEIGHTS = {
   DAY_PICKER_WITH_FOOTER: 'auto',
 } as const;
 
-const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
+const BaseDatePicker: FC<
+  DatePickerProps<DateSelectionType> &
+    StyledPropsBlade &
+    DataAnalyticsAttribute & {
+      inputElementType: 'chip' | 'datePickerInput';
+      onClearButtonClick?: () => void;
+    }
+> = ({
   selectionType,
   allowSingleDateInRange,
   value,
@@ -88,7 +96,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   showFooterActions = true,
   footer,
   ...props
-}: DatePickerProps<Type> &
+}: DatePickerProps<DateSelectionType> &
   StyledPropsBlade &
   DataAnalyticsAttribute & {
     inputElementType: 'chip' | 'datePickerInput';

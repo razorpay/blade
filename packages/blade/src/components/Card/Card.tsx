@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import type { CSSObject } from 'styled-components';
@@ -326,7 +327,9 @@ const _CardBody = ({ height, children, testID, ...rest }: CardBodyProps): React.
   );
 };
 
-const Card = React.forwardRef(_Card);
+const Card: ForwardRefExoticComponent<
+  CardProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_Card);
 const CardBody = assignWithoutSideEffects(_CardBody, { componentId: ComponentIds.CardBody });
 
 export { Card, CardBody };

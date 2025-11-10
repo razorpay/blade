@@ -1,5 +1,5 @@
+import type { ForwardRefExoticComponent, RefAttributes, ReactElement } from 'react';
 import React from 'react';
-import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
@@ -110,5 +110,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
   );
 };
 
-const BaseText = React.forwardRef(_BaseText);
+const BaseText: ForwardRefExoticComponent<
+  BaseTextProps & RefAttributes<BladeElementRef>
+> = React.forwardRef(_BaseText);
 export { BaseText };
