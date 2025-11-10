@@ -23,7 +23,7 @@ exports[`<Radio /> should accepnt data-analytics attribute 1`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -232,7 +232,7 @@ exports[`<Radio /> should accepnt data-analytics attribute 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -382,7 +382,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -591,7 +591,7 @@ exports[`<Radio /> should render radio with label 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);

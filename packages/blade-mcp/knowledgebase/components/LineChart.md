@@ -11,7 +11,7 @@ LineChart is a data visualization component built on top of Recharts with Blade 
 - `ChartLineWrapper` component only accepts `ChartLine`, `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip`, `ChartLegend`, and `ChartReferenceLine` components as children
 - `dataKey` prop is required for `ChartLine` component and must match a key in the data array
 - `data` prop is required for `ChartLineWrapper` and must be an array of objects
-- `color` prop only accepts chart categorical color tokens in the format `chart.background.categorical.{colorName}.{emphasis}`
+- `color` prop only accepts chart categorical color tokens in the format `data.background.categorical.{colorName}.{emphasis}`
 - Currently only supports `colorTheme="default"` - other color themes will fallback to default
 
 ## TypeScript Types
@@ -131,7 +131,7 @@ type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
 
 type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
-type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
 type colorTheme = 'categorical';
 ```
@@ -178,13 +178,13 @@ function BasicLineChart() {
           dataKey="revenue"
           name="Revenue"
           strokeStyle="solid"
-          color="chart.background.categorical.emerald.moderate"
+          color="data.background.categorical.emerald.moderate"
         />
         <ChartLine
           dataKey="expenses"
           name="Expenses"
           strokeStyle="solid"
-          color="chart.background.categorical.crimson.moderate"
+          color="data.background.categorical.crimson.moderate"
         />
         <ChartReferenceLine y={3000} label="Target: $3000" />
       </ChartLineWrapper>

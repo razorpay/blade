@@ -288,7 +288,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(214, 28%, 84%, 1)",
+                            "borderColor": "hsla(214, 40%, 92%, 1)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,

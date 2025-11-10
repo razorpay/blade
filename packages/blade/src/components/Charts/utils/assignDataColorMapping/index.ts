@@ -1,0 +1,1 @@
+export { assignDataColorMapping } from './assignDataColorMapping';
