@@ -25,7 +25,7 @@ describe('<Pagination />', () => {
         totalPages={100}
         selectedPage={1}
         onSelectedPageChange={() => {
-          void 0;
+          console.log('page changed');
         }}
         showPageSizePicker
         showPageNumberSelector
@@ -177,7 +177,6 @@ describe('<Pagination />', () => {
 
     expect(onPageSizeChange).toHaveBeenCalledWith({ pageSize: 25 });
   });
-
 
   it('should disable next button on last page', () => {
     const { getAllByRole } = renderWithTheme(
