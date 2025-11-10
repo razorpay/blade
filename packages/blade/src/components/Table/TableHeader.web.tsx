@@ -305,9 +305,9 @@ const _TableHeaderRow = ({
   const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
   const isDisabled = disabledRows && disabledRows.length === totalItems;
 
-  // TODO: Removing rowDensity prop from TableHeader would be a breaking change.
-  // Currently hardcoded to 36px height regardless of the rowDensity value passed.
-  // Consider deprecating this prop in a future major version.
+  // Note: The rowDensity prop is deprecated (see types.ts for @deprecated documentation).
+  // Header row is always compact (36px height) regardless of the rowDensity value passed.
+  // This prop will be removed in a future major version.
   setHeaderRowDensity('compact');
 
   return (

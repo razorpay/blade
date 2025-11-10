@@ -80,6 +80,9 @@ type TableHeaderRowProps = {
    * The rowDensity prop determines the density of the table.
    * The rowDensity prop can be 'compact', 'normal', or'comfortable'.
    * The default value is `normal`.
+   *
+   * @deprecated This prop is deprecated and will be removed in a future major version.
+   * The header row is now always compact (36px height) regardless of this prop value.
    **/
   rowDensity?: TableProps<unknown>['rowDensity'];
 } & DataAnalyticsAttribute;
