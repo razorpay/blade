@@ -70,11 +70,6 @@ export default {
       control: 'number',
       description: 'Total pages in the pagination',
     },
-    totalItemCount: {
-      control: 'number',
-      description:
-        'Total number of items. Used to calculate totalPages when totalPages is not provided.',
-    },
     selectedPage: {
       control: 'number',
       description: 'Current active page (1-indexed). When provided, component is controlled.',

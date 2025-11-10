@@ -178,36 +178,6 @@ describe('<Pagination />', () => {
     expect(onPageSizeChange).toHaveBeenCalledWith({ pageSize: 25 });
   });
 
-  it('should calculate totalPages from totalItemCount', () => {
-    const { container } = renderWithTheme(
-      <Pagination
-        totalItemCount={100}
-        defaultPageSize={25}
-        onSelectedPageChange={() => {
-          console.log('page changed');
-        }}
-        showPageNumberSelector
-      />,
-    );
-    // Should calculate 4 pages (100 / 25 = 4)
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should use totalPages when both totalPages and totalItemCount are provided', () => {
-    const { container } = renderWithTheme(
-      <Pagination
-        totalPages={10}
-        totalItemCount={100}
-        defaultPageSize={25}
-        onSelectedPageChange={() => {
-          console.log('page changed');
-        }}
-        showPageNumberSelector
-      />,
-    );
-    // Should use totalPages (10) instead of calculating from totalItemCount
-    expect(container).toMatchSnapshot();
-  });
 
   it('should disable next button on last page', () => {
     const { getAllByRole } = renderWithTheme(
@@ -269,23 +239,7 @@ describe('<Pagination />', () => {
     }
   });
 
-  it('should generate default label from totalItemCount', () => {
-    const { getByText } = renderWithTheme(
-      <Pagination
-        totalItemCount={100}
-        selectedPage={1}
-        pageSize={10}
-        onSelectedPageChange={() => {
-          console.log('page changed');
-        }}
-        showLabel
-      />,
-    );
-
-    expect(getByText(/Showing 1-10 of 100 items/)).toBeInTheDocument();
-  });
-
-  it('should generate default label without totalItemCount', () => {
+  it('should generate default label', () => {
     const { getByText } = renderWithTheme(
       <Pagination
         totalPages={10}

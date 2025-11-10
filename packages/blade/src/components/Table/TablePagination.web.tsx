@@ -147,7 +147,6 @@ const _TablePagination = ({
     <BaseBox backgroundColor={backgroundColor}>
       <Pagination
         totalPages={totalPages}
-        totalItemCount={totalItemCount}
         selectedPage={currentPage !== undefined ? currentPage + 1 : undefined}
         defaultSelectedPage={1}
         onSelectedPageChange={handlePageChange}

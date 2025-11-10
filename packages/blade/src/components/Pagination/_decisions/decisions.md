@@ -176,7 +176,7 @@ type PaginationProps = PaginationCommonProps & {
 #### Usage Notes
 
 - **All `Pagination` props are supported**: `TablePagination` accepts all props from `Pagination` and passes them through.
-- **Table Context Integration**: When used within a `Table` component, `totalItemCount` may be automatically derived from the table's data if not explicitly provided.
+- **Table Context Integration**: When used within a `Table` component, `totalPages` should be provided explicitly.
 - **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for both `selectedPage` and `selectedPageSize`.
 - **Page Indexing**: Uses 0-indexed pages internally (page 0 is the first page).
 
@@ -253,19 +253,6 @@ Full-featured pagination with all controls:
   showPageNumbers
   showLabel
   label="Showing 126-150 of 1000 items"
-/>
-```
-
-#### Using totalItemCount (Automatic Calculation)
-
-Pagination with automatic totalPages calculation:
-
-```jsx
-<Pagination
-  selectedPage={0}
-  onPageChange={({ page }) => setselectedPage(page)}
-  defaultPageSize={10}
-  // totalPages will be calculated as Math.ceil(1000 / 10) = 100
 />
 ```
 

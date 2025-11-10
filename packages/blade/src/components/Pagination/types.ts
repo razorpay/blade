@@ -6,15 +6,8 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 export type PaginationCommonProps = {
   /**
    * Total pages in the pagination.
-   * If not provided, will be calculated from totalItemCount and pageSize.
-   * When provided, takes precedence over totalItemCount calculation.
    */
   totalPages?: number;
-
-  /**
-   * Total number of items. Used to calculate totalPages when totalPages is not provided.
-   */
-  totalItemCount?: number;
 
   /**
    * Current active page (1-indexed).

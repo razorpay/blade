@@ -152,7 +152,6 @@ const getPaginationButtons = ({
 
 const _Pagination = ({
   totalPages: controlledTotalPages,
-  totalItemCount,
   selectedPage: controlledSelectedPage,
   defaultSelectedPage = 1,
   onSelectedPageChange,
@@ -199,11 +198,9 @@ const _Pagination = ({
     if (!isUndefined(controlledTotalPages)) {
       return controlledTotalPages;
     }
-    if (!isUndefined(totalItemCount)) {
-      return Math.ceil(totalItemCount / internalPageSize);
-    }
+
     return 1;
-  }, [controlledTotalPages, totalItemCount, internalPageSize]);
+  }, [controlledTotalPages]);
 
   const [currentEllipseHover, setCurrentEllipseHover] = useState<'start' | 'end' | undefined>(
     undefined,
@@ -212,11 +209,6 @@ const _Pagination = ({
   // Generate default label
   const defaultLabel = label
     ? label
-    : totalItemCount
-    ? `Showing ${internalPage * internalPageSize + 1}-${Math.min(
-        (internalPage + 1) * internalPageSize,
-        totalItemCount,
-      )} of ${totalItemCount} items`
     : `Showing ${internalPage * internalPageSize + 1}-${
         (internalPage + 1) * internalPageSize
       } items`;

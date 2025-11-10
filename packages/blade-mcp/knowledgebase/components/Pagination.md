@@ -4,18 +4,19 @@ Pagination
 
 ## Description
 
-Pagination is a navigation component that allows users to navigate through multiple pages of content. It provides page number navigation buttons, page size selection, and direct page jumping capabilities with ellipsis for large page ranges. The component supports both controlled and uncontrolled modes for page and page size state management, making it flexible for various use cases. It automatically calculates total pages from item count when needed and adapts its UI for mobile devices by hiding certain features.
+Pagination is a navigation component that allows users to navigate through multiple pages of content. It provides page number navigation buttons, page size selection dropdown, and direct page jumping capabilities with ellipsis for large page ranges. The component supports both controlled and uncontrolled modes for page and page size state management, and adapts its UI for mobile devices by hiding certain features.
 
 ## Important Constraints
 
-- Pages are 0-indexed (0 is the first page, 1 is the second page, etc.)
-- Either `totalPages` or `totalItemCount` must be provided (or both, but `totalPages` takes precedence over calculation)
+- Pages are 1-indexed externally (1 is the first page, 2 is the second page, etc.) - the `selectedPage` and `defaultSelectedPage` props use 1-based indexing
+- `totalPages` must be provided
 - `defaultPageSize` can only be one of: `10`, `25`, or `50`
-- When both `currentPage` and `defaultCurrentPage` are provided, `currentPage` takes precedence (controlled mode)
-- When both `currentPageSize` and `defaultPageSize` are provided, `currentPageSize` takes precedence (controlled mode)
+- When both `selectedPage` and `defaultSelectedPage` are provided, `selectedPage` takes precedence (controlled mode)
+- When both `pageSize` and `defaultPageSize` are provided, `pageSize` takes precedence (controlled mode)
 - `showPageSizePicker`, `showPageNumberSelector`, and `showLabel` are always hidden on mobile devices
 - `showPageNumberSelector` only displays when `totalPages > 1`
 - Page size picker options are limited to 10, 25, or 50 items per page
+- If `totalPages` is not provided, the component defaults to 1 total page
 
 ## TypeScript Types
 
@@ -31,38 +32,29 @@ type DataAnalyticsAttribute = {
 type PaginationCommonProps = {
   /**
    * Total pages in the pagination.
-   * If not provided, will be calculated from totalItemCount and currentPageSize.
-   * When provided, takes precedence over totalItemCount calculation.
    */
   totalPages?: number;
 
   /**
-   * Total number of items. Used to calculate totalPages when totalPages is not provided.
-   * Calculation: Math.ceil(totalItemCount / currentPageSize)
-   * Only used if totalPages is not provided.
-   */
-  totalItemCount?: number;
-
-  /**
-   * Current active page (0-indexed, where 0 is the first page).
+   * Current active page (1-indexed).
    * When provided, the component is controlled.
    * When not provided, the component is uncontrolled and manages its own state.
    * @default undefined (uncontrolled)
    */
-  currentPage?: number;
+  selectedPage?: number;
 
   /**
-   * Default page when uncontrolled (0-indexed, where 0 is the first page).
-   * Only used when currentPage is not provided.
-   * @default 0
+   * Default page when uncontrolled (1-indexed, where 1 is the first page).
+   * Only used when selectedPage is not provided.
+   * @default 1
    */
-  defaultCurrentPage?: number;
+  defaultSelectedPage?: number;
 
   /**
    * Callback fired when the page is changed.
-   * The page parameter is 0-indexed.
+   * The page parameter is 1-indexed.
    */
-  onPageChange?: ({ page }: { page: number }) => void;
+  onSelectedPageChange?: ({ page }: { page: number }) => void;
 
   /**
    * The default page size.
@@ -77,7 +69,7 @@ type PaginationCommonProps = {
    * When not provided, the component manages page size internally.
    * @default undefined (uncontrolled)
    */
-  currentPageSize?: number;
+  pageSize?: number;
 
   /**
    * Callback function that is called when the page size is changed.
@@ -128,31 +120,33 @@ type PaginationProps = PaginationCommonProps & {
 
 ## Example
 
-### Basic Pagination with All Features
+### Controlled Pagination with All Features
 
-This example demonstrates a fully controlled pagination component with all features enabled including page navigation, page size selection, page number selector, and custom label. It shows how to handle controlled state for both page and page size, with proper event handlers and accessibility considerations.
+This example demonstrates a fully controlled pagination component with all features enabled including page navigation, page size selection, page number selector with ellipsis, and custom label. It shows how to handle controlled state for both page and page size, with proper event handlers and accessibility considerations.
 
 ```typescript
 import { Pagination } from '@razorpay/blade/components';
 import { useState } from 'react';
 
-function PaginationExample() {
-  const [currentPage, setCurrentPage] = useState(0);
+function ControlledPaginationExample() {
+  const [selectedPage, setSelectedPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
 
   return (
     <Pagination
       totalPages={100}
-      currentPage={currentPage}
-      currentPageSize={pageSize}
-      onPageChange={({ page }) => setCurrentPage(page)}
+      selectedPage={selectedPage}
+      pageSize={pageSize}
+      onSelectedPageChange={({ page }) => setSelectedPage(page)}
       onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
       showPageSizePicker
       showPageNumberSelector
       showLabel
+      label="Showing 1-10 of 1000 items"
       pageSizeLabel="items / page"
       isDisabled={false}
     />
   );
 }
 ```
+
