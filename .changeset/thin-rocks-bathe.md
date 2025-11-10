@@ -7,7 +7,9 @@
 
 
 ### 🔧 Prop Updates
-- **Deprecated:** `searchValue`, `searchValuePlaceholder`, `searchName`, `onSearchChange`, `onSearchClear`, `searchTrailing`, `showFilters`, `onShowFiltersChange`, `rowDensity`
+- **Deprecated Props:** 
+  - List View Filters: searchValue, searchValuePlaceholder, searchName, onSearchChange, onSearchClear, searchTrailing, showFilters, onShowFiltersChange
+  - Table Header: rowDensity
 - **Added:** 
   - `actions` (replaces deprecated search-related props)  
   - `FilterChipGroup.padding`  
