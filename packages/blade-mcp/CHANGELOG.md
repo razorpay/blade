@@ -1,5 +1,12 @@
 # @razorpay/blade-mcp
 
+## 1.15.0
+
+### Minor Changes
+
+- e05eacbd0: feat(blade-mcp): add streamable transport support utilities
+- e05eacbd0: feat(blade-mcp): refactor `createCursorRule` , `getBladeComponentDocs` , `getBladeGeneralDocs` , `getBladePatternDocs` tools to support MCP SSE
+
 ## 1.14.0
 
 ### Minor Changes
