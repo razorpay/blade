@@ -327,7 +327,6 @@ const Page = (): React.ReactElement => {
                     setFilterDateRange(undefined);
                     setSelectedQuickFilter('All');
                   }}
-                  padding={['spacing.0', 'spacing.1', 'spacing.4']}
                 >
                   <Dropdown selectionType="single">
                     <FilterChipSelectInput
@@ -799,7 +798,6 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
               setFilterDateRange(undefined);
               setSelectedQuickFilter('All');
             }}
-            padding={['spacing.0', 'spacing.1', 'spacing.4']}
           >
             <Dropdown selectionType="single">
               <FilterChipSelectInput
@@ -1136,7 +1134,6 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
               setFilterDateRange(undefined);
               setSelectedQuickFilter('All');
             }}
-            padding={['spacing.0', 'spacing.1', 'spacing.4']}
           >
             <Dropdown selectionType="single">
               <FilterChipSelectInput
@@ -1481,7 +1478,6 @@ const WithBulkActionExample: StoryFn<typeof ListView> = (args) => {
               setFilterDateRange(undefined);
               setSelectedQuickFilter('All');
             }}
-            padding={['spacing.0', 'spacing.1', 'spacing.4']}
           >
             <Dropdown selectionType="single">
               <FilterChipSelectInput
@@ -1893,7 +1889,6 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
               const searchValueData = getSearchedData(data, searchValue);
               setListViewTableData(searchValueData);
             }}
-            padding={['spacing.0', 'spacing.1', 'spacing.4']}
           >
             <Dropdown selectionType="single">
               <FilterChipSelectInput
@@ -2188,7 +2183,6 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
               setFilterDateRange(undefined);
               setSelectedQuickFilter('All');
             }}
-            padding={['spacing.0', 'spacing.1', 'spacing.4']}
           >
             <Dropdown selectionType="single">
               <FilterChipSelectInput
@@ -2541,7 +2535,6 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
               setFilterDateRange(undefined);
               setSelectedQuickFilter('All');
             }}
-            padding={['spacing.0', 'spacing.1', 'spacing.4']}
           >
             <Dropdown selectionType="single">
               <FilterChipSelectInput

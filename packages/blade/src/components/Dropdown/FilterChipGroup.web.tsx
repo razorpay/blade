@@ -12,7 +12,6 @@ const FilterChipGroup = ({
   children,
   showClearButton = true,
   onClearButtonClick,
-  padding = 'spacing.4',
   ...rest
 }: FilterChipGroupProps): React.ReactElement => {
   const [filterChipGroupSelectedFilters, setFilterChipGroupSelectedFilters] = useState<string[]>(
@@ -39,7 +38,7 @@ const FilterChipGroup = ({
         {...metaAttribute({ name: MetaConstants.FilterChipGroup, testID })}
         {...makeAnalyticsAttribute(rest)}
         display="flex"
-        padding={padding}
+        padding={['spacing.4', 'spacing.1']}
         alignItems="center"
         justifyContent="flex-start"
         width="100%"
