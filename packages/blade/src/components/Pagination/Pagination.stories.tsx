@@ -118,7 +118,7 @@ export default {
 
 const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) => {
   const [selectedPage, setSelectedPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState<10 | 25 | 50>(10);
 
   return (
     <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
@@ -127,7 +127,7 @@ const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) =>
         selectedPage={selectedPage}
         pageSize={pageSize}
         onSelectedPageChange={({ page }) => setSelectedPage(page)}
-        onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
+        onPageSizeChange={({ pageSize }) => setPageSize(pageSize as 10 | 25 | 50)}
       />
     </Box>
   );
@@ -144,7 +144,7 @@ Default.args = {
 
 const ControlledExample = (): React.ReactElement => {
   const [selectedPage, setSelectedPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState<10 | 25 | 50>(10);
 
   return (
     <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
@@ -156,7 +156,7 @@ const ControlledExample = (): React.ReactElement => {
         selectedPage={selectedPage}
         pageSize={pageSize}
         onSelectedPageChange={({ page }) => setSelectedPage(page)}
-        onPageSizeChange={({ pageSize: newSize }) => setPageSize(newSize)}
+        onPageSizeChange={({ pageSize: newSize }) => setPageSize(newSize as 10 | 25 | 50)}
         showPageSizePicker
         showPageNumberSelector
         showLabel
