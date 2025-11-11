@@ -46,11 +46,11 @@ const _TablePagination = ({
     ) {
       return Math.ceil(totalItemCount / currentPaginationState.size);
     }
-    if (paginationType === 'client' && totalItems) {
-      return Math.ceil(totalItems / defaultPageSize);
+    if (paginationType === 'client' && totalItems && !isUndefined(currentPaginationState?.size)) {
+      return Math.ceil(totalItems / currentPaginationState.size);
     }
     return undefined;
-  }, [totalItemCount, currentPaginationState, totalItems, defaultPageSize, paginationType]);
+  }, [totalItemCount, currentPaginationState, totalItems, paginationType]);
 
   // Determine current page - use controlled value, fallback to table context, or default to 0 (0-indexed)
   const currentPage = useMemo(() => {
@@ -151,7 +151,7 @@ const _TablePagination = ({
         defaultSelectedPage={1}
         onSelectedPageChange={handlePageChange}
         defaultPageSize={defaultPageSize}
-        pageSize={currentPageSize}
+        pageSize={currentPageSize as 10 | 25 | 50}
         onPageSizeChange={handlePageSizeChange}
         showPageSizePicker={showPageSizePicker}
         showPageNumberSelector={showPageNumberSelector}

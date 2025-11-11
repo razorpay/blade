@@ -166,7 +166,7 @@ const _Pagination = ({
   isDisabled = false,
   ...rest
 }: PaginationProps): React.ReactElement => {
-  const [internalPageSize, setInternalPageSize] = useControllableState<number>({
+  const [internalPageSize, setInternalPageSize] = useControllableState<10 | 25 | 50>({
     defaultValue: defaultPageSize,
     value: controlledPageSize,
     onChange: (pageSize) => {
