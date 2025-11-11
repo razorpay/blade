@@ -25,7 +25,7 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c12.c12.c12.c12.c12 {
@@ -231,7 +231,7 @@ exports[`<CheckboxGroup /> integration tests should accept data-analytics attrib
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -496,7 +496,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c12.c12.c12.c12.c12 {
@@ -739,7 +739,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1100,7 +1100,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c12.c12.c12.c12.c12 {
@@ -1306,7 +1306,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);

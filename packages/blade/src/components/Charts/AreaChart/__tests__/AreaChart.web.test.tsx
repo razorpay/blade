@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChartArea, ChartAreaWrapper } from '../AreaChart.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { normalizeSnapshotIds } from '~utils/testing/normalizeSnapshotIds';
 import { Box } from '~components/Box/Box';
 
 const mockData = [
@@ -31,7 +32,7 @@ describe('<AreaChart />', () => {
         </ChartAreaWrapper>
       </Box>,
     );
-    expect(container).toMatchSnapshot();
+    expect(normalizeSnapshotIds(container.innerHTML)).toMatchSnapshot();
   });
 
   it('should render LineChart with multiple lines', () => {
@@ -42,6 +43,6 @@ describe('<AreaChart />', () => {
         </ChartAreaWrapper>
       </Box>,
     );
-    expect(container).toMatchSnapshot();
+    expect(normalizeSnapshotIds(container.innerHTML)).toMatchSnapshot();
   });
 });

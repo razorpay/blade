@@ -3,7 +3,7 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
-import type { ColorTheme } from '../utils/useColorTheme';
+import type { ColorTheme } from '../utils';
 import type { BoxProps } from '~components/Box';
 
 type data = {

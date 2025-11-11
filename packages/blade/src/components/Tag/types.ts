@@ -8,7 +8,7 @@ type TagProps = {
    *
    * @default medium
    */
-  size?: 'xsmall' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Leading icon for your Tag

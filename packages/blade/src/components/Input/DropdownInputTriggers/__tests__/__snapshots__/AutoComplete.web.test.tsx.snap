@@ -352,7 +352,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -404,7 +404,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1522,7 +1522,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1574,7 +1574,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -2816,7 +2816,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -2868,7 +2868,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;

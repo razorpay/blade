@@ -1,7 +1,7 @@
 import { size } from '~tokens/global';
 
 export const pagination = {
-  padding: 'spacing.4',
+  padding: ['6px', 'spacing.3'],
   pageSelectionButton: {
     backgroundColor: 'transparent',
     backgroundColorHover: 'interactive.background.gray.default',

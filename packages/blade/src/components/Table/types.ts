@@ -80,6 +80,9 @@ type TableHeaderRowProps = {
    * The rowDensity prop determines the density of the table.
    * The rowDensity prop can be 'compact', 'normal', or'comfortable'.
    * The default value is `normal`.
+   *
+   * @deprecated This prop is deprecated and will be removed in a future major version.
+   * The header row is now always compact (36px height) regardless of this prop value.
    **/
   rowDensity?: TableProps<unknown>['rowDensity'];
 } & DataAnalyticsAttribute;
@@ -503,6 +506,8 @@ type TablePaginationClientProps = TablePaginationCommonProps & {
 type TablePaginationProps = TablePaginationCommonProps &
   (TablePaginationServerProps | TablePaginationClientProps);
 
+type TableToolbarPlacement = 'inline' | 'overlay';
+
 type TableToolbarProps = {
   /**
    * The children of TableToolbar should be TableToolbarActions
@@ -518,6 +523,14 @@ type TableToolbarProps = {
    * @default `${selectedRows.length} 'Items'} Selected`
    */
   selectedTitle?: string;
+  /**
+   * Controls how the TableToolbar is positioned relative to the TableHeader.
+   * - `inline`: Renders the toolbar above the TableHeader as part of the normal layout (default).
+   * - `overlay`: Renders the toolbar over the TableHeader.
+   *
+   * Defaults to `inline`.
+   */
+  placement?: TableToolbarPlacement;
 } & DataAnalyticsAttribute;
 
 type TableToolbarActionsProps = {
@@ -634,6 +647,7 @@ export type {
   TablePaginationProps,
   TableToolbarProps,
   TableToolbarActionsProps,
+  TableToolbarPlacement,
   TableBackgroundColors,
   TablePaginationType,
   TablePaginationCommonProps,

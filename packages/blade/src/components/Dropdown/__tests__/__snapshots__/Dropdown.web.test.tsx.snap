@@ -1855,7 +1855,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1907,7 +1907,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -2753,14 +2753,14 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: currentColor;
+  color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 0.875rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2776,15 +2776,15 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
 }
 
 .c1.c1.c1.c1.c1 {
-  border-width: 1px;
+  border-width: 0.5px;
   border-color: hsla(214,28%,84%,1);
-  height: 28px;
+  height: 24px;
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-style: dashed;
+  border-style: solid;
   background-color: hsla(0,0%,100%,1);
   color: hsla(212,39%,16%,1);
   width: -webkit-fit-content;
@@ -2887,7 +2887,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
                 clip-rule="evenodd"
                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                 data-blade-component="svg-path"
-                fill="currentColor"
+                fill="hsla(211, 22%, 56%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -2927,14 +2927,14 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
 }
 
 .c4.c4.c4.c4.c4 {
-  color: currentColor;
+  color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 0.875rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2950,15 +2950,15 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
 }
 
 .c1.c1.c1.c1.c1 {
-  border-width: 1px;
+  border-width: 0.5px;
   border-color: hsla(214,28%,84%,1);
-  height: 28px;
+  height: 24px;
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-style: dashed;
+  border-style: solid;
   background-color: hsla(0,0%,100%,1);
   color: hsla(212,39%,16%,1);
   width: -webkit-fit-content;
@@ -3062,7 +3062,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
                 clip-rule="evenodd"
                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                 data-blade-component="svg-path"
-                fill="currentColor"
+                fill="hsla(211, 22%, 56%, 1)"
                 fill-rule="evenodd"
               />
             </svg>

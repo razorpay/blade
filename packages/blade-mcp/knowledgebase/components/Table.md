@@ -316,6 +316,14 @@ type TableToolbarProps = {
    * @default `${selectedRows.length} 'Items'} Selected`
    */
   selectedTitle?: string;
+  /**
+   * Controls how the TableToolbar is positioned relative to the TableHeader.
+   * - `inline`: Renders the toolbar above the TableHeader as part of the normal layout (default).
+   * - `overlay`: Renders the toolbar over the TableHeader.
+   *
+   * Defaults to `inline`.
+   */
+  placement?: 'inline' | 'overlay';
 };
 
 // TablePagination component props
@@ -748,8 +756,7 @@ export default ServerPaginatedTable;
 
 Hierarchical data display with expandable rows and animations. Use for parent-child relationships or detailed information.
 
-```tsx 
-
+```tsx
 import React, { useState } from 'react';
 import {
   Table,
@@ -867,8 +874,8 @@ const TableNestingExample = () => {
 };
 
 export default TableNestingExample;
-
 ```
+
 ### Table Spanning Pattern
 
 Row and column spanning for complex layouts with merged cells. Use for grouping related data or creating summary sections. Use grid props on TableCell to span across multiple rows or columns for merged cells.
@@ -941,4 +948,3 @@ const TableGroupingExample = () => {
   );
 };
 ```
-

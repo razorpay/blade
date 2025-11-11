@@ -83,9 +83,9 @@ type data = {
 
 type colorTheme = 'categorical';
 
-type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
-type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
+type ChartSequentialColorToken = `data.background.sequential.${Exclude<
   ChartColorCategories,
   'gray'
 >}.${keyof ChartSequentialEmphasis}`;
@@ -130,10 +130,10 @@ function DonutChartExample() {
           type="circle"
           colorTheme="categorical"
         >
-          <ChartDonutCell color="chart.background.categorical.azure.moderate" />
-          <ChartDonutCell color="chart.background.categorical.topaz.moderate" />
-          <ChartDonutCell color="chart.background.categorical.orchid.moderate" />
-          <ChartDonutCell color="chart.background.categorical.emerald.moderate" />
+          <ChartDonutCell color="data.background.categorical.blue.moderate" />
+          <ChartDonutCell color="data.background.categorical.green.moderate" />
+          <ChartDonutCell color="data.background.categorical.gold.moderate" />
+          <ChartDonutCell color="data.background.categorical.purple.moderate" />
         </ChartDonut>
         <ChartTooltip />
         <ChartLegend />

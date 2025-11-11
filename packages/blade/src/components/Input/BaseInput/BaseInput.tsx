@@ -329,7 +329,7 @@ type BaseInputCommonProps = FormInputLabelProps &
      * Sets the size of the input field
      * @default medium
      */
-    size?: 'xsmall' | 'medium' | 'large';
+    size?: 'xsmall' | 'small' | 'medium' | 'large';
     /**
      * Link button to be rendered at the end of the input field.
      * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
