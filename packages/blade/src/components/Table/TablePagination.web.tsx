@@ -46,7 +46,12 @@ const _TablePagination = ({
     ) {
       return Math.ceil(totalItemCount / currentPaginationState.size);
     }
-    if (paginationType === 'client' && totalItems && !isUndefined(currentPaginationState?.size)) {
+    if (
+      paginationType === 'client' &&
+      totalItems &&
+      currentPaginationState &&
+      !isUndefined(currentPaginationState.size)
+    ) {
       return Math.ceil(totalItems / currentPaginationState.size);
     }
     return undefined;

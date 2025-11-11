@@ -234,7 +234,7 @@ const _Pagination = ({
   );
 
   const handlePageSizeChange = useCallback(
-    (pageSize: number): void => {
+    (pageSize: 10 | 25 | 50): void => {
       if (isDisabled) return;
       setInternalPageSize(() => pageSize);
     },
@@ -286,7 +286,7 @@ const _Pagination = ({
                 labelPosition="inside-input"
                 placeholder=""
                 onChange={({ values }) => {
-                  handlePageSizeChange(Number(values[0]));
+                  handlePageSizeChange(Number(values[0]) as 10 | 25 | 50);
                 }}
                 value={internalPageSize.toString()}
                 isDisabled={isDisabled}
