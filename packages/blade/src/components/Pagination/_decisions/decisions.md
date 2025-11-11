@@ -176,7 +176,6 @@ type PaginationProps = PaginationCommonProps & {
 #### Usage Notes
 
 - **All `Pagination` props are supported**: `TablePagination` accepts all props from `Pagination` and passes them through.
-- **Table Context Integration**: When used within a `Table` component, `totalItemCount` may be automatically derived from the table's data if not explicitly provided.
 - **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for  `selectedPage` .
 - **Page Indexing**: Pages are 1-indexed (page 1 is the first page) in the API. If any internal logic uses 0-indexing, this is handled transparently and does not affect the API.
 
