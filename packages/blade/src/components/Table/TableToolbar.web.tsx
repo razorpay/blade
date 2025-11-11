@@ -10,7 +10,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Divider } from '~components/Divider';
 import { Link } from '~components/Link';
 import { getStyledProps } from '~components/Box/styledProps';
-import { makeMotionTime } from '~utils';
+import { makeMotionTime, makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -61,6 +61,7 @@ const _TableToolbar = ({
     currentPaginationState,
     totalItems,
     backgroundColor,
+    tableToolbarPlacement,
   } = useTableContext();
   const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
@@ -79,7 +80,7 @@ const _TableToolbar = ({
   const onMobile = platform === 'onMobile';
 
   const deselectButton = (
-    <Link marginLeft="spacing.5" variant="button" onClick={() => deselectAllRows()}>
+    <Link size="small" marginLeft="spacing.3" variant="button" onClick={() => deselectAllRows()}>
       Deselect
     </Link>
   );
@@ -88,35 +89,31 @@ const _TableToolbar = ({
     <BaseBox backgroundColor={backgroundColor}>
       <ToolbarWrapper
         display="flex"
-        backgroundColor={
-          isSelected ? tableToolbar.backgroundColorSelected : tableToolbar.backgroundColor
-        }
-        padding="spacing.4"
+        backgroundColor={tableToolbar.backgroundColor}
+        padding={tableToolbar.padding}
         flexWrap="wrap"
-        flexDirection={onMobile ? 'column' : 'row'}
+        flexDirection={onMobile && tableToolbarPlacement === 'inline' ? 'column' : 'row'}
         gap="spacing.5"
+        borderWidth="thin"
+        borderColor="surface.border.gray.muted"
+        borderBottomWidth="none"
+        minHeight={makeSize(tableToolbar.minHeight)}
       >
         <BaseBox display="flex" alignItems="center" flex={1}>
           <BaseBox>
             <Text
-              size="medium"
+              size="small"
               weight="medium"
               color={isSelected ? 'surface.text.gray.normal' : 'surface.text.gray.subtle'}
             >
               {selectedTitle ?? title ?? defaultTitle}
             </Text>
           </BaseBox>
-          {isSelected && !onMobile && (
-            <BaseBox display="flex" marginLeft="spacing.5" height="100%">
-              <Divider orientation="vertical" thickness="thick" />
-              {deselectButton}
-            </BaseBox>
-          )}
-          {isSelected && onMobile && (
-            <BaseBox display="flex" flex={1} justifyContent="flex-end">
-              {deselectButton}
-            </BaseBox>
-          )}
+
+          <BaseBox display="flex" marginLeft="spacing.3" height="100%">
+            <Divider orientation="vertical" thickness="thick" />
+            {deselectButton}
+          </BaseBox>
         </BaseBox>
         {children}
       </ToolbarWrapper>

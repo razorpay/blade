@@ -8,6 +8,7 @@ import type {
   TablePaginationType,
   TableHeaderRowProps,
   TableNode as LocalTableNode,
+  TableToolbarPlacement,
 } from './types';
 
 export type TableContextType<Item> = {
@@ -46,6 +47,7 @@ export type TableContextType<Item> = {
   isVirtualized?: boolean;
   tableData: LocalTableNode<Item>[];
   isGrouped: boolean;
+  tableToolbarPlacement: TableToolbarPlacement;
 };
 
 const TableContext = React.createContext<TableContextType<unknown>>({
@@ -77,6 +79,7 @@ const TableContext = React.createContext<TableContextType<unknown>>({
   isVirtualized: false,
   tableData: [],
   isGrouped: false,
+  tableToolbarPlacement: 'inline',
 });
 
 const useTableContext = <Item,>(): TableContextType<Item> => {

@@ -54,13 +54,29 @@ type RadioProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * @private
+   * Internal prop to hide the radio icon
+   * @default false
+   */
+  _hideRadioIcon?: boolean;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade &
   MotionMetaProp;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium', testID, _motionMeta, ...rest },
+  {
+    value,
+    children,
+    helpText,
+    isDisabled,
+    size = 'medium',
+    _hideRadioIcon = false,
+    testID,
+    _motionMeta,
+    ...rest
+  },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -128,12 +144,14 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               ref={getInnerMotionRef({ _motionMeta, ref })}
               {...makeAnalyticsAttribute(rest)}
             />
-            <RadioIcon
-              size={_size}
-              isChecked={state.isChecked}
-              isDisabled={_isDisabled}
-              isNegative={hasError}
-            />
+            {!_hideRadioIcon && (
+              <RadioIcon
+                size={_size}
+                isChecked={state.isChecked}
+                isDisabled={_isDisabled}
+                isNegative={hasError}
+              />
+            )}
             {children ? (
               <SelectorTitle size={_size} isDisabled={_isDisabled}>
                 {children}

@@ -134,7 +134,7 @@ const _TableFooterCell = ({
       {...makeAnalyticsAttribute(rest)}
     >
       {isChildrenString ? (
-        <Text size="medium" weight="medium">
+        <Text color="surface.text.gray.subtle" size="small" weight="medium">
           {children}
         </Text>
       ) : (
