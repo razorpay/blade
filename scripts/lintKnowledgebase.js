@@ -5,11 +5,7 @@ const { glob } = require('glob');
 const { Project, ts } = require('ts-morph');
 
 const knowledgebasePath = path.join(__dirname, '../packages/blade-mcp/knowledgebase');
-// const files = glob.sync(`${knowledgebasePath}/**/*.md`);
-const files = [
-  path.join(knowledgebasePath, 'patterns/ListView.md'),
-  path.join(knowledgebasePath, 'components/ListView.md'),
-];
+const files = glob.sync(`${knowledgebasePath}/**/*.md`);
 
 const filesToLint = files.filter((file) => file.endsWith('.md'));
 

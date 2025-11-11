@@ -61,7 +61,7 @@ const _TableToolbar = ({
     currentPaginationState,
     totalItems,
     backgroundColor,
-    tableToolbarOverlay,
+    tableToolbarPlacement,
   } = useTableContext();
   const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
@@ -92,7 +92,7 @@ const _TableToolbar = ({
         backgroundColor={tableToolbar.backgroundColor}
         padding={tableToolbar.padding}
         flexWrap="wrap"
-        flexDirection={onMobile && !tableToolbarOverlay ? 'column' : 'row'}
+        flexDirection={onMobile && tableToolbarPlacement === 'inline' ? 'column' : 'row'}
         gap="spacing.5"
         borderWidth="thin"
         borderColor="surface.border.gray.muted"

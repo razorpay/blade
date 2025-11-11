@@ -507,6 +507,8 @@ type TablePaginationClientProps = TablePaginationCommonProps & {
 type TablePaginationProps = TablePaginationCommonProps &
   (TablePaginationServerProps | TablePaginationClientProps);
 
+type TableToolbarPlacement = 'inline' | 'overlay';
+
 type TableToolbarProps = {
   /**
    * The children of TableToolbar should be TableToolbarActions
@@ -523,11 +525,13 @@ type TableToolbarProps = {
    */
   selectedTitle?: string;
   /**
-   * Controls whether the TableToolbar is rendered as an overlay on top of the TableHeader.
-   * When set to `true`, the toolbar appears over the TableHeader; otherwise, it renders in its default position above the TableHeader.
-   * Defaults to `false`.
+   * Controls how the TableToolbar is positioned relative to the TableHeader.
+   * - `inline`: Renders the toolbar above the TableHeader as part of the normal layout (default).
+   * - `overlay`: Renders the toolbar over the TableHeader.
+   *
+   * Defaults to `inline`.
    */
-  overlay?: boolean;
+  placement?: TableToolbarPlacement;
 } & DataAnalyticsAttribute;
 
 type TableToolbarActionsProps = {
@@ -644,6 +648,7 @@ export type {
   TablePaginationProps,
   TableToolbarProps,
   TableToolbarActionsProps,
+  TableToolbarPlacement,
   TableBackgroundColors,
   TablePaginationType,
   TablePaginationCommonProps,

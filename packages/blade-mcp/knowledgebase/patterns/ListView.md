@@ -861,7 +861,7 @@ function ComprehensiveListViewExample() {
           }
           toolbar={
             selectedIds.length > 0 ? (
-              <TableToolbar overlay title={`${selectedIds.length} selected`}>
+              <TableToolbar placement="overlay" title={`${selectedIds.length} selected`}>
                 <TableToolbarActions>
                   <Box
                     width="100%"

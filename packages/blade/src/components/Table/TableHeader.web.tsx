@@ -9,6 +9,7 @@ import type {
   TableHeaderCellProps,
   TableBackgroundColors,
   TableProps,
+  TableToolbarPlacement,
 } from './types';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -71,23 +72,23 @@ const SortIcon = ({
   );
 };
 
-const StyledHeader = styled(Header)<{ $tableToolbarOverlay: boolean }>(
-  ({ $tableToolbarOverlay }) => ({
+const StyledHeader = styled(Header)<{ $tableToolbarPlacement: TableToolbarPlacement }>(
+  ({ $tableToolbarPlacement }) => ({
     '&&&': {
       '& tr:first-child th': {
         borderTop: 'none',
       },
-      display: $tableToolbarOverlay ? 'none' : undefined,
+      display: $tableToolbarPlacement === 'overlay' ? 'none' : undefined,
     },
   }),
 );
 
 const _TableHeader = ({ children, ...rest }: TableHeaderRowProps): React.ReactElement => {
-  const { tableToolbarOverlay } = useTableContext();
+  const { tableToolbarPlacement } = useTableContext();
 
   return (
     <StyledHeader
-      $tableToolbarOverlay={tableToolbarOverlay}
+      $tableToolbarPlacement={tableToolbarPlacement}
       {...metaAttribute({ name: MetaConstants.TableHeader })}
       {...makeAnalyticsAttribute(rest)}
     >
