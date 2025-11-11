@@ -13,7 +13,7 @@
 - **Added:** 
   - `actions` (replaces deprecated search-related props)  
   - `FilterChipGroup.padding`  
-  - `BulkActionToolbar.overlay`
+  - `TableToolbar.placement`
 
 ### 🎨 List View Visual & Structural Changes
 - **Table Cell:** Font (M→S, S→XS), color (Normal→Subtle), links (Primary→Neutral)
