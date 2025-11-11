@@ -292,7 +292,7 @@ describe('<Pagination />', () => {
     const user = userEvents.setup();
     const onPageSizeChange = jest.fn();
     const ControlledPageSize = () => {
-      const [pageSize, setPageSize] = useState(10);
+      const [pageSize, setPageSize] = useState<10 | 25 | 50>(10);
       return (
         <Pagination
           totalPages={50}
@@ -302,7 +302,7 @@ describe('<Pagination />', () => {
           pageSize={pageSize}
           onPageSizeChange={({ pageSize: newSize }) => {
             onPageSizeChange({ pageSize: newSize });
-            setPageSize(newSize);
+            setPageSize(newSize as 10 | 25 | 50);
           }}
           showPageSizePicker
         />
