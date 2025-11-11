@@ -193,7 +193,7 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
         nonUiLinesRemovedTotal: nonUiLinesRemovedTotal ?? 0,
         files: flattenedFiles,
         toolsUsed: (toolsUsed ?? []).join(','),
-        rootDirectoryName: currentProjectRootDirectory.split('/').pop(),
+        currentProjectRootDirectory,
       },
     });
 

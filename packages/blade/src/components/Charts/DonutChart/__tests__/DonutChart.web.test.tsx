@@ -89,8 +89,8 @@ describe('<DonutChart />', () => {
       <Box width="500px" height="500px">
         <ChartDonutWrapper>
           <ChartDonut data={mockData} dataKey="value" nameKey="name">
-            <ChartDonutCell color="chart.background.categorical.gray.moderate" />
-            <ChartDonutCell color="chart.background.categorical.cider.moderate" />
+            <ChartDonutCell color="data.background.categorical.gray.moderate" />
+            <ChartDonutCell color="data.background.categorical.blue.moderate" />
           </ChartDonut>
         </ChartDonutWrapper>
       </Box>,

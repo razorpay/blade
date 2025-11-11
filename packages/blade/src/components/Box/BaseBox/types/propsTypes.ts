@@ -4,7 +4,12 @@ import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border, Elevation } from '~tokens/global';
-import type { DataAnalyticsAttribute, PickCSSByPlatform, TestID } from '~utils/types';
+import type {
+  DataAnalyticsAttribute,
+  PickCSSByPlatform,
+  TestID,
+  ElementTiming,
+} from '~utils/types';
 import type { Platform } from '~utils';
 import type { BladeCommonEvents } from '~components/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
@@ -316,6 +321,7 @@ type BoxProps = Partial<
       tabIndex?: number;
       id?: string;
     } & TestID &
+    ElementTiming &
     DataAnalyticsAttribute
 >;
 
@@ -329,7 +335,7 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
         className?: string;
         id?: string;
         tabIndex?: number;
-      }
+      } & ElementTiming
   > &
   BladeCommonEvents;
 

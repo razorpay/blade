@@ -350,7 +350,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   width: 36px;
   cursor: pointer;
   background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   border-width: 0px;
   border-radius: 4px;
   border-style: solid;
@@ -1133,7 +1133,7 @@ exports[`TopNav should render 1`] = `
   width: 36px;
   cursor: pointer;
   background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   border-width: 0px;
   border-radius: 4px;
   border-style: solid;
@@ -1916,7 +1916,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
   width: 36px;
   cursor: pointer;
   background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   border-width: 0px;
   border-radius: 4px;
   border-style: solid;

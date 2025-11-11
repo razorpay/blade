@@ -1,16 +1,19 @@
-import { existsSync, readFileSync } from 'fs';
-import { join, basename } from 'path';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
-  CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
   GENERAL_KNOWLEDGEBASE_DIRECTORY,
+  CURSOR_RULES_VERSION,
+  CHECK_CURSOR_RULES_DESCRIPTION,
 } from '../utils/tokens.js';
 
-import { getBladeDocsList, hasOutDatedRules } from '../utils/generalUtils.js';
+import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
+import { isCursorRuleFileMissing, areCursorRulesOutdated } from '../utils/cursorRulesUtils.js';
+import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeGeneralDocsList = getBladeDocsList('general');
 
@@ -36,11 +39,15 @@ const getBladeGeneralDocsToolSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
+  clientName: z.enum(['claude', 'cursor', 'unknown']).default('unknown'),
+  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
 };
 
 const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsToolSchema> = ({
   topicsList,
   currentProjectRootDirectory,
+  clientName,
+  cursorRuleVersion,
 }) => {
   const topics = topicsList.split(',').map((s) => s.trim());
   const invalidTopics = topics.filter((topic) => !bladeGeneralDocsList.includes(topic));
@@ -53,19 +60,17 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
     });
   }
 
-  const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
-
-  if (!existsSync(ruleFilePath)) {
+  if (isCursorRuleFileMissing(cursorRuleVersion, clientName)) {
     return handleError({
       toolName: getBladeGeneralDocsToolName,
-      mcpErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
+      mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
     });
   }
 
-  if (hasOutDatedRules(ruleFilePath)) {
+  if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
     return handleError({
       toolName: getBladeGeneralDocsToolName,
-      mcpErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
+      mcpErrorMessage: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
     });
   }
 
@@ -80,7 +85,8 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
       properties: {
         toolName: getBladeGeneralDocsToolName,
         topicsList,
-        rootDirectoryName: basename(currentProjectRootDirectory),
+        currentProjectRootDirectory,
+        clientName,
       },
     });
 

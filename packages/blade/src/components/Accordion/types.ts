@@ -2,7 +2,7 @@ import type React from 'react';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID, ElementTiming } from '~utils/types';
 
 type AccordionVariantType = 'filled' | 'transparent';
 
@@ -68,6 +68,7 @@ type AccordionProps = {
    */
   children: React.ReactElement | React.ReactElement[];
 } & TestID &
+  ElementTiming &
   StyledPropsBlade &
   Pick<BoxProps, 'minWidth' | 'maxWidth'>;
 

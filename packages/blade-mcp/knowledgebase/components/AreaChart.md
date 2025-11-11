@@ -97,7 +97,7 @@ type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
 
 type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
 
-type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
 
 type colorTheme = 'categorical';
 ```
@@ -139,7 +139,7 @@ function BasicAreaChart() {
           dataKey="revenue"
           name="Revenue"
           type="monotone"
-          color="chart.background.categorical.azure.intense"
+          color="data.background.categorical.azure.intense"
         />
       </ChartAreaWrapper>
     </Box>

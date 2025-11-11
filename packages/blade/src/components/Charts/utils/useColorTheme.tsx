@@ -1,44 +1,58 @@
-import { useTheme } from '~components/BladeProvider';
+import type { ColorTheme, ChartName, ChartColorTokenNames, ColorIntensity } from './types';
+import { colorSequence } from './tokens';
 /**
  * The color theme of the chart.
  * @default 'categorical'
  * @description The color theme of the chart.
- *
  */
-export type ColorTheme = 'categorical';
 
 const useChartsColorTheme = ({
   colorTheme = 'categorical',
+  chartName,
+  chartDataIndicators = 0,
 }: {
   colorTheme?: ColorTheme;
-}): string[] => {
-  const { theme } = useTheme();
-  const categoricalColorThemeArray = [
-    theme.colors.chart.background.categorical.azure.subtle,
-    theme.colors.chart.background.categorical.topaz.moderate,
-    theme.colors.chart.background.categorical.orchid.moderate,
-    theme.colors.chart.background.categorical.emerald.subtle,
-    theme.colors.chart.background.categorical.cider.moderate,
-    theme.colors.chart.background.categorical.sapphire.moderate,
-    theme.colors.chart.background.categorical.magenta.moderate,
-    theme.colors.chart.background.categorical.crimson.subtle,
-    theme.colors.chart.background.categorical.azure.intense,
-    theme.colors.chart.background.categorical.topaz.intense,
-    theme.colors.chart.background.categorical.orchid.intense,
-    theme.colors.chart.background.categorical.emerald.intense,
-    theme.colors.chart.background.categorical.sapphire.intense,
-    theme.colors.chart.background.categorical.magenta.intense,
-    theme.colors.chart.background.categorical.cider.intense,
-    theme.colors.chart.background.categorical.crimson.intense,
-  ];
-
-  if (colorTheme !== 'categorical') {
-    console.log(`${colorTheme} is not supported. Blade only supports 'categorical'  color theme`);
+  chartName?: ChartName;
+  chartDataIndicators?: number;
+}): CategoricalColorToken[] => {
+  // Single data point should be gray
+  if (chartDataIndicators === 1 && chartName !== 'donut') {
+    return ['data.background.categorical.gray.moderate'];
   }
 
-  //TODO:Currently we only have one color theme will add more color theme later.
+  // Intensity sequence based on chart type
+  const getIntensitySequence = (chartName?: ChartName): ColorIntensity[] => {
+    if (chartName === 'line' || chartName === 'area') {
+      // Reverse sequence for Line and Area charts: strong, moderate, subtle, faint
+      return ['strong', 'intense', 'moderate', 'subtle', 'faint'];
+    } else {
+      // Default sequence for Bar and Donut charts: faint, subtle, moderate, strong
+      return ['faint', 'subtle', 'moderate', 'intense', 'strong'];
+    }
+  };
 
-  return categoricalColorThemeArray;
+  const intensitySequence = getIntensitySequence(chartName);
+  const colorThemeArray: CategoricalColorToken[] = [];
+
+  // Generate colors based on sequence and intensity
+  // For each intensity level, go through all colors
+  intensitySequence.forEach((intensity) => {
+    colorSequence.forEach((colorName) => {
+      const colorValue = `data.background.categorical.${colorName}.${intensity}`;
+      colorThemeArray.push(colorValue as CategoricalColorToken);
+    });
+  });
+
+  if (colorTheme !== 'categorical') {
+    console.log(`${colorTheme} is not supported. Blade only supports 'categorical' color theme`);
+  }
+
+  return colorThemeArray;
 };
+
+/**
+ * Color token types for type safety
+ */
+type CategoricalColorToken = `data.background.categorical.${ChartColorTokenNames}.${ColorIntensity}`;
 
 export default useChartsColorTheme;

@@ -25,7 +25,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -113,7 +113,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -227,7 +227,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -347,7 +347,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
