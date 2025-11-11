@@ -1,35 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<QuickFilters/> should render Values Correctly 1`] = `
-.c12.c12.c12.c12.c12 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-width: 12px;
-  width: 12px;
-  height: 12px;
-  border-width: 1.5px;
-  border-style: solid;
-  margin: 2px;
-  border-radius: 9999px;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
-  transition-timing-function: cubic-bezier(0.17,0,1,1);
-}
-
 .c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;

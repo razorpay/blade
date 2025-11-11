@@ -12532,7 +12532,7 @@ exports[`<Table /> should render table with multi select 1`] = `
   z-index: 2;
 }
 
-.c38.c38.c38.c38.c38:hover + div {
+.c39.c39.c39.c39.c39:hover + div {
   border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -15234,7 +15234,7 @@ exports[`<Table /> should render table with multi select 2`] = `
   z-index: 2;
 }
 
-.c38.c38.c38.c38.c38:hover + div {
+.c39.c39.c39.c39.c39:hover + div {
   border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -17909,7 +17909,7 @@ exports[`<Table /> should render table with multi select 3`] = `
   z-index: 2;
 }
 
-.c15.c15.c15.c15.c15:hover + div {
+.c21.c21.c21.c21.c21:hover + div {
   border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
