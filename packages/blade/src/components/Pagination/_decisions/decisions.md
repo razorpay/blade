@@ -135,8 +135,8 @@ type PaginationProps = PaginationCommonProps & {
 
 **Page Size Control:**
 
-- **Controlled**: Pass `selectedPageSize` prop. Component will not update page size internally, you must handle page size changes via `onPageSizeChange`.
-- **Uncontrolled**: Omit `selectedPageSize` prop. Component manages page size internally using `defaultPageSize`.
+- **Controlled**: Pass `pageSize` prop. Component will not update page size internally, you must handle page size changes via `onPageSizeChange`.
+- **Uncontrolled**: Omit `pageSize` prop. Component manages page size internally using `defaultPageSize`.
 
 **Examples:**
 
@@ -145,7 +145,7 @@ type PaginationProps = PaginationCommonProps & {
 <Pagination
   totalPages={100}
   selectedPage={page}
-  selectedPageSize={pageSize}
+  pageSize={pageSize}
   showPageSizePicker
   showPageNumbers
   onPageChange={({ page }) => setPage(page)}
@@ -155,7 +155,7 @@ type PaginationProps = PaginationCommonProps & {
 // Uncontrolled: Component manages its own state
 <Pagination
   totalPages={100}
-  defaultselectedPage={0}
+  defaultselectedPage={1}
   defaultPageSize={10}
   onPageChange={({ page }) => console.log('Page changed:', page)}
   showPageSizePicker
@@ -177,8 +177,8 @@ type PaginationProps = PaginationCommonProps & {
 
 - **All `Pagination` props are supported**: `TablePagination` accepts all props from `Pagination` and passes them through.
 - **Table Context Integration**: When used within a `Table` component, `totalItemCount` may be automatically derived from the table's data if not explicitly provided.
-- **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for both `selectedPage` and `selectedPageSize`.
-- **Page Indexing**: Uses 0-indexed pages internally (page 0 is the first page).
+- **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for  `selectedPage` .
+- **Page Indexing**: Pages are 1-indexed (page 1 is the first page) in the API. If any internal logic uses 0-indexing, this is handled transparently and does not affect the API.
 
 ## Component Architecture
 
@@ -218,7 +218,7 @@ Simple pagination with default settings, component manages its own state:
 ```jsx
 <Pagination
   totalPages={100}
-  defaultselectedPage={0}
+  defaultselectedPage={1}
   onPageChange={({ page }) => console.log('Page changed:', page)}
 />
 ```
@@ -231,7 +231,6 @@ Fully controlled pagination:
 <Pagination
   totalPages={100}
   selectedPage={page}
-  selectedPageSize={pageSize}
   onPageChange={({ page }) => setPage(page)}
   onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
   showPageSizePicker
@@ -256,15 +255,15 @@ Full-featured pagination with all controls:
 />
 ```
 
-#### Using totalItemCount (Automatic Calculation)
+#### Required totalPages prop  
 
-Pagination with automatic totalPages calculation:
-
-```jsx
+Pagination requires the `totalPages` prop to be specified:  
+***jsx
 <Pagination
-  selectedPage={0}
-  onPageChange={({ page }) => setselectedPage(page)}
-  defaultPageSize={10}
+totalPages={100}
+selectedPage={0}
+onPageChange={({ page }) => setselectedPage(page)}
+defaultPageSize={10}
   // totalPages will be calculated as Math.ceil(1000 / 10) = 100
 />
 ```
@@ -308,5 +307,5 @@ Pagination in disabled state:
 
 ## Open Questions
 
-- Do we need props like `sibilings` and `boundariesCount` ?
+- Do we need props like `siblings` and `boundariesCount` ?
 - So currently pagination takes full width without label as well can we modify it to take width based on the inner content ?
