@@ -89,7 +89,8 @@ const ListViewFilters = ({
             <StyledQuickFilterContainer
               overflow="scroll"
               width="100%"
-              paddingY="spacing.4"
+              paddingTop={isMobile ? 'spacing.4' : 'spacing.1'}
+              paddingBottom="spacing.1"
               paddingLeft="spacing.1"
             >
               {quickFilters}

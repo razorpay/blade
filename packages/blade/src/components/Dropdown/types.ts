@@ -90,10 +90,6 @@ type FilterChipGroupProps = TestID &
      *
      */
     showClearButton?: boolean;
-    /**
-     * Padding for the FilterChipGroup
-     */
-    padding?: BoxProps['padding'];
   };
 
 type FilterChipGroupContextType = {
