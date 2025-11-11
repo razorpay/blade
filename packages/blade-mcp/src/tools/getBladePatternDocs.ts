@@ -39,7 +39,12 @@ const getBladePatternDocsToolSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-  clientName: z.enum(['claude', 'cursor', 'unknown']).default('unknown'),
+  clientName: z
+    .enum(['claude', 'cursor', 'unknown'])
+    .default('unknown')
+    .describe(
+      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
+    ),
   cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
 };
 
