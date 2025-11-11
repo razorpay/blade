@@ -39,7 +39,7 @@ curl -sSL "$URL" -o "$FILE_PATH"
 
 /**
  *
- *
+ * Generates formatted instructions for creating cursor rules files in a project.
  * @param currentProjectRootDirectory - The working root directory of the consumer's project
  * @returns The instructions text for creating cursor rules
  */
