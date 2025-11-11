@@ -25,36 +25,40 @@ const Page = (): React.ReactElement => {
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { 
-         ChartBar,
-         ChartBarWrapper,
-         ChartXAxis,
-         ChartYAxis,
-         ChartCartesianGrid,
-         ChartTooltip,
-         ChartLegend,
-        } from '@razorpay/blade/components';
-        
-        function App() {
-          const data = [
-            { name: 'Jan', sales: 4000 },
-            { name: 'Feb', sales: 3000 },
-            { name: 'Mar', sales: 2000 },
-          ];
-          
-          return (
-              <ChartBarWrapper data={data}>
-                <ChartCartesianGrid />
-                <ChartXAxis dataKey="name" />
-                <ChartYAxis />
-                <ChartTooltip />
-                <ChartLegend />
-                <ChartBar dataKey="sales" name="Sales" />
-              </ChartBarWrapper>
-          )
-        }
+            import {
+             ChartBar,
+             ChartBarWrapper,
+             ChartXAxis,
+             ChartYAxis,
+             ChartCartesianGrid,
+             ChartTooltip,
+             ChartLegend,
+             Box,
+           } from '@razorpay/blade/components';
+           
+           function App() {
+             const data = [
+               { name: 'Jan', sales: 4000 },
+               { name: 'Feb', sales: 3000 },
+               { name: 'Mar', sales: 2000 },
+             ];
+           
+             return (
+               <Box width="400px" height="400px">
+                 <ChartBarWrapper data={data}>
+                   <ChartCartesianGrid />
+                   <ChartXAxis dataKey="name" />
+                   <ChartYAxis />
+                   <ChartTooltip />
+                   <ChartLegend />
+                   <ChartBar dataKey="sales" name="Sales" />
+                 </ChartBarWrapper>
+               </Box>
+             );
+           }
+           
+           export default App;
 
-        export default App;
       `}
       </Sandbox>
     </StoryPageWrapper>
