@@ -46,21 +46,19 @@ curl -sSL "$URL" -o "$FILE_PATH"
 
 export function cursorRuleCreationInstructions(currentProjectRootDirectory: string): string {
   return `## 
-           **Instructions:**
-          1. Change to the working directory: \`cd "${currentProjectRootDirectory}"\`
-          2. Run the bash script below (copy and execute the commands from the script)
-          3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
+**Instructions:**
+1. Change to the working directory: \`cd "${currentProjectRootDirectory}"\`
+2. Run the bash script below (copy and execute the commands from the script)
+3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.m
+Run the following bash script to create cursor rules:
+  
 
-          Run the following bash script to create cursor rules:
-            
-          
-          **Bash Script:**
-          
-          \`\`\`bash
-          ${bashScriptContent}
-          \`\`\`
+**Bash Script:**
 
-          **Working Directory:** \`${currentProjectRootDirectory}\`
+\`\`\`bash
+${bashScriptContent}
+\`
+**Working Directory:** \`${currentProjectRootDirectory}\`
      
           `;
 }
