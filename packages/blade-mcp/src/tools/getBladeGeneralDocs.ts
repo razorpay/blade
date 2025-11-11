@@ -5,15 +5,18 @@ import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
   analyticsToolCallEventName,
   GENERAL_KNOWLEDGEBASE_DIRECTORY,
-  CURSOR_RULES_VERSION,
   CHECK_CURSOR_RULES_DESCRIPTION,
+  CURSOR_RULES_VERSION,
 } from '../utils/tokens.js';
 
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
-import { isCursorRuleFileMissing, areCursorRulesOutdated } from '../utils/cursorRulesUtils.js';
-import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
+import {
+  isCursorRuleFileMissing,
+  areCursorRulesOutdated,
+  cursorRuleCreationInstructions,
+} from '../utils/cursorRulesUtils.js';
 
 const bladeGeneralDocsList = getBladeDocsList('general');
 
@@ -66,17 +69,27 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
   }
 
   if (isCursorRuleFileMissing(cursorRuleVersion, clientName)) {
-    return handleError({
-      toolName: getBladeGeneralDocsToolName,
-      mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
-    });
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Cursor rules do not exist. Create them using the following instructions: \n\n
+          ${cursorRuleCreationInstructions(currentProjectRootDirectory)}`,
+        },
+      ],
+    };
   }
 
   if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
-    return handleError({
-      toolName: getBladeGeneralDocsToolName,
-      mcpErrorMessage: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
-    });
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Update them using the following instructions: \n\n
+          ${cursorRuleCreationInstructions(currentProjectRootDirectory)}`,
+        },
+      ],
+    };
   }
 
   try {

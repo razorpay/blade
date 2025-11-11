@@ -9,8 +9,11 @@ import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
-import { isCursorRuleFileMissing, areCursorRulesOutdated } from '../utils/cursorRulesUtils.js';
-import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
+import {
+  isCursorRuleFileMissing,
+  areCursorRulesOutdated,
+  cursorRuleCreationInstructions,
+} from '../utils/cursorRulesUtils.js';
 
 const bladeComponentsList = getBladeDocsList('components');
 const bladeComponentsListString = bladeComponentsList.join(', ');
@@ -55,17 +58,26 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
   }
 
   if (isCursorRuleFileMissing(cursorRuleVersion, clientName)) {
-    return handleError({
-      toolName: getBladeComponentDocsToolName,
-      mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
-    });
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Cursor rules do not exist. Create them using the following instructions: \n\n
+          ${cursorRuleCreationInstructions(currentProjectRootDirectory)}`,
+        },
+      ],
+    };
   }
-
   if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
-    return handleError({
-      toolName: getBladeComponentDocsToolName,
-      mcpErrorMessage: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
-    });
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Update them using the following instructions: \n\n
+          ${cursorRuleCreationInstructions(currentProjectRootDirectory)}`,
+        },
+      ],
+    };
   }
 
   try {
