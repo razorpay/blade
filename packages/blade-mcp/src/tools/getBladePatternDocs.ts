@@ -18,7 +18,6 @@ import {
   cursorRuleCreationInstructions,
 } from '../utils/cursorRulesUtils.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
-import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladePatternsList = getBladeDocsList('patterns');
 const whichPatternToUseGuide = readFileSync(
