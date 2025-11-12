@@ -145,6 +145,7 @@ Default.args = {
 const ControlledExample = (): React.ReactElement => {
   const [selectedPage, setSelectedPage] = useState(1);
   const [pageSize, setPageSize] = useState<10 | 25 | 50>(10);
+  const totalItems = 1000;
 
   return (
     <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
@@ -152,7 +153,7 @@ const ControlledExample = (): React.ReactElement => {
         Current Page: {selectedPage}, Page Size: {pageSize}
       </Text>
       <PaginationComponent
-        totalPages={100}
+        totalPages={totalItems / pageSize}
         selectedPage={selectedPage}
         pageSize={pageSize}
         onSelectedPageChange={({ page }) => setSelectedPage(page)}
