@@ -119,6 +119,7 @@ export default {
 const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) => {
   const [selectedPage, setSelectedPage] = useState(1);
   const [pageSize, setPageSize] = useState<10 | 25 | 50>(10);
+  const totalItems = 1000;
 
   return (
     <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
@@ -126,6 +127,7 @@ const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) =>
         {...args}
         selectedPage={selectedPage}
         pageSize={pageSize}
+        totalPages={totalItems / pageSize}
         onSelectedPageChange={({ page }) => setSelectedPage(page)}
         onPageSizeChange={({ pageSize }) => setPageSize(pageSize as 10 | 25 | 50)}
       />
@@ -135,7 +137,6 @@ const PaginationTemplate: StoryFn<typeof PaginationComponent> = ({ ...args }) =>
 
 export const Default = PaginationTemplate.bind({});
 Default.args = {
-  totalPages: 10,
   selectedPage: 1,
   showPageNumberSelector: true,
   showPageSizePicker: true,
