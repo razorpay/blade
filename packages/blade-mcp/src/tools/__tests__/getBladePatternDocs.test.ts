@@ -204,7 +204,7 @@ describe('getBladePatternDocs Tool', () => {
 
   it('should return consistent pattern docs response (snapshot)', async () => {
     const testProjectRootDirectory = '/Users/test/project';
-    const testPatternsList = 'ListView, DetailedView';
+    const testPatternsList = 'FormGroup';
 
     // Unmock fs first so that getBladeDocsResponseText can read real files
     vi.doUnmock('fs');

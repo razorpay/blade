@@ -5,1820 +5,533 @@ exports[`getBladePatternDocs Tool > should return consistent pattern docs respon
   "content": [
     {
       "text": "Below is the documentation for Patterns. After this, call get_blade_component_docs to get documentation for components that are used in patterns.:
- Blade patterns documentation for: ListView, DetailedView
+ Blade patterns documentation for: FormGroup
 
-# ListView
-# ListView
+# FormGroup
+# FormGroup
 
 ## Description
 
-ListView is a comprehensive data presentation pattern that combines tables with advanced filtering, searching, and data management capabilities. It provides a complete solution for displaying large datasets with interactive filters including quick filters, search functionality, date range selection, and dropdown filters. This pattern is ideal for dashboards, admin panels, and any interface that needs to display and filter tabular data efficiently with a consistent user experience.
+FormGroup is a pattern that provides a consistent way to build forms using Blade components. It offers structured layouts for form sections, proper spacing, validation handling, and responsive design. Use this pattern when you need to create forms with multiple input fields, validation states, different layouts (horizontal/vertical sections), and consistent spacing between form elements.
 
 ## Components Used
 
-- ListView
-- Table
-- QuickFilter
+- Box
+- TextInput
+- TextArea
+- PasswordInput
+- SelectInput
 - Dropdown
+- DropdownOverlay
 - ActionList
-- Counter
-- Badge
+- ActionListItem
 - Button
-- IconButton
-- Code
-- Amount
-- Box
-
-## Example
-
-### Basic ListView with Comprehensive Filtering
-
-This example demonstrates a complete ListView implementation with quick filters, search functionality, dropdown filters, date range selection, and table interactions including row selection and hover actions.
-
-\`\`\`tsx
-import React, { useState } from 'react';
-import {
-  ListView,
-  ListViewFilters,
-  Table,
-  TableHeader,
-  TableHeaderRow,
-  TableHeaderCell,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableEditableCell,
-  TableFooter,
-  TableFooterRow,
-  TableFooterCell,
-  QuickFilterGroup,
-  QuickFilter,
-  FilterChipGroup,
-  FilterChipSelectInput,
-  FilterChipDatePicker,
-  Dropdown,
-  DropdownOverlay,
-  ActionList,
-  ActionListItem,
-  Counter,
-  Badge,
-  Button,
-  IconButton,
-  Code,
-  Amount,
-  Box,
-  CheckIcon,
-  CloseIcon,
-} from '@razorpay/blade/components';
-import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/components';
-
-type PaymentItem = {
-  id: string;
-  paymentId: string;
-  amount: number;
-  status: string;
-  date: Date;
-  type: string;
-  method: {
-    key: string;
-    title: string;
-  };
-  bank: string;
-  account: string;
-  name: string;
-};
-
-const MethodFilterValues = [
-  { key: 'bank-transfer', title: 'Bank Transfer' },
-  { key: 'credit-card', title: 'Credit Card' },
-  { key: 'paypal', title: 'PayPal' },
-];
-
-const nodes: PaymentItem[] = [
-  ...Array.from({ length: 30 }, (_, i) => ({
-    id: (i + 1).toString(),
-    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
-    amount: Number((Math.random() * 10000).toFixed(2)),
-    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
-    date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
-    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
-    method: MethodFilterValues[Math.floor(Math.random() * 3)],
-    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
-    account: Math.floor(Math.random() * 1000000000).toString(),
-    name: ['John Doe', 'Jane Doe', 'Bob Smith', 'Alice Smith'][Math.floor(Math.random() * 4)],
-  })),
-];
-
-const quickFilters = ['All', 'Pending', 'Failed', 'Completed'];
-const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
-const quickFilterColorMapping: Record<string, CounterProps['color']> = {
-  All: 'primary',
-  Pending: 'notice',
-  Failed: 'negative',
-  Completed: 'neutral',
-};
-
-const data: TableData<PaymentItem> = { nodes };
-
-function BasicListViewExample() {
-  const [listViewTableData, setListViewTableData] = useState(data);
-  const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
-  const [searchValue, setSearchValue] = useState<string | undefined>('');
-  const [methodFilter, setMethodFilter] = useState<string | undefined>('');
-  const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
-
-  const getQuickFilterValueCount = (value: string): number => {
-    if (value === 'All') {
-      return data.nodes.length;
-    }
-    return data.nodes.filter((node) => node.status === value).length;
-  };
-
-  const getQuickFilterData = (
-    data: TableData<PaymentItem>,
-    value?: string,
-  ): TableData<PaymentItem> => {
-    if (!value || value === 'All') {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => node.status === value) };
-  };
-
-  const getSearchedData = (
-    data: TableData<PaymentItem>,
-    value?: string,
-  ): TableData<PaymentItem> => {
-    if (!value) {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => node.paymentId.includes(value)) };
-  };
-
-  const getMethodFilterData = (
-    data: TableData<PaymentItem>,
-    value?: string,
-  ): TableData<PaymentItem> => {
-    if (!value) {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => node.method.key === value) };
-  };
-
-  const getFilterRangeData = (
-    data: TableData<PaymentItem>,
-    value?: DatesRangeValue,
-  ): TableData<PaymentItem> => {
-    if (!value?.[0]) {
-      return { nodes: data.nodes };
-    }
-    return {
-      nodes: data.nodes.filter((node) => {
-        if (!value?.[0] || !value?.[1]) return false;
-        return node.date >= value[0] && node.date <= value[1];
-      }),
-    };
-  };
-
-  const applyAllFilters = (
-    quickFilter: string,
-    search: string | undefined,
-    method: string | undefined,
-    dateRange: DatesRangeValue | undefined,
-  ) => {
-    const quickFilterData = getQuickFilterData(data, quickFilter);
-    const searchValueData = getSearchedData(quickFilterData, search);
-    const methodFilterData = getMethodFilterData(searchValueData, method);
-    const dateRangeFilterData = getFilterRangeData(methodFilterData, dateRange);
-    setListViewTableData(dateRangeFilterData);
-  };
-
-  return (
-    <Box height="100%">
-      <ListView>
-        <ListViewFilters
-          quickFilters={
-            <QuickFilterGroup
-              selectionType="single"
-              onChange={({ values }) => {
-                const value = values[0];
-                setSelectedQuickFilter(value);
-                applyAllFilters(value, searchValue, methodFilter, filterDateRange);
-              }}
-              defaultValue="All"
-              value={selectedQuickFilter}
-            >
-              {quickFilters.map((status) => (
-                <QuickFilter
-                  key={status}
-                  title={status}
-                  value={status}
-                  trailing={
-                    <Counter
-                      value={getQuickFilterValueCount(status)}
-                      color={quickFilterColorMapping[status]}
-                    />
-                  }
-                />
-              ))}
-            </QuickFilterGroup>
-          }
-          onSearchChange={({ value }) => {
-            setSearchValue(value);
-            applyAllFilters(selectedQuickFilter, value, methodFilter, filterDateRange);
-          }}
-          onSearchClear={() => {
-            setSearchValue('');
-            applyAllFilters(selectedQuickFilter, '', methodFilter, filterDateRange);
-          }}
-          searchValuePlaceholder="Search for Payment ID"
-          selectedFiltersCount={
-            (methodFilter ? 1 : 0) +
-            (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
-            (selectedQuickFilter !== 'All' ? 1 : 0)
-          }
-        >
-          <FilterChipGroup
-            onClearButtonClick={() => {
-              setMethodFilter(undefined);
-              setFilterDateRange(undefined);
-              setSelectedQuickFilter('All');
-              applyAllFilters('All', searchValue, undefined, undefined);
-            }}
-          >
-            <Dropdown selectionType="single">
-              <FilterChipSelectInput
-                label="Method"
-                value={methodFilter}
-                onChange={({ values }) => {
-                  const value = values[0];
-                  setMethodFilter(value);
-                  applyAllFilters(selectedQuickFilter, searchValue, value, filterDateRange);
-                }}
-                onClearButtonClick={() => {
-                  setMethodFilter(undefined);
-                  applyAllFilters(selectedQuickFilter, searchValue, undefined, filterDateRange);
-                }}
-              />
-              <DropdownOverlay>
-                <ActionList>
-                  {MethodFilterValues.map((method) => (
-                    <ActionListItem key={method.key} title={method.title} value={method.key} />
-                  ))}
-                </ActionList>
-              </DropdownOverlay>
-            </Dropdown>
-
-            <FilterChipDatePicker
-              label="Date Range"
-              selectionType="range"
-              value={filterDateRange}
-              onChange={(value) => {
-                const dateRange = Array.isArray(value) ? value : undefined;
-                setFilterDateRange(dateRange);
-                applyAllFilters(selectedQuickFilter, searchValue, methodFilter, dateRange);
-              }}
-              onClearButtonClick={() => {
-                setFilterDateRange(undefined);
-                applyAllFilters(selectedQuickFilter, searchValue, methodFilter, undefined);
-              }}
-            />
-
-            <Dropdown selectionType="single">
-              <FilterChipSelectInput
-                label="Status"
-                value={selectedQuickFilter !== 'All' ? selectedQuickFilter : undefined}
-                onChange={({ values }) => {
-                  const value = values[0] || 'All';
-                  setSelectedQuickFilter(value);
-                  applyAllFilters(value, searchValue, methodFilter, filterDateRange);
-                }}
-                onClearButtonClick={() => {
-                  setSelectedQuickFilter('All');
-                  applyAllFilters('All', searchValue, methodFilter, filterDateRange);
-                }}
-              />
-              <DropdownOverlay>
-                <ActionList>
-                  {filterChipQuickFilters.map((status) => (
-                    <ActionListItem
-                      key={status}
-                      title={status}
-                      value={status}
-                      isSelected={selectedQuickFilter === status}
-                    />
-                  ))}
-                </ActionList>
-              </DropdownOverlay>
-            </Dropdown>
-          </FilterChipGroup>
-        </ListViewFilters>
-
-        <Table
-          data={listViewTableData}
-          defaultSelectedIds={['1', '3']}
-          onSelectionChange={(selectedItems) => {
-            console.log('Selected items:', selectedItems);
-          }}
-          isFirstColumnSticky
-          selectionType="multiple"
-        >
-          {(tableData) => (
-            <>
-              <TableHeader>
-                <TableHeaderRow>
-                  <TableHeaderCell headerKey="PAYMENT_ID">Payment ID</TableHeaderCell>
-                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                  <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
-                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
-                </TableHeaderRow>
-              </TableHeader>
-              <TableBody>
-                {tableData.map((tableItem, index) => (
-                  <TableRow
-                    key={tableItem.id}
-                    item={tableItem}
-                    hoverActions={
-                      <>
-                        <Button
-                          variant="tertiary"
-                          size="xsmall"
-                          onClick={() => console.log('View details:', tableItem.id)}
-                        >
-                          View Details
-                        </Button>
-                        <IconButton
-                          icon={CheckIcon}
-                          isHighlighted
-                          accessibilityLabel={\`Approve payment \${tableItem.paymentId}\`}
-                          onClick={() => console.log('Approved:', tableItem.id)}
-                        />
-                        <IconButton
-                          icon={CloseIcon}
-                          isHighlighted
-                          accessibilityLabel={\`Reject payment \${tableItem.paymentId}\`}
-                          onClick={() => console.log('Rejected:', tableItem.id)}
-                        />
-                      </>
-                    }
-                    onClick={() => console.log('Row clicked:', tableItem.id)}
-                  >
-                    <TableCell>
-                      <Code size="medium">{tableItem.paymentId}</Code>
-                    </TableCell>
-                    <TableEditableCell
-                      accessibilityLabel={\`Edit amount for payment \${tableItem.paymentId}\`}
-                      placeholder="Enter amount"
-                      successText="Amount updated successfully"
-                      defaultValue={tableItem.amount.toString()}
-                    />
-                    <TableCell>{tableItem.account}</TableCell>
-                    <TableCell>
-                      {tableItem.date?.toLocaleDateString('en-IN', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      })}
-                    </TableCell>
-                    <TableCell>{tableItem.method.title}</TableCell>
-                    <TableCell>
-                      <Badge
-                        size="medium"
-                        color={
-                          tableItem.status === 'Completed'
-                            ? 'positive'
-                            : tableItem.status === 'Pending'
-                            ? 'notice'
-                            : tableItem.status === 'Failed'
-                            ? 'negative'
-                            : 'primary'
-                        }
-                      >
-                        {tableItem.status}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-              <TableFooter>
-                <TableFooterRow>
-                  <TableFooterCell>Total</TableFooterCell>
-                  <TableFooterCell>
-                    <Amount
-                      value={listViewTableData.nodes.reduce((sum, item) => sum + item.amount, 0)}
-                    />
-                  </TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
-                  <TableFooterCell>{listViewTableData.nodes.length} items</TableFooterCell>
-                </TableFooterRow>
-              </TableFooter>
-            </>
-          )}
-        </Table>
-      </ListView>
-    </Box>
-  );
-}
-
-export default BasicListViewExample;
-\`\`\`
-
-### Multi-Select Quick Filters with Advanced Date Filtering
-
-This example shows ListView with multi-select quick filters and advanced date range functionality including preset date ranges.
-
-\`\`\`tsx
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
-import {
-  ListView,
-  ListViewFilters,
-  Table,
-  TableHeader,
-  TableHeaderRow,
-  TableHeaderCell,
-  TableBody,
-  TableRow,
-  TableCell,
-  QuickFilterGroup,
-  QuickFilter,
-  FilterChipGroup,
-  FilterChipSelectInput,
-  FilterChipDatePicker,
-  Dropdown,
-  DropdownOverlay,
-  ActionList,
-  ActionListItem,
-  Counter,
-  Badge,
-  Box,
-} from '@razorpay/blade/components';
-import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/components';
-
-// Using the same PaymentItem type and data from previous example
-// ... (PaymentItem type, MethodFilterValues, nodes, data definitions)
-
-type PaymentItem = {
-  id: string;
-  paymentId: string;
-  amount: number;
-  status: string;
-  date: Date;
-  type: string;
-  method: {
-    key: string;
-    title: string;
-  };
-  bank: string;
-  account: string;
-  name: string;
-};
-
-const MethodFilterValues = [
-  { key: 'bank-transfer', title: 'Bank Transfer' },
-  { key: 'credit-card', title: 'Credit Card' },
-  { key: 'paypal', title: 'PayPal' },
-];
-
-const nodes: PaymentItem[] = [
-  ...Array.from({ length: 30 }, (_, i) => ({
-    id: (i + 1).toString(),
-    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
-    amount: Number((Math.random() * 10000).toFixed(2)),
-    label: \`Payment \${i + 1}\`,
-    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
-    date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
-    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
-    method: MethodFilterValues[Math.floor(Math.random() * 3)],
-    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
-    account: Math.floor(Math.random() * 1000000000).toString(),
-    name: ['John Doe', 'Jane Doe', 'Bob Smith', 'Alice Smith'][Math.floor(Math.random() * 4)],
-  })),
-];
-
-const data: TableData<PaymentItem> = { nodes };
-
-const quickFilterColorMapping: Record<string, CounterProps['color']> = {
-  All: 'primary',
-  Pending: 'notice',
-  Failed: 'negative',
-  Completed: 'neutral',
-};
-
-const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
-
-function MultiSelectListViewExample() {
-  const [listViewTableData, setListViewTableData] = useState(data);
-  const [selectedQuickFilter, setSelectedQuickFilter] = useState<string[]>([]);
-  const [searchValue, setSearchValue] = useState<string | undefined>('');
-  const [methodFilter, setMethodFilter] = useState<string | undefined>('');
-  const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
-
-  const getQuickFilterValueCount = (value: string): number => {
-    if (value === 'All') {
-      return data.nodes.length;
-    }
-    return data.nodes.filter((node) => node.status === value).length;
-  };
-
-  const getQuickFilterData = (
-    data: TableData<PaymentItem>,
-    values?: string[],
-  ): TableData<PaymentItem> => {
-    if (!values?.length) {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => values.includes(node.status)) };
-  };
-
-  const getSearchedData = (
-    data: TableData<PaymentItem>,
-    value?: string,
-  ): TableData<PaymentItem> => {
-    if (!value) {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => node.paymentId.includes(value)) };
-  };
-
-  const getMethodFilterData = (
-    data: TableData<PaymentItem>,
-    value?: string,
-  ): TableData<PaymentItem> => {
-    if (!value) {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => node.method.key === value) };
-  };
-
-  const getFilterRangeData = (
-    data: TableData<PaymentItem>,
-    value?: DatesRangeValue,
-  ): TableData<PaymentItem> => {
-    if (!value?.[0]) {
-      return { nodes: data.nodes };
-    }
-    return {
-      nodes: data.nodes.filter((node) => {
-        if (!value?.[0] || !value?.[1]) return false;
-        return node.date >= value[0] && node.date <= value[1];
-      }),
-    };
-  };
-
-  const getLastWeekDateRange = (): DatesRangeValue => {
-    const lastWeek = new Date();
-    lastWeek.setDate(lastWeek.getDate() - 7);
-    return [lastWeek, new Date()];
-  };
-
-  const compareDateRangeValues = (
-    dateRange1: DatesRangeValue,
-    dateRange2: DatesRangeValue,
-  ): boolean => {
-    if (!dateRange1?.[0] || !dateRange2?.[0]) {
-      return false;
-    }
-    return (
-      dayjs(dateRange1[0]).isSame(dayjs(dateRange2[0]), 'day') &&
-      dayjs(dateRange1[1]).isSame(dayjs(dateRange2[1]), 'day')
-    );
-  };
-
-  const applyAllFilters = (
-    quickFilters: string[],
-    search: string | undefined,
-    method: string | undefined,
-    dateRange: DatesRangeValue | undefined,
-  ) => {
-    const quickFilterData = getQuickFilterData(data, quickFilters);
-    const searchValueData = getSearchedData(quickFilterData, search);
-    const methodFilterData = getMethodFilterData(searchValueData, method);
-    const dateRangeFilterData = getFilterRangeData(methodFilterData, dateRange);
-    setListViewTableData(dateRangeFilterData);
-  };
-
-  return (
-    <Box height="100%">
-      <ListView>
-        <ListViewFilters
-          selectedFiltersCount={
-            (methodFilter ? 1 : 0) +
-            (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
-            (selectedQuickFilter.filter((filter) => filter !== 'LastWeek').length !== 0 ? 1 : 0)
-          }
-          quickFilters={
-            <QuickFilterGroup
-              selectionType="multiple"
-              onChange={({ values }) => {
-                const lastWeekDateRange = getLastWeekDateRange();
-                const shouldChangeValue = values.includes('LastWeek');
-
-                if (!shouldChangeValue) {
-                  const rangeToUse = compareDateRangeValues(lastWeekDateRange, filterDateRange!)
-                    ? undefined
-                    : filterDateRange;
-
-                  setFilterDateRange(rangeToUse);
-                  setSelectedQuickFilter(values.filter((value) => value !== 'LastWeek'));
-                  applyAllFilters(
-                    values.filter((value) => value !== 'LastWeek'),
-                    searchValue,
-                    methodFilter,
-                    rangeToUse,
-                  );
-                } else {
-                  setFilterDateRange(lastWeekDateRange);
-                  setSelectedQuickFilter(values);
-                  applyAllFilters(
-                    values.filter((value) => value !== 'LastWeek'),
-                    searchValue,
-                    methodFilter,
-                    lastWeekDateRange,
-                  );
-                }
-              }}
-              value={selectedQuickFilter}
-            >
-              {filterChipQuickFilters.map((status) => (
-                <QuickFilter
-                  key={status}
-                  title={status}
-                  value={status}
-                  trailing={
-                    <Counter
-                      value={getQuickFilterValueCount(status)}
-                      color={quickFilterColorMapping[status]}
-                    />
-                  }
-                />
-              ))}
-              <QuickFilter title="Last Week" value="LastWeek" />
-            </QuickFilterGroup>
-          }
-          onSearchChange={({ value }) => {
-            setSearchValue(value);
-            applyAllFilters(selectedQuickFilter, value, methodFilter, filterDateRange);
-          }}
-          onSearchClear={() => {
-            setSearchValue('');
-            applyAllFilters(selectedQuickFilter, '', methodFilter, filterDateRange);
-          }}
-          searchValuePlaceholder="Search for Payment ID"
-        >
-          <FilterChipGroup
-            onClearButtonClick={() => {
-              setMethodFilter(undefined);
-              setFilterDateRange(undefined);
-              setSelectedQuickFilter([]);
-              const searchValueData = getSearchedData(data, searchValue);
-              setListViewTableData(searchValueData);
-            }}
-          >
-            <Dropdown selectionType="single">
-              <FilterChipSelectInput
-                label="Method"
-                value={methodFilter}
-                onChange={({ values }) => {
-                  const value = values[0];
-                  setMethodFilter(value);
-                  applyAllFilters(selectedQuickFilter, searchValue, value, filterDateRange);
-                }}
-                onClearButtonClick={() => {
-                  setMethodFilter(undefined);
-                  applyAllFilters(selectedQuickFilter, searchValue, undefined, filterDateRange);
-                }}
-              />
-              <DropdownOverlay>
-                <ActionList>
-                  {MethodFilterValues.map((method) => (
-                    <ActionListItem key={method.key} title={method.title} value={method.key} />
-                  ))}
-                </ActionList>
-              </DropdownOverlay>
-            </Dropdown>
-
-            <FilterChipDatePicker
-              label="Date Range"
-              selectionType="range"
-              value={filterDateRange}
-              onChange={(value) => {
-                const dateRange = Array.isArray(value) ? value : undefined;
-                setFilterDateRange(dateRange);
-                applyAllFilters(selectedQuickFilter, searchValue, methodFilter, dateRange);
-              }}
-              onClearButtonClick={() => {
-                const quickFilters = selectedQuickFilter.filter((value) => value !== 'LastWeek');
-                setFilterDateRange(undefined);
-                setSelectedQuickFilter(quickFilters);
-                applyAllFilters(quickFilters, searchValue, methodFilter, undefined);
-              }}
-            />
-
-            <Dropdown selectionType="multiple">
-              <FilterChipSelectInput
-                label="Status"
-                value={selectedQuickFilter.filter((filters) => filters !== 'LastWeek')}
-                onChange={({ values }) => {
-                  setSelectedQuickFilter((prev) => [
-                    ...prev.filter((filter) => filter === 'LastWeek'),
-                    ...values,
-                  ]);
-                  applyAllFilters(values, searchValue, methodFilter, filterDateRange);
-                }}
-                onClearButtonClick={() => {
-                  setSelectedQuickFilter((prev) => prev.filter((filter) => filter === 'LastWeek'));
-                  applyAllFilters([], searchValue, methodFilter, filterDateRange);
-                }}
-              />
-              <DropdownOverlay>
-                <ActionList>
-                  {filterChipQuickFilters.map((status) => (
-                    <ActionListItem
-                      key={status}
-                      title={status}
-                      value={status}
-                      isSelected={selectedQuickFilter.includes(status)}
-                    />
-                  ))}
-                </ActionList>
-              </DropdownOverlay>
-            </Dropdown>
-          </FilterChipGroup>
-        </ListViewFilters>
-
-        <Table
-          data={listViewTableData}
-          onSelectionChange={(selectedItems) => {
-            console.log('Selected items:', selectedItems);
-          }}
-          selectionType="multiple"
-        >
-          {(tableData) => (
-            <>
-              <TableHeader>
-                <TableHeaderRow>
-                  <TableHeaderCell headerKey="PAYMENT_ID">Payment ID</TableHeaderCell>
-                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
-                </TableHeaderRow>
-              </TableHeader>
-              <TableBody>
-                {tableData.map((tableItem) => (
-                  <TableRow key={tableItem.id} item={tableItem}>
-                    <TableCell>{tableItem.paymentId}</TableCell>
-                    <TableCell>{tableItem.amount}</TableCell>
-                    <TableCell>
-                      {tableItem.date?.toLocaleDateString('en-IN', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      })}
-                    </TableCell>
-                    <TableCell>{tableItem.method.title}</TableCell>
-                    <TableCell>
-                      <Badge
-                        size="medium"
-                        color={
-                          tableItem.status === 'Completed'
-                            ? 'positive'
-                            : tableItem.status === 'Pending'
-                            ? 'notice'
-                            : tableItem.status === 'Failed'
-                            ? 'negative'
-                            : 'primary'
-                        }
-                      >
-                        {tableItem.status}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </>
-          )}
-        </Table>
-      </ListView>
-    </Box>
-  );
-}
-
-export default MultiSelectListViewExample;
-\`\`\`
-
-### Minimal ListView without Search
-
-This example demonstrates a ListView implementation focused on filtering without search functionality, ideal for simpler data presentation needs.
-
-\`\`\`tsx
-import React, { useState } from 'react';
-import {
-  ListView,
-  ListViewFilters,
-  Table,
-  TableHeader,
-  TableHeaderRow,
-  TableHeaderCell,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableFooter,
-  TableFooterRow,
-  TableFooterCell,
-  QuickFilterGroup,
-  QuickFilter,
-  FilterChipGroup,
-  FilterChipSelectInput,
-  FilterChipDatePicker,
-  Dropdown,
-  DropdownOverlay,
-  ActionList,
-  ActionListItem,
-  Counter,
-  Badge,
-  Amount,
-  Box,
-} from '@razorpay/blade/components';
-import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/components';
-
-// Using the same PaymentItem type and data from previous examples
-// ... (PaymentItem type, MethodFilterValues, nodes, data definitions)
-
-type PaymentItem = {
-  id: string;
-  paymentId: string;
-  amount: number;
-  status: string;
-  date: Date;
-  type: string;
-  method: {
-    key: string;
-    title: string;
-  };
-  bank: string;
-  account: string;
-  name: string;
-};
-
-const MethodFilterValues = [
-  { key: 'bank-transfer', title: 'Bank Transfer' },
-  { key: 'credit-card', title: 'Credit Card' },
-  { key: 'paypal', title: 'PayPal' },
-];
-
-const quickFilters = ['All', 'Pending', 'Failed', 'Completed'];
-
-const nodes: PaymentItem[] = [
-  ...Array.from({ length: 30 }, (_, i) => ({
-    id: (i + 1).toString(),
-    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
-    amount: Number((Math.random() * 10000).toFixed(2)),
-    label: \`Payment \${i + 1}\`,
-    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
-    date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
-    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
-    method: MethodFilterValues[Math.floor(Math.random() * 3)],
-    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
-    account: Math.floor(Math.random() * 1000000000).toString(),
-    name: ['John Doe', 'Jane Doe', 'Bob Smith', 'Alice Smith'][Math.floor(Math.random() * 4)],
-  })),
-];
-
-const data: TableData<PaymentItem> = { nodes };
-
-const quickFilterColorMapping: Record<string, CounterProps['color']> = {
-  All: 'primary',
-  Pending: 'notice',
-  Failed: 'negative',
-  Completed: 'neutral',
-};
-
-function MinimalListViewExample() {
-  const [listViewTableData, setListViewTableData] = useState(data);
-  const [selectedQuickFilter, setSelectedQuickFilter] = useState<string>('All');
-  const [methodFilter, setMethodFilter] = useState<string | undefined>(undefined);
-  const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
-
-  const getQuickFilterValueCount = (value: string): number => {
-    if (value === 'All') {
-      return data.nodes.length;
-    }
-    return data.nodes.filter((node) => node.status === value).length;
-  };
-
-  const getQuickFilterData = (
-    data: TableData<PaymentItem>,
-    value?: string,
-  ): TableData<PaymentItem> => {
-    if (!value || value === 'All') {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => node.status === value) };
-  };
-
-  const getMethodFilterData = (
-    data: TableData<PaymentItem>,
-    value?: string,
-  ): TableData<PaymentItem> => {
-    if (!value) {
-      return { nodes: data.nodes };
-    }
-    return { nodes: data.nodes.filter((node) => node.method.key === value) };
-  };
-
-  const getFilterRangeData = (
-    data: TableData<PaymentItem>,
-    value?: DatesRangeValue,
-  ): TableData<PaymentItem> => {
-    if (!value?.[0]) {
-      return { nodes: data.nodes };
-    }
-    return {
-      nodes: data.nodes.filter((node) => {
-        if (!value?.[0] || !value?.[1]) return false;
-        return node.date >= value[0] && node.date <= value[1];
-      }),
-    };
-  };
-
-  const applyAllFilters = (
-    quickFilter: string,
-    method: string | undefined,
-    dateRange: DatesRangeValue | undefined,
-  ) => {
-    const quickFilterData = getQuickFilterData(data, quickFilter);
-    const methodFilterData = getMethodFilterData(quickFilterData, method);
-    const dateRangeFilterData = getFilterRangeData(methodFilterData, dateRange);
-    setListViewTableData(dateRangeFilterData);
-  };
-
-  return (
-    <Box height="100%">
-      <ListView>
-        <ListViewFilters
-          selectedFiltersCount={
-            (methodFilter ? 1 : 0) +
-            (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
-            (selectedQuickFilter !== 'All' ? 1 : 0)
-          }
-          quickFilters={
-            <QuickFilterGroup
-              selectionType="single"
-              onChange={({ values }) => {
-                const value = values[0];
-                setSelectedQuickFilter(value);
-                applyAllFilters(value, methodFilter, filterDateRange);
-              }}
-              defaultValue="All"
-              value={selectedQuickFilter}
-            >
-              {quickFilters.map((status) => (
-                <QuickFilter
-                  key={status}
-                  title={status}
-                  value={status}
-                  trailing={
-                    <Counter
-                      value={getQuickFilterValueCount(status)}
-                      color={quickFilterColorMapping[status]}
-                    />
-                  }
-                />
-              ))}
-            </QuickFilterGroup>
-          }
-        >
-          <FilterChipGroup
-            onClearButtonClick={() => {
-              setMethodFilter(undefined);
-              setFilterDateRange(undefined);
-              setSelectedQuickFilter('All');
-              setListViewTableData(data);
-            }}
-          >
-            <Dropdown selectionType="single">
-              <FilterChipSelectInput
-                label="Payment Method"
-                value={methodFilter}
-                onChange={({ values }) => {
-                  const value = values[0];
-                  setMethodFilter(value);
-                  applyAllFilters(selectedQuickFilter, value, filterDateRange);
-                }}
-                onClearButtonClick={() => {
-                  setMethodFilter(undefined);
-                  applyAllFilters(selectedQuickFilter, undefined, filterDateRange);
-                }}
-              />
-              <DropdownOverlay>
-                <ActionList>
-                  {MethodFilterValues.map((method) => (
-                    <ActionListItem key={method.key} title={method.title} value={method.key} />
-                  ))}
-                </ActionList>
-              </DropdownOverlay>
-            </Dropdown>
-
-            <FilterChipDatePicker
-              label="Transaction Date"
-              selectionType="range"
-              value={filterDateRange}
-              onChange={(value) => {
-                const dateRange = Array.isArray(value) ? value : undefined;
-                setFilterDateRange(dateRange);
-                applyAllFilters(selectedQuickFilter, methodFilter, dateRange);
-              }}
-              onClearButtonClick={() => {
-                setFilterDateRange(undefined);
-                applyAllFilters(selectedQuickFilter, methodFilter, undefined);
-              }}
-            />
-          </FilterChipGroup>
-        </ListViewFilters>
-
-        <Table
-          data={listViewTableData}
-          selectionType="single"
-          onSelectionChange={(selectedItems) => {
-            console.log('Selected item:', selectedItems);
-          }}
-        >
-          {(tableData) => (
-            <>
-              <TableHeader>
-                <TableHeaderRow>
-                  <TableHeaderCell headerKey="PAYMENT_ID">Payment ID</TableHeaderCell>
-                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
-                </TableHeaderRow>
-              </TableHeader>
-              <TableBody>
-                {tableData.map((tableItem) => (
-                  <TableRow
-                    key={tableItem.id}
-                    item={tableItem}
-                    onClick={() => console.log('Row selected:', tableItem.id)}
-                  >
-                    <TableCell>{tableItem.paymentId}</TableCell>
-                    <TableCell>
-                      <Amount value={tableItem.amount} />
-                    </TableCell>
-                    <TableCell>
-                      {tableItem.date?.toLocaleDateString('en-IN', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </TableCell>
-                    <TableCell>{tableItem.method.title}</TableCell>
-                    <TableCell>
-                      <Badge
-                        size="medium"
-                        color={
-                          tableItem.status === 'Completed'
-                            ? 'positive'
-                            : tableItem.status === 'Pending'
-                            ? 'notice'
-                            : tableItem.status === 'Failed'
-                            ? 'negative'
-                            : 'primary'
-                        }
-                      >
-                        {tableItem.status}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-              <TableFooter>
-                <TableFooterRow>
-                  <TableFooterCell>Total Transactions</TableFooterCell>
-                  <TableFooterCell>
-                    <Amount
-                      value={listViewTableData.nodes.reduce((sum, item) => sum + item.amount, 0)}
-                    />
-                  </TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
-                  <TableFooterCell>{listViewTableData.nodes.length} items</TableFooterCell>
-                </TableFooterRow>
-              </TableFooter>
-            </>
-          )}
-        </Table>
-      </ListView>
-    </Box>
-  );
-}
-
-export default MinimalListViewExample;
-\`\`\`
-
-
-# DetailedView
-# DetailedView
-
-## Pattern Name
-
-DetailedView
-
-## Description
-
-A DetailedView is a pattern that displays comprehensive details of a transaction, user, or entity in a drawer format. It provides a structured layout for showing key information, timelines, transaction breakdowns, and related actions. This pattern is commonly used when users need to view detailed information about a selected item from a table, list, or card without navigating away from the current page.
-
-## Components Used
-
-- Drawer
-- DrawerFooter
-- Table
-- Card
-- Box
-- Amount
-- Badge
-- Button
-- IconButton
-- Text
-- Heading
-- Code
-- Link
-- Divider
-- StepGroup
-- Collapsible
 - Alert
+- Toast
+- ToastContainer
+- Heading
+- Text
 
 ## Example
 
-### Transaction Details with Table Integration
+### Simple Contact Form
 
-This example shows a DetailedView pattern integrated with a Table component, displaying transaction details in a drawer when a table row is clicked.
-
-\`\`\`tsx
-import React, { useState } from 'react';
-import {
-  Table,
-  TableHeader,
-  TableHeaderRow,
-  TableHeaderCell,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableToolbar,
-  TableToolbarActions,
-  TablePagination,
-  Drawer,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
-  Box,
-  Amount,
-  Badge,
-  Button,
-  IconButton,
-  Text,
-  Code,
-  Link,
-  Divider,
-  StepGroup,
-  StepItem,
-  StepItemIndicator,
-  Collapsible,
-  CollapsibleBody,
-  CollapsibleLink,
-  MoreHorizontalIcon,
-  DownloadIcon,
-  CloseIcon,
-  ArrowRightIcon,
-  CopyIcon,
-  CheckIcon,
-  ClockIcon,
-} from '@razorpay/blade/components';
-type Transaction = {
-  id: string;
-  paymentId: string;
-  amount: number;
-  status: 'Completed' | 'Pending' | 'Failed';
-  date: Date;
-  type: string;
-  method: string;
-  name: string;
-  bank: string;
-  account: string;
-};
-
-const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
-  <>
-    <Text variant="body" size="small" color="surface.text.gray.muted">
-      {label}
-    </Text>
-    <Box>{children}</Box>
-  </>
-);
-
-const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
-  <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3">
-    {children}
-  </Box>
-);
-
-const Timeline = ({ status }: { status: string }) => (
-  <StepGroup orientation="vertical" size="medium">
-    <StepItem
-      title="Payment Initiated"
-      stepProgress={['Completed', 'Pending', 'Failed'].includes(status) ? 'full' : 'none'}
-      marker={
-        <StepItemIndicator
-          color={['Completed', 'Pending', 'Failed'].includes(status) ? 'positive' : 'neutral'}
-        />
-      }
-    />
-    <Collapsible direction="top">
-      <CollapsibleLink>Show More</CollapsibleLink>
-      <CollapsibleBody>
-        <StepItem
-          title="Payment Processing"
-          stepProgress={['Completed', 'Failed'].includes(status) ? 'full' : 'start'}
-          marker={
-            <StepItemIndicator
-              color={['Completed', 'Failed'].includes(status) ? 'positive' : 'notice'}
-            />
-          }
-        />
-        <StepItem
-          title={status === 'Failed' ? 'Payment Failed' : 'Payment Completed'}
-          stepProgress={['Completed', 'Failed'].includes(status) ? 'full' : 'none'}
-          marker={
-            <StepItemIndicator
-              color={
-                status === 'Failed' ? 'negative' : status === 'Completed' ? 'positive' : 'neutral'
-              }
-            />
-          }
-        />
-      </CollapsibleBody>
-    </Collapsible>
-  </StepGroup>
-);
-
-const TransactionDetailedView = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
-
-  const transactions: Transaction[] = [
-    {
-      id: '1',
-      paymentId: 'rzp_123456',
-      amount: 5000,
-      status: 'Completed',
-      date: new Date('2024-01-15'),
-      type: 'Settlement',
-      method: 'Bank Transfer',
-      name: 'John Doe',
-      bank: 'HDFC',
-      account: '1234567890',
-    },
-    {
-      id: '2',
-      paymentId: 'rzp_789012',
-      amount: 2500,
-      status: 'Pending',
-      date: new Date('2024-01-16'),
-      type: 'Refund',
-      method: 'UPI',
-      name: 'Jane Smith',
-      bank: 'ICICI',
-      account: '0987654321',
-    },
-  ];
-
-  const tableData = { nodes: transactions };
-
-  return (
-    <Box overflow="auto" minHeight="400px">
-      <Table
-        data={tableData}
-        selectionType="none"
-        toolbar={
-          <TableToolbar title="Transactions">
-            <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2">
-                Export
-              </Button>
-              <Button>Refund</Button>
-            </TableToolbarActions>
-          </TableToolbar>
-        }
-        pagination={
-          <TablePagination defaultPageSize={10} showPageSizePicker showPageNumberSelector />
-        }
-      >
-        {(tableData) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                <TableHeaderCell>Payment ID</TableHeaderCell>
-                <TableHeaderCell>Account Holder</TableHeaderCell>
-                <TableHeaderCell>Amount</TableHeaderCell>
-                <TableHeaderCell>Date</TableHeaderCell>
-                <TableHeaderCell>Method</TableHeaderCell>
-                <TableHeaderCell>Status</TableHeaderCell>
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {tableData.map((transaction, index) => (
-                <TableRow
-                  key={index}
-                  item={transaction}
-                  onClick={() => {
-                    setSelectedTransaction(transaction);
-                    setIsDrawerOpen(true);
-                  }}
-                >
-                  <TableCell>
-                    <Code size="medium">{transaction.paymentId}</Code>
-                  </TableCell>
-                  <TableCell>{transaction.name}</TableCell>
-                  <TableCell>
-                    <Amount value={transaction.amount} currency="INR" />
-                  </TableCell>
-                  <TableCell>
-                    {transaction.date.toLocaleDateString('en-IN', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>{transaction.method}</TableCell>
-                  <TableCell>
-                    <Badge
-                      size="medium"
-                      color={
-                        transaction.status === 'Completed'
-                          ? 'positive'
-                          : transaction.status === 'Pending'
-                          ? 'notice'
-                          : 'negative'
-                      }
-                    >
-                      {transaction.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </>
-        )}
-      </Table>
-
-      <Drawer
-        isOpen={isDrawerOpen}
-        onDismiss={() => setIsDrawerOpen(false)}
-        onUnmount={() => setSelectedTransaction(null)}
-      >
-        <DrawerHeader
-          color={
-            selectedTransaction?.status === 'Completed'
-              ? 'positive'
-              : selectedTransaction?.status === 'Pending'
-              ? 'notice'
-              : 'negative'
-          }
-          title="Transaction Details"
-          trailing={
-            <IconButton
-              icon={MoreHorizontalIcon}
-              accessibilityLabel="More options"
-              onClick={() => console.log('Options clicked')}
-              size="large"
-            />
-          }
-          showDivider={false}
-        >
-          <Box marginTop="spacing.6" textAlign="center">
-            <Amount
-              value={selectedTransaction?.amount ?? 0}
-              currency="INR"
-              size="2xlarge"
-              type="heading"
-              weight="semibold"
-              suffix="decimals"
-            />
-          </Box>
-          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
-            <Badge
-              size="medium"
-              color={
-                selectedTransaction?.status === 'Completed'
-                  ? 'positive'
-                  : selectedTransaction?.status === 'Pending'
-                  ? 'notice'
-                  : 'negative'
-              }
-              emphasis="intense"
-              icon={
-                selectedTransaction?.status === 'Completed'
-                  ? CheckIcon
-                  : selectedTransaction?.status === 'Pending'
-                  ? ClockIcon
-                  : undefined
-              }
-            >
-              {selectedTransaction?.status ?? 'Pending'}
-            </Badge>
-          </Box>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            gap="spacing.4"
-            marginTop="spacing.6"
-            paddingX="spacing.4"
-          >
-            <Box display="flex">
-              <Divider thickness="thicker" orientation="vertical" />
-              <Box paddingX="spacing.3">
-                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
-                  Payment ID
-                </Text>
-                <Text size="medium">{selectedTransaction?.paymentId}</Text>
-              </Box>
-            </Box>
-            <Box display="flex">
-              <Divider thickness="thicker" orientation="vertical" />
-              <Box paddingX="spacing.3">
-                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
-                  Date
-                </Text>
-                <Text size="medium">
-                  {selectedTransaction?.date?.toLocaleDateString('en-IN', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </Text>
-              </Box>
-            </Box>
-          </Box>
-          <Box marginTop="spacing.6" textAlign="center">
-            <Button
-              variant="secondary"
-              color="primary"
-              size="small"
-              icon={DownloadIcon}
-              isFullWidth
-            >
-              Download Report
-            </Button>
-          </Box>
-        </DrawerHeader>
-        <DrawerBody>
-          <Box display="flex" flexDirection="column" gap="spacing.6">
-            <Box>
-              <Text variant="body" size="medium" weight="semibold" marginBottom="spacing.4">
-                Timeline
-              </Text>
-              <Timeline status={selectedTransaction?.status ?? 'Pending'} />
-            </Box>
-            <Divider />
-            <Box>
-              <Text variant="body" size="medium" weight="semibold" marginBottom="spacing.4">
-                Transaction Details
-              </Text>
-              <KeyValueGrid>
-                <KeyValueItem label="Amount">
-                  <Amount value={selectedTransaction?.amount ?? 0} currency="INR" />
-                </KeyValueItem>
-                <KeyValueItem label="Payment ID">
-                  <Box display="flex" gap="spacing.2" alignItems="center">
-                    <Code size="small">{selectedTransaction?.paymentId ?? 'NA'}</Code>
-                    <Link variant="button" size="small" icon={CopyIcon} />
-                  </Box>
-                </KeyValueItem>
-                <KeyValueItem label="Payment Type">
-                  <Text variant="body" size="medium">
-                    {selectedTransaction?.type}
-                  </Text>
-                </KeyValueItem>
-                <KeyValueItem label="Payment Method">
-                  <Text variant="body" size="medium">
-                    {selectedTransaction?.method}
-                  </Text>
-                </KeyValueItem>
-                <KeyValueItem label="Account Holder">
-                  <Text variant="body" size="medium">
-                    {selectedTransaction?.name}
-                  </Text>
-                </KeyValueItem>
-                <KeyValueItem label="Bank">
-                  <Text variant="body" size="medium">
-                    {selectedTransaction?.bank}
-                  </Text>
-                </KeyValueItem>
-                <KeyValueItem label="Account Number">
-                  <Text variant="body" size="medium">
-                    {selectedTransaction?.account}
-                  </Text>
-                </KeyValueItem>
-              </KeyValueGrid>
-            </Box>
-          </Box>
-        </DrawerBody>
-      </Drawer>
-    </Box>
-  );
-};
-
-export default TransactionDetailedView;
-\`\`\`
-
-### Settlement Details with Card Integration
-
-This example demonstrates a DetailedView pattern triggered from a Card component, showing settlement breakdown and transaction details.
+A basic form with email and message fields, demonstrating the fundamental FormGroup structure with proper spacing and submission handling.
 
 \`\`\`tsx
 import React, { useState } from 'react';
 import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardHeaderLeading,
-  CardHeaderTrailing,
-  CardHeaderIcon,
-  CardHeaderLink,
-  Drawer,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
   Box,
-  Amount,
-  Badge,
+  TextInput,
+  TextArea,
   Button,
-  Text,
   Heading,
-  Divider,
-  Code,
-  Link,
-  RazorpayIcon,
-  ExternalLinkIcon,
-  DownloadIcon,
-  CheckIcon,
-  CopyIcon,
-  CloseIcon,
+  useToast,
+  ToastContainer,
   ArrowRightIcon,
 } from '@razorpay/blade/components';
 
-const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
-  <>
-    <Text variant="body" size="small" color="surface.text.gray.muted">
-      {label}
-    </Text>
-    <Box>{children}</Box>
-  </>
-);
+const SimpleContactForm = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    message: '',
+  });
+  const toast = useToast();
 
-const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
-  <Box display="grid" gridTemplateColumns="160px 1fr" gap="spacing.3">
-    {children}
-  </Box>
-);
+  const handleSubmit = (e: React.FormEvent): void => {
+    e.preventDefault();
 
-const SettlementDetailedView = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [showFooter, setShowFooter] = useState(true);
-
-  const settlementData = {
-    amount: 3120,
-    amountPaid: 3120,
-    paymentId: 'pay_MK7DGqwYXEwx9Q',
-    referenceId: 'ref_MK7DGqwYXEwx9Q',
-    type: 'Settlement',
-    utr: 'UTR123456789',
-    bankAccount: '1234567890',
-    ifsc: 'HDFC0001234',
-    status: 'Completed',
-    tax: 260,
-    fee: 260,
-    netAmount: 2600,
+    toast.show({
+      content: \`Thanks for reaching out! Your message has been sent.\`,
+      color: 'positive',
+      type: 'informational',
+    });
+    setFormData({ email: '', message: '' });
   };
 
   return (
-    <Box>
-      <Box display="flex" gap="spacing.4" marginBottom="spacing.4">
-        <Button variant="secondary" onClick={() => setShowFooter(!showFooter)}>
-          {showFooter ? 'Hide Footer' : 'Show Footer'}
-        </Button>
+    <form onSubmit={handleSubmit}>
+      <Box padding="spacing.6" display="flex" flexDirection="column" gap="spacing.7">
+        <ToastContainer />
+        <Box>
+          <Heading size="large">Contact Us</Heading>
+          <Heading size="medium" weight="regular">
+            We'd love to hear from you
+          </Heading>
+        </Box>
+
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <TextInput
+            label="Email"
+            name="email"
+            value={formData.email}
+            onChange={({ value }) => setFormData({ ...formData, email: value ?? '' })}
+            placeholder="Enter your email"
+          />
+
+          <TextArea
+            label="Message"
+            name="message"
+            value={formData.message}
+            onChange={({ value }) => setFormData({ ...formData, message: value ?? '' })}
+            numberOfLines={4}
+            placeholder="Enter your message"
+          />
+
+          <Button isFullWidth type="submit" icon={ArrowRightIcon} iconPosition="right">
+            Send Message
+          </Button>
+        </Box>
       </Box>
-
-      <Card width={{ base: '100%', m: '500px' }}>
-        <CardHeader>
-          <CardHeaderLeading
-            prefix={<CardHeaderIcon icon={RazorpayIcon} />}
-            title="Settlement Summary"
-          />
-          <CardHeaderTrailing
-            visual={
-              <CardHeaderLink
-                variant="button"
-                onClick={() => setIsDrawerOpen(true)}
-                icon={ExternalLinkIcon}
-                iconPosition="right"
-              >
-                View Details
-              </CardHeaderLink>
-            }
-          />
-        </CardHeader>
-        <CardBody>
-          <Box
-            display="grid"
-            gridTemplateColumns="1fr auto"
-            columnGap="spacing.4"
-            rowGap="spacing.3"
-          >
-            <Text variant="body" size="medium" color="surface.text.gray.muted" gridColumn="1 / -1">
-              Gross Settlements
-            </Text>
-            <Text variant="body" size="medium">
-              Payment
-            </Text>
-            <Box>
-              <Amount value={settlementData.amount} currency="INR" />
-            </Box>
-
-            <Text
-              variant="body"
-              size="medium"
-              color="surface.text.gray.muted"
-              gridColumn="1 / -1"
-              marginTop="spacing.4"
-            >
-              Deductions
-            </Text>
-            <Text variant="body" size="medium">
-              Tax
-            </Text>
-            <Box>
-              <Amount value={settlementData.tax} currency="INR" />
-            </Box>
-            <Text variant="body" size="medium">
-              Fee
-            </Text>
-            <Box>
-              <Amount value={settlementData.fee} currency="INR" />
-            </Box>
-
-            <Box gridColumn="1 / -1" marginTop="spacing.4">
-              <Divider marginBottom="spacing.4" />
-              <Box display="grid" gridTemplateColumns="1fr auto">
-                <Text variant="body" size="medium" weight="semibold">
-                  Net Settlement Amount
-                </Text>
-                <Box>
-                  <Amount value={settlementData.netAmount} currency="INR" weight="semibold" />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </CardBody>
-      </Card>
-
-      <Drawer isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
-        <DrawerHeader
-          color="positive"
-          title="Settlement Details"
-          trailing={<Button size="medium" icon={DownloadIcon} />}
-          showDivider={false}
-        >
-          <Box marginTop="spacing.6" textAlign="center">
-            <Amount
-              value={settlementData.amount}
-              currency="INR"
-              size="2xlarge"
-              type="heading"
-              weight="semibold"
-              suffix="decimals"
-            />
-          </Box>
-          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
-            <Badge icon={CheckIcon} size="medium" color="positive" emphasis="intense">
-              {settlementData.status}
-            </Badge>
-          </Box>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            gap="spacing.4"
-            marginTop="spacing.6"
-            paddingX="spacing.4"
-          >
-            <Box display="flex">
-              <Divider thickness="thicker" orientation="vertical" />
-              <Box paddingX="spacing.3">
-                <Text size="xsmall" color="surface.text.gray.muted" weight="semibold">
-                  Payment ID
-                </Text>
-                <Text size="medium">{settlementData.paymentId}</Text>
-              </Box>
-            </Box>
-          </Box>
-          <Text
-            size="small"
-            marginTop="spacing.6"
-            textAlign="center"
-            color="surface.text.gray.muted"
-          >
-            Settlement was completed on 24th April 2025
-          </Text>
-        </DrawerHeader>
-        <DrawerBody>
-          <Heading size="small" weight="semibold" marginBottom="spacing.4">
-            Settlement Breakdown
-          </Heading>
-          <KeyValueGrid>
-            <KeyValueItem label="Gross Amount">
-              <Amount value={settlementData.amount} currency="INR" />
-            </KeyValueItem>
-            <KeyValueItem label="Tax Deducted">
-              <Amount value={settlementData.tax} currency="INR" />
-            </KeyValueItem>
-            <KeyValueItem label="Processing Fee">
-              <Amount value={settlementData.fee} currency="INR" />
-            </KeyValueItem>
-            <KeyValueItem label="Net Amount">
-              <Amount value={settlementData.netAmount} currency="INR" weight="semibold" />
-            </KeyValueItem>
-          </KeyValueGrid>
-
-          <Heading marginTop="spacing.6" marginBottom="spacing.4" size="small" weight="semibold">
-            Transaction Information
-          </Heading>
-          <KeyValueGrid>
-            <KeyValueItem label="Payment ID">
-              <Box display="flex" gap="spacing.2" alignItems="center">
-                <Code size="small">{settlementData.paymentId}</Code>
-                <Link variant="button" size="small" icon={CopyIcon} />
-              </Box>
-            </KeyValueItem>
-            <KeyValueItem label="Reference ID">
-              <Text variant="body" size="medium">
-                {settlementData.referenceId}
-              </Text>
-            </KeyValueItem>
-            <KeyValueItem label="UTR Number">
-              <Box display="flex" gap="spacing.2" alignItems="center">
-                <Code size="small">{settlementData.utr}</Code>
-                <Link variant="button" size="small" icon={CopyIcon} />
-              </Box>
-            </KeyValueItem>
-            <KeyValueItem label="Bank Account">
-              <Text variant="body" size="medium">
-                {settlementData.bankAccount}
-              </Text>
-            </KeyValueItem>
-            <KeyValueItem label="IFSC Code">
-              <Text variant="body" size="medium">
-                {settlementData.ifsc}
-              </Text>
-            </KeyValueItem>
-            <KeyValueItem label="Settlement Type">
-              <Text variant="body" size="medium">
-                {settlementData.type}
-              </Text>
-            </KeyValueItem>
-          </KeyValueGrid>
-        </DrawerBody>
-
-        {showFooter && (
-          <DrawerFooter>
-            <Box display="flex" gap="spacing.5">
-              <Button
-                variant="tertiary"
-                icon={CloseIcon}
-                iconPosition="left"
-                isFullWidth
-                onClick={() => setIsDrawerOpen(false)}
-              >
-                Cancel
-              </Button>
-              <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
-                Process Settlement
-              </Button>
-            </Box>
-          </DrawerFooter>
-        )}
-      </Drawer>
-    </Box>
+    </form>
   );
 };
+\`\`\`
 
-export default SettlementDetailedView;
+### Form with Validation and Error Handling
+
+A comprehensive form demonstrating validation states, error messages, required fields, and both individual and grouped error handling approaches.
+
+\`\`\`tsx
+import React, { useState } from 'react';
+import { Box, TextInput, PasswordInput, Button, Alert, Heading , ArrowRightIcon} from '@razorpay/blade/components';
+
+const ValidationForm = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [alert, setAlert] = useState<{
+    type: 'positive' | 'negative';
+    title: string;
+    description: string;
+  } | null>(null);
+
+  const handleChange = (name: string, value: string | undefined): void => {
+    setFormData((prev) => ({ ...prev, [name]: value ?? '' }));
+    // Clear error when typing
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\\S+@\\S+\\.\\S+/.test(formData.email)) {
+      newErrors.email = 'Invalid email format';
+    }
+
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent): void => {
+    e.preventDefault();
+    if (validateForm()) {
+      setAlert({
+        type: 'positive',
+        title: 'Success!',
+        description: 'Your form has been submitted successfully.',
+      });
+    } else {
+      setAlert({
+        type: 'negative',
+        title: 'Form Submission Failed',
+        description: 'Please fix the errors in the form and try again.',
+      });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Box padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
+        <Box>
+          <Heading size="large">Welcome to Blade Example</Heading>
+          <Heading size="medium" weight="regular">
+            This is an example form built with Blade
+          </Heading>
+        </Box>
+
+        {alert && (
+          <Alert
+            color={alert.type}
+            title={alert.title}
+            description={alert.description}
+            emphasis="subtle"
+            isDismissible
+            onDismiss={() => setAlert(null)}
+            isFullWidth
+          />
+        )}
+
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <TextInput
+            necessityIndicator="required"
+            label="Email"
+            name="email"
+            value={formData.email}
+            onChange={({ value }) => handleChange('email', value)}
+            validationState={errors.email ? 'error' : 'none'}
+            errorText={errors.email}
+            placeholder="Enter your email"
+          />
+          <PasswordInput
+            necessityIndicator="required"
+            label="Password"
+            name="password"
+            value={formData.password}
+            onChange={({ value }) => handleChange('password', value)}
+            helpText="Should be more than 8 characters"
+            validationState={errors.password ? 'error' : 'none'}
+            errorText={errors.password}
+            placeholder="Enter your password"
+          />
+          <Button isFullWidth type="submit" icon={ArrowRightIcon} iconPosition="right">
+            Sign In
+          </Button>
+        </Box>
+      </Box>
+    </form>
+  );
+};
+\`\`\`
+
+### Multi-Section Form with Layout Variants
+
+A comprehensive form demonstrating horizontal and vertical section layouts, different label positions, density options, grid layouts, and dropdown integration.
+
+\`\`\`tsx
+import React, { useState } from 'react';
+import {
+  Box,
+  TextInput,
+  TextArea,
+  SelectInput,
+  Dropdown,
+  DropdownOverlay,
+  ActionList,
+  ActionListItem,
+  Button,
+  Heading,
+  Text,
+  useToast,
+  ToastContainer,
+} from '@razorpay/blade/components';
+
+const CITY_OPTIONS = [
+  { title: 'Mumbai', value: 'mumbai' },
+  { title: 'Pune', value: 'pune' },
+  { title: 'Bangalore', value: 'bangalore' },
+  { title: 'Mysore', value: 'mysore' },
+];
+
+const MultiSectionForm = () => {
+  const [bankData, setBankData] = useState({
+    bankName: '',
+    branchName: '',
+    branchNumber: '',
+    addressLine1: '',
+    addressLine2: '',
+    pinCode: '',
+    city: '',
+    additionalInformation: '',
+  });
+
+  const toast = useToast();
+
+  const handleChange = (field: string, value: string): void => {
+    setBankData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent): void => {
+    e.preventDefault();
+    toast.show({
+      content: 'Thanks for reaching out! Your form has been submitted successfully.',
+      color: 'positive',
+      type: 'informational',
+    });
+    setBankData({
+      bankName: '',
+      branchName: '',
+      branchNumber: '',
+      addressLine1: '',
+      addressLine2: '',
+      pinCode: '',
+      city: '',
+      additionalInformation: '',
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Box display="flex" flexDirection="column" gap="spacing.8">
+        <ToastContainer />
+        <Box>
+          <Heading size="large" weight="semibold">
+            Bank Branch Form
+          </Heading>
+          <Text weight="regular" color="surface.text.gray.muted">
+            Fill the following information to add a new branch of the bank
+          </Text>
+        </Box>
+
+        <Box display="flex" flexDirection="column" gap="spacing.8">
+          {/* General Details Section */}
+          <Box display="flex" flexDirection="row" gap="spacing.5">
+            <Box>
+              <Heading size="medium">General Details</Heading>
+              <Text weight="regular" color="surface.text.gray.muted">
+                This is general subtext for a section
+              </Text>
+            </Box>
+
+            <Box width="100%" display="flex" flexDirection="column" gap="spacing.5">
+              <TextInput
+                label="Bank Name"
+                name="bankName"
+                value={bankData.bankName}
+                onChange={({ value }) => handleChange('bankName', value ?? '')}
+                labelPosition="top"
+                helpText="Full name of the registered national bank"
+                placeholder="State Bank of India"
+              />
+              <Box width="100%" display="grid" gridTemplateColumns="1fr 1fr" gap="spacing.5">
+                <TextInput
+                  label="Branch Name"
+                  name="branchName"
+                  value={bankData.branchName}
+                  onChange={({ value }) => handleChange('branchName', value ?? '')}
+                  labelPosition="top"
+                  helpText="Generally, it is location of your branch"
+                  placeholder="A1 Block, Janakpuri"
+                />
+
+                <TextInput
+                  label="Branch Number"
+                  name="branchNumber"
+                  value={bankData.branchNumber}
+                  onChange={({ value }) => handleChange('branchNumber', value ?? '')}
+                  labelPosition="top"
+                  helpText="The 5-digit number, you can find it on your bank's cheque book"
+                  placeholder="SBIN0011315"
+                />
+              </Box>
+            </Box>
+          </Box>
+
+          {/* Address Details Section */}
+          <Box display="flex" flexDirection="row" gap="spacing.5">
+            <Box>
+              <Heading size="medium">Address Details</Heading>
+              <Text weight="regular" color="surface.text.gray.muted">
+                This is general subtext for a section
+              </Text>
+            </Box>
+            <Box width="100%" display="flex" flexDirection="column" gap="spacing.5">
+              <TextInput
+                label="Address Line 1"
+                name="addressLine1"
+                value={bankData.addressLine1}
+                onChange={({ value }) => handleChange('addressLine1', value ?? '')}
+                labelPosition="top"
+                placeholder="A1-240, Titan Towers, State Bank of India"
+              />
+
+              <TextInput
+                label="Address Line 2"
+                name="addressLine2"
+                value={bankData.addressLine2}
+                onChange={({ value }) => handleChange('addressLine2', value ?? '')}
+                labelPosition="top"
+                placeholder="A1 Janakpuri, Opposite Community Hall"
+              />
+
+              <Box width="100%" display="grid" gridTemplateColumns="1fr 1fr" gap="spacing.5">
+                <TextInput
+                  label="Pin Code"
+                  name="pinCode"
+                  value={bankData.pinCode}
+                  onChange={({ value }) => handleChange('pinCode', value ?? '')}
+                  labelPosition="top"
+                  placeholder="110018"
+                />
+
+                <Dropdown selectionType="single">
+                  <SelectInput
+                    label="City"
+                    placeholder="Select City"
+                    name="city"
+                    onChange={({ values }) => handleChange('city', values[0] ?? '')}
+                    labelPosition="top"
+                  />
+                  <DropdownOverlay>
+                    <ActionList>
+                      {CITY_OPTIONS.map((city) => (
+                        <ActionListItem key={city.value} title={city.title} value={city.value} />
+                      ))}
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              </Box>
+            </Box>
+          </Box>
+
+          <TextArea
+            label="Additional Information"
+            name="additionalInformation"
+            value={bankData.additionalInformation}
+            onChange={({ value }) => handleChange('additionalInformation', value ?? '')}
+            numberOfLines={4}
+            placeholder="Enter any additional information"
+          />
+        </Box>
+
+        <Box display="flex" gap="spacing.4" justifyContent="flex-end">
+          <Button variant="tertiary" color="primary" size="medium">
+            Discard
+          </Button>
+          <Button type="submit" variant="primary" color="primary" size="medium">
+            Save
+          </Button>
+        </Box>
+      </Box>
+    </form>
+  );
+};
+\`\`\`
+
+### Form with Fixed Footer
+
+A long form demonstrating fixed footer positioning with action buttons that remain visible during scrolling.
+
+\`\`\`tsx
+import React, { useState } from 'react';
+import {
+  Box,
+  TextInput,
+  TextArea,
+  Button,
+  Heading,
+  Text,
+  useToast,
+  ToastContainer,
+} from '@razorpay/blade/components';
+
+const LongFormWithFixedFooter = () => {
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    content: '',
+  });
+
+  const toast = useToast();
+
+  const handleChange = (field: string, value: string): void => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent): void => {
+    e.preventDefault();
+    toast.show({
+      content: 'Document has been saved successfully.',
+      color: 'positive',
+      type: 'informational',
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Box display="flex" flexDirection="column" gap="spacing.8" paddingBottom="spacing.11">
+        <ToastContainer />
+        <Box>
+          <Heading size="large" weight="semibold">
+            Create Document
+          </Heading>
+          <Text weight="regular" color="surface.text.gray.muted">
+            Fill out the form below to create a new document
+          </Text>
+        </Box>
+
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInput
+            label="Document Title"
+            name="title"
+            value={formData.title}
+            onChange={({ value }) => handleChange('title', value ?? '')}
+            placeholder="Enter document title"
+          />
+
+          <TextInput
+            label="Description"
+            name="description"
+            value={formData.description}
+            onChange={({ value }) => handleChange('description', value ?? '')}
+            placeholder="Enter a brief description"
+          />
+
+          <TextArea
+            label="Content"
+            name="content"
+            value={formData.content}
+            onChange={({ value }) => handleChange('content', value ?? '')}
+            numberOfLines={5}
+            placeholder="Enter the main content of your document"
+          />
+        </Box>
+
+        <Box
+          display="flex"
+          gap="spacing.4"
+          justifyContent="flex-end"
+          backgroundColor="surface.background.gray.moderate"
+          padding="spacing.4"
+          position="fixed"
+          bottom="spacing.0"
+          right="spacing.4"
+          width="100%"
+          borderColor="surface.border.gray.muted"
+          borderWidth="thin"
+        >
+          <Button variant="tertiary" color="primary" size="medium">
+            Discard
+          </Button>
+          <Button type="submit" variant="primary" color="primary" size="medium">
+            Save
+          </Button>
+        </Box>
+      </Box>
+    </form>
+  );
+};
 \`\`\`
 
 
