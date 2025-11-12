@@ -4,18 +4,17 @@ Pagination
 
 ## Description
 
-Pagination is a navigation component that allows users to navigate through multiple pages of content. It provides page number navigation buttons, page size selection dropdown, and direct page jumping capabilities with ellipsis for large page ranges. The component supports both controlled and uncontrolled modes for page and page size state management, and adapts its UI for mobile devices by hiding certain features.
+Pagination is a navigation component that allows users to navigate through multiple pages of content. It provides page number navigation buttons, page size selection dropdown, and direct page jumping capabilities with ellipsis for large page ranges. The component supports both controlled and uncontrolled modes for page and page size state management, and automatically adapts its UI for mobile devices by hiding certain features like page size picker, page number selector, and labels.
 
 ## Important Constraints
 
 - Pages are 1-indexed externally (1 is the first page, 2 is the second page, etc.) - the `selectedPage` and `defaultSelectedPage` props use 1-based indexing
-- `totalPages` must be provided
+- `pageSize` can only be one of: `10`, `25`, or `50`
 - `defaultPageSize` can only be one of: `10`, `25`, or `50`
 - When both `selectedPage` and `defaultSelectedPage` are provided, `selectedPage` takes precedence (controlled mode)
 - When both `pageSize` and `defaultPageSize` are provided, `pageSize` takes precedence (controlled mode)
 - `showPageSizePicker`, `showPageNumberSelector`, and `showLabel` are always hidden on mobile devices
 - `showPageNumberSelector` only displays when `totalPages > 1`
-- Page size picker options are limited to 10, 25, or 50 items per page
 - If `totalPages` is not provided, the component defaults to 1 total page
 
 ## TypeScript Types
@@ -67,9 +66,9 @@ type PaginationCommonProps = {
    * Current page size when controlled.
    * When provided, the page size is controlled.
    * When not provided, the component manages page size internally.
-   * @default undefined (uncontrolled)
+   * @default 10
    */
-  pageSize?: number;
+  pageSize?: 10 | 25 | 50;
 
   /**
    * Callback function that is called when the page size is changed.
@@ -122,7 +121,7 @@ type PaginationProps = PaginationCommonProps & {
 
 ### Controlled Pagination with All Features
 
-This example demonstrates a fully controlled pagination component with all features enabled including page navigation, page size selection, page number selector with ellipsis, and custom label. It shows how to handle controlled state for both page and page size, with proper event handlers and accessibility considerations.
+This example demonstrates a fully controlled pagination component with all features enabled including page navigation, page size selection, page number selector with ellipsis for large page ranges, and custom label. It shows how to handle controlled state for both page and page size, with proper event handlers and accessibility considerations.
 
 ```typescript
 import { Pagination } from '@razorpay/blade/components';
@@ -130,23 +129,27 @@ import { useState } from 'react';
 
 function ControlledPaginationExample() {
   const [selectedPage, setSelectedPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState<10 | 25 | 50>(10);
+  const totalItems = 1000;
+  const totalPages = Math.ceil(totalItems / pageSize);
 
   return (
     <Pagination
-      totalPages={100}
+      totalPages={totalPages}
       selectedPage={selectedPage}
       pageSize={pageSize}
       onSelectedPageChange={({ page }) => setSelectedPage(page)}
-      onPageSizeChange={({ pageSize }) => setPageSize(pageSize)}
+      onPageSizeChange={({ pageSize }) => setPageSize(pageSize as 10 | 25 | 50)}
       showPageSizePicker
       showPageNumberSelector
       showLabel
-      label="Showing 1-10 of 1000 items"
+      label={`Showing ${(selectedPage - 1) * pageSize + 1}-${Math.min(
+        selectedPage * pageSize,
+        totalItems,
+      )} of ${totalItems} items`}
       pageSizeLabel="items / page"
       isDisabled={false}
     />
   );
 }
 ```
-

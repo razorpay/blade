@@ -54,7 +54,7 @@ const _TablePagination = ({
     ) {
       return Math.ceil(totalItems / currentPaginationState.size);
     }
-    return undefined;
+    return 1;
   }, [totalItemCount, currentPaginationState, totalItems, paginationType]);
 
   // Determine current page - use controlled value, fallback to table context, or default to 0 (0-indexed)
