@@ -1,7 +1,10 @@
 name: Blade Validate
 
-on: [pull_request]
-
+on:
+  pull_request:
+    paths:
+      - 'packages/blade/**'
+      - '.github/workflows/blade-validate.yml'
 permissions:
   checks: write
   pull-requests: write
