@@ -1,0 +1,52 @@
+name: Blade MCP Validate
+
+on:
+  pull_request:
+    paths:
+      - 'packages/blade-mcp/**'
+      - '.github/workflows/blade-mcp-validate.yml'
+
+permissions:
+  checks: write
+  pull-requests: write
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Source Code
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Build Blade MCP
+        run: yarn build
+        working-directory: packages/blade-mcp
+      - name: Lint Source Code
+        run: yarn lint
+        working-directory: packages/blade-mcp
+      - name: Run TypeScript Checks
+        run: yarn typecheck
+        working-directory: packages/blade-mcp
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22.12.0
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Run Unit Tests
+        run: yarn test
+        working-directory: packages/blade-mcp
+
