@@ -59,6 +59,5 @@ Run the following bash script to create cursor rules:
 ${bashScriptContent}
 \`
 **Working Directory:** \`${currentProjectRootDirectory}\`
-     
-          `;
+`;
 }
