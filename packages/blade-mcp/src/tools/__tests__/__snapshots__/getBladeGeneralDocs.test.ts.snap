@@ -517,3 +517,521 @@ import {
   ],
 }
 `;
+
+exports[`getBladeGeneralDocs Tool > should return consistent general docs response for claude agent 1`] = `
+{
+  "content": [
+    {
+      "text": "Blade general documentation for: Usage, AvailableIcons
+
+# Usage
+import { Meta } from '@storybook/addon-docs';
+import figmaComponent from '../images/figma-component.png';
+import figmaToken from '../images/figma-token.png';
+
+<Meta title="Guides/How to use?" />
+
+# 👀 How to use blade?
+
+<br />
+<br />
+
+> Before starting to use Blade make sure you have followed the [installation guide](?path=/docs/guides-how-to-use--docs) and installed all the dependencies like \`styled-components\`, \`fonts\` etc.
+
+<br />
+
+## Wrap your App with \`BladeProvider\`
+
+Make sure if \`BladeProvider\` is not already present in your app, add it to your app entry point.
+
+In some cases, if section of the page is using dark theme while rest of the page is using light theme, you can wrap the section in \`BladeProvider\` with \`colorScheme\` set to \`dark\`. Although avoid unnecessary usage of BladeProvider when its not needed.
+
+\`\`\`jsx
+// index.js
+import App from './App';
+import { BladeProvider } from '@razorpay/blade/components';
+import { bladeTheme } from '@razorpay/blade/tokens';
+
+function AppWrapper(): JSX.Element {
+  return (
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+      <App />
+    </BladeProvider>
+  );
+}
+
+export default AppWrapper;
+\`\`\`
+
+## Mapping Components from Figma to Blade in your code
+
+Blade is built with **"What you see in Figma is what you get on Code" ** philosophy.
+
+Whenever you get a UI mockup handed over by your designer select the component you want to build. for eg: let's say I want to implement the Export button component from the below mockup.
+
+<img src={figmaComponent} alt="Figma mockup showing how to pick component and it's properties" />
+
+So to know the blade component's name and properties
+
+1. Select the component on Figma
+2. Click on the \`locator\` icon that will take you to component's properties
+3. Look at the component properties and copy it in code because the same properties exists on the components shipped.
+
+\`\`\`jsx
+// in your file where you want to implement this
+import { Button, DownloadIcon } from '@razorpay/blade/components';
+
+<Button variant="secondary" size="medium" icon={DownloadIcon} iconPosition="left">
+  Export
+</Button>;
+\`\`\`
+
+## Mapping Tokens from Figma to Blade in your code
+
+> Tokens are an integral part of design system and are used to store design decisions behind a token(variable) name. That also make things easier to update without you making any change. For this reason **never hardcode** token values in your code but rather use the token name.
+
+Everything that you see on Figma built using Blade you'll always find that in code as well.
+
+Let's see how you can spot a token name from figma and write it in your code
+
+<img src={figmaToken} alt="Figma mockup showing how to pick token" />
+
+Whenever you get a UI mockup handed over by your designer
+
+1. Select the component whose color token you want to use in code up
+2. Click on the inspect panel on the left and click on the token name \`surface.background.gray.moderate\` to copy it and paste it into your code.
+   > Remember, don't select the hardcoded \`hsla\` color value.
+
+\`\`\`jsx
+const StyledCard = styled.div(
+  ({ theme }: { theme: Theme }) => \`
+    width: 368px;
+    background-color: \${theme.colors.surface.background.gray.moderate};
+\`,
+);
+\`\`\`
+
+
+# AvailableIcons
+# Available Icons in Blade
+
+## How to use Icons
+
+All icons are exported from \`@razorpay/blade/components\`. They can be used in components that support IconComponent type. Or used as standalone components.
+
+\`\`\`tsx
+import {
+  Button,
+  Badge,
+  // Icons import
+  AcceptPaymentsIcon,
+  ArrowRightIcon,
+} from '@razorpay/blade/components';
+
+<>
+  {/* Components with icon prop */}
+  <Button icon={AcceptPaymentsIcon}>Button with Icon</Button>
+  <Badge icon={AcceptPaymentsIcon}>Badge with Icon</Badge>
+  {/* Icons as standalone components */}
+  <ArrowRightIcon size="small" color="surface.icon.primary.normal" />
+</>;
+\`\`\`
+
+## Note
+
+- If the icon is expected to be clickable, use \`IconButton\` component.
+- If the icon clickable and looks like a link, use \`<Link icon={IconName} href="" />\`
+
+## List of Available Icons
+
+- AcceptPaymentsIcon
+- ActivityIcon
+- AddressBookIcon
+- AffordabilityIcon
+- AirplayIcon
+- AlertCircleIcon
+- AlertOctagonIcon
+- AlertOnlyIcon
+- AlertTriangleIcon
+- AlignCenterIcon
+- AlignJustifyIcon
+- AlignLeftIcon
+- AlignRightIcon
+- AnchorIcon
+- AndroidIcon
+- AnnouncementIcon
+- ApertureIcon
+- AppStoreIcon
+- AppleIcon
+- ArrowDownIcon
+- ArrowDownLeftIcon
+- ArrowDownRightIcon
+- ArrowLeftIcon
+- ArrowRightIcon
+- ArrowSquareDownIcon
+- ArrowSquareDownLeftIcon
+- ArrowSquareDownRightIcon
+- ArrowSquareLeftIcon
+- ArrowSquareRightIcon
+- ArrowSquareUpIcon
+- ArrowSquareUpLeftIcon
+- ArrowSquareUpRightIcon
+- ArrowUpIcon
+- ArrowUpLeftIcon
+- ArrowUpRightIcon
+- AtSignIcon
+- AttachmentIcon
+- AutomateAccountingIcon
+- AutomatePayrollIcon
+- AwardIcon
+- BankAccountVerificationIcon
+- BankIcon
+- BarChartAltIcon
+- BarChartIcon
+- BarCodeIcon
+- Battery100PercentIcon
+- Battery20PercentIcon
+- Battery40PercentIcon
+- Battery60PercentIcon
+- Battery80PercentIcon
+- BatteryChargingIcon
+- BatteryIcon
+- BellIcon
+- BellOffIcon
+- BfsiIcon
+- BillIcon
+- BillMeIcon
+- BluetoothIcon
+- BoldIcon
+- BookIcon
+- BookmarkIcon
+- BoxIcon
+- BriefcaseIcon
+- BugIcon
+- BuildingIcon
+- BulkPayoutsIcon
+- BusinessBankingIcon
+- BusinessSpendManagementIcon
+- CalendarIcon
+- CameraIcon
+- CameraOffIcon
+- CashIcon
+- CastIcon
+- CheckCircle2Icon
+- CheckCircleIcon
+- CheckIcon
+- CheckSquareIcon
+- ChevronDownIcon
+- ChevronLeftIcon
+- ChevronRightIcon
+- ChevronUpIcon
+- ChevronsDownIcon
+- ChevronsLeftIcon
+- ChevronsRightIcon
+- ChevronsUpIcon
+- ChromeIcon
+- CircleIcon
+- ClipboardIcon
+- ClockIcon
+- CloseIcon
+- ClosedCaptioningIcon
+- CloudDrizzleIcon
+- CloudIcon
+- CloudLightningIcon
+- CloudOffIcon
+- CloudRainIcon
+- CloudSnowIcon
+- CodeSnippetIcon
+- CodepenIcon
+- CoinIcon
+- CoinsIcon
+- CommandIcon
+- CompanyRegistrationIcon
+- CompassIcon
+- ConfettiIcon
+- ContactlessPaymentIcon
+- CookieIcon
+- CopyIcon
+- CopyrightIcon
+- CornerDownLeftIcon
+- CornerDownRightIcon
+- CornerLeftDownIcon
+- CornerLeftUpIcon
+- CornerRightDownIcon
+- CornerRightUpIcon
+- CornerUpLeftIcon
+- CornerUpRightIcon
+- CpuIcon
+- CreditCardIcon
+- CreditsAndLoansIcon
+- CropIcon
+- CrosshairIcon
+- CurrentAccountIcon
+- CustomersIcon
+- CutIcon
+- DashboardIcon
+- DeleteIcon
+- DigitalLendingIcon
+- DisbursePaymentsIcon
+- DiscIcon
+- DollarIcon
+- DollarsIcon
+- DotIcon
+- DownloadCloudIcon
+- DownloadIcon
+- DragHandleIcon
+- DropletIcon
+- EcommerceIcon
+- EditComposeIcon
+- EditIcon
+- EditInlineIcon
+- EducationIcon
+- EngageIcon
+- EqualsIcon
+- EscrowAccountIcon
+- ExportIcon
+- ExternalLinkIcon
+- EyeIcon
+- EyeOffIcon
+- FacebookIcon
+- FastForwardIcon
+- FeatherIcon
+- FigmaIcon
+- FileIcon
+- FileMinusIcon
+- FilePlusIcon
+- FileTextIcon
+- FileZipIcon
+- FilmIcon
+- FilterIcon
+- FlagIcon
+- FlaskIcon
+- FolderIcon
+- ForexManagementIcon
+- FreelanceIcon
+- FullScreenEnterIcon
+- FullScreenExitIcon
+- GithubIcon
+- GitlabIcon
+- GlobeIcon
+- GridIcon
+- HashIcon
+- HeadphoneIcon
+- HeadphonesIcon
+- HeadsetIcon
+- HeartIcon
+- HelpCircleIcon
+- HistoryIcon
+- HomeIcon
+- ImageIcon
+- InboxIcon
+- IndiaFlagIcon
+- InfoIcon
+- InstagramIcon
+- InstantSettlementIcon
+- InternationalPaymentsIcon
+- InvoicesIcon
+- ItalicIcon
+- KeyIcon
+- KeyboardIcon
+- LayersIcon
+- LayoutIcon
+- LeftCircularCornerIcon
+- LifeBuoyIcon
+- LinkIcon
+- ListIcon
+- ListSearchIcon
+- LoaderIcon
+- LoansForBusinessesIcon
+- LockIcon
+- LogInIcon
+- LogOutIcon
+- MagicCheckoutIcon
+- MagicKonnectIcon
+- MailIcon
+- MailOpenIcon
+- MapIcon
+- MapPinIcon
+- MaximizeIcon
+- MenuDotsIcon
+- MenuIcon
+- MessageCircleIcon
+- MessageSquareIcon
+- MicIcon
+- MicOffIcon
+- MinimizeIcon
+- MinusCircleIcon
+- MinusIcon
+- MinusSquareIcon
+- MobileAppIcon
+- MonitorIcon
+- MoonIcon
+- MoreHorizontalIcon
+- MoreIcon
+- MoreVerticalIcon
+- MoveIcon
+- MusicIcon
+- MyAccountIcon
+- NavigationIcon
+- NoSignalIcon
+- OctagonIcon
+- OffersIcon
+- OptimizerIcon
+- PackageIcon
+- PaperclipIcon
+- PauseCircleIcon
+- PauseIcon
+- PaymentButtonIcon
+- PaymentButtonsIcon
+- PaymentGatewayIcon
+- PaymentLinkIcon
+- PaymentLinksIcon
+- PaymentPagesIcon
+- PayoutLinkIcon
+- PayrollAddonsIcon
+- PayrollForCaIcon
+- PayrollForStartupOrSmeIcon
+- PercentIcon
+- PettyCashBudgetIcon
+- PhoneCallIcon
+- PhoneForwardedIcon
+- PhoneIcon
+- PhoneIncomingIcon
+- PhoneMissedIcon
+- PhoneOffIcon
+- PhoneOutgoingIcon
+- PictureInPictureIcon
+- PieChartIcon
+- PinIcon
+- PlayCircleIcon
+- PlayIcon
+- PlusCircleIcon
+- PlusIcon
+- PlusSquareIcon
+- PocketIcon
+- PosIcon
+- PowerIcon
+- PrinterIcon
+- PromptIcon
+- QRCodeIcon
+- RadioIcon
+- RayIcon
+- RazorpayIcon
+- RazorpayXIcon
+- RazorpayxPayrollIcon
+- RefreshIcon
+- RepeatIcon
+- ReportsIcon
+- ResizerIcon
+- RewindIcon
+- RotateClockWiseIcon
+- RotateCounterClockWiseIcon
+- RouteIcon
+- RoutesIcon
+- RupeeIcon
+- RupeesIcon
+- SaasIcon
+- SaveIcon
+- ScissorsIcon
+- SearchIcon
+- SendIcon
+- ServerIcon
+- SettingsIcon
+- SettlementsIcon
+- ShareIcon
+- ShieldIcon
+- ShoppingBagIcon
+- ShoppingCartIcon
+- ShuffleIcon
+- SidebarIcon
+- Signal1BarIcon
+- Signal2BarIcon
+- Signal3BarIcon
+- Signal4BarIcon
+- SignalIcon
+- SimCardIcon
+- SkipBackIcon
+- SkipForwardIcon
+- SlackIcon
+- SlashIcon
+- SlidersIcon
+- SmartCollectIcon
+- SmartphoneIcon
+- SolutionsIcon
+- SortIcon
+- SourceToPayIcon
+- SparklesIcon
+- SpeakerIcon
+- SquareIcon
+- StampIcon
+- StarIcon
+- StopCircleIcon
+- StorefrontIcon
+- SubscriptionsIcon
+- SunIcon
+- SunriseIcon
+- SunsetIcon
+- TabletIcon
+- TagIcon
+- TargetIcon
+- TaxPaymentsIcon
+- TestIcon
+- ThermometerIcon
+- ThumbsDownIcon
+- ThumbsUpIcon
+- TicketIcon
+- ToggleLeftIcon
+- ToggleRightIcon
+- TokenHqIcon
+- TopLeftRoundedCornerIcon
+- TopLeftSharpCornerIcon
+- TrademarkIcon
+- TrademarkRegisteredIcon
+- TransactionsIcon
+- TranslateIcon
+- TrashIcon
+- TrendingDownIcon
+- TrendingUpIcon
+- TriangleIcon
+- TvIcon
+- TwitterIcon
+- TypeIcon
+- UmbrellaIcon
+- UnderlineIcon
+- UnlockIcon
+- UpiAutopayIcon
+- UpiIcon
+- UploadCloudIcon
+- UploadIcon
+- UserCheckIcon
+- UserIcon
+- UserMinusIcon
+- UserPlusIcon
+- UserXIcon
+- UsersIcon
+- VendorPaymentsIcon
+- VideoIcon
+- VideoOffIcon
+- ViewLiveDemoIcon
+- VoicemailIcon
+- VolumeHighIcon
+- VolumeIcon
+- VolumeLowIcon
+- VolumeMuteIcon
+- WalletIcon
+- WatchIcon
+- WifiIcon
+- WifiOffIcon
+- WindIcon
+- WorldwideIcon
+- XCircleIcon
+- XSquareIcon
+- YoutubeIcon
+- ZapIcon
+- ZoomInIcon
+- ZoomOutIcon",
+      "type": "text",
+    },
+  ],
+}
+`;

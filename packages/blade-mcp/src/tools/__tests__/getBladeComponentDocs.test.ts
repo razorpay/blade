@@ -240,4 +240,51 @@ describe('getBladeComponentDocs Tool', () => {
     // Snapshot test to ensure the output format remains consistent
     expect(result).toMatchSnapshot();
   });
+
+  it('should return consistent component docs response for claude agent (snapshot)', async () => {
+    const testProjectRootDirectory = '/Users/test/project';
+    const testComponentsList = 'Button, Accordion';
+
+    // Get the actual implementations (not mocked) to test real output
+    const actualGetBladeDocsResponseText = await vi.importActual<typeof getBladeDocsResponseText>(
+      '../../utils/getBladeDocsResponseText.js',
+    );
+    const actualGeneralUtils = await vi.importActual<typeof generalUtils>(
+      '../../utils/generalUtils.js',
+    );
+
+    // Unmock analytics to allow the actual function to run, but we'll still spy on it
+    vi.restoreAllMocks();
+    vi.spyOn(analyticsUtils, 'sendAnalytics').mockImplementation(() => {
+      // Mock implementation that doesn't throw
+    });
+
+    if (actualGetBladeDocsResponseText && actualGeneralUtils) {
+      // Temporarily replace the mocked functions with the actual ones
+      vi.spyOn(getBladeDocsResponseText, 'getBladeDocsResponseText').mockImplementation(
+        actualGetBladeDocsResponseText.getBladeDocsResponseText,
+      );
+      vi.spyOn(generalUtils, 'getBladeDocsList').mockImplementation(
+        actualGeneralUtils.getBladeDocsList,
+      );
+    }
+
+    // Mock cursor rules as not missing and not outdated
+    vi.spyOn(cursorRulesUtils, 'isCursorRuleFileMissing').mockReturnValue(false);
+    vi.spyOn(cursorRulesUtils, 'areCursorRulesOutdated').mockReturnValue(false);
+
+    // Call the tool callback with actual implementation
+    const result = getBladeComponentDocsToolCallback(
+      {
+        componentsList: testComponentsList,
+        currentProjectRootDirectory: testProjectRootDirectory,
+        clientName: 'claude',
+        cursorRuleVersion: CURSOR_RULES_VERSION,
+      },
+      createMockContext(),
+    );
+
+    // Snapshot test to ensure the output format remains consistent
+    expect(result).toMatchSnapshot();
+  });
 });

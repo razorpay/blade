@@ -253,4 +253,56 @@ describe('getBladeGeneralDocs Tool', () => {
     // Snapshot test to ensure the output format remains consistent
     expect(result).toMatchSnapshot();
   });
+
+  it('should return consistent general docs response for claude agent', async () => {
+    const testProjectRootDirectory = '/Users/test/project';
+    const testTopicsList = 'Usage, AvailableIcons';
+
+    // Unmock fs first so that getBladeDocsResponseText can read real files
+    vi.doUnmock('fs');
+
+    // Get the actual implementations (not mocked) to test real output
+    // Re-import getBladeDocsResponseText after unmocking fs so it uses actual readFileSync
+    vi.doUnmock('../../utils/getBladeDocsResponseText.js');
+    const actualGetBladeDocsResponseText = await vi.importActual<typeof getBladeDocsResponseText>(
+      '../../utils/getBladeDocsResponseText.js',
+    );
+    const actualGeneralUtils = await vi.importActual<typeof generalUtils>(
+      '../../utils/generalUtils.js',
+    );
+
+    // Unmock analytics to allow the actual function to run, but we'll still spy on it
+    vi.restoreAllMocks();
+    vi.spyOn(analyticsUtils, 'sendAnalytics').mockImplementation(() => {
+      // Mock implementation that doesn't throw
+    });
+
+    if (actualGetBladeDocsResponseText && actualGeneralUtils) {
+      // Temporarily replace the mocked functions with the actual ones
+      vi.spyOn(getBladeDocsResponseText, 'getBladeDocsResponseText').mockImplementation(
+        actualGetBladeDocsResponseText.getBladeDocsResponseText,
+      );
+      vi.spyOn(generalUtils, 'getBladeDocsList').mockImplementation(
+        actualGeneralUtils.getBladeDocsList,
+      );
+    }
+
+    // Mock cursor rules as not missing and not outdated
+    vi.spyOn(cursorRulesUtils, 'isCursorRuleFileMissing').mockReturnValue(false);
+    vi.spyOn(cursorRulesUtils, 'areCursorRulesOutdated').mockReturnValue(false);
+
+    // Call the tool callback with actual implementation
+    const result = getBladeGeneralDocsToolCallback(
+      {
+        topicsList: testTopicsList,
+        currentProjectRootDirectory: testProjectRootDirectory,
+        clientName: 'claude',
+        cursorRuleVersion: CURSOR_RULES_VERSION,
+      },
+      createMockContext(),
+    );
+
+    // Snapshot test to ensure the output format remains consistent
+    expect(result).toMatchSnapshot();
+  });
 });
