@@ -1,15 +1,11 @@
 name: Blade Validate
 
-on:
-  pull_request:
-    paths:
-      - 'packages/blade/**'
-      - '.github/workflows/blade-validate.yml'
+on: [pull_request]
+
 permissions:
   checks: write
   pull-requests: write
   contents: read
-
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
@@ -61,12 +57,12 @@ jobs:
         env:
           SHARD: ${{ matrix.shard }}/${{ matrix.totalShards }}
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@v4  
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report-${{ matrix.shard }}
           path: packages/blade/coverage
-          retention-days: 1          
-  
+          retention-days: 1
+
   coverage-report:
     name: Generate Coverage Report
     runs-on: ubuntu-latest
@@ -100,27 +96,27 @@ jobs:
         run: |
           # Create directory for nyc output
           mkdir -p .nyc_output
-          
+
           # Find and copy all coverage-final.json files to .nyc_output with unique names
           counter=1
           find coverage-reports -name "coverage-final.json" | while read file; do
             cp "$file" ".nyc_output/coverage-final-${counter}.json"
             counter=$((counter + 1))
           done
-          
+
           # List files in .nyc_output for debugging
           echo "Files in .nyc_output:"
           ls -la .nyc_output/
-          
+
           # Generate merged report and capture text-summary
           yarn --silent nyc report --reporter=json --reporter=text-summary > coverage-summary.txt
-          
+
           # Generate full coverage report
           yarn --silent nyc report --reporter=json --reporter=text > coverage-full.txt
-          
+
           # Ensure output directory exists
           mkdir -p packages/blade/coverage
-          
+
           # Copy the merged report to expected location
           if [ -f "coverage/coverage-final.json" ]; then
             cp coverage/coverage-final.json packages/blade/coverage/
@@ -161,4 +157,4 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body-file: coverage-comment.md
           token: ${{ secrets.CI_BOT_TOKEN }}
-          edit-mode: replace  
+          edit-mode: replace
