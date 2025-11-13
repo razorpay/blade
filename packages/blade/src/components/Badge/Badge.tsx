@@ -46,7 +46,7 @@ type BadgeProps = {
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
    * Icon to be displayed in the badge.
    * Accepts a component of type `IconComponent` from Blade.
@@ -123,6 +123,10 @@ const _Badge = (
   });
 
   const badgeTextSizes = {
+    xsmall: {
+      variant: 'body',
+      size: 'xsmall',
+    },
     small: {
       variant: 'body',
       size: 'xsmall',

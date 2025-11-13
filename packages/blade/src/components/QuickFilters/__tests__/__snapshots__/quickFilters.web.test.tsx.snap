@@ -1,35 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<QuickFilters/> should render Values Correctly 1`] = `
-.c12.c12.c12.c12.c12 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-width: 12px;
-  width: 12px;
-  height: 12px;
-  border-width: 1.5px;
-  border-style: solid;
-  margin: 2px;
-  border-radius: 9999px;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
-  transition-timing-function: cubic-bezier(0.17,0,1,1);
-}
-
 .c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -147,19 +118,19 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   align-items: center;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   min-height: 20px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -180,7 +151,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   padding-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -197,7 +168,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   padding: 0;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -300,7 +271,7 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
   position: relative;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -393,35 +364,31 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                                   type="radio"
                                   value="value1"
                                 />
-                                <div
-                                  class="c12"
-                                  data-blade-component="radio-icon-wrapper"
-                                />
                               </div>
                             </div>
                           </label>
                         </div>
                         <p
-                          class="c13"
+                          class="c12"
                           data-blade-component="text"
                         >
                           Title1
                         </p>
                       </div>
                       <div
-                        class="c14"
+                        class="c13"
                         data-blade-component="counter"
                       >
                         <div
-                          class="c15 c16"
+                          class="c14 c15"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c17"
+                            class="c16"
                             data-blade-component="base-box"
                           >
                             <p
-                              class="c18"
+                              class="c17"
                               data-blade-component="text"
                             >
                               234
@@ -483,35 +450,31 @@ exports[`<QuickFilters/> should render Values Correctly 1`] = `
                                   type="radio"
                                   value="value2"
                                 />
-                                <div
-                                  class="c12"
-                                  data-blade-component="radio-icon-wrapper"
-                                />
                               </div>
                             </div>
                           </label>
                         </div>
                         <p
-                          class="c13"
+                          class="c12"
                           data-blade-component="text"
                         >
                           Title2
                         </p>
                       </div>
                       <div
-                        class="c14"
+                        class="c13"
                         data-blade-component="counter"
                       >
                         <div
-                          class="c15 c16"
+                          class="c14 c15"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c17"
+                            class="c16"
                             data-blade-component="base-box"
                           >
                             <p
-                              class="c18"
+                              class="c17"
                               data-blade-component="text"
                             >
                               234
