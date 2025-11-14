@@ -170,21 +170,6 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   margin-top: 4px;
 }
 
-.c20.c20.c20.c20.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-}
-
 .c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -274,7 +259,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -548,11 +533,11 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
           id="fileuploadinput-73-helptext-76"
         >
           <span
-            class="c20"
+            class="c3"
             data-blade-component="base-box"
           >
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
             >
               Upload .jpg, .jpeg, or .png file only
@@ -735,21 +720,6 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   margin-top: 4px;
 }
 
-.c20.c20.c20.c20.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-}
-
 .c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -843,7 +813,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -1124,11 +1094,11 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
           id="fileuploadinput-1-helptext-4"
         >
           <span
-            class="c20"
+            class="c3"
             data-blade-component="base-box"
           >
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
             >
               Upload .jpg, .jpeg, or .png file only
@@ -1311,21 +1281,6 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   margin-top: 8px;
 }
 
-.c20.c20.c20.c20.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-}
-
 .c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1419,7 +1374,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1700,11 +1655,11 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
           id="fileuploadinput-13-helptext-16"
         >
           <span
-            class="c20"
+            class="c3"
             data-blade-component="base-box"
           >
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
             >
               Upload .jpg, .jpeg, or .png file only
@@ -1887,21 +1842,6 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   margin-top: 4px;
 }
 
-.c20.c20.c20.c20.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-}
-
 .c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1991,7 +1931,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -2264,11 +2204,11 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
           id="fileuploadinput-25-helptext-28"
         >
           <span
-            class="c20"
+            class="c3"
             data-blade-component="base-box"
           >
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
             >
               Upload .jpg, .jpeg, or .png file only
