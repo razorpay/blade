@@ -1091,7 +1091,7 @@ describe('<Table />', () => {
     expect(queryByText('rzp01')).toBeInTheDocument();
 
     // Check if page size picker works
-    const selectInput = getByRole('combobox', { name: 'Select pages per row' });
+    const selectInput = getByRole('combobox', { name: 'Select items per page' });
     expect(getAllByRole('row')).toHaveLength(10);
     expect(selectInput).toBeInTheDocument();
     await user.click(selectInput);
