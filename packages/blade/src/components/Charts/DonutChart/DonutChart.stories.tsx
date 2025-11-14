@@ -24,28 +24,43 @@ const Page = (): React.ReactElement => {
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { 
-        ChartDonut,
-        ChartDonutWrapper,
-        ChartTooltip,
-        } from '@razorpay/blade/components';
-        
-        function App() {
-          const data = [
-            { name: 'Jan', sales: 4000 },
-            { name: 'Feb', sales: 3000 },
-            { name: 'Mar', sales: 2000 },
-          ];
-          
-          return (
-              <ChartDonutWrapper data={data}>
-                <ChartDonut dataKey="sales" nameKey="name" data={data} />
-                <ChartTooltip />
-              </ChartDonutWrapper>
-          )
-        }
+        import {
+         ChartDonut,
+         ChartDonutWrapper,
+         ChartTooltip,
+         ChartLegend,
+         Box,
+       } from '@razorpay/blade/components';
+       
+       const chartData = [
+         { name: 'Group A', value: 400 },
+         { name: 'Group B', value: 300 },
+         { name: 'Group C', value: 300 },
+         { name: 'Group D', value: 200 },
+         { name: 'Group E', value: 100 },
+       ];
+       
+       function App() {
+         return (
+           <Box width="400px" height="400px">
+             <Box width="100%" height="400px">
+               <ChartDonutWrapper
+                 content={{
+                   label: 'Total',
+                   value: '1300',
+                 }}
+               >
+                 <ChartDonut dataKey="value" nameKey="name" data={chartData} />
+                 <ChartLegend />
+                 <ChartTooltip />
+               </ChartDonutWrapper>
+             </Box>
+           </Box>
+         );
+       }
+       
+       export default App;
 
-        export default App;
       `}
       </Sandbox>
     </StoryPageWrapper>
