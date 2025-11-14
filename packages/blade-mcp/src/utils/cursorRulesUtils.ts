@@ -49,7 +49,7 @@ export function cursorRuleCreationInstructions(currentProjectRootDirectory: stri
 **Instructions:**
 1. Change to the working directory: \`cd "${currentProjectRootDirectory}"\`
 2. Run the bash script below (copy and execute the commands from the script)
-3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.m
+3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
 Run the following bash script to create cursor rules:
   
 
