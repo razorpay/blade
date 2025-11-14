@@ -2045,25 +2045,9 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 }
 
 .c18.c18.c18.c18.c18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-.c19.c19.c19.c19.c19 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -2106,7 +2090,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   padding: 0;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2305,7 +2289,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   display: block;
 }
 
@@ -2499,16 +2483,16 @@ exports[`<BaseInput /> should render with large size input 1`] = `
           id="name-145-successtext-149"
         >
           <span
-            class="c18"
+            class="c3"
             data-blade-component="base-box"
           >
             <div
-              class="c19"
+              class="c18"
               data-blade-component="box"
             >
               <svg
                 aria-hidden="true"
-                class="c20"
+                class="c19"
                 data-blade-component="icon"
                 fill="none"
                 height="16px"
@@ -2525,7 +2509,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
               </svg>
             </div>
             <span
-              class="c21"
+              class="c20"
               data-blade-component="text"
             >
               Success
