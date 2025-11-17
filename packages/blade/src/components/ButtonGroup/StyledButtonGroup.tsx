@@ -25,11 +25,13 @@ const StyledButtonGroup = styled(BaseBox)<StyledButtonGroupProps>(
           borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
           borderBottomLeftRadius: makeBorderSize(theme.border.radius.medium),
         },
+
         // Targets middle buttons, whether direct children or wrapped in container elements
         '> button[role="button"]:not(:first-child):not(:last-child), > *:not(:first-child):not(:last-child) button[role="button"]': {
           borderLeft: 'none',
           borderRight: 'none',
         },
+
         // Handles last button in group, accounting for wrapper components like Dropdown
         '> button[role="button"]:last-child, > *:last-child button[role="button"]': {
           borderLeft: 'none',
