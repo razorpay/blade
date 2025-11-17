@@ -108,9 +108,14 @@ describe('getBladeComponentDocs Tool', () => {
     expect(result).toBeDefined();
     expect(result).toHaveProperty('isError', true);
     if ('isError' in result && result.isError) {
-      expect(result.content).toBeDefined();
-      expect(result.content).toHaveLength(1);
-      expect(result.content[0]).toHaveProperty('type', 'text');
+      expect(result).toMatchObject({
+        content: [
+          {
+            type: 'text',
+            text: expect.any(String),
+          },
+        ],
+      });
     }
 
     // Verify analytics was not called for invalid components
