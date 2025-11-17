@@ -166,13 +166,6 @@ const _Pagination = ({
   isDisabled = false,
   ...rest
 }: PaginationProps): React.ReactElement => {
-  const [internalPageSize, setInternalPageSize] = useControllableState<10 | 25 | 50>({
-    defaultValue: defaultPageSize,
-    value: controlledPageSize,
-    onChange: (pageSize) => {
-      onPageSizeChange?.({ pageSize });
-    },
-  });
   // Convert 1-based external page to 0-based internal page
   const controlledInternalPage = useMemo(() => {
     if (isUndefined(controlledSelectedPage)) {
@@ -193,6 +186,16 @@ const _Pagination = ({
       onSelectedPageChange?.({ page: page + 1 });
     },
   });
+
+  const [internalPageSize, setInternalPageSize] = useControllableState<10 | 25 | 50>({
+    defaultValue: defaultPageSize,
+    value: controlledPageSize,
+    onChange: (pageSize) => {
+      onPageSizeChange?.({ pageSize });
+      setInternalPage(() => defaultInternalPage);
+    },
+  });
+
   // Calculate totalPages
   const totalPages = useMemo(() => {
     if (!isUndefined(controlledTotalPages)) {
