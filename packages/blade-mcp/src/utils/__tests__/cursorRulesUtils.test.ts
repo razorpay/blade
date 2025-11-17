@@ -3,6 +3,7 @@ import {
   isCursorRuleFileMissing,
   areCursorRulesOutdated,
   cursorRuleCreationInstructions,
+  shouldCreateOrUpdateCursorRule,
 } from '../cursorRulesUtils.js';
 import { CURSOR_RULES_VERSION } from '../tokens.js';
 
@@ -72,6 +73,69 @@ describe('cursorRulesUtils', () => {
       const testProjectRootDirectory = '/Users/alice/Desktop/blade-12/blade';
       const result = cursorRuleCreationInstructions(testProjectRootDirectory);
       expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe('shouldCreateOrUpdateCursorRule', () => {
+    const mockProjectRootDirectory = '/Users/test/project';
+
+    it('should return content with creation instructions when cursor rules are missing', () => {
+      const result = shouldCreateOrUpdateCursorRule('0', 'cursor', mockProjectRootDirectory);
+
+      expect(result).toBeDefined();
+      expect(result).toHaveProperty('content');
+      if (result) {
+        expect(result.content).toHaveLength(1);
+        expect(result.content[0]).toHaveProperty('type', 'text');
+        if ('text' in result.content[0]) {
+          expect(result.content[0].text).toContain('Cursor rules do not exist');
+          expect(result.content[0].text).toContain(mockProjectRootDirectory);
+        }
+      }
+    });
+
+    it('should return content with update instructions when cursor rules are outdated', () => {
+      const outdatedVersion = '1.0.0';
+      const result = shouldCreateOrUpdateCursorRule(
+        outdatedVersion,
+        'cursor',
+        mockProjectRootDirectory,
+      );
+
+      expect(result).toBeDefined();
+      expect(result).toHaveProperty('content');
+      if (result) {
+        expect(result.content).toHaveLength(1);
+        expect(result.content[0]).toHaveProperty('type', 'text');
+        if ('text' in result.content[0]) {
+          expect(result.content[0].text).toContain('Cursor rules are outdated');
+          expect(result.content[0].text).toContain(outdatedVersion);
+          expect(result.content[0].text).toContain(CURSOR_RULES_VERSION);
+          expect(result.content[0].text).toContain(mockProjectRootDirectory);
+        }
+      }
+    });
+
+    it('should return undefined when cursor rules are up to date', () => {
+      const result = shouldCreateOrUpdateCursorRule(
+        CURSOR_RULES_VERSION,
+        'cursor',
+        mockProjectRootDirectory,
+      );
+
+      expect(result).toBeUndefined();
+    });
+
+    it('should return undefined when client is not cursor (even if version is 0)', () => {
+      const result = shouldCreateOrUpdateCursorRule('0', 'claude', mockProjectRootDirectory);
+
+      expect(result).toBeUndefined();
+    });
+
+    it('should return undefined when client is unknown (even if version is outdated)', () => {
+      const result = shouldCreateOrUpdateCursorRule('1.0.0', 'unknown', mockProjectRootDirectory);
+
+      expect(result).toBeUndefined();
     });
   });
 });

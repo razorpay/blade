@@ -34,8 +34,7 @@ describe('getBladeComponentDocs Tool', () => {
     vi.clearAllMocks();
     // Setup default mocks
     vi.spyOn(generalUtils, 'getBladeDocsList').mockReturnValue(['Button', 'Accordion', 'Input']);
-    vi.spyOn(cursorRulesUtils, 'isCursorRuleFileMissing').mockReturnValue(false);
-    vi.spyOn(cursorRulesUtils, 'areCursorRulesOutdated').mockReturnValue(false);
+    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
   });
 
   it('should return component docs for valid components', () => {
@@ -73,11 +72,14 @@ describe('getBladeComponentDocs Tool', () => {
     // Verify the result structure
     expect(result).toHaveProperty('content');
     if ('content' in result && !('isError' in result)) {
-      expect(result.content).toHaveLength(1);
-      expect(result.content[0]).toHaveProperty('type', 'text');
-      if ('text' in result.content[0]) {
-        expect(result.content[0].text).toBe(mockResponseText.trim());
-      }
+      expect(result).toMatchObject({
+        content: [
+          {
+            type: 'text',
+            text: mockResponseText.trim(),
+          },
+        ],
+      });
     }
 
     // Verify getBladeDocsResponseText was called with correct parameters
@@ -105,92 +107,13 @@ describe('getBladeComponentDocs Tool', () => {
     // Verify the result is an error
     expect(result).toBeDefined();
     expect(result).toHaveProperty('isError', true);
-    if (result && 'isError' in result && result.isError) {
+    if ('isError' in result && result.isError) {
       expect(result.content).toBeDefined();
       expect(result.content).toHaveLength(1);
       expect(result.content[0]).toHaveProperty('type', 'text');
     }
 
     // Verify analytics was not called for invalid components
-    expect(analyticsUtils.sendAnalytics).not.toHaveBeenCalled();
-  });
-
-  it('should return cursor rule creation instructions when cursor rules are missing', () => {
-    const mockCurrentProjectRootDirectory = '/Users/test/project';
-    const mockComponentsList = 'Button';
-    const mockInstructions = 'Mock instructions for creating cursor rules';
-
-    // Mock cursor rules as missing
-    vi.spyOn(cursorRulesUtils, 'isCursorRuleFileMissing').mockReturnValue(true);
-    vi.spyOn(cursorRulesUtils, 'cursorRuleCreationInstructions').mockReturnValue(mockInstructions);
-
-    // Call the tool callback
-    const result = getBladeComponentDocsToolCallback(
-      {
-        componentsList: mockComponentsList,
-        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
-        clientName: 'cursor',
-        cursorRuleVersion: '0',
-      },
-      createMockContext(),
-    );
-
-    // Verify the result contains cursor rule creation instructions
-    expect(result).toHaveProperty('content');
-    if ('content' in result && !('isError' in result)) {
-      expect(result.content[0]).toHaveProperty('type', 'text');
-      if ('text' in result.content[0]) {
-        expect(result.content[0].text).toContain(mockInstructions);
-      }
-    }
-
-    // Verify cursorRuleCreationInstructions was called
-    expect(cursorRulesUtils.cursorRuleCreationInstructions).toHaveBeenCalledWith(
-      mockCurrentProjectRootDirectory,
-    );
-
-    // Verify analytics was not called when cursor rules are missing
-    expect(analyticsUtils.sendAnalytics).not.toHaveBeenCalled();
-  });
-
-  it('should return cursor rule update instructions when cursor rules are outdated', () => {
-    const mockCurrentProjectRootDirectory = '/Users/test/project';
-    const mockComponentsList = 'Button';
-    const mockInstructions = 'Mock instructions for updating cursor rules';
-    const outdatedVersion = '1.0.0';
-
-    // Mock cursor rules as outdated
-    vi.spyOn(cursorRulesUtils, 'areCursorRulesOutdated').mockReturnValue(true);
-    vi.spyOn(cursorRulesUtils, 'cursorRuleCreationInstructions').mockReturnValue(mockInstructions);
-
-    // Call the tool callback
-    const result = getBladeComponentDocsToolCallback(
-      {
-        componentsList: mockComponentsList,
-        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
-        clientName: 'cursor',
-        cursorRuleVersion: outdatedVersion,
-      },
-      createMockContext(),
-    );
-
-    // Verify the result contains cursor rule update instructions
-    expect(result).toHaveProperty('content');
-    if ('content' in result && !('isError' in result)) {
-      expect(result.content[0]).toHaveProperty('type', 'text');
-      if ('text' in result.content[0]) {
-        expect(result.content[0].text).toContain(mockInstructions);
-        expect(result.content[0].text).toContain(outdatedVersion);
-        expect(result.content[0].text).toContain(CURSOR_RULES_VERSION);
-      }
-    }
-
-    // Verify cursorRuleCreationInstructions was called
-    expect(cursorRulesUtils.cursorRuleCreationInstructions).toHaveBeenCalledWith(
-      mockCurrentProjectRootDirectory,
-    );
-
-    // Verify analytics was not called when cursor rules are outdated
     expect(analyticsUtils.sendAnalytics).not.toHaveBeenCalled();
   });
 
@@ -222,9 +145,8 @@ describe('getBladeComponentDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not missing and not outdated
-    vi.spyOn(cursorRulesUtils, 'isCursorRuleFileMissing').mockReturnValue(false);
-    vi.spyOn(cursorRulesUtils, 'areCursorRulesOutdated').mockReturnValue(false);
+    // Mock cursor rules as not needing update
+    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
     // Call the tool callback with actual implementation
     const result = getBladeComponentDocsToolCallback(
@@ -269,9 +191,8 @@ describe('getBladeComponentDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not missing and not outdated
-    vi.spyOn(cursorRulesUtils, 'isCursorRuleFileMissing').mockReturnValue(false);
-    vi.spyOn(cursorRulesUtils, 'areCursorRulesOutdated').mockReturnValue(false);
+    // Mock cursor rules as not needing update
+    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
     // Call the tool callback with actual implementation
     const result = getBladeComponentDocsToolCallback(

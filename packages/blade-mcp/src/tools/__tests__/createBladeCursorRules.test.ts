@@ -61,37 +61,4 @@ describe('createBladeCursorRules Tool', () => {
       mockCurrentProjectRootDirectory,
     );
   });
-
-  it('should return consistent cursor rule creation instructions (snapshot)', async () => {
-    const testProjectRootDirectory = '/Users/test/project';
-
-    // Get the actual implementation (not mocked) to test real output
-    const actualCursorRulesUtils = await vi.importActual<typeof cursorRulesUtils>(
-      '../../utils/cursorRulesUtils.js',
-    );
-
-    // Unmock analytics to allow the actual function to run, but we'll still spy on it
-    vi.restoreAllMocks();
-    vi.spyOn(analyticsUtils, 'sendAnalytics').mockImplementation(() => {
-      // Mock implementation that doesn't throw
-    });
-
-    if (actualCursorRulesUtils) {
-      // Temporarily replace the mocked function with the actual one
-      vi.spyOn(cursorRulesUtils, 'cursorRuleCreationInstructions').mockImplementation(
-        actualCursorRulesUtils.cursorRuleCreationInstructions,
-      );
-    }
-
-    // Call the tool callback with actual implementation
-    const result = createBladeCursorRulesToolCallback(
-      {
-        currentProjectRootDirectory: testProjectRootDirectory,
-      },
-      createMockContext(),
-    );
-
-    // Snapshot test to ensure the output format remains consistent
-    expect(result).toMatchSnapshot();
-  });
 });
