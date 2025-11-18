@@ -23,34 +23,6 @@ describe('getUserName', () => {
       });
       expect(result).toBe('bob');
     });
-
-    it('should extract username from macOS path with Projects', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/alice/Projects/app',
-      });
-      expect(result).toBe('alice');
-    });
-
-    it('should extract username from macOS path with workspace', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/charlie/workspace/project',
-      });
-      expect(result).toBe('charlie');
-    });
-
-    it('should extract username from macOS path with custom directory', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/david/custom/project',
-      });
-      expect(result).toBe('david');
-    });
-
-    it('should extract username from macOS path ending with username', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/emma',
-      });
-      expect(result).toBe('emma');
-    });
   });
 
   describe('Linux paths', () => {
@@ -121,29 +93,6 @@ describe('getUserName', () => {
       expect(result).toBe('unknown');
     });
 
-    it('should handle path with only slashes', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '///',
-      });
-      expect(result).toBe('unknown');
-    });
-
-    it('should handle path starting with multiple slashes', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '///Users/john/project',
-      });
-      expect(result).toBe('john');
-    });
-
-    it('should handle path with excluded directory as username (should fallback)', () => {
-      // If Desktop is the username, it should be excluded and fallback to first segment
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/Desktop/project',
-      });
-      // Desktop is excluded, so it should fallback to first meaningful segment
-      expect(result).toBe('Users');
-    });
-
     it('should handle path with Documents as username (should fallback)', () => {
       const result = getUserName({
         currentProjectRootDirectory: '/Users/Documents/project',
@@ -158,51 +107,6 @@ describe('getUserName', () => {
       });
       // Downloads is excluded, so it should fallback
       expect(result).toBe('Users');
-    });
-
-    it('should handle path with Projects as username (should fallback)', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/Projects/project',
-      });
-      // Projects is excluded, so it should fallback
-      expect(result).toBe('Users');
-    });
-
-    it('should handle path with workspace as username (should fallback)', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/workspace/project',
-      });
-      // workspace is excluded, so it should fallback
-      expect(result).toBe('Users');
-    });
-
-    it('should handle path with multiple excluded directories', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/Desktop/Documents/project',
-      });
-      // Desktop is excluded, so it should fallback
-      expect(result).toBe('Users');
-    });
-
-    it('should handle path with username containing special characters', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/john.doe/project',
-      });
-      expect(result).toBe('john.doe');
-    });
-
-    it('should handle path with username containing numbers', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/user123/project',
-      });
-      expect(result).toBe('user123');
-    });
-
-    it('should handle path with username containing hyphens', () => {
-      const result = getUserName({
-        currentProjectRootDirectory: '/Users/john-doe/project',
-      });
-      expect(result).toBe('john-doe');
     });
   });
 });

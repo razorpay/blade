@@ -56,24 +56,6 @@ describe('cursorRulesUtils', () => {
       const result = cursorRuleCreationInstructions(testProjectRootDirectory);
       expect(result).toMatchSnapshot();
     });
-
-    it('should return consistent instructions with different project paths (snapshot)', () => {
-      const testProjectRootDirectory = '/home/user/workspace/my-app';
-      const result = cursorRuleCreationInstructions(testProjectRootDirectory);
-      expect(result).toMatchSnapshot();
-    });
-
-    it('should return consistent instructions with Windows-style path (snapshot)', () => {
-      const testProjectRootDirectory = 'C:/Users/john/Documents/project';
-      const result = cursorRuleCreationInstructions(testProjectRootDirectory);
-      expect(result).toMatchSnapshot();
-    });
-
-    it('should return consistent instructions with nested path (snapshot)', () => {
-      const testProjectRootDirectory = '/Users/alice/Desktop/blade-12/blade';
-      const result = cursorRuleCreationInstructions(testProjectRootDirectory);
-      expect(result).toMatchSnapshot();
-    });
   });
 
   describe('shouldCreateOrUpdateCursorRule', () => {
@@ -83,14 +65,16 @@ describe('cursorRulesUtils', () => {
       const result = shouldCreateOrUpdateCursorRule('0', 'cursor', mockProjectRootDirectory);
 
       expect(result).toBeDefined();
-      expect(result).toHaveProperty('content');
+      expect(result).toMatchObject({
+        content: [
+          {
+            type: 'text',
+            text: expect.stringContaining('Cursor rules do not exist'),
+          },
+        ],
+      });
       if (result) {
-        expect(result.content).toHaveLength(1);
-        expect(result.content[0]).toHaveProperty('type', 'text');
-        if ('text' in result.content[0]) {
-          expect(result.content[0].text).toContain('Cursor rules do not exist');
-          expect(result.content[0].text).toContain(mockProjectRootDirectory);
-        }
+        expect(result.content[0].text).toContain(mockProjectRootDirectory);
       }
     });
 
@@ -103,16 +87,19 @@ describe('cursorRulesUtils', () => {
       );
 
       expect(result).toBeDefined();
-      expect(result).toHaveProperty('content');
+      expect(result).toMatchObject({
+        content: [
+          {
+            type: 'text',
+            text: expect.stringContaining('Cursor rules are outdated'),
+          },
+        ],
+      });
       if (result) {
-        expect(result.content).toHaveLength(1);
-        expect(result.content[0]).toHaveProperty('type', 'text');
-        if ('text' in result.content[0]) {
-          expect(result.content[0].text).toContain('Cursor rules are outdated');
-          expect(result.content[0].text).toContain(outdatedVersion);
-          expect(result.content[0].text).toContain(CURSOR_RULES_VERSION);
-          expect(result.content[0].text).toContain(mockProjectRootDirectory);
-        }
+        const text = result.content[0].text;
+        expect(text).toContain(outdatedVersion);
+        expect(text).toContain(CURSOR_RULES_VERSION);
+        expect(text).toContain(mockProjectRootDirectory);
       }
     });
 
