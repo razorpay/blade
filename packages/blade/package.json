@@ -8,7 +8,7 @@
   },
   "bin": {
     "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts",
-    "aicodemod": "./codemods/aicodemod/bin.mjs"
+    "blade-agent": "./codemods/agentic-migration/agent.js"
   },
   "repository": {
     "type": "git",
