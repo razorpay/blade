@@ -22,10 +22,12 @@
     "typecheck:web": "tsc --noEmit --project tsconfig-typecheck.web.json",
     "typecheck:native": "tsc --noEmit --project tsconfig-typecheck.native.json",
     "build": "yarn build:generate-types && yarn build:rollup",
+    "build:watch": "yarn build:generate-types && yarn build:rollup:watch",
     "build:generate-types": "yarn build:generate-types:web && yarn build:generate-types:native",
     "build:generate-types:web": "tsc --project tsconfig-generate-types.web.json",
     "build:generate-types:native": "tsc --project tsconfig-generate-types.native.json",
     "build:rollup": "rollup --config rollup.config.mjs",
+    "build:rollup:watch": "rollup --config rollup.config.mjs --watch",
     "build:rollup:web": "FRAMEWORK=REACT rollup --config rollup.config.mjs",
     "build:rollup:native": "FRAMEWORK=REACT_NATIVE rollup --config rollup.config.mjs",
     "test": "echo 'No tests configured yet'"
@@ -69,11 +71,15 @@
   "exports": {
     "./tokens": {
       "types": "./dist/types/tokens/index.d.ts",
+      "development": "./dist/lib/web/development/tokens/index.js",
+      "production": "./dist/lib/web/production/tokens/index.js",
       "default": "./dist/lib/web/production/tokens/index.js"
     },
     "./tokens/theme.css": "./dist/lib/web/production/tokens/theme.css",
     "./utils": {
       "types": "./dist/types/utils/index.d.ts",
+      "development": "./dist/lib/web/development/utils/index.js",
+      "production": "./dist/lib/web/production/utils/index.js",
       "default": "./dist/lib/web/production/utils/index.js"
     }
   }
