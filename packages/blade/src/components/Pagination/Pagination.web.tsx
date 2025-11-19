@@ -25,6 +25,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useControllableState } from '~utils/useControllable';
+import { getStyledProps } from '~components/Box/styledProps';
 
 const pageSizeOptions: NonNullable<PaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
@@ -261,9 +262,11 @@ const _Pagination = ({
     <BaseBox
       display="flex"
       flexDirection="row"
-      padding={pagination.padding}
       backgroundColor="transparent"
+      padding={pagination.padding}
+      {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
+      {...metaAttribute({ name: MetaConstants.Pagination, testID: rest.testID })}
     >
       {showLabel && !onMobile && (
         <BaseBox display="flex" justifyContent="center" alignItems="center">

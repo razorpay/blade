@@ -223,7 +223,7 @@ exports[`<Pagination /> should render basic pagination 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="pagination"
   >
     <div
       class="c1"
@@ -482,7 +482,7 @@ exports[`<Pagination /> should render disabled state 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="pagination"
   >
     <div
       class="c1"
@@ -1412,7 +1412,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="pagination"
   >
     <div
       class="c1"
@@ -2041,7 +2041,7 @@ exports[`<Pagination /> should render with label 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="pagination"
   >
     <div
       class="c1"
@@ -2466,7 +2466,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="pagination"
   >
     <div
       class="c1"
@@ -3357,7 +3357,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="pagination"
   >
     <div
       class="c1"

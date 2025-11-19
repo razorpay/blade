@@ -1,9 +1,10 @@
-import type { DataAnalyticsAttribute } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 /**
  * Common props for Pagination component
  */
-export type PaginationCommonProps = {
+export type PaginationProps = {
   /**
    * Total pages in the pagination.
    */
@@ -81,12 +82,12 @@ export type PaginationCommonProps = {
    * @default false
    */
   isDisabled?: boolean;
-} & DataAnalyticsAttribute;
 
-export type PaginationProps = PaginationCommonProps & {
   /**
    * The label to be shown in the page size picker.
    * @default 'items / page'
    */
   pageSizeLabel?: string;
-};
+} & DataAnalyticsAttribute &
+  TestID &
+  StyledPropsBlade;
