@@ -1,6 +1,6 @@
 <script lang="ts">
-  import BaseLink from './BaseLink/BaseLink.svelte';
   import type { Snippet } from 'svelte';
+  import BaseLink from './BaseLink/BaseLink.svelte';
 
   // Icon component type - placeholder for now
   // TODO: Replace with actual Icon component when available

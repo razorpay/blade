@@ -2,6 +2,8 @@
   import './baseLink.css';
   import type { Snippet } from 'svelte';
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
+  import { useInteraction } from '../../../utils/useInteraction';
+  import type { ActionStatesType, ColorType } from '../../../types';
 
   // Icon component type - placeholder for now
   // TODO: Replace with actual Icon component when available
@@ -75,18 +77,45 @@
     throw new Error('BaseLink: At least one of icon or text is required to render a link.');
   }
 
-  // Interaction state
-  let currentInteraction: 'default' | 'hover' | 'focus' | 'disabled' = isDisabled && variant === 'button' ? 'disabled' : 'default';
+  const isButton = variant === 'button';
+  const disabled = isButton && isDisabled;
+
+  // Create interaction state using $state (must be in .svelte file)
+  let currentInteraction = $state<'default' | 'hover' | 'focus' | 'disabled'>(
+    disabled ? 'disabled' : 'default',
+  );
+
+  // Use interaction hook for managing interaction states
+  const {
+    onMouseEnter: handleMouseEnterInteraction,
+    onMouseLeave: handleMouseLeaveInteraction,
+    onFocus: handleFocusInteraction,
+    onBlur: handleBlurInteraction,
+  } = useInteraction(
+    () => currentInteraction,
+    (state: ActionStatesType) => {
+      currentInteraction = state;
+    },
+  );
+
+  // Update interaction state when disabled prop changes
+  $effect(() => {
+    if (disabled) {
+      currentInteraction = 'disabled';
+    } else if (currentInteraction === 'disabled') {
+      currentInteraction = 'default';
+    }
+  });
 
   // Get color token based on state - reactive
   function getColorToken(element: 'icon' | 'text'): string {
     const state = currentInteraction;
-    const map = {
+    const map: Record<ActionStatesType, ColorType> = {
       default: 'normal',
       hover: 'subtle',
       focus: 'normal',
       disabled: 'disabled',
-    } as const;
+    };
 
     const stateKey = map[state];
     
@@ -115,14 +144,15 @@
     },
   };
 
-  const isButton = variant === 'button';
-  
-  // Reactive values based on currentInteraction
-  const textDecorationLine = !isButton && currentInteraction !== 'default' ? 'underline' : 'none';
+  // Reactive values based on currentInteraction - must use $derived to be reactive
+  const textDecorationLine = $derived(!isButton && currentInteraction !== 'default' ? 'underline' : 'none');
   const iconColor = $derived(getColorToken('icon'));
   const textColor = $derived(getColorToken('text'));
   const iconPadding = children ? 'var(--spacing-2)' : 'var(--spacing-0)';
   const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
+  
+  // Cursor logic: always 'pointer' unless it's a button variant AND disabled (then 'not-allowed')
+  const cursor = $derived(disabled ? 'not-allowed' : 'pointer');
 
   // Accessibility attributes
   const accessibilityAttrs = makeAccessible({
@@ -142,34 +172,34 @@
 
   // Event handlers
   function handleClick(event: MouseEvent): void {
-    if (onClick && !(isButton && isDisabled)) {
+    if (onClick && !disabled) {
       onClick(event);
     }
   }
 
   function handleFocus(event: FocusEvent): void {
-    if (!isDisabled) {
-      currentInteraction = 'focus';
+    if (!disabled) {
+      handleFocusInteraction();
     }
     onFocus?.(event);
   }
 
   function handleBlur(event: FocusEvent): void {
-    if (!isDisabled) {
-      currentInteraction = 'default';
+    if (!disabled) {
+      handleBlurInteraction();
     }
     onBlur?.(event);
   }
 
   function handleMouseEnter(): void {
-    if (!isDisabled && currentInteraction !== 'focus') {
-      currentInteraction = 'hover';
+    if (!disabled) {
+      handleMouseEnterInteraction();
     }
   }
 
   function handleMouseLeave(event: MouseEvent): void {
-    if (!isDisabled) {
-      currentInteraction = 'default';
+    if (!disabled) {
+      handleMouseLeaveInteraction();
     }
     onMouseLeave?.(event);
   }
@@ -183,11 +213,11 @@
 {#if isButton}
   <button
     class={linkClass}
-    class:disabled={isButton && isDisabled}
+    class:disabled={disabled}
     type="button"
-    disabled={isButton && isDisabled}
+    disabled={disabled}
     title={htmlTitle}
-    style="opacity: {opacity ?? 1};"
+    style="opacity: {opacity ?? 1}; cursor: {cursor};"
     {...accessibilityAttrs}
     {...metaAttrs}
     {...analyticsAttrs}
