@@ -31,16 +31,16 @@ const Page = (): React.ReactElement => {
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { 
-         ChartAreaWrapper,
-         ChartArea,
-         ChartXAxis,
-         ChartYAxis,
-         ChartCartesianGrid,
-         ChartTooltip,
-         ChartLegend,
-         ChartReferenceLine,
-         Box,
+          import {
+          ChartAreaWrapper,
+          ChartArea,
+          ChartXAxis,
+          ChartYAxis,
+          ChartCartesianGrid,
+          ChartTooltip,
+          ChartLegend,
+          ChartReferenceLine,
+          Box,
         } from '@razorpay/blade/components';
         
         function App() {
@@ -52,9 +52,9 @@ const Page = (): React.ReactElement => {
             { month: 'May', teamA: 1890 },
             { month: 'Jun', teamA: 2390 },
           ];
-          
+        
           return (
-            <Box width="100%" height="100%">
+            <Box width="400px" height="400px">
               <ChartAreaWrapper data={data}>
                 <ChartCartesianGrid />
                 <ChartXAxis dataKey="month" />
@@ -63,10 +63,11 @@ const Page = (): React.ReactElement => {
                 <ChartArea dataKey="teamA" name="Team A" />
               </ChartAreaWrapper>
             </Box>
-          )
+          );
         }
-
+        
         export default App;
+
       `}
       </Sandbox>
     </StoryPageWrapper>

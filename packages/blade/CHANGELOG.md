@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.65.1
+
+### Patch Changes
+
+- 75272f22b: fix(blade): correct border-radius for secondary variant in ButtonGroup when buttons are wrapped (e.g., inside Dropdown)
+
 ## 12.65.0
 
 ### Minor Changes

@@ -717,7 +717,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'Pagination',
     status: 'released',
-    releasedIn: '12.60.0',
+    releasedIn: '12.65.1',
     storybookLink: 'Components/Pagination',
     description: 'Pagination component allows users to navigate through multiple pages of content.',
     platform: 'web',

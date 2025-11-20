@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.18.0
+
+### Minor Changes
+
+- 571e8da27: feat(blade-mcp): add description to client name in get docs tool call & refactor logic for calling createCursorRule tools Call
+
 ## 1.17.0
 
 ### Minor Changes

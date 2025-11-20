@@ -75,9 +75,9 @@ type PaginationCommonProps = {
    * Current page size when controlled.
    * When provided, the page size is controlled.
    * When not provided, the component manages page size internally.
-   * @default undefined (uncontrolled)
+   * @default 10 
    */
-  pageSize?: number;
+  pageSize?:  10 | 25 | 50;;
 
   /**
    * Callback function that is called when the page size is changed.
