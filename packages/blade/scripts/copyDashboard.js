@@ -13,6 +13,8 @@ try {
   execSync('yarn install', {
     cwd: dashboardPlaygroundDir,
     stdio: 'inherit',
+    env: process.env,
+    shell: true,
   });
   console.log('✓ Dependencies installed successfully');
 } catch (error) {
