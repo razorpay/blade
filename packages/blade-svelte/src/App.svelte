@@ -78,13 +78,6 @@
     align-items: flex-start;
   }
 
-  h2 {
-    margin: 0;
-    margin-bottom: var(--spacing-3);
-    font-size: var(--font-size-200);
-    font-weight: var(--font-weight-semibold);
-  }
-
   .link-examples {
     display: flex;
     flex-direction: column;

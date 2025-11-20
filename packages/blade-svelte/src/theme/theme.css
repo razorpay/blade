@@ -808,3 +808,26 @@
     --line-height-1100: 48px;
   }
 }
+
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+/* Focus Ring Utility */
+.focus-ring:focus-visible {
+  box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);
+}
+
+/* Focus Ring for child elements (when parent receives focus) */
+.focus-ring-parent:focus-visible .focus-ring-child {
+  box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);
+}

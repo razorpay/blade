@@ -8,29 +8,57 @@ You work in design system of Razorpay and you are migrating existing components 
 
 - You refer to existing components for expected props and HTML structure
 - You understand the common props that we normally use, compound component structure that we normally use and follow WISIWYG (What You See is What You Get) Philosophy.
-- You create the components in - packages/blade-svelte/src/components folder
 - Before writing the component refer to the corresponding React component written in - `packages/blade/src/components` folder
 - Wherever you are unsure about some practice, just ask for confirmation
 - Before writing the component, you discuss the approach on how you are writing the component and only write post confirmation
 - The API structure of the components should clean and easier to understand and integrate
-- Some component might be using another component like Link or Button component uses Icon. Wherever this case is there confirm whether to make a migration for that or not for the imported components like Icons
+- Some component might be using another component like Link or Button component uses Icon or BaseText. Wherever this case is there confirm whether to make a migration for that or not for the imported components like Icons
 Don't use createEventDispatcher for event handlers like on:click etc. Instead use a prop based mechanism expect and pass a prop
 - Any utility function like - `packages/blade/src/utils/makeBorderSize/index.ts` should be placed in blade core util directory - `packages/blade-core/src/utils` and not within the blade-svelte directory.
-- Whenever any utility import is encountered check in - `packagaes/blade-core/src/utils` directory, if the util file is not present or same function is not presend ask for a confirmation before adding.
+- Whenever any utility import is encountered check in - `packages/blade-core/src/utils` directory, if the util file is not present or same function is not present ask for a confirmation before adding.
 
 ## Blade Component Svelte Guidelines
 ### Key Examples for references
-Study the following React components for reference and understanding of props of the components
+- Study the props of the React component which you are trying to migrate to Svelte. Props should remain consistent throughout Svelte and React components.
 
-- `packages/blade/src/components/Button`
-- `packages/blade/src/components/Link`
-- `packages/blade/src/components/Input`
-You can look for other components in the directory
+## Directory Structure
+
+Components should be created in the following structure:
+
+```
+packages/
+└── blade-svelte/
+    └── src/
+        └── components/
+            ├── Button/
+            │   ├── Button.svelte
+            │   └── button.css
+            ├── Link/
+            │   ├── BaseLink/
+            │   │   ├── BaseLink.svelte
+            │   │   └── baseLink.css
+            │   └── Link.svelte
+            └── ... (other components)
+```
+
+### Naming Conventions
+- Component directories: `PascalCase` (e.g., `Button/`, `Link/`)
+- Component files: `PascalCase.svelte` (e.g., `Button.svelte`, `BaseLink.svelte`)
+- CSS files: `camelCase.css` (e.g., `button.css`, `baseLink.css`)
+- For nested/base components, create a subdirectory with the component name (e.g., `Link/BaseLink/`)
 
 ## Import Guidelines
-- Components in svelte directory have all the blade tokens listed in packages/blade-svelte/src/theme/theme.css
-- There is an existing example packages/blade-svelte/src/components/Button which you can refer to for any example
-- You can use common function from packages/blade-core if needed. However do confirm before you implement
+- Components in svelte directory have all the blade tokens listed in `packages/blade-svelte/src/theme/theme.css`
+- There is an existing example at `packages/blade-svelte/src/components/Button/` which you can refer to for any example
+- You can use common function from `packages/blade-core` if needed. However do confirm before you implement
 
 ## Testing Guidelines
 Add the component in packages/blade-svelte/src/App.svelte as well which will be a testing playground for testing whether component is behaving as expected or not
+
+## Accessibility and CSS Patterns
+
+#### Implementation Guidelines
+
+- Always set the `disabled` attribute on the element when the component is disabled
+- Use `[disabled]` attribute selector in CSS instead of adding/removing classes
+- This pattern applies to buttons, links, and other interactive elements that support disabled states

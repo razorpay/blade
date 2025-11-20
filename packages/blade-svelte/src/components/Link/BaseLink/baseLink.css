@@ -12,11 +12,9 @@
   transition-duration: var(--motion-duration-2xquick);
 }
 
-.base-link:focus-visible .base-link__content {
-  box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);
-}
+/* Focus ring is handled by utility class in theme.css */
 
-.base-link.disabled {
+.base-link[disabled] {
   cursor: not-allowed;
 }
 
@@ -41,3 +39,27 @@
   transition-duration: var(--motion-duration-2xquick);
 }
 
+/* TODO: Will migrate it to Text Component once we have typegraphy in place */
+.base-link__text--xsmall {
+  font-size: var(--font-size-25);
+  line-height: var(--line-height-25);
+}
+
+.base-link__text--small {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.base-link__text--medium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.base-link__text--large {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+.base-link--text--underline {
+  text-decoration: underline;
+}

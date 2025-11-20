@@ -1,6 +1,7 @@
 <script lang="ts">
   import './baseLink.css';
   import type { Snippet } from 'svelte';
+  import { cva } from 'class-variance-authority';
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
   import type { ActionStatesType, ColorType } from '../../../types';
@@ -128,31 +129,55 @@
     return `var(--interactive-${element}-primary-${stateKey})`;
   }
 
-  // Get text size tokens
-  const textSizes = {
-    fontSize: {
-      xsmall: 'var(--font-size-25)',
-      small: 'var(--font-size-75)',
-      medium: 'var(--font-size-100)',
-      large: 'var(--font-size-200)',
-    },
-    lineHeight: {
-      xsmall: 'var(--line-height-25)',
-      small: 'var(--line-height-75)',
-      medium: 'var(--line-height-100)',
-      large: 'var(--line-height-200)',
-    },
-  };
-
   // Reactive values based on currentInteraction - must use $derived to be reactive
-  const textDecorationLine = $derived(!isButton && currentInteraction !== 'default' ? 'underline' : 'none');
+  const hasTextDecoration = $derived(!isButton && currentInteraction !== 'default');
   const iconColor = $derived(getColorToken('icon'));
   const textColor = $derived(getColorToken('text'));
-  const iconPadding = children ? 'var(--spacing-2)' : 'var(--spacing-0)';
   const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
-  
-  // Cursor logic: always 'pointer' unless it's a button variant AND disabled (then 'not-allowed')
-  const cursor = $derived(disabled ? 'not-allowed' : 'pointer');
+
+  // CVA definitions for clean variant management
+  const linkClass = cva('base-link focus-ring-parent', {
+    variants: {
+      variant: {
+        anchor: 'base-link--anchor',
+        button: 'base-link--button',
+      },
+      size: {
+        xsmall: 'base-link--xsmall',
+        small: 'base-link--small',
+        medium: 'base-link--medium',
+        large: 'base-link--large',
+      },
+      disabled: {
+        true: 'cursor-not-allowed',
+        false: 'cursor-pointer',
+      },
+    },
+    defaultVariants: {
+      variant: 'anchor',
+      size: 'medium',
+      disabled: false,
+    },
+  });
+
+  const textClass = cva('base-link__text', {
+    variants: {
+      size: {
+        xsmall: 'base-link__text--xsmall',
+        small: 'base-link__text--small',
+        medium: 'base-link__text--medium',
+        large: 'base-link__text--large',
+      },
+      decoration: {
+        underline: 'base-link--text--underline',
+        none: '',
+      },
+    },
+    defaultVariants: {
+      size: 'medium',
+      decoration: 'none',
+    },
+  });
 
   // Accessibility attributes
   const accessibilityAttrs = makeAccessible({
@@ -204,101 +229,64 @@
     onMouseLeave?.(event);
   }
 
-  // Computed styles
-  const linkClass = `base-link base-link--${variant} base-link--${color} base-link--${size}`;
-  const contentClass = 'base-link__content';
-  const textClass = `base-link__text base-link__text--${size}`;
+  const elementTag = $derived(isButton ? 'button' : 'a');
+
 </script>
 
-{#if isButton}
-  <button
-    class={linkClass}
-    class:disabled={disabled}
-    type="button"
-    disabled={disabled}
-    title={htmlTitle}
-    style="opacity: {opacity ?? 1}; cursor: {cursor};"
-    {...accessibilityAttrs}
-    {...metaAttrs}
-    {...analyticsAttrs}
-    onclick={handleClick}
-    onfocus={handleFocus}
-    onblur={handleBlur}
-    onmouseenter={handleMouseEnter}
-    onmouseleave={handleMouseLeave}
-    onmousemove={onMouseMove}
-    onpointerdown={onPointerDown}
-    onpointerenter={onPointerEnter}
-    ontouchstart={onTouchStart}
-    ontouchend={onTouchEnd}
-    onmousedown={onMouseDown}
-    onmouseup={onMouseUp}
-  >
-    <span class={contentClass}>
-      {#if Icon && iconPosition === 'left'}
-        <span class="base-link__icon base-link__icon--left" style="padding-right: {iconPadding}; color: {iconColor};">
-          <!-- TODO: Render Icon component when available -->
-        </span>
-      {/if}
-      {#if children}
-        <span
-          class={textClass}
-          style="color: {textColor}; text-decoration-line: {textDecorationLine}; font-size: {textSizes.fontSize[size]}; line-height: {textSizes.lineHeight[size]};"
-        >
-          {@render children()}
-        </span>
-      {/if}
-      {#if Icon && iconPosition === 'right'}
-        <span class="base-link__icon base-link__icon--right" style="padding-left: {iconPadding}; color: {iconColor};">
-          <!-- TODO: Render Icon component when available -->
-        </span>
-      {/if}
-    </span>
-  </button>
-{:else}
-  <a
-    class={linkClass}
-    href={href}
-    target={target}
-    rel={rel ?? defaultRel}
-    title={htmlTitle}
-    style="opacity: {opacity ?? 1};"
-    {...accessibilityAttrs}
-    {...metaAttrs}
-    {...analyticsAttrs}
-    onclick={handleClick}
-    onfocus={handleFocus}
-    onblur={handleBlur}
-    onmouseenter={handleMouseEnter}
-    onmouseleave={handleMouseLeave}
-    onmousemove={onMouseMove}
-    onpointerdown={onPointerDown}
-    onpointerenter={onPointerEnter}
-    ontouchstart={onTouchStart}
-    ontouchend={onTouchEnd}
-    onmousedown={onMouseDown}
-    onmouseup={onMouseUp}
-  >
-    <span class={contentClass}>
-      {#if Icon && iconPosition === 'left'}
-        <span class="base-link__icon base-link__icon--left" style="padding-right: {iconPadding}; color: {iconColor};">
-          <!-- TODO: Render Icon component when available -->
-        </span>
-      {/if}
-      {#if children}
-        <span
-          class={textClass}
-          style="color: {textColor}; text-decoration-line: {textDecorationLine}; font-size: {textSizes.fontSize[size]}; line-height: {textSizes.lineHeight[size]};"
-        >
-          {@render children()}
-        </span>
-      {/if}
-      {#if Icon && iconPosition === 'right'}
-        <span class="base-link__icon base-link__icon--right" style="padding-left: {iconPadding}; color: {iconColor};">
-          <!-- TODO: Render Icon component when available -->
-        </span>
-      {/if}
-    </span>
-  </a>
-{/if}
+<svelte:element
+  this={elementTag}
+  class={linkClass({
+    variant,
+    color,
+    size,
+    disabled,
+  })}
+  style="--icon-color: {iconColor}; --text-color: {textColor};"
+  title={htmlTitle}
+  {...accessibilityAttrs}
+  {...metaAttrs}
+  {...analyticsAttrs}
+  onclick={handleClick}
+  onfocus={handleFocus}
+  onblur={handleBlur}
+  onmouseenter={handleMouseEnter}
+  onmouseleave={handleMouseLeave}
+  onmousemove={onMouseMove}
+  onpointerdown={onPointerDown}
+  onpointerenter={onPointerEnter}
+  ontouchstart={onTouchStart}
+  ontouchend={onTouchEnd}
+  onmousedown={onMouseDown}
+  onmouseup={onMouseUp}
+  type={isButton ? 'button' : undefined}
+  disabled={isButton ? disabled : undefined}
+  href={!isButton ? href : undefined}
+  target={!isButton ? target : undefined}
+  rel={!isButton ? (rel ?? defaultRel) : undefined}
+>
+  <span class="base-link__content focus-ring-child">
+    {#if Icon && iconPosition === 'left'}
+      <!-- <span class={iconClass({ position: 'left', hasChildren })}> -->
+        <!-- TODO: Render Icon component when available -->
+      <!-- </span> -->
+    {/if}
+    {#if children}
+     <!-- TODO: Move this to Text Component once we have typegraphy in place -->
+      <span
+        class={textClass({
+          size,
+          decoration: hasTextDecoration ? 'underline' : 'none',
+        })}
+        style="color: {textColor};"
+      >
+        {@render children()}
+      </span>
+    {/if}
+    {#if Icon && iconPosition === 'right'}
+      <!-- <span class={iconClass({ position: 'right', hasChildren })}> -->
+        <!-- TODO: Render Icon component when available -->
+      <!-- </span> -->
+    {/if}
+  </span>
+</svelte:element>
 
