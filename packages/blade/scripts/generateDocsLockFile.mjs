@@ -21,7 +21,7 @@ const generateLockFileContent = ({ dependencies, devDependencies }) => {
     devDependencies,
   };
 
-  fs.mkdirSync(resolve('lock-generation'));
+  fs.mkdirSync(resolve('lock-generation'), { recursive: true });
   try {
     console.log('[lockfile-generation]: Creating package.json');
     fs.writeFileSync(resolve('lock-generation/package.json'), JSON.stringify(packageJSON, null, 2));
