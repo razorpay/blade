@@ -6,6 +6,7 @@ import BladeQRCode from './blade-qr-code.png';
 import { CheckoutShell } from './CheckoutShell';
 import { useTheme } from '~components/BladeProvider';
 import { makeMotionTime, makeSpace } from '~utils';
+import { Button } from '~components/Button';
 
 const QRCodeImage = styled.img({
   width: '136px',
@@ -82,11 +83,16 @@ const ClickableRow = styled.button(({ theme }) => ({
 
 const CheckoutHome = (): React.ReactElement => {
   const { theme } = useTheme();
+  console.log('theme colors', theme.colors);
   return (
     <CheckoutShell>
       <Box padding="spacing.7" paddingBottom="spacing.8" overflowY="scroll">
-        <Heading marginTop="spacing.3" marginBottom="spacing.3">
-          Pay With UPI QR
+        <Heading
+          color="surface.text.secondary.normal"
+          marginTop="spacing.3"
+          marginBottom="spacing.3"
+        >
+          Pay With UPI QR code
         </Heading>
         <Card elevation="none" padding="spacing.5">
           <CardBody>
@@ -156,6 +162,7 @@ const CheckoutHome = (): React.ReactElement => {
             </ClickableRow>
           </CardBody>
         </Card>
+
         <Heading marginTop="spacing.5" marginBottom="spacing.3">
           Cards, UPI & More
         </Heading>
@@ -170,11 +177,11 @@ const CheckoutHome = (): React.ReactElement => {
                   width="24px"
                 >
                   <path
-                    fill={theme.colors.surface.icon.primary.normal}
+                    fill={theme.colors.surface.icon.secondary.normal}
                     d="M2 7v13h18v-5H7V7H2zm0-2h5v10h15v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
                   />
                   <path
-                    fill={theme.colors.surface.icon.primary.normal}
+                    fill={theme.colors.surface.icon.secondary.normal}
                     d="M10.004 13.003a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2h-2zM7 0h18a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v13h18V2H7zm-.282 5.005a1 1 0 1 1 0-2h19a1 1 0 0 1 0 2h-19z"
                   />
                 </svg>

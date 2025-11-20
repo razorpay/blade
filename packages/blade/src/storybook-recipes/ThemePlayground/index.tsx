@@ -22,7 +22,10 @@ const ThemePlayground = (): React.ReactElement => {
   const [showInternalDemoConfig, setShowInternalDemoConfig] = useState(false);
   const getTheme = (): ThemeTokens => {
     if (selectedColor) {
-      return createTheme({ brandColor: selectedColor }).theme;
+      return createTheme({
+        brandColor: selectedColor,
+        secondaryColor: '#fcc015',
+      }).theme;
     }
     if (selectedPreBuiltTheme === 'paymentTheme') {
       return bladeTheme;
