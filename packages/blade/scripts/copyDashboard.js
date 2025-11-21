@@ -52,21 +52,6 @@ if (shouldSkipBuild) {
   }
 }
 
-// Install dependencies first
-console.log('Installing dependencies...');
-try {
-  execSync('yarn install', {
-    cwd: dashboardPlaygroundDir,
-    stdio: 'inherit',
-    env: process.env,
-    shell: true,
-  });
-  console.log('✓ Dependencies installed successfully');
-} catch (error) {
-  console.error('✗ Failed to install dependencies:', error.message);
-  process.exit(1);
-}
-
 // Build the dashboard playground
 console.log('Building blade-dashboard-playground...');
 try {
