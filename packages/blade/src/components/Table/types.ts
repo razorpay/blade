@@ -463,7 +463,6 @@ type TablePaginationCommonProps = {
    */
   showLabel?: boolean;
 } & DataAnalyticsAttribute;
-
 type TablePaginationType = 'client' | 'server';
 
 type TablePaginationServerProps = TablePaginationCommonProps & {
