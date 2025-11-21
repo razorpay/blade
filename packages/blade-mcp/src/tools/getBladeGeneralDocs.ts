@@ -6,17 +6,12 @@ import {
   analyticsToolCallEventName,
   GENERAL_KNOWLEDGEBASE_DIRECTORY,
   CHECK_CURSOR_RULES_DESCRIPTION,
-  CURSOR_RULES_VERSION,
 } from '../utils/tokens.js';
 
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
-import {
-  isCursorRuleFileMissing,
-  areCursorRulesOutdated,
-  cursorRuleCreationInstructions,
-} from '../utils/cursorRulesUtils.js';
+import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
 
 const bladeGeneralDocsList = getBladeDocsList('general');
 
@@ -68,28 +63,13 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
     });
   }
 
-  if (isCursorRuleFileMissing(cursorRuleVersion, clientName)) {
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Cursor rules do not exist. Create them using the following instructions: \n\n
-          ${cursorRuleCreationInstructions(currentProjectRootDirectory)}`,
-        },
-      ],
-    };
-  }
-
-  if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Update them using the following instructions: \n\n
-          ${cursorRuleCreationInstructions(currentProjectRootDirectory)}`,
-        },
-      ],
-    };
+  const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
+    cursorRuleVersion,
+    clientName,
+    currentProjectRootDirectory,
+  );
+  if (createOrUpdateCursorRule) {
+    return createOrUpdateCursorRule;
   }
 
   try {

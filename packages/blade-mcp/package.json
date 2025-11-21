@@ -25,7 +25,9 @@
     "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js",
     "start": "node dist/server.js",
     "lint": "eslint --ext .ts src/",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:updateSnapshots": "vitest -u"
   },
   "keywords": [
     "razorpay",
@@ -50,6 +52,7 @@
     "tsx": "4.7.1",
     "typescript": "4.8.2",
     "cross-env": "7.0.3",
-    "dotenv": "16.4.5"
+    "dotenv": "16.4.5",
+    "vitest": "4.0.8"
   }
 }
