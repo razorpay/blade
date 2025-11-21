@@ -4,7 +4,9 @@ const { execSync } = require('child_process');
 
 const dashboardPlaygroundDir = path.join(__dirname, '../blade-dashboard-playground');
 const dashboardDistDir = path.join(dashboardPlaygroundDir, 'dist');
-const storybookSiteDir = path.join(__dirname, '../storybook-site');
+// Allow output directory to be passed as argument or use default
+const outputDir = process.argv[2] || path.join(__dirname, '../storybook-site');
+const storybookSiteDir = path.resolve(outputDir);
 const dashboardDir = path.join(storybookSiteDir, 'dashboard');
 
 // Helper function to recursively copy directory
