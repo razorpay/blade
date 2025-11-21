@@ -714,6 +714,14 @@ const componentData: ComponentStatusDataType = [
       'CounterInput component allows users to increment or decrement small numerical values (typically 0-99) using built-in controls with manual text input support. Optimized for quantity selection, settings with boundaries, and scenarios requiring clear min/max constraints. For larger values (99+), use TextInput with type="number" instead.',
     platform: 'web',
   },
+  {
+    name: 'Pagination',
+    status: 'released',
+    releasedIn: '12.65.1',
+    storybookLink: 'Components/Pagination',
+    description: 'Pagination component allows users to navigate through multiple pages of content.',
+    platform: 'web',
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType };

@@ -48,6 +48,7 @@ export * from './Modal';
 export * from './Move';
 export * from './Morph';
 export * from './Menu';
+export * from './Pagination';
 export * from './Popover';
 export * from './ProgressBar';
 export * from './QuickFilters';
