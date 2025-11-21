@@ -4,7 +4,7 @@ import { matchPath } from 'react-router-dom';
 const isItemActive = (
   location: { pathname: string },
   { href, activeOnLinks }: { href?: string; activeOnLinks?: string[] },
-) => {
+): boolean => {
   const isCurrentPathActive = Boolean(matchPath(location.pathname, href ?? ''));
 
   const isSubItemActive = Boolean(

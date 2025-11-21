@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@razorpay/blade/components';
 
-function App() {
+function App(): React.JSX.Element {
   return (
     <div>
       <Button>Click me</Button>

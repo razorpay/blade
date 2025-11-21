@@ -48,7 +48,7 @@ const TransactionCard = (): React.ReactElement => {
             icon={MoreHorizontalIcon}
             size="medium"
             onClick={() => {
-             console.log('More options');
+              console.log('More options');
             }}
           />
           <IconButton

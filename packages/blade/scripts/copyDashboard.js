@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const dashboardPlaygroundDir = path.join(__dirname, '../blade-dashboard-playground');
+const dashboardPlaygroundDir = path.join(__dirname, '../blade-dashboard-template');
 const dashboardDistDir = path.join(dashboardPlaygroundDir, 'dist');
 // Allow output directory to be passed as argument or use default
 const outputDir = process.argv[2] || path.join(__dirname, '../storybook-site');
@@ -53,7 +53,7 @@ if (shouldSkipBuild) {
 }
 
 // Build the dashboard playground
-console.log('Building blade-dashboard-playground...');
+console.log('Building blade-dashboard-template...');
 try {
   execSync('yarn run build', {
     cwd: dashboardPlaygroundDir,

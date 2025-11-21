@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { InfoIcon, LayoutIcon, LogInIcon } from '@razorpay/blade/components';
 
 type NavItem = {

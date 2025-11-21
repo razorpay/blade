@@ -62,6 +62,7 @@ const TabNavItemLink = React.forwardRef<HTMLAnchorElement, TabNavItemLinkProps>(
   );
 });
 
+// eslint-disable-next-line no-restricted-properties
 TabNavItemLink.displayName = 'TabNavItemLink';
 
 interface ExploreItemProps {
@@ -70,7 +71,7 @@ interface ExploreItemProps {
   description: string;
 }
 
-const ExploreItem = ({ icon: Icon, title, description }: ExploreItemProps) => {
+const ExploreItem = ({ icon: Icon, title, description }: ExploreItemProps): React.JSX.Element => {
   return (
     <Box display="flex" gap="spacing.4">
       <Box
@@ -232,7 +233,12 @@ const TopNavComponent = (): React.JSX.Element => {
                                   }}
                                 >
                                   <ExploreItem
-                                    icon={item.icon}
+                                    icon={
+                                      item.icon as React.ComponentType<{
+                                        color: string;
+                                        size: string;
+                                      }>
+                                    }
                                     title={item.title}
                                     description={item.description}
                                   />
