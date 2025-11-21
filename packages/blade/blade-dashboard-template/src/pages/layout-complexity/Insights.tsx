@@ -604,7 +604,7 @@ const OtherweeklyInsights = (): React.ReactElement => {
   );
 };
 
-const Insights = () => {
+const Insights = (): React.ReactElement => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5" id="main-element">
       <CriticalActions />
