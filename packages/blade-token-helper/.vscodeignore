@@ -1,0 +1,5 @@
+# /workspaces/vscode-theme/.vscodeignore
+node_modules/
+.gitignore
+src/
+tsconfig.json
