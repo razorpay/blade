@@ -525,7 +525,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             [
               {
                 "flexShrink": 0,
-                "marginTop": 2,
               },
             ]
           }
