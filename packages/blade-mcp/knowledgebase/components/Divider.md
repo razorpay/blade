@@ -54,31 +54,73 @@ type DividerProps = {
 
 ## Examples
 
-This example demonstrates all the key features of the Divider component including orientation, style variants, thickness options, and custom dimensions.
+### Horizontal Divider
+
+This example shows the default horizontal divider that separates text sections with vertical spacing.
 
 ```tsx
 import { Divider, Box, Text } from '@razorpay/blade/components';
 
-const DividerExample = () => (
+const HorizontalDividerExample = () => (
   <Box>
-    {/* Default horizontal divider */}
     <Text>Section One</Text>
     <Divider marginY="spacing.3" />
-
-    {/* Dashed style with variants */}
     <Text>Section Two</Text>
-    <Divider dividerStyle="dashed" variant="subtle" marginY="spacing.3" />
+  </Box>
+);
+```
 
-    {/* Thick divider */}
-    <Text>Section Three</Text>
-    <Divider variant="normal" thickness="thick" marginY="spacing.3" />
+### Vertical Divider
 
-    {/* Vertical divider in flex container */}
-    <Box display="flex" alignItems="center">
-      <Text>Left</Text>
-      <Divider orientation="vertical" marginX="spacing.4" height="100%" />
-      <Text>Right</Text>
-    </Box>
+This example demonstrates a vertical divider that separates inline content horizontally within a flex container.
+
+```tsx
+import { Divider, Box, Text } from '@razorpay/blade/components';
+
+const VerticalDividerExample = () => (
+  <Box display="flex" alignItems="center" height="40px">
+    <Text>Left</Text>
+    <Divider orientation="vertical" marginX="spacing.4" height="100%" />
+    <Text>Right</Text>
+  </Box>
+);
+```
+
+### Styled Divider
+
+This example shows how to customize dividers with different colors and thicknesses to create visual hierarchies.
+
+```tsx
+import { Divider, Box, Text } from '@razorpay/blade/components';
+
+const StyledDividerExample = () => (
+  <Box>
+    <Text>Regular divider below</Text>
+    <Divider marginY="spacing.2" />
+
+    <Text>Colored divider below</Text>
+    <Divider marginY="spacing.2" variant="normal" thickness="thick" />
+  </Box>
+);
+```
+
+### Divider with Different Styles and Variants
+
+This example demonstrates divider styles (solid/dashed), variants (normal/subtle/muted), and thickness options.
+
+```tsx
+import { Divider, Box, Text } from '@razorpay/blade/components';
+
+const DividerVariantsExample = () => (
+  <Box>
+    <Text>Dashed divider</Text>
+    <Divider dividerStyle="dashed" marginY="spacing.2" />
+
+    <Text>Subtle variant with thick thickness</Text>
+    <Divider variant="subtle" thickness="thick" marginY="spacing.2" />
+
+    <Text>Dashed with normal variant</Text>
+    <Divider dividerStyle="dashed" variant="normal" thickness="thicker" marginY="spacing.2" />
   </Box>
 );
 ```
