@@ -16,62 +16,69 @@ The following types represent the props that the Divider component accepts. Thes
  */
 type DividerProps = {
   /**
-   * The orientation of the divider
+   * Sets the orientation of divider
    * @default 'horizontal'
    */
   orientation?: 'horizontal' | 'vertical';
+
+  /**
+   * Sets the style of divider
+   * @default 'solid'
+   */
+  dividerStyle?: 'solid' | 'dashed';
+
+  /**
+   * Sets the variant of divider
+   * @default 'muted'
+   */
+  variant?: 'normal' | 'subtle' | 'muted';
+
+  /**
+   * Sets the thickness of divider
+   * @default 'thin'
+   */
+  thickness?: 'thinner' | 'thin' | 'thick' | 'thicker';
+
+  /**
+   * Sets the height of divider. Divider uses Flex by default, use height only when parent is not flex.
+   */
+  height?: CSSObject['height'];
+
+  /**
+   * Sets the width of divider. Divider uses Flex by default, use width only when parent is not flex.
+   */
+  width?: CSSObject['width'];
 } & StyledPropsBlade &
   TestID;
 ```
 
 ## Examples
 
-### Horizontal Divider
-
-This example shows the default horizontal divider that separates text sections with vertical spacing.
+This example demonstrates all the key features of the Divider component including orientation, style variants, thickness options, and custom dimensions.
 
 ```tsx
 import { Divider, Box, Text } from '@razorpay/blade/components';
 
-const HorizontalDividerExample = () => (
+const DividerExample = () => (
   <Box>
+    {/* Default horizontal divider */}
     <Text>Section One</Text>
     <Divider marginY="spacing.3" />
+
+    {/* Dashed style with variants */}
     <Text>Section Two</Text>
-  </Box>
-);
-```
+    <Divider dividerStyle="dashed" variant="subtle" marginY="spacing.3" />
 
-### Vertical Divider
+    {/* Thick divider */}
+    <Text>Section Three</Text>
+    <Divider variant="normal" thickness="thick" marginY="spacing.3" />
 
-This example demonstrates a vertical divider that separates inline content horizontally within a flex container.
-
-```tsx
-import { Divider, Box, Text } from '@razorpay/blade/components';
-
-const VerticalDividerExample = () => (
-  <Box display="flex" alignItems="center" height="40px">
-    <Text>Left</Text>
-    <Divider orientation="vertical" marginX="spacing.4" height="100%" />
-    <Text>Right</Text>
-  </Box>
-);
-```
-
-### Styled Divider
-
-This example shows how to customize dividers with different colors and thicknesses to create visual hierarchies.
-
-```tsx
-import { Divider, Box, Text } from '@razorpay/blade/components';
-
-const StyledDividerExample = () => (
-  <Box>
-    <Text>Regular divider below</Text>
-    <Divider marginY="spacing.2" />
-
-    <Text>Colored divider below</Text>
-    <Divider marginY="spacing.2" variant="normal" thickness="thick" />
+    {/* Vertical divider in flex container */}
+    <Box display="flex" alignItems="center">
+      <Text>Left</Text>
+      <Divider orientation="vertical" marginX="spacing.4" height="100%" />
+      <Text>Right</Text>
+    </Box>
   </Box>
 );
 ```
