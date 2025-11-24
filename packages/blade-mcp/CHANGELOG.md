@@ -1,5 +1,15 @@
 # @razorpay/blade-mcp
 
+## 1.19.0
+
+### Minor Changes
+
+- 13ef641b8: feat(blade-mcp): refactor shouldCreateOrUpdateCursorRule logic
+
+### Patch Changes
+
+- 1a66a23ad: feat(blade-mcp): updated divider knowledgebase
+
 ## 1.18.0
 
 ### Minor Changes

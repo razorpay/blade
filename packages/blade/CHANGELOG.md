@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.66.0
+
+### Minor Changes
+
+- 731a6ca30: feat(blade): add pagination component
+
 ## 12.65.1
 
 ### Patch Changes
