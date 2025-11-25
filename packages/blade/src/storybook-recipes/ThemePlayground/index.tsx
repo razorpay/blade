@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { CheckoutHome } from './Checkout/CheckoutHome';
 import { CheckoutCard } from './Checkout/CheckoutCard';
 import { PhantomUI } from './PhantomUI';
-import { ThemeSelector } from './ThemeSelector';
+import { ThemeSelector, VISA_PRIMARY_COLOR, VISA_SECONDARY_COLOR } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme, createTheme, overrideTheme } from '~tokens/theme';
@@ -13,18 +13,16 @@ import { Heading } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 
 const ThemePlayground = (): React.ReactElement => {
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(VISA_PRIMARY_COLOR);
   const [borderBase, setBorderBase] = useState<string>('2');
   const [colorScheme, setColorScheme] = useState<ColorSchemeNames>('light');
-  const [selectedPreBuiltTheme, setSelectedPreBuiltTheme] = useState<string | undefined>(
-    'bladeTheme',
-  );
+  const [selectedPreBuiltTheme, setSelectedPreBuiltTheme] = useState<string | undefined>(undefined);
   const [showInternalDemoConfig, setShowInternalDemoConfig] = useState(false);
   const getTheme = (): ThemeTokens => {
     if (selectedColor) {
       return createTheme({
         brandColor: selectedColor,
-        secondaryColor: '#fcc015',
+        secondaryColor: VISA_SECONDARY_COLOR,
       }).theme;
     }
     if (selectedPreBuiltTheme === 'paymentTheme') {

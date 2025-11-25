@@ -6,7 +6,6 @@ import BladeQRCode from './blade-qr-code.png';
 import { CheckoutShell } from './CheckoutShell';
 import { useTheme } from '~components/BladeProvider';
 import { makeMotionTime, makeSpace } from '~utils';
-import { Button } from '~components/Button';
 
 const QRCodeImage = styled.img({
   width: '136px',
