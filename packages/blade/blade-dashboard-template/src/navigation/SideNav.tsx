@@ -234,24 +234,15 @@ const SideNavComponent = ({ isOpen, onDismiss }) => {
           id="screenshot-element"
         >
           <Routes>
-            <Route path="/dashboard/layout-complexity/login" element={<Login />} />
-            <Route
-              path="/dashboard/layout-complexity/account-settings"
-              element={<AccountSettings />}
-            />
-            <Route path="/dashboard/layout-complexity/insights" element={<Insights />} />
+            <Route path="/layout-complexity/login" element={<Login />} />
+            <Route path="/layout-complexity/account-settings" element={<AccountSettings />} />
+            <Route path="/layout-complexity/insights" element={<Insights />} />
 
-            <Route
-              path="/dashboard/component-density/developer-console"
-              element={<DeveloperConsole />}
-            />
-            <Route path="/dashboard/component-density/signup" element={<Signup />} />
-            <Route
-              path="/dashboard/component-density/transaction-card"
-              element={<TransactionCard />}
-            />
+            <Route path="/component-density/developer-console" element={<DeveloperConsole />} />
+            <Route path="/component-density/signup" element={<Signup />} />
+            <Route path="/component-density/transaction-card" element={<TransactionCard />} />
 
-            <Route path="/dashboard/testing/visual-testing" element={<VisualTestingScreen />} />
+            <Route path="/testing/visual-testing" element={<VisualTestingScreen />} />
           </Routes>
         </Box>
       </Box>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { BladeProvider } from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import TopNav from '../navigation/TopNav';
 
@@ -26,9 +26,9 @@ function AppWrapper(): React.JSX.Element {
   return (
     <BladeProvider themeTokens={bladeTheme} colorScheme="light">
       <GlobalStyles />
-      <BrowserRouter>
+      <HashRouter>
         <TopNav />
-      </BrowserRouter>
+      </HashRouter>
     </BladeProvider>
   );
 }

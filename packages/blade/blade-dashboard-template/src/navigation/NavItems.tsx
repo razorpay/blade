@@ -25,17 +25,17 @@ export const navItemsJSON: NavSection[] = [
       {
         icon: LayoutIcon,
         title: 'Login (low)',
-        href: '/dashboard/layout-complexity/login',
+        href: '/layout-complexity/login',
       },
       {
         icon: LayoutIcon,
         title: 'Account Settings (medium)',
-        href: '/dashboard/layout-complexity/account-settings',
+        href: '/layout-complexity/account-settings',
       },
       {
         icon: LayoutIcon,
         title: 'Insights (high)',
-        href: '/dashboard/layout-complexity/insights',
+        href: '/layout-complexity/insights',
       },
     ],
   },
@@ -47,17 +47,17 @@ export const navItemsJSON: NavSection[] = [
       {
         icon: LogInIcon,
         title: 'Signup (low)',
-        href: '/dashboard/component-density/signup',
+        href: '/component-density/signup',
       },
       {
         icon: InfoIcon,
         title: 'Transaction Card (medium)',
-        href: '/dashboard/component-density/transaction-card',
+        href: '/component-density/transaction-card',
       },
       {
         icon: LayoutIcon,
         title: 'Developer Console (high)',
-        href: '/dashboard/component-density/developer-console',
+        href: '/component-density/developer-console',
       },
     ],
   },
