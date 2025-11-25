@@ -40,6 +40,7 @@ const StyledFooter = styled.div(({ theme }) => ({
   display: 'flex',
   padding: makeSpace(theme.spacing[4]),
   alignItems: 'center',
+  backgroundColor: theme.colors.surface.background.primary.intense,
 }));
 
 const MerchantAvatar = styled.img(({ theme }) => ({
@@ -182,11 +183,11 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
       </Box>
       <StyledFooter>
         <Box flex={1} flexDirection="column">
-          <Amount value={5500} />
-          <Text size="small">View Details</Text>
+          <Amount color="interactive.text.onPrimary.normal" value={5500} />
+          <Text color="interactive.text.onPrimary.normal" size="small">View Details</Text>
         </Box>
         <Box flex={2}>
-          <Button size="large" isFullWidth>
+          <Button color="secondary" variant="primary" size="large" isFullWidth>
             Pay Now
           </Button>
         </Box>
