@@ -17,6 +17,7 @@ Don't use createEventDispatcher for event handlers like on:click etc. Instead us
 - Any utility function like - `packages/blade/src/utils/makeBorderSize/index.ts` should be placed in blade core util directory - `packages/blade-core/src/utils` and not within the blade-svelte directory.
 - Whenever any utility import is encountered check in - `packages/blade-core/src/utils` directory, if the util file is not present or same function is not present ask for a confirmation before adding.
 - Check for global utilities imported from blade-core package specially theme utilities or theme types and constants and use those in svelte component. 
+- Ensure most of the styles are written using css classes. Component classes can be written in css files for that comonent's folder. Use Class-Variance-Authority for writing conditional css classes. Any global classes for styling props should go in common theme.css so that accessible by all components.
 
 ## Blade Component Svelte Guidelines
 ### Key Examples for references
