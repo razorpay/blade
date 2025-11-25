@@ -7,12 +7,14 @@
   import type { ActionStatesType } from '../../../types';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
   import { getColorToken, getTextSizes } from './utils';
+  import type { StyledPropsBlade } from '../../../utils/styledProps';
+  import { getStyledPropsClasses, combineStyleStrings } from '../../../utils/styledProps';
 
   // Icon component type - placeholder for now
   // TODO: Replace with actual Icon component when available
   type IconComponent = any;
 
-  interface BaseLinkProps {
+  interface BaseLinkProps extends StyledPropsBlade {
     children?: Snippet;
     icon?: IconComponent;
     iconPosition?: 'left' | 'right';
@@ -209,7 +211,30 @@
     testID,
   });
 
-  // Analytics attributes
+  // Extract all styled props which are global to components
+  const styledProps = $derived(getStyledPropsClasses(rest));
+  
+  // Combine classes with styled props classes
+  const combinedClasses = $derived(() => {
+    const classes = [
+      linkClass({
+        variant,
+        size,
+        disabled: isElementDisabled,
+      }),
+    ];
+    if (styledProps.classes) {
+      classes.push(styledProps.classes);
+    }
+    return classes.filter(Boolean).join(' ');
+  });
+  
+  // Combine icon color with styled props inline styles
+  const combinedStyle = $derived(() => {
+    return combineStyleStrings(`--icon-color: ${iconColor}`, styledProps.inlineStyles);
+  });
+  
+  // Analytics attributes (rest after styled props are extracted)
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 
   // Event handlers
@@ -250,13 +275,8 @@
 
 <svelte:element
   this={elementTag}
-  class={linkClass({
-    variant,
-    color,
-    size,
-    disabled: isElementDisabled,
-  })}
-  style="--icon-color: {iconColor};"
+  class={combinedClasses()}
+  style={combinedStyle()}
   title={htmlTitle}
   {...accessibilityAttrs}
   {...metaAttrs}

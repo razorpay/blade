@@ -1,0 +1,12 @@
+.code-container {
+  padding: var(--spacing-0) var(--spacing-2);
+  border-radius: var(--border-radius-medium);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: var(--line-height-0);
+}
+
+.code-container--highlighted {
+  background-color: var(--feedback-background-neutral-subtle);
+}
+

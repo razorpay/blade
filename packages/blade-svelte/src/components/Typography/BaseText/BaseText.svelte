@@ -3,6 +3,7 @@
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import type { BaseTextProps } from './types';
   import { getBaseTextClassNames, getBaseTextStyles } from './utils';
+  import { getStyledPropsClasses, combineStyleStrings } from '../../../utils/styledProps';
 
   let {
     id,
@@ -48,10 +49,6 @@
     }),
   );
 
-  // Combine base classes with custom className
-  const combinedClasses = $derived(() => {
-    return className ? `${baseTextClasses} ${className}` : baseTextClasses;
-  });
 
   // Generate inline styles for dynamic values
   const baseStyles = $derived(
@@ -82,23 +79,39 @@
     }),
   );
 
-  // Combine base styles with custom style prop
-  const combinedStyle = $derived(() => {
-    if (!style) return baseStyles;
-    const customStyle = typeof style === 'string' ? style : Object.entries(style).map(([k, v]) => `${k}: ${v}`).join('; ');
-    return `${baseStyles}; ${customStyle}`;
+  // Extract styled props and convert to classes and inline styles
+  const styledProps = $derived(getStyledPropsClasses(rest));
+
+  // Combine base classes with styled props classes
+  const combinedClasses = $derived(() => {
+    const classes = [baseTextClasses];
+    if (styledProps.classes) {
+      classes.push(styledProps.classes);
+    }
+    if (className) {
+      classes.push(className);
+    }
+    return classes.filter(Boolean).join(' ');
   });
 
-  // Accessibility attributes
-  const accessibilityAttrs = $derived(makeAccessible(accessibilityProps));
+  // Combine base styles with custom style prop and styled props inline styles
+  const combinedStyle = $derived(() => {
+    const customStyle = style
+      ? typeof style === 'string'
+        ? style
+        : Object.entries(style)
+            .map(([k, v]) => `${k}: ${v}`)
+            .join('; ')
+      : undefined;
 
-  // Meta attributes
+    return combineStyleStrings(baseStyles, styledProps.inlineStyles, customStyle);
+  });
+
+  const accessibilityAttrs = $derived(makeAccessible(accessibilityProps));
   const metaAttrs = metaAttribute({
     name: componentName,
     testID,
   });
-
-  // Analytics attributes
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 </script>
 
