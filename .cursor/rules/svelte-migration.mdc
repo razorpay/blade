@@ -16,6 +16,7 @@ You work in design system of Razorpay and you are migrating existing components 
 Don't use createEventDispatcher for event handlers like on:click etc. Instead use a prop based mechanism expect and pass a prop
 - Any utility function like - `packages/blade/src/utils/makeBorderSize/index.ts` should be placed in blade core util directory - `packages/blade-core/src/utils` and not within the blade-svelte directory.
 - Whenever any utility import is encountered check in - `packages/blade-core/src/utils` directory, if the util file is not present or same function is not present ask for a confirmation before adding.
+- Check for global utilities imported from blade-core package specially theme utilities or theme types and constants and use those in svelte component. 
 
 ## Blade Component Svelte Guidelines
 ### Key Examples for references
@@ -32,10 +33,12 @@ packages/
         └── components/
             ├── Button/
             │   ├── Button.svelte
+            │   ├── types.ts
             │   └── button.css
             ├── Link/
             │   ├── BaseLink/
             │   │   ├── BaseLink.svelte
+            |   │   ├── types.ts
             │   │   └── baseLink.css
             │   └── Link.svelte
             └── ... (other components)
@@ -62,3 +65,8 @@ Add the component in packages/blade-svelte/src/App.svelte as well which will be 
 - Always set the `disabled` attribute on the element when the component is disabled
 - Use `[disabled]` attribute selector in CSS instead of adding/removing classes
 - This pattern applies to buttons, links, and other interactive elements that support disabled states
+
+## Accessibility and CSS Patterns
+
+- Avoid passing styles via style prop or attribute to svelte component
+- Use CVA to generate classes based on props passed to the component

@@ -3,6 +3,7 @@ export { default as overrideTheme } from './overrideTheme';
 export type {
   ColorSchemeNames,
   ColorSchemeNamesInput,
+  Colors,
   ColorsWithModes,
   ThemeTokens,
 } from './theme';
