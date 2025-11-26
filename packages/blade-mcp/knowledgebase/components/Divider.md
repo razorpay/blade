@@ -16,10 +16,38 @@ The following types represent the props that the Divider component accepts. Thes
  */
 type DividerProps = {
   /**
-   * The orientation of the divider
+   * Sets the orientation of divider
    * @default 'horizontal'
    */
   orientation?: 'horizontal' | 'vertical';
+
+  /**
+   * Sets the style of divider
+   * @default 'solid'
+   */
+  dividerStyle?: 'solid' | 'dashed';
+
+  /**
+   * Sets the variant of divider
+   * @default 'muted'
+   */
+  variant?: 'normal' | 'subtle' | 'muted';
+
+  /**
+   * Sets the thickness of divider
+   * @default 'thin'
+   */
+  thickness?: 'thinner' | 'thin' | 'thick' | 'thicker';
+
+  /**
+   * Sets the height of divider. Divider uses Flex by default, use height only when parent is not flex.
+   */
+  height?: CSSObject['height'];
+
+  /**
+   * Sets the width of divider. Divider uses Flex by default, use width only when parent is not flex.
+   */
+  width?: CSSObject['width'];
 } & StyledPropsBlade &
   TestID;
 ```
@@ -72,6 +100,27 @@ const StyledDividerExample = () => (
 
     <Text>Colored divider below</Text>
     <Divider marginY="spacing.2" variant="normal" thickness="thick" />
+  </Box>
+);
+```
+
+### Divider with Different Styles and Variants
+
+This example demonstrates divider styles (solid/dashed), variants (normal/subtle/muted), and thickness options.
+
+```tsx
+import { Divider, Box, Text } from '@razorpay/blade/components';
+
+const DividerVariantsExample = () => (
+  <Box>
+    <Text>Dashed divider</Text>
+    <Divider dividerStyle="dashed" marginY="spacing.2" />
+
+    <Text>Subtle variant with thick thickness</Text>
+    <Divider variant="subtle" thickness="thick" marginY="spacing.2" />
+
+    <Text>Dashed with normal variant</Text>
+    <Divider dividerStyle="dashed" variant="normal" thickness="thicker" marginY="spacing.2" />
   </Box>
 );
 ```
