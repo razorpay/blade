@@ -2370,21 +2370,6 @@ exports[`<SearchInput /> should render large size 1`] = `
   margin-top: 8px;
 }
 
-.c21.c21.c21.c21.c21 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-}
-
 .c6.c6.c6.c6.c6 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -2425,7 +2410,7 @@ exports[`<SearchInput /> should render large size 1`] = `
   padding: 0;
 }
 
-.c22.c22.c22.c22.c22 {
+.c21.c21.c21.c21.c21 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2812,11 +2797,11 @@ exports[`<SearchInput /> should render large size 1`] = `
             id="searchinput-37-helptext-40"
           >
             <span
-              class="c21"
+              class="c4"
               data-blade-component="base-box"
             >
               <span
-                class="c22"
+                class="c21"
                 data-blade-component="text"
               >
                 Enter an item to search

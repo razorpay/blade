@@ -26,8 +26,7 @@ const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): Rea
     <BaseBox marginTop={hintMarginTop[size]} id={id}>
       <FormHintWrapper>
         {Icon ? (
-          // offset block element 2px down to align with text
-          <Box flexShrink={0} marginTop="spacing.1">
+          <Box flexShrink={0}>
             <Icon />
           </Box>
         ) : null}

@@ -990,7 +990,6 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
                 [
                   {
                     "flexShrink": 0,
-                    "marginTop": 2,
                   },
                 ]
               }
@@ -1480,7 +1479,6 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                 [
                   {
                     "flexShrink": 0,
-                    "marginTop": 2,
                   },
                 ]
               }
@@ -2691,7 +2689,6 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                 [
                   {
                     "flexShrink": 0,
-                    "marginTop": 2,
                   },
                 ]
               }
