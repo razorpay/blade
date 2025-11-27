@@ -40,6 +40,16 @@ const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProje
             ## Prerequisites:
             - The working directory must be is empty. Run \`[ "$(ls -A)" ] && echo "not empty" || echo "empty"\` to check if the directory is empty. If it's not empty do not continue with the steps below.
 
+            ## Node.js Setup (Required):
+            Before proceeding, ensure Node.js version 22.0.0 is installed:
+            1. Check if Node.js is installed: \`node --version\`
+            2. Check if nvm is installed: \`nvm -v || echo "nvm not found"\`
+            3. If Node.js is not installed or not version 22.0.0:
+               - If nvm is not installed, install it: \`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash\` (then reload shell: \`source ~/.zshrc\` or \`source ~/.bashrc\`)
+               - Install Node.js 22.0.0 using nvm: \`nvm install 22.0.0 && nvm use 22.0.0\`
+            4. Verify npx works: \`npx --version\`
+            5. If npx is not available, install it globally: \`npm install -g npx\`
+
             ## Steps:
             1. Create the project using degit: \`npx degit razorpay/blade/packages/blade-mcp/base-blade-template\`
             2. Call \`${createBladeCursorRulesToolName}\` to create the cursor rules.
