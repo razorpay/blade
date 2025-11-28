@@ -125,6 +125,16 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
   const promoToastHeight = promoToasts[0]?.height ?? 0;
   const isExpanded = hasManuallyExpanded || recomputedToasts.length <= minToasts;
 
+  // Calculate the maximum z-index from all toasts to set container z-index
+  const maxToastZIndex = React.useMemo(() => {
+    const zIndices = recomputedToasts
+      .filter((toast) => toast.visible)
+      // @ts-expect-error - react-hot-toast doesn't recognize our zIndex prop
+      .map((toast) => toast.zIndex)
+      .filter((zIndex): zIndex is number => zIndex !== undefined);
+    return zIndices.length > 0 ? Math.max(...zIndices, TOAST_Z_INDEX) : TOAST_Z_INDEX;
+  }, [recomputedToasts]);
+
   React.useLayoutEffect(() => {
     // find the first toast which is visible
     const firstToast = infoToasts.find((t, index) => t.visible && index === 0);
@@ -223,7 +233,7 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
   return (
     <BaseBox
       position="fixed"
-      zIndex={TOAST_Z_INDEX}
+      zIndex={maxToastZIndex}
       top={makeSize(defaultGutter)}
       left={makeSize(defaultGutter)}
       right={makeSize(defaultGutter)}
@@ -278,6 +288,13 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
           toastHeight = toast.height;
         }
 
+        // @ts-expect-error - react-hot-toast doesn't recognize our zIndex prop
+        const toastZIndex = toast.zIndex;
+        // Use custom zIndex if provided, maintaining relative stacking order (newer toasts in front)
+        // For custom zIndex: subtract index so newer toasts (lower index) have higher z-index
+        // Default behavior: use -1 * index (newer toasts have higher z-index values)
+        const wrapperZIndex = toastZIndex !== undefined ? toastZIndex - index : -1 * index;
+
         return (
           <StyledToastWrapper
             key={toast.id}
@@ -288,7 +305,7 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
             isPromotional={isPromotional}
             style={{
               ...positionStyle,
-              zIndex: -1 * index,
+              zIndex: wrapperZIndex,
               height: toastHeight,
               overflow: 'hidden',
             }}

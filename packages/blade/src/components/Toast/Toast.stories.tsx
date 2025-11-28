@@ -15,6 +15,7 @@ import { Button } from '~components/Button';
 import { Heading, Text } from '~components/Typography';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { AnnouncementIcon } from '~components/Icons';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '~components/Modal';
 
 const Page = (): React.ReactElement => {
   return (
@@ -254,3 +255,92 @@ const ContainerOffsetTemplate: StoryFn<ToastProps> = () => {
 
 export const ContainerOffset = ContainerOffsetTemplate.bind({});
 ContainerOffset.storyName = 'Container Offset';
+
+const ZIndexTemplate: StoryFn<ToastProps> = () => {
+  const toast = useToast();
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const showToastWithZIndex = (zIndex?: number) => {
+    toast.show({
+      content: zIndex
+        ? `This toast has a custom z-index of ${zIndex}`
+        : 'This toast uses the default z-index (2000)',
+      color: 'information',
+      zIndex,
+      duration: 10000,
+      action: {
+        text: 'Dismiss',
+        onClick: ({ toastId }) => toast.dismiss(toastId),
+      },
+    });
+  };
+
+  const showToastAboveModal = () => {
+    toast.show({
+      content: 'This toast has z-index 3000 and appears above the modal (z-index 2000)',
+      color: 'positive',
+      zIndex: 3000,
+      duration: 10000,
+      action: {
+        text: 'Dismiss',
+        onClick: ({ toastId }) => toast.dismiss(toastId),
+      },
+    });
+  };
+
+  return (
+    <Box height="80vh">
+      <Text size="medium" marginBottom="spacing.4">
+        Toast with Custom zIndex
+      </Text>
+      <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.6">
+        Use the zIndex prop to control the stacking order of toasts. When not provided, it defaults
+        to TOAST_Z_INDEX (2000).
+      </Text>
+      <Box display="flex" gap="spacing.3" flexDirection="column" marginBottom="spacing.6">
+        <Button onClick={() => showToastWithZIndex()}>Show Toast with Default z-index</Button>
+        <Button onClick={() => showToastWithZIndex(3000)}>Show Toast with z-index 3000</Button>
+        <Button onClick={() => showToastWithZIndex(1500)}>Show Toast with z-index 1500</Button>
+      </Box>
+      <Box
+        marginTop="spacing.6"
+        paddingTop="spacing.6"
+        borderTopWidth="thin"
+        borderTopColor="surface.border.gray.muted"
+      >
+        <Text size="medium" marginBottom="spacing.4">
+          Toast Above Modal Demo
+        </Text>
+        <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.6">
+          Open a full-page modal with z-index 2000, then show a toast with z-index 3000 to see it
+          appear above the modal.
+        </Text>
+        <Box display="flex" gap="spacing.3">
+          <Button onClick={() => setIsModalOpen(true)}>Open Modal (z-index 2000)</Button>
+          {isModalOpen && (
+            <Button onClick={showToastAboveModal}>Show Toast Above Modal (z-index 3000)</Button>
+          )}
+        </Box>
+      </Box>
+      <Modal isOpen={isModalOpen} onDismiss={() => setIsModalOpen(false)} size="full" zIndex={2000}>
+        <ModalHeader title="Modal with z-index 2000" />
+        <ModalBody>
+          <Text marginBottom="spacing.4">
+            This is a full-page modal with z-index 2000. Click the button below to show a toast with
+            z-index 3000, which will appear above this modal.
+          </Text>
+          <Button onClick={showToastAboveModal}>Show Toast Above Modal (z-index 3000)</Button>
+        </ModalBody>
+        <ModalFooter>
+          <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
+            Close Modal
+          </Button>
+        </ModalFooter>
+      </Modal>
+      <ToastContainer />
+    </Box>
+  );
+};
+
+export const ZIndex = ZIndexTemplate.bind({});
+ZIndex.storyName = 'Z-Index';
