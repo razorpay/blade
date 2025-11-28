@@ -132,7 +132,7 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
       // @ts-expect-error - react-hot-toast doesn't recognize our zIndex prop
       .map((toast) => toast.zIndex)
       .filter((zIndex): zIndex is number => zIndex !== undefined);
-    return zIndices.length > 0 ? Math.max(...zIndices, TOAST_Z_INDEX) : TOAST_Z_INDEX;
+    return zIndices.length > 0 ? Math.max(...zIndices) : TOAST_Z_INDEX;
   }, [recomputedToasts]);
 
   React.useLayoutEffect(() => {
