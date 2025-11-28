@@ -260,21 +260,6 @@ const ZIndexTemplate: StoryFn<ToastProps> = () => {
   const toast = useToast();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
-  const showToastWithZIndex = (zIndex?: number) => {
-    toast.show({
-      content: zIndex
-        ? `This toast has a custom z-index of ${zIndex}`
-        : 'This toast uses the default z-index (2000)',
-      color: 'information',
-      zIndex,
-      duration: 10000,
-      action: {
-        text: 'Dismiss',
-        onClick: ({ toastId }) => toast.dismiss(toastId),
-      },
-    });
-  };
-
   const showToastAboveModal = () => {
     toast.show({
       content: 'This toast has z-index 3000 and appears above the modal (z-index 2000)',
