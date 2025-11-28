@@ -293,15 +293,7 @@ const ZIndexTemplate: StoryFn<ToastProps> = () => {
       <Text size="medium" marginBottom="spacing.4">
         Toast with Custom zIndex
       </Text>
-      <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.6">
-        Use the zIndex prop to control the stacking order of toasts. When not provided, it defaults
-        to TOAST_Z_INDEX (2000).
-      </Text>
-      <Box display="flex" gap="spacing.3" flexDirection="column" marginBottom="spacing.6">
-        <Button onClick={() => showToastWithZIndex()}>Show Toast with Default z-index</Button>
-        <Button onClick={() => showToastWithZIndex(3000)}>Show Toast with z-index 3000</Button>
-        <Button onClick={() => showToastWithZIndex(1500)}>Show Toast with z-index 1500</Button>
-      </Box>
+
       <Box
         marginTop="spacing.6"
         paddingTop="spacing.6"
