@@ -102,6 +102,7 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
  */
 const getOnLightOverrides = (
   brandColors: ColorChromaticScale,
+  secondaryColors: ColorChromaticScale,
 ): DeepPartial<ThemeTokens['colors']['onLight']> => {
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
@@ -121,6 +122,22 @@ const getOnLightOverrides = (
     )
     .toHslString();
 
+  const secondaryForegroundOnSurface = tinycolor.isReadable(
+    globalColors.neutral.blueGrayLight[50],
+    secondaryColors[600],
+    WCAG2ContrastOptions,
+  )
+    ? secondaryColors[600]
+    : globalColors.neutral.blueGrayLight[1100];
+
+  const secondaryForegroundOnBrand = tinycolor
+    .mostReadable(
+      secondaryColors[900],
+      [globalColors.neutral.white[500], globalColors.neutral.black[500]],
+      WCAG2ContrastOptions,
+    )
+    .toHslString();
+
   // Overrides for the light theme with the brand colors passed in
   const lightThemeOverrides: DeepPartial<ThemeTokens['colors']['onLight']> = {
     interactive: {
@@ -132,6 +149,13 @@ const getOnLightOverrides = (
           faded: brandColors.a100,
           fadedHighlighted: brandColors.a150,
         },
+        secondary: {
+          default: secondaryColors[600],
+          highlighted: secondaryColors[700],
+          disabled: secondaryColors.a100,
+          faded: secondaryColors.a100,
+          fadedHighlighted: secondaryColors.a150,
+        },
       },
       border: {
         primary: {
@@ -139,6 +163,12 @@ const getOnLightOverrides = (
           highlighted: brandColors[700],
           disabled: brandColors.a100,
           faded: brandColors.a100,
+        },
+        secondary: {
+          default: secondaryColors[600],
+          highlighted: secondaryColors[700],
+          disabled: secondaryColors.a100,
+          faded: secondaryColors.a100,
         },
       },
       text: {
@@ -154,6 +184,18 @@ const getOnLightOverrides = (
           muted: foregroundOnBrand,
           subtle: foregroundOnBrand,
         },
+        secondary: {
+          normal: secondaryForegroundOnSurface,
+          disabled: secondaryColors.a200,
+          muted: secondaryForegroundOnSurface,
+          subtle: secondaryForegroundOnSurface,
+        },
+        onSecondary: {
+          normal: secondaryForegroundOnBrand,
+          disabled: secondaryForegroundOnBrand,
+          muted: secondaryForegroundOnBrand,
+          subtle: secondaryForegroundOnBrand,
+        },
       },
       icon: {
         primary: {
@@ -167,6 +209,18 @@ const getOnLightOverrides = (
           disabled: foregroundOnBrand,
           muted: foregroundOnBrand,
           subtle: foregroundOnBrand,
+        },
+        secondary: {
+          normal: secondaryForegroundOnSurface,
+          disabled: secondaryColors.a200,
+          muted: secondaryForegroundOnSurface,
+          subtle: secondaryForegroundOnSurface,
+        },
+        onSecondary: {
+          normal: secondaryForegroundOnBrand,
+          disabled: secondaryForegroundOnBrand,
+          muted: secondaryForegroundOnBrand,
+          subtle: secondaryForegroundOnBrand,
         },
       },
     },
@@ -176,21 +230,35 @@ const getOnLightOverrides = (
           intense: brandColors[600],
           subtle: brandColors[200],
         },
+        secondary: {
+          intense: secondaryColors[600],
+          subtle: secondaryColors[200],
+        },
       },
       border: {
         primary: {
           normal: brandColors[600],
           muted: brandColors.a200,
         },
+        secondary: {
+          normal: secondaryColors[600],
+          muted: secondaryColors.a200,
+        },
       },
       icon: {
         primary: {
           normal: brandColors[600],
         },
+        secondary: {
+          normal: secondaryColors[600],
+        },
       },
       text: {
         primary: {
           normal: brandColors[600],
+        },
+        secondary: {
+          normal: secondaryColors[600],
         },
       },
     },
@@ -207,6 +275,7 @@ const getOnLightOverrides = (
  */
 const getOnDarkOverrides = (
   brandColors: ColorChromaticScale,
+  secondaryColors: ColorChromaticScale,
 ): DeepPartial<ThemeTokens['colors']['onDark']> => {
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
@@ -226,6 +295,22 @@ const getOnDarkOverrides = (
     )
     .toHslString();
 
+  const secondaryForegroundOnSurface = tinycolor.isReadable(
+    globalColors.neutral.blueGrayDark[1100],
+    secondaryColors[400],
+    WCAG2ContrastOptions,
+  )
+    ? secondaryColors[400]
+    : globalColors.neutral.blueGrayDark[0];
+
+  const secondaryForegroundOnBrand = tinycolor
+    .mostReadable(
+      secondaryColors[900],
+      [globalColors.neutral.white[500], globalColors.neutral.black[500]],
+      WCAG2ContrastOptions,
+    )
+    .toHslString();
+
   // Overrides for the dark theme with the brand colors passed in
   const darkThemeOverrides: DeepPartial<ThemeTokens['colors']['onDark']> = {
     interactive: {
@@ -237,6 +322,13 @@ const getOnDarkOverrides = (
           faded: brandColors.a100,
           fadedHighlighted: brandColors.a150,
         },
+        secondary: {
+          default: secondaryColors[600],
+          highlighted: secondaryColors[700],
+          disabled: secondaryColors.a100,
+          faded: secondaryColors.a100,
+          fadedHighlighted: secondaryColors.a150,
+        },
       },
       border: {
         primary: {
@@ -244,6 +336,12 @@ const getOnDarkOverrides = (
           highlighted: brandColors[700],
           disabled: brandColors.a100,
           faded: brandColors.a100,
+        },
+        secondary: {
+          default: secondaryColors[600],
+          highlighted: secondaryColors[700],
+          disabled: secondaryColors.a100,
+          faded: secondaryColors.a100,
         },
       },
       text: {
@@ -259,6 +357,18 @@ const getOnDarkOverrides = (
           muted: foregroundOnBrand,
           subtle: foregroundOnBrand,
         },
+        secondary: {
+          normal: secondaryForegroundOnSurface,
+          disabled: secondaryColors.a400,
+          muted: secondaryForegroundOnSurface,
+          subtle: secondaryForegroundOnSurface,
+        },
+        onSecondary: {
+          normal: secondaryForegroundOnBrand,
+          disabled: secondaryForegroundOnBrand,
+          muted: secondaryForegroundOnBrand,
+          subtle: secondaryForegroundOnBrand,
+        },
       },
       icon: {
         primary: {
@@ -273,6 +383,18 @@ const getOnDarkOverrides = (
           muted: foregroundOnBrand,
           subtle: foregroundOnBrand,
         },
+        secondary: {
+          normal: secondaryForegroundOnSurface,
+          disabled: secondaryColors.a400,
+          muted: secondaryForegroundOnSurface,
+          subtle: secondaryForegroundOnSurface,
+        },
+        onSecondary: {
+          normal: secondaryForegroundOnBrand,
+          disabled: secondaryForegroundOnBrand,
+          muted: secondaryForegroundOnBrand,
+          subtle: secondaryForegroundOnBrand,
+        },
       },
     },
     surface: {
@@ -281,16 +403,35 @@ const getOnDarkOverrides = (
           intense: brandColors[600],
           subtle: brandColors[200],
         },
+        secondary: {
+          intense: secondaryColors[600],
+          subtle: secondaryColors[200],
+        },
       },
       border: {
         primary: {
           normal: brandColors[600],
           muted: brandColors.a200,
         },
+        secondary: {
+          normal: secondaryColors[600],
+          muted: secondaryColors.a200,
+        },
       },
       icon: {
         primary: {
           normal: brandColors[600],
+        },
+        secondary: {
+          normal: secondaryColors[600],
+        },
+      },
+      text: {
+        primary: {
+          normal: brandColors[600],
+        },
+        secondary: {
+          normal: secondaryColors[600],
         },
       },
     },
@@ -310,14 +451,17 @@ const getOnDarkOverrides = (
  **/
 export const createTheme = ({
   brandColor,
+  secondaryColor,
 }: {
   brandColor: ColorInput;
+  secondaryColor: ColorInput;
 }): { theme: ThemeTokens; brandColors: ColorChromaticScale } => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
+  const chromaticSecondaryColors = generateChromaticBrandColors(secondaryColor);
   // Get onLight overrides
-  const brandedLightTheme = getOnLightOverrides(chromaticBrandColors);
+  const brandedLightTheme = getOnLightOverrides(chromaticBrandColors, chromaticSecondaryColors);
   // Get onDark overrides
-  const brandedDarkTheme = getOnDarkOverrides(chromaticBrandColors);
+  const brandedDarkTheme = getOnDarkOverrides(chromaticBrandColors, chromaticSecondaryColors);
   // Override the payment theme with the brand colors
   const brandedThemeTokens = overrideTheme({
     baseThemeTokens: bladeTheme,

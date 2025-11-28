@@ -80,6 +80,7 @@ type BaseButtonCommonProps = {
   color?:
     | 'primary'
     | 'white'
+    | 'secondary'
     | 'positive'
     | 'negative'
     | 'notice'
