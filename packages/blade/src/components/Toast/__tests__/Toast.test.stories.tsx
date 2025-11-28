@@ -224,6 +224,118 @@ ToastStacking.play = async () => {
   await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(130);
 };
 
+export const ToastZIndex: StoryFn<typeof Toast> = (): React.ReactElement => {
+  const toast = useToast();
+
+  React.useEffect(() => {
+    toast.dismiss();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <Box>
+      <Button
+        onClick={() => {
+          toast.show({ content: 'Toast with zIndex 3000', zIndex: 3000, autoDismiss: false });
+        }}
+      >
+        Show zIndex 3000
+      </Button>
+      <Button
+        onClick={() => {
+          toast.show({ content: 'Toast with zIndex 5000', zIndex: 5000, autoDismiss: false });
+        }}
+      >
+        Show zIndex 5000
+      </Button>
+      <Button
+        onClick={() => {
+          toast.show({ content: 'Toast with zIndex 4000', zIndex: 4000, autoDismiss: false });
+        }}
+      >
+        Show zIndex 4000
+      </Button>
+      <Button
+        onClick={() => {
+          toast.show({ content: 'Toast without zIndex', autoDismiss: false });
+        }}
+      >
+        Show No zIndex
+      </Button>
+      <Button
+        onClick={() => {
+          toast.dismiss();
+        }}
+      >
+        Dismiss All
+      </Button>
+      <ToastContainer />
+    </Box>
+  );
+};
+
+ToastZIndex.play = async () => {
+  const { getByRole, queryByText } = within(document.body);
+  await sleep(1000);
+
+  const button3000 = getByRole('button', { name: 'Show zIndex 3000' });
+  const button5000 = getByRole('button', { name: 'Show zIndex 5000' });
+  const button4000 = getByRole('button', { name: 'Show zIndex 4000' });
+  const buttonNoZIndex = getByRole('button', { name: 'Show No zIndex' });
+  const dismissAllButton = getByRole('button', { name: 'Dismiss All' });
+
+  // Get the toast container element
+  const toastContainerElement = document.querySelector('[data-blade-component="toast-container"]')!;
+
+  // Initially, no toasts, should use default TOAST_Z_INDEX (2000)
+  await expect(toastContainerElement).toBeInTheDocument();
+  let computedStyle = window.getComputedStyle(toastContainerElement);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(2000);
+
+  // Show toast with zIndex 3000
+  await userEvent.click(button3000);
+  await sleep(400);
+  await expect(queryByText('Toast with zIndex 3000')).toBeVisible();
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
+
+  // Show toast with zIndex 5000 (higher)
+  await userEvent.click(button5000);
+  await sleep(400);
+  await expect(queryByText('Toast with zIndex 5000')).toBeVisible();
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  // Should use maximum zIndex (5000)
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(5000);
+
+  // Show toast with zIndex 4000 (lower than max)
+  await userEvent.click(button4000);
+  await sleep(400);
+  await expect(queryByText('Toast with zIndex 4000')).toBeVisible();
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  // Should still use maximum zIndex (5000)
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(5000);
+
+  // Show toast without zIndex (undefined)
+  await userEvent.click(buttonNoZIndex);
+  await sleep(400);
+  await expect(queryByText('Toast without zIndex')).toBeVisible();
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  // Should filter out undefined and still use maximum of defined values (5000)
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(5000);
+
+  // Dismiss all toasts
+  await userEvent.click(dismissAllButton);
+  await sleep(400);
+  await expect(queryByText('Toast with zIndex 3000')).not.toBeVisible();
+  await expect(queryByText('Toast with zIndex 5000')).not.toBeVisible();
+  await expect(queryByText('Toast with zIndex 4000')).not.toBeVisible();
+  await expect(queryByText('Toast without zIndex')).not.toBeVisible();
+
+  // After dismissing all, should fall back to default TOAST_Z_INDEX (2000)
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(2000);
+};
+
 export default {
   title: 'Components/Interaction Tests/Toast',
   parameters: {
