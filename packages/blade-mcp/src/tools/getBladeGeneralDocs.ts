@@ -5,13 +5,15 @@ import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
   analyticsToolCallEventName,
   GENERAL_KNOWLEDGEBASE_DIRECTORY,
+  CURSOR_RULES_VERSION,
   CHECK_CURSOR_RULES_DESCRIPTION,
 } from '../utils/tokens.js';
 
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
-import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
+import { isCursorRuleFileMissing, areCursorRulesOutdated } from '../utils/cursorRulesUtils.js';
+import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeGeneralDocsList = getBladeDocsList('general');
 
@@ -37,12 +39,7 @@ const getBladeGeneralDocsToolSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-  clientName: z
-    .enum(['claude', 'cursor', 'unknown'])
-    .default('unknown')
-    .describe(
-      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
-    ),
+  clientName: z.enum(['claude', 'cursor', 'unknown']).default('unknown'),
   cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
 };
 
@@ -63,13 +60,18 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
     });
   }
 
-  const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
-    cursorRuleVersion,
-    clientName,
-    currentProjectRootDirectory,
-  );
-  if (createOrUpdateCursorRule) {
-    return createOrUpdateCursorRule;
+  if (isCursorRuleFileMissing(cursorRuleVersion, clientName)) {
+    return handleError({
+      toolName: getBladeGeneralDocsToolName,
+      mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
+    });
+  }
+
+  if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
+    return handleError({
+      toolName: getBladeGeneralDocsToolName,
+      mcpErrorMessage: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
+    });
   }
 
   try {
