@@ -5,6 +5,7 @@ import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
   CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
+  CHECK_CURSOR_RULES_DESCRIPTION,
 } from '../utils/tokens.js';
 import { hasOutDatedRules, getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
@@ -38,17 +39,17 @@ const getBladeComponentDocsHttpSchema = {
     .describe(
       `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsListString}`,
     ),
-  cursorRuleVersion: z
-    .string()
-    .describe('The version of cursor rules. Required for HTTP transport.'),
   clientName: z
-    .string()
-    .describe('The name of the client making the request. Required for HTTP transport.'),
+    .enum(['claude', 'cursor', 'unknown'])
+    .default('unknown')
+    .describe(
+      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
+    ),
+  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
   currentProjectRootDirectory: z
     .string()
-    .optional()
     .describe(
-      "The working root directory of the consumer's project. Optional for HTTP transport. Do not use root directory, do not use '.', only use absolute path to current directory",
+      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
 };
 
@@ -56,15 +57,15 @@ const getBladeComponentDocsHttpSchema = {
 const getBladeComponentDocsCore = ({
   componentsList,
   currentProjectRootDirectory,
-  skipCursorRuleChecks = false,
+  skipLocalCursorRuleChecks = false,
   cursorRuleVersion,
   clientName,
 }: {
   componentsList: string;
   currentProjectRootDirectory?: string;
-  skipCursorRuleChecks?: boolean;
-  cursorRuleVersion?: string;
-  clientName?: string;
+  skipLocalCursorRuleChecks?: boolean;
+  cursorRuleVersion: string;
+  clientName: 'claude' | 'cursor' | 'unknown';
 }): {
   isError?: true;
   content: Array<{ type: 'text'; text: string }>;
@@ -79,8 +80,8 @@ const getBladeComponentDocsCore = ({
     });
   }
 
-  // Skip cursor rule checks if skipCursorRuleChecks is true (for HTTP transport)
-  if (!skipCursorRuleChecks && currentProjectRootDirectory) {
+  // Skip cursor rule checks if skipLocalCursorRuleChecks is true (for HTTP transport)
+  if (!skipLocalCursorRuleChecks && currentProjectRootDirectory) {
     const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
 
     if (!existsSync(ruleFilePath)) {
@@ -142,7 +143,9 @@ const getBladeComponentDocsStdioCallback: ToolCallback<typeof getBladeComponentD
   return getBladeComponentDocsCore({
     componentsList,
     currentProjectRootDirectory,
-    skipCursorRuleChecks: false, // Perform cursor rule checks for stdio
+    skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
+    cursorRuleVersion: '0',
+    clientName: 'unknown',
   });
 };
 
@@ -156,7 +159,7 @@ const getBladeComponentDocsHttpCallback: ToolCallback<typeof getBladeComponentDo
   return getBladeComponentDocsCore({
     componentsList,
     currentProjectRootDirectory,
-    skipCursorRuleChecks: true, // Skip cursor rule checks for HTTP
+    skipLocalCursorRuleChecks: true, // Skip cursor rule checks for HTTP
     cursorRuleVersion,
     clientName,
   });
