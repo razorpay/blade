@@ -1,7 +1,7 @@
 import type { Snippet } from 'svelte';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import type { validAsValues } from './utils';
-import type { StyledPropsBlade } from '../../../utils/styledProps';
+import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 export type TextVariant = 'body' | 'caption';
 

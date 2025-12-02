@@ -7,8 +7,8 @@
   import type { ActionStatesType } from '../../../types';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
   import { getColorToken, getTextSizes } from './utils';
-  import type { StyledPropsBlade } from '../../../utils/styledProps';
-  import { getStyledPropsClasses, combineStyleStrings } from '../../../utils/styledProps';
+  import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+  import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
 
   // Icon component type - placeholder for now
   // TODO: Replace with actual Icon component when available
@@ -157,6 +157,8 @@
   });
 
   // Destructure linkProps for cleaner template usage
+  // Note: iconColor is computed in linkProps but not destructured since icon rendering is TODO
+  // When icon component is implemented, it should use color classes directly
   const {
     elementTag,
     type: elementType,
@@ -167,7 +169,6 @@
     textColorToken,
     fontSize,
     lineHeight,
-    iconColor,
   } = $derived(linkProps);
 
   // CVA definitions for clean variant management
@@ -212,9 +213,13 @@
   });
 
   // Extract all styled props which are global to components
+  // Note: getStyledPropsClasses returns both classes and inlineStyles,
+  // but we only use classes here - inlineStyles are ignored (not applied)
+  // This ensures everything is class-based with no inline styles
   const styledProps = $derived(getStyledPropsClasses(rest));
   
   // Combine classes with styled props classes
+  // styledProps.inlineStyles is intentionally ignored to maintain pure class-based styling
   const combinedClasses = $derived(() => {
     const classes = [
       linkClass({
@@ -224,15 +229,14 @@
       }),
     ];
     if (styledProps.classes) {
-      classes.push(styledProps.classes);
+      classes.push(...styledProps.classes);
     }
     return classes.filter(Boolean).join(' ');
   });
   
-  // Combine icon color with styled props inline styles
-  const combinedStyle = $derived(() => {
-    return combineStyleStrings(`--icon-color: ${iconColor}`, styledProps.inlineStyles);
-  });
+  // Icon color is stored for when icon component is implemented
+  // When icon is rendered, it should use the color class directly instead of CSS variable
+  // For now, iconColor is available but not used (icon rendering is TODO)
   
   // Analytics attributes (rest after styled props are extracted)
   const analyticsAttrs = makeAnalyticsAttribute(rest);
@@ -276,7 +280,6 @@
 <svelte:element
   this={elementTag}
   class={combinedClasses()}
-  style={combinedStyle()}
   title={htmlTitle}
   {...accessibilityAttrs}
   {...metaAttrs}

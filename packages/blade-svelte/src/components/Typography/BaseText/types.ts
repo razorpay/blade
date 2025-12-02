@@ -1,7 +1,7 @@
 import type { Snippet } from 'svelte';
 import type { AccessibilityProps, DotNotationToken } from '@razorpay/blade-core/utils';
 import type { Theme } from '../../BladeProvider/types';
-import type { StyledPropsBlade } from '../../../utils/styledProps';
+import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 // Text color types - using DotNotationToken from blade-core, matching React implementation exactly
 type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;

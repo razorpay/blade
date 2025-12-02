@@ -1,6 +1,6 @@
 /**
  * Utilities for converting spacing values (tokens, pixels, etc.) to CSS values
- * Ported from React implementation
+ * Framework-agnostic utilities for handling spacing tokens
  */
 
 /**
@@ -32,7 +32,10 @@ export const getSpacingValue = (
 
   // Handle arrays (for margin shorthand: [top, right, bottom, left])
   if (Array.isArray(spacingValue)) {
-    return spacingValue.map((value) => getSpacingValue(value)).filter(Boolean).join(' ');
+    return spacingValue
+      .map((value) => getSpacingValue(value))
+      .filter(Boolean)
+      .join(' ');
   }
 
   // Handle spacing tokens

@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
+import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
-import type { StyledPropsBlade } from '../../../utils/styledProps';
 
 export const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 

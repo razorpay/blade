@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
+import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
-import type { StyledPropsBlade } from '../../../utils/styledProps';
 
 type CodeHighlightedProps = {
   /**
@@ -57,4 +57,3 @@ type CodeNonHighlightedProps = {
 } & StyledPropsBlade;
 
 export type CodeProps = CodeHighlightedProps | CodeNonHighlightedProps;
-

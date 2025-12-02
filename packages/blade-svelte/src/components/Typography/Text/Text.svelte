@@ -2,7 +2,6 @@
   import BaseText from '../BaseText/BaseText.svelte';
   import type { TextBodyVariant, TextCaptionVariant } from './types';
   import { getTextProps, validAsValues } from './utils';
-  import { getStyledProps } from '../../../utils/styledProps';
 
   type TextComponentProps = (TextBodyVariant | TextCaptionVariant) & {
     weight?: 'regular' | 'medium' | 'semibold';
@@ -22,7 +21,7 @@
     textDecorationLine,
     wordBreak,
     textTransform,
-    ...styledProps
+    ...rest
   }: TextComponentProps = $props();
 
   // Set defaults
@@ -53,17 +52,15 @@
     }),
   );
 
-  // Extract styled props
-  const extractedStyledProps = $derived(getStyledProps(styledProps));
-
-  // Merge props: baseTextProps first, then direct props, then styled props (matching React implementation)
+  // Merge props: baseTextProps first, then direct props, then rest (styled props)
+  // BaseText will handle styled props extraction via getStyledPropsClasses(rest)
   const mergedProps = $derived({
     ...baseTextProps,
     as,
     truncateAfterLines,
     wordBreak,
     textTransform,
-    ...extractedStyledProps,
+    ...rest,
   });
 </script>
 

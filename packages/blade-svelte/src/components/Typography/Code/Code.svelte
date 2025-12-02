@@ -4,8 +4,7 @@
   import type { CodeProps } from './types';
   import { getCodeFontSizeAndLineHeight, getCodeColor } from './utils';
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
-  import { getStyledProps } from '../../../utils/styledProps';
-  import { getStyledPropsClasses, combineStyleStrings } from '../../../utils/styledProps';
+  import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
 
   let {
     children,
@@ -37,9 +36,9 @@
   const { fontSize, lineHeight } = $derived(getCodeFontSizeAndLineHeight(finalSize));
   const codeTextColor = $derived(getCodeColor({ isHighlighted: finalIsHighlighted, color }));
 
-  // Extract styled props
-  const extractedStyledProps = $derived(getStyledProps(styledProps));
-  const styledPropsClasses = $derived(getStyledPropsClasses(extractedStyledProps));
+  // Extract styled props and convert to classes
+  // This ensures everything is class-based with no inline styles
+  const styledPropsClasses = $derived(getStyledPropsClasses(styledProps));
 
   // Meta attributes
   const metaAttrs = metaAttribute({
@@ -47,27 +46,22 @@
     testID,
   });
 
-  // Combine classes
+  // Combine classes - everything is class-based, no inline styles
+  // styledPropsClasses.inlineStyles is intentionally ignored to maintain pure class-based styling
   const containerClasses = $derived(() => {
     const classes = ['code-container'];
     if (finalIsHighlighted) {
       classes.push('code-container--highlighted');
     }
     if (styledPropsClasses.classes) {
-      classes.push(styledPropsClasses.classes);
+      classes.push(...styledPropsClasses.classes);
     }
     return classes.filter(Boolean).join(' ');
-  });
-
-  // Combine inline styles
-  const containerStyles = $derived(() => {
-    return combineStyleStrings(styledPropsClasses.inlineStyles);
   });
 </script>
 
 <span
   class={containerClasses()}
-  style={containerStyles()}
   {...metaAttrs}
 >
   <BaseText

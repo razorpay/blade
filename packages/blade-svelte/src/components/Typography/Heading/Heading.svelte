@@ -2,7 +2,6 @@
   import BaseText from '../BaseText/BaseText.svelte';
   import type { HeadingProps } from './types';
   import { getHeadingProps, validAsValues } from './utils';
-  import { getStyledProps } from '../../../utils/styledProps';
 
   let {
     as,
@@ -15,7 +14,7 @@
     textDecorationLine,
     wordBreak,
     textTransform,
-    ...styledProps
+    ...rest
   }: HeadingProps = $props();
 
   // Set defaults
@@ -45,17 +44,15 @@
     }),
   );
 
-  // Extract styled props
-  const extractedStyledProps = $derived(getStyledProps(styledProps));
-
-  // Merge props: baseTextProps first, then direct props, then styled props (matching React implementation)
+  // Merge props: baseTextProps first, then direct props, then rest (styled props)
+  // BaseText will handle styled props extraction via getStyledPropsClasses(rest)
   const mergedProps = $derived({
     ...baseTextProps,
     textAlign,
     textDecorationLine,
     textTransform,
     wordBreak,
-    ...extractedStyledProps,
+    ...rest,
   });
 </script>
 
