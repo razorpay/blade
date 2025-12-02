@@ -1,15 +1,15 @@
+import { join, basename } from 'path';
+import { existsSync } from 'fs';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
+  CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
-  CHECK_CURSOR_RULES_DESCRIPTION,
-  CURSOR_RULES_VERSION,
 } from '../utils/tokens.js';
-import { getBladeDocsList } from '../utils/generalUtils.js';
+import { hasOutDatedRules, getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
-import { isCursorRuleFileMissing, areCursorRulesOutdated } from '../utils/cursorRulesUtils.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeComponentsList = getBladeDocsList('components');
@@ -29,15 +29,11 @@ const getBladeComponentDocsToolSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-  clientName: z.enum(['claude', 'cursor', 'unknown']).default('unknown'),
-  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
 };
 
 const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDocsToolSchema> = ({
   componentsList,
   currentProjectRootDirectory,
-  clientName,
-  cursorRuleVersion,
 }) => {
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
@@ -49,17 +45,19 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
     });
   }
 
-  if (isCursorRuleFileMissing(cursorRuleVersion, clientName)) {
+  const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
+
+  if (!existsSync(ruleFilePath)) {
     return handleError({
       toolName: getBladeComponentDocsToolName,
       mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
     });
   }
 
-  if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
+  if (hasOutDatedRules(ruleFilePath)) {
     return handleError({
       toolName: getBladeComponentDocsToolName,
-      mcpErrorMessage: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
+      mcpErrorMessage: `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
     });
   }
 
@@ -75,8 +73,7 @@ const getBladeComponentDocsToolCallback: ToolCallback<typeof getBladeComponentDo
       properties: {
         toolName: getBladeComponentDocsToolName,
         componentsList,
-        currentProjectRootDirectory,
-        clientName,
+        rootDirectoryName: basename(currentProjectRootDirectory),
       },
     });
 
