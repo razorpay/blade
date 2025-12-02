@@ -54,12 +54,19 @@ import {
   publishLinesOfCodeMetricToolSchema,
   publishLinesOfCodeMetricToolCallback,
 } from './tools/publishLinesOfCodeMetric.js';
+import { setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
 
-export const createServer = (): McpServer => {
+export const createServer = ({
+  transportType = 'stdio',
+}: {
+  transportType?: 'stdio' | 'http';
+}): McpServer => {
   const server = new McpServer({
     name: 'Blade MCP',
     version: getPackageJSONVersion(),
   });
+
+  setMcpSseAnalyticsContext({ protocol: transportType });
 
   server.tool(hiBladeToolName, hiBladeToolDescription, hiBladeToolSchema, hiBladeToolCallback);
 
@@ -80,8 +87,8 @@ export const createServer = (): McpServer => {
   server.tool(
     getBladeComponentDocsToolName,
     getBladeComponentDocsToolDescription,
-    getBladeComponentDocsToolSchema,
-    getBladeComponentDocsToolCallback,
+    getBladeComponentDocsToolSchema(transportType),
+    getBladeComponentDocsToolCallback(transportType),
   );
 
   server.tool(
