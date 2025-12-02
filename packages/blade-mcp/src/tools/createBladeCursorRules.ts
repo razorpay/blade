@@ -10,6 +10,7 @@ import {
 
 import { hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+import { createCursorRuleCreationInstructions } from '../utils/cursorRule.js';
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 
@@ -26,47 +27,49 @@ const createBladeCursorRulesStdioSchema = {
 };
 
 // Schema for HTTP transport
+// Note: clientName and cursorRuleVersion are not needed for creation since we always create with the current version
 const createBladeCursorRulesHttpSchema = {
   currentProjectRootDirectory: z
     .string()
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-  clientName: z
-    .enum(['claude', 'cursor', 'unknown'])
-    .default('unknown')
-    .describe(
-      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
-    ),
-  cursorRuleVersion: z
-    .string()
-    .describe('The version of cursor rules. Not used for this tool but required for consistency.'),
 };
 
 // Core business logic function
 const createBladeCursorRulesCore = ({
   currentProjectRootDirectory,
   isHttpTransport = false,
-  clientName = 'unknown',
-  cursorRuleVersion = '0',
 }: {
   currentProjectRootDirectory: string;
   isHttpTransport?: boolean;
-  clientName?: 'claude' | 'cursor' | 'unknown';
-  cursorRuleVersion?: string;
 }): {
   isError?: true;
   content: Array<{ type: 'text'; text: string }>;
 } => {
   try {
-    // This tool writes files to the filesystem, which is only valid when called from stdio (Cursor)
-    // Throw an error if called from HTTP transport
+    // For HTTP transport, return instructions instead of creating the file directly
     if (isHttpTransport) {
-      return handleError({
-        toolName: createBladeCursorRulesToolName,
-        mcpErrorMessage:
-          'This tool cannot be called from HTTP transport. It requires direct filesystem access and should only be called from Cursor IDE via stdio transport.',
+      sendAnalytics({
+        eventName: analyticsToolCallEventName,
+        properties: {
+          toolName: createBladeCursorRulesToolName,
+          cursorRulesVersion: CURSOR_RULES_VERSION,
+          rootDirectoryName: basename(currentProjectRootDirectory),
+        },
       });
+
+      return {
+        content: [
+          {
+            type: 'text',
+            text: createCursorRuleCreationInstructions({
+              currentProjectRootDirectory,
+              CURSOR_RULES_VERSION,
+            }),
+          },
+        ],
+      };
     }
 
     const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
@@ -100,8 +103,6 @@ const createBladeCursorRulesCore = ({
         toolName: createBladeCursorRulesToolName,
         cursorRulesVersion: CURSOR_RULES_VERSION,
         rootDirectoryName: basename(currentProjectRootDirectory),
-        clientName,
-        cursorRuleVersion,
       },
     });
 
@@ -128,22 +129,16 @@ const createBladeCursorRulesStdioCallback: ToolCallback<
   return createBladeCursorRulesCore({
     currentProjectRootDirectory,
     isHttpTransport: false,
-    clientName: 'unknown',
-    cursorRuleVersion: '0',
   });
 };
 
 // Callback for HTTP transport
 const createBladeCursorRulesHttpCallback: ToolCallback<typeof createBladeCursorRulesHttpSchema> = ({
   currentProjectRootDirectory,
-  clientName,
-  cursorRuleVersion,
 }) => {
   return createBladeCursorRulesCore({
     currentProjectRootDirectory,
     isHttpTransport: true,
-    clientName,
-    cursorRuleVersion,
   });
 };
 

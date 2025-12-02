@@ -165,9 +165,6 @@ const getBladeComponentDocsHttpCallback: ToolCallback<typeof getBladeComponentDo
   });
 };
 
-// getBladeComponentDocsStdioSchema,
-//   getBladeComponentDocsHttpSchema
-
 const getBladeComponentDocsToolSchema = (
   transportType: 'stdio' | 'http',
 ): typeof getBladeComponentDocsStdioSchema | typeof getBladeComponentDocsHttpSchema => {
