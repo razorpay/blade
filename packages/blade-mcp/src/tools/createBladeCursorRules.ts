@@ -10,25 +10,14 @@ import {
 
 import { hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
-import { createCursorRuleCreationInstructions } from '../utils/cursorRule.js';
+import { cursorRuleCreationInstructions } from '../utils/cursorRule.js';
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 
 const createBladeCursorRulesToolDescription =
-  'Creates the cursor rules for blade to help with code generation. Call this before get_blade_docs and while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
-
+  'Creates the cursor rules for blade to help with code generation. Returns the bash script that should be executed. while creating a new blade project (only when using cursor and when the frontend-blade-rules.mdc rule does not already exist).';
 // Schema for stdio transport
-const createBladeCursorRulesStdioSchema = {
-  currentProjectRootDirectory: z
-    .string()
-    .describe(
-      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
-    ),
-};
-
-// Schema for HTTP transport
-// Note: clientName and cursorRuleVersion are not needed for creation since we always create with the current version
-const createBladeCursorRulesHttpSchema = {
+const createBladeCursorRulesToolSchema = {
   currentProjectRootDirectory: z
     .string()
     .describe(
@@ -63,7 +52,7 @@ const createBladeCursorRulesCore = ({
         content: [
           {
             type: 'text',
-            text: createCursorRuleCreationInstructions({
+            text: cursorRuleCreationInstructions({
               currentProjectRootDirectory,
               CURSOR_RULES_VERSION,
             }),
@@ -124,7 +113,7 @@ const createBladeCursorRulesCore = ({
 
 // Callback for stdio transport
 const createBladeCursorRulesStdioCallback: ToolCallback<
-  typeof createBladeCursorRulesStdioSchema
+  typeof createBladeCursorRulesToolSchema
 > = ({ currentProjectRootDirectory }) => {
   return createBladeCursorRulesCore({
     currentProjectRootDirectory,
@@ -133,22 +122,13 @@ const createBladeCursorRulesStdioCallback: ToolCallback<
 };
 
 // Callback for HTTP transport
-const createBladeCursorRulesHttpCallback: ToolCallback<typeof createBladeCursorRulesHttpSchema> = ({
+const createBladeCursorRulesHttpCallback: ToolCallback<typeof createBladeCursorRulesToolSchema> = ({
   currentProjectRootDirectory,
 }) => {
   return createBladeCursorRulesCore({
     currentProjectRootDirectory,
     isHttpTransport: true,
   });
-};
-
-const createBladeCursorRulesToolSchema = (
-  transportType: 'stdio' | 'http',
-): typeof createBladeCursorRulesStdioSchema | typeof createBladeCursorRulesHttpSchema => {
-  if (transportType === 'stdio') {
-    return createBladeCursorRulesStdioSchema;
-  }
-  return createBladeCursorRulesHttpSchema;
 };
 
 const createBladeCursorRulesToolCallback = (

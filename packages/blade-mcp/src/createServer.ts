@@ -80,7 +80,7 @@ export const createServer = ({
   server.tool(
     createBladeCursorRulesToolName,
     createBladeCursorRulesToolDescription,
-    createBladeCursorRulesToolSchema(transportType),
+    createBladeCursorRulesToolSchema,
     createBladeCursorRulesToolCallback(transportType),
   );
 

@@ -9,7 +9,7 @@ const bashScriptContent = `
   curl -sSL "$URL" -o "$FILE_PATH"
   `;
 
-const createCursorRuleCreationInstructions = ({
+const cursorRuleCreationInstructions = ({
   currentProjectRootDirectory,
   CURSOR_RULES_VERSION,
 }: {
@@ -36,4 +36,4 @@ ${bashScriptContent}
 
 **Working Directory:** \`${currentProjectRootDirectory}\`
 `;
-export { bashScriptContent, createCursorRuleCreationInstructions };
+export { bashScriptContent, cursorRuleCreationInstructions };
