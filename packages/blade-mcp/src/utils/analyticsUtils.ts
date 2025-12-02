@@ -23,6 +23,10 @@ const setMcpSseAnalyticsContext = ({ protocol }: MCPSSeAnalyticsContext): void =
   };
 };
 
+const getMcpSseAnalyticsContext = (): MCPSSeAnalyticsContext => {
+  return mcpSseAnalyticsContext;
+};
+
 const handleError = ({
   toolName,
   errorObject,
@@ -171,4 +175,4 @@ const sendAnalytics = ({
   }
 };
 
-export { handleError, sendAnalytics, setMcpSseAnalyticsContext };
+export { handleError, sendAnalytics, setMcpSseAnalyticsContext, getMcpSseAnalyticsContext };

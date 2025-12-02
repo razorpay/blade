@@ -9,7 +9,7 @@ import {
 } from '../utils/tokens.js';
 
 import { getBladeDocsList, hasOutDatedRules } from '../utils/generalUtils.js';
-import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+import { handleError, sendAnalytics, getMcpSseAnalyticsContext } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 
 const bladeGeneralDocsList = getBladeDocsList('general');
@@ -53,20 +53,24 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
     });
   }
 
-  const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
+  // Skip cursor rule checks if analytics context is set to http
+  const analyticsContext = getMcpSseAnalyticsContext();
+  if (analyticsContext.protocol !== 'http') {
+    const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
 
-  if (!existsSync(ruleFilePath)) {
-    return handleError({
-      toolName: getBladeGeneralDocsToolName,
-      mcpErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
-    });
-  }
+    if (!existsSync(ruleFilePath)) {
+      return handleError({
+        toolName: getBladeGeneralDocsToolName,
+        mcpErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
+      });
+    }
 
-  if (hasOutDatedRules(ruleFilePath)) {
-    return handleError({
-      toolName: getBladeGeneralDocsToolName,
-      mcpErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
-    });
+    if (hasOutDatedRules(ruleFilePath)) {
+      return handleError({
+        toolName: getBladeGeneralDocsToolName,
+        mcpErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
+      });
+    }
   }
 
   try {
