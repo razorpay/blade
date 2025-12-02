@@ -9,7 +9,7 @@ import {
 } from '../utils/tokens.js';
 
 import { hasOutDatedRules } from '../utils/generalUtils.js';
-import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+import { handleError, sendAnalytics, getMcpSseAnalyticsContext } from '../utils/analyticsUtils.js';
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 
@@ -28,6 +28,17 @@ const createBladeCursorRulesToolCallback: ToolCallback<typeof createBladeCursorR
   currentProjectRootDirectory,
 }) => {
   try {
+    // This tool writes files to the filesystem, which is only valid when called from stdio (Cursor)
+    // Throw an error if called from HTTP transport
+    const analyticsContext = getMcpSseAnalyticsContext();
+    if (analyticsContext.protocol === 'http') {
+      return handleError({
+        toolName: createBladeCursorRulesToolName,
+        mcpErrorMessage:
+          'This tool cannot be called from HTTP transport. It requires direct filesystem access and should only be called from Cursor IDE via stdio transport.',
+      });
+    }
+
     const ruleFileDir = join(currentProjectRootDirectory, '.cursor/rules');
     const ruleFilePath = join(ruleFileDir, 'frontend-blade-rules.mdc');
 
