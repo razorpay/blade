@@ -10,6 +10,7 @@ import {
 import { hasOutDatedRules, getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
+import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeComponentsList = getBladeDocsList('components');
@@ -43,7 +44,7 @@ const getBladeComponentDocsHttpSchema = {
     .enum(['claude', 'cursor', 'unknown'])
     .default('unknown')
     .describe(
-      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
+      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown".',
     ),
   cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
   currentProjectRootDirectory: z
@@ -96,6 +97,17 @@ const getBladeComponentDocsCore = ({
         toolName: getBladeComponentDocsToolName,
         mcpErrorMessage: `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
       });
+    }
+  }
+
+  if (skipLocalCursorRuleChecks && currentProjectRootDirectory) {
+    const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
+      cursorRuleVersion,
+      clientName,
+      currentProjectRootDirectory,
+    );
+    if (createOrUpdateCursorRule) {
+      return createOrUpdateCursorRule;
     }
   }
 

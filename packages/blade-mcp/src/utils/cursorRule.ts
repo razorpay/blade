@@ -11,10 +11,10 @@ const bashScriptContent = `
 
 const cursorRuleCreationInstructions = ({
   currentProjectRootDirectory,
-  CURSOR_RULES_VERSION,
+  cursorRulesVersion,
 }: {
   currentProjectRootDirectory: string;
-  CURSOR_RULES_VERSION: string;
+  cursorRulesVersion: string;
 }): string => `
 **Instructions:**
 
@@ -24,7 +24,7 @@ const cursorRuleCreationInstructions = ({
 
 3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
 
-4. After file is create replate \`rules_version: <!-- dynamic_version --> \` in file with \`rules_version: ${CURSOR_RULES_VERSION}\`
+4. After file is create replate \`rules_version: <!-- dynamic_version --> \` in file with \`rules_version: ${cursorRulesVersion}\`
 
 Run the following bash script to create cursor rules:
 

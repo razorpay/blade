@@ -54,7 +54,7 @@ const createBladeCursorRulesCore = ({
             type: 'text',
             text: cursorRuleCreationInstructions({
               currentProjectRootDirectory,
-              CURSOR_RULES_VERSION,
+              cursorRulesVersion: CURSOR_RULES_VERSION,
             }),
           },
         ],
