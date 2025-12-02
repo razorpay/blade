@@ -6,12 +6,14 @@ import {
   CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
   PATTERNS_KNOWLEDGEBASE_DIRECTORY,
+  CHECK_CURSOR_RULES_DESCRIPTION,
 } from '../utils/tokens.js';
 
 import { getBladeDocsList, hasOutDatedRules } from '../utils/generalUtils.js';
-import { handleError, sendAnalytics, getMcpSseAnalyticsContext } from '../utils/analyticsUtils.js';
+import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
+import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladePatternsList = getBladeDocsList('patterns');
 const whichPatternToUseGuide = readFileSync(
@@ -23,7 +25,8 @@ const getBladePatternDocsToolName = 'get_blade_pattern_docs';
 
 const getBladePatternDocsToolDescription = `Fetch the Blade Design System pattern docs. Use this to get information about design patterns, best practices, and implementation guidelines.`;
 
-const getBladePatternDocsToolSchema = {
+// Schema for stdio transport
+const getBladePatternDocsStdioSchema = {
   patternsList: z
     .string()
     .describe(
@@ -38,10 +41,46 @@ const getBladePatternDocsToolSchema = {
     ),
 };
 
-const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsToolSchema> = ({
+// Schema for HTTP transport
+const getBladePatternDocsHttpSchema = {
+  patternsList: z
+    .string()
+    .describe(
+      `Comma separated list of blade pattern names. E.g. "ListView, DetailedView". Possible values: ${bladePatternsList.join(
+        ', ',
+      )}. Here is guide on how to decide which pattern to use: ${whichPatternToUseGuide}`,
+    ),
+  clientName: z
+    .enum(['claude', 'cursor', 'unknown'])
+    .default('unknown')
+    .describe(
+      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
+    ),
+  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
+  currentProjectRootDirectory: z
+    .string()
+    .describe(
+      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
+    ),
+};
+
+// Core business logic function
+const getBladePatternDocsCore = ({
   patternsList,
   currentProjectRootDirectory,
-}) => {
+  skipLocalCursorRuleChecks = false,
+  cursorRuleVersion,
+  clientName,
+}: {
+  patternsList: string;
+  currentProjectRootDirectory?: string;
+  skipLocalCursorRuleChecks?: boolean;
+  cursorRuleVersion: string;
+  clientName: 'claude' | 'cursor' | 'unknown';
+}): {
+  isError?: true;
+  content: Array<{ type: 'text'; text: string }>;
+} => {
   const components = patternsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladePatternsList.includes(comp));
   if (invalidComponents.length > 0) {
@@ -55,22 +94,21 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
     });
   }
 
-  // Skip cursor rule checks if analytics context is set to http
-  const analyticsContext = getMcpSseAnalyticsContext();
-  if (analyticsContext.protocol !== 'http') {
+  // Skip cursor rule checks if skipLocalCursorRuleChecks is true (for HTTP transport)
+  if (!skipLocalCursorRuleChecks && currentProjectRootDirectory) {
     const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
 
     if (!existsSync(ruleFilePath)) {
       return handleError({
         toolName: getBladePatternDocsToolName,
-        mcpErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
+        mcpErrorMessage: `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`,
       });
     }
 
     if (hasOutDatedRules(ruleFilePath)) {
       return handleError({
         toolName: getBladePatternDocsToolName,
-        mcpErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
+        mcpErrorMessage: `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
       });
     }
   }
@@ -87,7 +125,11 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
       properties: {
         toolName: getBladePatternDocsToolName,
         patternsList,
-        rootDirectoryName: basename(currentProjectRootDirectory),
+        rootDirectoryName: currentProjectRootDirectory
+          ? basename(currentProjectRootDirectory)
+          : undefined,
+        cursorRuleVersion,
+        clientName,
       },
     });
 
@@ -105,6 +147,54 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
       errorObject: error,
     });
   }
+};
+
+// Callback for stdio transport
+const getBladePatternDocsStdioCallback: ToolCallback<typeof getBladePatternDocsStdioSchema> = ({
+  patternsList,
+  currentProjectRootDirectory,
+}) => {
+  return getBladePatternDocsCore({
+    patternsList,
+    currentProjectRootDirectory,
+    skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
+    cursorRuleVersion: '0',
+    clientName: 'unknown',
+  });
+};
+
+// Callback for HTTP transport
+const getBladePatternDocsHttpCallback: ToolCallback<typeof getBladePatternDocsHttpSchema> = ({
+  patternsList,
+  cursorRuleVersion,
+  clientName,
+  currentProjectRootDirectory,
+}) => {
+  return getBladePatternDocsCore({
+    patternsList,
+    currentProjectRootDirectory,
+    skipLocalCursorRuleChecks: true, // Skip cursor rule checks for HTTP
+    cursorRuleVersion,
+    clientName,
+  });
+};
+
+const getBladePatternDocsToolSchema = (
+  transportType: 'stdio' | 'http',
+): typeof getBladePatternDocsStdioSchema | typeof getBladePatternDocsHttpSchema => {
+  if (transportType === 'stdio') {
+    return getBladePatternDocsStdioSchema;
+  }
+  return getBladePatternDocsHttpSchema;
+};
+
+const getBladePatternDocsToolCallback = (
+  transportType: 'stdio' | 'http',
+): typeof getBladePatternDocsStdioCallback | typeof getBladePatternDocsHttpCallback => {
+  if (transportType === 'stdio') {
+    return getBladePatternDocsStdioCallback;
+  }
+  return getBladePatternDocsHttpCallback;
 };
 
 export {

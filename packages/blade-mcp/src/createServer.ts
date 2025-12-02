@@ -80,8 +80,8 @@ export const createServer = ({
   server.tool(
     createBladeCursorRulesToolName,
     createBladeCursorRulesToolDescription,
-    createBladeCursorRulesToolSchema,
-    createBladeCursorRulesToolCallback,
+    createBladeCursorRulesToolSchema(transportType),
+    createBladeCursorRulesToolCallback(transportType),
   );
 
   server.tool(
@@ -94,15 +94,15 @@ export const createServer = ({
   server.tool(
     getBladePatternDocsToolName,
     getBladePatternDocsToolDescription,
-    getBladePatternDocsToolSchema,
-    getBladePatternDocsToolCallback,
+    getBladePatternDocsToolSchema(transportType),
+    getBladePatternDocsToolCallback(transportType),
   );
 
   server.tool(
     getBladeGeneralDocsToolName,
     getBladeGeneralDocsToolDescription,
-    getBladeGeneralDocsToolSchema,
-    getBladeGeneralDocsToolCallback,
+    getBladeGeneralDocsToolSchema(transportType),
+    getBladeGeneralDocsToolCallback(transportType),
   );
 
   server.tool(
