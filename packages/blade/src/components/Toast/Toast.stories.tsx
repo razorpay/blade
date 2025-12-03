@@ -264,7 +264,6 @@ const ZIndexTemplate: StoryFn<ToastProps> = () => {
     toast.show({
       content: 'This toast has z-index 3000 and appears above the modal (z-index 2000)',
       color: 'positive',
-      zIndex: 3000,
       duration: 10000,
       action: {
         text: 'Dismiss',
@@ -314,7 +313,7 @@ const ZIndexTemplate: StoryFn<ToastProps> = () => {
           </Button>
         </ModalFooter>
       </Modal>
-      <ToastContainer />
+      <ToastContainer zIndex={3000} />
     </Box>
   );
 };

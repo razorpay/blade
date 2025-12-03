@@ -236,31 +236,24 @@ export const ToastZIndex: StoryFn<typeof Toast> = (): React.ReactElement => {
     <Box>
       <Button
         onClick={() => {
-          toast.show({ content: 'Toast with zIndex 3000', zIndex: 3000, autoDismiss: false });
+          toast.show({ content: 'Toast 1', autoDismiss: false });
         }}
       >
-        Show zIndex 3000
+        Show Toast 1
       </Button>
       <Button
         onClick={() => {
-          toast.show({ content: 'Toast with zIndex 5000', zIndex: 5000, autoDismiss: false });
+          toast.show({ content: 'Toast 2', autoDismiss: false });
         }}
       >
-        Show zIndex 5000
+        Show Toast 2
       </Button>
       <Button
         onClick={() => {
-          toast.show({ content: 'Toast with zIndex 4000', zIndex: 4000, autoDismiss: false });
+          toast.show({ content: 'Toast 3', autoDismiss: false });
         }}
       >
-        Show zIndex 4000
-      </Button>
-      <Button
-        onClick={() => {
-          toast.show({ content: 'Toast without zIndex', autoDismiss: false });
-        }}
-      >
-        Show No zIndex
+        Show Toast 3
       </Button>
       <Button
         onClick={() => {
@@ -269,7 +262,7 @@ export const ToastZIndex: StoryFn<typeof Toast> = (): React.ReactElement => {
       >
         Dismiss All
       </Button>
-      <ToastContainer />
+      <ToastContainer zIndex={3000} />
     </Box>
   );
 };
@@ -278,62 +271,50 @@ ToastZIndex.play = async () => {
   const { getByRole, queryByText } = within(document.body);
   await sleep(1000);
 
-  const button3000 = getByRole('button', { name: 'Show zIndex 3000' });
-  const button5000 = getByRole('button', { name: 'Show zIndex 5000' });
-  const button4000 = getByRole('button', { name: 'Show zIndex 4000' });
-  const buttonNoZIndex = getByRole('button', { name: 'Show No zIndex' });
+  const button1 = getByRole('button', { name: 'Show Toast 1' });
+  const button2 = getByRole('button', { name: 'Show Toast 2' });
+  const button3 = getByRole('button', { name: 'Show Toast 3' });
   const dismissAllButton = getByRole('button', { name: 'Dismiss All' });
 
   // Get the toast container element
   const toastContainerElement = document.querySelector('[data-blade-component="toast-container"]')!;
 
-  // Initially, no toasts, should use default TOAST_Z_INDEX (2000)
+  // Container should use the provided zIndex (3000) even when no toasts are shown
   await expect(toastContainerElement).toBeInTheDocument();
   let computedStyle = window.getComputedStyle(toastContainerElement);
-  void expect(parseInt(computedStyle.zIndex, 10)).toBe(2000);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
 
-  // Show toast with zIndex 3000
-  await userEvent.click(button3000);
+  // Show toast 1 - container zIndex should remain 3000
+  await userEvent.click(button1);
   await sleep(400);
-  await expect(queryByText('Toast with zIndex 3000')).toBeVisible();
+  await expect(queryByText('Toast 1')).toBeVisible();
   computedStyle = window.getComputedStyle(toastContainerElement);
   void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
 
-  // Show toast with zIndex 5000 (higher)
-  await userEvent.click(button5000);
+  // Show toast 2 - container zIndex should still be 3000
+  await userEvent.click(button2);
   await sleep(400);
-  await expect(queryByText('Toast with zIndex 5000')).toBeVisible();
+  await expect(queryByText('Toast 2')).toBeVisible();
   computedStyle = window.getComputedStyle(toastContainerElement);
-  // Should use maximum zIndex (5000)
-  void expect(parseInt(computedStyle.zIndex, 10)).toBe(5000);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
 
-  // Show toast with zIndex 4000 (lower than max)
-  await userEvent.click(button4000);
+  // Show toast 3 - container zIndex should still be 3000
+  await userEvent.click(button3);
   await sleep(400);
-  await expect(queryByText('Toast with zIndex 4000')).toBeVisible();
+  await expect(queryByText('Toast 3')).toBeVisible();
   computedStyle = window.getComputedStyle(toastContainerElement);
-  // Should still use maximum zIndex (5000)
-  void expect(parseInt(computedStyle.zIndex, 10)).toBe(5000);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
 
-  // Show toast without zIndex (undefined)
-  await userEvent.click(buttonNoZIndex);
-  await sleep(400);
-  await expect(queryByText('Toast without zIndex')).toBeVisible();
-  computedStyle = window.getComputedStyle(toastContainerElement);
-  // Should filter out undefined and still use maximum of defined values (5000)
-  void expect(parseInt(computedStyle.zIndex, 10)).toBe(5000);
-
-  // Dismiss all toasts
+  // Dismiss all toasts - container zIndex should still be 3000
   await userEvent.click(dismissAllButton);
   await sleep(400);
-  await expect(queryByText('Toast with zIndex 3000')).not.toBeVisible();
-  await expect(queryByText('Toast with zIndex 5000')).not.toBeVisible();
-  await expect(queryByText('Toast with zIndex 4000')).not.toBeVisible();
-  await expect(queryByText('Toast without zIndex')).not.toBeVisible();
+  await expect(queryByText('Toast 1')).not.toBeVisible();
+  await expect(queryByText('Toast 2')).not.toBeVisible();
+  await expect(queryByText('Toast 3')).not.toBeVisible();
 
-  // After dismissing all, should fall back to default TOAST_Z_INDEX (2000)
+  // Container zIndex remains 3000 even after dismissing all toasts
   computedStyle = window.getComputedStyle(toastContainerElement);
-  void expect(parseInt(computedStyle.zIndex, 10)).toBe(2000);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
 };
 
 export default {

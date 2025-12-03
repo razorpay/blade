@@ -68,11 +68,6 @@ type ToastProps = {
    * This can be used to programatically update toasts by providing an id
    */
   id?: string;
-
-  /**
-   * Custom z-index value for the toast
-   */
-  zIndex?: number;
 };
 
 export type { ToastProps };
