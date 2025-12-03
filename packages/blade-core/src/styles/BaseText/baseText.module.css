@@ -1,135 +1,9 @@
 .base {
   margin: 0;
   padding: 0;
-  /* Default color - can be overridden by color classes */
-  color: var(--surface-text-gray-normal);
+  /* Default color is applied via color utility class when no color prop is provided */
   letter-spacing: var(--letter-spacing-100);
 }
-
-/* Current color special case */
-.color-current {
-  color: currentColor;
-}
-
-/* Color classes - generated dynamically from color tokens */
-/* Pattern: color-{token-path} where dots are replaced with hyphens */
-/* Example: surface.text.gray.normal -> color-surface-text-gray-normal */
-
-/* Surface Text Colors */
-.color-surface-text-gray-normal { color: var(--surface-text-gray-normal); }
-.color-surface-text-gray-subtle { color: var(--surface-text-gray-subtle); }
-.color-surface-text-gray-muted { color: var(--surface-text-gray-muted); }
-.color-surface-text-gray-disabled { color: var(--surface-text-gray-disabled); }
-
-.color-surface-text-primary-normal { color: var(--surface-text-primary-normal); }
-
-.color-surface-text-on-sea-subtle { color: var(--surface-text-on-sea-subtle); }
-.color-surface-text-on-sea-intense { color: var(--surface-text-on-sea-intense); }
-
-.color-surface-text-on-cloud-subtle { color: var(--surface-text-on-cloud-subtle); }
-.color-surface-text-on-cloud-intense { color: var(--surface-text-on-cloud-intense); }
-
-.color-surface-text-static-white-normal { color: var(--surface-text-static-white-normal); }
-.color-surface-text-static-white-subtle { color: var(--surface-text-static-white-subtle); }
-.color-surface-text-static-white-muted { color: var(--surface-text-static-white-muted); }
-.color-surface-text-static-white-disabled { color: var(--surface-text-static-white-disabled); }
-
-.color-surface-text-static-black-normal { color: var(--surface-text-static-black-normal); }
-.color-surface-text-static-black-subtle { color: var(--surface-text-static-black-subtle); }
-.color-surface-text-static-black-muted { color: var(--surface-text-static-black-muted); }
-.color-surface-text-static-black-disabled { color: var(--surface-text-static-black-disabled); }
-
-.color-surface-text-positive-normal { color: var(--surface-text-positive-normal); }
-.color-surface-text-positive-subtle { color: var(--surface-text-positive-subtle); }
-.color-surface-text-positive-muted { color: var(--surface-text-positive-muted); }
-.color-surface-text-positive-disabled { color: var(--surface-text-positive-disabled); }
-
-.color-surface-text-negative-normal { color: var(--surface-text-negative-normal); }
-.color-surface-text-negative-subtle { color: var(--surface-text-negative-subtle); }
-.color-surface-text-negative-muted { color: var(--surface-text-negative-muted); }
-.color-surface-text-negative-disabled { color: var(--surface-text-negative-disabled); }
-
-.color-surface-text-notice-normal { color: var(--surface-text-notice-normal); }
-.color-surface-text-notice-subtle { color: var(--surface-text-notice-subtle); }
-.color-surface-text-notice-muted { color: var(--surface-text-notice-muted); }
-.color-surface-text-notice-disabled { color: var(--surface-text-notice-disabled); }
-
-.color-surface-text-information-normal { color: var(--surface-text-information-normal); }
-.color-surface-text-information-subtle { color: var(--surface-text-information-subtle); }
-.color-surface-text-information-muted { color: var(--surface-text-information-muted); }
-.color-surface-text-information-disabled { color: var(--surface-text-information-disabled); }
-
-.color-surface-text-neutral-normal { color: var(--surface-text-neutral-normal); }
-.color-surface-text-neutral-subtle { color: var(--surface-text-neutral-subtle); }
-.color-surface-text-neutral-muted { color: var(--surface-text-neutral-muted); }
-.color-surface-text-neutral-disabled { color: var(--surface-text-neutral-disabled); }
-
-/* Interactive Text Colors */
-.color-interactive-text-primary-normal { color: var(--interactive-text-primary-normal); }
-.color-interactive-text-primary-subtle { color: var(--interactive-text-primary-subtle); }
-.color-interactive-text-primary-muted { color: var(--interactive-text-primary-muted); }
-.color-interactive-text-primary-disabled { color: var(--interactive-text-primary-disabled); }
-
-.color-interactive-text-on-primary-normal { color: var(--interactive-text-on-primary-normal); }
-.color-interactive-text-on-primary-subtle { color: var(--interactive-text-on-primary-subtle); }
-.color-interactive-text-on-primary-muted { color: var(--interactive-text-on-primary-muted); }
-.color-interactive-text-on-primary-disabled { color: var(--interactive-text-on-primary-disabled); }
-
-.color-interactive-text-positive-normal { color: var(--interactive-text-positive-normal); }
-.color-interactive-text-positive-subtle { color: var(--interactive-text-positive-subtle); }
-.color-interactive-text-positive-muted { color: var(--interactive-text-positive-muted); }
-.color-interactive-text-positive-disabled { color: var(--interactive-text-positive-disabled); }
-
-.color-interactive-text-negative-normal { color: var(--interactive-text-negative-normal); }
-.color-interactive-text-negative-subtle { color: var(--interactive-text-negative-subtle); }
-.color-interactive-text-negative-muted { color: var(--interactive-text-negative-muted); }
-.color-interactive-text-negative-disabled { color: var(--interactive-text-negative-disabled); }
-
-.color-interactive-text-notice-normal { color: var(--interactive-text-notice-normal); }
-.color-interactive-text-notice-subtle { color: var(--interactive-text-notice-subtle); }
-.color-interactive-text-notice-muted { color: var(--interactive-text-notice-muted); }
-.color-interactive-text-notice-disabled { color: var(--interactive-text-notice-disabled); }
-
-.color-interactive-text-information-normal { color: var(--interactive-text-information-normal); }
-.color-interactive-text-information-subtle { color: var(--interactive-text-information-subtle); }
-.color-interactive-text-information-muted { color: var(--interactive-text-information-muted); }
-.color-interactive-text-information-disabled { color: var(--interactive-text-information-disabled); }
-
-.color-interactive-text-neutral-normal { color: var(--interactive-text-neutral-normal); }
-.color-interactive-text-neutral-subtle { color: var(--interactive-text-neutral-subtle); }
-.color-interactive-text-neutral-muted { color: var(--interactive-text-neutral-muted); }
-.color-interactive-text-neutral-disabled { color: var(--interactive-text-neutral-disabled); }
-
-.color-interactive-text-gray-normal { color: var(--interactive-text-gray-normal); }
-.color-interactive-text-gray-subtle { color: var(--interactive-text-gray-subtle); }
-.color-interactive-text-gray-muted { color: var(--interactive-text-gray-muted); }
-.color-interactive-text-gray-disabled { color: var(--interactive-text-gray-disabled); }
-
-.color-interactive-text-static-white-normal { color: var(--interactive-text-static-white-normal); }
-.color-interactive-text-static-white-subtle { color: var(--interactive-text-static-white-subtle); }
-.color-interactive-text-static-white-muted { color: var(--interactive-text-static-white-muted); }
-.color-interactive-text-static-white-disabled { color: var(--interactive-text-static-white-disabled); }
-
-.color-interactive-text-static-black-normal { color: var(--interactive-text-static-black-normal); }
-.color-interactive-text-static-black-subtle { color: var(--interactive-text-static-black-subtle); }
-.color-interactive-text-static-black-muted { color: var(--interactive-text-static-black-muted); }
-.color-interactive-text-static-black-disabled { color: var(--interactive-text-static-black-disabled); }
-
-/* Feedback Text Colors */
-.color-feedback-text-positive-subtle { color: var(--feedback-text-positive-subtle); }
-.color-feedback-text-positive-intense { color: var(--feedback-text-positive-intense); }
-
-.color-feedback-text-negative-subtle { color: var(--feedback-text-negative-subtle); }
-.color-feedback-text-negative-intense { color: var(--feedback-text-negative-intense); }
-
-.color-feedback-text-notice-subtle { color: var(--feedback-text-notice-subtle); }
-.color-feedback-text-notice-intense { color: var(--feedback-text-notice-intense); }
-
-.color-feedback-text-information-subtle { color: var(--feedback-text-information-subtle); }
-.color-feedback-text-information-intense { color: var(--feedback-text-information-intense); }
-
-.color-feedback-text-neutral-subtle { color: var(--feedback-text-neutral-subtle); }
-.color-feedback-text-neutral-intense { color: var(--feedback-text-neutral-intense); }
 
 /* Text decoration color - inherits from color property (currentColor) */
 .text-decoration-underline,
@@ -369,11 +243,6 @@
 
 .letter-spacing-100 {
   letter-spacing: var(--letter-spacing-100);
-}
-
-/* Color variants */
-.color-current {
-  color: currentColor;
 }
 
 /* Text decoration color - inherits from color property */

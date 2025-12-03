@@ -138,18 +138,18 @@ export const baseTextStyles = cva(styles.base, {
 
 /**
  * Convert color token to CSS class name (scoped via CSS module)
- * Example: 'surface.text.gray.normal' -> styles['color-surface-text-gray-normal']
+ * Example: 'surface.text.gray.normal' -> utilityClasses['color-surface-text-gray-normal']
  */
 function colorTokenToClassName(color: string): string | undefined {
   if (color === 'currentColor') {
-    return styles['color-current'];
+    return utilityClasses['color-current'];
   }
   // Convert dot notation to kebab-case class name
   const withHyphens = color.replace(/\./g, '-');
   const className = `color-${kebabCase(withHyphens)}`;
-  // Access the scoped class name from CSS module
-  // The CSS module is imported in this file, so styles object contains scoped class names
-  return styles[className];
+  // Access the scoped class name from utility classes
+  // Color classes are now in utilities.module.css
+  return utilityClasses[className as keyof typeof utilityClasses];
 }
 
 /**

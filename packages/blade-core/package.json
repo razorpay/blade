@@ -76,26 +76,17 @@
       "production": "./dist/lib/web/production/tokens/index.js",
       "default": "./dist/lib/web/production/tokens/index.js"
     },
-    "./tokens/theme.css": "./src/tokens/theme.css",
     "./utils": {
       "types": "./dist/types/utils/index.d.ts",
       "development": "./dist/lib/web/development/utils/index.js",
       "production": "./dist/lib/web/production/utils/index.js",
       "default": "./dist/lib/web/production/utils/index.js"
     },
-    "./styles/BaseText": {
-      "types": "./dist/types/styles/BaseText/index.d.ts",
-      "development": "./src/styles/BaseText/index.ts",
-      "production": "./dist/lib/web/production/styles/BaseText/index.js",
-      "default": "./dist/lib/web/production/styles/BaseText/index.js"
-    },
-    "./styles/BaseText/baseText": {
-      "types": "./dist/types/styles/BaseText/baseText.d.ts",
-      "development": "./dist/lib/web/development/styles/BaseText/baseText.js",
-      "production": "./dist/lib/web/production/styles/BaseText/baseText.js",
-      "default": "./dist/lib/web/production/styles/BaseText/baseText.js"
-    },
-    "./styles/BaseText/baseText.module.css": "./src/styles/BaseText/baseText.module.css",
-    "./styles/utilities.module.css": "./src/styles/utilities.module.css"
+    "./styles": {
+      "types": "./dist/types/styles/index.d.ts",
+      "development": "./src/styles/index.ts",
+      "production": "./dist/lib/web/production/styles/index.js",
+      "default": "./dist/lib/web/production/styles/index.js"
+    }
   }
 }

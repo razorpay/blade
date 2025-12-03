@@ -1,14 +1,11 @@
 <script lang="ts">
-  import './baseLink.css';
   import type { Snippet } from 'svelte';
-  import { cva } from 'class-variance-authority';
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
-  import type { ActionStatesType } from '../../../types';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
-  import { getColorToken, getTextSizes } from './utils';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
+  import { getBaseLinkClasses, baseLinkContentClass, baseLinkIconClass, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
 
   // Icon component type - placeholder for now
   // TODO: Replace with actual Icon component when available
@@ -118,7 +115,7 @@
   // Generate all props reactively - updates when currentInteraction or other args change
   const linkProps = $derived.by(() => {
     const isButton = variant === 'button';
-    const textSizes = getTextSizes();
+    const textSizes = getLinkTextSizes();
 
     return {
       // Element props
@@ -131,22 +128,22 @@
       
       // Text props for BaseText
       textDecorationLine: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
-      textColorToken: getColorToken({
+      textColorToken: getLinkColorToken({
         variant: variant,
         color,
         element: 'text',
-        currentInteraction,
+        currentInteraction: currentInteraction as ActionStatesType,
         isDisabled,
       }),
       fontSize: textSizes.fontSize[size],
       lineHeight: textSizes.lineHeight[size],
       
       // Icon props
-      iconColor: getColorToken({
+      iconColor: getLinkColorToken({
         variant,
         color,
         element: 'icon',
-        currentInteraction,
+        currentInteraction: currentInteraction as ActionStatesType,
         isDisabled,
       }),
       iconSize: size,
@@ -171,30 +168,15 @@
     lineHeight,
   } = $derived(linkProps);
 
-  // CVA definitions for clean variant management
-  const linkClass = cva('base-link focus-ring-parent', {
-    variants: {
-      variant: {
-        anchor: 'base-link--anchor',
-        button: 'base-link--button',
-      },
-      size: {
-        xsmall: 'base-link--xsmall',
-        small: 'base-link--small',
-        medium: 'base-link--medium',
-        large: 'base-link--large',
-      },
-      disabled: {
-        true: 'cursor-not-allowed',
-        false: 'cursor-pointer',
-      },
-    },
-    defaultVariants: {
-      variant: 'anchor',
-      size: 'medium',
-      disabled: false,
-    },
-  });
+  // Generate BaseLink classes from blade-core (single source of truth)
+  // Everything is class-based - no inline styles or data attributes
+  const baseLinkClasses = $derived(
+    getBaseLinkClasses({
+      variant,
+      size,
+      isDisabled: isElementDisabled,
+    }),
+  );
 
 
   // Accessibility attributes
@@ -222,11 +204,8 @@
   // styledProps.inlineStyles is intentionally ignored to maintain pure class-based styling
   const combinedClasses = $derived(() => {
     const classes = [
-      linkClass({
-        variant,
-        size,
-        disabled: isElementDisabled,
-      }),
+      baseLinkClasses,
+      'focus-ring-parent', // Focus ring utility from theme.css
     ];
     if (styledProps.classes) {
       classes.push(...styledProps.classes);
@@ -302,7 +281,7 @@
   target={!isButton ? target : undefined}
   rel={!isButton ? (rel ?? defaultRel) : undefined}
 >
-  <span class="base-link__content focus-ring-child">
+  <span class={baseLinkContentClass + ' focus-ring-child'}>
     {#if Icon && iconPosition === 'left'}
       <!-- <span class={iconClass({ position: 'left', hasChildren })}> -->
         <!-- TODO: Render Icon component when available -->

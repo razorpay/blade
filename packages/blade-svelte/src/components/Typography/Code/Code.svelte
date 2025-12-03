@@ -1,10 +1,9 @@
 <script lang="ts">
-  import './code.css';
   import BaseText from '../BaseText/BaseText.svelte';
   import type { CodeProps } from './types';
-  import { getCodeFontSizeAndLineHeight, getCodeColor } from './utils';
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
+  import { getCodeClasses, getCodeFontSizeAndLineHeight, getCodeColor } from '@razorpay/blade-core/styles';
 
   let {
     children,
@@ -46,13 +45,18 @@
     testID,
   });
 
+  // Generate Code classes from blade-core (single source of truth)
+  // Everything is class-based - no inline styles or data attributes
+  const codeClasses = $derived(
+    getCodeClasses({
+      isHighlighted: finalIsHighlighted,
+    }),
+  );
+
   // Combine classes - everything is class-based, no inline styles
   // styledPropsClasses.inlineStyles is intentionally ignored to maintain pure class-based styling
   const containerClasses = $derived(() => {
-    const classes = ['code-container'];
-    if (finalIsHighlighted) {
-      classes.push('code-container--highlighted');
-    }
+    const classes = [codeClasses];
     if (styledPropsClasses.classes) {
       classes.push(...styledPropsClasses.classes);
     }

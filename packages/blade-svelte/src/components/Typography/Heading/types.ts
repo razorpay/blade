@@ -1,11 +1,10 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
-
-export const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+import type { validHeadingAsValues } from '@razorpay/blade-core/styles';
 
 export type HeadingProps = {
-  as?: typeof validAsValues[number];
+  as?: typeof validHeadingAsValues[number];
   /**
    * Overrides the color of the Heading component.
    *

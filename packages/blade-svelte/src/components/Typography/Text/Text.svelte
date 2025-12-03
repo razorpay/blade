@@ -1,7 +1,7 @@
 <script lang="ts">
   import BaseText from '../BaseText/BaseText.svelte';
   import type { TextBodyVariant, TextCaptionVariant } from './types';
-  import { getTextProps, validAsValues } from './utils';
+  import { getTextProps, validTextAsValues } from '@razorpay/blade-core/styles';
 
   type TextComponentProps = (TextBodyVariant | TextCaptionVariant) & {
     weight?: 'regular' | 'medium' | 'semibold';
@@ -31,9 +31,9 @@
   // Validate as prop in development
   $effect(() => {
     if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-      if (as && !validAsValues.includes(as)) {
+      if (as && !validTextAsValues.includes(as)) {
         console.error(
-          `[Blade: Text]: Invalid \`as\` prop value - ${as}. Only ${validAsValues.join(', ')} are accepted`,
+          `[Blade: Text]: Invalid \`as\` prop value - ${as}. Only ${validTextAsValues.join(', ')} are accepted`,
         );
       }
     }

@@ -35,13 +35,11 @@ packages/
         └── components/
             ├── Button/
             │   ├── Button.svelte
-            │   ├── types.ts
-            │   └── button.css
+            │   └── types.ts
             ├── Link/
             │   ├── BaseLink/
             │   │   ├── BaseLink.svelte
-            |   │   ├── types.ts
-            │   │   └── baseLink.css
+            |   │   └── types.ts
             │   └── Link.svelte
             └── ... (other components)
 ```
@@ -55,8 +53,8 @@ packages/
 ### Styling Guidelines
 
 - Only CSS classes should be used to supply styles to the component. Avoid inline styles of the html elements. Please confirm on any use case where inline styling need is coming up.
-- All style config using CVA, css variables, component css should be stored in the following structure
-
+- All CSS classes should be written inside CSS module and should follow scss styling.
+- All the CSS should be written inside `packages/blade-core/src` directory. Refer the directory structure below
 
 ```
 packages/
@@ -69,9 +67,9 @@ packages/
             ├── Link/
             │   ├── BaseLink/
             │   │   ├── baselink.module.css
-            │   │   └── baselink.css
+            │   │   └── baselink.ts
 ``` 
-- Use the props of the component of to generate dynamic css classes using Class Variance Authority similar to this 
+- Use the props of the component to generate dynamic css classes using Class Variance Authority similar to this 
 
 ```
 // packages/blade-core/src/styles/button.ts
@@ -138,7 +136,7 @@ import { buttonStyles } from '@razorpay/blade-core/styles';
   </div>
 </button>
 ```
-- Ensure the layout classes like display, margin, padding are stored on a global css and not component specific css. packages/blade-core/src/tokens/theme.css would be the right place for the same 
+- Ensure the layout classes like display, margin, padding are stored on a global css and not component specific css. `packages/blade-core/src/styles/utilities.ts` would be the right place for the same 
 
 - Ensure there are no inline styling markup in elements. All the styles should come via classes.
 
@@ -159,13 +157,11 @@ packages/
         └── components/
             ├── Button/
             │   ├── Button.svelte
-            │   ├── types.ts
-            │   └── button.css
+            │   └── types.ts
             ├── Link/
             │   ├── BaseLink/
             │   │   ├── BaseLink.svelte
-            |   │   ├── types.ts
-            │   │   └── baseLink.css
+            |   │   └── types.ts
             │   └── Link.svelte
             └── ... (other components)
 ```

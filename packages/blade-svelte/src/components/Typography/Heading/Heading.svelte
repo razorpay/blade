@@ -1,7 +1,7 @@
 <script lang="ts">
   import BaseText from '../BaseText/BaseText.svelte';
   import type { HeadingProps } from './types';
-  import { getHeadingProps, validAsValues } from './utils';
+  import { getHeadingProps, validHeadingAsValues } from '@razorpay/blade-core/styles';
 
   let {
     as,
@@ -25,9 +25,9 @@
   // Validate as prop in development
   $effect(() => {
     if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-      if (as && !validAsValues.includes(as)) {
+      if (as && !validHeadingAsValues.includes(as)) {
         console.error(
-          `[Blade: Heading]: Invalid \`as\` prop value - ${as}. Only ${validAsValues.join(', ')} are accepted`,
+          `[Blade: Heading]: Invalid \`as\` prop value - ${as}. Only ${validHeadingAsValues.join(', ')} are accepted`,
         );
       }
     }

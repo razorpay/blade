@@ -1,7 +1,13 @@
-import type { BaseTextProps } from '../BaseText/types';
-import type { TextVariant } from './types';
+// Font size and line height types matching BaseText
+export type FontSize = 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
+export type LineHeight = 0 | 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
 
-export const validAsValues = [
+export type TextVariant = 'body' | 'caption';
+export type TextSize = 'xsmall' | 'small' | 'medium' | 'large';
+export type TextWeight = 'regular' | 'medium' | 'semibold';
+export type TextAs = 'p' | 'span' | 'div' | 'abbr' | 'figcaption' | 'cite' | 'q' | 'label';
+
+export const validTextAsValues: readonly TextAs[] = [
   'p',
   'span',
   'div',
@@ -12,16 +18,35 @@ export const validAsValues = [
   'label',
 ] as const;
 
-type GetTextPropsParams = {
-  variant: TextVariant;
-  weight?: 'regular' | 'medium' | 'semibold';
-  size?: 'xsmall' | 'small' | 'medium' | 'large' | undefined;
-  color?: BaseTextProps['color'];
+export type TextPropsResult = {
+  color?: string;
+  fontSize: FontSize;
+  fontWeight: TextWeight;
+  fontStyle: 'normal';
+  lineHeight: LineHeight;
+  fontFamily: 'text';
+  componentName: 'text';
   testID?: string;
-  textAlign?: BaseTextProps['textAlign'];
-  textDecorationLine?: BaseTextProps['textDecorationLine'];
+  textAlign?: 'left' | 'center' | 'right' | 'justify';
+  textDecorationLine?: 'none' | 'underline' | 'line-through';
 };
 
+type GetTextPropsParams = {
+  variant: TextVariant;
+  weight?: TextWeight;
+  size?: TextSize | undefined;
+  color?: string;
+  testID?: string;
+  textAlign?: 'left' | 'center' | 'right' | 'justify';
+  textDecorationLine?: 'none' | 'underline' | 'line-through';
+};
+
+/**
+ * Get BaseText props from Text props
+ * Converts Text component props to BaseText props with appropriate font sizes and line heights
+ * These values correspond to BaseText utility classes (font-size-25, font-size-75, etc.)
+ * BaseText CVA will automatically convert these to the appropriate utility classes
+ */
 export function getTextProps({
   variant,
   weight,
@@ -30,8 +55,8 @@ export function getTextProps({
   testID,
   textAlign,
   textDecorationLine,
-}: GetTextPropsParams): Omit<BaseTextProps, 'children'> {
-  const props: Omit<BaseTextProps, 'children'> = {
+}: GetTextPropsParams): TextPropsResult {
+  const props: TextPropsResult = {
     color,
     fontSize: 100,
     fontWeight: weight ?? 'regular',
@@ -45,7 +70,7 @@ export function getTextProps({
   };
 
   if (variant === 'caption') {
-    // variant of caption can only have size of small or medium
+    // Variant of caption can only have size of small or medium
     if (size && size !== 'small' && size !== 'medium') {
       if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
         console.error(
@@ -93,3 +118,4 @@ export function getTextProps({
 
   return props;
 }
+

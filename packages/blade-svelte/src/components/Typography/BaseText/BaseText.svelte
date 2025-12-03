@@ -1,9 +1,7 @@
 <script lang="ts">
-  import '@razorpay/blade-core/tokens/theme.css';
-  import '@razorpay/blade-core/styles/utilities.module.css';
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import type { BaseTextProps } from './types';
-  import { getBaseTextClasses } from '@razorpay/blade-core/styles/BaseText';
+  import { getBaseTextClasses } from '@razorpay/blade-core/styles';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
 
   let {
