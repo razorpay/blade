@@ -1,8 +1,7 @@
 <script lang="ts">
   import BaseText from '../BaseText/BaseText.svelte';
   import type { TextBodyVariant, TextCaptionVariant } from './types';
-  import { getTextProps, validAsValues } from './utils';
-  import { getStyledProps } from '../../../utils/styledProps';
+  import { getTextProps, validTextAsValues } from '@razorpay/blade-core/styles';
 
   type TextComponentProps = (TextBodyVariant | TextCaptionVariant) & {
     weight?: 'regular' | 'medium' | 'semibold';
@@ -22,7 +21,7 @@
     textDecorationLine,
     wordBreak,
     textTransform,
-    ...styledProps
+    ...rest
   }: TextComponentProps = $props();
 
   // Set defaults
@@ -32,9 +31,9 @@
   // Validate as prop in development
   $effect(() => {
     if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-      if (as && !validAsValues.includes(as)) {
+      if (as && !validTextAsValues.includes(as)) {
         console.error(
-          `[Blade: Text]: Invalid \`as\` prop value - ${as}. Only ${validAsValues.join(', ')} are accepted`,
+          `[Blade: Text]: Invalid \`as\` prop value - ${as}. Only ${validTextAsValues.join(', ')} are accepted`,
         );
       }
     }
@@ -53,17 +52,15 @@
     }),
   );
 
-  // Extract styled props
-  const extractedStyledProps = $derived(getStyledProps(styledProps));
-
-  // Merge props: baseTextProps first, then direct props, then styled props (matching React implementation)
+  // Merge props: baseTextProps first, then direct props, then rest (styled props)
+  // BaseText will handle styled props extraction via getStyledPropsClasses(rest)
   const mergedProps = $derived({
     ...baseTextProps,
     as,
     truncateAfterLines,
     wordBreak,
     textTransform,
-    ...extractedStyledProps,
+    ...rest,
   });
 </script>
 

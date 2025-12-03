@@ -1,11 +1,9 @@
 <script lang="ts">
-  import './code.css';
   import BaseText from '../BaseText/BaseText.svelte';
   import type { CodeProps } from './types';
-  import { getCodeFontSizeAndLineHeight, getCodeColor } from './utils';
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
-  import { getStyledProps } from '../../../utils/styledProps';
-  import { getStyledPropsClasses, combineStyleStrings } from '../../../utils/styledProps';
+  import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
+  import { getCodeClasses, getCodeFontSizeAndLineHeight, getCodeColor } from '@razorpay/blade-core/styles';
 
   let {
     children,
@@ -37,9 +35,9 @@
   const { fontSize, lineHeight } = $derived(getCodeFontSizeAndLineHeight(finalSize));
   const codeTextColor = $derived(getCodeColor({ isHighlighted: finalIsHighlighted, color }));
 
-  // Extract styled props
-  const extractedStyledProps = $derived(getStyledProps(styledProps));
-  const styledPropsClasses = $derived(getStyledPropsClasses(extractedStyledProps));
+  // Extract styled props and convert to classes
+  // This ensures everything is class-based with no inline styles
+  const styledPropsClasses = $derived(getStyledPropsClasses(styledProps));
 
   // Meta attributes
   const metaAttrs = metaAttribute({
@@ -47,27 +45,27 @@
     testID,
   });
 
-  // Combine classes
+  // Generate Code classes from blade-core (single source of truth)
+  // Everything is class-based - no inline styles or data attributes
+  const codeClasses = $derived(
+    getCodeClasses({
+      isHighlighted: finalIsHighlighted,
+    }),
+  );
+
+  // Combine classes - everything is class-based, no inline styles
+  // styledPropsClasses.inlineStyles is intentionally ignored to maintain pure class-based styling
   const containerClasses = $derived(() => {
-    const classes = ['code-container'];
-    if (finalIsHighlighted) {
-      classes.push('code-container--highlighted');
-    }
+    const classes = [codeClasses];
     if (styledPropsClasses.classes) {
-      classes.push(styledPropsClasses.classes);
+      classes.push(...styledPropsClasses.classes);
     }
     return classes.filter(Boolean).join(' ');
-  });
-
-  // Combine inline styles
-  const containerStyles = $derived(() => {
-    return combineStyleStrings(styledPropsClasses.inlineStyles);
   });
 </script>
 
 <span
   class={containerClasses()}
-  style={containerStyles()}
   {...metaAttrs}
 >
   <BaseText

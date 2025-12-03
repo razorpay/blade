@@ -1,8 +1,7 @@
 <script lang="ts">
   import BaseText from '../BaseText/BaseText.svelte';
   import type { HeadingProps } from './types';
-  import { getHeadingProps, validAsValues } from './utils';
-  import { getStyledProps } from '../../../utils/styledProps';
+  import { getHeadingProps, validHeadingAsValues } from '@razorpay/blade-core/styles';
 
   let {
     as,
@@ -15,7 +14,7 @@
     textDecorationLine,
     wordBreak,
     textTransform,
-    ...styledProps
+    ...rest
   }: HeadingProps = $props();
 
   // Set defaults
@@ -26,9 +25,9 @@
   // Validate as prop in development
   $effect(() => {
     if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-      if (as && !validAsValues.includes(as)) {
+      if (as && !validHeadingAsValues.includes(as)) {
         console.error(
-          `[Blade: Heading]: Invalid \`as\` prop value - ${as}. Only ${validAsValues.join(', ')} are accepted`,
+          `[Blade: Heading]: Invalid \`as\` prop value - ${as}. Only ${validHeadingAsValues.join(', ')} are accepted`,
         );
       }
     }
@@ -45,17 +44,15 @@
     }),
   );
 
-  // Extract styled props
-  const extractedStyledProps = $derived(getStyledProps(styledProps));
-
-  // Merge props: baseTextProps first, then direct props, then styled props (matching React implementation)
+  // Merge props: baseTextProps first, then direct props, then rest (styled props)
+  // BaseText will handle styled props extraction via getStyledPropsClasses(rest)
   const mergedProps = $derived({
     ...baseTextProps,
     textAlign,
     textDecorationLine,
     textTransform,
     wordBreak,
-    ...extractedStyledProps,
+    ...rest,
   });
 </script>
 

@@ -33,6 +33,7 @@
     "test": "echo 'No tests configured yet'"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.0",
     "ts-deepmerge": "6.2.0",
     "tinycolor2": "1.6.0"
   },
@@ -75,12 +76,17 @@
       "production": "./dist/lib/web/production/tokens/index.js",
       "default": "./dist/lib/web/production/tokens/index.js"
     },
-    "./tokens/theme.css": "./dist/lib/web/production/tokens/theme.css",
     "./utils": {
       "types": "./dist/types/utils/index.d.ts",
       "development": "./dist/lib/web/development/utils/index.js",
       "production": "./dist/lib/web/production/utils/index.js",
       "default": "./dist/lib/web/production/utils/index.js"
+    },
+    "./styles": {
+      "types": "./dist/types/styles/index.d.ts",
+      "development": "./src/styles/index.ts",
+      "production": "./dist/lib/web/production/styles/index.js",
+      "default": "./dist/lib/web/production/styles/index.js"
     }
   }
 }

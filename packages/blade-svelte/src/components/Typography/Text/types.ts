@@ -1,12 +1,12 @@
 import type { Snippet } from 'svelte';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
-import type { validAsValues } from './utils';
-import type { StyledPropsBlade } from '../../../utils/styledProps';
+import type { validTextAsValues } from '@razorpay/blade-core/styles';
+import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 export type TextVariant = 'body' | 'caption';
 
 type TextCommonProps = {
-  as?: keyof typeof validAsValues;
+  as?: keyof typeof validTextAsValues;
   truncateAfterLines?: number;
   children: Snippet;
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;

@@ -1,6 +1,7 @@
 /**
  * Converts styled props to CSS class names
- * Uses utility classes defined in theme.css
+ * Uses utility classes from @razorpay/blade-core/styles/utilities.module.css
+ * Note: The utilities.module.css must be imported in the component for these classes to work
  */
 
 import type { StyledPropsBlade } from './getStyledProps';

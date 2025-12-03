@@ -20,9 +20,9 @@
   <div class="component-container">
     <Heading
       as='h2'
-      color='surface.text.gray.normal'
+      color='surface.text.primary.normal'
       weight='semibold'
-      size='medium'
+      size='xlarge'
     >
       Button Component
     </Heading>

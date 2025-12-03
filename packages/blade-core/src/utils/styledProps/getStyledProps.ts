@@ -1,14 +1,14 @@
 /**
- * Svelte utilities for handling styled props (CSS properties as props)
- * Ported from React implementation in packages/blade/src/components/Box/styledProps
+ * Utilities for handling styled props (CSS properties as props)
+ * Framework-agnostic utilities that can be used across all component implementations
  */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type StyledPropsInputType = Record<string, any>;
 
 /**
- * StyledPropsBlade type - matches React implementation
- * These are the CSS properties that can be passed as props to components
+ * StyledPropsBlade type - defines CSS properties that can be passed as props to components
+ * These props are converted to CSS classes or inline styles
  */
 export type StyledPropsBlade = Partial<{
   // Margin props
