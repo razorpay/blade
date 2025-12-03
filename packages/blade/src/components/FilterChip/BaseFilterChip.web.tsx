@@ -149,7 +149,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
         })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
-        {...metaAttribute({ name: 'filter-chip-trigger' })}
+        {...metaAttribute({ name: 'filter-chip-trigger', testID: rest.testID })}
       >
         <Box display="flex" gap="spacing.2" whiteSpace="nowrap">
           <Text
