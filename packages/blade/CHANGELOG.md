@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.68.0
+
+### Minor Changes
+
+- b05315121: feat(blade): add data attribute in basefilter chip
+
 ## 12.67.0
 
 ### Minor Changes
