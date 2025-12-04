@@ -64,7 +64,12 @@ describe('cursorRulesUtils', () => {
     const mockProjectRootDirectory = '/Users/test/project';
 
     it('should return content with creation instructions when cursor rules are missing', () => {
-      const result = shouldCreateOrUpdateCursorRule('0', 'cursor', mockProjectRootDirectory);
+      const result = shouldCreateOrUpdateCursorRule(
+        '0',
+        'cursor',
+        mockProjectRootDirectory,
+        true, // skipLocalCursorRuleChecks = true to test version-based checks only
+      );
 
       expect(result).toBeDefined();
       expect(result).toMatchObject({
@@ -86,6 +91,7 @@ describe('cursorRulesUtils', () => {
         outdatedVersion,
         'cursor',
         mockProjectRootDirectory,
+        true, // skipLocalCursorRuleChecks = true to test version-based checks only
       );
 
       expect(result).toBeDefined();
@@ -110,19 +116,30 @@ describe('cursorRulesUtils', () => {
         CURSOR_RULES_VERSION,
         'cursor',
         mockProjectRootDirectory,
+        true, // skipLocalCursorRuleChecks = true to test version-based checks only
       );
 
       expect(result).toBeUndefined();
     });
 
     it('should return undefined when client is not cursor (even if version is 0)', () => {
-      const result = shouldCreateOrUpdateCursorRule('0', 'claude', mockProjectRootDirectory);
+      const result = shouldCreateOrUpdateCursorRule(
+        '0',
+        'claude',
+        mockProjectRootDirectory,
+        true, // skipLocalCursorRuleChecks = true to test version-based checks only
+      );
 
       expect(result).toBeUndefined();
     });
 
     it('should return undefined when client is unknown (even if version is outdated)', () => {
-      const result = shouldCreateOrUpdateCursorRule('1.0.0', 'unknown', mockProjectRootDirectory);
+      const result = shouldCreateOrUpdateCursorRule(
+        '1.0.0',
+        'unknown',
+        mockProjectRootDirectory,
+        true, // skipLocalCursorRuleChecks = true to test version-based checks only
+      );
 
       expect(result).toBeUndefined();
     });

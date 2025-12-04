@@ -10,8 +10,6 @@ exports[`cursorRulesUtils > cursorRuleCreationInstructions > should return consi
 
 3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
 
-4. After file is create replate \`rules_version: <!-- dynamic_version --> \` in file with \`rules_version: 0.0.8\`
-
 Run the following bash script to create cursor rules:
 
 **Bash Script:**

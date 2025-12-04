@@ -1,4 +1,8 @@
-import { CURSOR_RULES_VERSION } from './tokens.js';
+import { existsSync } from 'fs';
+import { join } from 'path';
+import { CURSOR_RULES_VERSION, CONSUMER_CURSOR_RULES_RELATIVE_PATH } from './tokens.js';
+import { hasOutDatedRules } from './generalUtils.js';
+import { handleError } from './analyticsUtils.js';
 
 const bashScriptContent = `
   #!/bin/bash
@@ -63,43 +67,80 @@ function areCursorRulesOutdated(
 
 /**
  * Checks if cursor rules should be created or updated. Returns instructions if they need to be created or updated.
+ * This function checks both the file system and version numbers to determine if cursor rules need attention.
  * @param cursorRuleVersion - The version of the cursor rules
  * @param clientName - The name of the client ('claude', 'cursor', or 'unknown')
  * @param currentProjectRootDirectory - The working root directory of the consumer's project
- * @returns Content object with instructions if cursor rules need attention, undefined otherwise
+ * @param skipLocalCursorRuleChecks - If true, skip file system checks and only check versions (for HTTP transport)
+ * @param toolName - The name of the tool calling this function (for error messages)
+ * @param createBladeCursorRulesToolName - The name of the tool to create cursor rules (for error messages)
+ * @returns Error format for stdio transport or content format for HTTP transport if cursor rules need attention, undefined otherwise
  */
 function shouldCreateOrUpdateCursorRule(
   cursorRuleVersion: string,
   clientName: 'claude' | 'cursor' | 'unknown',
   currentProjectRootDirectory: string,
-): { content: Array<{ type: 'text'; text: string }> } | undefined {
-  if (isCursorRuleFileMissing(cursorRuleVersion, clientName)) {
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Cursor rules do not exist. Create them using the following instructions: \n\n
+  skipLocalCursorRuleChecks = false,
+  toolName?: string,
+  createBladeCursorRulesToolName?: string,
+): { isError?: true; content: Array<{ type: 'text'; text: string }> } | undefined {
+  let isMissing = false;
+
+  // Check file system first if directory is provided and skipLocalCursorRuleChecks is false
+  if (currentProjectRootDirectory && !skipLocalCursorRuleChecks) {
+    const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
+
+    // Check if file exists
+    if (!existsSync(ruleFilePath)) {
+      isMissing = true;
+    } else if (hasOutDatedRules(ruleFilePath)) {
+      // File exists but is outdated
+      isMissing = false;
+    } else {
+      // File exists and is up to date
+      return undefined;
+    }
+  }
+
+  // Fallback to version-based checks if file system checks were skipped
+  if (!currentProjectRootDirectory || skipLocalCursorRuleChecks) {
+    if (isCursorRuleFileMissing(cursorRuleVersion, clientName)) {
+      isMissing = true;
+    } else if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
+      isMissing = false;
+    } else {
+      // Rules are up to date
+      return undefined;
+    }
+  }
+
+  // For stdio transport (skipLocalCursorRuleChecks = false), return error format
+  if (!skipLocalCursorRuleChecks && toolName && createBladeCursorRulesToolName) {
+    return handleError({
+      toolName,
+      mcpErrorMessage: isMissing
+        ? `Cursor rules do not exist. Call \`${createBladeCursorRulesToolName}\` first.`
+        : `Cursor rules are outdated. Call \`${createBladeCursorRulesToolName}\` first to update cursor rules`,
+    });
+  }
+
+  // For HTTP transport (skipLocalCursorRuleChecks = true), return content format
+  return {
+    content: [
+      {
+        type: 'text',
+        text: isMissing
+          ? `Cursor rules do not exist. Create them using the following instructions: \n\n
+          ${cursorRuleCreationInstructions({
+            currentProjectRootDirectory,
+          })}`
+          : `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Update them using the following instructions: \n\n
           ${cursorRuleCreationInstructions({
             currentProjectRootDirectory,
           })}`,
-        },
-      ],
-    };
-  }
-  if (areCursorRulesOutdated(cursorRuleVersion, clientName)) {
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Update them using the following instructions: \n\n
-          ${cursorRuleCreationInstructions({
-            currentProjectRootDirectory,
-          })}`,
-        },
-      ],
-    };
-  }
-  return undefined;
+      },
+    ],
+  };
 }
 
 export {
