@@ -10,7 +10,7 @@ import {
 
 import { hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
-import { cursorRuleCreationInstructions } from '../utils/cursorRule.js';
+import { cursorRuleCreationInstructions } from '../utils/cursorRulesUtils.js';
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 

@@ -1,5 +1,39 @@
 import { CURSOR_RULES_VERSION } from './tokens.js';
-import { cursorRuleCreationInstructions } from './cursorRule.js';
+
+const bashScriptContent = `
+  #!/bin/bash
+  # Download frontend-blade-rules.mdc from GitHub and save to .cursor/rules
+  TARGET_DIR=".cursor/rules"
+  URL="https://raw.githubusercontent.com/razorpay/blade/master/packages/blade-mcp/cursorRules/frontend-blade-rules.mdc"
+  FILE_PATH="$TARGET_DIR/frontend-blade-rules.mdc"
+  # Create directory if it doesn't exist (works even if it already exists)
+  mkdir -p "$TARGET_DIR"
+  curl -sSL "$URL" -o "$FILE_PATH"
+  `;
+
+const cursorRuleCreationInstructions = ({
+  currentProjectRootDirectory,
+}: {
+  currentProjectRootDirectory: string;
+}): string => `
+**Instructions:**
+
+1. Change to the working directory: \`cd "${currentProjectRootDirectory}"\`
+
+2. Run the bash script below (copy and execute the commands from the script)
+
+3. This will create the cursor rules file at \`.cursor/rules/frontend-blade-rules.mdc\`
+
+Run the following bash script to create cursor rules:
+
+**Bash Script:**
+
+\`\`\`bash
+${bashScriptContent}
+\`\`\`
+
+**Working Directory:** \`${currentProjectRootDirectory}\`
+`;
 
 /**
  * Checks if cursor rules don't exist (version is '0' and client is 'cursor')
@@ -7,7 +41,7 @@ import { cursorRuleCreationInstructions } from './cursorRule.js';
  * @param clientName - The name of the client ('claude', 'cursor', or 'unknown')
  * @returns true if cursor rules don't exist, false otherwise
  */
-export function isCursorRuleFileMissing(
+function isCursorRuleFileMissing(
   cursorRuleVersion: string,
   clientName: 'claude' | 'cursor' | 'unknown',
 ): boolean {
@@ -20,7 +54,7 @@ export function isCursorRuleFileMissing(
  * @param clientName - The name of the client ('claude', 'cursor', or 'unknown')
  * @returns true if cursor rules are outdated, false otherwise
  */
-export function areCursorRulesOutdated(
+function areCursorRulesOutdated(
   cursorRuleVersion: string,
   clientName: 'claude' | 'cursor' | 'unknown',
 ): boolean {
@@ -34,7 +68,7 @@ export function areCursorRulesOutdated(
  * @param currentProjectRootDirectory - The working root directory of the consumer's project
  * @returns Content object with instructions if cursor rules need attention, undefined otherwise
  */
-export function shouldCreateOrUpdateCursorRule(
+function shouldCreateOrUpdateCursorRule(
   cursorRuleVersion: string,
   clientName: 'claude' | 'cursor' | 'unknown',
   currentProjectRootDirectory: string,
@@ -67,3 +101,11 @@ export function shouldCreateOrUpdateCursorRule(
   }
   return undefined;
 }
+
+export {
+  bashScriptContent,
+  cursorRuleCreationInstructions,
+  shouldCreateOrUpdateCursorRule,
+  areCursorRulesOutdated,
+  isCursorRuleFileMissing,
+};

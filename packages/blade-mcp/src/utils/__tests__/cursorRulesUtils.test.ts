@@ -3,8 +3,8 @@ import {
   isCursorRuleFileMissing,
   areCursorRulesOutdated,
   shouldCreateOrUpdateCursorRule,
+  cursorRuleCreationInstructions,
 } from '../cursorRulesUtils.js';
-import { cursorRuleCreationInstructions } from '../cursorRule.js';
 import { CURSOR_RULES_VERSION } from '../tokens.js';
 
 describe('cursorRulesUtils', () => {

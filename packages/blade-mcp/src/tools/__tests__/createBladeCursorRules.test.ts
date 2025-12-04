@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createBladeCursorRulesToolCallback } from '../createBladeCursorRules.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
-import * as cursorRule from '../../utils/cursorRule.js';
+import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
 
 // Mock the analytics and utility functions
 vi.mock('../../utils/analyticsUtils.js');
-vi.mock('../../utils/cursorRule.js');
+vi.mock('../../utils/cursorRulesUtils.js');
 
 // Create a mock context object for tool callbacks
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,7 +26,7 @@ describe('createBladeCursorRules Tool', () => {
     const mockInstructions = 'Mock instructions for creating cursor rules';
 
     // Mock the cursorRuleCreationInstructions function
-    vi.spyOn(cursorRule, 'cursorRuleCreationInstructions').mockReturnValue(mockInstructions);
+    vi.spyOn(cursorRulesUtils, 'cursorRuleCreationInstructions').mockReturnValue(mockInstructions);
 
     // Get the callback for HTTP transport (which returns instructions)
     const callback = createBladeCursorRulesToolCallback('http');
@@ -60,7 +60,7 @@ describe('createBladeCursorRules Tool', () => {
     }
 
     // Verify cursorRuleCreationInstructions was called with correct parameter
-    expect(cursorRule.cursorRuleCreationInstructions).toHaveBeenCalledWith({
+    expect(cursorRulesUtils.cursorRuleCreationInstructions).toHaveBeenCalledWith({
       currentProjectRootDirectory: mockCurrentProjectRootDirectory,
     });
   });
