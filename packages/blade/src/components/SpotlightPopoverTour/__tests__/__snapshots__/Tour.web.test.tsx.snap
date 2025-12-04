@@ -48,7 +48,7 @@ exports[`<Tour /> should render 1`] = `
   border-radius: 9999px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,7 +64,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 24px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -86,55 +86,6 @@ exports[`<Tour /> should render 1`] = `
   -webkit-transform: translateY(-4px);
   -ms-transform: translateY(-4px);
   transform: translateY(-4px);
-}
-
-.c11.c11.c11.c11.c11 {
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  background: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: hsla(211,22%,56%,1);
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
-  background-color: transparent;
-}
-
-.c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
-  color: hsla(211,26%,34%,1);
-}
-
-.c11.c11.c11.c11.c11:active {
-  color: hsla(211,26%,34%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -172,7 +123,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -189,7 +140,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -280,7 +231,7 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   min-height: 32px;
   width: auto;
   cursor: pointer;
@@ -317,24 +268,24 @@ exports[`<Tour /> should render 1`] = `
   position: relative;
 }
 
-.c15.c15.c15.c15.c15:hover {
+.c14.c14.c14.c14.c14:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c15.c15.c15.c15.c15:active {
+.c14.c14.c14.c14.c14:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c15.c15.c15.c15.c15:focus-visible {
+.c14.c14.c14.c14.c14:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c15.c15.c15.c15.c15 * {
+.c14.c14.c14.c14.c14 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -496,30 +447,7 @@ exports[`<Tour /> should render 1`] = `
           <div
             class="c10"
             data-blade-component="base-box"
-          >
-            <button
-              aria-label="Close"
-              class="c11"
-              data-blade-component="icon-button"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
-                data-blade-component="icon"
-                fill="none"
-                height="20px"
-                viewBox="0 0 24 24"
-                width="20px"
-              >
-                <path
-                  d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                  data-blade-component="svg-path"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
-          </div>
+          />
           <div
             class=""
             data-blade-component="base-box"
@@ -536,11 +464,11 @@ exports[`<Tour /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c12"
+              class="c11"
               data-blade-component="box"
             >
               <p
-                class="c13"
+                class="c12"
                 data-blade-component="text"
               >
                 1
@@ -548,11 +476,11 @@ exports[`<Tour /> should render 1`] = `
                 2
               </p>
               <div
-                class="c14"
+                class="c13"
                 data-blade-component="box"
               >
                 <button
-                  class="c15"
+                  class="c14"
                   data-analytics-active-step="1"
                   data-analytics-name="spotlight-popover-tour-footer-primary-action-button"
                   data-analytics-total-steps="2"
@@ -569,7 +497,7 @@ exports[`<Tour /> should render 1`] = `
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c16"
+                        class="c15"
                         data-blade-component="base-text"
                       >
                         Next
