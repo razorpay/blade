@@ -133,13 +133,14 @@ const getBladeGeneralDocsCore = ({
 const getBladeGeneralDocsStdioCallback: ToolCallback<typeof getBladeGeneralDocsStdioSchema> = ({
   topicsList,
   currentProjectRootDirectory,
+  clientName,
 }) => {
   return getBladeGeneralDocsCore({
     topicsList,
     currentProjectRootDirectory,
     skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
     cursorRuleVersion: '0',
-    clientName: 'unknown',
+    clientName,
   });
 };
 
@@ -159,16 +160,6 @@ const getBladeGeneralDocsHttpCallback: ToolCallback<typeof getBladeGeneralDocsHt
   });
 };
 
-// Helper function to get the appropriate callback based on transport type
-const getBladeGeneralDocsToolCallback = (
-  transportType: 'http' | 'stdio',
-): typeof getBladeGeneralDocsHttpCallback | typeof getBladeGeneralDocsStdioCallback => {
-  if (transportType === 'http') {
-    return getBladeGeneralDocsHttpCallback;
-  }
-  return getBladeGeneralDocsStdioCallback;
-};
-
 export {
   getBladeGeneralDocsToolName,
   getBladeGeneralDocsToolDescription,
@@ -176,5 +167,4 @@ export {
   getBladeGeneralDocsStdioCallback,
   getBladeGeneralDocsHttpSchema,
   getBladeGeneralDocsStdioSchema,
-  getBladeGeneralDocsToolCallback,
 };

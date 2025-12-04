@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getBladeGeneralDocsToolCallback } from '../getBladeGeneralDocs.js';
+import { getBladeGeneralDocsHttpCallback } from '../getBladeGeneralDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
@@ -57,7 +57,7 @@ describe('getBladeGeneralDocs Tool', () => {
     );
 
     // Get the HTTP callback
-    const httpCallback = getBladeGeneralDocsToolCallback('http');
+    const httpCallback = getBladeGeneralDocsHttpCallback;
 
     // Call the tool callback
     const result = httpCallback(
@@ -104,7 +104,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const mockTopicsList = 'InvalidTopic, AnotherInvalid';
 
     // Get the HTTP callback
-    const httpCallback = getBladeGeneralDocsToolCallback('http');
+    const httpCallback = getBladeGeneralDocsHttpCallback;
 
     // Call the tool callback
     const result = httpCallback(
@@ -172,7 +172,7 @@ describe('getBladeGeneralDocs Tool', () => {
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
     // Get the HTTP callback
-    const httpCallback = getBladeGeneralDocsToolCallback('http');
+    const httpCallback = getBladeGeneralDocsHttpCallback;
 
     // Call the tool callback with actual implementation
     const result = httpCallback(
@@ -226,7 +226,7 @@ describe('getBladeGeneralDocs Tool', () => {
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
     // Get the HTTP callback
-    const httpCallback = getBladeGeneralDocsToolCallback('http');
+    const httpCallback = getBladeGeneralDocsHttpCallback;
 
     // Call the tool callback with actual implementation
     const result = httpCallback(

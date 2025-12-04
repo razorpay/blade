@@ -136,13 +136,14 @@ const getBladePatternDocsCore = ({
 const getBladePatternDocsStdioCallback: ToolCallback<typeof getBladePatternDocsStdioSchema> = ({
   patternsList,
   currentProjectRootDirectory,
+  clientName,
 }) => {
   return getBladePatternDocsCore({
     patternsList,
     currentProjectRootDirectory,
     skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
     cursorRuleVersion: '0',
-    clientName: 'unknown',
+    clientName,
   });
 };
 
@@ -162,16 +163,6 @@ const getBladePatternDocsHttpCallback: ToolCallback<typeof getBladePatternDocsHt
   });
 };
 
-// Helper function to get the appropriate callback based on transport type
-const getBladePatternDocsToolCallback = (
-  transportType: 'http' | 'stdio',
-): typeof getBladePatternDocsHttpCallback | typeof getBladePatternDocsStdioCallback => {
-  if (transportType === 'http') {
-    return getBladePatternDocsHttpCallback;
-  }
-  return getBladePatternDocsStdioCallback;
-};
-
 export {
   getBladePatternDocsToolName,
   getBladePatternDocsToolDescription,
@@ -179,5 +170,4 @@ export {
   getBladePatternDocsHttpCallback,
   getBladePatternDocsStdioSchema,
   getBladePatternDocsHttpSchema,
-  getBladePatternDocsToolCallback,
 };

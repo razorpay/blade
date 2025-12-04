@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getBladePatternDocsToolCallback } from '../getBladePatternDocs.js';
+import { getBladePatternDocsHttpCallback } from '../getBladePatternDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
@@ -56,7 +56,7 @@ describe('getBladePatternDocs Tool', () => {
     );
 
     // Get the HTTP callback
-    const httpCallback = getBladePatternDocsToolCallback('http');
+    const httpCallback = getBladePatternDocsHttpCallback;
 
     // Call the tool callback
     const result = httpCallback(
@@ -104,7 +104,7 @@ describe('getBladePatternDocs Tool', () => {
     const mockPatternsList = 'InvalidPattern, AnotherInvalid';
 
     // Get the HTTP callback
-    const httpCallback = getBladePatternDocsToolCallback('http');
+    const httpCallback = getBladePatternDocsHttpCallback;
 
     // Call the tool callback
     const result = httpCallback(
@@ -172,7 +172,7 @@ describe('getBladePatternDocs Tool', () => {
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
     // Get the HTTP callback
-    const httpCallback = getBladePatternDocsToolCallback('http');
+    const httpCallback = getBladePatternDocsHttpCallback;
 
     // Call the tool callback with actual implementation
     const result = httpCallback(
@@ -226,7 +226,7 @@ describe('getBladePatternDocs Tool', () => {
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
     // Get the HTTP callback
-    const httpCallback = getBladePatternDocsToolCallback('http');
+    const httpCallback = getBladePatternDocsHttpCallback;
 
     // Call the tool callback with actual implementation
     const result = httpCallback(

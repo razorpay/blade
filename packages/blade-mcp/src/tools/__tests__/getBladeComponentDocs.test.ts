@@ -1,5 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getBladeComponentDocsToolCallback } from '../getBladeComponentDocs.js';
+import {
+  getBladeComponentDocsHttpCallback,
+  getBladeComponentDocsStdioCallback,
+} from '../getBladeComponentDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
@@ -48,7 +51,7 @@ describe('getBladeComponentDocs Tool', () => {
     );
 
     // Get the HTTP callback
-    const httpCallback = getBladeComponentDocsToolCallback('http');
+    const httpCallback = getBladeComponentDocsHttpCallback;
 
     // Call the tool callback
     const result = httpCallback(
@@ -98,7 +101,7 @@ describe('getBladeComponentDocs Tool', () => {
     const mockComponentsList = 'InvalidComponent, AnotherInvalid';
 
     // Get the HTTP callback
-    const httpCallback = getBladeComponentDocsToolCallback('http');
+    const httpCallback = getBladeComponentDocsHttpCallback;
 
     // Call the tool callback
     const result = httpCallback(
@@ -161,7 +164,7 @@ describe('getBladeComponentDocs Tool', () => {
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
     // Get the HTTP callback
-    const httpCallback = getBladeComponentDocsToolCallback('http');
+    const httpCallback = getBladeComponentDocsHttpCallback;
 
     // Call the tool callback with actual implementation
     const result = httpCallback(
@@ -210,7 +213,7 @@ describe('getBladeComponentDocs Tool', () => {
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
     // Get the HTTP callback
-    const httpCallback = getBladeComponentDocsToolCallback('http');
+    const httpCallback = getBladeComponentDocsHttpCallback;
 
     // Call the tool callback with actual implementation
     const result = httpCallback(
@@ -260,13 +263,14 @@ describe('getBladeComponentDocs Tool', () => {
 
     // Get the stdio callback
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const stdioCallback = getBladeComponentDocsToolCallback('stdio') as any;
+    const stdioCallback = getBladeComponentDocsStdioCallback;
 
     // Call the tool callback with actual implementation
     const result = stdioCallback(
       {
         componentsList: testComponentsList,
         currentProjectRootDirectory: testProjectRootDirectory,
+        clientName: 'cursor',
       },
       createMockContext(),
     );
