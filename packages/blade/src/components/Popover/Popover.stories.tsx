@@ -483,6 +483,35 @@ InitialFocus.args = {
   content: <Content />,
 };
 
+const OpenInteractionTemplate: StoryFn<typeof Popover> = (args) => {
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.10">
+      <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+        <Text size="small" color="surface.text.gray.muted">
+          Click to open
+        </Text>
+        <Popover {...args}>
+          <Button>View Settlement</Button>
+        </Popover>
+      </Box>
+      <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+        <Text size="small" color="surface.text.gray.muted">
+          Hover to open
+        </Text>
+        <Popover {...args} openInteraction="hover">
+          <Button>View Settlement</Button>
+        </Popover>
+      </Box>
+    </Box>
+  );
+};
+export const OpenInteraction = OpenInteractionTemplate.bind({});
+OpenInteraction.storyName = 'With Different Open Interaction';
+OpenInteraction.args = {
+  title: 'Settlement breakup',
+  content: <Content />,
+};
+
 const StoriesPanelSwitchAlert = ({ shouldShow }: { shouldShow: boolean }) => {
   return shouldShow ? (
     <Alert
