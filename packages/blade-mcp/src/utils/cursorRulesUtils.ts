@@ -47,7 +47,6 @@ export function shouldCreateOrUpdateCursorRule(
           text: `Cursor rules do not exist. Create them using the following instructions: \n\n
           ${cursorRuleCreationInstructions({
             currentProjectRootDirectory,
-            cursorRulesVersion: CURSOR_RULES_VERSION,
           })}`,
         },
       ],
@@ -61,7 +60,6 @@ export function shouldCreateOrUpdateCursorRule(
           text: `Cursor rules are outdated. Expected version: ${CURSOR_RULES_VERSION}. Current version: ${cursorRuleVersion}. Update them using the following instructions: \n\n
           ${cursorRuleCreationInstructions({
             currentProjectRootDirectory,
-            cursorRulesVersion: CURSOR_RULES_VERSION,
           })}`,
         },
       ],

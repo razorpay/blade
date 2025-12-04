@@ -55,7 +55,6 @@ describe('cursorRulesUtils', () => {
       const testProjectRootDirectory = '/Users/test/project';
       const result = cursorRuleCreationInstructions({
         currentProjectRootDirectory: testProjectRootDirectory,
-        cursorRulesVersion: CURSOR_RULES_VERSION,
       });
       expect(result).toMatchSnapshot();
     });

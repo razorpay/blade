@@ -62,7 +62,6 @@ describe('createBladeCursorRules Tool', () => {
     // Verify cursorRuleCreationInstructions was called with correct parameter
     expect(cursorRule.cursorRuleCreationInstructions).toHaveBeenCalledWith({
       currentProjectRootDirectory: mockCurrentProjectRootDirectory,
-      cursorRulesVersion: expect.any(String),
     });
   });
 });

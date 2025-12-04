@@ -52,10 +52,7 @@ const createBladeCursorRulesCore = ({
         content: [
           {
             type: 'text',
-            text: cursorRuleCreationInstructions({
-              currentProjectRootDirectory,
-              cursorRulesVersion: CURSOR_RULES_VERSION,
-            }),
+            text: cursorRuleCreationInstructions({ currentProjectRootDirectory }),
           },
         ],
       };

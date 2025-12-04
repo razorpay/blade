@@ -11,10 +11,8 @@ const bashScriptContent = `
 
 const cursorRuleCreationInstructions = ({
   currentProjectRootDirectory,
-  cursorRulesVersion,
 }: {
   currentProjectRootDirectory: string;
-  cursorRulesVersion: string;
 }): string => `
 **Instructions:**
 
