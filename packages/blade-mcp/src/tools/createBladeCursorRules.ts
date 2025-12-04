@@ -75,10 +75,7 @@ const createBladeCursorRulesCore = ({
       }
     }
 
-    const ruleFileTemplateContent = readFileSync(BLADE_CURSOR_RULES_FILE_PATH, 'utf8').replace(
-      'rules_version: <!-- dynamic_version -->',
-      `rules_version: ${CURSOR_RULES_VERSION}`,
-    );
+    const ruleFileTemplateContent = readFileSync(BLADE_CURSOR_RULES_FILE_PATH, 'utf8');
 
     if (!existsSync(ruleFileDir)) {
       mkdirSync(ruleFileDir, { recursive: true });
