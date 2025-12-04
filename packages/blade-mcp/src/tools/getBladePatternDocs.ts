@@ -40,29 +40,18 @@ const getBladePatternDocsStdioSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-};
-
-// Schema for HTTP transport
-const getBladePatternDocsHttpSchema = {
-  patternsList: z
-    .string()
-    .describe(
-      `Comma separated list of blade pattern names. E.g. "ListView, DetailedView". Possible values: ${bladePatternsList.join(
-        ', ',
-      )}. Here is guide on how to decide which pattern to use: ${whichPatternToUseGuide}`,
-    ),
   clientName: z
     .enum(['claude', 'cursor', 'unknown'])
     .default('unknown')
     .describe(
       'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown".',
     ),
+};
+
+// Schema for HTTP transport
+const getBladePatternDocsHttpSchema = {
+  ...getBladePatternDocsStdioSchema,
   cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
-  currentProjectRootDirectory: z
-    .string()
-    .describe(
-      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
-    ),
 };
 
 // Core business logic function

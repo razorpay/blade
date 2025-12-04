@@ -31,27 +31,18 @@ const getBladeComponentDocsStdioSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-};
-
-// Schema for HTTP transport
-const getBladeComponentDocsHttpSchema = {
-  componentsList: z
-    .string()
-    .describe(
-      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsListString}`,
-    ),
   clientName: z
     .enum(['claude', 'cursor', 'unknown'])
     .default('unknown')
     .describe(
       'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown".',
     ),
+};
+
+// Schema for HTTP transport
+const getBladeComponentDocsHttpSchema = {
+  ...getBladeComponentDocsStdioSchema,
   cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
-  currentProjectRootDirectory: z
-    .string()
-    .describe(
-      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
-    ),
 };
 
 // Core business logic function

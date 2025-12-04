@@ -40,29 +40,18 @@ const getBladeGeneralDocsStdioSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
-};
-
-// Schema for HTTP transport
-const getBladeGeneralDocsHttpSchema = {
-  topicsList: z
-    .string()
-    .describe(
-      `Comma separated list of general documentation topics. E.g. "Installation, Theming". Possible values: ${bladeGeneralDocsList.join(
-        ', ',
-      )}. Here is guide on how to decide which general docs you might need:\n ${whichGeneralDocsToUse}`,
-    ),
   clientName: z
     .enum(['claude', 'cursor', 'unknown'])
     .default('unknown')
     .describe(
       'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown".',
     ),
+};
+
+// Schema for HTTP transport
+const getBladeGeneralDocsHttpSchema = {
+  ...getBladeGeneralDocsStdioSchema,
   cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
-  currentProjectRootDirectory: z
-    .string()
-    .describe(
-      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
-    ),
 };
 
 // Core business logic function
