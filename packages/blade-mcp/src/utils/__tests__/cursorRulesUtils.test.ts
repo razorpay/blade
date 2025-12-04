@@ -143,5 +143,43 @@ describe('cursorRulesUtils', () => {
 
       expect(result).toBeUndefined();
     });
+
+    describe('with skipLocalCursorRuleChecks = true and clientName = "cursor"', () => {
+      it('should return undefined when version is "0.0.8" (matches CURSOR_RULES_VERSION)', () => {
+        const result = shouldCreateOrUpdateCursorRule(
+          '0.0.8',
+          'cursor',
+          mockProjectRootDirectory,
+          true, // skipLocalCursorRuleChecks = true
+        );
+
+        expect(result).toBeUndefined();
+      });
+
+      it('should return content with update instructions when version is "0.0.0" (outdated)', () => {
+        const result = shouldCreateOrUpdateCursorRule(
+          '0.0.0',
+          'cursor',
+          mockProjectRootDirectory,
+          true, // skipLocalCursorRuleChecks = true
+        );
+
+        expect(result).toBeDefined();
+        expect(result).toMatchObject({
+          content: [
+            {
+              type: 'text',
+              text: expect.stringContaining('Cursor rules are outdated'),
+            },
+          ],
+        });
+        if (result) {
+          const text = result.content[0].text;
+          expect(text).toContain('0.0.0');
+          expect(text).toContain(CURSOR_RULES_VERSION);
+          expect(text).toContain(mockProjectRootDirectory);
+        }
+      });
+    });
   });
 });
