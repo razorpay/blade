@@ -26,9 +26,120 @@
     >
       Button Component
     </Heading>
-    <Button on:click={handleClick}>
-      Click me!
-    </Button>
+    
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Default Button
+    </Heading>
+
+    <Button size='large' variant='primary'>Click Me</Button>
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Button Variants
+    </Heading>
+
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Primary
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>Primary</Text>
+        </div>
+        <div>
+          <Button size='large' variant='primary'>Click Me</Button>
+          <Button size='large' marginLeft='spacing.4' isDisabled={true} variant='primary'>Click Me</Button>
+        </div>
+      </div>
+      <div class="btn-col">
+        <div>
+          <Text>Secondary</Text>
+        </div>
+        <div>
+          <Button size='large' variant='secondary'>Click Me</Button>
+          <Button size='large' marginLeft='spacing.4' isDisabled={true} variant='secondary'>Click Me</Button>
+        </div>
+      </div>
+      <div class="btn-col">
+        <div>
+          <Text>Tertiary</Text>
+        </div>
+        <div>
+          <Button size='large' variant='tertiary'>Click Me</Button>
+          <Button size='large' marginLeft='spacing.4' isDisabled={true} variant='tertiary'>Click Me</Button>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Positive
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>Primary</Text>
+        </div>
+        <div>
+          <Button color="positive" size='large' variant='primary'>Click Me</Button>
+          <Button color="positive" size='large' marginLeft='spacing.4' isDisabled={true} variant='primary'>Click Me</Button>
+        </div>
+      </div>
+      <div class="btn-col">
+        <div>
+          <Text>Secondary</Text>
+        </div>
+        <div>
+          <Button color="positive" size='large' variant='secondary'>Click Me</Button>
+          <Button  color="positive" size='large' marginLeft='spacing.4' isDisabled={true} variant='secondary'>Click Me</Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row btn-row-white">
+      <Heading as='h4' color='surface.text.staticWhite.normal' marginRight='spacing.4' size='small'>
+        White
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text color='surface.text.staticWhite.normal'>Primary</Text>
+        </div>
+        <div>
+          <Button color="white" size='large' variant='primary'>Click Me</Button>
+          <Button color="white" size='large' marginLeft='spacing.4' isDisabled={true} variant='primary'>Click Me</Button>
+        </div>
+      </div>
+      <div class="btn-col">
+        <div>
+          <Text color='surface.text.staticWhite.normal'>Secondary</Text>
+        </div>
+        <div>
+          <Button color="white" size='large' variant='secondary'>Click Me</Button>
+          <Button  color="white" size='large' marginLeft='spacing.4' isDisabled={true} variant='secondary'>Click Me</Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Negative
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>Primary</Text>
+        </div>
+        <div>
+          <Button color="negative" size='large' variant='primary'>Click Me</Button>
+          <Button color="negative" size='large' marginLeft='spacing.4' isDisabled={true} variant='primary'>Click Me</Button>
+        </div>
+      </div>
+      <div class="btn-col">
+        <div>
+          <Text>Secondary</Text>
+        </div>
+        <div>
+          <Button color="negative" size='large' variant='secondary'>Click Me</Button>
+          <Button  color="negative" size='large' marginLeft='spacing.4' isDisabled={true} variant='secondary'>Click Me</Button>
+        </div>
+      </div>
+    </div>
 
     <Heading
       as='h2'
@@ -277,4 +388,26 @@
     gap: var(--spacing-3);
     align-items: flex-start;
   }
+
+  .btn-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+  }
+
+  :global(body[data-theme='dark']) .btn-row-white {
+    background-color: var(--surface-background-gray-moderate);
+  }
+
+  :global(body:not([data-theme])) .btn-row-white {
+    background-color: rgb(20, 61, 82);
+  }
+
 </style>

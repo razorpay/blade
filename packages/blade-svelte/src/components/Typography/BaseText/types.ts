@@ -51,7 +51,7 @@ export type BaseTextProps = {
   truncateAfterLines?: number;
   className?: string;
   style?: string | Record<string, string | number>;
-  children: Snippet;
+  children: Snippet | string;
   accessibilityProps?: Partial<AccessibilityProps>;
   /**
    * React Native only - not applicable for Svelte but kept for API consistency
