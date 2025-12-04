@@ -3,6 +3,7 @@ import { join } from 'path';
 import { CURSOR_RULES_VERSION, CONSUMER_CURSOR_RULES_RELATIVE_PATH } from './tokens.js';
 import { hasOutDatedRules } from './generalUtils.js';
 import { handleError } from './analyticsUtils.js';
+import type { McpToolResponse } from './types.js';
 
 const bashScriptContent = `
   #!/bin/bash
@@ -83,7 +84,7 @@ function shouldCreateOrUpdateCursorRule(
   skipLocalCursorRuleChecks = false,
   toolName?: string,
   createBladeCursorRulesToolName?: string,
-): { isError?: true; content: Array<{ type: 'text'; text: string }> } | undefined {
+): McpToolResponse | undefined {
   let isMissing = false;
 
   // Check file system first if directory is provided and skipLocalCursorRuleChecks is false

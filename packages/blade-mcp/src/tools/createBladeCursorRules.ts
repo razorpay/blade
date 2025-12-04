@@ -11,6 +11,7 @@ import {
 import { hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { cursorRuleCreationInstructions } from '../utils/cursorRulesUtils.js';
+import type { McpToolResponse } from '../utils/types.js';
 
 const createBladeCursorRulesToolName = 'create_blade_cursor_rules';
 
@@ -32,10 +33,7 @@ const createBladeCursorRulesCore = ({
 }: {
   currentProjectRootDirectory: string;
   isHttpTransport?: boolean;
-}): {
-  isError?: true;
-  content: Array<{ type: 'text'; text: string }>;
-} => {
+}): McpToolResponse => {
   try {
     // For HTTP transport, return instructions instead of creating the file directly
     if (isHttpTransport) {

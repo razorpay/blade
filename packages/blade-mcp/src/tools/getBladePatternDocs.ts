@@ -12,6 +12,7 @@ import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
+import type { McpToolResponse } from '../utils/types.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
@@ -66,10 +67,7 @@ const getBladePatternDocsCore = ({
   skipLocalCursorRuleChecks?: boolean;
   cursorRuleVersion: string;
   clientName: 'claude' | 'cursor' | 'unknown';
-}): {
-  isError?: true;
-  content: Array<{ type: 'text'; text: string }>;
-} => {
+}): McpToolResponse => {
   const components = patternsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladePatternsList.includes(comp));
   if (invalidComponents.length > 0) {

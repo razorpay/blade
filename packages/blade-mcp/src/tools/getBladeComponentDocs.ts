@@ -6,6 +6,7 @@ import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
+import type { McpToolResponse } from '../utils/types.js';
 import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeComponentsList = getBladeDocsList('components');
@@ -53,10 +54,7 @@ const getBladeComponentDocsCore = ({
   skipLocalCursorRuleChecks?: boolean;
   cursorRuleVersion: string;
   clientName: 'claude' | 'cursor' | 'unknown';
-}): {
-  isError?: true;
-  content: Array<{ type: 'text'; text: string }>;
-} => {
+}): McpToolResponse => {
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
   const invalidComponentsString = invalidComponents.join(', ');
