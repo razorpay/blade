@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.20.0
+
+### Minor Changes
+
+- 0dbcbb6c2: feat(blade): added openInteraction prop for hover/click trigger on popover component
+
 ## 1.19.0
 
 ### Minor Changes
