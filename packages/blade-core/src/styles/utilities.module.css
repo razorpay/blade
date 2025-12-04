@@ -412,3 +412,62 @@
 .color-feedback-text-neutral-subtle { color: var(--feedback-text-neutral-subtle); }
 .color-feedback-text-neutral-intense { color: var(--feedback-text-neutral-intense); }
 
+/* Background Color Utilities */
+/* Pattern: background-{token-path} where dots are replaced with hyphens */
+/* Example: interactive.background.primary.default -> background-interactive-background-primary-default */
+
+/* Interactive Background Colors */
+.background-interactive-background-primary-default { background-color: var(--interactive-background-primary-default); }
+.background-interactive-background-primary-highlighted { background-color: var(--interactive-background-primary-highlighted); }
+.background-interactive-background-primary-disabled { background-color: var(--interactive-background-primary-disabled); }
+.background-interactive-background-primary-faded { background-color: var(--interactive-background-primary-faded); }
+.background-interactive-background-primary-faded-highlighted { background-color: var(--interactive-background-primary-faded-highlighted); }
+
+.background-interactive-background-positive-default { background-color: var(--interactive-background-positive-default); }
+.background-interactive-background-positive-highlighted { background-color: var(--interactive-background-positive-highlighted); }
+.background-interactive-background-positive-disabled { background-color: var(--interactive-background-positive-disabled); }
+.background-interactive-background-positive-faded { background-color: var(--interactive-background-positive-faded); }
+.background-interactive-background-positive-faded-highlighted { background-color: var(--interactive-background-positive-faded-highlighted); }
+
+.background-interactive-background-negative-default { background-color: var(--interactive-background-negative-default); }
+.background-interactive-background-negative-highlighted { background-color: var(--interactive-background-negative-highlighted); }
+.background-interactive-background-negative-disabled { background-color: var(--interactive-background-negative-disabled); }
+.background-interactive-background-negative-faded { background-color: var(--interactive-background-negative-faded); }
+.background-interactive-background-negative-faded-highlighted { background-color: var(--interactive-background-negative-faded-highlighted); }
+
+.background-interactive-background-gray-default { background-color: var(--interactive-background-gray-default); }
+.background-interactive-background-gray-highlighted { background-color: var(--interactive-background-gray-highlighted); }
+.background-interactive-background-gray-disabled { background-color: var(--interactive-background-gray-disabled); }
+.background-interactive-background-gray-faded { background-color: var(--interactive-background-gray-faded); }
+.background-interactive-background-gray-faded-highlighted { background-color: var(--interactive-background-gray-faded-highlighted); }
+
+.background-interactive-background-staticWhite-default { background-color: var(--interactive-background-static-white-default); }
+.background-interactive-background-staticWhite-highlighted { background-color: var(--interactive-background-static-white-highlighted); }
+.background-interactive-background-staticWhite-disabled { background-color: var(--interactive-background-static-white-disabled); }
+.background-interactive-background-staticWhite-faded { background-color: var(--interactive-background-static-white-faded); }
+.background-interactive-background-staticWhite-faded-highlighted { background-color: var(--interactive-background-static-white-faded-highlighted); }
+
+/* Interactive Border Colors */
+.border-interactive-border-primary-default { border-color: var(--interactive-border-primary-default); }
+.border-interactive-border-primary-highlighted { border-color: var(--interactive-border-primary-highlighted); }
+.border-interactive-border-primary-disabled { border-color: var(--interactive-border-primary-disabled); }
+
+.border-interactive-border-positive-default { border-color: var(--interactive-border-positive-default); }
+.border-interactive-border-positive-highlighted { border-color: var(--interactive-border-positive-highlighted); }
+.border-interactive-border-positive-disabled { border-color: var(--interactive-border-positive-disabled); }
+
+.border-interactive-border-negative-default { border-color: var(--interactive-border-negative-default); }
+.border-interactive-border-negative-highlighted { border-color: var(--interactive-border-negative-highlighted); }
+.border-interactive-border-negative-disabled { border-color: var(--interactive-border-negative-disabled); }
+
+.border-interactive-border-gray-default { border-color: var(--interactive-border-gray-default); }
+.border-interactive-border-gray-highlighted { border-color: var(--interactive-border-gray-highlighted); }
+.border-interactive-border-gray-disabled { border-color: var(--interactive-border-gray-disabled); }
+.border-interactive-border-gray-faded { border-color: var(--interactive-border-gray-faded); }
+
+.border-interactive-border-staticWhite-highlighted { border-color: var(--interactive-border-static-white-highlighted); }
+.border-interactive-border-staticWhite-disabled { border-color: var(--interactive-border-static-white-disabled); }
+
+/* Transparent */
+.background-transparent { background-color: transparent; }
+

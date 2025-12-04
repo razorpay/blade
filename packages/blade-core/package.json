@@ -76,6 +76,7 @@
       "production": "./dist/lib/web/production/tokens/index.js",
       "default": "./dist/lib/web/production/tokens/index.js"
     },
+    "./tokens/theme.css": "./src/tokens/theme.css",
     "./utils": {
       "types": "./dist/types/utils/index.d.ts",
       "development": "./dist/lib/web/development/utils/index.js",

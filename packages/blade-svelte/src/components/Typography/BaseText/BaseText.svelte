@@ -81,6 +81,10 @@
   {...metaAttrs}
   {...analyticsAttrs}
 >
-  {@render children()}
+  {#if typeof children === 'string'}
+    {children}
+  {:else}
+    {@render children()}
+  {/if}
 </svelte:element>
 
