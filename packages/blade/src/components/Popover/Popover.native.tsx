@@ -85,6 +85,7 @@ const Popover = ({
       close: handleClose,
       defaultInitialFocusRef,
       titleId: undefined,
+      openInteraction: 'click' as const,
     };
   }, [handleClose]);
 
