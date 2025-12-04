@@ -80,7 +80,6 @@ type PopoverContentProps = {
    * react-native only
    */
   side?: Side;
-  openInteraction?: 'hover' | 'click';
 } & Pick<PopoverProps, 'title' | 'titleLeading' | 'footer' | 'children'>;
 
 type PopoverContentWrapperProps = {

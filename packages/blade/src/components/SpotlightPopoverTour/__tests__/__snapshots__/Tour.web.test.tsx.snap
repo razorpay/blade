@@ -40,15 +40,6 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  position: absolute;
-  z-index: 1;
-  padding: 4px;
-  top: 4px;
-  right: 4px;
-  border-radius: 9999px;
-}
-
-.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,7 +55,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 24px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -123,7 +114,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -140,7 +131,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -231,7 +222,7 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   min-height: 32px;
   width: auto;
   cursor: pointer;
@@ -268,24 +259,24 @@ exports[`<Tour /> should render 1`] = `
   position: relative;
 }
 
-.c14.c14.c14.c14.c14:hover {
+.c13.c13.c13.c13.c13:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c14.c14.c14.c14.c14:active {
+.c13.c13.c13.c13.c13:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c14.c14.c14.c14.c14:focus-visible {
+.c13.c13.c13.c13.c13:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c14.c14.c14.c14.c14 * {
+.c13.c13.c13.c13.c13 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -445,10 +436,6 @@ exports[`<Tour /> should render 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class="c10"
-            data-blade-component="base-box"
-          />
-          <div
             class=""
             data-blade-component="base-box"
           >
@@ -464,11 +451,11 @@ exports[`<Tour /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c11"
+              class="c10"
               data-blade-component="box"
             >
               <p
-                class="c12"
+                class="c11"
                 data-blade-component="text"
               >
                 1
@@ -476,11 +463,11 @@ exports[`<Tour /> should render 1`] = `
                 2
               </p>
               <div
-                class="c13"
+                class="c12"
                 data-blade-component="box"
               >
                 <button
-                  class="c14"
+                  class="c13"
                   data-analytics-active-step="1"
                   data-analytics-name="spotlight-popover-tour-footer-primary-action-button"
                   data-analytics-total-steps="2"
@@ -497,7 +484,7 @@ exports[`<Tour /> should render 1`] = `
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c15"
+                        class="c14"
                         data-blade-component="base-text"
                       >
                         Next

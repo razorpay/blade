@@ -115,8 +115,9 @@ const Popover = ({
       close,
       defaultInitialFocusRef,
       titleId,
+      openInteraction,
     };
-  }, [close, titleId]);
+  }, [close, titleId, openInteraction]);
 
   // Inject aria attributes to trigger
   // Doing it this way instead of makeAccessible()
@@ -143,7 +144,9 @@ const Popover = ({
       {isMounted && (
         <FloatingPortal>
           <FloatingFocusManager
-            initialFocus={initialFocusRef ?? defaultInitialFocusRef}
+            initialFocus={
+              initialFocusRef ?? (openInteraction === 'hover' ? -1 : defaultInitialFocusRef)
+            }
             context={context}
             modal={true}
             guards={true}
@@ -163,7 +166,6 @@ const Popover = ({
                 titleLeading={titleLeading}
                 footer={footer}
                 style={styles}
-                openInteraction={openInteraction}
                 arrow={
                   <PopupArrow
                     ref={arrowRef}

@@ -12,18 +12,18 @@ import { useIsMobile } from '~utils/useIsMobile';
 type PopoverHeaderProps = {
   title?: string;
   titleLeading?: React.ReactNode;
-  openInteraction?: 'hover' | 'click';
 };
 
-const PopoverHeader = ({
-  title,
-  titleLeading,
-  openInteraction,
-}: PopoverHeaderProps): React.ReactElement => {
-  const { titleId } = usePopoverContext();
+const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.ReactElement | null => {
+  const { titleId, openInteraction } = usePopoverContext();
 
+  const showCloseButton = openInteraction === 'click';
   const isFloating = !(title || titleLeading);
+
   if (isFloating) {
+    if (!showCloseButton) {
+      return null;
+    }
     return (
       <BaseBox
         borderRadius="max"
@@ -33,7 +33,7 @@ const PopoverHeader = ({
         right="spacing.2"
         zIndex={1}
       >
-        {openInteraction === 'click' ? <PopoverCloseButton /> : null}
+        <PopoverCloseButton />
       </BaseBox>
     );
   }
@@ -56,18 +56,17 @@ const PopoverHeader = ({
           </Text>
         </BaseBox>
       ) : null}
-      <BaseBox marginLeft="auto">
-        {openInteraction === 'click' ? <PopoverCloseButton /> : null}
-      </BaseBox>
+      {showCloseButton ? (
+        <BaseBox marginLeft="auto">
+          <PopoverCloseButton />
+        </BaseBox>
+      ) : null}
     </BaseBox>
   );
 };
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
-  (
-    { children, title, titleLeading, footer, arrow, side, style, isVisible, openInteraction },
-    ref,
-  ) => {
+  ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
     const isMobile = useIsMobile();
     return (
       <PopoverContentWrapper
@@ -78,11 +77,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         isMobile={isMobile}
       >
         <BaseBox padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-          <PopoverHeader
-            title={title}
-            titleLeading={titleLeading}
-            openInteraction={openInteraction}
-          />
+          <PopoverHeader title={title} titleLeading={titleLeading} />
           <BaseBox>{children}</BaseBox>
           {footer ? <BaseBox>{footer}</BaseBox> : null}
         </BaseBox>

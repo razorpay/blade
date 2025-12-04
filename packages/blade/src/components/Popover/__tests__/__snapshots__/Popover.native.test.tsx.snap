@@ -296,29 +296,6 @@ exports[`<Popover /> should render 1`] = `
           }
         >
           <View
-            borderRadius="max"
-            data-blade-component="base-box"
-            position="absolute"
-            right="spacing.2"
-            style={
-              [
-                {
-                  "borderRadius": 9999,
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
-                  "position": "absolute",
-                  "right": 4,
-                  "top": 4,
-                  "zIndex": 1,
-                },
-              ]
-            }
-            top="spacing.2"
-            zIndex={1}
-          />
-          <View
             data-blade-component="base-box"
             style={
               [
@@ -755,29 +732,6 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             ]
           }
         >
-          <View
-            borderRadius="max"
-            data-blade-component="base-box"
-            position="absolute"
-            right="spacing.2"
-            style={
-              [
-                {
-                  "borderRadius": 9999,
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
-                  "position": "absolute",
-                  "right": 4,
-                  "top": 4,
-                  "zIndex": 1,
-                },
-              ]
-            }
-            top="spacing.2"
-            zIndex={1}
-          />
           <View
             data-blade-component="base-box"
             style={
@@ -1367,16 +1321,6 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 This is title
               </Text>
             </View>
-            <View
-              data-blade-component="base-box"
-              style={
-                [
-                  {
-                    "marginLeft": "auto",
-                  },
-                ]
-              }
-            />
           </View>
           <View
             data-blade-component="base-box"
