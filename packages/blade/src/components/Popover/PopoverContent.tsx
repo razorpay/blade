@@ -12,9 +12,14 @@ import { useIsMobile } from '~utils/useIsMobile';
 type PopoverHeaderProps = {
   title?: string;
   titleLeading?: React.ReactNode;
+  openInteraction?: 'hover' | 'click';
 };
 
-const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.ReactElement => {
+const PopoverHeader = ({
+  title,
+  titleLeading,
+  openInteraction,
+}: PopoverHeaderProps): React.ReactElement => {
   const { titleId } = usePopoverContext();
 
   const isFloating = !(title || titleLeading);
@@ -28,7 +33,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
         right="spacing.2"
         zIndex={1}
       >
-        <PopoverCloseButton />
+        {openInteraction === 'click' ? <PopoverCloseButton /> : null}
       </BaseBox>
     );
   }
@@ -52,14 +57,17 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
         </BaseBox>
       ) : null}
       <BaseBox marginLeft="auto">
-        <PopoverCloseButton />
+        {openInteraction === 'click' ? <PopoverCloseButton /> : null}
       </BaseBox>
     </BaseBox>
   );
 };
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
-  ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
+  (
+    { children, title, titleLeading, footer, arrow, side, style, isVisible, openInteraction },
+    ref,
+  ) => {
     const isMobile = useIsMobile();
     return (
       <PopoverContentWrapper
@@ -70,7 +78,11 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         isMobile={isMobile}
       >
         <BaseBox padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-          <PopoverHeader title={title} titleLeading={titleLeading} />
+          <PopoverHeader
+            title={title}
+            titleLeading={titleLeading}
+            openInteraction={openInteraction}
+          />
           <BaseBox>{children}</BaseBox>
           {footer ? <BaseBox>{footer}</BaseBox> : null}
         </BaseBox>

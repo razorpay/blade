@@ -60,6 +60,12 @@ type PopoverProps = {
    * @default PopoverCloseButton
    */
   initialFocusRef?: React.RefObject<any>;
+  /**
+   * Should popover open on click or hover
+   *
+   * @default 'click'
+   */
+  openInteraction?: 'hover' | 'click';
 } & DataAnalyticsAttribute;
 
 type PopoverContentProps = {
@@ -74,6 +80,7 @@ type PopoverContentProps = {
    * react-native only
    */
   side?: Side;
+  openInteraction?: 'hover' | 'click';
 } & Pick<PopoverProps, 'title' | 'titleLeading' | 'footer' | 'children'>;
 
 type PopoverContentWrapperProps = {
