@@ -109,25 +109,9 @@ exports[`InputGroup should handle validation states correctly 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-.c18.c18.c18.c18.c18 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .c0.c0.c0.c0.c0 .__blade-input-row .__blade-base-input-wrapper,
@@ -246,7 +230,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -264,7 +248,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
   word-break: break-word;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   display: block;
 }
 
@@ -579,16 +563,16 @@ exports[`InputGroup should handle validation states correctly 1`] = `
             id="input-group-255-errortext-257"
           >
             <span
-              class="c17"
+              class="c4"
               data-blade-component="base-box"
             >
               <div
-                class="c18"
+                class="c17"
                 data-blade-component="box"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c18"
                   data-blade-component="icon"
                   fill="none"
                   height="12px"
@@ -615,7 +599,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
                 </svg>
               </div>
               <span
-                class="c20"
+                class="c19"
                 data-blade-component="text"
               >
                 Error message
