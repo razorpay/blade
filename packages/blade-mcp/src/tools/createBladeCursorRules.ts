@@ -122,19 +122,10 @@ const createBladeCursorRulesHttpCallback: ToolCallback<typeof createBladeCursorR
     isHttpTransport: true,
   });
 };
-
-const createBladeCursorRulesToolCallback = (
-  transportType: 'stdio' | 'http',
-): typeof createBladeCursorRulesStdioCallback | typeof createBladeCursorRulesHttpCallback => {
-  if (transportType === 'stdio') {
-    return createBladeCursorRulesStdioCallback;
-  }
-  return createBladeCursorRulesHttpCallback;
-};
-
 export {
   createBladeCursorRulesToolName,
   createBladeCursorRulesToolDescription,
   createBladeCursorRulesToolSchema,
-  createBladeCursorRulesToolCallback,
+  createBladeCursorRulesStdioCallback,
+  createBladeCursorRulesHttpCallback,
 };

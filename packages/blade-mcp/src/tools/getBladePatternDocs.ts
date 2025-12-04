@@ -162,27 +162,22 @@ const getBladePatternDocsHttpCallback: ToolCallback<typeof getBladePatternDocsHt
   });
 };
 
-const getBladePatternDocsToolSchema = (
-  transportType: 'stdio' | 'http',
-): typeof getBladePatternDocsStdioSchema | typeof getBladePatternDocsHttpSchema => {
-  if (transportType === 'stdio') {
-    return getBladePatternDocsStdioSchema;
-  }
-  return getBladePatternDocsHttpSchema;
-};
-
+// Helper function to get the appropriate callback based on transport type
 const getBladePatternDocsToolCallback = (
-  transportType: 'stdio' | 'http',
-): typeof getBladePatternDocsStdioCallback | typeof getBladePatternDocsHttpCallback => {
-  if (transportType === 'stdio') {
-    return getBladePatternDocsStdioCallback;
+  transportType: 'http' | 'stdio',
+): typeof getBladePatternDocsHttpCallback | typeof getBladePatternDocsStdioCallback => {
+  if (transportType === 'http') {
+    return getBladePatternDocsHttpCallback;
   }
-  return getBladePatternDocsHttpCallback;
+  return getBladePatternDocsStdioCallback;
 };
 
 export {
   getBladePatternDocsToolName,
   getBladePatternDocsToolDescription,
-  getBladePatternDocsToolSchema,
+  getBladePatternDocsStdioCallback,
+  getBladePatternDocsHttpCallback,
+  getBladePatternDocsStdioSchema,
+  getBladePatternDocsHttpSchema,
   getBladePatternDocsToolCallback,
 };

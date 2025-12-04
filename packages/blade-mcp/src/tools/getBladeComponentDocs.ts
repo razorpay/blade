@@ -146,27 +146,23 @@ const getBladeComponentDocsHttpCallback: ToolCallback<typeof getBladeComponentDo
   });
 };
 
-const getBladeComponentDocsToolSchema = (
-  transportType: 'stdio' | 'http',
-): typeof getBladeComponentDocsStdioSchema | typeof getBladeComponentDocsHttpSchema => {
-  if (transportType === 'stdio') {
-    return getBladeComponentDocsStdioSchema;
+// Helper function to get the appropriate callback based on transport type
+const getBladeComponentDocsToolCallback = (
+  transportType: 'http' | 'stdio',
+): typeof getBladeComponentDocsHttpCallback | typeof getBladeComponentDocsStdioCallback => {
+  if (transportType === 'http') {
+    return getBladeComponentDocsHttpCallback;
   }
-  return getBladeComponentDocsHttpSchema;
+  return getBladeComponentDocsStdioCallback;
 };
 
-const getBladeComponentDocsToolCallback = (
-  transportType: 'stdio' | 'http',
-): typeof getBladeComponentDocsStdioCallback | typeof getBladeComponentDocsHttpCallback => {
-  if (transportType === 'stdio') {
-    return getBladeComponentDocsStdioCallback;
-  }
-  return getBladeComponentDocsHttpCallback;
-};
 // Export all at once
 export {
   getBladeComponentDocsToolName,
   getBladeComponentDocsToolDescription,
-  getBladeComponentDocsToolSchema,
+  getBladeComponentDocsHttpCallback,
+  getBladeComponentDocsStdioCallback,
+  getBladeComponentDocsStdioSchema,
+  getBladeComponentDocsHttpSchema,
   getBladeComponentDocsToolCallback,
 };
