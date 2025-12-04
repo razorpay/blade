@@ -336,7 +336,7 @@ type ToastContainerProps = {
    * Custom z-index value for the toast container.
    * This is useful when you want to position toasts above other elements like modals.
    *
-   * @default 2000
+   * @default 2001
    */
   zIndex?: number;
 };
