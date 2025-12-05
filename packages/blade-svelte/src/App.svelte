@@ -6,12 +6,31 @@
   import Heading from './components/Typography/Heading/Heading.svelte';
   import Code from './components/Typography/Code/Code.svelte';
   
+  let isLoading = $state(false);
+  let isLoading2 = $state(false);
+  
   function handleClick(): void {
     alert('Button clicked!')
   }
 
   function handleLinkClick(event: MouseEvent): void {
     console.log('Link clicked!', event)
+  }
+
+  function handleLoadingClick(): void {
+    isLoading = true;
+    // Simulate async operation
+    setTimeout(() => {
+      isLoading = false;
+    }, 2000);
+  }
+
+  function handleLoadingClick2(): void {
+    isLoading2 = true;
+    // Simulate async operation
+    setTimeout(() => {
+      isLoading2 = false;
+    }, 2000);
   }
 </script>
 
@@ -137,6 +156,72 @@
         <div>
           <Button color="negative" size='large' variant='secondary'>Click Me</Button>
           <Button  color="negative" size='large' marginLeft='spacing.4' isDisabled={true} variant='secondary'>Click Me</Button>
+        </div>
+      </div>
+    </div>
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Button Loading State
+    </Heading>
+
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Loading Examples
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>Primary Loading</Text>
+        </div>
+        <div>
+          <Button size='large' variant='primary' isLoading={true}>Loading...</Button>
+          <Button size='large' marginLeft='spacing.4' variant='primary' isLoading={isLoading} onClick={handleLoadingClick}>
+            {isLoading ? 'Loading...' : 'Click to Load'}
+          </Button>
+        </div>
+      </div>
+      <div class="btn-col">
+        <div>
+          <Text>Secondary Loading</Text>
+        </div>
+        <div>
+          <Button size='large' variant='secondary' isLoading={true}>Loading...</Button>
+          <Button size='large' marginLeft='spacing.4' variant='secondary' isLoading={isLoading2} onClick={handleLoadingClick2}>
+            {isLoading2 ? 'Loading...' : 'Click to Load'}
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Loading Sizes
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>All Sizes</Text>
+        </div>
+        <div style="display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap;">
+          <Button size='xsmall' variant='primary' isLoading={true}>Pay Now</Button>
+          <Button size='small' variant='primary' isLoading={true}>Pay Now</Button>
+          <Button size='medium' variant='primary' isLoading={true}>Pay Now</Button>
+          <Button size='large' variant='primary' isLoading={true}>Pay Now</Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Loading Colors
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>Color Variants</Text>
+        </div>
+        <div style="display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap;">
+          <Button size='large' variant='primary' color='primary' isLoading={true}>Pay Now</Button>
+          <Button size='large' variant='primary' color='positive' isLoading={true}>Pay Now</Button>
+          <Button size='large' variant='primary' color='negative' isLoading={true}>Pay Now</Button>
+          <Button size='large' variant='secondary' color='primary' isLoading={true}>Pay Now</Button>
         </div>
       </div>
     </div>

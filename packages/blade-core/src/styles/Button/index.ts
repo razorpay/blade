@@ -8,11 +8,13 @@ export {
   buttonContentClass,
   buttonIconClass,
   loadingSpinnerClass,
+  loadingClass,
   getButtonBackgroundColorToken,
   getButtonTextColorToken,
   getButtonTextSizes,
   getButtonMinHeight,
   getButtonIconSize,
   getButtonIconOnlySize,
+  getButtonSpinnerSize,
 } from './button';
 export type { ButtonVariants, ButtonColor, ButtonVariant, ActionStatesType } from './button';
