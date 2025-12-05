@@ -14,7 +14,6 @@ import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
 import type { McpToolResponse } from '../utils/types.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
-import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladePatternsList = getBladeDocsList('patterns');
 const whichPatternToUseGuide = readFileSync(
@@ -65,7 +64,7 @@ const getBladePatternDocsCore = ({
   patternsList: string;
   currentProjectRootDirectory?: string;
   skipLocalCursorRuleChecks?: boolean;
-  cursorRuleVersion: string;
+  cursorRuleVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
   const components = patternsList.split(',').map((s) => s.trim());
@@ -89,7 +88,6 @@ const getBladePatternDocsCore = ({
       currentProjectRootDirectory,
       skipLocalCursorRuleChecks,
       getBladePatternDocsToolName,
-      createBladeCursorRulesToolName,
     );
     if (createOrUpdateCursorRule) {
       return createOrUpdateCursorRule;
@@ -142,7 +140,6 @@ const getBladePatternDocsStdioCallback: ToolCallback<typeof getBladePatternDocsS
     patternsList,
     currentProjectRootDirectory,
     skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
-    cursorRuleVersion: '0',
     clientName,
   });
 };

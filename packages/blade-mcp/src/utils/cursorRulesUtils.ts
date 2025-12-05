@@ -1,5 +1,7 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
+// eslint-disable-next-line import/no-cycle
+import { createBladeCursorRulesToolName } from '../tools/createBladeCursorRules.js';
 import { CURSOR_RULES_VERSION, CONSUMER_CURSOR_RULES_RELATIVE_PATH } from './tokens.js';
 import { hasOutDatedRules } from './generalUtils.js';
 import { handleError } from './analyticsUtils.js';
@@ -74,16 +76,14 @@ function areCursorRulesOutdated(
  * @param currentProjectRootDirectory - The working root directory of the consumer's project
  * @param skipLocalCursorRuleChecks - If true, skip file system checks and only check versions (for HTTP transport)
  * @param toolName - The name of the tool calling this function (for error messages)
- * @param createBladeCursorRulesToolName - The name of the tool to create cursor rules (for error messages)
  * @returns Error format for stdio transport or content format for HTTP transport if cursor rules need attention, undefined otherwise
  */
 function shouldCreateOrUpdateCursorRule(
-  cursorRuleVersion: string,
+  cursorRuleVersion = '0',
   clientName: 'claude' | 'cursor' | 'unknown',
   currentProjectRootDirectory: string,
   skipLocalCursorRuleChecks = false,
   toolName?: string,
-  createBladeCursorRulesToolName?: string,
 ): McpToolResponse | undefined {
   let isMissing = false;
 
@@ -116,7 +116,7 @@ function shouldCreateOrUpdateCursorRule(
   }
 
   // For stdio transport (skipLocalCursorRuleChecks = false), return error format
-  if (!skipLocalCursorRuleChecks && toolName && createBladeCursorRulesToolName) {
+  if (!skipLocalCursorRuleChecks && toolName) {
     return handleError({
       toolName,
       mcpErrorMessage: isMissing

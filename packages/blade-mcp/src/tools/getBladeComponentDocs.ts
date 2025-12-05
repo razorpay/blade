@@ -7,7 +7,6 @@ import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
 import type { McpToolResponse } from '../utils/types.js';
-import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const bladeComponentsList = getBladeDocsList('components');
 const bladeComponentsListString = bladeComponentsList.join(', ');
@@ -46,13 +45,13 @@ const getBladeComponentDocsCore = ({
   componentsList,
   currentProjectRootDirectory,
   skipLocalCursorRuleChecks = false,
-  cursorRuleVersion,
+  cursorRuleVersion = '0',
   clientName,
 }: {
   componentsList: string;
   currentProjectRootDirectory?: string;
   skipLocalCursorRuleChecks?: boolean;
-  cursorRuleVersion: string;
+  cursorRuleVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
   const components = componentsList.split(',').map((s) => s.trim());
@@ -73,7 +72,6 @@ const getBladeComponentDocsCore = ({
       currentProjectRootDirectory,
       skipLocalCursorRuleChecks,
       getBladeComponentDocsToolName,
-      createBladeCursorRulesToolName,
     );
     if (createOrUpdateCursorRule) {
       return createOrUpdateCursorRule;
@@ -126,7 +124,6 @@ const getBladeComponentDocsStdioCallback: ToolCallback<typeof getBladeComponentD
     componentsList,
     currentProjectRootDirectory,
     skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
-    cursorRuleVersion: '0',
     clientName,
   });
 };

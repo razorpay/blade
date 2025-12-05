@@ -5,7 +5,6 @@ import { analyticsToolCallEventName } from '../utils/tokens.js';
 
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
-import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
 
 const createNewBladeProjectToolName = 'create_new_blade_project';
 
@@ -44,10 +43,9 @@ const createNewBladeProjectToolCallback: ToolCallback<typeof createNewBladeProje
 
             ## Steps:
             1. Create the project using degit: \`npx degit razorpay/blade/packages/blade-mcp/base-blade-template\`
-            2. Call \`${createBladeCursorRulesToolName}\` to create the cursor rules.
-            3. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.
-            4. Always start the development server using \`npm run dev\` (if its not already running) before starting to code. Do not start it again after writing code.
-            5. Start coding in App.tsx. Use \`${getBladeComponentDocsToolName}\` to get information about the components.
+            2. Run \`npm install --legacy-peer-deps && npm install @razorpay/blade@latest --legacy-peer-deps\` to install the latest blade.
+            3. Always start the development server using \`npm run dev\` (if its not already running) before starting to code. Do not start it again after writing code.
+            4. Start coding in App.tsx. Use \`${getBladeComponentDocsToolName}\` to get information about the components.
           `,
         },
       ],
