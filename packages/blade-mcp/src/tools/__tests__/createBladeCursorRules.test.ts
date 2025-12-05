@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createBladeCursorRulesToolCallback } from '../createBladeCursorRules.js';
+import { createBladeCursorRulesHttpCallback } from '../createBladeCursorRules.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
 
@@ -28,8 +28,8 @@ describe('createBladeCursorRules Tool', () => {
     // Mock the cursorRuleCreationInstructions function
     vi.spyOn(cursorRulesUtils, 'cursorRuleCreationInstructions').mockReturnValue(mockInstructions);
 
-    // Call the tool callback
-    const result = createBladeCursorRulesToolCallback(
+    // Call the HTTP callback directly with arguments and context (HTTP returns instructions)
+    const result = createBladeCursorRulesHttpCallback(
       {
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
       },
@@ -42,7 +42,7 @@ describe('createBladeCursorRules Tool', () => {
       properties: {
         toolName: 'create_blade_cursor_rules',
         cursorRulesVersion: expect.any(String),
-        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+        rootDirectoryName: expect.any(String),
       },
     });
 
@@ -57,8 +57,8 @@ describe('createBladeCursorRules Tool', () => {
     }
 
     // Verify cursorRuleCreationInstructions was called with correct parameter
-    expect(cursorRulesUtils.cursorRuleCreationInstructions).toHaveBeenCalledWith(
-      mockCurrentProjectRootDirectory,
-    );
+    expect(cursorRulesUtils.cursorRuleCreationInstructions).toHaveBeenCalledWith({
+      currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+    });
   });
 });

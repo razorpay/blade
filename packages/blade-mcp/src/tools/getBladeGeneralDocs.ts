@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { join, basename } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
@@ -12,6 +12,7 @@ import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
+import type { McpToolResponse } from '../utils/types.js';
 
 const bladeGeneralDocsList = getBladeDocsList('general');
 
@@ -24,7 +25,8 @@ const whichGeneralDocsToUse = readFileSync(
 
 const getBladeGeneralDocsToolDescription = `Fetch general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines.`;
 
-const getBladeGeneralDocsToolSchema = {
+// Schema for stdio transport
+const getBladeGeneralDocsStdioSchema = {
   topicsList: z
     .string()
     .describe(
@@ -41,17 +43,30 @@ const getBladeGeneralDocsToolSchema = {
     .enum(['claude', 'cursor', 'unknown'])
     .default('unknown')
     .describe(
-      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
+      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown".',
     ),
+};
+
+// Schema for HTTP transport
+const getBladeGeneralDocsHttpSchema = {
+  ...getBladeGeneralDocsStdioSchema,
   cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
 };
 
-const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsToolSchema> = ({
+// Core business logic function
+const getBladeGeneralDocsCore = ({
   topicsList,
   currentProjectRootDirectory,
+  skipLocalCursorRuleChecks = false,
+  cursorRuleVersion = '0',
   clientName,
-  cursorRuleVersion,
-}) => {
+}: {
+  topicsList: string;
+  currentProjectRootDirectory?: string;
+  skipLocalCursorRuleChecks?: boolean;
+  cursorRuleVersion?: string;
+  clientName: 'claude' | 'cursor' | 'unknown';
+}): McpToolResponse => {
   const topics = topicsList.split(',').map((s) => s.trim());
   const invalidTopics = topics.filter((topic) => !bladeGeneralDocsList.includes(topic));
   if (invalidTopics.length > 0) {
@@ -63,13 +78,18 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
     });
   }
 
-  const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
-    cursorRuleVersion,
-    clientName,
-    currentProjectRootDirectory,
-  );
-  if (createOrUpdateCursorRule) {
-    return createOrUpdateCursorRule;
+  // Check cursor rules using shouldCreateOrUpdateCursorRule which handles both file system and version checks
+  if (currentProjectRootDirectory) {
+    const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
+      cursorRuleVersion,
+      clientName,
+      currentProjectRootDirectory,
+      skipLocalCursorRuleChecks,
+      getBladeGeneralDocsToolName,
+    );
+    if (createOrUpdateCursorRule) {
+      return createOrUpdateCursorRule;
+    }
   }
 
   try {
@@ -83,7 +103,10 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
       properties: {
         toolName: getBladeGeneralDocsToolName,
         topicsList,
-        currentProjectRootDirectory,
+        rootDirectoryName: currentProjectRootDirectory
+          ? basename(currentProjectRootDirectory)
+          : undefined,
+        cursorRuleVersion,
         clientName,
       },
     });
@@ -104,9 +127,41 @@ const getBladeGeneralDocsToolCallback: ToolCallback<typeof getBladeGeneralDocsTo
   }
 };
 
+// Callback for stdio transport
+const getBladeGeneralDocsStdioCallback: ToolCallback<typeof getBladeGeneralDocsStdioSchema> = ({
+  topicsList,
+  currentProjectRootDirectory,
+  clientName,
+}) => {
+  return getBladeGeneralDocsCore({
+    topicsList,
+    currentProjectRootDirectory,
+    skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
+    clientName,
+  });
+};
+
+// Callback for HTTP transport
+const getBladeGeneralDocsHttpCallback: ToolCallback<typeof getBladeGeneralDocsHttpSchema> = ({
+  topicsList,
+  cursorRuleVersion,
+  clientName,
+  currentProjectRootDirectory,
+}) => {
+  return getBladeGeneralDocsCore({
+    topicsList,
+    currentProjectRootDirectory,
+    skipLocalCursorRuleChecks: true, // Skip cursor rule checks for HTTP
+    cursorRuleVersion,
+    clientName,
+  });
+};
+
 export {
   getBladeGeneralDocsToolName,
   getBladeGeneralDocsToolDescription,
-  getBladeGeneralDocsToolSchema,
-  getBladeGeneralDocsToolCallback,
+  getBladeGeneralDocsHttpCallback,
+  getBladeGeneralDocsStdioCallback,
+  getBladeGeneralDocsHttpSchema,
+  getBladeGeneralDocsStdioSchema,
 };
