@@ -11,6 +11,7 @@ import pluginCommonjs from '@rollup/plugin-commonjs';
 import pluginDeclarations from 'rollup-plugin-dts';
 import pluginAlias from '@rollup/plugin-alias';
 import pluginReplace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss';
 import ts from 'typescript';
 import { depsExternalPlugin } from '../blade/dependencies-external-plugin.mjs';
 
@@ -132,6 +133,13 @@ const getWebConfig = (inputs) => {
       depsExternalPlugin({ externalDependencies }),
       pluginResolve({ extensions: webExtensions }),
       pluginCommonjs(),
+      // PostCSS plugin for processing CSS modules with modern features (nesting, autoprefixer)
+      postcss({
+        extract: false,
+        modules: true,
+        minimize: process.env.NODE_ENV === 'production',
+        sourceMap: true,
+      }),
       pluginBabel({
         exclude: 'node_modules/**',
         babelHelpers: 'runtime',

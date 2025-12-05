@@ -2,15 +2,20 @@
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
+  import BaseSpinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import type { BaseButtonProps } from './types';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import {
     getButtonClasses,
     buttonContentClass,
     buttonIconClass,
+    loadingSpinnerClass,
+    loadingClass,
     getButtonTextColorToken,
     getButtonTextSizes,
+    getButtonSpinnerSize,
     type ActionStatesType as ButtonActionStatesType,
+    type SpinnerColor,
   } from '@razorpay/blade-core/styles';
 
   let {
@@ -117,6 +122,8 @@
   });
 
   // Compute icon color token reactively
+  // Note: Currently unused but will be needed when Icon component is implemented
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const iconColorToken = $derived(
     getButtonTextColorToken({
       variant,
@@ -129,6 +136,23 @@
   // Get text sizes
   const fontSize = $derived(textSizes.fontSize[size]);
   const lineHeight = $derived(textSizes.lineHeight[size]);
+
+  // Get spinner size based on button size
+  const spinnerSizeMap = getButtonSpinnerSize();
+  const spinnerSize = $derived(spinnerSizeMap[size]);
+
+  // Get spinner color - should match button color directly
+  // Primary → blue, Negative → red, Positive → green, White → white
+  // Spinner doesn't support 'transparent', so use 'primary' as fallback
+  const spinnerColor = $derived.by((): SpinnerColor => {
+    if (color === 'transparent') {
+      return 'primary';
+    }
+    // Direct mapping: button color → spinner color
+    // Button colors: 'primary' | 'white' | 'positive' | 'negative' | 'transparent'
+    // Spinner colors: 'primary' | 'white' | 'positive' | 'negative' | 'neutral'
+    return color as SpinnerColor;
+  });
 
   // Generate button props reactively
   const buttonProps = $derived.by(() => {
@@ -171,7 +195,7 @@
   const combinedClasses = $derived(() => {
     const classes = [
       baseButtonClasses,
-      isLoading ? 'loading' : '',
+      isLoading ? loadingClass : '',
       isPressed ? 'pressed' : '',
       'focus-ring-parent',
     ];
@@ -318,12 +342,15 @@
   {tabIndex}
 >
   {#if isLoading}
-    <div class="loading-spinner">
-      <!-- TODO: Render Spinner component when available -->
-      <span>Loading...</span>
+    <div class={loadingSpinnerClass}>
+      <BaseSpinner
+        size={spinnerSize}
+        color={spinnerColor}
+        accessibilityLabel="Loading"
+      />
     </div>
   {/if}
-  <span class={buttonContentClass + ' focus-ring-child'}>
+  <span class={buttonContentClass + (isLoading ? ' ' + loadingClass : '') + ' focus-ring-child'}>
     {#if Icon && iconPosition === 'left'}
       <span class={buttonIconClass}>
         <!-- TODO: Render Icon component when available -->

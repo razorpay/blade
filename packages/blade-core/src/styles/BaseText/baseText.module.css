@@ -1,3 +1,4 @@
+/* Base styles */
 .base {
   margin: 0;
   padding: 0;
@@ -5,10 +6,22 @@
   letter-spacing: var(--letter-spacing-100);
 }
 
-/* Text decoration color - inherits from color property (currentColor) */
+/* Text decoration variants with nested modifiers */
 .text-decoration-underline,
 .text-decoration-line-through {
   text-decoration-color: currentColor;
+
+  &.text-decoration-underline {
+    text-decoration-line: underline;
+  }
+
+  &.text-decoration-line-through {
+    text-decoration-line: line-through;
+  }
+}
+
+.text-decoration-none {
+  text-decoration-line: none;
 }
 
 /* Font style variants */
@@ -20,20 +33,7 @@
   font-style: italic;
 }
 
-/* Text decoration variants */
-.text-decoration-none {
-  text-decoration-line: none;
-}
-
-.text-decoration-underline {
-  text-decoration-line: underline;
-}
-
-.text-decoration-line-through {
-  text-decoration-line: line-through;
-}
-
-/* Text align variants */
+/* Text align variants - grouped using nesting */
 .text-align-left {
   text-align: left;
 }
@@ -243,10 +243,4 @@
 
 .letter-spacing-100 {
   letter-spacing: var(--letter-spacing-100);
-}
-
-/* Text decoration color - inherits from color property */
-.text-decoration-underline,
-.text-decoration-line-through {
-  text-decoration-color: currentColor;
 }

@@ -185,6 +185,12 @@
 .place-self-center { place-self: center; }
 .place-self-stretch { place-self: stretch; }
 
+/* Flexbox - Flex Direction */
+.flex-direction-row { flex-direction: row; }
+.flex-direction-row-reverse { flex-direction: row-reverse; }
+.flex-direction-column { flex-direction: column; }
+.flex-direction-column-reverse { flex-direction: column-reverse; }
+
 /* Flexbox - Flex Wrap */
 .flex-wrap-nowrap { flex-wrap: nowrap; }
 .flex-wrap-wrap { flex-wrap: wrap; }
@@ -470,4 +476,3 @@
 
 /* Transparent */
 .background-transparent { background-color: transparent; }
-
