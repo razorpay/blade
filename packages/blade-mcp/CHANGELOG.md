@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.20.1
+
+### Patch Changes
+
+- ff190d563: Updated tokens
+
 ## 1.20.0
 
 ### Minor Changes
