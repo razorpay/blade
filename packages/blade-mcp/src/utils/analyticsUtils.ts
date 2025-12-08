@@ -1,11 +1,27 @@
 import os from 'os';
 import crypto from 'crypto';
+import { basename } from 'path';
 import * as Sentry from '@sentry/node';
 import { Analytics } from '@segment/analytics-node';
 import { getPackageJSONVersion } from './generalUtils.js';
 import { getUserName } from './getUserName.js';
 
 let cachedMachineId: string | null = null;
+
+type MCPSSeAnalyticsContext = {
+  protocol: 'http' | 'stdio';
+};
+
+// Context to track if the current call is from MCP SSE
+let mcpSseAnalyticsContext: MCPSSeAnalyticsContext = {
+  protocol: 'stdio',
+};
+
+const setMcpSseAnalyticsContext = ({ protocol }: MCPSSeAnalyticsContext): void => {
+  mcpSseAnalyticsContext = {
+    protocol,
+  };
+};
 
 const handleError = ({
   toolName,
@@ -121,8 +137,12 @@ const sendAnalytics = ({
   try {
     const analytics = new Analytics({ writeKey: process.env.BLADE_SEGMENT_KEY ?? '' });
     // Get or create machine ID
+    const projectRootDirectory = (properties as { currentProjectRootDirectory: string })
+      ?.currentProjectRootDirectory;
     const oldUserId = getUniqueIdentifier();
-    const userId = getUserName();
+    const userId = getUserName({
+      currentProjectRootDirectory: projectRootDirectory,
+    });
     analytics.track({
       userId,
       event: eventName,
@@ -131,6 +151,8 @@ const sendAnalytics = ({
         nodeVersion: process.version,
         serverVersion: getPackageJSONVersion(),
         userName: userId,
+        rootDirectoryName: basename(projectRootDirectory),
+        ...mcpSseAnalyticsContext,
         ...properties,
       },
     });
@@ -139,8 +161,14 @@ const sendAnalytics = ({
       previousId: oldUserId,
     });
   } catch (error: unknown) {
+    // Use console.error (stderr) to avoid interfering with MCP protocol (stdout)
+    console.error('[Analytics Error]', {
+      eventName,
+      error: error instanceof Error ? error.message : String(error),
+      properties: JSON.stringify(properties),
+    });
     Sentry.captureException(error);
   }
 };
 
-export { handleError, sendAnalytics };
+export { handleError, sendAnalytics, setMcpSseAnalyticsContext };

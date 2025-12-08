@@ -352,7 +352,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -404,7 +404,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -433,15 +433,18 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -1519,7 +1522,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1571,7 +1574,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1677,15 +1680,18 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 
 .c2.c2.c2.c2.c2 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -2810,7 +2816,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -2862,7 +2868,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -2891,15 +2897,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -3557,15 +3566,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 
 .c8.c8.c8.c8.c8 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 

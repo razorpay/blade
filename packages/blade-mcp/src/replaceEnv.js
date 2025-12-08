@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Define the paths to the files to be replaced
-const SERVER_JS_PATH = path.resolve(__dirname, '../dist/server.js');
+const SENTRY_UTILS_JS_PATH = path.resolve(__dirname, '../dist/utils/sentryUtils.js');
 const FIGMA_TO_CODE_JS_PATH = path.resolve(__dirname, '../dist/tools/getFigmaToCode.js');
 const ANALYTICS_UTILS_JS_PATH = path.resolve(__dirname, '../dist/utils/analyticsUtils.js');
 
@@ -39,7 +39,7 @@ function replaceInFileSync(filePath, replacements) {
 async function replaceEnvironmentVariables() {
   try {
     // Replace NODE_ENV and SENTRY_DSN in server.js
-    replaceInFileSync(SERVER_JS_PATH, [
+    replaceInFileSync(SENTRY_UTILS_JS_PATH, [
       {
         from: /process\.env\.NODE_ENV\s*\?\?\s*['"]development['"]/g,
         to: `'${NODE_ENV}'`,

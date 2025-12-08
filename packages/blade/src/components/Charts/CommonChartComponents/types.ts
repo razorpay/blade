@@ -8,9 +8,9 @@ import type {
 } from 'recharts';
 import type { ComponentProps } from 'react';
 import type {
-  ChartColorCategories,
-  ChartCategoricalEmphasis,
-  ChartSequentialEmphasis,
+  DataColorCategories,
+  DataCategoricalEmphasis,
+  DataSequentialEmphasis,
 } from '~tokens/theme/theme';
 
 type ChartReferenceLineProps = {
@@ -51,6 +51,14 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
 
 type Layout = 'horizontal' | 'vertical';
 type Align = 'left' | 'right';
+type ChartName = 'bar' | 'donut' | 'line' | 'area';
+type DataColorMapping = Record<
+  string,
+  {
+    colorToken: ChartsCategoricalColorToken;
+    isCustomColor: boolean;
+  }
+>;
 
 type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
@@ -63,13 +71,32 @@ type ChartCartesianGridProps = Omit<
   'strokeDasharray' | 'verticalFill' | 'horizontalFill'
 >;
 
-type ChartsCategoricalColorToken = `chart.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
-type ChartSequentialColorToken = `chart.background.sequential.${Exclude<
-  ChartColorCategories,
+type ChartsCategoricalColorToken = `data.background.categorical.${DataColorCategories}.${keyof DataCategoricalEmphasis}`;
+type ChartSequentialColorToken = `data.background.sequential.${Exclude<
+  DataColorCategories,
   'gray'
->}.${keyof ChartSequentialEmphasis}`;
+>}.${keyof DataSequentialEmphasis}`;
+
+type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
+// State type - contains only the state values
+type CommonChartComponentsStateType = {
+  dataColorMapping?: DataColorMapping;
+  chartName?: ChartName;
+};
+
+// Dispatch type - contains only the updater functions
+type CommonChartComponentsDispatchType = {
+  setDataColorMapping?: (dataColorMapping: DataColorMapping) => void;
+};
+
+// Legacy combined type for backward compatibility
+type CommonChartComponentsContextType = CommonChartComponentsStateType &
+  CommonChartComponentsDispatchType;
 
 export type {
+  CommonChartComponentsContextType,
+  CommonChartComponentsStateType,
+  CommonChartComponentsDispatchType,
   ChartReferenceLineProps,
   ChartXAxisProps,
   ChartYAxisProps,
@@ -80,4 +107,6 @@ export type {
   ChartSequentialColorToken,
   Layout,
   Align,
+  DataColorMapping,
+  ChartColorToken,
 };

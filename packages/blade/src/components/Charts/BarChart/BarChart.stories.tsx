@@ -1,5 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
+import { Box } from '~components/Box';
 import {
   ChartBar,
   ChartBarWrapper,
@@ -19,43 +20,45 @@ const Page = (): React.ReactElement => {
       componentName="BarChart"
       componentDescription="A Bar Chart component built on top of Recharts with Blade design system styling."
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=92678-188719&p=f&m=dev"
-      apiDecisionLink={
-        'https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md'
-      }
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import { 
-         ChartBar,
-         ChartBarWrapper,
-         ChartXAxis,
-         ChartYAxis,
-         ChartCartesianGrid,
-         ChartTooltip,
-         ChartLegend,
-        } from '@razorpay/blade/components';
-        
-        function App() {
-          const data = [
-            { name: 'Jan', sales: 4000 },
-            { name: 'Feb', sales: 3000 },
-            { name: 'Mar', sales: 2000 },
-          ];
-          
-          return (
-              <ChartBarWrapper data={data}>
-                <ChartCartesianGrid />
-                <ChartXAxis dataKey="name" />
-                <ChartYAxis />
-                <ChartTooltip />
-                <ChartLegend />
-                <ChartBar dataKey="sales" name="Sales" />
-              </ChartBarWrapper>
-          )
-        }
+            import {
+             ChartBar,
+             ChartBarWrapper,
+             ChartXAxis,
+             ChartYAxis,
+             ChartCartesianGrid,
+             ChartTooltip,
+             ChartLegend,
+             Box,
+           } from '@razorpay/blade/components';
+           
+           function App() {
+             const data = [
+               { name: 'Jan', sales: 4000 },
+               { name: 'Feb', sales: 3000 },
+               { name: 'Mar', sales: 2000 },
+             ];
+           
+             return (
+               <Box width="400px" height="400px">
+                 <ChartBarWrapper data={data}>
+                   <ChartCartesianGrid />
+                   <ChartXAxis dataKey="name" />
+                   <ChartYAxis />
+                   <ChartTooltip />
+                   <ChartLegend />
+                   <ChartBar dataKey="sales" name="Sales" />
+                 </ChartBarWrapper>
+               </Box>
+             );
+           }
+           
+           export default App;
 
-        export default App;
       `}
       </Sandbox>
     </StoryPageWrapper>
@@ -125,37 +128,53 @@ const chartData = [
   { name: 'Dec', seriesA: 1200, seriesB: 4600, seriesC: 2000 },
 ];
 
+const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  return (
+    <Box
+      width="100%"
+      height="100%"
+      backgroundColor="surface.background.gray.intense"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      padding="spacing.8"
+      borderRadius="medium"
+    >
+      {' '}
+      {children}{' '}
+    </Box>
+  );
+};
+
 export const DefaultChart: StoryFn<typeof ChartBar> = ({
   dataKey = 'seriesA',
   name = 'Series A',
   ...props
 }) => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <ChartBarWrapper data={chartData.slice(0, 6)}>
-        <ChartCartesianGrid />
-        <ChartXAxis dataKey="name" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartBar
-          dataKey={dataKey}
-          name={name}
-          color="chart.background.categorical.azure.moderate"
-          {...props}
-        />
-      </ChartBarWrapper>
-    </div>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={chartData.slice(0, 6)}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar dataKey={dataKey} name={name} {...props} />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
 export const TinyBarChart: StoryFn<typeof ChartBar> = () => {
   return (
-    <div style={{ width: '100px', height: '50px' }}>
-      <ChartBarWrapper data={chartData.slice(0, 6)}>
-        <ChartBar dataKey="seriesA" color="chart.background.categorical.azure.moderate" />
-      </ChartBarWrapper>
-    </div>
+    <ChartsWrapper>
+      <Box width="100px" height="50px">
+        <ChartBarWrapper data={chartData.slice(0, 6)}>
+          <ChartBar dataKey="seriesA" color="data.background.categorical.blue.moderate" />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -165,25 +184,26 @@ TinyBarChart.parameters = {
 
 export const SimpleBarChart: StoryFn<typeof ChartBar> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <ChartBarWrapper data={chartData.slice(0, 6)}>
-        <ChartCartesianGrid />
-        <ChartXAxis dataKey="name" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartBar
-          dataKey="seriesA"
-          name="Series A"
-          color="chart.background.categorical.azure.moderate"
-        />
-        <ChartBar
-          dataKey="seriesB"
-          name="Series B"
-          color="chart.background.categorical.orchid.moderate"
-        />
-      </ChartBarWrapper>
-    </div>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={chartData.slice(0, 6)}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar
+            dataKey="seriesA"
+            name="Series A"
+            color="data.background.categorical.blue.faint"
+          />
+          <ChartBar
+            dataKey="seriesB"
+            name="Series B"
+            color="data.background.categorical.purple.faint"
+          />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -193,33 +213,19 @@ SimpleBarChart.parameters = {
 
 export const StackedBarChart: StoryFn<typeof ChartBar> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <ChartBarWrapper data={chartData}>
-        <ChartCartesianGrid />
-        <ChartXAxis dataKey="name" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartBar
-          dataKey="seriesA"
-          name="Series A"
-          stackId="stack-1"
-          color="chart.background.sequential.crimson.500"
-        />
-        <ChartBar
-          dataKey="seriesB"
-          name="Series B"
-          stackId="stack-1"
-          color="chart.background.sequential.crimson.400"
-        />
-        <ChartBar
-          dataKey="seriesC"
-          name="Series C"
-          stackId="stack-1"
-          color="chart.background.sequential.crimson.300"
-        />
-      </ChartBarWrapper>
-    </div>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={chartData}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar dataKey="seriesA" name="Series A" stackId="stack-1" />
+          <ChartBar dataKey="seriesB" name="Series B" stackId="stack-1" />
+          <ChartBar dataKey="seriesC" name="Series C" stackId="stack-1" />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -229,26 +235,19 @@ StackedBarChart.parameters = {
 
 export const GroupedBarChart: StoryFn<typeof ChartBar> = () => {
   return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <ChartBarWrapper data={chartData.slice(0, 5)}>
-        <ChartCartesianGrid />
-        <ChartXAxis dataKey="name" />
-        <ChartYAxis />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartBar dataKey="seriesA" name="Series A" color="chart.background.sequential.azure.500" />
-        <ChartBar
-          dataKey="seriesB"
-          name="Series B"
-          color="chart.background.sequential.crimson.500"
-        />
-        <ChartBar
-          dataKey="seriesC"
-          name="Series C"
-          color="chart.background.sequential.magenta.500"
-        />
-      </ChartBarWrapper>
-    </div>
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={chartData.slice(0, 5)}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar dataKey="seriesA" name="Series A" />
+          <ChartBar dataKey="seriesB" name="Series B" />
+          <ChartBar dataKey="seriesC" name="Series C" />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -258,33 +257,19 @@ GroupedBarChart.parameters = {
 
 export const VerticalBarChart: StoryFn<typeof ChartBar> = () => {
   return (
-    <div style={{ width: '100%', height: '500px' }}>
-      <ChartBarWrapper data={chartData.slice(0, 5)} layout="vertical">
-        <ChartCartesianGrid />
-        <ChartXAxis type="number" />
-        <ChartYAxis type="category" dataKey="name" />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartBar
-          dataKey="seriesA"
-          name="Series A"
-          color="chart.background.sequential.azure.600"
-          stackId="2"
-        />
-        <ChartBar
-          dataKey="seriesB"
-          name="Series B"
-          color="chart.background.sequential.azure.500"
-          stackId="2"
-        />
-        <ChartBar
-          dataKey="seriesC"
-          name="Series C"
-          color="chart.background.sequential.azure.400"
-          stackId="2"
-        />
-      </ChartBarWrapper>
-    </div>
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartBarWrapper data={chartData.slice(0, 5)} layout="vertical">
+          <ChartXAxis type="number" />
+          <ChartYAxis type="category" dataKey="name" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar dataKey="seriesA" name="Series A" stackId="2" />
+          <ChartBar dataKey="seriesB" name="Series B" stackId="2" />
+          <ChartBar dataKey="seriesC" name="Series C" stackId="2" />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
@@ -294,22 +279,82 @@ VerticalBarChart.parameters = {
 
 export const BarChartWithDefaultColorTheme: StoryFn<typeof ChartBar> = () => {
   return (
-    <div style={{ width: '100%', height: '500px' }}>
-      <ChartBarWrapper data={chartData.slice(0, 5)} layout="vertical" colorTheme="categorical">
-        <ChartCartesianGrid />
-        <ChartXAxis type="number" />
-        <ChartYAxis type="category" dataKey="name" />
-        <ChartTooltip />
-        <ChartLegend />
-        <ChartBar dataKey="seriesA" name="Series A" stackId="2" />
-        <ChartBar dataKey="seriesB" name="Series B" stackId="2" />
-        <ChartBar dataKey="seriesC" name="Series C" stackId="2" />
-      </ChartBarWrapper>
-    </div>
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartBarWrapper data={chartData.slice(0, 5)} layout="vertical" colorTheme="categorical">
+          <ChartXAxis type="number" />
+          <ChartYAxis type="category" dataKey="name" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar dataKey="seriesA" name="Series A" stackId="2" />
+          <ChartBar dataKey="seriesB" name="Series B" stackId="2" />
+          <ChartBar dataKey="seriesC" name="Series C" stackId="2" />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
 BarChartWithDefaultColorTheme.parameters = {
+  controls: { disable: true },
+};
+
+export const BarChartWithGrid: StoryFn<typeof ChartBar> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={chartData.slice(0, 6)}>
+          <ChartCartesianGrid />
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar dataKey="seriesA" name="Series A" />
+          <ChartBar dataKey="seriesB" name="Series B" />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+BarChartWithGrid.parameters = {
+  controls: { disable: true },
+};
+
+export const BarChartWithSequentialColors: StoryFn<typeof ChartBar> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={chartData.slice(0, 6)}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar
+            dataKey="seriesA"
+            name="Series A"
+            color="data.background.sequential.blue.500"
+            stackId={1}
+          />
+          <ChartBar
+            dataKey="seriesB"
+            name="Series B"
+            color="data.background.sequential.blue.200"
+            stackId={1}
+          />
+          <ChartBar
+            dataKey="seriesC"
+            name="Series C"
+            color="data.background.sequential.blue.100"
+            stackId={1}
+          />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+BarChartWithSequentialColors.parameters = {
   controls: { disable: true },
 };
 
@@ -319,3 +364,5 @@ SimpleBarChart.storyName = 'Simple Bar Chart';
 StackedBarChart.storyName = 'Stacked Bar Chart';
 VerticalBarChart.storyName = 'Vertical Bar Chart';
 BarChartWithDefaultColorTheme.storyName = 'Bar Chart With Default Color Theme';
+BarChartWithGrid.storyName = 'Bar Chart With Grid';
+BarChartWithSequentialColors.storyName = 'Bar Chart with sequential colors';

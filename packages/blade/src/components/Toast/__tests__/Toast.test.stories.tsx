@@ -224,6 +224,99 @@ ToastStacking.play = async () => {
   await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(130);
 };
 
+export const ToastZIndex: StoryFn<typeof Toast> = (): React.ReactElement => {
+  const toast = useToast();
+
+  React.useEffect(() => {
+    toast.dismiss();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <Box>
+      <Button
+        onClick={() => {
+          toast.show({ content: 'Toast 1', autoDismiss: false });
+        }}
+      >
+        Show Toast 1
+      </Button>
+      <Button
+        onClick={() => {
+          toast.show({ content: 'Toast 2', autoDismiss: false });
+        }}
+      >
+        Show Toast 2
+      </Button>
+      <Button
+        onClick={() => {
+          toast.show({ content: 'Toast 3', autoDismiss: false });
+        }}
+      >
+        Show Toast 3
+      </Button>
+      <Button
+        onClick={() => {
+          toast.dismiss();
+        }}
+      >
+        Dismiss All
+      </Button>
+      <ToastContainer zIndex={3000} />
+    </Box>
+  );
+};
+
+ToastZIndex.play = async () => {
+  const { getByRole, queryByText } = within(document.body);
+  await sleep(1000);
+
+  const button1 = getByRole('button', { name: 'Show Toast 1' });
+  const button2 = getByRole('button', { name: 'Show Toast 2' });
+  const button3 = getByRole('button', { name: 'Show Toast 3' });
+  const dismissAllButton = getByRole('button', { name: 'Dismiss All' });
+
+  // Get the toast container element
+  const toastContainerElement = document.querySelector('[data-blade-component="toast-container"]')!;
+
+  // Container should use the provided zIndex (3000) even when no toasts are shown
+  await expect(toastContainerElement).toBeInTheDocument();
+  let computedStyle = window.getComputedStyle(toastContainerElement);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
+
+  // Show toast 1 - container zIndex should remain 3000
+  await userEvent.click(button1);
+  await sleep(400);
+  await expect(queryByText('Toast 1')).toBeVisible();
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
+
+  // Show toast 2 - container zIndex should still be 3000
+  await userEvent.click(button2);
+  await sleep(400);
+  await expect(queryByText('Toast 2')).toBeVisible();
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
+
+  // Show toast 3 - container zIndex should still be 3000
+  await userEvent.click(button3);
+  await sleep(400);
+  await expect(queryByText('Toast 3')).toBeVisible();
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
+
+  // Dismiss all toasts - container zIndex should still be 3000
+  await userEvent.click(dismissAllButton);
+  await sleep(400);
+  await expect(queryByText('Toast 1')).not.toBeVisible();
+  await expect(queryByText('Toast 2')).not.toBeVisible();
+  await expect(queryByText('Toast 3')).not.toBeVisible();
+
+  // Container zIndex remains 3000 even after dismissing all toasts
+  computedStyle = window.getComputedStyle(toastContainerElement);
+  void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
+};
+
 export default {
   title: 'Components/Interaction Tests/Toast',
   parameters: {

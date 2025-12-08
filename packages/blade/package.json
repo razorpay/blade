@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.59.0",
+  "version": "12.68.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -111,7 +111,7 @@
     "react-native:storybook:start": "yarn react-native:get-stories && cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
     "react:storybook": "cross-env FRAMEWORK=REACT storybook dev -c ./.storybook/react -p 9009",
-    "react:storybook:build": "yarn generate-docs-lockfile && cross-env FRAMEWORK=REACT storybook build -c ./.storybook/react -o storybook-site --quiet",
+    "react:storybook:build": "bash ./scripts/buildStorybook.sh",
     "react:storybook:serve": "http-server storybook-site --port 9009 --silent",
     "react:storybook:serve:test": "wait-on http://127.0.0.1:9009/ && yarn test:react:interaction",
     "test:react:interaction": "cross-env FRAMEWORK=REACT test-storybook -c ./.storybook/react --url http://127.0.0.1:9009/",

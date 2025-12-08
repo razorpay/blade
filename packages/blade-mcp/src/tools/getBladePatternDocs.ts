@@ -1,16 +1,17 @@
-import { existsSync, readFileSync } from 'fs';
-import { join, basename } from 'path';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import {
-  CONSUMER_CURSOR_RULES_RELATIVE_PATH,
   analyticsToolCallEventName,
   PATTERNS_KNOWLEDGEBASE_DIRECTORY,
+  CHECK_CURSOR_RULES_DESCRIPTION,
 } from '../utils/tokens.js';
 
-import { getBladeDocsList, hasOutDatedRules } from '../utils/generalUtils.js';
+import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
+import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 
 const bladePatternsList = getBladeDocsList('patterns');
@@ -36,11 +37,20 @@ const getBladePatternDocsToolSchema = {
     .describe(
       "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
+  clientName: z
+    .enum(['claude', 'cursor', 'unknown'])
+    .default('unknown')
+    .describe(
+      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
+    ),
+  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
 };
 
 const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsToolSchema> = ({
   patternsList,
   currentProjectRootDirectory,
+  clientName,
+  cursorRuleVersion,
 }) => {
   const components = patternsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladePatternsList.includes(comp));
@@ -55,20 +65,13 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
     });
   }
 
-  const ruleFilePath = join(currentProjectRootDirectory, CONSUMER_CURSOR_RULES_RELATIVE_PATH);
-
-  if (!existsSync(ruleFilePath)) {
-    return handleError({
-      toolName: getBladePatternDocsToolName,
-      mcpErrorMessage: 'Cursor rules do not exist. Call create_blade_cursor_rules first.',
-    });
-  }
-
-  if (hasOutDatedRules(ruleFilePath)) {
-    return handleError({
-      toolName: getBladePatternDocsToolName,
-      mcpErrorMessage: 'Cursor rules are outdated. Call create_blade_cursor_rules first.',
-    });
+  const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
+    cursorRuleVersion,
+    clientName,
+    currentProjectRootDirectory,
+  );
+  if (createOrUpdateCursorRule) {
+    return createOrUpdateCursorRule;
   }
 
   try {
@@ -83,7 +86,8 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
       properties: {
         toolName: getBladePatternDocsToolName,
         patternsList,
-        rootDirectoryName: basename(currentProjectRootDirectory),
+        currentProjectRootDirectory,
+        clientName,
       },
     });
 

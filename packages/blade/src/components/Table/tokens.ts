@@ -13,7 +13,7 @@ const tableHeader = {
   paddingBottom: 'spacing.5',
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
-  backgroundColor: 'interactive.background.gray.default',
+  backgroundColor: 'interactive.background.gray.faded',
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.gray.muted',
 } as const;
@@ -25,7 +25,7 @@ const tableFooter = {
   paddingRight: 'spacing.4',
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.gray.muted',
-  backgroundColor: 'interactive.background.gray.default',
+  backgroundColor: 'interactive.background.gray.faded',
 } as const;
 
 const tableRow = {
@@ -94,36 +94,22 @@ const tableRow = {
 } as const;
 
 const tableToolbar = {
-  backgroundColor: 'transparent',
+  backgroundColor: 'interactive.background.gray.faded',
   backgroundColorSelected: 'interactive.background.primary.faded',
   backgroundColorMotionEasing: 'easing.standard',
   backgroundColorMotionDuration: 'duration.xquick',
+  minHeight: size[37], // 37px to accommodate 1px border, matching TableHeader height
+  padding: ['spacing.3', 'spacing.4'],
 } as const;
 
 const tablePagination = {
-  padding: 'spacing.4',
-  pageSelectionButton: {
-    backgroundColor: 'transparent',
-    backgroundColorHover: 'interactive.background.gray.default',
-    backgroundColorActive: 'interactive.background.gray.highlighted',
-    backgroundColorSelected: 'interactive.background.primary.faded',
-    backgroundColorSelectedHover: 'interactive.background.primary.fadedHighlighted',
-    backgroundColorSelectedActive: 'interactive.background.primary.fadedHighlighted',
-    padding: 'spacing.2',
-    borderRadius: 'small',
-    focusRingColor: 'surface.border.primary.muted',
-    textColor: 'surface.text.gray.subtle',
-    textColorSelected: 'surface.text.primary.normal',
-    height: size['32'],
-    width: size['32'],
-  },
   defaultPageSize: 10,
 } as const;
 
 const tableEditableCellRowDensityToInputSizeMap = {
-  compact: 'medium',
-  normal: 'large',
-  comfortable: 'medium',
+  compact: 'small',
+  normal: 'medium',
+  comfortable: 'large',
 } as const;
 
 const validationStateToInputTrailingIconMap = {

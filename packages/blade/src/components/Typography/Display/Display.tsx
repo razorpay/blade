@@ -5,8 +5,9 @@ import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BladeElementRef, TestID } from '~utils/types';
+import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
 import { getPlatformType } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type DisplayProps = {
@@ -24,6 +25,7 @@ export type DisplayProps = {
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   textTransform?: BaseTextProps['textTransform'];
 } & TestID &
+  ElementTiming &
   StyledPropsBlade;
 
 const getProps = ({
@@ -98,6 +100,7 @@ const _Display = (
       textDecorationLine={textDecorationLine}
       textTransform={textTransform}
       {...getStyledProps(styledProps)}
+      {...makeAnalyticsAttribute(styledProps)}
     >
       {children}
     </BaseText>

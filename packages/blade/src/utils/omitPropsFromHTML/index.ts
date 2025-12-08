@@ -27,6 +27,14 @@ type shouldForwardProp = <O extends object>(
 ) => boolean;
 
 const omitPropsFromHTML: shouldForwardProp = (prop, defaultValidatorFn): boolean => {
+  /**
+   * Element timing is a valid HTML attribute
+   * Checkout https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/elementtiming
+   */
+  if ((prop as string) === 'elementtiming') {
+    return true;
+  }
+
   return !filterProps.includes(prop as string) && defaultValidatorFn(prop);
 };
 

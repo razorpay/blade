@@ -1,5 +1,107 @@
 # @razorpay/blade-mcp
 
+## 1.20.0
+
+### Minor Changes
+
+- 0dbcbb6c2: feat(blade): added openInteraction prop for hover/click trigger on popover component
+
+## 1.19.0
+
+### Minor Changes
+
+- 13ef641b8: feat(blade-mcp): refactor shouldCreateOrUpdateCursorRule logic
+
+### Patch Changes
+
+- 1a66a23ad: feat(blade-mcp): updated divider knowledgebase
+
+## 1.18.0
+
+### Minor Changes
+
+- 571e8da27: feat(blade-mcp): add description to client name in get docs tool call & refactor logic for calling createCursorRule tools Call
+
+## 1.17.0
+
+### Minor Changes
+
+- 17e980ebd: ## feat(blade): list view v2
+
+  ### 🔧 Prop Updates
+
+  - **Deprecated Props:**
+    - List View Filters: searchValue, searchValuePlaceholder, searchName, onSearchChange, onSearchClear, searchTrailing, showFilters, onShowFiltersChange
+    - Table Header: rowDensity
+  - **Added:**
+    - `actions` (replaces deprecated search-related props)
+    - `FilterChipGroup.padding`
+    - `TableToolbar.placement`
+
+  ### 🎨 List View Visual & Structural Changes
+
+  - **Table Cell:** Font (M→S, S→XS), color (Normal→Subtle), links (Primary→Neutral)
+  - **Table Header:** Fixed height 36px, bg → `interactive.bg.gray.faded`, font (M→S, Normal→Subtle)
+  - **Pagination:** Height 60→48px, removed horizontal padding, smaller/subtle text
+  - **Quick Filter:** Always expanded, removed radio for single-select, unified badge color
+  - **Filter Chip:** Border 0.5px normal, height 24px, refreshed Clear Filter button, removed bg/divider
+  - **Filter Panel:** Removed old panel (Download/Copy), moved actions next to Quick Filters (Quick Filters left; Search + Actions right), added tooltips
+  - **Bulk Action Toolbar:** Overlays Table Header on selection; hidden otherwise (same on mobile)
+  - **Mobile:** Removed “Show Filter” button; bulk actions adapt; filters stay horizontally scrollable
+
+## 1.16.0
+
+### Minor Changes
+
+- 49082f564: feat(blade): charts new ui & color token update
+
+  ### Deprecation of `chart.background` prefix in color token
+
+  The `chart.background` prefix in color token has been deprecated to improve clarity and provide a more descriptive API. The new prefix is `data.background`.
+
+  **Impact**
+
+  Implementation that explicitly sets `chart.background` prefix in color token will use `data.background` as prefix.
+
+  **How to Upgrade**
+
+  You need to update your code where `chart.background` prefix in color token. You can either remove the prefix entirely to use default color themes or change the value to `data.background`.
+
+  ```diff
+  - color="chart.background.categorical.blue.moderate"
+  + color="data.background.categorical.blue.moderate"
+  ```
+
+  ### Updation of color mapping tokens for charts
+
+  We have update color mapping of few token related to charts. you might need to update your snaps.
+
+## 1.15.0
+
+### Minor Changes
+
+- e05eacbd0: feat(blade-mcp): add streamable transport support utilities
+- e05eacbd0: feat(blade-mcp): refactor `createCursorRule` , `getBladeComponentDocs` , `getBladeGeneralDocs` , `getBladePatternDocs` tools to support MCP SSE
+
+## 1.14.0
+
+### Minor Changes
+
+- c5e3a9237: feat(blade): introduced footer and enhance header background for DetailedView
+
+  - **New Component**: Added `DrawerFooter` component with sticky positioning and optional divider in drawer
+  - **Enhanced DrawerHeader**: Added `showDivider` prop to control header divider visibility and upgraded gradient pattern from linear to radial
+  - **DetailedView Pattern Enhancement**:
+    - Add an option to toggle the footer's visibility
+    - Ensure the footer remains sticky at all times
+    - Upgrade the gradient pattern in the header
+
+## 1.13.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
 ## 1.12.2
 
 ### Patch Changes

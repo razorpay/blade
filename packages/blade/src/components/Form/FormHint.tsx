@@ -16,7 +16,7 @@ type HintTextProps = {
   children: string;
   id?: string;
   color: TextProps<{ variant: 'caption' }>['color'];
-  size: 'small' | 'medium' | 'large';
+  size: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
 const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): ReactElement => {
@@ -82,18 +82,18 @@ export type FormHintProps = {
    * Sets the size of the hint
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
 const Icons = {
-  error: ({ size }: { size: 'small' | 'medium' | 'large' }): ReactElement => (
+  error: ({ size }: { size: 'xsmall' | 'small' | 'medium' | 'large' }): ReactElement => (
     <InfoIcon
       display={'block' as never}
       color="feedback.icon.negative.intense"
       size={hintIconSize[size]}
     />
   ),
-  success: ({ size }: { size: 'small' | 'medium' | 'large' }): ReactElement => (
+  success: ({ size }: { size: 'xsmall' | 'small' | 'medium' | 'large' }): ReactElement => (
     <CheckIcon
       display={'block' as never}
       color="feedback.icon.positive.intense"

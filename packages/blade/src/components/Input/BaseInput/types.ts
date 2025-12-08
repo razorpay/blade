@@ -9,6 +9,7 @@ import type {
 } from '~components/Form/FormTypes';
 import type { ContainerElementType } from '~utils/types';
 import type { ActionStates } from '~utils/useInteraction';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 export type InputWrapperRef = React.MutableRefObject<ContainerElementType | null>;
 
@@ -66,6 +67,9 @@ export type StyledBaseInputProps = {
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
   hasLeadingDropdown?: boolean;
+  color?: BaseTextProps['color'];
+  disabledColor?: BaseTextProps['color'];
+  isInsideCounterInput?: boolean;
 } & Pick<
   BaseInputProps,
   | 'as'

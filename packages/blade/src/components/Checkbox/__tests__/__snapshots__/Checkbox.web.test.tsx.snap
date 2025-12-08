@@ -25,7 +25,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -85,15 +85,18 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
 
 .c3.c3.c3.c3.c3 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -110,7 +113,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -224,7 +227,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -316,15 +319,18 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 
 .c3.c3.c3.c3.c3 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -341,7 +347,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -571,15 +577,18 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 
 .c3.c3.c3.c3.c3 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -809,15 +818,18 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 
 .c3.c3.c3.c3.c3 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -1053,15 +1065,18 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 
 .c3.c3.c3.c3.c3 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 

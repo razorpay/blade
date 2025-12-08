@@ -1,37 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<QuickFilters/> should render Values Correctly 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="radio-group-undefined-label" data-blade-component="radio-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iNJgUL"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx ddXfJl"><label data-blade-component="card" aria-label="Title1" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 cOgNNA bSKwTg"><div elevation="none" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kEkwuc loZzuA"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx QGvNR"><div data-blade-component="box" class="BaseBox-bmPWx hyIXUp"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 gMIvol" value="value1"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 eyKxEd"></div></div></div></label></div><p class="StyledBaseText-dVBfTO jZmEIW" data-blade-component="text">Title1</p></div><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">234</p></div></div></div></div></div></div></label><label data-blade-component="card" aria-label="Title2" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 cOgNNA bSKwTg"><div elevation="none" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kEkwuc loZzuA"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx QGvNR"><div data-blade-component="box" class="BaseBox-bmPWx hyIXUp"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 gMIvol" value="value2"/><div data-blade-component="radio-icon-wrapper" class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 eyKxEd"></div></div></div></label></div><p class="StyledBaseText-dVBfTO jZmEIW" data-blade-component="text">Title2</p></div><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">234</p></div></div></div></div></div></div></label></div></div></div></div></div></div></div>"`;
+exports[`<QuickFilters/> should render Values Correctly 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="radio-group-undefined-label" data-blade-component="radio-group" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iNJgUL"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx ddXfJl"><label data-blade-component="card" aria-label="Title1" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 cOgNNA bSKwTg"><div elevation="none" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kEkwuc loZzuA"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx QGvNR"><div data-blade-component="box" class="BaseBox-bmPWx hyIXUp"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ejZfDl" value="value1"/></div></div></label></div><p class="StyledBaseText-dVBfTO jZmEIW" data-blade-component="text">Title1</p></div><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">234</p></div></div></div></div></div></div></label><label data-blade-component="card" aria-label="Title2" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 cOgNNA bSKwTg"><div elevation="none" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kEkwuc loZzuA"><div data-blade-component="card-body" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx QGvNR"><div data-blade-component="box" class="BaseBox-bmPWx hyIXUp"><div data-blade-component="base-box" class="BaseBox-bmPWx"><label data-blade-component="radio-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" name="radio-group-undefined" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 ejZfDl" value="value2"/></div></div></label></div><p class="StyledBaseText-dVBfTO jZmEIW" data-blade-component="text">Title2</p></div><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">234</p></div></div></div></div></div></div></label></div></div></div></div></div></div></div>"`;
 
 exports[`<QuickFilters/> should render Values Correctly 2`] = `
-.c12.c12.c12.c12.c12 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-width: 12px;
-  width: 12px;
-  height: 12px;
-  border-width: 1.5px;
-  border-style: solid;
-  margin: 2px;
-  border-radius: 9999px;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,28%,84%,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
-  transition-timing-function: cubic-bezier(0.17,0,1,1);
-}
-
 .c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -149,19 +120,19 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
   align-items: center;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   min-height: 20px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -182,7 +153,7 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
   padding-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -199,7 +170,7 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
   padding: 0;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,33%,21%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -225,15 +196,18 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
 
 .c11.c11.c11.c11.c11 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -250,7 +224,7 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
 }
 
 .c11.c11.c11.c11.c11:hover + div {
-  border-color: hsla(214,28%,84%,1);
+  border-color: hsla(214,40%,92%,1);
   background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -299,7 +273,7 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
   position: relative;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -394,35 +368,31 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
                                   type="radio"
                                   value="value1"
                                 />
-                                <div
-                                  class="c12"
-                                  data-blade-component="radio-icon-wrapper"
-                                />
                               </div>
                             </div>
                           </label>
                         </div>
                         <p
-                          class="c13"
+                          class="c12"
                           data-blade-component="text"
                         >
                           Title1
                         </p>
                       </div>
                       <div
-                        class="c14"
+                        class="c13"
                         data-blade-component="counter"
                       >
                         <div
-                          class="c15 c16"
+                          class="c14 c15"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c17"
+                            class="c16"
                             data-blade-component="base-box"
                           >
                             <p
-                              class="c18"
+                              class="c17"
                               data-blade-component="text"
                             >
                               234
@@ -484,35 +454,31 @@ exports[`<QuickFilters/> should render Values Correctly 2`] = `
                                   type="radio"
                                   value="value2"
                                 />
-                                <div
-                                  class="c12"
-                                  data-blade-component="radio-icon-wrapper"
-                                />
                               </div>
                             </div>
                           </label>
                         </div>
                         <p
-                          class="c13"
+                          class="c12"
                           data-blade-component="text"
                         >
                           Title2
                         </p>
                       </div>
                       <div
-                        class="c14"
+                        class="c13"
                         data-blade-component="counter"
                       >
                         <div
-                          class="c15 c16"
+                          class="c14 c15"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c17"
+                            class="c16"
                             data-blade-component="base-box"
                           >
                             <p
-                              class="c18"
+                              class="c17"
                               data-blade-component="text"
                             >
                               234

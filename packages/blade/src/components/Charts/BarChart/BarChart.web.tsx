@@ -4,11 +4,12 @@ import {
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import { useChartsColorTheme } from '../utils';
+import { useChartsColorTheme, getHighestColorInRange, assignDataColorMapping } from '../utils';
+import { CommonChartComponentsContext } from '../CommonChartComponents';
+import type { DataColorMapping } from '../CommonChartComponents';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
 import {
-  BAR_CHART_CORNER_RADIUS,
   DISTANCE_BETWEEN_STACKED_BARS,
   componentIds,
   BAR_SIZE,
@@ -35,76 +36,107 @@ export type RechartsShapeProps = {
 };
 
 // Bar component - resolves Blade color tokens to actual colors
-const _ChartBar: React.FC<ChartBarProps> = ({
-  color,
-  name,
-  dataKey,
-  activeBar = false,
-  label = false,
-  showLegend = true,
-  _index = 0,
-  ...rest
-}) => {
-  const { theme } = useTheme();
-  const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
-  const defaultColorArray = useChartsColorTheme({ colorTheme: _colorTheme });
-  const fill = color ? getIn(theme.colors, color) : defaultColorArray[_index];
-  const isStacked = rest.stackId !== undefined;
-  const animationBegin = isStacked
-    ? (theme.motion.duration.gentle / totalBars) * _index
-    : theme.motion.duration.gentle;
-  const animationDuration = isStacked
-    ? theme.motion.duration.gentle / totalBars
-    : theme.motion.duration.gentle;
+const _ChartBar: React.FC<ChartBarProps> = React.memo(
+  ({
+    color,
+    name,
+    dataKey,
+    activeBar = false,
+    label = false,
+    showLegend = true,
+    _index = 0,
+    ...rest
+  }) => {
+    const { theme } = useTheme();
+    const { layout, activeIndex, colorTheme: _colorTheme, totalBars } = useBarChartContext();
+    const defaultColorArray = useChartsColorTheme({
+      colorTheme: _colorTheme,
+      chartName: 'bar',
+      chartDataIndicators: totalBars,
+    });
+    const fill = getIn(theme.colors, color ?? defaultColorArray[_index]);
+    const strokeFill = getIn(
+      theme.colors,
+      getHighestColorInRange({
+        colorToken: color ?? defaultColorArray[_index],
+        followIntensityMapping: Boolean(color),
+      }),
+    );
 
-  return (
-    <RechartsBar
-      {...rest}
-      fill={fill}
-      legendType={showLegend ? 'rect' : 'none'}
-      activeBar={activeBar}
-      label={label}
-      animationBegin={animationBegin}
-      animationDuration={animationDuration}
-      animationEasing="linear"
-      dataKey={dataKey}
-      name={name}
-      shape={(props: unknown) => {
-        const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
-        const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;
-        const gap = DISTANCE_BETWEEN_STACKED_BARS;
-        const isVertical = layout === 'vertical';
+    const isStacked = rest.stackId !== undefined;
+    const animationBegin = isStacked
+      ? (theme.motion.duration.gentle / totalBars) * _index
+      : theme.motion.duration.gentle;
+    const animationDuration = isStacked
+      ? theme.motion.duration.gentle / totalBars
+      : theme.motion.duration.gentle;
 
-        if (isVertical) {
+    return (
+      <RechartsBar
+        {...rest}
+        fill={fill}
+        legendType={showLegend ? 'rect' : 'none'}
+        activeBar={activeBar}
+        label={label}
+        animationBegin={animationBegin}
+        animationDuration={animationDuration}
+        animationEasing="linear"
+        dataKey={dataKey}
+        name={name}
+        key={`${dataKey}-${_index}-${name}`}
+        shape={(props: unknown) => {
+          const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
+          const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;
+          const gap = DISTANCE_BETWEEN_STACKED_BARS;
+          const isVertical = layout === 'vertical';
+
+          if (isVertical) {
+            return (
+              <>
+                <rect
+                  fill={fill}
+                  x={x + gap / 1.5}
+                  y={y}
+                  width={width - gap}
+                  height={height}
+                  fillOpacity={fillOpacity}
+                />
+                <rect
+                  fill={strokeFill}
+                  x={x + gap / 1.5 + (width - gap) - 1.5} // Position at the right end
+                  y={y}
+                  width={width > gap ? 1.5 : 0}
+                  height={height}
+                  fillOpacity={fillOpacity}
+                />
+              </>
+            );
+          }
           return (
-            <rect
-              fill={fill}
-              x={x + gap / 2}
-              y={y}
-              width={width - gap}
-              height={height}
-              rx={BAR_CHART_CORNER_RADIUS}
-              ry={BAR_CHART_CORNER_RADIUS}
-              fillOpacity={fillOpacity}
-            />
+            <>
+              <rect
+                fill={fill}
+                x={x}
+                y={y + gap / 1.5}
+                width={width}
+                height={height > gap ? height - gap : 0}
+                fillOpacity={fillOpacity}
+              />
+              <rect
+                fill={strokeFill}
+                x={x}
+                y={y + gap / 1.5}
+                width={width}
+                height={height > gap ? 1.5 : 0}
+                fillOpacity={fillOpacity}
+              />
+            </>
           );
-        }
-        return (
-          <rect
-            fill={fill}
-            x={x}
-            y={y + gap / 2}
-            width={width}
-            height={height > gap ? height - gap : 0}
-            rx={BAR_CHART_CORNER_RADIUS}
-            ry={BAR_CHART_CORNER_RADIUS}
-            fillOpacity={fillOpacity}
-          />
-        );
-      }}
-    />
-  );
-};
+        }}
+      />
+    );
+  },
+);
 
 const ChartBar = assignWithoutSideEffects(_ChartBar, {
   componentId: componentIds.chartBar,
@@ -121,55 +153,90 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
-  const { barChartModifiedChildrens, totalBars } = React.useMemo(() => {
+  const themeColors = useChartsColorTheme({
+    colorTheme,
+    chartName: 'bar',
+  });
+
+  const { barChartModifiedChildrens, totalBars, dataColorMapping } = React.useMemo(() => {
+    const childrenArray = React.Children.toArray(children);
+    const dataColorMapping: DataColorMapping = {};
+
+    // Count ChartBar components
+    const totalBars = childrenArray.filter(
+      (child): child is React.ReactElement =>
+        React.isValidElement(child) && getComponentId(child) === componentIds.chartBar,
+    ).length;
+
     let BarChartIndex = 0;
+    /**
+     * We check to check child of ChartBarWrapper. if they have any custom color we store that.
+     * We need these mapping because colors of tooltip & legend is determine based on this
+     *  recharts do provide a color but it is hex code and we need blade color token .
+     */
     const modifiedChildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.chartBar) {
+        const childColor = child?.props?.color;
+        const dataKey = (child?.props as ChartBarProps)?.dataKey as string;
+        if (dataKey) {
+          //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
+          dataColorMapping[dataKey] = {
+            colorToken: childColor,
+            isCustomColor: Boolean(childColor),
+          };
+        }
         return React.cloneElement(child, {
           _index: BarChartIndex++,
         } as Partial<ChartBarProps>);
       }
       return child;
     });
+    assignDataColorMapping(dataColorMapping, themeColors);
 
     return {
       barChartModifiedChildrens: modifiedChildren,
-      totalBars: BarChartIndex,
+      totalBars,
+      dataColorMapping,
     };
-  }, [children]);
+  }, [children, themeColors]);
 
   return (
-    <BaseBox
-      {...metaAttribute({ name: 'bar-chart', testID })}
-      {...makeAnalyticsAttribute(restProps)}
-      width="100%"
-      height="100%"
-      {...restProps}
-    >
-      <BarChartContext.Provider
-        value={{
-          layout,
-          activeIndex,
-          colorTheme,
-          totalBars,
-        }}
+    <CommonChartComponentsContext.Provider value={{ chartName: 'bar', dataColorMapping }}>
+      <BaseBox
+        {...metaAttribute({ name: 'bar-chart', testID })}
+        {...makeAnalyticsAttribute(restProps)}
+        width="100%"
+        height="100%"
+        {...restProps}
       >
-        <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsBarChart
-            barSize={BAR_SIZE}
-            barGap={DISTANCE_BETWEEN_BARS}
-            barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
-            onMouseMove={(state) => {
-              setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
-            }}
-            layout={layout}
-            data={data}
-          >
-            {barChartModifiedChildrens}
-          </RechartsBarChart>
-        </RechartsResponsiveContainer>
-      </BarChartContext.Provider>
-    </BaseBox>
+        <BarChartContext.Provider
+          value={{
+            layout,
+            activeIndex,
+            colorTheme,
+            totalBars,
+          }}
+        >
+          <RechartsResponsiveContainer width="100%" height="100%">
+            <RechartsBarChart
+              barSize={BAR_SIZE}
+              barGap={DISTANCE_BETWEEN_BARS}
+              barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
+              onMouseMove={(state) => {
+                setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
+              }}
+              onMouseLeave={() => {
+                setActiveIndex(undefined);
+              }}
+              layout={layout}
+              data={data}
+            >
+              {barChartModifiedChildrens}
+            </RechartsBarChart>
+          </RechartsResponsiveContainer>
+        </BarChartContext.Provider>
+      </BaseBox>
+    </CommonChartComponentsContext.Provider>
   );
 };
 

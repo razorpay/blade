@@ -20,6 +20,26 @@ jobs:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+      - name: Install Dashboard Playground Dependencies
+        working-directory: packages/blade/blade-dashboard-template
+        run: yarn install
+      - name: Build Dashboard Playground
+        working-directory: packages/blade/blade-dashboard-template
+        run: yarn run build
+      - name: Copy Dashboard to Storybook Site
+        working-directory: packages/blade
+        run: |
+          if [ -d "storybook-site/dashboard" ]; then
+            rm -rf storybook-site/dashboard
+          fi
+          mkdir -p storybook-site/dashboard
+          if [ -d "blade-dashboard-template/dist" ]; then
+            cp -r blade-dashboard-template/dist/* storybook-site/dashboard/
+            echo "✓ Dashboard build output copied to storybook-site/dashboard/"
+          else
+            echo "✗ Dashboard dist directory not found"
+            exit 1
+          fi
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:

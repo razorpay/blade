@@ -2,7 +2,7 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 
 const makeAnalyticsAttribute = (props: Record<string, unknown>): DataAnalyticsAttribute => {
   return Object.entries(props)
-    .filter(([key]) => key.startsWith('data-analytics'))
+    .filter(([key]) => key.startsWith('data-analytics') || key.startsWith('elementtiming'))
     .reduce<DataAnalyticsAttribute>(
       (acc, [key, value]) => ({
         ...acc,

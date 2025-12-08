@@ -15,22 +15,27 @@ type ListViewFilterProps = {
   quickFilters: React.ReactNode;
   /**
    * Search value for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   searchValue?: string;
   /**
    * Placeholder for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   searchValuePlaceholder?: string;
   /**
    * Name for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   searchName?: string;
   /**
    * onChange handler for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   onSearchChange?: ({ name, value }: { name?: string; value?: string }) => void;
   /**
    *  onClear handler for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   onSearchClear?: () => void;
   /**
@@ -40,6 +45,8 @@ type ListViewFilterProps = {
   showQuickFilters?: boolean;
   /**
    * it will show/hide the filters
+   * @deprecated Filters are now always expanded.
+   * @default true
    */
   showFilters?: boolean;
   /**
@@ -49,6 +56,7 @@ type ListViewFilterProps = {
   onShowQuickFiltersChange?: (showQuickFilters: boolean) => void;
   /**
    * onChange handler for showFilters
+   * @deprecated Filters are now always expanded.
    */
   onShowFiltersChange?: (showFilters: boolean) => void;
   /**
@@ -59,8 +67,14 @@ type ListViewFilterProps = {
   selectedFiltersCount?: number;
   /**
    * searchTrailing : trailing element for search input
+   * @deprecated Use `actions` prop instead. This will be removed in a future major version.
    */
   searchTrailing?: React.ReactNode;
+  /**
+   * Actions slot for search input and action buttons
+   * This will replace searchValue, onSearchChange, onSearchClear, searchValuePlaceholder, searchName, searchTrailing, and actionButtonGroup in a future major version.
+   */
+  actions?: React.ReactNode;
 } & TestID &
   DataAnalyticsAttribute;
 

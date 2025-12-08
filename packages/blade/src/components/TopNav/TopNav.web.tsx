@@ -109,7 +109,6 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
       alignItems="center"
       marginTop="spacing.1"
       padding="spacing.3"
-      backgroundColor="surface.background.gray.moderate"
       borderTopLeftRadius="medium"
       borderTopRightRadius="medium"
       {...metaAttribute({ name: MetaConstants.TopNavActions })}

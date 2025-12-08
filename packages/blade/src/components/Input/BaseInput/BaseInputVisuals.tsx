@@ -52,11 +52,15 @@ const trailingIconColor: Record<NonNullable<InputVisuals['validationState']>, Ic
 };
 
 const iconSize = {
+  xsmall: 'small',
+  small: 'small',
   medium: 'medium',
   large: 'large',
 } as const;
 
 const textSize = {
+  xsmall: 'small',
+  small: 'small',
   medium: 'medium',
   large: 'large',
 } as const;
