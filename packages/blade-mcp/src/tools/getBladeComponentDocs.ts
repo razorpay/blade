@@ -1,12 +1,16 @@
 import { basename } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { analyticsToolCallEventName, CHECK_CURSOR_RULES_DESCRIPTION } from '../utils/tokens.js';
+import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
 import type { McpToolResponse } from '../utils/types.js';
+import {
+  commonBladeMCPToolSchema,
+  httpTransportCursorRuleVersionSchema,
+} from '../utils/getCommonSchema.js';
 
 const bladeComponentsList = getBladeDocsList('components');
 const bladeComponentsListString = bladeComponentsList.join(', ');
@@ -21,23 +25,13 @@ const getBladeComponentDocsStdioSchema = {
     .describe(
       `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsListString}`,
     ),
-  currentProjectRootDirectory: z
-    .string()
-    .describe(
-      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
-    ),
-  clientName: z
-    .enum(['claude', 'cursor', 'unknown'])
-    .default('unknown')
-    .describe(
-      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown".',
-    ),
+  ...commonBladeMCPToolSchema,
 };
 
 // Schema for HTTP transport
 const getBladeComponentDocsHttpSchema = {
   ...getBladeComponentDocsStdioSchema,
-  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
+  ...httpTransportCursorRuleVersionSchema,
 };
 
 // Core business logic function
