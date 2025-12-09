@@ -10,6 +10,7 @@ import {
 
 import { hasOutDatedRules } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+// eslint-disable-next-line import/no-cycle
 import { cursorRuleCreationInstructions } from '../utils/cursorRulesUtils.js';
 import type { McpToolResponse } from '../utils/types.js';
 
