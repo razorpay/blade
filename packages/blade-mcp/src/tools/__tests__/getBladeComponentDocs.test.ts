@@ -1,5 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getBladeComponentDocsToolCallback } from '../getBladeComponentDocs.js';
+import {
+  getBladeComponentDocsHttpCallback,
+  getBladeComponentDocsStdioCallback,
+} from '../getBladeComponentDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
@@ -47,8 +50,11 @@ describe('getBladeComponentDocs Tool', () => {
       mockResponseText,
     );
 
+    // Get the HTTP callback
+    const httpCallback = getBladeComponentDocsHttpCallback;
+
     // Call the tool callback
-    const result = getBladeComponentDocsToolCallback(
+    const result = httpCallback(
       {
         componentsList: mockComponentsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
@@ -64,7 +70,8 @@ describe('getBladeComponentDocs Tool', () => {
       properties: {
         toolName: 'get_blade_component_docs',
         componentsList: mockComponentsList,
-        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+        rootDirectoryName: 'project',
+        cursorRuleVersion: CURSOR_RULES_VERSION,
         clientName: 'cursor',
       },
     });
@@ -93,8 +100,11 @@ describe('getBladeComponentDocs Tool', () => {
     const mockCurrentProjectRootDirectory = '/Users/test/project';
     const mockComponentsList = 'InvalidComponent, AnotherInvalid';
 
+    // Get the HTTP callback
+    const httpCallback = getBladeComponentDocsHttpCallback;
+
     // Call the tool callback
-    const result = getBladeComponentDocsToolCallback(
+    const result = httpCallback(
       {
         componentsList: mockComponentsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
@@ -153,8 +163,11 @@ describe('getBladeComponentDocs Tool', () => {
     // Mock cursor rules as not needing update
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
+    // Get the HTTP callback
+    const httpCallback = getBladeComponentDocsHttpCallback;
+
     // Call the tool callback with actual implementation
-    const result = getBladeComponentDocsToolCallback(
+    const result = httpCallback(
       {
         componentsList: testComponentsList,
         currentProjectRootDirectory: testProjectRootDirectory,
@@ -199,13 +212,65 @@ describe('getBladeComponentDocs Tool', () => {
     // Mock cursor rules as not needing update
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
+    // Get the HTTP callback
+    const httpCallback = getBladeComponentDocsHttpCallback;
+
     // Call the tool callback with actual implementation
-    const result = getBladeComponentDocsToolCallback(
+    const result = httpCallback(
       {
         componentsList: testComponentsList,
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'claude',
         cursorRuleVersion: CURSOR_RULES_VERSION,
+      },
+      createMockContext(),
+    );
+
+    // Snapshot test to ensure the output format remains consistent
+    expect(result).toMatchSnapshot();
+  });
+
+  it('should return consistent component docs response for stdio transport', async () => {
+    const testProjectRootDirectory = '/Users/test/project';
+    const testComponentsList = 'Button, Accordion';
+
+    // Get the actual implementations (not mocked) to test real output
+    const actualGetBladeDocsResponseText = await vi.importActual<typeof getBladeDocsResponseText>(
+      '../../utils/getBladeDocsResponseText.js',
+    );
+    const actualGeneralUtils = await vi.importActual<typeof generalUtils>(
+      '../../utils/generalUtils.js',
+    );
+
+    // Unmock analytics to allow the actual function to run, but we'll still spy on it
+    vi.restoreAllMocks();
+    vi.spyOn(analyticsUtils, 'sendAnalytics').mockImplementation(() => {
+      // Mock implementation that doesn't throw
+    });
+
+    if (actualGetBladeDocsResponseText && actualGeneralUtils) {
+      // Temporarily replace the mocked functions with the actual ones
+      vi.spyOn(getBladeDocsResponseText, 'getBladeDocsResponseText').mockImplementation(
+        actualGetBladeDocsResponseText.getBladeDocsResponseText,
+      );
+      vi.spyOn(generalUtils, 'getBladeDocsList').mockImplementation(
+        actualGeneralUtils.getBladeDocsList,
+      );
+    }
+
+    // Mock cursor rules as not needing update
+    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+
+    // Get the stdio callback
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const stdioCallback = getBladeComponentDocsStdioCallback;
+
+    // Call the tool callback with actual implementation
+    const result = stdioCallback(
+      {
+        componentsList: testComponentsList,
+        currentProjectRootDirectory: testProjectRootDirectory,
+        clientName: 'cursor',
       },
       createMockContext(),
     );
