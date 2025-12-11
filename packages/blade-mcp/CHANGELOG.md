@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.21.0
+
+### Minor Changes
+
+- be2a6ff12: fix(blade): refactor blade mcp to use fs file change in stdio mode
+
 ## 1.20.1
 
 ### Patch Changes
