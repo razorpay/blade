@@ -64,6 +64,7 @@ import BillIconComponent from './BillIcon';
 import BillMeFilledIconComponent from './BillMeFilledIcon';
 import BillMeIconComponent from './BillMeIcon';
 import BluetoothIconComponent from './BluetoothIcon';
+import BoardIconComponent from './BoardIcon';
 import BoldIconComponent from './BoldIcon';
 import BookIconComponent from './BookIcon';
 import BookmarkIconComponent from './BookmarkIcon';
@@ -506,6 +507,7 @@ const iconMap: Record<string, IconComponent> = {
   BillMeFilledIcon: BillMeFilledIconComponent,
   BillMeIcon: BillMeIconComponent,
   BluetoothIcon: BluetoothIconComponent,
+  BoardIcon: BoardIconComponent,
   BoldIcon: BoldIconComponent,
   BookIcon: BookIconComponent,
   BookmarkIcon: BookmarkIconComponent,

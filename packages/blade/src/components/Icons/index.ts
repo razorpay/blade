@@ -65,6 +65,7 @@ export { default as BillIcon } from './BillIcon';
 export { default as BillMeFilledIcon } from './BillMeFilledIcon';
 export { default as BillMeIcon } from './BillMeIcon';
 export { default as BluetoothIcon } from './BluetoothIcon';
+export { default as BoardIcon } from './BoardIcon';
 export { default as BoldIcon } from './BoldIcon';
 export { default as BookIcon } from './BookIcon';
 export { default as BookmarkIcon } from './BookmarkIcon';
