@@ -5,6 +5,7 @@
   import Text from './components/Typography/Text/Text.svelte';
   import Heading from './components/Typography/Heading/Heading.svelte';
   import Code from './components/Typography/Code/Code.svelte';
+  import Amount from './components/Amount/Amount.svelte';
   
   let isLoading = $state(false);
   let isLoading2 = $state(false);
@@ -448,6 +449,162 @@
     </Code>
     {' '}component
   </Text>
+
+    <Heading
+      as='h2'
+      color='surface.text.gray.normal'
+      weight='semibold'
+      size='medium'
+    >
+      Amount Component
+    </Heading>
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Default Amount
+    </Heading>
+    <Amount value={12500.45} />
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Amount with text
+    </Heading>
+    <div style="display: flex;">
+      <Text>
+        Total Amount is &nbsp;
+      </Text>
+      <Amount
+        size="medium"
+        type="body"
+        value={1000}
+      />
+      <Text>
+        &nbsp; only.
+      </Text>
+    </div>
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Strikthrough Amount
+    </Heading>
+    <Amount
+      isStrikethrough
+      size="medium"
+      value={123456.789}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Currency
+    </Heading>
+    <Text marginBottom="spacing.1">
+      AFN
+    </Text>
+    <Amount
+      currency="AFN"
+      size="medium"
+      suffix="humanize"
+      value={123456.789}
+    />
+
+    <Text marginBottom="spacing.1">
+      USD
+    </Text>
+    <Amount
+      currency="USD"
+      size="medium"
+      suffix="humanize"
+      value={123456.789}
+    />
+
+    <Text marginBottom="spacing.1">
+      EUR
+    </Text>
+    <Amount
+      currency="EUR"
+      size="medium"
+      value={123456.789}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Humanize Suffix
+    </Heading>
+
+    <Amount
+      size="medium"
+      suffix="humanize"
+      value={1234}
+    />
+
+    <Amount
+      size="medium"
+      suffix="humanize"
+      value={12345}
+    />
+
+    <Amount
+      size="medium"
+      suffix="humanize"
+      value={123456}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      No Suffix
+    </Heading>
+    <Amount
+      size="medium"
+      suffix="none"
+      value={123456.789}
+    />
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+     Amount with intent
+    </Heading>
+    <Text marginBottom="spacing.1">
+      positive
+    </Text>
+    <Amount
+      color="feedback.text.positive.intense"
+      size="medium"
+      value={123456.789}
+    />
+    <Text marginBottom="spacing.1">
+      negative
+    </Text>
+    <Amount
+      color="feedback.text.negative.intense"
+      size="medium"
+      value={123456.789}
+    />
+    <Text marginBottom="spacing.1">
+      notice
+    </Text>
+    <Amount
+      color="feedback.text.notice.intense"
+      size="medium"
+      value={123456.789}
+    />
+    <Text marginBottom="spacing.1">
+      information
+    </Text>
+    <Amount
+      color="feedback.text.information.intense"
+      size="medium"
+      value={123456.789}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Amount As Heading
+     </Heading>
+    <Amount
+      size='xlarge'
+      type="heading"
+      color="feedback.text.negative.intense"
+      value={123456.789}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Amount As Body text
+     </Heading>
+    <Amount
+      size='large'
+      type="body"
+      value={123456.789}
+    />
   </div>
 </main>
 

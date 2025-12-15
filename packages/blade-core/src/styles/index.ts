@@ -48,3 +48,10 @@ export {
   spinnerIconClass,
 } from './Spinner';
 export type { SpinnerVariants, SpinnerSize, SpinnerColor } from './Spinner';
+export { subtleFontSizes, normalAmountSizes, amountLineHeights } from './Amount';
+export type {
+  AmountTypeProps,
+  AmountBodyProps,
+  AmountDisplayProps,
+  AmountHeadingProps,
+} from './Amount';
