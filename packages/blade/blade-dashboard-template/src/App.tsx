@@ -1,11 +1,30 @@
-import React from 'react';
-import { Button } from '@razorpay/blade/components';
+import Navbar from "./components/navbar/navbar";
 
-function App(): React.JSX.Element {
+import "./App.css";
+import Sidebar from "./components/sidebar/sidebar";
+import HeroSection from "./components/heroSection/heroSection";
+import Overview from "./components/settlementOverview/overview";
+import ImportantUpdate from "./components/importantUpdate/importantUpdate";
+import PaymentOverview from "./components/paymentOverview/paymentOverview";
+import TopInsights from "./components/topInsights/topInsights";
+import ProductsForYou from "./components/productsForYou/productsForYou";
+
+function App() {
   return (
-    <div>
-      <Button>Click me</Button>
-    </div>
+    <>
+      <Navbar />
+      <div className="containerWrapper">
+        <Sidebar />
+        <div className="pageContainer">
+          <HeroSection />
+          <Overview />
+          <ImportantUpdate />
+          <PaymentOverview />
+          <TopInsights />
+          <ProductsForYou />
+        </div>
+      </div>
+    </>
   );
 }
 

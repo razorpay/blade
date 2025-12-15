@@ -1,13 +1,10 @@
-import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import '@razorpay/blade/fonts.css';
-import Wrapper from './wrapper/Wrapper';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
 
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <Wrapper />
-    </StrictMode>,
-  );
-}
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)

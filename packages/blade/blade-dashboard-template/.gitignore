@@ -22,7 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# TypeScript compiled output (Vite handles compilation)
-src/**/*.js
-src/**/*.js.map

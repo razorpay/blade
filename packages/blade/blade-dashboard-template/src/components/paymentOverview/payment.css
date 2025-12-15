@@ -1,0 +1,127 @@
+.paymentOverviewTitleContainer {
+}
+
+.paymentOverviewTitle {
+  color: #0a0a0a;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.528px;
+}
+
+.paymentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.paymentDataContainer {
+  height: 342px;
+  align-self: stretch;
+  border-radius: 12px 12px 12px 12px;
+  border: 1px solid #e4e6e7;
+  background: linear-gradient(
+    180deg,
+    #fafafb 0%,
+    #fff 27.73%,
+    #fff 71.79%,
+    #f7f7f8 100%
+  );
+  box-shadow: 0 6px 32px 4px rgba(184, 196, 214, 0.06),
+    0 -1px 0 1px #fff inset, 0 1px 0 1px #fff inset;
+  display: flex;
+}
+
+.dataContainer {
+  margin: 8px;
+  flex-direction: column;
+}
+
+.dataTile {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid rgba(230, 232, 237, 0.5);
+  background: #f8f8f8;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.02) inset;
+  width: 264px;
+}
+
+.dataTileTitle {
+  color: #0a0a0a;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.182px;
+  margin-top: 12px;
+}
+
+.dataTileValueContainer {
+  color: #0a0a0a;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.66px;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dataTileValuePercentage {
+  color: #008743;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.156px;
+}
+
+.dataTitleValueRoughValue {
+  color: #7d7d7d;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.156px;
+}
+
+.dataValueTile {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 8px;
+  gap: 12px;
+}
+
+.dataTileDivider {
+  height: 0.5px;
+  width: 232px;
+  background: rgba(230, 232, 237, 0.5);
+  border: none;
+  margin: 0px;
+}
+
+.checkBoxContainer{
+    
+}
+
+.graphContainer{
+ margin: 8px;
+} 
