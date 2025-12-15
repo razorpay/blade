@@ -117,6 +117,7 @@ const TourPopover = ({
       close,
       defaultInitialFocusRef,
       titleId,
+      openInteraction: 'click' as const,
     };
   }, [close, titleId]);
 

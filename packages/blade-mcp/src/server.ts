@@ -7,7 +7,7 @@ import { captureException, initSentry } from './utils/sentryUtils.js';
 initSentry();
 
 try {
-  const server = createServer();
+  const server = createServer({ transportType: 'stdio' });
   const transport = createStdioTransport();
   await server.connect(transport);
   // Why console.error? Checkout https://modelcontextprotocol.io/quickstart/server#logging-in-mcp-servers-2

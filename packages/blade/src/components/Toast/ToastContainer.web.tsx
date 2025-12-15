@@ -91,10 +91,11 @@ function isPromotionalToast(toast: Toast): boolean {
   return toast.type == 'promotional';
 }
 
-const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
+const Toaster: React.FC<ToasterProps & { offsetBottom?: number; zIndex?: number }> = ({
   reverseOrder,
   position = 'top-center',
   offsetBottom,
+  zIndex,
   toastOptions,
   containerClassName,
   ...rest
@@ -124,6 +125,9 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
   const hasPromoToast = promoToasts.length > 0 && promoToasts[0]?.visible;
   const promoToastHeight = promoToasts[0]?.height ?? 0;
   const isExpanded = hasManuallyExpanded || recomputedToasts.length <= minToasts;
+
+  // Use container zIndex if provided, otherwise use default
+  const containerZIndex = zIndex ?? TOAST_Z_INDEX;
 
   React.useLayoutEffect(() => {
     // find the first toast which is visible
@@ -223,7 +227,7 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
   return (
     <BaseBox
       position="fixed"
-      zIndex={TOAST_Z_INDEX}
+      zIndex={containerZIndex}
       top={makeSize(defaultGutter)}
       left={makeSize(defaultGutter)}
       right={makeSize(defaultGutter)}
@@ -278,6 +282,10 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
           toastHeight = toast.height;
         }
 
+        // Maintain relative stacking order (newer toasts in front)
+        // Use -1 * index so newer toasts (lower index) have higher z-index values
+        const wrapperZIndex = -1 * index;
+
         return (
           <StyledToastWrapper
             key={toast.id}
@@ -288,7 +296,7 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number }> = ({
             isPromotional={isPromotional}
             style={{
               ...positionStyle,
-              zIndex: -1 * index,
+              zIndex: wrapperZIndex,
               height: toastHeight,
               overflow: 'hidden',
             }}
@@ -324,10 +332,17 @@ type ToastContainerProps = {
    * @default isMobile ? 16px : 24px
    */
   offsetBottom?: number;
+  /**
+   * Custom z-index value for the toast container.
+   * This is useful when you want to position toasts above other elements like modals.
+   *
+   * @default 2001
+   */
+  zIndex?: number;
 };
 
-const ToastContainer = ({ offsetBottom }: ToastContainerProps): React.ReactElement => {
-  return <Toaster offsetBottom={offsetBottom} position="bottom-left" />;
+const ToastContainer = ({ offsetBottom, zIndex }: ToastContainerProps): React.ReactElement => {
+  return <Toaster offsetBottom={offsetBottom} zIndex={zIndex} position="bottom-left" />;
 };
 
 export { ToastContainer };

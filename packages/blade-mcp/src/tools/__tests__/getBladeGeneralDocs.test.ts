@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getBladeGeneralDocsToolCallback } from '../getBladeGeneralDocs.js';
+import { getBladeGeneralDocsHttpCallback } from '../getBladeGeneralDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
@@ -21,6 +21,7 @@ vi.mock('../../utils/generalUtils.js', () => ({
 }));
 vi.mock('fs', () => ({
   readFileSync: vi.fn(() => 'Mock guide content'),
+  existsSync: vi.fn(() => false),
 }));
 
 // Create a mock context object for tool callbacks
@@ -55,8 +56,11 @@ describe('getBladeGeneralDocs Tool', () => {
       mockResponseText,
     );
 
+    // Get the HTTP callback
+    const httpCallback = getBladeGeneralDocsHttpCallback;
+
     // Call the tool callback
-    const result = getBladeGeneralDocsToolCallback(
+    const result = httpCallback(
       {
         topicsList: mockTopicsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
@@ -72,7 +76,8 @@ describe('getBladeGeneralDocs Tool', () => {
       properties: {
         toolName: 'get_blade_general_docs',
         topicsList: mockTopicsList,
-        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+        rootDirectoryName: 'project',
+        cursorRuleVersion: CURSOR_RULES_VERSION,
         clientName: 'cursor',
       },
     });
@@ -98,8 +103,11 @@ describe('getBladeGeneralDocs Tool', () => {
     const mockCurrentProjectRootDirectory = '/Users/test/project';
     const mockTopicsList = 'InvalidTopic, AnotherInvalid';
 
+    // Get the HTTP callback
+    const httpCallback = getBladeGeneralDocsHttpCallback;
+
     // Call the tool callback
-    const result = getBladeGeneralDocsToolCallback(
+    const result = httpCallback(
       {
         topicsList: mockTopicsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
@@ -163,8 +171,11 @@ describe('getBladeGeneralDocs Tool', () => {
     // Mock cursor rules as not needing update
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
+    // Get the HTTP callback
+    const httpCallback = getBladeGeneralDocsHttpCallback;
+
     // Call the tool callback with actual implementation
-    const result = getBladeGeneralDocsToolCallback(
+    const result = httpCallback(
       {
         topicsList: testTopicsList,
         currentProjectRootDirectory: testProjectRootDirectory,
@@ -214,8 +225,11 @@ describe('getBladeGeneralDocs Tool', () => {
     // Mock cursor rules as not needing update
     vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
 
+    // Get the HTTP callback
+    const httpCallback = getBladeGeneralDocsHttpCallback;
+
     // Call the tool callback with actual implementation
-    const result = getBladeGeneralDocsToolCallback(
+    const result = httpCallback(
       {
         topicsList: testTopicsList,
         currentProjectRootDirectory: testProjectRootDirectory,

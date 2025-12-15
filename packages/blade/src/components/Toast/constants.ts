@@ -2,7 +2,7 @@ import { size } from '~tokens/global';
 
 export const TOAST_MAX_WIDTH = size['360'];
 // higher than modal
-export const TOAST_Z_INDEX = 2000;
+export const TOAST_Z_INDEX = 2001;
 
 // Space between the toasts
 export const GUTTER = 12;

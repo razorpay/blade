@@ -1,5 +1,23 @@
 # @razorpay/blade-mcp
 
+## 1.21.0
+
+### Minor Changes
+
+- be2a6ff12: fix(blade): refactor blade mcp to use fs file change in stdio mode
+
+## 1.20.1
+
+### Patch Changes
+
+- ff190d563: Updated tokens
+
+## 1.20.0
+
+### Minor Changes
+
+- 0dbcbb6c2: feat(blade): added openInteraction prop for hover/click trigger on popover component
+
 ## 1.19.0
 
 ### Minor Changes

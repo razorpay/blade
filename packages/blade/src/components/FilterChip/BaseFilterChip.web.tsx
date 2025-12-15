@@ -149,7 +149,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
         })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
-        {...metaAttribute({ testID: rest.testID })}
+        {...metaAttribute({ name: 'filter-chip-trigger', testID: rest.testID })}
       >
         <Box display="flex" gap="spacing.2" whiteSpace="nowrap">
           <Text
@@ -175,6 +175,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
             // value can never be undefined because when it's undefined the button itself doesn't render/
             onClick={() => onClearButtonClick?.({ value: value ?? '' })}
             disabled={isDisabled}
+            {...metaAttribute({ name: 'filter-chip-close-button' })}
           >
             <CloseIcon size="small" color="interactive.icon.gray.muted" />
           </StyledFilterCloseButton>

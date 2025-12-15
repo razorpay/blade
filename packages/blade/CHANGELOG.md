@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 12.68.0
+
+### Minor Changes
+
+- b05315121: feat(blade): add data attribute in basefilter chip
+
+## 12.67.0
+
+### Minor Changes
+
+- f54a6600b: feat(blade): expose zIndex in toast & updated zIndex values
+- 0dbcbb6c2: feat(blade): added openInteraction prop for hover/click trigger on popover component
+
 ## 12.66.0
 
 ### Minor Changes
