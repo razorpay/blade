@@ -587,7 +587,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
           "primary": {
             "intense": "hsl(332, 100%, 26%)",
-            "subtle": "hsl(332, 52%, 49%)",
+            "subtle": "hsla(332, 100%, 26%, 0.09)",
           },
           "sea": {
             "intense": "hsla(180, 42%, 92%, 1)",
@@ -1226,7 +1226,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
           "primary": {
             "intense": "hsl(332, 100%, 26%)",
-            "subtle": "hsl(332, 52%, 49%)",
+            "subtle": "hsla(332, 100%, 26%, 0.09)",
           },
           "sea": {
             "intense": "hsla(180, 61%, 20%, 1)",
@@ -2337,7 +2337,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           },
           "primary": {
             "intense": "hsl(57, 100%, 52%)",
-            "subtle": "hsl(60, 100%, 58%)",
+            "subtle": "hsla(57, 100%, 52%, 0.09)",
           },
           "sea": {
             "intense": "hsla(180, 42%, 92%, 1)",
@@ -2976,7 +2976,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           },
           "primary": {
             "intense": "hsl(57, 100%, 52%)",
-            "subtle": "hsl(60, 100%, 58%)",
+            "subtle": "hsla(57, 100%, 52%, 0.09)",
           },
           "sea": {
             "intense": "hsla(180, 61%, 20%, 1)",
