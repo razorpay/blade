@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.21.1
+
+### Patch Changes
+
+- 03e1de587: fix(mcp/README): mcp install link
+
 ## 1.21.0
 
 ### Minor Changes
