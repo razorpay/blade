@@ -6,13 +6,12 @@ import IconReceiptCheck from "../../assets/hero/IconReceiptCheck.svg?react";
 import PinImage from "../../assets/hero/pin.svg?react";
 import ArrowUp from "../../assets/hero/arrowUp.svg?react";
 import GradientBlinds from "./gradient";
-import imagePath from "./image.png";
 
 function HeroSection() {
   return (
     <div className="heroSection">
       <div className="heroSectionBackground">
-        <GradientBlinds imagePath={imagePath} />
+        <GradientBlinds videoSrc="/dashboard/output.mp4" />
       </div>
       <div className="raySection">
         <span className="raySectionTitle">
