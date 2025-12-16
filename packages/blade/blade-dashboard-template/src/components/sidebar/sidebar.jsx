@@ -7,7 +7,7 @@ import CC from "../../assets/navbar/cc.svg?react";
 import Payments from "../../assets/navbar/payments.svg?react";
 import Tax from "../../assets/navbar/tax.svg?react";
 import RayAi from "../../assets/navbar/ray.svg?react";
-import ThreeDots from "../../assets/navbar/threeDots.svg?react";
+import ThreeDots from "../../assets/navbar/threedots.svg?react";
 
 function Sidebar() {
   return (
