@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.68.1
+
+### Patch Changes
+
+- 5ab22346a: fix(createTheme): color of `surface.background.primary.subtle` in createTheme function (white labelling)
+
 ## 12.68.0
 
 ### Minor Changes
