@@ -183,8 +183,8 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
           return vec2(signedDisplacement, localUVx);
       }
       
-      // Cover-style UV mapping (like CSS background-size: cover)
-      vec2 coverUV(vec2 uv, vec2 screenSize, vec2 imageSize) {
+      // Cover-style UV mapping (like CSS background-size: cover) with zoom
+      vec2 coverUV(vec2 uv, vec2 screenSize, vec2 imageSize, float zoom) {
           float screenAspect = screenSize.x / screenSize.y;
           float imageAspect = imageSize.x / imageSize.y;
           
@@ -197,6 +197,9 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
               scale.x = screenAspect / imageAspect;
           }
           
+          // Apply zoom (zoom in by scaling down the UV coordinates)
+          scale *= zoom;
+          
           // Center the image
           vec2 offset = (1.0 - scale) * 0.5;
           return uv * scale + offset;
@@ -208,7 +211,7 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
           sampler2D tex, 
           vec2 uv,
           float signedDisplacement, vec2 maxDisplacement,
-          vec2 resolution, vec2 imageSize, float radius, float sigma
+          vec2 resolution, vec2 imageSize, float radius, float sigma, float zoom
       ) {
           vec4 color = vec4(0.0);
           float totalWeight = 0.0;
@@ -231,7 +234,7 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
                   float weight = exp(-(x * x + y * y) / (2.0 * sigma * sigma));
                   
                   // Sample texture with displacement and blur offset
-                  color += texture2D(tex, coverUV(displacedUV + offset, resolution, imageSize)) * weight;
+                  color += texture2D(tex, coverUV(displacedUV + offset, resolution, imageSize, zoom)) * weight;
                   
                   totalWeight += weight;
               }
@@ -245,6 +248,7 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
           const float angle = 0.13; // ~15 degrees in radians
           const float blurRadius = 9.0;
           const float sigma = 4.0;
+          const float zoom = 0.35; // Zoom factor (lower = more zoomed in)
           
           // Video dimensions (adjust to match your video)
           const vec2 imageSize = vec2(4500.0, 3000.0);
@@ -264,7 +268,7 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
               iChannel0, 
               uv,
               signedDisplacement, maxDisplacement,
-              iResolution, imageSize, blurRadius, sigma
+              iResolution, imageSize, blurRadius, sigma, zoom
           );
           
           // Extract luminance from the video
