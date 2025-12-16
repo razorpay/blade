@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Renderer, Geometry, Program, Mesh, Texture } from "ogl";
 
 const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard/output.mp4" }) => {
@@ -10,6 +10,7 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
   const rendererRef = useRef(null);
   const textureRef = useRef(null);
   const videoRef = useRef(null);
+  const [webglError, setWebglError] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -23,15 +24,33 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
     const rect = container.getBoundingClientRect();
     console.log("Initializing GradientBlinds - Container:", rect.width, "x", rect.height, "DPR:", pixelRatio);
 
-    const renderer = new Renderer({
-      width: rect.width,
-      height: rect.height,
-      dpr: pixelRatio,
-      alpha: true,
-    });
-    rendererRef.current = renderer;
-    const gl = renderer.gl;
-    const canvas = gl.canvas;
+    // Check WebGL support before creating renderer
+    let renderer, gl, canvas;
+    try {
+      renderer = new Renderer({
+        width: rect.width,
+        height: rect.height,
+        dpr: pixelRatio,
+        alpha: true,
+      });
+      rendererRef.current = renderer;
+      gl = renderer.gl;
+      
+      if (!gl) {
+        throw new Error("WebGL context is null");
+      }
+      
+      canvas = gl.canvas;
+    } catch (error) {
+      console.error("WebGL initialization failed:", error);
+      console.error("This may be due to:");
+      console.error("1. WebGL disabled in browser settings");
+      console.error("2. Hardware acceleration disabled");
+      console.error("3. Outdated graphics drivers");
+      console.error("4. GPU blacklisted or not available");
+      setWebglError(true);
+      return;
+    }
 
     canvas.style.position = "absolute";
     canvas.style.top = "0";
@@ -388,8 +407,28 @@ const GradientBlinds = ({ className, dpr, paused = false, videoSrc = "/dashboard
         width: "100%",
         height: "100%",
         position: "relative",
+        // Fallback CSS gradient when WebGL is not available
+        ...(webglError && {
+          background: "linear-gradient(135deg, #EFF5EE 0%, #E5F5D6 33%, #8FCAFE 66%, #2951E0 100%)",
+        }),
       }}
-    />
+    >
+      {webglError && (
+        <div style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          textAlign: "center",
+          color: "#2951E0",
+          fontSize: "14px",
+          opacity: 0.7,
+          maxWidth: "80%",
+        }}>
+          WebGL is not available. Displaying fallback gradient.
+        </div>
+      )}
+    </div>
   );
 };
 
