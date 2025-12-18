@@ -593,21 +593,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   margin-top: 4px;
 }
 
-.c16.c16.c16.c16.c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-}
-
 .c4.c4.c4.c4.c4 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -665,7 +650,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -1058,11 +1043,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           data-blade-component="base-box"
         >
           <span
-            class="c16"
+            class="c2"
             data-blade-component="base-box"
           >
             <span
-              class="c17"
+              class="c16"
               data-blade-component="text"
             >
               Select one

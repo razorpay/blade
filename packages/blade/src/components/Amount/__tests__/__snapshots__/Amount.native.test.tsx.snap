@@ -2898,7 +2898,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         }
       >
         1
-        T
+        K
       </Text>
     </View>
   </View>
