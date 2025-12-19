@@ -254,10 +254,10 @@
     </div>
 
     <Heading
-      as='h2'
+      as='h1'
       color='surface.text.gray.normal'
       weight='semibold'
-      size='medium'
+      size='xlarge'
     >
       Link Component - Button Variant
     </Heading>
@@ -430,6 +430,7 @@
   <Text size="medium">
     Lorem ipsum normal text{' '}
     <Code
+      isHighlighted={false}
       color="interactive.text.positive.subtle"
       size="medium"
       weight="bold"
@@ -441,6 +442,7 @@
   <Text size="small">
     Lorem ipsum normal text{' '}
     <Code
+      isHighlighted={false}
       color="interactive.text.positive.subtle"
       size="small"
       weight="bold"

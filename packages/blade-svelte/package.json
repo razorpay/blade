@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@razorpay/blade-core": "0.0.1",
@@ -16,11 +18,16 @@
     "class-variance-authority": "^0.7.0"
   },
   "devDependencies": {
+    "@babel/core": "7.21.8",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@types/node": "^20.0.0",
     "svelte": "^5.0.0",
     "svelte-check": "^4.0.0",
     "typescript": "^5.0.0",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "storybook": "^10.1.2",
+    "@storybook/svelte-vite": "^10.1.2",
+    "@storybook/addon-svelte-csf": "^5.0.10",
+    "eslint-plugin-storybook": "^10.1.2"
   }
 }

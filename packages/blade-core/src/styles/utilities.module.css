@@ -477,3 +477,17 @@
 
 /* Transparent */
 .background-transparent { background-color: transparent; }
+
+/* Width Utilities */
+.width-full { width: 100%; }
+.width-auto { width: auto; }
+.width-fit { width: fit-content; }
+.width-min { width: min-content; }
+.width-max { width: max-content; }
+
+/* Height Utilities */
+.height-full { height: 100%; }
+.height-auto { height: auto; }
+.height-fit { height: fit-content; }
+.height-min { height: min-content; }
+.height-max { height: max-content; }
