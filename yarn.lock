@@ -6636,13 +6636,6 @@
   dependencies:
     "@internationalized/date" "^3.5.2"
 
-"@razorpay/i18nify-js@^1.12.7":
-  version "1.12.7"
-  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.12.7/155cb8060667336f1f382228ff3270ab6fcb7513#155cb8060667336f1f382228ff3270ab6fcb7513"
-  integrity sha512-4ZlbnGdYPkX2AJvHPU2OU/4zMPRV5j7egmvg3LrdIB6XwT9wd6MgdjbvOyvqozL5IF1J+qxP0erjnmfo7GZjQg==
-  dependencies:
-    "@internationalized/date" "^3.5.2"
-
 "@razorpay/i18nify-react@4.0.12":
   version "4.0.12"
   resolved "https://registry.yarnpkg.com/@razorpay/i18nify-react/-/i18nify-react-4.0.12.tgz#e440fb70e3034ef314e6fc404f513035b99d7bbf"
