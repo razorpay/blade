@@ -33,16 +33,17 @@
     "test": "echo 'No tests configured yet'"
   },
   "dependencies": {
+    "@razorpay/i18nify-js": "^1.12.7",
     "class-variance-authority": "^0.7.0",
-    "ts-deepmerge": "6.2.0",
-    "tinycolor2": "1.6.0"
+    "tinycolor2": "1.6.0",
+    "ts-deepmerge": "6.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.28.3",
+    "@babel/plugin-transform-runtime": "7.28.3",
     "@babel/preset-env": "7.28.3",
     "@babel/preset-react": "7.16.5",
     "@babel/preset-typescript": "7.16.5",
-    "@babel/plugin-transform-runtime": "7.28.3",
     "@rollup/plugin-alias": "5.0.0",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-commonjs": "25.0.4",
@@ -53,17 +54,21 @@
     "@types/react-native": "0.72.2",
     "@types/styled-components": "5.1.34",
     "@types/tinycolor2": "1.4.3",
+    "magic-string": "^0.30.5",
+    "postcss": "^8.4.43",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^9.5.0",
     "ramda": "0.29.1",
     "react": "18.2.0",
     "react-native": "0.72.3",
     "rollup": "3.29.5",
     "rollup-plugin-dts": "5.3.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "styled-components": "5.3.5",
     "typescript": "4.9",
     "typescript-transform-paths": "3.4.7"
   },
-  "peerDependencies": {},
   "files": [
     "src",
     "dist",
@@ -76,6 +81,7 @@
       "production": "./dist/lib/web/production/tokens/index.js",
       "default": "./dist/lib/web/production/tokens/index.js"
     },
+    "./tokens/theme.css": "./src/tokens/theme.css",
     "./utils": {
       "types": "./dist/types/utils/index.d.ts",
       "development": "./dist/lib/web/development/utils/index.js",
