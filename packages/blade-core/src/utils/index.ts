@@ -21,5 +21,7 @@ export * from './makeLetterSpacing';
 export * from './makeTypographySize';
 export * from './metaAttribute';
 export * from './platform';
+export * from './styledProps';
 export * from './tokenToCSSVariable';
 export * from './types';
+export * from './amount';

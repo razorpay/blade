@@ -1,4 +1,4 @@
-.code-container {
+.base {
   padding: var(--spacing-0) var(--spacing-2);
   border-radius: var(--border-radius-medium);
   display: inline-block;
@@ -6,7 +6,7 @@
   line-height: var(--line-height-0);
 }
 
-.code-container--highlighted {
+.highlighted {
   background-color: var(--feedback-background-neutral-subtle);
 }
 
