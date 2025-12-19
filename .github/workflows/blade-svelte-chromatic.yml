@@ -18,15 +18,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Use Node v20
+      - name: Use Node v18
         uses: actions/setup-node@v3
         with:
-          node-version: 20.x
+          node-version: 18.12.1
 
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
 
-      # Build blade-core first (required by Svelte)
       - name: Build blade-core
         run: yarn build:blade-core
 
