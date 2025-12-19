@@ -17,6 +17,11 @@
     "@razorpay/i18nify-js": "^1.12.7",
     "class-variance-authority": "^0.7.0"
   },
+  "dependencies": {
+    "@razorpay/blade-core": "0.0.1",
+    "@razorpay/i18nify-js": "^1.12.7",
+    "class-variance-authority": "^0.7.0"
+  },
   "devDependencies": {
     "@babel/core": "7.21.8",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",

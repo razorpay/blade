@@ -444,8 +444,6 @@
     <Code
       isHighlighted={false}
       color="interactive.text.positive.subtle"
-      size="small"
-      weight="bold"
     >
       SENTRY_AUTH_TOKEN
     </Code>
