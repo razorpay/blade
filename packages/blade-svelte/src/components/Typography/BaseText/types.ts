@@ -1,6 +1,7 @@
 import type { Snippet } from 'svelte';
 import type { AccessibilityProps, DotNotationToken } from '@razorpay/blade-core/utils';
 import type { Theme } from '../../BladeProvider/types';
+import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 // Text color types - using DotNotationToken from blade-core, matching React implementation exactly
 type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;
@@ -50,7 +51,7 @@ export type BaseTextProps = {
   truncateAfterLines?: number;
   className?: string;
   style?: string | Record<string, string | number>;
-  children: Snippet;
+  children: Snippet | string;
   accessibilityProps?: Partial<AccessibilityProps>;
   /**
    * React Native only - not applicable for Svelte but kept for API consistency
@@ -60,7 +61,7 @@ export type BaseTextProps = {
   testID?: string;
   // Analytics attributes
   [key: `data-analytics-${string}`]: string;
-};
+} & StyledPropsBlade;
 
 export type StyledBaseTextProps = Pick<
   BaseTextProps,

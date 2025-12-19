@@ -1,8 +1,8 @@
 <script lang="ts">
-  import './baseText.css';
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import type { BaseTextProps } from './types';
-  import { getBaseTextClassNames, getBaseTextStyles } from './utils';
+  import { getBaseTextClasses } from '@razorpay/blade-core/styles';
+  import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
 
   let {
     id,
@@ -21,7 +21,6 @@
     wordBreak,
     opacity,
     className,
-    style,
     accessibilityProps = {},
     componentName = MetaConstants.BaseText,
     testID,
@@ -33,9 +32,10 @@
   // Use truncateAfterLines if provided, otherwise numberOfLines (for API consistency)
   const lineClamp = truncateAfterLines ?? numberOfLines;
 
-  // Generate class names for variants (fontSize, lineHeight, fontWeight, fontFamily, etc.)
+  // Generate all classes from blade-core (single source of truth)
+  // Everything is class-based - no inline styles or data attributes
   const baseTextClasses = $derived(
-    getBaseTextClassNames({
+    getBaseTextClasses({
       fontSize,
       lineHeight,
       fontWeight,
@@ -45,60 +45,31 @@
       textAlign,
       textTransform,
       wordBreak,
-    }),
-  );
-
-  // Combine base classes with custom className
-  const combinedClasses = $derived(() => {
-    return className ? `${baseTextClasses} ${className}` : baseTextClasses;
-  });
-
-  // Generate inline styles for dynamic values
-  const baseStyles = $derived(
-    getBaseTextStyles({
-      color,
-      fontFamily,
-      fontSize,
-      fontWeight,
-      fontStyle,
-      textDecorationLine,
-      numberOfLines: lineClamp,
-      wordBreak,
-      lineHeight,
       letterSpacing,
-      textAlign,
+      color,
       opacity,
-      textTransform,
-      theme: {
-        name: undefined,
-        border: undefined,
-        breakpoints: undefined,
-        colors: undefined,
-        spacing: undefined,
-        motion: undefined,
-        elevation: undefined,
-        typography: undefined
-      }
+      numberOfLines: lineClamp,
+      className,
     }),
   );
 
-  // Combine base styles with custom style prop
-  const combinedStyle = $derived(() => {
-    if (!style) return baseStyles;
-    const customStyle = typeof style === 'string' ? style : Object.entries(style).map(([k, v]) => `${k}: ${v}`).join('; ');
-    return `${baseStyles}; ${customStyle}`;
+  // Extract styled props and convert to classes
+  const styledProps = $derived(getStyledPropsClasses(rest));
+
+  // Combine all classes - everything is class-based, no inline styles
+  const combinedClasses = $derived(() => {
+    const classes = [baseTextClasses];
+    if (styledProps.classes) {
+      classes.push(...styledProps.classes);
+    }
+    return classes.filter(Boolean).join(' ');
   });
 
-  // Accessibility attributes
   const accessibilityAttrs = $derived(makeAccessible(accessibilityProps));
-
-  // Meta attributes
   const metaAttrs = metaAttribute({
     name: componentName,
     testID,
   });
-
-  // Analytics attributes
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 </script>
 
@@ -106,11 +77,14 @@
   this={as}
   {id}
   class={combinedClasses()}
-  style={combinedStyle()}
   {...accessibilityAttrs}
   {...metaAttrs}
   {...analyticsAttrs}
 >
-  {@render children()}
+  {#if typeof children === 'string'}
+    {children}
+  {:else}
+    {@render children()}
+  {/if}
 </svelte:element>
 
