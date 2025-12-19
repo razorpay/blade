@@ -10,12 +10,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "dependencies": {
-    "@razorpay/blade-core": "0.0.1",
-    "@razorpay/i18nify-js": "^1.12.7",
-    "class-variance-authority": "^0.7.0"
+    "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
     "@razorpay/blade-core": "0.0.1",
