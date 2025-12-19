@@ -1,16 +1,17 @@
 <script lang="ts">
-  import './baseLink.css';
   import type { Snippet } from 'svelte';
-  import { cva } from 'class-variance-authority';
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
-  import type { ActionStatesType, ColorType } from '../../../types';
+  import BaseText from '../../Typography/BaseText/BaseText.svelte';
+  import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+  import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
+  import { getBaseLinkClasses, baseLinkContentClass, baseLinkIconClass, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
 
   // Icon component type - placeholder for now
   // TODO: Replace with actual Icon component when available
   type IconComponent = any;
 
-  interface BaseLinkProps {
+  interface BaseLinkProps extends StyledPropsBlade {
     children?: Snippet;
     icon?: IconComponent;
     iconPosition?: 'left' | 'right';
@@ -74,16 +75,18 @@
   }: BaseLinkProps = $props();
 
   // Validation - check if we have either icon or children
-  if (import.meta.env.DEV && !Icon && !children) {
-    throw new Error('BaseLink: At least one of icon or text is required to render a link.');
-  }
+  $effect(() => {
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost' && !Icon && !children) {
+      console.error('BaseLink: At least one of icon or text is required to render a link.');
+    }
+  });
 
   const isButton = variant === 'button';
-  const disabled = isButton && isDisabled;
 
   // Create interaction state using $state (must be in .svelte file)
+  // Initialize based on current disabled state
   let currentInteraction = $state<'default' | 'hover' | 'focus' | 'disabled'>(
-    disabled ? 'disabled' : 'default',
+    isButton && isDisabled ? 'disabled' : 'default',
   );
 
   // Use interaction hook for managing interaction states
@@ -101,90 +104,89 @@
 
   // Update interaction state when disabled prop changes
   $effect(() => {
-    if (disabled) {
+    const isCurrentlyDisabled = isButton && isDisabled;
+    if (isCurrentlyDisabled) {
       currentInteraction = 'disabled';
     } else if (currentInteraction === 'disabled') {
       currentInteraction = 'default';
     }
   });
 
-  // Get color token based on state - reactive
-  function getColorToken(element: 'icon' | 'text'): string {
-    const state = currentInteraction;
-    const map: Record<ActionStatesType, ColorType> = {
-      default: 'normal',
-      hover: 'subtle',
-      focus: 'normal',
-      disabled: 'disabled',
+  // Generate all props reactively - updates when currentInteraction or other args change
+  const linkProps = $derived.by(() => {
+    const isButton = variant === 'button';
+    const textSizes = getLinkTextSizes();
+
+    return {
+      // Element props
+      as: isButton ? 'button' : 'a',
+      elementTag: isButton ? 'button' : 'a',
+      type: isButton ? 'button' : undefined,
+      disabled: isButton && isDisabled,
+      role: isButton ? 'button' : 'link',
+      defaultRel: target && target === '_blank' ? 'noreferrer noopener' : undefined,
+      
+      // Text props for BaseText
+      textDecorationLine: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
+      textColorToken: getLinkColorToken({
+        variant: variant,
+        color,
+        element: 'text',
+        currentInteraction: currentInteraction as ActionStatesType,
+        isDisabled,
+      }),
+      fontSize: textSizes.fontSize[size],
+      lineHeight: textSizes.lineHeight[size],
+      
+      // Icon props
+      iconColor: getLinkColorToken({
+        variant,
+        color,
+        element: 'icon',
+        currentInteraction: currentInteraction as ActionStatesType,
+        isDisabled,
+      }),
+      iconSize: size,
+      
+      // Style props
+      cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
     };
-
-    const stateKey = map[state];
-    
-    if (color && color !== 'primary') {
-      if (color !== 'white') {
-        return `var(--interactive-${element}-${color}-${stateKey})`;
-      }
-      return `var(--interactive-${element}-static-white-${stateKey})`;
-    }
-    return `var(--interactive-${element}-primary-${stateKey})`;
-  }
-
-  // Reactive values based on currentInteraction - must use $derived to be reactive
-  const hasTextDecoration = $derived(!isButton && currentInteraction !== 'default');
-  const iconColor = $derived(getColorToken('icon'));
-  const textColor = $derived(getColorToken('text'));
-  const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
-
-  // CVA definitions for clean variant management
-  const linkClass = cva('base-link focus-ring-parent', {
-    variants: {
-      variant: {
-        anchor: 'base-link--anchor',
-        button: 'base-link--button',
-      },
-      size: {
-        xsmall: 'base-link--xsmall',
-        small: 'base-link--small',
-        medium: 'base-link--medium',
-        large: 'base-link--large',
-      },
-      disabled: {
-        true: 'cursor-not-allowed',
-        false: 'cursor-pointer',
-      },
-    },
-    defaultVariants: {
-      variant: 'anchor',
-      size: 'medium',
-      disabled: false,
-    },
   });
 
-  const textClass = cva('base-link__text', {
-    variants: {
-      size: {
-        xsmall: 'base-link__text--xsmall',
-        small: 'base-link__text--small',
-        medium: 'base-link__text--medium',
-        large: 'base-link__text--large',
-      },
-      decoration: {
-        underline: 'base-link--text--underline',
-        none: '',
-      },
-    },
-    defaultVariants: {
-      size: 'medium',
-      decoration: 'none',
-    },
-  });
+  // Destructure linkProps for cleaner template usage
+  // Note: iconColor is computed in linkProps but not destructured since icon rendering is TODO
+  // When icon component is implemented, it should use color classes directly
+  const {
+    elementTag,
+    type: elementType,
+    disabled: isElementDisabled,
+    role: elementRole,
+    defaultRel,
+    textDecorationLine,
+    textColorToken,
+    fontSize,
+    lineHeight,
+  } = $derived(linkProps);
+
+  // Generate BaseLink classes from blade-core (single source of truth)
+  // Everything is class-based - no inline styles or data attributes
+  const baseLinkClasses = $derived(
+    getBaseLinkClasses({
+      variant,
+      size,
+      isDisabled: isElementDisabled,
+    }),
+  );
+
 
   // Accessibility attributes
-  const accessibilityAttrs = makeAccessible({
-    role: isButton ? 'button' : 'link',
-    disabled: isButton && isDisabled,
-    ...accessibilityProps,
-  });
+  const accessibilityAttrs = $derived(
+    makeAccessible({
+      role: elementRole,
+      disabled: isElementDisabled,
+      ...accessibilityProps,
+    }),
+  );
 
   // Meta attributes
   const metaAttrs = metaAttribute({
@@ -192,56 +194,71 @@
     testID,
   });
 
-  // Analytics attributes
+  // Extract all styled props which are global to components
+  // Note: getStyledPropsClasses returns both classes and inlineStyles,
+  // but we only use classes here - inlineStyles are ignored (not applied)
+  // This ensures everything is class-based with no inline styles
+  const styledProps = $derived(getStyledPropsClasses(rest));
+  
+  // Combine classes with styled props classes
+  // styledProps.inlineStyles is intentionally ignored to maintain pure class-based styling
+  const combinedClasses = $derived(() => {
+    const classes = [
+      baseLinkClasses,
+      'focus-ring-parent', // Focus ring utility from theme.css
+    ];
+    if (styledProps.classes) {
+      classes.push(...styledProps.classes);
+    }
+    return classes.filter(Boolean).join(' ');
+  });
+  
+  // Icon color is stored for when icon component is implemented
+  // When icon is rendered, it should use the color class directly instead of CSS variable
+  // For now, iconColor is available but not used (icon rendering is TODO)
+  
+  // Analytics attributes (rest after styled props are extracted)
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 
   // Event handlers
   function handleClick(event: MouseEvent): void {
-    if (onClick && !disabled) {
+    if (onClick && !isElementDisabled) {
       onClick(event);
     }
   }
 
   function handleFocus(event: FocusEvent): void {
-    if (!disabled) {
+    if (!isElementDisabled) {
       handleFocusInteraction();
     }
     onFocus?.(event);
   }
 
   function handleBlur(event: FocusEvent): void {
-    if (!disabled) {
+    if (!isElementDisabled) {
       handleBlurInteraction();
     }
     onBlur?.(event);
   }
 
   function handleMouseEnter(): void {
-    if (!disabled) {
+    if (!isElementDisabled) {
       handleMouseEnterInteraction();
     }
   }
 
   function handleMouseLeave(event: MouseEvent): void {
-    if (!disabled) {
+    if (!isElementDisabled) {
       handleMouseLeaveInteraction();
     }
     onMouseLeave?.(event);
   }
 
-  const elementTag = $derived(isButton ? 'button' : 'a');
-
 </script>
 
 <svelte:element
   this={elementTag}
-  class={linkClass({
-    variant,
-    color,
-    size,
-    disabled,
-  })}
-  style="--icon-color: {iconColor}; --text-color: {textColor};"
+  class={combinedClasses()}
   title={htmlTitle}
   {...accessibilityAttrs}
   {...metaAttrs}
@@ -258,29 +275,31 @@
   ontouchend={onTouchEnd}
   onmousedown={onMouseDown}
   onmouseup={onMouseUp}
-  type={isButton ? 'button' : undefined}
-  disabled={isButton ? disabled : undefined}
+  type={elementType}
+  disabled={isElementDisabled || undefined}
   href={!isButton ? href : undefined}
   target={!isButton ? target : undefined}
   rel={!isButton ? (rel ?? defaultRel) : undefined}
 >
-  <span class="base-link__content focus-ring-child">
+  <span class={baseLinkContentClass + ' focus-ring-child'}>
     {#if Icon && iconPosition === 'left'}
       <!-- <span class={iconClass({ position: 'left', hasChildren })}> -->
         <!-- TODO: Render Icon component when available -->
       <!-- </span> -->
     {/if}
     {#if children}
-     <!-- TODO: Move this to Text Component once we have typegraphy in place -->
-      <span
-        class={textClass({
-          size,
-          decoration: hasTextDecoration ? 'underline' : 'none',
-        })}
-        style="color: {textColor};"
+      <BaseText
+        as="span"
+        color={textColorToken}
+        fontSize={fontSize}
+        lineHeight={lineHeight}
+        fontFamily="text"
+        fontWeight="regular"
+        textDecorationLine={textDecorationLine}
+        componentName={MetaConstants.Link}
       >
         {@render children()}
-      </span>
+      </BaseText>
     {/if}
     {#if Icon && iconPosition === 'right'}
       <!-- <span class={iconClass({ position: 'right', hasChildren })}> -->
