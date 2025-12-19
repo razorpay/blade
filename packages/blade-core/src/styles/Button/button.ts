@@ -237,6 +237,22 @@ export function getButtonIconOnlySize(): Record<'xsmall' | 'small' | 'medium' | 
   } as const;
 }
 
+/**
+ * Get spinner size mapping for buttons
+ * Maps button sizes to appropriate spinner sizes
+ */
+export function getButtonSpinnerSize(): Record<
+  'xsmall' | 'small' | 'medium' | 'large',
+  'medium' | 'large' | 'xlarge'
+> {
+  return {
+    xsmall: 'medium',
+    small: 'large',
+    medium: 'large',
+    large: 'xlarge',
+  } as const;
+}
+
 export const buttonStyles = cva(styles.btn, {
   variants: {
     variant: {
@@ -284,6 +300,7 @@ export const buttonStyles = cva(styles.btn, {
 export const buttonContentClass = styles.content;
 export const buttonIconClass = styles.icon;
 export const loadingSpinnerClass = styles['loading-spinner'];
+export const loadingClass = styles.loading;
 
 /**
  * Generate all classes for Button component

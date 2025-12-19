@@ -5,6 +5,10 @@
   import Text from './components/Typography/Text/Text.svelte';
   import Heading from './components/Typography/Heading/Heading.svelte';
   import Code from './components/Typography/Code/Code.svelte';
+  import Amount from './components/Amount/Amount.svelte';
+  
+  let isLoading = $state(false);
+  let isLoading2 = $state(false);
   
   function handleClick(): void {
     alert('Button clicked!')
@@ -12,6 +16,22 @@
 
   function handleLinkClick(event: MouseEvent): void {
     console.log('Link clicked!', event)
+  }
+
+  function handleLoadingClick(): void {
+    isLoading = true;
+    // Simulate async operation
+    setTimeout(() => {
+      isLoading = false;
+    }, 2000);
+  }
+
+  function handleLoadingClick2(): void {
+    isLoading2 = true;
+    // Simulate async operation
+    setTimeout(() => {
+      isLoading2 = false;
+    }, 2000);
   }
 </script>
 
@@ -137,6 +157,72 @@
         <div>
           <Button color="negative" size='large' variant='secondary'>Click Me</Button>
           <Button  color="negative" size='large' marginLeft='spacing.4' isDisabled={true} variant='secondary'>Click Me</Button>
+        </div>
+      </div>
+    </div>
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Button Loading State
+    </Heading>
+
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Loading Examples
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>Primary Loading</Text>
+        </div>
+        <div>
+          <Button size='large' variant='primary' isLoading={true}>Loading...</Button>
+          <Button size='large' marginLeft='spacing.4' variant='primary' isLoading={isLoading} onClick={handleLoadingClick}>
+            {isLoading ? 'Loading...' : 'Click to Load'}
+          </Button>
+        </div>
+      </div>
+      <div class="btn-col">
+        <div>
+          <Text>Secondary Loading</Text>
+        </div>
+        <div>
+          <Button size='large' variant='secondary' isLoading={true}>Loading...</Button>
+          <Button size='large' marginLeft='spacing.4' variant='secondary' isLoading={isLoading2} onClick={handleLoadingClick2}>
+            {isLoading2 ? 'Loading...' : 'Click to Load'}
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Loading Sizes
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>All Sizes</Text>
+        </div>
+        <div style="display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap;">
+          <Button size='xsmall' variant='primary' isLoading={true}>Pay Now</Button>
+          <Button size='small' variant='primary' isLoading={true}>Pay Now</Button>
+          <Button size='medium' variant='primary' isLoading={true}>Pay Now</Button>
+          <Button size='large' variant='primary' isLoading={true}>Pay Now</Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <Heading as='h4' color='surface.text.gray.normal' marginRight='spacing.4' size='small'>
+        Loading Colors
+      </Heading>
+      <div class="btn-col">
+        <div>
+          <Text>Color Variants</Text>
+        </div>
+        <div style="display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap;">
+          <Button size='large' variant='primary' color='primary' isLoading={true}>Pay Now</Button>
+          <Button size='large' variant='primary' color='positive' isLoading={true}>Pay Now</Button>
+          <Button size='large' variant='primary' color='negative' isLoading={true}>Pay Now</Button>
+          <Button size='large' variant='secondary' color='primary' isLoading={true}>Pay Now</Button>
         </div>
       </div>
     </div>
@@ -363,6 +449,162 @@
     </Code>
     {' '}component
   </Text>
+
+    <Heading
+      as='h2'
+      color='surface.text.gray.normal'
+      weight='semibold'
+      size='medium'
+    >
+      Amount Component
+    </Heading>
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Default Amount
+    </Heading>
+    <Amount value={12500.45} />
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Amount with text
+    </Heading>
+    <div style="display: flex;">
+      <Text>
+        Total Amount is &nbsp;
+      </Text>
+      <Amount
+        size="medium"
+        type="body"
+        value={1000}
+      />
+      <Text>
+        &nbsp; only.
+      </Text>
+    </div>
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Strikthrough Amount
+    </Heading>
+    <Amount
+      isStrikethrough
+      size="medium"
+      value={123456.789}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Currency
+    </Heading>
+    <Text marginBottom="spacing.1">
+      AFN
+    </Text>
+    <Amount
+      currency="AFN"
+      size="medium"
+      suffix="humanize"
+      value={123456.789}
+    />
+
+    <Text marginBottom="spacing.1">
+      USD
+    </Text>
+    <Amount
+      currency="USD"
+      size="medium"
+      suffix="humanize"
+      value={123456.789}
+    />
+
+    <Text marginBottom="spacing.1">
+      EUR
+    </Text>
+    <Amount
+      currency="EUR"
+      size="medium"
+      value={123456.789}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Humanize Suffix
+    </Heading>
+
+    <Amount
+      size="medium"
+      suffix="humanize"
+      value={1234}
+    />
+
+    <Amount
+      size="medium"
+      suffix="humanize"
+      value={12345}
+    />
+
+    <Amount
+      size="medium"
+      suffix="humanize"
+      value={123456}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      No Suffix
+    </Heading>
+    <Amount
+      size="medium"
+      suffix="none"
+      value={123456.789}
+    />
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+     Amount with intent
+    </Heading>
+    <Text marginBottom="spacing.1">
+      positive
+    </Text>
+    <Amount
+      color="feedback.text.positive.intense"
+      size="medium"
+      value={123456.789}
+    />
+    <Text marginBottom="spacing.1">
+      negative
+    </Text>
+    <Amount
+      color="feedback.text.negative.intense"
+      size="medium"
+      value={123456.789}
+    />
+    <Text marginBottom="spacing.1">
+      notice
+    </Text>
+    <Amount
+      color="feedback.text.notice.intense"
+      size="medium"
+      value={123456.789}
+    />
+    <Text marginBottom="spacing.1">
+      information
+    </Text>
+    <Amount
+      color="feedback.text.information.intense"
+      size="medium"
+      value={123456.789}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Amount As Heading
+     </Heading>
+    <Amount
+      size='xlarge'
+      type="heading"
+      color="feedback.text.negative.intense"
+      value={123456.789}
+    />
+
+    <Heading as='h3' color='surface.text.gray.normal' weight='semibold' size='medium'>
+      Amount As Body text
+     </Heading>
+    <Amount
+      size='large'
+      type="body"
+      value={123456.789}
+    />
   </div>
 </main>
 

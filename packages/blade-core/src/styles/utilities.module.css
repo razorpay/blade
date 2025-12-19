@@ -185,6 +185,12 @@
 .place-self-center { place-self: center; }
 .place-self-stretch { place-self: stretch; }
 
+/* Flexbox - Flex Direction */
+.flex-direction-row { flex-direction: row; }
+.flex-direction-row-reverse { flex-direction: row-reverse; }
+.flex-direction-column { flex-direction: column; }
+.flex-direction-column-reverse { flex-direction: column-reverse; }
+
 /* Flexbox - Flex Wrap */
 .flex-wrap-nowrap { flex-wrap: nowrap; }
 .flex-wrap-wrap { flex-wrap: wrap; }
@@ -275,6 +281,7 @@
 .opacity-0 { opacity: 0; }
 .opacity-25 { opacity: 0.25; }
 .opacity-50 { opacity: 0.5; }
+.opacity-64 { opacity: 0.64; }
 .opacity-75 { opacity: 0.75; }
 .opacity-100 { opacity: 1; }
 
@@ -470,4 +477,3 @@
 
 /* Transparent */
 .background-transparent { background-color: transparent; }
-

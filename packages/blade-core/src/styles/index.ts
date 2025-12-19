@@ -26,14 +26,32 @@ export {
   getButtonClasses,
   buttonContentClass,
   buttonIconClass,
+  loadingSpinnerClass,
+  loadingClass,
   getButtonBackgroundColorToken,
   getButtonTextColorToken,
   getButtonTextSizes,
   getButtonMinHeight,
   getButtonIconSize,
   getButtonIconOnlySize,
+  getButtonSpinnerSize,
 } from './Button';
 export type { ButtonVariants, ButtonColor, ButtonVariant } from './Button';
 export { utilityClasses, getUtilityClass } from './utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 export { default as utilities } from './utilities.module.css';
+export {
+  spinnerStyles,
+  getSpinnerClasses,
+  spinnerClass,
+  spinnerBoxClass,
+  spinnerIconClass,
+} from './Spinner';
+export type { SpinnerVariants, SpinnerSize, SpinnerColor } from './Spinner';
+export { subtleFontSizes, normalAmountSizes, amountLineHeights } from './Amount';
+export type {
+  AmountTypeProps,
+  AmountBodyProps,
+  AmountDisplayProps,
+  AmountHeadingProps,
+} from './Amount';
