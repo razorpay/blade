@@ -1,0 +1,194 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+You work in design system of Razorpay and you are migrating existing components of Blade from React to Svelte. You make sure to cover all the props of the component and enforcing strict typescript checks.
+
+- You refer to existing components for expected props and HTML structure
+- You understand the common props that we normally use, compound component structure that we normally use and follow WISIWYG (What You See is What You Get) Philosophy.
+- Before writing the component refer to the corresponding React component written in - `packages/blade/src/components` folder
+- Wherever you are unsure about some practice, just ask for confirmation
+- Before writing the component, you discuss the approach on how you are writing the component and only write post confirmation
+- The API structure of the components should clean and easier to understand and integrate
+- Some component might be using another component like Link or Button component uses Icon or BaseText. Wherever this case is there confirm whether to make a migration for that or not for the imported components like Icons
+Don't use createEventDispatcher for event handlers like on:click etc. Instead use a prop based mechanism expect and pass a prop
+- Any utility function like - `packages/blade/src/utils/makeBorderSize/index.ts` should be placed in blade core util directory - `packages/blade-core/src/utils` and not within the blade-svelte directory.
+- Whenever any utility import is encountered check in - `packages/blade-core/src/utils` directory, if the util file is not present or same function is not present ask for a confirmation before adding.
+- Check for global utilities imported from blade-core package specially theme utilities or theme types and constants and use those in svelte component. 
+- Ensure most of the styles are written using css classes. Component classes can be written in css files for that comonent's folder. Use Class-Variance-Authority for writing conditional css classes. Any global classes for styling props should go in common theme.css so that accessible by all components.
+
+
+## Blade Component Svelte Guidelines
+### Key Examples for references
+- Study the props of the React component which you are trying to migrate to Svelte. Props should remain consistent throughout Svelte and React components.
+
+## Directory Structure
+
+Components should be created in the following structure:
+
+```
+packages/
+└── blade-svelte/
+    └── src/
+        └── components/
+            ├── Button/
+            │   ├── Button.svelte
+            │   └── types.ts
+            ├── Link/
+            │   ├── BaseLink/
+            │   │   ├── BaseLink.svelte
+            |   │   └── types.ts
+            │   └── Link.svelte
+            └── ... (other components)
+```
+
+### Naming Conventions
+- Component directories: `PascalCase` (e.g., `Button/`, `Link/`)
+- Component files: `PascalCase.svelte` (e.g., `Button.svelte`, `BaseLink.svelte`)
+- CSS files: `camelCase.css` (e.g., `button.css`, `baseLink.css`)
+- For nested/base components, create a subdirectory with the component name (e.g., `Link/BaseLink/`)
+
+### Styling Guidelines
+
+- Only CSS classes should be used to supply styles to the component. Avoid inline styles of the html elements. Please confirm on any use case where inline styling need is coming up.
+- All CSS classes should be written inside CSS module and should follow scss styling.
+- All the CSS should be written inside `packages/blade-core/src` directory. Refer the directory structure below
+
+```
+packages/
+└── blade-core/
+    └── src/
+        └── styles/
+            ├── Button/
+            │   ├── button.module.css
+            │   └── button.ts
+            ├── Link/
+            │   ├── BaseLink/
+            │   │   ├── baselink.module.css
+            │   │   └── baselink.ts
+``` 
+- Use the props of the component to generate dynamic css classes using Class Variance Authority similar to this 
+
+```
+// packages/blade-core/src/styles/button.ts
+import cva from 'class-variance-authority';
+import styles from './button.module.css';
+
+export const buttonStyles = cva(
+  styles.base,  {
+    variants: {
+      size: {
+        small: styles.small,
+        medium: styles.medium,
+      },
+variant: {
+        primary: styles.primary,
+        secondary: styles.secondary,
+      },
+      isDisabled: {
+        true: styles.disabled,
+        false: null,
+      },
+      margin: {
+         "spacing.2": "m-2"
+      }
+    },
+    defaultVariants: {
+      size: 'medium',
+      isDisabled: false,
+    },
+  }
+);
+```
+
+- Define the correspinding styes to the class in CSS module 
+```
+.base {
+  border-radius: var(--border-radius-medium);
+  padding: var(--spacing-4) var(--spacing-8);
+  ... etc
+}
+
+.base .container {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.primary {
+  background-color: var(--colors-interactive-background-primary-normal);
+  
+  &:hover {
+    background-color: var(--colors-interactive-background-primary-highlighted);
+  }
+}
+```
+- The component can then make use of the class generator and applying styles like this
+
+```
+import { buttonStyles } from '@razorpay/blade-core/styles';
+
+<button className={buttonStyles({ variant, size, isDisabled })}>
+  <div className="flex gap-4">
+    {children}
+    <Icon />
+  </div>
+</button>
+```
+- Ensure the layout classes like display, margin, padding are stored on a global css and not component specific css. `packages/blade-core/src/styles/utilities.ts` would be the right place for the same 
+
+- Ensure there are no inline styling markup in elements. All the styles should come via classes.
+
+- Any styling utility should come from blade-core so as to ensure platform agnostic use case.
+
+## Blade Component Svelte Guidelines
+### Key Examples for references
+- Study the props of the React component which you are trying to migrate to Svelte. Props should remain consistent throughout Svelte and React components.
+
+## Directory Structure
+
+Components should be created in the following structure:
+
+```
+packages/
+└── blade-svelte/
+    └── src/
+        └── components/
+            ├── Button/
+            │   ├── Button.svelte
+            │   └── types.ts
+            ├── Link/
+            │   ├── BaseLink/
+            │   │   ├── BaseLink.svelte
+            |   │   └── types.ts
+            │   └── Link.svelte
+            └── ... (other components)
+```
+
+### Naming Conventions
+- Component directories: `PascalCase` (e.g., `Button/`, `Link/`)
+- Component files: `PascalCase.svelte` (e.g., `Button.svelte`, `BaseLink.svelte`)
+- CSS files: `camelCase.css` (e.g., `button.css`, `baseLink.css`)
+- For nested/base components, create a subdirectory with the component name (e.g., `Link/BaseLink/`)
+
+## Import Guidelines
+- Components in svelte directory have all the blade tokens listed in `packages/blade-svelte/src/theme/theme.css`
+- There is an existing example at `packages/blade-svelte/src/components/Button/` which you can refer to for any example
+- You can use common function from `packages/blade-core` if needed. However do confirm before you implement
+
+## Testing Guidelines
+Add the component in packages/blade-svelte/src/App.svelte as well which will be a testing playground for testing whether component is behaving as expected or not
+
+## Accessibility and CSS Patterns
+
+#### Implementation Guidelines
+
+- Always set the `disabled` attribute on the element when the component is disabled
+- Use `[disabled]` attribute selector in CSS instead of adding/removing classes
+- This pattern applies to buttons, links, and other interactive elements that support disabled states
+
+## Accessibility and CSS Patterns
+
+- Avoid passing styles via style prop or attribute to svelte component
+- Use CVA to generate classes based on props passed to the component

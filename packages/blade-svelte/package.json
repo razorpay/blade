@@ -10,6 +10,11 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
+  "dependencies": {
+    "@razorpay/blade-core": "0.0.1",
+    "@razorpay/i18nify-js": "^1.12.7",
+    "class-variance-authority": "^0.7.0"
+  },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@types/node": "^20.0.0",
