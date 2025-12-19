@@ -110,6 +110,7 @@ export const baseTextStyles = cva(styles.base, {
       0: utilityClasses['opacity-0'],
       25: utilityClasses['opacity-25'],
       50: utilityClasses['opacity-50'],
+      64: utilityClasses['opacity-64'],
       75: utilityClasses['opacity-75'],
       100: utilityClasses['opacity-100'],
     },
@@ -173,7 +174,9 @@ export function getBaseTextClasses(props: BaseTextVariants & { className?: strin
     wordBreak: cvaProps.wordBreak,
     letterSpacing: cvaProps.letterSpacing,
     opacity:
-      opacity !== undefined ? (Math.round(opacity * 100) as 0 | 25 | 50 | 75 | 100) : undefined,
+      opacity !== undefined
+        ? (Math.round(opacity * 100) as 0 | 25 | 50 | 64 | 75 | 100)
+        : undefined,
     numberOfLines:
       numberOfLines !== undefined && numberOfLines >= 1 && numberOfLines <= 10
         ? (numberOfLines as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10)
