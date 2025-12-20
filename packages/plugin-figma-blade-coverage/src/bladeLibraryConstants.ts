@@ -134,6 +134,9 @@ export const bladeThemeData = {
     Modal: {
       key: '042e23e06d6b21818f6ecfa2ef75f8112a5a4d32',
     },
+    'Modal/Extras': {
+      key: '31d361e94dab38b029f523b38a4a3fab392b50ff',
+    },
     'Modal/Header': {
       key: '3fecf97b5a2e238c23a4791cc22990f6ffba3416',
     },
@@ -142,6 +145,9 @@ export const bladeThemeData = {
     },
     'Full Page Modal': {
       key: '1dfe7ab0e285980e220a2e78e44b883d97f17a84',
+    },
+    'Full Page Modal/Left Nav': {
+      key: 'b5c14507307d04a2f6d5e7b264a97eac64ddeab2',
     },
     'Full Page Modal/Header': {
       key: 'f991358aabdfe3a26fa9358edff89cc42d5529d9',
@@ -557,8 +563,62 @@ export const bladeThemeData = {
     'corner-right-up': {
       key: '217c29702076a7d99c90a7bd46dcd37cee43138b',
     },
-    'pie-chart': {
-      key: '21ae87284a377483e57da248ae5e735e4987ca42',
+    // Area Charts
+    'area-chart': {
+      key: '5ce6e873b561ad70ee4cdbd2d100655db9c518b4',
+    },
+    'area-base': {
+      key: 'b102d3353a4de20c99f0a118b8aef57ef0bfd8ec',
+    },
+    // Line Charts
+    'line-chart': {
+      key: '3d8d3b38099c2466149546eee73f4b7888ebcd38',
+    },
+    'line-base': {
+      key: 'f43eb2bcaa08009e41ff5a7dfc8d449bc084c5a4',
+    },
+    // Bar Charts
+    'bar-chart': {
+      key: 'd993057fb8403b7849447cc66eeb1ed4d2bc6aed',
+    },
+    'bar-base': {
+      key: 'c4996fb64f547dd4bcd1df4f2309fe099d2df83a',
+    },
+    'bar-structure': {
+      key: '07d670957bc97de3f309f2c62d7161021cd02777',
+    },
+    'bar-block': {
+      key: '4c93b609e6c781080ca5aecca45579942327db55',
+    },
+    // Donut Charts
+    'donut-chart': {
+      key: '33abbdd9fda83725b6249f0d43301db3414adcc7',
+    },
+    'donut-base': {
+      key: '6444e3691344726a92d55bd5b55600e410b08309',
+    },
+    // Sprak Charts
+    'spark-chart': {
+      key: '4bea443d3dcfd7725a322c002668ec9e98bbd04e',
+    },
+    // Chart Utilities
+    'chart-body-x': {
+      key: '6dc9a82bbc2517a50e61c68b444350a94afa8562',
+    },
+    'chart-body-y': {
+      key: '1bddf6711fd0c4d6f92aeb72717c23efe170e4f2',
+    },
+    'chart-tooltip': {
+      key: '51b7198c3e6aaccfbc9cb0b277262f97ed5795d1',
+    },
+    'chart-median-line': {
+      key: '27c3eb7f19dddec83e4989191cbdd5069070e370',
+    },
+    'chart-legend': {
+      key: 'c257b184a73e6d3f6a7a34c88d852b88f8962911',
+    },
+    'chart-legend-base': {
+      key: '0f81517e8fc74b51fc8546227474577303e31394',
     },
     thermometer: {
       key: '21cb519d8a7b3ea3c40f11e8c5828dfbe2085d9c',
@@ -759,7 +819,7 @@ export const bladeThemeData = {
       key: '5d6eb07c920dd50e95827b573b8275e66bcce133',
     },
     flag: {
-      key: 'de1ac1673d3bb28aea1d984abf8e0cc71cde71ab',
+      key: '76e4373e74ab214f3da7bdfbfd368a6af9377b18',
     },
     'file-text': {
       key: '5fe07d7afbb94e7bfbed16ca64ddab04acb56300',
@@ -778,9 +838,6 @@ export const bladeThemeData = {
     },
     search: {
       key: '64eaf29117a1f05b6791efa908e57c9e494a1267',
-    },
-    'bar-chart': {
-      key: '664b37a76b2633e70a6d1eb1341c77a8a525e73c',
     },
     cpu: {
       key: '6768ace0042b78f8ca8aec9a9d72adf26022de5d',
@@ -808,9 +865,6 @@ export const bladeThemeData = {
     },
     'mail-open': {
       key: '6b05ae208ab880f62d1a920dd3c46b2625b42d3e',
-    },
-    'bar-chart-alt': {
-      key: '6b879da0fd360df1c8b203ed8eaeafa06cbcf03f',
     },
     crosshair: {
       key: '6c85b1fd693f11ede04db09bda537bec56b402b8',
