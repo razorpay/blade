@@ -1,0 +1,194 @@
+.heroSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 600px;
+  height: 600px;
+  border-radius: 0px 0px 16px 16px;
+  overflow: hidden;
+  background-color: rgb(125, 191, 252);
+  .buttonContainer {
+    display: flex;
+    gap: 8px;
+  }
+  .pinImageButton {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    border: none;
+    border-radius: 32px;
+    border: 0.5px solid #fff;
+
+    background: rgba(0, 0, 0, 0.04);
+  }
+  /* .arrowUpButton {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 32px;
+    border: 1px solid #000;
+    background: linear-gradient(284deg, #000 47.58%, #3e3e3e 98.76%);
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1),
+      0 0 0 2px rgba(255, 255, 255, 0.1) inset;
+    color: #fff;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.156px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: -4px;
+    svg {
+      width: 16px;
+      height: 16px;
+      margin-top: 4px;
+    }
+  } */
+  /* --- ARROW UP BUTTON (New) --- */
+  .arrowUpButton {
+    position: relative; /* Essential for absolute positioning of glow */
+    display: flex;
+    height: 32px;
+    width: 32px; /* Fixed width for circle */
+    justify-content: center;
+    align-items: center;
+
+    /* Base styles matching .signUp */
+    border-radius: 32px; /* Fully circular */
+    cursor: pointer;
+
+    /* MERGED BORDER LOGIC (Same as .signUp) */
+    border: 1px solid transparent;
+    background: linear-gradient(284deg, #000 47.58%, #3e3e3e 98.76%) padding-box,
+      linear-gradient(180deg, #505050 0%, #1a1a1a 100%) border-box;
+
+    /* SHADOWS (Same as .signUp) */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) inset,
+      0 2px 9px 0 rgba(0, 0, 0, 0.1);
+
+    transition: all 0.2s ease;
+    overflow: hidden; /* Clips the glow */
+  }
+  .arrowUpButton svg {
+    width: 16px;
+    height: 16px;
+    /* margin-top: 4px; Removed strictly vertical margin for better center alignment in flex */
+    color: white;
+    z-index: 2; /* Ensure icon is above glow */
+  }
+  /* --- SHARED GLOW EFFECT --- */
+  .bottom-key-light {
+    position: absolute;
+    bottom: -15px;
+    right: -10px;
+
+    width: 50px;
+    height: 20px;
+
+    background: linear-gradient(90deg, #7fb6ff 0%, #8aa3b1 100%);
+    filter: blur(10px);
+
+    z-index: 0;
+    opacity: 0.7;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .rayText {
+    color: #7d7d7d;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.182px;
+  }
+}
+
+.heroSectionBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+}
+
+.raySection {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  margin: 0;
+  padding: 80px 48px;
+  pointer-events: auto;
+}
+
+.raySectionTitle {
+  color: #0a0a0a;
+  text-align: center;
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 44px; /* 122.222% */
+  letter-spacing: -1.08px;
+  margin-bottom: 16px;
+}
+
+.raySectionInput {
+  display: flex;
+  width: 560px;
+  height: 56px;
+  padding: 0 12px 0 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 52px;
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 32px 4px rgba(184, 196, 214, 0.06);
+  backdrop-filter: blur(5.5px);
+}
+
+.glassPillContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.searchOptionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  gap: 20px;
+}
+
+
+
+.gradient-blinds-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
