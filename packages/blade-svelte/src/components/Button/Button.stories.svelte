@@ -100,29 +100,4 @@
 
 <Story name="Full Width" args={{ children: 'Full Width Button', isFullWidth: true }} />
 
-<!-- Stories with explicit children (for showcasing multiple variations) -->
-<Story name="All Sizes">
-  <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-    <Button variant="primary" size="xsmall">XSmall</Button>
-    <Button variant="primary" size="small">Small</Button>
-    <Button variant="primary" size="medium">Medium</Button>
-    <Button variant="primary" size="large">Large</Button>
-  </div>
-</Story>
 
-<Story name="All Colors">
-  <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-    <Button variant="primary" color="primary">Primary</Button>
-    <Button variant="primary" color="positive">Positive</Button>
-    <Button variant="primary" color="negative">Negative</Button>
-    <Button variant="primary" color="white">White</Button>
-  </div>
-</Story>
-
-<Story name="All Variants">
-  <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-    <Button variant="primary">Primary</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button variant="tertiary">Tertiary</Button>
-  </div>
-</Story>

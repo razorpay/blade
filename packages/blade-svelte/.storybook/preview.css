@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+body[data-theme="dark"] {  
+  background-color: rgb(10, 17, 26); 
+}
+
 /* Responsive padding */
 @media (max-width: 768px) {
   .sb-story {
