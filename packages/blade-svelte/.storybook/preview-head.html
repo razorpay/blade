@@ -1,1 +1,56 @@
+<!-- Load fonts from CDN (same fonts as React blade) -->
+<!-- After blade-core is published, switch to: https://cdn.jsdelivr.net/npm/@razorpay/blade-core/fonts.css -->
+<link href="https://cdn.jsdelivr.net/npm/@razorpay/blade/fonts.css" rel="stylesheet" />
 
+<!-- iOS zoom prevention meta tag for mobile input focus -->
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+/><style>
+  /* 
+    Fix these overrides when there is better resolution to this issue-
+    https://github.com/storybookjs/storybook/discussions/21109
+  */
+  * :where(p:not([data-blade-component='base-text'], .sb-anchor, .sb-unstyled, .sb-unstyled p)),
+  * :where(a:not(.sb-anchor, .sb-unstyled, .sb-unstyled a)),
+  * :where(div:not([data-blade-component='base-text'], .sb-anchor, .sb-unstyled, .sb-unstyled div)),
+  *
+    :where(span:not([data-blade-component='base-text'], .sb-anchor, .sb-unstyled, .sb-unstyled
+        span)),
+  * :where(ul:not(.sb-anchor, .sb-unstyled, .sb-unstyled ul)),
+  * :where(ol:not(.sb-anchor, .sb-unstyled, .sb-unstyled ol)),
+  * :where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto,
+      Helvetica Neue, sans-serif !important;
+  }
+
+  * :where(h1:not(.sb-anchor, .sb-unstyled, .sb-unstyled h1)),
+  * :where(h1:not(.sb-anchor, .sb-unstyled, .sb-unstyled h1)) *,
+  * :where(h2:not(.sb-anchor, .sb-unstyled, .sb-unstyled h2)),
+  * :where(h2:not(.sb-anchor, .sb-unstyled, .sb-unstyled h2)) *,
+  * :where(h3:not(.sb-anchor, .sb-unstyled, .sb-unstyled h3)),
+  * :where(h3:not(.sb-anchor, .sb-unstyled, .sb-unstyled h3)) *,
+  * :where(h3:not(.sb-anchor, .sb-unstyled, .sb-unstyled h4)),
+  * :where(h3:not(.sb-anchor, .sb-unstyled, .sb-unstyled h4)) *,
+  * :where(h3:not(.sb-anchor, .sb-unstyled, .sb-unstyled h5)),
+  * :where(h3:not(.sb-anchor, .sb-unstyled, .sb-unstyled h5)) *,
+  * :where(h4:not(.sb-anchor, .sb-unstyled, .sb-unstyled h6)),
+  * :where(h4:not(.sb-anchor, .sb-unstyled, .sb-unstyled h6)) * {
+    font-family: 'TASA Orbiter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto,
+      Helvetica Neue, sans-serif !important;
+  }
+
+  * pre :where(span:not(.sb-anchor, .sb-unstyled, .sb-unstyled span)) {
+    font-family: 'Menlo', San Francisco Mono, Courier New, Roboto Mono, monospace !important;
+    font-size: 14px !important;
+  }
+
+  body pre.prismjs {
+    color: unset !important;
+  }
+
+  /* Code editor color */
+  .css-1dt41f3 {
+    background-color: #111218 !important;
+  }
+</style>
