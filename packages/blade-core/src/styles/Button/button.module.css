@@ -1,0 +1,350 @@
+/* Button Base Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: var(--border-radius-medium);
+  border-style: solid;
+  transition-property: background-color, border-color, box-shadow, transform;
+  transition-timing-function: var(--motion-easing-standard);
+  transition-duration: var(--motion-duration-xquick);
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &:focus-visible:not([disabled]) {
+    outline: 1px solid var(--surface-background-primary-subtle);
+    box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted);
+  }
+}
+
+/* Variants */
+.primary {
+  border-width: 0;
+}
+
+.secondary {
+  border-width: var(--border-width-thin);
+}
+
+.tertiary {
+  border-width: 0;
+}
+
+/* Sizes */
+.xsmall {
+  min-height: 28px;
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.small {
+  min-height: 32px;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.medium {
+  min-height: 36px;
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.large {
+  min-height: 48px;
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Icon-only buttons */
+.icon-only {
+  padding: 0;
+  width: auto;
+  height: auto;
+
+  &.xsmall {
+    width: 28px;
+    height: 28px;
+  }
+
+  &.small {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.medium {
+    width: 36px;
+    height: 36px;
+  }
+
+  &.large {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Color variants - Primary */
+.color-primary {
+  &.primary {
+    background-color: var(--interactive-background-primary-default);
+    border-color: var(--interactive-border-primary-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-primary-highlighted);
+      border-color: var(--interactive-border-primary-highlighted);
+    }
+
+    &:active:not([disabled]),
+    &:focus-visible:not([disabled]) {
+      background-color: var(--interactive-background-primary-highlighted);
+      border-color: var(--interactive-border-primary-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-primary-disabled);
+      border-color: var(--interactive-border-primary-disabled);
+    }
+  }
+
+  &.secondary {
+    background-color: transparent;
+    border-color: var(--interactive-border-primary-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-primary-faded);
+      border-color: var(--interactive-border-primary-default);
+    }
+
+    &:active:not([disabled]),
+    &:focus-visible:not([disabled]) {
+      background-color: var(--interactive-background-primary-faded);
+      border-color: var(--interactive-border-primary-default);
+    }
+
+    &[disabled] {
+      background-color: transparent;
+      border-color: var(--interactive-border-primary-disabled);
+    }
+  }
+
+  &.tertiary {
+    background-color: var(--interactive-background-gray-default);
+    border-color: var(--interactive-border-gray-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-gray-highlighted);
+      border-color: var(--interactive-border-gray-highlighted);
+    }
+
+    &:active:not([disabled]),
+    &:focus-visible:not([disabled]) {
+      background-color: var(--interactive-background-gray-highlighted);
+      border-color: var(--interactive-border-gray-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-gray-disabled);
+      border-color: var(--interactive-border-gray-disabled);
+    }
+  }
+}
+
+/* Color variants - White */
+.color-white {
+  &.primary {
+    background-color: var(--interactive-background-static-white-default);
+    border-color: var(--interactive-border-static-white-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-static-white-highlighted);
+      border-color: var(--interactive-border-static-white-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-static-white-disabled);
+      border-color: var(--interactive-border-static-white-disabled);
+    }
+  }
+
+  &.secondary {
+    background-color: transparent;
+    border-color: var(--interactive-border-static-white-highlighted);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-static-white-faded);
+      border-color: var(--interactive-border-static-white-highlighted);
+    }
+
+    &[disabled] {
+      background-color: transparent;
+      border-color: var(--interactive-border-static-white-disabled);
+    }
+  }
+
+  &.tertiary {
+    background-color: var(--interactive-background-static-white-faded);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-static-white-faded-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-static-white-disabled);
+    }
+  }
+}
+
+/* Color variants - Positive */
+.color-positive {
+  &.primary {
+    background-color: var(--interactive-background-positive-default);
+    border-color: var(--interactive-border-positive-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-positive-highlighted);
+      border-color: var(--interactive-border-positive-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-positive-disabled);
+      border-color: var(--interactive-border-positive-disabled);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--interactive-background-positive-faded);
+    border-color: var(--interactive-border-positive-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-positive-faded-highlighted);
+      border-color: var(--interactive-border-positive-default);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-positive-disabled);
+      border-color: var(--interactive-border-positive-disabled);
+    }
+  }
+}
+
+/* Color variants - Negative */
+.color-negative {
+  &.primary {
+    background-color: var(--interactive-background-negative-default);
+    border-color: var(--interactive-border-negative-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-negative-highlighted);
+      border-color: var(--interactive-border-negative-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-negative-disabled);
+      border-color: var(--interactive-border-negative-disabled);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--interactive-background-negative-faded);
+    border-color: var(--interactive-border-negative-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-negative-faded-highlighted);
+      border-color: var(--interactive-border-negative-default);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-negative-disabled);
+      border-color: var(--interactive-border-negative-disabled);
+    }
+  }
+}
+
+/* Color variants - Transparent (only for tertiary) */
+.color-transparent {
+  &.tertiary {
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-gray-faded);
+      border-color: var(--interactive-border-gray-faded);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-static-white-disabled);
+      border-color: var(--interactive-border-static-white-disabled);
+    }
+  }
+}
+
+/* Content wrapper */
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  transition-property: color, fill, opacity;
+  transition-timing-function: var(--motion-easing-standard);
+  transition-duration: var(--motion-duration-xquick);
+}
+
+/* Content when loading - hide text but preserve space */
+.content.loading {
+  opacity: 0;
+}
+
+/* Icon wrapper */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Pressed state animation */
+.pressed {
+  transform: scale(0.95);
+}
+
+/* Loading state */
+.loading {
+  & .content {
+    opacity: 0;
+  }
+}
+
+/* Loading spinner container */
+.loading-spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}

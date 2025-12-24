@@ -1,0 +1,61 @@
+<script lang="ts">
+  import BaseText from '../BaseText/BaseText.svelte';
+  import type { HeadingProps } from './types';
+  import { getHeadingProps, validHeadingAsValues } from '@razorpay/blade-core/styles';
+
+  let {
+    as,
+    size,
+    weight,
+    color,
+    children,
+    testID,
+    textAlign,
+    textDecorationLine,
+    wordBreak,
+    textTransform,
+    ...rest
+  }: HeadingProps = $props();
+
+  // Set defaults
+  const finalSize = (size ?? 'small') as 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  const finalWeight = (weight ?? 'semibold') as 'regular' | 'medium' | 'semibold';
+  const finalColor = color ?? 'surface.text.gray.normal';
+
+  // Validate as prop in development
+  $effect(() => {
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+      if (as && !validHeadingAsValues.includes(as)) {
+        console.error(
+          `[Blade: Heading]: Invalid \`as\` prop value - ${as}. Only ${validHeadingAsValues.join(', ')} are accepted`,
+        );
+      }
+    }
+  });
+
+  // Get BaseText props from Heading props
+  const baseTextProps = $derived(
+    getHeadingProps({
+      as,
+      size: finalSize,
+      weight: finalWeight,
+      color: finalColor,
+      testID,
+    }),
+  );
+
+  // Merge props: baseTextProps first, then direct props, then rest (styled props)
+  // BaseText will handle styled props extraction via getStyledPropsClasses(rest)
+  const mergedProps = $derived({
+    ...baseTextProps,
+    textAlign,
+    textDecorationLine,
+    textTransform,
+    wordBreak,
+    ...rest,
+  });
+</script>
+
+<BaseText {...mergedProps}>
+  {@render children()}
+</BaseText>
