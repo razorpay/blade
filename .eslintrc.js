@@ -6,13 +6,7 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false,
   },
-  extends: [
-    'kentcdodds',
-    'kentcdodds/react',
-    'plugin:prettier/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:react-native-a11y/all',
-  ],
+  extends: ['kentcdodds', 'kentcdodds/react', 'plugin:prettier/recommended', 'plugin:jsx-a11y/recommended', 'plugin:react-native-a11y/all', 'plugin:storybook/recommended'],
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',

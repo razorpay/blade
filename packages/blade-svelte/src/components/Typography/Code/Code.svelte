@@ -16,10 +16,10 @@
     ...styledProps
   }: CodeProps = $props();
 
-  // Set defaults
-  const finalSize = size ?? 'small';
-  const finalWeight = weight ?? 'regular';
-  const finalIsHighlighted = isHighlighted ?? true;
+  // Set defaults - use $derived for reactivity when props change
+  const finalSize = $derived(size ?? 'small');
+  const finalWeight = $derived(weight ?? 'regular');
+  const finalIsHighlighted = $derived(isHighlighted ?? true);
 
   // Validate color prop when isHighlighted is true
   $effect(() => {
@@ -77,7 +77,11 @@
     lineHeight={lineHeight}
     textTransform={textTransform}
   >
-    {@render children()}
+    {#if typeof children === 'string'}
+      {children}
+    {:else}
+      {@render children()}
+    {/if}
   </BaseText>
 </span>
 

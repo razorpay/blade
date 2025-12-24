@@ -12,7 +12,7 @@ export type HeadingProps = {
    */
   color?: BaseTextProps['color'];
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
-  children: Snippet;
+  children: Snippet | string;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;

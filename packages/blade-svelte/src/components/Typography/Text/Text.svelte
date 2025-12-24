@@ -1,6 +1,7 @@
 <script lang="ts">
   import BaseText from '../BaseText/BaseText.svelte';
   import type { TextBodyVariant, TextCaptionVariant } from './types';
+  import type { Snippet } from 'svelte';
   import { getTextProps, validTextAsValues } from '@razorpay/blade-core/styles';
 
   type TextComponentProps = (TextBodyVariant | TextCaptionVariant) & {
@@ -24,9 +25,9 @@
     ...rest
   }: TextComponentProps = $props();
 
-  // Set defaults
-  const finalVariant = (variant ?? 'body') as 'body' | 'caption';
-  const finalWeight = weight ?? 'regular';
+  // Set defaults - use $derived for reactivity when props change
+  const finalVariant = $derived((variant ?? 'body') as 'body' | 'caption');
+  const finalWeight = $derived(weight ?? 'regular');
 
   // Validate as prop in development
   $effect(() => {
@@ -65,6 +66,10 @@
 </script>
 
 <BaseText {...mergedProps}>
-  {@render children()}
+  {#if typeof children === 'string'}
+    {children}
+  {:else}
+    {@render children()}
+  {/if}
 </BaseText>
 

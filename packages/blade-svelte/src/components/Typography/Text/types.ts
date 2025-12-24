@@ -8,7 +8,7 @@ export type TextVariant = 'body' | 'caption';
 type TextCommonProps = {
   as?: keyof typeof validTextAsValues;
   truncateAfterLines?: number;
-  children: Snippet;
+  children: Snippet | string;
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   /**
    * Overrides the color of the Text component.

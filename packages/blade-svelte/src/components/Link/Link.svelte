@@ -21,7 +21,7 @@
     size?: 'xsmall' | 'small' | 'medium' | 'large';
     testID?: string;
     htmlTitle?: string;
-    children?: Snippet;
+    children?: Snippet | string;
     // Event handlers
     onBlur?: (event: FocusEvent) => void;
     onFocus?: (event: FocusEvent) => void;
@@ -66,8 +66,8 @@
     ...rest
   }: LinkProps = $props();
 
-  // Map Link props to BaseLink props
-  const baseLinkProps = {
+  // Map Link props to BaseLink props - use $derived for reactivity
+  const baseLinkProps = $derived({
     children,
     icon,
     iconPosition,
@@ -95,7 +95,7 @@
       ? { href, target, rel }
       : { isDisabled }),
     ...rest,
-  };
+  });
 </script>
 
 <BaseLink {...baseLinkProps} />

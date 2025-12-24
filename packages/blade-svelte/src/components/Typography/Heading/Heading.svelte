@@ -17,10 +17,10 @@
     ...rest
   }: HeadingProps = $props();
 
-  // Set defaults
-  const finalSize = (size ?? 'small') as 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
-  const finalWeight = (weight ?? 'semibold') as 'regular' | 'medium' | 'semibold';
-  const finalColor = color ?? 'surface.text.gray.normal';
+  // Set defaults - use $derived for reactivity when props change
+  const finalSize = $derived((size ?? 'small') as 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge');
+  const finalWeight = $derived((weight ?? 'semibold') as 'regular' | 'medium' | 'semibold');
+  const finalColor = $derived(color ?? 'surface.text.gray.normal');
 
   // Validate as prop in development
   $effect(() => {
@@ -57,5 +57,9 @@
 </script>
 
 <BaseText {...mergedProps}>
-  {@render children()}
+  {#if typeof children === 'string'}
+    {children}
+  {:else}
+    {@render children()}
+  {/if}
 </BaseText>
