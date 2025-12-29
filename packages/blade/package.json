@@ -216,6 +216,7 @@
     "@types/jest-axe": "3.5.5",
     "@types/jscodeshift": "0.11.6",
     "@types/jsdom": "20.0.1",
+    "@types/minimatch": "5.1.2",
     "@types/react": "18.2.24",
     "@types/react-native": "0.72.2",
     "@types/react-test-renderer": "17.0.1",
