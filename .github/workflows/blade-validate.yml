@@ -26,14 +26,26 @@ jobs:
         run: yarn generate-docs-lockfile
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+      - name: Build Blade Core
+        run: yarn build
+        working-directory: packages/blade-core
       - name: Build Blade
         run: yarn build
         working-directory: packages/blade
+      - name: Build Blade Svelte
+        run: yarn build
+        working-directory: packages/blade-svelte
       - name: Lint Source Code
         run: yarn lint
-      - name: Run TypeScript Checks
+      - name: Run TypeScript Checks (Blade)
         run: yarn typecheck
         working-directory: packages/blade
+      - name: Run TypeScript Checks (Blade Core)
+        run: yarn typecheck
+        working-directory: packages/blade-core
+      - name: Run Svelte Checks (Blade Svelte)
+        run: yarn check
+        working-directory: packages/blade-svelte
 
   test:
     name: Run Tests (${{ matrix.shard }})

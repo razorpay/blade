@@ -43,9 +43,17 @@ jobs:
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: yarn publish-npm
+      - name: Build Blade Core if not built by changeset
+        if: steps.changesets.outputs.published == 'false'
+        working-directory: packages/blade-core
+        run: yarn build
       - name: Build Blade if not built by changeset
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
+        run: yarn build
+      - name: Build Blade Svelte if not built by changeset
+        if: steps.changesets.outputs.published == 'false'
+        working-directory: packages/blade-svelte
         run: yarn build
       - name: Publish to Chromatic
         uses: chromaui/action@v1
