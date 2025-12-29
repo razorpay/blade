@@ -54,6 +54,9 @@ export const bladeThemeData = {
     '_Card-Footer': {
       key: 'a42de59079bf53b29c3686e3e4b2708593745ec6',
     },
+    'Selectable-Card-Group': {
+      key: '79653e17b5d06c0e7a0fbdfe33943a9d835dd0f9',
+    },
     Carousel: {
       key: '7e472b0cdda8f1cc8fad4b06d5f584dcde2ffe1e',
     },
@@ -176,6 +179,9 @@ export const bladeThemeData = {
     'Preview Pane/Controls': {
       key: '0300f06d4c884f03bfd9606b5a9d713ca245665c',
     },
+    'Preview Pane/BG Dot Grid': {
+      key: '43b566d2cb3365e646e54d612de786d49a1749a1',
+    },
     'Image Placeholder': {
       key: '41005e0e9f5194725f2fad0ccd934dc6fc1c2cf2',
     },
@@ -199,6 +205,9 @@ export const bladeThemeData = {
     },
     Popover: {
       key: 'b14ad333fa2f8483b4c7ed780738b57a788191b3',
+    },
+    Toast: {
+      key: 'e3577a46dc4a7fa1fa0864d1f6532c37f919c96d',
     },
     'Popover/Header': {
       key: '57a321084e8ce1899b8233e9493ed949e0a94a4e',
@@ -266,6 +275,9 @@ export const bladeThemeData = {
     'Search Input': {
       key: '8d631a9604d64de10e4600f6c659a0b5cce90be6',
     },
+    'Input Group': {
+      key: 'e665da4fecf10a723176767e7ee756ec09196330',
+    },
     'Radio-Group': {
       key: 'cf97c2d61fde8367bd5e905e8048728069d32e0b',
     },
@@ -277,6 +289,9 @@ export const bladeThemeData = {
     },
     Checkbox: {
       key: '1152ee3ac26900ac71a00af4d7a2531fd1ad9240',
+    },
+    'Checkbox-Base': {
+      key: '07b232281de2282dba6715ba1d913122e909cb3c',
     },
     'Chip-Group': {
       key: 'eff67f34d291eac58798fb832066fc1aefb2191f',
