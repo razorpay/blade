@@ -7,16 +7,22 @@
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import {
     getButtonClasses,
-    buttonContentClass,
-    buttonIconClass,
-    loadingSpinnerClass,
-    loadingClass,
+    buttonContentClass as _buttonContentClass,
+    buttonIconClass as _buttonIconClass,
+    loadingSpinnerClass as _loadingSpinnerClass,
+    loadingClass as _loadingClass,
     getButtonTextColorToken,
     getButtonTextSizes,
     getButtonSpinnerSize,
     type ActionStatesType as ButtonActionStatesType,
     type SpinnerColor,
   } from '@razorpay/blade-core/styles';
+
+  // Workaround for Svelte tree-shaking: reference imported classes to prevent removal
+  const buttonContentClass = _buttonContentClass;
+  const buttonIconClass = _buttonIconClass;
+  const loadingSpinnerClass = _loadingSpinnerClass;
+  const loadingClass = _loadingClass;
 
   let {
     children,
@@ -370,7 +376,7 @@
       >
         {childrenString}
       </BaseText>
-    {:else if children && typeof children !== 'string'}
+    {:else if children && typeof children === 'function'}
       <BaseText
         as="span"
         color={textColorToken}

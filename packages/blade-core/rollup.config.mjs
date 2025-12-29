@@ -139,6 +139,10 @@ const getWebConfig = (inputs) => {
         modules: true,
         minimize: process.env.NODE_ENV === 'production',
         sourceMap: true,
+        // Use proper package import instead of relative node_modules path
+        inject(cssVariableName) {
+          return `import styleInject from 'style-inject';\nstyleInject(${cssVariableName});`;
+        },
       }),
       pluginBabel({
         exclude: 'node_modules/**',

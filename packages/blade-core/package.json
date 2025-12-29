@@ -37,6 +37,7 @@
   "dependencies": {
     "@razorpay/i18nify-js": "^1.12.7",
     "class-variance-authority": "^0.7.0",
+    "style-inject": "^0.3.0",
     "tinycolor2": "1.6.0",
     "ts-deepmerge": "6.2.0"
   },
@@ -74,9 +75,12 @@
   "files": [
     "src",
     "dist",
+    "fonts",
+    "fonts.css",
     "*.d.ts"
   ],
   "exports": {
+    "./fonts.css": "./fonts.css",
     "./tokens": {
       "types": "./dist/types/tokens/index.d.ts",
       "development": "./dist/lib/web/development/tokens/index.js",
