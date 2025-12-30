@@ -141,7 +141,15 @@ const getWebConfig = (inputs) => {
         sourceMap: true,
         // Use proper package import instead of relative node_modules path
         inject(cssVariableName) {
-          return `import styleInject from 'style-inject';\nstyleInject(${cssVariableName});`;
+          return `
+          (function(css) {
+            if (typeof document !== 'undefined') {
+              var style = document.createElement('style');
+              style.textContent = css;
+              document.head.appendChild(style);
+            }
+          })(${cssVariableName});
+          `;
         },
       }),
       pluginBabel({

@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=18.12.1"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
@@ -18,6 +21,7 @@
     "blade"
   ],
   "scripts": {
+    "prepare": "yarn build",
     "typecheck": "tsc --noEmit",
     "typecheck:web": "tsc --noEmit --project tsconfig-typecheck.web.json",
     "typecheck:native": "tsc --noEmit --project tsconfig-typecheck.native.json",
@@ -37,7 +41,6 @@
   "dependencies": {
     "@razorpay/i18nify-js": "^1.12.7",
     "class-variance-authority": "^0.7.0",
-    "style-inject": "^0.3.0",
     "tinycolor2": "1.6.0",
     "ts-deepmerge": "6.2.0"
   },

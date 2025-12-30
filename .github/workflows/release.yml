@@ -71,3 +71,19 @@ jobs:
         env:
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}
+      - name: Publish Blade Svelte to Chromatic
+        uses: chromaui/action@v1
+        if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
+        with:
+          token: ${{ env.GITHUB_ACCESS_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_SVELTE_PROJECT_TOKEN }}
+          workingDir: packages/blade-svelte
+          storybookBaseDir: packages/blade-svelte
+          buildScriptName: build-storybook
+          exitOnceUploaded: true
+          onlyChanged: true
+          untraced: '**/package.json'
+          traceChanged: 'expanded'
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF: ${{ github.ref }}

@@ -2,7 +2,24 @@
   "name": "@razorpay/blade-svelte",
   "version": "0.1.0",
   "description": "Blade Design System for Svelte",
+  "license": "MIT",
   "type": "module",
+  "engines": {
+    "node": ">=18.12.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/razorpay/blade.git"
+  },
+  "keywords": [
+    "design system",
+    "svelte",
+    "razorpay",
+    "blade"
+  ],
   "exports": {
     "./components": {
       "types": "./dist/types/components/index.d.ts",
@@ -19,6 +36,7 @@
     "dist"
   ],
   "scripts": {
+    "prepare": "yarn build",
     "build": "npm-run-all build:clean build:generate-types build:lib",
     "build:clean": "rm -rf dist",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
@@ -29,6 +47,7 @@
     "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
+    "@razorpay/blade-core": ">=0.0.1",
     "@razorpay/i18nify-js": "^1.12.7",
     "class-variance-authority": "^0.7.0"
   },
@@ -57,7 +76,6 @@
     "vite": "^5.0.0"
   },
   "peerDependencies": {
-    "@razorpay/blade-core": ">=0.0.1",
-    "svelte": "^5.0.0"
+    "svelte": ">=5.35.0"
   }
 }
