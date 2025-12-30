@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 import { utilityClasses } from '../utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './baseText.module.css';
-import { kebabCase } from '../../utils/lodashButBetter/kebabCase';
+import { kebabCase } from '~utils';
 
 export type BaseTextVariants = {
   fontSize?: 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
