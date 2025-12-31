@@ -10,9 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@react-three/postprocessing": "^3.0.4",
     "ogl": "^1.0.11",
+    "postprocessing": "^6.38.2",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-scripts": "^5.0.1",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "@eslint/js": "^8.57.0",
