@@ -137,8 +137,16 @@ function DisplacedBackground({
         uBrightness: { value: 0.0 },
         uContrast: { value: 1.0 },
         uSaturation: { value: 1.0 },
+        uZoom: { value: 1.7 },
+        uZoomCenterX: { value: 0.6 },
+        uZoomCenterY: { value: 0.76 },
       },
       pipeline: `
+        // Apply zoom to focus on top of slits
+        vec2 zoomCenter = vec2(uZoomCenterX, uZoomCenterY);
+        uv = (uv - zoomCenter) / uZoom + zoomCenter;
+        uv = clamp(uv, 0.0, 1.0);
+        
         uv = applyDisplacement(uv, uDisplacement, uHorizontalDisplacement, uVerticalDisplacement);
         uv = clamp(uv, 0.0, 1.0);
         vec3 color = texture2D(uTexture, uv).rgb;

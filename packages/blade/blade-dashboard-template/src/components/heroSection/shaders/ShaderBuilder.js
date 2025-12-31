@@ -21,41 +21,57 @@ const baseVertexShader = `
 `;
 
 /**
+ * Helper to generate uniform declaration from name and value
+ */
+function getUniformDeclaration(name, value) {
+  if (value === null || (value && value.isTexture)) {
+    // Check if it's a color uniform (by naming convention)
+    if (name.toLowerCase().includes("color")) {
+      return `uniform vec3 ${name};`;
+    }
+    return `uniform sampler2D ${name};`;
+  } else if (typeof value === "number") {
+    return `uniform float ${name};`;
+  } else if (
+    value &&
+    value.x !== undefined &&
+    value.y !== undefined &&
+    value.z !== undefined
+  ) {
+    return `uniform vec3 ${name};`;
+  } else if (value && value.x !== undefined && value.y !== undefined) {
+    return `uniform vec2 ${name};`;
+  } else if (Array.isArray(value) && value.length === 3) {
+    return `uniform vec3 ${name};`;
+  }
+  return `uniform float ${name};`;
+}
+
+/**
  * Builds a combined fragment shader from multiple effects
  */
-function buildFragmentShader(effects, pipeline) {
+function buildFragmentShader(effects, pipeline, customUniforms = {}) {
   // Collect all GLSL function definitions
   const glslFunctions = effects.map((e) => e.glsl).join("\n");
 
-  // Collect all uniform declarations
-  const uniformDeclarations = effects
+  // Collect uniform declarations from effects
+  const effectUniformDeclarations = effects
     .flatMap((effect) =>
       Object.keys(effect.uniforms).map((name) => {
         const value = effect.uniforms[name].value;
-        if (value === null || (value && value.isTexture)) {
-          // Check if it's a color uniform (by naming convention)
-          if (name.toLowerCase().includes("color")) {
-            return `uniform vec3 ${name};`;
-          }
-          return `uniform sampler2D ${name};`;
-        } else if (typeof value === "number") {
-          return `uniform float ${name};`;
-        } else if (
-          value &&
-          value.x !== undefined &&
-          value.y !== undefined &&
-          value.z !== undefined
-        ) {
-          return `uniform vec3 ${name};`;
-        } else if (value && value.x !== undefined && value.y !== undefined) {
-          return `uniform vec2 ${name};`;
-        } else if (Array.isArray(value) && value.length === 3) {
-          return `uniform vec3 ${name};`;
-        }
-        return `uniform float ${name};`;
+        return getUniformDeclaration(name, value);
       })
-    )
-    .join("\n");
+    );
+
+  // Collect uniform declarations from custom uniforms
+  const customUniformDeclarations = Object.keys(customUniforms).map((name) => {
+    const value = customUniforms[name].value;
+    return getUniformDeclaration(name, value);
+  });
+
+  // Combine and deduplicate
+  const allDeclarations = [...new Set([...effectUniformDeclarations, ...customUniformDeclarations])];
+  const uniformDeclarations = allDeclarations.join("\n");
 
   return `
     uniform sampler2D uTexture;
@@ -117,7 +133,7 @@ export function buildShaderMaterial({
   pipeline,
   uniforms = {},
 }) {
-  const fragmentShader = buildFragmentShader(effects, pipeline);
+  const fragmentShader = buildFragmentShader(effects, pipeline, uniforms);
   const mergedUniforms = mergeUniforms(baseTexture, effects, uniforms);
 
   return new ShaderMaterial({
