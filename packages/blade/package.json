@@ -1,14 +1,13 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.68.0",
+  "version": "12.68.1",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
   },
   "bin": {
-    "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts",
-    "aicodemod": "./codemods/aicodemod/bin.mjs"
+    "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts"
   },
   "repository": {
     "type": "git",
