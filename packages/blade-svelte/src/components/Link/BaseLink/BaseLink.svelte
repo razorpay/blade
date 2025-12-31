@@ -293,7 +293,7 @@
         fontSize={fontSize}
         lineHeight={lineHeight}
         fontFamily="text"
-        fontWeight="regular"
+        fontWeight="medium"
         textDecorationLine={textDecorationLine}
         componentName={MetaConstants.Link}
       >

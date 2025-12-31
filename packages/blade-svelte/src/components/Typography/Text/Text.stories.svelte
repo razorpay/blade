@@ -105,7 +105,7 @@
 }} />
 
 <Story name="Text Sizes">
-  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+  <div class="display-flex flex-col gap-spacing-4 ">
     <Text variant="body" size="xsmall">XSmall text</Text>
     <Text variant="body" size="small">Small text</Text>
     <Text variant="body" size="medium">Medium text</Text>

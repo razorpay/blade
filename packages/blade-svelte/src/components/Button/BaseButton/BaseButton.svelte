@@ -62,11 +62,11 @@
     }
   });
 
-  const isLink = Boolean(href);
-  const isButton = !isLink;
+  const isLink = $derived(Boolean(href));
+  const isButton = $derived(!isLink);
 
   // Button cannot be disabled when its rendered as Link
-  const disabled = isLoading || (isDisabled && isButton);
+  const disabled = $derived(isLoading || (isDisabled && isButton));
 
   // Create interaction state using $state
   let currentInteraction = $state<ButtonActionStatesType>(

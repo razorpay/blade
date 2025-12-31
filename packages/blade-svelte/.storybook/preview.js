@@ -106,7 +106,6 @@ const preview = {
     },
     // On development, don't force viewMode so live reload works smoothly
     viewMode: process.env.NODE_ENV === 'development' ? undefined : 'docs',
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
