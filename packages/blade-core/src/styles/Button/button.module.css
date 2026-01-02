@@ -324,7 +324,21 @@
   flex-shrink: 0;
 }
 
-/* Pressed state animation */
+/* Animated content wrapper - wraps all button content for scale animation */
+.animated-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  transform: scale(1);
+  transition-property: transform;
+  transition-timing-function: var(--motion-easing-standard);
+  transition-duration: var(--motion-duration-xquick);
+}
+
+/* Pressed state animation - apply to animated-content wrapper */
 .pressed {
   transform: scale(0.95);
 }

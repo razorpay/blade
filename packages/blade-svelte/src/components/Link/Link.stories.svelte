@@ -93,7 +93,7 @@
 
 <Story name="Button Link" args={{ children: 'Click me', variant: 'button' }} />
 
-<Story name="Link Colors">
+<Story name="Link Colors" asChild>
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <Link variant="anchor" color="primary">Primary</Link>
     <Link variant="anchor" color="neutral">Neutral</Link>
@@ -102,12 +102,12 @@
   </div>
 </Story>
 
-<Story name="Link Sizes">
+<Story name="Link Sizes" asChild>
   <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-    <Link variant="button" size="xsmall">XSmall</Link>
-    <Link variant="button" size="small">Small</Link>
-    <Link variant="button" size="medium">Medium</Link>
-    <Link variant="button" size="large">Large</Link>
+    <Link variant="anchor" size="xsmall">XSmall</Link>
+    <Link variant="anchor" size="small">Small</Link>
+    <Link variant="anchor" size="medium">Medium</Link>
+    <Link variant="anchor" size="large">Large</Link>
   </div>
 </Story>
 

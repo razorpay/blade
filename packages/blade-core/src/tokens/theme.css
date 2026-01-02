@@ -1008,6 +1008,22 @@
 .flex-wrap-wrap { flex-wrap: wrap; }
 .flex-wrap-wrap-reverse { flex-wrap: wrap-reverse; }
 
+/* Flexbox - Align Items (Tailwind: items-*) */
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+.items-baseline { align-items: baseline; }
+.items-stretch { align-items: stretch; }
+
+/* Flexbox - Justify Content (Tailwind: justify-*) */
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-evenly { justify-content: space-evenly; }
+.justify-stretch { justify-content: stretch; }
+
 /* Focus Ring Utility */
 .focus-ring:focus-visible {
   box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);

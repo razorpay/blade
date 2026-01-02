@@ -24,10 +24,13 @@ export type { TextVariant, TextSize, TextWeight, TextAs, TextPropsResult } from 
 export {
   buttonStyles,
   getButtonClasses,
+  getButtonTemplateClasses,
   buttonContentClass,
   buttonIconClass,
   loadingSpinnerClass,
   loadingClass,
+  animatedContentClass,
+  pressedClass,
   getButtonBackgroundColorToken,
   getButtonTextColorToken,
   getButtonTextSizes,

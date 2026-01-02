@@ -301,6 +301,28 @@ export const buttonContentClass = styles.content;
 export const buttonIconClass = styles.icon;
 export const loadingSpinnerClass = styles['loading-spinner'];
 export const loadingClass = styles.loading;
+export const animatedContentClass = styles['animated-content'];
+export const pressedClass = styles.pressed;
+
+/**
+ * Get all Button component template classes as an object.
+ * Use this function in Svelte components to prevent tree-shaking from removing
+ * class imports that are only used in templates.
+ *
+ * @example
+ * const buttonClasses = getButtonTemplateClasses();
+ * // Use: buttonClasses.content, buttonClasses.icon, etc.
+ */
+export function getButtonTemplateClasses() {
+  return {
+    content: buttonContentClass,
+    icon: buttonIconClass,
+    loadingSpinner: loadingSpinnerClass,
+    loading: loadingClass,
+    animatedContent: animatedContentClass,
+    pressed: pressedClass,
+  } as const;
+}
 
 /**
  * Generate all classes for Button component
