@@ -116,12 +116,17 @@ const preview = {
       storySort: {
         method: 'alphabetical',
         order: [
-          'Typography', 
-          ['Text', 'Heading', 'Code'], 
-          'Button',
-          'Link',
-          'Amount',
-          'Spinner',
+          'Guides',
+          ['Installation'],
+          'Components',
+          [
+            'Amount',
+            'Button',
+            'Link',
+            'Typography',
+            ['Code','Heading', 'Text'],
+            'Spinner',
+          ],
         ],
       },
     },

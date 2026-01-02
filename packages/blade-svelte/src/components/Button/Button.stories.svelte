@@ -3,7 +3,7 @@
   import Button from './Button.svelte';
   
   const { Story } = defineMeta({
-    title: 'Button',
+    title: 'Components/Button',
     component: Button,
     tags: ['autodocs'],
     args: {

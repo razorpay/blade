@@ -3,7 +3,7 @@
   import Link from './Link.svelte';
   
   const { Story } = defineMeta({
-    title: 'Link',
+    title: 'Components/Link',
     component: Link,
     tags: ['autodocs'],
     args: {

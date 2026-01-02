@@ -4,7 +4,7 @@
   import Text from '../Typography/Text/Text.svelte'
   
   const { Story } = defineMeta({
-    title: 'Spinner',
+    title: 'Components/Spinner',
     component: Spinner,
     tags: ['autodocs'],
     args: {
