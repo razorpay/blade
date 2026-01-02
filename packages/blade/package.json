@@ -326,6 +326,13 @@
       "optional": true
     }
   },
+  "overrides": {
+    "recharts": {
+      "@reduxjs/toolkit": "^1.9.7",
+      "react-redux": "^8.1.3",
+      "redux": "^4.2.1"
+    }
+  },
   "resolutions": {
     "@storybook/**/react-dom": "18.2.0",
     "@storybook/**/react": "18.2.0",
