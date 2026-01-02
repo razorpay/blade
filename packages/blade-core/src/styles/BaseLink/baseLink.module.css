@@ -8,8 +8,8 @@
   display: inline-block;
   border-radius: var(--border-radius-small);
   transition-property: box-shadow, color, fill;
-  transition-timing-function: var(--motion-easing-standard);
-  transition-duration: var(--motion-duration-2xquick);
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-2xquick);
 
   /* PostCSS nesting support */
   &[disabled] {

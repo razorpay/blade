@@ -11,8 +11,8 @@
   border-radius: var(--border-radius-medium);
   border-style: solid;
   transition-property: background-color, border-color, box-shadow, transform;
-  transition-timing-function: var(--motion-easing-standard);
-  transition-duration: var(--motion-duration-xquick);
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-xquick);
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-medium);
   text-align: center;
@@ -307,8 +307,8 @@
   position: relative;
   z-index: 1;
   transition-property: color, fill, opacity;
-  transition-timing-function: var(--motion-easing-standard);
-  transition-duration: var(--motion-duration-xquick);
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-xquick);
 }
 
 /* Content when loading - hide text but preserve space */
@@ -334,8 +334,8 @@
   position: relative;
   transform: scale(1);
   transition-property: transform;
-  transition-timing-function: var(--motion-easing-standard);
-  transition-duration: var(--motion-duration-xquick);
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-xquick);
 }
 
 /* Pressed state animation - apply to animated-content wrapper */

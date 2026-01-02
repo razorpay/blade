@@ -3,6 +3,7 @@ export type { BaseTextVariants } from './BaseText';
 export {
   baseLinkStyles,
   getBaseLinkClasses,
+  getBaseLinkTemplateClasses,
   baseLinkContentClass,
   baseLinkIconClass,
   getLinkColorToken,

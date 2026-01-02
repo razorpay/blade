@@ -5,7 +5,10 @@
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
-  import { getBaseLinkClasses, baseLinkContentClass, baseLinkIconClass, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
+  import { getBaseLinkClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
+
+  // Get template classes via function call to prevent Svelte tree-shaking
+  const linkClasses = getBaseLinkTemplateClasses();
 
   // Icon component type - placeholder for now
   // TODO: Replace with actual Icon component when available
@@ -280,7 +283,7 @@
   target={!isButton ? target : undefined}
   rel={!isButton ? (rel ?? defaultRel) : undefined}
 >
-  <span class={baseLinkContentClass + ' focus-ring-child'}>
+  <span class={linkClasses.content + ' focus-ring-child'}>
     {#if Icon && iconPosition === 'left'}
       <!-- <span class={iconClass({ position: 'left', hasChildren })}> -->
         <!-- TODO: Render Icon component when available -->
