@@ -1,0 +1,27 @@
+# Build output
+dist/
+
+# Storybook
+storybook-static/
+
+# Dependencies (handled by root)
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo

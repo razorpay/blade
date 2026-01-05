@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Use Node v18
+      - name: Use Node v20
         uses: actions/setup-node@v3
         with:
           node-version: 20.19.5

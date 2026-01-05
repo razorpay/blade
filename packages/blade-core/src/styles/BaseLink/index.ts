@@ -5,6 +5,7 @@ import './baseLink.module.css';
 export {
   baseLinkStyles,
   getBaseLinkClasses,
+  getBaseLinkTemplateClasses,
   baseLinkContentClass,
   baseLinkIconClass,
   getLinkColorToken,

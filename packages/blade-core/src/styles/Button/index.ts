@@ -5,10 +5,13 @@ import './button.module.css';
 export {
   buttonStyles,
   getButtonClasses,
+  getButtonTemplateClasses,
   buttonContentClass,
   buttonIconClass,
   loadingSpinnerClass,
   loadingClass,
+  animatedContentClass,
+  pressedClass,
   getButtonBackgroundColorToken,
   getButtonTextColorToken,
   getButtonTextSizes,

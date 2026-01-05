@@ -1,9 +1,10 @@
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Spinner from './BaseSpinner/BaseSpinner.svelte';
+  import Text from '../Typography/Text/Text.svelte'
   
   const { Story } = defineMeta({
-    title: 'Spinner',
+    title: 'Components/Spinner',
     component: Spinner,
     tags: ['autodocs'],
     args: {
@@ -16,7 +17,7 @@
     argTypes: {
       size: {
         control: 'select',
-        options: ['small', 'medium', 'large'],
+        options: ['medium', 'large', 'xlarge'],
         description: 'Size of the spinner',
         table: {
           defaultValue: { summary: 'medium' },
@@ -59,40 +60,68 @@
 
 <Story name="Basic Spinner" args={{ size: 'medium', color: 'neutral', accessibilityLabel: 'Loading content' }} />
 
-<Story name="Spinner Sizes">
-  <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-      <Spinner size="small" color="neutral" accessibilityLabel="Small spinner" />
-      <span>Small</span>
-    </div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-      <Spinner size="medium" color="neutral" accessibilityLabel="Medium spinner" />
-      <span>Medium</span>
-    </div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-      <Spinner size="large" color="neutral" accessibilityLabel="Large spinner" />
-      <span>Large</span>
+<Story name="Spinner Label" asChild>
+  <div class='display-flex margin-x-spacing-8 gap-spacing-4 flex-wrap'>
+    <div class="display-flex flex-col gap-spacing-2 items-center">
+      <Spinner size="medium" color="neutral" accessibilityLabel="Small spinner" label="loading" />
     </div>
   </div>
 </Story>
 
-<Story name="Spinner Colors">
-  <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+<Story name="Spinner Sizes" asChild>
+  <div class='display-flex gap-spacing-4 flex-wrap'>
+    <div class="display-flex flex-col gap-spacing-2 items-center">
+      <Spinner size="medium" color="neutral" accessibilityLabel="Small spinner" />
+      <Text>Medium</Text>
+    </div>
+    <div class="display-flex flex-col gap-spacing-2 items-center">
+      <Spinner size="large" color="neutral" accessibilityLabel="Medium spinner" />
+      <Text>Large</Text>
+    </div>
+    <div class="display-flex flex-col gap-spacing-2 items-center">
+      <Spinner size="xlarge" color="neutral" accessibilityLabel="Large spinner" />
+      <Text size='large'>X Large</Text>
+    </div>
+  </div>
+</Story>
+
+<Story name="Spinner Colors" asChild>
+  <div class='display-flex gap-spacing-4 items-center flex-wrap'>
+    <div class="display-flex flex-col gap-spacing-2">
       <Spinner size="medium" color="neutral" accessibilityLabel="Neutral spinner" />
-      <span>Neutral</span>
+      <Text>Neutral</Text>
     </div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div class="display-flex flex-col gap-spacing-2">
       <Spinner size="medium" color="primary" accessibilityLabel="Primary spinner" />
-      <span>Primary</span>
+      <Text color='surface.text.primary.normal'>Primary</Text>
     </div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; background: #333; padding: 1rem; border-radius: 4px;">
+    <div class="display-flex flex-col gap-spacing-2">
+      <Spinner size="medium" color="positive" accessibilityLabel="Positive spinner" />
+      <Text color='feedback.text.positive.intense'>Positive</Text>
+    </div>
+    <div class="display-flex flex-col gap-spacing-2">
+      <Spinner size="medium" color="negative" accessibilityLabel="Negative spinner" />
+      <Text color='feedback.text.negative.intense'>Negative</Text>
+    </div>
+    <div class="display-flex flex-col gap-spacing-2" style="background: #333; padding: 1rem; border-radius: 4px;">
       <Spinner size="medium" color="white" accessibilityLabel="White spinner" />
-      <span style="color: white;">White</span>
+      <Text color='surface.text.staticWhite.normal'>White</Text>
     </div>
   </div>
 </Story>
 
-<Story name="Spinner with Label - Right" args={{ size: 'medium', color: 'neutral', accessibilityLabel: 'Loading content', label: 'Loading...', labelPosition: 'right' }} />
+<Story name="Spinner Label - Right" asChild>
+  <div class='display-flex margin-x-spacing-8 gap-spacing-4 flex-wrap'>
+    <div class="display-flex flex-col gap-spacing-2 items-center">
+      <Spinner size="medium" color="neutral" accessibilityLabel="Small spinner" label="Loading..." />
+    </div>
+  </div>
+</Story>
 
-<Story name="Spinner with Label - Bottom" args={{ size: 'medium', color: 'neutral', accessibilityLabel: 'Loading content', label: 'Loading...', labelPosition: 'bottom' }} />
+<Story name="Spinner Label - Bottom" asChild>
+  <div class='display-flex margin-x-spacing-8 gap-spacing-4 flex-wrap'>
+    <div class="display-flex flex-col gap-spacing-2 items-center">
+      <Spinner labelPosition='bottom' size="medium" color="neutral" accessibilityLabel="Small spinner" label="Loading..." />
+    </div>
+  </div>
+</Story>

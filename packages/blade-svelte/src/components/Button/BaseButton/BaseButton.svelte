@@ -7,16 +7,16 @@
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import {
     getButtonClasses,
-    buttonContentClass,
-    buttonIconClass,
-    loadingSpinnerClass,
-    loadingClass,
+    getButtonTemplateClasses,
     getButtonTextColorToken,
     getButtonTextSizes,
     getButtonSpinnerSize,
     type ActionStatesType as ButtonActionStatesType,
     type SpinnerColor,
   } from '@razorpay/blade-core/styles';
+
+  // Get template classes via function call to prevent Svelte tree-shaking
+  const buttonClasses = getButtonTemplateClasses();
 
   let {
     children,
@@ -191,17 +191,25 @@
   // Extract styled props
   const styledProps = $derived(getStyledPropsClasses(rest));
 
-  // Combine classes
+  // Combine classes for button element
   const combinedClasses = $derived(() => {
     const classes = [
       baseButtonClasses,
-      isLoading ? loadingClass : '',
-      isPressed ? 'pressed' : '',
+      isLoading ? buttonClasses.loading : '',
       'focus-ring-parent',
     ];
     if (styledProps.classes) {
       classes.push(...styledProps.classes);
     }
+    return classes.filter(Boolean).join(' ');
+  });
+
+  // Animated content wrapper classes (for scale animation)
+  const animatedContentClasses = $derived(() => {
+    const classes = [
+      buttonClasses.animatedContent,
+      isPressed ? buttonClasses.pressed : '',
+    ];
     return classes.filter(Boolean).join(' ');
   });
 
@@ -341,54 +349,56 @@
   rel={isLink ? (rel ?? defaultRel) : undefined}
   {tabIndex}
 >
-  {#if isLoading}
-    <div class={loadingSpinnerClass}>
-      <BaseSpinner
-        size={spinnerSize}
-        color={spinnerColor}
-        accessibilityLabel="Loading"
-      />
-    </div>
-  {/if}
-  <span class={buttonContentClass + (isLoading ? ' ' + loadingClass : '') + ' focus-ring-child'}>
-    {#if Icon && iconPosition === 'left'}
-      <span class={buttonIconClass}>
-        <!-- TODO: Render Icon component when available -->
-        <!-- <Icon size={iconSize} color={iconColorToken} /> -->
-      </span>
+  <div class={animatedContentClasses()}>
+    {#if isLoading}
+      <div class={buttonClasses.loadingSpinner}>
+        <BaseSpinner
+          size={spinnerSize}
+          color={spinnerColor}
+          accessibilityLabel="Loading"
+        />
+      </div>
     {/if}
-    {#if childrenString}
-      <BaseText
-        as="span"
-        color={textColorToken}
-        fontSize={fontSize}
-        lineHeight={lineHeight}
-        fontFamily="text"
-        fontWeight="medium"
-        textAlign="center"
-        componentName={MetaConstants.Button}
-      >
-        {childrenString}
-      </BaseText>
-    {:else if children && typeof children !== 'string'}
-      <BaseText
-        as="span"
-        color={textColorToken}
-        fontSize={fontSize}
-        lineHeight={lineHeight}
-        fontFamily="text"
-        fontWeight="medium"
-        textAlign="center"
-        componentName={MetaConstants.Button}
-      >
-        {@render children()}
-      </BaseText>
-    {/if}
-    {#if Icon && iconPosition === 'right'}
-      <span class={buttonIconClass}>
-        <!-- TODO: Render Icon component when available -->
-        <!-- <Icon size={iconSize} color={iconColorToken} /> -->
-      </span>
-    {/if}
-  </span>
+    <span class={buttonClasses.content + (isLoading ? ' ' + buttonClasses.loading : '') + ' focus-ring-child'}>
+      {#if Icon && iconPosition === 'left'}
+        <span class={buttonClasses.icon}>
+          <!-- TODO: Render Icon component when available -->
+          <!-- <Icon size={iconSize} color={iconColorToken} /> -->
+        </span>
+      {/if}
+      {#if childrenString}
+        <BaseText
+          as="span"
+          color={textColorToken}
+          fontSize={fontSize}
+          lineHeight={lineHeight}
+          fontFamily="text"
+          fontWeight="medium"
+          textAlign="center"
+          componentName={MetaConstants.Button}
+        >
+          {childrenString}
+        </BaseText>
+      {:else if children && typeof children === 'function'}
+        <BaseText
+          as="span"
+          color={textColorToken}
+          fontSize={fontSize}
+          lineHeight={lineHeight}
+          fontFamily="text"
+          fontWeight="medium"
+          textAlign="center"
+          componentName={MetaConstants.Button}
+        >
+          {@render children()}
+        </BaseText>
+      {/if}
+      {#if Icon && iconPosition === 'right'}
+        <span class={buttonClasses.icon}>
+          <!-- TODO: Render Icon component when available -->
+          <!-- <Icon size={iconSize} color={iconColorToken} /> -->
+        </span>
+      {/if}
+    </span>
+  </div>
 </svelte:element>
