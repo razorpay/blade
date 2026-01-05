@@ -53,7 +53,7 @@ const nativeExtensions = [
 ];
 
 const packageJsonDeps = Object.keys(packagejson.dependencies).filter(
-  (name) => name !== 'patch-package' && name !== 'recharts',
+  (name) => name !== 'patch-package',
 );
 
 const externalDependencies = packageJsonDeps;
