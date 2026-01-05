@@ -115,6 +115,22 @@ export const baseLinkContentClass = styles.content;
 export const baseLinkIconClass = styles.icon;
 
 /**
+ * Get all BaseLink component template classes as an object.
+ * Use this function in Svelte components to prevent tree-shaking from removing
+ * class imports that are only used in templates.
+ *
+ * @example
+ * const linkClasses = getBaseLinkTemplateClasses();
+ * // Use: linkClasses.content, linkClasses.icon
+ */
+export function getBaseLinkTemplateClasses() {
+  return {
+    content: baseLinkContentClass,
+    icon: baseLinkIconClass,
+  } as const;
+}
+
+/**
  * Generate all classes for BaseLink component
  * This is the single source of truth for all BaseLink styling
  * Everything is class-based - no data attributes or inline styles

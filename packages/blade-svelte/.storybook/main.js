@@ -13,7 +13,7 @@ function getAbsolutePath(value) {
 
 /** @type { import('@storybook/svelte-vite').StorybookConfig } */
 const config = {
-  stories: ["../src/**/*.stories.@(js|ts|svelte)"],
+  stories: ["../src/**/*.stories.@(js|ts|svelte|mdx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",

@@ -3,6 +3,7 @@ export type { BaseTextVariants } from './BaseText';
 export {
   baseLinkStyles,
   getBaseLinkClasses,
+  getBaseLinkTemplateClasses,
   baseLinkContentClass,
   baseLinkIconClass,
   getLinkColorToken,
@@ -24,10 +25,13 @@ export type { TextVariant, TextSize, TextWeight, TextAs, TextPropsResult } from 
 export {
   buttonStyles,
   getButtonClasses,
+  getButtonTemplateClasses,
   buttonContentClass,
   buttonIconClass,
   loadingSpinnerClass,
   loadingClass,
+  animatedContentClass,
+  pressedClass,
   getButtonBackgroundColorToken,
   getButtonTextColorToken,
   getButtonTextSizes,

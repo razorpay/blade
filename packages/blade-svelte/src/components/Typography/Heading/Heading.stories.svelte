@@ -3,7 +3,7 @@
   import Heading from './Heading.svelte';
   
   const { Story } = defineMeta({
-    title: 'Typography/Heading',
+    title: 'Components/Typography/Heading',
     component: Heading,
     tags: ['autodocs'],
     args: {

@@ -178,7 +178,7 @@ packages/
 - You can use common function from `packages/blade-core` if needed. However do confirm before you implement
 
 ## Testing Guidelines
-Add the component in packages/blade-svelte/src/App.svelte as well which will be a testing playground for testing whether component is behaving as expected or not
+Create the necessary stories required for the component as well which will be a testing playground for testing whether component is behaving as expected or not
 
 ## Accessibility and CSS Patterns
 

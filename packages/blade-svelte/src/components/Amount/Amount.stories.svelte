@@ -4,7 +4,7 @@
   import Heading from '../Typography/Heading/Heading.svelte'
 
   const { Story } = defineMeta({
-    title: 'Amount',
+    title: 'Components/Amount',
     component: Amount,
     tags: ['autodocs'],
     args: {
