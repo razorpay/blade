@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.69.0
+
+### Minor Changes
+
+- 9f7cbd5ad: feat(blade): bundle recharts
+
 ## 12.68.1
 
 ### Patch Changes
