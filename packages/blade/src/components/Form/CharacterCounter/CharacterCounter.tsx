@@ -5,7 +5,7 @@ import { Text } from '~components/Typography';
 type CharacterCounterProps = {
   currentCount: number;
   maxCount: number;
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
 export const CharacterCounter = ({

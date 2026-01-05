@@ -91,7 +91,19 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   min-width: min(20%,60px);
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -108,7 +120,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   align-self: stretch;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -123,7 +135,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   padding-right: 12px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -139,11 +151,11 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   height: 100%;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   margin-left: 0px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -216,7 +228,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -240,14 +252,14 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   overflow-wrap: break-word;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: none;
 }
 
@@ -457,15 +469,18 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 
 .c2.c2.c2.c2.c2 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -634,34 +649,39 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
                       type="button"
                       value=""
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Select Option
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                        >
+                          Select Option
+                        </p>
+                      </div>
                     </button>
                   </div>
                 </div>
                 <div
-                  class="c18"
+                  class="c19"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c18"
+                    class="c19"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c19"
+                      class="c20"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c20"
+                        class="c21"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c21"
+                          class="c22"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -678,7 +698,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c22"
+                          class="c23"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -701,11 +721,11 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
             </div>
           </div>
           <div
-            class="c23"
+            class="c24"
             data-blade-component="base-box"
           >
             <div
-              class="c24"
+              class="c25"
               data-blade-component="base-box"
             />
           </div>
@@ -807,7 +827,19 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   min-width: min(20%,60px);
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -824,7 +856,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   align-self: stretch;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -839,7 +871,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding-right: 12px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -855,11 +887,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   height: 100%;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   margin-left: 0px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -932,7 +964,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -956,14 +988,14 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   overflow-wrap: break-word;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: none;
 }
 
@@ -1173,15 +1205,18 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c2.c2.c2.c2.c2 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -1345,34 +1380,39 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                       type="button"
                       value=""
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Select Option
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                        >
+                          Select Option
+                        </p>
+                      </div>
                     </button>
                   </div>
                 </div>
                 <div
-                  class="c18"
+                  class="c19"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c18"
+                    class="c19"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c19"
+                      class="c20"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c20"
+                        class="c21"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c21"
+                          class="c22"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -1389,7 +1429,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c22"
+                          class="c23"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -1412,11 +1452,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </div>
           </div>
           <div
-            class="c23"
+            class="c24"
             data-blade-component="base-box"
           >
             <div
-              class="c24"
+              class="c25"
               data-blade-component="base-box"
             />
           </div>
@@ -1537,7 +1577,19 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   min-width: min(20%,60px);
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1554,7 +1606,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   align-self: stretch;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1569,7 +1621,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   padding-right: 12px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1585,11 +1637,11 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   height: 100%;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   margin-left: 0px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1643,7 +1695,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -1667,14 +1719,14 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   overflow-wrap: break-word;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: none;
 }
 
@@ -1803,7 +1855,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1855,7 +1907,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1884,15 +1936,18 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 
 .c2.c2.c2.c2.c2 {
   border: 0;
-  -webkit-clip: rect(0,0,0,0);
-  clip: rect(0,0,0,0);
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin: 0 -1px -1px 0;
   overflow: hidden;
-  white-space: nowrap;
+  padding: 0;
   position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
   word-wrap: normal;
 }
 
@@ -2056,34 +2111,39 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                       type="button"
                       value=""
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Select Option
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                        >
+                          Select Option
+                        </p>
+                      </div>
                     </button>
                   </div>
                 </div>
                 <div
-                  class="c18"
+                  class="c19"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c18"
+                    class="c19"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c19"
+                      class="c20"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c20"
+                        class="c21"
                         data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
-                          class="c21"
+                          class="c22"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -2100,7 +2160,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                         </svg>
                         <svg
                           aria-hidden="true"
-                          class="c22"
+                          class="c23"
                           data-blade-component="icon"
                           fill="none"
                           height="16px"
@@ -2123,11 +2183,11 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
             </div>
           </div>
           <div
-            class="c23"
+            class="c24"
             data-blade-component="base-box"
           >
             <div
-              class="c24"
+              class="c25"
               data-blade-component="base-box"
             />
           </div>
@@ -2693,14 +2753,14 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: currentColor;
+  color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 0.875rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2716,15 +2776,15 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
 }
 
 .c1.c1.c1.c1.c1 {
-  border-width: 1px;
+  border-width: 0.5px;
   border-color: hsla(214,28%,84%,1);
-  height: 28px;
+  height: 24px;
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-style: dashed;
+  border-style: solid;
   background-color: hsla(0,0%,100%,1);
   color: hsla(212,39%,16%,1);
   width: -webkit-fit-content;
@@ -2797,6 +2857,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
           aria-haspopup="menu"
           aria-label="Fruits"
           class="c2"
+          data-blade-component="filter-chip-trigger"
           role="button"
         >
           <div
@@ -2827,7 +2888,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
                 clip-rule="evenodd"
                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                 data-blade-component="svg-path"
-                fill="currentColor"
+                fill="hsla(211, 22%, 56%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -2867,14 +2928,14 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
 }
 
 .c4.c4.c4.c4.c4 {
-  color: currentColor;
+  color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 0.875rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2890,15 +2951,15 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
 }
 
 .c1.c1.c1.c1.c1 {
-  border-width: 1px;
+  border-width: 0.5px;
   border-color: hsla(214,28%,84%,1);
-  height: 28px;
+  height: 24px;
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-style: dashed;
+  border-style: solid;
   background-color: hsla(0,0%,100%,1);
   color: hsla(212,39%,16%,1);
   width: -webkit-fit-content;
@@ -2972,6 +3033,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
           aria-label="profile"
           class="c2"
           data-analytics-attribute="profile"
+          data-blade-component="filter-chip-trigger"
           role="button"
         >
           <div
@@ -3002,7 +3064,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
                 clip-rule="evenodd"
                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                 data-blade-component="svg-path"
-                fill="currentColor"
+                fill="hsla(211, 22%, 56%, 1)"
                 fill-rule="evenodd"
               />
             </svg>

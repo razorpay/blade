@@ -2,12 +2,15 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "strict": true,
-    "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": ["@figma/plugin-typings"]
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "types": ["vite/client", "@figma/plugin-typings", "node"],
+    "baseUrl": ".",
+    "paths": {}
   },
-  "include": ["src/**/*", "vite.config.ts"],
-  "exclude": ["dist", "node_modules"]
+  "include": ["src", "vite.config.ts"]
 }

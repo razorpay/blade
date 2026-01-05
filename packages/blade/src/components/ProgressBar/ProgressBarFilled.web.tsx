@@ -35,6 +35,29 @@ const slideAndScaleKeyframes = keyframes`
   }
 `;
 
+const oscillateKeyframes = keyframes`
+  0% {
+    left: ${indeterminateAnimation.leftInitial};
+    transform: scaleX(${indeterminateAnimation.scaleXInitial});
+  }
+  25% {
+    left: ${indeterminateAnimation.leftMid};
+    transform: scaleX(${indeterminateAnimation.scaleXMid});
+  }
+  50% {
+    left: ${indeterminateAnimation.leftFinal};
+    transform: scaleX(${indeterminateAnimation.scaleXInitial});
+  }
+  75% {
+    left: ${indeterminateAnimation.leftMid};
+    transform: scaleX(${indeterminateAnimation.scaleXMid});
+  }
+  100% {
+    left: ${indeterminateAnimation.leftInitial};
+    transform: scaleX(${indeterminateAnimation.scaleXInitial});
+  }
+`;
+
 const getPulseAnimationStyles = ({
   duration,
   easing,
@@ -53,13 +76,18 @@ const getPulseAnimationStyles = ({
 `;
 
 const BoxWithIndeterminateAnimation = styled(BaseBox)<
-  Pick<ProgressBarFilledProps, 'fillMotionDuration' | 'indeterminateMotionDuration'>
->(({ theme, indeterminateMotionDuration }) => {
+  Pick<
+    ProgressBarFilledProps,
+    'fillMotionDuration' | 'indeterminateMotionDuration' | '_oscillation'
+  >
+>(({ theme, indeterminateMotionDuration, _oscillation = false }) => {
   const duration = castWebType(makeMotionTime(getIn(theme.motion, indeterminateMotionDuration)));
   const easing = 'linear'; // TODO: Add this in motion tokens
+  const keyframes = _oscillation ? oscillateKeyframes : slideAndScaleKeyframes;
 
   return css`
-    animation: ${slideAndScaleKeyframes} ${duration} ${easing} infinite;
+    ${_oscillation ? `border-radius: ${theme.border.radius.xsmall}px;` : ''};
+    animation: ${keyframes} ${duration} ${easing} infinite;
     position: absolute;
     width: ${indeterminateAnimation.fillWidth};
     height: 100%;
@@ -67,13 +95,16 @@ const BoxWithIndeterminateAnimation = styled(BaseBox)<
 });
 
 const IndeterminateFilledContainer = styled(BoxWithIndeterminateAnimation)<
-  Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>
+  Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress' | '_oscillation'>
 >(({ backgroundColor }) => ({
   backgroundColor,
 }));
 
 const IndeterminatePulseAnimation = styled(BoxWithIndeterminateAnimation)<
-  Pick<ProgressBarFilledProps, 'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'type'>
+  Pick<
+    ProgressBarFilledProps,
+    'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'type' | '_oscillation'
+  >
 >(({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, type }) => {
   const duration = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDuration)));
   const easing = castWebType(getIn(theme.motion, motionEasing));
@@ -91,7 +122,10 @@ const BoxWithProgressFillTransition = styled(BaseBox)<
 }));
 
 const DeterminateFilledContainer = styled(BoxWithProgressFillTransition)<
-  Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress' | 'indeterminateMotionDuration'>
+  Pick<
+    ProgressBarFilledProps,
+    'backgroundColor' | 'progress' | 'indeterminateMotionDuration' | '_oscillation'
+  >
 >(({ backgroundColor, progress }) => ({
   backgroundColor,
   height: '100%',
@@ -118,6 +152,7 @@ const ProgressBarFilled = ({
   indeterminateMotionDuration,
   type,
   isIndeterminate,
+  _oscillation = false,
 }: ProgressBarFilledProps): React.ReactElement => {
   const ProgressBarFilledContainer = isIndeterminate
     ? IndeterminateFilledContainer
@@ -132,6 +167,7 @@ const ProgressBarFilled = ({
       fillMotionDuration={fillMotionDuration}
       progress={progress}
       indeterminateMotionDuration={indeterminateMotionDuration}
+      _oscillation={_oscillation}
     >
       <ProgressBarPulseAnimation
         fillMotionDuration={fillMotionDuration}

@@ -1,5 +1,298 @@
 # @razorpay/blade
 
+## 12.68.1
+
+### Patch Changes
+
+- 5ab22346a: fix(createTheme): color of `surface.background.primary.subtle` in createTheme function (white labelling)
+
+## 12.68.0
+
+### Minor Changes
+
+- b05315121: feat(blade): add data attribute in basefilter chip
+
+## 12.67.0
+
+### Minor Changes
+
+- f54a6600b: feat(blade): expose zIndex in toast & updated zIndex values
+- 0dbcbb6c2: feat(blade): added openInteraction prop for hover/click trigger on popover component
+
+## 12.66.0
+
+### Minor Changes
+
+- 731a6ca30: feat(blade): add pagination component
+
+## 12.65.1
+
+### Patch Changes
+
+- 75272f22b: fix(blade): correct border-radius for secondary variant in ButtonGroup when buttons are wrapped (e.g., inside Dropdown)
+
+## 12.65.0
+
+### Minor Changes
+
+- d508ed312: feat(blade): remove padding prop from FilterChipGroup
+
+  We have removed the `padding` prop from the `FilterChipGroup` component, which was introduced in the previous version. Padding is now handled internally as part of the global spacing update.
+
+  #### Impact
+
+  If your code was using the `padding` prop, you might notice spacing differences or snapshot changes in your tests. No functional changes are required otherwise.
+
+  #### How to Upgrade
+
+  Remove the `padding` prop usage from `FilterChipGroup`. The component will now automatically apply the correct spacing as per the new global layout rules.
+
+- 17e980ebd: ## feat(blade): list view v2
+
+  ### 🔧 Prop Updates
+
+  - **Deprecated Props:**
+    - List View Filters: searchValue, searchValuePlaceholder, searchName, onSearchChange, onSearchClear, searchTrailing, showFilters, onShowFiltersChange
+    - Table Header: rowDensity
+  - **Added:**
+    - `actions` (replaces deprecated search-related props)
+    - `FilterChipGroup.padding`
+    - `TableToolbar.placement`
+
+  ### 🎨 List View Visual & Structural Changes
+
+  - **Table Cell:** Font (M→S, S→XS), color (Normal→Subtle), links (Primary→Neutral)
+  - **Table Header:** Fixed height 36px, bg → `interactive.bg.gray.faded`, font (M→S, Normal→Subtle)
+  - **Pagination:** Height 60→48px, removed horizontal padding, smaller/subtle text
+  - **Quick Filter:** Always expanded, removed radio for single-select, unified badge color
+  - **Filter Chip:** Border 0.5px normal, height 24px, refreshed Clear Filter button, removed bg/divider
+  - **Filter Panel:** Removed old panel (Download/Copy), moved actions next to Quick Filters (Quick Filters left; Search + Actions right), added tooltips
+  - **Bulk Action Toolbar:** Overlays Table Header on selection; hidden otherwise (same on mobile)
+  - **Mobile:** Removed “Show Filter” button; bulk actions adapt; filters stay horizontally scrollable
+
+## 12.64.0
+
+### Minor Changes
+
+- 49082f564: feat(blade): charts new ui & color token update
+
+  ### Deprecation of `chart.background` prefix in color token
+
+  The `chart.background` prefix in color token has been deprecated to improve clarity and provide a more descriptive API. The new prefix is `data.background`.
+
+  **Impact**
+
+  Implementation that explicitly sets `chart.background` prefix in color token will use `data.background` as prefix.
+
+  **How to Upgrade**
+
+  You need to update your code where `chart.background` prefix in color token. You can either remove the prefix entirely to use default color themes or change the value to `data.background`.
+
+  ```diff
+  - color="chart.background.categorical.blue.moderate"
+  + color="data.background.categorical.blue.moderate"
+  ```
+
+  ### Updation of color mapping tokens for charts
+
+  We have update color mapping of few token related to charts. you might need to update your snaps.
+
+## 12.63.0
+
+### Minor Changes
+
+- e241824ec: added [elementtiming](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/elementtiming) attribute to components.
+
+## 12.62.0
+
+### Minor Changes
+
+- 10bea9302: feat(blade): creation view v2
+
+  - **Card**: Added prop to enable `cursor: pointer` for interactive states.
+  - **Creation View**:
+    - Added progress bar in full-page modal for multi-step forms.
+    - Included StepGroup example in medium modal.
+    - Enhanced the **Flow Selection Modal** with responsive behavior
+
+## 12.61.1
+
+### Patch Changes
+
+- 46b7a491b: revert: visually hidden changes
+
+  > **Note:** you might need to update your snaps
+
+## 12.61.0
+
+### Minor Changes
+
+- c5e3a9237: feat(blade): introduced footer and enhance header background for DetailedView
+
+  - **New Component**: Added `DrawerFooter` component with sticky positioning and optional divider in drawer
+  - **Enhanced DrawerHeader**: Added `showDivider` prop to control header divider visibility and upgraded gradient pattern from linear to radial
+  - **DetailedView Pattern Enhancement**:
+    - Add an option to toggle the footer's visibility
+    - Ensure the footer remains sticky at all times
+    - Upgrade the gradient pattern in the header
+
+## 12.60.2
+
+### Patch Changes
+
+- a4717aa85: fix(blade): scroll issue in bottomsheet
+
+## 12.60.1
+
+### Patch Changes
+
+- 5f2750544: feat(blade): update TopNav actions bg color, made profile avatar square
+
+## 12.60.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
+## 12.59.0
+
+### Minor Changes
+
+- ce80fb710: feat(blade): update ts version
+
+## 12.58.0
+
+### Minor Changes
+
+- 6d508bbc8: ## feat(blade): add donut charts 🍩
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-donutchart--docs)
+
+  ### Deprecation of `colorTheme='default'`
+
+  The `default` option for the `colorTheme` prop has been deprecated to improve clarity and provide a more descriptive API. The new default theme is `'categorical'`. This change makes the theme's purpose—applying a set of distinct colors for different categories—more explicit.
+
+  **Impact**
+
+  Implementation that explicitly sets `colorTheme='default'` will use `'categorical'` as default. Implementations that did not specify a `colorTheme` will automatically use the new `'categorical'` default and should see no change in behavior.
+
+  **How to Upgrade**
+
+  You need to update your code where `colorTheme='default'` is used. You can either remove the prop entirely or change the value to `'categorical'`.
+
+  ```diff
+  - <YourComponent colorTheme='default' />
+  + <YourComponent colorTheme='categorical' />
+
+  // Or, since it's the new default, simply remove the prop:
+  + <YourComponent />
+
+  ```
+
+  ### Updation of color mapping tokens for charts
+
+  We have update color mapping of few token related to charts. you might need to update your snaps.
+
+## 12.57.0
+
+### Minor Changes
+
+- f8be2c8ef: feat(Accordion): add `minWidth` prop to the Accordion component
+
+## 12.56.1
+
+### Patch Changes
+
+- 950c4881f: fix(blade): resolve stale values and button default behaviour in preset dropdown of datepicker
+
+## 12.56.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade): add BarChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-barchart--docs)
+
+## 12.55.1
+
+### Patch Changes
+
+- fa2f47cad: fix(blade): invoke onApply of DatePicker when preset is selected from the preset dropdown
+- 2218df3db: feat(DropdownOverlay): add 'data-analytics' attribute
+
+## 12.55.0
+
+### Minor Changes
+
+- ac1d4fb54: feat(blade): add support for non-dismissible modals & bottomsheet
+
+  Introduces a new prop `isDismissible` in `Modal` and `BottomSheet` which can be used to prevent users from accidentally dismissing modals and bottomSheet by clicking outside or pressing the escape key. When `isDismissible={false}`, the close button is automatically hidden and the modal and bottomSheet can only be closed through explicit user actions.
+
+  ```jsx
+  <Modal isOpen={isOpen} isDismissible={false}>
+    // .... modal content ....
+  </Modal>
+  ```
+
+  ```jsx
+  <BottomSheet isOpen={isOpen} isDismissible={false}>
+    // .... bottomsheet component ....
+  </BottomSheet>
+  ```
+
+## 12.54.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
+## 12.53.1
+
+### Patch Changes
+
+- 0ff0152b2: fix(ActionListItem): support non-string values in item
+
+## 12.53.0
+
+### Minor Changes
+
+- ab1773547: feat(blade): add AreaChart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-areachart--docs)
+
+## 12.52.0
+
+### Minor Changes
+
+- fbc71b288: feat(blade): add support for Badge in SelectInput
+
+  Introduces a new prop `valueSuffix` which in `SelectInput` which can be used to render a Badge after the the value.
+
+  ```jsx
+  <SelectInput
+    valueSuffix={({ values }) => {
+      if (values[0] === 'item-1') {
+        return <Badge color="positive">20% Off</Badge>;
+      }
+      return null;
+    }}
+  />
+  ```
+
+## 12.51.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): added Chart subcomponents & Line Chart component
+
+  [Docs Link](https://blade.razorpay.com/?path=/docs/components-charts-linechart--docs)
+
+## 12.50.0
+
+### Minor Changes
+
+- b9e48e2ab: feat(Box): add `backgroundFilter` and `transition` prop to Box component
+
 ## 12.49.7
 
 ### Patch Changes

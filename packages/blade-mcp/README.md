@@ -6,16 +6,18 @@
 
 Blade MCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that implements Razorpay's Design Guidelines and allows you to build Web Interfaces using Blade Design System.
 
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](<https://cursor.com/en-US/install-mcp?name=Blade%20MCP%20(Stdio)&config=eyJjb21tYW5kIjoibnB4IC15IEByYXpvcnBheS9ibGFkZS1tY3BAbGF0ZXN0In0%3D>)
+
 ## Available Tools
 
-| Tool Name                   | Description                                                                                                                                                      |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hi_blade`                  | Provides a welcome message and overview of Blade MCP capabilities when user greets with "hi blade", "hey blade", etc.                                            |
-| `create_new_blade_project`  | Creates a new project using Blade with Vite, React, and TypeScript setup. Should only be called when creating a new project from scratch.                        |
-| `create_blade_cursor_rules` | Creates the cursor rules for Blade to help with code generation. Should be called before getting component docs and when the rule file doesn't exist.            |
-| `get_blade_component_docs`  | Fetches the Blade Design System documentation for specific components. Useful when adding or modifying components in your project.                               |
-| `get_blade_pattern_docs`    | Fetches the Blade Design System pattern documentation. Use this to get information about design patterns, best practices, and implementation guidelines.         |
-| `get_blade_general_docs`    | Fetches general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines.               |
+| Tool Name                   | Description                                                                                                                                                                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `hi_blade`                  | Provides a welcome message and overview of Blade MCP capabilities when user greets with "hi blade", "hey blade", etc.                                                                                                                      |
+| `create_new_blade_project`  | Creates a new project using Blade with Vite, React, and TypeScript setup. Should only be called when creating a new project from scratch.                                                                                                  |
+| `create_blade_cursor_rules` | Creates the cursor rules for Blade to help with code generation. Should be called before getting component docs and when the rule file doesn't exist.                                                                                      |
+| `get_blade_component_docs`  | Fetches the Blade Design System documentation for specific components. Useful when adding or modifying components in your project.                                                                                                         |
+| `get_blade_pattern_docs`    | Fetches the Blade Design System pattern documentation. Use this to get information about design patterns, best practices, and implementation guidelines.                                                                                   |
+| `get_blade_general_docs`    | Fetches general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines.                                                                                         |
 | `get_figma_to_code`         | Converts Figma designs into Blade Design System code. Provide a Figma design URL to generate the corresponding React components using Blade's component library. **[NOTE: figma to code tool can only be accessed by Razorpay employees]** |
 
 ## Prerequisites
@@ -91,7 +93,7 @@ Can you create a signup form with best UX practices using Blade?
 
 The AI agents will use the MCP server to retrieve components and generate appropriate code.
 
-## Local Blade MCP Development Setup 
+## Local Blade MCP Development Setup
 
 ### Clone the repository
 

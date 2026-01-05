@@ -11,6 +11,7 @@ import {
   useTransitionStyles,
   autoUpdate,
   useClick,
+  useHover,
   useDismiss,
   FloatingFocusManager,
 } from '@floating-ui/react';
@@ -45,6 +46,7 @@ const Popover = ({
   isOpen,
   defaultIsOpen,
   initialFocusRef,
+  openInteraction = 'click',
   ...rest
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -99,11 +101,12 @@ const Popover = ({
 
   // remove click handler if popover is controlled
   const isControlled = isOpen !== undefined;
-  const click = useClick(context, { enabled: !isControlled });
+  const click = useClick(context, { enabled: !isControlled && openInteraction === 'click' });
+  const hover = useHover(context, { enabled: !isControlled && openInteraction === 'hover' });
   const dismiss = useDismiss(context);
   const role = useRole(context);
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role, hover]);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
   const mergedRef = useMergeRefs(refs.setReference, triggerRef);
 
@@ -112,8 +115,9 @@ const Popover = ({
       close,
       defaultInitialFocusRef,
       titleId,
+      openInteraction,
     };
-  }, [close, titleId]);
+  }, [close, titleId, openInteraction]);
 
   // Inject aria attributes to trigger
   // Doing it this way instead of makeAccessible()
@@ -140,7 +144,9 @@ const Popover = ({
       {isMounted && (
         <FloatingPortal>
           <FloatingFocusManager
-            initialFocus={initialFocusRef ?? defaultInitialFocusRef}
+            initialFocus={
+              initialFocusRef ?? (openInteraction === 'hover' ? -1 : defaultInitialFocusRef)
+            }
             context={context}
             modal={true}
             guards={true}

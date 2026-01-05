@@ -50,7 +50,7 @@ export function filterOptions(
   exclude: string[] = [],
 ): string[] {
   return options.filter((option) => {
-    const matches = option.toLowerCase().startsWith(filter.toLowerCase());
+    const matches = String(option).toLowerCase().startsWith(filter.toLowerCase());
     return matches && !exclude.includes(option);
   });
 }

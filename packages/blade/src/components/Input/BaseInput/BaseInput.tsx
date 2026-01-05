@@ -58,6 +58,7 @@ import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
+import { useCounterInputContext } from '~components/CounterInput/CounterInputContext';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -84,7 +85,7 @@ type BaseInputCommonProps = FormInputLabelProps &
     /**
      * Determines if it needs to be rendered as input, textarea or button
      */
-    as?: 'input' | 'textarea' | 'button';
+    as?: 'input' | 'textarea' | 'button' | 'div';
     /**
      * ID that will be used for accessibility
      */
@@ -328,7 +329,7 @@ type BaseInputCommonProps = FormInputLabelProps &
      * Sets the size of the input field
      * @default medium
      */
-    size?: 'medium' | 'large';
+    size?: 'xsmall' | 'small' | 'medium' | 'large';
     /**
      * Link button to be rendered at the end of the input field.
      * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
@@ -361,6 +362,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default undefined
      */
     tabIndex?: number;
+    /**
+     * Slot to be rendered adjacent to the value
+     */
+    valueSuffix?: React.ReactNode;
+    children?: ReactNode;
   } & TestID &
   Platform.Select<{
     native: {
@@ -866,6 +872,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingDropDown,
     labelSuffix,
     labelTrailing,
+    valueSuffix,
+    children,
     ...rest
   },
   ref,
@@ -885,7 +893,16 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
 
   const inputGroupProps = useInputGroupContext();
   const { isInsideInputGroup } = inputGroupProps;
-  const _isDisabled = inputGroupProps.isDisabled ?? isDisabled;
+  const counterInputProps = useCounterInputContext();
+  const {
+    color,
+    disabledTextColor: disabledColor,
+    isDisabled: isCounterInputDisabled,
+    isLoading: isCounterInputLoading,
+    isInsideCounterInput,
+  } = counterInputProps;
+  const _isDisabled =
+    inputGroupProps.isDisabled ?? (isCounterInputDisabled || isCounterInputLoading) ?? isDisabled;
   const _size = inputGroupProps.size ?? size;
 
   React.useEffect(() => {
@@ -1093,6 +1110,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 trailingInteractionElement={trailingInteractionElement}
                 leadingInteractionElement={leadingInteractionElement}
                 suffix={suffix}
+                valueSuffix={valueSuffix}
                 trailingIcon={trailingIcon}
                 maxCharacters={maxCharacters}
                 textAlign={textAlign}
@@ -1116,6 +1134,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 isTableInputCell={isTableInputCell}
                 tabIndex={tabIndex}
                 hasLeadingDropdown={Boolean(leadingDropDown)}
+                children={children}
+                color={color}
+                disabledColor={disabledColor}
+                isInsideCounterInput={isInsideCounterInput}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                 {...makeAnalyticsAttribute(rest)}
               />

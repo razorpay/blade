@@ -11,6 +11,7 @@ A DetailedView is a pattern that displays comprehensive details of a transaction
 ## Components Used
 
 - Drawer
+- DrawerFooter
 - Table
 - Card
 - Box
@@ -49,13 +50,13 @@ import {
   Drawer,
   DrawerHeader,
   DrawerBody,
+  DrawerFooter,
   Box,
   Amount,
   Badge,
   Button,
   IconButton,
   Text,
-  Heading,
   Code,
   Link,
   Divider,
@@ -65,15 +66,14 @@ import {
   Collapsible,
   CollapsibleBody,
   CollapsibleLink,
-} from '@razorpay/blade/components';
-import {
   MoreHorizontalIcon,
   DownloadIcon,
+  CloseIcon,
+  ArrowRightIcon,
   CopyIcon,
   CheckIcon,
   ClockIcon,
-} from '@razorpay/blade/tokens';
-
+} from '@razorpay/blade/components';
 type Transaction = {
   id: string;
   paymentId: string;
@@ -190,13 +190,7 @@ const TransactionDetailedView = () => {
           </TableToolbar>
         }
         pagination={
-          <TablePagination
-            onPageChange={() => {}}
-            defaultPageSize={10}
-            onPageSizeChange={() => {}}
-            showPageSizePicker
-            showPageNumberSelector
-          />
+          <TablePagination defaultPageSize={10} showPageSizePicker showPageNumberSelector />
         }
       >
         {(tableData) => (
@@ -279,6 +273,7 @@ const TransactionDetailedView = () => {
               size="large"
             />
           }
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -434,6 +429,7 @@ import {
   Drawer,
   DrawerHeader,
   DrawerBody,
+  DrawerFooter,
   Box,
   Amount,
   Badge,
@@ -443,14 +439,14 @@ import {
   Divider,
   Code,
   Link,
-} from '@razorpay/blade/components';
-import {
   RazorpayIcon,
   ExternalLinkIcon,
   DownloadIcon,
   CheckIcon,
   CopyIcon,
-} from '@razorpay/blade/tokens';
+  CloseIcon,
+  ArrowRightIcon,
+} from '@razorpay/blade/components';
 
 const KeyValueItem = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <>
@@ -469,6 +465,7 @@ const KeyValueGrid = ({ children }: { children: React.ReactNode }) => (
 
 const SettlementDetailedView = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [showFooter, setShowFooter] = useState(true);
 
   const settlementData = {
     amount: 3120,
@@ -487,6 +484,12 @@ const SettlementDetailedView = () => {
 
   return (
     <Box>
+      <Box display="flex" gap="spacing.4" marginBottom="spacing.4">
+        <Button variant="secondary" onClick={() => setShowFooter(!showFooter)}>
+          {showFooter ? 'Hide Footer' : 'Show Footer'}
+        </Button>
+      </Box>
+
       <Card width={{ base: '100%', m: '500px' }}>
         <CardHeader>
           <CardHeaderLeading
@@ -565,6 +568,7 @@ const SettlementDetailedView = () => {
           color="positive"
           title="Settlement Details"
           trailing={<Button size="medium" icon={DownloadIcon} />}
+          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -665,6 +669,25 @@ const SettlementDetailedView = () => {
             </KeyValueItem>
           </KeyValueGrid>
         </DrawerBody>
+
+        {showFooter && (
+          <DrawerFooter>
+            <Box display="flex" gap="spacing.5">
+              <Button
+                variant="tertiary"
+                icon={CloseIcon}
+                iconPosition="left"
+                isFullWidth
+                onClick={() => setIsDrawerOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" icon={ArrowRightIcon} iconPosition="right" isFullWidth>
+                Process Settlement
+              </Button>
+            </Box>
+          </DrawerFooter>
+        )}
       </Drawer>
     </Box>
   );

@@ -18,6 +18,9 @@ ListView is a comprehensive data presentation pattern that combines tables with 
 - Code
 - Amount
 - Box
+- SearchInput
+- ButtonGroup
+- Tooltip
 
 ## Example
 
@@ -41,6 +44,7 @@ import {
   TableFooter,
   TableFooterRow,
   TableFooterCell,
+  TablePagination,
   QuickFilterGroup,
   QuickFilter,
   FilterChipGroup,
@@ -57,10 +61,15 @@ import {
   Code,
   Amount,
   Box,
+  SearchInput,
+  ButtonGroup,
+  Tooltip,
   CheckIcon,
   CloseIcon,
+  Link,
 } from '@razorpay/blade/components';
-import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/components';
+import type { TableData, DatesRangeValue } from '@razorpay/blade/components';
+import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 type PaymentItem = {
   id: string;
@@ -101,12 +110,6 @@ const nodes: PaymentItem[] = [
 
 const quickFilters = ['All', 'Pending', 'Failed', 'Completed'];
 const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
-const quickFilterColorMapping: Record<string, CounterProps['color']> = {
-  All: 'primary',
-  Pending: 'notice',
-  Failed: 'negative',
-  Completed: 'neutral',
-};
 
 const data: TableData<PaymentItem> = { nodes };
 
@@ -182,8 +185,33 @@ function BasicListViewExample() {
     setListViewTableData(dateRangeFilterData);
   };
 
+  const handleSearchChange = (value?: string): void => {
+    setSearchValue(value);
+    applyAllFilters(selectedQuickFilter, value, methodFilter, filterDateRange);
+  };
+
+  const handleSearchClear = (): void => {
+    setSearchValue('');
+    applyAllFilters(selectedQuickFilter, '', methodFilter, filterDateRange);
+  };
+
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
+  const isMobile = matchedDeviceType === 'mobile';
+
   return (
     <Box height="100%">
+      {isMobile && (
+        <SearchInput
+          label=""
+          value={searchValue}
+          placeholder="Search for Payment ID"
+          onChange={({ value }) => handleSearchChange(value)}
+          onClearButtonClick={handleSearchClear}
+        />
+      )}
       <ListView>
         <ListViewFilters
           quickFilters={
@@ -202,29 +230,28 @@ function BasicListViewExample() {
                   key={status}
                   title={status}
                   value={status}
-                  trailing={
-                    <Counter
-                      value={getQuickFilterValueCount(status)}
-                      color={quickFilterColorMapping[status]}
-                    />
-                  }
+                  trailing={<Counter value={getQuickFilterValueCount(status)} color="neutral" />}
                 />
               ))}
             </QuickFilterGroup>
           }
-          onSearchChange={({ value }) => {
-            setSearchValue(value);
-            applyAllFilters(selectedQuickFilter, value, methodFilter, filterDateRange);
-          }}
-          onSearchClear={() => {
-            setSearchValue('');
-            applyAllFilters(selectedQuickFilter, '', methodFilter, filterDateRange);
-          }}
-          searchValuePlaceholder="Search for Payment ID"
           selectedFiltersCount={
             (methodFilter ? 1 : 0) +
             (Array.isArray(filterDateRange) && filterDateRange[0] ? 1 : 0) +
             (selectedQuickFilter !== 'All' ? 1 : 0)
+          }
+          actions={
+            !isMobile && (
+              <Box width="208px">
+                <SearchInput
+                  label=""
+                  value={searchValue}
+                  placeholder="Search for Payment ID"
+                  onChange={({ value }) => handleSearchChange(value)}
+                  onClearButtonClick={handleSearchClear}
+                />
+              </Box>
+            )
           }
         >
           <FilterChipGroup
@@ -311,6 +338,15 @@ function BasicListViewExample() {
           }}
           isFirstColumnSticky
           selectionType="multiple"
+          pagination={
+            <TablePagination
+              onPageChange={console.log}
+              defaultPageSize={10}
+              onPageSizeChange={console.log}
+              showPageSizePicker
+              showPageNumberSelector
+            />
+          }
         >
           {(tableData) => (
             <>
@@ -355,7 +391,7 @@ function BasicListViewExample() {
                     onClick={() => console.log('Row clicked:', tableItem.id)}
                   >
                     <TableCell>
-                      <Code size="medium">{tableItem.paymentId}</Code>
+                      <Code size="small">{tableItem.paymentId}</Code>
                     </TableCell>
                     <TableEditableCell
                       accessibilityLabel={`Edit amount for payment ${tableItem.paymentId}`}
@@ -363,7 +399,11 @@ function BasicListViewExample() {
                       successText="Amount updated successfully"
                       defaultValue={tableItem.amount.toString()}
                     />
-                    <TableCell>{tableItem.account}</TableCell>
+                    <TableCell>
+                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                        {tableItem.account}
+                      </Link>
+                    </TableCell>
                     <TableCell>
                       {tableItem.date?.toLocaleDateString('en-IN', {
                         year: 'numeric',
@@ -374,7 +414,7 @@ function BasicListViewExample() {
                     <TableCell>{tableItem.method.title}</TableCell>
                     <TableCell>
                       <Badge
-                        size="medium"
+                        size="xsmall"
                         color={
                           tableItem.status === 'Completed'
                             ? 'positive'
@@ -416,9 +456,9 @@ function BasicListViewExample() {
 export default BasicListViewExample;
 ```
 
-### Multi-Select Quick Filters with Advanced Date Filtering
+### Multi-Select Quick Filters with Bulk Actions and Advanced Date Filtering
 
-This example shows ListView with multi-select quick filters and advanced date range functionality including preset date ranges.
+This comprehensive example shows ListView with multi-select quick filters, bulk operations, action buttons with tooltips, and advanced date range functionality including preset date ranges.
 
 ```tsx
 import React, { useState } from 'react';
@@ -433,6 +473,9 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  TableToolbar,
+  TableToolbarActions,
+  TablePagination,
   QuickFilterGroup,
   QuickFilter,
   FilterChipGroup,
@@ -445,19 +488,76 @@ import {
   Counter,
   Badge,
   Button,
+  IconButton,
+  Code,
+  Amount,
   Box,
+  Link,
+  SearchInput,
+  ButtonGroup,
+  Tooltip,
+  MoreVerticalIcon,
+  DownloadIcon,
+  ShareIcon,
+  CopyIcon,
+  TrashIcon,
+  SelectInput,
 } from '@razorpay/blade/components';
-import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/components';
+import type { TableData, DatesRangeValue, Identifier } from '@razorpay/blade/components';
+import { useBreakpoint, useTheme } from '@razorpay/blade/utils';
 
 // Using the same PaymentItem type and data from previous example
 // ... (PaymentItem type, MethodFilterValues, nodes, data definitions)
 
-function MultiSelectListViewExample() {
+type PaymentItem = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  status: string;
+  date: Date;
+  type: string;
+  method: {
+    key: string;
+    title: string;
+  };
+  bank: string;
+  account: string;
+  name: string;
+};
+
+const MethodFilterValues = [
+  { key: 'bank-transfer', title: 'Bank Transfer' },
+  { key: 'credit-card', title: 'Credit Card' },
+  { key: 'paypal', title: 'PayPal' },
+];
+
+const nodes: PaymentItem[] = [
+  ...Array.from({ length: 30 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    label: `Payment ${i + 1}`,
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
+    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
+    method: MethodFilterValues[Math.floor(Math.random() * 3)],
+    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+    name: ['John Doe', 'Jane Doe', 'Bob Smith', 'Alice Smith'][Math.floor(Math.random() * 4)],
+  })),
+];
+
+const data: TableData<PaymentItem> = { nodes };
+
+const filterChipQuickFilters = ['Pending', 'Failed', 'Completed'];
+
+function ComprehensiveListViewExample() {
   const [listViewTableData, setListViewTableData] = useState(data);
   const [selectedQuickFilter, setSelectedQuickFilter] = useState<string[]>([]);
   const [searchValue, setSearchValue] = useState<string | undefined>('');
   const [methodFilter, setMethodFilter] = useState<string | undefined>('');
   const [filterDateRange, setFilterDateRange] = useState<DatesRangeValue | undefined>(undefined);
+  const [selectedIds, setSelectedIds] = useState<Identifier[]>([]);
 
   const getQuickFilterValueCount = (value: string): number => {
     if (value === 'All') {
@@ -543,8 +643,33 @@ function MultiSelectListViewExample() {
     setListViewTableData(dateRangeFilterData);
   };
 
+  const handleSearchChange = (value?: string): void => {
+    setSearchValue(value);
+    applyAllFilters(selectedQuickFilter, value, methodFilter, filterDateRange);
+  };
+
+  const handleSearchClear = (): void => {
+    setSearchValue('');
+    applyAllFilters(selectedQuickFilter, '', methodFilter, filterDateRange);
+  };
+
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
+  const isMobile = matchedDeviceType === 'mobile';
+
   return (
     <Box height="100%">
+      {isMobile && (
+        <SearchInput
+          label=""
+          value={searchValue}
+          placeholder="Search for Payment ID"
+          onChange={({ value }) => handleSearchChange(value)}
+          onClearButtonClick={handleSearchClear}
+        />
+      )}
       <ListView>
         <ListViewFilters
           selectedFiltersCount={
@@ -560,10 +685,7 @@ function MultiSelectListViewExample() {
                 const shouldChangeValue = values.includes('LastWeek');
 
                 if (!shouldChangeValue) {
-                  const rangeToUse = compareDateRangeValues(
-                    lastWeekDateRange,
-                    filterDateRange as DatesRangeValue,
-                  )
+                  const rangeToUse = compareDateRangeValues(lastWeekDateRange, filterDateRange!)
                     ? undefined
                     : filterDateRange;
 
@@ -593,26 +715,51 @@ function MultiSelectListViewExample() {
                   key={status}
                   title={status}
                   value={status}
-                  trailing={
-                    <Counter
-                      value={getQuickFilterValueCount(status)}
-                      color={quickFilterColorMapping[status]}
-                    />
-                  }
+                  trailing={<Counter value={getQuickFilterValueCount(status)} color="neutral" />}
                 />
               ))}
               <QuickFilter title="Last Week" value="LastWeek" />
             </QuickFilterGroup>
           }
-          onSearchChange={({ value }) => {
-            setSearchValue(value);
-            applyAllFilters(selectedQuickFilter, value, methodFilter, filterDateRange);
-          }}
-          onSearchClear={() => {
-            setSearchValue('');
-            applyAllFilters(selectedQuickFilter, '', methodFilter, filterDateRange);
-          }}
-          searchValuePlaceholder="Search for Payment ID"
+          actions={
+            <Box display="flex" gap="spacing.4" alignItems="center">
+              {!isMobile && (
+                <Box width="280px">
+                  <SearchInput
+                    label=""
+                    value={searchValue}
+                    placeholder="Search for Payment ID"
+                    onChange={({ value }) => handleSearchChange(value)}
+                    onClearButtonClick={handleSearchClear}
+                    trailing={
+                      <Dropdown selectionType="single">
+                        <SelectInput label="" placeholder="Filter by method" labelPosition="top" />
+                        <DropdownOverlay>
+                          <ActionList>
+                            <ActionListItem title="All Methods" value="all" />
+                            <ActionListItem title="Bank Transfer" value="bank" />
+                            <ActionListItem title="Credit Card" value="card" />
+                            <ActionListItem title="UPI" value="upi" />
+                          </ActionList>
+                        </DropdownOverlay>
+                      </Dropdown>
+                    }
+                  />
+                </Box>
+              )}
+              <ButtonGroup variant="tertiary">
+                <Tooltip content="More options">
+                  <Button icon={MoreVerticalIcon} />
+                </Tooltip>
+                <Tooltip content="Download data">
+                  <Button icon={DownloadIcon} />
+                </Tooltip>
+                <Tooltip content="Share">
+                  <Button icon={ShareIcon} />
+                </Tooltip>
+              </ButtonGroup>
+            </Box>
+          }
         >
           <FilterChipGroup
             onClearButtonClick={() => {
@@ -697,10 +844,43 @@ function MultiSelectListViewExample() {
 
         <Table
           data={listViewTableData}
-          onSelectionChange={(selectedItems) => {
-            console.log('Selected items:', selectedItems);
+          onSelectionChange={({ selectedIds }) => {
+            setSelectedIds(selectedIds);
           }}
+          isFirstColumnSticky
           selectionType="multiple"
+          rowDensity="compact"
+          pagination={
+            <TablePagination
+              onPageChange={console.log}
+              defaultPageSize={10}
+              onPageSizeChange={console.log}
+              showPageSizePicker
+              showPageNumberSelector
+            />
+          }
+          toolbar={
+            selectedIds.length > 0 ? (
+              <TableToolbar placement="overlay" title={`${selectedIds.length} selected`}>
+                <TableToolbarActions>
+                  <Box
+                    width="100%"
+                    justifyContent="end"
+                    display="flex"
+                    alignItems="center"
+                    gap="spacing.4"
+                  >
+                    <Link size="small" icon={CopyIcon}>
+                      Copy
+                    </Link>
+                    <Link size="small" icon={TrashIcon}>
+                      Delete
+                    </Link>
+                  </Box>
+                </TableToolbarActions>
+              </TableToolbar>
+            ) : undefined
+          }
         >
           {(tableData) => (
             <>
@@ -716,8 +896,12 @@ function MultiSelectListViewExample() {
               <TableBody>
                 {tableData.map((tableItem) => (
                   <TableRow key={tableItem.id} item={tableItem}>
-                    <TableCell>{tableItem.paymentId}</TableCell>
-                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>
+                      <Code size="small">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={tableItem.amount} />
+                    </TableCell>
                     <TableCell>
                       {tableItem.date?.toLocaleDateString('en-IN', {
                         year: 'numeric',
@@ -728,7 +912,7 @@ function MultiSelectListViewExample() {
                     <TableCell>{tableItem.method.title}</TableCell>
                     <TableCell>
                       <Badge
-                        size="medium"
+                        size="xsmall"
                         color={
                           tableItem.status === 'Completed'
                             ? 'positive'
@@ -753,7 +937,7 @@ function MultiSelectListViewExample() {
   );
 }
 
-export default MultiSelectListViewExample;
+export default ComprehensiveListViewExample;
 ```
 
 ### Minimal ListView without Search
@@ -775,6 +959,7 @@ import {
   TableFooter,
   TableFooterRow,
   TableFooterCell,
+  TablePagination,
   QuickFilterGroup,
   QuickFilter,
   FilterChipGroup,
@@ -786,13 +971,56 @@ import {
   ActionListItem,
   Counter,
   Badge,
+  Code,
   Amount,
   Box,
 } from '@razorpay/blade/components';
-import type { TableData, DatesRangeValue, CounterProps } from '@razorpay/blade/components';
+import type { TableData, DatesRangeValue } from '@razorpay/blade/components';
 
 // Using the same PaymentItem type and data from previous examples
 // ... (PaymentItem type, MethodFilterValues, nodes, data definitions)
+
+type PaymentItem = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  status: string;
+  date: Date;
+  type: string;
+  method: {
+    key: string;
+    title: string;
+  };
+  bank: string;
+  account: string;
+  name: string;
+};
+
+const MethodFilterValues = [
+  { key: 'bank-transfer', title: 'Bank Transfer' },
+  { key: 'credit-card', title: 'Credit Card' },
+  { key: 'paypal', title: 'PayPal' },
+];
+
+const quickFilters = ['All', 'Pending', 'Failed', 'Completed'];
+
+const nodes: PaymentItem[] = [
+  ...Array.from({ length: 30 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    label: `Payment ${i + 1}`,
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    date: new Date(2025, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
+    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
+    method: MethodFilterValues[Math.floor(Math.random() * 3)],
+    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+    name: ['John Doe', 'Jane Doe', 'Bob Smith', 'Alice Smith'][Math.floor(Math.random() * 4)],
+  })),
+];
+
+const data: TableData<PaymentItem> = { nodes };
 
 function MinimalListViewExample() {
   const [listViewTableData, setListViewTableData] = useState(data);
@@ -878,12 +1106,7 @@ function MinimalListViewExample() {
                   key={status}
                   title={status}
                   value={status}
-                  trailing={
-                    <Counter
-                      value={getQuickFilterValueCount(status)}
-                      color={quickFilterColorMapping[status]}
-                    />
-                  }
+                  trailing={<Counter value={getQuickFilterValueCount(status)} color="neutral" />}
                 />
               ))}
             </QuickFilterGroup>
@@ -943,6 +1166,7 @@ function MinimalListViewExample() {
           onSelectionChange={(selectedItems) => {
             console.log('Selected item:', selectedItems);
           }}
+          isFirstColumnSticky
         >
           {(tableData) => (
             <>
@@ -962,7 +1186,9 @@ function MinimalListViewExample() {
                     item={tableItem}
                     onClick={() => console.log('Row selected:', tableItem.id)}
                   >
-                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>
+                      <Code size="small">{tableItem.paymentId}</Code>
+                    </TableCell>
                     <TableCell>
                       <Amount value={tableItem.amount} />
                     </TableCell>
@@ -976,7 +1202,7 @@ function MinimalListViewExample() {
                     <TableCell>{tableItem.method.title}</TableCell>
                     <TableCell>
                       <Badge
-                        size="medium"
+                        size="xsmall"
                         color={
                           tableItem.status === 'Completed'
                             ? 'positive'

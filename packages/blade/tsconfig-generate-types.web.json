@@ -13,7 +13,7 @@
     "**/ThemePlayground/**/**.tsx"
   ],
   "compilerOptions": {
-    "declarationDir": "build/generated-types/web",
+    "outDir": "build/generated-types/web",
     "moduleSuffixes": [".web", ""]
   }
 }

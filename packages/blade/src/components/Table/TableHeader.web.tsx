@@ -9,6 +9,7 @@ import type {
   TableHeaderCellProps,
   TableBackgroundColors,
   TableProps,
+  TableToolbarPlacement,
 } from './types';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -71,17 +72,23 @@ const SortIcon = ({
   );
 };
 
-const StyledHeader = styled(Header)({
-  '&&&': {
-    '& tr:first-child th': {
-      borderTop: 'none',
+const StyledHeader = styled(Header)<{ $tableToolbarPlacement: TableToolbarPlacement }>(
+  ({ $tableToolbarPlacement }) => ({
+    '&&&': {
+      '& tr:first-child th': {
+        borderTop: 'none',
+      },
+      display: $tableToolbarPlacement === 'overlay' ? 'none' : undefined,
     },
-  },
-});
+  }),
+);
 
 const _TableHeader = ({ children, ...rest }: TableHeaderRowProps): React.ReactElement => {
+  const { tableToolbarPlacement } = useTableContext();
+
   return (
     <StyledHeader
+      $tableToolbarPlacement={tableToolbarPlacement}
       {...metaAttribute({ name: MetaConstants.TableHeader })}
       {...makeAnalyticsAttribute(rest)}
     >
@@ -181,7 +188,7 @@ const _TableHeaderCell = ({
     >
       <BaseBox display="flex" flexGrow={1} justifyContent={textAlign}>
         {isChildrenString ? (
-          <Text size="medium" weight="medium" color="surface.text.gray.normal">
+          <Text size="small" weight="medium" color="surface.text.gray.subtle">
             {children}
           </Text>
         ) : (
@@ -298,9 +305,12 @@ const _TableHeaderRow = ({
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
   const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
   const isDisabled = disabledRows && disabledRows.length === totalItems;
-  if (rowDensity) {
-    setHeaderRowDensity(rowDensity);
-  }
+
+  // Note: The rowDensity prop is deprecated (see types.ts for @deprecated documentation).
+  // Header row is always compact (36px height) regardless of the rowDensity value passed.
+  // This prop will be removed in a future major version.
+  setHeaderRowDensity('compact');
+
   return (
     <StyledHeaderRow
       role="rowheader"

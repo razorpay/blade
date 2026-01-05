@@ -1,5 +1,203 @@
 # @razorpay/blade-mcp
 
+## 1.21.1
+
+### Patch Changes
+
+- 03e1de587: fix(mcp/README): mcp install link
+
+## 1.21.0
+
+### Minor Changes
+
+- be2a6ff12: fix(blade): refactor blade mcp to use fs file change in stdio mode
+
+## 1.20.1
+
+### Patch Changes
+
+- ff190d563: Updated tokens
+
+## 1.20.0
+
+### Minor Changes
+
+- 0dbcbb6c2: feat(blade): added openInteraction prop for hover/click trigger on popover component
+
+## 1.19.0
+
+### Minor Changes
+
+- 13ef641b8: feat(blade-mcp): refactor shouldCreateOrUpdateCursorRule logic
+
+### Patch Changes
+
+- 1a66a23ad: feat(blade-mcp): updated divider knowledgebase
+
+## 1.18.0
+
+### Minor Changes
+
+- 571e8da27: feat(blade-mcp): add description to client name in get docs tool call & refactor logic for calling createCursorRule tools Call
+
+## 1.17.0
+
+### Minor Changes
+
+- 17e980ebd: ## feat(blade): list view v2
+
+  ### 🔧 Prop Updates
+
+  - **Deprecated Props:**
+    - List View Filters: searchValue, searchValuePlaceholder, searchName, onSearchChange, onSearchClear, searchTrailing, showFilters, onShowFiltersChange
+    - Table Header: rowDensity
+  - **Added:**
+    - `actions` (replaces deprecated search-related props)
+    - `FilterChipGroup.padding`
+    - `TableToolbar.placement`
+
+  ### 🎨 List View Visual & Structural Changes
+
+  - **Table Cell:** Font (M→S, S→XS), color (Normal→Subtle), links (Primary→Neutral)
+  - **Table Header:** Fixed height 36px, bg → `interactive.bg.gray.faded`, font (M→S, Normal→Subtle)
+  - **Pagination:** Height 60→48px, removed horizontal padding, smaller/subtle text
+  - **Quick Filter:** Always expanded, removed radio for single-select, unified badge color
+  - **Filter Chip:** Border 0.5px normal, height 24px, refreshed Clear Filter button, removed bg/divider
+  - **Filter Panel:** Removed old panel (Download/Copy), moved actions next to Quick Filters (Quick Filters left; Search + Actions right), added tooltips
+  - **Bulk Action Toolbar:** Overlays Table Header on selection; hidden otherwise (same on mobile)
+  - **Mobile:** Removed “Show Filter” button; bulk actions adapt; filters stay horizontally scrollable
+
+## 1.16.0
+
+### Minor Changes
+
+- 49082f564: feat(blade): charts new ui & color token update
+
+  ### Deprecation of `chart.background` prefix in color token
+
+  The `chart.background` prefix in color token has been deprecated to improve clarity and provide a more descriptive API. The new prefix is `data.background`.
+
+  **Impact**
+
+  Implementation that explicitly sets `chart.background` prefix in color token will use `data.background` as prefix.
+
+  **How to Upgrade**
+
+  You need to update your code where `chart.background` prefix in color token. You can either remove the prefix entirely to use default color themes or change the value to `data.background`.
+
+  ```diff
+  - color="chart.background.categorical.blue.moderate"
+  + color="data.background.categorical.blue.moderate"
+  ```
+
+  ### Updation of color mapping tokens for charts
+
+  We have update color mapping of few token related to charts. you might need to update your snaps.
+
+## 1.15.0
+
+### Minor Changes
+
+- e05eacbd0: feat(blade-mcp): add streamable transport support utilities
+- e05eacbd0: feat(blade-mcp): refactor `createCursorRule` , `getBladeComponentDocs` , `getBladeGeneralDocs` , `getBladePatternDocs` tools to support MCP SSE
+
+## 1.14.0
+
+### Minor Changes
+
+- c5e3a9237: feat(blade): introduced footer and enhance header background for DetailedView
+
+  - **New Component**: Added `DrawerFooter` component with sticky positioning and optional divider in drawer
+  - **Enhanced DrawerHeader**: Added `showDivider` prop to control header divider visibility and upgraded gradient pattern from linear to radial
+  - **DetailedView Pattern Enhancement**:
+    - Add an option to toggle the footer's visibility
+    - Ensure the footer remains sticky at all times
+    - Upgrade the gradient pattern in the header
+
+## 1.13.0
+
+### Minor Changes
+
+- 9d7546305: feat(blade): added counter input component
+
+## 1.12.2
+
+### Patch Changes
+
+- 4e11809db: chore(blade-mcp): Update Modal knowledgebase with important constraints
+
+## 1.12.1
+
+### Patch Changes
+
+- b964fb7fb: fix(blade-mcp/Box): improve Box knowledgebase UI quality
+
+## 1.12.0
+
+### Minor Changes
+
+- 6d508bbc8: feat(blade-mcp): add donut chart knowledge base
+
+## 1.11.0
+
+### Minor Changes
+
+- 4f9b1ebd3: feat(blade-mcp): add figma to code image attachment in mcp tool call
+
+### Patch Changes
+
+- aae0f0d15: fix(blade-mcp): remove console logs
+
+## 1.10.0
+
+### Minor Changes
+
+- 1b07633c3: feat(blade-mcp): update knowledgebase with BarChart
+
+## 1.9.0
+
+### Minor Changes
+
+- ac1d4fb54: feat(blade): add support for non-dismissible modals & bottomsheet
+
+  Introduces a new prop `isDismissible` in `Modal` and `BottomSheet` which can be used to prevent users from accidentally dismissing modals and bottomSheet by clicking outside or pressing the escape key. When `isDismissible={false}`, the close button is automatically hidden and the modal and bottomSheet can only be closed through explicit user actions.
+
+  ```jsx
+  <Modal isOpen={isOpen} isDismissible={false}>
+    // .... modal content ....
+  </Modal>
+  ```
+
+  ```jsx
+  <BottomSheet isOpen={isOpen} isDismissible={false}>
+    // .... bottomsheet component ....
+  </BottomSheet>
+  ```
+
+## 1.8.0
+
+### Minor Changes
+
+- dd7e18b43: feat(server): add publishLinesOfCodeMetric tool integration
+
+## 1.7.0
+
+### Minor Changes
+
+- c835336ad: feat(timepicker): added timepicker component
+
+## 1.6.0
+
+### Minor Changes
+
+- ab1773547: feat(blade-mcp): update knowledgebase with AreaChart
+
+## 1.5.0
+
+### Minor Changes
+
+- 2f0e492cd: feat(blade): update knowledge base to support line chart
+
 ## 1.4.5
 
 ### Patch Changes

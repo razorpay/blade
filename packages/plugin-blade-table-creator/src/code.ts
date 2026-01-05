@@ -1,5 +1,6 @@
 /// <reference types="@figma/plugin-typings" />
 import { COMPONENT_KEYS } from './componentKeys';
+import { sendAnalytics } from './utils/sendAnalytics';
 
 figma.showUI(__html__, { width: 500, height: 440 });
 
@@ -16,48 +17,57 @@ figma.ui.onmessage = async (msg) => {
     let frameTableBody: FrameNode | null = null;
 
     // Define color keys for Blade colors
-    // const BLADE_COLOR_KEYS = {
-    //   'background.gray.subtle': {
-    //     id: '',
-    //     key: 'c604c75a0e81b6515cafe83104e62d57ac2a8dc8',
-    //   },
-    //   'background.gray.moderate': {
-    //     id: '',
-    //     key: 'b51b233c0c565db1ea4066d1098a4e6fe45670c8',
-    //   },
-    //   'background.gray.intense': {
-    //     id: '',
-    //     key: '908e10764484ef7af93c07b26180a9d2ec9a37ea',
-    //   },
-    // };
+    const BLADE_COLOR_KEYS = {
+      'background.gray.subtle': {
+        id: '',
+        key: 'c604c75a0e81b6515cafe83104e62d57ac2a8dc8',
+      },
+      'background.gray.moderate': {
+        id: '',
+        key: 'b51b233c0c565db1ea4066d1098a4e6fe45670c8',
+      },
+      'background.gray.intense': {
+        id: '',
+        key: '908e10764484ef7af93c07b26180a9d2ec9a37ea',
+      },
+    };
 
-    // import color styles/variables and set their id in BLADE_COLOR_KEYS
-    // try {
-    //   const colorEntries = Object.entries(BLADE_COLOR_KEYS) as [
-    //     keyof typeof BLADE_COLOR_KEYS,
-    //     { id: string; key: string },
-    //   ][];
-    //   const importedStyles = await Promise.all(
-    //     colorEntries.map(([, colorObject]) => figma.importStyleByKeyAsync(colorObject.key)),
-    //   );
-    //   importedStyles.forEach((style, index) => {
-    //     const [, colorObject] = colorEntries[index];
-    //     colorObject.id = style.id;
-    //   });
-    // } catch (error: unknown) {
-    //   console.error('Failed to import Blade color styles', error);
-    //   figma.notify(
-    //     'Could not load Blade color styles. Ensure the Blade library is enabled and keys are up to date.',
-    //   );
-    // }
+    try {
+      const variableEntries = Object.entries(BLADE_COLOR_KEYS) as [
+        'background.gray.subtle' | 'background.gray.moderate' | 'background.gray.intense',
+        { id: string; key: string },
+      ][];
+      const importedVariables = await Promise.all(
+        variableEntries.map(([, intentObject]) =>
+          figma.variables.importVariableByKeyAsync(intentObject.key),
+        ),
+      );
+      importedVariables.forEach((colorVariable, index) => {
+        const [, intentObject] = variableEntries[index];
+        intentObject.id = colorVariable.id;
+      });
+    } catch (error: unknown) {
+      console.error('Failed to import Blade color variables', error);
+      figma.notify(
+        `Error loading Blade color variables: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      // Continue without variable-bound fills
+    }
 
-    // import color styles/variables and set their id in BLADE_COLOR_KEYS
-    // for await (const [color, colorObject] of Object.entries(BLADE_COLOR_KEYS)) {
-    //   const colorStyle = await figma.importStyleByKeyAsync(colorObject.key);
-    //   BLADE_COLOR_KEYS[color].id = colorStyle.id;
-    // }
-
-    // const bladeColorBackgroundGrayIntense = BLADE_COLOR_KEYS['background.gray.intense'].id;
+    // Function to create a paint object bound to a variable
+    const createVariableBoundPaint = (variableId: string): SolidPaint => ({
+      type: 'SOLID',
+      // Optional: provide a fallback color if the variable isn't resolvable, though Figma typically handles this.
+      color: { r: 0, g: 0, b: 0 }, // Example fallback
+      boundVariables: {
+        color: {
+          type: 'VARIABLE_ALIAS',
+          id: variableId,
+        },
+      },
+    });
 
     frameTable = figma.createFrame();
     frameTable.name = '<table>';
@@ -69,6 +79,7 @@ figma.ui.onmessage = async (msg) => {
     frameTable.paddingBottom = 0;
     frameTable.paddingLeft = 0;
     frameTable.paddingRight = 0;
+    frameTable.fills = [createVariableBoundPaint(BLADE_COLOR_KEYS['background.gray.intense'].id)];
     frameTable.resize(696, frameTable.height);
 
     if (renderType === 'row') {
@@ -275,6 +286,15 @@ figma.ui.onmessage = async (msg) => {
       // Select the table
       figma.currentPage.selection = [frameTable];
       figma.viewport.scrollAndZoomIntoView([frameTable]);
+
+      await sendAnalytics({
+        eventName: 'Table Creator Plugin Used',
+        properties: {
+          fileName: figma.root.name,
+          pageName: figma.currentPage.name,
+          pagePath: `${figma.root.name}/${figma.currentPage.name}`,
+        },
+      });
     } catch (error: unknown) {
       console.error(error);
       figma.notify(

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import type { Theme } from '~components/BladeProvider';
 import type { AccessibilityProps } from '~utils/makeAccessible/types';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { DataAnalyticsAttribute, TestID, ElementTiming } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
@@ -59,6 +59,7 @@ export type BaseTextProps = {
   numberOfLines?: number;
   componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code' | 'display';
 } & TestID &
+  ElementTiming &
   DataAnalyticsAttribute &
   StyledPropsBlade;
 

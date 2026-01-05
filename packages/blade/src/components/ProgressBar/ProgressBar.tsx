@@ -81,6 +81,18 @@ type ProgressBarProgressProps = ProgressBarCommonProps & {
    * @default true
    */
   showPercentage?: boolean;
+  /**
+   * Private property for Blade.
+   *
+   * Should not be used by consumers.
+   *
+   * Sets whether the indeterminate progress bar should oscillate (left-to-right-to-left).
+   * When false, uses standard left-to-right animation.
+   *
+   * @private
+   * @default false
+   */
+  _oscillation?: boolean;
 };
 
 type ProgressBarMeterProps = ProgressBarCommonProps & {
@@ -99,6 +111,11 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
    * @default false
    */
   showPercentage?: undefined;
+  /**
+   * Sets whether the indeterminate progress bar should oscillate.
+   * @default undefined
+   */
+  _oscillation?: undefined;
 };
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
@@ -123,6 +140,7 @@ const _ProgressBar = (
     variant = 'progress',
     min = 0,
     max = 100,
+    _oscillation = false,
     testID,
     ...rest
   }: ProgressBarProps,
@@ -260,6 +278,7 @@ const _ProgressBar = (
             />
           ) : (
             <BaseBox
+              className="__blade-progress-bar-track"
               backgroundColor={unfilledBackgroundColor}
               height={makeSize(progressBarHeight[size])}
               overflow="hidden"
@@ -275,6 +294,7 @@ const _ProgressBar = (
                 motionEasing="easing.emphasized"
                 type={progressType}
                 isIndeterminate={isIndeterminate}
+                _oscillation={_oscillation}
               />
             </BaseBox>
           )}

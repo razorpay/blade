@@ -14,11 +14,16 @@ type PopoverHeaderProps = {
   titleLeading?: React.ReactNode;
 };
 
-const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.ReactElement => {
-  const { titleId } = usePopoverContext();
+const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.ReactElement | null => {
+  const { titleId, openInteraction } = usePopoverContext();
 
+  const showCloseButton = openInteraction === 'click';
   const isFloating = !(title || titleLeading);
+
   if (isFloating) {
+    if (!showCloseButton) {
+      return null;
+    }
     return (
       <BaseBox
         borderRadius="max"
@@ -51,9 +56,11 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
           </Text>
         </BaseBox>
       ) : null}
-      <BaseBox marginLeft="auto">
-        <PopoverCloseButton />
-      </BaseBox>
+      {showCloseButton ? (
+        <BaseBox marginLeft="auto">
+          <PopoverCloseButton />
+        </BaseBox>
+      ) : null}
     </BaseBox>
   );
 };

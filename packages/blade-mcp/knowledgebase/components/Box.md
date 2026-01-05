@@ -10,6 +10,10 @@ Box is a versatile layout primitive component that serves as the foundational bu
 
 - `backgroundColor` prop only accepts `transparent`, `surface.background.*`, and `overlay.*` tokens
 
+## Design Guidelines
+
+- Prefer `Card` component instead of this for adding card with shadows. Box component should be primarily used for non-visual layouts (e.g. creating containers, grids, positioning items, etc)
+
 ## TypeScript Types
 
 The following types represent the props that the Box component accepts. These types allow you to properly configure the component according to your needs.
@@ -259,35 +263,34 @@ Here are comprehensive examples demonstrating the versatility of the Box compone
 
 ### Responsive Layout with Flexbox and Styling
 
-This example demonstrates a responsive card layout with flexbox properties, styling, and elevation.
+This example demonstrates a responsive layout with flexbox properties, styling, and elevation.
 
 ```tsx
 import React from 'react';
 import { Box, Text, Heading, Button, RazorpayIcon } from '@razorpay/blade/components';
 
-const ResponsiveCardLayout = () => {
+const ResponsiveLayout = () => {
   return (
     <Box
       // Responsive container with padding that changes at different breakpoints
       padding={{ base: 'spacing.3', m: 'spacing.5' }}
-      backgroundColor="surface.background.gray.subtle"
+      backgroundColor="surface.background.gray.intense"
       borderRadius="large"
       width="100%"
       maxWidth="800px"
       margin={{ base: 'spacing.0', m: 'auto' }}
     >
       <Heading size="large" marginBottom="spacing.5">
-        Responsive Card Layout
+        Responsive Layout
       </Heading>
 
-      {/* Responsive card grid */}
+      {/* Responsive grid */}
       <Box
         display="flex"
         flexDirection={{ base: 'column', m: 'row' }}
         flexWrap="wrap"
         gap="spacing.4"
       >
-        {/* Card 1 */}
         <Box
           flex={{ base: 1, m: 1 }}
           flexBasis={{ base: '100%', m: '45%' }}
@@ -340,7 +343,6 @@ const ResponsiveCardLayout = () => {
           </Box>
         </Box>
 
-        {/* Card 2 */}
         <Box
           flex={{ base: 1, m: 1 }}
           flexBasis={{ base: '100%', m: '45%' }}
@@ -410,7 +412,7 @@ const ResponsiveCardLayout = () => {
   );
 };
 
-export default ResponsiveCardLayout;
+export default ResponsiveLayout;
 ```
 
 ### Advanced Positioning and Transformations
@@ -428,7 +430,7 @@ const AdvancedPositioningExample = () => {
       position="relative"
       height="400px"
       width="100%"
-      backgroundColor="surface.background.gray.subtle"
+      backgroundColor="surface.background.gray.intense"
       borderRadius="large"
       overflow="hidden"
       padding="spacing.5"
@@ -468,7 +470,7 @@ const AdvancedPositioningExample = () => {
           Advanced positioning example
         </Text>
 
-        {/* Card with transformation */}
+        {/* Box with transformation */}
         <Box
           backgroundColor="surface.background.gray.subtle"
           borderRadius="medium"
@@ -478,7 +480,7 @@ const AdvancedPositioningExample = () => {
           transform="rotate(-2deg)"
           transformOrigin="center"
         >
-          <Text>This card has a slight rotation applied to create visual interest.</Text>
+          <Text>This box has a slight rotation applied to create visual interest.</Text>
         </Box>
 
         {/* Overlapping elements */}
@@ -593,7 +595,7 @@ const ResponsiveGridExample = () => {
     <Box
       // Container
       padding="spacing.5"
-      backgroundColor="surface.background.gray.subtle"
+      backgroundColor="surface.background.gray.intense"
       borderRadius="large"
     >
       <Heading size="large" marginBottom="spacing.5">
@@ -631,8 +633,6 @@ const ResponsiveGridExample = () => {
             // Mouse event handlers
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            // Click handler
-            onClick={() => console.log(`Clicked on ${item.title}`)}
           >
             <Text
               color={

@@ -81,7 +81,7 @@ type SwitchProps = {
 
 This example demonstrates the basic usage of the Switch component with essential props:
 
-```jsx
+```tsx
 import React from 'react';
 import { Switch } from '@razorpay/blade/components';
 

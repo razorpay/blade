@@ -5,6 +5,7 @@ type PopoverContextProps = {
   close: () => void;
   defaultInitialFocusRef: React.RefObject<HTMLElement>;
   titleId?: string;
+  openInteraction?: 'hover' | 'click';
 } | null;
 const PopoverContext = React.createContext<PopoverContextProps>(null);
 

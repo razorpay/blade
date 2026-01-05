@@ -34,6 +34,7 @@ export const MetaConstants = {
   Code: 'code',
   Component: 'blade-component',
   Counter: 'counter',
+  CounterInput: 'counter-input',
   Display: 'display',
   Divider: 'divider',
   Drawer: 'drawer',
@@ -149,4 +150,6 @@ export const MetaConstants = {
   PreviewHeader: 'preview-header',
   PreviewBody: 'preview-body',
   PreviewFooter: 'preview-footer',
+  Pagination: 'pagination',
+  TimePicker: 'time-picker',
 } as const;
