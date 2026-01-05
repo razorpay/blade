@@ -39,7 +39,7 @@
     "test": "echo 'No tests configured yet'"
   },
   "dependencies": {
-    "@razorpay/i18nify-js": "^1.12.7",
+    "@razorpay/i18nify-js": "1.12.3",
     "class-variance-authority": "^0.7.0",
     "tinycolor2": "1.6.0",
     "ts-deepmerge": "6.2.0"
