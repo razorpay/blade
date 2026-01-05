@@ -401,9 +401,9 @@
   --interactive-text-static-white-disabled: hsla(0, 0%, 100%, 0.09);
 
   --interactive-text-static-black-normal: hsla(0, 0%, 0%, 1);
-  --interactive-text-static-black-subtle: hsla(0, 0%, 0%, 0.48);
-  --interactive-text-static-black-muted: hsla(0, 0%, 0%, 0.32);
-  --interactive-text-static-black-disabled: hsla(0, 0%, 0%, 0.09);
+  --interactive-text-static-black-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-text-static-black-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-text-static-black-disabled: hsla(0, 0%, 0%, 0.32);
 
   /* Interactive Icon Colors */
   --interactive-icon-positive-normal: hsla(150, 100%, 27%, 1);
@@ -452,9 +452,9 @@
   --interactive-icon-static-white-disabled: hsla(0, 0%, 100%, 0.09);
 
   --interactive-icon-static-black-normal: hsla(0, 0%, 0%, 1);
-  --interactive-icon-static-black-subtle: hsla(0, 0%, 0%, 0.48);
-  --interactive-icon-static-black-muted: hsla(0, 0%, 0%, 0.32);
-  --interactive-icon-static-black-disabled: hsla(0, 0%, 0%, 0.09);
+  --interactive-icon-static-black-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-icon-static-black-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-icon-static-black-disabled: hsla(0, 0%, 0%, 0.32);
 
   /* Overlay Colors */
   --overlay-background-moderate: hsla(211, 20%, 52%, 0.32);
@@ -604,7 +604,7 @@
   --interactive-background-gray-faded: hsla(214, 20%, 84%, 0.12);
   --interactive-background-gray-faded-highlighted: hsla(214, 20%, 84%, 0.32);
 
-  --interactive-background-primary-default: hsla(220, 100%, 73%, 1);
+  --interactive-background-primary-default: hsla(223, 100%, 65%, 1);
   --interactive-background-primary-highlighted: hsla(227, 100%, 59%, 1);
   --interactive-background-primary-disabled: hsla(227, 100%, 59%, 0.24);
   --interactive-background-primary-faded: hsla(227, 100%, 59%, 0.24);
@@ -653,7 +653,7 @@
   --interactive-border-gray-disabled: hsla(216, 27%, 24%, 1);
   --interactive-border-gray-faded: hsla(214, 20%, 84%, 0.18);
 
-  --interactive-border-primary-default: hsla(220, 100%, 73%, 1);
+  --interactive-border-primary-default: hsla(223, 100%, 65%, 1);
   --interactive-border-primary-highlighted: hsla(227, 100%, 59%, 1);
   --interactive-border-primary-disabled: hsla(227, 100%, 59%, 0.32);
   --interactive-border-primary-faded: hsla(227, 100%, 59%, 0.24);
@@ -715,9 +715,9 @@
   --interactive-text-static-white-disabled: hsla(0, 0%, 100%, 0.09);
 
   --interactive-text-static-black-normal: hsla(0, 0%, 0%, 1);
-  --interactive-text-static-black-subtle: hsla(0, 0%, 0%, 0.48);
-  --interactive-text-static-black-muted: hsla(0, 0%, 0%, 0.32);
-  --interactive-text-static-black-disabled: hsla(0, 0%, 0%, 0.09);
+  --interactive-text-static-black-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-text-static-black-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-text-static-black-disabled: hsla(0, 0%, 0%, 0.32);
 
   /* Interactive Icon Colors - Dark */
   --interactive-icon-positive-normal: hsla(150, 59%, 55%, 1);
@@ -766,9 +766,9 @@
   --interactive-icon-static-white-disabled: hsla(0, 0%, 100%, 0.09);
 
   --interactive-icon-static-black-normal: hsla(0, 0%, 0%, 1);
-  --interactive-icon-static-black-subtle: hsla(0, 0%, 0%, 0.48);
-  --interactive-icon-static-black-muted: hsla(0, 0%, 0%, 0.32);
-  --interactive-icon-static-black-disabled: hsla(0, 0%, 0%, 0.09);
+  --interactive-icon-static-black-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-icon-static-black-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-icon-static-black-disabled: hsla(0, 0%, 0%, 0.32);
 
   /* Overlay Colors - Dark */
   --overlay-background-moderate: hsla(214, 20%, 84%, 0.32);
@@ -955,10 +955,74 @@
 .place-self-center { place-self: center; }
 .place-self-stretch { place-self: stretch; }
 
+/* Flexbox - Flex Direction */
+.flex-row { flex-direction: row; }
+.flex-row-reverse { flex-direction: row-reverse; }
+.flex-col { flex-direction: column; }
+.flex-col-reverse { flex-direction: column-reverse; }
+
+/* Gap - Spacing Tokens */
+.gap-spacing-0 { gap: var(--spacing-0); }
+.gap-spacing-1 { gap: var(--spacing-1); }
+.gap-spacing-2 { gap: var(--spacing-2); }
+.gap-spacing-3 { gap: var(--spacing-3); }
+.gap-spacing-4 { gap: var(--spacing-4); }
+.gap-spacing-5 { gap: var(--spacing-5); }
+.gap-spacing-6 { gap: var(--spacing-6); }
+.gap-spacing-7 { gap: var(--spacing-7); }
+.gap-spacing-8 { gap: var(--spacing-8); }
+.gap-spacing-9 { gap: var(--spacing-9); }
+.gap-spacing-10 { gap: var(--spacing-10); }
+.gap-spacing-11 { gap: var(--spacing-11); }
+
+/* Gap X (Column Gap) - Spacing Tokens */
+.gap-x-spacing-0 { column-gap: var(--spacing-0); }
+.gap-x-spacing-1 { column-gap: var(--spacing-1); }
+.gap-x-spacing-2 { column-gap: var(--spacing-2); }
+.gap-x-spacing-3 { column-gap: var(--spacing-3); }
+.gap-x-spacing-4 { column-gap: var(--spacing-4); }
+.gap-x-spacing-5 { column-gap: var(--spacing-5); }
+.gap-x-spacing-6 { column-gap: var(--spacing-6); }
+.gap-x-spacing-7 { column-gap: var(--spacing-7); }
+.gap-x-spacing-8 { column-gap: var(--spacing-8); }
+.gap-x-spacing-9 { column-gap: var(--spacing-9); }
+.gap-x-spacing-10 { column-gap: var(--spacing-10); }
+.gap-x-spacing-11 { column-gap: var(--spacing-11); }
+
+/* Gap Y (Row Gap) - Spacing Tokens */
+.gap-y-spacing-0 { row-gap: var(--spacing-0); }
+.gap-y-spacing-1 { row-gap: var(--spacing-1); }
+.gap-y-spacing-2 { row-gap: var(--spacing-2); }
+.gap-y-spacing-3 { row-gap: var(--spacing-3); }
+.gap-y-spacing-4 { row-gap: var(--spacing-4); }
+.gap-y-spacing-5 { row-gap: var(--spacing-5); }
+.gap-y-spacing-6 { row-gap: var(--spacing-6); }
+.gap-y-spacing-7 { row-gap: var(--spacing-7); }
+.gap-y-spacing-8 { row-gap: var(--spacing-8); }
+.gap-y-spacing-9 { row-gap: var(--spacing-9); }
+.gap-y-spacing-10 { row-gap: var(--spacing-10); }
+.gap-y-spacing-11 { row-gap: var(--spacing-11); }
+
 /* Flexbox - Flex Wrap */
 .flex-wrap-nowrap { flex-wrap: nowrap; }
 .flex-wrap-wrap { flex-wrap: wrap; }
 .flex-wrap-wrap-reverse { flex-wrap: wrap-reverse; }
+
+/* Flexbox - Align Items (Tailwind: items-*) */
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+.items-baseline { align-items: baseline; }
+.items-stretch { align-items: stretch; }
+
+/* Flexbox - Justify Content (Tailwind: justify-*) */
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-evenly { justify-content: space-evenly; }
+.justify-stretch { justify-content: stretch; }
 
 /* Focus Ring Utility */
 .focus-ring:focus-visible {

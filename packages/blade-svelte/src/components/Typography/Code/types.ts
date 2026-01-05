@@ -7,7 +7,7 @@ type CodeHighlightedProps = {
    * Sets the color of the Code component.
    * Should be a string value (token, variable name, or code snippet).
    */
-  children: Snippet;
+  children: Snippet | string;
   /**
    * Decides the fontSize and padding of Code
    *
@@ -34,7 +34,7 @@ type CodeNonHighlightedProps = {
    * Sets the color of the Code component.
    * Should be a string value (token, variable name, or code snippet).
    */
-  children: Snippet;
+  children: Snippet | string;
   /**
    * Decides the fontSize and padding of Code
    *

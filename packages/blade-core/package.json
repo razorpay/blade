@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=18.12.1"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
@@ -18,6 +21,7 @@
     "blade"
   ],
   "scripts": {
+    "prepare": "yarn build",
     "typecheck": "tsc --noEmit",
     "typecheck:web": "tsc --noEmit --project tsconfig-typecheck.web.json",
     "typecheck:native": "tsc --noEmit --project tsconfig-typecheck.native.json",
@@ -26,8 +30,10 @@
     "build:generate-types": "yarn build:generate-types:web && yarn build:generate-types:native",
     "build:generate-types:web": "tsc --project tsconfig-generate-types.web.json",
     "build:generate-types:native": "tsc --project tsconfig-generate-types.native.json",
-    "build:rollup": "rollup --config rollup.config.mjs",
-    "build:rollup:watch": "rollup --config rollup.config.mjs --watch",
+    "build:rollup": "yarn build:rollup:dev && yarn build:rollup:prod",
+    "build:rollup:dev": "NODE_ENV=development rollup --config rollup.config.mjs",
+    "build:rollup:prod": "NODE_ENV=production rollup --config rollup.config.mjs",
+    "build:rollup:watch": "NODE_ENV=development rollup --config rollup.config.mjs --watch",
     "build:rollup:web": "FRAMEWORK=REACT rollup --config rollup.config.mjs",
     "build:rollup:native": "FRAMEWORK=REACT_NATIVE rollup --config rollup.config.mjs",
     "test": "echo 'No tests configured yet'"
@@ -72,9 +78,12 @@
   "files": [
     "src",
     "dist",
+    "fonts",
+    "fonts.css",
     "*.d.ts"
   ],
   "exports": {
+    "./fonts.css": "./fonts.css",
     "./tokens": {
       "types": "./dist/types/tokens/index.d.ts",
       "development": "./dist/lib/web/development/tokens/index.js",
@@ -89,8 +98,8 @@
       "default": "./dist/lib/web/production/utils/index.js"
     },
     "./styles": {
-      "types": "./dist/types/styles/index.d.ts",
-      "development": "./src/styles/index.ts",
+      "types": "./dist/generated-types/web/styles/index.d.ts",
+      "development": "./dist/lib/web/development/styles/index.js",
       "production": "./dist/lib/web/production/styles/index.js",
       "default": "./dist/lib/web/production/styles/index.js"
     }

@@ -17,10 +17,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Use Node v18
+      - name: Use Node v20
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 20.19.5
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Create Release Pull Request & Publish packages
@@ -43,9 +43,17 @@ jobs:
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: yarn publish-npm
+      - name: Build Blade Core if not built by changeset
+        if: steps.changesets.outputs.published == 'false'
+        working-directory: packages/blade-core
+        run: yarn build
       - name: Build Blade if not built by changeset
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
+        run: yarn build
+      - name: Build Blade Svelte if not built by changeset
+        if: steps.changesets.outputs.published == 'false'
+        working-directory: packages/blade-svelte
         run: yarn build
       - name: Publish to Chromatic
         uses: chromaui/action@v1
@@ -56,6 +64,22 @@ jobs:
           workingDir: packages/blade
           storybookBaseDir: packages/blade
           buildScriptName: react:storybook:build
+          exitOnceUploaded: true
+          onlyChanged: true
+          untraced: '**/package.json'
+          traceChanged: 'expanded'
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF: ${{ github.ref }}
+      - name: Publish Blade Svelte to Chromatic
+        uses: chromaui/action@v1
+        if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
+        with:
+          token: ${{ env.GITHUB_ACCESS_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_SVELTE_PROJECT_TOKEN }}
+          workingDir: packages/blade-svelte
+          storybookBaseDir: packages/blade-svelte
+          buildScriptName: build-storybook
           exitOnceUploaded: true
           onlyChanged: true
           untraced: '**/package.json'

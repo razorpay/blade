@@ -120,8 +120,9 @@ const getWebConfig = (inputs) => {
         dir: `${outputRootDirectory}/${libDirectory}/${platform}/${mode}`,
         format: 'es',
         sourcemap: true,
-        preserveModules: true,
-        preserveModulesRoot: 'src',
+        preserveModules: false,
+        // Output to tokens/index.js, utils/index.js, styles/index.js to match package.json exports
+        entryFileNames: '[name]/index.js',
       },
     ],
     plugins: [
@@ -139,6 +140,18 @@ const getWebConfig = (inputs) => {
         modules: true,
         minimize: process.env.NODE_ENV === 'production',
         sourceMap: true,
+        // Use proper package import instead of relative node_modules path
+        inject(cssVariableName) {
+          return `
+          (function(css) {
+            if (typeof document !== 'undefined') {
+              var style = document.createElement('style');
+              style.textContent = css;
+              document.head.appendChild(style);
+            }
+          })(${cssVariableName});
+          `;
+        },
       }),
       pluginBabel({
         exclude: 'node_modules/**',
@@ -222,19 +235,24 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
 const config = () => {
   const framework = process.env.FRAMEWORK;
 
-  const tokens = 'src/tokens/index.ts';
-  const utils = 'src/utils/index.ts';
+  // Use named inputs so [name] in entryFileNames becomes 'tokens', 'utils', 'styles'
+  const tokens = { tokens: 'src/tokens/index.ts' };
+  const utils = { utils: 'src/utils/index.ts' };
+  const styles = { styles: 'src/styles/index.ts' };
 
   if (framework === 'REACT') {
     return [
       getWebConfig(tokens),
       getWebConfig(utils),
+      getWebConfig(styles),
       // Unfortunately we cannot just simply copy the tsc emitted declarations and put it on build dir,
       // because moduleSuffixes will cause typescript to resolve the d.ts files based on the user's tsconfig.json
       // which will cause the build to fail because the user's tsconfig.json does not have the moduleSuffixes
       // So we opt for the older approach of bundling the d.ts files as index.d.ts and index.native.d.ts and place it on build dir.
       getDeclarationsConfig({ exportCategory: 'tokens', isNative: false }),
       getDeclarationsConfig({ exportCategory: 'utils', isNative: false }),
+      // Note: styles declarations are not bundled as they include CSS module exports
+      // which are not compatible with rollup-plugin-dts. Use generated-types directly.
     ].flat();
   }
 
@@ -251,8 +269,11 @@ const config = () => {
   return [
     getWebConfig(tokens),
     getWebConfig(utils),
+    getWebConfig(styles),
     getDeclarationsConfig({ exportCategory: 'tokens', isNative: false }),
     getDeclarationsConfig({ exportCategory: 'utils', isNative: false }),
+    // Note: styles declarations are not bundled as they include CSS module exports
+    // which are not compatible with rollup-plugin-dts. Use generated-types directly.
   ].flat();
 };
 

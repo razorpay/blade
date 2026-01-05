@@ -5,14 +5,17 @@
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
-  import { getBaseLinkClasses, baseLinkContentClass, baseLinkIconClass, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
+  import { getBaseLinkClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
+
+  // Get template classes via function call to prevent Svelte tree-shaking
+  const linkClasses = getBaseLinkTemplateClasses();
 
   // Icon component type - placeholder for now
   // TODO: Replace with actual Icon component when available
   type IconComponent = any;
 
   interface BaseLinkProps extends StyledPropsBlade {
-    children?: Snippet;
+    children?: Snippet | string;
     icon?: IconComponent;
     iconPosition?: 'left' | 'right';
     variant?: 'anchor' | 'button';
@@ -81,13 +84,12 @@
     }
   });
 
-  const isButton = variant === 'button';
+  // Use $derived for reactivity when props change
+  const isButton = $derived(variant === 'button');
 
   // Create interaction state using $state (must be in .svelte file)
   // Initialize based on current disabled state
-  let currentInteraction = $state<'default' | 'hover' | 'focus' | 'disabled'>(
-    isButton && isDisabled ? 'disabled' : 'default',
-  );
+  let currentInteraction = $state<'default' | 'hover' | 'focus' | 'disabled'>('default');
 
   // Use interaction hook for managing interaction states
   const {
@@ -104,7 +106,7 @@
 
   // Update interaction state when disabled prop changes
   $effect(() => {
-    const isCurrentlyDisabled = isButton && isDisabled;
+    const isCurrentlyDisabled = (variant === 'button') && isDisabled;
     if (isCurrentlyDisabled) {
       currentInteraction = 'disabled';
     } else if (currentInteraction === 'disabled') {
@@ -281,7 +283,7 @@
   target={!isButton ? target : undefined}
   rel={!isButton ? (rel ?? defaultRel) : undefined}
 >
-  <span class={baseLinkContentClass + ' focus-ring-child'}>
+  <span class={linkClasses.content + ' focus-ring-child'}>
     {#if Icon && iconPosition === 'left'}
       <!-- <span class={iconClass({ position: 'left', hasChildren })}> -->
         <!-- TODO: Render Icon component when available -->
@@ -294,11 +296,15 @@
         fontSize={fontSize}
         lineHeight={lineHeight}
         fontFamily="text"
-        fontWeight="regular"
+        fontWeight="medium"
         textDecorationLine={textDecorationLine}
         componentName={MetaConstants.Link}
       >
-        {@render children()}
+        {#if typeof children === 'string'}
+          {children}
+        {:else}
+          {@render children()}
+        {/if}
       </BaseText>
     {/if}
     {#if Icon && iconPosition === 'right'}

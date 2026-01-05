@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src", "vite.config.ts"],
+  "include": ["src"],
+  "exclude": ["node_modules/**/*"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -8,6 +9,6 @@
       "~src/*": ["src/*"]
     },
     "moduleSuffixes": [""],
-    "types": ["svelte", "vite/client"]
+    "types": ["svelte"]
   }
 }
