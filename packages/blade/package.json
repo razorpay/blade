@@ -325,7 +325,7 @@
     "react-native-reanimated": {
       "optional": true
     }
-  }, 
+  },
   "resolutions": {
     "@storybook/**/react-dom": "18.2.0",
     "@storybook/**/react": "18.2.0",
