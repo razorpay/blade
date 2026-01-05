@@ -42,20 +42,17 @@ Before you install the package, make sure that you have:
 - Node.js version >= 18.12.1
 - Svelte version >= 5.35.0
 
-### Install the packages
+### Install the package
 
 ```bash
 # Using yarn
-yarn add @razorpay/blade-svelte @razorpay/blade-core
+yarn add @razorpay/blade-svelte
 
 # Using npm
-npm install @razorpay/blade-svelte @razorpay/blade-core
+npm install @razorpay/blade-svelte
 ```
 
-| Package | Description |
-|---------|-------------|
-| `@razorpay/blade-svelte` | Svelte components (Button, Text, Heading, etc.) |
-| `@razorpay/blade-core` | Design tokens, CSS styles, and fonts |
+> **Note:** `@razorpay/blade-core` (design tokens, CSS styles, and fonts) is automatically installed as a dependency.
 
 ### Setup Theme CSS
 

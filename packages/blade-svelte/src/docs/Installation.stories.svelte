@@ -23,16 +23,12 @@
     <Heading size="xlarge">Installation Guide</Heading>
     
     <div style="margin-top: 24px;">
-      <Heading size="large">Step 1: Install Packages</Heading>
-      <Text size="medium" color="surface.text.gray.muted">Install the required packages:</Text>
-      <pre style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"><code>yarn add @razorpay/blade-svelte @razorpay/blade-core</code></pre>
-      <div style="margin-top: 12px; padding: 12px; background: #fafafa; border-radius: 8px; border-left: 3px solid #3b82f6;">
-        <Text size="small" weight="semibold">Package Overview:</Text>
-        <ul style="margin: 8px 0 0 0; padding-left: 20px;">
-          <li><Text size="small"><strong>@razorpay/blade-svelte</strong> - Svelte components (Button, Text, Heading, etc.)</Text></li>
-          <li><Text size="small"><strong>@razorpay/blade-core</strong> - Design tokens, CSS styles, and fonts</Text></li>
-        </ul>
-      </div>
+      <Heading size="large">Step 1: Install Package</Heading>
+      <Text size="medium" color="surface.text.gray.muted">Install the Blade Svelte package:</Text>
+      <pre style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"><code>yarn add @razorpay/blade-svelte</code></pre>
+      <Text size="small" color="surface.text.gray.muted">
+        Note: @razorpay/blade-core (design tokens, CSS, fonts) is automatically installed as a dependency.
+      </Text>
     </div>
 
     <div style="margin-top: 24px;">
