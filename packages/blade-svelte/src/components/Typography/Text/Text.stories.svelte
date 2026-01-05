@@ -3,7 +3,7 @@
   import Text from './Text.svelte';
   
   const { Story } = defineMeta({
-    title: 'Typography/Text',
+    title: 'Components/Typography/Text',
     component: Text,
     tags: ['autodocs'],
     args: {

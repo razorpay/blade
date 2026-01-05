@@ -3,7 +3,7 @@
   import Code from './Code.svelte';
   
   const { Story } = defineMeta({
-    title: 'Typography/Code',
+    title: 'Components/Typography/Code',
     component: Code,
     tags: ['autodocs'],
     args: {

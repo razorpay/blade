@@ -5,8 +5,9 @@ import type {
   Spacing,
   Typography,
   Elevation,
-} from '@razorpay/blade-core/tokens/global';
-import type { Colors, ThemeTokens } from '@razorpay/blade-core/tokens/theme';
+  Colors,
+  ThemeTokens,
+} from '@razorpay/blade-core/tokens';
 
 export type Theme = {
   name: ThemeTokens['name'];

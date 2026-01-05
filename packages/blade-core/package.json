@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=18.12.1"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
@@ -18,6 +21,7 @@
     "blade"
   ],
   "scripts": {
+    "prepare": "yarn build",
     "typecheck": "tsc --noEmit",
     "typecheck:web": "tsc --noEmit --project tsconfig-typecheck.web.json",
     "typecheck:native": "tsc --noEmit --project tsconfig-typecheck.native.json",
@@ -74,9 +78,12 @@
   "files": [
     "src",
     "dist",
+    "fonts",
+    "fonts.css",
     "*.d.ts"
   ],
   "exports": {
+    "./fonts.css": "./fonts.css",
     "./tokens": {
       "types": "./dist/types/tokens/index.d.ts",
       "development": "./dist/lib/web/development/tokens/index.js",

@@ -12,7 +12,7 @@
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
-"@ampproject/remapping@^2.2.0":
+"@ampproject/remapping@^2.2.0", "@ampproject/remapping@^2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.3.0.tgz#ed441b6fa600072520ce18b43d2c8cc8caecc7f4"
   integrity sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==
@@ -3737,7 +3737,7 @@
     "@jridgewell/sourcemap-codec" "^1.5.0"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@jridgewell/remapping@^2.3.4", "@jridgewell/remapping@^2.3.5":
+"@jridgewell/remapping@^2.3.5":
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/@jridgewell/remapping/-/remapping-2.3.5.tgz#375c476d1972947851ba1e15ae8f123047445aa1"
   integrity sha512-LI9u/+laYG4Ds1TDKSJW2YPrIlcVYOwi2fUC6xB43lueCjgxV4lffOCZCtYFiH6TNOX+tQKXx97T4IKHbhyHEQ==
@@ -6064,6 +6064,14 @@
   dependencies:
     "@types/estree" "0.0.39"
     estree-walker "^1.0.1"
+    picomatch "^2.2.2"
+
+"@rollup/pluginutils@^4.1.0":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.2.1.tgz#e6c6c3aba0744edce3fb2074922d3776c0af2a6d"
+  integrity sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==
+  dependencies:
+    estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
 "@rollup/pluginutils@^5.0.1":
@@ -14846,11 +14854,6 @@ detect-port@^1.3.0:
     address "^1.0.1"
     debug "4"
 
-devalue@^5.5.0:
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/devalue/-/devalue-5.6.1.tgz#f4c0a6e71d1a2bc50c02f9ca3c54ecafeb6a0445"
-  integrity sha512-jDwizj+IlEZBunHcOuuFVBnIMPAEHvTsJj0BcIp94xYguLRVBcXO853px/MyIJvbVzWdsGvrRweIUWJw8hBP7A==
-
 devtools-protocol@0.0.981744:
   version "0.0.981744"
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.981744.tgz#9960da0370284577d46c28979a0b32651022bacf"
@@ -16350,7 +16353,7 @@ esrap@^1.2.2:
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.15"
 
-esrap@^2.2.1:
+esrap@^2.1.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/esrap/-/esrap-2.2.1.tgz#cbe28fe94cd7c75b158609d602f5e345bae21259"
   integrity sha512-GiYWG34AN/4CUyaWAgunGt0Rxvr1PTMlGC0vvEov/uOQYWne2bpN03Um+k8jT+q3op33mKouP2zeJ6OlM+qeUg==
@@ -16417,7 +16420,7 @@ estree-walker@^1.0.1:
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-1.0.1.tgz#31bc5d612c96b704106b477e6dd5d8aa138cb700"
   integrity sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==
 
-estree-walker@^2.0.2:
+estree-walker@^2.0.1, estree-walker@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
@@ -28636,7 +28639,7 @@ rollup-plugin-peer-deps-external@2.2.4:
   resolved "https://registry.yarnpkg.com/rollup-plugin-peer-deps-external/-/rollup-plugin-peer-deps-external-2.2.4.tgz#8a420bbfd6dccc30aeb68c9bf57011f2f109570d"
   integrity sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==
 
-rollup-plugin-postcss@^4.0.2:
+rollup-plugin-postcss@4.0.2, rollup-plugin-postcss@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-postcss/-/rollup-plugin-postcss-4.0.2.tgz#15e9462f39475059b368ce0e49c800fa4b1f7050"
   integrity sha512-05EaY6zvZdmvPUDi3uCcAQoESDcYnv8ogJJQRp6V5kZ6J6P7uAVJlrTZcaaA20wTH527YTnKfkAoPxWI/jPp4w==
@@ -28654,6 +28657,14 @@ rollup-plugin-postcss@^4.0.2:
     rollup-pluginutils "^2.8.2"
     safe-identifier "^0.4.2"
     style-inject "^0.3.0"
+
+rollup-plugin-svelte@^7.2.2:
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-svelte/-/rollup-plugin-svelte-7.2.3.tgz#8b3ad217de397203dd7a348f8ad05c435cb72b28"
+  integrity sha512-LlniP+h00DfM+E4eav/Kk8uGjgPUjGIBfrAS/IxQvsuFdqSM0Y2sXf31AdxuIGSW9GsmocDqOfaxR5QNno/Tgw==
+  dependencies:
+    "@rollup/pluginutils" "^4.1.0"
+    resolve.exports "^2.0.0"
 
 rollup-plugin-terser@^7.0.0:
   version "7.0.2"
@@ -30477,6 +30488,11 @@ svelte-check@^4.0.0:
     picocolors "^1.0.0"
     sade "^1.7.4"
 
+svelte-preprocess@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-6.0.3.tgz#fdc1f9dc41b6f22bf8b1f059e9f21eaaae181eeb"
+  integrity sha512-PLG2k05qHdhmRG7zR/dyo5qKvakhm8IJ+hD2eFRQmMLHp7X3eJnjeupUtvuRpbNiF31RjVw45W+abDwHEmP5OA==
+
 svelte2tsx@^0.7.44:
   version "0.7.46"
   resolved "https://registry.yarnpkg.com/svelte2tsx/-/svelte2tsx-0.7.46.tgz#fdc42265cbb30cd2bfd77ce5c358c938c712175d"
@@ -30485,12 +30501,12 @@ svelte2tsx@^0.7.44:
     dedent-js "^1.0.1"
     scule "^1.3.0"
 
-svelte@^5.0.0:
-  version "5.46.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-5.46.0.tgz#62c9ee2ebdf34efb0f2868c48c3589708a6a7e55"
-  integrity sha512-ZhLtvroYxUxr+HQJfMZEDRsGsmU46x12RvAv/zi9584f5KOX7bUrEbhPJ7cKFmUvZTJXi/CFZUYwDC6M1FigPw==
+svelte@5.35.2:
+  version "5.35.2"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-5.35.2.tgz#41d8ee80bab1c93ae0e2ff6c4d5f7774b0bef9a5"
+  integrity sha512-uW/rRXYrhZ7Dh4UQNZ0t+oVGL1dEM+95GavCO8afAk1IY2cPq9BcZv9C3um5aLIya2y8lIeLPxLII9ASGg9Dzw==
   dependencies:
-    "@jridgewell/remapping" "^2.3.4"
+    "@ampproject/remapping" "^2.3.0"
     "@jridgewell/sourcemap-codec" "^1.5.0"
     "@sveltejs/acorn-typescript" "^1.0.5"
     "@types/estree" "^1.0.5"
@@ -30498,9 +30514,8 @@ svelte@^5.0.0:
     aria-query "^5.3.1"
     axobject-query "^4.1.0"
     clsx "^2.1.1"
-    devalue "^5.5.0"
     esm-env "^1.2.1"
-    esrap "^2.2.1"
+    esrap "^2.1.0"
     is-reference "^3.0.3"
     locate-character "^3.0.0"
     magic-string "^0.30.11"
