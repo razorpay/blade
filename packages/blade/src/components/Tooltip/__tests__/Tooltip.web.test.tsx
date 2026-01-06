@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { act, fireEvent } from '@testing-library/react';
+import { act, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react';
 import { Tooltip, TooltipInteractiveWrapper } from '..';
 import type { BladeCommonEvents } from '~components/types';
@@ -21,7 +21,7 @@ const animationDuration = bladeTheme.motion.duration.quick;
 describe('<Tooltip />', () => {
   jest.useFakeTimers();
 
-  it('should render', () => {
+  it('should render', async () => {
     const buttonText = 'Hover me';
     const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world">
@@ -31,12 +31,13 @@ describe('<Tooltip />', () => {
 
     // snapshot while on opened
     fireEvent.focus(getByRole('button', { name: buttonText }));
+    await waitForPosition();
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('should render with title', () => {
+  it('should render with title', async () => {
     const buttonText = 'Hover me';
     const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Tooltip title="Tooltip title" content="Hello world">
@@ -46,12 +47,13 @@ describe('<Tooltip />', () => {
 
     // snapshot while on opened
     fireEvent.focus(getByRole('button', { name: buttonText }));
+    await waitForPosition();
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('should render tooltip with custom zIndex', () => {
+  it('should render tooltip with custom zIndex', async () => {
     const buttonText = 'Hover me';
     const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world" zIndex={9999}>
@@ -61,6 +63,7 @@ describe('<Tooltip />', () => {
 
     // snapshot while on opened
     fireEvent.focus(getByRole('button', { name: buttonText }));
+    await waitForPosition();
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 9999 });
     expect(baseElement).toMatchSnapshot();
@@ -183,6 +186,7 @@ describe('<Tooltip />', () => {
 
     const wrapper = getByTestId('tooltip-interactive-wrapper');
     fireEvent.focus(wrapper);
+    await waitForPosition();
 
     // on focus it should immediately open
     await act(async () => {
@@ -284,7 +288,7 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
     fireEvent.focus(getByRole('button', { name: buttonText }));
-    expect(queryByRole('tooltip')).toBeInTheDocument();
+    await waitFor(() => expect(queryByRole('tooltip')).toBeInTheDocument());
     expect(getByRole('button', { name: buttonText })).toHaveAccessibleDescription(tooltipContent);
     await assertAccessible(getByRole('tooltip'));
   });
@@ -335,7 +339,7 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
     fireEvent.focus(getByRole('button', { name: buttonText }));
-    expect(queryByRole('tooltip')).toBeInTheDocument();
+    await waitFor(() => expect(queryByRole('tooltip')).toBeInTheDocument());
     expect(queryByRole('tooltip')).toHaveAttribute('data-analytics-tooltip', 'tooltip');
   });
 });
