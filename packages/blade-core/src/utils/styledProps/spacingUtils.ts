@@ -48,4 +48,3 @@ export const getSpacingValue = (
   // Return pixel or other unit values as is
   return spacingValue;
 };
-

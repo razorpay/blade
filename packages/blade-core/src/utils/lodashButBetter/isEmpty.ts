@@ -43,4 +43,3 @@ export default function isEmpty(value: Collection): value is null | undefined {
 
   return false;
 }
-

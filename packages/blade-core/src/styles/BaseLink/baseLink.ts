@@ -64,12 +64,16 @@ export function getLinkColorToken({
   return `interactive.${element}.primary.${stateKey}`;
 }
 
+type getLinkTextSizesType = {
+  fontSize: Record<string, number>;
+  lineHeight: Record<string, number>;
+};
 /**
  * Get text size mapping for fontSize and lineHeight
  * These values correspond to BaseText utility classes (font-size-25, font-size-75, etc.)
  * BaseText CVA will automatically convert these to the appropriate utility classes
  */
-export function getLinkTextSizes() {
+export function getLinkTextSizes(): getLinkTextSizesType {
   return {
     fontSize: {
       xsmall: 25,
@@ -123,7 +127,7 @@ export const baseLinkIconClass = styles.icon;
  * const linkClasses = getBaseLinkTemplateClasses();
  * // Use: linkClasses.content, linkClasses.icon
  */
-export function getBaseLinkTemplateClasses() {
+export function getBaseLinkTemplateClasses(): Record<string, unknown> {
   return {
     content: baseLinkContentClass,
     icon: baseLinkIconClass,

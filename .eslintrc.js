@@ -194,6 +194,24 @@ module.exports = {
         'import/no-cycle': 'off',
       },
     },
+    // Disable import rules for blade-core since:
+    // 1. Path aliases are incorrectly resolved to @razorpay/blade
+    // 2. export * from modules with default exports causes false positives
+    {
+      files: ['packages/blade-core/**/*.{ts,tsx,js}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'import/export': 'off',
+      },
+    },
+    // Disable import/no-extraneous-dependencies for blade package since
+    // path aliases (~utils) are incorrectly resolved to @razorpay/blade-core
+    {
+      files: ['packages/blade/**/*.{ts,tsx,js}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
   ],
   ignorePatterns: ['packages/blade-coverage-extension'],
 };

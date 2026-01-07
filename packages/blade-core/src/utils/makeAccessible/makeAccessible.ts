@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { logger } from '~utils/logger';
 import { accessibilityMap } from './accessibilityMap';
 import type { AccessibilityMap, AccessibilityProps } from './types';
-import { logger } from '~utils/logger';
 
 export const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};

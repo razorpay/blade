@@ -3,7 +3,7 @@ import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 // Icon component type - placeholder for now
 // TODO: Replace with actual Icon component when available
-export type IconComponent = any;
+export type IconComponent = unknown;
 
 export interface BaseButtonProps extends StyledPropsBlade {
   children?: Snippet | string;
@@ -45,5 +45,3 @@ export interface BaseButtonProps extends StyledPropsBlade {
   // Analytics attributes
   [key: `data-analytics-${string}`]: string;
 }
-
-

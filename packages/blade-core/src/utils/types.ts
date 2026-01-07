@@ -3,8 +3,8 @@
 import type React from 'react';
 import type { ViewStyle, View } from 'react-native';
 import type { CSSObject } from 'styled-components';
-import type { Platform } from './platform';
 import type { Spacing, EasingFactoryFn } from '~tokens/global';
+import type { Platform } from './platform';
 
 /**
  * @template TokenType token type generic
