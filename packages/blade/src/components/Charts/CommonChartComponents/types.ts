@@ -37,6 +37,20 @@ type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | '
    * The data key of the x-axis.
    */
   dataKey?: string;
+  /**
+   * Optional secondary data key for multi-line X-axis labels.
+   * When provided, the X-axis will display two lines of text:
+   * - Primary label (from dataKey)
+   * - Secondary label (from secondaryDataKey)
+   *
+   * @example
+   * // Data: [{ date: 'Jan', year: '2024' }, { date: 'Feb', year: '2024' }]
+   * <ChartXAxis dataKey="date" secondaryDataKey="year" />
+   * // Renders:
+   * //   Jan        Feb
+   * //  2024       2024
+   */
+  secondaryDataKey?: string;
 };
 type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
@@ -78,10 +92,19 @@ type ChartSequentialColorToken = `data.background.sequential.${Exclude<
 >}.${keyof DataSequentialEmphasis}`;
 
 type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
+
+// Generic chart data type
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ChartData = Array<Record<string, any>>;
+
 // State type - contains only the state values
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
   chartName?: ChartName;
+  /**
+   * The chart data array, used by axis components to access secondary data keys
+   */
+  chartData?: ChartData;
 };
 
 // Dispatch type - contains only the updater functions
@@ -99,6 +122,7 @@ export type {
   CommonChartComponentsDispatchType,
   ChartReferenceLineProps,
   ChartXAxisProps,
+  ChartData,
   ChartYAxisProps,
   ChartTooltipProps,
   ChartLegendProps,

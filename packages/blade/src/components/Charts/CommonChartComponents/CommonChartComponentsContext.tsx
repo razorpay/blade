@@ -5,6 +5,7 @@ export const CommonChartComponentsContext = createContext<CommonChartComponentsC
   dataColorMapping: undefined,
   setDataColorMapping: () => undefined,
   chartName: undefined,
+  chartData: undefined,
 });
 
 export const useCommonChartComponentsContext = (): CommonChartComponentsContextType =>

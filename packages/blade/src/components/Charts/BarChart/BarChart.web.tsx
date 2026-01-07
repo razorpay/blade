@@ -201,7 +201,9 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   }, [children, themeColors]);
 
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'bar', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{ chartName: 'bar', dataColorMapping, chartData: data }}
+    >
       <BaseBox
         {...metaAttribute({ name: 'bar-chart', testID })}
         {...makeAnalyticsAttribute(restProps)}

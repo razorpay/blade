@@ -671,6 +671,38 @@ LineChartWithCartesianGrid.parameters = {
   controls: { disable: true },
 };
 
+// Data for multi-line X-axis labels example
+const multiLineAxisData = [
+  { time: '10:00', day: 'Mon', revenue: 4500, orders: 120 },
+  { time: '11:00', day: 'Mon', revenue: 5200, orders: 145 },
+  { time: '12:00', day: 'Mon', revenue: 6100, orders: 180 },
+  { time: '13:00', day: 'Tue', revenue: 4800, orders: 135 },
+  { time: '14:00', day: 'Tue', revenue: 5500, orders: 160 },
+  { time: '15:00', day: 'Tue', revenue: 5900, orders: 170 },
+];
+
+// Line Chart with Multi-line X-Axis Labels
+export const LineChartWithMultiLineXAxis: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={multiLineAxisData} colorTheme="categorical">
+          <ChartXAxis dataKey="time" secondaryDataKey="day" label="Time / Day" />
+          <ChartYAxis label="Revenue ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="revenue" name="Revenue" />
+          <ChartLine dataKey="orders" name="Orders" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithMultiLineXAxis.parameters = {
+  controls: { disable: true },
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
@@ -681,3 +713,4 @@ LineChartWithDefaultColorTheme.storyName = 'Line Chart with  Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';
 LineChartWithSwitchableTimePeriods.storyName = 'Line Chart with Switchable Time Periods';
 LineChartWithManyLines.storyName = 'Line Chart with many lines';
+LineChartWithMultiLineXAxis.storyName = 'Line Chart with Multi-line X-Axis Labels';
