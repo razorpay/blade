@@ -38,6 +38,7 @@ import { calculateTextWidth } from './utils';
 import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
@@ -193,7 +194,7 @@ const CustomTooltip = ({
       key={key}
     >
       <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
-        <div
+        <BaseBox
           style={{
             width: theme.spacing[4],
             height: theme.spacing[4],
@@ -252,11 +253,32 @@ const LegendItem = ({
   index: number;
 }): JSX.Element => {
   const { theme } = useTheme();
-  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
+  const { dataColorMapping, chartName, hiddenDataKeys, onLegendClick } =
+    useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
+  const isHidden = hiddenDataKeys?.has(entry.dataKey);
+
+  const handleClick = (): void => {
+    onLegendClick?.(entry.dataKey);
+  };
+
   return (
-    <Box key={`item-${index}`} display="flex" alignItems="center">
+    <BaseBox
+      key={`item-${index}`}
+      display="flex"
+      alignItems="center"
+      cursor="pointer"
+      opacity={isHidden ? 0.4 : 1}
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleClick();
+        }
+      }}
+    >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
@@ -268,11 +290,15 @@ const LegendItem = ({
           }}
         />
         {/* Legend text with custom color and size */}
-        <Text size="medium" color="surface.text.gray.muted">
+        <Text
+          size="medium"
+          color="surface.text.gray.muted"
+          textDecorationLine={isHidden ? 'line-through' : undefined}
+        >
           {entry.value}
         </Text>
       </Box>
-    </Box>
+    </BaseBox>
   );
 };
 

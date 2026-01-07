@@ -57,6 +57,11 @@ interface ChartLineProps {
    * @private
    */
   _totalLines?: number;
+  /**
+   * @private
+   * Whether to hide this line (controlled by legend click)
+   */
+  hide?: boolean;
 }
 
 type data = {

@@ -28,6 +28,7 @@ const Line: React.FC<ChartLineProps> = ({
   _index,
   _colorTheme,
   _totalLines,
+  hide,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -60,6 +61,7 @@ const Line: React.FC<ChartLineProps> = ({
       animationDuration={animationDuration}
       strokeLinecap="round"
       strokeLinejoin="round"
+      hide={hide}
       {...props}
     />
   );
@@ -81,6 +83,23 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     colorTheme,
     chartName: 'line',
   });
+
+  // State to track which lines are hidden (by dataKey)
+  const [hiddenDataKeys, setHiddenDataKeys] = React.useState<Set<string>>(new Set());
+
+  // Handler for legend click to toggle line visibility
+  const handleLegendClick = React.useCallback((dataKey: string) => {
+    setHiddenDataKeys((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(dataKey)) {
+        newSet.delete(dataKey);
+      } else {
+        newSet.add(dataKey);
+      }
+      return newSet;
+    });
+  }, []);
+
   /**
    * We need to check child of CharLineWrapper. if they have any custom color we store that.
    * We need these mapping because colors of tooltip & legend is determine based on this
@@ -111,10 +130,12 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             isCustomColor: Boolean(childColor),
           };
         }
+        // Pass hide prop based on whether this line's dataKey is in hiddenDataKeys
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
           _totaLine: totalLines,
+          hide: hiddenDataKeys.has(dataKey),
         } as Partial<ChartLineProps>);
       }
       return child;
@@ -122,10 +143,17 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     assignDataColorMapping(dataColorMapping, themeColors);
 
     return { dataColorMapping, lineChartModifiedChildrens, totalLines };
-  }, [children, colorTheme, themeColors]);
+  }, [children, colorTheme, themeColors, hiddenDataKeys]);
 
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'line', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{
+        chartName: 'line',
+        dataColorMapping,
+        hiddenDataKeys,
+        onLegendClick: handleLegendClick,
+      }}
+    >
       <BaseBox
         {...metaAttribute({ name: 'line-chart', testID })}
         {...makeAnalyticsAttribute(restProps)}

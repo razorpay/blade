@@ -82,11 +82,13 @@ type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
   chartName?: ChartName;
+  hiddenDataKeys?: Set<string>;
 };
 
 // Dispatch type - contains only the updater functions
 type CommonChartComponentsDispatchType = {
   setDataColorMapping?: (dataColorMapping: DataColorMapping) => void;
+  onLegendClick?: (dataKey: string) => void;
 };
 
 // Legacy combined type for backward compatibility
