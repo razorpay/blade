@@ -21,7 +21,7 @@ jobs:
       - name: Use Node v18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 18.20.8
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run Unit Tests
