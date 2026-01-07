@@ -159,7 +159,9 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   }, [children, colorTheme, themeColors]);
 
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'area', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{ chartName: 'area', dataColorMapping, chartData: data }}
+    >
       <BaseBox
         {...metaAttribute({ name: 'chart-area-container', testID })}
         {...makeAnalyticsAttribute(restProps)}

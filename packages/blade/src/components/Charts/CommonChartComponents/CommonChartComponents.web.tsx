@@ -86,19 +86,88 @@ const getChartColor = (
   });
 };
 
+/**
+ * Custom tick component for X-axis that supports multi-line labels.
+ * When secondaryDataKey is provided, it renders two lines of text.
+ */
+const CustomXAxisTick = ({
+  x,
+  y,
+  payload,
+  secondaryDataKey,
+  chartData,
+  theme,
+}: {
+  x: number;
+  y: number;
+  payload: { value: string; index: number };
+  secondaryDataKey?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  chartData?: Array<Record<string, any>>;
+  theme: ReturnType<typeof useTheme>['theme'];
+}): JSX.Element => {
+  // Get the secondary value from the chart data using the payload index
+  const secondaryValue =
+    secondaryDataKey && chartData ? chartData[payload.index]?.[secondaryDataKey] : undefined;
+
+  const lineHeight = 14; // Line height for multi-line text
+
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text
+        x={0}
+        y={0}
+        dy={16}
+        textAnchor="middle"
+        fill={theme.colors.surface.text.gray.muted}
+        fontSize={theme.typography.fonts.size[75]}
+        fontFamily={theme.typography.fonts.family.text}
+        fontWeight={theme.typography.fonts.weight.regular}
+        style={{ letterSpacing: theme.typography.letterSpacings[100] }}
+      >
+        {payload.value}
+      </text>
+      {secondaryValue !== undefined && (
+        <text
+          x={0}
+          y={0}
+          dy={16 + lineHeight}
+          textAnchor="middle"
+          fill={theme.colors.surface.text.gray.subtle}
+          fontSize={theme.typography.fonts.size[50]}
+          fontFamily={theme.typography.fonts.family.text}
+          fontWeight={theme.typography.fonts.weight.regular}
+          style={{ letterSpacing: theme.typography.letterSpacings[100] }}
+        >
+          {secondaryValue}
+        </text>
+      )}
+    </g>
+  );
+};
+
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
+  const { chartData } = useCommonChartComponentsContext();
+  const { secondaryDataKey, ...restProps } = props;
+
+  // Calculate additional height for the axis when secondary labels are present
+  const axisHeight = secondaryDataKey ? 50 : 30;
 
   return (
     <RechartsXAxis
-      {...props}
-      tick={{
-        fill: theme.colors.surface.text.gray.muted,
-        fontSize: theme.typography.fonts.size[75],
-        fontFamily: theme.typography.fonts.family.text,
-        fontWeight: theme.typography.fonts.weight.regular,
-        letterSpacing: theme.typography.letterSpacings[100],
-      }}
+      {...restProps}
+      height={axisHeight}
+      tick={(tickProps: { x: number; y: number; payload: { value: string; index: number } }) => (
+        <CustomXAxisTick
+          x={tickProps.x}
+          y={tickProps.y}
+          payload={tickProps.payload}
+          secondaryDataKey={secondaryDataKey}
+          chartData={chartData}
+          theme={theme}
+        />
+      )}
       tickLine={false}
       stroke={theme.colors.surface.border.gray.muted}
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (

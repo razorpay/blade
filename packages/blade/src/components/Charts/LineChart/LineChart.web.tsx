@@ -125,7 +125,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }, [children, colorTheme, themeColors]);
 
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'line', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{ chartName: 'line', dataColorMapping, chartData: data }}
+    >
       <BaseBox
         {...metaAttribute({ name: 'line-chart', testID })}
         {...makeAnalyticsAttribute(restProps)}
