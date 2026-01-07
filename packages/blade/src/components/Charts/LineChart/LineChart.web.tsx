@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   LineChart as RechartsLineChart,
   Line as RechartsLine,
@@ -18,6 +18,12 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
+const getLineOpacity = (hoveredDataKey: string | null, currentDataKey: string): number => {
+  if (hoveredDataKey === null) return 1;
+  if (hoveredDataKey === currentDataKey) return 1;
+  return 0.2;
+};
+
 const Line: React.FC<ChartLineProps> = ({
   color,
   strokeStyle = 'solid',
@@ -28,6 +34,9 @@ const Line: React.FC<ChartLineProps> = ({
   _index,
   _colorTheme,
   _totalLines,
+  _hoveredDataKey,
+  _setHoveredDataKey,
+  dataKey,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -47,8 +56,11 @@ const Line: React.FC<ChartLineProps> = ({
     : theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
+  const opacity = getLineOpacity(_hoveredDataKey ?? null, String(dataKey));
+
   return (
     <RechartsLine
+      dataKey={dataKey}
       stroke={colorToken}
       strokeWidth={1.5}
       strokeDasharray={strokeDasharray}
@@ -60,6 +72,9 @@ const Line: React.FC<ChartLineProps> = ({
       animationDuration={animationDuration}
       strokeLinecap="round"
       strokeLinejoin="round"
+      strokeOpacity={opacity}
+      onMouseEnter={() => _setHoveredDataKey?.(String(dataKey))}
+      onMouseLeave={() => _setHoveredDataKey?.(null)}
       {...props}
     />
   );
@@ -77,6 +92,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   data,
   ...restProps
 }) => {
+  const [hoveredDataKey, setHoveredDataKey] = useState<string | null>(null);
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'line',
@@ -114,7 +130,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
-          _totaLine: totalLines,
+          _totalLines: totalLines,
+          _hoveredDataKey: hoveredDataKey,
+          _setHoveredDataKey: setHoveredDataKey,
         } as Partial<ChartLineProps>);
       }
       return child;
@@ -122,7 +140,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     assignDataColorMapping(dataColorMapping, themeColors);
 
     return { dataColorMapping, lineChartModifiedChildrens, totalLines };
-  }, [children, colorTheme, themeColors]);
+  }, [children, colorTheme, themeColors, hoveredDataKey]);
 
   return (
     <CommonChartComponentsContext.Provider value={{ chartName: 'line', dataColorMapping }}>
