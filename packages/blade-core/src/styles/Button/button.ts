@@ -316,7 +316,7 @@ export const pressedClass = styles.pressed;
  * const buttonClasses = getButtonTemplateClasses();
  * // Use: buttonClasses.content, buttonClasses.icon, etc.
  */
-export function getButtonTemplateClasses(): Record<string, unkown> {
+export function getButtonTemplateClasses(): Record<string, string> {
   return {
     content: buttonContentClass,
     icon: buttonIconClass,
