@@ -672,7 +672,7 @@ LineChartWithCartesianGrid.parameters = {
   controls: { disable: true },
 };
 
-export const LineChartWithCustomCursor:StoryFn<typeof ChartLine> = () => {
+export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
   const theme = useTheme();
   return (
     <ChartsWrapper>
@@ -680,7 +680,9 @@ export const LineChartWithCustomCursor:StoryFn<typeof ChartLine> = () => {
         <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
           <ChartXAxis dataKey="month" label="Month" />
           <ChartYAxis label="Sales ($)" />
-          <ChartTooltip cursor={{ stroke: theme.colors.surface.border.gray.subtle , strokeWidth: 1 }} />
+          <ChartTooltip
+            cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
+          />
           <ChartLegend />
           <ChartLine dataKey="northAmerica" name="North America" />
           <ChartLine dataKey="southAmerica" name="South America" />
@@ -691,7 +693,7 @@ export const LineChartWithCustomCursor:StoryFn<typeof ChartLine> = () => {
       </Box>
     </ChartsWrapper>
   );
-}
+};
 
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
