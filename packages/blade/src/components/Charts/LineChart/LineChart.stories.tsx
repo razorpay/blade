@@ -14,6 +14,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { ChipGroup, Chip } from '~components/Chip';
+import { useTheme } from 'styled-components';
 
 const Page = (): React.ReactElement => {
   return (
@@ -671,6 +672,27 @@ LineChartWithCartesianGrid.parameters = {
   controls: { disable: true },
 };
 
+export const LineChartWithCustomCursor:StoryFn<typeof ChartLine> = () => {
+  const theme = useTheme();
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" label="Month" />
+          <ChartYAxis label="Sales ($)" />
+          <ChartTooltip cursor={{ stroke: theme.colors.surface.border.gray.subtle , strokeWidth: 1 }} />
+          <ChartLegend />
+          <ChartLine dataKey="northAmerica" name="North America" />
+          <ChartLine dataKey="southAmerica" name="South America" />
+          <ChartLine dataKey="europe" name="Europe" />
+          <ChartLine dataKey="asia" name="Asia" />
+          <ChartCartesianGrid />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+}
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
@@ -681,3 +703,4 @@ LineChartWithDefaultColorTheme.storyName = 'Line Chart with  Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';
 LineChartWithSwitchableTimePeriods.storyName = 'Line Chart with Switchable Time Periods';
 LineChartWithManyLines.storyName = 'Line Chart with many lines';
+LineChartWithCustomCursor.storyName = 'Line Chart with custom cursor';
