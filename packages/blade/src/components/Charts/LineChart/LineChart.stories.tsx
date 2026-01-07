@@ -1,5 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
+import { useTheme } from 'styled-components';
 import {
   ChartXAxis,
   ChartYAxis,
@@ -14,7 +15,6 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { ChipGroup, Chip } from '~components/Chip';
-import { useTheme } from 'styled-components';
 
 const Page = (): React.ReactElement => {
   return (
