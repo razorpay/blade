@@ -42,4 +42,3 @@ function getIn<
 }
 
 export default getIn;
-

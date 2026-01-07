@@ -9,8 +9,37 @@ export type CodeVariants = {
 export type CodeSize = 'small' | 'medium';
 
 // Font size and line height types matching BaseText
-export type FontSize = 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
-export type LineHeight = 0 | 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
+export type FontSize =
+  | 25
+  | 50
+  | 75
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 1000
+  | 1100;
+export type LineHeight =
+  | 0
+  | 25
+  | 50
+  | 75
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 1000
+  | 1100;
 
 /**
  * Get Code font size and line height based on size prop
@@ -76,13 +105,7 @@ export const codeStyles = cva(styles.base, {
 export function getCodeClasses(props: CodeVariants & { className?: string }): string {
   const { className, ...cvaProps } = props;
 
-  const classes = [
-    codeStyles(cvaProps),
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  const classes = [codeStyles(cvaProps), className].filter(Boolean).join(' ');
 
   return classes;
 }
-

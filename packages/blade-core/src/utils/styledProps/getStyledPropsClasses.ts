@@ -261,7 +261,10 @@ export const getStyledPropsClasses = (
   if (margin !== undefined) {
     if (Array.isArray(margin)) {
       // For arrays, use inline style
-      inlineStyles.margin = margin.map((val) => getSpacingValue(val)).filter(Boolean).join(' ');
+      inlineStyles.margin = margin
+        .map((val) => getSpacingValue(val))
+        .filter(Boolean)
+        .join(' ');
     } else if (isSpacingToken(margin)) {
       const marginClass = spacingToClass(margin, 'margin');
       if (marginClass) {
@@ -341,4 +344,3 @@ export const getStyledPropsClasses = (
 
   return { classes, inlineStyles };
 };
-

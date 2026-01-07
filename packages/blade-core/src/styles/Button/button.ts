@@ -216,7 +216,10 @@ export function getButtonMinHeight(): Record<'xsmall' | 'small' | 'medium' | 'la
 /**
  * Get icon size mapping for buttons
  */
-export function getButtonIconSize(): Record<'xsmall' | 'small' | 'medium' | 'large', 'small' | 'medium'> {
+export function getButtonIconSize(): Record<
+  'xsmall' | 'small' | 'medium' | 'large',
+  'small' | 'medium'
+> {
   return {
     xsmall: 'small',
     small: 'small',
@@ -313,7 +316,7 @@ export const pressedClass = styles.pressed;
  * const buttonClasses = getButtonTemplateClasses();
  * // Use: buttonClasses.content, buttonClasses.icon, etc.
  */
-export function getButtonTemplateClasses() {
+export function getButtonTemplateClasses(): Record<string, unkown> {
   return {
     content: buttonContentClass,
     icon: buttonIconClass,

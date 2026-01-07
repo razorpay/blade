@@ -11,4 +11,3 @@ export const makeBezier = <
 ): `cubic-bezier(${X1}, ${Y1}, ${X2}, ${Y2})` => {
   return `cubic-bezier(${x1}, ${y1}, ${x2}, ${y2})`;
 };
-

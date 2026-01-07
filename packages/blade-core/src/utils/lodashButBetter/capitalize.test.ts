@@ -13,4 +13,3 @@ describe('lodashButBetter/capitalize', () => {
     expect(capitalize('')).toBe('');
   });
 });
-

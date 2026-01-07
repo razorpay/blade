@@ -15,4 +15,3 @@ export const getPlatformType = (): PlatformTypes => {
 
   return 'unknown';
 };
-

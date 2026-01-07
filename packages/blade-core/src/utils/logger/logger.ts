@@ -42,4 +42,3 @@ const logger = ({ message, moduleName, type }: LoggerOptions): void => {
 };
 
 export { throwBladeError, logger };
-

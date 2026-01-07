@@ -17,4 +17,3 @@ export type IsFunction<T> = T extends (...args: any[]) => void ? true : false;
 export type IsBothFunction<T, K> = [IsFunction<T>, IsFunction<K>] extends [true, true]
   ? true
   : false;
-

@@ -1,6 +1,35 @@
 // Font size and line height types matching BaseText
-export type FontSize = 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
-export type LineHeight = 0 | 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
+export type FontSize =
+  | 25
+  | 50
+  | 75
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 1000
+  | 1100;
+export type LineHeight =
+  | 0
+  | 25
+  | 50
+  | 75
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 1000
+  | 1100;
 
 export type TextVariant = 'body' | 'caption';
 export type TextSize = 'xsmall' | 'small' | 'medium' | 'large';
@@ -118,4 +147,3 @@ export function getTextProps({
 
   return props;
 }
-

@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
-import type { BaseButtonProps } from './BaseButton/types';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { BaseButtonProps } from './BaseButton/types';
 
 export type ButtonProps = BaseButtonProps & {
   /**

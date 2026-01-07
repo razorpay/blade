@@ -10,4 +10,3 @@ export {
   spinnerIconClass,
 } from './spinner';
 export type { SpinnerVariants, SpinnerSize, SpinnerColor } from './spinner';
-

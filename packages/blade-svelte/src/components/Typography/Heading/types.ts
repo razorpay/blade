@@ -1,7 +1,7 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import type { validHeadingAsValues } from '@razorpay/blade-core/styles';
+import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 
 export type HeadingProps = {
   as?: typeof validHeadingAsValues[number];
@@ -20,4 +20,3 @@ export type HeadingProps = {
   wordBreak?: BaseTextProps['wordBreak'];
   testID?: string;
 } & StyledPropsBlade;
-

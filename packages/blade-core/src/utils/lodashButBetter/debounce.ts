@@ -18,4 +18,3 @@ function debounce(func: (...args: any[]) => void, wait: number): (...args: any[]
 }
 
 export default debounce;
-
