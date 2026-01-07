@@ -24,6 +24,12 @@ const getLineOpacity = (hoveredDataKey: string | null, currentDataKey: string): 
   return 0.2;
 };
 
+const getLineStrokeWidth = (hoveredDataKey: string | null, currentDataKey: string): number => {
+  if (hoveredDataKey === null) return 1.5;
+  if (hoveredDataKey === currentDataKey) return 3.5;
+  return 1.5;
+};
+
 const Line: React.FC<ChartLineProps> = ({
   color,
   strokeStyle = 'solid',
@@ -57,15 +63,23 @@ const Line: React.FC<ChartLineProps> = ({
   const animationDuration = theme.motion.duration.xgentle;
 
   const opacity = getLineOpacity(_hoveredDataKey ?? null, String(dataKey));
+  const strokeWidth = getLineStrokeWidth(_hoveredDataKey ?? null, String(dataKey));
+
+  // Pass onMouseEnter to activeDot so hovering the circle also highlights the line
+  const activeDotProps = activeDot
+    ? {
+        onMouseEnter: () => _setHoveredDataKey?.(String(dataKey)),
+      }
+    : false;
 
   return (
     <RechartsLine
       dataKey={dataKey}
       stroke={colorToken}
-      strokeWidth={1.5}
+      strokeWidth={strokeWidth}
       strokeDasharray={strokeDasharray}
       type={type}
-      activeDot={activeDot}
+      activeDot={activeDotProps}
       dot={dot}
       legendType={showLegend ? 'line' : 'none'}
       animationBegin={animationBegin}
@@ -74,7 +88,6 @@ const Line: React.FC<ChartLineProps> = ({
       strokeLinejoin="round"
       strokeOpacity={opacity}
       onMouseEnter={() => _setHoveredDataKey?.(String(dataKey))}
-      onMouseLeave={() => _setHoveredDataKey?.(null)}
       {...props}
     />
   );
@@ -152,7 +165,18 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         {...restProps}
       >
         <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>
+          <RechartsLineChart
+            data={data}
+            onMouseMove={(state) => {
+              // Clear highlight when tooltip is not active (mouse in empty area)
+              if (!state?.isTooltipActive) {
+                setHoveredDataKey(null);
+              }
+            }}
+            onMouseLeave={() => setHoveredDataKey(null)}
+          >
+            {lineChartModifiedChildrens}
+          </RechartsLineChart>
         </RechartsResponsiveContainer>
       </BaseBox>
     </CommonChartComponentsContext.Provider>
