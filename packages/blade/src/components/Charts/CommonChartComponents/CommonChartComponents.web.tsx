@@ -42,6 +42,7 @@ import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
+import { useControllableState } from '~utils/useControllable';
 
 /**
  * Helper function to get the appropriate color for chart elements (tooltip, legend)
@@ -267,57 +268,46 @@ const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: bo
 const LegendItem = ({
   entry,
   index,
-  allowChartToggle = true,
+  isSelected,
+  onToggle,
   onLegendClick,
 }: {
   entry: { color: string; value: string; dataKey: string };
   index: number;
-  allowChartToggle?: boolean;
-  onLegendClick?: (dataKey: string, meta: { isHidden: boolean }) => void;
+  isSelected: boolean;
+  onToggle: (dataKey: string) => void;
+  onLegendClick?: ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }) => void;
 }): JSX.Element => {
   const { theme } = useTheme();
-  const {
-    dataColorMapping,
-    chartName,
-    hiddenDataKeys,
-    onToggleDataKey,
-  } = useCommonChartComponentsContext();
+  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
-  const isHidden = hiddenDataKeys?.has(entry.dataKey) ?? false;
 
-  // Legends are interactive if either allowChartToggle is true OR onLegendClick is provided
-  const isLegendInteractive = allowChartToggle || Boolean(onLegendClick);
   const handleClick = (): void => {
-    // Call user's onClick handler if provided (with current hidden state before toggle)
-    // Since we are updating isHidden value here. we will always get previous value.
-    onLegendClick?.(entry.dataKey, { isHidden: allowChartToggle ? !isHidden : false });
-
-    // Toggle visibility only if allowChartToggle is true
-    if (allowChartToggle) {
-      onToggleDataKey?.(entry.dataKey);
-    }
+    // Call user's onClick handler if provided
+    onLegendClick?.({ dataKey: entry.dataKey, isSelected });
+    // Toggle selection
+    onToggle(entry.dataKey);
   };
 
   return (
     <StyledLegendWrapper
       key={`item-${index}`}
-      $isHidden={isHidden ?? false}
-      $isClickable={isLegendInteractive}
-      onClick={isLegendInteractive ? handleClick : undefined}
+      $isHidden={!isSelected}
+      $isClickable={true}
+      onClick={handleClick}
       type="button"
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
-            backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
-            width: theme.spacing[4], // Size of the square
-            height: theme.spacing[4], // Size of the square
+            backgroundColor: getIn(theme.colors, legendColor),
+            width: theme.spacing[4],
+            height: theme.spacing[4],
             display: 'inline-block',
             borderRadius: theme.border.radius.small,
           }}
         />
-        {/* Legend text with custom color and size */}
         <Text size="medium" color="surface.text.gray.muted">
           {entry.value}
         </Text>
@@ -338,10 +328,11 @@ const CustomSquareLegend = (props: {
     dataKey: string;
   }>;
   layout: Layout;
-  allowChartToggle?: boolean;
-  onLegendClick?: (dataKey: string, meta: { isHidden: boolean }) => void;
+  selectedDataKeys: Set<string>;
+  onToggle: (dataKey: string) => void;
+  onLegendClick?: ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }) => void;
 }): JSX.Element | null => {
-  const { payload, layout, allowChartToggle, onLegendClick } = props;
+  const { payload, layout, selectedDataKeys, onToggle, onLegendClick } = props;
 
   if (!payload || payload.length === 0) {
     return null;
@@ -371,7 +362,8 @@ const CustomSquareLegend = (props: {
           entry={entry}
           index={index}
           key={`item-${index}`}
-          allowChartToggle={allowChartToggle}
+          isSelected={selectedDataKeys.has(entry.dataKey)}
+          onToggle={onToggle}
           onLegendClick={onLegendClick}
         />
       ))}
@@ -380,11 +372,79 @@ const CustomSquareLegend = (props: {
 };
 
 const _ChartLegend: React.FC<ChartLegendProps> = ({
-  allowChartToggle = true,
+  selectedDataKeys: selectedDataKeysProp,
+  defaultSelectedDataKeys,
+  onSelectedDataKeysChange,
   onLegendClick,
   ...props
 }) => {
   const { theme } = useTheme();
+  const { dataColorMapping, setVisibleDataKeys } = useCommonChartComponentsContext();
+
+  // Determine if component is controlled
+  const isControlled = selectedDataKeysProp !== undefined;
+
+  // Track if user has interacted with the legend to prevent auto-reset
+  const hasUserInteracted = React.useRef(false);
+
+  // Get all available dataKeys from the chart
+  const allDataKeys = React.useMemo(
+    () => Object.keys(dataColorMapping ?? {}),
+    [dataColorMapping],
+  );
+
+  // Use controllable state for selected keys
+  const [selectedKeysArray, setSelectedKeysArray] = useControllableState({
+    value: selectedDataKeysProp,
+    defaultValue: defaultSelectedDataKeys ?? allDataKeys,
+    onChange: onSelectedDataKeysChange,
+  });
+
+  // When allDataKeys changes and we're in uncontrolled mode without explicit defaults,
+  // update selection to include all keys (handles case when context isn't ready on first render)
+  // Skip this if user has already interacted with the legend
+  React.useEffect(() => {
+    if (
+      !isControlled &&
+      !defaultSelectedDataKeys &&
+      allDataKeys.length > 0 &&
+      !hasUserInteracted.current
+    ) {
+      // Only update if current selection is empty but allDataKeys has items
+      setSelectedKeysArray((prev) => {
+        if (prev.length === 0) {
+          return allDataKeys;
+        }
+        return prev;
+      });
+    }
+  }, [allDataKeys, isControlled, defaultSelectedDataKeys, setSelectedKeysArray]);
+
+  // Convert array to Set for efficient lookups
+  const selectedDataKeys = React.useMemo(
+    () => new Set(selectedKeysArray),
+    [selectedKeysArray],
+  );
+
+  // Sync selectedDataKeys to context's visibleDataKeys
+  React.useEffect(() => {
+    setVisibleDataKeys?.(selectedDataKeys);
+  }, [selectedDataKeys, setVisibleDataKeys]);
+
+  // Handle toggle
+  const handleToggle = React.useCallback(
+    (dataKey: string) => {
+      // Mark that user has interacted to prevent auto-reset behavior
+      hasUserInteracted.current = true;
+      setSelectedKeysArray((prev) => {
+        if (prev.includes(dataKey)) {
+          return prev.filter((key) => key !== dataKey);
+        }
+        return [...prev, dataKey];
+      });
+    },
+    [setSelectedKeysArray],
+  );
 
   return (
     <RechartsLegend
@@ -399,7 +459,8 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
       content={
         <CustomSquareLegend
           layout={props.layout ?? 'horizontal'}
-          allowChartToggle={allowChartToggle}
+          selectedDataKeys={selectedDataKeys}
+          onToggle={handleToggle}
           onLegendClick={onLegendClick}
         />
       }

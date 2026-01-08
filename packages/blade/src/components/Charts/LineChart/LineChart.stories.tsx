@@ -684,8 +684,8 @@ export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
             cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
           />
           <ChartLegend
-            onLegendClick={(dataKey, isHidden) => {
-              console.log(dataKey, isHidden);
+            onLegendClick={({ dataKey, isSelected }) => {
+              console.log(`Clicked: ${dataKey}, isSelected: ${isSelected}`);
             }}
           />
           <ChartLine dataKey="northAmerica" name="North America" />
@@ -699,7 +699,8 @@ export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
   );
 };
 
-export const LineChartWithToggleDisabled: StoryFn<typeof ChartLine> = () => {
+// Uncontrolled Legend with Default Selection
+export const LineChartWithDefaultSelectedDataKeys: StoryFn<typeof ChartLine> = () => {
   const theme = useTheme();
   return (
     <ChartsWrapper>
@@ -711,9 +712,9 @@ export const LineChartWithToggleDisabled: StoryFn<typeof ChartLine> = () => {
             cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
           />
           <ChartLegend
-            allowChartToggle={false}
-            onLegendClick={() => {
-              console.log('demo');
+            defaultSelectedDataKeys={['northAmerica', 'europe']}
+            onSelectedDataKeysChange={(selectedKeys) => {
+              console.log('Selection changed:', selectedKeys);
             }}
           />
           <ChartLine dataKey="northAmerica" name="North America" />
@@ -727,32 +728,106 @@ export const LineChartWithToggleDisabled: StoryFn<typeof ChartLine> = () => {
   );
 };
 
-export const LineChartWithToggleDisabledAndWithNoOnClick: StoryFn<typeof ChartLine> = () => {
+// Controlled Legend Selection
+export const LineChartWithControlledSelection: StoryFn<typeof ChartLine> = () => {
   const theme = useTheme();
+  const [selectedDataKeys, setSelectedDataKeys] = React.useState(['northAmerica', 'asia']);
+
   return (
     <ChartsWrapper>
-      <Box width="100%" height="500px">
-        <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
-          <ChartXAxis dataKey="month" label="Month" />
-          <ChartYAxis label="Sales ($)" />
-          <ChartTooltip
-            cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
-          />
-          <ChartLegend
-            allowChartToggle={false}
-            onClick={() => {
-              console.log('demo');
-            }}
-          />
-          <ChartLine dataKey="northAmerica" name="North America" />
-          <ChartLine dataKey="southAmerica" name="South America" />
-          <ChartLine dataKey="europe" name="Europe" />
-          <ChartLine dataKey="asia" name="Asia" />
-          <ChartCartesianGrid />
-        </ChartLineWrapper>
+      <Box display="flex" flexDirection="column" width="100%" height="100%">
+        <Box marginBottom="spacing.5">
+          <ChipGroup
+            accessibilityLabel="Select regions"
+            selectionType="multiple"
+            value={selectedDataKeys}
+            onChange={({ values }) => setSelectedDataKeys(values)}
+          >
+            <Chip value="northAmerica">North America</Chip>
+            <Chip value="southAmerica">South America</Chip>
+            <Chip value="europe">Europe</Chip>
+            <Chip value="asia">Asia</Chip>
+          </ChipGroup>
+        </Box>
+
+        <Box width="100%" height="400px">
+          <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+            <ChartXAxis dataKey="month" label="Month" />
+            <ChartYAxis label="Sales ($)" />
+            <ChartTooltip
+              cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
+            />
+            <ChartLegend
+              selectedDataKeys={selectedDataKeys}
+              onSelectedDataKeysChange={setSelectedDataKeys}
+            />
+            <ChartLine dataKey="northAmerica" name="North America" />
+            <ChartLine dataKey="southAmerica" name="South America" />
+            <ChartLine dataKey="europe" name="Europe" />
+            <ChartLine dataKey="asia" name="Asia" />
+            <ChartCartesianGrid />
+          </ChartLineWrapper>
+        </Box>
       </Box>
     </ChartsWrapper>
   );
+};
+
+// Legend with onLegendClick callback
+export const LineChartWithLegendClickCallback: StoryFn<typeof ChartLine> = () => {
+  const theme = useTheme();
+  const [lastClicked, setLastClicked] = React.useState<string | null>(null);
+
+  return (
+    <ChartsWrapper>
+      <Box display="flex" flexDirection="column" width="100%" height="100%">
+        <Box marginBottom="spacing.5">
+          <Heading size="small">
+            Last clicked: {lastClicked ? `${lastClicked}` : 'None'}
+          </Heading>
+        </Box>
+
+        <Box width="100%" height="400px">
+          <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+            <ChartXAxis dataKey="month" label="Month" />
+            <ChartYAxis label="Sales ($)" />
+            <ChartTooltip
+              cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
+            />
+            <ChartLegend
+              onLegendClick={({ dataKey, isSelected }) => {
+                setLastClicked(`${dataKey} (was ${isSelected ? 'selected' : 'deselected'})`);
+              }}
+              onSelectedDataKeysChange={(selectedKeys) => {
+                console.log('Current selection:', selectedKeys);
+              }}
+            />
+            <ChartLine dataKey="northAmerica" name="North America" />
+            <ChartLine dataKey="southAmerica" name="South America" />
+            <ChartLine dataKey="europe" name="Europe" />
+            <ChartLine dataKey="asia" name="Asia" />
+            <ChartCartesianGrid />
+          </ChartLineWrapper>
+        </Box>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithCustomCursor.parameters = {
+  controls: { disable: true },
+};
+
+LineChartWithDefaultSelectedDataKeys.parameters = {
+  controls: { disable: true },
+};
+
+LineChartWithControlledSelection.parameters = {
+  controls: { disable: true },
+};
+
+LineChartWithLegendClickCallback.parameters = {
+  controls: { disable: true },
 };
 
 SimpleLineChart.storyName = 'Simple Line Chart';
@@ -761,11 +836,11 @@ TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
 LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
 SteppedLineChart.storyName = 'Stepped Line Chart';
-LineChartWithDefaultColorTheme.storyName = 'Line Chart with  Color Theme';
+LineChartWithDefaultColorTheme.storyName = 'Line Chart with Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';
 LineChartWithSwitchableTimePeriods.storyName = 'Line Chart with Switchable Time Periods';
 LineChartWithManyLines.storyName = 'Line Chart with many lines';
 LineChartWithCustomCursor.storyName = 'Line Chart with custom cursor';
-LineChartWithToggleDisabled.storyName = 'Line Charts with Toggle Disabled';
-LineChartWithToggleDisabledAndWithNoOnClick.storyName =
-  'Line Charts with Toggle Disabled and with no  onclick';
+LineChartWithDefaultSelectedDataKeys.storyName = 'Legend with Default Selected Keys (Uncontrolled)';
+LineChartWithControlledSelection.storyName = 'Legend with Controlled Selection';
+LineChartWithLegendClickCallback.storyName = 'Legend with Click Callback';

@@ -65,16 +65,25 @@ type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
   /**
-   * Whether clicking on legend items should toggle the visibility of the corresponding chart element.
-   * @default true
+   * Controlled state: Array of dataKeys that are currently selected (visible).
+   * When provided, the component is in controlled mode.
    */
-  allowChartToggle?: boolean;
+  selectedDataKeys?: string[];
+  /**
+   * Default selected dataKeys for uncontrolled mode.
+   * If not provided, all dataKeys are selected by default.
+   */
+  defaultSelectedDataKeys?: string[];
+  /**
+   * Callback fired when the selection changes.
+   * Provides the new array of selected dataKeys.
+   */
+  onSelectedDataKeysChange?: (selectedDataKeys: string[]) => void;
   /**
    * Callback fired when a legend item is clicked.
-   * Provides the dataKey of the clicked legend item and whether it's currently hidden.
-   * Note: `isHidden` reflects the state before the toggle (if isLegendClickable is true).
+   * Provides the dataKey of the clicked legend item and whether it's currently selected.
    */
-  onLegendClick?: (dataKey: string, meta: { isHidden: boolean }) => void;
+  onLegendClick?: ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }) => void;
 };
 
 type ChartCartesianGridProps = Omit<
@@ -93,17 +102,17 @@ type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
   chartName?: ChartName;
-  hiddenDataKeys?: Set<string>;
+  visibleDataKeys?: Set<string>;
 };
 
 // Dispatch type - contains only the updater functions
 type CommonChartComponentsDispatchType = {
   setDataColorMapping?: (dataColorMapping: DataColorMapping) => void;
   /**
-   * Internal handler to toggle visibility of chart elements.
-   * Called by LegendItem when isLegendClickable is true.
+   * Internal handler to set visible data keys.
+   * Called by ChartLegend to sync selection state.
    */
-  onToggleDataKey?: (dataKey: string) => void;
+  setVisibleDataKeys?: (visibleDataKeys: Set<string>) => void;
 };
 
 // Legacy combined type for backward compatibility

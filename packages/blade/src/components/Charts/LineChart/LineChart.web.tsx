@@ -84,21 +84,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     chartName: 'line',
   });
 
-  // State to track which lines are hidden (by dataKey)
-  const [hiddenDataKeys, setHiddenDataKeys] = React.useState<Set<string>>(new Set());
-
-  // Handler to toggle line visibility (called by ChartLegend when isLegendClickable is true)
-  const handleToggleDataKey = React.useCallback((dataKey: string) => {
-    setHiddenDataKeys((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(dataKey)) {
-        newSet.delete(dataKey);
-      } else {
-        newSet.add(dataKey);
-      }
-      return newSet;
-    });
-  }, []);
+  // State to track which lines are visible (by dataKey) - all visible by default
+  const [visibleDataKeys, setVisibleDataKeys] = React.useState<Set<string> | undefined>(undefined);
 
   /**
    * We need to check child of CharLineWrapper. if they have any custom color we store that.
@@ -130,12 +117,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             isCustomColor: Boolean(childColor),
           };
         }
-        // Pass hide prop based on whether this line's dataKey is in hiddenDataKeys
+        // Pass hide prop based on whether this line's dataKey is NOT in visibleDataKeys
+        // If visibleDataKeys is undefined, show all lines (default behavior)
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
           _totaLine: totalLines,
-          hide: hiddenDataKeys.has(dataKey),
+          hide: visibleDataKeys ? !visibleDataKeys.has(dataKey) : false,
         } as Partial<ChartLineProps>);
       }
       return child;
@@ -143,15 +131,15 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     assignDataColorMapping(dataColorMapping, themeColors);
 
     return { dataColorMapping, lineChartModifiedChildrens, totalLines };
-  }, [children, colorTheme, themeColors, hiddenDataKeys]);
+  }, [children, colorTheme, themeColors, visibleDataKeys]);
 
   return (
     <CommonChartComponentsContext.Provider
       value={{
         chartName: 'line',
         dataColorMapping,
-        hiddenDataKeys,
-        onToggleDataKey: handleToggleDataKey,
+        visibleDataKeys,
+        setVisibleDataKeys,
       }}
     >
       <BaseBox
