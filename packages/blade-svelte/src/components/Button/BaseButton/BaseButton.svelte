@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
+  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, type AriaRoles } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
   import BaseSpinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import type { BaseButtonProps } from './types';
+  import type { TextColors } from '../../Typography/BaseText/types';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import {
     getButtonClasses,
@@ -112,19 +113,19 @@
   const textSizes = getButtonTextSizes();
 
   // Compute text color token reactively
-  const textColorToken = $derived.by(() => {
+  const textColorToken = $derived.by((): TextColors => {
     return getButtonTextColorToken({
       variant,
       color,
       state: currentInteraction,
       property: 'text',
-    });
+    }) as TextColors;
   });
 
   // Compute icon color token reactively
   // Note: Currently unused but will be needed when Icon component is implemented
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const iconColorToken = $derived(
+  // @ts-ignore - intentionally unused until Icon component is implemented
+  const _iconColorToken = $derived(
     getButtonTextColorToken({
       variant,
       color,
@@ -216,7 +217,7 @@
   // Accessibility attributes
   const accessibilityAttrs = $derived(
     makeAccessible({
-      role: accessibilityProps?.role ?? buttonRole,
+      role: (accessibilityProps?.role ?? buttonRole) as AriaRoles,
       disabled: isButtonDisabled,
       label: accessibilityProps?.label,
       describedBy: accessibilityProps?.describedBy,

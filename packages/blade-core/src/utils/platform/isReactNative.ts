@@ -6,4 +6,3 @@ const isReactNative = (): boolean => {
 };
 
 export { isReactNative };
-

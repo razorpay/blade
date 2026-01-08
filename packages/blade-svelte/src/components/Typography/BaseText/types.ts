@@ -1,7 +1,10 @@
 import type { Snippet } from 'svelte';
-import type { AccessibilityProps, DotNotationToken } from '@razorpay/blade-core/utils';
+import type {
+  AccessibilityProps,
+  DotNotationToken,
+  StyledPropsBlade,
+} from '@razorpay/blade-core/utils';
 import type { Theme } from '../../BladeProvider/types';
-import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 // Text color types - using DotNotationToken from blade-core, matching React implementation exactly
 type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;
@@ -38,7 +41,13 @@ export type BaseTextProps = {
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
-  textTransform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase' | 'full-width' | 'full-size-kana';
+  textTransform?:
+    | 'none'
+    | 'capitalize'
+    | 'uppercase'
+    | 'lowercase'
+    | 'full-width'
+    | 'full-size-kana';
   lineHeight?: keyof Theme['typography']['lineHeights'];
   letterSpacing?: keyof Theme['typography']['letterSpacings'];
   wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
@@ -57,7 +66,16 @@ export type BaseTextProps = {
    * React Native only - not applicable for Svelte but kept for API consistency
    */
   numberOfLines?: number;
-  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code' | 'display';
+  componentName?:
+    | 'base-text'
+    | 'text'
+    | 'title'
+    | 'heading'
+    | 'code'
+    | 'display'
+    | 'button'
+    | 'spinner'
+    | 'link';
   testID?: string;
   // Analytics attributes
   [key: `data-analytics-${string}`]: string;

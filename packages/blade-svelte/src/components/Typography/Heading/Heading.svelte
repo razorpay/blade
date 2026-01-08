@@ -1,6 +1,7 @@
 <script lang="ts">
   import BaseText from '../BaseText/BaseText.svelte';
   import type { HeadingProps } from './types';
+  import type { TextColors, BaseTextProps } from '../BaseText/types';
   import { getHeadingProps, validHeadingAsValues } from '@razorpay/blade-core/styles';
 
   let {
@@ -20,7 +21,7 @@
   // Set defaults - use $derived for reactivity when props change
   const finalSize = $derived((size ?? 'small') as 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge');
   const finalWeight = $derived((weight ?? 'semibold') as 'regular' | 'medium' | 'semibold');
-  const finalColor = $derived(color ?? 'surface.text.gray.normal');
+  const finalColor = $derived((color ?? 'surface.text.gray.normal') as TextColors);
 
   // Validate as prop in development
   $effect(() => {
@@ -56,7 +57,7 @@
   });
 </script>
 
-<BaseText {...mergedProps}>
+<BaseText {...(mergedProps as unknown as Omit<BaseTextProps, 'children'>)}>
   {#if typeof children === 'string'}
     {children}
   {:else}

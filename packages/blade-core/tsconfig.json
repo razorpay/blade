@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["src", "src/@types"],
+  "exclude": ["**/*.native.ts", "**/*.native.tsx", "src/tokens/theme/__tests__"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

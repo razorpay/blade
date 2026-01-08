@@ -9,6 +9,8 @@
       "~src/*": ["src/*"]
     },
     "moduleSuffixes": [""],
-    "types": ["svelte"]
+    "types": ["svelte"],
+    "verbatimModuleSyntax": true,
+    "moduleResolution": "bundler"
   }
 }

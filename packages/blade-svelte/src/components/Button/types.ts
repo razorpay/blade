@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
-import type { BaseButtonProps } from './BaseButton/types';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { BaseButtonProps } from './BaseButton/types';
 
 export type ButtonProps = BaseButtonProps & {
   /**
@@ -57,4 +57,20 @@ export type ButtonProps = BaseButtonProps & {
    * Function called when the button is clicked
    */
   onClick?: (event: MouseEvent) => void;
+  /**
+   * Accessibility role for the button
+   */
+  role?: string;
+  /**
+   * aria-describedby attribute
+   */
+  'aria-describedby'?: string;
+  /**
+   * aria-expanded attribute
+   */
+  'aria-expanded'?: boolean;
+  /**
+   * aria-haspopup attribute
+   */
+  'aria-haspopup'?: 'menu' | boolean;
 } & StyledPropsBlade;

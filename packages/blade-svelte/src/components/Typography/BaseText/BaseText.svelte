@@ -39,7 +39,7 @@
       fontSize,
       lineHeight,
       fontWeight,
-      fontFamily,
+      fontFamily: fontFamily as 'text' | 'heading' | undefined,
       fontStyle,
       textDecorationLine,
       textAlign,

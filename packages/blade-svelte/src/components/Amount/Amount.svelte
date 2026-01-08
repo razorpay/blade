@@ -22,8 +22,8 @@
 <BaseAmount
   {value}
   {suffix}
-  {type}
-  {size}
+  type={type as 'body'}
+  size={size as 'medium'}
   {weight}
   {isAffixSubtle}
   {isStrikethrough}

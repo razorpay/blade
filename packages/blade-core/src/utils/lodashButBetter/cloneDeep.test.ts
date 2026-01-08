@@ -74,4 +74,3 @@ describe('lodashButBetter/cloneDeep', () => {
     expect(cloneDeep([{ a: [1] }, { b: [2] }])).toStrictEqual([{ a: [1] }, { b: [2] }]);
   });
 });
-
