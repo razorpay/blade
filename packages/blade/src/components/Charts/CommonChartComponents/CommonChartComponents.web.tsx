@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
   XAxis as RechartsXAxis,
   YAxis as RechartsYAxis,
@@ -245,6 +246,20 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
+const StyledLegendWrapper = styled.div<{ $isHidden: boolean }>(({ theme, $isHidden }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  cursor: 'pointer',
+  opacity: $isHidden ? 0.4 : 1,
+  '& .legend-text': {
+    color: theme.colors.surface.text.gray.muted,
+    transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
+  },
+  '&:hover .legend-text': {
+    color: theme.colors.surface.text.gray.normal,
+  },
+}));
+
 const LegendItem = ({
   entry,
   index,
@@ -264,12 +279,9 @@ const LegendItem = ({
   };
 
   return (
-    <BaseBox
+    <StyledLegendWrapper
       key={`item-${index}`}
-      display="flex"
-      alignItems="center"
-      cursor="pointer"
-      opacity={isHidden ? 0.4 : 1}
+      $isHidden={isHidden ?? false}
       onClick={handleClick}
       role="button"
       tabIndex={0}
@@ -280,25 +292,28 @@ const LegendItem = ({
       }}
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
-        <span
+        <BaseBox
           style={{
-            backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
-            width: theme.spacing[4], // Size of the square
-            height: theme.spacing[4], // Size of the square
+            backgroundColor: getIn(theme.colors, legendColor),
+            width: theme.spacing[4],
+            height: theme.spacing[4],
             display: 'inline-block',
             borderRadius: theme.border.radius.small,
           }}
         />
         {/* Legend text with custom color and size */}
-        <Text
-          size="medium"
-          color="surface.text.gray.muted"
-          textDecorationLine={isHidden ? 'line-through' : undefined}
+        <span
+          className="legend-text"
+          style={{
+            fontSize: theme.typography.fonts.size[100],
+            fontFamily: theme.typography.fonts.family.text,
+            fontWeight: theme.typography.fonts.weight.regular,
+          }}
         >
           {entry.value}
-        </Text>
+        </span>
       </Box>
-    </BaseBox>
+    </StyledLegendWrapper>
   );
 };
 
