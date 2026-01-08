@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist/types",
+    "rootDir": "src",
+    "moduleResolution": "bundler",
+    "noEmit": false
+  },
+  "include": ["src/**/*.ts", "src/**/*.svelte"],
+  "exclude": ["node_modules", "**/*.stories.svelte", "**/*.test.ts", "src/main.ts", "src/App.svelte", "src/ThemeSwitcher.svelte"]
+}

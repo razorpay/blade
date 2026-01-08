@@ -6,7 +6,9 @@ coverage
 
 # build direcotries
 **/storybook-site
+**/storybook-static
 **/build
+**/dist
 packages/blade-mcp/base-blade-template/
 packages/blade/components.js
 packages/blade/components.native.js

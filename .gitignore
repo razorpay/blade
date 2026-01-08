@@ -3,6 +3,7 @@ node_modules
 
 # testing
 coverage
+dist
 
 # build direcotries
 **/storybook-site

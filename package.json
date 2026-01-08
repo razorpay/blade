@@ -9,8 +9,10 @@
   "workspaces": {
     "packages": [
       "packages/blade",
+      "packages/blade-core",
       "packages/eslint-plugin-blade",
-      "packages/blade-mcp"
+      "packages/blade-mcp",
+      "packages/blade-svelte"
     ],
     "nohoist": [
       "**"
@@ -21,12 +23,26 @@
     "tsc:knowledgebase": "node ./scripts/lintKnowledgebase.js",
     "lint": "eslint --ext js,jsx,ts,tsx packages && stylelint '**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --ext js,jsx,ts,tsx packages --fix && stylelint '**/*.{js,jsx,ts,tsx}' --fix",
+    "lint:blade": "eslint --ext js,jsx,ts,tsx packages/blade",
+    "lint:blade-core": "eslint --ext js,jsx,ts,tsx packages/blade-core",
+    "lint:blade-svelte": "eslint --ext js,ts packages/blade-svelte",
+    "lint:blade-mcp": "NODE_OPTIONS=--max-old-space-size=8192 eslint --ext js,jsx,ts,tsx packages/blade-mcp",
+    "lint:eslint-plugin": "eslint --ext js,jsx,ts,tsx packages/eslint-plugin-blade",
+    "lint:stylelint": "stylelint '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix:blade": "eslint --ext js,jsx,ts,tsx packages/blade --fix",
+    "lint:fix:blade-core": "eslint --ext js,jsx,ts,tsx packages/blade-core --fix",
+    "lint:fix:blade-svelte": "eslint --ext js,ts packages/blade-svelte --fix",
+    "lint:fix:blade-mcp": "NODE_OPTIONS=--max-old-space-size=8192 eslint --ext js,jsx,ts,tsx packages/blade-mcp --fix",
+    "lint:fix:eslint-plugin": "eslint --ext js,jsx,ts,tsx packages/eslint-plugin-blade --fix",
+    "lint:fix:stylelint": "stylelint '**/*.{js,jsx,ts,tsx}' --fix",
     "publish-npm": "node ./scripts/publishToNpm.js",
     "release": "node ./scripts/generateGitHubRegistryNpmrc.js && changeset publish",
     "postinstall": "yarn build:eslint-plugin-blade",
     "build": "npm-run-all --parallel build:*",
     "build:blade": "lerna run --scope @razorpay/blade build",
+    "build:blade-core": "lerna run --scope @razorpay/blade-core build",
     "build:blade-mcp": "lerna run --scope @razorpay/blade-mcp build",
+    "build:blade-svelte": "lerna run --scope @razorpay/blade-svelte build",
     "build:eslint-plugin-blade": "lerna run --scope eslint-plugin-blade build",
     "generate-docs-lockfile": "node packages/blade/scripts/generateDocsLockFile.mjs",
     "aicodemod:serve": "node packages/blade/codemods/aicodemod/server.mjs",
@@ -56,6 +72,7 @@
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-native-a11y": "3.3.0",
+    "eslint-plugin-storybook": "0.11.6",
     "execa": "5.1.0",
     "figures": "3.2.0",
     "glob": "10.4.5",
@@ -76,7 +93,8 @@
   "resolutions": {
     "@types/react": "18.2.24",
     "@types/styled-components": "5.1.34",
-    "minimatch": "3.1.2"
+    "minimatch": "3.1.2",
+    "framer-motion": "11.12.0"
   },
   "husky": {
     "hooks": {
