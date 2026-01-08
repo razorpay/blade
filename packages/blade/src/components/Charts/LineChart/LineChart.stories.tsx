@@ -683,7 +683,11 @@ export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
           <ChartTooltip
             cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
           />
-          <ChartLegend />
+          <ChartLegend
+            onLegendClick={(dataKey, isHidden) => {
+              console.log(dataKey, isHidden);
+            }}
+          />
           <ChartLine dataKey="northAmerica" name="North America" />
           <ChartLine dataKey="southAmerica" name="South America" />
           <ChartLine dataKey="europe" name="Europe" />
