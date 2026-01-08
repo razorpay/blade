@@ -39,7 +39,6 @@ import { calculateTextWidth } from './utils';
 import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
-import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
