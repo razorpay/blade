@@ -289,9 +289,9 @@ const LegendItem = ({
   // Legends are interactive if either allowChartToggle is true OR onLegendClick is provided
   const isLegendInteractive = allowChartToggle || Boolean(onLegendClick);
   const handleClick = (): void => {
-    // Call user's onClick handler if provided (with current hidden state before toggle) 
-    // Since we are updating isHidden value here. we will always get previous value. 
-    onLegendClick?.(entry.dataKey, { isHidden : allowChartToggle ?  !isHidden : false });
+    // Call user's onClick handler if provided (with current hidden state before toggle)
+    // Since we are updating isHidden value here. we will always get previous value.
+    onLegendClick?.(entry.dataKey, { isHidden: allowChartToggle ? !isHidden : false });
 
     // Toggle visibility only if allowChartToggle is true
     if (allowChartToggle) {
