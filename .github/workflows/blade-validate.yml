@@ -34,7 +34,7 @@ jobs:
       - name: Build Blade Svelte
         run: yarn build
         working-directory: packages/blade-svelte
-     - name: Lint Blade
+      - name: Lint Blade
         run: yarn lint:blade
       - name: Lint Blade Core
         run: yarn lint:blade-core
