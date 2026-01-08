@@ -34,8 +34,16 @@ jobs:
       - name: Build Blade Svelte
         run: yarn build
         working-directory: packages/blade-svelte
-      - name: Lint Source Code
-        run: yarn lint
+     - name: Lint Blade
+        run: yarn lint:blade
+      - name: Lint Blade Core
+        run: yarn lint:blade-core
+      - name: Lint Blade Svelte
+        run: yarn lint:blade-svelte
+      - name: Lint ESLint Plugin
+        run: yarn lint:eslint-plugin
+      - name: Lint Stylelint
+        run: yarn lint:stylelint
       - name: Run TypeScript Checks (Blade)
         run: yarn typecheck
         working-directory: packages/blade
