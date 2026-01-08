@@ -57,6 +57,14 @@ interface ChartLineProps {
    * @private
    */
   _totalLines?: number;
+  /**
+   * @private
+   */
+  _hoveredDataKey?: string | null;
+  /**
+   * @private
+   */
+  _setHoveredDataKey?: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 type data = {
