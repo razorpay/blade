@@ -411,7 +411,30 @@ export const TinyLineChart: StoryFn<typeof ChartLine> = ({
 };
 
 // Forecast Line Chart Example
+// This example shows how to link multiple lines together so they toggle visibility together
+// when clicking the legend. The forecast line has showLegend={false} but toggles with historical.
 export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
+  const [selectedDataKeys, setSelectedDataKeys] = React.useState(['historical', 'forecast']);
+
+  const handleSelectionChange = (newSelectedKeys: string[]): void => {
+    // Check if 'historical' was toggled
+    const historicalWasSelected = selectedDataKeys.includes('historical');
+    const historicalIsSelected = newSelectedKeys.includes('historical');
+
+    if (historicalWasSelected !== historicalIsSelected) {
+      // If historical was toggled, toggle forecast too
+      if (historicalIsSelected) {
+        // Show both
+        setSelectedDataKeys(['historical', 'forecast']);
+      } else {
+        // Hide both
+        setSelectedDataKeys(newSelectedKeys.filter((key) => key !== 'forecast'));
+      }
+    } else {
+      setSelectedDataKeys(newSelectedKeys);
+    }
+  };
+
   return (
     <ChartsWrapper>
       <Box width="100%" height="400px">
@@ -419,7 +442,10 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
           <ChartXAxis dataKey="date" />
           <ChartYAxis />
           <ChartTooltip />
-          <ChartLegend />
+          <ChartLegend
+            selectedDataKeys={selectedDataKeys}
+            onSelectedDataKeysChange={handleSelectionChange}
+          />
           <ChartLine
             dataKey="historical"
             name="Historical Data"
