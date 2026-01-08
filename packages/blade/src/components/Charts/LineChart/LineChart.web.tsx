@@ -87,8 +87,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   // State to track which lines are hidden (by dataKey)
   const [hiddenDataKeys, setHiddenDataKeys] = React.useState<Set<string>>(new Set());
 
-  // Handler for legend click to toggle line visibility
-  const handleLegendClick = React.useCallback((dataKey: string) => {
+  // Handler to toggle line visibility (called by ChartLegend when isLegendClickable is true)
+  const handleToggleDataKey = React.useCallback((dataKey: string) => {
     setHiddenDataKeys((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(dataKey)) {
@@ -151,7 +151,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         chartName: 'line',
         dataColorMapping,
         hiddenDataKeys,
-        onLegendClick: handleLegendClick,
+        onToggleDataKey: handleToggleDataKey,
       }}
     >
       <BaseBox

@@ -245,50 +245,65 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
-const StyledLegendWrapper = styled.button<{ $isHidden: boolean }>(({ theme, $isHidden }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  cursor: 'pointer',
-  opacity: $isHidden ? 0.4 : 1,
-  background: 'none',
-  border: 'none',
-  padding: 0,
-  '& p': {
-    color: theme.colors.surface.text.gray.muted,
-    transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
-  },
-  '&:hover p': {
-    color: theme.colors.surface.text.gray.normal,
-  },
-}));
+const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: boolean }>(
+  ({ theme, $isHidden, $isClickable }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    cursor: $isClickable ? 'pointer' : 'default',
+    opacity: $isHidden ? 0.4 : 1,
+    background: 'none',
+    border: 'none',
+    padding: 0,
+    '& p': {
+      color: theme.colors.surface.text.gray.muted,
+      transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
+    },
+    '&:hover p': {
+      color: $isClickable ? theme.colors.surface.text.gray.normal : undefined,
+    },
+  }),
+);
 
 const LegendItem = ({
   entry,
   index,
+  allowChartToggle = true,
+  onLegendClick,
 }: {
   entry: { color: string; value: string; dataKey: string };
   index: number;
+  allowChartToggle?: boolean;
+  onLegendClick?: (dataKey: string, meta: { isHidden: boolean }) => void;
 }): JSX.Element => {
   const { theme } = useTheme();
   const {
     dataColorMapping,
     chartName,
     hiddenDataKeys,
-    onLegendClick,
+    onToggleDataKey,
   } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
-  const isHidden = hiddenDataKeys?.has(entry.dataKey);
+  const isHidden = hiddenDataKeys?.has(entry.dataKey) ?? false;
 
+  // Legends are interactive if either allowChartToggle is true OR onLegendClick is provided
+  const isLegendInteractive = allowChartToggle || Boolean(onLegendClick);
   const handleClick = (): void => {
-    onLegendClick?.(entry.dataKey);
+    // Call user's onClick handler if provided (with current hidden state before toggle)
+    onLegendClick?.(entry.dataKey, { isHidden });
+
+    // Toggle visibility only if allowChartToggle is true
+    if (allowChartToggle) {
+      onToggleDataKey?.(entry.dataKey);
+    }
   };
 
   return (
     <StyledLegendWrapper
       key={`item-${index}`}
       $isHidden={isHidden ?? false}
-      onClick={handleClick}
+      $isClickable={isLegendInteractive}
+      onClick={isLegendInteractive ? handleClick : undefined}
       type="button"
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
@@ -322,8 +337,10 @@ const CustomSquareLegend = (props: {
     dataKey: string;
   }>;
   layout: Layout;
+  allowChartToggle?: boolean;
+  onLegendClick?: (dataKey: string, meta: { isHidden: boolean }) => void;
 }): JSX.Element | null => {
-  const { payload, layout } = props;
+  const { payload, layout, allowChartToggle, onLegendClick } = props;
 
   if (!payload || payload.length === 0) {
     return null;
@@ -349,13 +366,23 @@ const CustomSquareLegend = (props: {
       flexWrap="wrap"
     >
       {filteredPayload.map((entry, index) => (
-        <LegendItem entry={entry} index={index} key={`item-${index}`} />
+        <LegendItem
+          entry={entry}
+          index={index}
+          key={`item-${index}`}
+          allowChartToggle={allowChartToggle}
+          onLegendClick={onLegendClick}
+        />
       ))}
     </Box>
   );
 };
 
-const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
+const _ChartLegend: React.FC<ChartLegendProps> = ({
+  allowChartToggle = true,
+  onLegendClick,
+  ...props
+}) => {
   const { theme } = useTheme();
 
   return (
@@ -368,7 +395,13 @@ const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
       }}
       align="center"
       verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
-      content={<CustomSquareLegend layout={props.layout ?? 'horizontal'} />}
+      content={
+        <CustomSquareLegend
+          layout={props.layout ?? 'horizontal'}
+          allowChartToggle={allowChartToggle}
+          onLegendClick={onLegendClick}
+        />
+      }
       {...props}
     />
   );

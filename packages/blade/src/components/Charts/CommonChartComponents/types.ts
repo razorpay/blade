@@ -64,6 +64,17 @@ type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
+  /**
+   * Whether clicking on legend items should toggle the visibility of the corresponding chart element.
+   * @default true
+   */
+  allowChartToggle?: boolean;
+  /**
+   * Callback fired when a legend item is clicked.
+   * Provides the dataKey of the clicked legend item and whether it's currently hidden.
+   * Note: `isHidden` reflects the state before the toggle (if isLegendClickable is true).
+   */
+  onLegendClick?: (dataKey: string, meta: { isHidden: boolean }) => void;
 };
 
 type ChartCartesianGridProps = Omit<
@@ -88,7 +99,11 @@ type CommonChartComponentsStateType = {
 // Dispatch type - contains only the updater functions
 type CommonChartComponentsDispatchType = {
   setDataColorMapping?: (dataColorMapping: DataColorMapping) => void;
-  onLegendClick?: (dataKey: string) => void;
+  /**
+   * Internal handler to toggle visibility of chart elements.
+   * Called by LegendItem when isLegendClickable is true.
+   */
+  onToggleDataKey?: (dataKey: string) => void;
 };
 
 // Legacy combined type for backward compatibility

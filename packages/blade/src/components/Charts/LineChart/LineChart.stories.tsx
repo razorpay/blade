@@ -695,6 +695,62 @@ export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
   );
 };
 
+export const LineChartWithToggleDisabled: StoryFn<typeof ChartLine> = () => {
+  const theme = useTheme();
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" label="Month" />
+          <ChartYAxis label="Sales ($)" />
+          <ChartTooltip
+            cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
+          />
+          <ChartLegend
+            allowChartToggle={false}
+            onLegendClick={() => {
+              console.log('demo');
+            }}
+          />
+          <ChartLine dataKey="northAmerica" name="North America" />
+          <ChartLine dataKey="southAmerica" name="South America" />
+          <ChartLine dataKey="europe" name="Europe" />
+          <ChartLine dataKey="asia" name="Asia" />
+          <ChartCartesianGrid />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+export const LineChartWithToggleDisabledAndWithNoOnClick: StoryFn<typeof ChartLine> = () => {
+  const theme = useTheme();
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" label="Month" />
+          <ChartYAxis label="Sales ($)" />
+          <ChartTooltip
+            cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
+          />
+          <ChartLegend
+            allowChartToggle={false}
+            onClick={() => {
+              console.log('demo');
+            }}
+          />
+          <ChartLine dataKey="northAmerica" name="North America" />
+          <ChartLine dataKey="southAmerica" name="South America" />
+          <ChartLine dataKey="europe" name="Europe" />
+          <ChartLine dataKey="asia" name="Asia" />
+          <ChartCartesianGrid />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
@@ -706,3 +762,6 @@ LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';
 LineChartWithSwitchableTimePeriods.storyName = 'Line Chart with Switchable Time Periods';
 LineChartWithManyLines.storyName = 'Line Chart with many lines';
 LineChartWithCustomCursor.storyName = 'Line Chart with custom cursor';
+LineChartWithToggleDisabled.storyName = 'Line Charts with Toggle Disabled';
+LineChartWithToggleDisabledAndWithNoOnClick.storyName =
+  'Line Charts with Toggle Disabled and with no  onclick';

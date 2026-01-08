@@ -6,7 +6,7 @@ export const CommonChartComponentsContext = createContext<CommonChartComponentsC
   setDataColorMapping: () => undefined,
   chartName: undefined,
   hiddenDataKeys: undefined,
-  onLegendClick: () => undefined,
+  onToggleDataKey: () => undefined,
 });
 
 export const useCommonChartComponentsContext = (): CommonChartComponentsContextType =>
