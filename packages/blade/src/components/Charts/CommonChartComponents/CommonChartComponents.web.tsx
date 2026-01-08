@@ -195,7 +195,7 @@ const CustomTooltip = ({
       key={key}
     >
       <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
-        <BaseBox
+        <div
           style={{
             width: theme.spacing[4],
             height: theme.spacing[4],
@@ -251,11 +251,11 @@ const StyledLegendWrapper = styled.div<{ $isHidden: boolean }>(({ theme, $isHidd
   alignItems: 'center',
   cursor: 'pointer',
   opacity: $isHidden ? 0.4 : 1,
-  '& .legend-text': {
+  '& p': {
     color: theme.colors.surface.text.gray.muted,
     transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
   },
-  '&:hover .legend-text': {
+  '&:hover p': {
     color: theme.colors.surface.text.gray.normal,
   },
 }));
@@ -296,7 +296,7 @@ const LegendItem = ({
       }}
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
-        <BaseBox
+        <span
           style={{
             backgroundColor: getIn(theme.colors, legendColor),
             width: theme.spacing[4],
@@ -306,16 +306,9 @@ const LegendItem = ({
           }}
         />
         {/* Legend text with custom color and size */}
-        <span
-          className="legend-text"
-          style={{
-            fontSize: theme.typography.fonts.size[100],
-            fontFamily: theme.typography.fonts.family.text,
-            fontWeight: theme.typography.fonts.weight.regular,
-          }}
-        >
+        <Text size="medium" color="surface.text.gray.muted">
           {entry.value}
-        </span>
+        </Text>
       </Box>
     </StyledLegendWrapper>
   );
