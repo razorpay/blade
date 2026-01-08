@@ -10,10 +10,6 @@
   let isLoading = $state(false);
   let isLoading2 = $state(false);
   
-  function handleClick(): void {
-    alert('Button clicked!')
-  }
-
   function handleLinkClick(event: MouseEvent): void {
     console.log('Link clicked!', event)
   }

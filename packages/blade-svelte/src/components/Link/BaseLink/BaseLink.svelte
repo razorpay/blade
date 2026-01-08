@@ -1,8 +1,9 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
+  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, type AriaRoles } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
+  import type { TextColors } from '../../Typography/BaseText/types';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import { getBaseLinkClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
@@ -136,7 +137,7 @@
         element: 'text',
         currentInteraction: currentInteraction as ActionStatesType,
         isDisabled,
-      }),
+      }) as TextColors,
       fontSize: textSizes.fontSize[size],
       lineHeight: textSizes.lineHeight[size],
       
@@ -184,7 +185,7 @@
   // Accessibility attributes
   const accessibilityAttrs = $derived(
     makeAccessible({
-      role: elementRole,
+      role: elementRole as AriaRoles,
       disabled: isElementDisabled,
       ...accessibilityProps,
     }),
@@ -297,7 +298,7 @@
         lineHeight={lineHeight}
         fontFamily="text"
         fontWeight="medium"
-        textDecorationLine={textDecorationLine}
+        textDecorationLine={textDecorationLine as 'none' | 'line-through' | 'underline'}
         componentName={MetaConstants.Link}
       >
         {#if typeof children === 'string'}

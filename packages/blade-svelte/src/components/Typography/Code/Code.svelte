@@ -1,6 +1,7 @@
 <script lang="ts">
   import BaseText from '../BaseText/BaseText.svelte';
   import type { CodeProps } from './types';
+  import type { TextColors } from '../BaseText/types';
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import { getCodeClasses, getCodeFontSizeAndLineHeight, getCodeColor } from '@razorpay/blade-core/styles';
@@ -33,7 +34,7 @@
   });
 
   const { fontSize, lineHeight } = $derived(getCodeFontSizeAndLineHeight(finalSize));
-  const codeTextColor = $derived(getCodeColor({ isHighlighted: finalIsHighlighted, color }));
+  const codeTextColor = $derived(getCodeColor({ isHighlighted: finalIsHighlighted, color }) as TextColors);
 
   // Extract styled props and convert to classes
   // This ensures everything is class-based with no inline styles

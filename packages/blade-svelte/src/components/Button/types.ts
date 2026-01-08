@@ -57,4 +57,20 @@ export type ButtonProps = BaseButtonProps & {
    * Function called when the button is clicked
    */
   onClick?: (event: MouseEvent) => void;
+  /**
+   * Accessibility role for the button
+   */
+  role?: string;
+  /**
+   * aria-describedby attribute
+   */
+  'aria-describedby'?: string;
+  /**
+   * aria-expanded attribute
+   */
+  'aria-expanded'?: boolean;
+  /**
+   * aria-haspopup attribute
+   */
+  'aria-haspopup'?: 'menu' | boolean;
 } & StyledPropsBlade;

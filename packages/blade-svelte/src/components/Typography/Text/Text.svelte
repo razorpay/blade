@@ -1,7 +1,8 @@
 <script lang="ts">
   import BaseText from '../BaseText/BaseText.svelte';
   import type { TextBodyVariant, TextCaptionVariant } from './types';
-  import type { Snippet } from 'svelte';
+  import type { BaseTextProps } from '../BaseText/types';
+  import type { TextAs } from '@razorpay/blade-core/styles';
   import { getTextProps, validTextAsValues } from '@razorpay/blade-core/styles';
 
   type TextComponentProps = (TextBodyVariant | TextCaptionVariant) & {
@@ -10,7 +11,7 @@
   };
 
   let {
-    as = 'p',
+    as = 'p' as TextAs,
     variant = 'body',
     weight,
     size,
@@ -32,9 +33,9 @@
   // Validate as prop in development
   $effect(() => {
     if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-      if (as && !validTextAsValues.includes(as)) {
+      if (as && !validTextAsValues.includes(as as TextAs)) {
         console.error(
-          `[Blade: Text]: Invalid \`as\` prop value - ${as}. Only ${validTextAsValues.join(', ')} are accepted`,
+          `[Blade: Text]: Invalid \`as\` prop value - ${String(as)}. Only ${validTextAsValues.join(', ')} are accepted`,
         );
       }
     }
@@ -65,7 +66,7 @@
   });
 </script>
 
-<BaseText {...mergedProps}>
+<BaseText {...(mergedProps as unknown as Omit<BaseTextProps, 'children'>)}>
   {#if typeof children === 'string'}
     {children}
   {:else}

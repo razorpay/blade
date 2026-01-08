@@ -66,7 +66,16 @@ export type BaseTextProps = {
    * React Native only - not applicable for Svelte but kept for API consistency
    */
   numberOfLines?: number;
-  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code' | 'display';
+  componentName?:
+    | 'base-text'
+    | 'text'
+    | 'title'
+    | 'heading'
+    | 'code'
+    | 'display'
+    | 'button'
+    | 'spinner'
+    | 'link';
   testID?: string;
   // Analytics attributes
   [key: `data-analytics-${string}`]: string;

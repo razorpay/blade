@@ -41,8 +41,8 @@
     "build:clean": "rm -rf dist",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
     "build:lib": "rollup -c",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "svelte-check": "svelte-check --tsconfig ./tsconfig.json",
+    "svelte-check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o storybook-static"
   },
