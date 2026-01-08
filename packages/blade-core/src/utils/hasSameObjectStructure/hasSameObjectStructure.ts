@@ -42,4 +42,3 @@ const hasSameObjectStructure = (obj1: ObjectWithKeys, obj2: ObjectWithKeys): boo
 };
 
 export { hasSameObjectStructure };
-

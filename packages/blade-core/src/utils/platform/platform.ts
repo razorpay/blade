@@ -25,4 +25,3 @@ namespace Platform {
 }
 
 export type { Platform };
-

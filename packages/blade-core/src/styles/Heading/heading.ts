@@ -1,12 +1,49 @@
 // Font size and line height types matching BaseText
-export type FontSize = 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
-export type LineHeight = 0 | 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100;
+export type FontSize =
+  | 25
+  | 50
+  | 75
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 1000
+  | 1100;
+export type LineHeight =
+  | 0
+  | 25
+  | 50
+  | 75
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 1000
+  | 1100;
 
 export type HeadingSize = 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 export type HeadingWeight = 'regular' | 'medium' | 'semibold';
 export type HeadingAs = 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export const validHeadingAsValues: readonly HeadingAs[] = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+export const validHeadingAsValues: readonly HeadingAs[] = [
+  'span',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+] as const;
 
 export type HeadingPropsResult = {
   color?: string;
@@ -81,7 +118,6 @@ export function getHeadingProps({
   }
 
   // Override the computed `as` prop if user passed an `as` prop
-  props.as = as || props.as;
+  props.as = as ?? props.as;
   return props;
 }
-

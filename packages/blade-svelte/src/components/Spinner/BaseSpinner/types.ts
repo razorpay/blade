@@ -31,4 +31,3 @@ export type BaseSpinnerProps = {
   labelPosition?: 'right' | 'bottom';
   testID?: string;
 } & StyledPropsBlade;
-

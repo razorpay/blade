@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react-native';
 import tinycolor from 'tinycolor2';
-import { createTheme } from '../createTheme';
 import { BladeProvider } from '~components/BladeProvider';
 import { Button } from '~components/Button';
+import { createTheme } from '../createTheme';
 
 describe('createTheme', () => {
   it('should create a theme with the correct brand colors', () => {

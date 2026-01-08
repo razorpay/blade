@@ -26,4 +26,3 @@ describe('lodashButBetter/isEmpty', () => {
     expect(isEmpty({ length: '0' })).toBe(false);
   });
 });
-

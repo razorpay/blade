@@ -194,6 +194,22 @@ module.exports = {
         'import/no-cycle': 'off',
       },
     },
+    {
+      // blade-core uses path aliases that resolve to sibling packages
+      // and has default exports that trigger false positives with export *
+      files: ['packages/blade-core/**/*.{ts,tsx,js}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'import/export': 'off',
+      },
+    },
+    {
+      // blade imports from sibling packages in monorepo
+      files: ['packages/blade/**/*.{ts,tsx,js}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
   ],
   ignorePatterns: ['packages/blade-coverage-extension'],
 };

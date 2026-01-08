@@ -543,7 +543,7 @@ export const WithVirtualization = (): React.ReactElement => {
   const dropdownData = generateDropdownData(20);
 
   return (
-    <Box padding={'8px'}>
+    <Box padding="8px">
       <Box> Virtualized with ActionListSection </Box>
       <Dropdown selectionType="multiple">
         <AutoComplete

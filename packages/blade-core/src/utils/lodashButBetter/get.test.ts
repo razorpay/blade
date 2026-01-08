@@ -39,4 +39,3 @@ describe('lodashButBetter/get', () => {
     expect(get({ a: { b: { c: { d: { e: 2 } } } } }, 'a.b.c.d.e')).toBe(2);
   });
 });
-
