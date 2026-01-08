@@ -298,9 +298,9 @@ const LegendItem = ({
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
-            backgroundColor: getIn(theme.colors, legendColor),
-            width: theme.spacing[4],
-            height: theme.spacing[4],
+            backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
+            width: theme.spacing[4], // Size of the square
+            height: theme.spacing[4], // Size of the square
             display: 'inline-block',
             borderRadius: theme.border.radius.small,
           }}
