@@ -268,8 +268,12 @@ const LegendItem = ({
   index: number;
 }): JSX.Element => {
   const { theme } = useTheme();
-  const { dataColorMapping, chartName, hiddenDataKeys, onLegendClick } =
-    useCommonChartComponentsContext();
+  const {
+    dataColorMapping,
+    chartName,
+    hiddenDataKeys,
+    onLegendClick,
+  } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
   const isHidden = hiddenDataKeys?.has(entry.dataKey);
