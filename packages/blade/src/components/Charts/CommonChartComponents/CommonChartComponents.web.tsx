@@ -246,11 +246,14 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
-const StyledLegendWrapper = styled.div<{ $isHidden: boolean }>(({ theme, $isHidden }) => ({
+const StyledLegendWrapper = styled.button<{ $isHidden: boolean }>(({ theme, $isHidden }) => ({
   display: 'flex',
   alignItems: 'center',
   cursor: 'pointer',
   opacity: $isHidden ? 0.4 : 1,
+  background: 'none',
+  border: 'none',
+  padding: 0,
   '& p': {
     color: theme.colors.surface.text.gray.muted,
     transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
@@ -287,13 +290,7 @@ const LegendItem = ({
       key={`item-${index}`}
       $isHidden={isHidden ?? false}
       onClick={handleClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          handleClick();
-        }
-      }}
+      type="button"
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
