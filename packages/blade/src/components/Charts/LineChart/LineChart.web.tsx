@@ -18,6 +18,8 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import debounce from '~utils/lodashButBetter/debounce';
+
 
 const Line: React.FC<ChartLineProps> = ({
   color,
@@ -56,11 +58,17 @@ const Line: React.FC<ChartLineProps> = ({
   // Reduce opacity when another line is hovered
   const strokeOpacity = isOtherLineHovered ? 0.2 : 1;
 
+  // we need to avoid flicker on quick run down of mouse cursor here.
+  const handleDebouncedHoveredDataKey = debounce((dataKey :string) => {
+    setHoveredDataKey?.(dataKey);
+  }, 40);
+
+
   // activeDot config with hover handlers
   const activeDotConfig = activeDot
     ? {
-        onMouseEnter: () => !hide && setHoveredDataKey?.(dataKey),
-        onMouseLeave: () => !hide && setHoveredDataKey?.(null),
+        onMouseEnter: () => !hide && handleDebouncedHoveredDataKey?.(dataKey),
+        onMouseLeave: () => !hide && handleDebouncedHoveredDataKey?.(null),
       }
     : false;
 
@@ -73,8 +81,8 @@ const Line: React.FC<ChartLineProps> = ({
         strokeWidth={15}
         dot={false}
         activeDot={false}
-        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey)}
-        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        onMouseEnter={() => !hide && handleDebouncedHoveredDataKey?.(dataKey)}
+        onMouseLeave={() => !hide && handleDebouncedHoveredDataKey?.(null)}
         connectNulls
         legendType="none"
         tooltipType="none"
@@ -93,8 +101,8 @@ const Line: React.FC<ChartLineProps> = ({
         animationDuration={animationDuration}
         strokeLinecap="round"
         strokeLinejoin="round"
-        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey)}
-        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        onMouseEnter={() => !hide && handleDebouncedHoveredDataKey?.(dataKey)}
+        onMouseLeave={() => !hide && handleDebouncedHoveredDataKey?.(null)}
         hide={hide}
         {...props}
       />
