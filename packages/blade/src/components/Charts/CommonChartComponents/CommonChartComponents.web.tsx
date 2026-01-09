@@ -269,33 +269,26 @@ const LegendItem = ({
   entry,
   index,
   isSelected,
-  onToggle,
-  onLegendClick,
+  onClick,
 }: {
   entry: { color: string; value: string; dataKey: string };
   index: number;
   isSelected: boolean;
-  onToggle: (dataKey: string) => void;
-  onLegendClick?: ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }) => void;
+  onClick: (dataKey: string) => void;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
 
-  const handleClick = (): void => {
-    // Call user's onClick handler if provided
-    onLegendClick?.({ dataKey: entry.dataKey, isSelected });
-    // Toggle selection
-    onToggle(entry.dataKey);
-  };
-
   return (
     <StyledLegendWrapper
       key={`item-${index}`}
       $isHidden={!isSelected}
       $isClickable={true}
-      onClick={handleClick}
+      onClick={() => {
+        onClick(entry.dataKey);
+      }}
       type="button"
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
@@ -328,11 +321,10 @@ const CustomSquareLegend = (props: {
     dataKey: string;
   }>;
   layout: Layout;
-  selectedDataKeys: Set<string>;
-  onToggle: (dataKey: string) => void;
-  onLegendClick?: ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }) => void;
+  selectedDataKeys: string[];
+  onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
-  const { payload, layout, selectedDataKeys, onToggle, onLegendClick } = props;
+  const { payload, layout, selectedDataKeys, onClick } = props;
 
   if (!payload || payload.length === 0) {
     return null;
@@ -362,9 +354,8 @@ const CustomSquareLegend = (props: {
           entry={entry}
           index={index}
           key={`item-${index}`}
-          isSelected={selectedDataKeys.has(entry.dataKey)}
-          onToggle={onToggle}
-          onLegendClick={onLegendClick}
+          isSelected={selectedDataKeys.includes(entry.dataKey)}
+          onClick={onClick}
         />
       ))}
     </Box>
@@ -375,17 +366,11 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   selectedDataKeys: selectedDataKeysProp,
   defaultSelectedDataKeys,
   onSelectedDataKeysChange,
-  onLegendClick,
   ...props
 }) => {
   const { theme } = useTheme();
-  const { dataColorMapping, setVisibleDataKeys } = useCommonChartComponentsContext();
+  const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
 
-  // Determine if component is controlled
-  const isControlled = selectedDataKeysProp !== undefined;
-
-  // Track if user has interacted with the legend to prevent auto-reset
-  const hasUserInteracted = React.useRef(false);
 
   // Get all available dataKeys from the chart
   const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
@@ -394,50 +379,31 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   const [selectedKeysArray, setSelectedKeysArray] = useControllableState({
     value: selectedDataKeysProp,
     defaultValue: defaultSelectedDataKeys ?? allDataKeys,
-    onChange: onSelectedDataKeysChange,
   });
 
-  // When allDataKeys changes and we're in uncontrolled mode without explicit defaults,
-  // update selection to include all keys (handles case when context isn't ready on first render)
-  // Skip this if user has already interacted with the legend
+  // Sync selectedDataKeys to context's selectedDataKeys
   React.useEffect(() => {
-    if (
-      !isControlled &&
-      !defaultSelectedDataKeys &&
-      allDataKeys.length > 0 &&
-      !hasUserInteracted.current
-    ) {
-      // Only update if current selection is empty but allDataKeys has items
-      setSelectedKeysArray((prev) => {
-        if (prev.length === 0) {
-          return allDataKeys;
-        }
-        return prev;
-      });
-    }
-  }, [allDataKeys, isControlled, defaultSelectedDataKeys, setSelectedKeysArray]);
-
-  // Convert array to Set for efficient lookups
-  const selectedDataKeys = React.useMemo(() => new Set(selectedKeysArray), [selectedKeysArray]);
-
-  // Sync selectedDataKeys to context's visibleDataKeys
-  React.useEffect(() => {
-    setVisibleDataKeys?.(selectedDataKeys);
-  }, [selectedDataKeys, setVisibleDataKeys]);
+    setSelectedDataKeys?.(selectedKeysArray);
+  }, [selectedKeysArray, setSelectedDataKeys]);
 
   // Handle toggle
-  const handleToggle = React.useCallback(
+  const handleClick = React.useCallback(
     (dataKey: string) => {
       // Mark that user has interacted to prevent auto-reset behavior
-      hasUserInteracted.current = true;
+      const isCurrentlySelected = selectedKeysArray.includes(dataKey);
+      const isSelected = !isCurrentlySelected;
+
       setSelectedKeysArray((prev) => {
         if (prev.includes(dataKey)) {
           return prev.filter((key) => key !== dataKey);
         }
         return [...prev, dataKey];
       });
+
+      // Call the callback with the clicked dataKey and its new selected state
+      onSelectedDataKeysChange?.({ dataKey, isSelected });
     },
-    [setSelectedKeysArray],
+    [setSelectedKeysArray, selectedKeysArray, onSelectedDataKeysChange],
   );
 
   return (
@@ -453,9 +419,8 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
       content={
         <CustomSquareLegend
           layout={props.layout ?? 'horizontal'}
-          selectedDataKeys={selectedDataKeys}
-          onToggle={handleToggle}
-          onLegendClick={onLegendClick}
+          selectedDataKeys={selectedKeysArray}
+          onClick={handleClick}
         />
       }
       {...props}

@@ -125,10 +125,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     chartName: 'line',
   });
 
-  // State to track which lines are visible (by dataKey) - all visible by default
-  const [visibleDataKeys, setVisibleDataKeys] = React.useState<Set<string> | undefined>(undefined);
   // State to track which line is currently hovered
   const [hoveredDataKey, setHoveredDataKey] = React.useState<string | null>(null);
+  const [selectedDataKeys, setSelectedDataKeys] = React.useState<string[] | undefined>(undefined);
 
   /**
    * We need to check child of CharLineWrapper. if they have any custom color we store that.
@@ -160,13 +159,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             isCustomColor: Boolean(childColor),
           };
         }
-        // Pass hide prop based on whether this line's dataKey is NOT in visibleDataKeys
-        // If visibleDataKeys is undefined, show all lines (default behavior)
+        // Pass hide prop based on whether this line's dataKey is NOT in selectedDataKeys
+        // If selectedDataKeys is undefined, show all lines (default behavior)
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
           _totaLine: totalLines,
-          hide: visibleDataKeys ? !visibleDataKeys.has(dataKey) : false,
+          hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartLineProps>);
       }
       return child;
@@ -174,16 +173,16 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     assignDataColorMapping(dataColorMapping, themeColors);
 
     return { dataColorMapping, lineChartModifiedChildrens, totalLines };
-  }, [children, colorTheme, themeColors, visibleDataKeys]);
+  }, [children, colorTheme, themeColors, selectedDataKeys]);
 
   return (
     <LineChartContext.Provider value={{ hoveredDataKey, setHoveredDataKey }}>
-      <CommonChartComponentsContext.Provider
+    <CommonChartComponentsContext.Provider
         value={{
           chartName: 'line',
           dataColorMapping,
-          visibleDataKeys,
-          setVisibleDataKeys,
+          selectedDataKeys,
+          setSelectedDataKeys,
         }}
       >
         <BaseBox
