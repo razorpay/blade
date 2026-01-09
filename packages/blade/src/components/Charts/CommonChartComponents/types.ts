@@ -65,7 +65,7 @@ type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
   /**
-   * Controlled state: Array of dataKeys that are currently selected (visible).
+   * Array of dataKeys that are currently selected.
    * When provided, the component is in controlled mode.
    */
   selectedDataKeys?: string[];
