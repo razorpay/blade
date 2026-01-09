@@ -13,6 +13,12 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react-native-a11y/all',
   ],
+  ignorePatterns: [
+    'packages/blade-token-helper/**/*',
+    'packages/blade-token-helper/**',
+    '**/blade-token-helper/**',
+    'packages/blade-token-helper',
+  ],
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
