@@ -371,7 +371,6 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   const { theme } = useTheme();
   const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
 
-
   // Get all available dataKeys from the chart
   const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
 
