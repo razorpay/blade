@@ -423,7 +423,6 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
     dataKey: string;
     selectedKeysArray: string[];
   }): void => {
-    
     if (dataKey === 'historical' && selectedKeysArray.includes('forecast')) {
       setSelectedDataKeys(selectedKeysArray.filter((key) => key !== 'forecast'));
     } else {

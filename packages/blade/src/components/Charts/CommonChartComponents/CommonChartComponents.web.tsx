@@ -389,11 +389,11 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   const handleClick = React.useCallback(
     (dataKey: string) => {
       const newSelectedKeys = selectedKeysArray.includes(dataKey)
-      ? selectedKeysArray.filter((key) => key !== dataKey)
-      : [...selectedKeysArray, dataKey];
+        ? selectedKeysArray.filter((key) => key !== dataKey)
+        : [...selectedKeysArray, dataKey];
 
-    setSelectedKeysArray(() => newSelectedKeys);
-    onSelectedDataKeysChange?.({ dataKey, selectedKeysArray: newSelectedKeys });
+      setSelectedKeysArray(() => newSelectedKeys);
+      onSelectedDataKeysChange?.({ dataKey, selectedKeysArray: newSelectedKeys });
     },
     [setSelectedKeysArray, selectedKeysArray, onSelectedDataKeysChange],
   );
