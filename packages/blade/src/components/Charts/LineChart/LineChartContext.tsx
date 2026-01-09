@@ -11,4 +11,3 @@ export const LineChartContext = createContext<LineChartContextType>({
 });
 
 export const useLineChartContext = (): LineChartContextType => useContext(LineChartContext);
-

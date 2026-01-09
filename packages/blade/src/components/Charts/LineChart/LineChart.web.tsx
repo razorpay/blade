@@ -20,7 +20,6 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import debounce from '~utils/lodashButBetter/debounce';
 
-
 const Line: React.FC<ChartLineProps> = ({
   color,
   strokeStyle = 'solid',
