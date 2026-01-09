@@ -1,0 +1,238 @@
+.productsForYouContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .productsForYouTitle {
+    color: #0a0a0a;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.528px;
+  }
+  .productCard {
+    display: flex;
+    padding: 4px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 12px 12px 12px 12px;
+    border: 1px solid #e4e6e7;
+    position: relative;
+
+    background: linear-gradient(
+      180deg,
+      #fafafb 0%,
+      #fff 27.73%,
+      #fff 71.79%,
+      #f7f7f8 100%
+    );
+
+    box-shadow: 0 6px 32px 4px rgba(184, 196, 214, 0.06),
+      0 -1.5px 0 1px #fff inset, 0 1.5px 0 1px #fff inset;
+
+    .productCardImage {
+      background-color: #e2eeec;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px 12px 0px 0px;
+    }
+    .productCardContent {
+      margin: 16px;
+      .productCardTitle {
+        color: #0a0a0a;
+
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.66px;
+      }
+      .productCardDescription {
+        color: #7f7f7f;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 142.857% */
+        letter-spacing: -0.182px;
+      }
+      .productCardTextSection {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+    }
+    .blueContainer {
+      height: 90px;
+      width: 280px;
+      position: absolute;
+      filter: url(#blueContainerFilter);
+      backdrop-filter: blur(15px);
+      top: 260px;
+      width: calc(100% - 8px);
+      /* Create smooth fade-in effect using pseudo-element */
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0) 10%,
+          rgba(255, 255, 255, 0.3) 30%,
+          rgba(255, 255, 255, 0.7) 60%,
+          rgba(255, 255, 255, 1) 100%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+    }
+    .knowMore {
+      color: #0a0a0a;
+
+      font-family: "Inter";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.156px;
+    }
+    /* .signUp {
+      display: flex;
+      height: 32px;
+      padding: 6px 16px 7px 16px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: 1px solid #000;
+
+      background: linear-gradient(284deg, #000 47.58%, #3e3e3e 98.76%);
+
+      box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgba(255, 255, 255, 0.1) inset;
+      color: #fff;
+      font-family: Inter;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.156px;
+    } */
+
+    .signUp {
+      position: relative;
+      display: flex;
+      height: 32px;
+      padding: 0 16px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      /* Text Styling */
+      color: #fff;
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.156px;
+      cursor: pointer;
+      z-index: 1;
+
+      /* Shape */
+      border-radius: 8px;
+
+      /* --- MERGED BORDER LOGIC --- */
+      /* 1. Transparent border allows the gradient background to show through as the border */
+      border: 1px solid transparent;
+
+      /* 2. The Backgrounds */
+      background: 
+          /* Inner Body: Dark Gradient */ linear-gradient(
+            284deg,
+            #000 47.58%,
+            #3e3e3e 98.76%
+          )
+          padding-box,
+        /* Border Layer: Grey top (#505050) -> Dark bottom (#1A1A1A) */
+          linear-gradient(180deg, #505050 0%, #1a1a1a 100%) border-box;
+
+      /* ---  SHADOWS --- */
+      box-shadow: 
+          /* The 2px inner ring*/ 0 0 0 2px
+          rgba(255, 255, 255, 0.1) inset,
+        /* The outer drop shadow */ 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+
+      transition: all 0.2s ease;
+      overflow: hidden;
+    }
+
+    .bottom-key-light {
+      position: absolute;
+      /* INCREASED INTENSITY: Moved up from -16px to -15px */
+      bottom: -15px;
+
+      right: -10px;
+
+      width: 50px;
+      height: 20px;
+
+      /*  gradient colors */
+      background: linear-gradient(90deg, #7fb6ff 0%, #8aa3b1 100%);
+
+      /* The Blur Effect */
+      filter: blur(10px);
+
+      z-index: 0;
+      opacity: 0.7;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Hover State */
+    .signUp:hover {
+      transform: translateY(-1px);
+      opacity: 1;
+
+      box-shadow: 
+          /* Keep the inset ring on hover */ 0 0 0 2px
+          rgba(255, 255, 255, 0.1) inset,
+        0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    /* Brighten the glow on hover */
+    .signUp:hover .bottom-key-light {
+      opacity: 1;
+      bottom: -14px;
+    }
+
+    /* Active State */
+    .signUp:active {
+      transform: translateY(0px);
+
+      /* Simplify background on click */
+      background: linear-gradient(180deg, #000 0%, #000 100%) padding-box,
+        linear-gradient(180deg, #333 0%, #000 100%) border-box;
+    }
+
+    .signUp:active .bottom-key-light {
+      opacity: 0.4;
+    }
+
+    .btn-text {
+      position: relative;
+      z-index: 2;
+    }
+    .buttonSection {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+}

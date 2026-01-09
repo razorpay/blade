@@ -1,0 +1,66 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  /* padding: 12px 20px; */
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+  background: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 72.72%
+    ),
+    rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(17px);
+
+  .navBarActions {
+    display: flex;
+    gap: 24px;
+  }
+  .userButton {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 23.467px;
+    border: 0.733px solid #000;
+    background: linear-gradient(284deg, #000 47.58%, #3e3e3e 98.76%), #000;
+    box-shadow: 0 0 0 0.733px rgba(255, 255, 255, 0.1) inset;
+    color: white;
+  }
+}
+.navBarContainer {
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-items-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+.navbar-item {
+  display: flex;
+  padding: 7px 10px;
+  align-items: flex-start;
+  gap: 34px;
+  color: #7d7d7d;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.182px;
+}
+.navbar-item-selected {
+  border-radius: 8px;
+  background: rgba(23, 42, 76, 0.07);
+  box-shadow: 0 -1px 0 0 #fff inset;
+  color: #0a0a0a;
+}

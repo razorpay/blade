@@ -1,0 +1,110 @@
+.insightsHeading {
+  color: #0a0a0a;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.528px;
+}
+
+.topInsightsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grapCardContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.graphCardContainer {
+  display: flex;
+  width: 244px;
+  padding: 16px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 12px 12px 12px 12px;
+  border: 1px solid #e4e6e7;
+
+  background: linear-gradient(
+    180deg,
+    #fafafb 0%,
+    #fff 27.73%,
+    #fff 71.79%,
+    #f7f7f8 100%
+  );
+
+  box-shadow: 0 6px 32px 4px rgba(184, 196, 214, 0.06),
+    0 -1px 0 1px #fff inset, 0 1px 0 1px #fff inset;
+  .title {
+    color: #0a0a0a;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.182px;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .graphImageContainer {
+    width: 100%;
+  }
+  .graphDivWrapper {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .sideHeading {
+    color: #7d7d7d;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.156px;
+  }
+  .valueContainer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .value {
+    color: #0a0a0a;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.66px;
+  }
+  .positive {
+    color: #008743;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.156px;
+  }
+  .negative {
+    color: #d92d20;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.156px;
+  }
+}

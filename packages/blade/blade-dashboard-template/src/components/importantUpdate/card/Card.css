@@ -1,0 +1,58 @@
+.card {
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px 12px 12px 12px;
+  border: 1px solid #e4e6e7;
+  width: 337px;
+  background: linear-gradient(
+    180deg,
+    #fafafb 0%,
+    #fff 27.73%,
+    #fff 71.79%,
+    #f7f7f8 100%
+  );
+
+  box-shadow: 0 6px 32px 4px rgba(184, 196, 214, 0.06),
+    0 -1px 0 1px #fff inset, 0 1px 0 1px #fff inset;
+}
+
+.cardImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardSection {
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+}
+
+.cardWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.cardSectionTitle {
+  color: #0a0a0a;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.182px;
+}
+
+.cardSectionSubTitle {
+  overflow: hidden;
+  color: #7d7d7d;
+  text-overflow: ellipsis;
+  font-family: "Inter";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.156px;
+}

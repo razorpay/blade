@@ -1,0 +1,36 @@
+.importantUpdateTitleContainer {
+  display: flex;
+  align-items: center;
+}
+
+.importantUpdateTitle {
+  color: #0a0a0a;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.528px;
+}
+
+.importantUpdateSubHeading {
+  margin-left: 6px;
+  color: #7d7d7d;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.156px;
+}
+
+.cardContainer{
+    display: flex;
+    gap: 20px;
+}
+
+.importantUpdateContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
