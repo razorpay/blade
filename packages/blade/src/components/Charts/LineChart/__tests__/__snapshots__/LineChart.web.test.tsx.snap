@@ -44,7 +44,7 @@ exports[`<Line /> should render Line with all line types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts73-clip"
+                  id="recharts82-clip"
                 >
                   <rect
                     height="790"
@@ -124,7 +124,7 @@ exports[`<Line /> should render Line with all line types 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts76-clip"
+                  id="recharts85-clip"
                 >
                   <rect
                     height="790"
@@ -204,7 +204,7 @@ exports[`<Line /> should render Line with all line types 3`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts79-clip"
+                  id="recharts88-clip"
                 >
                   <rect
                     height="790"
@@ -284,7 +284,7 @@ exports[`<Line /> should render Line with all line types 4`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts82-clip"
+                  id="recharts91-clip"
                 >
                   <rect
                     height="790"
@@ -364,7 +364,7 @@ exports[`<Line /> should render Line with all line types 5`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts85-clip"
+                  id="recharts94-clip"
                 >
                   <rect
                     height="790"
@@ -444,7 +444,7 @@ exports[`<Line /> should render Line with all stroke styles 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts88-clip"
+                  id="recharts97-clip"
                 >
                   <rect
                     height="790"
@@ -524,7 +524,7 @@ exports[`<Line /> should render Line with all stroke styles 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts91-clip"
+                  id="recharts100-clip"
                 >
                   <rect
                     height="790"
@@ -604,7 +604,7 @@ exports[`<Line /> should render Line with all stroke styles 3`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts94-clip"
+                  id="recharts103-clip"
                 >
                   <rect
                     height="790"
@@ -684,7 +684,7 @@ exports[`<Line /> should render Line with custom activeDot configuration 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts100-clip"
+                  id="recharts109-clip"
                 >
                   <rect
                     height="790"
@@ -764,7 +764,7 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts97-clip"
+                  id="recharts106-clip"
                 >
                   <rect
                     height="790"
@@ -900,7 +900,7 @@ exports[`<Line /> should render Line with custom name 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts70-clip"
+                  id="recharts79-clip"
                 >
                   <rect
                     height="790"
@@ -981,7 +981,7 @@ exports[`<Line /> should render Line with default props 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts67-clip"
+                  id="recharts76-clip"
                 >
                   <rect
                     height="790"
@@ -2770,7 +2770,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               <desc />
               <defs>
                 <clippath
-                  id="recharts110-clip"
+                  id="recharts119-clip"
                 >
                   <rect
                     height="760"
@@ -3105,7 +3105,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts116-clip"
+                  id="recharts125-clip"
                 >
                   <rect
                     height="760"
@@ -3466,7 +3466,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               <desc />
               <defs>
                 <clippath
-                  id="recharts106-clip"
+                  id="recharts115-clip"
                 >
                   <rect
                     height="760"
@@ -3834,7 +3834,7 @@ exports[`LineChart Styling Tests should apply correct animation properties for d
               <desc />
               <defs>
                 <clippath
-                  id="recharts122-clip"
+                  id="recharts131-clip"
                 >
                   <rect
                     height="790"
@@ -3914,7 +3914,7 @@ exports[`LineChart Styling Tests should apply correct animation properties for s
               <desc />
               <defs>
                 <clippath
-                  id="recharts125-clip"
+                  id="recharts134-clip"
                 >
                   <rect
                     height="790"

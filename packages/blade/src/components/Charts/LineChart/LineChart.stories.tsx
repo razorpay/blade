@@ -808,9 +808,7 @@ export const LineChartWithLegendClickCallback: StoryFn<typeof ChartLine> = () =>
     <ChartsWrapper>
       <Box display="flex" flexDirection="column" width="100%" height="100%">
         <Box marginBottom="spacing.5">
-          <Heading size="small">
-            Last clicked: {lastClicked ? `${lastClicked}` : 'None'}
-          </Heading>
+          <Heading size="small">Last clicked: {lastClicked ? `${lastClicked}` : 'None'}</Heading>
         </Box>
 
         <Box width="100%" height="400px">
