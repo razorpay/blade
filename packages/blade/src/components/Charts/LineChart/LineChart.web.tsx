@@ -92,6 +92,7 @@ const Line: React.FC<ChartLineProps> = ({
         strokeOpacity={strokeOpacity}
         strokeDasharray={strokeDasharray}
         type={type}
+        dataKey={dataKey}
         activeDot={isOtherLineHovered ? false : activeDotConfig}
         dot={dot}
         legendType={showLegend ? 'line' : 'none'}
