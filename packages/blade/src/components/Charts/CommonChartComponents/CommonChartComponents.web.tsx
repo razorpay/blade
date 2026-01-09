@@ -388,10 +388,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   const hasUserInteracted = React.useRef(false);
 
   // Get all available dataKeys from the chart
-  const allDataKeys = React.useMemo(
-    () => Object.keys(dataColorMapping ?? {}),
-    [dataColorMapping],
-  );
+  const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
 
   // Use controllable state for selected keys
   const [selectedKeysArray, setSelectedKeysArray] = useControllableState({
@@ -421,10 +418,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   }, [allDataKeys, isControlled, defaultSelectedDataKeys, setSelectedKeysArray]);
 
   // Convert array to Set for efficient lookups
-  const selectedDataKeys = React.useMemo(
-    () => new Set(selectedKeysArray),
-    [selectedKeysArray],
-  );
+  const selectedDataKeys = React.useMemo(() => new Set(selectedKeysArray), [selectedKeysArray]);
 
   // Sync selectedDataKeys to context's visibleDataKeys
   React.useEffect(() => {
