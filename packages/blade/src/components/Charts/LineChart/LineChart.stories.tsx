@@ -423,19 +423,11 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
     dataKey: string;
     selectedKeysArray: string[];
   }): void => {
-    const isSelected = selectedKeysArray.includes(dataKey);
-    // If historical is toggled, toggle forecast too (they are linked)
-    if (dataKey === 'historical') {
-      if (isSelected) {
-        setSelectedDataKeys([...selectedKeysArray, 'forecast']);
-      } else {
-        setSelectedDataKeys(
-          selectedKeysArray.filter((key) => key !== 'historical' && key !== 'forecast'),
-        );
-      }
+    
+    if (dataKey === 'historical' && selectedKeysArray.includes('forecast')) {
+      setSelectedDataKeys(selectedKeysArray.filter((key) => key !== 'forecast'));
     } else {
-      // For other keys, just use the new array directly
-      setSelectedDataKeys(selectedKeysArray);
+      setSelectedDataKeys([...selectedKeysArray, 'forecast']);
     }
   };
 
