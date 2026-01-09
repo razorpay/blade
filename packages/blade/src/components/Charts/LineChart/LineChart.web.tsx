@@ -85,7 +85,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   });
 
   // State to track which lines are visible (by dataKey) - all visible by default
-  const [selectedDataKeys, setSelectedDataKeys] = React.useState<Set<string> | undefined>(undefined);
+  const [selectedDataKeys, setSelectedDataKeys] = React.useState<string[] | undefined>(undefined);
 
   /**
    * We need to check child of CharLineWrapper. if they have any custom color we store that.
@@ -123,7 +123,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
           _totaLine: totalLines,
-          hide: selectedDataKeys ? !selectedDataKeys.has(dataKey) : false,
+          hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartLineProps>);
       }
       return child;

@@ -321,7 +321,7 @@ const CustomSquareLegend = (props: {
     dataKey: string;
   }>;
   layout: Layout;
-  selectedDataKeys: Set<string>;
+  selectedDataKeys: string[];
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
@@ -354,7 +354,7 @@ const CustomSquareLegend = (props: {
           entry={entry}
           index={index}
           key={`item-${index}`}
-          isSelected={selectedDataKeys.has(entry.dataKey)}
+          isSelected={selectedDataKeys.includes(entry.dataKey)}
           onClick={onClick}
         />
       ))}
@@ -406,13 +406,10 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     }
   }, [allDataKeys, isControlled, defaultSelectedDataKeys, setSelectedKeysArray]);
 
-  // Convert array to Set for efficient lookups
-  const selectedDataKeys = React.useMemo(() => new Set(selectedKeysArray), [selectedKeysArray]);
-
   // Sync selectedDataKeys to context's selectedDataKeys
   React.useEffect(() => {
-    setSelectedDataKeys?.(selectedDataKeys);
-  }, [selectedDataKeys, setSelectedDataKeys]);
+    setSelectedDataKeys?.(selectedKeysArray);
+  }, [selectedKeysArray, setSelectedDataKeys]);
 
   // Handle toggle
   const handleClick = React.useCallback(
@@ -448,7 +445,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
       content={
         <CustomSquareLegend
           layout={props.layout ?? 'horizontal'}
-          selectedDataKeys={selectedDataKeys}
+          selectedDataKeys={selectedKeysArray}
           onClick={handleClick}
         />
       }
