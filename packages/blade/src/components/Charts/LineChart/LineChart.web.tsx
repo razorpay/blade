@@ -60,7 +60,7 @@ const Line: React.FC<ChartLineProps> = ({
   // we need to avoid flicker on quick run down of mouse cursor here.
   const handleDebouncedHoveredDataKey = debounce((dataKey :string) => {
     setHoveredDataKey?.(dataKey);
-  }, 40);
+  }, 30);
 
 
   // activeDot config with hover handlers
