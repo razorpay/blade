@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
   XAxis as RechartsXAxis,
   YAxis as RechartsYAxis,
@@ -41,6 +42,7 @@ import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
+import { useControllableState } from '~utils/useControllable';
 
 /**
  * Helper function to get the appropriate color for chart elements (tooltip, legend)
@@ -244,35 +246,66 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
+const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: boolean }>(
+  ({ theme, $isHidden, $isClickable }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    cursor: $isClickable ? 'pointer' : 'default',
+    opacity: $isHidden ? 0.4 : 1,
+    background: 'none',
+    border: 'none',
+    padding: 0,
+    '& p': {
+      color: theme.colors.surface.text.gray.muted,
+      transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
+    },
+    '&:hover p': {
+      color: $isClickable ? theme.colors.surface.text.gray.normal : undefined,
+    },
+  }),
+);
+
 const LegendItem = ({
   entry,
   index,
+  isSelected,
+  onClick,
 }: {
   entry: { color: string; value: string; dataKey: string };
   index: number;
+  isSelected: boolean;
+  onClick: (dataKey: string) => void;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
+
   return (
-    <Box key={`item-${index}`} display="flex" alignItems="center">
+    <StyledLegendWrapper
+      key={`item-${index}`}
+      $isHidden={!isSelected}
+      $isClickable={true}
+      onClick={() => {
+        onClick(entry.dataKey);
+      }}
+      type="button"
+    >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
-            backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
-            width: theme.spacing[4], // Size of the square
-            height: theme.spacing[4], // Size of the square
+            backgroundColor: getIn(theme.colors, legendColor),
+            width: theme.spacing[4],
+            height: theme.spacing[4],
             display: 'inline-block',
             borderRadius: theme.border.radius.small,
           }}
         />
-        {/* Legend text with custom color and size */}
         <Text size="medium" color="surface.text.gray.muted">
           {entry.value}
         </Text>
       </Box>
-    </Box>
+    </StyledLegendWrapper>
   );
 };
 
@@ -288,8 +321,10 @@ const CustomSquareLegend = (props: {
     dataKey: string;
   }>;
   layout: Layout;
+  selectedDataKeys: string[];
+  onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
-  const { payload, layout } = props;
+  const { payload, layout, selectedDataKeys, onClick } = props;
 
   if (!payload || payload.length === 0) {
     return null;
@@ -315,14 +350,53 @@ const CustomSquareLegend = (props: {
       flexWrap="wrap"
     >
       {filteredPayload.map((entry, index) => (
-        <LegendItem entry={entry} index={index} key={`item-${index}`} />
+        <LegendItem
+          entry={entry}
+          index={index}
+          key={`item-${index}`}
+          isSelected={selectedDataKeys.includes(entry.dataKey)}
+          onClick={onClick}
+        />
       ))}
     </Box>
   );
 };
 
-const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
+const _ChartLegend: React.FC<ChartLegendProps> = ({
+  selectedDataKeys: selectedDataKeysProp,
+  defaultSelectedDataKeys,
+  onSelectedDataKeysChange,
+  ...props
+}) => {
   const { theme } = useTheme();
+  const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
+
+  // Get all available dataKeys from the chart
+  const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
+
+  // Use controllable state for selected keys
+  const [selectedKeysArray, setSelectedKeysArray] = useControllableState({
+    value: selectedDataKeysProp,
+    defaultValue: defaultSelectedDataKeys ?? allDataKeys,
+  });
+
+  // Sync selectedDataKeys to context's selectedDataKeys
+  React.useEffect(() => {
+    setSelectedDataKeys?.(selectedKeysArray);
+  }, [selectedKeysArray, setSelectedDataKeys]);
+
+  // Handle toggle
+  const handleClick = React.useCallback(
+    (dataKey: string) => {
+      const newSelectedKeys = selectedKeysArray.includes(dataKey)
+        ? selectedKeysArray.filter((key) => key !== dataKey)
+        : [...selectedKeysArray, dataKey];
+
+      setSelectedKeysArray(() => newSelectedKeys);
+      onSelectedDataKeysChange?.({ dataKey, selectedKeysArray: newSelectedKeys });
+    },
+    [setSelectedKeysArray, selectedKeysArray, onSelectedDataKeysChange],
+  );
 
   return (
     <RechartsLegend
@@ -334,7 +408,13 @@ const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
       }}
       align="center"
       verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
-      content={<CustomSquareLegend layout={props.layout ?? 'horizontal'} />}
+      content={
+        <CustomSquareLegend
+          layout={props.layout ?? 'horizontal'}
+          selectedDataKeys={selectedKeysArray}
+          onClick={handleClick}
+        />
+      }
       {...props}
     />
   );

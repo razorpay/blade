@@ -64,6 +64,27 @@ type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
+  /**
+   * Array of dataKeys that are currently selected.
+   * When provided, the component is in controlled mode.
+   */
+  selectedDataKeys?: string[];
+  /**
+   * Default selected dataKeys for uncontrolled mode.
+   * If not provided, all dataKeys are selected by default.
+   */
+  defaultSelectedDataKeys?: string[];
+  /**
+   * Callback fired when the selection changes.
+   * Provides the dataKey of the clicked legend item and the new selected dataKeys array.
+   */
+  onSelectedDataKeysChange?: ({
+    dataKey,
+    selectedKeysArray,
+  }: {
+    dataKey: string;
+    selectedKeysArray: string[];
+  }) => void;
 };
 
 type ChartCartesianGridProps = Omit<
@@ -82,11 +103,17 @@ type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
   chartName?: ChartName;
+  selectedDataKeys?: string[];
 };
 
 // Dispatch type - contains only the updater functions
 type CommonChartComponentsDispatchType = {
   setDataColorMapping?: (dataColorMapping: DataColorMapping) => void;
+  /**
+   * Internal handler to set visible data keys.
+   * Called by ChartLegend to sync selection state.
+   */
+  setSelectedDataKeys?: (selectedDataKeys: string[]) => void;
 };
 
 // Legacy combined type for backward compatibility

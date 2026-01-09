@@ -28,6 +28,7 @@ const Line: React.FC<ChartLineProps> = ({
   _index,
   _colorTheme,
   _totalLines,
+  hide,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -60,6 +61,7 @@ const Line: React.FC<ChartLineProps> = ({
       animationDuration={animationDuration}
       strokeLinecap="round"
       strokeLinejoin="round"
+      hide={hide}
       {...props}
     />
   );
@@ -81,6 +83,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     colorTheme,
     chartName: 'line',
   });
+
+  // State to track which lines are visible (by dataKey) - all visible by default
+  const [selectedDataKeys, setSelectedDataKeys] = React.useState<string[] | undefined>(undefined);
+
   /**
    * We need to check child of CharLineWrapper. if they have any custom color we store that.
    * We need these mapping because colors of tooltip & legend is determine based on this
@@ -111,10 +117,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             isCustomColor: Boolean(childColor),
           };
         }
+        // Pass hide prop based on whether this line's dataKey is NOT in selectedDataKeys
+        // If selectedDataKeys is undefined, show all lines (default behavior)
         return React.cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
           _totaLine: totalLines,
+          hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartLineProps>);
       }
       return child;
@@ -122,10 +131,17 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     assignDataColorMapping(dataColorMapping, themeColors);
 
     return { dataColorMapping, lineChartModifiedChildrens, totalLines };
-  }, [children, colorTheme, themeColors]);
+  }, [children, colorTheme, themeColors, selectedDataKeys]);
 
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'line', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{
+        chartName: 'line',
+        dataColorMapping,
+        selectedDataKeys,
+        setSelectedDataKeys,
+      }}
+    >
       <BaseBox
         {...metaAttribute({ name: 'line-chart', testID })}
         {...makeAnalyticsAttribute(restProps)}
