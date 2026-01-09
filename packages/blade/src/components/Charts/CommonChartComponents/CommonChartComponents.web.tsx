@@ -269,28 +269,26 @@ const LegendItem = ({
   entry,
   index,
   isSelected,
-  onToggle,
+  onClick,
 }: {
   entry: { color: string; value: string; dataKey: string };
   index: number;
   isSelected: boolean;
-  onToggle: (dataKey: string) => void;
+  onClick: (dataKey: string) => void;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
 
-  const handleClick = (): void => {
-    onToggle(entry.dataKey);
-  };
-
   return (
     <StyledLegendWrapper
       key={`item-${index}`}
       $isHidden={!isSelected}
       $isClickable={true}
-      onClick={handleClick}
+      onClick={() => {
+        onClick(entry.dataKey);
+      }}
       type="button"
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
@@ -324,9 +322,9 @@ const CustomSquareLegend = (props: {
   }>;
   layout: Layout;
   selectedDataKeys: Set<string>;
-  onToggle: (dataKey: string) => void;
+  onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
-  const { payload, layout, selectedDataKeys, onToggle } = props;
+  const { payload, layout, selectedDataKeys, onClick } = props;
 
   if (!payload || payload.length === 0) {
     return null;
@@ -357,7 +355,7 @@ const CustomSquareLegend = (props: {
           index={index}
           key={`item-${index}`}
           isSelected={selectedDataKeys.has(entry.dataKey)}
-          onToggle={onToggle}
+          onClick={onClick}
         />
       ))}
     </Box>
@@ -417,7 +415,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   }, [selectedDataKeys, setVisibleDataKeys]);
 
   // Handle toggle
-  const handleToggle = React.useCallback(
+  const handleClick = React.useCallback(
     (dataKey: string) => {
       // Mark that user has interacted to prevent auto-reset behavior
       hasUserInteracted.current = true;
@@ -451,7 +449,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
         <CustomSquareLegend
           layout={props.layout ?? 'horizontal'}
           selectedDataKeys={selectedDataKeys}
-          onToggle={handleToggle}
+          onClick={handleClick}
         />
       }
       {...props}
