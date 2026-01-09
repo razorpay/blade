@@ -58,10 +58,9 @@ const Line: React.FC<ChartLineProps> = ({
   const strokeOpacity = isOtherLineHovered ? 0.2 : 1;
 
   // we need to avoid flicker on quick run down of mouse cursor here.
-  const handleDebouncedHoveredDataKey = debounce((dataKey :string) => {
+  const handleDebouncedHoveredDataKey = debounce((dataKey: string) => {
     setHoveredDataKey?.(dataKey);
   }, 30);
-
 
   // activeDot config with hover handlers
   const activeDotConfig = activeDot
@@ -195,10 +194,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           {...restProps}
         >
           <RechartsResponsiveContainer width="100%" height="100%">
-            <RechartsLineChart
-              data={data}
-              onMouseLeave={() => setHoveredDataKey(null)}
-            >
+            <RechartsLineChart data={data} onMouseLeave={() => setHoveredDataKey(null)}>
               {lineChartModifiedChildrens}
             </RechartsLineChart>
           </RechartsResponsiveContainer>
