@@ -31,6 +31,7 @@ const Line: React.FC<ChartLineProps> = ({
   _colorTheme,
   _totalLines,
   hide,
+  dataKey,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -41,7 +42,6 @@ const Line: React.FC<ChartLineProps> = ({
     chartDataIndicators: _totalLines,
   });
 
-  const dataKey = props.dataKey as string;
   const isOtherLineHovered = hoveredDataKey !== null && hoveredDataKey !== dataKey;
   const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
 
@@ -74,7 +74,7 @@ const Line: React.FC<ChartLineProps> = ({
     <>
       <RechartsLine
         type="monotone"
-        dataKey={props.dataKey}
+        dataKey={dataKey}
         stroke="transparent"
         strokeWidth={15}
         dot={false}
@@ -177,7 +177,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   return (
     <LineChartContext.Provider value={{ hoveredDataKey, setHoveredDataKey }}>
-    <CommonChartComponentsContext.Provider
+      <CommonChartComponentsContext.Provider
         value={{
           chartName: 'line',
           dataColorMapping,
