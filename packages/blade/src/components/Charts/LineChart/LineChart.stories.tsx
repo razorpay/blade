@@ -418,27 +418,15 @@ export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
 
   const handleSelectionChange = ({
     dataKey,
-    isSelected,
+    selectedKeysArray,
   }: {
     dataKey: string;
-    isSelected: boolean;
+    selectedKeysArray: string[];
   }): void => {
-    // If historical is toggled, toggle forecast too (they are linked)
-    if (dataKey === 'historical') {
-      if (isSelected) {
-        setSelectedDataKeys(['historical', 'forecast']);
-      } else {
-        setSelectedDataKeys((prev) =>
-          prev.filter((key) => key !== 'historical' && key !== 'forecast'),
-        );
-      }
+    if (dataKey === 'historical' && selectedKeysArray.includes('forecast')) {
+      setSelectedDataKeys(selectedKeysArray.filter((key) => key !== 'forecast'));
     } else {
-      // For other keys, just toggle normally
-      if (isSelected) {
-        setSelectedDataKeys((prev) => [...prev, dataKey]);
-      } else {
-        setSelectedDataKeys((prev) => prev.filter((key) => key !== dataKey));
-      }
+      setSelectedDataKeys([...selectedKeysArray, 'forecast']);
     }
   };
 
@@ -717,8 +705,8 @@ export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
             cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
           />
           <ChartLegend
-            onSelectedDataKeysChange={({ dataKey, isSelected }) => {
-              console.log(`Clicked: ${dataKey}, isSelected: ${isSelected}`);
+            onSelectedDataKeysChange={({ dataKey, selectedKeysArray }) => {
+              console.log(`Clicked: ${dataKey}, selectedKeysArray: ${selectedKeysArray}`);
             }}
           />
           <ChartLine dataKey="northAmerica" name="North America" />
@@ -746,7 +734,8 @@ export const LineChartWithDefaultSelectedDataKeys: StoryFn<typeof ChartLine> = (
           />
           <ChartLegend
             defaultSelectedDataKeys={['northAmerica', 'europe']}
-            onSelectedDataKeysChange={({ dataKey, isSelected }) => {
+            onSelectedDataKeysChange={({ dataKey, selectedKeysArray }) => {
+              const isSelected = selectedKeysArray.includes(dataKey);
               console.log(`Selection changed: ${dataKey}, isSelected: ${isSelected}`);
             }}
           />
@@ -767,17 +756,12 @@ export const LineChartWithControlledSelection: StoryFn<typeof ChartLine> = () =>
   const [selectedDataKeys, setSelectedDataKeys] = React.useState(['northAmerica', 'asia']);
 
   const handleSelectionChange = ({
-    dataKey,
-    isSelected,
+    selectedKeysArray,
   }: {
     dataKey: string;
-    isSelected: boolean;
+    selectedKeysArray: string[];
   }): void => {
-    if (isSelected) {
-      setSelectedDataKeys((prev) => [...prev, dataKey]);
-    } else {
-      setSelectedDataKeys((prev) => prev.filter((key) => key !== dataKey));
-    }
+    setSelectedDataKeys(selectedKeysArray);
   };
 
   return (
@@ -840,8 +824,9 @@ export const LineChartWithLegendClickCallback: StoryFn<typeof ChartLine> = () =>
               cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
             />
             <ChartLegend
-              onSelectedDataKeysChange={({ dataKey, isSelected }) => {
-                console.log({ dataKey, isSelected });
+              onSelectedDataKeysChange={({ dataKey, selectedKeysArray }) => {
+                const isSelected = selectedKeysArray.includes(dataKey);
+                console.log({ dataKey, selectedKeysArray, isSelected });
                 setLastClicked(`${dataKey} (${isSelected ? 'selected' : 'deselected'})`);
               }}
             />

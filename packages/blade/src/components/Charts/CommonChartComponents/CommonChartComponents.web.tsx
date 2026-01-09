@@ -388,19 +388,12 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   // Handle toggle
   const handleClick = React.useCallback(
     (dataKey: string) => {
-      // Mark that user has interacted to prevent auto-reset behavior
-      const isCurrentlySelected = selectedKeysArray.includes(dataKey);
-      const isSelected = !isCurrentlySelected;
+      const newSelectedKeys = selectedKeysArray.includes(dataKey)
+        ? selectedKeysArray.filter((key) => key !== dataKey)
+        : [...selectedKeysArray, dataKey];
 
-      setSelectedKeysArray((prev) => {
-        if (prev.includes(dataKey)) {
-          return prev.filter((key) => key !== dataKey);
-        }
-        return [...prev, dataKey];
-      });
-
-      // Call the callback with the clicked dataKey and its new selected state
-      onSelectedDataKeysChange?.({ dataKey, isSelected });
+      setSelectedKeysArray(() => newSelectedKeys);
+      onSelectedDataKeysChange?.({ dataKey, selectedKeysArray: newSelectedKeys });
     },
     [setSelectedKeysArray, selectedKeysArray, onSelectedDataKeysChange],
   );
