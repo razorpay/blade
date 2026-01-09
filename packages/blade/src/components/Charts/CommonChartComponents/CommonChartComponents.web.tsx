@@ -371,8 +371,6 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   const { theme } = useTheme();
   const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
 
-  // Determine if component is controlled
-  const isControlled = selectedDataKeysProp !== undefined;
 
   // Track if user has interacted with the legend to prevent auto-reset
   const hasUserInteracted = React.useRef(false);
@@ -385,26 +383,6 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     value: selectedDataKeysProp,
     defaultValue: defaultSelectedDataKeys ?? allDataKeys,
   });
-
-  // When allDataKeys changes and we're in uncontrolled mode without explicit defaults,
-  // update selection to include all keys (handles case when context isn't ready on first render)
-  // Skip this if user has already interacted with the legend
-  React.useEffect(() => {
-    if (
-      !isControlled &&
-      !defaultSelectedDataKeys &&
-      allDataKeys.length > 0 &&
-      !hasUserInteracted.current
-    ) {
-      // Only update if current selection is empty but allDataKeys has items
-      setSelectedKeysArray((prev) => {
-        if (prev.length === 0) {
-          return allDataKeys;
-        }
-        return prev;
-      });
-    }
-  }, [allDataKeys, isControlled, defaultSelectedDataKeys, setSelectedKeysArray]);
 
   // Sync selectedDataKeys to context's selectedDataKeys
   React.useEffect(() => {
