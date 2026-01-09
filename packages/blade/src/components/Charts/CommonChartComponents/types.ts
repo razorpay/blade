@@ -76,14 +76,14 @@ type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   defaultSelectedDataKeys?: string[];
   /**
    * Callback fired when the selection changes.
-   * Provides the dataKey of the clicked legend item and whether it's currently selected.
+   * Provides the dataKey of the clicked legend item and the new selected dataKeys array.
    */
   onSelectedDataKeysChange?: ({
     dataKey,
-    isSelected,
+    selectedKeysArray,
   }: {
     dataKey: string;
-    isSelected: boolean;
+    selectedKeysArray: string[];
   }) => void;
 };
 
