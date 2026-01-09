@@ -97,7 +97,7 @@ type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
   chartName?: ChartName;
-  visibleDataKeys?: Set<string>;
+  selectedDataKeys?: Set<string>;
 };
 
 // Dispatch type - contains only the updater functions
@@ -107,7 +107,7 @@ type CommonChartComponentsDispatchType = {
    * Internal handler to set visible data keys.
    * Called by ChartLegend to sync selection state.
    */
-  setVisibleDataKeys?: (visibleDataKeys: Set<string>) => void;
+  setSelectedDataKeys?: (selectedDataKeys: Set<string>) => void;
 };
 
 // Legacy combined type for backward compatibility

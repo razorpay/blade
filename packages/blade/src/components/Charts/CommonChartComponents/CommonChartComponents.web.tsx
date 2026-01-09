@@ -369,7 +369,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
-  const { dataColorMapping, setVisibleDataKeys } = useCommonChartComponentsContext();
+  const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
 
   // Determine if component is controlled
   const isControlled = selectedDataKeysProp !== undefined;
@@ -409,10 +409,10 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   // Convert array to Set for efficient lookups
   const selectedDataKeys = React.useMemo(() => new Set(selectedKeysArray), [selectedKeysArray]);
 
-  // Sync selectedDataKeys to context's visibleDataKeys
+  // Sync selectedDataKeys to context's selectedDataKeys
   React.useEffect(() => {
-    setVisibleDataKeys?.(selectedDataKeys);
-  }, [selectedDataKeys, setVisibleDataKeys]);
+    setSelectedDataKeys?.(selectedDataKeys);
+  }, [selectedDataKeys, setSelectedDataKeys]);
 
   // Handle toggle
   const handleClick = React.useCallback(
