@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
-const bladeElementExceptions = [
-  // table library adds a div internally which we want to skip
-  '[data-blade-component="table-cell"] > div', 
-  '[data-blade-component="table-header-cell"] > div', 
-  '[data-blade-component="table-footer-cell"] > div'
-];
-
 const calculateBladeCoverage = (shouldHighlightNodes) => {
+  const bladeElementExceptions = [
+    // table library adds a div internally which we want to skip
+    '[data-blade-component="table-cell"] > div', 
+    '[data-blade-component="table-header-cell"] > div', 
+    '[data-blade-component="table-footer-cell"] > div'
+  ];
+
   /**
    * Checks if DOM node is hidden or not
    */
