@@ -372,9 +372,6 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
 
 
-  // Track if user has interacted with the legend to prevent auto-reset
-  const hasUserInteracted = React.useRef(false);
-
   // Get all available dataKeys from the chart
   const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
 
@@ -393,7 +390,6 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   const handleClick = React.useCallback(
     (dataKey: string) => {
       // Mark that user has interacted to prevent auto-reset behavior
-      hasUserInteracted.current = true;
       const isCurrentlySelected = selectedKeysArray.includes(dataKey);
       const isSelected = !isCurrentlySelected;
 
