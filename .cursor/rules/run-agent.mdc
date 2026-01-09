@@ -1,0 +1,26 @@
+---
+alwaysApply: false
+---
+
+## Arguments
+
+- `file-path-or-prompt`: Path to file containing the prompt, or a prompt string directly
+- `additional-prompt`: Optional additional prompt to prepend to the main prompt
+
+## Steps to run agent
+
+### In Claude Code
+
+- Claude Code native supports running agents with prompts
+- Refer to {file-path-or-prompt} (find existing subagent on that file-path) and {additional-prompt} to run the agent
+
+### In Cursor
+
+- Run the agent with the given prompt using `agentic-tools` command (the command is already installed in machine)
+  ```sh
+  agentic-tools run-cursor-agent {file-path-or-prompt} {additional-prompt}
+  ```
+
+### Important Guidelines
+
+- Do not execute the task on your own or read the agent files. Always run it as subagent using the above mentioned methods
