@@ -139,7 +139,22 @@ const textColor = (property: 'icon' | 'text') => {
       },
     },
 
-    color: (color: FeedbackColors) => {
+    color: (color: FeedbackColors | 'secondary') => {
+      console.log('comes here to get text color', color);
+      if (color === 'secondary') {
+        return {
+          primary: {
+            default: `interactive.${property}.onSecondary.normal`,
+            highlighted: `interactive.${property}.onSecondary.normal`,
+            disabled: `interactive.${property}.${color}.disabled`,
+          },
+          secondary: {
+            default: `interactive.${property}.${color}.normal`,
+            highlighted: `interactive.${property}.${color}.normal`,
+            disabled: `interactive.${property}.${color}.disabled`,
+          },
+        };
+      }
       return {
         primary: {
           default: `interactive.${property}.staticWhite.normal`,
