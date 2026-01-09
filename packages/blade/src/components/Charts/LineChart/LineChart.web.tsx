@@ -9,6 +9,7 @@ import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents/types';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
+import { LineChartContext, useLineChartContext } from './LineChartContext';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -32,11 +33,15 @@ const Line: React.FC<ChartLineProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
+  const { hoveredDataKey, setHoveredDataKey } = useLineChartContext();
   const themeColors = useChartsColorTheme({
     colorTheme: _colorTheme,
     chartName: 'line',
     chartDataIndicators: _totalLines,
   });
+
+  const dataKey = props.dataKey as string;
+  const isOtherLineHovered = hoveredDataKey !== null && hoveredDataKey !== dataKey;
   const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
 
   const strokeDasharray =
@@ -48,22 +53,52 @@ const Line: React.FC<ChartLineProps> = ({
     : theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
+  // Reduce opacity when another line is hovered
+  const strokeOpacity = isOtherLineHovered ? 0.2 : 1;
+
+  // activeDot config with hover handlers
+  const activeDotConfig = activeDot
+    ? {
+        onMouseEnter: () => !hide && setHoveredDataKey?.(dataKey),
+        onMouseLeave: () => !hide && setHoveredDataKey?.(null),
+      }
+    : false;
+
   return (
-    <RechartsLine
-      stroke={colorToken}
-      strokeWidth={1.5}
-      strokeDasharray={strokeDasharray}
-      type={type}
-      activeDot={activeDot}
-      dot={dot}
-      legendType={showLegend ? 'line' : 'none'}
-      animationBegin={animationBegin}
-      animationDuration={animationDuration}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      hide={hide}
-      {...props}
-    />
+    <>
+      <RechartsLine
+        type="monotone"
+        dataKey={props.dataKey}
+        stroke="transparent"
+        strokeWidth={15}
+        dot={false}
+        activeDot={false}
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        hide={hide}
+      />
+      <RechartsLine
+        stroke={colorToken}
+        strokeWidth={1.5}
+        strokeOpacity={strokeOpacity}
+        strokeDasharray={strokeDasharray}
+        type={type}
+        activeDot={isOtherLineHovered ? false : activeDotConfig}
+        dot={dot}
+        legendType={showLegend ? 'line' : 'none'}
+        animationBegin={animationBegin}
+        animationDuration={animationDuration}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        hide={hide}
+        {...props}
+      />
+    </>
   );
 };
 
@@ -86,6 +121,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   // State to track which lines are visible (by dataKey) - all visible by default
   const [visibleDataKeys, setVisibleDataKeys] = React.useState<Set<string> | undefined>(undefined);
+  // State to track which line is currently hovered
+  const [hoveredDataKey, setHoveredDataKey] = React.useState<string | null>(null);
 
   /**
    * We need to check child of CharLineWrapper. if they have any custom color we store that.
@@ -134,26 +171,33 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }, [children, colorTheme, themeColors, visibleDataKeys]);
 
   return (
-    <CommonChartComponentsContext.Provider
-      value={{
-        chartName: 'line',
-        dataColorMapping,
-        visibleDataKeys,
-        setVisibleDataKeys,
-      }}
-    >
-      <BaseBox
-        {...metaAttribute({ name: 'line-chart', testID })}
-        {...makeAnalyticsAttribute(restProps)}
-        width="100%"
-        height="100%"
-        {...restProps}
+    <LineChartContext.Provider value={{ hoveredDataKey, setHoveredDataKey }}>
+      <CommonChartComponentsContext.Provider
+        value={{
+          chartName: 'line',
+          dataColorMapping,
+          visibleDataKeys,
+          setVisibleDataKeys,
+        }}
       >
-        <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>
-        </RechartsResponsiveContainer>
-      </BaseBox>
-    </CommonChartComponentsContext.Provider>
+        <BaseBox
+          {...metaAttribute({ name: 'line-chart', testID })}
+          {...makeAnalyticsAttribute(restProps)}
+          width="100%"
+          height="100%"
+          {...restProps}
+        >
+          <RechartsResponsiveContainer width="100%" height="100%">
+            <RechartsLineChart
+              data={data}
+              onMouseLeave={() => setHoveredDataKey(null)}
+            >
+              {lineChartModifiedChildrens}
+            </RechartsLineChart>
+          </RechartsResponsiveContainer>
+        </BaseBox>
+      </CommonChartComponentsContext.Provider>
+    </LineChartContext.Provider>
   );
 };
 
