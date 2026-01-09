@@ -270,13 +270,11 @@ const LegendItem = ({
   index,
   isSelected,
   onToggle,
-  onLegendClick,
 }: {
   entry: { color: string; value: string; dataKey: string };
   index: number;
   isSelected: boolean;
   onToggle: (dataKey: string) => void;
-  onLegendClick?: ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }) => void;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
@@ -284,9 +282,6 @@ const LegendItem = ({
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
 
   const handleClick = (): void => {
-    // Call user's onClick handler if provided
-    onLegendClick?.({ dataKey: entry.dataKey, isSelected });
-    // Toggle selection
     onToggle(entry.dataKey);
   };
 
@@ -330,9 +325,8 @@ const CustomSquareLegend = (props: {
   layout: Layout;
   selectedDataKeys: Set<string>;
   onToggle: (dataKey: string) => void;
-  onLegendClick?: ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }) => void;
 }): JSX.Element | null => {
-  const { payload, layout, selectedDataKeys, onToggle, onLegendClick } = props;
+  const { payload, layout, selectedDataKeys, onToggle } = props;
 
   if (!payload || payload.length === 0) {
     return null;
@@ -364,7 +358,6 @@ const CustomSquareLegend = (props: {
           key={`item-${index}`}
           isSelected={selectedDataKeys.has(entry.dataKey)}
           onToggle={onToggle}
-          onLegendClick={onLegendClick}
         />
       ))}
     </Box>
@@ -375,7 +368,6 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   selectedDataKeys: selectedDataKeysProp,
   defaultSelectedDataKeys,
   onSelectedDataKeysChange,
-  onLegendClick,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -394,7 +386,6 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   const [selectedKeysArray, setSelectedKeysArray] = useControllableState({
     value: selectedDataKeysProp,
     defaultValue: defaultSelectedDataKeys ?? allDataKeys,
-    onChange: onSelectedDataKeysChange,
   });
 
   // When allDataKeys changes and we're in uncontrolled mode without explicit defaults,
@@ -430,14 +421,20 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     (dataKey: string) => {
       // Mark that user has interacted to prevent auto-reset behavior
       hasUserInteracted.current = true;
+      const isCurrentlySelected = selectedKeysArray.includes(dataKey);
+      const isSelected = !isCurrentlySelected;
+
       setSelectedKeysArray((prev) => {
         if (prev.includes(dataKey)) {
           return prev.filter((key) => key !== dataKey);
         }
         return [...prev, dataKey];
       });
+
+      // Call the callback with the clicked dataKey and its new selected state
+      onSelectedDataKeysChange?.({ dataKey, isSelected });
     },
-    [setSelectedKeysArray],
+    [setSelectedKeysArray, selectedKeysArray, onSelectedDataKeysChange],
   );
 
   return (
@@ -455,7 +452,6 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
           layout={props.layout ?? 'horizontal'}
           selectedDataKeys={selectedDataKeys}
           onToggle={handleToggle}
-          onLegendClick={onLegendClick}
         />
       }
       {...props}
