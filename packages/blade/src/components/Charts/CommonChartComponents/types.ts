@@ -78,7 +78,13 @@ type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
    * Callback fired when the selection changes.
    * Provides the dataKey of the clicked legend item and whether it's currently selected.
    */
-  onSelectedDataKeysChange?: ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }) => void;
+  onSelectedDataKeysChange?: ({
+    dataKey,
+    isSelected,
+  }: {
+    dataKey: string;
+    isSelected: boolean;
+  }) => void;
 };
 
 type ChartCartesianGridProps = Omit<

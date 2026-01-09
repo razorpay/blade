@@ -416,13 +416,21 @@ export const TinyLineChart: StoryFn<typeof ChartLine> = ({
 export const ForecastLineChart: StoryFn<typeof ChartLine> = () => {
   const [selectedDataKeys, setSelectedDataKeys] = React.useState(['historical', 'forecast']);
 
-  const handleSelectionChange = ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }): void => {
+  const handleSelectionChange = ({
+    dataKey,
+    isSelected,
+  }: {
+    dataKey: string;
+    isSelected: boolean;
+  }): void => {
     // If historical is toggled, toggle forecast too (they are linked)
     if (dataKey === 'historical') {
       if (isSelected) {
         setSelectedDataKeys(['historical', 'forecast']);
       } else {
-        setSelectedDataKeys((prev) => prev.filter((key) => key !== 'historical' && key !== 'forecast'));
+        setSelectedDataKeys((prev) =>
+          prev.filter((key) => key !== 'historical' && key !== 'forecast'),
+        );
       }
     } else {
       // For other keys, just toggle normally
@@ -758,7 +766,13 @@ export const LineChartWithControlledSelection: StoryFn<typeof ChartLine> = () =>
   const theme = useTheme();
   const [selectedDataKeys, setSelectedDataKeys] = React.useState(['northAmerica', 'asia']);
 
-  const handleSelectionChange = ({ dataKey, isSelected }: { dataKey: string; isSelected: boolean }): void => {
+  const handleSelectionChange = ({
+    dataKey,
+    isSelected,
+  }: {
+    dataKey: string;
+    isSelected: boolean;
+  }): void => {
     if (isSelected) {
       setSelectedDataKeys((prev) => [...prev, dataKey]);
     } else {
@@ -827,7 +841,7 @@ export const LineChartWithLegendClickCallback: StoryFn<typeof ChartLine> = () =>
             />
             <ChartLegend
               onSelectedDataKeysChange={({ dataKey, isSelected }) => {
-                console.log({dataKey,isSelected});
+                console.log({ dataKey, isSelected });
                 setLastClicked(`${dataKey} (${isSelected ? 'selected' : 'deselected'})`);
               }}
             />
