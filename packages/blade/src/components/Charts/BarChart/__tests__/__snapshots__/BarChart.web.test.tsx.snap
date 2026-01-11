@@ -879,7 +879,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
             </div>
             <div
               class="recharts-legend-wrapper"
-              style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 24px;"
+              style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 8px;"
             >
               <div
                 class="c3"
@@ -941,7 +941,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                   id="recharts23-clip"
                 >
                   <rect
-                    height="760"
+                    height="767.5"
                     width="730"
                     x="65"
                     y="5"
@@ -956,55 +956,55 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                 >
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
                     x1="65"
                     x2="795"
                     y="5"
-                    y1="765"
-                    y2="765"
+                    y1="772.5"
+                    y2="772.5"
                   />
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
                     x1="65"
                     x2="795"
                     y="5"
-                    y1="575"
-                    y2="575"
+                    y1="580.625"
+                    y2="580.625"
                   />
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
                     x1="65"
                     x2="795"
                     y="5"
-                    y1="385"
-                    y2="385"
+                    y1="388.75"
+                    y2="388.75"
                   />
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
                     x1="65"
                     x2="795"
                     y="5"
-                    y1="195"
-                    y2="195"
+                    y1="196.875"
+                    y2="196.875"
                   />
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
@@ -1022,16 +1022,16 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="30"
+                  height="22.5"
                   orientation="bottom"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="730"
                   x="65"
                   x1="65"
                   x2="795"
-                  y="765"
-                  y1="765"
-                  y2="765"
+                  y="772.5"
+                  y1="772.5"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -1039,106 +1039,102 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="156.25"
-                      y="773"
+                    <g
+                      transform="translate(156.25,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="156.25"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Jan
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Jan
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="338.75"
-                      y="773"
+                    <g
+                      transform="translate(338.75,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="338.75"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Feb
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Feb
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="521.25"
-                      y="773"
+                    <g
+                      transform="translate(521.25,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="521.25"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Mar
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Mar
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="703.75"
-                      y="773"
+                    <g
+                      transform="translate(703.75,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="703.75"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Apr
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Apr
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                 </g>
                 <text
@@ -1149,7 +1145,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                   letter-spacing="0"
                   text-anchor="middle"
                   x="398"
-                  y="803.5"
+                  y="811"
                 />
               </g>
               <g
@@ -1158,7 +1154,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   orientation="left"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="60"
@@ -1167,7 +1163,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                   x2="65"
                   y="5"
                   y1="5"
-                  y2="765"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -1181,14 +1177,14 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="765"
+                      y="772.5"
                     >
                       <tspan
                         dy="0.355em"
@@ -1207,14 +1203,14 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="575"
+                      y="580.625"
                     >
                       <tspan
                         dy="0.355em"
@@ -1233,14 +1229,14 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="385"
+                      y="388.75"
                     >
                       <tspan
                         dy="0.355em"
@@ -1259,14 +1255,14 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="195"
+                      y="196.875"
                     >
                       <tspan
                         dy="0.355em"
@@ -1285,7 +1281,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
@@ -1323,7 +1319,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="106"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                       <rect
                         fill="hsla(227, 100%, 59%, 1)"
@@ -1331,7 +1327,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="106"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                     </g>
                     <g
@@ -1343,7 +1339,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="288.5"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                       <rect
                         fill="hsla(227, 100%, 59%, 1)"
@@ -1351,7 +1347,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="288.5"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                     </g>
                     <g
@@ -1363,7 +1359,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="471"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                       <rect
                         fill="hsla(227, 100%, 59%, 1)"
@@ -1371,7 +1367,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="471"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                     </g>
                     <g
@@ -1383,7 +1379,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="653.5"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                       <rect
                         fill="hsla(227, 100%, 59%, 1)"
@@ -1391,7 +1387,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="653.5"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                     </g>
                   </g>
@@ -1416,7 +1412,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="157"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                       <rect
                         fill="hsla(150, 100%, 37%, 1)"
@@ -1424,7 +1420,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="157"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                     </g>
                     <g
@@ -1436,7 +1432,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="339.5"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                       <rect
                         fill="hsla(150, 100%, 37%, 1)"
@@ -1444,7 +1440,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="339.5"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                     </g>
                     <g
@@ -1456,7 +1452,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="522"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                       <rect
                         fill="hsla(150, 100%, 37%, 1)"
@@ -1464,7 +1460,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="522"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                     </g>
                     <g
@@ -1476,7 +1472,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="704.5"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                       <rect
                         fill="hsla(150, 100%, 37%, 1)"
@@ -1484,7 +1480,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
                         height="0"
                         width="49"
                         x="704.5"
-                        y="766.3333333333334"
+                        y="773.8333333333334"
                       />
                     </g>
                   </g>
