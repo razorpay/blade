@@ -30,6 +30,7 @@ import {
   PADDING_VERTICAL,
   PADDING_HORIZONTAL,
   X_AXIS_TEXT_BASELINE,
+  X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL,
   Y_OFFSET,
   X_OFFSET,
   componentId,
@@ -154,6 +155,10 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   // Calculate additional height for the axis when secondary labels are present
   const axisHeight = secondaryLabelKey ? 50 : 30;
 
+  const xAxisBaseLine = secondaryLabelKey
+    ? X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL
+    : X_AXIS_TEXT_BASELINE;
+
   return (
     <RechartsXAxis
       {...restProps}
@@ -173,7 +178,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
           x={viewBox.x + viewBox.width / 2 - X_OFFSET}
-          y={viewBox.y + Y_OFFSET + X_AXIS_TEXT_BASELINE}
+          y={viewBox.y + Y_OFFSET + xAxisBaseLine}
           textAnchor="middle"
           fill={theme.colors.surface.text.gray.muted}
           fontSize={theme.typography.fonts.size[75]}
