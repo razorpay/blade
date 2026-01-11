@@ -44,7 +44,7 @@ exports[`<Line /> should render Line with all line types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts82-clip"
+                  id="recharts144-clip"
                 >
                   <rect
                     height="790"
@@ -59,14 +59,30 @@ exports[`<Line /> should render Line with all line types 1`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1o:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
                   d="M5,268.33333333333337L136.66666666666666,268.33333333333337L136.66666666666666,400L400,400L400,531.6666666666667L663.3333333333333,531.6666666666667L663.3333333333333,136.66666666666663L795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rs:"
+                  id="recharts-line-:r1p:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -124,7 +140,7 @@ exports[`<Line /> should render Line with all line types 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts85-clip"
+                  id="recharts149-clip"
                 >
                   <rect
                     height="790"
@@ -139,14 +155,30 @@ exports[`<Line /> should render Line with all line types 2`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1q:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
                   d="M5,268.33333333333337L268.3333333333333,268.33333333333337L268.3333333333333,400L531.6666666666666,400L531.6666666666666,531.6666666666667L795,531.6666666666667L795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rt:"
+                  id="recharts-line-:r1r:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -204,7 +236,7 @@ exports[`<Line /> should render Line with all line types 3`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts88-clip"
+                  id="recharts154-clip"
                 >
                   <rect
                     height="790"
@@ -219,14 +251,30 @@ exports[`<Line /> should render Line with all line types 3`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1s:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
                   d="M5,268.33333333333337L5,400L268.3333333333333,400L268.3333333333333,531.6666666666667L531.6666666666666,531.6666666666667L531.6666666666666,136.66666666666663L795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:ru:"
+                  id="recharts-line-:r1t:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -284,7 +332,7 @@ exports[`<Line /> should render Line with all line types 4`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts91-clip"
+                  id="recharts159-clip"
                 >
                   <rect
                     height="790"
@@ -299,14 +347,30 @@ exports[`<Line /> should render Line with all line types 4`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1u:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
                   d="M5,268.33333333333337L268.3333333333333,400L531.6666666666666,531.6666666666667L795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rv:"
+                  id="recharts-line-:r1v:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -364,7 +428,7 @@ exports[`<Line /> should render Line with all line types 5`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts94-clip"
+                  id="recharts164-clip"
                 >
                   <rect
                     height="790"
@@ -382,11 +446,27 @@ exports[`<Line /> should render Line with all line types 5`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r10:"
+                  id="recharts-line-:r20:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r21:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -444,7 +524,7 @@ exports[`<Line /> should render Line with all stroke styles 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts97-clip"
+                  id="recharts169-clip"
                 >
                   <rect
                     height="790"
@@ -462,11 +542,27 @@ exports[`<Line /> should render Line with all stroke styles 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r11:"
+                  id="recharts-line-:r22:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r23:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px, 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -524,7 +620,7 @@ exports[`<Line /> should render Line with all stroke styles 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts100-clip"
+                  id="recharts174-clip"
                 >
                   <rect
                     height="790"
@@ -542,11 +638,27 @@ exports[`<Line /> should render Line with all stroke styles 2`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r12:"
+                  id="recharts-line-:r24:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r25:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px, 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -604,7 +716,7 @@ exports[`<Line /> should render Line with all stroke styles 3`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts103-clip"
+                  id="recharts179-clip"
                 >
                   <rect
                     height="790"
@@ -622,11 +734,27 @@ exports[`<Line /> should render Line with all stroke styles 3`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r13:"
+                  id="recharts-line-:r26:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r27:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -684,7 +812,7 @@ exports[`<Line /> should render Line with custom activeDot configuration 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts109-clip"
+                  id="recharts189-clip"
                 >
                   <rect
                     height="790"
@@ -702,11 +830,27 @@ exports[`<Line /> should render Line with custom activeDot configuration 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r15:"
+                  id="recharts-line-:r2a:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r2b:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -764,7 +908,7 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts106-clip"
+                  id="recharts184-clip"
                 >
                   <rect
                     height="790"
@@ -782,11 +926,27 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r14:"
+                  id="recharts-line-:r28:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r29:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -803,6 +963,7 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
                     stroke="blue"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    stroke-opacity="1"
                     stroke-width="2"
                     width="790"
                   />
@@ -816,6 +977,7 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
                     stroke="blue"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    stroke-opacity="1"
                     stroke-width="2"
                     width="790"
                   />
@@ -829,6 +991,7 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
                     stroke="blue"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    stroke-opacity="1"
                     stroke-width="2"
                     width="790"
                   />
@@ -842,6 +1005,7 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
                     stroke="blue"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    stroke-opacity="1"
                     stroke-width="2"
                     width="790"
                   />
@@ -900,7 +1064,7 @@ exports[`<Line /> should render Line with custom name 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts79-clip"
+                  id="recharts139-clip"
                 >
                   <rect
                     height="790"
@@ -918,12 +1082,28 @@ exports[`<Line /> should render Line with custom name 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rr:"
+                  id="recharts-line-:r1m:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1n:"
                   name="Monthly Sales"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -981,7 +1161,7 @@ exports[`<Line /> should render Line with default props 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts76-clip"
+                  id="recharts134-clip"
                 >
                   <rect
                     height="790"
@@ -999,11 +1179,27 @@ exports[`<Line /> should render Line with default props 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rq:"
+                  id="recharts-line-:r1k:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1l:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1061,7 +1257,7 @@ exports[`<LineChart /> should handle data with missing properties 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts49-clip"
+                  id="recharts87-clip"
                 >
                   <rect
                     height="790"
@@ -1076,14 +1272,30 @@ exports[`<LineChart /> should handle data with missing properties 1`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
+                  d="M5,5L795,400"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r18:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
                   d="M5,5ZM795,400Z"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rk:"
+                  id="recharts-line-:r19:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1141,7 +1353,7 @@ exports[`<LineChart /> should handle empty data array 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts48-clip"
+                  id="recharts86-clip"
                 >
                   <rect
                     height="790"
@@ -1204,7 +1416,7 @@ exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts35-clip"
+                  id="recharts63-clip"
                 >
                   <rect
                     height="790"
@@ -1222,11 +1434,27 @@ exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:re:"
+                  id="recharts-line-:rs:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rt:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1239,11 +1467,27 @@ exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
                   d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rf:"
+                  id="recharts-line-:ru:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rv:"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1258,6 +1502,102 @@ exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
 `;
 
 exports[`<LineChart /> should render LineChart with connectNulls true 1`] = `
+.c0.c0.c0.c0.c0 {
+  height: 500px;
+  width: 500px;
+}
+
+.c1.c1.c1.c1.c1 {
+  height: 100%;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      class="c1"
+      data-blade-component="line-chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 800px; height: 800px; min-width: 0;"
+      >
+        <div
+          style="width: 0px; height: 0px; overflow: visible;"
+        >
+          <div
+            class="recharts-wrapper"
+            style="position: relative; cursor: default; width: 800px; height: 800px;"
+          >
+            <svg
+              class="recharts-surface"
+              height="800"
+              role="application"
+              style="width: 100%; height: 100%;"
+              tabindex="0"
+              viewBox="0 0 800 800"
+              width="800"
+            >
+              <title />
+              <desc />
+              <defs>
+                <clippath
+                  id="recharts81-clip"
+                >
+                  <rect
+                    height="790"
+                    width="790"
+                    x="5"
+                    y="5"
+                  />
+                </clippath>
+              </defs>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,5L795,400"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r14:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,5L795,400"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r15:"
+                  stroke="hsla(227, 100%, 59%, 1)"
+                  stroke-dasharray="0px 0px"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-opacity="1"
+                  stroke-width="1.5"
+                  width="790"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LineChart /> should render LineChart with custom colors 1`] = `
 .c0.c0.c0.c0.c0 {
   height: 500px;
   width: 500px;
@@ -1316,81 +1656,16 @@ exports[`<LineChart /> should render LineChart with connectNulls true 1`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
-                  d="M5,5L795,400"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:ri:"
-                  stroke="hsla(227, 100%, 59%, 1)"
+                  id="recharts-line-:rk:"
+                  stroke="transparent"
                   stroke-dasharray="0px 0px"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  stroke-width="15"
                   width="790"
                 />
               </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<LineChart /> should render LineChart with custom colors 1`] = `
-.c0.c0.c0.c0.c0 {
-  height: 500px;
-  width: 500px;
-}
-
-.c1.c1.c1.c1.c1 {
-  height: 100%;
-  width: 100%;
-}
-
-<div>
-  <div
-    class="c0"
-    data-blade-component="box"
-  >
-    <div
-      class="c1"
-      data-blade-component="line-chart"
-    >
-      <div
-        class="recharts-responsive-container"
-        style="width: 800px; height: 800px; min-width: 0;"
-      >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
-        >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 800px; height: 800px;"
-          >
-            <svg
-              class="recharts-surface"
-              height="800"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 800 800"
-              width="800"
-            >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts25-clip"
-                >
-                  <rect
-                    height="790"
-                    width="790"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
               <g
                 class="recharts-layer recharts-line"
               >
@@ -1399,11 +1674,12 @@ exports[`<LineChart /> should render LineChart with custom colors 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:ra:"
+                  id="recharts-line-:rl:"
                   stroke="hsla(214, 40%, 92%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1416,11 +1692,27 @@ exports[`<LineChart /> should render LineChart with custom colors 1`] = `
                   d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rb:"
+                  id="recharts-line-:rm:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rn:"
                   stroke="hsla(220, 100%, 73%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1478,7 +1770,7 @@ exports[`<LineChart /> should render LineChart with different line types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts11-clip"
+                  id="recharts19-clip"
                 >
                   <rect
                     height="790"
@@ -1493,14 +1785,30 @@ exports[`<LineChart /> should render LineChart with different line types 1`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
+                  d="M5,400C92.77777777777777,432.9166666666667,180.55555555555554,465.8333333333333,268.3333333333333,498.75C356.1111111111111,531.6666666666666,443.88888888888886,597.5,531.6666666666666,597.5C619.4444444444445,597.5,707.2222222222222,449.375,795,301.25"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r8:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
                   d="M5,400L268.3333333333333,498.75L531.6666666666666,597.5L795,301.25"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r4:"
+                  id="recharts-line-:r9:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1513,12 +1821,43 @@ exports[`<LineChart /> should render LineChart with different line types 1`] = `
                   d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r5:"
+                  id="recharts-line-:ra:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rb:"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,202.5C92.77777777777777,251.875,180.55555555555554,301.25,268.3333333333333,350.625C356.1111111111111,400,443.88888888888886,498.75,531.6666666666666,498.75C619.4444444444445,498.75,707.2222222222222,276.5625,795,54.375"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rc:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
                   width="790"
                 />
               </g>
@@ -1530,11 +1869,12 @@ exports[`<LineChart /> should render LineChart with different line types 1`] = `
                   d="M5,202.5L136.66666666666666,202.5L136.66666666666666,350.625L400,350.625L400,498.75L663.3333333333333,498.75L663.3333333333333,54.375L795,54.375"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r6:"
+                  id="recharts-line-:rd:"
                   stroke="hsla(44, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1592,7 +1932,7 @@ exports[`<LineChart /> should render LineChart with different stroke styles 1`] 
               <desc />
               <defs>
                 <clippath
-                  id="recharts18-clip"
+                  id="recharts32-clip"
                 >
                   <rect
                     height="790"
@@ -1610,11 +1950,27 @@ exports[`<LineChart /> should render LineChart with different stroke styles 1`] 
                   d="M5,400C92.77777777777777,432.9166666666667,180.55555555555554,465.8333333333333,268.3333333333333,498.75C356.1111111111111,531.6666666666666,443.88888888888886,597.5,531.6666666666666,597.5C619.4444444444445,597.5,707.2222222222222,449.375,795,301.25"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r7:"
+                  id="recharts-line-:re:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,400C92.77777777777777,432.9166666666667,180.55555555555554,465.8333333333333,268.3333333333333,498.75C356.1111111111111,531.6666666666666,443.88888888888886,597.5,531.6666666666666,597.5C619.4444444444445,597.5,707.2222222222222,449.375,795,301.25"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rf:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1627,11 +1983,27 @@ exports[`<LineChart /> should render LineChart with different stroke styles 1`] 
                   d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r8:"
+                  id="recharts-line-:rg:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rh:"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px, 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1644,11 +2016,27 @@ exports[`<LineChart /> should render LineChart with different stroke styles 1`] 
                   d="M5,202.5C92.77777777777777,251.875,180.55555555555554,301.25,268.3333333333333,350.625C356.1111111111111,400,443.88888888888886,498.75,531.6666666666666,498.75C619.4444444444445,498.75,707.2222222222222,276.5625,795,54.375"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r9:"
+                  id="recharts-line-:ri:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,202.5C92.77777777777777,251.875,180.55555555555554,301.25,268.3333333333333,350.625C356.1111111111111,400,443.88888888888886,498.75,531.6666666666666,498.75C619.4444444444445,498.75,707.2222222222222,276.5625,795,54.375"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rj:"
                   stroke="hsla(44, 100%, 37%, 1)"
                   stroke-dasharray="0px, 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1706,7 +2094,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts30-clip"
+                  id="recharts54-clip"
                 >
                   <rect
                     height="790"
@@ -1724,11 +2112,27 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rc:"
+                  id="recharts-line-:ro:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rp:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1745,6 +2149,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                     stroke="hsla(227, 100%, 59%, 1)"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    stroke-opacity="1"
                     stroke-width="1.5"
                     width="790"
                   />
@@ -1758,6 +2163,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                     stroke="hsla(227, 100%, 59%, 1)"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    stroke-opacity="1"
                     stroke-width="1.5"
                     width="790"
                   />
@@ -1771,6 +2177,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                     stroke="hsla(227, 100%, 59%, 1)"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    stroke-opacity="1"
                     stroke-width="1.5"
                     width="790"
                   />
@@ -1784,6 +2191,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                     stroke="hsla(227, 100%, 59%, 1)"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    stroke-opacity="1"
                     stroke-width="1.5"
                     width="790"
                   />
@@ -1797,11 +2205,27 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                   d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rd:"
+                  id="recharts-line-:rq:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:rr:"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1859,7 +2283,7 @@ exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts4-clip"
+                  id="recharts6-clip"
                 >
                   <rect
                     height="790"
@@ -1877,12 +2301,28 @@ exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
                   d="M5,400C92.77777777777777,432.9166666666667,180.55555555555554,465.8333333333333,268.3333333333333,498.75C356.1111111111111,531.6666666666666,443.88888888888886,597.5,531.6666666666666,597.5C619.4444444444445,597.5,707.2222222222222,449.375,795,301.25"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r1:"
+                  id="recharts-line-:r2:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,400C92.77777777777777,432.9166666666667,180.55555555555554,465.8333333333333,268.3333333333333,498.75C356.1111111111111,531.6666666666666,443.88888888888886,597.5,531.6666666666666,597.5C619.4444444444445,597.5,707.2222222222222,449.375,795,301.25"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r3:"
                   name="Sales"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1895,12 +2335,28 @@ exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
                   d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r2:"
+                  id="recharts-line-:r4:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,597.5C92.77777777777777,613.9583333333334,180.55555555555554,630.4166666666666,268.3333333333333,646.875C356.1111111111111,663.3333333333334,443.88888888888886,696.25,531.6666666666666,696.25C619.4444444444445,696.25,707.2222222222222,622.1875,795,548.125"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r5:"
                   name="Profit"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1913,12 +2369,28 @@ exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
                   d="M5,202.5C92.77777777777777,251.875,180.55555555555554,301.25,268.3333333333333,350.625C356.1111111111111,400,443.88888888888886,498.75,531.6666666666666,498.75C619.4444444444445,498.75,707.2222222222222,276.5625,795,54.375"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r3:"
+                  id="recharts-line-:r6:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,202.5C92.77777777777777,251.875,180.55555555555554,301.25,268.3333333333333,350.625C356.1111111111111,400,443.88888888888886,498.75,531.6666666666666,498.75C619.4444444444445,498.75,707.2222222222222,276.5625,795,54.375"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r7:"
                   name="Revenue"
                   stroke="hsla(44, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -1976,7 +2448,7 @@ exports[`<LineChart /> should render LineChart with showLegend false 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts40-clip"
+                  id="recharts72-clip"
                 >
                   <rect
                     height="790"
@@ -1994,11 +2466,27 @@ exports[`<LineChart /> should render LineChart with showLegend false 1`] = `
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rg:"
+                  id="recharts-line-:r10:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r11:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -2011,11 +2499,27 @@ exports[`<LineChart /> should render LineChart with showLegend false 1`] = `
                   d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
                   fill="none"
                   height="790"
-                  id="recharts-line-:rh:"
+                  id="recharts-line-:r12:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,531.6666666666667C92.77777777777777,553.6111111111112,180.55555555555554,575.5555555555555,268.3333333333333,597.5C356.1111111111111,619.4444444444445,443.88888888888886,663.3333333333334,531.6666666666666,663.3333333333334C619.4444444444445,663.3333333333334,707.2222222222222,564.5833333333333,795,465.83333333333326"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r13:"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -2092,10 +2596,26 @@ exports[`<LineChart /> should render basic LineChart with single line 1`] = `
                   fill="none"
                   height="790"
                   id="recharts-line-:r0:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r1:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -2315,7 +2835,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts52-clip"
+                  id="recharts92-clip"
                 >
                   <rect
                     height="760"
@@ -2689,12 +3209,28 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   d="M65,258.33333333333337C146.11111111111114,300.55555555555554,227.22222222222223,342.77777777777777,308.33333333333337,385C389.4444444444445,427.22222222222223,470.5555555555556,511.66666666666674,551.6666666666667,511.66666666666674C632.7777777777778,511.66666666666674,713.8888888888889,321.66666666666674,795,131.66666666666663"
                   fill="none"
                   height="760"
-                  id="recharts-line-:rl:"
+                  id="recharts-line-:r1a:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,258.33333333333337C146.11111111111114,300.55555555555554,227.22222222222223,342.77777777777777,308.33333333333337,385C389.4444444444445,427.22222222222223,470.5555555555556,511.66666666666674,551.6666666666667,511.66666666666674C632.7777777777778,511.66666666666674,713.8888888888889,321.66666666666674,795,131.66666666666663"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r1b:"
                   name="Sales"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="730"
                 />
@@ -2707,12 +3243,28 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   d="M65,511.66666666666674C146.11111111111114,532.7777777777778,227.22222222222223,553.8888888888889,308.33333333333337,575C389.4444444444445,596.1111111111111,470.5555555555556,638.3333333333334,551.6666666666667,638.3333333333334C632.7777777777778,638.3333333333334,713.8888888888889,543.3333333333333,795,448.33333333333326"
                   fill="none"
                   height="760"
-                  id="recharts-line-:rm:"
+                  id="recharts-line-:r1c:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,511.66666666666674C146.11111111111114,532.7777777777778,227.22222222222223,553.8888888888889,308.33333333333337,575C389.4444444444445,596.1111111111111,470.5555555555556,638.3333333333334,551.6666666666667,638.3333333333334C632.7777777777778,638.3333333333334,713.8888888888889,543.3333333333333,795,448.33333333333326"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r1d:"
                   name="Profit"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="730"
                 />
@@ -2770,7 +3322,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               <desc />
               <defs>
                 <clippath
-                  id="recharts119-clip"
+                  id="recharts205-clip"
                 >
                   <rect
                     height="760"
@@ -3024,12 +3576,28 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                   d="M65,5L795,195"
                   fill="none"
                   height="760"
-                  id="recharts-line-:r18:"
+                  id="recharts-line-:r2g:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,5L795,195"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r2h:"
                   name="Sales"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="730"
                 />
@@ -3042,12 +3610,28 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                   d="M65,385L795,480"
                   fill="none"
                   height="760"
-                  id="recharts-line-:r19:"
+                  id="recharts-line-:r2i:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,385L795,480"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r2j:"
                   name="Profit"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="730"
                 />
@@ -3105,7 +3689,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts125-clip"
+                  id="recharts215-clip"
                 >
                   <rect
                     height="760"
@@ -3385,12 +3969,28 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   d="M65,385C186.66666666666669,195,308.3333333333333,5,430,5C551.6666666666666,5,673.3333333333334,100,795,195"
                   fill="none"
                   height="760"
-                  id="recharts-line-:r1a:"
+                  id="recharts-line-:r2k:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,385C186.66666666666669,195,308.3333333333333,5,430,5C551.6666666666666,5,673.3333333333334,100,795,195"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r2l:"
                   name="Value"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="730"
                 />
@@ -3403,12 +4003,28 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   d="M65,764.0500000000001C186.66666666666669,763.575,308.3333333333333,763.1000000000001,430,763.1000000000001C551.6666666666666,763.1000000000001,673.3333333333334,763.3375000000001,795,763.575"
                   fill="none"
                   height="760"
-                  id="recharts-line-:r1b:"
+                  id="recharts-line-:r2m:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,764.0500000000001C186.66666666666669,763.575,308.3333333333333,763.1000000000001,430,763.1000000000001C551.6666666666666,763.1000000000001,673.3333333333334,763.3375000000001,795,763.575"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r2n:"
                   name="Percentage"
                   stroke="hsla(150, 100%, 37%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="730"
                 />
@@ -3466,7 +4082,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               <desc />
               <defs>
                 <clippath
-                  id="recharts115-clip"
+                  id="recharts199-clip"
                 >
                   <rect
                     height="760"
@@ -3772,11 +4388,27 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                   d="M65,258.33333333333337C146.11111111111114,300.55555555555554,227.22222222222223,342.77777777777777,308.33333333333337,385C389.4444444444445,427.22222222222223,470.5555555555556,511.66666666666674,551.6666666666667,511.66666666666674C632.7777777777778,511.66666666666674,713.8888888888889,321.66666666666674,795,131.66666666666663"
                   fill="none"
                   height="760"
-                  id="recharts-line-:r17:"
+                  id="recharts-line-:r2e:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="730"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M65,258.33333333333337C146.11111111111114,300.55555555555554,227.22222222222223,342.77777777777777,308.33333333333337,385C389.4444444444445,427.22222222222223,470.5555555555556,511.66666666666674,551.6666666666667,511.66666666666674C632.7777777777778,511.66666666666674,713.8888888888889,321.66666666666674,795,131.66666666666663"
+                  fill="none"
+                  height="760"
+                  id="recharts-line-:r2f:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="730"
                 />
@@ -3834,7 +4466,7 @@ exports[`LineChart Styling Tests should apply correct animation properties for d
               <desc />
               <defs>
                 <clippath
-                  id="recharts131-clip"
+                  id="recharts225-clip"
                 >
                   <rect
                     height="790"
@@ -3852,11 +4484,27 @@ exports[`LineChart Styling Tests should apply correct animation properties for d
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r1c:"
+                  id="recharts-line-:r2o:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r2p:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px, 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />
@@ -3914,7 +4562,7 @@ exports[`LineChart Styling Tests should apply correct animation properties for s
               <desc />
               <defs>
                 <clippath
-                  id="recharts134-clip"
+                  id="recharts230-clip"
                 >
                   <rect
                     height="790"
@@ -3932,11 +4580,27 @@ exports[`LineChart Styling Tests should apply correct animation properties for s
                   d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
                   fill="none"
                   height="790"
-                  id="recharts-line-:r1d:"
+                  id="recharts-line-:r2q:"
+                  stroke="transparent"
+                  stroke-dasharray="0px 0px"
+                  stroke-width="15"
+                  width="790"
+                />
+              </g>
+              <g
+                class="recharts-layer recharts-line"
+              >
+                <path
+                  class="recharts-curve recharts-line-curve"
+                  d="M5,268.33333333333337C92.77777777777777,312.22222222222223,180.55555555555554,356.1111111111111,268.3333333333333,400C356.1111111111111,443.8888888888889,443.88888888888886,531.6666666666667,531.6666666666666,531.6666666666667C619.4444444444445,531.6666666666667,707.2222222222222,334.1666666666667,795,136.66666666666663"
+                  fill="none"
+                  height="790"
+                  id="recharts-line-:r2r:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  stroke-opacity="1"
                   stroke-width="1.5"
                   width="790"
                 />

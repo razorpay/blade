@@ -4,11 +4,13 @@ import {
   Line as RechartsLine,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
+import { animate } from 'framer-motion';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents/types';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
+import { LineChartContext, useLineChartContext } from './LineChartContext';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -29,14 +31,19 @@ const Line: React.FC<ChartLineProps> = ({
   _colorTheme,
   _totalLines,
   hide,
+  dataKey,
   ...props
 }) => {
   const { theme } = useTheme();
+  const { hoveredDataKey, setHoveredDataKey } = useLineChartContext();
+
   const themeColors = useChartsColorTheme({
     colorTheme: _colorTheme,
     chartName: 'line',
     chartDataIndicators: _totalLines,
   });
+
+  const isOtherLineHovered = hoveredDataKey !== null && hoveredDataKey !== dataKey;
   const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
 
   const strokeDasharray =
@@ -48,22 +55,68 @@ const Line: React.FC<ChartLineProps> = ({
     : theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
+  // Animated opacity using framer-motion
+  const targetOpacity = isOtherLineHovered ? 0.2 : 1;
+  const [animatedOpacity, setAnimatedOpacity] = React.useState(targetOpacity);
+
+  React.useEffect(() => {
+    const controls = animate(animatedOpacity, targetOpacity, {
+      duration: 0.5,
+      ease: 'easeInOut',
+      onUpdate: (latest) => setAnimatedOpacity(latest),
+    });
+
+    return () => controls.stop();
+  }, [targetOpacity]);
+
+  // activeDot config with hover handlers
+  const activeDotConfig = activeDot
+    ? {
+        onMouseEnter: () => !hide && setHoveredDataKey?.(dataKey as string),
+        onMouseLeave: () => !hide && setHoveredDataKey?.(null),
+      }
+    : false;
+
   return (
-    <RechartsLine
-      stroke={colorToken}
-      strokeWidth={1.5}
-      strokeDasharray={strokeDasharray}
-      type={type}
-      activeDot={activeDot}
-      dot={dot}
-      legendType={showLegend ? 'line' : 'none'}
-      animationBegin={animationBegin}
-      animationDuration={animationDuration}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      hide={hide}
-      {...props}
-    />
+    <>
+      <RechartsLine
+        key={`line-${dataKey}-background`}
+        type="monotone"
+        dataKey={dataKey}
+        stroke="transparent"
+        strokeWidth={15}
+        dot={false}
+        activeDot={false}
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        hide={hide}
+      />
+      <RechartsLine
+        key={`line-${dataKey}-main`}
+        stroke={colorToken}
+        strokeWidth={1.5}
+        strokeDasharray={strokeDasharray}
+        type={type}
+        dataKey={dataKey}
+        activeDot={isOtherLineHovered ? false : activeDotConfig}
+        dot={dot}
+        legendType={showLegend ? 'line' : 'none'}
+        animationBegin={animationBegin}
+        animationDuration={animationDuration}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        hide={hide}
+        // Animated opacity using framer-motion
+        strokeOpacity={animatedOpacity}
+        isAnimationActive={true}
+        {...props}
+      />
+    </>
   );
 };
 
@@ -84,7 +137,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     chartName: 'line',
   });
 
-  // State to track which lines are visible (by dataKey) - all visible by default
+  // State to track which line is currently hovered
+  const [hoveredDataKey, setHoveredDataKey] = React.useState<string | null>(null);
   const [selectedDataKeys, setSelectedDataKeys] = React.useState<string[] | undefined>(undefined);
 
   /**
@@ -133,27 +187,39 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     return { dataColorMapping, lineChartModifiedChildrens, totalLines };
   }, [children, colorTheme, themeColors, selectedDataKeys]);
 
+  // Memoize context values to prevent unnecessary re-renders of consumers
+  const lineChartContextValue = React.useMemo(() => ({ hoveredDataKey, setHoveredDataKey }), [
+    hoveredDataKey,
+  ]);
+
+  const commonChartContextValue = React.useMemo(
+    () => ({
+      chartName: 'line' as const,
+      dataColorMapping,
+      selectedDataKeys,
+      setSelectedDataKeys,
+    }),
+    [dataColorMapping, selectedDataKeys],
+  );
+
   return (
-    <CommonChartComponentsContext.Provider
-      value={{
-        chartName: 'line',
-        dataColorMapping,
-        selectedDataKeys,
-        setSelectedDataKeys,
-      }}
-    >
-      <BaseBox
-        {...metaAttribute({ name: 'line-chart', testID })}
-        {...makeAnalyticsAttribute(restProps)}
-        width="100%"
-        height="100%"
-        {...restProps}
-      >
-        <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>
-        </RechartsResponsiveContainer>
-      </BaseBox>
-    </CommonChartComponentsContext.Provider>
+    <LineChartContext.Provider value={lineChartContextValue}>
+      <CommonChartComponentsContext.Provider value={commonChartContextValue}>
+        <BaseBox
+          {...metaAttribute({ name: 'line-chart', testID })}
+          {...makeAnalyticsAttribute(restProps)}
+          width="100%"
+          height="100%"
+          {...restProps}
+        >
+          <RechartsResponsiveContainer width="100%" height="100%">
+            <RechartsLineChart data={data} onMouseLeave={() => setHoveredDataKey(null)}>
+              {lineChartModifiedChildrens}
+            </RechartsLineChart>
+          </RechartsResponsiveContainer>
+        </BaseBox>
+      </CommonChartComponentsContext.Provider>
+    </LineChartContext.Provider>
   );
 };
 
