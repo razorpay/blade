@@ -31,6 +31,10 @@ import {
   PADDING_HORIZONTAL,
   X_AXIS_TEXT_BASELINE,
   X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL,
+  X_AXIS_TICK_LINE_HEIGHT,
+  X_AXIS_TICK_START_DY,
+  X_AXIS_LABEL_GAP,
+  X_AXIS_BOTTOM_PADDING,
   Y_OFFSET,
   X_OFFSET,
   componentId,
@@ -203,10 +207,7 @@ const CustomXAxisTick = ({
   tickWidth?: number;
   tickCount: number;
 }): JSX.Element => {
-  const lineHeight = 14.5;
   const fontSize = theme.typography.fonts.size[75];
-  const startDy = 16;
-  const labelGap = 4; // Gap between primary and secondary labels
   const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
 
   // Align first tick left, last tick right, middle ticks center
@@ -218,8 +219,8 @@ const CustomXAxisTick = ({
   const textStyleProps = {
     maxWidth,
     fontSize,
-    lineHeight,
-    startDy,
+    lineHeight: X_AXIS_TICK_LINE_HEIGHT,
+    startDy: X_AXIS_TICK_START_DY,
     textAnchor,
     fill: theme.colors.surface.text.gray.muted,
     fontFamily: theme.typography.fonts.family.text,
@@ -243,8 +244,8 @@ const CustomXAxisTick = ({
           ...textStyleProps,
           text: String(secondaryValue),
           // primaryLabel.height gives us where primary ends (relative to its startDy)
-          // labelGap adds the desired spacing between labels
-          yOffset: primaryLabel.height + labelGap,
+          // X_AXIS_LABEL_GAP adds the desired spacing between labels
+          yOffset: primaryLabel.height + X_AXIS_LABEL_GAP,
         })
       : null;
 
@@ -256,6 +257,28 @@ const CustomXAxisTick = ({
   );
 };
 
+/**
+ * Estimates the maximum number of lines needed for labels based on chart data.
+ * Uses an estimated tick width to pre-calculate wrapping for proper height allocation.
+ */
+const estimateMaxLines = (
+  labels: string[],
+  estimatedTickWidth: number,
+  fontSize: number,
+): number => {
+  if (labels.length === 0) return 1;
+
+  const maxWidth = estimatedTickWidth * 0.9;
+  let maxLines = 1;
+
+  for (const label of labels) {
+    const lines = wrapTextToFit(label, maxWidth, fontSize);
+    maxLines = Math.max(maxLines, lines.length);
+  }
+
+  return maxLines;
+};
+
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
   const { chartData } = useCommonChartComponentsContext();
@@ -264,8 +287,40 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   // Calculate tick count for width distribution
   const tickCount = chartData?.length ?? 1;
 
-  // Calculate axis height - use larger height when secondary labels are present
-  const baseHeight = secondaryLabelKey ? 50 : 30;
+  const fontSize = theme.typography.fonts.size[75];
+
+  // Estimate tick width for height calculation
+  // Use a reasonable default chart width; actual wrapping adjusts at render time
+  const estimatedChartWidth = 600;
+  const estimatedTickWidth = estimatedChartWidth / tickCount;
+
+  // Calculate max lines for primary labels
+  const primaryLabels =
+    chartData && props.dataKey
+      ? chartData.map((item) => String(item[props.dataKey as string] ?? ''))
+      : [];
+  const maxPrimaryLines = estimateMaxLines(primaryLabels, estimatedTickWidth, fontSize);
+
+  // Calculate max lines for secondary labels
+  const secondaryLabels =
+    secondaryLabelKey && chartData
+      ? chartData.map((item) => String(item[secondaryLabelKey] ?? ''))
+      : [];
+  const maxSecondaryLines =
+    secondaryLabels.length > 0
+      ? estimateMaxLines(secondaryLabels, estimatedTickWidth, fontSize)
+      : 0;
+
+  // Calculate total height needed for wrapped labels
+  const primaryHeight = maxPrimaryLines * X_AXIS_TICK_LINE_HEIGHT;
+  const secondaryHeight =
+    maxSecondaryLines > 0 ? maxSecondaryLines * X_AXIS_TICK_LINE_HEIGHT + X_AXIS_LABEL_GAP : 0;
+  const calculatedHeight =
+    X_AXIS_TICK_START_DY + primaryHeight + secondaryHeight + X_AXIS_BOTTOM_PADDING;
+
+  // Use calculated height, with minimum values as fallback
+  const minHeight = secondaryLabelKey ? 50 : 30;
+  const baseHeight = Math.max(calculatedHeight, minHeight);
 
   const xAxisBaseLine = secondaryLabelKey
     ? X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL
