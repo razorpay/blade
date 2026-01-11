@@ -184,7 +184,8 @@ const WrappedTextLabel = ({
  * Custom tick component for X-axis with automatic text wrapping.
  * - Primary label: Automatically wraps long text to multiple lines based on available width
  * - Secondary label: Optional label from a different data key (shown below primary, also supports wrapping)
- * - Edge alignment: First/last ticks align start/end to prevent clipping
+ * - Edge alignment: For line/area charts, first/last ticks align start/end to prevent clipping.
+ *   For bar charts, all labels are center-aligned since bars are centered on tick positions.
  * - Reports calculated height via onHeightCalculated callback for dynamic axis sizing
  */
 const CustomXAxisTick = ({
@@ -196,6 +197,7 @@ const CustomXAxisTick = ({
   theme,
   tickWidth,
   tickCount,
+  chartName,
   onHeightCalculated,
 }: {
   x: number;
@@ -207,15 +209,24 @@ const CustomXAxisTick = ({
   theme: ReturnType<typeof useTheme>['theme'];
   tickWidth?: number;
   tickCount: number;
+  chartName?: string;
   onHeightCalculated?: (height: number) => void;
 }): JSX.Element => {
   const fontSize = theme.typography.fonts.size[75];
   const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
 
-  // Align first tick left, last tick right, middle ticks center
-  const isFirstTick = payload.index === 0;
-  const isLastTick = payload.index === tickCount - 1;
-  const textAnchor = isFirstTick ? 'start' : isLastTick ? 'end' : 'middle';
+  // For bar charts, always center align labels since bars are centered on ticks
+  // For line/area charts, align first tick left and last tick right to prevent clipping
+  const shouldUseEdgeAlignment = chartName === 'line' || chartName === 'area';
+  const isFirstTick = shouldUseEdgeAlignment && payload.index === 0;
+  const isLastTick = shouldUseEdgeAlignment && payload.index === tickCount - 1;
+
+  const getTextAnchor = (): 'start' | 'middle' | 'end' => {
+    if (isFirstTick) return 'start';
+    if (isLastTick) return 'end';
+    return 'middle';
+  };
+  const textAnchor = getTextAnchor();
 
   // Common text style props
   const textStyleProps = {
@@ -271,7 +282,7 @@ const CustomXAxisTick = ({
 
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
-  const { chartData } = useCommonChartComponentsContext();
+  const { chartData, chartName } = useCommonChartComponentsContext();
   const { secondaryLabelKey, ...restProps } = props;
 
   // Calculate tick count for width distribution
@@ -319,6 +330,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
             theme={theme}
             tickWidth={tickWidth}
             tickCount={tickCount}
+            chartName={chartName}
             onHeightCalculated={handleHeightCalculated}
           />
         );
