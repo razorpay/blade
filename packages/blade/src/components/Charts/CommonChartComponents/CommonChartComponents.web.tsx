@@ -29,13 +29,12 @@ import {
   TEXT_BASELINE,
   PADDING_VERTICAL,
   PADDING_HORIZONTAL,
-  X_AXIS_TEXT_BASELINE,
-  X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL,
   X_AXIS_TICK_LINE_HEIGHT,
   X_AXIS_TICK_START_DY,
   X_AXIS_LABEL_GAP,
-  X_AXIS_BOTTOM_PADDING,
-  Y_OFFSET,
+  X_AXIS_LABEL_OFFSET,
+  X_AXIS_LABEL_HEIGHT,
+  LEGEND_MARGIN_TOP,
   X_OFFSET,
   componentId,
 } from './tokens';
@@ -186,6 +185,7 @@ const WrappedTextLabel = ({
  * - Primary label: Automatically wraps long text to multiple lines based on available width
  * - Secondary label: Optional label from a different data key (shown below primary, also supports wrapping)
  * - Edge alignment: First/last ticks align start/end to prevent clipping
+ * - Reports calculated height via onHeightCalculated callback for dynamic axis sizing
  */
 const CustomXAxisTick = ({
   x,
@@ -196,6 +196,7 @@ const CustomXAxisTick = ({
   theme,
   tickWidth,
   tickCount,
+  onHeightCalculated,
 }: {
   x: number;
   y: number;
@@ -206,6 +207,7 @@ const CustomXAxisTick = ({
   theme: ReturnType<typeof useTheme>['theme'];
   tickWidth?: number;
   tickCount: number;
+  onHeightCalculated?: (height: number) => void;
 }): JSX.Element => {
   const fontSize = theme.typography.fonts.size[75];
   const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
@@ -249,34 +251,22 @@ const CustomXAxisTick = ({
         })
       : null;
 
+  // Calculate total tick height and report it
+  const totalTickHeight =
+    X_AXIS_TICK_START_DY +
+    primaryLabel.height +
+    (secondaryLabel ? X_AXIS_LABEL_GAP + secondaryLabel.height : 0);
+
+  React.useEffect(() => {
+    onHeightCalculated?.(totalTickHeight);
+  }, [totalTickHeight, onHeightCalculated]);
+
   return (
     <g transform={`translate(${x},${y})`}>
       {primaryLabel.element}
       {secondaryLabel?.element}
     </g>
   );
-};
-
-/**
- * Estimates the maximum number of lines needed for labels based on chart data.
- * Uses an estimated tick width to pre-calculate wrapping for proper height allocation.
- */
-const estimateMaxLines = (
-  labels: string[],
-  estimatedTickWidth: number,
-  fontSize: number,
-): number => {
-  if (labels.length === 0) return 1;
-
-  const maxWidth = estimatedTickWidth * 0.9;
-  let maxLines = 1;
-
-  for (const label of labels) {
-    const lines = wrapTextToFit(label, maxWidth, fontSize);
-    maxLines = Math.max(maxLines, lines.length);
-  }
-
-  return maxLines;
 };
 
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
@@ -287,44 +277,24 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   // Calculate tick count for width distribution
   const tickCount = chartData?.length ?? 1;
 
-  const fontSize = theme.typography.fonts.size[75];
+  // State to track the maximum tick height reported by CustomXAxisTick components
+  const minHeight = secondaryLabelKey ? 20 : 10;
+  const [maxTickHeight, setMaxTickHeight] = React.useState(minHeight);
 
-  // Estimate tick width for height calculation
-  // Use a reasonable default chart width; actual wrapping adjusts at render time
-  const estimatedChartWidth = 600;
-  const estimatedTickWidth = estimatedChartWidth / tickCount;
+  // Callback to update max height when ticks report their calculated height
+  const handleHeightCalculated = React.useCallback((height: number) => {
+    setMaxTickHeight((prev) => Math.max(prev, height));
+  }, []);
 
-  // Calculate max lines for primary labels
-  const primaryLabels =
-    chartData && props.dataKey
-      ? chartData.map((item) => String(item[props.dataKey as string] ?? ''))
-      : [];
-  const maxPrimaryLines = estimateMaxLines(primaryLabels, estimatedTickWidth, fontSize);
+  // Calculate total axis height:
+  // - Tick labels height (dynamic)
+  // - X-axis label height + offset (if label prop is present)
+  const hasAxisLabel = Boolean(props?.label);
+  const axisLabelSpace = hasAxisLabel ? X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT : 0;
+  const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
 
-  // Calculate max lines for secondary labels
-  const secondaryLabels =
-    secondaryLabelKey && chartData
-      ? chartData.map((item) => String(item[secondaryLabelKey] ?? ''))
-      : [];
-  const maxSecondaryLines =
-    secondaryLabels.length > 0
-      ? estimateMaxLines(secondaryLabels, estimatedTickWidth, fontSize)
-      : 0;
-
-  // Calculate total height needed for wrapped labels
-  const primaryHeight = maxPrimaryLines * X_AXIS_TICK_LINE_HEIGHT;
-  const secondaryHeight =
-    maxSecondaryLines > 0 ? maxSecondaryLines * X_AXIS_TICK_LINE_HEIGHT + X_AXIS_LABEL_GAP : 0;
-  const calculatedHeight =
-    X_AXIS_TICK_START_DY + primaryHeight + secondaryHeight + X_AXIS_BOTTOM_PADDING;
-
-  // Use calculated height, with minimum values as fallback
-  const minHeight = secondaryLabelKey ? 50 : 30;
-  const baseHeight = Math.max(calculatedHeight, minHeight);
-
-  const xAxisBaseLine = secondaryLabelKey
-    ? X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL
-    : X_AXIS_TEXT_BASELINE;
+  // Position for X-axis label: below tick labels with offset
+  const axisLabelY = maxTickHeight + X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT / 2;
 
   return (
     <RechartsXAxis
@@ -349,6 +319,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
             theme={theme}
             tickWidth={tickWidth}
             tickCount={tickCount}
+            onHeightCalculated={handleHeightCalculated}
           />
         );
       }}
@@ -357,7 +328,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
           x={viewBox.x + viewBox.width / 2 - X_OFFSET}
-          y={viewBox.y + Y_OFFSET + xAxisBaseLine}
+          y={viewBox.y + axisLabelY}
           textAnchor="middle"
           fill={theme.colors.surface.text.gray.muted}
           fontSize={theme.typography.fonts.size[75]}
@@ -583,7 +554,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
-        paddingTop: theme.spacing[7],
+        paddingTop: LEGEND_MARGIN_TOP,
       }}
       align="center"
       verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
