@@ -4,6 +4,7 @@ import {
   Line as RechartsLine,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
+import { animate } from 'framer-motion';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents/types';
@@ -18,7 +19,6 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import debounce from '~utils/lodashButBetter/debounce';
 
 const Line: React.FC<ChartLineProps> = ({
   color,
@@ -36,6 +36,7 @@ const Line: React.FC<ChartLineProps> = ({
 }) => {
   const { theme } = useTheme();
   const { hoveredDataKey, setHoveredDataKey } = useLineChartContext();
+
   const themeColors = useChartsColorTheme({
     colorTheme: _colorTheme,
     chartName: 'line',
@@ -54,42 +55,49 @@ const Line: React.FC<ChartLineProps> = ({
     : theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
-  // Reduce opacity when another line is hovered
-  const strokeOpacity = isOtherLineHovered ? 0.2 : 1;
+  // Animated opacity using framer-motion
+  const targetOpacity = isOtherLineHovered ? 0.2 : 1;
+  const [animatedOpacity, setAnimatedOpacity] = React.useState(targetOpacity);
 
-  // we need to avoid flicker on quick run down of mouse cursor here.
-  const handleDebouncedHoveredDataKey = debounce((dataKey: string) => {
-    setHoveredDataKey?.(dataKey);
-  }, 30);
+  React.useEffect(() => {
+    const controls = animate(animatedOpacity, targetOpacity, {
+      duration: 0.5,
+      ease: 'easeInOut',
+      onUpdate: (latest) => setAnimatedOpacity(latest),
+    });
+
+    return () => controls.stop();
+  }, [targetOpacity]);
 
   // activeDot config with hover handlers
   const activeDotConfig = activeDot
     ? {
-        onMouseEnter: () => !hide && handleDebouncedHoveredDataKey?.(dataKey),
-        onMouseLeave: () => !hide && handleDebouncedHoveredDataKey?.(null),
+        onMouseEnter: () => !hide && setHoveredDataKey?.(dataKey as string),
+        onMouseLeave: () => !hide && setHoveredDataKey?.(null),
       }
     : false;
 
   return (
     <>
       <RechartsLine
+        key={`line-${dataKey}-background`}
         type="monotone"
         dataKey={dataKey}
         stroke="transparent"
         strokeWidth={15}
         dot={false}
         activeDot={false}
-        onMouseEnter={() => !hide && handleDebouncedHoveredDataKey?.(dataKey)}
-        onMouseLeave={() => !hide && handleDebouncedHoveredDataKey?.(null)}
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
         connectNulls
         legendType="none"
         tooltipType="none"
         hide={hide}
       />
       <RechartsLine
+        key={`line-${dataKey}-main`}
         stroke={colorToken}
         strokeWidth={1.5}
-        strokeOpacity={strokeOpacity}
         strokeDasharray={strokeDasharray}
         type={type}
         dataKey={dataKey}
@@ -100,9 +108,12 @@ const Line: React.FC<ChartLineProps> = ({
         animationDuration={animationDuration}
         strokeLinecap="round"
         strokeLinejoin="round"
-        onMouseEnter={() => !hide && handleDebouncedHoveredDataKey?.(dataKey)}
-        onMouseLeave={() => !hide && handleDebouncedHoveredDataKey?.(null)}
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
         hide={hide}
+        // Animated opacity using framer-motion
+        strokeOpacity={animatedOpacity}
+        isAnimationActive={true}
         {...props}
       />
     </>
@@ -176,16 +187,24 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     return { dataColorMapping, lineChartModifiedChildrens, totalLines };
   }, [children, colorTheme, themeColors, selectedDataKeys]);
 
+  // Memoize context values to prevent unnecessary re-renders of consumers
+  const lineChartContextValue = React.useMemo(() => ({ hoveredDataKey, setHoveredDataKey }), [
+    hoveredDataKey,
+  ]);
+
+  const commonChartContextValue = React.useMemo(
+    () => ({
+      chartName: 'line' as const,
+      dataColorMapping,
+      selectedDataKeys,
+      setSelectedDataKeys,
+    }),
+    [dataColorMapping, selectedDataKeys],
+  );
+
   return (
-    <LineChartContext.Provider value={{ hoveredDataKey, setHoveredDataKey }}>
-      <CommonChartComponentsContext.Provider
-        value={{
-          chartName: 'line',
-          dataColorMapping,
-          selectedDataKeys,
-          setSelectedDataKeys,
-        }}
-      >
+    <LineChartContext.Provider value={lineChartContextValue}>
+      <CommonChartComponentsContext.Provider value={commonChartContextValue}>
         <BaseBox
           {...metaAttribute({ name: 'line-chart', testID })}
           {...makeAnalyticsAttribute(restProps)}

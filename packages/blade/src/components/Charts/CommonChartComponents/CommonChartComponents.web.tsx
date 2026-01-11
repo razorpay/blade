@@ -171,7 +171,6 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
 
 const CustomTooltip = ({
   item,
-  key,
 }: {
   item: {
     name: string;
@@ -180,7 +179,6 @@ const CustomTooltip = ({
     dataKey: string;
     payload: { fill: string };
   };
-  key: string;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
@@ -192,7 +190,7 @@ const CustomTooltip = ({
       alignItems="center"
       justifyContent="space-between"
       gap="spacing.4"
-      key={key}
+      key={`tooltip-${item.name}`}
     >
       <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
         <div
