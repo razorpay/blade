@@ -687,7 +687,7 @@ export const LineChartWithMultiLineXAxis: StoryFn<typeof ChartLine> = () => {
     <ChartsWrapper>
       <Box width="100%" height="400px">
         <ChartLineWrapper data={multiLineAxisData} colorTheme="categorical">
-          <ChartXAxis dataKey="time" secondaryDataKey="day" label="Time / Day" />
+          <ChartXAxis dataKey="time" secondaryLabelKey="day" label="Time / Day" />
           <ChartYAxis label="Revenue ($)" />
           <ChartTooltip />
           <ChartLegend />

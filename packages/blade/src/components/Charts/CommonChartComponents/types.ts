@@ -41,16 +41,16 @@ type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | '
    * Optional secondary data key for multi-line X-axis labels.
    * When provided, the X-axis will display two lines of text:
    * - Primary label (from dataKey)
-   * - Secondary label (from secondaryDataKey)
+   * - Secondary label (from secondaryLabelKey)
    *
    * @example
    * // Data: [{ date: 'Jan', year: '2024' }, { date: 'Feb', year: '2024' }]
-   * <ChartXAxis dataKey="date" secondaryDataKey="year" />
+   * <ChartXAxis dataKey="date" secondaryLabelKey="year" />
    * // Renders:
    * //   Jan        Feb
    * //  2024       2024
    */
-  secondaryDataKey?: string;
+  secondaryLabelKey?: string;
 };
 type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**

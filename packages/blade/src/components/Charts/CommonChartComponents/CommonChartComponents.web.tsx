@@ -88,27 +88,27 @@ const getChartColor = (
 
 /**
  * Custom tick component for X-axis that supports multi-line labels.
- * When secondaryDataKey is provided, it renders two lines of text.
+ * When secondaryLabelKey is provided, it renders two lines of text.
  */
 const CustomXAxisTick = ({
   x,
   y,
   payload,
-  secondaryDataKey,
+  secondaryLabelKey,
   chartData,
   theme,
 }: {
   x: number;
   y: number;
   payload: { value: string; index: number };
-  secondaryDataKey?: string;
+  secondaryLabelKey?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   chartData?: Array<Record<string, any>>;
   theme: ReturnType<typeof useTheme>['theme'];
 }): JSX.Element => {
   // Get the secondary value from the chart data using the payload index
   const secondaryValue =
-    secondaryDataKey && chartData ? chartData[payload.index]?.[secondaryDataKey] : undefined;
+    secondaryLabelKey && chartData ? chartData[payload.index]?.[secondaryLabelKey] : undefined;
 
   const lineHeight = 14; // Line height for multi-line text
 
@@ -149,10 +149,10 @@ const CustomXAxisTick = ({
 const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
   const { chartData } = useCommonChartComponentsContext();
-  const { secondaryDataKey, ...restProps } = props;
+  const { secondaryLabelKey, ...restProps } = props;
 
   // Calculate additional height for the axis when secondary labels are present
-  const axisHeight = secondaryDataKey ? 50 : 30;
+  const axisHeight = secondaryLabelKey ? 50 : 30;
 
   return (
     <RechartsXAxis
@@ -163,7 +163,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
           x={tickProps.x}
           y={tickProps.y}
           payload={tickProps.payload}
-          secondaryDataKey={secondaryDataKey}
+          secondaryLabelKey={secondaryLabelKey}
           chartData={chartData}
           theme={theme}
         />
