@@ -1,5 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
+import { useTheme } from 'styled-components';
 import {
   ChartXAxis,
   ChartYAxis,
@@ -821,6 +822,31 @@ LineChartWithLargeLabelsAndSecondary.parameters = {
   controls: { disable: true },
 };
 
+
+
+export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
+  const theme = useTheme();
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" label="Month" />
+          <ChartYAxis label="Sales ($)" />
+          <ChartTooltip
+            cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
+          />
+          <ChartLegend />
+          <ChartLine dataKey="northAmerica" name="North America" />
+          <ChartLine dataKey="southAmerica" name="South America" />
+          <ChartLine dataKey="europe" name="Europe" />
+          <ChartLine dataKey="asia" name="Asia" />
+          <ChartCartesianGrid />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
@@ -834,3 +860,4 @@ LineChartWithManyLines.storyName = 'Line Chart with many lines';
 LineChartWithMultiLineXAxis.storyName = 'Line Chart with Multi-line X-Axis Labels';
 LineChartWithLargeLabels.storyName = 'Line Chart with Large Labels';
 LineChartWithLargeLabelsAndSecondary.storyName = 'Line Chart with Large Labels and Secondary Labels';
+LineChartWithCustomCursor.storyName = 'Line Chart with custom cursor';
