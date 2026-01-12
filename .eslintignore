@@ -9,7 +9,11 @@ coverage
 **/storybook-static
 **/build
 **/dist
+
+# blade-mcp non-code directories
 packages/blade-mcp/base-blade-template/
+packages/blade-mcp/knowledgebase/
+packages/blade-mcp/cursorRules/
 packages/blade/components.js
 packages/blade/components.native.js
 packages/blade/components.d.ts
