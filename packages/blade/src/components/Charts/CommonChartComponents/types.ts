@@ -125,8 +125,6 @@ type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
   chartName?: ChartName;
   selectedDataKeys?: string[];
-<<<<<<< HEAD
-=======
   /**
    * Pre-computed map of index to secondary label value for X-axis secondary labels
    */
@@ -135,7 +133,6 @@ type CommonChartComponentsStateType = {
    * The number of data points in the chart, used for tick width calculation
    */
   dataLength?: number;
->>>>>>> origin
 };
 
 // Dispatch type - contains only the updater functions
