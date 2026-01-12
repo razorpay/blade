@@ -93,17 +93,24 @@ type ChartSequentialColorToken = `data.background.sequential.${Exclude<
 
 type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 
-// Generic chart data type
-type ChartData = Array<Record<string, any>>;
+/**
+ * Pre-computed map of index to secondary label value for X-axis secondary labels.
+ * This is computed in chart wrappers when secondaryLabelKey is provided.
+ */
+type SecondaryLabelMap = Record<number, string | number | undefined>;
 
 // State type - contains only the state values
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
   chartName?: ChartName;
   /**
-   * The chart data array, used by axis components to access secondary data keys
+   * Pre-computed map of index to secondary label value for X-axis secondary labels
    */
-  chartData?: ChartData;
+  secondaryLabelMap?: SecondaryLabelMap;
+  /**
+   * The number of data points in the chart, used for tick width calculation
+   */
+  dataLength?: number;
 };
 
 // Dispatch type - contains only the updater functions
@@ -121,7 +128,6 @@ export type {
   CommonChartComponentsDispatchType,
   ChartReferenceLineProps,
   ChartXAxisProps,
-  ChartData,
   ChartYAxisProps,
   ChartTooltipProps,
   ChartLegendProps,
@@ -132,4 +138,5 @@ export type {
   Align,
   DataColorMapping,
   ChartColorToken,
+  SecondaryLabelMap,
 };

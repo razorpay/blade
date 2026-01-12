@@ -32,6 +32,7 @@ const DEFAULT_COLOR = 'data.background.categorical.gray.moderate';
 
 const componentId = {
   chartLegend: 'chart-legend',
+  chartXAxis: 'chart-x-axis',
 };
 
 export {

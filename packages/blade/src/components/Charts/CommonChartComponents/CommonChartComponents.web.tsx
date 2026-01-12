@@ -23,6 +23,7 @@ import type {
   Layout,
   ChartColorToken,
   DataColorMapping,
+  SecondaryLabelMap,
 } from './types';
 import {
   RECT_HEIGHT,
@@ -183,7 +184,7 @@ const WrappedTextLabel = ({
 /**
  * Custom tick component for X-axis with automatic text wrapping.
  * - Primary label: Automatically wraps long text to multiple lines based on available width
- * - Secondary label: Optional label from a different data key (shown below primary, also supports wrapping)
+ * - Secondary label: Optional label from pre-computed secondaryLabelMap (shown below primary, also supports wrapping)
  * - Edge alignment: For line/area charts, first/last ticks align start/end to prevent clipping.
  *   For bar charts, all labels are center-aligned since bars are centered on tick positions.
  * - Reports calculated height via onHeightCalculated callback for dynamic axis sizing
@@ -192,8 +193,7 @@ const CustomXAxisTick = ({
   x,
   y,
   payload,
-  secondaryLabelKey,
-  chartData,
+  secondaryLabelMap,
   theme,
   tickWidth,
   tickCount,
@@ -203,9 +203,7 @@ const CustomXAxisTick = ({
   x: number;
   y: number;
   payload: { value: string; index: number };
-  secondaryLabelKey?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  chartData?: Array<Record<string, any>>;
+  secondaryLabelMap?: SecondaryLabelMap;
   theme: ReturnType<typeof useTheme>['theme'];
   tickWidth?: number;
   tickCount: number;
@@ -247,9 +245,8 @@ const CustomXAxisTick = ({
     text: String(payload.value),
   });
 
-  // Secondary label
-  const secondaryValue =
-    secondaryLabelKey && chartData ? chartData[payload.index]?.[secondaryLabelKey] : undefined;
+  // Secondary label from pre-computed map
+  const secondaryValue = secondaryLabelMap?.[payload.index];
 
   const secondaryLabel =
     secondaryValue !== undefined
@@ -280,16 +277,17 @@ const CustomXAxisTick = ({
   );
 };
 
-const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
+const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
-  const { chartData, chartName } = useCommonChartComponentsContext();
-  const { secondaryLabelKey, ...restProps } = props;
+  const { secondaryLabelMap, chartName, dataLength } = useCommonChartComponentsContext();
+  // We don't want to pass secondaryLabelKey to recharts
+  const { secondaryLabelKey: _unusedSecondaryLabelKey, ...restProps } = props;
 
-  // Calculate tick count for width distribution
-  const tickCount = chartData?.length ?? 1;
+  // Calculate tick count from dataLength
+  const tickCount = dataLength ?? 1;
 
   // State to track the maximum tick height reported by CustomXAxisTick components
-  const minHeight = secondaryLabelKey ? 20 : 10;
+  const minHeight = secondaryLabelMap ? 20 : 10;
   const [maxTickHeight, setMaxTickHeight] = React.useState(minHeight);
 
   // Callback to update max height when ticks report their calculated height
@@ -325,8 +323,7 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
             x={tickProps.x}
             y={tickProps.y}
             payload={tickProps.payload}
-            secondaryLabelKey={secondaryLabelKey}
-            chartData={chartData}
+            secondaryLabelMap={secondaryLabelMap}
             theme={theme}
             tickWidth={tickWidth}
             tickCount={tickCount}
@@ -355,6 +352,10 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
     />
   );
 };
+
+const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
+  componentId: componentId.chartXAxis,
+});
 
 const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();

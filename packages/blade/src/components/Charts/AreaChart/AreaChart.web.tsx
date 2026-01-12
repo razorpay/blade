@@ -5,8 +5,9 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { getHighestColorInRange, useChartsColorTheme, assignDataColorMapping } from '../utils';
-import type { DataColorMapping } from '../CommonChartComponents';
+import type { DataColorMapping, SecondaryLabelMap, ChartXAxisProps } from '../CommonChartComponents';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
 import { componentIds } from './componentIds';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -113,54 +114,78 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     colorTheme,
     chartName: 'area',
   });
-  const { modifiedChildren, totalAreaChartChildren, dataColorMapping } = React.useMemo(() => {
-    const childrenArray = React.Children.toArray(children);
-    const dataColorMapping: DataColorMapping = {};
+  const { modifiedChildren, totalAreaChartChildren, dataColorMapping, secondaryLabelKey } =
+    React.useMemo(() => {
+      const childrenArray = React.Children.toArray(children);
+      const dataColorMapping: DataColorMapping = {};
 
-    // Count ChartLine components
-    const totalAreas = childrenArray.filter(
-      (child): child is React.ReactElement =>
-        React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea,
-    ).length;
+      // Count ChartArea components
+      const totalAreas = childrenArray.filter(
+        (child): child is React.ReactElement =>
+          React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea,
+      ).length;
 
-    let AreaChartIndex = 0;
-    /**
-     * We need to check child of ChartAreaWrapper. if they have any custom color we store that.
-     * We need these mapping because colors of tooltip & legend is determine based on this
-     *  recharts do provide a color but it is hex code and we need blade color token .
-     */
-    const modifiedChildren = React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
-        const childColor = child?.props?.color;
-        const dataKey = (child?.props as ChartAreaProps)?.dataKey as string;
-        if (dataKey) {
-          //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
-
-          dataColorMapping[dataKey] = {
-            colorToken: childColor,
-            isCustomColor: Boolean(childColor),
-          };
+      // Find ChartXAxis and extract secondaryLabelKey
+      let secondaryLabelKey: string | undefined;
+      for (const child of childrenArray) {
+        if (
+          React.isValidElement(child) &&
+          getComponentId(child) === commonComponentIds.chartXAxis
+        ) {
+          secondaryLabelKey = (child.props as ChartXAxisProps)?.secondaryLabelKey;
+          break;
         }
-        return React.cloneElement(child, {
-          _index: AreaChartIndex++,
-          _colorTheme: colorTheme,
-          _totalAreas: totalAreas,
-        } as Partial<ChartAreaProps>);
       }
-      return child;
-    });
 
-    assignDataColorMapping(dataColorMapping, themeColors);
-    return {
-      modifiedChildren,
-      totalAreaChartChildren: AreaChartIndex,
-      dataColorMapping,
-    };
-  }, [children, colorTheme, themeColors]);
+      let AreaChartIndex = 0;
+      /**
+       * We need to check child of ChartAreaWrapper. if they have any custom color we store that.
+       * We need these mapping because colors of tooltip & legend is determine based on this
+       *  recharts do provide a color but it is hex code and we need blade color token .
+       */
+      const modifiedChildren = React.Children.map(children, (child) => {
+        if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
+          const childColor = child?.props?.color;
+          const dataKey = (child?.props as ChartAreaProps)?.dataKey as string;
+          if (dataKey) {
+            //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
+
+            dataColorMapping[dataKey] = {
+              colorToken: childColor,
+              isCustomColor: Boolean(childColor),
+            };
+          }
+          return React.cloneElement(child, {
+            _index: AreaChartIndex++,
+            _colorTheme: colorTheme,
+            _totalAreas: totalAreas,
+          } as Partial<ChartAreaProps>);
+        }
+        return child;
+      });
+
+      assignDataColorMapping(dataColorMapping, themeColors);
+      return {
+        modifiedChildren,
+        totalAreaChartChildren: AreaChartIndex,
+        dataColorMapping,
+        secondaryLabelKey,
+      };
+    }, [children, colorTheme, themeColors]);
+
+  // Build secondary label map internally from ChartXAxis's secondaryLabelKey prop
+  const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
+    if (!secondaryLabelKey || !data) return undefined;
+    const map: SecondaryLabelMap = {};
+    data.forEach((item, index) => {
+      map[index] = item[secondaryLabelKey] as string | number | undefined;
+    });
+    return map;
+  }, [data, secondaryLabelKey]);
 
   return (
     <CommonChartComponentsContext.Provider
-      value={{ chartName: 'area', dataColorMapping, chartData: data }}
+      value={{ chartName: 'area', dataColorMapping, secondaryLabelMap, dataLength: data?.length }}
     >
       <BaseBox
         {...metaAttribute({ name: 'chart-area-container', testID })}

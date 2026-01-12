@@ -708,33 +708,33 @@ LineChartWithMultiLineXAxis.parameters = {
 const largeLabelsData = [
   {
     category: 'Premium Enterprise Solutions',
-    quarterlyRevenue: 125000,
-    operationalExpenses: 85000,
+    quarterlyRevenue: 1250,
+    operationalExpenses: 8500,
   },
   {
     category: 'Small Business Subscriptions',
-    quarterlyRevenue: 98000,
-    operationalExpenses: 62000,
+    quarterlyRevenue: 9800,
+    operationalExpenses: 6200,
   },
   {
     category: 'Individual Professional Plans',
-    quarterlyRevenue: 75000,
-    operationalExpenses: 45000,
+    quarterlyRevenue: 7500,
+    operationalExpenses: 4500,
   },
   {
     category: 'Government & Non-Profit Contracts',
-    quarterlyRevenue: 156000,
-    operationalExpenses: 98000,
+    quarterlyRevenue: 1560,
+    operationalExpenses: 9800,
   },
   {
     category: 'Educational Institution Licenses',
-    quarterlyRevenue: 67000,
-    operationalExpenses: 38000,
+    quarterlyRevenue: 6700,
+    operationalExpenses: 3800,
   },
   {
     category: 'Healthcare Sector Partnerships',
-    quarterlyRevenue: 189000,
-    operationalExpenses: 112000,
+    quarterlyRevenue: 1890,
+    operationalExpenses: 1120,
   },
 ];
 
@@ -748,11 +748,8 @@ export const LineChartWithLargeLabels: StoryFn<typeof ChartLine> = () => {
           <ChartYAxis label="Amount in USD ($)" />
           <ChartTooltip />
           <ChartLegend />
-          <ChartLine dataKey="quarterlyRevenue" name="Quarterly Revenue from All Sources" />
-          <ChartLine
-            dataKey="operationalExpenses"
-            name="Total Operational Expenses Including Overhead"
-          />
+          <ChartLine dataKey="quarterlyRevenue" name="All Sources" />
+          <ChartLine dataKey="operationalExpenses" name="Operational Expenses " />
         </ChartLineWrapper>
       </Box>
     </ChartsWrapper>
@@ -768,31 +765,31 @@ const largeLabelsWithSecondaryData = [
   {
     category: 'Premium Enterprise Solutions Package',
     quarter: 'Q1 2024',
-    revenue: 125000,
+    revenue: 1250,
     orders: 3200,
   },
   {
     category: 'Small Business Growth Subscriptions',
     quarter: 'Q2 2024',
-    revenue: 98000,
+    revenue: 9800,
     orders: 2800,
   },
   {
     category: 'Individual Professional Development Plans',
     quarter: 'Q3 2024',
-    revenue: 75000,
+    revenue: 7500,
     orders: 1900,
   },
   {
     category: 'Government & Non-Profit Organization Contracts',
     quarter: 'Q4 2024',
-    revenue: 156000,
+    revenue: 1560,
     orders: 4100,
   },
   {
     category: 'Educational Institution Site Licenses',
     quarter: 'Q1 2025',
-    revenue: 67000,
+    revenue: 6700,
     orders: 1500,
   },
 ];
