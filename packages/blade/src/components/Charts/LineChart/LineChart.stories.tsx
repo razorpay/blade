@@ -748,10 +748,7 @@ export const LineChartWithLargeLabels: StoryFn<typeof ChartLine> = () => {
           <ChartYAxis label="Amount in USD ($)" />
           <ChartTooltip />
           <ChartLegend />
-          <ChartLine
-            dataKey="quarterlyRevenue"
-            name="Quarterly Revenue from All Sources"
-          />
+          <ChartLine dataKey="quarterlyRevenue" name="Quarterly Revenue from All Sources" />
           <ChartLine
             dataKey="operationalExpenses"
             name="Total Operational Expenses Including Overhead"
@@ -822,8 +819,6 @@ LineChartWithLargeLabelsAndSecondary.parameters = {
   controls: { disable: true },
 };
 
-
-
 export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
   const theme = useTheme();
   return (
@@ -859,5 +854,6 @@ LineChartWithSwitchableTimePeriods.storyName = 'Line Chart with Switchable Time 
 LineChartWithManyLines.storyName = 'Line Chart with many lines';
 LineChartWithMultiLineXAxis.storyName = 'Line Chart with Multi-line X-Axis Labels';
 LineChartWithLargeLabels.storyName = 'Line Chart with Large Labels';
-LineChartWithLargeLabelsAndSecondary.storyName = 'Line Chart with Large Labels and Secondary Labels';
+LineChartWithLargeLabelsAndSecondary.storyName =
+  'Line Chart with Large Labels and Secondary Labels';
 LineChartWithCustomCursor.storyName = 'Line Chart with custom cursor';
