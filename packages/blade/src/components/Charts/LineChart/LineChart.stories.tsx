@@ -672,6 +672,150 @@ LineChartWithCartesianGrid.parameters = {
   controls: { disable: true },
 };
 
+// Data for multi-line X-axis labels example
+const multiLineAxisData = [
+  { time: '10:00', day: 'Mon', revenue: 4500, orders: 120 },
+  { time: '11:00', day: 'Mon', revenue: 5200, orders: 145 },
+  { time: '12:00', day: 'Mon', revenue: 6100, orders: 180 },
+  { time: '13:00', day: 'Tue', revenue: 4800, orders: 135 },
+  { time: '14:00', day: 'Tue', revenue: 5500, orders: 160 },
+  { time: '15:00', day: 'Tue', revenue: 5900, orders: 170 },
+];
+
+// Line Chart with Multi-line X-Axis Labels
+export const LineChartWithMultiLineXAxis: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={multiLineAxisData} colorTheme="categorical">
+          <ChartXAxis dataKey="time" secondaryDataKey="day" label="Time / Day" />
+          <ChartYAxis label="Revenue ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="revenue" name="Revenue" />
+          <ChartLine dataKey="orders" name="Orders" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithMultiLineXAxis.parameters = {
+  controls: { disable: true },
+};
+
+// Data for large labels example
+const largeLabelsData = [
+  {
+    category: 'Premium Enterprise Solutions',
+    quarterlyRevenue: 1250,
+    operationalExpenses: 8500,
+  },
+  {
+    category: 'Small Business Subscriptions',
+    quarterlyRevenue: 9800,
+    operationalExpenses: 6200,
+  },
+  {
+    category: 'Individual Professional Plans',
+    quarterlyRevenue: 7500,
+    operationalExpenses: 4500,
+  },
+  {
+    category: 'Government & Non-Profit Contracts',
+    quarterlyRevenue: 1560,
+    operationalExpenses: 9800,
+  },
+  {
+    category: 'Educational Institution Licenses',
+    quarterlyRevenue: 6700,
+    operationalExpenses: 3800,
+  },
+  {
+    category: 'Healthcare Sector Partnerships',
+    quarterlyRevenue: 1890,
+    operationalExpenses: 1120,
+  },
+];
+
+// Line Chart with Large Labels (labels are automatically truncated to prevent overlap)
+export const LineChartWithLargeLabels: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartLineWrapper data={largeLabelsData} colorTheme="categorical">
+          <ChartXAxis dataKey="category" />
+          <ChartYAxis label="Amount in USD ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="quarterlyRevenue" name="All Sources" />
+          <ChartLine dataKey="operationalExpenses" name="Operational Expenses " />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithLargeLabels.parameters = {
+  controls: { disable: true },
+};
+
+// Data for large labels with secondary labels example
+const largeLabelsWithSecondaryData = [
+  {
+    category: 'Premium Enterprise Solutions Package',
+    quarter: 'Q1 2024',
+    revenue: 1250,
+    orders: 3200,
+  },
+  {
+    category: 'Small Business Growth Subscriptions',
+    quarter: 'Q2 2024',
+    revenue: 9800,
+    orders: 2800,
+  },
+  {
+    category: 'Individual Professional Development Plans',
+    quarter: 'Q3 2024',
+    revenue: 7500,
+    orders: 1900,
+  },
+  {
+    category: 'Government & Non-Profit Organization Contracts',
+    quarter: 'Q4 2024',
+    revenue: 1560,
+    orders: 4100,
+  },
+  {
+    category: 'Educational Institution Site Licenses',
+    quarter: 'Q1 2025',
+    revenue: 6700,
+    orders: 1500,
+  },
+];
+
+// Line Chart with Large Labels and Secondary Labels
+export const LineChartWithLargeLabelsAndSecondary: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartLineWrapper data={largeLabelsWithSecondaryData} colorTheme="categorical">
+          <ChartXAxis dataKey="category" secondaryDataKey="quarter" />
+          <ChartYAxis label="Amount ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="revenue" name="Revenue" />
+          <ChartLine dataKey="orders" name="Orders" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithLargeLabelsAndSecondary.parameters = {
+  controls: { disable: true },
+};
+
 export const LineChartWithCustomCursor: StoryFn<typeof ChartLine> = () => {
   const theme = useTheme();
   return (
@@ -705,4 +849,8 @@ LineChartWithDefaultColorTheme.storyName = 'Line Chart with  Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';
 LineChartWithSwitchableTimePeriods.storyName = 'Line Chart with Switchable Time Periods';
 LineChartWithManyLines.storyName = 'Line Chart with many lines';
+LineChartWithMultiLineXAxis.storyName = 'Line Chart with Multi-line X-Axis Labels';
+LineChartWithLargeLabels.storyName = 'Line Chart with Large Labels';
+LineChartWithLargeLabelsAndSecondary.storyName =
+  'Line Chart with Large Labels and Secondary Labels';
 LineChartWithCustomCursor.storyName = 'Line Chart with custom cursor';

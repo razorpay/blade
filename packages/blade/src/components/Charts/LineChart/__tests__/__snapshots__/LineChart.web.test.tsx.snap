@@ -44,7 +44,7 @@ exports[`<Line /> should render Line with all line types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts73-clip"
+                  id="recharts80-clip"
                 >
                   <rect
                     height="790"
@@ -124,7 +124,7 @@ exports[`<Line /> should render Line with all line types 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts76-clip"
+                  id="recharts83-clip"
                 >
                   <rect
                     height="790"
@@ -204,7 +204,7 @@ exports[`<Line /> should render Line with all line types 3`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts79-clip"
+                  id="recharts86-clip"
                 >
                   <rect
                     height="790"
@@ -284,7 +284,7 @@ exports[`<Line /> should render Line with all line types 4`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts82-clip"
+                  id="recharts89-clip"
                 >
                   <rect
                     height="790"
@@ -364,7 +364,7 @@ exports[`<Line /> should render Line with all line types 5`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts85-clip"
+                  id="recharts92-clip"
                 >
                   <rect
                     height="790"
@@ -444,7 +444,7 @@ exports[`<Line /> should render Line with all stroke styles 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts88-clip"
+                  id="recharts95-clip"
                 >
                   <rect
                     height="790"
@@ -524,7 +524,7 @@ exports[`<Line /> should render Line with all stroke styles 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts91-clip"
+                  id="recharts98-clip"
                 >
                   <rect
                     height="790"
@@ -604,7 +604,7 @@ exports[`<Line /> should render Line with all stroke styles 3`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts94-clip"
+                  id="recharts101-clip"
                 >
                   <rect
                     height="790"
@@ -684,7 +684,7 @@ exports[`<Line /> should render Line with custom activeDot configuration 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts100-clip"
+                  id="recharts107-clip"
                 >
                   <rect
                     height="790"
@@ -764,7 +764,7 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts97-clip"
+                  id="recharts104-clip"
                 >
                   <rect
                     height="790"
@@ -900,7 +900,7 @@ exports[`<Line /> should render Line with custom name 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts70-clip"
+                  id="recharts77-clip"
                 >
                   <rect
                     height="790"
@@ -981,7 +981,7 @@ exports[`<Line /> should render Line with default props 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts67-clip"
+                  id="recharts74-clip"
                 >
                   <rect
                     height="790"
@@ -2241,7 +2241,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
             </div>
             <div
               class="recharts-legend-wrapper"
-              style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 24px;"
+              style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 8px;"
             >
               <div
                 class="c3"
@@ -2303,7 +2303,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   id="recharts52-clip"
                 >
                   <rect
-                    height="760"
+                    height="767.5"
                     width="730"
                     x="65"
                     y="5"
@@ -2318,55 +2318,55 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 >
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
                     x1="65"
                     x2="795"
                     y="5"
-                    y1="765"
-                    y2="765"
+                    y1="772.5"
+                    y2="772.5"
                   />
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
                     x1="65"
                     x2="795"
                     y="5"
-                    y1="575"
-                    y2="575"
+                    y1="580.625"
+                    y2="580.625"
                   />
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
                     x1="65"
                     x2="795"
                     y="5"
-                    y1="385"
-                    y2="385"
+                    y1="388.75"
+                    y2="388.75"
                   />
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
                     x1="65"
                     x2="795"
                     y="5"
-                    y1="195"
-                    y2="195"
+                    y1="196.875"
+                    y2="196.875"
                   />
                   <line
                     fill="none"
-                    height="760"
+                    height="767.5"
                     stroke="hsla(211, 20%, 52%, 0.18)"
                     width="730"
                     x="65"
@@ -2384,16 +2384,16 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="30"
+                  height="22.5"
                   orientation="bottom"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="730"
                   x="65"
                   x1="65"
                   x2="795"
-                  y="765"
-                  y1="765"
-                  y2="765"
+                  y="772.5"
+                  y1="772.5"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -2401,106 +2401,102 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="65"
-                      y="773"
+                    <g
+                      transform="translate(65,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="65"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="start"
+                        x="0"
+                        y="0"
                       >
-                        Jan
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Jan
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="308.33333333333337"
-                      y="773"
+                    <g
+                      transform="translate(308.33333333333337,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="308.33333333333337"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Feb
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Feb
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="551.6666666666667"
-                      y="773"
+                    <g
+                      transform="translate(551.6666666666667,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="551.6666666666667"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Mar
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Mar
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="795"
-                      y="773"
+                    <g
+                      transform="translate(795,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="795"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="end"
+                        x="0"
+                        y="0"
                       >
-                        Apr
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Apr
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                 </g>
                 <text
@@ -2511,7 +2507,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   letter-spacing="0"
                   text-anchor="middle"
                   x="398"
-                  y="803.5"
+                  y="811"
                 />
               </g>
               <g
@@ -2520,7 +2516,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   orientation="left"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="60"
@@ -2529,7 +2525,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   x2="65"
                   y="5"
                   y1="5"
-                  y2="765"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -2543,14 +2539,14 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="765"
+                      y="772.5"
                     >
                       <tspan
                         dy="0.355em"
@@ -2569,14 +2565,14 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="575"
+                      y="580.625"
                     >
                       <tspan
                         dy="0.355em"
@@ -2595,14 +2591,14 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="385"
+                      y="388.75"
                     >
                       <tspan
                         dy="0.355em"
@@ -2621,14 +2617,14 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="195"
+                      y="196.875"
                     >
                       <tspan
                         dy="0.355em"
@@ -2647,7 +2643,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
@@ -2671,9 +2667,9 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
-                  d="M65,258.33333333333337C146.11111111111114,300.55555555555554,227.22222222222223,342.77777777777777,308.33333333333337,385C389.4444444444445,427.22222222222223,470.5555555555556,511.66666666666674,551.6666666666667,511.66666666666674C632.7777777777778,511.66666666666674,713.8888888888889,321.66666666666674,795,131.66666666666663"
+                  d="M65,260.83333333333337C146.11111111111114,303.47222222222223,227.22222222222223,346.1111111111111,308.33333333333337,388.75C389.4444444444445,431.3888888888889,470.5555555555556,516.6666666666667,551.6666666666667,516.6666666666667C632.7777777777778,516.6666666666667,713.8888888888889,324.7916666666667,795,132.91666666666663"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   id="recharts-line-:rl:"
                   name="Sales"
                   stroke="hsla(227, 100%, 59%, 1)"
@@ -2689,9 +2685,9 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
-                  d="M65,511.66666666666674C146.11111111111114,532.7777777777778,227.22222222222223,553.8888888888889,308.33333333333337,575C389.4444444444445,596.1111111111111,470.5555555555556,638.3333333333334,551.6666666666667,638.3333333333334C632.7777777777778,638.3333333333334,713.8888888888889,543.3333333333333,795,448.33333333333326"
+                  d="M65,516.6666666666667C146.11111111111114,537.9861111111112,227.22222222222223,559.3055555555555,308.33333333333337,580.625C389.4444444444445,601.9444444444445,470.5555555555556,644.5833333333334,551.6666666666667,644.5833333333334C632.7777777777778,644.5833333333334,713.8888888888889,548.6458333333333,795,452.70833333333326"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   id="recharts-line-:rm:"
                   name="Profit"
                   stroke="hsla(150, 100%, 37%, 1)"
@@ -2755,10 +2751,10 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               <desc />
               <defs>
                 <clippath
-                  id="recharts110-clip"
+                  id="recharts121-clip"
                 >
                   <rect
-                    height="760"
+                    height="767.5"
                     width="730"
                     x="65"
                     y="5"
@@ -2771,16 +2767,16 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="30"
+                  height="22.5"
                   orientation="bottom"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="730"
                   x="65"
                   x1="65"
                   x2="795"
-                  y="765"
-                  y1="765"
-                  y2="765"
+                  y="772.5"
+                  y1="772.5"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -2788,54 +2784,52 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="65"
-                      y="773"
+                    <g
+                      transform="translate(65,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="65"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="start"
+                        x="0"
+                        y="0"
                       >
-                        2023-01-01
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          2023-01-01
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="795"
-                      y="773"
+                    <g
+                      transform="translate(795,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="795"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="end"
+                        x="0"
+                        y="0"
                       >
-                        2023-02-01
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          2023-02-01
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                 </g>
                 <text
@@ -2846,7 +2840,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                   letter-spacing="0"
                   text-anchor="middle"
                   x="398"
-                  y="803.5"
+                  y="811"
                 />
               </g>
               <g
@@ -2855,7 +2849,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   orientation="left"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="60"
@@ -2864,7 +2858,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                   x2="65"
                   y="5"
                   y1="5"
-                  y2="765"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -2878,14 +2872,14 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="765"
+                      y="772.5"
                     >
                       <tspan
                         dy="0.355em"
@@ -2904,14 +2898,14 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="575"
+                      y="580.625"
                     >
                       <tspan
                         dy="0.355em"
@@ -2930,14 +2924,14 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="385"
+                      y="388.75"
                     >
                       <tspan
                         dy="0.355em"
@@ -2956,14 +2950,14 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="195"
+                      y="196.875"
                     >
                       <tspan
                         dy="0.355em"
@@ -2982,7 +2976,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
@@ -3006,9 +3000,9 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               >
                 <path
                   class="recharts-curve recharts-line-curve"
-                  d="M65,5L795,195"
+                  d="M65,5L795,196.875"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   id="recharts-line-:r18:"
                   name="Sales"
                   stroke="hsla(227, 100%, 59%, 1)"
@@ -3024,9 +3018,9 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               >
                 <path
                   class="recharts-curve recharts-line-curve"
-                  d="M65,385L795,480"
+                  d="M65,388.75L795,484.6875"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   id="recharts-line-:r19:"
                   name="Profit"
                   stroke="hsla(150, 100%, 37%, 1)"
@@ -3090,10 +3084,10 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts116-clip"
+                  id="recharts134-clip"
                 >
                   <rect
-                    height="760"
+                    height="767.5"
                     width="730"
                     x="65"
                     y="5"
@@ -3106,16 +3100,16 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="30"
+                  height="22.5"
                   orientation="bottom"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="730"
                   x="65"
                   x1="65"
                   x2="795"
-                  y="765"
-                  y1="765"
-                  y2="765"
+                  y="772.5"
+                  y1="772.5"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -3123,80 +3117,77 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="65"
-                      y="773"
+                    <g
+                      transform="translate(65,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="65"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="start"
+                        x="0"
+                        y="0"
                       >
-                        Jan
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Jan
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="430"
-                      y="773"
+                    <g
+                      transform="translate(430,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="430"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Feb
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Feb
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="795"
-                      y="773"
+                    <g
+                      transform="translate(795,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="795"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="end"
+                        x="0"
+                        y="0"
                       >
-                        Mar
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Mar
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                 </g>
                 <text
@@ -3207,7 +3198,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   letter-spacing="0"
                   text-anchor="middle"
                   x="398"
-                  y="803.5"
+                  y="811"
                 />
               </g>
               <g
@@ -3216,7 +3207,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   orientation="left"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="60"
@@ -3225,7 +3216,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   x2="65"
                   y="5"
                   y1="5"
-                  y2="765"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -3239,14 +3230,14 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="765"
+                      y="772.5"
                     >
                       <tspan
                         dy="0.355em"
@@ -3265,14 +3256,14 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="575"
+                      y="580.625"
                     >
                       <tspan
                         dy="0.355em"
@@ -3291,14 +3282,14 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="385"
+                      y="388.75"
                     >
                       <tspan
                         dy="0.355em"
@@ -3317,14 +3308,14 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="195"
+                      y="196.875"
                     >
                       <tspan
                         dy="0.355em"
@@ -3343,7 +3334,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
@@ -3367,9 +3358,9 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
-                  d="M65,385C186.66666666666669,195,308.3333333333333,5,430,5C551.6666666666666,5,673.3333333333334,100,795,195"
+                  d="M65,388.75C186.66666666666669,196.875,308.3333333333333,5,430,5C551.6666666666666,5,673.3333333333334,100.9375,795,196.875"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   id="recharts-line-:r1a:"
                   name="Value"
                   stroke="hsla(227, 100%, 59%, 1)"
@@ -3385,9 +3376,9 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               >
                 <path
                   class="recharts-curve recharts-line-curve"
-                  d="M65,764.0500000000001C186.66666666666669,763.575,308.3333333333333,763.1000000000001,430,763.1000000000001C551.6666666666666,763.1000000000001,673.3333333333334,763.3375000000001,795,763.575"
+                  d="M65,771.5406250000001C186.66666666666669,771.0609375,308.3333333333333,770.5812500000001,430,770.5812500000001C551.6666666666666,770.5812500000001,673.3333333333334,770.82109375,795,771.0609375"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   id="recharts-line-:r1b:"
                   name="Percentage"
                   stroke="hsla(150, 100%, 37%, 1)"
@@ -3451,10 +3442,10 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               <desc />
               <defs>
                 <clippath
-                  id="recharts106-clip"
+                  id="recharts113-clip"
                 >
                   <rect
-                    height="760"
+                    height="767.5"
                     width="730"
                     x="65"
                     y="5"
@@ -3467,16 +3458,16 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="30"
+                  height="22.5"
                   orientation="bottom"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="730"
                   x="65"
                   x1="65"
                   x2="795"
-                  y="765"
-                  y1="765"
-                  y2="765"
+                  y="772.5"
+                  y1="772.5"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -3484,106 +3475,102 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="65"
-                      y="773"
+                    <g
+                      transform="translate(65,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="65"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="start"
+                        x="0"
+                        y="0"
                       >
-                        Jan
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Jan
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="308.33333333333337"
-                      y="773"
+                    <g
+                      transform="translate(308.33333333333337,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="308.33333333333337"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Feb
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Feb
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="551.6666666666667"
-                      y="773"
+                    <g
+                      transform="translate(551.6666666666667,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="551.6666666666667"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="middle"
+                        x="0"
+                        y="0"
                       >
-                        Mar
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Mar
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="30"
-                      letter-spacing="0"
-                      orientation="bottom"
-                      stroke="none"
-                      text-anchor="middle"
-                      width="730"
-                      x="795"
-                      y="773"
+                    <g
+                      transform="translate(795,780.5)"
                     >
-                      <tspan
-                        dy="0.71em"
-                        x="795"
+                      <text
+                        fill="hsla(211, 22%, 56%, 1)"
+                        font-family=""Inter", "Inter Fallback Arial", Arial"
+                        font-size="12"
+                        font-weight="400"
+                        style="letter-spacing: 0;"
+                        text-anchor="end"
+                        x="0"
+                        y="0"
                       >
-                        Apr
-                      </tspan>
-                    </text>
+                        <tspan
+                          dy="8"
+                          x="0"
+                        >
+                          Apr
+                        </tspan>
+                      </text>
+                    </g>
                   </g>
                 </g>
                 <text
@@ -3594,7 +3581,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                   letter-spacing="0"
                   text-anchor="middle"
                   x="398"
-                  y="803.5"
+                  y="811"
                 />
               </g>
               <g
@@ -3603,7 +3590,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                 <line
                   class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   orientation="left"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="60"
@@ -3612,7 +3599,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                   x2="65"
                   y="5"
                   y1="5"
-                  y2="765"
+                  y2="772.5"
                 />
                 <g
                   class="recharts-cartesian-axis-ticks"
@@ -3626,14 +3613,14 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="765"
+                      y="772.5"
                     >
                       <tspan
                         dy="0.355em"
@@ -3652,14 +3639,14 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="575"
+                      y="580.625"
                     >
                       <tspan
                         dy="0.355em"
@@ -3678,14 +3665,14 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="385"
+                      y="388.75"
                     >
                       <tspan
                         dy="0.355em"
@@ -3704,14 +3691,14 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
                       text-anchor="end"
                       width="60"
                       x="57"
-                      y="195"
+                      y="196.875"
                     >
                       <tspan
                         dy="0.355em"
@@ -3730,7 +3717,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                       font-family=""Inter", "Inter Fallback Arial", Arial"
                       font-size="12"
                       font-weight="400"
-                      height="760"
+                      height="767.5"
                       letter-spacing="0"
                       orientation="left"
                       stroke="none"
@@ -3754,9 +3741,9 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               >
                 <path
                   class="recharts-curve recharts-line-curve"
-                  d="M65,258.33333333333337C146.11111111111114,300.55555555555554,227.22222222222223,342.77777777777777,308.33333333333337,385C389.4444444444445,427.22222222222223,470.5555555555556,511.66666666666674,551.6666666666667,511.66666666666674C632.7777777777778,511.66666666666674,713.8888888888889,321.66666666666674,795,131.66666666666663"
+                  d="M65,260.83333333333337C146.11111111111114,303.47222222222223,227.22222222222223,346.1111111111111,308.33333333333337,388.75C389.4444444444445,431.3888888888889,470.5555555555556,516.6666666666667,551.6666666666667,516.6666666666667C632.7777777777778,516.6666666666667,713.8888888888889,324.7916666666667,795,132.91666666666663"
                   fill="none"
-                  height="760"
+                  height="767.5"
                   id="recharts-line-:r17:"
                   stroke="hsla(227, 100%, 59%, 1)"
                   stroke-dasharray="0px 0px"
@@ -3819,7 +3806,7 @@ exports[`LineChart Styling Tests should apply correct animation properties for d
               <desc />
               <defs>
                 <clippath
-                  id="recharts122-clip"
+                  id="recharts147-clip"
                 >
                   <rect
                     height="790"
@@ -3899,7 +3886,7 @@ exports[`LineChart Styling Tests should apply correct animation properties for s
               <desc />
               <defs>
                 <clippath
-                  id="recharts125-clip"
+                  id="recharts150-clip"
                 >
                   <rect
                     height="790"
