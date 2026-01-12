@@ -1,0 +1,163 @@
+/* Base alert container */
+.alert {
+  display: flex;
+  flex-direction: row;
+  padding: var(--spacing-4);
+  gap: var(--spacing-4);
+  position: relative;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+/* Width variants */
+.constrained {
+  max-width: 584px;
+  border-radius: var(--border-radius-medium);
+}
+
+.full-width {
+  max-width: 100%;
+  width: 100%;
+  border-radius: var(--border-radius-none);
+}
+
+/* Desktop + Full Width: center align items */
+.full-width-desktop {
+  align-items: center;
+}
+
+/* Color backgrounds - compound variants for color + emphasis combinations */
+.bg-neutral-subtle {
+  background-color: var(--feedback-background-neutral-subtle);
+}
+
+.bg-neutral-intense {
+  background-color: var(--feedback-background-neutral-intense);
+}
+
+.bg-information-subtle {
+  background-color: var(--feedback-background-information-subtle);
+}
+
+.bg-information-intense {
+  background-color: var(--feedback-background-information-intense);
+}
+
+.bg-positive-subtle {
+  background-color: var(--feedback-background-positive-subtle);
+}
+
+.bg-positive-intense {
+  background-color: var(--feedback-background-positive-intense);
+}
+
+.bg-negative-subtle {
+  background-color: var(--feedback-background-negative-subtle);
+}
+
+.bg-negative-intense {
+  background-color: var(--feedback-background-negative-intense);
+}
+
+.bg-notice-subtle {
+  background-color: var(--feedback-background-notice-subtle);
+}
+
+.bg-notice-intense {
+  background-color: var(--feedback-background-notice-intense);
+}
+
+/* Icon container */
+.icon-container {
+  display: flex;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+.icon-container-centered {
+  align-self: center;
+}
+
+/* Icon margin top variants for alignment */
+.icon-offset-0 {
+  margin-top: var(--spacing-0);
+}
+
+.icon-offset-1 {
+  margin-top: var(--spacing-1);
+}
+
+.icon-offset-2 {
+  margin-top: var(--spacing-2);
+}
+
+/* Content container */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-padding-left-small {
+  padding-left: var(--spacing-3);
+}
+
+.content-padding-left-large {
+  padding-left: var(--spacing-4);
+}
+
+.content-padding-right-small {
+  padding-right: var(--spacing-2);
+}
+
+.content-padding-right-large {
+  padding-right: var(--spacing-4);
+}
+
+/* Title */
+.title {
+  margin-bottom: var(--spacing-2);
+}
+
+/* Description */
+.description {
+  margin-top: var(--spacing-1);
+}
+
+.description-no-offset {
+  margin-top: var(--spacing-0);
+}
+
+/* Actions container */
+.actions-vertical {
+  margin-top: var(--spacing-4);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actions-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Primary action */
+.primary-action {
+  margin-right: var(--spacing-5);
+  display: inline-flex;
+}
+
+/* Secondary action */
+.secondary-action {
+  margin-right: var(--spacing-4);
+  display: inline-flex;
+}
+
+/* Close button container */
+.close-button {
+  align-self: flex-start;
+  flex-shrink: 0;
+}

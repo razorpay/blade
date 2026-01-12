@@ -1,0 +1,40 @@
+.link-overlay {
+  position: static;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.link-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* Nested interactive elements should be above overlay */
+.link-overlay ~ * {
+  position: relative;
+  z-index: 2;
+}
+
+.link-overlay-button {
+  all: unset;
+  position: static;
+  cursor: pointer;
+}
+
+.link-overlay-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+}

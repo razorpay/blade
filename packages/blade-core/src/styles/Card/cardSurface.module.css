@@ -1,0 +1,59 @@
+.surface {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Background colors */
+.bg-gray-intense {
+  background-color: var(--surface-background-gray-intense);
+}
+
+.bg-gray-moderate {
+  background-color: var(--surface-background-gray-moderate);
+}
+
+.bg-gray-subtle {
+  background-color: var(--surface-background-gray-subtle);
+}
+
+/* Border radius */
+.radius-medium {
+  border-radius: var(--border-radius-medium);
+}
+
+.radius-large {
+  border-radius: var(--border-radius-large);
+}
+
+.radius-xlarge {
+  border-radius: var(--border-radius-xlarge);
+}
+
+/* Elevation */
+.elevation-none {
+  box-shadow: none;
+  border: var(--border-width-thin) solid var(--surface-border-gray-muted);
+}
+
+.elevation-low-raised {
+  box-shadow: var(--elevation-low-raised);
+}
+
+.elevation-mid-raised {
+  box-shadow: var(--elevation-mid-raised);
+}
+
+.elevation-high-raised {
+  box-shadow: var(--elevation-high-raised);
+}
+
+/* Padding variants */
+.padding-0 { padding: var(--spacing-0); }
+.padding-3 { padding: var(--spacing-3); }
+.padding-4 { padding: var(--spacing-4); }
+.padding-5 { padding: var(--spacing-5); }
+.padding-7 { padding: var(--spacing-7); }

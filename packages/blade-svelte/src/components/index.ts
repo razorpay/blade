@@ -23,5 +23,37 @@ export { default as Spinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
 // Amount
 export { default as Amount } from './Amount/Amount.svelte';
 
+// Badge
+export { default as Badge } from './Badge/Badge.svelte';
+
+// Counter
+export { default as Counter } from './Counter/Counter.svelte';
+
+// Alert
+export { default as Alert } from './Alert/Alert.svelte';
+
+// Card
+export {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+} from './Card';
+export type {
+  CardProps,
+  CardBodyProps,
+  CardHeaderProps,
+  CardHeaderLeadingProps,
+  CardHeaderTrailingProps,
+  CardFooterProps,
+  CardFooterLeadingProps,
+  CardFooterTrailingProps,
+  CardFooterAction,
+} from './Card';
+
 // BladeProvider
 export * from './BladeProvider';

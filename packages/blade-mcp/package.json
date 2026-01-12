@@ -24,7 +24,7 @@
     "dev": "tsx src/server.ts",
     "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js",
     "start": "node dist/server.js",
-    "lint": "eslint --ext .ts src/",
+    "lint": "eslint --ext js,jsx,ts,tsx src/",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:updateSnapshots": "vitest -u"

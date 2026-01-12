@@ -102,6 +102,12 @@
       "development": "./dist/lib/web/development/styles/index.js",
       "production": "./dist/lib/web/production/styles/index.js",
       "default": "./dist/lib/web/production/styles/index.js"
-    }
+    },
+    "./styles/Card/card.module.css": "./src/styles/Card/card.module.css",
+    "./styles/Card/cardSurface.module.css": "./src/styles/Card/cardSurface.module.css",
+    "./styles/Card/cardHeader.module.css": "./src/styles/Card/cardHeader.module.css",
+    "./styles/Card/cardFooter.module.css": "./src/styles/Card/cardFooter.module.css",
+    "./styles/Card/linkOverlay.module.css": "./src/styles/Card/linkOverlay.module.css",
+    "./styles/Alert/alert.module.css": "./src/styles/Alert/alert.module.css"
   }
 }

@@ -1,0 +1,112 @@
+/* Base Counter Styles */
+.counter {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-max);
+  position: relative;
+  overflow: hidden;
+  width: fit-content;
+}
+
+/* Size Variants - Heights and Padding */
+.small {
+  min-height: 16px;
+  max-width: 100px; /* mobile max-width */
+}
+
+.medium {
+  min-height: 20px;
+  max-width: 100px;
+}
+
+.large {
+  min-height: 24px;
+  max-width: 100px;
+}
+
+/* Desktop max-width adjustment */
+@media (min-width: 768px) {
+  .small,
+  .medium,
+  .large {
+    max-width: 120px;
+  }
+}
+
+/* Content wrapper */
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Content padding variants by size */
+.small .content {
+  padding-left: var(--spacing-2);
+  padding-right: var(--spacing-2);
+}
+
+.medium .content {
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+.large .content {
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+/* Color + Emphasis Combinations - Primary Color */
+.color-primary.emphasis-subtle {
+  background-color: var(--surface-background-primary-subtle);
+}
+
+.color-primary.emphasis-intense {
+  background-color: var(--surface-background-primary-intense);
+}
+
+/* Color + Emphasis Combinations - Feedback Colors */
+.color-neutral.emphasis-subtle {
+  background-color: var(--feedback-background-neutral-subtle);
+}
+
+.color-neutral.emphasis-intense {
+  background-color: var(--feedback-background-neutral-intense);
+}
+
+.color-information.emphasis-subtle {
+  background-color: var(--feedback-background-information-subtle);
+}
+
+.color-information.emphasis-intense {
+  background-color: var(--feedback-background-information-intense);
+}
+
+.color-negative.emphasis-subtle {
+  background-color: var(--feedback-background-negative-subtle);
+}
+
+.color-negative.emphasis-intense {
+  background-color: var(--feedback-background-negative-intense);
+}
+
+.color-notice.emphasis-subtle {
+  background-color: var(--feedback-background-notice-subtle);
+}
+
+.color-notice.emphasis-intense {
+  background-color: var(--feedback-background-notice-intense);
+}
+
+.color-positive.emphasis-subtle {
+  background-color: var(--feedback-background-positive-subtle);
+}
+
+.color-positive.emphasis-intense {
+  background-color: var(--feedback-background-positive-intense);
+}

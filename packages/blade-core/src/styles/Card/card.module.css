@@ -1,0 +1,45 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  outline: none;
+  transition: transform var(--motion-duration-xquick) var(--motion-easing-standard),
+              box-shadow var(--motion-duration-xquick) var(--motion-easing-standard);
+}
+
+/* Interactive states */
+.interactive {
+  cursor: pointer;
+}
+
+.selected {
+  box-shadow: 0 0 0 var(--border-width-thicker) var(--surface-border-primary-normal);
+}
+
+.focused {
+  box-shadow: 
+    0 0 0 var(--border-width-thicker) var(--surface-border-primary-normal),
+    0 0 0 4px var(--surface-border-primary-muted);
+}
+
+.validation-error {
+  box-shadow: 0 0 0 var(--border-width-thicker) var(--interactive-border-negative-default);
+}
+
+.validation-success {
+  box-shadow: 0 0 0 var(--border-width-thicker) var(--colors-interactive-border-positive-default);
+}
+
+/* Animations */
+.scale-hover:hover {
+  transform: scale(1.05);
+}
+
+.pressed {
+  transform: scale(0.95);
+}
+
+.label {
+  cursor: pointer;
+}

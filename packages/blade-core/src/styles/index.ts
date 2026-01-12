@@ -59,3 +59,54 @@ export type {
   AmountDisplayProps,
   AmountHeadingProps,
 } from './Amount';
+export {
+  badgeStyles,
+  getBadgeColorProps,
+  getBadgeTextSize,
+  getBadgeIconSize,
+  getBadgeTemplateClasses,
+  badgeContentClass,
+  badgeIconClass,
+} from './Badge';
+export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
+export {
+  counterStyles,
+  getCounterColorProps,
+  getCounterTextSize,
+  getCounterTemplateClasses,
+  counterContentClass,
+} from './Counter';
+export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
+export {
+  alertStyles,
+  getAlertTextColor,
+  getAlertIconColor,
+  getAlertIconOffset,
+  getAlertAccessibilityRole,
+  getAlertAriaLive,
+  getAlertTemplateClasses,
+  alertIconContainerClass,
+  alertIconContainerCenteredClass,
+  alertContentClass,
+  alertTitleClass,
+  alertDescriptionClass,
+  alertDescriptionNoOffsetClass,
+  alertActionsVerticalClass,
+  alertActionsHorizontalClass,
+  alertPrimaryActionClass,
+  alertSecondaryActionClass,
+  alertCloseButtonClass,
+  alertContentPaddingLeftSmallClass,
+  alertContentPaddingLeftLargeClass,
+  alertContentPaddingRightSmallClass,
+  alertContentPaddingRightLargeClass,
+  alertIconOffset0Class,
+  alertIconOffset1Class,
+  alertIconOffset2Class,
+} from './Alert';
+export type { AlertVariants, FeedbackColors, SubtleOrIntense } from './Alert';
+export { cardStyles } from './Card/card';
+export { cardSurfaceStyles } from './Card/cardSurface';
+export { cardHeaderStyles } from './Card/cardHeader';
+export { cardFooterStyles } from './Card/cardFooter';
+export { linkOverlayStyles } from './Card/linkOverlay';
