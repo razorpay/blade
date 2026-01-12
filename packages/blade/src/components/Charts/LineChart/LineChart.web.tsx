@@ -212,10 +212,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }, [data, secondaryDataKey]);
 
   // Memoize context values to prevent unnecessary re-renders of consumers
-  const lineChartContextValue = useMemo(
-    () => ({ hoveredDataKey, setHoveredDataKey }),
-    [hoveredDataKey],
-  );
+  const lineChartContextValue = useMemo(() => ({ hoveredDataKey, setHoveredDataKey }), [
+    hoveredDataKey,
+  ]);
 
   const commonChartContextValue = useMemo(
     () => ({
