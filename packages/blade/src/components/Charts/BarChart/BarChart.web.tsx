@@ -6,7 +6,12 @@ import {
 } from 'recharts';
 import { useChartsColorTheme, getHighestColorInRange, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
-import type { DataColorMapping } from '../CommonChartComponents';
+import type {
+  DataColorMapping,
+  SecondaryLabelMap,
+  ChartXAxisProps,
+} from '../CommonChartComponents';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
 import {
@@ -158,7 +163,12 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     chartName: 'bar',
   });
 
-  const { barChartModifiedChildrens, totalBars, dataColorMapping } = React.useMemo(() => {
+  const {
+    barChartModifiedChildrens,
+    totalBars,
+    dataColorMapping,
+    secondaryDataKey,
+  } = React.useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
 
@@ -167,6 +177,15 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       (child): child is React.ReactElement =>
         React.isValidElement(child) && getComponentId(child) === componentIds.chartBar,
     ).length;
+
+    // Find ChartXAxis and extract secondaryDataKey
+    let secondaryDataKey: string | undefined;
+    for (const child of childrenArray) {
+      if (React.isValidElement(child) && getComponentId(child) === commonComponentIds.chartXAxis) {
+        secondaryDataKey = (child.props as ChartXAxisProps)?.secondaryDataKey;
+        break;
+      }
+    }
 
     let BarChartIndex = 0;
     /**
@@ -197,11 +216,24 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       barChartModifiedChildrens: modifiedChildren,
       totalBars,
       dataColorMapping,
+      secondaryDataKey,
     };
   }, [children, themeColors]);
 
+  // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
+  const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
+    if (!secondaryDataKey || !data) return undefined;
+    const map: SecondaryLabelMap = {};
+    data.forEach((item, index) => {
+      map[index] = item[secondaryDataKey] as string | number | undefined;
+    });
+    return map;
+  }, [data, secondaryDataKey]);
+
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'bar', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{ chartName: 'bar', dataColorMapping, secondaryLabelMap, dataLength: data?.length }}
+    >
       <BaseBox
         {...metaAttribute({ name: 'bar-chart', testID })}
         {...makeAnalyticsAttribute(restProps)}

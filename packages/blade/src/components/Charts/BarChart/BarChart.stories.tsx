@@ -358,6 +358,61 @@ BarChartWithSequentialColors.parameters = {
   controls: { disable: true },
 };
 
+// Data for large labels example
+const largeLabelsData = [
+  {
+    category: 'Premium Enterprise Solutions',
+    quarterlyRevenue: 125000,
+    operationalExpenses: 85000,
+  },
+  {
+    category: 'Small Business Subscriptions',
+    quarterlyRevenue: 98000,
+    operationalExpenses: 62000,
+  },
+  {
+    category: 'Individual Professional Plans',
+    quarterlyRevenue: 75000,
+    operationalExpenses: 45000,
+  },
+  {
+    category: 'Government & Non-Profit Contracts',
+    quarterlyRevenue: 156000,
+    operationalExpenses: 98000,
+  },
+  {
+    category: 'Educational Institution Licenses',
+    quarterlyRevenue: 67000,
+    operationalExpenses: 38000,
+  },
+  {
+    category: 'Healthcare Sector Partnerships',
+    quarterlyRevenue: 189000,
+    operationalExpenses: 112000,
+  },
+];
+
+// Bar Chart with Large Labels (labels are automatically wrapped to prevent overlap)
+export const BarChartWithLargeLabels: StoryFn<typeof ChartBar> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="500px">
+        <ChartBarWrapper data={largeLabelsData} colorTheme="categorical">
+          <ChartXAxis dataKey="category" />
+          <ChartYAxis label="Amount in USD ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartBar dataKey="quarterlyRevenue" name="Quarterly Revenue from All Sources" />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+BarChartWithLargeLabels.parameters = {
+  controls: { disable: true },
+};
+
 DefaultChart.storyName = 'Default Bar Chart';
 TinyBarChart.storyName = 'Tiny Bar Chart';
 SimpleBarChart.storyName = 'Simple Bar Chart';
@@ -366,3 +421,4 @@ VerticalBarChart.storyName = 'Vertical Bar Chart';
 BarChartWithDefaultColorTheme.storyName = 'Bar Chart With Default Color Theme';
 BarChartWithGrid.storyName = 'Bar Chart With Grid';
 BarChartWithSequentialColors.storyName = 'Bar Chart with sequential colors';
+BarChartWithLargeLabels.storyName = 'Bar Chart with Large Labels';

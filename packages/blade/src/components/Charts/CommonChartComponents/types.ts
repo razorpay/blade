@@ -37,6 +37,20 @@ type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | '
    * The data key of the x-axis.
    */
   dataKey?: string;
+  /**
+   * Optional secondary data key for multi-line X-axis labels.
+   * When provided, the X-axis will display two lines of text:
+   * - Primary label (from dataKey)
+   * - Secondary label (from secondaryDataKey)
+   *
+   * @example
+   * // Data: [{ date: 'Jan', year: '2024' }, { date: 'Feb', year: '2024' }]
+   * <ChartXAxis dataKey="date" secondaryDataKey="year" />
+   * // Renders:
+   * //   Jan        Feb
+   * //  2024       2024
+   */
+  secondaryDataKey?: string;
 };
 type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
@@ -99,11 +113,26 @@ type ChartSequentialColorToken = `data.background.sequential.${Exclude<
 >}.${keyof DataSequentialEmphasis}`;
 
 type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
+
+/**
+ * Pre-computed map of index to secondary label value for X-axis secondary labels.
+ * This is computed in chart wrappers when secondaryDataKey is provided.
+ */
+type SecondaryLabelMap = Record<number, string | number | undefined>;
+
 // State type - contains only the state values
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
   chartName?: ChartName;
   selectedDataKeys?: string[];
+  /**
+   * Pre-computed map of index to secondary label value for X-axis secondary labels
+   */
+  secondaryLabelMap?: SecondaryLabelMap;
+  /**
+   * The number of data points in the chart, used for tick width calculation
+   */
+  dataLength?: number;
 };
 
 // Dispatch type - contains only the updater functions
@@ -136,4 +165,5 @@ export type {
   Align,
   DataColorMapping,
   ChartColorToken,
+  SecondaryLabelMap,
 };

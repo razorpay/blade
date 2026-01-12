@@ -7,6 +7,8 @@ export const CommonChartComponentsContext = createContext<CommonChartComponentsC
   chartName: undefined,
   selectedDataKeys: undefined,
   setSelectedDataKeys: () => undefined,
+  secondaryLabelMap: undefined,
+  dataLength: undefined,
 });
 
 export const useCommonChartComponentsContext = (): CommonChartComponentsContextType =>
