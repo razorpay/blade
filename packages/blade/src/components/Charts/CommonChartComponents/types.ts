@@ -94,7 +94,6 @@ type ChartSequentialColorToken = `data.background.sequential.${Exclude<
 type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 
 // Generic chart data type
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ChartData = Array<Record<string, any>>;
 
 // State type - contains only the state values
