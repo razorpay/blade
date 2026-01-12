@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.70.0
+
+### Minor Changes
+
+- ea3f318d9: feat(blade): add highlight lengends on click
+- d4e6866b7: feat(blade): add support for text truncation in x-axis label
+- b1d21bf26: feat(blade): add hover on line charts
+
 ## 12.69.0
 
 ### Minor Changes
