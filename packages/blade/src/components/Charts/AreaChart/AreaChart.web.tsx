@@ -122,7 +122,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     modifiedChildren,
     totalAreaChartChildren,
     dataColorMapping,
-    secondaryLabelKey,
+    secondaryDataKey,
   } = React.useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
@@ -133,11 +133,11 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea,
     ).length;
 
-    // Find ChartXAxis and extract secondaryLabelKey
-    let secondaryLabelKey: string | undefined;
+    // Find ChartXAxis and extract secondaryDataKey
+    let secondaryDataKey: string | undefined;
     for (const child of childrenArray) {
       if (React.isValidElement(child) && getComponentId(child) === commonComponentIds.chartXAxis) {
-        secondaryLabelKey = (child.props as ChartXAxisProps)?.secondaryLabelKey;
+        secondaryDataKey = (child.props as ChartXAxisProps)?.secondaryDataKey;
         break;
       }
     }
@@ -174,19 +174,19 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       modifiedChildren,
       totalAreaChartChildren: AreaChartIndex,
       dataColorMapping,
-      secondaryLabelKey,
+      secondaryDataKey,
     };
   }, [children, colorTheme, themeColors]);
 
-  // Build secondary label map internally from ChartXAxis's secondaryLabelKey prop
+  // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
   const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
-    if (!secondaryLabelKey || !data) return undefined;
+    if (!secondaryDataKey || !data) return undefined;
     const map: SecondaryLabelMap = {};
     data.forEach((item, index) => {
-      map[index] = item[secondaryLabelKey] as string | number | undefined;
+      map[index] = item[secondaryDataKey] as string | number | undefined;
     });
     return map;
-  }, [data, secondaryLabelKey]);
+  }, [data, secondaryDataKey]);
 
   return (
     <CommonChartComponentsContext.Provider

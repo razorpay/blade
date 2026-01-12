@@ -41,16 +41,16 @@ type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | '
    * Optional secondary data key for multi-line X-axis labels.
    * When provided, the X-axis will display two lines of text:
    * - Primary label (from dataKey)
-   * - Secondary label (from secondaryLabelKey)
+   * - Secondary label (from secondaryDataKey)
    *
    * @example
    * // Data: [{ date: 'Jan', year: '2024' }, { date: 'Feb', year: '2024' }]
-   * <ChartXAxis dataKey="date" secondaryLabelKey="year" />
+   * <ChartXAxis dataKey="date" secondaryDataKey="year" />
    * // Renders:
    * //   Jan        Feb
    * //  2024       2024
    */
-  secondaryLabelKey?: string;
+  secondaryDataKey?: string;
 };
 type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
@@ -95,7 +95,7 @@ type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 
 /**
  * Pre-computed map of index to secondary label value for X-axis secondary labels.
- * This is computed in chart wrappers when secondaryLabelKey is provided.
+ * This is computed in chart wrappers when secondaryDataKey is provided.
  */
 type SecondaryLabelMap = Record<number, string | number | undefined>;
 

@@ -280,8 +280,8 @@ const CustomXAxisTick = ({
 const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
   const { secondaryLabelMap, chartName, dataLength } = useCommonChartComponentsContext();
-  // We don't want to pass secondaryLabelKey to recharts
-  const { secondaryLabelKey: _unusedSecondaryLabelKey, ...restProps } = props;
+  // We don't want to pass secondaryDataKey to recharts
+  const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
 
   // Calculate tick count from dataLength
   const tickCount = dataLength ?? 1;

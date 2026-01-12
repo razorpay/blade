@@ -92,7 +92,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
    *  recharts do provide a color but it is hex code and we need blade color token .
    */
 
-  const { dataColorMapping, lineChartModifiedChildrens, secondaryLabelKey } = React.useMemo(() => {
+  const { dataColorMapping, lineChartModifiedChildrens, secondaryDataKey } = React.useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
     // Count ChartLine components
@@ -101,11 +101,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine,
     ).length;
 
-    // Find ChartXAxis and extract secondaryLabelKey
-    let secondaryLabelKey: string | undefined;
+    // Find ChartXAxis and extract secondaryDataKey
+    let secondaryDataKey: string | undefined;
     for (const child of childrenArray) {
       if (React.isValidElement(child) && getComponentId(child) === commonComponentIds.chartXAxis) {
-        secondaryLabelKey = (child.props as ChartXAxisProps)?.secondaryLabelKey;
+        secondaryDataKey = (child.props as ChartXAxisProps)?.secondaryDataKey;
         break;
       }
     }
@@ -135,18 +135,18 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     });
     assignDataColorMapping(dataColorMapping, themeColors);
 
-    return { dataColorMapping, lineChartModifiedChildrens, totalLines, secondaryLabelKey };
+    return { dataColorMapping, lineChartModifiedChildrens, totalLines, secondaryDataKey };
   }, [children, colorTheme, themeColors]);
 
-  // Build secondary label map internally from ChartXAxis's secondaryLabelKey prop
+  // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
   const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
-    if (!secondaryLabelKey || !data) return undefined;
+    if (!secondaryDataKey || !data) return undefined;
     const map: SecondaryLabelMap = {};
     data.forEach((item, index) => {
-      map[index] = item[secondaryLabelKey] as string | number | undefined;
+      map[index] = item[secondaryDataKey] as string | number | undefined;
     });
     return map;
-  }, [data, secondaryLabelKey]);
+  }, [data, secondaryDataKey]);
 
   return (
     <CommonChartComponentsContext.Provider
