@@ -1,5 +1,3 @@
-import type { ThemeTokens } from './theme';
-import bladeTheme from './bladeTheme';
 import merge from '~utils/lodashButBetter/merge';
 import cloneDeep from '~utils/lodashButBetter/cloneDeep';
 import { hasSameObjectStructure } from '~utils/hasSameObjectStructure';
@@ -7,6 +5,8 @@ import type { ObjectWithKeys } from '~utils/hasSameObjectStructure';
 import { isPartialMatchObjectKeys } from '~utils/isPartialMatchObjectKeys';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 import { throwBladeError } from '~utils/logger';
+import type { ThemeTokens } from './theme';
+import bladeTheme from './bladeTheme';
 
 type OverrideTheme = {
   /**
