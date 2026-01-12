@@ -5,7 +5,11 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { getHighestColorInRange, useChartsColorTheme, assignDataColorMapping } from '../utils';
-import type { DataColorMapping, SecondaryLabelMap, ChartXAxisProps } from '../CommonChartComponents';
+import type {
+  DataColorMapping,
+  SecondaryLabelMap,
+  ChartXAxisProps,
+} from '../CommonChartComponents';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
@@ -114,64 +118,65 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     colorTheme,
     chartName: 'area',
   });
-  const { modifiedChildren, totalAreaChartChildren, dataColorMapping, secondaryLabelKey } =
-    React.useMemo(() => {
-      const childrenArray = React.Children.toArray(children);
-      const dataColorMapping: DataColorMapping = {};
+  const {
+    modifiedChildren,
+    totalAreaChartChildren,
+    dataColorMapping,
+    secondaryLabelKey,
+  } = React.useMemo(() => {
+    const childrenArray = React.Children.toArray(children);
+    const dataColorMapping: DataColorMapping = {};
 
-      // Count ChartArea components
-      const totalAreas = childrenArray.filter(
-        (child): child is React.ReactElement =>
-          React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea,
-      ).length;
+    // Count ChartArea components
+    const totalAreas = childrenArray.filter(
+      (child): child is React.ReactElement =>
+        React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea,
+    ).length;
 
-      // Find ChartXAxis and extract secondaryLabelKey
-      let secondaryLabelKey: string | undefined;
-      for (const child of childrenArray) {
-        if (
-          React.isValidElement(child) &&
-          getComponentId(child) === commonComponentIds.chartXAxis
-        ) {
-          secondaryLabelKey = (child.props as ChartXAxisProps)?.secondaryLabelKey;
-          break;
-        }
+    // Find ChartXAxis and extract secondaryLabelKey
+    let secondaryLabelKey: string | undefined;
+    for (const child of childrenArray) {
+      if (React.isValidElement(child) && getComponentId(child) === commonComponentIds.chartXAxis) {
+        secondaryLabelKey = (child.props as ChartXAxisProps)?.secondaryLabelKey;
+        break;
       }
+    }
 
-      let AreaChartIndex = 0;
-      /**
-       * We need to check child of ChartAreaWrapper. if they have any custom color we store that.
-       * We need these mapping because colors of tooltip & legend is determine based on this
-       *  recharts do provide a color but it is hex code and we need blade color token .
-       */
-      const modifiedChildren = React.Children.map(children, (child) => {
-        if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
-          const childColor = child?.props?.color;
-          const dataKey = (child?.props as ChartAreaProps)?.dataKey as string;
-          if (dataKey) {
-            //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
+    let AreaChartIndex = 0;
+    /**
+     * We need to check child of ChartAreaWrapper. if they have any custom color we store that.
+     * We need these mapping because colors of tooltip & legend is determine based on this
+     *  recharts do provide a color but it is hex code and we need blade color token .
+     */
+    const modifiedChildren = React.Children.map(children, (child) => {
+      if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
+        const childColor = child?.props?.color;
+        const dataKey = (child?.props as ChartAreaProps)?.dataKey as string;
+        if (dataKey) {
+          //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
 
-            dataColorMapping[dataKey] = {
-              colorToken: childColor,
-              isCustomColor: Boolean(childColor),
-            };
-          }
-          return React.cloneElement(child, {
-            _index: AreaChartIndex++,
-            _colorTheme: colorTheme,
-            _totalAreas: totalAreas,
-          } as Partial<ChartAreaProps>);
+          dataColorMapping[dataKey] = {
+            colorToken: childColor,
+            isCustomColor: Boolean(childColor),
+          };
         }
-        return child;
-      });
+        return React.cloneElement(child, {
+          _index: AreaChartIndex++,
+          _colorTheme: colorTheme,
+          _totalAreas: totalAreas,
+        } as Partial<ChartAreaProps>);
+      }
+      return child;
+    });
 
-      assignDataColorMapping(dataColorMapping, themeColors);
-      return {
-        modifiedChildren,
-        totalAreaChartChildren: AreaChartIndex,
-        dataColorMapping,
-        secondaryLabelKey,
-      };
-    }, [children, colorTheme, themeColors]);
+    assignDataColorMapping(dataColorMapping, themeColors);
+    return {
+      modifiedChildren,
+      totalAreaChartChildren: AreaChartIndex,
+      dataColorMapping,
+      secondaryLabelKey,
+    };
+  }, [children, colorTheme, themeColors]);
 
   // Build secondary label map internally from ChartXAxis's secondaryLabelKey prop
   const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
