@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect, isValidElement, cloneElement } from 'react';
 import {
   LineChart as RechartsLineChart,
   Line as RechartsLine,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
+import { animate } from 'framer-motion';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
@@ -14,6 +15,7 @@ import type {
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
+import { LineChartContext, useLineChartContext } from './LineChartContext';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -34,14 +36,19 @@ const Line: React.FC<ChartLineProps> = ({
   _colorTheme,
   _totalLines,
   hide,
+  dataKey,
   ...props
 }) => {
   const { theme } = useTheme();
+  const { hoveredDataKey, setHoveredDataKey } = useLineChartContext();
+
   const themeColors = useChartsColorTheme({
     colorTheme: _colorTheme,
     chartName: 'line',
     chartDataIndicators: _totalLines,
   });
+
+  const isOtherLineHovered = hoveredDataKey !== null && hoveredDataKey !== dataKey;
   const colorToken = getIn(theme.colors, color ?? themeColors[_index ?? 0]);
 
   const strokeDasharray =
@@ -53,22 +60,68 @@ const Line: React.FC<ChartLineProps> = ({
     : theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
+  // Animated opacity using framer-motion
+  const targetOpacity = isOtherLineHovered ? 0.2 : 1;
+  const [animatedOpacity, setAnimatedOpacity] = useState(targetOpacity);
+
+  useEffect(() => {
+    const controls = animate(animatedOpacity, targetOpacity, {
+      duration: 0.5,
+      ease: 'easeInOut',
+      onUpdate: (latest) => setAnimatedOpacity(latest),
+    });
+
+    return () => controls.stop();
+  }, [targetOpacity]);
+
+  // activeDot config with hover handlers
+  const activeDotConfig = activeDot
+    ? {
+        onMouseEnter: () => !hide && setHoveredDataKey?.(dataKey as string),
+        onMouseLeave: () => !hide && setHoveredDataKey?.(null),
+      }
+    : false;
+
   return (
-    <RechartsLine
-      stroke={colorToken}
-      strokeWidth={1.5}
-      strokeDasharray={strokeDasharray}
-      type={type}
-      activeDot={activeDot}
-      dot={dot}
-      legendType={showLegend ? 'line' : 'none'}
-      animationBegin={animationBegin}
-      animationDuration={animationDuration}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      hide={hide}
-      {...props}
-    />
+    <>
+      <RechartsLine
+        key={`line-${dataKey}-background`}
+        type="monotone"
+        dataKey={dataKey}
+        stroke="transparent"
+        strokeWidth={15}
+        dot={false}
+        activeDot={false}
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        hide={hide}
+      />
+      <RechartsLine
+        key={`line-${dataKey}-main`}
+        stroke={colorToken}
+        strokeWidth={1.5}
+        strokeDasharray={strokeDasharray}
+        type={type}
+        dataKey={dataKey}
+        activeDot={isOtherLineHovered ? false : activeDotConfig}
+        dot={dot}
+        legendType={showLegend ? 'line' : 'none'}
+        animationBegin={animationBegin}
+        animationDuration={animationDuration}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        hide={hide}
+        // Animated opacity using framer-motion
+        strokeOpacity={animatedOpacity}
+        isAnimationActive={true}
+        {...props}
+      />
+    </>
   );
 };
 
@@ -89,8 +142,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     chartName: 'line',
   });
 
-  // State to track which lines are visible (by dataKey) - all visible by default
-  const [selectedDataKeys, setSelectedDataKeys] = React.useState<string[] | undefined>(undefined);
+  // State to track which line is currently hovered
+  const [hoveredDataKey, setHoveredDataKey] = useState<string | null>(null);
+  const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
 
   /**
    * We need to check child of CharLineWrapper. if they have any custom color we store that.
@@ -98,13 +152,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
    *  recharts do provide a color but it is hex code and we need blade color token .
    */
 
-  const { dataColorMapping, lineChartModifiedChildrens, secondaryDataKey } = React.useMemo(() => {
+  const { dataColorMapping, lineChartModifiedChildrens, secondaryDataKey } = useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
     // Count ChartLine components
     const totalLines = childrenArray.filter(
       (child): child is React.ReactElement =>
-        React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine,
+        isValidElement(child) && getComponentId(child) === componentIds.ChartLine,
     ).length;
 
     // Find ChartXAxis and extract secondaryDataKey
@@ -118,7 +172,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
     let LineChartIndex = 0;
     const lineChartModifiedChildrens = React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
+      if (isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
         const childColor = child?.props?.color;
         const dataKey = (child?.props as ChartLineProps)?.dataKey as string;
         if (dataKey) {
@@ -133,7 +187,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         }
         // Pass hide prop based on whether this line's dataKey is NOT in selectedDataKeys
         // If selectedDataKeys is undefined, show all lines (default behavior)
-        return React.cloneElement(child, {
+        return cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
           _totaLine: totalLines,
@@ -148,7 +202,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }, [children, colorTheme, themeColors, selectedDataKeys]);
 
   // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
-  const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
+  const secondaryLabelMap = useMemo<SecondaryLabelMap | undefined>(() => {
     if (!secondaryDataKey || !data) return undefined;
     const map: SecondaryLabelMap = {};
     data.forEach((item, index) => {
@@ -157,29 +211,41 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     return map;
   }, [data, secondaryDataKey]);
 
+  // Memoize context values to prevent unnecessary re-renders of consumers
+  const lineChartContextValue = useMemo(() => ({ hoveredDataKey, setHoveredDataKey }), [
+    hoveredDataKey,
+  ]);
+
+  const commonChartContextValue = useMemo(
+    () => ({
+      chartName: 'line' as const,
+      dataColorMapping,
+      selectedDataKeys,
+      setSelectedDataKeys,
+      secondaryLabelMap,
+      dataLength: data?.length,
+    }),
+    [dataColorMapping, selectedDataKeys, secondaryLabelMap, data?.length],
+  );
+
   return (
-    <CommonChartComponentsContext.Provider
-      value={{
-        chartName: 'line',
-        dataColorMapping,
-        selectedDataKeys,
-        setSelectedDataKeys,
-        secondaryLabelMap,
-        dataLength: data?.length,
-      }}
-    >
-      <BaseBox
-        {...metaAttribute({ name: 'line-chart', testID })}
-        {...makeAnalyticsAttribute(restProps)}
-        width="100%"
-        height="100%"
-        {...restProps}
-      >
-        <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsLineChart data={data}>{lineChartModifiedChildrens}</RechartsLineChart>
-        </RechartsResponsiveContainer>
-      </BaseBox>
-    </CommonChartComponentsContext.Provider>
+    <LineChartContext.Provider value={lineChartContextValue}>
+      <CommonChartComponentsContext.Provider value={commonChartContextValue}>
+        <BaseBox
+          {...metaAttribute({ name: 'line-chart', testID })}
+          {...makeAnalyticsAttribute(restProps)}
+          width="100%"
+          height="100%"
+          {...restProps}
+        >
+          <RechartsResponsiveContainer width="100%" height="100%">
+            <RechartsLineChart data={data} onMouseLeave={() => setHoveredDataKey(null)}>
+              {lineChartModifiedChildrens}
+            </RechartsLineChart>
+          </RechartsResponsiveContainer>
+        </BaseBox>
+      </CommonChartComponentsContext.Provider>
+    </LineChartContext.Provider>
   );
 };
 

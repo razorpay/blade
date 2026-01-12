@@ -408,7 +408,6 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
 
 const CustomTooltip = ({
   item,
-  key,
 }: {
   item: {
     name: string;
@@ -417,7 +416,6 @@ const CustomTooltip = ({
     dataKey: string;
     payload: { fill: string };
   };
-  key: string;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
@@ -429,7 +427,7 @@ const CustomTooltip = ({
       alignItems="center"
       justifyContent="space-between"
       gap="spacing.4"
-      key={key}
+      key={`tooltip-${item.name}`}
     >
       <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
         <div
@@ -483,33 +481,41 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
-const StyledLegendWrapper = styled.button<{ $isHidden: boolean }>(({ theme, $isHidden }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  cursor: 'pointer',
-  opacity: $isHidden ? 0.4 : 1,
-  background: 'none',
-  border: 'none',
-  padding: 0,
-  '& p': {
-    color: theme.colors.surface.text.gray.muted,
-    transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
-  },
-  '&:hover p': {
-    color: theme.colors.surface.text.gray.normal,
-  },
-}));
+const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: boolean }>(
+  ({ theme, $isHidden, $isClickable }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    cursor: $isClickable ? 'pointer' : 'default',
+    opacity: $isHidden ? 0.4 : 1,
+    background: 'none',
+    border: 'none',
+    padding: 0,
+    '& p': {
+      color: theme.colors.surface.text.gray.muted,
+      transition: $isClickable
+        ? `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`
+        : 'none',
+    },
+    '&:hover p': {
+      color: $isClickable
+        ? theme.colors.surface.text.gray.normal
+        : theme.colors.surface.text.gray.muted,
+    },
+  }),
+);
 
 const LegendItem = ({
   entry,
   index,
   isSelected,
   onClick,
+  isClickable,
 }: {
   entry: { color: string; value: string; dataKey: string };
   index: number;
   isSelected: boolean;
   onClick: (dataKey: string) => void;
+  isClickable: boolean;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
@@ -520,17 +526,22 @@ const LegendItem = ({
     <StyledLegendWrapper
       key={`item-${index}`}
       $isHidden={!isSelected}
-      onClick={() => {
-        onClick(entry.dataKey);
-      }}
+      $isClickable={isClickable}
+      onClick={
+        isClickable
+          ? () => {
+              onClick(entry.dataKey);
+            }
+          : undefined
+      }
       type="button"
     >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
-            backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
-            width: theme.spacing[4], // Size of the square
-            height: theme.spacing[4], // Size of the square
+            backgroundColor: getIn(theme.colors, legendColor),
+            width: theme.spacing[4],
+            height: theme.spacing[4],
             display: 'inline-block',
             borderRadius: theme.border.radius.small,
           }}
@@ -559,6 +570,7 @@ const CustomSquareLegend = (props: {
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
+  const { chartName } = useCommonChartComponentsContext();
 
   if (!payload || payload.length === 0) {
     return null;
@@ -573,6 +585,7 @@ const CustomSquareLegend = (props: {
     (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
   );
   const isVerticalLayout = layout === 'vertical';
+  const isClickable = chartName === 'line';
 
   return (
     <Box
@@ -590,6 +603,7 @@ const CustomSquareLegend = (props: {
           key={`item-${index}`}
           isSelected={selectedDataKeys.includes(entry.dataKey)}
           onClick={onClick}
+          isClickable={isClickable}
         />
       ))}
     </Box>
