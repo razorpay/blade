@@ -1,3 +1,4 @@
+import type { ThemeTokens, ColorsWithModes } from './theme';
 import {
   border,
   breakpoints,
@@ -8,7 +9,6 @@ import {
   elevation,
   opacity,
 } from '~tokens/global';
-import type { ThemeTokens, ColorsWithModes } from './theme';
 
 const colors: ColorsWithModes = {
   onLight: {
