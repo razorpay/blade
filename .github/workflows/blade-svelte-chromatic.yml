@@ -26,8 +26,9 @@ jobs:
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
 
-      - name: Build blade-core
-        run: yarn build:blade-core
+      - name: Build Blade Core
+        run: yarn build
+        working-directory: packages/blade-core
 
       # Publish Svelte Storybook to Chromatic
       - name: Publish Svelte to Chromatic
