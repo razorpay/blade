@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect, isValidElement, cloneElement } from 'react';
 import {
   LineChart as RechartsLineChart,
   Line as RechartsLine,
@@ -57,9 +57,9 @@ const Line: React.FC<ChartLineProps> = ({
 
   // Animated opacity using framer-motion
   const targetOpacity = isOtherLineHovered ? 0.2 : 1;
-  const [animatedOpacity, setAnimatedOpacity] = React.useState(targetOpacity);
+  const [animatedOpacity, setAnimatedOpacity] = useState(targetOpacity);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const controls = animate(animatedOpacity, targetOpacity, {
       duration: 0.5,
       ease: 'easeInOut',
@@ -138,8 +138,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   });
 
   // State to track which line is currently hovered
-  const [hoveredDataKey, setHoveredDataKey] = React.useState<string | null>(null);
-  const [selectedDataKeys, setSelectedDataKeys] = React.useState<string[] | undefined>(undefined);
+  const [hoveredDataKey, setHoveredDataKey] = useState<string | null>(null);
+  const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
 
   /**
    * We need to check child of CharLineWrapper. if they have any custom color we store that.
@@ -147,18 +147,18 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
    *  recharts do provide a color but it is hex code and we need blade color token .
    */
 
-  const { dataColorMapping, lineChartModifiedChildrens } = React.useMemo(() => {
+  const { dataColorMapping, lineChartModifiedChildrens } = useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
     // Count ChartLine components
     const totalLines = childrenArray.filter(
       (child): child is React.ReactElement =>
-        React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine,
+        isValidElement(child) && getComponentId(child) === componentIds.ChartLine,
     ).length;
 
     let LineChartIndex = 0;
     const lineChartModifiedChildrens = React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
+      if (isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
         const childColor = child?.props?.color;
         const dataKey = (child?.props as ChartLineProps)?.dataKey as string;
         if (dataKey) {
@@ -173,7 +173,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         }
         // Pass hide prop based on whether this line's dataKey is NOT in selectedDataKeys
         // If selectedDataKeys is undefined, show all lines (default behavior)
-        return React.cloneElement(child, {
+        return cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
           _totaLine: totalLines,
@@ -188,11 +188,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }, [children, colorTheme, themeColors, selectedDataKeys]);
 
   // Memoize context values to prevent unnecessary re-renders of consumers
-  const lineChartContextValue = React.useMemo(() => ({ hoveredDataKey, setHoveredDataKey }), [
+  const lineChartContextValue = useMemo(() => ({ hoveredDataKey, setHoveredDataKey }), [
     hoveredDataKey,
   ]);
 
-  const commonChartContextValue = React.useMemo(
+  const commonChartContextValue = useMemo(
     () => ({
       chartName: 'line' as const,
       dataColorMapping,
