@@ -6,6 +6,7 @@ export type {
   ChartLegendProps,
   ChartReferenceLineProps,
   DataColorMapping,
+  SecondaryLabelMap,
 } from './types';
 export {
   ChartXAxis,

@@ -7,7 +7,12 @@ import {
 import { animate } from 'framer-motion';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
-import type { DataColorMapping } from '../CommonChartComponents/types';
+import type {
+  DataColorMapping,
+  SecondaryLabelMap,
+  ChartXAxisProps,
+} from '../CommonChartComponents/types';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
 import { LineChartContext, useLineChartContext } from './LineChartContext';
@@ -147,7 +152,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
    *  recharts do provide a color but it is hex code and we need blade color token .
    */
 
-  const { dataColorMapping, lineChartModifiedChildrens } = useMemo(() => {
+  const { dataColorMapping, lineChartModifiedChildrens, secondaryDataKey } = useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
     // Count ChartLine components
@@ -155,6 +160,15 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       (child): child is React.ReactElement =>
         isValidElement(child) && getComponentId(child) === componentIds.ChartLine,
     ).length;
+
+    // Find ChartXAxis and extract secondaryDataKey
+    let secondaryDataKey: string | undefined;
+    for (const child of childrenArray) {
+      if (React.isValidElement(child) && getComponentId(child) === commonComponentIds.chartXAxis) {
+        secondaryDataKey = (child.props as ChartXAxisProps)?.secondaryDataKey;
+        break;
+      }
+    }
 
     let LineChartIndex = 0;
     const lineChartModifiedChildrens = React.Children.map(children, (child) => {
@@ -184,13 +198,24 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     });
     assignDataColorMapping(dataColorMapping, themeColors);
 
-    return { dataColorMapping, lineChartModifiedChildrens, totalLines };
+    return { dataColorMapping, lineChartModifiedChildrens, totalLines, secondaryDataKey };
   }, [children, colorTheme, themeColors, selectedDataKeys]);
 
+  // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
+  const secondaryLabelMap = useMemo<SecondaryLabelMap | undefined>(() => {
+    if (!secondaryDataKey || !data) return undefined;
+    const map: SecondaryLabelMap = {};
+    data.forEach((item, index) => {
+      map[index] = item[secondaryDataKey] as string | number | undefined;
+    });
+    return map;
+  }, [data, secondaryDataKey]);
+
   // Memoize context values to prevent unnecessary re-renders of consumers
-  const lineChartContextValue = useMemo(() => ({ hoveredDataKey, setHoveredDataKey }), [
-    hoveredDataKey,
-  ]);
+  const lineChartContextValue = useMemo(
+    () => ({ hoveredDataKey, setHoveredDataKey }),
+    [hoveredDataKey],
+  );
 
   const commonChartContextValue = useMemo(
     () => ({
@@ -198,8 +223,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       dataColorMapping,
       selectedDataKeys,
       setSelectedDataKeys,
+      secondaryLabelMap,
+      dataLength: data?.length,
     }),
-    [dataColorMapping, selectedDataKeys],
+    [dataColorMapping, selectedDataKeys, secondaryLabelMap, data?.length],
   );
 
   return (

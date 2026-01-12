@@ -24,14 +24,19 @@ import type {
   Layout,
   ChartColorToken,
   DataColorMapping,
+  SecondaryLabelMap,
 } from './types';
 import {
   RECT_HEIGHT,
   TEXT_BASELINE,
   PADDING_VERTICAL,
   PADDING_HORIZONTAL,
-  X_AXIS_TEXT_BASELINE,
-  Y_OFFSET,
+  X_AXIS_TICK_LINE_HEIGHT,
+  X_AXIS_TICK_START_DY,
+  X_AXIS_LABEL_GAP,
+  X_AXIS_LABEL_OFFSET,
+  X_AXIS_LABEL_HEIGHT,
+  LEGEND_MARGIN_TOP,
   X_OFFSET,
   componentId,
 } from './tokens';
@@ -88,25 +93,253 @@ const getChartColor = (
   });
 };
 
-const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
+/**
+ * Wraps text to fit within a given pixel width, breaking at word boundaries.
+ * Returns an array of lines that each fit within the max width.
+ */
+const wrapTextToFit = (text: string, maxWidthPx: number, fontSize: number): string[] => {
+  // Approximate average character width (varies by font, but ~0.5-0.6 of font size is common)
+  const avgCharWidth = fontSize * 0.55;
+  const maxCharsPerLine = Math.max(1, Math.floor(maxWidthPx / avgCharWidth));
+
+  // If text fits in one line, return as-is
+  if (text.length <= maxCharsPerLine) {
+    return [text];
+  }
+
+  const words = text.split(' ');
+  const lines: string[] = [];
+  let currentLine = '';
+
+  for (const word of words) {
+    if (currentLine.length === 0) {
+      currentLine = word;
+    } else if (currentLine.length + 1 + word.length <= maxCharsPerLine) {
+      currentLine += ` ${word}`;
+    } else {
+      lines.push(currentLine);
+      currentLine = word;
+    }
+  }
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine);
+  }
+
+  return lines;
+};
+
+/**
+ * Reusable component for rendering wrapped text labels in SVG.
+ * Handles multi-line text rendering with configurable positioning.
+ */
+const wrappedTextLabel = ({
+  text,
+  maxWidth,
+  fontSize,
+  lineHeight,
+  startDy,
+  textAnchor,
+  fill,
+  fontFamily,
+  fontWeight,
+  letterSpacing,
+  yOffset = 0,
+}: {
+  text: string;
+  maxWidth: number;
+  fontSize: number;
+  lineHeight: number;
+  startDy: number;
+  textAnchor: 'start' | 'middle' | 'end';
+  fill: string;
+  fontFamily: string;
+  fontWeight: number;
+  letterSpacing: number;
+  yOffset?: number;
+}): { element: JSX.Element; height: number } => {
+  const lines = wrapTextToFit(text, maxWidth, fontSize);
+  const totalHeight = lines.length * lineHeight;
+
+  const element = (
+    <text
+      x={0}
+      y={yOffset}
+      textAnchor={textAnchor}
+      fill={fill}
+      fontSize={fontSize}
+      fontFamily={fontFamily}
+      fontWeight={fontWeight}
+      style={{ letterSpacing }}
+    >
+      {lines.map((line, index) => (
+        <tspan key={index} x={0} dy={index === 0 ? startDy : lineHeight}>
+          {line}
+        </tspan>
+      ))}
+    </text>
+  );
+
+  return { element, height: totalHeight };
+};
+
+/**
+ * Custom tick component for X-axis with automatic text wrapping.
+ * - Primary label: Automatically wraps long text to multiple lines based on available width
+ * - Secondary label: Optional label from pre-computed secondaryLabelMap (shown below primary, also supports wrapping)
+ * - Edge alignment: For line/area charts, first/last ticks align start/end to prevent clipping.
+ *   For bar charts, all labels are center-aligned since bars are centered on tick positions.
+ * - Reports calculated height via onHeightCalculated callback for dynamic axis sizing
+ */
+const CustomXAxisTick = ({
+  x,
+  y,
+  payload,
+  secondaryLabelMap,
+  theme,
+  tickWidth,
+  tickCount,
+  chartName,
+  onHeightCalculated,
+}: {
+  x: number;
+  y: number;
+  payload: { value: string; index: number };
+  secondaryLabelMap?: SecondaryLabelMap;
+  theme: ReturnType<typeof useTheme>['theme'];
+  tickWidth?: number;
+  tickCount: number;
+  chartName?: string;
+  onHeightCalculated?: (height: number) => void;
+}): JSX.Element => {
+  const fontSize = theme.typography.fonts.size[75];
+  const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
+
+  // For bar charts, always center align labels since bars are centered on ticks
+  // For line/area charts, align first tick left and last tick right to prevent clipping
+  const shouldUseEdgeAlignment = chartName === 'line' || chartName === 'area';
+  const isFirstTick = shouldUseEdgeAlignment && payload.index === 0;
+  const isLastTick = shouldUseEdgeAlignment && payload.index === tickCount - 1;
+
+  const getTextAnchor = (): 'start' | 'middle' | 'end' => {
+    if (isFirstTick) return 'start';
+    if (isLastTick) return 'end';
+    return 'middle';
+  };
+  const textAnchor = getTextAnchor();
+
+  // Common text style props
+  const textStyleProps = {
+    maxWidth,
+    fontSize,
+    lineHeight: X_AXIS_TICK_LINE_HEIGHT,
+    startDy: X_AXIS_TICK_START_DY,
+    textAnchor,
+    fill: theme.colors.surface.text.gray.muted,
+    fontFamily: theme.typography.fonts.family.text,
+    fontWeight: theme.typography.fonts.weight.regular,
+    letterSpacing: theme.typography.letterSpacings[100],
+  } as const;
+
+  // Primary label
+  const primaryLabel = wrappedTextLabel({
+    ...textStyleProps,
+    text: String(payload.value),
+  });
+
+  // Secondary label from pre-computed map
+  const secondaryValue = secondaryLabelMap?.[payload.index];
+
+  const secondaryLabel =
+    secondaryValue !== undefined
+      ? wrappedTextLabel({
+          ...textStyleProps,
+          text: String(secondaryValue),
+          // primaryLabel.height gives us where primary ends (relative to its startDy)
+          // X_AXIS_LABEL_GAP adds the desired spacing between labels
+          yOffset: primaryLabel.height + X_AXIS_LABEL_GAP,
+        })
+      : null;
+
+  // Calculate total tick height and report it
+  const totalTickHeight =
+    X_AXIS_TICK_START_DY +
+    primaryLabel.height +
+    (secondaryLabel ? X_AXIS_LABEL_GAP + secondaryLabel.height : 0);
+
+  React.useEffect(() => {
+    onHeightCalculated?.(totalTickHeight);
+  }, [totalTickHeight, onHeightCalculated]);
+
+  return (
+    <g transform={`translate(${x},${y})`}>
+      {primaryLabel.element}
+      {secondaryLabel?.element}
+    </g>
+  );
+};
+
+const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   const { theme } = useTheme();
+  const { secondaryLabelMap, chartName, dataLength } = useCommonChartComponentsContext();
+  // We don't want to pass secondaryDataKey to recharts
+  const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
+
+  // Calculate tick count from dataLength
+  const tickCount = dataLength ?? 1;
+
+  // State to track the maximum tick height reported by CustomXAxisTick components
+  const minHeight = secondaryLabelMap ? 20 : 10;
+  const [maxTickHeight, setMaxTickHeight] = React.useState(minHeight);
+
+  // Callback to update max height when ticks report their calculated height
+  const handleHeightCalculated = React.useCallback((height: number) => {
+    setMaxTickHeight((prev) => Math.max(prev, height));
+  }, []);
+
+  // Calculate total axis height:
+  // - Tick labels height (dynamic)
+  // - X-axis label height + offset (if label prop is present)
+  const hasAxisLabel = Boolean(props?.label);
+  const axisLabelSpace = hasAxisLabel ? X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT : 0;
+  const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
+
+  // Position for X-axis label: below tick labels with offset
+  const axisLabelY = maxTickHeight + X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT / 2;
 
   return (
     <RechartsXAxis
-      {...props}
-      tick={{
-        fill: theme.colors.surface.text.gray.muted,
-        fontSize: theme.typography.fonts.size[75],
-        fontFamily: theme.typography.fonts.family.text,
-        fontWeight: theme.typography.fonts.weight.regular,
-        letterSpacing: theme.typography.letterSpacings[100],
+      {...restProps}
+      height={baseHeight}
+      interval={0} // Show all labels - we handle wrapping to prevent overlaps
+      tick={(tickProps: {
+        x: number;
+        y: number;
+        payload: { value: string; index: number };
+        width: number;
+      }) => {
+        // Calculate available width per tick from the total chart width
+        const tickWidth = tickProps.width / tickCount;
+        return (
+          <CustomXAxisTick
+            x={tickProps.x}
+            y={tickProps.y}
+            payload={tickProps.payload}
+            secondaryLabelMap={secondaryLabelMap}
+            theme={theme}
+            tickWidth={tickWidth}
+            tickCount={tickCount}
+            chartName={chartName}
+            onHeightCalculated={handleHeightCalculated}
+          />
+        );
       }}
       tickLine={false}
       stroke={theme.colors.surface.border.gray.muted}
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
           x={viewBox.x + viewBox.width / 2 - X_OFFSET}
-          y={viewBox.y + Y_OFFSET + X_AXIS_TEXT_BASELINE}
+          y={viewBox.y + axisLabelY}
           textAnchor="middle"
           fill={theme.colors.surface.text.gray.muted}
           fontSize={theme.typography.fonts.size[75]}
@@ -121,6 +354,10 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
     />
   );
 };
+
+const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
+  componentId: componentId.chartXAxis,
+});
 
 const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -399,7 +636,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
-        paddingTop: theme.spacing[7],
+        paddingTop: LEGEND_MARGIN_TOP,
       }}
       align="center"
       verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
