@@ -113,7 +113,7 @@ const wrapTextToFit = (text: string, maxWidthPx: number, fontSize: number): stri
     if (currentLine.length === 0) {
       currentLine = word;
     } else if (currentLine.length + 1 + word.length <= maxCharsPerLine) {
-      currentLine += ' ' + word;
+      currentLine += ` ${word}`;
     } else {
       lines.push(currentLine);
       currentLine = word;
