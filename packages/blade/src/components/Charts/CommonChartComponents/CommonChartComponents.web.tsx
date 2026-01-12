@@ -246,24 +246,22 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
-const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: boolean }>(
-  ({ theme, $isHidden, $isClickable }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    cursor: $isClickable ? 'pointer' : 'default',
-    opacity: $isHidden ? 0.4 : 1,
-    background: 'none',
-    border: 'none',
-    padding: 0,
-    '& p': {
-      color: theme.colors.surface.text.gray.muted,
-      transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
-    },
-    '&:hover p': {
-      color: $isClickable ? theme.colors.surface.text.gray.normal : undefined,
-    },
-  }),
-);
+const StyledLegendWrapper = styled.button<{ $isHidden: boolean }>(({ theme, $isHidden }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  cursor: 'pointer',
+  opacity: $isHidden ? 0.4 : 1,
+  background: 'none',
+  border: 'none',
+  padding: 0,
+  '& p': {
+    color: theme.colors.surface.text.gray.muted,
+    transition: `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`,
+  },
+  '&:hover p': {
+    color: theme.colors.surface.text.gray.normal,
+  },
+}));
 
 const LegendItem = ({
   entry,
@@ -285,7 +283,6 @@ const LegendItem = ({
     <StyledLegendWrapper
       key={`item-${index}`}
       $isHidden={!isSelected}
-      $isClickable={true}
       onClick={() => {
         onClick(entry.dataKey);
       }}
