@@ -131,7 +131,7 @@ const wrapTextToFit = (text: string, maxWidthPx: number, fontSize: number): stri
  * Reusable component for rendering wrapped text labels in SVG.
  * Handles multi-line text rendering with configurable positioning.
  */
-const WrappedTextLabel = ({
+const wrappedTextLabel = ({
   text,
   maxWidth,
   fontSize,
@@ -240,7 +240,7 @@ const CustomXAxisTick = ({
   } as const;
 
   // Primary label
-  const primaryLabel = WrappedTextLabel({
+  const primaryLabel = wrappedTextLabel({
     ...textStyleProps,
     text: String(payload.value),
   });
@@ -250,7 +250,7 @@ const CustomXAxisTick = ({
 
   const secondaryLabel =
     secondaryValue !== undefined
-      ? WrappedTextLabel({
+      ? wrappedTextLabel({
           ...textStyleProps,
           text: String(secondaryValue),
           // primaryLabel.height gives us where primary ends (relative to its startDy)
