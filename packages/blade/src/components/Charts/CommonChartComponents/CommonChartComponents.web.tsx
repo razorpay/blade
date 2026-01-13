@@ -198,7 +198,7 @@ const CustomXAxisTick = ({
   secondaryLabelMap,
   theme,
   tickWidth,
-  tickCount,
+  lastVisibleTickIndex,
   chartName,
   onHeightCalculated,
 }: {
@@ -208,7 +208,7 @@ const CustomXAxisTick = ({
   secondaryLabelMap?: SecondaryLabelMap;
   theme: ReturnType<typeof useTheme>['theme'];
   tickWidth?: number;
-  tickCount: number;
+  lastVisibleTickIndex: number;
   chartName?: string;
   onHeightCalculated?: (height: number) => void;
 }): JSX.Element => {
@@ -219,7 +219,7 @@ const CustomXAxisTick = ({
   // For line/area charts, align first tick left and last tick right to prevent clipping
   const shouldUseEdgeAlignment = chartName === 'line' || chartName === 'area';
   const isFirstTick = shouldUseEdgeAlignment && payload.index === 0;
-  const isLastTick = shouldUseEdgeAlignment && payload.index === tickCount - 1;
+  const isLastTick = shouldUseEdgeAlignment && payload.index === lastVisibleTickIndex;
 
   const getTextAnchor = (): 'start' | 'middle' | 'end' => {
     if (isFirstTick) return 'start';
@@ -293,7 +293,21 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
   const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
 
   // Calculate tick count from dataLength
-  const tickCount = dataLength ?? 1;
+  const totalTickCount = dataLength ?? 1;
+
+  // Calculate visible tick count based on interval
+  // When interval is a number: 0 = show all, 1 = every 2nd, 2 = every 3rd, etc.
+  const visibleTickCount =
+    typeof interval === 'number' ? Math.ceil(totalTickCount / (interval + 1)) : totalTickCount; // For string intervals like 'preserveStart', use total as fallback
+
+  // Calculate the last visible tick index for edge alignment
+  // With interval=0: indices 0,1,2,...,n-1 (last = n-1)
+  // With interval=1: indices 0,2,4,... (last = largest even <= n-1)
+  // With interval=2: indices 0,3,6,... (last = largest multiple of 3 <= n-1)
+  const lastVisibleTickIndex =
+    typeof interval === 'number'
+      ? Math.floor((totalTickCount - 1) / (interval + 1)) * (interval + 1)
+      : totalTickCount - 1;
 
   // State to track the maximum tick height reported by CustomXAxisTick components
   const minHeight = secondaryLabelMap ? 20 : 10;
@@ -318,7 +332,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
     <RechartsXAxis
       {...restProps}
       height={baseHeight || height}
-      interval={interval} // Show all labels - we handle wrapping to prevent overlaps
+      interval={interval}
       tick={(tickProps: {
         x: number;
         y: number;
@@ -326,7 +340,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
         width: number;
       }) => {
         // Calculate available width per tick from the total chart width
-        const tickWidth = tickProps.width / tickCount;
+        const tickWidth = tickProps.width / visibleTickCount;
         return (
           <CustomXAxisTick
             x={tickProps.x}
@@ -335,7 +349,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
             secondaryLabelMap={secondaryLabelMap}
             theme={theme}
             tickWidth={tickWidth}
-            tickCount={tickCount}
+            lastVisibleTickIndex={lastVisibleTickIndex}
             chartName={chartName}
             onHeightCalculated={handleHeightCalculated}
           />
