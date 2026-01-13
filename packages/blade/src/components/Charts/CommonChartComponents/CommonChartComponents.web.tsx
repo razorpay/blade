@@ -201,6 +201,7 @@ const CustomXAxisTick = ({
   chartName,
   onHeightCalculated,
   lastTick,
+  tickFormatter,
 }: {
   x: number;
   y: number;
@@ -211,6 +212,7 @@ const CustomXAxisTick = ({
   chartName?: string;
   onHeightCalculated?: (height: number) => void;
   lastTick: number;
+  tickFormatter?: (value: string, index: number) => string;
 }): JSX.Element => {
   const fontSize = theme.typography.fonts.size[75];
   const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
@@ -241,10 +243,15 @@ const CustomXAxisTick = ({
     letterSpacing: theme.typography.letterSpacings[100],
   } as const;
 
+  // Apply tickFormatter if provided, otherwise use raw value
+  const displayValue = tickFormatter
+    ? tickFormatter(payload.value, payload.index)
+    : String(payload.value);
+
   // Primary label
   const primaryLabel = wrappedTextLabel({
     ...textStyleProps,
-    text: String(payload.value),
+    text: displayValue,
   });
 
   // Secondary label from pre-computed map
@@ -285,6 +292,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
   label,
   dataKey,
   height,
+  tickFormatter,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -345,6 +353,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
             lastTick={lastTick}
             chartName={chartName}
             onHeightCalculated={handleHeightCalculated}
+            tickFormatter={tickFormatter}
           />
         );
       }}
