@@ -87,25 +87,25 @@
 
 <Story name="Spinner Colors" asChild>
   <div class='display-flex gap-spacing-4 items-center flex-wrap'>
-    <div class="display-flex flex-col gap-spacing-2">
+    <div class="display-flex flex-col items-center   gap-spacing-2">
       <Spinner size="medium" color="neutral" accessibilityLabel="Neutral spinner" />
-      <Text>Neutral</Text>
+      <Text size="small" weight='regular' color="surface.text.gray.muted">Neutral</Text>
     </div>
-    <div class="display-flex flex-col gap-spacing-2">
+    <div class="display-flex flex-col items-center gap-spacing-2">
       <Spinner size="medium" color="primary" accessibilityLabel="Primary spinner" />
-      <Text color='surface.text.primary.normal'>Primary</Text>
+      <Text size="small" weight='regular' color='surface.text.primary.normal'>Primary</Text>
     </div>
-    <div class="display-flex flex-col gap-spacing-2">
+    <div class="display-flex flex-col items-center gap-spacing-2">
       <Spinner size="medium" color="positive" accessibilityLabel="Positive spinner" />
-      <Text color='feedback.text.positive.intense'>Positive</Text>
+      <Text size="small" weight='regular' color='feedback.text.positive.intense'>Positive</Text>
     </div>
-    <div class="display-flex flex-col gap-spacing-2">
+    <div class="display-flex flex-col items-center gap-spacing-2">
       <Spinner size="medium" color="negative" accessibilityLabel="Negative spinner" />
-      <Text color='feedback.text.negative.intense'>Negative</Text>
+      <Text size="small" weight='regular' color='feedback.text.negative.intense'>Negative</Text>
     </div>
-    <div class="display-flex flex-col gap-spacing-2" style="background: #333; padding: 1rem; border-radius: 4px;">
+    <div class="display-flex flex-col items-center gap-spacing-2" style="background: #333; padding: 1rem; border-radius: 4px;">
       <Spinner size="medium" color="white" accessibilityLabel="White spinner" />
-      <Text color='surface.text.staticWhite.normal'>White</Text>
+      <Text size="small" weight='regular' color='surface.text.staticWhite.normal'>White</Text>
     </div>
   </div>
 </Story>
