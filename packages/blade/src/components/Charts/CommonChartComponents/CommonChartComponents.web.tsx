@@ -198,9 +198,9 @@ const CustomXAxisTick = ({
   secondaryLabelMap,
   theme,
   tickWidth,
-  tickCount,
   chartName,
   onHeightCalculated,
+  lastTick,
 }: {
   x: number;
   y: number;
@@ -208,9 +208,9 @@ const CustomXAxisTick = ({
   secondaryLabelMap?: SecondaryLabelMap;
   theme: ReturnType<typeof useTheme>['theme'];
   tickWidth?: number;
-  tickCount: number;
   chartName?: string;
   onHeightCalculated?: (height: number) => void;
+  lastTick: number;
 }): JSX.Element => {
   const fontSize = theme.typography.fonts.size[75];
   const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
@@ -219,7 +219,7 @@ const CustomXAxisTick = ({
   // For line/area charts, align first tick left and last tick right to prevent clipping
   const shouldUseEdgeAlignment = chartName === 'line' || chartName === 'area';
   const isFirstTick = shouldUseEdgeAlignment && payload.index === 0;
-  const isLastTick = shouldUseEdgeAlignment && payload.index === tickCount - 1;
+  const isLastTick = shouldUseEdgeAlignment && payload.index === lastTick;
 
   const getTextAnchor = (): 'start' | 'middle' | 'end' => {
     if (isFirstTick) return 'start';
@@ -279,14 +279,28 @@ const CustomXAxisTick = ({
   );
 };
 
-const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
+const _ChartXAxis: React.FC<ChartXAxisProps> = ({
+  interval = 0,
+  tickLine = false,
+  label,
+  dataKey,
+  height,
+  ...props
+}) => {
   const { theme } = useTheme();
   const { secondaryLabelMap, chartName, dataLength } = useCommonChartComponentsContext();
   // We don't want to pass secondaryDataKey to recharts
   const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
 
   // Calculate tick count from dataLength
-  const tickCount = dataLength ?? 1;
+  const totalTickCount = dataLength ?? 1;
+
+  // Calculate visible tick count based on interval
+  // When interval is a number: 0 = show all, 1 = every 2nd, 2 = every 3rd, etc.
+  const visibleTickCount =
+    typeof interval === 'number' ? Math.ceil(totalTickCount / (interval + 1)) : totalTickCount; // For string intervals like 'preserveStart', use total as fallback
+
+  const lastTick = totalTickCount - 1;
 
   // State to track the maximum tick height reported by CustomXAxisTick components
   const minHeight = secondaryLabelMap ? 20 : 10;
@@ -300,7 +314,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   // Calculate total axis height:
   // - Tick labels height (dynamic)
   // - X-axis label height + offset (if label prop is present)
-  const hasAxisLabel = Boolean(props?.label);
+  const hasAxisLabel = Boolean(label);
   const axisLabelSpace = hasAxisLabel ? X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT : 0;
   const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
 
@@ -310,8 +324,8 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   return (
     <RechartsXAxis
       {...restProps}
-      height={baseHeight}
-      interval={0} // Show all labels - we handle wrapping to prevent overlaps
+      height={baseHeight || height}
+      interval={interval}
       tick={(tickProps: {
         x: number;
         y: number;
@@ -319,7 +333,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
         width: number;
       }) => {
         // Calculate available width per tick from the total chart width
-        const tickWidth = tickProps.width / tickCount;
+        const tickWidth = tickProps.width / visibleTickCount;
         return (
           <CustomXAxisTick
             x={tickProps.x}
@@ -328,13 +342,13 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
             secondaryLabelMap={secondaryLabelMap}
             theme={theme}
             tickWidth={tickWidth}
-            tickCount={tickCount}
+            lastTick={lastTick}
             chartName={chartName}
             onHeightCalculated={handleHeightCalculated}
           />
         );
       }}
-      tickLine={false}
+      tickLine={tickLine}
       stroke={theme.colors.surface.border.gray.muted}
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
@@ -347,10 +361,10 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
           fontWeight={theme.typography.fonts.weight.regular}
           letterSpacing={theme.typography.letterSpacings[100]}
         >
-          {props?.label}
+          {label}
         </text>
       )}
-      dataKey={props?.dataKey}
+      dataKey={dataKey}
     />
   );
 };

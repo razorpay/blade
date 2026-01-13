@@ -952,6 +952,68 @@ export const LineChartWithControlledSelection: StoryFn<typeof ChartLine> = () =>
 export const LineChartWithLegendClickCallback: StoryFn<typeof ChartLine> = () => {
   const theme = useTheme();
   const [lastClicked, setLastClicked] = React.useState<string | null>(null);
+  const dummyData = [
+    {
+      timestamp: 1767292200,
+      date: 'Jan 2',
+      AOV: 2172,
+    },
+    {
+      timestamp: 1767378600,
+      date: 'Jan 3',
+      AOV: 2872,
+    },
+    {
+      timestamp: 1767465000,
+      date: 'Jan 4',
+      AOV: 2611,
+    },
+    {
+      timestamp: 1767551400,
+      date: 'Jan 5',
+      AOV: 3742,
+    },
+    {
+      timestamp: 1767637800,
+      date: 'Jan 6',
+      AOV: 3926,
+    },
+    {
+      timestamp: 1767724200,
+      date: 'Jan 7',
+      AOV: 2232,
+    },
+    {
+      timestamp: 1767810600,
+      date: 'Jan 8',
+      AOV: 3231,
+    },
+    {
+      timestamp: 1767897000,
+      date: 'Jan 9',
+      AOV: 3645,
+    },
+    {
+      timestamp: 1767983400,
+      date: 'Jan 10',
+      AOV: 2941,
+    },
+    {
+      timestamp: 1768069800,
+      date: 'Jan 11',
+      AOV: 2071,
+    },
+    {
+      timestamp: 1768156200,
+      date: 'Jan 12',
+      AOV: 3089,
+    },
+    {
+      timestamp: 1768242600,
+      date: 'Jan 13',
+      AOV: 3267,
+    },
+  ];
 
   return (
     <ChartsWrapper>
@@ -961,9 +1023,9 @@ export const LineChartWithLegendClickCallback: StoryFn<typeof ChartLine> = () =>
         </Box>
 
         <Box width="100%" height="400px">
-          <ChartLineWrapper data={regionalSalesData} colorTheme="categorical">
-            <ChartXAxis dataKey="month" label="Month" />
-            <ChartYAxis label="Sales ($)" />
+          <ChartLineWrapper data={dummyData} colorTheme="categorical">
+            <ChartXAxis dataKey="date" interval={2} />
+            <ChartYAxis />
             <ChartTooltip
               cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
             />
@@ -974,10 +1036,8 @@ export const LineChartWithLegendClickCallback: StoryFn<typeof ChartLine> = () =>
                 setLastClicked(`${dataKey} (${isSelected ? 'selected' : 'deselected'})`);
               }}
             />
-            <ChartLine dataKey="northAmerica" name="North America" />
-            <ChartLine dataKey="southAmerica" name="South America" />
-            <ChartLine dataKey="europe" name="Europe" />
-            <ChartLine dataKey="asia" name="Asia" />
+            <ChartLine dataKey="AOV" name="AOV" />
+
             <ChartCartesianGrid />
           </ChartLineWrapper>
         </Box>
