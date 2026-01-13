@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   AreaChart as RechartsAreaChart,
   Area as RechartsArea,
@@ -37,6 +37,7 @@ const Area: React.FC<ChartAreaProps> = ({
   _totalAreas,
   dataKey,
   name,
+  hide,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -69,6 +70,7 @@ const Area: React.FC<ChartAreaProps> = ({
       activeDot={activeDot}
       animationBegin={animationBegin}
       animationDuration={animationDuration}
+      hide={hide}
     />
   );
 };
@@ -118,12 +120,16 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     colorTheme,
     chartName: 'area',
   });
+
+  // State to track which areas are currently selected (visible)
+  const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
+
   const {
     modifiedChildren,
     totalAreaChartChildren,
     dataColorMapping,
     secondaryDataKey,
-  } = React.useMemo(() => {
+  } = useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
 
@@ -160,10 +166,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
             isCustomColor: Boolean(childColor),
           };
         }
+        // Pass hide prop based on whether this area's dataKey is NOT in selectedDataKeys
+        // If selectedDataKeys is undefined, show all areas (default behavior)
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,
           _totalAreas: totalAreas,
+          hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartAreaProps>);
       }
       return child;
@@ -176,7 +185,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       dataColorMapping,
       secondaryDataKey,
     };
-  }, [children, colorTheme, themeColors]);
+  }, [children, colorTheme, themeColors, selectedDataKeys]);
 
   // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
   const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
@@ -190,7 +199,14 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
 
   return (
     <CommonChartComponentsContext.Provider
-      value={{ chartName: 'area', dataColorMapping, secondaryLabelMap, dataLength: data?.length }}
+      value={{
+        chartName: 'area',
+        dataColorMapping,
+        secondaryLabelMap,
+        dataLength: data?.length,
+        selectedDataKeys,
+        setSelectedDataKeys,
+      }}
     >
       <BaseBox
         {...metaAttribute({ name: 'chart-area-container', testID })}

@@ -585,7 +585,8 @@ const CustomSquareLegend = (props: {
     (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
   );
   const isVerticalLayout = layout === 'vertical';
-  const isClickable = chartName === 'line';
+  const isClickable =
+    chartName === 'line' || chartName === 'area' || chartName === 'bar';
 
   return (
     <Box
