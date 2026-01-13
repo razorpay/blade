@@ -279,7 +279,7 @@ const CustomXAxisTick = ({
   );
 };
 
-const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
+const _ChartXAxis: React.FC<ChartXAxisProps> = ({ interval = 0, tickLine = false, label, dataKey, ...props }) => {
   const { theme } = useTheme();
   const { secondaryLabelMap, chartName, dataLength } = useCommonChartComponentsContext();
   // We don't want to pass secondaryDataKey to recharts
@@ -300,7 +300,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
   // Calculate total axis height:
   // - Tick labels height (dynamic)
   // - X-axis label height + offset (if label prop is present)
-  const hasAxisLabel = Boolean(props?.label);
+  const hasAxisLabel = Boolean(label);
   const axisLabelSpace = hasAxisLabel ? X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT : 0;
   const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
 
@@ -311,7 +311,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
     <RechartsXAxis
       {...restProps}
       height={baseHeight}
-      interval={0} // Show all labels - we handle wrapping to prevent overlaps
+      interval={interval} // Show all labels - we handle wrapping to prevent overlaps
       tick={(tickProps: {
         x: number;
         y: number;
@@ -334,7 +334,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
           />
         );
       }}
-      tickLine={false}
+      tickLine={tickLine}
       stroke={theme.colors.surface.border.gray.muted}
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
@@ -347,10 +347,10 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
           fontWeight={theme.typography.fonts.weight.regular}
           letterSpacing={theme.typography.letterSpacings[100]}
         >
-          {props?.label}
+          {label}
         </text>
       )}
-      dataKey={props?.dataKey}
+      dataKey={dataKey}
     />
   );
 };

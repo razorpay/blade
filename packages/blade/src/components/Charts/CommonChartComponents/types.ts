@@ -28,7 +28,10 @@ type ChartReferenceLineProps = {
   label: string;
 };
 
-type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
+type ChartXAxisProps = Omit<
+  RechartsXAxisProps,
+  'tick' | 'label' | 'dataKey' | 'stroke' | 'height'
+> & {
   /**
    * The label of the x-axis.
    */
@@ -51,6 +54,19 @@ type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | '
    * //  2024       2024
    */
   secondaryDataKey?: string;
+  /**
+   * The interval of the x-axis.
+   * @default: 0
+   * @example
+   * // Data: [{ date: 'Jan', year: '2024' }, { date: 'Feb', year: '2024' }]
+   * <ChartXAxis dataKey="date" interval={1} />
+   * // Renders:
+   * //   Jan
+   * //   Feb
+   *
+   * note: if you can't  see all labels in case of large labels. try setting interval 0
+   */
+  interval?: number;
 };
 type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
