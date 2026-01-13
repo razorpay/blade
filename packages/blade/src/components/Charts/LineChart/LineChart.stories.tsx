@@ -1087,7 +1087,7 @@ export const LineChartWithCustomTickFormatter: StoryFn<typeof ChartLine> = () =>
           <ChartXAxis
             dataKey="timestamp"
             label="Date"
-            tickFormatter={(value: string, index: number) => formatTimestamp(Number(value))}
+            tickFormatter={(value: string) => formatTimestamp(Number(value))}
           />
           <ChartYAxis label="Sales ($)" />
           <ChartTooltip />
