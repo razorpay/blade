@@ -198,9 +198,9 @@ const CustomXAxisTick = ({
   secondaryLabelMap,
   theme,
   tickWidth,
-  lastVisibleTickIndex,
   chartName,
   onHeightCalculated,
+  lastTick,
 }: {
   x: number;
   y: number;
@@ -208,9 +208,9 @@ const CustomXAxisTick = ({
   secondaryLabelMap?: SecondaryLabelMap;
   theme: ReturnType<typeof useTheme>['theme'];
   tickWidth?: number;
-  lastVisibleTickIndex: number;
   chartName?: string;
   onHeightCalculated?: (height: number) => void;
+  lastTick: number;
 }): JSX.Element => {
   const fontSize = theme.typography.fonts.size[75];
   const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
@@ -219,7 +219,7 @@ const CustomXAxisTick = ({
   // For line/area charts, align first tick left and last tick right to prevent clipping
   const shouldUseEdgeAlignment = chartName === 'line' || chartName === 'area';
   const isFirstTick = shouldUseEdgeAlignment && payload.index === 0;
-  const isLastTick = shouldUseEdgeAlignment && payload.index === lastVisibleTickIndex;
+  const isLastTick = shouldUseEdgeAlignment && payload.index === lastTick;
 
   const getTextAnchor = (): 'start' | 'middle' | 'end' => {
     if (isFirstTick) return 'start';
@@ -300,14 +300,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
   const visibleTickCount =
     typeof interval === 'number' ? Math.ceil(totalTickCount / (interval + 1)) : totalTickCount; // For string intervals like 'preserveStart', use total as fallback
 
-  // Calculate the last visible tick index for edge alignment
-  // With interval=0: indices 0,1,2,...,n-1 (last = n-1)
-  // With interval=1: indices 0,2,4,... (last = largest even <= n-1)
-  // With interval=2: indices 0,3,6,... (last = largest multiple of 3 <= n-1)
-  const lastVisibleTickIndex =
-    typeof interval === 'number'
-      ? Math.floor((totalTickCount - 1) / (interval + 1)) * (interval + 1)
-      : totalTickCount - 1;
+  const lastTick = totalTickCount - 1;
 
   // State to track the maximum tick height reported by CustomXAxisTick components
   const minHeight = secondaryLabelMap ? 20 : 10;
@@ -349,7 +342,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
             secondaryLabelMap={secondaryLabelMap}
             theme={theme}
             tickWidth={tickWidth}
-            lastVisibleTickIndex={lastVisibleTickIndex}
+            lastTick={lastTick}
             chartName={chartName}
             onHeightCalculated={handleHeightCalculated}
           />
