@@ -279,7 +279,14 @@ const CustomXAxisTick = ({
   );
 };
 
-const _ChartXAxis: React.FC<ChartXAxisProps> = ({ interval = 0, tickLine = false, label, dataKey, ...props }) => {
+const _ChartXAxis: React.FC<ChartXAxisProps> = ({
+  interval = 0,
+  tickLine = false,
+  label,
+  dataKey,
+  height,
+  ...props
+}) => {
   const { theme } = useTheme();
   const { secondaryLabelMap, chartName, dataLength } = useCommonChartComponentsContext();
   // We don't want to pass secondaryDataKey to recharts
@@ -310,7 +317,7 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({ interval = 0, tickLine = false
   return (
     <RechartsXAxis
       {...restProps}
-      height={baseHeight}
+      height={baseHeight || height}
       interval={interval} // Show all labels - we handle wrapping to prevent overlaps
       tick={(tickProps: {
         x: number;

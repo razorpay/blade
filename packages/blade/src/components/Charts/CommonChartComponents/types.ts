@@ -28,10 +28,7 @@ type ChartReferenceLineProps = {
   label: string;
 };
 
-type ChartXAxisProps = Omit<
-  RechartsXAxisProps,
-  'tick' | 'label' | 'dataKey' | 'stroke' | 'height'
-> & {
+type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
    * The label of the x-axis.
    */
