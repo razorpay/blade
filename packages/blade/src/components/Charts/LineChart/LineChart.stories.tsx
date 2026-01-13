@@ -1062,9 +1062,6 @@ LineChartWithLegendClickCallback.parameters = {
   controls: { disable: true },
 };
 
-
-
-
 // Data for custom tick formatter example
 const timestampData = [
   { timestamp: 1704067200000, sales: 4500 }, // Jan 1, 2024
@@ -1090,7 +1087,7 @@ export const LineChartWithCustomTickFormatter: StoryFn<typeof ChartLine> = () =>
           <ChartXAxis
             dataKey="timestamp"
             label="Date"
-            tickFormatter={(value: number, index: number) => formatTimestamp(value)}
+            tickFormatter={(value: string, index: number) => formatTimestamp(Number(value))}
           />
           <ChartYAxis label="Sales ($)" />
           <ChartTooltip />
@@ -1144,7 +1141,6 @@ export const LineChartWithCurrencyFormatter: StoryFn<typeof ChartLine> = () => {
 LineChartWithCurrencyFormatter.parameters = {
   controls: { disable: true },
 };
-
 
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
