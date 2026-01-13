@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.70.1
+
+### Patch Changes
+
+- 1005547fa: blade(fix): allow users to modify interval and other props
+
 ## 12.70.0
 
 ### Minor Changes
