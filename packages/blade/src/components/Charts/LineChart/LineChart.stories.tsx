@@ -1062,6 +1062,90 @@ LineChartWithLegendClickCallback.parameters = {
   controls: { disable: true },
 };
 
+
+
+
+// Data for custom tick formatter example
+const timestampData = [
+  { timestamp: 1704067200000, sales: 4500 }, // Jan 1, 2024
+  { timestamp: 1704153600000, sales: 5200 }, // Jan 2, 2024
+  { timestamp: 1704240000000, sales: 4800 }, // Jan 3, 2024
+  { timestamp: 1704326400000, sales: 6100 }, // Jan 4, 2024
+  { timestamp: 1704412800000, sales: 5800 }, // Jan 5, 2024
+  { timestamp: 1704499200000, sales: 6500 }, // Jan 6, 2024
+];
+
+// Line Chart with Custom X-Axis Tick Formatter
+export const LineChartWithCustomTickFormatter: StoryFn<typeof ChartLine> = () => {
+  // Custom formatter to convert timestamp to readable date
+  const formatTimestamp = (timestamp: number): string => {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  };
+
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={timestampData} colorTheme="categorical">
+          <ChartXAxis
+            dataKey="timestamp"
+            label="Date"
+            tickFormatter={(value: number, index: number) => formatTimestamp(value)}
+          />
+          <ChartYAxis label="Sales ($)" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="sales" name="Daily Sales" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithCustomTickFormatter.parameters = {
+  controls: { disable: true },
+};
+
+// Data for currency formatter example
+const revenueData = [
+  { month: 'Jan', revenue: 125000 },
+  { month: 'Feb', revenue: 98500 },
+  { month: 'Mar', revenue: 145200 },
+  { month: 'Apr', revenue: 178900 },
+  { month: 'May', revenue: 156700 },
+  { month: 'Jun', revenue: 192400 },
+];
+
+// Line Chart with Custom Y-Axis Tick Formatter (Currency)
+export const LineChartWithCurrencyFormatter: StoryFn<typeof ChartLine> = () => {
+  // Custom formatter to display values in K format with currency
+  const formatCurrency = (value: number): string => {
+    if (value >= 1000) {
+      return `$${(value / 1000).toFixed(0)}K`;
+    }
+    return `$${value}`;
+  };
+
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={revenueData} colorTheme="categorical">
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis label="Revenue" tickFormatter={formatCurrency} />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="revenue" name="Monthly Revenue" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithCurrencyFormatter.parameters = {
+  controls: { disable: true },
+};
+
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
