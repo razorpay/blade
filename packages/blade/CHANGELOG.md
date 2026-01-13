@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.71.0
+
+### Minor Changes
+
+- b6c2e2563: feat(blade): expose tick formatter
+
 ## 12.70.1
 
 ### Patch Changes
