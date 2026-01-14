@@ -1,7 +1,6 @@
 {
   "name": "blade-coverage-extension",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.3.0",
   "dependencies": {
     "@fontsource/lato": "^4.5.10",
     "@razorpay/blade": "^11.18.0",
@@ -31,7 +30,8 @@
     "copy:assets": "cp -r build/ chrome-extension",
     "copy:extensionAssets": "cp manifest.json chrome-extension && node scripts/build-background-script.js",
     "copy": "yarn run copy:assets && yarn run copy:extensionAssets",
-    "postbuild": "yarn run clean && yarn run mkdirs && yarn run copy"
+    "postbuild": "yarn run clean && yarn run mkdirs && yarn run copy",
+    "version": "node scripts/sync-version.js"
   },
   "eslintConfig": {
     "extends": [

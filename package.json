@@ -10,7 +10,8 @@
     "packages": [
       "packages/blade",
       "packages/eslint-plugin-blade",
-      "packages/blade-mcp"
+      "packages/blade-mcp",
+      "packages/blade-coverage-extension"
     ],
     "nohoist": [
       "**"

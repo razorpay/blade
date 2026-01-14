@@ -1,0 +1,96 @@
+name: Chrome Extension Release
+on:
+  workflow_run:
+    workflows: ['Blade Release']
+    types: [completed]
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      force_publish:
+        description: 'Force publish even if version unchanged'
+        required: false
+        default: 'false'
+        type: boolean
+jobs:
+  publish-chrome-extension:
+    name: Publish Chrome Extension
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Get current extension version
+        id: get_version
+        working-directory: packages/blade-coverage-extension
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $VERSION"
+      - name: Check if version was published
+        id: check_published
+        run: |
+          if git tag | grep -q "^blade-coverage-extension@${{ steps.get_version.outputs.version }}$"; then
+            echo "should_publish=false" >> $GITHUB_OUTPUT
+          else
+            echo "should_publish=true" >> $GITHUB_OUTPUT
+          fi
+      - name: Install dependencies
+        if: steps.check_published.outputs.should_publish == 'true' || github.event.inputs.force_publish == 'true'
+        working-directory: packages/blade-coverage-extension
+        run: yarn install --frozen-lockfile
+      - name: Build extension
+        if: steps.check_published.outputs.should_publish == 'true' || github.event.inputs.force_publish == 'true'
+        working-directory: packages/blade-coverage-extension
+        run: yarn build
+      - name: Create extension zip
+        if: steps.check_published.outputs.should_publish == 'true' || github.event.inputs.force_publish == 'true'
+        working-directory: packages/blade-coverage-extension
+        run: |
+          cd chrome-extension
+          zip -r ../blade-coverage-extension-${{ steps.get_version.outputs.version }}.zip .
+      - name: Upload to Chrome Web Store
+        if: steps.check_published.outputs.should_publish == 'true' || github.event.inputs.force_publish == 'true'
+        working-directory: packages/blade-coverage-extension
+        env:
+          CLIENT_ID: ${{ secrets.CHROME_WEB_STORE_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_WEB_STORE_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_WEB_STORE_REFRESH_TOKEN }}
+        run: |
+          npx chrome-webstore-upload-cli upload \
+            --source blade-coverage-extension-${{ steps.get_version.outputs.version }}.zip \
+            --extension-id lfipofiiklamkmfhojeinhkdcihpkmck \
+            --client-id $CLIENT_ID \
+            --client-secret $CLIENT_SECRET \
+            --refresh-token $REFRESH_TOKEN
+      - name: Publish to Chrome Web Store
+        if: steps.check_published.outputs.should_publish == 'true' || github.event.inputs.force_publish == 'true'
+        working-directory: packages/blade-coverage-extension
+        env:
+          CLIENT_ID: ${{ secrets.CHROME_WEB_STORE_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_WEB_STORE_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_WEB_STORE_REFRESH_TOKEN }}
+        run: |
+          npx chrome-webstore-upload-cli publish \
+            --extension-id lfipofiiklamkmfhojeinhkdcihpkmck \
+            --client-id $CLIENT_ID \
+            --client-secret $CLIENT_SECRET \
+            --refresh-token $REFRESH_TOKEN
+      - name: Create git tag
+        if: steps.check_published.outputs.should_publish == 'true' || github.event.inputs.force_publish == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "blade-coverage-extension@${{ steps.get_version.outputs.version }}"
+          git push origin "blade-coverage-extension@${{ steps.get_version.outputs.version }}"
+      - name: Upload artifact
+        if: steps.check_published.outputs.should_publish == 'true' || github.event.inputs.force_publish == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: blade-coverage-extension-${{ steps.get_version.outputs.version }}
+          path: packages/blade-coverage-extension/blade-coverage-extension-${{ steps.get_version.outputs.version }}.zip
