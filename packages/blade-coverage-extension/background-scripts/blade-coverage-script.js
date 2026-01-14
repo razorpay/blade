@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
-const calculateBladeCoverage = (shouldHighlightNodes) => {
+const calculateBladeCoverage = (shouldHighlightNodes, includeNavbars = true) => {
   const bladeElementExceptions = [
     // table library adds a div internally which we want to skip
-    '[data-blade-component="table-cell"] > div', 
-    '[data-blade-component="table-header-cell"] > div', 
-    '[data-blade-component="table-footer-cell"] > div'
+    '[data-blade-component="table-cell"] > div',
+    '[data-blade-component="table-header-cell"] > div',
+    '[data-blade-component="table-footer-cell"] > div',
   ];
 
   /**
@@ -43,6 +43,46 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
     return mediaTags.includes(element.tagName.toLowerCase());
   };
 
+  /**
+   * Checks if element is inside sidenav or topnav
+   */
+  const isInsideNavElement = (element) => {
+    const SIDENAV_NAME = 'sidenav';
+    const TOPNAV_NAME = 'top-nav';
+    const currentBladeComponent = element.getAttribute('data-blade-component');
+    if (currentBladeComponent === SIDENAV_NAME || currentBladeComponent === TOPNAV_NAME) {
+      return true;
+    }
+
+    if (
+      element.closest(`[data-blade-component=${SIDENAV_NAME}]`) ||
+      element.closest(`[data-blade-component=${TOPNAV_NAME}]`)
+    ) {
+      return true;
+    }
+
+    return false;
+  };
+
+  /**
+   * Checks if element should be ignored for design consistency calculations
+   */
+  const shouldIgnoreElement = (element) => {
+    // Ignore everything that is inside nav
+    if (isInsideNavElement(element)) {
+      return true;
+    }
+
+    // Ignore Box component
+    const componentsToIgnore = ['box'];
+    const currentBladeComponent = element.getAttribute('data-blade-component');
+    if (currentBladeComponent && componentsToIgnore.includes(currentBladeComponent)) {
+      return true;
+    }
+
+    return false;
+  };
+
   const allDomElements = document.querySelectorAll('body *');
 
   const bladeNodeElements = [];
@@ -58,6 +98,10 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
     const closestSvgNode = elm.closest('svg');
     // if this is a blade icon then add it
     if (elm.tagName.toLocaleLowerCase() === 'svg' && elm.hasAttribute('data-blade-component')) {
+      // Skip if includeNavbars is false and element should be ignored
+      if (!includeNavbars && shouldIgnoreElement(elm)) {
+        return;
+      }
       bladeNodeElements.push(elm);
       totalNodeElements.push(elm);
       return;
@@ -75,6 +119,11 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
       return;
     }
 
+    // Skip if includeNavbars is false and element should be ignored
+    if (!includeNavbars && shouldIgnoreElement(elm)) {
+      return;
+    }
+
     totalNodeElements.push(elm);
 
     // If element has data-blade-component add it
@@ -87,7 +136,9 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
 
   const totalNodes = totalNodeElements.length;
   const bladeNodes = bladeNodeElements.length;
+
   let bladeCoverage = Number(((bladeNodes / totalNodes) * 100).toFixed(2));
+
   // NaN guard
   if (totalNodes === 0) {
     bladeCoverage = 0;
