@@ -211,5 +211,6 @@ module.exports = {
       },
     },
   ],
-  ignorePatterns: ['packages/blade-coverage-extension'],
+  // blade-mcp has its own standalone .eslintrc.cjs to avoid memory issues
+  ignorePatterns: ['packages/blade-coverage-extension', 'packages/blade-mcp'],
 };

@@ -196,6 +196,22 @@
 .flex-wrap-wrap { flex-wrap: wrap; }
 .flex-wrap-wrap-reverse { flex-wrap: wrap-reverse; }
 
+/* Flexbox - Align Items */
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+.items-baseline { align-items: baseline; }
+.items-stretch { align-items: stretch; }
+
+/* Flexbox - Justify Content */
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-evenly { justify-content: space-evenly; }
+.justify-stretch { justify-content: stretch; }
+
 /* Line Clamp Utilities */
 .line-clamp-1 {
   overflow: hidden;

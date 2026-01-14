@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 function debounce(func: (...args: any[]) => void, wait: number): (...args: any[]) => void {
-  let timeoutId: NodeJS.Timeout | null;
+  let timeoutId: ReturnType<typeof setTimeout> | null;
 
   function wrapper(...args: any[]) {
     if (timeoutId) {

@@ -40,6 +40,8 @@ jobs:
         run: yarn lint:blade-core
       - name: Lint Blade Svelte
         run: yarn lint:blade-svelte
+      - name: Lint Blade MCP
+        run: yarn lint:blade-mcp
       - name: Lint ESLint Plugin
         run: yarn lint:eslint-plugin
       - name: Lint Stylelint

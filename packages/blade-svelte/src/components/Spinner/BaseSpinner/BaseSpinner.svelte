@@ -67,7 +67,7 @@
 
   // Container classes for label positioning
   const containerClasses = $derived(() => {
-    const baseClasses = [utilityClasses['display-flex'], utilityClasses['align-items-center']];
+    const baseClasses = [utilityClasses['display-flex'], utilityClasses['items-center']];
     if (labelPosition === 'bottom') {
       baseClasses.push(utilityClasses['flex-direction-column']);
     }
