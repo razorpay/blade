@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
   XAxis as RechartsXAxis,
   YAxis as RechartsYAxis,
@@ -23,14 +24,19 @@ import type {
   Layout,
   ChartColorToken,
   DataColorMapping,
+  SecondaryLabelMap,
 } from './types';
 import {
   RECT_HEIGHT,
   TEXT_BASELINE,
   PADDING_VERTICAL,
   PADDING_HORIZONTAL,
-  X_AXIS_TEXT_BASELINE,
-  Y_OFFSET,
+  X_AXIS_TICK_LINE_HEIGHT,
+  X_AXIS_TICK_START_DY,
+  X_AXIS_LABEL_GAP,
+  X_AXIS_LABEL_OFFSET,
+  X_AXIS_LABEL_HEIGHT,
+  LEGEND_MARGIN_TOP,
   X_OFFSET,
   componentId,
 } from './tokens';
@@ -41,6 +47,7 @@ import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
+import { useControllableState } from '~utils/useControllable';
 
 /**
  * Helper function to get the appropriate color for chart elements (tooltip, legend)
@@ -86,25 +93,276 @@ const getChartColor = (
   });
 };
 
-const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
+/**
+ * Wraps text to fit within a given pixel width, breaking at word boundaries.
+ * Returns an array of lines that each fit within the max width.
+ */
+const wrapTextToFit = (text: string, maxWidthPx: number, fontSize: number): string[] => {
+  // Approximate average character width (varies by font, but ~0.5-0.6 of font size is common)
+  const avgCharWidth = fontSize * 0.55;
+  const maxCharsPerLine = Math.max(1, Math.floor(maxWidthPx / avgCharWidth));
+
+  // If text fits in one line, return as-is
+  if (text.length <= maxCharsPerLine) {
+    return [text];
+  }
+
+  const words = text.split(' ');
+  const lines: string[] = [];
+  let currentLine = '';
+
+  for (const word of words) {
+    if (currentLine.length === 0) {
+      currentLine = word;
+    } else if (currentLine.length + 1 + word.length <= maxCharsPerLine) {
+      currentLine += ` ${word}`;
+    } else {
+      lines.push(currentLine);
+      currentLine = word;
+    }
+  }
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine);
+  }
+
+  return lines;
+};
+
+/**
+ * Reusable component for rendering wrapped text labels in SVG.
+ * Handles multi-line text rendering with configurable positioning.
+ */
+const wrappedTextLabel = ({
+  text,
+  maxWidth,
+  fontSize,
+  lineHeight,
+  startDy,
+  textAnchor,
+  fill,
+  fontFamily,
+  fontWeight,
+  letterSpacing,
+  yOffset = 0,
+}: {
+  text: string;
+  maxWidth: number;
+  fontSize: number;
+  lineHeight: number;
+  startDy: number;
+  textAnchor: 'start' | 'middle' | 'end';
+  fill: string;
+  fontFamily: string;
+  fontWeight: number;
+  letterSpacing: number;
+  yOffset?: number;
+}): { element: JSX.Element; height: number } => {
+  const lines = wrapTextToFit(text, maxWidth, fontSize);
+  const totalHeight = lines.length * lineHeight;
+
+  const element = (
+    <text
+      x={0}
+      y={yOffset}
+      textAnchor={textAnchor}
+      fill={fill}
+      fontSize={fontSize}
+      fontFamily={fontFamily}
+      fontWeight={fontWeight}
+      style={{ letterSpacing }}
+    >
+      {lines.map((line, index) => (
+        <tspan key={index} x={0} dy={index === 0 ? startDy : lineHeight}>
+          {line}
+        </tspan>
+      ))}
+    </text>
+  );
+
+  return { element, height: totalHeight };
+};
+
+/**
+ * Custom tick component for X-axis with automatic text wrapping.
+ * - Primary label: Automatically wraps long text to multiple lines based on available width
+ * - Secondary label: Optional label from pre-computed secondaryLabelMap (shown below primary, also supports wrapping)
+ * - Edge alignment: For line/area charts, first/last ticks align start/end to prevent clipping.
+ *   For bar charts, all labels are center-aligned since bars are centered on tick positions.
+ * - Reports calculated height via onHeightCalculated callback for dynamic axis sizing
+ */
+const CustomXAxisTick = ({
+  x,
+  y,
+  payload,
+  secondaryLabelMap,
+  theme,
+  tickWidth,
+  chartName,
+  onHeightCalculated,
+  lastTick,
+  tickFormatter,
+}: {
+  x: number;
+  y: number;
+  payload: { value: string; index: number };
+  secondaryLabelMap?: SecondaryLabelMap;
+  theme: ReturnType<typeof useTheme>['theme'];
+  tickWidth?: number;
+  chartName?: string;
+  onHeightCalculated?: (height: number) => void;
+  lastTick: number;
+  tickFormatter?: (value: string, index: number) => string;
+}): JSX.Element => {
+  const fontSize = theme.typography.fonts.size[75];
+  const maxWidth = tickWidth ? tickWidth * 0.9 : Infinity;
+
+  // For bar charts, always center align labels since bars are centered on ticks
+  // For line/area charts, align first tick left and last tick right to prevent clipping
+  const shouldUseEdgeAlignment = chartName === 'line' || chartName === 'area';
+  const isFirstTick = shouldUseEdgeAlignment && payload.index === 0;
+  const isLastTick = shouldUseEdgeAlignment && payload.index === lastTick;
+
+  const getTextAnchor = (): 'start' | 'middle' | 'end' => {
+    if (isFirstTick) return 'start';
+    if (isLastTick) return 'end';
+    return 'middle';
+  };
+  const textAnchor = getTextAnchor();
+
+  // Common text style props
+  const textStyleProps = {
+    maxWidth,
+    fontSize,
+    lineHeight: X_AXIS_TICK_LINE_HEIGHT,
+    startDy: X_AXIS_TICK_START_DY,
+    textAnchor,
+    fill: theme.colors.surface.text.gray.muted,
+    fontFamily: theme.typography.fonts.family.text,
+    fontWeight: theme.typography.fonts.weight.regular,
+    letterSpacing: theme.typography.letterSpacings[100],
+  } as const;
+
+  // Apply tickFormatter if provided, otherwise use raw value
+  const displayValue = tickFormatter
+    ? tickFormatter(payload.value, payload.index)
+    : String(payload.value);
+
+  // Primary label
+  const primaryLabel = wrappedTextLabel({
+    ...textStyleProps,
+    text: displayValue,
+  });
+
+  // Secondary label from pre-computed map
+  const secondaryValue = secondaryLabelMap?.[payload.index];
+
+  const secondaryLabel =
+    secondaryValue !== undefined
+      ? wrappedTextLabel({
+          ...textStyleProps,
+          text: String(secondaryValue),
+          // primaryLabel.height gives us where primary ends (relative to its startDy)
+          // X_AXIS_LABEL_GAP adds the desired spacing between labels
+          yOffset: primaryLabel.height + X_AXIS_LABEL_GAP,
+        })
+      : null;
+
+  // Calculate total tick height and report it
+  const totalTickHeight =
+    X_AXIS_TICK_START_DY +
+    primaryLabel.height +
+    (secondaryLabel ? X_AXIS_LABEL_GAP + secondaryLabel.height : 0);
+
+  React.useEffect(() => {
+    onHeightCalculated?.(totalTickHeight);
+  }, [totalTickHeight, onHeightCalculated]);
+
+  return (
+    <g transform={`translate(${x},${y})`}>
+      {primaryLabel.element}
+      {secondaryLabel?.element}
+    </g>
+  );
+};
+
+const _ChartXAxis: React.FC<ChartXAxisProps> = ({
+  interval = 0,
+  tickLine = false,
+  label,
+  dataKey,
+  height,
+  tickFormatter,
+  ...props
+}) => {
   const { theme } = useTheme();
+  const { secondaryLabelMap, chartName, dataLength } = useCommonChartComponentsContext();
+  // We don't want to pass secondaryDataKey to recharts
+  const { secondaryDataKey: _unusedsecondaryDataKey, ...restProps } = props;
+
+  // Calculate tick count from dataLength
+  const totalTickCount = dataLength ?? 1;
+
+  // Calculate visible tick count based on interval
+  // When interval is a number: 0 = show all, 1 = every 2nd, 2 = every 3rd, etc.
+  const visibleTickCount =
+    typeof interval === 'number' ? Math.ceil(totalTickCount / (interval + 1)) : totalTickCount; // For string intervals like 'preserveStart', use total as fallback
+
+  const lastTick = totalTickCount - 1;
+
+  // State to track the maximum tick height reported by CustomXAxisTick components
+  const minHeight = secondaryLabelMap ? 20 : 10;
+  const [maxTickHeight, setMaxTickHeight] = React.useState(minHeight);
+
+  // Callback to update max height when ticks report their calculated height
+  const handleHeightCalculated = React.useCallback((height: number) => {
+    setMaxTickHeight((prev) => Math.max(prev, height));
+  }, []);
+
+  // Calculate total axis height:
+  // - Tick labels height (dynamic)
+  // - X-axis label height + offset (if label prop is present)
+  const hasAxisLabel = Boolean(label);
+  const axisLabelSpace = hasAxisLabel ? X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT : 0;
+  const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
+
+  // Position for X-axis label: below tick labels with offset
+  const axisLabelY = maxTickHeight + X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT / 2;
 
   return (
     <RechartsXAxis
-      {...props}
-      tick={{
-        fill: theme.colors.surface.text.gray.muted,
-        fontSize: theme.typography.fonts.size[75],
-        fontFamily: theme.typography.fonts.family.text,
-        fontWeight: theme.typography.fonts.weight.regular,
-        letterSpacing: theme.typography.letterSpacings[100],
+      {...restProps}
+      height={baseHeight || height}
+      interval={interval}
+      tick={(tickProps: {
+        x: number;
+        y: number;
+        payload: { value: string; index: number };
+        width: number;
+      }) => {
+        // Calculate available width per tick from the total chart width
+        const tickWidth = tickProps.width / visibleTickCount;
+        return (
+          <CustomXAxisTick
+            x={tickProps.x}
+            y={tickProps.y}
+            payload={tickProps.payload}
+            secondaryLabelMap={secondaryLabelMap}
+            theme={theme}
+            tickWidth={tickWidth}
+            lastTick={lastTick}
+            chartName={chartName}
+            onHeightCalculated={handleHeightCalculated}
+            tickFormatter={tickFormatter}
+          />
+        );
       }}
-      tickLine={false}
+      tickLine={tickLine}
       stroke={theme.colors.surface.border.gray.muted}
       label={({ viewBox }: { viewBox: { x: number; y: number; width: number } }) => (
         <text
           x={viewBox.x + viewBox.width / 2 - X_OFFSET}
-          y={viewBox.y + Y_OFFSET + X_AXIS_TEXT_BASELINE}
+          y={viewBox.y + axisLabelY}
           textAnchor="middle"
           fill={theme.colors.surface.text.gray.muted}
           fontSize={theme.typography.fonts.size[75]}
@@ -112,13 +370,17 @@ const ChartXAxis: React.FC<ChartXAxisProps> = (props) => {
           fontWeight={theme.typography.fonts.weight.regular}
           letterSpacing={theme.typography.letterSpacings[100]}
         >
-          {props?.label}
+          {label}
         </text>
       )}
-      dataKey={props?.dataKey}
+      dataKey={dataKey}
     />
   );
 };
+
+const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
+  componentId: componentId.chartXAxis,
+});
 
 const ChartYAxis: React.FC<ChartYAxisProps> = (props) => {
   const { theme } = useTheme();
@@ -169,7 +431,6 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
 
 const CustomTooltip = ({
   item,
-  key,
 }: {
   item: {
     name: string;
@@ -178,7 +439,6 @@ const CustomTooltip = ({
     dataKey: string;
     payload: { fill: string };
   };
-  key: string;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
@@ -190,7 +450,7 @@ const CustomTooltip = ({
       alignItems="center"
       justifyContent="space-between"
       gap="spacing.4"
-      key={key}
+      key={`tooltip-${item.name}`}
     >
       <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
         <div
@@ -244,35 +504,76 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   );
 };
 
+const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: boolean }>(
+  ({ theme, $isHidden, $isClickable }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    cursor: $isClickable ? 'pointer' : 'default',
+    opacity: $isHidden ? 0.4 : 1,
+    background: 'none',
+    border: 'none',
+    padding: 0,
+    '& p': {
+      color: theme.colors.surface.text.gray.muted,
+      transition: $isClickable
+        ? `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`
+        : 'none',
+    },
+    '&:hover p': {
+      color: $isClickable
+        ? theme.colors.surface.text.gray.normal
+        : theme.colors.surface.text.gray.muted,
+    },
+  }),
+);
+
 const LegendItem = ({
   entry,
   index,
+  isSelected,
+  onClick,
+  isClickable,
 }: {
   entry: { color: string; value: string; dataKey: string };
   index: number;
+  isSelected: boolean;
+  onClick: (dataKey: string) => void;
+  isClickable: boolean;
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName } = useCommonChartComponentsContext();
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
+
   return (
-    <Box key={`item-${index}`} display="flex" alignItems="center">
+    <StyledLegendWrapper
+      key={`item-${index}`}
+      $isHidden={!isSelected}
+      $isClickable={isClickable}
+      onClick={
+        isClickable
+          ? () => {
+              onClick(entry.dataKey);
+            }
+          : undefined
+      }
+      type="button"
+    >
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
-            backgroundColor: getIn(theme.colors, legendColor), // Uses the color of the line/bar
-            width: theme.spacing[4], // Size of the square
-            height: theme.spacing[4], // Size of the square
+            backgroundColor: getIn(theme.colors, legendColor),
+            width: theme.spacing[4],
+            height: theme.spacing[4],
             display: 'inline-block',
             borderRadius: theme.border.radius.small,
           }}
         />
-        {/* Legend text with custom color and size */}
         <Text size="medium" color="surface.text.gray.muted">
           {entry.value}
         </Text>
       </Box>
-    </Box>
+    </StyledLegendWrapper>
   );
 };
 
@@ -288,8 +589,11 @@ const CustomSquareLegend = (props: {
     dataKey: string;
   }>;
   layout: Layout;
+  selectedDataKeys: string[];
+  onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
-  const { payload, layout } = props;
+  const { payload, layout, selectedDataKeys, onClick } = props;
+  const { chartName } = useCommonChartComponentsContext();
 
   if (!payload || payload.length === 0) {
     return null;
@@ -304,6 +608,7 @@ const CustomSquareLegend = (props: {
     (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
   );
   const isVerticalLayout = layout === 'vertical';
+  const isClickable = chartName === 'line';
 
   return (
     <Box
@@ -315,14 +620,54 @@ const CustomSquareLegend = (props: {
       flexWrap="wrap"
     >
       {filteredPayload.map((entry, index) => (
-        <LegendItem entry={entry} index={index} key={`item-${index}`} />
+        <LegendItem
+          entry={entry}
+          index={index}
+          key={`item-${index}`}
+          isSelected={selectedDataKeys.includes(entry.dataKey)}
+          onClick={onClick}
+          isClickable={isClickable}
+        />
       ))}
     </Box>
   );
 };
 
-const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
+const _ChartLegend: React.FC<ChartLegendProps> = ({
+  selectedDataKeys: selectedDataKeysProp,
+  defaultSelectedDataKeys,
+  onSelectedDataKeysChange,
+  ...props
+}) => {
   const { theme } = useTheme();
+  const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
+
+  // Get all available dataKeys from the chart
+  const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
+
+  // Use controllable state for selected keys
+  const [selectedKeysArray, setSelectedKeysArray] = useControllableState({
+    value: selectedDataKeysProp,
+    defaultValue: defaultSelectedDataKeys ?? allDataKeys,
+  });
+
+  // Sync selectedDataKeys to context's selectedDataKeys
+  React.useEffect(() => {
+    setSelectedDataKeys?.(selectedKeysArray);
+  }, [selectedKeysArray, setSelectedDataKeys]);
+
+  // Handle toggle
+  const handleClick = React.useCallback(
+    (dataKey: string) => {
+      const newSelectedKeys = selectedKeysArray.includes(dataKey)
+        ? selectedKeysArray.filter((key) => key !== dataKey)
+        : [...selectedKeysArray, dataKey];
+
+      setSelectedKeysArray(() => newSelectedKeys);
+      onSelectedDataKeysChange?.({ dataKey, selectedKeysArray: newSelectedKeys });
+    },
+    [setSelectedKeysArray, selectedKeysArray, onSelectedDataKeysChange],
+  );
 
   return (
     <RechartsLegend
@@ -330,11 +675,17 @@ const _ChartLegend: React.FC<ChartLegendProps> = (props) => {
         fontFamily: theme.typography.fonts.family.text,
         fontSize: theme.typography.fonts.size[100],
         color: theme.colors.surface.text.gray.normal,
-        paddingTop: theme.spacing[7],
+        paddingTop: LEGEND_MARGIN_TOP,
       }}
       align="center"
       verticalAlign={props.layout === 'vertical' ? 'middle' : 'bottom'}
-      content={<CustomSquareLegend layout={props.layout ?? 'horizontal'} />}
+      content={
+        <CustomSquareLegend
+          layout={props.layout ?? 'horizontal'}
+          selectedDataKeys={selectedKeysArray}
+          onClick={handleClick}
+        />
+      }
       {...props}
     />
   );
