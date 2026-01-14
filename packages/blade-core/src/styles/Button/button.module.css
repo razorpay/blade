@@ -324,6 +324,34 @@
   flex-shrink: 0;
 }
 
+/* Icon padding for left-positioned icons (medium/large default) */
+.icon-left {
+  padding-right: var(--spacing-3); /* 12px */
+}
+
+/* Icon padding for right-positioned icons (medium/large default) */
+.icon-right {
+  padding-left: var(--spacing-3); /* 12px */
+}
+
+/* Size-specific icon padding - xsmall uses spacing.1 (4px) */
+.xsmall .icon-left {
+  padding-right: var(--spacing-1);
+}
+
+.xsmall .icon-right {
+  padding-left: var(--spacing-1);
+}
+
+/* Size-specific icon padding - small uses spacing.2 (8px) */
+.small .icon-left {
+  padding-right: var(--spacing-2);
+}
+
+.small .icon-right {
+  padding-left: var(--spacing-2);
+}
+
 /* Animated content wrapper - wraps all button content for scale animation */
 .animated-content {
   display: flex;

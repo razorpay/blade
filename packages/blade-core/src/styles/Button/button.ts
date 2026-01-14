@@ -320,6 +320,8 @@ export function getButtonTemplateClasses(): Record<string, string> {
   return {
     content: buttonContentClass,
     icon: buttonIconClass,
+    iconLeft: styles['icon-left'],
+    iconRight: styles['icon-right'],
     loadingSpinner: loadingSpinnerClass,
     loading: loadingClass,
     animatedContent: animatedContentClass,

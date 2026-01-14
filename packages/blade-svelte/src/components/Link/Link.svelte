@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
+  import type { Snippet, Component } from 'svelte';
   import BaseLink from './BaseLink/BaseLink.svelte';
+  import type { IconProps } from '../Icons/types';
 
-  // Icon component type - placeholder for now
-  // TODO: Replace with actual Icon component when available
-  type IconComponent = any;
+  // Icon component type - Svelte component that accepts IconProps
+  type IconComponent = Component<IconProps>;
 
   interface LinkProps {
     variant?: 'anchor' | 'button';

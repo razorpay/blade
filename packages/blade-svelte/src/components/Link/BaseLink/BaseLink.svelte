@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
+  import type { Snippet, Component } from 'svelte';
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, type AriaRoles } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
@@ -7,13 +7,13 @@
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import { getBaseLinkClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
+  import type { IconProps, IconColor } from '../../Icons/types';
 
   // Get template classes via function call to prevent Svelte tree-shaking
   const linkClasses = getBaseLinkTemplateClasses();
 
-  // Icon component type - placeholder for now
-  // TODO: Replace with actual Icon component when available
-  type IconComponent = any;
+  // Icon component type - Svelte component that accepts IconProps
+  type IconComponent = Component<IconProps>;
 
   interface BaseLinkProps extends StyledPropsBlade {
     children?: Snippet | string;
@@ -88,6 +88,12 @@
   // Use $derived for reactivity when props change
   const isButton = $derived(variant === 'button');
 
+  // Check if children has any content (string or Snippet)
+  const hasChildren = $derived(
+    (typeof children === 'string' && children.trim().length > 0) ||
+    (typeof children === 'function')  // Snippet is a function
+  );
+
   // Create interaction state using $state (must be in .svelte file)
   // Initialize based on current disabled state
   let currentInteraction = $state<'default' | 'hover' | 'focus' | 'disabled'>('default');
@@ -148,8 +154,8 @@
         element: 'icon',
         currentInteraction: currentInteraction as ActionStatesType,
         isDisabled,
-      }),
-      iconSize: size,
+      }) as IconColor,
+      iconSize: size as IconProps['size'],
       
       // Style props
       cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
@@ -157,8 +163,6 @@
   });
 
   // Destructure linkProps for cleaner template usage
-  // Note: iconColor is computed in linkProps but not destructured since icon rendering is TODO
-  // When icon component is implemented, it should use color classes directly
   const {
     elementTag,
     type: elementType,
@@ -169,6 +173,8 @@
     textColorToken,
     fontSize,
     lineHeight,
+    iconColor,
+    iconSize,
   } = $derived(linkProps);
 
   // Generate BaseLink classes from blade-core (single source of truth)
@@ -286,9 +292,9 @@
 >
   <span class={linkClasses.content + ' focus-ring-child'}>
     {#if Icon && iconPosition === 'left'}
-      <!-- <span class={iconClass({ position: 'left', hasChildren })}> -->
-        <!-- TODO: Render Icon component when available -->
-      <!-- </span> -->
+      <span class={linkClasses.icon + (hasChildren ? ' ' + linkClasses.iconLeft : '')}>
+        <Icon size={iconSize} color={iconColor} />
+      </span>
     {/if}
     {#if children}
       <BaseText
@@ -309,9 +315,9 @@
       </BaseText>
     {/if}
     {#if Icon && iconPosition === 'right'}
-      <!-- <span class={iconClass({ position: 'right', hasChildren })}> -->
-        <!-- TODO: Render Icon component when available -->
-      <!-- </span> -->
+      <span class={linkClasses.icon + (hasChildren ? ' ' + linkClasses.iconRight : '')}>
+        <Icon size={iconSize} color={iconColor} />
+      </span>
     {/if}
   </span>
 </svelte:element>
