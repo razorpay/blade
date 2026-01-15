@@ -523,8 +523,7 @@ const LegendItem = ({
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
 
   // For donut charts, use sanitized value (name) as the key, for other charts use dataKey
-  const legendKey =
-    chartName === 'donut' ? sanitizeString(entry.value ?? '') : entry.dataKey;
+  const legendKey = chartName === 'donut' ? sanitizeString(entry.value ?? '') : entry.dataKey;
 
   return (
     <StyledLegendWrapper
