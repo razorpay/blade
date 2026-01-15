@@ -109,7 +109,7 @@ const getWebConfig = (inputs) => {
     output: [
       {
         dir: `${outputRootDirectory}/${libDirectory}/${platform}/${mode}`,
-        format: 'es',
+        format: 'cjs',
         sourcemap: true,
         preserveModules: true,
         preserveModulesRoot: 'src',
