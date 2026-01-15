@@ -73,8 +73,9 @@ const getChartColor = (
   dataColorMapping: DataColorMapping,
   chartName: string | undefined,
 ): ChartColorToken => {
-  const colorKey = chartName === 'donut' ? sanitizeString(name ?? '') : dataKey;
+  const colorKey = chartName === 'donut' ? sanitizeString(name) : dataKey;
   const mappedColorData = dataColorMapping?.[colorKey ?? ''];
+
   const mappedColor = mappedColorData.colorToken;
   const isCustomColor = mappedColorData.isCustomColor;
 
