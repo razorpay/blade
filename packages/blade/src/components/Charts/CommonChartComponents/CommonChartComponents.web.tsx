@@ -522,6 +522,10 @@ const LegendItem = ({
 
   const legendColor = getChartColor(entry.dataKey, entry.value, dataColorMapping ?? {}, chartName);
 
+  // For donut charts, use sanitized value (name) as the key, for other charts use dataKey
+  const legendKey =
+    chartName === 'donut' ? sanitizeString(entry.value ?? '') : entry.dataKey;
+
   return (
     <StyledLegendWrapper
       key={`item-${index}`}
@@ -530,7 +534,7 @@ const LegendItem = ({
       onClick={
         isClickable
           ? () => {
-              onClick(entry.dataKey);
+              onClick(legendKey);
             }
           : undefined
       }
@@ -570,23 +574,66 @@ const CustomSquareLegend = (props: {
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
-  const { chartName } = useCommonChartComponentsContext();
-
-  if (!payload || payload.length === 0) {
-    return null;
-  }
+  const { chartName, dataColorMapping } = useCommonChartComponentsContext();
 
   /*
   This is a custom legend component that is used to display the legend for the chart.
   we need to show the legend only if the legendType is not none. (for example in line chart we don't want to show the legend for the reference line)
   so we are filtering the payload and then mapping over it to display the legend.
+  
+  For donut charts, we use dataColorMapping directly instead of payload because:
+  - When legend items are clicked, the donut data gets filtered
+  - This causes the payload to lose the filtered items
+  - But we need all legend items to remain visible so users can toggle them back
+  - dataColorMapping always contains all the original data keys
   */
+  const isVerticalLayout = layout === 'vertical';
+  const isClickable =
+    chartName === 'line' || chartName === 'area' || chartName === 'bar' || chartName === 'donut';
+
+  // For donut charts, generate legend entries from dataColorMapping (which has all keys)
+  if (chartName === 'donut' && dataColorMapping) {
+    const donutLegendEntries = Object.keys(dataColorMapping).map((key) => ({
+      value: key, // The sanitized name
+      dataKey: key,
+      color: dataColorMapping[key].colorToken,
+    }));
+
+    if (donutLegendEntries.length === 0) {
+      return null;
+    }
+
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        gap="spacing.5"
+        flexDirection={isVerticalLayout ? 'column' : 'row'}
+        width={isVerticalLayout ? '100%' : 'auto'}
+        flexWrap="wrap"
+      >
+        {donutLegendEntries.map((entry, index) => (
+          <LegendItem
+            entry={entry}
+            index={index}
+            key={`item-${index}`}
+            isSelected={selectedDataKeys.includes(entry.dataKey)}
+            onClick={onClick}
+            isClickable={isClickable}
+          />
+        ))}
+      </Box>
+    );
+  }
+
+  // For other chart types, use the payload from recharts
+  if (!payload || payload.length === 0) {
+    return null;
+  }
+
   const filteredPayload = payload.filter(
     (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
   );
-  const isVerticalLayout = layout === 'vertical';
-  const isClickable =
-    chartName === 'line' || chartName === 'area' || chartName === 'bar';
 
   return (
     <Box
