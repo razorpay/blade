@@ -1,0 +1,311 @@
+/* BaseInput CSS Module */
+/* Styles for Input components */
+
+/* ============================================
+   INPUT WRAPPER STYLES
+   ============================================ */
+
+.inputWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  border-style: solid;
+  border-radius: var(--border-radius-medium);
+  transition-property: border-color, background-color, box-shadow;
+  transition-duration: var(--duration-gentle);
+  transition-timing-function: var(--easing-standard);
+}
+
+/* States */
+.inputWrapper--default {
+  background-color: var(--surface-background-gray-intense);
+  border-color: var(--interactive-border-gray-default);
+  border-width: var(--border-width-thin);
+}
+
+.inputWrapper--hover {
+  background-color: var(--surface-background-gray-moderate);
+  border-color: var(--interactive-border-gray-highlighted);
+  border-width: var(--border-width-thin);
+}
+
+.inputWrapper--focus {
+  background-color: var(--surface-background-gray-moderate);
+  border-color: var(--interactive-border-primary-default);
+  border-width: var(--border-width-thick);
+  transition-duration: var(--duration-xgentle);
+  transition-timing-function: var(--easing-emphasized);
+}
+
+.inputWrapper--disabled {
+  background-color: var(--surface-background-gray-subtle);
+  border-color: var(--interactive-border-gray-disabled);
+  border-width: var(--border-width-thin);
+  cursor: not-allowed;
+}
+
+.inputWrapper--error {
+  background-color: var(--surface-background-gray-intense);
+  border-color: var(--interactive-border-negative-default);
+  border-width: var(--border-width-thick);
+}
+
+.inputWrapper--success {
+  background-color: var(--surface-background-gray-intense);
+  border-color: var(--interactive-border-positive-default);
+  border-width: var(--border-width-thick);
+}
+
+/* Size variants */
+.inputWrapper--xsmall {
+  min-height: 26px;
+}
+
+.inputWrapper--small {
+  min-height: 30px;
+}
+
+.inputWrapper--medium {
+  min-height: 36px;
+}
+
+.inputWrapper--large {
+  min-height: 48px;
+}
+
+/* TextArea variant */
+.inputWrapper--textarea {
+  align-items: flex-start;
+}
+
+/* ============================================
+   FOCUS RING WRAPPER
+   ============================================ */
+
+.focusRingWrapper {
+  border-radius: var(--border-radius-medium);
+  width: 100%;
+  transition-property: box-shadow;
+  transition-duration: var(--duration-gentle);
+  transition-timing-function: var(--easing-standard);
+}
+
+.focusRingWrapper:focus-within {
+  box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);
+  transition-duration: var(--duration-xgentle);
+  transition-timing-function: var(--easing-emphasized);
+}
+
+/* ============================================
+   STYLED INPUT (Native element)
+   ============================================ */
+
+.styledInput {
+  flex: 1;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-family-text);
+  color: var(--surface-text-gray-subtle);
+  resize: none;
+}
+
+.styledInput::placeholder {
+  color: var(--surface-text-gray-disabled);
+}
+
+.styledInput:focus {
+  outline: none;
+}
+
+.styledInput:disabled {
+  cursor: not-allowed;
+  color: var(--surface-text-gray-disabled);
+}
+
+/* Size variants for input */
+.styledInput--xsmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+}
+
+.styledInput--small {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+}
+
+.styledInput--medium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+}
+
+.styledInput--large {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+}
+
+/* Padding variants based on visuals */
+.styledInput--paddingLeft-none {
+  padding-left: 0;
+}
+
+.styledInput--paddingLeft-small {
+  padding-left: var(--spacing-3);
+}
+
+.styledInput--paddingLeft-medium {
+  padding-left: var(--spacing-4);
+}
+
+.styledInput--paddingRight-none {
+  padding-right: 0;
+}
+
+.styledInput--paddingRight-small {
+  padding-right: var(--spacing-3);
+}
+
+.styledInput--paddingRight-medium {
+  padding-right: var(--spacing-4);
+}
+
+/* Text alignment */
+.styledInput--textAlign-left {
+  text-align: left;
+}
+
+.styledInput--textAlign-center {
+  text-align: center;
+}
+
+.styledInput--textAlign-right {
+  text-align: right;
+}
+
+/* ============================================
+   INPUT VISUALS (Icons, Prefix, Suffix)
+   ============================================ */
+
+.inputVisuals {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputVisuals--leading {
+  /* Leading visuals container */
+}
+
+.inputVisuals--trailing {
+  /* Trailing visuals container */
+}
+
+/* Icon containers */
+.visualIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualIcon--leading {
+  padding-left: var(--spacing-4);
+}
+
+.visualIcon--trailing {
+  padding-right: var(--spacing-4);
+}
+
+/* Prefix/Suffix text */
+.visualText {
+  /* Base text styles handled by Text component */
+}
+
+.visualText--prefix {
+  padding-left: var(--spacing-4);
+}
+
+.visualText--prefixWithIcon {
+  padding-left: var(--spacing-3);
+}
+
+.visualText--suffix {
+  padding-right: var(--spacing-4);
+}
+
+.visualText--suffixWithIcon {
+  padding-right: var(--spacing-3);
+}
+
+/* Interaction element container */
+.interactionElement {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+.interactionElement--leading {
+  padding-left: var(--spacing-3);
+}
+
+.interactionElement--trailing {
+  padding-right: var(--spacing-4);
+}
+
+.interactionElement--trailingWithOther {
+  padding-right: var(--spacing-2);
+}
+
+/* ============================================
+   CONTAINER STYLES
+   ============================================ */
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.inputContainer--labelLeft {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Label row with header slot */
+.labelRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.labelRow--labelLeft {
+  flex-direction: column;
+}
+
+/* Hint row with footer slot */
+.hintRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ============================================
+   TRAILING BUTTON
+   ============================================ */
+
+.trailingButton {
+  display: flex;
+  padding-right: var(--spacing-4);
+}
