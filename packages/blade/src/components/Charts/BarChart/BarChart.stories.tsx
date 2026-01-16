@@ -11,8 +11,9 @@ import {
   ChartLegend,
 } from '~components/Charts';
 import { Heading, Text } from '~components/Typography';
-import { ArrowUpIcon, ArrowDownIcon } from '~components/Icons';
+import { ArrowUpIcon } from '~components/Icons';
 import { Divider } from '~components/Divider';
+import { Badge } from '~components/Badge';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
@@ -263,14 +264,12 @@ const MetricCard = ({
   percentage,
   value,
   change,
-  isPositive = true,
   showDivider = true,
 }: {
   title: string;
   percentage: string;
   value: string;
   change: number;
-  isPositive?: boolean;
   showDivider?: boolean;
 }): React.ReactElement => {
   return (
@@ -278,15 +277,16 @@ const MetricCard = ({
       <Box
         display="flex"
         flexDirection="column"
-        alignItems="center"
+        alignItems="flex-start"
         gap="spacing.2"
-        padding="spacing.3"
+        paddingY="spacing.4"
+        paddingX="spacing.5"
         flex="1"
       >
         {/* Title with dotted underline */}
         <Text
           size="small"
-          color="surface.text.gray.normal"
+          color="surface.text.gray.muted"
           textDecorationLine="underline"
           // @ts-expect-error - textDecorationStyle is a valid CSS property
           style={{ textDecorationStyle: 'dotted' }}
@@ -299,36 +299,23 @@ const MetricCard = ({
             <Text size="large" weight="semibold" color="surface.text.gray.normal">
               {percentage}
             </Text>
-            <Text size="medium"  color="surface.text.gray.normal">
+            <Text size="medium" color="surface.text.gray.muted">
               {value}
             </Text>
           </Box>
-          {/* Change indicator */}
+          {/* Change indicator - using Badge-like styling */}
           <Box
             display="flex"
             flexDirection="row"
             gap="spacing.1"
             alignItems="center"
-            backgroundColor={
-              isPositive
-                ? 'feedback.background.positive.subtle'
-                : 'feedback.background.negative.subtle'
-            }
-            padding={['spacing.1', 'spacing.2']}
+            backgroundColor="feedback.background.negative.subtle"
+            paddingY="spacing.1"
+            paddingX="spacing.2"
             borderRadius="small"
           >
-            {isPositive ? (
-              <ArrowUpIcon size="xsmall" color="feedback.icon.positive.intense" />
-            ) : (
-              <ArrowDownIcon size="xsmall" color="feedback.icon.negative.intense" />
-            )}
-            <Text
-              size="xsmall"
-              weight="medium"
-              color={
-                isPositive ? 'feedback.text.positive.intense' : 'feedback.text.negative.intense'
-              }
-            >
+            <ArrowUpIcon size="xsmall" color="feedback.icon.negative.intense" />
+            <Text size="xsmall" weight="medium" color="feedback.text.negative.intense">
               {change}%
             </Text>
           </Box>
@@ -346,11 +333,11 @@ const MetricCard = ({
 
 // Funnel chart metrics data (matches the checkout funnel design)
 const funnelMetricsData = [
-  { title: 'Checkout initiated', percentage: '100%', value: '1.3K', change: 12, isPositive: true },
-  { title: 'Address step reached', percentage: '86%', value: '1.2K', change: 12, isPositive: true },
-  { title: 'Payment step reached', percentage: '66%', value: '900', change: 12, isPositive: true },
-  { title: 'Payment attempted', percentage: '36%', value: '530', change: 12, isPositive: true },
-  { title: 'Sessions converted', percentage: '20%', value: '230', change: 12, isPositive: true },
+  { title: 'Checkout initiated', percentage: '100%', value: '1.3K', change: 12 },
+  { title: 'Address step reached', percentage: '86%', value: '1.2K', change: 12 },
+  { title: 'Payment step reached', percentage: '66%', value: '900', change: 12 },
+  { title: 'Payment attempted', percentage: '36%', value: '530', change: 12 },
+  { title: 'Sessions converted', percentage: '20%', value: '230', change: 12 },
 ];
 
 // Chart data for funnel comparison (two dates)
@@ -365,7 +352,35 @@ const funnelChartData = [
 export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
   return (
     <ChartsWrapper>
-      <Box width="100%" display="flex" flexDirection="column" gap="spacing.0">
+      <Box display="flex" flexDirection="column" gap="spacing.4">
+        {/* Header Section */}
+        <Box display="flex" flexDirection="column" gap="spacing.2" paddingX="spacing.5">
+          {/* Title with dotted underline */}
+          <Text
+            size="medium"
+            weight="medium"
+            color="surface.text.gray.normal"
+            textDecorationLine="underline"
+            // @ts-expect-error - textDecorationStyle is a valid CSS property
+            style={{ textDecorationStyle: 'dotted' }}
+          >
+            Checkout conversion funnel
+          </Text>
+          {/* Main metric row */}
+          <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+            <Heading size="xlarge" weight="semibold">
+              20%
+            </Heading>
+            <Badge color="negative" size="small" icon={ArrowUpIcon}>
+              12%
+            </Badge>
+          </Box>
+          {/* Subtitle */}
+          <Text size="small" color="surface.text.gray.muted">
+            Checkout conversion decreased from 22% to 20%
+          </Text>
+        </Box>
+
         {/* Metric cards row positioned above the chart */}
         <Box display="flex" flexDirection="row" width="100%">
           {funnelMetricsData.map((item, index) => (
@@ -375,15 +390,15 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
               percentage={item.percentage}
               value={item.value}
               change={item.change}
-              isPositive={item.isPositive}
               showDivider={index < funnelMetricsData.length - 1}
             />
           ))}
         </Box>
+
         {/* Bar Chart */}
-        <Box width="100%" height="350px">
+        <Box width="100%" height="320px">
           <ChartBarWrapper data={funnelChartData}>
-            <ChartXAxis dataKey="name" />
+            <ChartXAxis dataKey="name" hide />
             <ChartYAxis hide />
             <ChartTooltip />
             <ChartLegend />
@@ -391,13 +406,51 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
               dataKey="current"
               name="Oct 28, 2025"
               color="data.background.sequential.blue.400"
-              label={{ position: 'top', fill: '#768EA7', fontSize: 12 }}
+              label={{
+                position: 'top',
+                // @ts-expect-error - custom label content renderer for persistent labels
+                content: (props: { value?: string | number; x?: number; y?: number; width?: number }) => {
+                  const { value, x = 0, y = 0, width = 0 } = props;
+                  const numValue = typeof value === 'number' ? value : 0;
+                  return (
+                    <text
+                      x={x + width / 2}
+                      y={y - 8}
+                      fill="#768EA7"
+                      fontSize={12}
+                      textAnchor="middle"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      {numValue >= 1000 ? `${(numValue / 1000).toFixed(1)}K` : numValue}
+                    </text>
+                  );
+                },
+              }}
             />
             <ChartBar
               dataKey="previous"
               name="Oct 25, 2025"
               color="data.background.sequential.blue.100"
-              label={{ position: 'top', fill: '#768EA7', fontSize: 12 }}
+              label={{
+                position: 'top',
+                // @ts-expect-error - custom label content renderer for persistent labels
+                content: (props: { value?: string | number; x?: number; y?: number; width?: number }) => {
+                  const { value, x = 0, y = 0, width = 0 } = props;
+                  const numValue = typeof value === 'number' ? value : 0;
+                  return (
+                    <text
+                      x={x + width / 2}
+                      y={y - 8}
+                      fill="#768EA7"
+                      fontSize={12}
+                      textAnchor="middle"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      {numValue >= 1000 ? `${(numValue / 1000).toFixed(1)}K` : numValue}
+                    </text>
+                  );
+                },
+              }}
             />
           </ChartBarWrapper>
         </Box>
