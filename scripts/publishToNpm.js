@@ -23,6 +23,9 @@ const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES || '[]');
 const MONOREPO_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
+// Packages that should only be published to GitHub registry (not public npm)
+const GITHUB_REGISTRY_ONLY_PACKAGES = ['@razorpay/blade-core', '@razorpay/blade-svelte'];
+
 const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true
 //registry.npmjs.org/:_authToken=\${NPM_TOKEN}
@@ -41,6 +44,14 @@ function getPackagePath(packageName) {
 try {
   // Now you can use the array of objects
   for (const pkg of publishedPackages) {
+    // Skip packages that should only be published to GitHub registry
+    if (GITHUB_REGISTRY_ONLY_PACKAGES.includes(pkg.name)) {
+      console.log(
+        `[blade]: Skipping ${pkg.name}@${pkg.version} - published to GitHub registry only 🔒`,
+      );
+      continue;
+    }
+
     const packagePath = getPackagePath(pkg.name);
     console.log(`[blade]: Publishing ${pkg.name}@${pkg.version} on NPM ✨`);
 

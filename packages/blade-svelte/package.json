@@ -3,10 +3,12 @@
   "version": "0.2.2",
   "description": "Blade Design System for Svelte",
   "license": "MIT",
-  "private": true,
   "type": "module",
   "engines": {
     "node": ">=18.12.1"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
