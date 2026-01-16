@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.73.0
+
+### Minor Changes
+
+- 16240ddd4: fix(blade): default pagesize in pagination
+
 ## 12.72.0
 
 ### Minor Changes

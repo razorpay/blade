@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-svelte",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Blade Design System for Svelte",
   "license": "MIT",
   "type": "module",
@@ -47,7 +47,7 @@
     "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
-    "@razorpay/blade-core": ">=0.1.0",
+    "@razorpay/blade-core": ">=0.1.1",
     "@razorpay/i18nify-js": "1.12.3",
     "class-variance-authority": "^0.7.0"
   },
