@@ -1,0 +1,32 @@
+.base {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: var(--border-radius-small);
+  transition-property: box-shadow, color, fill;
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-2xquick);
+
+  /* PostCSS nesting support */
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: max-content;
+  border-radius: var(--border-radius-small);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+

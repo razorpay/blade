@@ -1,0 +1,999 @@
+/* Blade Design System CSS Variables */
+/* Generated from theme and global tokens */
+
+:root {
+  /* ===== GLOBAL TOKENS ===== */
+
+  /* Spacing */
+  --spacing-0: 0px;
+  --spacing-1: 2px;
+  --spacing-2: 4px;
+  --spacing-3: 8px;
+  --spacing-4: 12px;
+  --spacing-5: 16px;
+  --spacing-6: 20px;
+  --spacing-7: 24px;
+  --spacing-8: 32px;
+  --spacing-9: 40px;
+  --spacing-10: 48px;
+  --spacing-11: 56px;
+
+  /* Border */
+  --border-radius-none: 0px;
+  --border-radius-xsmall: 1px;
+  --border-radius-small: 2px;
+  --border-radius-medium: 4px;
+  --border-radius-large: 8px;
+  --border-radius-xlarge: 12px;
+  --border-radius-2xlarge: 16px;
+  --border-radius-max: 9999px;
+  --border-radius-round: 50%;
+
+  --border-width-none: 0px;
+  --border-width-thinner: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-thick: 1.5px;
+  --border-width-thicker: 2px;
+
+  /* Breakpoints */
+  --breakpoint-base: 0px;
+  --breakpoint-xs: 320px;
+  --breakpoint-s: 480px;
+  --breakpoint-m: 768px;
+  --breakpoint-l: 1024px;
+  --breakpoint-xl: 1200px;
+
+  /* Typography - Desktop */
+  --font-size-25: 10px;
+  --font-size-50: 11px;
+  --font-size-75: 12px;
+  --font-size-100: 14px;
+  --font-size-200: 16px;
+  --font-size-300: 18px;
+  --font-size-400: 20px;
+  --font-size-500: 24px;
+  --font-size-600: 32px;
+  --font-size-700: 40px;
+  --font-size-800: 48px;
+  --font-size-900: 56px;
+  --font-size-1000: 64px;
+  --font-size-1100: 72px;
+
+  --line-height-0: 0px;
+  --line-height-25: 14px;
+  --line-height-50: 16px;
+  --line-height-75: 18px;
+  --line-height-100: 20px;
+  --line-height-200: 24px;
+  --line-height-300: 24px;
+  --line-height-400: 26px;
+  --line-height-500: 32px;
+  --line-height-600: 38px;
+  --line-height-700: 46px;
+  --line-height-800: 56px;
+  --line-height-900: 64px;
+  --line-height-1000: 70px;
+  --line-height-1100: 78px;
+
+  --letter-spacing-50: -1%;
+  --letter-spacing-100: 0%;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-family-text: 'Inter', 'Inter Fallback Arial', Arial;
+  --font-family-heading: 'TASA Orbiter', 'TASA Orbiter Fallback Arial', Arial;
+  --font-family-code: 'Menlo', San Francisco Mono, Courier New, Roboto Mono, monospace;
+
+  /* Motion */
+  --duration-2xquick: 80ms;
+  --duration-xquick: 160ms;
+  --duration-quick: 200ms;
+  --duration-moderate: 280ms;
+  --duration-xmoderate: 360ms;
+  --duration-gentle: 480ms;
+  --duration-xgentle: 640ms;
+  --duration-2xgentle: 960ms;
+
+  --delay-2xquick: 80ms;
+  --delay-xquick: 160ms;
+  --delay-moderate: 280ms;
+  --delay-gentle: 480ms;
+  --delay-xgentle: 960ms;
+  --delay-long: 2000ms;
+  --delay-xlong: 3000ms;
+  --delay-2xlong: 5000ms;
+
+  --easing-linear: cubic-bezier(0, 0, 0, 0);
+  --easing-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --easing-exit: cubic-bezier(0.17, 0, 1, 1);
+  --easing-standard: cubic-bezier(0.3, 0, 0.2, 1);
+  --easing-emphasized: cubic-bezier(0.5, 0, 0, 1);
+  --easing-overshoot: cubic-bezier(0.5, 0, 0.3, 1.5);
+  --easing-shake: cubic-bezier(1, 0.5, 0, 0.5);
+
+  /* Opacity */
+  --opacity-0: 0;
+  --opacity-50: 0.06;
+  --opacity-100: 0.09;
+  --opacity-200: 0.12;
+  --opacity-300: 0.18;
+  --opacity-400: 0.24;
+  --opacity-500: 0.32;
+  --opacity-600: 0.48;
+  --opacity-700: 0.56;
+  --opacity-800: 0.64;
+  --opacity-900: 0.72;
+  --opacity-1000: 0.8;
+  --opacity-1100: 0.88;
+  --opacity-1200: 1;
+
+  /* Elevation */
+  --elevation-none: none;
+  --elevation-low-raised: 0px 2px 16px 0px hsla(217, 56%, 17%, 0.1);
+  --elevation-mid-raised: 0px 8px 24px 0px hsla(217, 56%, 17%, 0.12);
+  --elevation-high-raised: 0px 16px 48px -4px hsla(217, 56%, 17%, 0.18);
+
+  /* ===== THEME TOKENS - LIGHT MODE ===== */
+
+  /* Surface Colors */
+  --surface-background-gray-subtle: hsla(213, 47%, 96%, 1);
+  --surface-background-gray-moderate: hsla(210, 40%, 98%, 1);
+  --surface-background-gray-intense: hsla(0, 0%, 100%, 1);
+
+  --surface-background-primary-subtle: hsla(227, 100%, 59%, 0.09);
+  --surface-background-primary-intense: hsla(227, 100%, 59%, 1);
+
+  --surface-background-sea-subtle: hsla(180, 39%, 95%, 1);
+  --surface-background-sea-intense: hsla(180, 61%, 20%, 1);
+
+  --surface-background-cloud-subtle: hsla(198, 39%, 95%, 1);
+  --surface-background-cloud-intense: hsla(200, 61%, 20%, 1);
+
+  /* Surface Borders */
+  --surface-border-gray-normal: hsla(211, 27%, 76%, 1);
+  --surface-border-gray-subtle: hsla(214, 28%, 84%, 1);
+  --surface-border-gray-muted: hsla(211, 20%, 52%, 0.18);
+
+  --surface-border-primary-normal: hsla(227, 100%, 59%, 1);
+  --surface-border-primary-muted: hsla(227, 100%, 59%, 0.18);
+
+  /* Surface Text */
+  --surface-text-gray-normal: hsla(212, 39%, 16%, 1);
+  --surface-text-gray-subtle: hsla(211, 26%, 34%, 1);
+  --surface-text-gray-muted: hsla(211, 22%, 56%, 1);
+  --surface-text-gray-disabled: hsla(211, 20%, 52%, 0.32);
+
+  --surface-text-primary-normal: hsla(227, 100%, 59%, 1);
+
+  --surface-text-on-sea-subtle: hsla(155, 100%, 21%, 1);
+  --surface-text-on-sea-intense: hsla(155, 100%, 31%, 1);
+
+  --surface-text-on-cloud-subtle: hsla(200, 60%, 30%, 1);
+  --surface-text-on-cloud-intense: hsla(200, 60%, 30%, 1);
+
+  --surface-text-static-white-normal: hsla(0, 0%, 100%, 1);
+  --surface-text-static-white-subtle: hsla(0, 0%, 100%, 0.88);
+  --surface-text-static-white-muted: hsla(0, 0%, 100%, 0.32);
+  --surface-text-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --surface-text-static-black-normal: hsla(0, 0%, 0%, 1);
+  --surface-text-static-black-subtle: hsla(0, 0%, 0%, 0.32);
+  --surface-text-static-black-muted: hsla(0, 0%, 0%, 0.32);
+  --surface-text-static-black-disabled: hsla(0, 0%, 0%, 0.09);
+
+  /* Surface Icons */
+  --surface-icon-gray-normal: hsla(212, 39%, 16%, 1);
+  --surface-icon-gray-subtle: hsla(211, 26%, 34%, 1);
+  --surface-icon-gray-muted: hsla(211, 22%, 56%, 1);
+  --surface-icon-gray-disabled: hsla(211, 20%, 52%, 0.32);
+
+  --surface-icon-primary-normal: hsla(227, 100%, 59%, 1);
+
+  --surface-icon-on-sea-subtle: hsla(155, 100%, 31%, 1);
+  --surface-icon-on-sea-intense: hsla(155, 100%, 21%, 1);
+
+  --surface-icon-on-cloud-subtle: hsla(200, 60%, 30%, 1);
+  --surface-icon-on-cloud-intense: hsla(200, 60%, 30%, 1);
+
+  --surface-icon-static-white-normal: hsla(0, 0%, 100%, 1);
+  --surface-icon-static-white-subtle: hsla(0, 0%, 100%, 0.88);
+  --surface-icon-static-white-muted: hsla(0, 0%, 100%, 0.32);
+  --surface-icon-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --surface-icon-static-black-normal: hsla(0, 0%, 0%, 1);
+  --surface-icon-static-black-subtle: hsla(0, 0%, 0%, 0.32);
+  --surface-icon-static-black-muted: hsla(0, 0%, 0%, 0.32);
+  --surface-icon-static-black-disabled: hsla(0, 0%, 0%, 0.09);
+
+  /* Feedback Colors */
+  --feedback-background-positive-subtle: hsla(150, 100%, 32%, 0.09);
+  --feedback-background-positive-intense: hsla(150, 100%, 32%, 1);
+  --feedback-background-negative-subtle: hsla(4, 74%, 49%, 0.09);
+  --feedback-background-negative-intense: hsla(4, 74%, 49%, 1);
+  --feedback-background-notice-subtle: hsla(25, 90%, 48%, 0.09);
+  --feedback-background-notice-intense: hsla(25, 90%, 48%, 1);
+  --feedback-background-information-subtle: hsla(200, 84%, 44%, 0.09);
+  --feedback-background-information-intense: hsla(200, 84%, 44%, 1);
+  --feedback-background-neutral-subtle: hsla(211, 20%, 52%, 0.09);
+  --feedback-background-neutral-intense: hsla(211, 29%, 26%, 1);
+
+  --feedback-border-positive-subtle: hsla(150, 100%, 32%, 0.18);
+  --feedback-border-positive-intense: hsla(150, 100%, 27%, 1);
+  --feedback-border-negative-subtle: hsla(4, 74%, 49%, 0.18);
+  --feedback-border-negative-intense: hsla(4, 77%, 40%, 1);
+  --feedback-border-notice-subtle: hsla(25, 90%, 48%, 0.18);
+  --feedback-border-notice-intense: hsla(25, 85%, 42%, 1);
+  --feedback-border-information-subtle: hsla(200, 84%, 44%, 0.18);
+  --feedback-border-information-intense: hsla(200, 84%, 37%, 1);
+  --feedback-border-neutral-subtle: hsla(211, 20%, 52%, 0.18);
+  --feedback-border-neutral-intense: hsla(211, 33%, 21%, 1);
+
+  --feedback-text-positive-subtle: hsla(150, 59%, 73%, 1);
+  --feedback-text-positive-intense: hsla(150, 100%, 27%, 1);
+  --feedback-text-negative-subtle: hsla(4, 93%, 68%, 1);
+  --feedback-text-negative-intense: hsla(4, 74%, 49%, 1);
+  --feedback-text-notice-subtle: hsla(25, 100%, 72%, 1);
+  --feedback-text-notice-intense: hsla(25, 85%, 42%, 1);
+  --feedback-text-information-subtle: hsla(200, 90%, 72%, 1);
+  --feedback-text-information-intense: hsla(200, 84%, 37%, 1);
+  --feedback-text-neutral-subtle: hsla(211, 24%, 65%, 1);
+  --feedback-text-neutral-intense: hsla(211, 33%, 21%, 1);
+
+  --feedback-icon-positive-subtle: hsla(150, 59%, 73%, 1);
+  --feedback-icon-positive-intense: hsla(150, 100%, 27%, 1);
+  --feedback-icon-negative-subtle: hsla(4, 93%, 68%, 1);
+  --feedback-icon-negative-intense: hsla(4, 74%, 49%, 1);
+  --feedback-icon-notice-subtle: hsla(25, 100%, 72%, 1);
+  --feedback-icon-notice-intense: hsla(25, 85%, 42%, 1);
+  --feedback-icon-information-subtle: hsla(200, 90%, 72%, 1);
+  --feedback-icon-information-intense: hsla(200, 84%, 37%, 1);
+  --feedback-icon-neutral-subtle: hsla(211, 24%, 65%, 1);
+  --feedback-icon-neutral-intense: hsla(211, 33%, 21%, 1);
+
+  /* Interactive Colors */
+  --interactive-background-positive-default: hsla(150, 100%, 32%, 1);
+  --interactive-background-positive-highlighted: hsla(150, 100%, 27%, 1);
+  --interactive-background-positive-disabled: hsla(150, 100%, 32%, 0.09);
+  --interactive-background-positive-faded: hsla(150, 100%, 32%, 0.09);
+  --interactive-background-positive-faded-highlighted: hsla(150, 100%, 32%, 0.18);
+
+  --interactive-background-negative-default: hsla(4, 74%, 49%, 1);
+  --interactive-background-negative-highlighted: hsla(4, 77%, 40%, 1);
+  --interactive-background-negative-disabled: hsla(4, 74%, 49%, 0.09);
+  --interactive-background-negative-faded: hsla(4, 74%, 49%, 0.09);
+  --interactive-background-negative-faded-highlighted: hsla(4, 74%, 49%, 0.18);
+
+  --interactive-background-notice-default: hsla(25, 90%, 48%, 1);
+  --interactive-background-notice-highlighted: hsla(25, 85%, 42%, 1);
+  --interactive-background-notice-disabled: hsla(25, 90%, 48%, 0.09);
+  --interactive-background-notice-faded: hsla(25, 90%, 48%, 0.09);
+  --interactive-background-notice-faded-highlighted: hsla(25, 90%, 48%, 0.18);
+
+  --interactive-background-information-default: hsla(200, 84%, 44%, 1);
+  --interactive-background-information-highlighted: hsla(200, 84%, 37%, 1);
+  --interactive-background-information-disabled: hsla(200, 84%, 44%, 0.09);
+  --interactive-background-information-faded: hsla(200, 84%, 44%, 0.09);
+  --interactive-background-information-faded-highlighted: hsla(200, 84%, 44%, 0.18);
+
+  --interactive-background-neutral-default: hsla(211, 29%, 26%, 1);
+  --interactive-background-neutral-highlighted: hsla(211, 33%, 21%, 1);
+  --interactive-background-neutral-disabled: hsla(211, 20%, 52%, 0.18);
+  --interactive-background-neutral-faded: hsla(211, 20%, 52%, 0.18);
+  --interactive-background-neutral-faded-highlighted: hsla(211, 20%, 52%, 0.32);
+
+  --interactive-background-gray-default: hsla(211, 20%, 52%, 0.32);
+  --interactive-background-gray-highlighted: hsla(211, 20%, 52%, 0.48);
+  --interactive-background-gray-disabled: hsla(211, 20%, 52%, 0.18);
+  --interactive-background-gray-faded: hsla(211, 20%, 52%, 0.12);
+  --interactive-background-gray-faded-highlighted: hsla(211, 20%, 52%, 0.32);
+
+  --interactive-background-primary-default: hsla(227, 100%, 59%, 1);
+  --interactive-background-primary-highlighted: hsla(227, 71%, 51%, 1);
+  --interactive-background-primary-disabled: hsla(227, 100%, 59%, 0.18);
+  --interactive-background-primary-faded: hsla(227, 100%, 59%, 0.09);
+  --interactive-background-primary-faded-highlighted: hsla(227, 100%, 59%, 0.18);
+
+  --interactive-background-static-black-default: hsla(0, 0%, 0%, 1);
+  --interactive-background-static-black-highlighted: hsla(0, 0%, 0%, 1);
+  --interactive-background-static-black-disabled: hsla(0, 0%, 0%, 0.32);
+  --interactive-background-static-black-faded: hsla(0, 0%, 0%, 0.09);
+  --interactive-background-static-black-faded-highlighted: hsla(0, 0%, 0%, 0.18);
+
+  --interactive-background-static-white-default: hsla(0, 0%, 100%, 1);
+  --interactive-background-static-white-highlighted: hsla(0, 0%, 100%, 0.88);
+  --interactive-background-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+  --interactive-background-static-white-faded: hsla(0, 0%, 100%, 0.09);
+  --interactive-background-static-white-faded-highlighted: hsla(0, 0%, 100%, 0.18);
+
+  /* Interactive Border Colors */
+  --interactive-border-positive-default: hsla(150, 100%, 32%, 1);
+  --interactive-border-positive-highlighted: hsla(150, 100%, 27%, 1);
+  --interactive-border-positive-disabled: hsla(150, 100%, 32%, 0.18);
+  --interactive-border-positive-faded: hsla(150, 100%, 32%, 0.18);
+
+  --interactive-border-negative-default: hsla(4, 74%, 49%, 1);
+  --interactive-border-negative-highlighted: hsla(4, 77%, 40%, 1);
+  --interactive-border-negative-disabled: hsla(4, 74%, 49%, 0.18);
+  --interactive-border-negative-faded: hsla(4, 74%, 49%, 0.18);
+
+  --interactive-border-notice-default: hsla(25, 90%, 48%, 1);
+  --interactive-border-notice-highlighted: hsla(25, 85%, 42%, 1);
+  --interactive-border-notice-disabled: hsla(25, 90%, 48%, 0.18);
+  --interactive-border-notice-faded: hsla(25, 90%, 48%, 0.18);
+
+  --interactive-border-information-default: hsla(200, 84%, 44%, 1);
+  --interactive-border-information-highlighted: hsla(200, 84%, 37%, 1);
+  --interactive-border-information-disabled: hsla(200, 84%, 44%, 0.18);
+  --interactive-border-information-faded: hsla(200, 84%, 44%, 0.18);
+
+  --interactive-border-neutral-default: hsla(211, 20%, 52%, 1);
+  --interactive-border-neutral-highlighted: hsla(211, 20%, 52%, 1);
+  --interactive-border-neutral-disabled: hsla(214, 28%, 84%, 1);
+  --interactive-border-neutral-faded: hsla(211, 20%, 52%, 0.18);
+
+  --interactive-border-gray-default: hsla(214, 28%, 84%, 1);
+  --interactive-border-gray-highlighted: hsla(214, 28%, 84%, 1);
+  --interactive-border-gray-disabled: hsla(214, 40%, 92%, 1);
+  --interactive-border-gray-faded: hsla(211, 20%, 52%, 0.18);
+
+  --interactive-border-primary-default: hsla(227, 100%, 59%, 1);
+  --interactive-border-primary-highlighted: hsla(227, 100%, 59%, 1);
+  --interactive-border-primary-disabled: hsla(227, 100%, 59%, 0.18);
+  --interactive-border-primary-faded: hsla(227, 100%, 59%, 0.18);
+
+  --interactive-border-static-white-default: hsla(0, 0%, 100%, 1);
+  --interactive-border-static-white-highlighted: hsla(0, 0%, 100%, 0.88);
+  --interactive-border-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+  --interactive-border-static-white-faded: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-border-static-black-default: hsla(0, 0%, 0%, 1);
+  --interactive-border-static-black-highlighted: hsla(0, 0%, 0%, 1);
+  --interactive-border-static-black-disabled: hsla(0, 0%, 0%, 0.09);
+  --interactive-border-static-black-faded: hsla(0, 0%, 0%, 0.09);
+
+  /* Interactive Text Colors */
+  --interactive-text-positive-normal: hsla(150, 100%, 27%, 1);
+  --interactive-text-positive-subtle: hsla(150, 100%, 32%, 1);
+  --interactive-text-positive-muted: hsla(150, 59%, 55%, 1);
+  --interactive-text-positive-disabled: hsla(150, 100%, 32%, 0.32);
+
+  --interactive-text-negative-normal: hsla(4, 74%, 49%, 1);
+  --interactive-text-negative-subtle: hsla(4, 86%, 58%, 1);
+  --interactive-text-negative-muted: hsla(4, 93%, 68%, 1);
+  --interactive-text-negative-disabled: hsla(4, 74%, 49%, 0.32);
+
+  --interactive-text-notice-normal: hsla(25, 85%, 42%, 1);
+  --interactive-text-notice-subtle: hsla(25, 90%, 48%, 1);
+  --interactive-text-notice-muted: hsla(25, 100%, 63%, 1);
+  --interactive-text-notice-disabled: hsla(25, 90%, 48%, 0.32);
+
+  --interactive-text-information-normal: hsla(200, 84%, 37%, 1);
+  --interactive-text-information-subtle: hsla(200, 84%, 44%, 1);
+  --interactive-text-information-muted: hsla(200, 90%, 65%, 1);
+  --interactive-text-information-disabled: hsla(200, 84%, 44%, 0.32);
+
+  --interactive-text-neutral-normal: hsla(211, 33%, 21%, 1);
+  --interactive-text-neutral-subtle: hsla(211, 26%, 34%, 1);
+  --interactive-text-neutral-muted: hsla(211, 22%, 56%, 1);
+  --interactive-text-neutral-disabled: hsla(211, 20%, 52%, 0.32);
+
+  --interactive-text-gray-normal: hsla(212, 39%, 16%, 1);
+  --interactive-text-gray-subtle: hsla(211, 26%, 34%, 1);
+  --interactive-text-gray-muted: hsla(211, 22%, 56%, 1);
+  --interactive-text-gray-disabled: hsla(211, 20%, 52%, 0.32);
+
+  --interactive-text-primary-normal: hsla(227, 71%, 51%, 1);
+  --interactive-text-primary-subtle: hsla(227, 100%, 59%, 1);
+  --interactive-text-primary-muted: hsla(223, 100%, 65%, 1);
+  --interactive-text-primary-disabled: hsla(227, 100%, 59%, 0.32);
+
+  --interactive-text-on-primary-normal: hsla(0, 0%, 100%, 1);
+  --interactive-text-on-primary-subtle: hsla(0, 0%, 100%, 0.88);
+  --interactive-text-on-primary-muted: hsla(0, 0%, 100%, 0.32);
+  --interactive-text-on-primary-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-text-static-white-normal: hsla(0, 0%, 100%, 1);
+  --interactive-text-static-white-subtle: hsla(0, 0%, 100%, 0.88);
+  --interactive-text-static-white-muted: hsla(0, 0%, 100%, 0.32);
+  --interactive-text-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-text-static-black-normal: hsla(0, 0%, 0%, 1);
+  --interactive-text-static-black-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-text-static-black-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-text-static-black-disabled: hsla(0, 0%, 0%, 0.32);
+
+  /* Interactive Icon Colors */
+  --interactive-icon-positive-normal: hsla(150, 100%, 27%, 1);
+  --interactive-icon-positive-subtle: hsla(150, 100%, 32%, 1);
+  --interactive-icon-positive-muted: hsla(150, 59%, 55%, 1);
+  --interactive-icon-positive-disabled: hsla(150, 100%, 32%, 0.32);
+
+  --interactive-icon-negative-normal: hsla(4, 74%, 49%, 1);
+  --interactive-icon-negative-subtle: hsla(4, 86%, 58%, 1);
+  --interactive-icon-negative-muted: hsla(4, 93%, 68%, 1);
+  --interactive-icon-negative-disabled: hsla(4, 74%, 49%, 0.32);
+
+  --interactive-icon-notice-normal: hsla(25, 85%, 42%, 1);
+  --interactive-icon-notice-subtle: hsla(25, 90%, 48%, 1);
+  --interactive-icon-notice-muted: hsla(25, 100%, 63%, 1);
+  --interactive-icon-notice-disabled: hsla(25, 90%, 48%, 0.32);
+
+  --interactive-icon-information-normal: hsla(200, 84%, 37%, 1);
+  --interactive-icon-information-subtle: hsla(200, 84%, 44%, 1);
+  --interactive-icon-information-muted: hsla(200, 90%, 65%, 1);
+  --interactive-icon-information-disabled: hsla(200, 84%, 44%, 0.32);
+
+  --interactive-icon-neutral-normal: hsla(211, 33%, 21%, 1);
+  --interactive-icon-neutral-subtle: hsla(211, 26%, 34%, 1);
+  --interactive-icon-neutral-muted: hsla(211, 22%, 56%, 1);
+  --interactive-icon-neutral-disabled: hsla(211, 20%, 52%, 0.32);
+
+  --interactive-icon-gray-normal: hsla(212, 39%, 16%, 1);
+  --interactive-icon-gray-subtle: hsla(211, 26%, 34%, 1);
+  --interactive-icon-gray-muted: hsla(211, 22%, 56%, 1);
+  --interactive-icon-gray-disabled: hsla(211, 20%, 52%, 0.32);
+
+  --interactive-icon-primary-normal: hsla(227, 71%, 51%, 1);
+  --interactive-icon-primary-subtle: hsla(227, 100%, 59%, 1);
+  --interactive-icon-primary-muted: hsla(223, 100%, 65%, 1);
+  --interactive-icon-primary-disabled: hsla(227, 100%, 59%, 0.32);
+
+  --interactive-icon-on-primary-normal: hsla(0, 0%, 100%, 1);
+  --interactive-icon-on-primary-subtle: hsla(0, 0%, 100%, 0.88);
+  --interactive-icon-on-primary-muted: hsla(0, 0%, 100%, 0.32);
+  --interactive-icon-on-primary-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-icon-static-white-normal: hsla(0, 0%, 100%, 1);
+  --interactive-icon-static-white-subtle: hsla(0, 0%, 100%, 0.88);
+  --interactive-icon-static-white-muted: hsla(0, 0%, 100%, 0.32);
+  --interactive-icon-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-icon-static-black-normal: hsla(0, 0%, 0%, 1);
+  --interactive-icon-static-black-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-icon-static-black-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-icon-static-black-disabled: hsla(0, 0%, 0%, 0.32);
+
+  /* Overlay Colors */
+  --overlay-background-moderate: hsla(211, 20%, 52%, 0.32);
+  --overlay-background-subtle: hsla(0, 0%, 0%, 0.32);
+
+  /* Popup Colors */
+  --popup-background-subtle: hsla(0, 0%, 100%, 1);
+  --popup-background-intense: hsla(211, 29%, 26%, 1);
+  --popup-border-subtle: hsla(211, 20%, 52%, 0.18);
+  --popup-border-intense: hsla(211, 26%, 34%, 1);
+
+  /* Transparent */
+  --transparent: hsla(0, 0%, 100%, 0);
+}
+
+/* Dark Mode */
+:root body[data-theme='dark'] {
+  /* Surface Colors - Dark */
+  --surface-background-gray-subtle: hsla(214, 44%, 7%, 1);
+  --surface-background-gray-moderate: hsla(216, 30%, 13%, 1);
+  --surface-background-gray-intense: hsla(217, 27%, 15%, 1);
+
+  --surface-background-primary-subtle: hsla(227, 100%, 59%, 0.32);
+  --surface-background-primary-intense: hsla(227, 100%, 59%, 1);
+
+  --surface-background-sea-subtle: hsla(180, 91%, 13%, 1);
+  --surface-background-sea-intense: hsla(180, 39%, 95%, 1);
+
+  --surface-background-cloud-subtle: hsla(200, 91%, 13%, 1);
+  --surface-background-cloud-intense: hsla(200, 39%, 95%, 1);
+
+  /* Surface Borders - Dark */
+  --surface-border-gray-normal: hsla(216, 24%, 31%, 1);
+  --surface-border-gray-subtle: hsla(217, 27%, 21%, 1);
+  --surface-border-gray-muted: hsla(214, 20%, 84%, 0.18);
+
+  --surface-border-primary-normal: hsla(227, 100%, 59%, 1);
+  --surface-border-primary-muted: hsla(227, 100%, 59%, 0.32);
+
+  /* Surface Text - Dark */
+  --surface-text-gray-normal: hsla(240, 20%, 99%, 1);
+  --surface-text-gray-subtle: hsla(220, 22%, 92%, 1);
+  --surface-text-gray-muted: hsla(216, 18%, 62%, 1);
+  --surface-text-gray-disabled: hsla(214, 20%, 84%, 0.32);
+
+  --surface-text-primary-normal: hsla(220, 100%, 73%, 1);
+
+  --surface-text-on-sea-subtle: hsla(155, 100%, 31%, 1);
+  --surface-text-on-sea-intense: hsla(155, 100%, 21%, 1);
+
+  --surface-text-on-cloud-subtle: hsla(200, 60%, 30%, 1);
+  --surface-text-on-cloud-intense: hsla(200, 60%, 30%, 1);
+
+  /* Surface Icons - Dark */
+  --surface-icon-gray-normal: hsla(240, 20%, 99%, 1);
+  --surface-icon-gray-subtle: hsla(220, 22%, 92%, 1);
+  --surface-icon-gray-muted: hsla(216, 18%, 62%, 1);
+  --surface-icon-gray-disabled: hsla(214, 20%, 84%, 0.32);
+
+  --surface-icon-primary-normal: hsla(220, 100%, 73%, 1);
+
+  --surface-icon-on-sea-subtle: hsla(155, 100%, 21%, 1);
+  --surface-icon-on-sea-intense: hsla(155, 100%, 31%, 1);
+
+  --surface-icon-on-cloud-subtle: hsla(200, 60%, 30%, 1);
+  --surface-icon-on-cloud-intense: hsla(200, 60%, 30%, 1);
+
+  /* Feedback Colors - Dark */
+  --feedback-background-positive-subtle: hsla(150, 100%, 32%, 0.18);
+  --feedback-background-positive-intense: hsla(150, 100%, 27%, 1);
+  --feedback-background-negative-subtle: hsla(4, 74%, 49%, 0.18);
+  --feedback-background-negative-intense: hsla(4, 77%, 40%, 1);
+  --feedback-background-notice-subtle: hsla(25, 90%, 48%, 0.18);
+  --feedback-background-notice-intense: hsla(25, 85%, 42%, 1);
+  --feedback-background-information-subtle: hsla(200, 84%, 44%, 0.18);
+  --feedback-background-information-intense: hsla(200, 84%, 37%, 1);
+  --feedback-background-neutral-subtle: hsla(214, 20%, 84%, 0.18);
+  --feedback-background-neutral-intense: hsla(218, 26%, 18%, 1);
+
+  --feedback-border-positive-subtle: hsla(150, 100%, 32%, 0.32);
+  --feedback-border-positive-intense: hsla(150, 100%, 21%, 1);
+  --feedback-border-negative-subtle: hsla(4, 74%, 49%, 0.32);
+  --feedback-border-negative-intense: hsla(0, 83%, 33%, 1);
+  --feedback-border-notice-subtle: hsla(25, 90%, 48%, 0.32);
+  --feedback-border-notice-intense: hsla(25, 82%, 35%, 1);
+  --feedback-border-information-subtle: hsla(200, 84%, 44%, 0.32);
+  --feedback-border-information-intense: hsla(200, 84%, 29%, 1);
+  --feedback-border-neutral-subtle: hsla(214, 20%, 84%, 0.18);
+  --feedback-border-neutral-intense: hsla(218, 26%, 18%, 1);
+
+  --feedback-text-positive-subtle: hsla(150, 39%, 95%, 1);
+  --feedback-text-positive-intense: hsla(150, 59%, 55%, 1);
+  --feedback-text-negative-subtle: hsla(4, 93%, 94%, 1);
+  --feedback-text-negative-intense: hsla(4, 93%, 68%, 1);
+  --feedback-text-notice-subtle: hsla(25, 100%, 96%, 1);
+  --feedback-text-notice-intense: hsla(25, 100%, 80%, 1);
+  --feedback-text-information-subtle: hsla(201, 92%, 95%, 1);
+  --feedback-text-information-intense: hsla(200, 90%, 65%, 1);
+  --feedback-text-neutral-subtle: hsla(215, 20%, 43%, 1);
+  --feedback-text-neutral-intense: hsla(220, 22%, 92%, 1);
+
+  --feedback-icon-positive-subtle: hsla(150, 39%, 95%, 1);
+  --feedback-icon-positive-intense: hsla(150, 59%, 55%, 1);
+  --feedback-icon-negative-subtle: hsla(4, 93%, 94%, 1);
+  --feedback-icon-negative-intense: hsla(4, 93%, 68%, 1);
+  --feedback-icon-notice-subtle: hsla(25, 100%, 96%, 1);
+  --feedback-icon-notice-intense: hsla(25, 100%, 80%, 1);
+  --feedback-icon-information-subtle: hsla(201, 92%, 95%, 1);
+  --feedback-icon-information-intense: hsla(200, 90%, 65%, 1);
+  --feedback-icon-neutral-subtle: hsla(216, 27%, 24%, 1);
+  --feedback-icon-neutral-intense: hsla(220, 22%, 92%, 1);
+
+  /* Interactive Colors - Dark */
+  --interactive-background-positive-default: hsla(150, 100%, 32%, 1);
+  --interactive-background-positive-highlighted: hsla(150, 100%, 27%, 1);
+  --interactive-background-positive-disabled: hsla(150, 100%, 32%, 0.18);
+  --interactive-background-positive-faded: hsla(150, 100%, 32%, 0.24);
+  --interactive-background-positive-faded-highlighted: hsla(150, 100%, 32%, 0.32);
+
+  --interactive-background-negative-default: hsla(4, 74%, 49%, 1);
+  --interactive-background-negative-highlighted: hsla(4, 77%, 40%, 1);
+  --interactive-background-negative-disabled: hsla(4, 74%, 49%, 0.18);
+  --interactive-background-negative-faded: hsla(4, 74%, 49%, 0.24);
+  --interactive-background-negative-faded-highlighted: hsla(4, 74%, 49%, 0.32);
+
+  --interactive-background-notice-default: hsla(25, 90%, 48%, 1);
+  --interactive-background-notice-highlighted: hsla(25, 85%, 42%, 1);
+  --interactive-background-notice-disabled: hsla(25, 90%, 48%, 0.18);
+  --interactive-background-notice-faded: hsla(25, 90%, 48%, 0.24);
+  --interactive-background-notice-faded-highlighted: hsla(25, 90%, 48%, 0.32);
+
+  --interactive-background-information-default: hsla(200, 84%, 44%, 1);
+  --interactive-background-information-highlighted: hsla(200, 84%, 37%, 1);
+  --interactive-background-information-disabled: hsla(200, 84%, 44%, 0.18);
+  --interactive-background-information-faded: hsla(200, 84%, 44%, 0.24);
+  --interactive-background-information-faded-highlighted: hsla(200, 84%, 44%, 0.32);
+
+  --interactive-background-neutral-default: hsla(220, 22%, 92%, 1);
+  --interactive-background-neutral-highlighted: hsla(214, 20%, 84%, 1);
+  --interactive-background-neutral-disabled: hsla(214, 20%, 84%, 0.18);
+  --interactive-background-neutral-faded: hsla(214, 20%, 84%, 0.32);
+  --interactive-background-neutral-faded-highlighted: hsla(214, 20%, 84%, 0.18);
+
+  --interactive-background-gray-default: hsla(214, 20%, 84%, 0.32);
+  --interactive-background-gray-highlighted: hsla(214, 20%, 84%, 0.48);
+  --interactive-background-gray-disabled: hsla(214, 20%, 84%, 0.18);
+  --interactive-background-gray-faded: hsla(214, 20%, 84%, 0.12);
+  --interactive-background-gray-faded-highlighted: hsla(214, 20%, 84%, 0.32);
+
+  --interactive-background-primary-default: hsla(223, 100%, 65%, 1);
+  --interactive-background-primary-highlighted: hsla(227, 100%, 59%, 1);
+  --interactive-background-primary-disabled: hsla(227, 100%, 59%, 0.24);
+  --interactive-background-primary-faded: hsla(227, 100%, 59%, 0.24);
+  --interactive-background-primary-faded-highlighted: hsla(227, 100%, 59%, 0.32);
+
+  --interactive-background-static-black-default: hsla(0, 0%, 0%, 1);
+  --interactive-background-static-black-highlighted: hsla(0, 0%, 0%, 1);
+  --interactive-background-static-black-disabled: hsla(0, 0%, 0%, 0.32);
+  --interactive-background-static-black-faded: hsla(0, 0%, 0%, 0.09);
+  --interactive-background-static-black-faded-highlighted: hsla(0, 0%, 0%, 0.18);
+
+  --interactive-background-static-white-default: hsla(0, 0%, 100%, 1);
+  --interactive-background-static-white-highlighted: hsla(0, 0%, 100%, 0.88);
+  --interactive-background-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+  --interactive-background-static-white-faded: hsla(0, 0%, 100%, 0.09);
+  --interactive-background-static-white-faded-highlighted: hsla(0, 0%, 100%, 0.18);
+
+  /* Interactive Border Colors - Dark */
+  --interactive-border-positive-default: hsla(150, 100%, 32%, 1);
+  --interactive-border-positive-highlighted: hsla(150, 100%, 27%, 1);
+  --interactive-border-positive-disabled: hsla(150, 100%, 32%, 0.18);
+  --interactive-border-positive-faded: hsla(150, 100%, 32%, 0.18);
+
+  --interactive-border-negative-default: hsla(4, 74%, 49%, 1);
+  --interactive-border-negative-highlighted: hsla(4, 77%, 40%, 1);
+  --interactive-border-negative-disabled: hsla(4, 74%, 49%, 0.18);
+  --interactive-border-negative-faded: hsla(4, 74%, 49%, 0.18);
+
+  --interactive-border-notice-default: hsla(25, 90%, 48%, 1);
+  --interactive-border-notice-highlighted: hsla(25, 85%, 42%, 1);
+  --interactive-border-notice-disabled: hsla(25, 90%, 48%, 0.18);
+  --interactive-border-notice-faded: hsla(25, 90%, 48%, 0.18);
+
+  --interactive-border-information-default: hsla(200, 84%, 44%, 1);
+  --interactive-border-information-highlighted: hsla(200, 84%, 37%, 1);
+  --interactive-border-information-disabled: hsla(200, 84%, 44%, 0.18);
+  --interactive-border-information-faded: hsla(200, 84%, 44%, 0.18);
+
+  --interactive-border-neutral-default: hsla(214, 20%, 84%, 1);
+  --interactive-border-neutral-highlighted: hsla(214, 20%, 84%, 1);
+  --interactive-border-neutral-disabled: hsla(217, 27%, 21%, 1);
+  --interactive-border-neutral-faded: hsla(214, 20%, 84%, 0.18);
+
+  --interactive-border-gray-default: hsla(216, 24%, 31%, 1);
+  --interactive-border-gray-highlighted: hsla(216, 24%, 31%, 1);
+  --interactive-border-gray-disabled: hsla(216, 27%, 24%, 1);
+  --interactive-border-gray-faded: hsla(214, 20%, 84%, 0.18);
+
+  --interactive-border-primary-default: hsla(223, 100%, 65%, 1);
+  --interactive-border-primary-highlighted: hsla(227, 100%, 59%, 1);
+  --interactive-border-primary-disabled: hsla(227, 100%, 59%, 0.32);
+  --interactive-border-primary-faded: hsla(227, 100%, 59%, 0.24);
+
+  --interactive-border-static-white-default: hsla(0, 0%, 100%, 1);
+  --interactive-border-static-white-highlighted: hsla(0, 0%, 100%, 0.88);
+  --interactive-border-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+  --interactive-border-static-white-faded: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-border-static-black-default: hsla(0, 0%, 0%, 1);
+  --interactive-border-static-black-highlighted: hsla(0, 0%, 0%, 1);
+  --interactive-border-static-black-disabled: hsla(0, 0%, 0%, 0.09);
+  --interactive-border-static-black-faded: hsla(0, 0%, 0%, 0.09);
+
+  /* Interactive Text Colors - Dark */
+  --interactive-text-positive-normal: hsla(150, 59%, 55%, 1);
+  --interactive-text-positive-subtle: hsla(150, 100%, 37%, 1);
+  --interactive-text-positive-muted: hsla(150, 100%, 27%, 1);
+  --interactive-text-positive-disabled: hsla(150, 100%, 32%, 0.32);
+
+  --interactive-text-negative-normal: hsla(4, 93%, 68%, 1);
+  --interactive-text-negative-subtle: hsla(4, 86%, 58%, 1);
+  --interactive-text-negative-muted: hsla(4, 77%, 40%, 1);
+  --interactive-text-negative-disabled: hsla(4, 74%, 49%, 0.48);
+
+  --interactive-text-notice-normal: hsla(25, 100%, 80%, 1);
+  --interactive-text-notice-subtle: hsla(25, 90%, 48%, 1);
+  --interactive-text-notice-muted: hsla(25, 85%, 42%, 1);
+  --interactive-text-notice-disabled: hsla(25, 90%, 48%, 0.32);
+
+  --interactive-text-information-normal: hsla(200, 90%, 65%, 1);
+  --interactive-text-information-subtle: hsla(200, 84%, 44%, 1);
+  --interactive-text-information-muted: hsla(200, 84%, 37%, 1);
+  --interactive-text-information-disabled: hsla(200, 84%, 44%, 0.48);
+
+  --interactive-text-neutral-normal: hsla(220, 22%, 92%, 1);
+  --interactive-text-neutral-subtle: hsla(216, 18%, 62%, 1);
+  --interactive-text-neutral-muted: hsla(216, 24%, 31%, 1);
+  --interactive-text-neutral-disabled: hsla(214, 20%, 84%, 0.32);
+
+  --interactive-text-gray-normal: hsla(240, 20%, 99%, 1);
+  --interactive-text-gray-subtle: hsla(220, 22%, 92%, 1);
+  --interactive-text-gray-muted: hsla(216, 18%, 62%, 1);
+  --interactive-text-gray-disabled: hsla(214, 20%, 84%, 0.32);
+
+  --interactive-text-primary-normal: hsla(220, 100%, 73%, 1);
+  --interactive-text-primary-subtle: hsla(223, 100%, 65%, 1);
+  --interactive-text-primary-muted: hsla(227, 71%, 51%, 1);
+  --interactive-text-primary-disabled: hsla(227, 100%, 59%, 0.48);
+
+  --interactive-text-on-primary-normal: hsla(0, 0%, 100%, 1);
+  --interactive-text-on-primary-subtle: hsla(0, 0%, 100%, 0.88);
+  --interactive-text-on-primary-muted: hsla(0, 0%, 100%, 0.32);
+  --interactive-text-on-primary-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-text-static-white-normal: hsla(0, 0%, 100%, 1);
+  --interactive-text-static-white-subtle: hsla(0, 0%, 100%, 0.88);
+  --interactive-text-static-white-muted: hsla(0, 0%, 100%, 0.32);
+  --interactive-text-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-text-static-black-normal: hsla(0, 0%, 0%, 1);
+  --interactive-text-static-black-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-text-static-black-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-text-static-black-disabled: hsla(0, 0%, 0%, 0.32);
+
+  /* Interactive Icon Colors - Dark */
+  --interactive-icon-positive-normal: hsla(150, 59%, 55%, 1);
+  --interactive-icon-positive-subtle: hsla(150, 100%, 37%, 1);
+  --interactive-icon-positive-muted: hsla(150, 100%, 27%, 1);
+  --interactive-icon-positive-disabled: hsla(150, 100%, 32%, 0.32);
+
+  --interactive-icon-negative-normal: hsla(4, 93%, 68%, 1);
+  --interactive-icon-negative-subtle: hsla(4, 86%, 58%, 1);
+  --interactive-icon-negative-muted: hsla(4, 77%, 40%, 1);
+  --interactive-icon-negative-disabled: hsla(4, 74%, 49%, 0.48);
+
+  --interactive-icon-notice-normal: hsla(25, 100%, 80%, 1);
+  --interactive-icon-notice-subtle: hsla(25, 90%, 48%, 1);
+  --interactive-icon-notice-muted: hsla(25, 85%, 42%, 1);
+  --interactive-icon-notice-disabled: hsla(25, 90%, 48%, 0.32);
+
+  --interactive-icon-information-normal: hsla(200, 90%, 65%, 1);
+  --interactive-icon-information-subtle: hsla(200, 84%, 44%, 1);
+  --interactive-icon-information-muted: hsla(200, 84%, 37%, 1);
+  --interactive-icon-information-disabled: hsla(200, 84%, 44%, 0.48);
+
+  --interactive-icon-neutral-normal: hsla(220, 22%, 92%, 1);
+  --interactive-icon-neutral-subtle: hsla(216, 18%, 62%, 1);
+  --interactive-icon-neutral-muted: hsla(216, 24%, 31%, 1);
+  --interactive-icon-neutral-disabled: hsla(214, 20%, 84%, 0.32);
+
+  --interactive-icon-gray-normal: hsla(240, 20%, 99%, 1);
+  --interactive-icon-gray-subtle: hsla(220, 22%, 92%, 1);
+  --interactive-icon-gray-muted: hsla(216, 18%, 62%, 1);
+  --interactive-icon-gray-disabled: hsla(214, 20%, 84%, 0.32);
+
+  --interactive-icon-primary-normal: hsla(220, 100%, 73%, 1);
+  --interactive-icon-primary-subtle: hsla(223, 100%, 65%, 1);
+  --interactive-icon-primary-muted: hsla(227, 71%, 51%, 1);
+  --interactive-icon-primary-disabled: hsla(227, 100%, 59%, 0.48);
+
+  --interactive-icon-on-primary-normal: hsla(0, 0%, 100%, 1);
+  --interactive-icon-on-primary-subtle: hsla(0, 0%, 100%, 0.88);
+  --interactive-icon-on-primary-muted: hsla(0, 0%, 100%, 0.32);
+  --interactive-icon-on-primary-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-icon-static-white-normal: hsla(0, 0%, 100%, 1);
+  --interactive-icon-static-white-subtle: hsla(0, 0%, 100%, 0.88);
+  --interactive-icon-static-white-muted: hsla(0, 0%, 100%, 0.32);
+  --interactive-icon-static-white-disabled: hsla(0, 0%, 100%, 0.09);
+
+  --interactive-icon-static-black-normal: hsla(0, 0%, 0%, 1);
+  --interactive-icon-static-black-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-icon-static-black-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-icon-static-black-disabled: hsla(0, 0%, 0%, 0.32);
+
+  /* Overlay Colors - Dark */
+  --overlay-background-moderate: hsla(214, 20%, 84%, 0.32);
+  --overlay-background-subtle: hsla(0, 0%, 0%, 0.48);
+
+  /* Popup Colors - Dark */
+  --popup-background-subtle: hsla(217, 27%, 15%, 1);
+  --popup-background-intense: hsla(216, 27%, 24%, 1);
+  --popup-border-subtle: hsla(214, 20%, 84%, 0.18);
+  --popup-border-intense: hsla(214, 20%, 84%, 0.18);
+
+  /* Transparent - Dark */
+  --transparent: hsla(217, 27%, 15%, 0);
+}
+
+/* Mobile Typography Overrides */
+@media (max-width: 767px) {
+  :root {
+    --font-size-300: 16px;
+    --font-size-400: 18px;
+    --font-size-500: 20px;
+    --font-size-600: 24px;
+    --font-size-700: 32px;
+    --font-size-800: 34px;
+    --font-size-900: 36px;
+    --font-size-1000: 38px;
+    --font-size-1100: 40px;
+
+    --line-height-300: 22px;
+    --line-height-400: 24px;
+    --line-height-500: 26px;
+    --line-height-600: 32px;
+    --line-height-700: 38px;
+    --line-height-800: 40px;
+    --line-height-900: 42px;
+    --line-height-1000: 46px;
+    --line-height-1100: 48px;
+  }
+}
+
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+/* Focus Ring Utility */
+.focus-ring:focus-visible {
+  box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);
+}
+
+/* Focus Ring for child elements (when parent receives focus) */
+.focus-ring-parent:focus-visible .focus-ring-child {
+  box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);
+}
+
+/* ===== STYLED PROPS UTILITY CLASSES ===== */
+
+/* Display */
+.display-block { display: block; }
+.display-inline { display: inline; }
+.display-inline-block { display: inline-block; }
+.display-flex { display: flex; }
+.display-inline-flex { display: inline-flex; }
+.display-grid { display: grid; }
+.display-inline-grid { display: inline-grid; }
+.display-none { display: none; }
+.display-contents { display: contents; }
+
+/* Visibility */
+.visibility-visible { visibility: visible; }
+.visibility-hidden { visibility: hidden; }
+.visibility-collapse { visibility: collapse; }
+
+/* Position */
+.position-static { position: static; }
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.position-fixed { position: fixed; }
+.position-sticky { position: sticky; }
+
+/* Margin - Spacing Tokens (spacing.0 to spacing.11) */
+.margin-spacing-0 { margin: var(--spacing-0); }
+.margin-spacing-1 { margin: var(--spacing-1); }
+.margin-spacing-2 { margin: var(--spacing-2); }
+.margin-spacing-3 { margin: var(--spacing-3); }
+.margin-spacing-4 { margin: var(--spacing-4); }
+.margin-spacing-5 { margin: var(--spacing-5); }
+.margin-spacing-6 { margin: var(--spacing-6); }
+.margin-spacing-7 { margin: var(--spacing-7); }
+.margin-spacing-8 { margin: var(--spacing-8); }
+.margin-spacing-9 { margin: var(--spacing-9); }
+.margin-spacing-10 { margin: var(--spacing-10); }
+.margin-spacing-11 { margin: var(--spacing-11); }
+
+/* Margin X - Spacing Tokens */
+.margin-x-spacing-0 { margin-left: var(--spacing-0); margin-right: var(--spacing-0); }
+.margin-x-spacing-1 { margin-left: var(--spacing-1); margin-right: var(--spacing-1); }
+.margin-x-spacing-2 { margin-left: var(--spacing-2); margin-right: var(--spacing-2); }
+.margin-x-spacing-3 { margin-left: var(--spacing-3); margin-right: var(--spacing-3); }
+.margin-x-spacing-4 { margin-left: var(--spacing-4); margin-right: var(--spacing-4); }
+.margin-x-spacing-5 { margin-left: var(--spacing-5); margin-right: var(--spacing-5); }
+.margin-x-spacing-6 { margin-left: var(--spacing-6); margin-right: var(--spacing-6); }
+.margin-x-spacing-7 { margin-left: var(--spacing-7); margin-right: var(--spacing-7); }
+.margin-x-spacing-8 { margin-left: var(--spacing-8); margin-right: var(--spacing-8); }
+.margin-x-spacing-9 { margin-left: var(--spacing-9); margin-right: var(--spacing-9); }
+.margin-x-spacing-10 { margin-left: var(--spacing-10); margin-right: var(--spacing-10); }
+.margin-x-spacing-11 { margin-left: var(--spacing-11); margin-right: var(--spacing-11); }
+
+/* Margin Y - Spacing Tokens */
+.margin-y-spacing-0 { margin-top: var(--spacing-0); margin-bottom: var(--spacing-0); }
+.margin-y-spacing-1 { margin-top: var(--spacing-1); margin-bottom: var(--spacing-1); }
+.margin-y-spacing-2 { margin-top: var(--spacing-2); margin-bottom: var(--spacing-2); }
+.margin-y-spacing-3 { margin-top: var(--spacing-3); margin-bottom: var(--spacing-3); }
+.margin-y-spacing-4 { margin-top: var(--spacing-4); margin-bottom: var(--spacing-4); }
+.margin-y-spacing-5 { margin-top: var(--spacing-5); margin-bottom: var(--spacing-5); }
+.margin-y-spacing-6 { margin-top: var(--spacing-6); margin-bottom: var(--spacing-6); }
+.margin-y-spacing-7 { margin-top: var(--spacing-7); margin-bottom: var(--spacing-7); }
+.margin-y-spacing-8 { margin-top: var(--spacing-8); margin-bottom: var(--spacing-8); }
+.margin-y-spacing-9 { margin-top: var(--spacing-9); margin-bottom: var(--spacing-9); }
+.margin-y-spacing-10 { margin-top: var(--spacing-10); margin-bottom: var(--spacing-10); }
+.margin-y-spacing-11 { margin-top: var(--spacing-11); margin-bottom: var(--spacing-11); }
+
+/* Margin Top - Spacing Tokens */
+.margin-top-spacing-0 { margin-top: var(--spacing-0); }
+.margin-top-spacing-1 { margin-top: var(--spacing-1); }
+.margin-top-spacing-2 { margin-top: var(--spacing-2); }
+.margin-top-spacing-3 { margin-top: var(--spacing-3); }
+.margin-top-spacing-4 { margin-top: var(--spacing-4); }
+.margin-top-spacing-5 { margin-top: var(--spacing-5); }
+.margin-top-spacing-6 { margin-top: var(--spacing-6); }
+.margin-top-spacing-7 { margin-top: var(--spacing-7); }
+.margin-top-spacing-8 { margin-top: var(--spacing-8); }
+.margin-top-spacing-9 { margin-top: var(--spacing-9); }
+.margin-top-spacing-10 { margin-top: var(--spacing-10); }
+.margin-top-spacing-11 { margin-top: var(--spacing-11); }
+
+/* Margin Bottom - Spacing Tokens */
+.margin-bottom-spacing-0 { margin-bottom: var(--spacing-0); }
+.margin-bottom-spacing-1 { margin-bottom: var(--spacing-1); }
+.margin-bottom-spacing-2 { margin-bottom: var(--spacing-2); }
+.margin-bottom-spacing-3 { margin-bottom: var(--spacing-3); }
+.margin-bottom-spacing-4 { margin-bottom: var(--spacing-4); }
+.margin-bottom-spacing-5 { margin-bottom: var(--spacing-5); }
+.margin-bottom-spacing-6 { margin-bottom: var(--spacing-6); }
+.margin-bottom-spacing-7 { margin-bottom: var(--spacing-7); }
+.margin-bottom-spacing-8 { margin-bottom: var(--spacing-8); }
+.margin-bottom-spacing-9 { margin-bottom: var(--spacing-9); }
+.margin-bottom-spacing-10 { margin-bottom: var(--spacing-10); }
+.margin-bottom-spacing-11 { margin-bottom: var(--spacing-11); }
+
+/* Margin Left - Spacing Tokens */
+.margin-left-spacing-0 { margin-left: var(--spacing-0); }
+.margin-left-spacing-1 { margin-left: var(--spacing-1); }
+.margin-left-spacing-2 { margin-left: var(--spacing-2); }
+.margin-left-spacing-3 { margin-left: var(--spacing-3); }
+.margin-left-spacing-4 { margin-left: var(--spacing-4); }
+.margin-left-spacing-5 { margin-left: var(--spacing-5); }
+.margin-left-spacing-6 { margin-left: var(--spacing-6); }
+.margin-left-spacing-7 { margin-left: var(--spacing-7); }
+.margin-left-spacing-8 { margin-left: var(--spacing-8); }
+.margin-left-spacing-9 { margin-left: var(--spacing-9); }
+.margin-left-spacing-10 { margin-left: var(--spacing-10); }
+.margin-left-spacing-11 { margin-left: var(--spacing-11); }
+
+/* Margin Right - Spacing Tokens */
+.margin-right-spacing-0 { margin-right: var(--spacing-0); }
+.margin-right-spacing-1 { margin-right: var(--spacing-1); }
+.margin-right-spacing-2 { margin-right: var(--spacing-2); }
+.margin-right-spacing-3 { margin-right: var(--spacing-3); }
+.margin-right-spacing-4 { margin-right: var(--spacing-4); }
+.margin-right-spacing-5 { margin-right: var(--spacing-5); }
+.margin-right-spacing-6 { margin-right: var(--spacing-6); }
+.margin-right-spacing-7 { margin-right: var(--spacing-7); }
+.margin-right-spacing-8 { margin-right: var(--spacing-8); }
+.margin-right-spacing-9 { margin-right: var(--spacing-9); }
+.margin-right-spacing-10 { margin-right: var(--spacing-10); }
+.margin-right-spacing-11 { margin-right: var(--spacing-11); }
+
+/* Flexbox - Align Self */
+.align-self-auto { align-self: auto; }
+.align-self-start { align-self: flex-start; }
+.align-self-end { align-self: flex-end; }
+.align-self-center { align-self: center; }
+.align-self-baseline { align-self: baseline; }
+.align-self-stretch { align-self: stretch; }
+
+/* Flexbox - Justify Self */
+.justify-self-auto { justify-self: auto; }
+.justify-self-start { justify-self: start; }
+.justify-self-end { justify-self: end; }
+.justify-self-center { justify-self: center; }
+.justify-self-stretch { justify-self: stretch; }
+
+/* Flexbox - Place Self */
+.place-self-auto { place-self: auto; }
+.place-self-start { place-self: start; }
+.place-self-end { place-self: end; }
+.place-self-center { place-self: center; }
+.place-self-stretch { place-self: stretch; }
+
+/* Flexbox - Flex Wrap */
+.flex--no-wrap { flex-wrap: nowrap; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-wrap-reverse { flex-wrap: wrap-reverse; }
+
+/* Flexbox - Align Items (Tailwind: items-*) */
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+.items-baseline { align-items: baseline; }
+.items-stretch { align-items: stretch; }
+
+/* Flexbox - Justify Content (Tailwind: justify-*) */
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-evenly { justify-content: space-evenly; }
+.justify-stretch { justify-content: stretch; }

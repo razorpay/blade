@@ -1,0 +1,48 @@
+name: Blade Svelte Chromatic
+
+# Deploy Svelte Storybook to Chromatic
+# Access Svelte components via Chromatic URL
+
+on: push
+
+env:
+  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+
+jobs:
+  chromatic-svelte-deployment:
+    name: Chromatic Svelte Deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node v20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.19.5
+
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Build blade-core
+        run: yarn build:blade-core
+
+      # Publish Svelte Storybook to Chromatic
+      - name: Publish Svelte to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ env.GITHUB_ACCESS_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_SVELTE_PROJECT_TOKEN }}
+          workingDir: packages/blade-svelte
+          storybookBaseDir: packages/blade-svelte
+          buildScriptName: build-storybook
+          exitOnceUploaded: true
+          onlyChanged: true
+          untraced: '**/package.json'
+          traceChanged: 'expanded'
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF: ${{ github.ref }}
+

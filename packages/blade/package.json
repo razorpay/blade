@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.71.0",
+  "version": "12.73.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -223,6 +223,7 @@
     "@types/jest-axe": "3.5.5",
     "@types/jscodeshift": "0.11.6",
     "@types/jsdom": "20.0.1",
+    "@types/minimatch": "5.1.2",
     "@types/react": "18.2.24",
     "@types/react-native": "0.72.2",
     "@types/react-router-dom": "5.3.3",

@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
       const response = await chrome.scripting.executeScript({
         target: { tabId: tabs[0].id },
         func: calculateBladeCoverage,
-        args: [message.shouldHighlightNodes],
+        args: [message.shouldHighlightNodes, message.includeNavbars],
       });
       console.log('response', response);
       chrome.runtime.sendMessage({ action: 'blade-coverage', coverage: response[0].result });
