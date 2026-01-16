@@ -1,5 +1,11 @@
 # @razorpay/blade-core
 
+## 0.1.1
+
+### Patch Changes
+
+- 823fb8bff: Release workflow fixed for blade-svelte
+
 ## 0.1.0
 
 ### Minor Changes

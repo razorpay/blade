@@ -1,5 +1,13 @@
 # @razorpay/blade-svelte
 
+## 0.2.1
+
+### Patch Changes
+
+- 823fb8bff: Release workflow fixed for blade-svelte
+- Updated dependencies [823fb8bff]
+  - @razorpay/blade-core@0.1.1
+
 ## 0.2.0
 
 ### Minor Changes
