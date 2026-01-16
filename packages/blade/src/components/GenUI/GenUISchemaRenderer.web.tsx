@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Text } from '../';
+import { Text } from '..';
 import { useGenUI } from './GenUIProvider';
 import { GenUIComponent } from './GenUIComponents';
 

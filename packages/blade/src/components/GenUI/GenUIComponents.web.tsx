@@ -59,7 +59,7 @@ import {
   CopyIcon,
   Tooltip,
   TooltipInteractiveWrapper,
-} from '../';
+} from '..';
 import { useGenUIAction } from './GenUIProvider';
 import type { GenUIAction, GenUIComponentRegistry, GenUIComponentRenderer } from './GenUIProvider';
 import { ComponentRenderer as ComponentRendererInternal } from './GenUISchemaRenderer';
