@@ -278,7 +278,7 @@ const MetricCard = ({
       <Box
         display="flex"
         flexDirection="column"
-        alignItems="flex-start"
+        alignItems="center"
         gap="spacing.2"
         padding="spacing.3"
         flex="1"
