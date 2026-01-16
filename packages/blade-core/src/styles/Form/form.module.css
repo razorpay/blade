@@ -1,0 +1,146 @@
+/* Form CSS Module */
+/* Styles for Form components (Label, Hint, etc.) */
+
+/* ============================================
+   FORM LABEL STYLES
+   ============================================ */
+
+.formLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.formLabel--top {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.formLabel--left {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Label width for left position */
+.formLabel--leftWidth-xsmall,
+.formLabel--leftWidth-small,
+.formLabel--leftWidth-medium {
+  width: 120px;
+}
+
+.formLabel--leftWidth-large {
+  width: 176px;
+}
+
+/* Label margin right for left position */
+.formLabel--leftMargin-xsmall,
+.formLabel--leftMargin-small {
+  margin-right: var(--spacing-3);
+}
+
+.formLabel--leftMargin-medium {
+  margin-right: var(--spacing-4);
+}
+
+.formLabel--leftMargin-large {
+  margin-right: var(--spacing-5);
+}
+
+/* Label margin bottom for top position */
+.formLabel--topMargin-xsmall,
+.formLabel--topMargin-small,
+.formLabel--topMargin-medium {
+  margin-bottom: var(--spacing-2);
+}
+
+.formLabel--topMargin-large {
+  margin-bottom: var(--spacing-3);
+}
+
+/* Label text container */
+.labelTextContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+  max-height: 36px;
+}
+
+/* Necessity indicator spacing */
+.labelTextContainer--optional {
+  gap: var(--spacing-2);
+}
+
+.labelTextContainer--required {
+  gap: 0;
+}
+
+/* Label suffix container */
+.labelSuffix {
+  display: flex;
+  align-items: center;
+  margin-left: var(--spacing-2);
+}
+
+/* Label trailing container */
+.labelTrailing {
+  margin-left: auto;
+}
+
+.labelTrailing--left {
+  margin-left: 0;
+}
+
+/* ============================================
+   FORM HINT STYLES
+   ============================================ */
+
+.formHint {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}
+
+/* Hint margin top based on size */
+.formHint--marginTop-xsmall,
+.formHint--marginTop-small,
+.formHint--marginTop-medium {
+  margin-top: var(--spacing-2);
+}
+
+.formHint--marginTop-large {
+  margin-top: var(--spacing-3);
+}
+
+/* Hint icon container */
+.hintIcon {
+  display: flex;
+  flex-shrink: 0;
+  margin-top: var(--spacing-1);
+}
+
+/* ============================================
+   CHARACTER COUNTER STYLES
+   ============================================ */
+
+.characterCounter {
+  display: flex;
+  align-items: center;
+}
+
+.characterCounter--marginTop-xsmall,
+.characterCounter--marginTop-small,
+.characterCounter--marginTop-medium {
+  margin-top: var(--spacing-2);
+}
+
+.characterCounter--marginTop-large {
+  margin-top: var(--spacing-3);
+}
+
+.characterCounter--marginRight {
+  margin-right: var(--spacing-1);
+}
