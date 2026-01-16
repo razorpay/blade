@@ -81,4 +81,3 @@ if (fs.existsSync(svelteDistDir)) {
   console.error('✗ Svelte Storybook directory not found at', svelteDistDir);
   process.exit(1);
 }
-
