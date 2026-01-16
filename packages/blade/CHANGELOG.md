@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.72.0
+
+### Minor Changes
+
+- 069a7163d: Releasing Blade components to Svelte with new packages Blade-core and Blade-svelte
+- ac14ceb6a: Version mismatch issue fixed for blade svelte release
+
 ## 12.71.0
 
 ### Minor Changes
