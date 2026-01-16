@@ -1,4 +1,5 @@
 ---
+'@razorpay/blade': minor
 '@razorpay/blade-core': minor
 '@razorpay/blade-svelte': minor
 ---
