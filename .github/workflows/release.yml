@@ -23,6 +23,9 @@ jobs:
           node-version: 20.19.5
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+      - name: Build Blade Core
+        working-directory: packages/blade-core
+        run: yarn build
       - name: Create Release Pull Request & Publish packages
         id: changesets
         uses: changesets/action@v1
@@ -43,10 +46,6 @@ jobs:
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: yarn publish-npm
-      - name: Build Blade Core if not built by changeset
-        if: steps.changesets.outputs.published == 'false'
-        working-directory: packages/blade-core
-        run: yarn build
       - name: Build Blade if not built by changeset
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
