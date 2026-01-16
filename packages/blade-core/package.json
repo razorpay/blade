@@ -3,11 +3,9 @@
   "description": "Core utilities and shared functionality for Blade Design System",
   "version": "0.1.1",
   "license": "MIT",
+  "private": true,
   "engines": {
     "node": ">=18.12.1"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "repository": {
     "type": "git",
