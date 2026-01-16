@@ -10,7 +10,9 @@ import {
   ChartTooltip,
   ChartLegend,
 } from '~components/Charts';
-import { Heading } from '~components/Typography/Heading';
+import { Heading, Text } from '~components/Typography';
+import { ArrowUpIcon, ArrowDownIcon } from '~components/Icons';
+import { Divider } from '~components/Divider';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
@@ -252,6 +254,160 @@ export const GroupedBarChart: StoryFn<typeof ChartBar> = () => {
 };
 
 GroupedBarChart.parameters = {
+  controls: { disable: true },
+};
+
+// MetricCard component to display above each bar group (matches the funnel chart design)
+const MetricCard = ({
+  title,
+  percentage,
+  value,
+  change,
+  isPositive = true,
+  showDivider = true,
+}: {
+  title: string;
+  percentage: string;
+  value: string;
+  change: number;
+  isPositive?: boolean;
+  showDivider?: boolean;
+}): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="row" flex="1">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="flex-start"
+        gap="spacing.2"
+        padding="spacing.3"
+        flex="1"
+      >
+        {/* Title with dotted underline */}
+        <Text
+          size="small"
+          color="surface.text.gray.normal"
+          textDecorationLine="underline"
+          // @ts-expect-error - textDecorationStyle is a valid CSS property
+          style={{ textDecorationStyle: 'dotted' }}
+        >
+          {title}
+        </Text>
+        {/* Percentage + Value + Change row */}
+        <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+          <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="baseline">
+            <Text size="large" weight="semibold" color="surface.text.gray.normal">
+              {percentage}
+            </Text>
+            <Text size="medium"  color="surface.text.gray.normal">
+              {value}
+            </Text>
+          </Box>
+          {/* Change indicator */}
+          <Box
+            display="flex"
+            flexDirection="row"
+            gap="spacing.1"
+            alignItems="center"
+            backgroundColor={
+              isPositive
+                ? 'feedback.background.positive.subtle'
+                : 'feedback.background.negative.subtle'
+            }
+            padding={['spacing.1', 'spacing.2']}
+            borderRadius="small"
+          >
+            {isPositive ? (
+              <ArrowUpIcon size="xsmall" color="feedback.icon.positive.intense" />
+            ) : (
+              <ArrowDownIcon size="xsmall" color="feedback.icon.negative.intense" />
+            )}
+            <Text
+              size="xsmall"
+              weight="medium"
+              color={
+                isPositive ? 'feedback.text.positive.intense' : 'feedback.text.negative.intense'
+              }
+            >
+              {change}%
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+      {/* Vertical divider */}
+      {showDivider && (
+        <Box height="100%" display="flex" alignItems="center">
+          <Divider orientation="vertical" />
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+// Funnel chart metrics data (matches the checkout funnel design)
+const funnelMetricsData = [
+  { title: 'Checkout initiated', percentage: '100%', value: '1.3K', change: 12, isPositive: true },
+  { title: 'Address step reached', percentage: '86%', value: '1.2K', change: 12, isPositive: true },
+  { title: 'Payment step reached', percentage: '66%', value: '900', change: 12, isPositive: true },
+  { title: 'Payment attempted', percentage: '36%', value: '530', change: 12, isPositive: true },
+  { title: 'Sessions converted', percentage: '20%', value: '230', change: 12, isPositive: true },
+];
+
+// Chart data for funnel comparison (two dates)
+const funnelChartData = [
+  { name: 'Checkout', current: 1300, previous: 1500 },
+  { name: 'Address', current: 1200, previous: 1300 },
+  { name: 'Payment', current: 900, previous: 960 },
+  { name: 'Attempted', current: 530, previous: 600 },
+  { name: 'Converted', current: 230, previous: 300 },
+];
+
+export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" display="flex" flexDirection="column" gap="spacing.0">
+        {/* Metric cards row positioned above the chart */}
+        <Box display="flex" flexDirection="row" width="100%">
+          {funnelMetricsData.map((item, index) => (
+            <MetricCard
+              key={item.title}
+              title={item.title}
+              percentage={item.percentage}
+              value={item.value}
+              change={item.change}
+              isPositive={item.isPositive}
+              showDivider={index < funnelMetricsData.length - 1}
+            />
+          ))}
+        </Box>
+        {/* Bar Chart */}
+        <Box width="100%" height="350px">
+          <ChartBarWrapper data={funnelChartData}>
+            <ChartXAxis dataKey="name" />
+            <ChartYAxis hide />
+            <ChartTooltip />
+            <ChartLegend />
+            <ChartBar
+              dataKey="current"
+              name="Oct 28, 2025"
+              color="data.background.sequential.blue.400"
+              label={{ position: 'top', fill: '#768EA7', fontSize: 12 }}
+            />
+            <ChartBar
+              dataKey="previous"
+              name="Oct 25, 2025"
+              color="data.background.sequential.blue.100"
+              label={{ position: 'top', fill: '#768EA7', fontSize: 12 }}
+            />
+          </ChartBarWrapper>
+        </Box>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+GroupedBarChartWithMetrics.storyName = 'Grouped Bar Chart With Metrics';
+GroupedBarChartWithMetrics.parameters = {
   controls: { disable: true },
 };
 
