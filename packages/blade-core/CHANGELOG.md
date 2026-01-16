@@ -1,5 +1,11 @@
 # @razorpay/blade-core
 
+## 0.1.2
+
+### Patch Changes
+
+- cdeccac95: Private package for blade svelte
+
 ## 0.1.1
 
 ### Patch Changes
