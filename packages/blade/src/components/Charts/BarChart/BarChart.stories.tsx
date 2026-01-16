@@ -406,13 +406,7 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
               color="data.background.sequential.blue.400"
               label={{
                 position: 'top',
-                // @ts-expect-error - custom label content renderer for persistent labels
-                content: (props: {
-                  value?: string | number;
-                  x?: number;
-                  y?: number;
-                  width?: number;
-                }) => {
+                content: (props: any) => {
                   const { value, x = 0, y = 0, width = 0 } = props;
                   const numValue = typeof value === 'number' ? value : 0;
                   return (
@@ -436,13 +430,7 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
               color="data.background.sequential.blue.100"
               label={{
                 position: 'top',
-                // @ts-expect-error - custom label content renderer for persistent labels
-                content: (props: {
-                  value?: string | number;
-                  x?: number;
-                  y?: number;
-                  width?: number;
-                }) => {
+                content: (props: any) => {
                   const { value, x = 0, y = 0, width = 0 } = props;
                   const numValue = typeof value === 'number' ? value : 0;
                   return (
