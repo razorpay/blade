@@ -11,7 +11,7 @@ import {
   ChartLegend,
 } from '~components/Charts';
 import { Heading, Text } from '~components/Typography';
-import { ArrowUpIcon } from '~components/Icons';
+import { ArrowSquareDownIcon, ArrowUpIcon } from '~components/Icons';
 import { Divider } from '~components/Divider';
 import { Badge } from '~components/Badge';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -284,19 +284,13 @@ const MetricCard = ({
         flex="1"
       >
         {/* Title with dotted underline */}
-        <Text
-          size="small"
-          color="surface.text.gray.muted"
-          textDecorationLine="underline"
-          // @ts-expect-error - textDecorationStyle is a valid CSS property
-          style={{ textDecorationStyle: 'dotted' }}
-        >
+        <Text size="small" color="surface.text.gray.muted" textDecorationLine="underline">
           {title}
         </Text>
         {/* Percentage + Value + Change row */}
         <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
           <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="baseline">
-            <Text size="large" weight="semibold" color="surface.text.gray.normal">
+            <Text size="medium" weight="semibold" color="surface.text.gray.normal">
               {percentage}
             </Text>
             <Text size="medium" color="surface.text.gray.muted">
@@ -309,15 +303,21 @@ const MetricCard = ({
             flexDirection="row"
             gap="spacing.1"
             alignItems="center"
-            backgroundColor="feedback.background.negative.subtle"
             paddingY="spacing.1"
             paddingX="spacing.2"
             borderRadius="small"
           >
-            <ArrowUpIcon size="xsmall" color="feedback.icon.negative.intense" />
-            <Text size="xsmall" weight="medium" color="feedback.text.negative.intense">
-              {change}%
-            </Text>
+            <Box
+              display="flex"
+              flexDirection="row"
+              gap="spacing.1"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <ArrowSquareDownIcon color="interactive.icon.negative.normal" />
+
+              <Text color="interactive.text.negative.normal">{change}%</Text>
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -361,8 +361,6 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
             weight="medium"
             color="surface.text.gray.normal"
             textDecorationLine="underline"
-            // @ts-expect-error - textDecorationStyle is a valid CSS property
-            style={{ textDecorationStyle: 'dotted' }}
           >
             Checkout conversion funnel
           </Text>
@@ -409,7 +407,12 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
               label={{
                 position: 'top',
                 // @ts-expect-error - custom label content renderer for persistent labels
-                content: (props: { value?: string | number; x?: number; y?: number; width?: number }) => {
+                content: (props: {
+                  value?: string | number;
+                  x?: number;
+                  y?: number;
+                  width?: number;
+                }) => {
                   const { value, x = 0, y = 0, width = 0 } = props;
                   const numValue = typeof value === 'number' ? value : 0;
                   return (
@@ -434,7 +437,12 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
               label={{
                 position: 'top',
                 // @ts-expect-error - custom label content renderer for persistent labels
-                content: (props: { value?: string | number; x?: number; y?: number; width?: number }) => {
+                content: (props: {
+                  value?: string | number;
+                  x?: number;
+                  y?: number;
+                  width?: number;
+                }) => {
                   const { value, x = 0, y = 0, width = 0 } = props;
                   const numValue = typeof value === 'number' ? value : 0;
                   return (
