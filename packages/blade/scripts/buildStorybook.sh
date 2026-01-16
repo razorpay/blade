@@ -33,3 +33,6 @@ cross-env FRAMEWORK=REACT storybook build -c ./.storybook/react -o "$OUTPUT_DIR"
 # Copy dashboard to the output directory (works for both default and Chromatic's custom dir)
 node ./scripts/copyDashboard.js "$OUTPUT_DIR"
 
+# Copy svelte storybook to the output directory (serves at /svelte route)
+node ./scripts/copySvelteStorybook.js "$OUTPUT_DIR"
+

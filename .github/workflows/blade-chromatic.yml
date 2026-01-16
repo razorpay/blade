@@ -40,6 +40,25 @@ jobs:
             echo "✗ Dashboard dist directory not found"
             exit 1
           fi
+      - name: Build blade-core
+        run: yarn build:blade-core
+      - name: Build Svelte Storybook
+        working-directory: packages/blade-svelte
+        run: yarn build-storybook
+      - name: Copy Svelte Storybook to Storybook Site
+        working-directory: packages/blade
+        run: |
+          if [ -d "storybook-site/svelte" ]; then
+            rm -rf storybook-site/svelte
+          fi
+          mkdir -p storybook-site/svelte
+          if [ -d "../blade-svelte/storybook-static" ]; then
+            cp -r ../blade-svelte/storybook-static/* storybook-site/svelte/
+            echo "✓ Svelte Storybook copied to storybook-site/svelte/"
+          else
+            echo "✗ Svelte Storybook not found"
+            exit 1
+          fi
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
