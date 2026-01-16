@@ -1203,18 +1203,17 @@ export const LineChartWithBenchmarkAndSinglePoint: StoryFn<typeof ChartLine> = (
             dataKey="specialEvent"
             name="Special Event"
             connectNulls={false}
-            showLegend={false}
-            color="data.background.categorical.red.moderate"
+            color="data.background.categorical.red.intense"
             dot={{
               r: 6,
-              fill: theme.colors.feedback.background.negative.intense,
-              stroke: theme.colors.surface.background.gray.intense,
+              fill: theme.colors.data.background.categorical.red.intense,
+              stroke: theme.colors.data.background.categorical.red.intense,
               strokeWidth: 2,
             }}
             activeDot={{
               r: 8,
-              fill: theme.colors.feedback.background.negative.intense,
-              stroke: theme.colors.feedback.background.negative.subtle,
+              fill: theme.colors.data.background.categorical.red.intense,
+              stroke: theme.colors.data.background.categorical.red.intense,
               strokeWidth: 3,
             }}
           />
