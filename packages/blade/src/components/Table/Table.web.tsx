@@ -429,12 +429,18 @@ const _Table = <Item,>({
 
   const hasPagination = Boolean(pagination);
 
+  // Extract defaultPageSize from TablePagination child props
+  const paginationDefaultPageSize =
+    React.isValidElement(pagination) && getComponentId(pagination) === ComponentIds.TablePagination
+      ? (pagination.props as { defaultPageSize?: number }).defaultPageSize
+      : undefined;
+
   const paginationConfig = usePagination(
     data,
     {
       state: {
         page: 0,
-        size: tablePagination.defaultPageSize,
+        size: paginationDefaultPageSize ?? tablePagination.defaultPageSize,
       },
     },
     {
