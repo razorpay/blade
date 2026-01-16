@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.73.1
+
+### Patch Changes
+
+- 7320c7e4b: feat(blade): patch for table pagination
+
 ## 12.73.0
 
 ### Minor Changes
