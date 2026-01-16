@@ -25,6 +25,7 @@ type GenUIComponentRegistry = Record<string, GenUIComponentDefinition>;
 
 type GenUIAction = {
   type: string;
+  eventName?: string;
   data?: Record<string, unknown>;
 };
 /**

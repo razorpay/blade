@@ -7,7 +7,7 @@ import { GenUIComponent } from './GenUIComponents';
  * Helper to generate a stable key for a component based on its index and type
  */
 const getComponentKey = (component: GenUIComponent, index: number): string => {
-  if (!component.component) {
+  if (!component || !component.component) {
     return `empty-${index}`;
   }
   return `${component.component}-${index}`;

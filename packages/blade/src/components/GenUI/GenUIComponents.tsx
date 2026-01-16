@@ -1,6 +1,8 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Streamdown } from 'streamdown';
+import dayjs from 'dayjs';
+import { formatNumber } from '@razorpay/i18nify-js';
 import {
   Box,
   Text,
@@ -47,6 +49,16 @@ import {
   InfoIcon,
   CheckCircleIcon,
   AlertTriangleIcon,
+  IconButton,
+  CheckIcon,
+  CloseIcon,
+  EditIcon,
+  TrashIcon,
+  DownloadIcon,
+  EyeIcon,
+  CopyIcon,
+  Tooltip,
+  TooltipInteractiveWrapper,
 } from '../';
 import { useGenUIAction } from './GenUIProvider';
 import type { GenUIAction, GenUIComponentRegistry, GenUIComponentRenderer } from './GenUIProvider';
@@ -100,6 +112,7 @@ type ChartComponent = GenUIBaseComponent & {
 type TableCellText = {
   component: 'TEXT';
   value: string;
+  copyable?: boolean;
 };
 
 type TableCellAmount = {
@@ -123,7 +136,19 @@ type TableCellBadge = {
 type TableCellDate = {
   component: 'DATE';
   value: string;
-  format?: string;
+  dateFormat?: string;
+};
+
+type TableCellLink = {
+  component: 'LINK';
+  text: string;
+  action?: {
+    type: 'CLICK';
+    eventName?: 'link_click';
+    data?: {
+      url?: string;
+    };
+  };
 };
 
 type TableCellType =
@@ -131,12 +156,45 @@ type TableCellType =
   | TableCellAmount
   | TableCellIndicator
   | TableCellBadge
-  | TableCellDate;
+  | TableCellDate
+  | TableCellLink;
+
+// Table row action schema type
+type TableRowActionSchema = {
+  type: 'TABLE_ROW_ACTION';
+  eventName: string;
+};
+
+type TableRowActionButton = {
+  type: 'BUTTON';
+  text: string;
+  action: TableRowActionSchema;
+};
+
+type TableRowActionIconButton = {
+  type: 'ICON_BUTTON';
+  icon: 'check' | 'close' | 'edit' | 'delete' | 'download' | 'view' | 'copy';
+  accessibilityLabel: string;
+  action: TableRowActionSchema;
+};
+
+type TableRowAction = TableRowActionButton | TableRowActionIconButton;
+
+// Event payload dispatched when table row actions are triggered
+type TableRowActionEvent = {
+  type: 'TABLE_ROW_ACTION';
+  eventName: string;
+  data: {
+    rowIndex: number;
+    rowData: TableCellType[];
+  };
+};
 
 type TableComponent = GenUIBaseComponent & {
   component: typeof ComponentType.TABLE;
   headers?: string[];
   rows?: TableCellType[][];
+  rowActions?: TableRowAction[];
 };
 
 type BadgeComponent = GenUIBaseComponent & {
@@ -200,7 +258,13 @@ type ButtonComponent = GenUIBaseComponent & {
 type LinkComponent = GenUIBaseComponent & {
   component: typeof ComponentType.LINK;
   text?: string;
-  url?: string;
+  action?: {
+    type: 'CLICK';
+    eventName?: 'link_click';
+    data?: {
+      url?: string;
+    };
+  };
 };
 
 type AlertComponent = GenUIBaseComponent & {
@@ -432,29 +496,38 @@ const RenderChartComponent = memo(
         try {
           switch (type) {
             case 'currency': {
-              const formatted = Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: formatterCurrency || 'INR',
-                notation: 'compact',
-                maximumFractionDigits: 1,
-              }).format(numValue);
+              const formatted = formatNumber(numValue, {
+                currency: (formatterCurrency || 'INR') as 'INR',
+                intlOptions: {
+                  notation: 'compact',
+                  maximumFractionDigits: 1,
+                },
+              });
               return buildPrefixSuffixString(formatted);
             }
 
             case 'percentage': {
-              const formatted = Intl.NumberFormat('en-US', {
-                style: 'percent',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 2,
-              }).format(numValue / 100);
-              return buildPrefixSuffixString(formatted);
+              const formatted = formatNumber(numValue / 100, {
+                intlOptions: {
+                  style: 'percent',
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                },
+              });
+              if (formatterSuffix === '%') {
+                return formatted;
+              } else {
+                return buildPrefixSuffixString(formatted);
+              }
             }
 
             case 'number': {
-              const numberFormatted = Intl.NumberFormat('en-US', {
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 2,
-              }).format(numValue);
+              const numberFormatted = formatNumber(numValue, {
+                intlOptions: {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                },
+              });
               return buildPrefixSuffixString(numberFormatted);
             }
 
@@ -585,6 +658,58 @@ const RenderChartComponent = memo(
   },
 );
 
+// Table cell link renderer - fires action for consumer to handle
+const TableCellLinkRenderer = ({ cell }: { cell: TableCellLink }) => {
+  const onActionClick = useGenUIAction();
+
+  if (!cell.action) {
+    return <Text size="medium">{cell.text}</Text>;
+  }
+
+  return (
+    <Link
+      variant="button"
+      onClick={() => {
+        if (onActionClick && cell.action) {
+          onActionClick(cell.action);
+        }
+      }}
+    >
+      {cell.text}
+    </Link>
+  );
+};
+
+// Copyable text component with tooltip feedback
+const CopyableText = ({ value }: { value: string }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    if (value) {
+      navigator.clipboard.writeText(value);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  return (
+    <Box display="flex" alignItems="center" gap="spacing.2">
+      <Text size="medium">{value ?? '-'}</Text>
+      <Tooltip content={copied ? 'Copied!' : 'Copy'} placement="top">
+        <TooltipInteractiveWrapper>
+          <IconButton
+            icon={CopyIcon}
+            size="medium"
+            emphasis="intense"
+            accessibilityLabel={`Copy ${value}`}
+            onClick={handleCopy}
+          />
+        </TooltipInteractiveWrapper>
+      </Tooltip>
+    </Box>
+  );
+};
+
 // Helper to render a single table cell based on its component type
 const RenderTableCellContent = ({ cell }: { cell: TableCellType }) => {
   if (!cell) {
@@ -598,8 +723,12 @@ const RenderTableCellContent = ({ cell }: { cell: TableCellType }) => {
 
   // Handle component-based cell types
   switch (cell.component) {
-    case 'TEXT':
+    case 'TEXT': {
+      if (cell.copyable && cell.value) {
+        return <CopyableText value={cell.value} />;
+      }
       return <Text size="medium">{cell.value ?? '-'}</Text>;
+    }
 
     case 'AMOUNT': {
       const currency = cell.currency || 'INR';
@@ -637,23 +766,30 @@ const RenderTableCellContent = ({ cell }: { cell: TableCellType }) => {
       if (!cell.value) {
         return <Text size="medium">-</Text>;
       }
-      // Format the date value
-      const dateValue = new Date(cell.value);
+
+      // Parse the date value using dayjs
+      const dateValue = dayjs(cell.value);
+
       // Check if date is valid
-      if (isNaN(dateValue.getTime())) {
+      if (!dateValue.isValid()) {
         return <Text size="medium">{cell.value}</Text>;
       }
-      const formattedDate = dateValue.toLocaleDateString('en-IN', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-      });
-      const formattedTime = dateValue.toLocaleTimeString('en-IN', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-      });
-      return <Text size="medium">{`${formattedDate}, ${formattedTime}`}</Text>;
+
+      // Use custom dateFormat if provided, otherwise use default
+      // Format tokens: https://day.js.org/docs/en/display/format
+      const defaultFormat = 'DD MMM YYYY, HH:mm';
+      const formatted = dateValue.format(cell.dateFormat || defaultFormat);
+
+      return <Text size="medium">{formatted}</Text>;
+    }
+
+    case 'LINK': {
+      // Handle streaming where text might be incomplete
+      if (!cell.text) {
+        return <Text size="medium">-</Text>;
+      }
+
+      return <TableCellLinkRenderer cell={cell} />;
     }
 
     default:
@@ -662,7 +798,87 @@ const RenderTableCellContent = ({ cell }: { cell: TableCellType }) => {
   }
 };
 
-const RenderTableComponent = memo(({ headers, rows }: TableComponent) => {
+// Icon mapping for row actions
+const rowActionIconMap = {
+  check: CheckIcon,
+  close: CloseIcon,
+  edit: EditIcon,
+  delete: TrashIcon,
+  download: DownloadIcon,
+  view: EyeIcon,
+  copy: CopyIcon,
+} as const;
+
+// Separate component for table row hover actions to avoid render issues
+const TableRowHoverActions = ({
+  rowActions,
+  rowIndex,
+  rowData,
+}: {
+  rowActions: TableRowAction[];
+  rowIndex: number;
+  rowData: TableCellType[];
+}) => {
+  const onActionClick = useGenUIAction();
+
+  const createActionEvent = (eventName: string): TableRowActionEvent => ({
+    type: 'TABLE_ROW_ACTION',
+    eventName,
+    data: {
+      rowIndex,
+      rowData,
+    },
+  });
+
+  return (
+    <>
+      {rowActions.map((rowAction, index) => {
+        // Guard: Skip incomplete button actions during streaming
+        if (rowAction.type === 'BUTTON') {
+          if (!rowAction.text) return null;
+          return (
+            <Button
+              key={index}
+              variant="tertiary"
+              size="xsmall"
+              onClick={() => {
+                if (rowAction.action?.eventName && onActionClick) {
+                  onActionClick(createActionEvent(rowAction.action.eventName));
+                }
+              }}
+            >
+              {rowAction.text}
+            </Button>
+          );
+        }
+
+        // Guard: Skip incomplete icon button actions during streaming
+        if (rowAction.type === 'ICON_BUTTON') {
+          const IconComponent = rowAction.icon ? rowActionIconMap[rowAction.icon] : null;
+          if (!IconComponent || !rowAction.accessibilityLabel) return null;
+          return (
+            <IconButton
+              key={index}
+              icon={IconComponent}
+              size="medium"
+              emphasis="intense"
+              accessibilityLabel={rowAction.accessibilityLabel}
+              onClick={() => {
+                if (rowAction.action?.eventName && onActionClick) {
+                  onActionClick(createActionEvent(rowAction.action.eventName));
+                }
+              }}
+            />
+          );
+        }
+
+        return null;
+      })}
+    </>
+  );
+};
+
+const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent) => {
   if (!headers || !rows || headers.length === 0 || rows.length === 0) {
     return null;
   }
@@ -695,7 +911,19 @@ const RenderTableComponent = memo(({ headers, rows }: TableComponent) => {
             </TableHeader>
             <TableBody>
               {data.map((item, rowIndex) => (
-                <TableRow key={rowIndex} item={item}>
+                <TableRow
+                  key={rowIndex}
+                  item={item}
+                  hoverActions={
+                    rowActions && rowActions.length > 0 ? (
+                      <TableRowHoverActions
+                        rowActions={rowActions}
+                        rowIndex={rowIndex}
+                        rowData={item.cells}
+                      />
+                    ) : undefined
+                  }
+                >
                   {item.cells.map((cell, cellIndex) => (
                     <TableCell key={cellIndex}>
                       <RenderTableCellContent cell={cell} />
@@ -875,12 +1103,29 @@ const RenderButtonComponent = memo(({ text, action }: ButtonComponent) => {
   );
 });
 
-const RenderLinkComponent = memo(({ text, url }: LinkComponent) => {
-  if (!text || !url) return null;
+const RenderLinkComponent = memo(({ text, action }: LinkComponent) => {
+  const onActionClick = useGenUIAction();
+
+  if (!text) return null;
+
+  if (!action) {
+    return (
+      <Box marginBottom="spacing.2">
+        <Text size="medium">{text}</Text>
+      </Box>
+    );
+  }
 
   return (
     <Box marginBottom="spacing.2">
-      <Link href={url} variant="anchor" target="_blank" rel="noopener noreferrer">
+      <Link
+        variant="button"
+        onClick={() => {
+          if (onActionClick) {
+            onActionClick(action);
+          }
+        }}
+      >
         {text}
       </Link>
     </Box>
