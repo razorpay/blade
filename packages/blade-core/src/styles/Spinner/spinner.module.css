@@ -1,0 +1,79 @@
+/* Spinner base styles */
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spinner container for animation */
+.spinner-box {
+  padding: 1px;
+  width: max-content;
+  display: inline-flex;
+  animation: spinner-rotate var(--duration-2xgentle) var(--easing-overshoot) infinite;
+}
+
+/* Rotation animation */
+@keyframes spinner-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Size variants */
+.size-medium {
+  width: 16px;
+  height: 16px;
+}
+
+.size-large {
+  width: 20px;
+  height: 20px;
+}
+
+.size-xlarge {
+  width: 24px;
+  height: 24px;
+}
+
+/* SVG icon styles */
+.spinner-icon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Color variants - using CSS variables */
+/* Note: SVG uses fill="currentColor", so we set the color property */
+.color-primary {
+  .spinner-icon {
+    color: var(--interactive-icon-primary-subtle);
+  }
+}
+
+.color-white {
+  .spinner-icon {
+    color: var(--interactive-icon-static-white-subtle);
+  }
+}
+
+.color-positive {
+  .spinner-icon {
+    color: var(--interactive-icon-positive-subtle);
+  }
+}
+
+.color-negative {
+  .spinner-icon {
+    color: var(--interactive-icon-negative-subtle);
+  }
+}
+
+.color-neutral {
+  .spinner-icon {
+    color: var(--interactive-icon-gray-subtle);
+  }
+}
+
