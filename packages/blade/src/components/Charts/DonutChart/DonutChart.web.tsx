@@ -56,8 +56,9 @@ const getTranslate = (
   legendHeight: number,
 ): string => {
   if (legendLayout === 'vertical') {
-    return `translate(calc(-50% + ${legendAlignment === 'right' ? -legendWidth / 2 : legendWidth / 2
-      }px) ,  calc(-50%))`;
+    return `translate(calc(-50% + ${
+      legendAlignment === 'right' ? -legendWidth / 2 : legendWidth / 2
+    }px) ,  calc(-50%))`;
   }
   return `translate(-50%, calc(-50% - ${legendHeight / 2}px))`;
 };
@@ -215,8 +216,8 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
                 fill={theme.colors.surface.text.gray.muted}
                 fontSize={
                   theme.typography.fonts.size[
-                  LABEL_FONT_STYLES[pieChartRadius].fontSize
-                    .label as keyof typeof theme.typography.fonts.size
+                    LABEL_FONT_STYLES[pieChartRadius].fontSize
+                      .label as keyof typeof theme.typography.fonts.size
                   ]
                 }
                 fontFamily={theme.typography.fonts.family.text}
@@ -237,8 +238,8 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
                 fill={theme.colors.surface.text.gray.normal}
                 fontSize={
                   theme.typography.fonts.size[
-                  LABEL_FONT_STYLES[pieChartRadius].fontSize
-                    .text as keyof typeof theme.typography.fonts.size
+                    LABEL_FONT_STYLES[pieChartRadius].fontSize
+                      .text as keyof typeof theme.typography.fonts.size
                   ]
                 }
                 fontFamily={theme.typography.fonts.family.heading}
@@ -327,10 +328,10 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       // Filter children based on selectedDataKeys to match filtered data
       const filteredChildren = selectedDataKeys
         ? children.filter((child, index) => {
-          if (getComponentId(child) !== componentId.cell) return true;
-          const itemName = data[index]?.name as string;
-          return selectedDataKeys.includes(sanitizeString(itemName));
-        })
+            if (getComponentId(child) !== componentId.cell) return true;
+            const itemName = data[index]?.name as string;
+            return selectedDataKeys.includes(sanitizeString(itemName));
+          })
         : children;
 
       return filteredChildren.map((child, filteredIndex) => {
@@ -365,9 +366,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     }
     return filteredData?.map((_, index) => {
       // Use original index for color lookup to maintain consistent colors
-      const originalIndex = filteredToOriginalIndexMap
-        ? filteredToOriginalIndexMap[index]
-        : index;
+      const originalIndex = filteredToOriginalIndexMap ? filteredToOriginalIndexMap[index] : index;
       return (
         <RechartsCell
           fill={getIn(theme.colors, themeColors[originalIndex])}
@@ -378,17 +377,26 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       );
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [children, data, filteredData, colorTheme, hoveredIndex, themeColors, selectedDataKeys, filteredToOriginalIndexMap]);
+  }, [
+    children,
+    data,
+    filteredData,
+    colorTheme,
+    hoveredIndex,
+    themeColors,
+    selectedDataKeys,
+    filteredToOriginalIndexMap,
+  ]);
 
   const modifiedExternalDonutChildren = useMemo(() => {
     if (Array.isArray(children)) {
       // Filter children based on selectedDataKeys to match filtered data
       const filteredChildren = selectedDataKeys
         ? children.filter((child, index) => {
-          if (getComponentId(child) !== componentId.cell) return true;
-          const itemName = data[index]?.name as string;
-          return selectedDataKeys.includes(sanitizeString(itemName));
-        })
+            if (getComponentId(child) !== componentId.cell) return true;
+            const itemName = data[index]?.name as string;
+            return selectedDataKeys.includes(sanitizeString(itemName));
+          })
         : children;
 
       return filteredChildren.map((child, filteredIndex) => {
@@ -431,9 +439,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     }
     return filteredData?.map((_, index) => {
       // Use original index for color lookup to maintain consistent colors
-      const originalIndex = filteredToOriginalIndexMap
-        ? filteredToOriginalIndexMap[index]
-        : index;
+      const originalIndex = filteredToOriginalIndexMap ? filteredToOriginalIndexMap[index] : index;
       return (
         <RechartsCell
           key={`stroke-${index}`}
@@ -450,7 +456,16 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       );
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [children, data, filteredData, colorTheme, hoveredIndex, themeColors, selectedDataKeys, filteredToOriginalIndexMap]);
+  }, [
+    children,
+    data,
+    filteredData,
+    colorTheme,
+    hoveredIndex,
+    themeColors,
+    selectedDataKeys,
+    filteredToOriginalIndexMap,
+  ]);
 
   return (
     <>
