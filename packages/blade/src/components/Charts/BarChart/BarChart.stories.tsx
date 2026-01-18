@@ -1,6 +1,6 @@
+import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import type { ChartLabelContentProps } from '~components/Charts';
-import React from 'react';
 import { Box } from '~components/Box';
 import {
   ChartBar,
