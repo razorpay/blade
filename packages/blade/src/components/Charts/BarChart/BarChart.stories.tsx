@@ -1,4 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
+import type { ChartLabelContentProps } from '~components/Charts';
 import React from 'react';
 import { Box } from '~components/Box';
 import {
@@ -406,13 +407,16 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
               color="data.background.sequential.blue.400"
               label={{
                 position: 'top',
-                content: (props: any) => {
-                  const { value, x = 0, y = 0, width = 0 } = props;
+                content: (props: ChartLabelContentProps) => {
+                  const { value } = props;
+                  const numX = Number(props.x) || 0;
+                  const numY = Number(props.y) || 0;
+                  const numWidth = Number(props.width) || 0;
                   const numValue = typeof value === 'number' ? value : 0;
                   return (
                     <text
-                      x={x + width / 2}
-                      y={y - 8}
+                      x={numX + numWidth / 2}
+                      y={numY - 8}
                       fill="#768EA7"
                       fontSize={12}
                       textAnchor="middle"
@@ -430,13 +434,16 @@ export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
               color="data.background.sequential.blue.100"
               label={{
                 position: 'top',
-                content: (props: any) => {
-                  const { value, x = 0, y = 0, width = 0 } = props;
+                content: (props: ChartLabelContentProps) => {
+                  const { value } = props;
+                  const numX = Number(props.x) || 0;
+                  const numY = Number(props.y) || 0;
+                  const numWidth = Number(props.width) || 0;
                   const numValue = typeof value === 'number' ? value : 0;
                   return (
                     <text
-                      x={x + width / 2}
-                      y={y - 8}
+                      x={numX + numWidth / 2}
+                      y={numY - 8}
                       fill="#768EA7"
                       fontSize={12}
                       textAnchor="middle"
