@@ -1,5 +1,11 @@
 # @razorpay/blade-core
 
+## 0.1.3
+
+### Patch Changes
+
+- 1aadb2245: Updated Svelte storybook configuration
+
 ## 0.1.2
 
 ### Patch Changes
