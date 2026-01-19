@@ -60,6 +60,20 @@ const getTranslate = (
   return `translate(-50%, calc(-50% - ${legendHeight / 2}px))`;
 };
 
+/**
+ * Gets the item name from data based on nameKey.
+ * nameKey can be a string (used as property key) or a function (called with data item).
+ */
+const getItemName = (
+  item: Record<string, unknown> | undefined,
+  nameKey: ChartDonutProps['nameKey'],
+): unknown => {
+  if (!item) return undefined;
+  if (!nameKey) return item.name;
+  if (typeof nameKey === 'function') return nameKey(item);
+  return item[nameKey];
+};
+
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   content,
@@ -163,8 +177,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           const donutChildren = (child as React.ReactElement<ChartDonutProps>).props.children;
           if (Array.isArray(donutChildren)) {
             donutChildren.forEach((child, index) => {
-              // Use nameKey to get the correct name from data
-              const itemName = nameKey ? data[index]?.[nameKey] : data[index]?.name;
+              const itemName = getItemName(data[index], nameKey);
               if (getComponentId(child) === componentId.cell && itemName) {
                 //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
 
@@ -177,8 +190,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           } else {
             // if we don't have cell as child component then we can we directly assign theme colors
             data.forEach((item, index) => {
-              // Use nameKey to get the correct name from data
-              const itemName = nameKey ? item[nameKey] : item.name;
+              const itemName = getItemName(item, nameKey);
               dataColorMapping[sanitizeString(itemName as string)] = {
                 colorToken: themeColors[index],
                 isCustomColor: false,
