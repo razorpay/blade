@@ -78,7 +78,7 @@ const getChartColor = (
 
   // Handle case where mappedColorData is undefined (e.g., during dynamic nameKey changes)
   if (!mappedColorData) {
-    return "data.background.categorical.azure.faint" as ChartColorToken;
+    return 'data.background.categorical.azure.faint' as ChartColorToken;
   }
 
   const mappedColor = mappedColorData.colorToken;
@@ -266,12 +266,12 @@ const CustomXAxisTick = ({
   const secondaryLabel =
     secondaryValue !== undefined
       ? wrappedTextLabel({
-        ...textStyleProps,
-        text: String(secondaryValue),
-        // primaryLabel.height gives us where primary ends (relative to its startDy)
-        // X_AXIS_LABEL_GAP adds the desired spacing between labels
-        yOffset: primaryLabel.height + X_AXIS_LABEL_GAP,
-      })
+          ...textStyleProps,
+          text: String(secondaryValue),
+          // primaryLabel.height gives us where primary ends (relative to its startDy)
+          // X_AXIS_LABEL_GAP adds the desired spacing between labels
+          yOffset: primaryLabel.height + X_AXIS_LABEL_GAP,
+        })
       : null;
 
   // Calculate total tick height and report it
@@ -559,8 +559,8 @@ const LegendItem = ({
       onClick={
         isClickable
           ? () => {
-            onClick(entry.dataKey);
-          }
+              onClick(entry.dataKey);
+            }
           : undefined
       }
       type="button"

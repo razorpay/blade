@@ -187,7 +187,7 @@ export const BasicDonutChart: StoryFn<typeof ChartDonut> = (args) => {
           }}
           {...wrapperProps}
         >
-          <ChartDonut type={type} radius={radius}  data={chartData} />
+          <ChartDonut type={type} radius={radius} data={chartData} />
           <ChartLegend />
           <ChartTooltip />
         </ChartDonutWrapper>
