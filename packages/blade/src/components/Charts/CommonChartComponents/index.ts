@@ -5,6 +5,7 @@ export type {
   ChartTooltipProps,
   ChartLegendProps,
   ChartReferenceLineProps,
+  ChartLabelContentProps,
   DataColorMapping,
   SecondaryLabelMap,
 } from './types';
