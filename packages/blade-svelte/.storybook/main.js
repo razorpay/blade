@@ -26,6 +26,9 @@ const config = {
     options: {},
   },
   viteFinal: async (config) => {
+    // Set base path for subdirectory deployment at /svelte on blade.razorpay.com
+    config.base = '/svelte/';
+
     // Resolve blade-core imports directly to source files for better re-export handling
     // Note: We use a custom resolve function to handle exact matches only
     const bladeCoreRoot = resolve(__dirname, '../../blade-core/src');
