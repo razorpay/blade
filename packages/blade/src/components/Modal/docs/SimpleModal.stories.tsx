@@ -173,3 +173,68 @@ FullPageModal.args = {
   size: 'full',
 };
 FullPageModal.storyName = 'Full Page Modal';
+
+const FullPageModalWithSlotTemplate: StoryFn<typeof Modal> = ({ size }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isImageLoading, setIsImageLoading] = React.useState(true);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(!isOpen)}>Open Modal with Slot</Button>
+      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size={size}>
+        <ModalHeader
+          title="Full Page Modal with Slot"
+          subtitle="Demonstrates using trailing slot for custom actions"
+          trailing={
+            <Button variant="tertiary" size="small" icon={DownloadIcon}>
+              Download
+            </Button>
+          }
+        />
+        <ModalBody height="100%" padding="spacing.0">
+          <Box position="relative" width="100%" height="100%">
+            {isImageLoading && (
+              <Box
+                position="absolute"
+                top="0px"
+                left="0px"
+                width="100%"
+                height="100%"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                backgroundColor="surface.background.gray.intense"
+              >
+                <Skeleton height="100%" width="100%" />
+              </Box>
+            )}
+            <img
+              width="100%"
+              height="100%"
+              src="https://picsum.photos/1920/1080"
+              alt="random"
+              onLoad={() => setIsImageLoading(false)}
+              style={{ display: isImageLoading ? 'none' : 'block' }}
+            />
+          </Box>
+        </ModalBody>
+        <ModalFooter>
+          <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="primary" isDisabled={isImageLoading}>
+              Save
+            </Button>
+          </Box>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+};
+
+export const FullPageModalWithSlot = FullPageModalWithSlotTemplate.bind({});
+FullPageModalWithSlot.args = {
+  size: 'full',
+};
+FullPageModalWithSlot.storyName = 'Full Page Modal with Slot';
