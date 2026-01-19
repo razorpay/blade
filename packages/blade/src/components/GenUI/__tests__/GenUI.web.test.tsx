@@ -8,6 +8,7 @@ import { waitFor } from '@testing-library/react';
 import { GenUIProvider } from '../GenUIProvider';
 import { GenUISchemaRenderer } from '../GenUISchemaRenderer';
 import type { GenUIComponent } from '../GenUIComponents';
+import { useGenUI } from '../GenUIContext.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<GenUI />', () => {
@@ -26,7 +27,6 @@ describe('<GenUI />', () => {
       const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 
       const TestComponent = () => {
-        const { useGenUI } = require('../GenUIProvider');
         useGenUI();
         return <div>Test</div>;
       };

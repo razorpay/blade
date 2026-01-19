@@ -458,7 +458,7 @@ const RenderChartComponent = memo(
 
       // Check if at least one numeric value exists
       const hasNumericValue = Object.keys(item).some(
-        (key) => key !== xAxis && typeof item[key] === 'number' && !isNaN(item[key]),
+        (key) => key !== xAxis && typeof item[key] === 'number' && !isNaN(Number(item[key])),
       );
 
       return hasNumericValue;
