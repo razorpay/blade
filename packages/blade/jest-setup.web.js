@@ -6,3 +6,8 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
   unobserve: jest.fn(),
   disconnect: jest.fn(),
 }));
+
+// Mock streamdown to avoid ESM module issues
+jest.mock('streamdown', () => ({
+  Streamdown: ({ children }) => children,
+}));

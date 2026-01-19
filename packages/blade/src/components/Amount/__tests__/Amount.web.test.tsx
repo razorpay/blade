@@ -150,14 +150,14 @@ describe('<Amount />', () => {
   it('should check if formatAmountWithSuffix is returning the right value for humanize decimals and none', () => {
     setState({ locale: 'en-IN' });
     expect(getAmountByParts({ value: 1000.22, suffix: 'humanize', currency: 'INR' })).toEqual({
-      compact: 'T',
+      compact: 'K',
       currency: '₹',
       integer: '1',
       isPrefixSymbol: true,
       rawParts: [
         { type: 'currency', value: '₹' },
         { type: 'integer', value: '1' },
-        { type: 'compact', value: 'T' },
+        { type: 'compact', value: 'K' },
       ],
     });
     expect(getAmountByParts({ value: 1000000.0, suffix: 'decimals', currency: 'INR' })).toEqual({
