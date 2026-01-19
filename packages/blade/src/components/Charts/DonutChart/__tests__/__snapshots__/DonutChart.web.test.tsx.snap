@@ -46,7 +46,7 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts51-clip"
+                  id="recharts53-clip"
                 >
                   <rect
                     height="390"
@@ -161,7 +161,7 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts54-clip"
+                  id="recharts56-clip"
                 >
                   <rect
                     height="390"
@@ -276,7 +276,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 1`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts42-clip"
+                  id="recharts44-clip"
                 >
                   <rect
                     height="390"
@@ -391,7 +391,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 2`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts45-clip"
+                  id="recharts47-clip"
                 >
                   <rect
                     height="390"
@@ -506,7 +506,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 3`] = `
               <desc />
               <defs>
                 <clippath
-                  id="recharts48-clip"
+                  id="recharts50-clip"
                 >
                   <rect
                     height="390"
@@ -621,7 +621,7 @@ exports[`<ChartDonut /> should render ChartDonut with custom center coordinates 
               <desc />
               <defs>
                 <clippath
-                  id="recharts57-clip"
+                  id="recharts59-clip"
                 >
                   <rect
                     height="390"
@@ -749,11 +749,45 @@ exports[`<ChartDonut /> should render ChartDonut with custom dataKey and nameKey
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
-              />
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
               <g
                 class="recharts-layer recharts-pie"
                 tabindex="0"
-              />
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                  <g
+                    class="recharts-layer recharts-pie-sector"
+                    tabindex="-1"
+                  />
+                </g>
+              </g>
             </svg>
           </div>
         </div>
