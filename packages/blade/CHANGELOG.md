@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.74.0
+
+### Minor Changes
+
+- 3498bd73f: feat(blade): added GenUI components
+
 ## 12.73.1
 
 ### Patch Changes
