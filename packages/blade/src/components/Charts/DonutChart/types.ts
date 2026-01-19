@@ -20,7 +20,7 @@ type ChartDonutProps = {
   /**
    * The name key of the Donut chart.
    */
-  nameKey: RechartsPieProps['name'];
+  nameKey: RechartsPieProps['nameKey'];
   /**
    * The x coordinate of the Donut chart.
    */

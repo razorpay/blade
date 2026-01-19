@@ -75,6 +75,12 @@ const getChartColor = (
 ): ChartColorToken => {
   const colorKey = chartName === 'donut' ? sanitizeString(name ?? '') : dataKey;
   const mappedColorData = dataColorMapping?.[colorKey ?? ''];
+
+  // Handle case where mappedColorData is undefined (e.g., during dynamic nameKey changes)
+  if (!mappedColorData) {
+    return 'data.background.categorical.azure.faint';
+  }
+
   const mappedColor = mappedColorData.colorToken;
   const isCustomColor = mappedColorData.isCustomColor;
 
