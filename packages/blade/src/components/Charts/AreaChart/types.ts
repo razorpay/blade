@@ -42,6 +42,11 @@ type ChartAreaProps = {
    */
   activeDot?: RechartAreaProps['activeDot'];
   /**
+   * Whether to hide the area.
+   * @private - Used internally by legend click functionality
+   */
+  hide?: boolean;
+  /**
    * @private
    */
   _index?: number;

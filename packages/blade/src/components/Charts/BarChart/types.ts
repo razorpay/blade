@@ -36,6 +36,11 @@ type ChartBarProps = {
    */
   showLegend?: boolean;
   /**
+   * Whether to hide the bar.
+   * @private - Used internally by legend click functionality
+   */
+  hide?: boolean;
+  /**
    * The index of the bar chart.
    * @private
    */
