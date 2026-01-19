@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { throwBladeError } from '~utils/logger';
 
@@ -15,10 +16,7 @@ const GenUISchemaRenderer = (_props: GenUISchemaRendererProps): React.ReactEleme
   return <></>;
 };
 
-const ComponentRenderer = (_props: {
-  component?: any;
-  index: number;
-}): React.ReactElement => {
+const ComponentRenderer = (_props: { component?: any; index: number }): React.ReactElement => {
   throwBladeError({
     message: 'ComponentRenderer is not yet implemented for React Native',
     moduleName: 'ComponentRenderer',

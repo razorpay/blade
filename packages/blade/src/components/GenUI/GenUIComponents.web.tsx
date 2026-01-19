@@ -1,21 +1,29 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { memo, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Streamdown } from 'streamdown';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
+import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
+import { useGenUIAction } from './GenUIContext';
+import { ComponentRenderer } from './GenUISchemaRenderer';
+import { Box } from '~components/Box';
+import { Text, Heading } from '~components/Typography';
+import { Skeleton } from '~components/Skeleton';
 import {
-  Box,
-  Text,
-  Skeleton,
   Card,
   CardBody,
   CardHeader,
   CardHeaderLeading,
   CardFooter,
   CardFooterLeading,
-  Heading,
-  Badge,
-  Divider,
+} from '~components/Card';
+import { Badge } from '~components/Badge';
+import { Divider } from '~components/Divider';
+import {
   ChartBar,
   ChartBarWrapper,
   ChartLine,
@@ -29,6 +37,8 @@ import {
   ChartCartesianGrid,
   ChartTooltip,
   ChartLegend,
+} from '~components/Charts';
+import {
   Table,
   TableHeader,
   TableHeaderRow,
@@ -36,20 +46,13 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Link,
+} from '~components/Table';
+import { Link } from '~components/Link';
+import {
   DotIcon,
-  InfoGroup,
-  InfoItem,
-  InfoItemKey,
-  InfoItemValue,
-  Button,
-  Amount,
-  Indicator,
-  Alert,
   InfoIcon,
   CheckCircleIcon,
   AlertTriangleIcon,
-  IconButton,
   CheckIcon,
   CloseIcon,
   EditIcon,
@@ -57,12 +60,14 @@ import {
   DownloadIcon,
   EyeIcon,
   CopyIcon,
-  Tooltip,
-  TooltipInteractiveWrapper,
-} from '..';
-import { useGenUIAction } from './GenUIProvider';
-import type { GenUIAction, GenUIComponentRegistry, GenUIComponentRenderer } from './GenUIProvider';
-import { ComponentRenderer as ComponentRendererInternal } from './GenUISchemaRenderer';
+} from '~components/Icons';
+import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '~components/InfoGroup';
+import { Button } from '~components/Button';
+import { IconButton } from '~components/Button/IconButton';
+import { Amount } from '~components/Amount';
+import { Indicator } from '~components/Indicator';
+import { Alert } from '~components/Alert';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 /**
  * Built-in component types supported by GenUI
@@ -82,11 +87,6 @@ const ComponentType = {
   LINK: 'LINK',
   ALERT: 'ALERT',
 } as const;
-
-// Base component interface - all components extend this
-type GenUIBaseComponent = {
-  component?: string;
-};
 
 type TextComponent = GenUIBaseComponent & {
   component: typeof ComponentType.TEXT;
@@ -458,7 +458,7 @@ const RenderChartComponent = memo(
 
       // Check if at least one numeric value exists
       const hasNumericValue = Object.keys(item).some(
-        (key) => key !== xAxis && typeof item[key] === 'number' && !isNaN(item[key] as number),
+        (key) => key !== xAxis && typeof item[key] === 'number' && !isNaN(item[key]),
       );
 
       return hasNumericValue;
@@ -686,7 +686,7 @@ const CopyableText = ({ value }: { value: string }) => {
 
   const handleCopy = () => {
     if (value) {
-      navigator.clipboard.writeText(value);
+      void navigator.clipboard.writeText(value);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -1189,6 +1189,10 @@ const RenderAlertComponent = memo(
   },
 );
 
+// Alias for internal use in built-in renderers
+const GenUIComponentRenderer = ComponentRenderer;
+type GenUIComponentRenderer = React.ComponentType<GenUIBaseComponent & { index: number }>;
+
 /**
  * Default registry of built-in components
  */
@@ -1234,9 +1238,6 @@ const createBuiltInRegistry = (): GenUIComponentRegistry => ({
   },
 });
 
-// Alias for internal use in built-in renderers
-const GenUIComponentRenderer = ComponentRendererInternal;
-
 export {
   // Built-in registry creator (used by GenUIProvider)
   createBuiltInRegistry,
@@ -1244,4 +1245,4 @@ export {
   ComponentType,
 };
 
-export type { GenUIComponent, GenUIBaseComponent };
+export type { GenUIComponent };

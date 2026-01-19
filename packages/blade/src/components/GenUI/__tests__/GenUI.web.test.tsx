@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
@@ -20,7 +24,7 @@ describe('<GenUI />', () => {
     it('should throw error when useGenUI is used outside provider', () => {
       // Mock console.error to avoid cluttering test output
       const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-      
+
       const TestComponent = () => {
         const { useGenUI } = require('../GenUIProvider');
         useGenUI();
@@ -30,7 +34,7 @@ describe('<GenUI />', () => {
       expect(() => renderWithTheme(<TestComponent />)).toThrow(
         'useGenUI must be used within a GenUIProvider',
       );
-      
+
       mockConsoleError.mockRestore();
     });
 
@@ -564,7 +568,7 @@ describe('<GenUI />', () => {
 
     it('should copy text to clipboard when copy button is clicked', async () => {
       const user = userEvent.setup();
-      
+
       // Mock clipboard API
       const writeTextMock = jest.fn().mockResolvedValue(undefined);
       Object.defineProperty(navigator, 'clipboard', {
@@ -597,7 +601,7 @@ describe('<GenUI />', () => {
       // Click copy button for first cell
       const copyButton1 = getByLabelText('Copy api_key_123');
       await user.click(copyButton1);
-      
+
       await waitFor(() => {
         expect(writeTextMock).toHaveBeenCalledWith('api_key_123');
       });
@@ -605,7 +609,7 @@ describe('<GenUI />', () => {
       // Click copy button for second cell
       const copyButton2 = getByLabelText('Copy secret_xyz_789');
       await user.click(copyButton2);
-      
+
       await waitFor(() => {
         expect(writeTextMock).toHaveBeenCalledWith('secret_xyz_789');
       });
@@ -694,11 +698,11 @@ describe('<GenUI />', () => {
 
       // Verify copyable cell has copy button
       expect(getByLabelText('Copy alice@example.com')).toBeInTheDocument();
-      
+
       // Verify non-copyable cells are rendered normally
       expect(getByText('Alice')).toBeInTheDocument();
       expect(getByText('Active')).toBeInTheDocument();
-      
+
       // Should have copy button (may render multiple times due to table internals)
       const copyButtons = container.querySelectorAll('[aria-label^="Copy"]');
       expect(copyButtons.length).toBeGreaterThanOrEqual(1);
@@ -706,7 +710,7 @@ describe('<GenUI />', () => {
 
     it('should copy different values from different rows', async () => {
       const user = userEvent.setup();
-      
+
       // Mock clipboard API
       const writeTextMock = jest.fn().mockResolvedValue(undefined);
       Object.defineProperty(navigator, 'clipboard', {
@@ -1752,9 +1756,7 @@ describe('<GenUI />', () => {
                   component: 'CARD',
                   title: 'Users',
                   description: 'Active users',
-                  children: [
-                    { component: 'TEXT', content: '**1,234** active users' },
-                  ],
+                  children: [{ component: 'TEXT', content: '**1,234** active users' }],
                 },
               ],
             },
@@ -2688,11 +2690,7 @@ describe('<GenUI />', () => {
             component: 'CHART',
             chartType: 'bar',
             xAxis: 'month',
-            data: [
-              { month: '', value: NaN },
-              { month: 'Feb', value: Infinity },
-              {},
-            ],
+            data: [{ month: '', value: NaN }, { month: 'Feb', value: Infinity }, {}],
             valueFormatter: { type: 'number' },
           },
         ];
@@ -2737,9 +2735,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Amount'],
-            rows: [
-              [{ component: 'AMOUNT', value: '1000' as any, currency: 'INR' }],
-            ],
+            rows: [[{ component: 'AMOUNT', value: '1000' as any, currency: 'INR' }]],
           },
         ];
 
@@ -2758,9 +2754,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Amount'],
-            rows: [
-              [{ component: 'AMOUNT', value: NaN, currency: 'INR' }],
-            ],
+            rows: [[{ component: 'AMOUNT', value: NaN, currency: 'INR' }]],
           },
         ];
 
@@ -2799,9 +2793,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Status'],
-            rows: [
-              [{ component: 'INDICATOR', value: '', color: 'positive' }],
-            ],
+            rows: [[{ component: 'INDICATOR', value: '', color: 'positive' }]],
           },
         ];
 
@@ -2815,16 +2807,21 @@ describe('<GenUI />', () => {
       });
 
       it('should handle BADGE with all color variants', () => {
-        const colors = ['neutral', 'negative', 'notice', 'positive', 'primary', 'information'] as const;
+        const colors = [
+          'neutral',
+          'negative',
+          'notice',
+          'positive',
+          'primary',
+          'information',
+        ] as const;
 
         colors.forEach((color) => {
           const components: GenUIComponent[] = [
             {
               component: 'TABLE',
               headers: ['Badge'],
-              rows: [
-                [{ component: 'BADGE', value: `${color} badge`, color }],
-              ],
+              rows: [[{ component: 'BADGE', value: `${color} badge`, color }]],
             },
           ];
 
@@ -2895,9 +2892,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Date'],
-            rows: [
-              [{ component: 'DATE', value: '', dateFormat: 'DD MMM YYYY' }],
-            ],
+            rows: [[{ component: 'DATE', value: '', dateFormat: 'DD MMM YYYY' }]],
           },
         ];
 
@@ -2915,9 +2910,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Link'],
-            rows: [
-              [{ component: 'LINK', text: 'Plain text' }],
-            ],
+            rows: [[{ component: 'LINK', text: 'Plain text' }]],
           },
         ];
 
@@ -2935,9 +2928,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Unknown'],
-            rows: [
-              [{ component: 'UNKNOWN' as any, value: 'fallback text' }],
-            ],
+            rows: [[{ component: 'UNKNOWN' as any, value: 'fallback text' }]],
           },
         ];
 
@@ -2955,9 +2946,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Column'],
-            rows: [
-              [null as any],
-            ],
+            rows: [[null as any]],
           },
         ];
 
@@ -2977,9 +2966,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Text'],
-            rows: [
-              [{ component: 'TEXT', value: '', copyable: true }],
-            ],
+            rows: [[{ component: 'TEXT', value: '', copyable: true }]],
           },
         ];
 
@@ -2999,9 +2986,7 @@ describe('<GenUI />', () => {
           {
             component: 'TABLE',
             headers: ['Code'],
-            rows: [
-              [{ component: 'TEXT', value: specialText, copyable: true }],
-            ],
+            rows: [[{ component: 'TEXT', value: specialText, copyable: true }]],
           },
         ];
 
@@ -3196,9 +3181,7 @@ describe('<GenUI />', () => {
 
     describe('SPACER component', () => {
       it('should render spacer with small size', () => {
-        const components: GenUIComponent[] = [
-          { component: 'SPACER', size: 'small' },
-        ];
+        const components: GenUIComponent[] = [{ component: 'SPACER', size: 'small' }];
 
         const { container } = renderWithTheme(
           <GenUIProvider>
@@ -3210,9 +3193,7 @@ describe('<GenUI />', () => {
       });
 
       it('should render spacer with medium size', () => {
-        const components: GenUIComponent[] = [
-          { component: 'SPACER', size: 'medium' },
-        ];
+        const components: GenUIComponent[] = [{ component: 'SPACER', size: 'medium' }];
 
         const { container } = renderWithTheme(
           <GenUIProvider>
@@ -3224,9 +3205,7 @@ describe('<GenUI />', () => {
       });
 
       it('should render spacer with large size', () => {
-        const components: GenUIComponent[] = [
-          { component: 'SPACER', size: 'large' },
-        ];
+        const components: GenUIComponent[] = [{ component: 'SPACER', size: 'large' }];
 
         const { container } = renderWithTheme(
           <GenUIProvider>
@@ -3238,9 +3217,7 @@ describe('<GenUI />', () => {
       });
 
       it('should not render spacer without size', () => {
-        const components: GenUIComponent[] = [
-          { component: 'SPACER' } as any,
-        ];
+        const components: GenUIComponent[] = [{ component: 'SPACER' } as any];
 
         const { container } = renderWithTheme(
           <GenUIProvider>
@@ -3384,9 +3361,7 @@ describe('<GenUI />', () => {
 
     describe('TEXT component markdown variations', () => {
       it('should render text with bold markdown', () => {
-        const components: GenUIComponent[] = [
-          { component: 'TEXT', content: '**Bold text**' },
-        ];
+        const components: GenUIComponent[] = [{ component: 'TEXT', content: '**Bold text**' }];
 
         const { container } = renderWithTheme(
           <GenUIProvider>
@@ -3398,9 +3373,7 @@ describe('<GenUI />', () => {
       });
 
       it('should render text with italic markdown', () => {
-        const components: GenUIComponent[] = [
-          { component: 'TEXT', content: '*Italic text*' },
-        ];
+        const components: GenUIComponent[] = [{ component: 'TEXT', content: '*Italic text*' }];
 
         const { container } = renderWithTheme(
           <GenUIProvider>

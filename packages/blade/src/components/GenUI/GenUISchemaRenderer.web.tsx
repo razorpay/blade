@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
-import { Text } from '..';
-import { useGenUI } from './GenUIProvider';
-import { GenUIComponent } from './GenUIComponents';
+import type { GenUIComponent } from './GenUIComponents';
+import { useGenUI } from './GenUIContext';
+import { Text } from '~components/Typography';
 
 /**
  * Helper to generate a stable key for a component based on its index and type
  */
 const getComponentKey = (component: GenUIComponent, index: number): string => {
-  if (!component || !component.component) {
+  if (!component?.component) {
     return `empty-${index}`;
   }
   return `${component.component}-${index}`;

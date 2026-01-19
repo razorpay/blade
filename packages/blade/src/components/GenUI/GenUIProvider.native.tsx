@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { throwBladeError } from '~utils/logger';
 
