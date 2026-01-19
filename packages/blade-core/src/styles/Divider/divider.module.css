@@ -1,0 +1,54 @@
+/* Divider Base Styles */
+.divider {
+  border-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Orientation */
+.horizontal {
+  flex-grow: 1;
+}
+
+.vertical {
+  align-self: stretch;
+}
+
+/* Thickness */
+.thinner {
+  /* Will be set via border-bottom-width or border-left-width */
+}
+
+.thin {
+  /* Will be set via border-bottom-width or border-left-width */
+}
+
+.thick {
+  /* Will be set via border-bottom-width or border-left-width */
+}
+
+.thicker {
+  /* Will be set via border-bottom-width or border-left-width */
+}
+
+/* Border Style */
+.solid {
+  /* Will be set via border-bottom-style or border-left-style */
+}
+
+.dashed {
+  /* Will be set via border-bottom-style or border-left-style */
+}
+
+/* Variant (color) */
+.normal {
+  /* Will be set via border-bottom-color or border-left-color */
+}
+
+.subtle {
+  /* Will be set via border-bottom-color or border-left-color */
+}
+
+.muted {
+  /* Will be set via border-bottom-color or border-left-color */
+}
