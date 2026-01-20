@@ -295,26 +295,23 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
   const { theme } = useTheme();
   const { selectedDataKeys } = useCommonChartComponentsContext();
 
-  // Filter data based on selectedDataKeys (using sanitized name as key)
-  // This allows the donut chart to re-render with correct proportions
-  const filteredData = useMemo(() => {
-    if (!selectedDataKeys) return data;
-    return data.filter((item) => selectedDataKeys.includes(sanitizeString(item.name as string)));
-  }, [data, selectedDataKeys]);
+  // Filter data based on selectedDataKeys and build index mapping in a single pass
+  // - filteredData: allows the donut chart to re-render with correct proportions
+  // - filteredToOriginalIndexMap: ensures colors remain consistent even when data is filtered
+  const { filteredData, filteredToOriginalIndexMap } = useMemo(() => {
+    if (!selectedDataKeys) return { filteredData: data, filteredToOriginalIndexMap: null };
 
-  // Build index mapping from filtered data to original data for color lookup
-  // This ensures colors remain consistent even when data is filtered
-  const filteredToOriginalIndexMap = useMemo(() => {
-    if (!selectedDataKeys) return null;
-    const map: Record<number, number> = {};
-    let filteredIdx = 0;
+    const filteredData: typeof data = [];
+    const filteredToOriginalIndexMap: Record<number, number> = {};
+
     data.forEach((item, originalIdx) => {
       if (selectedDataKeys.includes(sanitizeString(item.name as string))) {
-        map[filteredIdx] = originalIdx;
-        filteredIdx++;
+        filteredToOriginalIndexMap[filteredData.length] = originalIdx;
+        filteredData.push(item);
       }
     });
-    return map;
+
+    return { filteredData, filteredToOriginalIndexMap };
   }, [data, selectedDataKeys]);
 
   const getCellOpacity = (hoveredIndex: number | null, currentIndex: number): number => {
