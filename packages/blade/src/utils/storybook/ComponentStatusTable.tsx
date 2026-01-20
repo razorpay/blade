@@ -192,7 +192,7 @@ const ComponentStatusTable = (): React.ReactElement => {
                 <Text weight="semibold">Description</Text>
               </th>
               <th style={{ width: '10%' }} align="center">
-                <Text weight="semibold">Web</Text>
+                <Text weight="semibold">React</Text>
               </th>
               <th style={{ width: '10%' }} align="center">
                 <Text weight="semibold">RN</Text>
