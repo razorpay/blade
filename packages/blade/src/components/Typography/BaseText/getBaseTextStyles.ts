@@ -56,13 +56,27 @@ const getBaseTextStyles = ({
     }
   }
 
+  // Handle 'dotted' as a special case - it creates a dotted underline
+  const isDotted = textDecorationLine === 'dotted';
+  const actualTextDecorationLine = isDotted ? 'underline' : textDecorationLine;
+  const dottedStyles: CSSObject = isDotted
+    ? {
+        textDecorationStyle: 'dotted',
+        textDecorationSkipInk: 'none',
+        textDecorationThickness: '10%',
+        textUnderlineOffset: '20%',
+        textUnderlinePosition: 'from-font',
+      }
+    : {};
+
   return {
     color: textColor,
     fontFamily: themeFontFamily,
     fontSize: themeFontSize,
     fontWeight: themeFontWeight,
     fontStyle,
-    textDecorationLine,
+    textDecorationLine: actualTextDecorationLine,
+    ...dottedStyles,
     ...(textDecorationLine !== 'none' && {
       textDecorationColor: textColor,
     }),

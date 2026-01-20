@@ -37,7 +37,7 @@ export type BaseTextProps = {
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
-  textDecorationLine?: 'line-through' | 'none' | 'underline';
+  textDecorationLine?: 'line-through' | 'none' | 'underline' | 'dotted';
   textTransform?: CSSProperties['textTransform'];
   lineHeight?: keyof Theme['typography']['lineHeights'];
   letterSpacing?: keyof Theme['typography']['letterSpacings'];
