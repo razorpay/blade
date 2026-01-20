@@ -8,6 +8,9 @@ on:
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
+permissions:
+  id-token: write  # Required for OIDC
+
 jobs:
   release:
     name: Release
@@ -41,7 +44,7 @@ jobs:
       - name: Publish to public npm registry
         if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
