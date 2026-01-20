@@ -71,8 +71,18 @@ const ComponentStatusBadge = ({ status }: { status: ComponentStatuses }): React.
   );
 };
 
-const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement => {
-  const ghUrl = 'https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40';
+const ReleasedInLink = ({
+  version,
+  framework = 'react',
+}: {
+  version?: string;
+  framework?: 'react' | 'svelte';
+}): React.ReactElement => {
+  const ghUrlReact = 'https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40';
+  const ghUrlSvelte =
+    'https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade-svelte%40';
+  const ghUrl = framework === 'svelte' ? ghUrlSvelte : ghUrlReact;
+
   return version ? (
     <Link
       href={`${ghUrl}${version}`}
@@ -99,7 +109,11 @@ function isNewerVersion(oldVersion: string, newVersion: string): boolean {
   return false;
 }
 
-const ComponentStatusTable = (): React.ReactElement => {
+const ComponentStatusTable = ({
+  framework = 'react',
+}: {
+  framework?: 'react' | 'svelte';
+}): React.ReactElement => {
   const unreleasedComponentsSort: ComponentStatuses[] = [
     'in-design',
     'in-api-spec',
@@ -116,14 +130,19 @@ const ComponentStatusTable = (): React.ReactElement => {
     'released',
   ];
 
-  const sortedData = componentData.sort((a, b) => {
-    if (!a.releasedIn || !b.releasedIn) {
-      return unreleasedComponentsSort.indexOf(a.status) > unreleasedComponentsSort.indexOf(b.status)
+  const sortedData = [...componentData].sort((a, b) => {
+    const aFramework = a.frameworks[framework];
+    const bFramework = b.frameworks[framework];
+
+    if (!aFramework?.releasedIn || !bFramework?.releasedIn) {
+      const aStatus = aFramework?.status ?? 'to-be-decided';
+      const bStatus = bFramework?.status ?? 'to-be-decided';
+      return unreleasedComponentsSort.indexOf(aStatus) > unreleasedComponentsSort.indexOf(bStatus)
         ? 1
         : -1;
     }
 
-    return isNewerVersion(b.releasedIn, a.releasedIn) ? -1 : 1;
+    return isNewerVersion(bFramework.releasedIn, aFramework.releasedIn) ? -1 : 1;
   });
 
   return (
@@ -189,6 +208,11 @@ const ComponentStatusTable = (): React.ReactElement => {
           </thead>
           <tbody>
             {sortedData.map((data) => {
+              const frameworkData = data.frameworks[framework];
+              const status = frameworkData?.status ?? 'to-be-decided';
+              const releasedIn = frameworkData?.releasedIn;
+              const storybookLink = frameworkData?.storybookLink;
+
               const isAvailableOnWeb = data.platform === 'web';
               const isAvailableOnMobile = data.platform === 'mobile';
               const isAvailableOnAll = data.platform === 'all';
@@ -196,14 +220,14 @@ const ComponentStatusTable = (): React.ReactElement => {
               return (
                 <tr key={data.name}>
                   <td align="left">
-                    {data.storybookLink ? (
-                      <LinkToStorybook url={data.storybookLink}>{data.name}</LinkToStorybook>
+                    {storybookLink ? (
+                      <LinkToStorybook url={storybookLink}>{data.name}</LinkToStorybook>
                     ) : (
                       <Text>{data.name}</Text>
                     )}
                   </td>
                   <td align="right">
-                    <ComponentStatusBadge status={data.status} />
+                    <ComponentStatusBadge status={status} />
                   </td>
                   <td align="left">
                     <Text size="medium" color="surface.text.gray.subtle">
@@ -211,21 +235,23 @@ const ComponentStatusTable = (): React.ReactElement => {
                     </Text>
                   </td>
                   <td align="center">
-                    {isAvailableOnWeb || isAvailableOnAll ? (
+                    {(isAvailableOnWeb || isAvailableOnAll) && status === 'released' ? (
                       <CheckIcon color="feedback.icon.positive.intense" />
                     ) : (
                       <CloseIcon color="feedback.icon.negative.intense" />
                     )}
                   </td>
                   <td align="center">
-                    {isAvailableOnMobile || isAvailableOnAll ? (
+                    {(isAvailableOnMobile || isAvailableOnAll) &&
+                    status === 'released' &&
+                    framework === 'react' ? (
                       <CheckIcon color="feedback.icon.positive.intense" />
                     ) : (
                       <CloseIcon color="feedback.icon.negative.intense" />
                     )}
                   </td>
                   <td align="right">
-                    <ReleasedInLink version={data.releasedIn} />
+                    <ReleasedInLink version={releasedIn} framework={framework} />
                   </td>
                 </tr>
               );
@@ -237,4 +263,4 @@ const ComponentStatusTable = (): React.ReactElement => {
   );
 };
 
-export { ComponentStatusTable };
+export { ComponentStatusTable, ComponentStatusBadge };
