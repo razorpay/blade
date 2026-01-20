@@ -11,12 +11,17 @@ const renderPresetDropdown = ({
   presetStates,
   selectedPresetLabel,
 }: renderPresetDropdownProps): React.ReactElement => {
+  // Filter out presets that should be hidden when selected (e.g., "Custom" preset)
+  const visiblePresetStates = presetStates.filter(
+    ({ preset, isSelected }) => !(preset.hideLabelOnSelection && isSelected),
+  );
+
   return (
     <Dropdown>
       <InputDropdownButton value={selectedPresetLabel ?? 'Custom'} icon={CalendarIcon} />
       <DropdownOverlay>
         <ActionList>
-          {presetStates.map(({ preset, isSelected, isCustomType }) => (
+          {visiblePresetStates.map(({ preset, isSelected, isCustomType }) => (
             <ActionListItem
               key={preset.label}
               title={preset.label}

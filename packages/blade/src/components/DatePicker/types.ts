@@ -25,6 +25,13 @@ type Preset = {
    * [dayjs().subtract(7, 'day'), dayjs()]
    */
   value: (date: Date) => DatesRangeValue;
+  /**
+   * When true, hides this preset from the dropdown list when it is selected.
+   * Useful for "Custom" preset which should be hidden after selection.
+   *
+   * @default false
+   */
+  hideLabelOnSelection?: boolean;
 };
 
 type DateSelectionType = 'single' | 'range';

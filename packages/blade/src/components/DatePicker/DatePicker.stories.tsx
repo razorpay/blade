@@ -222,6 +222,88 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ..._arg
 
 DatePickerPresets.storyName = 'With Presets';
 
+export const DatePickerPresetsWithHideLabelOnSelection: StoryFn<typeof DatePickerComponent> = ({
+  ..._args
+}) => {
+  const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([
+    dayjs().subtract(7, 'days').toDate(),
+    dayjs().toDate(),
+  ]);
+
+  return (
+    <Box>
+      <Text>
+        In Range DatePicker you can pass <Code size="medium">presets</Code> which will render a
+        quick selection panel inside DatePicker for easy to use range selections
+      </Text>
+      <Text marginTop="spacing.4">
+        presets accepts an array of objects with <Code>label</Code> and{' '}
+        <Code size="medium">value</Code> properties.
+      </Text>
+      <Text marginTop="spacing.2" marginBottom="spacing.5">
+        Example:
+        <Code size="medium">
+          {`
+            [ { label: 'Past 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date]} ]
+          `}
+        </Code>
+      </Text>
+
+      <DatePickerComponent
+        label={{ start: 'Select a date range' }}
+        selectionType="range"
+        value={selectedDates}
+        onChange={(date) => {
+          console.log(date);
+          setSelectedDates(date as DatesRangeValue);
+        }}
+        presets={[
+          {
+            label: 'Today',
+            value: (date) => [dayjs(date).startOf('day').toDate(), date],
+          },
+          {
+            label: 'Yesterday',
+            value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+          },
+          {
+            label: 'Past 7 days',
+            value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+          },
+          {
+            label: 'Past 15 days',
+            value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+          },
+          {
+            label: 'Past month',
+            value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+          },
+          {
+            label: 'Past year',
+            value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
+          },
+          {
+            label: 'Past financial year',
+            value: (date) => {
+              const d = dayjs(date);
+              const year = d.month() >= 3 ? d.year() : d.year() - 1;
+
+              return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+            },
+          },
+          {
+            label: 'Custom',
+            value: () => [null, null] as DatesRangeValue,
+            hideLabelOnSelection: true,
+          },
+        ]}
+      />
+    </Box>
+  );
+};
+
+DatePickerPresetsWithHideLabelOnSelection.storyName = 'With Presets with hideLabelOnSelection';
+
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
