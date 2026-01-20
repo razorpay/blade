@@ -45,7 +45,7 @@ type ChartAreaProps = {
    * Whether to hide the area.
    *
    */
-   hide?: boolean;
+  hide?: boolean;
   /**
    * @private
    */

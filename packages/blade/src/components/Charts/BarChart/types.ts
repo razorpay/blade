@@ -37,7 +37,7 @@ type ChartBarProps = {
   showLegend?: boolean;
   /**
    * Whether to hide the bar.
-   * 
+   *
    */
   hide?: boolean;
   /**
