@@ -109,11 +109,7 @@ function isNewerVersion(oldVersion: string, newVersion: string): boolean {
   return false;
 }
 
-const ComponentStatusTable = ({
-  framework = 'react',
-}: {
-  framework?: 'react' | 'svelte';
-}): React.ReactElement => {
+const ComponentStatusTable = (): React.ReactElement => {
   const unreleasedComponentsSort: ComponentStatuses[] = [
     'in-design',
     'in-api-spec',
@@ -131,18 +127,18 @@ const ComponentStatusTable = ({
   ];
 
   const sortedData = [...componentData].sort((a, b) => {
-    const aFramework = a.frameworks[framework];
-    const bFramework = b.frameworks[framework];
+    const aReact = a.frameworks.react;
+    const bReact = b.frameworks.react;
 
-    if (!aFramework?.releasedIn || !bFramework?.releasedIn) {
-      const aStatus = aFramework?.status ?? 'to-be-decided';
-      const bStatus = bFramework?.status ?? 'to-be-decided';
+    if (!aReact?.releasedIn || !bReact?.releasedIn) {
+      const aStatus = aReact?.status ?? 'to-be-decided';
+      const bStatus = bReact?.status ?? 'to-be-decided';
       return unreleasedComponentsSort.indexOf(aStatus) > unreleasedComponentsSort.indexOf(bStatus)
         ? 1
         : -1;
     }
 
-    return isNewerVersion(bFramework.releasedIn, aFramework.releasedIn) ? -1 : 1;
+    return isNewerVersion(bReact.releasedIn, aReact.releasedIn) ? -1 : 1;
   });
 
   return (
@@ -201,6 +197,9 @@ const ComponentStatusTable = ({
               <th style={{ width: '10%' }} align="center">
                 <Text weight="semibold">RN</Text>
               </th>
+              <th style={{ width: '10%' }} align="center">
+                <Text weight="semibold">Svelte</Text>
+              </th>
               <th align="right">
                 <Text weight="semibold">Released In</Text>
               </th>
@@ -208,14 +207,16 @@ const ComponentStatusTable = ({
           </thead>
           <tbody>
             {sortedData.map((data) => {
-              const frameworkData = data.frameworks[framework];
-              const status = frameworkData?.status ?? 'to-be-decided';
-              const releasedIn = frameworkData?.releasedIn;
-              const storybookLink = frameworkData?.storybookLink;
+              const reactData = data.frameworks.react;
+              const svelteData = data.frameworks.svelte;
+              const reactStatus = reactData?.status ?? 'to-be-decided';
+              const svelteStatus = svelteData?.status ?? 'to-be-decided';
+              const releasedIn = reactData?.releasedIn;
+              const storybookLink = reactData?.storybookLink;
 
-              const isAvailableOnWeb = data.platform === 'web';
-              const isAvailableOnMobile = data.platform === 'mobile';
-              const isAvailableOnAll = data.platform === 'all';
+              const isAvailableOnWeb = data.platform === 'web' || data.platform === 'all';
+              const isAvailableOnMobile = data.platform === 'mobile' || data.platform === 'all';
+              const isSvelteReleased = svelteStatus === 'released';
 
               return (
                 <tr key={data.name}>
@@ -227,7 +228,7 @@ const ComponentStatusTable = ({
                     )}
                   </td>
                   <td align="right">
-                    <ComponentStatusBadge status={status} />
+                    <ComponentStatusBadge status={reactStatus} />
                   </td>
                   <td align="left">
                     <Text size="medium" color="surface.text.gray.subtle">
@@ -235,23 +236,28 @@ const ComponentStatusTable = ({
                     </Text>
                   </td>
                   <td align="center">
-                    {(isAvailableOnWeb || isAvailableOnAll) && status === 'released' ? (
+                    {isAvailableOnWeb && reactStatus === 'released' ? (
                       <CheckIcon color="feedback.icon.positive.intense" />
                     ) : (
                       <CloseIcon color="feedback.icon.negative.intense" />
                     )}
                   </td>
                   <td align="center">
-                    {(isAvailableOnMobile || isAvailableOnAll) &&
-                    status === 'released' &&
-                    framework === 'react' ? (
+                    {isAvailableOnMobile && reactStatus === 'released' ? (
+                      <CheckIcon color="feedback.icon.positive.intense" />
+                    ) : (
+                      <CloseIcon color="feedback.icon.negative.intense" />
+                    )}
+                  </td>
+                  <td align="center">
+                    {isSvelteReleased ? (
                       <CheckIcon color="feedback.icon.positive.intense" />
                     ) : (
                       <CloseIcon color="feedback.icon.negative.intense" />
                     )}
                   </td>
                   <td align="right">
-                    <ReleasedInLink version={releasedIn} framework={framework} />
+                    <ReleasedInLink version={releasedIn} framework="react" />
                   </td>
                 </tr>
               );
