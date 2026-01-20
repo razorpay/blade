@@ -1,7 +1,15 @@
+// Base pixel values - these will be scaled based on container size
 const RADIUS_MAPPING = {
   small: { outerRadius: 80, innerRadius: 52 },
   medium: { outerRadius: 120, innerRadius: 80 },
   large: { outerRadius: 162, innerRadius: 100 },
+};
+
+// The minimum container dimension for which the base pixel values are designed
+const BASE_CONTAINER_SIZE = {
+  small: 180, // 80 * 2 + some padding
+  medium: 260, // 120 * 2 + some padding
+  large: 340, // 162 * 2 + some padding
 };
 
 const START_AND_END_ANGLES = {
@@ -33,6 +41,7 @@ const LABEL_FONT_STYLES = {
 
 export {
   RADIUS_MAPPING,
+  BASE_CONTAINER_SIZE,
   componentId,
   START_AND_END_ANGLES,
   CENTER_TEXT_POSITION,
