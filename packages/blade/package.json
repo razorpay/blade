@@ -336,6 +336,7 @@
     "react": "18.2.0",
     "@types/react": "18.2.24",
     "@types/styled-components": "5.1.34",
-    "styled-components": "^5"
+    "styled-components": "^5",
+    "@pmmmwh/react-refresh-webpack-plugin/**/source-map": "0.7.4"
   }
 }
