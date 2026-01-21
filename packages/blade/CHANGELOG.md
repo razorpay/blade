@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.75.0
+
+### Minor Changes
+
+- 6f80d8b54: feat(blade): add add support to modify dataKey and nameKey in donut chart
+
+### Patch Changes
+
+- d9f9ef9ba: ci: update npm publishing via OIDC
+- 297cd9469: fix(blade): update ci bot permissions
+- 4f33fce21: fix: update storybook example & expose ChartLabelContentProps type
+
 ## 12.74.0
 
 ### Minor Changes
