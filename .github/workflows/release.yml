@@ -9,7 +9,9 @@ env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
 permissions:
-  id-token: write  # Required for OIDC
+  id-token: write      # For OIDC/npm provenance
+  contents: write      # For pushing commits/branches
+  pull-requests: write #
 
 jobs:
   release:
