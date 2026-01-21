@@ -183,8 +183,9 @@ const _DateInput = (
         format={undefined}
         validationState={textInputProps.validationState}
         errorText={textInputProps.errorText}
-        // Make it read-only since user can't type preset labels
-        isReadOnly
+        // Prevent typing since user can't type preset labels - value is controlled
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onChange={() => {}}
         onClick={(e) => {
           if (textInputProps.isDisabled) {
             return;
