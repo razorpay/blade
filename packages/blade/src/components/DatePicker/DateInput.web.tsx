@@ -169,54 +169,31 @@ const _DateInput = (
 
   // When shouldHideDateOnSelection is true, show the preset label in a clean input
   // with calendar icon (no dropdown, no date format - just the label like "Today")
-  if (shouldHideDateOnSelection && selectedPresetLabel) {
-    return (
-      <TextInput
-        {...textInputProps}
-        ref={ref}
-        type="text"
-        value={selectedPresetLabel}
-        leadingIcon={CalendarIcon}
-        // No leading dropdown - just show the label cleanly
-        leading={undefined}
-        // No format needed for plain text label
-        format={undefined}
-        validationState={textInputProps.validationState}
-        errorText={textInputProps.errorText}
-        // Prevent typing since user can't type preset labels - value is controlled
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onChange={() => {}}
-        onClick={(e) => {
-          if (textInputProps.isDisabled) {
-            return;
-          }
-          textInputProps.onClick?.(e);
-        }}
-        onKeyDown={({ event }) => {
-          // @ts-expect-error
-          textInputProps.onKeyDown?.(event);
-        }}
-      />
-    );
-  }
+  const showPresetLabel = shouldHideDateOnSelection && selectedPresetLabel;
+
+  // Compute display values to avoid nested ternaries in JSX
+  const dateDisplayValue = isRange
+    ? rangeFormattedValue(inputValue[0], inputValue[1])
+    : inputValue[0];
+  const dateInputFormat = isRange
+    ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
+    : getTextInputFormat(format, false);
+  const computedValidationState = validationError ? 'error' : textInputProps.validationState;
+  const computedErrorText = textInputProps.errorText ?? validationError;
 
   return (
     <TextInput
       {...textInputProps}
       ref={ref}
-      type="number"
-      value={isRange ? rangeFormattedValue(inputValue[0], inputValue[1]) : inputValue[0]}
-      leadingIcon={shouldShowCalendarIcon ? CalendarIcon : undefined}
-      leading={leadingDropdown}
-      format={
-        isRange
-          ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
-          : getTextInputFormat(format, false)
-      }
-      validationState={validationError ? 'error' : textInputProps.validationState}
-      errorText={textInputProps.errorText ?? validationError}
-      onChange={handleInputChange}
-      onBlur={handleBlur}
+      type={showPresetLabel ? 'text' : 'number'}
+      value={showPresetLabel ? selectedPresetLabel : dateDisplayValue}
+      leadingIcon={showPresetLabel || shouldShowCalendarIcon ? CalendarIcon : undefined}
+      leading={showPresetLabel ? undefined : leadingDropdown}
+      format={showPresetLabel ? undefined : dateInputFormat}
+      validationState={showPresetLabel ? textInputProps.validationState : computedValidationState}
+      errorText={showPresetLabel ? textInputProps.errorText : computedErrorText}
+      onChange={showPresetLabel ? undefined : handleInputChange}
+      onBlur={showPresetLabel ? undefined : handleBlur}
       onClick={(e) => {
         if (textInputProps.isDisabled) {
           return;

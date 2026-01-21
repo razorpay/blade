@@ -252,6 +252,7 @@ export const DatePickerPresetsWithHideLabelOnSelection: StoryFn<typeof DatePicke
       <DatePickerComponent
         label={{ start: 'Select a date range' }}
         selectionType="range"
+        allowSingleDateInRange={true}
         value={selectedDates}
         onChange={(date) => {
           console.log(date);
@@ -564,9 +565,7 @@ export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
 
 FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
 
-export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
-  typeof FilterChipDatePicker
-> = () => {
+export const FilterChipDatePickerStoryWithPreset: StoryFn<typeof FilterChipDatePicker> = () => {
   return (
     <Box>
       <FilterChipDatePicker
@@ -587,8 +586,8 @@ export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
   );
 };
 
-FilterChipDatePickerStorySingleStoryWithPreset.storyName =
-  'FilterChipDatePicker (Single Selection) with Presets';
+FilterChipDatePickerStoryWithPreset.storyName =
+  'FilterChipDatePicker (Range Selection) with Presets';
 
 export const ControlledFilterChipDatePickerSingle: StoryFn<typeof FilterChipDatePicker> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
