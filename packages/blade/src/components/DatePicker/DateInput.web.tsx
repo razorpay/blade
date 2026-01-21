@@ -171,29 +171,59 @@ const _DateInput = (
   // with calendar icon (no dropdown, no date format - just the label like "Today")
   const showPresetLabel = shouldHideDateOnSelection && selectedPresetLabel;
 
-  // Compute display values to avoid nested ternaries in JSX
-  const dateDisplayValue = isRange
-    ? rangeFormattedValue(inputValue[0], inputValue[1])
-    : inputValue[0];
-  const dateInputFormat = isRange
-    ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
-    : getTextInputFormat(format, false);
-  const computedValidationState = validationError ? 'error' : textInputProps.validationState;
-  const computedErrorText = textInputProps.errorText ?? validationError;
+  // Compute input props based on whether we're showing a preset label or date input
+  const getInputDisplayProps = (): {
+    type: 'text' | 'number';
+    value: string;
+    leadingIcon: typeof CalendarIcon | undefined;
+    leading: React.ReactElement | undefined;
+    format: ReturnType<typeof getTextInputFormat> | undefined;
+    validationState: typeof textInputProps.validationState;
+    errorText: string | undefined;
+    onChange: typeof handleInputChange | undefined;
+    onBlur: typeof handleBlur | undefined;
+  } => {
+    if (showPresetLabel) {
+      // Preset label mode: show clean input with just the label
+      return {
+        type: 'text',
+        value: selectedPresetLabel,
+        leadingIcon: CalendarIcon,
+        leading: undefined,
+        format: undefined,
+        validationState: textInputProps.validationState,
+        errorText: textInputProps.errorText,
+        onChange: undefined,
+        onBlur: undefined,
+      };
+    }
+
+    // Date input mode: show formatted date with full editing capabilities
+    const dateDisplayValue = isRange
+      ? rangeFormattedValue(inputValue[0], inputValue[1])
+      : inputValue[0];
+    const dateInputFormat = isRange
+      ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
+      : getTextInputFormat(format, false);
+
+    return {
+      type: 'number',
+      value: dateDisplayValue,
+      leadingIcon: shouldShowCalendarIcon ? CalendarIcon : undefined,
+      leading: leadingDropdown,
+      format: dateInputFormat,
+      validationState: validationError ? 'error' : textInputProps.validationState,
+      errorText: textInputProps.errorText ?? validationError,
+      onChange: handleInputChange,
+      onBlur: handleBlur,
+    };
+  };
 
   return (
     <TextInput
       {...textInputProps}
       ref={ref}
-      type={showPresetLabel ? 'text' : 'number'}
-      value={showPresetLabel ? selectedPresetLabel : dateDisplayValue}
-      leadingIcon={showPresetLabel || shouldShowCalendarIcon ? CalendarIcon : undefined}
-      leading={showPresetLabel ? undefined : leadingDropdown}
-      format={showPresetLabel ? undefined : dateInputFormat}
-      validationState={showPresetLabel ? textInputProps.validationState : computedValidationState}
-      errorText={showPresetLabel ? textInputProps.errorText : computedErrorText}
-      onChange={showPresetLabel ? undefined : handleInputChange}
-      onBlur={showPresetLabel ? undefined : handleBlur}
+      {...getInputDisplayProps()}
       onClick={(e) => {
         if (textInputProps.isDisabled) {
           return;

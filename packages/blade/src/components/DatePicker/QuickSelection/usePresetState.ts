@@ -92,7 +92,6 @@ export const usePresetState = ({
       }
     }
 
-    // STEP 6: Determine if date should be hidden in input (show label only)
     // Based on the selected preset's hideDateOnSelection flag
     // This applies to presets like "Today", "Yesterday", etc.
     const shouldHideDateOnSelection =
