@@ -71,6 +71,20 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
      * Function that returns a date range based on current date
      */
     value: (currentDate: Date) => [Date, Date];
+    /**
+     * When true, hides this preset from the dropdown list when it is selected.
+     * Useful for "Custom" preset which should be hidden after selection.
+     * Also opens the full datepicker with calendar when this preset is clicked.
+     * @default false
+     */
+    hideLabelOnSelection?: boolean;
+    /**
+     * When true, hides the date value in the input field and shows only the preset label.
+     * Useful for presets like "Today", "Yesterday", "Last 7 days" where showing the label
+     * is more meaningful than showing actual dates.
+     * @default false
+     */
+    hideDateOnSelection?: boolean;
   }>;
 
   /**
@@ -623,6 +637,87 @@ const DateRangeExample = () => {
 };
 
 export default DateRangeExample;
+```
+
+### Presets with hideDateOnSelection and hideLabelOnSelection
+
+This example demonstrates how to use the `hideDateOnSelection` and `hideLabelOnSelection` preset properties for a better user experience.
+
+```tsx
+import React, { useState } from 'react';
+import { DatePicker, Box, Text } from '@razorpay/blade/components';
+import dayjs from 'dayjs';
+
+const PresetsAdvancedExample = () => {
+  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
+    dayjs().subtract(7, 'days').toDate(),
+    new Date(),
+  ]);
+
+  // Define presets with advanced options
+  const datePresets = [
+    {
+      label: 'Today',
+      value: (today: Date): [Date, Date] => [today, today],
+      // Show "Today" in input instead of the actual date
+      hideDateOnSelection: true,
+    },
+    {
+      label: 'Yesterday',
+      value: (today: Date): [Date, Date] => {
+        const yesterday = dayjs(today).subtract(1, 'day').toDate();
+        return [yesterday, yesterday];
+      },
+      // Show "Yesterday" in input instead of the actual date
+      hideDateOnSelection: true,
+    },
+    {
+      label: 'Last 7 days',
+      value: (today: Date): [Date, Date] => [dayjs(today).subtract(7, 'days').toDate(), today],
+      // Show "Last 7 days" in input instead of date range
+      hideDateOnSelection: true,
+    },
+    {
+      label: 'Last 30 days',
+      value: (today: Date): [Date, Date] => [dayjs(today).subtract(30, 'days').toDate(), today],
+      // Show "Last 30 days" in input instead of date range
+      hideDateOnSelection: true,
+    },
+    {
+      label: 'Custom',
+      value: (today: Date): [Date, Date] => [today, today],
+      // Hide "Custom" from dropdown after selection, opens full calendar
+      hideLabelOnSelection: true,
+    },
+  ];
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      <Box>
+        <Text weight="semibold" marginBottom="spacing.3">
+          Presets with Label Display Options
+        </Text>
+        <DatePicker
+          selectionType="range"
+          label={{ start: 'Start Date', end: 'End Date' }}
+          value={dateRange}
+          onChange={setDateRange}
+          presets={datePresets}
+          helpText={{ start: 'Select a preset or choose custom dates' }}
+          size="medium"
+        />
+
+        <Text size="small" marginTop="spacing.3">
+          {/* When hideDateOnSelection is true, input shows preset label instead of dates */}
+          Selected: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} -{' '}
+          {dateRange[1] ? dayjs(dateRange[1]).format('DD MMM YYYY') : 'None'}
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
+export default PresetsAdvancedExample;
 ```
 
 ### FilterChipDatePicker
