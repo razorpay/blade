@@ -28,10 +28,19 @@ type Preset = {
   /**
    * When true, hides this preset from the dropdown list when it is selected.
    * Useful for "Custom" preset which should be hidden after selection.
+   * Also opens the full datepicker with calendar when this preset is clicked.
    *
    * @default false
    */
   hideLabelOnSelection?: boolean;
+  /**
+   * When true, hides the date value in the input field and shows only the preset label.
+   * Useful for presets like "Today", "Yesterday", "Last 7 days" where showing the label
+   * is more meaningful than showing actual dates.
+   *
+   * @default false
+   */
+  hideDateOnSelection?: boolean;
 };
 
 type DateSelectionType = 'single' | 'range';
@@ -239,6 +248,14 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     minDate?: Date;
     maxDate?: Date;
     effectiveSelectionType?: 'single' | 'range' | null;
+    /**
+     * When true, shows only the preset label in the input field instead of the date.
+     */
+    shouldHideDateOnSelection?: boolean;
+    /**
+     * The label of the currently selected preset to display when shouldHideDateOnSelection is true.
+     */
+    selectedPresetLabel?: string | null;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -265,6 +282,14 @@ type DateInputProps = BaseInputProps & {
   minDate?: Date;
   maxDate?: Date;
   effectiveSelectionType?: 'single' | 'range' | null;
+  /**
+   * When true, shows only the preset label in the input field instead of the date.
+   */
+  shouldHideDateOnSelection?: boolean;
+  /**
+   * The label of the currently selected preset to display when shouldHideDateOnSelection is true.
+   */
+  selectedPresetLabel?: string | null;
 };
 
 export type {

@@ -40,6 +40,8 @@ const _DateInput = (
     leadingDropdown,
     tags,
     id,
+    shouldHideDateOnSelection,
+    selectedPresetLabel,
     ...textInputProps
   } = props;
   const [inputValue, setInputValue] = React.useState(['']);
@@ -165,6 +167,38 @@ const _DateInput = (
     [applyDateValue, isRange],
   );
 
+  // When shouldHideDateOnSelection is true, show the preset label in a clean input
+  // with calendar icon (no dropdown, no date format - just the label like "Today")
+  if (shouldHideDateOnSelection && selectedPresetLabel) {
+    return (
+      <TextInput
+        {...textInputProps}
+        ref={ref}
+        type="text"
+        value={selectedPresetLabel}
+        leadingIcon={CalendarIcon}
+        // No leading dropdown - just show the label cleanly
+        leading={undefined}
+        // No format needed for plain text label
+        format={undefined}
+        validationState={textInputProps.validationState}
+        errorText={textInputProps.errorText}
+        // Make it read-only since user can't type preset labels
+        isReadOnly
+        onClick={(e) => {
+          if (textInputProps.isDisabled) {
+            return;
+          }
+          textInputProps.onClick?.(e);
+        }}
+        onKeyDown={({ event }) => {
+          // @ts-expect-error
+          textInputProps.onKeyDown?.(event);
+        }}
+      />
+    );
+  }
+
   return (
     <TextInput
       {...textInputProps}
@@ -251,6 +285,8 @@ const _DatePickerInput = (
     minDate,
     maxDate,
     effectiveSelectionType,
+    shouldHideDateOnSelection,
+    selectedPresetLabel,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -301,6 +337,8 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+          shouldHideDateOnSelection={shouldHideDateOnSelection}
+          selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
         />
@@ -377,6 +415,8 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+          shouldHideDateOnSelection={shouldHideDateOnSelection}
+          selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
         />

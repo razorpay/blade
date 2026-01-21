@@ -29,8 +29,9 @@ const renderPresetDropdown = ({
               isSelected={isSelected}
               onClick={() => {
                 onSelection(preset.value);
-                // If this is a custom preset selection, also trigger calendar opening
-                if (isCustomType && onOpenCalendar) {
+                // If this preset has hideLabelOnSelection (like "Custom"), open the calendar
+                // This allows user to manually select dates for such presets
+                if ((isCustomType || preset.hideLabelOnSelection) && onOpenCalendar) {
                   onOpenCalendar();
                 }
               }}
