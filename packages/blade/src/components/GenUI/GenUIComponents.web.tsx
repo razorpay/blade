@@ -4,9 +4,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { memo, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Streamdown } from 'streamdown';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
+import ReactMarkdown from 'react-markdown';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
 import { useGenUIAction } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
@@ -359,8 +359,8 @@ const ChartSkeletonLoader = ({
 const RenderTextComponent = memo(({ content }: TextComponent) => {
   if (!content) return null;
   return (
-    <Streamdown
-      controls={{ table: false, code: false, mermaid: false }}
+    <ReactMarkdown
+      skipHtml
       rehypePlugins={[]}
       components={{
         h1: ({ children }) => (
@@ -424,7 +424,7 @@ const RenderTextComponent = memo(({ content }: TextComponent) => {
       }}
     >
       {content}
-    </Streamdown>
+    </ReactMarkdown>
   );
 });
 
