@@ -1,7 +1,11 @@
 <script lang="ts">
   import { getDividerClasses } from '@razorpay/blade-core/styles';
-  import { metaAttribute, MetaConstants, getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import type { DividerProps } from './types';
+  import {
+    metaAttribute,
+    MetaConstants,
+    getStyledPropsClasses,
+  } from '@razorpay/blade-core/utils';
 
   let {
     orientation = 'horizontal',

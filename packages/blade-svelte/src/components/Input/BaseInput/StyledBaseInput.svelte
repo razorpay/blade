@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { StyledBaseInputProps, FormInputOnEvent, FormInputKeyDownEvent } from './types';
+  import type { StyledBaseInputProps } from './types';
   import { getStyledInputClasses } from '@razorpay/blade-core/styles';
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
 
@@ -46,6 +46,13 @@
 
   // Get the current display value
   const displayValue = $derived(isControlled ? value : internalValue);
+
+  // Sync controlled value to input element (ensures input always shows controlled value)
+  $effect(() => {
+    if (isControlled && inputElement && inputElement.value !== value) {
+      inputElement.value = value ?? '';
+    }
+  });
 
   // Autocomplete mapping
   const autoCompleteSuggestionTypeMap: Record<string, string> = {
@@ -105,7 +112,9 @@
   });
 
   // Event handlers
-  function handleChange(event: Event): void {
+  // Note: In React, onChange fires on every keystroke (mapped to input event)
+  // In vanilla HTML, onchange only fires on blur. We use oninput for real-time updates.
+  function handleInput(event: Event): void {
     const target = event.target as HTMLInputElement;
     const newValue = target.value;
 
@@ -113,12 +122,14 @@
       internalValue = newValue;
     }
 
+    // Call onChange on every input (like React's onChange behavior)
     onChange?.({ name, value: newValue });
+    onInput?.({ name, value: newValue });
   }
 
-  function handleInput(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    onInput?.({ name, value: target.value });
+  function handleChange(event: Event): void {
+    // Native change event (fires on blur) - we handle most logic in handleInput
+    // This is kept for any consumers that specifically need blur-based change detection
   }
 
   function handleFocus(event: FocusEvent): void {
