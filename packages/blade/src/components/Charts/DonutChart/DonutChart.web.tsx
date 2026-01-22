@@ -26,19 +26,43 @@ import type {
 } from './types';
 import {
   RADIUS_MAPPING,
+  BASE_CONTAINER_SIZE,
   START_AND_END_ANGLES,
   componentId,
   LABEL_DISTANCE_FROM_CENTER,
   LABEL_FONT_STYLES,
 } from './tokens';
-import { useTheme } from '~components/BladeProvider';
-import BaseBox from '~components/Box/BaseBox';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { metaAttribute } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~components/BladeProvider';
+import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+
+// Context to share container dimensions for responsive radius calculation
+type DonutContainerContextType = {
+  containerWidth: number;
+  containerHeight: number;
+};
+
+const DonutContainerContext = React.createContext<DonutContainerContextType>({
+  containerWidth: 0,
+  containerHeight: 0,
+});
+
+// Helper to calculate scaled radius based on container size
+const getScaledRadius = (
+  baseRadius: number,
+  containerSize: number,
+  baseContainerSize: number,
+): number => {
+  if (containerSize <= 0) return baseRadius;
+  // Scale the radius proportionally, but cap it at the base value
+  const scaleFactor = Math.min(containerSize / baseContainerSize, 1);
+  return Math.round(baseRadius * scaleFactor);
+};
 
 // Cell component
 const _Cell: React.FC<ChartDonutCellProps> = ({ ...rest }) => {
@@ -104,12 +128,13 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   });
   const [legendHeight, setLegendHeight] = useState(0);
   const [legendWidth, setLegendWidth] = useState(0);
+  const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
   const chartRef = useRef<HTMLDivElement>(null);
   const isValuePresentInContent = content && typeof content === 'object' && 'value' in content;
   const isLabelPresentInContent = content && typeof content === 'object' && 'label' in content;
 
   useEffect(() => {
-    const observer = new MutationObserver((mutations) => {
+    const mutationObserver = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'childList') {
           const legendWrapper = chartRef.current?.querySelector('.recharts-legend-wrapper');
@@ -123,11 +148,23 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
       });
     });
 
+    // ResizeObserver to track container dimensions for responsive radius
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        setContainerDimensions({ width, height });
+      }
+    });
+
     if (chartRef.current) {
-      observer.observe(chartRef.current, { childList: true, subtree: true });
+      mutationObserver.observe(chartRef.current, { childList: true, subtree: true });
+      resizeObserver.observe(chartRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      mutationObserver.disconnect();
+      resizeObserver.disconnect();
+    };
   }, []);
 
   const pieChartRadius: ChartRadius = useMemo(() => {
@@ -215,78 +252,85 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
     <CommonChartComponentsContext.Provider
       value={{ chartName: 'donut', dataColorMapping, selectedDataKeys, setSelectedDataKeys }}
     >
-      <BaseBox
-        ref={chartRef}
-        {...metaAttribute({ name: 'donut-chart', testID })}
-        {...makeAnalyticsAttribute(restProps)}
-        width="100%"
-        height="100%"
-        {...restProps}
-        position={isValidElement(content) ? 'relative' : undefined}
+      <DonutContainerContext.Provider
+        value={{
+          containerWidth: containerDimensions.width,
+          containerHeight: containerDimensions.height,
+        }}
       >
-        <RechartsResponsiveContainer width="100%" height="100%">
-          <RechartsPieChart>
-            {children}
-            {isLabelPresentInContent && (
-              <Label
-                position="center"
-                fill={theme.colors.surface.text.gray.muted}
-                fontSize={
-                  theme.typography.fonts.size[
-                    LABEL_FONT_STYLES[pieChartRadius].fontSize
-                      .label as keyof typeof theme.typography.fonts.size
-                  ]
-                }
-                fontFamily={theme.typography.fonts.family.text}
-                fontWeight={theme.typography.fonts.weight.medium}
-                letterSpacing={theme.typography.letterSpacings[100]}
-                dy={
-                  isValuePresentInContent
-                    ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withText
-                    : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
-                }
-              >
-                {content?.label}
-              </Label>
-            )}
-            {isValuePresentInContent && (
-              <Label
-                position="center"
-                fill={theme.colors.surface.text.gray.normal}
-                fontSize={
-                  theme.typography.fonts.size[
-                    LABEL_FONT_STYLES[pieChartRadius].fontSize
-                      .text as keyof typeof theme.typography.fonts.size
-                  ]
-                }
-                fontFamily={theme.typography.fonts.family.heading}
-                fontWeight={theme.typography.fonts.weight.bold}
-                letterSpacing={theme.typography.letterSpacings[100]}
-                dy={
-                  isLabelPresentInContent
-                    ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withLabel
-                    : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
-                }
-              >
-                {content?.value}
-              </Label>
-            )}
-          </RechartsPieChart>
-        </RechartsResponsiveContainer>
+        <BaseBox
+          ref={chartRef}
+          {...metaAttribute({ name: 'donut-chart', testID })}
+          {...makeAnalyticsAttribute(restProps)}
+          width="100%"
+          height="100%"
+          {...restProps}
+          position={isValidElement(content) ? 'relative' : undefined}
+        >
+          <RechartsResponsiveContainer width="100%" height="100%">
+            <RechartsPieChart>
+              {children}
+              {isLabelPresentInContent && (
+                <Label
+                  position="center"
+                  fill={theme.colors.surface.text.gray.muted}
+                  fontSize={
+                    theme.typography.fonts.size[
+                      LABEL_FONT_STYLES[pieChartRadius].fontSize
+                        .label as keyof typeof theme.typography.fonts.size
+                    ]
+                  }
+                  fontFamily={theme.typography.fonts.family.text}
+                  fontWeight={theme.typography.fonts.weight.medium}
+                  letterSpacing={theme.typography.letterSpacings[100]}
+                  dy={
+                    isValuePresentInContent
+                      ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withText
+                      : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
+                  }
+                >
+                  {content?.label}
+                </Label>
+              )}
+              {isValuePresentInContent && (
+                <Label
+                  position="center"
+                  fill={theme.colors.surface.text.gray.normal}
+                  fontSize={
+                    theme.typography.fonts.size[
+                      LABEL_FONT_STYLES[pieChartRadius].fontSize
+                        .text as keyof typeof theme.typography.fonts.size
+                    ]
+                  }
+                  fontFamily={theme.typography.fonts.family.heading}
+                  fontWeight={theme.typography.fonts.weight.bold}
+                  letterSpacing={theme.typography.letterSpacings[100]}
+                  dy={
+                    isLabelPresentInContent
+                      ? LABEL_DISTANCE_FROM_CENTER[pieChartRadius].withLabel
+                      : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
+                  }
+                >
+                  {content?.value}
+                </Label>
+              )}
+            </RechartsPieChart>
+          </RechartsResponsiveContainer>
 
-        {isValidElement(content) && (
-          <BaseBox
-            position="absolute"
-            top="50%"
-            left="50%"
-            transform={getTranslate(legendLayout, legendAlignment, legendWidth, legendHeight)}
-            zIndex={10}
-            textAlign="center"
-          >
-            {content}
-          </BaseBox>
-        )}
-      </BaseBox>
+          {isValidElement(content) && (
+            <BaseBox
+              position="absolute"
+              top="50%"
+              left="50%"
+              transform={getTranslate(legendLayout, legendAlignment, legendWidth, legendHeight)}
+              zIndex={10}
+              textAlign="center"
+            >
+              {content}
+            </BaseBox>
+          )}
+        </BaseBox>
+      </DonutContainerContext.Provider>
     </CommonChartComponentsContext.Provider>
   );
 };
@@ -303,7 +347,9 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
   type = 'circle',
   ...rest
 }) => {
-  const radiusConfig = RADIUS_MAPPING[radius];
+  const baseRadiusConfig = RADIUS_MAPPING[radius];
+  const baseContainerSize = BASE_CONTAINER_SIZE[radius];
+  const { containerWidth, containerHeight } = React.useContext(DonutContainerContext);
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'donut',
@@ -322,14 +368,30 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     const filteredToOriginalIndexMap: Record<number, number> = {};
 
     data.forEach((item, originalIdx) => {
-      if (selectedDataKeys.includes(sanitizeString(item.name as string))) {
+      const itemName = getItemName(item, nameKey);
+      if (selectedDataKeys.includes(sanitizeString(itemName as string))) {
         filteredToOriginalIndexMap[filteredData.length] = originalIdx;
         filteredData.push(item);
       }
     });
 
     return { filteredData, filteredToOriginalIndexMap };
-  }, [data, selectedDataKeys]);
+  }, [data, nameKey, selectedDataKeys]);
+
+  // Calculate responsive radius based on container size
+  const containerSize = Math.min(containerWidth, containerHeight);
+  const scaledOuterRadius = getScaledRadius(
+    baseRadiusConfig.outerRadius,
+    containerSize,
+    baseContainerSize,
+  );
+  const scaledInnerRadius = getScaledRadius(
+    baseRadiusConfig.innerRadius,
+    containerSize,
+    baseContainerSize,
+  );
+  // Stroke inner radius is slightly smaller than outer for the border effect
+  const scaledStrokeInnerRadius = scaledOuterRadius - 0.75;
 
   const getCellOpacity = (hoveredIndex: number | null, currentIndex: number): number => {
     if (hoveredIndex === null) return 1;
@@ -343,7 +405,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       const filteredChildren = selectedDataKeys
         ? children.filter((child, index) => {
             if (getComponentId(child) !== componentId.cell) return true;
-            const itemName = data[index]?.name as string;
+            const itemName = getItemName(data[index], nameKey) as string;
             return selectedDataKeys.includes(sanitizeString(itemName));
           })
         : children;
@@ -400,6 +462,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     themeColors,
     selectedDataKeys,
     filteredToOriginalIndexMap,
+    nameKey,
   ]);
 
   const modifiedExternalDonutChildren = useMemo(() => {
@@ -408,7 +471,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       const filteredChildren = selectedDataKeys
         ? children.filter((child, index) => {
             if (getComponentId(child) !== componentId.cell) return true;
-            const itemName = data[index]?.name as string;
+            const itemName = getItemName(data[index], nameKey) as string;
             return selectedDataKeys.includes(sanitizeString(itemName));
           })
         : children;
@@ -479,6 +542,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     themeColors,
     selectedDataKeys,
     filteredToOriginalIndexMap,
+    nameKey,
   ]);
 
   return (
@@ -489,8 +553,8 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         nameKey={nameKey}
         cx={cx}
         cy={cy}
-        outerRadius={radiusConfig.outerRadius}
-        innerRadius={radiusConfig.innerRadius}
+        outerRadius={scaledOuterRadius}
+        innerRadius={scaledInnerRadius}
         data={filteredData}
         startAngle={START_AND_END_ANGLES[type].startAngle}
         endAngle={START_AND_END_ANGLES[type].endAngle}
@@ -508,10 +572,10 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         {...rest}
         cx={cx}
         cy={cy}
+        outerRadius={scaledOuterRadius}
+        innerRadius={scaledStrokeInnerRadius}
         dataKey={dataKey}
         nameKey={nameKey}
-        outerRadius={radiusConfig.outerRadius}
-        innerRadius={radiusConfig.outerRadius - 0.75} // 1.5px thick stroke
         data={filteredData}
         startAngle={START_AND_END_ANGLES[type].startAngle}
         endAngle={START_AND_END_ANGLES[type].endAngle}

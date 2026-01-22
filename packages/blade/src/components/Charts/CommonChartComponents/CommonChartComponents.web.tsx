@@ -704,6 +704,18 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     defaultValue: defaultSelectedDataKeys ?? allDataKeys,
   });
 
+  // Reset selection when allDataKeys completely changes (e.g., when nameKey prop changes)
+  // This detects when none of the currently selected keys exist in the new data keys
+  React.useEffect(() => {
+    if (allDataKeys.length > 0 && selectedKeysArray.length > 0) {
+      const hasOverlap = selectedKeysArray.some((key) => allDataKeys.includes(key));
+      if (!hasOverlap) {
+        // The data keys have completely changed, reset to all keys
+        setSelectedKeysArray(() => [...allDataKeys]);
+      }
+    }
+  }, [allDataKeys, selectedKeysArray, setSelectedKeysArray]);
+
   // Sync selectedDataKeys to context's selectedDataKeys
   React.useEffect(() => {
     setSelectedDataKeys?.(selectedKeysArray);
