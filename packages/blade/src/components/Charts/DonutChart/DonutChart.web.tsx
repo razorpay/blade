@@ -6,6 +6,10 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
 } from 'recharts';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import {
   useChartsColorTheme,
   getHighestColorInRange,
@@ -31,10 +35,6 @@ import {
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute } from '~utils/metaAttribute';
-import getIn from '~utils/lodashButBetter/get';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 
