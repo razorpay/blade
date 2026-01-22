@@ -489,15 +489,8 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         {...rest}
         cx={cx}
         cy={cy}
-<<<<<<< HEAD
         outerRadius={scaledOuterRadius}
         innerRadius={scaledStrokeInnerRadius}
-=======
-        dataKey={dataKey}
-        nameKey={nameKey}
-        outerRadius={radiusConfig.outerRadius}
-        innerRadius={radiusConfig.outerRadius - 0.75} // 1.5px thick stroke
->>>>>>> fix/storybook-local-issues
         data={data}
         startAngle={START_AND_END_ANGLES[type].startAngle}
         endAngle={START_AND_END_ANGLES[type].endAngle}
