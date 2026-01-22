@@ -1,5 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
+import type { StoryFn, Meta } from '@storybook/react';
+import type { ChartLabelContentProps } from '~components/Charts';
 import { Box } from '~components/Box';
 import {
   ChartBar,
@@ -10,7 +11,10 @@ import {
   ChartTooltip,
   ChartLegend,
 } from '~components/Charts';
-import { Heading } from '~components/Typography/Heading';
+import { Heading, Text } from '~components/Typography';
+import { ArrowSquareDownIcon, ArrowUpIcon } from '~components/Icons';
+import { Divider } from '~components/Divider';
+import { Badge } from '~components/Badge';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
@@ -252,6 +256,214 @@ export const GroupedBarChart: StoryFn<typeof ChartBar> = () => {
 };
 
 GroupedBarChart.parameters = {
+  controls: { disable: true },
+};
+
+// MetricCard component to display above each bar group (matches the funnel chart design)
+const MetricCard = ({
+  title,
+  percentage,
+  value,
+  change,
+  showDivider = true,
+}: {
+  title: string;
+  percentage: string;
+  value: string;
+  change: number;
+  showDivider?: boolean;
+}): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="row" flex="1">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="flex-start"
+        gap="spacing.2"
+        paddingY="spacing.4"
+        paddingX="spacing.5"
+        flex="1"
+      >
+        {/* Title with dotted underline */}
+        <Text size="small" color="surface.text.gray.muted" textDecorationLine="underline">
+          {title}
+        </Text>
+        {/* Percentage + Value + Change row */}
+        <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+          <Box display="flex" flexDirection="row" gap="spacing.2" alignItems="baseline">
+            <Text size="medium" weight="semibold" color="surface.text.gray.normal">
+              {percentage}
+            </Text>
+            <Text size="medium" color="surface.text.gray.muted">
+              {value}
+            </Text>
+          </Box>
+          {/* Change indicator - using Badge-like styling */}
+          <Box
+            display="flex"
+            flexDirection="row"
+            gap="spacing.1"
+            alignItems="center"
+            paddingY="spacing.1"
+            paddingX="spacing.2"
+            borderRadius="small"
+          >
+            <Box
+              display="flex"
+              flexDirection="row"
+              gap="spacing.1"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <ArrowSquareDownIcon color="interactive.icon.negative.normal" />
+
+              <Text color="interactive.text.negative.normal">{change}%</Text>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+      {/* Vertical divider */}
+      {showDivider && (
+        <Box height="100%" display="flex" alignItems="center">
+          <Divider orientation="vertical" />
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+// Funnel chart metrics data (matches the checkout funnel design)
+const funnelMetricsData = [
+  { title: 'Checkout initiated', percentage: '100%', value: '1.3K', change: 12 },
+  { title: 'Address step reached', percentage: '86%', value: '1.2K', change: 12 },
+  { title: 'Payment step reached', percentage: '66%', value: '900', change: 12 },
+  { title: 'Payment attempted', percentage: '36%', value: '530', change: 12 },
+  { title: 'Sessions converted', percentage: '20%', value: '230', change: 12 },
+];
+
+// Chart data for funnel comparison (two dates)
+const funnelChartData = [
+  { name: 'Checkout', current: 1300, previous: 1500 },
+  { name: 'Address', current: 1200, previous: 1300 },
+  { name: 'Payment', current: 900, previous: 960 },
+  { name: 'Attempted', current: 530, previous: 600 },
+  { name: 'Converted', current: 230, previous: 300 },
+];
+
+export const GroupedBarChartWithMetrics: StoryFn<typeof ChartBar> = () => {
+  return (
+    <ChartsWrapper>
+      <Box display="flex" flexDirection="column" gap="spacing.4">
+        {/* Header Section */}
+        <Box display="flex" flexDirection="column" gap="spacing.2" paddingX="spacing.5">
+          {/* Title with dotted underline */}
+          <Text
+            size="medium"
+            weight="medium"
+            color="surface.text.gray.normal"
+            textDecorationLine="underline"
+          >
+            Checkout conversion funnel
+          </Text>
+          {/* Main metric row */}
+          <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
+            <Heading size="xlarge" weight="semibold">
+              20%
+            </Heading>
+            <Badge color="negative" size="small" icon={ArrowUpIcon}>
+              12%
+            </Badge>
+          </Box>
+          {/* Subtitle */}
+          <Text size="small" color="surface.text.gray.muted">
+            Checkout conversion decreased from 22% to 20%
+          </Text>
+        </Box>
+
+        {/* Metric cards row positioned above the chart */}
+        <Box display="flex" flexDirection="row" width="100%">
+          {funnelMetricsData.map((item, index) => (
+            <MetricCard
+              key={item.title}
+              title={item.title}
+              percentage={item.percentage}
+              value={item.value}
+              change={item.change}
+              showDivider={index < funnelMetricsData.length - 1}
+            />
+          ))}
+        </Box>
+
+        {/* Bar Chart */}
+        <Box width="100%" height="320px">
+          <ChartBarWrapper data={funnelChartData}>
+            <ChartXAxis dataKey="name" hide />
+            <ChartYAxis hide />
+            <ChartTooltip />
+            <ChartLegend />
+            <ChartBar
+              dataKey="current"
+              name="Oct 28, 2025"
+              color="data.background.sequential.blue.400"
+              label={{
+                position: 'top',
+                content: (props: ChartLabelContentProps) => {
+                  const { value } = props;
+                  const numX = Number(props.x) || 0;
+                  const numY = Number(props.y) || 0;
+                  const numWidth = Number(props.width) || 0;
+                  const numValue = typeof value === 'number' ? value : 0;
+                  return (
+                    <text
+                      x={numX + numWidth / 2}
+                      y={numY - 8}
+                      fill="#768EA7"
+                      fontSize={12}
+                      textAnchor="middle"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      {numValue >= 1000 ? `${(numValue / 1000).toFixed(1)}K` : numValue}
+                    </text>
+                  );
+                },
+              }}
+            />
+            <ChartBar
+              dataKey="previous"
+              name="Oct 25, 2025"
+              color="data.background.sequential.blue.100"
+              label={{
+                position: 'top',
+                content: (props: ChartLabelContentProps) => {
+                  const { value } = props;
+                  const numX = Number(props.x) || 0;
+                  const numY = Number(props.y) || 0;
+                  const numWidth = Number(props.width) || 0;
+                  const numValue = typeof value === 'number' ? value : 0;
+                  return (
+                    <text
+                      x={numX + numWidth / 2}
+                      y={numY - 8}
+                      fill="#768EA7"
+                      fontSize={12}
+                      textAnchor="middle"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      {numValue >= 1000 ? `${(numValue / 1000).toFixed(1)}K` : numValue}
+                    </text>
+                  );
+                },
+              }}
+            />
+          </ChartBarWrapper>
+        </Box>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+GroupedBarChartWithMetrics.storyName = 'Grouped Bar Chart With Metrics';
+GroupedBarChartWithMetrics.parameters = {
   controls: { disable: true },
 };
 

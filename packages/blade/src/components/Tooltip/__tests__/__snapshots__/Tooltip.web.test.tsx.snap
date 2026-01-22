@@ -240,7 +240,7 @@ exports[`<Tooltip /> should render 1`] = `
       id=":r0:"
       pointer-events="none"
       role="tooltip"
-      style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 0px);"
+      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -11px);"
       tabindex="-1"
     >
       <div
@@ -257,7 +257,7 @@ exports[`<Tooltip /> should render 1`] = `
           aria-hidden="true"
           fill="hsla(211, 29%, 26%, 1)"
           height="14"
-          style="position: absolute; pointer-events: none; top: 100%;"
+          style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
           width="16"
         >
@@ -519,7 +519,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       id=":r8:"
       pointer-events="none"
       role="tooltip"
-      style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 0px);"
+      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -11px);"
       tabindex="-1"
     >
       <div
@@ -536,7 +536,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           aria-hidden="true"
           fill="hsla(211, 29%, 26%, 1)"
           height="14"
-          style="position: absolute; pointer-events: none; top: 100%;"
+          style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
           width="16"
         >
@@ -815,7 +815,7 @@ exports[`<Tooltip /> should render with title 1`] = `
       id=":r4:"
       pointer-events="none"
       role="tooltip"
-      style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 0px);"
+      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -11px);"
       tabindex="-1"
     >
       <div
@@ -838,7 +838,7 @@ exports[`<Tooltip /> should render with title 1`] = `
           aria-hidden="true"
           fill="hsla(211, 29%, 26%, 1)"
           height="14"
-          style="position: absolute; pointer-events: none; top: 100%;"
+          style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
           width="16"
         >

@@ -944,7 +944,7 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
                       successText="Amount is valid"
                     />
                     <TableCell>
-                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                      <Link size="small" color="neutral" target="_blank" href="/">
                         {tableItem.account}
                       </Link>
                     </TableCell>
@@ -1285,7 +1285,7 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
                       })}
                     </TableCell>
                     <TableCell>
-                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                      <Link size="small" color="neutral" target="_blank" href="/">
                         {tableItem.account}
                       </Link>
                     </TableCell>
@@ -1625,7 +1625,7 @@ const WithBulkActionExample: StoryFn<typeof ListView> = (args) => {
                       successText="Amount is valid"
                     />
                     <TableCell>
-                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                      <Link size="small" color="neutral" target="_blank" href="/">
                         {tableItem.account}
                       </Link>
                     </TableCell>
@@ -2043,7 +2043,7 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                       successText="Amount is valid"
                     />
                     <TableCell>
-                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                      <Link size="small" color="neutral" target="_blank" href="/">
                         {tableItem.account}
                       </Link>
                     </TableCell>
@@ -2321,7 +2321,7 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
                       successText="Amount is valid"
                     />
                     <TableCell>
-                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                      <Link size="small" color="neutral" target="_blank" href="/">
                         {tableItem.account}
                       </Link>
                     </TableCell>
@@ -2672,7 +2672,7 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
                       successText="Amount is valid"
                     />
                     <TableCell>
-                      <Link size="small" color="neutral" target="_blank" href={`/`}>
+                      <Link size="small" color="neutral" target="_blank" href="/">
                         {tableItem.account}
                       </Link>
                     </TableCell>

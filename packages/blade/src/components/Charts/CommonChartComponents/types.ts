@@ -6,6 +6,7 @@ import type {
   Legend as RechartsLegend,
   ReferenceLineProps as RechartsReferenceLineProps,
 } from 'recharts';
+import type { Props as RechartsLabelProps } from 'recharts/types/component/Label';
 import type { ComponentProps } from 'react';
 import type {
   DataColorCategories,
@@ -185,6 +186,26 @@ type CommonChartComponentsDispatchType = {
 type CommonChartComponentsContextType = CommonChartComponentsStateType &
   CommonChartComponentsDispatchType;
 
+/**
+ * Props for custom label content renderer in chart components.
+ * Use this type when providing a custom `content` function to the `label` prop.
+ *
+ * @example
+ * ```tsx
+ * <ChartBar
+ *   dataKey="value"
+ *   label={{
+ *     position: 'top',
+ *     content: (props: ChartLabelContentProps) => {
+ *       const { x, y, width, value } = props;
+ *       return <text x={x + width / 2} y={y - 8}>{value}</text>;
+ *     },
+ *   }}
+ * />
+ * ```
+ */
+type ChartLabelContentProps = RechartsLabelProps;
+
 export type {
   CommonChartComponentsContextType,
   CommonChartComponentsStateType,
@@ -197,6 +218,7 @@ export type {
   ChartCartesianGridProps,
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
+  ChartLabelContentProps,
   Layout,
   Align,
   DataColorMapping,

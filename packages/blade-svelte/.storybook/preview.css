@@ -1,0 +1,22 @@
+/* Storybook wrapper styles - CSS-only approach for container styling */
+/* This provides basic styling without using decorators that might break rendering */
+
+/* Story container - provides padding and background similar to React StoryCanvas */
+.sb-story {
+  padding: 2rem;
+  background-color: var(--surface-background-gray-subtle, #f5f5f5);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+body[data-theme="dark"] {  
+  background-color: rgb(10, 17, 26); 
+}
+
+/* Responsive padding */
+@media (max-width: 768px) {
+  .sb-story {
+    padding: 0.75rem;
+  }
+}
+

@@ -86,14 +86,14 @@ const razorpayData: TableData<TransactionItem> = {
  * // Result: { 'Flipkart': [item1, item2], 'Swiggy': [item3] }
  */
 function groupBy<T>(array: T[], key: keyof T): Record<string, T[]> {
-  return array.reduce((result, item) => {
+  return array.reduce<Record<string, T[]>>((result, item) => {
     const group = String(item[key]);
     if (!result[group]) {
       result[group] = [];
     }
     result[group].push(item);
     return result;
-  }, {} as Record<string, T[]>);
+  }, {});
 }
 
 /**

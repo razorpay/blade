@@ -1,0 +1,246 @@
+/* Base styles */
+.base {
+  margin: 0;
+  padding: 0;
+  /* Default color is applied via color utility class when no color prop is provided */
+  letter-spacing: var(--letter-spacing-100);
+}
+
+/* Text decoration variants with nested modifiers */
+.text-decoration-underline,
+.text-decoration-line-through {
+  text-decoration-color: currentColor;
+
+  &.text-decoration-underline {
+    text-decoration-line: underline;
+  }
+
+  &.text-decoration-line-through {
+    text-decoration-line: line-through;
+  }
+}
+
+.text-decoration-none {
+  text-decoration-line: none;
+}
+
+/* Font style variants */
+.font-style-normal {
+  font-style: normal;
+}
+
+.font-style-italic {
+  font-style: italic;
+}
+
+/* Text align variants - grouped using nesting */
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-justify {
+  text-align: justify;
+}
+
+/* Text transform variants */
+.text-transform-none {
+  text-transform: none;
+}
+
+.text-transform-capitalize {
+  text-transform: capitalize;
+}
+
+.text-transform-uppercase {
+  text-transform: uppercase;
+}
+
+.text-transform-lowercase {
+  text-transform: lowercase;
+}
+
+.text-transform-full-width {
+  text-transform: full-width;
+}
+
+.text-transform-full-size-kana {
+  text-transform: full-size-kana;
+}
+
+/* Word break variants */
+.word-break-normal {
+  word-break: normal;
+}
+
+.word-break-break-all {
+  word-break: break-all;
+}
+
+.word-break-keep-all {
+  word-break: keep-all;
+}
+
+.word-break-break-word {
+  word-break: break-word;
+}
+
+/* Font size variants - using CSS variables */
+.font-size-25 {
+  font-size: var(--font-size-25);
+}
+
+.font-size-50 {
+  font-size: var(--font-size-50);
+}
+
+.font-size-75 {
+  font-size: var(--font-size-75);
+}
+
+.font-size-100 {
+  font-size: var(--font-size-100);
+}
+
+.font-size-200 {
+  font-size: var(--font-size-200);
+}
+
+.font-size-300 {
+  font-size: var(--font-size-300);
+}
+
+.font-size-400 {
+  font-size: var(--font-size-400);
+}
+
+.font-size-500 {
+  font-size: var(--font-size-500);
+}
+
+.font-size-600 {
+  font-size: var(--font-size-600);
+}
+
+.font-size-700 {
+  font-size: var(--font-size-700);
+}
+
+.font-size-800 {
+  font-size: var(--font-size-800);
+}
+
+.font-size-900 {
+  font-size: var(--font-size-900);
+}
+
+.font-size-1000 {
+  font-size: var(--font-size-1000);
+}
+
+.font-size-1100 {
+  font-size: var(--font-size-1100);
+}
+
+/* Line height variants - using CSS variables */
+.line-height-0 {
+  line-height: var(--line-height-0);
+}
+
+.line-height-25 {
+  line-height: var(--line-height-25);
+}
+
+.line-height-50 {
+  line-height: var(--line-height-50);
+}
+
+.line-height-75 {
+  line-height: var(--line-height-75);
+}
+
+.line-height-100 {
+  line-height: var(--line-height-100);
+}
+
+.line-height-200 {
+  line-height: var(--line-height-200);
+}
+
+.line-height-300 {
+  line-height: var(--line-height-300);
+}
+
+.line-height-400 {
+  line-height: var(--line-height-400);
+}
+
+.line-height-500 {
+  line-height: var(--line-height-500);
+}
+
+.line-height-600 {
+  line-height: var(--line-height-600);
+}
+
+.line-height-700 {
+  line-height: var(--line-height-700);
+}
+
+.line-height-800 {
+  line-height: var(--line-height-800);
+}
+
+.line-height-900 {
+  line-height: var(--line-height-900);
+}
+
+.line-height-1000 {
+  line-height: var(--line-height-1000);
+}
+
+.line-height-1100 {
+  line-height: var(--line-height-1100);
+}
+
+/* Font weight variants - using CSS variables */
+.font-weight-regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.font-weight-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-weight-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-weight-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Font family variants - using CSS variables */
+.font-family-text {
+  font-family: var(--font-family-text);
+}
+
+.font-family-heading {
+  font-family: var(--font-family-heading);
+}
+
+/* Letter spacing variants - using CSS variables */
+.letter-spacing-50 {
+  letter-spacing: var(--letter-spacing-50);
+}
+
+.letter-spacing-100 {
+  letter-spacing: var(--letter-spacing-100);
+}

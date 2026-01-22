@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { makeTypographySize } from '~utils/makeTypographySize';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
@@ -10,7 +11,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { FontSize, Typography } from '~tokens/global';
 import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { makeSpace } from '~utils/makeSpace';
-import { makeTypographySize } from '~utils/makeTypographySize';
 import { throwBladeError } from '~utils/logger';
 
 type CodeCommonProps = {

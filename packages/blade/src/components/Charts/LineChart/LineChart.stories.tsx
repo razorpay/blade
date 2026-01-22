@@ -1142,6 +1142,91 @@ LineChartWithCurrencyFormatter.parameters = {
   controls: { disable: true },
 };
 
+// Interactive Sales Analysis with Benchmark and Single Point
+const salesAnalysisData = [
+  { date: 'Oct 01', sales: 4000 },
+  { date: 'Oct 02', sales: 3000 },
+  { date: 'Oct 03', sales: 2000 },
+  { date: 'Oct 04', sales: 2780 },
+  { date: 'Oct 05', sales: 1890 },
+  { date: 'Oct 06', sales: 2390 },
+  { date: 'Oct 07', sales: 3490 },
+  { date: 'Oct 08', sales: 4000 },
+  { date: 'Oct 09', sales: 3000 },
+  { date: 'Oct 10', sales: 2000 },
+  { date: 'Oct 11', sales: 2780 },
+  { date: 'Oct 12', sales: 1890 },
+  { date: 'Oct 13', sales: 2390 },
+  { date: 'Oct 14', sales: 3490 },
+  { date: 'Oct 15', sales: 4100 },
+  { date: 'Oct 16', sales: 3800 },
+];
+
+// Line Chart with Benchmark Line and Single Point
+export const LineChartWithBenchmarkAndSinglePoint: StoryFn<typeof ChartLine> = () => {
+  const theme = useTheme();
+  const benchmarkValue = 3200;
+  const specialEventDate = 'Oct 10';
+  const specialEventValue = 4500;
+
+  // Prepare chart data with benchmark line and single point
+  const chartDataWithExtras = React.useMemo(() => {
+    return salesAnalysisData.map((item) => ({
+      ...item,
+      benchmarkLine: benchmarkValue,
+      specialEvent: item.date === specialEventDate ? specialEventValue : null,
+    }));
+  }, []);
+
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="450px">
+        <ChartLineWrapper data={chartDataWithExtras}>
+          <ChartXAxis dataKey="date" />
+          <ChartYAxis />
+          <ChartTooltip
+            cursor={{ stroke: theme.colors.surface.border.gray.subtle, strokeWidth: 1 }}
+          />
+          <ChartLegend />
+
+          {/* Main Sales Line - Blue solid line with dots */}
+          <ChartLine
+            dataKey="sales"
+            name="Daily Sales"
+            type="monotone"
+            color="data.background.categorical.blue.moderate"
+          />
+
+          {/* Special Event - Single point only (all other values are null) */}
+          {/* Remove hide={true} to show in tooltip. Use showLegend={false} to hide from legend */}
+          <ChartLine
+            dataKey="specialEvent"
+            name="Special Event"
+            connectNulls={false}
+            color="data.background.categorical.red.intense"
+            dot={{
+              r: 6,
+              fill: theme.colors.data.background.categorical.red.intense,
+              stroke: theme.colors.data.background.categorical.red.intense,
+              strokeWidth: 2,
+            }}
+            activeDot={{
+              r: 8,
+              fill: theme.colors.data.background.categorical.red.intense,
+              stroke: theme.colors.data.background.categorical.red.intense,
+              strokeWidth: 3,
+            }}
+          />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithBenchmarkAndSinglePoint.parameters = {
+  controls: { disable: true },
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
@@ -1160,3 +1245,4 @@ LineChartWithCustomCursor.storyName = 'Line Chart with custom cursor';
 LineChartWithDefaultSelectedDataKeys.storyName = 'Legend with Default Selected Keys (Uncontrolled)';
 LineChartWithControlledSelection.storyName = 'Legend with Controlled Selection';
 LineChartWithLegendClickCallback.storyName = 'Legend with Selection Change Callback';
+LineChartWithBenchmarkAndSinglePoint.storyName = 'Line Chart with Benchmark Line and Single Point';
