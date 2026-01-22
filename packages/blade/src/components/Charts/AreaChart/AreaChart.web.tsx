@@ -5,8 +5,13 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { getHighestColorInRange, useChartsColorTheme, assignDataColorMapping } from '../utils';
-import type { DataColorMapping } from '../CommonChartComponents';
+import type {
+  DataColorMapping,
+  SecondaryLabelMap,
+  ChartXAxisProps,
+} from '../CommonChartComponents';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
 import { componentIds } from './componentIds';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -113,15 +118,29 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     colorTheme,
     chartName: 'area',
   });
-  const { modifiedChildren, totalAreaChartChildren, dataColorMapping } = React.useMemo(() => {
+  const {
+    modifiedChildren,
+    totalAreaChartChildren,
+    dataColorMapping,
+    secondaryDataKey,
+  } = React.useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
 
-    // Count ChartLine components
+    // Count ChartArea components
     const totalAreas = childrenArray.filter(
       (child): child is React.ReactElement =>
         React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea,
     ).length;
+
+    // Find ChartXAxis and extract secondaryDataKey
+    let secondaryDataKey: string | undefined;
+    for (const child of childrenArray) {
+      if (React.isValidElement(child) && getComponentId(child) === commonComponentIds.chartXAxis) {
+        secondaryDataKey = (child.props as ChartXAxisProps)?.secondaryDataKey;
+        break;
+      }
+    }
 
     let AreaChartIndex = 0;
     /**
@@ -155,11 +174,24 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       modifiedChildren,
       totalAreaChartChildren: AreaChartIndex,
       dataColorMapping,
+      secondaryDataKey,
     };
   }, [children, colorTheme, themeColors]);
 
+  // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
+  const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
+    if (!secondaryDataKey || !data) return undefined;
+    const map: SecondaryLabelMap = {};
+    data.forEach((item, index) => {
+      map[index] = item[secondaryDataKey] as string | number | undefined;
+    });
+    return map;
+  }, [data, secondaryDataKey]);
+
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'area', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{ chartName: 'area', dataColorMapping, secondaryLabelMap, dataLength: data?.length }}
+    >
       <BaseBox
         {...metaAttribute({ name: 'chart-area-container', testID })}
         {...makeAnalyticsAttribute(restProps)}

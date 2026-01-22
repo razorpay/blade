@@ -13,7 +13,7 @@ const PhantomUI = (): React.ReactElement => {
       <Card elevation="lowRaised">
         <CardBody>
           <Box>
-            <Heading size="large">What's your business type?</Heading>
+            <Heading size="large">What&apos;s your business type?</Heading>
             <Text size="medium">Pick only one that applies to your business</Text>
           </Box>
           <Box marginTop="spacing.10">

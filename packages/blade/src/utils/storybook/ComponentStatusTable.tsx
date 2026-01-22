@@ -71,8 +71,18 @@ const ComponentStatusBadge = ({ status }: { status: ComponentStatuses }): React.
   );
 };
 
-const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement => {
-  const ghUrl = 'https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40';
+const ReleasedInLink = ({
+  version,
+  framework = 'react',
+}: {
+  version?: string;
+  framework?: 'react' | 'svelte';
+}): React.ReactElement => {
+  const ghUrlReact = 'https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40';
+  const ghUrlSvelte =
+    'https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade-svelte%40';
+  const ghUrl = framework === 'svelte' ? ghUrlSvelte : ghUrlReact;
+
   return version ? (
     <Link
       href={`${ghUrl}${version}`}
@@ -116,14 +126,19 @@ const ComponentStatusTable = (): React.ReactElement => {
     'released',
   ];
 
-  const sortedData = componentData.sort((a, b) => {
-    if (!a.releasedIn || !b.releasedIn) {
-      return unreleasedComponentsSort.indexOf(a.status) > unreleasedComponentsSort.indexOf(b.status)
+  const sortedData = [...componentData].sort((a, b) => {
+    const aReact = a.frameworks.react;
+    const bReact = b.frameworks.react;
+
+    if (!aReact?.releasedIn || !bReact?.releasedIn) {
+      const aStatus = aReact?.status ?? 'to-be-decided';
+      const bStatus = bReact?.status ?? 'to-be-decided';
+      return unreleasedComponentsSort.indexOf(aStatus) > unreleasedComponentsSort.indexOf(bStatus)
         ? 1
         : -1;
     }
 
-    return isNewerVersion(b.releasedIn, a.releasedIn) ? -1 : 1;
+    return isNewerVersion(bReact.releasedIn, aReact.releasedIn) ? -1 : 1;
   });
 
   return (
@@ -177,10 +192,13 @@ const ComponentStatusTable = (): React.ReactElement => {
                 <Text weight="semibold">Description</Text>
               </th>
               <th style={{ width: '10%' }} align="center">
-                <Text weight="semibold">Web</Text>
+                <Text weight="semibold">React</Text>
               </th>
               <th style={{ width: '10%' }} align="center">
                 <Text weight="semibold">RN</Text>
+              </th>
+              <th style={{ width: '10%' }} align="center">
+                <Text weight="semibold">Svelte</Text>
               </th>
               <th align="right">
                 <Text weight="semibold">Released In</Text>
@@ -189,21 +207,28 @@ const ComponentStatusTable = (): React.ReactElement => {
           </thead>
           <tbody>
             {sortedData.map((data) => {
-              const isAvailableOnWeb = data.platform === 'web';
-              const isAvailableOnMobile = data.platform === 'mobile';
-              const isAvailableOnAll = data.platform === 'all';
+              const reactData = data.frameworks.react;
+              const svelteData = data.frameworks.svelte;
+              const reactStatus = reactData?.status ?? 'to-be-decided';
+              const svelteStatus = svelteData?.status ?? 'to-be-decided';
+              const releasedIn = reactData?.releasedIn;
+              const storybookLink = reactData?.storybookLink;
+
+              const isAvailableOnWeb = data.platform === 'web' || data.platform === 'all';
+              const isAvailableOnMobile = data.platform === 'mobile' || data.platform === 'all';
+              const isSvelteReleased = svelteStatus === 'released';
 
               return (
                 <tr key={data.name}>
                   <td align="left">
-                    {data.storybookLink ? (
-                      <LinkToStorybook url={data.storybookLink}>{data.name}</LinkToStorybook>
+                    {storybookLink ? (
+                      <LinkToStorybook url={storybookLink}>{data.name}</LinkToStorybook>
                     ) : (
                       <Text>{data.name}</Text>
                     )}
                   </td>
                   <td align="right">
-                    <ComponentStatusBadge status={data.status} />
+                    <ComponentStatusBadge status={reactStatus} />
                   </td>
                   <td align="left">
                     <Text size="medium" color="surface.text.gray.subtle">
@@ -211,21 +236,28 @@ const ComponentStatusTable = (): React.ReactElement => {
                     </Text>
                   </td>
                   <td align="center">
-                    {isAvailableOnWeb || isAvailableOnAll ? (
+                    {isAvailableOnWeb && reactStatus === 'released' ? (
                       <CheckIcon color="feedback.icon.positive.intense" />
                     ) : (
                       <CloseIcon color="feedback.icon.negative.intense" />
                     )}
                   </td>
                   <td align="center">
-                    {isAvailableOnMobile || isAvailableOnAll ? (
+                    {isAvailableOnMobile && reactStatus === 'released' ? (
+                      <CheckIcon color="feedback.icon.positive.intense" />
+                    ) : (
+                      <CloseIcon color="feedback.icon.negative.intense" />
+                    )}
+                  </td>
+                  <td align="center">
+                    {isSvelteReleased ? (
                       <CheckIcon color="feedback.icon.positive.intense" />
                     ) : (
                       <CloseIcon color="feedback.icon.negative.intense" />
                     )}
                   </td>
                   <td align="right">
-                    <ReleasedInLink version={data.releasedIn} />
+                    <ReleasedInLink version={releasedIn} framework="react" />
                   </td>
                 </tr>
               );
@@ -237,4 +269,4 @@ const ComponentStatusTable = (): React.ReactElement => {
   );
 };
 
-export { ComponentStatusTable };
+export { ComponentStatusTable, ComponentStatusBadge };

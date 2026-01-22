@@ -60,6 +60,20 @@ const getTranslate = (
   return `translate(-50%, calc(-50% - ${legendHeight / 2}px))`;
 };
 
+/**
+ * Gets the item name from data based on nameKey.
+ * nameKey can be a string (used as property key) or a function (called with data item).
+ */
+const getItemName = (
+  item: Record<string, unknown> | undefined,
+  nameKey: ChartDonutProps['nameKey'],
+): unknown => {
+  if (!item) return undefined;
+  if (!nameKey) return item.name;
+  if (typeof nameKey === 'function') return nameKey(item);
+  return item[nameKey];
+};
+
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   content,
@@ -158,14 +172,16 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
       children.forEach((child) => {
         if (getComponentId(child) === componentId.chartDonut) {
           const data = (child as React.ReactElement<ChartDonutProps>).props.data;
+          const nameKey = (child as React.ReactElement<ChartDonutProps>).props.nameKey;
           // Donut Chart can also have <Cell/>  which will come under donutChildren.
           const donutChildren = (child as React.ReactElement<ChartDonutProps>).props.children;
           if (Array.isArray(donutChildren)) {
             donutChildren.forEach((child, index) => {
-              if (getComponentId(child) === componentId.cell && data[index]?.name) {
+              const itemName = getItemName(data[index], nameKey);
+              if (getComponentId(child) === componentId.cell && itemName) {
                 //  assign  colors to the dataColorMapping, if no color is assigned  we assign color in `assignDataColorMapping`
 
-                dataColorMapping[sanitizeString(data[index].name as string)] = {
+                dataColorMapping[sanitizeString(itemName as string)] = {
                   colorToken: child.props?.color,
                   isCustomColor: Boolean(child.props?.color),
                 };
@@ -174,7 +190,8 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
           } else {
             // if we don't have cell as child component then we can we directly assign theme colors
             data.forEach((item, index) => {
-              dataColorMapping[sanitizeString(item.name as string)] = {
+              const itemName = getItemName(item, nameKey);
+              dataColorMapping[sanitizeString(itemName as string)] = {
                 colorToken: themeColors[index],
                 isCustomColor: false,
               };
@@ -388,6 +405,8 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     <>
       <RechartsPie
         {...rest}
+        dataKey={dataKey}
+        nameKey={nameKey}
         cx={cx}
         cy={cy}
         outerRadius={radiusConfig.outerRadius}
@@ -406,8 +425,11 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         {modifiedChildren}
       </RechartsPie>
       <RechartsPie
+        {...rest}
         cx={cx}
         cy={cy}
+        dataKey={dataKey}
+        nameKey={nameKey}
         outerRadius={radiusConfig.outerRadius}
         innerRadius={radiusConfig.outerRadius - 0.75} // 1.5px thick stroke
         data={data}

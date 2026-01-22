@@ -94,14 +94,14 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           <Subtitle>{props.componentDescription}</Subtitle>
         </Box>
         <Box paddingBottom="spacing.4" display="flex" gap="spacing.4" marginBottom="spacing.6">
-          {componentMetaInfo?.releasedIn ? (
+          {componentMetaInfo?.frameworks.react?.releasedIn ? (
             <Button
-              href={`https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40${componentMetaInfo.releasedIn}`}
+              href={`https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40${componentMetaInfo.frameworks.react.releasedIn}`}
               variant="tertiary"
               icon={AnnouncementIcon}
               target="_blank"
             >
-              Released In: v{componentMetaInfo.releasedIn}
+              Released In: v{componentMetaInfo.frameworks.react.releasedIn}
             </Button>
           ) : null}
           {props.figmaURL ? (

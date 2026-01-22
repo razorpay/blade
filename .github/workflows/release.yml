@@ -8,6 +8,11 @@ on:
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
+permissions:
+  id-token: write      # For OIDC/npm provenance
+  contents: write      # For pushing commits/branches
+  pull-requests: write #
+
 jobs:
   release:
     name: Release
@@ -23,6 +28,9 @@ jobs:
           node-version: 20.19.5
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+      - name: Build Blade Core
+        working-directory: packages/blade-core
+        run: yarn build
       - name: Create Release Pull Request & Publish packages
         id: changesets
         uses: changesets/action@v1
@@ -38,7 +46,7 @@ jobs:
       - name: Publish to public npm registry
         if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           BLADE_MCP_SENTRY_DSN: ${{ secrets.BLADE_MCP_SENTRY_DSN }}
           BLADE_SEGMENT_KEY: ${{ secrets.BLADE_SEGMENT_KEY }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
