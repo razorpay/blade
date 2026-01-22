@@ -368,14 +368,15 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     const filteredToOriginalIndexMap: Record<number, number> = {};
 
     data.forEach((item, originalIdx) => {
-      if (selectedDataKeys.includes(sanitizeString(item.name as string))) {
+      const itemName = getItemName(item, nameKey);
+      if (selectedDataKeys.includes(sanitizeString(itemName as string))) {
         filteredToOriginalIndexMap[filteredData.length] = originalIdx;
         filteredData.push(item);
       }
     });
 
     return { filteredData, filteredToOriginalIndexMap };
-  }, [data, selectedDataKeys]);
+  }, [data, nameKey, selectedDataKeys]);
 
   // Calculate responsive radius based on container size
   const containerSize = Math.min(containerWidth, containerHeight);
@@ -404,7 +405,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       const filteredChildren = selectedDataKeys
         ? children.filter((child, index) => {
             if (getComponentId(child) !== componentId.cell) return true;
-            const itemName = data[index]?.name as string;
+            const itemName = getItemName(data[index], nameKey) as string;
             return selectedDataKeys.includes(sanitizeString(itemName));
           })
         : children;
@@ -461,6 +462,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     themeColors,
     selectedDataKeys,
     filteredToOriginalIndexMap,
+    nameKey,
   ]);
 
   const modifiedExternalDonutChildren = useMemo(() => {
@@ -469,7 +471,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
       const filteredChildren = selectedDataKeys
         ? children.filter((child, index) => {
             if (getComponentId(child) !== componentId.cell) return true;
-            const itemName = data[index]?.name as string;
+            const itemName = getItemName(data[index], nameKey) as string;
             return selectedDataKeys.includes(sanitizeString(itemName));
           })
         : children;
@@ -540,6 +542,7 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
     themeColors,
     selectedDataKeys,
     filteredToOriginalIndexMap,
+    nameKey,
   ]);
 
   return (
