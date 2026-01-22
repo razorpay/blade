@@ -6,10 +6,6 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
 } from 'recharts';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { metaAttribute } from '~utils/metaAttribute';
-import getIn from '~utils/lodashButBetter/get';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import {
   useChartsColorTheme,
   getHighestColorInRange,
@@ -17,7 +13,10 @@ import {
   assignDataColorMapping,
 } from '../utils';
 import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
-import { CommonChartComponentsContext } from '../CommonChartComponents';
+import {
+  CommonChartComponentsContext,
+  useCommonChartComponentsContext,
+} from '../CommonChartComponents';
 import type { DataColorMapping } from '../CommonChartComponents/types';
 import type {
   ChartDonutWrapperProps,
@@ -33,6 +32,10 @@ import {
   LABEL_DISTANCE_FROM_CENTER,
   LABEL_FONT_STYLES,
 } from './tokens';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import { metaAttribute } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -105,6 +108,9 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   ...restProps
 }) => {
   const { theme } = useTheme();
+  // State to track which data keys are currently selected (visible)
+  const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
+
   const colorTheme = useMemo(() => {
     if (Array.isArray(children)) {
       const donutChild = children.find((child) => getComponentId(child) === componentId.chartDonut);
@@ -243,7 +249,9 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   }, [children, themeColors]);
 
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'donut', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{ chartName: 'donut', dataColorMapping, selectedDataKeys, setSelectedDataKeys }}
+    >
       <DonutContainerContext.Provider
         value={{
           containerWidth: containerDimensions.width,
@@ -348,6 +356,26 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
   });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const { theme } = useTheme();
+  const { selectedDataKeys } = useCommonChartComponentsContext();
+
+  // Filter data based on selectedDataKeys and build index mapping in a single pass
+  // - filteredData: allows the donut chart to re-render with correct proportions
+  // - filteredToOriginalIndexMap: ensures colors remain consistent even when data is filtered
+  const { filteredData, filteredToOriginalIndexMap } = useMemo(() => {
+    if (!selectedDataKeys) return { filteredData: data, filteredToOriginalIndexMap: null };
+
+    const filteredData: typeof data = [];
+    const filteredToOriginalIndexMap: Record<number, number> = {};
+
+    data.forEach((item, originalIdx) => {
+      if (selectedDataKeys.includes(sanitizeString(item.name as string))) {
+        filteredToOriginalIndexMap[filteredData.length] = originalIdx;
+        filteredData.push(item);
+      }
+    });
+
+    return { filteredData, filteredToOriginalIndexMap };
+  }, [data, selectedDataKeys]);
 
   // Calculate responsive radius based on container size
   const containerSize = Math.min(containerWidth, containerHeight);
@@ -372,7 +400,16 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
 
   const modifiedChildren = useMemo(() => {
     if (Array.isArray(children)) {
-      return children.map((child, index) => {
+      // Filter children based on selectedDataKeys to match filtered data
+      const filteredChildren = selectedDataKeys
+        ? children.filter((child, index) => {
+            if (getComponentId(child) !== componentId.cell) return true;
+            const itemName = data[index]?.name as string;
+            return selectedDataKeys.includes(sanitizeString(itemName));
+          })
+        : children;
+
+      return filteredChildren.map((child, filteredIndex) => {
         if (getComponentId(child) === componentId.cell) {
           /* 
            Why we are not using React.cloneElement ?  just use ChartDonutCell no?
@@ -383,13 +420,17 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
            So we have placeholder component ChartDonutCell. which we replaced by RechartsCell internally so dev can see hover effects
            working out of box. 
            */
-          const fill = getIn(theme.colors, child.props.color || themeColors[index]);
+          // Use original index for color lookup to maintain consistent colors
+          const originalIndex = filteredToOriginalIndexMap
+            ? filteredToOriginalIndexMap[filteredIndex]
+            : filteredIndex;
+          const fill = getIn(theme.colors, child.props.color || themeColors[originalIndex]);
           return (
             <RechartsCell
               {...child.props}
               fill={fill}
-              key={index}
-              opacity={getCellOpacity(hoveredIndex, index)}
+              key={filteredIndex}
+              opacity={getCellOpacity(hoveredIndex, filteredIndex)}
               strokeWidth={0}
             />
           );
@@ -398,20 +439,42 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         }
       });
     }
-    return data?.map((_, index) => (
-      <RechartsCell
-        fill={getIn(theme.colors, themeColors[index])}
-        key={index}
-        opacity={getCellOpacity(hoveredIndex, index)}
-        strokeWidth={0}
-      />
-    ));
+    return filteredData?.map((_, index) => {
+      // Use original index for color lookup to maintain consistent colors
+      const originalIndex = filteredToOriginalIndexMap ? filteredToOriginalIndexMap[index] : index;
+      return (
+        <RechartsCell
+          fill={getIn(theme.colors, themeColors[originalIndex])}
+          key={index}
+          opacity={getCellOpacity(hoveredIndex, index)}
+          strokeWidth={0}
+        />
+      );
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [children, data, colorTheme, hoveredIndex, themeColors]);
+  }, [
+    children,
+    data,
+    filteredData,
+    colorTheme,
+    hoveredIndex,
+    themeColors,
+    selectedDataKeys,
+    filteredToOriginalIndexMap,
+  ]);
 
   const modifiedExternalDonutChildren = useMemo(() => {
     if (Array.isArray(children)) {
-      return children.map((child, index) => {
+      // Filter children based on selectedDataKeys to match filtered data
+      const filteredChildren = selectedDataKeys
+        ? children.filter((child, index) => {
+            if (getComponentId(child) !== componentId.cell) return true;
+            const itemName = data[index]?.name as string;
+            return selectedDataKeys.includes(sanitizeString(itemName));
+          })
+        : children;
+
+      return filteredChildren.map((child, filteredIndex) => {
         if (getComponentId(child) === componentId.cell) {
           /* 
            Why we are not using React.cloneElement ?  just use ChartDonutCell no?
@@ -422,22 +485,26 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
            So we have placeholder component ChartDonutCell. which we replaced by RechartsCell internally so dev can see hover effects
            working out of box. 
            */
+          // Use original index for color lookup to maintain consistent colors
+          const originalIndex = filteredToOriginalIndexMap
+            ? filteredToOriginalIndexMap[filteredIndex]
+            : filteredIndex;
 
           const fill = getIn(
             theme.colors,
             getHighestColorInRange({
-              colorToken: child.props.color || themeColors[index],
+              colorToken: child.props.color || themeColors[originalIndex],
               followIntensityMapping: Boolean(child.props.color),
             }),
           );
           return (
             <RechartsCell
               {...child.props}
-              key={`stroke-${index}`}
+              key={`stroke-${filteredIndex}`}
               fill="transparent"
               stroke={fill} // Different stroke color for each cell
               strokeWidth={0.75}
-              strokeOpacity={getCellOpacity(hoveredIndex, index)}
+              strokeOpacity={getCellOpacity(hoveredIndex, filteredIndex)}
             />
           );
         } else {
@@ -445,22 +512,35 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         }
       });
     }
-    return data?.map((_, index) => (
-      <RechartsCell
-        key={`stroke-${index}`}
-        fill="transparent"
-        stroke={getIn(
-          theme.colors,
-          getHighestColorInRange({
-            colorToken: themeColors[index],
-          }),
-        )} // Different stroke color for each cell
-        strokeWidth={0.75}
-        strokeOpacity={getCellOpacity(hoveredIndex, index)}
-      />
-    ));
+    return filteredData?.map((_, index) => {
+      // Use original index for color lookup to maintain consistent colors
+      const originalIndex = filteredToOriginalIndexMap ? filteredToOriginalIndexMap[index] : index;
+      return (
+        <RechartsCell
+          key={`stroke-${index}`}
+          fill="transparent"
+          stroke={getIn(
+            theme.colors,
+            getHighestColorInRange({
+              colorToken: themeColors[originalIndex],
+            }),
+          )} // Different stroke color for each cell
+          strokeWidth={0.75}
+          strokeOpacity={getCellOpacity(hoveredIndex, index)}
+        />
+      );
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [children, data, colorTheme, hoveredIndex, themeColors]);
+  }, [
+    children,
+    data,
+    filteredData,
+    colorTheme,
+    hoveredIndex,
+    themeColors,
+    selectedDataKeys,
+    filteredToOriginalIndexMap,
+  ]);
 
   return (
     <>
@@ -472,10 +552,10 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         cy={cy}
         outerRadius={scaledOuterRadius}
         innerRadius={scaledInnerRadius}
-        data={data}
+        data={filteredData}
         startAngle={START_AND_END_ANGLES[type].startAngle}
         endAngle={START_AND_END_ANGLES[type].endAngle}
-        onMouseEnter={(data, index) => {
+        onMouseEnter={(_, index) => {
           setHoveredIndex(index);
         }}
         onMouseLeave={() => {
@@ -491,7 +571,9 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         cy={cy}
         outerRadius={scaledOuterRadius}
         innerRadius={scaledStrokeInnerRadius}
-        data={data}
+        dataKey={dataKey}
+        nameKey={nameKey}
+        data={filteredData}
         startAngle={START_AND_END_ANGLES[type].startAngle}
         endAngle={START_AND_END_ANGLES[type].endAngle}
         fill="transparent"
