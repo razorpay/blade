@@ -85,21 +85,6 @@ const Line: React.FC<ChartLineProps> = ({
   return (
     <>
       <RechartsLine
-        key={`line-${dataKey}-background`}
-        type="monotone"
-        dataKey={dataKey}
-        stroke="transparent"
-        strokeWidth={15}
-        dot={false}
-        activeDot={false}
-        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
-        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
-        connectNulls
-        legendType="none"
-        tooltipType="none"
-        hide={hide}
-      />
-      <RechartsLine
         key={`line-${dataKey}-main`}
         stroke={colorToken}
         strokeWidth={1.5}
@@ -119,7 +104,24 @@ const Line: React.FC<ChartLineProps> = ({
         // Animated opacity using framer-motion
         strokeOpacity={animatedOpacity}
         isAnimationActive={true}
+           width="100%"
         {...props}
+      />
+         <RechartsLine
+        key={`line-${dataKey}-background`}
+        type="monotone"
+        dataKey={dataKey}
+        stroke="transparent"
+        strokeWidth={15}
+        dot={false}
+        activeDot={false}
+        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
+        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        hide={hide}
+        width="100%"
       />
     </>
   );
