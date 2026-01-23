@@ -13,6 +13,8 @@ export { default as Code } from './Typography/Code/Code.svelte';
 
 // Button
 export { default as Button } from './Button/Button.svelte';
+export { IconButton } from './Button/IconButton';
+export type { IconButtonProps } from './Button/IconButton';
 
 // Link
 export { default as Link } from './Link/Link.svelte';
@@ -28,3 +30,22 @@ export * from './Icons';
 
 // BladeProvider
 export * from './BladeProvider';
+
+// Form
+export { FormLabel, FormHint, CharacterCounter } from './Form';
+export type { FormLabelProps, FormHintProps, CharacterCounterProps } from './Form';
+
+// Input
+export { BaseInput, TextInput } from './Input';
+export type {
+  BaseInputProps,
+  TextInputProps,
+  FormInputOnEvent,
+  FormInputKeyDownEvent,
+  ValidationState,
+  InputSize,
+} from './Input';
+
+// Divider
+export { Divider } from './Divider';
+export type { DividerProps } from './Divider';
