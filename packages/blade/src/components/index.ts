@@ -75,3 +75,4 @@ export * from './Typography';
 export * from './VisuallyHidden';
 export * from './ListView';
 export * from './Preview';
+export * from './GenUI';

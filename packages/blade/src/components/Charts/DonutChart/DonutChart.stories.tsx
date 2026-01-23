@@ -153,6 +153,25 @@ const chartsLargeData = [
   { name: 'Group H', value: 100 },
 ];
 
+/**
+ * Example data with custom keys to demonstrate dataKey and nameKey props
+ * - `category`, `code`, or `shortName` can be used as the nameKey (label for each segment)
+ * - `revenue` or `orders` can be used as the dataKey (value for segment size)
+ */
+const salesByCategory = [
+  { category: 'Electronics', code: 'ELEC', shortName: 'Electronics', revenue: 45000, orders: 120 },
+  { category: 'Clothing', code: 'CLTH', shortName: 'Clothing', revenue: 32000, orders: 280 },
+  {
+    category: 'Home & Garden',
+    code: 'HOME',
+    shortName: 'Home & Garden',
+    revenue: 28000,
+    orders: 95,
+  },
+  { category: 'Sports', code: 'SPRT', shortName: 'Sports', revenue: 18000, orders: 150 },
+  { category: 'Books', code: 'BOOK', shortName: 'Books', revenue: 12000, orders: 320 },
+];
+
 // 1. Basic Donut Chart
 export const BasicDonutChart: StoryFn<typeof ChartDonut> = (args) => {
   // Extract ChartDonut props and ChartDonutWrapper props
@@ -168,13 +187,64 @@ export const BasicDonutChart: StoryFn<typeof ChartDonut> = (args) => {
           }}
           {...wrapperProps}
         >
-          <ChartDonut type={type} radius={radius} dataKey="value" nameKey="name" data={chartData} />
+          <ChartDonut type={type} radius={radius} data={chartData} />
           <ChartLegend />
           <ChartTooltip />
         </ChartDonutWrapper>
       </Box>
     </ChartsWrapper>
   );
+};
+
+export const DonutChartWithCustomKeys: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, dataKey = 'revenue', nameKey = 'category', ...wrapperProps } = args;
+
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartDonutWrapper {...wrapperProps}>
+          <ChartDonut
+            type={type}
+            radius={radius}
+            dataKey={dataKey}
+            nameKey={nameKey}
+            data={salesByCategory}
+          />
+          <ChartLegend />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+// Add controls for dataKey and nameKey
+DonutChartWithCustomKeys.argTypes = {
+  dataKey: {
+    control: { type: 'select' },
+    options: ['revenue', 'orders'],
+    defaultValue: 'revenue',
+    description: 'Field to use for segment values',
+    table: {
+      category: propsCategory.CHART_DONUT_PROPS,
+    },
+  },
+  nameKey: {
+    control: { type: 'select' },
+    options: ['category', 'code', 'shortName'],
+    defaultValue: 'category',
+    description: 'Field to use for segment labels',
+    table: {
+      category: propsCategory.CHART_DONUT_PROPS,
+    },
+  },
+};
+
+// Override the controls exclude for this specific story
+DonutChartWithCustomKeys.parameters = {
+  controls: {
+    exclude: ['cx', 'cy', 'children', 'data'],
+  },
 };
 
 // 2. Donut Chart with Center Text
@@ -423,6 +493,7 @@ export const DonutChartWithSequentialColors: StoryFn<typeof ChartDonut> = (args)
 };
 
 BasicDonutChart.storyName = 'Default Donut Chart';
+DonutChartWithCustomKeys.storyName = 'Donut Chart with Custom dataKey and nameKey';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
 SmallRadiusDonutChart.storyName = 'Small Radius Donut Chart';
 ExtraLargeRadiusDonutChart.storyName = 'Extra Large Radius Donut Chart';

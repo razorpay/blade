@@ -6,13 +6,7 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false,
   },
-  extends: [
-    'kentcdodds',
-    'kentcdodds/react',
-    'plugin:prettier/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:react-native-a11y/all',
-  ],
+  extends: ['kentcdodds', 'kentcdodds/react', 'plugin:prettier/recommended', 'plugin:jsx-a11y/recommended', 'plugin:react-native-a11y/all'],
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
@@ -200,6 +194,23 @@ module.exports = {
         'import/no-cycle': 'off',
       },
     },
+    {
+      // blade-core uses path aliases that resolve to sibling packages
+      // and has default exports that trigger false positives with export *
+      files: ['packages/blade-core/**/*.{ts,tsx,js}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'import/export': 'off',
+      },
+    },
+    {
+      // blade imports from sibling packages in monorepo
+      files: ['packages/blade/**/*.{ts,tsx,js}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
   ],
-  ignorePatterns: ['packages/blade-coverage-extension'],
+  // blade-mcp has its own standalone .eslintrc.cjs to avoid memory issues
+  ignorePatterns: ['packages/blade-coverage-extension', 'packages/blade-mcp'],
 };

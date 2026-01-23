@@ -1011,29 +1011,27 @@ const MultiStepExample: StoryFn = ({ withProgressBar = false }: { withProgressBa
                     borderRadius="medium"
                   >
                     {selectedPO && (
-                      <>
-                        <Box display="flex" justifyContent="space-between" alignItems="center">
-                          <Box>
-                            <Text weight="semibold" size="large">
-                              {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
-                            </Text>
-                            <Text size="small" color="surface.text.gray.muted">
-                              Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
-                            </Text>
-                          </Box>
-                          <Badge
-                            size="medium"
-                            color={
-                              GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
-                              'Approved'
-                                ? 'positive'
-                                : 'notice'
-                            }
-                          >
-                            {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ?? ''}
-                          </Badge>
+                      <Box display="flex" justifyContent="space-between" alignItems="center">
+                        <Box>
+                          <Text weight="semibold" size="large">
+                            {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.number}
+                          </Text>
+                          <Text size="small" color="surface.text.gray.muted">
+                            Date: {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.date}
+                          </Text>
                         </Box>
-                      </>
+                        <Badge
+                          size="medium"
+                          color={
+                            GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ===
+                            'Approved'
+                              ? 'positive'
+                              : 'notice'
+                          }
+                        >
+                          {GRNPurchaseOrders.find((p) => p.id === selectedPO)?.status ?? ''}
+                        </Badge>
+                      </Box>
                     )}
                   </Box>
                 </Box>
@@ -2477,26 +2475,24 @@ const CompactMultiStepExample: StoryFn<typeof Modal> = ({
   };
 
   const renderFooter = (): React.ReactElement => (
-    <>
-      <Box display="flex" gap="spacing.4" justifyContent="space-between">
-        <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
-          Previous
-        </Button>
-        <Button
-          variant="primary"
-          onClick={
-            currentStep === lastStep
-              ? () => {
-                  resetState();
-                  setIsOpen(false);
-                }
-              : handleNextStep
-          }
-        >
-          {currentStep === lastStep ? 'Submit' : 'Next'}
-        </Button>
-      </Box>
-    </>
+    <Box display="flex" gap="spacing.4" justifyContent="space-between">
+      <Button variant="tertiary" onClick={handlePreviousStep} isDisabled={currentStep === 1}>
+        Previous
+      </Button>
+      <Button
+        variant="primary"
+        onClick={
+          currentStep === lastStep
+            ? () => {
+                resetState();
+                setIsOpen(false);
+              }
+            : handleNextStep
+        }
+      >
+        {currentStep === lastStep ? 'Submit' : 'Next'}
+      </Button>
+    </Box>
   );
 
   return (

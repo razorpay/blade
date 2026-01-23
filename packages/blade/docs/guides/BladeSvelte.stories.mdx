@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs';
+import { useEffect } from 'react';
+import { Box, Heading, Text, Link, Spinner, ExternalLinkIcon } from '../../src/components';
+
+export const RedirectToBladeSvelte = () => {
+  useEffect(() => {
+    window.open('https://blade.razorpay.com/svelte', '_blank');
+  }, []);
+  
+  return null;
+};
+
+<Meta title="Guides/Blade Svelte" />
+
+<RedirectToBladeSvelte />
+
+<Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" gap="spacing.6" padding="spacing.10">
+  <Spinner size="large" accessibilityLabel="Redirecting to Blade Svelte" />
+  <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+    <Heading size="large">Redirecting to Blade Svelte...</Heading>
+    <Text color="surface.text.gray.muted">
+      Opening Blade Svelte Storybook in a new tab
+    </Text>
+  </Box>
+  <Text color="surface.text.gray.muted" size="small">
+    If you're not redirected automatically,{' '}
+    <Link 
+      href="https://blade.razorpay.com/svelte" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      icon={ExternalLinkIcon}
+      iconPosition="right"
+    >
+      click here to open Blade Svelte Storybook
+    </Link>
+  </Text>
+</Box>

@@ -1,0 +1,17 @@
+/* Button base styles */
+.btn {
+  display: inline-flex;
+  padding: var(--spacing-4) var(--spacing-5);
+  border-radius: var(--border-radius-medium);
+  border: none;
+}
+
+/* Button variants */
+.btn--primary {
+  background-color: var(--interactive-background-primary-default);
+  color: var(--surface-text-static-white-normal);
+}
+
+.btn--primary:hover:not(.disabled) {
+  background-color: var(--interactive-background-primary-highlighted);
+}

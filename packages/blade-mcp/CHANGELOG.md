@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.22.0
+
+### Minor Changes
+
+- b6c2e2563: feat(blade): update charts docs
+
 ## 1.21.1
 
 ### Patch Changes

@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Use Node v18
+      - name: Use Node v20
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 20.19.5
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Install Dashboard Playground Dependencies
@@ -38,6 +38,25 @@ jobs:
             echo "✓ Dashboard build output copied to storybook-site/dashboard/"
           else
             echo "✗ Dashboard dist directory not found"
+            exit 1
+          fi
+      - name: Build blade-core
+        run: yarn build:blade-core
+      - name: Build Svelte Storybook
+        working-directory: packages/blade-svelte
+        run: yarn build-storybook
+      - name: Copy Svelte Storybook to Storybook Site
+        working-directory: packages/blade
+        run: |
+          if [ -d "storybook-site/svelte" ]; then
+            rm -rf storybook-site/svelte
+          fi
+          mkdir -p storybook-site/svelte
+          if [ -d "../blade-svelte/storybook-static" ]; then
+            cp -r ../blade-svelte/storybook-static/* storybook-site/svelte/
+            echo "✓ Svelte Storybook copied to storybook-site/svelte/"
+          else
+            echo "✗ Svelte Storybook not found"
             exit 1
           fi
       - name: Publish to Chromatic
