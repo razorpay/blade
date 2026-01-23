@@ -2,16 +2,17 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useLocale } from '@react-aria/i18n';
 import { useTimeField, useDateSegment } from '@react-aria/datepicker';
+import type { TimeValue } from '@react-aria/datepicker';
 import { useTimeFieldState } from '@react-stately/datepicker';
 import type { TimePickerInputProps, TimeSegmentProps } from './types';
 import type { BladeElementRef } from '~utils/types';
+import { useTheme } from '~components/BladeProvider';
+import { spacing } from '~tokens/global';
 import { BaseBox } from '~components/Box/BaseBox';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
-import { useTheme } from '~components/BladeProvider';
 import { ClockIcon } from '~components/Icons';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { mergeRefs } from '~utils/useMergeRefs';
-import { spacing } from '~tokens/global';
 import { makeSpace } from '~utils/makeSpace';
 
 const StyledTimeSegment = styled.div`
@@ -173,8 +174,8 @@ const _TimeInput: React.ForwardRefRenderFunction<BladeElementRef, TimePickerInpu
     label,
     locale,
     hourCycle: currentTimeFormat === '12h' ? 12 : 24,
-    value: internalTimeValue, // Use TimeValue directly from hook
-    onChange: onTimeValueChange, // Use TimeValue onChange directly
+    value: internalTimeValue as TimeValue | null, // Use TimeValue directly from hook
+    onChange: onTimeValueChange as ((value: TimeValue | null) => void) | undefined, // Use TimeValue onChange directly
     isDisabled,
     shouldForceLeadingZeros: true, // Force leading zeros (01, 02, 03...)
   });
