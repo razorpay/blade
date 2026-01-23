@@ -300,13 +300,6 @@ export const DatePickerPresetsWithHideLabelOnSelection: StoryFn<typeof DatePicke
             },
             hideDateOnSelection: true,
           },
-          {
-            label: 'Custom',
-            value: () => [null, null] as DatesRangeValue,
-            // hideLabelOnSelection: true means "Custom" is hidden from dropdown when selected
-            // and clicking it opens the full datepicker with calendar
-            hideLabelOnSelection: true,
-          },
         ]}
       />
     </Box>
