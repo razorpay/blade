@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 12.76.0
+
+### Minor Changes
+
+- 59f65fd46: feat(blade): make legends for other charts clickable
+- 3317dc409: feat(blade): make donut chart responsive
+
+### Patch Changes
+
+- 828302f4d: refactor(blade): update GenUI SDK to use ReactMarkdown instead of Streamdown for React17 compatibility
+
 ## 12.75.0
 
 ### Minor Changes
