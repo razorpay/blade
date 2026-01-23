@@ -4,9 +4,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { memo, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Streamdown } from 'streamdown';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
+import ReactMarkdown from 'react-markdown';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
 import { useGenUIAction } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
@@ -87,6 +87,31 @@ const ComponentType = {
   LINK: 'LINK',
   ALERT: 'ALERT',
 } as const;
+
+/**
+ * Valid feedback colors used across GenUI components (Badge, Indicator, Alert)
+ * Used to validate streaming JSON where color values might be partial/incomplete
+ */
+const FeedbackColors = [
+  'information',
+  'negative',
+  'neutral',
+  'notice',
+  'positive',
+  'primary',
+] as const;
+type FeedbackColor = typeof FeedbackColors[number];
+
+const getValidFeedbackColor = (
+  color: string | undefined,
+  fallback: FeedbackColor = 'neutral',
+): FeedbackColor => {
+  if (!color) return fallback;
+  if (FeedbackColors.includes(color as FeedbackColor)) {
+    return color as FeedbackColor;
+  }
+  return fallback;
+};
 
 type TextComponent = GenUIBaseComponent & {
   component: typeof ComponentType.TEXT;
@@ -359,8 +384,8 @@ const ChartSkeletonLoader = ({
 const RenderTextComponent = memo(({ content }: TextComponent) => {
   if (!content) return null;
   return (
-    <Streamdown
-      controls={{ table: false, code: false, mermaid: false }}
+    <ReactMarkdown
+      skipHtml
       rehypePlugins={[]}
       components={{
         h1: ({ children }) => (
@@ -374,6 +399,11 @@ const RenderTextComponent = memo(({ content }: TextComponent) => {
           </Heading>
         ),
         h3: ({ children }) => (
+          <Heading marginBottom="spacing.3" size="small">
+            {children}
+          </Heading>
+        ),
+        h4: ({ children }) => (
           <Heading marginBottom="spacing.3" size="small">
             {children}
           </Heading>
@@ -424,7 +454,7 @@ const RenderTextComponent = memo(({ content }: TextComponent) => {
       }}
     >
       {content}
-    </Streamdown>
+    </ReactMarkdown>
   );
 });
 
@@ -625,12 +655,7 @@ const RenderChartComponent = memo(
                 <ChartDonut
                   dataKey={keysToPlot[0]}
                   nameKey={xAxis}
-                  data={validData.map((d) => {
-                    return {
-                      name: d[xAxis],
-                      value: d[keysToPlot[0]],
-                    };
-                  })}
+                  data={validData}
                   radius="medium"
                   type="circle"
                 />
@@ -745,17 +770,19 @@ const RenderTableCellContent = ({ cell }: { cell: TableCellType }) => {
       if (!cell.value) {
         return <Text size="medium">-</Text>;
       }
+      const indicatorColor = getValidFeedbackColor(cell.color, 'neutral');
       return (
         <Box display="flex" alignItems="center" gap="spacing.3">
-          <Indicator accessibilityLabel={cell.value} color={cell.color || 'neutral'} />
+          <Indicator accessibilityLabel={cell.value} color={indicatorColor} />
           <Text size="medium">{cell.value}</Text>
         </Box>
       );
     }
 
     case 'BADGE': {
+      const badgeColor = getValidFeedbackColor(cell.color, 'neutral');
       return (
-        <Badge color={cell.color || 'neutral'} emphasis="subtle">
+        <Badge color={badgeColor} emphasis="subtle">
           {cell.value || '-'}
         </Badge>
       );
@@ -1135,9 +1162,11 @@ const RenderLinkComponent = memo(({ text, action }: LinkComponent) => {
 const RenderAlertComponent = memo(
   ({ title, description, color = 'neutral', actions }: AlertComponent) => {
     const onActionClick = useGenUIAction();
-    const validColors = ['information', 'negative', 'neutral', 'notice', 'positive'];
     if (!title && !description) return null;
-    if (!validColors.includes(color)) {
+
+    // Validate color during streaming - show placeholder for invalid colors
+    const validColor = getValidFeedbackColor(color);
+    if (validColor !== color) {
       return <Box marginY="spacing.3" width="100%" />;
     }
 
@@ -1149,7 +1178,7 @@ const RenderAlertComponent = memo(
       positive: CheckCircleIcon,
     } as const;
 
-    const Icon = iconMap[color];
+    const Icon = iconMap[validColor];
 
     return (
       <Box marginY="spacing.3" width="100%">
@@ -1158,7 +1187,7 @@ const RenderAlertComponent = memo(
           title={title}
           icon={Icon}
           description={description!}
-          color={color}
+          color={validColor}
           isDismissible={false}
           isFullWidth
           actions={{
