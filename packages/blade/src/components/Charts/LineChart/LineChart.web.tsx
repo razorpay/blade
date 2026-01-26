@@ -143,7 +143,6 @@ const Line: React.FC<ChartLineProps> = ({
         // Animated opacity using framer-motion
         strokeOpacity={animatedOpacity}
         isAnimationActive={true}
-        width="100%"
         {...props}
       />
       <RechartsLine
@@ -160,7 +159,6 @@ const Line: React.FC<ChartLineProps> = ({
         legendType="none"
         tooltipType="none"
         hide={hide}
-        width="100%"
       />
     </>
   );

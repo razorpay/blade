@@ -78,7 +78,7 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
 
     /**
      * We need to control the animation of the bar.
-     * Recharts tries to animation bar when tooltip is hovered. we don't need that.
+     * Recharts tries to animate bar when tooltip is hovered. we don't need that.
      * So we need to control the animation of the bar.
      * we currently need it for entry , exit and when a bar is hidden only.
      */
