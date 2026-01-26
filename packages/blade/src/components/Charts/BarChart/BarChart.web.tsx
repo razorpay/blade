@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   BarChart as RechartsBarChart,
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import getIn from '~utils/lodashButBetter/get';
-import { metaAttribute } from '~utils/metaAttribute';
-import isNumber from '~utils/lodashButBetter/isNumber';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import isNumber from '~utils/lodashButBetter/isNumber';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import { metaAttribute } from '~utils/metaAttribute';
 import { useChartsColorTheme, getHighestColorInRange, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
@@ -51,6 +51,10 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
     showLegend = true,
     hide,
     _index = 0,
+    isAnimationActive,
+    onAnimationStart,
+    onAnimationEnd,
+
     ...rest
   }) => {
     const { theme } = useTheme();
@@ -72,6 +76,19 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
     const animationBegin = theme.motion.duration.gentle;
     const animationDuration = theme.motion.duration.gentle;
 
+    /**
+     * We need to control the animation of the bar.
+     * Recharts tries to animation bar when tooltip is hovered. we don't need that.
+     * So we need to control the animation of the bar.
+     * we currently need it for entry , exit and when a bar is hidden only.
+     */
+
+    const shouldAnimatedBar = useRef(true);
+
+    useEffect(() => {
+      shouldAnimatedBar.current = true;
+    }, [hide]);
+
     return (
       <RechartsBar
         {...rest}
@@ -86,6 +103,15 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
         name={name}
         key={`${dataKey}-${_index}-${name}`}
         hide={hide}
+        isAnimationActive={isAnimationActive ?? shouldAnimatedBar.current}
+        onAnimationStart={() => {
+          shouldAnimatedBar.current = true;
+          onAnimationStart?.();
+        }}
+        onAnimationEnd={() => {
+          shouldAnimatedBar.current = false;
+          onAnimationEnd?.();
+        }}
         shape={(props: unknown) => {
           const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
           const fillOpacity = isNumber(activeIndex) ? (barIndex === activeIndex ? 1 : 0.2) : 1;

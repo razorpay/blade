@@ -46,6 +46,19 @@ type ChartBarProps = {
    */
   _index?: number;
   /**
+   * If set false, animation of bar will be disabled. If set "auto", the animation will be disabled in SSR and enabled in browser.
+   */
+  isAnimationActive?: RechartsBarProps['isAnimationActive'];
+  /**
+   * The callback function to be called when the animation starts.
+   */
+  onAnimationStart?: () => void;
+  /**
+   * The callback function to be called when the animation ends.
+   */
+  onAnimationEnd?: () => void;
+
+  /**
    * @private
    */
   _totalbars?: number;
