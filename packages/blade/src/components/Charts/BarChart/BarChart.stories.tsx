@@ -650,17 +650,6 @@ export const BarChartWithLabels: StoryFn<typeof ChartBar> = () => {
     );
   }, []);
 
-  // Memoized label config object - useMemo ensures stable object reference
-  // Note: Labels appear immediately while bars animate (isAnimationActive is automatically set to false by ChartBar)
-  const barLabelConfig = React.useMemo(
-    () => ({
-      position: 'top' as const,
-      isAnimationActive: false,
-      content: renderBarLabel,
-    }),
-    [renderBarLabel],
-  );
-
   return (
     <ChartsWrapper>
       <Box width="100%" height="400px">
@@ -673,7 +662,11 @@ export const BarChartWithLabels: StoryFn<typeof ChartBar> = () => {
             dataKey="revenue"
             name="Revenue"
             color="data.background.categorical.blue.moderate"
-            label={barLabelConfig}
+            isAnimationActive={false}
+            label={{
+              position: 'top',
+              content: renderBarLabel,
+            }}
           />
         </ChartBarWrapper>
       </Box>
@@ -681,7 +674,7 @@ export const BarChartWithLabels: StoryFn<typeof ChartBar> = () => {
   );
 };
 
-BarChartWithLabels.storyName = 'Bar Chart with Labels';
+BarChartWithLabels.storyName = 'Bar Chart with Labels and no animation';
 BarChartWithLabels.parameters = {
   controls: { disable: true },
 };
