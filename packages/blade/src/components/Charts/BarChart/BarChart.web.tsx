@@ -4,6 +4,11 @@ import {
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
+import getIn from '~utils/lodashButBetter/get';
+import { metaAttribute } from '~utils/metaAttribute';
+import isNumber from '~utils/lodashButBetter/isNumber';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { useChartsColorTheme, getHighestColorInRange, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
@@ -23,13 +28,8 @@ import {
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute } from '~utils/metaAttribute';
-import getIn from '~utils/lodashButBetter/get';
-import isNumber from '~utils/lodashButBetter/isNumber';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 export type RechartsShapeProps = {
   x: number;
@@ -69,13 +69,8 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
       }),
     );
 
-    const isStacked = rest.stackId !== undefined;
-    const animationBegin = isStacked
-      ? (theme.motion.duration.gentle / totalBars) * _index
-      : theme.motion.duration.gentle;
-    const animationDuration = isStacked
-      ? theme.motion.duration.gentle / totalBars
-      : theme.motion.duration.gentle;
+    const animationBegin = theme.motion.duration.gentle;
+    const animationDuration = theme.motion.duration.gentle;
 
     return (
       <RechartsBar
