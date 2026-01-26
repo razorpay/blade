@@ -11,11 +11,12 @@ import {
   Line as RechartsLine,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
+import type { Props as RechartsLineProps } from 'recharts/types/shape/Curve';
 import { animate } from 'framer-motion';
-import { metaAttribute } from '~utils/metaAttribute';
-import getIn from '~utils/lodashButBetter/get';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import getIn from '~utils/lodashButBetter/get';
+import { metaAttribute } from '~utils/metaAttribute';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
@@ -44,6 +45,8 @@ const Line: React.FC<ChartLineProps> = ({
   _totalLines,
   hide,
   dataKey,
+  onMouseEnter,
+  onMouseLeave,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -81,29 +84,41 @@ const Line: React.FC<ChartLineProps> = ({
     return () => controls.stop();
   }, [targetOpacity]);
 
-  const handleMouseEnter = useCallback(() => {
-    if (!hide) {
-      setHoveredDataKey?.(dataKey as string);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hide, setHoveredDataKey]);
+  const updateHoveredDataKey = useCallback(
+    (key: string | null) => {
+      if (!hide) {
+        setHoveredDataKey?.(key);
+      }
+    },
+    [hide, setHoveredDataKey],
+  );
 
-  const handleMouseLeave = useCallback(() => {
-    if (!hide) {
-      setHoveredDataKey?.(null);
-    }
-  }, [hide, setHoveredDataKey]);
+  const handleMouseEnter = useCallback(
+    (props: RechartsLineProps, event: React.MouseEvent<SVGPathElement, MouseEvent>) => {
+      updateHoveredDataKey(dataKey as string);
+      onMouseEnter?.(props, event);
+    },
+    [dataKey, onMouseEnter, updateHoveredDataKey],
+  );
+
+  const handleMouseLeave = useCallback(
+    (props: RechartsLineProps, event: React.MouseEvent<SVGPathElement, MouseEvent>) => {
+      updateHoveredDataKey(null);
+      onMouseLeave?.(props, event);
+    },
+    [onMouseLeave, updateHoveredDataKey],
+  );
 
   // activeDot config with hover handlers
   const activeDotConfig = useMemo(
     () =>
       activeDot
         ? {
-            onMouseEnter: handleMouseEnter,
-            onMouseLeave: handleMouseLeave,
+            onMouseEnter: () => updateHoveredDataKey(dataKey as string),
+            onMouseLeave: () => updateHoveredDataKey(null),
           }
         : false,
-    [activeDot, handleMouseEnter, handleMouseLeave],
+    [activeDot, dataKey, updateHoveredDataKey],
   );
 
   return (
