@@ -61,6 +61,18 @@ interface ChartLineProps {
    * @default: solid
    */
   strokeStyle?: 'dotted' | 'dashed' | 'solid';
+  /**
+   * Whether to hide this line (controlled by legend click).
+   */
+  hide?: boolean;
+  /**
+   * The callback function to be called when the mouse enters the line.
+   */
+  onMouseEnter?: (props: RechartsLineProps, event: React.MouseEvent) => void;
+  /**
+   * The callback function to be called when the mouse leaves the line.
+   */
+  onMouseLeave?: (props: RechartsLineProps, event: React.MouseEvent) => void;
 }
 
 type data = {

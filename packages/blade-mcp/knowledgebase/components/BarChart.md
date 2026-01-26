@@ -49,8 +49,25 @@ type ChartBarProps = Omit<RechartsBarProps, 'fill' | 'dataKey' | 'name' | 'label
   label?: RechartsBarProps['label'];
   /**
    * The show legend of the bar chart.
-  */
+   */
   showLegend?: boolean;
+  /**
+   * Whether to hide the bar.
+   */
+  hide?: boolean;
+  /**
+   * If set false, animation of bar will be disabled.
+   * If set "auto", the animation will be disabled in SSR and enabled in browser.
+   */
+  isAnimationActive?: boolean | 'auto';
+  /**
+   * The callback function to be called when the animation starts.
+   */
+  onAnimationStart?: () => void;
+  /**
+   * The callback function to be called when the animation ends.
+   */
+  onAnimationEnd?: () => void;
 };
 
 type data = {
