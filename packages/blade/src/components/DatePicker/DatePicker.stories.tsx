@@ -306,7 +306,7 @@ export const DatePickerPresetsWithHideLabelOnSelection: StoryFn<typeof DatePicke
   );
 };
 
-DatePickerPresetsWithHideLabelOnSelection.storyName = 'With Presets with hideLabelOnSelection';
+DatePickerPresetsWithHideLabelOnSelection.storyName = 'With Presets with hideDateOnSelection';
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);

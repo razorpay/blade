@@ -11,17 +11,12 @@ const renderPresetDropdown = ({
   presetStates,
   selectedPresetLabel,
 }: renderPresetDropdownProps): React.ReactElement => {
-  // Filter out presets that should be hidden when selected (e.g., "Custom" preset)
-  const visiblePresetStates = presetStates.filter(
-    ({ preset, isSelected }) => !(preset.hideLabelOnSelection && isSelected),
-  );
-
   return (
     <Dropdown>
       <InputDropdownButton value={selectedPresetLabel ?? 'Custom'} icon={CalendarIcon} />
       <DropdownOverlay>
         <ActionList>
-          {visiblePresetStates.map(({ preset, isSelected, isCustomType }) => (
+          {presetStates.map(({ preset, isSelected, isCustomType }) => (
             <ActionListItem
               key={preset.label}
               title={preset.label}
@@ -29,9 +24,9 @@ const renderPresetDropdown = ({
               isSelected={isSelected}
               onClick={() => {
                 onSelection(preset.value);
-                // If this preset has hideLabelOnSelection (like "Custom"), open the calendar
+                // If this is a custom type preset (like "Custom"), open the calendar
                 // This allows user to manually select dates for such presets
-                if ((isCustomType || preset.hideLabelOnSelection) && onOpenCalendar) {
+                if (isCustomType && onOpenCalendar) {
                   onOpenCalendar();
                 }
               }}

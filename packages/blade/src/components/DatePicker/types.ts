@@ -26,14 +26,6 @@ type Preset = {
    */
   value: (date: Date) => DatesRangeValue;
   /**
-   * When true, hides this preset from the dropdown list when it is selected.
-   * Useful for "Custom" preset which should be hidden after selection.
-   * Also opens the full datepicker with calendar when this preset is clicked.
-   *
-   * @default false
-   */
-  hideLabelOnSelection?: boolean;
-  /**
    * When true, hides the date value in the input field and shows only the preset label.
    * Useful for presets like "Today", "Yesterday", "Last 7 days" where showing the label
    * is more meaningful than showing actual dates.
