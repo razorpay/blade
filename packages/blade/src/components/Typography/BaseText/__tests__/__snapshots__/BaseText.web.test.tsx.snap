@@ -132,7 +132,6 @@ exports[`<BaseText /> should render text with dotted underline decoration 1`] = 
   -webkit-text-decoration-thickness: 10%;
   text-decoration-thickness: 10%;
   text-underline-offset: 20%;
-  text-underline-position: from-font;
   -webkit-text-decoration-color: hsla(212,39%,16%,1);
   text-decoration-color: hsla(212,39%,16%,1);
   line-height: 1.25rem;

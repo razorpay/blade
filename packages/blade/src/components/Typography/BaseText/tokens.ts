@@ -5,7 +5,6 @@ const DOTTED_UNDERLINE_STYLES: CSSObject = {
   textDecorationSkipInk: 'none',
   textDecorationThickness: '10%',
   textUnderlineOffset: '20%',
-  textUnderlinePosition: 'from-font',
 };
 
 export { DOTTED_UNDERLINE_STYLES };
