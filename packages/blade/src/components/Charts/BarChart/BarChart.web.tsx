@@ -4,11 +4,6 @@ import {
   Bar as RechartsBar,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import getIn from '~utils/lodashButBetter/get';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import isNumber from '~utils/lodashButBetter/isNumber';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import { metaAttribute } from '~utils/metaAttribute';
 import { useChartsColorTheme, getHighestColorInRange, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
@@ -26,6 +21,11 @@ import {
   DISTANCE_BETWEEN_BARS,
   DISTANCE_BETWEEN_CATEGORY_BARS,
 } from './tokens';
+import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import isNumber from '~utils/lodashButBetter/isNumber';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import { metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
