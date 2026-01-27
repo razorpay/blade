@@ -25,6 +25,14 @@ type Preset = {
    * [dayjs().subtract(7, 'day'), dayjs()]
    */
   value: (date: Date) => DatesRangeValue;
+  /**
+   * When true, hides the date value in the input field and shows only the preset label.
+   * Useful for presets like "Today", "Yesterday", "Last 7 days" where showing the label
+   * is more meaningful than showing actual dates.
+   *
+   * @default false
+   */
+  hideDateOnSelection?: boolean;
 };
 
 type DateSelectionType = 'single' | 'range';
@@ -232,6 +240,14 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     minDate?: Date;
     maxDate?: Date;
     effectiveSelectionType?: 'single' | 'range' | null;
+    /**
+     * When true, shows only the preset label in the input field instead of the date.
+     */
+    shouldHideDateOnSelection?: boolean;
+    /**
+     * The label of the currently selected preset to display when shouldHideDateOnSelection is true.
+     */
+    selectedPresetLabel?: string | null;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -258,6 +274,14 @@ type DateInputProps = BaseInputProps & {
   minDate?: Date;
   maxDate?: Date;
   effectiveSelectionType?: 'single' | 'range' | null;
+  /**
+   * When true, shows only the preset label in the input field instead of the date.
+   */
+  shouldHideDateOnSelection?: boolean;
+  /**
+   * The label of the currently selected preset to display when shouldHideDateOnSelection is true.
+   */
+  selectedPresetLabel?: string | null;
 };
 
 export type {

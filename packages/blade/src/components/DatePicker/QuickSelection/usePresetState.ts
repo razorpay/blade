@@ -17,6 +17,7 @@ export const usePresetState = ({
         selectedPresetLabel: null,
         isCustomSelected: false,
         effectiveSelectionType: null, // Default when no presets
+        shouldHideDateOnSelection: false,
       };
     }
 
@@ -91,6 +92,12 @@ export const usePresetState = ({
       }
     }
 
+    // Based on the selected preset's hideDateOnSelection flag
+    // This applies to presets like "Today", "Yesterday", etc.
+    const shouldHideDateOnSelection =
+      selectedPresetIndex !== -1 &&
+      Boolean(presetStates[selectedPresetIndex].preset.hideDateOnSelection);
+
     // Return final calculated state - this gets shared with all components
     return {
       presetStates, // Array: [{ preset, value, isSelected, isCustomType }, ...]
@@ -98,6 +105,7 @@ export const usePresetState = ({
       selectedPresetLabel, // String: "Last 7 days" or "Custom" or null
       isCustomSelected, // Boolean: true if custom dates selected
       effectiveSelectionType, // 'single' | 'range' based on preset analysis
+      shouldHideDateOnSelection, // Boolean: true if date should be hidden, showing label only
     };
   }, [presets, selectedPreset, currentDate]); // Recalculate when any of these change
 };

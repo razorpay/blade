@@ -184,7 +184,12 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const currentDate = shiftTimezone('add', new Date());
 
   // Use the hook to get the calculated preset values
-  const { presetStates, selectedPresetLabel, effectiveSelectionType } = usePresetState({
+  const {
+    presetStates,
+    selectedPresetLabel,
+    effectiveSelectionType,
+    shouldHideDateOnSelection,
+  } = usePresetState({
     presets: presets || [],
     selectedPreset,
     currentDate,
@@ -500,6 +505,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 maxDate={props.maxDate}
                 // Effective Selection type should only be use for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
+                // Pass through preset state for showing label instead of date
+                shouldHideDateOnSelection={shouldHideDateOnSelection}
+                selectedPresetLabel={selectedPresetLabel}
                 leadingDropdown={
                   presets && !isSingle
                     ? renderPresetDropdown({

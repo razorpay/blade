@@ -40,6 +40,8 @@ const _DateInput = (
     leadingDropdown,
     tags,
     id,
+    shouldHideDateOnSelection,
+    selectedPresetLabel,
     ...textInputProps
   } = props;
   const [inputValue, setInputValue] = React.useState(['']);
@@ -165,23 +167,63 @@ const _DateInput = (
     [applyDateValue, isRange],
   );
 
+  // When shouldHideDateOnSelection is true, show the preset label in a clean input
+  // with calendar icon (no dropdown, no date format - just the label like "Today")
+  const showPresetLabel = shouldHideDateOnSelection && selectedPresetLabel;
+
+  // Compute input props based on whether we're showing a preset label or date input
+  const getInputDisplayProps = (): {
+    type: 'text' | 'number';
+    value: string;
+    leadingIcon: typeof CalendarIcon | undefined;
+    leading: React.ReactElement | undefined;
+    format: ReturnType<typeof getTextInputFormat> | undefined;
+    validationState: typeof textInputProps.validationState;
+    errorText: string | undefined;
+    onChange: typeof handleInputChange | undefined;
+    onBlur: typeof handleBlur | undefined;
+  } => {
+    if (showPresetLabel) {
+      // Preset label mode: show clean input with just the label
+      return {
+        type: 'text',
+        value: selectedPresetLabel,
+        leadingIcon: CalendarIcon,
+        leading: undefined,
+        format: undefined,
+        validationState: textInputProps.validationState,
+        errorText: textInputProps.errorText,
+        onChange: undefined,
+        onBlur: undefined,
+      };
+    }
+
+    // Date input mode: show formatted date with full editing capabilities
+    const dateDisplayValue = isRange
+      ? rangeFormattedValue(inputValue[0], inputValue[1])
+      : inputValue[0];
+    const dateInputFormat = isRange
+      ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
+      : getTextInputFormat(format, false);
+
+    return {
+      type: 'number',
+      value: dateDisplayValue,
+      leadingIcon: shouldShowCalendarIcon ? CalendarIcon : undefined,
+      leading: leadingDropdown,
+      format: dateInputFormat,
+      validationState: validationError ? 'error' : textInputProps.validationState,
+      errorText: textInputProps.errorText ?? validationError,
+      onChange: handleInputChange,
+      onBlur: handleBlur,
+    };
+  };
+
   return (
     <TextInput
       {...textInputProps}
       ref={ref}
-      type="number"
-      value={isRange ? rangeFormattedValue(inputValue[0], inputValue[1]) : inputValue[0]}
-      leadingIcon={shouldShowCalendarIcon ? CalendarIcon : undefined}
-      leading={leadingDropdown}
-      format={
-        isRange
-          ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
-          : getTextInputFormat(format, false)
-      }
-      validationState={validationError ? 'error' : textInputProps.validationState}
-      errorText={textInputProps.errorText ?? validationError}
-      onChange={handleInputChange}
-      onBlur={handleBlur}
+      {...getInputDisplayProps()}
       onClick={(e) => {
         if (textInputProps.isDisabled) {
           return;
@@ -251,6 +293,8 @@ const _DatePickerInput = (
     minDate,
     maxDate,
     effectiveSelectionType,
+    shouldHideDateOnSelection,
+    selectedPresetLabel,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -301,6 +345,8 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+          shouldHideDateOnSelection={shouldHideDateOnSelection}
+          selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
         />
@@ -377,6 +423,8 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+          shouldHideDateOnSelection={shouldHideDateOnSelection}
+          selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
         />

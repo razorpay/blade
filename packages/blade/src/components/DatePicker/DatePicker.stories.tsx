@@ -222,6 +222,92 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ..._arg
 
 DatePickerPresets.storyName = 'With Presets';
 
+export const DatePickerPresetsWithHideDateOnSelection: StoryFn<typeof DatePickerComponent> = ({
+  ..._args
+}) => {
+  const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([
+    dayjs().subtract(7, 'days').toDate(),
+    dayjs().toDate(),
+  ]);
+
+  return (
+    <Box>
+      <Text>
+        In Range DatePicker you can pass <Code size="medium">presets</Code> which will render a
+        quick selection panel inside DatePicker for easy to use range selections
+      </Text>
+      <Text marginTop="spacing.4">
+        presets accepts an array of objects with <Code>label</Code> and{' '}
+        <Code size="medium">value</Code> properties.
+      </Text>
+      <Text marginTop="spacing.2" marginBottom="spacing.5">
+        Example:
+        <Code size="medium">
+          {`
+            [ { label: 'Past 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date]} ]
+          `}
+        </Code>
+      </Text>
+
+      <DatePickerComponent
+        label={{ start: 'Select a date range' }}
+        selectionType="range"
+        allowSingleDateInRange={true}
+        value={selectedDates}
+        onChange={(date) => {
+          console.log(date);
+          setSelectedDates(date as DatesRangeValue);
+        }}
+        presets={[
+          {
+            label: 'Today',
+            value: (date) => [dayjs(date).startOf('day').toDate(), date],
+            // hideDateOnSelection: true means "Today" label shows in input instead of date
+            hideDateOnSelection: true,
+          },
+          {
+            label: 'Yesterday',
+            value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+            hideDateOnSelection: true,
+          },
+          {
+            label: 'Past 7 days',
+            value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+            hideDateOnSelection: true,
+          },
+          {
+            label: 'Past 15 days',
+            value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+            hideDateOnSelection: true,
+          },
+          {
+            label: 'Past month',
+            value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+            hideDateOnSelection: true,
+          },
+          {
+            label: 'Past year',
+            value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
+            hideDateOnSelection: true,
+          },
+          {
+            label: 'Past financial year',
+            value: (date) => {
+              const d = dayjs(date);
+              const year = d.month() >= 3 ? d.year() : d.year() - 1;
+
+              return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+            },
+            hideDateOnSelection: true,
+          },
+        ]}
+      />
+    </Box>
+  );
+};
+
+DatePickerPresetsWithHideDateOnSelection.storyName = 'With Presets with hideDateOnSelection';
+
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
@@ -472,9 +558,7 @@ export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
 
 FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
 
-export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
-  typeof FilterChipDatePicker
-> = () => {
+export const FilterChipDatePickerStoryWithPreset: StoryFn<typeof FilterChipDatePicker> = () => {
   return (
     <Box>
       <FilterChipDatePicker
@@ -495,8 +579,8 @@ export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
   );
 };
 
-FilterChipDatePickerStorySingleStoryWithPreset.storyName =
-  'FilterChipDatePicker (Single Selection) with Presets';
+FilterChipDatePickerStoryWithPreset.storyName =
+  'FilterChipDatePicker (Range Selection) with Presets';
 
 export const ControlledFilterChipDatePickerSingle: StoryFn<typeof FilterChipDatePicker> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
