@@ -8,6 +8,7 @@ import {
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
+import getIn from '~utils/lodashButBetter/get';
 import {
   getHighestColorInRange,
   isSequentialColor,
@@ -46,7 +47,6 @@ import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import getIn from '~utils/lodashButBetter/get';
 import { useControllableState } from '~utils/useControllable';
 
 /**
@@ -341,17 +341,17 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
       height={baseHeight || height}
       interval={interval}
       tick={(tickProps: {
-        x: number;
-        y: number;
+        x: string | number;
+        y: string | number;
         payload: { value: string; index: number };
-        width: number;
+        width?: string | number;
       }) => {
         // Calculate available width per tick from the total chart width
-        const tickWidth = tickProps.width / visibleTickCount;
+        const tickWidth = Number(tickProps.width ?? 0) / visibleTickCount;
         return (
           <CustomXAxisTick
-            x={tickProps.x}
-            y={tickProps.y}
+            x={Number(tickProps.x)}
+            y={Number(tickProps.y)}
             payload={tickProps.payload}
             secondaryLabelMap={secondaryLabelMap}
             theme={theme}
