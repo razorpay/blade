@@ -72,13 +72,6 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
      */
     value: (currentDate: Date) => [Date, Date];
     /**
-     * When true, hides this preset from the dropdown list when it is selected.
-     * Useful for "Custom" preset which should be hidden after selection.
-     * Also opens the full datepicker with calendar when this preset is clicked.
-     * @default false
-     */
-    hideLabelOnSelection?: boolean;
-    /**
      * When true, hides the date value in the input field and shows only the preset label.
      * Useful for presets like "Today", "Yesterday", "Last 7 days" where showing the label
      * is more meaningful than showing actual dates.
@@ -639,9 +632,9 @@ const DateRangeExample = () => {
 export default DateRangeExample;
 ```
 
-### Presets with hideDateOnSelection and hideLabelOnSelection
+### Presets with hideDateOnSelection
 
-This example demonstrates how to use the `hideDateOnSelection` and `hideLabelOnSelection` preset properties for a better user experience.
+This example demonstrates how to use the `hideDateOnSelection` preset properties for a better user experience.
 
 ```tsx
 import React, { useState } from 'react';
@@ -682,13 +675,7 @@ const PresetsAdvancedExample = () => {
       value: (today: Date): [Date, Date] => [dayjs(today).subtract(30, 'days').toDate(), today],
       // Show "Last 30 days" in input instead of date range
       hideDateOnSelection: true,
-    },
-    {
-      label: 'Custom',
-      value: (today: Date): [Date, Date] => [today, today],
-      // Hide "Custom" from dropdown after selection, opens full calendar
-      hideLabelOnSelection: true,
-    },
+    }
   ];
 
   return (
