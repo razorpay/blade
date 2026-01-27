@@ -25,7 +25,6 @@ const renderPresetDropdown = ({
               onClick={() => {
                 onSelection(preset.value);
                 // If this is a custom type preset (like "Custom"), open the calendar
-                // This allows user to manually select dates for such presets
                 if (isCustomType && onOpenCalendar) {
                   onOpenCalendar();
                 }
