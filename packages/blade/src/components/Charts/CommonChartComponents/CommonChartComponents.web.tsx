@@ -8,7 +8,6 @@ import {
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
 } from 'recharts';
-import getIn from '~utils/lodashButBetter/get';
 import {
   getHighestColorInRange,
   isSequentialColor,
@@ -43,6 +42,7 @@ import {
 } from './tokens';
 import { calculateTextWidth } from './utils';
 import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
+import getIn from '~utils/lodashButBetter/get';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
