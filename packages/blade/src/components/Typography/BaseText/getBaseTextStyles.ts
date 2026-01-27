@@ -1,6 +1,7 @@
 import type { CSSObject } from 'styled-components';
 import { makeTypographySize } from '~utils/makeTypographySize';
 import type { StyledBaseTextProps } from './types';
+import { DOTTED_UNDERLINE_STYLES } from './tokens';
 import getIn from '~utils/lodashButBetter/get';
 import { isReactNative } from '~utils';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
@@ -58,33 +59,22 @@ const getBaseTextStyles = ({
   }
 
   // Handle 'dotted' as a special case - it creates a dotted underline
-  // React Native doesn't support textDecorationStyle, so we fallback to 'underline' with a warning
+  // Both RN and Web use 'underline' when dotted, just different styling
   const isDotted = textDecorationLine === 'dotted';
-  let actualTextDecorationLine: typeof textDecorationLine | 'underline' = textDecorationLine;
-  let dottedStyles: CSSObject = {};
+  const actualTextDecorationLine = isDotted ? 'underline' : textDecorationLine;
 
-  if (isDotted) {
-    if (isReactNative()) {
-      // React Native doesn't support dotted text decoration, fallback to underline
-      logger({
-        message:
-          'textDecorationLine="dotted" is not supported on React Native. Falling back to "underline".',
-        moduleName: 'BaseText',
-        type: 'warn',
-      });
-      actualTextDecorationLine = 'underline';
-    } else {
-      // Web: apply dotted underline styles
-      actualTextDecorationLine = 'underline';
-      dottedStyles = {
-        textDecorationStyle: 'dotted',
-        textDecorationSkipInk: 'none',
-        textDecorationThickness: '10%',
-        textUnderlineOffset: '20%',
-        textUnderlinePosition: 'from-font',
-      };
-    }
+  // Warn on React Native since dotted styling isn't supported
+  if (isDotted && isReactNative()) {
+    logger({
+      message:
+        'textDecorationLine="dotted" is not supported on React Native. Falling back to "underline".',
+      moduleName: 'BaseText',
+      type: 'warn',
+    });
   }
+
+  // Apply dotted styles only on web
+  const dottedStyles = isDotted && !isReactNative() ? DOTTED_UNDERLINE_STYLES : {};
 
   return {
     color: textColor,
