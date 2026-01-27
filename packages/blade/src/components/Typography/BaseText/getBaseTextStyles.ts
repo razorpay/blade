@@ -1,9 +1,10 @@
 import type { CSSObject } from 'styled-components';
 import { makeTypographySize } from '~utils/makeTypographySize';
-import type { StyledBaseTextProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { isReactNative } from '~utils';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
+import { logger } from '~utils/logger';
+import type { StyledBaseTextProps } from './types';
 
 const getBaseTextStyles = ({
   color = 'surface.text.gray.normal',
@@ -57,17 +58,33 @@ const getBaseTextStyles = ({
   }
 
   // Handle 'dotted' as a special case - it creates a dotted underline
+  // React Native doesn't support textDecorationStyle, so we fallback to 'underline' with a warning
   const isDotted = textDecorationLine === 'dotted';
-  const actualTextDecorationLine = isDotted ? 'underline' : textDecorationLine;
-  const dottedStyles: CSSObject = isDotted
-    ? {
+  let actualTextDecorationLine: typeof textDecorationLine | 'underline' = textDecorationLine;
+  let dottedStyles: CSSObject = {};
+
+  if (isDotted) {
+    if (isReactNative()) {
+      // React Native doesn't support dotted text decoration, fallback to underline
+      logger({
+        message:
+          'textDecorationLine="dotted" is not supported on React Native. Falling back to "underline".',
+        moduleName: 'BaseText',
+        type: 'warn',
+      });
+      actualTextDecorationLine = 'underline';
+    } else {
+      // Web: apply dotted underline styles
+      actualTextDecorationLine = 'underline';
+      dottedStyles = {
         textDecorationStyle: 'dotted',
         textDecorationSkipInk: 'none',
         textDecorationThickness: '10%',
         textUnderlineOffset: '20%',
         textUnderlinePosition: 'from-font',
-      }
-    : {};
+      };
+    }
+  }
 
   return {
     color: textColor,
