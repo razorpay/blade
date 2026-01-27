@@ -341,8 +341,8 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
       height={baseHeight || height}
       interval={interval}
       tick={(tickProps: {
-        x: string | number;
-        y: string | number;
+        x: number;
+        y: number;
         payload: { value: string; index: number };
         width: number;
       }) => {
@@ -350,8 +350,8 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
         const tickWidth = tickProps.width / visibleTickCount;
         return (
           <CustomXAxisTick
-            x={Number(tickProps.x)}
-            y={Number(tickProps.y)}
+            x={tickProps.x}
+            y={tickProps.y}
             payload={tickProps.payload}
             secondaryLabelMap={secondaryLabelMap}
             theme={theme}
