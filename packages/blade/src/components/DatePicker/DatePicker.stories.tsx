@@ -222,7 +222,7 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ..._arg
 
 DatePickerPresets.storyName = 'With Presets';
 
-export const DatePickerPresetsWithHideDateOnSelection: StoryFn<typeof DatePickerComponent> = ({
+export const DatePickerPresetsWithDisplayFormatCompact: StoryFn<typeof DatePickerComponent> = ({
   ..._args
 }) => {
   const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([
@@ -299,7 +299,7 @@ export const DatePickerPresetsWithHideDateOnSelection: StoryFn<typeof DatePicker
   );
 };
 
-DatePickerPresetsWithHideDateOnSelection.storyName = 'With Presets with displayFormat compact';
+DatePickerPresetsWithDisplayFormatCompact.storyName = 'With Presets (displayFormat compact)';
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);

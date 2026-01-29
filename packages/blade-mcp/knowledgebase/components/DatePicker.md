@@ -71,13 +71,6 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
      * Function that returns a date range based on current date
      */
     value: (currentDate: Date) => [Date, Date];
-    /**
-     * When true, hides the date value in the input field and shows only the preset label.
-     * Useful for presets like "Today", "Yesterday", "Last 7 days" where showing the label
-     * is more meaningful than showing actual dates.
-     * @default false
-     */
-    hideDateOnSelection?: boolean;
   }>;
 
   /**
@@ -131,6 +124,15 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
    * Can be used to add custom content like informational text, links, or other components
    */
   footer?: React.ReactElement;
+
+  /**
+   * Controls how the selected date is displayed in the input field.
+   * - `compact`: Shows only the preset label (e.g., "Last 7 days") instead of the actual dates.
+   *   Useful for presets where showing the label is more meaningful than showing actual dates.
+   * - `default`: Shows the actual date values in the input field.
+   * @default 'default'
+   */
+  displayFormat?: 'compact' | 'default';
 
   /**
    * Sets the date format to be displayed in the input field
@@ -632,28 +634,26 @@ const DateRangeExample = () => {
 export default DateRangeExample;
 ```
 
-### Presets with hideDateOnSelection
+### Presets with Compact Display Format
 
-This example demonstrates how to use the `hideDateOnSelection` preset properties for a better user experience.
+This example demonstrates how to use the `displayFormat="compact"` prop to show preset labels instead of actual dates in the input field.
 
 ```tsx
 import React, { useState } from 'react';
 import { DatePicker, Box, Text } from '@razorpay/blade/components';
 import dayjs from 'dayjs';
 
-const PresetsAdvancedExample = () => {
+const PresetsCompactDisplayExample = () => {
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
     dayjs().subtract(7, 'days').toDate(),
     new Date(),
   ]);
 
-  // Define presets with advanced options
+  // Define presets
   const datePresets = [
     {
       label: 'Today',
       value: (today: Date): [Date, Date] => [today, today],
-      // Show "Today" in input instead of the actual date
-      hideDateOnSelection: true,
     },
     {
       label: 'Yesterday',
@@ -661,20 +661,14 @@ const PresetsAdvancedExample = () => {
         const yesterday = dayjs(today).subtract(1, 'day').toDate();
         return [yesterday, yesterday];
       },
-      // Show "Yesterday" in input instead of the actual date
-      hideDateOnSelection: true,
     },
     {
       label: 'Last 7 days',
       value: (today: Date): [Date, Date] => [dayjs(today).subtract(7, 'days').toDate(), today],
-      // Show "Last 7 days" in input instead of date range
-      hideDateOnSelection: true,
     },
     {
       label: 'Last 30 days',
       value: (today: Date): [Date, Date] => [dayjs(today).subtract(30, 'days').toDate(), today],
-      // Show "Last 30 days" in input instead of date range
-      hideDateOnSelection: true,
     }
   ];
 
@@ -682,7 +676,7 @@ const PresetsAdvancedExample = () => {
     <Box display="flex" flexDirection="column" gap="spacing.8">
       <Box>
         <Text weight="semibold" marginBottom="spacing.3">
-          Presets with Label Display Options
+          Presets with Compact Display Format
         </Text>
         <DatePicker
           selectionType="range"
@@ -690,12 +684,13 @@ const PresetsAdvancedExample = () => {
           value={dateRange}
           onChange={setDateRange}
           presets={datePresets}
+          displayFormat="compact"
           helpText={{ start: 'Select a preset or choose custom dates' }}
           size="medium"
         />
 
         <Text size="small" marginTop="spacing.3">
-          {/* When hideDateOnSelection is true, input shows preset label instead of dates */}
+          {/* With displayFormat="compact", input shows preset label (e.g., "Last 7 days") instead of dates */}
           Selected: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} -{' '}
           {dateRange[1] ? dayjs(dateRange[1]).format('DD MMM YYYY') : 'None'}
         </Text>
@@ -704,7 +699,7 @@ const PresetsAdvancedExample = () => {
   );
 };
 
-export default PresetsAdvancedExample;
+export default PresetsCompactDisplayExample;
 ```
 
 ### FilterChipDatePicker
