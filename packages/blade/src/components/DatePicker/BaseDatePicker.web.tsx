@@ -572,6 +572,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                     context={context}
                     guards={true}
                     order={['reference', 'content']}
+                    // Don't return focus to input when displayFormat is compact and a preset is selected
+                    // This prevents the input from switching from preset label to date display
+                    returnFocus={!shouldHideDateOnSelection}
                   >
                     <BaseBox
                       ref={refs.setFloating}
