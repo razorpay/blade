@@ -58,6 +58,14 @@ interface ChartLineProps {
    */
   _totalLines?: number;
   /**
+   * The callback function to be called when the mouse enters the line chart.
+   */
+  onMouseEnter?: RechartsLineProps['onMouseEnter'];
+  /**
+   * The callback function to be called when the mouse leaves the line chart.
+   */
+  onMouseLeave?: RechartsLineProps['onMouseLeave'];
+  /**
    * Whether to hide this line (controlled by legend click)
    */
   hide?: boolean;
