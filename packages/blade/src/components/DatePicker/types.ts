@@ -25,14 +25,6 @@ type Preset = {
    * [dayjs().subtract(7, 'day'), dayjs()]
    */
   value: (date: Date) => DatesRangeValue;
-  /**
-   * When true, hides the date value in the input field and shows only the preset label.
-   * Useful for presets like "Today", "Yesterday", "Last 7 days" where showing the label
-   * is more meaningful than showing actual dates.
-   *
-   * @default false
-   */
-  hideDateOnSelection?: boolean;
 };
 
 type DateSelectionType = 'single' | 'range';
@@ -145,6 +137,16 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * Can be used to add custom content like informational text, links, or other components
    */
   footer?: React.ReactElement;
+  /**
+   * Controls how the selected date is displayed in the input field.
+   *
+   * - `compact`: Shows only the preset label (e.g., "Last 7 days") instead of the actual dates.
+   *   Useful for presets where showing the label is more meaningful than showing actual dates.
+   * - `default`: Shows the actual date values in the input field.
+   *
+   * @default 'default'
+   */
+  displayFormat?: 'compact' | 'default';
 };
 
 type DatePickerProps<Type extends DateSelectionType> = Omit<

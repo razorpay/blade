@@ -46,6 +46,7 @@ const _DateInput = (
   } = props;
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
+  const [isFocused, setIsFocused] = React.useState(false);
   const shouldShowCalendarIcon = !Boolean(leadingDropdown);
 
   // Determine selection type: prefer preset context calculation over props
@@ -167,11 +168,26 @@ const _DateInput = (
     [applyDateValue, isRange],
   );
 
-  // When shouldHideDateOnSelection is true, show the preset label in a clean input
-  // with calendar icon (no dropdown, no date format - just the label like "Today")
-  const showPresetLabel = shouldHideDateOnSelection && selectedPresetLabel;
+  // When shouldHideDateOnSelection is true and input is NOT focused, show the preset label
+  // When focused, show the actual date value so user can manually edit it
+  const showPresetLabel = shouldHideDateOnSelection && selectedPresetLabel && !isFocused;
+
+  const handleFocus = React.useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleBlurWithFocusState = React.useCallback(
+    (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
+      setIsFocused(false);
+      handleBlur(params);
+    },
+    [handleBlur],
+  );
 
   // Compute input props based on whether we're showing a preset label or date input
+  // When focused with shouldHideDateOnSelection, show only date with calendar icon (no dropdown)
+  const isFocusedWithPresetMode = isFocused && shouldHideDateOnSelection && selectedPresetLabel;
+
   const getInputDisplayProps = (): {
     type: 'text' | 'number';
     value: string;
@@ -181,10 +197,11 @@ const _DateInput = (
     validationState: typeof textInputProps.validationState;
     errorText: string | undefined;
     onChange: typeof handleInputChange | undefined;
-    onBlur: typeof handleBlur | undefined;
+    onBlur: typeof handleBlurWithFocusState | typeof handleBlur | undefined;
+    onFocus: typeof handleFocus | undefined;
   } => {
     if (showPresetLabel) {
-      // Preset label mode: show clean input with just the label
+      // Preset label mode: show clean input with just the label (not focused)
       return {
         type: 'text',
         value: selectedPresetLabel,
@@ -193,8 +210,9 @@ const _DateInput = (
         format: undefined,
         validationState: textInputProps.validationState,
         errorText: textInputProps.errorText,
-        onChange: undefined,
-        onBlur: undefined,
+        onChange: handleInputChange,
+        onBlur: handleBlurWithFocusState,
+        onFocus: handleFocus,
       };
     }
 
@@ -206,16 +224,22 @@ const _DateInput = (
       ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
       : getTextInputFormat(format, false);
 
+    // When focused in preset mode, hide the dropdown and show only calendar icon
+    const showLeadingDropdown = isFocusedWithPresetMode ? undefined : leadingDropdown;
+    const showLeadingIcon =
+      isFocusedWithPresetMode || shouldShowCalendarIcon ? CalendarIcon : undefined;
+
     return {
       type: 'number',
       value: dateDisplayValue,
-      leadingIcon: shouldShowCalendarIcon ? CalendarIcon : undefined,
-      leading: leadingDropdown,
+      leadingIcon: showLeadingIcon,
+      leading: showLeadingDropdown,
       format: dateInputFormat,
       validationState: validationError ? 'error' : textInputProps.validationState,
       errorText: textInputProps.errorText ?? validationError,
       onChange: handleInputChange,
-      onBlur: handleBlur,
+      onBlur: handleBlurWithFocusState,
+      onFocus: handleFocus,
     };
   };
 

@@ -87,6 +87,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   labelTrailing,
   showFooterActions = true,
   footer,
+  displayFormat = 'default',
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -193,6 +194,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     presets: presets || [],
     selectedPreset,
     currentDate,
+    displayFormat,
   });
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();

@@ -258,37 +258,31 @@ export const DatePickerPresetsWithHideDateOnSelection: StoryFn<typeof DatePicker
           console.log(date);
           setSelectedDates(date as DatesRangeValue);
         }}
+        displayFormat="compact"
         presets={[
           {
             label: 'Today',
             value: (date) => [dayjs(date).startOf('day').toDate(), date],
-            // hideDateOnSelection: true means "Today" label shows in input instead of date
-            hideDateOnSelection: true,
           },
           {
             label: 'Yesterday',
             value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
-            hideDateOnSelection: true,
           },
           {
             label: 'Past 7 days',
             value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
-            hideDateOnSelection: true,
           },
           {
             label: 'Past 15 days',
             value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
-            hideDateOnSelection: true,
           },
           {
             label: 'Past month',
             value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
-            hideDateOnSelection: true,
           },
           {
             label: 'Past year',
             value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
-            hideDateOnSelection: true,
           },
           {
             label: 'Past financial year',
@@ -298,7 +292,6 @@ export const DatePickerPresetsWithHideDateOnSelection: StoryFn<typeof DatePicker
 
               return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
             },
-            hideDateOnSelection: true,
           },
         ]}
       />
@@ -306,7 +299,7 @@ export const DatePickerPresetsWithHideDateOnSelection: StoryFn<typeof DatePicker
   );
 };
 
-DatePickerPresetsWithHideDateOnSelection.storyName = 'With Presets with hideDateOnSelection';
+DatePickerPresetsWithHideDateOnSelection.storyName = 'With Presets with displayFormat compact';
 
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);

@@ -42,6 +42,12 @@ type UsePresetStateProps = {
   presets: presets;
   selectedPreset: selectedPreset;
   currentDate: Date;
+  /**
+   * Controls how the selected date is displayed in the input field.
+   * - `compact`: Shows only the preset label instead of the actual dates.
+   * - `default`: Shows the actual date values in the input field.
+   */
+  displayFormat?: 'compact' | 'default';
 };
 
 type UsePresetStateReturn = {

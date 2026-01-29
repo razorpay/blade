@@ -7,6 +7,7 @@ export const usePresetState = ({
   presets,
   selectedPreset,
   currentDate,
+  displayFormat = 'default',
 }: UsePresetStateProps): UsePresetStateReturn => {
   return useMemo(() => {
     // No presets provided → return empty state
@@ -92,11 +93,9 @@ export const usePresetState = ({
       }
     }
 
-    // Based on the selected preset's hideDateOnSelection flag
-    // This applies to presets like "Today", "Yesterday", etc.
-    const shouldHideDateOnSelection =
-      selectedPresetIndex !== -1 &&
-      Boolean(presetStates[selectedPresetIndex].preset.hideDateOnSelection);
+    // Based on the displayFormat prop
+    // When displayFormat is 'compact', show only the preset label instead of dates
+    const shouldHideDateOnSelection = selectedPresetIndex !== -1 && displayFormat === 'compact';
 
     // Return final calculated state - this gets shared with all components
     return {
@@ -107,5 +106,5 @@ export const usePresetState = ({
       effectiveSelectionType, // 'single' | 'range' based on preset analysis
       shouldHideDateOnSelection, // Boolean: true if date should be hidden, showing label only
     };
-  }, [presets, selectedPreset, currentDate]); // Recalculate when any of these change
+  }, [presets, selectedPreset, currentDate, displayFormat]); // Recalculate when any of these change
 };
