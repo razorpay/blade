@@ -51,10 +51,6 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
     showLegend = true,
     hide,
     _index = 0,
-    isAnimationActive,
-    onAnimationStart,
-    onAnimationEnd,
-
     ...rest
   }) => {
     const { theme } = useTheme();
@@ -103,14 +99,12 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
         name={name}
         key={`${dataKey}-${_index}-${name}`}
         hide={hide}
-        isAnimationActive={isAnimationActive ?? shouldAnimatedBar.current}
+        isAnimationActive={shouldAnimatedBar.current}
         onAnimationStart={() => {
           shouldAnimatedBar.current = true;
-          onAnimationStart?.();
         }}
         onAnimationEnd={() => {
           shouldAnimatedBar.current = false;
-          onAnimationEnd?.();
         }}
         shape={(props: unknown) => {
           const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
