@@ -45,7 +45,6 @@ type ChartBarProps = {
    * @private
    */
   _index?: number;
-
   /**
    * @private
    */

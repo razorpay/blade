@@ -625,59 +625,6 @@ BarChartWithLargeLabels.parameters = {
   controls: { disable: true },
 };
 
-// Simple bar chart data for label example
-const labelChartData = [
-  { month: 'Jan', revenue: 4200 },
-  { month: 'Feb', revenue: 3800 },
-  { month: 'Mar', revenue: 5100 },
-  { month: 'Apr', revenue: 4600 },
-  { month: 'May', revenue: 5800 },
-  { month: 'Jun', revenue: 6200 },
-];
-
-export const BarChartWithLabels: StoryFn<typeof ChartBar> = () => {
-  // Memoized label content renderer - useCallback ensures stable function reference
-  const renderBarLabel = React.useCallback((props: ChartLabelContentProps): React.ReactElement => {
-    const { value } = props;
-    const numX = Number(props.x) || 0;
-    const numY = Number(props.y) || 0;
-    const numWidth = Number(props.width) || 0;
-    const numValue = typeof value === 'number' ? value : 0;
-    return (
-      <text x={numX + numWidth / 2} y={numY - 10} fill="#768EA7" fontSize={12} textAnchor="middle">
-        ${numValue >= 1000 ? `${(numValue / 1000).toFixed(1)}K` : numValue}
-      </text>
-    );
-  }, []);
-
-  return (
-    <ChartsWrapper>
-      <Box width="100%" height="400px">
-        <ChartBarWrapper data={labelChartData}>
-          <ChartXAxis dataKey="month" />
-          <ChartYAxis />
-          <ChartTooltip />
-          <ChartLegend />
-          <ChartBar
-            dataKey="revenue"
-            name="Revenue"
-            color="data.background.categorical.blue.moderate"
-            label={{
-              position: 'top',
-              content: renderBarLabel,
-            }}
-          />
-        </ChartBarWrapper>
-      </Box>
-    </ChartsWrapper>
-  );
-};
-
-BarChartWithLabels.storyName = 'Bar Chart with Labels and no animation';
-BarChartWithLabels.parameters = {
-  controls: { disable: true },
-};
-
 DefaultChart.storyName = 'Default Bar Chart';
 TinyBarChart.storyName = 'Tiny Bar Chart';
 SimpleBarChart.storyName = 'Simple Bar Chart';
