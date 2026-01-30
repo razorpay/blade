@@ -243,11 +243,13 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     maxDate?: Date;
     effectiveSelectionType?: 'single' | 'range' | null;
     /**
-     * When true, shows only the preset label in the input field instead of the date.
+     * Controls how the selected date is displayed in the input field.
+     * - `compact`: Shows only the preset label instead of the actual dates.
+     * - `default`: Shows the actual date values in the input field.
      */
-    shouldHideDateOnSelection?: boolean;
+    displayFormat?: 'compact' | 'default';
     /**
-     * The label of the currently selected preset to display when shouldHideDateOnSelection is true.
+     * The label of the currently selected preset to display when displayFormat is 'compact'.
      */
     selectedPresetLabel?: string | null;
   };
@@ -277,11 +279,13 @@ type DateInputProps = BaseInputProps & {
   maxDate?: Date;
   effectiveSelectionType?: 'single' | 'range' | null;
   /**
-   * When true, shows only the preset label in the input field instead of the date.
+   * Controls how the selected date is displayed in the input field.
+   * - `compact`: Shows only the preset label instead of the actual dates.
+   * - `default`: Shows the actual date values in the input field.
    */
-  shouldHideDateOnSelection?: boolean;
+  displayFormat?: 'compact' | 'default';
   /**
-   * The label of the currently selected preset to display when shouldHideDateOnSelection is true.
+   * The label of the currently selected preset to display when displayFormat is 'compact'.
    */
   selectedPresetLabel?: string | null;
 };

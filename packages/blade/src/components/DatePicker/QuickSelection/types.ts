@@ -56,7 +56,7 @@ type UsePresetStateReturn = {
   selectedPresetLabel: string | null;
   isCustomSelected: boolean;
   effectiveSelectionType: 'single' | 'range' | null;
-  shouldHideDateOnSelection: boolean;
+  displayFormat: 'compact' | 'default';
 };
 
 export type {

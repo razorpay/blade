@@ -189,7 +189,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     presetStates,
     selectedPresetLabel,
     effectiveSelectionType,
-    shouldHideDateOnSelection,
+    displayFormat: effectiveDisplayFormat,
   } = usePresetState({
     presets: presets || [],
     selectedPreset,
@@ -511,7 +511,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 // Effective Selection type should only be use for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
                 // Pass through preset state for showing label instead of date
-                shouldHideDateOnSelection={shouldHideDateOnSelection}
+                displayFormat={effectiveDisplayFormat}
                 selectedPresetLabel={selectedPresetLabel}
                 leadingDropdown={
                   presets && !isSingle
@@ -577,7 +577,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                     order={['reference', 'content']}
                     // Don't return focus to input when displayFormat is compact and a preset is selected
                     // This prevents the input from switching from preset label to date display
-                    returnFocus={!shouldHideDateOnSelection}
+                    returnFocus={effectiveDisplayFormat !== 'compact'}
                   >
                     <BaseBox
                       ref={refs.setFloating}

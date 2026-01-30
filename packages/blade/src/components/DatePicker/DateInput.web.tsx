@@ -41,7 +41,7 @@ const _DateInput = (
     leadingDropdown,
     tags,
     id,
-    shouldHideDateOnSelection,
+    displayFormat,
     selectedPresetLabel,
     ...textInputProps
   } = props;
@@ -194,7 +194,7 @@ const _DateInput = (
 
   // Show preset label only when datepicker is NOT active (closed and not focused)
   // When datepicker is open, always show the actual date in DD-MM-YY format
-  const showPresetLabel = shouldHideDateOnSelection && selectedPresetLabel && !isDatePickerActive;
+  const showPresetLabel = displayFormat === 'compact' && selectedPresetLabel && !isDatePickerActive;
 
   const getInputDisplayProps = (): {
     type: 'text' | 'number';
@@ -325,7 +325,7 @@ const _DatePickerInput = (
     minDate,
     maxDate,
     effectiveSelectionType,
-    shouldHideDateOnSelection,
+    displayFormat,
     selectedPresetLabel,
     ...props
   }: DatePickerInputProps,
@@ -377,7 +377,7 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
-          shouldHideDateOnSelection={shouldHideDateOnSelection}
+          displayFormat={displayFormat}
           selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
@@ -455,7 +455,7 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
-          shouldHideDateOnSelection={shouldHideDateOnSelection}
+          displayFormat={displayFormat}
           selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
