@@ -24,7 +24,7 @@ const renderPresetDropdown = ({
               isSelected={isSelected}
               onClick={() => {
                 onSelection(preset.value);
-                // If this is a custom type preset (like "Custom"), open the calendar
+                // If this is a custom preset selection, also trigger calendar opening
                 if (isCustomType && onOpenCalendar) {
                   onOpenCalendar();
                 }
