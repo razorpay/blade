@@ -42,11 +42,11 @@ import {
 } from './tokens';
 import { calculateTextWidth } from './utils';
 import { useCommonChartComponentsContext } from './CommonChartComponentsContext';
-import getIn from '~utils/lodashButBetter/get';
 import { Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import getIn from '~utils/lodashButBetter/get';
 import { useControllableState } from '~utils/useControllable';
 
 /**
