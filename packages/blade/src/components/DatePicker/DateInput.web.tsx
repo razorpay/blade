@@ -13,6 +13,7 @@ import {
   validateAndParseDateInput,
   stripDelimiters,
 } from './utils';
+import { useDatePickerContext } from './DatePickerContext';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { isReactNative } from '~utils';
@@ -44,6 +45,12 @@ const _DateInput = (
     selectedPresetLabel,
     ...textInputProps
   } = props;
+
+  // Use context to check datepicker state - more reliable than prop drilling
+  const datePickerContext = useDatePickerContext();
+  const isPopupOpen = datePickerContext?.isDatePickerBodyOpen ?? false;
+  const isCompactMode = datePickerContext?.isCompactMode ?? false;
+
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
   const [isFocused, setIsFocused] = React.useState(false);
@@ -168,10 +175,6 @@ const _DateInput = (
     [applyDateValue, isRange],
   );
 
-  // When shouldHideDateOnSelection is true and input is NOT focused, show the preset label
-  // When focused, show the actual date value so user can manually edit it
-  const showPresetLabel = shouldHideDateOnSelection && selectedPresetLabel && !isFocused;
-
   const handleFocus = React.useCallback(() => {
     setIsFocused(true);
   }, []);
@@ -185,8 +188,13 @@ const _DateInput = (
   );
 
   // Compute input props based on whether we're showing a preset label or date input
-  // When focused with shouldHideDateOnSelection, show only date with calendar icon (no dropdown)
-  const isFocusedWithPresetMode = isFocused && shouldHideDateOnSelection && selectedPresetLabel;
+  // DatePicker is "active" when input is focused OR popup is open (from context)
+  // This ensures consistent behavior when focus moves between input and calendar
+  const isDatePickerActive = isFocused || isPopupOpen;
+
+  // Show preset label only when datepicker is NOT active (closed and not focused)
+  // When datepicker is open, always show the actual date in DD-MM-YY format
+  const showPresetLabel = shouldHideDateOnSelection && selectedPresetLabel && !isDatePickerActive;
 
   const getInputDisplayProps = (): {
     type: 'text' | 'number';
@@ -224,10 +232,10 @@ const _DateInput = (
       ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
       : getTextInputFormat(format, false);
 
-    // When focused in preset mode, hide the dropdown and show only calendar icon
-    const showLeadingDropdown = isFocusedWithPresetMode ? undefined : leadingDropdown;
-    const showLeadingIcon =
-      isFocusedWithPresetMode || shouldShowCalendarIcon ? CalendarIcon : undefined;
+    // In compact mode: always show icon instead of dropdown (presets accessed via popup sidebar)
+    // In non-compact mode: show the dropdown as normal
+    const showLeadingDropdown = isCompactMode ? undefined : leadingDropdown;
+    const showLeadingIcon = isCompactMode || shouldShowCalendarIcon ? CalendarIcon : undefined;
 
     return {
       type: 'number',
