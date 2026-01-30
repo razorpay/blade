@@ -12,7 +12,9 @@ LineChart is a data visualization component built on top of Recharts with Blade 
 - `dataKey` prop is required for `ChartLine` component and must match a key in the data array
 - `data` prop is required for `ChartLineWrapper` and must be an array of objects
 - `color` prop only accepts chart categorical color tokens in the format `data.background.categorical.{colorName}.{emphasis}`
-- Currently only supports `colorTheme="default"` - other color themes will fallback to default
+- Currently only supports `colorTheme="categorical"` - other color themes will fallback to categorical
+- When hovering over a line, other lines will fade to 20% opacity to highlight the hovered line
+- Lines have an invisible 15px hover target area for better mouse interaction UX
 
 ## TypeScript Types
 
@@ -22,55 +24,60 @@ The following types represent the props that the LineChart component and its sub
 interface ChartLineProps {
   /**
    * The type of the line.
-   *  @default : 'linear'
+   * @default 'monotone'
    */
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   /**
    * The dot of the line.
+   * @default false
    */
   dot?: RechartsLineProps['dot'];
   /**
-   * The active dot we shows at line chart
+   * The active dot shown on the line chart when hovered.
+   * @default true
    */
   activeDot?: RechartsLineProps['activeDot'];
   /**
-   * If we don't have data for some points should we connect the line or should skip it.
+   * If we don't have data for some points, should we connect the line or skip it.
    */
   connectNulls?: boolean;
   /**
    * Include this particular line in legend.
-   *  @default : true
+   * @default true
    */
   showLegend?: boolean;
   /**
-   *  The data key of the x-axis
+   * The data key corresponding to a property in the data array.
    */
   dataKey: string;
   /**
    * Name of the line in line chart.
-   * if no provided, we will use the data key as the name.
+   * If not provided, the dataKey will be used as the name.
    */
   name?: string;
   /**
    * Color of the line in line chart.
-   * if no provided, we will pick colors from the default theme colors.
+   * If not provided, colors will be picked from the default theme colors.
    */
   color?: ChartsCategoricalColorToken;
   /**
    * Style of the line in line chart.
-   * @default: solid
+   * @default 'solid'
    */
   strokeStyle?: 'dotted' | 'dashed' | 'solid';
   /**
-   * Whether to hide this line (controlled by legend click).
+   * Whether to hide this line. When true, the line will not be rendered.
+   * This is typically controlled internally by legend click interactions.
    */
   hide?: boolean;
   /**
-   * The callback function to be called when the mouse enters the line.
+   * Callback function called when the mouse enters the line.
+   * Useful for custom hover interactions.
    */
   onMouseEnter?: (props: RechartsLineProps, event: React.MouseEvent) => void;
   /**
-   * The callback function to be called when the mouse leaves the line.
+   * Callback function called when the mouse leaves the line.
+   * Useful for custom hover interactions.
    */
   onMouseLeave?: (props: RechartsLineProps, event: React.MouseEvent) => void;
 }

@@ -229,7 +229,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         return cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
-          _totaLine: totalLines,
+          _totalLines: totalLines,
           hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartLineProps>);
       }

@@ -662,7 +662,6 @@ export const BarChartWithLabels: StoryFn<typeof ChartBar> = () => {
             dataKey="revenue"
             name="Revenue"
             color="data.background.categorical.blue.moderate"
-            isAnimationActive={false}
             label={{
               position: 'top',
               content: renderBarLabel,
