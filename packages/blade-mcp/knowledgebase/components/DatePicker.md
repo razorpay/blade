@@ -636,7 +636,13 @@ export default DateRangeExample;
 
 ### Presets with Compact Display Format
 
-This example demonstrates how to use the `displayFormat="compact"` prop to show preset labels instead of actual dates in the input field.
+The `displayFormat="compact"` prop changes how the DatePicker input displays selected values when using presets:
+
+- **When closed (not focused):** If a preset is selected, the input shows the preset label (e.g., "Last 7 days") instead of the actual date range
+- **When focused or picker is open:** The input switches to show the actual date values in DD-MM-YY format, allowing users to see and edit the dates
+- **Custom date selection:** When the user selects custom dates that don't match any preset, the input always shows the date values regardless of focus state
+
+This is useful when the preset label provides more context than showing raw dates (e.g., "Last quarter" is more meaningful than "01-10-2024 - 31-12-2024").
 
 ```tsx
 import React, { useState } from 'react';
