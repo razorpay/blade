@@ -11,7 +11,6 @@ import {
   Line as RechartsLine,
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
-import type { Props as RechartsLineProps } from 'recharts/types/shape/Curve';
 import { animate } from 'framer-motion';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
@@ -45,8 +44,6 @@ const Line: React.FC<ChartLineProps> = ({
   _totalLines,
   hide,
   dataKey,
-  onMouseEnter,
-  onMouseLeave,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -93,21 +90,13 @@ const Line: React.FC<ChartLineProps> = ({
     [hide, setHoveredDataKey],
   );
 
-  const handleMouseEnter = useCallback(
-    (props: RechartsLineProps, event: React.MouseEvent<SVGPathElement, MouseEvent>) => {
-      updateHoveredDataKey(dataKey as string);
-      onMouseEnter?.(props, event);
-    },
-    [dataKey, onMouseEnter, updateHoveredDataKey],
-  );
+  const handleMouseEnter = useCallback(() => {
+    updateHoveredDataKey(dataKey as string);
+  }, [dataKey, updateHoveredDataKey]);
 
-  const handleMouseLeave = useCallback(
-    (props: RechartsLineProps, event: React.MouseEvent<SVGPathElement, MouseEvent>) => {
-      updateHoveredDataKey(null);
-      onMouseLeave?.(props, event);
-    },
-    [onMouseLeave, updateHoveredDataKey],
-  );
+  const handleMouseLeave = useCallback(() => {
+    updateHoveredDataKey(null);
+  }, [updateHoveredDataKey]);
 
   // activeDot config with hover handlers
   const activeDotConfig = useMemo(

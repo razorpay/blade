@@ -70,16 +70,6 @@ interface ChartLineProps {
    * This is typically controlled internally by legend click interactions.
    */
   hide?: boolean;
-  /**
-   * Callback function called when the mouse enters the line.
-   * Useful for custom hover interactions.
-   */
-  onMouseEnter?: (props: RechartsLineProps, event: React.MouseEvent) => void;
-  /**
-   * Callback function called when the mouse leaves the line.
-   * Useful for custom hover interactions.
-   */
-  onMouseLeave?: (props: RechartsLineProps, event: React.MouseEvent) => void;
 }
 
 type data = {
