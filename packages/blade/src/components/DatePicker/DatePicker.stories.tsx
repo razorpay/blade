@@ -232,21 +232,10 @@ export const DatePickerPresetsWithDisplayFormatCompact: StoryFn<typeof DatePicke
 
   return (
     <Box>
-      <Text>
-        In Range DatePicker you can pass <Code size="medium">presets</Code> which will render a
-        quick selection panel inside DatePicker for easy to use range selections
-      </Text>
-      <Text marginTop="spacing.4">
-        presets accepts an array of objects with <Code>label</Code> and{' '}
-        <Code size="medium">value</Code> properties.
-      </Text>
-      <Text marginTop="spacing.2" marginBottom="spacing.5">
-        Example:
-        <Code size="medium">
-          {`
-            [ { label: 'Past 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date]} ]
-          `}
-        </Code>
+      <Text marginBottom="spacing.5">
+        When using <Code size="medium">{'displayFormat="compact"'}</Code> with presets, the
+        DatePicker displays a single input field showing the selected preset label or date range in
+        a compact format.
       </Text>
 
       <DatePickerComponent
