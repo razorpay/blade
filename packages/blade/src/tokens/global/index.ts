@@ -1,5 +1,7 @@
 export type { Border } from './border';
 export { border } from './border';
+export type { BackgroundBlur } from './blur';
+export { backgroundBlur } from './blur';
 export type { Breakpoints } from './breakpoints';
 export { breakpoints } from './breakpoints';
 export type { Color } from './colors';

@@ -1,6 +1,7 @@
 import type { StringWithAutocomplete } from '~utils/types';
 import type {
   Border,
+  BackgroundBlur,
   Breakpoints,
   Motion,
   Spacing,
@@ -31,7 +32,7 @@ export type DataCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'in
 };
 export type DataSequentialEmphasis = Omit<
   ColorChromaticScale,
-  'a50' | 'a150' | 'a100' | 'a200' | 'a400'
+  'a50' | 'a150' | 'a100' | 'a200' | 'a400' | 'a500' | 'a600' | 'a700'
 >;
 
 export type DataColorCategories =
@@ -74,7 +75,7 @@ type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onS
 export type Colors = {
   interactive: {
     background: Record<InteractiveColorKeys, InteractiveStates & { fadedHighlighted: string }>;
-    border: Record<InteractiveColorKeys, InteractiveStates>;
+    border: Record<InteractiveColorKeys, InteractiveStates & { fadedHighlighted: string }>;
     text: Record<
       InteractiveColorKeys | 'onPrimary',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
@@ -108,8 +109,12 @@ export type Colors = {
     background: Pick<Emphasis, 'moderate' | 'subtle'>;
   };
   popup: {
-    background: SubtleOrIntenseEmphasis;
-    border: SubtleOrIntenseEmphasis;
+    background: Record<FeedbackColors, Pick<Emphasis, 'moderate'>> & {
+      gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
+    };
+    border: Record<FeedbackColors, Pick<Emphasis, 'moderate'>> & {
+      gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
+    };
   };
   transparent: string;
   data: {
@@ -125,6 +130,7 @@ export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
 export type ThemeTokens = {
   name: 'bladeTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
   border: Border;
+  backgroundBlur: BackgroundBlur;
   breakpoints: Breakpoints;
   colors: ColorsWithModes;
   motion: Motion;
