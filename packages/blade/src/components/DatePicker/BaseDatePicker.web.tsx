@@ -447,7 +447,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       <DatesProvider settings={dateProviderValue}>
         <DatePickerProvider
           isDatePickerBodyOpen={controllableIsOpen}
-          isCompactMode={displayFormat === 'compact'}
+          displayFormat={effectiveDisplayFormat}
         >
           <BaseBox
             width={inputElementType === 'chip' ? 'fit-content' : '100%'}
@@ -511,7 +511,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 // Effective Selection type should only be use for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
                 // Pass through preset state for showing label instead of date
-                displayFormat={effectiveDisplayFormat}
                 selectedPresetLabel={selectedPresetLabel}
                 leadingDropdown={
                   presets && !isSingle

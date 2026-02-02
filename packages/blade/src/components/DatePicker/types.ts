@@ -243,12 +243,6 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     maxDate?: Date;
     effectiveSelectionType?: 'single' | 'range' | null;
     /**
-     * Controls how the selected date is displayed in the input field.
-     * - `compact`: Shows only the preset label instead of the actual dates.
-     * - `default`: Shows the actual date values in the input field.
-     */
-    displayFormat?: 'compact' | 'default';
-    /**
      * The label of the currently selected preset to display when displayFormat is 'compact'.
      */
     selectedPresetLabel?: string | null;
@@ -281,12 +275,6 @@ type DateInputProps = BaseInputProps & {
   minDate?: Date;
   maxDate?: Date;
   effectiveSelectionType?: 'single' | 'range' | null;
-  /**
-   * Controls how the selected date is displayed in the input field.
-   * - `compact`: Shows only the preset label instead of the actual dates.
-   * - `default`: Shows the actual date values in the input field.
-   */
-  displayFormat?: 'compact' | 'default';
   /**
    * The label of the currently selected preset to display when displayFormat is 'compact'.
    */

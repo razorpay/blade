@@ -41,7 +41,6 @@ const _DateInput = (
     leadingDropdown,
     tags,
     id,
-    displayFormat,
     selectedPresetLabel,
     ...textInputProps
   } = props;
@@ -49,7 +48,8 @@ const _DateInput = (
   // Use context to check datepicker state - more reliable than prop drilling
   const datePickerContext = useDatePickerContext();
   const isPopupOpen = datePickerContext?.isDatePickerBodyOpen ?? false;
-  const isCompactMode = datePickerContext?.isCompactMode ?? false;
+  const displayFormat = datePickerContext?.displayFormat ?? 'default';
+  const isCompactMode = displayFormat === 'compact';
 
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
@@ -325,7 +325,6 @@ const _DatePickerInput = (
     minDate,
     maxDate,
     effectiveSelectionType,
-    displayFormat,
     selectedPresetLabel,
     ...props
   }: DatePickerInputProps,
@@ -377,7 +376,6 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
-          displayFormat={displayFormat}
           selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
@@ -455,7 +453,6 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
-          displayFormat={displayFormat}
           selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
