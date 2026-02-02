@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react';
-import type { Theme } from '~components/BladeProvider';
 import type { AccessibilityProps } from '~utils/makeAccessible/types';
 import type { DataAnalyticsAttribute, TestID, ElementTiming } from '~utils/types';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { Theme } from '~components/BladeProvider';
 
 type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;
 type SurfaceText = DotNotationToken<Theme['colors']['surface']['text']>;
@@ -37,7 +37,7 @@ export type BaseTextProps = {
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
-  textDecorationLine?: 'line-through' | 'none' | 'underline';
+  textDecorationLine?: 'line-through' | 'none' | 'underline' | 'dotted';
   textTransform?: CSSProperties['textTransform'];
   lineHeight?: keyof Theme['typography']['lineHeights'];
   letterSpacing?: keyof Theme['typography']['letterSpacings'];
