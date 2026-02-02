@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   AreaChart as RechartsAreaChart,
   Area as RechartsArea,
   ResponsiveContainer,
 } from 'recharts';
 import { getHighestColorInRange, useChartsColorTheme, assignDataColorMapping } from '../utils';
-import type { DataColorMapping } from '../CommonChartComponents';
+import type {
+  DataColorMapping,
+  SecondaryLabelMap,
+  ChartXAxisProps,
+} from '../CommonChartComponents';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
 import { componentIds } from './componentIds';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -32,6 +37,7 @@ const Area: React.FC<ChartAreaProps> = ({
   _totalAreas,
   dataKey,
   name,
+  hide,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -64,6 +70,7 @@ const Area: React.FC<ChartAreaProps> = ({
       activeDot={activeDot}
       animationBegin={animationBegin}
       animationDuration={animationDuration}
+      hide={hide}
     />
   );
 };
@@ -113,15 +120,33 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     colorTheme,
     chartName: 'area',
   });
-  const { modifiedChildren, totalAreaChartChildren, dataColorMapping } = React.useMemo(() => {
+
+  // State to track which areas are currently selected (visible)
+  const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
+
+  const {
+    modifiedChildren,
+    totalAreaChartChildren,
+    dataColorMapping,
+    secondaryDataKey,
+  } = useMemo(() => {
     const childrenArray = React.Children.toArray(children);
     const dataColorMapping: DataColorMapping = {};
 
-    // Count ChartLine components
+    // Count ChartArea components
     const totalAreas = childrenArray.filter(
       (child): child is React.ReactElement =>
         React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea,
     ).length;
+
+    // Find ChartXAxis and extract secondaryDataKey
+    let secondaryDataKey: string | undefined;
+    for (const child of childrenArray) {
+      if (React.isValidElement(child) && getComponentId(child) === commonComponentIds.chartXAxis) {
+        secondaryDataKey = (child.props as ChartXAxisProps)?.secondaryDataKey;
+        break;
+      }
+    }
 
     let AreaChartIndex = 0;
     /**
@@ -141,10 +166,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
             isCustomColor: Boolean(childColor),
           };
         }
+        // Pass hide prop based on whether this area's dataKey is NOT in selectedDataKeys
+        // If selectedDataKeys is undefined, show all areas (default behavior)
         return React.cloneElement(child, {
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,
           _totalAreas: totalAreas,
+          hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartAreaProps>);
       }
       return child;
@@ -155,11 +183,31 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       modifiedChildren,
       totalAreaChartChildren: AreaChartIndex,
       dataColorMapping,
+      secondaryDataKey,
     };
-  }, [children, colorTheme, themeColors]);
+  }, [children, colorTheme, themeColors, selectedDataKeys]);
+
+  // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
+  const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
+    if (!secondaryDataKey || !data) return undefined;
+    const map: SecondaryLabelMap = {};
+    data.forEach((item, index) => {
+      map[index] = item[secondaryDataKey] as string | number | undefined;
+    });
+    return map;
+  }, [data, secondaryDataKey]);
 
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'area', dataColorMapping }}>
+    <CommonChartComponentsContext.Provider
+      value={{
+        chartName: 'area',
+        dataColorMapping,
+        secondaryLabelMap,
+        dataLength: data?.length,
+        selectedDataKeys,
+        setSelectedDataKeys,
+      }}
+    >
       <BaseBox
         {...metaAttribute({ name: 'chart-area-container', testID })}
         {...makeAnalyticsAttribute(restProps)}

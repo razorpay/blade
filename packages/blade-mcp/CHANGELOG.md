@@ -1,5 +1,29 @@
 # @razorpay/blade-mcp
 
+## 1.22.0
+
+### Minor Changes
+
+- b6c2e2563: feat(blade): update charts docs
+
+## 1.21.1
+
+### Patch Changes
+
+- 03e1de587: fix(mcp/README): mcp install link
+
+## 1.21.0
+
+### Minor Changes
+
+- be2a6ff12: fix(blade): refactor blade mcp to use fs file change in stdio mode
+
+## 1.20.1
+
+### Patch Changes
+
+- ff190d563: Updated tokens
+
 ## 1.20.0
 
 ### Minor Changes

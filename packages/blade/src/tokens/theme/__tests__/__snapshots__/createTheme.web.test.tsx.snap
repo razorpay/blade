@@ -587,7 +587,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
           "primary": {
             "intense": "hsl(332, 100%, 26%)",
-            "subtle": "hsl(332, 52%, 49%)",
+            "subtle": "hsla(332, 100%, 26%, 0.09)",
           },
           "sea": {
             "intense": "hsla(180, 42%, 92%, 1)",
@@ -1226,7 +1226,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
           "primary": {
             "intense": "hsl(332, 100%, 26%)",
-            "subtle": "hsl(332, 52%, 49%)",
+            "subtle": "hsla(332, 100%, 26%, 0.09)",
           },
           "sea": {
             "intense": "hsla(180, 61%, 20%, 1)",
@@ -1551,7 +1551,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsl(332,100%,23%);
   border-color: hsl(332,100%,23%);
-  outline: 1px solid hsl(332,52%,49%);
+  outline: 1px solid hsla(332,100%,26%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(332,100%,26%,0.18);
 }
 
@@ -2230,7 +2230,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           },
           "primary": {
             "intense": "hsl(57, 100%, 52%)",
-            "subtle": "hsl(60, 100%, 58%)",
+            "subtle": "hsla(57, 100%, 52%, 0.09)",
           },
           "sea": {
             "intense": "hsla(180, 42%, 92%, 1)",
@@ -2869,7 +2869,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           },
           "primary": {
             "intense": "hsl(57, 100%, 52%)",
-            "subtle": "hsl(60, 100%, 58%)",
+            "subtle": "hsla(57, 100%, 52%, 0.09)",
           },
           "sea": {
             "intense": "hsla(180, 61%, 20%, 1)",
@@ -3194,7 +3194,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsl(57,100%,47%);
   border-color: hsl(57,100%,47%);
-  outline: 1px solid hsl(60,100%,58%);
+  outline: 1px solid hsla(57,100%,52%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(57,100%,52%,0.18);
 }
 

@@ -42,6 +42,11 @@ type ChartAreaProps = {
    */
   activeDot?: RechartAreaProps['activeDot'];
   /**
+   * Whether to hide the area.
+   *
+   */
+  hide?: boolean;
+  /**
    * @private
    */
   _index?: number;

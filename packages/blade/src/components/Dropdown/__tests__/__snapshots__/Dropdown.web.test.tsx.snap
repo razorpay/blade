@@ -2857,6 +2857,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
           aria-haspopup="menu"
           aria-label="Fruits"
           class="c2"
+          data-blade-component="filter-chip-trigger"
           role="button"
         >
           <div
@@ -3032,6 +3033,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
           aria-label="profile"
           class="c2"
           data-analytics-attribute="profile"
+          data-blade-component="filter-chip-trigger"
           role="button"
         >
           <div

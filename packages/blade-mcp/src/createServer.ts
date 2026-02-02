@@ -9,13 +9,16 @@ import {
   createBladeCursorRulesToolName,
   createBladeCursorRulesToolDescription,
   createBladeCursorRulesToolSchema,
-  createBladeCursorRulesToolCallback,
+  createBladeCursorRulesStdioCallback,
+  createBladeCursorRulesHttpCallback,
 } from './tools/createBladeCursorRules.js';
 import {
   getBladeComponentDocsToolName,
   getBladeComponentDocsToolDescription,
-  getBladeComponentDocsToolSchema,
-  getBladeComponentDocsToolCallback,
+  getBladeComponentDocsHttpSchema,
+  getBladeComponentDocsStdioSchema,
+  getBladeComponentDocsStdioCallback,
+  getBladeComponentDocsHttpCallback,
 } from './tools/getBladeComponentDocs.js';
 import {
   hiBladeToolName,
@@ -27,14 +30,18 @@ import { getPackageJSONVersion } from './utils/generalUtils.js';
 import {
   getBladePatternDocsToolName,
   getBladePatternDocsToolDescription,
-  getBladePatternDocsToolSchema,
-  getBladePatternDocsToolCallback,
+  getBladePatternDocsHttpSchema,
+  getBladePatternDocsHttpCallback,
+  getBladePatternDocsStdioSchema,
+  getBladePatternDocsStdioCallback,
 } from './tools/getBladePatternDocs.js';
 import {
   getBladeGeneralDocsToolName,
   getBladeGeneralDocsToolDescription,
-  getBladeGeneralDocsToolSchema,
-  getBladeGeneralDocsToolCallback,
+  getBladeGeneralDocsHttpCallback,
+  getBladeGeneralDocsHttpSchema,
+  getBladeGeneralDocsStdioSchema,
+  getBladeGeneralDocsStdioCallback,
 } from './tools/getBladeGeneralDocs.js';
 import {
   getFigmaToCodeToolName,
@@ -54,12 +61,85 @@ import {
   publishLinesOfCodeMetricToolSchema,
   publishLinesOfCodeMetricToolCallback,
 } from './tools/publishLinesOfCodeMetric.js';
+import { setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
 
-export const createServer = (): McpServer => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const httpsServerTools = (server: McpServer): void => {
+  server.tool(
+    createBladeCursorRulesToolName,
+    createBladeCursorRulesToolDescription,
+    createBladeCursorRulesToolSchema,
+    createBladeCursorRulesHttpCallback,
+  );
+
+  server.tool(
+    getBladeComponentDocsToolName,
+    getBladeComponentDocsToolDescription,
+    getBladeComponentDocsHttpSchema,
+    getBladeComponentDocsHttpCallback,
+  );
+
+  server.tool(
+    getBladePatternDocsToolName,
+    getBladePatternDocsToolDescription,
+    getBladePatternDocsHttpSchema,
+    getBladePatternDocsHttpCallback,
+  );
+
+  server.tool(
+    getBladeGeneralDocsToolName,
+    getBladeGeneralDocsToolDescription,
+    getBladeGeneralDocsHttpSchema,
+    getBladeGeneralDocsHttpCallback,
+  );
+};
+
+const stdioServerTools = (server: McpServer): void => {
+  server.tool(
+    createBladeCursorRulesToolName,
+    createBladeCursorRulesToolDescription,
+    createBladeCursorRulesToolSchema,
+    createBladeCursorRulesStdioCallback,
+  );
+
+  server.tool(
+    getBladeComponentDocsToolName,
+    getBladeComponentDocsToolDescription,
+    getBladeComponentDocsStdioSchema,
+    getBladeComponentDocsStdioCallback,
+  );
+
+  server.tool(
+    getBladePatternDocsToolName,
+    getBladePatternDocsToolDescription,
+    getBladePatternDocsStdioSchema,
+    getBladePatternDocsStdioCallback,
+  );
+
+  server.tool(
+    getBladeGeneralDocsToolName,
+    getBladeGeneralDocsToolDescription,
+    getBladeGeneralDocsStdioSchema,
+    getBladeGeneralDocsStdioCallback,
+  );
+};
+export const createServer = ({
+  transportType = 'stdio',
+}: {
+  transportType?: 'stdio' | 'http';
+}): McpServer => {
   const server = new McpServer({
     name: 'Blade MCP',
     version: getPackageJSONVersion(),
   });
+
+  setMcpSseAnalyticsContext({ protocol: transportType });
+
+  if (transportType === 'http') {
+    httpsServerTools(server);
+  } else {
+    stdioServerTools(server);
+  }
 
   server.tool(hiBladeToolName, hiBladeToolDescription, hiBladeToolSchema, hiBladeToolCallback);
 
@@ -68,34 +148,6 @@ export const createServer = (): McpServer => {
     createNewBladeProjectToolDescription,
     createNewBladeProjectToolSchema,
     createNewBladeProjectToolCallback,
-  );
-
-  server.tool(
-    createBladeCursorRulesToolName,
-    createBladeCursorRulesToolDescription,
-    createBladeCursorRulesToolSchema,
-    createBladeCursorRulesToolCallback,
-  );
-
-  server.tool(
-    getBladeComponentDocsToolName,
-    getBladeComponentDocsToolDescription,
-    getBladeComponentDocsToolSchema,
-    getBladeComponentDocsToolCallback,
-  );
-
-  server.tool(
-    getBladePatternDocsToolName,
-    getBladePatternDocsToolDescription,
-    getBladePatternDocsToolSchema,
-    getBladePatternDocsToolCallback,
-  );
-
-  server.tool(
-    getBladeGeneralDocsToolName,
-    getBladeGeneralDocsToolDescription,
-    getBladeGeneralDocsToolSchema,
-    getBladeGeneralDocsToolCallback,
   );
 
   server.tool(

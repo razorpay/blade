@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src"],
+  "exclude": ["node_modules/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~components/*": ["src/components/*"],
+      "~src/*": ["src/*"]
+    },
+    "moduleSuffixes": [""],
+    "types": ["svelte"],
+    "verbatimModuleSyntax": true,
+    "moduleResolution": "bundler"
+  }
+}

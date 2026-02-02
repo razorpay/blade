@@ -1,14 +1,13 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.68.0",
+  "version": "12.76.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
   },
   "bin": {
-    "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts",
-    "aicodemod": "./codemods/aicodemod/bin.mjs"
+    "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts"
   },
   "repository": {
     "type": "git",
@@ -151,6 +150,8 @@
     "react-hot-toast": "2.4.1",
     "react-window": "1.8.11",
     "react-zoom-pan-pinch": "3.7.0",
+    "react-error-boundary": "6.0.3",
+    "react-markdown": "10.1.0",
     "recharts": "3.1.2",
     "tinycolor2": "1.6.0",
     "ts-deepmerge": "6.2.0",
@@ -222,6 +223,7 @@
     "@types/jest-axe": "3.5.5",
     "@types/jscodeshift": "0.11.6",
     "@types/jsdom": "20.0.1",
+    "@types/minimatch": "5.1.2",
     "@types/react": "18.2.24",
     "@types/react-native": "0.72.2",
     "@types/react-router-dom": "5.3.3",
@@ -299,7 +301,8 @@
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "tsc-alias": "^1.8.8",
     "typescript": "4.9",
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "jsonrepair": "3.13.2"
   },
   "peerDependencies": {
     "@floating-ui/react-native": "^0.10.0",

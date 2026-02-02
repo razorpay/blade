@@ -1,17 +1,18 @@
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { join, basename } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import {
-  analyticsToolCallEventName,
-  PATTERNS_KNOWLEDGEBASE_DIRECTORY,
-  CHECK_CURSOR_RULES_DESCRIPTION,
-} from '../utils/tokens.js';
+import { analyticsToolCallEventName, PATTERNS_KNOWLEDGEBASE_DIRECTORY } from '../utils/tokens.js';
 
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
+import type { McpToolResponse } from '../utils/types.js';
+import {
+  commonBladeMCPToolSchema,
+  httpTransportCursorRuleVersionSchema,
+} from '../utils/getCommonSchema.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 
 const bladePatternsList = getBladeDocsList('patterns');
@@ -24,7 +25,8 @@ const getBladePatternDocsToolName = 'get_blade_pattern_docs';
 
 const getBladePatternDocsToolDescription = `Fetch the Blade Design System pattern docs. Use this to get information about design patterns, best practices, and implementation guidelines.`;
 
-const getBladePatternDocsToolSchema = {
+// Schema for stdio transport
+const getBladePatternDocsStdioSchema = {
   patternsList: z
     .string()
     .describe(
@@ -32,26 +34,29 @@ const getBladePatternDocsToolSchema = {
         ', ',
       )}. Here is guide on how to decide which pattern to use: ${whichPatternToUseGuide}`,
     ),
-  currentProjectRootDirectory: z
-    .string()
-    .describe(
-      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
-    ),
-  clientName: z
-    .enum(['claude', 'cursor', 'unknown'])
-    .default('unknown')
-    .describe(
-      'The name of the client that is calling the tool. It can be "claude", "cursor", or "unknown". Use "unknown" if you are not sure.',
-    ),
-  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
+  ...commonBladeMCPToolSchema,
 };
 
-const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsToolSchema> = ({
+// Schema for HTTP transport
+const getBladePatternDocsHttpSchema = {
+  ...getBladePatternDocsStdioSchema,
+  ...httpTransportCursorRuleVersionSchema,
+};
+
+// Core business logic function
+const getBladePatternDocsCore = ({
   patternsList,
   currentProjectRootDirectory,
-  clientName,
+  skipLocalCursorRuleChecks = false,
   cursorRuleVersion,
-}) => {
+  clientName,
+}: {
+  patternsList: string;
+  currentProjectRootDirectory?: string;
+  skipLocalCursorRuleChecks?: boolean;
+  cursorRuleVersion?: string;
+  clientName: 'claude' | 'cursor' | 'unknown';
+}): McpToolResponse => {
   const components = patternsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladePatternsList.includes(comp));
   if (invalidComponents.length > 0) {
@@ -65,13 +70,18 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
     });
   }
 
-  const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
-    cursorRuleVersion,
-    clientName,
-    currentProjectRootDirectory,
-  );
-  if (createOrUpdateCursorRule) {
-    return createOrUpdateCursorRule;
+  // Check cursor rules using shouldCreateOrUpdateCursorRule which handles both file system and version checks
+  if (currentProjectRootDirectory) {
+    const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
+      cursorRuleVersion,
+      clientName,
+      currentProjectRootDirectory,
+      skipLocalCursorRuleChecks,
+      getBladePatternDocsToolName,
+    );
+    if (createOrUpdateCursorRule) {
+      return createOrUpdateCursorRule;
+    }
   }
 
   try {
@@ -86,7 +96,10 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
       properties: {
         toolName: getBladePatternDocsToolName,
         patternsList,
-        currentProjectRootDirectory,
+        rootDirectoryName: currentProjectRootDirectory
+          ? basename(currentProjectRootDirectory)
+          : undefined,
+        cursorRuleVersion,
         clientName,
       },
     });
@@ -107,9 +120,41 @@ const getBladePatternDocsToolCallback: ToolCallback<typeof getBladePatternDocsTo
   }
 };
 
+// Callback for stdio transport
+const getBladePatternDocsStdioCallback: ToolCallback<typeof getBladePatternDocsStdioSchema> = ({
+  patternsList,
+  currentProjectRootDirectory,
+  clientName,
+}) => {
+  return getBladePatternDocsCore({
+    patternsList,
+    currentProjectRootDirectory,
+    skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
+    clientName,
+  });
+};
+
+// Callback for HTTP transport
+const getBladePatternDocsHttpCallback: ToolCallback<typeof getBladePatternDocsHttpSchema> = ({
+  patternsList,
+  cursorRuleVersion,
+  clientName,
+  currentProjectRootDirectory,
+}) => {
+  return getBladePatternDocsCore({
+    patternsList,
+    currentProjectRootDirectory,
+    skipLocalCursorRuleChecks: true, // Skip cursor rule checks for HTTP
+    cursorRuleVersion,
+    clientName,
+  });
+};
+
 export {
   getBladePatternDocsToolName,
   getBladePatternDocsToolDescription,
-  getBladePatternDocsToolSchema,
-  getBladePatternDocsToolCallback,
+  getBladePatternDocsStdioCallback,
+  getBladePatternDocsHttpCallback,
+  getBladePatternDocsStdioSchema,
+  getBladePatternDocsHttpSchema,
 };

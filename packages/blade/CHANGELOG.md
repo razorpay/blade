@@ -1,5 +1,85 @@
 # @razorpay/blade
 
+## 12.76.0
+
+### Minor Changes
+
+- 59f65fd46: feat(blade): make legends for other charts clickable
+- 3317dc409: feat(blade): make donut chart responsive
+
+### Patch Changes
+
+- 828302f4d: refactor(blade): update GenUI SDK to use ReactMarkdown instead of Streamdown for React17 compatibility
+
+## 12.75.0
+
+### Minor Changes
+
+- 6f80d8b54: feat(blade): add add support to modify dataKey and nameKey in donut chart
+
+### Patch Changes
+
+- d9f9ef9ba: ci: update npm publishing via OIDC
+- 297cd9469: fix(blade): update ci bot permissions
+- 4f33fce21: fix: update storybook example & expose ChartLabelContentProps type
+
+## 12.74.0
+
+### Minor Changes
+
+- 3498bd73f: feat(blade): added GenUI components
+
+## 12.73.1
+
+### Patch Changes
+
+- 7320c7e4b: feat(blade): patch for table pagination
+
+## 12.73.0
+
+### Minor Changes
+
+- 16240ddd4: fix(blade): default pagesize in pagination
+
+## 12.72.0
+
+### Minor Changes
+
+- 069a7163d: Releasing Blade components to Svelte with new packages Blade-core and Blade-svelte
+- ac14ceb6a: Version mismatch issue fixed for blade svelte release
+
+## 12.71.0
+
+### Minor Changes
+
+- b6c2e2563: feat(blade): expose tick formatter
+
+## 12.70.1
+
+### Patch Changes
+
+- 1005547fa: blade(fix): allow users to modify interval and other props
+
+## 12.70.0
+
+### Minor Changes
+
+- ea3f318d9: feat(blade): add highlight lengends on click
+- d4e6866b7: feat(blade): add support for text truncation in x-axis label
+- b1d21bf26: feat(blade): add hover on line charts
+
+## 12.69.0
+
+### Minor Changes
+
+- 9f7cbd5ad: feat(blade): bundle recharts
+
+## 12.68.1
+
+### Patch Changes
+
+- 5ab22346a: fix(createTheme): color of `surface.background.primary.subtle` in createTheme function (white labelling)
+
 ## 12.68.0
 
 ### Minor Changes

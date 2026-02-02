@@ -81,7 +81,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
     <Box backgroundColor="surface.background.gray.intense" padding="spacing.5" minHeight="700px">
       <TableComponent
         data={data}
-        height={'500px'}
+        height="500px"
         rowDensity="comfortable"
         selectionType="multiple"
         toolbar={

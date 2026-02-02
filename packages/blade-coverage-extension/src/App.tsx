@@ -19,6 +19,7 @@ import {
   InfoIcon,
   TooltipInteractiveWrapper,
   Link,
+  Switch,
 } from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
 import styled from 'styled-components';
@@ -48,16 +49,32 @@ type A11yCoverage = {
 const App = (): ReactElement => {
   const [coverage, setCoverage] = useState<BladeCoverage | undefined>(undefined);
   const [a11yCoverage, setA11yCoverage] = useState<A11yCoverage | undefined>(undefined);
+  const [currentTab, setCurrentTab] = useState<string>('blade');
+  const [includeNavbars, setIncludeNavbars] = useState<boolean>(true);
   const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
   const getBladeCoverage = (shouldHighlightNodes: boolean): void => {
     // @ts-expect-error
-    chrome?.runtime?.sendMessage?.({ action: 'executeScript', shouldHighlightNodes });
+    chrome?.runtime?.sendMessage?.({
+      action: 'executeScript',
+      shouldHighlightNodes,
+      includeNavbars,
+    });
   };
 
   const getA11yCoverage = (shouldHighlightNodes: boolean): void => {
     // @ts-expect-error
     chrome?.runtime?.sendMessage?.({ action: 'executeAccessibilityScript', shouldHighlightNodes });
+  };
+
+  const handleTabChange = (value: string): void => {
+    // Clear highlighted nodes from the previous tab
+    if (currentTab === 'blade' && coverage) {
+      getBladeCoverage(false);
+    } else if (currentTab === 'a11y' && a11yCoverage) {
+      getA11yCoverage(false);
+    }
+    setCurrentTab(value);
   };
 
   // @ts-expect-error
@@ -82,7 +99,7 @@ const App = (): ReactElement => {
           backgroundColor="surface.background.gray.moderate"
         >
           <CardBody>
-            <Tabs defaultValue="blade">
+            <Tabs defaultValue="blade" onChange={handleTabChange}>
               <TabList>
                 <TabItem value="blade">Blade Coverage</TabItem>
                 <TabItem value="a11y">Accessibility Score</TabItem>
@@ -120,6 +137,16 @@ const App = (): ReactElement => {
                   <StyledImg src={BarChartImg} alt="bar-chart" />
                 </Box>
                 <Box display="flex" alignItems="center" flexDirection="column" gap="spacing.3">
+                  <Text as="label" marginBottom="spacing.3">
+                    <Box display="flex" alignItems="center" gap="spacing.3">
+                      <Switch
+                        accessibilityLabel="Include navbars in coverage calculation"
+                        isChecked={includeNavbars}
+                        onChange={({ isChecked }) => setIncludeNavbars(isChecked)}
+                      />
+                      Include Navbars
+                    </Box>
+                  </Text>
                   <Button
                     icon={ActivityIcon}
                     iconPosition="left"

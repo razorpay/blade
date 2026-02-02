@@ -60,6 +60,7 @@ type ChartReferenceLineProps = {
   label: string;
 };
 
+
 type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
    * The label of the x-axis.
@@ -69,7 +70,57 @@ type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | '
    * The data key of the x-axis.
    */
   dataKey?: string;
+  /**
+   * Optional secondary data key for multi-line X-axis labels.
+   * When provided, the X-axis will display two lines of text:
+   * - Primary label (from dataKey)
+   * - Secondary label (from secondaryDataKey)
+   * @example
+   * // Data: [{ date: 'Jan', year: '2024' }, { date: 'Feb', year: '2024' }]
+   * <ChartXAxis dataKey="date" secondaryDataKey="year" />
+   * // Renders:
+   * //   Jan        Feb
+   * //  2024       2024
+   */
+   secondaryDataKey?: string;
+    /**
+   * The interval of the x-axis.
+   * @default: 0
+   * @example
+   * // Data: [{ date: 'Jan', year: '2024' }, { date: 'Feb', year: '2024' }]
+   * <ChartXAxis dataKey="date" interval={1} />
+   * // Renders:
+   * //   Jan
+   * //   Feb
+   *
+   * note: if you can't  see all labels in case of large labels. try setting interval 0
+   */
+  interval?: number;
+  /**
+   * Custom formatter function to transform tick values before display.
+   * Useful for formatting timestamps, currencies, or other numeric values.
+   *
+   * @param value - The raw tick value from the data
+   * @param index - The index of the tick
+   * @returns The formatted string to display
+   *
+   * @example
+   * // Format timestamp to readable date
+   * <ChartXAxis
+   *   dataKey="timestamp"
+   *   tickFormatter={(value) => new Date(value).toLocaleDateString()}
+   * />
+   *
+   * @example
+   * // Format currency values
+   * <ChartXAxis
+   *   dataKey="amount"
+   *   tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
+   * />
+   */
+  tickFormatter?: (value: string, index: number) => string;
 };
+
 
 type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
