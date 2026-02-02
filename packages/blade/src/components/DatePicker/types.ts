@@ -182,6 +182,14 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * @default 'DD/MM/YYYY'  if pickerType is 'month' then 'MMMM', 'YYYY' if pickerType is 'year'
      */
     inputPlaceHolder?: string;
+    /**
+     * Decides whether to render a clear icon button
+     */
+    showClearButton?: boolean;
+    /**
+     * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
+     */
+    onClearButtonClick?: () => void;
   };
 
 type DatePickerRangeInputProps = {
@@ -232,6 +240,14 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     minDate?: Date;
     maxDate?: Date;
     effectiveSelectionType?: 'single' | 'range' | null;
+    /**
+     * Decides whether to render a clear icon button
+     */
+    showClearButton?: boolean;
+    /**
+     * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
+     */
+    onClearButtonClick?: () => void;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -258,6 +274,14 @@ type DateInputProps = BaseInputProps & {
   minDate?: Date;
   maxDate?: Date;
   effectiveSelectionType?: 'single' | 'range' | null;
+  /**
+   * Decides whether to render a clear icon button
+   */
+  showClearButton?: boolean;
+  /**
+   * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
+   */
+  onClearButtonClick?: () => void;
 };
 
 export type {

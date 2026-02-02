@@ -77,6 +77,8 @@ export default {
     name: inputProp,
     autoFocus: inputProp,
     necessityIndicator: inputProp,
+    showClearButton: inputProp,
+    onClearButtonClick: inputProp,
   },
   parameters: {
     docs: {
@@ -660,3 +662,109 @@ WithoutActionButtons.args = {
   selectionType: 'single',
   showFooterActions: false,
 };
+
+export const ClearButtonUncontrolled: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">showClearButton</Code> prop, you can render a clear button in the
+        DatePicker input. When clicked, it will clear the selected date.
+      </Text>
+      <Text marginBottom="spacing.5" color="surface.text.gray.muted" size="small">
+        In uncontrolled mode, the clear button will automatically clear the internal state.
+      </Text>
+      <Box display="flex" gap="spacing.5" flexDirection="column">
+        <DatePickerComponent
+          label="Single Date (Uncontrolled)"
+          selectionType="single"
+          showClearButton
+          onClearButtonClick={() => {
+            console.log('Clear button clicked - Single');
+          }}
+        />
+        <DatePickerComponent
+          label={{ start: 'Date Range (Uncontrolled)' }}
+          selectionType="range"
+          showClearButton
+          onClearButtonClick={() => {
+            console.log('Clear button clicked - Range');
+          }}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+ClearButtonUncontrolled.storyName = 'Clear Button (Uncontrolled)';
+
+export const ClearButtonControlled: StoryFn<typeof DatePickerComponent> = () => {
+  const [singleDate, setSingleDate] = React.useState<Date | null>(new Date());
+  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
+    new Date(),
+    dayjs().add(7, 'day').toDate(),
+  ]);
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        With <Code size="medium">showClearButton</Code> and{' '}
+        <Code size="medium">onClearButtonClick</Code> props, you can control when the clear button
+        appears and handle the clear action in controlled mode.
+      </Text>
+      <Text marginBottom="spacing.5" color="surface.text.gray.muted" size="small">
+        In controlled mode, use <Code size="medium">onClearButtonClick</Code> to reset your state.
+      </Text>
+
+      <Box display="flex" gap="spacing.5" flexDirection="column">
+        <Box>
+          <Text marginBottom="spacing.2">
+            Selected Single Date: {singleDate ? dayjs(singleDate).format('DD-MM-YYYY') : 'None'}
+          </Text>
+          <DatePickerComponent
+            label="Single Date (Controlled)"
+            selectionType="single"
+            value={singleDate}
+            onChange={(date) => setSingleDate(date)}
+            showClearButton
+            onClearButtonClick={() => {
+              console.log('Clear button clicked - resetting single date');
+              setSingleDate(null);
+            }}
+          />
+        </Box>
+
+        <Box>
+          <Text marginBottom="spacing.2">
+            Selected Range: {dateRange[0] ? dayjs(dateRange[0]).format('DD-MM-YYYY') : 'None'} -{' '}
+            {dateRange[1] ? dayjs(dateRange[1]).format('DD-MM-YYYY') : 'None'}
+          </Text>
+          <DatePickerComponent
+            label={{ start: 'Date Range (Controlled)' }}
+            selectionType="range"
+            value={dateRange}
+            onChange={(date) => setDateRange(date)}
+            showClearButton
+            onClearButtonClick={() => {
+              console.log('Clear button clicked - resetting date range');
+              setDateRange([null, null]);
+            }}
+          />
+        </Box>
+
+        <Box display="flex" gap="spacing.3">
+          <Button
+            size="small"
+            onClick={() => {
+              setSingleDate(new Date());
+              setDateRange([new Date(), dayjs().add(7, 'day').toDate()]);
+            }}
+          >
+            Reset to Today
+          </Button>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+ClearButtonControlled.storyName = 'Clear Button (Controlled)';

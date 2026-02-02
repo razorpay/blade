@@ -40,6 +40,8 @@ const _DateInput = (
     leadingDropdown,
     tags,
     id,
+    showClearButton,
+    onClearButtonClick,
     ...textInputProps
   } = props;
   const [inputValue, setInputValue] = React.useState(['']);
@@ -182,6 +184,8 @@ const _DateInput = (
       errorText={textInputProps.errorText ?? validationError}
       onChange={handleInputChange}
       onBlur={handleBlur}
+      showClearButton={showClearButton}
+      onClearButtonClick={onClearButtonClick}
       onClick={(e) => {
         if (textInputProps.isDisabled) {
           return;
@@ -251,6 +255,8 @@ const _DatePickerInput = (
     minDate,
     maxDate,
     effectiveSelectionType,
+    showClearButton,
+    onClearButtonClick,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -301,6 +307,8 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+          showClearButton={showClearButton}
+          onClearButtonClick={onClearButtonClick}
           {...props}
           {...referenceProps}
         />
@@ -377,6 +385,8 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+          showClearButton={showClearButton}
+          onClearButtonClick={onClearButtonClick}
           {...props}
           {...referenceProps}
         />
