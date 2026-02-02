@@ -200,7 +200,7 @@ const _DateInput = (
     type: 'text' | 'number';
     value: string;
     leadingIcon: typeof CalendarIcon | undefined;
-    leading: React.ReactElement | undefined;
+    leading?: React.ReactElement;
     format: ReturnType<typeof getTextInputFormat> | undefined;
     validationState: typeof textInputProps.validationState;
     errorText: string | undefined;
@@ -214,7 +214,6 @@ const _DateInput = (
         type: 'text',
         value: selectedPresetLabel,
         leadingIcon: CalendarIcon,
-        leading: undefined,
         format: undefined,
         validationState: textInputProps.validationState,
         errorText: textInputProps.errorText,
@@ -234,6 +233,8 @@ const _DateInput = (
 
     // In compact mode: always show icon instead of dropdown (presets accessed via popup sidebar)
     // In non-compact mode: show the dropdown as normal
+    // Note: We must conditionally include `leading` only when defined, otherwise `leading: undefined`
+    // would override/hide `leadingIcon` in the TextInput component
     const showLeadingDropdown = isCompactMode ? undefined : leadingDropdown;
     const showLeadingIcon = isCompactMode || shouldShowCalendarIcon ? CalendarIcon : undefined;
 
@@ -241,7 +242,7 @@ const _DateInput = (
       type: 'number',
       value: dateDisplayValue,
       leadingIcon: showLeadingIcon,
-      leading: showLeadingDropdown,
+      ...(showLeadingDropdown ? { leading: showLeadingDropdown } : {}),
       format: dateInputFormat,
       validationState: validationError ? 'error' : textInputProps.validationState,
       errorText: textInputProps.errorText ?? validationError,

@@ -445,10 +445,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   return (
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
-        <DatePickerProvider
-          isDatePickerBodyOpen={controllableIsOpen}
-          displayFormat={effectiveDisplayFormat}
-        >
+        <DatePickerProvider isDatePickerBodyOpen={controllableIsOpen} displayFormat={displayFormat}>
           <BaseBox
             width={inputElementType === 'chip' ? 'fit-content' : '100%'}
             {...getStyledProps(props)}
