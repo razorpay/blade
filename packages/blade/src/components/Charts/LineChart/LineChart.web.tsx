@@ -113,6 +113,21 @@ const Line: React.FC<ChartLineProps> = ({
   return (
     <>
       <RechartsLine
+        key={`line-${dataKey}-background`}
+        type="monotone"
+        dataKey={dataKey}
+        stroke="transparent"
+        strokeWidth={15}
+        dot={false}
+        activeDot={false}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        hide={hide}
+      />
+      <RechartsLine
         key={`line-${dataKey}-main`}
         stroke={colorToken}
         strokeWidth={1.5}
@@ -133,21 +148,6 @@ const Line: React.FC<ChartLineProps> = ({
         strokeOpacity={animatedOpacity}
         isAnimationActive={true}
         {...props}
-      />
-      <RechartsLine
-        key={`line-${dataKey}-background`}
-        type="monotone"
-        dataKey={dataKey}
-        stroke="transparent"
-        strokeWidth={15}
-        dot={false}
-        activeDot={false}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        connectNulls
-        legendType="none"
-        tooltipType="none"
-        hide={hide}
       />
     </>
   );
