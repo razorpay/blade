@@ -1,5 +1,12 @@
 # @razorpay/blade-mcp
 
+## 1.22.1
+
+### Patch Changes
+
+- 10f6912a5: feat(blade): update docs
+- 29bac6692: fix npm publish
+
 ## 1.22.0
 
 ### Minor Changes
