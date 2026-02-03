@@ -744,6 +744,9 @@ export const ClearButtonUncontrolled: StoryFn<typeof DatePickerComponent> = () =
           label="Single Date (Uncontrolled)"
           selectionType="single"
           showClearButton
+          onChange={(value) => {
+            console.log('value', value);
+          }}
           onClearButtonClick={() => {
             console.log('Clear button clicked - Single');
           }}
@@ -764,6 +767,9 @@ export const ClearButtonUncontrolled: StoryFn<typeof DatePickerComponent> = () =
           showClearButton
           onClearButtonClick={() => {
             console.log('Clear button clicked - Range');
+          }}
+          onChange={(value) => {
+            console.log('value', value);
           }}
           presets={[
             {
@@ -814,7 +820,10 @@ ClearButtonUncontrolled.storyName = 'Clear Button (Uncontrolled)';
 
 export const ClearButtonControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [singleDate, setSingleDate] = React.useState<Date | null>(new Date());
-  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([]);
+  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
+    dayjs().subtract(3, 'months').toDate(),
+    dayjs().add(3, 'day').subtract(3, 'months').toDate(),
+  ]);
 
   return (
     <Box>
@@ -840,7 +849,6 @@ export const ClearButtonControlled: StoryFn<typeof DatePickerComponent> = () => 
             showClearButton
             onClearButtonClick={() => {
               console.log('Clear button clicked - resetting single date');
-              setSingleDate(null);
             }}
           />
         </Box>
@@ -858,7 +866,6 @@ export const ClearButtonControlled: StoryFn<typeof DatePickerComponent> = () => 
             showClearButton
             onClearButtonClick={() => {
               console.log('Clear button clicked - resetting date range');
-              setDateRange([null, null]);
             }}
             presets={[
               {
@@ -922,7 +929,10 @@ ClearButtonControlled.storyName = 'Clear Button (Controlled)';
 
 export const ClearButtonControlledDisplayCompact: StoryFn<typeof DatePickerComponent> = () => {
   const [singleDate, setSingleDate] = React.useState<Date | null>(new Date());
-  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([]);
+  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
+    dayjs().subtract(3, 'months').toDate(),
+    dayjs().add(3, 'day').subtract(3, 'months').toDate(),
+  ]);
 
   return (
     <Box>
@@ -948,7 +958,6 @@ export const ClearButtonControlledDisplayCompact: StoryFn<typeof DatePickerCompo
             showClearButton
             onClearButtonClick={() => {
               console.log('Clear button clicked - resetting single date');
-              setSingleDate(null);
             }}
           />
         </Box>
@@ -966,7 +975,6 @@ export const ClearButtonControlledDisplayCompact: StoryFn<typeof DatePickerCompo
             showClearButton
             onClearButtonClick={() => {
               console.log('Clear button clicked - resetting date range');
-              setDateRange([null, null]);
             }}
             allowSingleDateInRange
             displayFormat="compact"
