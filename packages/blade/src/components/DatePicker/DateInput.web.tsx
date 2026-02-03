@@ -194,7 +194,7 @@ const _DateInput = (
   // This ensures consistent behavior when focus moves between input and calendar
   const isDatePickerActive = isFocused || isPopupOpen;
 
-  // Check if there's actually a valid date selection
+  // Check if there's actually a valid date selection. in range mode we need to check if both dates are not null
   const hasValidSelection = isRange
     ? (date as [Date | null, Date | null])?.[0] && (date as [Date | null, Date | null])?.[1]
     : Boolean(date);

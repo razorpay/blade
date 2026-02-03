@@ -968,6 +968,7 @@ export const ClearButtonControlledDisplayCompact: StoryFn<typeof DatePickerCompo
               console.log('Clear button clicked - resetting date range');
               setDateRange([null, null]);
             }}
+            allowSingleDateInRange
             displayFormat="compact"
             presets={[
               {
