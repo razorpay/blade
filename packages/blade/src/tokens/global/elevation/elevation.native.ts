@@ -1,5 +1,4 @@
 import type { ElevationWithColorModes } from './types';
-import { opacity } from '~tokens/index';
 
 export const elevation: ElevationWithColorModes = {
   // color: neutral.blueGrayLight.a1106
