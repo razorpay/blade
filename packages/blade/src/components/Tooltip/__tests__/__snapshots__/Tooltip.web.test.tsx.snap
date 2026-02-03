@@ -53,14 +53,14 @@ exports[`<Tooltip /> should render 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(205,10%,24%,1);
+  background-color: hsla(0,0%,0%,0.72);
   border-width: 0.5px;
   border-radius: 12px;
-  border-color: hsla(206,10%,29%,1);
+  border-color: hsla(205,10%,24%,1);
   border-style: solid;
   box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
@@ -339,14 +339,14 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(205,10%,24%,1);
+  background-color: hsla(0,0%,0%,0.72);
   border-width: 0.5px;
   border-radius: 12px;
-  border-color: hsla(206,10%,29%,1);
+  border-color: hsla(205,10%,24%,1);
   border-style: solid;
   box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
@@ -625,14 +625,14 @@ exports[`<Tooltip /> should render with title 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(205,10%,24%,1);
+  background-color: hsla(0,0%,0%,0.72);
   border-width: 0.5px;
   border-radius: 12px;
-  border-color: hsla(206,10%,29%,1);
+  border-color: hsla(205,10%,24%,1);
   border-style: solid;
   box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
