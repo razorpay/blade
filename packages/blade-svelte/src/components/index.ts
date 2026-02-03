@@ -5,6 +5,8 @@ export { default as BaseButton } from './Button/BaseButton/BaseButton.svelte';
 export { default as BaseSpinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
 export { default as BaseAmount } from './Amount/BaseAmount/BaseAmount.svelte';
 export { default as BaseLink } from './Link/BaseLink/BaseLink.svelte';
+export { default as BaseDivider } from './Divider/BaseDivider/BaseDivider.svelte';
+export { default as BaseIndicator } from './Indicator/BaseIndicator/BaseIndicator.svelte';
 
 // Typography
 export { default as Text } from './Typography/Text/Text.svelte';
@@ -22,6 +24,12 @@ export { default as Spinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
 
 // Amount
 export { default as Amount } from './Amount/Amount.svelte';
+
+// Divider
+export { default as Divider } from './Divider/Divider.svelte';
+
+// Indicator
+export { default as Indicator } from './Indicator/Indicator.svelte';
 
 // BladeProvider
 export * from './BladeProvider';

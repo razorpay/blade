@@ -59,3 +59,39 @@ export type {
   AmountDisplayProps,
   AmountHeadingProps,
 } from './Amount';
+export {
+  dividerStyles,
+  getDividerClasses,
+  getDividerTemplateClasses,
+  dividerClass,
+  getDividerColorToken,
+  getDividerBorderPosition,
+} from './Divider';
+export type {
+  DividerVariants,
+  DividerOrientation,
+  DividerStyle,
+  DividerVariant,
+  DividerThickness,
+} from './Divider';
+export {
+  badgeStyles,
+  getBadgeClasses,
+  getBadgeTemplateClasses,
+  badgeClass,
+  badgeContentClass,
+  getBadgeColorTokens,
+  badgeHeight,
+  badgeHorizontalPadding,
+  badgeIconPadding,
+  badgeIconSize,
+  badgeTextSize,
+} from './Badge';
+export type { BadgeVariants, BadgeColorProps, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
+export { getIndicatorColorTokens, indicatorTextSize, indicatorDotSizes } from './Indicator';
+export type {
+  IndicatorColorTokens,
+  IndicatorSize,
+  IndicatorColor,
+  IndicatorEmphasis,
+} from './Indicator';
