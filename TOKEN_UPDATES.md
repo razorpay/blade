@@ -202,11 +202,28 @@ lowRaised: 0px 2px 16px 0px hsla(217, 56%, 17%, 0.10)
 midRaised: 0px 8px 24px 0px hsla(217, 56%, 17%, 0.12)
 highRaised: 0px 16px 48px -4px hsla(217, 56%, 17%, 0.18)
 
-/* New */
-lowRaised: 0px 2px 4px 0px hsla(217, 56%, 17%, 0.10)
-midRaised: 0px 2px 8px 0px hsla(217, 56%, 17%, 0.12)
-highRaised: 0px 8px 24px -4px hsla(217, 56%, 17%, 0.18)
+/* New (onLight) - color changed to neutral.blueGrayLight.a1106 */
+lowRaised: 0px 2px 4px 0px hsla(200, 10%, 18%, ${opacity[50]})   // 0.06 opacity
+midRaised: 0px 2px 8px 0px hsla(200, 10%, 18%, ${opacity[50]})   // 0.06 opacity
+highRaised: 0px 8px 24px -4px hsla(200, 10%, 18%, ${opacity[50]}) // 0.06 opacity
+
+/* New (onDark) - color changed to neutral.black.100 */
+lowRaised: 0px 2px 4px 0px hsla(0, 0%, 0%, ${opacity[500]})   // 0.32 opacity
+midRaised: 0px 2px 8px 0px hsla(0, 0%, 0%, ${opacity[500]})   // 0.32 opacity
+highRaised: 0px 8px 24px -4px hsla(0, 0%, 0%, ${opacity[500]}) // 0.32 opacity
 ```
+
+**Color Changes:**
+| Mode | Old Color | New Color | Reference |
+|------|-----------|-----------|-----------|
+| `onLight` | `hsla(217, 56%, 17%, ...)` | `hsla(200, 10%, 18%, ...)` | `neutral.blueGrayLight.a1106` |
+| `onDark` | `hsla(217, 56%, 17%, ...)` | `hsla(0, 0%, 0%, ...)` | `neutral.black.100` |
+
+**Opacity Changes:**
+| Mode | Old Opacity | New Opacity |
+|------|-------------|-------------|
+| `onLight` | 0.10, 0.12, 0.18 (varied) | `opacity[50]` (0.06) for all |
+| `onDark` | 0.10, 0.12, 0.18 (varied) | `opacity[500]` (0.32) for all |
 
 ### Native Elevation
 
@@ -216,16 +233,55 @@ highRaised: 0px 8px 24px -4px hsla(217, 56%, 17%, 0.18)
 |-------|----------|-----------|-----------|--------|
 | `lowRaised` | shadowRadius | 4 | 2 | 🔄 -2 |
 | | shadowOffset.height | 2 | 2 | ✅ Unchanged |
+| | shadowColor | `hsla(217, 56%, 17%, 0.4)` | `hsla(200, 10%, 18%, 1)` | 🔄 Color change |
+| | shadowOpacity | 0.2 | `opacity[50]` (0.06) | 🔄 Now uses token |
 | `midRaised` | shadowRadius | 6 | 4 | 🔄 -2 |
 | | shadowOffset.height | 4 | 2 | 🔄 -2 |
+| | shadowColor | `hsla(217, 56%, 17%, 0.55)` | `hsla(200, 10%, 18%, 1)` | 🔄 Color change |
+| | shadowOpacity | 0.17 | `opacity[50]` (0.06) | 🔄 Now uses token |
 | `highRaised` | shadowRadius | 14 | 12 | 🔄 -2 |
 | | shadowOffset.height | 6 | 8 | 🔄 +2 |
+| | shadowColor | `hsla(217, 56%, 17%, 0.8)` | `hsla(200, 10%, 18%, 1)` | 🔄 Color change |
+| | shadowOpacity | 0.16 | `opacity[50]` (0.06) | 🔄 Now uses token |
 
-**Note:** Changes applied to both `onLight` and `onDark` color modes.
+**Color Changes (matching web):**
+| Mode | Old Color | New Color | Reference |
+|------|-----------|-----------|-----------|
+| `onLight` | `hsla(217, 56%, 17%, ...)` | `hsla(200, 10%, 18%, 1)` | `neutral.blueGrayLight.a1106` |
+| `onDark` | `hsla(217, 56%, 17%, ...)` | `hsla(0, 0%, 0%, 1)` | `neutral.black.100` |
+
+**Opacity Changes:**
+| Mode | Old Opacity | New Opacity |
+|------|-------------|-------------|
+| `onLight` | 0.2, 0.17, 0.16 (varied) | `opacity[50]` (0.06) for all |
+| `onDark` | 0.2, 0.17, 0.16 (varied) | `opacity[500]` (0.32) for all |
+
+**Full Native Elevation Values:**
+```typescript
+// onLight
+lowRaised: {
+  elevation: 8,
+  shadowColor: 'hsla(200, 10%, 18%, 1)',
+  shadowOpacity: opacity[50],  // 0.06
+  shadowRadius: 2,
+  shadowOffset: { width: 0, height: 2 },
+}
+
+// onDark
+lowRaised: {
+  elevation: 8,
+  shadowColor: 'hsla(0, 0%, 0%, 1)',
+  shadowOpacity: opacity[500],  // 0.32
+  shadowRadius: 2,
+  shadowOffset: { width: 0, height: 2 },
+}
+```
 
 ### Impact
 - Reduced blur radius across all elevation levels for sharper, more subtle shadows
 - Adjusted Y offsets to create more consistent elevation hierarchy
+- Shadow colors now use semantic color tokens (`neutral.blueGrayLight.a1106` for light, `neutral.black.100` for dark)
+- Unified opacity values per mode using opacity tokens instead of varied hardcoded values
 - Creates a more refined and modern shadow system
 
 ---
