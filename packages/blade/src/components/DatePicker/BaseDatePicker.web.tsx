@@ -88,6 +88,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   labelTrailing,
   showFooterActions = true,
   footer,
+  displayFormat = 'default',
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -186,10 +187,16 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const currentDate = shiftTimezone('add', new Date());
 
   // Use the hook to get the calculated preset values
-  const { presetStates, selectedPresetLabel, effectiveSelectionType } = usePresetState({
+  const {
+    presetStates,
+    selectedPresetLabel,
+    effectiveSelectionType,
+    displayFormat: effectiveDisplayFormat,
+  } = usePresetState({
     presets: presets || [],
     selectedPreset,
     currentDate,
+    displayFormat,
   });
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
@@ -441,7 +448,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   return (
     <MantineProvider>
       <DatesProvider settings={dateProviderValue}>
-        <DatePickerProvider isDatePickerBodyOpen={controllableIsOpen}>
+        <DatePickerProvider isDatePickerBodyOpen={controllableIsOpen} displayFormat={displayFormat}>
           <BaseBox
             width={inputElementType === 'chip' ? 'fit-content' : '100%'}
             {...getStyledProps(props)}
@@ -505,6 +512,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 onClearButtonClick={handleClear}
                 // Effective Selection type should only be use for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
+                // Pass through preset state for showing label instead of date
+                selectedPresetLabel={selectedPresetLabel}
                 leadingDropdown={
                   presets && !isSingle && hasBothDatesSelected
                     ? renderPresetDropdown({
@@ -567,6 +576,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                     context={context}
                     guards={true}
                     order={['reference', 'content']}
+                    // Don't return focus to input when displayFormat is compact and a preset is selected
+                    // This prevents the input from switching from preset label to date display
+                    returnFocus={effectiveDisplayFormat !== 'compact'}
                   >
                     <BaseBox
                       ref={refs.setFloating}

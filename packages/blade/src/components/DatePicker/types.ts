@@ -137,6 +137,16 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * Can be used to add custom content like informational text, links, or other components
    */
   footer?: React.ReactElement;
+  /**
+   * Controls how the selected date is displayed in the input field.
+   *
+   * - `compact`: Shows only the preset label (e.g., "Last 7 days") instead of the actual dates.
+   *   Useful for presets where showing the label is more meaningful than showing actual dates.
+   * - `default`: Shows the actual date values in the input field.
+   *
+   * @default 'default'
+   */
+  displayFormat?: 'compact' | 'default';
 };
 
 type DatePickerProps<Type extends DateSelectionType> = Omit<
@@ -248,11 +258,18 @@ type DatePickerInputProps = DatePickerCommonInputProps &
      * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
      */
     onClearButtonClick?: () => void;
+    /*
+     * The label of the currently selected preset to display when displayFormat is 'compact'.
+     */
+    selectedPresetLabel?: string | null;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
 
-type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'label'> & {
+type FilterChipDatePickerProps = Omit<
+  DatePickerProps<'single' | 'range'>,
+  'label' | 'displayFormat'
+> & {
   /**
    * Sets the label for the input element.
    */
@@ -282,6 +299,10 @@ type DateInputProps = BaseInputProps & {
    * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
+  /**
+   * The label of the currently selected preset to display when displayFormat is 'compact'.
+   */
+  selectedPresetLabel?: string | null;
 };
 
 export type {

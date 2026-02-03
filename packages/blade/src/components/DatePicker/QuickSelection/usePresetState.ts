@@ -7,6 +7,7 @@ export const usePresetState = ({
   presets,
   selectedPreset,
   currentDate,
+  displayFormat = 'default',
 }: UsePresetStateProps): UsePresetStateReturn => {
   return useMemo(() => {
     // No presets provided → return empty state
@@ -17,6 +18,7 @@ export const usePresetState = ({
         selectedPresetLabel: null,
         isCustomSelected: false,
         effectiveSelectionType: null, // Default when no presets
+        displayFormat: 'default',
       };
     }
 
@@ -91,6 +93,11 @@ export const usePresetState = ({
       }
     }
 
+    // Based on the displayFormat prop
+    // When displayFormat is 'compact', show only the preset label instead of dates
+    const effectiveDisplayFormat: 'compact' | 'default' =
+      selectedPresetIndex !== -1 && displayFormat === 'compact' ? 'compact' : 'default';
+
     // Return final calculated state - this gets shared with all components
     return {
       presetStates, // Array: [{ preset, value, isSelected, isCustomType }, ...]
@@ -98,6 +105,7 @@ export const usePresetState = ({
       selectedPresetLabel, // String: "Last 7 days" or "Custom" or null
       isCustomSelected, // Boolean: true if custom dates selected
       effectiveSelectionType, // 'single' | 'range' based on preset analysis
+      displayFormat: effectiveDisplayFormat, // 'compact' | 'default' based on preset analysis
     };
-  }, [presets, selectedPreset, currentDate]); // Recalculate when any of these change
+  }, [presets, selectedPreset, currentDate, displayFormat]); // Recalculate when any of these change
 };
