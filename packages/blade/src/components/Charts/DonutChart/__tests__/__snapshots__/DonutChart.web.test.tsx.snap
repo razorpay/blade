@@ -1315,7 +1315,7 @@ exports[`<DonutChart /> should render DonutChart with center text 1`] = `
               </g>
               <text
                 class="recharts-text recharts-label"
-                fill="hsla(212, 39%, 16%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
                 font-family=""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial"
                 font-size="32"
                 font-weight="700"
