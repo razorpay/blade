@@ -251,7 +251,6 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     maxDate?: Date;
     effectiveSelectionType?: 'single' | 'range' | null;
     /**
-<<<<<<< HEAD
      * Decides whether to render a clear icon button
      */
     showClearButton?: boolean;
@@ -260,8 +259,6 @@ type DatePickerInputProps = DatePickerCommonInputProps &
      */
     onClearButtonClick?: () => void;
     /*
-=======
->>>>>>> origin
      * The label of the currently selected preset to display when displayFormat is 'compact'.
      */
     selectedPresetLabel?: string | null;
@@ -295,7 +292,6 @@ type DateInputProps = BaseInputProps & {
   maxDate?: Date;
   effectiveSelectionType?: 'single' | 'range' | null;
   /**
-<<<<<<< HEAD
    * Decides whether to render a clear icon button
    */
   showClearButton?: boolean;
@@ -304,8 +300,6 @@ type DateInputProps = BaseInputProps & {
    */
   onClearButtonClick?: () => void;
   /**
-=======
->>>>>>> origin
    * The label of the currently selected preset to display when displayFormat is 'compact'.
    */
   selectedPresetLabel?: string | null;
