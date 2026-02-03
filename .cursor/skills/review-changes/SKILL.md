@@ -23,7 +23,7 @@ Review PRs in the razorpay/blade repository by fetching the diff, checking CI st
 
 - Do not print any text in the main chat, Keep it clean and concise and only print the final output in the main chat.
 
-## Steps
+## Steps (Create checklist for each step)
 
 ### 1. Fetch the PR Diff and CI Status in Main Agent
 
@@ -36,10 +36,15 @@ https://patch-diff.githubusercontent.com/raw/razorpay/blade/pull/<PR_NUMBER>.dif
 Fetch status checks once and extract both CI status and Storybook URL:
 
 ```bash
-gh pr view <PR_NUMBER> --repo razorpay/blade --json statusCheckRollup --jq '{
-  ci_status: [.statusCheckRollup[] | {name: (if .name != "" then .name else .context end), status: (if .conclusion != "" then .conclusion else .state end)}],
-  storybook_url: (.statusCheckRollup[] | select(.context == "Storybook Publish: blade") | .targetUrl)
-}'
+gh pr checks <PR_NUMBER> --repo razorpay/blade
+```
+
+#### If checks are failing / skipped, get the details from the checks on why they are failing / skipped
+
+Use the following command (replace `<JOB_ID>` with the job id from the previous `gh pr checks` output):
+
+```bash
+gh run view --job <JOB_ID> --repo razorpay/blade
 ```
 
 ### 2. UI Review the Changes (if ShouldReviewUI is true)
