@@ -8,7 +8,7 @@ import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
 import getIn from '~utils/lodashButBetter/get';
 import useInteraction from '~utils/useInteraction';
-import type { IconColors, IconComponent, IconProps } from '~components/Icons';
+import type { IconColors, IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -28,7 +28,6 @@ import type {
   BaseTextSizes,
   TextColors,
 } from '~components/Typography/BaseText/types';
-import type { IconSize } from '~components/Icons';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
