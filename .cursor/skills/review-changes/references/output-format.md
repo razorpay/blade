@@ -29,6 +29,6 @@ This PR adds a new Button variant and updates the DatePicker component.
 
 ### Storybook Preview
 
-https://61c19ee8d3d282003ac1d81c-abcdef.chromatic.com/
+[https://61c19ee8d3d282003ac1d81c-abcdef.chromatic.com/](https://61c19ee8d3d282003ac1d81c-abcdef.chromatic.com/)
 
 </OutputFormat>
