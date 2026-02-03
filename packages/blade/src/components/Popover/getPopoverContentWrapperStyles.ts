@@ -23,7 +23,6 @@ const getPopoverContentWrapperStyles = ({
     borderColor: theme.colors.popup.border.gray.subtle,
     borderStyle: 'solid',
     boxShadow: isReactNative() ? undefined : castWebType(theme.elevation.midRaised),
-    backdropFilter: isReactNative() ? undefined : 'blur(6px)',
     ...styles,
   };
 };
