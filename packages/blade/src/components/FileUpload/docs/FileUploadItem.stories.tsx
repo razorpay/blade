@@ -1,10 +1,13 @@
+import React, { useState } from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import type { FileUploadItemProps } from '../FileUploadItem';
 import { FileUploadItem } from '../FileUploadItem';
 import type { BladeFile } from '../types';
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Heading } from '~components/Typography/Heading';
+import { Text } from '~components/Typography/Text';
 
 const Page = (): React.ReactElement => {
   return (
@@ -13,17 +16,12 @@ const Page = (): React.ReactElement => {
       componentDescription="FileUploadItem is a sub-component of FileUpload that displays individual file items with their upload status, actions, and progress."
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=78670-22400&t=iCPjenOx6kthCZaE-1&scaling=min-zoom&page-id=74796%3A315549&mode=design"
-    >
-    </StoryPageWrapper>
+    />
   );
 };
 
 // Helper to create a mock BladeFile
-const createMockFile = (
-  name: string,
-  size: number,
-  overrides?: Partial<BladeFile>,
-): BladeFile => {
+const createMockFile = (name: string, size: number, overrides?: Partial<BladeFile>): BladeFile => {
   const file = new File([''], name, { type: 'application/octet-stream' }) as BladeFile;
   Object.defineProperty(file, 'size', { value: size });
   return {
@@ -70,8 +68,8 @@ SuccessState.storyName = 'Success State';
 SuccessState.args = {
   file: createMockFile('document.pdf', 1024 * 500, { status: 'success' }),
   size: 'medium',
-  onRemove: ({ file }) => alert(`Remove: ${file.name}`),
-  onPreview: ({ file }) => alert(`Preview: ${file.name}`),
+  onRemove: ({ file }) => action('onRemove')(file.name),
+  onPreview: ({ file }) => action('onPreview')(file.name),
 };
 
 // Success State with Preview
@@ -80,8 +78,8 @@ SuccessWithPreview.storyName = 'Success State with Preview';
 SuccessWithPreview.args = {
   file: createMockFile('image.png', 1024 * 1024 * 1.5, { status: 'success' }),
   size: 'medium',
-  onPreview: ({ file }) => alert(`Preview: ${file.name}`),
-  onRemove: ({ file }) => alert(`Remove: ${file.name}`),
+  onPreview: ({ file }) => action('onPreview')(file.name),
+  onRemove: ({ file }) => action('onRemove')(file.name),
 };
 
 // Uploading State
@@ -93,7 +91,7 @@ UploadingState.args = {
     uploadPercent: 45,
   }),
   size: 'medium',
-  onDismiss: ({ file }) => alert(`Dismiss: ${file.name}`),
+  onDismiss: ({ file }) => action('onDismiss')(file.name),
 };
 
 // Uploading State (Indeterminate)
@@ -105,7 +103,7 @@ UploadingIndeterminate.args = {
     // No uploadPercent - will show indeterminate progress
   }),
   size: 'medium',
-  onDismiss: ({ file }) => alert(`Dismiss: ${file.name}`),
+  onDismiss: ({ file }) => action('onDismiss')(file.name),
 };
 
 // Error State
@@ -117,7 +115,7 @@ ErrorState.args = {
     errorText: 'Upload failed. Please try again.',
   }),
   size: 'medium',
-  onReupload: ({ file }) => alert(`Reupload: ${file.name}`),
+  onReupload: ({ file }) => action('onReupload')(file.name),
 };
 
 // Large Size
@@ -126,12 +124,14 @@ LargeSize.storyName = 'Large Size';
 LargeSize.args = {
   file: createMockFile('report.pdf', 1024 * 1024 * 3.5, { status: 'success' }),
   size: 'large',
-  onPreview: ({ file }) => alert(`Preview: ${file.name}`),
-  onRemove: ({ file }) => alert(`Remove: ${file.name}`),
+  onPreview: ({ file }) => action('onPreview')(file.name),
+  onRemove: ({ file }) => action('onRemove')(file.name),
 };
 
 // All States
 const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
+  const [lastAction, setLastAction] = useState<string>('');
+
   const successFile = createMockFile('document.pdf', 1024 * 500, { status: 'success' });
   const uploadingFile = createMockFile('uploading.zip', 1024 * 1024 * 10, {
     status: 'uploading',
@@ -144,26 +144,34 @@ const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
 
   return (
     <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.4">
+      <Box
+        padding="spacing.3"
+        backgroundColor="surface.background.gray.moderate"
+        borderRadius="medium"
+      >
+        <Text weight="semibold">Last Action: {lastAction}</Text>
+      </Box>
+
       <Heading size="small">Success State</Heading>
       <FileUploadItem
         file={successFile}
         size="medium"
-        onPreview={({ file }) => alert(`Preview: ${file.name}`)}
-        onRemove={({ file }) => alert(`Remove: ${file.name}`)}
+        onPreview={({ file }) => setLastAction(`onPreview: ${file.name}`)}
+        onRemove={({ file }) => setLastAction(`onRemove: ${file.name}`)}
       />
 
       <Heading size="small">Uploading State</Heading>
       <FileUploadItem
         file={uploadingFile}
         size="medium"
-        onDismiss={({ file }) => alert(`Dismiss: ${file.name}`)}
+        onDismiss={({ file }) => setLastAction(`onDismiss: ${file.name}`)}
       />
 
       <Heading size="small">Error State</Heading>
       <FileUploadItem
         file={errorFile}
         size="medium"
-        onReupload={({ file }) => alert(`Reupload: ${file.name}`)}
+        onReupload={({ file }) => setLastAction(`onReupload: ${file.name}`)}
       />
     </Box>
   );
@@ -171,4 +179,3 @@ const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
 
 export const AllStates = AllStatesTemplate.bind({});
 AllStates.storyName = 'All States';
-
