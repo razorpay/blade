@@ -172,8 +172,8 @@ const Popover = ({
                     context={context}
                     width={ARROW_WIDTH}
                     height={ARROW_HEIGHT}
-                    fillColor={theme.colors.popup.background.subtle}
-                    strokeColor={theme.colors.popup.border.subtle}
+                    fillColor={theme.colors.popup.background.gray.moderate}
+                    strokeColor={theme.colors.popup.border.gray.subtle}
                   />
                 }
               >

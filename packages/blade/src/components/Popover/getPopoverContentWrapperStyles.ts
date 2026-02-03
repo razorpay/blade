@@ -17,12 +17,13 @@ const getPopoverContentWrapperStyles = ({
     width: '100%',
     maxWidth: makeSpace(isMobile ? 288 : 328),
     position: isReactNative() ? 'absolute' : 'relative',
-    backgroundColor: theme.colors.popup.background.subtle,
+    backgroundColor: theme.colors.popup.background.gray.moderate,
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.large),
-    borderColor: theme.colors.popup.border.subtle,
+    borderColor: theme.colors.popup.border.gray.subtle,
     borderStyle: 'solid',
     boxShadow: isReactNative() ? undefined : castWebType(theme.elevation.midRaised),
+    backdropFilter: isReactNative() ? undefined : 'blur(6px)',
     ...styles,
   };
 };

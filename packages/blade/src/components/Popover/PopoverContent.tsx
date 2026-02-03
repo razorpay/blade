@@ -44,7 +44,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
       flexDirection="row"
       flexWrap={isReactNative() ? 'wrap' : 'nowrap'}
       alignItems="center"
-      gap="spacing.3"
+      gap="spacing.2"
     >
       {titleLeading
         ? React.cloneElement(titleLeading as React.ReactElement, { size: 'large' })
@@ -76,7 +76,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         isVisible={isVisible}
         isMobile={isMobile}
       >
-        <BaseBox padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
+        <BaseBox padding="spacing.5" display="flex" flexDirection="column" gap="spacing.5">
           <PopoverHeader title={title} titleLeading={titleLeading} />
           <BaseBox>{children}</BaseBox>
           {footer ? <BaseBox>{footer}</BaseBox> : null}
