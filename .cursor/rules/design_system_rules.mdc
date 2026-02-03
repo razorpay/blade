@@ -1,0 +1,431 @@
+---
+description: Design system rules for integrating Figma designs with the Blade design system using MCP
+globs: 
+alwaysApply: false
+---
+
+# Blade Design System Rules
+
+This document provides comprehensive rules for integrating Figma designs with the Blade design system codebase.
+
+## 1. Token Definitions
+
+### Location & Structure
+Design tokens are defined in `packages/blade/src/tokens/`:
+
+```
+tokens/
+├── global/           # Global platform-agnostic tokens
+│   ├── colors.ts     # Color primitives (chromatic & neutral scales)
+│   ├── spacing.ts    # Spacing scale (0-11)
+│   ├── typography.ts # Font sizes, weights, line heights
+│   ├── motion.ts     # Animation duration, delay, easing
+│   ├── border.ts     # Border widths and radii
+│   ├── blur.ts       # Background blur values
+│   ├── breakpoints.ts # Responsive breakpoints
+│   ├── elevation/    # Shadow definitions (web/native split)
+│   ├── fontFamily/   # Font family definitions (web/native split)
+│   └── opacity.ts    # Opacity scale
+└── theme/
+    ├── bladeTheme.ts # Main theme with semantic tokens
+    ├── theme.ts      # Theme type definitions
+    └── createTheme.ts # Theme creation utilities
+```
+
+### Token Format
+
+**Spacing Scale** (use `spacing.X` in components):
+```typescript
+spacing: {
+  0: 0,    // 0px
+  1: 2,    // 2px
+  2: 4,    // 4px
+  3: 8,    // 8px
+  4: 12,   // 12px
+  5: 16,   // 16px
+  6: 20,   // 20px
+  7: 24,   // 24px
+  8: 32,   // 32px
+  9: 40,   // 40px
+  10: 48,  // 48px
+  11: 56,  // 56px
+}
+```
+
+**Color Structure** (semantic tokens):
+```typescript
+colors: {
+  onLight: {
+    surface: { background, border, text, icon },
+    feedback: { background, border, text, icon },
+    interactive: { background, border, text, icon },
+    overlay: { background },
+    popup: { background, border },
+    data: { background: { categorical, sequential } }
+  },
+  onDark: { /* same structure */ }
+}
+```
+
+**Typography Scale**:
+- Font sizes: `25` (10px) to `1100` (72px desktop / 40px mobile)
+- Font weights: `regular` (400), `medium` (500), `semibold` (600), `bold` (700)
+- Font families: `Inter` (text), `TASA Orbiter` (heading), `Menlo` (code)
+
+**Motion Tokens**:
+- Durations: `2xquick` (80ms) to `2xgentle` (960ms)
+- Easings: `linear`, `entrance`, `exit`, `standard`, `emphasized`, `overshoot`, `shake`
+
+## 2. Component Library
+
+### Location
+Components are in `packages/blade/src/components/`:
+
+### Component Architecture Pattern
+Each component follows this structure:
+
+```
+ComponentName/
+├── _decisions/
+│   └── decisions.md       # API decisions documentation
+├── __tests__/
+│   ├── ComponentName.web.test.tsx
+│   ├── ComponentName.native.test.tsx
+│   └── __snapshots__/
+├── ComponentName.tsx      # Main component (or .web.tsx/.native.tsx)
+├── ComponentName.stories.tsx  # Storybook stories
+├── _KitchenSink.ComponentName.stories.tsx  # Kitchen sink stories
+├── componentTokens.ts     # Component-specific token mappings
+├── types.ts              # TypeScript types
+├── StyledComponentName.web.tsx   # Styled component (web)
+├── StyledComponentName.native.tsx # Styled component (native)
+├── styles.ts or styles.web.ts/styles.native.ts
+└── index.ts              # Public exports
+```
+
+### Component Implementation Pattern
+
+```tsx
+import React from 'react';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { BladeElementRef, TestID } from '~utils/types';
+
+type ComponentProps = {
+  variant?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
+  isDisabled?: boolean;
+  children: React.ReactNode;
+} & TestID & StyledPropsBlade;
+
+const _Component: React.ForwardRefRenderFunction<BladeElementRef, ComponentProps> = (
+  { children, variant = 'primary', size = 'medium', isDisabled = false, ...rest },
+  ref,
+) => {
+  return (
+    <StyledComponent
+      {...getStyledProps(rest)}
+      ref={ref}
+      variant={variant}
+      size={size}
+      isDisabled={isDisabled}
+    >
+      {children}
+    </StyledComponent>
+  );
+};
+
+const Component = assignWithoutSideEffects(React.forwardRef(_Component), {
+  displayName: 'Component',
+  componentId: 'Component',
+});
+
+export { Component };
+export type { ComponentProps };
+```
+
+### Documentation
+- Storybook: Components have `.stories.tsx` files
+- API Decisions: `_decisions/decisions.md` in each component folder
+- Docs site: `packages/blade/docs/` contains MDX documentation
+
+## 3. Frameworks & Libraries
+
+### Core Stack
+- **UI Framework**: React (web) & React Native (mobile)
+- **Styling**: `styled-components` (web & native)
+- **Build**: Rollup (`rollup.config.mjs`)
+- **Testing**: Jest with React Testing Library
+- **Storybook**: For component documentation and development
+
+### Key Dependencies
+```json
+{
+  "styled-components": "^5.x",
+  "framer-motion": "11.12.0",
+  "@floating-ui/react": "for tooltips/popovers",
+  "react-native-reanimated": "for native animations"
+}
+```
+
+## 4. Asset Management
+
+### Fonts
+- Location: `packages/blade/fonts/` (WOFF2 files)
+- CSS: `packages/blade/fonts.css` (font-face declarations with fallbacks)
+- Fonts used: Inter, TASA Orbiter
+
+### Images
+- Component images: `packages/blade/src/components/<Component>/_decisions/` (PNGs for documentation)
+- Branding: `/branding/` (logos, favicons)
+
+## 5. Icon System
+
+### Location
+Icons are in `packages/blade/src/components/Icons/`:
+
+### Structure
+```
+Icons/
+├── _Svg/              # Base SVG components (web/native)
+├── useIconProps/      # Hook for icon props
+├── iconMap.ts         # Icon name to component mapping
+├── types.ts           # Icon types
+└── [IconName]Icon/
+    ├── [IconName]Icon.tsx
+    └── index.ts
+```
+
+### Icon Implementation Pattern
+```tsx
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const _ActivityIcon: IconComponent = ({ size, color, ...styledProps }) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M9 1C9.43..."
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+const ActivityIcon = assignWithoutSideEffects(_ActivityIcon, {
+  componentId: 'ActivityIcon',
+});
+
+export default ActivityIcon;
+```
+
+### Icon Usage
+```tsx
+import { ActivityIcon, CheckIcon } from '@razorpay/blade/components';
+
+<Button icon={ActivityIcon}>Click me</Button>
+<ActivityIcon size="medium" color="interactive.icon.primary.normal" />
+```
+
+### Icon Naming Convention
+- Format: `[Name]Icon` (PascalCase)
+- Filled variants: `[Name]FilledIcon`
+- Examples: `ActivityIcon`, `CheckCircleIcon`, `PaymentGatewayFilledIcon`
+
+## 6. Styling Approach
+
+### Styled Components
+Blade uses `styled-components` for all styling:
+
+```tsx
+// StyledComponent.web.tsx
+import styled from 'styled-components';
+import { getComponentStyles } from './styles';
+
+const StyledComponent = styled.div<{ variant: string }>(
+  ({ theme, variant }) => getComponentStyles({ theme, variant })
+);
+```
+
+### Theme Access
+```tsx
+import { useTheme } from '@razorpay/blade/components';
+
+const MyComponent = () => {
+  const { theme } = useTheme();
+  
+  return (
+    <Box backgroundColor={theme.colors.surface.background.gray.intense}>
+      Content
+    </Box>
+  );
+};
+```
+
+### Responsive Styling
+Use the `Box` component with responsive props:
+
+```tsx
+<Box 
+  padding={{ base: 'spacing.3', m: 'spacing.5', l: 'spacing.7' }}
+  display="flex"
+  flexDirection={{ base: 'column', m: 'row' }}
+/>
+```
+
+### Breakpoints
+```typescript
+breakpoints: {
+  base: 0,     // Mobile first (no media query)
+  xs: 320,     // Small mobiles
+  s: 480,      // Mobiles & small tablets
+  m: 768,      // Tablets (treat as desktop cutoff)
+  l: 1024,     // Desktop
+  xl: 1200,    // HD Desktop
+}
+```
+
+## 7. Project Structure
+
+### Monorepo Layout
+```
+blade/
+├── packages/
+│   ├── blade/              # Main design system package
+│   │   ├── src/
+│   │   │   ├── components/ # UI components
+│   │   │   ├── tokens/     # Design tokens
+│   │   │   └── utils/      # Utility functions
+│   │   ├── docs/           # MDX documentation
+│   │   └── codemods/       # Migration tools
+│   ├── blade-core/         # Core utilities package
+│   ├── blade-mcp/          # MCP integration
+│   ├── blade-svelte/       # Svelte bindings
+│   └── eslint-plugin-blade/ # ESLint rules
+├── rfcs/                   # Design decisions & RFCs
+├── .cursor/rules/          # Cursor AI rules
+└── branding/               # Logo assets
+```
+
+### Key Entry Points
+- Components: `@razorpay/blade/components`
+- Tokens: `@razorpay/blade/tokens`
+- Utils: `@razorpay/blade/utils`
+
+## 8. Cross-Platform Patterns
+
+### Platform-Specific Files
+Use `.web.tsx` and `.native.tsx` suffixes:
+```
+Component.web.tsx    # Web implementation
+Component.native.tsx # React Native implementation
+```
+
+### Platform Utilities
+```tsx
+import type { Platform } from '~utils';
+
+// Type that varies by platform
+type ComponentProps = {
+  onClick?: Platform.Select<{
+    web: (event: React.MouseEvent) => void;
+    native: (event: GestureResponderEvent) => void;
+  }>;
+};
+```
+
+## 9. Component Conventions
+
+### Common Props
+- `variant`: Visual variation (`'primary' | 'secondary' | 'tertiary'`)
+- `size`: Size options (`'xsmall' | 'small' | 'medium' | 'large'`)
+- `color`: Color intent (`'primary' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral'`)
+- `isDisabled`: Disabled state
+- `isLoading`: Loading state
+- `isFullWidth`: Full width layout
+- `testID`: For testing
+- `accessibilityLabel`: For screen readers
+
+### Compound Components
+Blade uses compound component patterns:
+```tsx
+<Card>
+  <CardHeader>
+    <CardHeaderLeading title="Title" subtitle="Subtitle" />
+  </CardHeader>
+  <CardBody>Content</CardBody>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+```
+
+### Component IDs
+Every component needs `componentId` and `displayName`:
+```tsx
+const Component = assignWithoutSideEffects(React.forwardRef(_Component), {
+  displayName: 'Component',
+  componentId: 'Component',
+});
+```
+
+## 10. BladeProvider Setup
+
+Required at app root:
+```tsx
+import { BladeProvider, bladeTheme } from '@razorpay/blade/components';
+import '@razorpay/blade/fonts.css';
+
+function App() {
+  return (
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+      {/* Your app */}
+    </BladeProvider>
+  );
+}
+```
+
+## 11. Figma to Code Mapping
+
+### Color Mapping
+| Figma Token | Code Token |
+|-------------|------------|
+| surface/background/gray/subtle | `surface.background.gray.subtle` |
+| feedback/positive/intense | `feedback.background.positive.intense` |
+| interactive/primary/default | `interactive.background.primary.default` |
+
+### Spacing Mapping
+| Figma | Code |
+|-------|------|
+| 2px | `spacing.1` |
+| 4px | `spacing.2` |
+| 8px | `spacing.3` |
+| 12px | `spacing.4` |
+| 16px | `spacing.5` |
+| 20px | `spacing.6` |
+| 24px | `spacing.7` |
+| 32px | `spacing.8` |
+
+### Typography Mapping
+| Figma | Code Component |
+|-------|----------------|
+| Heading/Large | `<Heading size="large">` |
+| Text/Medium/Regular | `<Text size="medium" weight="regular">` |
+| Display/XLarge | `<Display size="xlarge">` |
+
+## 12. Best Practices
+
+1. **Always use design tokens** - Never hardcode colors, spacing, or typography values
+2. **Use Box for layout** - The `Box` component provides responsive, token-based styling
+3. **Follow compound patterns** - Use Header/Body/Footer patterns for complex components
+4. **Platform agnostic first** - Write platform-agnostic code, split only when necessary
+5. **Test on both platforms** - Ensure components work on web and React Native
+6. **Document decisions** - Add `_decisions/decisions.md` for new components
+7. **Use semantic color tokens** - Use `surface.text.gray.normal` not raw color values
