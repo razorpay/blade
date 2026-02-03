@@ -51,7 +51,7 @@ export default {
   title: 'Components/Link',
   component: LinkComponent,
   args: {
-    children: 'Link',
+    children: 'Learn More',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -80,7 +80,7 @@ export const Default = LinkTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {
   variant: 'anchor',
-  children: 'Link',
+  children: 'Learn More',
   onClick: (event): void => {
     console.log('clicked', event);
   },
@@ -190,7 +190,7 @@ export const LinkWithColor = LinkColorsTemplate.bind({});
 LinkWithColor.storyName = 'Link - With Color';
 LinkWithColor.args = {
   variant: 'anchor',
-  children: 'Link',
+  children: 'Learn More',
   href: 'https://github.com/razorpay/blade',
 };
 
