@@ -32,7 +32,8 @@ const StyledLink = styled.button
     },
     '&:focus-visible': {
       '.content-container': {
-        boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
+        outline: `4px solid ${props.focusRingColor}`,
+        outlineOffset: '1px',
       },
     },
     '*': {
