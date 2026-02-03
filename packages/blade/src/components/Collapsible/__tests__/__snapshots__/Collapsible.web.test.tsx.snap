@@ -610,7 +610,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 }
 
 .c1.c1.c1.c1.c1:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -874,7 +875,8 @@ exports[`<Collapsible /> should support adding data-analytics attributes 1`] = `
 }
 
 .c1.c1.c1.c1.c1:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c1.c1.c1.c1.c1 * {

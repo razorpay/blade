@@ -415,7 +415,8 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -2967,7 +2968,8 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c13.c13.c13.c13.c13 * {

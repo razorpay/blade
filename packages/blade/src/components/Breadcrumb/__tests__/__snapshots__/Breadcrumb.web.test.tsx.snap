@@ -123,7 +123,8 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
 }
 
 .c2.c2.c2.c2.c2:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c2.c2.c2.c2.c2 * {
@@ -353,7 +354,8 @@ exports[`<Breadcrumb /> should render 1`] = `
 }
 
 .c2.c2.c2.c2.c2:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c2.c2.c2.c2.c2 * {
@@ -591,7 +593,8 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
 }
 
 .c2.c2.c2.c2.c2:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c2.c2.c2.c2.c2 * {

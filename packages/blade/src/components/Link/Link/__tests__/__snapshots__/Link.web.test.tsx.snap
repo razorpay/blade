@@ -27,7 +27,8 @@ exports[`<Link /> should render button variant of link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -121,7 +122,8 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -216,7 +218,8 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -309,7 +312,8 @@ exports[`<Link /> should render disabled primary color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -402,7 +406,8 @@ exports[`<Link /> should render disabled white color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -495,7 +500,8 @@ exports[`<Link /> should render link with default properties 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -588,7 +594,8 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -725,7 +732,8 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -862,7 +870,8 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -999,7 +1008,8 @@ exports[`<Link /> should render link with icon without text 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1134,7 +1144,8 @@ exports[`<Link /> should render neutral color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1227,7 +1238,8 @@ exports[`<Link /> should render primary color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1320,7 +1332,8 @@ exports[`<Link /> should render white color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1413,7 +1426,8 @@ exports[`<Link /> should render with small size 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {

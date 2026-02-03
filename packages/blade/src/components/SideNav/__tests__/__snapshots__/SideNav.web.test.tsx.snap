@@ -397,7 +397,8 @@ exports[`SideNav should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c6.c6.c6.c6.c6 * {
@@ -439,7 +440,8 @@ exports[`SideNav should render 1`] = `
 }
 
 .c26.c26.c26.c26.c26:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c26.c26.c26.c26.c26 * {

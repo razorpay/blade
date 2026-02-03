@@ -380,13 +380,25 @@ export const LinkShowcase: StoryFn<typeof LinkComponent> = () => {
               borderRadius="medium"
               backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : undefined}
             >
-              <Text size="small" weight="semibold" marginBottom="spacing.3">
+              <Text
+                size="small"
+                weight="semibold"
+                marginBottom="spacing.3"
+                color={color === 'white' ? 'surface.text.staticWhite.normal' : undefined}
+              >
                 Color: {color}
               </Text>
               <BaseBox display="flex" flexDirection="row" gap="spacing.6" alignItems="center">
                 {sizes.map((size) => (
                   <BaseBox key={size} display="flex" flexDirection="column" gap="spacing.2">
-                    <BaseText fontSize={75} color="surface.text.gray.subtle">
+                    <BaseText
+                      fontSize={75}
+                      color={
+                        color === 'white'
+                          ? 'surface.text.staticWhite.muted'
+                          : 'surface.text.gray.subtle'
+                      }
+                    >
                       {size}
                     </BaseText>
                     <LinkComponent
@@ -403,7 +415,14 @@ export const LinkShowcase: StoryFn<typeof LinkComponent> = () => {
                 ))}
                 {/* With Icon */}
                 <BaseBox display="flex" flexDirection="column" gap="spacing.2">
-                  <BaseText fontSize={75} color="surface.text.gray.subtle">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
                     with icon
                   </BaseText>
                   <LinkComponent
@@ -420,7 +439,14 @@ export const LinkShowcase: StoryFn<typeof LinkComponent> = () => {
                 </BaseBox>
                 {/* Icon Only */}
                 <BaseBox display="flex" flexDirection="column" gap="spacing.2">
-                  <BaseText fontSize={75} color="surface.text.gray.subtle">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
                     icon only
                   </BaseText>
                   <LinkComponent
@@ -453,13 +479,25 @@ export const LinkShowcase: StoryFn<typeof LinkComponent> = () => {
               borderRadius="medium"
               backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : undefined}
             >
-              <Text size="small" weight="semibold" marginBottom="spacing.3">
+              <Text
+                size="small"
+                weight="semibold"
+                marginBottom="spacing.3"
+                color={color === 'white' ? 'surface.text.staticWhite.normal' : undefined}
+              >
                 Color: {color}
               </Text>
               <BaseBox display="flex" flexDirection="row" gap="spacing.6" alignItems="center">
                 {sizes.map((size) => (
                   <BaseBox key={size} display="flex" flexDirection="column" gap="spacing.2">
-                    <BaseText fontSize={75} color="surface.text.gray.subtle">
+                    <BaseText
+                      fontSize={75}
+                      color={
+                        color === 'white'
+                          ? 'surface.text.staticWhite.muted'
+                          : 'surface.text.gray.subtle'
+                      }
+                    >
                       {size}
                     </BaseText>
                     <LinkComponent
@@ -474,7 +512,14 @@ export const LinkShowcase: StoryFn<typeof LinkComponent> = () => {
                 ))}
                 {/* With Icon */}
                 <BaseBox display="flex" flexDirection="column" gap="spacing.2">
-                  <BaseText fontSize={75} color="surface.text.gray.subtle">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
                     with icon
                   </BaseText>
                   <LinkComponent
@@ -489,7 +534,14 @@ export const LinkShowcase: StoryFn<typeof LinkComponent> = () => {
                 </BaseBox>
                 {/* Icon Only */}
                 <BaseBox display="flex" flexDirection="column" gap="spacing.2">
-                  <BaseText fontSize={75} color="surface.text.gray.subtle">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
                     icon only
                   </BaseText>
                   <LinkComponent
@@ -503,7 +555,14 @@ export const LinkShowcase: StoryFn<typeof LinkComponent> = () => {
                 </BaseBox>
                 {/* Disabled */}
                 <BaseBox display="flex" flexDirection="column" gap="spacing.2">
-                  <BaseText fontSize={75} color="surface.text.gray.subtle">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
                     disabled
                   </BaseText>
                   <LinkComponent
