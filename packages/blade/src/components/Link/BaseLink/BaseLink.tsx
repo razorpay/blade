@@ -245,7 +245,7 @@ const getProps = ({
       currentInteraction,
       isDisabled,
     }) as BaseTextProps['color'],
-    focusRingColor: getIn(theme.colors, 'interactive.background.primary.faded'),
+    focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
     motionDuration: 'duration.2xquick',
     motionEasing: 'easing.standard',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
