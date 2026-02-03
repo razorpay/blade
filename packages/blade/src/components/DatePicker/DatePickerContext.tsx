@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import type { ReactNode } from 'react';
 
 interface DatePickerContextType {
@@ -19,10 +19,14 @@ export const DatePickerProvider: React.FC<DatePickerProviderProps> = ({
   isDatePickerBodyOpen,
   displayFormat,
 }) => {
-  const value: DatePickerContextType = {
-    isDatePickerBodyOpen,
-    displayFormat,
-  };
+  // Memoize context value to prevent infinite re-renders in consumers
+  const value = useMemo<DatePickerContextType>(
+    () => ({
+      isDatePickerBodyOpen,
+      displayFormat,
+    }),
+    [isDatePickerBodyOpen, displayFormat],
+  );
 
   return <DatePickerContext.Provider value={value}>{children}</DatePickerContext.Provider>;
 };
