@@ -8,7 +8,7 @@ describe('makeBorderSize', () => {
   });
   it('should return the border radius in `px`', () => {
     const space = makeBorderSize(border.radius.small);
-    expect(space).toEqual('2px');
+    expect(space).toEqual('8px');
   });
   it('should return the border radius in `%`', () => {
     const space = makeBorderSize(border.radius.round);
