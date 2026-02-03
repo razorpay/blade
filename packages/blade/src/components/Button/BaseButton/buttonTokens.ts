@@ -4,9 +4,10 @@ import type { Theme } from '~components/BladeProvider';
 import type { IconSize } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner';
 import type { Size } from '~tokens/global';
-import { size } from '~tokens/global';
+import { colors, size } from '~tokens/global';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { makeSize } from '~utils';
+import { DotNotationToken } from '~utils/lodashButBetter/get';
 
 export type ButtonMinHeight = Size[28] | Size[32] | Size[36] | Size[48];
 
@@ -20,78 +21,234 @@ export type ButtonTypography = {
   >;
 };
 
-const backgroundColor = (property: 'background' | 'border') => {
-  const isBorder = property === 'border';
+const createLinearGradient = (color1: string, color2: string) => {
+  return `linear-gradient(107deg, ${color1} 1.43%, ${color2} 45.16%)`;
+};
+
+const backgroundGradient = (color: FeedbackColors | 'primary') => {
+  const gradientMap = {
+    primary: {
+      default: {
+        0: colors.chromatic.azure[400],
+        100: colors.chromatic.azure[500],
+      },
+      highlighted: {
+        0: colors.chromatic.azure[400],
+        100: colors.chromatic.azure[600],
+      },
+    },
+    positive: {
+      default: {
+        0: colors.chromatic.emerald[400],
+        100: colors.chromatic.emerald[600],
+      },
+      highlighted: {
+        0: colors.chromatic.emerald[400],
+        100: colors.chromatic.emerald[700],
+      },
+    },
+    negative: {
+      default: {
+        0: colors.chromatic.crimson[400],
+        100: colors.chromatic.crimson[600],
+      },
+      highlighted: {
+        0: colors.chromatic.crimson[500],
+        100: colors.chromatic.crimson[700],
+      },
+    },
+    // TODO: update token colors
+    information: {
+      default: {
+        0: colors.chromatic.crimson[400],
+        100: colors.chromatic.crimson[600],
+      },
+      highlighted: {
+        0: colors.chromatic.crimson[500],
+        100: colors.chromatic.crimson[700],
+      },
+    },
+    neutral: {
+      default: {
+        0: colors.chromatic.crimson[400],
+        100: colors.chromatic.crimson[600],
+      },
+      highlighted: {
+        0: colors.chromatic.crimson[500],
+        100: colors.chromatic.crimson[700],
+      },
+    },
+    notice: {
+      default: {
+        0: colors.chromatic.crimson[400],
+        100: colors.chromatic.crimson[600],
+      },
+      highlighted: {
+        0: colors.chromatic.crimson[500],
+        100: colors.chromatic.crimson[700],
+      },
+    },
+  } as const;
+
   return {
     base: {
       primary: {
-        default: `interactive.${property}.primary.default`,
-        highlighted: `interactive.${property}.primary.highlighted`,
-        disabled: `interactive.${property}.primary.disabled`,
+        default: createLinearGradient(
+          gradientMap[color].default[0],
+          gradientMap[color].default[100],
+        ),
+        highlighted: createLinearGradient(
+          gradientMap[color].highlighted[0],
+          gradientMap[color].highlighted[100],
+        ),
+        disabled: `interactive.background.${color}.disabled`,
       },
       secondary: {
-        default: isBorder ? 'interactive.border.primary.default' : 'transparent',
-        highlighted: isBorder
-          ? `interactive.border.primary.default`
-          : `interactive.background.primary.faded`,
-        disabled: isBorder ? `interactive.border.primary.disabled` : `transparent`,
+        default: 'surface.background.gray.intense',
+        highlighted: 'surface.background.gray.intense',
+        disabled: 'interactive.background.staticWhite.ghost',
       },
       tertiary: {
-        default: `interactive.${property}.gray.default`,
-        highlighted: `interactive.${property}.gray.highlighted`,
-        disabled: `interactive.${property}.gray.disabled`,
+        default: 'surface.background.gray.intense',
+        highlighted: 'surface.background.gray.intense',
+        disabled: 'interactive.background.staticWhite.ghost',
       },
       transparent: {
         default: 'transparent',
-        highlighted: `interactive.${property}.gray.faded`,
-        disabled: `interactive.${property}.gray.disabled`,
+        highlighted: 'interactive.background.gray.faded',
+        disabled: 'interactive.background.gray.disabled',
       },
     },
     white: {
       primary: {
-        default: `interactive.${property}.staticWhite.default`,
-        highlighted: `interactive.${property}.staticWhite.highlighted`,
-        disabled: `interactive.${property}.staticWhite.disabled`,
+        default: 'interactive.background.staticWhite.default',
+        highlighted: 'interactive.background.staticWhite.highlighted',
+        disabled: 'interactive.background.staticWhite.disabled',
       },
       secondary: {
-        default: isBorder ? 'interactive.border.staticWhite.highlighted' : 'transparent',
-        highlighted: isBorder
-          ? 'interactive.border.staticWhite.highlighted'
-          : 'interactive.background.staticWhite.faded',
-        disabled: isBorder ? `interactive.border.staticWhite.disabled` : 'transparent',
+        default: 'interactive.background.staticWhite.faded',
+        highlighted: 'interactive.background.staticBlack.faded',
+        disabled: 'interactive.background.gray.disabled',
       },
       tertiary: {
-        default: `interactive.background.staticWhite.faded`,
-        highlighted: `interactive.background.staticWhite.fadedHighlighted`,
-        disabled: `interactive.background.staticWhite.disabled`,
+        default: 'interactive.background.staticWhite.faded',
+        highlighted: 'interactive.background.staticBlack.faded',
+        disabled: 'interactive.background.gray.disabled',
       },
     },
-    transparent: {
+  };
+};
+
+type BoxShadowValue = {
+  y: number;
+  blur: number;
+  spread: number;
+  color: DotNotationToken<Theme['colors']>;
+};
+
+type ButtonBoxShadow = BoxShadowValue[];
+
+/**
+ * Box-shadow tokens for buttons (includes border + 3D effects)
+ * Each shadow is: inset 0 {y}px {blur}px {spread}px {color}
+ */
+const boxShadow = (
+  color: FeedbackColors | 'primary',
+): {
+  base: Record<
+    'primary' | 'secondary' | 'tertiary' | 'transparent',
+    Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>
+  >;
+  white: Record<
+    'primary' | 'secondary' | 'tertiary',
+    Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>
+  >;
+} => {
+  return {
+    base: {
+      primary: {
+        default: [
+          { y: -1.5, blur: 0, spread: 0, color: `interactive.border.${color}.highlighted` },
+          { y: 0, blur: 0, spread: 0.5, color: `interactive.border.${color}.default` },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
+        ],
+        highlighted: [
+          { y: -1.5, blur: 0, spread: 0, color: `interactive.border.${color}.highlighted` },
+          { y: 0, blur: 0, spread: 0.5, color: `interactive.border.${color}.highlighted` },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
+        ],
+        disabled: [],
+      },
+      secondary: {
+        default: [
+          { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.default' },
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
+        ],
+        highlighted: [
+          { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.default' },
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
+        ],
+        disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
+      },
       tertiary: {
-        default: 'transparent',
-        highlighted: 'interactive.background.gray.faded',
-        disabled: `interactive.background.staticWhite.disabled`,
+        default: [
+          { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.default' },
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
+        ],
+        highlighted: [
+          { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.default' },
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
+        ],
+        disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
+      },
+      transparent: {
+        default: [],
+        highlighted: [],
+        disabled: [],
       },
     },
-    color: (color: FeedbackColors) => {
-      return {
-        primary: {
-          default: `interactive.${property}.${color}.default`,
-          highlighted: `interactive.${property}.${color}.highlighted`,
-          disabled: `interactive.${property}.${color}.disabled`,
-        },
-        secondary: {
-          default: isBorder
-            ? (`interactive.border.${color}.default` as const)
-            : (`interactive.background.${color}.faded` as const),
-          highlighted: isBorder
-            ? (`interactive.border.${color}.default` as const)
-            : (`interactive.background.${color}.fadedHighlighted` as const),
-          disabled: `interactive.${property}.${color}.disabled`,
-        },
-      } as const;
+    white: {
+      primary: {
+        default: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+        ],
+        highlighted: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+        ],
+        disabled: [],
+      },
+      secondary: {
+        default: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
+        ],
+        highlighted: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
+        ],
+        disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
+      },
+      tertiary: {
+        default: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
+        ],
+        highlighted: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
+        ],
+        disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
+      },
     },
-  } as const;
+  };
 };
 
 const textColor = (property: 'icon' | 'text') => {
@@ -103,9 +260,9 @@ const textColor = (property: 'icon' | 'text') => {
         disabled: `interactive.${property}.primary.disabled`,
       },
       secondary: {
-        default: `interactive.${property}.primary.subtle`,
-        highlighted: `interactive.${property}.primary.subtle`,
-        disabled: `interactive.${property}.primary.disabled`,
+        default: `interactive.${property}.gray.normal`,
+        highlighted: `interactive.${property}.gray.normal`,
+        disabled: `interactive.${property}.gray.disabled`,
       },
       tertiary: {
         default: `interactive.${property}.gray.normal`,
@@ -236,9 +393,9 @@ const buttonSizeToSpinnerSizeMap: Record<
   SpinnerProps['size']
 > = {
   xsmall: 'medium',
-  small: 'large',
-  medium: 'large',
-  large: 'xlarge',
+  small: 'medium',
+  medium: 'medium',
+  large: 'large',
 };
 
 const buttonIconPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
@@ -248,9 +405,48 @@ const buttonIconPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Them
   large: 3,
 };
 
+/**
+ * Spinner color mapping based on button variant and color
+ */
+const spinnerColor = {
+  base: {
+    primary: 'primary',
+    secondary: 'neutral',
+    tertiary: 'neutral',
+    transparent: 'primary',
+  },
+  white: {
+    primary: 'white',
+    secondary: 'white',
+    tertiary: 'white',
+  },
+  positive: {
+    primary: 'positive',
+    secondary: 'positive',
+  },
+  negative: {
+    primary: 'negative',
+    secondary: 'negative',
+  },
+  notice: {
+    primary: 'notice',
+    secondary: 'notice',
+  },
+  information: {
+    primary: 'information',
+    secondary: 'information',
+  },
+  neutral: {
+    primary: 'neutral',
+    secondary: 'neutral',
+  },
+} as const;
+
 export {
-  backgroundColor,
+  boxShadow,
+  backgroundGradient,
   textColor,
+  spinnerColor,
   typography,
   minHeight,
   buttonSizeToIconSizeMap,
@@ -260,3 +456,5 @@ export {
   buttonPadding,
   buttonIconOnlyHeightWidth,
 };
+
+export type { ButtonBoxShadow };

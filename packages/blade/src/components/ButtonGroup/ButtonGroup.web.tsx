@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import type { ButtonGroupProps } from './types';
@@ -10,7 +11,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeBorderSize } from '~utils';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
-import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { Theme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -27,13 +27,9 @@ const getDividerColorToken = ({
     return 'surface.border.gray.subtle';
   }
 
+  // TODO(spark): Migrate this later
   if (variant === 'secondary') {
-    return getBackgroundColorToken({
-      property: 'border',
-      variant,
-      color,
-      state: isDisabled ? 'disabled' : 'default',
-    });
+    return `surface.border.gray.muted`;
   }
 
   return 'surface.border.gray.muted';

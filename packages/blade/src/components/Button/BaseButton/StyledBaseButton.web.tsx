@@ -19,17 +19,15 @@ const StyledBaseButton = styled.button
   return {
     ...getStyledBaseButtonStyles(props),
     display: 'inline-flex',
-    transitionProperty: 'background-color, border-color, box-shadow',
+    transitionProperty: 'background, box-shadow',
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     transitionDuration: castWebType(
       makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
     ),
     position: 'relative',
     '&:hover': {
-      backgroundColor: props.hoverBackgroundColor,
-      ...(props.variant !== 'tertiary' && {
-        borderColor: props.hoverBorderColor,
-      }),
+      background: props.hoverBackgroundColor,
+      boxShadow: props.hoverBoxShadow,
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {
@@ -38,10 +36,8 @@ const StyledBaseButton = styled.button
         }),
     },
     '&:active': {
-      backgroundColor: props.focusBackgroundColor,
-      ...(props.variant !== 'tertiary' && {
-        borderColor: props.focusBorderColor,
-      }),
+      background: props.focusBackgroundColor,
+      boxShadow: props.focusBoxShadow,
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {
@@ -50,12 +46,11 @@ const StyledBaseButton = styled.button
         }),
     },
     '&:focus-visible': {
-      backgroundColor: props.focusBackgroundColor,
-      ...(props.variant !== 'tertiary' && {
-        borderColor: props.focusBorderColor,
-      }),
+      background: props.focusBackgroundColor,
       outline: `1px solid ${props.theme.colors.surface.background.primary.subtle}`,
-      boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
+      boxShadow: props.focusBoxShadow
+        ? `0px 0px 0px 4px ${props.focusRingColor}, ${props.focusBoxShadow}`
+        : `0px 0px 0px 4px ${props.focusRingColor}`,
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {

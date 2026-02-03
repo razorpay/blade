@@ -4,10 +4,12 @@ import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonTypography } from './buttonTokens';
+import type { ButtonTypography, ButtonBoxShadow } from './buttonTokens';
 import {
   textColor,
-  backgroundColor,
+  backgroundGradient,
+  boxShadow,
+  spinnerColor,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
@@ -130,15 +132,16 @@ const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
 };
 
 export const getBackgroundColorToken = ({
-  property,
   variant,
   state,
   color,
-}: BaseButtonColorTokenModifiers & {
-  property: 'background' | 'border';
-}): DotNotationToken<Theme['colors']> => {
+}: BaseButtonColorTokenModifiers): string => {
   const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
-  const tokens = backgroundColor(property);
+
+  // For white and transparent colors, we use 'primary' as the base color
+  // since the actual token lookup uses the white/transparent specific paths
+  const gradientColor = color === 'white' || color === 'transparent' || !color ? 'primary' : color;
+  const tokens = backgroundGradient(gradientColor);
 
   if (color === 'white') {
     return tokens.white[variant][_state];
@@ -150,7 +153,7 @@ export const getBackgroundColorToken = ({
         `Transparent color can only be used with tertiary variant but received "${variant}"`,
       );
     }
-    return tokens.transparent.tertiary[_state];
+    return tokens.base.transparent[_state];
   }
 
   if (color && color !== 'primary') {
@@ -159,7 +162,31 @@ export const getBackgroundColorToken = ({
         `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
       );
     }
-    return tokens.color(color)[variant][_state];
+  }
+
+  return tokens.base[variant][_state];
+};
+
+export const getBoxShadowToken = ({
+  variant,
+  state,
+  color,
+}: BaseButtonColorTokenModifiers): ButtonBoxShadow => {
+  const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
+  const tokenColor = color === 'white' || color === 'transparent' || !color ? 'primary' : color;
+  const tokens = boxShadow(tokenColor);
+
+  if (color === 'white') {
+    return tokens.white[variant][_state];
+  }
+
+  if (color === 'transparent') {
+    if (variant !== 'tertiary') {
+      throw new Error(
+        `Transparent color can only be used with tertiary variant but received "${variant}"`,
+      );
+    }
+    return tokens.base.transparent[_state];
   }
 
   return tokens.base[variant][_state];
@@ -233,6 +260,37 @@ const getProps = ({
   }
 
   const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
+
+  // Resolve background value - either a gradient string or a token path
+  const resolveBackgroundValue = (value: string): string => {
+    if (value.startsWith('linear-gradient')) {
+      return value;
+    }
+    return getIn(theme.colors, value as DotNotationToken<Theme['colors']>);
+  };
+
+  const getDefaultBackground = (): string => {
+    return resolveBackgroundValue(getBackgroundColorToken({ variant, color, state: 'default' }));
+  };
+
+  const getBoxShadow = (
+    state: 'default' | 'hover' | 'focus' | 'disabled',
+    btnColor: BaseButtonProps['color'],
+  ): string | undefined => {
+    const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state });
+
+    if (shadowTokens.length === 0) {
+      return undefined;
+    }
+
+    const shadows = shadowTokens.map((shadow) => {
+      const resolvedColor = getIn(theme.colors, shadow.color);
+      return `inset 0 ${shadow.y}px ${shadow.blur}px ${shadow.spread}px ${resolvedColor}`;
+    });
+
+    return shadows.join(', ');
+  };
+
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
@@ -266,22 +324,12 @@ const getProps = ({
       ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: childrenString?.trim(),
-    defaultBackgroundColor: getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),
+    defaultBackgroundColor: getDefaultBackground(),
+    defaultBoxShadow: getBoxShadow('default', color),
+    hoverBackgroundColor: resolveBackgroundValue(
+      getBackgroundColorToken({ variant, color, state: 'hover' }),
     ),
-    defaultBorderColor: getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'border', variant, color, state: 'default' }),
-    ),
-    hoverBackgroundColor: getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'background', variant, color, state: 'hover' }),
-    ),
-    hoverBorderColor: getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'border', variant, color, state: 'hover' }),
-    ),
+    hoverBoxShadow: getBoxShadow('hover', color),
     hoverIconColor: getIn(
       theme.colors,
       getTextColorToken({
@@ -291,29 +339,19 @@ const getProps = ({
         state: 'hover',
       }),
     ),
-    focusBackgroundColor: getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'background', variant, color, state: 'focus' }),
+    focusBackgroundColor: resolveBackgroundValue(
+      getBackgroundColorToken({ variant, color, state: 'focus' }),
     ),
-    focusBorderColor: getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'border', variant, color, state: 'focus' }),
-    ),
+    focusBoxShadow: getBoxShadow('focus', color),
     focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
-    borderWidth: variant == 'secondary' ? makeBorderSize(theme.border.width.thin) : '0px',
     borderRadius: makeBorderSize(theme.border.radius.medium),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
   };
 
   if (isDisabled) {
-    const disabledBackgroundColor = getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'background', variant, color, state: 'disabled' }),
-    );
-    const disabledBorderColor = getIn(
-      theme.colors,
-      getBackgroundColorToken({ property: 'border', variant, color, state: 'disabled' }),
+    const disabledBackgroundColor = resolveBackgroundValue(
+      getBackgroundColorToken({ variant, color, state: 'disabled' }),
     );
     props.iconColor = getTextColorToken({
       property: 'icon',
@@ -328,11 +366,11 @@ const getProps = ({
       state: 'disabled',
     }) as BaseTextProps['color'];
     props.defaultBackgroundColor = disabledBackgroundColor;
-    props.defaultBorderColor = disabledBorderColor;
+    props.defaultBoxShadow = getBoxShadow('disabled', color);
     props.hoverBackgroundColor = disabledBackgroundColor;
-    props.hoverBorderColor = disabledBorderColor;
+    props.hoverBoxShadow = getBoxShadow('disabled', color);
     props.focusBackgroundColor = disabledBackgroundColor;
-    props.focusBorderColor = disabledBorderColor;
+    props.focusBoxShadow = getBoxShadow('disabled', color);
   }
 
   return props;
@@ -406,8 +444,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   }, [isLoading, prevLoading]);
 
   const {
-    defaultBorderColor,
     defaultBackgroundColor,
+    defaultBoxShadow,
     minHeight,
     height,
     width,
@@ -415,11 +453,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     buttonPaddingBottom,
     buttonPaddingLeft,
     buttonPaddingRight,
-    focusBorderColor,
+    focusBoxShadow,
     focusBackgroundColor,
     focusRingColor,
     fontSize,
-    hoverBorderColor,
+    hoverBoxShadow,
     hoverBackgroundColor,
     hoverIconColor,
     iconColor,
@@ -429,7 +467,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     lineHeight,
     text,
     textColor,
-    borderWidth,
     borderRadius,
     motionDuration,
     motionEasing,
@@ -497,17 +534,17 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       color={color}
       isLoading={isLoading}
       disabled={disabled}
-      defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       buttonPaddingTop={buttonPaddingTop}
       buttonPaddingBottom={buttonPaddingBottom}
       buttonPaddingLeft={buttonPaddingLeft}
       buttonPaddingRight={buttonPaddingRight}
       defaultBackgroundColor={defaultBackgroundColor}
-      focusBorderColor={focusBorderColor}
+      defaultBoxShadow={defaultBoxShadow}
+      focusBoxShadow={focusBoxShadow}
       focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
-      hoverBorderColor={hoverBorderColor}
+      hoverBoxShadow={hoverBoxShadow}
       hoverBackgroundColor={hoverBackgroundColor}
       isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
@@ -532,7 +569,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         onTouchEnd?.(event);
       }}
       type={type}
-      borderWidth={borderWidth}
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
@@ -575,7 +611,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             <BaseSpinner
               accessibilityLabel="Loading"
               size={spinnerSize}
-              color={color === 'transparent' ? 'primary' : color}
+              color={
+                color && color !== 'primary' && color !== 'transparent' && color in spinnerColor
+                  ? spinnerColor[color as keyof typeof spinnerColor][
+                      variant as 'primary' | 'secondary'
+                    ]
+                  : spinnerColor.base[variant]
+              }
             />
           </BaseBox>
         ) : null}
