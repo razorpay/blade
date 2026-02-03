@@ -22,6 +22,7 @@ This document details all the design token updates made to the Blade design syst
 | Token | Old Value | New Value | Change |
 |-------|-----------|-----------|--------|
 | `0` | 0.0 | 0.0 | ✅ Unchanged |
+| `1` | - | 0.01 | ➕ **New** |
 | `50` | 0.06 | 0.06 | ✅ Unchanged |
 | `100` | 0.09 | 0.09 | ✅ Unchanged |
 | `200` | 0.12 | 0.12 | ✅ Unchanged |
@@ -42,6 +43,7 @@ This document details all the design token updates made to the Blade design syst
 ```typescript
 export const opacity: Opacity = {
   0: 0.0,
+  1: 0.01,    // New - 1% opacity
   50: 0.06,
   100: 0.09,
   200: 0.12,
@@ -55,11 +57,12 @@ export const opacity: Opacity = {
   1000: 0.8,
   1100: 0.88,
   1200: 0.94,  // Changed from 1.0
-  1300: 1.0,   // New
+  1300: 1.0,   // New - full opacity
 };
 ```
 
 ### Impact
+- Added new `1` token for 1% opacity (used for ghost/invisible states)
 - Added new `1300` token for full opacity (100%)
 - `1200` now represents 94% opacity instead of 100%
 - Components using `opacity[1200]` for full opacity should be updated to use `opacity[1300]`
@@ -422,7 +425,7 @@ const bladeTheme: ThemeTokens = {
 9. `packages/blade/src/tokens/theme/bladeTheme.ts`
 
 ### Key Changes
-- **Opacity**: Added new `1300` token for full opacity, changed `1200` from 100% to 94%
+- **Opacity**: Added new `1` token (1% opacity) and `1300` token (full opacity), changed `1200` from 100% to 94%
 - **Interactive Color States**: Added `ghost` state for transparent backgrounds, updated type definitions for accurate state representation
 - **Border Radius**: Added new `2xsmall` token, increased values across the scale for better visual hierarchy
 - **Elevation**: Reduced blur radius and adjusted offsets for more refined shadows
@@ -432,6 +435,7 @@ const bladeTheme: ThemeTokens = {
 
 ### Migration Notes
 - Components using `opacity[1200]` for full opacity should update to `opacity[1300]`
+- New `opacity[1]` (1% opacity) available for ghost/invisible states
 - New `ghost` state available on `interactive.background.gray`, `interactive.background.staticBlack`, and `interactive.background.staticWhite`
 - `fadedHighlighted` on `interactive.border` is only available for `staticWhite` and `staticBlack`
 - Components using `border.radius.xsmall` through `border.radius.2xlarge` will see increased radius values
