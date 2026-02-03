@@ -42,6 +42,8 @@ const _DateInput = (
     tags,
     id,
     selectedPresetLabel,
+    showClearButton,
+    onClearButtonClick,
     ...textInputProps
   } = props;
 
