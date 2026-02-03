@@ -169,7 +169,7 @@ const getColorToken = ({
   const map = {
     default: 'normal',
     hover: 'subtle',
-    focus: 'normal',
+    focus: 'subtle',
     disabled: 'disabled',
   } as const;
 
