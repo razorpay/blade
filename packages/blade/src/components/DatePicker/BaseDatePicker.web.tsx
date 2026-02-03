@@ -164,14 +164,12 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   });
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
 
-  // Sync selectedPreset with controlledValue for controlled mode
+  // Sync selectedPreset with controlledValue for initial preset matching
   React.useEffect(() => {
-    if (!isSingle) {
-      // Sync preset state when controlled value changes (including when cleared to null)
-      const hasValidRange = controlledValue?.[0] && controlledValue?.[1];
-      setSelectedPreset(hasValidRange ? (controlledValue as DatesRangeValue) : null);
+    if (!isSingle && controlledValue) {
+      setSelectedPreset(controlledValue as DatesRangeValue);
     }
-  }, [isSingle, controlledValue]);
+  }, []);
 
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,

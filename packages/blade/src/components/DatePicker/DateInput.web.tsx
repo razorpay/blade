@@ -194,9 +194,18 @@ const _DateInput = (
   // This ensures consistent behavior when focus moves between input and calendar
   const isDatePickerActive = isFocused || isPopupOpen;
 
-  // Show preset label only when datepicker is NOT active (closed and not focused)
-  // When datepicker is open, always show the actual date in DD-MM-YY format
-  const showPresetLabel = displayFormat === 'compact' && selectedPresetLabel && !isDatePickerActive;
+  // Check if there's actually a valid date selection
+  const hasValidSelection = isRange
+    ? (date as [Date | null, Date | null])?.[0] && (date as [Date | null, Date | null])?.[1]
+    : Boolean(date);
+
+  // Show preset label only when:
+  // 1. displayFormat is 'compact'
+  // 2. There's a preset label to show
+  // 3. There's actually a valid date selection (not cleared)
+  // 4. DatePicker is NOT active (closed and not focused)
+  const showPresetLabel =
+    displayFormat === 'compact' && selectedPresetLabel && hasValidSelection && !isDatePickerActive;
 
   const getInputDisplayProps = (): {
     type: 'text' | 'number';
