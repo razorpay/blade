@@ -19,6 +19,7 @@ export const DatePickerProvider: React.FC<DatePickerProviderProps> = ({
   isDatePickerBodyOpen,
   displayFormat,
 }) => {
+<<<<<<< HEAD
   // Memoize context value to prevent infinite re-renders in consumers
   const value = useMemo<DatePickerContextType>(
     () => ({
@@ -27,6 +28,12 @@ export const DatePickerProvider: React.FC<DatePickerProviderProps> = ({
     }),
     [isDatePickerBodyOpen, displayFormat],
   );
+=======
+  const value: DatePickerContextType = {
+    isDatePickerBodyOpen,
+    displayFormat,
+  };
+>>>>>>> origin
 
   return <DatePickerContext.Provider value={value}>{children}</DatePickerContext.Provider>;
 };

@@ -41,8 +41,11 @@ const _DateInput = (
     leadingDropdown,
     tags,
     id,
+<<<<<<< HEAD
     showClearButton,
     onClearButtonClick,
+=======
+>>>>>>> origin
     selectedPresetLabel,
     ...textInputProps
   } = props;
@@ -330,8 +333,11 @@ const _DatePickerInput = (
     minDate,
     maxDate,
     effectiveSelectionType,
+<<<<<<< HEAD
     showClearButton,
     onClearButtonClick,
+=======
+>>>>>>> origin
     selectedPresetLabel,
     ...props
   }: DatePickerInputProps,
@@ -383,8 +389,11 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+<<<<<<< HEAD
           showClearButton={showClearButton}
           onClearButtonClick={onClearButtonClick}
+=======
+>>>>>>> origin
           selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
@@ -462,8 +471,11 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+<<<<<<< HEAD
           showClearButton={showClearButton}
           onClearButtonClick={onClearButtonClick}
+=======
+>>>>>>> origin
           selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
