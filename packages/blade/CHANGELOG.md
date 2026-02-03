@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.77.0
+
+### Minor Changes
+
+- 10f6912a5: feat(Text): add `textDecorationLine="dotted"` for dotted underline styling (useful for abbreviations/tooltips)
+
+  feat(DatePicker): add `displayFormat` prop with `"compact"` | `"default"` options to control input display when using presets
+
+### Patch Changes
+
+- 29bac6692: fix npm publish
+
 ## 12.76.0
 
 ### Minor Changes

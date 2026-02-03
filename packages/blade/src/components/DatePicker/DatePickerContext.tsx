@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 
 interface DatePickerContextType {
   isDatePickerBodyOpen: boolean;
+  displayFormat: 'compact' | 'default';
 }
 
 const DatePickerContext = createContext<DatePickerContextType | undefined>(undefined);
@@ -10,14 +11,17 @@ const DatePickerContext = createContext<DatePickerContextType | undefined>(undef
 interface DatePickerProviderProps {
   children: ReactNode;
   isDatePickerBodyOpen: boolean;
+  displayFormat: 'compact' | 'default';
 }
 
 export const DatePickerProvider: React.FC<DatePickerProviderProps> = ({
   children,
   isDatePickerBodyOpen,
+  displayFormat,
 }) => {
   const value: DatePickerContextType = {
     isDatePickerBodyOpen,
+    displayFormat,
   };
 
   return <DatePickerContext.Provider value={value}>{children}</DatePickerContext.Provider>;

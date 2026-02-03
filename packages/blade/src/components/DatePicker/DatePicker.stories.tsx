@@ -222,6 +222,74 @@ export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = ({ ..._arg
 
 DatePickerPresets.storyName = 'With Presets';
 
+export const DatePickerPresetsWithDisplayFormatCompact: StoryFn<typeof DatePickerComponent> = ({
+  ..._args
+}) => {
+  const [selectedDates, setSelectedDates] = React.useState<DatesRangeValue>([
+    dayjs().subtract(7, 'days').toDate(),
+    dayjs().toDate(),
+  ]);
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        When using <Code size="medium">{'displayFormat="compact"'}</Code> with presets, the
+        DatePicker displays a single input field showing the selected preset label or date range in
+        a compact format.
+      </Text>
+
+      <DatePickerComponent
+        label={{ start: 'Select a date range' }}
+        selectionType="range"
+        allowSingleDateInRange={true}
+        value={selectedDates}
+        onChange={(date) => {
+          console.log(date);
+          setSelectedDates(date as DatesRangeValue);
+        }}
+        displayFormat="compact"
+        presets={[
+          {
+            label: 'Today',
+            value: (date) => [dayjs(date).startOf('day').toDate(), date],
+          },
+          {
+            label: 'Yesterday',
+            value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+          },
+          {
+            label: 'Past 7 days',
+            value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+          },
+          {
+            label: 'Past 15 days',
+            value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+          },
+          {
+            label: 'Past month',
+            value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+          },
+          {
+            label: 'Past year',
+            value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
+          },
+          {
+            label: 'Past financial year',
+            value: (date) => {
+              const d = dayjs(date);
+              const year = d.month() >= 3 ? d.year() : d.year() - 1;
+
+              return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+            },
+          },
+        ]}
+      />
+    </Box>
+  );
+};
+
+DatePickerPresetsWithDisplayFormatCompact.storyName = 'With Presets (displayFormat compact)';
+
 export const DatePickerControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
@@ -472,9 +540,7 @@ export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
 
 FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
 
-export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
-  typeof FilterChipDatePicker
-> = () => {
+export const FilterChipDatePickerStoryWithPreset: StoryFn<typeof FilterChipDatePicker> = () => {
   return (
     <Box>
       <FilterChipDatePicker
@@ -495,8 +561,8 @@ export const FilterChipDatePickerStorySingleStoryWithPreset: StoryFn<
   );
 };
 
-FilterChipDatePickerStorySingleStoryWithPreset.storyName =
-  'FilterChipDatePicker (Single Selection) with Presets';
+FilterChipDatePickerStoryWithPreset.storyName =
+  'FilterChipDatePicker (Range Selection) with Presets';
 
 export const ControlledFilterChipDatePickerSingle: StoryFn<typeof FilterChipDatePicker> = () => {
   const [isOpen, setIsOpen] = React.useState(false);

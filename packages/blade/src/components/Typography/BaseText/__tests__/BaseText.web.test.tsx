@@ -46,6 +46,23 @@ describe('<BaseText />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render text with dotted underline decoration', () => {
+    const displayText = 'Displaying some text';
+    const { container } = renderWithTheme(
+      <BaseText
+        color="surface.text.gray.normal"
+        fontFamily="text"
+        lineHeight={100}
+        fontSize={25}
+        fontWeight="regular"
+        textDecorationLine="dotted"
+      >
+        {displayText}
+      </BaseText>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render text as paragraph element', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
