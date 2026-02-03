@@ -35,11 +35,22 @@ exports[`<Tour /> should render 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 12px;
-  gap: 12px;
+  padding: 16px;
+  gap: 16px;
 }
 
 .c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c11.c11.c11.c11.c11 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -48,7 +59,7 @@ exports[`<Tour /> should render 1`] = `
   border-radius: 9999px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,7 +75,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 24px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -78,21 +89,21 @@ exports[`<Tour /> should render 1`] = `
   position: relative;
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
-  border-radius: 8px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-radius: 16px;
+  border-color: hsla(200,10%,94%,0);
   border-style: solid;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 8px 0px hsla(200,10%,18%,0.06);
   opacity: 0;
   -webkit-transform: translateY(-4px);
   -ms-transform: translateY(-4px);
   transform: translateY(-4px);
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -106,7 +117,7 @@ exports[`<Tour /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -115,13 +126,13 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+.c12.c12.c12.c12.c12:hover:not([disabled]) {
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c12.c12.c12.c12.c12:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -130,11 +141,11 @@ exports[`<Tour /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
-.c11.c11.c11.c11.c11:active {
-  color: hsla(211,26%,34%,1);
+.c12.c12.c12.c12.c12:active {
+  color: hsla(200,10%,18%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -156,7 +167,7 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -172,15 +183,15 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
-  color: hsla(212,39%,16%,1);
+.c14.c14.c14.c14.c14 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -189,7 +200,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -197,7 +208,7 @@ exports[`<Tour /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -220,10 +231,10 @@ exports[`<Tour /> should render 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -255,20 +266,20 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -280,14 +291,14 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   min-height: 32px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -317,24 +328,24 @@ exports[`<Tour /> should render 1`] = `
   position: relative;
 }
 
-.c15.c15.c15.c15.c15:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+.c16.c16.c16.c16.c16:hover {
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
-.c15.c15.c15.c15.c15:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+.c16.c16.c16.c16.c16:active {
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
-.c15.c15.c15.c15.c15:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+.c16.c16.c16.c16.c16:focus-visible {
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c15.c15.c15.c15.c15 * {
+.c16.c16.c16.c16.c16 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -435,7 +446,7 @@ exports[`<Tour /> should render 1`] = `
         opacity="0"
         rx="3"
         ry="3"
-        stroke="hsla(227, 100%, 59%, 1)"
+        stroke="hsla(218, 89%, 51%, 1)"
         stroke-width="2px"
         width="10"
         x="-5"
@@ -497,50 +508,55 @@ exports[`<Tour /> should render 1`] = `
             class="c10"
             data-blade-component="base-box"
           >
-            <button
-              aria-label="Close"
+            <div
               class="c11"
-              data-blade-component="icon-button"
-              type="button"
+              data-blade-component="base-box"
             >
-              <svg
-                aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
-                data-blade-component="icon"
-                fill="none"
-                height="20px"
-                viewBox="0 0 24 24"
-                width="20px"
+              <button
+                aria-label="Close"
+                class="c12"
+                data-blade-component="icon-button"
+                type="button"
               >
-                <path
-                  d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                  data-blade-component="svg-path"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class=""
-            data-blade-component="base-box"
-          >
-            <p
-              class="c5"
-              data-blade-component="text"
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="20px"
+                  viewBox="0 0 24 24"
+                  width="20px"
+                >
+                  <path
+                    d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                    data-blade-component="svg-path"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              class=""
+              data-blade-component="base-box"
             >
-              Step 1
-            </p>
+              <p
+                class="c5"
+                data-blade-component="text"
+              >
+                Step 1
+              </p>
+            </div>
           </div>
           <div
             class=""
             data-blade-component="base-box"
           >
             <div
-              class="c12"
+              class="c13"
               data-blade-component="box"
             >
               <p
-                class="c13"
+                class="c14"
                 data-blade-component="text"
               >
                 1
@@ -548,11 +564,11 @@ exports[`<Tour /> should render 1`] = `
                 2
               </p>
               <div
-                class="c14"
+                class="c15"
                 data-blade-component="box"
               >
                 <button
-                  class="c15"
+                  class="c16"
                   data-analytics-active-step="1"
                   data-analytics-name="spotlight-popover-tour-footer-primary-action-button"
                   data-analytics-total-steps="2"
@@ -569,7 +585,7 @@ exports[`<Tour /> should render 1`] = `
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c16"
+                        class="c17"
                         data-blade-component="base-text"
                       >
                         Next
@@ -593,7 +609,7 @@ exports[`<Tour /> should render 1`] = `
             clip-path="url(#:r7:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
-            stroke="hsla(211, 20%, 52%, 0.18)"
+            stroke="hsla(200, 10%, 94%, 0)"
             stroke-width="3"
           />
           <path
