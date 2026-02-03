@@ -17,7 +17,7 @@ exports[`<Code /> should render Code with color 1`] = `
         {},
         {
           "alignSelf": "center",
-          "borderRadius": 4,
+          "borderRadius": 12,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -40,13 +40,13 @@ exports[`<Code /> should render Code with color 1`] = `
       style={
         [
           {
-            "color": "hsla(227, 100%, 59%, 0.32)",
+            "color": "hsla(218, 89%, 51%, 0.32)",
             "fontFamily": "Menlo",
             "fontSize": 10,
             "fontStyle": "normal",
             "fontWeight": "400",
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 13,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -83,8 +83,8 @@ exports[`<Code /> should render Code with default properties 1`] = `
         {},
         {
           "alignSelf": "center",
-          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+          "borderRadius": 12,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -107,13 +107,13 @@ exports[`<Code /> should render Code with default properties 1`] = `
       style={
         [
           {
-            "color": "hsla(211, 26%, 34%, 1)",
+            "color": "hsla(200, 10%, 18%, 1)",
             "fontFamily": "Menlo",
             "fontSize": 10,
             "fontStyle": "normal",
             "fontWeight": "400",
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 13,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -150,7 +150,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
         {},
         {
           "alignSelf": "center",
-          "borderRadius": 4,
+          "borderRadius": 12,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -173,13 +173,13 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
       style={
         [
           {
-            "color": "hsla(212, 39%, 16%, 1)",
+            "color": "hsla(0, 0%, 2%, 1)",
             "fontFamily": "Menlo",
             "fontSize": 10,
             "fontStyle": "normal",
             "fontWeight": "400",
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 13,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -216,8 +216,8 @@ exports[`<Code /> should render medium Code 1`] = `
         {},
         {
           "alignSelf": "center",
-          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+          "borderRadius": 12,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -240,13 +240,13 @@ exports[`<Code /> should render medium Code 1`] = `
       style={
         [
           {
-            "color": "hsla(211, 26%, 34%, 1)",
+            "color": "hsla(200, 10%, 18%, 1)",
             "fontFamily": "Menlo",
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
             "letterSpacing": 0,
-            "lineHeight": 18,
+            "lineHeight": 17,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -283,8 +283,8 @@ exports[`<Code /> should render small Code 1`] = `
         {},
         {
           "alignSelf": "center",
-          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+          "borderRadius": 12,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -307,13 +307,13 @@ exports[`<Code /> should render small Code 1`] = `
       style={
         [
           {
-            "color": "hsla(211, 26%, 34%, 1)",
+            "color": "hsla(200, 10%, 18%, 1)",
             "fontFamily": "Menlo",
             "fontSize": 10,
             "fontStyle": "normal",
             "fontWeight": "400",
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 13,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,

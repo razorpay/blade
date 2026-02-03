@@ -79,7 +79,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
           }
           stroke={
             {
-              "payload": 4280563015,
+              "payload": 4280889138,
               "type": 0,
             }
           }
@@ -108,7 +108,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
           }
           stroke={
             {
-              "payload": 4280563015,
+              "payload": 4280889138,
               "type": 0,
             }
           }
@@ -134,7 +134,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
           }
           stroke={
             {
-              "payload": 4280563015,
+              "payload": 4280889138,
               "type": 0,
             }
           }
@@ -160,7 +160,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
           }
           stroke={
             {
-              "payload": 4280563015,
+              "payload": 4280889138,
               "type": 0,
             }
           }
@@ -186,7 +186,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
           }
           stroke={
             {
-              "payload": 4280563015,
+              "payload": 4280889138,
               "type": 0,
             }
           }
@@ -208,7 +208,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
           <RNSVGRect
             fill={
               {
-                "payload": 4280563015,
+                "payload": 4280889138,
                 "type": 0,
               }
             }
