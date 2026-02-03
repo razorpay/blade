@@ -17,7 +17,7 @@ export const elevation: ElevationWithColorModes = {
     lowRaised: {
       elevation: 8,
       shadowColor: `hsla(200, 10%, 18%, 1)`,
-      shadowOpacity: opacity[50],
+      shadowOpacity: 0.06,
       shadowRadius: 2,
       shadowOffset: {
         width: 0,
@@ -27,7 +27,7 @@ export const elevation: ElevationWithColorModes = {
     midRaised: {
       elevation: 16,
       shadowColor: `hsla(200, 10%, 18%, 1)`,
-      shadowOpacity: opacity[50],
+      shadowOpacity: 0.06,
       shadowRadius: 4,
       shadowOffset: {
         width: 0,
@@ -37,7 +37,7 @@ export const elevation: ElevationWithColorModes = {
     highRaised: {
       elevation: 24,
       shadowColor: `hsla(200, 10%, 18%, 1)`,
-      shadowOpacity: opacity[50],
+      shadowOpacity: 0.06,
       shadowRadius: 12,
       shadowOffset: {
         width: 0,
@@ -60,7 +60,7 @@ export const elevation: ElevationWithColorModes = {
     lowRaised: {
       elevation: 8,
       shadowColor: `hsla(0, 0%, 0%, 1)`,
-      shadowOpacity: opacity[500],
+      shadowOpacity: 0.32,
       shadowRadius: 2,
       shadowOffset: {
         width: 0,
@@ -70,7 +70,7 @@ export const elevation: ElevationWithColorModes = {
     midRaised: {
       elevation: 16,
       shadowColor: `hsla(0, 0%, 0%, 1)`,
-      shadowOpacity: opacity[500],
+      shadowOpacity: 0.32,
       shadowRadius: 4,
       shadowOffset: {
         width: 0,
@@ -80,7 +80,7 @@ export const elevation: ElevationWithColorModes = {
     highRaised: {
       elevation: 24,
       shadowColor: `hsla(0, 0%, 0%, 1)`,
-      shadowOpacity: opacity[500],
+      shadowOpacity: 0.32,
       shadowRadius: 12,
       shadowOffset: {
         width: 0,
