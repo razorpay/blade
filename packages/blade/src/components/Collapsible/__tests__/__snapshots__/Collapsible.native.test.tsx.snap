@@ -63,7 +63,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         }
         accessible={true}
         alignSelf="flex-start"
-        borderRadius="4px"
+        borderRadius="12px"
         borderWidth="0px"
         buttonPaddingBottom="0px"
         buttonPaddingLeft="20px"
@@ -72,14 +72,14 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         collapsable={false}
         color="primary"
         data-blade-component="button"
-        defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-        defaultBorderColor="hsla(227, 100%, 59%, 1)"
-        focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-        focusBorderColor="hsla(227, 100%, 59%, 1)"
-        focusRingColor="hsla(227, 100%, 59%, 0.18)"
+        defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+        defaultBorderColor="hsla(218, 89%, 51%, 1)"
+        focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+        focusBorderColor="hsla(218, 87%, 43%, 1)"
+        focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
-        hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-        hoverBorderColor="hsla(227, 100%, 59%, 1)"
+        hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+        hoverBorderColor="hsla(218, 87%, 43%, 1)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
         isLoading={false}
@@ -108,9 +108,9 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
             {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "hsla(227, 100%, 59%, 1)",
-              "borderColor": "hsla(227, 100%, 59%, 1)",
-              "borderRadius": 4,
+              "backgroundColor": "hsla(218, 89%, 51%, 1)",
+              "borderColor": "hsla(218, 89%, 51%, 1)",
+              "borderRadius": 12,
               "borderStyle": "solid",
               "borderWidth": 0,
               "cursor": "pointer",
@@ -129,8 +129,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
               "width": "auto",
             },
             {
-              "backgroundColor": "hsla(227, 100%, 59%, 1)",
-              "borderColor": "hsla(227, 100%, 59%, 1)",
+              "backgroundColor": "hsla(218, 89%, 51%, 1)",
+              "borderColor": "hsla(218, 89%, 51%, 1)",
             },
           ]
         }
@@ -282,7 +282,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                   style={
                     [
                       {
-                        "color": "hsla(212, 39%, 16%, 1)",
+                        "color": "hsla(0, 0%, 2%, 1)",
                         "fontFamily": "Inter",
                         "fontSize": 14,
                         "fontStyle": "normal",
@@ -345,7 +345,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(150, 100%, 27%, 1)",
+                            "color": "hsla(150, 100%, 23%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 10,
                             "fontStyle": "normal",
@@ -380,7 +380,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(212, 39%, 16%, 1)",
+                            "color": "hsla(0, 0%, 2%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
@@ -411,7 +411,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(150, 100%, 27%, 1)",
+                              "color": "hsla(150, 100%, 23%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -444,7 +444,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(150, 100%, 27%, 1)",
+                              "color": "hsla(150, 100%, 23%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 10,
                               "fontStyle": "normal",
@@ -600,7 +600,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
             style={
               [
                 {
-                  "color": "hsla(227, 71%, 51%, 1)",
+                  "color": "hsla(218, 87%, 43%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -698,7 +698,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                     fill={
                       {
-                        "payload": 4280897755,
+                        "payload": 4279129293,
                         "type": 0,
                       }
                     }
@@ -788,7 +788,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   style={
                     [
                       {
-                        "color": "hsla(212, 39%, 16%, 1)",
+                        "color": "hsla(0, 0%, 2%, 1)",
                         "fontFamily": "Inter",
                         "fontSize": 14,
                         "fontStyle": "normal",
@@ -851,7 +851,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(150, 100%, 27%, 1)",
+                            "color": "hsla(150, 100%, 23%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 10,
                             "fontStyle": "normal",
@@ -886,7 +886,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(212, 39%, 16%, 1)",
+                            "color": "hsla(0, 0%, 2%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
@@ -917,7 +917,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(150, 100%, 27%, 1)",
+                              "color": "hsla(150, 100%, 23%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -950,7 +950,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(150, 100%, 27%, 1)",
+                              "color": "hsla(150, 100%, 23%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 10,
                               "fontStyle": "normal",
