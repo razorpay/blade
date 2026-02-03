@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
-import type { Theme } from '~components/BladeProvider';
 import { makeBorderSize, castWebType, isReactNative } from '~utils';
+import type { Theme } from '~components/BladeProvider';
 
 const getTooltipContentWrapperStyles = ({
   theme,
@@ -11,13 +11,13 @@ const getTooltipContentWrapperStyles = ({
   styles: React.CSSProperties;
 }): CSSObject => {
   return {
-    backgroundColor: theme.colors.popup.background.intense,
+    backgroundColor: theme.colors.popup.background.gray.intense,
     borderWidth: makeBorderSize(theme.border.width.thinner),
     borderRadius: makeBorderSize(theme.border.radius.medium),
-    borderColor: theme.colors.popup.border.intense,
+    borderColor: theme.colors.popup.border.gray.intense,
     borderStyle: 'solid',
     boxShadow: isReactNative() ? undefined : castWebType(theme.elevation.lowRaised),
-    backdropFilter: isReactNative() ? undefined : 'blur(6px)',
+    backdropFilter: isReactNative() ? undefined : `blur(${theme.backdropBlur.high}px)`,
     ...styles,
   };
 };

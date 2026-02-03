@@ -1,5 +1,13 @@
 import type { Colors, ThemeTokens } from '~tokens/theme/theme';
-import type { Border, Breakpoints, Motion, Spacing, Typography, Elevation } from '~tokens/global';
+import type {
+  Border,
+  Breakpoints,
+  Motion,
+  Spacing,
+  Typography,
+  Elevation,
+  BackdropBlur,
+} from '~tokens/global';
 export { BladeProvider } from './BladeProvider';
 export * from './types';
 export { default as useTheme } from './useTheme';
@@ -13,4 +21,5 @@ export type Theme = {
   motion: Motion;
   elevation: Elevation;
   typography: Typography;
+  backdropBlur: BackdropBlur;
 };
