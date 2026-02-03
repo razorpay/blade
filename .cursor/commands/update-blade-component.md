@@ -13,7 +13,23 @@ After typing `/update-blade-component`, provide:
 
 You are a Design System developer at Razorpay. Follow these steps to update the Blade component (web implementation only).
 
-### Step 1: Gather Component Information
+### Step 1: Create a New Branch
+
+```bash
+# Ensure you're on the spark branch and it's up to date
+git checkout spark
+git pull origin spark
+
+# Create and checkout a new feature branch
+git checkout -b feat/update-<component-name>
+```
+
+**Branch naming convention:**
+- Use `feat/` prefix for new features or enhancements
+- Use `fix/` prefix for bug fixes
+- Example: `feat/update-popover`, `fix/button-padding`
+
+### Step 2: Gather Component Information
 
 1. **Read the knowledgebase documentation**:
 
@@ -25,7 +41,7 @@ You are a Design System developer at Razorpay. Follow these steps to update the 
    - Key files: `types.ts`, `<ComponentName>.web.tsx`, `index.ts`, `constants.ts`
    - **Skip native files** - Only update `.web.tsx` files
 
-### Step 2: Get Figma Design Context
+### Step 3: Get Figma Design Context
 
 Parse the provided Figma URL to extract:
 
@@ -34,7 +50,7 @@ Parse the provided Figma URL to extract:
 
 Use the **Figma MCP tools** to get complete design information:
 
-#### 2.1 Get Design Context (Component Structure)
+#### 3.1 Get Design Context (Component Structure)
 
 ```
 Tool: user-Figma → get_design_context
@@ -53,7 +69,7 @@ This returns:
 - Component descriptions and documentation links
 - Asset URLs for images/icons
 
-#### 2.2 Get Variable Definitions (Design Tokens)
+#### 3.2 Get Variable Definitions (Design Tokens)
 
 ```
 Tool: user-Figma → get_variable_defs
@@ -65,9 +81,8 @@ Arguments:
 ```
 
 This returns a JSON object with all design tokens used in the component.
-|
 
-#### 2.3 Get Screenshot (Visual Reference)
+#### 3.3 Get Screenshot (Visual Reference)
 
 ```
 Tool: user-Figma → get_screenshot
@@ -78,7 +93,7 @@ Arguments:
 
 This returns a visual screenshot of the component for reference.
 
-### Step 3: Analyze and Plan Changes
+### Step 4: Analyze and Plan Changes
 
 Compare the Figma design with the current implementation:
 
@@ -88,7 +103,7 @@ Compare the Figma design with the current implementation:
 4. **Plan implementation**: Focus on web only (`.web.tsx` files)
 5. **Plan documentation updates**: If API changes, update knowledgebase docs
 
-### Step 4: Make Changes
+### Step 5: Make Changes
 
 Follow this order:
 
@@ -100,17 +115,17 @@ Follow this order:
 6. **Update stories** (`*.stories.tsx`) - Add Storybook examples for new features
 7. **Check for linter errors** using `ReadLints` tool on modified files
 
-### Step 5: Verify Changes with Agent Browser
+### Step 6: Verify Changes with Agent Browser
 
 Use `agent-browser` CLI tool to visually verify your changes in Storybook.
 
-#### 5.1 Prerequisites
+#### 6.1 Prerequisites
 
 - Ensure Storybook is running (check terminals folder or start with `yarn react:storybook`)
 - Use `npx agent-browser` to run commands (no installation required)
 - Agent-browser will automatically start a daemon in the background on first use
 
-#### 5.2 Available Agent Browser Commands
+#### 6.2 Available Agent Browser Commands
 
 Use Shell tool to run these commands with `npx`:
 
@@ -122,7 +137,7 @@ Use Shell tool to run these commands with `npx`:
 - `npx agent-browser type @<ref> "text"` - Type text into element
 - `npx agent-browser close` - Close browser session
 
-#### 5.3 Navigate to Storybook
+#### 6.3 Navigate to Storybook
 
 **Option 1: Full Storybook View**
 
@@ -143,7 +158,7 @@ npx agent-browser open "http://localhost:9011/iframe.html?id=components-<compone
 - Better for visual comparison with Figma
 - Smaller file size and faster loading
 
-#### 5.4 Take Screenshots
+#### 6.4 Take Screenshots
 
 1. **Navigate to the story** (use iframe URL for best results)
 2. **Get snapshot to verify page loaded**:
@@ -156,7 +171,7 @@ npx agent-browser open "http://localhost:9011/iframe.html?id=components-<compone
    ```
 4. **Compare with Figma design** - Verify all visual changes match
 
-#### 5.5 Example Workflow
+#### 6.5 Example Workflow
 
 ```bash
 # Open the component story in iframe view
@@ -191,7 +206,7 @@ npx agent-browser close
 - Shadows and effects are applied
 - Component behavior works as expected
 
-#### 5.6 Tips for Testing
+#### 6.6 Tips for Testing
 
 - **Use "Uncontrolled" or "Default" stories** - These often show the component in its open/active state
 - **Test multiple variants** - Check different placements, sizes, or states if applicable
@@ -199,11 +214,11 @@ npx agent-browser close
 - **Verify interactions** - Use `npx agent-browser click` and `npx agent-browser type` to test interactive states
 - **Compare screenshots** - Save screenshots with descriptive names for easy comparison with Figma designs
 
-### Step 6: Run Tests
+### Step 7: Run Tests
 
 Run the test suite to ensure your changes don't break existing functionality.
 
-#### 6.1 Run Unit Tests
+#### 7.1 Run Unit Tests
 
 ```bash
 # Run all tests (web + native)
@@ -218,7 +233,7 @@ cd packages/blade && yarn test:react-native
 
 Tests run in sharded mode in CI. Locally they run all together.
 
-#### 6.2 Fix Failing Tests
+#### 7.2 Fix Failing Tests
 
 If tests fail after your changes:
 
@@ -230,7 +245,7 @@ If tests fail after your changes:
 3. **Fix test logic** - Update test files in `__tests__/` folder if needed
 4. **Re-run tests** - Verify all tests pass before proceeding
 
-#### 6.3 Run Linting and Type Checks
+#### 7.3 Run Linting and Type Checks
 
 ```bash
 # Run lint checks
@@ -242,20 +257,17 @@ cd packages/blade && yarn typecheck
 
 Fix any linter errors or type issues before creating the PR.
 
-### Step 7: Create Pull Request
+### Step 8: Create Pull Request
 
 Once all tests pass and linting is clean, create a PR using the GitHub CLI.
 
-#### 7.1 Create a New Branch
+#### 8.1 Commit Your Changes
 
-```bash
-# Create and checkout a new branch from spark
-git checkout spark
-git pull origin spark
-git checkout -b feat/update-<component-name>
-```
-
-#### 7.2 Commit Your Changes
+**Why use git and gh?**
+- `git` = Version control operations (commit, branch, push)
+- `gh` = GitHub-specific operations (create PR, manage issues, releases)
+- You need `git commit` to save changes to your local repository
+- Then use `gh pr create` to create the GitHub pull request
 
 ```bash
 # Stage all changes
@@ -279,14 +291,14 @@ Examples:
 - `fix(Button): correct padding in small variant`
 - `docs(Tooltip): update knowledgebase with new props`
 
-#### 7.3 Push and Create PR
+#### 8.2 Push and Create PR
 
 ```bash
 # Push branch to remote
 git push -u origin HEAD
 
-# Create PR using gh cli with spark as base
-gh pr create --base spark --title "feat(ComponentName): brief description" --body "$(cat <<'EOF'
+# Create draft PR using gh cli with spark as base
+gh pr create --base spark --draft --title "feat(ComponentName): brief description" --body "$(cat <<'EOF'
 ## Summary
 - Updated ComponentName with latest Figma designs
 - Added/Modified [list specific changes]
@@ -317,7 +329,12 @@ EOF
 - Format: `type(scope): description`
 - Example: `feat(Popover): update design tokens and add new placement`
 
-#### 7.4 Verify PR Checks
+**Note:** The PR is created as a **draft** by default. Once all checks pass and you've verified everything, mark it as ready for review using:
+```bash
+gh pr ready
+```
+
+#### 8.3 Verify PR Checks
 
 After creating the PR, verify:
 - ✅ PR title check passes
