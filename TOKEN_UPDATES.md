@@ -3,11 +3,145 @@
 This document details all the design token updates made to the Blade design system.
 
 ## Table of Contents
+- [Opacity](#opacity)
+- [Interactive Color States](#interactive-color-states)
 - [Border Radius](#border-radius)
 - [Elevation](#elevation)
 - [Letter Spacing](#letter-spacing)
 - [Line Height](#line-height)
 - [Background Blur](#background-blur)
+
+---
+
+## Opacity
+
+**File:** `packages/blade/src/tokens/global/opacity.ts`
+
+### Changes Summary
+
+| Token | Old Value | New Value | Change |
+|-------|-----------|-----------|--------|
+| `0` | 0.0 | 0.0 | ✅ Unchanged |
+| `50` | 0.06 | 0.06 | ✅ Unchanged |
+| `100` | 0.09 | 0.09 | ✅ Unchanged |
+| `200` | 0.12 | 0.12 | ✅ Unchanged |
+| `300` | 0.18 | 0.18 | ✅ Unchanged |
+| `400` | 0.24 | 0.24 | ✅ Unchanged |
+| `500` | 0.32 | 0.32 | ✅ Unchanged |
+| `600` | 0.48 | 0.48 | ✅ Unchanged |
+| `700` | 0.56 | 0.56 | ✅ Unchanged |
+| `800` | 0.64 | 0.64 | ✅ Unchanged |
+| `900` | 0.72 | 0.72 | ✅ Unchanged |
+| `1000` | 0.8 | 0.8 | ✅ Unchanged |
+| `1100` | 0.88 | 0.88 | ✅ Unchanged |
+| `1200` | 1.0 | 0.94 | 🔄 -0.06 |
+| `1300` | - | 1.0 | ➕ **New** |
+
+### Implementation Details
+
+```typescript
+export const opacity: Opacity = {
+  0: 0.0,
+  50: 0.06,
+  100: 0.09,
+  200: 0.12,
+  300: 0.18,
+  400: 0.24,
+  500: 0.32,
+  600: 0.48,
+  700: 0.56,
+  800: 0.64,
+  900: 0.72,
+  1000: 0.8,
+  1100: 0.88,
+  1200: 0.94,  // Changed from 1.0
+  1300: 1.0,   // New
+};
+```
+
+### Impact
+- Added new `1300` token for full opacity (100%)
+- `1200` now represents 94% opacity instead of 100%
+- Components using `opacity[1200]` for full opacity should be updated to use `opacity[1300]`
+
+---
+
+## Interactive Color States
+
+**Files:**
+- `packages/blade/src/tokens/theme/theme.ts`
+- `packages/blade/src/tokens/theme/bladeTheme.ts`
+
+### New Interactive Background States
+
+Added `ghost` state to specific interactive background colors for transparent/invisible button states.
+
+| Color Key | States Added |
+|-----------|--------------|
+| `gray` | `ghost` |
+| `staticBlack` | `ghost` |
+| `staticWhite` | `ghost` |
+
+### Interactive Border States Update
+
+`fadedHighlighted` state is only present on specific border colors:
+
+| Color Key | Has `fadedHighlighted` |
+|-----------|------------------------|
+| `positive` | ❌ No |
+| `negative` | ❌ No |
+| `notice` | ❌ No |
+| `information` | ❌ No |
+| `neutral` | ❌ No |
+| `gray` | ❌ No |
+| `primary` | ❌ No |
+| `staticWhite` | ✅ Yes |
+| `staticBlack` | ✅ Yes |
+
+### Type Definitions
+
+```typescript
+// New types added to theme.ts
+type InteractiveStatesWithFadedHighlighted = InteractiveStates & {
+  fadedHighlighted: string;
+};
+
+type InteractiveBackgroundStatesWithGhost = InteractiveStatesWithFadedHighlighted & {
+  ghost: string;
+};
+
+type InteractiveBackgroundColorsWithGhost = 'gray' | 'staticBlack' | 'staticWhite';
+
+type InteractiveBorderColorsWithFadedHighlighted = 'staticBlack' | 'staticWhite';
+```
+
+### Usage in bladeTheme.ts
+
+```typescript
+// interactive.background.gray (onLight)
+gray: {
+  default: globalColors.neutral.blueGrayLight.a906,
+  highlighted: globalColors.neutral.blueGrayLight.a912,
+  disabled: globalColors.neutral.blueGrayLight.a909,
+  faded: globalColors.neutral.blueGrayLight.a906,
+  fadedHighlighted: globalColors.neutral.blueGrayLight.a909,
+  ghost: globalColors.neutral.blueGrayLight.a1  // New ghost state
+}
+
+// interactive.border.staticWhite (onLight)
+staticWhite: {
+  default: globalColors.neutral.white[500],
+  highlighted: globalColors.neutral.white[400],
+  disabled: globalColors.neutral.white[100],
+  faded: globalColors.neutral.white[50],
+  fadedHighlighted: globalColors.neutral.white[100]  // Only on staticWhite/staticBlack
+}
+```
+
+### Impact
+- New `ghost` state available for transparent button backgrounds
+- Type system now correctly reflects which color keys have which states
+- Improved type safety for interactive color token usage
 
 ---
 
@@ -224,15 +358,15 @@ lineHeights: {
 
 | Token Name | Value | Usage |
 |------------|-------|-------|
-| `theme.backgroundBlur.low` | 4px | ➕ **New** - Subtle background blur effect |
-| `theme.backgroundBlur.medium` | 8px | ➕ **New** - Moderate background blur effect |
-| `theme.backgroundBlur.high` | 12px | ➕ **New** - Strong background blur effect |
+| `theme.backdropBlur.low` | 4px | ➕ **New** - Subtle background blur effect |
+| `theme.backdropBlur.medium` | 8px | ➕ **New** - Moderate background blur effect |
+| `theme.backdropBlur.high` | 12px | ➕ **New** - Strong background blur effect |
 
 ### Implementation Details
 
 ```typescript
 // Type Definition
-export type BackgroundBlur = Readonly<{
+export type BackdropBlur = Readonly<{
   /** low: 4px - Subtle background blur effect */
   low: 4;
   /** medium: 8px - Moderate background blur effect */
@@ -242,7 +376,7 @@ export type BackgroundBlur = Readonly<{
 }>;
 
 // Values
-export const backgroundBlur: BackgroundBlur = {
+export const backdropBlur: BackdropBlur = {
   low: 4,
   medium: 8,
   high: 12,
@@ -251,13 +385,13 @@ export const backgroundBlur: BackgroundBlur = {
 
 ### Theme Integration
 
-The `backgroundBlur` tokens are now available in the theme:
+The `backdropBlur` tokens are now available in the theme:
 
 ```typescript
 const bladeTheme: ThemeTokens = {
   name: 'bladeTheme',
   border,
-  backgroundBlur, // ← New
+  backdropBlur, // ← New
   breakpoints,
   colors,
   motion,
@@ -282,11 +416,14 @@ const bladeTheme: ThemeTokens = {
 3. `packages/blade/src/tokens/global/elevation/elevation.native.ts`
 4. `packages/blade/src/tokens/global/typography.ts`
 5. `packages/blade/src/tokens/global/blur.ts` (new)
-6. `packages/blade/src/tokens/global/index.ts`
-7. `packages/blade/src/tokens/theme/theme.ts`
-8. `packages/blade/src/tokens/theme/bladeTheme.ts`
+6. `packages/blade/src/tokens/global/opacity.ts`
+7. `packages/blade/src/tokens/global/index.ts`
+8. `packages/blade/src/tokens/theme/theme.ts`
+9. `packages/blade/src/tokens/theme/bladeTheme.ts`
 
 ### Key Changes
+- **Opacity**: Added new `1300` token for full opacity, changed `1200` from 100% to 94%
+- **Interactive Color States**: Added `ghost` state for transparent backgrounds, updated type definitions for accurate state representation
 - **Border Radius**: Added new `2xsmall` token, increased values across the scale for better visual hierarchy
 - **Elevation**: Reduced blur radius and adjusted offsets for more refined shadows
 - **Letter Spacing**: Added compressed option, fine-tuned condensed spacing
@@ -294,13 +431,16 @@ const bladeTheme: ThemeTokens = {
 - **Background Blur**: Added new token category with three blur levels (low, medium, high)
 
 ### Migration Notes
+- Components using `opacity[1200]` for full opacity should update to `opacity[1300]`
+- New `ghost` state available on `interactive.background.gray`, `interactive.background.staticBlack`, and `interactive.background.staticWhite`
+- `fadedHighlighted` on `interactive.border` is only available for `staticWhite` and `staticBlack`
 - Components using `border.radius.xsmall` through `border.radius.2xlarge` will see increased radius values
 - Shadows will appear sharper and more subtle
 - Text with letter spacing tokens will be slightly more compressed
 - Line heights for smaller text sizes will be tighter
-- New `theme.backgroundBlur` tokens are now available for glassmorphic effects
+- New `theme.backdropBlur` tokens are now available for glassmorphic effects
 
 ---
 
-**Date:** 2026-01-30
+**Date:** 2026-02-03
 **Version:** Blade Design System Token Update

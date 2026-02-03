@@ -1,4 +1,4 @@
-export type BackgroundBlur = Readonly<{
+export type BackdropBlur = Readonly<{
   /** low: 4px - Subtle background blur effect */
   low: 4;
   /** medium: 8px - Moderate background blur effect */
@@ -7,7 +7,7 @@ export type BackgroundBlur = Readonly<{
   high: 12;
 }>;
 
-export const backgroundBlur: BackgroundBlur = {
+export const backdropBlur: BackdropBlur = {
   low: 4,
   medium: 8,
   high: 12,
