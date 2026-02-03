@@ -28,6 +28,7 @@ import type {
   BaseTextSizes,
   TextColors,
 } from '~components/Typography/BaseText/types';
+import type { IconSize } from '~components/Icons';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -152,6 +153,19 @@ type BaseLinkStyleProps = {
 };
 
 type LinkActionStates = ActionStates;
+
+/**
+ * Maps link size to icon size based on Figma design specs
+ * - Large/Medium links use medium (16px) icons
+ * - Small/XSmall links use small (12px) icons
+ */
+const linkSizeToIconSizeMap: Record<NonNullable<BaseLinkProps['size']>, IconSize> = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
+};
+
 const getColorToken = ({
   variant,
   color,
@@ -236,7 +250,7 @@ const getProps = ({
     }) as IconProps['color'],
     fontSize: textSizes.fontSize[size],
     lineHeight: textSizes.lineHeight[size],
-    iconSize: size,
+    iconSize: linkSizeToIconSizeMap[size],
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
       variant,
