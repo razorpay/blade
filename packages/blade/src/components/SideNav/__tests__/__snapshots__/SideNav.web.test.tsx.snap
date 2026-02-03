@@ -11,7 +11,7 @@ exports[`SideNav should render 1`] = `
   width: 240px;
   top: 0px;
   left: 0px;
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,97%,1);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -29,9 +29,9 @@ exports[`SideNav should render 1`] = `
   width: 100%;
   top: 0px;
   left: 0px;
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,97%,1);
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -52,9 +52,9 @@ exports[`SideNav should render 1`] = `
   height: 100%;
   top: 0px;
   left: 0px;
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,97%,1);
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -192,11 +192,11 @@ exports[`SideNav should render 1`] = `
   right: -20px;
   bottom: -20px;
   left: -20px;
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,97%,1);
   border-top-width: 1px;
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-top-style: solid;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c33.c33.c33.c33.c33 {
@@ -218,7 +218,7 @@ exports[`SideNav should render 1`] = `
   padding-right: 8px;
   padding-left: 8px;
   height: 40px;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c35.c35.c35.c35.c35 {
@@ -249,7 +249,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -290,14 +290,14 @@ exports[`SideNav should render 1`] = `
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -313,14 +313,14 @@ exports[`SideNav should render 1`] = `
 }
 
 .c28.c28.c28.c28.c28 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -331,7 +331,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c38.c38.c38.c38.c38 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -349,7 +349,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c39.c39.c39.c39.c39 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -380,7 +380,7 @@ exports[`SideNav should render 1`] = `
   border: none;
   cursor: pointer;
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 8px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -393,11 +393,11 @@ exports[`SideNav should render 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .c6.c6.c6.c6.c6:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c6.c6.c6.c6.c6 * {
@@ -418,7 +418,7 @@ exports[`SideNav should render 1`] = `
   border: none;
   cursor: pointer;
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 8px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -435,11 +435,11 @@ exports[`SideNav should render 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .c26.c26.c26.c26.c26:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c26.c26.c26.c26.c26 * {
@@ -548,8 +548,8 @@ exports[`SideNav should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12:hover .styled-nav-link {
-  color: hsla(212,39%,16%,1);
-  background-color: hsla(211,20%,52%,0.12);
+  color: hsla(0,0%,2%,1);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c12.c12.c12.c12.c12 .styled-nav-link {
@@ -576,8 +576,8 @@ exports[`SideNav should render 1`] = `
   cursor: pointer;
   padding: 0px 12px;
   margin: 2px 0px;
-  color: hsla(211,26%,34%,1);
-  border-radius: 4px;
+  color: hsla(200,10%,18%,1);
+  border-radius: 12px;
   border-width: 0px;
   background-color: hsla(0,0%,100%,0);
   -webkit-transition: background-color 80ms cubic-bezier(0.3,0,0.2,1);
@@ -585,17 +585,17 @@ exports[`SideNav should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12 .styled-nav-link[aria-current] {
-  color: hsla(227,100%,59%,1);
-  background-color: hsla(227,100%,59%,0.09);
+  color: hsla(218,89%,51%,1);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c12.c12.c12.c12.c12 .styled-nav-link[aria-current]:hover {
-  color: hsla(227,71%,51%,1);
-  background-color: hsla(227,100%,59%,0.18);
+  color: hsla(218,87%,43%,1);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c12.c12.c12.c12.c12 .styled-nav-link:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -609,7 +609,7 @@ exports[`SideNav should render 1`] = `
 .c23.c23.c23.c23.c23 {
   height: 2px;
   width: 100%;
-  background: linear-gradient(90deg,hsla(0,0%,100%,0) 0%,hsla(211,20%,52%,0.18) 50%,hsla(0,0%,100%,0) 100%);
+  background: linear-gradient(90deg,hsla(0,0%,100%,0) 0%,hsla(206,10%,29%,0.12) 50%,hsla(0,0%,100%,0) 100%);
 }
 
 .c27.c27.c27.c27.c27 {
@@ -701,7 +701,7 @@ exports[`SideNav should render 1`] = `
   width: 36px;
   height: 20px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -726,7 +726,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c42.c42.c42.c42.c42:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -738,7 +738,7 @@ exports[`SideNav should render 1`] = `
 }
 
 .c42.c42.c42.c42.c42:hover + div {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -1277,7 +1277,7 @@ exports[`SideNav should render 1`] = `
                             clip-rule="evenodd"
                             d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 33%, 21%, 1)"
+                            fill="hsla(0, 0%, 2%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
@@ -1463,14 +1463,14 @@ exports[`SideNav should render 1`] = `
                       cx="5"
                       cy="5"
                       data-blade-component="svg-circle"
-                      fill="hsla(150, 100%, 32%, 0.09)"
+                      fill="hsla(150, 100%, 28%, 0.09)"
                       r="5"
                     />
                     <circle
                       cx="5"
                       cy="5"
                       data-blade-component="svg-circle"
-                      fill="hsla(150, 100%, 27%, 1)"
+                      fill="hsla(150, 100%, 23%, 1)"
                       r="2.5"
                     />
                   </svg>

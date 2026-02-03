@@ -15,7 +15,7 @@ exports[`<DotIcon /> should render DotIcon 1`] = `
       cx="12"
       cy="12"
       data-blade-component="svg-circle"
-      fill="hsla(211, 33%, 21%, 1)"
+      fill="hsla(200, 10%, 18%, 1)"
       r="8"
     />
   </svg>

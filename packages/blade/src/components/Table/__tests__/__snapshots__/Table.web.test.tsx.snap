@@ -49,14 +49,14 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -66,14 +66,14 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -104,12 +104,12 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -128,14 +128,14 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -154,14 +154,14 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -173,14 +173,14 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -197,7 +197,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -218,7 +218,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -231,7 +231,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -256,15 +256,15 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -287,7 +287,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -345,7 +345,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-8q741w-Table"
+      class="c1 css-1smvap5-Table"
       data-analytics-table="test"
       data-blade-component="table"
       data-table-library_table=""
@@ -1107,9 +1107,9 @@ exports[`<Table /> should render table 1`] = `
   padding: 8px 12px;
   min-height: 37px;
   gap: 16px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.12);
   border-bottom-width: 0px;
   border-style: solid;
 }
@@ -1138,7 +1138,7 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  border-left-color: hsla(211,20%,52%,0.18);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
 }
 
@@ -1197,14 +1197,14 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1214,14 +1214,14 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1232,14 +1232,14 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c23.c23.c23.c23.c23 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1270,12 +1270,12 @@ exports[`<Table /> should render table 1`] = `
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected .cell-wrapper-base,
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -1294,14 +1294,14 @@ exports[`<Table /> should render table 1`] = `
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -1320,14 +1320,14 @@ exports[`<Table /> should render table 1`] = `
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -1339,14 +1339,14 @@ exports[`<Table /> should render table 1`] = `
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -1363,7 +1363,7 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c19.c19.c19.c19.c19.c19.c19.c19.c19.c19.c19.c19.c19.c19.c19:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1384,7 +1384,7 @@ exports[`<Table /> should render table 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -1397,7 +1397,7 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1409,7 +1409,7 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 tr:last-child th {
@@ -1425,14 +1425,14 @@ exports[`<Table /> should render table 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1468,15 +1468,15 @@ exports[`<Table /> should render table 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1499,7 +1499,7 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1532,7 +1532,7 @@ exports[`<Table /> should render table 1`] = `
   border: none;
   cursor: pointer;
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 8px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1546,11 +1546,11 @@ exports[`<Table /> should render table 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -1724,7 +1724,7 @@ exports[`<Table /> should render table 1`] = `
     </div>
     <table
       aria-multiselectable="false"
-      class="c12 css-8q741w-Table"
+      class="c12 css-1smvap5-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -2959,14 +2959,14 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2976,14 +2976,14 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -3020,12 +3020,12 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected .cell-wrapper-base,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -3044,14 +3044,14 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -3070,14 +3070,14 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -3089,14 +3089,14 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -3113,7 +3113,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -3134,7 +3134,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -3148,7 +3148,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -3159,7 +3159,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 .cell-wrapper {
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 td:last-child .cell-wrapper {
@@ -3167,7 +3167,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -3179,7 +3179,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 tr:last-child th {
@@ -3188,7 +3188,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 
 .c27.c27.c27.c27.c27 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -3201,14 +3201,14 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3244,15 +3244,15 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3275,7 +3275,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -3288,7 +3288,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 
 .c7.c7.c7.c7.c7 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -3297,7 +3297,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c25.c25.c25.c25.c25 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3329,7 +3329,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c25.c25.c25.c25.c25::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3346,7 +3346,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c25.c25.c25.c25.c25::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3363,7 +3363,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c25.c25.c25.c25.c25:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3380,7 +3380,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c25.c25.c25.c25.c25::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3425,7 +3425,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c24.c24.c24.c24.c24:hover {
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,97%,1);
   border-radius: 0px;
   border-style: solid;
   display: -webkit-box;
@@ -3484,7 +3484,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
 }
 
 .c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -3584,7 +3584,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
     />
     <table
       aria-multiselectable="false"
-      class="c5 css-8q741w-Table"
+      class="c5 css-1smvap5-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -4322,14 +4322,14 @@ exports[`<Table /> should render table with column spanning 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -4339,14 +4339,14 @@ exports[`<Table /> should render table with column spanning 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -4377,12 +4377,12 @@ exports[`<Table /> should render table with column spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -4401,14 +4401,14 @@ exports[`<Table /> should render table with column spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -4427,14 +4427,14 @@ exports[`<Table /> should render table with column spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -4446,14 +4446,14 @@ exports[`<Table /> should render table with column spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -4470,7 +4470,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -4491,7 +4491,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -4502,7 +4502,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .cell-wrapper {
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 td:last-child .cell-wrapper {
@@ -4510,7 +4510,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -4535,15 +4535,15 @@ exports[`<Table /> should render table with column spanning 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4566,7 +4566,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -4579,7 +4579,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
 
 .c3.c3.c3.c3.c3 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -4628,7 +4628,7 @@ exports[`<Table /> should render table with column spanning 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-1f5qwrj-Table"
+      class="c1 css-14q8gsv-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -5066,14 +5066,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -5083,14 +5083,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -5121,12 +5121,12 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -5145,14 +5145,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -5171,14 +5171,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -5190,14 +5190,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -5214,7 +5214,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -5235,7 +5235,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -5248,7 +5248,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -5260,7 +5260,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 tr:last-child th {
@@ -5276,14 +5276,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5319,15 +5319,15 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5350,7 +5350,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -5406,7 +5406,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-8q741w-Table"
+      class="c1 css-1smvap5-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -6068,14 +6068,14 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -6085,14 +6085,14 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -6123,12 +6123,12 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -6147,14 +6147,14 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -6173,14 +6173,14 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -6192,14 +6192,14 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -6216,7 +6216,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -6237,7 +6237,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -6250,7 +6250,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -6262,7 +6262,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 tr:last-child th {
@@ -6278,14 +6278,14 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6321,15 +6321,15 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6352,7 +6352,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -6408,7 +6408,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-8q741w-Table"
+      class="c1 css-1smvap5-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -7070,14 +7070,14 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -7087,14 +7087,14 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -7125,12 +7125,12 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -7149,14 +7149,14 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -7175,14 +7175,14 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -7194,14 +7194,14 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -7218,7 +7218,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -7239,7 +7239,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -7250,7 +7250,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .cell-wrapper {
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 td:last-child .cell-wrapper {
@@ -7258,7 +7258,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -7270,7 +7270,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 tr:last-child th {
@@ -7279,7 +7279,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 
 .c15.c15.c15.c15.c15 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -7292,14 +7292,14 @@ exports[`<Table /> should render table with footer spanning 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7335,15 +7335,15 @@ exports[`<Table /> should render table with footer spanning 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7366,7 +7366,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -7379,7 +7379,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
 
 .c3.c3.c3.c3.c3 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -7428,7 +7428,7 @@ exports[`<Table /> should render table with footer spanning 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-1f5qwrj-Table"
+      class="c1 css-14q8gsv-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -7879,14 +7879,14 @@ exports[`<Table /> should render table with grouping 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -7896,14 +7896,14 @@ exports[`<Table /> should render table with grouping 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -7934,12 +7934,12 @@ exports[`<Table /> should render table with grouping 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -7958,14 +7958,14 @@ exports[`<Table /> should render table with grouping 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -7984,14 +7984,14 @@ exports[`<Table /> should render table with grouping 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -8003,14 +8003,14 @@ exports[`<Table /> should render table with grouping 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -8027,7 +8027,7 @@ exports[`<Table /> should render table with grouping 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -8048,7 +8048,7 @@ exports[`<Table /> should render table with grouping 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -8065,7 +8065,7 @@ exports[`<Table /> should render table with grouping 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -8077,7 +8077,7 @@ exports[`<Table /> should render table with grouping 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 td {
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,97%,1);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
@@ -8093,7 +8093,7 @@ exports[`<Table /> should render table with grouping 1`] = `
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -8118,15 +8118,15 @@ exports[`<Table /> should render table with grouping 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8149,7 +8149,7 @@ exports[`<Table /> should render table with grouping 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -8162,7 +8162,7 @@ exports[`<Table /> should render table with grouping 1`] = `
 
 .c3.c3.c3.c3.c3 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -8211,7 +8211,7 @@ exports[`<Table /> should render table with grouping 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-zh1hnl-Table"
+      class="c1 css-15800b-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -8641,14 +8641,14 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -8658,14 +8658,14 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c22.c22.c22.c22.c22 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -8706,9 +8706,9 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 2px;
+  border-radius: 8px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -8733,9 +8733,9 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 2px;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  border-radius: 8px;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c13.c13.c13.c13.c13 {
@@ -8775,7 +8775,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c24.c24.c24.c24.c24:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -8787,8 +8787,8 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c24.c24.c24.c24.c24:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -8813,7 +8813,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -8825,8 +8825,8 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(227,71%,51%,1);
-  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(218,87%,43%,1);
+  background-color: hsla(218,87%,43%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -8845,12 +8845,12 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected .cell-wrapper-base,
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -8869,14 +8869,14 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -8895,14 +8895,14 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -8914,20 +8914,20 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 tr:active:not(.disabled-row) .cell-wrapper {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 {
@@ -8942,7 +8942,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -8963,7 +8963,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -8983,7 +8983,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
@@ -8999,7 +8999,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -9018,7 +9018,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -9032,12 +9032,12 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:active:not(.disabled-row) .cell-wrapper-base {
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   cursor: pointer;
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -9049,7 +9049,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 td {
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,97%,1);
 }
 
 .c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23 {
@@ -9068,7 +9068,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
@@ -9084,7 +9084,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -9103,7 +9103,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -9117,12 +9117,12 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 .c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23:active:not(.disabled-row) .cell-wrapper-base {
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   cursor: pointer;
 }
 
 .c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23.c23:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -9147,15 +9147,15 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -9178,7 +9178,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -9191,7 +9191,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 
 .c3.c3.c3.c3.c3 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -9270,7 +9270,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
     />
     <table
       aria-multiselectable="true"
-      class="c1 css-9v47cb-Table"
+      class="c1 css-1b0m8x5-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -10258,14 +10258,14 @@ exports[`<Table /> should render table with header spanning 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -10275,14 +10275,14 @@ exports[`<Table /> should render table with header spanning 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -10313,12 +10313,12 @@ exports[`<Table /> should render table with header spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -10337,14 +10337,14 @@ exports[`<Table /> should render table with header spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -10363,14 +10363,14 @@ exports[`<Table /> should render table with header spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -10382,14 +10382,14 @@ exports[`<Table /> should render table with header spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -10406,7 +10406,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -10427,7 +10427,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -10438,7 +10438,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .cell-wrapper {
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 td:last-child .cell-wrapper {
@@ -10446,7 +10446,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -10471,15 +10471,15 @@ exports[`<Table /> should render table with header spanning 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10502,7 +10502,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -10515,7 +10515,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
 
 .c3.c3.c3.c3.c3 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -10564,7 +10564,7 @@ exports[`<Table /> should render table with header spanning 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-zh1hnl-Table"
+      class="c1 css-15800b-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -10977,18 +10977,18 @@ exports[`<Table /> should render table with isLoading 1`] = `
             <path
               d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 26%, 34%, 1)"
+              fill="hsla(200, 10%, 18%, 1)"
               fill-opacity="0.2"
             />
             <path
               d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 26%, 34%, 1)"
+              fill="hsla(200, 10%, 18%, 1)"
             />
             <path
               d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 26%, 34%, 1)"
+              fill="hsla(200, 10%, 18%, 1)"
             />
           </svg>
         </div>
@@ -11094,14 +11094,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -11111,14 +11111,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -11155,12 +11155,12 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected .cell-wrapper-base,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -11179,14 +11179,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -11205,14 +11205,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -11224,14 +11224,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -11248,7 +11248,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -11269,7 +11269,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -11282,7 +11282,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -11294,7 +11294,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18 {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18.c18 tr:last-child th {
@@ -11310,14 +11310,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11353,15 +11353,15 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11384,7 +11384,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -11488,7 +11488,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c5 css-8q741w-Table"
+      class="c5 css-1smvap5-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -12127,9 +12127,9 @@ exports[`<Table /> should render table with multi select 1`] = `
   padding: 8px 12px;
   min-height: 37px;
   gap: 16px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.12);
   border-bottom-width: 0px;
   border-style: solid;
 }
@@ -12158,7 +12158,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  border-left-color: hsla(211,20%,52%,0.18);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
 }
 
@@ -12298,14 +12298,14 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -12315,14 +12315,14 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -12333,14 +12333,14 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c33.c33.c33.c33.c33 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -12356,7 +12356,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c36.c36.c36.c36.c36 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -12375,7 +12375,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c37.c37.c37.c37.c37 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -12392,7 +12392,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c38.c38.c38.c38.c38 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -12410,14 +12410,14 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -12452,9 +12452,9 @@ exports[`<Table /> should render table with multi select 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 2px;
+  border-radius: 8px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
 }
 
 .c22.c22.c22.c22.c22 {
@@ -12479,9 +12479,9 @@ exports[`<Table /> should render table with multi select 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 2px;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  border-radius: 8px;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c24.c24.c24.c24.c24 {
@@ -12521,7 +12521,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c39.c39.c39.c39.c39:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -12533,8 +12533,8 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c39.c39.c39.c39.c39:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -12559,7 +12559,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c21.c21.c21.c21.c21:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -12571,8 +12571,8 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c21.c21.c21.c21.c21:hover + div {
-  border-color: hsla(227,71%,51%,1);
-  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(218,87%,43%,1);
+  background-color: hsla(218,87%,43%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -12591,12 +12591,12 @@ exports[`<Table /> should render table with multi select 1`] = `
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected .cell-wrapper-base,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -12615,14 +12615,14 @@ exports[`<Table /> should render table with multi select 1`] = `
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -12641,14 +12641,14 @@ exports[`<Table /> should render table with multi select 1`] = `
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -12660,20 +12660,20 @@ exports[`<Table /> should render table with multi select 1`] = `
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 tr:active:not(.disabled-row) .cell-wrapper {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28 {
@@ -12688,7 +12688,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -12709,7 +12709,7 @@ exports[`<Table /> should render table with multi select 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -12725,7 +12725,7 @@ exports[`<Table /> should render table with multi select 1`] = `
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
@@ -12741,7 +12741,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -12760,7 +12760,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -12774,12 +12774,12 @@ exports[`<Table /> should render table with multi select 1`] = `
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:active:not(.disabled-row) .cell-wrapper-base {
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   cursor: pointer;
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -12804,15 +12804,15 @@ exports[`<Table /> should render table with multi select 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -12835,7 +12835,7 @@ exports[`<Table /> should render table with multi select 1`] = `
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -12868,7 +12868,7 @@ exports[`<Table /> should render table with multi select 1`] = `
   border: none;
   cursor: pointer;
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 8px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -12882,11 +12882,11 @@ exports[`<Table /> should render table with multi select 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -13090,7 +13090,7 @@ exports[`<Table /> should render table with multi select 1`] = `
     </div>
     <table
       aria-multiselectable="true"
-      class="c12 css-16gq3nk-Table"
+      class="c12 css-28s2d8-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -14829,9 +14829,9 @@ exports[`<Table /> should render table with multi select 2`] = `
   padding: 8px 12px;
   min-height: 37px;
   gap: 16px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.12);
   border-bottom-width: 0px;
   border-style: solid;
 }
@@ -14860,7 +14860,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  border-left-color: hsla(211,20%,52%,0.18);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
 }
 
@@ -15000,14 +15000,14 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c25.c25.c25.c25.c25 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -15017,14 +15017,14 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -15035,14 +15035,14 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c33.c33.c33.c33.c33 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -15058,7 +15058,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c36.c36.c36.c36.c36 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -15077,7 +15077,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c37.c37.c37.c37.c37 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -15094,7 +15094,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c38.c38.c38.c38.c38 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -15112,14 +15112,14 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -15154,9 +15154,9 @@ exports[`<Table /> should render table with multi select 2`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 2px;
+  border-radius: 8px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
 }
 
 .c22.c22.c22.c22.c22 {
@@ -15181,9 +15181,9 @@ exports[`<Table /> should render table with multi select 2`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 2px;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  border-radius: 8px;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c24.c24.c24.c24.c24 {
@@ -15223,7 +15223,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c39.c39.c39.c39.c39:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -15235,8 +15235,8 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c39.c39.c39.c39.c39:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -15261,7 +15261,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c21.c21.c21.c21.c21:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -15273,8 +15273,8 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c21.c21.c21.c21.c21:hover + div {
-  border-color: hsla(227,71%,51%,1);
-  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(218,87%,43%,1);
+  background-color: hsla(218,87%,43%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -15293,12 +15293,12 @@ exports[`<Table /> should render table with multi select 2`] = `
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected .cell-wrapper-base,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -15317,14 +15317,14 @@ exports[`<Table /> should render table with multi select 2`] = `
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -15343,14 +15343,14 @@ exports[`<Table /> should render table with multi select 2`] = `
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -15362,20 +15362,20 @@ exports[`<Table /> should render table with multi select 2`] = `
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 tr:active:not(.disabled-row) .cell-wrapper {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28 {
@@ -15390,7 +15390,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28.c28:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -15411,7 +15411,7 @@ exports[`<Table /> should render table with multi select 2`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -15427,7 +15427,7 @@ exports[`<Table /> should render table with multi select 2`] = `
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
@@ -15443,7 +15443,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -15462,7 +15462,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -15476,12 +15476,12 @@ exports[`<Table /> should render table with multi select 2`] = `
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:active:not(.disabled-row) .cell-wrapper-base {
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   cursor: pointer;
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -15506,15 +15506,15 @@ exports[`<Table /> should render table with multi select 2`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15537,7 +15537,7 @@ exports[`<Table /> should render table with multi select 2`] = `
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -15570,7 +15570,7 @@ exports[`<Table /> should render table with multi select 2`] = `
   border: none;
   cursor: pointer;
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 8px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -15584,11 +15584,11 @@ exports[`<Table /> should render table with multi select 2`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -15792,7 +15792,7 @@ exports[`<Table /> should render table with multi select 2`] = `
     </div>
     <table
       aria-multiselectable="true"
-      class="c12 css-16gq3nk-Table"
+      class="c12 css-28s2d8-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -17553,9 +17553,9 @@ exports[`<Table /> should render table with multi select 3`] = `
   padding: 8px 12px;
   min-height: 37px;
   gap: 16px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.12);
   border-bottom-width: 0px;
   border-style: solid;
 }
@@ -17584,7 +17584,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  border-left-color: hsla(211,20%,52%,0.18);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
 }
 
@@ -17724,49 +17724,31 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
   letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c11.c11.c11.c11.c11 {
-  color: hsla(227,71%,51%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
 .c31.c31.c31.c31.c31 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -17782,7 +17764,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c34.c34.c34.c34.c34 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -17801,7 +17783,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c35.c35.c35.c35.c35 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -17818,7 +17800,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c36.c36.c36.c36.c36 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -17833,6 +17815,24 @@ exports[`<Table /> should render table with multi select 3`] = `
   margin: 0;
   padding: 0;
   opacity: 0.64;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(218,89%,51%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
@@ -17861,9 +17861,9 @@ exports[`<Table /> should render table with multi select 3`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 2px;
+  border-radius: 8px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
 }
 
 .c23.c23.c23.c23.c23 {
@@ -17898,7 +17898,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c21.c21.c21.c21.c21:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -17910,8 +17910,8 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c21.c21.c21.c21.c21:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -17930,12 +17930,12 @@ exports[`<Table /> should render table with multi select 3`] = `
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected .cell-wrapper-base,
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -17954,14 +17954,14 @@ exports[`<Table /> should render table with multi select 3`] = `
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -17980,14 +17980,14 @@ exports[`<Table /> should render table with multi select 3`] = `
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -17999,20 +17999,20 @@ exports[`<Table /> should render table with multi select 3`] = `
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24.c24 tr:active:not(.disabled-row) .cell-wrapper {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26 {
@@ -18027,7 +18027,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26.c26:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -18048,7 +18048,7 @@ exports[`<Table /> should render table with multi select 3`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -18064,7 +18064,7 @@ exports[`<Table /> should render table with multi select 3`] = `
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
@@ -18080,7 +18080,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -18099,7 +18099,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -18113,12 +18113,12 @@ exports[`<Table /> should render table with multi select 3`] = `
 .c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25:active:not(.disabled-row) .cell-wrapper-base {
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   cursor: pointer;
 }
 
 .c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25.c25:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -18143,15 +18143,15 @@ exports[`<Table /> should render table with multi select 3`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -18174,7 +18174,7 @@ exports[`<Table /> should render table with multi select 3`] = `
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -18207,7 +18207,7 @@ exports[`<Table /> should render table with multi select 3`] = `
   border: none;
   cursor: pointer;
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 8px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -18221,11 +18221,11 @@ exports[`<Table /> should render table with multi select 3`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -18429,7 +18429,7 @@ exports[`<Table /> should render table with multi select 3`] = `
     </div>
     <table
       aria-multiselectable="true"
-      class="c12 css-16gq3nk-Table"
+      class="c12 css-28s2d8-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -20170,18 +20170,18 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 
 .c14.c14.c14.c14.c14 {
   padding: 8px;
-  background-color: hsla(213,47%,96%,1);
+  background-color: hsla(200,10%,94%,1);
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -20191,14 +20191,14 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -20229,12 +20229,12 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -20253,14 +20253,14 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -20279,14 +20279,14 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -20298,14 +20298,14 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -20322,7 +20322,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -20343,7 +20343,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -20356,7 +20356,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -20381,15 +20381,15 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20412,7 +20412,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -20468,7 +20468,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-1f5qwrj-Table"
+      class="c1 css-14q8gsv-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -20827,14 +20827,14 @@ exports[`<Table /> should render table with row spanning 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -20844,14 +20844,14 @@ exports[`<Table /> should render table with row spanning 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -20882,12 +20882,12 @@ exports[`<Table /> should render table with row spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -20906,14 +20906,14 @@ exports[`<Table /> should render table with row spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -20932,14 +20932,14 @@ exports[`<Table /> should render table with row spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -20951,14 +20951,14 @@ exports[`<Table /> should render table with row spanning 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -20976,7 +20976,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -20999,7 +20999,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -21020,7 +21020,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -21031,7 +21031,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .cell-wrapper {
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 td:last-child .cell-wrapper {
@@ -21039,7 +21039,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -21064,15 +21064,15 @@ exports[`<Table /> should render table with row spanning 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21095,7 +21095,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -21108,7 +21108,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
 
 .c3.c3.c3.c3.c3 th {
   border-right-width: 1px;
-  border-right-color: hsla(211,20%,52%,0.18);
+  border-right-color: hsla(206,10%,29%,0.12);
   border-right-style: solid;
 }
 
@@ -21157,7 +21157,7 @@ exports[`<Table /> should render table with row spanning 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-1f5qwrj-Table"
+      class="c1 css-14q8gsv-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -21531,14 +21531,14 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -21548,14 +21548,14 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -21586,12 +21586,12 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -21610,14 +21610,14 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -21636,14 +21636,14 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -21655,20 +21655,20 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 tr:nth-child(even) .cell-wrapper {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 tr:nth-child(even) .cell-wrapper-base {
@@ -21687,7 +21687,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -21718,7 +21718,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -21730,7 +21730,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 tr:last-child th {
@@ -21746,14 +21746,14 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21789,15 +21789,15 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21820,7 +21820,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -21876,7 +21876,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-8q741w-Table"
+      class="c1 css-1smvap5-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -22555,14 +22555,14 @@ exports[`<Table /> should render table with single select 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -22572,14 +22572,14 @@ exports[`<Table /> should render table with single select 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -22610,12 +22610,12 @@ exports[`<Table /> should render table with single select 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -22634,14 +22634,14 @@ exports[`<Table /> should render table with single select 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -22660,14 +22660,14 @@ exports[`<Table /> should render table with single select 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -22679,20 +22679,20 @@ exports[`<Table /> should render table with single select 1`] = `
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 tr:active:not(.disabled-row) .cell-wrapper {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
@@ -22707,7 +22707,7 @@ exports[`<Table /> should render table with single select 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -22728,7 +22728,7 @@ exports[`<Table /> should render table with single select 1`] = `
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -22744,7 +22744,7 @@ exports[`<Table /> should render table with single select 1`] = `
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
@@ -22760,7 +22760,7 @@ exports[`<Table /> should render table with single select 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -22779,7 +22779,7 @@ exports[`<Table /> should render table with single select 1`] = `
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -22793,12 +22793,12 @@ exports[`<Table /> should render table with single select 1`] = `
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:active:not(.disabled-row) .cell-wrapper-base {
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   cursor: pointer;
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -22823,15 +22823,15 @@ exports[`<Table /> should render table with single select 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22854,7 +22854,7 @@ exports[`<Table /> should render table with single select 1`] = `
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -22940,7 +22940,7 @@ exports[`<Table /> should render table with single select 1`] = `
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-8q741w-Table"
+      class="c1 css-1smvap5-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -23982,14 +23982,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -23999,14 +23999,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -24038,12 +24038,12 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -24062,14 +24062,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -24088,14 +24088,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -24107,14 +24107,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
@@ -24131,7 +24131,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -24152,7 +24152,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   height: 100%;
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -24165,7 +24165,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -24177,7 +24177,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 tr:last-child th {
@@ -24193,14 +24193,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24236,15 +24236,15 @@ exports[`<Table /> should render table with sticky header, footer & first column
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 > div {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24267,7 +24267,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -24323,7 +24323,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
     />
     <table
       aria-multiselectable="false"
-      class="c1 css-1dbctp5-Table"
+      class="c1 css-5z4cs4-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -26302,12 +26302,12 @@ exports[`<Table /> should render virtualized table 1`] = `
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected .cell-wrapper-base,
 .c1.c1.c1.c1.c1 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c1.c1.c1.c1.c1 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -26326,14 +26326,14 @@ exports[`<Table /> should render virtualized table 1`] = `
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c1.c1.c1.c1.c1 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c1.c1.c1.c1.c1 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -26352,14 +26352,14 @@ exports[`<Table /> should render virtualized table 1`] = `
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c1.c1.c1.c1.c1 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c1.c1.c1.c1.c1 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions,
@@ -26371,20 +26371,20 @@ exports[`<Table /> should render virtualized table 1`] = `
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2,
 .c1.c1.c1.c1.c1 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c1.c1.c1.c1.c1 tbody div .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3,
 .c1.c1.c1.c1.c1 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c1.c1.c1.c1.c1 tbody div tr:active:not(.disabled-row) .cell-wrapper {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 <div>
@@ -26402,7 +26402,7 @@ exports[`<Table /> should render virtualized table 1`] = `
       />
       <table
         aria-multiselectable="true"
-        class="c1 css-ofv9zy-Table"
+        class="c1 css-ajxb7s-Table"
         data-blade-component="table"
         data-table-library_table=""
         role="table"
