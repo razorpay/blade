@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.78.0
+
+### Minor Changes
+
+- ed48d1282: feat: Export FileUploadItem component
+
 ## 12.77.0
 
 ### Minor Changes
