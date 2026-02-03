@@ -681,6 +681,16 @@ export const ClearButtonUncontrolled: StoryFn<typeof DatePickerComponent> = () =
           onClearButtonClick={() => {
             console.log('Clear button clicked - Single');
           }}
+          presets={[
+            {
+              label: 'In 7 days',
+              value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+            },
+            {
+              label: 'In a month',
+              value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+            },
+          ]}
         />
         <DatePickerComponent
           label={{ start: 'Date Range (Uncontrolled)' }}
@@ -689,6 +699,45 @@ export const ClearButtonUncontrolled: StoryFn<typeof DatePickerComponent> = () =
           onClearButtonClick={() => {
             console.log('Clear button clicked - Range');
           }}
+          presets={[
+            {
+              label: 'Today',
+              value: (date) => [dayjs(date).startOf('day').toDate(), date],
+            },
+            {
+              label: 'Yesterday',
+              value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+            },
+            {
+              label: 'Past 7 days',
+              value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+            },
+            {
+              label: 'Past 15 days',
+              value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+            },
+            {
+              label: 'Past month',
+              value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+            },
+            {
+              label: 'Past year',
+              value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
+            },
+            {
+              label: 'Past financial year',
+              value: (date) => {
+                const d = dayjs(date);
+                const year = d.month() >= 3 ? d.year() : d.year() - 1;
+  
+                return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+              },
+            },
+            {
+              label: 'Custom',
+              value: () => [null, null] as DatesRangeValue,
+            },
+          ]}
         />
       </Box>
     </Box>
@@ -699,10 +748,7 @@ ClearButtonUncontrolled.storyName = 'Clear Button (Uncontrolled)';
 
 export const ClearButtonControlled: StoryFn<typeof DatePickerComponent> = () => {
   const [singleDate, setSingleDate] = React.useState<Date | null>(new Date());
-  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([
-    new Date(),
-    dayjs().add(7, 'day').toDate(),
-  ]);
+  const [dateRange, setDateRange] = React.useState<DatesRangeValue>([]);
 
   return (
     <Box>
@@ -748,6 +794,45 @@ export const ClearButtonControlled: StoryFn<typeof DatePickerComponent> = () => 
               console.log('Clear button clicked - resetting date range');
               setDateRange([null, null]);
             }}
+            presets={[
+              {
+                label: 'Today',
+                value: (date) => [dayjs(date).startOf('day').toDate(), date],
+              },
+              {
+                label: 'Yesterday',
+                value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+              },
+              {
+                label: 'Past 7 days',
+                value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+              },
+              {
+                label: 'Past 15 days',
+                value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+              },
+              {
+                label: 'Past month',
+                value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+              },
+              {
+                label: 'Past year',
+                value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
+              },
+              {
+                label: 'Past financial year',
+                value: (date) => {
+                  const d = dayjs(date);
+                  const year = d.month() >= 3 ? d.year() : d.year() - 1;
+    
+                  return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+                },
+              },
+              {
+                label: 'Custom',
+                value: () => [null, null] as DatesRangeValue,
+              },
+            ]}
           />
         </Box>
 

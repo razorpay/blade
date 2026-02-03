@@ -163,12 +163,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   });
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
 
-  // Sync selectedPreset with controlledValue for initial preset matching
+  // Sync selectedPreset with controlledValue for controlled mode
   React.useEffect(() => {
-    if (!isSingle && controlledValue) {
-      setSelectedPreset(controlledValue as DatesRangeValue);
+    if (!isSingle) {
+      // Sync preset state when controlled value changes (including when cleared to null)
+      const hasValidRange = controlledValue?.[0] && controlledValue?.[1];
+      setSelectedPreset(hasValidRange ? (controlledValue as DatesRangeValue) : null);
     }
-  }, []);
+  }, [isSingle, controlledValue]);
 
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,
@@ -257,6 +259,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const handleClear = (): void => {
     fireNativeEvent(referenceRef, ['change']);
     handleReset();
+    setSelectedPreset(null);
     close();
     setFilterChipGroupSelectedFilters((prev: string[]) =>
       prev.filter((filter) => filter !== label),
@@ -503,7 +506,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 // Effective Selection type should only be use for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
                 leadingDropdown={
-                  presets && !isSingle
+                  presets && !isSingle && hasBothDatesSelected
                     ? renderPresetDropdown({
                         onSelection: (preset: (date: Date) => DatesRangeValue) => {
                           const presetValue = preset?.(currentDate);
