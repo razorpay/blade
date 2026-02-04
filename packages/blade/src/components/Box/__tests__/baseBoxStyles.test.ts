@@ -23,7 +23,7 @@ describe('getColorValue', () => {
 describe('getBorderRadiusValue', () => {
   it('should return correct border-radius value', () => {
     expect(getBorderRadiusValue('max', bladeLightTheme, 'base')).toBe('9999px');
-    expect(getBorderRadiusValue('small', bladeLightTheme, 'base')).toBe('2px');
+    expect(getBorderRadiusValue('small', bladeLightTheme, 'base')).toBe('8px');
     expect(getBorderRadiusValue(undefined, bladeLightTheme, 'm')).toBe(undefined);
     expect(getBorderRadiusValue({ base: 'medium', s: 'max' }, bladeLightTheme, 's')).toBe('9999px');
   });
