@@ -405,13 +405,6 @@ const buttonSizeToSpinnerSizeMap: Record<
   large: 'large',
 };
 
-const buttonIconPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
-  xsmall: 1,
-  small: 2,
-  medium: 3,
-  large: 3,
-};
-
 /**
  * Spinner color mapping based on button variant and color
  */
@@ -459,7 +452,6 @@ export {
   buttonSizeToIconSizeMap,
   buttonIconOnlySizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
-  buttonIconPadding,
   buttonPadding,
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,

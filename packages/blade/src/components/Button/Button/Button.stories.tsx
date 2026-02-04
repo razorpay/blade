@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
 import { BaseText } from '~components/Typography/BaseText';
-import { CreditCardIcon } from '~components/Icons';
+import { ArrowRightIcon, CreditCardIcon, UserIcon } from '~components/Icons';
 import { Text, Heading as HeadingComponent } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
@@ -504,6 +504,44 @@ export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
               </ButtonComponent>
             ))}
           </BaseBox>
+          {/* Icon Left */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Icon Left
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent
+                key={size}
+                variant={variant}
+                size={size}
+                icon={ArrowRightIcon}
+                iconPosition="left"
+              >
+                Pay Now
+              </ButtonComponent>
+            ))}
+          </BaseBox>
+          {/* Icon Right */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Icon Right
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent
+                key={size}
+                variant={variant}
+                size={size}
+                icon={ArrowRightIcon}
+                iconPosition="right"
+              >
+                Pay Now
+              </ButtonComponent>
+            ))}
+          </BaseBox>
           {/* Icon only */}
           <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
             <Box width="60px">
@@ -512,7 +550,7 @@ export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
               </Text>
             </Box>
             {sizes.map((size) => (
-              <ButtonComponent key={size} variant={variant} size={size} icon={CreditCardIcon} />
+              <ButtonComponent key={size} variant={variant} size={size} icon={UserIcon} />
             ))}
           </BaseBox>
         </BaseBox>
@@ -612,6 +650,60 @@ export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
                   </ButtonComponent>
                 ))}
               </BaseBox>
+              {/* Icon Left */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Icon Left
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent
+                    key={size}
+                    variant={variant}
+                    color={color}
+                    size={size}
+                    icon={ArrowRightIcon}
+                    iconPosition="left"
+                  >
+                    Pay Now
+                  </ButtonComponent>
+                ))}
+              </BaseBox>
+              {/* Icon Right */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Icon Right
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent
+                    key={size}
+                    variant={variant}
+                    color={color}
+                    size={size}
+                    icon={ArrowRightIcon}
+                    iconPosition="right"
+                  >
+                    Pay Now
+                  </ButtonComponent>
+                ))}
+              </BaseBox>
               {/* Icon only */}
               <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
                 <Box width="60px">
@@ -632,7 +724,7 @@ export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
                     variant={variant}
                     color={color}
                     size={size}
-                    icon={CreditCardIcon}
+                    icon={UserIcon}
                   />
                 ))}
               </BaseBox>

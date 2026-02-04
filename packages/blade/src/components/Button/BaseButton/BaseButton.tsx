@@ -15,7 +15,6 @@ import {
   minHeight as buttonMinHeight,
   buttonSizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
-  buttonIconPadding,
   buttonPadding,
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
@@ -300,8 +299,6 @@ const getProps = ({
     minHeight: makeSize(buttonMinHeight[size]),
     height: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
     width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
-    iconPadding:
-      hasIcon && childrenString?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
     iconColor: getTextColorToken({
       property: 'icon',
       variant,
@@ -463,7 +460,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     hoverIconColor,
     iconColor,
     iconSize,
-    iconPadding,
     spinnerSize,
     lineHeight,
     text,
@@ -632,12 +628,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           zIndex={1}
         >
           {Icon && iconPosition == 'left' ? (
-            <BaseBox
-              paddingRight={iconPadding}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
+            <BaseBox display="flex" justifyContent="center" alignItems="center">
               <Icon size={iconSize} color={iconColor} />
             </BaseBox>
           ) : null}
@@ -646,6 +637,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
               children
             ) : (
               <BaseText
+                marginX="spacing.2"
                 lineHeight={lineHeight}
                 fontSize={fontSize}
                 // figma and web have different font-smoothing properties
@@ -661,12 +653,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             )
           ) : null}
           {Icon && iconPosition == 'right' ? (
-            <BaseBox
-              paddingLeft={iconPadding}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
+            <BaseBox display="flex" justifyContent="center" alignItems="center">
               <Icon size={iconSize} color={iconColor} />
             </BaseBox>
           ) : null}
