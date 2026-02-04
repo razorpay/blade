@@ -48,31 +48,31 @@ type OverrideTheme = {
  * ```
  */
 const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeTokens => {
-  if (__DEV__) {
-    if (
-      !hasSameObjectStructure(
-        (baseThemeTokens as unknown) as ObjectWithKeys,
-        (bladeTheme as unknown) as ObjectWithKeys,
-      )
-    ) {
-      throwBladeError({
-        message: 'The base theme provided is not a valid Blade theme',
-        moduleName: 'overrideTheme',
-      });
-    }
+  // if (__DEV__) {
+  //   if (
+  //     !hasSameObjectStructure(
+  //       (baseThemeTokens as unknown) as ObjectWithKeys,
+  //       (bladeTheme as unknown) as ObjectWithKeys,
+  //     )
+  //   ) {
+  //     throwBladeError({
+  //       message: 'The base theme provided is not a valid Blade theme',
+  //       moduleName: 'overrideTheme',
+  //     });
+  //   }
 
-    if (
-      !isPartialMatchObjectKeys<ThemeTokens>({
-        objectToMatch: overrides,
-        objectToInspect: baseThemeTokens,
-      })
-    ) {
-      throwBladeError({
-        message: 'The overrides object is not valid',
-        moduleName: 'overrideTheme',
-      });
-    }
-  }
+  //   if (
+  //     !isPartialMatchObjectKeys<ThemeTokens>({
+  //       objectToMatch: overrides,
+  //       objectToInspect: baseThemeTokens,
+  //     })
+  //   ) {
+  //     throwBladeError({
+  //       message: 'The overrides object is not valid',
+  //       moduleName: 'overrideTheme',
+  //     });
+  //   }
+  // }
 
   // Need to clone before merging since merge changes/mutates the actual object
   return merge(cloneDeep(baseThemeTokens), overrides) as ThemeTokens;
