@@ -78,10 +78,10 @@ exports[`<Tour /> should render 1`] = `
   position: relative;
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
-  border-radius: 8px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-radius: 16px;
+  border-color: hsla(200,10%,94%,0);
   border-style: solid;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 8px 0px hsla(200,10%,18%,0.06);
   opacity: 0;
   -webkit-transform: translateY(-4px);
   -ms-transform: translateY(-4px);
@@ -92,7 +92,7 @@ exports[`<Tour /> should render 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -106,7 +106,7 @@ exports[`<Tour /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -116,12 +116,12 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c11.c11.c11.c11.c11:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -130,11 +130,11 @@ exports[`<Tour /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c11.c11.c11.c11.c11:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -156,7 +156,7 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -173,14 +173,14 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -197,7 +197,7 @@ exports[`<Tour /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -220,10 +220,10 @@ exports[`<Tour /> should render 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -255,20 +255,20 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -284,10 +284,10 @@ exports[`<Tour /> should render 1`] = `
   min-height: 32px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -318,20 +318,20 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c15.c15.c15.c15.c15:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c15.c15.c15.c15.c15:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15 * {
@@ -435,7 +435,7 @@ exports[`<Tour /> should render 1`] = `
         opacity="0"
         rx="3"
         ry="3"
-        stroke="hsla(227, 100%, 59%, 1)"
+        stroke="hsla(218, 89%, 51%, 1)"
         stroke-width="2px"
         width="10"
         x="-5"
@@ -593,7 +593,7 @@ exports[`<Tour /> should render 1`] = `
             clip-path="url(#:r7:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
-            stroke="hsla(211, 20%, 52%, 0.18)"
+            stroke="hsla(200, 10%, 94%, 0)"
             stroke-width="3"
           />
           <path
