@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.80.0
+
+### Minor Changes
+
+- bf83ed9c3: fix(blade): update alert styles
+
 ## 12.79.0
 
 ### Minor Changes
