@@ -358,7 +358,7 @@ export const SubtleStack: StoryFn<typeof AlertComponent> = () => {
             target: '_blank',
           },
         }}
-        color="information"
+        color="positive"
       />
       <AlertComponent
         description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
@@ -375,32 +375,32 @@ export const SubtleStack: StoryFn<typeof AlertComponent> = () => {
             target: '_blank',
           },
         }}
-        color="information"
+        color="positive"
       />
       <AlertComponent
         description="This is a placeholder text"
         actions={undefined}
-        color="information"
+        color="positive"
       />
       <AlertComponent
         description="This is a placeholder text"
         actions={undefined}
-        color="information"
+        color="positive"
       />
       <AlertComponent
         description="This is a placeholder text"
         actions={undefined}
-        color="information"
+        color="positive"
       />
       <AlertComponent
         description="This is a placeholder text"
         actions={undefined}
-        color="information"
+        color="positive"
       />
       <AlertComponent
         description="This is a placeholder text"
         actions={undefined}
-        color="information"
+        color="positive"
       />
       <AlertComponent
         title="Alert Title"
@@ -418,7 +418,7 @@ export const SubtleStack: StoryFn<typeof AlertComponent> = () => {
             target: '_blank',
           },
         }}
-        color="information"
+        color="positive"
       />
       <AlertComponent
         description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
@@ -435,7 +435,7 @@ export const SubtleStack: StoryFn<typeof AlertComponent> = () => {
             target: '_blank',
           },
         }}
-        color="information"
+        color="positive"
       />
     </BaseBox>
   );

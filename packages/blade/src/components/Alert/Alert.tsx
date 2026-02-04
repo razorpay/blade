@@ -296,7 +296,7 @@ const _Alert = (
         accessibilityLabel="Dismiss alert"
         onClick={onClickDismiss}
         emphasis={emphasis === 'intense' ? 'subtle' : 'intense'}
-        size="large"
+        size="medium"
         icon={CloseIcon}
       />
     </CloseButtonWrapper>
@@ -331,7 +331,7 @@ const _Alert = (
         {leadingIcon}
         <BaseBox
           flex={1}
-          paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
+          paddingLeft={isFullWidth ? 'spacing.3' : 'spacing.3'}
           paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
         >
           {_title}
