@@ -23,5 +23,8 @@ export { default as Spinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
 // Amount
 export { default as Amount } from './Amount/Amount.svelte';
 
+// Icons
+export * from './Icons';
+
 // BladeProvider
 export * from './BladeProvider';
