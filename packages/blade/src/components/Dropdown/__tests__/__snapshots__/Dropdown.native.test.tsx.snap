@@ -125,13 +125,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     style={
                       [
                         {
-                          "color": "hsla(211, 22%, 56%, 1)",
+                          "color": "hsla(204, 9%, 42%, 1)",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "600",
                           "letterSpacing": 0,
-                          "lineHeight": 18,
+                          "lineHeight": 17,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -188,7 +188,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(212, 39%, 16%, 1)",
+                            "color": "hsla(0, 0%, 2%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
@@ -222,7 +222,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 [
                   {},
                   {
-                    "borderRadius": 4,
+                    "borderRadius": 12,
                     "width": "100%",
                   },
                 ]
@@ -239,8 +239,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   [
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(214, 40%, 92%, 1)",
-                      "borderRadius": 4,
+                      "borderColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 12,
                       "borderStyle": "solid",
                       "borderWidth": 0,
                       "display": "flex",
@@ -254,8 +254,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     },
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(214, 40%, 92%, 1)",
-                      "borderRadius": 4,
+                      "borderColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 12,
                       "borderStyle": "solid",
                       "borderWidth": 1,
                     },
@@ -382,7 +382,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           style={
                             {
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "color": "hsla(211, 20%, 52%, 0.32)",
+                              "color": "hsla(206, 10%, 29%, 0.32)",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -436,7 +436,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               style={
                                 [
                                   {
-                                    "color": "hsla(211, 20%, 52%, 0.32)",
+                                    "color": "hsla(206, 10%, 29%, 0.32)",
                                     "fontFamily": "Inter",
                                     "fontSize": 14,
                                     "fontStyle": "normal",
@@ -636,7 +636,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                               fill={
                                 {
-                                  "payload": 4285959847,
+                                  "payload": 4284575093,
                                   "type": 0,
                                 }
                               }
@@ -699,7 +699,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                               fill={
                                 {
-                                  "payload": 4285959847,
+                                  "payload": 4284575093,
                                   "type": 0,
                                 }
                               }
@@ -817,19 +817,19 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 },
                 {
                   "elevation": 16,
-                  "shadowColor": "hsla(217, 56%, 17%, 0.55)",
+                  "shadowColor": "hsla(200, 10%, 18%, 1)",
                   "shadowOffset": {
-                    "height": 4,
+                    "height": 2,
                     "width": 0,
                   },
-                  "shadowOpacity": 0.17,
-                  "shadowRadius": 6,
+                  "shadowOpacity": 0.06,
+                  "shadowRadius": 4,
                 },
                 [
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                    "borderColor": "hsla(211, 20%, 52%, 0.18)",
-                    "borderRadius": 4,
+                    "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                    "borderRadius": 12,
                     "borderStyle": "solid",
                     "borderWidth": 1,
                     "transform": [
@@ -955,7 +955,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
@@ -1022,7 +1022,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   style={
                     [
                       {
-                        "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                        "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
                         "borderBottomStyle": "solid",
                       },
                       {
@@ -1142,7 +1142,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderRadius": 4,
+                          "borderRadius": 12,
                           "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
@@ -1240,7 +1240,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               style={
                                 [
                                   {
-                                    "color": "hsla(212, 39%, 16%, 1)",
+                                    "color": "hsla(0, 0%, 2%, 1)",
                                     "fontFamily": "Inter",
                                     "fontSize": 14,
                                     "fontStyle": "normal",
@@ -1321,7 +1321,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderRadius": 4,
+                          "borderRadius": 12,
                           "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
@@ -1419,7 +1419,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               style={
                                 [
                                   {
-                                    "color": "hsla(212, 39%, 16%, 1)",
+                                    "color": "hsla(0, 0%, 2%, 1)",
                                     "fontFamily": "Inter",
                                     "fontSize": 14,
                                     "fontStyle": "normal",
@@ -1490,7 +1490,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 style={
                   [
                     {
-                      "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                      "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
                       "borderBottomStyle": "solid",
                     },
                     {
