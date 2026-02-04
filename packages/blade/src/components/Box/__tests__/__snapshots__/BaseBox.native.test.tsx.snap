@@ -22,13 +22,13 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
         },
         {
           "elevation": 24,
-          "shadowColor": "hsla(217, 56%, 17%, 0.8)",
+          "shadowColor": "hsla(200, 10%, 18%, 1)",
           "shadowOffset": {
-            "height": 6,
+            "height": 8,
             "width": 0,
           },
-          "shadowOpacity": 0.16,
-          "shadowRadius": 14,
+          "shadowOpacity": 0.06,
+          "shadowRadius": 12,
         },
         undefined,
       ]
@@ -47,7 +47,7 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
       style={
         [
           {
-            "color": "hsla(212, 39%, 16%, 1)",
+            "color": "hsla(0, 0%, 2%, 1)",
             "fontFamily": "Inter",
             "fontSize": 14,
             "fontStyle": "normal",

@@ -18,9 +18,9 @@ exports[`BottomNav should render 1`] = `
   left: 0px;
   background-color: hsla(0,0%,100%,1);
   border-top-width: 1px;
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-top-style: solid;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 8px 0px hsla(200,10%,18%,0.06);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -56,7 +56,7 @@ exports[`BottomNav should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -74,7 +74,7 @@ exports[`BottomNav should render 1`] = `
 .c2.c2.c2.c2.c2 {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
   border: none;
   padding-left: 0px;
@@ -84,11 +84,11 @@ exports[`BottomNav should render 1`] = `
 }
 
 .c2.c2.c2.c2.c2[aria-current="page"] {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
 }
 
 .c2.c2.c2.c2.c2:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;

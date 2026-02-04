@@ -207,7 +207,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   style={
                     [
                       {
-                        "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                        "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
                         "borderBottomStyle": "solid",
                       },
                       {
@@ -253,7 +253,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       }
                     }
                     accessible={true}
-                    borderRadius="4px"
+                    borderRadius="12px"
                     borderWidth="1px"
                     buttonPaddingBottom="0px"
                     buttonPaddingLeft="20px"
@@ -263,14 +263,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     color="primary"
                     data-blade-component="button"
                     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-                    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-                    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
-                    focusBorderColor="hsla(227, 100%, 59%, 1)"
-                    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+                    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+                    focusBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+                    focusBorderColor="hsla(218, 89%, 51%, 1)"
+                    focusRingColor="hsla(218, 89%, 51%, 0.18)"
                     focusable={true}
-                    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
-                    hoverBorderColor="hsla(227, 100%, 59%, 1)"
-                    hoverIconColor="hsla(227, 100%, 59%, 1)"
+                    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+                    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+                    hoverIconColor="hsla(218, 89%, 51%, 1)"
                     isFullWidth={true}
                     isLoading={false}
                     isPressed={false}
@@ -299,8 +299,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "borderColor": "hsla(227, 100%, 59%, 1)",
-                          "borderRadius": 4,
+                          "borderColor": "hsla(218, 89%, 51%, 1)",
+                          "borderRadius": 12,
                           "borderStyle": "solid",
                           "borderWidth": 1,
                           "cursor": "pointer",
@@ -320,7 +320,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         },
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "borderColor": "hsla(227, 100%, 59%, 1)",
+                          "borderColor": "hsla(218, 89%, 51%, 1)",
                         },
                       ]
                     }
@@ -373,7 +373,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(227, 100%, 59%, 1)",
+                                "color": "hsla(218, 89%, 51%, 1)",
                                 "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
@@ -474,7 +474,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   [
                     {},
                     {
-                      "backgroundColor": "hsla(211, 20%, 52%, 0.06)",
+                      "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
                       "borderRadius": 16,
                       "content": "''",
                       "height": 4,
@@ -602,7 +602,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(212, 39%, 16%, 1)",
+                                "color": "hsla(0, 0%, 2%, 1)",
                                 "fontFamily": "Inter",
                                 "fontSize": 16,
                                 "fontStyle": "normal",
@@ -671,12 +671,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 style={
                                   [
                                     {
-                                      "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+                                      "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
                                       "minHeight": 20,
                                     },
                                     {
                                       "alignSelf": "center",
-                                      "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+                                      "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
                                       "borderRadius": 9999,
                                       "display": "flex",
                                       "flexWrap": "nowrap",
@@ -719,13 +719,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     style={
                                       [
                                         {
-                                          "color": "hsla(150, 100%, 27%, 1)",
+                                          "color": "hsla(150, 100%, 23%, 1)",
                                           "fontFamily": "Inter",
                                           "fontSize": 12,
                                           "fontStyle": "normal",
                                           "fontWeight": "500",
                                           "letterSpacing": 0,
-                                          "lineHeight": 18,
+                                          "lineHeight": 17,
                                           "marginBottom": 0,
                                           "marginLeft": 0,
                                           "marginRight": 0,
@@ -761,13 +761,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(211, 22%, 56%, 1)",
+                              "color": "hsla(204, 9%, 42%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontStyle": "normal",
                               "fontWeight": "400",
                               "letterSpacing": 0,
-                              "lineHeight": 18,
+                              "lineHeight": 17,
                               "marginBottom": 0,
                               "marginLeft": 0,
                               "marginRight": 0,
@@ -831,13 +831,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           style={
                             [
                               {
-                                "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+                                "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
                                 "height": 20,
                                 "textAlign": "left",
                               },
                               {
                                 "alignSelf": "center",
-                                "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+                                "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
                                 "borderRadius": 9999,
                                 "display": "flex",
                                 "flexWrap": "nowrap",
@@ -880,13 +880,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               style={
                                 [
                                   {
-                                    "color": "hsla(150, 100%, 27%, 1)",
+                                    "color": "hsla(150, 100%, 23%, 1)",
                                     "fontFamily": "Inter",
                                     "fontSize": 12,
                                     "fontStyle": "normal",
                                     "fontWeight": "500",
                                     "letterSpacing": 0,
-                                    "lineHeight": 18,
+                                    "lineHeight": 17,
                                     "marginBottom": 0,
                                     "marginLeft": 0,
                                     "marginRight": 0,
@@ -1010,7 +1010,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
                             fill={
                               {
-                                "payload": 4285959847,
+                                "payload": 4284575093,
                                 "type": 0,
                               }
                             }
@@ -1066,7 +1066,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 style={
                   [
                     {
-                      "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                      "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
                       "borderBottomStyle": "solid",
                     },
                     {
@@ -1295,7 +1295,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   style={
                     [
                       {
-                        "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                        "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
                         "borderBottomStyle": "solid",
                       },
                       {
@@ -1341,7 +1341,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                       }
                     }
                     accessible={true}
-                    borderRadius="4px"
+                    borderRadius="12px"
                     borderWidth="1px"
                     buttonPaddingBottom="0px"
                     buttonPaddingLeft="20px"
@@ -1351,14 +1351,14 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     color="primary"
                     data-blade-component="button"
                     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-                    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-                    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
-                    focusBorderColor="hsla(227, 100%, 59%, 1)"
-                    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+                    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+                    focusBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+                    focusBorderColor="hsla(218, 89%, 51%, 1)"
+                    focusRingColor="hsla(218, 89%, 51%, 0.18)"
                     focusable={true}
-                    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
-                    hoverBorderColor="hsla(227, 100%, 59%, 1)"
-                    hoverIconColor="hsla(227, 100%, 59%, 1)"
+                    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+                    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+                    hoverIconColor="hsla(218, 89%, 51%, 1)"
                     isFullWidth={true}
                     isLoading={false}
                     isPressed={false}
@@ -1387,8 +1387,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "borderColor": "hsla(227, 100%, 59%, 1)",
-                          "borderRadius": 4,
+                          "borderColor": "hsla(218, 89%, 51%, 1)",
+                          "borderRadius": 12,
                           "borderStyle": "solid",
                           "borderWidth": 1,
                           "cursor": "pointer",
@@ -1408,7 +1408,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         },
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "borderColor": "hsla(227, 100%, 59%, 1)",
+                          "borderColor": "hsla(218, 89%, 51%, 1)",
                         },
                       ]
                     }
@@ -1461,7 +1461,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(227, 100%, 59%, 1)",
+                                "color": "hsla(218, 89%, 51%, 1)",
                                 "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
@@ -1562,7 +1562,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   [
                     {},
                     {
-                      "backgroundColor": "hsla(211, 20%, 52%, 0.06)",
+                      "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
                       "borderRadius": 16,
                       "content": "''",
                       "height": 4,
@@ -1728,7 +1728,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
                         fill={
                           {
-                            "payload": 4285959847,
+                            "payload": 4284575093,
                             "type": 0,
                           }
                         }

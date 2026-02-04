@@ -11,7 +11,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -44,7 +44,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -59,14 +59,14 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -110,18 +110,18 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
             <path
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 33%, 21%, 1)"
+              fill="hsla(200, 10%, 18%, 1)"
             />
             <path
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 33%, 21%, 1)"
+              fill="hsla(200, 10%, 18%, 1)"
             />
             <path
               clip-rule="evenodd"
               d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
               data-blade-component="svg-path"
-              fill="hsla(211, 33%, 21%, 1)"
+              fill="hsla(200, 10%, 18%, 1)"
               fill-rule="evenodd"
             />
           </svg>
@@ -149,7 +149,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -174,7 +174,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -189,14 +189,14 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -247,7 +247,7 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(200,84%,44%,1);
+  background-color: hsla(200,100%,41%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -272,7 +272,7 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(200,84%,44%,1);
+  background-color: hsla(200,100%,41%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -294,7 +294,7 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -345,7 +345,7 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(200,84%,44%,1);
+  background-color: hsla(200,100%,41%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -370,7 +370,7 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(200,84%,44%,1);
+  background-color: hsla(200,100%,41%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -392,7 +392,7 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -443,7 +443,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -468,7 +468,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -490,7 +490,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -541,7 +541,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -566,7 +566,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -588,7 +588,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -639,7 +639,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(211,29%,26%,1);
+  background-color: hsla(200,10%,18%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -664,7 +664,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,29%,26%,1);
+  background-color: hsla(200,10%,18%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -686,7 +686,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -737,7 +737,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(211,29%,26%,1);
+  background-color: hsla(200,10%,18%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -762,7 +762,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,29%,26%,1);
+  background-color: hsla(200,10%,18%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -784,7 +784,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -835,7 +835,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(25,90%,48%,1);
+  background-color: hsla(25,100%,44%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -860,7 +860,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(25,90%,48%,1);
+  background-color: hsla(25,100%,44%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -882,7 +882,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -933,7 +933,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(25,90%,48%,1);
+  background-color: hsla(25,100%,44%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -958,7 +958,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(25,90%,48%,1);
+  background-color: hsla(25,100%,44%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -980,7 +980,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1031,7 +1031,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1056,7 +1056,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1078,7 +1078,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1129,7 +1129,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1154,7 +1154,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1176,7 +1176,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1227,7 +1227,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1252,7 +1252,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1274,7 +1274,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1325,7 +1325,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1350,7 +1350,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1372,7 +1372,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1423,7 +1423,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 24px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1448,7 +1448,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1463,14 +1463,14 @@ exports[`<Badge /> should render large size Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1521,7 +1521,7 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1546,7 +1546,7 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1561,14 +1561,14 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1619,7 +1619,7 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1644,7 +1644,7 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1659,14 +1659,14 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1717,7 +1717,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1742,7 +1742,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1757,14 +1757,14 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1815,7 +1815,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1840,7 +1840,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1855,14 +1855,14 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1913,7 +1913,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1938,7 +1938,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1953,14 +1953,14 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2011,7 +2011,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2036,7 +2036,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2051,14 +2051,14 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2109,7 +2109,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(25,90%,48%,0.09);
+  background-color: hsla(25,100%,44%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2134,7 +2134,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(25,90%,48%,0.09);
+  background-color: hsla(25,100%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2149,14 +2149,14 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(25,85%,42%,1);
+  color: hsla(25,100%,39%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2207,7 +2207,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(25,90%,48%,0.09);
+  background-color: hsla(25,100%,44%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2232,7 +2232,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(25,90%,48%,0.09);
+  background-color: hsla(25,100%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2247,14 +2247,14 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(25,85%,42%,1);
+  color: hsla(25,100%,39%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2305,7 +2305,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2330,7 +2330,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2345,14 +2345,14 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2403,7 +2403,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2428,7 +2428,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2443,14 +2443,14 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2501,7 +2501,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2526,7 +2526,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2541,14 +2541,14 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2599,7 +2599,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2624,7 +2624,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2639,14 +2639,14 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2697,7 +2697,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2722,7 +2722,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2737,14 +2737,14 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -2795,7 +2795,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
 .c1.c1.c1.c1.c1 {
   text-align: left;
   height: 16px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2820,7 +2820,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2835,14 +2835,14 @@ exports[`<Badge /> should render small size Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
