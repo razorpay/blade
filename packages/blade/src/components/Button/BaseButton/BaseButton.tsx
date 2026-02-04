@@ -18,6 +18,7 @@ import {
   buttonIconPadding,
   buttonPadding,
   buttonIconOnlyHeightWidth,
+  buttonBorderRadius,
 } from './buttonTokens';
 import type { BaseButtonStyleProps, IconColor } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
@@ -344,7 +345,7 @@ const getProps = ({
     ),
     focusBoxShadow: getBoxShadow('focus', color),
     focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
-    borderRadius: makeBorderSize(theme.border.radius.medium),
+    borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
   };

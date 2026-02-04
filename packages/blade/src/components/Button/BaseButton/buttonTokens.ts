@@ -367,6 +367,13 @@ const buttonPadding: Record<
   },
 };
 
+const buttonBorderRadius = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'small',
+  large: 'medium',
+} as const;
+
 const buttonIconOnlyHeightWidth = {
   xsmall: makeSize(size['28']),
   small: makeSize(size['32']),
@@ -455,6 +462,7 @@ export {
   buttonIconPadding,
   buttonPadding,
   buttonIconOnlyHeightWidth,
+  buttonBorderRadius,
 };
 
 export type { ButtonBoxShadow };
