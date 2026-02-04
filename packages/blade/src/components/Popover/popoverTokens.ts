@@ -11,10 +11,13 @@ type ShadowLayer = {
 };
 
 /**
- * Converts shadow layer objects to CSS box-shadow string
+ * Converts an array of shadow layer objects into a CSS box-shadow string
+ *
+ * @param shadowLayers - Array of shadow layer configurations
+ * @returns CSS box-shadow string with multiple layers joined by commas
  */
-const shadowLayersToString = (layers: ShadowLayer[]): string => {
-  return layers
+const shadowLayersToBoxShadow = (shadowLayers: ShadowLayer[]): string => {
+  return shadowLayers
     .map((layer) => {
       const inset = layer.inset ? 'inset ' : '';
       return `${inset}${layer.x}px ${layer.y}px ${layer.blur}px ${layer.spread}px ${layer.color}`;
@@ -31,7 +34,7 @@ const shadowLayersToString = (layers: ShadowLayer[]): string => {
  * 3. Top highlight: inset 0px -1.5px 0px 1px
  */
 const getPopoverBoxShadow = (theme: Theme): string => {
-  const shadowLayers: ShadowLayer[] = [
+  const shadowLayers = [
     // Layer 1: Drop shadow for elevation
     {
       x: 0,
@@ -41,16 +44,8 @@ const getPopoverBoxShadow = (theme: Theme): string => {
       color: 'hsla(200, 10%, 18%, 0.06)',
       inset: false,
     },
-    // Layer 2: Inner border
-    {
-      x: 0,
-      y: 0,
-      blur: 0,
-      spread: 1,
-      color: theme.colors.popup.border.gray.moderate,
-      inset: true,
-    },
-    // Layer 3: Top highlight for depth
+
+    // Layer 2: Top highlight for depth
     {
       x: 0,
       y: -1.5,
@@ -61,7 +56,7 @@ const getPopoverBoxShadow = (theme: Theme): string => {
     },
   ];
 
-  return shadowLayersToString(shadowLayers);
+  return shadowLayersToBoxShadow(shadowLayers);
 };
 
 export { getPopoverBoxShadow };
