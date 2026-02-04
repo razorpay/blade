@@ -350,20 +350,20 @@ const buttonPadding: Record<
   small: {
     top: 0,
     bottom: 0,
-    left: 4,
-    right: 4,
+    left: 3,
+    right: 3,
   },
   medium: {
     top: 0,
     bottom: 0,
-    left: 6,
-    right: 6,
+    left: 4,
+    right: 4,
   },
   large: {
     top: 0,
     bottom: 0,
-    left: 6,
-    right: 6,
+    left: 5,
+    right: 5,
   },
 };
 
