@@ -54,7 +54,7 @@ exports[`<DotIcon /> should render DotIcon 1`] = `
         cy="12"
         fill={
           {
-            "payload": 4280563015,
+            "payload": 4280889138,
             "type": 0,
           }
         }

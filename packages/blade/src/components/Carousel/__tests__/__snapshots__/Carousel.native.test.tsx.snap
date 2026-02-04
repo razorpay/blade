@@ -115,7 +115,7 @@ exports[`Carousel Snapshots should render 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(212, 39%, 16%, 1)",
+                      "color": "hsla(0, 0%, 2%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -177,7 +177,7 @@ exports[`Carousel Snapshots should render 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(212, 39%, 16%, 1)",
+                      "color": "hsla(0, 0%, 2%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -285,13 +285,13 @@ exports[`Carousel Snapshots should render 1`] = `
               },
               {
                 "elevation": 8,
-                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+                "shadowColor": "hsla(200, 10%, 18%, 1)",
                 "shadowOffset": {
                   "height": 2,
                   "width": 0,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
+                "shadowOpacity": 0.06,
+                "shadowRadius": 2,
               },
             ]
           }
@@ -425,7 +425,7 @@ exports[`Carousel Snapshots should render 1`] = `
               [
                 {},
                 {
-                  "backgroundColor": "hsla(211, 22%, 56%, 1)",
+                  "backgroundColor": "hsla(204, 9%, 42%, 1)",
                   "borderColor": "black",
                   "borderRadius": 9999,
                   "borderStyle": "solid",
@@ -498,7 +498,7 @@ exports[`Carousel Snapshots should render 1`] = `
               [
                 {},
                 {
-                  "backgroundColor": "hsla(211, 20%, 52%, 0.32)",
+                  "backgroundColor": "hsla(206, 10%, 29%, 0.18)",
                   "borderColor": "black",
                   "borderRadius": 9999,
                   "borderStyle": "solid",
@@ -586,13 +586,13 @@ exports[`Carousel Snapshots should render 1`] = `
               },
               {
                 "elevation": 8,
-                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+                "shadowColor": "hsla(200, 10%, 18%, 1)",
                 "shadowOffset": {
                   "height": 2,
                   "width": 0,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
+                "shadowOpacity": 0.06,
+                "shadowRadius": 2,
               },
             ]
           }
@@ -780,7 +780,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 style={
                   [
                     {
-                      "color": "hsla(212, 39%, 16%, 1)",
+                      "color": "hsla(0, 0%, 2%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -842,7 +842,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 style={
                   [
                     {
-                      "color": "hsla(212, 39%, 16%, 1)",
+                      "color": "hsla(0, 0%, 2%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -904,7 +904,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 style={
                   [
                     {
-                      "color": "hsla(212, 39%, 16%, 1)",
+                      "color": "hsla(0, 0%, 2%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -1012,13 +1012,13 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               },
               {
                 "elevation": 8,
-                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+                "shadowColor": "hsla(200, 10%, 18%, 1)",
                 "shadowOffset": {
                   "height": 2,
                   "width": 0,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
+                "shadowOpacity": 0.06,
+                "shadowRadius": 2,
               },
             ]
           }
@@ -1152,7 +1152,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               [
                 {},
                 {
-                  "backgroundColor": "hsla(211, 22%, 56%, 1)",
+                  "backgroundColor": "hsla(204, 9%, 42%, 1)",
                   "borderColor": "black",
                   "borderRadius": 9999,
                   "borderStyle": "solid",
@@ -1225,7 +1225,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               [
                 {},
                 {
-                  "backgroundColor": "hsla(211, 20%, 52%, 0.32)",
+                  "backgroundColor": "hsla(206, 10%, 29%, 0.18)",
                   "borderColor": "black",
                   "borderRadius": 9999,
                   "borderStyle": "solid",
@@ -1298,7 +1298,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               [
                 {},
                 {
-                  "backgroundColor": "hsla(211, 20%, 52%, 0.32)",
+                  "backgroundColor": "hsla(206, 10%, 29%, 0.18)",
                   "borderColor": "black",
                   "borderRadius": 9999,
                   "borderStyle": "solid",
@@ -1386,13 +1386,13 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               },
               {
                 "elevation": 8,
-                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+                "shadowColor": "hsla(200, 10%, 18%, 1)",
                 "shadowOffset": {
                   "height": 2,
                   "width": 0,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
+                "shadowOpacity": 0.06,
+                "shadowRadius": 2,
               },
             ]
           }

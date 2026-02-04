@@ -13,7 +13,7 @@ describe('getColorValue', () => {
   it('should return correct background color value', () => {
     expect(
       getColorValue('interactive.background.primary.default', bladeLightTheme, 'base'),
-    ).toMatchInlineSnapshot(`"hsla(227, 100%, 59%, 1)"`);
+    ).toMatchInlineSnapshot(`"hsla(218, 89%, 51%, 1)"`);
     expect(getColorValue('red', bladeLightTheme, 'base')).toBe('red');
     expect(getColorValue('red', bladeLightTheme, 'm')).toBe(undefined);
     expect(getColorValue({ base: 'red', s: '#f30' }, bladeLightTheme, 's')).toBe('#f30');
@@ -23,7 +23,7 @@ describe('getColorValue', () => {
 describe('getBorderRadiusValue', () => {
   it('should return correct border-radius value', () => {
     expect(getBorderRadiusValue('max', bladeLightTheme, 'base')).toBe('9999px');
-    expect(getBorderRadiusValue('small', bladeLightTheme, 'base')).toBe('2px');
+    expect(getBorderRadiusValue('small', bladeLightTheme, 'base')).toBe('8px');
     expect(getBorderRadiusValue(undefined, bladeLightTheme, 'm')).toBe(undefined);
     expect(getBorderRadiusValue({ base: 'medium', s: 'max' }, bladeLightTheme, 's')).toBe('9999px');
   });

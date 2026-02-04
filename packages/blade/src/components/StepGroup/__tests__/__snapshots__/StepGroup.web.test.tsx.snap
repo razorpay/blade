@@ -44,7 +44,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   height: 6px;
   width: 2px;
   border-left-width: 2px;
-  border-left-color: hsla(214,28%,84%,1);
+  border-left-color: hsla(204,8%,88%,1);
   border-left-style: solid;
   visibility: hidden;
 }
@@ -69,7 +69,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   margin: 2px;
   height: 20px;
   width: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 50%;
 }
 
@@ -105,7 +105,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   flex: 1;
   width: 2px;
   border-left-width: 2px;
-  border-left-color: hsla(214,28%,84%,1);
+  border-left-color: hsla(204,8%,88%,1);
   border-left-style: solid;
   visibility: visible;
 }
@@ -142,7 +142,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   height: 6px;
   width: 2px;
   border-left-width: 2px;
-  border-left-color: hsla(214,28%,84%,1);
+  border-left-color: hsla(204,8%,88%,1);
   border-left-style: solid;
   visibility: visible;
 }
@@ -179,7 +179,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   margin: 2px;
   height: 20px;
   width: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 50%;
 }
 
@@ -189,7 +189,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   flex: 1;
   margin-left: 31px;
   width: 2px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIwNCwgOCUsIDg4JSwgMSkiCiAgICAvPgogIDwvc3ZnPgogIA==);
   background-size: 2px 6px;
   background-position: top;
   background-repeat: no-repeat round;
@@ -200,7 +200,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   margin-left: 31px;
   height: 6px;
   width: 2px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIwNCwgOCUsIDg4JSwgMSkiCiAgICAvPgogIDwvc3ZnPgogIA==);
   background-size: 2px 6px;
   background-position: top;
   background-repeat: no-repeat round;
@@ -217,7 +217,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   flex: 1;
   margin-left: 31px;
   width: 2px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIwNCwgOCUsIDg4JSwgMSkiCiAgICAvPgogIDwvc3ZnPgogIA==);
   background-size: 2px 6px;
   background-position: top;
   background-repeat: no-repeat round;
@@ -233,7 +233,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -251,7 +251,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -268,7 +268,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 }
 
 .c15.c15.c15.c15.c15 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
@@ -287,14 +287,14 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -304,7 +304,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 }
 
 .c23.c23.c23.c23.c23 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -458,7 +458,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                     cx="5"
                     cy="5"
                     data-blade-component="svg-circle"
-                    fill="hsla(211, 33%, 21%, 1)"
+                    fill="hsla(200, 10%, 18%, 1)"
                     r="5"
                   />
                 </svg>
@@ -562,7 +562,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                     cx="5"
                     cy="5"
                     data-blade-component="svg-circle"
-                    fill="hsla(211, 33%, 21%, 1)"
+                    fill="hsla(200, 10%, 18%, 1)"
                     r="5"
                   />
                 </svg>
@@ -648,7 +648,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
             <path
               d="M1 0V5C1 9.41828 4.58172 13 9 13H20"
               data-blade-component="svg-path"
-              stroke="hsla(214, 28%, 84%, 1)"
+              stroke="hsla(204, 8%, 88%, 1)"
               stroke-width="2"
             />
           </svg>
@@ -683,7 +683,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                       cx="5"
                       cy="5"
                       data-blade-component="svg-circle"
-                      fill="hsla(150, 100%, 27%, 1)"
+                      fill="hsla(150, 100%, 23%, 1)"
                       r="5"
                     />
                   </svg>
@@ -785,7 +785,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                       cx="5"
                       cy="5"
                       data-blade-component="svg-circle"
-                      fill="hsla(211, 33%, 21%, 1)"
+                      fill="hsla(200, 10%, 18%, 1)"
                       r="5"
                     />
                   </svg>
@@ -810,7 +810,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
             aria-hidden="true"
             class="c27"
             data-blade-component="icon"
-            fill="hsla(214, 28%, 84%, 1)"
+            fill="hsla(204, 8%, 88%, 1)"
             height="5"
             viewBox="0 0 42 5"
             visibility="hidden"
@@ -933,7 +933,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
 .c3.c3.c3.c3.c3 {
   height: 6px;
   width: 2px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIwNCwgOCUsIDg4JSwgMSkiCiAgICAvPgogIDwvc3ZnPgogIA==);
   background-size: 2px 6px;
   background-position: top;
   background-repeat: no-repeat round;
@@ -960,7 +960,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   margin: 2px;
   height: 20px;
   width: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 50%;
 }
 
@@ -995,7 +995,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -ms-flex: 1;
   flex: 1;
   width: 2px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIwNCwgOCUsIDg4JSwgMSkiCiAgICAvPgogIDwvc3ZnPgogIA==);
   background-size: 2px 6px;
   background-position: top;
   background-repeat: no-repeat round;
@@ -1031,7 +1031,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1049,7 +1049,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1066,7 +1066,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
 }
 
 .c15.c15.c15.c15.c15 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
@@ -1085,14 +1085,14 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1151,7 +1151,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
                     cx="5"
                     cy="5"
                     data-blade-component="svg-circle"
-                    fill="hsla(211, 33%, 21%, 1)"
+                    fill="hsla(200, 10%, 18%, 1)"
                     r="5"
                   />
                 </svg>
