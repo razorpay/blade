@@ -214,7 +214,7 @@ const _Alert = (
 
   const primaryAction = actions?.primary ? (
     <BaseBox
-      marginRight="spacing.5"
+      marginRight={actions?.secondary || isDismissible ? 'spacing.5' : 'spacing.0'}
       display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
     >
       <BaseButton
@@ -248,7 +248,10 @@ const _Alert = (
   }
 
   const secondaryAction = actions?.secondary ? (
-    <BaseBox marginRight="spacing.4" display={(isReactNative ? 'flex' : 'inline-flex') as never}>
+    <BaseBox
+      marginRight={isDismissible ? 'spacing.4' : 'spacing.0'}
+      display={(isReactNative ? 'flex' : 'inline-flex') as never}
+    >
       <BaseLink
         size="small"
         color={emphasis === 'intense' ? 'white' : color}
