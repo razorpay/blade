@@ -23,11 +23,12 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -119,11 +120,12 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -213,11 +215,12 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -307,11 +310,12 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -402,11 +406,12 @@ exports[`<BaseLink /> should render disabled information color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -495,11 +500,12 @@ exports[`<BaseLink /> should render disabled negative color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -588,11 +594,12 @@ exports[`<BaseLink /> should render disabled neutral color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -681,11 +688,12 @@ exports[`<BaseLink /> should render disabled notice color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -774,11 +782,12 @@ exports[`<BaseLink /> should render disabled positive color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -867,11 +876,12 @@ exports[`<BaseLink /> should render disabled primary color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -960,11 +970,12 @@ exports[`<BaseLink /> should render disabled white color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1053,11 +1064,12 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1188,11 +1200,12 @@ exports[`<BaseLink /> should render information color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1281,11 +1294,12 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1374,11 +1388,12 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1511,11 +1526,12 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1648,11 +1664,12 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1785,11 +1802,12 @@ exports[`<BaseLink /> should render negative color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1878,11 +1896,12 @@ exports[`<BaseLink /> should render neutral color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1971,11 +1990,12 @@ exports[`<BaseLink /> should render notice color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2064,11 +2084,12 @@ exports[`<BaseLink /> should render positive color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2157,11 +2178,12 @@ exports[`<BaseLink /> should render primary color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2250,11 +2272,12 @@ exports[`<BaseLink /> should render white color link 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c0.c0.c0.c0.c0 * {

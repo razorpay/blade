@@ -28,11 +28,12 @@ const StyledLink = styled.button
     ),
     '.content-container': {
       width: 'max-content',
-      borderRadius: makeBorderSize(props.theme.border.radius.small),
+      borderRadius: makeBorderSize(props.theme.border.radius.medium),
     },
     '&:focus-visible': {
       '.content-container': {
-        boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
+        outline: `4px solid ${props.focusRingColor}`,
+        outlineOffset: '1px',
       },
     },
     '*': {

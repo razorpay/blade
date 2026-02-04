@@ -1,5 +1,44 @@
 # @razorpay/blade
 
+## 12.80.0
+
+### Minor Changes
+
+- bf83ed9c3: fix(blade): update alert styles
+
+## 12.79.0
+
+### Minor Changes
+
+- 7e66ed45e: feat(DatePicker): add `showClearButton` and `onClearButtonClick` props
+
+  - **`showClearButton`**: When set to `true`, renders a clear icon button in the DatePicker input field. Clicking the button clears the selected date(s).
+  - **`onClearButtonClick`**: Event handler called when the clear button is clicked.
+
+  Example usage:
+
+  ```jsx
+  <DatePicker
+    label="Select date"
+    selectionType="single"
+    showClearButton
+    onClearButtonClick={() => console.log('Cleared!')}
+  />
+  ```
+
+  **Change for FilterChipDatePicker:**
+
+  When using `FilterChipDatePicker` with `selectionType="single"`, clearing the date will now return `null` instead of `[null, null]`. This aligns the clear behavior with the selection type:
+
+  - `selectionType="single"` → clears to `null`
+  - `selectionType="range"` → clears to `[null, null]`
+
+## 12.78.0
+
+### Minor Changes
+
+- ed48d1282: feat: Export FileUploadItem component
+
 ## 12.77.0
 
 ### Minor Changes

@@ -8,7 +8,7 @@ import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
 import getIn from '~utils/lodashButBetter/get';
 import useInteraction from '~utils/useInteraction';
-import type { IconColors, IconComponent, IconProps } from '~components/Icons';
+import type { IconColors, IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -152,6 +152,19 @@ type BaseLinkStyleProps = {
 };
 
 type LinkActionStates = ActionStates;
+
+/**
+ * Maps link size to icon size based on Figma design specs
+ * - Large/Medium links use medium (16px) icons
+ * - Small/XSmall links use small (12px) icons
+ */
+const linkSizeToIconSizeMap: Record<NonNullable<BaseLinkProps['size']>, IconSize> = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
+};
+
 const getColorToken = ({
   variant,
   color,
@@ -169,7 +182,7 @@ const getColorToken = ({
   const map = {
     default: 'normal',
     hover: 'subtle',
-    focus: 'normal',
+    focus: 'subtle',
     disabled: 'disabled',
   } as const;
 
@@ -236,7 +249,7 @@ const getProps = ({
     }) as IconProps['color'],
     fontSize: textSizes.fontSize[size],
     lineHeight: textSizes.lineHeight[size],
-    iconSize: size,
+    iconSize: linkSizeToIconSizeMap[size],
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
       variant,
@@ -245,7 +258,7 @@ const getProps = ({
       currentInteraction,
       isDisabled,
     }) as BaseTextProps['color'],
-    focusRingColor: getIn(theme.colors, 'interactive.background.primary.faded'),
+    focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
     motionDuration: 'duration.2xquick',
     motionEasing: 'easing.standard',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
