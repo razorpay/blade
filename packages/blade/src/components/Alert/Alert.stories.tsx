@@ -339,4 +339,113 @@ Showcase.parameters = {
   },
 };
 
+export const SubtleStack: StoryFn<typeof AlertComponent> = () => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.6">
+      <AlertComponent
+        title="Alert Title"
+        description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+        actions={{
+          primary: {
+            text: 'Button',
+            onClick: () => {
+              console.log('Primary action clicked');
+            },
+          },
+          secondary: {
+            text: 'Link',
+            href: 'https://razorpay.com',
+            target: '_blank',
+          },
+        }}
+        color="information"
+      />
+      <AlertComponent
+        description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+        actions={{
+          primary: {
+            text: 'Button',
+            onClick: () => {
+              console.log('Primary action clicked');
+            },
+          },
+          secondary: {
+            text: 'Link',
+            href: 'https://razorpay.com',
+            target: '_blank',
+          },
+        }}
+        color="information"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="information"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="information"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="information"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="information"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="information"
+      />
+      <AlertComponent
+        title="Alert Title"
+        description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+        actions={{
+          primary: {
+            text: 'Button',
+            onClick: () => {
+              console.log('Primary action clicked');
+            },
+          },
+          secondary: {
+            text: 'Link',
+            href: 'https://razorpay.com',
+            target: '_blank',
+          },
+        }}
+        color="information"
+      />
+      <AlertComponent
+        description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+        actions={{
+          primary: {
+            text: 'Button',
+            onClick: () => {
+              console.log('Primary action clicked');
+            },
+          },
+          secondary: {
+            text: 'Link',
+            href: 'https://razorpay.com',
+            target: '_blank',
+          },
+        }}
+        color="information"
+      />
+    </BaseBox>
+  );
+};
+SubtleStack.parameters = {
+  docs: {
+    description: {
+      story: 'A subtle information alert stack to showcase compact layouts and repeated messaging.',
+    },
+  },
+};
+
 export default meta;
