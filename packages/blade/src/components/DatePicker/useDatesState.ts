@@ -124,7 +124,7 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
   const handleReset = () => {
     setPickedDate(null);
     setHoveredDate(null);
-    setValue([null, null]);
+    setValue(type === 'range' ? [null, null] : null);
   };
   const onRootMouseLeave =
     type === 'range'
