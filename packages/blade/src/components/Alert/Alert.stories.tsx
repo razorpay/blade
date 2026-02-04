@@ -4,6 +4,7 @@ import type { ReactElement } from 'react';
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
 import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -216,6 +217,124 @@ FullWidthWithActions.parameters = {
     description: {
       story:
         'A full width Alert with `actions` will render them inline if there is enough space and responsively wrap them to the next line in smaller displays.',
+    },
+  },
+};
+
+const intents = [
+  { label: 'Positive', color: 'positive' },
+  { label: 'Negative', color: 'negative' },
+  { label: 'Notice', color: 'notice' },
+  { label: 'Information', color: 'information' },
+  { label: 'Neutral', color: 'neutral' },
+] as const;
+
+const renderAlertGrid = ({ isFullWidth }: { isFullWidth: boolean }): ReactElement => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.6">
+      <BaseBox
+        display="grid"
+        gridTemplateColumns={{ base: '1fr', m: '1fr 1fr' }}
+        gap="spacing.4"
+        width="100%"
+      >
+        <BaseBox>
+          <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+            Subtle
+          </Text>
+        </BaseBox>
+        <BaseBox>
+          <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+            Intense
+          </Text>
+        </BaseBox>
+      </BaseBox>
+      {intents.map(({ label, color }) => {
+        return (
+          <BaseBox key={color} display="flex" flexDirection="column" gap="spacing.3">
+            <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+              {label}
+            </Text>
+            <BaseBox
+              display="grid"
+              gridTemplateColumns={{ base: '1fr', m: '1fr 1fr' }}
+              gap="spacing.4"
+              width="100%"
+            >
+              <BaseBox>
+                <AlertComponent
+                  title="Alert Title"
+                  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                  color={color}
+                  actions={{
+                    primary: {
+                      text: 'Button',
+                      onClick: () => {
+                        console.log('Primary action clicked');
+                      },
+                    },
+                    secondary: {
+                      text: 'Link',
+                      href: 'https://razorpay.com',
+                      target: '_blank',
+                    },
+                  }}
+                  isFullWidth={isFullWidth}
+                />
+              </BaseBox>
+              <BaseBox>
+                <AlertComponent
+                  title="Alert Title"
+                  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                  color={color}
+                  emphasis="intense"
+                  actions={{
+                    primary: {
+                      text: 'Button',
+                      onClick: () => {
+                        console.log('Primary action clicked');
+                      },
+                    },
+                    secondary: {
+                      text: 'Link',
+                      href: 'https://razorpay.com',
+                      target: '_blank',
+                    },
+                  }}
+                  isFullWidth={isFullWidth}
+                />
+              </BaseBox>
+            </BaseBox>
+          </BaseBox>
+        );
+      })}
+    </BaseBox>
+  );
+};
+
+export const Showcase: StoryFn<typeof AlertComponent> = () => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.8">
+      <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+        <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+          Default Width
+        </Text>
+        {renderAlertGrid({ isFullWidth: false })}
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+        <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+          Full Width
+        </Text>
+        {renderAlertGrid({ isFullWidth: true })}
+      </BaseBox>
+    </BaseBox>
+  );
+};
+Showcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A visual grid to compare Alert intents across subtle and intense emphasis, for both default width and full width layouts.',
     },
   },
 };

@@ -195,7 +195,7 @@ const _Alert = (
   );
 
   const textColor =
-    emphasis === 'intense' ? 'surface.text.staticWhite.normal' : 'surface.text.gray.subtle';
+    emphasis === 'intense' ? 'surface.text.staticWhite.subtle' : 'surface.text.gray.normal';
   const _title = title ? (
     <BaseBox marginBottom="spacing.2">
       <Text color={textColor} size="medium" weight="semibold">
@@ -204,9 +204,12 @@ const _Alert = (
     </BaseBox>
   ) : null;
 
+  const descriptionTextColor =
+    emphasis === 'intense' ? 'surface.text.staticWhite.subtle' : 'surface.text.gray.subtle';
+
   const _description = (
     <BaseBox marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text color={textColor} size="small">
+      <Text color={descriptionTextColor} size="small">
         {description}
       </Text>
     </BaseBox>
