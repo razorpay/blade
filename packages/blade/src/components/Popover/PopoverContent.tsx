@@ -47,7 +47,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
       gap="spacing.3"
     >
       {titleLeading
-        ? React.cloneElement(titleLeading as React.ReactElement, { size: 'large' })
+        ? React.cloneElement(titleLeading as React.ReactElement, { size: 'medium' })
         : null}
       {title ? (
         <BaseBox id={titleId} paddingRight="spacing.4">
