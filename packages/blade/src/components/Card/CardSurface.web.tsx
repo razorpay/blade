@@ -59,6 +59,7 @@ const CardSurface = styled(BaseBox)<CardSurfaceProps>(({ theme, colorScheme }) =
     boxSizing: 'border-box',
     border: 'none',
     borderTop: isDarkMode ? `1px solid ${theme.colors.surface.border.gray.subtle}` : '',
+    isolation: 'isolate', // Create stacking context
     // Top gradient overlay
     '&::before': {
       content: '""',
@@ -72,6 +73,7 @@ const CardSurface = styled(BaseBox)<CardSurfaceProps>(({ theme, colorScheme }) =
       borderRadius: 'inherit',
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
+      zIndex: -1,
     },
     // Bottom gradient overlay
     '&::after': {
@@ -86,6 +88,7 @@ const CardSurface = styled(BaseBox)<CardSurfaceProps>(({ theme, colorScheme }) =
       borderRadius: 'inherit',
       borderTopLeftRadius: 0,
       borderTopRightRadius: 0,
+      zIndex: -1,
     },
   };
 });

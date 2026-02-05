@@ -486,7 +486,7 @@ const CardWithoutPaddingExample: StoryFn<typeof Card> = (args): React.ReactEleme
             height="auto"
             src="https://d6xcmfyh68wv8.cloudfront.net/assets/case-studies/common-card/pg_breathingroom.png"
             alt="Breathing Room"
-            style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
+            style={{ borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px' }}
           />
           <Box padding="spacing.7" display="flex" flexDirection="column">
             <Heading size="large">Breathing Room</Heading>
