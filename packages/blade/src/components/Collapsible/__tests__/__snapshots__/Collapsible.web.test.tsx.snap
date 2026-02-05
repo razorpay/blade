@@ -606,7 +606,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c1.c1.c1.c1.c1:focus-visible .content-container {
@@ -871,7 +871,7 @@ exports[`<Collapsible /> should support adding data-analytics attributes 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c1.c1.c1.c1.c1:focus-visible .content-container {

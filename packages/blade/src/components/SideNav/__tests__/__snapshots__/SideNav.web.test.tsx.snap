@@ -393,7 +393,7 @@ exports[`SideNav should render 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c6.c6.c6.c6.c6:focus-visible .content-container {
@@ -436,7 +436,7 @@ exports[`SideNav should render 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c26.c26.c26.c26.c26:focus-visible .content-container {

@@ -1546,7 +1546,7 @@ exports[`<Table /> should render table 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
@@ -12883,7 +12883,7 @@ exports[`<Table /> should render table with multi select 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
@@ -15586,7 +15586,7 @@ exports[`<Table /> should render table with multi select 2`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
@@ -18224,7 +18224,7 @@ exports[`<Table /> should render table with multi select 3`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {

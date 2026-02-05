@@ -384,7 +384,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5:focus-visible .content-container {
