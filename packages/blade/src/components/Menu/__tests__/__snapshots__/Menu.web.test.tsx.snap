@@ -38,7 +38,7 @@ exports[`Menu renders a Menu 1`] = `
   border-width: 1px;
   border-color: hsla(206,10%,29%,0.12);
   border-style: solid;
-  box-shadow: 0px 2px 8px 0px hsla(200,10%,18%,0.06);
+  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06);
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1098,7 +1098,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   border-width: 1px;
   border-color: hsla(206,10%,29%,0.12);
   border-style: solid;
-  box-shadow: 0px 2px 8px 0px hsla(200,10%,18%,0.06);
+  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06);
 }
 
 .c8.c8.c8.c8.c8 {
