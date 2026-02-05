@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ButtonGroup /> should render ButtonGroup 1`] = `"<div id="root"><div data-blade-component="button-group" data-testid="button-group-test" role="group" class="BaseBox-bmPWx StyledButtonGroup-gr4xbj-0  hxzFGp"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">One</div></div></div></button><div data-blade-component="base-box" class="BaseBox-bmPWx ButtonGroupweb__StyledDivider-sc-1lc1evg-0  cbYKkw"></div><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Two</div></div></div></button><div data-blade-component="base-box" class="BaseBox-bmPWx ButtonGroupweb__StyledDivider-sc-1lc1evg-0  cbYKkw"></div><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iCiokj"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Three</div></div></div></button></div></div>"`;
+exports[`<ButtonGroup /> should render ButtonGroup 1`] = `"<div id="root"><div data-blade-component="button-group" data-testid="button-group-test" role="group" class="BaseBox-bmPWx StyledButtonGroup-gr4xbj-0  izQcJS"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 euLrCz"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">One</div></div></div></button><div data-blade-component="base-box" class="BaseBox-bmPWx ButtonGroupweb__StyledDivider-sc-1lc1evg-0  dQqnXD"></div><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 euLrCz"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Two</div></div></div></button><div data-blade-component="base-box" class="BaseBox-bmPWx ButtonGroupweb__StyledDivider-sc-1lc1evg-0  dQqnXD"></div><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 euLrCz"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Three</div></div></div></button></div></div>"`;
 
 exports[`<ButtonGroup /> should render ButtonGroup 2`] = `
 .c3.c3.c3.c3.c3 {
@@ -34,7 +34,7 @@ exports[`<ButtonGroup /> should render ButtonGroup 2`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -51,10 +51,10 @@ exports[`<ButtonGroup /> should render ButtonGroup 2`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -85,20 +85,20 @@ exports[`<ButtonGroup /> should render ButtonGroup 2`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -149,7 +149,7 @@ exports[`<ButtonGroup /> should render ButtonGroup 2`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div

@@ -75,7 +75,7 @@ exports[`<Switch /> should render switch with label 1`] = `
           [
             {
               "alignItems": "center",
-              "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
+              "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
               "borderRadius": 9999,
               "display": "flex",
               "height": 24,
@@ -299,7 +299,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           [
             {
               "alignItems": "center",
-              "backgroundColor": "hsla(211, 20%, 52%, 0.18)",
+              "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
               "borderRadius": 9999,
               "display": "flex",
               "height": 24,

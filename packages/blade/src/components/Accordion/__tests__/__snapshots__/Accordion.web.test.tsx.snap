@@ -143,7 +143,7 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 .c18.c18.c18.c18.c18 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -158,7 +158,7 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -177,7 +177,7 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -242,7 +242,7 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   width: 100%;
   border: none;
   text-align: left;
@@ -250,8 +250,8 @@ exports[`<Accordion /> should render 1`] = `
 
 .c3.c3.c3.c3.c3:hover,
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(211,20%,52%,0.06);
-  color: hsla(211,26%,34%,1);
+  background-color: hsla(206,10%,29%,0.06);
+  color: hsla(200,10%,18%,1);
 }
 
 .c3.c3.c3.c3.c3:hover [data-blade-component="divider"],
@@ -260,7 +260,7 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -269,7 +269,7 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .c14.c14.c14.c14.c14 {
@@ -431,7 +431,7 @@ exports[`<Accordion /> should render 1`] = `
                                 clip-rule="evenodd"
                                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                                 fill-rule="evenodd"
                               />
                             </svg>
@@ -580,7 +580,7 @@ exports[`<Accordion /> should render 1`] = `
                                 clip-rule="evenodd"
                                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                                 fill-rule="evenodd"
                               />
                             </svg>
@@ -729,7 +729,7 @@ exports[`<Accordion /> should render 1`] = `
                                 clip-rule="evenodd"
                                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                                 fill-rule="evenodd"
                               />
                             </svg>
@@ -940,7 +940,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 }
 
 .c18.c18.c18.c18.c18 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -955,7 +955,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -974,7 +974,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1039,7 +1039,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   width: 100%;
   border: none;
   text-align: left;
@@ -1047,8 +1047,8 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 
 .c3.c3.c3.c3.c3:hover,
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(211,20%,52%,0.06);
-  color: hsla(211,26%,34%,1);
+  background-color: hsla(206,10%,29%,0.06);
+  color: hsla(200,10%,18%,1);
 }
 
 .c3.c3.c3.c3.c3:hover [data-blade-component="divider"],
@@ -1057,7 +1057,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1066,7 +1066,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .c14.c14.c14.c14.c14 {
@@ -1228,7 +1228,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 clip-rule="evenodd"
                                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                                 fill-rule="evenodd"
                               />
                             </svg>
@@ -1377,7 +1377,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 clip-rule="evenodd"
                                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                                 fill-rule="evenodd"
                               />
                             </svg>
@@ -1526,7 +1526,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 clip-rule="evenodd"
                                 d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                                 fill-rule="evenodd"
                               />
                             </svg>

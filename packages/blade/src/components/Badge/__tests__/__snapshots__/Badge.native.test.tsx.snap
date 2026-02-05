@@ -27,13 +27,13 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -120,7 +120,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
                 d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                 fill={
                   {
-                    "payload": 4280563015,
+                    "payload": 4280889138,
                     "type": 0,
                   }
                 }
@@ -134,7 +134,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
                 d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                 fill={
                   {
-                    "payload": 4280563015,
+                    "payload": 4280889138,
                     "type": 0,
                   }
                 }
@@ -149,7 +149,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
                 d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                 fill={
                   {
-                    "payload": 4280563015,
+                    "payload": 4280889138,
                     "type": 0,
                   }
                 }
@@ -177,13 +177,13 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -232,13 +232,13 @@ exports[`<Badge /> should render Badge with default props 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -281,13 +281,13 @@ exports[`<Badge /> should render Badge with default props 1`] = `
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -336,13 +336,13 @@ exports[`<Badge /> should render intense emphasis information color Badge 1`] = 
       style={
         [
           {
-            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "backgroundColor": "hsla(200, 100%, 41%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "backgroundColor": "hsla(200, 100%, 41%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -391,7 +391,7 @@ exports[`<Badge /> should render intense emphasis information color Badge 1`] = 
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -440,13 +440,13 @@ exports[`<Badge /> should render intense emphasis information color Badge 2`] = 
       style={
         [
           {
-            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "backgroundColor": "hsla(200, 100%, 41%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "backgroundColor": "hsla(200, 100%, 41%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -495,7 +495,7 @@ exports[`<Badge /> should render intense emphasis information color Badge 2`] = 
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -544,13 +544,13 @@ exports[`<Badge /> should render intense emphasis negative color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "backgroundColor": "hsla(4, 85%, 44%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "backgroundColor": "hsla(4, 85%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -599,7 +599,7 @@ exports[`<Badge /> should render intense emphasis negative color Badge 1`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -648,13 +648,13 @@ exports[`<Badge /> should render intense emphasis negative color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "backgroundColor": "hsla(4, 85%, 44%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "backgroundColor": "hsla(4, 85%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -703,7 +703,7 @@ exports[`<Badge /> should render intense emphasis negative color Badge 2`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -752,13 +752,13 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "backgroundColor": "hsla(200, 10%, 18%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "backgroundColor": "hsla(200, 10%, 18%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -807,7 +807,7 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 1`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -856,13 +856,13 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "backgroundColor": "hsla(200, 10%, 18%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "backgroundColor": "hsla(200, 10%, 18%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -911,7 +911,7 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 2`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -960,13 +960,13 @@ exports[`<Badge /> should render intense emphasis notice color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "backgroundColor": "hsla(25, 100%, 44%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "backgroundColor": "hsla(25, 100%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1015,7 +1015,7 @@ exports[`<Badge /> should render intense emphasis notice color Badge 1`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1064,13 +1064,13 @@ exports[`<Badge /> should render intense emphasis notice color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "backgroundColor": "hsla(25, 100%, 44%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "backgroundColor": "hsla(25, 100%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1119,7 +1119,7 @@ exports[`<Badge /> should render intense emphasis notice color Badge 2`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1168,13 +1168,13 @@ exports[`<Badge /> should render intense emphasis positive color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "backgroundColor": "hsla(150, 100%, 28%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "backgroundColor": "hsla(150, 100%, 28%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1223,7 +1223,7 @@ exports[`<Badge /> should render intense emphasis positive color Badge 1`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1272,13 +1272,13 @@ exports[`<Badge /> should render intense emphasis positive color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "backgroundColor": "hsla(150, 100%, 28%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "backgroundColor": "hsla(150, 100%, 28%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1327,7 +1327,7 @@ exports[`<Badge /> should render intense emphasis positive color Badge 2`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1376,13 +1376,13 @@ exports[`<Badge /> should render intense emphasis primary color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1431,7 +1431,7 @@ exports[`<Badge /> should render intense emphasis primary color Badge 1`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1480,13 +1480,13 @@ exports[`<Badge /> should render intense emphasis primary color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1535,7 +1535,7 @@ exports[`<Badge /> should render intense emphasis primary color Badge 2`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1584,13 +1584,13 @@ exports[`<Badge /> should render large size Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "height": 24,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1633,13 +1633,13 @@ exports[`<Badge /> should render large size Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1688,13 +1688,13 @@ exports[`<Badge /> should render medium size Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1737,13 +1737,13 @@ exports[`<Badge /> should render medium size Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1792,13 +1792,13 @@ exports[`<Badge /> should render small size Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "height": 16,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1841,13 +1841,13 @@ exports[`<Badge /> should render small size Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 14,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1896,13 +1896,13 @@ exports[`<Badge /> should render subtle emphasis information color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1945,13 +1945,13 @@ exports[`<Badge /> should render subtle emphasis information color Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(200, 84%, 37%, 1)",
+                "color": "hsla(200, 100%, 33%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2000,13 +2000,13 @@ exports[`<Badge /> should render subtle emphasis information color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2049,13 +2049,13 @@ exports[`<Badge /> should render subtle emphasis information color Badge 2`] = `
           style={
             [
               {
-                "color": "hsla(200, 84%, 37%, 1)",
+                "color": "hsla(200, 100%, 33%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2104,13 +2104,13 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2153,13 +2153,13 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(4, 74%, 49%, 1)",
+                "color": "hsla(4, 85%, 44%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2208,13 +2208,13 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2257,13 +2257,13 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 2`] = `
           style={
             [
               {
-                "color": "hsla(4, 74%, 49%, 1)",
+                "color": "hsla(4, 85%, 44%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2312,13 +2312,13 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2361,13 +2361,13 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2416,13 +2416,13 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2465,13 +2465,13 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 2`] = `
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2520,13 +2520,13 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2569,13 +2569,13 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(25, 85%, 42%, 1)",
+                "color": "hsla(25, 100%, 39%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2624,13 +2624,13 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2673,13 +2673,13 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 2`] = `
           style={
             [
               {
-                "color": "hsla(25, 85%, 42%, 1)",
+                "color": "hsla(25, 100%, 39%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2728,13 +2728,13 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2777,13 +2777,13 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(150, 100%, 27%, 1)",
+                "color": "hsla(150, 100%, 23%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2832,13 +2832,13 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2881,13 +2881,13 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 2`] = `
           style={
             [
               {
-                "color": "hsla(150, 100%, 27%, 1)",
+                "color": "hsla(150, 100%, 23%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2936,13 +2936,13 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 1`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2985,13 +2985,13 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 1`] = `
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 1)",
+                "color": "hsla(218, 89%, 51%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3040,13 +3040,13 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 2`] = `
       style={
         [
           {
-            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "height": 20,
             "textAlign": "left",
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -3089,13 +3089,13 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 2`] = `
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 1)",
+                "color": "hsla(218, 89%, 51%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,

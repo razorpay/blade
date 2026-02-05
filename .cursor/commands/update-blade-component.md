@@ -263,12 +263,6 @@ Once all tests pass and linting is clean, create a PR using the GitHub CLI.
 
 #### 8.1 Commit Your Changes
 
-**Why use git and gh?**
-- `git` = Version control operations (commit, branch, push)
-- `gh` = GitHub-specific operations (create PR, manage issues, releases)
-- You need `git commit` to save changes to your local repository
-- Then use `gh pr create` to create the GitHub pull request
-
 ```bash
 # Stage all changes
 git add .

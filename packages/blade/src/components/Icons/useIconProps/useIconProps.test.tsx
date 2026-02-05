@@ -10,7 +10,7 @@ describe('useIconProps', () => {
     );
     expect(result.current.height).toEqual('8px');
     expect(result.current.width).toEqual('8px');
-    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(227, 71%, 51%, 1)"`);
+    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(218, 87%, 43%, 1)"`);
   });
 
   it('should return a small icon with the correct color', () => {
@@ -20,7 +20,7 @@ describe('useIconProps', () => {
     );
     expect(result.current.height).toEqual('12px');
     expect(result.current.width).toEqual('12px');
-    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(4, 93%, 94%, 1)"`);
+    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(5, 75%, 94%, 1)"`);
   });
 
   it('should return a medium icon with the correct color', () => {
@@ -40,7 +40,7 @@ describe('useIconProps', () => {
     );
     expect(result.current.height).toEqual('20px');
     expect(result.current.width).toEqual('20px');
-    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(200, 88%, 90%, 1)"`);
+    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(199, 82%, 89%, 1)"`);
   });
 
   it('should return a xlarge icon with the correct color', () => {
@@ -50,7 +50,7 @@ describe('useIconProps', () => {
     );
     expect(result.current.height).toEqual('24px');
     expect(result.current.width).toEqual('24px');
-    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(211, 24%, 65%, 1)"`);
+    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(203, 8%, 62%, 1)"`);
   });
 
   it('should return a 2xlarge icon with the correct color', () => {
@@ -60,7 +60,7 @@ describe('useIconProps', () => {
     );
     expect(result.current.height).toEqual('32px');
     expect(result.current.width).toEqual('32px');
-    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(211, 24%, 65%, 1)"`);
+    expect(result.current.iconColor).toMatchInlineSnapshot(`"hsla(203, 8%, 62%, 1)"`);
   });
 
   it('should set fill property to currentColor when color is set to currentColor', () => {

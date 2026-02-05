@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 brfoMi"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Open Tour</div></div></div></button><div data-blade-component="box" class="BaseBox-bmPWx">Some other content inside</div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 2</p></div></div></div>"`;
+exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 krPkZm"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Open Tour</div></div></div></button><div data-blade-component="box" class="BaseBox-bmPWx">Some other content inside</div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO kSAxgY" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO kSAxgY" data-blade-component="text">Trigger 2</p></div></div></div>"`;
 
 exports[`<Tour /> should render Tour ssr 2`] = `
 .c2.c2.c2.c2.c2 {
@@ -44,7 +44,7 @@ exports[`<Tour /> should render Tour ssr 2`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -64,10 +64,10 @@ exports[`<Tour /> should render Tour ssr 2`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -99,20 +99,20 @@ exports[`<Tour /> should render Tour ssr 2`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
