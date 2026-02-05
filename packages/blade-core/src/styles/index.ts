@@ -75,3 +75,14 @@ export {
   getBadgeIconColorToken,
 } from './Badge';
 export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
+export {
+  counterStyles,
+  getCounterClasses,
+  getCounterTemplateClasses,
+  counterContentClass,
+  counterHeight,
+  counterHorizontalPadding,
+  counterTextSizes,
+  getCounterTextColorToken,
+} from './Counter';
+export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';

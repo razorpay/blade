@@ -5,6 +5,7 @@ export { default as BaseButton } from './Button/BaseButton/BaseButton.svelte';
 export { default as BaseSpinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
 export { default as BaseAmount } from './Amount/BaseAmount/BaseAmount.svelte';
 export { default as BaseLink } from './Link/BaseLink/BaseLink.svelte';
+export { default as BaseCounter } from './Counter/BaseCounter/BaseCounter.svelte';
 
 // Typography
 export { default as Text } from './Typography/Text/Text.svelte';
@@ -25,6 +26,9 @@ export { default as Amount } from './Amount/Amount.svelte';
 
 // Badge
 export { default as Badge } from './Badge/Badge.svelte';
+
+// Counter
+export { default as Counter } from './Counter/Counter.svelte';
 
 // BladeProvider
 export * from './BladeProvider';

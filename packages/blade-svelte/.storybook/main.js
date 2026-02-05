@@ -1,5 +1,5 @@
-import { dirname, resolve } from "path";
-import { fileURLToPath } from "url";
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -13,17 +13,20 @@ function getAbsolutePath(value) {
 
 /** @type { import('@storybook/svelte-vite').StorybookConfig } */
 const config = {
-  stories: ["../src/**/*.stories.@(js|ts|svelte|mdx)"],
+  stories: ['../src/**/*.stories.@(js|ts|svelte|mdx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
-    "@storybook/addon-svelte-csf",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@chromatic-com/storybook',
+    '@storybook/addon-interactions',
+    '@storybook/addon-svelte-csf',
   ],
   framework: {
-    name: "@storybook/svelte-vite",
+    name: '@storybook/svelte-vite',
     options: {},
+  },
+  docs: {
+    autodocs: true,
   },
   viteFinal: async (config) => {
     // Set base path for subdirectory deployment at /svelte on blade.razorpay.com
