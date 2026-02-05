@@ -35,11 +35,22 @@ exports[`<Popover /> should render 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 12px;
-  gap: 12px;
+  padding: 16px;
+  gap: 16px;
 }
 
 .c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -52,12 +63,12 @@ exports[`<Popover /> should render 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: hsla(0,0%,100%,1);
-  border-width: 1px;
+  background-color: hsla(0,0%,100%,0.94);
   border-radius: 16px;
-  border-color: hsla(200,10%,94%,0);
-  border-style: solid;
-  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06);
+  border-top: 1px solid hsla(200,10%,94%,1);
+  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   -webkit-transition-property: opacity,-webkit-transform;
   -webkit-transition-property: opacity,transform;
   transition-property: opacity,transform;
@@ -65,7 +76,7 @@ exports[`<Popover /> should render 1`] = `
   transition-duration: 200ms;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -92,12 +103,12 @@ exports[`<Popover /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover:not([disabled]) {
+.c10.c10.c10.c10.c10:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c10.c10.c10.c10.c10:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -110,7 +121,7 @@ exports[`<Popover /> should render 1`] = `
   color: hsla(200,10%,18%,1);
 }
 
-.c9.c9.c9.c9.c9:active {
+.c10.c10.c10.c10.c10:active {
   color: hsla(200,10%,18%,1);
 }
 
@@ -132,7 +143,7 @@ exports[`<Popover /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -292,44 +303,49 @@ exports[`<Popover /> should render 1`] = `
             class="c8"
             data-blade-component="base-box"
           >
-            <button
-              aria-label="Close"
+            <div
               class="c9"
-              data-blade-component="icon-button"
-              type="button"
+              data-blade-component="base-box"
             >
-              <svg
-                aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
-                data-blade-component="icon"
-                fill="none"
-                height="20px"
-                viewBox="0 0 24 24"
-                width="20px"
+              <button
+                aria-label="Close"
+                class="c10"
+                data-blade-component="icon-button"
+                type="button"
               >
-                <path
-                  d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                  data-blade-component="svg-path"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class=""
-            data-blade-component="base-box"
-          >
-            <p
-              class="c10"
-              data-blade-component="text"
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                    data-blade-component="svg-path"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              class=""
+              data-blade-component="base-box"
             >
-              Hello world
-            </p>
+              <p
+                class="c11"
+                data-blade-component="text"
+              >
+                Hello world
+              </p>
+            </div>
           </div>
         </div>
         <svg
           aria-hidden="true"
-          fill="hsla(0, 0%, 100%, 1)"
+          fill="hsla(0, 0%, 100%, 0.94)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
@@ -339,12 +355,12 @@ exports[`<Popover /> should render 1`] = `
             clip-path="url(#:r3:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
-            stroke="hsla(200, 10%, 94%, 0)"
+            stroke="hsla(200, 10%, 94%, 1)"
             stroke-width="3"
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(0, 0%, 100%, 1)"
+            stroke="hsla(0, 0%, 100%, 0.94)"
           />
           <clippath
             id=":r3:"
@@ -407,11 +423,22 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 12px;
-  gap: 12px;
+  padding: 16px;
+  gap: 16px;
 }
 
 .c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -424,19 +451,19 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: hsla(0,0%,100%,1);
-  border-width: 1px;
+  background-color: hsla(0,0%,100%,0.94);
   border-radius: 16px;
-  border-color: hsla(200,10%,94%,0);
-  border-style: solid;
-  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06);
+  border-top: 1px solid hsla(200,10%,94%,1);
+  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
   transform: translateY(4px);
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -463,12 +490,12 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover:not([disabled]) {
+.c10.c10.c10.c10.c10:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c10.c10.c10.c10.c10:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -481,7 +508,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   color: hsla(200,10%,18%,1);
 }
 
-.c9.c9.c9.c9.c9:active {
+.c10.c10.c10.c10.c10:active {
   color: hsla(200,10%,18%,1);
 }
 
@@ -503,7 +530,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -663,44 +690,49 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             class="c8"
             data-blade-component="base-box"
           >
-            <button
-              aria-label="Close"
+            <div
               class="c9"
-              data-blade-component="icon-button"
-              type="button"
+              data-blade-component="base-box"
             >
-              <svg
-                aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
-                data-blade-component="icon"
-                fill="none"
-                height="20px"
-                viewBox="0 0 24 24"
-                width="20px"
+              <button
+                aria-label="Close"
+                class="c10"
+                data-blade-component="icon-button"
+                type="button"
               >
-                <path
-                  d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                  data-blade-component="svg-path"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class=""
-            data-blade-component="base-box"
-          >
-            <p
-              class="c10"
-              data-blade-component="text"
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                    data-blade-component="svg-path"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              class=""
+              data-blade-component="base-box"
             >
-              Hello world
-            </p>
+              <p
+                class="c11"
+                data-blade-component="text"
+              >
+                Hello world
+              </p>
+            </div>
           </div>
         </div>
         <svg
           aria-hidden="true"
-          fill="hsla(0, 0%, 100%, 1)"
+          fill="hsla(0, 0%, 100%, 0.94)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -710,12 +742,12 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             clip-path="url(#:rb:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
-            stroke="hsla(200, 10%, 94%, 0)"
+            stroke="hsla(200, 10%, 94%, 1)"
             stroke-width="3"
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(0, 0%, 100%, 1)"
+            stroke="hsla(0, 0%, 100%, 0.94)"
           />
           <clippath
             id=":rb:"
@@ -778,11 +810,22 @@ exports[`<Popover /> should render with title,footer 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 12px;
-  gap: 12px;
+  padding: 16px;
+  gap: 16px;
 }
 
 .c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -800,11 +843,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
   gap: 8px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   padding-right: 12px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   margin-left: auto;
 }
 
@@ -812,19 +855,19 @@ exports[`<Popover /> should render with title,footer 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: hsla(0,0%,100%,1);
-  border-width: 1px;
+  background-color: hsla(0,0%,100%,0.94);
   border-radius: 16px;
-  border-color: hsla(200,10%,94%,0);
-  border-style: solid;
-  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06);
+  border-top: 1px solid hsla(200,10%,94%,1);
+  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
   transform: translateY(4px);
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -851,12 +894,12 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c12.c12.c12.c12.c12:hover:not([disabled]) {
+.c13.c13.c13.c13.c13:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c12.c12.c12.c12.c12:focus-visible {
+.c13.c13.c13.c13.c13:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -869,7 +912,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   color: hsla(200,10%,18%,1);
 }
 
-.c12.c12.c12.c12.c12:active {
+.c13.c13.c13.c13.c13:active {
   color: hsla(200,10%,18%,1);
 }
 
@@ -891,7 +934,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -908,7 +951,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1071,41 +1114,57 @@ exports[`<Popover /> should render with title,footer 1`] = `
             <div
               class="c9"
               data-blade-component="base-box"
-              id="popover-title-11"
             >
-              <p
+              <div
                 class="c10"
-                data-blade-component="text"
+                data-blade-component="base-box"
+                id="popover-title-11"
               >
-                This is title
-              </p>
+                <p
+                  class="c11"
+                  data-blade-component="text"
+                >
+                  This is title
+                </p>
+              </div>
+              <div
+                class="c12"
+                data-blade-component="base-box"
+              >
+                <button
+                  aria-label="Close"
+                  class="c13"
+                  data-blade-component="icon-button"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="16px"
+                    viewBox="0 0 24 24"
+                    width="16px"
+                  >
+                    <path
+                      d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                      data-blade-component="svg-path"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
             <div
-              class="c11"
+              class=""
               data-blade-component="base-box"
             >
-              <button
-                aria-label="Close"
-                class="c12"
-                data-blade-component="icon-button"
-                type="button"
+              <p
+                class="c14"
+                data-blade-component="text"
               >
-                <svg
-                  aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="20px"
-                  viewBox="0 0 24 24"
-                  width="20px"
-                >
-                  <path
-                    d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                    data-blade-component="svg-path"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
+                Hello world
+              </p>
             </div>
           </div>
           <div
@@ -1113,18 +1172,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
             data-blade-component="base-box"
           >
             <p
-              class="c13"
-              data-blade-component="text"
-            >
-              Hello world
-            </p>
-          </div>
-          <div
-            class=""
-            data-blade-component="base-box"
-          >
-            <p
-              class="c13"
+              class="c14"
               data-blade-component="text"
             >
               Footer
@@ -1133,7 +1181,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          fill="hsla(0, 0%, 100%, 1)"
+          fill="hsla(0, 0%, 100%, 0.94)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -1143,12 +1191,12 @@ exports[`<Popover /> should render with title,footer 1`] = `
             clip-path="url(#:r7:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
-            stroke="hsla(200, 10%, 94%, 0)"
+            stroke="hsla(200, 10%, 94%, 1)"
             stroke-width="3"
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(0, 0%, 100%, 1)"
+            stroke="hsla(0, 0%, 100%, 0.94)"
           />
           <clippath
             id=":r7:"
