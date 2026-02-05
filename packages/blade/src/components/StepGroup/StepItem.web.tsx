@@ -145,8 +145,8 @@ const _StepItem = ({
             isDisabled
               ? 'surface.text.gray.disabled'
               : isSelected
-                ? 'surface.text.primary.normal'
-                : titleColor ?? 'surface.text.gray.subtle'
+              ? 'surface.text.primary.normal'
+              : titleColor ?? 'surface.text.gray.subtle'
           }
           weight={isNested ? 'regular' : 'medium'}
         >
@@ -178,8 +178,8 @@ const _StepItem = ({
 
   const enhancedMarker = marker
     ? React.cloneElement(marker, {
-      isDisabled: isDisabled ?? marker?.props?.isDisabled,
-    })
+        isDisabled: isDisabled ?? marker?.props?.isDisabled,
+      })
     : undefined;
 
   return (
