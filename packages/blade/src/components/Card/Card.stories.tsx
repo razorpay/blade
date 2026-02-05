@@ -311,37 +311,42 @@ export default {
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Box display="flex" gap="spacing.5">
-      <Card
-        borderRadius={args.borderRadius}
-        backgroundColor={args.backgroundColor}
-        elevation="none"
-        padding={args.padding}
-      >
-        <CardHeader paddingBottom={args.headerPaddingBottom} marginBottom={args.headerMarginBottom}>
-          <CardHeaderLeading
-            title={args.headerTitle}
-            subtitle={args.headerSubtitle}
-            prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
-            suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
-          />
-          <CardHeaderTrailing visual={args.visual} />
-        </CardHeader>
-        <CardBody>
-          <Text>{args.body}</Text>
-        </CardBody>
-        <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
-          <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
-          <CardFooterTrailing
-            actions={{
-              primary: args.footerPrimaryAction,
-              secondary: args.footerSecondaryAction,
-            }}
-          />
-        </CardFooter>
-      </Card>
+    <Box display="flex">
+      <Box backgroundColor="surface.background.gray.moderate" padding="spacing.8">
+        <Card
+          borderRadius={args.borderRadius}
+          backgroundColor={args.backgroundColor}
+          elevation="none"
+          padding={args.padding}
+        >
+          <CardHeader
+            paddingBottom={args.headerPaddingBottom}
+            marginBottom={args.headerMarginBottom}
+          >
+            <CardHeaderLeading
+              title={args.headerTitle}
+              subtitle={args.headerSubtitle}
+              prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
+              suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
+            />
+            <CardHeaderTrailing visual={args.visual} />
+          </CardHeader>
+          <CardBody>
+            <Text>{args.body}</Text>
+          </CardBody>
+          <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
+            <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
+            <CardFooterTrailing
+              actions={{
+                primary: args.footerPrimaryAction,
+                secondary: args.footerSecondaryAction,
+              }}
+            />
+          </CardFooter>
+        </Card>
+      </Box>
       <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
-        <Box>
+        <Box backgroundColor="surface.background.gray.moderate" padding="spacing.8">
           <Card
             borderRadius={args.borderRadius}
             backgroundColor={args.backgroundColor}
