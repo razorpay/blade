@@ -28,7 +28,7 @@ const StyledLink = styled.button
     ),
     '.content-container': {
       width: 'max-content',
-      borderRadius: makeBorderSize(props.theme.border.radius.medium),
+      borderRadius: makeBorderSize(props.theme.border.radius.xsmall),
     },
     '&:focus-visible': {
       '.content-container': {
