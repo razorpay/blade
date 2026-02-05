@@ -104,7 +104,40 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -677,7 +710,40 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1056,7 +1122,40 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1129,10 +1228,40 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border-width: 1px;
-  border-style: solid;
-  border-color: hsla(206,10%,29%,0.12);
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1205,7 +1334,40 @@ exports[`<Card /> should render a plain Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1358,7 +1520,40 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
