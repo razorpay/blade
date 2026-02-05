@@ -5,7 +5,6 @@
   const { Story } = defineMeta({
     title: 'Components/Counter',
     component: Counter,
-    tags: ['autodocs'],
     args: {
       value: 20,
       color: 'neutral',
@@ -15,26 +14,52 @@
     argTypes: {
       value: {
         control: { type: 'number' },
-        description: 'The numerical value to display in the counter',
+        description: 'Sets the value for the counter',
+        table: {
+          type: { summary: 'number' },
+          defaultValue: { summary: '20' },
+        },
       },
       max: {
         control: { type: 'number' },
-        description: 'Maximum value. If value exceeds max, displays "max+"',
+        description: 'Sets the max value for the counter. If value exceeds max it will render "max+"',
+        table: {
+          type: { summary: 'number' },
+        },
       },
       color: {
         control: { type: 'select' },
         options: ['neutral', 'positive', 'negative', 'notice', 'information', 'primary'],
-        description: 'Color theme of the counter',
+        description: 'Sets the color of the counter',
+        table: {
+          type: { summary: 'FeedbackColors | "primary"' },
+          defaultValue: { summary: 'neutral' },
+        },
       },
       emphasis: {
         control: { type: 'select' },
         options: ['subtle', 'intense'],
-        description: 'Background intensity - subtle or intense',
+        description: 'Sets the contrast of the counter',
+        table: {
+          type: { summary: 'SubtleOrIntense' },
+          defaultValue: { summary: 'subtle' },
+        },
       },
       size: {
         control: { type: 'select' },
         options: ['small', 'medium', 'large'],
-        description: 'Size of the counter',
+        description: 'Sets the size of the counter',
+        table: {
+          type: { summary: '"small" | "medium" | "large"' },
+          defaultValue: { summary: 'medium' },
+        },
+      },
+      testID: {
+        control: { type: 'text' },
+        description: 'Test ID for the counter element',
+        table: {
+          type: { summary: 'string' },
+        },
       },
     },
   });
