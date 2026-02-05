@@ -18,7 +18,7 @@ import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import type { Platform } from '~utils';
-import { isReactNative } from '~utils';
+import { isReactNative, useTheme } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -220,6 +220,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   ref,
 ): React.ReactElement => {
   const [isFocused, setIsFocused] = React.useState(false);
+  const { colorScheme } = useTheme();
 
   useVerifyAllowedChildren({
     children,
@@ -286,6 +287,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           elevation={elevation}
           textAlign={'left' as never}
           backgroundColor={backgroundColor}
+          colorScheme={colorScheme}
         >
           {href ? (
             <LinkOverlay
