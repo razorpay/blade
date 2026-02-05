@@ -39,21 +39,28 @@ exports[`<Tooltip /> should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   position: relative;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding: 12px;
   max-width: 200px;
+  gap: 4px;
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(205,10%,24%,1);
-  border-width: 1px;
+  background-color: hsla(0,0%,0%,0.72);
+  border-width: 0.5px;
   border-radius: 12px;
-  border-color: hsla(206,10%,29%,1);
+  border-color: hsla(205,10%,24%,1);
   border-style: solid;
   box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
@@ -240,7 +247,7 @@ exports[`<Tooltip /> should render 1`] = `
       id=":r0:"
       pointer-events="none"
       role="tooltip"
-      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -11px);"
+      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -12px);"
       tabindex="-1"
     >
       <div
@@ -255,7 +262,7 @@ exports[`<Tooltip /> should render 1`] = `
         </p>
         <svg
           aria-hidden="true"
-          fill="hsla(205, 10%, 24%, 1)"
+          fill="hsla(0, 0%, 0%, 0.72)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
@@ -263,14 +270,14 @@ exports[`<Tooltip /> should render 1`] = `
         >
           <path
             clip-path="url(#:r3:)"
-            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+            d="M0,0 H14 L7,8 Q7,8 7,8 Z"
             fill="none"
-            stroke="hsla(206, 10%, 29%, 1)"
+            stroke="hsla(205, 10%, 24%, 1)"
             stroke-width="3"
           />
           <path
-            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(205, 10%, 24%, 1)"
+            d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+            stroke="hsla(0, 0%, 0%, 0.72)"
           />
           <clippath
             id=":r3:"
@@ -318,21 +325,28 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   position: relative;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding: 12px;
   max-width: 200px;
+  gap: 4px;
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(205,10%,24%,1);
-  border-width: 1px;
+  background-color: hsla(0,0%,0%,0.72);
+  border-width: 0.5px;
   border-radius: 12px;
-  border-color: hsla(206,10%,29%,1);
+  border-color: hsla(205,10%,24%,1);
   border-style: solid;
   box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
@@ -519,7 +533,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       id=":r8:"
       pointer-events="none"
       role="tooltip"
-      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -11px);"
+      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -12px);"
       tabindex="-1"
     >
       <div
@@ -534,7 +548,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         </p>
         <svg
           aria-hidden="true"
-          fill="hsla(205, 10%, 24%, 1)"
+          fill="hsla(0, 0%, 0%, 0.72)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
@@ -542,14 +556,14 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         >
           <path
             clip-path="url(#:rb:)"
-            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+            d="M0,0 H14 L7,8 Q7,8 7,8 Z"
             fill="none"
-            stroke="hsla(206, 10%, 29%, 1)"
+            stroke="hsla(205, 10%, 24%, 1)"
             stroke-width="3"
           />
           <path
-            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(205, 10%, 24%, 1)"
+            d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+            stroke="hsla(0, 0%, 0%, 0.72)"
           />
           <clippath
             id=":rb:"
@@ -597,21 +611,28 @@ exports[`<Tooltip /> should render with title 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   position: relative;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding: 12px;
   max-width: 200px;
+  gap: 4px;
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(205,10%,24%,1);
-  border-width: 1px;
+  background-color: hsla(0,0%,0%,0.72);
+  border-width: 0.5px;
   border-radius: 12px;
-  border-color: hsla(206,10%,29%,1);
+  border-color: hsla(205,10%,24%,1);
   border-style: solid;
   box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
@@ -815,7 +836,7 @@ exports[`<Tooltip /> should render with title 1`] = `
       id=":r4:"
       pointer-events="none"
       role="tooltip"
-      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -11px);"
+      style="position: fixed; left: 0px; top: 0px; transform: translate(4px, -12px);"
       tabindex="-1"
     >
       <div
@@ -836,7 +857,7 @@ exports[`<Tooltip /> should render with title 1`] = `
         </p>
         <svg
           aria-hidden="true"
-          fill="hsla(205, 10%, 24%, 1)"
+          fill="hsla(0, 0%, 0%, 0.72)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
@@ -844,14 +865,14 @@ exports[`<Tooltip /> should render with title 1`] = `
         >
           <path
             clip-path="url(#:r7:)"
-            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+            d="M0,0 H14 L7,8 Q7,8 7,8 Z"
             fill="none"
-            stroke="hsla(206, 10%, 29%, 1)"
+            stroke="hsla(205, 10%, 24%, 1)"
             stroke-width="3"
           />
           <path
-            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(205, 10%, 24%, 1)"
+            d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+            stroke="hsla(0, 0%, 0%, 0.72)"
           />
           <clippath
             id=":r7:"

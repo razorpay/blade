@@ -234,25 +234,31 @@ exports[`<Tooltip /> should render 1`] = `
         <View
           collapse={false}
           data-blade-component="base-box"
+          display="flex"
           elevation={20}
+          flexDirection="column"
+          gap="spacing.2"
           maxWidth="200px"
           position="absolute"
           style={
             [
               {
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 4,
                 "maxWidth": 200,
-                "paddingBottom": 8,
+                "paddingBottom": 12,
                 "paddingLeft": 12,
                 "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingTop": 12,
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(205, 10%, 24%, 1)",
-                "borderColor": "hsla(206, 10%, 29%, 1)",
+                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+                "borderColor": "hsla(205, 10%, 24%, 1)",
                 "borderRadius": 12,
                 "borderStyle": "solid",
-                "borderWidth": 1,
+                "borderWidth": 0.5,
                 "left": -200,
                 "position": "absolute",
                 "top": -200,
@@ -369,7 +375,7 @@ exports[`<Tooltip /> should render 1`] = `
                 }
               >
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={null}
                   propList={
                     [
@@ -380,17 +386,17 @@ exports[`<Tooltip /> should render 1`] = `
                   }
                   stroke={
                     {
-                      "payload": 4282600273,
+                      "payload": 4281810499,
                       "type": 0,
                     }
                   }
                   strokeWidth="2px"
                 />
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={
                     {
-                      "payload": 4281810499,
+                      "payload": 3087007744,
                       "type": 0,
                     }
                   }
@@ -646,25 +652,31 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         <View
           collapse={false}
           data-blade-component="base-box"
+          display="flex"
           elevation={20}
+          flexDirection="column"
+          gap="spacing.2"
           maxWidth="200px"
           position="absolute"
           style={
             [
               {
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 4,
                 "maxWidth": 200,
-                "paddingBottom": 8,
+                "paddingBottom": 12,
                 "paddingLeft": 12,
                 "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingTop": 12,
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(205, 10%, 24%, 1)",
-                "borderColor": "hsla(206, 10%, 29%, 1)",
+                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+                "borderColor": "hsla(205, 10%, 24%, 1)",
                 "borderRadius": 12,
                 "borderStyle": "solid",
-                "borderWidth": 1,
+                "borderWidth": 0.5,
                 "left": -200,
                 "position": "absolute",
                 "top": -200,
@@ -781,7 +793,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 }
               >
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={null}
                   propList={
                     [
@@ -792,17 +804,17 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                   }
                   stroke={
                     {
-                      "payload": 4282600273,
+                      "payload": 4281810499,
                       "type": 0,
                     }
                   }
                   strokeWidth="2px"
                 />
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={
                     {
-                      "payload": 4281810499,
+                      "payload": 3087007744,
                       "type": 0,
                     }
                   }
@@ -1058,25 +1070,31 @@ exports[`<Tooltip /> should render with title 1`] = `
         <View
           collapse={false}
           data-blade-component="base-box"
+          display="flex"
           elevation={20}
+          flexDirection="column"
+          gap="spacing.2"
           maxWidth="200px"
           position="absolute"
           style={
             [
               {
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 4,
                 "maxWidth": 200,
-                "paddingBottom": 8,
+                "paddingBottom": 12,
                 "paddingLeft": 12,
                 "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingTop": 12,
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(205, 10%, 24%, 1)",
-                "borderColor": "hsla(206, 10%, 29%, 1)",
+                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+                "borderColor": "hsla(205, 10%, 24%, 1)",
                 "borderRadius": 12,
                 "borderStyle": "solid",
-                "borderWidth": 1,
+                "borderWidth": 0.5,
                 "left": -200,
                 "position": "absolute",
                 "top": -200,
@@ -1227,7 +1245,7 @@ exports[`<Tooltip /> should render with title 1`] = `
                 }
               >
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={null}
                   propList={
                     [
@@ -1238,17 +1256,17 @@ exports[`<Tooltip /> should render with title 1`] = `
                   }
                   stroke={
                     {
-                      "payload": 4282600273,
+                      "payload": 4281810499,
                       "type": 0,
                     }
                   }
                   strokeWidth="2px"
                 />
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={
                     {
-                      "payload": 4281810499,
+                      "payload": 3087007744,
                       "type": 0,
                     }
                   }
