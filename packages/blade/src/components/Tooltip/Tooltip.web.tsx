@@ -122,7 +122,6 @@ const _Tooltip = ({
                   width={ARROW_WIDTH}
                   height={ARROW_HEIGHT}
                   fillColor={theme.colors.popup.background.gray.intense}
-                  strokeColor={theme.colors.popup.border.gray.intense}
                 />
               }
             >
