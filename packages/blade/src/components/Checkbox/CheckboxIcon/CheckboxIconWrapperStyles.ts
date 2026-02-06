@@ -27,6 +27,7 @@ const getCheckboxIconWrapperStyles = ({
   const border = checkboxIconColors.variants[variant].border[checked];
   const backgroundColor = getIn(theme, background);
   const borderColor = getIn(theme, border);
+  const _borderWidth = size === 'large' ? theme.border.width.thicker : theme.border.width.thick;
   console.log({
     border,
     variant,
@@ -41,7 +42,7 @@ const getCheckboxIconWrapperStyles = ({
     flexShrink: 0,
     width: makeSpace(checkboxSizes.icon[size].width),
     height: makeSpace(checkboxSizes.icon[size].height),
-    borderWidth: makeBorderSize(theme.border.width.thick),
+    borderWidth: makeBorderSize(_borderWidth),
     borderStyle: 'solid',
     margin: makeSpace(theme.spacing[1]),
     borderRadius: makeSize(theme.border.radius.xsmall),
