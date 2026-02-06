@@ -71,6 +71,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
       <View
         backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
+        colorScheme="light"
         data-blade-component="base-box"
         elevation="lowRaised"
         style={
@@ -192,6 +193,7 @@ exports[`<Card /> should render a interactive Card 1`] = `
       <View
         backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
+        colorScheme="light"
         data-blade-component="base-box"
         elevation="lowRaised"
         style={
@@ -314,6 +316,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
       <View
         backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
+        colorScheme="light"
         data-blade-component="base-box"
         elevation="lowRaised"
         style={
@@ -436,6 +439,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
       <View
         backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
+        colorScheme="light"
         data-blade-component="base-box"
         elevation="lowRaised"
         style={

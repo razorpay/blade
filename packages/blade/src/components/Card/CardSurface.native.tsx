@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Elevation } from '~tokens/global';
+import type { ColorSchemeNames } from '~tokens/theme';
 import { castNativeType, makeBorderSize } from '~utils';
 
 const CardSurfaceStyled = styled(BaseBox)<{
@@ -21,6 +22,7 @@ const CardSurfaceStyled = styled(BaseBox)<{
 type CardSurfaceProps = {
   children: React.ReactNode;
   elevation: keyof Elevation;
+  colorScheme?: ColorSchemeNames;
 } & Omit<BaseBoxProps, 'elevation'>;
 
 const CardSurface = ({
@@ -32,6 +34,7 @@ const CardSurface = ({
   onPointerDown,
   onPointerEnter,
   pointerEvents,
+  colorScheme: _colorScheme,
   ...props
 }: CardSurfaceProps): React.ReactElement => {
   return (

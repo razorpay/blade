@@ -31,6 +31,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
@@ -664,6 +665,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
@@ -1273,6 +1275,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
@@ -1353,6 +1356,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="none"
       style={
@@ -1469,6 +1473,7 @@ exports[`<Card /> should render a plain Card 1`] = `
     <View
       backgroundColor="surface.background.gray.moderate"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="highRaised"
       style={
