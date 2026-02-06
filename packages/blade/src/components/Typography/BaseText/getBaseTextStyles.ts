@@ -94,6 +94,7 @@ const getBaseTextStyles = ({
     padding: 0,
     opacity,
     textTransform,
+    alignSelf: 'center',
     ...truncateStyles,
     ...wordBreakStyles,
   };
