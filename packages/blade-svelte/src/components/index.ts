@@ -26,5 +26,8 @@ export { default as Amount } from './Amount/Amount.svelte';
 // Badge
 export { default as Badge } from './Badge/Badge.svelte';
 
+// Divider
+export { default as Divider } from './Divider/Divider.svelte';
+
 // BladeProvider
 export * from './BladeProvider';
