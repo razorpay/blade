@@ -119,7 +119,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c2.c2.c2.c2.c2:focus-visible .content-container {
@@ -350,7 +350,7 @@ exports[`<Breadcrumb /> should render 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c2.c2.c2.c2.c2:focus-visible .content-container {
@@ -589,7 +589,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c2.c2.c2.c2.c2:focus-visible .content-container {

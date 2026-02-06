@@ -377,7 +377,7 @@ exports[`<InfoGroup /> should render InfoGroup with Avatars and apply correct pa
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c19.c19.c19.c19.c19:focus-visible .content-container {

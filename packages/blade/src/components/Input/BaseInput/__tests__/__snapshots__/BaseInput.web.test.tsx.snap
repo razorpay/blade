@@ -411,7 +411,7 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
@@ -2964,7 +2964,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c13.c13.c13.c13.c13:focus-visible .content-container {

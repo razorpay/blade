@@ -313,7 +313,7 @@ exports[`<Alert /> should render Alert on server 2`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .c14.c14.c14.c14.c14:focus-visible .content-container {
