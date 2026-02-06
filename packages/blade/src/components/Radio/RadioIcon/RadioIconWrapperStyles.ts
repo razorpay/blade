@@ -40,10 +40,10 @@ const getRadioIconWrapperStyles = ({
     borderWidth: makeBorderSize(theme.border.width.thick),
     borderStyle: 'solid',
     margin: makeSpace(theme.spacing[1]),
+    marginTop: size === 'small' ? makeSize(sizeToken['3']) : undefined,
     borderRadius: makeSize(theme.border.radius.max),
     backgroundColor,
     borderColor,
-    paddingTop: size === 'small' ? makeSize(sizeToken['1']) : 0,
     ...(!isReactNative && {
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
       transitionTimingFunction: castWebType(theme.motion.easing.exit),
