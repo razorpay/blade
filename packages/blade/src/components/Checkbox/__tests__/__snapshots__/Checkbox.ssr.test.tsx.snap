@@ -200,6 +200,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
           >
             <div
               class=""
+              data-blade-component="checkbox-icon-fade"
               style="opacity:0;position:absolute;display:flex"
             >
               <svg
@@ -226,6 +227,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
             </div>
             <div
               class="c5"
+              data-blade-component="checkbox-icon-fade"
               style="opacity:1;position:absolute;display:flex"
             >
               <svg
