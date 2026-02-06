@@ -10,10 +10,10 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
     return (
       <TooltipContentWrapper
         position={isReactNative() ? 'absolute' : 'relative'}
-        paddingTop="spacing.3"
-        paddingBottom="spacing.3"
-        paddingLeft="spacing.4"
-        paddingRight="spacing.4"
+        padding="spacing.4"
+        gap="spacing.2"
+        display="flex"
+        flexDirection="column"
         maxWidth={makeSize(size[200])}
         ref={ref as never}
         styles={style}

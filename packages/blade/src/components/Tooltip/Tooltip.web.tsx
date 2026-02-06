@@ -121,8 +121,7 @@ const _Tooltip = ({
                   context={context}
                   width={ARROW_WIDTH}
                   height={ARROW_HEIGHT}
-                  fillColor={theme.colors.popup.background.intense}
-                  strokeColor={theme.colors.popup.border.intense}
+                  fillColor={theme.colors.popup.background.gray.intense}
                 />
               }
             >
