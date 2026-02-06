@@ -156,6 +156,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
           >
             <div
               class=""
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg
@@ -182,6 +183,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
             </div>
             <div
               class="c5"
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             />
           </div>
@@ -428,6 +430,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           >
             <div
               class=""
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg
@@ -454,6 +457,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             </div>
             <div
               class="c5"
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             />
           </div>
@@ -640,6 +644,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           >
             <div
               class=""
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg
@@ -666,6 +671,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             </div>
             <div
               class="c5"
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             />
           </div>
@@ -881,6 +887,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           >
             <div
               class=""
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg
@@ -907,6 +914,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             </div>
             <div
               class="c5"
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             />
           </div>
@@ -1137,6 +1145,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
           >
             <div
               class="c5"
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 1; position: absolute; display: flex;"
             >
               <svg
@@ -1163,6 +1172,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             </div>
             <div
               class="c6"
+              data-blade-component="checkbox-icon-fade"
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg

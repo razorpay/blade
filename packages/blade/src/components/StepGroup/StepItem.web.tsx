@@ -215,6 +215,7 @@ const _StepItem = ({
             isSelected={isSelected}
             onClick={onClick}
             disabled={isDisabled}
+            {...metaAttribute({ name: MetaConstants.StepItemButton })}
           >
             {stepItemHeaderJSX}
           </InteractiveItemHeaderBox>

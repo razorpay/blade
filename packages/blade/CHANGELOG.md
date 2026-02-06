@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.80.1
+
+### Patch Changes
+
+- a4031566b: fix(blade): added meta attr to step-item and checkbox icon fade component
+
 ## 12.80.0
 
 ### Minor Changes
