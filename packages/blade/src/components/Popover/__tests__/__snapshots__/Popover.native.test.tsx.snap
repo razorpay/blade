@@ -243,9 +243,11 @@ exports[`<Popover /> should render 1`] = `
           [
             {},
             {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderColor": "hsla(200, 10%, 94%, 0)",
               "borderRadius": 16,
-              "borderTop": "1px solid hsla(200, 10%, 94%, 1)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
               "left": 0,
               "maxWidth": 288,
               "position": "absolute",
@@ -278,202 +280,186 @@ exports[`<Popover /> should render 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
-          gap="spacing.5"
+          gap="spacing.4"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": 16,
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
+                "gap": 12,
+                "paddingBottom": 12,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
               },
             ]
           }
         >
           <View
+            borderRadius="max"
             data-blade-component="base-box"
-            display="flex"
-            flexDirection="column"
-            gap="spacing.2"
+            position="absolute"
+            right="spacing.2"
             style={
               [
                 {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "gap": 4,
+                  "borderRadius": 9999,
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                  "position": "absolute",
+                  "right": 4,
+                  "top": 4,
+                  "zIndex": 1,
                 },
               ]
             }
+            top="spacing.2"
+            zIndex={1}
           >
             <View
-              borderRadius="max"
-              data-blade-component="base-box"
-              position="absolute"
-              right="spacing.2"
+              accessibilityLabel="Close"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              emphasis="intense"
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
-                    "borderRadius": 9999,
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "position": "absolute",
-                    "right": 4,
-                    "top": 4,
-                    "zIndex": 1,
+                    "alignSelf": "center",
                   },
                 ]
               }
-              top="spacing.2"
-              zIndex={1}
             >
-              <View
-                accessibilityLabel="Close"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                emphasis="intense"
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <RNSVGSvgView
+                accessibilityElementsHidden={true}
+                align="xMidYMid"
+                bbHeight="20px"
+                bbWidth="20px"
+                data-blade-component="icon"
+                fill="none"
+                focusable={false}
+                height="20px"
+                importantForAccessibility="no-hide-descendants"
+                meetOrSlice={0}
+                minX={0}
+                minY={0}
                 style={
                   [
                     {
-                      "alignSelf": "center",
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    [
+                      {},
+                    ],
+                    {
+                      "flex": 0,
+                      "height": 20,
+                      "width": 20,
                     },
                   ]
                 }
+                vbHeight={24}
+                vbWidth={24}
+                width="20px"
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="16px"
-                  bbWidth="16px"
-                  data-blade-component="icon"
-                  fill="none"
-                  focusable={false}
-                  height="16px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
+                <RNSVGGroup
+                  fill={null}
+                  propList={
                     [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      [
-                        {},
-                      ],
-                      {
-                        "flex": 0,
-                        "height": 16,
-                        "width": 16,
-                      },
+                      "fill",
                     ]
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="16px"
                 >
-                  <RNSVGGroup
-                    fill={null}
+                  <RNSVGPath
+                    d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                    fill={
+                      {
+                        "payload": 4284575093,
+                        "type": 0,
+                      }
+                    }
                     propList={
                       [
                         "fill",
                       ]
                     }
-                  >
-                    <RNSVGPath
-                      d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                      fill={
-                        {
-                          "payload": 4284575093,
-                          "type": 0,
-                        }
-                      }
-                      propList={
-                        [
-                          "fill",
-                        ]
-                      }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
-              </View>
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
             </View>
-            <View
-              data-blade-component="base-box"
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
               style={
                 [
-                  {},
+                  {
+                    "color": "hsla(0, 0%, 2%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
                 ]
               }
             >
-              <Text
-                accessible={true}
-                color="surface.text.gray.normal"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(0, 0%, 2%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              >
-                Hello world
-              </Text>
-            </View>
+              Hello world
+            </Text>
           </View>
         </View>
         <View
@@ -817,9 +803,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           [
             {},
             {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderColor": "hsla(200, 10%, 94%, 0)",
               "borderRadius": 16,
-              "borderTop": "1px solid hsla(200, 10%, 94%, 1)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
               "left": 0,
               "maxWidth": 288,
               "position": "absolute",
@@ -852,202 +840,186 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
-          gap="spacing.5"
+          gap="spacing.4"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": 16,
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
+                "gap": 12,
+                "paddingBottom": 12,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
               },
             ]
           }
         >
           <View
+            borderRadius="max"
             data-blade-component="base-box"
-            display="flex"
-            flexDirection="column"
-            gap="spacing.2"
+            position="absolute"
+            right="spacing.2"
             style={
               [
                 {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "gap": 4,
+                  "borderRadius": 9999,
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                  "position": "absolute",
+                  "right": 4,
+                  "top": 4,
+                  "zIndex": 1,
                 },
               ]
             }
+            top="spacing.2"
+            zIndex={1}
           >
             <View
-              borderRadius="max"
-              data-blade-component="base-box"
-              position="absolute"
-              right="spacing.2"
+              accessibilityLabel="Close"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              emphasis="intense"
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
-                    "borderRadius": 9999,
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "position": "absolute",
-                    "right": 4,
-                    "top": 4,
-                    "zIndex": 1,
+                    "alignSelf": "center",
                   },
                 ]
               }
-              top="spacing.2"
-              zIndex={1}
             >
-              <View
-                accessibilityLabel="Close"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                emphasis="intense"
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <RNSVGSvgView
+                accessibilityElementsHidden={true}
+                align="xMidYMid"
+                bbHeight="20px"
+                bbWidth="20px"
+                data-blade-component="icon"
+                fill="none"
+                focusable={false}
+                height="20px"
+                importantForAccessibility="no-hide-descendants"
+                meetOrSlice={0}
+                minX={0}
+                minY={0}
                 style={
                   [
                     {
-                      "alignSelf": "center",
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    [
+                      {},
+                    ],
+                    {
+                      "flex": 0,
+                      "height": 20,
+                      "width": 20,
                     },
                   ]
                 }
+                vbHeight={24}
+                vbWidth={24}
+                width="20px"
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="16px"
-                  bbWidth="16px"
-                  data-blade-component="icon"
-                  fill="none"
-                  focusable={false}
-                  height="16px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
+                <RNSVGGroup
+                  fill={null}
+                  propList={
                     [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      [
-                        {},
-                      ],
-                      {
-                        "flex": 0,
-                        "height": 16,
-                        "width": 16,
-                      },
+                      "fill",
                     ]
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="16px"
                 >
-                  <RNSVGGroup
-                    fill={null}
+                  <RNSVGPath
+                    d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                    fill={
+                      {
+                        "payload": 4284575093,
+                        "type": 0,
+                      }
+                    }
                     propList={
                       [
                         "fill",
                       ]
                     }
-                  >
-                    <RNSVGPath
-                      d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                      fill={
-                        {
-                          "payload": 4284575093,
-                          "type": 0,
-                        }
-                      }
-                      propList={
-                        [
-                          "fill",
-                        ]
-                      }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
-              </View>
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
             </View>
-            <View
-              data-blade-component="base-box"
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
               style={
                 [
-                  {},
+                  {
+                    "color": "hsla(0, 0%, 2%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
                 ]
               }
             >
-              <Text
-                accessible={true}
-                color="surface.text.gray.normal"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(0, 0%, 2%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              >
-                Hello world
-              </Text>
-            </View>
+              Hello world
+            </Text>
           </View>
         </View>
         <View
@@ -1391,9 +1363,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
           [
             {},
             {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderColor": "hsla(200, 10%, 94%, 0)",
               "borderRadius": 16,
-              "borderTop": "1px solid hsla(200, 10%, 94%, 1)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
               "left": 0,
               "maxWidth": 288,
               "position": "absolute",
@@ -1426,304 +1400,135 @@ exports[`<Popover /> should render with title,footer 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
-          gap="spacing.5"
+          gap="spacing.4"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": 16,
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
+                "gap": 12,
+                "paddingBottom": 12,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
               },
             ]
           }
         >
           <View
+            alignItems="center"
             data-blade-component="base-box"
             display="flex"
-            flexDirection="column"
-            gap="spacing.2"
+            flexDirection="row"
+            flexWrap="wrap"
+            gap="spacing.3"
             style={
               [
                 {
+                  "alignItems": "center",
                   "display": "flex",
-                  "flexDirection": "column",
-                  "gap": 4,
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "gap": 8,
                 },
               ]
             }
           >
-            <View
-              alignItems="center"
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
-              flexWrap="wrap"
-              gap="spacing.3"
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="20px"
+              bbWidth="20px"
+              data-blade-component="icon"
+              fill="none"
+              focusable={false}
+              height="20px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "flexWrap": "wrap",
-                    "gap": 8,
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  [
+                    {},
+                  ],
+                  {
+                    "flex": 0,
+                    "height": 20,
+                    "width": 20,
                   },
                 ]
               }
+              vbHeight={24}
+              vbWidth={24}
+              width="20px"
             >
-              <RNSVGSvgView
-                accessibilityElementsHidden={true}
-                align="xMidYMid"
-                bbHeight="16px"
-                bbWidth="16px"
-                data-blade-component="icon"
-                fill="none"
-                focusable={false}
-                height="16px"
-                importantForAccessibility="no-hide-descendants"
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
-                style={
+              <RNSVGGroup
+                fill={null}
+                propList={
                   [
-                    {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    [
-                      {},
-                    ],
-                    {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    "fill",
                   ]
                 }
-                vbHeight={24}
-                vbWidth={24}
-                width="16px"
               >
-                <RNSVGGroup
-                  fill={null}
+                <RNSVGPath
+                  d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                  fill={
+                    {
+                      "payload": 1380141905,
+                      "type": 0,
+                    }
+                  }
                   propList={
                     [
                       "fill",
                     ]
                   }
-                >
-                  <RNSVGPath
-                    d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                    fill={
-                      {
-                        "payload": 1380141905,
-                        "type": 0,
-                      }
-                    }
-                    propList={
-                      [
-                        "fill",
-                      ]
-                    }
-                  />
-                  <RNSVGPath
-                    d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                    fill={
-                      {
-                        "payload": 1380141905,
-                        "type": 0,
-                      }
-                    }
-                    propList={
-                      [
-                        "fill",
-                      ]
-                    }
-                  />
-                  <RNSVGPath
-                    clipRule={0}
-                    d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                    fill={
-                      {
-                        "payload": 1380141905,
-                        "type": 0,
-                      }
-                    }
-                    fillRule={0}
-                    propList={
-                      [
-                        "fill",
-                        "fillRule",
-                      ]
-                    }
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-              <View
-                data-blade-component="base-box"
-                style={
-                  [
+                />
+                <RNSVGPath
+                  d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                  fill={
                     {
-                      "paddingRight": 12,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  accessible={true}
-                  color="surface.text.gray.normal"
-                  data-blade-component="text"
-                  fontFamily="text"
-                  fontSize={200}
-                  fontStyle="normal"
-                  fontWeight="semibold"
-                  lineHeight={200}
-                  style={
+                      "payload": 1380141905,
+                      "type": 0,
+                    }
+                  }
+                  propList={
                     [
-                      {
-                        "color": "hsla(0, 0%, 2%, 1)",
-                        "fontFamily": "Inter",
-                        "fontSize": 16,
-                        "fontStyle": "normal",
-                        "fontWeight": "600",
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "textDecorationLine": "none",
-                      },
+                      "fill",
                     ]
                   }
-                >
-                  This is title
-                </Text>
-              </View>
-              <View
-                data-blade-component="base-box"
-                style={
-                  [
+                />
+                <RNSVGPath
+                  clipRule={0}
+                  d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                  fill={
                     {
-                      "marginLeft": "auto",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Close"
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
+                      "payload": 1380141905,
+                      "type": 0,
                     }
                   }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  emphasis="intense"
-                  focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
+                  fillRule={0}
+                  propList={
                     [
-                      {
-                        "alignSelf": "center",
-                      },
+                      "fill",
+                      "fillRule",
                     ]
                   }
-                >
-                  <RNSVGSvgView
-                    accessibilityElementsHidden={true}
-                    align="xMidYMid"
-                    bbHeight="16px"
-                    bbWidth="16px"
-                    data-blade-component="icon"
-                    fill="none"
-                    focusable={false}
-                    height="16px"
-                    importantForAccessibility="no-hide-descendants"
-                    meetOrSlice={0}
-                    minX={0}
-                    minY={0}
-                    style={
-                      [
-                        {
-                          "backgroundColor": "transparent",
-                          "borderWidth": 0,
-                        },
-                        [
-                          {},
-                        ],
-                        {
-                          "flex": 0,
-                          "height": 16,
-                          "width": 16,
-                        },
-                      ]
-                    }
-                    vbHeight={24}
-                    vbWidth={24}
-                    width="16px"
-                  >
-                    <RNSVGGroup
-                      fill={null}
-                      propList={
-                        [
-                          "fill",
-                        ]
-                      }
-                    >
-                      <RNSVGPath
-                        d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                        fill={
-                          {
-                            "payload": 4284575093,
-                            "type": 0,
-                          }
-                        }
-                        propList={
-                          [
-                            "fill",
-                          ]
-                        }
-                      />
-                    </RNSVGGroup>
-                  </RNSVGSvgView>
-                </View>
-              </View>
-            </View>
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
             <View
               data-blade-component="base-box"
               style={
                 [
-                  {},
+                  {
+                    "paddingRight": 12,
+                  },
                 ]
               }
             >
@@ -1732,20 +1537,20 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 color="surface.text.gray.normal"
                 data-blade-component="text"
                 fontFamily="text"
-                fontSize={100}
+                fontSize={200}
                 fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
+                fontWeight="semibold"
+                lineHeight={200}
                 style={
                   [
                     {
                       "color": "hsla(0, 0%, 2%, 1)",
                       "fontFamily": "Inter",
-                      "fontSize": 14,
+                      "fontSize": 16,
                       "fontStyle": "normal",
-                      "fontWeight": "400",
+                      "fontWeight": "600",
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
@@ -1759,9 +1564,162 @@ exports[`<Popover /> should render with title,footer 1`] = `
                   ]
                 }
               >
-                Hello world
+                This is title
               </Text>
             </View>
+            <View
+              data-blade-component="base-box"
+              style={
+                [
+                  {
+                    "marginLeft": "auto",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Close"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                emphasis="intense"
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignSelf": "center",
+                    },
+                  ]
+                }
+              >
+                <RNSVGSvgView
+                  accessibilityElementsHidden={true}
+                  align="xMidYMid"
+                  bbHeight="20px"
+                  bbWidth="20px"
+                  data-blade-component="icon"
+                  fill="none"
+                  focusable={false}
+                  height="20px"
+                  importantForAccessibility="no-hide-descendants"
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      [
+                        {},
+                      ],
+                      {
+                        "flex": 0,
+                        "height": 20,
+                        "width": 20,
+                      },
+                    ]
+                  }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width="20px"
+                >
+                  <RNSVGGroup
+                    fill={null}
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                      fill={
+                        {
+                          "payload": 4284575093,
+                          "type": 0,
+                        }
+                      }
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(0, 0%, 2%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Hello world
+            </Text>
           </View>
           <View
             data-blade-component="base-box"
