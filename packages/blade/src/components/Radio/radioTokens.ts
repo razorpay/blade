@@ -24,17 +24,17 @@ const radioSizes = {
     small: {
       width: size[12],
       height: size[12],
-      dotRadius: size[4],
+      dotRadius: size[2],
     },
     medium: {
       width: size[16],
       height: size[16],
-      dotRadius: size[5],
+      dotRadius: size[3],
     },
     large: {
       width: size[20],
       height: size[20],
-      dotRadius: size[6],
+      dotRadius: size[4],
     },
   },
 } as const;
