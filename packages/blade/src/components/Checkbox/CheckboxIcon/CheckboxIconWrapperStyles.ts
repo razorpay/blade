@@ -28,11 +28,6 @@ const getCheckboxIconWrapperStyles = ({
   const backgroundColor = getIn(theme, background);
   const borderColor = getIn(theme, border);
   const _borderWidth = size === 'large' ? theme.border.width.thicker : theme.border.width.thick;
-  console.log({
-    border,
-    variant,
-    checked,
-  });
 
   return {
     position: 'relative',
