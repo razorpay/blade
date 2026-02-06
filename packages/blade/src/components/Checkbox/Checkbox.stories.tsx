@@ -117,14 +117,7 @@ const CheckboxShowcase = () => {
                   {row.label}
                 </Text>
                 {checkboxShowcaseColumns.map((column) => (
-                  <Box
-                    key={`${row.id}-${column.id}`}
-                    borderWidth="thin"
-                    borderStyle="dashed"
-                    borderColor="surface.border.gray.muted"
-                    borderRadius="medium"
-                    padding="spacing.3"
-                  >
+                  <Box key={`${row.id}-${column.id}`} padding="spacing.3">
                     <CheckboxComponent size={size} {...row.rowProps} {...column.checkboxProps}>
                       Option
                     </CheckboxComponent>
