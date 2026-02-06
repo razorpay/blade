@@ -90,14 +90,40 @@ type TypographyRowProps = {
 const TypographyRow = ({ children }: TypographyRowProps): ReactElement => {
   const ref = useRef<HTMLDivElement>(null);
   const [styles, setStyles] = useState<ComputedStyles | null>(null);
+  const rafIdRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Get the first text element inside the wrapper
-    const textElement = ref.current?.querySelector('h1, h2, h3, h4, h5, h6, p, span, code');
-    if (textElement) {
-      setStyles(getComputedStyles(textElement as HTMLElement));
-    }
-  }, []);
+    const updateStyles = (): void => {
+      // Get the first text element inside the wrapper
+      const textElement = ref.current?.querySelector('h1, h2, h3, h4, h5, h6, p, span, code');
+      if (textElement) {
+        setStyles(getComputedStyles(textElement as HTMLElement));
+      }
+    };
+
+    const scheduleUpdate = (): void => {
+      // Cancel any pending update
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
+      // Use double requestAnimationFrame to ensure styles are computed after paint
+      rafIdRef.current = requestAnimationFrame(() => {
+        rafIdRef.current = requestAnimationFrame(updateStyles);
+      });
+    };
+
+    // Initial calculation
+    scheduleUpdate();
+
+    // Recalculate on resize (for responsive typography)
+    window.addEventListener('resize', scheduleUpdate);
+    return () => {
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
+      window.removeEventListener('resize', scheduleUpdate);
+    };
+  }, [children]);
 
   return (
     <Box
