@@ -8,6 +8,7 @@ import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
+import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -68,6 +69,74 @@ export default {
 
 const CheckboxTemplate: StoryFn<typeof CheckboxComponent> = ({ children, ...args }) => {
   return <CheckboxComponent {...args}>{children}</CheckboxComponent>;
+};
+
+const checkboxShowcaseColumns = [
+  { id: 'unchecked', label: 'Unchecked', checkboxProps: {} },
+  { id: 'checked', label: 'Checked', checkboxProps: { isChecked: true } },
+  { id: 'indeterminate', label: 'Indeterminate', checkboxProps: { isIndeterminate: true } },
+];
+
+const checkboxShowcaseRows = [
+  { id: 'default', label: 'Default', rowProps: {} },
+  { id: 'disabled', label: 'Disabled', rowProps: { isDisabled: true } },
+  {
+    id: 'error',
+    label: 'Error',
+    rowProps: { validationState: 'error', errorText: 'Error text' },
+  },
+];
+
+const checkboxShowcaseSizes: Array<{ id: string; label: string; size: CheckboxProps['size'] }> = [
+  { id: 'small', label: 'Size Small', size: 'small' },
+  { id: 'medium', label: 'Size Medium', size: 'medium' },
+  { id: 'large', label: 'Size Large', size: 'large' },
+];
+
+const CheckboxShowcase = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.7">
+      {checkboxShowcaseSizes.map(({ id, label, size }) => (
+        <Box key={id} display="flex" flexDirection="column" gap="spacing.4">
+          <Text weight="semibold">{label}</Text>
+          <Box
+            display="grid"
+            gridTemplateColumns="140px repeat(3, minmax(160px, 1fr))"
+            rowGap="spacing.4"
+            columnGap="spacing.4"
+          >
+            <Box />
+            {checkboxShowcaseColumns.map((column) => (
+              <Text key={column.id} size="small" textAlign="center" weight="medium">
+                {column.label}
+              </Text>
+            ))}
+            {checkboxShowcaseRows.map((row) => (
+              <React.Fragment key={row.id}>
+                <Text size="small" textAlign="right" weight="medium">
+                  {row.label}
+                </Text>
+                {checkboxShowcaseColumns.map((column) => (
+                  <Box
+                    key={`${row.id}-${column.id}`}
+                    borderWidth="thin"
+                    borderStyle="dashed"
+                    borderColor="surface.border.gray.muted"
+                    borderRadius="medium"
+                    padding="spacing.3"
+                  >
+                    <CheckboxComponent size={size} {...row.rowProps} {...column.checkboxProps}>
+                      Option
+                    </CheckboxComponent>
+                  </Box>
+                ))}
+              </React.Fragment>
+            ))}
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
 };
 
 export const Default = CheckboxTemplate.bind({});
@@ -158,4 +227,8 @@ checkboxRef.parameters = {
         'Checkbox component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
+};
+
+export const Showcase: StoryFn<typeof CheckboxComponent> = () => {
+  return <CheckboxShowcase />;
 };
