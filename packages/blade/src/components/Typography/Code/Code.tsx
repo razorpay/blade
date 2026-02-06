@@ -69,12 +69,18 @@ const isPlatformWeb = platformType === 'browser' || platformType === 'node';
 
 const getCodeFontSizeAndLineHeight = (
   size: CodeProps['size'],
-): { fontSize: keyof FontSize; lineHeight: keyof Typography['lineHeights'] } | undefined => {
+):
+  | {
+      fontSize: keyof FontSize;
+      lineHeight: keyof Typography['lineHeights'];
+      letterSpacing: keyof Typography['letterSpacings'];
+    }
+  | undefined => {
   switch (size) {
     case 'medium':
-      return { fontSize: 75, lineHeight: 75 };
+      return { fontSize: 75, lineHeight: 75, letterSpacing: 100 };
     case 'small':
-      return { fontSize: 25, lineHeight: 25 };
+      return { fontSize: 25, lineHeight: 25, letterSpacing: 100 };
     default:
       if (__DEV__) {
         throwBladeError({
@@ -138,7 +144,7 @@ const _Code = (
   }: CodeProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size)!;
+  const { fontSize, lineHeight, letterSpacing } = getCodeFontSizeAndLineHeight(size)!;
   const codeTextColor = React.useMemo<CodeProps['color']>(
     () => getCodeColor({ isHighlighted, color }),
     [isHighlighted, color],
@@ -160,6 +166,7 @@ const _Code = (
         fontWeight={weight}
         as={isPlatformWeb ? 'code' : undefined}
         lineHeight={lineHeight}
+        letterSpacing={letterSpacing}
         textTransform={textTransform}
       >
         {children}
