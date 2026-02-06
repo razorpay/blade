@@ -17,7 +17,6 @@ import { Box } from '~components/Box';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 import { Amount } from '~components/Amount';
 import { Text } from '~components/Typography/Text';
-import { ChipGroup, Chip } from '~components/Chip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -586,99 +585,6 @@ export const AreaChartWithCartesianGrid: StoryFn<typeof ChartArea> = () => {
   );
 };
 
-// Uncontrolled Legend with Default Selection
-export const AreaChartWithDefaultSelectedDataKeys: StoryFn<typeof ChartArea> = () => {
-  return (
-    <ChartsWrapper>
-      <Box width="100%" height="400px">
-        <ChartAreaWrapper data={chartData} colorTheme="categorical">
-          <ChartXAxis dataKey="month" />
-          <ChartYAxis />
-          <ChartTooltip />
-          <ChartLegend defaultSelectedDataKeys={['teamA', 'teamC']} />
-          <ChartArea dataKey="teamA" name="Team A" />
-          <ChartArea dataKey="teamB" name="Team B" />
-          <ChartArea dataKey="teamC" name="Team C" />
-        </ChartAreaWrapper>
-      </Box>
-    </ChartsWrapper>
-  );
-};
-
-// Controlled Legend Selection
-export const AreaChartWithControlledLegendSelection: StoryFn<typeof ChartArea> = () => {
-  const [selectedDataKeys, setSelectedDataKeys] = React.useState(['teamA', 'teamC']);
-
-  return (
-    <ChartsWrapper>
-      <Box display="flex" flexDirection="column" width="100%" height="100%">
-        <Box marginBottom="spacing.5">
-          <ChipGroup
-            accessibilityLabel="Select series"
-            selectionType="multiple"
-            value={selectedDataKeys}
-            onChange={({ values }) => setSelectedDataKeys(values)}
-          >
-            <Chip value="teamA">Team A</Chip>
-            <Chip value="teamB">Team B</Chip>
-            <Chip value="teamC">Team C</Chip>
-          </ChipGroup>
-        </Box>
-
-        <Box width="100%" height="400px">
-          <ChartAreaWrapper data={chartData} colorTheme="categorical">
-            <ChartXAxis dataKey="month" />
-            <ChartYAxis />
-            <ChartTooltip />
-            <ChartLegend
-              selectedDataKeys={selectedDataKeys}
-              onSelectedDataKeysChange={({ selectedKeysArray }) =>
-                setSelectedDataKeys(selectedKeysArray)
-              }
-            />
-            <ChartArea dataKey="teamA" name="Team A" />
-            <ChartArea dataKey="teamB" name="Team B" />
-            <ChartArea dataKey="teamC" name="Team C" />
-          </ChartAreaWrapper>
-        </Box>
-      </Box>
-    </ChartsWrapper>
-  );
-};
-
-// Legend with onSelectedDataKeysChange callback
-export const AreaChartWithLegendClickCallback: StoryFn<typeof ChartArea> = () => {
-  const [lastClicked, setLastClicked] = React.useState<string | null>(null);
-
-  return (
-    <ChartsWrapper>
-      <Box display="flex" flexDirection="column" width="100%" height="100%">
-        <Box marginBottom="spacing.5">
-          <Heading size="small">Last clicked: {lastClicked ? `${lastClicked}` : 'None'}</Heading>
-        </Box>
-
-        <Box width="100%" height="400px">
-          <ChartAreaWrapper data={chartData} colorTheme="categorical">
-            <ChartXAxis dataKey="month" />
-            <ChartYAxis />
-            <ChartTooltip />
-            <ChartLegend
-              onSelectedDataKeysChange={({ dataKey, selectedKeysArray }) => {
-                const isSelected = selectedKeysArray.includes(dataKey);
-                console.log({ dataKey, selectedKeysArray, isSelected });
-                setLastClicked(`${dataKey} (${isSelected ? 'selected' : 'deselected'})`);
-              }}
-            />
-            <ChartArea dataKey="teamA" name="Team A" />
-            <ChartArea dataKey="teamB" name="Team B" />
-            <ChartArea dataKey="teamC" name="Team C" />
-          </ChartAreaWrapper>
-        </Box>
-      </Box>
-    </ChartsWrapper>
-  );
-};
-
 AreaChartWithDefaultColorTheme.storyName = 'Single Area Chart with Color Theme';
 SimpleAreaChart.storyName = 'Simple Area Chart';
 StackedAreaChart.storyName = 'Stacked Area Chart';
@@ -687,6 +593,3 @@ TinyAreaChart.storyName = 'Tiny Area Chart /  Chart ';
 AreaChartWithReferenceLine.storyName = 'Area Chart with Reference Line';
 AreaChartWithReferenceLineVertical.storyName = 'Area Chart with Reference Line (Vertical)';
 AreaChartInCard.storyName = 'Area Chart / Spark Chart in Card (Dashboard Widget)';
-AreaChartWithDefaultSelectedDataKeys.storyName = 'Area Chart with Default Selected Legend';
-AreaChartWithControlledLegendSelection.storyName = 'Area Chart with Controlled Legend Selection';
-AreaChartWithLegendClickCallback.storyName = 'Area Chart with Legend Click Callback';

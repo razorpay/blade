@@ -9,7 +9,6 @@ import {
 } from '~components/Charts';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography/Heading';
-import { ChipGroup, Chip } from '~components/Chip';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Amount } from '~components/Amount';
@@ -493,103 +492,6 @@ export const DonutChartWithSequentialColors: StoryFn<typeof ChartDonut> = (args)
   );
 };
 
-// Uncontrolled Legend with Default Selection
-export const DonutChartWithDefaultSelectedDataKeys: StoryFn<typeof ChartDonut> = (args) => {
-  const { type, radius, ...wrapperProps } = args;
-
-  return (
-    <ChartsWrapper>
-      <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
-        <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-          <ChartDonutCell />
-        </ChartDonut>
-        <ChartLegend defaultSelectedDataKeys={['Group A', 'Group C']} />
-        <ChartTooltip />
-      </ChartDonutWrapper>
-    </ChartsWrapper>
-  );
-};
-
-// Controlled Legend Selection
-export const DonutChartWithControlledLegendSelection: StoryFn<typeof ChartDonut> = (args) => {
-  const { type, radius, ...wrapperProps } = args;
-  const [selectedDataKeys, setSelectedDataKeys] = React.useState(['Group A', 'Group D']);
-
-  return (
-    <ChartsWrapper>
-      <Box display="flex" flexDirection="column" width="100%" height="100%">
-        <Box marginBottom="spacing.5">
-          <ChipGroup
-            accessibilityLabel="Select segments"
-            selectionType="multiple"
-            value={selectedDataKeys}
-            onChange={({ values }) => setSelectedDataKeys(values)}
-          >
-            <Chip value="Group A">Group A</Chip>
-            <Chip value="Group B">Group B</Chip>
-            <Chip value="Group C">Group C</Chip>
-            <Chip value="Group D">Group D</Chip>
-            <Chip value="Group E">Group E</Chip>
-          </ChipGroup>
-        </Box>
-
-        <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
-          <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-          </ChartDonut>
-          <ChartLegend
-            selectedDataKeys={selectedDataKeys}
-            onSelectedDataKeysChange={({ selectedKeysArray }) => setSelectedDataKeys(selectedKeysArray)}
-          />
-          <ChartTooltip />
-        </ChartDonutWrapper>
-      </Box>
-    </ChartsWrapper>
-  );
-};
-
-// Legend with onSelectedDataKeysChange callback
-export const DonutChartWithLegendClickCallback: StoryFn<typeof ChartDonut> = (args) => {
-  const { type, radius, ...wrapperProps } = args;
-  const [lastClicked, setLastClicked] = React.useState<string | null>(null);
-
-  return (
-    <ChartsWrapper>
-      <Box display="flex" flexDirection="column" width="100%" height="100%">
-        <Box marginBottom="spacing.5">
-          <Heading size="small">Last clicked: {lastClicked ? `${lastClicked}` : 'None'}</Heading>
-        </Box>
-
-        <ChartDonutWrapper width="500px" height="300px" {...wrapperProps}>
-          <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius}>
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-            <ChartDonutCell />
-          </ChartDonut>
-          <ChartLegend
-            onSelectedDataKeysChange={({ dataKey, selectedKeysArray }) => {
-              const isSelected = selectedKeysArray.includes(dataKey);
-              console.log({ dataKey, selectedKeysArray, isSelected });
-              setLastClicked(`${dataKey} (${isSelected ? 'selected' : 'deselected'})`);
-            }}
-          />
-          <ChartTooltip />
-        </ChartDonutWrapper>
-      </Box>
-    </ChartsWrapper>
-  );
-};
-
 BasicDonutChart.storyName = 'Default Donut Chart';
 DonutChartWithCustomKeys.storyName = 'Donut Chart with Custom dataKey and nameKey';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
@@ -598,6 +500,3 @@ ExtraLargeRadiusDonutChart.storyName = 'Extra Large Radius Donut Chart';
 DonutChartWithColorTheme.storyName = 'Donut Chart with Color theme';
 SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
 DonutChartWithCustomColor.storyName = 'Donut Chart with Custom colors';
-DonutChartWithDefaultSelectedDataKeys.storyName = 'Donut Chart with Default Selected Legend';
-DonutChartWithControlledLegendSelection.storyName = 'Donut Chart with Controlled Legend Selection';
-DonutChartWithLegendClickCallback.storyName = 'Donut Chart with Legend Click Callback';
