@@ -148,4 +148,5 @@ const FileUploadItem = memo(
   },
 );
 
+export type { FileUploadItemProps } from './types';
 export { FileUploadItem };
