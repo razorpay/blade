@@ -4,10 +4,10 @@ import type { ReactElement } from 'react';
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
 import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { Text } from '~components/Typography/Text';
 
 const Page = (): ReactElement => {
   return (
@@ -220,31 +220,232 @@ FullWidthWithActions.parameters = {
     },
   },
 };
-export const FullWidthOneAction: StoryFn<typeof AlertComponent> = () => {
+
+const intents = [
+  { label: 'Positive', color: 'positive' },
+  { label: 'Negative', color: 'negative' },
+  { label: 'Notice', color: 'notice' },
+  { label: 'Information', color: 'information' },
+  { label: 'Neutral', color: 'neutral' },
+] as const;
+
+const renderAlertGrid = ({ isFullWidth }: { isFullWidth: boolean }): ReactElement => {
   return (
-    <BaseBox height="200px" position="relative">
-      <BaseBox position="absolute" width="100%">
-        <AlertComponent
-          description={
-            <Text color="surface.text.gray.subtle" weight="semibold">
-              This is a demo description
+    <BaseBox display="flex" flexDirection="column" gap="spacing.6">
+      <BaseBox
+        display="grid"
+        gridTemplateColumns={{ base: '1fr', m: '1fr 1fr' }}
+        gap="spacing.4"
+        width="100%"
+      >
+        <BaseBox>
+          <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+            Subtle
+          </Text>
+        </BaseBox>
+        <BaseBox>
+          <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+            Intense
+          </Text>
+        </BaseBox>
+      </BaseBox>
+      {intents.map(({ label, color }) => {
+        return (
+          <BaseBox key={color} display="flex" flexDirection="column" gap="spacing.3">
+            <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+              {label}
             </Text>
-          }
-          color="information"
-          emphasis="subtle"
-          isDismissible={false}
-          isFullWidth
-          actions={{
-            primary: {
-              text: 'Switch',
-              onClick: () => {
-                console.log('Clicked');
-              },
-            },
-          }}
-        />
+            <BaseBox
+              display="grid"
+              gridTemplateColumns={{ base: '1fr', m: '1fr 1fr' }}
+              gap="spacing.4"
+              width="100%"
+            >
+              <BaseBox>
+                <AlertComponent
+                  title="Alert Title"
+                  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                  color={color}
+                  actions={{
+                    primary: {
+                      text: 'Button',
+                      onClick: () => {
+                        console.log('Primary action clicked');
+                      },
+                    },
+                    secondary: {
+                      text: 'Link',
+                      href: 'https://razorpay.com',
+                      target: '_blank',
+                    },
+                  }}
+                  isFullWidth={isFullWidth}
+                />
+              </BaseBox>
+              <BaseBox>
+                <AlertComponent
+                  title="Alert Title"
+                  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                  color={color}
+                  emphasis="intense"
+                  actions={{
+                    primary: {
+                      text: 'Button',
+                      onClick: () => {
+                        console.log('Primary action clicked');
+                      },
+                    },
+                    secondary: {
+                      text: 'Link',
+                      href: 'https://razorpay.com',
+                      target: '_blank',
+                    },
+                  }}
+                  isFullWidth={isFullWidth}
+                />
+              </BaseBox>
+            </BaseBox>
+          </BaseBox>
+        );
+      })}
+    </BaseBox>
+  );
+};
+
+export const Showcase: StoryFn<typeof AlertComponent> = () => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.8">
+      <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+        <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+          Default Width
+        </Text>
+        {renderAlertGrid({ isFullWidth: false })}
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+        <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+          Full Width
+        </Text>
+        {renderAlertGrid({ isFullWidth: true })}
       </BaseBox>
     </BaseBox>
   );
 };
+Showcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A visual grid to compare Alert intents across subtle and intense emphasis, for both default width and full width layouts.',
+    },
+  },
+};
+
+export const SubtleStack: StoryFn<typeof AlertComponent> = () => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.6">
+      <AlertComponent
+        title="Alert Title"
+        description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+        actions={{
+          primary: {
+            text: 'Button',
+            onClick: () => {
+              console.log('Primary action clicked');
+            },
+          },
+          secondary: {
+            text: 'Link',
+            href: 'https://razorpay.com',
+            target: '_blank',
+          },
+        }}
+        color="positive"
+      />
+      <AlertComponent
+        description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+        actions={{
+          primary: {
+            text: 'Button',
+            onClick: () => {
+              console.log('Primary action clicked');
+            },
+          },
+          secondary: {
+            text: 'Link',
+            href: 'https://razorpay.com',
+            target: '_blank',
+          },
+        }}
+        color="positive"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="positive"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="positive"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="positive"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="positive"
+      />
+      <AlertComponent
+        description="This is a placeholder text"
+        actions={undefined}
+        color="positive"
+      />
+      <AlertComponent
+        title="Alert Title"
+        description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+        actions={{
+          primary: {
+            text: 'Button',
+            onClick: () => {
+              console.log('Primary action clicked');
+            },
+          },
+          secondary: {
+            text: 'Link',
+            href: 'https://razorpay.com',
+            target: '_blank',
+          },
+        }}
+        color="positive"
+      />
+      <AlertComponent
+        description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+        actions={{
+          primary: {
+            text: 'Button',
+            onClick: () => {
+              console.log('Primary action clicked');
+            },
+          },
+          secondary: {
+            text: 'Link',
+            href: 'https://razorpay.com',
+            target: '_blank',
+          },
+        }}
+        color="positive"
+      />
+    </BaseBox>
+  );
+};
+SubtleStack.parameters = {
+  docs: {
+    description: {
+      story: 'A subtle information alert stack to showcase compact layouts and repeated messaging.',
+    },
+  },
+};
+
 export default meta;
