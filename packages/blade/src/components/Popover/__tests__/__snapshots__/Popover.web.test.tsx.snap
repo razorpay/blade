@@ -57,7 +57,7 @@ exports[`<Popover /> should render 1`] = `
   border-radius: 16px;
   border-color: hsla(200,10%,94%,0);
   border-style: solid;
-  box-shadow: 0px 2px 8px 0px hsla(200,10%,18%,0.06);
+  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06);
   -webkit-transition-property: opacity,-webkit-transform;
   -webkit-transition-property: opacity,transform;
   transition-property: opacity,transform;
@@ -429,7 +429,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   border-radius: 16px;
   border-color: hsla(200,10%,94%,0);
   border-style: solid;
-  box-shadow: 0px 2px 8px 0px hsla(200,10%,18%,0.06);
+  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
@@ -817,7 +817,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   border-radius: 16px;
   border-color: hsla(200,10%,94%,0);
   border-style: solid;
-  box-shadow: 0px 2px 8px 0px hsla(200,10%,18%,0.06);
+  box-shadow: 0px 16px 12px 0px hsla(200,10%,18%,0.06);
   opacity: 0;
   -webkit-transform: translateY(4px);
   -ms-transform: translateY(4px);
