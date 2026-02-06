@@ -71,13 +71,21 @@ const CheckboxTemplate: StoryFn<typeof CheckboxComponent> = ({ children, ...args
   return <CheckboxComponent {...args}>{children}</CheckboxComponent>;
 };
 
-const checkboxShowcaseColumns = [
+const checkboxShowcaseColumns: Array<{
+  id: string;
+  label: string;
+  checkboxProps: Partial<CheckboxProps>;
+}> = [
   { id: 'unchecked', label: 'Unchecked', checkboxProps: {} },
   { id: 'checked', label: 'Checked', checkboxProps: { isChecked: true } },
   { id: 'indeterminate', label: 'Indeterminate', checkboxProps: { isIndeterminate: true } },
 ];
 
-const checkboxShowcaseRows = [
+const checkboxShowcaseRows: Array<{
+  id: string;
+  label: string;
+  rowProps: Partial<CheckboxProps>;
+}> = [
   { id: 'default', label: 'Default', rowProps: {} },
   { id: 'disabled', label: 'Disabled', rowProps: { isDisabled: true } },
   {
@@ -104,6 +112,8 @@ const CheckboxShowcase = () => {
             gridTemplateColumns="140px repeat(3, minmax(160px, 1fr))"
             rowGap="spacing.4"
             columnGap="spacing.4"
+            alignItems="center"
+            justifyItems="center"
           >
             <Box />
             {checkboxShowcaseColumns.map((column) => (
@@ -113,11 +123,19 @@ const CheckboxShowcase = () => {
             ))}
             {checkboxShowcaseRows.map((row) => (
               <React.Fragment key={row.id}>
-                <Text size="small" textAlign="right" weight="medium">
-                  {row.label}
-                </Text>
+                <Box display="flex" justifyContent="flex-end" width="100%">
+                  <Text size="small" weight="medium">
+                    {row.label}
+                  </Text>
+                </Box>
                 {checkboxShowcaseColumns.map((column) => (
-                  <Box key={`${row.id}-${column.id}`} padding="spacing.3">
+                  <Box
+                    key={`${row.id}-${column.id}`}
+                    padding="spacing.3"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
                     <CheckboxComponent size={size} {...row.rowProps} {...column.checkboxProps}>
                       Option
                     </CheckboxComponent>
