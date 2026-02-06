@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { colors } from '~tokens/global';
+import { colors, size } from '~tokens/global';
 import type { ColorSchemeNames } from '~tokens/theme';
+import { makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 
 type CardSurfaceProps = {
@@ -67,7 +68,7 @@ const CardSurface = styled(BaseBox)<CardSurfaceProps>(({ theme, colorScheme }) =
       top: isDarkMode ? 0 : 1,
       left: 1,
       right: 1,
-      height: '16px',
+      height: makeSpace(size[16]),
       background: `linear-gradient(${topGradientColor.start} 0%, ${topGradientColor.end} 100%)`,
       pointerEvents: 'none',
       borderRadius: 'inherit',
@@ -82,7 +83,7 @@ const CardSurface = styled(BaseBox)<CardSurfaceProps>(({ theme, colorScheme }) =
       bottom: isDarkMode ? 1 : 2,
       left: 1,
       right: 1,
-      height: '16px',
+      height: makeSpace(size[16]),
       background: `linear-gradient(${bottomGradientColor.start} 0%, ${bottomGradientColor.end} 100%)`,
       pointerEvents: 'none',
       borderRadius: 'inherit',
