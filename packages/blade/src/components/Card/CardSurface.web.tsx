@@ -79,7 +79,7 @@ const CardSurface = styled(BaseBox)<CardSurfaceProps>(({ theme, colorScheme }) =
     '&::after': {
       content: '""',
       position: 'absolute',
-      bottom: 1,
+      bottom: isDarkMode ? 1 : 2,
       left: 1,
       right: 1,
       height: '16px',
