@@ -6,7 +6,7 @@ export const elevation: ElevationWithColorModes = {
   onLight: {
     none: 'none',
     lowRaised: `0px 2px 4px 0px hsla(200, 10%, 18%, 0.06)`,
-    midRaised: `0px 2px 8px 0px hsla(200, 10%, 18%, 0.06)`,
+    midRaised: `0px 16px 12px 0px hsla(200, 10%, 18%, 0.06)`,
     highRaised: `0px 8px 24px -4px hsla(200, 10%, 18%, 0.06)`,
   },
   // color: neutral.black.100

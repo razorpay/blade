@@ -1416,7 +1416,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
     "onLight": {
       "highRaised": "0px 8px 24px -4px hsla(200, 10%, 18%, 0.06)",
       "lowRaised": "0px 2px 4px 0px hsla(200, 10%, 18%, 0.06)",
-      "midRaised": "0px 2px 8px 0px hsla(200, 10%, 18%, 0.06)",
+      "midRaised": "0px 16px 12px 0px hsla(200, 10%, 18%, 0.06)",
       "none": "none",
     },
   },
@@ -3157,7 +3157,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
     "onLight": {
       "highRaised": "0px 8px 24px -4px hsla(200, 10%, 18%, 0.06)",
       "lowRaised": "0px 2px 4px 0px hsla(200, 10%, 18%, 0.06)",
-      "midRaised": "0px 2px 8px 0px hsla(200, 10%, 18%, 0.06)",
+      "midRaised": "0px 16px 12px 0px hsla(200, 10%, 18%, 0.06)",
       "none": "none",
     },
   },

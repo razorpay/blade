@@ -7,6 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Text } from '~components/Typography/Text';
 
 const Page = (): ReactElement => {
   return (
@@ -219,5 +220,31 @@ FullWidthWithActions.parameters = {
     },
   },
 };
-
+export const FullWidthOneAction: StoryFn<typeof AlertComponent> = () => {
+  return (
+    <BaseBox height="200px" position="relative">
+      <BaseBox position="absolute" width="100%">
+        <AlertComponent
+          description={
+            <Text color="surface.text.gray.subtle" weight="semibold">
+              This is a demo description
+            </Text>
+          }
+          color="information"
+          emphasis="subtle"
+          isDismissible={false}
+          isFullWidth
+          actions={{
+            primary: {
+              text: 'Switch',
+              onClick: () => {
+                console.log('Clicked');
+              },
+            },
+          }}
+        />
+      </BaseBox>
+    </BaseBox>
+  );
+};
 export default meta;
