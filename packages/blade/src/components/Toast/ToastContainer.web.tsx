@@ -298,6 +298,7 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number; zIndex?: number 
               ...positionStyle,
               zIndex: wrapperZIndex,
               height: toastHeight,
+              overflow: 'hidden',
             }}
             onMouseEnter={() => {
               if (isPromotional) return;
