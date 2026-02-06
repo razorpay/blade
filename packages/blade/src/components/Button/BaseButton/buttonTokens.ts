@@ -93,14 +93,8 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
   return {
     base: {
       primary: {
-        default: createLinearGradient(
-          gradientMap[color].default[0],
-          gradientMap[color].default[100],
-        ),
-        highlighted: createLinearGradient(
-          gradientMap[color].highlighted[0],
-          gradientMap[color].highlighted[100],
-        ),
+        default: `interactive.background.${color}.default`,
+        highlighted: `interactive.background.${color}.highlighted`,
         disabled: `interactive.background.${color}.disabled`,
       },
       secondary: {

@@ -511,6 +511,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     [disabled],
   );
 
+  const handleMouseMoveForGradient = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    const button = e.currentTarget;
+    const rect = button.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    button.style.setProperty('--mouse-x', `${x}%`);
+    button.style.setProperty('--mouse-y', `${y}%`);
+  }, []);
+
   return (
     <StyledBaseButton
       ref={ref as any}
@@ -548,7 +557,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onBlur={onBlur}
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}
-      onMouseMove={onMouseMove}
+      onMouseMove={(event: React.MouseEvent<HTMLButtonElement>) => {
+        // TODO(spark): enable once design figures out animations
+        // handleMouseMoveForGradient(event);
+        onMouseMove?.(event);
+      }}
       tabIndex={tabIndex}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}

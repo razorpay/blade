@@ -22,7 +22,7 @@ const getBaseButtonStyles = ({
   height,
   width: isFullWidth ? '100%' : width,
   cursor: disabled ? 'not-allowed' : 'pointer',
-  background: defaultBackgroundColor,
+  backgroundColor: defaultBackgroundColor,
   border: 'none',
   borderRadius,
   boxShadow: defaultBoxShadow,
