@@ -173,7 +173,6 @@ const Popover = ({
                     width={ARROW_WIDTH}
                     height={ARROW_HEIGHT}
                     fillColor={theme.colors.popup.background.gray.moderate}
-                    strokeColor={theme.colors.popup.border.gray.moderate}
                   />
                 }
               >
