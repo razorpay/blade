@@ -68,11 +68,11 @@ const AnimatedFade = styled(BaseBox)<{
   toastBorderColor: string;
 }>(({ animationType, toastBorderColor, theme }) => {
   const borderShadow = `inset 0 0 0 1px ${toastBorderColor}`;
+  const highlightShadow = `inset 0px 1.5px 0px 0px ${theme.colors.interactive.background.staticWhite.fadedHighlighted}`;
   const backdropBlur = theme.backdropBlur.medium;
 
   return css`
-    overflow: hidden;
-    box-shadow: ${borderShadow}, ${theme.elevation.midRaised};
+    box-shadow: ${borderShadow}, ${highlightShadow}, ${theme.elevation.midRaised};
     backdrop-filter: blur(${backdropBlur}px);
     ${animationType}
   `;
