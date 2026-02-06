@@ -179,14 +179,14 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -202,7 +202,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -219,7 +219,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -259,7 +259,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(0,0%,100%,0);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -290,29 +290,29 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c15.c15.c15.c15.c15:hover.c15.c15.c15.c15.c15:hover [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15:active {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c15.c15.c15.c15.c15:active.c15.c15.c15.c15.c15:active [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15:focus-visible {
-  background-color: hsla(211,20%,52%,0.06);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15:focus-visible.c15.c15.c15.c15.c15:focus-visible [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15 * {
@@ -344,7 +344,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c22.c22.c22.c22.c22 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -376,7 +376,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c22.c22.c22.c22.c22::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -393,7 +393,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c22.c22.c22.c22.c22::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -410,7 +410,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c22.c22.c22.c22.c22:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -427,7 +427,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c22.c22.c22.c22.c22::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -449,7 +449,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -462,7 +462,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -472,8 +472,8 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -486,7 +486,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -499,7 +499,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -512,7 +512,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -522,12 +522,12 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -666,12 +666,12 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
                               <path
                                 d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711C7.68342 9.09763 8.31658 9.09763 8.70711 8.70711L12 5.41421L15.2929 8.70711C15.6834 9.09763 16.3166 9.09763 16.7071 8.70711C17.0976 8.31658 17.0976 7.68342 16.7071 7.29289L12.7071 3.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                               />
                               <path
                                 d="M8.70711 15.2929C8.31658 14.9024 7.68342 14.9024 7.29289 15.2929C6.90237 15.6834 6.90237 16.3166 7.29289 16.7071L11.2929 20.7071C11.6834 21.0976 12.3166 21.0976 12.7071 20.7071L16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929C16.3166 14.9024 15.6834 14.9024 15.2929 15.2929L12 18.5858L8.70711 15.2929Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                               />
                             </svg>
                           </div>
@@ -908,14 +908,14 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -931,7 +931,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -948,7 +948,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -988,7 +988,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(0,0%,100%,0);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1019,29 +1019,29 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c15.c15.c15.c15.c15:hover.c15.c15.c15.c15.c15:hover [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15:active {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c15.c15.c15.c15.c15:active.c15.c15.c15.c15.c15:active [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15:focus-visible {
-  background-color: hsla(211,20%,52%,0.06);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15:focus-visible.c15.c15.c15.c15.c15:focus-visible [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15 * {
@@ -1073,7 +1073,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c22.c22.c22.c22.c22 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1105,7 +1105,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c22.c22.c22.c22.c22::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1122,7 +1122,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c22.c22.c22.c22.c22::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1139,7 +1139,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c22.c22.c22.c22.c22:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1156,7 +1156,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c22.c22.c22.c22.c22::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1178,7 +1178,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1191,7 +1191,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1201,8 +1201,8 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1215,7 +1215,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -1228,7 +1228,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1241,7 +1241,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1251,12 +1251,12 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1395,12 +1395,12 @@ exports[`<PhoneNumberInput /> should render 1`] = `
                               <path
                                 d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711C7.68342 9.09763 8.31658 9.09763 8.70711 8.70711L12 5.41421L15.2929 8.70711C15.6834 9.09763 16.3166 9.09763 16.7071 8.70711C17.0976 8.31658 17.0976 7.68342 16.7071 7.29289L12.7071 3.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                               />
                               <path
                                 d="M8.70711 15.2929C8.31658 14.9024 7.68342 14.9024 7.29289 15.2929C6.90237 15.6834 6.90237 16.3166 7.29289 16.7071L11.2929 20.7071C11.6834 21.0976 12.3166 21.0976 12.7071 20.7071L16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929C16.3166 14.9024 15.6834 14.9024 15.2929 15.2929L12 18.5858L8.70711 15.2929Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                               />
                             </svg>
                           </div>
@@ -1635,7 +1635,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1658,7 +1658,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1675,7 +1675,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1715,7 +1715,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(0,0%,100%,0);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1746,29 +1746,29 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c15.c15.c15.c15.c15:hover.c15.c15.c15.c15.c15:hover [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15:active {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c15.c15.c15.c15.c15:active.c15.c15.c15.c15.c15:active [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15:focus-visible {
-  background-color: hsla(211,20%,52%,0.06);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15:focus-visible.c15.c15.c15.c15.c15:focus-visible [data-blade-component="svg-path"] {
-  fill: hsla(211,26%,34%,1);
+  fill: hsla(200,10%,18%,1);
 }
 
 .c15.c15.c15.c15.c15 * {
@@ -1800,7 +1800,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c22.c22.c22.c22.c22 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1832,7 +1832,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c22.c22.c22.c22.c22::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1849,7 +1849,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c22.c22.c22.c22.c22::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1866,7 +1866,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c22.c22.c22.c22.c22:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1883,7 +1883,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c22.c22.c22.c22.c22::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1905,7 +1905,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1918,7 +1918,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1928,8 +1928,8 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1942,7 +1942,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -1955,7 +1955,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1968,7 +1968,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1978,12 +1978,12 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -2122,12 +2122,12 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
                               <path
                                 d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711C7.68342 9.09763 8.31658 9.09763 8.70711 8.70711L12 5.41421L15.2929 8.70711C15.6834 9.09763 16.3166 9.09763 16.7071 8.70711C17.0976 8.31658 17.0976 7.68342 16.7071 7.29289L12.7071 3.29289Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                               />
                               <path
                                 d="M8.70711 15.2929C8.31658 14.9024 7.68342 14.9024 7.29289 15.2929C6.90237 15.6834 6.90237 16.3166 7.29289 16.7071L11.2929 20.7071C11.6834 21.0976 12.3166 21.0976 12.7071 20.7071L16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929C16.3166 14.9024 15.6834 14.9024 15.2929 15.2929L12 18.5858L8.70711 15.2929Z"
                                 data-blade-component="svg-path"
-                                fill="hsla(211, 22%, 56%, 1)"
+                                fill="hsla(204, 9%, 42%, 1)"
                               />
                             </svg>
                           </div>

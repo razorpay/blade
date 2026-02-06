@@ -63,7 +63,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
@@ -81,14 +81,14 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -120,10 +120,10 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -154,20 +154,20 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
 }
 
 .c5.c5.c5.c5.c5:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c5.c5.c5.c5.c5:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c5.c5.c5.c5.c5:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c5.c5.c5.c5.c5 * {
@@ -309,7 +309,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
@@ -327,14 +327,14 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -345,7 +345,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -371,7 +371,7 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   border: none;
   cursor: pointer;
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 8px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -384,11 +384,11 @@ exports[`<EmptyState /> should render EmptyState with Link children 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .c5.c5.c5.c5.c5:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
 }
 
 .c5.c5.c5.c5.c5 * {
@@ -498,7 +498,7 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
@@ -516,14 +516,14 @@ exports[`<EmptyState /> should render EmptyState with all props 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -673,14 +673,14 @@ exports[`<EmptyState /> should render EmptyState with description only 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -746,7 +746,7 @@ exports[`<EmptyState /> should render EmptyState with title only 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
@@ -824,7 +824,7 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -842,7 +842,7 @@ exports[`<EmptyState /> should render large size EmptyState 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -938,7 +938,7 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
@@ -956,14 +956,14 @@ exports[`<EmptyState /> should render medium size EmptyState 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1052,7 +1052,7 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
@@ -1070,14 +1070,14 @@ exports[`<EmptyState /> should render small size EmptyState 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1166,7 +1166,7 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 2rem;
   font-weight: 600;
@@ -1184,7 +1184,7 @@ exports[`<EmptyState /> should render xlarge size EmptyState 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;

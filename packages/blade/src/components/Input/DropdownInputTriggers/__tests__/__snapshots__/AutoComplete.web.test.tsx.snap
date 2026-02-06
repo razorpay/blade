@@ -177,14 +177,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -200,7 +200,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -228,7 +228,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -261,7 +261,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c16.c16.c16.c16.c16::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -279,7 +279,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c16.c16.c16.c16.c16::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -297,7 +297,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c16.c16.c16.c16.c16:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -315,7 +315,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c16.c16.c16.c16.c16::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -338,7 +338,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -352,7 +352,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -362,8 +362,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -377,7 +377,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -390,7 +390,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -404,7 +404,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -449,12 +449,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -598,7 +598,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
                             clip-rule="evenodd"
                             d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
@@ -615,7 +615,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
                             clip-rule="evenodd"
                             d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
@@ -882,7 +882,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c41.c41.c41.c41.c41 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -1039,10 +1039,10 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1073,20 +1073,20 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c55.c55.c55.c55.c55:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c55.c55.c55.c55.c55:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c55.c55.c55.c55.c55:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c55.c55.c55.c55.c55 * {
@@ -1109,14 +1109,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1132,7 +1132,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1149,7 +1149,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c18.c18.c18.c18.c18 {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1173,7 +1173,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c51.c51.c51.c51.c51 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1233,7 +1233,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1247,7 +1247,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -1257,12 +1257,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c35.c35.c35.c35.c35:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c35.c35.c35.c35.c35:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1271,11 +1271,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c35.c35.c35.c35.c35:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c42.c42.c42.c42.c42 {
@@ -1289,7 +1289,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c40.c40.c40.c40.c40 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1322,7 +1322,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c40.c40.c40.c40.c40::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1340,7 +1340,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c40.c40.c40.c40.c40::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1358,7 +1358,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c40.c40.c40.c40.c40:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1376,7 +1376,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c40.c40.c40.c40.c40::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1398,7 +1398,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1431,7 +1431,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c16.c16.c16.c16.c16::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1449,7 +1449,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c16.c16.c16.c16.c16::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1467,7 +1467,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c16.c16.c16.c16.c16:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1485,7 +1485,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c16.c16.c16.c16.c16::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1508,7 +1508,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 
 .c39.c39.c39.c39.c39 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1522,7 +1522,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1532,8 +1532,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c39.c39.c39.c39.c39:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1547,7 +1547,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -1560,7 +1560,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 
 .c39.c39.c39.c39.c39:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1574,7 +1574,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1584,8 +1584,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c11.c11.c11.c11.c11 {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1599,7 +1599,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
@@ -1609,8 +1609,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1624,7 +1624,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -1636,8 +1636,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c11.c11.c11.c11.c11:focus-within {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1651,7 +1651,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
@@ -1696,12 +1696,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c38.c38.c38.c38.c38 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c38.c38.c38.c38.c38:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1713,12 +1713,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1748,7 +1748,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
+  border-radius: 12px;
   margin-top: 2px;
   margin-bottom: 2px;
   -webkit-text-decoration: none;
@@ -1760,11 +1760,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 
 .c46.c46.c46.c46.c46:hover:not([aria-disabled=true]),
 .c46.c46.c46.c46.c46[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c46.c46.c46.c46.c46:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1776,11 +1776,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c46.c46.c46.c46.c46[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c46.c46.c46.c46.c46[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c27.c27.c27.c27.c27 {
@@ -1825,7 +1825,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-radius: 16px;
 }
 
@@ -1833,7 +1833,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(200,10%,94%,0);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -2074,7 +2074,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             clip-rule="evenodd"
                             d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
@@ -2091,7 +2091,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             clip-rule="evenodd"
                             d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
@@ -2641,7 +2641,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -2664,7 +2664,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2692,7 +2692,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2725,7 +2725,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c16.c16.c16.c16.c16::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2743,7 +2743,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c16.c16.c16.c16.c16::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2761,7 +2761,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c16.c16.c16.c16.c16:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2779,7 +2779,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c16.c16.c16.c16.c16::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2802,7 +2802,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2816,7 +2816,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -2826,8 +2826,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2841,7 +2841,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -2854,7 +2854,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2868,7 +2868,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -2913,12 +2913,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -3089,7 +3089,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                             clip-rule="evenodd"
                             d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
@@ -3106,7 +3106,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                             clip-rule="evenodd"
                             d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
@@ -3310,14 +3310,14 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -3333,7 +3333,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3361,7 +3361,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3394,7 +3394,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c16.c16.c16.c16.c16::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3412,7 +3412,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c16.c16.c16.c16.c16::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3430,7 +3430,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c16.c16.c16.c16.c16:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3448,7 +3448,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c16.c16.c16.c16.c16::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3470,8 +3470,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c11.c11.c11.c11.c11 {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3485,7 +3485,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
@@ -3495,8 +3495,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3510,7 +3510,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -3522,8 +3522,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c11.c11.c11.c11.c11:focus-within {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3537,7 +3537,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
@@ -3582,12 +3582,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -3763,7 +3763,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                             clip-rule="evenodd"
                             d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
@@ -3780,7 +3780,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                             clip-rule="evenodd"
                             d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>

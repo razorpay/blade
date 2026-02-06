@@ -21,7 +21,7 @@ exports[`<Heading /> should render Heading with color 1`] = `
     style={
       [
         {
-          "color": "hsla(211, 20%, 52%, 0.32)",
+          "color": "hsla(206, 10%, 29%, 0.32)",
           "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
@@ -67,7 +67,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
     style={
       [
         {
-          "color": "hsla(212, 39%, 16%, 1)",
+          "color": "hsla(0, 0%, 2%, 1)",
           "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
@@ -113,7 +113,7 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
     style={
       [
         {
-          "color": "hsla(212, 39%, 16%, 1)",
+          "color": "hsla(0, 0%, 2%, 1)",
           "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
@@ -148,7 +148,7 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
       style={
         [
           {
-            "color": "hsla(200, 84%, 44%, 1)",
+            "color": "hsla(200, 100%, 41%, 1)",
             "fontFamily": "TASA Orbiter Display",
             "fontSize": 16,
             "fontStyle": "normal",
@@ -195,7 +195,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
     style={
       [
         {
-          "color": "hsla(211, 22%, 56%, 1)",
+          "color": "hsla(204, 9%, 42%, 1)",
           "fontFamily": "TASA Orbiter Display",
           "fontSize": 20,
           "fontStyle": "normal",
@@ -241,7 +241,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
     style={
       [
         {
-          "color": "hsla(211, 22%, 56%, 1)",
+          "color": "hsla(204, 9%, 42%, 1)",
           "fontFamily": "TASA Orbiter Display",
           "fontSize": 18,
           "fontStyle": "normal",
@@ -287,7 +287,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
     style={
       [
         {
-          "color": "hsla(212, 39%, 16%, 1)",
+          "color": "hsla(0, 0%, 2%, 1)",
           "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
@@ -333,7 +333,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
     style={
       [
         {
-          "color": "hsla(212, 39%, 16%, 1)",
+          "color": "hsla(0, 0%, 2%, 1)",
           "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",

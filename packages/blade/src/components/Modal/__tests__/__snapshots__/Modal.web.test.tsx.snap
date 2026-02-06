@@ -22,7 +22,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   top: 50%;
   left: 50%;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -115,7 +115,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 .c13.c13.c13.c13.c13 {
   min-height: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c15.c15.c15.c15.c15 {
@@ -163,7 +163,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -206,7 +206,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 .c19.c19.c19.c19.c19 {
   text-align: left;
   height: 20px;
-  background-color: hsla(25,90%,48%,0.09);
+  background-color: hsla(25,100%,44%,0.09);
 }
 
 .c26.c26.c26.c26.c26 {
@@ -220,7 +220,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -239,14 +239,14 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -263,14 +263,14 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -280,7 +280,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c28.c28.c28.c28.c28 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -315,14 +315,14 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(25,85%,42%,1);
+  color: hsla(25,100%,39%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -341,7 +341,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -355,7 +355,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -365,12 +365,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c22.c22.c22.c22.c22:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c22.c22.c22.c22.c22:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -379,11 +379,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c22.c22.c22.c22.c22:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -398,7 +398,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
   opacity: 0;
   position: fixed;
   -webkit-transform: translate(-50%,-50%) scale(0.9);
@@ -414,7 +414,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c20.c20.c20.c20.c20 {
-  background-color: hsla(25,90%,48%,0.09);
+  background-color: hsla(25,100%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -429,7 +429,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -448,10 +448,10 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -482,20 +482,20 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c30.c30.c30.c30.c30:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c30.c30.c30.c30.c30:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c30.c30.c30.c30.c30:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c30.c30.c30.c30.c30 * {
@@ -807,7 +807,7 @@ exports[`Modal renders a basic Modal 1`] = `
   top: 50%;
   left: 50%;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -817,7 +817,7 @@ exports[`Modal renders a basic Modal 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -845,7 +845,7 @@ exports[`Modal renders a basic Modal 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
   opacity: 0;
   position: fixed;
   -webkit-transform: translate(-50%,-50%) scale(0.9);
@@ -918,7 +918,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   top: 50%;
   left: 50%;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -928,7 +928,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -956,7 +956,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
   opacity: 0;
   position: fixed;
   -webkit-transform: translate(-50%,-50%) scale(0.9);
@@ -1029,7 +1029,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   top: 50%;
   left: 50%;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1039,7 +1039,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1067,7 +1067,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
   opacity: 0;
   position: fixed;
   -webkit-transform: translate(-50%,-50%) scale(0.9);

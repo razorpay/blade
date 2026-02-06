@@ -28,7 +28,7 @@ exports[`<Button /> should render button with default properties 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -37,14 +37,14 @@ exports[`<Button /> should render button with default properties 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -73,9 +73,9 @@ exports[`<Button /> should render button with default properties 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -94,8 +94,8 @@ exports[`<Button /> should render button with default properties 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -206,7 +206,7 @@ exports[`<Button /> should render button with full width 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -215,14 +215,14 @@ exports[`<Button /> should render button with full width 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={true}
     isLoading={false}
@@ -251,9 +251,9 @@ exports[`<Button /> should render button with full width 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -272,8 +272,8 @@ exports[`<Button /> should render button with full width 1`] = `
           "width": "100%",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -384,7 +384,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -393,14 +393,14 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -429,9 +429,9 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -450,8 +450,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -667,7 +667,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -676,14 +676,14 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -712,9 +712,9 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -733,8 +733,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -950,7 +950,7 @@ exports[`<Button /> should render disabled button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -959,15 +959,15 @@ exports[`<Button /> should render disabled button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 0.18)"
-    defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
-    focusBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+    defaultBorderColor="hsla(218, 89%, 51%, 0.18)"
+    focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+    focusBorderColor="hsla(218, 89%, 51%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
-    hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
-    hoverIconColor="hsla(227, 100%, 59%, 0.32)"
+    hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+    hoverBorderColor="hsla(218, 89%, 51%, 0.18)"
+    hoverIconColor="hsla(218, 89%, 51%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -995,9 +995,9 @@ exports[`<Button /> should render disabled button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
-          "borderColor": "hsla(227, 100%, 59%, 0.18)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 0.18)",
+          "borderColor": "hsla(218, 89%, 51%, 0.18)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -1016,8 +1016,8 @@ exports[`<Button /> should render disabled button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
-          "borderColor": "hsla(227, 100%, 59%, 0.18)",
+          "backgroundColor": "hsla(218, 89%, 51%, 0.18)",
+          "borderColor": "hsla(218, 89%, 51%, 0.18)",
         },
       ]
     }
@@ -1070,7 +1070,7 @@ exports[`<Button /> should render disabled button 1`] = `
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 0.32)",
+                "color": "hsla(218, 89%, 51%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1128,7 +1128,7 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -1137,15 +1137,15 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
     collapsable={false}
     color="negative"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(4, 74%, 49%, 0.09)"
-    defaultBorderColor="hsla(4, 74%, 49%, 0.18)"
-    focusBackgroundColor="hsla(4, 74%, 49%, 0.09)"
-    focusBorderColor="hsla(4, 74%, 49%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(4, 85%, 44%, 0.09)"
+    defaultBorderColor="hsla(4, 85%, 44%, 0.18)"
+    focusBackgroundColor="hsla(4, 85%, 44%, 0.09)"
+    focusBorderColor="hsla(4, 85%, 44%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(4, 74%, 49%, 0.09)"
-    hoverBorderColor="hsla(4, 74%, 49%, 0.18)"
-    hoverIconColor="hsla(4, 74%, 49%, 0.32)"
+    hoverBackgroundColor="hsla(4, 85%, 44%, 0.09)"
+    hoverBorderColor="hsla(4, 85%, 44%, 0.18)"
+    hoverIconColor="hsla(4, 85%, 44%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -1173,9 +1173,9 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
-          "borderColor": "hsla(4, 74%, 49%, 0.18)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
+          "borderColor": "hsla(4, 85%, 44%, 0.18)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -1194,8 +1194,8 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
-          "borderColor": "hsla(4, 74%, 49%, 0.18)",
+          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
+          "borderColor": "hsla(4, 85%, 44%, 0.18)",
         },
       ]
     }
@@ -1248,7 +1248,7 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
           style={
             [
               {
-                "color": "hsla(4, 74%, 49%, 0.32)",
+                "color": "hsla(4, 85%, 44%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1306,7 +1306,7 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -1315,15 +1315,15 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
     collapsable={false}
     color="negative"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(4, 74%, 49%, 0.09)"
-    defaultBorderColor="hsla(4, 74%, 49%, 0.18)"
-    focusBackgroundColor="hsla(4, 74%, 49%, 0.09)"
-    focusBorderColor="hsla(4, 74%, 49%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(4, 85%, 44%, 0.09)"
+    defaultBorderColor="hsla(4, 85%, 44%, 0.18)"
+    focusBackgroundColor="hsla(4, 85%, 44%, 0.09)"
+    focusBorderColor="hsla(4, 85%, 44%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(4, 74%, 49%, 0.09)"
-    hoverBorderColor="hsla(4, 74%, 49%, 0.18)"
-    hoverIconColor="hsla(4, 74%, 49%, 0.32)"
+    hoverBackgroundColor="hsla(4, 85%, 44%, 0.09)"
+    hoverBorderColor="hsla(4, 85%, 44%, 0.18)"
+    hoverIconColor="hsla(4, 85%, 44%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -1351,9 +1351,9 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
-          "borderColor": "hsla(4, 74%, 49%, 0.18)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
+          "borderColor": "hsla(4, 85%, 44%, 0.18)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
@@ -1372,8 +1372,8 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
-          "borderColor": "hsla(4, 74%, 49%, 0.18)",
+          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
+          "borderColor": "hsla(4, 85%, 44%, 0.18)",
         },
       ]
     }
@@ -1426,7 +1426,7 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
           style={
             [
               {
-                "color": "hsla(4, 74%, 49%, 0.32)",
+                "color": "hsla(4, 85%, 44%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1484,7 +1484,7 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -1493,15 +1493,15 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
     collapsable={false}
     color="positive"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(150, 100%, 32%, 0.09)"
-    defaultBorderColor="hsla(150, 100%, 32%, 0.18)"
-    focusBackgroundColor="hsla(150, 100%, 32%, 0.09)"
-    focusBorderColor="hsla(150, 100%, 32%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(150, 100%, 28%, 0.09)"
+    defaultBorderColor="hsla(150, 100%, 28%, 0.18)"
+    focusBackgroundColor="hsla(150, 100%, 28%, 0.09)"
+    focusBorderColor="hsla(150, 100%, 28%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 32%, 0.09)"
-    hoverBorderColor="hsla(150, 100%, 32%, 0.18)"
-    hoverIconColor="hsla(150, 100%, 32%, 0.32)"
+    hoverBackgroundColor="hsla(150, 100%, 28%, 0.09)"
+    hoverBorderColor="hsla(150, 100%, 28%, 0.18)"
+    hoverIconColor="hsla(150, 100%, 28%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -1529,9 +1529,9 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
-          "borderColor": "hsla(150, 100%, 32%, 0.18)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
+          "borderColor": "hsla(150, 100%, 28%, 0.18)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -1550,8 +1550,8 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
-          "borderColor": "hsla(150, 100%, 32%, 0.18)",
+          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
+          "borderColor": "hsla(150, 100%, 28%, 0.18)",
         },
       ]
     }
@@ -1604,7 +1604,7 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
           style={
             [
               {
-                "color": "hsla(150, 100%, 32%, 0.32)",
+                "color": "hsla(150, 100%, 28%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1662,7 +1662,7 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -1671,15 +1671,15 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
     collapsable={false}
     color="positive"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(150, 100%, 32%, 0.09)"
-    defaultBorderColor="hsla(150, 100%, 32%, 0.18)"
-    focusBackgroundColor="hsla(150, 100%, 32%, 0.09)"
-    focusBorderColor="hsla(150, 100%, 32%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(150, 100%, 28%, 0.09)"
+    defaultBorderColor="hsla(150, 100%, 28%, 0.18)"
+    focusBackgroundColor="hsla(150, 100%, 28%, 0.09)"
+    focusBorderColor="hsla(150, 100%, 28%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 32%, 0.09)"
-    hoverBorderColor="hsla(150, 100%, 32%, 0.18)"
-    hoverIconColor="hsla(150, 100%, 32%, 0.32)"
+    hoverBackgroundColor="hsla(150, 100%, 28%, 0.09)"
+    hoverBorderColor="hsla(150, 100%, 28%, 0.18)"
+    hoverIconColor="hsla(150, 100%, 28%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -1707,9 +1707,9 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
-          "borderColor": "hsla(150, 100%, 32%, 0.18)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
+          "borderColor": "hsla(150, 100%, 28%, 0.18)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
@@ -1728,8 +1728,8 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
-          "borderColor": "hsla(150, 100%, 32%, 0.18)",
+          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
+          "borderColor": "hsla(150, 100%, 28%, 0.18)",
         },
       ]
     }
@@ -1782,7 +1782,7 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
           style={
             [
               {
-                "color": "hsla(150, 100%, 32%, 0.32)",
+                "color": "hsla(150, 100%, 28%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1840,7 +1840,7 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -1849,15 +1849,15 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 0.18)"
-    defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
-    focusBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+    defaultBorderColor="hsla(218, 89%, 51%, 0.18)"
+    focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+    focusBorderColor="hsla(218, 89%, 51%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
-    hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
-    hoverIconColor="hsla(227, 100%, 59%, 0.32)"
+    hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+    hoverBorderColor="hsla(218, 89%, 51%, 0.18)"
+    hoverIconColor="hsla(218, 89%, 51%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -1885,9 +1885,9 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
-          "borderColor": "hsla(227, 100%, 59%, 0.18)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 0.18)",
+          "borderColor": "hsla(218, 89%, 51%, 0.18)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -1906,8 +1906,8 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
-          "borderColor": "hsla(227, 100%, 59%, 0.18)",
+          "backgroundColor": "hsla(218, 89%, 51%, 0.18)",
+          "borderColor": "hsla(218, 89%, 51%, 0.18)",
         },
       ]
     }
@@ -1960,7 +1960,7 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 0.32)",
+                "color": "hsla(218, 89%, 51%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -2018,7 +2018,7 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -2028,14 +2028,14 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-    defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBorderColor="hsla(218, 89%, 51%, 0.18)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0)"
-    focusBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusBorderColor="hsla(218, 89%, 51%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0)"
-    hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
-    hoverIconColor="hsla(227, 100%, 59%, 0.32)"
+    hoverBorderColor="hsla(218, 89%, 51%, 0.18)"
+    hoverIconColor="hsla(218, 89%, 51%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -2064,8 +2064,8 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(227, 100%, 59%, 0.18)",
-          "borderRadius": 4,
+          "borderColor": "hsla(218, 89%, 51%, 0.18)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
@@ -2085,7 +2085,7 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
         },
         {
           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(227, 100%, 59%, 0.18)",
+          "borderColor": "hsla(218, 89%, 51%, 0.18)",
         },
       ]
     }
@@ -2138,7 +2138,7 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 0.32)",
+                "color": "hsla(218, 89%, 51%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -2196,7 +2196,7 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -2205,15 +2205,15 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(211, 20%, 52%, 0.18)"
-    defaultBorderColor="hsla(214, 40%, 92%, 1)"
-    focusBackgroundColor="hsla(211, 20%, 52%, 0.18)"
-    focusBorderColor="hsla(214, 40%, 92%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(206, 10%, 29%, 0.09)"
+    defaultBorderColor="hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(206, 10%, 29%, 0.09)"
+    focusBorderColor="hsla(204, 8%, 88%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(211, 20%, 52%, 0.18)"
-    hoverBorderColor="hsla(214, 40%, 92%, 1)"
-    hoverIconColor="hsla(211, 20%, 52%, 0.32)"
+    hoverBackgroundColor="hsla(206, 10%, 29%, 0.09)"
+    hoverBorderColor="hsla(204, 8%, 88%, 1)"
+    hoverIconColor="hsla(206, 10%, 29%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -2241,9 +2241,9 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(211, 20%, 52%, 0.18)",
-          "borderColor": "hsla(214, 40%, 92%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+          "borderColor": "hsla(204, 8%, 88%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -2262,7 +2262,7 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(211, 20%, 52%, 0.18)",
+          "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
         },
       ]
     }
@@ -2315,7 +2315,7 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
           style={
             [
               {
-                "color": "hsla(211, 20%, 52%, 0.32)",
+                "color": "hsla(206, 10%, 29%, 0.32)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -2373,7 +2373,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -2386,7 +2386,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     focusBorderColor="hsla(0, 0%, 100%, 0.32)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
@@ -2420,7 +2420,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
           "borderColor": "hsla(0, 0%, 100%, 0.32)",
-          "borderRadius": 4,
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -2551,7 +2551,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -2564,7 +2564,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0)"
     focusBorderColor="hsla(0, 0%, 100%, 0.32)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
@@ -2598,7 +2598,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 0)",
           "borderColor": "hsla(0, 0%, 100%, 0.32)",
-          "borderRadius": 4,
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
@@ -2729,7 +2729,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -2742,7 +2742,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     focusBorderColor="hsla(0, 0%, 100%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.18)"
@@ -2776,7 +2776,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
           "borderColor": "hsla(0, 0%, 100%, 0.18)",
-          "borderRadius": 4,
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -2906,7 +2906,7 @@ exports[`<Button /> should render large size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -2915,14 +2915,14 @@ exports[`<Button /> should render large size button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -2951,9 +2951,9 @@ exports[`<Button /> should render large size button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -2972,8 +2972,8 @@ exports[`<Button /> should render large size button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -3084,7 +3084,7 @@ exports[`<Button /> should render medium size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -3093,14 +3093,14 @@ exports[`<Button /> should render medium size button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -3129,9 +3129,9 @@ exports[`<Button /> should render medium size button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -3150,8 +3150,8 @@ exports[`<Button /> should render medium size button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -3262,7 +3262,7 @@ exports[`<Button /> should render negative color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -3271,14 +3271,14 @@ exports[`<Button /> should render negative color primary button 1`] = `
     collapsable={false}
     color="negative"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(4, 74%, 49%, 1)"
-    defaultBorderColor="hsla(4, 74%, 49%, 1)"
-    focusBackgroundColor="hsla(4, 77%, 40%, 1)"
-    focusBorderColor="hsla(4, 77%, 40%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(4, 85%, 44%, 1)"
+    defaultBorderColor="hsla(4, 85%, 44%, 1)"
+    focusBackgroundColor="hsla(4, 85%, 36%, 1)"
+    focusBorderColor="hsla(4, 85%, 36%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(4, 77%, 40%, 1)"
-    hoverBorderColor="hsla(4, 77%, 40%, 1)"
+    hoverBackgroundColor="hsla(4, 85%, 36%, 1)"
+    hoverBorderColor="hsla(4, 85%, 36%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -3307,9 +3307,9 @@ exports[`<Button /> should render negative color primary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(4, 74%, 49%, 1)",
-          "borderColor": "hsla(4, 74%, 49%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(4, 85%, 44%, 1)",
+          "borderColor": "hsla(4, 85%, 44%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -3328,8 +3328,8 @@ exports[`<Button /> should render negative color primary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(4, 74%, 49%, 1)",
-          "borderColor": "hsla(4, 74%, 49%, 1)",
+          "backgroundColor": "hsla(4, 85%, 44%, 1)",
+          "borderColor": "hsla(4, 85%, 44%, 1)",
         },
       ]
     }
@@ -3440,7 +3440,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -3449,15 +3449,15 @@ exports[`<Button /> should render negative color secondary button 1`] = `
     collapsable={false}
     color="negative"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(4, 74%, 49%, 0.09)"
-    defaultBorderColor="hsla(4, 74%, 49%, 1)"
-    focusBackgroundColor="hsla(4, 74%, 49%, 0.18)"
-    focusBorderColor="hsla(4, 74%, 49%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(4, 85%, 44%, 0.09)"
+    defaultBorderColor="hsla(4, 85%, 44%, 1)"
+    focusBackgroundColor="hsla(4, 85%, 44%, 0.18)"
+    focusBorderColor="hsla(4, 85%, 44%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(4, 74%, 49%, 0.18)"
-    hoverBorderColor="hsla(4, 74%, 49%, 1)"
-    hoverIconColor="hsla(4, 74%, 49%, 1)"
+    hoverBackgroundColor="hsla(4, 85%, 44%, 0.18)"
+    hoverBorderColor="hsla(4, 85%, 44%, 1)"
+    hoverIconColor="hsla(4, 85%, 44%, 1)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -3485,9 +3485,9 @@ exports[`<Button /> should render negative color secondary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
-          "borderColor": "hsla(4, 74%, 49%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
+          "borderColor": "hsla(4, 85%, 44%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
@@ -3506,8 +3506,8 @@ exports[`<Button /> should render negative color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
-          "borderColor": "hsla(4, 74%, 49%, 1)",
+          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
+          "borderColor": "hsla(4, 85%, 44%, 1)",
         },
       ]
     }
@@ -3560,7 +3560,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
           style={
             [
               {
-                "color": "hsla(4, 74%, 49%, 1)",
+                "color": "hsla(4, 85%, 44%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -3618,7 +3618,7 @@ exports[`<Button /> should render positive color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -3627,14 +3627,14 @@ exports[`<Button /> should render positive color primary button 1`] = `
     collapsable={false}
     color="positive"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(150, 100%, 32%, 1)"
-    defaultBorderColor="hsla(150, 100%, 32%, 1)"
-    focusBackgroundColor="hsla(150, 100%, 27%, 1)"
-    focusBorderColor="hsla(150, 100%, 27%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(150, 100%, 28%, 1)"
+    defaultBorderColor="hsla(150, 100%, 28%, 1)"
+    focusBackgroundColor="hsla(150, 100%, 23%, 1)"
+    focusBorderColor="hsla(150, 100%, 23%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 27%, 1)"
-    hoverBorderColor="hsla(150, 100%, 27%, 1)"
+    hoverBackgroundColor="hsla(150, 100%, 23%, 1)"
+    hoverBorderColor="hsla(150, 100%, 23%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -3663,9 +3663,9 @@ exports[`<Button /> should render positive color primary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(150, 100%, 32%, 1)",
-          "borderColor": "hsla(150, 100%, 32%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(150, 100%, 28%, 1)",
+          "borderColor": "hsla(150, 100%, 28%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -3684,8 +3684,8 @@ exports[`<Button /> should render positive color primary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(150, 100%, 32%, 1)",
-          "borderColor": "hsla(150, 100%, 32%, 1)",
+          "backgroundColor": "hsla(150, 100%, 28%, 1)",
+          "borderColor": "hsla(150, 100%, 28%, 1)",
         },
       ]
     }
@@ -3796,7 +3796,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -3805,15 +3805,15 @@ exports[`<Button /> should render positive color secondary button 1`] = `
     collapsable={false}
     color="positive"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(150, 100%, 32%, 0.09)"
-    defaultBorderColor="hsla(150, 100%, 32%, 1)"
-    focusBackgroundColor="hsla(150, 100%, 32%, 0.18)"
-    focusBorderColor="hsla(150, 100%, 32%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(150, 100%, 28%, 0.09)"
+    defaultBorderColor="hsla(150, 100%, 28%, 1)"
+    focusBackgroundColor="hsla(150, 100%, 28%, 0.18)"
+    focusBorderColor="hsla(150, 100%, 28%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 32%, 0.18)"
-    hoverBorderColor="hsla(150, 100%, 32%, 1)"
-    hoverIconColor="hsla(150, 100%, 27%, 1)"
+    hoverBackgroundColor="hsla(150, 100%, 28%, 0.18)"
+    hoverBorderColor="hsla(150, 100%, 28%, 1)"
+    hoverIconColor="hsla(150, 100%, 23%, 1)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -3841,9 +3841,9 @@ exports[`<Button /> should render positive color secondary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
-          "borderColor": "hsla(150, 100%, 32%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
+          "borderColor": "hsla(150, 100%, 28%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
@@ -3862,8 +3862,8 @@ exports[`<Button /> should render positive color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
-          "borderColor": "hsla(150, 100%, 32%, 1)",
+          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
+          "borderColor": "hsla(150, 100%, 28%, 1)",
         },
       ]
     }
@@ -3916,7 +3916,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
           style={
             [
               {
-                "color": "hsla(150, 100%, 27%, 1)",
+                "color": "hsla(150, 100%, 23%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -3974,7 +3974,7 @@ exports[`<Button /> should render primary color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -3983,14 +3983,14 @@ exports[`<Button /> should render primary color primary button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4019,9 +4019,9 @@ exports[`<Button /> should render primary color primary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4040,8 +4040,8 @@ exports[`<Button /> should render primary color primary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4152,7 +4152,7 @@ exports[`<Button /> should render primary color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -4162,14 +4162,14 @@ exports[`<Button /> should render primary color secondary button 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+    focusBorderColor="hsla(218, 89%, 51%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
-    hoverIconColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverIconColor="hsla(218, 89%, 51%, 1)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4198,8 +4198,8 @@ exports[`<Button /> should render primary color secondary button 1`] = `
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
@@ -4219,7 +4219,7 @@ exports[`<Button /> should render primary color secondary button 1`] = `
         },
         {
           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4272,7 +4272,7 @@ exports[`<Button /> should render primary color secondary button 1`] = `
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 1)",
+                "color": "hsla(218, 89%, 51%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -4330,7 +4330,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -4339,15 +4339,15 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(211, 20%, 52%, 0.12)"
-    defaultBorderColor="hsla(214, 40%, 92%, 1)"
-    focusBackgroundColor="hsla(211, 20%, 52%, 0.18)"
-    focusBorderColor="hsla(214, 28%, 84%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    defaultBorderColor="hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(206, 10%, 29%, 0.12)"
+    focusBorderColor="hsla(203, 8%, 80%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(211, 20%, 52%, 0.18)"
-    hoverBorderColor="hsla(214, 28%, 84%, 1)"
-    hoverIconColor="hsla(212, 39%, 16%, 1)"
+    hoverBackgroundColor="hsla(206, 10%, 29%, 0.12)"
+    hoverBorderColor="hsla(203, 8%, 80%, 1)"
+    hoverIconColor="hsla(0, 0%, 2%, 1)"
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4375,9 +4375,9 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
-          "borderColor": "hsla(214, 40%, 92%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+          "borderColor": "hsla(204, 8%, 88%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4396,7 +4396,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
+          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
         },
       ]
     }
@@ -4449,7 +4449,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -4507,7 +4507,7 @@ exports[`<Button /> should render small size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
@@ -4516,14 +4516,14 @@ exports[`<Button /> should render small size button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4552,9 +4552,9 @@ exports[`<Button /> should render small size button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4573,8 +4573,8 @@ exports[`<Button /> should render small size button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4633,7 +4633,7 @@ exports[`<Button /> should render small size button 1`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -4685,7 +4685,7 @@ exports[`<Button /> should render white color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -4698,7 +4698,7 @@ exports[`<Button /> should render white color primary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
     focusBorderColor="hsla(0, 0%, 100%, 0.8)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.8)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.8)"
@@ -4732,7 +4732,7 @@ exports[`<Button /> should render white color primary button 1`] = `
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(0, 0%, 100%, 1)",
-          "borderRadius": 4,
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4863,7 +4863,7 @@ exports[`<Button /> should render white color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -4876,7 +4876,7 @@ exports[`<Button /> should render white color secondary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 0.8)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     focusBorderColor="hsla(0, 0%, 100%, 0.8)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.8)"
@@ -4910,7 +4910,7 @@ exports[`<Button /> should render white color secondary button 1`] = `
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 0)",
           "borderColor": "hsla(0, 0%, 100%, 0.8)",
-          "borderRadius": 4,
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
@@ -5041,7 +5041,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -5054,7 +5054,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.32)"
     focusBorderColor="hsla(0, 0%, 100%, 0.32)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.32)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
@@ -5088,7 +5088,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
           "borderColor": "hsla(0, 0%, 100%, 0.18)",
-          "borderRadius": 4,
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -5218,7 +5218,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="8px"
@@ -5227,14 +5227,14 @@ exports[`<Button /> should render xsmall size button 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5263,9 +5263,9 @@ exports[`<Button /> should render xsmall size button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -5284,8 +5284,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -5344,7 +5344,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
                 "fontStyle": "normal",
                 "fontWeight": "500",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,

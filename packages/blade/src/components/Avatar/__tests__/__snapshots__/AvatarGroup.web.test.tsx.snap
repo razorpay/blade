@@ -39,7 +39,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -53,7 +53,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -75,7 +75,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -97,7 +97,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -109,14 +109,14 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -126,14 +126,14 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -143,14 +143,14 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -303,7 +303,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   width: 48px;
   height: 48px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -317,7 +317,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   width: 48px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -339,7 +339,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   width: 48px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -361,7 +361,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   width: 48px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -373,7 +373,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -390,7 +390,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -407,7 +407,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -565,7 +565,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -579,7 +579,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -601,7 +601,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -623,7 +623,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -635,14 +635,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -652,14 +652,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -669,14 +669,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -827,7 +827,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   width: 28px;
   height: 28px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -841,7 +841,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   width: 28px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -863,7 +863,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   width: 28px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -885,7 +885,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   width: 28px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -897,14 +897,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -914,14 +914,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -931,14 +931,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1089,7 +1089,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
   width: 56px;
   height: 56px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1103,7 +1103,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
   width: 56px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -1125,7 +1125,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
   width: 56px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -1147,7 +1147,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
   width: 56px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -1159,7 +1159,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -1176,7 +1176,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -1193,7 +1193,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -1351,7 +1351,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1365,7 +1365,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   width: 20px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -1387,7 +1387,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   width: 20px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -1409,7 +1409,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   width: 20px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -1421,14 +1421,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1438,14 +1438,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1455,14 +1455,14 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;

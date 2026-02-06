@@ -74,13 +74,13 @@ exports[`<OTPInput /> should render 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 22%, 56%, 1)",
+                  "color": "hsla(204, 9%, 42%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "600",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -137,7 +137,7 @@ exports[`<OTPInput /> should render 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
@@ -221,7 +221,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -237,8 +237,8 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -249,8 +249,8 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -288,13 +288,13 @@ exports[`<OTPInput /> should render 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -377,7 +377,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -393,8 +393,8 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -405,8 +405,8 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -444,13 +444,13 @@ exports[`<OTPInput /> should render 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -533,7 +533,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -549,8 +549,8 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -561,8 +561,8 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -600,13 +600,13 @@ exports[`<OTPInput /> should render 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -689,7 +689,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -705,8 +705,8 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -717,8 +717,8 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -756,13 +756,13 @@ exports[`<OTPInput /> should render 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -845,7 +845,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -861,8 +861,8 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -873,8 +873,8 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -912,13 +912,13 @@ exports[`<OTPInput /> should render 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1001,7 +1001,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -1017,8 +1017,8 @@ exports[`<OTPInput /> should render 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -1029,8 +1029,8 @@ exports[`<OTPInput /> should render 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -1068,13 +1068,13 @@ exports[`<OTPInput /> should render 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1199,7 +1199,7 @@ exports[`<OTPInput /> should render large size 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 22%, 56%, 1)",
+                  "color": "hsla(204, 9%, 42%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -1262,7 +1262,7 @@ exports[`<OTPInput /> should render large size 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
@@ -1346,7 +1346,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -1362,8 +1362,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -1374,8 +1374,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -1414,13 +1414,13 @@ exports[`<OTPInput /> should render large size 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1503,7 +1503,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -1519,8 +1519,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -1531,8 +1531,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -1571,13 +1571,13 @@ exports[`<OTPInput /> should render large size 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1660,7 +1660,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -1676,8 +1676,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -1688,8 +1688,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -1728,13 +1728,13 @@ exports[`<OTPInput /> should render large size 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1817,7 +1817,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -1833,8 +1833,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -1845,8 +1845,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -1885,13 +1885,13 @@ exports[`<OTPInput /> should render large size 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1974,7 +1974,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -1990,8 +1990,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -2002,8 +2002,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -2041,13 +2041,13 @@ exports[`<OTPInput /> should render large size 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2130,7 +2130,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 4,
+                      "borderRadius": 12,
                       "width": "100%",
                     },
                   ]
@@ -2146,8 +2146,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -2158,8 +2158,8 @@ exports[`<OTPInput /> should render large size 1`] = `
                       {},
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderColor": "hsla(214, 40%, 92%, 1)",
-                        "borderRadius": 4,
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 12,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -2197,13 +2197,13 @@ exports[`<OTPInput /> should render large size 1`] = `
                     onKeyPress={[Function]}
                     onSubmitEditing={[Function]}
                     placeholder=""
-                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
                     secureTextEntry={false}
                     style={
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(211, 26%, 34%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,

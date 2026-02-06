@@ -32,7 +32,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -49,10 +49,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -83,20 +83,20 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -147,7 +147,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -290,7 +290,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -307,10 +307,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -341,20 +341,20 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -405,7 +405,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 @media screen and (min-width:768px) {
@@ -557,7 +557,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   display: flex;
   width: 100%;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -574,10 +574,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -608,20 +608,20 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -672,7 +672,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -794,7 +794,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -811,10 +811,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   min-height: 48px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -845,20 +845,20 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -909,7 +909,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -1031,7 +1031,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -1048,10 +1048,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1082,20 +1082,20 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -1146,7 +1146,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -1268,7 +1268,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -1285,10 +1285,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   min-height: 32px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1319,20 +1319,20 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -1362,7 +1362,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1383,7 +1383,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -1505,7 +1505,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -1522,10 +1522,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   min-height: 28px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1556,20 +1556,20 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -1599,7 +1599,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1620,7 +1620,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -1742,7 +1742,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -1759,10 +1759,10 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(227,100%,59%,0.18);
-  border-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1793,20 +1793,20 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,100%,59%,0.18);
-  border-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,100%,59%,0.18);
-  border-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,100%,59%,0.18);
-  border-color: hsla(227,100%,59%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -1829,7 +1829,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(218,89%,51%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1857,7 +1857,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -1977,10 +1977,10 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,0.18);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,0.18);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2011,20 +2011,20 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,0.18);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,0.18);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,0.18);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2047,7 +2047,7 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(4,74%,49%,0.32);
+  color: hsla(4,85%,44%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2123,10 +2123,10 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,0.18);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,0.18);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2157,20 +2157,20 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,0.18);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,0.18);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,0.18);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2193,7 +2193,7 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(4,74%,49%,0.32);
+  color: hsla(4,85%,44%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2269,10 +2269,10 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,0.18);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,0.18);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2303,20 +2303,20 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,0.18);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,0.18);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,0.18);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2339,7 +2339,7 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,32%,0.32);
+  color: hsla(150,100%,28%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2415,10 +2415,10 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,0.18);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,0.18);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2449,20 +2449,20 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,0.18);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,0.18);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,0.18);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2485,7 +2485,7 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,32%,0.32);
+  color: hsla(150,100%,28%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2561,10 +2561,10 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(227,100%,59%,0.18);
-  border-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2595,20 +2595,20 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,100%,59%,0.18);
-  border-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,100%,59%,0.18);
-  border-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,59%,0.18);
-  border-color: hsla(227,100%,59%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2631,7 +2631,7 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(218,89%,51%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2708,9 +2708,9 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
   width: auto;
   cursor: not-allowed;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2742,19 +2742,19 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  border-color: hsla(218,89%,51%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2777,7 +2777,7 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(218,89%,51%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2853,10 +2853,10 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,40%,92%,1);
+  background-color: hsla(206,10%,29%,0.09);
+  border-color: hsla(204,8%,88%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2887,17 +2887,17 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.09);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2920,7 +2920,7 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2999,7 +2999,7 @@ exports[`<ButtonGroup /> should render disabled white color primary button 1`] =
   background-color: hsla(0,0%,100%,0.18);
   border-color: hsla(0,0%,100%,0.32);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3042,8 +3042,8 @@ exports[`<ButtonGroup /> should render disabled white color primary button 1`] =
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.18);
   border-color: hsla(0,0%,100%,0.32);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3145,7 +3145,7 @@ exports[`<ButtonGroup /> should render disabled white color secondary button 1`]
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(0,0%,100%,0.32);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3188,8 +3188,8 @@ exports[`<ButtonGroup /> should render disabled white color secondary button 1`]
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(0,0%,100%,0.32);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3291,7 +3291,7 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
   background-color: hsla(0,0%,100%,0.18);
   border-color: hsla(0,0%,100%,0.18);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3331,8 +3331,8 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3436,7 +3436,7 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -3453,10 +3453,10 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(4,74%,49%,1);
-  border-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
+  border-color: hsla(4,85%,44%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3487,20 +3487,20 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(4,77%,40%,1);
-  border-color: hsla(4,77%,40%,1);
+  background-color: hsla(4,85%,36%,1);
+  border-color: hsla(4,85%,36%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(4,77%,40%,1);
-  border-color: hsla(4,77%,40%,1);
+  background-color: hsla(4,85%,36%,1);
+  border-color: hsla(4,85%,36%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(4,77%,40%,1);
-  border-color: hsla(4,77%,40%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(4,85%,36%,1);
+  border-color: hsla(4,85%,36%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -3551,7 +3551,7 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -3673,7 +3673,7 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -3689,8 +3689,8 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
 .c0.c0.c0.c0.c0 > button[role="button"]:first-child,
 .c0.c0.c0.c0.c0 > *:first-child button[role="button"] {
   border-right: none;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0 > button[role="button"]:not(:first-child):not(:last-child),
@@ -3702,18 +3702,18 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
 .c0.c0.c0.c0.c0 > button[role="button"]:last-child,
 .c0.c0.c0.c0.c0 > *:last-child button[role="button"] {
   border-left: none;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(4,74%,49%,0.09);
-  border-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,0.09);
+  border-color: hsla(4,85%,44%,1);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3744,20 +3744,20 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(4,74%,49%,0.18);
-  border-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,0.18);
+  border-color: hsla(4,85%,44%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(4,74%,49%,0.18);
-  border-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,0.18);
+  border-color: hsla(4,85%,44%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(4,74%,49%,0.18);
-  border-color: hsla(4,74%,49%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(4,85%,44%,0.18);
+  border-color: hsla(4,85%,44%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -3780,7 +3780,7 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -3808,7 +3808,7 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
 }
 
 <div>
@@ -3930,7 +3930,7 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -3947,10 +3947,10 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(150,100%,32%,1);
-  border-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
+  border-color: hsla(150,100%,28%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3981,20 +3981,20 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(150,100%,27%,1);
-  border-color: hsla(150,100%,27%,1);
+  background-color: hsla(150,100%,23%,1);
+  border-color: hsla(150,100%,23%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(150,100%,27%,1);
-  border-color: hsla(150,100%,27%,1);
+  background-color: hsla(150,100%,23%,1);
+  border-color: hsla(150,100%,23%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(150,100%,27%,1);
-  border-color: hsla(150,100%,27%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(150,100%,23%,1);
+  border-color: hsla(150,100%,23%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -4045,7 +4045,7 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -4167,7 +4167,7 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -4183,8 +4183,8 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
 .c0.c0.c0.c0.c0 > button[role="button"]:first-child,
 .c0.c0.c0.c0.c0 > *:first-child button[role="button"] {
   border-right: none;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0 > button[role="button"]:not(:first-child):not(:last-child),
@@ -4196,18 +4196,18 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
 .c0.c0.c0.c0.c0 > button[role="button"]:last-child,
 .c0.c0.c0.c0.c0 > *:last-child button[role="button"] {
   border-left: none;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .c1.c1.c1.c1.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(150,100%,32%,0.09);
-  border-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,0.09);
+  border-color: hsla(150,100%,28%,1);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4238,20 +4238,20 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(150,100%,32%,0.18);
-  border-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,0.18);
+  border-color: hsla(150,100%,28%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(150,100%,32%,0.18);
-  border-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,0.18);
+  border-color: hsla(150,100%,28%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(150,100%,32%,0.18);
-  border-color: hsla(150,100%,32%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(150,100%,28%,0.18);
+  border-color: hsla(150,100%,28%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -4274,7 +4274,7 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -4302,7 +4302,7 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(150,100%,32%,1);
+  color: hsla(150,100%,28%,1);
 }
 
 <div>
@@ -4424,7 +4424,7 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -4441,10 +4441,10 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4475,20 +4475,20 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -4539,7 +4539,7 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -4661,7 +4661,7 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -4677,8 +4677,8 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
 .c0.c0.c0.c0.c0 > button[role="button"]:first-child,
 .c0.c0.c0.c0.c0 > *:first-child button[role="button"] {
   border-right: none;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0 > button[role="button"]:not(:first-child):not(:last-child),
@@ -4690,8 +4690,8 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
 .c0.c0.c0.c0.c0 > button[role="button"]:last-child,
 .c0.c0.c0.c0.c0 > *:last-child button[role="button"] {
   border-left: none;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -4699,9 +4699,9 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4732,20 +4732,20 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -4768,7 +4768,7 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -4796,7 +4796,7 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
 }
 
 <div>
@@ -4918,7 +4918,7 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -4935,10 +4935,10 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
+  background-color: hsla(206,10%,29%,0.06);
+  border-color: hsla(204,8%,88%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4969,20 +4969,20 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,28%,84%,1);
+  background-color: hsla(206,10%,29%,0.12);
+  border-color: hsla(203,8%,80%,1);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,28%,84%,1);
+  background-color: hsla(206,10%,29%,0.12);
+  border-color: hsla(203,8%,80%,1);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,28%,84%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
+  border-color: hsla(203,8%,80%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -5005,7 +5005,7 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -5033,7 +5033,7 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(211,20%,52%,0.18);
+  color: hsla(206,10%,29%,0.12);
 }
 
 <div>
@@ -5155,7 +5155,7 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -5175,7 +5175,7 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-color: hsla(0,0%,100%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5218,8 +5218,8 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(0,0%,100%,0.8);
   border-color: hsla(0,0%,100%,0.8);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -5270,7 +5270,7 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(214,28%,84%,1);
+  color: hsla(204,8%,88%,1);
 }
 
 <div>
@@ -5392,7 +5392,7 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -5408,8 +5408,8 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
 .c0.c0.c0.c0.c0 > button[role="button"]:first-child,
 .c0.c0.c0.c0.c0 > *:first-child button[role="button"] {
   border-right: none;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .c0.c0.c0.c0.c0 > button[role="button"]:not(:first-child):not(:last-child),
@@ -5421,8 +5421,8 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
 .c0.c0.c0.c0.c0 > button[role="button"]:last-child,
 .c0.c0.c0.c0.c0 > *:last-child button[role="button"] {
   border-left: none;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -5432,7 +5432,7 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(0,0%,100%,0.8);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5475,8 +5475,8 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(0,0%,100%,0.18);
   border-color: hsla(0,0%,100%,0.8);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -5649,7 +5649,7 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   width: -moz-fit-content;
   width: fit-content;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   border-color: transparent;
   overflow: hidden;
@@ -5669,7 +5669,7 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   background-color: hsla(0,0%,100%,0.18);
   border-color: hsla(0,0%,100%,0.18);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5712,8 +5712,8 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(0,0%,100%,0.32);
   border-color: hsla(0,0%,100%,0.32);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -5764,7 +5764,7 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  color: hsla(211,20%,52%,0.18);
+  color: hsla(206,10%,29%,0.12);
 }
 
 <div>

@@ -176,7 +176,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -190,7 +190,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -200,12 +200,12 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c16.c16.c16.c16.c16:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c16.c16.c16.c16.c16:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -214,15 +214,15 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c16.c16.c16.c16.c16:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -240,7 +240,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c23.c23.c23.c23.c23 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -264,7 +264,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c26.c26.c26.c26.c26 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -329,7 +329,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-radius: 16px;
 }
 
@@ -337,7 +337,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(200,10%,94%,0);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -371,10 +371,10 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
+  background-color: hsla(206,10%,29%,0.06);
+  border-color: hsla(204,8%,88%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -405,17 +405,17 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -460,7 +460,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
+  border-radius: 12px;
   margin-top: 2px;
   margin-bottom: 2px;
   -webkit-text-decoration: none;
@@ -472,11 +472,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 
 .c18.c18.c18.c18.c18:hover:not([aria-disabled=true]),
 .c18.c18.c18.c18.c18[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c18.c18.c18.c18.c18:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -488,11 +488,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c18.c18.c18.c18.c18[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c18.c18.c18.c18.c18[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c25.c25.c25.c25.c25 {
@@ -506,7 +506,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
+  border-radius: 12px;
   margin-top: 2px;
   margin-bottom: 2px;
   -webkit-text-decoration: none;
@@ -518,11 +518,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 
 .c25.c25.c25.c25.c25:hover:not([aria-disabled=true]),
 .c25.c25.c25.c25.c25[aria-expanded="true"] {
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c25.c25.c25.c25.c25:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -534,11 +534,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c25.c25.c25.c25.c25[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c25.c25.c25.c25.c25[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 @media screen and (min-width:768px) {
@@ -926,7 +926,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c15.c15.c15.c15.c15 {
   min-height: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c17.c17.c17.c17.c17 {
@@ -974,7 +974,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c27.c27.c27.c27.c27 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -1052,14 +1052,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 .c21.c21.c21.c21.c21 {
   text-align: left;
   height: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c24.c24.c24.c24.c24 {
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1073,7 +1073,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -1083,12 +1083,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c24.c24.c24.c24.c24:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c24.c24.c24.c24.c24:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1097,11 +1097,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c24.c24.c24.c24.c24:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c28.c28.c28.c28.c28 {
@@ -1115,7 +1115,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -1134,14 +1134,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c18.c18.c18.c18.c18 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1158,14 +1158,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c19.c19.c19.c19.c19 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1175,7 +1175,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c31.c31.c31.c31.c31 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1192,7 +1192,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c38.c38.c38.c38.c38 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1210,14 +1210,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c23.c23.c23.c23.c23 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1274,7 +1274,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-radius: 16px;
 }
 
@@ -1282,7 +1282,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(200,10%,94%,0);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -1313,7 +1313,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c16.c16.c16.c16.c16 {
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -1333,9 +1333,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   width: 100%;
   cursor: pointer;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1366,20 +1366,20 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c34.c34.c34.c34.c34:hover {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c34.c34.c34.c34.c34:active {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c34.c34.c34.c34.c34:focus-visible {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c34.c34.c34.c34.c34 * {
@@ -1406,7 +1406,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c22.c22.c22.c22.c22 {
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1788,7 +1788,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1802,7 +1802,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -1812,12 +1812,12 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1826,15 +1826,15 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c8.c8.c8.c8.c8:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1892,7 +1892,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-radius: 16px;
 }
 
@@ -1900,7 +1900,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(200,10%,94%,0);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;

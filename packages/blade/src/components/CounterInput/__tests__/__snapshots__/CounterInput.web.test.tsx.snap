@@ -74,9 +74,9 @@ exports[`<CounterInput /> should render 1`] = `
   height: 38px;
   width: 94px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-width: 1px;
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   border-style: solid;
 }
 
@@ -129,7 +129,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -170,14 +170,14 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -193,7 +193,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -210,7 +210,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -243,7 +243,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c14.c14.c14.c14.c14::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -261,7 +261,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c14.c14.c14.c14.c14::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -279,7 +279,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c14.c14.c14.c14.c14:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -297,7 +297,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c14.c14.c14.c14.c14::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -320,7 +320,7 @@ exports[`<CounterInput /> should render 1`] = `
 
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -333,7 +333,7 @@ exports[`<CounterInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -343,8 +343,8 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -357,7 +357,7 @@ exports[`<CounterInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -370,7 +370,7 @@ exports[`<CounterInput /> should render 1`] = `
 
 .c13.c13.c13.c13.c13:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -383,7 +383,7 @@ exports[`<CounterInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -410,12 +410,12 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c12.c12.c12.c12.c12:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -442,7 +442,7 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   padding: 4px;
   margin: 4px 0px 4px 4px;
   -webkit-transition-property: background-color,color;
@@ -454,7 +454,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -466,8 +466,8 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-  color: hsla(212,39%,16%,1) !important;
+  background-color: hsla(206,10%,29%,0.09) !important;
+  color: hsla(0,0%,2%,1) !important;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -486,7 +486,7 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   padding: 4px;
   margin: 4px 4px 4px 0px;
   -webkit-transition-property: background-color,color;
@@ -498,7 +498,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c17.c17.c17.c17.c17:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -510,8 +510,8 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c17.c17.c17.c17.c17:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-  color: hsla(212,39%,16%,1) !important;
+  background-color: hsla(206,10%,29%,0.09) !important;
+  color: hsla(0,0%,2%,1) !important;
 }
 
 @media screen and (min-width:320px) {
@@ -608,7 +608,7 @@ exports[`<CounterInput /> should render 1`] = `
             aria-label="Decrement value"
             class="c10 __blade-counter-input-decrement-button"
             disabled=""
-            style="color: rgba(108, 108, 108, 0.32);"
+            style="color: rgba(67, 67, 67, 0.32);"
           >
             <svg
               aria-hidden="true"
@@ -678,7 +678,7 @@ exports[`<CounterInput /> should render 1`] = `
           <button
             aria-label="Increment value"
             class="c17 __blade-counter-input-increment-button"
-            style="color: rgb(64, 64, 64);"
+            style="color: rgb(41, 41, 41);"
           >
             <svg
               aria-hidden="true"
@@ -777,9 +777,9 @@ exports[`<CounterInput /> should render large size 1`] = `
   height: 50px;
   width: 122px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-width: 1px;
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   border-style: solid;
 }
 
@@ -832,7 +832,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -873,7 +873,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -896,7 +896,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -913,7 +913,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -946,7 +946,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c14.c14.c14.c14.c14::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -964,7 +964,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c14.c14.c14.c14.c14::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -982,7 +982,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c14.c14.c14.c14.c14:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1000,7 +1000,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c14.c14.c14.c14.c14::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1023,7 +1023,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1036,7 +1036,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1046,8 +1046,8 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1060,7 +1060,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -1073,7 +1073,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 
 .c13.c13.c13.c13.c13:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1086,7 +1086,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1113,12 +1113,12 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c12.c12.c12.c12.c12:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1145,7 +1145,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   padding: 8px;
   margin: 4px 0px 4px 4px;
   -webkit-transition-property: background-color,color;
@@ -1157,7 +1157,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1169,8 +1169,8 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-  color: hsla(212,39%,16%,1) !important;
+  background-color: hsla(206,10%,29%,0.09) !important;
+  color: hsla(0,0%,2%,1) !important;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1189,7 +1189,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   padding: 8px;
   margin: 4px 4px 4px 0px;
   -webkit-transition-property: background-color,color;
@@ -1201,7 +1201,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c17.c17.c17.c17.c17:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1213,8 +1213,8 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c17.c17.c17.c17.c17:hover:not(:disabled) {
-  background-color: hsla(211,20%,52%,0.12) !important;
-  color: hsla(212,39%,16%,1) !important;
+  background-color: hsla(206,10%,29%,0.09) !important;
+  color: hsla(0,0%,2%,1) !important;
 }
 
 @media screen and (min-width:320px) {
@@ -1311,7 +1311,7 @@ exports[`<CounterInput /> should render large size 1`] = `
             aria-label="Decrement value"
             class="c10 __blade-counter-input-decrement-button"
             disabled=""
-            style="color: rgba(108, 108, 108, 0.32);"
+            style="color: rgba(67, 67, 67, 0.32);"
           >
             <svg
               aria-hidden="true"
@@ -1381,7 +1381,7 @@ exports[`<CounterInput /> should render large size 1`] = `
           <button
             aria-label="Increment value"
             class="c17 __blade-counter-input-increment-button"
-            style="color: rgb(64, 64, 64);"
+            style="color: rgb(41, 41, 41);"
           >
             <svg
               aria-hidden="true"
@@ -1480,9 +1480,9 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   height: 38px;
   width: 94px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-width: 1px;
-  border-color: hsla(227,100%,59%,1);
+  border-color: hsla(218,87%,43%,1);
   border-style: solid;
 }
 
@@ -1535,7 +1535,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input.counter-input-keyboard-focus .focus-ring-wrapper:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1576,14 +1576,14 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1599,7 +1599,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1616,7 +1616,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1649,7 +1649,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c14.c14.c14.c14.c14::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1667,7 +1667,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c14.c14.c14.c14.c14::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1685,7 +1685,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c14.c14.c14.c14.c14:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1703,7 +1703,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c14.c14.c14.c14.c14::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1726,7 +1726,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1739,7 +1739,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1749,8 +1749,8 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1763,7 +1763,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -1776,7 +1776,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 
 .c13.c13.c13.c13.c13:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1789,7 +1789,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1816,12 +1816,12 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c12.c12.c12.c12.c12:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1848,7 +1848,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   padding: 4px;
   margin: 4px 0px 4px 4px;
   -webkit-transition-property: background-color,color;
@@ -1860,7 +1860,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1872,8 +1872,8 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.18) !important;
-  color: hsla(227,71%,51%,1) !important;
+  background-color: hsla(218,89%,51%,0.18) !important;
+  color: hsla(218,87%,43%,1) !important;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1892,7 +1892,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   padding: 4px;
   margin: 4px 4px 4px 0px;
   -webkit-transition-property: background-color,color;
@@ -1904,7 +1904,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c17.c17.c17.c17.c17:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1916,8 +1916,8 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c17.c17.c17.c17.c17:hover:not(:disabled) {
-  background-color: hsla(227,100%,59%,0.18) !important;
-  color: hsla(227,71%,51%,1) !important;
+  background-color: hsla(218,89%,51%,0.18) !important;
+  color: hsla(218,87%,43%,1) !important;
 }
 
 @media screen and (min-width:320px) {
@@ -2014,7 +2014,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
             aria-label="Decrement value"
             class="c10 __blade-counter-input-decrement-button"
             disabled=""
-            style="color: rgba(46, 46, 46, 0.32);"
+            style="color: rgba(19, 19, 19, 0.32);"
           >
             <svg
               aria-hidden="true"
@@ -2084,7 +2084,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
           <button
             aria-label="Increment value"
             class="c17 __blade-counter-input-increment-button"
-            style="color: rgb(46, 46, 46);"
+            style="color: rgb(19, 19, 19);"
           >
             <svg
               aria-hidden="true"

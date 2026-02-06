@@ -5,7 +5,7 @@ exports[`<IconButton /> should render 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19,7 +19,7 @@ exports[`<IconButton /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -29,12 +29,12 @@ exports[`<IconButton /> should render 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -43,11 +43,11 @@ exports[`<IconButton /> should render 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c0.c0.c0.c0.c0:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 <div>
@@ -81,7 +81,7 @@ exports[`<IconButton /> should render with emphasis 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -95,7 +95,7 @@ exports[`<IconButton /> should render with emphasis 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -105,12 +105,12 @@ exports[`<IconButton /> should render with emphasis 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -119,11 +119,11 @@ exports[`<IconButton /> should render with emphasis 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c0.c0.c0.c0.c0:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 <div>

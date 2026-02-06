@@ -100,14 +100,14 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -123,7 +123,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -140,7 +140,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 400;
@@ -173,7 +173,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -191,7 +191,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -209,7 +209,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -227,7 +227,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c12.c12.c12.c12.c12::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -250,7 +250,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -263,7 +263,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -273,8 +273,8 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -287,7 +287,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -300,7 +300,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -313,7 +313,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -340,12 +340,12 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -698,14 +698,14 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -721,7 +721,7 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -738,7 +738,7 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 400;
@@ -771,7 +771,7 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -789,7 +789,7 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -807,7 +807,7 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -825,7 +825,7 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -848,7 +848,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -861,7 +861,7 @@ exports[`<OTPInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -871,8 +871,8 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -885,7 +885,7 @@ exports[`<OTPInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -898,7 +898,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -911,7 +911,7 @@ exports[`<OTPInput /> should render 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -938,12 +938,12 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1370,7 +1370,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1393,7 +1393,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1410,7 +1410,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.5rem;
   font-weight: 400;
@@ -1443,7 +1443,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1461,7 +1461,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1479,7 +1479,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1497,7 +1497,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c12.c12.c12.c12.c12::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1520,7 +1520,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1533,7 +1533,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1543,8 +1543,8 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1557,7 +1557,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -1570,7 +1570,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1583,7 +1583,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 480ms;
@@ -1610,12 +1610,12 @@ exports[`<OTPInput /> should render large size 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;

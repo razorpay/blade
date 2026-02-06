@@ -2,7 +2,7 @@
 
 exports[`<Stagger /> should render its children as expected 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;

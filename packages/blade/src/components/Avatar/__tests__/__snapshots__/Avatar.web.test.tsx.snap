@@ -39,7 +39,7 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -53,7 +53,7 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -65,14 +65,14 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -150,7 +150,7 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -164,7 +164,7 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -176,14 +176,14 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -261,7 +261,7 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -275,7 +275,7 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -287,14 +287,14 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -372,7 +372,7 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -386,7 +386,7 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(25,90%,48%,0.09);
+  background-color: hsla(25,100%,44%,0.09);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -398,14 +398,14 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(25,85%,42%,1);
+  color: hsla(25,100%,39%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -483,7 +483,7 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -497,7 +497,7 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -509,14 +509,14 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -594,7 +594,7 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -608,7 +608,7 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -620,14 +620,14 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -720,7 +720,7 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -734,7 +734,7 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -778,18 +778,18 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
               <path
                 d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
               />
               <path
                 d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
               />
               <path
                 clip-rule="evenodd"
                 d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -840,7 +840,7 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   width: 48px;
   height: 48px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -854,7 +854,7 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   width: 48px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -866,7 +866,7 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -951,7 +951,7 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -965,7 +965,7 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -977,14 +977,14 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1062,7 +1062,7 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   width: 28px;
   height: 28px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1076,7 +1076,7 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   width: 28px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -1088,14 +1088,14 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1173,7 +1173,7 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   width: 56px;
   height: 56px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1187,7 +1187,7 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   width: 56px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -1199,7 +1199,7 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -1284,7 +1284,7 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1298,7 +1298,7 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   width: 20px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -1310,14 +1310,14 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1410,7 +1410,7 @@ exports[`<Avatar /> should render default avatar 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1424,7 +1424,7 @@ exports[`<Avatar /> should render default avatar 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
@@ -1469,13 +1469,13 @@ exports[`<Avatar /> should render default avatar 1`] = `
                 clip-rule="evenodd"
                 d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
                 fill-rule="evenodd"
               />
               <path
                 d="M8 14C5.23858 14 3 16.2386 3 19V21C3 21.5523 3.44772 22 4 22C4.55228 22 5 21.5523 5 21V19C5 17.3431 6.34315 16 8 16H16C17.6569 16 19 17.3431 19 19V21C19 21.5523 19.4477 22 20 22C20.5523 22 21 21.5523 21 21V19C21 16.2386 18.7614 14 16 14H8Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 33%, 21%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
               />
             </svg>
           </div>
@@ -1524,8 +1524,8 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   display: flex;
   width: 36px;
   height: 36px;
-  border-radius: 4px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  border-radius: 12px;
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1538,27 +1538,27 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   height: 36px;
   width: 36px;
   border: none;
-  border-radius: 4px;
-  background-color: hsla(211,20%,52%,0.18);
+  border-radius: 12px;
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c3.c3.c3.c3.c3 img {
   display: block;
   height: 36px;
   width: 36px;
-  border-radius: 4px;
+  border-radius: 12px;
   object-fit: cover;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;

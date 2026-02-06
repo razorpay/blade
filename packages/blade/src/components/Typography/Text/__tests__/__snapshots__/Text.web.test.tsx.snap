@@ -2,7 +2,7 @@
 
 exports[`<Text /> should render Text with center textAlign 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -31,7 +31,7 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 
 exports[`<Text /> should render Text with color 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -59,7 +59,7 @@ exports[`<Text /> should render Text with color 1`] = `
 
 exports[`<Text /> should render Text with default properties 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -87,7 +87,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
 
 exports[`<Text /> should render Text with variant "body" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -121,7 +121,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 
 exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -155,14 +155,14 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 
 exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -189,7 +189,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 
 exports[`<Text /> should render Text with variant "caption" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;

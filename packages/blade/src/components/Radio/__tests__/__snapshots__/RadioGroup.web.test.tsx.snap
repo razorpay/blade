@@ -23,7 +23,7 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -129,14 +129,14 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -152,7 +152,7 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -169,7 +169,7 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -220,7 +220,7 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -232,8 +232,8 @@ exports[`<RadioGroup /> should accepnt data-analytics attribute 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -383,7 +383,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -508,14 +508,14 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -531,7 +531,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -548,7 +548,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -565,7 +565,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
@@ -617,7 +617,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -629,8 +629,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -898,7 +898,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -1004,14 +1004,14 @@ exports[`<RadioGroup /> should render with label 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1027,7 +1027,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1044,7 +1044,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1095,7 +1095,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1107,8 +1107,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;

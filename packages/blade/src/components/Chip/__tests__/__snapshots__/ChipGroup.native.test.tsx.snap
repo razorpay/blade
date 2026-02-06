@@ -74,13 +74,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             style={
               [
                 {
-                  "color": "hsla(211, 22%, 56%, 1)",
+                  "color": "hsla(204, 9%, 42%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "600",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -137,7 +137,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
@@ -209,7 +209,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             style={
               [
                 {
-                  "color": "hsla(212, 39%, 16%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -345,7 +345,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
-                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 9999,
                           "borderWidth": 1,
                           "display": "flex",
@@ -387,7 +387,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
@@ -422,7 +422,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         style={
                           [
                             {
-                              "color": "hsla(211, 26%, 34%, 1)",
+                              "color": "hsla(200, 10%, 18%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -545,7 +545,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
-                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 9999,
                           "borderWidth": 1,
                           "display": "flex",
@@ -587,7 +587,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
@@ -622,7 +622,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         style={
                           [
                             {
-                              "color": "hsla(211, 26%, 34%, 1)",
+                              "color": "hsla(200, 10%, 18%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -745,7 +745,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
-                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 9999,
                           "borderWidth": 1,
                           "display": "flex",
@@ -787,7 +787,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
@@ -822,7 +822,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         style={
                           [
                             {
-                              "color": "hsla(211, 26%, 34%, 1)",
+                              "color": "hsla(200, 10%, 18%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -932,13 +932,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             style={
               [
                 {
-                  "color": "hsla(211, 22%, 56%, 1)",
+                  "color": "hsla(204, 9%, 42%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "600",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -995,7 +995,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
@@ -1067,7 +1067,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             style={
               [
                 {
-                  "color": "hsla(212, 39%, 16%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -1204,7 +1204,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
-                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 9999,
                           "borderWidth": 1,
                           "display": "flex",
@@ -1246,7 +1246,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
@@ -1281,7 +1281,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         style={
                           [
                             {
-                              "color": "hsla(211, 26%, 34%, 1)",
+                              "color": "hsla(200, 10%, 18%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -1405,7 +1405,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
-                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 9999,
                           "borderWidth": 1,
                           "display": "flex",
@@ -1447,7 +1447,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
@@ -1482,7 +1482,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         style={
                           [
                             {
-                              "color": "hsla(211, 26%, 34%, 1)",
+                              "color": "hsla(200, 10%, 18%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -1606,7 +1606,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
-                          "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                          "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 9999,
                           "borderWidth": 1,
                           "display": "flex",
@@ -1648,7 +1648,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
@@ -1683,7 +1683,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         style={
                           [
                             {
-                              "color": "hsla(211, 26%, 34%, 1)",
+                              "color": "hsla(200, 10%, 18%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",

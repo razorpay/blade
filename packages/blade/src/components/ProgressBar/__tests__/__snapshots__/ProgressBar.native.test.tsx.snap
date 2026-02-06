@@ -66,7 +66,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -75,7 +75,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -84,12 +84,12 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
           }
         >
           <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
+            backgroundColor="hsla(218, 89%, 51%, 1)"
             progress={50}
             style={
               [
                 {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
                   "height": "100%",
                   "width": "50%",
                 },
@@ -241,7 +241,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
                 r="10.5"
                 stroke={
                   {
-                    "payload": 392987805,
+                    "payload": 390286161,
                     "type": 0,
                   }
                 }
@@ -274,7 +274,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
                 r={10.5}
                 stroke={
                   {
-                    "payload": 4281228287,
+                    "payload": 4279461105,
                     "type": 0,
                   }
                 }
@@ -431,7 +431,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
                 r="10.5"
                 stroke={
                   {
-                    "payload": 392987805,
+                    "payload": 390286161,
                     "type": 0,
                   }
                 }
@@ -464,7 +464,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
                 r={10.5}
                 stroke={
                   {
-                    "payload": 4281228287,
+                    "payload": 4279461105,
                     "type": 0,
                   }
                 }
@@ -507,13 +507,13 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -542,13 +542,13 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -693,7 +693,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
                 r="32.5"
                 stroke={
                   {
-                    "payload": 392987805,
+                    "payload": 390286161,
                     "type": 0,
                   }
                 }
@@ -726,7 +726,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
                 r={32.5}
                 stroke={
                   {
-                    "payload": 4281228287,
+                    "payload": 4279461105,
                     "type": 0,
                   }
                 }
@@ -749,7 +749,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
                 }
                 fill={
                   {
-                    "payload": 4279838777,
+                    "payload": 4278519045,
                     "type": 0,
                   }
                 }
@@ -828,13 +828,13 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -978,7 +978,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
                 r="21.5"
                 stroke={
                   {
-                    "payload": 392987805,
+                    "payload": 390286161,
                     "type": 0,
                   }
                 }
@@ -1011,7 +1011,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
                 r={21.5}
                 stroke={
                   {
-                    "payload": 4281228287,
+                    "payload": 4279461105,
                     "type": 0,
                   }
                 }
@@ -1034,7 +1034,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
                 }
                 fill={
                   {
-                    "payload": 4279838777,
+                    "payload": 4278519045,
                     "type": 0,
                   }
                 }
@@ -1113,13 +1113,13 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -1263,7 +1263,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
                 r="10.5"
                 stroke={
                   {
-                    "payload": 392987805,
+                    "payload": 390286161,
                     "type": 0,
                   }
                 }
@@ -1296,7 +1296,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
                 r={10.5}
                 stroke={
                   {
-                    "payload": 4281228287,
+                    "payload": 4279461105,
                     "type": 0,
                   }
                 }
@@ -1339,13 +1339,13 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -1374,13 +1374,13 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -1473,13 +1473,13 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1517,7 +1517,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -1526,7 +1526,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -1535,12 +1535,12 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(200, 84%, 44%, 1)"
+            backgroundColor="hsla(200, 100%, 41%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(200, 84%, 44%, 1)",
+                  "backgroundColor": "hsla(200, 100%, 41%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -1641,13 +1641,13 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1685,7 +1685,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -1694,7 +1694,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -1703,12 +1703,12 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
           }
         >
           <View
-            backgroundColor="hsla(200, 84%, 44%, 1)"
+            backgroundColor="hsla(200, 100%, 41%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(200, 84%, 44%, 1)",
+                  "backgroundColor": "hsla(200, 100%, 41%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -1809,13 +1809,13 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1853,7 +1853,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -1862,7 +1862,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -1871,12 +1871,12 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(4, 74%, 49%, 1)"
+            backgroundColor="hsla(4, 85%, 44%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(4, 74%, 49%, 1)",
+                  "backgroundColor": "hsla(4, 85%, 44%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -1977,13 +1977,13 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2021,7 +2021,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -2030,7 +2030,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2039,12 +2039,12 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
           }
         >
           <View
-            backgroundColor="hsla(4, 74%, 49%, 1)"
+            backgroundColor="hsla(4, 85%, 44%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(4, 74%, 49%, 1)",
+                  "backgroundColor": "hsla(4, 85%, 44%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2145,13 +2145,13 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2189,7 +2189,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -2198,7 +2198,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2207,12 +2207,12 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(211, 29%, 26%, 1)"
+            backgroundColor="hsla(200, 10%, 18%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(211, 29%, 26%, 1)",
+                  "backgroundColor": "hsla(200, 10%, 18%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2313,13 +2313,13 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2357,7 +2357,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -2366,7 +2366,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2375,12 +2375,12 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
           }
         >
           <View
-            backgroundColor="hsla(211, 29%, 26%, 1)"
+            backgroundColor="hsla(200, 10%, 18%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(211, 29%, 26%, 1)",
+                  "backgroundColor": "hsla(200, 10%, 18%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2481,13 +2481,13 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2525,7 +2525,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -2534,7 +2534,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2543,12 +2543,12 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(25, 90%, 48%, 1)"
+            backgroundColor="hsla(25, 100%, 44%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(25, 90%, 48%, 1)",
+                  "backgroundColor": "hsla(25, 100%, 44%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2649,13 +2649,13 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2693,7 +2693,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -2702,7 +2702,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2711,12 +2711,12 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
           }
         >
           <View
-            backgroundColor="hsla(25, 90%, 48%, 1)"
+            backgroundColor="hsla(25, 100%, 44%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(25, 90%, 48%, 1)",
+                  "backgroundColor": "hsla(25, 100%, 44%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2817,13 +2817,13 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2861,7 +2861,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -2870,7 +2870,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2879,12 +2879,12 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(150, 100%, 32%, 1)"
+            backgroundColor="hsla(150, 100%, 28%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(150, 100%, 32%, 1)",
+                  "backgroundColor": "hsla(150, 100%, 28%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2985,13 +2985,13 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -3029,7 +3029,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -3038,7 +3038,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -3047,12 +3047,12 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
           }
         >
           <View
-            backgroundColor="hsla(150, 100%, 32%, 1)"
+            backgroundColor="hsla(150, 100%, 28%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(150, 100%, 32%, 1)",
+                  "backgroundColor": "hsla(150, 100%, 28%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -3143,13 +3143,13 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3187,13 +3187,13 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -3232,7 +3232,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -3241,7 +3241,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -3250,12 +3250,12 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
           }
         >
           <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
+            backgroundColor="hsla(218, 89%, 51%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -3346,13 +3346,13 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3390,13 +3390,13 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -3435,7 +3435,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="4px"
@@ -3444,7 +3444,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 4,
                 "overflow": "hidden",
                 "position": "relative",
@@ -3453,12 +3453,12 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
           }
         >
           <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
+            backgroundColor="hsla(218, 89%, 51%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -3549,13 +3549,13 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3593,13 +3593,13 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -3638,7 +3638,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -3647,7 +3647,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -3656,12 +3656,12 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
           }
         >
           <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
+            backgroundColor="hsla(218, 89%, 51%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -3760,7 +3760,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -3769,7 +3769,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -3778,12 +3778,12 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
           }
         >
           <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
+            backgroundColor="hsla(218, 89%, 51%, 1)"
             progress={70}
             style={
               [
                 {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
                   "height": "100%",
                   "width": "70%",
                 },
@@ -3935,7 +3935,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
                 r="10.5"
                 stroke={
                   {
-                    "payload": 392987805,
+                    "payload": 390286161,
                     "type": 0,
                   }
                 }
@@ -3968,7 +3968,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
                 r={10.5}
                 stroke={
                   {
-                    "payload": 4281228287,
+                    "payload": 4279461105,
                     "type": 0,
                   }
                 }
@@ -4011,13 +4011,13 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -4070,7 +4070,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -4079,14 +4079,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4115,9 +4115,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4136,8 +4136,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4267,13 +4267,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -4311,13 +4311,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -4356,7 +4356,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -4365,7 +4365,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -4374,12 +4374,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
+            backgroundColor="hsla(218, 89%, 51%, 1)"
             progress={0}
             style={
               [
                 {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
                   "height": "100%",
                   "width": "0%",
                 },
@@ -4440,7 +4440,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -4449,14 +4449,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4485,9 +4485,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4506,8 +4506,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4637,13 +4637,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -4681,13 +4681,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             style={
               [
                 {
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -4726,7 +4726,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          backgroundColor="hsla(206, 10%, 29%, 0.09)"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -4735,7 +4735,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -4744,12 +4744,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           }
         >
           <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
+            backgroundColor="hsla(218, 89%, 51%, 1)"
             progress={60}
             style={
               [
                 {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
                   "height": "100%",
                   "width": "60%",
                 },
@@ -4810,7 +4810,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -4819,14 +4819,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4855,9 +4855,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4876,8 +4876,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -5069,7 +5069,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
                 r="10.5"
                 stroke={
                   {
-                    "payload": 392987805,
+                    "payload": 390286161,
                     "type": 0,
                   }
                 }
@@ -5102,7 +5102,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
                 r={10.5}
                 stroke={
                   {
-                    "payload": 4281228287,
+                    "payload": 4279461105,
                     "type": 0,
                   }
                 }
@@ -5145,13 +5145,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5180,13 +5180,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5239,7 +5239,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
+    borderRadius="12px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
@@ -5248,14 +5248,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBorderColor="hsla(218, 87%, 43%, 1)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5284,9 +5284,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -5305,8 +5305,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -5498,7 +5498,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
                 r="10.5"
                 stroke={
                   {
-                    "payload": 392987805,
+                    "payload": 390286161,
                     "type": 0,
                   }
                 }
@@ -5531,7 +5531,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
                 r={10.5}
                 stroke={
                   {
-                    "payload": 4281228287,
+                    "payload": 4279461105,
                     "type": 0,
                   }
                 }
@@ -5574,13 +5574,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5609,13 +5609,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
