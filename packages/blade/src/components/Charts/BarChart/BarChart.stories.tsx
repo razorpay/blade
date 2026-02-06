@@ -15,6 +15,7 @@ import { Heading, Text } from '~components/Typography';
 import { ArrowSquareDownIcon, ArrowUpIcon } from '~components/Icons';
 import { Divider } from '~components/Divider';
 import { Badge } from '~components/Badge';
+import { ChipGroup, Chip } from '~components/Chip';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
@@ -625,6 +626,99 @@ BarChartWithLargeLabels.parameters = {
   controls: { disable: true },
 };
 
+// Uncontrolled Legend with Default Selection
+export const BarChartWithDefaultSelectedDataKeys: StoryFn<typeof ChartBar> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={chartData.slice(0, 6)}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend defaultSelectedDataKeys={['seriesA', 'seriesC']} />
+          <ChartBar dataKey="seriesA" name="Series A" />
+          <ChartBar dataKey="seriesB" name="Series B" />
+          <ChartBar dataKey="seriesC" name="Series C" />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+// Controlled Legend Selection
+export const BarChartWithControlledLegendSelection: StoryFn<typeof ChartBar> = () => {
+  const [selectedDataKeys, setSelectedDataKeys] = React.useState(['seriesA', 'seriesC']);
+
+  return (
+    <ChartsWrapper>
+      <Box display="flex" flexDirection="column" width="100%" height="100%">
+        <Box marginBottom="spacing.5">
+          <ChipGroup
+            accessibilityLabel="Select series"
+            selectionType="multiple"
+            value={selectedDataKeys}
+            onChange={({ values }) => setSelectedDataKeys(values)}
+          >
+            <Chip value="seriesA">Series A</Chip>
+            <Chip value="seriesB">Series B</Chip>
+            <Chip value="seriesC">Series C</Chip>
+          </ChipGroup>
+        </Box>
+
+        <Box width="100%" height="400px">
+          <ChartBarWrapper data={chartData.slice(0, 6)}>
+            <ChartXAxis dataKey="name" />
+            <ChartYAxis />
+            <ChartTooltip />
+            <ChartLegend
+              selectedDataKeys={selectedDataKeys}
+              onSelectedDataKeysChange={({ selectedKeysArray }) =>
+                setSelectedDataKeys(selectedKeysArray)
+              }
+            />
+            <ChartBar dataKey="seriesA" name="Series A" />
+            <ChartBar dataKey="seriesB" name="Series B" />
+            <ChartBar dataKey="seriesC" name="Series C" />
+          </ChartBarWrapper>
+        </Box>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+// Legend with onSelectedDataKeysChange callback
+export const BarChartWithLegendClickCallback: StoryFn<typeof ChartBar> = () => {
+  const [lastClicked, setLastClicked] = React.useState<string | null>(null);
+
+  return (
+    <ChartsWrapper>
+      <Box display="flex" flexDirection="column" width="100%" height="100%">
+        <Box marginBottom="spacing.5">
+          <Heading size="small">Last clicked: {lastClicked ? `${lastClicked}` : 'None'}</Heading>
+        </Box>
+
+        <Box width="100%" height="400px">
+          <ChartBarWrapper data={chartData.slice(0, 6)}>
+            <ChartXAxis dataKey="name" />
+            <ChartYAxis />
+            <ChartTooltip />
+            <ChartLegend
+              onSelectedDataKeysChange={({ dataKey, selectedKeysArray }) => {
+                const isSelected = selectedKeysArray.includes(dataKey);
+                console.log({ dataKey, selectedKeysArray, isSelected });
+                setLastClicked(`${dataKey} (${isSelected ? 'selected' : 'deselected'})`);
+              }}
+            />
+            <ChartBar dataKey="seriesA" name="Series A" />
+            <ChartBar dataKey="seriesB" name="Series B" />
+            <ChartBar dataKey="seriesC" name="Series C" />
+          </ChartBarWrapper>
+        </Box>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
 DefaultChart.storyName = 'Default Bar Chart';
 TinyBarChart.storyName = 'Tiny Bar Chart';
 SimpleBarChart.storyName = 'Simple Bar Chart';
@@ -634,3 +728,6 @@ BarChartWithDefaultColorTheme.storyName = 'Bar Chart With Default Color Theme';
 BarChartWithGrid.storyName = 'Bar Chart With Grid';
 BarChartWithSequentialColors.storyName = 'Bar Chart with sequential colors';
 BarChartWithLargeLabels.storyName = 'Bar Chart with Large Labels';
+BarChartWithDefaultSelectedDataKeys.storyName = 'Bar Chart with Default Selected Legend';
+BarChartWithControlledLegendSelection.storyName = 'Bar Chart with Controlled Legend Selection';
+BarChartWithLegendClickCallback.storyName = 'Bar Chart with Legend Click Callback';
