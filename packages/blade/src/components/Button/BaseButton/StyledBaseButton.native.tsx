@@ -87,18 +87,24 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
   const easing = getIn(theme.motion, motionEasing);
 
   const animatedStyles = useAnimatedStyle(() => {
-    return {
+    const styles: {
+      backgroundColor: string;
+      borderColor?: string;
+    } = {
       backgroundColor: withTiming(isPressed.value ? focusBackgroundColor : defaultBackgroundColor, {
         duration,
         easing,
-      }),
-      ...(variant !== 'tertiary' && {
-        borderColor: withTiming(isPressed.value ? focusBorderColor : defaultBorderColor, {
-          duration,
-          easing,
-        }),
-      }),
+      }) as string,
     };
+
+    if (variant !== 'tertiary' && defaultBorderColor && focusBorderColor) {
+      styles.borderColor = withTiming(isPressed.value ? focusBorderColor : defaultBorderColor, {
+        duration,
+        easing,
+      }) as string;
+    }
+
+    return styles;
   });
 
   const handleOnPress = (event: GestureResponderEvent): void => {

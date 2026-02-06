@@ -16,10 +16,17 @@ const StyledBaseButton = styled.button
     ...props.accessibilityProps,
   }))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
+  // TODO(spark): Change colors to actual values once design is finalized
+  const mouseGradient =
+    props.variant === 'primary' && !props.disabled
+      ? 'radial-gradient(circle at var(--mouse-x, 0%) var(--mouse-y, 0%), rgba(255, 255, 255, 0.2) 0%, transparent 70%)'
+      : 'none';
+
   return {
     ...getStyledBaseButtonStyles(props),
     display: 'inline-flex',
-    transitionProperty: 'background-color, border-color, box-shadow',
+    backgroundImage: mouseGradient,
+    transitionProperty: 'background-color, background-image, box-shadow',
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     transitionDuration: castWebType(
       makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
@@ -27,9 +34,7 @@ const StyledBaseButton = styled.button
     position: 'relative',
     '&:hover': {
       backgroundColor: props.hoverBackgroundColor,
-      ...(props.variant !== 'tertiary' && {
-        borderColor: props.hoverBorderColor,
-      }),
+      boxShadow: props.hoverBoxShadow,
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {
@@ -39,9 +44,7 @@ const StyledBaseButton = styled.button
     },
     '&:active': {
       backgroundColor: props.focusBackgroundColor,
-      ...(props.variant !== 'tertiary' && {
-        borderColor: props.focusBorderColor,
-      }),
+      boxShadow: props.focusBoxShadow,
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {
@@ -51,11 +54,10 @@ const StyledBaseButton = styled.button
     },
     '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
-      ...(props.variant !== 'tertiary' && {
-        borderColor: props.focusBorderColor,
-      }),
       outline: `1px solid ${props.theme.colors.surface.background.primary.subtle}`,
-      boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
+      boxShadow: props.focusBoxShadow
+        ? `0px 0px 0px 4px ${props.focusRingColor}, ${props.focusBoxShadow}`
+        : `0px 0px 0px 4px ${props.focusRingColor}`,
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {
