@@ -3,6 +3,15 @@
 > Main entry point for component migration. Classifies tier, resolves
 > dependencies, routes to appropriate pipeline, manages Storybooks.
 
+## MANDATORY RULES (never skip, never override)
+
+- **You MUST use the `Task` tool to spawn a separate sub-agent for EVERY phase (Discovery, Research, Execute, Verify). No exceptions. No shortcuts. ALL tiers including simple.**
+- **You are the ORCHESTRATOR. You coordinate. You do NOT execute phase work yourself.**
+- **Reading a sub-agent's `.md` file does NOT mean you should follow its steps inline. You read it only to include its contents in the `Task` tool's `prompt` parameter.**
+- **If you find yourself reading React source files, writing migration plans, creating `.svelte` files, running `svelte-check`, or doing any work described in `discovery.md`, `research.md`, `execute.md`, or `verify.md` — STOP IMMEDIATELY. You are violating the orchestrator boundary. Use the `Task` tool instead.**
+- Your ONLY permitted jobs are: parse input, classify tier, check dependencies, manage Storybooks, spawn `Task` sub-agents, relay outputs between phases, and present human gates.
+- "I already have the context" is NOT a valid reason to skip spawning a Task. The sub-agent architecture exists for isolation and reliability. Always spawn.
+
 ## Include
 
 Read `.cursor/subagents/shared-rules.md` before starting.
@@ -104,74 +113,93 @@ Before the verify phase begins, ensure Storybooks are running:
 
 ## Step 5: Route to Pipeline
 
-### Simple Tier — Inline Execution
+> ⚠️ SELF-CHECK: You MUST call the `Task` tool for every phase below.
+> If you are about to read component source files, write a plan, create
+> `.svelte` files, or run `svelte-check` yourself — STOP. You are the
+> orchestrator, not the executor. Call the `Task` tool now.
 
-Run all phases inline (no Task sub-agents), skip human gate:
+### Sub-agent Pipeline (ALL tiers — simple, medium, and complex)
 
-```
-1. Discovery (inline):
-   - Follow .cursor/subagents/discovery.md steps
-   - Save to `.cursor/artifacts/{Name}/discovery-report.md`
+Every phase MUST be executed by spawning a sub-agent via the `Task` tool.
+Never execute phase instructions inline, regardless of tier or context.
 
-2. Research (inline):
-   - Follow .cursor/subagents/research.md steps
-   - Save to `.cursor/artifacts/{Name}/migration-plan.md`
-   - NO human gate (simple components don't need plan approval)
+**Tier-specific adjustments:**
+- Simple tier: skip Human Gate at Phase 3 (no plan approval needed), Verify uses simplified checks (static + build only, no visual comparison)
+- Medium/Complex tier: full pipeline with all human gates and visual verification
 
-3. Execute (inline):
-   - Follow .cursor/subagents/execute.md steps (Full Mode)
-   - Create all files
+---
 
-4. Basic Verify (inline, simplified):
-   - Run svelte-check + build only (no visual comparison)
-   - Fix static errors inline (max 3 retries)
+#### Phase 1: Discovery Agent
 
-5. Result:
-   - If all pass → DONE ✅
-   - If errors persist after 3 retries →
-     Upgrade to Medium pipeline (see below)
-```
+> ⚠️ SELF-CHECK: Am I about to read React source files myself? If yes, STOP. Call the `Task` tool now.
 
-**Graceful upgrade:** If a "simple" component has hidden complexity (unexpected errors, broken builds), promote it to the medium pipeline. The inline discovery/research artifacts are reused as input — don't re-run those phases.
+1. Read the contents of `.cursor/subagents/shared-rules.md` and `.cursor/subagents/discovery.md`
+2. Use the `Task` tool with:
+   - `description`: `"Discovery: {Name}"`
+   - `prompt`: The full text of shared-rules.md + discovery.md + `"Component to analyze: {Name}"`
+   - `subagent_type`: `"generalPurpose"`
+3. When the Task completes, save its output to `.cursor/artifacts/{Name}/discovery-report.md`
 
-### Medium/Complex Tier — Sub-agent Pipeline
+---
 
-Spawn Task sub-agents per phase:
+#### Phase 2: Research Agent
 
-```
-1. Discovery Agent (Task)
-   - Prompt: Include shared-rules.md + discovery.md instructions
-   - Input: Component name
-   - Output: discovery-report.md
+> ⚠️ SELF-CHECK: Am I about to write a migration plan myself? If yes, STOP. Call the `Task` tool now.
 
-2. Research Agent (Task)
-   - Prompt: Include shared-rules.md + research.md instructions
-   - Input: discovery-report.md
-   - Output: migration-plan.md
+1. Read the contents of `.cursor/subagents/shared-rules.md` and `.cursor/subagents/research.md`
+2. Read `.cursor/artifacts/{Name}/discovery-report.md` (output from Phase 1)
+3. Use the `Task` tool with:
+   - `description`: `"Research: {Name}"`
+   - `prompt`: The full text of shared-rules.md + research.md + the full text of discovery-report.md
+   - `subagent_type`: `"generalPurpose"`
+4. When the Task completes, save its output to `.cursor/artifacts/{Name}/migration-plan.md`
 
-3. 🔒 Human Gate: Plan Review
-   - Present migration-plan.md to user
-   - Ask: "approve / reject with feedback"
-   - On reject: re-run Research with feedback
-   - On approve: continue
+---
 
-4. Execute Agent (Task)
-   - Prompt: Include shared-rules.md + execute.md instructions
-   - Input: migration-plan.md
-   - Output: All files created on disk
+#### Phase 3: 🔒 Human Gate — Plan Review (skip for simple tier)
 
-5. Verify Agent (Task — convergent loop)
-   - Prompt: Include shared-rules.md + verify.md instructions
-   - Input: discovery-report.md + migration-plan.md + component name
-   - Runs the full verify loop (see verify.md)
-   - May trigger Execute agent in patch mode
+- Present `migration-plan.md` to user
+- Ask: "approve / reject with feedback"
+- On reject: re-run Phase 2 (Research) with the user's feedback appended to the prompt
+- On approve: continue to Phase 4
 
-6. 🔒 Human Gate: Final Review
-   - Present verification-report.md + screenshots
-   - Ask: "accept / request changes"
-   - On accept: DONE ✅
-   - On request changes: re-enter verify loop with feedback
-```
+---
+
+#### Phase 4: Execute Agent
+
+> ⚠️ SELF-CHECK: Am I about to create `.svelte` files or write CSS myself? If yes, STOP. Call the `Task` tool now.
+
+1. Read the contents of `.cursor/subagents/shared-rules.md` and `.cursor/subagents/execute.md`
+2. Read `.cursor/artifacts/{Name}/migration-plan.md` (output from Phase 2)
+3. Use the `Task` tool with:
+   - `description`: `"Execute: {Name}"`
+   - `prompt`: The full text of shared-rules.md + execute.md + the full text of migration-plan.md
+   - `subagent_type`: `"generalPurpose"`
+4. When the Task completes, verify it reports files were created successfully
+
+---
+
+#### Phase 5: Verify Agent
+
+> ⚠️ SELF-CHECK: Am I about to run `svelte-check` or take screenshots myself? If yes, STOP. Call the `Task` tool now.
+
+1. Read the contents of `.cursor/subagents/shared-rules.md` and `.cursor/subagents/verify.md`
+2. Read `.cursor/artifacts/{Name}/discovery-report.md` and `.cursor/artifacts/{Name}/migration-plan.md`
+3. Use the `Task` tool with:
+   - `description`: `"Verify: {Name}"`
+   - `prompt`: The full text of shared-rules.md + verify.md + the full text of discovery-report.md + migration-plan.md + `"Component: {Name}"`
+   - `subagent_type`: `"generalPurpose"`
+4. The Verify agent runs the full convergent loop (see verify.md)
+5. If Verify agent reports API parity gaps needing a patch, spawn a new Execute agent Task in patch mode, then re-spawn the Verify agent
+
+---
+
+#### Phase 6: 🔒 Human Gate — Final Review
+
+- Present `verification-report.md` + screenshots to user
+- Ask: "accept / request changes"
+- On accept: DONE ✅
+- On request changes: re-enter Phase 5 (Verify) with user feedback
 
 ## Step 6: Batch Progress Tracking
 
@@ -202,13 +230,14 @@ Process batch components sequentially (not in parallel) to avoid file conflicts.
 | Unmigrated dependency (no workaround)   | Stop migration, show deps + suggested order, prompt user to migrate deps first |
 | Dependency cycle detected               | Flag for human, skip component         |
 | Storybook fails to start                | Skip visual comparison, warn user      |
-| Simple tier upgrade needed              | Promote to medium, reuse artifacts     |
 | User rejects plan 3 times               | Abort component, move to next in batch |
 
 ## Constraints
 
+- **ALWAYS use the `Task` tool for Discovery, Research, Execute, and Verify phases — no inline execution, no exceptions, regardless of tier**
 - Always confirm tier with user before proceeding
 - Never run multiple component migrations in parallel
 - Never kill Storybook processes
 - If any phase produces an unexpected error, save current state and ask user
 - All artifacts go in `.cursor/artifacts/{Name}/` (gitignored)
+- Never rationalize skipping sub-agents ("I already have context", "it's simpler inline", etc.)
