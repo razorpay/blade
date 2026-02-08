@@ -14,6 +14,7 @@
 | **Has Portal** | {yes/no} |
 | **Has Animation** | {yes/no} |
 | **Has Compound API** | {yes/no} |
+| **Architecture** | {single-layer / two-layer} |
 
 ## Dependencies
 

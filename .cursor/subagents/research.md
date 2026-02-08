@@ -77,9 +77,11 @@ For each prop in the discovery report:
 
 ### 4. Plan file structure
 
-Determine which files to create:
+**⚠️ MANDATORY CHECK — Architecture must match React:**
 
-- **Match the React architecture:** If the React source has `Base{Name}/Base{Name}.tsx` + `{Name}.tsx`, create both layers in Svelte. If React is a single file, Svelte can be single-layer (just component + types).
+1. Read the **Architecture** field from the discovery report's Classification table.
+2. If `single-layer`: File plan **MUST NOT** include `Base{Name}/` directories.
+3. If `two-layer`: File plan **MUST** include `Base{Name}/Base{Name}.svelte` + `{Name}.svelte`.
 
 List all files with action (create / update) and notes.
 
@@ -100,9 +102,16 @@ For each story from the discovery report:
 
 ### 7. Flag decisions
 
-Document any decisions that need human input:
+Document any decisions that need human input.
 
-- Architecture choices (single vs two-layer)
+**The FIRST decision MUST be the architecture layer choice:**
+
+| #   | Decision            | Choice                     | Rationale                                                                                 |
+| --- | ------------------- | -------------------------- | ----------------------------------------------------------------------------------------- |
+| 1   | Single vs two-layer | {single-layer / two-layer} | React source {has / does not have} `Base{Name}`. Discovery report Architecture = {value}. |
+
+Then add any other decisions:
+
 - Dependency workarounds (Box → div, Icon → placeholder)
 - Missing utilities that might need creation
 - Ambiguous type mappings

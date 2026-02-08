@@ -97,6 +97,19 @@ Also check for signals that might upgrade the tier:
 - Has compound API (`{Name}.Header`, `{Name}.Body`) → complex
 - Has animation/transition logic → may upgrade simple→medium
 
+### 6b. Classify architecture
+
+Check if `Base{Name}.tsx` or a `Base{Name}/` directory exists in the React source at
+`packages/blade/src/components/{Name}/`:
+
+- If `Base{Name}.tsx` (or `Base{Name}/Base{Name}.tsx`) exists → **two-layer**
+  (React has a Base logic layer + a Public API wrapper)
+- If no `Base{Name}` file exists → **single-layer**
+  (React is a flat component with all logic in `{Name}.tsx`)
+
+Record this in the Classification table's **Architecture** field.
+The Research agent MUST match this architecture — do not leave it ambiguous.
+
 ### 7. Write discovery report
 
 Fill in the template at `.cursor/templates/discovery-report.md` with all extracted data.

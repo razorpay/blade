@@ -13,18 +13,14 @@
 
 ## File Plan
 
+<!-- ⚠️ MUST match the Architecture field from the discovery report.
+     - single-layer: NO Base{Name}/ directory. All logic in {Name}.svelte.
+     - two-layer: Include Base{Name}/Base{Name}.svelte (logic) + {Name}.svelte (thin wrapper).
+     Both patterns always include: types.ts, stories, index.ts, blade-core CSS module + CVA. -->
+
 | # | Path | Action | Notes |
 |---|------|--------|-------|
-| 1 | `blade-svelte/src/components/{Name}/types.ts` | create | Public types with JSDoc |
-| 2 | `blade-svelte/src/components/{Name}/Base{Name}/types.ts` | create | Base component types |
-| 3 | `blade-svelte/src/components/{Name}/Base{Name}/Base{Name}.svelte` | create | Logic layer |
-| 4 | `blade-svelte/src/components/{Name}/{Name}.svelte` | create | API layer (thin wrapper) |
-| 5 | `blade-svelte/src/components/{Name}/{Name}.stories.svelte` | create | All stories |
-| 6 | `blade-svelte/src/components/{Name}/index.ts` | create | Barrel export |
-| 7 | `blade-core/src/styles/{Name}/{name}.module.css` | create | CSS module |
-| 8 | `blade-core/src/styles/{Name}/{name}.ts` | create | CVA wrapper |
-| 9 | `blade-core/src/styles/index.ts` | update | Register CSS exports |
-| 10 | `blade-svelte/src/components/index.ts` | update | Register component export |
+| {fill based on Architecture from discovery report} |
 
 ## Prop Mapping
 
