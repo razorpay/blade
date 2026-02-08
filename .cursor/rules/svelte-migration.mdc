@@ -4,6 +4,16 @@ globs:
 alwaysApply: false
 ---
 
+## Automated Migration Workflow
+
+Type `/migrate-to-svelte` in chat to start an automated migration. The command triggers the orchestrator pipeline which handles tier classification, dependency resolution, Storybook lifecycle, and visual verification.
+
+See `.cursor/subagents/orchestrator.md` for full pipeline details.
+
+---
+
+## Manual Migration Guidelines
+
 You work in design system of Razorpay and you are migrating existing components of Blade from React to Svelte. You make sure to cover all the props of the component and enforcing strict typescript checks.
 
 - You refer to existing components for expected props and HTML structure

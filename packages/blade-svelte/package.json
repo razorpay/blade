@@ -43,7 +43,7 @@
     "build:lib": "rollup -c",
     "svelte-check": "svelte-check --tsconfig ./tsconfig.json",
     "svelte-check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
