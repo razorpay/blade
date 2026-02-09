@@ -157,3 +157,56 @@ BadgeWithIcon.parameters = {
   },
 };
 BadgeWithIcon.storyName = 'With Icon';
+
+const AllVariantsTemplate: StoryFn<typeof BadgeComponent> = () => {
+  const colors = ['positive', 'negative', 'notice', 'information', 'neutral', 'primary'] as const;
+  const sizes = ['xsmall', 'small', 'medium', 'large'] as const;
+  const emphases = ['subtle', 'intense'] as const;
+
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.6">
+      {emphases.map((emphasis) => (
+        <BaseBox key={emphasis} display="flex" flexDirection="column" gap="spacing.4">
+          <BladeText weight="semibold" size="large">
+            {emphasis.charAt(0).toUpperCase() + emphasis.slice(1)} Emphasis
+          </BladeText>
+          {sizes.map((size) => (
+            <BaseBox key={size} display="flex" flexDirection="column" gap="spacing.3">
+              <BladeText size="small" color="surface.text.gray.muted">
+                Size: {size}
+              </BladeText>
+              <BaseBox display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.3">
+                {colors.map((color) => (
+                  <BadgeComponent
+                    key={`${emphasis}-${size}-${color}-icon`}
+                    color={color}
+                    size={size}
+                    emphasis={emphasis}
+                    icon={InfoIcon}
+                  >
+                    {color}
+                  </BadgeComponent>
+                ))}
+              </BaseBox>
+              <BaseBox display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.3">
+                {colors.map((color) => (
+                  <BadgeComponent
+                    key={`${emphasis}-${size}-${color}-no-icon`}
+                    color={color}
+                    size={size}
+                    emphasis={emphasis}
+                  >
+                    {color}
+                  </BadgeComponent>
+                ))}
+              </BaseBox>
+            </BaseBox>
+          ))}
+        </BaseBox>
+      ))}
+    </BaseBox>
+  );
+};
+
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.storyName = 'All Variants';
