@@ -4,7 +4,7 @@ type PopupArrowProps = {
   width: number;
   height: number;
   fillColor: string;
-  strokeColor: string;
+  strokeColor?: string;
 };
 
 export type { PopupArrowProps };

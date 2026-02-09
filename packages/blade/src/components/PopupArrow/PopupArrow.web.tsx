@@ -14,7 +14,8 @@ const PopupArrow = React.forwardRef<SVGSVGElement, PopupArrowProps>(
         height={height}
         fill={fillColor}
         stroke={strokeColor}
-        strokeWidth={theme.border.width.thin}
+        strokeWidth={strokeColor ? theme.border.width.thin : 0}
+        tipRadius={theme.border.radius['2xsmall']}
       />
     );
   },
