@@ -51,6 +51,14 @@ type ChartBarProps = Omit<RechartsBarProps, 'fill' | 'dataKey' | 'name' | 'label
    * The show legend of the bar chart.
   */
   showLegend?: boolean;
+  /**
+   * Whether to hide the bar.
+   */
+  hide?: boolean;
+  /**
+   * The width of the bar in pixels.
+   */
+  barSize?: RechartsBarProps['barSize'];
 };
 
 type data = {
