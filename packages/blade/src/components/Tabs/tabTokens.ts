@@ -94,9 +94,9 @@ const paddingX: TabItemPadding = {
 const trackColor = 'surface.border.gray.muted';
 const textColor = {
   selected: {
-    default: 'interactive.text.primary.subtle',
-    highlighted: 'interactive.text.primary.normal',
-    disabled: 'interactive.text.primary.normal',
+    default: 'interactive.text.gray.normal',
+    highlighted: 'interactive.text.gray.normal',
+    disabled: 'interactive.text.gray.disabled',
   },
   unselected: {
     default: 'interactive.text.gray.muted',
@@ -135,7 +135,7 @@ const backgroundColor = {
       disabled: 'colors.transparent',
     },
     filled: {
-      default: 'colors.interactive.background.primary.faded',
+      default: 'colors.surface.background.gray.intense',
       highlighted: 'colors.interactive.background.primary.faded',
       disabled: 'colors.transparent',
     },

@@ -111,7 +111,7 @@ const TabIndicator = ({
         left="0px"
         top="0px"
         borderRadius="small"
-        backgroundColor="interactive.background.primary.faded"
+        backgroundColor="surface.background.gray.intense"
         style={{
           ...transitionProps,
           width: `${activeElementDimensions.width}px`,
@@ -130,7 +130,7 @@ const TabIndicator = ({
       left="0%"
       top="-0.5px"
       height="2px"
-      backgroundColor="interactive.background.primary.default"
+      backgroundColor="interactive.border.neutral.highlighted"
       style={{
         ...transitionProps,
         width: `${activeElementDimensions.width}px`,
