@@ -80,8 +80,12 @@ Read `discovery-report.md` as the source of truth. Compare against actual implem
 - Every prop in the discovery report must exist with matching type
 
 **Stories check:**
-- Read `.stories.svelte` → extract `<Story name="...">` blocks
-- Every story in the discovery report Stories table must exist
+- Read `.stories.svelte` → extract all `<Story name="...">` blocks
+- Verify the Storybook `title` in `defineMeta` is **identical** to the React `title` from the discovery report
+- Every story in the discovery report Stories table must exist with the **exact same name**
+- There must be **no extra stories** that don't exist in the discovery report
+- Story count must match: `Svelte story count === discovery report total story count`
+- If names differ (e.g., "Default Value Single" vs "Uncontrolled Single Selection with Default Value"), flag as missing + extra
 
 **Exports check:**
 - Read `{Name}/index.ts` → verify component is exported

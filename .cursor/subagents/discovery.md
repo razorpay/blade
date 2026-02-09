@@ -73,12 +73,16 @@ Document this for each key variant (default, with icon, disabled, etc.).
 
 ### 5. Extract stories
 
-From `{Name}.stories.tsx`:
+From `{Name}.stories.tsx` (and any related story files like `{SubName}.stories.tsx`):
 
-- List each exported story by name
-- Note what each story demonstrates (sizes, colors, with icon, etc.)
-- Note the story template pattern (single component, loop over variants, custom layout)
-- Note any mock data, dummy content, or special layout wrappers used
+- List **every** exported story
+- Use the **exact `.storyName` value** as the Story Name (e.g., `ChipWithColor.storyName = 'With Color'` → name is `With Color`, NOT `ChipWithColor`)
+- If no `.storyName` is set, use the export name converted to title case
+- Extract the **Storybook `title`** from the default export (e.g., `title: 'Components/Chip/ChipGroup'`) — this must be preserved verbatim
+- Note each story's pattern: `uncontrolled` (static args), `controlled` (uses `useState`/state + `onChange`), `loop` (iterates variants), `custom` (special layout)
+- For `controlled` stories: note what external components/state they use (e.g., Dropdown, Button, `React.useState`)
+- Note any mock data, dummy content, or special layout wrappers
+- **Count total stories** — this count is the parity target for Svelte
 
 ### 6. Classify tier
 

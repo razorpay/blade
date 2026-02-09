@@ -187,13 +187,20 @@ export const get{Name}TemplateClasses = () => ({
 
 #### Story Structure
 
+**⚠️ STORY PARITY RULES:**
+- The `title` in `defineMeta` must be **identical** to the React Storybook `title`
+- Every `<Story name="...">` must use the **exact name** from the migration plan (which comes from React `.storyName`)
+- Do NOT add stories that aren't in the migration plan
+- Do NOT skip stories — if a controlled story needs unmigrated deps, use native HTML substitutes
+- Story count in Svelte must **equal** story count in the migration plan
+
 ```svelte
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import {Name} from './{Name}.svelte';
 
   const { Story } = defineMeta({
-    title: 'Components/{Name}',
+    title: 'Components/{Name}',  // ← MUST match React exactly
     component: {Name},
     tags: ['autodocs'],
     argTypes: { /* match React story argTypes */ },
@@ -206,16 +213,11 @@ export const get{Name}TemplateClasses = () => ({
   const sizes = ['small', 'medium', 'large'] as const;
 </script>
 
-<!-- Playground: auto-renders with args -->
-<Story name="Playground" />
-
-<!-- Loop story example -->
-<Story name="Sizes" asChild>
-  <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-    {#each sizes as size}
-      <{Name} {size}>Label</{Name}>
-    {/each}
-  </div>
+<!-- Story name MUST be verbatim from migration plan -->
+<Story name="Exact React Story Name Here">
+  {#snippet children(args)}
+    <{Name} {...args}>Label</{Name}>
+  {/snippet}
 </Story>
 ```
 

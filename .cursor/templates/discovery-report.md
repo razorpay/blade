@@ -71,9 +71,14 @@
 
 ## Stories to Replicate
 
-| # | Story Name | What It Demonstrates |
-|---|-----------|---------------------|
-| 1 | {name} | {description} |
+<!-- ⚠️ Story names are the EXACT .storyName values from React. These must be preserved verbatim in Svelte. -->
+
+**Storybook title:** `{exact title from React default export, e.g. 'Components/Chip/ChipGroup'}`
+**Total story count:** {number}
+
+| # | Story Name (exact) | Pattern | Dependencies | What It Demonstrates |
+|---|-------------------|---------|--------------|---------------------|
+| 1 | {exact .storyName} | {uncontrolled / controlled / loop / custom} | {components/state used, or —} | {description} |
 
 ## React File Inventory
 

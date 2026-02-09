@@ -69,7 +69,11 @@
 
 ## Story Plan
 
-| # | Story Name | Template | Content |
-|---|-----------|----------|---------|
-| 1 | Playground | auto | Default args, controls |
-| 2 | {name} | {auto / loop / custom} | {description} |
+<!-- ⚠️ STRICT PARITY: Same count, same names, same title as React. No additions, no removals. -->
+
+**Storybook title:** `{identical to React, from discovery report}`
+**Expected story count:** {must match discovery report total}
+
+| # | Story Name (exact) | Template | Svelte Approach | Content |
+|---|-------------------|----------|-----------------|---------|
+| 1 | {exact name from discovery report} | {args-only / snippet / loop / custom / controlled} | {how to implement in Svelte} | {description} |

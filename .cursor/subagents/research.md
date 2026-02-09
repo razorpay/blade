@@ -94,11 +94,19 @@ List all files with action (create / update) and notes.
 
 ### 6. Plan stories
 
+**⚠️ STRICT 1:1 PARITY — no additions, no removals, no renames.**
+
+- The Svelte story file must have **exactly** the same stories as the React source (same count).
+- The Storybook `title` must be **identical** to the React default export's `title`.
+- Each `<Story name="...">` must use the **exact Story Name** from the discovery report.
+- Do NOT invent new stories (e.g., "Help Text", "Error State") that don't exist in React.
+- Do NOT skip stories because they seem complex or use unmigrated dependencies.
+
 For each story from the discovery report:
 
-- Determine template: `auto` (Playground), `loop` (iterate over variants), `custom` (special layout)
-- Note what content/mocks/layout each story needs
-- Cross-reference with React stories to ensure same visual output
+- Determine Svelte template: `args-only` (simple), `snippet` (needs children), `loop` (iterate variants), `custom` (special layout), `controlled` (uses `$state` + `onChange`)
+- For `controlled` stories: plan the Svelte equivalent of `React.useState` → `$state()`. If the React story uses unmigrated components (e.g., Dropdown), substitute with native HTML (`<select>`, `<button>`) that demonstrates the same controlled behavior.
+- Note what content/mocks/layout each story needs — match React exactly
 
 ### 7. Flag decisions
 
