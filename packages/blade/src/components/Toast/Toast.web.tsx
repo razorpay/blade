@@ -4,13 +4,13 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
-import { Button } from '~components/Button';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute/makeAnalyticsConstants';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { ToastProps } from './types';
+import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
 import {
