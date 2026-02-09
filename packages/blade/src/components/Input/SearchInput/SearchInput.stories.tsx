@@ -37,6 +37,7 @@ import {
   HelpCircleIcon,
   BulkPayoutsIcon,
   InfoIcon,
+  GlobeIcon,
 } from '~components/Icons';
 import { Spinner } from '~components/Spinner';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
@@ -597,4 +598,266 @@ SearchInputWithLabelSuffixTrailing.args = {
     </Tooltip>
   ),
   labelTrailing: <Link size="small">Learn more</Link>,
+};
+
+export const SearchInputShowcase: StoryFn<typeof SearchInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Basic Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Basic Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <SearchInputComponent
+            label="Default"
+            placeholder="Search payment products, settings, and more"
+            name="default"
+          />
+          <SearchInputComponent label="With Value" defaultValue="Transactions" name="withValue" />
+          <SearchInputComponent
+            label="With Help Text"
+            placeholder="Search payment products, settings, and more"
+            helpText="This is a helpful message"
+            name="withHelpText"
+          />
+          <SearchInputComponent
+            label="Disabled"
+            placeholder="Search payment products, settings, and more"
+            isDisabled
+            name="disabled"
+          />
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <SearchInputComponent
+            label="Medium Size"
+            placeholder="Medium size search input"
+            size="medium"
+            name="sizeMedium"
+          />
+          <SearchInputComponent
+            label="Large Size"
+            placeholder="Large size search input"
+            size="large"
+            name="sizeLarge"
+          />
+        </Box>
+      </Box>
+
+      {/* Label Positions */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Label Positions
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <SearchInputComponent
+            label="Label Top"
+            placeholder="Label on top"
+            labelPosition="top"
+            name="labelTop"
+          />
+          <SearchInputComponent
+            label="Label Left"
+            placeholder="Label on left"
+            labelPosition="left"
+            name="labelLeft"
+          />
+        </Box>
+      </Box>
+
+      {/* Without Label */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Without Label
+        </Text>
+        <SearchInputComponent
+          placeholder="Search payment products, settings, and more"
+          accessibilityLabel="Search payment products, settings, and more"
+          defaultValue="Transactions"
+          name="withoutLabel"
+        />
+      </Box>
+
+      {/* With Dropdowns */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Trailing Dropdown
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box>
+            <Text weight="semibold" marginBottom="spacing.3">
+              Medium Size
+            </Text>
+            <SearchInputComponent
+              label="Search"
+              placeholder="Search here"
+              size="medium"
+              trailing={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="payment-products" />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title="Payment Products" value="payment-products" />
+                      <ActionListItem title="Business Credit Card" value="business-credit-card" />
+                      <ActionListItem title="Lending Tech Stack" value="lending-tech-stack" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              name="trailingDropdownMedium"
+            />
+          </Box>
+
+          <Box>
+            <Text weight="semibold" marginBottom="spacing.3">
+              Large Size
+            </Text>
+            <SearchInputComponent
+              label="Search"
+              placeholder="Search here"
+              size="large"
+              trailing={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="payment-products" />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title="Payment Products" value="payment-products" />
+                      <ActionListItem title="Business Credit Card" value="business-credit-card" />
+                      <ActionListItem title="Lending Tech Stack" value="lending-tech-stack" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              name="trailingDropdownLarge"
+            />
+          </Box>
+
+          <Box>
+            <Text weight="semibold" marginBottom="spacing.3">
+              With Icon in Dropdown
+            </Text>
+            <SearchInputComponent
+              label="Search"
+              placeholder="Search here"
+              trailing={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title="www." value="www" />
+                      <ActionListItem title="blog." value="blog" />
+                      <ActionListItem title="shop." value="shop" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              name="trailingDropdownWithIcon"
+            />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Loading State */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Loading State
+        </Text>
+        <SearchInputComponent
+          label="Loading"
+          placeholder="Search payment products, settings, and more"
+          isLoading
+          name="loading"
+        />
+      </Box>
+
+      {/* With Clear Button */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Clear Button
+        </Text>
+        <SearchInputComponent
+          label="With Clear Button"
+          defaultValue="Clear me"
+          name="clearButton"
+        />
+      </Box>
+
+      {/* With Label Suffix & Trailing */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Label Suffix & Trailing
+        </Text>
+        <SearchInputComponent
+          label="Search"
+          placeholder="Search payment products, settings, and more"
+          labelSuffix={
+            <Tooltip content="Search for payment products, settings, and more" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+          name="labelSuffixTrailing"
+        />
+      </Box>
+    </Box>
+  );
+};
+
+SearchInputShowcase.storyName = 'Showcase - All Variants';
+SearchInputShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all SearchInput variants including basic states, sizes, label positions, dropdowns, loading states, and more.',
+    },
+  },
 };
