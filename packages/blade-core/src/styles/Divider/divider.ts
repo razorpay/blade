@@ -1,13 +1,9 @@
 import { cva } from 'class-variance-authority';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './divider.module.css';
+import type { DividerVariants } from './types';
 
-export type DividerVariants = {
-  orientation?: 'horizontal' | 'vertical';
-  dividerStyle?: 'solid' | 'dashed';
-  variant?: 'normal' | 'subtle' | 'muted';
-  thickness?: 'thinner' | 'thin' | 'thick' | 'thicker';
-};
+export type { DividerVariants };
 
 export const dividerStyles = cva(styles.divider, {
   variants: {

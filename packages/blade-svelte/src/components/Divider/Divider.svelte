@@ -35,9 +35,6 @@
     return classes.filter(Boolean).join(' ');
   });
 
-  // Build meta attributes for testing
-  const metaAttrs = $derived(metaAttribute({ name: MetaConstants.Divider, testID }));
-
   // Build inline styles for height/width if provided
   const inlineStyle = $derived(() => {
     const styles: string[] = [];
@@ -61,6 +58,5 @@
   class={dividerClass()}
   role="separator"
   style={inlineStyle()}
-  {...metaAttrs}
   {...rest}
 />

@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 export type DividerProps = {
@@ -42,8 +41,4 @@ export type DividerProps = {
    * Additional class names
    */
   class?: string;
-  /**
-   * Children snippet (typically not used for Divider)
-   */
-  children?: Snippet;
 } & StyledPropsBlade;
