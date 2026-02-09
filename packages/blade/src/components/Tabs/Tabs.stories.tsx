@@ -1031,12 +1031,47 @@ const ShowcaseTabsInstance = ({
   orientation?: 'horizontal' | 'vertical';
 }): React.ReactElement => {
   const tabs = ['option1', 'option2', 'option3', 'option4', 'option5'];
+  const disabledTab = 'option3';
 
   return (
     <Tabs variant={variant} size={size} orientation={orientation} defaultValue="option1">
       <TabList>
         {tabs.map((value) => (
-          <TabItem key={value} value={value}>
+          <TabItem key={value} value={value} isDisabled={value === disabledTab}>
+            Option
+          </TabItem>
+        ))}
+      </TabList>
+      {tabs.map((value) => (
+        <TabPanel key={value} value={value}>
+          <Box />
+        </TabPanel>
+      ))}
+    </Tabs>
+  );
+};
+
+const ShowcaseFullWidthTabsInstance = ({
+  size,
+  isFullWidthTabItem,
+}: {
+  size: 'small' | 'medium' | 'large';
+  isFullWidthTabItem: boolean;
+}): React.ReactElement => {
+  const tabs = ['option1', 'option2', 'option3'];
+  const disabledTab = 'option3';
+
+  return (
+    <Tabs size={size} isFullWidthTabItem={isFullWidthTabItem} defaultValue="option1">
+      <TabList>
+        {tabs.map((value) => (
+          <TabItem
+            key={value}
+            value={value}
+            leading={SettingsIcon}
+            trailing={<Counter value={3} />}
+            isDisabled={value === disabledTab}
+          >
             Option
           </TabItem>
         ))}
@@ -1094,6 +1129,29 @@ const ShowcaseTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement
                     {capitalize(variant)}
                   </Text>
                   <ShowcaseTabsInstance variant={variant} size={size} orientation="vertical" />
+                </Box>
+              ))}
+            </Box>
+          </Box>
+
+          {/* isFullWidthTabItem with leading & trailing */}
+          <Box display="flex" flexDirection="column" gap="spacing.5">
+            <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+              isFullWidthTabItem (with leading & trailing)
+            </Text>
+            <Box display="flex" flexDirection="row" gap="spacing.8" flexWrap="wrap">
+              {[false, true].map((isFullWidth) => (
+                <Box
+                  key={String(isFullWidth)}
+                  display="flex"
+                  flexDirection="column"
+                  gap="spacing.3"
+                  width={isFullWidth ? '100%' : undefined}
+                >
+                  <Text size="small" color="surface.text.gray.muted">
+                    isFullWidthTabItem: {String(isFullWidth)}
+                  </Text>
+                  <ShowcaseFullWidthTabsInstance size={size} isFullWidthTabItem={isFullWidth} />
                 </Box>
               ))}
             </Box>

@@ -98,7 +98,7 @@ const TabIndicator = ({
   const transitionProps = {
     transitionProperty: 'transform, width, background-color',
     transitionDuration: hasMeasured
-      ? castWebType(makeMotionTime(theme.motion.duration.gentle))
+      ? castWebType(makeMotionTime(theme.motion.duration.moderate))
       : '0ms',
     transitionTimingFunction: castWebType(theme.motion.easing.standard),
   };

@@ -149,9 +149,9 @@ const iconColor = {
     disabled: 'interactive.icon.gray.disabled',
   },
   selected: {
-    default: 'interactive.icon.primary.subtle',
-    highlighted: 'interactive.icon.primary.normal',
-    disabled: 'interactive.icon.primary.disabled',
+    default: 'interactive.icon.gray.normal',
+    highlighted: 'interactive.icon.gray.normal',
+    disabled: 'interactive.icon.gray.disabled',
   },
 } as const;
 

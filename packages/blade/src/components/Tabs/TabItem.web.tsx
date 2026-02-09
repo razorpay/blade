@@ -60,9 +60,7 @@ const StyledTabButton = styled.button<{
       isSelected && isFilled && !isVertical ? 'transparent' : getIn(theme, background.default),
     borderRadius: isFilled ? theme.border.radius.small : 0,
     [`${border}Style`]: 'solid',
-    [`${border}Width`]: isFilled
-      ? 0
-      : makeBorderSize(isVertical ? theme.border.width.thick : theme.border.width.thin),
+    [`${border}Width`]: isFilled ? 0 : makeBorderSize(theme.border.width.thicker),
     [`${border}Color`]:
       isVertical && isSelected
         ? theme.colors.interactive.border.neutral.highlighted
@@ -72,7 +70,7 @@ const StyledTabButton = styled.button<{
     '&:hover': {
       [`${border}Color`]:
         isVertical && isSelected
-          ? theme.colors.interactive.border.primary.default
+          ? theme.colors.interactive.border.neutral.highlighted
           : theme.colors.interactive.border.gray.highlighted,
       backgroundColor:
         // For selected filled tabs:
@@ -190,7 +188,7 @@ const TabItem = ({
             <Text
               color={textColor[selectedState][interaction]}
               size={textSizeMap[size!]}
-              weight="semibold"
+              weight="medium"
             >
               {children}
             </Text>
