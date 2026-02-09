@@ -58,7 +58,11 @@ const StyledTabButton = styled.button<{
     // colors
     backgroundColor:
       isSelected && isFilled && !isVertical ? 'transparent' : getIn(theme, background.default),
-    borderRadius: isFilled ? theme.border.radius.small : 0,
+    borderRadius: isFilled
+      ? size === 'small' && !isVertical
+        ? theme.border.radius.medium
+        : theme.border.radius.small
+      : 0,
     [`${border}Style`]: 'solid',
     [`${border}Width`]: isFilled
       ? 0
@@ -86,6 +90,11 @@ const StyledTabButton = styled.button<{
     },
     '&:disabled': {
       cursor: 'not-allowed',
+      backgroundColor: getIn(theme, background.disabled),
+      [`${border}Color`]: 'transparent',
+    },
+    '&:disabled:hover': {
+      [`${border}Color`]: 'transparent',
       backgroundColor: getIn(theme, background.disabled),
     },
     '&:focus-visible': {
@@ -190,7 +199,7 @@ const TabItem = ({
             <Text
               color={textColor[selectedState][interaction]}
               size={textSizeMap[size!]}
-              weight="medium"
+              weight={size === 'medium' ? 'medium' : 'semibold'}
             >
               {children}
             </Text>

@@ -25,7 +25,7 @@ const TabIndicator = ({
   tabListContainerRef: React.RefObject<HTMLElement | null>;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const { selectedValue, baseId, variant } = useTabsContext();
+  const { selectedValue, baseId, variant, isVertical, size } = useTabsContext();
   const [hasMeasured, setHasMeasured] = React.useState(false);
   const [activeElementDimensions, setActiveElementDimensions] = React.useState({
     width: 0,
@@ -104,13 +104,14 @@ const TabIndicator = ({
   };
 
   if (variant === 'filled') {
+    const shouldHaveMediumBorderRadius = size === 'small' && !isVertical;
     return (
       <StyledTabIndicator
         pointerEvents="none"
         position="absolute"
         left="0px"
         top="0px"
-        borderRadius="small"
+        borderRadius={shouldHaveMediumBorderRadius ? 'medium' : 'small'}
         backgroundColor="surface.background.gray.intense"
         style={{
           ...transitionProps,
