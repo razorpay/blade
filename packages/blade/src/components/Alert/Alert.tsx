@@ -195,7 +195,7 @@ const _Alert = (
   );
 
   const textColor =
-    emphasis === 'intense' ? 'surface.text.staticWhite.normal' : 'surface.text.gray.subtle';
+    emphasis === 'intense' ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal';
   const _title = title ? (
     <BaseBox marginBottom="spacing.2">
       <Text color={textColor} size="medium" weight="semibold">
@@ -204,9 +204,12 @@ const _Alert = (
     </BaseBox>
   ) : null;
 
+  const descriptionTextColor =
+    emphasis === 'intense' ? 'surface.text.staticWhite.subtle' : 'surface.text.gray.subtle';
+
   const _description = (
     <BaseBox marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text color={textColor} size="small">
+      <Text color={descriptionTextColor} size="small">
         {description}
       </Text>
     </BaseBox>
@@ -220,8 +223,8 @@ const _Alert = (
       <BaseButton
         size="small"
         onClick={actions.primary.onClick}
-        color={emphasis === 'intense' ? 'white' : color}
-        variant="secondary"
+        color="white"
+        variant="primary"
         data-analytics-name={MAKE_ANALYTICS_CONSTANTS.ALERT.PRIMARY_ACTION_BUTTON}
       >
         {actions.primary.text}
@@ -254,7 +257,7 @@ const _Alert = (
     >
       <BaseLink
         size="small"
-        color={emphasis === 'intense' ? 'white' : color}
+        color={emphasis === 'intense' ? 'white' : 'neutral'}
         {...secondaryActionParams}
       >
         {actions.secondary.text}
@@ -293,7 +296,7 @@ const _Alert = (
         accessibilityLabel="Dismiss alert"
         onClick={onClickDismiss}
         emphasis={emphasis === 'intense' ? 'subtle' : 'intense'}
-        size="large"
+        size="medium"
         icon={CloseIcon}
       />
     </CloseButtonWrapper>
@@ -328,7 +331,7 @@ const _Alert = (
         {leadingIcon}
         <BaseBox
           flex={1}
-          paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
+          paddingLeft={isFullWidth ? 'spacing.3' : 'spacing.3'}
           paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
         >
           {_title}
