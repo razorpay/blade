@@ -20,6 +20,8 @@ import type { IconComponent } from '~components/Icons';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
+import { inputDropdownButtonBorderRadius } from '~components/Input/BaseInput/baseInputTokens';
+import type { BaseInputProps } from '~components/Input/BaseInput/BaseInput';
 
 type BaseInputDropDownButtonProps = {
   /**
@@ -66,6 +68,11 @@ type BaseInputDropDownButtonProps = {
    * icon is the icon of the dropdown
    */
   icon?: IconComponent;
+  /**
+   * size is the size of the dropdown button (inherited from parent input)
+   * @default 'medium'
+   */
+  size?: NonNullable<BaseInputProps['size']>;
 } & DataAnalyticsAttribute;
 
 type ControlledInputDropDownButtonProps = BaseInputDropDownButtonProps & {
@@ -88,35 +95,37 @@ type InputDropDownButtonProps =
   | ControlledInputDropDownButtonProps
   | UncontrolledInputDropDownButtonProps;
 
-const StyledSearchTrailingDropdown = styled.button<{ $isSelected?: boolean; isDisabled?: boolean }>(
-  ({ theme, isDisabled }) => {
-    const { spacing } = theme;
-    return {
-      backgroundColor: theme.colors.transparent,
-      gap: makeSpace(spacing[2]),
-      display: 'flex',
-      height: '100%',
-      alignItems: 'center',
-      border: 'none',
-      cursor: isDisabled ? 'not-allowed' : 'pointer',
-      '&[disabled]': {
-        cursor: 'not-allowed',
-        pointerEvents: 'none',
-      },
-      '&:focus': {
-        ...getFocusRingStyles({ theme }),
-        backgroundColor: theme.colors.interactive.background.gray.faded,
-      },
-      '&:hover': {
-        backgroundColor: theme.colors.interactive.background.gray.faded,
-      },
-      '&:focus-visible': {
-        outlineOffset: makeSpace(theme.spacing[0]),
-      },
-      borderRadius: theme.border.radius.small,
-    };
-  },
-);
+const StyledSearchTrailingDropdown = styled.button<{
+  $isSelected?: boolean;
+  isDisabled?: boolean;
+  $size: NonNullable<BaseInputProps['size']>;
+}>(({ theme, isDisabled, $size }) => {
+  const { spacing } = theme;
+  return {
+    backgroundColor: theme.colors.transparent,
+    gap: makeSpace(spacing[2]),
+    display: 'flex',
+    height: '100%',
+    alignItems: 'center',
+    border: 'none',
+    cursor: isDisabled ? 'not-allowed' : 'pointer',
+    '&[disabled]': {
+      cursor: 'not-allowed',
+      pointerEvents: 'none',
+    },
+    '&:focus': {
+      ...getFocusRingStyles({ theme }),
+      backgroundColor: theme.colors.interactive.background.gray.faded,
+    },
+    '&:hover': {
+      backgroundColor: theme.colors.interactive.background.gray.faded,
+    },
+    '&:focus-visible': {
+      outlineOffset: makeSpace(theme.spacing[0]),
+    },
+    borderRadius: inputDropdownButtonBorderRadius[$size],
+  };
+});
 
 const _InputDropdownButton = ({
   onClick,
@@ -131,6 +140,7 @@ const _InputDropdownButton = ({
   value,
   defaultValue,
   icon: Icon,
+  size = 'medium',
   ...rest
 }: InputDropDownButtonProps): React.ReactElement | null => {
   const idBase = useId('input-drop-down-button');
@@ -166,6 +176,7 @@ const _InputDropdownButton = ({
   return (
     <StyledSearchTrailingDropdown
       type="button"
+      $size={size}
       onClick={(e) => {
         if (isDisabled) return;
         onTriggerClick();

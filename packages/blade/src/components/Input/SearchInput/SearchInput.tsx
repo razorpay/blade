@@ -179,6 +179,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     return React.cloneElement(trailingDropdown as React.ReactElement, {
       selectionType: 'single',
       isOpen: isTrailingDropDownOpen,
+      height: '100%',
       onOpenChange: (isOpen: boolean) => {
         setIsTrailingDropDownOpen(isOpen);
       },
@@ -188,6 +189,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
           if (child.type === InputDropdownButton) {
             return React.cloneElement(child, {
               _isInsideSearchInput: true,
+              size,
             });
           }
           if (child.type === DropdownOverlay) {

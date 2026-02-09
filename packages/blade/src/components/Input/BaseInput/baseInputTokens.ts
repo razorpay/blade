@@ -42,20 +42,57 @@ export const baseInputBorderColor = {
 
 export const baseInputBackgroundColor = {
   default: 'surface.background.gray.intense',
-  hovered: 'surface.background.gray.moderate',
-  focused: 'surface.background.gray.moderate',
-  disabled: 'surface.background.gray.subtle',
+  hovered: 'surface.background.gray.intense',
+  focused: 'surface.background.gray.intense',
+  disabled: 'surface.background.gray.moderate',
   error: 'surface.background.gray.intense',
   success: 'surface.background.gray.intense',
 } as const;
 
 export const baseInputBorderlessBackgroundColor = {
   default: 'transparent',
-  hovered: 'surface.background.gray.moderate',
-  focused: 'surface.background.gray.moderate',
-  disabled: 'surface.background.gray.intense',
+  hovered: 'surface.background.gray.intense',
+  focused: 'surface.background.gray.intense',
+  disabled: 'surface.background.gray.moderate',
   error: 'feedback.background.negative.subtle',
   success: 'feedback.background.positive.subtle',
+} as const;
+
+/**
+ * Border radius tokens for input sizes
+ * - xsmall, small: 8px (small)
+ * - medium: 8px (small)
+ * - large: 12px (medium)
+ */
+export const baseInputBorderRadius = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'small',
+  large: 'medium',
+} as const;
+
+/**
+ * Border radius for input dropdown buttons (in px)
+ * - xsmall, small: 6px
+ * - medium: 6px
+ * - large: 8px
+ */
+export const inputDropdownButtonBorderRadius = {
+  xsmall: size['6'],
+  small: size['6'],
+  medium: size['6'],
+  large: size['8'],
+} as const;
+
+/**
+ * Padding for input dropdown button wrapper
+ * Uses spacing tokens (1 = 2px, 2 = 4px)
+ */
+export const inputDropdownButtonPadding = {
+  xsmall: 1,
+  small: 1,
+  medium: 2,
+  large: 2,
 } as const;
 
 export const baseInputBorderWidth = {

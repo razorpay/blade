@@ -692,39 +692,44 @@ TextInputWithUncontrolledTags.args = {
 };
 
 export const TextInputWithTrailingAndLeadingDropdown: StoryFn<typeof TextInputComponent> = () => {
+  const sizes = ['xsmall', 'small', 'medium', 'large'] as const;
   return (
-    <Box display="flex" flexDirection="column">
-      <TextInputComponent
-        label="Enter Website URL (for verification)"
-        leading={
-          <Dropdown>
-            <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListItem title="www." value="www" />
-                <ActionListItem title="blog." value="blog" />
-                <ActionListItem title="shop." value="shop" />
-                <ActionListItem title="ecommerce." value="ecommerce" />
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        }
-        trailing={
-          <Dropdown>
-            <InputDropdownButton defaultValue="in" />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListItem title=".in" value="in" />
-                <ActionListItem title=".com" value="com" />
-                <ActionListItem title=".biz" value="biz" />
-                <ActionListItem title=".business" value="business" />
-                {/* maybe one day */}
-                <ActionListItem title=".razorpay" value="razorpay" />
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        }
-      />
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      {sizes.map((size) => (
+        <TextInputComponent
+          key={size}
+          label="Enter Website URL (for verification)"
+          size={size}
+          leading={
+            <Dropdown>
+              <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+              <DropdownOverlay>
+                <ActionList>
+                  <ActionListItem title="www." value="www" />
+                  <ActionListItem title="blog." value="blog" />
+                  <ActionListItem title="shop." value="shop" />
+                  <ActionListItem title="ecommerce." value="ecommerce" />
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          }
+          trailing={
+            <Dropdown>
+              <InputDropdownButton defaultValue="in" />
+              <DropdownOverlay>
+                <ActionList>
+                  <ActionListItem title=".in" value="in" />
+                  <ActionListItem title=".com" value="com" />
+                  <ActionListItem title=".biz" value="biz" />
+                  <ActionListItem title=".business" value="business" />
+                  {/* maybe one day */}
+                  <ActionListItem title=".razorpay" value="razorpay" />
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          }
+        />
+      ))}
     </Box>
   );
 };

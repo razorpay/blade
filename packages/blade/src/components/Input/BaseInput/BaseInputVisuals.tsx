@@ -2,6 +2,7 @@
 import React from 'react';
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
+import { inputDropdownButtonPadding } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
@@ -35,14 +36,14 @@ type InputVisuals = Pick<
 };
 
 const getVisualContainerStyles = ({
-  shouldStretchTrailingBox,
+  shouldStretch,
 }: {
-  shouldStretchTrailingBox?: boolean;
+  shouldStretch?: boolean;
 } = {}): Pick<BaseBoxProps, 'display' | 'flexDirection' | 'alignItems' | 'alignSelf'> => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  alignSelf: shouldStretchTrailingBox ? 'stretch' : 'center',
+  alignSelf: shouldStretch ? 'stretch' : 'center',
 });
 
 const trailingIconColor: Record<NonNullable<InputVisuals['validationState']>, IconColors> = {
@@ -307,7 +308,7 @@ export const BaseInputVisuals = ({
 
   if (hasLeadingVisuals) {
     return (
-      <BaseBox {...getVisualContainerStyles()}>
+      <BaseBox {...getVisualContainerStyles({ shouldStretch: hasLeadingDropDown })}>
         {hasLeadingInteractionElement ? (
           <BaseBox
             paddingLeft={getInteractionElementStyles({
@@ -344,7 +345,13 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {leadingDropDown ? (
-          <BaseBox paddingLeft="spacing.2" display="flex">
+          <BaseBox
+            paddingLeft={`spacing.${inputDropdownButtonPadding[size]}` as SpacingValueType}
+            paddingY={`spacing.${inputDropdownButtonPadding[size]}` as SpacingValueType}
+            display="flex"
+            alignItems="stretch"
+            alignSelf="stretch"
+          >
             {leadingDropDown}
           </BaseBox>
         ) : null}
@@ -356,14 +363,15 @@ export const BaseInputVisuals = ({
     return (
       <BaseBox
         {...getVisualContainerStyles({
-          shouldStretchTrailingBox:
-            hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick),
+          shouldStretch:
+            (hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick)) ||
+            hasTrailingDropDown,
         })}
       >
         {hasTrailingInteractionElement ? (
           <BaseBox
             {...getVisualContainerStyles({
-              shouldStretchTrailingBox:
+              shouldStretch:
                 hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick),
             })}
           >
@@ -428,7 +436,13 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasTrailingDropDown ? (
-          <BaseBox paddingRight="spacing.2" display="flex">
+          <BaseBox
+            paddingRight={`spacing.${inputDropdownButtonPadding[size]}` as SpacingValueType}
+            paddingY={`spacing.${inputDropdownButtonPadding[size]}` as SpacingValueType}
+            display="flex"
+            alignItems="stretch"
+            alignSelf="stretch"
+          >
             {trailingDropDown}
           </BaseBox>
         ) : null}
