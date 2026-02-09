@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': changeset
+'@razorpay/blade': patch
 ---
 
 feat(blade): expose barSize prop in barChart
