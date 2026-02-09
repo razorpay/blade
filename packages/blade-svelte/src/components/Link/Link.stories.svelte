@@ -1,8 +1,9 @@
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Link from './Link.svelte';
-  import { InfoIcon, SearchIcon, PlusIcon } from '../Icons';
-  
+  import { iconMap } from '../Icons';
+  import { InfoIcon, PlusIcon, SearchIcon } from '../Icons';
+
   const { Story } = defineMeta({
     title: 'Components/Link',
     component: Link,
@@ -13,6 +14,7 @@
       color: 'primary',
       size: 'medium',
       isDisabled: false,
+      icon: undefined,
       iconPosition: 'left',
       href: 'https://github.com/razorpay/blade',
       target: '_blank',
@@ -52,6 +54,15 @@
         description: 'Whether the link is disabled',
         table: {
           defaultValue: { summary: 'false' },
+        },
+      },
+      icon: {
+        control: 'select',
+        options: Object.keys(iconMap),
+        mapping: iconMap,
+        description: 'Icon to display alongside the link text',
+        table: {
+          defaultValue: { summary: 'None' },
         },
       },
       iconPosition: {

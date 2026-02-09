@@ -15,3 +15,5 @@ export { MoreFilledIcon } from './MoreFilledIcon';
 // Utilities (for internal use or advanced usage)
 export { getIconProps } from './getIconProps';
 export { iconSizeMap } from './iconSizeMap';
+export { iconMap } from './iconMap';
+export type { IconComponent } from './iconMap';

@@ -1,9 +1,10 @@
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Button from './Button.svelte';
+  import { iconMap } from '../Icons';
   import { CloseIcon, SearchIcon } from '../Icons';
   import Text from '../Typography/Text/Text.svelte';
-  
+
   const { Story } = defineMeta({
     title: 'Components/Button',
     component: Button,
@@ -16,6 +17,8 @@
       isDisabled: false,
       isLoading: false,
       isFullWidth: false,
+      icon: undefined,
+      iconPosition: 'left',
     },
     argTypes: {
       children: {
@@ -68,6 +71,15 @@
         description: 'Whether the button should take the full width of its container',
         table: {
           defaultValue: { summary: 'false' },
+        },
+      },
+      icon: {
+        control: 'select',
+        options: Object.keys(iconMap),
+        mapping: iconMap,
+        description: 'Icon to display alongside the button text',
+        table: {
+          defaultValue: { summary: 'None' },
         },
       },
       iconPosition: {
