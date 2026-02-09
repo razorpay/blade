@@ -308,11 +308,7 @@ export const BaseInputVisuals = ({
 
   if (hasLeadingVisuals) {
     return (
-      <BaseBox
-        {...getVisualContainerStyles({
-          shouldStretch: hasLeadingDropDown || hasLeadingInteractionElement,
-        })}
-      >
+      <BaseBox {...getVisualContainerStyles({ shouldStretch: hasLeadingDropDown })}>
         {hasLeadingInteractionElement ? (
           <BaseBox
             paddingLeft={getInteractionElementStyles({

@@ -3,24 +3,29 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { makeSpace } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute } from '~utils/metaAttribute';
+import { spacing } from '~tokens/global';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeSpace } from '~utils';
 import { ChevronUpDownIcon } from '~components/Icons';
 import { Box } from '~components/Box';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { Text } from '~components/Typography';
-import { makeAccessible } from '~utils/makeAccessible';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { useId } from '~utils/useId';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import type { IconComponent } from '~components/Icons';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { metaAttribute } from '~utils/metaAttribute';
 import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
-import { inputDropdownButtonBorderRadius } from '~components/Input/BaseInput/baseInputTokens';
+import {
+  inputDropdownButtonBorderRadius,
+  baseInputHeight,
+  inputDropdownButtonPadding,
+} from '~components/Input/BaseInput/baseInputTokens';
 import type { BaseInputProps } from '~components/Input/BaseInput/BaseInput';
 
 type BaseInputDropDownButtonProps = {
@@ -104,12 +109,19 @@ const StyledSearchTrailingDropdown = styled.button<{
   isDisabled?: boolean;
   $size: NonNullable<BaseInputProps['size']>;
 }>(({ theme, isDisabled, $size }) => {
-  const { spacing } = theme;
+  // The wrapper BaseBox in BaseInputVisuals already applies paddingY
+  // So we need to subtract that from the baseInputHeight to get the correct button height
+  const paddingValue = inputDropdownButtonPadding[$size];
+  const wrapperVerticalPadding = spacing[paddingValue] * 2; // top + bottom padding from wrapper
+  const buttonHeight = baseInputHeight[$size] - wrapperVerticalPadding;
+
   return {
     backgroundColor: theme.colors.transparent,
-    gap: makeSpace(spacing[2]),
+    gap: makeSpace(theme.spacing[2]),
     display: 'flex',
-    height: '100%',
+    boxSizing: 'border-box',
+    height: makeSpace(buttonHeight),
+    padding: makeSpace(theme.spacing[2]),
     alignItems: 'center',
     border: 'none',
     cursor: isDisabled ? 'not-allowed' : 'pointer',
@@ -216,7 +228,12 @@ const _InputDropdownButton = ({
       {...makeAnalyticsAttribute(rest)}
       {...metaAttribute({ name: 'InputDropdownButton', testID })}
     >
-      <Box padding="spacing.2" display="flex" gap="spacing.2" alignItems="center">
+      <Box
+        padding={`spacing.${inputDropdownButtonPadding[size]}` as any}
+        display="flex"
+        gap="spacing.2"
+        alignItems="center"
+      >
         {_isInsideSearchInput && (
           <Text
             variant="body"

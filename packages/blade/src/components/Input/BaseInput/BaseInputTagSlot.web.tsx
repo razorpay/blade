@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { castWebType, makeSize } from '~utils';
+import { MetaConstants } from '~utils/metaAttribute';
+import { size as sizeToken } from '~tokens/global';
 import type { BaseInputTagSlotProps } from './types';
 import { baseInputHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { castWebType, makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useIsMobile } from '~utils/useIsMobile';
-import { MetaConstants } from '~utils/metaAttribute';
-import { size as sizeToken } from '~tokens/global';
 import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
 
 const MINUMUM_INPUT_SPACE = 60;
@@ -262,7 +262,7 @@ const BaseInputTagSlot = ({
         </>
       )}
       <BaseBox
-        marginTop="-4px"
+        marginTop={hasTags ? '-4px' : undefined}
         minWidth={
           hasTags && renderAs === 'button'
             ? undefined
