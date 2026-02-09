@@ -75,10 +75,13 @@ const StyledTabButton = styled.button<{
           ? theme.colors.interactive.border.primary.default
           : theme.colors.interactive.border.gray.highlighted,
       backgroundColor:
-        // Don't want to show hover state on filled tabs when vertical because
-        // The hover color needs to be on the TabIndicator instead.
-        isSelected && isFilled && !isVertical
-          ? 'transparent'
+        // For selected filled tabs:
+        // - Horizontal: use 'transparent' because the hover effect is handled by the TabIndicator
+        // - Vertical: keep the same default background (white pill) so hover doesn't change it
+        isSelected && isFilled
+          ? isVertical
+            ? getIn(theme, background.default)
+            : 'transparent'
           : getIn(theme, background.highlighted),
     },
     '&:disabled': {
@@ -88,7 +91,7 @@ const StyledTabButton = styled.button<{
     '&:focus-visible': {
       borderRadius: makeSpace(theme.border.radius.medium),
       boxShadow: `0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
-      backgroundColor: getIn(theme, background.highlighted),
+      backgroundColor: theme.colors.interactive.background.gray.default,
     },
 
     // In horizontal filled tabs, the TabIndicator (the white pill background) is rendered
