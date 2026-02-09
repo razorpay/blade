@@ -13,11 +13,11 @@ const badgeHeight: Record<NonNullable<BadgeProps['size']>, number> = {
 const horizontalPadding: Record<NonNullable<BadgeProps['size']>, DotNotationSpacingStringToken> = {
   xsmall: 'spacing.2',
   small: 'spacing.3',
-  medium: 'spacing.3',
-  large: 'spacing.4',
+  medium: 'spacing.2',
+  large: 'spacing.3',
 };
 
-const iconPadding: Record<NonNullable<BadgeProps['size']>, DotNotationSpacingStringToken> = {
+const textHorizontalMargin: Record<NonNullable<BadgeProps['size']>, DotNotationSpacingStringToken> = {
   xsmall: 'spacing.1',
   small: 'spacing.1',
   medium: 'spacing.2',
@@ -31,4 +31,4 @@ const iconSize: Record<NonNullable<BadgeProps['size']>, IconProps['size']> = {
   large: 'small',
 };
 
-export { badgeHeight, horizontalPadding, iconPadding, iconSize };
+export { badgeHeight, horizontalPadding, textHorizontalMargin, iconSize };
