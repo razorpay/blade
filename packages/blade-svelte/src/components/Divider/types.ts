@@ -26,14 +26,6 @@ export type DividerProps = {
    */
   thickness?: 'thinner' | 'thin' | 'thick' | 'thicker';
   /**
-   * Sets the height of divider. Divider uses Flex by default, use height only when parent is not flex.
-   */
-  height?: string;
-  /**
-   * Sets the width of divider. Divider uses Flex by default, use width only when parent is not flex.
-   */
-  width?: string;
-  /**
    * Test ID for testing
    */
   testID?: string;

@@ -8,8 +8,6 @@
     dividerStyle = 'solid',
     variant = 'muted',
     thickness = 'thin',
-    height,
-    width,
     testID,
     class: className,
     ...rest
@@ -35,28 +33,13 @@
     return classes.filter(Boolean).join(' ');
   });
 
-  // Build inline styles for height/width if provided
-  const inlineStyle = $derived(() => {
-    const styles: string[] = [];
-    if (height) styles.push(`height: ${height}`);
-    if (width) styles.push(`width: ${width}`);
-
-    // Add inline styles from styled props
-    if (styledProps.inlineStyles) {
-      Object.entries(styledProps.inlineStyles).forEach(([key, value]) => {
-        // Convert camelCase to kebab-case for CSS
-        const cssKey = key.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
-        styles.push(`${cssKey}: ${value}`);
-      });
-    }
-
-    return styles.length > 0 ? styles.join('; ') : undefined;
-  });
+  // Build meta attributes for testing
+  const metaAttrs = $derived(metaAttribute({ name: MetaConstants.Divider, testID }));
 </script>
 
 <div
   class={dividerClass()}
   role="separator"
-  style={inlineStyle()}
+  {...metaAttrs}
   {...rest}
 />
