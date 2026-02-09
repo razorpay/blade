@@ -17,6 +17,7 @@ const getCheckboxIconWrapperStyles = ({
   isChecked,
   isDisabled,
   isNegative,
+  isIndeterminate,
   size,
 }: CheckboxRectProps & { theme: Theme }): CSSObject => {
   let variant: 'default' | 'disabled' | 'negative' = 'default';
@@ -43,7 +44,7 @@ const getCheckboxIconWrapperStyles = ({
     borderRadius: makeSize(theme.border.radius.xsmall),
     backgroundColor,
     borderColor,
-    paddingTop: size === 'small' ? makeSize(sizeToken['1']) : 0,
+    paddingTop: size === 'small' && !isIndeterminate ? makeSize(sizeToken['1']) : 0,
   };
 };
 
