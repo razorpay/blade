@@ -23,10 +23,14 @@ const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES || '[]');
 const MONOREPO_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
+// With OIDC trusted publishers, npm CLI uses the workflow's OIDC token; NPM_TOKEN is not needed.
+// Only add _authToken when NPM_TOKEN is set (e.g. fallback or non-OIDC environments).
+const authLine = process.env.NPM_TOKEN
+  ? `//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}\n`
+  : '';
 const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true
-//registry.npmjs.org/:_authToken=\${NPM_TOKEN}
-`;
+${authLine}`;
 
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
 

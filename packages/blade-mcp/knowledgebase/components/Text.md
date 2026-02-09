@@ -29,7 +29,14 @@ type TextCommonProps = {
    */
   color?: string;
   textAlign?: string;
-  textDecorationLine?: string;
+  /**
+   * Applies text decoration to the text.
+   * - 'none': No decoration
+   * - 'underline': Solid underline
+   * - 'line-through': Strikethrough
+   * - 'dotted': Dotted underline (useful for abbreviations or terms with tooltips)
+   */
+  textDecorationLine?: 'none' | 'underline' | 'line-through' | 'dotted';
   wordBreak?: string;
 } & TestID &
   StyledPropsBlade;
@@ -107,6 +114,15 @@ function TextExample() {
         margin="spacing.2"
       >
         This text demonstrates word-break and custom styling with margin
+      </Text>
+
+      {/* Dotted underline - useful for abbreviations or terms with tooltips */}
+      <Text variant="body" size="medium">
+        Hover over{' '}
+        <Text as="abbr" textDecorationLine="dotted" color="surface.text.primary.normal">
+          GST
+        </Text>{' '}
+        for more information about Goods and Services Tax
       </Text>
     </Box>
   );

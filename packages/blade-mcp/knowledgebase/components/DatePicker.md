@@ -126,6 +126,15 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
   footer?: React.ReactElement;
 
   /**
+   * Controls how the selected date is displayed in the input field.
+   * - `compact`: Shows only the preset label (e.g., "Last 7 days") instead of the actual dates.
+   *   Useful for presets where showing the label is more meaningful than showing actual dates.
+   * - `default`: Shows the actual date values in the input field.
+   * @default 'default'
+   */
+  displayFormat?: 'compact' | 'default';
+
+  /**
    * Sets the date format to be displayed in the input field
    * @default 'DD/MM/YYYY'
    */
@@ -230,6 +239,16 @@ type SingleDatePickerProps = DatePickerCommonProps<'single'> & {
    * Name for the input for form submission
    */
   name?: string;
+
+  /**
+   * When true, shows a clear button in the input field
+   */
+  showClearButton?: boolean;
+
+  /**
+   * Callback fired when the clear button is clicked
+   */
+  onClearButtonClick?: () => void;
 };
 
 /**
@@ -310,6 +329,16 @@ type RangeDatePickerProps = DatePickerCommonProps<'range'> & {
    * Names for the inputs for form submission
    */
   name?: { start: string; end?: string };
+
+  /**
+   * When true, shows a clear button in the input field
+   */
+  showClearButton?: boolean;
+
+  /**
+   * Callback fired when the clear button is clicked
+   */
+  onClearButtonClick?: () => void;
 };
 
 /**
@@ -455,6 +484,42 @@ const SizeVariantsExample = () => {
 };
 
 export default SizeVariantsExample;
+```
+
+### DatePicker with Clear Button
+
+This example demonstrates the `showClearButton` prop which renders a clear icon button in the input field.
+
+```tsx
+import React, { useState } from 'react';
+import { DatePicker, Box, Text } from '@razorpay/blade/components';
+import dayjs from 'dayjs';
+
+const ClearButtonExample = () => {
+  const [date, setDate] = useState<Date | null>(new Date());
+
+  return (
+    <Box>
+      <Text weight="semibold" marginBottom="spacing.3">
+        DatePicker with Clear Button
+      </Text>
+      <DatePicker
+        selectionType="single"
+        label="Select date"
+        value={date}
+        onChange={setDate}
+        showClearButton
+        onClearButtonClick={() => console.log('Date cleared!')}
+      />
+
+      <Text size="small" marginTop="spacing.2">
+        Selected: {date ? dayjs(date).format('DD MMM YYYY') : 'None'}
+      </Text>
+    </Box>
+  );
+};
+
+export default ClearButtonExample;
 ```
 
 ### Month and Year Pickers
@@ -625,9 +690,87 @@ const DateRangeExample = () => {
 export default DateRangeExample;
 ```
 
+### Presets with Compact Display Format
+
+The `displayFormat="compact"` prop changes how the DatePicker input displays selected values when using presets:
+
+- **When closed (not focused):** If a preset is selected, the input shows the preset label (e.g., "Last 7 days") instead of the actual date range
+- **When focused or picker is open:** The input switches to show the actual date values in DD-MM-YY format, allowing users to see and edit the dates
+- **Custom date selection:** When the user selects custom dates that don't match any preset, the input always shows the date values regardless of focus state
+
+This is useful when the preset label provides more context than showing raw dates (e.g., "Last quarter" is more meaningful than "01-10-2024 - 31-12-2024").
+
+```tsx
+import React, { useState } from 'react';
+import { DatePicker, Box, Text } from '@razorpay/blade/components';
+import dayjs from 'dayjs';
+
+const PresetsCompactDisplayExample = () => {
+  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
+    dayjs().subtract(7, 'days').toDate(),
+    new Date(),
+  ]);
+
+  // Define presets
+  const datePresets = [
+    {
+      label: 'Today',
+      value: (today: Date): [Date, Date] => [today, today],
+    },
+    {
+      label: 'Yesterday',
+      value: (today: Date): [Date, Date] => {
+        const yesterday = dayjs(today).subtract(1, 'day').toDate();
+        return [yesterday, yesterday];
+      },
+    },
+    {
+      label: 'Last 7 days',
+      value: (today: Date): [Date, Date] => [dayjs(today).subtract(7, 'days').toDate(), today],
+    },
+    {
+      label: 'Last 30 days',
+      value: (today: Date): [Date, Date] => [dayjs(today).subtract(30, 'days').toDate(), today],
+    }
+  ];
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      <Box>
+        <Text weight="semibold" marginBottom="spacing.3">
+          Presets with Compact Display Format
+        </Text>
+        <DatePicker
+          selectionType="range"
+          label={{ start: 'Start Date', end: 'End Date' }}
+          value={dateRange}
+          onChange={setDateRange}
+          presets={datePresets}
+          displayFormat="compact"
+          helpText={{ start: 'Select a preset or choose custom dates' }}
+          size="medium"
+        />
+
+        <Text size="small" marginTop="spacing.3">
+          {/* With displayFormat="compact", input shows preset label (e.g., "Last 7 days") instead of dates */}
+          Selected: {dateRange[0] ? dayjs(dateRange[0]).format('DD MMM YYYY') : 'None'} -{' '}
+          {dateRange[1] ? dayjs(dateRange[1]).format('DD MMM YYYY') : 'None'}
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
+export default PresetsCompactDisplayExample;
+```
+
 ### FilterChipDatePicker
 
 This example demonstrates the FilterChipDatePicker variant for filters and data selection interfaces.
+
+**Note:** When using `onClearButtonClick`, the clear behavior differs based on selection type:
+- `selectionType="single"` → clears to `null`
+- `selectionType="range"` → clears to `[null, null]`
 
 ```tsx
 import React, { useState } from 'react';
@@ -669,6 +812,7 @@ const FilterChipDatePickerExample = () => {
             selectionType="single"
             value={singleDate}
             onChange={(date) => setSingleDate(date as Date)}
+            onClearButtonClick={() => setSingleDate(null)}
           />
         </Box>
 

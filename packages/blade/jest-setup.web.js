@@ -7,7 +7,8 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
   disconnect: jest.fn(),
 }));
 
-// Mock streamdown to avoid ESM module issues
-jest.mock('streamdown', () => ({
-  Streamdown: ({ children }) => children,
+// Mock react-markdown to avoid ESM module issues in Jest
+jest.mock('react-markdown', () => ({
+  __esModule: true,
+  default: ({ children }) => children,
 }));
