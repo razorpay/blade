@@ -5,12 +5,12 @@
 
 ## MANDATORY RULES (never skip, never override)
 
-- **You MUST use the `Task` tool to spawn a separate sub-agent for EVERY phase (Discovery, Research, Execute, Verify). No exceptions. No shortcuts. ALL tiers including simple.**
+- **You MUST use `run-agent` via shell command to spawn a separate sub-agent for EVERY phase (Discovery, Research, Execute, Verify). No exceptions. No shortcuts. ALL tiers including simple.**
 - **You are the ORCHESTRATOR. You coordinate. You do NOT execute phase work yourself.**
-- **Reading a sub-agent's `.md` file does NOT mean you should follow its steps inline. You read it only to include its contents in the `Task` tool's `prompt` parameter.**
-- **If you find yourself reading React source files, writing migration plans, creating `.svelte` files, running `svelte-check`, or doing any work described in `discovery.md`, `research.md`, `execute.md`, or `verify.md` — STOP IMMEDIATELY. You are violating the orchestrator boundary. Use the `Task` tool instead.**
-- Your ONLY permitted jobs are: parse input, classify tier, check dependencies, manage Storybooks, spawn `Task` sub-agents, relay outputs between phases, and present human gates.
-- "I already have the context" is NOT a valid reason to skip spawning a Task. The sub-agent architecture exists for isolation and reliability. Always spawn.
+- **Reading a sub-agent's `.md` file does NOT mean you should follow its steps inline. The `run-agent` command reads the file and spawns a separate agent automatically.**
+- **If you find yourself reading React source files, writing migration plans, creating `.svelte` files, running `svelte-check`, or doing any work described in `discovery.md`, `research.md`, `execute.md`, or `verify.md` — STOP IMMEDIATELY. You are violating the orchestrator boundary. Run `run-agent` instead.**
+- Your ONLY permitted jobs are: parse input, classify tier, check dependencies, manage Storybooks, spawn `run-agent` sub-agents, relay outputs between phases, and present human gates.
+- "I already have the context" is NOT a valid reason to skip spawning a sub-agent. The sub-agent architecture exists for isolation and reliability. Always spawn.
 
 ## Include
 
@@ -113,14 +113,14 @@ Before the verify phase begins, ensure Storybooks are running:
 
 ## Step 5: Route to Pipeline
 
-> ⚠️ SELF-CHECK: You MUST call the `Task` tool for every phase below.
+> ⚠️ SELF-CHECK: You MUST run `run-agent` for every phase below.
 > If you are about to read component source files, write a plan, create
 > `.svelte` files, or run `svelte-check` yourself — STOP. You are the
-> orchestrator, not the executor. Call the `Task` tool now.
+> orchestrator, not the executor. Run `run-agent` now.
 
 ### Sub-agent Pipeline (ALL tiers — simple, medium, and complex)
 
-Every phase MUST be executed by spawning a sub-agent via the `Task` tool.
+Every phase MUST be executed by spawning a sub-agent via `run-agent` shell command.
 Never execute phase instructions inline, regardless of tier or context.
 
 **Tier-specific adjustments:**
@@ -131,28 +131,29 @@ Never execute phase instructions inline, regardless of tier or context.
 
 #### Phase 1: Discovery Agent
 
-> ⚠️ SELF-CHECK: Am I about to read React source files myself? If yes, STOP. Call the `Task` tool now.
+> ⚠️ SELF-CHECK: Am I about to read React source files myself? If yes, STOP. Run `run-agent` now.
 
-1. Read the contents of `.cursor/subagents/shared-rules.md` and `.cursor/subagents/discovery.md`
-2. Use the `Task` tool with:
-   - `description`: `"Discovery: {Name}"`
-   - `prompt`: The full text of shared-rules.md + discovery.md + `"Component to analyze: {Name}"`
-   - `subagent_type`: `"generalPurpose"`
-3. When the Task completes, save its output to `.cursor/artifacts/{Name}/discovery-report.md`
+1. Run the Discovery agent via shell command:
+
+```bash
+run-agent .cursor/subagents/discovery.md "CONTEXT: Component={Name}"
+```
+
+2. Wait for the agent to complete, then verify `.cursor/artifacts/{Name}/discovery-report.md` was created
 
 ---
 
 #### Phase 2: Research Agent
 
-> ⚠️ SELF-CHECK: Am I about to write a migration plan myself? If yes, STOP. Call the `Task` tool now.
+> ⚠️ SELF-CHECK: Am I about to write a migration plan myself? If yes, STOP. Run `run-agent` now.
 
-1. Read the contents of `.cursor/subagents/shared-rules.md` and `.cursor/subagents/research.md`
-2. Read `.cursor/artifacts/{Name}/discovery-report.md` (output from Phase 1)
-3. Use the `Task` tool with:
-   - `description`: `"Research: {Name}"`
-   - `prompt`: The full text of shared-rules.md + research.md + the full text of discovery-report.md
-   - `subagent_type`: `"generalPurpose"`
-4. When the Task completes, save its output to `.cursor/artifacts/{Name}/migration-plan.md`
+1. Run the Research agent via shell command:
+
+```bash
+run-agent .cursor/subagents/research.md "CONTEXT: Component={Name}, DiscoveryReport=.cursor/artifacts/{Name}/discovery-report.md"
+```
+
+2. Wait for the agent to complete, then verify `.cursor/artifacts/{Name}/migration-plan.md` was created
 
 ---
 
@@ -167,30 +168,34 @@ Never execute phase instructions inline, regardless of tier or context.
 
 #### Phase 4: Execute Agent
 
-> ⚠️ SELF-CHECK: Am I about to create `.svelte` files or write CSS myself? If yes, STOP. Call the `Task` tool now.
+> ⚠️ SELF-CHECK: Am I about to create `.svelte` files or write CSS myself? If yes, STOP. Run `run-agent` now.
 
-1. Read the contents of `.cursor/subagents/shared-rules.md` and `.cursor/subagents/execute.md`
-2. Read `.cursor/artifacts/{Name}/migration-plan.md` (output from Phase 2)
-3. Use the `Task` tool with:
-   - `description`: `"Execute: {Name}"`
-   - `prompt`: The full text of shared-rules.md + execute.md + the full text of migration-plan.md
-   - `subagent_type`: `"generalPurpose"`
-4. When the Task completes, verify it reports files were created successfully
+1. Run the Execute agent via shell command:
+
+```bash
+run-agent .cursor/subagents/execute.md "CONTEXT: Component={Name}, MigrationPlan=.cursor/artifacts/{Name}/migration-plan.md"
+```
+
+2. Wait for the agent to complete, then verify the component files were created successfully
 
 ---
 
 #### Phase 5: Verify Agent
 
-> ⚠️ SELF-CHECK: Am I about to run `svelte-check` or take screenshots myself? If yes, STOP. Call the `Task` tool now.
+> ⚠️ SELF-CHECK: Am I about to run `svelte-check` or take screenshots myself? If yes, STOP. Run `run-agent` now.
 
-1. Read the contents of `.cursor/subagents/shared-rules.md` and `.cursor/subagents/verify.md`
-2. Read `.cursor/artifacts/{Name}/discovery-report.md` and `.cursor/artifacts/{Name}/migration-plan.md`
-3. Use the `Task` tool with:
-   - `description`: `"Verify: {Name}"`
-   - `prompt`: The full text of shared-rules.md + verify.md + the full text of discovery-report.md + migration-plan.md + `"Component: {Name}"`
-   - `subagent_type`: `"generalPurpose"`
-4. The Verify agent runs the full convergent loop (see verify.md)
-5. If Verify agent reports API parity gaps needing a patch, spawn a new Execute agent Task in patch mode, then re-spawn the Verify agent
+1. Run the Verify agent via shell command:
+
+```bash
+run-agent .cursor/subagents/verify.md "CONTEXT: Component={Name}, DiscoveryReport=.cursor/artifacts/{Name}/discovery-report.md, MigrationPlan=.cursor/artifacts/{Name}/migration-plan.md"
+```
+
+2. The Verify agent runs the full convergent loop (see verify.md)
+3. If Verify agent reports API parity gaps needing a patch, run the Execute agent in patch mode, then re-run the Verify agent:
+
+```bash
+run-agent .cursor/subagents/execute.md "CONTEXT: Component={Name}, Mode=patch, PatchRequest=.cursor/artifacts/{Name}/patch-request.md"
+```
 
 ---
 
@@ -234,7 +239,7 @@ Process batch components sequentially (not in parallel) to avoid file conflicts.
 
 ## Constraints
 
-- **ALWAYS use the `Task` tool for Discovery, Research, Execute, and Verify phases — no inline execution, no exceptions, regardless of tier**
+- **ALWAYS use `run-agent` shell command for Discovery, Research, Execute, and Verify phases — no inline execution, no exceptions, regardless of tier**
 - Always confirm tier with user before proceeding
 - Never run multiple component migrations in parallel
 - Never kill Storybook processes
