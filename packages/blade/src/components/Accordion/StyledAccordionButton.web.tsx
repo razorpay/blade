@@ -20,6 +20,13 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
     const radius = castWebType(theme.border.radius.medium);
 
     if (isFirstItem && isLastItem) {
+      // Single item: full radius when closed, only top radius when expanded
+      if (isExpanded) {
+        return {
+          borderTopLeftRadius: radius,
+          borderTopRightRadius: radius,
+        };
+      }
       return { borderRadius: radius };
     }
 
@@ -30,7 +37,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
       };
     }
 
-    if (isLastItem) {
+    if (isLastItem && !isExpanded) {
       return {
         borderBottomLeftRadius: radius,
         borderBottomRightRadius: radius,
