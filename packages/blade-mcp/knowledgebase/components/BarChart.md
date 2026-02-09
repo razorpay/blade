@@ -16,6 +16,7 @@ BarChart is a comprehensive data visualization component that renders interactiv
 - `stackId` must be consistent across all bars that should be stacked together
 - `layout="vertical"` requires `ChartXAxis` to have `type="number"` and `ChartYAxis` to have `type="category"`
 - Color tokens must follow the exact format: `data.background.categorical.{color}.{emphasis}` or `data.background.sequential.{color}.{number}`
+- Bar animations are controlled internally to ensure smooth entry/exit animations while preventing unwanted animations during tooltip hover interactions
 
 ## TypeScript Types
 
@@ -24,33 +25,45 @@ These types define the props that the BarChart component and its subcomponents a
 ```typescript
 type ChartBarProps = Omit<RechartsBarProps, 'fill' | 'dataKey' | 'name' | 'label' | 'activeBar'> & {
   /**
-   * The data key of the bar chart.
+   * The data key corresponding to a property in the data array.
    */
   dataKey: RechartsBarProps['dataKey'];
   /**
-   * The name of the bar chart.
+   * The name of the bar shown in tooltip and legend.
+   * If not provided, the dataKey will be used as the name.
    */
   name?: RechartsBarProps['name'];
   /**
-   * The color of the bar chart.
+   * The color of the bar.
+   * If not provided, colors will be picked from the default theme colors.
    */
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   /**
    * The stack id of the bar chart.
+   * Bars with the same stackId will be stacked on top of each other.
    */
   stackId?: RechartsBarProps['stackId'];
   /**
-   * The active bar of the bar chart.
+   * The active bar configuration for hover states.
+   * @default false
    */
   activeBar?: RechartsBarProps['activeBar'];
   /**
-   * The label of the bar chart.
+   * The label configuration for the bar chart.
+   * Can be a boolean, object, or custom render function.
+   * @default false
    */
   label?: RechartsBarProps['label'];
   /**
-   * The show legend of the bar chart.
-  */
+   * Whether to show this bar in the legend.
+   * @default true
+   */
   showLegend?: boolean;
+  /**
+   * Whether to hide this bar. When true, the bar will not be rendered.
+   * This is typically controlled internally by legend click interactions.
+   */
+  hide?: boolean;
 };
 
 type data = {
