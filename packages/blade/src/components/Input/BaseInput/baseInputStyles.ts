@@ -324,7 +324,7 @@ export const getBaseInputStyles = ({
     width: '100%',
     height: shouldHaveFlexibleHeight ? undefined : makeSpace(baseInputHeight[size]),
     minHeight: shouldHaveFlexibleHeight ? undefined : makeSpace(baseInputHeight[size]),
-    ...(isReactNative ? {} : { resize: 'none' }),
+    ...(isReactNative ? {} : { resize: 'none', boxSizing: 'border-box' }),
   };
 };
 

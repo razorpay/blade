@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import type { ReactElement } from 'react';
+import { throwBladeError } from '~utils/logger';
+import { isReactNative } from '~utils';
 import type { BaseInputProps } from './BaseInput';
 import { inputDropdownButtonPadding } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
@@ -8,10 +10,8 @@ import { Text } from '~components/Typography';
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
 import type { IconColors } from '~components/Icons';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
-import { throwBladeError } from '~utils/logger';
 import { Tooltip } from '~components/Tooltip';
 import { Box } from '~components/Box';
-import { isReactNative } from '~utils';
 
 type InputVisuals = Pick<
   BaseInputProps,
@@ -120,7 +120,7 @@ const getInteractionElementStyles = ({
   }
 
   if (hasLeadingInteractionElement) {
-    return 'spacing.3';
+    return 'spacing.2';
   }
 
   return 'spacing.0';
@@ -308,7 +308,11 @@ export const BaseInputVisuals = ({
 
   if (hasLeadingVisuals) {
     return (
-      <BaseBox {...getVisualContainerStyles({ shouldStretch: hasLeadingDropDown })}>
+      <BaseBox
+        {...getVisualContainerStyles({
+          shouldStretch: hasLeadingDropDown || hasLeadingInteractionElement,
+        })}
+      >
         {hasLeadingInteractionElement ? (
           <BaseBox
             paddingLeft={getInteractionElementStyles({
@@ -317,6 +321,7 @@ export const BaseInputVisuals = ({
               hasSuffix,
               hasTrailingButton,
             })}
+            paddingY={`spacing.${inputDropdownButtonPadding[size]}`}
             display="flex"
             alignItems="stretch"
             alignSelf="stretch"
@@ -346,8 +351,8 @@ export const BaseInputVisuals = ({
         ) : null}
         {leadingDropDown ? (
           <BaseBox
-            paddingLeft={`spacing.${inputDropdownButtonPadding[size]}` as SpacingValueType}
-            paddingY={`spacing.${inputDropdownButtonPadding[size]}` as SpacingValueType}
+            paddingLeft={`spacing.${inputDropdownButtonPadding[size]}`}
+            paddingY={`spacing.${inputDropdownButtonPadding[size]}`}
             display="flex"
             alignItems="stretch"
             alignSelf="stretch"

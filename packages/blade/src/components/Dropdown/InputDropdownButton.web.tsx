@@ -69,6 +69,10 @@ type BaseInputDropDownButtonProps = {
    */
   icon?: IconComponent;
   /**
+   * leading is a custom leading element (e.g., flag image)
+   */
+  leading?: React.ReactNode;
+  /**
    * size is the size of the dropdown button (inherited from parent input)
    * @default 'medium'
    */
@@ -140,6 +144,7 @@ const _InputDropdownButton = ({
   value,
   defaultValue,
   icon: Icon,
+  leading,
   size = 'medium',
   ...rest
 }: InputDropDownButtonProps): React.ReactElement | null => {
@@ -223,6 +228,7 @@ const _InputDropdownButton = ({
             in
           </Text>
         )}
+        {leading}
         {Icon && (
           <Icon
             size="medium"
