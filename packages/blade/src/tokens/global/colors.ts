@@ -572,7 +572,7 @@ export const colors: Color = {
       500: `hsla(0, 0%, 100%, ${opacity[1300]})`,
     },
     black: {
-      1: `hsla(0, 0%, 0%,  ${opacity[1]})`,
+      1: `hsla(0, 0%, 0%, ${opacity[1]})`,
       5: `hsla(0, 0%, 0%, ${opacity[50]})`,
       10: `hsla(0, 0%, 0%, ${opacity[100]})`,
       25: `hsla(0, 0%, 0%, ${opacity[200]})`,
