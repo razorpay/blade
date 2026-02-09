@@ -237,7 +237,7 @@ const colors: ColorsWithModes = {
         gray: {
           default: globalColors.neutral.blueGrayLight.a906,
           highlighted: globalColors.neutral.blueGrayLight.a912,
-          disabled: globalColors.neutral.blueGrayLight.a909,
+          disabled: globalColors.neutral.blueGrayLight.a906,
           faded: globalColors.neutral.blueGrayLight.a906,
           fadedHighlighted: globalColors.neutral.blueGrayLight.a909,
           ghost: globalColors.neutral.blueGrayLight.a1,
@@ -299,7 +299,7 @@ const colors: ColorsWithModes = {
         },
         gray: {
           default: globalColors.neutral.blueGrayLight[200],
-          highlighted: globalColors.neutral.blueGrayLight[300],
+          highlighted: globalColors.neutral.blueGrayLight[400],
           disabled: globalColors.neutral.blueGrayLight[200],
           faded: globalColors.neutral.blueGrayLight.a918,
         },
@@ -925,7 +925,7 @@ const colors: ColorsWithModes = {
         gray: {
           default: globalColors.neutral.blueGrayDark.a518,
           highlighted: globalColors.neutral.blueGrayDark.a532,
-          disabled: globalColors.neutral.blueGrayDark.a518,
+          disabled: globalColors.neutral.blueGrayDark.a509,
           faded: globalColors.neutral.blueGrayDark.a509,
           fadedHighlighted: globalColors.neutral.blueGrayDark.a512,
           ghost: globalColors.neutral.blueGrayDark.a1388,
@@ -1386,7 +1386,7 @@ const colors: ColorsWithModes = {
         },
       },
     },
-    transparent: `hsla(217, 27%, 15%, ${opacity[0]})`,
+    transparent: `hsla(210, 6%, 13%, ${opacity[0]})`,
   },
 };
 

@@ -1546,11 +1546,12 @@ exports[`<Table /> should render table 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -9338,6 +9339,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                           >
                             <div
                               class="c12"
+                              data-blade-component="checkbox-icon-fade"
                               style="opacity: 1; position: absolute; display: flex;"
                             >
                               <svg
@@ -9364,6 +9366,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                             </div>
                             <div
                               class="c13"
+                              data-blade-component="checkbox-icon-fade"
                               style="opacity: 0; position: absolute; display: flex;"
                             />
                           </div>
@@ -9489,6 +9492,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                             >
                               <div
                                 class="c13"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -9515,6 +9519,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                               </div>
                               <div
                                 class="c12"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 1; position: absolute; display: flex;"
                               >
                                 <svg
@@ -9642,6 +9647,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                             >
                               <div
                                 class="c13"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -9668,6 +9674,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                               </div>
                               <div
                                 class="c12"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 1; position: absolute; display: flex;"
                               >
                                 <svg
@@ -9813,6 +9820,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                             >
                               <div
                                 class="c13"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -9839,6 +9847,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                               </div>
                               <div
                                 class="c12"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 1; position: absolute; display: flex;"
                               >
                                 <svg
@@ -9984,6 +9993,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                             >
                               <div
                                 class="c13"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -10010,6 +10020,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                               </div>
                               <div
                                 class="c13"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -10115,6 +10126,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                             >
                               <div
                                 class="c13"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -10141,6 +10153,7 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
                               </div>
                               <div
                                 class="c13"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -12882,11 +12895,12 @@ exports[`<Table /> should render table with multi select 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -13158,6 +13172,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                           >
                             <div
                               class="c23"
+                              data-blade-component="checkbox-icon-fade"
                               style="opacity: 1; position: absolute; display: flex;"
                             >
                               <svg
@@ -13184,6 +13199,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                             </div>
                             <div
                               class="c24"
+                              data-blade-component="checkbox-icon-fade"
                               style="opacity: 0; position: absolute; display: flex;"
                             />
                           </div>
@@ -13401,6 +13417,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -13427,6 +13444,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                               </div>
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 1; position: absolute; display: flex;"
                               >
                                 <svg
@@ -13710,6 +13728,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -13736,6 +13755,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                               </div>
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -13997,6 +14017,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -14023,6 +14044,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                               </div>
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -14284,6 +14306,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -14310,6 +14333,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                               </div>
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -14571,6 +14595,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -14597,6 +14622,7 @@ exports[`<Table /> should render table with multi select 1`] = `
                               </div>
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -15584,11 +15610,12 @@ exports[`<Table /> should render table with multi select 2`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -15860,6 +15887,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                           >
                             <div
                               class="c23"
+                              data-blade-component="checkbox-icon-fade"
                               style="opacity: 1; position: absolute; display: flex;"
                             >
                               <svg
@@ -15886,6 +15914,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                             </div>
                             <div
                               class="c24"
+                              data-blade-component="checkbox-icon-fade"
                               style="opacity: 0; position: absolute; display: flex;"
                             />
                           </div>
@@ -16103,6 +16132,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -16129,6 +16159,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                               </div>
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 1; position: absolute; display: flex;"
                               >
                                 <svg
@@ -16412,6 +16443,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -16438,6 +16470,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                               </div>
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 1; position: absolute; display: flex;"
                               >
                                 <svg
@@ -16721,6 +16754,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -16747,6 +16781,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                               </div>
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -17008,6 +17043,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -17034,6 +17070,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                               </div>
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -17295,6 +17332,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                             >
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -17321,6 +17359,7 @@ exports[`<Table /> should render table with multi select 2`] = `
                               </div>
                               <div
                                 class="c24"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -17740,24 +17779,6 @@ exports[`<Table /> should render table with multi select 3`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
-  color: hsla(218,87%,43%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c31.c31.c31.c31.c31 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -17833,6 +17854,24 @@ exports[`<Table /> should render table with multi select 3`] = `
   margin: 0;
   padding: 0;
   opacity: 0.64;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(218,89%,51%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
@@ -18221,11 +18260,12 @@ exports[`<Table /> should render table with multi select 3`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -18497,6 +18537,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                           >
                             <div
                               class="c23"
+                              data-blade-component="checkbox-icon-fade"
                               style="opacity: 0; position: absolute; display: flex;"
                             >
                               <svg
@@ -18523,6 +18564,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                             </div>
                             <div
                               class="c23"
+                              data-blade-component="checkbox-icon-fade"
                               style="opacity: 0; position: absolute; display: flex;"
                             />
                           </div>
@@ -18740,6 +18782,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                             >
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -18766,6 +18809,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                               </div>
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -19027,6 +19071,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                             >
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -19053,6 +19098,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                               </div>
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -19314,6 +19360,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                             >
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -19340,6 +19387,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                               </div>
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -19601,6 +19649,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                             >
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -19627,6 +19676,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                               </div>
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
@@ -19888,6 +19938,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                             >
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               >
                                 <svg
@@ -19914,6 +19965,7 @@ exports[`<Table /> should render table with multi select 3`] = `
                               </div>
                               <div
                                 class="c23"
+                                data-blade-component="checkbox-icon-fade"
                                 style="opacity: 0; position: absolute; display: flex;"
                               />
                             </div>
