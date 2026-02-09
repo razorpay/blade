@@ -223,7 +223,7 @@ const _Alert = (
       <BaseButton
         size="small"
         onClick={actions.primary.onClick}
-        color={'white'}
+        color="white"
         variant="primary"
         data-analytics-name={MAKE_ANALYTICS_CONSTANTS.ALERT.PRIMARY_ACTION_BUTTON}
       >
