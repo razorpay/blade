@@ -1,3 +1,9 @@
+---
+description: Guidelines and patterns for migrating Blade React components to Svelte 5, covering architecture, styling, accessibility, and framework-specific conventions.
+globs:
+alwaysApply: false
+---
+
 # Blade Svelte Migration — Critical Rules
 
 > Include this file at the start of every sub-agent prompt.

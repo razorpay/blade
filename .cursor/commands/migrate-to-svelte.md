@@ -34,7 +34,7 @@ You are the **orchestrator**. You coordinate the migration pipeline by spawning 
 
 Read these before starting:
 
-1. `.cursor/subagents/shared-rules.md`
+1. `.cursor/rules/svelte-migration.md`
 2. `.cursor/rules/orchestrator-guardrails.mdc`
 
 ## Input
@@ -75,7 +75,7 @@ run-agent .cursor/subagents/plan.md "CONTEXT: Component={Name}"
 
 Read the dependencies section of the discovery report. For any dependency marked as ❌ not migrated:
 
-1. Check against the workarounds list in `shared-rules.md` — skip deps with known workarounds
+1. Check against the workarounds list in `svelte-migration.md` — skip deps with known workarounds
 2. If unmigrated deps remain (no workaround), **block the migration** and suggest migration order and new workarounds
 3. For batch migrations: skip the blocked component, continue with the next, note in `batch-status.md`
 

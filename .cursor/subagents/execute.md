@@ -11,7 +11,7 @@ description: Reads migration-plan.md, and executes it, generating the files in b
 
 ## Include
 
-Read `.cursor/subagents/shared-rules.md` before starting.
+Read `.cursor/rules/svelte-migration.md` before starting.
 
 ## Input
 
@@ -319,5 +319,5 @@ If errors occur, fix them (max 3 retries).
 
 - Never delete files (never-revert safety rail)
 - Always follow the migration plan's decisions (single vs two-layer, etc.)
-- All new code must satisfy shared-rules.md
+- All new code must satisfy svelte-migration.md
 - If something seems wrong in the migration plan, flag it — don't silently deviate

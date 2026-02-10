@@ -12,7 +12,7 @@ description: Validate component input, analyze React component source, read Svel
 
 ## Include
 
-Read `.cursor/subagents/shared-rules.md` before starting.
+Read `.cursor/rules/svelte-migration.md` before starting.
 
 ## Input
 

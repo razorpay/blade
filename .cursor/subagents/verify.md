@@ -11,7 +11,7 @@ description: Verify the migrated component through static checks, API parity, vi
 
 ## Include
 
-Read `.cursor/subagents/shared-rules.md` before starting.
+Read `.cursor/rules/svelte-migration.md` before starting.
 
 ## Input
 

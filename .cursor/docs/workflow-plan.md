@@ -58,7 +58,6 @@ User types: /migrate-to-svelte → "Alert"
 ├── commands/
 │   └── migrate-to-svelte.md       # /migrate-to-svelte slash command
 ├── subagents/
-│   ├── shared-rules.md            # ~50 lines, included by all agents
 │   ├── orchestrator.md            # Pipeline controller
 │   ├── plan.md                    # Phase 1 — analyze React + plan migration (merged Discovery + Research)
 │   ├── execute.md                 # Phase 2 — create files (+ patch mode)
@@ -74,7 +73,7 @@ User types: /migrate-to-svelte → "Alert"
 ├── artifacts/                     # Runtime artifacts (gitignored)
 │   └── .gitkeep
 ├── rules/
-│   └── svelte-migration.mdc      # Enhanced with orchestrator reference
+│   └── svelte-migration.md      # Common react to svelte patterns
 └── docs/
     ├── react-to-svelte-agent-architecture.md  # Original inspiration doc
     └── workflow-plan.md                        # This file
