@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.23.2
+
+### Patch Changes
+
+- 72a1704ee: feat: update blade mcp docs
+
 ## 1.23.1
 
 ### Patch Changes
