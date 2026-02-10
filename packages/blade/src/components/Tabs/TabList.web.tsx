@@ -16,6 +16,10 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 const ScrollableArea = styled(BaseBox)(() => {
   return {
     '&::-webkit-scrollbar': { display: 'none' },
+    // Hide the tab selection indicator line when any tab has keyboard focus
+    '&:has(:focus-visible) > [data-blade-component="tab-indicator"]': {
+      opacity: 0,
+    },
   };
 });
 

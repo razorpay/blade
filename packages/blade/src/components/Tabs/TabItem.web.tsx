@@ -73,7 +73,7 @@ const StyledTabButton = styled.button<{
         : 'transparent',
 
     // states
-    '&:hover, &:focus-visible': {
+    '&:hover': {
       [`${border}Color`]:
         isVertical && isSelected
           ? theme.colors.interactive.border.neutral.highlighted
@@ -91,6 +91,12 @@ const StyledTabButton = styled.button<{
           : isSelected
           ? getIn(theme, background.default)
           : getIn(theme, background.highlighted),
+    },
+    '&:focus-visible': {
+      borderRadius: makeSpace(theme.border.radius.medium),
+      boxShadow: `inset 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
+      backgroundColor: theme.colors.interactive.background.gray.default,
+      [`${border}Color`]: 'transparent',
     },
     '&:disabled': {
       cursor: 'not-allowed',
