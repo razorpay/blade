@@ -38,7 +38,7 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
 
       [`.${STYLED_NAV_LINK}`]: {
         color: props.theme.colors.interactive.text.gray.normal,
-        backgroundColor: props.theme.colors.interactive.background.gray.default,
+        backgroundColor: props.theme.colors.interactive.background.gray.highlighted,
       },
     },
     [`.${STYLED_NAV_LINK}`]: {
