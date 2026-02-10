@@ -99,7 +99,7 @@ const StyledTabButton = styled.button<{
     },
     '&:focus-visible': {
       borderRadius: makeSpace(theme.border.radius.medium),
-      boxShadow: `0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
+      boxShadow: `inset 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
       backgroundColor: theme.colors.interactive.background.gray.default,
     },
 
