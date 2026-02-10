@@ -73,10 +73,12 @@ const StyledTabButton = styled.button<{
         : 'transparent',
 
     // states
-    '&:hover': {
+    '&:hover, &:focus-visible': {
       [`${border}Color`]:
         isVertical && isSelected
           ? theme.colors.interactive.border.neutral.highlighted
+          : isSelected
+          ? 'transparent'
           : theme.colors.interactive.border.gray.highlighted,
       backgroundColor:
         // For selected filled tabs:
@@ -86,6 +88,8 @@ const StyledTabButton = styled.button<{
           ? isVertical
             ? getIn(theme, background.default)
             : 'transparent'
+          : isSelected
+          ? getIn(theme, background.default)
           : getIn(theme, background.highlighted),
     },
     '&:disabled': {
@@ -96,11 +100,6 @@ const StyledTabButton = styled.button<{
     '&:disabled:hover': {
       [`${border}Color`]: 'transparent',
       backgroundColor: getIn(theme, background.disabled),
-    },
-    '&:focus-visible': {
-      borderRadius: makeSpace(theme.border.radius.medium),
-      boxShadow: `inset 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
-      backgroundColor: theme.colors.interactive.background.gray.default,
     },
 
     // In horizontal filled tabs, the TabIndicator (the white pill background) is rendered
