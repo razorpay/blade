@@ -1,22 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
+import { makeBorderSize, makeSize, makeSpace } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
 import type { SideNavLinkProps } from '../types';
 import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import { Box } from '~components/Box';
-import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
-import { makeAccessible } from '~utils/makeAccessible';
 import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { throwBladeError } from '~utils/logger';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Text } from '~components/Typography';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 
@@ -102,7 +102,7 @@ const NavLinkIconTitle = ({
           <BaseText
             truncateAfterLines={1}
             color="currentColor"
-            fontWeight="medium"
+            fontWeight={isActive ? 'semibold' : 'medium'}
             fontSize={100}
             lineHeight={100}
             as="p"

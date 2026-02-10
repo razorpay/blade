@@ -119,34 +119,6 @@ const BannerContainer = styled(BaseBox)((props) => {
   };
 });
 
-// Slight top and bottom vanishing effect.
-const overlayStyles = {
-  position: 'absolute',
-  right: 0,
-  width: makeSize(sizeTokens['1']),
-  height: makeSize(sizeTokens['28']),
-  pointerEvents: 'none',
-  zIndex: 1,
-} as const;
-
-const BorderGradientOverlayTop = styled(BaseBox)((props) => {
-  const gradientColor = props.theme.colors.surface.background.gray.moderate;
-  return {
-    ...overlayStyles,
-    top: 0,
-    background: `linear-gradient(to bottom, ${gradientColor} 28%, transparent 100%)`,
-  };
-});
-
-const BorderGradientOverlayBottom = styled(BaseBox)((props) => {
-  const gradientColor = props.theme.colors.surface.background.gray.moderate;
-  return {
-    ...overlayStyles,
-    bottom: 0,
-    background: `linear-gradient(to bottom, transparent 0%, ${gradientColor} 72%)`,
-  };
-});
-
 /**
  * ### SideNav component
  *
@@ -402,8 +374,6 @@ const _SideNav = (
               <SkipNavLink id={SKIP_NAV_ID} _hasBackground={true} />
               {children}
             </StyledL1Menu>
-            <BorderGradientOverlayTop aria-hidden="true" />
-            <BorderGradientOverlayBottom aria-hidden="true" />
             <SkipNavContent id={SKIP_NAV_ID} />
           </BaseBox>
         </BaseBox>
