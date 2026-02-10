@@ -3,12 +3,12 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
+import { castWebType, makeMotionTime } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTabsContext } from './TabsContext';
 import { useTheme } from '~components/BladeProvider';
-import { castWebType, makeMotionTime } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
   return {
@@ -51,7 +51,7 @@ const TabIndicator = ({
             activeTabItem.offsetTop
           : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
     });
-  }, [baseId, selectedValue, tabListContainerRef, variant]);
+  }, [baseId, selectedValue, variant]);
 
   // Update the dimensions when the selected value changes
   useIsomorphicLayoutEffect(() => {
@@ -70,7 +70,7 @@ const TabIndicator = ({
     };
   }, [baseId, selectedValue]);
 
-  // Update the dimensions when the window resizes or when the font loads
+  // Update the dimensions when the container resizes or when the font loads
   React.useEffect(() => {
     if (!tabListContainerRef.current) return;
 
@@ -87,11 +87,15 @@ const TabIndicator = ({
       }
     }
 
-    window.addEventListener('resize', updateDimensions);
+    // Use ResizeObserver to detect container size changes (covers window resize,
+    // sidebar toggles, lazy-loaded content, and containers becoming visible)
+    const resizeObserver = new ResizeObserver(() => {
+      updateDimensions();
+    });
+    resizeObserver.observe(tabListContainerRef.current);
 
     return () => {
-      if (!tabListContainerRef.current) return;
-      window.removeEventListener('resize', updateDimensions);
+      resizeObserver.disconnect();
     };
   }, [tabListContainerRef, updateDimensions]);
 
