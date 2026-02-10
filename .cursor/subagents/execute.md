@@ -1,3 +1,9 @@
+---
+name: Executor
+model: inherit
+description: Reads migration-plan.md, and executes it, generating the files in blade-svelte and blade-core.
+---
+
 # Execute Agent
 
 > Phase 3: Create all component files following the migration plan.
@@ -10,9 +16,11 @@ Read `.cursor/subagents/shared-rules.md` before starting.
 ## Input
 
 **Full Mode:**
+
 - `.cursor/artifacts/{Name}/migration-plan.md` (from Research agent)
 
 **Patch Mode:**
+
 - `.cursor/artifacts/{Name}/patch-request.md` (from Verify agent)
 
 ## Output
@@ -188,6 +196,7 @@ export const get{Name}TemplateClasses = () => ({
 #### Story Structure
 
 **⚠️ STORY PARITY RULES:**
+
 - The `title` in `defineMeta` must be **identical** to the React Storybook `title`
 - Every `<Story name="...">` must use the **exact name** from the migration plan (which comes from React `.storyName`)
 - Do NOT add stories that aren't in the migration plan
@@ -227,7 +236,7 @@ export const get{Name}TemplateClasses = () => ({
 import { makeAccessible } from '@razorpay/blade-core/utils';
 
 const a11yAttrs = makeAccessible({
-  role: 'button',        // or appropriate role
+  role: 'button', // or appropriate role
   label: accessibilityLabel,
   disabled: isDisabled,
   // ... other ARIA attributes
@@ -256,6 +265,7 @@ cd packages/blade-svelte && npm run build
 ```
 
 If errors occur, fix them (max 3 retries). Common fixes:
+
 - Missing import → add the import
 - Wrong type → fix the type annotation
 - Missing export → add to index.ts
@@ -272,6 +282,7 @@ Read `.cursor/artifacts/{Name}/patch-request.md`:
 
 ```markdown
 ## Patch Request for {ComponentName}
+
 - Missing props: [list with types and defaults]
 - Missing stories: [list with description]
 - Missing exports: [list with expected paths]

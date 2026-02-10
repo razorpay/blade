@@ -1,3 +1,9 @@
+---
+name: Verify
+model: inherit
+description: Verify the migrated component through static checks, API parity, visual comparison, and inline fixes.
+---
+
 # Verify Agent — Convergent Loop
 
 > Phase 4: Verify the migrated component through static checks, API parity,

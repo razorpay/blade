@@ -1,36 +1,39 @@
 ---
-description: Enforces sub-agent boundaries when the orchestrator is running a migration pipeline
-globs: 
-alwaysApply: false
+description: Enforce sub-agent boundaries when the orchestrator is running a migration pipeline
+globs:
+alwaysApply: true
 ---
 
 # Orchestrator Guardrails
 
-These rules apply when you are acting as the **orchestrator** (running `.cursor/subagents/orchestrator.md`).
+## ✅ What You DO
 
-## Identity
+**You are the coordinator.** Your job is simple:
 
-You are the **orchestrator**. You coordinate. You do NOT execute phase work yourself.
+1. **Run sub-agents** via Shell tool:
 
-## Sub-agent Enforcement
+   ```bash
+   run-agent .cursor/subagents/plan.md
+   run-agent .cursor/subagents/execute.md
+   run-agent .cursor/subagents/verify.md
+   ```
 
-- **You MUST use `run-agent` via the Shell tool** to spawn a separate sub-agent for EVERY phase (Plan, Execute, Verify). No exceptions. No shortcuts. ALL tiers including simple.
-- **`run-agent` is a real shell command** (aliased to `node ~/rzp-frontend/frontend-core-tools/packages/agentic-coding/run-agent.js`). Execute it using the **Shell tool**, NOT the Cursor Task tool. NEVER use the Task tool as a substitute for `run-agent`.
-- Reading a sub-agent's `.md` file does NOT mean you should follow its steps inline. The `run-agent` command reads the file and spawns a separate agent automatically.
+2. **Wait** for artifacts to appear in `.cursor/artifacts/`
 
-## Boundary Violations
+3. **Present** artifacts to user for approval
 
-If you find yourself doing any of the following, **STOP IMMEDIATELY** and run `run-agent` instead:
+**That's your entire workflow. Each phase is delegated to a specialized sub-agent.**
 
-- Reading React source files (`packages/blade/src/components/`)
-- Writing a discovery report or migration plan
-- Creating `.svelte` files or writing CSS
-- Running `svelte-check` or taking screenshots
-- Doing any work described in `plan.md`, `execute.md`, or `verify.md`
+## ❌ What You DON'T DO
 
-## Common Rationalizations to Reject
+**You don't execute phase work.** The sub-agents do that.
 
-- "I already have the context" → NOT a valid reason to skip spawning a sub-agent
-- "It's simpler inline" → The sub-agent architecture exists for isolation and reliability
-- "run-agent might not exist" → It is always available in the shell
-- "I should use the Task tool instead" → Never. Always use `run-agent` via Shell
+## 🛡️ Self-Check
+
+**Before any action, ask:** "Am I running `run-agent` via Shell?"
+
+- ✅ Yes → Proceed
+- ❌ No → Stop. You're violating the boundary.
+
+**Common mistake:** Reading `plan.md` and following its steps.
+**Correct action:** Run `run-agent .cursor/subagents/plan.md` and wait.

@@ -1,3 +1,9 @@
+---
+name: planner
+model: inherit
+description: Validate component input, analyze React component source, read Svelte component reference, producing discovery report (source of truth for Verify agent) and migration plan (instructions for Execute agent).
+---
+
 # Plan Agent
 
 > Phase 1: Analyze the React component and produce both the discovery report
@@ -240,10 +246,8 @@ Save to `.cursor/artifacts/{Name}/migration-plan.md`.
 ## Constraints
 
 - Read at most ONE reference Svelte component (avoid context bloat)
-- Do NOT create any component files — this agent produces plans only
 - Do NOT write implementation code — only snippets in the plan
-- Do NOT modify any source files — both artifacts are in `.cursor/artifacts/`
 - Keep both artifacts actionable: Execute should be able to follow the plan mechanically, Verify should check the report line-by-line
 - The discovery report is factual extraction only — no opinions or suggestions
 - The migration plan is decisions and instructions only — no raw React source dumps
-- Target sizes: discovery report 50-80 lines (simple) / 90-130 lines (complex), migration plan 60-90 lines (simple) / 120-180 lines (complex)
+- Target sizes: discovery report 50-100 lines (simple) / 100-190 lines (complex), migration plan 60-100 lines (simple) / 120-240 lines (complex)
