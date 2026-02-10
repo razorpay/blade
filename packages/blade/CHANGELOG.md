@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.81.1
+
+### Patch Changes
+
+- 72a1704ee: feat(blade): expose barSize prop in barChart
+
 ## 12.81.0
 
 ### Minor Changes
