@@ -64,6 +64,10 @@ type ChartBarProps = Omit<RechartsBarProps, 'fill' | 'dataKey' | 'name' | 'label
    * This is typically controlled internally by legend click interactions.
    */
   hide?: boolean;
+  /**
+   * The width of the bar in pixels.
+   */
+  barSize?: RechartsBarProps['barSize'];
 };
 
 type data = {
