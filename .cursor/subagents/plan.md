@@ -21,6 +21,17 @@ Read `.cursor/subagents/shared-rules.md` before starting.
 
 ---
 
+## Step 1: Input Parsing & Validation
+
+1. Parse component name from input (should be a single component, not comma-separated)
+2. Verify the component exists: `packages/blade/src/components/{Name}/`
+   - If not found: stop with error message "Component {Name} not found in React source"
+3. Check if already migrated: `packages/blade-svelte/src/components/index.ts`
+   - If already migrated: stop with message "Component {Name} already migrated, skipping"
+4. On validation pass: continue to Part A (Discovery)
+
+---
+
 ## Part A: Discovery (Extract Facts from React Source)
 
 ### 1. Read React source files

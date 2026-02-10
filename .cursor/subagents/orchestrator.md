@@ -22,43 +22,48 @@ Read these before starting:
 
 ---
 
-## Step 1: Input Parsing & Validation
+## Batch Parsing
 
 1. Parse component name(s) from user input
-2. For each component, verify it exists: `packages/blade/src/components/{Name}/`
-3. Check if already migrated: `packages/blade-svelte/src/components/index.ts`
-4. If already migrated, skip with message
+2. If comma-separated list, create batch status file: `.cursor/artifacts/batch-status.md`
+3. Process components **sequentially** (not in parallel) through Steps 1-6 below
+4. For batch: update status file after each component completes
 
-## Step 2: Plan Agent
+---
 
-The Plan agent reads the React source and a reference Svelte component in a single pass,
+## Step 1: Plan Agent
+
+The Plan agent validates the component input, reads the React source and a reference Svelte component in a single pass,
 producing both the discovery report (source of truth for Verify) and the migration plan
 (instructions for Execute).
+
+**Pass a single component name** — if batch, loop through components one at a time.
 
 ```bash
 run-agent .cursor/subagents/plan.md "CONTEXT: Component={Name}"
 ```
 
 Wait for completion. Verify both artifacts were created:
+
 - `.cursor/artifacts/{Name}/discovery-report.md`
 - `.cursor/artifacts/{Name}/migration-plan.md`
 
-## Step 3: Dependency Check
+## Step 2: Dependency Check
 
 Read the dependencies section of the discovery report. For any dependency marked as ❌ not migrated:
 
 1. Check against the workarounds list in `shared-rules.md` — skip deps with known workarounds
-2. If unmigrated deps remain (no workaround), **block the migration** and suggest migration order
+2. If unmigrated deps remain (no workaround), **block the migration** and suggest migration order and workarounds
 3. For batch migrations: skip the blocked component, continue with the next, note in `batch-status.md`
 
-## Step 4: Human Gate — Plan Review
+## Step 3: Human Gate — Plan Review
 
 - Present `migration-plan.md` to user (includes tier classification from discovery)
 - Ask: "approve / reject with feedback"
-- On reject: re-run Step 2 (Plan) with user feedback appended
+- On reject: re-run Step 1 (Plan) with user feedback appended
 - On approve: continue
 
-## Step 5: Execute Agent
+## Step 4: Execute Agent
 
 ```bash
 run-agent .cursor/subagents/execute.md "CONTEXT: Component={Name}, MigrationPlan=.cursor/artifacts/{Name}/migration-plan.md"
@@ -66,7 +71,7 @@ run-agent .cursor/subagents/execute.md "CONTEXT: Component={Name}, MigrationPlan
 
 Wait for completion. Verify component files were created.
 
-## Step 6: Verify Agent
+## Step 5: Verify Agent
 
 ```bash
 run-agent .cursor/subagents/verify.md "CONTEXT: Component={Name}, DiscoveryReport=.cursor/artifacts/{Name}/discovery-report.md"
@@ -78,19 +83,19 @@ If Verify reports API parity gaps needing a patch, run Execute in patch mode the
 run-agent .cursor/subagents/execute.md "CONTEXT: Component={Name}, Mode=patch, PatchRequest=.cursor/artifacts/{Name}/patch-request.md"
 ```
 
-## Step 7: Human Gate — Final Review
+## Step 6: Human Gate — Final Review
 
 - Present `verification-report.md` + screenshots to user
 - Ask: "accept / request changes"
 - On accept: DONE
-- On request changes: re-enter Step 6 with user feedback
+- On request changes: re-enter Step 5 with user feedback
 
 ---
 
 ## Tier-Specific Adjustments
 
-- **Simple:** skip Human Gate at Step 4 (no plan approval needed)
-- **Medium/Complex:** Human Gate at step 4 (plan approval needed)
+- **Simple:** skip Human Gate at Step 3 (no plan approval needed)
+- **Medium/Complex:** Human Gate at step 3 (plan approval needed)
 
 ## Batch Progress Tracking
 

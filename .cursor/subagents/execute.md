@@ -250,6 +250,7 @@ Also check `blade-core/src/utils/index.ts` if any new utilities were created.
 After creating all files, run:
 
 ```bash
+cd packages/blade-core && npm run build
 cd packages/blade-svelte && npm run svelte-check
 cd packages/blade-svelte && npm run build
 ```
@@ -291,6 +292,17 @@ Read `.cursor/artifacts/{Name}/patch-request.md`:
 - **Missing story:** Add new `<Story>` block in `.stories.svelte`
 - **Missing export:** Add line to `index.ts` or `components/index.ts`
 - **Missing handler:** Add to types, add to `$props()`, wire up with `isDisabled` check
+
+### Post-Patch Checks
+
+After applying patches, run:
+
+```bash
+cd packages/blade-core && npm run build
+cd packages/blade-svelte && npm run svelte-check
+```
+
+If errors occur, fix them (max 3 retries).
 
 ## Constraints
 

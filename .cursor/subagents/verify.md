@@ -28,18 +28,21 @@ Read `.cursor/subagents/shared-rules.md` before starting.
 Before any visual verification, ensure both Storybooks are running:
 
 1. **React Storybook (port 6006):**
+
    - `curl -s http://localhost:6006` → check for HTML response
    - If running → reuse
    - If not running → `cd packages/blade && npm run storybook` (background)
    - If port occupied by non-Storybook → warn user, ask to free port
 
 2. **Svelte Storybook (port 6007):**
+
    - `curl -s http://localhost:6007` → check for HTML response
    - If running → reuse
-   - If not running → `cd packages/blade-svelte && npm run storybook` (background)
+   - If not running → `cd packages/blade-svelte && npm run dev` (background)
    - If port occupied by non-Storybook → warn user, ask to free port
 
 3. **Poll both ports** until responsive (max 60s, check every 5s)
+
    - If timeout → log error, skip visual comparison (Steps 3-4)
 
 4. **After pipeline completes:** Do NOT kill Storybook processes. Log: "Storybooks still running on ports 6006/6007 for manual verification"
@@ -53,6 +56,7 @@ The report at `.cursor/artifacts/{Name}/verification-report.md` is this loop's p
 **At loop start:** Read existing report → extract iteration number, previous issues.
 
 **After each step:**
+
 - **OVERWRITE** current-state sections: Metadata (bump iteration + timestamp), Static Checks, API Parity, Visual Comparison
 - **APPEND** to Iteration History table (never delete rows)
 - **UPDATE** Result field (IN PROGRESS / PASS / FAIL / PASS WITH WARNINGS)
@@ -98,10 +102,12 @@ cd packages/blade-svelte && npm run build
 Read `discovery-report.md` as the source of truth. Compare against actual implementation:
 
 **Props check:**
+
 - Read `types.ts` → compare prop names, types, defaults against discovery report Props table
 - Every prop in the discovery report must exist with matching type
 
 **Stories check:**
+
 - Read `.stories.svelte` → extract all `<Story name="...">` blocks
 - Verify the Storybook `title` in `defineMeta` is **identical** to the React `title` from the discovery report
 - Every story in the discovery report Stories table must exist with the **exact same name**
@@ -110,11 +116,13 @@ Read `discovery-report.md` as the source of truth. Compare against actual implem
 - If names differ (e.g., "Default Value Single" vs "Uncontrolled Single Selection with Default Value"), flag as missing + extra
 
 **Exports check:**
+
 - Read `{Name}/index.ts` → verify component is exported
 - Read `components/index.ts` → verify component is re-exported
 - Read `blade-core/src/styles/index.ts` → verify CSS module exports are registered
 
 **Event handlers check:**
+
 - Read the `.svelte` component file → verify all handlers from discovery report are wired up
 - Verify each handler checks `isDisabled` before executing
 
@@ -161,10 +169,10 @@ Rules:
 
 **Examples from Badge:**
 
-| Story Name | Svelte URL (6007) | React URL (6006) |
-|-----------|-------------------|------------------|
-| Playground | `http://localhost:6007/iframe.html?id=components-badge--playground` | `http://localhost:6006/iframe.html?id=components-badge--default` |
-| Sizes | `http://localhost:6007/iframe.html?id=components-badge--sizes` | `http://localhost:6006/iframe.html?id=components-badge--small-size` |
+| Story Name | Svelte URL (6007)                                                   | React URL (6006)                                                    |
+| ---------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Playground | `http://localhost:6007/iframe.html?id=components-badge--playground` | `http://localhost:6006/iframe.html?id=components-badge--default`    |
+| Sizes      | `http://localhost:6007/iframe.html?id=components-badge--sizes`      | `http://localhost:6006/iframe.html?id=components-badge--small-size` |
 
 > **Note:** Svelte and React story names may differ (e.g., "Playground" vs "Default").
 > Use the discovery report's Stories table to find the matching React story name for each Svelte story.
@@ -181,17 +189,20 @@ Rules:
 **Compare screenshots using visual reasoning:**
 
 For each pair:
+
 1. Describe what you see in the Svelte screenshot (layout, colors, spacing, text)
 2. Describe what you see in the React screenshot
 3. List specific differences observed
 4. Classify severity with reasoning:
 
 **P0 — Fundamentally broken:**
+
 - Component doesn't render, crashes, blank area
 - All items stacked when they should be inline
 - Component not visible at all, wrong component rendered
 
 **P1 — Visible differences a user would notice:**
+
 - Color mismatch (e.g., blue-500 vs blue-600, wrong background)
 - Spacing off by > 4px (e.g., gap-3 vs gap-5)
 - Font size/weight wrong (e.g., semibold vs regular)
@@ -201,6 +212,7 @@ For each pair:
 - DOM structure mismatch (different semantic elements)
 
 **P2 — Minor/acceptable:**
+
 - Subpixel rendering / anti-aliasing differences
 - Font rendering engine differences
 - Off by 1-2px due to browser rounding
@@ -208,6 +220,7 @@ For each pair:
 - Cursor style differences in screenshots
 
 **Also check DOM structure parity:**
+
 - Inspect rendered DOM (via browser devtools or snapshot)
 - Verify semantic element structure matches React (same element types, same nesting)
 - Flag structural mismatches as P2
@@ -245,12 +258,13 @@ For each pair:
 
 **Fix strategies by issue type:**
 
-| Issue Type | Pass 1: Story Check | Pass 2: CSS Check |
-|-----------|--------------------|--------------------|
-| `P0` | Story missing content, wrong structure, render crash | Template logic error, missing class, broken conditional |
-| `P1` | Different mocks/dummy text, missing variants, layout | Wrong token variable, spacing mismatch, color mismatch |
+| Issue Type | Pass 1: Story Check                                  | Pass 2: CSS Check                                       |
+| ---------- | ---------------------------------------------------- | ------------------------------------------------------- |
+| `P0`       | Story missing content, wrong structure, render crash | Template logic error, missing class, broken conditional |
+| `P1`       | Different mocks/dummy text, missing variants, layout | Wrong token variable, spacing mismatch, color mismatch  |
 
 **Regression detection:** After re-verification, if a previously-passing check now fails:
+
 1. Run `git stash pop` to rollback the fix
 2. Flag the regression for human review
 3. Append "Regression detected, fix rolled back" to Iteration History
@@ -270,6 +284,7 @@ iteration += 1
 **If `iteration % 2 === 0`:**
 
 Present to the user:
+
 - Current `verification-report.md` content
 - Side-by-side screenshot pairs for each story
 - Summary: what passed, what has P2 warnings, what was fixed
@@ -286,12 +301,12 @@ Ask: **"continue / stop / manual-fix?"**
 
 ## Exit Conditions
 
-| Condition | Result |
-|-----------|--------|
-| All checks pass (static + API + visual) | **PASS** |
-| User says "stop" | **PASS WITH WARNINGS** |
-| 3 consecutive static failures in same iteration | **FAIL** |
-| `iteration > 6` | **FAIL** (safety cap, full report produced) |
+| Condition                                       | Result                                      |
+| ----------------------------------------------- | ------------------------------------------- |
+| All checks pass (static + API + visual)         | **PASS**                                    |
+| User says "stop"                                | **PASS WITH WARNINGS**                      |
+| 3 consecutive static failures in same iteration | **FAIL**                                    |
+| `iteration > 6`                                 | **FAIL** (safety cap, full report produced) |
 
 ---
 
