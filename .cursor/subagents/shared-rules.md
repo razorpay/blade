@@ -42,6 +42,14 @@
 - CSS files: `camelCase.module.css` (e.g., `button.module.css`)
 - CVA files: `camelCase.ts` (e.g., `button.ts`)
 
+## Dependency Workarounds
+
+These Blade dependencies do NOT need migration — use the listed workaround:
+
+- `Box` / `BaseBox` → use `<div>` with classes (no migration needed)
+- `Icons` → placeholder prop type (`IconComponent = unknown`)
+- `blade-core` (`~utils/`, `~tokens/`) → already framework-agnostic, import directly
+
 ## Key References
 
 - Existing Svelte components: `packages/blade-svelte/src/components/`

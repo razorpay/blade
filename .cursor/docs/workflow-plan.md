@@ -4,7 +4,7 @@
 
 ## Overview
 
-The workflow lives entirely in `.cursor/` inside the blade repo (shareable with team). It consists of **5 agents** coordinated by an orchestrator, with 3 artifact templates bridging phases. The verify agent is a convergent loop that owns all fixes.
+The workflow lives entirely in `.cursor/` inside the blade repo (shareable with team). It consists of **4 agents** coordinated by an orchestrator, with 3 artifact templates bridging phases. The Plan agent reads React source in a single pass and produces both the discovery report and migration plan. The Verify agent is a convergent loop that owns all fixes.
 
 ```
 User types: /migrate-to-svelte → "Alert"
@@ -23,13 +23,9 @@ User types: /migrate-to-svelte → "Alert"
            │                      │
            ▼                      ▼
    Inline execution      ┌──────────────────┐
-   (all 4 phases)        │ DISCOVERY AGENT   │ → discovery-report.md
-   No human gates        │ (extract React)   │
-   Basic verify only     └────────┬─────────┘
-           │                      ▼
-           │              ┌──────────────────┐
-           │              │ RESEARCH AGENT    │ → migration-plan.md
-           │              │ (plan strategy)   │
+   (all 3 phases)        │ PLAN AGENT        │ → discovery-report.md
+   No human gates        │ (analyze React +  │   + migration-plan.md
+   Basic verify only     │  plan strategy)   │
            │              └────────┬─────────┘
            │                      ▼
            │              🔒 HUMAN GATE: Plan Review
@@ -64,10 +60,9 @@ User types: /migrate-to-svelte → "Alert"
 ├── subagents/
 │   ├── shared-rules.md            # ~50 lines, included by all agents
 │   ├── orchestrator.md            # Pipeline controller
-│   ├── discovery.md               # Phase 1 — extract React metadata
-│   ├── research.md                # Phase 2 — plan migration strategy
-│   ├── execute.md                 # Phase 3 — create files (+ patch mode)
-│   └── verify.md                  # Phase 4 — verify loop (owns all fixes)
+│   ├── plan.md                    # Phase 1 — analyze React + plan migration (merged Discovery + Research)
+│   ├── execute.md                 # Phase 2 — create files (+ patch mode)
+│   └── verify.md                  # Phase 3 — verify loop (owns all fixes)
 ├── templates/
 │   ├── discovery-report.md        # Artifact skeleton
 │   ├── migration-plan.md          # Artifact skeleton
@@ -87,17 +82,16 @@ User types: /migrate-to-svelte → "Alert"
 
 ## Agents
 
-| Agent | File | Responsibility |
-|-------|------|----------------|
-| **Orchestrator** | `orchestrator.md` | Tier classification, dependency resolution, routing, Storybook lifecycle |
-| **Discovery** | `discovery.md` | Extract props, deps, stories, DOM structure from React source |
-| **Research** | `research.md` | Map React→Svelte patterns, plan files/CSS/stories |
-| **Execute** | `execute.md` | Create component files; patch mode for API gaps |
-| **Verify** | `verify.md` | Convergent loop: static checks, API parity, visual comparison, inline fixes |
+| Agent            | File              | Responsibility                                                                            |
+| ---------------- | ----------------- | ----------------------------------------------------------------------------------------- |
+| **Orchestrator** | `orchestrator.md` | Tier classification, dependency resolution, routing, Storybook lifecycle                  |
+| **Plan**         | `plan.md`         | Read React source + reference Svelte component; produce discovery report + migration plan |
+| **Execute**      | `execute.md`      | Create component files; patch mode for API gaps                                           |
+| **Verify**       | `verify.md`       | Convergent loop: static checks, API parity, visual comparison, inline fixes               |
 
 ## Key Design Decisions
 
-1. Sub-agents for medium/complex, inline for simple — prevents context blowout
+1. Sub-agents for all tiers — Plan + Execute + Verify pipeline with tier-specific gates
 2. Artifacts on disk — explicit, debuggable context transfer between phases
 3. Layered knowledge — ~50 lines shared rules + agent-specific instructions + runtime reference
 4. Templates as separate files — change format once, all migrations use new format

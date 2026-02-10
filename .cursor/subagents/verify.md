@@ -10,8 +10,7 @@ Read `.cursor/subagents/shared-rules.md` before starting.
 ## Input
 
 - Component name
-- `.cursor/artifacts/{Name}/discovery-report.md` (source of truth for expected API)
-- `.cursor/artifacts/{Name}/migration-plan.md` (for story plan reference)
+- `.cursor/artifacts/{Name}/discovery-report.md` (source of truth for expected API, props, stories, DOM structure)
 
 ## Output
 
@@ -21,6 +20,29 @@ Read `.cursor/subagents/shared-rules.md` before starting.
 ## Reference
 
 - Example: `.cursor/examples/badge-verification-report.md`
+
+---
+
+## Step 0: Ensure Storybooks Are Running
+
+Before any visual verification, ensure both Storybooks are running:
+
+1. **React Storybook (port 6006):**
+   - `curl -s http://localhost:6006` → check for HTML response
+   - If running → reuse
+   - If not running → `cd packages/blade && npm run storybook` (background)
+   - If port occupied by non-Storybook → warn user, ask to free port
+
+2. **Svelte Storybook (port 6007):**
+   - `curl -s http://localhost:6007` → check for HTML response
+   - If running → reuse
+   - If not running → `cd packages/blade-svelte && npm run storybook` (background)
+   - If port occupied by non-Storybook → warn user, ask to free port
+
+3. **Poll both ports** until responsive (max 60s, check every 5s)
+   - If timeout → log error, skip visual comparison (Steps 3-4)
+
+4. **After pipeline completes:** Do NOT kill Storybook processes. Log: "Storybooks still running on ports 6006/6007 for manual verification"
 
 ---
 
@@ -111,10 +133,8 @@ Read `discovery-report.md` as the source of truth. Compare against actual implem
 
 ### Step 3: Visual Comparison (LLM-driven reasoning)
 
-**Pre-check:** Confirm Storybooks are running:
-- Svelte Storybook on port 6007
-- React Storybook on port 6006
-- If not running, log error and ask orchestrator to start them
+**Pre-check:** Confirm Storybooks are running (should already be up from Step 0).
+If not running, re-run Step 0 before proceeding.
 
 **Storybook URL pattern:**
 
@@ -149,7 +169,7 @@ Rules:
 > **Note:** Svelte and React story names may differ (e.g., "Playground" vs "Default").
 > Use the discovery report's Stories table to find the matching React story name for each Svelte story.
 
-**For each story in the migration plan's Story Plan:**
+**For each story in the discovery report's Stories table:**
 
 1. Construct the Svelte story URL using the pattern above (port 6007)
 2. Navigate to the URL using Playwright
@@ -280,5 +300,5 @@ Ask: **"continue / stop / manual-fix?"**
 - Never delete generated files (never-revert safety rail — use git stash instead)
 - Always update the verification report after each step
 - Screenshots must be saved to the artifacts directory
-- If Storybooks aren't running, ask the orchestrator — don't start them yourself
+- If Storybooks aren't running, start them using Step 0
 - Keep the verification report under 100 lines per iteration (prune old error blocks)
