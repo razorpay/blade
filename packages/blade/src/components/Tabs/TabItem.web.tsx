@@ -93,7 +93,11 @@ const StyledTabButton = styled.button<{
           : getIn(theme, background.highlighted),
     },
     '&:focus-visible': {
-      borderRadius: makeSpace(theme.border.radius.medium),
+      borderRadius: isFilled
+        ? size === 'small' && !isVertical
+          ? makeSpace(theme.border.radius.medium)
+          : makeSpace(theme.border.radius.small)
+        : makeSpace(theme.border.radius.medium),
       boxShadow: `inset 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
       backgroundColor: theme.colors.interactive.background.gray.default,
       [`${border}Color`]: 'transparent',

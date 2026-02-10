@@ -1095,7 +1095,13 @@ const ShowcaseTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement
   }
 
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.11">
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.11"
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.7"
+    >
       {showcaseSizes.map((size) => (
         <Box key={size} display="flex" flexDirection="column" gap="spacing.7">
           <Heading size="small">Size: {capitalize(size)}</Heading>
