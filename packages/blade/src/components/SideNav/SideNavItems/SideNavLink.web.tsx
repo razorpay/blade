@@ -57,17 +57,17 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
       )}`,
       margin: `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[0])}`,
       color: props.theme.colors.interactive.text.gray.subtle,
-      borderRadius: props.theme.border.radius.medium,
+      borderRadius: props.theme.border.radius.small,
       borderWidth: makeBorderSize(props.theme.border.width.none),
       backgroundColor: props.theme.colors.transparent,
       transition: getNavItemTransition(props.theme),
       '&[aria-current]': {
-        color: props.theme.colors.interactive.text.primary.subtle,
-        backgroundColor: props.theme.colors.interactive.background.primary.faded,
+        color: props.theme.colors.interactive.text.gray.subtle,
+        backgroundColor: props.theme.colors.interactive.background.gray.default,
       },
       '&[aria-current]:hover': {
-        color: props.theme.colors.interactive.text.primary.normal,
-        backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
+        color: props.theme.colors.interactive.text.gray.normal,
+        backgroundColor: props.theme.colors.interactive.background.gray.highlighted,
       },
       '&:focus-visible': {
         ...getFocusRingStyles({ theme: props.theme }),
@@ -126,7 +126,7 @@ const NavLinkIconTitle = ({
           marginLeft="spacing.7"
           textAlign="left"
           weight="medium"
-          color={isActive ? 'interactive.text.primary.muted' : 'interactive.text.gray.muted'}
+          color={isActive ? 'interactive.text.gray.subtle' : 'interactive.text.gray.muted'}
           truncateAfterLines={1}
         >
           {description}
@@ -203,7 +203,7 @@ const CurvedVerticalLine = styled(BaseBox)((props) => {
   const { colors, border, spacing } = props.theme;
   return {
     borderWidth: makeBorderSize(props.theme.border.width.thin),
-    borderColor: `${colors.transparent} ${colors.transparent} ${colors.surface.border.primary.muted} ${colors.surface.border.primary.muted}`,
+    borderColor: `${colors.transparent} ${colors.transparent} ${colors.surface.border.gray.muted} ${colors.surface.border.gray.muted}`,
     borderStyle: 'solid',
     borderRadius: `${makeBorderSize(border.radius.none)} ${makeBorderSize(
       border.radius.none,
