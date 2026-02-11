@@ -18,6 +18,7 @@
   } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
   import type { TextColors } from '../Typography/BaseText/types';
+  import type { IconColor } from '../Icons/types';
   import type { BadgeProps } from './types';
 
   // Get template classes via function call to prevent Svelte tree-shaking
@@ -63,11 +64,11 @@
   );
 
   // Get icon color token based on color and emphasis
-  // @ts-expect-error - Currently unused but will be needed when Icon component is implemented
-  const iconColorToken = $derived(getBadgeIconColorToken({ color, emphasis }));
+  const iconColorToken = $derived(
+    getBadgeIconColorToken({ color, emphasis }) as IconColor,
+  );
 
   // Get icon size based on badge size
-  // @ts-expect-error - Currently unused but will be needed when Icon component is implemented
   const iconSize = $derived(badgeIconSize[size]);
 
   // Get text sizes based on badge size
@@ -111,8 +112,7 @@
   <div class={badgeClasses.content}>
     {#if Icon}
       <span class="{badgeClasses.icon} {iconPaddingClass}">
-        <!-- TODO: Render Icon component when available -->
-        <!-- <Icon size={iconSize} color={iconColorToken} /> -->
+        <Icon size={iconSize} color={iconColorToken} />
       </span>
     {/if}
     <BaseText

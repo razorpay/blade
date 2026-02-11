@@ -30,3 +30,13 @@
   align-items: center;
 }
 
+/* Icon padding for left-positioned icons - spacing.2 (8px) */
+.icon-left {
+  padding-right: var(--spacing-2);
+}
+
+/* Icon padding for right-positioned icons - spacing.2 (8px) */
+.icon-right {
+  padding-left: var(--spacing-2);
+}
+
