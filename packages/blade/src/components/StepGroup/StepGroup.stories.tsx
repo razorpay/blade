@@ -1163,11 +1163,23 @@ export const StepGroupShowcase = (): React.ReactElement => {
         </Box>
       </ShowcaseSection>
 
-      {/* ── Size Variants ── */}
-      <ShowcaseSection title="Size — Large">
+      {/* ── Large: isInteractive=false, isIndented=false, isSelected=false ── */}
+      <ShowcaseSection title="Large — Non-Interactive">
         <ShowcaseGrid>
           <ShowcaseColumn label="Large — Indicators">
             <StepGroup size="large" orientation="vertical">
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIndicator color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
               <StepItem
                 title="Header Title"
                 timestamp="Wed, 27th Mar'24 | 12:00pm"
@@ -1207,6 +1219,17 @@ export const StepGroupShowcase = (): React.ReactElement => {
                   </Badge>
                 }
               />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
             </StepGroup>
           </ShowcaseColumn>
 
@@ -1218,6 +1241,18 @@ export const StepGroupShowcase = (): React.ReactElement => {
                 description="Description"
                 stepProgress="full"
                 marker={<StepItemIcon icon={FileIcon} color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIcon icon={UserIcon} color="positive" />}
                 trailing={
                   <Badge color="positive" size="large">
                     Label
@@ -1252,9 +1287,617 @@ export const StepGroupShowcase = (): React.ReactElement => {
                   </Badge>
                 }
               />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                marker={<StepItemIcon icon={HeartIcon} color="neutral" />}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
             </StepGroup>
           </ShowcaseColumn>
         </ShowcaseGrid>
+      </ShowcaseSection>
+
+      {/* ── Large: isInteractive=false, isIndented=true, isSelected=false ── */}
+      <ShowcaseSection title="Large — Non-Interactive — Indented (Nested)">
+        <ShowcaseGrid>
+          <ShowcaseColumn label="Large — Indicators — Nested">
+            <StepGroup size="large" orientation="vertical">
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIndicator color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Header Title"
+                stepProgress="full"
+                marker={<StepItemIndicator color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepGroup>
+                <StepItem
+                  title="Nested Step 1"
+                  timestamp="Wed, 27th Mar'24 | 12:00pm"
+                  description="Description"
+                  stepProgress="full"
+                  marker={<StepItemIcon icon={RazorpayIcon} color="positive" />}
+                />
+              </StepGroup>
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                stepProgress="start"
+                marker={<StepItemIndicator color="notice" />}
+                trailing={
+                  <Badge color="notice" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepGroup>
+                <StepItem title="Nested Step A" marker={<StepItemIndicator color="positive" />} />
+                <StepItem
+                  title="Nested Step B"
+                  titleColor="feedback.text.notice.intense"
+                  marker={<StepItemIndicator color="notice" />}
+                >
+                  <Button size="medium" variant="secondary">
+                    Submit Documents
+                  </Button>
+                </StepItem>
+                <StepItem
+                  title="Nested Step C"
+                  trailing={
+                    <Badge color="neutral" size="large">
+                      Pending
+                    </Badge>
+                  }
+                />
+              </StepGroup>
+              <StepItem
+                title="Header Title"
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+            </StepGroup>
+          </ShowcaseColumn>
+
+          <ShowcaseColumn label="Large — Icons — Nested">
+            <StepGroup size="large" orientation="vertical">
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIcon icon={FileIcon} color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Header Title"
+                stepProgress="full"
+                marker={<StepItemIcon icon={UserIcon} color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepGroup>
+                <StepItem
+                  title="Nested Step 1"
+                  timestamp="Wed, 27th Mar'24 | 12:00pm"
+                  stepProgress="full"
+                  marker={<StepItemIcon icon={RazorpayIcon} color="positive" />}
+                />
+              </StepGroup>
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                stepProgress="start"
+                marker={<StepItemIcon icon={ClockIcon} color="notice" />}
+                trailing={
+                  <Badge color="notice" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Header Title"
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+                marker={<StepItemIcon icon={HeartIcon} color="neutral" />}
+              />
+            </StepGroup>
+          </ShowcaseColumn>
+        </ShowcaseGrid>
+      </ShowcaseSection>
+
+      {/* ── Large: isInteractive=true, isIndented=false, isSelected=false ── */}
+      <ShowcaseSection title="Large — Interactive — Not Selected">
+        <ShowcaseGrid>
+          <ShowcaseColumn label="Large — Indicators — onClick, no selection">
+            <StepGroup size="large" orientation="vertical">
+              <StepItem
+                title="Introduction"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                onClick={noop}
+                marker={<StepItemIndicator color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Personal Details"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="start"
+                onClick={noop}
+                marker={<StepItemIndicator color="notice" />}
+                trailing={
+                  <Badge color="notice" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Business Details"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                onClick={noop}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Complete Onboarding"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                onClick={noop}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+            </StepGroup>
+          </ShowcaseColumn>
+
+          <ShowcaseColumn label="Large — Icons — onClick, no selection">
+            <StepGroup size="large" orientation="vertical">
+              <StepItem
+                title="Introduction"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                onClick={noop}
+                marker={<StepItemIcon icon={FileIcon} color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Personal Details"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="start"
+                onClick={noop}
+                marker={<StepItemIcon icon={UserIcon} color="notice" />}
+                trailing={
+                  <Badge color="notice" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Business Details"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                onClick={noop}
+                marker={<StepItemIcon icon={BriefcaseIcon} color="neutral" />}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Complete Onboarding"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                onClick={noop}
+                marker={<StepItemIcon icon={HeartIcon} color="neutral" />}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+            </StepGroup>
+          </ShowcaseColumn>
+        </ShowcaseGrid>
+      </ShowcaseSection>
+
+      {/* ── Large: isInteractive=true, isIndented=false, isSelected=true ── */}
+      <ShowcaseSection title="Large — Interactive — Selected">
+        <ShowcaseGrid>
+          <ShowcaseColumn label="Large — Indicators — isSelected (click to change)">
+            <StepGroup size="large" orientation="vertical">
+              {['Introduction', 'Personal Details', 'Business Details', 'Complete Onboarding'].map(
+                (title, index) => (
+                  <StepItem
+                    key={title}
+                    title={title}
+                    timestamp="Wed, 27th Mar'24 | 12:00pm"
+                    description="Description"
+                    isSelected={selectedIndex === index}
+                    onClick={() => setSelectedIndex(index)}
+                    marker={
+                      <StepItemIndicator
+                        color={
+                          index < selectedIndex
+                            ? 'positive'
+                            : index === selectedIndex
+                            ? 'primary'
+                            : 'neutral'
+                        }
+                      />
+                    }
+                    stepProgress={
+                      index < selectedIndex ? 'full' : index === selectedIndex ? 'start' : 'none'
+                    }
+                    trailing={
+                      <Badge
+                        size="large"
+                        color={
+                          index < selectedIndex
+                            ? 'positive'
+                            : index === selectedIndex
+                            ? 'primary'
+                            : 'neutral'
+                        }
+                      >
+                        Label
+                      </Badge>
+                    }
+                  />
+                ),
+              )}
+            </StepGroup>
+          </ShowcaseColumn>
+
+          <ShowcaseColumn label="Large — Icons — isSelected (click to change)">
+            <StepGroup size="large" orientation="vertical">
+              {([
+                { title: 'Introduction', icon: FileIcon },
+                { title: 'Personal Details', icon: UserIcon },
+                { title: 'Business Details', icon: BriefcaseIcon },
+                { title: 'Complete Onboarding', icon: HeartIcon },
+              ] as const).map(({ title, icon }, index) => (
+                <StepItem
+                  key={title}
+                  title={title}
+                  timestamp="Wed, 27th Mar'24 | 12:00pm"
+                  description="Description"
+                  isSelected={selectedIndex === index}
+                  onClick={() => setSelectedIndex(index)}
+                  marker={
+                    <StepItemIcon
+                      icon={icon}
+                      color={
+                        index < selectedIndex
+                          ? 'positive'
+                          : index === selectedIndex
+                          ? 'primary'
+                          : 'neutral'
+                      }
+                    />
+                  }
+                  stepProgress={
+                    index < selectedIndex ? 'full' : index === selectedIndex ? 'start' : 'none'
+                  }
+                  trailing={
+                    <Badge
+                      size="large"
+                      color={
+                        index < selectedIndex
+                          ? 'positive'
+                          : index === selectedIndex
+                          ? 'primary'
+                          : 'neutral'
+                      }
+                    >
+                      Label
+                    </Badge>
+                  }
+                />
+              ))}
+            </StepGroup>
+          </ShowcaseColumn>
+        </ShowcaseGrid>
+      </ShowcaseSection>
+
+      {/* ── Large: isInteractive=true, isIndented=true, isSelected=false ── */}
+      <ShowcaseSection title="Large — Interactive — Indented (Nested), Not Selected">
+        <ShowcaseColumn label="Large — Indicators — nested with onClick">
+          <StepGroup size="large" orientation="vertical">
+            <StepItem
+              title="Header Title"
+              timestamp="Wed, 27th Mar'24 | 12:00pm"
+              description="Description"
+              stepProgress="full"
+              onClick={noop}
+              marker={<StepItemIndicator color="positive" />}
+              trailing={
+                <Badge color="positive" size="large">
+                  Label
+                </Badge>
+              }
+            />
+            <StepItem
+              title="Header Title"
+              stepProgress="full"
+              onClick={noop}
+              marker={<StepItemIndicator color="positive" />}
+              trailing={
+                <Badge color="positive" size="large">
+                  Label
+                </Badge>
+              }
+            />
+            <StepGroup>
+              <StepItem
+                title="Nested Step 1"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIcon icon={RazorpayIcon} color="positive" />}
+              />
+            </StepGroup>
+            <StepItem
+              title="Header Title"
+              timestamp="Wed, 27th Mar'24 | 12:00pm"
+              stepProgress="start"
+              onClick={noop}
+              marker={<StepItemIndicator color="notice" />}
+              trailing={
+                <Badge color="notice" size="large">
+                  Label
+                </Badge>
+              }
+            />
+            <StepGroup>
+              <StepItem title="Nested Step A" marker={<StepItemIndicator color="positive" />} />
+              <StepItem
+                title="Nested Step B"
+                titleColor="feedback.text.notice.intense"
+                marker={<StepItemIndicator color="notice" />}
+              >
+                <Button size="medium" variant="secondary">
+                  Submit Documents
+                </Button>
+              </StepItem>
+              <StepItem
+                title="Nested Step C"
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Pending
+                  </Badge>
+                }
+              />
+            </StepGroup>
+            <StepItem
+              title="Header Title"
+              onClick={noop}
+              trailing={
+                <Badge color="neutral" size="large">
+                  Label
+                </Badge>
+              }
+            />
+          </StepGroup>
+        </ShowcaseColumn>
+      </ShowcaseSection>
+
+      {/* ── Large: Disabled States ── */}
+      <ShowcaseSection title="Large — Disabled States">
+        <ShowcaseGrid>
+          <ShowcaseColumn label="Large — Indicators — Disabled">
+            <StepGroup size="large" orientation="vertical">
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIndicator color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                isDisabled
+                onClick={noop}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                isDisabled
+                onClick={noop}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+            </StepGroup>
+          </ShowcaseColumn>
+
+          <ShowcaseColumn label="Large — Icons — Disabled">
+            <StepGroup size="large" orientation="vertical">
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIcon icon={FileIcon} color="positive" />}
+                trailing={
+                  <Badge color="positive" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                isDisabled
+                onClick={noop}
+                marker={<StepItemIcon icon={UserIcon} color="neutral" isDisabled />}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="none"
+                isDisabled
+                onClick={noop}
+                marker={<StepItemIcon icon={BriefcaseIcon} color="neutral" isDisabled />}
+                trailing={
+                  <Badge color="neutral" size="large">
+                    Label
+                  </Badge>
+                }
+              />
+            </StepGroup>
+          </ShowcaseColumn>
+        </ShowcaseGrid>
+      </ShowcaseSection>
+
+      {/* ── Large: Horizontal Orientation ── */}
+      <ShowcaseSection title="Large — Horizontal Orientation">
+        <Box display="flex" flexDirection="column" gap="spacing.8">
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.3">
+              Horizontal Large — Indicators
+            </Text>
+            <StepGroup size="large" orientation="horizontal">
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIndicator color="positive" />}
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIndicator color="positive" />}
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="start"
+                marker={<StepItemIndicator color="notice" />}
+              />
+              <StepItem title="Header Title" description="Description" stepProgress="none" />
+            </StepGroup>
+          </Box>
+
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.3">
+              Horizontal Large — Icons
+            </Text>
+            <StepGroup size="large" orientation="horizontal">
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIcon icon={FileIcon} color="positive" />}
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="full"
+                marker={<StepItemIcon icon={UserIcon} color="positive" />}
+              />
+              <StepItem
+                title="Header Title"
+                timestamp="Wed, 27th Mar'24 | 12:00pm"
+                description="Description"
+                stepProgress="start"
+                marker={<StepItemIcon icon={ClockIcon} color="notice" />}
+              />
+              <StepItem
+                title="Header Title"
+                description="Description"
+                stepProgress="none"
+                marker={<StepItemIcon icon={HeartIcon} color="neutral" />}
+              />
+            </StepGroup>
+          </Box>
+        </Box>
       </ShowcaseSection>
     </Box>
   );
