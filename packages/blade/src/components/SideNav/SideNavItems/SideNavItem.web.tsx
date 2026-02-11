@@ -39,7 +39,7 @@ const SideNavItem = ({
         paddingX="spacing.3"
         height={makeSize(NAV_ITEM_HEIGHT)}
         backgroundColor={backgroundColor}
-        borderRadius="medium"
+        borderRadius="small"
         as={as}
         cursor={as === 'label' ? 'pointer' : undefined}
         {...makeAnalyticsAttribute(rest)}

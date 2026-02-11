@@ -97,7 +97,7 @@ const SideNavSection = ({
             truncateAfterLines={1}
             color="surface.text.gray.muted"
           >
-            {title?.toUpperCase()}
+            {title}
           </Text>
           <BaseBox
             className={classes.SHOW_WHEN_COLLAPSED}
