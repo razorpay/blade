@@ -61,7 +61,7 @@ const checkboxIconColors: CheckboxIconColors = {
     default: {
       border: {
         checked: 'colors.interactive.border.primary.default',
-        unchecked: 'colors.interactive.border.gray.default',
+        unchecked: 'colors.interactive.border.gray.highlighted',
       },
       background: {
         checked: 'colors.interactive.background.primary.default',
@@ -70,7 +70,7 @@ const checkboxIconColors: CheckboxIconColors = {
     },
     disabled: {
       border: {
-        checked: 'colors.interactive.border.primary.disabled',
+        checked: 'colors.transparent',
         unchecked: 'colors.interactive.border.gray.disabled',
       },
       background: {
@@ -99,7 +99,7 @@ const checkboxHoverTokens: SelectorInputHoverTokens = {
     },
     border: {
       checked: 'colors.interactive.background.primary.highlighted', // Intentionally not using border tokens here since we want to match the background color
-      unchecked: 'colors.interactive.border.gray.default',
+      unchecked: 'colors.interactive.border.gray.highlighted',
     },
   },
 };
