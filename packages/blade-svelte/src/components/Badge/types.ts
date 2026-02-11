@@ -1,9 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-
-// Icon component type - placeholder for now
-// TODO: Replace with actual Icon component when available
-export type IconComponent = unknown;
+import type { IconComponent } from '../Icons';
 
 export type BadgeSize = 'xsmall' | 'small' | 'medium' | 'large';
 export type BadgeColor = 'neutral' | 'positive' | 'negative' | 'notice' | 'information' | 'primary';
