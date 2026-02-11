@@ -276,7 +276,9 @@ const ShowcaseSwitchInstance = ({
       accessibilityLabel={`Switch ${size} ${isChecked ? 'checked' : 'unchecked'} ${
         isDisabled ? 'disabled' : 'default'
       }`}
-      onChange={() => {}}
+      onChange={() => {
+        console.log('onChange');
+      }}
     />
   );
 };
