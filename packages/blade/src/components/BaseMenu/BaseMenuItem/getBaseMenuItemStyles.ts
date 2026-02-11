@@ -11,7 +11,7 @@ const getBaseMenuItemStyles = (props: { theme: Theme }): CSSObject => {
     flexDirection: 'column',
     textAlign: isReactNative() ? undefined : 'left',
     backgroundColor: 'transparent',
-    borderRadius: makeSize(props.theme.border.radius.medium),
+    borderRadius: makeSize(props.theme.border.radius.small),
     marginTop: makeSize(getItemMargin(props.theme)),
     marginBottom: makeSize(getItemMargin(props.theme)),
     textDecoration: 'none',

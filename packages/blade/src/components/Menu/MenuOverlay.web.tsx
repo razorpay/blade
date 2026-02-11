@@ -44,13 +44,14 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
         https://floating-ui.com/docs/usetransition#usetransitionstyles
       */}
       <BaseBox
-        backgroundColor="popup.background.subtle"
+        backgroundColor="popup.background.gray.moderate"
         paddingX={overlayPaddingX}
         paddingY={overlayPaddingY}
         elevation="midRaised"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
-        borderRadius="medium"
+        borderWidth="none"
+        borderTopWidth="thin"
+        borderColor="popup.border.gray.moderate"
+        borderRadius="small"
         style={_transitionStyle}
       >
         {children}

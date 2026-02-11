@@ -8,11 +8,11 @@ const StyledDropdownOverlay = styled(BaseBox)<{
   const { theme, isInBottomSheet } = props;
 
   return {
-    backgroundColor: theme.colors.popup.background.subtle,
+    backgroundColor: theme.colors.popup.background.gray.moderate,
     borderWidth: isInBottomSheet ? undefined : theme.border.width.thin,
-    borderColor: theme.colors.interactive.border.gray.faded,
+    borderColor: theme.colors.popup.border.gray.moderate,
     borderStyle: isInBottomSheet ? undefined : 'solid',
-    borderRadius: makeSize(theme.border.radius.medium),
+    borderRadius: makeSize(theme.border.radius.large),
   };
 });
 
