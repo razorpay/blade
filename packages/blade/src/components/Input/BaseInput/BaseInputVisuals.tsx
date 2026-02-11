@@ -438,8 +438,8 @@ export const BaseInputVisuals = ({
         ) : null}
         {hasTrailingDropDown ? (
           <BaseBox
-            paddingRight={`spacing.${inputDropdownButtonPadding[size]}` as SpacingValueType}
-            paddingY={`spacing.${inputDropdownButtonPadding[size]}` as SpacingValueType}
+            paddingRight={`spacing.${inputDropdownButtonPadding[size]}`}
+            paddingY={`spacing.${inputDropdownButtonPadding[size]}`}
             display="flex"
             alignItems="stretch"
             alignSelf="stretch"

@@ -229,7 +229,7 @@ const _InputDropdownButton = ({
       {...metaAttribute({ name: 'InputDropdownButton', testID })}
     >
       <Box
-        padding={`spacing.${inputDropdownButtonPadding[size]}` as any}
+        padding={`spacing.${inputDropdownButtonPadding[size]}`}
         display="flex"
         gap="spacing.2"
         alignItems="center"
