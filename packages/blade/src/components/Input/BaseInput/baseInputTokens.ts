@@ -106,7 +106,7 @@ export const baseInputBorderWidth = {
 
 export const baseInputBorderBackgroundMotion = {
   enter: { duration: 'xgentle', easing: 'emphasized' },
-  exit: { duration: 'xgentle', easing: 'standard' },
+  exit: { duration: 'xgentle', easing: 'emphasized' },
 } as const;
 
 export const baseInputPaddingTokens = {
