@@ -8,6 +8,7 @@ import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useI18nContext } from '@razorpay/i18nify-react';
 import { MantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
+import type { Theme } from '~components/BladeProvider';
 import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
 import { Calendar } from './Calendar.web';
 import { CalendarFooter } from './CalendarFooter.web';
@@ -24,6 +25,8 @@ import { DatePickerProvider } from './DatePickerContext';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
+import { makePopupBoxShadow } from '~utils/makePopupBoxShadow';
+import type { ShadowLayer } from '~utils/makePopupBoxShadow/makePopupBoxShadow';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
@@ -43,6 +46,31 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
+
+// Shadow layers for the DatePicker popup container
+const getDatePickerPopupBoxShadow = (theme: Theme): string => {
+  const shadowLayers: ShadowLayer[] = [
+    // Layer 1: Thick white inset ring
+    {
+      x: 0,
+      y: 0,
+      blur: 0,
+      spread: 2,
+      color: theme.colors.surface.background.gray.intense,
+      inset: true,
+    },
+    // Layer 2: Offset white inset highlight
+    {
+      x: 0,
+      y: 1.5,
+      blur: 0,
+      spread: 1,
+      color: theme.colors.surface.background.gray.intense,
+      inset: true,
+    },
+  ];
+  return makePopupBoxShadow(shadowLayers);
+};
 
 // Calendar dimensions for consistent layout
 const CALENDAR_HEIGHTS = {
@@ -359,7 +387,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         height={
           _picker === 'day' && showFooterActions ? CALENDAR_HEIGHTS.DAY_PICKER_WITH_FOOTER : 'auto'
         }
-        backgroundColor="surface.background.gray.intense"
         justifyContent="space-between"
       >
         <Calendar
@@ -594,7 +621,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                         borderRadius="medium"
                         overflow="hidden"
                         minWidth="320px"
-                        style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+                        style={{
+                          ...animationStyles,
+                          background: theme.colors.popup.background.gray.moderate,
+                          boxShadow: `${theme.elevation.lowRaised}, ${getDatePickerPopupBoxShadow(
+                            theme,
+                          )}`,
+                          backdropFilter: `blur(${theme.backdropBlur.low}px)`,
+                        }}
                       >
                         {content}
                       </BaseBox>

@@ -14,6 +14,9 @@ import { Button } from '~components/Button';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
+import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
+import { Amount } from '~components/Amount';
+import { Badge } from '~components/Badge';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
@@ -1037,3 +1040,79 @@ export const ClearButtonControlledDisplayCompact: StoryFn<typeof DatePickerCompo
 };
 
 ClearButtonControlledDisplayCompact.storyName = 'Clear Button (Controlled ) (Display Compact)';
+
+export const DatePickerWithCardsShowcase: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.7">
+      <Box maxWidth="320px">
+        <DatePickerComponent
+          label="Select Date"
+          selectionType="single"
+          defaultValue={new Date()}
+          onChange={(date) => console.log(date)}
+        />
+      </Box>
+      <Box maxWidth="320px">
+        <DatePickerComponent
+          label="Select Range"
+          selectionType="range"
+          defaultValue={[new Date(), new Date()]}
+          onChange={(date) => console.log(date)}
+        />
+      </Box>
+
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Box display="flex" gap="spacing.5" flexWrap="wrap">
+        <Card width="240px">
+          <CardHeader>
+            <CardHeaderLeading title="Refunds" subtitle="3 processed" />
+          </CardHeader>
+          <CardBody>
+            <Box display="flex" alignItems="center" gap="spacing.3">
+              <Amount value={5421} type="heading" size="large" />
+              <Badge color="negative" size="small">
+                ↓ 2%
+              </Badge>
+            </Box>
+          </CardBody>
+        </Card>
+        <Card width="240px">
+          <CardHeader>
+            <CardHeaderLeading title="Payments" subtitle="128 successful" />
+          </CardHeader>
+          <CardBody>
+            <Box display="flex" alignItems="center" gap="spacing.3">
+              <Amount value={245300} type="heading" size="large" />
+              <Badge color="positive" size="small">
+                ↑ 12%
+              </Badge>
+            </Box>
+          </CardBody>
+        </Card>
+        <Card width="240px">
+          <CardHeader>
+            <CardHeaderLeading title="Settlements" subtitle="5 completed" />
+          </CardHeader>
+          <CardBody>
+            <Box display="flex" alignItems="center" gap="spacing.3">
+              <Amount value={189750} type="heading" size="large" />
+              <Badge color="positive" size="small">
+                ↑ 8%
+              </Badge>
+            </Box>
+          </CardBody>
+        </Card>
+      </Box>
+    </Box>
+  );
+};
+
+DatePickerWithCardsShowcase.storyName = 'With Cards (Backdrop Showcase)';
