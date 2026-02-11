@@ -27,14 +27,6 @@
         options: ['thinner', 'thin', 'thick', 'thicker'],
         description: 'Sets the thickness of divider',
       },
-      height: {
-        control: 'text',
-        description: 'Sets the height of divider (use when parent is not flex)',
-      },
-      width: {
-        control: 'text',
-        description: 'Sets the width of divider (use when parent is not flex)',
-      },
       marginX: {
         control: 'text',
         description: 'Horizontal margin (useful for vertical dividers)',
