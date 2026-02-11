@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { makeMotionTime, makeSize } from '~utils';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import getIn from '~utils/lodashButBetter/get';
 import { ComponentIds } from './componentIds';
 import { tableToolbar } from './tokens';
 import { useTableContext } from './TableContext';
 import type { TableToolbarProps, TableToolbarActionsProps } from './types';
+import { makeMotionTime, makeSize } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
