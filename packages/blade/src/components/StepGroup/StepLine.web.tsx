@@ -92,7 +92,7 @@ const StepStraightLineVertical = ({
     ? dottedStyles
     : {
         borderLeftWidth: 'thicker',
-        borderLeftColor: 'surface.border.gray.subtle',
+        borderLeftColor: 'surface.border.gray.muted',
       };
   return (
     <BaseBox
