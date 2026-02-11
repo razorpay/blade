@@ -1,6 +1,6 @@
 ---
-'@razorpay/blade-core': major
-'@razorpay/blade-svelte': major
+'@razorpay/blade-core': minor
+'@razorpay/blade-svelte': minor
 ---
 
-Divider compponent
+Added Divider component
