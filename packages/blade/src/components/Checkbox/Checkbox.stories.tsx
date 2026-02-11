@@ -87,6 +87,7 @@ const checkboxShowcaseRows: Array<{
   rowProps: Partial<CheckboxProps>;
 }> = [
   { id: 'default', label: 'Default', rowProps: {} },
+  { id: 'helptext', label: 'Help Text', rowProps: { helpText: 'Help text' } },
   { id: 'disabled', label: 'Disabled', rowProps: { isDisabled: true } },
   {
     id: 'error',
