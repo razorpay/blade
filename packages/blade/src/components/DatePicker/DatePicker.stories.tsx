@@ -1070,47 +1070,26 @@ export const DatePickerWithCardsShowcase: StoryFn<typeof DatePickerComponent> = 
         {' '}
         Change Date
       </Button>
-      <Box display="flex" gap="spacing.5" flexWrap="wrap">
-        <Card width="240px">
-          <CardHeader>
-            <CardHeaderLeading title="Refunds" subtitle="3 processed" />
-          </CardHeader>
-          <CardBody>
-            <Box display="flex" alignItems="center" gap="spacing.3">
-              <Amount value={5421} type="heading" size="large" />
-              <Badge color="negative" size="small">
-                ↓ 2%
-              </Badge>
-            </Box>
-          </CardBody>
-        </Card>
-        <Card width="240px">
-          <CardHeader>
-            <CardHeaderLeading title="Payments" subtitle="128 successful" />
-          </CardHeader>
-          <CardBody>
-            <Box display="flex" alignItems="center" gap="spacing.3">
-              <Amount value={245300} type="heading" size="large" />
-              <Badge color="positive" size="small">
-                ↑ 12%
-              </Badge>
-            </Box>
-          </CardBody>
-        </Card>
-        <Card width="240px">
-          <CardHeader>
-            <CardHeaderLeading title="Settlements" subtitle="5 completed" />
-          </CardHeader>
-          <CardBody>
-            <Box display="flex" alignItems="center" gap="spacing.3">
-              <Amount value={189750} type="heading" size="large" />
-              <Badge color="positive" size="small">
-                ↑ 8%
-              </Badge>
-            </Box>
-          </CardBody>
-        </Card>
-      </Box>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="positive"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="negative"
+      >
+        {' '}
+        Change Date
+      </Button>
     </Box>
   );
 };
