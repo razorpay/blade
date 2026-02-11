@@ -3,11 +3,12 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
+import { useTabsContext } from './TabsContext';
 import { castWebType, makeMotionTime } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useTabsContext } from './TabsContext';
 import { useTheme } from '~components/BladeProvider';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
 
 const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
@@ -70,10 +71,8 @@ const TabIndicator = ({
     };
   }, [baseId, selectedValue]);
 
-  // Update the dimensions when the container resizes or when the font loads
+  // Update the dimensions when fonts load
   React.useEffect(() => {
-    if (!tabListContainerRef.current) return;
-
     // check for FontFace API support
     // FontFaceAPI is widely supported but better to be safe than sorry
     if ('fonts' in document) {
@@ -86,18 +85,11 @@ const TabIndicator = ({
         /* empty */
       }
     }
+  }, [updateDimensions]);
 
-    // Use ResizeObserver to detect container size changes (covers window resize,
-    // sidebar toggles, lazy-loaded content, and containers becoming visible)
-    const resizeObserver = new ResizeObserver(() => {
-      updateDimensions();
-    });
-    resizeObserver.observe(tabListContainerRef.current);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [tabListContainerRef, updateDimensions]);
+  // Update the dimensions when the container resizes (covers window resize,
+  // sidebar toggles, lazy-loaded content, and containers becoming visible)
+  useResize(tabListContainerRef, updateDimensions);
 
   const transitionProps = {
     transitionProperty: 'transform, width, background-color',
