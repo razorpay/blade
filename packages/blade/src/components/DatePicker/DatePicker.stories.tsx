@@ -1043,7 +1043,14 @@ ClearButtonControlledDisplayCompact.storyName = 'Clear Button (Controlled ) (Dis
 
 export const DatePickerWithCardsShowcase: StoryFn<typeof DatePickerComponent> = () => {
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.7">
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.7"
+      backgroundColor="surface.background.gray.moderate"
+      padding="spacing.8"
+      minHeight="100vh"
+    >
       <Box maxWidth="320px">
         <DatePickerComponent
           label="Select Date"
