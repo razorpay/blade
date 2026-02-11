@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import type { ReactElement } from 'react';
+import { throwBladeError } from '~utils/logger';
+import { isReactNative } from '~utils';
 import type { BaseInputProps } from './BaseInput';
+import { inputDropdownButtonPadding } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
 import type { IconColors } from '~components/Icons';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
-import { throwBladeError } from '~utils/logger';
 import { Tooltip } from '~components/Tooltip';
 import { Box } from '~components/Box';
-import { isReactNative } from '~utils';
 
 type InputVisuals = Pick<
   BaseInputProps,
@@ -35,14 +36,14 @@ type InputVisuals = Pick<
 };
 
 const getVisualContainerStyles = ({
-  shouldStretchTrailingBox,
+  shouldStretch,
 }: {
-  shouldStretchTrailingBox?: boolean;
+  shouldStretch?: boolean;
 } = {}): Pick<BaseBoxProps, 'display' | 'flexDirection' | 'alignItems' | 'alignSelf'> => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  alignSelf: shouldStretchTrailingBox ? 'stretch' : 'center',
+  alignSelf: shouldStretch ? 'stretch' : 'center',
 });
 
 const trailingIconColor: Record<NonNullable<InputVisuals['validationState']>, IconColors> = {
@@ -119,7 +120,7 @@ const getInteractionElementStyles = ({
   }
 
   if (hasLeadingInteractionElement) {
-    return 'spacing.3';
+    return 'spacing.2';
   }
 
   return 'spacing.0';
@@ -307,7 +308,7 @@ export const BaseInputVisuals = ({
 
   if (hasLeadingVisuals) {
     return (
-      <BaseBox {...getVisualContainerStyles()}>
+      <BaseBox {...getVisualContainerStyles({ shouldStretch: hasLeadingDropDown })}>
         {hasLeadingInteractionElement ? (
           <BaseBox
             paddingLeft={getInteractionElementStyles({
@@ -316,6 +317,7 @@ export const BaseInputVisuals = ({
               hasSuffix,
               hasTrailingButton,
             })}
+            paddingY={`spacing.${inputDropdownButtonPadding[size]}`}
             display="flex"
             alignItems="stretch"
             alignSelf="stretch"
@@ -344,7 +346,13 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {leadingDropDown ? (
-          <BaseBox paddingLeft="spacing.2" display="flex">
+          <BaseBox
+            paddingLeft={`spacing.${inputDropdownButtonPadding[size]}`}
+            paddingY={`spacing.${inputDropdownButtonPadding[size]}`}
+            display="flex"
+            alignItems="stretch"
+            alignSelf="stretch"
+          >
             {leadingDropDown}
           </BaseBox>
         ) : null}
@@ -356,14 +364,15 @@ export const BaseInputVisuals = ({
     return (
       <BaseBox
         {...getVisualContainerStyles({
-          shouldStretchTrailingBox:
-            hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick),
+          shouldStretch:
+            (hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick)) ||
+            hasTrailingDropDown,
         })}
       >
         {hasTrailingInteractionElement ? (
           <BaseBox
             {...getVisualContainerStyles({
-              shouldStretchTrailingBox:
+              shouldStretch:
                 hasTrailingInteractionElement && Boolean(onTrailingInteractionElementClick),
             })}
           >
@@ -428,7 +437,13 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasTrailingDropDown ? (
-          <BaseBox paddingRight="spacing.2" display="flex">
+          <BaseBox
+            paddingRight={`spacing.${inputDropdownButtonPadding[size]}`}
+            paddingY={`spacing.${inputDropdownButtonPadding[size]}`}
+            display="flex"
+            alignItems="stretch"
+            alignSelf="stretch"
+          >
             {trailingDropDown}
           </BaseBox>
         ) : null}

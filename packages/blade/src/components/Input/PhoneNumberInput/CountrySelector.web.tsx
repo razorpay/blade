@@ -1,7 +1,8 @@
 import type { CountryCodeType, getFlagsForAllCountries } from '@razorpay/i18nify-js';
 import { getDialCodeByCountryCode, getFlagOfCountry } from '@razorpay/i18nify-js';
 import React from 'react';
-import styled from 'styled-components';
+import { size as sizes } from '~tokens/global';
+import { makeSize } from '~utils';
 import {
   ActionList,
   ActionListItem,
@@ -10,12 +11,8 @@ import {
 } from '~components/ActionList';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import type { DropdownOverlayProps } from '~components/Dropdown';
-import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
-import { ChevronUpDownIcon } from '~components/Icons';
+import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { useIsMobile } from '~utils/useIsMobile';
-import { size as sizes } from '~tokens/global';
-import { makeSize } from '~utils';
-import BaseBox from '~components/Box/BaseBox';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
@@ -33,14 +30,12 @@ type CounterSelectorProps = {
   size: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
-const CountryDropdownButtonWrapper = styled(BaseBox)(() => {
-  return {
-    '& > button': {
-      padding: '0',
-      width: '100%',
-    },
-  };
-});
+const flagSize = {
+  xsmall: makeSize(sizes[16]),
+  small: makeSize(sizes[16]),
+  medium: makeSize(sizes[20]),
+  large: makeSize(sizes[24]),
+} as const;
 
 const CountrySelector = ({
   isDisabled,
@@ -60,7 +55,6 @@ const CountrySelector = ({
         return (
           <ActionListItem
             key={country.code}
-            onClick={onItemClick}
             leading={<ActionListItemAsset src={flags[country.code]['4X3']} alt={country.name} />}
             title={country.name}
             value={country.code}
@@ -73,47 +67,26 @@ const CountrySelector = ({
     </ActionList>
   );
 
-  const flagSize = {
-    xsmall: makeSize(sizes[16]),
-    small: makeSize(sizes[16]),
-    medium: makeSize(sizes[20]),
-    large: makeSize(sizes[24]),
-  } as const;
+  const flagImage = (
+    <img
+      loading="lazy"
+      role="presentation"
+      width={flagSize[size]}
+      src={getFlagOfCountry(selectedCountry)['4X3']}
+      alt=""
+    />
+  );
 
   return (
     <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-      {/* TODO: Remove once CountrySelector's button sizing is fixed in figma */}
-      <CountryDropdownButtonWrapper
-        width={size === 'medium' ? '45px' : '60px'}
-        marginLeft={size === 'medium' ? '-3px' : '-2px'}
-      >
-        <DropdownButton
-          isDisabled={isDisabled}
-          size={size === 'medium' ? 'xsmall' : 'medium'}
-          variant="tertiary"
-          //@ts-expect-error
-          color="transparent"
-          accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
-          icon={ChevronUpDownIcon}
-          iconPosition="right"
-          // We need to prevent the click event from propagating to the BaseInputWrapper,
-          // Because the BaseInputWrapper is listening for click events to focus the input.
-          // We don't want that to happen when the user clicks on the dropdown button
-          // otherwise the dropdown will close immediately after opening
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          {/* @ts-expect-error */}
-          <img
-            loading="lazy"
-            role="presentation"
-            width={flagSize[size]}
-            src={getFlagOfCountry(selectedCountry)['4X3']}
-            alt=""
-          />
-        </DropdownButton>
-      </CountryDropdownButtonWrapper>
+      <InputDropdownButton
+        value={selectedCountry}
+        onChange={({ value }) => onItemClick({ name: value })}
+        accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
+        isDisabled={isDisabled}
+        size={size}
+        leading={flagImage}
+      />
       {isMobile ? (
         <BottomSheet>
           <BottomSheetHeader title="Select A Country" />
