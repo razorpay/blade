@@ -32,7 +32,7 @@ const TabList = ({
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
-  const shouldBorderRadiusBeLarge = size === 'small' && !isVertical;
+  const isCompact = size === 'small' && !isVertical;
 
   // Set the first child as the selected value
   useIsomorphicLayoutEffect(() => {
@@ -88,10 +88,10 @@ const TabList = ({
                   overflow={isVertical ? 'hidden' : undefined}
                   {...(isFilled
                     ? {
-                        borderRadius: shouldBorderRadiusBeLarge ? 'large' : 'medium',
+                        borderRadius: isCompact ? 'large' : 'medium',
                         borderWidth: 'none',
                         borderColor: 'interactive.border.gray.default',
-                        padding: size === 'small' && !isVertical ? 'spacing.1' : 'spacing.2',
+                        padding: isCompact ? 'spacing.1' : 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
                         backgroundColor: 'interactive.background.gray.faded',
                       }
