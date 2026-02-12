@@ -26,5 +26,9 @@ export { default as Amount } from './Amount/Amount.svelte';
 // Badge
 export { default as Badge } from './Badge/Badge.svelte';
 
+// Chip
+export { default as Chip } from './Chip/Chip.svelte';
+export { default as ChipGroup } from './Chip/ChipGroup.svelte';
+
 // BladeProvider
 export * from './BladeProvider';

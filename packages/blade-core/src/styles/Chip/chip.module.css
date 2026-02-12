@@ -1,0 +1,461 @@
+/* ==================== */
+/* Chip Component       */
+/* ==================== */
+
+/* Outer wrapper for individual Chip */
+.chipOuter {
+  display: inline-flex;
+}
+
+/* Label wrapping the hidden input + chip visual */
+.chipLabel {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &[data-disabled='true'] {
+    cursor: not-allowed;
+  }
+}
+
+/* Hidden native input (radio/checkbox) for accessibility */
+.hiddenInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Animated outer wrapper — handles border, max-width, scale transform */
+.chipAnimated {
+  background-color: transparent;
+  border-radius: var(--border-radius-max);
+  border-style: solid;
+  border-color: transparent;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+
+  /* Desktop: larger max-width */
+  max-width: 280px;
+  @media (min-width: 768px) {
+    max-width: 420px;
+  }
+}
+
+.chipAnimatedPressed {
+  transform: scale(0.92);
+}
+
+/* Inner chip wrapper — background, padding, height, text */
+.chipWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: var(--border-radius-max);
+  border: none !important;
+  gap: var(--spacing-3);
+  width: 100%;
+  transition-property: background-color, border-color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+/* Icon container inside chip */
+.chipIconWrapper {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* Chip text — truncate to 1 line */
+.chipText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ==================== */
+/* Size Variants         */
+/* ==================== */
+
+.xsmall {
+  height: 24px;
+}
+
+.small {
+  height: 28px;
+}
+
+.medium {
+  height: 36px;
+}
+
+.large {
+  height: 48px;
+}
+
+/* Border width per size */
+.borderThinner {
+  border-width: var(--border-width-thinner);
+}
+
+.borderThin {
+  border-width: var(--border-width-thin);
+}
+
+/* ==================== */
+/* Padding Variants      */
+/* ==================== */
+
+/* Without icon */
+.paddingWithoutIcon-xsmall {
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.paddingWithoutIcon-small {
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.paddingWithoutIcon-medium {
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
+}
+
+.paddingWithoutIcon-large {
+  padding-left: var(--spacing-7);
+  padding-right: var(--spacing-7);
+}
+
+/* With icon */
+.paddingWithIcon-xsmall {
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.paddingWithIcon-small {
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.paddingWithIcon-medium {
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-6);
+}
+
+.paddingWithIcon-large {
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-7);
+}
+
+/* ======================== */
+/* Color + State Variants   */
+/* ======================== */
+
+/* --- Unchecked --- */
+.unchecked {
+  background-color: var(--surface-background-gray-intense);
+  border-color: transparent;
+
+  &:hover {
+    background-color: var(--interactive-background-gray-faded);
+  }
+}
+
+.uncheckedDisabled {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* Unchecked animated border */
+.animatedBorder-unchecked {
+  border-color: var(--interactive-border-gray-faded);
+}
+
+.animatedBorder-uncheckedDisabled {
+  border-color: var(--interactive-border-gray-disabled);
+}
+
+/* --- Primary checked --- */
+.primary {
+  background-color: var(--interactive-background-primary-faded);
+  border-color: transparent;
+
+  &:hover {
+    background-color: var(--interactive-background-primary-fadedHighlighted);
+  }
+}
+
+.primaryDisabled {
+  background-color: var(--interactive-background-primary-disabled);
+  border-color: transparent;
+}
+
+.animatedBorder-primary {
+  border-color: var(--interactive-border-primary-default);
+}
+
+.animatedBorder-primaryDisabled {
+  border-color: var(--interactive-border-primary-disabled);
+}
+
+/* --- Positive checked --- */
+.positive {
+  background-color: var(--interactive-background-positive-faded);
+  border-color: transparent;
+
+  &:hover {
+    background-color: var(--interactive-background-positive-fadedHighlighted);
+  }
+}
+
+.positiveDisabled {
+  background-color: var(--interactive-background-positive-disabled);
+  border-color: transparent;
+}
+
+.animatedBorder-positive {
+  border-color: var(--interactive-border-positive-default);
+}
+
+.animatedBorder-positiveDisabled {
+  border-color: var(--interactive-border-positive-disabled);
+}
+
+/* --- Negative checked --- */
+.negative {
+  background-color: var(--interactive-background-negative-faded);
+  border-color: transparent;
+
+  &:hover {
+    background-color: var(--interactive-background-negative-fadedHighlighted);
+  }
+}
+
+.negativeDisabled {
+  background-color: var(--interactive-background-negative-disabled);
+  border-color: transparent;
+}
+
+.animatedBorder-negative {
+  border-color: var(--interactive-border-negative-default);
+}
+
+.animatedBorder-negativeDisabled {
+  border-color: var(--interactive-border-negative-disabled);
+}
+
+/* Disabled hover suppression */
+.disabledWrapper {
+  pointer-events: none;
+}
+
+/* Focus ring on hidden input focus-visible → chipAnimated */
+.hiddenInput:focus-visible ~ .chipAnimated .chipWrapper {
+  outline: 1px solid var(--surface-background-primary-subtle);
+  box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+/* ==================== */
+/* Text Color Tokens     */
+/* ==================== */
+
+.textUnchecked {
+  color: var(--interactive-text-gray-subtle);
+}
+
+.textDisabled {
+  color: var(--interactive-text-gray-disabled);
+}
+
+.textPrimary {
+  color: var(--interactive-text-primary-normal);
+}
+
+.textPositive {
+  color: var(--interactive-text-positive-normal);
+}
+
+.textNegative {
+  color: var(--interactive-text-negative-normal);
+}
+
+/* ==================== */
+/* Text Size Tokens      */
+/* ==================== */
+
+.textSizeXsmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.textSizeSmall {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.textSizeMedium {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+.textSizeLarge {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* ==================== */
+/* ChipGroup Component   */
+/* ==================== */
+
+/* Group fieldset/wrapper */
+.chipGroupField {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.chipGroupFieldTop {
+  flex-direction: column;
+}
+
+.chipGroupFieldLeft {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+/* Group label */
+.chipGroupLabel {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-3);
+}
+
+.chipGroupLabelLeft {
+  white-space: nowrap;
+  margin-bottom: 0;
+  padding-top: var(--spacing-2);
+}
+
+.chipGroupLabelSmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.chipGroupLabelMedium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.chipGroupLabelLarge {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* Necessity indicator */
+.necessityRequired::after {
+  content: ' *';
+  color: var(--feedback-text-negative-intense);
+}
+
+.necessityOptional::after {
+  content: ' (optional)';
+  color: var(--surface-text-gray-muted);
+}
+
+/* Chips flex container */
+.chipGroupContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Gap tokens per size */
+.chipGroupGap-xsmall {
+  column-gap: var(--spacing-3);
+  row-gap: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
+}
+
+.chipGroupGap-small {
+  column-gap: var(--spacing-3);
+  row-gap: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
+}
+
+.chipGroupGap-medium {
+  column-gap: var(--spacing-3);
+  row-gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.chipGroupGap-large {
+  column-gap: var(--spacing-3);
+  row-gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Help / Error text */
+.chipGroupHint {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.chipGroupHintSmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.chipGroupHintMedium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.chipGroupHintLarge {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+.chipGroupHintHelp {
+  color: var(--surface-text-gray-muted);
+}
+
+.chipGroupHintError {
+  color: var(--feedback-text-negative-intense);
+}
+
+/* Screen reader only text */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

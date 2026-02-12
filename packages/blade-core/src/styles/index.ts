@@ -75,3 +75,16 @@ export {
   getBadgeIconColorToken,
 } from './Badge';
 export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
+export {
+  getChipTemplateClasses,
+  getChipWrapperClasses,
+  getChipAnimatedClasses,
+  getChipTextColorClass,
+  getChipTextSizeClass,
+  getChipGroupFieldClasses,
+  getChipGroupLabelClasses,
+  getChipGroupContainerClasses,
+  getChipGroupHintClasses,
+  chipIconSizes,
+} from './Chip';
+export type { ChipColor, ChipSize } from './Chip';
