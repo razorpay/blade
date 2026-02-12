@@ -109,9 +109,9 @@ const TabIndicator = ({
       <StyledTabIndicator
         pointerEvents="none"
         position="absolute"
-        left="1.5px"
+        left="1.75px"
         top="0px"
-        width="2px"
+        width="1.5px"
         backgroundColor="interactive.border.neutral.highlighted"
         style={{
           ...transitionProps,

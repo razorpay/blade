@@ -102,7 +102,7 @@ const TabList = ({
             );
           }}
         />
-        {!isVertical || isBordered ? (
+        {!(isVertical && isFilled) ? (
           <TabIndicator tabListContainerRef={tabListContainerRef} />
         ) : null}
       </ScrollableArea>
