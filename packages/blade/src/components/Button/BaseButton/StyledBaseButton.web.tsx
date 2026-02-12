@@ -16,10 +16,16 @@ const StyledBaseButton = styled.button
     ...props.accessibilityProps,
   }))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
-  // TODO(spark): Change colors to actual values once design is finalized
+  const gradientSizeMap = {
+    large: 72,
+    medium: 64,
+    small: 56,
+    xsmall: 48,
+  } as const;
+  const gradientSize = gradientSizeMap[props.size ?? 'medium'];
   const mouseGradient =
     props.variant === 'primary' && !props.disabled
-      ? 'radial-gradient(circle at var(--mouse-x, 0%) var(--mouse-y, 0%), rgba(255, 255, 255, 0.2) 0%, transparent 70%)'
+      ? `radial-gradient(${gradientSize}px ${gradientSize}px at var(--mouse-x, 0%) var(--mouse-y, 0%), ${props.theme.colors.interactive.background.staticWhite.faded} 0%, transparent 100%)`
       : 'none';
 
   return {
