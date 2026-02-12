@@ -10,6 +10,10 @@ import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem, ActionListItemBadge } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
+import { Text } from '~components/Typography';
+import { Link } from '~components/Link';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { BankIcon, InfoIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -259,4 +263,411 @@ export const Disabled = SelectInputTemplate.bind({});
 Disabled.args = {
   isDisabled: true,
   defaultValue: ['item-1', 'item-2'],
+};
+
+export const SelectInputShowcase: StoryFn<typeof SelectInput> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Basic Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Basic Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <SelectInput label="Default" placeholder="Select option" name="default" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+
+          <Dropdown>
+            <SelectInput label="With Value" defaultValue="option-2" name="withValue" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+
+          <Dropdown>
+            <SelectInput
+              label="With Help Text"
+              placeholder="Select option"
+              helpText="This is a helpful message"
+              name="withHelpText"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+
+          <Dropdown>
+            <SelectInput label="Disabled" placeholder="Select option" isDisabled name="disabled" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* Validation States */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Validation States
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <SelectInput
+              label="Error State"
+              defaultValue="invalid-option"
+              validationState="error"
+              errorText="This field has an error"
+              name="error"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+
+          <Dropdown>
+            <SelectInput
+              label="Success State"
+              defaultValue="option-2"
+              validationState="success"
+              successText="This field is valid"
+              name="success"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <SelectInput
+              label="Medium Size"
+              placeholder="Medium size select"
+              size="medium"
+              name="sizeMedium"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+
+          <Dropdown>
+            <SelectInput
+              label="Large Size"
+              placeholder="Large size select"
+              size="large"
+              name="sizeLarge"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* Label Positions */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Label Positions
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <SelectInput
+              label="Label Top"
+              placeholder="Label on top"
+              labelPosition="top"
+              name="labelTop"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+
+          <Dropdown>
+            <SelectInput
+              label="Label Left"
+              placeholder="Label on left"
+              labelPosition="left"
+              name="labelLeft"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* Necessity Indicators */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Necessity Indicators
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <SelectInput
+              label="Required Field"
+              placeholder="Select option"
+              necessityIndicator="required"
+              name="required"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+
+          <Dropdown>
+            <SelectInput
+              label="Optional Field"
+              placeholder="Select option"
+              necessityIndicator="optional"
+              name="optional"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* With Icons */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Icons
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <SelectInput
+              label="Leading Icon"
+              placeholder="Select option"
+              icon={BankIcon}
+              name="leadingIcon"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Option 1" value="option-1" />
+                <ActionListItem title="Option 2" value="option-2" />
+                <ActionListItem title="Option 3" value="option-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* With Prefix/Suffix */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Prefix/Suffix
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <SelectInput
+              label="With Prefix"
+              placeholder="Select currency"
+              prefix="₹"
+              name="withPrefix"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="INR" value="inr" />
+                <ActionListItem title="USD" value="usd" />
+                <ActionListItem title="EUR" value="eur" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+
+          <Dropdown>
+            <SelectInput
+              label="With Suffix"
+              placeholder="Select weight"
+              suffix="kg"
+              name="withSuffix"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="10" value="10" />
+                <ActionListItem title="20" value="20" />
+                <ActionListItem title="30" value="30" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* With Value Suffix */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Value Suffix
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <SelectInput
+              label="Product with Discount"
+              placeholder="Select product"
+              defaultValue="product-1"
+              valueSuffix={({ values }) => {
+                if (values[0] === 'product-1') {
+                  return <Badge color="positive">20% Off</Badge>;
+                }
+                return null;
+              }}
+              name="valueSuffix"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem
+                  title="Product 1"
+                  value="product-1"
+                  titleSuffix={<ActionListItemBadge color="positive">20% Off</ActionListItemBadge>}
+                />
+                <ActionListItem title="Product 2" value="product-2" />
+                <ActionListItem title="Product 3" value="product-3" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* With Label Suffix & Trailing */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Label Suffix & Trailing
+        </Text>
+        <Dropdown>
+          <SelectInput
+            label="Country"
+            placeholder="Select country"
+            labelSuffix={
+              <Tooltip content="Select your country for tax purposes" placement="right">
+                <TooltipInteractiveWrapper display="flex">
+                  <InfoIcon size="small" color="surface.icon.gray.muted" />
+                </TooltipInteractiveWrapper>
+              </Tooltip>
+            }
+            labelTrailing={<Link size="small">Learn more</Link>}
+            name="labelSuffixTrailing"
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="India" value="india" />
+              <ActionListItem title="USA" value="usa" />
+              <ActionListItem title="UK" value="uk" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
+  );
+};
+
+SelectInputShowcase.storyName = 'Showcase - All Variants';
+SelectInputShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all SelectInput variants including basic states, validation states, sizes, label positions, icons, prefix/suffix, value suffix, and more.',
+    },
+  },
 };

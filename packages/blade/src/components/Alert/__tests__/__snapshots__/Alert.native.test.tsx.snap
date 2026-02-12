@@ -261,12 +261,12 @@ exports[`<Alert /> should render 1`] = `
           <RNSVGSvgView
             accessibilityElementsHidden={true}
             align="xMidYMid"
-            bbHeight="20px"
-            bbWidth="20px"
+            bbHeight="16px"
+            bbWidth="16px"
             data-blade-component="icon"
             fill="none"
             focusable={false}
-            height="20px"
+            height="16px"
             importantForAccessibility="no-hide-descendants"
             meetOrSlice={0}
             minX={0}
@@ -282,14 +282,14 @@ exports[`<Alert /> should render 1`] = `
                 ],
                 {
                   "flex": 0,
-                  "height": 20,
-                  "width": 20,
+                  "height": 16,
+                  "width": 16,
                 },
               ]
             }
             vbHeight={24}
             vbWidth={24}
-            width="20px"
+            width="16px"
           >
             <RNSVGGroup
               fill={null}
@@ -463,7 +463,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-              "paddingLeft": 12,
+              "paddingLeft": 8,
               "paddingRight": 4,
             },
           ]
@@ -567,12 +567,12 @@ exports[`<Alert /> should render positive color and full width 1`] = `
           <RNSVGSvgView
             accessibilityElementsHidden={true}
             align="xMidYMid"
-            bbHeight="20px"
-            bbWidth="20px"
+            bbHeight="16px"
+            bbWidth="16px"
             data-blade-component="icon"
             fill="none"
             focusable={false}
-            height="20px"
+            height="16px"
             importantForAccessibility="no-hide-descendants"
             meetOrSlice={0}
             minX={0}
@@ -588,14 +588,14 @@ exports[`<Alert /> should render positive color and full width 1`] = `
                 ],
                 {
                   "flex": 0,
-                  "height": 20,
-                  "width": 20,
+                  "height": 16,
+                  "width": 16,
                 },
               ]
             }
             vbHeight={24}
             vbWidth={24}
-            width="20px"
+            width="16px"
           >
             <RNSVGGroup
               fill={null}
@@ -769,7 +769,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-              "paddingLeft": 12,
+              "paddingLeft": 8,
               "paddingRight": 4,
             },
           ]
@@ -873,12 +873,12 @@ exports[`<Alert /> should render positive color and full width 2`] = `
           <RNSVGSvgView
             accessibilityElementsHidden={true}
             align="xMidYMid"
-            bbHeight="20px"
-            bbWidth="20px"
+            bbHeight="16px"
+            bbWidth="16px"
             data-blade-component="icon"
             fill="none"
             focusable={false}
-            height="20px"
+            height="16px"
             importantForAccessibility="no-hide-descendants"
             meetOrSlice={0}
             minX={0}
@@ -894,14 +894,14 @@ exports[`<Alert /> should render positive color and full width 2`] = `
                 ],
                 {
                   "flex": 0,
-                  "height": 20,
-                  "width": 20,
+                  "height": 16,
+                  "width": 16,
                 },
               ]
             }
             vbHeight={24}
             vbWidth={24}
-            width="20px"
+            width="16px"
           >
             <RNSVGGroup
               fill={null}

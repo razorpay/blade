@@ -387,3 +387,205 @@ OTPInputWithLabelSuffixTrailing.args = {
   ),
   labelTrailing: <Link size="small">Learn more</Link>,
 };
+
+export const OTPInputShowcase: StoryFn<typeof OTPInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Basic Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Basic Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box maxWidth="568px">
+            <OTPInputComponent label="Default" name="default" />
+          </Box>
+          <Box maxWidth="568px">
+            <OTPInputComponent label="With Value" value="123456" name="withValue" />
+          </Box>
+          <Box maxWidth="568px">
+            <OTPInputComponent
+              label="With Help Text"
+              helpText="This is a helpful message"
+              name="withHelpText"
+            />
+          </Box>
+          <Box maxWidth="568px">
+            <OTPInputComponent label="Disabled" isDisabled name="disabled" />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Validation States */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Validation States
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box maxWidth="568px">
+            <OTPInputComponent
+              label="Error State"
+              value="123456"
+              validationState="error"
+              errorText="Invalid OTP. Please try again"
+              name="error"
+            />
+          </Box>
+          <Box maxWidth="568px">
+            <OTPInputComponent
+              label="Success State"
+              value="123456"
+              validationState="success"
+              successText="OTP verified successfully"
+              name="success"
+            />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box maxWidth="568px">
+            <OTPInputComponent label="Medium Size" size="medium" name="sizeMedium" />
+          </Box>
+          <Box maxWidth="568px">
+            <OTPInputComponent label="Large Size" size="large" name="sizeLarge" />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Label Positions */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Label Positions
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box maxWidth="568px">
+            <OTPInputComponent label="Label Top" labelPosition="top" name="labelTop" />
+          </Box>
+          <Box maxWidth="568px">
+            <OTPInputComponent label="Label Left" labelPosition="left" name="labelLeft" />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* OTP Length */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          OTP Length
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box maxWidth="376px">
+            <OTPInputComponent label="4 Digit OTP" otpLength={4} name="otpLength4" />
+          </Box>
+          <Box maxWidth="568px">
+            <OTPInputComponent label="6 Digit OTP" otpLength={6} name="otpLength6" />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Masked Input */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Masked Input
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box maxWidth="376px">
+            <OTPInputComponent label="Masked 4 Digit PIN" otpLength={4} isMasked name="masked4" />
+          </Box>
+          <Box maxWidth="568px">
+            <OTPInputComponent label="Masked 6 Digit OTP" otpLength={6} isMasked name="masked6" />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Auto Focus */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Auto Focus
+        </Text>
+        <Box maxWidth="568px">
+          <OTPInputComponent label="Auto Focus Enabled" autoFocus name="autoFocus" />
+        </Box>
+      </Box>
+
+      {/* With Label Suffix & Trailing */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Label Suffix & Trailing
+        </Text>
+        <Box maxWidth="568px">
+          <OTPInputComponent
+            label="Enter OTP"
+            name="labelSuffixTrailing"
+            labelSuffix={
+              <Tooltip
+                content="Your OTP is sent to your registered mobile number"
+                placement="right"
+              >
+                <TooltipInteractiveWrapper display="flex">
+                  <InfoIcon size="small" color="surface.icon.gray.muted" />
+                </TooltipInteractiveWrapper>
+              </Tooltip>
+            }
+            labelTrailing={<Link size="small">Learn more</Link>}
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+OTPInputShowcase.storyName = 'Showcase - All Variants';
+OTPInputShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all OTPInput variants including basic states, validation states, sizes, label positions, OTP lengths, masked input, auto focus, and more.',
+    },
+  },
+};

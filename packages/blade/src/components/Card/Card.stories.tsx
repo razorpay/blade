@@ -1,6 +1,10 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
+import type { Elevation } from '~tokens/global';
+import { Amount } from '~components/Amount';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 import type { CardSpacingValueType } from './types';
 import type { CardFooterAction, CardProps } from './';
 import {
@@ -36,11 +40,9 @@ import { useIsMobile } from '~utils/useIsMobile';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import type { Elevation } from '~tokens/global';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
-import { Amount } from '~components/Amount';
 
 const Page = (): React.ReactElement => {
   return (
@@ -309,34 +311,76 @@ export default {
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Card
-      borderRadius={args.borderRadius}
-      backgroundColor={args.backgroundColor}
-      elevation={args.elevation}
-      padding={args.padding}
-    >
-      <CardHeader paddingBottom={args.headerPaddingBottom} marginBottom={args.headerMarginBottom}>
-        <CardHeaderLeading
-          title={args.headerTitle}
-          subtitle={args.headerSubtitle}
-          prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
-          suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
-        />
-        <CardHeaderTrailing visual={args.visual} />
-      </CardHeader>
-      <CardBody>
-        <Text>{args.body}</Text>
-      </CardBody>
-      <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
-        <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
-        <CardFooterTrailing
-          actions={{
-            primary: args.footerPrimaryAction,
-            secondary: args.footerSecondaryAction,
-          }}
-        />
-      </CardFooter>
-    </Card>
+    <Box display="flex">
+      <Box backgroundColor="surface.background.gray.moderate" padding="spacing.8">
+        <Card
+          borderRadius={args.borderRadius}
+          backgroundColor={args.backgroundColor}
+          elevation="none"
+          padding={args.padding}
+        >
+          <CardHeader
+            paddingBottom={args.headerPaddingBottom}
+            marginBottom={args.headerMarginBottom}
+          >
+            <CardHeaderLeading
+              title={args.headerTitle}
+              subtitle={args.headerSubtitle}
+              prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
+              suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
+            />
+            <CardHeaderTrailing visual={args.visual} />
+          </CardHeader>
+          <CardBody>
+            <Text>{args.body}</Text>
+          </CardBody>
+          <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
+            <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
+            <CardFooterTrailing
+              actions={{
+                primary: args.footerPrimaryAction,
+                secondary: args.footerSecondaryAction,
+              }}
+            />
+          </CardFooter>
+        </Card>
+      </Box>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        <Box backgroundColor="surface.background.gray.moderate" padding="spacing.8">
+          <Card
+            borderRadius={args.borderRadius}
+            backgroundColor={args.backgroundColor}
+            elevation="highRaised"
+            padding={args.padding}
+          >
+            <CardHeader
+              paddingBottom={args.headerPaddingBottom}
+              marginBottom={args.headerMarginBottom}
+            >
+              <CardHeaderLeading
+                title={args.headerTitle}
+                subtitle={args.headerSubtitle}
+                prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
+                suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
+              />
+              <CardHeaderTrailing visual={args.visual} />
+            </CardHeader>
+            <CardBody>
+              <Text>{args.body}</Text>
+            </CardBody>
+            <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
+              <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
+              <CardFooterTrailing
+                actions={{
+                  primary: args.footerPrimaryAction,
+                  secondary: args.footerSecondaryAction,
+                }}
+              />
+            </CardFooter>
+          </Card>
+        </Box>
+      </BladeProvider>
+    </Box>
   );
 };
 
@@ -447,7 +491,7 @@ const CardWithoutPaddingExample: StoryFn<typeof Card> = (args): React.ReactEleme
             height="auto"
             src="https://d6xcmfyh68wv8.cloudfront.net/assets/case-studies/common-card/pg_breathingroom.png"
             alt="Breathing Room"
-            style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
+            style={{ borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px' }}
           />
           <Box padding="spacing.7" display="flex" flexDirection="column">
             <Heading size="large">Breathing Room</Heading>
