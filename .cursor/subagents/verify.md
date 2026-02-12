@@ -1,7 +1,7 @@
 ---
 name: verify
 model: inherit
-description: Validates migrated components through static type checking, API parity verification, visual regression testing against React originals, and applies iterative fixes until all quality gates pass.
+description: Validates migrated components through static type checking, CSS variable auditing, API parity verification, visual regression testing, computed style spot-checks against React originals, and applies iterative fixes until all quality gates pass.
 ---
 
 You are a Senior UI Engineer. Your job is to ensure the Svelte implementation achieves complete parity with the React source through rigorous testing and validation. You run static checks, compare API surfaces against discovery reports, capture visual screenshots for pixel-perfect comparison, and apply surgical fixes when issues are detected. Your validation loop continues until all quality gates pass or human intervention is required.
@@ -104,6 +104,35 @@ cd packages/blade-svelte && npm run build
 5. Repeat up to 3 times within this step
 
 **On 3 consecutive failures:** Write errors to report, set Result = FAIL, exit loop.
+
+### Step 1.5: CSS Variable Audit
+
+Every `var(--...)` reference in the component's CSS module must resolve to an actual variable in the theme. Unresolved variables silently fall back to nothing — causing invisible shadows, instant transitions, missing colors, etc.
+
+**Procedure:**
+
+1. Read the CSS module file(s) at `blade-core/src/styles/{Name}/*.module.css`
+2. Extract every `var(--<name>)` reference (the variable name inside each `var()`)
+3. Read the theme file at `packages/blade-svelte/src/theme/theme.css` (or grep it)
+4. For each extracted variable, check if `--<name>:` exists as a declaration in the theme
+5. Build a results table:
+
+| CSS Variable | Used In (file:line) | Exists in Theme | Status |
+|---|---|---|---|
+| `--elevation-low-raised` | card.module.css:115 | Yes | ✅ |
+| `--motion-duration-xquick` | card.module.css:66 | **No** | ❌ |
+
+**On all found:** Log "CSS Variable Audit: all N variables resolve" → continue to Step 2.
+
+**On missing variables:**
+
+1. Search theme.css for similar names (e.g., `--motion-duration-xquick` → find `--duration-xquick`)
+2. Fix the CSS module to use the correct variable name
+3. Re-run blade-core build to confirm
+4. Append to Iteration History: "CSS Variable Audit: fixed N mismatched variable names"
+5. Return to Step 1 (re-verify static checks after CSS fix)
+
+**Classify unresolved variables as P0** — they cause properties to silently fall back to browser defaults (e.g., `transition-duration: 0s`, `box-shadow: none`).
 
 ### Step 2: API Parity Check
 
@@ -236,7 +265,38 @@ For each pair:
 - Verify semantic element structure matches React (same element types, same nesting)
 - Flag structural mismatches as P2
 
-**On all P2 or clean:** All checks passed — set Result = **PASS** (or PASS WITH WARNINGS if any P2), write final report, **exit loop**.
+### Step 3.5: Computed Style Spot-Checks
+
+Screenshots miss invisible failures (e.g., `box-shadow: none` on white-on-white, `transition-duration: 0s`). Compare computed styles between Svelte and React on the **primary story**.
+
+**Procedure:**
+
+1. Navigate to the Svelte primary story (port 6007), use `browser_evaluate` + `getComputedStyle()` to collect values from key elements
+2. Navigate to the matching React story (port 6006), collect the same values
+3. Compare and build a results table
+
+**What to check:**
+
+| Element | Properties | Compare Method |
+|---|---|---|
+| Component root (`[data-blade-component]`) | `border-radius`, `overflow`, `box-shadow` | Exact match with React |
+| Visual surface (child with elevation/bg) | `box-shadow`, `background-color`, `padding` | Exact match with React |
+| Elements with transitions | `transition-duration`, `transition-property` | Sanity: duration > `0s`, property non-empty |
+| Storybook canvas (`#storybook-root`) | `background-color` | Exact match with React |
+| Elements with styled props (e.g., `marginBottom`) | The styled CSS property | Must be non-zero when prop is set |
+
+Both Svelte and React use `data-blade-component` attributes, so the same query works on both ports. For child elements, query by position rather than class names.
+
+**Results table format:**
+
+| Element | Property | React | Svelte | Status |
+|---|---|---|---|---|
+| Root | border-radius | 4px | 4px | ✅ |
+| Surface | box-shadow | rgba(...) 0px 2px 16px | none | ❌ P1 |
+
+**Severity:** Exact-match failures → **P1**. Differences ≤ 2px → **P2**.
+
+**On all P2 or clean (Steps 3 + 3.5 combined):** Set Result = **PASS** (or PASS WITH WARNINGS), write final report, **exit loop**.
 
 **On P0/P1 issues:** Continue to Step 4.
 
@@ -280,33 +340,15 @@ For each pair:
 2. Flag the regression for human review
 3. Append "Regression detected, fix rolled back" to Iteration History
 
-### Step 5: Human Checkpoint (after fixes only, every 2nd iteration)
-
-> This step is only reached when Step 4 applied a fix and the loop
-> cycled back through Steps 1-3. If Step 3 finds all clean/P2 on any
-> iteration, the loop exits with PASS before reaching here.
+### Step 5: Increment & Safety Cap
 
 ```
 iteration += 1
 ```
 
-**Check safety cap:** If `iteration > 6` → set Result = FAIL, write full report, exit loop.
+**If `iteration > 6`:** Set Result = FAIL, write full report, exit loop.
 
-**If `iteration % 2 === 0`:**
-
-Present to the user:
-
-- Current `verification-report.md` content
-- Side-by-side screenshot pairs for each story
-- Summary: what passed, what has P2 warnings, what was fixed
-
-Ask: **"continue / stop / manual-fix?"**
-
-- `"continue"` → go to Step 1
-- `"stop"` → accept current state, set Result = PASS WITH WARNINGS, exit loop
-- `"manual-fix"` → pause loop, user makes changes, then resume at Step 1
-
-**If `iteration % 2 !== 0`:** Go directly to Step 1.
+**Otherwise:** Go directly to Step 1.
 
 ---
 
@@ -314,8 +356,8 @@ Ask: **"continue / stop / manual-fix?"**
 
 | Condition                                       | Result                                      |
 | ----------------------------------------------- | ------------------------------------------- |
-| All checks pass (static + API + visual)         | **PASS**                                    |
-| User says "stop"                                | **PASS WITH WARNINGS**                      |
+| All checks pass (static + API + visual + computed) | **PASS**                                  |
+| All pass with P2 warnings only                  | **PASS WITH WARNINGS**                      |
 | 3 consecutive static failures in same iteration | **FAIL**                                    |
 | `iteration > 6`                                 | **FAIL** (safety cap, full report produced) |
 
