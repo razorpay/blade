@@ -92,7 +92,7 @@ Read the dependencies section of the discovery report. For any dependency marked
 **YOUR ACTION:** Use Shell tool to run this command:
 
 ```bash
-run-agent .cursor/subagents/execute.md "CONTEXT: Component={Name}, MigrationPlan=.cursor/artifacts/{Name}/migration-plan.md"
+run-agent .cursor/subagents/execute.md "CONTEXT: MigrationPlan=.cursor/artifacts/{Name}/migration-plan.md"
 ```
 
 **WAIT** for completion. before moving to verify phase.
@@ -102,7 +102,7 @@ run-agent .cursor/subagents/execute.md "CONTEXT: Component={Name}, MigrationPlan
 **YOUR ACTION:** Use Shell tool to run this command:
 
 ```bash
-run-agent .cursor/subagents/verify.md "CONTEXT: Component={Name}, DiscoveryReport=.cursor/artifacts/{Name}/discovery-report.md"
+run-agent .cursor/subagents/verify.md "CONTEXT: DiscoveryReport=.cursor/artifacts/{Name}/discovery-report.md"
 ```
 
 **WAIT** for completion.
@@ -110,7 +110,7 @@ run-agent .cursor/subagents/verify.md "CONTEXT: Component={Name}, DiscoveryRepor
 If Verify reports API parity gaps needing a patch, run Execute in patch mode then re-run Verify:
 
 ```bash
-run-agent .cursor/subagents/execute.md "CONTEXT: Component={Name}, Mode=patch, PatchRequest=.cursor/artifacts/{Name}/patch-request.md"
+run-agent .cursor/subagents/execute.md "CONTEXT: Mode=patch, PatchRequest=.cursor/artifacts/{Name}/patch-request.md"
 ```
 
 ## Step 6: Human Gate — Final Review

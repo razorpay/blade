@@ -19,10 +19,13 @@ alwaysApply: false
 ## Svelte Patterns
 
 - Svelte 5 runes only: `$state`, `$derived`, `$derived.by`, `$effect`, `$props`
+- Avoid variable names that match Svelte rune names: state, derived, effect, props
 - Never use `createEventDispatcher` — use prop-based callbacks
 - Children type: `Snippet | string` (not ReactNode)
 - Event types: web-only (`MouseEvent`, `FocusEvent`) — strip `Platform.Select`
 - Props destructuring: `let { prop1, prop2 = 'default', ...rest }: Props = $props()`
+- Always use regular `.ts` files for utilities and not `.svelte.ts`
+- Reactive Context Pattern: use getter functions `setContext(CONTEXT_KEY, () => contextValue)`
 
 ## Styling
 

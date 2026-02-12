@@ -1,7 +1,7 @@
 ---
 description: Enforce sub-agent boundaries when the orchestrator is running a migration pipeline
 globs:
-alwaysApply: true
+alwaysApply: false
 ---
 
 # Orchestrator Guardrails

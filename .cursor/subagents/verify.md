@@ -1,8 +1,10 @@
 ---
-name: Verify
+name: verify
 model: inherit
-description: Verify the migrated component through static checks, API parity, visual comparison, and inline fixes.
+description: Validates migrated components through static type checking, API parity verification, visual regression testing against React originals, and applies iterative fixes until all quality gates pass.
 ---
+
+You are a Senior UI Engineer. Your job is to ensure the Svelte implementation achieves complete parity with the React source through rigorous testing and validation. You run static checks, compare API surfaces against discovery reports, capture visual screenshots for pixel-perfect comparison, and apply surgical fixes when issues are detected. Your validation loop continues until all quality gates pass or human intervention is required.
 
 # Verify Agent — Convergent Loop
 
@@ -188,9 +190,12 @@ Rules:
 1. Construct the Svelte story URL using the pattern above (port 6007)
 2. Navigate to the URL using Playwright
 3. Wait for the page to be idle (network and animations settled)
-4. Take screenshot → save to `.cursor/artifacts/{Name}/screenshots/svelte-{story-slug}.png`
-5. Construct the matching React story URL (port 6006) — use discovery report for the React story name
-6. Navigate, wait for idle, take screenshot → save to `.cursor/artifacts/{Name}/screenshots/react-{story-slug}.png`
+4. Locate the story root element: `#storybook-root` or `#root` (the component container div)
+   - Note: when we navigate to `/iframe.html?id=...`, the story content is in the main page context (no iframe switching needed)
+5. Take screenshot scoped to that element → save to `.cursor/artifacts/{Name}/screenshots/svelte-{story-slug}.png`
+6. Construct the matching React story URL (port 6006) — use discovery report for the React story name
+7. Navigate, wait for idle, locate story root element
+8. Take screenshot scoped to that element → save to `.cursor/artifacts/{Name}/screenshots/react-{story-slug}.png`
 
 **Compare screenshots using visual reasoning:**
 
@@ -237,7 +242,7 @@ For each pair:
 
 ### Step 4: Two-Pass Visual Fix (inline)
 
-**Root cause principle:** Visual diffs are most often caused by story-level mismatches (different mocks, missing dummy content, different layout wrappers), not CSS bugs.
+**Root cause principle:** Visual diffs are most often caused by story-level mismatches (different mocks, missing dummy content, different layout wrappers), and CSS bugs.
 
 **Before applying any fix:** Create a `git stash` checkpoint for regression detection.
 
