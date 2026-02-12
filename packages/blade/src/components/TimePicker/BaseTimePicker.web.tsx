@@ -17,6 +17,34 @@ import { usePopup } from '~components/DatePicker/usePopup';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size as sizeTokens } from '~tokens/global';
+import { makePopupBoxShadow } from '~utils/makePopupBoxShadow';
+import type { ShadowLayer } from '~utils/makePopupBoxShadow/makePopupBoxShadow';
+import type { Theme } from '~components/BladeProvider';
+
+// Shadow layers for the TimePicker popup container
+const getTimePickerPopupBoxShadow = (theme: Theme): string => {
+  const shadowLayers: ShadowLayer[] = [
+    // Layer 1: Thick white inset ring
+    {
+      x: 0,
+      y: 0,
+      blur: 0,
+      spread: 2,
+      color: theme.colors.surface.background.gray.intense,
+      inset: true,
+    },
+    // Layer 2: Offset white inset highlight
+    {
+      x: 0,
+      y: 1.5,
+      blur: 0,
+      spread: 1,
+      color: theme.colors.surface.background.gray.intense,
+      inset: true,
+    },
+  ];
+  return makePopupBoxShadow(shadowLayers);
+};
 
 const _BaseTimePicker = ({
   value,
@@ -221,7 +249,6 @@ const _BaseTimePicker = ({
               {...makeAccessible({ labelledBy: titleId })}
             >
               <BaseBox
-                backgroundColor="popup.background.subtle"
                 borderColor="popup.border.subtle"
                 borderWidth="thin"
                 borderStyle="solid"
@@ -229,7 +256,9 @@ const _BaseTimePicker = ({
                 overflow="hidden"
                 style={{
                   ...animationStyles,
-                  boxShadow: `${theme.elevation.midRaised}`,
+                  background: theme.colors.popup.background.gray.moderate,
+                  boxShadow: `${theme.elevation.lowRaised}, ${getTimePickerPopupBoxShadow(theme)}`,
+                  backdropFilter: `blur(${theme.backdropBlur.low}px)`,
                 }}
               >
                 {content}
