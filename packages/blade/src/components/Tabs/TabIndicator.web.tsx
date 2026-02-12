@@ -45,8 +45,8 @@ const TabIndicator = ({
       height: activeTabItem.offsetHeight,
       x: activeTabItem.offsetLeft,
       y:
-        variant === 'filled'
-          ? // on filled variant the indicator is positioned on top of the tab item
+        variant === 'filled' || isVertical
+          ? // on filled variant or vertical layout the indicator is positioned on top of the tab item
             // so no need to add offsetHeight
             activeTabItem.offsetTop
           : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
@@ -96,12 +96,32 @@ const TabIndicator = ({
   }, [tabListContainerRef, updateDimensions]);
 
   const transitionProps = {
-    transitionProperty: 'transform, width, background-color',
+    transitionProperty: 'transform, width, height, background-color',
     transitionDuration: hasMeasured
       ? castWebType(makeMotionTime(theme.motion.duration.moderate))
       : '0ms',
     transitionTimingFunction: castWebType(theme.motion.easing.standard),
   };
+
+  // Vertical bordered: 2px-wide line on the left side that slides vertically
+  if (isVertical && variant !== 'filled') {
+    return (
+      <StyledTabIndicator
+        pointerEvents="none"
+        position="absolute"
+        left="1.5px"
+        top="0px"
+        width="2px"
+        backgroundColor="interactive.border.neutral.highlighted"
+        style={{
+          ...transitionProps,
+          height: `${activeElementDimensions.height}px`,
+          transform: `translateY(${activeElementDimensions.y}px)`,
+        }}
+        {...metaAttribute({ name: MetaConstants.TabIndicator })}
+      />
+    );
+  }
 
   if (variant === 'filled') {
     const shouldHaveMediumBorderRadius = size === 'small' && !isVertical;

@@ -70,17 +70,25 @@ const StyledTabButton = styled.button<{
     [`${border}Style`]: 'solid',
     [`${border}Width`]:
       borderWidth === 'none' ? 0 : makeBorderSize(theme.border.width[borderWidth]),
-    [`${border}Color`]: getIn(theme, borderColor.default),
+    // For vertical bordered, borderLeft is transparent because the TabIndicator component
+    // handles the selected indicator (avoids border curving with focus border-radius)
+    [`${border}Color`]:
+      isVertical && _variant === 'bordered' ? 'transparent' : getIn(theme, borderColor.default),
 
     // States
     '&:hover': {
-      [`${border}Color`]: getIn(theme, borderColor.highlighted),
+      [`${border}Color`]:
+        isVertical && _variant === 'bordered'
+          ? 'transparent'
+          : getIn(theme, borderColor.highlighted),
       backgroundColor: getIn(theme, background.highlighted),
     },
     '&:focus-visible': {
       borderRadius: makeSpace(theme.border.radius[focusBorderRadius]),
       boxShadow: `inset 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
-      backgroundColor: theme.colors.interactive.background.gray.default,
+      backgroundColor: isSelected
+        ? getIn(theme, background.default)
+        : theme.colors.interactive.background.gray.default,
       [`${border}Color`]: 'transparent',
     },
     '&:disabled': {

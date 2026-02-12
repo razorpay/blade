@@ -16,10 +16,6 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 const ScrollableArea = styled(BaseBox)(() => {
   return {
     '&::-webkit-scrollbar': { display: 'none' },
-    // Hide the tab selection indicator line when any tab has keyboard focus
-    '&:has(:focus-visible) > [data-blade-component="tab-indicator"]': {
-      opacity: 0,
-    },
   };
 });
 
@@ -106,7 +102,9 @@ const TabList = ({
             );
           }}
         />
-        {!isVertical ? <TabIndicator tabListContainerRef={tabListContainerRef} /> : null}
+        {!isVertical || isBordered ? (
+          <TabIndicator tabListContainerRef={tabListContainerRef} />
+        ) : null}
       </ScrollableArea>
       {/*
         Adding border bottom with an div element, we can't put it on the outer Box of tablist because 
