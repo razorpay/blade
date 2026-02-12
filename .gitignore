@@ -96,4 +96,5 @@ buck-out/
 
 knowledgebase-ts-errors.json
 .cursor/rules/frontend-blade-rules.mdc
+.cursor/artifacts/
 .playwright-mcp/

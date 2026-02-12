@@ -1,5 +1,28 @@
 # @razorpay/blade
 
+## 12.81.1
+
+### Patch Changes
+
+- 72a1704ee: feat(blade): expose barSize prop in barChart
+
+## 12.81.0
+
+### Minor Changes
+
+- 84180580d: fix(blade): chart UX improvements and recharts upgrade
+
+  - Updated recharts from 3.1.2 to 3.7.0
+  - BarChart: Fixed unwanted re-animation on tooltip hover
+  - LineChart: Update auto color logic - single data indicator now defaults to gray.moderate
+  - Updated chart documentation
+
+## 12.80.1
+
+### Patch Changes
+
+- a4031566b: fix(blade): added meta attr to step-item and checkbox icon fade component
+
 ## 12.80.0
 
 ### Minor Changes

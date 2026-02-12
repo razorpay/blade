@@ -43,7 +43,11 @@
     "build:lib": "rollup -c",
     "svelte-check": "svelte-check --tsconfig ./tsconfig.json",
     "svelte-check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "storybook": "storybook dev -p 6006",
+    "dev": "npm-run-all --parallel dev:blade-core dev:storybook",
+    "dev:blade-core": "cd ../blade-core && yarn build:watch",
+    "dev:storybook": "storybook dev -p 6007",
+    "prestorybook": "cd ../blade-core && yarn build",
+    "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {

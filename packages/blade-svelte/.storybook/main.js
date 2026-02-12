@@ -13,6 +13,9 @@ function getAbsolutePath(value) {
 
 /** @type { import('@storybook/svelte-vite').StorybookConfig } */
 const config = {
+  features: {
+    experimentalComponentsManifest: true, // Enable manifest generation for the docs toolset, only supported in React-based setups.
+  },
   stories: ['../src/**/*.stories.@(js|ts|svelte|mdx)'],
   addons: [
     '@storybook/addon-links',
@@ -20,6 +23,16 @@ const config = {
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
     '@storybook/addon-svelte-csf',
+    {
+      name: '@storybook/addon-mcp',
+      options: {
+        toolsets: {
+          dev: true, // Tools for story URL retrieval and UI building instructions (default: true)
+          docs: true, // Tools for component manifest and documentation (default: true, requires experimental feature flag below 👇)
+        },
+        experimentalFormat: 'markdown', // Output format: 'markdown' (default) or 'xml'
+      },
+    },
   ],
   framework: {
     name: '@storybook/svelte-vite',
@@ -29,9 +42,6 @@ const config = {
     autodocs: true,
   },
   viteFinal: async (config) => {
-    // Set base path for subdirectory deployment at /svelte on blade.razorpay.com
-    config.base = '/svelte/';
-
     // Resolve blade-core imports directly to source files for better re-export handling
     // Note: We use a custom resolve function to handle exact matches only
     const bladeCoreRoot = resolve(__dirname, '../../blade-core/src');

@@ -24,11 +24,15 @@ export { default as Spinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
 // Amount
 export { default as Amount } from './Amount/Amount.svelte';
 
+// Icons
+export * from './Icons';
 // Badge
 export { default as Badge } from './Badge/Badge.svelte';
 
 // Counter
 export { default as Counter } from './Counter/Counter.svelte';
+// Divider
+export { default as Divider } from './Divider/Divider.svelte';
 
 // BladeProvider
 export * from './BladeProvider';
