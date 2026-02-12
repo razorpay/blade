@@ -13,6 +13,11 @@ import {
   textColor,
   iconColor,
   textSizeMap,
+  borderWidth as borderWidthToken,
+  borderRadius as borderRadiusToken,
+  focusBorderRadius as focusBorderRadiusToken,
+  borderColor as borderColorToken,
+  needsStackingContext,
 } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { Text } from '~components/Typography';
@@ -30,12 +35,16 @@ const StyledTabButton = styled.button<{
   isVertical: boolean;
   isSelected: boolean;
 }>(({ theme, isSelected, size, variant, isFullWidthTabItem, isVertical }) => {
-  const isFilled = variant === 'filled';
   const orientation = isVertical ? 'vertical' : 'horizontal';
   const border = isVertical ? 'borderLeft' : 'borderBottom';
-  const selectedState: 'selected' | 'unselected' = isSelected ? 'selected' : 'unselected';
+  const selectedState = isSelected ? 'selected' : 'unselected';
   const _variant = variant === 'borderless' ? 'bordered' : variant;
-  const background = backgroundColor[selectedState][_variant];
+
+  const background = backgroundColor[selectedState][_variant][orientation];
+  const borderColor = borderColorToken[selectedState][_variant][orientation];
+  const borderWidth = borderWidthToken[_variant][orientation];
+  const borderRadius = borderRadiusToken[_variant][orientation][size!];
+  const focusBorderRadius = focusBorderRadiusToken[_variant][orientation][size!];
 
   return {
     appearance: 'none',
@@ -55,49 +64,21 @@ const StyledTabButton = styled.button<{
     paddingLeft: makeSpace(getIn(theme, paddingX[_variant][orientation][size!])),
     paddingRight: makeSpace(getIn(theme, paddingX[_variant][orientation][size!])),
 
-    // colors
-    backgroundColor:
-      isSelected && isFilled && !isVertical ? 'transparent' : getIn(theme, background.default),
-    borderRadius: isFilled
-      ? size === 'small' && !isVertical
-        ? theme.border.radius.medium
-        : theme.border.radius.small
-      : 0,
+    // Colors & border
+    backgroundColor: getIn(theme, background.default),
+    borderRadius: borderRadius === 'none' ? 0 : theme.border.radius[borderRadius],
     [`${border}Style`]: 'solid',
-    [`${border}Width`]: isFilled
-      ? 0
-      : makeBorderSize(isVertical ? theme.border.width.thick : theme.border.width.thicker),
-    [`${border}Color`]:
-      isVertical && isSelected
-        ? theme.colors.interactive.border.neutral.highlighted
-        : 'transparent',
+    [`${border}Width`]:
+      borderWidth === 'none' ? 0 : makeBorderSize(theme.border.width[borderWidth]),
+    [`${border}Color`]: getIn(theme, borderColor.default),
 
-    // states
+    // States
     '&:hover': {
-      [`${border}Color`]:
-        isVertical && isSelected
-          ? theme.colors.interactive.border.neutral.highlighted
-          : isSelected
-          ? 'transparent'
-          : theme.colors.interactive.border.gray.highlighted,
-      backgroundColor:
-        // For selected filled tabs:
-        // - Horizontal: use 'transparent' because the hover effect is handled by the TabIndicator
-        // - Vertical: keep the same default background (white pill) so hover doesn't change it
-        isSelected && isFilled
-          ? isVertical
-            ? getIn(theme, background.default)
-            : 'transparent'
-          : isSelected
-          ? getIn(theme, background.default)
-          : getIn(theme, background.highlighted),
+      [`${border}Color`]: getIn(theme, borderColor.highlighted),
+      backgroundColor: getIn(theme, background.highlighted),
     },
     '&:focus-visible': {
-      borderRadius: isFilled
-        ? size === 'small' && !isVertical
-          ? makeSpace(theme.border.radius.medium)
-          : makeSpace(theme.border.radius.small)
-        : makeSpace(theme.border.radius.medium),
+      borderRadius: makeSpace(theme.border.radius[focusBorderRadius]),
       boxShadow: `inset 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
       backgroundColor: theme.colors.interactive.background.gray.default,
       [`${border}Color`]: 'transparent',
@@ -112,20 +93,9 @@ const StyledTabButton = styled.button<{
       backgroundColor: getIn(theme, background.disabled),
     },
 
-    // In horizontal filled tabs, the TabIndicator (the white pill background) is rendered
-    // as an absolutely positioned sibling element AFTER the tab items in the DOM
-    // (see TabList.web.tsx). Due to default stacking order, a later absolutely positioned
-    // element paints on top of earlier siblings, which causes the indicator to visually
-    // cover/hide the tab button's text and icon content.
-    //
-    // Setting `position: relative` + `zIndex: 1` on the tab button creates a new stacking
-    // context that ensures the text and icon render ABOVE the indicator.
-    //
-    // Without this: the selected tab's text/icon will be invisible in horizontal filled
-    // tabs because the white indicator sits on top of them.
-    // This is not needed for vertical tabs because the TabIndicator is not rendered
-    // in vertical orientation (see TabList.web.tsx line 104).
-    ...(isFilled && !isVertical ? { position: 'relative' as const, zIndex: 1 } : {}),
+    ...(needsStackingContext[_variant][orientation]
+      ? { position: 'relative' as const, zIndex: 1 }
+      : {}),
 
     transitionProperty: 'all',
     transitionTimingFunction: castWebType(theme.motion.easing.standard),

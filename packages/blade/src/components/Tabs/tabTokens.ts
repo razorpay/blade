@@ -106,38 +106,58 @@ const textColor = {
 } as const;
 
 const backgroundColor = {
-  unselected: {
-    bordered: {
-      default: 'colors.transparent',
-      highlighted: 'colors.transparent',
-      disabled: 'colors.transparent',
-    },
-    borderless: {
-      default: 'colors.transparent',
-      highlighted: 'colors.transparent',
-      disabled: 'colors.transparent',
-    },
-    filled: {
-      default: 'colors.transparent',
-      highlighted: 'colors.interactive.background.gray.default',
-      disabled: 'colors.transparent',
-    },
-  },
   selected: {
     bordered: {
-      default: 'colors.transparent',
-      highlighted: 'colors.transparent',
-      disabled: 'colors.transparent',
-    },
-    borderless: {
-      default: 'colors.transparent',
-      highlighted: 'colors.transparent',
-      disabled: 'colors.transparent',
+      horizontal: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+      vertical: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
     },
     filled: {
-      default: 'colors.surface.background.gray.intense',
-      highlighted: 'colors.interactive.background.primary.faded',
-      disabled: 'colors.transparent',
+      // Horizontal filled selected tabs use 'transparent' because
+      // the TabIndicator (white pill) handles the selected background
+      horizontal: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+      vertical: {
+        default: 'colors.surface.background.gray.intense',
+        highlighted: 'colors.surface.background.gray.intense',
+        disabled: 'colors.transparent',
+      },
+    },
+  },
+  unselected: {
+    bordered: {
+      horizontal: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+      vertical: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+    },
+    filled: {
+      horizontal: {
+        default: 'colors.transparent',
+        highlighted: 'colors.interactive.background.gray.default',
+        disabled: 'colors.transparent',
+      },
+      vertical: {
+        default: 'colors.transparent',
+        highlighted: 'colors.interactive.background.gray.default',
+        disabled: 'colors.transparent',
+      },
     },
   },
 } as const;
@@ -161,6 +181,121 @@ const textSizeMap = {
   large: 'large',
 } as const;
 
+type BorderWidthValue = 'none' | 'thick' | 'thicker';
+
+const borderWidth: Record<TabVariants, Record<TabOrientation, BorderWidthValue>> = {
+  bordered: {
+    horizontal: 'thicker',
+    vertical: 'thick',
+  },
+  filled: {
+    horizontal: 'none',
+    vertical: 'none',
+  },
+};
+
+type BorderRadiusToken = 'none' | 'small' | 'medium';
+
+const borderRadius: Record<
+  TabVariants,
+  Record<TabOrientation, Record<TabSizes, BorderRadiusToken>>
+> = {
+  bordered: {
+    horizontal: { small: 'none', medium: 'none', large: 'none' },
+    vertical: { small: 'none', medium: 'none', large: 'none' },
+  },
+  filled: {
+    horizontal: { small: 'medium', medium: 'small', large: 'small' },
+    vertical: { small: 'small', medium: 'small', large: 'small' },
+  },
+};
+
+const focusBorderRadius: Record<
+  TabVariants,
+  Record<TabOrientation, Record<TabSizes, Exclude<BorderRadiusToken, 'none'>>>
+> = {
+  bordered: {
+    horizontal: { small: 'medium', medium: 'medium', large: 'medium' },
+    vertical: { small: 'medium', medium: 'medium', large: 'medium' },
+  },
+  filled: {
+    horizontal: { small: 'medium', medium: 'small', large: 'small' },
+    vertical: { small: 'small', medium: 'small', large: 'small' },
+  },
+};
+
+const borderColor = {
+  selected: {
+    bordered: {
+      horizontal: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+      vertical: {
+        default: 'colors.interactive.border.neutral.highlighted',
+        highlighted: 'colors.interactive.border.neutral.highlighted',
+        disabled: 'colors.transparent',
+      },
+    },
+    filled: {
+      horizontal: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+      vertical: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+    },
+  },
+  unselected: {
+    bordered: {
+      horizontal: {
+        default: 'colors.transparent',
+        highlighted: 'colors.interactive.border.gray.highlighted',
+        disabled: 'colors.transparent',
+      },
+      vertical: {
+        default: 'colors.transparent',
+        highlighted: 'colors.interactive.border.gray.highlighted',
+        disabled: 'colors.transparent',
+      },
+    },
+    filled: {
+      horizontal: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+      vertical: {
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
+        disabled: 'colors.transparent',
+      },
+    },
+  },
+} as const;
+
+/**
+ * In horizontal filled tabs, the TabIndicator (white pill) is rendered
+ * as an absolutely positioned sibling element AFTER the tab items in the DOM.
+ * The tab button needs `position: relative` + `zIndex: 1` so its content
+ * renders above the indicator.
+ */
+const needsStackingContext: Record<TabVariants, Record<TabOrientation, boolean>> = {
+  bordered: {
+    horizontal: false,
+    vertical: false,
+  },
+  filled: {
+    horizontal: true,
+    vertical: false,
+  },
+};
+
 export {
   backgroundColor,
   textColor,
@@ -170,4 +305,11 @@ export {
   paddingBottom,
   paddingX,
   textSizeMap,
+  borderWidth,
+  borderRadius,
+  focusBorderRadius,
+  borderColor,
+  needsStackingContext,
 };
+
+export type { BorderRadiusToken, BorderWidthValue };
