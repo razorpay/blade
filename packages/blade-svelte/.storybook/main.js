@@ -1,5 +1,5 @@
-import { dirname, resolve } from "path";
-import { fileURLToPath } from "url";
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -13,16 +13,29 @@ function getAbsolutePath(value) {
 
 /** @type { import('@storybook/svelte-vite').StorybookConfig } */
 const config = {
-  stories: ["../src/**/*.stories.@(js|ts|svelte|mdx)"],
+  features: {
+    experimentalComponentsManifest: true, // Enable manifest generation for the docs toolset, only supported in React-based setups.
+  },
+  stories: ['../src/**/*.stories.@(js|ts|svelte|mdx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
-    "@storybook/addon-svelte-csf",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@chromatic-com/storybook',
+    '@storybook/addon-interactions',
+    '@storybook/addon-svelte-csf',
+    {
+      name: '@storybook/addon-mcp',
+      options: {
+        toolsets: {
+          dev: true, // Tools for story URL retrieval and UI building instructions (default: true)
+          docs: true, // Tools for component manifest and documentation (default: true, requires experimental feature flag below 👇)
+        },
+        experimentalFormat: 'markdown', // Output format: 'markdown' (default) or 'xml'
+      },
+    },
   ],
   framework: {
-    name: "@storybook/svelte-vite",
+    name: '@storybook/svelte-vite',
     options: {},
   },
   viteFinal: async (config) => {

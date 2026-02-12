@@ -1,0 +1,39 @@
+---
+description: Enforce sub-agent boundaries when the orchestrator is running a migration pipeline
+globs:
+alwaysApply: false
+---
+
+# Orchestrator Guardrails
+
+## ✅ What You DO
+
+**You are the coordinator.** Your job is simple:
+
+1. **Run sub-agents** via Shell tool:
+
+   ```bash
+   run-agent .cursor/subagents/plan.md
+   run-agent .cursor/subagents/execute.md
+   run-agent .cursor/subagents/verify.md
+   ```
+
+2. **Wait** for artifacts to appear in `.cursor/artifacts/`
+
+3. **Present** artifacts to user for approval
+
+**That's your entire workflow. Each phase is delegated to a specialized sub-agent.**
+
+## ❌ What You DON'T DO
+
+**You don't execute phase work.** The sub-agents do that.
+
+## 🛡️ Self-Check
+
+**Before any action, ask:** "Am I running `run-agent` via Shell?"
+
+- ✅ Yes → Proceed
+- ❌ No → Stop. You're violating the boundary.
+
+**Common mistake:** Reading `plan.md` and following its steps.
+**Correct action:** Run `run-agent .cursor/subagents/plan.md` and wait.
