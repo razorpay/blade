@@ -1,0 +1,92 @@
+/* Counter Base Styles */
+.counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-max);
+  width: fit-content;
+  flex-wrap: nowrap;
+  background-color: transparent;
+}
+
+/* Counter Sizes */
+.small {
+  height: 16px;
+  padding-left: var(--spacing-2);
+  padding-right: var(--spacing-2);
+}
+
+.medium {
+  height: 20px;
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+.large {
+  height: 24px;
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+/* Counter Content Wrapper */
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Color variants - Neutral */
+.color-neutral.emphasis-subtle {
+  background-color: var(--feedback-background-neutral-subtle);
+}
+
+.color-neutral.emphasis-intense {
+  background-color: var(--feedback-background-neutral-intense);
+}
+
+/* Color variants - Positive */
+.color-positive.emphasis-subtle {
+  background-color: var(--feedback-background-positive-subtle);
+}
+
+.color-positive.emphasis-intense {
+  background-color: var(--feedback-background-positive-intense);
+}
+
+/* Color variants - Negative */
+.color-negative.emphasis-subtle {
+  background-color: var(--feedback-background-negative-subtle);
+}
+
+.color-negative.emphasis-intense {
+  background-color: var(--feedback-background-negative-intense);
+}
+
+/* Color variants - Notice */
+.color-notice.emphasis-subtle {
+  background-color: var(--feedback-background-notice-subtle);
+}
+
+.color-notice.emphasis-intense {
+  background-color: var(--feedback-background-notice-intense);
+}
+
+/* Color variants - Information */
+.color-information.emphasis-subtle {
+  background-color: var(--feedback-background-information-subtle);
+}
+
+.color-information.emphasis-intense {
+  background-color: var(--feedback-background-information-intense);
+}
+
+/* Color variants - Primary */
+.color-primary.emphasis-subtle {
+  background-color: var(--surface-background-primary-subtle);
+}
+
+.color-primary.emphasis-intense {
+  background-color: var(--surface-background-primary-intense);
+}
