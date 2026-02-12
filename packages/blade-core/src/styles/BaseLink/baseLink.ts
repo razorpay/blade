@@ -124,12 +124,14 @@ export const baseLinkIconClass = styles.icon;
  *
  * @example
  * const linkClasses = getBaseLinkTemplateClasses();
- * // Use: linkClasses.content, linkClasses.icon
+ * // Use: linkClasses.content, linkClasses.icon, linkClasses.iconLeft, linkClasses.iconRight
  */
 export function getBaseLinkTemplateClasses(): Record<string, string> {
   return {
     content: baseLinkContentClass,
     icon: baseLinkIconClass,
+    iconLeft: styles['icon-left'],
+    iconRight: styles['icon-right'],
   } as const;
 }
 
