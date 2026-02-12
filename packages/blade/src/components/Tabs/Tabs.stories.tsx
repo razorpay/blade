@@ -201,7 +201,7 @@ export default {
     variant: 'bordered',
     tabItemChildren: 'Tab Item',
     tabItemIsDisabled: false,
-    tabItemLeading: 'ClipboardIcon' as unknown as IconComponent,
+    tabItemLeading: ('ClipboardIcon' as unknown) as IconComponent,
     tabItemTrailing: 'Badge',
     tabItemHref: '',
     isLazy: false,
@@ -1021,9 +1021,7 @@ const ProductUseCase4Template: StoryFn<(props: StoryControlProps) => React.React
 export const ProductUseCase4 = ProductUseCase4Template.bind({});
 ProductUseCase4.storyName = 'Product Usecase: Icon only tabs';
 
-const DashboardWithBrokenTabsTemplate: StoryFn<
-  (props: StoryControlProps) => React.ReactElement
-> = () => {
+const DelayedTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   const [isLayoutReady, setIsLayoutReady] = React.useState(false);
 
   // Simulates a dashboard layout that renders content after
@@ -1074,5 +1072,5 @@ const DashboardWithBrokenTabsTemplate: StoryFn<
   );
 };
 
-export const DashboardWithBrokenTabs = DashboardWithBrokenTabsTemplate.bind({});
-DashboardWithBrokenTabs.storyName = 'Bug: Tabs with delayed visibility';
+export const DelayedTabs = DelayedTabsTemplate.bind({});
+DelayedTabs.storyName = 'Product Usecase: Tabs with delayed visibility';
