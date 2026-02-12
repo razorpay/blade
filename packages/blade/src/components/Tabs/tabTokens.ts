@@ -233,8 +233,8 @@ const borderColor = {
         disabled: 'colors.transparent',
       },
       vertical: {
-        default: 'colors.interactive.border.neutral.highlighted',
-        highlighted: 'colors.interactive.border.neutral.highlighted',
+        default: 'colors.transparent',
+        highlighted: 'colors.transparent',
         disabled: 'colors.transparent',
       },
     },
