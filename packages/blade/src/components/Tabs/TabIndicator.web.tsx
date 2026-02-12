@@ -27,49 +27,36 @@ const TabIndicator = ({
 }): React.ReactElement => {
   const { theme } = useTheme();
   const { selectedValue, baseId, variant } = useTabsContext();
-  const [hasMeasured, setHasMeasured] = React.useState(false);
-  const [activeElementDimensions, setActiveElementDimensions] = React.useState({
-    width: 0,
-    height: 0,
-    x: 0,
-    y: 0,
-  });
+  const [shouldAnimate, setShouldAnimate] = React.useState(false);
+  const [dimensions, setDimensions] = React.useState({ width: 0, height: 0, x: 0, y: 0 });
 
-  // Update the dimensions of the active element
   const updateDimensions = React.useCallback(() => {
-    const tabItemId = `${baseId}-${selectedValue}-tabitem`;
-    const activeTabItem = document.getElementById(tabItemId);
-    if (!activeTabItem) return;
+    const activeTabItem = document.getElementById(`${baseId}-${selectedValue}-tabitem`);
+    // Skip if element not found or not visible (width 0 means container is hidden)
+    if (!activeTabItem || activeTabItem.offsetWidth === 0) return;
 
-    setActiveElementDimensions({
+    setDimensions({
       width: activeTabItem.offsetWidth,
       height: activeTabItem.offsetHeight,
       x: activeTabItem.offsetLeft,
       y:
         variant === 'filled'
-          ? // on filled variant the indicator is positioned on top of the tab item
-            // so no need to add offsetHeight
-            activeTabItem.offsetTop
+          ? activeTabItem.offsetTop
           : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
+    });
+
+    // Enable animations after first valid measurement renders
+    setShouldAnimate((prev) => {
+      if (!prev) requestAnimationFrame(() => setShouldAnimate(true));
+      return prev;
     });
   }, [baseId, selectedValue, variant]);
 
   // Update the dimensions when the selected value changes
   useIsomorphicLayoutEffect(() => {
     if (!selectedValue) return;
-
     updateDimensions();
-
-    const id = requestAnimationFrame(() => {
-      setHasMeasured(true);
-    });
-
-    return () => {
-      if (id) {
-        cancelAnimationFrame(id);
-      }
-    };
-  }, [baseId, selectedValue]);
+  }, [baseId, selectedValue, updateDimensions]);
 
   // Update the dimensions when fonts load
   React.useEffect(() => {
@@ -93,7 +80,7 @@ const TabIndicator = ({
 
   const transitionProps = {
     transitionProperty: 'transform, width, background-color',
-    transitionDuration: hasMeasured
+    transitionDuration: shouldAnimate
       ? castWebType(makeMotionTime(theme.motion.duration.gentle))
       : '0ms',
     transitionTimingFunction: castWebType(theme.motion.easing.standard),
@@ -110,9 +97,9 @@ const TabIndicator = ({
         backgroundColor="interactive.background.primary.faded"
         style={{
           ...transitionProps,
-          width: `${activeElementDimensions.width}px`,
-          height: `${activeElementDimensions.height}px`,
-          transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`,
+          transform: `translate(${dimensions.x}px, ${dimensions.y}px)`,
         }}
         {...metaAttribute({ name: MetaConstants.TabIndicator })}
       />
@@ -129,8 +116,8 @@ const TabIndicator = ({
       backgroundColor="interactive.background.primary.default"
       style={{
         ...transitionProps,
-        width: `${activeElementDimensions.width}px`,
-        transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
+        width: `${dimensions.width}px`,
+        transform: `translate(${dimensions.x}px, ${dimensions.y}px)`,
       }}
       {...metaAttribute({ name: MetaConstants.TabIndicator })}
     />
