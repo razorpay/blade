@@ -4,6 +4,7 @@ import { QuickFilterGroup } from '../QuickFilterGroup';
 import type { QuickFilterGroupProps } from '../types';
 import { QuickFilter } from '../QuickFilter';
 import { Heading } from '~components/Typography/Heading';
+import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -287,3 +288,157 @@ const ChangeControlledQuickFilter: StoryFn<typeof QuickFilterGroup> = () => {
 
 export const ChangeControlledQuickFilterStory = ChangeControlledQuickFilter.bind({});
 ChangeControlledQuickFilterStory.storyName = 'Change Controlled QuickFilter';
+
+export const QuickFilterShowcase: StoryFn<typeof QuickFilterGroup> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Single Selection */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          Single Selection
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box display="flex" flexDirection="column" gap="spacing.2">
+            <Text size="small" color="surface.text.gray.muted">
+              Default (Unselected)
+            </Text>
+            <QuickFilterGroup selectionType="single">
+              <QuickFilter title="All" value="all" trailing={<Counter value={400} />} />
+              <QuickFilter title="Captured" value="captured" trailing={<Counter value={234} />} />
+              <QuickFilter title="Failed" value="failed" trailing={<Counter value={56} />} />
+            </QuickFilterGroup>
+          </Box>
+          <Box display="flex" flexDirection="column" gap="spacing.2">
+            <Text size="small" color="surface.text.gray.muted">
+              With Selection
+            </Text>
+            <QuickFilterGroup selectionType="single" defaultValue="captured">
+              <QuickFilter title="All" value="all" trailing={<Counter value={400} />} />
+              <QuickFilter title="Captured" value="captured" trailing={<Counter value={234} />} />
+              <QuickFilter title="Failed" value="failed" trailing={<Counter value={56} />} />
+            </QuickFilterGroup>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Multiple Selection */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          Multiple Selection
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box display="flex" flexDirection="column" gap="spacing.2">
+            <Text size="small" color="surface.text.gray.muted">
+              Default (Unselected)
+            </Text>
+            <QuickFilterGroup selectionType="multiple">
+              <QuickFilter title="Captured" value="captured" trailing={<Counter value={234} />} />
+              <QuickFilter title="Failed" value="failed" trailing={<Counter value={56} />} />
+              <QuickFilter title="Pending" value="pending" trailing={<Counter value={12} />} />
+            </QuickFilterGroup>
+          </Box>
+          <Box display="flex" flexDirection="column" gap="spacing.2">
+            <Text size="small" color="surface.text.gray.muted">
+              With Selection
+            </Text>
+            <QuickFilterGroup selectionType="multiple" defaultValue={['captured', 'failed']}>
+              <QuickFilter title="Captured" value="captured" trailing={<Counter value={234} />} />
+              <QuickFilter title="Failed" value="failed" trailing={<Counter value={56} />} />
+              <QuickFilter title="Pending" value="pending" trailing={<Counter value={12} />} />
+            </QuickFilterGroup>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Without Counter */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          Without Counter
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box display="flex" flexDirection="column" gap="spacing.2">
+            <Text size="small" color="surface.text.gray.muted">
+              Single Selection
+            </Text>
+            <QuickFilterGroup selectionType="single" defaultValue="active">
+              <QuickFilter title="All" value="all" />
+              <QuickFilter title="Active" value="active" />
+              <QuickFilter title="Inactive" value="inactive" />
+            </QuickFilterGroup>
+          </Box>
+          <Box display="flex" flexDirection="column" gap="spacing.2">
+            <Text size="small" color="surface.text.gray.muted">
+              Multiple Selection
+            </Text>
+            <QuickFilterGroup selectionType="multiple" defaultValue={['active']}>
+              <QuickFilter title="All" value="all" />
+              <QuickFilter title="Active" value="active" />
+              <QuickFilter title="Inactive" value="inactive" />
+            </QuickFilterGroup>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* With Different Counter Colors */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Counter Colors
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <QuickFilterGroup selectionType="single" defaultValue="all">
+            <QuickFilter
+              title="All"
+              value="all"
+              trailing={<Counter value={400} color="information" />}
+            />
+            <QuickFilter
+              title="Success"
+              value="success"
+              trailing={<Counter value={234} color="positive" />}
+            />
+            <QuickFilter
+              title="Failed"
+              value="failed"
+              trailing={<Counter value={56} color="negative" />}
+            />
+            <QuickFilter
+              title="Pending"
+              value="pending"
+              trailing={<Counter value={12} color="notice" />}
+            />
+          </QuickFilterGroup>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+QuickFilterShowcase.storyName = 'Showcase - All Variants';
+QuickFilterShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all QuickFilter variants including single/multiple selection, selected/unselected states, with/without counters, and different counter colors.',
+    },
+  },
+};
