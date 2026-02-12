@@ -1,0 +1,379 @@
+/* ============================================
+   Card Component Styles
+   ============================================ */
+
+/* --- CardRoot --- */
+.cardRoot {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  cursor: initial;
+}
+
+/* Border radius variants */
+.borderRadiusMedium {
+  border-radius: var(--border-radius-medium);
+}
+
+.borderRadiusLarge {
+  border-radius: var(--border-radius-large);
+}
+
+.borderRadiusXlarge {
+  border-radius: var(--border-radius-xlarge);
+}
+
+/* Selected state via data attribute */
+.cardRoot[data-selected='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal);
+}
+
+/* Focused state via data attribute (added on top of selected) */
+.cardRoot[data-focused='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) transparent, 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+.cardRoot[data-selected='true'][data-focused='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal), 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+/* Validation state: error */
+.cardRoot[data-validation='error'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-negative-default);
+}
+
+.cardRoot[data-validation='error'][data-focused='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-negative-default), 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+/* Validation state: success */
+.cardRoot[data-validation='success'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-positive-default);
+}
+
+.cardRoot[data-validation='success'][data-focused='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-positive-default), 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+/* As label cursor */
+.cardRootLabel {
+  cursor: pointer;
+}
+
+/* Scale on hover (desktop) */
+.shouldScaleOnHover {
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+  transition-property: transform, box-shadow;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Pressed state (mobile scale down) */
+.cardRootPressed {
+  transform: scale(0.95);
+}
+
+/* Uplift nested interactive elements above link overlay */
+.cardRoot a[href]:not(a[data-blade-component='card-link-overlay']) {
+  z-index: 2;
+  position: relative;
+}
+
+.cardRoot button:not(button[data-blade-component='card-link-overlay']) {
+  z-index: 2;
+  position: relative;
+}
+
+.cardRoot label:not(a[data-blade-component='card-link-overlay']):not(button[data-blade-component='card-link-overlay']) {
+  z-index: 2;
+  position: relative;
+}
+
+/* --- CardSurface --- */
+.cardSurface {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Elevation variants */
+.elevationNone {
+  box-shadow: none;
+  border-width: var(--border-width-thin);
+  border-style: solid;
+  border-color: var(--surface-border-gray-muted);
+}
+
+.elevationLowRaised {
+  box-shadow: var(--elevation-low-raised);
+}
+
+.elevationMidRaised {
+  box-shadow: var(--elevation-mid-raised);
+}
+
+.elevationHighRaised {
+  box-shadow: var(--elevation-high-raised);
+}
+
+/* Background color variants */
+.bgGraySubtle {
+  background-color: var(--surface-background-gray-subtle);
+}
+
+.bgGrayModerate {
+  background-color: var(--surface-background-gray-moderate);
+}
+
+.bgGrayIntense {
+  background-color: var(--surface-background-gray-intense);
+}
+
+/* Padding variants */
+.paddingSpacing0 {
+  padding: var(--spacing-0);
+}
+
+.paddingSpacing3 {
+  padding: var(--spacing-3);
+}
+
+.paddingSpacing4 {
+  padding: var(--spacing-4);
+}
+
+.paddingSpacing5 {
+  padding: var(--spacing-5);
+}
+
+.paddingSpacing7 {
+  padding: var(--spacing-7);
+}
+
+/* --- LinkOverlay --- */
+.linkOverlay {
+  all: unset;
+  cursor: pointer;
+  appearance: none;
+  border: 0;
+  padding: 0;
+  position: static;
+
+  &::before {
+    content: '';
+    cursor: inherit;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* --- CardHeader --- */
+.cardHeader {
+  /* wrapper — marginBottom applied via inline spacing class */
+}
+
+.cardHeaderContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Padding bottom variants for header content */
+.headerPaddingSpacing0 {
+  padding-bottom: var(--spacing-0);
+}
+
+.headerPaddingSpacing3 {
+  padding-bottom: var(--spacing-3);
+}
+
+.headerPaddingSpacing4 {
+  padding-bottom: var(--spacing-4);
+}
+
+.headerPaddingSpacing5 {
+  padding-bottom: var(--spacing-5);
+}
+
+.headerPaddingSpacing7 {
+  padding-bottom: var(--spacing-7);
+}
+
+/* Margin bottom variants for header wrapper */
+.headerMarginSpacing0 {
+  margin-bottom: var(--spacing-0);
+}
+
+.headerMarginSpacing3 {
+  margin-bottom: var(--spacing-3);
+}
+
+.headerMarginSpacing4 {
+  margin-bottom: var(--spacing-4);
+}
+
+.headerMarginSpacing5 {
+  margin-bottom: var(--spacing-5);
+}
+
+.headerMarginSpacing7 {
+  margin-bottom: var(--spacing-7);
+}
+
+/* --- CardHeaderLeading --- */
+.cardHeaderLeading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.cardHeaderLeadingRow {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.cardHeaderLeadingPrefix {
+  margin-right: var(--spacing-3);
+  align-self: center;
+  display: flex;
+}
+
+.cardHeaderLeadingTitleWrap {
+  margin-right: var(--spacing-5);
+}
+
+.cardHeaderLeadingTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cardHeaderLeadingSuffix {
+  margin-left: var(--spacing-3);
+}
+
+/* --- CardHeaderTrailing --- */
+.cardHeaderTrailing {
+  align-self: center;
+}
+
+/* --- CardBody --- */
+.cardBody {
+  /* Simple wrapper — no special styles needed */
+}
+
+/* --- CardFooter --- */
+.cardFooter {
+  /* wrapper — marginTop applied via spacing class */
+}
+
+.cardFooterContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsive: column layout on mobile */
+@media (max-width: 768px) {
+  .cardFooterContent {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Padding top variants for footer content */
+.footerPaddingSpacing0 {
+  padding-top: var(--spacing-0);
+}
+
+.footerPaddingSpacing3 {
+  padding-top: var(--spacing-3);
+}
+
+.footerPaddingSpacing4 {
+  padding-top: var(--spacing-4);
+}
+
+.footerPaddingSpacing5 {
+  padding-top: var(--spacing-5);
+}
+
+.footerPaddingSpacing7 {
+  padding-top: var(--spacing-7);
+}
+
+/* Margin top variants for footer wrapper */
+.footerMarginSpacing0 {
+  margin-top: var(--spacing-0);
+}
+
+.footerMarginSpacing3 {
+  margin-top: var(--spacing-3);
+}
+
+.footerMarginSpacing4 {
+  margin-top: var(--spacing-4);
+}
+
+.footerMarginSpacing5 {
+  margin-top: var(--spacing-5);
+}
+
+.footerMarginSpacing7 {
+  margin-top: var(--spacing-7);
+}
+
+/* Justify end when only trailing is present */
+.cardFooterContentEnd {
+  justify-content: flex-end;
+}
+
+/* --- CardFooterLeading --- */
+.cardFooterLeading {
+  text-align: left;
+}
+
+/* --- CardFooterTrailing --- */
+.cardFooterTrailing {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin-left: var(--spacing-5);
+}
+
+@media (max-width: 768px) {
+  .cardFooterTrailing {
+    align-self: auto;
+    margin-top: var(--spacing-5);
+    margin-left: var(--spacing-0);
+  }
+}
+
+.cardFooterActionWrapper {
+  flex-grow: 1;
+}
+
+.cardFooterActionSpacer {
+  margin-left: var(--spacing-5);
+}
+
+/* --- CardHeaderIconButton wrapper --- */
+.cardHeaderIconButtonWrapper {
+  /* minHeight.xsmall = 28px from Button tokens */
+  width: 28px;
+}

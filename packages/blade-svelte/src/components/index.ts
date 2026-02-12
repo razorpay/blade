@@ -34,5 +34,24 @@ export { default as Divider } from './Divider/Divider.svelte';
 // Counter
 export { default as Counter } from './Counter/Counter.svelte';
 
+// Card
+export {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
+  CardHeaderAmount,
+  CardHeaderText,
+  CardHeaderLink,
+  CardHeaderIconButton,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+} from './Card';
+
 // BladeProvider
 export * from './BladeProvider';

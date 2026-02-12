@@ -88,3 +88,16 @@ export {
   getCounterTextColorToken,
 } from './Counter';
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
+export {
+  getCardRootClasses,
+  getCardSurfaceClasses,
+  getCardHeaderClasses,
+  getCardFooterClasses,
+  getCardTemplateClasses,
+} from './Card';
+export type {
+  CardRootClassesProps,
+  CardSurfaceClassesProps,
+  CardHeaderClassesProps,
+  CardFooterClassesProps,
+} from './Card';
