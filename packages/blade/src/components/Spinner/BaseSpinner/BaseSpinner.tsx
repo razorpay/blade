@@ -54,7 +54,7 @@ const getColor = ({ color, theme }: { color: BaseSpinnerProps['color']; theme: T
   if (color && color !== 'neutral') {
     return getIn(theme.colors, `interactive.icon.${color}.subtle`);
   }
-  return getIn(theme.colors, 'interactive.icon.gray.subtle');
+  return getIn(theme.colors, 'interactive.icon.gray.muted');
 };
 
 const _BaseSpinner = (

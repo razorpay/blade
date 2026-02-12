@@ -8,6 +8,9 @@ type AccordionVariantType = 'filled' | 'transparent';
 
 type StyledAccordionButtonProps = {
   isExpanded: boolean;
+  variant?: AccordionVariantType;
+  isFirstItem?: boolean;
+  isLastItem?: boolean;
 };
 
 type AccordionButtonProps = {
