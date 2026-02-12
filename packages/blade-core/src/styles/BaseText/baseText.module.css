@@ -1,9 +1,14 @@
 /* Base styles */
 .base {
-  margin: 0;
   padding: 0;
   /* Default color is applied via color utility class when no color prop is provided */
   letter-spacing: var(--letter-spacing-100);
+}
+
+/* Zero-specificity margin reset using :where() so that styled prop
+   utility classes can override it regardless of CSS source order */
+:where(.base) {
+  margin: 0;
 }
 
 /* Text decoration variants with nested modifiers */
