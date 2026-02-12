@@ -565,4 +565,66 @@ export const RangeSelection: StoryFn<typeof TimePicker> = () => {
 
 RangeSelection.storyName = 'Time Range Selection';
 
+// Showcase with cards and backdrop
+export const TimePickerWithCardsShowcase: StoryFn<typeof TimePicker> = () => {
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.7"
+      backgroundColor="surface.background.gray.moderate"
+      padding="spacing.8"
+      minHeight="100vh"
+    >
+      <Box maxWidth="320px">
+        <TimePicker
+          label="Select Time"
+          defaultValue={new Date()}
+          onChange={({ value }) => console.log(value)}
+        />
+      </Box>
+      <Box maxWidth="320px">
+        <TimePicker
+          label="Select Time (24h)"
+          timeFormat="24h"
+          defaultValue={new Date()}
+          onChange={({ value }) => console.log(value)}
+        />
+      </Box>
+
+      <Button
+        onClick={() => {
+          console.log('Change Time');
+        }}
+        marginTop="spacing.5"
+      >
+        {' '}
+        Change Time
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Time');
+        }}
+        marginTop="spacing.5"
+        color="positive"
+      >
+        {' '}
+        Change Time
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Time');
+        }}
+        marginTop="spacing.5"
+        color="negative"
+      >
+        {' '}
+        Change Time
+      </Button>
+    </Box>
+  );
+};
+
+TimePickerWithCardsShowcase.storyName = 'With Cards (Backdrop Showcase)';
+
 // Template for storybook controls
