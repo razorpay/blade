@@ -135,7 +135,7 @@ export const getBackgroundColorToken = ({
   variant,
   state,
   color,
-}: BaseButtonColorTokenModifiers): string => {
+}: BaseButtonColorTokenModifiers) => {
   const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
 
   // For white and transparent colors, we use 'primary' as the base color

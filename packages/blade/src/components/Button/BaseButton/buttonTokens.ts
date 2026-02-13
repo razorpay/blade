@@ -4,7 +4,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { IconSize } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner';
 import type { Size } from '~tokens/global';
-import { colors, size } from '~tokens/global';
+import { size } from '~tokens/global';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { makeSize } from '~utils';
 import { DotNotationToken } from '~utils/lodashButBetter/get';
@@ -21,75 +21,7 @@ export type ButtonTypography = {
   >;
 };
 
-const createLinearGradient = (color1: string, color2: string) => {
-  return `linear-gradient(107deg, ${color1} 1.43%, ${color2} 45.16%)`;
-};
-
 const backgroundGradient = (color: FeedbackColors | 'primary') => {
-  const gradientMap = {
-    primary: {
-      default: {
-        0: colors.chromatic.azure[400],
-        100: colors.chromatic.azure[500],
-      },
-      highlighted: {
-        0: colors.chromatic.azure[400],
-        100: colors.chromatic.azure[600],
-      },
-    },
-    positive: {
-      default: {
-        0: colors.chromatic.emerald[400],
-        100: colors.chromatic.emerald[600],
-      },
-      highlighted: {
-        0: colors.chromatic.emerald[400],
-        100: colors.chromatic.emerald[700],
-      },
-    },
-    negative: {
-      default: {
-        0: colors.chromatic.crimson[400],
-        100: colors.chromatic.crimson[600],
-      },
-      highlighted: {
-        0: colors.chromatic.crimson[500],
-        100: colors.chromatic.crimson[700],
-      },
-    },
-    // TODO: update token colors
-    information: {
-      default: {
-        0: colors.chromatic.crimson[400],
-        100: colors.chromatic.crimson[600],
-      },
-      highlighted: {
-        0: colors.chromatic.crimson[500],
-        100: colors.chromatic.crimson[700],
-      },
-    },
-    neutral: {
-      default: {
-        0: colors.chromatic.crimson[400],
-        100: colors.chromatic.crimson[600],
-      },
-      highlighted: {
-        0: colors.chromatic.crimson[500],
-        100: colors.chromatic.crimson[700],
-      },
-    },
-    notice: {
-      default: {
-        0: colors.chromatic.crimson[400],
-        100: colors.chromatic.crimson[600],
-      },
-      highlighted: {
-        0: colors.chromatic.crimson[500],
-        100: colors.chromatic.crimson[700],
-      },
-    },
-  } as const;
-
   return {
     base: {
       primary: {
@@ -130,7 +62,7 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
         disabled: 'interactive.background.gray.disabled',
       },
     },
-  };
+  } as const;
 };
 
 type BoxShadowValue = {
