@@ -24,7 +24,7 @@ const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps
     '&.active-focus': props.isKeydownPressed
       ? getFocusRingStyles({ theme: props.theme })
       : undefined,
-    '&[aria-selected=true]': {
+    '&[aria-selected=true], &[aria-selected=true]:hover': {
       backgroundColor:
         props.selectionType === 'single'
           ? props.theme.colors.interactive.background.gray.fadedHighlighted
