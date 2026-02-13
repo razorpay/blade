@@ -4,6 +4,7 @@ import type { TimePickerProps } from './types';
 import { TimeInput } from './TimeInput.web';
 import { useTimePickerState } from './useTimePickerState';
 import { TimePickerContent } from './TimePickerContent';
+import { getTimePickerPopupBoxShadow } from './timePickerTokens';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
@@ -17,34 +18,6 @@ import { usePopup } from '~components/DatePicker/usePopup';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size as sizeTokens } from '~tokens/global';
-import { makePopupBoxShadow } from '~utils/makePopupBoxShadow';
-import type { ShadowLayer } from '~utils/makePopupBoxShadow/makePopupBoxShadow';
-import type { Theme } from '~components/BladeProvider';
-
-// Shadow layers for the TimePicker popup container
-const getTimePickerPopupBoxShadow = (theme: Theme): string => {
-  const shadowLayers: ShadowLayer[] = [
-    // Layer 1: Thick white inset ring
-    {
-      x: 0,
-      y: 0,
-      blur: 0,
-      spread: 2,
-      color: theme.colors.surface.background.gray.intense,
-      inset: true,
-    },
-    // Layer 2: Offset white inset highlight
-    {
-      x: 0,
-      y: 1.5,
-      blur: 0,
-      spread: 1,
-      color: theme.colors.surface.background.gray.intense,
-      inset: true,
-    },
-  ];
-  return makePopupBoxShadow(shadowLayers);
-};
 
 const _BaseTimePicker = ({
   value,
