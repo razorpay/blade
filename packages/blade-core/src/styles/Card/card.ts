@@ -1,177 +1,195 @@
+import { cva } from 'class-variance-authority';
+import { utilityClasses } from '../utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './card.module.css';
 
-// --- Spacing map utility ---
-const spacingToPaddingMap: Record<string, string> = {
-  'spacing.0': styles.paddingSpacing0,
-  'spacing.3': styles.paddingSpacing3,
-  'spacing.4': styles.paddingSpacing4,
-  'spacing.5': styles.paddingSpacing5,
-  'spacing.7': styles.paddingSpacing7,
-};
+// --- CardRoot CVA ---
 
-const spacingToHeaderPaddingMap: Record<string, string> = {
-  'spacing.0': styles.headerPaddingSpacing0,
-  'spacing.3': styles.headerPaddingSpacing3,
-  'spacing.4': styles.headerPaddingSpacing4,
-  'spacing.5': styles.headerPaddingSpacing5,
-  'spacing.7': styles.headerPaddingSpacing7,
-};
-
-const spacingToHeaderMarginMap: Record<string, string> = {
-  'spacing.0': styles.headerMarginSpacing0,
-  'spacing.3': styles.headerMarginSpacing3,
-  'spacing.4': styles.headerMarginSpacing4,
-  'spacing.5': styles.headerMarginSpacing5,
-  'spacing.7': styles.headerMarginSpacing7,
-};
-
-const spacingToFooterPaddingMap: Record<string, string> = {
-  'spacing.0': styles.footerPaddingSpacing0,
-  'spacing.3': styles.footerPaddingSpacing3,
-  'spacing.4': styles.footerPaddingSpacing4,
-  'spacing.5': styles.footerPaddingSpacing5,
-  'spacing.7': styles.footerPaddingSpacing7,
-};
-
-const spacingToFooterMarginMap: Record<string, string> = {
-  'spacing.0': styles.footerMarginSpacing0,
-  'spacing.3': styles.footerMarginSpacing3,
-  'spacing.4': styles.footerMarginSpacing4,
-  'spacing.5': styles.footerMarginSpacing5,
-  'spacing.7': styles.footerMarginSpacing7,
-};
-
-const elevationMap: Record<string, string> = {
-  none: styles.elevationNone,
-  lowRaised: styles.elevationLowRaised,
-  midRaised: styles.elevationMidRaised,
-  highRaised: styles.elevationHighRaised,
-};
-
-const backgroundColorMap: Record<string, string> = {
-  'surface.background.gray.subtle': styles.bgGraySubtle,
-  'surface.background.gray.moderate': styles.bgGrayModerate,
-  'surface.background.gray.intense': styles.bgGrayIntense,
-};
-
-const borderRadiusMap: Record<string, string> = {
-  medium: styles.borderRadiusMedium,
-  large: styles.borderRadiusLarge,
-  xlarge: styles.borderRadiusXlarge,
-};
-
-// --- Class getters ---
-
-export type CardRootClassesProps = {
-  borderRadius?: string;
+export type CardRootVariants = {
+  borderRadius?: 'medium' | 'large' | 'xlarge';
   shouldScaleOnHover?: boolean;
   isPressed?: boolean;
   asLabel?: boolean;
 };
 
-export function getCardRootClasses(props: CardRootClassesProps): string {
-  const classes = [styles.cardRoot];
+export const cardRootStyles = cva(styles.cardRoot, {
+  variants: {
+    borderRadius: {
+      medium: utilityClasses['border-radius-medium'],
+      large: utilityClasses['border-radius-large'],
+      xlarge: utilityClasses['border-radius-xlarge'],
+    },
+    shouldScaleOnHover: {
+      true: styles.shouldScaleOnHover,
+      false: '',
+    },
+    isPressed: {
+      true: styles.cardRootPressed,
+      false: '',
+    },
+    asLabel: {
+      true: styles.cardRootLabel,
+      false: '',
+    },
+  },
+  defaultVariants: {
+    borderRadius: 'medium',
+    shouldScaleOnHover: false,
+    isPressed: false,
+    asLabel: false,
+  },
+});
 
-  if (props.borderRadius) {
-    classes.push(borderRadiusMap[props.borderRadius] || '');
-  }
+// --- CardSurface CVA ---
 
-  if (props.asLabel) {
-    classes.push(styles.cardRootLabel);
-  }
-
-  if (props.shouldScaleOnHover) {
-    classes.push(styles.shouldScaleOnHover);
-  }
-
-  if (props.isPressed) {
-    classes.push(styles.cardRootPressed);
-  }
-
-  return classes.filter(Boolean).join(' ');
-}
-
-export type CardSurfaceClassesProps = {
-  elevation?: string;
-  backgroundColor?: string;
-  padding?: string;
-  borderRadius?: string;
+export type CardSurfaceVariants = {
+  elevation?: 'none' | 'lowRaised' | 'midRaised' | 'highRaised';
+  backgroundColor?:
+    | 'surface.background.gray.subtle'
+    | 'surface.background.gray.moderate'
+    | 'surface.background.gray.intense';
+  padding?: 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
+  borderRadius?: 'medium' | 'large' | 'xlarge';
 };
 
-export function getCardSurfaceClasses(props: CardSurfaceClassesProps): string {
-  const classes = [styles.cardSurface];
+export const cardSurfaceStyles = cva(styles.cardSurface, {
+  variants: {
+    elevation: {
+      none: utilityClasses['elevation-none'],
+      lowRaised: utilityClasses['elevation-lowRaised'],
+      midRaised: utilityClasses['elevation-midRaised'],
+      highRaised: utilityClasses['elevation-highRaised'],
+    },
+    backgroundColor: {
+      'surface.background.gray.subtle': utilityClasses['background-surface-gray-subtle'],
+      'surface.background.gray.moderate': utilityClasses['background-surface-gray-moderate'],
+      'surface.background.gray.intense': utilityClasses['background-surface-gray-intense'],
+    },
+    padding: {
+      'spacing.0': utilityClasses['padding-spacing-0'],
+      'spacing.3': utilityClasses['padding-spacing-3'],
+      'spacing.4': utilityClasses['padding-spacing-4'],
+      'spacing.5': utilityClasses['padding-spacing-5'],
+      'spacing.7': utilityClasses['padding-spacing-7'],
+    },
+    borderRadius: {
+      medium: utilityClasses['border-radius-medium'],
+      large: utilityClasses['border-radius-large'],
+      xlarge: utilityClasses['border-radius-xlarge'],
+    },
+  },
+  defaultVariants: {
+    elevation: 'lowRaised',
+    backgroundColor: 'surface.background.gray.intense',
+    padding: 'spacing.7',
+    borderRadius: 'medium',
+  },
+});
 
-  if (props.elevation) {
-    classes.push(elevationMap[props.elevation] || '');
-  }
+// --- CardHeader ---
 
-  if (props.backgroundColor) {
-    classes.push(backgroundColorMap[props.backgroundColor] || '');
-  }
-
-  if (props.padding) {
-    classes.push(spacingToPaddingMap[props.padding] || '');
-  }
-
-  if (props.borderRadius) {
-    classes.push(borderRadiusMap[props.borderRadius] || '');
-  }
-
-  return classes.filter(Boolean).join(' ');
-}
-
-export type CardHeaderClassesProps = {
-  paddingBottom?: string;
-  marginBottom?: string;
+export type CardHeaderVariants = {
+  paddingBottom?: 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
+  marginBottom?: 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
 };
 
-export function getCardHeaderClasses(props: CardHeaderClassesProps): {
+const cardHeaderWrapperStyles = cva(styles.cardHeader, {
+  variants: {
+    marginBottom: {
+      'spacing.0': utilityClasses['margin-bottom-spacing-0'],
+      'spacing.3': utilityClasses['margin-bottom-spacing-3'],
+      'spacing.4': utilityClasses['margin-bottom-spacing-4'],
+      'spacing.5': utilityClasses['margin-bottom-spacing-5'],
+      'spacing.7': utilityClasses['margin-bottom-spacing-7'],
+    },
+  },
+  defaultVariants: {
+    marginBottom: 'spacing.4',
+  },
+});
+
+const cardHeaderContentStyles = cva(styles.cardHeaderContent, {
+  variants: {
+    paddingBottom: {
+      'spacing.0': utilityClasses['padding-bottom-spacing-0'],
+      'spacing.3': utilityClasses['padding-bottom-spacing-3'],
+      'spacing.4': utilityClasses['padding-bottom-spacing-4'],
+      'spacing.5': utilityClasses['padding-bottom-spacing-5'],
+      'spacing.7': utilityClasses['padding-bottom-spacing-7'],
+    },
+  },
+  defaultVariants: {
+    paddingBottom: 'spacing.4',
+  },
+});
+
+export function getCardHeaderClasses(
+  props: CardHeaderVariants,
+): {
   wrapper: string;
   content: string;
 } {
-  const wrapperClasses = [styles.cardHeader];
-  if (props.marginBottom) {
-    wrapperClasses.push(spacingToHeaderMarginMap[props.marginBottom] || '');
-  }
-
-  const contentClasses = [styles.cardHeaderContent];
-  if (props.paddingBottom) {
-    contentClasses.push(spacingToHeaderPaddingMap[props.paddingBottom] || '');
-  }
-
   return {
-    wrapper: wrapperClasses.filter(Boolean).join(' '),
-    content: contentClasses.filter(Boolean).join(' '),
+    wrapper: cardHeaderWrapperStyles({ marginBottom: props.marginBottom }),
+    content: cardHeaderContentStyles({ paddingBottom: props.paddingBottom }),
   };
 }
 
-export type CardFooterClassesProps = {
-  paddingTop?: string;
-  marginTop?: string;
+// --- CardFooter ---
+
+export type CardFooterVariants = {
+  paddingTop?: 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
+  marginTop?: 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
   justifyEnd?: boolean;
 };
 
-export function getCardFooterClasses(props: CardFooterClassesProps): {
+const cardFooterWrapperStyles = cva(styles.cardFooter, {
+  variants: {
+    marginTop: {
+      'spacing.0': utilityClasses['margin-top-spacing-0'],
+      'spacing.3': utilityClasses['margin-top-spacing-3'],
+      'spacing.4': utilityClasses['margin-top-spacing-4'],
+      'spacing.5': utilityClasses['margin-top-spacing-5'],
+      'spacing.7': utilityClasses['margin-top-spacing-7'],
+    },
+  },
+  defaultVariants: {
+    marginTop: 'spacing.4',
+  },
+});
+
+const cardFooterContentStyles = cva(styles.cardFooterContent, {
+  variants: {
+    paddingTop: {
+      'spacing.0': utilityClasses['padding-top-spacing-0'],
+      'spacing.3': utilityClasses['padding-top-spacing-3'],
+      'spacing.4': utilityClasses['padding-top-spacing-4'],
+      'spacing.5': utilityClasses['padding-top-spacing-5'],
+      'spacing.7': utilityClasses['padding-top-spacing-7'],
+    },
+    justifyEnd: {
+      true: styles.cardFooterContentEnd,
+      false: '',
+    },
+  },
+  defaultVariants: {
+    paddingTop: 'spacing.4',
+    justifyEnd: false,
+  },
+});
+
+export function getCardFooterClasses(
+  props: CardFooterVariants,
+): {
   wrapper: string;
   content: string;
 } {
-  const wrapperClasses = [styles.cardFooter];
-  if (props.marginTop) {
-    wrapperClasses.push(spacingToFooterMarginMap[props.marginTop] || '');
-  }
-
-  const contentClasses = [styles.cardFooterContent];
-  if (props.paddingTop) {
-    contentClasses.push(spacingToFooterPaddingMap[props.paddingTop] || '');
-  }
-  if (props.justifyEnd) {
-    contentClasses.push(styles.cardFooterContentEnd);
-  }
-
   return {
-    wrapper: wrapperClasses.filter(Boolean).join(' '),
-    content: contentClasses.filter(Boolean).join(' '),
+    wrapper: cardFooterWrapperStyles({ marginTop: props.marginTop }),
+    content: cardFooterContentStyles({
+      paddingTop: props.paddingTop,
+      justifyEnd: props.justifyEnd,
+    }),
   };
 }
 
@@ -179,7 +197,7 @@ export function getCardFooterClasses(props: CardFooterClassesProps): {
  * Get template classes to prevent Svelte tree-shaking.
  * Call this function in component script blocks.
  */
-export function getCardTemplateClasses() {
+export function getCardTemplateClasses(): Record<string, string> {
   return {
     cardRoot: styles.cardRoot,
     cardSurface: styles.cardSurface,

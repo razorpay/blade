@@ -1,13 +1,13 @@
 export {
-  getCardRootClasses,
-  getCardSurfaceClasses,
+  cardRootStyles,
+  cardSurfaceStyles,
   getCardHeaderClasses,
   getCardFooterClasses,
   getCardTemplateClasses,
 } from './card';
 export type {
-  CardRootClassesProps,
-  CardSurfaceClassesProps,
-  CardHeaderClassesProps,
-  CardFooterClassesProps,
+  CardRootVariants,
+  CardSurfaceVariants,
+  CardHeaderVariants,
+  CardFooterVariants,
 } from './card';

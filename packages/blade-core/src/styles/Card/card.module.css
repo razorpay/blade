@@ -11,19 +11,6 @@
   cursor: initial;
 }
 
-/* Border radius variants */
-.borderRadiusMedium {
-  border-radius: var(--border-radius-medium);
-}
-
-.borderRadiusLarge {
-  border-radius: var(--border-radius-large);
-}
-
-.borderRadiusXlarge {
-  border-radius: var(--border-radius-xlarge);
-}
-
 /* Selected state via data attribute */
 .cardRoot[data-selected='true'] {
   box-shadow: 0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal);
@@ -103,60 +90,6 @@
   text-align: left;
 }
 
-/* Elevation variants */
-.elevationNone {
-  box-shadow: none;
-  border-width: var(--border-width-thin);
-  border-style: solid;
-  border-color: var(--surface-border-gray-muted);
-}
-
-.elevationLowRaised {
-  box-shadow: var(--elevation-low-raised);
-}
-
-.elevationMidRaised {
-  box-shadow: var(--elevation-mid-raised);
-}
-
-.elevationHighRaised {
-  box-shadow: var(--elevation-high-raised);
-}
-
-/* Background color variants */
-.bgGraySubtle {
-  background-color: var(--surface-background-gray-subtle);
-}
-
-.bgGrayModerate {
-  background-color: var(--surface-background-gray-moderate);
-}
-
-.bgGrayIntense {
-  background-color: var(--surface-background-gray-intense);
-}
-
-/* Padding variants */
-.paddingSpacing0 {
-  padding: var(--spacing-0);
-}
-
-.paddingSpacing3 {
-  padding: var(--spacing-3);
-}
-
-.paddingSpacing4 {
-  padding: var(--spacing-4);
-}
-
-.paddingSpacing5 {
-  padding: var(--spacing-5);
-}
-
-.paddingSpacing7 {
-  padding: var(--spacing-7);
-}
-
 /* --- LinkOverlay --- */
 .linkOverlay {
   all: unset;
@@ -181,55 +114,13 @@
 
 /* --- CardHeader --- */
 .cardHeader {
-  /* wrapper — marginBottom applied via inline spacing class */
+  /* wrapper — marginBottom applied via utility class */
 }
 
 .cardHeaderContent {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-/* Padding bottom variants for header content */
-.headerPaddingSpacing0 {
-  padding-bottom: var(--spacing-0);
-}
-
-.headerPaddingSpacing3 {
-  padding-bottom: var(--spacing-3);
-}
-
-.headerPaddingSpacing4 {
-  padding-bottom: var(--spacing-4);
-}
-
-.headerPaddingSpacing5 {
-  padding-bottom: var(--spacing-5);
-}
-
-.headerPaddingSpacing7 {
-  padding-bottom: var(--spacing-7);
-}
-
-/* Margin bottom variants for header wrapper */
-.headerMarginSpacing0 {
-  margin-bottom: var(--spacing-0);
-}
-
-.headerMarginSpacing3 {
-  margin-bottom: var(--spacing-3);
-}
-
-.headerMarginSpacing4 {
-  margin-bottom: var(--spacing-4);
-}
-
-.headerMarginSpacing5 {
-  margin-bottom: var(--spacing-5);
-}
-
-.headerMarginSpacing7 {
-  margin-bottom: var(--spacing-7);
 }
 
 /* --- CardHeaderLeading --- */
@@ -278,7 +169,7 @@
 
 /* --- CardFooter --- */
 .cardFooter {
-  /* wrapper — marginTop applied via spacing class */
+  /* wrapper — marginTop applied via utility class */
 }
 
 .cardFooterContent {
@@ -294,48 +185,6 @@
     flex-direction: column;
     align-items: stretch;
   }
-}
-
-/* Padding top variants for footer content */
-.footerPaddingSpacing0 {
-  padding-top: var(--spacing-0);
-}
-
-.footerPaddingSpacing3 {
-  padding-top: var(--spacing-3);
-}
-
-.footerPaddingSpacing4 {
-  padding-top: var(--spacing-4);
-}
-
-.footerPaddingSpacing5 {
-  padding-top: var(--spacing-5);
-}
-
-.footerPaddingSpacing7 {
-  padding-top: var(--spacing-7);
-}
-
-/* Margin top variants for footer wrapper */
-.footerMarginSpacing0 {
-  margin-top: var(--spacing-0);
-}
-
-.footerMarginSpacing3 {
-  margin-top: var(--spacing-3);
-}
-
-.footerMarginSpacing4 {
-  margin-top: var(--spacing-4);
-}
-
-.footerMarginSpacing5 {
-  margin-top: var(--spacing-5);
-}
-
-.footerMarginSpacing7 {
-  margin-top: var(--spacing-7);
 }
 
 /* Justify end when only trailing is present */

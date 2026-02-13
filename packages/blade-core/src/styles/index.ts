@@ -89,15 +89,15 @@ export {
 } from './Counter';
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
 export {
-  getCardRootClasses,
-  getCardSurfaceClasses,
+  cardRootStyles,
+  cardSurfaceStyles,
   getCardHeaderClasses,
   getCardFooterClasses,
   getCardTemplateClasses,
 } from './Card';
 export type {
-  CardRootClassesProps,
-  CardSurfaceClassesProps,
-  CardHeaderClassesProps,
-  CardFooterClassesProps,
+  CardRootVariants,
+  CardSurfaceVariants,
+  CardHeaderVariants,
+  CardFooterVariants,
 } from './Card';

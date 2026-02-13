@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { makeAccessible, metaAttribute, MetaConstants, getStyledPropsClasses } from '@razorpay/blade-core/utils';
-  import { getCardRootClasses } from '@razorpay/blade-core/styles';
+  import { cardRootStyles } from '@razorpay/blade-core/styles';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
@@ -45,7 +45,7 @@
   let isPressed = $state(false);
 
   const rootClasses = $derived(
-    getCardRootClasses({
+    cardRootStyles({
       borderRadius,
       shouldScaleOnHover,
       isPressed: shouldScaleOnHover ? isPressed : false,

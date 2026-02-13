@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { getCardSurfaceClasses } from '@razorpay/blade-core/styles';
+  import { cardSurfaceStyles } from '@razorpay/blade-core/styles';
 
   let {
     children,
@@ -21,7 +21,7 @@
   } = $props();
 
   const surfaceClasses = $derived(
-    getCardSurfaceClasses({
+    cardSurfaceStyles({
       elevation,
       backgroundColor,
       padding,
