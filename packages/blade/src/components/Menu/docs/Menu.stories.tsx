@@ -27,6 +27,8 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { Alert } from '~components/Alert';
 import { List, ListItem, ListItemText } from '~components/List';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 
 const Page = (): React.ReactElement => {
   return (
@@ -229,6 +231,23 @@ const MenuTemplate: StoryFn<TemplateProps> = ({ trigger, ...args }) => {
         {trigger}
         <MenuOverlay>{accountsMenuOverlayContent}</MenuOverlay>
       </Menu>
+      <Text marginTop="spacing.9">Open Menu to know why these random blocks are here</Text>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        <Box
+          marginTop="spacing.4"
+          marginLeft="-12px"
+          backgroundColor="feedback.background.negative.intense"
+          height="100px"
+          width="100px"
+        />
+        <Box
+          marginLeft="200px"
+          borderRadius="round"
+          backgroundColor="feedback.background.negative.intense"
+          height="100px"
+          width="100px"
+        />
+      </BladeProvider>
     </Box>
   );
 };

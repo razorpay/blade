@@ -127,7 +127,6 @@ const _DropdownOverlay = ({
       >
         <StyledDropdownOverlay
           isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
-          elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
           style={{ ...styles }}
           width={width ? width : '100%'}
           minWidth={minWidth}

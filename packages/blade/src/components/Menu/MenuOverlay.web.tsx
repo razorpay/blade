@@ -6,12 +6,23 @@ import BaseBox from '~components/Box/BaseBox';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { BladeElementRef } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { castWebType } from '~utils';
 
 const UnfocussableOverlay = styled(BaseBox)((_props) => {
   return {
     '&:focus-visible': {
       outline: 'none',
     },
+  };
+});
+
+const StyledMenuOverlayContent = styled(BaseBox)(({ theme }) => {
+  const dropshadow = castWebType(theme.elevation.midRaised);
+  const innerShadow = `inset 0px -1.5px 0px 1px ${theme.colors.surface.background.gray.intense}`;
+
+  return {
+    backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
+    boxShadow: `${dropshadow}, ${innerShadow}`,
   };
 });
 
@@ -43,18 +54,18 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
 
         https://floating-ui.com/docs/usetransition#usetransitionstyles
       */}
-      <BaseBox
-        backgroundColor="popup.background.subtle"
+      <StyledMenuOverlayContent
+        backgroundColor="popup.background.gray.moderate"
         paddingX={overlayPaddingX}
         paddingY={overlayPaddingY}
-        elevation="midRaised"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
+        borderWidth="none"
+        borderTopWidth="thin"
+        borderColor="popup.border.gray.moderate"
         borderRadius="medium"
         style={_transitionStyle}
       >
         {children}
-      </BaseBox>
+      </StyledMenuOverlayContent>
     </UnfocussableOverlay>
   );
 };

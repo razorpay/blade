@@ -27,11 +27,8 @@ const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps
     '&[aria-selected=true]': {
       backgroundColor:
         props.selectionType === 'single'
-          ? props.theme.colors.interactive.background.primary.faded
+          ? props.theme.colors.interactive.background.gray.fadedHighlighted
           : undefined,
-    },
-    '&[aria-selected=true]:hover': {
-      backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
     },
   };
 });

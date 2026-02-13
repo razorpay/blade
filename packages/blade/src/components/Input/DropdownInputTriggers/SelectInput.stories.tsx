@@ -7,9 +7,12 @@ import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Button } from '~components/Button';
 import { ActionList, ActionListItem, ActionListItemBadge } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -230,7 +233,7 @@ const SelectInputTemplate: StoryFn<typeof SelectInput> = ({ icon, ...args }) => 
           onChange={({ name, values }) => {
             console.log(name, values);
           }}
-          icon={iconMap[(icon as unknown) as string]}
+          icon={iconMap[icon as unknown as string]}
           valueSuffix={({ values }) => {
             if (values[0] === 'item-1') {
               return <Badge color="positive">20% Off</Badge>;
@@ -250,6 +253,15 @@ const SelectInputTemplate: StoryFn<typeof SelectInput> = ({ icon, ...args }) => 
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        <Box
+          marginTop="spacing.11"
+          marginLeft="-12px"
+          backgroundColor="surface.background.gray.intense"
+          height="100px"
+          width="100px"
+        />
+      </BladeProvider>
     </Box>
   );
 };
