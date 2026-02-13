@@ -25,8 +25,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
 import { useId } from '~utils/useId';
-import { makePopupBoxShadow } from '~utils/makePopupBoxShadow';
-import type { ShadowLayer } from '~utils/makePopupBoxShadow/makePopupBoxShadow';
+import { makeBoxShadow } from '~utils/makeBoxShadow';
+import type { ShadowLayer } from '~utils/makeBoxShadow/makeBoxShadow';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import type { Theme } from '~components/BladeProvider';
@@ -69,7 +69,7 @@ const getDatePickerPopupBoxShadow = (theme: Theme): string => {
       inset: true,
     },
   ];
-  return makePopupBoxShadow(shadowLayers);
+  return makeBoxShadow(shadowLayers);
 };
 
 // Calendar dimensions for consistent layout
