@@ -14,9 +14,6 @@ import { Button } from '~components/Button';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
-import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
-import { Amount } from '~components/Amount';
-import { Badge } from '~components/Badge';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
