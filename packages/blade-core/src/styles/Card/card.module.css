@@ -1,0 +1,228 @@
+/* ============================================
+   Card Component Styles
+   ============================================ */
+
+/* --- CardRoot --- */
+.cardRoot {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  cursor: initial;
+}
+
+/* Selected state via data attribute */
+.cardRoot[data-selected='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal);
+}
+
+/* Focused state via data attribute (added on top of selected) */
+.cardRoot[data-focused='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) transparent, 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+.cardRoot[data-selected='true'][data-focused='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal), 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+/* Validation state: error */
+.cardRoot[data-validation='error'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-negative-default);
+}
+
+.cardRoot[data-validation='error'][data-focused='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-negative-default), 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+/* Validation state: success */
+.cardRoot[data-validation='success'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-positive-default);
+}
+
+.cardRoot[data-validation='success'][data-focused='true'] {
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-positive-default), 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+/* As label cursor */
+.cardRootLabel {
+  cursor: pointer;
+}
+
+/* Scale on hover (desktop) */
+.shouldScaleOnHover {
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+  transition-property: transform, box-shadow;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Pressed state (mobile scale down) */
+.cardRootPressed {
+  transform: scale(0.95);
+}
+
+/* Uplift nested interactive elements above link overlay */
+.cardRoot a[href]:not(a[data-blade-component='card-link-overlay']) {
+  z-index: 2;
+  position: relative;
+}
+
+.cardRoot button:not(button[data-blade-component='card-link-overlay']) {
+  z-index: 2;
+  position: relative;
+}
+
+.cardRoot label:not(a[data-blade-component='card-link-overlay']):not(button[data-blade-component='card-link-overlay']) {
+  z-index: 2;
+  position: relative;
+}
+
+/* --- CardSurface --- */
+.cardSurface {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* --- LinkOverlay --- */
+.linkOverlay {
+  all: unset;
+  cursor: pointer;
+  appearance: none;
+  border: 0;
+  padding: 0;
+  position: static;
+
+  &::before {
+    content: '';
+    cursor: inherit;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* --- CardHeader --- */
+.cardHeader {
+  /* wrapper — marginBottom applied via utility class */
+}
+
+.cardHeaderContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* --- CardHeaderLeading --- */
+.cardHeaderLeading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.cardHeaderLeadingRow {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.cardHeaderLeadingPrefix {
+  margin-right: var(--spacing-3);
+  align-self: center;
+  display: flex;
+}
+
+.cardHeaderLeadingTitleWrap {
+  margin-right: var(--spacing-5);
+}
+
+.cardHeaderLeadingTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cardHeaderLeadingSuffix {
+  margin-left: var(--spacing-3);
+}
+
+/* --- CardHeaderTrailing --- */
+.cardHeaderTrailing {
+  align-self: center;
+}
+
+/* --- CardBody --- */
+.cardBody {
+  /* Simple wrapper — no special styles needed */
+}
+
+/* --- CardFooter --- */
+.cardFooter {
+  /* wrapper — marginTop applied via utility class */
+}
+
+.cardFooterContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsive: column layout on mobile */
+@media (max-width: 768px) {
+  .cardFooterContent {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Justify end when only trailing is present */
+.cardFooterContentEnd {
+  justify-content: flex-end;
+}
+
+/* --- CardFooterLeading --- */
+.cardFooterLeading {
+  text-align: left;
+}
+
+/* --- CardFooterTrailing --- */
+.cardFooterTrailing {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin-left: var(--spacing-5);
+}
+
+@media (max-width: 768px) {
+  .cardFooterTrailing {
+    align-self: auto;
+    margin-top: var(--spacing-5);
+    margin-left: var(--spacing-0);
+  }
+}
+
+.cardFooterActionWrapper {
+  flex-grow: 1;
+}
+
+.cardFooterActionSpacer {
+  margin-left: var(--spacing-5);
+}
+
+/* --- CardHeaderIconButton wrapper --- */
+.cardHeaderIconButtonWrapper {
+  /* minHeight.xsmall = 28px from Button tokens */
+  width: 28px;
+}
