@@ -103,7 +103,7 @@ const TabIndicator = ({
     transitionTimingFunction: castWebType(theme.motion.easing.standard),
   };
 
-  // Vertical bordered: 2px-wide line on the left side that slides vertically
+  // Vertical bordered: 1.5px-wide line on the left side that slides vertically
   if (isVertical && variant !== 'filled') {
     return (
       <StyledTabIndicator

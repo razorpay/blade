@@ -37,7 +37,7 @@ const StyledTabButton = styled.button<{
 }>(({ theme, isSelected, size, variant, isFullWidthTabItem, isVertical }) => {
   const orientation = isVertical ? 'vertical' : 'horizontal';
   const border = isVertical ? 'borderLeft' : 'borderBottom';
-  const selectedState = isSelected ? 'selected' : 'unselected';
+  const selectedState: 'selected' | 'unselected' = isSelected ? 'selected' : 'unselected';
   const _variant = variant === 'borderless' ? 'bordered' : variant;
 
   const background = backgroundColor[selectedState][_variant][orientation];
