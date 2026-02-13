@@ -15,6 +15,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 
 const getDividerColorToken = ({
   color,
@@ -27,9 +28,12 @@ const getDividerColorToken = ({
     return 'surface.border.gray.subtle';
   }
 
-  // TODO(spark): Migrate this later
   if (variant === 'secondary') {
-    return `surface.border.gray.muted`;
+    return getBackgroundColorToken({
+      variant,
+      color,
+      state: isDisabled ? 'disabled' : 'default',
+    });
   }
 
   return 'surface.border.gray.muted';
@@ -80,6 +84,7 @@ const _ButtonGroup = (
         ref={ref as never}
         color={color}
         variant={variant}
+        size={size}
         isDisabled={isDisabled}
         isFullWidth={isFullWidth}
         {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
@@ -88,10 +93,14 @@ const _ButtonGroup = (
         role="group"
       >
         {React.Children.map(children, (child, index) => {
+          const isLast = React.Children.count(children) - 1 === index;
+          // Only show dividers for primary variant (secondary/tertiary have borders via box-shadow)
+          const showDivider = variant === 'primary' && !isLast;
+
           return (
             <>
               {child}
-              {React.Children.count(children) - 1 !== index && (
+              {showDivider && (
                 <StyledDivider variant={variant} color={color} isDisabled={isDisabled} />
               )}
             </>
