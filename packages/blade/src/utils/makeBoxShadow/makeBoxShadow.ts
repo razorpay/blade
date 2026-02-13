@@ -2,7 +2,7 @@
 
 /**
  * Represents a single shadow layer configuration
- * Used to create complex multi-layer shadows for popup components
+ * Used to create complex multi-layer box shadows
  */
 export type ShadowLayer = {
   /** Horizontal offset in pixels */
@@ -31,11 +31,11 @@ export type ShadowLayer = {
  *   { x: 0, y: 2, blur: 4, spread: 0, color: 'rgba(0,0,0,0.1)', inset: false },
  *   { x: 0, y: 0, blur: 0, spread: 1, color: 'rgba(255,255,255,0.5)', inset: true }
  * ];
- * const boxShadow = makePopupBoxShadow(layers);
+ * const boxShadow = makeBoxShadow(layers);
  * // Result: "0px 2px 4px 0px rgba(0,0,0,0.1), inset 0px 0px 0px 1px rgba(255,255,255,0.5)"
  * ```
  */
-export const makePopupBoxShadow = (shadowLayers: ShadowLayer[]): string => {
+export const makeBoxShadow = (shadowLayers: ShadowLayer[]): string => {
   return shadowLayers
     .map((layer) => {
       const inset = layer.inset ? 'inset ' : '';
