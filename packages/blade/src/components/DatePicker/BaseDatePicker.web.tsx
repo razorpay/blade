@@ -387,7 +387,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         height={
           _picker === 'day' && showFooterActions ? CALENDAR_HEIGHTS.DAY_PICKER_WITH_FOOTER : 'auto'
         }
-        backgroundColor="surface.background.gray.intense"
         justifyContent="space-between"
       >
         <Calendar
