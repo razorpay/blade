@@ -25,7 +25,7 @@ const TabIndicator = ({
   tabListContainerRef: React.RefObject<HTMLElement | null>;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const { selectedValue, baseId, variant } = useTabsContext();
+  const { selectedValue, baseId, variant, isVertical, size } = useTabsContext();
   const [hasMeasured, setHasMeasured] = React.useState(false);
   const [activeElementDimensions, setActiveElementDimensions] = React.useState({
     width: 0,
@@ -45,8 +45,8 @@ const TabIndicator = ({
       height: activeTabItem.offsetHeight,
       x: activeTabItem.offsetLeft,
       y:
-        variant === 'filled'
-          ? // on filled variant the indicator is positioned on top of the tab item
+        variant === 'filled' || isVertical
+          ? // on filled variant or vertical layout the indicator is positioned on top of the tab item
             // so no need to add offsetHeight
             activeTabItem.offsetTop
           : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
@@ -96,22 +96,43 @@ const TabIndicator = ({
   }, [tabListContainerRef, updateDimensions]);
 
   const transitionProps = {
-    transitionProperty: 'transform, width, background-color',
+    transitionProperty: 'transform, width, height, background-color',
     transitionDuration: hasMeasured
-      ? castWebType(makeMotionTime(theme.motion.duration.gentle))
+      ? castWebType(makeMotionTime(theme.motion.duration.moderate))
       : '0ms',
     transitionTimingFunction: castWebType(theme.motion.easing.standard),
   };
 
+  // Vertical bordered: 1.5px-wide line on the left side that slides vertically
+  if (isVertical && variant !== 'filled') {
+    return (
+      <StyledTabIndicator
+        pointerEvents="none"
+        position="absolute"
+        left="1.75px"
+        top="0px"
+        width="1.5px"
+        backgroundColor="interactive.border.neutral.highlighted"
+        style={{
+          ...transitionProps,
+          height: `${activeElementDimensions.height}px`,
+          transform: `translateY(${activeElementDimensions.y}px)`,
+        }}
+        {...metaAttribute({ name: MetaConstants.TabIndicator })}
+      />
+    );
+  }
+
   if (variant === 'filled') {
+    const shouldHaveMediumBorderRadius = size === 'small' && !isVertical;
     return (
       <StyledTabIndicator
         pointerEvents="none"
         position="absolute"
         left="0px"
         top="0px"
-        borderRadius="small"
-        backgroundColor="interactive.background.primary.faded"
+        borderRadius={shouldHaveMediumBorderRadius ? 'medium' : 'small'}
+        backgroundColor="surface.background.gray.intense"
         style={{
           ...transitionProps,
           width: `${activeElementDimensions.width}px`,
@@ -130,7 +151,7 @@ const TabIndicator = ({
       left="0%"
       top="-0.5px"
       height="2px"
-      backgroundColor="interactive.background.primary.default"
+      backgroundColor="interactive.border.neutral.highlighted"
       style={{
         ...transitionProps,
         width: `${activeElementDimensions.width}px`,
