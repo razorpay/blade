@@ -298,10 +298,15 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
         width: isMobile || !isDayPicker ? '100%' : makeSpace(cell.size[device]),
         height: isDayPicker && isMobile ? '100%' : makeSpace(cell.size[device]),
         aspectRatio: isDayPicker && isMobile ? '1 / 1' : undefined,
-        borderRadius: theme.border.radius.medium,
         backgroundColor: getIn(theme.colors, cell.background.default),
+        borderRadius: theme.border.radius.small,
         border: 'none',
-        ...getTextStyles({ theme, variant: 'body', size: 'medium', weight: 'regular' }),
+        ...getTextStyles({
+          theme,
+          variant: 'body',
+          size: 'medium',
+          weight: isDayPicker ? 'regular' : 'medium',
+        }),
 
         '&:hover': {
           backgroundColor: getIn(theme.colors, cell.background.hover),

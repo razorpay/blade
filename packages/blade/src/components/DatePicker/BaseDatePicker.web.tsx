@@ -21,6 +21,7 @@ import { useDatesState } from './useDatesState';
 import { usePopup } from './usePopup';
 import { convertIntlToDayjsLocale, loadScript } from './utils';
 import { DatePickerProvider } from './DatePickerContext';
+import { getDatePickerPopupBoxShadow } from './datePickerTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -359,7 +360,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         height={
           _picker === 'day' && showFooterActions ? CALENDAR_HEIGHTS.DAY_PICKER_WITH_FOOTER : 'auto'
         }
-        backgroundColor="surface.background.gray.intense"
         justifyContent="space-between"
       >
         <Calendar
@@ -594,7 +594,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                         borderRadius="medium"
                         overflow="hidden"
                         minWidth="320px"
-                        style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+                        style={{
+                          ...animationStyles,
+                          background: theme.colors.popup.background.gray.moderate,
+                          boxShadow: `${theme.elevation.lowRaised}, ${getDatePickerPopupBoxShadow(
+                            theme,
+                          )}`,
+                          backdropFilter: `blur(${theme.backdropBlur.low}px)`,
+                        }}
                       >
                         {content}
                       </BaseBox>

@@ -1037,3 +1037,65 @@ export const ClearButtonControlledDisplayCompact: StoryFn<typeof DatePickerCompo
 };
 
 ClearButtonControlledDisplayCompact.storyName = 'Clear Button (Controlled ) (Display Compact)';
+
+export const DatePickerWithCardsShowcase: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.7"
+      backgroundColor="surface.background.gray.moderate"
+      padding="spacing.8"
+      minHeight="100vh"
+    >
+      <Box maxWidth="320px">
+        <DatePickerComponent
+          label="Select Date"
+          selectionType="single"
+          defaultValue={new Date()}
+          onChange={(date) => console.log(date)}
+        />
+      </Box>
+      <Box maxWidth="320px">
+        <DatePickerComponent
+          label="Select Range"
+          selectionType="range"
+          defaultValue={[new Date(), new Date()]}
+          onChange={(date) => console.log(date)}
+        />
+      </Box>
+
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="positive"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="negative"
+      >
+        {' '}
+        Change Date
+      </Button>
+    </Box>
+  );
+};
+
+DatePickerWithCardsShowcase.storyName = 'With Cards (Backdrop Showcase)';
