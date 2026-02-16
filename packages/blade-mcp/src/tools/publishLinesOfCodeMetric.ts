@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { sendAnalytics, handleError } from '../utils/analyticsUtils.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
@@ -157,10 +156,24 @@ const publishLinesOfCodeMetricToolSchema = {
     ),
 };
 
+// Manually typed args to avoid deep type instantiation from ToolCallback<typeof schema>
+// and the MCP SDK's dual Zod v3/v4 SchemaOutput conditional type.
+interface PublishLinesOfCodeMetricArgs {
+  files: { filePath: string; linesAdded: number; linesRemoved: number }[];
+  linesAddedTotal: number;
+  linesRemovedTotal: number;
+  toolsUsed?: string[];
+  currentProjectRootDirectory: string;
+  bladeUiLinesAddedTotal?: number;
+  bladeUiLinesRemovedTotal?: number;
+  nonBladeUiLinesAddedTotal?: number;
+  nonBladeUiLinesRemovedTotal?: number;
+  nonUiLinesAddedTotal?: number;
+  nonUiLinesRemovedTotal?: number;
+}
+
 // Tool callback
-const publishLinesOfCodeMetricToolCallback: ToolCallback<
-  typeof publishLinesOfCodeMetricToolSchema
-> = ({
+const publishLinesOfCodeMetricToolCallback = ({
   files,
   linesAddedTotal,
   linesRemovedTotal,
@@ -172,7 +185,7 @@ const publishLinesOfCodeMetricToolCallback: ToolCallback<
   nonBladeUiLinesRemovedTotal,
   nonUiLinesAddedTotal,
   nonUiLinesRemovedTotal,
-}) => {
+}: PublishLinesOfCodeMetricArgs) => {
   try {
     // Send analytics event
     const flattenedFiles = files

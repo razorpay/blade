@@ -1,4 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
+import type { z } from 'zod';
+
 import {
   createNewBladeProjectToolName,
   createNewBladeProjectToolDescription,
@@ -63,9 +66,26 @@ import {
 } from './tools/publishLinesOfCodeMetric.js';
 import { setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
 
+/**
+ * Wrapper around server.registerTool that prevents TypeScript from deeply
+ * inferring InputArgs through the MCP SDK's dual Zod v3/v4 SchemaOutput
+ * conditional type, which causes "Type instantiation is excessively deep
+ * and possibly infinite" errors with complex Zod schemas.
+ */
+function registerToolSafe(
+  server: McpServer,
+  name: string,
+  config: { description: string; inputSchema?: Record<string, z.ZodTypeAny> },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  cb: ToolCallback<any>,
+): void {
+  server.registerTool(name, config, cb);
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const httpsServerTools = (server: McpServer): void => {
-  server.registerTool(
+  registerToolSafe(
+    server,
     createBladeCursorRulesToolName,
     {
       description: createBladeCursorRulesToolDescription,
@@ -74,7 +94,8 @@ const httpsServerTools = (server: McpServer): void => {
     createBladeCursorRulesHttpCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     getBladeComponentDocsToolName,
     {
       description: getBladeComponentDocsToolDescription,
@@ -83,7 +104,8 @@ const httpsServerTools = (server: McpServer): void => {
     getBladeComponentDocsHttpCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     getBladePatternDocsToolName,
     {
       description: getBladePatternDocsToolDescription,
@@ -92,7 +114,8 @@ const httpsServerTools = (server: McpServer): void => {
     getBladePatternDocsHttpCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     getBladeGeneralDocsToolName,
     {
       description: getBladeGeneralDocsToolDescription,
@@ -103,7 +126,8 @@ const httpsServerTools = (server: McpServer): void => {
 };
 
 const stdioServerTools = (server: McpServer): void => {
-  server.registerTool(
+  registerToolSafe(
+    server,
     createBladeCursorRulesToolName,
     {
       description: createBladeCursorRulesToolDescription,
@@ -112,7 +136,8 @@ const stdioServerTools = (server: McpServer): void => {
     createBladeCursorRulesStdioCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     getBladeComponentDocsToolName,
     {
       description: getBladeComponentDocsToolDescription,
@@ -121,7 +146,8 @@ const stdioServerTools = (server: McpServer): void => {
     getBladeComponentDocsStdioCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     getBladePatternDocsToolName,
     {
       description: getBladePatternDocsToolDescription,
@@ -130,7 +156,8 @@ const stdioServerTools = (server: McpServer): void => {
     getBladePatternDocsStdioCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     getBladeGeneralDocsToolName,
     {
       description: getBladeGeneralDocsToolDescription,
@@ -157,7 +184,8 @@ export const createServer = ({
     stdioServerTools(server);
   }
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     hiBladeToolName,
     {
       description: hiBladeToolDescription,
@@ -166,7 +194,8 @@ export const createServer = ({
     hiBladeToolCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     createNewBladeProjectToolName,
     {
       description: createNewBladeProjectToolDescription,
@@ -175,7 +204,8 @@ export const createServer = ({
     createNewBladeProjectToolCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     getFigmaToCodeToolName,
     {
       description: getFigmaToCodeToolDescription,
@@ -184,7 +214,8 @@ export const createServer = ({
     getFigmaToCodeToolCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     getChangelogToolName,
     {
       description: getChangelogToolDescription,
@@ -193,7 +224,8 @@ export const createServer = ({
     getChangelogToolCallback,
   );
 
-  server.registerTool(
+  registerToolSafe(
+    server,
     publishLinesOfCodeMetricToolName,
     {
       description: publishLinesOfCodeMetricToolDescription,
