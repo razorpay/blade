@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.81.2
+
+### Patch Changes
+
+- 6c65e83b1: fix(Table): hide deselect button when selectionType="none" is set
+  fix(Tabs): tab selection indicator line is not updated when state changes the layout
+
 ## 12.81.1
 
 ### Patch Changes
