@@ -65,61 +65,77 @@ import { setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const httpsServerTools = (server: McpServer): void => {
-  server.tool(
+  server.registerTool(
     createBladeCursorRulesToolName,
-    createBladeCursorRulesToolDescription,
-    createBladeCursorRulesToolSchema,
+    {
+      description: createBladeCursorRulesToolDescription,
+      inputSchema: createBladeCursorRulesToolSchema,
+    },
     createBladeCursorRulesHttpCallback,
   );
 
-  server.tool(
+  server.registerTool(
     getBladeComponentDocsToolName,
-    getBladeComponentDocsToolDescription,
-    getBladeComponentDocsHttpSchema,
+    {
+      description: getBladeComponentDocsToolDescription,
+      inputSchema: getBladeComponentDocsHttpSchema,
+    },
     getBladeComponentDocsHttpCallback,
   );
 
-  server.tool(
+  server.registerTool(
     getBladePatternDocsToolName,
-    getBladePatternDocsToolDescription,
-    getBladePatternDocsHttpSchema,
+    {
+      description: getBladePatternDocsToolDescription,
+      inputSchema: getBladePatternDocsHttpSchema,
+    },
     getBladePatternDocsHttpCallback,
   );
 
-  server.tool(
+  server.registerTool(
     getBladeGeneralDocsToolName,
-    getBladeGeneralDocsToolDescription,
-    getBladeGeneralDocsHttpSchema,
+    {
+      description: getBladeGeneralDocsToolDescription,
+      inputSchema: getBladeGeneralDocsHttpSchema,
+    },
     getBladeGeneralDocsHttpCallback,
   );
 };
 
 const stdioServerTools = (server: McpServer): void => {
-  server.tool(
+  server.registerTool(
     createBladeCursorRulesToolName,
-    createBladeCursorRulesToolDescription,
-    createBladeCursorRulesToolSchema,
+    {
+      description: createBladeCursorRulesToolDescription,
+      inputSchema: createBladeCursorRulesToolSchema,
+    },
     createBladeCursorRulesStdioCallback,
   );
 
-  server.tool(
+  server.registerTool(
     getBladeComponentDocsToolName,
-    getBladeComponentDocsToolDescription,
-    getBladeComponentDocsStdioSchema,
+    {
+      description: getBladeComponentDocsToolDescription,
+      inputSchema: getBladeComponentDocsStdioSchema,
+    },
     getBladeComponentDocsStdioCallback,
   );
 
-  server.tool(
+  server.registerTool(
     getBladePatternDocsToolName,
-    getBladePatternDocsToolDescription,
-    getBladePatternDocsStdioSchema,
+    {
+      description: getBladePatternDocsToolDescription,
+      inputSchema: getBladePatternDocsStdioSchema,
+    },
     getBladePatternDocsStdioCallback,
   );
 
-  server.tool(
+  server.registerTool(
     getBladeGeneralDocsToolName,
-    getBladeGeneralDocsToolDescription,
-    getBladeGeneralDocsStdioSchema,
+    {
+      description: getBladeGeneralDocsToolDescription,
+      inputSchema: getBladeGeneralDocsStdioSchema,
+    },
     getBladeGeneralDocsStdioCallback,
   );
 };
@@ -141,33 +157,48 @@ export const createServer = ({
     stdioServerTools(server);
   }
 
-  server.tool(hiBladeToolName, hiBladeToolDescription, hiBladeToolSchema, hiBladeToolCallback);
+  server.registerTool(
+    hiBladeToolName,
+    {
+      description: hiBladeToolDescription,
+      inputSchema: hiBladeToolSchema,
+    },
+    hiBladeToolCallback,
+  );
 
-  server.tool(
+  server.registerTool(
     createNewBladeProjectToolName,
-    createNewBladeProjectToolDescription,
-    createNewBladeProjectToolSchema,
+    {
+      description: createNewBladeProjectToolDescription,
+      inputSchema: createNewBladeProjectToolSchema,
+    },
     createNewBladeProjectToolCallback,
   );
 
-  server.tool(
+  server.registerTool(
     getFigmaToCodeToolName,
-    getFigmaToCodeToolDescription,
-    getFigmaToCodeToolSchema,
+    {
+      description: getFigmaToCodeToolDescription,
+      inputSchema: getFigmaToCodeToolSchema,
+    },
     getFigmaToCodeToolCallback,
   );
 
-  server.tool(
+  server.registerTool(
     getChangelogToolName,
-    getChangelogToolDescription,
-    getChangelogToolSchema,
+    {
+      description: getChangelogToolDescription,
+      inputSchema: getChangelogToolSchema,
+    },
     getChangelogToolCallback,
   );
 
-  server.tool(
+  server.registerTool(
     publishLinesOfCodeMetricToolName,
-    publishLinesOfCodeMetricToolDescription,
-    publishLinesOfCodeMetricToolSchema,
+    {
+      description: publishLinesOfCodeMetricToolDescription,
+      inputSchema: publishLinesOfCodeMetricToolSchema,
+    },
     publishLinesOfCodeMetricToolCallback,
   );
 
