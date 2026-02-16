@@ -1,8 +1,9 @@
 ---
-description: 
-globs: 
-alwaysApply: false
+name: bi-weekly-announcement
+description: Generate bi-weekly announcement posts for Blade Design System updates by analyzing changelog entries from the past two weeks
+disable-model-invocation: true
 ---
+
 # Bi-Weekly Announcement Rule
 
 ## Purpose
@@ -118,4 +119,3 @@ Promotional Toast Flexibility: Made leading prop optional for better component c
 - **Developer Experience**: Include DX improvements and new APIs
 - **Regarding Output** So onces you are done writing the announcement , make a txt file and write announcement in it. 
 ```
-
