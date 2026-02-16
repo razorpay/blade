@@ -1,5 +1,16 @@
 # @razorpay/blade-svelte
 
+## 0.4.0
+
+### Minor Changes
+
+- 46dc37f98: Added Divider component
+
+### Patch Changes
+
+- Updated dependencies [46dc37f98]
+  - @razorpay/blade-core@0.3.0
+
 ## 0.3.0
 
 ### Minor Changes

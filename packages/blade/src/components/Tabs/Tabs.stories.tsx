@@ -1020,3 +1020,57 @@ const ProductUseCase4Template: StoryFn<(props: StoryControlProps) => React.React
 
 export const ProductUseCase4 = ProductUseCase4Template.bind({});
 ProductUseCase4.storyName = 'Product Usecase: Icon only tabs';
+
+const DelayedTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
+  const [isLayoutReady, setIsLayoutReady] = React.useState(false);
+
+  // Simulates a dashboard layout that renders content after
+  // an async operation (data fetch, sidebar animation, etc.)
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLayoutReady(true);
+    }, 100);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <Box padding="spacing.5">
+      <Text size="large" weight="semibold" marginBottom="spacing.5">
+        Dashboard
+      </Text>
+
+      {/* 
+        The Tabs mount immediately, but the container starts 
+        with display:none / width:0. When it becomes visible,
+        TabIndicator has already measured (got 0) and won't re-measure.
+      */}
+      <Box display={isLayoutReady ? 'block' : 'none'}>
+        <Tabs defaultValue="payments">
+          <TabList>
+            <TabItem value="orders">Orders</TabItem>
+            <TabItem value="payments">Payments</TabItem>
+            <TabItem value="refunds">Refunds</TabItem>
+          </TabList>
+          <TabPanel value="orders">
+            <Box padding="spacing.5">
+              <Text>Orders content</Text>
+            </Box>
+          </TabPanel>
+          <TabPanel value="payments">
+            <Box padding="spacing.5">
+              <Text>Payments content</Text>
+            </Box>
+          </TabPanel>
+          <TabPanel value="refunds">
+            <Box padding="spacing.5">
+              <Text>Refunds content</Text>
+            </Box>
+          </TabPanel>
+        </Tabs>
+      </Box>
+    </Box>
+  );
+};
+
+export const DelayedTabs = DelayedTabsTemplate.bind({});
+DelayedTabs.storyName = 'Product Usecase: Tabs with delayed visibility';
