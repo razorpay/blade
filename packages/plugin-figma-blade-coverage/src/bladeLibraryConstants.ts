@@ -1740,9 +1740,9 @@ export const bladeThemeData = {
   },
   variables: {
     CardBorderRadius: {
-      medium: 'VariableID:4965272d93863faec6d5e08d97e3c834d0e091b4/92004:1632',
-      large: 'VariableID:5c72be3e212b0e87e6ba3e69a5bd812b40b4d456/92004:1633',
-      xlarge: 'VariableID:67fc44c355119012a771dabc7c38bb6cfb0117cd/92004:1634',
+      medium: 'VariableID:4965272d93863faec6d5e08d97e3c834d0e091b4/108189:1686',
+      large: 'VariableID:5c72be3e212b0e87e6ba3e69a5bd812b40b4d456/106885:444',
+      xlarge: 'VariableID:67fc44c355119012a771dabc7c38bb6cfb0117cd/106885:251',
     },
   },
 };
