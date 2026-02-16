@@ -1,5 +1,5 @@
 ---
-name: bi-weekly-announcement
+name: write-biweekly-announcement
 description: Generate bi-weekly announcement posts for Blade Design System updates by analyzing changelog entries from the past two weeks
 disable-model-invocation: true
 ---

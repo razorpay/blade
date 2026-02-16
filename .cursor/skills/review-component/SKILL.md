@@ -1,5 +1,5 @@
 ---
-name: component-review-checklist
+name: review-component
 description: This rule helps in reviewing the component before shipping to make sure all important things are checked
 ---
 

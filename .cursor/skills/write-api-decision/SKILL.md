@@ -1,5 +1,5 @@
 ---
-name: api-decisions
+name: write-api-decision
 description: This rule helps in writing API decisions for new components of blade design system
 ---
 
