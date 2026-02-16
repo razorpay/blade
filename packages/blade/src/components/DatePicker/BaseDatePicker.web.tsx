@@ -353,8 +353,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         width="100%"
         display="flex"
         flexDirection="column"
-        gap="spacing.5"
-        padding={{ m: 'spacing.6', s: 'spacing.0' }}
         /* We only need to set height for day picker, for year picker
          or month it should be auto. */
         height={
@@ -362,50 +360,52 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         }
         justifyContent="space-between"
       >
-        <Calendar
-          {...props}
-          selectionType={_selectionType}
-          defaultValue={defaultValue}
-          onMouseLeave={onRootMouseLeave}
-          __onDayMouseEnter={(_event, date) => {
-            onHoveredDateChange(date);
-          }}
-          __onDayClick={(_event, date) => {
-            onDateChange(date, 'day');
-          }}
-          getMonthControlProps={(date) => {
-            return getControlProps(date);
-          }}
-          getYearControlProps={(date) => {
-            return getControlProps(date);
-          }}
-          getDayProps={(date) => {
-            return getControlProps(date);
-          }}
-          onMonthSelect={(date) => {
-            props?.onMonthSelect?.(date);
-            onDateChange(date, 'month');
-          }}
-          onYearSelect={(date) => {
-            props?.onYearSelect?.(date);
-            onDateChange(date, 'year');
-          }}
-          onNext={(data) => {
-            props?.onNext?.(data);
-            forceRerender();
-          }}
-          onPrevious={(data) => {
-            props?.onPrevious?.(data);
-            forceRerender();
-          }}
-          picker={_picker}
-          showLevelChangeLink={!picker}
-          onPickerChange={(picker) => {
-            setPicker(() => picker);
-            forceRerender();
-          }}
-          selectedValue={controlledValue}
-        />
+        <BaseBox padding={{ m: 'spacing.6', s: 'spacing.0' }}>
+          <Calendar
+            {...props}
+            selectionType={_selectionType}
+            defaultValue={defaultValue}
+            onMouseLeave={onRootMouseLeave}
+            __onDayMouseEnter={(_event, date) => {
+              onHoveredDateChange(date);
+            }}
+            __onDayClick={(_event, date) => {
+              onDateChange(date, 'day');
+            }}
+            getMonthControlProps={(date) => {
+              return getControlProps(date);
+            }}
+            getYearControlProps={(date) => {
+              return getControlProps(date);
+            }}
+            getDayProps={(date) => {
+              return getControlProps(date);
+            }}
+            onMonthSelect={(date) => {
+              props?.onMonthSelect?.(date);
+              onDateChange(date, 'month');
+            }}
+            onYearSelect={(date) => {
+              props?.onYearSelect?.(date);
+              onDateChange(date, 'year');
+            }}
+            onNext={(data) => {
+              props?.onNext?.(data);
+              forceRerender();
+            }}
+            onPrevious={(data) => {
+              props?.onPrevious?.(data);
+              forceRerender();
+            }}
+            picker={_picker}
+            showLevelChangeLink={!picker}
+            onPickerChange={(picker) => {
+              setPicker(() => picker);
+              forceRerender();
+            }}
+            selectedValue={controlledValue}
+          />
+        </BaseBox>
         {showFooterActions &&
           (isMobile ? null : (
             <CalendarFooter

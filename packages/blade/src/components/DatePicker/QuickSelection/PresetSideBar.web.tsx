@@ -45,7 +45,7 @@ const PresetSideBar = ({
 
   return (
     <BaseBox
-      padding="spacing.5"
+      padding="spacing.6"
       display="flex"
       flexDirection="column"
       gap="spacing.2"

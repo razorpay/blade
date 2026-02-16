@@ -29,7 +29,7 @@ const CalendarFooter = ({
   }, [isMobile, selectionType]);
 
   return (
-    <BaseBox display="flex" flexDirection="column" gap="spacing.5">
+    <BaseBox display="flex" flexDirection="column">
       {isMobile ? null : <Divider />}
 
       <BaseBox
@@ -37,6 +37,7 @@ const CalendarFooter = ({
         flexDirection={isSingleSelectionOrMobile ? 'column' : 'row'}
         gap={isSingleSelectionOrMobile ? 'spacing.5' : 'spacing.6'}
         justifyContent="space-between"
+        padding={{ m: 'spacing.6', s: 'spacing.0' }}
       >
         {footer ? <BaseBox maxWidth={footerMaxWidth}>{footer}</BaseBox> : null}
         <BaseBox width={{ base: '100%', m: 'auto' }} marginLeft="auto">
