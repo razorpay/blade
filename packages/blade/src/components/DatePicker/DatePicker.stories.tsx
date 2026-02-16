@@ -1094,6 +1094,83 @@ export const DatePickerWithCardsShowcase: StoryFn<typeof DatePickerComponent> = 
         {' '}
         Change Date
       </Button>
+
+      <Box maxWidth="320px">
+        <DatePickerComponent
+          label="Select Range"
+          selectionType="range"
+          defaultValue={[new Date(), new Date()]}
+          onChange={(date) => console.log(date)}
+          presets={[
+            {
+              label: 'Today',
+              value: (date) => [dayjs(date).startOf('day').toDate(), date],
+            },
+            {
+              label: 'Yesterday',
+              value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+            },
+            {
+              label: 'Past 7 days',
+              value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+            },
+            {
+              label: 'Past 15 days',
+              value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+            },
+            {
+              label: 'Past month',
+              value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+            },
+            {
+              label: 'Past year',
+              value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
+            },
+            {
+              label: 'Past financial year',
+              value: (date) => {
+                const d = dayjs(date);
+                const year = d.month() >= 3 ? d.year() : d.year() - 1;
+
+                return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+              },
+            },
+            {
+              label: 'Custom',
+              value: () => [null, null] as DatesRangeValue,
+            },
+          ]}
+        />
+      </Box>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="positive"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="negative"
+      >
+        {' '}
+        Change Date
+      </Button>
     </Box>
   );
 };
