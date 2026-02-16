@@ -3,7 +3,12 @@ import React from 'react';
 import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
 import { formatNumberByParts } from '@razorpay/i18nify-js/currency';
 import type { AmountTypeProps } from './amountTokens';
-import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
+import {
+  normalAmountSizes,
+  subtleFontSizes,
+  currencyFontSizes,
+  amountLineHeights,
+} from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
@@ -335,7 +340,7 @@ const _Amount = (
 
   const currencyFontSize = isAffixSubtle
     ? subtleFontSizes[type][size]
-    : normalAmountSizes[type][size];
+    : currencyFontSizes[type][size];
   const isReactNative = getPlatformType() === 'react-native';
 
   return (

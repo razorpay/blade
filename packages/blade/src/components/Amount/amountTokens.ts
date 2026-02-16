@@ -48,6 +48,31 @@ const normalAmountSizes: Record<
   },
 };
 
+const currencyFontSizes: Record<
+  'body' | 'heading' | 'display',
+  Partial<Record<NonNullable<AmountTypeProps['size']>, keyof FontSize>>
+> = {
+  body: {
+    xsmall: normalAmountSizes.body.xsmall,
+    small: normalAmountSizes.body.xsmall,
+    medium: normalAmountSizes.body.xsmall,
+    large: normalAmountSizes.body.small,
+  },
+  heading: {
+    small: 300,
+    medium: 300,
+    large: 400,
+    xlarge: 500,
+    '2xlarge': 600,
+  },
+  display: {
+    small: 700,
+    medium: 800,
+    large: 900,
+    xlarge: 1000,
+  },
+};
+
 const subtleFontSizes: Record<
   'body' | 'heading' | 'display',
   Partial<Record<NonNullable<AmountTypeProps['size']>, keyof FontSize>>
@@ -98,6 +123,6 @@ const amountLineHeights: Record<
   },
 };
 
-export { subtleFontSizes, normalAmountSizes, amountLineHeights };
+export { subtleFontSizes, normalAmountSizes, currencyFontSizes, amountLineHeights };
 
 export type { AmountBodyProps, AmountDisplayProps, AmountHeadingProps, AmountTypeProps };
