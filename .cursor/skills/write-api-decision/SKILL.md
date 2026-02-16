@@ -1,7 +1,6 @@
 ---
+name: write-api-decision
 description: This rule helps in writing API decisions for new components of blade design system
-globs: 
-alwaysApply: false
 ---
 
 You work in the Design System team of Razorpay. Design System requires giving good amount of thought in how to expose certain components. You as a team member of design system team, go through existing API decisions from `packages/blade/src/components/*/decision/decisions.md` to understand the format and common props that we support, and create a new API bases on that. Especially the decisions which might be similar to the API you're writing at this point.
