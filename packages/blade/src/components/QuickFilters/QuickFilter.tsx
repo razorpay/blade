@@ -45,14 +45,25 @@ const QuickFilterContent = ({
         ) : (
           <Checkbox value={value} {...makeAnalyticsAttribute(rest)} />
         )}
-        <Text
-          variant="body"
-          size="medium"
-          color={isSelected ? 'interactive.text.primary.subtle' : 'interactive.text.gray.subtle'}
-          weight="medium"
-        >
-          {title}
-        </Text>
+        <BaseBox display="grid">
+          {/* Invisible bold text to reserve space and prevent layout shift */}
+          <BaseBox gridArea="1 / 1" visibility="hidden" aria-hidden="true">
+            <Text variant="body" size="medium" weight="semibold">
+              {title}
+            </Text>
+          </BaseBox>
+          {/* Visible text in the same grid cell */}
+          <BaseBox gridArea="1 / 1">
+            <Text
+              variant="body"
+              size="medium"
+              color={isSelected ? 'interactive.text.gray.normal' : 'interactive.text.gray.subtle'}
+              weight={isSelected ? 'semibold' : 'medium'}
+            >
+              {title}
+            </Text>
+          </BaseBox>
+        </BaseBox>
       </Box>
 
       {trailing}

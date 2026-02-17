@@ -12,7 +12,7 @@ type StyledQuickFilterWrapperProps = {
 const quickFilterColorTokens = {
   background: {
     default: 'transparent',
-    selected: 'interactive.background.primary.faded',
+    selected: 'interactive.background.gray.fadedHighlighted',
     hover: 'interactive.background.gray.faded',
   },
 } as const;
