@@ -95,9 +95,6 @@ const _TableToolbar = ({
         flexWrap="wrap"
         flexDirection={onMobile && tableToolbarPlacement === 'inline' ? 'column' : 'row'}
         gap="spacing.5"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
-        borderBottomWidth="none"
         minHeight={makeSize(tableToolbar.minHeight)}
       >
         <BaseBox display="flex" alignItems="center" flex={1}>

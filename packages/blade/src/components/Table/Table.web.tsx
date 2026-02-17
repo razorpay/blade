@@ -32,6 +32,7 @@ import type {
 } from './types';
 import { getTableBodyStyles } from './commonStyles';
 import { makeBorderSize, makeMotionTime } from '~utils';
+import { getSurfaceBoxShadowString } from '~utils/makeSurfaceBoxShadow';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
@@ -43,6 +44,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
+import type { ColorSchemeNames } from '~tokens/theme';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -145,6 +147,12 @@ const RefreshWrapper = styled(BaseBox)<{
   };
 });
 
+const TableWrapper = styled(BaseBox)<{ $colorScheme: ColorSchemeNames }>(
+  ({ theme, $colorScheme }) => ({
+    boxShadow: getSurfaceBoxShadowString(theme, $colorScheme),
+  }),
+);
+
 const _Table = <Item,>({
   children,
   data,
@@ -170,7 +178,7 @@ const _Table = <Item,>({
   isGrouped = false,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
     selectionType !== 'none' ? defaultSelectedIds : [],
   );
@@ -269,9 +277,8 @@ const _Table = <Item,>({
   const tableTheme = useTableTheme({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
-    border: ${makeBorderSize(theme.border.width.thin)} solid ${
-      theme.colors.surface.border.gray.muted
-    };
+    ${toolbar ? `border-top: ${makeBorderSize(theme.border.width.thin)} solid ${theme.colors.surface.border.gray.muted};` : ''}
+    ${pagination ? `border-bottom: ${makeBorderSize(theme.border.width.thin)} solid ${theme.colors.surface.border.gray.muted};` : ''}
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns
         ? `${gridTemplateColumns} ${hasHoverActions ? lastHoverActionsColWidth : ''}`
@@ -562,10 +569,15 @@ const _Table = <Item,>({
           <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
         </BaseBox>
       ) : (
-        <BaseBox
-          // ref={ref as never}
+        <TableWrapper
+          $colorScheme={colorScheme}
           flex={1}
           position="relative"
+          borderWidth="thin"
+          borderColor="surface.border.gray.muted"
+          borderRadius="xlarge"
+          // Clip content to the rounded shape so the border is visible at corners (otherwise inner content covers them)
+          overflow="hidden"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           width={isVirtualized ? `100%` : undefined}
@@ -614,7 +626,7 @@ const _Table = <Item,>({
             {children}
           </StyledReactTable>
           {pagination}
-        </BaseBox>
+        </TableWrapper>
       )}
     </TableContext.Provider>
   );

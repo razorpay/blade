@@ -149,7 +149,7 @@ const _TablePagination = ({
   }
 
   return (
-    <BaseBox backgroundColor={backgroundColor}>
+    <BaseBox backgroundColor={tablePagination.backgroundColor}>
       <Pagination
         totalPages={totalPages}
         selectedPage={currentPage !== undefined ? currentPage + 1 : undefined}

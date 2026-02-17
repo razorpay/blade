@@ -13,6 +13,7 @@ export * from './makeSpace';
 export * from './makeTypographySize';
 export * from './makeSize';
 export * from './makePopupBoxShadow';
+export * from './makeSurfaceBoxShadow';
 
 // https://github.com/razorpay/blade/pull/1193#issuecomment-1609122359
 export * from './toTitleCase';

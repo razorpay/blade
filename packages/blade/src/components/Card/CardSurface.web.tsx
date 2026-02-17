@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { colors, size } from '~tokens/global';
+import { size } from '~tokens/global';
 import type { ColorSchemeNames } from '~tokens/theme';
-import { makeSpace } from '~utils';
+import { getSurfaceBoxShadowString, getSurfaceGradients, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 
 type CardSurfaceProps = {
@@ -9,54 +9,15 @@ type CardSurfaceProps = {
 };
 const CardSurface = styled(BaseBox)<CardSurfaceProps>(({ theme, colorScheme }) => {
   const isDarkMode = colorScheme === 'dark';
-  const boxShadow = {
-    light: {
-      elevation: `0px 6px 32px 4px ${colors.neutral.blueGrayLight.a406}`,
-      border: `inset 0px 0px 0px 1px ${theme.colors.interactive.border.gray.default}`,
-      top: `inset 0px -1.5px 0px 1px ${theme.colors.surface.background.gray.intense}`,
-    },
-    dark: {
-      elevation: `0px 6px 12px 4px ${colors.neutral.black[5]}`,
-      border: `inset 0px 0px 0px 0px ${theme.colors.interactive.border.gray.default}`,
-      top: `inset 0px 0px 0px 1px ${theme.colors.surface.background.gray.intense}`,
-    },
-  };
-
-  const borderShadow = boxShadow[colorScheme].border;
-  const topInnerShadow = boxShadow[colorScheme].top;
-  const elevationShadow = boxShadow[colorScheme].elevation;
-
-  const topGradient = {
-    light: {
-      start: colors.neutral.blueGrayLight[0],
-      end: colors.neutral.blueGrayLight[0],
-    },
-    dark: {
-      start: colors.neutral.blueGrayDark[1000],
-      end: colors.neutral.blueGrayDark[1100],
-    },
-  };
-
-  const bottomGradient = {
-    light: {
-      start: colors.neutral.blueGrayLight[0],
-      end: colors.neutral.blueGrayLight[50],
-    },
-    dark: {
-      start: colors.neutral.blueGrayDark[1100],
-      end: colors.neutral.blueGrayDark[1300],
-    },
-  };
-
-  const topGradientColor = topGradient[colorScheme];
-  const bottomGradientColor = bottomGradient[colorScheme];
+  const boxShadow = getSurfaceBoxShadowString(theme, colorScheme);
+  const { top: topGradientColor, bottom: bottomGradientColor } = getSurfaceGradients(colorScheme);
 
   return {
     width: '100%',
     display: 'flex',
     position: 'relative',
     flexDirection: 'column',
-    boxShadow: `${borderShadow}, ${elevationShadow}, ${topInnerShadow}`,
+    boxShadow,
     boxSizing: 'border-box',
     border: 'none',
     borderTop: isDarkMode ? `1px solid ${theme.colors.surface.border.gray.subtle}` : '',
