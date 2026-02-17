@@ -3,8 +3,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { TabNavContext } from './TabNavContext';
-import { useResize } from './utils';
 import type { TabNavItemData, TabNavProps } from './types';
+import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';

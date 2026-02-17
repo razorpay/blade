@@ -477,4 +477,252 @@ PhoneNumberInputWithLabelSuffixTrailing.args = {
   labelTrailing: <Link size="small">Learn more</Link>,
 };
 
+export const PhoneNumberInputShowcase: StoryFn<typeof PhoneNumberInput> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Basic Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Basic Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput label="Default" name="default" />
+          <PhoneNumberInput label="With Value" defaultValue="9876543210" name="withValue" />
+          <PhoneNumberInput
+            label="With Help Text"
+            helpText="Phone number is needed for sending you invoice"
+            name="withHelpText"
+          />
+          <PhoneNumberInput label="Disabled" isDisabled name="disabled" />
+        </Box>
+      </Box>
+
+      {/* Validation States */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Validation States
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput
+            label="Error State"
+            defaultValue="12345"
+            validationState="error"
+            errorText="This phone number is invalid"
+            name="error"
+          />
+          <PhoneNumberInput
+            label="Success State"
+            defaultValue="9876543210"
+            validationState="success"
+            successText="This phone number is valid"
+            name="success"
+          />
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput label="Medium Size" size="medium" name="sizeMedium" />
+          <PhoneNumberInput label="Large Size" size="large" name="sizeLarge" />
+        </Box>
+      </Box>
+
+      {/* Label Positions */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Label Positions
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput label="Label Top" labelPosition="top" name="labelTop" />
+          <PhoneNumberInput label="Label Left" labelPosition="left" name="labelLeft" />
+        </Box>
+      </Box>
+
+      {/* Necessity Indicators */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Necessity Indicators
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput label="Required Field" necessityIndicator="required" name="required" />
+          <PhoneNumberInput label="Optional Field" necessityIndicator="optional" name="optional" />
+        </Box>
+      </Box>
+
+      {/* With Icons */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Icons
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput
+            label="Leading Icon"
+            leadingIcon={PhoneIcon}
+            showCountrySelector={false}
+            name="leadingIcon"
+          />
+          <PhoneNumberInput label="Trailing Icon" trailingIcon={InfoIcon} name="trailingIcon" />
+          <PhoneNumberInput
+            label="Both Icons"
+            leadingIcon={PhoneIcon}
+            trailingIcon={InfoIcon}
+            showCountrySelector={false}
+            name="bothIcons"
+          />
+        </Box>
+      </Box>
+
+      {/* Country Selector Variations */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Country Selector Variations
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput
+            label="With Country Selector"
+            showCountrySelector
+            name="withCountrySelector"
+          />
+          <PhoneNumberInput
+            label="Without Country Selector"
+            showCountrySelector={false}
+            name="withoutCountrySelector"
+          />
+          <PhoneNumberInput
+            label="Default Country (Malaysia)"
+            defaultCountry="MY"
+            name="defaultCountryMY"
+          />
+          <PhoneNumberInput
+            label="Allowed Countries Only"
+            allowedCountries={['IN', 'US', 'MY']}
+            name="allowedCountries"
+          />
+        </Box>
+      </Box>
+
+      {/* Dial Code Variations */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Dial Code Variations
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput label="With Dial Code" showDialCode name="withDialCode" />
+          <PhoneNumberInput label="Without Dial Code" showDialCode={false} name="withoutDialCode" />
+        </Box>
+      </Box>
+
+      {/* Text Alignment */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Text Alignment
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PhoneNumberInput
+            label="Left Aligned"
+            defaultValue="9876543210"
+            textAlign="left"
+            name="textAlignLeft"
+          />
+          <PhoneNumberInput
+            label="Center Aligned"
+            defaultValue="9876543210"
+            textAlign="center"
+            name="textAlignCenter"
+          />
+          <PhoneNumberInput
+            label="Right Aligned"
+            defaultValue="9876543210"
+            textAlign="right"
+            name="textAlignRight"
+          />
+        </Box>
+      </Box>
+
+      {/* With Label Suffix & Trailing */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Label Suffix & Trailing
+        </Text>
+        <PhoneNumberInput
+          label="Phone Number"
+          labelSuffix={
+            <Tooltip content="Your phone number is used for verification" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+          name="labelSuffixTrailing"
+        />
+      </Box>
+    </Box>
+  );
+};
+
+PhoneNumberInputShowcase.storyName = 'Showcase - All Variants';
+PhoneNumberInputShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all PhoneNumberInput variants including basic states, validation states, sizes, label positions, icons, country selector variations, dial code variations, and more.',
+    },
+  },
+};
+
 export default meta;

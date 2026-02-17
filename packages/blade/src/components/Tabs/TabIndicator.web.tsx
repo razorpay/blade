@@ -4,11 +4,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
-import { useTheme } from '~components/BladeProvider';
 import { castWebType, makeMotionTime } from '~utils';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useTheme } from '~components/BladeProvider';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useResize } from '~utils/useResize';
+import BaseBox from '~components/Box/BaseBox';
 
 const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
   return {
@@ -26,54 +27,40 @@ const TabIndicator = ({
 }): React.ReactElement => {
   const { theme } = useTheme();
   const { selectedValue, baseId, variant, isVertical, size } = useTabsContext();
-  const [hasMeasured, setHasMeasured] = React.useState(false);
-  const [activeElementDimensions, setActiveElementDimensions] = React.useState({
-    width: 0,
-    height: 0,
-    x: 0,
-    y: 0,
-  });
+  const [shouldAnimate, setShouldAnimate] = React.useState(false);
+  const [dimensions, setDimensions] = React.useState({ width: 0, height: 0, x: 0, y: 0 });
 
-  // Update the dimensions of the active element
   const updateDimensions = React.useCallback(() => {
-    const tabItemId = `${baseId}-${selectedValue}-tabitem`;
-    const activeTabItem = document.getElementById(tabItemId);
-    if (!activeTabItem) return;
+    const activeTabItem = document.getElementById(`${baseId}-${selectedValue}-tabitem`);
+    // Skip if element not found or not visible (width 0 means container is hidden)
+    if (!activeTabItem || activeTabItem.offsetWidth === 0) return;
 
-    setActiveElementDimensions({
+    setDimensions({
       width: activeTabItem.offsetWidth,
       height: activeTabItem.offsetHeight,
       x: activeTabItem.offsetLeft,
       y:
         variant === 'filled' || isVertical
           ? // on filled variant or vertical layout the indicator is positioned on top of the tab item
-            // so no need to add offsetHeight
             activeTabItem.offsetTop
           : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
     });
-  }, [baseId, selectedValue, tabListContainerRef, variant]);
+
+    // Enable animations after first valid measurement renders
+    setShouldAnimate((prev) => {
+      if (!prev) requestAnimationFrame(() => setShouldAnimate(true));
+      return prev;
+    });
+  }, [baseId, selectedValue, variant, isVertical]);
 
   // Update the dimensions when the selected value changes
   useIsomorphicLayoutEffect(() => {
     if (!selectedValue) return;
-
     updateDimensions();
+  }, [baseId, selectedValue, updateDimensions]);
 
-    const id = requestAnimationFrame(() => {
-      setHasMeasured(true);
-    });
-
-    return () => {
-      if (id) {
-        cancelAnimationFrame(id);
-      }
-    };
-  }, [baseId, selectedValue]);
-
-  // Update the dimensions when the window resizes or when the font loads
+  // Update the dimensions when fonts load
   React.useEffect(() => {
-    if (!tabListContainerRef.current) return;
-
     // check for FontFace API support
     // FontFaceAPI is widely supported but better to be safe than sorry
     if ('fonts' in document) {
@@ -86,18 +73,15 @@ const TabIndicator = ({
         /* empty */
       }
     }
+  }, [updateDimensions]);
 
-    window.addEventListener('resize', updateDimensions);
-
-    return () => {
-      if (!tabListContainerRef.current) return;
-      window.removeEventListener('resize', updateDimensions);
-    };
-  }, [tabListContainerRef, updateDimensions]);
+  // Update the dimensions when the container resizes (covers window resize,
+  // sidebar toggles, lazy-loaded content, and containers becoming visible)
+  useResize(tabListContainerRef, updateDimensions);
 
   const transitionProps = {
     transitionProperty: 'transform, width, height, background-color',
-    transitionDuration: hasMeasured
+    transitionDuration: shouldAnimate
       ? castWebType(makeMotionTime(theme.motion.duration.moderate))
       : '0ms',
     transitionTimingFunction: castWebType(theme.motion.easing.standard),
@@ -115,8 +99,8 @@ const TabIndicator = ({
         backgroundColor="interactive.border.neutral.highlighted"
         style={{
           ...transitionProps,
-          height: `${activeElementDimensions.height}px`,
-          transform: `translateY(${activeElementDimensions.y}px)`,
+          height: `${dimensions.height}px`,
+          transform: `translateY(${dimensions.y}px)`,
         }}
         {...metaAttribute({ name: MetaConstants.TabIndicator })}
       />
@@ -135,9 +119,9 @@ const TabIndicator = ({
         backgroundColor="surface.background.gray.intense"
         style={{
           ...transitionProps,
-          width: `${activeElementDimensions.width}px`,
-          height: `${activeElementDimensions.height}px`,
-          transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`,
+          transform: `translate(${dimensions.x}px, ${dimensions.y}px)`,
         }}
         {...metaAttribute({ name: MetaConstants.TabIndicator })}
       />
@@ -154,8 +138,8 @@ const TabIndicator = ({
       backgroundColor="interactive.border.neutral.highlighted"
       style={{
         ...transitionProps,
-        width: `${activeElementDimensions.width}px`,
-        transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
+        width: `${dimensions.width}px`,
+        transform: `translate(${dimensions.x}px, ${dimensions.y}px)`,
       }}
       {...metaAttribute({ name: MetaConstants.TabIndicator })}
     />
