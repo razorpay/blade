@@ -21,228 +21,258 @@ exports[`<BarChart /> should render BarChart with custom colors 1`] = `
       data-blade-component="bar-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 800px; height: 800px; min-width: 0;"
+        class="recharts-wrapper"
+        height="800"
+        style="position: relative; cursor: default; width: 800px; height: 800px;"
+        width="800"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          height="800"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 800 800"
+          width="800"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 800px; height: 800px;"
-          >
-            <svg
-              class="recharts-surface"
-              height="800"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 800 800"
-              width="800"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts18-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts18-clip"
-                >
-                  <rect
-                    height="790"
-                    width="790"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="790"
+                width="790"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r7:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r7:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="53"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="53"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="250.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="250.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="448"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="448"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="645.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="645.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="53"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="53"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="250.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="250.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="448"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="448"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="645.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="645.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r8:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r8:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="104"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="104"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="301.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="301.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="499"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="499"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="696.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(220, 100%, 73%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="696.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="104"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="104"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="301.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="301.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="499"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="499"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="696.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(220, 100%, 73%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="696.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -270,321 +300,351 @@ exports[`<BarChart /> should render BarChart with multiple bars 1`] = `
       data-blade-component="bar-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 800px; height: 800px; min-width: 0;"
+        class="recharts-wrapper"
+        height="800"
+        style="position: relative; cursor: default; width: 800px; height: 800px;"
+        width="800"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          height="800"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 800 800"
+          width="800"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 800px; height: 800px;"
-          >
-            <svg
-              class="recharts-surface"
-              height="800"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 800 800"
-              width="800"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts4-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts4-clip"
-                >
-                  <rect
-                    height="790"
-                    width="790"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="790"
+                width="790"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r1:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r1:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="28"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="28"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="225.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="225.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="423"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="423"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="620.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="620.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="28"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="28"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="225.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="225.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="423"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="423"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="620.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="620.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r2:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r2:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r3:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r3:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(46, 86%, 83%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="130"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(44, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="130"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(46, 86%, 83%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="327.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(44, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="327.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(46, 86%, 83%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="525"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(44, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="525"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(46, 86%, 83%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="722.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(44, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="722.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(46, 86%, 83%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="130"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(44, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="130"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(46, 86%, 83%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="327.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(44, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="327.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(46, 86%, 83%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="525"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(44, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="525"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(46, 86%, 83%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="722.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(44, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="722.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -612,135 +672,165 @@ exports[`<BarChart /> should render basic BarChart with single bar 1`] = `
       data-blade-component="bar-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 800px; height: 800px; min-width: 0;"
+        class="recharts-wrapper"
+        height="800"
+        style="position: relative; cursor: default; width: 800px; height: 800px;"
+        width="800"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          height="800"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 800 800"
+          width="800"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 800px; height: 800px;"
-          >
-            <svg
-              class="recharts-surface"
-              height="800"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 800 800"
-              width="800"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts1-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts1-clip"
-                >
-                  <rect
-                    height="790"
-                    width="790"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="790"
+                width="790"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r0:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r0:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(214, 40%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(211, 23%, 45%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(214, 40%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(211, 23%, 45%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(214, 40%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(211, 23%, 45%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(214, 40%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(211, 23%, 45%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(214, 40%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(211, 23%, 45%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(214, 40%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(211, 23%, 45%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(214, 40%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(211, 23%, 45%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(214, 40%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(211, 23%, 45%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -836,7 +926,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  cursor: default;
+  cursor: pointer;
   opacity: 1;
   background: none;
   border: none;
@@ -845,12 +935,12 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
 
 .c4.c4.c4.c4.c4 p {
   color: hsla(211,22%,56%,1);
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: color 160ms cubic-bezier(0,0,0,0);
+  transition: color 160ms cubic-bezier(0,0,0,0);
 }
 
 .c4.c4.c4.c4.c4:hover p {
-  color: hsla(211,22%,56%,1);
+  color: hsla(212,39%,16%,1);
 }
 
 <div>
@@ -863,647 +953,725 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
       data-blade-component="bar-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 800px; height: 800px; min-width: 0;"
+        class="recharts-wrapper"
+        height="800"
+        style="position: relative; cursor: default; width: 800px; height: 800px;"
+        width="800"
       >
         <div
-          style="width: 0px; height: 0px; overflow: visible;"
+          class="recharts-tooltip-wrapper"
+          style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
+          tabindex="-1"
+          xmlns="http://www.w3.org/1999/xhtml"
         >
           <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 800px; height: 800px;"
+            style="background-color: rgb(0, 0, 0); border-radius: 8px; border: 1px solid hsla(211, 20%, 52%, 0.18); padding: 12px;"
           >
+            <h6
+              class="c2"
+              data-blade-component="heading"
+            />
             <div
-              class="recharts-tooltip-wrapper"
-              style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
-              tabindex="-1"
-              xmlns="http://www.w3.org/1999/xhtml"
+              class=""
+              data-blade-component="box"
+            />
+          </div>
+        </div>
+        <div
+          class="recharts-legend-wrapper"
+          style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 8px;"
+        >
+          <div
+            class="c3"
+            data-blade-component="box"
+          >
+            <button
+              class="c4"
+              type="button"
             >
               <div
-                style="background-color: rgb(0, 0, 0); border-radius: 8px; border: 1px solid hsla(211, 20%, 52%, 0.18); padding: 12px;"
-              >
-                <h6
-                  class="c2"
-                  data-blade-component="heading"
-                />
-                <div
-                  class=""
-                  data-blade-component="box"
-                />
-              </div>
-            </div>
-            <div
-              class="recharts-legend-wrapper"
-              style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 8px;"
-            >
-              <div
-                class="c3"
+                class="c5"
                 data-blade-component="box"
               >
-                <button
-                  class="c4"
-                  type="button"
+                <span
+                  style="background-color: rgb(0, 0, 0); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
+                />
+                <p
+                  class="c6"
+                  data-blade-component="text"
                 >
-                  <div
-                    class="c5"
-                    data-blade-component="box"
-                  >
-                    <span
-                      style="background-color: rgb(0, 0, 0); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
-                    />
-                    <p
-                      class="c6"
-                      data-blade-component="text"
-                    >
-                      Profit
-                    </p>
-                  </div>
-                </button>
-                <button
-                  class="c4"
-                  type="button"
-                >
-                  <div
-                    class="c5"
-                    data-blade-component="box"
-                  >
-                    <span
-                      style="background-color: rgb(46, 46, 46); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
-                    />
-                    <p
-                      class="c6"
-                      data-blade-component="text"
-                    >
-                      Sales
-                    </p>
-                  </div>
-                </button>
+                  Profit
+                </p>
               </div>
-            </div>
-            <svg
-              class="recharts-surface"
-              height="800"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 800 800"
-              width="800"
+            </button>
+            <button
+              class="c4"
+              type="button"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts23-clip"
-                >
-                  <rect
-                    height="767.5"
-                    width="730"
-                    x="65"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
-              <g
-                class="recharts-cartesian-grid"
+              <div
+                class="c5"
+                data-blade-component="box"
               >
-                <g
-                  class="recharts-cartesian-grid-horizontal"
+                <span
+                  style="background-color: rgb(46, 46, 46); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
+                />
+                <p
+                  class="c6"
+                  data-blade-component="text"
                 >
-                  <line
-                    fill="none"
-                    height="767.5"
-                    stroke="hsla(211, 20%, 52%, 0.18)"
-                    width="730"
-                    x="65"
-                    x1="65"
-                    x2="795"
-                    y="5"
-                    y1="772.5"
-                    y2="772.5"
-                  />
-                  <line
-                    fill="none"
-                    height="767.5"
-                    stroke="hsla(211, 20%, 52%, 0.18)"
-                    width="730"
-                    x="65"
-                    x1="65"
-                    x2="795"
-                    y="5"
-                    y1="580.625"
-                    y2="580.625"
-                  />
-                  <line
-                    fill="none"
-                    height="767.5"
-                    stroke="hsla(211, 20%, 52%, 0.18)"
-                    width="730"
-                    x="65"
-                    x1="65"
-                    x2="795"
-                    y="5"
-                    y1="388.75"
-                    y2="388.75"
-                  />
-                  <line
-                    fill="none"
-                    height="767.5"
-                    stroke="hsla(211, 20%, 52%, 0.18)"
-                    width="730"
-                    x="65"
-                    x1="65"
-                    x2="795"
-                    y="5"
-                    y1="196.875"
-                    y2="196.875"
-                  />
-                  <line
-                    fill="none"
-                    height="767.5"
-                    stroke="hsla(211, 20%, 52%, 0.18)"
-                    width="730"
-                    x="65"
-                    x1="65"
-                    x2="795"
-                    y="5"
-                    y1="5"
-                    y2="5"
-                  />
-                </g>
-              </g>
+                  Sales
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+        <svg
+          class="recharts-surface"
+          height="800"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 800 800"
+          width="800"
+        >
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-cartesian-grid"
+            >
               <g
-                class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+                class="recharts-cartesian-grid-horizontal"
               >
                 <line
-                  class="recharts-cartesian-axis-line"
                   fill="none"
-                  height="22.5"
-                  orientation="bottom"
+                  height="767.5"
                   stroke="hsla(211, 20%, 52%, 0.18)"
                   width="730"
                   x="65"
                   x1="65"
                   x2="795"
-                  y="772.5"
+                  y="5"
                   y1="772.5"
                   y2="772.5"
                 />
+                <line
+                  fill="none"
+                  height="767.5"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="730"
+                  x="65"
+                  x1="65"
+                  x2="795"
+                  y="5"
+                  y1="580.625"
+                  y2="580.625"
+                />
+                <line
+                  fill="none"
+                  height="767.5"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="730"
+                  x="65"
+                  x1="65"
+                  x2="795"
+                  y="5"
+                  y1="388.75"
+                  y2="388.75"
+                />
+                <line
+                  fill="none"
+                  height="767.5"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="730"
+                  x="65"
+                  x1="65"
+                  x2="795"
+                  y="5"
+                  y1="196.875"
+                  y2="196.875"
+                />
+                <line
+                  fill="none"
+                  height="767.5"
+                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  width="730"
+                  x="65"
+                  x1="65"
+                  x2="795"
+                  y="5"
+                  y1="5"
+                  y2="5"
+                />
+              </g>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts23-clip"
+            >
+              <rect
+                height="767.5"
+                width="730"
+                x="65"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r9:"
+            >
+              <g
+                class="recharts-layer recharts-bar-rectangles"
+              >
                 <g
-                  class="recharts-cartesian-axis-ticks"
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="106"
+                      y="773.8333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="106"
+                      y="773.8333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="288.5"
+                      y="773.8333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="288.5"
+                      y="773.8333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="471"
+                      y="773.8333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="471"
+                      y="773.8333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="653.5"
+                      y="773.8333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="653.5"
+                      y="773.8333333333334"
+                    />
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:ra:"
+            >
+              <g
+                class="recharts-layer recharts-bar-rectangles"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="157"
+                      y="773.8333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="157"
+                      y="773.8333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="339.5"
+                      y="773.8333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="339.5"
+                      y="773.8333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="522"
+                      y="773.8333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="522"
+                      y="773.8333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="704.5"
+                      y="773.8333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="704.5"
+                      y="773.8333333333334"
+                    />
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+            >
+              <line
+                angle="0"
+                class="recharts-cartesian-axis-line"
+                fill="none"
+                height="22.5"
+                orientation="bottom"
+                stroke="hsla(211, 20%, 52%, 0.18)"
+                width="730"
+                x="65"
+                x1="65"
+                x2="795"
+                y="772.5"
+                y1="772.5"
+                y2="772.5"
+              />
+              <g
+                class="recharts-cartesian-axis-ticks recharts-xAxis-ticks"
+              >
+                <g
+                  class="recharts-cartesian-axis-tick-lines recharts-xAxis-tick-lines"
                 >
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
-                  >
-                    <g
-                      transform="translate(156.25,780.5)"
-                    >
-                      <text
-                        fill="hsla(211, 22%, 56%, 1)"
-                        font-family=""Inter", "Inter Fallback Arial", Arial"
-                        font-size="12"
-                        font-weight="400"
-                        style="letter-spacing: 0;"
-                        text-anchor="middle"
-                        x="0"
-                        y="0"
-                      >
-                        <tspan
-                          dy="8"
-                          x="0"
-                        >
-                          Jan
-                        </tspan>
-                      </text>
-                    </g>
-                  </g>
+                  />
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
-                  >
-                    <g
-                      transform="translate(338.75,780.5)"
-                    >
-                      <text
-                        fill="hsla(211, 22%, 56%, 1)"
-                        font-family=""Inter", "Inter Fallback Arial", Arial"
-                        font-size="12"
-                        font-weight="400"
-                        style="letter-spacing: 0;"
-                        text-anchor="middle"
-                        x="0"
-                        y="0"
-                      >
-                        <tspan
-                          dy="8"
-                          x="0"
-                        >
-                          Feb
-                        </tspan>
-                      </text>
-                    </g>
-                  </g>
+                  />
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
-                  >
-                    <g
-                      transform="translate(521.25,780.5)"
-                    >
-                      <text
-                        fill="hsla(211, 22%, 56%, 1)"
-                        font-family=""Inter", "Inter Fallback Arial", Arial"
-                        font-size="12"
-                        font-weight="400"
-                        style="letter-spacing: 0;"
-                        text-anchor="middle"
-                        x="0"
-                        y="0"
-                      >
-                        <tspan
-                          dy="8"
-                          x="0"
-                        >
-                          Mar
-                        </tspan>
-                      </text>
-                    </g>
-                  </g>
+                  />
                   <g
                     class="recharts-layer recharts-cartesian-axis-tick"
-                  >
-                    <g
-                      transform="translate(703.75,780.5)"
-                    >
-                      <text
-                        fill="hsla(211, 22%, 56%, 1)"
-                        font-family=""Inter", "Inter Fallback Arial", Arial"
-                        font-size="12"
-                        font-weight="400"
-                        style="letter-spacing: 0;"
-                        text-anchor="middle"
-                        x="0"
-                        y="0"
-                      >
-                        <tspan
-                          dy="8"
-                          x="0"
-                        >
-                          Apr
-                        </tspan>
-                      </text>
-                    </g>
-                  </g>
+                  />
                 </g>
+              </g>
+              <text
+                fill="hsla(211, 22%, 56%, 1)"
+                font-family=""Inter", "Inter Fallback Arial", Arial"
+                font-size="12"
+                font-weight="400"
+                letter-spacing="0"
+                text-anchor="middle"
+                x="398"
+                y="811"
+              />
+            </g>
+            <g
+              class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+            >
+              <line
+                angle="0"
+                class="recharts-cartesian-axis-line"
+                fill="none"
+                height="767.5"
+                orientation="left"
+                stroke="hsla(211, 20%, 52%, 0.18)"
+                width="60"
+                x="5"
+                x1="65"
+                x2="65"
+                y="5"
+                y1="5"
+                y2="772.5"
+              />
+              <g
+                class="recharts-cartesian-axis-ticks recharts-yAxis-ticks"
+              >
+                <g
+                  class="recharts-cartesian-axis-tick-lines recharts-yAxis-tick-lines"
+                >
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  />
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  />
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  />
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  />
+                  <g
+                    class="recharts-layer recharts-cartesian-axis-tick"
+                  />
+                </g>
+              </g>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-cartesian-axis-tick-labels recharts-xAxis-tick-labels"
+            >
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
+                <g
+                  transform="translate(156.25,780.5)"
+                >
+                  <text
+                    fill="hsla(211, 22%, 56%, 1)"
+                    font-family=""Inter", "Inter Fallback Arial", Arial"
+                    font-size="12"
+                    font-weight="400"
+                    style="letter-spacing: 0;"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    <tspan
+                      dy="8"
+                      x="0"
+                    >
+                      Jan
+                    </tspan>
+                  </text>
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
+                <g
+                  transform="translate(338.75,780.5)"
+                >
+                  <text
+                    fill="hsla(211, 22%, 56%, 1)"
+                    font-family=""Inter", "Inter Fallback Arial", Arial"
+                    font-size="12"
+                    font-weight="400"
+                    style="letter-spacing: 0;"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    <tspan
+                      dy="8"
+                      x="0"
+                    >
+                      Feb
+                    </tspan>
+                  </text>
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
+                <g
+                  transform="translate(521.25,780.5)"
+                >
+                  <text
+                    fill="hsla(211, 22%, 56%, 1)"
+                    font-family=""Inter", "Inter Fallback Arial", Arial"
+                    font-size="12"
+                    font-weight="400"
+                    style="letter-spacing: 0;"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    <tspan
+                      dy="8"
+                      x="0"
+                    >
+                      Mar
+                    </tspan>
+                  </text>
+                </g>
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
+                <g
+                  transform="translate(703.75,780.5)"
+                >
+                  <text
+                    fill="hsla(211, 22%, 56%, 1)"
+                    font-family=""Inter", "Inter Fallback Arial", Arial"
+                    font-size="12"
+                    font-weight="400"
+                    style="letter-spacing: 0;"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    <tspan
+                      dy="8"
+                      x="0"
+                    >
+                      Apr
+                    </tspan>
+                  </text>
+                </g>
+              </g>
+            </g>
+            <g
+              class="recharts-cartesian-axis-tick-labels recharts-yAxis-tick-labels"
+            >
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
                 <text
+                  class="recharts-text recharts-cartesian-axis-tick-value"
                   fill="hsla(211, 22%, 56%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
-                  letter-spacing="0"
-                  text-anchor="middle"
-                  x="398"
-                  y="811"
-                />
-              </g>
-              <g
-                class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
-              >
-                <line
-                  class="recharts-cartesian-axis-line"
-                  fill="none"
                   height="767.5"
+                  letter-spacing="0"
                   orientation="left"
-                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  stroke="none"
+                  text-anchor="end"
                   width="60"
-                  x="5"
-                  x1="65"
-                  x2="65"
+                  x="57"
+                  y="772.5"
+                >
+                  <tspan
+                    dy="0.355em"
+                    x="57"
+                  >
+                    0
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
+                <text
+                  class="recharts-text recharts-cartesian-axis-tick-value"
+                  fill="hsla(211, 22%, 56%, 1)"
+                  font-family=""Inter", "Inter Fallback Arial", Arial"
+                  font-size="12"
+                  font-weight="400"
+                  height="767.5"
+                  letter-spacing="0"
+                  orientation="left"
+                  stroke="none"
+                  text-anchor="end"
+                  width="60"
+                  x="57"
+                  y="580.625"
+                >
+                  <tspan
+                    dy="0.355em"
+                    x="57"
+                  >
+                    1500
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
+                <text
+                  class="recharts-text recharts-cartesian-axis-tick-value"
+                  fill="hsla(211, 22%, 56%, 1)"
+                  font-family=""Inter", "Inter Fallback Arial", Arial"
+                  font-size="12"
+                  font-weight="400"
+                  height="767.5"
+                  letter-spacing="0"
+                  orientation="left"
+                  stroke="none"
+                  text-anchor="end"
+                  width="60"
+                  x="57"
+                  y="388.75"
+                >
+                  <tspan
+                    dy="0.355em"
+                    x="57"
+                  >
+                    3000
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
+                <text
+                  class="recharts-text recharts-cartesian-axis-tick-value"
+                  fill="hsla(211, 22%, 56%, 1)"
+                  font-family=""Inter", "Inter Fallback Arial", Arial"
+                  font-size="12"
+                  font-weight="400"
+                  height="767.5"
+                  letter-spacing="0"
+                  orientation="left"
+                  stroke="none"
+                  text-anchor="end"
+                  width="60"
+                  x="57"
+                  y="196.875"
+                >
+                  <tspan
+                    dy="0.355em"
+                    x="57"
+                  >
+                    4500
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="recharts-layer recharts-cartesian-axis-tick-label"
+              >
+                <text
+                  class="recharts-text recharts-cartesian-axis-tick-value"
+                  fill="hsla(211, 22%, 56%, 1)"
+                  font-family=""Inter", "Inter Fallback Arial", Arial"
+                  font-size="12"
+                  font-weight="400"
+                  height="767.5"
+                  letter-spacing="0"
+                  orientation="left"
+                  stroke="none"
+                  text-anchor="end"
+                  width="60"
+                  x="57"
                   y="5"
-                  y1="5"
-                  y2="772.5"
-                />
-                <g
-                  class="recharts-cartesian-axis-ticks"
                 >
-                  <g
-                    class="recharts-layer recharts-cartesian-axis-tick"
+                  <tspan
+                    dy="0.355em"
+                    x="57"
                   >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="767.5"
-                      letter-spacing="0"
-                      orientation="left"
-                      stroke="none"
-                      text-anchor="end"
-                      width="60"
-                      x="57"
-                      y="772.5"
-                    >
-                      <tspan
-                        dy="0.355em"
-                        x="57"
-                      >
-                        0
-                      </tspan>
-                    </text>
-                  </g>
-                  <g
-                    class="recharts-layer recharts-cartesian-axis-tick"
-                  >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="767.5"
-                      letter-spacing="0"
-                      orientation="left"
-                      stroke="none"
-                      text-anchor="end"
-                      width="60"
-                      x="57"
-                      y="580.625"
-                    >
-                      <tspan
-                        dy="0.355em"
-                        x="57"
-                      >
-                        1500
-                      </tspan>
-                    </text>
-                  </g>
-                  <g
-                    class="recharts-layer recharts-cartesian-axis-tick"
-                  >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="767.5"
-                      letter-spacing="0"
-                      orientation="left"
-                      stroke="none"
-                      text-anchor="end"
-                      width="60"
-                      x="57"
-                      y="388.75"
-                    >
-                      <tspan
-                        dy="0.355em"
-                        x="57"
-                      >
-                        3000
-                      </tspan>
-                    </text>
-                  </g>
-                  <g
-                    class="recharts-layer recharts-cartesian-axis-tick"
-                  >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="767.5"
-                      letter-spacing="0"
-                      orientation="left"
-                      stroke="none"
-                      text-anchor="end"
-                      width="60"
-                      x="57"
-                      y="196.875"
-                    >
-                      <tspan
-                        dy="0.355em"
-                        x="57"
-                      >
-                        4500
-                      </tspan>
-                    </text>
-                  </g>
-                  <g
-                    class="recharts-layer recharts-cartesian-axis-tick"
-                  >
-                    <text
-                      class="recharts-text recharts-cartesian-axis-tick-value"
-                      fill="hsla(211, 22%, 56%, 1)"
-                      font-family=""Inter", "Inter Fallback Arial", Arial"
-                      font-size="12"
-                      font-weight="400"
-                      height="767.5"
-                      letter-spacing="0"
-                      orientation="left"
-                      stroke="none"
-                      text-anchor="end"
-                      width="60"
-                      x="57"
-                      y="5"
-                    >
-                      <tspan
-                        dy="0.355em"
-                        x="57"
-                      >
-                        6000
-                      </tspan>
-                    </text>
-                  </g>
-                </g>
+                    6000
+                  </tspan>
+                </text>
               </g>
-              <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r9:"
-              >
-                <g
-                  class="recharts-layer recharts-bar-rectangles"
-                >
-                  <g
-                    class="recharts-layer"
-                  >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="106"
-                        y="773.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="106"
-                        y="773.8333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="288.5"
-                        y="773.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="288.5"
-                        y="773.8333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="471"
-                        y="773.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="471"
-                        y="773.8333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="653.5"
-                        y="773.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="653.5"
-                        y="773.8333333333334"
-                      />
-                    </g>
-                  </g>
-                </g>
-              </g>
-              <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:ra:"
-              >
-                <g
-                  class="recharts-layer recharts-bar-rectangles"
-                >
-                  <g
-                    class="recharts-layer"
-                  >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="157"
-                        y="773.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="157"
-                        y="773.8333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="339.5"
-                        y="773.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="339.5"
-                        y="773.8333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="522"
-                        y="773.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="522"
-                        y="773.8333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="704.5"
-                        y="773.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="704.5"
-                        y="773.8333333333334"
-                      />
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+        </svg>
       </div>
     </div>
   </div>
@@ -1531,321 +1699,351 @@ exports[`<BarChart /> should render stacked BarChart 1`] = `
       data-blade-component="bar-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 800px; height: 800px; min-width: 0;"
+        class="recharts-wrapper"
+        height="800"
+        style="position: relative; cursor: default; width: 800px; height: 800px;"
+        width="800"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          height="800"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 800 800"
+          width="800"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 800px; height: 800px;"
-          >
-            <svg
-              class="recharts-surface"
-              height="800"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 800 800"
-              width="800"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts11-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts11-clip"
-                >
-                  <rect
-                    height="790"
-                    width="790"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="790"
+                width="790"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r4:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r4:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="796.3333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(221, 90%, 92%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="796.3333333333334"
-                      />
-                      <rect
-                        fill="hsla(227, 100%, 59%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="796.3333333333334"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(221, 90%, 92%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(227, 100%, 59%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r5:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r5:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="598.8333333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="598.8333333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="648.2083333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="648.2083333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="697.5833333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="697.5833333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(151, 57%, 91%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="549.4583333333334"
-                      />
-                      <rect
-                        fill="hsla(150, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="549.4583333333334"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(151, 57%, 91%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(150, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-bar"
+              id="recharts-bar-:r6:"
+            >
               <g
-                class="recharts-layer recharts-bar"
-                id="recharts-bar-:r6:"
+                class="recharts-layer recharts-bar-rectangles"
               >
                 <g
-                  class="recharts-layer recharts-bar-rectangles"
+                  class="recharts-layer"
                 >
                   <g
-                    class="recharts-layer"
+                    class="recharts-layer recharts-bar-rectangle"
                   >
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(46, 86%, 83%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="500.0833333333333"
-                      />
-                      <rect
-                        fill="hsla(44, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="79"
-                        y="500.0833333333333"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(46, 86%, 83%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="574.1458333333334"
-                      />
-                      <rect
-                        fill="hsla(44, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="276.5"
-                        y="574.1458333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(46, 86%, 83%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="648.2083333333334"
-                      />
-                      <rect
-                        fill="hsla(44, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="474"
-                        y="648.2083333333334"
-                      />
-                    </g>
-                    <g
-                      class="recharts-layer recharts-bar-rectangle"
-                    >
-                      <rect
-                        fill="hsla(46, 86%, 83%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="426.0208333333333"
-                      />
-                      <rect
-                        fill="hsla(44, 100%, 37%, 1)"
-                        fill-opacity="1"
-                        height="0"
-                        width="49"
-                        x="671.5"
-                        y="426.0208333333333"
-                      />
-                    </g>
+                    <rect
+                      fill="hsla(46, 86%, 83%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(44, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="79"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(46, 86%, 83%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(44, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="276.5"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(46, 86%, 83%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(44, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="474"
+                      y="796.3333333333334"
+                    />
+                  </g>
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  >
+                    <rect
+                      fill="hsla(46, 86%, 83%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
+                    <rect
+                      fill="hsla(44, 100%, 37%, 1)"
+                      fill-opacity="1"
+                      height="0"
+                      width="49"
+                      x="671.5"
+                      y="796.3333333333334"
+                    />
                   </g>
                 </g>
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>

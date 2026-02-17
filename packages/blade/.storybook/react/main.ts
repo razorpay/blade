@@ -28,7 +28,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
-    '@storybook/preset-create-react-app',
+    // '@storybook/preset-create-react-app',
     '@storybook/addon-interactions',
   ],
   framework: {

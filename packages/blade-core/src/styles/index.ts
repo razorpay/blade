@@ -60,6 +60,7 @@ export type {
   AmountHeadingProps,
 } from './Amount';
 
+
 // Form styles
 export {
   labelTextSize,
@@ -120,3 +121,22 @@ export type {
   StyledInputOptions,
   InputVisualsOptions,
 } from './Input';
+export {
+  badgeStyles,
+  getBadgeClasses,
+  getBadgeTemplateClasses,
+  getBadgeIconPaddingClass,
+  badgeContentClass,
+  badgeIconClass,
+  badgeHeight,
+  badgeHorizontalPadding,
+  badgeIconPadding,
+  badgeIconSize,
+  badgeTextSizes,
+  getBadgeTextColorToken,
+  getBadgeIconColorToken,
+} from './Badge';
+export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
+export { dividerStyles, getDividerClasses } from './Divider';
+export type { DividerVariants } from './Divider';
+

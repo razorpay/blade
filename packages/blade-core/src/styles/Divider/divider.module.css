@@ -1,0 +1,100 @@
+/* Base divider styles */
+.divider {
+  border: 0;
+}
+
+/* Orientation variants */
+.horizontal {
+  flex-grow: 1;
+}
+
+.vertical {
+  align-self: stretch;
+}
+
+/* Border style variants */
+.solid {
+  /* Applied dynamically via border position */
+}
+
+.dashed {
+  /* Applied dynamically via border position */
+}
+
+/* Thickness variants for horizontal divider */
+.horizontal.thinner {
+  border-bottom-width: var(--border-width-thinner);
+}
+
+.horizontal.thin {
+  border-bottom-width: var(--border-width-thin);
+}
+
+.horizontal.thick {
+  border-bottom-width: var(--border-width-thick);
+}
+
+.horizontal.thicker {
+  border-bottom-width: var(--border-width-thicker);
+}
+
+/* Thickness variants for vertical divider */
+.vertical.thinner {
+  border-left-width: var(--border-width-thinner);
+}
+
+.vertical.thin {
+  border-left-width: var(--border-width-thin);
+}
+
+.vertical.thick {
+  border-left-width: var(--border-width-thick);
+}
+
+.vertical.thicker {
+  border-left-width: var(--border-width-thicker);
+}
+
+/* Border style for horizontal divider */
+.horizontal.solid {
+  border-bottom-style: solid;
+}
+
+.horizontal.dashed {
+  border-bottom-style: dashed;
+}
+
+/* Border style for vertical divider */
+.vertical.solid {
+  border-left-style: solid;
+}
+
+.vertical.dashed {
+  border-left-style: dashed;
+}
+
+/* Variant colors for horizontal divider */
+.horizontal.normal {
+  border-bottom-color: var(--surface-border-gray-normal);
+}
+
+.horizontal.subtle {
+  border-bottom-color: var(--surface-border-gray-subtle);
+}
+
+.horizontal.muted {
+  border-bottom-color: var(--surface-border-gray-muted);
+}
+
+/* Variant colors for vertical divider */
+.vertical.normal {
+  border-left-color: var(--surface-border-gray-normal);
+}
+
+.vertical.subtle {
+  border-left-color: var(--surface-border-gray-subtle);
+}
+
+.vertical.muted {
+  border-left-color: var(--surface-border-gray-muted);
+}

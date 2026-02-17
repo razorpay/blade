@@ -1,5 +1,97 @@
 # @razorpay/blade
 
+## 12.81.2
+
+### Patch Changes
+
+- 6c65e83b1: fix(Table): hide deselect button when selectionType="none" is set
+  fix(Tabs): tab selection indicator line is not updated when state changes the layout
+
+## 12.81.1
+
+### Patch Changes
+
+- 72a1704ee: feat(blade): expose barSize prop in barChart
+
+## 12.81.0
+
+### Minor Changes
+
+- 84180580d: fix(blade): chart UX improvements and recharts upgrade
+
+  - Updated recharts from 3.1.2 to 3.7.0
+  - BarChart: Fixed unwanted re-animation on tooltip hover
+  - LineChart: Update auto color logic - single data indicator now defaults to gray.moderate
+  - Updated chart documentation
+
+## 12.80.1
+
+### Patch Changes
+
+- a4031566b: fix(blade): added meta attr to step-item and checkbox icon fade component
+
+## 12.80.0
+
+### Minor Changes
+
+- bf83ed9c3: fix(blade): update alert styles
+
+## 12.79.0
+
+### Minor Changes
+
+- 7e66ed45e: feat(DatePicker): add `showClearButton` and `onClearButtonClick` props
+
+  - **`showClearButton`**: When set to `true`, renders a clear icon button in the DatePicker input field. Clicking the button clears the selected date(s).
+  - **`onClearButtonClick`**: Event handler called when the clear button is clicked.
+
+  Example usage:
+
+  ```jsx
+  <DatePicker
+    label="Select date"
+    selectionType="single"
+    showClearButton
+    onClearButtonClick={() => console.log('Cleared!')}
+  />
+  ```
+
+  **Change for FilterChipDatePicker:**
+
+  When using `FilterChipDatePicker` with `selectionType="single"`, clearing the date will now return `null` instead of `[null, null]`. This aligns the clear behavior with the selection type:
+
+  - `selectionType="single"` → clears to `null`
+  - `selectionType="range"` → clears to `[null, null]`
+
+## 12.78.0
+
+### Minor Changes
+
+- ed48d1282: feat: Export FileUploadItem component
+
+## 12.77.0
+
+### Minor Changes
+
+- 10f6912a5: feat(Text): add `textDecorationLine="dotted"` for dotted underline styling (useful for abbreviations/tooltips)
+
+  feat(DatePicker): add `displayFormat` prop with `"compact"` | `"default"` options to control input display when using presets
+
+### Patch Changes
+
+- 29bac6692: fix npm publish
+
+## 12.76.0
+
+### Minor Changes
+
+- 59f65fd46: feat(blade): make legends for other charts clickable
+- 3317dc409: feat(blade): make donut chart responsive
+
+### Patch Changes
+
+- 828302f4d: refactor(blade): update GenUI SDK to use ReactMarkdown instead of Streamdown for React17 compatibility
+
 ## 12.75.0
 
 ### Minor Changes

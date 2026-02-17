@@ -26,6 +26,7 @@ export type IconColor =
   | 'surface.icon.gray.subtle'
   | 'surface.icon.gray.muted'
   | 'surface.icon.gray.disabled'
+  | 'surface.icon.primary.normal'
   | 'surface.icon.staticWhite.normal'
   | 'surface.icon.staticBlack.normal'
   // Feedback icon colors

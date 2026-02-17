@@ -13,6 +13,7 @@ import {
   validateAndParseDateInput,
   stripDelimiters,
 } from './utils';
+import { useDatePickerContext } from './DatePickerContext';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { isReactNative } from '~utils';
@@ -40,10 +41,21 @@ const _DateInput = (
     leadingDropdown,
     tags,
     id,
+    selectedPresetLabel,
+    showClearButton,
+    onClearButtonClick,
     ...textInputProps
   } = props;
+
+  // Use context to check datepicker state - more reliable than prop drilling
+  const datePickerContext = useDatePickerContext();
+  const isPopupOpen = datePickerContext?.isDatePickerBodyOpen ?? false;
+  const displayFormat = datePickerContext?.displayFormat ?? 'default';
+  const isCompactMode = displayFormat === 'compact';
+
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
+  const [isFocused, setIsFocused] = React.useState(false);
   const shouldShowCalendarIcon = !Boolean(leadingDropdown);
 
   // Determine selection type: prefer preset context calculation over props
@@ -165,23 +177,97 @@ const _DateInput = (
     [applyDateValue, isRange],
   );
 
+  const handleFocus = React.useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleBlurWithFocusState = React.useCallback(
+    (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
+      setIsFocused(false);
+      handleBlur(params);
+    },
+    [handleBlur],
+  );
+
+  // Compute input props based on whether we're showing a preset label or date input
+  // DatePicker is "active" when input is focused OR popup is open (from context)
+  // This ensures consistent behavior when focus moves between input and calendar
+  const isDatePickerActive = isFocused || isPopupOpen;
+
+  // Check if there's actually a valid date selection. in range mode we need to check if both dates are not null
+  const hasValidSelection = isRange
+    ? (date as [Date | null, Date | null])?.[0] && (date as [Date | null, Date | null])?.[1]
+    : Boolean(date);
+
+  // Show preset label only when:
+  // 1. displayFormat is 'compact'
+  // 2. There's a preset label to show
+  // 3. There's actually a valid date selection (not cleared)
+  // 4. DatePicker is NOT active (closed and not focused)
+  const showPresetLabel =
+    displayFormat === 'compact' && selectedPresetLabel && hasValidSelection && !isDatePickerActive;
+
+  const getInputDisplayProps = (): {
+    type: 'text' | 'number';
+    value: string;
+    leadingIcon: typeof CalendarIcon | undefined;
+    leading?: React.ReactElement;
+    format: ReturnType<typeof getTextInputFormat> | undefined;
+    validationState: typeof textInputProps.validationState;
+    errorText: string | undefined;
+    onChange: typeof handleInputChange | undefined;
+    onBlur: typeof handleBlurWithFocusState | typeof handleBlur | undefined;
+    onFocus: typeof handleFocus | undefined;
+  } => {
+    if (showPresetLabel) {
+      // Preset label mode: show clean input with just the label (not focused)
+      return {
+        type: 'text',
+        value: selectedPresetLabel,
+        leadingIcon: CalendarIcon,
+        format: undefined,
+        validationState: textInputProps.validationState,
+        errorText: textInputProps.errorText,
+        onChange: handleInputChange,
+        onBlur: handleBlurWithFocusState,
+        onFocus: handleFocus,
+      };
+    }
+
+    // Date input mode: show formatted date with full editing capabilities
+    const dateDisplayValue = isRange
+      ? rangeFormattedValue(inputValue[0], inputValue[1])
+      : inputValue[0];
+    const dateInputFormat = isRange
+      ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
+      : getTextInputFormat(format, false);
+
+    // In compact mode: always show icon instead of dropdown (presets accessed via popup sidebar)
+    // In non-compact mode: show the dropdown as normal
+    // Note: We must conditionally include `leading` only when defined, otherwise `leading: undefined`
+    // would override/hide `leadingIcon` in the TextInput component
+    const showLeadingDropdown = isCompactMode ? undefined : leadingDropdown;
+    const showLeadingIcon = isCompactMode || shouldShowCalendarIcon ? CalendarIcon : undefined;
+
+    return {
+      type: 'number',
+      value: dateDisplayValue,
+      leadingIcon: showLeadingIcon,
+      ...(showLeadingDropdown ? { leading: showLeadingDropdown } : {}),
+      format: dateInputFormat,
+      validationState: validationError ? 'error' : textInputProps.validationState,
+      errorText: textInputProps.errorText ?? validationError,
+      onChange: handleInputChange,
+      onBlur: handleBlurWithFocusState,
+      onFocus: handleFocus,
+    };
+  };
+
   return (
     <TextInput
       {...textInputProps}
       ref={ref}
-      type="number"
-      value={isRange ? rangeFormattedValue(inputValue[0], inputValue[1]) : inputValue[0]}
-      leadingIcon={shouldShowCalendarIcon ? CalendarIcon : undefined}
-      leading={leadingDropdown}
-      format={
-        isRange
-          ? getTextInputFormat(finalInputFormat(inputValue[0], inputValue[1], format), true)
-          : getTextInputFormat(format, false)
-      }
-      validationState={validationError ? 'error' : textInputProps.validationState}
-      errorText={textInputProps.errorText ?? validationError}
-      onChange={handleInputChange}
-      onBlur={handleBlur}
+      {...getInputDisplayProps()}
       onClick={(e) => {
         if (textInputProps.isDisabled) {
           return;
@@ -192,6 +278,8 @@ const _DateInput = (
         // @ts-expect-error
         textInputProps.onKeyDown?.(event);
       }}
+      showClearButton={showClearButton}
+      onClearButtonClick={onClearButtonClick}
     />
   );
 };
@@ -251,6 +339,9 @@ const _DatePickerInput = (
     minDate,
     maxDate,
     effectiveSelectionType,
+    showClearButton,
+    onClearButtonClick,
+    selectedPresetLabel,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -301,6 +392,9 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+          showClearButton={showClearButton}
+          onClearButtonClick={onClearButtonClick}
+          selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
         />
@@ -377,6 +471,9 @@ const _DatePickerInput = (
           minDate={minDate}
           maxDate={maxDate}
           effectiveSelectionType={effectiveSelectionType}
+          showClearButton={showClearButton}
+          onClearButtonClick={onClearButtonClick}
+          selectedPresetLabel={selectedPresetLabel}
           {...props}
           {...referenceProps}
         />
