@@ -63,6 +63,18 @@ export const bladeThemeData = {
     'Carousel/Navigation-Buttons': {
       key: 'e3f78706bf5400999cbca416cf26248ae7d0f66e',
     },
+
+    // Chat Message
+    ChatMessage: {
+      key: '2177b8528fee876a39bf2c3642a278ecd7b33b1a',
+    },
+    'ChatMessage/Left': {
+      key: '2745879c3810c5c907e2b8dd1c578b7b0805fead',
+    },
+    'ChatMessage/Right': {
+      key: 'e01c6482fdb3b3905c648e9c0e6433980a5efa5b',
+    },
+
     Divider: {
       key: '3942574367676524ab7ea045ece704f751984dae',
     },
