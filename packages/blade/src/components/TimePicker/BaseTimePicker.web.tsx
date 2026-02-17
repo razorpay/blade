@@ -222,16 +222,18 @@ const _BaseTimePicker = ({
               {...makeAccessible({ labelledBy: titleId })}
             >
               <BaseBox
-                borderColor="popup.border.subtle"
-                borderWidth="thin"
-                borderStyle="solid"
                 borderRadius="large"
                 overflow="hidden"
+                border="none"
                 style={{
                   ...animationStyles,
                   background: theme.colors.popup.background.gray.moderate,
                   boxShadow: `${theme.elevation.lowRaised}, ${getTimePickerPopupBoxShadow(theme)}`,
                   backdropFilter: `blur(${theme.backdropBlur.low}px)`,
+                  borderTopColor: theme.colors.popup.border.gray.moderate,
+                  borderWidth: 'none',
+                  borderTopWidth: theme.border.width.thin,
+                  borderTopStyle: 'solid',
                 }}
               >
                 {content}
