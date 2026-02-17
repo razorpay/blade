@@ -99,7 +99,7 @@ const tableToolbar = {
   backgroundColorMotionEasing: 'easing.standard',
   backgroundColorMotionDuration: 'duration.xquick',
   minHeight: size[37], // 37px to accommodate 1px border, matching TableHeader height
-  padding: ['spacing.3', 'spacing.4'],
+  padding: ['spacing.3', 'spacing.3', 'spacing.3', 'spacing.4'],
 } as const;
 
 const tablePagination = {

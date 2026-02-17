@@ -566,7 +566,7 @@ const _Table = <Item,>({
           colorScheme={colorScheme}
           flex={1}
           position="relative"
-          borderRadius="xlarge"
+          borderRadius="medium"
           // Clip content to the rounded shape so the border is visible at corners (otherwise inner content covers them)
           overflow="hidden"
           {...getStyledProps(rest)}
