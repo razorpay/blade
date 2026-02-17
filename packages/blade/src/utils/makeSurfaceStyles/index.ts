@@ -5,4 +5,4 @@ export {
   type SurfaceBoxShadow,
   type SurfaceGradients,
   type SurfaceGradientColors,
-} from './makeSurfaceBoxShadow';
+} from './makeSurfaceStyles';

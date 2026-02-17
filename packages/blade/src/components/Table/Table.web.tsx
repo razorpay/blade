@@ -32,7 +32,6 @@ import type {
 } from './types';
 import { getTableBodyStyles } from './commonStyles';
 import { makeBorderSize, makeMotionTime } from '~utils';
-import { getSurfaceBoxShadowString } from '~utils/makeSurfaceBoxShadow';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
@@ -44,7 +43,7 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
-import type { ColorSchemeNames } from '~tokens/theme';
+import { TableSurface } from './TableSurface.web';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -146,12 +145,6 @@ const RefreshWrapper = styled(BaseBox)<{
     }`,
   };
 });
-
-const TableWrapper = styled(BaseBox)<{ $colorScheme: ColorSchemeNames }>(
-  ({ theme, $colorScheme }) => ({
-    boxShadow: getSurfaceBoxShadowString(theme, $colorScheme),
-  }),
-);
 
 const _Table = <Item,>({
   children,
@@ -569,12 +562,10 @@ const _Table = <Item,>({
           <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
         </BaseBox>
       ) : (
-        <TableWrapper
-          $colorScheme={colorScheme}
+        <TableSurface
+          colorScheme={colorScheme}
           flex={1}
           position="relative"
-          borderWidth="thin"
-          borderColor="surface.border.gray.muted"
           borderRadius="xlarge"
           // Clip content to the rounded shape so the border is visible at corners (otherwise inner content covers them)
           overflow="hidden"
@@ -626,7 +617,7 @@ const _Table = <Item,>({
             {children}
           </StyledReactTable>
           {pagination}
-        </TableWrapper>
+        </TableSurface>
       )}
     </TableContext.Provider>
   );

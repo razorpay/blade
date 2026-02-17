@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { size } from '~tokens/global';
 import type { ColorSchemeNames } from '~tokens/theme';
 import { makeSpace } from '~utils';
-import { getSurfaceBoxShadowString, getSurfaceGradients } from '~utils/makeSurfaceBoxShadow';
+import { getSurfaceBoxShadowString, getSurfaceGradients } from '~utils/makeSurfaceStyles';
 import BaseBox from '~components/Box/BaseBox';
 
 type CardSurfaceProps = {
