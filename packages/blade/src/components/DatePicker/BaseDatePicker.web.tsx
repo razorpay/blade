@@ -588,12 +588,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                       <BaseBox
                         display="flex"
                         flexDirection="row"
-                        borderColor="surface.border.gray.subtle"
-                        borderWidth="thin"
-                        borderStyle="solid"
                         borderRadius="medium"
                         overflow="hidden"
                         minWidth="320px"
+                        border="none"
                         style={{
                           ...animationStyles,
                           background: theme.colors.popup.background.gray.moderate,
@@ -601,6 +599,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                             theme,
                           )}`,
                           backdropFilter: `blur(${theme.backdropBlur.low}px)`,
+                          borderTopColor: theme.colors.popup.border.gray.moderate,
+                          borderWidth: 'none',
+                          borderTopWidth: theme.border.width.thin,
+                          borderTopStyle: 'solid',
                         }}
                       >
                         {content}
