@@ -111,7 +111,7 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
   const topNavContext = useTopNavContext();
   return (
     <BaseBox
-      alignSelf="end"
+      alignSelf="flex-start"
       display="flex"
       gap="spacing.3"
       alignItems="center"
