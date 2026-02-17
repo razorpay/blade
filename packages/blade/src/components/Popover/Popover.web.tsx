@@ -21,7 +21,9 @@ import { PopoverContent } from './PopoverContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { PopoverContext } from './PopoverContext';
 import { componentIds } from './componentIds';
-import { useTheme } from '~components/BladeProvider';
+import { BladeProvider, useTheme } from '~components/BladeProvider';
+import { useTopNavContext } from '~components/TopNav/TopNavContext';
+import { bladeTheme } from '~tokens/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
@@ -53,6 +55,7 @@ const _Popover = ({
   ...rest
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
+  const topNavContext = useTopNavContext();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const arrowRef = React.useRef<SVGSVGElement>(null);
   const titleId = useId('popover-title');
@@ -155,34 +158,65 @@ const _Popover = ({
               modal={true}
               guards={true}
             >
-              <BaseBox
-                ref={refs.setFloating}
-                style={floatingStyles}
-                // TODO: Tokenize zIndex values
-                zIndex={zIndex}
-                {...getFloatingProps()}
-                {...metaAttribute({ name: MetaConstants.Popover })}
-                {...makeAccessible({ labelledBy: titleId })}
-                {...makeAnalyticsAttribute(rest)}
-              >
-                <PopoverContent
-                  title={title}
-                  titleLeading={titleLeading}
-                  footer={footer}
-                  style={styles}
-                  arrow={
-                    <PopupArrow
-                      ref={arrowRef}
-                      context={context}
-                      width={ARROW_WIDTH}
-                      height={ARROW_HEIGHT}
-                      fillColor={theme.colors.popup.background.gray.moderate}
-                    />
-                  }
+              {topNavContext ? (
+                <BladeProvider themeTokens={bladeTheme} colorScheme={topNavContext.colorScheme}>
+                  <BaseBox
+                    ref={refs.setFloating}
+                    style={floatingStyles}
+                    zIndex={zIndex}
+                    {...getFloatingProps()}
+                    {...metaAttribute({ name: MetaConstants.Popover })}
+                    {...makeAccessible({ labelledBy: titleId })}
+                    {...makeAnalyticsAttribute(rest)}
+                  >
+                    <PopoverContent
+                      title={title}
+                      titleLeading={titleLeading}
+                      footer={footer}
+                      style={styles}
+                      arrow={
+                        <PopupArrow
+                          ref={arrowRef}
+                          context={context}
+                          width={ARROW_WIDTH}
+                          height={ARROW_HEIGHT}
+                          fillColor={theme.colors.popup.background.gray.moderate}
+                        />
+                      }
+                    >
+                      {content}
+                    </PopoverContent>
+                  </BaseBox>
+                </BladeProvider>
+              ) : (
+                <BaseBox
+                  ref={refs.setFloating}
+                  style={floatingStyles}
+                  zIndex={zIndex}
+                  {...getFloatingProps()}
+                  {...metaAttribute({ name: MetaConstants.Popover })}
+                  {...makeAccessible({ labelledBy: titleId })}
+                  {...makeAnalyticsAttribute(rest)}
                 >
-                  {content}
-                </PopoverContent>
-              </BaseBox>
+                  <PopoverContent
+                    title={title}
+                    titleLeading={titleLeading}
+                    footer={footer}
+                    style={styles}
+                    arrow={
+                      <PopupArrow
+                        ref={arrowRef}
+                        context={context}
+                        width={ARROW_WIDTH}
+                        height={ARROW_HEIGHT}
+                        fillColor={theme.colors.popup.background.gray.moderate}
+                      />
+                    }
+                  >
+                    {content}
+                  </PopoverContent>
+                </BaseBox>
+              )}
             </FloatingFocusManager>
           </OverlayContextReset>
         </FloatingPortal>
