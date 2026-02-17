@@ -1021,6 +1021,153 @@ const ProductUseCase4Template: StoryFn<(props: StoryControlProps) => React.React
 export const ProductUseCase4 = ProductUseCase4Template.bind({});
 ProductUseCase4.storyName = 'Product Usecase: Icon only tabs';
 
+const ShowcaseTabsInstance = ({
+  variant,
+  size,
+  orientation = 'horizontal',
+}: {
+  variant: 'bordered' | 'borderless' | 'filled';
+  size: 'small' | 'medium' | 'large';
+  orientation?: 'horizontal' | 'vertical';
+}): React.ReactElement => {
+  const tabs = ['option1', 'option2', 'option3', 'option4', 'option5'];
+  const disabledTab = 'option3';
+
+  return (
+    <Tabs variant={variant} size={size} orientation={orientation} defaultValue="option1">
+      <TabList>
+        {tabs.map((value) => (
+          <TabItem key={value} value={value} isDisabled={value === disabledTab}>
+            Option
+          </TabItem>
+        ))}
+      </TabList>
+      {tabs.map((value) => (
+        <TabPanel key={value} value={value}>
+          <Box />
+        </TabPanel>
+      ))}
+    </Tabs>
+  );
+};
+
+const ShowcaseFullWidthTabsInstance = ({
+  size,
+  isFullWidthTabItem,
+}: {
+  size: 'small' | 'medium' | 'large';
+  isFullWidthTabItem: boolean;
+}): React.ReactElement => {
+  const tabs = ['option1', 'option2', 'option3'];
+  const disabledTab = 'option3';
+
+  return (
+    <Tabs size={size} isFullWidthTabItem={isFullWidthTabItem} defaultValue="option1">
+      <TabList>
+        {tabs.map((value) => (
+          <TabItem
+            key={value}
+            value={value}
+            leading={SettingsIcon}
+            trailing={<Counter value={3} />}
+            isDisabled={value === disabledTab}
+          >
+            Option
+          </TabItem>
+        ))}
+      </TabList>
+      {tabs.map((value) => (
+        <TabPanel key={value} value={value}>
+          <Box />
+        </TabPanel>
+      ))}
+    </Tabs>
+  );
+};
+
+const showcaseSizes = ['small', 'medium', 'large'] as const;
+const showcaseVariants = ['bordered', 'borderless', 'filled'] as const;
+const capitalize = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1);
+
+const ShowcaseTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
+  if (isReactNative()) {
+    return <Text>Story not available on ReactNative</Text>;
+  }
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.11"
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.7"
+    >
+      {showcaseSizes.map((size) => (
+        <Box key={size} display="flex" flexDirection="column" gap="spacing.7">
+          <Heading size="small">Size: {capitalize(size)}</Heading>
+
+          {/* Horizontal orientation */}
+          <Box display="flex" flexDirection="column" gap="spacing.5">
+            <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+              Horizontal
+            </Text>
+            <Box display="flex" flexDirection="row" gap="spacing.8" flexWrap="wrap">
+              {showcaseVariants.map((variant) => (
+                <Box key={variant} display="flex" flexDirection="column" gap="spacing.3">
+                  <Text size="small" color="surface.text.gray.muted">
+                    {capitalize(variant)}
+                  </Text>
+                  <ShowcaseTabsInstance variant={variant} size={size} orientation="horizontal" />
+                </Box>
+              ))}
+            </Box>
+          </Box>
+
+          {/* Vertical orientation */}
+          <Box display="flex" flexDirection="column" gap="spacing.5">
+            <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+              Vertical
+            </Text>
+            <Box display="flex" flexDirection="row" gap="spacing.8" flexWrap="wrap">
+              {showcaseVariants.map((variant) => (
+                <Box key={variant} display="flex" flexDirection="column" gap="spacing.3">
+                  <Text size="small" color="surface.text.gray.muted">
+                    {capitalize(variant)}
+                  </Text>
+                  <ShowcaseTabsInstance variant={variant} size={size} orientation="vertical" />
+                </Box>
+              ))}
+            </Box>
+          </Box>
+
+          {/* isFullWidthTabItem with leading & trailing */}
+          <Box display="flex" flexDirection="column" gap="spacing.5">
+            <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+              isFullWidthTabItem (with leading & trailing)
+            </Text>
+            <Box display="flex" flexDirection="row" gap="spacing.8" flexWrap="wrap">
+              {[false, true].map((isFullWidth) => (
+                <Box
+                  key={String(isFullWidth)}
+                  display="flex"
+                  flexDirection="column"
+                  gap="spacing.3"
+                  width={isFullWidth ? '100%' : undefined}
+                >
+                  <Text size="small" color="surface.text.gray.muted">
+                    isFullWidthTabItem: {String(isFullWidth)}
+                  </Text>
+                  <ShowcaseFullWidthTabsInstance size={size} isFullWidthTabItem={isFullWidth} />
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
 const DelayedTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   const [isLayoutReady, setIsLayoutReady] = React.useState(false);
 
@@ -1070,6 +1217,16 @@ const DelayedTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElem
       </Box>
     </Box>
   );
+};
+
+export const Showcase = ShowcaseTemplate.bind({});
+Showcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive visual showcase of all Tabs variants (bordered, borderless, filled), sizes (small, medium, large), and orientations (horizontal, vertical).',
+    },
+  },
 };
 
 export const DelayedTabs = DelayedTabsTemplate.bind({});
