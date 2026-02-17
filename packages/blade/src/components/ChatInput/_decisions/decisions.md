@@ -486,13 +486,9 @@ const FullFeaturedChat = () => {
 ## Open Questions
 
 - Should the textarea auto-resize as the user types (grow vertically up to a max height)? Or should it have a fixed height with scroll?
-- Should there be a `maxCharacters` prop for the text input (similar to TextArea)?
-- Should the action bar be extensible via a `toolbar` or `actions` prop for custom action buttons beyond "Upload file" and submit? (e.g. "Use template", "Attach image", etc.)
 - Should the `onSubmit` callback include some kind of `quote` reference so the consumer knows which message was being quoted at the time of submission?
 - What should happen when the user presses `TAB` and there is no suggestion? Should it behave as normal tab (move focus) or be a no-op?
 - ~~Should `isLoading` turn the submit button into a "stop" button that fires an `onStop` callback?~~ **Resolved:** Renamed to `isGenerating` + `onStop`. When `isGenerating` is true, the submit button becomes a stop button that fires `onStop`.
-- Should the ghost suggestion support rich text / partial matching (only completing the rest of the current word) or is it always a full replacement of the input value?
-- Should the suggestion cycling animation pause when the user hovers over the input or starts typing, and resume when they stop?
 
 ## References
 
