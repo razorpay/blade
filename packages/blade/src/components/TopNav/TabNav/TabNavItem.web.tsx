@@ -166,7 +166,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
         >
           {Icon ? (
             <Icon
-              size="large"
+              size="medium"
               color={
                 isActive ? 'surface.icon.staticWhite.normal' : 'surface.icon.staticWhite.subtle'
               }
