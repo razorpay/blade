@@ -28,7 +28,6 @@ const _TablePagination = ({
     totalItems,
     setPaginationRowSize,
     setPaginationType,
-    backgroundColor,
   } = useTableContext();
 
   // Sync pagination type with table context
