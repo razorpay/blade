@@ -67,9 +67,6 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
     padding: `${makeSpace(theme.spacing[2])} ${makeSpace(theme.spacing[1])}`,
     backgroundColor: 'transparent',
     borderColor: isActive ? theme.colors.surface.border.gray.muted : 'transparent',
-    borderStyle: 'solid',
-    borderWidth: makeBorderSize(theme.border.width.thin),
-    borderBottomWidth: 0,
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
@@ -93,13 +90,13 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
 const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }) => {
   return {
     position: 'absolute',
-    top: 0,
+    bottom: 0,
     left: 0,
     right: 0,
     height: makeSpace(theme.spacing[1]),
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
-    backgroundColor: theme.colors.interactive.icon.gray.normal,
+    background: `linear-gradient(90deg, transparent 0%, ${theme.colors.surface.icon.staticWhite.normal} 20%, ${theme.colors.surface.icon.staticWhite.normal} 80.29%, transparent 100%)`,
     pointerEvents: 'none',
     // Animation
     opacity: isActive ? 1 : 0,

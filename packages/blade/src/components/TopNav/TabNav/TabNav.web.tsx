@@ -91,7 +91,7 @@ const TabNav = ({
         display="flex"
         width="100%"
         alignItems="center"
-        alignSelf="end"
+        alignSelf="center"
         position="relative"
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}

@@ -14,7 +14,6 @@ import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/typ
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const TOP_NAV_HEIGHT = size[56];
-const CONTENT_RIGHT_GAP = size[80];
 
 type TopNavProps = {
   children: React.ReactNode;
@@ -72,12 +71,13 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
   return (
     <BaseBox
       flexDirection="row"
-      marginTop="spacing.4"
+      alignSelf="center"
       width={{
         base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
         xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
       }}
       {...metaAttribute({ name: MetaConstants.TopNavBrand })}
+      paddingY="spacing.5"
     >
       <BaseBox width="100%" textAlign="center">
         {children}
@@ -91,8 +91,8 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
     <BaseBox
       display="flex"
       alignItems="center"
-      alignSelf="end"
-      paddingRight={{ base: 'spacing.0', m: makeSize(CONTENT_RIGHT_GAP) }}
+      alignSelf="center"
+      justifyContent="center"
       {...metaAttribute({ name: MetaConstants.TopNavContent })}
     >
       {children}
