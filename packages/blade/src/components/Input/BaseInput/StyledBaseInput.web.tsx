@@ -29,6 +29,7 @@ const getWebInputStyles = (
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
       size: props.$size,
+      padding: props.$padding,
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
       hasLeadingDropdown: props.hasLeadingDropdown,

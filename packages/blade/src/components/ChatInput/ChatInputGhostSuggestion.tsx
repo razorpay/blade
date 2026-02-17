@@ -1,11 +1,11 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { makeMotionTime } from '~utils';
+import { Badge } from '~components/Badge';
+import { ArrowRightIcon } from '~components/Icons';
 import { chatInputSuggestionCycleInterval } from './chatInputTokens';
 import BaseBox from '~components/Box/BaseBox';
-import { Badge } from '~components/Badge';
 import { Text } from '~components/Typography';
-import { ArrowRightIcon } from '~components/Icons';
 
 const fadeIn = keyframes`
   from { opacity: 0; }
@@ -80,7 +80,7 @@ const ChatInputGhostSuggestion = ({
       pointerEvents="none"
     >
       <SuggestionText $isFadingOut={isFadingOut} display="flex" alignItems="center" gap="spacing.3">
-        <Text color="surface.text.gray.disabled" truncateAfterLines={1}>
+        <Text color="surface.text.gray.muted" truncateAfterLines={1} size="medium">
           {currentSuggestion}
         </Text>
         <Badge color="neutral" size="small" icon={ArrowRightIcon}>

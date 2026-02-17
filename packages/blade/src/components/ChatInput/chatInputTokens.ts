@@ -1,4 +1,4 @@
-const chatInputBorderRadius = 'large' as const;
+const chatInputBorderRadius = 'medium' as const;
 
 const chatInputMaxTextAreaHeight = 200;
 

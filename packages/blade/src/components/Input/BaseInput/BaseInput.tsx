@@ -335,6 +335,16 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     size?: 'xsmall' | 'small' | 'medium' | 'large';
     /**
+     * Overrides the padding of the input independently of the `size` prop.
+     * Accepts CSS values like `"16px"`.
+     */
+    padding?: string;
+    /**
+     * Overrides the border radius of the input independently of the `size` prop.
+     * Accepts border radius tokens like `"large"`.
+     */
+    borderRadius?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+    /**
      * Link button to be rendered at the end of the input field.
      * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
      * Example:
@@ -381,6 +391,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * Used by ChatInput for the action bar.
      */
     bottomContent?: React.ReactNode;
+    /**
+     * Overlay content rendered inside the input row wrapper with position relative.
+     * Used by ChatInput for ghost suggestions.
+     */
+    inputRowOverlay?: React.ReactNode;
   } & TestID &
   Platform.Select<{
     native: {
@@ -783,9 +798,12 @@ const FocusRingWrapper = styled(BaseBox)<{
   className: string;
   shouldAddLimitedFocus: boolean;
   $size: NonNullable<BaseInputProps['size']>;
-}>(({ theme, currentInteraction, isTableInputCell, shouldAddLimitedFocus, $size }) => ({
+  $borderRadius?: BaseInputProps['borderRadius'];
+}>(({ theme, currentInteraction, isTableInputCell, shouldAddLimitedFocus, $size, $borderRadius }) => ({
   borderRadius: makeBorderSize(
-    isTableInputCell ? theme.border.radius.none : theme.border.radius[baseInputBorderRadius[$size]],
+    isTableInputCell
+      ? theme.border.radius.none
+      : theme.border.radius[$borderRadius ?? baseInputBorderRadius[$size]],
   ),
   width: '100%',
   '&:focus-within':
@@ -876,6 +894,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDropdownTrigger,
     isLabelInsideInput,
     size = 'medium',
+    padding,
+    borderRadius,
     trailingButton,
     valueComponentType = 'text',
     isTableInputCell = false,
@@ -891,6 +911,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     children,
     topContent,
     bottomContent,
+    inputRowOverlay,
     ...rest
   },
   ref,
@@ -1046,6 +1067,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           className="focus-ring-wrapper"
           shouldAddLimitedFocus={shouldAddLimitedFocus}
           $size={_size}
+          $borderRadius={borderRadius}
         >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
@@ -1064,6 +1086,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             }}
             maxTagRows={maxTagRows}
             size={_size}
+            borderRadius={borderRadius}
             numberOfLines={numberOfLines}
             onClick={() => {
               if (!isReactNative) {
@@ -1073,7 +1096,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             isTableInputCell={isTableInputCell}
           >
             {(() => {
-              const hasExtraContent = Boolean(topContent || bottomContent);
+              const hasExtraContent = Boolean(topContent || bottomContent || inputRowOverlay);
               const inputRow = (
                 <>
                   <BaseInputVisuals
@@ -1152,6 +1175,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                       autoCapitalize={autoCapitalize}
                       isDropdownTrigger={isDropdownTrigger}
                       $size={_size}
+                      $padding={padding}
                       valueComponentType={valueComponentType}
                       isTableInputCell={isTableInputCell}
                       tabIndex={tabIndex}
@@ -1189,8 +1213,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                       flexDirection="row"
                       width="100%"
                       alignItems={isTextArea ? 'flex-start' : 'center'}
+                      position={inputRowOverlay ? 'relative' : undefined}
                     >
                       {inputRow}
+                      {inputRowOverlay}
                     </BaseBox>
                     {bottomContent}
                   </BaseBox>

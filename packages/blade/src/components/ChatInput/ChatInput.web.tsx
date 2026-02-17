@@ -8,6 +8,8 @@ import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
 import { isFileAccepted } from '~components/FileUpload/isFileAccepted';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
+import { makeSpace } from '~utils';
 import { useControllableState } from '~utils/useControllable';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -39,6 +41,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   },
   ref,
 ) => {
+  const { theme } = useTheme();
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const textareaRef = React.useRef<BladeElementRef>(null);
 
@@ -176,7 +179,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
   // File preview area (topContent)
   const filePreviewContent = hasFiles ? (
-    <BaseBox display="flex" flexDirection="row" gap="spacing.3" padding="spacing.3" overflow="auto">
+    <BaseBox
+      display="flex"
+      flexDirection="row"
+      gap="spacing.3"
+      paddingTop="spacing.5"
+      paddingX="spacing.5"
+      overflow="auto"
+    >
       {files.map((file) => (
         <FileUploadItem
           key={file.id ?? file.name}
@@ -231,29 +241,31 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         onKeyDown={handleKeyDown}
         isDisabled={isDisabled}
         numberOfLines={2}
-        size="large"
+        size="medium"
+        padding={makeSpace(theme.spacing[5])}
+        borderRadius="large"
         topContent={filePreviewContent}
         bottomContent={actionBarContent}
+        inputRowOverlay={
+          showGhostSuggestion && suggestions ? (
+            <BaseBox
+              position="absolute"
+              top="spacing.5"
+              left="spacing.5"
+              right="spacing.5"
+              pointerEvents="none"
+              zIndex={3}
+            >
+              <ChatInputGhostSuggestion
+                suggestions={suggestions}
+                isVisible={showGhostSuggestion}
+                onIndexChange={setActiveSuggestionIndex}
+              />
+            </BaseBox>
+          ) : null
+        }
         {...makeAnalyticsAttribute(rest)}
       />
-
-      {/* Ghost suggestion overlay positioned over the textarea */}
-      {showGhostSuggestion && suggestions ? (
-        <BaseBox
-          position="absolute"
-          top={hasFiles ? undefined : 'spacing.5'}
-          left="spacing.5"
-          right="spacing.5"
-          pointerEvents="none"
-          zIndex={3}
-        >
-          <ChatInputGhostSuggestion
-            suggestions={suggestions}
-            isVisible={showGhostSuggestion}
-            onIndexChange={setActiveSuggestionIndex}
-          />
-        </BaseBox>
-      ) : null}
     </BaseBox>
   );
 };

@@ -27,7 +27,7 @@ const ChatInputActionBar = ({
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
-      padding="spacing.3"
+      padding="spacing.5"
     >
       <Link
         variant="button"
@@ -46,7 +46,7 @@ const ChatInputActionBar = ({
             variant="secondary"
             accessibilityLabel="Stop generation"
             onClick={() => onStop?.()}
-            size="medium"
+            size="small"
           />
         ) : (
           <Button
@@ -56,7 +56,7 @@ const ChatInputActionBar = ({
             accessibilityLabel="Submit"
             onClick={onSubmit}
             isDisabled={isSubmitDisabled || isDisabled}
-            size="medium"
+            size="small"
           />
         )}
       </BaseBox>
