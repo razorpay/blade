@@ -371,6 +371,16 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     valueSuffix?: React.ReactNode;
     children?: ReactNode;
+    /**
+     * Content rendered inside the input wrapper, above the input row.
+     * Used by ChatInput for file previews.
+     */
+    topContent?: React.ReactNode;
+    /**
+     * Content rendered inside the input wrapper, below the input row.
+     * Used by ChatInput for the action bar.
+     */
+    bottomContent?: React.ReactNode;
   } & TestID &
   Platform.Select<{
     native: {
@@ -879,6 +889,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     labelTrailing,
     valueSuffix,
     children,
+    topContent,
+    bottomContent,
     ...rest
   },
   ref,
@@ -1060,108 +1072,132 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             }}
             isTableInputCell={isTableInputCell}
           >
-            <BaseInputVisuals
-              size={_size}
-              leadingIcon={leadingIcon}
-              prefix={prefix}
-              isDisabled={_isDisabled}
-              leadingInteractionElement={leadingInteractionElement}
-              leadingDropDown={leadingDropDown}
-            />
-            <BaseInputTagSlot
-              renderAs={as}
-              tags={tags}
-              isDisabled={_isDisabled}
-              showAllTags={showAllTagsWithAnimation}
-              setFocusOnInput={() => {
-                const innerRef = getInnerMotionRef({ _motionMeta, ref });
-                if (innerRef && !isReactNative && 'current' in innerRef) {
-                  innerRef.current?.focus();
-                }
-              }}
-              labelPrefix={isLabelInsideInput ? label : undefined}
-              isDropdownTrigger={isDropdownTrigger}
-              visibleTagsCountRef={visibleTagsCountRef}
-              handleOnInputClick={(e) => {
-                handleOnClick({ name, value: isReactNative ? value : e });
-              }}
-              setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
-              maxTagRows={maxTagRows}
-              inputWrapperRef={inputWrapperRef}
-              size={_size}
-              numberOfLines={numberOfLines}
-              isTextArea={isTextArea}
-            >
-              <StyledBaseInput
-                as={as}
-                id={inputId}
-                ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any }) as never}
-                name={name}
-                type={type}
-                defaultValue={defaultValue}
-                value={value}
-                placeholder={placeholder}
-                isDisabled={_isDisabled}
-                validationState={validationState}
-                isRequired={_isRequired}
-                handleOnFocus={handleOnFocus}
-                handleOnChange={handleOnChange}
-                handleOnBlur={handleOnBlur}
-                handleOnSubmit={handleOnSubmit}
-                handleOnInput={handleOnInput}
-                handleOnKeyDown={handleOnKeyDown}
-                handleOnClick={handleOnClick}
-                leadingIcon={leadingIcon}
-                prefix={prefix}
-                trailingInteractionElement={trailingInteractionElement}
-                leadingInteractionElement={leadingInteractionElement}
-                suffix={suffix}
-                valueSuffix={valueSuffix}
-                trailingIcon={trailingIcon}
-                maxCharacters={maxCharacters}
-                textAlign={textAlign}
-                // eslint-disable-next-line jsx-a11y/no-autofocus
-                autoFocus={autoFocus}
-                keyboardReturnKeyType={keyboardReturnKeyType}
-                keyboardType={keyboardType}
-                autoCompleteSuggestionType={autoCompleteSuggestionType}
-                accessibilityProps={accessibilityProps}
-                currentInteraction={currentInteraction}
-                setCurrentInteraction={setCurrentInteraction}
-                numberOfLines={numberOfLines}
-                isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
-                hasPopup={hasPopup}
-                hasTags={!!(tags && tags.length > 0)}
-                shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
-                autoCapitalize={autoCapitalize}
-                isDropdownTrigger={isDropdownTrigger}
-                $size={_size}
-                valueComponentType={valueComponentType}
-                isTableInputCell={isTableInputCell}
-                tabIndex={tabIndex}
-                hasLeadingDropdown={Boolean(leadingDropDown)}
-                children={children}
-                color={color}
-                disabledColor={disabledColor}
-                isInsideCounterInput={isInsideCounterInput}
-                {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
-                {...makeAnalyticsAttribute(rest)}
-              />
-            </BaseInputTagSlot>
-            <BaseInputVisuals
-              trailingInteractionElement={trailingInteractionElement}
-              onTrailingInteractionElementClick={onTrailingInteractionElementClick}
-              suffix={suffix}
-              trailingIcon={trailingIcon}
-              isDisabled={_isDisabled}
-              validationState={validationState}
-              trailingButton={trailingButton}
-              size={_size}
-              errorText={errorText}
-              successText={successText}
-              showHintsAsTooltip={showHintsAsTooltip}
-              trailingDropDown={trailingDropDown}
-            />
+            {(() => {
+              const hasExtraContent = Boolean(topContent || bottomContent);
+              const inputRow = (
+                <>
+                  <BaseInputVisuals
+                    size={_size}
+                    leadingIcon={leadingIcon}
+                    prefix={prefix}
+                    isDisabled={_isDisabled}
+                    leadingInteractionElement={leadingInteractionElement}
+                    leadingDropDown={leadingDropDown}
+                  />
+                  <BaseInputTagSlot
+                    renderAs={as}
+                    tags={tags}
+                    isDisabled={_isDisabled}
+                    showAllTags={showAllTagsWithAnimation}
+                    setFocusOnInput={() => {
+                      const innerRef = getInnerMotionRef({ _motionMeta, ref });
+                      if (innerRef && !isReactNative && 'current' in innerRef) {
+                        innerRef.current?.focus();
+                      }
+                    }}
+                    labelPrefix={isLabelInsideInput ? label : undefined}
+                    isDropdownTrigger={isDropdownTrigger}
+                    visibleTagsCountRef={visibleTagsCountRef}
+                    handleOnInputClick={(e) => {
+                      handleOnClick({ name, value: isReactNative ? value : e });
+                    }}
+                    setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
+                    maxTagRows={maxTagRows}
+                    inputWrapperRef={inputWrapperRef}
+                    size={_size}
+                    numberOfLines={numberOfLines}
+                    isTextArea={isTextArea}
+                  >
+                    <StyledBaseInput
+                      as={as}
+                      id={inputId}
+                      ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any }) as never}
+                      name={name}
+                      type={type}
+                      defaultValue={defaultValue}
+                      value={value}
+                      placeholder={placeholder}
+                      isDisabled={_isDisabled}
+                      validationState={validationState}
+                      isRequired={_isRequired}
+                      handleOnFocus={handleOnFocus}
+                      handleOnChange={handleOnChange}
+                      handleOnBlur={handleOnBlur}
+                      handleOnSubmit={handleOnSubmit}
+                      handleOnInput={handleOnInput}
+                      handleOnKeyDown={handleOnKeyDown}
+                      handleOnClick={handleOnClick}
+                      leadingIcon={leadingIcon}
+                      prefix={prefix}
+                      trailingInteractionElement={trailingInteractionElement}
+                      leadingInteractionElement={leadingInteractionElement}
+                      suffix={suffix}
+                      valueSuffix={valueSuffix}
+                      trailingIcon={trailingIcon}
+                      maxCharacters={maxCharacters}
+                      textAlign={textAlign}
+                      // eslint-disable-next-line jsx-a11y/no-autofocus
+                      autoFocus={autoFocus}
+                      keyboardReturnKeyType={keyboardReturnKeyType}
+                      keyboardType={keyboardType}
+                      autoCompleteSuggestionType={autoCompleteSuggestionType}
+                      accessibilityProps={accessibilityProps}
+                      currentInteraction={currentInteraction}
+                      setCurrentInteraction={setCurrentInteraction}
+                      numberOfLines={numberOfLines}
+                      isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
+                      hasPopup={hasPopup}
+                      hasTags={!!(tags && tags.length > 0)}
+                      shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+                      autoCapitalize={autoCapitalize}
+                      isDropdownTrigger={isDropdownTrigger}
+                      $size={_size}
+                      valueComponentType={valueComponentType}
+                      isTableInputCell={isTableInputCell}
+                      tabIndex={tabIndex}
+                      hasLeadingDropdown={Boolean(leadingDropDown)}
+                      children={children}
+                      color={color}
+                      disabledColor={disabledColor}
+                      isInsideCounterInput={isInsideCounterInput}
+                      {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
+                      {...makeAnalyticsAttribute(rest)}
+                    />
+                  </BaseInputTagSlot>
+                  <BaseInputVisuals
+                    trailingInteractionElement={trailingInteractionElement}
+                    onTrailingInteractionElementClick={onTrailingInteractionElementClick}
+                    suffix={suffix}
+                    trailingIcon={trailingIcon}
+                    isDisabled={_isDisabled}
+                    validationState={validationState}
+                    trailingButton={trailingButton}
+                    size={_size}
+                    errorText={errorText}
+                    successText={successText}
+                    showHintsAsTooltip={showHintsAsTooltip}
+                    trailingDropDown={trailingDropDown}
+                  />
+                </>
+              );
+              if (hasExtraContent) {
+                return (
+                  <BaseBox display="flex" flexDirection="column" width="100%">
+                    {topContent}
+                    <BaseBox
+                      display="flex"
+                      flexDirection="row"
+                      width="100%"
+                      alignItems={isTextArea ? 'flex-start' : 'center'}
+                    >
+                      {inputRow}
+                    </BaseBox>
+                    {bottomContent}
+                  </BaseBox>
+                );
+              }
+              return inputRow;
+            })()}
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>
