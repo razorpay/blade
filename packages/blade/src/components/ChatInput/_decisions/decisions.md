@@ -2,7 +2,7 @@
 
 ChatInput is an input component designed for AI chat interfaces. It combines a textarea, file upload, quoted message reference, ghost suggestion autocomplete, and a submit action into a single composable input. Think of it as a "prompt input" -- the primary way users compose and send messages in conversational AI experiences.
 
-<img src="./chatinput-thumbnail.png" width="320px" alt="ChatInput component variants" />
+<img src="./chatinput-thumbnail.png" width="500px" alt="ChatInput component variants" />
 
 ## Design
 
@@ -279,7 +279,7 @@ type ChatInputProps = {
 
 File previews appear above the text area when files are attached. The "Upload file" button is always visible in the action bar.
 
-<img src="./chatinput-basic-usage.png" width="320px" alt="ChatInput basic usage with file uploads" />
+<img src="./chatinput-basic-usage.png" width="500px" alt="ChatInput basic usage with file uploads" />
 
 ```jsx
 import { ChatInput } from '@razorpay/blade/components';
@@ -306,7 +306,7 @@ const ChatWithFiles = () => {
 
 A quoted message renders above the text area with a dismiss button. Useful for replying to or referencing a specific message from the chat.
 
-<img src="./chatinput-quoted-message.png" width="320px" alt="ChatInput with quoted message" />
+<img src="./chatinput-quoted-message.png" width="500px" alt="ChatInput with quoted message" />
 
 ```jsx
 import { ChatInput } from '@razorpay/blade/components';
@@ -332,7 +332,7 @@ const ChatWithQuote = () => {
 
 Ghost suggestions appear as faded text after the cursor. When multiple suggestions are provided, they cycle automatically with a crossfade animation. The user presses TAB to accept the currently visible suggestion.
 
-<img src="./chatinput-ghost-suggestions.png" width="320px" alt="ChatInput with ghost suggestions" />
+<img src="./chatinput-ghost-suggestions.png" width="500px" alt="ChatInput with ghost suggestions" />
 
 ```jsx
 import { ChatInput } from '@razorpay/blade/components';
@@ -362,7 +362,7 @@ const ChatWithSuggestions = () => {
 
 When `isGenerating` is true, the submit button changes to a stop button. Clicking it fires `onStop`, allowing the user to cancel an in-flight AI generation.
 
-<img src="./chatinput-stop-generation.png" width="320px" alt="ChatInput stop generation" />
+<img src="./chatinput-stop-generation.png" width="500px" alt="ChatInput stop generation" />
 
 ```jsx
 import { ChatInput } from '@razorpay/blade/components';
