@@ -8,9 +8,6 @@ import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
-import { Divider } from '~components/Divider';
-import { makeSize } from '~utils';
-import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BoxProps } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -29,24 +26,11 @@ const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
       {...makeAnalyticsAttribute(rest)}
     >
       {React.Children.map(children, (child, index) => {
-        return (
-          <>
-            {index > 0 ? (
-              <Divider
-                margin="auto"
-                variant="muted"
-                orientation="vertical"
-                height={makeSize(size[16])}
-              />
-            ) : null}
-            {React.cloneElement(child as React.ReactElement, {
-              __isInsideTabNavItems: true,
-              __index: index,
-            })}
-          </>
-        );
+        return React.cloneElement(child as React.ReactElement, {
+          __isInsideTabNavItems: true,
+          __index: index,
+        });
       })}
-      <Divider margin="auto" variant="muted" orientation="vertical" height={makeSize(size[16])} />
     </BaseBox>
   );
 };

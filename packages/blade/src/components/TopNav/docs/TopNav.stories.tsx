@@ -37,7 +37,7 @@ import {
   PaymentPagesIcon,
   RazorpayxPayrollIcon,
 } from '~components/Icons';
-import { RazorpayLogo } from '~components/SideNav/docs/RazorpayLogo';
+import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
@@ -218,7 +218,7 @@ const ExploreItem = ({
 const DashboardBackground = styled.div(() => {
   return {
     height: '100vh',
-    background: 'hsla(210,40%,98%,1)',
+    background: 'hsla(0, 0%, 0%, 1)',
   };
 });
 
@@ -277,7 +277,7 @@ const TopNavFullExample = () => {
           ) : (
             <>
               <TopNavBrand>
-                <RazorpayLogo />
+                <RazorpayLogoWhite />
               </TopNavBrand>
               <TopNavContent>
                 <TabNav
@@ -332,7 +332,7 @@ const TopNavFullExample = () => {
                           <Menu openInteraction="hover">
                             <TabNavItem
                               title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
-                              trailing={<ChevronDownIcon />}
+                              trailing={<ChevronDownIcon color="surface.icon.staticWhite.subtle" />}
                               isActive={Boolean(activeProduct)}
                             />
                             <MenuOverlay>
@@ -490,7 +490,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
       <BaseBox backgroundColor="interactive.background.gray.default">
         <TopNav>
           <TopNavBrand>
-            <RazorpayLogo />
+            <RazorpayLogoWhite />
           </TopNavBrand>
           <TopNavContent>
             <TabNav
