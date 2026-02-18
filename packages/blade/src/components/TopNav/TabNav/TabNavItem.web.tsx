@@ -69,19 +69,6 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
     transitionProperty: 'background',
-
-    // // Hide the left and right divider by overlaying them with a pseudo element as same color as the background
-    // ...(isActive
-    //   ? {
-    //       ':before, :after': dividerHiderStyle,
-    //       ':before': {
-    //         left: -2,
-    //       },
-    //       ':after': {
-    //         right: -2,
-    //       },
-    //     }
-    //   : {}),
   };
 });
 
