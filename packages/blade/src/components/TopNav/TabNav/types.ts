@@ -66,6 +66,13 @@ type TabNavItemProps = {
    * Accessibility label for the navigation item.
    */
   accessibilityLabel?: string;
+  /**
+   * Custom color for the indicator glow effect when this item is active.
+   * Accepts any valid CSS color string (hex, rgb, token-resolved value, etc.)
+   *
+   * @default theme.colors.surface.background.primary.intense
+   */
+  indicatorGlowColor?: string;
 } & MenuTriggerProps;
 
 type Item = TabNavItemProps & {

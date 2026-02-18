@@ -71,6 +71,7 @@ const TabNavIndicator = ({
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const shouldAnimateRef = React.useRef(false);
   const [activeWidth, setActiveWidth] = React.useState(0);
+  const [glowColor, setGlowColor] = React.useState(theme.colors.surface.background.primary.intense);
 
   const updatePosition = React.useCallback(() => {
     const container = containerRef.current;
@@ -98,13 +99,14 @@ const TabNavIndicator = ({
     wrapper.style.opacity = '1';
 
     setActiveWidth(activeRect.width);
+    setGlowColor(activeItem.dataset.glowColor ?? theme.colors.surface.background.primary.intense);
 
     if (!shouldAnimateRef.current) {
       requestAnimationFrame(() => {
         shouldAnimateRef.current = true;
       });
     }
-  }, [containerRef, theme.motion.duration.gentle]);
+  }, [containerRef, theme.motion.duration.gentle, theme.colors.surface.background.primary.intense]);
 
   React.useEffect(() => {
     updatePosition();
@@ -123,8 +125,6 @@ const TabNavIndicator = ({
   }, [updatePosition]);
 
   useResize(containerRef, updatePosition);
-
-  const glowColor = theme.colors.surface.background.primary.intense;
 
   return (
     <StyledIndicatorWrapper

@@ -95,6 +95,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     __isInsideTabNavItems,
     // @ts-expect-error - This prop is only used internally
     __index,
+    indicatorGlowColor,
     ...props
   },
   ref,
@@ -128,6 +129,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
       ref={bodyRef}
       isActive={isActive}
       data-active={isActive ? 'true' : 'false'}
+      data-glow-color={indicatorGlowColor || undefined}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
       <BladeProvider themeTokens={bladeTheme} colorScheme="dark">

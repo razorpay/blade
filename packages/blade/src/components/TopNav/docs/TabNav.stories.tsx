@@ -42,6 +42,7 @@ const trailingMapping = {
 
 const propsCategory = {
   TAB_NAV_ITEM: 'TabNavItem Props',
+  TAB_NAV: 'TabNav Props',
   ITEM_DATA: 'Extra props for "item" data',
 };
 
@@ -113,6 +114,10 @@ export default {
       type: 'function',
       table: { category: propsCategory.TAB_NAV_ITEM },
     },
+    indicatorGlowColor: {
+      control: 'color',
+      table: { category: propsCategory.ITEM_DATA },
+    },
   },
   args: {
     title: 'Payroll',
@@ -132,6 +137,7 @@ const TabNavTemplate: StoryFn<any> = (
   args: TabNavItemProps & {
     isAlwaysOverflowing: boolean;
     description: string;
+    indicatorGlowColor?: string;
   },
 ) => {
   const icon = iconMap[(args.icon as unknown) as keyof typeof iconMap];
@@ -189,6 +195,7 @@ const TabNavTemplate: StoryFn<any> = (
             isActive: args.isActive,
             isAlwaysOverflowing: args.isAlwaysOverflowing,
             description: args.description,
+            indicatorGlowColor: args.indicatorGlowColor,
           },
           {
             href: '/payments',
@@ -224,6 +231,7 @@ const TabNavTemplate: StoryFn<any> = (
                       icon={item.icon}
                       isActive={item.isActive}
                       trailing={item.trailing}
+                      indicatorGlowColor={item.indicatorGlowColor}
                     />
                   );
                 })}
