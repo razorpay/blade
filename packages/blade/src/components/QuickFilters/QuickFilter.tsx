@@ -45,14 +45,17 @@ const QuickFilterContent = ({
         ) : (
           <Checkbox value={value} {...makeAnalyticsAttribute(rest)} />
         )}
+        {/* @ts-ignore: display="grid" and gridArea are web-only, not available on native */}
         <BaseBox display="grid">
           {/* Invisible bold text to reserve space and prevent layout shift */}
+          {/* @ts-ignore: gridArea is web-only */}
           <BaseBox gridArea="1 / 1" visibility="hidden" aria-hidden="true">
             <Text variant="body" size="medium" weight="semibold">
               {title}
             </Text>
           </BaseBox>
           {/* Visible text in the same grid cell */}
+          {/* @ts-ignore: gridArea is web-only */}
           <BaseBox gridArea="1 / 1">
             <Text
               variant="body"
