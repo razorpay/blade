@@ -1,4 +1,8 @@
 import React from 'react';
+import { makeSpace } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { ChatInputProps } from './types';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
@@ -9,13 +13,9 @@ import { isFileAccepted } from '~components/FileUpload/isFileAccepted';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import { makeSpace } from '~utils';
 import { useControllableState } from '~utils/useControllable';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { BladeElementRef } from '~utils/types';
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
@@ -114,7 +114,6 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         const currentSuggestion = suggestions[activeSuggestionIndex];
         setTextValue(() => currentSuggestion);
         onSuggestionAccept?.({ suggestion: currentSuggestion });
-        return;
       }
     },
     [
@@ -175,6 +174,32 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       onFileRemove?.({ file });
     },
     [files, setFiles, onFileRemove],
+  );
+
+  const handlePaste = React.useCallback(
+    (event: React.ClipboardEvent<HTMLInputElement>) => {
+      const clipboardFiles = Array.from(event.clipboardData?.files ?? []);
+      if (clipboardFiles.length === 0) return;
+
+      event.preventDefault();
+
+      for (const file of clipboardFiles) {
+        if (!(file as BladeFile).id) {
+          (file as BladeFile).id = `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
+        }
+      }
+
+      const allowed = maxFileCount
+        ? clipboardFiles.slice(0, Math.max(0, maxFileCount - files.length))
+        : clipboardFiles;
+
+      if (allowed.length > 0) {
+        const newFileList = [...files, ...allowed] as BladeFileList;
+        setFiles(() => newFileList);
+        onFileChange?.({ fileList: newFileList });
+      }
+    },
+    [maxFileCount, files, setFiles, onFileChange],
   );
 
   // File preview area (topContent)
@@ -240,6 +265,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         value={textValue}
         onChange={handleTextChange}
         onKeyDown={handleKeyDown}
+        onPaste={handlePaste}
         isDisabled={isDisabled}
         numberOfLines={2}
         size="medium"

@@ -136,6 +136,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     onKeyDown?: FormInputHandleOnKeyDownEvent;
     /**
+     * The callback function to be invoked when content is pasted into the input
+     */
+    onPaste?: React.ClipboardEventHandler<HTMLInputElement>;
+    /**
      * The callback function to be invoked when the the input field loses focus
      *
      * For React Native this will call `onEndEditing` event since we want to get the last value of the input field
@@ -857,6 +861,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     onSubmit,
     onClick,
     onKeyDown,
+    onPaste,
     isDisabled,
     necessityIndicator,
     validationState,
@@ -1156,6 +1161,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                       handleOnSubmit={handleOnSubmit}
                       handleOnInput={handleOnInput}
                       handleOnKeyDown={handleOnKeyDown}
+                      onPaste={onPaste}
                       handleOnClick={handleOnClick}
                       leadingIcon={leadingIcon}
                       prefix={prefix}

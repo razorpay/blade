@@ -107,6 +107,7 @@ export type StyledBaseInputProps = {
   | 'tabIndex'
   | 'valueSuffix'
   | 'children'
+  | 'onPaste'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

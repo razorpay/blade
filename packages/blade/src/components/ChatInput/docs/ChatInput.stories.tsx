@@ -207,3 +207,35 @@ export const FullFeatured: StoryFn<typeof ChatInput> = () => {
   );
 };
 FullFeatured.storyName = 'Full Featured';
+
+export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
+  const [files, setFiles] = useState<BladeFileList>([]);
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.8">
+      <ChatInput
+        placeholder="Try pasting an image here..."
+        fileList={files}
+        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        accept="image/*"
+        maxFileCount={5}
+        onSubmit={({ value, fileList }) => {
+          console.log('Submitted:', value, 'Files:', fileList);
+          setFiles([]);
+        }}
+      />
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Text size="small" color="surface.text.gray.muted">
+          Right-click the image below and copy it, then paste (Ctrl/Cmd+V) into the input above.
+        </Text>
+        <img
+          src="https://picsum.photos/300/200"
+          alt="Sample image"
+          style={{ width: 300, borderRadius: 8 }}
+        />
+      </Box>
+    </Box>
+  );
+};
+PasteImageUpload.storyName = 'Paste Image Upload';
