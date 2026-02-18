@@ -407,6 +407,15 @@ export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
         minDate={dayjs().subtract(1, 'week').toDate()}
         maxDate={dayjs().add(1, 'week').toDate()}
       />
+      <Box marginTop="spacing.8">
+        <Text marginBottom="spacing.3">Single DatePicker with min/max:</Text>
+        <DatePickerComponent
+          label="Select a date"
+          selectionType="single"
+          minDate={dayjs().subtract(1, 'month').toDate()}
+          maxDate={dayjs().add(1, 'month').toDate()}
+        />
+      </Box>
     </Box>
   );
 };
