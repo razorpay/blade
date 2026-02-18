@@ -21,7 +21,7 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     ...getTextStyles({
       theme,
       size: 'medium',
-      weight: 'medium',
+      weight: $isActive ? 'semibold' : 'medium',
       color: $isActive ? 'surface.text.staticWhite.normal' : 'surface.text.staticWhite.subtle',
     }),
     flex: 1,
@@ -41,17 +41,22 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     border: 'none',
     background: 'none',
     '&[aria-expanded="true"]': $isActive
-      ? {}
+      ? {
+          backgroundColor: theme.colors.interactive.background.gray.default,
+        }
       : {
           backgroundColor: theme.colors.interactive.background.gray.default,
         },
     '&:hover': $isActive
-      ? {}
-      : {
+      ? {
           backgroundColor: theme.colors.interactive.background.gray.default,
+        }
+      : {
+          color: theme.colors.interactive.text.staticWhite.normal,
         },
     '&:focus-visible': {
       ...getFocusRingStyles({ theme }),
+      color: theme.colors.interactive.text.staticWhite.normal,
     },
   };
 });
