@@ -286,4 +286,220 @@ PasswordInputWithLabelSuffixTrailing.args = {
   labelTrailing: <Link size="small">Learn more</Link>,
 };
 
+export const PasswordInputShowcase: StoryFn<typeof PasswordInput> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Basic Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Basic Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PasswordInput label="Default" placeholder="Enter password" name="default" />
+          <PasswordInput label="With Value" defaultValue="My_Strong#Password123" name="withValue" />
+          <PasswordInput
+            label="With Help Text"
+            placeholder="Enter password"
+            helpText="We recommend having at least 8 characters in your password"
+            name="withHelpText"
+          />
+          <PasswordInput label="Disabled" placeholder="Enter password" isDisabled name="disabled" />
+        </Box>
+      </Box>
+
+      {/* Validation States */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Validation States
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PasswordInput
+            label="Error State"
+            defaultValue="WeakPassword"
+            validationState="error"
+            errorText="Password must be at least 8 characters long"
+            name="error"
+          />
+          <PasswordInput
+            label="Success State"
+            defaultValue="StrongPassword123!"
+            validationState="success"
+            successText="Password meets all requirements"
+            name="success"
+          />
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PasswordInput
+            label="Medium Size"
+            placeholder="Medium size password input"
+            size="medium"
+            name="sizeMedium"
+          />
+          <PasswordInput
+            label="Large Size"
+            placeholder="Large size password input"
+            size="large"
+            name="sizeLarge"
+          />
+        </Box>
+      </Box>
+
+      {/* Label Positions */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Label Positions
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PasswordInput
+            label="Label Top"
+            placeholder="Label on top"
+            labelPosition="top"
+            name="labelTop"
+          />
+          <PasswordInput
+            label="Label Left"
+            placeholder="Label on left"
+            labelPosition="left"
+            name="labelLeft"
+          />
+        </Box>
+      </Box>
+
+      {/* Necessity Indicators */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Necessity Indicators
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PasswordInput
+            label="Required Field"
+            placeholder="Enter password"
+            necessityIndicator="required"
+            name="required"
+          />
+          <PasswordInput
+            label="Optional Field"
+            placeholder="Enter password"
+            necessityIndicator="optional"
+            name="optional"
+          />
+        </Box>
+      </Box>
+
+      {/* With Reveal Button */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Reveal Button
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <PasswordInput
+            label="With Reveal Button"
+            placeholder="Enter password"
+            showRevealButton
+            defaultValue="MyPassword123"
+            name="withRevealButton"
+          />
+          <PasswordInput
+            label="Without Reveal Button"
+            placeholder="Enter password"
+            showRevealButton={false}
+            defaultValue="MyPassword123"
+            name="withoutRevealButton"
+          />
+        </Box>
+      </Box>
+
+      {/* With Max Characters */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Max Characters
+        </Text>
+        <PasswordInput
+          label="Max Characters"
+          placeholder="Max 20 characters"
+          maxCharacters={20}
+          name="maxCharacters"
+        />
+      </Box>
+
+      {/* With Label Suffix & Trailing */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Label Suffix & Trailing
+        </Text>
+        <PasswordInput
+          label="Password"
+          placeholder="Enter password"
+          labelSuffix={
+            <Tooltip content="Your password should be strong and secure" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+          name="labelSuffixTrailing"
+        />
+      </Box>
+    </Box>
+  );
+};
+
+PasswordInputShowcase.storyName = 'Showcase - All Variants';
+PasswordInputShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all PasswordInput variants including basic states, validation states, sizes, label positions, reveal button, max characters, and more.',
+    },
+  },
+};
+
 export default meta;

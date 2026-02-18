@@ -7,7 +7,11 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
 import type { InputWrapperRef } from './types';
-import { baseInputBorderBackgroundMotion, formHintLeftLabelMarginLeft } from './baseInputTokens';
+import {
+  baseInputBorderBackgroundMotion,
+  baseInputBorderRadius,
+  formHintLeftLabelMarginLeft,
+} from './baseInputTokens';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -768,9 +772,10 @@ const FocusRingWrapper = styled(BaseBox)<{
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   className: string;
   shouldAddLimitedFocus: boolean;
-}>(({ theme, currentInteraction, isTableInputCell, shouldAddLimitedFocus }) => ({
+  $size: NonNullable<BaseInputProps['size']>;
+}>(({ theme, currentInteraction, isTableInputCell, shouldAddLimitedFocus, $size }) => ({
   borderRadius: makeBorderSize(
-    isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
+    isTableInputCell ? theme.border.radius.none : theme.border.radius[baseInputBorderRadius[$size]],
   ),
   width: '100%',
   '&:focus-within':
@@ -1028,6 +1033,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           isTableInputCell={isTableInputCell}
           className="focus-ring-wrapper"
           shouldAddLimitedFocus={shouldAddLimitedFocus}
+          $size={_size}
         >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}

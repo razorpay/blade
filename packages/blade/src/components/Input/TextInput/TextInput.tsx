@@ -29,6 +29,7 @@ import { hintMarginTop } from '~components/Form/formTokens';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { DropdownOverlay } from '~components/Dropdown';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
 import { isIconComponent } from '~utils/isIconComponent';
 import { useDatePickerContext } from '~components/DatePicker/DatePickerContext';
@@ -346,6 +347,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     return React.cloneElement(dropdown, {
       selectionType: 'single',
       isOpen,
+      height: '100%',
       onOpenChange: (isOpen: boolean) => {
         setIsOpen(isOpen);
       },
@@ -355,6 +357,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
             referenceRef: textInputWrapperRef,
             _isNestedDropdown: true,
             defaultPlacement,
+          });
+        }
+        // Pass size to InputDropdownButton
+        if (getComponentId(child) === dropdownComponentIds.triggers.InputDropdownButton) {
+          return React.cloneElement(child, {
+            size,
           });
         }
         return child;

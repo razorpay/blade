@@ -21,7 +21,7 @@ const _AccordionButton = ({
   isDisabled,
 }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
-  const { showNumberPrefix, expandedIndex, size } = useAccordion();
+  const { showNumberPrefix, expandedIndex, size, variant, numberOfItems } = useAccordion();
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
   const onClick = (): void => toggleCollapse();
@@ -58,6 +58,9 @@ const _AccordionButton = ({
         isExpanded={isItemExpanded}
         disabled={isDisabled}
         onClick={onClick}
+        variant={variant}
+        isFirstItem={index === 0}
+        isLastItem={index === numberOfItems - 1}
         {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
         {...metaAttribute({ name: MetaConstants.AccordionButton })}
         data-analytics-name={MAKE_ANALYTICS_CONSTANTS.ACCORDION.ACCORDION_ITEM_BUTTON}

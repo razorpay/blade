@@ -1,7 +1,10 @@
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Button from './Button.svelte';
-  
+  import { iconMap } from '../Icons';
+  import { CloseIcon, SearchIcon } from '../Icons';
+  import Text from '../Typography/Text/Text.svelte';
+
   const { Story } = defineMeta({
     title: 'Components/Button',
     component: Button,
@@ -14,6 +17,8 @@
       isDisabled: false,
       isLoading: false,
       isFullWidth: false,
+      icon: undefined,
+      iconPosition: 'left',
     },
     argTypes: {
       children: {
@@ -68,6 +73,15 @@
           defaultValue: { summary: 'false' },
         },
       },
+      icon: {
+        control: 'select',
+        options: Object.keys(iconMap),
+        mapping: iconMap,
+        description: 'Icon to display alongside the button text',
+        table: {
+          defaultValue: { summary: 'None' },
+        },
+      },
       iconPosition: {
         control: 'select',
         options: ['left', 'right'],
@@ -100,4 +114,54 @@
 
 <Story name="Full Width" args={{ children: 'Full Width Button', isFullWidth: true }} />
 
+<!-- Icon Stories -->
+<Story name="With Icon Left" asChild>
+  <Button icon={SearchIcon} iconPosition="left">Search</Button>
+</Story>
+
+<Story name="With Icon Right" asChild>
+  <Button icon={CloseIcon} iconPosition="right">Close</Button>
+</Story>
+
+<Story name="Icon Only" asChild>
+  <Button icon={SearchIcon} accessibilityLabel="Search" />
+</Story>
+
+<Story name="Icon Variants" asChild>
+  <div class="display-flex gap-spacing-4 items-center">
+    <Button icon={SearchIcon} variant="primary">Primary</Button>
+    <Button icon={SearchIcon} variant="secondary">Secondary</Button>
+    <Button icon={SearchIcon} variant="tertiary">Tertiary</Button>
+  </div>
+</Story>
+
+<Story name="Icon Sizes" asChild>
+  <div class="display-flex gap-spacing-4 items-center">
+    <Button icon={SearchIcon} size="xsmall">XSmall</Button>
+    <Button icon={SearchIcon} size="small">Small</Button>
+    <Button icon={SearchIcon} size="medium">Medium</Button>
+    <Button icon={SearchIcon} size="large">Large</Button>
+  </div>
+</Story>
+
+<Story name="Icon Only Sizes" asChild>
+  <div class="display-flex gap-spacing-4 items-center">
+    <div class="display-flex flex-col items-center gap-spacing-2">
+      <Button icon={CloseIcon} size="xsmall" accessibilityLabel="Close" />
+      <Text size="xsmall" color="surface.text.gray.muted">xsmall</Text>
+    </div>
+    <div class="display-flex flex-col items-center gap-spacing-2">
+      <Button icon={CloseIcon} size="small" accessibilityLabel="Close" />
+      <Text size="xsmall" color="surface.text.gray.muted">small</Text>
+    </div>
+    <div class="display-flex flex-col items-center gap-spacing-2">
+      <Button icon={CloseIcon} size="medium" accessibilityLabel="Close" />
+      <Text size="xsmall" color="surface.text.gray.muted">medium</Text>
+    </div>
+    <div class="display-flex flex-col items-center gap-spacing-2">
+      <Button icon={CloseIcon} size="large" accessibilityLabel="Close" />
+      <Text size="xsmall" color="surface.text.gray.muted">large</Text>
+    </div>
+  </div>
+</Story>
 

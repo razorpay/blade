@@ -2,6 +2,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
+import { PhoneNumberInput } from '../PhoneNumberInput';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
@@ -692,39 +693,44 @@ TextInputWithUncontrolledTags.args = {
 };
 
 export const TextInputWithTrailingAndLeadingDropdown: StoryFn<typeof TextInputComponent> = () => {
+  const sizes = ['xsmall', 'small', 'medium', 'large'] as const;
   return (
-    <Box display="flex" flexDirection="column">
-      <TextInputComponent
-        label="Enter Website URL (for verification)"
-        leading={
-          <Dropdown>
-            <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListItem title="www." value="www" />
-                <ActionListItem title="blog." value="blog" />
-                <ActionListItem title="shop." value="shop" />
-                <ActionListItem title="ecommerce." value="ecommerce" />
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        }
-        trailing={
-          <Dropdown>
-            <InputDropdownButton defaultValue="in" />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListItem title=".in" value="in" />
-                <ActionListItem title=".com" value="com" />
-                <ActionListItem title=".biz" value="biz" />
-                <ActionListItem title=".business" value="business" />
-                {/* maybe one day */}
-                <ActionListItem title=".razorpay" value="razorpay" />
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        }
-      />
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      {sizes.map((size) => (
+        <TextInputComponent
+          key={size}
+          label="Enter Website URL (for verification)"
+          size={size}
+          leading={
+            <Dropdown>
+              <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+              <DropdownOverlay>
+                <ActionList>
+                  <ActionListItem title="www." value="www" />
+                  <ActionListItem title="blog." value="blog" />
+                  <ActionListItem title="shop." value="shop" />
+                  <ActionListItem title="ecommerce." value="ecommerce" />
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          }
+          trailing={
+            <Dropdown>
+              <InputDropdownButton defaultValue="in" />
+              <DropdownOverlay>
+                <ActionList>
+                  <ActionListItem title=".in" value="in" />
+                  <ActionListItem title=".com" value="com" />
+                  <ActionListItem title=".biz" value="biz" />
+                  <ActionListItem title=".business" value="business" />
+                  {/* maybe one day */}
+                  <ActionListItem title=".razorpay" value="razorpay" />
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          }
+        />
+      ))}
     </Box>
   );
 };
@@ -819,4 +825,548 @@ TextInputWithLabelSuffixTrailing.args = {
     </Tooltip>
   ),
   labelTrailing: <Link size="small">Learn more</Link>,
+};
+
+export const TextInputShowcase: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Basic Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Basic Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent label="Default" placeholder="Enter text" name="default" />
+          <TextInputComponent label="With Value" defaultValue="John Doe" name="withValue" />
+          <TextInputComponent
+            label="With Help Text"
+            placeholder="Enter text"
+            helpText="This is a helpful message"
+            name="withHelpText"
+          />
+          <TextInputComponent
+            label="Disabled"
+            placeholder="Enter text"
+            isDisabled
+            name="disabled"
+          />
+        </Box>
+      </Box>
+
+      {/* Validation States */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Validation States
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="Error State"
+            defaultValue="Invalid Input"
+            validationState="error"
+            errorText="This field has an error"
+            name="error"
+          />
+          <TextInputComponent
+            label="Success State"
+            defaultValue="Valid Input"
+            validationState="success"
+            successText="This field is valid"
+            name="success"
+          />
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="Medium Size"
+            placeholder="Medium size input"
+            size="medium"
+            name="sizeMedium"
+          />
+          <TextInputComponent
+            label="Large Size"
+            placeholder="Large size input"
+            size="large"
+            name="sizeLarge"
+          />
+        </Box>
+      </Box>
+
+      {/* Label Positions */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Label Positions
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="Label Top"
+            placeholder="Label on top"
+            labelPosition="top"
+            name="labelTop"
+          />
+          <TextInputComponent
+            label="Label Left"
+            placeholder="Label on left"
+            labelPosition="left"
+            name="labelLeft"
+          />
+        </Box>
+      </Box>
+
+      {/* Necessity Indicators */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Necessity Indicators
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="Required Field"
+            placeholder="Enter text"
+            necessityIndicator="required"
+            name="required"
+          />
+          <TextInputComponent
+            label="Optional Field"
+            placeholder="Enter text"
+            necessityIndicator="optional"
+            name="optional"
+          />
+        </Box>
+      </Box>
+
+      {/* With Icons */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Icons
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="Leading Icon"
+            placeholder="Enter text"
+            leading={BankIcon}
+            name="leadingIcon"
+          />
+          <TextInputComponent
+            label="Trailing Icon"
+            placeholder="Enter text"
+            trailing={InfoIcon}
+            name="trailingIcon"
+          />
+          <TextInputComponent
+            label="Both Icons"
+            placeholder="Enter text"
+            leading={BankIcon}
+            trailing={InfoIcon}
+            name="bothIcons"
+          />
+        </Box>
+      </Box>
+
+      {/* With Prefix/Suffix */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Prefix/Suffix
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="With Prefix"
+            placeholder="Enter amount"
+            prefix="₹"
+            name="withPrefix"
+          />
+          <TextInputComponent
+            label="With Suffix"
+            placeholder="Enter weight"
+            suffix="kg"
+            name="withSuffix"
+          />
+        </Box>
+      </Box>
+
+      {/* With Dropdowns */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Leading & Trailing Dropdowns
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box>
+            <Text weight="semibold" marginBottom="spacing.3">
+              XSmall Size
+            </Text>
+            <TextInputComponent
+              label="Website URL"
+              placeholder="example"
+              size="xsmall"
+              leading={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title="www." value="www" />
+                      <ActionListItem title="blog." value="blog" />
+                      <ActionListItem title="shop." value="shop" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              trailing={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="com" />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title=".com" value="com" />
+                      <ActionListItem title=".in" value="in" />
+                      <ActionListItem title=".biz" value="biz" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              name="bothDropdownsXSmall"
+            />
+          </Box>
+
+          <Box>
+            <Text weight="semibold" marginBottom="spacing.3">
+              Small Size
+            </Text>
+            <TextInputComponent
+              label="Website URL"
+              placeholder="example"
+              size="small"
+              leading={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title="www." value="www" />
+                      <ActionListItem title="blog." value="blog" />
+                      <ActionListItem title="shop." value="shop" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              trailing={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="com" />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title=".com" value="com" />
+                      <ActionListItem title=".in" value="in" />
+                      <ActionListItem title=".biz" value="biz" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              name="bothDropdownsSmall"
+            />
+          </Box>
+
+          <Box>
+            <Text weight="semibold" marginBottom="spacing.3">
+              Medium Size
+            </Text>
+            <TextInputComponent
+              label="Website URL"
+              placeholder="example"
+              size="medium"
+              leading={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title="www." value="www" />
+                      <ActionListItem title="blog." value="blog" />
+                      <ActionListItem title="shop." value="shop" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              trailing={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="com" />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title=".com" value="com" />
+                      <ActionListItem title=".in" value="in" />
+                      <ActionListItem title=".biz" value="biz" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              name="bothDropdownsMedium"
+            />
+          </Box>
+
+          <Box>
+            <Text weight="semibold" marginBottom="spacing.3">
+              Large Size
+            </Text>
+            <TextInputComponent
+              label="Website URL"
+              placeholder="example"
+              size="large"
+              leading={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="www" icon={GlobeIcon} />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title="www." value="www" />
+                      <ActionListItem title="blog." value="blog" />
+                      <ActionListItem title="shop." value="shop" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              trailing={
+                <Dropdown>
+                  <InputDropdownButton defaultValue="com" />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title=".com" value="com" />
+                      <ActionListItem title=".in" value="in" />
+                      <ActionListItem title=".biz" value="biz" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </Dropdown>
+              }
+              name="bothDropdownsLarge"
+            />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* With Elements */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Elements
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="Leading Badge"
+            placeholder="Enter phone"
+            leading={<Badge>+91</Badge>}
+            name="leadingBadge"
+          />
+          <TextInputComponent
+            label="Trailing Badge"
+            placeholder="Enter UPI"
+            trailing={<Badge>@oksbi</Badge>}
+            name="trailingBadge"
+          />
+        </Box>
+      </Box>
+
+      {/* With Trailing Button */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Trailing Button
+        </Text>
+        <TextInputComponent
+          label="Discount Code"
+          placeholder="Enter code"
+          trailingButton={<Link>Apply</Link>}
+          showClearButton={false}
+          name="trailingButton"
+        />
+      </Box>
+
+      {/* With Clear Button */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Clear Button
+        </Text>
+        <TextInputComponent
+          label="With Clear Button"
+          defaultValue="Clear me"
+          showClearButton
+          name="clearButton"
+        />
+      </Box>
+
+      {/* With Loading State */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Loading State
+        </Text>
+        <TextInputComponent label="Loading" placeholder="Enter text" isLoading name="loading" />
+      </Box>
+
+      {/* With Max Characters */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Max Characters
+        </Text>
+        <TextInputComponent
+          label="Max Characters"
+          placeholder="Max 20 characters"
+          maxCharacters={20}
+          name="maxCharacters"
+        />
+      </Box>
+
+      {/* Text Alignment */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Text Alignment
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="Left Aligned"
+            defaultValue="Left aligned text"
+            textAlign="left"
+            name="textAlignLeft"
+          />
+          <TextInputComponent
+            label="Center Aligned"
+            defaultValue="Center aligned text"
+            textAlign="center"
+            name="textAlignCenter"
+          />
+          <TextInputComponent
+            label="Right Aligned"
+            defaultValue="Right aligned text"
+            textAlign="right"
+            name="textAlignRight"
+          />
+        </Box>
+      </Box>
+
+      {/* With Label Suffix & Trailing */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Label Suffix & Trailing
+        </Text>
+        <TextInputComponent
+          label="GSTIN"
+          placeholder="Enter GSTIN"
+          labelSuffix={
+            <Tooltip content="Your GSTIN is used to generate invoices" placement="right">
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+          name="labelSuffixTrailing"
+        />
+      </Box>
+
+      {/* With Tags */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Tags (Tagged Input)
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextInputComponent
+            label="Email Addresses"
+            placeholder="Enter email and press Enter"
+            isTaggedInput
+            defaultTags={['john@example.com', 'jane@example.com']}
+            name="withTags"
+          />
+          <TextInputComponent
+            label="Email Addresses (No Tags)"
+            placeholder="Enter email and press Enter"
+            isTaggedInput
+            name="withoutTags"
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+TextInputShowcase.storyName = 'Showcase - All Variants';
+TextInputShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all TextInput variants including basic states, validation states, sizes, label positions, icons, dropdowns, and more.',
+    },
+  },
 };

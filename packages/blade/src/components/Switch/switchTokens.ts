@@ -72,10 +72,10 @@ const switchColors = {
   },
   thumbIcon: {
     default: {
-      fill: 'colors.interactive.icon.staticBlack.normal',
+      fill: 'colors.interactive.icon.primary.subtle',
     },
     disabled: {
-      fill: 'colors.interactive.icon.staticBlack.disabled',
+      fill: 'colors.interactive.icon.primary.disabled',
     },
   },
 } as const;

@@ -283,6 +283,7 @@ const _ProgressBar = (
               height={makeSize(progressBarHeight[size])}
               overflow="hidden"
               position="relative"
+              borderRadius="xsmall"
             >
               <ProgressBarFilled
                 backgroundColor={filledBackgroundColor}

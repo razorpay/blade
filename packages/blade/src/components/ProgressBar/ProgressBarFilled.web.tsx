@@ -96,8 +96,9 @@ const BoxWithIndeterminateAnimation = styled(BaseBox)<
 
 const IndeterminateFilledContainer = styled(BoxWithIndeterminateAnimation)<
   Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress' | '_oscillation'>
->(({ backgroundColor }) => ({
+>(({ theme, backgroundColor }) => ({
   backgroundColor,
+  borderRadius: `${theme.border.radius.xsmall}px`,
 }));
 
 const IndeterminatePulseAnimation = styled(BoxWithIndeterminateAnimation)<
@@ -126,10 +127,11 @@ const DeterminateFilledContainer = styled(BoxWithProgressFillTransition)<
     ProgressBarFilledProps,
     'backgroundColor' | 'progress' | 'indeterminateMotionDuration' | '_oscillation'
   >
->(({ backgroundColor, progress }) => ({
+>(({ theme, backgroundColor, progress }) => ({
   backgroundColor,
   height: '100%',
   width: `${progress}%`,
+  borderRadius: `${theme.border.radius.xsmall}px`,
 }));
 
 const DeterminatePulseAnimation = styled(BoxWithProgressFillTransition)<
