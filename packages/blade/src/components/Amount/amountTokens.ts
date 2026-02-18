@@ -48,28 +48,34 @@ const normalAmountSizes: Record<
   },
 };
 
-const currencyFontSizes: Record<
+/**
+ * Hardcoded pixel values for currency symbols to match exact Figma specifications.
+ * These values provide precise visual alignment that standard tokens cannot achieve.
+ *
+ * Used when `isAffixSubtle={false}` - currency symbols are slightly smaller than main number.
+ */
+const currencyHardcodedSizes: Record<
   'body' | 'heading' | 'display',
-  Partial<Record<NonNullable<AmountTypeProps['size']>, keyof FontSize>>
+  Partial<Record<NonNullable<AmountTypeProps['size']>, { desktop: number; mobile: number }>>
 > = {
   body: {
-    xsmall: normalAmountSizes.body.xsmall,
-    small: normalAmountSizes.body.xsmall,
-    medium: normalAmountSizes.body.xsmall,
-    large: normalAmountSizes.body.small,
+    xsmall: { desktop: 10, mobile: 10 },
+    small: { desktop: 10, mobile: 10 },
+    medium: { desktop: 10, mobile: 10 },
+    large: { desktop: 12, mobile: 12 },
   },
   heading: {
-    small: 300,
-    medium: 300,
-    large: 400,
-    xlarge: 500,
-    '2xlarge': 600,
+    small: { desktop: 17, mobile: 16 },
+    medium: { desktop: 19, mobile: 16 },
+    large: { desktop: 22, mobile: 18 },
+    xlarge: { desktop: 30, mobile: 20 },
+    '2xlarge': { desktop: 37, mobile: 24 },
   },
   display: {
-    small: 700,
-    medium: 800,
-    large: 900,
-    xlarge: 1000,
+    small: { desktop: 45, mobile: 32 },
+    medium: { desktop: 52, mobile: 34 },
+    large: { desktop: 60, mobile: 36 },
+    xlarge: { desktop: 66, mobile: 38 },
   },
 };
 
@@ -123,6 +129,6 @@ const amountLineHeights: Record<
   },
 };
 
-export { subtleFontSizes, normalAmountSizes, currencyFontSizes, amountLineHeights };
+export { subtleFontSizes, normalAmountSizes, currencyHardcodedSizes, amountLineHeights };
 
 export type { AmountBodyProps, AmountDisplayProps, AmountHeadingProps, AmountTypeProps };
