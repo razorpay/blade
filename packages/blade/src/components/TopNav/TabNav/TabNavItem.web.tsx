@@ -79,24 +79,6 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
   };
 });
 
-const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }) => {
-  return {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: makeSpace(theme.border.width.thin),
-    borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
-    borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
-    background: `linear-gradient(90deg, transparent 0%, ${theme.colors.surface.icon.staticWhite.normal} 20%, ${theme.colors.surface.icon.staticWhite.normal} 80.29%, transparent 100%)`,
-    pointerEvents: 'none',
-    // Animation
-    opacity: isActive ? 1 : 0,
-    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
-    transitionProperty: 'opacity',
-  };
-});
-
 const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemProps> = (
   {
     as,
@@ -144,9 +126,9 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     <StyledTabNavItemWrapper
       ref={bodyRef}
       isActive={isActive}
+      data-active={isActive ? 'true' : 'false'}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
-      <SelectedBar isActive={isActive} />
       <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
         <StyledTabNavItem
           ref={ref}

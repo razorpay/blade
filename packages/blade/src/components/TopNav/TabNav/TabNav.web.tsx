@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { TabNavContext } from './TabNavContext';
+import { TabNavIndicator } from './TabNavIndicator.web';
 import type { TabNavItemData, TabNavProps } from './types';
 import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
@@ -41,6 +42,7 @@ const TabNav = ({
   ...rest
 }: TabNavProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
+  const itemsRowRef = React.useRef<HTMLDivElement>(null);
   const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
   const overflowingItems = controlledItems.filter(
@@ -99,8 +101,15 @@ const TabNav = ({
         ref={ref}
       >
         <BaseBox display="flex" width="100%" position="relative">
-          <BaseBox display="flex" flexDirection="row" width="max-content">
+          <BaseBox
+            ref={itemsRowRef}
+            display="flex"
+            flexDirection="row"
+            width="max-content"
+            position="relative"
+          >
             {children({ items: _items, overflowingItems })}
+            <TabNavIndicator containerRef={itemsRowRef} />
           </BaseBox>
         </BaseBox>
       </BaseBox>
