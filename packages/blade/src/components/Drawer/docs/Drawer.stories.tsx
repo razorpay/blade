@@ -88,7 +88,7 @@ const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
           </Box>
           <Box>
             <Button>Payout</Button>{' '}
-            <Button marginLeft="spacing.2" variant="tertiary">
+            <Button marginLeft="spacing.2" variant="secondary">
               Invite Vendor
             </Button>
           </Box>
@@ -217,7 +217,7 @@ export const InitialFocus = (args: DrawerProps): React.ReactElement => {
           </Box>
           <Box>
             <Button ref={drawerInitialFocusRef}>Payout</Button>{' '}
-            <Button marginLeft="spacing.2" variant="tertiary">
+            <Button marginLeft="spacing.2" variant="secondary">
               Invite Vendor
             </Button>
           </Box>
@@ -306,7 +306,7 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
 
         <DrawerFooter>
           <Box display="flex" gap="spacing.5">
-            <Button variant="tertiary" isFullWidth>
+            <Button variant="secondary" isFullWidth>
               Payout
             </Button>
             <Button variant="primary" isFullWidth>
@@ -567,7 +567,7 @@ export const WithFooter = (args: DrawerProps): React.ReactElement => {
         {showFooter && (
           <DrawerFooter>
             <Box display="flex" gap="spacing.5">
-              <Button variant="tertiary" isFullWidth onClick={() => setIsDrawerOpen(false)}>
+              <Button variant="secondary" isFullWidth onClick={() => setIsDrawerOpen(false)}>
                 Cancel Setup
               </Button>
               <Button variant="primary" isFullWidth>

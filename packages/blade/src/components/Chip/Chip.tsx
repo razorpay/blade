@@ -192,6 +192,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isDisabled={_isDisabled}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
+              size={_size}
             >
               <StyledChipWrapper
                 borderColor={chipBorderColor}
@@ -204,7 +205,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 alignItems="center"
                 overflow="hidden"
                 backgroundColor={chipBackgroundColor}
-                borderRadius="max"
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
                   chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].left[
