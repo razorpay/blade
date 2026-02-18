@@ -112,6 +112,25 @@ const TabNavIndicator = ({
     updatePosition();
   });
 
+  // Watch for data-active attribute changes so the indicator moves
+  // even when TabNav itself doesn't re-render (e.g. router-driven isActive)
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new MutationObserver(() => {
+      updatePosition();
+    });
+
+    observer.observe(container, {
+      attributes: true,
+      attributeFilter: ['data-active'],
+      subtree: true,
+    });
+
+    return () => observer.disconnect();
+  }, [containerRef, updatePosition]);
+
   React.useEffect(() => {
     if ('fonts' in document) {
       try {
