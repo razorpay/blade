@@ -39,10 +39,11 @@ import {
   PaymentPagesIcon,
   RazorpayxPayrollIcon,
   RazorpayxPayrollFilledIcon,
+  UserIcon,
 } from '~components/Icons';
 import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';
-import { Button } from '~components/Button';
+import { IconButton } from '~components/Button/IconButton';
 import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
 import { Heading, Text } from '~components/Typography';
@@ -60,6 +61,9 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
 import BaseBox from '~components/Box/BaseBox';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = (): void => {};
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -373,10 +377,11 @@ const TopNavFullExample = () => {
               <TopNavActions>
                 {isTablet ? (
                   <Tooltip content="Search in payments">
-                    <Button
+                    <IconButton
                       size={isMobile ? 'small' : 'medium'}
-                      variant="tertiary"
                       icon={SearchIcon}
+                      onClick={noop}
+                      accessibilityLabel="Search in payments"
                     />
                   </Tooltip>
                 ) : (
@@ -386,21 +391,32 @@ const TopNavFullExample = () => {
                   />
                 )}
                 <Tooltip content="View Ecosystem Health">
-                  <Button
+                  <IconButton
                     size={isMobile ? 'small' : 'medium'}
-                    variant="tertiary"
                     icon={ActivityIcon}
+                    onClick={noop}
+                    accessibilityLabel="View Ecosystem Health"
+                    isHighlighted={true}
                   />
                 </Tooltip>
                 <Tooltip content="View Announcements">
-                  <Button
+                  <IconButton
                     size={isMobile ? 'small' : 'medium'}
-                    variant="tertiary"
                     icon={AnnouncementIcon}
+                    onClick={noop}
+                    accessibilityLabel="View Announcements"
+                    isHighlighted={true}
                   />
                 </Tooltip>
                 <Menu openInteraction="click">
-                  <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                  <IconButton
+                    icon={UserIcon}
+                    size={isMobile ? 'small' : 'medium'}
+                    accessibilityLabel="User Icon"
+                    onClick={noop}
+                    isHighlighted={true}
+                  />
+                  {/* <Avatar size="medium" variant="square" name="Anurag Hazra" /> */}
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
                     <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -585,10 +601,19 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
               accessibilityLabel="Search Across Razorpay"
             />
             <Tooltip content="View Ecosystem Health">
-              <Button size="medium" variant="tertiary" icon={ActivityIcon} />
+              <IconButton
+                size="medium"
+                icon={ActivityIcon}
+                onClick={noop}
+                accessibilityLabel="View Ecosystem Health"
+              />
             </Tooltip>
             <Tooltip content="View Announcements">
-              <Button variant="tertiary" icon={AnnouncementIcon} />
+              <IconButton
+                icon={AnnouncementIcon}
+                onClick={noop}
+                accessibilityLabel="View Announcements"
+              />
             </Tooltip>
             <Avatar size="medium" variant="square" name="Anurag Hazra" />
           </TopNavActions>
@@ -648,7 +673,9 @@ const FlippedContainer = styled.div({
 
 const SCENE_WIDTH = 121.41 * 2;
 const SCENE_HEIGHT = 121.41;
-const ELLIPSE_MASK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${SCENE_WIDTH}' height='${SCENE_HEIGHT}'%3E%3Cdefs%3E%3Cfilter id='b' filterUnits='userSpaceOnUse' x='0' y='0' width='${SCENE_WIDTH}' height='${SCENE_HEIGHT}'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='${SCENE_WIDTH / 2}' cy='${SCENE_HEIGHT / 2}' rx='75.5' ry='17.5' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
+const ELLIPSE_MASK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${SCENE_WIDTH}' height='${SCENE_HEIGHT}'%3E%3Cdefs%3E%3Cfilter id='b' filterUnits='userSpaceOnUse' x='0' y='0' width='${SCENE_WIDTH}' height='${SCENE_HEIGHT}'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='${
+  SCENE_WIDTH / 2
+}' cy='${SCENE_HEIGHT / 2}' rx='75.5' ry='17.5' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
 
 const Scene = styled.div({
   position: 'relative',
@@ -695,7 +722,7 @@ const BLUR_LAYERS = [
   },
 ];
 
- const ProgressiveBlurEffect = (): React.ReactElement => {
+const ProgressiveBlurEffect = (): React.ReactElement => {
   return (
     <Scene>
       <FlippedContainer>
