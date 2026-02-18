@@ -93,6 +93,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     title,
     isActive,
     icon: Icon,
+    selectedStateIcon: SelectedStateIcon,
     trailing,
     accessibilityLabel,
     href,
@@ -127,6 +128,8 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     });
   }, [__isInsideTabNavItems, __index, setControlledItems]);
 
+  const ResolvedIcon = isActive && SelectedStateIcon ? SelectedStateIcon : Icon;
+
   return (
     <StyledTabNavItemWrapper
       ref={bodyRef}
@@ -146,8 +149,8 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
           {...metaAttribute({ name: MetaConstants.TabNavItemLink })}
           {...makeAccessible({ label: accessibilityLabel, current: isActive })}
         >
-          {Icon ? (
-            <Icon
+          {ResolvedIcon ? (
+            <ResolvedIcon
               size="medium"
               color={
                 isActive ? 'surface.icon.staticWhite.normal' : 'surface.icon.staticWhite.subtle'

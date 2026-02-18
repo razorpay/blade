@@ -23,8 +23,10 @@ import type { IconComponent } from '~components/Icons';
 import {
   SearchIcon,
   AcceptPaymentsIcon,
+  AcceptPaymentsFilledIcon,
   AwardIcon,
   ShoppingBagIcon,
+  MagicCheckoutFilledIcon,
   ChevronDownIcon,
   ActivityIcon,
   AnnouncementIcon,
@@ -36,6 +38,7 @@ import {
   PaymentLinkIcon,
   PaymentPagesIcon,
   RazorpayxPayrollIcon,
+  RazorpayxPayrollFilledIcon,
 } from '~components/Icons';
 import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';
@@ -175,14 +178,11 @@ const TabNavItemLink = React.forwardRef<
   }
 >((props, ref) => {
   const location = useLocation();
-  return (
-    <TabNavItem
-      ref={ref}
-      {...props}
-      as={Link}
-      isActive={isItemActive(location, { href: props.href, activeOnLinks: props.activeOnLinks })}
-    />
-  );
+  const isActive = isItemActive(location, {
+    href: props.href,
+    activeOnLinks: props.activeOnLinks,
+  });
+  return <TabNavItem ref={ref} {...props} as={Link} isActive={isActive} />;
 });
 
 const ExploreItem = ({
@@ -287,18 +287,21 @@ const TopNavFullExample = () => {
                       href: '/payroll',
                       title: 'Payroll',
                       icon: RazorpayxPayrollIcon,
+                      selectedStateIcon: RazorpayxPayrollFilledIcon,
                       description: 'Automate payroll with ease.',
                     },
                     {
                       href: '/payments',
                       title: 'Payments',
                       icon: AcceptPaymentsIcon,
+                      selectedStateIcon: AcceptPaymentsFilledIcon,
                       description: 'Manage payments effortlessly.',
                     },
                     {
                       href: '/magic-checkout',
                       title: 'Magic Checkout',
                       icon: ShoppingBagIcon,
+                      selectedStateIcon: MagicCheckoutFilledIcon,
                       description: 'Fast, one-click checkout.',
                     },
                     {
@@ -317,16 +320,9 @@ const TopNavFullExample = () => {
                     return (
                       <>
                         <TabNavItems>
-                          {items.map((item) => {
-                            return (
-                              <TabNavItemLink
-                                key={item.title}
-                                title={item.title}
-                                href={item.href}
-                                icon={item.icon}
-                              />
-                            );
-                          })}
+                          {items.map((item) => (
+                            <TabNavItemLink key={item.title} {...item} />
+                          ))}
                         </TabNavItems>
                         {overflowingItems.length ? (
                           <Menu openInteraction="hover">
@@ -500,18 +496,21 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                   href: '/payroll',
                   title: 'Payroll',
                   icon: RazorpayxPayrollIcon,
+                  selectedStateIcon: RazorpayxPayrollFilledIcon,
                   description: 'Automate payroll with ease.',
                 },
                 {
                   href: '/payments',
                   title: 'Payments',
                   icon: AcceptPaymentsIcon,
+                  selectedStateIcon: AcceptPaymentsFilledIcon,
                   description: 'Manage payments effortlessly.',
                 },
                 {
                   href: '/magic-checkout',
                   title: 'Magic Checkout',
                   icon: ShoppingBagIcon,
+                  selectedStateIcon: MagicCheckoutFilledIcon,
                   description: 'Fast, one-click checkout.',
                 },
                 {
@@ -530,16 +529,9 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                 return (
                   <>
                     <TabNavItems>
-                      {items.map((item) => {
-                        return (
-                          <TabNavItemLink
-                            key={item.title}
-                            title={item.title}
-                            href={item.href}
-                            icon={item.icon}
-                          />
-                        );
-                      })}
+                      {items.map((item) => (
+                        <TabNavItemLink key={item.title} {...item} />
+                      ))}
                     </TabNavItems>
                     {overflowingItems.length ? (
                       <Menu openInteraction="hover">

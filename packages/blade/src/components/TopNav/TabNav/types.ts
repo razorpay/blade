@@ -46,6 +46,13 @@ type TabNavItemProps = {
    */
   icon?: IconComponent;
   /**
+   * Icon to display when the TabNavItem is in the selected (active) state.
+   * When provided and `isActive` is true, this icon is rendered instead of `icon`.
+   *
+   * @default undefined
+   */
+  selectedStateIcon?: IconComponent;
+  /**
    * Element to render after the navigation item.
    *
    * @default undefined
