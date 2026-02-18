@@ -231,6 +231,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         ref={textareaRef}
         as="textarea"
         id="chat-input"
+        elevation="highRaised"
         label={undefined}
         accessibilityLabel={accessibilityLabel}
         hideLabelText

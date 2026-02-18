@@ -61,6 +61,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { Elevation } from '~tokens/global';
 import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
 import { useCounterInputContext } from '~components/CounterInput/CounterInputContext';
 
@@ -344,6 +345,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * Accepts border radius tokens like `"large"`.
      */
     borderRadius?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+    /**
+     * Sets the elevation (box-shadow) on the input wrapper.
+     */
+    elevation?: keyof Elevation;
     /**
      * Link button to be rendered at the end of the input field.
      * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
@@ -896,6 +901,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     size = 'medium',
     padding,
     borderRadius,
+    elevation,
     trailingButton,
     valueComponentType = 'text',
     isTableInputCell = false,
@@ -1068,6 +1074,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           shouldAddLimitedFocus={shouldAddLimitedFocus}
           $size={_size}
           $borderRadius={borderRadius}
+          elevation={elevation}
         >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
