@@ -618,3 +618,165 @@ Minimal.storyName = 'Minimal';
 
 export const FullExample = TopNavFullTemplate.bind({});
 FullExample.storyName = 'Full Example';
+
+const ProgressiveBlurWrapper = styled.div({
+  position: 'relative',
+  width: '121.41px',
+  height: '121.41px',
+  overflow: 'visible',
+  flexShrink: 0,
+});
+
+const BlurLayer = styled.div<{ blurAmount: number; zIndex: number; maskGradient: string }>(
+  ({ blurAmount, zIndex: z, maskGradient }) => ({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    boxSizing: 'border-box',
+    padding: '8px',
+    background:
+      'conic-gradient(from 90deg at 54.92% 50%, hsla(218, 89%, 51%, 1) 0deg, hsla(210, 6%, 13%, 0) 360deg)',
+    transform: 'rotate(-180deg)',
+    pointerEvents: 'none',
+    filter: `blur(${blurAmount}px)`,
+    zIndex: z,
+    WebkitMaskImage: maskGradient,
+    maskImage: maskGradient,
+  }),
+);
+
+const FlippedContainer = styled.div({
+  transform: 'scaleX(-1)',
+  position: 'relative',
+  zIndex: 0,
+  flexShrink: 0,
+});
+
+const SCENE_WIDTH = 121.41 * 2;
+const SCENE_HEIGHT = 121.41;
+const ELLIPSE_MASK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${SCENE_WIDTH}' height='${SCENE_HEIGHT}'%3E%3Cdefs%3E%3Cfilter id='b' filterUnits='userSpaceOnUse' x='0' y='0' width='${SCENE_WIDTH}' height='${SCENE_HEIGHT}'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='${SCENE_WIDTH / 2}' cy='${SCENE_HEIGHT / 2}' rx='75.5' ry='17.5' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
+
+const Scene = styled.div({
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: 0,
+  width: `${SCENE_WIDTH}px`,
+  height: `${SCENE_HEIGHT}px`,
+  opacity: 0.64,
+  overflow: 'visible',
+  WebkitMaskImage: ELLIPSE_MASK,
+  WebkitMaskRepeat: 'no-repeat',
+  WebkitMaskPosition: 'center',
+  maskImage: ELLIPSE_MASK,
+  maskRepeat: 'no-repeat',
+  maskPosition: 'center',
+});
+
+const BLUR_LAYERS = [
+  {
+    blurAmount: 94,
+    zIndex: 7,
+    maskGradient:
+      'linear-gradient(to bottom, black 0%, transparent 35%, transparent 65%, black 100%)',
+  },
+  {
+    blurAmount: 32,
+    zIndex: 8,
+    maskGradient:
+      'linear-gradient(to bottom, transparent 10%, black 25%, transparent 40%, transparent 60%, black 75%, transparent 90%)',
+  },
+  {
+    blurAmount: 8,
+    zIndex: 9,
+    maskGradient:
+      'linear-gradient(to bottom, transparent 25%, black 40%, transparent 48%, transparent 52%, black 60%, transparent 75%)',
+  },
+  {
+    blurAmount: 0,
+    zIndex: 10,
+    maskGradient:
+      'linear-gradient(to bottom, transparent 0%, black 40%, black 60%, transparent 100%)',
+  },
+];
+
+ const ProgressiveBlurEffect = (): React.ReactElement => {
+  return (
+    <Scene>
+      <FlippedContainer>
+        <ProgressiveBlurWrapper>
+          {BLUR_LAYERS.map((layer) => (
+            <BlurLayer key={layer.zIndex} {...layer} />
+          ))}
+        </ProgressiveBlurWrapper>
+      </FlippedContainer>
+      <ProgressiveBlurWrapper>
+        {BLUR_LAYERS.map((layer) => (
+          <BlurLayer key={layer.zIndex} {...layer} />
+        ))}
+      </ProgressiveBlurWrapper>
+    </Scene>
+  );
+};
+
+const ProgressiveBlurTemplate: StoryFn<typeof TopNav> = () => {
+  return (
+    <DashboardBackground>
+      <BaseBox backgroundColor="interactive.background.gray.default">
+        <TopNav>
+          <TopNavBrand>
+            <RazorpayLogoWhite />
+          </TopNavBrand>
+          <TopNavContent>
+            <TabNav
+              items={[
+                { title: 'Home', href: '/home', icon: HomeIcon },
+                {
+                  href: '/payments',
+                  title: 'Payments',
+                  icon: AcceptPaymentsIcon,
+                },
+              ]}
+            >
+              {({ items }) => (
+                <TabNavItems>
+                  {items.map((item) => (
+                    <TabNavItemLink key={item.title} title={item.title} href={item.href} />
+                  ))}
+                </TabNavItems>
+              )}
+            </TabNav>
+          </TopNavContent>
+          <TopNavActions>
+            <Avatar size="medium" variant="square" name="Anurag Hazra" />
+          </TopNavActions>
+        </TopNav>
+      </BaseBox>
+
+      <Box padding="spacing.8" backgroundColor="surface.background.gray.moderate" height="100vh">
+        <Heading marginBottom="spacing.4">Progressive Blur Experiment</Heading>
+        <Text marginBottom="spacing.7">
+          The progressive blur effect is rendered next to the logo in the TopNav above. Below is a
+          standalone larger preview:
+        </Text>
+
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          padding="spacing.10"
+          backgroundColor="surface.background.gray.intense"
+          borderRadius="large"
+        >
+          <ProgressiveBlurEffect />
+        </Box>
+      </Box>
+    </DashboardBackground>
+  );
+};
+
+export const ProgressiveBlur = ProgressiveBlurTemplate.bind({});
+ProgressiveBlur.storyName = 'Progressive Blur Experiment';
