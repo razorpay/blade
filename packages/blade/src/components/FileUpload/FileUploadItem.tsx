@@ -24,6 +24,9 @@ const FileUploadItem = memo(
     width,
     minWidth,
     maxWidth,
+    flexShrink,
+    flexGrow,
+    flexBasis,
     ...rest
   }: FileUploadItemProps): React.ReactElement => {
     const { name, size, uploadPercent, errorText, status } = file;
@@ -41,6 +44,9 @@ const FileUploadItem = memo(
         width={width}
         minWidth={minWidth}
         maxWidth={maxWidth}
+        flexShrink={flexShrink}
+        flexGrow={flexGrow}
+        flexBasis={flexBasis}
         {...getStyledProps(rest)}
       >
         <BaseBox width="100%" display="flex" flexDirection="column">

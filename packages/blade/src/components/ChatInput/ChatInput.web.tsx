@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { makeSpace } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
@@ -17,6 +18,11 @@ import { useControllableState } from '~utils/useControllable';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStyledProps } from '~components/Box/styledProps';
 import { useIsMobile } from '~utils/useIsMobile';
+
+const HiddenScrollbarBox = styled(BaseBox)(() => ({
+  '&::-webkit-scrollbar': { display: 'none' },
+  scrollbarWidth: 'none' as const,
+}));
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
@@ -207,22 +213,27 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
   // File preview area (topContent)
   const filePreviewContent = hasFiles ? (
-    <BaseBox
+    <HiddenScrollbarBox
       display="flex"
       flexDirection="row"
       gap="spacing.3"
       paddingTop="spacing.5"
       paddingX="spacing.5"
       overflow="auto"
+      flexWrap="nowrap"
     >
       {files.map((file) => (
         <FileUploadItem
+          flexShrink={0}
+          flexGrow={1}
+          flexBasis={1}
+          minWidth="200px"
           key={file.id ?? file.name}
           file={file}
           onRemove={() => handleFileRemove(file)}
         />
       ))}
-    </BaseBox>
+    </HiddenScrollbarBox>
   ) : null;
 
   // Action bar (bottomContent)

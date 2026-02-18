@@ -186,6 +186,9 @@ type FileUploadItemProps = Pick<
   width?: BoxProps['width'];
   minWidth?: BoxProps['minWidth'];
   maxWidth?: BoxProps['maxWidth'];
+  flexShrink?: BoxProps['flexShrink'];
+  flexGrow?: BoxProps['flexGrow'];
+  flexBasis?: BoxProps['flexBasis'];
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
 
