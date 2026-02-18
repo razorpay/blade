@@ -271,6 +271,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         size="medium"
         padding={makeSpace(theme.spacing[5])}
         borderRadius="large"
+        caretColor="surface.icon.onSea.onSubtle"
         topContent={filePreviewContent}
         bottomContent={actionBarContent}
         inputRowOverlay={

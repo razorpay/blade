@@ -72,6 +72,7 @@ export type StyledBaseInputProps = {
   color?: BaseTextProps['color'];
   disabledColor?: BaseTextProps['color'];
   isInsideCounterInput?: boolean;
+  $caretColor?: string;
 } & Pick<
   BaseInputProps,
   | 'as'

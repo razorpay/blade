@@ -391,6 +391,11 @@ type BaseInputCommonProps = FormInputLabelProps &
     valueSuffix?: React.ReactNode;
     children?: ReactNode;
     /**
+     * Overrides the caret (text cursor) color of the input.
+     * Accepts a Blade color token like `"surface.icon.onSea.onSubtle"`.
+     */
+    caretColor?: string;
+    /**
      * Content rendered inside the input wrapper, above the input row.
      * Used by ChatInput for file previews.
      */
@@ -923,6 +928,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     topContent,
     bottomContent,
     inputRowOverlay,
+    caretColor,
     ...rest
   },
   ref,
@@ -1197,6 +1203,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                       color={color}
                       disabledColor={disabledColor}
                       isInsideCounterInput={isInsideCounterInput}
+                      $caretColor={caretColor}
                       {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                       {...makeAnalyticsAttribute(rest)}
                     />

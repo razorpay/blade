@@ -7,6 +7,7 @@ import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+import getIn from '~utils/lodashButBetter/get';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &
@@ -39,6 +40,9 @@ const getWebInputStyles = (
     }),
     outline: 'none',
     border: 'none',
+    caretColor: props.$caretColor
+      ? getIn(props.theme.colors, props.$caretColor)
+      : undefined,
     '::placeholder': {
       ...getTextStyles({
         size: props.$size,
