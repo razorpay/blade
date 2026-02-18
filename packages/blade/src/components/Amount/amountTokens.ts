@@ -65,17 +65,17 @@ const currencyHardcodedSizes: Record<
     large: { desktop: 12, mobile: 12 },
   },
   heading: {
-    small: { desktop: 17, mobile: 16 },
-    medium: { desktop: 19, mobile: 16 },
-    large: { desktop: 22, mobile: 18 },
-    xlarge: { desktop: 30, mobile: 20 },
-    '2xlarge': { desktop: 37, mobile: 24 },
+    small: { desktop: 17, mobile: 15 },
+    medium: { desktop: 19, mobile: 17 },
+    large: { desktop: 22, mobile: 19 },
+    xlarge: { desktop: 30, mobile: 22 },
+    '2xlarge': { desktop: 37, mobile: 30 },
   },
   display: {
     small: { desktop: 45, mobile: 32 },
     medium: { desktop: 52, mobile: 34 },
     large: { desktop: 60, mobile: 36 },
-    xlarge: { desktop: 66, mobile: 38 },
+    xlarge: { desktop: 66, mobile: 37 },
   },
 };
 
