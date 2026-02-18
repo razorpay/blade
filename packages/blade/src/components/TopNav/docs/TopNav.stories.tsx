@@ -677,22 +677,24 @@ const ELLIPSE_MASK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
   SCENE_WIDTH / 2
 }' cy='${SCENE_HEIGHT / 2}' rx='75.5' ry='17.5' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
 
+const HALF_SCENE_HEIGHT = SCENE_HEIGHT / 2 + 4;
+
 const Scene = styled.div({
   position: 'relative',
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-start',
   gap: 0,
   width: `${SCENE_WIDTH}px`,
-  height: `${SCENE_HEIGHT}px`,
+  height: `${HALF_SCENE_HEIGHT}px`,
   opacity: 0.64,
-  overflow: 'visible',
+  overflow: 'hidden',
   WebkitMaskImage: ELLIPSE_MASK,
   WebkitMaskRepeat: 'no-repeat',
-  WebkitMaskPosition: 'center',
+  WebkitMaskPosition: 'center top',
   maskImage: ELLIPSE_MASK,
   maskRepeat: 'no-repeat',
-  maskPosition: 'center',
+  maskPosition: 'center top',
 });
 
 const BLUR_LAYERS = [
