@@ -801,3 +801,88 @@ const ProgressiveBlurTemplate: StoryFn<typeof TopNav> = () => {
 
 export const ProgressiveBlur = ProgressiveBlurTemplate.bind({});
 ProgressiveBlur.storyName = 'Progressive Blur Experiment';
+
+const SVG_MASK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='157.2734375' height='60.705'%3E%3Cdefs%3E%3Cfilter id='b' filterUnits='userSpaceOnUse' x='0' y='0' width='157.2734375' height='60.705'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='78.63671875' cy='60.705' rx='55.045703124999996' ry='17.5' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
+
+const SvgMaskGlow = styled.div<{ color: string }>(({ color }) => ({
+  width: '157.27px',
+  height: '60.71px',
+  opacity: 0.64,
+  background: color,
+  WebkitMaskImage: SVG_MASK,
+  WebkitMaskRepeat: 'no-repeat',
+  WebkitMaskPosition: 'center',
+  WebkitMaskSize: '100% 100%',
+  maskImage: SVG_MASK,
+  maskRepeat: 'no-repeat',
+  maskPosition: 'center',
+  maskSize: '100% 100%',
+}));
+
+const SvgMaskTemplate: StoryFn<typeof TopNav> = () => {
+  const { theme } = useTheme();
+  const glowColor = theme.colors.surface.background.primary.intense;
+
+  return (
+    <DashboardBackground>
+      <BaseBox backgroundColor="interactive.background.gray.default">
+        <TopNav>
+          <TopNavBrand>
+            <RazorpayLogoWhite />
+          </TopNavBrand>
+          <TopNavContent>
+            <TabNav
+              items={[
+                { title: 'Home', href: '/home', icon: HomeIcon },
+                {
+                  href: '/payments',
+                  title: 'Payments',
+                  icon: AcceptPaymentsIcon,
+                },
+              ]}
+            >
+              {({ items }) => (
+                <TabNavItems>
+                  {items.map((item) => (
+                    <TabNavItemLink key={item.title} title={item.title} href={item.href} />
+                  ))}
+                </TabNavItems>
+              )}
+            </TabNav>
+          </TopNavContent>
+          <TopNavActions>
+            <Avatar size="medium" variant="square" name="Anurag Hazra" />
+          </TopNavActions>
+        </TopNav>
+      </BaseBox>
+
+      <Box padding="spacing.8" backgroundColor="surface.background.gray.moderate" height="100vh">
+        <Heading marginBottom="spacing.4">SVG Mask Glow Experiment</Heading>
+        <Text marginBottom="spacing.7">
+          Uses an inline SVG mask with a Gaussian-blurred ellipse anchored at the bottom, filled
+          with the <code>surface.background.primary.intense</code> token.
+        </Text>
+
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          gap="spacing.8"
+          padding="spacing.10"
+          backgroundColor="surface.background.gray.intense"
+          borderRadius="large"
+        >
+          <SvgMaskGlow color={glowColor} />
+
+          <Box display="flex" gap="spacing.8">
+            <SvgMaskGlow color={glowColor} />
+            <SvgMaskGlow color={glowColor} />
+          </Box>
+        </Box>
+      </Box>
+    </DashboardBackground>
+  );
+};
+
+export const SvgMaskExperiment = SvgMaskTemplate.bind({});
+SvgMaskExperiment.storyName = 'SVG Mask Experiment';

@@ -76,6 +76,7 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
     transitionProperty: 'background',
+    zIndex: 1,
   };
 });
 
