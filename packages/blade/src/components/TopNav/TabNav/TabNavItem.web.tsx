@@ -8,6 +8,7 @@ import { useTabNavContext } from './TabNavContext';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import { opacity } from '~tokens/global';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -40,15 +41,24 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     // reset button styles
     border: 'none',
     background: 'none',
+    opacity: $isActive ? 1 : opacity[1000],
+    transition: `opacity ${makeMotionTime(theme.motion.duration.moderate)} ${
+      theme.motion.easing.standard
+    }`,
     '&[aria-expanded="true"]': $isActive ? {} : {},
     '&:hover': $isActive
       ? {}
       : {
+          opacity: 1,
           color: theme.colors.interactive.text.staticWhite.normal,
         },
     '&:focus-visible': {
       ...getFocusRingStyles({ theme }),
+      opacity: 1,
       color: theme.colors.interactive.text.staticWhite.normal,
+    },
+    '&:active': {
+      opacity: 1,
     },
   };
 });
