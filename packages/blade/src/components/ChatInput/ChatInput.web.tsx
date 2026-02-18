@@ -16,6 +16,7 @@ import { useTheme } from '~components/BladeProvider';
 import { useControllableState } from '~utils/useControllable';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStyledProps } from '~components/Box/styledProps';
+import { useIsMobile } from '~utils/useIsMobile';
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
@@ -60,10 +61,12 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
   const [activeSuggestionIndex, setActiveSuggestionIndex] = React.useState(0);
 
+  const isMobile = useIsMobile();
+
   const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
   const isSubmitDisabled = !hasText && !hasFiles;
-  const showGhostSuggestion = !hasText && Boolean(suggestions?.length);
+  const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
 
   // Auto-grow the textarea based on content
   const adjustTextareaHeight = React.useCallback(() => {
