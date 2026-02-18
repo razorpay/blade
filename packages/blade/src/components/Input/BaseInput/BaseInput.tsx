@@ -392,9 +392,8 @@ type BaseInputCommonProps = FormInputLabelProps &
     children?: ReactNode;
     /**
      * Overrides the caret (text cursor) color of the input.
-     * Accepts a Blade color token like `"surface.icon.onSea.onSubtle"`.
      */
-    caretColor?: string;
+    caretColor?: 'surface.icon.onSea.onSubtle';
     /**
      * Content rendered inside the input wrapper, above the input row.
      * Used by ChatInput for file previews.

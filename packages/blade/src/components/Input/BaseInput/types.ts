@@ -72,7 +72,7 @@ export type StyledBaseInputProps = {
   color?: BaseTextProps['color'];
   disabledColor?: BaseTextProps['color'];
   isInsideCounterInput?: boolean;
-  $caretColor?: string;
+  $caretColor?: 'surface.icon.onSea.onSubtle';
 } & Pick<
   BaseInputProps,
   | 'as'

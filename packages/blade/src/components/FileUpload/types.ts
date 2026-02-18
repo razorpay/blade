@@ -183,7 +183,11 @@ type FileUploadItemProps = Pick<
   'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
 > & {
   file: BladeFile;
-} & DataAnalyticsAttribute;
+  width?: BoxProps['width'];
+  minWidth?: BoxProps['minWidth'];
+  maxWidth?: BoxProps['maxWidth'];
+} & StyledPropsBlade &
+  DataAnalyticsAttribute;
 
 type StyledFileUploadWrapperProps = {
   isDisabled?: boolean;
