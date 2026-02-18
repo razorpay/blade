@@ -543,7 +543,6 @@ const Page = (): React.ReactElement => {
                         <TableFooterCell>-</TableFooterCell>
                         <TableFooterCell>-</TableFooterCell>
                         <TableFooterCell>-</TableFooterCell>
-                        <TableFooterCell>-</TableFooterCell>
                         <TableFooterCell>
                           <Amount value={10} />
                         </TableFooterCell>
@@ -982,7 +981,6 @@ const DefaultExample: StoryFn<typeof ListView> = (args) => {
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>
                     <Amount value={10} />
                   </TableFooterCell>
@@ -1311,7 +1309,6 @@ const ControlledExample: StoryFn<typeof ListView> = (args) => {
               <TableFooter>
                 <TableFooterRow>
                   <TableFooterCell>Total</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
@@ -1659,7 +1656,6 @@ const WithBulkActionExample: StoryFn<typeof ListView> = (args) => {
               <TableFooter>
                 <TableFooterRow>
                   <TableFooterCell>Total</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
@@ -2081,7 +2077,6 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>
                     <Amount value={10} />
                   </TableFooterCell>
@@ -2355,7 +2350,6 @@ const WithoutSearchExample: StoryFn<typeof ListView> = (args) => {
               <TableFooter>
                 <TableFooterRow>
                   <TableFooterCell>Total</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
@@ -2706,7 +2700,6 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
               <TableFooter>
                 <TableFooterRow>
                   <TableFooterCell>Total</TableFooterCell>
-                  <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>

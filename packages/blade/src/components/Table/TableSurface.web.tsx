@@ -24,7 +24,7 @@ const TableSurface = styled(BaseBox)<TableSurfaceProps>(({ theme, colorScheme })
       borderRadius: 'inherit',
       boxShadow: insetBorder, // Inset border layer, drawn on top so it isn't covered by child backgrounds
       pointerEvents: 'none',
-      zIndex: 1,
+      zIndex: 2,
     },
   };
 });

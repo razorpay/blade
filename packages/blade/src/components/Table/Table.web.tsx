@@ -569,6 +569,7 @@ const _Table = <Item,>({
           borderRadius="medium"
           // Clip content to the rounded shape so the border is visible at corners (otherwise inner content covers them)
           overflow="hidden"
+          className='__blade-table-surface'
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           width={isVirtualized ? `100%` : undefined}
