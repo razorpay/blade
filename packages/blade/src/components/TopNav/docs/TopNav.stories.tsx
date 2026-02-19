@@ -223,7 +223,7 @@ const ExploreItem = ({
 const DashboardBackground = styled.div(() => {
   return {
     height: '100vh',
-    background: 'hsla(0, 0%, 0%, 1)',
+    background: '#000000',
   };
 });
 
@@ -245,7 +245,7 @@ const TopNavFullExample = () => {
 
   return (
     <DashboardBackground>
-      <BaseBox backgroundColor="interactive.background.gray.default">
+      <BaseBox>
         <TopNav>
           {isMobile ? (
             <>
@@ -505,7 +505,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
 
   return (
     <DashboardBackground>
-      <BaseBox backgroundColor="interactive.background.gray.default">
+      <BaseBox>
         <TopNav>
           <TopNavBrand>
             <RazorpayLogoWhite />
