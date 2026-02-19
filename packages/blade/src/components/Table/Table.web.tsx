@@ -48,6 +48,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useListViewContext } from '~components/ListView/ListViewContext';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -172,6 +173,7 @@ const _Table = <Item,>({
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
+  const { isInsideListView } = useListViewContext();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
     selectionType !== 'none' ? defaultSelectedIds : [],
   );
@@ -270,7 +272,7 @@ const _Table = <Item,>({
   const tableTheme = useTableTheme({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
-    ${toolbar ? `border-top: ${makeBorderSize(theme.border.width.thin)} solid ${theme.colors.surface.border.gray.muted};` : ''}
+    ${toolbar && !isInsideListView ? `border-top: ${makeBorderSize(theme.border.width.thin)} solid ${theme.colors.surface.border.gray.muted};` : ''}
     ${pagination ? `border-bottom: ${makeBorderSize(theme.border.width.thin)} solid ${theme.colors.surface.border.gray.muted};` : ''}
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns
@@ -548,6 +550,15 @@ const _Table = <Item,>({
 
   return (
     <TableContext.Provider value={tableContext}>
+      <TableSurface
+        colorScheme={colorScheme}
+        borderRadius={isInsideListView ? 'none' : 'medium'}
+        overflow="hidden"
+        isInsideListView={isInsideListView ?? false}
+        // Transparent when inside ListView so the gradient pseudo-elements
+        // on ListViewSurface remain visible through the TableSurface.
+        backgroundColor={isInsideListView ? 'transparent' : 'surface.background.gray.intense'}
+      >
       {isLoading ? (
         <BaseBox
           display="flex"
@@ -555,6 +566,7 @@ const _Table = <Item,>({
           alignItems="center"
           justifyContent="center"
           height={height}
+          paddingX="spacing.10"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           {...makeAnalyticsAttribute(rest)}
@@ -562,13 +574,9 @@ const _Table = <Item,>({
           <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
         </BaseBox>
       ) : (
-        <TableSurface
-          colorScheme={colorScheme}
+        <BaseBox
           flex={1}
           position="relative"
-          borderRadius="medium"
-          // Clip content to the rounded shape so the border is visible at corners (otherwise inner content covers them)
-          overflow="hidden"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           width={isVirtualized ? `100%` : undefined}
@@ -617,8 +625,9 @@ const _Table = <Item,>({
             {children}
           </StyledReactTable>
           {pagination}
-        </TableSurface>
+        </BaseBox>
       )}
+      </TableSurface>
     </TableContext.Provider>
   );
 };

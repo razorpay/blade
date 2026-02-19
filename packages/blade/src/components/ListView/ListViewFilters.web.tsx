@@ -10,6 +10,7 @@ import { SearchInput } from '~components/Input/SearchInput';
 import { useId } from '~utils/useId';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import useTheme from '~components/BladeProvider/useTheme';
 
 const StyledQuickFilterContainer = styled(BaseBox)({
   /* For Webkit (Chrome, Safari) */
@@ -47,7 +48,8 @@ const ListViewFilters = ({
   const searchId = useId('search-input');
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
-
+  const { colorScheme } = useTheme();
+  const isDarkMode = colorScheme === 'dark';
   const showSearchInput = onSearchChange || onSearchClear || searchValuePlaceholder || searchName;
   const isSearchTrailingDropDown =
     React.isValidElement(searchTrailing) && getComponentId(searchTrailing) === 'Dropdown';
@@ -60,62 +62,72 @@ const ListViewFilters = ({
         selectedFiltersCount,
       }}
     >
-      {isMobile && showSearchInput && (
-        <SearchInput
-          label=""
-          value={searchValue}
-          placeholder={searchValuePlaceholder}
-          name={searchNameValue || searchId}
-          onChange={({ name, value }) => onSearchChange?.({ name, value })}
-          onClearButtonClick={onSearchClear}
-          trailing={searchTrailing}
-        />
-      )}
-      <BaseBox>
-        <BaseBox
-          {...metaAttribute({ name: MetaConstants.ListViewFilter, testID })}
-          {...makeAnalyticsAttribute(rest)}
-          display="flex"
-          justifyContent="space-between"
-        >
-          <Box
-            position="relative"
+      <BaseBox
+        backgroundColor="surface.background.gray.intense"
+        paddingX="spacing.3"
+        paddingTop="spacing.3"
+        paddingBottom={children ? 'spacing.0' : 'spacing.3'}
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+        borderBottomStyle="solid"
+      >
+        {isMobile && showSearchInput && (
+          <SearchInput
+            label=""
+            value={searchValue}
+            placeholder={searchValuePlaceholder}
+            name={searchNameValue || searchId}
+            onChange={({ name, value }) => onSearchChange?.({ name, value })}
+            onClearButtonClick={onSearchClear}
+            trailing={searchTrailing}
+          />
+        )}
+        <BaseBox>
+          <BaseBox
+            {...metaAttribute({ name: MetaConstants.ListViewFilter, testID })}
+            {...makeAnalyticsAttribute(rest)}
             display="flex"
-            flexDirection="column"
-            marginRight="spacing.3"
-            flex="1"
-            minWidth="0px"
+            justifyContent="space-between"
           >
-            <StyledQuickFilterContainer
-              overflow="scroll"
-              width="100%"
-              paddingTop={isMobile ? 'spacing.4' : 'spacing.1'}
-              paddingBottom="spacing.1"
-              paddingLeft="spacing.1"
+            <Box
+              position="relative"
+              display="flex"
+              flexDirection="column"
+              marginRight="spacing.3"
+              flex="1"
+              minWidth="0px"
             >
-              {quickFilters}
-            </StyledQuickFilterContainer>
-          </Box>
+              <StyledQuickFilterContainer
+                overflow="scroll"
+                width="100%"
+                paddingTop={isMobile ? 'spacing.4' : 'spacing.1'}
+                paddingBottom="spacing.1"
+                paddingLeft="spacing.1"
+              >
+                {quickFilters}
+              </StyledQuickFilterContainer>
+            </Box>
 
-          <BaseBox display="flex" alignItems="center" flexShrink="0">
-            {!isMobile && showSearchInput && (
-              <Box width={isSearchTrailingDropDown ? '280px' : '208px'}>
-                <SearchInput
-                  label=""
-                  value={searchValue}
-                  placeholder={searchValuePlaceholder}
-                  name={searchNameValue || searchId}
-                  onChange={({ name, value }) => onSearchChange?.({ name, value })}
-                  onClearButtonClick={onSearchClear}
-                  size="medium"
-                  trailing={searchTrailing}
-                />
-              </Box>
-            )}
-            {actions}
+            <BaseBox display="flex" alignItems="center" flexShrink="0">
+              {!isMobile && showSearchInput && (
+                <Box width={isSearchTrailingDropDown ? '280px' : '208px'}>
+                  <SearchInput
+                    label=""
+                    value={searchValue}
+                    placeholder={searchValuePlaceholder}
+                    name={searchNameValue || searchId}
+                    onChange={({ name, value }) => onSearchChange?.({ name, value })}
+                    onClearButtonClick={onSearchClear}
+                    size="medium"
+                    trailing={searchTrailing}
+                  />
+                </Box>
+              )}
+              {actions}
+            </BaseBox>
           </BaseBox>
+          <BaseBox display="flex">{children}</BaseBox>
         </BaseBox>
-        <BaseBox display="flex">{children}</BaseBox>
       </BaseBox>
     </ListViewFiltersProvider>
   );

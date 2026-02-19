@@ -1,31 +1,34 @@
 import styled from 'styled-components';
 import type { ColorSchemeNames } from '~tokens/theme';
-import { getSurfaceBoxShadow } from '~utils/makeSurfaceStyles';
+import { getSurfaceBoxShadow, getSurfaceStyles } from '~utils/makeSurfaceStyles';
 import BaseBox from '~components/Box/BaseBox';
 
 type TableSurfaceProps = {
   colorScheme: ColorSchemeNames;
+  isInsideListView: boolean;
 };
 
-const TableSurface = styled(BaseBox)<TableSurfaceProps>(({ theme, colorScheme }) => {
-  const { border: insetBorder, elevation, top } = getSurfaceBoxShadow(theme, colorScheme);
+const TableSurface = styled(BaseBox)<TableSurfaceProps>(({ theme, colorScheme, isInsideListView }) => {
+  const isDarkMode = colorScheme === 'dark';
+  const { elevation, top } = getSurfaceBoxShadow(theme, colorScheme);
+
   return {
-    // Unlike CardSurface, we don't use the full box-shadow (border + elevation + top) on the main
-    // element. Table has opaque backgrounds on toolbar, table body, and pagination—they sit on top
-    // of the element's box-shadow and hide the inset "border" layer. So we put elevation + top here,
-    // and draw the inset border on ::after with z-index so it stacks above the content and stays visible.
-    boxShadow: `${elevation}, ${top}`,
-    isolation: 'isolate',
+    width: '100%',
+    display: 'flex',
     position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      inset: 0,
-      borderRadius: 'inherit',
-      boxShadow: insetBorder, // Inset border layer, drawn on top so it isn't covered by child backgrounds
-      pointerEvents: 'none',
-      zIndex: 1,
-    },
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    // The inset box-shadow border from getSurfaceStyles is covered by child elements
+    // (e.g. ReactTable) that have opaque backgrounds and fill edge-to-edge.
+    // We override boxShadow to exclude the border layer and use outline instead,
+    // which renders on top of children and stays visible.
+    ...(!isInsideListView && {
+      ...getSurfaceStyles(theme, colorScheme),
+      boxShadow: `${elevation}, ${top}`,
+      outline: isDarkMode
+        ? 'none'
+        : `1px solid ${theme.colors.interactive.border.gray.default}`,
+    }),
   };
 });
 
