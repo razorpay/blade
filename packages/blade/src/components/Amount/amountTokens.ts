@@ -74,7 +74,7 @@ const currencyHardcodedSizes: Record<
   display: {
     small: { desktop: 45, mobile: 32 },
     medium: { desktop: 52, mobile: 34 },
-    large: { desktop: 60, mobile: 36 },
+    large: { desktop: 60, mobile: 37 },
     xlarge: { desktop: 66, mobile: 37 },
   },
 };
