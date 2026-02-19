@@ -62,6 +62,7 @@ const _TopNav = (
         paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
         height={makeSize(TOP_NAV_HEIGHT)}
         zIndex={componentZIndices.topnav}
+        backgroundColor="interactive.background.staticBlack.default"
         {...rest}
         {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
         {...makeAnalyticsAttribute(rest)}
