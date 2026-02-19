@@ -90,6 +90,9 @@ type ThemeSelectorProps = {
   showInternalDemoConfig: boolean;
 };
 
+export const VISA_PRIMARY_COLOR = '#1434cb';
+export const VISA_SECONDARY_COLOR = '#fcc015';
+
 const ThemeSelector = ({
   selectedColor,
   setSelectedColor,
@@ -111,6 +114,7 @@ const ThemeSelector = ({
     '#19BEA2',
     '#5EDD55',
     '#AB1BEE',
+    VISA_PRIMARY_COLOR, // visa primary color
   ];
 
   const handleDebouncedColorChange = debounce((e: React.ChangeEvent<HTMLInputElement>) => {

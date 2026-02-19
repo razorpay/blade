@@ -35,7 +35,7 @@ type ButtonCommonProps = {
    */
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'secondary';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
