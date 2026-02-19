@@ -1,4 +1,4 @@
-import { classes, tableRow } from './tokens';
+import { classes, tableRow, tableBackgroundColor } from './tokens';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
@@ -27,17 +27,17 @@ const getTableActionsHoverStyles = ({
   return {
     // Solid layer 1 background - should match the table background
     [`& .${classes.HOVER_ACTIONS}`]: {
-      backgroundColor: 'transparent',
+      backgroundColor: getIn(theme.colors, tableBackgroundColor),
       transition: rowBackgroundTransition,
     },
     // Alpha layer 2 background - Stripped row background, Hover background in selected state, etc
     [`& .${classes.HOVER_ACTIONS_LAYER2}`]: {
-      backgroundColor: 'transparent',
+      backgroundColor: getIn(theme.colors, backgroundGradientColor ?? 'transparent'),
       transition: rowBackgroundTransition,
     },
     // Alpha layer 3 background - Hover, selection, active background
     [`& .${classes.HOVER_ACTIONS_LAYER3}`]: {
-      background: `linear-gradient(90deg, transparent 0%, ${getIn(theme.colors, 'surface.background.gray.intense')} 10.08%, ${getIn(theme.colors, 'surface.background.gray.intense')} 100%)`,
+      background: getIn(theme.colors, hoverColor),
       transition: rowBackgroundTransition,
     },
   };

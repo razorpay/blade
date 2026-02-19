@@ -272,7 +272,7 @@ const _Table = <Item,>({
   const tableTheme = useTableTheme({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
-    ${toolbar ? `border-top: ${makeBorderSize(theme.border.width.thin)} solid ${theme.colors.surface.border.gray.muted};` : ''}
+    ${toolbar && !isInsideListView ? `border-top: ${makeBorderSize(theme.border.width.thin)} solid ${theme.colors.surface.border.gray.muted};` : ''}
     ${pagination ? `border-bottom: ${makeBorderSize(theme.border.width.thin)} solid ${theme.colors.surface.border.gray.muted};` : ''}
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns

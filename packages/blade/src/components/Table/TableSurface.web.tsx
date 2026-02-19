@@ -28,7 +28,7 @@ const TableSurface = styled(BaseBox)<TableSurfaceProps>(({ theme, colorScheme, i
       position: 'absolute',
       inset: 0,
       borderRadius: 'inherit',
-      boxShadow: `${insetBorder}, ${top}`,
+      boxShadow: isDarkMode ? `${insetBorder}, ${top}` : `${insetBorder}`,
       pointerEvents: 'none',
       zIndex: 2,
     },
