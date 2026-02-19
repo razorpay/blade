@@ -83,6 +83,7 @@ export const MetaConstants = {
   TabNavItems: 'tab-nav-items',
   TabNavItem: 'tab-nav-item',
   TabNavItemLink: 'tab-nav-item-link',
+  TabNavIndicator: 'tab-nav-indicator',
   ProgressBar: 'progress-bar',
   Radio: 'radio',
   RadioGroup: 'radio-group',

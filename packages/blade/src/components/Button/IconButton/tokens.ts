@@ -5,9 +5,14 @@ const highlightedButtonSizeMap = {
   medium: size['32'],
 } as const;
 
+const highlightedBorderRadiusMap = {
+  small: 'small',
+  medium: 'medium',
+} as const;
+
 const highlightedHoverColorMap = {
   intense: 'interactive.background.gray.fadedHighlighted',
   subtle: 'interactive.background.staticWhite.faded',
 } as const;
 
-export { highlightedButtonSizeMap, highlightedHoverColorMap };
+export { highlightedButtonSizeMap, highlightedBorderRadiusMap, highlightedHoverColorMap };
