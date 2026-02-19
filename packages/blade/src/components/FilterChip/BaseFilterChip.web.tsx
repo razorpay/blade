@@ -90,7 +90,7 @@ const renderValue = (
   if (selectionType === 'multiple' && Array.isArray(value)) {
     return (
       <Box display="flex" alignItems="center">
-        <Counter value={value.length} color={isDisabled ? 'neutral' : 'primary'} size="small" />
+        <Counter value={value.length} color="neutral" size="small" />
       </Box>
     );
   }
@@ -99,7 +99,7 @@ const renderValue = (
     <Text
       as="span"
       size="small"
-      weight="semibold"
+      weight="medium"
       color={isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.normal'}
     >
       {value}
