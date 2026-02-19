@@ -109,7 +109,7 @@ const _TableToolbar = ({
           </BaseBox>
 
           {selectionType !== 'none' && (
-            <BaseBox display="flex" marginLeft="spacing.3" height="100%">
+            <BaseBox display="flex" marginLeft="spacing.3" height="spacing.6">
               <Divider orientation="vertical" thickness="thick" />
               {deselectButton}
             </BaseBox>

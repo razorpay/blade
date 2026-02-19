@@ -48,6 +48,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useListViewContext } from '~components/ListView/ListViewContext';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -172,6 +173,7 @@ const _Table = <Item,>({
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
+  const { isInsideListView } = useListViewContext();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
     selectionType !== 'none' ? defaultSelectedIds : [],
   );
@@ -567,9 +569,10 @@ const _Table = <Item,>({
           flex={1}
           position="relative"
           borderRadius="medium"
-          // Clip content to the rounded shape so the border is visible at corners (otherwise inner content covers them)
+          borderTopLeftRadius={isInsideListView ? 'none' : undefined}
+          borderTopRightRadius={isInsideListView ? 'none' : undefined}
           overflow="hidden"
-          className='__blade-table-surface'
+          isInsideListView={isInsideListView ?? false}
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           width={isVirtualized ? `100%` : undefined}

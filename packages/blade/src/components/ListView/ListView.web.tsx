@@ -1,16 +1,19 @@
 import type { ListViewProps } from './types';
-import { StyledListView } from './StyledListView';
+import { ListViewProvider } from './ListViewContext';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import BaseBox from '~components/Box/BaseBox';
 
 const ListView = ({ testID, children, ...rest }: ListViewProps): React.ReactElement => {
   return (
-    <StyledListView
-      {...metaAttribute({ name: MetaConstants.ListView, testID })}
-      {...makeAnalyticsAttribute(rest)}
-    >
-      {children}
-    </StyledListView>
+    <ListViewProvider value={{ isInsideListView: true }}>
+      <BaseBox
+        {...metaAttribute({ name: MetaConstants.ListView, testID })}
+        {...makeAnalyticsAttribute(rest)}
+      >
+        {children}
+      </BaseBox>
+    </ListViewProvider>
   );
 };
 

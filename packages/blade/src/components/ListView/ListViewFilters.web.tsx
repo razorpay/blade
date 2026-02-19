@@ -10,6 +10,7 @@ import { SearchInput } from '~components/Input/SearchInput';
 import { useId } from '~utils/useId';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import useTheme from '~components/BladeProvider/useTheme';
 
 const filtersContainerBorderRadius = {
   borderTopLeftRadius: 'medium',
@@ -54,7 +55,8 @@ const ListViewFilters = ({
   const searchId = useId('search-input');
   const searchNameValue = searchName || searchId;
   const isMobile = useIsMobile();
-
+  const { colorScheme } = useTheme();
+  const isDarkMode = colorScheme === 'dark';
   const showSearchInput = onSearchChange || onSearchClear || searchValuePlaceholder || searchName;
   const isSearchTrailingDropDown =
     React.isValidElement(searchTrailing) && getComponentId(searchTrailing) === 'Dropdown';
@@ -68,13 +70,14 @@ const ListViewFilters = ({
       }}
     >
       <BaseBox
-        backgroundColor="surface.background.gray.moderate"
+        backgroundColor="surface.background.gray.intense"
         paddingX="spacing.3"
         paddingTop="spacing.3"
         paddingBottom="spacing.0"
         borderWidth="thin"
         borderColor="surface.border.gray.muted"
         borderBottomWidth="none"
+        borderTopColor={isDarkMode ? 'surface.border.gray.subtle' : undefined}
         {...filtersContainerBorderRadius}
       >
         {isMobile && showSearchInput && (
