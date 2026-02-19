@@ -61,7 +61,6 @@ const _TableToolbar = ({
     deselectAllRows,
     currentPaginationState,
     totalItems,
-    backgroundColor,
     tableToolbarPlacement,
   } = useTableContext();
   const { platform } = useTheme();
