@@ -28,7 +28,7 @@ const StyledTabNavIndicatorLine = styled(BaseBox)(({ theme }) => {
 });
 
 const GLOW_OVERFLOW = 32;
-const GLOW_HEIGHT = size[44];
+const GLOW_HEIGHT = size[56];
 
 const buildGlowMask = (width: number, height: number = GLOW_HEIGHT): string => {
   const cx = width / 2;
