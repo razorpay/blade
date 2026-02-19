@@ -549,6 +549,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onBlur={onBlur}
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}
+      // @ts-ignore: onMouseMove is web-only, not available on native StyledBaseButton
       onMouseMove={(event: React.MouseEvent<HTMLButtonElement>) => {
         // TODO(spark): enable once design figures out animations
         (onMouseMove as ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined)?.(event);
