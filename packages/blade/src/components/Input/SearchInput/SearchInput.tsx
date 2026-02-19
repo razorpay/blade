@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -24,6 +24,12 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { useTopNavContext } from '~components/TopNav/TopNavContext';
+import { useTheme } from '~components/BladeProvider';
+import type { Theme } from '~components/BladeProvider';
+import { ThemeContext } from '~components/BladeProvider/useTheme';
+import { bladeTheme } from '~tokens/theme';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -151,6 +157,27 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   } = useDropdown();
   const isInsideDropdown = dropdownTriggerer === 'SearchInput';
 
+  const topNavContext = useTopNavContext();
+  const { platform } = useTheme();
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const searchContainerRef = React.useRef<BladeElementRef>(null);
+
+  // When inside TopNav, override the input wrapper's transition duration to 200ms
+  // so the background-color animates smoothly when switching between dark/light themes on focus
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useLayoutEffect(() => {
+    if (topNavContext && searchContainerRef.current) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const container = searchContainerRef.current as any;
+      const inputWrapper = container.querySelector?.(
+        '.__blade-base-input-wrapper',
+      ) as HTMLElement | null;
+      if (inputWrapper) {
+        inputWrapper.style.setProperty('transition-duration', '200ms', 'important');
+      }
+    }
+  });
+
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
   }, [defaultValue, value]);
@@ -252,8 +279,8 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     return null;
   };
 
-  return (
-    <BaseBox position="relative">
+  const searchContent = (
+    <BaseBox position="relative" ref={topNavContext ? (searchContainerRef as never) : undefined}>
       <BaseInput
         id="searchinput"
         componentName={MetaConstants.SearchInput}
@@ -297,8 +324,14 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
           }
           onClick?.(e);
         }}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onFocus={(e) => {
+          if (topNavContext) setIsSearchFocused(true);
+          onFocus?.(e);
+        }}
+        onBlur={(e) => {
+          if (topNavContext) setIsSearchFocused(false);
+          onBlur?.(e);
+        }}
         onSubmit={onSubmit}
         isDisabled={isDisabled}
         leadingIcon={showSearchIcon ? SearchIcon : undefined}
@@ -317,6 +350,35 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
       />
     </BaseBox>
   );
+
+  if (topNavContext) {
+    const targetColorScheme = isSearchFocused ? topNavContext.colorScheme : 'dark';
+    const searchTheme: Theme = {
+      ...bladeTheme,
+      colors: targetColorScheme === 'dark' ? bladeTheme.colors.onDark : bladeTheme.colors.onLight,
+      elevation:
+        targetColorScheme === 'dark' ? bladeTheme.elevation.onDark : bladeTheme.elevation.onLight,
+      typography: bladeTheme.typography[platform],
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const noop = (): void => {};
+
+    return (
+      <ThemeContext.Provider
+        value={{
+          theme: searchTheme,
+          colorScheme: targetColorScheme,
+          setColorScheme: noop,
+          platform,
+        }}
+      >
+        <StyledThemeProvider theme={searchTheme}>{searchContent}</StyledThemeProvider>
+      </ThemeContext.Provider>
+    );
+  }
+
+  return searchContent;
 };
 
 const SearchInput = assignWithoutSideEffects(React.forwardRef(_SearchInput), {

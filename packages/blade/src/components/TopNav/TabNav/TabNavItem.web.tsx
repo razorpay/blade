@@ -5,23 +5,25 @@ import React from 'react';
 import styled from 'styled-components';
 import type { TabNavItemProps } from './types';
 import { useTabNavContext } from './TabNavContext';
-import { MIXED_BG_COLOR } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
-import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import { opacity } from '~tokens/global';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
-import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 
 const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
   return {
     ...getTextStyles({
       theme,
       size: 'medium',
-      weight: 'medium',
-      color: $isActive ? 'interactive.text.gray.normal' : 'interactive.text.gray.subtle',
+      weight: $isActive ? 'semibold' : 'medium',
+      color: $isActive ? 'surface.text.staticWhite.normal' : 'surface.text.staticWhite.subtle',
     }),
     flex: 1,
     display: 'flex',
@@ -39,76 +41,42 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     // reset button styles
     border: 'none',
     background: 'none',
-    '&[aria-expanded="true"]': $isActive
-      ? {}
-      : {
-          backgroundColor: theme.colors.interactive.background.gray.default,
-        },
+    opacity: $isActive ? 1 : opacity[1000],
+    transition: `opacity ${makeMotionTime(theme.motion.duration.moderate)} ${
+      theme.motion.easing.standard
+    }`,
+    '&[aria-expanded="true"]': $isActive ? {} : {},
     '&:hover': $isActive
       ? {}
       : {
-          backgroundColor: theme.colors.interactive.background.gray.default,
+          opacity: 1,
+          color: theme.colors.interactive.text.staticWhite.normal,
         },
+    '&:focus-visible': {
+      ...getFocusRingStyles({ theme }),
+      opacity: 1,
+      color: theme.colors.interactive.text.staticWhite.normal,
+    },
+    '&:active': {
+      opacity: 1,
+    },
   };
 });
 
 const StyledTabNavItemWrapper = styled(BaseBox)<{
   isActive?: boolean;
 }>(({ theme, isActive }) => {
-  const dividerHiderStyle = {
-    content: '""',
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    width: makeSize(size[1]),
-    height: makeSize(size[16]),
-    backgroundColor: MIXED_BG_COLOR,
-  } as const;
-
   return {
     position: 'relative',
     flexShrink: 0,
     padding: `${makeSpace(theme.spacing[2])} ${makeSpace(theme.spacing[1])}`,
-    backgroundColor: isActive ? theme.colors.surface.background.gray.moderate : 'transparent',
+    backgroundColor: 'transparent',
     borderColor: isActive ? theme.colors.surface.border.gray.muted : 'transparent',
-    borderStyle: 'solid',
-    borderWidth: makeBorderSize(theme.border.width.thin),
-    borderBottomWidth: 0,
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
     transitionProperty: 'background',
-
-    // Hide the left and right divider by overlaying them with a pseudo element as same color as the background
-    ...(isActive
-      ? {
-          ':before, :after': dividerHiderStyle,
-          ':before': {
-            left: -2,
-          },
-          ':after': {
-            right: -2,
-          },
-        }
-      : {}),
-  };
-});
-
-const SelectedBar = styled(BaseBox)<{ isActive?: boolean }>(({ theme, isActive }) => {
-  return {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: makeSpace(theme.spacing[1]),
-    borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
-    borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
-    backgroundColor: theme.colors.interactive.icon.gray.normal,
-    pointerEvents: 'none',
-    // Animation
-    opacity: isActive ? 1 : 0,
-    transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
-    transitionProperty: 'opacity',
+    zIndex: 1,
   };
 });
 
@@ -118,6 +86,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     title,
     isActive,
     icon: Icon,
+    selectedStateIcon: SelectedStateIcon,
     trailing,
     accessibilityLabel,
     href,
@@ -126,6 +95,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     __isInsideTabNavItems,
     // @ts-expect-error - This prop is only used internally
     __index,
+    indicatorGlowColor,
     ...props
   },
   ref,
@@ -152,33 +122,40 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     });
   }, [__isInsideTabNavItems, __index, setControlledItems]);
 
+  const ResolvedIcon = isActive && SelectedStateIcon ? SelectedStateIcon : Icon;
+
   return (
     <StyledTabNavItemWrapper
       ref={bodyRef}
       isActive={isActive}
+      data-active={isActive ? 'true' : 'false'}
+      data-glow-color={indicatorGlowColor || undefined}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
-      <SelectedBar isActive={isActive} />
-      <StyledTabNavItem
-        ref={ref}
-        as={as ?? (href ? 'a' : 'button')}
-        to={href}
-        href={as ? undefined : href}
-        target={target}
-        $isActive={isActive}
-        {...props}
-        {...metaAttribute({ name: MetaConstants.TabNavItemLink })}
-        {...makeAccessible({ label: accessibilityLabel, current: isActive })}
-      >
-        {Icon ? (
-          <Icon
-            size="large"
-            color={isActive ? 'interactive.icon.gray.normal' : 'surface.icon.gray.subtle'}
-          />
-        ) : null}
-        {title}
-        {trailing ? trailing : null}
-      </StyledTabNavItem>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        <StyledTabNavItem
+          ref={ref}
+          as={as ?? (href ? 'a' : 'button')}
+          to={href}
+          href={as ? undefined : href}
+          target={target}
+          $isActive={isActive}
+          {...props}
+          {...metaAttribute({ name: MetaConstants.TabNavItemLink })}
+          {...makeAccessible({ label: accessibilityLabel, current: isActive })}
+        >
+          {ResolvedIcon ? (
+            <ResolvedIcon
+              size="medium"
+              color={
+                isActive ? 'surface.icon.staticWhite.normal' : 'surface.icon.staticWhite.subtle'
+              }
+            />
+          ) : null}
+          {title}
+          {trailing ? trailing : null}
+        </StyledTabNavItem>
+      </BladeProvider>
     </StyledTabNavItemWrapper>
   );
 };

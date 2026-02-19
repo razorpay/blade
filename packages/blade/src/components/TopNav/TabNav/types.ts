@@ -46,6 +46,13 @@ type TabNavItemProps = {
    */
   icon?: IconComponent;
   /**
+   * Icon to display when the TabNavItem is in the selected (active) state.
+   * When provided and `isActive` is true, this icon is rendered instead of `icon`.
+   *
+   * @default undefined
+   */
+  selectedStateIcon?: IconComponent;
+  /**
    * Element to render after the navigation item.
    *
    * @default undefined
@@ -59,6 +66,13 @@ type TabNavItemProps = {
    * Accessibility label for the navigation item.
    */
   accessibilityLabel?: string;
+  /**
+   * Custom color for the indicator glow effect when this item is active.
+   * Accepts any valid CSS color string (hex, rgb, token-resolved value, etc.)
+   *
+   * @default theme.colors.surface.background.primary.intense
+   */
+  indicatorGlowColor?: string;
 } & MenuTriggerProps;
 
 type Item = TabNavItemProps & {
