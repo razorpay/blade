@@ -98,7 +98,7 @@ const renderValue = (
   return (
     <Text
       as="span"
-      size="medium"
+      size="small"
       weight="semibold"
       color={isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.normal'}
     >
@@ -153,7 +153,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
       >
         <Box display="flex" gap="spacing.2" whiteSpace="nowrap" alignItems="center">
           <Text
-            size="medium"
+            size="small"
             weight="medium"
             color="interactive.text.gray.muted"
             truncateAfterLines={1}
