@@ -27,7 +27,7 @@ const StyledTabNavIndicatorLine = styled(BaseBox)(({ theme }) => {
   };
 });
 
-const GLOW_OVERFLOW = 24;
+const GLOW_OVERFLOW = 32;
 const GLOW_HEIGHT = size[44];
 
 const buildGlowMask = (width: number, height: number = GLOW_HEIGHT): string => {
@@ -46,7 +46,7 @@ const StyledIndicatorGlow = styled.div<{ glowColor: string; glowWidth: number }>
       left: `${-GLOW_OVERFLOW}px`,
       width: `${totalWidth}px`,
       height: `${GLOW_HEIGHT}px`,
-      opacity: 0.64,
+      opacity: 0.8,
       background: `radial-gradient(50% 100% at 50% 100%, ${glowColor} 0%, transparent 100%)`,
       WebkitMaskImage: mask,
       WebkitMaskRepeat: 'no-repeat',
