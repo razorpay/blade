@@ -5,24 +5,30 @@ import BaseBox from '~components/Box/BaseBox';
 
 type TableSurfaceProps = {
   colorScheme: ColorSchemeNames;
+  isInsideListView: boolean;
 };
 
-const TableSurface = styled(BaseBox)<TableSurfaceProps>(({ theme, colorScheme }) => {
+const TableSurface = styled(BaseBox)<TableSurfaceProps>(({ theme, colorScheme, isInsideListView }) => {
   const { border: insetBorder, elevation, top } = getSurfaceBoxShadow(theme, colorScheme);
+  const isDarkMode = colorScheme === 'dark';
+
   return {
-    // Unlike CardSurface, we don't use the full box-shadow (border + elevation + top) on the main
-    // element. Table has opaque backgrounds on toolbar, table body, and pagination—they sit on top
-    // of the element's box-shadow and hide the inset "border" layer. So we put elevation + top here,
-    // and draw the inset border on ::after with z-index so it stacks above the content and stays visible.
-    boxShadow: `${elevation}, ${top}`,
+    // Table children (toolbar, body, pagination) have opaque backgrounds that cover inset
+    // box-shadow layers on the main element. We keep only the outer elevation shadow here
+    // and draw inset layers (border + top) on ::after with z-index so they stay visible
+    // above child backgrounds — particularly pagination which covers the top inset shadow.
+    boxShadow: `${elevation}`,
     isolation: 'isolate',
     position: 'relative',
+    borderTop: isDarkMode ? `1px solid ${theme.colors.surface.border.gray.subtle}` : '',
+    border: isDarkMode && isInsideListView ? `1px solid ${theme.colors.surface.border.gray.subtle}` : '',
+
     '&::after': {
       content: '""',
       position: 'absolute',
       inset: 0,
       borderRadius: 'inherit',
-      boxShadow: insetBorder, // Inset border layer, drawn on top so it isn't covered by child backgrounds
+      boxShadow: `${insetBorder}, ${top}`,
       pointerEvents: 'none',
       zIndex: 2,
     },
