@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import type { ColorSchemeNames } from '~tokens/theme';
-import { getSurfaceBoxShadow } from '~utils/makeSurfaceStyles';
+import { getSurfaceBoxShadow, getSurfaceStyles } from '~utils/makeSurfaceStyles';
 import BaseBox from '~components/Box/BaseBox';
 
 type TableSurfaceProps = {
@@ -9,29 +9,26 @@ type TableSurfaceProps = {
 };
 
 const TableSurface = styled(BaseBox)<TableSurfaceProps>(({ theme, colorScheme, isInsideListView }) => {
-  const { border: insetBorder, elevation, top } = getSurfaceBoxShadow(theme, colorScheme);
   const isDarkMode = colorScheme === 'dark';
+  const { elevation, top } = getSurfaceBoxShadow(theme, colorScheme);
 
   return {
-    // Table children (toolbar, body, pagination) have opaque backgrounds that cover inset
-    // box-shadow layers on the main element. We keep only the outer elevation shadow here
-    // and draw inset layers (border + top) on ::after with z-index so they stay visible
-    // above child backgrounds — particularly pagination which covers the top inset shadow.
-    boxShadow: `${elevation}`,
-    isolation: 'isolate',
+    width: '100%',
+    display: 'flex',
     position: 'relative',
-    borderTop: isDarkMode ? `1px solid ${theme.colors.surface.border.gray.subtle}` : '',
-    border: isDarkMode && isInsideListView ? `1px solid ${theme.colors.surface.border.gray.subtle}` : '',
-
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      inset: 0,
-      borderRadius: 'inherit',
-      boxShadow: isDarkMode ? `${insetBorder}, ${top}` : `${insetBorder}`,
-      pointerEvents: 'none',
-      zIndex: 2,
-    },
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    // The inset box-shadow border from getSurfaceStyles is covered by child elements
+    // (e.g. ReactTable) that have opaque backgrounds and fill edge-to-edge.
+    // We override boxShadow to exclude the border layer and use outline instead,
+    // which renders on top of children and stays visible.
+    ...(!isInsideListView && {
+      ...getSurfaceStyles(theme, colorScheme),
+      boxShadow: `${elevation}, ${top}`,
+      outline: isDarkMode
+        ? 'none'
+        : `1px solid ${theme.colors.interactive.border.gray.default}`,
+    }),
   };
 });
 

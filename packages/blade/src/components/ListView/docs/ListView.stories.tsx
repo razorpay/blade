@@ -1394,7 +1394,11 @@ const WithBulkActionExample: StoryFn<typeof ListView> = (args) => {
   const isMobile = useIsMobile();
 
   return (
-    <BaseBox height="100%">
+    <BaseBox 
+      backgroundColor="surface.background.gray.moderate"
+      padding="spacing.8"
+      height="100vh"
+    >
       {isMobile && (
         <SearchInput
           label=""
@@ -1660,6 +1664,7 @@ const WithBulkActionExample: StoryFn<typeof ListView> = (args) => {
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>-</TableFooterCell>
+                  <TableFooterCell>-</TableFooterCell>
                   <TableFooterCell>
                     <Amount value={10} />
                   </TableFooterCell>
@@ -1796,7 +1801,11 @@ const MultiSelectQuickFilter: StoryFn<typeof ListView> = (args) => {
   const isMobile = useIsMobile();
 
   return (
-    <BaseBox height="100%">
+    <BaseBox 
+      backgroundColor="surface.background.gray.moderate"
+      padding="spacing.8" 
+      height="100vh"
+    >
       {isMobile && (
         <SearchInput
           label=""

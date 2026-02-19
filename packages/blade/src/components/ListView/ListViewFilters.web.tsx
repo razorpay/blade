@@ -12,13 +12,6 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import useTheme from '~components/BladeProvider/useTheme';
 
-const filtersContainerBorderRadius = {
-  borderTopLeftRadius: 'medium',
-  borderTopRightRadius: 'medium',
-  borderBottomLeftRadius: 'none',
-  borderBottomRightRadius: 'none',
-} as const;
-
 const StyledQuickFilterContainer = styled(BaseBox)({
   /* For Webkit (Chrome, Safari) */
   '::-webkit-scrollbar': {
@@ -73,12 +66,10 @@ const ListViewFilters = ({
         backgroundColor="surface.background.gray.intense"
         paddingX="spacing.3"
         paddingTop="spacing.3"
-        paddingBottom="spacing.0"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
-        borderBottomWidth="none"
-        borderTopColor={isDarkMode ? 'surface.border.gray.subtle' : undefined}
-        {...filtersContainerBorderRadius}
+        paddingBottom={children ? 'spacing.0' : 'spacing.3'}
+        borderBottomWidth="thin"
+        borderBottomColor="surface.border.gray.muted"
+        borderBottomStyle="solid"
       >
         {isMobile && showSearchInput && (
           <SearchInput

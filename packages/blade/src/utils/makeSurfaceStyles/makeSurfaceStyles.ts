@@ -1,6 +1,7 @@
-import { colors } from '~tokens/global';
+import { colors, size } from '~tokens/global';
 import type { ColorSchemeNames } from '~tokens/theme';
 import type { Theme } from '~components/BladeProvider';
+import { makeSpace } from '~utils/makeSpace';
 
 export type SurfaceBoxShadow = {
   elevation: string;
@@ -83,10 +84,61 @@ const surfaceGradientsByScheme: Record<ColorSchemeNames, SurfaceGradients> = {
 
 /**
  * Returns the surface gradient colors (top and bottom) for Card-style overlays.
- * Used by CardSurface only; not consumed by Table.
  *
  * @param colorScheme - 'light' | 'dark'
  * @returns Object with top and bottom gradient { start, end } colors
  */
 export const getSurfaceGradients = (colorScheme: ColorSchemeNames): SurfaceGradients =>
   surfaceGradientsByScheme[colorScheme];
+
+/**
+ * Returns the common surface decoration styles (box-shadow, border, gradients)
+ * for use in Card, Table, ListView, and other elevated surfaces.
+ * Spread this into a styled-component's return object alongside layout styles.
+ */
+export const getSurfaceStyles = (
+  theme: Theme,
+  colorScheme: ColorSchemeNames,
+  options?: { beforeGradientZIndex?: number; afterGradientZIndex?: number },
+): Record<string, unknown> => {
+  const isDarkMode = colorScheme === 'dark';
+  const boxShadow = getSurfaceBoxShadowString(theme, colorScheme);
+  const { top: topGradientColor, bottom: bottomGradientColor } = getSurfaceGradients(colorScheme);
+  const beforeGradientZIndex = options?.beforeGradientZIndex ?? -1;
+  const afterGradientZIndex = options?.afterGradientZIndex ?? -1;
+
+  return {
+    boxShadow,
+    border: 'none',
+    borderTop: isDarkMode ? `1px solid ${theme.colors.surface.border.gray.subtle}` : '',
+    isolation: 'isolate',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: isDarkMode ? 0 : 1,
+      left: 1,
+      right: 1,
+      height: makeSpace(size[16]),
+      background: `linear-gradient(${topGradientColor.start} 0%, ${topGradientColor.end} 100%)`,
+      pointerEvents: 'none',
+      borderRadius: 'inherit',
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+      zIndex: beforeGradientZIndex,
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: isDarkMode ? 1 : 2,
+      left: 1,
+      right: 1,
+      height: makeSpace(size[16]),
+      background: `linear-gradient(${bottomGradientColor.start} 0%, ${bottomGradientColor.end} 100%)`,
+      pointerEvents: 'none',
+      borderRadius: 'inherit',
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0,
+      zIndex: afterGradientZIndex,
+    },
+  };
+};

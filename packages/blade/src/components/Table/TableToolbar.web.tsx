@@ -87,7 +87,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor={backgroundColor}>
+    <BaseBox>
       <ToolbarWrapper
         display="flex"
         backgroundColor={tableToolbar.backgroundColor}
