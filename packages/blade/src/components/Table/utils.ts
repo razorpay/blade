@@ -1,4 +1,4 @@
-import { classes, tableRow, tableBackgroundColor } from './tokens';
+import { classes, tableRow } from './tokens';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
