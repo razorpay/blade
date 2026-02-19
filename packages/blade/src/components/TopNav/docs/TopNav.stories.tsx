@@ -23,8 +23,10 @@ import type { IconComponent } from '~components/Icons';
 import {
   SearchIcon,
   AcceptPaymentsIcon,
+  AcceptPaymentsFilledIcon,
   AwardIcon,
   ShoppingBagIcon,
+  MagicCheckoutFilledIcon,
   ChevronDownIcon,
   ActivityIcon,
   AnnouncementIcon,
@@ -36,10 +38,13 @@ import {
   PaymentLinkIcon,
   PaymentPagesIcon,
   RazorpayxPayrollIcon,
+  RazorpayxPayrollFilledIcon,
+  UserIcon,
+  RayIcon,
 } from '~components/Icons';
-import { RazorpayLogo } from '~components/SideNav/docs/RazorpayLogo';
+import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';
-import { Button } from '~components/Button';
+import { IconButton } from '~components/Button/IconButton';
 import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
 import { Heading, Text } from '~components/Typography';
@@ -57,6 +62,9 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
 import BaseBox from '~components/Box/BaseBox';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = (): void => {};
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -175,14 +183,11 @@ const TabNavItemLink = React.forwardRef<
   }
 >((props, ref) => {
   const location = useLocation();
-  return (
-    <TabNavItem
-      ref={ref}
-      {...props}
-      as={Link}
-      isActive={isItemActive(location, { href: props.href, activeOnLinks: props.activeOnLinks })}
-    />
-  );
+  const isActive = isItemActive(location, {
+    href: props.href,
+    activeOnLinks: props.activeOnLinks,
+  });
+  return <TabNavItem ref={ref} {...props} as={Link} isActive={isActive} />;
 });
 
 const ExploreItem = ({
@@ -218,7 +223,7 @@ const ExploreItem = ({
 const DashboardBackground = styled.div(() => {
   return {
     height: '100vh',
-    background: 'hsla(210,40%,98%,1)',
+    background: '#000000',
   };
 });
 
@@ -240,7 +245,7 @@ const TopNavFullExample = () => {
 
   return (
     <DashboardBackground>
-      <BaseBox backgroundColor="interactive.background.gray.default">
+      <BaseBox>
         <TopNav>
           {isMobile ? (
             <>
@@ -277,28 +282,36 @@ const TopNavFullExample = () => {
           ) : (
             <>
               <TopNavBrand>
-                <RazorpayLogo />
+                <RazorpayLogoWhite />
               </TopNavBrand>
               <TopNavContent>
                 <TabNav
                   items={[
-                    { title: 'Home', href: '/home', icon: HomeIcon },
+                    {
+                      title: 'Ray',
+                      href: '/home',
+                      icon: RayIcon,
+                      indicatorGlowColor: theme.colors.surface.icon.onSea.onSubtle,
+                    },
                     {
                       href: '/payroll',
                       title: 'Payroll',
                       icon: RazorpayxPayrollIcon,
+                      selectedStateIcon: RazorpayxPayrollFilledIcon,
                       description: 'Automate payroll with ease.',
                     },
                     {
                       href: '/payments',
                       title: 'Payments',
                       icon: AcceptPaymentsIcon,
+                      selectedStateIcon: AcceptPaymentsFilledIcon,
                       description: 'Manage payments effortlessly.',
                     },
                     {
                       href: '/magic-checkout',
                       title: 'Magic Checkout',
                       icon: ShoppingBagIcon,
+                      selectedStateIcon: MagicCheckoutFilledIcon,
                       description: 'Fast, one-click checkout.',
                     },
                     {
@@ -317,22 +330,15 @@ const TopNavFullExample = () => {
                     return (
                       <>
                         <TabNavItems>
-                          {items.map((item) => {
-                            return (
-                              <TabNavItemLink
-                                key={item.title}
-                                title={item.title}
-                                href={item.href}
-                                icon={item.icon}
-                              />
-                            );
-                          })}
+                          {items.map((item) => (
+                            <TabNavItemLink key={item.title} {...item} />
+                          ))}
                         </TabNavItems>
                         {overflowingItems.length ? (
                           <Menu openInteraction="hover">
                             <TabNavItem
                               title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
-                              trailing={<ChevronDownIcon />}
+                              trailing={<ChevronDownIcon color="surface.icon.staticWhite.subtle" />}
                               isActive={Boolean(activeProduct)}
                             />
                             <MenuOverlay>
@@ -377,10 +383,11 @@ const TopNavFullExample = () => {
               <TopNavActions>
                 {isTablet ? (
                   <Tooltip content="Search in payments">
-                    <Button
+                    <IconButton
                       size={isMobile ? 'small' : 'medium'}
-                      variant="tertiary"
                       icon={SearchIcon}
+                      onClick={noop}
+                      accessibilityLabel="Search in payments"
                     />
                   </Tooltip>
                 ) : (
@@ -390,21 +397,32 @@ const TopNavFullExample = () => {
                   />
                 )}
                 <Tooltip content="View Ecosystem Health">
-                  <Button
+                  <IconButton
                     size={isMobile ? 'small' : 'medium'}
-                    variant="tertiary"
                     icon={ActivityIcon}
+                    onClick={noop}
+                    accessibilityLabel="View Ecosystem Health"
+                    isHighlighted={true}
                   />
                 </Tooltip>
                 <Tooltip content="View Announcements">
-                  <Button
+                  <IconButton
                     size={isMobile ? 'small' : 'medium'}
-                    variant="tertiary"
                     icon={AnnouncementIcon}
+                    onClick={noop}
+                    accessibilityLabel="View Announcements"
+                    isHighlighted={true}
                   />
                 </Tooltip>
                 <Menu openInteraction="click">
-                  <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                  <IconButton
+                    icon={UserIcon}
+                    size={isMobile ? 'small' : 'medium'}
+                    accessibilityLabel="User Icon"
+                    onClick={noop}
+                    isHighlighted={true}
+                  />
+                  {/* <Avatar size="medium" variant="square" name="Anurag Hazra" /> */}
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
                     <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -487,10 +505,10 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
 
   return (
     <DashboardBackground>
-      <BaseBox backgroundColor="interactive.background.gray.default">
+      <BaseBox>
         <TopNav>
           <TopNavBrand>
-            <RazorpayLogo />
+            <RazorpayLogoWhite />
           </TopNavBrand>
           <TopNavContent>
             <TabNav
@@ -500,18 +518,21 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                   href: '/payroll',
                   title: 'Payroll',
                   icon: RazorpayxPayrollIcon,
+                  selectedStateIcon: RazorpayxPayrollFilledIcon,
                   description: 'Automate payroll with ease.',
                 },
                 {
                   href: '/payments',
                   title: 'Payments',
                   icon: AcceptPaymentsIcon,
+                  selectedStateIcon: AcceptPaymentsFilledIcon,
                   description: 'Manage payments effortlessly.',
                 },
                 {
                   href: '/magic-checkout',
                   title: 'Magic Checkout',
                   icon: ShoppingBagIcon,
+                  selectedStateIcon: MagicCheckoutFilledIcon,
                   description: 'Fast, one-click checkout.',
                 },
                 {
@@ -530,16 +551,9 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                 return (
                   <>
                     <TabNavItems>
-                      {items.map((item) => {
-                        return (
-                          <TabNavItemLink
-                            key={item.title}
-                            title={item.title}
-                            href={item.href}
-                            icon={item.icon}
-                          />
-                        );
-                      })}
+                      {items.map((item) => (
+                        <TabNavItemLink key={item.title} {...item} />
+                      ))}
                     </TabNavItems>
                     {overflowingItems.length ? (
                       <Menu openInteraction="hover">
@@ -593,10 +607,19 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
               accessibilityLabel="Search Across Razorpay"
             />
             <Tooltip content="View Ecosystem Health">
-              <Button size="medium" variant="tertiary" icon={ActivityIcon} />
+              <IconButton
+                size="medium"
+                icon={ActivityIcon}
+                onClick={noop}
+                accessibilityLabel="View Ecosystem Health"
+              />
             </Tooltip>
             <Tooltip content="View Announcements">
-              <Button variant="tertiary" icon={AnnouncementIcon} />
+              <IconButton
+                icon={AnnouncementIcon}
+                onClick={noop}
+                accessibilityLabel="View Announcements"
+              />
             </Tooltip>
             <Avatar size="medium" variant="square" name="Anurag Hazra" />
           </TopNavActions>
@@ -618,3 +641,254 @@ Minimal.storyName = 'Minimal';
 
 export const FullExample = TopNavFullTemplate.bind({});
 FullExample.storyName = 'Full Example';
+
+// const ProgressiveBlurWrapper = styled.div({
+//   position: 'relative',
+//   width: '121.41px',
+//   height: '121.41px',
+//   overflow: 'visible',
+//   flexShrink: 0,
+// });
+
+// const BlurLayer = styled.div<{ blurAmount: number; zIndex: number; maskGradient: string }>(
+//   ({ blurAmount, zIndex: z, maskGradient }) => ({
+//     position: 'absolute',
+//     top: 0,
+//     left: 0,
+//     width: '100%',
+//     height: '100%',
+//     boxSizing: 'border-box',
+//     padding: '8px',
+//     background:
+//       'conic-gradient(from 90deg at 54.92% 50%, hsla(218, 89%, 51%, 1) 0deg, hsla(210, 6%, 13%, 0) 360deg)',
+//     transform: 'rotate(-180deg)',
+//     pointerEvents: 'none',
+//     filter: `blur(${blurAmount}px)`,
+//     zIndex: z,
+//     WebkitMaskImage: maskGradient,
+//     maskImage: maskGradient,
+//   }),
+// );
+
+// const FlippedContainer = styled.div({
+//   transform: 'scaleX(-1)',
+//   position: 'relative',
+//   zIndex: 0,
+//   flexShrink: 0,
+// });
+
+// const SCENE_WIDTH = 121.41 * 2;
+// const SCENE_HEIGHT = 121.41;
+// const ELLIPSE_MASK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${SCENE_WIDTH}' height='${SCENE_HEIGHT}'%3E%3Cdefs%3E%3Cfilter id='b' filterUnits='userSpaceOnUse' x='0' y='0' width='${SCENE_WIDTH}' height='${SCENE_HEIGHT}'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='${
+//   SCENE_WIDTH / 2
+// }' cy='${SCENE_HEIGHT / 2}' rx='75.5' ry='17.5' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
+
+// const HALF_SCENE_HEIGHT = SCENE_HEIGHT / 2 + 4;
+
+// const Scene = styled.div({
+//   position: 'relative',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'flex-start',
+//   gap: 0,
+//   width: `${SCENE_WIDTH}px`,
+//   height: `${HALF_SCENE_HEIGHT}px`,
+//   opacity: 0.64,
+//   overflow: 'hidden',
+//   WebkitMaskImage: ELLIPSE_MASK,
+//   WebkitMaskRepeat: 'no-repeat',
+//   WebkitMaskPosition: 'center top',
+//   maskImage: ELLIPSE_MASK,
+//   maskRepeat: 'no-repeat',
+//   maskPosition: 'center top',
+// });
+
+// const BLUR_LAYERS = [
+//   {
+//     blurAmount: 94,
+//     zIndex: 7,
+//     maskGradient:
+//       'linear-gradient(to bottom, black 0%, transparent 35%, transparent 65%, black 100%)',
+//   },
+//   {
+//     blurAmount: 32,
+//     zIndex: 8,
+//     maskGradient:
+//       'linear-gradient(to bottom, transparent 10%, black 25%, transparent 40%, transparent 60%, black 75%, transparent 90%)',
+//   },
+//   {
+//     blurAmount: 8,
+//     zIndex: 9,
+//     maskGradient:
+//       'linear-gradient(to bottom, transparent 25%, black 40%, transparent 48%, transparent 52%, black 60%, transparent 75%)',
+//   },
+//   {
+//     blurAmount: 0,
+//     zIndex: 10,
+//     maskGradient:
+//       'linear-gradient(to bottom, transparent 0%, black 40%, black 60%, transparent 100%)',
+//   },
+// ];
+
+// const ProgressiveBlurEffect = (): React.ReactElement => {
+//   return (
+//     <Scene>
+//       <FlippedContainer>
+//         <ProgressiveBlurWrapper>
+//           {BLUR_LAYERS.map((layer) => (
+//             <BlurLayer key={layer.zIndex} {...layer} />
+//           ))}
+//         </ProgressiveBlurWrapper>
+//       </FlippedContainer>
+//       <ProgressiveBlurWrapper>
+//         {BLUR_LAYERS.map((layer) => (
+//           <BlurLayer key={layer.zIndex} {...layer} />
+//         ))}
+//       </ProgressiveBlurWrapper>
+//     </Scene>
+//   );
+// };
+
+// const ProgressiveBlurTemplate: StoryFn<typeof TopNav> = () => {
+//   return (
+//     <DashboardBackground>
+//       <BaseBox backgroundColor="interactive.background.gray.default">
+//         <TopNav>
+//           <TopNavBrand>
+//             <RazorpayLogoWhite />
+//           </TopNavBrand>
+//           <TopNavContent>
+//             <TabNav
+//               items={[
+//                 { title: 'Home', href: '/home', icon: HomeIcon },
+//                 {
+//                   href: '/payments',
+//                   title: 'Payments',
+//                   icon: AcceptPaymentsIcon,
+//                 },
+//               ]}
+//             >
+//               {({ items }) => (
+//                 <TabNavItems>
+//                   {items.map((item) => (
+//                     <TabNavItemLink key={item.title} title={item.title} href={item.href} />
+//                   ))}
+//                 </TabNavItems>
+//               )}
+//             </TabNav>
+//           </TopNavContent>
+//           <TopNavActions>
+//             <Avatar size="medium" variant="square" name="Anurag Hazra" />
+//           </TopNavActions>
+//         </TopNav>
+//       </BaseBox>
+
+//       <Box padding="spacing.8" backgroundColor="surface.background.gray.moderate" height="100vh">
+//         <Heading marginBottom="spacing.4">Progressive Blur Experiment</Heading>
+//         <Text marginBottom="spacing.7">
+//           The progressive blur effect is rendered next to the logo in the TopNav above. Below is a
+//           standalone larger preview:
+//         </Text>
+
+//         <Box
+//           display="flex"
+//           justifyContent="center"
+//           alignItems="center"
+//           padding="spacing.10"
+//           backgroundColor="surface.background.gray.intense"
+//           borderRadius="large"
+//         >
+//           <ProgressiveBlurEffect />
+//         </Box>
+//       </Box>
+//     </DashboardBackground>
+//   );
+// };
+
+// export const ProgressiveBlur = ProgressiveBlurTemplate.bind({});
+// ProgressiveBlur.storyName = 'Progressive Blur Experiment';
+
+// const SVG_MASK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='157.2734375' height='60.705'%3E%3Cdefs%3E%3Cfilter id='b' filterUnits='userSpaceOnUse' x='0' y='0' width='157.2734375' height='60.705'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='78.63671875' cy='60.705' rx='55.045703124999996' ry='17.5' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
+
+// const SvgMaskGlow = styled.div<{ color: string }>(({ color }) => ({
+//   width: '157.27px',
+//   height: '60.71px',
+//   opacity: 0.64,
+//   background: color,
+//   WebkitMaskImage: SVG_MASK,
+//   WebkitMaskRepeat: 'no-repeat',
+//   WebkitMaskPosition: 'center',
+//   WebkitMaskSize: '100% 100%',
+//   maskImage: SVG_MASK,
+//   maskRepeat: 'no-repeat',
+//   maskPosition: 'center',
+//   maskSize: '100% 100%',
+// }));
+
+// const SvgMaskTemplate: StoryFn<typeof TopNav> = () => {
+//   const { theme } = useTheme();
+//   const glowColor = theme.colors.surface.background.primary.intense;
+
+//   return (
+//     <DashboardBackground>
+//       <BaseBox backgroundColor="interactive.background.gray.default">
+//         <TopNav>
+//           <TopNavBrand>
+//             <RazorpayLogoWhite />
+//           </TopNavBrand>
+//           <TopNavContent>
+//             <TabNav
+//               items={[
+//                 { title: 'Home', href: '/home', icon: HomeIcon },
+//                 {
+//                   href: '/payments',
+//                   title: 'Payments',
+//                   icon: AcceptPaymentsIcon,
+//                 },
+//               ]}
+//             >
+//               {({ items }) => (
+//                 <TabNavItems>
+//                   {items.map((item) => (
+//                     <TabNavItemLink key={item.title} title={item.title} href={item.href} />
+//                   ))}
+//                 </TabNavItems>
+//               )}
+//             </TabNav>
+//           </TopNavContent>
+//           <TopNavActions>
+//             <Avatar size="medium" variant="square" name="Anurag Hazra" />
+//           </TopNavActions>
+//         </TopNav>
+//       </BaseBox>
+
+//       <Box padding="spacing.8" backgroundColor="surface.background.gray.moderate" height="100vh">
+//         <Heading marginBottom="spacing.4">SVG Mask Glow Experiment</Heading>
+//         <Text marginBottom="spacing.7">
+//           Uses an inline SVG mask with a Gaussian-blurred ellipse anchored at the bottom, filled
+//           with the <code>surface.background.primary.intense</code> token.
+//         </Text>
+
+//         <Box
+//           display="flex"
+//           flexDirection="column"
+//           alignItems="center"
+//           gap="spacing.8"
+//           padding="spacing.10"
+//           backgroundColor="surface.background.gray.intense"
+//           borderRadius="large"
+//         >
+//           <SvgMaskGlow color={glowColor} />
+
+//           <Box display="flex" gap="spacing.8">
+//             <SvgMaskGlow color={glowColor} />
+//             <SvgMaskGlow color={glowColor} />
+//           </Box>
+//         </Box>
+//       </Box>
+//     </DashboardBackground>
+//   );
+// };
+
+// export const SvgMaskExperiment = SvgMaskTemplate.bind({});
+// SvgMaskExperiment.storyName = 'SVG Mask Experiment';
