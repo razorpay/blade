@@ -257,7 +257,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
                 flexShrink={0}
                 flexGrow={1}
                 flexBasis={1}
-                minWidth="200px"
+                minWidth="160px"
+                maxWidth="200px"
                 key={file.id ?? file.name}
                 file={file}
                 onRemove={() => handleFileRemove(file)}
