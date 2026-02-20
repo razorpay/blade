@@ -506,133 +506,172 @@ const TopNavFullTemplate: StoryFn<typeof TopNav> = () => <TopNavFullExample />;
 
 const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
   const history = useHistory();
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isMobile = matchedDeviceType === 'mobile';
   const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
   return (
     <DashboardBackground>
       <BaseBox>
         <TopNav>
-          <TopNavBrand>
-            <RazorpayLogoWhite />
-          </TopNavBrand>
-          <TopNavContent>
-            <TabNav
-              items={[
-                { title: 'Home', href: '/home', icon: HomeIcon },
-                {
-                  href: '/payroll',
-                  title: 'Payroll',
-                  icon: RazorpayxPayrollIcon,
-                  selectedStateIcon: RazorpayxPayrollFilledIcon,
-                  description: 'Automate payroll with ease.',
-                },
-                {
-                  href: '/payments',
-                  title: 'Payments',
-                  icon: AcceptPaymentsIcon,
-                  selectedStateIcon: AcceptPaymentsFilledIcon,
-                  description: 'Manage payments effortlessly.',
-                },
-                {
-                  href: '/magic-checkout',
-                  title: 'Magic Checkout',
-                  icon: ShoppingBagIcon,
-                  selectedStateIcon: MagicCheckoutFilledIcon,
-                  description: 'Fast, one-click checkout.',
-                },
-                {
-                  href: '/rize',
-                  title: 'Rize',
-                  icon: AwardIcon,
-                  isAlwaysOverflowing: true,
-                  description: 'Boost your business growth.',
-                },
-              ]}
-            >
-              {({ items, overflowingItems }) => {
-                const activeProduct = overflowingItems.find(
-                  (item) => item.href === selectedProduct,
-                );
-                return (
-                  <>
-                    <TabNavItems>
-                      {items.map((item) => (
-                        <TabNavItemLink key={item.title} {...item} />
-                      ))}
-                    </TabNavItems>
-                    {overflowingItems.length ? (
-                      <Menu openInteraction="hover">
-                        <TabNavItem
-                          title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
-                          trailing={<ChevronDownIcon />}
-                          isActive={Boolean(activeProduct)}
-                        />
-                        <MenuOverlay>
-                          <MenuHeader
-                            title="Products for you"
-                            trailing={
-                              <Badge emphasis="subtle" color="notice">
-                                Recommended
-                              </Badge>
-                            }
-                          />
-                          {overflowingItems.map((item) => {
-                            return (
-                              <MenuItem
-                                key={item.href}
-                                onClick={() => {
-                                  history.push(item.href!);
-                                  setSelectedProduct(item.href!);
-                                }}
-                              >
-                                <ExploreItem
-                                  icon={item.icon!}
-                                  title={item.title}
-                                  description={item.description!}
-                                />
-                              </MenuItem>
-                            );
-                          })}
-                          <MenuFooter>
-                            <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
-                              View all products
-                            </BladeLink>
-                          </MenuFooter>
-                        </MenuOverlay>
-                      </Menu>
-                    ) : null}
-                  </>
-                );
-              }}
-            </TabNav>
-          </TopNavContent>
-          <TopNavActions>
-            <Box width="200px">
-              <SearchInput
-                placeholder="Search in payments"
-                accessibilityLabel="Search Across Razorpay"
-              />
-            </Box>
-            <Tooltip content="View Ecosystem Health">
-              <IconButton
-                size="medium"
-                icon={ActivityIcon}
-                onClick={noop}
-                isHighlighted={true}
-                accessibilityLabel="View Ecosystem Health"
-              />
-            </Tooltip>
-            <Tooltip content="View Announcements">
-              <IconButton
-                icon={AnnouncementIcon}
-                onClick={noop}
-                isHighlighted={true}
-                size="medium"
-                accessibilityLabel="View Announcements"
-              />
-            </Tooltip>
-            <Avatar size="small" variant="circle" name="Anurag Hazra" />
-          </TopNavActions>
+          {isMobile ? (
+            <>
+              <BladeLink icon={HomeIcon} size="medium" href="/home">
+                Home
+              </BladeLink>
+              <Heading textAlign="center" size="small" weight="semibold">
+                Home
+              </Heading>
+              <Menu openInteraction="click">
+                <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                <MenuOverlay>
+                  <MenuHeader title="Profile" />
+                  <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                    <Avatar size="medium" name="Anurag Hazra" />
+                    <Box display="flex" flexDirection="column" gap="spacing.2">
+                      <Text size="medium" weight="semibold">
+                        Anurag Hazra
+                      </Text>
+                      <Text size="xsmall" color="surface.text.gray.muted">
+                        Razorpay Trusted Merchant
+                      </Text>
+                    </Box>
+                  </Box>
+                  <MenuItem>
+                    <Text color="surface.text.gray.subtle">Settings</Text>
+                  </MenuItem>
+                  <MenuItem color="negative">
+                    <Text color="feedback.text.negative.intense">Logout</Text>
+                  </MenuItem>
+                </MenuOverlay>
+              </Menu>
+            </>
+          ) : (
+            <>
+              <TopNavBrand>
+                <RazorpayLogoWhite />
+              </TopNavBrand>
+              <TopNavContent>
+                <TabNav
+                  items={[
+                    { title: 'Home', href: '/home', icon: HomeIcon },
+                    {
+                      href: '/payroll',
+                      title: 'Payroll',
+                      icon: RazorpayxPayrollIcon,
+                      selectedStateIcon: RazorpayxPayrollFilledIcon,
+                      description: 'Automate payroll with ease.',
+                    },
+                    {
+                      href: '/payments',
+                      title: 'Payments',
+                      icon: AcceptPaymentsIcon,
+                      selectedStateIcon: AcceptPaymentsFilledIcon,
+                      description: 'Manage payments effortlessly.',
+                    },
+                    {
+                      href: '/magic-checkout',
+                      title: 'Magic Checkout',
+                      icon: ShoppingBagIcon,
+                      selectedStateIcon: MagicCheckoutFilledIcon,
+                      description: 'Fast, one-click checkout.',
+                    },
+                    {
+                      href: '/rize',
+                      title: 'Rize',
+                      icon: AwardIcon,
+                      isAlwaysOverflowing: true,
+                      description: 'Boost your business growth.',
+                    },
+                  ]}
+                >
+                  {({ items, overflowingItems }) => {
+                    const activeProduct = overflowingItems.find(
+                      (item) => item.href === selectedProduct,
+                    );
+                    return (
+                      <>
+                        <TabNavItems>
+                          {items.map((item) => (
+                            <TabNavItemLink key={item.title} {...item} />
+                          ))}
+                        </TabNavItems>
+                        {overflowingItems.length ? (
+                          <Menu openInteraction="hover">
+                            <TabNavItem
+                              title={activeProduct ? `More: ${activeProduct.title}` : 'More'}
+                              trailing={<ChevronDownIcon />}
+                              isActive={Boolean(activeProduct)}
+                            />
+                            <MenuOverlay>
+                              <MenuHeader
+                                title="Products for you"
+                                trailing={
+                                  <Badge emphasis="subtle" color="notice">
+                                    Recommended
+                                  </Badge>
+                                }
+                              />
+                              {overflowingItems.map((item) => {
+                                return (
+                                  <MenuItem
+                                    key={item.href}
+                                    onClick={() => {
+                                      history.push(item.href!);
+                                      setSelectedProduct(item.href!);
+                                    }}
+                                  >
+                                    <ExploreItem
+                                      icon={item.icon!}
+                                      title={item.title}
+                                      description={item.description!}
+                                    />
+                                  </MenuItem>
+                                );
+                              })}
+                              <MenuFooter>
+                                <BladeLink href="" icon={ChevronRightIcon} iconPosition="right">
+                                  View all products
+                                </BladeLink>
+                              </MenuFooter>
+                            </MenuOverlay>
+                          </Menu>
+                        ) : null}
+                      </>
+                    );
+                  }}
+                </TabNav>
+              </TopNavContent>
+              <TopNavActions>
+                <Box width="200px">
+                  <SearchInput
+                    placeholder="Search in payments"
+                    accessibilityLabel="Search Across Razorpay"
+                  />
+                </Box>
+                <Tooltip content="View Ecosystem Health">
+                  <IconButton
+                    size="medium"
+                    icon={ActivityIcon}
+                    onClick={noop}
+                    isHighlighted={true}
+                    accessibilityLabel="View Ecosystem Health"
+                  />
+                </Tooltip>
+                <Tooltip content="View Announcements">
+                  <IconButton
+                    icon={AnnouncementIcon}
+                    onClick={noop}
+                    isHighlighted={true}
+                    size="medium"
+                    accessibilityLabel="View Announcements"
+                  />
+                </Tooltip>
+                <Avatar size="small" variant="circle" name="Anurag Hazra" />
+              </TopNavActions>
+            </>
+          )}
         </TopNav>
       </BaseBox>
 
@@ -710,52 +749,94 @@ const TopNavSearchDropdown = (): React.ReactElement => {
 };
 
 const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isMobile = matchedDeviceType === 'mobile';
+
   return (
     <DashboardBackground>
       <BaseBox>
         <TopNav>
-          <TopNavBrand>
-            <RazorpayLogoWhite />
-          </TopNavBrand>
-          <TopNavContent>
-            <TabNav
-              items={[
-                { title: 'Home', href: '/home', icon: HomeIcon },
-                {
-                  href: '/payments',
-                  title: 'Payments',
-                  icon: AcceptPaymentsIcon,
-                },
-              ]}
-            >
-              {({ items }) => (
-                <TabNavItems>
-                  {items.map((item) => (
-                    <TabNavItemLink key={item.title} {...item} />
-                  ))}
-                </TabNavItems>
-              )}
-            </TabNav>
-          </TopNavContent>
-          <TopNavActions>
-            <TopNavSearchDropdown />
-            <Tooltip content="View Announcements">
-              <IconButton
-                icon={AnnouncementIcon}
-                onClick={noop}
-                accessibilityLabel="View Announcements"
-                isHighlighted={true}
-                size="medium"
-              />
-            </Tooltip>
-            <Avatar size="small" variant="circle" name="Anurag Hazra" />
-          </TopNavActions>
+          {isMobile ? (
+            <>
+              <BladeLink icon={HomeIcon} size="medium" href="/home">
+                Home
+              </BladeLink>
+              <Heading textAlign="center" size="small" weight="semibold">
+                Payments
+              </Heading>
+              <Menu openInteraction="click">
+                <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                <MenuOverlay>
+                  <MenuHeader title="Profile" />
+                  <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                    <Avatar size="medium" name="Anurag Hazra" />
+                    <Box display="flex" flexDirection="column" gap="spacing.2">
+                      <Text size="medium" weight="semibold">
+                        Anurag Hazra
+                      </Text>
+                      <Text size="xsmall" color="surface.text.gray.muted">
+                        Razorpay Trusted Merchant
+                      </Text>
+                    </Box>
+                  </Box>
+                  <MenuItem>
+                    <Text color="surface.text.gray.subtle">Settings</Text>
+                  </MenuItem>
+                  <MenuItem color="negative">
+                    <Text color="feedback.text.negative.intense">Logout</Text>
+                  </MenuItem>
+                </MenuOverlay>
+              </Menu>
+            </>
+          ) : (
+            <>
+              <TopNavBrand>
+                <RazorpayLogoWhite />
+              </TopNavBrand>
+              <TopNavContent>
+                <TabNav
+                  items={[
+                    { title: 'Home', href: '/home', icon: HomeIcon },
+                    {
+                      href: '/payments',
+                      title: 'Payments',
+                      icon: AcceptPaymentsIcon,
+                    },
+                  ]}
+                >
+                  {({ items }) => (
+                    <TabNavItems>
+                      {items.map((item) => (
+                        <TabNavItemLink key={item.title} {...item} />
+                      ))}
+                    </TabNavItems>
+                  )}
+                </TabNav>
+              </TopNavContent>
+              <TopNavActions>
+                <TopNavSearchDropdown />
+                <Tooltip content="View Announcements">
+                  <IconButton
+                    icon={AnnouncementIcon}
+                    onClick={noop}
+                    accessibilityLabel="View Announcements"
+                    isHighlighted={true}
+                    size="medium"
+                  />
+                </Tooltip>
+                <Avatar size="small" variant="circle" name="Anurag Hazra" />
+              </TopNavActions>
+            </>
+          )}
         </TopNav>
       </BaseBox>
 
       <Box paddingY="spacing.4" backgroundColor="surface.background.gray.moderate" height="100%">
         <Text margin="spacing.5">
-          Click on the search input to see the dropdown with search results. Type to filter items.
+          {isMobile
+            ? 'Resize your browser to see the desktop version with the search dropdown.'
+            : 'Click on the search input to see the dropdown with search results. Type to filter items.'}
         </Text>
       </Box>
     </DashboardBackground>
@@ -766,48 +847,88 @@ export const SearchWithDropdown = TopNavSearchDropdownTemplate.bind({});
 SearchWithDropdown.storyName = 'Search With Dropdown';
 
 const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isMobile = matchedDeviceType === 'mobile';
+
   return (
     <DashboardBackground>
       <BaseBox>
         <TopNav>
-          <TopNavBrand>
-            <RazorpayLogoWhite />
-          </TopNavBrand>
-          <TopNavContent>
-            <TabNav
-              items={[
-                { title: 'Home', href: '/home', icon: HomeIcon },
-                {
-                  href: '/payments',
-                  title: 'Payments',
-                  icon: AcceptPaymentsIcon,
-                },
-              ]}
-            >
-              {({ items }) => (
-                <TabNavItems>
-                  {items.map((item) => (
-                    <TabNavItemLink key={item.title} {...item} />
-                  ))}
-                </TabNavItems>
-              )}
-            </TabNav>
-          </TopNavContent>
-          <TopNavActions>
-            <Button variant="primary" size="medium">
-              Activate
-            </Button>
-            <Tooltip content="View Announcements">
-              <IconButton
-                icon={AnnouncementIcon}
-                onClick={noop}
-                accessibilityLabel="View Announcements"
-                isHighlighted={true}
-                size="medium"
-              />
-            </Tooltip>
-            <Avatar size="small" variant="circle" name="Anurag Hazra" />
-          </TopNavActions>
+          {isMobile ? (
+            <>
+              <BladeLink icon={HomeIcon} size="medium" href="/home">
+                Home
+              </BladeLink>
+              <Heading textAlign="center" size="small" weight="semibold">
+                Payments
+              </Heading>
+              <Menu openInteraction="click">
+                <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                <MenuOverlay>
+                  <MenuHeader title="Profile" />
+                  <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                    <Avatar size="medium" name="Anurag Hazra" />
+                    <Box display="flex" flexDirection="column" gap="spacing.2">
+                      <Text size="medium" weight="semibold">
+                        Anurag Hazra
+                      </Text>
+                      <Text size="xsmall" color="surface.text.gray.muted">
+                        Razorpay Trusted Merchant
+                      </Text>
+                    </Box>
+                  </Box>
+                  <MenuItem>
+                    <Text color="surface.text.gray.subtle">Settings</Text>
+                  </MenuItem>
+                  <MenuItem color="negative">
+                    <Text color="feedback.text.negative.intense">Logout</Text>
+                  </MenuItem>
+                </MenuOverlay>
+              </Menu>
+            </>
+          ) : (
+            <>
+              <TopNavBrand>
+                <RazorpayLogoWhite />
+              </TopNavBrand>
+              <TopNavContent>
+                <TabNav
+                  items={[
+                    { title: 'Home', href: '/home', icon: HomeIcon },
+                    {
+                      href: '/payments',
+                      title: 'Payments',
+                      icon: AcceptPaymentsIcon,
+                    },
+                  ]}
+                >
+                  {({ items }) => (
+                    <TabNavItems>
+                      {items.map((item) => (
+                        <TabNavItemLink key={item.title} {...item} />
+                      ))}
+                    </TabNavItems>
+                  )}
+                </TabNav>
+              </TopNavContent>
+              <TopNavActions>
+                <Button variant="primary" size="medium">
+                  Activate
+                </Button>
+                <Tooltip content="View Announcements">
+                  <IconButton
+                    icon={AnnouncementIcon}
+                    onClick={noop}
+                    accessibilityLabel="View Announcements"
+                    isHighlighted={true}
+                    size="medium"
+                  />
+                </Tooltip>
+                <Avatar size="small" variant="circle" name="Anurag Hazra" />
+              </TopNavActions>
+            </>
+          )}
         </TopNav>
       </BaseBox>
 
