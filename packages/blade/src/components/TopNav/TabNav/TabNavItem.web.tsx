@@ -77,6 +77,7 @@ const StyledTabNavItemWrapper = styled(BaseBox)<{
     transition: `${makeMotionTime(theme.motion.duration.moderate)} ${theme.motion.easing.standard}`,
     transitionProperty: 'background',
     zIndex: 1,
+    cursor: 'pointer',
   };
 });
 
@@ -124,12 +125,24 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
 
   const ResolvedIcon = isActive && SelectedStateIcon ? SelectedStateIcon : Icon;
 
+  // Forward clicks from the wrapper's padding area to the inner link/button
+  // so that clicking the dark space around the tab label still switches tabs
+  const handleWrapperClick = React.useCallback((e: React.MouseEvent) => {
+    const wrapper = bodyRef.current;
+    if (!wrapper) return;
+    const innerLink = wrapper.querySelector<HTMLElement>('a, button');
+    if (innerLink && !innerLink.contains(e.target as Node)) {
+      innerLink.click();
+    }
+  }, []);
+
   return (
     <StyledTabNavItemWrapper
       ref={bodyRef}
       isActive={isActive}
       data-active={isActive ? 'true' : 'false'}
       data-glow-color={indicatorGlowColor || undefined}
+      onClick={handleWrapperClick}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
       <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
