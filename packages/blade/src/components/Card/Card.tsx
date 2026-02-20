@@ -288,6 +288,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           textAlign={'left' as never}
           backgroundColor={backgroundColor}
           colorScheme={colorScheme}
+          isSelected={isSelected}
         >
           {href ? (
             <LinkOverlay

@@ -207,7 +207,9 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                         marginRight="spacing.2"
                         onClick={() => toggleRow(item.id)}
                       />
-                      {item.merchantName}
+                      <Text color="surface.text.gray.subtle" size="medium">
+                        {item.merchantName}
+                      </Text>
                     </TableCell>
                     <TableCell>
                       <Amount value={item.totalAmount} isAffixSubtle={false} />
@@ -243,11 +245,13 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                                   gridTemplateColumns="repeat(4, 1fr)"
                                   gap="spacing.2"
                                 >
-                                  <Text size="small" color="surface.text.gray.muted">
+                                  <Text color="surface.text.gray.subtle" size="medium">
                                     {child.paymentId}
                                   </Text>
                                   <Amount value={child.amount} isAffixSubtle={false} />
-                                  {child.date}
+                                  <Text color="surface.text.gray.subtle" size="medium">
+                                    {child.date}
+                                  </Text>
                                   <Badge
                                     size="small"
                                     color={child.status === 'Completed' ? 'positive' : 'negative'}
@@ -275,7 +279,7 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                                 borderRadius="medium"
                               >
                                 <Box display="flex" flexDirection="column" gap="spacing.1">
-                                  <Text size="small" color="surface.text.gray.muted">
+                                  <Text size="small" color="surface.text.gray.subtle">
                                     Primary Gateway
                                   </Text>
                                   <Badge size="medium" color="information">
@@ -283,7 +287,7 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                                   </Badge>
                                 </Box>
                                 <Box display="flex" flexDirection="column" gap="spacing.1">
-                                  <Text size="small" color="surface.text.gray.muted">
+                                  <Text size="small" color="surface.text.gray.subtle">
                                     Transaction Count
                                   </Text>
                                   <Text size="medium" weight="semibold">
@@ -292,7 +296,7 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                                   </Text>
                                 </Box>
                                 <Box display="flex" flexDirection="column" gap="spacing.1">
-                                  <Text size="small" color="surface.text.gray.muted">
+                                  <Text size="small" color="surface.text.gray.subtle">
                                     Total Amount
                                   </Text>
                                   <Amount
@@ -302,7 +306,7 @@ const TableNestingTemplate = ({ withSorting = false }: { withSorting?: boolean }
                                   />
                                 </Box>
                                 <Box display="flex" flexDirection="column" gap="spacing.1">
-                                  <Text size="small" color="surface.text.gray.muted">
+                                  <Text size="small" color="surface.text.gray.subtle">
                                     Success Rate
                                   </Text>
                                   <Text

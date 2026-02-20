@@ -270,7 +270,7 @@ const _Pagination = ({
     >
       {showLabel && !onMobile && (
         <BaseBox display="flex" justifyContent="center" alignItems="center">
-          <Text size="medium" weight="semibold">
+          <Text size="small" weight="regular">
             {defaultLabel}
           </Text>
         </BaseBox>
@@ -278,7 +278,7 @@ const _Pagination = ({
       <BaseBox
         display="flex"
         flex={1}
-        gap="spacing.2"
+        gap="spacing.3"
         justifyContent="flex-end"
         alignItems="center"
       >
@@ -306,7 +306,7 @@ const _Pagination = ({
               </DropdownOverlay>
             </Dropdown>
             <BaseBox aria-hidden paddingLeft="spacing.3" paddingRight="spacing.3">
-              <Text> {pageSizeLabel} </Text>
+              <Text size="small" weight='regular'> {pageSizeLabel} </Text>
             </BaseBox>
           </BaseBox>
         )}
@@ -328,7 +328,7 @@ const _Pagination = ({
           />
           {onMobile && (
             <BaseBox flex={1} alignItems="center" justifyContent="center">
-              <Text textAlign="center">{`Showing ${internalPage + 1} of ${totalPages} pages`}</Text>
+              <Text textAlign="center" size="small" weight="regular">{`Showing ${internalPage + 1} of ${totalPages} pages`}</Text>
             </BaseBox>
           )}
           {totalPages > 1 && showPageNumberSelector && !onMobile && (

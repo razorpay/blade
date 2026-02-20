@@ -1,5 +1,11 @@
 # @razorpay/blade-core
 
+## 0.3.0
+
+### Minor Changes
+
+- 46dc37f98: Added Divider component
+
 ## 0.2.0
 
 ### Minor Changes

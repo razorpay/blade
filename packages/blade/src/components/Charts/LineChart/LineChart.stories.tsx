@@ -1227,6 +1227,27 @@ LineChartWithBenchmarkAndSinglePoint.parameters = {
   controls: { disable: true },
 };
 
+export const LineChartWithSequentialColors: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={chartData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine dataKey="teamA" name="Team A" color="data.background.sequential.blue.500" />
+          <ChartLine dataKey="teamB" name="Team B" color="data.background.sequential.blue.200" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+LineChartWithSequentialColors.parameters = {
+  controls: { disable: true },
+};
+
 SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
@@ -1246,3 +1267,4 @@ LineChartWithDefaultSelectedDataKeys.storyName = 'Legend with Default Selected K
 LineChartWithControlledSelection.storyName = 'Legend with Controlled Selection';
 LineChartWithLegendClickCallback.storyName = 'Legend with Selection Change Callback';
 LineChartWithBenchmarkAndSinglePoint.storyName = 'Line Chart with Benchmark Line and Single Point';
+LineChartWithSequentialColors.storyName = 'Line Chart with Sequential Colors';

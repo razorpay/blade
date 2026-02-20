@@ -158,7 +158,12 @@ const Toast = ({
           />
         </Box>
       ) : null}
-      <Box display="flex" flexDirection="column" gap="spacing.3">
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="spacing.3"
+        paddingY={isPromotional ? 'spacing.0' : 'spacing.2'}
+      >
         {isPromotional ? (
           content
         ) : (
@@ -168,7 +173,12 @@ const Toast = ({
         )}
         {isPromotional && actionButton}
       </Box>
-      <Box alignSelf="start" marginLeft="auto" display="flex" gap="spacing.4">
+      <Box
+        alignSelf={isPromotional ? 'start' : 'center'}
+        marginLeft="auto"
+        display="flex"
+        gap="spacing.4"
+      >
         {!isPromotional && actionButton}
         <IconButton
           emphasis={isPromotional ? 'intense' : 'subtle'}

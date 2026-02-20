@@ -1,7 +1,9 @@
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Link from './Link.svelte';
-  
+  import { iconMap } from '../Icons';
+  import { InfoIcon, PlusIcon, SearchIcon } from '../Icons';
+
   const { Story } = defineMeta({
     title: 'Components/Link',
     component: Link,
@@ -12,6 +14,7 @@
       color: 'primary',
       size: 'medium',
       isDisabled: false,
+      icon: undefined,
       iconPosition: 'left',
       href: 'https://github.com/razorpay/blade',
       target: '_blank',
@@ -51,6 +54,15 @@
         description: 'Whether the link is disabled',
         table: {
           defaultValue: { summary: 'false' },
+        },
+      },
+      icon: {
+        control: 'select',
+        options: Object.keys(iconMap),
+        mapping: iconMap,
+        description: 'Icon to display alongside the link text',
+        table: {
+          defaultValue: { summary: 'None' },
         },
       },
       iconPosition: {
@@ -112,3 +124,41 @@
 </Story>
 
 <Story name="Disabled Link" args={{ children: 'Disabled Link', variant: 'button', isDisabled: true }} />
+
+<!-- Icon Stories -->
+<Story name="With Icon Left" asChild>
+  <Link icon={InfoIcon} iconPosition="left" href="#">Learn more</Link>
+</Story>
+
+<Story name="With Icon Right" asChild>
+  <Link icon={InfoIcon} iconPosition="right" href="#">Learn more</Link>
+</Story>
+
+<Story name="Icon Only" asChild>
+  <Link icon={InfoIcon} accessibilityLabel="Info" href="#" />
+</Story>
+
+<Story name="Icon with Button Variant" asChild>
+  <div class="display-flex gap-spacing-4 align-items-center">
+    <Link icon={PlusIcon} iconPosition="left" variant="button">Add Item</Link>
+    <Link icon={SearchIcon} iconPosition="left" variant="button">Search</Link>
+  </div>
+</Story>
+
+<Story name="Icon Sizes" asChild>
+  <div class="display-flex gap-spacing-4 align-items-center">
+    <Link icon={InfoIcon} size="xsmall" href="#">XSmall</Link>
+    <Link icon={InfoIcon} size="small" href="#">Small</Link>
+    <Link icon={InfoIcon} size="medium" href="#">Medium</Link>
+    <Link icon={InfoIcon} size="large" href="#">Large</Link>
+  </div>
+</Story>
+
+<Story name="Icon with Colors" asChild>
+  <div class="display-flex gap-spacing-4 align-items-center">
+    <Link icon={InfoIcon} color="primary" href="#">Primary</Link>
+    <Link icon={InfoIcon} color="neutral" href="#">Neutral</Link>
+    <Link icon={InfoIcon} color="positive" href="#">Positive</Link>
+    <Link icon={InfoIcon} color="negative" href="#">Negative</Link>
+  </div>
+</Story>

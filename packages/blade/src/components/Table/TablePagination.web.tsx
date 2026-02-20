@@ -28,7 +28,6 @@ const _TablePagination = ({
     totalItems,
     setPaginationRowSize,
     setPaginationType,
-    backgroundColor,
   } = useTableContext();
 
   // Sync pagination type with table context
@@ -149,7 +148,7 @@ const _TablePagination = ({
   }
 
   return (
-    <BaseBox backgroundColor={backgroundColor}>
+    <BaseBox>
       <Pagination
         totalPages={totalPages}
         selectedPage={currentPage !== undefined ? currentPage + 1 : undefined}

@@ -1,9 +1,9 @@
-import type { Snippet } from 'svelte';
+import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { IconProps } from '../../Icons/types';
 
-// Icon component type - placeholder for now
-// TODO: Replace with actual Icon component when available
-export type IconComponent = unknown;
+// Icon component type - Svelte component that accepts IconProps
+export type IconComponent = Component<IconProps>;
 
 export interface BaseButtonProps extends StyledPropsBlade {
   children?: Snippet | string;

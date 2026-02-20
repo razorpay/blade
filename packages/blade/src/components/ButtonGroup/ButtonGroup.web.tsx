@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import type { ButtonGroupProps } from './types';
@@ -10,11 +11,11 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeBorderSize } from '~utils';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
-import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { Theme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 
 const getDividerColorToken = ({
   color,
@@ -29,7 +30,6 @@ const getDividerColorToken = ({
 
   if (variant === 'secondary') {
     return getBackgroundColorToken({
-      property: 'border',
       variant,
       color,
       state: isDisabled ? 'disabled' : 'default',
@@ -84,6 +84,7 @@ const _ButtonGroup = (
         ref={ref as never}
         color={color}
         variant={variant}
+        size={size}
         isDisabled={isDisabled}
         isFullWidth={isFullWidth}
         {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
@@ -92,10 +93,14 @@ const _ButtonGroup = (
         role="group"
       >
         {React.Children.map(children, (child, index) => {
+          const isLast = React.Children.count(children) - 1 === index;
+          // Only show dividers for primary variant (secondary/tertiary have borders via box-shadow)
+          const showDivider = variant === 'primary' && !isLast;
+
           return (
             <>
               {child}
-              {React.Children.count(children) - 1 !== index && (
+              {showDivider && (
                 <StyledDivider variant={variant} color={color} isDisabled={isDisabled} />
               )}
             </>
