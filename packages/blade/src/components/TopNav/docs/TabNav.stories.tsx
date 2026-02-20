@@ -42,6 +42,7 @@ const trailingMapping = {
 
 const propsCategory = {
   TAB_NAV_ITEM: 'TabNavItem Props',
+  TAB_NAV: 'TabNav Props',
   ITEM_DATA: 'Extra props for "item" data',
 };
 
@@ -233,7 +234,10 @@ const TabNavTemplate: StoryFn<any> = (
                   <TabNavItem title="More" trailing={<ChevronDownIcon />} />
                   <MenuOverlay>
                     {overflowingItems.map((item) => {
-                      const Icon = item.icon;
+                      const Icon =
+                        item.icon && typeof item.icon === 'object' && 'default' in item.icon
+                          ? item.icon.default
+                          : item.icon;
                       return (
                         <MenuItem
                           key={item.href}
