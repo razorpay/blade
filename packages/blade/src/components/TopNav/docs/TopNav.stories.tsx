@@ -611,6 +611,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                 size="medium"
                 icon={ActivityIcon}
                 onClick={noop}
+                isHighlighted={true}
                 accessibilityLabel="View Ecosystem Health"
               />
             </Tooltip>
@@ -618,10 +619,12 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
               <IconButton
                 icon={AnnouncementIcon}
                 onClick={noop}
+                isHighlighted={true}
+                size="medium"
                 accessibilityLabel="View Announcements"
               />
             </Tooltip>
-            <Avatar size="medium" variant="square" name="Anurag Hazra" />
+            <Avatar size="small" variant="circle" name="Anurag Hazra" />
           </TopNavActions>
         </TopNav>
       </BaseBox>
