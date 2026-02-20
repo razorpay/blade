@@ -11,7 +11,7 @@ type TableSurfaceProps = {
 const TableSurface = styled(BaseBox)<TableSurfaceProps>(
   ({ theme, colorScheme, isInsideListView }) => {
     const isDarkMode = colorScheme === 'dark';
-    const { elevation, top, border } = getSurfaceBoxShadow(theme, colorScheme);
+    const { elevation, top } = getSurfaceBoxShadow(theme, colorScheme);
 
     return {
       width: '100%',
