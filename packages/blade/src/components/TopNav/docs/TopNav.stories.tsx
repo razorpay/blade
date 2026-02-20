@@ -259,7 +259,13 @@ const TopNavFullExample = () => {
                 Payments
               </Heading>
               <Menu openInteraction="click">
-                <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                <IconButton
+                  icon={UserIcon}
+                  size="small"
+                  accessibilityLabel="User Icon"
+                  onClick={noop}
+                  isHighlighted={true}
+                />
                 <MenuOverlay>
                   <MenuHeader title="Profile" />
                   <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -427,7 +433,6 @@ const TopNavFullExample = () => {
                     onClick={noop}
                     isHighlighted={true}
                   />
-                  {/* <Avatar size="medium" variant="square" name="Anurag Hazra" /> */}
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
                     <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -524,7 +529,13 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                 Home
               </Heading>
               <Menu openInteraction="click">
-                <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                <IconButton
+                  icon={UserIcon}
+                  size="small"
+                  accessibilityLabel="User Icon"
+                  onClick={noop}
+                  isHighlighted={true}
+                />
                 <MenuOverlay>
                   <MenuHeader title="Profile" />
                   <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -668,7 +679,35 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                     accessibilityLabel="View Announcements"
                   />
                 </Tooltip>
-                <Avatar size="small" variant="circle" name="Anurag Hazra" />
+                <Menu openInteraction="click">
+                  <IconButton
+                    icon={UserIcon}
+                    size="medium"
+                    accessibilityLabel="User Icon"
+                    onClick={noop}
+                    isHighlighted={true}
+                  />
+                  <MenuOverlay>
+                    <MenuHeader title="Profile" />
+                    <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                      <Avatar size="medium" name="Anurag Hazra" />
+                      <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Text size="medium" weight="semibold">
+                          Anurag Hazra
+                        </Text>
+                        <Text size="xsmall" color="surface.text.gray.muted">
+                          Razorpay Trusted Merchant
+                        </Text>
+                      </Box>
+                    </Box>
+                    <MenuItem>
+                      <Text color="surface.text.gray.subtle">Settings</Text>
+                    </MenuItem>
+                    <MenuItem color="negative">
+                      <Text color="feedback.text.negative.intense">Logout</Text>
+                    </MenuItem>
+                  </MenuOverlay>
+                </Menu>
               </TopNavActions>
             </>
           )}
@@ -766,7 +805,13 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
                 Payments
               </Heading>
               <Menu openInteraction="click">
-                <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                <IconButton
+                  icon={UserIcon}
+                  size="small"
+                  accessibilityLabel="User Icon"
+                  onClick={noop}
+                  isHighlighted={true}
+                />
                 <MenuOverlay>
                   <MenuHeader title="Profile" />
                   <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -825,7 +870,35 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
                     size="medium"
                   />
                 </Tooltip>
-                <Avatar size="small" variant="circle" name="Anurag Hazra" />
+                <Menu openInteraction="click">
+                  <IconButton
+                    icon={UserIcon}
+                    size="medium"
+                    accessibilityLabel="User Icon"
+                    onClick={noop}
+                    isHighlighted={true}
+                  />
+                  <MenuOverlay>
+                    <MenuHeader title="Profile" />
+                    <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                      <Avatar size="medium" name="Anurag Hazra" />
+                      <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Text size="medium" weight="semibold">
+                          Anurag Hazra
+                        </Text>
+                        <Text size="xsmall" color="surface.text.gray.muted">
+                          Razorpay Trusted Merchant
+                        </Text>
+                      </Box>
+                    </Box>
+                    <MenuItem>
+                      <Text color="surface.text.gray.subtle">Settings</Text>
+                    </MenuItem>
+                    <MenuItem color="negative">
+                      <Text color="feedback.text.negative.intense">Logout</Text>
+                    </MenuItem>
+                  </MenuOverlay>
+                </Menu>
               </TopNavActions>
             </>
           )}
@@ -864,7 +937,13 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
                 Payments
               </Heading>
               <Menu openInteraction="click">
-                <Avatar size="medium" variant="square" name="Anurag Hazra" />
+                <IconButton
+                  icon={UserIcon}
+                  size="small"
+                  accessibilityLabel="User Icon"
+                  onClick={noop}
+                  isHighlighted={true}
+                />
                 <MenuOverlay>
                   <MenuHeader title="Profile" />
                   <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -925,7 +1004,35 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
                     size="medium"
                   />
                 </Tooltip>
-                <Avatar size="small" variant="circle" name="Anurag Hazra" />
+                <Menu openInteraction="click">
+                  <IconButton
+                    icon={UserIcon}
+                    size="medium"
+                    accessibilityLabel="User Icon"
+                    onClick={noop}
+                    isHighlighted={true}
+                  />
+                  <MenuOverlay>
+                    <MenuHeader title="Profile" />
+                    <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+                      <Avatar size="medium" name="Anurag Hazra" />
+                      <Box display="flex" flexDirection="column" gap="spacing.2">
+                        <Text size="medium" weight="semibold">
+                          Anurag Hazra
+                        </Text>
+                        <Text size="xsmall" color="surface.text.gray.muted">
+                          Razorpay Trusted Merchant
+                        </Text>
+                      </Box>
+                    </Box>
+                    <MenuItem>
+                      <Text color="surface.text.gray.subtle">Settings</Text>
+                    </MenuItem>
+                    <MenuItem color="negative">
+                      <Text color="feedback.text.negative.intense">Logout</Text>
+                    </MenuItem>
+                  </MenuOverlay>
+                </Menu>
               </TopNavActions>
             </>
           )}
