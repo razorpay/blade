@@ -224,7 +224,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       overflow: 'hidden',
       transition: {
         duration: msToSeconds(theme.motion.duration.quick),
-        ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
       },
     },
     exit: {
@@ -232,7 +232,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       overflow: 'hidden',
       transition: {
         duration: msToSeconds(theme.motion.duration.quick),
-        ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
       },
     },
   };
