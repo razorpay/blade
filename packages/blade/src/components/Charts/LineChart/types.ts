@@ -1,5 +1,8 @@
 import type { LineProps as RechartsLineProps } from 'recharts';
-import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
+import type {
+  ChartsCategoricalColorToken,
+  ChartSequentialColorToken,
+} from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
 import type { BoxProps } from '~components/Box';
 
@@ -39,7 +42,7 @@ interface ChartLineProps {
    * Color of the line in line chart.
    * if no provided, we will pick colors from the default theme colors.
    */
-  color?: ChartsCategoricalColorToken;
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   /**
    * Style of the line in line chart.
    * @default: solid

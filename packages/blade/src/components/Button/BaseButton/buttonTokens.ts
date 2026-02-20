@@ -115,7 +115,7 @@ const boxShadow = (
         ],
         highlighted: [
           { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.default' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.highlighted' },
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
         ],
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
@@ -128,7 +128,7 @@ const boxShadow = (
         ],
         highlighted: [
           { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.default' },
+          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.highlighted' },
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
         ],
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],

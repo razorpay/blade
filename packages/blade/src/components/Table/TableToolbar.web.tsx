@@ -61,7 +61,6 @@ const _TableToolbar = ({
     deselectAllRows,
     currentPaginationState,
     totalItems,
-    backgroundColor,
     tableToolbarPlacement,
   } = useTableContext();
   const { platform } = useTheme();
@@ -87,7 +86,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor={backgroundColor}>
+    <BaseBox>
       <ToolbarWrapper
         display="flex"
         backgroundColor={tableToolbar.backgroundColor}
@@ -95,9 +94,6 @@ const _TableToolbar = ({
         flexWrap="wrap"
         flexDirection={onMobile && tableToolbarPlacement === 'inline' ? 'column' : 'row'}
         gap="spacing.5"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
-        borderBottomWidth="none"
         minHeight={makeSize(tableToolbar.minHeight)}
       >
         <BaseBox display="flex" alignItems="center" flex={1}>
@@ -112,7 +108,7 @@ const _TableToolbar = ({
           </BaseBox>
 
           {selectionType !== 'none' && (
-            <BaseBox display="flex" marginLeft="spacing.3" height="100%">
+            <BaseBox display="flex" marginLeft="spacing.3" height="spacing.6">
               <Divider orientation="vertical" thickness="thick" />
               {deselectButton}
             </BaseBox>

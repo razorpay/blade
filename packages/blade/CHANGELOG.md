@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.81.3
+
+### Patch Changes
+
+- 80e9900ae: Added sequential color support to ChartLine component
+
 ## 12.81.2
 
 ### Patch Changes

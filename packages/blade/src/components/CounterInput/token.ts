@@ -1,4 +1,4 @@
-import { size as sizeTokens, spacing } from '~tokens/global';
+import { size as sizeTokens, spacing, border } from '~tokens/global';
 
 export const COUNTER_INPUT_TOKEN = {
   width: {
@@ -10,6 +10,19 @@ export const COUNTER_INPUT_TOKEN = {
     xsmall: sizeTokens[30],
     medium: sizeTokens[38],
     large: sizeTokens[50],
+  },
+
+  containerBorderRadius: {
+    xsmall: 'small',
+    small: 'small',
+    medium: 'small',
+    large: 'medium',
+  },
+  buttonBorderRadius: {
+    xsmall: border.radius.xsmall,
+    small: border.radius.xsmall,
+    medium: border.radius.xsmall,
+    large: border.radius.small,
   },
 
   decrementIconMargin: [spacing[2], spacing[0], spacing[2], spacing[2]],
