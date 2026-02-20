@@ -21,6 +21,7 @@ import { useDatesState } from './useDatesState';
 import { usePopup } from './usePopup';
 import { convertIntlToDayjsLocale, loadScript } from './utils';
 import { DatePickerProvider } from './DatePickerContext';
+import { getDatePickerPopupBoxShadow } from './datePickerTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -352,60 +353,59 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         width="100%"
         display="flex"
         flexDirection="column"
-        gap="spacing.5"
-        padding={{ m: 'spacing.6', s: 'spacing.0' }}
         /* We only need to set height for day picker, for year picker
          or month it should be auto. */
         height={
           _picker === 'day' && showFooterActions ? CALENDAR_HEIGHTS.DAY_PICKER_WITH_FOOTER : 'auto'
         }
-        backgroundColor="surface.background.gray.intense"
         justifyContent="space-between"
       >
-        <Calendar
-          {...props}
-          selectionType={_selectionType}
-          defaultValue={defaultValue}
-          onMouseLeave={onRootMouseLeave}
-          __onDayMouseEnter={(_event, date) => {
-            onHoveredDateChange(date);
-          }}
-          __onDayClick={(_event, date) => {
-            onDateChange(date, 'day');
-          }}
-          getMonthControlProps={(date) => {
-            return getControlProps(date);
-          }}
-          getYearControlProps={(date) => {
-            return getControlProps(date);
-          }}
-          getDayProps={(date) => {
-            return getControlProps(date);
-          }}
-          onMonthSelect={(date) => {
-            props?.onMonthSelect?.(date);
-            onDateChange(date, 'month');
-          }}
-          onYearSelect={(date) => {
-            props?.onYearSelect?.(date);
-            onDateChange(date, 'year');
-          }}
-          onNext={(data) => {
-            props?.onNext?.(data);
-            forceRerender();
-          }}
-          onPrevious={(data) => {
-            props?.onPrevious?.(data);
-            forceRerender();
-          }}
-          picker={_picker}
-          showLevelChangeLink={!picker}
-          onPickerChange={(picker) => {
-            setPicker(() => picker);
-            forceRerender();
-          }}
-          selectedValue={controlledValue}
-        />
+        <BaseBox padding={{ m: 'spacing.6', s: 'spacing.0' }}>
+          <Calendar
+            {...props}
+            selectionType={_selectionType}
+            defaultValue={defaultValue}
+            onMouseLeave={onRootMouseLeave}
+            __onDayMouseEnter={(_event, date) => {
+              onHoveredDateChange(date);
+            }}
+            __onDayClick={(_event, date) => {
+              onDateChange(date, 'day');
+            }}
+            getMonthControlProps={(date) => {
+              return getControlProps(date);
+            }}
+            getYearControlProps={(date) => {
+              return getControlProps(date);
+            }}
+            getDayProps={(date) => {
+              return getControlProps(date);
+            }}
+            onMonthSelect={(date) => {
+              props?.onMonthSelect?.(date);
+              onDateChange(date, 'month');
+            }}
+            onYearSelect={(date) => {
+              props?.onYearSelect?.(date);
+              onDateChange(date, 'year');
+            }}
+            onNext={(data) => {
+              props?.onNext?.(data);
+              forceRerender();
+            }}
+            onPrevious={(data) => {
+              props?.onPrevious?.(data);
+              forceRerender();
+            }}
+            picker={_picker}
+            showLevelChangeLink={!picker}
+            onPickerChange={(picker) => {
+              setPicker(() => picker);
+              forceRerender();
+            }}
+            selectedValue={controlledValue}
+          />
+        </BaseBox>
         {showFooterActions &&
           (isMobile ? null : (
             <CalendarFooter
@@ -588,13 +588,22 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                       <BaseBox
                         display="flex"
                         flexDirection="row"
-                        borderColor="surface.border.gray.subtle"
-                        borderWidth="thin"
-                        borderStyle="solid"
                         borderRadius="medium"
                         overflow="hidden"
                         minWidth="320px"
-                        style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+                        border="none"
+                        style={{
+                          ...animationStyles,
+                          background: theme.colors.popup.background.gray.moderate,
+                          boxShadow: `${theme.elevation.midRaised}, ${getDatePickerPopupBoxShadow(
+                            theme,
+                          )}`,
+                          backdropFilter: `blur(${theme.backdropBlur.high}px)`,
+                          borderTopColor: theme.colors.popup.border.gray.moderate,
+                          borderWidth: 'none',
+                          borderTopWidth: theme.border.width.thin,
+                          borderTopStyle: 'solid',
+                        }}
                       >
                         {content}
                       </BaseBox>

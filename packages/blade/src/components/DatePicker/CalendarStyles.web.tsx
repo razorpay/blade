@@ -6,7 +6,7 @@ import { classes } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { size } from '~tokens/global';
-import { makeBorderSize, makeSpace } from '~utils';
+import { makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
@@ -63,14 +63,14 @@ const selectedCell = {
   },
   month: {
     background: {
-      default: 'transparent',
-      hover: 'interactive.background.primary.faded',
+      default: 'interactive.background.gray.fadedHighlighted',
+      hover: 'interactive.background.gray.fadedHighlighted',
     },
     border: {
       default: 'interactive.border.primary.default',
     },
     text: {
-      default: 'interactive.text.primary.normal',
+      default: 'interactive.text.gray.normal',
     },
   },
 } as const;
@@ -205,11 +205,8 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
         },
       },
       '&[data-celltype="month"], &[data-celltype="year"]': {
-        backgroundColor: 'transparent',
-        outlineStyle: 'solid',
-        outlineWidth: makeBorderSize(theme.border.width.thin),
-        outlineOffset: makeSpace(-theme.border.width.thin),
-        outlineColor: getIn(theme.colors, selectedCell.month.border.default),
+        backgroundColor: getIn(theme.colors, selectedCell.month.background.default),
+        outlineStyle: 'none',
         color: getIn(theme.colors, selectedCell.month.text.default),
         ':hover': {
           backgroundColor: getIn(theme.colors, selectedCell.month.background.hover),
@@ -277,6 +274,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
       textAlign: 'center',
       display: isDayPicker ? 'flex' : 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: isDayPicker ? undefined : makeSpace(theme.spacing[3]),
     },
     [`.${classes.calendarHeader}`]: {
       display: 'none',
@@ -298,15 +296,26 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
         width: isMobile || !isDayPicker ? '100%' : makeSpace(cell.size[device]),
         height: isDayPicker && isMobile ? '100%' : makeSpace(cell.size[device]),
         aspectRatio: isDayPicker && isMobile ? '1 / 1' : undefined,
-        borderRadius: theme.border.radius.medium,
         backgroundColor: getIn(theme.colors, cell.background.default),
+        borderRadius: theme.border.radius.small,
         border: 'none',
-        ...getTextStyles({ theme, variant: 'body', size: 'medium', weight: 'regular' }),
+        ...getTextStyles({
+          theme,
+          variant: 'body',
+          size: 'medium',
+          weight: isDayPicker ? 'regular' : 'medium',
+        }),
 
         '&:hover': {
           backgroundColor: getIn(theme.colors, cell.background.hover),
         },
+        '&[data-celltype="month"]:hover, &[data-celltype="year"]:hover': {
+          backgroundColor: getIn(theme.colors, 'interactive.background.gray.default'),
+        },
         '&:focus-visible': getFocusRingStyles({ theme, isImportant: true }),
+        '&[data-celltype="month"]:focus-visible, &[data-celltype="year"]:focus-visible': {
+          backgroundColor: getIn(theme.colors, 'interactive.background.gray.default'),
+        },
         '&[data-disabled]': {
           color: getIn(theme.colors, cell.text.disabled),
           backgroundColor: getIn(theme.colors, cell.background.disabled),
