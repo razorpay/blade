@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { StyledIconButtonProps } from './types';
-import { highlightedButtonSizeMap, highlightedHoverColorMap } from './tokens';
+import {
+  highlightedButtonSizeMap,
+  highlightedHoverColorMap,
+  focusBackgroundColorMap,
+} from './tokens';
 import { castWebType, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
@@ -71,7 +75,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
       ...getFocusRingStyles({ theme }),
       color: theme.colors.interactive.icon[emphasisColor].subtle,
       backgroundColor: props.$isHighlighted
-        ? getIn(theme.colors, highlightedHoverColorMap[emphasis])
+        ? getIn(theme.colors, focusBackgroundColorMap[emphasis])
         : 'transparent',
     },
 
