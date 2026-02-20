@@ -17,7 +17,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     style={
       [
         {
-          "borderRadius": 4,
+          "borderRadius": 12,
           "display": "block",
         },
         {
@@ -31,13 +31,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
         [
           {
             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-            "borderRadius": 4,
+            "borderRadius": 12,
             "paddingBottom": 24,
             "paddingLeft": 24,
             "paddingRight": 24,
@@ -46,13 +47,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           },
           {
             "elevation": 8,
-            "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
             "shadowOffset": {
               "height": 2,
               "width": 0,
             },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
           [
             {
@@ -85,7 +86,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -127,7 +128,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           style={
             [
               {
-                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
                 "borderBottomStyle": "solid",
               },
               {
@@ -181,7 +182,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
@@ -215,13 +216,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(211, 26%, 34%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -286,7 +287,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   }
                 }
                 accessible={true}
-                borderRadius="4px"
+                borderRadius="12px"
                 borderWidth="1px"
                 buttonPaddingBottom="0px"
                 buttonPaddingLeft="20px"
@@ -297,14 +298,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 data-analytics-name="card-footer-secondary-action-button"
                 data-blade-component="button"
                 defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-                defaultBorderColor="hsla(227, 100%, 59%, 1)"
-                focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
-                focusBorderColor="hsla(227, 100%, 59%, 1)"
-                focusRingColor="hsla(227, 100%, 59%, 0.18)"
+                defaultBorderColor="hsla(218, 89%, 51%, 1)"
+                focusBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+                focusBorderColor="hsla(218, 89%, 51%, 1)"
+                focusRingColor="hsla(218, 89%, 51%, 0.18)"
                 focusable={true}
-                hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
-                hoverBorderColor="hsla(227, 100%, 59%, 1)"
-                hoverIconColor="hsla(227, 100%, 59%, 1)"
+                hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+                hoverBorderColor="hsla(218, 89%, 51%, 1)"
+                hoverIconColor="hsla(218, 89%, 51%, 1)"
                 isFullWidth={true}
                 isLoading={false}
                 isPressed={false}
@@ -333,8 +334,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "alignItems": "center",
                       "alignSelf": "center",
                       "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                      "borderColor": "hsla(227, 100%, 59%, 1)",
-                      "borderRadius": 4,
+                      "borderColor": "hsla(218, 89%, 51%, 1)",
+                      "borderRadius": 12,
                       "borderStyle": "solid",
                       "borderWidth": 1,
                       "cursor": "pointer",
@@ -354,7 +355,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     },
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                      "borderColor": "hsla(227, 100%, 59%, 1)",
+                      "borderColor": "hsla(218, 89%, 51%, 1)",
                     },
                   ]
                 }
@@ -407,7 +408,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(227, 100%, 59%, 1)",
+                            "color": "hsla(218, 89%, 51%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
@@ -476,7 +477,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   }
                 }
                 accessible={true}
-                borderRadius="4px"
+                borderRadius="12px"
                 borderWidth="0px"
                 buttonPaddingBottom="0px"
                 buttonPaddingLeft="20px"
@@ -486,14 +487,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 color="primary"
                 data-analytics-name="card-footer-primary-action-button"
                 data-blade-component="button"
-                defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-                defaultBorderColor="hsla(227, 100%, 59%, 1)"
-                focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-                focusBorderColor="hsla(227, 100%, 59%, 1)"
-                focusRingColor="hsla(227, 100%, 59%, 0.18)"
+                defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+                defaultBorderColor="hsla(218, 89%, 51%, 1)"
+                focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+                focusBorderColor="hsla(218, 87%, 43%, 1)"
+                focusRingColor="hsla(218, 89%, 51%, 0.18)"
                 focusable={true}
-                hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-                hoverBorderColor="hsla(227, 100%, 59%, 1)"
+                hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+                hoverBorderColor="hsla(218, 87%, 43%, 1)"
                 hoverIconColor="hsla(0, 0%, 100%, 1)"
                 isFullWidth={true}
                 isLoading={false}
@@ -522,9 +523,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     {
                       "alignItems": "center",
                       "alignSelf": "center",
-                      "backgroundColor": "hsla(227, 100%, 59%, 1)",
-                      "borderColor": "hsla(227, 100%, 59%, 1)",
-                      "borderRadius": 4,
+                      "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                      "borderColor": "hsla(218, 89%, 51%, 1)",
+                      "borderRadius": 12,
                       "borderStyle": "solid",
                       "borderWidth": 0,
                       "cursor": "pointer",
@@ -543,8 +544,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "hsla(227, 100%, 59%, 1)",
-                      "borderColor": "hsla(227, 100%, 59%, 1)",
+                      "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                      "borderColor": "hsla(218, 89%, 51%, 1)",
                     },
                   ]
                 }
@@ -650,7 +651,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
     style={
       [
         {
-          "borderRadius": 4,
+          "borderRadius": 12,
           "display": "block",
         },
         {
@@ -664,13 +665,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
         [
           {
             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-            "borderRadius": 4,
+            "borderRadius": 12,
             "paddingBottom": 24,
             "paddingLeft": 24,
             "paddingRight": 24,
@@ -679,13 +681,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
           },
           {
             "elevation": 8,
-            "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
             "shadowOffset": {
               "height": 2,
               "width": 0,
             },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
           [
             {
@@ -814,7 +816,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                       fill={
                         {
-                          "payload": 4279838777,
+                          "payload": 4278519045,
                           "type": 0,
                         }
                       }
@@ -828,7 +830,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                       fill={
                         {
-                          "payload": 4279838777,
+                          "payload": 4278519045,
                           "type": 0,
                         }
                       }
@@ -843,7 +845,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                       fill={
                         {
-                          "payload": 4279838777,
+                          "payload": 4278519045,
                           "type": 0,
                         }
                       }
@@ -897,7 +899,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     style={
                       [
                         {
-                          "color": "hsla(212, 39%, 16%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
@@ -949,12 +951,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         style={
                           [
                             {
-                              "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                              "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                               "minHeight": 20,
                             },
                             {
                               "alignSelf": "center",
-                              "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                              "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                               "borderRadius": 9999,
                               "display": "flex",
                               "flexWrap": "nowrap",
@@ -997,13 +999,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(211, 33%, 21%, 1)",
+                                  "color": "hsla(200, 10%, 18%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 12,
                                   "fontStyle": "normal",
                                   "fontWeight": "500",
                                   "letterSpacing": 0,
-                                  "lineHeight": 18,
+                                  "lineHeight": 17,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
                                   "marginRight": 0,
@@ -1038,13 +1040,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   style={
                     [
                       {
-                        "color": "hsla(211, 26%, 34%, 1)",
+                        "color": "hsla(200, 10%, 18%, 1)",
                         "fontFamily": "Inter",
                         "fontSize": 12,
                         "fontStyle": "normal",
                         "fontWeight": "400",
                         "letterSpacing": 0,
-                        "lineHeight": 18,
+                        "lineHeight": 17,
                         "marginBottom": 0,
                         "marginLeft": 0,
                         "marginRight": 0,
@@ -1095,13 +1097,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                      "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                       "height": 20,
                       "textAlign": "left",
                     },
                     {
                       "alignSelf": "center",
-                      "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                      "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                       "borderRadius": 9999,
                       "display": "flex",
                       "flexWrap": "nowrap",
@@ -1144,13 +1146,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     style={
                       [
                         {
-                          "color": "hsla(211, 33%, 21%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "500",
                           "letterSpacing": 0,
-                          "lineHeight": 18,
+                          "lineHeight": 17,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -1180,7 +1182,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           style={
             [
               {
-                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
                 "borderBottomStyle": "solid",
               },
               {
@@ -1214,7 +1216,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1259,7 +1261,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
     style={
       [
         {
-          "borderRadius": 4,
+          "borderRadius": 12,
           "display": "block",
         },
         {
@@ -1273,13 +1275,14 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
         [
           {
             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-            "borderRadius": 4,
+            "borderRadius": 12,
             "paddingBottom": 0,
             "paddingLeft": 0,
             "paddingRight": 0,
@@ -1288,13 +1291,13 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
           },
           {
             "elevation": 8,
-            "shadowColor": "hsla(217, 56%, 17%, 0.4)",
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
             "shadowOffset": {
               "height": 2,
               "width": 0,
             },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
           [
             {
@@ -1339,7 +1342,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
     style={
       [
         {
-          "borderRadius": 4,
+          "borderRadius": 12,
           "display": "block",
         },
         {
@@ -1353,13 +1356,14 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="none"
       style={
         [
           {
             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-            "borderRadius": 4,
+            "borderRadius": 12,
             "paddingBottom": 24,
             "paddingLeft": 24,
             "paddingRight": 24,
@@ -1378,7 +1382,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
           },
           [
             {
-              "borderColor": "hsla(211, 20%, 52%, 0.18)",
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
               "borderStyle": "solid",
               "borderWidth": 1,
               "display": "flex",
@@ -1410,7 +1414,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1455,7 +1459,7 @@ exports[`<Card /> should render a plain Card 1`] = `
     style={
       [
         {
-          "borderRadius": 4,
+          "borderRadius": 12,
           "display": "block",
         },
         {
@@ -1469,13 +1473,14 @@ exports[`<Card /> should render a plain Card 1`] = `
     <View
       backgroundColor="surface.background.gray.moderate"
       borderRadius="medium"
+      colorScheme="light"
       data-blade-component="base-box"
       elevation="highRaised"
       style={
         [
           {
-            "backgroundColor": "hsla(210, 40%, 98%, 1)",
-            "borderRadius": 4,
+            "backgroundColor": "hsla(0, 0%, 97%, 1)",
+            "borderRadius": 12,
             "paddingBottom": 24,
             "paddingLeft": 24,
             "paddingRight": 24,
@@ -1484,13 +1489,13 @@ exports[`<Card /> should render a plain Card 1`] = `
           },
           {
             "elevation": 24,
-            "shadowColor": "hsla(217, 56%, 17%, 0.8)",
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
             "shadowOffset": {
-              "height": 6,
+              "height": 8,
               "width": 0,
             },
-            "shadowOpacity": 0.16,
-            "shadowRadius": 14,
+            "shadowOpacity": 0.06,
+            "shadowRadius": 12,
           },
           [
             {
@@ -1523,7 +1528,7 @@ exports[`<Card /> should render a plain Card 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",

@@ -106,7 +106,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 .c12.c12.c12.c12.c12 {
   margin: auto;
   height: 16px;
-  border-left-color: hsla(211,20%,52%,0.18);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
 }
 
@@ -125,8 +125,8 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   padding: 8px;
   margin-top: 2px;
   gap: 8px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -207,14 +207,14 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -224,7 +224,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -262,17 +262,17 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   padding-bottom: 8px;
   padding-left: 12px;
   padding-right: 12px;
-  border-radius: 4px;
+  border-radius: 12px;
   border: none;
   background: none;
 }
 
 .c11.c11.c11.c11.c11[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -286,8 +286,8 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   border-style: solid;
   border-width: 1px;
   border-bottom-width: 0;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
   transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: background;
@@ -300,9 +300,9 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   left: 0;
   right: 0;
   height: 2px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  background-color: hsla(212,39%,16%,1);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background-color: hsla(0,0%,2%,1);
   pointer-events: none;
   opacity: 0;
   -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
@@ -319,7 +319,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c23.c23.c23.c23.c23 {
@@ -333,7 +333,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c23.c23.c23.c23.c23 img {
@@ -349,10 +349,10 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
+  background-color: hsla(206,10%,29%,0.06);
+  border-color: hsla(204,8%,88%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -383,17 +383,17 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c15.c15.c15.c15.c15:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c15.c15.c15.c15.c15:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15 * {
@@ -657,7 +657,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                       clip-rule="evenodd"
                       d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                       data-blade-component="svg-path"
-                      fill="hsla(212, 39%, 16%, 1)"
+                      fill="hsla(0, 0%, 2%, 1)"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -703,7 +703,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                     clip-rule="evenodd"
                     d="M9 1C9.43043 1 9.81257 1.27543 9.94868 1.68377L15 16.8377L17.0513 10.6838C17.1874 10.2754 17.5696 10 18 10H22C22.5523 10 23 10.4477 23 11C23 11.5523 22.5523 12 22 12H18.7208L15.9487 20.3162C15.8126 20.7246 15.4304 21 15 21C14.5696 21 14.1874 20.7246 14.0513 20.3162L9 5.16228L6.94868 11.3162C6.81257 11.7246 6.43043 12 6 12H2C1.44772 12 1 11.5523 1 11C1 10.4477 1.44772 10 2 10H5.27924L8.05132 1.68377C8.18743 1.27543 8.56957 1 9 1Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -743,7 +743,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
                     clip-rule="evenodd"
                     d="M13.7743 0.363035C14.0383 0.159916 14.3547 0.0363566 14.6865 0.00687107C15.0183 -0.0226146 15.3516 0.0431988 15.6473 0.196579C15.9429 0.34996 16.1887 0.584536 16.3557 0.872751L23.8564 13.8644C24.023 14.1531 24.1038 14.4835 24.0891 14.8165C24.0744 15.1494 23.9649 15.4712 23.7736 15.7441C23.5822 16.017 23.3169 16.2295 23.0089 16.3567C22.7012 16.4838 22.3638 16.5205 22.0361 16.4625C19.0399 15.9345 16.4708 16.2347 14.6537 16.6655C13.8958 16.8451 13.2709 17.0471 12.8032 17.2197L14.1451 19.5439C14.2889 19.7933 14.3692 20.0747 14.3784 20.3624C14.3877 20.6501 14.3258 20.9356 14.1983 21.1936L13.6487 22.3047C13.5244 22.556 13.3413 22.7741 13.1153 22.94C12.8891 23.1059 12.6263 23.2151 12.3492 23.2582C12.072 23.3014 11.7885 23.2773 11.5226 23.1879C11.2595 23.0995 11.0212 22.9498 10.8274 22.7513L7.91081 19.8194C6.99128 20.1626 5.98112 20.2147 5.02062 19.9574C3.80377 19.6313 2.76628 18.8352 2.13639 17.7442C1.5065 16.6532 1.33581 15.3567 1.66186 14.1398C1.98792 12.923 2.78401 11.8855 3.87501 11.2556L7.09987 9.39373L7.11694 9.38248C7.14203 9.36576 7.18224 9.33849 7.23602 9.30055C7.34361 9.22464 7.50532 9.10616 7.70879 8.94409C8.11602 8.61974 8.6888 8.12217 9.32936 7.44338C10.6109 6.0853 12.1554 4.01088 13.1965 1.15285C13.31 0.839989 13.5105 0.566004 13.7743 0.363035ZM7.61439 17.7569C7.62235 17.7522 7.63037 17.7475 7.63843 17.7431L10.0066 16.3758L7.25658 11.6127L4.87501 12.9877C4.24338 13.3523 3.78249 13.953 3.59372 14.6575C3.40495 15.362 3.50377 16.1126 3.86844 16.7442C4.23312 17.3759 4.83377 17.8368 5.53826 18.0255C6.23881 18.2132 6.98498 18.1166 7.61439 17.7569ZM8.93679 10.5229C8.94278 10.5181 8.9488 10.5133 8.95484 10.5085C9.4261 10.1331 10.0703 9.57224 10.7839 8.81603C12.1352 7.38416 13.7426 5.24389 14.8885 2.33153L21.8607 14.4077C18.7654 13.9435 16.108 14.2653 14.1923 14.7194C13.1806 14.9593 12.3727 15.2367 11.812 15.4571C11.8048 15.46 11.7976 15.4628 11.7905 15.4656L8.93679 10.5229ZM11.0066 18.1078L9.75058 18.833L12.0108 21.105L12.3459 20.4276L11.0066 18.1078Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -889,7 +889,7 @@ exports[`TopNav should render 1`] = `
 .c12.c12.c12.c12.c12 {
   margin: auto;
   height: 16px;
-  border-left-color: hsla(211,20%,52%,0.18);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
 }
 
@@ -908,8 +908,8 @@ exports[`TopNav should render 1`] = `
   padding: 8px;
   margin-top: 2px;
   gap: 8px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -990,14 +990,14 @@ exports[`TopNav should render 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1007,7 +1007,7 @@ exports[`TopNav should render 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1045,17 +1045,17 @@ exports[`TopNav should render 1`] = `
   padding-bottom: 8px;
   padding-left: 12px;
   padding-right: 12px;
-  border-radius: 4px;
+  border-radius: 12px;
   border: none;
   background: none;
 }
 
 .c11.c11.c11.c11.c11[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1069,8 +1069,8 @@ exports[`TopNav should render 1`] = `
   border-style: solid;
   border-width: 1px;
   border-bottom-width: 0;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
   transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: background;
@@ -1083,9 +1083,9 @@ exports[`TopNav should render 1`] = `
   left: 0;
   right: 0;
   height: 2px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  background-color: hsla(212,39%,16%,1);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background-color: hsla(0,0%,2%,1);
   pointer-events: none;
   opacity: 0;
   -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
@@ -1102,7 +1102,7 @@ exports[`TopNav should render 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c23.c23.c23.c23.c23 {
@@ -1116,7 +1116,7 @@ exports[`TopNav should render 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c23.c23.c23.c23.c23 img {
@@ -1132,10 +1132,10 @@ exports[`TopNav should render 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
+  background-color: hsla(206,10%,29%,0.06);
+  border-color: hsla(204,8%,88%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1166,17 +1166,17 @@ exports[`TopNav should render 1`] = `
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c15.c15.c15.c15.c15:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c15.c15.c15.c15.c15:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15 * {
@@ -1440,7 +1440,7 @@ exports[`TopNav should render 1`] = `
                       clip-rule="evenodd"
                       d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                       data-blade-component="svg-path"
-                      fill="hsla(212, 39%, 16%, 1)"
+                      fill="hsla(0, 0%, 2%, 1)"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1486,7 +1486,7 @@ exports[`TopNav should render 1`] = `
                     clip-rule="evenodd"
                     d="M9 1C9.43043 1 9.81257 1.27543 9.94868 1.68377L15 16.8377L17.0513 10.6838C17.1874 10.2754 17.5696 10 18 10H22C22.5523 10 23 10.4477 23 11C23 11.5523 22.5523 12 22 12H18.7208L15.9487 20.3162C15.8126 20.7246 15.4304 21 15 21C14.5696 21 14.1874 20.7246 14.0513 20.3162L9 5.16228L6.94868 11.3162C6.81257 11.7246 6.43043 12 6 12H2C1.44772 12 1 11.5523 1 11C1 10.4477 1.44772 10 2 10H5.27924L8.05132 1.68377C8.18743 1.27543 8.56957 1 9 1Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -1526,7 +1526,7 @@ exports[`TopNav should render 1`] = `
                     clip-rule="evenodd"
                     d="M13.7743 0.363035C14.0383 0.159916 14.3547 0.0363566 14.6865 0.00687107C15.0183 -0.0226146 15.3516 0.0431988 15.6473 0.196579C15.9429 0.34996 16.1887 0.584536 16.3557 0.872751L23.8564 13.8644C24.023 14.1531 24.1038 14.4835 24.0891 14.8165C24.0744 15.1494 23.9649 15.4712 23.7736 15.7441C23.5822 16.017 23.3169 16.2295 23.0089 16.3567C22.7012 16.4838 22.3638 16.5205 22.0361 16.4625C19.0399 15.9345 16.4708 16.2347 14.6537 16.6655C13.8958 16.8451 13.2709 17.0471 12.8032 17.2197L14.1451 19.5439C14.2889 19.7933 14.3692 20.0747 14.3784 20.3624C14.3877 20.6501 14.3258 20.9356 14.1983 21.1936L13.6487 22.3047C13.5244 22.556 13.3413 22.7741 13.1153 22.94C12.8891 23.1059 12.6263 23.2151 12.3492 23.2582C12.072 23.3014 11.7885 23.2773 11.5226 23.1879C11.2595 23.0995 11.0212 22.9498 10.8274 22.7513L7.91081 19.8194C6.99128 20.1626 5.98112 20.2147 5.02062 19.9574C3.80377 19.6313 2.76628 18.8352 2.13639 17.7442C1.5065 16.6532 1.33581 15.3567 1.66186 14.1398C1.98792 12.923 2.78401 11.8855 3.87501 11.2556L7.09987 9.39373L7.11694 9.38248C7.14203 9.36576 7.18224 9.33849 7.23602 9.30055C7.34361 9.22464 7.50532 9.10616 7.70879 8.94409C8.11602 8.61974 8.6888 8.12217 9.32936 7.44338C10.6109 6.0853 12.1554 4.01088 13.1965 1.15285C13.31 0.839989 13.5105 0.566004 13.7743 0.363035ZM7.61439 17.7569C7.62235 17.7522 7.63037 17.7475 7.63843 17.7431L10.0066 16.3758L7.25658 11.6127L4.87501 12.9877C4.24338 13.3523 3.78249 13.953 3.59372 14.6575C3.40495 15.362 3.50377 16.1126 3.86844 16.7442C4.23312 17.3759 4.83377 17.8368 5.53826 18.0255C6.23881 18.2132 6.98498 18.1166 7.61439 17.7569ZM8.93679 10.5229C8.94278 10.5181 8.9488 10.5133 8.95484 10.5085C9.4261 10.1331 10.0703 9.57224 10.7839 8.81603C12.1352 7.38416 13.7426 5.24389 14.8885 2.33153L21.8607 14.4077C18.7654 13.9435 16.108 14.2653 14.1923 14.7194C13.1806 14.9593 12.3727 15.2367 11.812 15.4571C11.8048 15.46 11.7976 15.4628 11.7905 15.4656L8.93679 10.5229ZM11.0066 18.1078L9.75058 18.833L12.0108 21.105L12.3459 20.4276L11.0066 18.1078Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -1672,7 +1672,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
 .c12.c12.c12.c12.c12 {
   margin: auto;
   height: 16px;
-  border-left-color: hsla(211,20%,52%,0.18);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
 }
 
@@ -1691,8 +1691,8 @@ exports[`TopNav should support data analytics attributes 1`] = `
   padding: 8px;
   margin-top: 2px;
   gap: 8px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1773,14 +1773,14 @@ exports[`TopNav should support data analytics attributes 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1790,7 +1790,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1828,17 +1828,17 @@ exports[`TopNav should support data analytics attributes 1`] = `
   padding-bottom: 8px;
   padding-left: 12px;
   padding-right: 12px;
-  border-radius: 4px;
+  border-radius: 12px;
   border: none;
   background: none;
 }
 
 .c11.c11.c11.c11.c11[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1852,8 +1852,8 @@ exports[`TopNav should support data analytics attributes 1`] = `
   border-style: solid;
   border-width: 1px;
   border-bottom-width: 0;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
   transition: 280ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: background;
@@ -1866,9 +1866,9 @@ exports[`TopNav should support data analytics attributes 1`] = `
   left: 0;
   right: 0;
   height: 2px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  background-color: hsla(212,39%,16%,1);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background-color: hsla(0,0%,2%,1);
   pointer-events: none;
   opacity: 0;
   -webkit-transition: 280ms cubic-bezier(0.3,0,0.2,1);
@@ -1885,7 +1885,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c23.c23.c23.c23.c23 {
@@ -1899,7 +1899,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c23.c23.c23.c23.c23 img {
@@ -1915,10 +1915,10 @@ exports[`TopNav should support data analytics attributes 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
+  background-color: hsla(206,10%,29%,0.06);
+  border-color: hsla(204,8%,88%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1949,17 +1949,17 @@ exports[`TopNav should support data analytics attributes 1`] = `
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c15.c15.c15.c15.c15:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
 }
 
 .c15.c15.c15.c15.c15:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c15.c15.c15.c15.c15 * {
@@ -2223,7 +2223,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                       clip-rule="evenodd"
                       d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                       data-blade-component="svg-path"
-                      fill="hsla(212, 39%, 16%, 1)"
+                      fill="hsla(0, 0%, 2%, 1)"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2269,7 +2269,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                     clip-rule="evenodd"
                     d="M9 1C9.43043 1 9.81257 1.27543 9.94868 1.68377L15 16.8377L17.0513 10.6838C17.1874 10.2754 17.5696 10 18 10H22C22.5523 10 23 10.4477 23 11C23 11.5523 22.5523 12 22 12H18.7208L15.9487 20.3162C15.8126 20.7246 15.4304 21 15 21C14.5696 21 14.1874 20.7246 14.0513 20.3162L9 5.16228L6.94868 11.3162C6.81257 11.7246 6.43043 12 6 12H2C1.44772 12 1 11.5523 1 11C1 10.4477 1.44772 10 2 10H5.27924L8.05132 1.68377C8.18743 1.27543 8.56957 1 9 1Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -2309,7 +2309,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
                     clip-rule="evenodd"
                     d="M13.7743 0.363035C14.0383 0.159916 14.3547 0.0363566 14.6865 0.00687107C15.0183 -0.0226146 15.3516 0.0431988 15.6473 0.196579C15.9429 0.34996 16.1887 0.584536 16.3557 0.872751L23.8564 13.8644C24.023 14.1531 24.1038 14.4835 24.0891 14.8165C24.0744 15.1494 23.9649 15.4712 23.7736 15.7441C23.5822 16.017 23.3169 16.2295 23.0089 16.3567C22.7012 16.4838 22.3638 16.5205 22.0361 16.4625C19.0399 15.9345 16.4708 16.2347 14.6537 16.6655C13.8958 16.8451 13.2709 17.0471 12.8032 17.2197L14.1451 19.5439C14.2889 19.7933 14.3692 20.0747 14.3784 20.3624C14.3877 20.6501 14.3258 20.9356 14.1983 21.1936L13.6487 22.3047C13.5244 22.556 13.3413 22.7741 13.1153 22.94C12.8891 23.1059 12.6263 23.2151 12.3492 23.2582C12.072 23.3014 11.7885 23.2773 11.5226 23.1879C11.2595 23.0995 11.0212 22.9498 10.8274 22.7513L7.91081 19.8194C6.99128 20.1626 5.98112 20.2147 5.02062 19.9574C3.80377 19.6313 2.76628 18.8352 2.13639 17.7442C1.5065 16.6532 1.33581 15.3567 1.66186 14.1398C1.98792 12.923 2.78401 11.8855 3.87501 11.2556L7.09987 9.39373L7.11694 9.38248C7.14203 9.36576 7.18224 9.33849 7.23602 9.30055C7.34361 9.22464 7.50532 9.10616 7.70879 8.94409C8.11602 8.61974 8.6888 8.12217 9.32936 7.44338C10.6109 6.0853 12.1554 4.01088 13.1965 1.15285C13.31 0.839989 13.5105 0.566004 13.7743 0.363035ZM7.61439 17.7569C7.62235 17.7522 7.63037 17.7475 7.63843 17.7431L10.0066 16.3758L7.25658 11.6127L4.87501 12.9877C4.24338 13.3523 3.78249 13.953 3.59372 14.6575C3.40495 15.362 3.50377 16.1126 3.86844 16.7442C4.23312 17.3759 4.83377 17.8368 5.53826 18.0255C6.23881 18.2132 6.98498 18.1166 7.61439 17.7569ZM8.93679 10.5229C8.94278 10.5181 8.9488 10.5133 8.95484 10.5085C9.4261 10.1331 10.0703 9.57224 10.7839 8.81603C12.1352 7.38416 13.7426 5.24389 14.8885 2.33153L21.8607 14.4077C18.7654 13.9435 16.108 14.2653 14.1923 14.7194C13.1806 14.9593 12.3727 15.2367 11.812 15.4571C11.8048 15.46 11.7976 15.4628 11.7905 15.4656L8.93679 10.5229ZM11.0066 18.1078L9.75058 18.833L12.0108 21.105L12.3459 20.4276L11.0066 18.1078Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>

@@ -3,14 +3,22 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
 
+// TEMPORARY CHANGE
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 const config: StorybookConfig = {
   typescript: {
-    check: true,
+    // Disable type checking in development for faster startup
+    // Run `yarn typecheck` separately to check types
+    check: !isDevelopment,
     checkOptions: {
       typescript: {
         configFile: path.resolve('./tsconfig-typecheck.web.json'),
       },
     },
+    // Use react-docgen instead of react-docgen-typescript for faster builds
+    // react-docgen-typescript is slower but more accurate
+    reactDocgen: isDevelopment ? false : 'react-docgen-typescript',
   },
   refs: {
     '@storybook/design-system': { disable: true },
@@ -48,6 +56,20 @@ const config: StorybookConfig = {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
+
+    // Enable filesystem caching for faster rebuilds
+    if (configType === 'DEVELOPMENT') {
+      config.cache = {
+        type: 'filesystem',
+        buildDependencies: {
+          config: [__filename],
+        },
+      };
+
+      // Use faster source maps in development
+      config.devtool = 'eval-cheap-module-source-map';
+    }
+
     config.resolve.extensions = [
       '.web.tsx',
       '.web.ts',

@@ -3,15 +3,15 @@
 exports[`<Card /> should render a Card with Footer 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -19,7 +19,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -104,7 +104,40 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -133,7 +166,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -150,7 +183,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -167,14 +200,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -184,7 +217,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c18.c18.c18.c18.c18 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -224,9 +257,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   width: 100%;
   cursor: pointer;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -257,20 +290,20 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c14.c14.c14.c14.c14:active {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c14.c14.c14.c14.c14:focus-visible {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c14.c14.c14.c14.c14 * {
@@ -286,10 +319,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -320,20 +353,20 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c20.c20.c20.c20.c20:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c20.c20.c20.c20.c20:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c20.c20.c20.c20.c20:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c20.c20.c20.c20.c20 * {
@@ -527,15 +560,15 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 exports[`<Card /> should render a Card with Header 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -626,7 +659,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 
 .c14.c14.c14.c14.c14 {
   min-height: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c16.c16.c16.c16.c16 {
@@ -659,11 +692,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
 .c20.c20.c20.c20.c20 {
   text-align: left;
   height: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c23.c23.c23.c23.c23 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -677,7 +710,40 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -706,7 +772,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c21.c21.c21.c21.c21 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -721,7 +787,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -738,14 +804,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -762,14 +828,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c18.c18.c18.c18.c18 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -780,14 +846,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c22.c22.c22.c22.c22 {
-  color: hsla(211,33%,21%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -803,7 +869,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c25.c25.c25.c25.c25 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -820,7 +886,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c15.c15.c15.c15.c15 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -917,18 +983,18 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   <path
                     d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                   />
                   <path
                     d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -1035,15 +1101,15 @@ exports[`<Card /> should render a Card with Header 1`] = `
 exports[`<Card /> should render a Card without 0 padding 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 0px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1056,7 +1122,40 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1108,14 +1207,14 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: none;
 }
 
@@ -1129,10 +1228,40 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border-width: 1px;
-  border-style: solid;
-  border-color: hsla(211,20%,52%,0.18);
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1184,15 +1313,15 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 exports[`<Card /> should render a plain Card 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1205,7 +1334,40 @@ exports[`<Card /> should render a plain Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1257,15 +1419,15 @@ exports[`<Card /> should render a plain Card 1`] = `
 exports[`<Card /> should support adding data-analytics attributes 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1273,7 +1435,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
@@ -1358,7 +1520,40 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1387,7 +1582,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1404,7 +1599,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1421,7 +1616,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1461,9 +1656,9 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   width: 100%;
   cursor: pointer;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1494,20 +1689,20 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c13.c13.c13.c13.c13:active {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c13.c13.c13.c13.c13:focus-visible {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c13.c13.c13.c13.c13 * {
@@ -1523,10 +1718,10 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 0px;
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1557,20 +1752,20 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 }
 
 .c19.c19.c19.c19.c19:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c19.c19.c19.c19.c19:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
 }
 
 .c19.c19.c19.c19.c19:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  border-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c19.c19.c19.c19.c19 * {

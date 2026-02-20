@@ -100,7 +100,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         toolbar={
           <TableToolbar>
             <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2" isFullWidth={onMobile}>
+              <Button variant="secondary" marginRight="spacing.3" isFullWidth={onMobile}>
                 Export
               </Button>
               <Button isFullWidth={onMobile}>Payout</Button>

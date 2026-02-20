@@ -4,9 +4,14 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
+import { castWebType, makeMotionTime, useTheme } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
+import { makeAccessible } from '~utils/makeAccessible';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute/makeAnalyticsConstants';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { ToastProps } from './types';
-import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import { Box } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
 import {
   AlertOctagonIcon,
@@ -17,11 +22,6 @@ import {
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { castWebType, makeMotionTime, useTheme } from '~utils';
-import getIn from '~utils/lodashButBetter/get';
-import { makeAccessible } from '~utils/makeAccessible';
-import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute/makeAnalyticsConstants';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const iconMap = {
   positive: CheckCircleIcon,
@@ -32,11 +32,11 @@ const iconMap = {
 };
 
 const borderColorMap = {
-  positive: 'feedback.border.positive.intense',
-  negative: 'feedback.border.negative.intense',
-  notice: 'feedback.border.notice.intense',
-  information: 'feedback.border.information.intense',
-  neutral: 'feedback.border.neutral.intense',
+  positive: 'popup.border.positive.moderate',
+  negative: 'popup.border.negative.moderate',
+  notice: 'popup.border.notice.moderate',
+  information: 'popup.border.information.moderate',
+  neutral: 'popup.border.neutral.moderate',
 } as const;
 
 const slideIn = keyframes`
@@ -66,10 +66,15 @@ const slideOut = keyframes`
 const AnimatedFade = styled(BaseBox)<{
   animationType: FlattenSimpleInterpolation | null;
   toastBorderColor: string;
-}>(({ animationType, toastBorderColor }) => {
+}>(({ animationType, toastBorderColor, theme }) => {
+  const borderShadow = `inset 0 0 0 1px ${toastBorderColor}`;
+  const highlightShadow = `inset 0px 1.5px 0px 0px ${theme.colors.interactive.background.staticWhite.fadedHighlighted}`;
+  const backdropBlur = theme.backdropBlur.medium;
+
   return css`
     overflow: hidden;
-    border: 1px solid ${toastBorderColor};
+    box-shadow: ${borderShadow}, ${highlightShadow};
+    backdrop-filter: blur(${backdropBlur}px);
     ${animationType}
   `;
 });
@@ -126,7 +131,7 @@ const Toast = ({
       {...metaAttribute({ name: MetaConstants.Toast })}
       toastBorderColor={getIn(
         theme.colors,
-        isPromotional ? 'surface.border.gray.muted' : borderColorMap[color],
+        isPromotional ? 'popup.border.gray.moderate' : borderColorMap[color],
       )}
       animationType={isVisible ? enter : exit}
       width="100%"
@@ -137,7 +142,7 @@ const Toast = ({
       borderRadius="medium"
       alignItems="center"
       backgroundColor={
-        isPromotional ? 'surface.background.gray.intense' : `feedback.background.${color}.intense`
+        isPromotional ? 'popup.background.gray.moderate' : `popup.background.${color}.moderate`
       }
     >
       {Icon ? (
@@ -153,7 +158,12 @@ const Toast = ({
           />
         </Box>
       ) : null}
-      <Box display="flex" flexDirection="column" gap="spacing.3">
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="spacing.3"
+        paddingY={isPromotional ? 'spacing.0' : 'spacing.2'}
+      >
         {isPromotional ? (
           content
         ) : (
@@ -163,7 +173,12 @@ const Toast = ({
         )}
         {isPromotional && actionButton}
       </Box>
-      <Box alignSelf="start" marginLeft="auto" display="flex" gap="spacing.4">
+      <Box
+        alignSelf={isPromotional ? 'start' : 'center'}
+        marginLeft="auto"
+        display="flex"
+        gap="spacing.4"
+      >
         {!isPromotional && actionButton}
         <IconButton
           emphasis={isPromotional ? 'intense' : 'subtle'}

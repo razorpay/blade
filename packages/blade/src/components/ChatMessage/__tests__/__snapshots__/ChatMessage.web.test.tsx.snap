@@ -28,15 +28,15 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 
 .c3.c3.c3.c3.c3 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c5.c5.c5.c5.c5 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c7.c7.c7.c7.c7 {
@@ -97,7 +97,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -114,7 +114,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -140,7 +140,40 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c6.c6.c6.c6.c6::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c6.c6.c6.c6.c6::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -190,7 +223,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -224,7 +257,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -236,8 +269,8 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -514,11 +547,11 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  background-color: hsla(4,74%,49%,0.09);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  background-color: hsla(4,85%,44%,0.09);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 16px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -554,7 +587,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -572,7 +605,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
@@ -641,18 +674,18 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
                 <path
                   d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                   data-blade-component="svg-path"
-                  fill="hsla(4, 74%, 49%, 1)"
+                  fill="hsla(4, 85%, 44%, 1)"
                 />
                 <path
                   d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                   data-blade-component="svg-path"
-                  fill="hsla(4, 74%, 49%, 1)"
+                  fill="hsla(4, 85%, 44%, 1)"
                 />
                 <path
                   clip-rule="evenodd"
                   d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                   data-blade-component="svg-path"
-                  fill="hsla(4, 74%, 49%, 1)"
+                  fill="hsla(4, 85%, 44%, 1)"
                   fill-rule="evenodd"
                 />
               </svg>
@@ -691,11 +724,11 @@ exports[`<ChatMessage/> should render last message correctly 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  background-color: hsla(227,100%,59%,0.09);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  background-color: hsla(218,89%,51%,0.09);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 16px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -705,7 +738,7 @@ exports[`<ChatMessage/> should render last message correctly 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -771,11 +804,11 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  background-color: hsla(227,100%,59%,0.09);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
+  background-color: hsla(218,89%,51%,0.09);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -785,7 +818,7 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -862,7 +895,7 @@ exports[`<ChatMessage/> should render last message correctly 3`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -961,15 +994,15 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 
 .c3.c3.c3.c3.c3 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c5.c5.c5.c5.c5 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c7.c7.c7.c7.c7 {
@@ -1030,7 +1063,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1047,7 +1080,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1073,7 +1106,40 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  border: none;
+  isolation: isolate;
+}
+
+.c6.c6.c6.c6.c6::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c6.c6.c6.c6.c6::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1123,7 +1189,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -1157,7 +1223,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1169,8 +1235,8 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c13.c13.c13.c13.c13:hover + div {
-  border-color: hsla(214,40%,92%,1);
-  background-color: hsla(211,20%,52%,0.06);
+  border-color: hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
