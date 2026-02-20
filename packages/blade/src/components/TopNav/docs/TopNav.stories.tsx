@@ -664,16 +664,22 @@ const popularSearchItems = [
   { title: 'Refunds', icon: ShoppingBagIcon },
 ];
 
+const SearchContainer = styled.div<{ isActive: boolean }>(({ isActive }) => ({
+  width: isActive ? '300px' : '200px',
+  transition: 'width 200ms ease-in-out',
+}));
+
 const TopNavSearchDropdown = (): React.ReactElement => {
   const [searchTerm, setSearchTerm] = React.useState('');
+  const [isSearchActive, setIsSearchActive] = React.useState(false);
 
   const filteredItems = searchMenuItems.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
-    <Box width="264px">
-      <Dropdown>
+    <SearchContainer isActive={isSearchActive}>
+      <Dropdown onOpenChange={(isOpen) => setIsSearchActive(isOpen)}>
         <SearchInput
           placeholder="Search in payments"
           accessibilityLabel="Search Across Razorpay"
@@ -698,7 +704,7 @@ const TopNavSearchDropdown = (): React.ReactElement => {
           )}
         </DropdownOverlay>
       </Dropdown>
-    </Box>
+    </SearchContainer>
   );
 };
 
