@@ -802,6 +802,8 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
                 icon={AnnouncementIcon}
                 onClick={noop}
                 accessibilityLabel="View Announcements"
+                isHighlighted={true}
+                size="medium"
               />
             </Tooltip>
             <Avatar size="small" variant="circle" name="Anurag Hazra" />
