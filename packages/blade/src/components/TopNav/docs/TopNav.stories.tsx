@@ -529,8 +529,8 @@ const TopNavFullExample = () => {
         <Box
           overflow="hidden"
           position="relative"
-          borderRadius="large"
-          borderTopRightRadius="large"
+          borderRadius={{ base: 'none', m: 'large' }}
+          borderTopRightRadius={{ base: 'none', m: 'large' }}
           borderBottomLeftRadius="none"
           borderBottomRightRadius="none"
           height="100%"
@@ -544,11 +544,10 @@ const TopNavFullExample = () => {
           />
           <Box
             marginLeft={{
-              base: '100%',
+              base: '0px',
               m: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
               xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
             }}
-            // 100vh - (topnav height [56px] + border [2px])
             height="calc(100vh - 58px)"
           >
             <Box
@@ -748,8 +747,8 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
         <Box
           overflow="hidden"
           position="relative"
-          borderRadius="large"
-          borderTopRightRadius="large"
+          borderRadius={{ base: 'none', m: 'large' }}
+          borderTopRightRadius={{ base: 'none', m: 'large' }}
           borderBottomLeftRadius="none"
           borderBottomRightRadius="none"
           height="100%"
@@ -861,8 +860,8 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
         <Box
           overflow="hidden"
           position="relative"
-          borderRadius="large"
-          borderTopRightRadius="large"
+          borderRadius={{ base: 'none', m: 'large' }}
+          borderTopRightRadius={{ base: 'none', m: 'large' }}
           borderBottomLeftRadius="none"
           borderBottomRightRadius="none"
           height="100%"
@@ -974,8 +973,8 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
         <Box
           overflow="hidden"
           position="relative"
-          borderRadius="large"
-          borderTopRightRadius="large"
+          borderRadius={{ base: 'none', m: 'large' }}
+          borderTopRightRadius={{ base: 'none', m: 'large' }}
           borderBottomLeftRadius="none"
           borderBottomRightRadius="none"
           height="100%"
