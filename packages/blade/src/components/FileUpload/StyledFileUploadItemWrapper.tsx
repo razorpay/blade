@@ -1,14 +1,14 @@
 import styled from 'styled-components';
+import getIn from '~utils/lodashButBetter/get';
+import { castWebType, makeSize } from '~utils';
 import type { StyledFileUploadItemWrapperProps } from './types';
 import {
   fileUploadItemBackgroundColors,
   fileUploadMotionTokens,
   fileUploadHeightTokens,
 } from './fileUploadTokens';
-import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
-import { castWebType, makeSize } from '~utils';
 
 const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperProps>(
   ({ theme, status, size }) => {
@@ -29,7 +29,10 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       transitionProperty: 'background-color',
       transitionTimingFunction: easing,
       transitionDuration: duration,
-      borderColor: theme.colors.interactive.border.neutral.faded,
+      borderColor:
+        status === 'error'
+          ? theme.colors.interactive.border.negative.faded
+          : theme.colors.surface.border.gray.subtle,
       wordBreak: 'break-all',
 
       ...(status !== 'uploading' && {
