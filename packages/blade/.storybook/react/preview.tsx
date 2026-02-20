@@ -166,7 +166,7 @@ const StoryCanvas = styled.div<{ context }>(
       height: ${context.viewMode === 'story' ? '100vh' : '100%'};
       overflow: auto;
       padding: ${hasFullPageExampleStories(context) ? '0rem' : '2rem'};
-      background-color: ${theme.colors.surface.background.gray.moderate};
+      background-color: ${theme.colors.surface.background.gray.intense};
       border-radius: ${
         context.viewMode === 'story'
           ? `${theme.border.radius.none}px`

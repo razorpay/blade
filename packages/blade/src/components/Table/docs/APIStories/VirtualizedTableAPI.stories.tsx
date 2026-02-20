@@ -87,7 +87,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = () => {
         toolbar={
           <TableToolbar>
             <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2">
+              <Button variant="secondary" marginRight="spacing.3">
                 Export
               </Button>
               <Button>Payout</Button>

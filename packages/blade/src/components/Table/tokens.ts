@@ -13,7 +13,7 @@ const tableHeader = {
   paddingBottom: 'spacing.5',
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
-  backgroundColor: 'interactive.background.gray.faded',
+  backgroundColor: 'surface.background.gray.moderate',
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.gray.muted',
 } as const;
@@ -50,10 +50,10 @@ const tableRow = {
     backgroundColorFocus: 'transparent',
     // TODO: Rebranding - on design side: explore pressed state color change, right now both hover & active are same
     backgroundColorActive: 'interactive.background.gray.default',
-    backgroundColorSelected: 'interactive.background.primary.faded',
-    backgroundColorSelectedHover: 'interactive.background.primary.fadedHighlighted',
-    backgroundColorSelectedFocus: 'interactive.background.primary.faded',
-    backgroundColorSelectedActive: 'interactive.background.primary.fadedHighlighted',
+    backgroundColorSelected: 'interactive.background.gray.fadedHighlighted',
+    backgroundColorSelectedHover: 'interactive.background.gray.fadedHighlighted',
+    backgroundColorSelectedFocus: 'interactive.background.gray.fadedHighlighted',
+    backgroundColorSelectedActive: 'interactive.background.gray.fadedHighlighted',
   },
   nonStripeWrapper: {
     // not used anywhere
@@ -71,20 +71,20 @@ const tableRow = {
     backgroundColorHover: 'interactive.background.gray.default',
     backgroundColorFocus: 'transparent',
     backgroundColorActive: 'interactive.background.gray.default',
-    backgroundColorSelected: 'interactive.background.primary.faded',
-    backgroundColorSelectedHover: 'interactive.background.primary.fadedHighlighted',
-    backgroundColorSelectedFocus: 'interactive.background.primary.faded',
-    backgroundColorSelectedActive: 'interactive.background.primary.fadedHighlighted',
+    backgroundColorSelected: 'interactive.background.gray.fadedHighlighted',
+    backgroundColorSelectedHover: 'interactive.background.gray.fadedHighlighted',
+    backgroundColorSelectedFocus: 'interactive.background.gray.fadedHighlighted',
+    backgroundColorSelectedActive: 'interactive.background.gray.fadedHighlighted',
   },
   stripeWrapper: {
     backgroundColor: 'interactive.background.gray.default',
     backgroundColorHover: 'interactive.background.gray.default',
     backgroundColorFocus: 'interactive.background.gray.default',
     backgroundColorActive: 'interactive.background.gray.default',
-    backgroundColorSelected: 'interactive.background.primary.faded',
-    backgroundColorSelectedHover: 'interactive.background.primary.faded',
-    backgroundColorSelectedFocus: 'interactive.background.primary.faded',
-    backgroundColorSelectedActive: 'interactive.background.primary.faded',
+    backgroundColorSelected: 'interactive.background.gray.default',
+    backgroundColorSelectedHover: 'interactive.background.gray.default',
+    backgroundColorSelectedFocus: 'interactive.background.gray.default',
+    backgroundColorSelectedActive: 'interactive.background.gray.default',
   },
   borderBottomWidth: 'thin',
   borderColor: 'surface.border.gray.muted',
@@ -94,16 +94,17 @@ const tableRow = {
 } as const;
 
 const tableToolbar = {
-  backgroundColor: 'interactive.background.gray.faded',
+  backgroundColor: 'transparent',
   backgroundColorSelected: 'interactive.background.primary.faded',
   backgroundColorMotionEasing: 'easing.standard',
   backgroundColorMotionDuration: 'duration.xquick',
   minHeight: size[37], // 37px to accommodate 1px border, matching TableHeader height
-  padding: ['spacing.3', 'spacing.4'],
+  padding: ['spacing.3', 'spacing.3', 'spacing.3', 'spacing.4'],
 } as const;
 
 const tablePagination = {
   defaultPageSize: 10,
+  backgroundColor: 'surface.background.gray.moderate',
 } as const;
 
 const tableEditableCellRowDensityToInputSizeMap = {
