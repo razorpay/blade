@@ -38,7 +38,7 @@ const fileUploadColorTokens = {
     disabled: 'interactive.border.gray.disabled',
   },
   background: {
-    hover: 'interactive.background.gray.highlighted',
+    hover: 'interactive.background.gray.default',
     active: 'interactive.background.primary.faded',
   },
   icon: {
