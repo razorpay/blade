@@ -7,17 +7,17 @@ const StyledQuickSelectionWrapper = styled.div(({ theme }) => ({
   '& > *': {
     borderRadius: theme.border.radius.small,
     '&:hover:not([aria-disabled=true])': {
-      backgroundColor: `${theme.colors.interactive.background.gray.default} !important`,
+      backgroundColor: `${theme.colors.interactive.background.gray.default}`,
     },
     '&:focus-visible': {
       ...getFocusRingStyles({ theme }),
-      backgroundColor: `${theme.colors.interactive.background.gray.default} !important`,
+      backgroundColor: `${theme.colors.interactive.background.gray.default}`,
     },
     '&[aria-selected=true], &[aria-selected=true]:hover': {
-      backgroundColor: `${theme.colors.interactive.background.gray.fadedHighlighted} !important`,
+      backgroundColor: `${theme.colors.interactive.background.gray.fadedHighlighted}`,
     },
     '&[aria-selected=true]': {
-      backgroundColor: `${theme.colors.interactive.background.gray.fadedHighlighted} !important`,
+      backgroundColor: `${theme.colors.interactive.background.gray.fadedHighlighted}`,
     },
     '& p': {
       fontSize: `${theme.typography.fonts.size[75]}px !important`,
