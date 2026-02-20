@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 12.82.0
+
+### Minor Changes
+
+- 7952254f1: Add agentic loaded in ChatMessage
+
+### Patch Changes
+
+- 2ef2e255c: feat(blade): re-trigger release
+
 ## 12.81.3
 
 ### Patch Changes
