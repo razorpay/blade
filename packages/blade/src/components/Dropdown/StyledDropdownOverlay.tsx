@@ -8,7 +8,7 @@ const StyledDropdownOverlay = styled(BaseBox)<{
   const { theme, isInBottomSheet } = props;
 
   const dropshadow = castWebType(theme.elevation.midRaised);
-  const innerShadow = `inset 0px -1.5px 0px 1px ${theme.colors.surface.background.gray.intense}`;
+  const innerShadow = `inset 0px 0px 0px 1px ${theme.colors.popup.border.gray.subtle}`;
 
   return {
     backgroundColor: theme.colors.popup.background.gray.moderate,
