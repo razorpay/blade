@@ -294,29 +294,31 @@ const MobileTopNav = (): React.ReactElement => {
         <RazorpayLogoWhite />
       </Box>
       <Box />
-      <Menu openInteraction="click">
-        <Avatar size="medium" name="RK" />
-        <MenuOverlay>
-          <MenuHeader title="Profile" />
-          <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-            <Avatar size="medium" name="RK" />
-            <Box display="flex" flexDirection="column" gap="spacing.2">
-              <Text size="medium" weight="semibold">
-                Anurag Hazra
-              </Text>
-              <Text size="xsmall" color="surface.text.gray.muted">
-                Razorpay Trusted Merchant
-              </Text>
+      <Box marginRight="spacing.2">
+        <Menu openInteraction="click">
+          <Avatar size="medium" name="RK" />
+          <MenuOverlay>
+            <MenuHeader title="Profile" />
+            <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+              <Avatar size="medium" name="RK" />
+              <Box display="flex" flexDirection="column" gap="spacing.2">
+                <Text size="medium" weight="semibold">
+                  Anurag Hazra
+                </Text>
+                <Text size="xsmall" color="surface.text.gray.muted">
+                  Razorpay Trusted Merchant
+                </Text>
+              </Box>
             </Box>
-          </Box>
-          <MenuItem>
-            <Text color="surface.text.gray.subtle">Settings</Text>
-          </MenuItem>
-          <MenuItem color="negative">
-            <Text color="feedback.text.negative.intense">Logout</Text>
-          </MenuItem>
-        </MenuOverlay>
-      </Menu>
+            <MenuItem>
+              <Text color="surface.text.gray.subtle">Settings</Text>
+            </MenuItem>
+            <MenuItem color="negative">
+              <Text color="feedback.text.negative.intense">Logout</Text>
+            </MenuItem>
+          </MenuOverlay>
+        </Menu>
+      </Box>
     </>
   );
 };
