@@ -39,7 +39,6 @@ import {
   PaymentPagesIcon,
   RazorpayxPayrollIcon,
   RazorpayxPayrollFilledIcon,
-  UserIcon,
   RayIcon,
 } from '~components/Icons';
 import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
@@ -485,13 +484,7 @@ const TopNavFullExample = () => {
                   />
                 </Tooltip>
                 <Menu openInteraction="click">
-                  <IconButton
-                    icon={UserIcon}
-                    size={isMobile ? 'small' : 'medium'}
-                    accessibilityLabel="User Icon"
-                    onClick={noop}
-                    isHighlighted={true}
-                  />
+                  <Avatar size="small" name="Anurag Hazra" />
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
                     <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -705,13 +698,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                   />
                 </Tooltip>
                 <Menu openInteraction="click">
-                  <IconButton
-                    icon={UserIcon}
-                    size="medium"
-                    accessibilityLabel="User Icon"
-                    onClick={noop}
-                    isHighlighted={true}
-                  />
+                  <Avatar size="small" name="Anurag Hazra" />
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
                     <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -817,13 +804,7 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
                   />
                 </Tooltip>
                 <Menu openInteraction="click">
-                  <IconButton
-                    icon={UserIcon}
-                    size="medium"
-                    accessibilityLabel="User Icon"
-                    onClick={noop}
-                    isHighlighted={true}
-                  />
+                  <Avatar size="small" name="Anurag Hazra" />
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
                     <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
@@ -929,13 +910,7 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
                   />
                 </Tooltip>
                 <Menu openInteraction="click">
-                  <IconButton
-                    icon={UserIcon}
-                    size="medium"
-                    accessibilityLabel="User Icon"
-                    onClick={noop}
-                    isHighlighted={true}
-                  />
+                  <Avatar size="small" name="Anurag Hazra" />
                   <MenuOverlay>
                     <MenuHeader title="Profile" />
                     <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
