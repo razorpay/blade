@@ -1,7 +1,7 @@
 import React from 'react';
 import { SelfMessageBubble } from './SelfMessageBubble.web';
 import { DefaultMessageBubble } from './DefaultMessageBubble.web';
-import { RollingText } from './RollingText.web';
+import { RollingText } from '~components/BaseMotion';
 import type { ChatMessageProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
