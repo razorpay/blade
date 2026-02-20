@@ -7,7 +7,7 @@ const highlightedButtonSizeMap = {
 
 const highlightedBorderRadiusMap = {
   small: 'small',
-  medium: 'medium',
+  medium: 'small',
 } as const;
 
 const highlightedHoverColorMap = {
