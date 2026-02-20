@@ -41,14 +41,14 @@ const getInteractiveFilterItemStyles = ({ theme }: { theme: Theme }): CSSObject 
 };
 
 const StyledFilterChip = styled(BaseBox)<{ $isSelected?: boolean; $isDisabled?: boolean }>(
-  ({ theme, $isDisabled }) => {
+  ({ theme, $isDisabled, $isSelected }) => {
     return {
-      borderWidth: makeBorderSize(theme.border.width.thinner),
+      borderWidth: makeBorderSize(theme.border.width.thin),
       borderColor: theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'faded'],
       height: FILTER_CHIP_HEIGHT,
       borderRadius: theme.border.radius.small,
       display: 'flex',
-      borderStyle: 'solid',
+      borderStyle: $isSelected ? 'solid' : 'dashed',
       backgroundColor: theme.colors.surface.background.gray.intense,
       color: theme.colors.interactive.text.gray[$isDisabled ? 'disabled' : 'muted'],
       width: 'fit-content',
@@ -155,7 +155,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
           <Text
             size="small"
             weight="medium"
-            color="interactive.text.gray.muted"
+            color="interactive.text.gray.subtle"
             truncateAfterLines={1}
           >
             {label}
