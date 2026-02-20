@@ -223,8 +223,8 @@ const _Alert = (
       <BaseButton
         size="small"
         onClick={actions.primary.onClick}
-        color="white"
-        variant="primary"
+        color={emphasis === 'subtle' ? 'primary' : 'white'}
+        variant={emphasis === 'subtle' ? 'secondary' : 'primary'}
         data-analytics-name={MAKE_ANALYTICS_CONSTANTS.ALERT.PRIMARY_ACTION_BUTTON}
       >
         {actions.primary.text}
