@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -24,7 +24,6 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { useTopNavContext } from '~components/TopNav/TopNavContext';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 
 type SearchInputCommonProps = Pick<
@@ -153,25 +152,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   } = useDropdown();
   const isInsideDropdown = dropdownTriggerer === 'SearchInput';
 
-  const topNavContext = useTopNavContext();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const searchContainerRef = React.useRef<BladeElementRef>(null);
-
-  // When inside TopNav, override the input wrapper's transition duration to 200ms
-  // so the background-color animates smoothly when switching between dark/light themes on focus
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useLayoutEffect(() => {
-    if (topNavContext && searchContainerRef.current) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const container = searchContainerRef.current as any;
-      const inputWrapper = container.querySelector?.(
-        '.__blade-base-input-wrapper',
-      ) as HTMLElement | null;
-      if (inputWrapper) {
-        inputWrapper.style.setProperty('transition-duration', '200ms', 'important');
-      }
-    }
-  }, [topNavContext]);
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
@@ -275,7 +256,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   };
 
   const searchContent = (
-    <BaseBox position="relative" ref={topNavContext ? (searchContainerRef as never) : undefined}>
+    <BaseBox position="relative">
       <BaseInput
         id="searchinput"
         componentName={MetaConstants.SearchInput}
@@ -320,11 +301,11 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
           onClick?.(e);
         }}
         onFocus={(e) => {
-          if (topNavContext) setIsSearchFocused(true);
+          setIsSearchFocused(true);
           onFocus?.(e);
         }}
         onBlur={(e) => {
-          if (topNavContext) setIsSearchFocused(false);
+          setIsSearchFocused(false);
           onBlur?.(e);
         }}
         onSubmit={onSubmit}
@@ -346,15 +327,11 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     </BaseBox>
   );
 
-  if (topNavContext) {
-    return (
-      <TopNavOverlayThemeOverride shouldOverrideTheme={isSearchFocused}>
-        {searchContent}
-      </TopNavOverlayThemeOverride>
-    );
-  }
-
-  return searchContent;
+  return (
+    <TopNavOverlayThemeOverride shouldOverrideTheme={isSearchFocused}>
+      {searchContent}
+    </TopNavOverlayThemeOverride>
+  );
 };
 
 const SearchInput = assignWithoutSideEffects(React.forwardRef(_SearchInput), {
