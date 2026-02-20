@@ -12,6 +12,7 @@ const ListViewSurface = styled(BaseBox)<{ colorScheme: ColorSchemeNames }>(
   ({ theme, colorScheme }) => {
     const isDarkMode = colorScheme === 'dark';
     const { elevation, top } = getSurfaceBoxShadow(theme, colorScheme);
+    const borderColor = theme.colors.interactive.border.gray.disabled;
 
     return {
       width: '100%',
@@ -21,9 +22,12 @@ const ListViewSurface = styled(BaseBox)<{ colorScheme: ColorSchemeNames }>(
       boxSizing: 'border-box',
       ...getSurfaceStyles(theme, colorScheme, { beforeGradientZIndex: 0 }),
       boxShadow: `${elevation}, ${top}`,
-      outline: isDarkMode
-        ? 'none'
-        : `1px solid ${theme.colors.interactive.border.gray.default}`,
+      borderLeft: `1px solid ${borderColor}`,
+      borderRight: `1px solid ${borderColor}`,
+      borderBottom: `1px solid ${borderColor}`,
+      ...(!isDarkMode && {
+        borderTop: `1px solid ${borderColor}`,
+      }),
     };
   },
 );
