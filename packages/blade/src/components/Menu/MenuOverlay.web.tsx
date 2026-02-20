@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { MenuOverlayProps } from './types';
-import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingY } from './tokens';
+import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingTop, overlayPaddingBottom } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { BladeElementRef } from '~utils/types';
@@ -57,8 +57,8 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
       <StyledMenuOverlayContent
         backgroundColor="popup.background.gray.moderate"
         paddingX={overlayPaddingX}
-        paddingTop={overlayPaddingX}
-        paddingBottom={overlayPaddingY}
+        paddingTop={overlayPaddingTop}
+        paddingBottom={overlayPaddingBottom}
         borderWidth="none"
         borderTopWidth="thin"
         borderColor="popup.border.gray.moderate"
