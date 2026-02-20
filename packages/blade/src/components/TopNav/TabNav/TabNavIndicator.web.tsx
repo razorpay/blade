@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
+// inspired from Tabs/TabIndicator.web.tsx
 import React from 'react';
 import styled from 'styled-components';
 import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
@@ -36,29 +37,31 @@ const buildGlowMask = (width: number, height: number = GLOW_HEIGHT): string => {
   return `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}'%3E%3Cdefs%3E%3Cfilter id='b' filterUnits='userSpaceOnUse' x='0' y='0' width='${width}' height='${height}'%3E%3CfeGaussianBlur stdDeviation='40'/%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='${cx}' cy='${height}' rx='${rx}' ry='60' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
 };
 
-const StyledIndicatorGlow = styled.div<{ glowColor: string; glowWidth: number }>(
-  ({ glowColor, glowWidth }) => {
-    const totalWidth = glowWidth + GLOW_OVERFLOW * 2;
-    const mask = buildGlowMask(totalWidth);
-    return {
-      position: 'absolute',
-      bottom: 0,
-      left: `${-GLOW_OVERFLOW}px`,
-      width: `${totalWidth}px`,
-      height: `${GLOW_HEIGHT}px`,
-      opacity: 0.8,
-      background: `radial-gradient(50% 100% at 50% 100%, ${glowColor} 0%, transparent 100%)`,
-      WebkitMaskImage: mask,
-      WebkitMaskRepeat: 'no-repeat',
-      WebkitMaskPosition: 'center bottom',
-      WebkitMaskSize: '100% 100%',
-      maskImage: mask,
-      maskRepeat: 'no-repeat',
-      maskPosition: 'center bottom',
-      maskSize: '100% 100%',
-    };
-  },
-);
+const StyledIndicatorGlow = styled.div<{
+  glowColor: string;
+  glowWidth: number;
+  glowMask: string;
+}>(({ glowColor, glowWidth, glowMask }) => {
+  const totalWidth = glowWidth + GLOW_OVERFLOW * 2;
+  return {
+    position: 'absolute',
+    bottom: 0,
+    left: `${-GLOW_OVERFLOW}px`,
+    width: `${totalWidth}px`,
+    height: `${GLOW_HEIGHT}px`,
+    // Tuned visually to blend the glow into the dark TopNav background without overpowering the indicator line
+    opacity: 0.8,
+    background: `radial-gradient(50% 100% at 50% 100%, ${glowColor} 0%, transparent 100%)`,
+    WebkitMaskImage: glowMask,
+    WebkitMaskRepeat: 'no-repeat',
+    WebkitMaskPosition: 'center bottom',
+    WebkitMaskSize: '100% 100%',
+    maskImage: glowMask,
+    maskRepeat: 'no-repeat',
+    maskPosition: 'center bottom',
+    maskSize: '100% 100%',
+  };
+});
 
 const ACTIVE_ITEM_SELECTOR = '[data-blade-component="tab-nav-item"][data-active="true"]';
 
@@ -72,6 +75,10 @@ const TabNavIndicator = ({
   const shouldAnimateRef = React.useRef(false);
   const [activeWidth, setActiveWidth] = React.useState(0);
   const [glowColor, setGlowColor] = React.useState(theme.colors.surface.background.primary.intense);
+
+  const glowMask = React.useMemo(() => buildGlowMask(activeWidth + GLOW_OVERFLOW * 2), [
+    activeWidth,
+  ]);
 
   const updatePosition = React.useCallback(() => {
     const container = containerRef.current;
@@ -118,8 +125,12 @@ const TabNavIndicator = ({
     const container = containerRef.current;
     if (!container) return;
 
+    let rafId: number;
     const observer = new MutationObserver(() => {
-      updatePosition();
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        void updatePosition();
+      });
     });
 
     observer.observe(container, {
@@ -128,7 +139,10 @@ const TabNavIndicator = ({
       subtree: true,
     });
 
-    return () => observer.disconnect();
+    return () => {
+      cancelAnimationFrame(rafId);
+      observer.disconnect();
+    };
   }, [containerRef, updatePosition]);
 
   React.useEffect(() => {
@@ -156,7 +170,9 @@ const TabNavIndicator = ({
       }}
       {...metaAttribute({ name: MetaConstants.TabNavIndicator })}
     >
-      {activeWidth > 0 && <StyledIndicatorGlow glowColor={glowColor} glowWidth={activeWidth} />}
+      {activeWidth > 0 && (
+        <StyledIndicatorGlow glowColor={glowColor} glowWidth={activeWidth} glowMask={glowMask} />
+      )}
       <StyledTabNavIndicatorLine
         style={{
           background: `linear-gradient(90deg, transparent 0%, ${theme.colors.surface.icon.staticWhite.normal} 20%, ${theme.colors.surface.icon.staticWhite.normal} 80.29%, transparent 100%)`,
