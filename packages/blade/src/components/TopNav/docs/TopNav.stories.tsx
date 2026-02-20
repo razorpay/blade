@@ -323,18 +323,6 @@ const MobileTopNav = (): React.ReactElement => {
   );
 };
 
-const MobileSearchBar = (): React.ReactElement => {
-  return (
-    <BaseBox
-      backgroundColor="interactive.background.staticBlack.default"
-      paddingX="spacing.5"
-      paddingBottom="spacing.5"
-    >
-      <SearchInput placeholder="Search in payments" accessibilityLabel="Search Across Razorpay" />
-    </BaseBox>
-  );
-};
-
 const TopNavFullExample = () => {
   const history = useHistory();
   const { theme } = useTheme();
@@ -527,7 +515,6 @@ const TopNavFullExample = () => {
             </>
           )}
         </TopNav>
-        {isMobile && <MobileSearchBar />}
         <Box
           overflow="hidden"
           position="relative"
@@ -745,7 +732,6 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
-        {isMobile && <MobileSearchBar />}
         <Box
           overflow="hidden"
           position="relative"
@@ -858,7 +844,6 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
-        {isMobile && <MobileSearchBar />}
         <Box
           overflow="hidden"
           position="relative"
@@ -971,7 +956,6 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
-        {isMobile && <MobileSearchBar />}
         <Box
           overflow="hidden"
           position="relative"
