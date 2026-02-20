@@ -357,27 +357,23 @@ const TopNavFullExample = () => {
                       title: 'Ray',
                       href: '/home',
                       icon: RayIcon,
-                      indicatorGlowColor: theme.colors.surface.icon.onSea.onSubtle,
                     },
                     {
                       href: '/payroll',
                       title: 'Payroll',
-                      icon: RazorpayxPayrollIcon,
-                      selectedStateIcon: RazorpayxPayrollFilledIcon,
+                      icon: { default: RazorpayxPayrollIcon, selected: RazorpayxPayrollFilledIcon },
                       description: 'Automate payroll with ease.',
                     },
                     {
                       href: '/payments',
                       title: 'Payments',
-                      icon: AcceptPaymentsIcon,
-                      selectedStateIcon: AcceptPaymentsFilledIcon,
+                      icon: { default: AcceptPaymentsIcon, selected: AcceptPaymentsFilledIcon },
                       description: 'Manage payments effortlessly.',
                     },
                     {
                       href: '/magic-checkout',
                       title: 'Magic Checkout',
-                      icon: ShoppingBagIcon,
-                      selectedStateIcon: MagicCheckoutFilledIcon,
+                      icon: { default: ShoppingBagIcon, selected: MagicCheckoutFilledIcon },
                       description: 'Fast, one-click checkout.',
                     },
                     {
@@ -417,6 +413,12 @@ const TopNavFullExample = () => {
                                 }
                               />
                               {overflowingItems.map((item) => {
+                                const OverflowIcon =
+                                  item.icon &&
+                                  typeof item.icon === 'object' &&
+                                  'default' in item.icon
+                                    ? item.icon.default
+                                    : item.icon;
                                 return (
                                   <MenuItem
                                     key={item.href}
@@ -426,7 +428,7 @@ const TopNavFullExample = () => {
                                     }}
                                   >
                                     <ExploreItem
-                                      icon={item.icon!}
+                                      icon={OverflowIcon as IconComponent}
                                       title={item.title}
                                       description={item.description!}
                                     />
@@ -590,22 +592,19 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                     {
                       href: '/payroll',
                       title: 'Payroll',
-                      icon: RazorpayxPayrollIcon,
-                      selectedStateIcon: RazorpayxPayrollFilledIcon,
+                      icon: { default: RazorpayxPayrollIcon, selected: RazorpayxPayrollFilledIcon },
                       description: 'Automate payroll with ease.',
                     },
                     {
                       href: '/payments',
                       title: 'Payments',
-                      icon: AcceptPaymentsIcon,
-                      selectedStateIcon: AcceptPaymentsFilledIcon,
+                      icon: { default: AcceptPaymentsIcon, selected: AcceptPaymentsFilledIcon },
                       description: 'Manage payments effortlessly.',
                     },
                     {
                       href: '/magic-checkout',
                       title: 'Magic Checkout',
-                      icon: ShoppingBagIcon,
-                      selectedStateIcon: MagicCheckoutFilledIcon,
+                      icon: { default: ShoppingBagIcon, selected: MagicCheckoutFilledIcon },
                       description: 'Fast, one-click checkout.',
                     },
                     {
@@ -645,6 +644,12 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                                 }
                               />
                               {overflowingItems.map((item) => {
+                                const OverflowIcon =
+                                  item.icon &&
+                                  typeof item.icon === 'object' &&
+                                  'default' in item.icon
+                                    ? item.icon.default
+                                    : item.icon;
                                 return (
                                   <MenuItem
                                     key={item.href}
@@ -654,7 +659,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
                                     }}
                                   >
                                     <ExploreItem
-                                      icon={item.icon!}
+                                      icon={OverflowIcon as IconComponent}
                                       title={item.title}
                                       description={item.description!}
                                     />

@@ -10,6 +10,13 @@ type MenuTriggerProps = {
   onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
 };
 
+type TabNavIconProp =
+  | IconComponent
+  | {
+      default: IconComponent;
+      selected: IconComponent;
+    };
+
 type TabNavItemProps = {
   /**
    * href of the link
@@ -41,17 +48,20 @@ type TabNavItemProps = {
   isActive?: boolean;
   /**
    * Leading icon for TabNavItem.
+   * Accepts a single IconComponent or an object with `default` and `selected` variants.
+   *
+   * @example
+   * ```jsx
+   * // Single icon
+   * <TabNavItem icon={HomeIcon} />
+   *
+   * // With selected state variant
+   * <TabNavItem icon={{ default: HomeIcon, selected: HomeFilledIcon }} />
+   * ```
    *
    * @default undefined
    */
-  icon?: IconComponent;
-  /**
-   * Icon to display when the TabNavItem is in the selected (active) state.
-   * When provided and `isActive` is true, this icon is rendered instead of `icon`.
-   *
-   * @default undefined
-   */
-  selectedStateIcon?: IconComponent;
+  icon?: TabNavIconProp;
   /**
    * Element to render after the navigation item.
    *
@@ -66,13 +76,6 @@ type TabNavItemProps = {
    * Accessibility label for the navigation item.
    */
   accessibilityLabel?: string;
-  /**
-   * Custom color for the indicator glow effect when this item is active.
-   * Accepts any valid CSS color string (hex, rgb, token-resolved value, etc.)
-   *
-   * @default theme.colors.surface.background.primary.intense
-   */
-  indicatorGlowColor?: string;
 } & MenuTriggerProps;
 
 type Item = TabNavItemProps & {
@@ -92,4 +95,4 @@ type TabNavProps = {
   }) => React.ReactElement;
 };
 
-export type { TabNavItemProps, TabNavItemData, TabNavProps };
+export type { TabNavItemProps, TabNavItemData, TabNavProps, TabNavIconProp };

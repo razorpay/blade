@@ -114,10 +114,6 @@ export default {
       type: 'function',
       table: { category: propsCategory.TAB_NAV_ITEM },
     },
-    indicatorGlowColor: {
-      control: 'color',
-      table: { category: propsCategory.ITEM_DATA },
-    },
   },
   args: {
     title: 'Payroll',
@@ -137,7 +133,6 @@ const TabNavTemplate: StoryFn<any> = (
   args: TabNavItemProps & {
     isAlwaysOverflowing: boolean;
     description: string;
-    indicatorGlowColor?: string;
   },
 ) => {
   const icon = iconMap[(args.icon as unknown) as keyof typeof iconMap];
@@ -195,7 +190,6 @@ const TabNavTemplate: StoryFn<any> = (
             isActive: args.isActive,
             isAlwaysOverflowing: args.isAlwaysOverflowing,
             description: args.description,
-            indicatorGlowColor: args.indicatorGlowColor,
           },
           {
             href: '/payments',
@@ -231,7 +225,6 @@ const TabNavTemplate: StoryFn<any> = (
                       icon={item.icon}
                       isActive={item.isActive}
                       trailing={item.trailing}
-                      indicatorGlowColor={item.indicatorGlowColor}
                     />
                   );
                 })}
@@ -241,7 +234,10 @@ const TabNavTemplate: StoryFn<any> = (
                   <TabNavItem title="More" trailing={<ChevronDownIcon />} />
                   <MenuOverlay>
                     {overflowingItems.map((item) => {
-                      const Icon = item.icon;
+                      const Icon =
+                        item.icon && typeof item.icon === 'object' && 'default' in item.icon
+                          ? item.icon.default
+                          : item.icon;
                       return (
                         <MenuItem
                           key={item.href}

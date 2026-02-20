@@ -3,7 +3,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
-import type { TabNavItemProps } from './types';
+import type { TabNavItemProps, TabNavIconProp } from './types';
 import { useTabNavContext } from './TabNavContext';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
@@ -14,8 +14,22 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import { BladeProvider } from '~components/BladeProvider';
+import { BladeProvider, useTheme } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
+import type { IconComponent } from '~components/Icons';
+import { RayIcon } from '~components/Icons';
+
+const isIconObjectProp = (
+  icon: TabNavIconProp,
+): icon is { default: IconComponent; selected: IconComponent } => {
+  return typeof icon === 'object' && 'default' in icon;
+};
+
+const isRayIcon = (icon?: TabNavIconProp): boolean => {
+  if (!icon) return false;
+  const defaultIcon = isIconObjectProp(icon) ? icon.default : icon;
+  return defaultIcon === RayIcon;
+};
 
 const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
   return {
@@ -86,8 +100,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     as,
     title,
     isActive,
-    icon: Icon,
-    selectedStateIcon: SelectedStateIcon,
+    icon,
     trailing,
     accessibilityLabel,
     href,
@@ -96,15 +109,14 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     __isInsideTabNavItems,
     // @ts-expect-error - This prop is only used internally
     __index,
-    indicatorGlowColor,
     ...props
   },
   ref,
 ): React.ReactElement => {
   const { setControlledItems } = useTabNavContext();
+  const { theme } = useTheme();
   const bodyRef = React.useRef<HTMLDivElement>(null);
 
-  // Update the controlledItems with the tabWidth and offsetX
   useIsomorphicLayoutEffect(() => {
     if (!bodyRef.current) return;
     if (!__isInsideTabNavItems) return;
@@ -123,10 +135,19 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     });
   }, [__isInsideTabNavItems, __index, setControlledItems]);
 
-  const ResolvedIcon = isActive && SelectedStateIcon ? SelectedStateIcon : Icon;
+  let ResolvedIcon: IconComponent | undefined;
+  if (icon) {
+    if (isIconObjectProp(icon)) {
+      ResolvedIcon = isActive ? icon.selected : icon.default;
+    } else {
+      ResolvedIcon = icon;
+    }
+  }
 
-  // Forward clicks from the wrapper's padding area to the inner link/button
-  // so that clicking the dark space around the tab label still switches tabs
+  const glowColor = isRayIcon(icon)
+    ? theme.colors.surface.icon.onSea.onSubtle
+    : theme.colors.surface.background.primary.intense;
+
   const handleWrapperClick = React.useCallback((e: React.MouseEvent) => {
     const wrapper = bodyRef.current;
     if (!wrapper) return;
@@ -141,7 +162,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
       ref={bodyRef}
       isActive={isActive}
       data-active={isActive ? 'true' : 'false'}
-      data-glow-color={indicatorGlowColor || undefined}
+      data-glow-color={glowColor}
       onClick={handleWrapperClick}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
