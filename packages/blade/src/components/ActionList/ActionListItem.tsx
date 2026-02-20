@@ -215,7 +215,7 @@ const ActionListSection = assignWithoutSideEffects(React.memo(_ActionListSection
 const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   const { color, isDisabled } = useBaseMenuItem();
-  const iconState = isDisabled ? 'disabled' : 'muted';
+  const iconState = isDisabled ? 'disabled' : 'normal';
   return (
     <Icon
       color={

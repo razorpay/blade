@@ -37,7 +37,7 @@ const getTableActionsHoverStyles = ({
     },
     // Alpha layer 3 background - Hover, selection, active background
     [`& .${classes.HOVER_ACTIONS_LAYER3}`]: {
-      backgroundColor: getIn(theme.colors, hoverColor),
+      background: getIn(theme.colors, hoverColor),
       transition: rowBackgroundTransition,
     },
   };

@@ -1,18 +1,24 @@
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
-import { makeSize } from '~utils';
+import { castWebType, makeSize } from '~utils';
 
 const StyledDropdownOverlay = styled(BaseBox)<{
   isInBottomSheet?: boolean;
 }>((props) => {
   const { theme, isInBottomSheet } = props;
 
+  const dropshadow = castWebType(theme.elevation.midRaised);
+  const innerShadow = `inset 0px -1.5px 0px 1px ${theme.colors.surface.background.gray.intense}`;
+
   return {
-    backgroundColor: theme.colors.popup.background.subtle,
-    borderWidth: isInBottomSheet ? undefined : theme.border.width.thin,
-    borderColor: theme.colors.interactive.border.gray.faded,
-    borderStyle: isInBottomSheet ? undefined : 'solid',
+    backgroundColor: theme.colors.popup.background.gray.moderate,
+    borderWidth: 'none',
+    borderTopWidth: isInBottomSheet ? undefined : theme.border.width.thin,
+    borderColor: theme.colors.popup.border.gray.moderate,
+    borderTopStyle: isInBottomSheet ? undefined : 'solid',
     borderRadius: makeSize(theme.border.radius.medium),
+    backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
+    boxShadow: isInBottomSheet ? undefined : `${dropshadow}, ${innerShadow}`,
   };
 });
 
