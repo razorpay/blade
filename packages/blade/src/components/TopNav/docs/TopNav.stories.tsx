@@ -44,6 +44,8 @@ import {
 } from '~components/Icons';
 import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
 import { IconButton } from '~components/Button/IconButton';
 import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
@@ -391,10 +393,12 @@ const TopNavFullExample = () => {
                     />
                   </Tooltip>
                 ) : (
-                  <SearchInput
-                    placeholder="Search in payments"
-                    accessibilityLabel="Search Across Razorpay"
-                  />
+                  <Box width="200px">
+                    <SearchInput
+                      placeholder="Search in payments"
+                      accessibilityLabel="Search Across Razorpay"
+                    />
+                  </Box>
                 )}
                 <Tooltip content="View Ecosystem Health">
                   <IconButton
@@ -602,10 +606,12 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
             </TabNav>
           </TopNavContent>
           <TopNavActions>
-            <SearchInput
-              placeholder="Search in payments"
-              accessibilityLabel="Search Across Razorpay"
-            />
+            <Box width="200px">
+              <SearchInput
+                placeholder="Search in payments"
+                accessibilityLabel="Search Across Razorpay"
+              />
+            </Box>
             <Tooltip content="View Ecosystem Health">
               <IconButton
                 size="medium"
@@ -644,6 +650,105 @@ Minimal.storyName = 'Minimal';
 
 export const FullExample = TopNavFullTemplate.bind({});
 FullExample.storyName = 'Full Example';
+
+const searchMenuItems = [
+  { title: 'Payment Links', icon: PaymentLinkIcon },
+  { title: 'Payment Pages', icon: PaymentPagesIcon },
+  { title: 'Payment Gateway', icon: PaymentGatewayIcon },
+  { title: 'Payment Buttons', icon: PaymentButtonIcon },
+];
+
+const popularSearchItems = [
+  { title: 'Transactions', icon: ActivityIcon },
+  { title: 'Settlements', icon: AcceptPaymentsIcon },
+  { title: 'Refunds', icon: ShoppingBagIcon },
+];
+
+const TopNavSearchDropdown = (): React.ReactElement => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  const filteredItems = searchMenuItems.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  return (
+    <Box width="264px">
+      <Dropdown>
+        <SearchInput
+          placeholder="Search in payments"
+          accessibilityLabel="Search Across Razorpay"
+          onChange={({ value }) => setSearchTerm(value as string)}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            {(searchTerm.length === 0 ? popularSearchItems : filteredItems).map((item) => (
+              <ActionListItem
+                key={item.title}
+                title={item.title}
+                value={item.title}
+                leading={<ActionListItemIcon icon={item.icon} />}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
+  return (
+    <DashboardBackground>
+      <BaseBox>
+        <TopNav>
+          <TopNavBrand>
+            <RazorpayLogoWhite />
+          </TopNavBrand>
+          <TopNavContent>
+            <TabNav
+              items={[
+                { title: 'Home', href: '/home', icon: HomeIcon },
+                {
+                  href: '/payments',
+                  title: 'Payments',
+                  icon: AcceptPaymentsIcon,
+                },
+              ]}
+            >
+              {({ items }) => (
+                <TabNavItems>
+                  {items.map((item) => (
+                    <TabNavItemLink key={item.title} {...item} />
+                  ))}
+                </TabNavItems>
+              )}
+            </TabNav>
+          </TopNavContent>
+          <TopNavActions>
+            <TopNavSearchDropdown />
+            <Tooltip content="View Announcements">
+              <IconButton
+                icon={AnnouncementIcon}
+                onClick={noop}
+                accessibilityLabel="View Announcements"
+              />
+            </Tooltip>
+            <Avatar size="small" variant="circle" name="Anurag Hazra" />
+          </TopNavActions>
+        </TopNav>
+      </BaseBox>
+
+      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.moderate" height="100%">
+        <Text margin="spacing.5">
+          Click on the search input to see the dropdown with search results. Type to filter items.
+        </Text>
+      </Box>
+    </DashboardBackground>
+  );
+};
+
+export const SearchWithDropdown = TopNavSearchDropdownTemplate.bind({});
+SearchWithDropdown.storyName = 'Search With Dropdown';
 
 // const ProgressiveBlurWrapper = styled.div({
 //   position: 'relative',

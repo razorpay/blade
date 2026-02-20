@@ -14,7 +14,9 @@ import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
 import { dropdownComponentIds } from './dropdownComponentIds';
-import { useTheme } from '~components/BladeProvider';
+import { BladeProvider, useTheme } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
+import { useTopNavContext } from '~components/TopNav/TopNavContext';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
@@ -48,6 +50,7 @@ const _DropdownOverlay = ({
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
+  const topNavContext = useTopNavContext();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   const isMenu =
@@ -116,31 +119,41 @@ const _DropdownOverlay = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
+  const overlayContent = (
+    <OverlayContextReset>
+      <BaseBox
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={refs.setFloating as any}
+        style={floatingStyles}
+        zIndex={zIndex}
+        display={isMounted ? 'flex' : 'none'}
+        {...getFloatingProps()}
+      >
+        <StyledDropdownOverlay
+          isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+          elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
+          style={{ ...styles }}
+          width={width ? width : '100%'}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
+          {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+          {...makeAnalyticsAttribute(dataAnalyticsProps)}
+        >
+          {children}
+        </StyledDropdownOverlay>
+      </BaseBox>
+    </OverlayContextReset>
+  );
+
   return (
     <FloatingPortal>
-      <OverlayContextReset>
-        <BaseBox
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref={refs.setFloating as any}
-          style={floatingStyles}
-          zIndex={zIndex}
-          display={isMounted ? 'flex' : 'none'}
-          {...getFloatingProps()}
-        >
-          <StyledDropdownOverlay
-            isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
-            elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
-            style={{ ...styles }}
-            width={width ? width : '100%'}
-            minWidth={minWidth}
-            maxWidth={maxWidth}
-            {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
-            {...makeAnalyticsAttribute(dataAnalyticsProps)}
-          >
-            {children}
-          </StyledDropdownOverlay>
-        </BaseBox>
-      </OverlayContextReset>
+      {topNavContext ? (
+        <BladeProvider themeTokens={bladeTheme} colorScheme={topNavContext.colorScheme}>
+          {overlayContent}
+        </BladeProvider>
+      ) : (
+        overlayContent
+      )}
     </FloatingPortal>
   );
 };
