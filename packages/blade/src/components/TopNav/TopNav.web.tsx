@@ -79,17 +79,15 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
   return (
     <BaseBox
       flexDirection="row"
-      alignSelf="center"
       width={{
         base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
         xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
       }}
       {...metaAttribute({ name: MetaConstants.TopNavBrand })}
       paddingY="spacing.5"
+      marginLeft="spacing.6"
     >
-      <BaseBox width="100%" textAlign="center">
-        {children}
-      </BaseBox>
+      <BaseBox width="100%">{children}</BaseBox>
     </BaseBox>
   );
 };
