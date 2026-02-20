@@ -25,12 +25,12 @@ export const getSurfaceBoxShadow = (
   const boxShadow = {
     light: {
       elevation: `0px 6px 32px 4px ${colors.neutral.blueGrayLight.a406}`,
-      border: `inset 0px 0px 0px 1px ${theme.colors.interactive.border.gray.default}`,
+      border: `inset 0px 0px 0px 1px ${theme.colors.interactive.border.gray.disabled}`,
       top: `inset 0px -1.5px 0px 1px ${theme.colors.surface.background.gray.intense}`,
     },
     dark: {
       elevation: `0px 6px 12px 4px ${colors.neutral.black[5]}`,
-      border: `inset 0px 0px 0px 0px ${theme.colors.interactive.border.gray.default}`,
+      border: `inset 0px 0px 0px 1px ${theme.colors.interactive.border.gray.disabled}`,
       top: `inset 0px 0px 0px 1px ${theme.colors.surface.background.gray.intense}`,
     },
   };
