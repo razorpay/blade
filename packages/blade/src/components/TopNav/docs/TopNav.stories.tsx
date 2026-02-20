@@ -680,16 +680,22 @@ const TopNavSearchDropdown = (): React.ReactElement => {
           onChange={({ value }) => setSearchTerm(value as string)}
         />
         <DropdownOverlay>
-          <ActionList>
-            {(searchTerm.length === 0 ? popularSearchItems : filteredItems).map((item) => (
-              <ActionListItem
-                key={item.title}
-                title={item.title}
-                value={item.title}
-                leading={<ActionListItemIcon icon={item.icon} />}
-              />
-            ))}
-          </ActionList>
+          {filteredItems.length === 0 && searchTerm.length > 0 ? (
+            <Box padding="spacing.5" display="flex" justifyContent="center">
+              <Text color="surface.text.gray.muted">No results found</Text>
+            </Box>
+          ) : (
+            <ActionList>
+              {(searchTerm.length === 0 ? popularSearchItems : filteredItems).map((item) => (
+                <ActionListItem
+                  key={item.title}
+                  title={item.title}
+                  value={item.title}
+                  leading={<ActionListItemIcon icon={item.icon} />}
+                />
+              ))}
+            </ActionList>
+          )}
         </DropdownOverlay>
       </Dropdown>
     </Box>
@@ -731,6 +737,8 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
                 icon={AnnouncementIcon}
                 onClick={noop}
                 accessibilityLabel="View Announcements"
+                isHighlighted={true}
+                size="medium"
               />
             </Tooltip>
             <Avatar size="small" variant="circle" name="Anurag Hazra" />
