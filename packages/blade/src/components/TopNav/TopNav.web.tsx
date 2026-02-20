@@ -1,4 +1,5 @@
 import React from 'react';
+import { TopNavContext } from './TopNavContext';
 import type { BoxProps } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import {
@@ -12,7 +13,6 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { TopNavContext, useTopNavContext } from './TopNavContext';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 
