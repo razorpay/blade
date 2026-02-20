@@ -712,14 +712,28 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
+        <Box
+          overflow="hidden"
+          position="relative"
+          borderRadius="large"
+          borderTopRightRadius="large"
+          borderBottomLeftRadius="none"
+          borderBottomRightRadius="none"
+          height="100%"
+          marginX={{ base: 'spacing.0', m: 'spacing.3' }}
+        >
+          <Box
+            height="calc(100vh - 58px)"
+            padding="spacing.5"
+            backgroundColor="surface.background.gray.moderate"
+          >
+            <Text margin="spacing.5">
+              This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
+              other features & integration details.
+            </Text>
+          </Box>
+        </Box>
       </BaseBox>
-
-      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.moderate" height="100%">
-        <Text margin="spacing.5">
-          This is a minimal example usage of TopNav, checkout Full Dashboard Layout example for
-          other features & integration details.
-        </Text>
-      </Box>
     </DashboardBackground>
   );
 };
@@ -903,15 +917,29 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
+        <Box
+          overflow="hidden"
+          position="relative"
+          borderRadius="large"
+          borderTopRightRadius="large"
+          borderBottomLeftRadius="none"
+          borderBottomRightRadius="none"
+          height="100%"
+          marginX={{ base: 'spacing.0', m: 'spacing.3' }}
+        >
+          <Box
+            height="calc(100vh - 58px)"
+            padding="spacing.5"
+            backgroundColor="surface.background.gray.moderate"
+          >
+            <Text margin="spacing.5">
+              {isMobile
+                ? 'Resize your browser to see the desktop version with the search dropdown.'
+                : 'Click on the search input to see the dropdown with search results. Type to filter items.'}
+            </Text>
+          </Box>
+        </Box>
       </BaseBox>
-
-      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.moderate" height="100%">
-        <Text margin="spacing.5">
-          {isMobile
-            ? 'Resize your browser to see the desktop version with the search dropdown.'
-            : 'Click on the search input to see the dropdown with search results. Type to filter items.'}
-        </Text>
-      </Box>
     </DashboardBackground>
   );
 };
@@ -1037,13 +1065,27 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
+        <Box
+          overflow="hidden"
+          position="relative"
+          borderRadius="large"
+          borderTopRightRadius="large"
+          borderBottomLeftRadius="none"
+          borderBottomRightRadius="none"
+          height="100%"
+          marginX={{ base: 'spacing.0', m: 'spacing.3' }}
+        >
+          <Box
+            height="calc(100vh - 58px)"
+            padding="spacing.5"
+            backgroundColor="surface.background.gray.moderate"
+          >
+            <Text margin="spacing.5">
+              This example shows a Button inside TopNavActions alongside other action items.
+            </Text>
+          </Box>
+        </Box>
       </BaseBox>
-
-      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.moderate" height="100%">
-        <Text margin="spacing.5">
-          This example shows a Button inside TopNavActions alongside other action items.
-        </Text>
-      </Box>
     </DashboardBackground>
   );
 };
