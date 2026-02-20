@@ -170,7 +170,7 @@ const _Badge = (
           ) : null}
           <Text
             {...badgeTextSizes[size]}
-            weight="medium"
+            weight={emphasis === 'intense' ? 'regular' : 'medium'}
             truncateAfterLines={1}
             color={textColor}
             marginX={textHorizontalMargin[size]}
