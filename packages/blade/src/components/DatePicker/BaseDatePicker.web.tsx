@@ -595,10 +595,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                         style={{
                           ...animationStyles,
                           background: theme.colors.popup.background.gray.moderate,
-                          boxShadow: `${theme.elevation.lowRaised}, ${getDatePickerPopupBoxShadow(
+                          boxShadow: `${theme.elevation.midRaised}, ${getDatePickerPopupBoxShadow(
                             theme,
                           )}`,
-                          backdropFilter: `blur(${theme.backdropBlur.low}px)`,
+                          backdropFilter: `blur(${theme.backdropBlur.high}px)`,
                           borderTopColor: theme.colors.popup.border.gray.moderate,
                           borderWidth: 'none',
                           borderTopWidth: theme.border.width.thin,
