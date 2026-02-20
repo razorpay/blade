@@ -37,16 +37,30 @@ const ShimmerOverlay = (): React.ReactElement => {
   );
 };
 
-const RollingText = ({
-  texts,
-}: {
+type RollingTextProps = {
   /** Array of strings to cycle through with a rolling animation */
   texts: string[];
-}): React.ReactElement => {
+  /** Custom render function for each text item */
+  children?: (text: string) => React.ReactNode;
+  /** Callback fired when the active index changes */
+  onIndexChange?: (index: number) => void;
+  /** Cycle interval in ms (defaults to theme.motion.delay.xlong) */
+  cycleDuration?: number;
+  /** Whether to show the shimmer overlay on each item (defaults to true) */
+  showShimmer?: boolean;
+};
+
+const RollingText = ({
+  texts,
+  children,
+  onIndexChange,
+  cycleDuration: cycleDurationProp,
+  showShimmer = true,
+}: RollingTextProps): React.ReactElement => {
   const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
-  const cycleDuration = theme.motion.delay.xlong;
+  const cycleDuration = cycleDurationProp ?? theme.motion.delay.xlong;
   const slideDuration = msToSeconds(theme.motion.duration.xmoderate);
   const slideEase = cssBezierToArray(castWebType(theme.motion.easing.emphasized));
 
@@ -56,17 +70,31 @@ const RollingText = ({
     }
 
     const id = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % texts.length);
+      setCurrentIndex((prev) => {
+        const next = (prev + 1) % texts.length;
+        onIndexChange?.(next);
+        return next;
+      });
     }, cycleDuration);
 
     return (): void => {
       clearInterval(id);
     };
-  }, [texts.length, cycleDuration]);
+  }, [texts.length, cycleDuration, onIndexChange]);
 
-  // For a single string, skip all animation overhead.
+  React.useEffect(() => {
+    setCurrentIndex(0);
+    onIndexChange?.(0);
+    // Reset when the texts array identity changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [texts]);
+
+  const renderContent = (text: string): React.ReactNode => {
+    return children ? children(text) : text;
+  };
+
   if (texts.length <= 1) {
-    return <span>{texts[0]}</span>;
+    return <span>{renderContent(texts[0])}</span>;
   }
 
   const slideVariants: MotionVariantsType = {
@@ -90,12 +118,10 @@ const RollingText = ({
     <Box position="relative" display="inline-grid" overflow="hidden">
       <AnimatePresence mode="popLayout" initial={false}>
         <BaseMotionBox key={currentIndex} motionVariants={slideVariants}>
-          <span style={{ whiteSpace: 'nowrap' }}>
-            <Box position="relative" overflow="hidden">
-              {texts[currentIndex]}
-              <ShimmerOverlay />
-            </Box>
-          </span>
+          <Box position="relative" overflow="hidden" whiteSpace="nowrap">
+            {renderContent(texts[currentIndex])}
+            {showShimmer && <ShimmerOverlay />}
+          </Box>
         </BaseMotionBox>
       </AnimatePresence>
     </Box>
@@ -103,3 +129,4 @@ const RollingText = ({
 };
 
 export { RollingText };
+export type { RollingTextProps };

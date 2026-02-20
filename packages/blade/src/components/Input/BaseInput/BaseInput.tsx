@@ -61,6 +61,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { Elevation } from '~tokens/global';
 import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
 import { useCounterInputContext } from '~components/CounterInput/CounterInputContext';
 
@@ -134,6 +135,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * The callback function to be invoked whenever there is a keyDown event
      */
     onKeyDown?: FormInputHandleOnKeyDownEvent;
+    /**
+     * The callback function to be invoked when content is pasted into the input
+     */
+    onPaste?: React.ClipboardEventHandler<HTMLInputElement>;
     /**
      * The callback function to be invoked when the the input field loses focus
      *
@@ -335,6 +340,20 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     size?: 'xsmall' | 'small' | 'medium' | 'large';
     /**
+     * Overrides the padding of the input independently of the `size` prop.
+     * Accepts CSS values like `"16px"`.
+     */
+    padding?: string;
+    /**
+     * Overrides the border radius of the input independently of the `size` prop.
+     * Accepts border radius tokens like `"large"`.
+     */
+    borderRadius?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+    /**
+     * Sets the elevation (box-shadow) on the input wrapper.
+     */
+    elevation?: keyof Elevation;
+    /**
      * Link button to be rendered at the end of the input field.
      * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
      * Example:
@@ -371,6 +390,25 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     valueSuffix?: React.ReactNode;
     children?: ReactNode;
+    /**
+     * Overrides the caret (text cursor) color of the input.
+     */
+    caretColor?: 'surface.icon.onSea.onSubtle';
+    /**
+     * Content rendered inside the input wrapper, above the input row.
+     * Used by ChatInput for file previews.
+     */
+    topContent?: React.ReactNode;
+    /**
+     * Content rendered inside the input wrapper, below the input row.
+     * Used by ChatInput for the action bar.
+     */
+    bottomContent?: React.ReactNode;
+    /**
+     * Overlay content rendered inside the input row wrapper with position relative.
+     * Used by ChatInput for ghost suggestions.
+     */
+    inputRowOverlay?: React.ReactNode;
   } & TestID &
   Platform.Select<{
     native: {
@@ -773,9 +811,12 @@ const FocusRingWrapper = styled(BaseBox)<{
   className: string;
   shouldAddLimitedFocus: boolean;
   $size: NonNullable<BaseInputProps['size']>;
-}>(({ theme, currentInteraction, isTableInputCell, shouldAddLimitedFocus, $size }) => ({
+  $borderRadius?: BaseInputProps['borderRadius'];
+}>(({ theme, currentInteraction, isTableInputCell, shouldAddLimitedFocus, $size, $borderRadius }) => ({
   borderRadius: makeBorderSize(
-    isTableInputCell ? theme.border.radius.none : theme.border.radius[baseInputBorderRadius[$size]],
+    isTableInputCell
+      ? theme.border.radius.none
+      : theme.border.radius[$borderRadius ?? baseInputBorderRadius[$size]],
   ),
   width: '100%',
   '&:focus-within':
@@ -824,6 +865,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     onSubmit,
     onClick,
     onKeyDown,
+    onPaste,
     isDisabled,
     necessityIndicator,
     validationState,
@@ -866,6 +908,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDropdownTrigger,
     isLabelInsideInput,
     size = 'medium',
+    padding,
+    borderRadius,
+    elevation,
     trailingButton,
     valueComponentType = 'text',
     isTableInputCell = false,
@@ -879,6 +924,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     labelTrailing,
     valueSuffix,
     children,
+    topContent,
+    bottomContent,
+    inputRowOverlay,
+    caretColor,
     ...rest
   },
   ref,
@@ -1034,6 +1083,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           className="focus-ring-wrapper"
           shouldAddLimitedFocus={shouldAddLimitedFocus}
           $size={_size}
+          $borderRadius={borderRadius}
+          elevation={elevation}
         >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
@@ -1052,6 +1103,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             }}
             maxTagRows={maxTagRows}
             size={_size}
+            borderRadius={borderRadius}
             numberOfLines={numberOfLines}
             onClick={() => {
               if (!isReactNative) {
@@ -1060,108 +1112,137 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             }}
             isTableInputCell={isTableInputCell}
           >
-            <BaseInputVisuals
-              size={_size}
-              leadingIcon={leadingIcon}
-              prefix={prefix}
-              isDisabled={_isDisabled}
-              leadingInteractionElement={leadingInteractionElement}
-              leadingDropDown={leadingDropDown}
-            />
-            <BaseInputTagSlot
-              renderAs={as}
-              tags={tags}
-              isDisabled={_isDisabled}
-              showAllTags={showAllTagsWithAnimation}
-              setFocusOnInput={() => {
-                const innerRef = getInnerMotionRef({ _motionMeta, ref });
-                if (innerRef && !isReactNative && 'current' in innerRef) {
-                  innerRef.current?.focus();
-                }
-              }}
-              labelPrefix={isLabelInsideInput ? label : undefined}
-              isDropdownTrigger={isDropdownTrigger}
-              visibleTagsCountRef={visibleTagsCountRef}
-              handleOnInputClick={(e) => {
-                handleOnClick({ name, value: isReactNative ? value : e });
-              }}
-              setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
-              maxTagRows={maxTagRows}
-              inputWrapperRef={inputWrapperRef}
-              size={_size}
-              numberOfLines={numberOfLines}
-              isTextArea={isTextArea}
-            >
-              <StyledBaseInput
-                as={as}
-                id={inputId}
-                ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any }) as never}
-                name={name}
-                type={type}
-                defaultValue={defaultValue}
-                value={value}
-                placeholder={placeholder}
-                isDisabled={_isDisabled}
-                validationState={validationState}
-                isRequired={_isRequired}
-                handleOnFocus={handleOnFocus}
-                handleOnChange={handleOnChange}
-                handleOnBlur={handleOnBlur}
-                handleOnSubmit={handleOnSubmit}
-                handleOnInput={handleOnInput}
-                handleOnKeyDown={handleOnKeyDown}
-                handleOnClick={handleOnClick}
-                leadingIcon={leadingIcon}
-                prefix={prefix}
-                trailingInteractionElement={trailingInteractionElement}
-                leadingInteractionElement={leadingInteractionElement}
-                suffix={suffix}
-                valueSuffix={valueSuffix}
-                trailingIcon={trailingIcon}
-                maxCharacters={maxCharacters}
-                textAlign={textAlign}
-                // eslint-disable-next-line jsx-a11y/no-autofocus
-                autoFocus={autoFocus}
-                keyboardReturnKeyType={keyboardReturnKeyType}
-                keyboardType={keyboardType}
-                autoCompleteSuggestionType={autoCompleteSuggestionType}
-                accessibilityProps={accessibilityProps}
-                currentInteraction={currentInteraction}
-                setCurrentInteraction={setCurrentInteraction}
-                numberOfLines={numberOfLines}
-                isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
-                hasPopup={hasPopup}
-                hasTags={!!(tags && tags.length > 0)}
-                shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
-                autoCapitalize={autoCapitalize}
-                isDropdownTrigger={isDropdownTrigger}
-                $size={_size}
-                valueComponentType={valueComponentType}
-                isTableInputCell={isTableInputCell}
-                tabIndex={tabIndex}
-                hasLeadingDropdown={Boolean(leadingDropDown)}
-                children={children}
-                color={color}
-                disabledColor={disabledColor}
-                isInsideCounterInput={isInsideCounterInput}
-                {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
-                {...makeAnalyticsAttribute(rest)}
-              />
-            </BaseInputTagSlot>
-            <BaseInputVisuals
-              trailingInteractionElement={trailingInteractionElement}
-              onTrailingInteractionElementClick={onTrailingInteractionElementClick}
-              suffix={suffix}
-              trailingIcon={trailingIcon}
-              isDisabled={_isDisabled}
-              validationState={validationState}
-              trailingButton={trailingButton}
-              size={_size}
-              errorText={errorText}
-              successText={successText}
-              showHintsAsTooltip={showHintsAsTooltip}
-              trailingDropDown={trailingDropDown}
-            />
+            {(() => {
+              const hasExtraContent = Boolean(topContent || bottomContent || inputRowOverlay);
+              const inputRow = (
+                <>
+                  <BaseInputVisuals
+                    size={_size}
+                    leadingIcon={leadingIcon}
+                    prefix={prefix}
+                    isDisabled={_isDisabled}
+                    leadingInteractionElement={leadingInteractionElement}
+                    leadingDropDown={leadingDropDown}
+                  />
+                  <BaseInputTagSlot
+                    renderAs={as}
+                    tags={tags}
+                    isDisabled={_isDisabled}
+                    showAllTags={showAllTagsWithAnimation}
+                    setFocusOnInput={() => {
+                      const innerRef = getInnerMotionRef({ _motionMeta, ref });
+                      if (innerRef && !isReactNative && 'current' in innerRef) {
+                        innerRef.current?.focus();
+                      }
+                    }}
+                    labelPrefix={isLabelInsideInput ? label : undefined}
+                    isDropdownTrigger={isDropdownTrigger}
+                    visibleTagsCountRef={visibleTagsCountRef}
+                    handleOnInputClick={(e) => {
+                      handleOnClick({ name, value: isReactNative ? value : e });
+                    }}
+                    setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
+                    maxTagRows={maxTagRows}
+                    inputWrapperRef={inputWrapperRef}
+                    size={_size}
+                    numberOfLines={numberOfLines}
+                    isTextArea={isTextArea}
+                  >
+                    <StyledBaseInput
+                      as={as}
+                      id={inputId}
+                      ref={getInnerMotionRef({ _motionMeta, ref: mergedInputRef as any }) as never}
+                      name={name}
+                      type={type}
+                      defaultValue={defaultValue}
+                      value={value}
+                      placeholder={placeholder}
+                      isDisabled={_isDisabled}
+                      validationState={validationState}
+                      isRequired={_isRequired}
+                      handleOnFocus={handleOnFocus}
+                      handleOnChange={handleOnChange}
+                      handleOnBlur={handleOnBlur}
+                      handleOnSubmit={handleOnSubmit}
+                      handleOnInput={handleOnInput}
+                      handleOnKeyDown={handleOnKeyDown}
+                      onPaste={onPaste}
+                      handleOnClick={handleOnClick}
+                      leadingIcon={leadingIcon}
+                      prefix={prefix}
+                      trailingInteractionElement={trailingInteractionElement}
+                      leadingInteractionElement={leadingInteractionElement}
+                      suffix={suffix}
+                      valueSuffix={valueSuffix}
+                      trailingIcon={trailingIcon}
+                      maxCharacters={maxCharacters}
+                      textAlign={textAlign}
+                      // eslint-disable-next-line jsx-a11y/no-autofocus
+                      autoFocus={autoFocus}
+                      keyboardReturnKeyType={keyboardReturnKeyType}
+                      keyboardType={keyboardType}
+                      autoCompleteSuggestionType={autoCompleteSuggestionType}
+                      accessibilityProps={accessibilityProps}
+                      currentInteraction={currentInteraction}
+                      setCurrentInteraction={setCurrentInteraction}
+                      numberOfLines={numberOfLines}
+                      isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
+                      hasPopup={hasPopup}
+                      hasTags={!!(tags && tags.length > 0)}
+                      shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+                      autoCapitalize={autoCapitalize}
+                      isDropdownTrigger={isDropdownTrigger}
+                      $size={_size}
+                      $padding={padding}
+                      valueComponentType={valueComponentType}
+                      isTableInputCell={isTableInputCell}
+                      tabIndex={tabIndex}
+                      hasLeadingDropdown={Boolean(leadingDropDown)}
+                      children={children}
+                      color={color}
+                      disabledColor={disabledColor}
+                      isInsideCounterInput={isInsideCounterInput}
+                      $caretColor={caretColor}
+                      {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
+                      {...makeAnalyticsAttribute(rest)}
+                    />
+                  </BaseInputTagSlot>
+                  <BaseInputVisuals
+                    trailingInteractionElement={trailingInteractionElement}
+                    onTrailingInteractionElementClick={onTrailingInteractionElementClick}
+                    suffix={suffix}
+                    trailingIcon={trailingIcon}
+                    isDisabled={_isDisabled}
+                    validationState={validationState}
+                    trailingButton={trailingButton}
+                    size={_size}
+                    errorText={errorText}
+                    successText={successText}
+                    showHintsAsTooltip={showHintsAsTooltip}
+                    trailingDropDown={trailingDropDown}
+                  />
+                </>
+              );
+              if (hasExtraContent) {
+                return (
+                  <BaseBox display="flex" flexDirection="column" width="100%">
+                    {topContent}
+                    <BaseBox
+                      display="flex"
+                      flexDirection="row"
+                      width="100%"
+                      alignItems={isTextArea ? 'flex-start' : 'center'}
+                      position={inputRowOverlay ? 'relative' : undefined}
+                    >
+                      {inputRow}
+                      {inputRowOverlay}
+                    </BaseBox>
+                    {bottomContent}
+                  </BaseBox>
+                );
+              }
+              return inputRow;
+            })()}
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>

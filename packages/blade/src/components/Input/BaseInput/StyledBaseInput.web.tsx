@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { CSSObject, DefaultTheme, ThemeProps } from 'styled-components';
+import getIn from '~utils/lodashButBetter/get';
 import { getBaseInputStyles } from './baseInputStyles';
 import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
@@ -29,6 +30,7 @@ const getWebInputStyles = (
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
       size: props.$size,
+      padding: props.$padding,
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
       hasLeadingDropdown: props.hasLeadingDropdown,
@@ -38,6 +40,7 @@ const getWebInputStyles = (
     }),
     outline: 'none',
     border: 'none',
+    caretColor: props.$caretColor ? getIn(props.theme.colors, props.$caretColor) : undefined,
     '::placeholder': {
       ...getTextStyles({
         size: props.$size,
@@ -55,9 +58,10 @@ const getWebInputStyles = (
   };
 };
 
-const StyledBaseNativeInput = styled.input<
-  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
->(getWebInputStyles);
+const StyledBaseNativeInput =
+  styled.input<Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>>(
+    getWebInputStyles,
+  );
 
 const StyledBaseNativeButton = styled.button<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
@@ -158,17 +162,17 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         if (!shouldIgnoreBlurAnimation) {
           setCurrentInteraction('default');
         }
-        handleOnBlur?.({ name, value: (event as unknown) as React.ChangeEvent<HTMLInputElement> });
+        handleOnBlur?.({ name, value: event as unknown as React.ChangeEvent<HTMLInputElement> });
       }}
       onFocus={(event: React.FocusEvent<HTMLDivElement>): void => {
         setCurrentInteraction('focus');
-        handleOnFocus?.({ name, value: (event as unknown) as React.ChangeEvent<HTMLInputElement> });
+        handleOnFocus?.({ name, value: event as unknown as React.ChangeEvent<HTMLInputElement> });
       }}
       onClick={(event: React.MouseEvent<HTMLDivElement>): void => {
         if (props.isDropdownTrigger) {
           event.stopPropagation();
         }
-        handleOnClick?.({ name, value: (event as unknown) as React.MouseEvent<HTMLInputElement> });
+        handleOnClick?.({ name, value: event as unknown as React.MouseEvent<HTMLInputElement> });
       }}
       name={name}
       $size={$size}

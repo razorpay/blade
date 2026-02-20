@@ -43,6 +43,7 @@ export type BaseInputWrapperProps = Pick<
   setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
   size: NonNullable<BaseInputProps['size']>;
+  borderRadius?: BaseInputProps['borderRadius'];
   numberOfLines: BaseInputProps['numberOfLines'];
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
@@ -64,12 +65,14 @@ export type StyledBaseInputProps = {
   isTextArea?: boolean;
   hasTags?: boolean;
   $size: NonNullable<BaseInputProps['size']>;
+  $padding?: string;
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
   hasLeadingDropdown?: boolean;
   color?: BaseTextProps['color'];
   disabledColor?: BaseTextProps['color'];
   isInsideCounterInput?: boolean;
+  $caretColor?: 'surface.icon.onSea.onSubtle';
 } & Pick<
   BaseInputProps,
   | 'as'
@@ -105,6 +108,7 @@ export type StyledBaseInputProps = {
   | 'tabIndex'
   | 'valueSuffix'
   | 'children'
+  | 'onPaste'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

@@ -24,6 +24,7 @@ export const MetaConstants = {
   BottomNav: 'bottomnav',
   BottomNavItem: 'bottomnav-item',
   Carousel: 'carousel',
+  ChatInput: 'chat-input',
   ChatMessage: 'chat-message',
   Checkbox: 'checkbox',
   CheckboxGroup: 'checkbox-group',
