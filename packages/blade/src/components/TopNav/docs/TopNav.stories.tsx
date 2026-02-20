@@ -452,7 +452,7 @@ const TopNavFullExample = () => {
           overflow="hidden"
           position="relative"
           borderRadius="large"
-          borderTopRightRadius="none"
+          borderTopRightRadius="large"
           borderBottomLeftRadius="none"
           borderBottomRightRadius="none"
           height="100%"

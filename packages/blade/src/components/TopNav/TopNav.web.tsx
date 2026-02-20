@@ -50,25 +50,27 @@ const _TopNav = (
 
   return (
     <TopNavContext.Provider value={{ colorScheme }}>
-      <BaseBox
-        ref={ref as never}
-        display="grid"
-        gridTemplateColumns="auto minmax(0, 1fr) auto"
-        alignItems="center"
-        position="sticky"
-        top="0px"
-        width="100%"
-        paddingY={{ base: 'spacing.3', m: 'spacing.0' }}
-        paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
-        height={makeSize(TOP_NAV_HEIGHT)}
-        zIndex={componentZIndices.topnav}
-        backgroundColor="interactive.background.staticBlack.default"
-        {...rest}
-        {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
-        {...makeAnalyticsAttribute(rest)}
-      >
-        {children}
-      </BaseBox>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        <BaseBox
+          ref={ref as never}
+          display="grid"
+          gridTemplateColumns="auto minmax(0, 1fr) auto"
+          alignItems="center"
+          position="sticky"
+          top="0px"
+          width="100%"
+          paddingY={{ base: 'spacing.3', m: 'spacing.0' }}
+          paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
+          height={makeSize(TOP_NAV_HEIGHT)}
+          zIndex={componentZIndices.topnav}
+          backgroundColor="interactive.background.staticBlack.default"
+          {...rest}
+          {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          {children}
+        </BaseBox>
+      </BladeProvider>
     </TopNavContext.Provider>
   );
 };
@@ -107,7 +109,6 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
 };
 
 const TopNavActions = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  const topNavContext = useTopNavContext();
   return (
     <BaseBox
       alignSelf="flex-start"
@@ -120,13 +121,7 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
       borderTopRightRadius="medium"
       {...metaAttribute({ name: MetaConstants.TopNavActions })}
     >
-      {topNavContext ? (
-        <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
-          {children}
-        </BladeProvider>
-      ) : (
-        children
-      )}
+      {children}
     </BaseBox>
   );
 };
