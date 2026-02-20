@@ -50,7 +50,7 @@ import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import { Menu, MenuFooter, MenuHeader, MenuItem, MenuOverlay } from '~components/Menu';
 import { Link as BladeLink } from '~components/Link';
 import { Badge } from '~components/Badge';
@@ -230,6 +230,109 @@ const DashboardBackground = styled.div(() => {
   };
 });
 
+const searchMenuItems = [
+  { title: 'Payment Links', icon: PaymentLinkIcon },
+  { title: 'Payment Pages', icon: PaymentPagesIcon },
+  { title: 'Payment Gateway', icon: PaymentGatewayIcon },
+  { title: 'Payment Buttons', icon: PaymentButtonIcon },
+];
+
+const popularSearchItems = [
+  { title: 'Transactions', icon: ActivityIcon },
+  { title: 'Settlements', icon: AcceptPaymentsIcon },
+  { title: 'Refunds', icon: ShoppingBagIcon },
+];
+
+const SearchContainer = styled.div<{ isActive: boolean }>(({ isActive }) => ({
+  width: isActive ? '300px' : '200px',
+  transition: 'width 200ms ease-in-out',
+}));
+
+const TopNavSearchDropdown = (): React.ReactElement => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [isSearchActive, setIsSearchActive] = React.useState(false);
+
+  const filteredItems = searchMenuItems.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  return (
+    <SearchContainer isActive={isSearchActive}>
+      <Dropdown onOpenChange={(isOpen) => setIsSearchActive(isOpen)}>
+        <SearchInput
+          placeholder="Search in payments"
+          accessibilityLabel="Search Across Razorpay"
+          onChange={({ value }) => setSearchTerm(value as string)}
+        />
+        <DropdownOverlay>
+          {filteredItems.length === 0 && searchTerm.length > 0 ? (
+            <Box padding="spacing.5" display="flex" justifyContent="center">
+              <Text color="surface.text.gray.muted">No results found</Text>
+            </Box>
+          ) : (
+            <ActionList>
+              {(searchTerm.length === 0 ? popularSearchItems : filteredItems).map((item) => (
+                <ActionListItem
+                  key={item.title}
+                  title={item.title}
+                  value={item.title}
+                  leading={<ActionListItemIcon icon={item.icon} />}
+                />
+              ))}
+            </ActionList>
+          )}
+        </DropdownOverlay>
+      </Dropdown>
+    </SearchContainer>
+  );
+};
+
+const MobileTopNav = (): React.ReactElement => {
+  return (
+    <>
+      <Box display="flex" alignItems="center" marginLeft="spacing.2">
+        <RazorpayLogoWhite />
+      </Box>
+      <Box />
+      <Menu openInteraction="click">
+        <Avatar size="medium" name="RK" />
+        <MenuOverlay>
+          <MenuHeader title="Profile" />
+          <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+            <Avatar size="medium" name="RK" />
+            <Box display="flex" flexDirection="column" gap="spacing.2">
+              <Text size="medium" weight="semibold">
+                Anurag Hazra
+              </Text>
+              <Text size="xsmall" color="surface.text.gray.muted">
+                Razorpay Trusted Merchant
+              </Text>
+            </Box>
+          </Box>
+          <MenuItem>
+            <Text color="surface.text.gray.subtle">Settings</Text>
+          </MenuItem>
+          <MenuItem color="negative">
+            <Text color="feedback.text.negative.intense">Logout</Text>
+          </MenuItem>
+        </MenuOverlay>
+      </Menu>
+    </>
+  );
+};
+
+const MobileSearchBar = (): React.ReactElement => {
+  return (
+    <BaseBox
+      backgroundColor="interactive.background.staticBlack.default"
+      paddingX="spacing.5"
+      paddingBottom="spacing.5"
+    >
+      <SearchInput placeholder="Search in payments" accessibilityLabel="Search Across Razorpay" />
+    </BaseBox>
+  );
+};
+
 const TopNavFullExample = () => {
   const history = useHistory();
   const { theme } = useTheme();
@@ -251,43 +354,7 @@ const TopNavFullExample = () => {
       <BaseBox>
         <TopNav>
           {isMobile ? (
-            <>
-              <BladeLink icon={HomeIcon} size="medium" href="/home">
-                Home
-              </BladeLink>
-              <Heading textAlign="center" size="small" weight="semibold">
-                Payments
-              </Heading>
-              <Menu openInteraction="click">
-                <IconButton
-                  icon={UserIcon}
-                  size="small"
-                  accessibilityLabel="User Icon"
-                  onClick={noop}
-                  isHighlighted={true}
-                />
-                <MenuOverlay>
-                  <MenuHeader title="Profile" />
-                  <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-                    <Avatar size="medium" name="John Doe" />
-                    <Box display="flex" flexDirection="column" gap="spacing.2">
-                      <Text size="medium" weight="semibold">
-                        John Doe
-                      </Text>
-                      <Text size="xsmall" color="surface.text.gray.muted">
-                        Razorpay Trusted Merchant
-                      </Text>
-                    </Box>
-                  </Box>
-                  <MenuItem>
-                    <Text color="surface.text.gray.subtle">Settings</Text>
-                  </MenuItem>
-                  <MenuItem color="negative">
-                    <Text color="feedback.text.negative.intense">Logout</Text>
-                  </MenuItem>
-                </MenuOverlay>
-              </Menu>
-            </>
+            <MobileTopNav />
           ) : (
             <>
               <TopNavBrand>
@@ -458,6 +525,7 @@ const TopNavFullExample = () => {
             </>
           )}
         </TopNav>
+        {isMobile && <MobileSearchBar />}
         <Box
           overflow="hidden"
           position="relative"
@@ -521,43 +589,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
       <BaseBox>
         <TopNav>
           {isMobile ? (
-            <>
-              <BladeLink icon={HomeIcon} size="medium" href="/home">
-                Home
-              </BladeLink>
-              <Heading textAlign="center" size="small" weight="semibold">
-                Home
-              </Heading>
-              <Menu openInteraction="click">
-                <IconButton
-                  icon={UserIcon}
-                  size="small"
-                  accessibilityLabel="User Icon"
-                  onClick={noop}
-                  isHighlighted={true}
-                />
-                <MenuOverlay>
-                  <MenuHeader title="Profile" />
-                  <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-                    <Avatar size="medium" name="Anurag Hazra" />
-                    <Box display="flex" flexDirection="column" gap="spacing.2">
-                      <Text size="medium" weight="semibold">
-                        Anurag Hazra
-                      </Text>
-                      <Text size="xsmall" color="surface.text.gray.muted">
-                        Razorpay Trusted Merchant
-                      </Text>
-                    </Box>
-                  </Box>
-                  <MenuItem>
-                    <Text color="surface.text.gray.subtle">Settings</Text>
-                  </MenuItem>
-                  <MenuItem color="negative">
-                    <Text color="feedback.text.negative.intense">Logout</Text>
-                  </MenuItem>
-                </MenuOverlay>
-              </Menu>
-            </>
+            <MobileTopNav />
           ) : (
             <>
               <TopNavBrand>
@@ -712,6 +744,7 @@ const TopNavMinimalTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
+        {isMobile && <MobileSearchBar />}
         <Box
           overflow="hidden"
           position="relative"
@@ -744,63 +777,6 @@ Minimal.storyName = 'Minimal';
 export const FullExample = TopNavFullTemplate.bind({});
 FullExample.storyName = 'Full Example';
 
-const searchMenuItems = [
-  { title: 'Payment Links', icon: PaymentLinkIcon },
-  { title: 'Payment Pages', icon: PaymentPagesIcon },
-  { title: 'Payment Gateway', icon: PaymentGatewayIcon },
-  { title: 'Payment Buttons', icon: PaymentButtonIcon },
-];
-
-const popularSearchItems = [
-  { title: 'Transactions', icon: ActivityIcon },
-  { title: 'Settlements', icon: AcceptPaymentsIcon },
-  { title: 'Refunds', icon: ShoppingBagIcon },
-];
-
-const SearchContainer = styled.div<{ isActive: boolean }>(({ isActive }) => ({
-  width: isActive ? '300px' : '200px',
-  transition: 'width 200ms ease-in-out',
-}));
-
-const TopNavSearchDropdown = (): React.ReactElement => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [isSearchActive, setIsSearchActive] = React.useState(false);
-
-  const filteredItems = searchMenuItems.filter((item) =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
-
-  return (
-    <SearchContainer isActive={isSearchActive}>
-      <Dropdown onOpenChange={(isOpen) => setIsSearchActive(isOpen)}>
-        <SearchInput
-          placeholder="Search in payments"
-          accessibilityLabel="Search Across Razorpay"
-          onChange={({ value }) => setSearchTerm(value as string)}
-        />
-        <DropdownOverlay>
-          {filteredItems.length === 0 && searchTerm.length > 0 ? (
-            <Box padding="spacing.5" display="flex" justifyContent="center">
-              <Text color="surface.text.gray.muted">No results found</Text>
-            </Box>
-          ) : (
-            <ActionList>
-              {(searchTerm.length === 0 ? popularSearchItems : filteredItems).map((item) => (
-                <ActionListItem
-                  key={item.title}
-                  title={item.title}
-                  value={item.title}
-                  leading={<ActionListItemIcon icon={item.icon} />}
-                />
-              ))}
-            </ActionList>
-          )}
-        </DropdownOverlay>
-      </Dropdown>
-    </SearchContainer>
-  );
-};
-
 const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -811,43 +787,7 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
       <BaseBox>
         <TopNav>
           {isMobile ? (
-            <>
-              <BladeLink icon={HomeIcon} size="medium" href="/home">
-                Home
-              </BladeLink>
-              <Heading textAlign="center" size="small" weight="semibold">
-                Payments
-              </Heading>
-              <Menu openInteraction="click">
-                <IconButton
-                  icon={UserIcon}
-                  size="small"
-                  accessibilityLabel="User Icon"
-                  onClick={noop}
-                  isHighlighted={true}
-                />
-                <MenuOverlay>
-                  <MenuHeader title="Profile" />
-                  <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-                    <Avatar size="medium" name="Anurag Hazra" />
-                    <Box display="flex" flexDirection="column" gap="spacing.2">
-                      <Text size="medium" weight="semibold">
-                        Anurag Hazra
-                      </Text>
-                      <Text size="xsmall" color="surface.text.gray.muted">
-                        Razorpay Trusted Merchant
-                      </Text>
-                    </Box>
-                  </Box>
-                  <MenuItem>
-                    <Text color="surface.text.gray.subtle">Settings</Text>
-                  </MenuItem>
-                  <MenuItem color="negative">
-                    <Text color="feedback.text.negative.intense">Logout</Text>
-                  </MenuItem>
-                </MenuOverlay>
-              </Menu>
-            </>
+            <MobileTopNav />
           ) : (
             <>
               <TopNavBrand>
@@ -917,6 +857,7 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
+        {isMobile && <MobileSearchBar />}
         <Box
           overflow="hidden"
           position="relative"
@@ -957,43 +898,7 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
       <BaseBox>
         <TopNav>
           {isMobile ? (
-            <>
-              <BladeLink icon={HomeIcon} size="medium" href="/home">
-                Home
-              </BladeLink>
-              <Heading textAlign="center" size="small" weight="semibold">
-                Payments
-              </Heading>
-              <Menu openInteraction="click">
-                <IconButton
-                  icon={UserIcon}
-                  size="small"
-                  accessibilityLabel="User Icon"
-                  onClick={noop}
-                  isHighlighted={true}
-                />
-                <MenuOverlay>
-                  <MenuHeader title="Profile" />
-                  <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
-                    <Avatar size="medium" name="Anurag Hazra" />
-                    <Box display="flex" flexDirection="column" gap="spacing.2">
-                      <Text size="medium" weight="semibold">
-                        Anurag Hazra
-                      </Text>
-                      <Text size="xsmall" color="surface.text.gray.muted">
-                        Razorpay Trusted Merchant
-                      </Text>
-                    </Box>
-                  </Box>
-                  <MenuItem>
-                    <Text color="surface.text.gray.subtle">Settings</Text>
-                  </MenuItem>
-                  <MenuItem color="negative">
-                    <Text color="feedback.text.negative.intense">Logout</Text>
-                  </MenuItem>
-                </MenuOverlay>
-              </Menu>
-            </>
+            <MobileTopNav />
           ) : (
             <>
               <TopNavBrand>
@@ -1065,6 +970,7 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
             </>
           )}
         </TopNav>
+        {isMobile && <MobileSearchBar />}
         <Box
           overflow="hidden"
           position="relative"
