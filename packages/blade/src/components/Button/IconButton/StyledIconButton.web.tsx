@@ -3,11 +3,7 @@ import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { StyledIconButtonProps } from './types';
-import {
-  highlightedButtonSizeMap,
-  highlightedBorderRadiusMap,
-  highlightedHoverColorMap,
-} from './tokens';
+import { highlightedButtonSizeMap, highlightedHoverColorMap } from './tokens';
 import { castWebType, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
@@ -52,9 +48,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
     width: props.$isHighlighted
       ? makeSize(highlightedButtonSizeMap[props.$size as 'small' | 'medium'])
       : undefined,
-    borderRadius: props.$isHighlighted
-      ? theme.border.radius[highlightedBorderRadiusMap[props.$size as 'small' | 'medium']]
-      : theme.border.radius['2xsmall'],
+    borderRadius: props.$isHighlighted ? theme.border.radius.small : theme.border.radius['2xsmall'],
     background: 'transparent',
     display: 'flex',
     alignItems: 'center',

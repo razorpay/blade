@@ -171,7 +171,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         inputWrapper.style.setProperty('transition-duration', '200ms', 'important');
       }
     }
-  });
+  }, [topNavContext]);
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));

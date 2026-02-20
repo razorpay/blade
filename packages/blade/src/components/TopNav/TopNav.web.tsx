@@ -50,6 +50,9 @@ const _TopNav = (
 
   return (
     <TopNavContext.Provider value={{ colorScheme }}>
+      {/* We are forcing the theme to dark here because the TopNav is always in dark mode. 
+       we also want components inside the TopNav to be in the same theme as the TopNav.
+      */}
       <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
         <BaseBox
           ref={ref as never}

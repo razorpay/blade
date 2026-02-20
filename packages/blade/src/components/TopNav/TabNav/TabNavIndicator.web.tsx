@@ -109,8 +109,8 @@ const TabNavIndicator = ({
   }, [containerRef, theme.motion.duration.gentle, theme.colors.surface.background.primary.intense]);
 
   React.useEffect(() => {
-    updatePosition();
-  });
+    void updatePosition();
+  }, [updatePosition]);
 
   // Watch for data-active attribute changes so the indicator moves
   // even when TabNav itself doesn't re-render (e.g. router-driven isActive)

@@ -166,7 +166,6 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
       onClick={handleWrapperClick}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
-      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
         <StyledTabNavItem
           ref={ref}
           as={as ?? (href ? 'a' : 'button')}
@@ -189,7 +188,6 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
           {title}
           {trailing ? trailing : null}
         </StyledTabNavItem>
-      </BladeProvider>
     </StyledTabNavItemWrapper>
   );
 };
