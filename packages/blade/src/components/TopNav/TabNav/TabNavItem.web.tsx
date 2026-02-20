@@ -14,8 +14,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import { BladeProvider, useTheme } from '~components/BladeProvider';
-import { bladeTheme } from '~tokens/theme';
+import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 import { RayIcon } from '~components/Icons';
 
@@ -166,28 +165,26 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
       onClick={handleWrapperClick}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
-        <StyledTabNavItem
-          ref={ref}
-          as={as ?? (href ? 'a' : 'button')}
-          to={href}
-          href={as ? undefined : href}
-          target={target}
-          $isActive={isActive}
-          {...props}
-          {...metaAttribute({ name: MetaConstants.TabNavItemLink })}
-          {...makeAccessible({ label: accessibilityLabel, current: isActive })}
-        >
-          {ResolvedIcon ? (
-            <ResolvedIcon
-              size="medium"
-              color={
-                isActive ? 'surface.icon.staticWhite.normal' : 'surface.icon.staticWhite.subtle'
-              }
-            />
-          ) : null}
-          {title}
-          {trailing ? trailing : null}
-        </StyledTabNavItem>
+      <StyledTabNavItem
+        ref={ref}
+        as={as ?? (href ? 'a' : 'button')}
+        to={href}
+        href={as ? undefined : href}
+        target={target}
+        $isActive={isActive}
+        {...props}
+        {...metaAttribute({ name: MetaConstants.TabNavItemLink })}
+        {...makeAccessible({ label: accessibilityLabel, current: isActive })}
+      >
+        {ResolvedIcon ? (
+          <ResolvedIcon
+            size="medium"
+            color={isActive ? 'surface.icon.staticWhite.normal' : 'surface.icon.staticWhite.subtle'}
+          />
+        ) : null}
+        {title}
+        {trailing ? trailing : null}
+      </StyledTabNavItem>
     </StyledTabNavItemWrapper>
   );
 };
