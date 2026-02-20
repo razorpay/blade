@@ -88,7 +88,7 @@ const SideNavSection = ({
   const collapsedItemsCount = maxVisibleItems ? totalItemsCount - maxVisibleItems : undefined;
 
   return (
-    <Box paddingY="spacing.3" {...makeAnalyticsAttribute(rest)}>
+    <Box paddingBottom="spacing.5" {...makeAnalyticsAttribute(rest)}>
       {title ? (
         <StyledSectionTitleContainer position="relative" padding={['spacing.2', 'spacing.4']}>
           <Text
