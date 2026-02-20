@@ -24,12 +24,8 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { useTopNavContext } from '~components/TopNav/TopNavContext';
-import { useTheme } from '~components/BladeProvider';
-import type { Theme } from '~components/BladeProvider';
-import { ThemeContext } from '~components/BladeProvider/useTheme';
-import { bladeTheme } from '~tokens/theme';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -158,7 +154,6 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   const isInsideDropdown = dropdownTriggerer === 'SearchInput';
 
   const topNavContext = useTopNavContext();
-  const { platform } = useTheme();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchContainerRef = React.useRef<BladeElementRef>(null);
 
@@ -352,29 +347,10 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   );
 
   if (topNavContext) {
-    const targetColorScheme = isSearchFocused ? topNavContext.colorScheme : 'dark';
-    const searchTheme: Theme = {
-      ...bladeTheme,
-      colors: targetColorScheme === 'dark' ? bladeTheme.colors.onDark : bladeTheme.colors.onLight,
-      elevation:
-        targetColorScheme === 'dark' ? bladeTheme.elevation.onDark : bladeTheme.elevation.onLight,
-      typography: bladeTheme.typography[platform],
-    };
-
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const noop = (): void => {};
-
     return (
-      <ThemeContext.Provider
-        value={{
-          theme: searchTheme,
-          colorScheme: targetColorScheme,
-          setColorScheme: noop,
-          platform,
-        }}
-      >
-        <StyledThemeProvider theme={searchTheme}>{searchContent}</StyledThemeProvider>
-      </ThemeContext.Provider>
+      <TopNavOverlayThemeOverride shouldOverrideTheme={isSearchFocused}>
+        {searchContent}
+      </TopNavOverlayThemeOverride>
     );
   }
 
