@@ -527,8 +527,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           role: accessibilityProps?.role ?? defaultRole,
         }),
       }}
-      variant={variant}
-      color={color}
+      variant={buttonGroupProps.variant ?? variant}
+      color={buttonGroupProps.color ?? color}
       size={buttonGroupProps.size ?? size}
       isLoading={isLoading}
       disabled={disabled}
