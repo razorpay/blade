@@ -566,7 +566,7 @@ const _Table = <Item,>({
           alignItems="center"
           justifyContent="center"
           height={height}
-          paddingX="spacing.10"
+          paddingY="spacing.11"
           {...getStyledProps(rest)}
           {...metaAttribute({ name: MetaConstants.Table })}
           {...makeAnalyticsAttribute(rest)}
