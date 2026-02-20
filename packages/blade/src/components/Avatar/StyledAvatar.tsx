@@ -10,7 +10,13 @@ const StyledAvatar = styled(BaseBox)<StyledAvatarProps & { isInteractive?: boole
       display: 'flex',
       width: makeSize(avatarSizeTokens[size]),
       height: makeSize(avatarSizeTokens[size]),
-      borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
+      borderRadius: makeBorderSize(
+        theme.border.radius[
+          variant === 'circle'
+            ? avatarBorderRadiusTokens.circle
+            : avatarBorderRadiusTokens.square[size]
+        ],
+      ),
       outline: `${makeBorderSize(theme.border.width.thinner)} solid ${
         theme.colors.surface.border.gray.subtle
       }`,

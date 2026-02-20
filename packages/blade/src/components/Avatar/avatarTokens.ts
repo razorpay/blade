@@ -45,7 +45,13 @@ const avatarColorTokens = {
 
 const avatarBorderRadiusTokens = {
   circle: 'max',
-  square: 'medium',
+  square: {
+    xsmall: 'xsmall',
+    small: 'xsmall',
+    medium: 'small',
+    large: 'small',
+    xlarge: 'medium',
+  },
 } as const;
 
 const avatarToBottomAddonSize = {
