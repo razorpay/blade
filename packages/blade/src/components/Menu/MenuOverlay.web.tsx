@@ -18,7 +18,7 @@ const UnfocussableOverlay = styled(BaseBox)((_props) => {
 
 const StyledMenuOverlayContent = styled(BaseBox)(({ theme }) => {
   const dropshadow = castWebType(theme.elevation.midRaised);
-  const innerShadow = `inset 0px -1.5px 0px 1px ${theme.colors.surface.background.gray.intense}`;
+  const innerShadow = `inset 0px 0px 0px 1px ${theme.colors.popup.border.gray.subtle}`;
 
   return {
     backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
@@ -57,7 +57,8 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
       <StyledMenuOverlayContent
         backgroundColor="popup.background.gray.moderate"
         paddingX={overlayPaddingX}
-        paddingY={overlayPaddingY}
+        paddingTop={overlayPaddingX}
+        paddingBottom={overlayPaddingY}
         borderWidth="none"
         borderTopWidth="thin"
         borderColor="popup.border.gray.moderate"
