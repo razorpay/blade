@@ -83,7 +83,8 @@ const texts = {
   negative: 'Unable to fetch merchant details',
   positive: 'Customer details failed successfully',
   notice: 'Your KYC is pending',
-  information: 'Your transaction will be settled in 3 business days',
+  information:
+    'Your transaction will be settled in 3 business days, this is a long message to test the toast container overflow behavior',
   neutral: 'Your transaction will be settled in 3 business days',
 } as const;
 

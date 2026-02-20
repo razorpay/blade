@@ -175,6 +175,7 @@ export type ColorBlueGrayDarkScale = Readonly<{
   a564: string;
   a572: string;
   a888: string;
+  a1188: string;
   a1194: string;
   a1312: string;
   a1388: string;
@@ -508,6 +509,7 @@ export const colors: Color = {
       a564: `hsla(207, 4%, 52%, ${opacity[800]})`,
       a572: `hsla(207, 4%, 52%, ${opacity[900]})`,
       a888: `hsla(216, 4%, 24%, ${opacity[1100]})`,
+      a1188: `hsla(210, 6%, 13%, ${opacity[1100]})`,
       a1194: `hsla(210, 6%, 13%, ${opacity[1200]})`,
       a1312: `hsla(210, 4%, 11%, ${opacity[200]})`,
       a1388: `hsla(210, 4%, 11%, ${opacity[1100]})`,
