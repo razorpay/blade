@@ -46,6 +46,7 @@ import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
+import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
@@ -763,6 +764,62 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
 
 export const SearchWithDropdown = TopNavSearchDropdownTemplate.bind({});
 SearchWithDropdown.storyName = 'Search With Dropdown';
+
+const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
+  return (
+    <DashboardBackground>
+      <BaseBox>
+        <TopNav>
+          <TopNavBrand>
+            <RazorpayLogoWhite />
+          </TopNavBrand>
+          <TopNavContent>
+            <TabNav
+              items={[
+                { title: 'Home', href: '/home', icon: HomeIcon },
+                {
+                  href: '/payments',
+                  title: 'Payments',
+                  icon: AcceptPaymentsIcon,
+                },
+              ]}
+            >
+              {({ items }) => (
+                <TabNavItems>
+                  {items.map((item) => (
+                    <TabNavItemLink key={item.title} {...item} />
+                  ))}
+                </TabNavItems>
+              )}
+            </TabNav>
+          </TopNavContent>
+          <TopNavActions>
+            <Button variant="primary" size="medium">
+              Activate
+            </Button>
+            <Tooltip content="View Announcements">
+              <IconButton
+                icon={AnnouncementIcon}
+                onClick={noop}
+                accessibilityLabel="View Announcements"
+              />
+            </Tooltip>
+            <Avatar size="small" variant="circle" name="Anurag Hazra" />
+          </TopNavActions>
+        </TopNav>
+      </BaseBox>
+
+      <Box paddingY="spacing.4" backgroundColor="surface.background.gray.moderate" height="100%">
+        <Text margin="spacing.5">
+          This example shows a Button inside TopNavActions alongside other action items.
+        </Text>
+      </Box>
+    </DashboardBackground>
+  );
+};
+
+export const WithButton = TopNavWithButtonTemplate.bind({});
+WithButton.storyName = 'With Button';
 
 // const ProgressiveBlurWrapper = styled.div({
 //   position: 'relative',
