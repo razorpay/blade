@@ -4,6 +4,7 @@ import type { TimePickerProps } from './types';
 import { TimeInput } from './TimeInput.web';
 import { useTimePickerState } from './useTimePickerState';
 import { TimePickerContent } from './TimePickerContent';
+import { getTimePickerPopupBoxShadow } from './timePickerTokens';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
@@ -221,15 +222,18 @@ const _BaseTimePicker = ({
               {...makeAccessible({ labelledBy: titleId })}
             >
               <BaseBox
-                backgroundColor="popup.background.subtle"
-                borderColor="popup.border.subtle"
-                borderWidth="thin"
-                borderStyle="solid"
                 borderRadius="large"
                 overflow="hidden"
+                border="none"
                 style={{
                   ...animationStyles,
-                  boxShadow: `${theme.elevation.midRaised}`,
+                  background: theme.colors.popup.background.gray.moderate,
+                  boxShadow: `${theme.elevation.lowRaised}, ${getTimePickerPopupBoxShadow(theme)}`,
+                  backdropFilter: `blur(${theme.backdropBlur.low}px)`,
+                  borderTopColor: theme.colors.popup.border.gray.moderate,
+                  borderWidth: 'none',
+                  borderTopWidth: theme.border.width.thin,
+                  borderTopStyle: 'solid',
                 }}
               >
                 {content}
