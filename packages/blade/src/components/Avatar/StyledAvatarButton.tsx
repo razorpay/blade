@@ -27,14 +27,26 @@ const StyledAvatarButton = styled.button<AvatarButtonProps & { isInteractive?: b
             theme.colors.surface.border.primary.normal
           }`
         : 'none',
-      borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
+      borderRadius: makeBorderSize(
+        theme.border.radius[
+          variant === 'circle'
+            ? avatarBorderRadiusTokens.circle
+            : avatarBorderRadiusTokens.square[size]
+        ],
+      ),
       backgroundColor: getIn(theme.colors, avatarColorTokens.background[color]),
 
       img: {
         display: 'block',
         height: avatarSizeTokens[size],
         width: avatarSizeTokens[size],
-        borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
+        borderRadius: makeBorderSize(
+          theme.border.radius[
+            variant === 'circle'
+              ? avatarBorderRadiusTokens.circle
+              : avatarBorderRadiusTokens.square[size]
+          ],
+        ),
         objectFit: 'cover',
       },
 
