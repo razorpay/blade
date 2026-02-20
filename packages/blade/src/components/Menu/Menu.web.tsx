@@ -8,11 +8,9 @@ import {
   useMergeRefs,
 } from '@floating-ui/react';
 import * as React from 'react';
-import { BladeProvider } from '~components/BladeProvider';
-import { bladeTheme } from '~tokens/theme';
 import { MenuContext, useFloatingMenuSetup, useMenu } from './useMenu';
 import type { MenuProps } from './types';
-import { useTopNavContext } from '~components/TopNav/TopNavContext';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 
 const MenuTree = ({
   children,
@@ -21,7 +19,6 @@ const MenuTree = ({
   isOpen: isOpenControlled,
 }: MenuProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
-  const topNavContext = useTopNavContext();
 
   const elementsRef = React.useRef<(HTMLButtonElement | null)[]>([]);
   const labelsRef = React.useRef<(string | null)[]>([]);
@@ -103,13 +100,7 @@ const MenuTree = ({
                 initialFocus={-1}
                 returnFocus={!isNested}
               >
-                {topNavContext ? (
-                  <BladeProvider themeTokens={bladeTheme} colorScheme={topNavContext.colorScheme}>
-                    {overlayWithFloatingProps}
-                  </BladeProvider>
-                ) : (
-                  overlayWithFloatingProps
-                )}
+                <TopNavOverlayThemeOverride>{overlayWithFloatingProps}</TopNavOverlayThemeOverride>
               </FloatingFocusManager>
             </FloatingPortal>
           )}

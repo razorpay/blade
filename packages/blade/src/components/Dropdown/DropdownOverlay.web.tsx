@@ -18,9 +18,8 @@ import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
 import { dropdownComponentIds } from './dropdownComponentIds';
-import { BladeProvider, useTheme } from '~components/BladeProvider';
-import { bladeTheme } from '~tokens/theme';
-import { useTopNavContext } from '~components/TopNav/TopNavContext';
+import { useTheme } from '~components/BladeProvider';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
@@ -50,7 +49,6 @@ const _DropdownOverlay = ({
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
-  const topNavContext = useTopNavContext();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   const isMenu =
@@ -147,13 +145,7 @@ const _DropdownOverlay = ({
 
   return (
     <FloatingPortal>
-      {topNavContext ? (
-        <BladeProvider themeTokens={bladeTheme} colorScheme={topNavContext.colorScheme}>
-          {overlayContent}
-        </BladeProvider>
-      ) : (
-        overlayContent
-      )}
+      <TopNavOverlayThemeOverride>{overlayContent}</TopNavOverlayThemeOverride>
     </FloatingPortal>
   );
 };
