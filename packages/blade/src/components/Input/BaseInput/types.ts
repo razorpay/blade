@@ -5,6 +5,7 @@ import type { FormInputHandleOnEvent } from '~components/Form';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
+  FormInputHandleOnPasteEvent,
   FormInputOnClickEvent,
 } from '~components/Form/FormTypes';
 import type { ContainerElementType } from '~utils/types';
@@ -56,6 +57,7 @@ export type StyledBaseInputProps = {
   handleOnKeyDown?: FormInputHandleOnKeyDownEvent;
   handleOnInput?: FormInputHandleOnEvent;
   handleOnClick?: FormInputHandleOnClickEvent;
+  handleOnPaste?: FormInputHandleOnPasteEvent;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   accessibilityProps: Record<string, unknown>;

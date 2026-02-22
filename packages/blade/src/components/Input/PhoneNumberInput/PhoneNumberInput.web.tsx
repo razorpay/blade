@@ -18,6 +18,29 @@ import type { BladeElementRef } from '~utils/types';
 import { CloseIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
 import { useControllableState } from '~utils/useControllable';
+import type { FormInputOnKeyDownEvent, FormInputOnPasteEvent } from '~components/Form/FormTypes';
+
+const NUMBERS_ONLY_REGEX = /^\d+$/;
+
+export const isNumericInput = (input: string): boolean => {
+  return NUMBERS_ONLY_REGEX.test(input);
+};
+
+export function validateNumericInput(event: FormInputOnKeyDownEvent['event']): void {
+  const { key, ctrlKey, metaKey } = event;
+
+  // Check if the entered key is a number; if not, prevent the default action
+  const isCharacterKey = key.length === 1;
+
+  // return for non-character keys
+  if (ctrlKey || metaKey || !isCharacterKey) {
+    return;
+  }
+
+  if (!isNumericInput(key)) {
+    event.preventDefault();
+  }
+}
 
 const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNumberInputProps> = (
   {
@@ -121,6 +144,19 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [allowedCountries, flags]);
 
+  const handleKeyDown = (keyboardEvent: FormInputOnKeyDownEvent): void => {
+    validateNumericInput(keyboardEvent.event);
+  };
+
+  const handlePaste = (pasteEvent: FormInputOnPasteEvent): void => {
+    const pastedText = pasteEvent.value?.clipboardData?.getData('text') ?? '';
+
+    // Only allow pastedText if it only has numeric characters
+    if (!NUMBERS_ONLY_REGEX.test(pastedText)) {
+      pasteEvent?.value?.preventDefault();
+    }
+  };
+
   const handleOnChange = ({
     name,
     value,
@@ -195,6 +231,8 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         }
         handleOnChange({ name, value, selectedCountry });
       }}
+      onKeyDown={handleKeyDown}
+      onPaste={handlePaste}
       onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}

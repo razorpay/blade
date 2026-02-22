@@ -39,6 +39,13 @@ export type FormInputOnClickEvent = {
 
 export type FormInputHandleOnClickEvent = ({ name, value }: FormInputOnClickEvent) => void;
 
+export type FormInputHandleOnPasteEvent = ({ name, value }: FormInputOnPasteEvent) => void;
+
+export type FormInputOnPasteEvent = {
+  name?: string;
+  value?: React.ClipboardEvent<HTMLInputElement>;
+};
+
 export type FormInputValidationProps = {
   /**
    * Help text for the input
