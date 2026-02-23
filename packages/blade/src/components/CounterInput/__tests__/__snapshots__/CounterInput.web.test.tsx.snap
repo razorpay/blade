@@ -74,7 +74,7 @@ exports[`<CounterInput /> should render 1`] = `
   height: 38px;
   width: 94px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
+  border-radius: 8px;
   border-width: 1px;
   border-color: hsla(204,8%,88%,1);
   border-style: solid;
@@ -146,13 +146,13 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-up {
-  -webkit-animation: fmSSSd-450290765 0.3s ease-out;
-  animation: fmSSSd-450290765 0.3s ease-out;
+  -webkit-animation: fmSSSd-450290765 0.2s ease-out;
+  animation: fmSSSd-450290765 0.2s ease-out;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-down {
-  -webkit-animation: bHYPrA-450290765 0.3s ease-out;
-  animation: bHYPrA-450290765 0.3s ease-out;
+  -webkit-animation: bHYPrA-450290765 0.2s ease-out;
+  animation: bHYPrA-450290765 0.2s ease-out;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input input[type='number']::-webkit-inner-spin-button,
@@ -170,18 +170,18 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(204,9%,42%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -201,10 +201,10 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -218,10 +218,10 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -237,6 +237,7 @@ exports[`<CounterInput /> should render 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
@@ -251,10 +252,10 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -269,10 +270,10 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -287,10 +288,10 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -305,10 +306,10 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -320,7 +321,7 @@ exports[`<CounterInput /> should render 1`] = `
 
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -330,21 +331,25 @@ exports[`<CounterInput /> should render 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
   box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -354,23 +359,27 @@ exports[`<CounterInput /> should render 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -380,16 +389,20 @@ exports[`<CounterInput /> should render 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
   box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -410,7 +423,7 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  border-radius: 12px;
+  border-radius: 8px;
   width: 100%;
 }
 
@@ -419,10 +432,10 @@ exports[`<CounterInput /> should render 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
@@ -442,7 +455,7 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 4px;
   margin: 4px 0px 4px 4px;
   -webkit-transition-property: background-color,color;
@@ -486,7 +499,7 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 4px;
   margin: 4px 4px 4px 0px;
   -webkit-transition-property: background-color,color;
@@ -579,6 +592,7 @@ exports[`<CounterInput /> should render 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Quantity
                 </p>
@@ -589,6 +603,7 @@ exports[`<CounterInput /> should render 1`] = `
                   <p
                     class="c7"
                     data-blade-component="text"
+                    letter-spacing="50"
                   />
                 </div>
               </div>
@@ -849,13 +864,13 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-up {
-  -webkit-animation: fmSSSd-450290765 0.3s ease-out;
-  animation: fmSSSd-450290765 0.3s ease-out;
+  -webkit-animation: fmSSSd-450290765 0.2s ease-out;
+  animation: fmSSSd-450290765 0.2s ease-out;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-down {
-  -webkit-animation: bHYPrA-450290765 0.3s ease-out;
-  animation: bHYPrA-450290765 0.3s ease-out;
+  -webkit-animation: bHYPrA-450290765 0.2s ease-out;
+  animation: bHYPrA-450290765 0.2s ease-out;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input input[type='number']::-webkit-inner-spin-button,
@@ -873,18 +888,18 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(204,9%,42%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -904,10 +919,10 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -921,10 +936,10 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -940,6 +955,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   height: 48px;
   min-height: 48px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
@@ -954,10 +970,10 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -972,10 +988,10 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -990,10 +1006,10 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1008,10 +1024,10 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1033,20 +1049,24 @@ exports[`<CounterInput /> should render large size 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
   box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(0,0%,97%,1);
+  background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
@@ -1057,16 +1077,20 @@ exports[`<CounterInput /> should render large size 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -1083,16 +1107,20 @@ exports[`<CounterInput /> should render large size 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
   box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1122,10 +1150,10 @@ exports[`<CounterInput /> should render large size 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
@@ -1282,6 +1310,7 @@ exports[`<CounterInput /> should render large size 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Quantity
                 </p>
@@ -1292,6 +1321,7 @@ exports[`<CounterInput /> should render large size 1`] = `
                   <p
                     class="c7"
                     data-blade-component="text"
+                    letter-spacing="50"
                   />
                 </div>
               </div>
@@ -1480,7 +1510,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   height: 38px;
   width: 94px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
+  border-radius: 8px;
   border-width: 1px;
   border-color: hsla(218,87%,43%,1);
   border-style: solid;
@@ -1552,13 +1582,13 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-up {
-  -webkit-animation: fmSSSd-450290765 0.3s ease-out;
-  animation: fmSSSd-450290765 0.3s ease-out;
+  -webkit-animation: fmSSSd-450290765 0.2s ease-out;
+  animation: fmSSSd-450290765 0.2s ease-out;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-animate-slide-down {
-  -webkit-animation: bHYPrA-450290765 0.3s ease-out;
-  animation: bHYPrA-450290765 0.3s ease-out;
+  -webkit-animation: bHYPrA-450290765 0.2s ease-out;
+  animation: bHYPrA-450290765 0.2s ease-out;
 }
 
 .c0.c0.c0.c0.c0.__blade-counter-input input[type='number']::-webkit-inner-spin-button,
@@ -1576,18 +1606,18 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(204,9%,42%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1607,10 +1637,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1624,10 +1654,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1643,6 +1673,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
@@ -1657,10 +1688,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1675,10 +1706,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1693,10 +1724,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1711,10 +1742,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1726,7 +1757,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1736,21 +1767,25 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
   box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1760,23 +1795,27 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1786,16 +1825,20 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   border: none;
   border-width: 0px;
   box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1816,7 +1859,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  border-radius: 12px;
+  border-radius: 8px;
   width: 100%;
 }
 
@@ -1825,10 +1868,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
@@ -1848,7 +1891,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 4px;
   margin: 4px 0px 4px 4px;
   -webkit-transition-property: background-color,color;
@@ -1892,7 +1935,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 4px;
   margin: 4px 4px 4px 0px;
   -webkit-transition-property: background-color,color;
@@ -1985,6 +2028,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Quantity
                 </p>
@@ -1995,6 +2039,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
                   <p
                     class="c7"
                     data-blade-component="text"
+                    letter-spacing="50"
                   />
                 </div>
               </div>

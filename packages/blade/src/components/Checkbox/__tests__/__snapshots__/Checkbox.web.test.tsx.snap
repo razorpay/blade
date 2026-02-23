@@ -23,9 +23,10 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
+  padding-top: 0;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -66,10 +67,10 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -113,7 +114,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover + div {
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
   background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -194,6 +195,7 @@ exports[`<Checkbox /> should accept data-analytics attributes 1`] = `
           <p
             class="c7"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Remember password
           </p>
@@ -227,9 +229,10 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
+  padding-top: 0;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -284,10 +287,10 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -349,7 +352,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover + div {
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
   background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -468,6 +471,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           <p
             class="c7"
             data-blade-component="text"
+            letter-spacing="50"
           >
             I accept 
             <a
@@ -520,9 +524,10 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(204,8%,88%,1);
+  padding-top: 0;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -563,10 +568,10 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -660,9 +665,9 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
                   clip-rule="evenodd"
                   d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
                   data-blade-component="svg-path"
-                  fill="hsla(0, 0%, 100%, 1)"
+                  fill="hsla(0, 0%, 100%, 0.32)"
                   fill-rule="evenodd"
-                  stroke="hsla(0, 0%, 100%, 1)"
+                  stroke="hsla(0, 0%, 100%, 0.32)"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="0.5"
@@ -682,6 +687,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           <p
             class="c7"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Remember password
           </p>
@@ -715,9 +721,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: hsla(0,0%,100%,0);
   border-color: hsla(4,85%,44%,1);
+  padding-top: 0;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -788,10 +795,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -805,13 +812,14 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.14300000000000002px;
+  -moz-letter-spacing: -0.14300000000000002px;
+  -ms-letter-spacing: -0.14300000000000002px;
+  letter-spacing: -0.14300000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
+  margin-top: 0px;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -925,6 +933,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           <p
             class="c7"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Remember password
           </p>
@@ -975,6 +984,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         <span
           class="c12"
           data-blade-component="text"
+          letter-spacing="50"
         >
           This has to be checked
         </span>
@@ -1007,9 +1017,10 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   border-width: 1.5px;
   border-style: solid;
   margin: 2px;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
+  padding-top: 0;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1055,10 +1066,10 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1205,6 +1216,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
           <p
             class="c8"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Remember password
           </p>

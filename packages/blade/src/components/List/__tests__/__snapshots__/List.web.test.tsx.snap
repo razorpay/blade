@@ -35,7 +35,7 @@ exports[`<List /> should render List with default properties 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -43,10 +43,10 @@ exports[`<List /> should render List with default properties 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -103,6 +103,7 @@ exports[`<List /> should render List with default properties 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -149,6 +150,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -196,6 +198,7 @@ exports[`<List /> should render List with default properties 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -247,7 +250,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -255,10 +258,10 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -283,7 +286,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 .c5.c5.c5.c5.c5 {
   padding: 0px 4px;
   background-color: hsla(206,10%,29%,0.09);
-  border-radius: 12px;
+  border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
   line-height: 0rem;
@@ -337,6 +340,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1 
             <span
@@ -346,6 +350,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               <code
                 class="c6"
                 data-blade-component="base-text"
+                letter-spacing="100"
               >
                 Google
               </code>
@@ -387,6 +392,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 2
           </p>
@@ -432,7 +438,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -440,10 +446,10 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -457,10 +463,10 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -513,10 +519,12 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             <span
               class="c5"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Level 1
             </span>
@@ -602,16 +610,16 @@ exports[`<List /> should render large ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -619,10 +627,10 @@ exports[`<List /> should render large ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -660,6 +668,7 @@ exports[`<List /> should render large ordered List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="25"
             >
               1.
             </p>
@@ -667,6 +676,7 @@ exports[`<List /> should render large ordered List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 1
           </p>
@@ -713,6 +723,7 @@ exports[`<List /> should render large ordered List 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="25"
                 >
                   Level 2
                 </p>
@@ -760,6 +771,7 @@ exports[`<List /> should render large ordered List 1`] = `
                       <p
                         class="c5"
                         data-blade-component="text"
+                        letter-spacing="25"
                       >
                         Level 3
                       </p>
@@ -834,16 +846,16 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -851,10 +863,10 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -888,6 +900,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1
             </p>
@@ -895,6 +908,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 1
           </p>
@@ -915,6 +929,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               2
             </p>
@@ -922,6 +937,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 2
           </p>
@@ -942,6 +958,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               3
             </p>
@@ -949,6 +966,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 3
           </p>
@@ -1006,7 +1024,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1014,10 +1032,10 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -1071,6 +1089,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 1
           </p>
@@ -1115,6 +1134,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="25"
                 >
                   Level 2
                 </p>
@@ -1162,6 +1182,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="25"
                       >
                         Level 3
                       </p>
@@ -1252,16 +1273,16 @@ exports[`<List /> should render medium ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1269,10 +1290,10 @@ exports[`<List /> should render medium ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1310,6 +1331,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1.
             </p>
@@ -1317,6 +1339,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -1363,6 +1386,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -1410,6 +1434,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                       <p
                         class="c5"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -1484,16 +1509,16 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1501,10 +1526,10 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1538,6 +1563,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1
             </p>
@@ -1545,6 +1571,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -1565,6 +1592,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               2
             </p>
@@ -1572,6 +1600,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 2
           </p>
@@ -1592,6 +1621,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               3
             </p>
@@ -1599,6 +1629,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 3
           </p>
@@ -1656,7 +1687,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1664,10 +1695,10 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1721,6 +1752,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -1765,6 +1797,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -1812,6 +1845,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -1902,16 +1936,16 @@ exports[`<List /> should render small ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
@@ -1919,10 +1953,10 @@ exports[`<List /> should render small ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1960,6 +1994,7 @@ exports[`<List /> should render small ordered List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1.
             </p>
@@ -1967,6 +2002,7 @@ exports[`<List /> should render small ordered List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -2013,6 +2049,7 @@ exports[`<List /> should render small ordered List 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -2060,6 +2097,7 @@ exports[`<List /> should render small ordered List 1`] = `
                       <p
                         class="c5"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -2134,16 +2172,16 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
@@ -2151,10 +2189,10 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2188,6 +2226,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1
             </p>
@@ -2195,6 +2234,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -2215,6 +2255,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               2
             </p>
@@ -2222,6 +2263,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 2
           </p>
@@ -2242,6 +2284,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               3
             </p>
@@ -2249,6 +2292,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 3
           </p>
@@ -2306,7 +2350,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
@@ -2314,10 +2358,10 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2371,6 +2415,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -2415,6 +2460,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -2462,6 +2508,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -2513,7 +2560,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,0%,2%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
@@ -2521,10 +2568,10 @@ exports[`<List /> should render unordered List of small size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2581,6 +2628,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -2627,6 +2675,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -2674,6 +2723,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>

@@ -73,10 +73,10 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -101,6 +101,7 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -184,10 +185,10 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -212,6 +213,7 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -295,10 +297,10 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -323,6 +325,7 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -406,10 +409,10 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -434,6 +437,7 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -517,10 +521,10 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -545,6 +549,7 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -620,7 +625,7 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -628,10 +633,10 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -656,6 +661,7 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -874,10 +880,10 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -902,6 +908,7 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -985,10 +992,10 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1013,6 +1020,7 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -1096,10 +1104,10 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -1124,6 +1132,7 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -1318,10 +1327,10 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -1346,6 +1355,7 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>
@@ -1524,7 +1534,7 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   display: flex;
   width: 36px;
   height: 36px;
-  border-radius: 12px;
+  border-radius: 8px;
   outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
@@ -1538,7 +1548,7 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   height: 36px;
   width: 36px;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   background-color: hsla(206,10%,29%,0.12);
 }
 
@@ -1546,7 +1556,7 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   display: block;
   height: 36px;
   width: 36px;
-  border-radius: 12px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
@@ -1559,10 +1569,10 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1587,6 +1597,7 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             NK
           </p>

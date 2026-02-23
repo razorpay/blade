@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BottomSheet /> should render a BottomSheet ssr 1`] = `"<div id="root"><div data-testid="bottomsheet-backdrop" opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx BottomSheetBackdropweb__StyledBottomSheetBackdrop-sc-198k9f6-0 jkMvvn bUGCBC"></div><div data-blade-component="bottom-sheet" data-testid="bottomsheet-surface" aria-modal="true" role="dialog" style="opacity:1;pointer-events:all;height:0;bottom:0;top:auto;z-index:101" class="BottomSheetweb__BottomSheetSurface-qlloie-0 ivjhjP"><div data-blade-component="base-box" class="BaseBox-bmPWx gWSczs"><div data-blade-component="BottomSheetGrabHandle" class="BottomSheetGrabHandleweb__BottomSheetGrabHandle-mo12ak-0 hwnGie"></div><div data-blade-component="bottom-sheet-header" class="BaseBox-bmPWx bONxzW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx djABsd"><div data-blade-component="base-box" class="BaseBox-bmPWx hKLQfF"><div data-blade-component="base-box" class="BaseBox-bmPWx hXjMxV"><div data-blade-component="base-box" class="BaseBox-bmPWx jxfNRL"><div data-blade-component="base-box" class="BaseBox-bmPWx kDqSNs"><p class="StyledBaseText-dVBfTO hfaOmo" data-blade-component="text">Address Details</p><div data-blade-component="base-box" class="BaseBox-bmPWx jOqpMP"><div data-blade-component="box" class="BaseBox-bmPWx kgBOXG"><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 dxpYih boWldd"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO jXyTnV" data-blade-component="text">2</p></div></div></div></div></div></div><p class="StyledBaseText-dVBfTO VHtcN" data-blade-component="text">Saving addresses will improve your checkout experience</p></div></div><div data-blade-component="box" class="BaseBox-bmPWx kgBOXG"><button type="button" aria-label="Close" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 cBBxJB"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx gJhLSN"><div data-blade-component="box" class="BaseBox-bmPWx mhVFF"></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jGOItS WrXok"></div></div></div><div data-blade-component="bottom-sheet-body" data-testid="bottomsheet-body" style="-webkit-tap-highlight-color:revert;-webkit-touch-callout:revert;-webkit-user-select:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;user-select:auto;touch-action:none" class="BaseBox-bmPWx QAxeY"><div data-blade-component="base-box" class="BaseBox-bmPWx iaqkon"><p class="StyledBaseText-dVBfTO kSAxgY" data-blade-component="text">BottomSheet body</p></div></div><div data-blade-component="bottom-sheet-footer" class="BaseBox-bmPWx hZLBAO"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jGOItS WrXok"></div><div data-blade-component="base-box" class="BaseBox-bmPWx dJEYFx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eSYgYJ"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO bHmVfm" data-blade-component="base-text">Remove address</div></div></div></button></div></div></div></div></div>"`;
+exports[`<BottomSheet /> should render a BottomSheet ssr 1`] = `"<div id="root"><div data-testid="bottomsheet-backdrop" opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx BottomSheetBackdropweb__StyledBottomSheetBackdrop-sc-198k9f6-0 jkMvvn bUGCBC"></div><div data-blade-component="bottom-sheet" data-testid="bottomsheet-surface" aria-modal="true" role="dialog" style="opacity:1;pointer-events:all;height:0;bottom:0;top:auto;z-index:101" class="BottomSheetweb__BottomSheetSurface-qlloie-0 ivjhjP"><div data-blade-component="base-box" class="BaseBox-bmPWx gWSczs"><div data-blade-component="BottomSheetGrabHandle" class="BottomSheetGrabHandleweb__BottomSheetGrabHandle-mo12ak-0 hwnGie"></div><div data-blade-component="bottom-sheet-header" class="BaseBox-bmPWx bONxzW"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx djABsd"><div data-blade-component="base-box" class="BaseBox-bmPWx hKLQfF"><div data-blade-component="base-box" class="BaseBox-bmPWx hXjMxV"><div data-blade-component="base-box" class="BaseBox-bmPWx jxfNRL"><div data-blade-component="base-box" class="BaseBox-bmPWx kDqSNs"><p letter-spacing="25" class="StyledBaseText-dVBfTO cCKgFw" data-blade-component="text">Address Details</p><div data-blade-component="base-box" class="BaseBox-bmPWx jOqpMP"><div data-blade-component="box" class="BaseBox-bmPWx kgBOXG"><div data-blade-component="counter" class="BaseBox-bmPWx cDQJLc"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 idjNjj lnajcl"><div data-blade-component="base-box" class="BaseBox-bmPWx khtrrh"><p letter-spacing="50" class="StyledBaseText-dVBfTO lnoJGH" data-blade-component="text">2</p></div></div></div></div></div></div><p letter-spacing="50" class="StyledBaseText-dVBfTO ifCGVb" data-blade-component="text">Saving addresses will improve your checkout experience</p></div></div><div data-blade-component="box" class="BaseBox-bmPWx kgBOXG"><button type="button" aria-label="Close" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 dioncC"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx gJhLSN"><div data-blade-component="box" class="BaseBox-bmPWx mhVFF"></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jGOItS WrXok"></div></div></div><div data-blade-component="bottom-sheet-body" data-testid="bottomsheet-body" style="-webkit-tap-highlight-color:revert;-webkit-touch-callout:revert;-webkit-user-select:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;user-select:auto;touch-action:none" class="BaseBox-bmPWx QAxeY"><div data-blade-component="base-box" class="BaseBox-bmPWx iaqkon"><p letter-spacing="50" class="StyledBaseText-dVBfTO jYEGWa" data-blade-component="text">BottomSheet body</p></div></div><div data-blade-component="bottom-sheet-footer" class="BaseBox-bmPWx hZLBAO"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jGOItS WrXok"></div><div data-blade-component="base-box" class="BaseBox-bmPWx dJEYFx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fkhrPc"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO fxxtMV" data-blade-component="base-text">Remove address</div></div></div></button></div></div></div></div></div>"`;
 
 exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 .c3.c3.c3.c3.c3 {
@@ -107,10 +107,18 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c15.c15.c15.c15.c15 {
   min-height: 20px;
+  min-width: 20px;
   background-color: hsla(150,100%,28%,0.09);
 }
 
@@ -131,11 +139,9 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c27.c27.c27.c27.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -154,16 +160,16 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   width: 100%;
 }
 
-.c26.c26.c26.c26.c26 {
+.c28.c28.c28.c28.c28 {
   width: 100%;
 }
 
-.c27.c27.c27.c27.c27 {
+.c29.c29.c29.c29.c29 {
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
-.c29.c29.c29.c29.c29 {
+.c31.c31.c31.c31.c31 {
   overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -174,7 +180,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   flex-shrink: 1;
 }
 
-.c30.c30.c30.c30.c30 {
+.c32.c32.c32.c32.c32 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -182,7 +188,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   padding-left: 16px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c34.c34.c34.c34.c34 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -193,11 +199,11 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   touch-action: none;
 }
 
-.c33.c33.c33.c33.c33 {
+.c35.c35.c35.c35.c35 {
   padding: 16px;
 }
 
-.c36.c36.c36.c36.c36 {
+.c38.c38.c38.c38.c38 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -224,9 +230,37 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 }
 
 .c21.c21.c21.c21.c21 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c22.c22.c22.c22.c22 {
   text-align: left;
   height: 20px;
   background-color: hsla(150,100%,28%,0.09);
+}
+
+.c24.c24.c24.c24.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -240,11 +274,11 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   opacity: 1;
 }
 
-.c24.c24.c24.c24.c24 {
+.c26.c26.c26.c26.c26 {
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 2px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -267,12 +301,12 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c24.c24.c24.c24.c24:hover:not([disabled]) {
+.c26.c26.c26.c26.c26:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c24.c24.c24.c24.c24:focus-visible {
+.c26.c26.c26.c26.c26:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -283,13 +317,14 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
   color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
-.c24.c24.c24.c24.c24:active {
+.c26.c26.c26.c26.c26:active {
   color: hsla(200,10%,18%,1);
 }
 
-.c28.c28.c28.c28.c28 {
+.c30.c30.c30.c30.c30 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -308,10 +343,10 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -327,10 +362,10 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -351,15 +386,15 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
-.c31.c31.c31.c31.c31 {
+.c33.c33.c33.c33.c33 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -368,16 +403,16 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c38.c38.c38.c38.c38 {
-  color: hsla(218,89%,51%,1);
+.c40.c40.c40.c40.c40 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -392,9 +427,11 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c25.c25.c25.c25.c25 {
   color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -403,10 +440,10 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -415,6 +452,8 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -497,7 +536,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   overflow: hidden;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -520,6 +559,14 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -528,19 +575,18 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   width: fit-content;
 }
 
-.c34.c34.c34.c34.c34 {
+.c36.c36.c36.c36.c36 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -556,8 +602,9 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -565,24 +612,26 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   position: relative;
 }
 
-.c34.c34.c34.c34.c34:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+.c36.c36.c36.c36.c36:hover {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c34.c34.c34.c34.c34:active {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+.c36.c36.c36.c36.c36:active {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c34.c34.c34.c34.c34:focus-visible {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+.c36.c36.c36.c36.c36:focus-visible {
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c34.c34.c34.c34.c34 * {
+.c36.c36.c36.c36.c36 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -591,7 +640,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c35.c35.c35.c35.c35 {
+.c37.c37.c37.c37.c37 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -601,7 +650,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
   transition-timing-function: 160px;
 }
 
-.c37.c37.c37.c37.c37 {
+.c39.c39.c39.c39.c39 {
   opacity: 1;
 }
 
@@ -615,37 +664,37 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c33.c33.c33.c33.c33 {
+  .c35.c35.c35.c35.c35 {
     padding: 20px;
   }
 }
@@ -706,6 +755,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
                     <p
                       class="c11"
                       data-blade-component="text"
+                      letter-spacing="25"
                     >
                       Address Details
                     </p>
@@ -732,6 +782,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
                               <p
                                 class="c18"
                                 data-blade-component="text"
+                                letter-spacing="50"
                               >
                                 2
                               </p>
@@ -744,6 +795,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
                   <p
                     class="c19"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     Saving addresses will improve your checkout experience
                   </p>
@@ -758,20 +810,21 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
                   data-blade-component="box"
                 >
                   <div
-                    class="c14"
+                    class="c21"
                     data-blade-component="badge"
                   >
                     <div
-                      class="c21 c22"
+                      class="c22 c23"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c17"
+                        class="c24"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c23"
+                          class="c25"
                           data-blade-component="text"
+                          letter-spacing="50"
                         >
                           Action Needed
                         </p>
@@ -786,7 +839,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
               >
                 <button
                   aria-label="Close"
-                  class="c24"
+                  class="c26"
                   data-blade-component="icon-button"
                   type="button"
                 >
@@ -809,69 +862,70 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
               </div>
             </div>
             <div
-              class="c25"
+              class="c27"
               data-blade-component="base-box"
             >
               <div
-                class="c26"
+                class="c28"
                 data-blade-component="box"
               />
             </div>
           </div>
           <div
-            class="c27 c28"
+            class="c29 c30"
             data-blade-component="divider"
             role="separator"
           />
         </div>
       </div>
       <div
-        class="c29"
+        class="c31"
         data-blade-component="bottom-sheet-body"
         data-testid="bottomsheet-body"
         style="-webkit-tap-highlight-color:revert;-webkit-touch-callout:revert;-webkit-user-select:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;user-select:auto;touch-action:none"
       >
         <div
-          class="c30"
+          class="c32"
           data-blade-component="base-box"
         >
           <p
-            class="c31"
+            class="c33"
             data-blade-component="text"
+            letter-spacing="50"
           >
             BottomSheet body
           </p>
         </div>
       </div>
       <div
-        class="c32"
+        class="c34"
         data-blade-component="bottom-sheet-footer"
       >
         <div
-          class="c27 c28"
+          class="c29 c30"
           data-blade-component="divider"
           role="separator"
         />
         <div
-          class="c33"
+          class="c35"
           data-blade-component="base-box"
         >
           <button
-            class="c34"
+            class="c36"
             data-blade-component="button"
             role="button"
             type="button"
           >
             <div
-              class=" c35"
+              class=" c37"
               data-blade-component="base-box"
             >
               <div
-                class="c36 c37"
+                class="c38 c39"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c38"
+                  class="c40"
                   data-blade-component="base-text"
                 >
                   Remove address

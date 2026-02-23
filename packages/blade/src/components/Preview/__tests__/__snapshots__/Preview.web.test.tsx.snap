@@ -2,7 +2,14 @@
 
 exports[`<PreviewWindow/> should render preview header without title correctly 1`] = `
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: visible;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   position: relative;
   height: 100%;
   width: 100%;
@@ -17,19 +24,27 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  position: absolute;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   z-index: 1100;
   padding: 12px;
-  top: 0px;
-  right: 4px;
+  width: 100%;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c3.c3.c3.c3.c3 {
-  background-color: hsla(0,0%,97%,1);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 12px;
 }
 
@@ -70,7 +85,16 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   justify-content: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+.c11.c11.c11.c11.c11 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -79,10 +103,10 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -92,11 +116,10 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(206,10%,29%,0.06);
-  border-color: hsla(204,8%,88%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -116,8 +139,9 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -126,17 +150,22 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
 }
 
 .c4.c4.c4.c4.c4:hover {
-  background-color: hsla(206,10%,29%,0.12);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c4.c4.c4.c4.c4:active {
-  background-color: hsla(206,10%,29%,0.12);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c4.c4.c4.c4.c4:focus-visible {
-  background-color: hsla(206,10%,29%,0.12);
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 * {
@@ -162,7 +191,7 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   opacity: 1;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   width: 100%;
   height: 100%;
   cursor: -webkit-grab;
@@ -174,8 +203,8 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   transition: cursor 0.1s ease;
 }
 
-.c9.c9.c9.c9.c9 .zoom-wrapper,
-.c9.c9.c9.c9.c9 .zoom-content {
+.c10.c10.c10.c10.c10 .zoom-wrapper,
+.c10.c10.c10.c10.c10 .zoom-content {
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -198,7 +227,7 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: hsla(0,0%,97%,1);
+  background-color: transparent;
 }
 
 <div>
@@ -261,24 +290,30 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
       </div>
       <div
         class="c9"
+        data-blade-component="base-box"
       >
         <div
-          class="react-transform-wrapper transform-component-module_wrapper__SPB86 zoom-wrapper"
+          class="c10"
         >
           <div
-            class="react-transform-component transform-component-module_content__FBWxo zoom-content"
-            style="transform: translate(0px, 0px) scale(1);"
+            class="react-transform-wrapper transform-component-module_wrapper__SPB86 zoom-wrapper"
           >
             <div
-              class=""
-              data-blade-component="base-box"
+              class="react-transform-component transform-component-module_content__FBWxo zoom-content"
+              style="transform: translate(0px, 0px) scale(1);"
             >
-              <p
-                class="c10"
-                data-blade-component="text"
+              <div
+                class=""
+                data-blade-component="base-box"
               >
-                This is a demo message
-              </p>
+                <p
+                  class="c11"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  This is a demo message
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -290,44 +325,26 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
 
 exports[`<PreviewWindow/> should render preview window correctly 1`] = `
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: visible;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   position: relative;
   height: 100%;
   width: 100%;
 }
 
 .c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  position: absolute;
   z-index: 1100;
-  padding: 16px;
   width: 100%;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  background-color: hsla(0,0%,97%,1);
-  border-top-width: 1px;
-  border-top-color: hsla(206,10%,29%,0.12);
-  border-top-style: solid;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c3.c3.c3.c3.c3 {
-  padding: 4px;
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
-  border-width: 1px;
-  border-color: hsla(206,10%,29%,0.12);
-  border-style: solid;
-}
-
-.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -336,10 +353,28 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 4px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 16px;
+  height: 100%;
+  width: 100%;
 }
 
-.c7.c7.c7.c7.c7 {
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -361,7 +396,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   z-index: 1;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -377,67 +412,56 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  position: absolute;
-  z-index: 1100;
-  width: 100%;
-  top: 0px;
-  left: 0px;
-  background-color: hsla(0,0%,97%,1);
-}
-
-.c12.c12.c12.c12.c12 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: 16px;
-  height: 100%;
-  width: 100%;
-}
-
-.c14.c14.c14.c14.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.c15.c15.c15.c15.c15 {
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
-.c10.c10.c10.c10.c10 {
-  color: hsla(0,0%,2%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
+.c13.c13.c13.c13.c13 {
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+  width: 100%;
 }
 
-.c13.c13.c13.c13.c13 {
+.c16.c16.c16.c16.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: 16px;
+  width: 100%;
+  background-color: hsla(0,0%,100%,0);
+}
+
+.c17.c17.c17.c17.c17 {
+  padding: 4px;
+}
+
+.c18.c18.c18.c18.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c19.c19.c19.c19.c19 {
+  text-align: center;
+  width: 40px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(200,10%,18%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
@@ -454,16 +478,32 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c15.c15.c15.c15.c15 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c6.c6.c6.c6.c6 {
   min-height: 36px;
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(206,10%,29%,0.06);
-  border-color: hsla(204,8%,88%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -483,8 +523,9 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -492,21 +533,26 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   position: relative;
 }
 
-.c5.c5.c5.c5.c5:hover {
-  background-color: hsla(206,10%,29%,0.12);
+.c6.c6.c6.c6.c6:hover {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c5.c5.c5.c5.c5:active {
-  background-color: hsla(206,10%,29%,0.12);
+.c6.c6.c6.c6.c6:active {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c5.c5.c5.c5.c5:focus-visible {
-  background-color: hsla(206,10%,29%,0.12);
+.c6.c6.c6.c6.c6:focus-visible {
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c5.c5.c5.c5.c5 * {
+.c6.c6.c6.c6.c6 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -515,7 +561,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -525,11 +571,11 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   transition-timing-function: 160px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   opacity: 1;
 }
 
-.c16.c16.c16.c16.c16 {
+.c12.c12.c12.c12.c12 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -539,7 +585,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   flex-grow: 1;
 }
 
-.c17.c17.c17.c17.c17 {
+.c14.c14.c14.c14.c14 {
   width: 100%;
   height: 100%;
   cursor: -webkit-grab;
@@ -551,8 +597,8 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   transition: cursor 0.1s ease;
 }
 
-.c17.c17.c17.c17.c17 .zoom-wrapper,
-.c17.c17.c17.c17.c17 .zoom-content {
+.c14.c14.c14.c14.c14 .zoom-wrapper,
+.c14.c14.c14.c14.c14 .zoom-content {
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -575,95 +621,35 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: hsla(0,0%,97%,1);
+  background-color: transparent;
 }
 
 @media screen and (min-width:320px) {
-  .c2.c2.c2.c2.c2 {
-    border-top-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c2.c2.c2.c2.c2 {
-    border-top-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c2.c2.c2.c2.c2 {
-    border-top-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c2.c2.c2.c2.c2 {
-    border-top-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c2.c2.c2.c2.c2 {
-    border-top-style: solid;
-  }
-}
-
-@media screen and (min-width:320px) {
-  .c3.c3.c3.c3.c3 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c3.c3.c3.c3.c3 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c3.c3.c3.c3.c3 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c3.c3.c3.c3.c3 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c3.c3.c3.c3.c3 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:320px) {
-  .c15.c15.c15.c15.c15 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c15.c15.c15.c15.c15 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c15.c15.c15.c15.c15 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c15.c15.c15.c15.c15 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c15.c15.c15.c15.c15 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
@@ -684,27 +670,122 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
           class="c3"
           data-blade-component="base-box"
         >
-          <div
+          <h5
             class="c4"
+            data-blade-component="heading"
+          >
+            Preview Window
+          </h5>
+          <div
+            class="c5"
             data-blade-component="base-box"
           >
             <button
-              aria-label="Zoom In"
-              class="c5"
+              class="c6"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c6"
+                class=" c7"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c7 c8"
+                  class="c8 c9"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c9"
+                    class="c10"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M2 5C2 3.34315 3.34315 2 5 2H8C8.55228 2 9 2.44772 9 3C9 3.55228 8.55228 4 8 4H5C4.44772 4 4 4.44772 4 5V8C4 8.55228 3.55228 9 3 9C2.44772 9 2 8.55228 2 8V5ZM15 3C15 2.44772 15.4477 2 16 2H19C20.6569 2 22 3.34315 22 5V8C22 8.55228 21.5523 9 21 9C20.4477 9 20 8.55228 20 8V5C20 4.44772 19.5523 4 19 4H16C15.4477 4 15 3.55228 15 3ZM3 15C3.55228 15 4 15.4477 4 16V19C4 19.5523 4.44772 20 5 20H8C8.55228 20 9 20.4477 9 21C9 21.5523 8.55228 22 8 22H5C3.34315 22 2 20.6569 2 19V16C2 15.4477 2.44772 15 3 15ZM21 15C21.5523 15 22 15.4477 22 16V19C22 20.6569 20.6569 22 19 22H16C15.4477 22 15 21.5523 15 21C15 20.4477 15.4477 20 16 20H19C19.5523 20 20 19.5523 20 19V16C20 15.4477 20.4477 15 21 15Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(0, 0%, 2%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div
+          class="c11 c12"
+          data-blade-component="divider"
+          role="separator"
+        />
+      </div>
+      <div
+        class="c13"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c14"
+        >
+          <div
+            class="react-transform-wrapper transform-component-module_wrapper__SPB86 zoom-wrapper"
+          >
+            <div
+              class="react-transform-component transform-component-module_content__FBWxo zoom-content"
+              style="transform: translate(0px, 0px) scale(1);"
+            >
+              <div
+                class=""
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c15"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  This is a demo message
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c16"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c17"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c18"
+            data-blade-component="base-box"
+          >
+            <button
+              aria-label="Zoom In"
+              class="c6"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class=" c7"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c10"
                     data-blade-component="base-box"
                   >
                     <svg
@@ -733,31 +814,37 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
                 </div>
               </div>
             </button>
-            <p
-              class="c10"
-              data-blade-component="text"
+            <div
+              class="c19"
+              data-blade-component="base-box"
             >
-               
-              100
-              %
-            </p>
+              <p
+                class="c15"
+                data-blade-component="text"
+                letter-spacing="50"
+              >
+                 
+                100
+                %
+              </p>
+            </div>
             <button
               aria-label="Zoom Out"
-              class="c5"
+              class="c6"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c6"
+                class=" c7"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c7 c8"
+                  class="c8 c9"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c9"
+                    class="c10"
                     data-blade-component="base-box"
                   >
                     <svg
@@ -788,21 +875,21 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
             </button>
             <button
               aria-label="Reset Zoom"
-              class="c5"
+              class="c6"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c6"
+                class=" c7"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c7 c8"
+                  class="c8 c9"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c9"
+                    class="c10"
                     data-blade-component="base-box"
                   >
                     <svg
@@ -829,95 +916,6 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
                 </div>
               </div>
             </button>
-          </div>
-        </div>
-      </div>
-      <div
-        class="c11"
-        data-blade-component="base-box"
-      >
-        <div
-          class="c12"
-          data-blade-component="base-box"
-        >
-          <h5
-            class="c13"
-            data-blade-component="heading"
-          >
-            Preview Window
-          </h5>
-          <div
-            class="c14"
-            data-blade-component="base-box"
-          >
-            <button
-              class="c5"
-              data-blade-component="button"
-              role="button"
-              type="button"
-            >
-              <div
-                class=" c6"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c7 c8"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c9"
-                    data-blade-component="base-box"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="Svgweb__StyledSvg-vcmjs8-0"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="16px"
-                      viewBox="0 0 24 24"
-                      width="16px"
-                    >
-                      <path
-                        clip-rule="evenodd"
-                        d="M2 5C2 3.34315 3.34315 2 5 2H8C8.55228 2 9 2.44772 9 3C9 3.55228 8.55228 4 8 4H5C4.44772 4 4 4.44772 4 5V8C4 8.55228 3.55228 9 3 9C2.44772 9 2 8.55228 2 8V5ZM15 3C15 2.44772 15.4477 2 16 2H19C20.6569 2 22 3.34315 22 5V8C22 8.55228 21.5523 9 21 9C20.4477 9 20 8.55228 20 8V5C20 4.44772 19.5523 4 19 4H16C15.4477 4 15 3.55228 15 3ZM3 15C3.55228 15 4 15.4477 4 16V19C4 19.5523 4.44772 20 5 20H8C8.55228 20 9 20.4477 9 21C9 21.5523 8.55228 22 8 22H5C3.34315 22 2 20.6569 2 19V16C2 15.4477 2.44772 15 3 15ZM21 15C21.5523 15 22 15.4477 22 16V19C22 20.6569 20.6569 22 19 22H16C15.4477 22 15 21.5523 15 21C15 20.4477 15.4477 20 16 20H19C19.5523 20 20 19.5523 20 19V16C20 15.4477 20.4477 15 21 15Z"
-                        data-blade-component="svg-path"
-                        fill="hsla(0, 0%, 2%, 1)"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-        <div
-          class="c15 c16"
-          data-blade-component="divider"
-          role="separator"
-        />
-      </div>
-      <div
-        class="c17"
-      >
-        <div
-          class="react-transform-wrapper transform-component-module_wrapper__SPB86 zoom-wrapper"
-        >
-          <div
-            class="react-transform-component transform-component-module_content__FBWxo zoom-content"
-            style="transform: translate(0px, 0px) scale(1);"
-          >
-            <div
-              class=""
-              data-blade-component="base-box"
-            >
-              <p
-                class="c10"
-                data-blade-component="text"
-              >
-                This is a demo message
-              </p>
-            </div>
           </div>
         </div>
       </div>

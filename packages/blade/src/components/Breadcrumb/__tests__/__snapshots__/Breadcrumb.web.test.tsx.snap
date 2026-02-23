@@ -72,10 +72,10 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -89,10 +89,10 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -179,6 +179,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
           <span
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             /
           </span>
@@ -216,6 +217,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
           <span
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             /
           </span>
@@ -233,6 +235,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
           <p
             class="c6"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Contact
           </p>
@@ -320,10 +323,10 @@ exports[`<Breadcrumb /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -410,6 +413,7 @@ exports[`<Breadcrumb /> should render 1`] = `
           <span
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             /
           </span>
@@ -447,6 +451,7 @@ exports[`<Breadcrumb /> should render 1`] = `
           <span
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             /
           </span>
@@ -559,10 +564,10 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -649,6 +654,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
           <span
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             /
           </span>
@@ -686,6 +692,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
           <span
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             /
           </span>
@@ -723,6 +730,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
           <span
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             /
           </span>
