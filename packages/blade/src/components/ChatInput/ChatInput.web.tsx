@@ -1,28 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
+import type { ChatInputProps } from './types';
+import { ChatInputActionBar } from './ChatInputActionBar';
+import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
+import { useChatInput } from './useChatInput';
 import { castWebType, makeSpace } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
-import type { ChatInputProps } from './types';
-import { ChatInputActionBar } from './ChatInputActionBar';
-import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
-import { chatInputMaxTextAreaHeight } from './chatInputTokens';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { BaseMotionBox } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
-import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
-import { isFileAccepted } from '~components/FileUpload/isFileAccepted';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import BaseBox from '~components/Box/BaseBox';
-import { useControllableState } from '~utils/useControllable';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStyledProps } from '~components/Box/styledProps';
-import { useIsMobile } from '~utils/useIsMobile';
 
 const HiddenScrollbarBox = styled(BaseBox)(() => ({
   '&::-webkit-scrollbar': { display: 'none' },
@@ -31,7 +27,7 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
-    value: controlledValue,
+    value,
     defaultValue,
     onChange,
     onSubmit,
@@ -39,7 +35,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     isDisabled = false,
     isGenerating = false,
     onStop,
-    fileList: controlledFileList,
+    fileList,
     onFileChange,
     onFileRemove,
     accept,
@@ -54,169 +50,44 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ref,
 ) => {
   const { theme } = useTheme();
-  const fileInputRef = React.useRef<HTMLInputElement>(null);
-  const textareaRef = React.useRef<BladeElementRef>(null);
 
-  const [textValue, setTextValue] = useControllableState({
-    value: controlledValue,
-    defaultValue: defaultValue ?? '',
-    onChange: (newValue) => {
-      onChange?.({ value: newValue });
-    },
-  });
-
-  const [files, setFiles] = useControllableState<BladeFileList>({
-    value: controlledFileList,
-    defaultValue: controlledFileList ?? [],
-  });
-
-  const [activeSuggestionIndex, setActiveSuggestionIndex] = React.useState(0);
-
-  const isMobile = useIsMobile();
-
-  const hasText = textValue.trim().length > 0;
-  const hasFiles = files.length > 0;
-  const isSubmitDisabled = !hasText && !hasFiles;
-  const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
-
-  // Auto-grow the textarea based on content
-  const adjustTextareaHeight = React.useCallback(() => {
-    const textarea = textareaRef.current;
-    if (textarea && textarea instanceof HTMLTextAreaElement) {
-      textarea.style.height = 'auto';
-      textarea.style.height = `${Math.min(textarea.scrollHeight, chatInputMaxTextAreaHeight)}px`;
-    }
-  }, []);
-
-  React.useEffect(() => {
-    adjustTextareaHeight();
-  }, [textValue, adjustTextareaHeight]);
-
-  const handleTextChange = React.useCallback(
-    ({ value: newValue }: { name?: string; value?: string }) => {
-      setTextValue(() => newValue ?? '');
-    },
-    [setTextValue],
-  );
-
-  const handleSubmit = React.useCallback(() => {
-    if (isSubmitDisabled) return;
-    onSubmit?.({ value: textValue, fileList: files });
-  }, [isSubmitDisabled, onSubmit, textValue, files]);
-
-  const handleKeyDown = React.useCallback(
-    ({
-      event,
-    }: {
-      name?: string;
-      key?: string;
-      code?: string;
-      event: React.KeyboardEvent<HTMLInputElement>;
-    }) => {
-      if (!event) return;
-
-      // Enter without Shift submits
-      if (event.key === 'Enter' && !event.shiftKey) {
-        event.preventDefault();
-        handleSubmit();
-        return;
-      }
-
-      // Tab accepts ghost suggestion
-      if (event.key === 'Tab' && showGhostSuggestion && suggestions?.length) {
-        event.preventDefault();
-        const currentSuggestion = suggestions[activeSuggestionIndex];
-        setTextValue(() => currentSuggestion);
-        onSuggestionAccept?.({ suggestion: currentSuggestion });
-      }
-    },
-    [
-      handleSubmit,
-      showGhostSuggestion,
+  const {
+    fileInputRef,
+    mergedRef,
+    textValue,
+    files,
+    setActiveSuggestionIndex,
+    hasFiles,
+    isSubmitDisabled,
+    showGhostSuggestion,
+    handleTextChange,
+    handleSubmit,
+    handleKeyDown,
+    handleUploadClick,
+    handleFileInputChange,
+    handleFileRemove,
+    handlePaste,
+  } = useChatInput(
+    {
+      value,
+      defaultValue,
+      onChange,
+      onSubmit,
+      isDisabled,
+      isGenerating,
+      onStop,
+      fileList,
+      onFileChange,
+      onFileRemove,
+      accept,
+      maxFileSize,
+      maxFileCount,
       suggestions,
-      activeSuggestionIndex,
-      setTextValue,
       onSuggestionAccept,
-    ],
-  );
-
-  const handleUploadClick = React.useCallback(() => {
-    fileInputRef.current?.click();
-  }, []);
-
-  const handleFileInputChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const inputFiles = Array.from(event.target.files ?? []) as BladeFileList;
-
-      // Validate files
-      const validFiles = inputFiles.filter((file) => {
-        if (accept && !isFileAccepted(file, accept)) return false;
-        if (maxFileSize && file.size > maxFileSize) return false;
-        return true;
-      });
-
-      // Assign unique ids
-      for (const file of validFiles) {
-        if (!(file as BladeFile).id) {
-          (file as BladeFile).id = `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
-        }
-      }
-
-      // Check max count
-      const currentCount = files.length;
-      const allowedFiles =
-        maxFileCount && currentCount + validFiles.length > maxFileCount
-          ? validFiles.slice(0, maxFileCount - currentCount)
-          : validFiles;
-
-      if (allowedFiles.length > 0) {
-        const newFileList = [...files, ...allowedFiles];
-        setFiles(() => newFileList);
-        onFileChange?.({ fileList: newFileList });
-      }
-
-      // Reset input so the same file can be re-selected
-      event.target.value = '';
     },
-    [accept, maxFileSize, maxFileCount, files, setFiles, onFileChange],
+    ref,
   );
 
-  const handleFileRemove = React.useCallback(
-    (file: BladeFile) => {
-      const newFileList = files.filter((f) => f.id !== file.id);
-      setFiles(() => newFileList);
-      onFileRemove?.({ file });
-    },
-    [files, setFiles, onFileRemove],
-  );
-
-  const handlePaste = React.useCallback(
-    (event: React.ClipboardEvent<HTMLInputElement>) => {
-      const clipboardFiles = Array.from(event.clipboardData?.files ?? []);
-      if (clipboardFiles.length === 0) return;
-
-      event.preventDefault();
-
-      for (const file of clipboardFiles) {
-        if (!(file as BladeFile).id) {
-          (file as BladeFile).id = `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
-        }
-      }
-
-      const allowed = maxFileCount
-        ? clipboardFiles.slice(0, Math.max(0, maxFileCount - files.length))
-        : clipboardFiles;
-
-      if (allowed.length > 0) {
-        const newFileList = [...files, ...allowed] as BladeFileList;
-        setFiles(() => newFileList);
-        onFileChange?.({ fileList: newFileList });
-      }
-    },
-    [maxFileCount, files, setFiles, onFileChange],
-  );
-
-  // File preview area (topContent)
   const filePreviewMotionVariants: MotionVariantsType = {
     initial: { height: '0px', overflow: 'hidden' },
     animate: {
@@ -270,7 +141,6 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     </AnimatePresence>
   );
 
-  // Action bar (bottomContent)
   const actionBarContent = (
     <ChatInputActionBar
       isDisabled={isDisabled}
@@ -301,7 +171,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       />
 
       <BaseInput
-        ref={textareaRef}
+        ref={mergedRef}
         as="textarea"
         id="chat-input"
         elevation="highRaised"
@@ -347,6 +217,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 };
 
 const ChatInput = assignWithoutSideEffects(React.forwardRef(_ChatInput), {
+  componentId: MetaConstants.ChatInput,
   displayName: 'ChatInput',
 });
 
