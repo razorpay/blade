@@ -2,7 +2,7 @@
 
 /**
  * Represents a single shadow layer configuration
- * Used to create complex multi-layer box shadows
+ * Used to create complex multi-layer shadows for popup components
  */
 export type ShadowLayer = {
   /** Horizontal offset in pixels */

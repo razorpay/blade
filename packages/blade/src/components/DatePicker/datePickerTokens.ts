@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { makePopupBoxShadow } from '~utils/makePopupBoxShadow';
+import { makePopupBoxShadow } from '~utils';
 import type { ShadowLayer } from '~utils/makePopupBoxShadow';
 import type { Theme } from '~components/BladeProvider';
 
