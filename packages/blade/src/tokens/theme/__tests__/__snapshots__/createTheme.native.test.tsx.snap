@@ -320,10 +320,10 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
       "interactive": {
         "background": {
           "gray": {
-            "default": "hsla(207, 4%, 52%, 0.18)",
-            "disabled": "hsla(207, 4%, 52%, 0.18)",
+            "default": "hsla(207, 4%, 52%, 0.12)",
+            "disabled": "hsla(207, 4%, 52%, 0.09)",
             "faded": "hsla(207, 4%, 52%, 0.09)",
-            "fadedHighlighted": "hsla(207, 4%, 52%, 0.12)",
+            "fadedHighlighted": "hsla(207, 4%, 52%, 0.18)",
             "ghost": "hsla(210, 4%, 11%, 0.88)",
             "highlighted": "hsla(207, 4%, 52%, 0.32)",
           },
@@ -579,7 +579,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "background": {
           "gray": {
             "intense": "hsla(0, 0%, 0%, 0.72)",
-            "moderate": "hsla(210, 6%, 13%, 0.94)",
+            "moderate": "hsla(210, 6%, 13%, 0.88)",
             "subtle": "hsla(210, 5%, 16%, 1)",
           },
           "information": {
@@ -719,7 +719,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
         },
       },
-      "transparent": "hsla(217, 27%, 15%, 0)",
+      "transparent": "hsla(210, 6%, 13%, 0)",
     },
     "onLight": {
       "data": {
@@ -1005,7 +1005,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "background": {
           "gray": {
             "default": "hsla(206, 10%, 29%, 0.06)",
-            "disabled": "hsla(206, 10%, 29%, 0.09)",
+            "disabled": "hsla(206, 10%, 29%, 0.06)",
             "faded": "hsla(206, 10%, 29%, 0.06)",
             "fadedHighlighted": "hsla(206, 10%, 29%, 0.09)",
             "ghost": "hsla(0, 0%, 100%, 0.01)",
@@ -1075,7 +1075,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "default": "hsla(204, 8%, 88%, 1)",
             "disabled": "hsla(204, 8%, 88%, 1)",
             "faded": "hsla(206, 10%, 29%, 0.18)",
-            "highlighted": "hsla(203, 8%, 80%, 1)",
+            "highlighted": "hsla(205, 8%, 71%, 1)",
           },
           "information": {
             "default": "hsla(200, 100%, 41%, 1)",
@@ -1698,23 +1698,22 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsl(332, 100%, 26%)"
-    defaultBorderColor="hsl(332, 100%, 26%)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 26%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsl(332, 100%, 23%)"
-    focusBorderColor="hsl(332, 100%, 23%)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 23%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(332, 100%, 26%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsl(332, 100%, 23%)"
-    hoverBorderColor="hsl(332, 100%, 23%)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsl(332, 100%, 23%), inset 0 0px 0px 0.5px hsl(332, 100%, 23%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsl(0, 0%, 100%)"
     isFullWidth={false}
     isLoading={false}
@@ -1738,14 +1737,15 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsl(332, 100%, 26%)",
-          "borderColor": "hsl(332, 100%, 26%)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -1755,8 +1755,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1765,7 +1765,6 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
         },
         {
           "backgroundColor": "hsl(332, 100%, 26%)",
-          "borderColor": "hsl(332, 100%, 26%)",
         },
       ]
     }
@@ -1815,6 +1814,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -1826,8 +1826,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -2168,10 +2168,10 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
       "interactive": {
         "background": {
           "gray": {
-            "default": "hsla(207, 4%, 52%, 0.18)",
-            "disabled": "hsla(207, 4%, 52%, 0.18)",
+            "default": "hsla(207, 4%, 52%, 0.12)",
+            "disabled": "hsla(207, 4%, 52%, 0.09)",
             "faded": "hsla(207, 4%, 52%, 0.09)",
-            "fadedHighlighted": "hsla(207, 4%, 52%, 0.12)",
+            "fadedHighlighted": "hsla(207, 4%, 52%, 0.18)",
             "ghost": "hsla(210, 4%, 11%, 0.88)",
             "highlighted": "hsla(207, 4%, 52%, 0.32)",
           },
@@ -2427,7 +2427,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
         "background": {
           "gray": {
             "intense": "hsla(0, 0%, 0%, 0.72)",
-            "moderate": "hsla(210, 6%, 13%, 0.94)",
+            "moderate": "hsla(210, 6%, 13%, 0.88)",
             "subtle": "hsla(210, 5%, 16%, 1)",
           },
           "information": {
@@ -2567,7 +2567,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           },
         },
       },
-      "transparent": "hsla(217, 27%, 15%, 0)",
+      "transparent": "hsla(210, 6%, 13%, 0)",
     },
     "onLight": {
       "data": {
@@ -2853,7 +2853,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
         "background": {
           "gray": {
             "default": "hsla(206, 10%, 29%, 0.06)",
-            "disabled": "hsla(206, 10%, 29%, 0.09)",
+            "disabled": "hsla(206, 10%, 29%, 0.06)",
             "faded": "hsla(206, 10%, 29%, 0.06)",
             "fadedHighlighted": "hsla(206, 10%, 29%, 0.09)",
             "ghost": "hsla(0, 0%, 100%, 0.01)",
@@ -2923,7 +2923,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "default": "hsla(204, 8%, 88%, 1)",
             "disabled": "hsla(204, 8%, 88%, 1)",
             "faded": "hsla(206, 10%, 29%, 0.18)",
-            "highlighted": "hsla(203, 8%, 80%, 1)",
+            "highlighted": "hsla(205, 8%, 71%, 1)",
           },
           "information": {
             "default": "hsla(200, 100%, 41%, 1)",
@@ -3546,23 +3546,22 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsl(57, 100%, 52%)"
-    defaultBorderColor="hsl(57, 100%, 52%)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 52%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsl(57, 100%, 47%)"
-    focusBorderColor="hsl(57, 100%, 47%)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 47%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(57, 100%, 52%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsl(57, 100%, 47%)"
-    hoverBorderColor="hsl(57, 100%, 47%)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsl(57, 100%, 47%), inset 0 0px 0px 0.5px hsl(57, 100%, 47%), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsl(0, 0%, 0%)"
     isFullWidth={false}
     isLoading={false}
@@ -3586,14 +3585,15 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsl(57, 100%, 52%)",
-          "borderColor": "hsl(57, 100%, 52%)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -3603,8 +3603,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3613,7 +3613,6 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
         },
         {
           "backgroundColor": "hsl(57, 100%, 52%)",
-          "borderColor": "hsl(57, 100%, 52%)",
         },
       ]
     }
@@ -3663,6 +3662,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -3674,8 +3674,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,

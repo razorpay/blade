@@ -58,7 +58,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         }
         accessible={true}
         data-blade-component="base-box"
-        id="undefined-linear-9"
+        id="undefined-linear-11"
         style={
           [
             {},
@@ -167,7 +167,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         }
         accessible={true}
         data-blade-component="base-box"
-        id="undefined-circular-36"
+        id="undefined-circular-40"
         style={
           [
             {},
@@ -357,7 +357,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
         }
         accessible={true}
         data-blade-component="base-box"
-        id="undefined-circular-27"
+        id="undefined-circular-29"
         style={
           [
             {},
@@ -619,7 +619,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
         }
         accessible={true}
         data-blade-component="base-box"
-        id="undefined-circular-34"
+        id="undefined-circular-38"
         style={
           [
             {},
@@ -904,7 +904,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
         }
         accessible={true}
         data-blade-component="base-box"
-        id="undefined-circular-32"
+        id="undefined-circular-36"
         style={
           [
             {},
@@ -1189,7 +1189,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
         }
         accessible={true}
         data-blade-component="base-box"
-        id="undefined-circular-30"
+        id="undefined-circular-34"
         style={
           [
             {},
@@ -1511,7 +1511,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-13"
+        id="progress-linear-15"
         style={
           [
             {},
@@ -1681,7 +1681,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-40"
+        id="progress-linear-44"
         style={
           [
             {},
@@ -1851,7 +1851,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-15"
+        id="progress-linear-17"
         style={
           [
             {},
@@ -2021,7 +2021,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-42"
+        id="progress-linear-46"
         style={
           [
             {},
@@ -2191,7 +2191,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-17"
+        id="progress-linear-19"
         style={
           [
             {},
@@ -2361,7 +2361,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-44"
+        id="progress-linear-48"
         style={
           [
             {},
@@ -2531,7 +2531,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-19"
+        id="progress-linear-21"
         style={
           [
             {},
@@ -2701,7 +2701,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-46"
+        id="progress-linear-50"
         style={
           [
             {},
@@ -2871,7 +2871,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-21"
+        id="progress-linear-23"
         style={
           [
             {},
@@ -3041,7 +3041,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-linear-48"
+        id="progress-linear-52"
         style={
           [
             {},
@@ -3451,7 +3451,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
         }
         accessible={true}
         data-blade-component="base-box"
-        id="undefined-linear-6"
+        id="undefined-linear-8"
         style={
           [
             {},
@@ -3656,7 +3656,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
         }
         accessible={true}
         data-blade-component="base-box"
-        id="undefined-linear-4"
+        id="undefined-linear-6"
         style={
           [
             {},
@@ -3780,7 +3780,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="meter-linear-11"
+        id="meter-linear-13"
         style={
           [
             {},
@@ -3889,7 +3889,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="meter-circular-38"
+        id="meter-circular-42"
         style={
           [
             {},
@@ -4100,23 +4100,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4140,14 +4139,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4157,8 +4157,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4167,7 +4167,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4217,6 +4216,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -4228,8 +4228,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -4387,6 +4387,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       >
         <View
           backgroundColor="hsla(206, 10%, 29%, 0.09)"
+          borderRadius="xsmall"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -4396,6 +4397,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             [
               {
                 "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                "borderRadius": 4,
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -4470,23 +4472,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4510,14 +4511,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4527,8 +4529,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4537,7 +4539,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4587,6 +4588,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -4598,8 +4600,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -4757,6 +4759,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       >
         <View
           backgroundColor="hsla(206, 10%, 29%, 0.09)"
+          borderRadius="xsmall"
           className="__blade-progress-bar-track"
           data-blade-component="base-box"
           height="2px"
@@ -4766,6 +4769,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             [
               {
                 "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                "borderRadius": 4,
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -4840,23 +4844,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4880,14 +4883,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4897,8 +4901,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4907,7 +4911,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4957,6 +4960,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -4968,8 +4972,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -5269,23 +5273,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5309,14 +5312,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -5326,8 +5330,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -5336,7 +5340,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -5386,6 +5389,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -5397,8 +5401,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,

@@ -63,23 +63,22 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         }
         accessible={true}
         alignSelf="flex-start"
-        borderRadius="12px"
-        borderWidth="0px"
+        borderRadius="8px"
         buttonPaddingBottom="0px"
-        buttonPaddingLeft="20px"
-        buttonPaddingRight="20px"
+        buttonPaddingLeft="12px"
+        buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-        defaultBorderColor="hsla(218, 89%, 51%, 1)"
+        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-        focusBorderColor="hsla(218, 87%, 43%, 1)"
+        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
         hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-        hoverBorderColor="hsla(218, 87%, 43%, 1)"
+        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
         isLoading={false}
@@ -103,14 +102,15 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         onTouchEnd={[Function]}
         onTouchStart={[Function]}
         role="button"
+        size="medium"
         style={
           [
             {
               "alignItems": "center",
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(218, 89%, 51%, 1)",
-              "borderColor": "hsla(218, 89%, 51%, 1)",
-              "borderRadius": 12,
+              "borderColor": "black",
+              "borderRadius": 8,
               "borderStyle": "solid",
               "borderWidth": 0,
               "cursor": "pointer",
@@ -120,8 +120,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
               "minHeight": 36,
               "overflow": "hidden",
               "paddingBottom": 0,
-              "paddingLeft": 20,
-              "paddingRight": 20,
+              "paddingLeft": 12,
+              "paddingRight": 12,
               "paddingTop": 0,
               "textDecorationColor": "black",
               "textDecorationLine": "none",
@@ -130,7 +130,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
             },
             {
               "backgroundColor": "hsla(218, 89%, 51%, 1)",
-              "borderColor": "hsla(218, 89%, 51%, 1)",
             },
           ]
         }
@@ -180,6 +179,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
               fontSize={100}
               fontWeight="medium"
               lineHeight={100}
+              marginX="spacing.2"
               style={
                 [
                   {
@@ -191,8 +191,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
+                    "marginLeft": 4,
+                    "marginRight": 4,
                     "marginTop": 0,
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -250,7 +250,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 [
                   {
                     "marginBottom": 0,
-                    "marginTop": 16,
+                    "marginTop": 12,
                   },
                 ]
               }
@@ -523,7 +523,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       }
     >
       <View
-        accessibilityControls="collapsible-body-1"
+        accessibilityControls="collapsible-body-3"
         accessibilityRole="button"
         accessibilityState={
           {
@@ -720,7 +720,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         accessibilityElementsHidden={true}
         accessibilityRole="summary"
         data-blade-component="collapsible-body"
-        id="collapsible-body-1"
+        id="collapsible-body-3"
         importantForAccessibility="no-hide-descendants"
         style={
           [
