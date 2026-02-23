@@ -107,12 +107,12 @@ const avatarTopAddonOffsets = {
       top: '-2px',
     },
     large: {
-      right: '-3px',
-      top: '-3px',
+      right: '-2px',
+      top: '-2px',
     },
     xlarge: {
-      right: '-4px',
-      top: '-4px',
+      right: '-2px',
+      top: '-2px',
     },
   },
 } as const;
