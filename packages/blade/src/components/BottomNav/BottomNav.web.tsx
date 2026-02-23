@@ -26,6 +26,10 @@ const StyledBottomNav = styled(BaseBox)(() => {
   };
 });
 
+const StyledBottomNav = styled(BaseBox)((props) => ({
+  boxShadow: `0px -8px 24px 0px ${props.theme.colors.surface.border.gray.muted}`,
+}));
+
 /**
  * ### BottomNav component
  *
