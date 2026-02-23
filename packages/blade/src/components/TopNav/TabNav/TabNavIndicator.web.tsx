@@ -33,7 +33,7 @@ const GLOW_HEIGHT = size[56];
 
 const buildGlowMask = (width: number, height: number = GLOW_HEIGHT): string => {
   const cx = width / 2;
-  const rx = (width * 55.045703124999996) / 157.2734375;
+  const rx = width * 0.37;
   return `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}'%3E%3Cdefs%3E%3Cfilter id='b' filterUnits='userSpaceOnUse' x='0' y='0' width='${width}' height='${height}'%3E%3CfeGaussianBlur stdDeviation='40'/%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='${cx}' cy='${height}' rx='${rx}' ry='60' fill='black' filter='url(%23b)'/%3E%3C/svg%3E")`;
 };
 

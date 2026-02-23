@@ -41,21 +41,23 @@ const TopNavOverlayThemeOverride = ({
   const topNavContext = useTopNavContext();
   const { platform } = useTheme();
 
+  const isDark = shouldOverrideTheme ? topNavContext?.colorScheme === 'dark' : true;
+  const overrideTheme: Theme = React.useMemo(
+    () => ({
+      ...bladeTheme,
+      colors: isDark ? bladeTheme.colors.onDark : bladeTheme.colors.onLight,
+      elevation: isDark ? bladeTheme.elevation.onDark : bladeTheme.elevation.onLight,
+      typography: bladeTheme.typography[platform],
+    }),
+    [isDark, platform],
+  );
+
   if (!topNavContext) {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return <>{children}</>;
   }
 
   if (shouldOverrideTheme !== undefined) {
-    const colorScheme = shouldOverrideTheme ? topNavContext.colorScheme : 'dark';
-    const isDark = colorScheme === 'dark';
-    const overrideTheme: Theme = {
-      ...bladeTheme,
-      colors: isDark ? bladeTheme.colors.onDark : bladeTheme.colors.onLight,
-      elevation: isDark ? bladeTheme.elevation.onDark : bladeTheme.elevation.onLight,
-      typography: bladeTheme.typography[platform],
-    };
-
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const noop = (): void => {};
 
@@ -63,7 +65,7 @@ const TopNavOverlayThemeOverride = ({
       <ThemeContext.Provider
         value={{
           theme: overrideTheme,
-          colorScheme,
+          colorScheme: shouldOverrideTheme ? topNavContext.colorScheme : 'dark',
           setColorScheme: noop,
           platform,
         }}

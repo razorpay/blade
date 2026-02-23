@@ -21,7 +21,7 @@ import { RayIcon } from '~components/Icons';
 const isIconObjectProp = (
   icon: TabNavIconProp,
 ): icon is { default: IconComponent; selected: IconComponent } => {
-  return typeof icon === 'object' && 'default' in icon;
+  return typeof icon === 'object' && icon !== null && 'default' in icon;
 };
 
 const isRayIcon = (icon?: TabNavIconProp): boolean => {
