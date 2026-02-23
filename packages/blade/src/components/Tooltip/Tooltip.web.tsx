@@ -21,8 +21,8 @@ import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { TooltipContext } from './TooltipContext';
 import { componentIds } from './componentIds';
-import { TooltipArrow } from './TooltipArrow.web';
 import { useTheme } from '~components/BladeProvider';
+import { PopupArrow } from '~components/PopupArrow';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
@@ -119,11 +119,14 @@ const _Tooltip = ({
               title={title}
               style={styles}
               arrow={
-                <TooltipArrow
+                <PopupArrow
                   ref={arrowRef}
                   context={context}
+                  width={ARROW_WIDTH}
+                  height={ARROW_HEIGHT}
                   fillColor={theme.colors.popup.background.gray.intense}
                   strokeColor={theme.colors.popup.border.gray.intense}
+                  strokeWidth={theme.border.width.thin}
                 />
               }
             >
