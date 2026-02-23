@@ -21,7 +21,7 @@ import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { TooltipContext } from './TooltipContext';
 import { componentIds } from './componentIds';
-import { PopupArrow } from '~components/PopupArrow';
+import { PopupArrow } from '~components/PopupArrow/PopupArrow.web';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -44,10 +44,11 @@ const _Tooltip = ({
   zIndex = componentZIndices.tooltip,
   ...rest
 }: TooltipProps): React.ReactElement => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const id = useId();
   const [isOpen, setIsOpen] = React.useState(false);
   const arrowRef = React.useRef<SVGSVGElement>(null);
+  const isDarkMode = colorScheme === 'dark';
 
   const GAP = theme.spacing[2];
   const [side] = getFloatingPlacementParts(placement);
@@ -118,6 +119,7 @@ const _Tooltip = ({
             <TooltipContent
               title={title}
               style={styles}
+              colorScheme={colorScheme}
               arrow={
                 <PopupArrow
                   ref={arrowRef}
@@ -125,8 +127,8 @@ const _Tooltip = ({
                   width={ARROW_WIDTH}
                   height={ARROW_HEIGHT}
                   fillColor={theme.colors.popup.background.gray.intense}
-                  strokeColor={theme.colors.popup.border.gray.intense}
-                  strokeWidth={theme.border.width.thin}
+                  strokeColor={isDarkMode ? theme.colors.popup.border.gray.intense : undefined}
+                  strokeWidth={isDarkMode ? 1 : 0}
                 />
               }
             >
