@@ -198,6 +198,13 @@ const chipMotionTokens: Record<'duration' | 'easing', DurationString | EasingStr
   easing: 'easing.standard',
 };
 
+const chipBorderRadiusTokens: Record<NonNullable<ChipGroupProps['size']>, 'small' | 'medium'> = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
+};
+
 export {
   chipColorTokens,
   chipHeightTokens,
@@ -208,4 +215,5 @@ export {
   chipIconSizes,
   chipMotionTokens,
   chipGroupLabelSizeTokens,
+  chipBorderRadiusTokens,
 };

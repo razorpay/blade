@@ -242,6 +242,7 @@ type AnimatedChipProps = {
   width?: BoxProps['width'];
   maxWidth?: BoxProps['maxWidth'];
   minWidth?: BoxProps['minWidth'];
+  size?: ChipGroupProps['size'];
 };
 
 type StyledChipWrapperProps = {

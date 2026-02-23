@@ -14,6 +14,9 @@ const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
     return {
       display: 'flex',
       borderColor: isChecked ? getIn(theme.colors, borderColor) : 'transparent',
+      // Concentric Corner rule: inner radius = outer radius - gap
+      // The gap is the outer border width
+      borderRadius: 'calc(var(--chip-outer-radius) - var(--chip-outer-border-width))',
 
       ...(!isDisabled && {
         '&:hover': {

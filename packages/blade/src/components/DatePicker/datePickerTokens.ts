@@ -1,14 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { makeBoxShadow } from '~utils/makeBoxShadow';
-import type { ShadowLayer } from '~utils/makeBoxShadow/makeBoxShadow';
+import { makePopupBoxShadow } from '~utils';
+import type { ShadowLayer } from '~utils/makePopupBoxShadow';
 import type { Theme } from '~components/BladeProvider';
 
 /**
  * DatePicker popup shadow layers as per Figma design
  *
- * Consists of 2 layers:
- * 1. Thick white inset ring: 0px 0px 0px 2px (for border effect)
- * 2. Offset white inset highlight: 0px 1.5px 0px 1px (for depth)
  */
 const getDatePickerPopupBoxShadow = (theme: Theme): string => {
   const shadowLayers: ShadowLayer[] = [
@@ -21,7 +18,7 @@ const getDatePickerPopupBoxShadow = (theme: Theme): string => {
       inset: true,
     },
   ];
-  return makeBoxShadow(shadowLayers);
+  return makePopupBoxShadow(shadowLayers);
 };
 
 export { getDatePickerPopupBoxShadow };

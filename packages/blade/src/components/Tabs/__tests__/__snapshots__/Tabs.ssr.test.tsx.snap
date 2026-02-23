@@ -343,7 +343,7 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
           class="c9 c10"
           data-blade-component="tab-indicator"
           pointer-events="none"
-          style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; transform: translate(0px, -1.5px);"
+          style="transition-property:transform, width, background-color;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);width:0px;transform:translate(0px, 0px)"
         />
       </div>
       <div

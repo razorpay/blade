@@ -21,94 +21,124 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 1`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts87-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts53-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -136,94 +166,124 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 2`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts92-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts56-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -251,94 +311,124 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 1`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts72-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts44-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -366,94 +456,124 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 2`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts77-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts47-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -481,94 +601,124 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 3`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts82-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts50-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -596,94 +746,124 @@ exports[`<ChartDonut /> should render ChartDonut with custom center coordinates 
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts97-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts59-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -711,86 +891,116 @@ exports[`<ChartDonut /> should render ChartDonut with custom dataKey and nameKey
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts67-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts41-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -818,94 +1028,124 @@ exports[`<ChartDonut /> should render ChartDonut with default props 1`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts62-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts38-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -933,86 +1173,116 @@ exports[`<DonutChart /> should handle data with missing properties 1`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts52-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts32-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -1040,94 +1310,124 @@ exports[`<DonutChart /> should handle data with null values 1`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts47-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts29-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -1155,52 +1455,81 @@ exports[`<DonutChart /> should handle empty data array 1`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts46-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts28-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
-              <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
               />
-              <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
-              />
-            </svg>
-          </div>
-        </div>
+            </clippath>
+          </defs>
+          <g
+            class="recharts-layer recharts-pie"
+            tabindex="0"
+          />
+          <g
+            class="recharts-layer recharts-pie"
+            tabindex="0"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -1228,113 +1557,144 @@ exports[`<DonutChart /> should render DonutChart with center text 1`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts6-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts4-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-              <text
-                class="recharts-text recharts-label"
-                fill="hsla(0, 0%, 2%, 1)"
-                font-family=""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial"
-                font-size="32"
-                font-weight="700"
-                letter-spacing="0"
-                offset="5"
-                text-anchor="middle"
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          >
+            <text
+              class="recharts-text recharts-label"
+              fill="hsla(0, 0%, 2%, 1)"
+              font-family=""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial"
+              font-size="32"
+              font-weight="700"
+              letter-spacing="0"
+              offset="5"
+              text-anchor="middle"
+              x="200"
+              y="200"
+            >
+              <tspan
+                dy="0.355em"
                 x="200"
-                y="200"
               >
-                <tspan
-                  dy="0.355em"
-                  x="200"
-                >
-                  Total: 1000
-                </tspan>
-              </text>
-            </svg>
-          </div>
-        </div>
+                Total: 1000
+              </tspan>
+            </text>
+          </g>
+        </svg>
       </div>
     </div>
   </div>
@@ -1362,94 +1722,124 @@ exports[`<DonutChart /> should render DonutChart with custom center position 1`]
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts41-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts25-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -1477,94 +1867,124 @@ exports[`<DonutChart /> should render DonutChart with custom colors 1`] = `
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts36-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts22-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -1592,94 +2012,124 @@ exports[`<DonutChart /> should render DonutChart with different chart types 1`] 
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts26-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts16-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -1707,94 +2157,124 @@ exports[`<DonutChart /> should render DonutChart with different chart types 2`] 
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts31-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts19-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -1822,94 +2302,124 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 1`]
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts11-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts7-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -1937,94 +2447,124 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 2`]
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts16-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts10-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -2052,94 +2592,124 @@ exports[`<DonutChart /> should render DonutChart with different radius sizes 3`]
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts21-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts13-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -2167,94 +2737,124 @@ exports[`<DonutChart /> should render basic DonutChart with single data series 1
       data-blade-component="donut-chart"
     >
       <div
-        class="recharts-responsive-container"
-        style="width: 400px; height: 400px; min-width: 0;"
+        class="recharts-wrapper"
+        height="400"
+        style="position: relative; cursor: default; width: 400px; height: 400px;"
+        width="400"
       >
-        <div
-          style="width: 0px; height: 0px; overflow: visible;"
+        <svg
+          class="recharts-surface"
+          cx="50%"
+          cy="50%"
+          height="400"
+          role="application"
+          style="width: 100%; height: 100%; display: block;"
+          tabindex="0"
+          viewBox="0 0 400 400"
+          width="400"
         >
-          <div
-            class="recharts-wrapper"
-            style="position: relative; cursor: default; width: 400px; height: 400px;"
-          >
-            <svg
-              class="recharts-surface"
-              cx="50%"
-              cy="50%"
-              height="400"
-              role="application"
-              style="width: 100%; height: 100%;"
-              tabindex="0"
-              viewBox="0 0 400 400"
-              width="400"
+          <title />
+          <desc />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <defs>
+            <clippath
+              id="recharts1-clip"
             >
-              <title />
-              <desc />
-              <defs>
-                <clippath
-                  id="recharts1-clip"
-                >
-                  <rect
-                    height="390"
-                    width="390"
-                    x="5"
-                    y="5"
-                  />
-                </clippath>
-              </defs>
+              <rect
+                height="390"
+                width="390"
+                x="5"
+                y="5"
+              />
+            </clippath>
+          </defs>
+          <g
+            tabindex="-1"
+          >
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
+            </g>
+            <g
+              class="recharts-layer recharts-pie"
+              tabindex="0"
+            >
               <g
-                class="recharts-layer recharts-pie"
-                tabindex="0"
+                class="recharts-layer"
               >
                 <g
-                  class="recharts-layer"
-                >
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                  <g
-                    class="recharts-layer recharts-pie-sector"
-                    tabindex="-1"
-                  />
-                </g>
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
+                <g
+                  class="recharts-layer recharts-pie-sector"
+                  tabindex="-1"
+                />
               </g>
-            </svg>
-          </div>
-        </div>
+            </g>
+          </g>
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+          <g
+            tabindex="-1"
+          />
+        </svg>
       </div>
     </div>
   </div>

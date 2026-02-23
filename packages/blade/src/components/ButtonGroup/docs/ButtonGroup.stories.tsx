@@ -7,10 +7,19 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { RefreshIcon, ShareIcon, DownloadIcon, ChevronDownIcon, PlusIcon } from '~components/Icons';
+import {
+  RefreshIcon,
+  ShareIcon,
+  DownloadIcon,
+  ChevronDownIcon,
+  PlusIcon,
+  TrashIcon,
+} from '~components/Icons';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Tooltip } from '~components/Tooltip';
+import { Popover } from '~components/Popover';
+import { Text } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
   return (
@@ -178,3 +187,376 @@ const ButtonGroupIconOnlyTemplate: StoryFn<typeof ButtonGroupComponent> = (args)
 
 export const IconsOnly = ButtonGroupIconOnlyTemplate.bind({});
 IconsOnly.storyName = 'Icons Only';
+
+const ShowcaseTemplate: StoryFn<typeof ButtonGroupComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Primary
+            </Text>
+            <ButtonGroupComponent variant="primary">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+              <Button icon={DownloadIcon}>Download</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Secondary
+            </Text>
+            <ButtonGroupComponent variant="secondary">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+              <Button icon={DownloadIcon}>Download</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Tertiary
+            </Text>
+            <ButtonGroupComponent variant="tertiary">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+              <Button icon={DownloadIcon}>Download</Button>
+            </ButtonGroupComponent>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap="spacing.5"
+          flexWrap="wrap"
+          alignItems="flex-end"
+        >
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              XSmall
+            </Text>
+            <ButtonGroupComponent size="xsmall">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Small
+            </Text>
+            <ButtonGroupComponent size="small">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Medium
+            </Text>
+            <ButtonGroupComponent size="medium">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Large
+            </Text>
+            <ButtonGroupComponent size="large">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+            </ButtonGroupComponent>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Colors */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Colors
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Primary Color
+            </Text>
+            <ButtonGroupComponent color="primary">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+              <Button icon={DownloadIcon}>Download</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Positive Color
+            </Text>
+            <ButtonGroupComponent color="positive">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+              <Button icon={DownloadIcon}>Download</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Negative Color
+            </Text>
+            <ButtonGroupComponent color="negative">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+              <Button icon={DownloadIcon}>Download</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box
+            padding="spacing.4"
+            backgroundColor="surface.background.primary.intense"
+            borderRadius="medium"
+          >
+            <Text size="small" marginBottom="spacing.2" color="surface.text.staticWhite.normal">
+              White Color (on dark background)
+            </Text>
+            <ButtonGroupComponent color="white">
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+              <Button icon={DownloadIcon}>Download</Button>
+            </ButtonGroupComponent>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Disabled State */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Disabled State
+        </Text>
+        <Box display="flex" flexDirection="row" gap="spacing.5" flexWrap="wrap">
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Primary Disabled
+            </Text>
+            <ButtonGroupComponent variant="primary" isDisabled>
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={TrashIcon}>Delete</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Secondary Disabled
+            </Text>
+            <ButtonGroupComponent variant="secondary" isDisabled>
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={TrashIcon}>Delete</Button>
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Tertiary Disabled
+            </Text>
+            <ButtonGroupComponent variant="tertiary" isDisabled>
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={TrashIcon}>Delete</Button>
+            </ButtonGroupComponent>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Icon Only */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Icon Only
+        </Text>
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap="spacing.5"
+          flexWrap="wrap"
+          alignItems="flex-end"
+        >
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              XSmall
+            </Text>
+            <ButtonGroupComponent size="xsmall">
+              <Button icon={RefreshIcon} />
+              <Button icon={ShareIcon} />
+              <Button icon={DownloadIcon} />
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Small
+            </Text>
+            <ButtonGroupComponent size="small">
+              <Button icon={RefreshIcon} />
+              <Button icon={ShareIcon} />
+              <Button icon={DownloadIcon} />
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Medium
+            </Text>
+            <ButtonGroupComponent size="medium">
+              <Button icon={RefreshIcon} />
+              <Button icon={ShareIcon} />
+              <Button icon={DownloadIcon} />
+            </ButtonGroupComponent>
+          </Box>
+          <Box>
+            <Text size="small" marginBottom="spacing.2">
+              Large
+            </Text>
+            <ButtonGroupComponent size="large">
+              <Button icon={RefreshIcon} />
+              <Button icon={ShareIcon} />
+              <Button icon={DownloadIcon} />
+            </ButtonGroupComponent>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Full Width */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Full Width
+        </Text>
+        <ButtonGroupComponent isFullWidth>
+          <Button icon={RefreshIcon}>Sync</Button>
+          <Button icon={ShareIcon}>Share</Button>
+          <Button icon={DownloadIcon}>Download</Button>
+        </ButtonGroupComponent>
+      </Box>
+
+      {/* With Tooltip */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Tooltip
+        </Text>
+        <ButtonGroupComponent>
+          <Tooltip content="Sync your data">
+            <Button icon={RefreshIcon}>Sync</Button>
+          </Tooltip>
+          <Tooltip content="Share with others">
+            <Button icon={ShareIcon}>Share</Button>
+          </Tooltip>
+          <Tooltip content="Download file">
+            <Button icon={DownloadIcon}>Download</Button>
+          </Tooltip>
+        </ButtonGroupComponent>
+      </Box>
+
+      {/* With Dropdown */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Dropdown (Split Button)
+        </Text>
+        <ButtonGroupComponent>
+          <Tooltip content="Create a new payout">
+            <Button icon={PlusIcon}>Payout</Button>
+          </Tooltip>
+          <Dropdown>
+            <DropdownButton icon={ChevronDownIcon} />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bulk Payout" value="bulk-payout" />
+                <ActionListItem title="Upload Invoice" value="upload-invoice" />
+                <ActionListItem title="Add Contact" value="add-contact" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </ButtonGroupComponent>
+      </Box>
+
+      {/* With Popover */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Popover
+        </Text>
+        <ButtonGroupComponent>
+          <Popover
+            title="Sync Data"
+            content={<Text>Are you sure you want to sync all data?</Text>}
+            footer={
+              <Box display="flex" gap="spacing.3" justifyContent="flex-end">
+                <Button variant="secondary" size="xsmall">
+                  Cancel
+                </Button>
+                <Button size="xsmall">Confirm</Button>
+              </Box>
+            }
+          >
+            <Button icon={RefreshIcon}>Sync</Button>
+          </Popover>
+          <Button icon={ShareIcon}>Share</Button>
+          <Button icon={DownloadIcon}>Download</Button>
+        </ButtonGroupComponent>
+      </Box>
+    </Box>
+  );
+};
+
+export const Showcase = ShowcaseTemplate.bind({});
+Showcase.storyName = 'Showcase';
+Showcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all ButtonGroup variants including variants, sizes, colors, disabled states, icon-only buttons, full width, and integration with Tooltip, Dropdown, and Popover.',
+    },
+  },
+};

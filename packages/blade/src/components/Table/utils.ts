@@ -32,12 +32,12 @@ const getTableActionsHoverStyles = ({
     },
     // Alpha layer 2 background - Stripped row background, Hover background in selected state, etc
     [`& .${classes.HOVER_ACTIONS_LAYER2}`]: {
-      backgroundColor: getIn(theme.colors, backgroundGradientColor ?? 'transparent'),
+      backgroundColor: getIn(theme.colors, hoverColor ?? 'transparent'),
       transition: rowBackgroundTransition,
     },
     // Alpha layer 3 background - Hover, selection, active background
     [`& .${classes.HOVER_ACTIONS_LAYER3}`]: {
-      backgroundColor: getIn(theme.colors, hoverColor),
+      background: `linear-gradient(90deg, transparent 0%, ${getIn(theme.colors, hoverColor)} 10.08%, ${getIn(theme.colors, hoverColor)} 100%)`,
       transition: rowBackgroundTransition,
     },
   };

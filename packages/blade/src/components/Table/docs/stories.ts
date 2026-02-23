@@ -562,7 +562,7 @@ function App() {
             <TableToolbarActions>
               <Button
                 variant="secondary"
-                marginRight="spacing.2"
+                marginRight="spacing.3"
                 isFullWidth={onMobile}
               >
                 Export
@@ -689,7 +689,7 @@ function App() {
             <TableToolbarActions>
               <Button
                 variant="secondary"
-                marginRight="spacing.2"
+                marginRight="spacing.3"
                 isFullWidth={onMobile}
               >
                 Export
@@ -1065,7 +1065,7 @@ function App() {
             <TableToolbarActions>
               <Button
                 variant="secondary"
-                marginRight="spacing.2"
+                marginRight="spacing.3"
                 isFullWidth={onMobile}
               >
                 Export
@@ -1204,7 +1204,7 @@ function App() {
             <TableToolbarActions>
               <Button
                 variant="secondary"
-                marginRight="spacing.2"
+                marginRight="spacing.3"
                 isFullWidth={onMobile}
               >
                 Export
@@ -1464,7 +1464,7 @@ function App() {
               <TableToolbarActions>
                 <Button
                   variant="secondary"
-                  marginRight="spacing.2"
+                  marginRight="spacing.3"
                   isFullWidth={onMobile}
                 >
                   Export
@@ -1592,7 +1592,7 @@ function App() {
             <TableToolbarActions>
               <Button
                 variant="secondary"
-                marginRight="spacing.2"
+                marginRight="spacing.3"
                 isFullWidth={onMobile}
               >
                 Export

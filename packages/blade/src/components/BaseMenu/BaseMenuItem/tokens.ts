@@ -20,10 +20,6 @@ const getItemPadding = (
   };
 };
 
-const getItemMargin = (theme: Theme): number => {
-  return theme.spacing[1];
-};
-
 const getActionListItemHeight = (
   theme: Theme,
 ): {
@@ -33,10 +29,10 @@ const getActionListItemHeight = (
   return {
     itemHeightMobile:
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-      itemFirstRowHeight + getItemPadding(theme).itemPaddingMobile * 2 + getItemMargin(theme) * 2,
+      itemFirstRowHeight + getItemPadding(theme).itemPaddingMobile * 2,
     itemHeightDesktop:
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-      itemFirstRowHeight + getItemPadding(theme).itemPaddingDesktop * 2 + getItemMargin(theme) * 2,
+      itemFirstRowHeight + getItemPadding(theme).itemPaddingDesktop * 2,
   };
 };
 
@@ -45,6 +41,5 @@ export {
   actionListDividerHeight,
   itemFirstRowHeight,
   getItemPadding,
-  getItemMargin,
   getActionListItemHeight,
 };

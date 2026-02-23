@@ -99,7 +99,7 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     backgroundColor: props.isHighlighted
       ? props.theme.colors.feedback.background.neutral.subtle
       : undefined,
-    borderRadius: props.theme.border.radius.medium,
+    borderRadius: props.theme.border.radius.xsmall,
     display: isPlatformWeb ? 'inline-block' : 'flex',
     alignSelf: isPlatformWeb ? undefined : 'center',
     verticalAlign: 'middle',

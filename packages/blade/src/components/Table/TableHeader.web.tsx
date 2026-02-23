@@ -49,8 +49,8 @@ const SortIcon = ({
   isSortReversed: boolean;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const defaultColor = getIn(theme.colors, 'interactive.icon.gray.muted');
-  const activeColor = getIn(theme.colors, 'interactive.icon.primary.subtle');
+  const defaultColor = getIn(theme.colors, 'interactive.icon.gray.disabled');
+  const activeColor = getIn(theme.colors, 'interactive.icon.gray.muted');
   const upArrowColor = isSorted && isSortReversed ? activeColor : defaultColor;
   const downArrowColor = isSorted && !isSortReversed ? activeColor : defaultColor;
   return (
@@ -188,7 +188,7 @@ const _TableHeaderCell = ({
     >
       <BaseBox display="flex" flexGrow={1} justifyContent={textAlign}>
         {isChildrenString ? (
-          <Text size="small" weight="medium" color="surface.text.gray.subtle">
+          <Text size="small" weight="medium" color="surface.text.gray.muted">
             {children}
           </Text>
         ) : (

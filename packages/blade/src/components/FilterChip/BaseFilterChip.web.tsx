@@ -1,6 +1,12 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
+import { makeBorderSize, makeSpace } from '~utils';
+import type { Theme } from '~components/BladeProvider';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAccessible } from '~utils/makeAccessible';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { FILTER_CHIP_HEIGHT } from './tokens';
 import type { BaseFilterChipProps } from './types';
 import { Box } from '~components/Box';
@@ -9,15 +15,9 @@ import { Counter } from '~components/Counter';
 import { Divider } from '~components/Divider';
 import { ChevronDownIcon, CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
-import { makeBorderSize, makeSpace } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
-import { makeAccessible } from '~utils/makeAccessible';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getInteractiveFilterItemStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
@@ -41,16 +41,16 @@ const getInteractiveFilterItemStyles = ({ theme }: { theme: Theme }): CSSObject 
 };
 
 const StyledFilterChip = styled(BaseBox)<{ $isSelected?: boolean; $isDisabled?: boolean }>(
-  ({ theme, $isDisabled }) => {
+  ({ theme, $isDisabled, $isSelected }) => {
     return {
-      borderWidth: makeBorderSize(theme.border.width.thinner),
-      borderColor: theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'highlighted'],
+      borderWidth: makeBorderSize(theme.border.width.thin),
+      borderColor: theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'faded'],
       height: FILTER_CHIP_HEIGHT,
-      borderRadius: theme.border.radius.max,
+      borderRadius: theme.border.radius.small,
       display: 'flex',
-      borderStyle: 'solid',
+      borderStyle: $isSelected ? 'solid' : 'dashed',
       backgroundColor: theme.colors.surface.background.gray.intense,
-      color: theme.colors.interactive.text.gray[$isDisabled ? 'disabled' : 'normal'],
+      color: theme.colors.interactive.text.gray[$isDisabled ? 'disabled' : 'muted'],
       width: 'fit-content',
     };
   },
@@ -60,9 +60,9 @@ const StyledFilterTrigger = styled.button<{ $isSelected?: boolean }>(({ theme, $
   const { spacing } = theme;
   return {
     backgroundColor: theme.colors.transparent,
-    borderRadius: $isSelected ? theme.border.radius.none : theme.border.radius.max,
-    borderTopLeftRadius: theme.border.radius.max,
-    borderBottomLeftRadius: theme.border.radius.max,
+    borderRadius: $isSelected ? theme.border.radius.none : theme.border.radius.small,
+    borderTopLeftRadius: theme.border.radius.small,
+    borderBottomLeftRadius: theme.border.radius.small,
     paddingLeft: makeSpace(spacing[4]),
     paddingRight: $isSelected ? makeSpace(spacing[2]) : makeSpace(spacing[3]),
     gap: makeSpace(spacing[2]),
@@ -73,8 +73,8 @@ const StyledFilterTrigger = styled.button<{ $isSelected?: boolean }>(({ theme, $
 const StyledFilterCloseButton = styled.button(({ theme }) => {
   return {
     backgroundColor: theme.colors.transparent,
-    borderTopRightRadius: theme.border.radius.max,
-    borderBottomRightRadius: theme.border.radius.max,
+    borderTopRightRadius: theme.border.radius.small,
+    borderBottomRightRadius: theme.border.radius.small,
     paddingLeft: makeSpace(theme.spacing[2]),
     paddingRight: makeSpace(theme.spacing[3]),
     justifyContent: 'center',
@@ -90,7 +90,7 @@ const renderValue = (
   if (selectionType === 'multiple' && Array.isArray(value)) {
     return (
       <Box display="flex" alignItems="center">
-        <Counter value={value.length} color={isDisabled ? 'neutral' : 'primary'} size="small" />
+        <Counter value={value.length} color="neutral" size="small" />
       </Box>
     );
   }
@@ -98,9 +98,9 @@ const renderValue = (
   return (
     <Text
       as="span"
-      size="xsmall"
-      weight="semibold"
-      color={isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.primary.normal'}
+      size="small"
+      weight="medium"
+      color={isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.normal'}
     >
       {value}
     </Text>
@@ -151,9 +151,9 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
         {...makeAnalyticsAttribute(rest)}
         {...metaAttribute({ name: 'filter-chip-trigger', testID: rest.testID })}
       >
-        <Box display="flex" gap="spacing.2" whiteSpace="nowrap">
+        <Box display="flex" gap="spacing.2" whiteSpace="nowrap" alignItems="center">
           <Text
-            size="xsmall"
+            size="small"
             weight="medium"
             color="interactive.text.gray.subtle"
             truncateAfterLines={1}
