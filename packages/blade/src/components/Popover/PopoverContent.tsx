@@ -29,8 +29,8 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
         borderRadius="max"
         position="absolute"
         padding="spacing.2"
-        top="spacing.2"
-        right="spacing.2"
+        top="spacing.3"
+        right="spacing.3"
         zIndex={1}
       >
         <PopoverCloseButton />

@@ -61,11 +61,7 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
       borderWidth: makeBorderSize(props.theme.border.width.none),
       backgroundColor: props.theme.colors.transparent,
       transition: getNavItemTransition(props.theme),
-      '&[aria-current]': {
-        color: props.theme.colors.interactive.text.gray.subtle,
-        backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
-      },
-      '&[aria-current]:hover': {
+      '&[aria-current], &[aria-current]:hover': {
         color: props.theme.colors.interactive.text.gray.normal,
         backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
       },

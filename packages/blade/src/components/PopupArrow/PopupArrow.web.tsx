@@ -4,7 +4,7 @@ import type { PopupArrowProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 
 const PopupArrow = React.forwardRef<SVGSVGElement, PopupArrowProps>(
-  ({ context, width, height, fillColor, strokeColor }, arrowRef) => {
+  ({ context, width, height, fillColor, strokeColor, strokeWidth, style }, arrowRef) => {
     const { theme } = useTheme();
     return (
       <FloatingArrow
@@ -14,8 +14,9 @@ const PopupArrow = React.forwardRef<SVGSVGElement, PopupArrowProps>(
         height={height}
         fill={fillColor}
         stroke={strokeColor}
-        strokeWidth={strokeColor ? theme.border.width.thin : 0}
+        strokeWidth={strokeWidth ?? 0}
         tipRadius={theme.border.radius['2xsmall']}
+        style={{ ...style }}
       />
     );
   },
