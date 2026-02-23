@@ -131,13 +131,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       padding="spacing.5"
       zIndex={componentZIndices.previewPanel}
     >
-      <BaseBox
-        padding="spacing.2"
-        backgroundColor="surface.background.gray.intense"
-        borderRadius="medium"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
-      >
+      <BaseBox padding="spacing.2">
         {showZoomPercentage ? (
           <BaseBox display="flex" alignItems="center" gap="spacing.2">
             <Button
