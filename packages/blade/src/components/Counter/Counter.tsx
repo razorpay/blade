@@ -120,6 +120,7 @@ const _Counter = (
     <BaseBox
       ref={ref as never}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+      alignSelf="center"
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
