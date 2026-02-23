@@ -13,6 +13,10 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
+const StyledBottomNav = styled(BaseBox)((props) => ({
+  boxShadow: `0px -8px 24px 0px ${props.theme.colors.surface.border.gray.muted}`,
+}));
+
 /**
  * ### BottomNav component
  *
@@ -68,13 +72,12 @@ const _BottomNav = (
   }
 
   return (
-    <BaseBox
+    <StyledBottomNav
       ref={ref as never}
       role="navigation"
       position="fixed"
       bottom="spacing.0"
       left="spacing.0"
-      elevation="midRaised"
       width="100%"
       backgroundColor="surface.background.gray.intense"
       borderTopWidth="thin"
@@ -91,7 +94,7 @@ const _BottomNav = (
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
-    </BaseBox>
+    </StyledBottomNav>
   );
 };
 
