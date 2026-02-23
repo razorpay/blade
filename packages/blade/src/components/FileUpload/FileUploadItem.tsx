@@ -39,7 +39,6 @@ const FileUploadItem = memo(
         status={status ?? 'success'}
         borderRadius="medium"
         borderWidth="thin"
-        elevation="lowRaised"
       >
         <BaseBox width="100%" display="flex" flexDirection="column">
           <BaseBox
