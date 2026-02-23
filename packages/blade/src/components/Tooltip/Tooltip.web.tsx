@@ -87,10 +87,7 @@ const _Tooltip = ({
   useDelayGroup(context, { id });
   const { delay } = useDelayGroupContext();
   const hover = useHover(context, {
-    delay: {
-      open: typeof delay === 'number' ? delay : delay?.open || 0,
-      close: 60000, // 1 minute delay for debugging
-    },
+    delay,
     move: false,
   });
   const focus = useFocus(context);
