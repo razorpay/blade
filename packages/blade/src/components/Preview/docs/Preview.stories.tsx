@@ -340,18 +340,3 @@ const PDFRenderer: StoryFn<typeof Preview> = () => {
 export const PDFTemplate = PDFRenderer.bind({});
 PDFTemplate.storyName = 'With React PDF';
 
-const CustomFullScreenBackgroundColorTemplate: StoryFn<typeof Preview> = () => {
-  return (
-    <Preview fullScreenBackgroundColor="surface.background.sea.intense">
-      <PreviewHeader title="Custom Fullscreen Background Color" />
-      <PreviewBody>
-        <img width="100%" height="100%" src="https://picsum.photos/1920/1080" alt="randomImage" />
-      </PreviewBody>
-      <PreviewFooter showZoomPercentage={true} />
-    </Preview>
-  );
-};
-
-export const CustomFullScreenBackgroundColor = CustomFullScreenBackgroundColorTemplate.bind({});
-CustomFullScreenBackgroundColor.storyName = 'Custom Fullscreen Background Color';
-CustomFullScreenBackgroundColor.args = {};

@@ -213,15 +213,14 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
 
 const TransFormWrapperContainer = styled.div<{
   isFullScreen: boolean;
-  fullScreenBackgroundColor: NonNullable<PreviewProps['fullScreenBackgroundColor']>;
 }>`
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: ${({ isFullScreen, theme, fullScreenBackgroundColor }) =>
+  background-color: ${({ isFullScreen, theme }) =>
     isFullScreen
-      ? getIn(theme.colors, fullScreenBackgroundColor as DotNotationToken<Theme['colors']>)
+      ? getIn(theme.colors, 'surface.background.gray.intense' as DotNotationToken<Theme['colors']>)
       : 'transparent'};
 `;
 const Preview = ({
@@ -232,7 +231,6 @@ const Preview = ({
   isDragAndZoomDisabled = false,
   defaultZoom,
   onDragChange,
-  fullScreenBackgroundColor = 'surface.background.gray.moderate',
 }: PreviewProps): React.ReactElement => {
   const [controlledZoom, setControlledZoom] = useControllableState({
     onChange: onZoomChange,
@@ -322,11 +320,7 @@ const Preview = ({
         defaultZoom: defaultZoom ?? 1,
       }}
     >
-      <TransFormWrapperContainer
-        ref={containerRef}
-        isFullScreen={isFullScreen}
-        fullScreenBackgroundColor={fullScreenBackgroundColor}
-      >
+      <TransFormWrapperContainer ref={containerRef} isFullScreen={isFullScreen}>
         <TransformWrapper
           onTransformed={handleTransformed}
           minScale={0.1}
