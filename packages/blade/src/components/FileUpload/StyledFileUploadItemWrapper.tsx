@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import getIn from '~utils/lodashButBetter/get';
-import { castWebType, makeSize, useColorScheme } from '~utils';
+import { castWebType, makeSize, useTheme } from '~utils';
 import { colors as globalColors } from '~tokens/global';
 import type { StyledFileUploadItemWrapperProps } from './types';
 import {
@@ -13,7 +13,7 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 
 const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperProps>(
   ({ theme, status, size }) => {
-    const { colorScheme } = useColorScheme();
+    const { colorScheme } = useTheme();
     const boxShadowColor =
       colorScheme === 'light'
         ? globalColors.neutral.blueGrayLight.a906
