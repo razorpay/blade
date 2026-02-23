@@ -143,7 +143,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
               accessibilityLabel="Zoom In"
               isDisabled={zoom >= 8}
             />
-            <BaseBox width={makeSize(size[40])} textAlign="center">
+            <BaseBox width={makeSize(size[40])} textAlign={'center' as never}>
               <Text size="medium"> {Math.round(zoom * 100)}%</Text>
             </BaseBox>
             <Button

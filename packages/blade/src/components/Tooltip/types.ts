@@ -52,6 +52,7 @@ type TooltipContentWrapperProps = {
   styles: CSSProperties;
   side?: Side;
   isVisible?: boolean;
+  colorScheme?: ColorSchemeNames;
 } & BaseBoxProps;
 
 export type { TooltipProps, TooltipContentProps, TooltipContentWrapperProps };
