@@ -1,3 +1,6 @@
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationColorStringToken } from '~utils/types';
+
 type PreviewProps = {
   /**
    * The children of the Preview component.
@@ -7,6 +10,10 @@ type PreviewProps = {
    * The function to call when the full screen button is clicked.
    */
   onFullScreen?: () => void;
+  /**
+   * The background color of the preview when it is in fullscreen mode.
+   */
+  fullScreenBackgroundColor?: DotNotationColorStringToken<Theme['colors']>;
   /**
    * Whether the drag and zoom is disabled.
    */

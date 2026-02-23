@@ -25,6 +25,9 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 import { useControllableState } from '~utils/useControllable';
 import { componentZIndices } from '~utils/componentZIndices';
+import getIn from '~utils/lodashButBetter/get';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { Theme } from '~components/BladeProvider';
 
 const _PreviewHeader = ({
   title,
@@ -214,12 +217,18 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
   transition: cursor 0.1s ease;
 `;
 
-const TransFormWrapperContainer = styled.div`
+const TransFormWrapperContainer = styled.div<{
+  isFullScreen: boolean;
+  fullScreenBackgroundColor: NonNullable<PreviewProps['fullScreenBackgroundColor']>;
+}>`
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: transparent;
+  background-color: ${({ isFullScreen, theme, fullScreenBackgroundColor }) =>
+    isFullScreen
+      ? getIn(theme.colors, fullScreenBackgroundColor as DotNotationToken<Theme['colors']>)
+      : 'transparent'};
 `;
 const Preview = ({
   children,
@@ -229,6 +238,7 @@ const Preview = ({
   isDragAndZoomDisabled = false,
   defaultZoom,
   onDragChange,
+  fullScreenBackgroundColor = 'surface.background.gray.moderate',
 }: PreviewProps): React.ReactElement => {
   const [controlledZoom, setControlledZoom] = useControllableState({
     onChange: onZoomChange,
@@ -318,7 +328,11 @@ const Preview = ({
         defaultZoom: defaultZoom ?? 1,
       }}
     >
-      <TransFormWrapperContainer ref={containerRef}>
+      <TransFormWrapperContainer
+        ref={containerRef}
+        isFullScreen={isFullScreen}
+        fullScreenBackgroundColor={fullScreenBackgroundColor}
+      >
         <TransformWrapper
           onTransformed={handleTransformed}
           minScale={0.1}
