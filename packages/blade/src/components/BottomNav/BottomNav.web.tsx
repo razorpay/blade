@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { makeMotionTime, makeSpace, useColorScheme } from '~utils';
+import { makeMotionTime, makeSpace, useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -15,7 +15,8 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledBottomNav = styled(BaseBox)(() => {
-  const { colorScheme } = useColorScheme();
+  const { colorScheme } = useTheme();
+
   const boxShadowColor =
     colorScheme === 'light'
       ? globalColors.neutral.blueGrayLight.a912
