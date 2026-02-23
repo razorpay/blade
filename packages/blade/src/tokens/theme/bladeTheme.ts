@@ -927,7 +927,7 @@ const colors: ColorsWithModes = {
           highlighted: globalColors.neutral.blueGrayDark.a532,
           disabled: globalColors.neutral.blueGrayDark.a509,
           faded: globalColors.neutral.blueGrayDark.a509,
-          fadedHighlighted: globalColors.neutral.blueGrayDark.a512,
+          fadedHighlighted: globalColors.neutral.blueGrayDark.a518,
           ghost: globalColors.neutral.blueGrayDark.a1388,
         },
         primary: {

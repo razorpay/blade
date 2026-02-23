@@ -138,7 +138,7 @@ export const DescriptionOnly = AlertTemplate.bind({});
 DescriptionOnly.args = {
   description:
     'The payment was made 6 months ago, therefore you can’t issue refund to this merchant.',
-  color: 'notice',
+  color: 'information',
   actions: undefined,
   title: undefined,
 };
