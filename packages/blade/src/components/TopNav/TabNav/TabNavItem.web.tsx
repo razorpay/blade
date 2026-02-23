@@ -73,6 +73,12 @@ const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }
     '&:active': {
       opacity: 1,
     },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      zIndex: 1, // ensures it sits above the wrapper
+    },
   };
 });
 
@@ -147,22 +153,12 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     ? theme.colors.surface.icon.onSea.onSubtle
     : theme.colors.surface.background.primary.intense;
 
-  const handleWrapperClick = React.useCallback((e: React.MouseEvent) => {
-    const wrapper = bodyRef.current;
-    if (!wrapper) return;
-    const innerLink = wrapper.querySelector<HTMLElement>('a, button');
-    if (innerLink && !innerLink.contains(e.target as Node)) {
-      innerLink.click();
-    }
-  }, []);
-
   return (
     <StyledTabNavItemWrapper
       ref={bodyRef}
       isActive={isActive}
       data-active={isActive ? 'true' : 'false'}
       data-glow-color={glowColor}
-      onClick={handleWrapperClick}
       {...metaAttribute({ name: MetaConstants.TabNavItem })}
     >
       <StyledTabNavItem
