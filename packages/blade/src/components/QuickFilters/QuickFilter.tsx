@@ -47,7 +47,7 @@ const QuickFilterContent = ({
         )}
         <BaseBox display={'grid' as never}>
           {/* Invisible bold text to reserve space and prevent layout shift */}
-          <BaseBox gridArea={'1 / 1' as never} visibility={'hidden' as never} aria-hidden="true">
+          <BaseBox gridArea={'1 / 1' as never} visibility={'hidden' as never} aria-hidden={true}>
             <Text variant="body" size="medium" weight="semibold">
               {title}
             </Text>
