@@ -7,8 +7,8 @@ const getPopupShadows = (theme: Theme, colorScheme: ColorSchemeNames): SurfaceBo
   const boxShadow = {
     light: {
       elevation: `${theme.elevation.midRaised}`,
-      border: `inset 0px 0px 0px 1px ${theme.colors.interactive.border.gray.disabled}`,
-      top: `inset 0px 1px 0px 0px ${theme.colors.surface.background.gray.intense}`,
+      border: `inset 0px 0px 0px 1px ${theme.colors.popup.border.gray.subtle}`,
+      top: `inset 0px 1px 0px 0px ${theme.colors.popup.border.gray.moderate}`,
     },
     dark: {
       elevation: `${theme.elevation.midRaised}`,
