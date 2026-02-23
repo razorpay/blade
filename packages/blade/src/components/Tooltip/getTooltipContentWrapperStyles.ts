@@ -13,6 +13,9 @@ const getTooltipContentWrapperStyles = ({
   return {
     backgroundColor: theme.colors.popup.background.gray.intense,
     borderRadius: makeBorderSize(theme.border.radius.medium),
+    borderWidth: makeBorderSize(theme.border.width.thin),
+    borderColor: theme.colors.popup.border.gray.intense,
+    borderStyle: 'solid',
     boxShadow: isReactNative() ? undefined : castWebType(theme.elevation.lowRaised),
     backdropFilter: isReactNative() ? undefined : `blur(${theme.backdropBlur.high}px)`,
     ...styles,

@@ -21,6 +21,7 @@ import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { TooltipContext } from './TooltipContext';
 import { componentIds } from './componentIds';
+import { TooltipArrow } from './TooltipArrow.web';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -28,7 +29,6 @@ import { size } from '~tokens/global';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { mergeProps } from '~utils/mergeProps';
-import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -86,7 +86,10 @@ const _Tooltip = ({
   useDelayGroup(context, { id });
   const { delay } = useDelayGroupContext();
   const hover = useHover(context, {
-    delay,
+    delay: {
+      open: typeof delay === 'number' ? delay : delay?.open || 0,
+      close: 60000, // 1 minute delay for debugging
+    },
     move: false,
   });
   const focus = useFocus(context);
@@ -116,12 +119,11 @@ const _Tooltip = ({
               title={title}
               style={styles}
               arrow={
-                <PopupArrow
+                <TooltipArrow
                   ref={arrowRef}
                   context={context}
-                  width={ARROW_WIDTH}
-                  height={ARROW_HEIGHT}
                   fillColor={theme.colors.popup.background.gray.intense}
+                  strokeColor={theme.colors.popup.border.gray.intense}
                 />
               }
             >
