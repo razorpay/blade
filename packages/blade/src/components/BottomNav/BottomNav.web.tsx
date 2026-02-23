@@ -1,21 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import { makeMotionTime, makeSpace, useColorScheme } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { colors as globalColors } from '~tokens/global';
 import type { BottomNavItemProps, BottomNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
-import { makeMotionTime, makeSpace } from '~utils';
 import { componentZIndices } from '~utils/componentZIndices';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import { throwBladeError } from '~utils/logger';
-import { makeAccessible } from '~utils/makeAccessible';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const StyledBottomNav = styled(BaseBox)((props) => ({
-  boxShadow: `0px -8px 24px 0px ${props.theme.colors.surface.border.gray.muted}`,
-}));
+const StyledBottomNav = styled(BaseBox)(() => {
+  const { colorScheme } = useColorScheme();
+  const boxShadowColor =
+    colorScheme === 'light'
+      ? globalColors.neutral.blueGrayLight.a912
+      : globalColors.neutral.black[100];
+  return {
+    boxShadow: `0px -8px 24px 0px ${boxShadowColor}`,
+  };
+});
 
 /**
  * ### BottomNav component
