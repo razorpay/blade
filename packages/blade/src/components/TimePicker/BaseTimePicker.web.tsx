@@ -222,7 +222,7 @@ const _BaseTimePicker = ({
               {...makeAccessible({ labelledBy: titleId })}
             >
               <BaseBox
-                borderRadius="large"
+                borderRadius="medium"
                 overflow="hidden"
                 border="none"
                 style={{
