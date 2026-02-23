@@ -12,13 +12,12 @@ import type { Theme } from '~components/BladeProvider';
  */
 const getPopoverBoxShadow = (theme: Theme): string => {
   const shadowLayers: ShadowLayer[] = [
-    // Layer 1: Top highlight for depth
     {
       x: 0,
-      y: -1.5,
+      y: 0,
       blur: 0,
       spread: 1,
-      color: theme.colors.surface.background.gray.intense,
+      color: theme.colors.popup.border.gray.subtle,
       inset: true,
     },
   ];
