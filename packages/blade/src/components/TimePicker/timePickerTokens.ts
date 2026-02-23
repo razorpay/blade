@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { makeBoxShadow } from '~utils/makeBoxShadow';
-import type { ShadowLayer } from '~utils/makeBoxShadow/makeBoxShadow';
+import { makePopupBoxShadow } from '~utils';
+import type { ShadowLayer } from '~utils/makePopupBoxShadow';
 import type { Theme } from '~components/BladeProvider';
 
 /**
@@ -19,7 +19,7 @@ const getTimePickerPopupBoxShadow = (theme: Theme): string => {
       inset: true,
     },
   ];
-  return makeBoxShadow(shadowLayers);
+  return makePopupBoxShadow(shadowLayers);
 };
 
 export { getTimePickerPopupBoxShadow };
