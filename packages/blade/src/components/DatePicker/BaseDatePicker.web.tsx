@@ -592,9 +592,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                         overflow="hidden"
                         minWidth="320px"
                         border="none"
+                        backgroundColor="popup.background.gray.moderate"
                         style={{
                           ...animationStyles,
-                          background: theme.colors.popup.background.gray.moderate,
                           boxShadow: `${theme.elevation.midRaised}, ${getDatePickerPopupBoxShadow(
                             theme,
                           )}, inset 0 1px 0 0 ${theme.colors.popup.border.gray.subtle}`,
