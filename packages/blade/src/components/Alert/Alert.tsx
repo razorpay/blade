@@ -10,11 +10,12 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import { castNativeType, castWebType, useBreakpoint, getPlatformType } from '~utils';
+import { castNativeType, castWebType, useBreakpoint, getPlatformType, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
@@ -154,8 +155,10 @@ const _Alert = (
   const isDesktop = matchedDeviceType === 'desktop';
   const isMobile = !isDesktop;
 
+  const isDescriptionOnly = !title && !actions?.primary && !actions?.secondary;
+
   const Icon = icon ?? intentIconMap[color];
-  let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
+  let iconOffset: DotNotationSpacingStringToken | SpacingValueType = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
   if (isReactNative) {
@@ -180,6 +183,11 @@ const _Alert = (
   let alignment: 'center' | 'flex-start' = 'flex-start';
   if (!isFullWidth) alignment = 'flex-start';
   if (shouldCenterAlign) alignment = 'center';
+
+  if (isDescriptionOnly) {
+    alignment = 'center';
+    iconOffset = makeSize(1);
+  }
 
   const leadingIcon = (
     <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
@@ -298,6 +306,7 @@ const _Alert = (
         emphasis={emphasis === 'intense' ? 'subtle' : 'intense'}
         size="medium"
         icon={CloseIcon}
+        marginTop={isDescriptionOnly ? makeSize(2) : 'spacing.0'}
       />
     </CloseButtonWrapper>
   ) : null;
@@ -331,7 +340,7 @@ const _Alert = (
         {leadingIcon}
         <BaseBox
           flex={1}
-          paddingLeft={isFullWidth ? 'spacing.3' : 'spacing.3'}
+          paddingLeft="spacing.3"
           paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
         >
           {_title}
