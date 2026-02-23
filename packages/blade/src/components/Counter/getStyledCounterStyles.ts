@@ -9,11 +9,14 @@ const getStyledCounterStyles = ({
   theme,
   platform,
   backgroundColor,
+  size,
 }: StyledCounterProps): CSSObject => ({
   backgroundColor: getIn(theme.colors, backgroundColor),
   borderRadius: makeBorderSize(theme.border.radius.max),
   maxWidth: makeSize(maxWidth[platform]),
   display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   flexWrap: 'nowrap',
 });
 

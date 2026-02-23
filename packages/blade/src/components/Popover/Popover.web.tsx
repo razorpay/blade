@@ -69,7 +69,12 @@ const _Popover = ({
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
   });
 
-  const { refs, floatingStyles, context, placement: computedPlacement } = useFloating({
+  const {
+    refs,
+    floatingStyles,
+    context,
+    placement: computedPlacement,
+  } = useFloating({
     open: controllableIsOpen,
     onOpenChange: (isOpen) => controllableSetIsOpen(() => isOpen),
     placement,
@@ -160,6 +165,7 @@ const _Popover = ({
                 <BaseBox
                   ref={refs.setFloating}
                   style={floatingStyles}
+                  // TODO: Tokenize zIndex values
                   zIndex={zIndex}
                   {...getFloatingProps()}
                   {...metaAttribute({ name: MetaConstants.Popover })}
@@ -178,6 +184,9 @@ const _Popover = ({
                         width={ARROW_WIDTH}
                         height={ARROW_HEIGHT}
                         fillColor={theme.colors.popup.background.gray.moderate}
+                        strokeColor={theme.colors.popup.border.gray.moderate}
+                        strokeWidth={theme.border.width.thin}
+                        style={{ transform: 'translateY(-1px)' }}
                       />
                     }
                   >

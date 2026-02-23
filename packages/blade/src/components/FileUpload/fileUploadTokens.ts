@@ -1,7 +1,7 @@
+import { size } from '~tokens/global';
+import type { DurationString, EasingString } from '~tokens/global';
 import type { BladeFile, FileUploadItemBackgroundColors } from './types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
-import type { DurationString, EasingString } from '~tokens/global';
-import { size } from '~tokens/global';
 
 const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
   return {
@@ -38,7 +38,7 @@ const fileUploadColorTokens = {
     disabled: 'interactive.border.gray.disabled',
   },
   background: {
-    hover: 'interactive.background.gray.highlighted',
+    hover: 'interactive.background.gray.default',
     active: 'interactive.background.primary.faded',
   },
   icon: {
@@ -56,11 +56,11 @@ const fileUploadItemBackgroundColors: Record<
   Record<'default' | 'hover', FileUploadItemBackgroundColors>
 > = {
   success: {
-    default: 'interactive.background.gray.faded',
-    hover: 'interactive.background.gray.fadedHighlighted',
+    default: 'surface.background.gray.intense',
+    hover: 'surface.background.gray.intense',
   },
   error: {
-    default: 'feedback.background.negative.subtle',
+    default: 'interactive.background.negative.faded',
     hover: 'interactive.background.negative.fadedHighlighted',
   },
   uploading: {

@@ -339,3 +339,4 @@ const PDFRenderer: StoryFn<typeof Preview> = () => {
 };
 export const PDFTemplate = PDFRenderer.bind({});
 PDFTemplate.storyName = 'With React PDF';
+

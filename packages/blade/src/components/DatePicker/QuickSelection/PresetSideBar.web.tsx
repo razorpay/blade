@@ -45,11 +45,12 @@ const PresetSideBar = ({
 
   return (
     <BaseBox
-      padding="spacing.5"
+      paddingY="spacing.6"
+      paddingX="spacing.5"
       display="flex"
       flexDirection="column"
-      gap="spacing.2"
-      backgroundColor="surface.background.gray.moderate"
+      gap="spacing.1"
+      backgroundColor="interactive.background.gray.default"
       minWidth={makeSpace(size[160])}
       borderRightColor="surface.border.gray.muted"
       borderRightStyle="solid"
