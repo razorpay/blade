@@ -28,6 +28,8 @@ import { componentZIndices } from '~utils/componentZIndices';
 import getIn from '~utils/lodashButBetter/get';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
 
 const _PreviewHeader = ({
   title,
@@ -141,7 +143,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
               accessibilityLabel="Zoom In"
               isDisabled={zoom >= 8}
             />
-            <BaseBox width="40px" textAlign="center">
+            <BaseBox width={makeSize(size[40])} textAlign="center">
               <Text size="medium"> {Math.round(zoom * 100)}%</Text>
             </BaseBox>
             <Button
