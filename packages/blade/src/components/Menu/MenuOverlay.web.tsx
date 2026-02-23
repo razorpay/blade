@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { MenuOverlayProps } from './types';
-import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingY } from './tokens';
+import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingTop, overlayPaddingBottom } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { BladeElementRef } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { castWebType } from '~utils';
+import { getPopupBoxShadowString, useTheme } from '~utils';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const UnfocussableOverlay = styled(BaseBox)((_props) => {
   return {
@@ -16,15 +17,14 @@ const UnfocussableOverlay = styled(BaseBox)((_props) => {
   };
 });
 
-const StyledMenuOverlayContent = styled(BaseBox)(({ theme }) => {
-  const dropshadow = castWebType(theme.elevation.midRaised);
-  const innerShadow = `inset 0px -1.5px 0px 1px ${theme.colors.surface.background.gray.intense}`;
-
-  return {
-    backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
-    boxShadow: `${dropshadow}, ${innerShadow}`,
-  };
-});
+const StyledMenuOverlayContent = styled(BaseBox)<{ colorScheme: ColorSchemeNames }>(
+  ({ theme, colorScheme }) => {
+    return {
+      backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
+      boxShadow: getPopupBoxShadowString(theme, colorScheme),
+    };
+  },
+);
 
 const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayProps> = (
   {
@@ -39,6 +39,8 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
   },
   ref,
 ): React.ReactElement => {
+  const { colorScheme } = useTheme();
+
   return (
     <UnfocussableOverlay
       ref={ref as never}
@@ -55,12 +57,12 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
         https://floating-ui.com/docs/usetransition#usetransitionstyles
       */}
       <StyledMenuOverlayContent
+        colorScheme={colorScheme}
         backgroundColor="popup.background.gray.moderate"
         paddingX={overlayPaddingX}
-        paddingY={overlayPaddingY}
+        paddingTop={overlayPaddingTop}
+        paddingBottom={overlayPaddingBottom}
         borderWidth="none"
-        borderTopWidth="thin"
-        borderColor="popup.border.gray.moderate"
         borderRadius="medium"
         style={_transitionStyle}
       >

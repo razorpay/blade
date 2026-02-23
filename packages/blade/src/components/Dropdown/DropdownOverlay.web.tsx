@@ -47,7 +47,7 @@ const _DropdownOverlay = ({
   ...dataAnalyticsProps
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   const isMenu =
@@ -129,6 +129,7 @@ const _DropdownOverlay = ({
         >
           <StyledDropdownOverlay
             isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+            colorScheme={colorScheme}
             elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
             style={{ ...styles }}
             width={width ? width : '100%'}
