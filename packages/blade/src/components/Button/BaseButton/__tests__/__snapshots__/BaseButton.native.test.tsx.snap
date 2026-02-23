@@ -28,23 +28,22 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -68,14 +67,15 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -85,8 +85,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -95,7 +95,6 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -145,6 +144,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -156,8 +156,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -206,23 +206,22 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={true}
     isLoading={false}
@@ -246,14 +245,15 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -263,8 +263,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -273,7 +273,6 @@ exports[`<BaseButton /> should render button with full width 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -323,6 +322,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -334,8 +334,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -384,23 +384,22 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -424,14 +423,15 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -441,8 +441,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -451,7 +451,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -505,7 +504,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
                 "alignItems": "center",
                 "display": "flex",
                 "justifyContent": "center",
-                "paddingRight": 8,
               },
             ]
           }
@@ -606,6 +604,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -617,8 +616,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -667,23 +666,22 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -707,14 +705,15 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -724,8 +723,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -734,7 +733,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -788,7 +786,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
                 "alignItems": "center",
                 "display": "flex",
                 "justifyContent": "center",
-                "paddingRight": 8,
               },
             ]
           }
@@ -889,6 +886,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -900,8 +898,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -950,23 +948,22 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -990,14 +987,15 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -1007,8 +1005,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1017,7 +1015,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -1067,6 +1064,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -1078,8 +1076,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -1105,7 +1103,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
                 "alignItems": "center",
                 "display": "flex",
                 "justifyContent": "center",
-                "paddingLeft": 8,
               },
             ]
           }
@@ -1233,8 +1230,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="0px"
     buttonPaddingRight="0px"
@@ -1243,14 +1239,14 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     height="36px"
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -1274,14 +1270,15 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -1302,7 +1299,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -1834,23 +1830,22 @@ exports[`<BaseButton /> should render disabled information color secondary butto
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="information"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(200, 100%, 41%, 0.09)"
-    defaultBorderColor="hsla(200, 100%, 41%, 0.18)"
-    focusBackgroundColor="hsla(200, 100%, 41%, 0.09)"
-    focusBorderColor="hsla(200, 100%, 41%, 0.18)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(200, 100%, 41%, 0.09)"
-    hoverBorderColor="hsla(200, 100%, 41%, 0.18)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(200, 100%, 41%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -1874,16 +1869,17 @@ exports[`<BaseButton /> should render disabled information color secondary butto
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
-          "borderColor": "hsla(200, 100%, 41%, 0.18)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
           "flexDirection": "row",
@@ -1891,8 +1887,8 @@ exports[`<BaseButton /> should render disabled information color secondary butto
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1900,8 +1896,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
-          "borderColor": "hsla(200, 100%, 41%, 0.18)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
         },
       ]
     }
@@ -1951,6 +1946,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -1962,8 +1958,8 @@ exports[`<BaseButton /> should render disabled information color secondary butto
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -2187,23 +2183,22 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="negative"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(4, 85%, 44%, 0.09)"
-    defaultBorderColor="hsla(4, 85%, 44%, 0.18)"
-    focusBackgroundColor="hsla(4, 85%, 44%, 0.09)"
-    focusBorderColor="hsla(4, 85%, 44%, 0.18)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(4, 85%, 44%, 0.09)"
-    hoverBorderColor="hsla(4, 85%, 44%, 0.18)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(4, 85%, 44%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -2227,16 +2222,17 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
-          "borderColor": "hsla(4, 85%, 44%, 0.18)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
           "flexDirection": "row",
@@ -2244,8 +2240,8 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2253,8 +2249,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
-          "borderColor": "hsla(4, 85%, 44%, 0.18)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
         },
       ]
     }
@@ -2304,6 +2299,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -2315,8 +2311,8 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -2540,23 +2536,22 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="neutral"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(206, 10%, 29%, 0.18)"
-    defaultBorderColor="hsla(203, 8%, 80%, 1)"
-    focusBackgroundColor="hsla(206, 10%, 29%, 0.18)"
-    focusBorderColor="hsla(203, 8%, 80%, 1)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(206, 10%, 29%, 0.18)"
-    hoverBorderColor="hsla(203, 8%, 80%, 1)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(206, 10%, 29%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -2580,16 +2575,17 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(206, 10%, 29%, 0.18)",
-          "borderColor": "hsla(203, 8%, 80%, 1)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
           "flexDirection": "row",
@@ -2597,8 +2593,8 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2606,8 +2602,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(206, 10%, 29%, 0.18)",
-          "borderColor": "hsla(203, 8%, 80%, 1)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
         },
       ]
     }
@@ -2657,6 +2652,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -2668,8 +2664,8 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -2893,23 +2889,22 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="notice"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(25, 100%, 44%, 0.09)"
-    defaultBorderColor="hsla(25, 100%, 44%, 0.18)"
-    focusBackgroundColor="hsla(25, 100%, 44%, 0.09)"
-    focusBorderColor="hsla(25, 100%, 44%, 0.18)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(25, 100%, 44%, 0.09)"
-    hoverBorderColor="hsla(25, 100%, 44%, 0.18)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(25, 100%, 44%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -2933,16 +2928,17 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
-          "borderColor": "hsla(25, 100%, 44%, 0.18)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
           "flexDirection": "row",
@@ -2950,8 +2946,8 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2959,8 +2955,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
-          "borderColor": "hsla(25, 100%, 44%, 0.18)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
         },
       ]
     }
@@ -3010,6 +3005,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -3021,8 +3017,8 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -3246,23 +3242,22 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="positive"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(150, 100%, 28%, 0.09)"
-    defaultBorderColor="hsla(150, 100%, 28%, 0.18)"
-    focusBackgroundColor="hsla(150, 100%, 28%, 0.09)"
-    focusBorderColor="hsla(150, 100%, 28%, 0.18)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 28%, 0.09)"
-    hoverBorderColor="hsla(150, 100%, 28%, 0.18)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(150, 100%, 28%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -3286,16 +3281,17 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-          "borderColor": "hsla(150, 100%, 28%, 0.18)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
           "flexDirection": "row",
@@ -3303,8 +3299,8 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3312,8 +3308,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-          "borderColor": "hsla(150, 100%, 28%, 0.18)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
         },
       ]
     }
@@ -3363,6 +3358,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -3374,8 +3370,8 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -3599,201 +3595,22 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-    defaultBorderColor="hsla(218, 89%, 51%, 0.18)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0)"
-    focusBorderColor="hsla(218, 89%, 51%, 0.18)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0)"
-    hoverBorderColor="hsla(218, 89%, 51%, 0.18)"
-    hoverIconColor="hsla(218, 89%, 51%, 0.32)"
-    isFullWidth={false}
-    isLoading={false}
-    isPressed={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseOut={[Function]}
-    onMouseUp={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    onTouchEnd={[Function]}
-    onTouchStart={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(218, 89%, 51%, 0.18)",
-          "borderRadius": 12,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(218, 89%, 51%, 0.18)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      style={
-        {
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        }
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        isHidden={false}
-        justifyContent="center"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "zIndex": 1,
-            },
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        zIndex={1}
-      >
-        <Text
-          accessible={true}
-          color="interactive.text.primary.disabled"
-          data-blade-component="base-text"
-          fontSize={100}
-          fontWeight="medium"
-          lineHeight={100}
-          style={
-            [
-              {
-                "color": "hsla(218, 89%, 51%, 0.32)",
-                "fontFamily": "Inter",
-                "fontSize": 14,
-                "fontStyle": "normal",
-                "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          Pay Now
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled primary color tertiary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    color="primary"
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(206, 10%, 29%, 0.09)"
-    defaultBorderColor="hsla(204, 8%, 88%, 1)"
-    focusBackgroundColor="hsla(206, 10%, 29%, 0.09)"
-    focusBorderColor="hsla(204, 8%, 88%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(206, 10%, 29%, 0.09)"
-    hoverBorderColor="hsla(204, 8%, 88%, 1)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(206, 10%, 29%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -3817,14 +3634,15 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-          "borderColor": "hsla(204, 8%, 88%, 1)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -3834,8 +3652,8 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3843,7 +3661,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
         },
       ]
     }
@@ -3893,6 +3711,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -3904,8 +3723,186 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled primary color tertiary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="8px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    color="primary"
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
+    hoverIconColor="hsla(206, 10%, 29%, 0.32)"
+    isFullWidth={false}
+    isLoading={false}
+    isPressed={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    size="medium"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
+          "borderColor": "black",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 0.01)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      style={
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        zIndex={1}
+      >
+        <Text
+          accessible={true}
+          color="interactive.text.gray.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          marginX="spacing.2"
+          style={
+            [
+              {
+                "color": "hsla(206, 10%, 29%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -4129,23 +4126,22 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="white"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-    defaultBorderColor="hsla(0, 0%, 100%, 0.32)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.32)"
+    defaultBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
+    focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
+    hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -4169,16 +4165,17 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(0, 0%, 100%, 0.32)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
           "flexDirection": "row",
@@ -4186,8 +4183,8 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4195,8 +4192,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(0, 0%, 100%, 0.32)",
+          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
         },
       ]
     }
@@ -4246,6 +4242,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -4257,8 +4254,8 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -4307,23 +4304,22 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="white"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.18)"
+    defaultBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    defaultBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
+    focusBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    focusBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.18)"
+    hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
+    hoverBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -4347,14 +4343,15 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-          "borderColor": "hsla(0, 0%, 100%, 0.18)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "not-allowed",
@@ -4364,8 +4361,8 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4373,7 +4370,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
+          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
         },
       ]
     }
@@ -4423,6 +4420,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -4434,8 +4432,8 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -4484,23 +4482,22 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="information"
     data-blade-component="button"
     defaultBackgroundColor="hsla(200, 100%, 41%, 1)"
-    defaultBorderColor="hsla(200, 100%, 41%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 41%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(200, 100%, 33%, 1)"
-    focusBorderColor="hsla(200, 100%, 33%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 33%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(200, 100%, 33%, 1)"
-    hoverBorderColor="hsla(200, 100%, 33%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 33%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4524,14 +4521,15 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(200, 100%, 41%, 1)",
-          "borderColor": "hsla(200, 100%, 41%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -4541,8 +4539,8 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4551,7 +4549,6 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
         },
         {
           "backgroundColor": "hsla(200, 100%, 41%, 1)",
-          "borderColor": "hsla(200, 100%, 41%, 1)",
         },
       ]
     }
@@ -4601,6 +4598,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -4612,8 +4610,8 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -4662,23 +4660,22 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="information"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(200, 100%, 41%, 0.09)"
-    defaultBorderColor="hsla(200, 100%, 41%, 1)"
-    focusBackgroundColor="hsla(200, 100%, 41%, 0.18)"
-    focusBorderColor="hsla(200, 100%, 41%, 1)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(200, 100%, 41%, 0.18)"
-    hoverBorderColor="hsla(200, 100%, 41%, 1)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(200, 100%, 33%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4702,16 +4699,17 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
-          "borderColor": "hsla(200, 100%, 41%, 1)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "flexDirection": "row",
@@ -4719,8 +4717,8 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4728,8 +4726,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
-          "borderColor": "hsla(200, 100%, 41%, 1)",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
         },
       ]
     }
@@ -4779,6 +4776,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -4790,8 +4788,8 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -4841,22 +4839,21 @@ exports[`<BaseButton /> should render large size button 1`] = `
     }
     accessible={true}
     borderRadius="12px"
-    borderWidth="0px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="16px"
+    buttonPaddingRight="16px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4880,13 +4877,14 @@ exports[`<BaseButton /> should render large size button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="large"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "black",
           "borderRadius": 12,
           "borderStyle": "solid",
           "borderWidth": 0,
@@ -4897,8 +4895,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
           "minHeight": 48,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 16,
+          "paddingRight": 16,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4907,7 +4905,6 @@ exports[`<BaseButton /> should render large size button 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4957,6 +4954,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
           fontSize={200}
           fontWeight="medium"
           lineHeight={200}
+          marginX="spacing.2"
           style={
             [
               {
@@ -4968,8 +4966,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 24,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -5360,23 +5358,22 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5400,14 +5397,15 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -5417,8 +5415,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -5427,7 +5425,6 @@ exports[`<BaseButton /> should render medium size button 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -5477,6 +5474,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -5488,8 +5486,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -5538,23 +5536,22 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="negative"
     data-blade-component="button"
     defaultBackgroundColor="hsla(4, 85%, 44%, 1)"
-    defaultBorderColor="hsla(4, 85%, 44%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(4, 85%, 36%, 1)"
-    focusBorderColor="hsla(4, 85%, 36%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(4, 85%, 36%, 1)"
-    hoverBorderColor="hsla(4, 85%, 36%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5578,14 +5575,15 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(4, 85%, 44%, 1)",
-          "borderColor": "hsla(4, 85%, 44%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -5595,8 +5593,8 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -5605,7 +5603,6 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
         },
         {
           "backgroundColor": "hsla(4, 85%, 44%, 1)",
-          "borderColor": "hsla(4, 85%, 44%, 1)",
         },
       ]
     }
@@ -5655,6 +5652,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -5666,8 +5664,8 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -5716,23 +5714,22 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="negative"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(4, 85%, 44%, 0.09)"
-    defaultBorderColor="hsla(4, 85%, 44%, 1)"
-    focusBackgroundColor="hsla(4, 85%, 44%, 0.18)"
-    focusBorderColor="hsla(4, 85%, 44%, 1)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(4, 85%, 44%, 0.18)"
-    hoverBorderColor="hsla(4, 85%, 44%, 1)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(4, 85%, 44%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5756,16 +5753,17 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
-          "borderColor": "hsla(4, 85%, 44%, 1)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "flexDirection": "row",
@@ -5773,8 +5771,8 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -5782,8 +5780,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
-          "borderColor": "hsla(4, 85%, 44%, 1)",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
         },
       ]
     }
@@ -5833,6 +5830,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -5844,8 +5842,8 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -5894,23 +5892,22 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="neutral"
     data-blade-component="button"
     defaultBackgroundColor="hsla(205, 10%, 24%, 1)"
-    defaultBorderColor="hsla(200, 11%, 11%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 2%, 1), inset 0 0px 0px 0.5px hsla(200, 11%, 11%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(200, 10%, 18%, 1)"
-    focusBorderColor="hsla(0, 0%, 2%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 2%, 1), inset 0 0px 0px 0.5px hsla(0, 0%, 2%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(200, 10%, 18%, 1)"
-    hoverBorderColor="hsla(0, 0%, 2%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 2%, 1), inset 0 0px 0px 0.5px hsla(0, 0%, 2%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5934,14 +5931,15 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(205, 10%, 24%, 1)",
-          "borderColor": "hsla(200, 11%, 11%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -5951,8 +5949,8 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -5961,7 +5959,6 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
         },
         {
           "backgroundColor": "hsla(205, 10%, 24%, 1)",
-          "borderColor": "hsla(200, 11%, 11%, 1)",
         },
       ]
     }
@@ -6011,6 +6008,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -6022,8 +6020,8 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -6072,23 +6070,22 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="neutral"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(206, 10%, 29%, 0.12)"
-    defaultBorderColor="hsla(200, 11%, 11%, 1)"
-    focusBackgroundColor="hsla(206, 10%, 29%, 0.18)"
-    focusBorderColor="hsla(200, 11%, 11%, 1)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(206, 10%, 29%, 0.18)"
-    hoverBorderColor="hsla(200, 11%, 11%, 1)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(0, 0%, 2%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6112,16 +6109,17 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(206, 10%, 29%, 0.12)",
-          "borderColor": "hsla(200, 11%, 11%, 1)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "flexDirection": "row",
@@ -6129,8 +6127,8 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -6138,8 +6136,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(206, 10%, 29%, 0.12)",
-          "borderColor": "hsla(200, 11%, 11%, 1)",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
         },
       ]
     }
@@ -6189,6 +6186,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -6200,8 +6198,8 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -6250,23 +6248,22 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="notice"
     data-blade-component="button"
     defaultBackgroundColor="hsla(25, 100%, 44%, 1)"
-    defaultBorderColor="hsla(25, 100%, 44%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(25, 100%, 39%, 1)"
-    focusBorderColor="hsla(25, 100%, 39%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 39%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(25, 100%, 39%, 1)"
-    hoverBorderColor="hsla(25, 100%, 39%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 39%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6290,14 +6287,15 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(25, 100%, 44%, 1)",
-          "borderColor": "hsla(25, 100%, 44%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -6307,8 +6305,8 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -6317,7 +6315,6 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
         },
         {
           "backgroundColor": "hsla(25, 100%, 44%, 1)",
-          "borderColor": "hsla(25, 100%, 44%, 1)",
         },
       ]
     }
@@ -6367,6 +6364,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -6378,8 +6376,8 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -6428,23 +6426,22 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="notice"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(25, 100%, 44%, 0.09)"
-    defaultBorderColor="hsla(25, 100%, 44%, 1)"
-    focusBackgroundColor="hsla(25, 100%, 44%, 0.18)"
-    focusBorderColor="hsla(25, 100%, 44%, 1)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(25, 100%, 44%, 0.18)"
-    hoverBorderColor="hsla(25, 100%, 44%, 1)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(25, 100%, 39%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6468,16 +6465,17 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
-          "borderColor": "hsla(25, 100%, 44%, 1)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "flexDirection": "row",
@@ -6485,8 +6483,8 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -6494,8 +6492,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
-          "borderColor": "hsla(25, 100%, 44%, 1)",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
         },
       ]
     }
@@ -6545,6 +6542,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -6556,8 +6554,8 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -6606,23 +6604,22 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="positive"
     data-blade-component="button"
     defaultBackgroundColor="hsla(150, 100%, 28%, 1)"
-    defaultBorderColor="hsla(150, 100%, 28%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 28%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(150, 100%, 23%, 1)"
-    focusBorderColor="hsla(150, 100%, 23%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(150, 100%, 23%, 1)"
-    hoverBorderColor="hsla(150, 100%, 23%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6646,14 +6643,15 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(150, 100%, 28%, 1)",
-          "borderColor": "hsla(150, 100%, 28%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -6663,8 +6661,8 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -6673,7 +6671,6 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
         },
         {
           "backgroundColor": "hsla(150, 100%, 28%, 1)",
-          "borderColor": "hsla(150, 100%, 28%, 1)",
         },
       ]
     }
@@ -6723,6 +6720,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -6734,8 +6732,8 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -6784,23 +6782,22 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="positive"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(150, 100%, 28%, 0.09)"
-    defaultBorderColor="hsla(150, 100%, 28%, 1)"
-    focusBackgroundColor="hsla(150, 100%, 28%, 0.18)"
-    focusBorderColor="hsla(150, 100%, 28%, 1)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 28%, 0.18)"
-    hoverBorderColor="hsla(150, 100%, 28%, 1)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(150, 100%, 23%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6824,16 +6821,17 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-          "borderColor": "hsla(150, 100%, 28%, 1)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "flexDirection": "row",
@@ -6841,8 +6839,8 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -6850,8 +6848,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-          "borderColor": "hsla(150, 100%, 28%, 1)",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
         },
       ]
     }
@@ -6901,6 +6898,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -6912,8 +6910,8 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -6962,23 +6960,22 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -7002,14 +6999,15 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -7019,8 +7017,8 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -7029,7 +7027,6 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -7079,6 +7076,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -7090,8 +7088,8 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -7140,201 +7138,22 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-    focusBackgroundColor="hsla(218, 89%, 51%, 0.09)"
-    focusBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
-    hoverIconColor="hsla(218, 89%, 51%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    isPressed={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseOut={[Function]}
-    onMouseUp={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    onTouchEnd={[Function]}
-    onTouchStart={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
-          "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      style={
-        {
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        }
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        isHidden={false}
-        justifyContent="center"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "zIndex": 1,
-            },
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        zIndex={1}
-      >
-        <Text
-          accessible={true}
-          color="interactive.text.primary.subtle"
-          data-blade-component="base-text"
-          fontSize={100}
-          fontWeight="medium"
-          lineHeight={100}
-          style={
-            [
-              {
-                "color": "hsla(218, 89%, 51%, 1)",
-                "fontFamily": "Inter",
-                "fontSize": 14,
-                "fontStyle": "normal",
-                "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          Pay Now
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render primary color tertiary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": false,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    color="primary"
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(206, 10%, 29%, 0.06)"
-    defaultBorderColor="hsla(204, 8%, 88%, 1)"
-    focusBackgroundColor="hsla(206, 10%, 29%, 0.12)"
-    focusBorderColor="hsla(203, 8%, 80%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(206, 10%, 29%, 0.12)"
-    hoverBorderColor="hsla(203, 8%, 80%, 1)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(0, 0%, 2%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -7358,14 +7177,15 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
-          "borderColor": "hsla(204, 8%, 88%, 1)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -7375,8 +7195,8 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -7384,7 +7204,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
         },
       ]
     }
@@ -7434,6 +7254,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -7445,8 +7266,186 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render primary color tertiary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="8px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    color="primary"
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
+    hoverIconColor="hsla(0, 0%, 2%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    isPressed={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    size="medium"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "cursor": "pointer",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      style={
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        zIndex={1}
+      >
+        <Text
+          accessible={true}
+          color="interactive.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          marginX="spacing.2"
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 2%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -7495,23 +7494,22 @@ exports[`<BaseButton /> should render small size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="8px"
+    buttonPaddingRight="8px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -7535,14 +7533,15 @@ exports[`<BaseButton /> should render small size button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="small"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -7552,8 +7551,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
           "minHeight": 32,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 8,
+          "paddingRight": 8,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -7562,7 +7561,6 @@ exports[`<BaseButton /> should render small size button 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -7612,6 +7610,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
           fontSize={75}
           fontWeight="medium"
           lineHeight={75}
+          marginX="spacing.2"
           style={
             [
               {
@@ -7623,8 +7622,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 17,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -7673,23 +7672,22 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="white"
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
-    defaultBorderColor="hsla(0, 0%, 100%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.8)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.8)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.8)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
     hoverIconColor="hsla(0, 0%, 0%, 0.72)"
     isFullWidth={false}
     isLoading={false}
@@ -7713,14 +7711,15 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(0, 0%, 100%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -7730,8 +7729,8 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -7740,7 +7739,6 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
         },
         {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(0, 0%, 100%, 1)",
         },
       ]
     }
@@ -7790,6 +7788,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -7801,8 +7800,8 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -7851,23 +7850,22 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="1px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="white"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
-    defaultBorderColor="hsla(0, 0%, 100%, 0.8)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.8)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
+    focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.8)"
+    hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -7891,16 +7889,17 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(0, 0%, 100%, 0.8)",
-          "borderRadius": 12,
+          "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "flexDirection": "row",
@@ -7908,8 +7907,8 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -7917,8 +7916,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 0)",
-          "borderColor": "hsla(0, 0%, 100%, 0.8)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
         },
       ]
     }
@@ -7968,6 +7966,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -7979,8 +7978,8 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -8029,23 +8028,22 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="white"
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.32)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.32)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
+    focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.32)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
+    hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -8069,14 +8067,15 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-          "borderColor": "hsla(0, 0%, 100%, 0.18)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -8086,8 +8085,8 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -8145,6 +8144,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -8156,8 +8156,8 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -8206,8 +8206,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="8px"
     buttonPaddingRight="8px"
@@ -8216,13 +8215,13 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -8246,14 +8245,15 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="xsmall"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -8273,7 +8273,6 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -8323,6 +8322,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
           fontSize={75}
           fontWeight="medium"
           lineHeight={75}
+          marginX="spacing.2"
           style={
             [
               {
@@ -8334,8 +8334,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 17,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
