@@ -230,7 +230,7 @@ const _BaseTimePicker = ({
                   background: theme.colors.popup.background.gray.moderate,
                   boxShadow: `${theme.elevation.midRaised}, ${getTimePickerPopupBoxShadow(
                     theme,
-                  )}, inset 0 1px 0 0 ${theme.colors.popup.border.gray.subtle}`,
+                  )}, inset 0 1px 0 0 ${theme.colors.popup.border.gray.moderate}`,
                   backdropFilter: `blur(${theme.backdropBlur.high}px)`,
                 }}
               >
