@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { makeBoxShadow } from '~utils';
+import { makePopUpBoxShadow } from '~utils/makePopupBoxShadow';
 import type { ShadowLayer } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
@@ -24,7 +24,7 @@ const getPopoverBoxShadow = (theme: Theme): string => {
   ];
 
   // Combine elevation.midRaised with additional shadow layers
-  return `${theme.elevation.midRaised}, ${makeBoxShadow(shadowLayers)}`;
+  return `${theme.elevation.midRaised}, ${makePopUpBoxShadow(shadowLayers)}`;
 };
 
 export { getPopoverBoxShadow };
