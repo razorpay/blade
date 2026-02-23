@@ -217,11 +217,13 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(204, 8%, 88%, 1)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -245,13 +247,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       alignItems="center"
                       backgroundColor="transparent"
                       borderColor="interactive.border.gray.disabled"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={true}
@@ -263,17 +263,15 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
                             "borderColor": "hsla(204, 8%, 88%, 1)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -284,41 +282,53 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.disabled"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(206, 10%, 29%, 0.32)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Apple
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.disabled"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(206, 10%, 29%, 0.32)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -418,11 +428,13 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -446,13 +458,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -464,17 +474,15 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -485,41 +493,53 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Mango
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -750,11 +770,13 @@ exports[`<Chip /> should render chip 1`] = `
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -778,13 +800,11 @@ exports[`<Chip /> should render chip 1`] = `
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -796,17 +816,15 @@ exports[`<Chip /> should render chip 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -817,41 +835,53 @@ exports[`<Chip /> should render chip 1`] = `
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Apple
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -951,11 +981,13 @@ exports[`<Chip /> should render chip 1`] = `
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -979,13 +1011,11 @@ exports[`<Chip /> should render chip 1`] = `
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -997,17 +1027,15 @@ exports[`<Chip /> should render chip 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -1018,41 +1046,53 @@ exports[`<Chip /> should render chip 1`] = `
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Mango
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1283,11 +1323,13 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -1311,13 +1353,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -1329,17 +1369,15 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -1450,41 +1488,53 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           </RNSVGGroup>
                         </RNSVGSvgView>
                       </View>
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Apple
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1584,11 +1634,13 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -1612,13 +1664,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -1630,17 +1680,15 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -1751,41 +1799,53 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           </RNSVGGroup>
                         </RNSVGSvgView>
                       </View>
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Mango
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -2016,11 +2076,13 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(204, 8%, 88%, 1)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -2044,13 +2106,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       alignItems="center"
                       backgroundColor="transparent"
                       borderColor="interactive.border.gray.disabled"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={true}
@@ -2062,17 +2122,15 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
                             "borderColor": "hsla(204, 8%, 88%, 1)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -2083,41 +2141,53 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.disabled"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(206, 10%, 29%, 0.32)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Apple
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.disabled"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(206, 10%, 29%, 0.32)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -2217,11 +2287,13 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -2245,13 +2317,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -2263,17 +2333,15 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -2284,41 +2352,53 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Mango
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>

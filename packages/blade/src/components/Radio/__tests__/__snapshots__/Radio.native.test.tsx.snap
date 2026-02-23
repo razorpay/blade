@@ -64,22 +64,22 @@ exports[`<Radio /> should render radio with label 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.gray.muted"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="medium"
             lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(204, 9%, 42%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "500",
                   "letterSpacing": 0,
                   "lineHeight": 17,
                   "marginBottom": 0,
@@ -288,7 +288,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(204, 8%, 88%, 1)",
+                            "borderColor": "hsla(205, 8%, 71%, 1)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -426,22 +426,22 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.gray.muted"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="medium"
             lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(204, 9%, 42%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "500",
                   "letterSpacing": 0,
                   "lineHeight": 17,
                   "marginBottom": 0,

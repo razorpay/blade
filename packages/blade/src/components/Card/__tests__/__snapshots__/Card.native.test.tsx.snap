@@ -665,7 +665,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
-      colorScheme="light"
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
@@ -932,12 +931,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     }
                   >
                     <View
+                      alignSelf="center"
                       data-blade-component="counter"
                       display="flex"
+                      justifyContent="center"
                       style={
                         [
                           {
+                            "alignSelf": "center",
                             "display": "flex",
+                            "justifyContent": "center",
                           },
                         ]
                       }
@@ -946,6 +949,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         backgroundColor="feedback.background.neutral.subtle"
                         data-blade-component="base-box"
                         minHeight="20px"
+                        minWidth="20px"
                         platform="onMobile"
                         size="medium"
                         style={
@@ -953,13 +957,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
                             {
                               "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                               "minHeight": 20,
+                              "minWidth": 20,
                             },
                             {
+                              "alignItems": "center",
                               "alignSelf": "center",
                               "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
                               "borderRadius": 9999,
                               "display": "flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                               "maxWidth": 100,
                             },
                           ]
@@ -1127,8 +1134,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "overflow": "hidden",
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
+                        "paddingLeft": 4,
+                        "paddingRight": 4,
                       },
                     ]
                   }
@@ -1142,6 +1149,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     fontStyle="normal"
                     fontWeight="medium"
                     lineHeight={75}
+                    marginX="spacing.2"
                     numberOfLines={1}
                     style={
                       [
@@ -1154,8 +1162,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                           "letterSpacing": 0,
                           "lineHeight": 17,
                           "marginBottom": 0,
-                          "marginLeft": 0,
-                          "marginRight": 0,
+                          "marginLeft": 4,
+                          "marginRight": 4,
                           "marginTop": 0,
                           "paddingBottom": 0,
                           "paddingLeft": 0,
@@ -1275,7 +1283,6 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
-      colorScheme="light"
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
@@ -1356,7 +1363,6 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
     <View
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
-      colorScheme="light"
       data-blade-component="base-box"
       elevation="none"
       style={
@@ -1471,15 +1477,14 @@ exports[`<Card /> should render a plain Card 1`] = `
     }
   >
     <View
-      backgroundColor="surface.background.gray.moderate"
+      backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
-      colorScheme="light"
       data-blade-component="base-box"
       elevation="highRaised"
       style={
         [
           {
-            "backgroundColor": "hsla(0, 0%, 97%, 1)",
+            "backgroundColor": "hsla(0, 0%, 100%, 1)",
             "borderRadius": 12,
             "paddingBottom": 24,
             "paddingLeft": 24,

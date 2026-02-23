@@ -523,7 +523,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       }
     >
       <View
-        accessibilityControls="collapsible-body-3"
+        accessibilityControls="collapsible-body-1"
         accessibilityRole="button"
         accessibilityState={
           {
@@ -720,7 +720,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         accessibilityElementsHidden={true}
         accessibilityRole="summary"
         data-blade-component="collapsible-body"
-        id="collapsible-body-3"
+        id="collapsible-body-1"
         importantForAccessibility="no-hide-descendants"
         style={
           [
@@ -756,7 +756,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 [
                   {
                     "marginBottom": 0,
-                    "marginTop": 16,
+                    "marginTop": 12,
                   },
                 ]
               }

@@ -47,15 +47,15 @@ exports[`<Alert /> should render 1`] = `
       textAlign="left"
     >
       <View
-        alignSelf="flex-start"
+        alignSelf="center"
         data-blade-component="base-box"
         display="flex"
         style={
           [
             {
-              "alignSelf": "flex-start",
+              "alignSelf": "center",
               "display": "flex",
-              "marginTop": 0,
+              "marginTop": 1,
             },
           ]
         }
@@ -378,7 +378,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
             {
               "alignSelf": "center",
               "display": "flex",
-              "marginTop": 2,
+              "marginTop": 1,
             },
           ]
         }
@@ -684,7 +684,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
             {
               "alignSelf": "center",
               "display": "flex",
-              "marginTop": 2,
+              "marginTop": 1,
             },
           ]
         }

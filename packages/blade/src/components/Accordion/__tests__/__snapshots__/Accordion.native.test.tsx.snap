@@ -458,7 +458,7 @@ exports[`<Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -1017,7 +1017,7 @@ exports[`<Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -1576,7 +1576,7 @@ exports[`<Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -1804,7 +1804,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-31"
+              accessibilityControls="collapsible-body-22"
               accessibilityLabel="How can I setup Route?"
               accessibilityRole="button"
               accessibilityState={
@@ -2146,7 +2146,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-31"
+              id="collapsible-body-22"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -2185,7 +2185,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -2363,7 +2363,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-32"
+              accessibilityControls="collapsible-body-23"
               accessibilityLabel="How can I setup QR Codes?"
               accessibilityRole="button"
               accessibilityState={
@@ -2705,7 +2705,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-32"
+              id="collapsible-body-23"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -2744,7 +2744,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -2922,7 +2922,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-33"
+              accessibilityControls="collapsible-body-24"
               accessibilityLabel="How can I setup Subscriptions?"
               accessibilityRole="button"
               accessibilityState={
@@ -3264,7 +3264,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-33"
+              id="collapsible-body-24"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -3303,7 +3303,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -3530,7 +3530,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-34"
+              accessibilityControls="collapsible-body-25"
               accessibilityLabel="How can I setup Route?"
               accessibilityRole="button"
               accessibilityState={
@@ -3872,7 +3872,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-34"
+              id="collapsible-body-25"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -3911,7 +3911,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -4089,7 +4089,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-35"
+              accessibilityControls="collapsible-body-26"
               accessibilityLabel="How can I setup QR Codes?"
               accessibilityRole="button"
               accessibilityState={
@@ -4431,7 +4431,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-35"
+              id="collapsible-body-26"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -4470,7 +4470,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -4648,7 +4648,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-36"
+              accessibilityControls="collapsible-body-27"
               accessibilityLabel="How can I setup Subscriptions?"
               accessibilityRole="button"
               accessibilityState={
@@ -4990,7 +4990,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-36"
+              id="collapsible-body-27"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -5029,7 +5029,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }

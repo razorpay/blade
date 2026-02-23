@@ -82,22 +82,22 @@ exports[`<BaseInput /> should render 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(204, 9%, 42%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
                     "lineHeight": 17,
                     "marginBottom": 0,
@@ -190,7 +190,7 @@ exports[`<BaseInput /> should render 1`] = `
           [
             {},
             {
-              "borderRadius": 12,
+              "borderRadius": 8,
               "width": "100%",
             },
           ]
@@ -205,9 +205,10 @@ exports[`<BaseInput /> should render 1`] = `
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 0,
                 "display": "flex",
@@ -219,7 +220,7 @@ exports[`<BaseInput /> should render 1`] = `
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 1,
               },
@@ -260,7 +261,7 @@ exports[`<BaseInput /> should render 1`] = `
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(200, 10%, 18%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -269,7 +270,7 @@ exports[`<BaseInput /> should render 1`] = `
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 36,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -402,22 +403,22 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(204, 9%, 42%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
                     "lineHeight": 17,
                     "marginBottom": 0,
@@ -525,6 +526,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 0)",
                 "borderColor": "hsla(0, 0%, 100%, 0)",
                 "borderRadius": 0,
@@ -539,7 +541,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 0,
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
@@ -580,7 +582,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(200, 10%, 18%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -589,7 +591,7 @@ exports[`<BaseInput /> should render input with no borders 1`] = `
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 36,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -722,22 +724,22 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(204, 9%, 42%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
                     "lineHeight": 17,
                     "marginBottom": 0,
@@ -845,6 +847,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
                 "borderColor": "hsla(0, 0%, 100%, 0)",
                 "borderRadius": 0,
@@ -859,7 +862,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(4, 85%, 44%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 0,
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
@@ -901,7 +904,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(200, 10%, 18%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -910,7 +913,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 36,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1096,6 +1099,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
               fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
+              marginTop="spacing.0"
               style={
                 [
                   {
@@ -1211,22 +1215,22 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(204, 9%, 42%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
                     "lineHeight": 17,
                     "marginBottom": 0,
@@ -1319,7 +1323,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
           [
             {},
             {
-              "borderRadius": 12,
+              "borderRadius": 8,
               "width": "100%",
             },
           ]
@@ -1334,9 +1338,10 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(150, 100%, 28%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 0,
                 "display": "flex",
@@ -1349,7 +1354,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(150, 100%, 28%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 1,
               },
@@ -1391,7 +1396,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(200, 10%, 18%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -1400,7 +1405,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 36,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1558,6 +1563,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
               fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
+              marginTop="spacing.0"
               style={
                 [
                   {
@@ -1673,22 +1679,22 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(204, 9%, 42%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
                     "lineHeight": 17,
                     "marginBottom": 0,
@@ -1781,7 +1787,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           [
             {},
             {
-              "borderRadius": 12,
+              "borderRadius": 8,
               "width": "100%",
             },
           ]
@@ -1796,9 +1802,10 @@ exports[`<BaseInput /> should render with icons 1`] = `
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 0,
                 "display": "flex",
@@ -1810,7 +1817,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 1,
               },
@@ -1961,7 +1968,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(200, 10%, 18%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -1970,7 +1977,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 36,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2196,22 +2203,22 @@ exports[`<BaseInput /> should render with large size input 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={100}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(204, 9%, 42%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
@@ -2319,6 +2326,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(150, 100%, 28%, 1)",
                 "borderRadius": 12,
@@ -2486,7 +2494,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(200, 10%, 18%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -2495,7 +2503,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 48,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.528,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2769,6 +2777,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
               fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
+              marginTop="spacing.1"
               style={
                 [
                   {
@@ -2782,7 +2791,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
-                    "marginTop": 0,
+                    "marginTop": 2,
                     "paddingBottom": 0,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -2884,22 +2893,22 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(204, 9%, 42%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
                     "lineHeight": 17,
                     "marginBottom": 0,
@@ -2992,7 +3001,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
           [
             {},
             {
-              "borderRadius": 12,
+              "borderRadius": 8,
               "width": "100%",
             },
           ]
@@ -3007,9 +3016,10 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 0,
                 "display": "flex",
@@ -3021,7 +3031,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 12,
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 1,
               },
@@ -3062,7 +3072,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(200, 10%, 18%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -3071,7 +3081,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 36,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
