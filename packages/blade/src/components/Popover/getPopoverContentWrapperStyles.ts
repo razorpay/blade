@@ -1,8 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
-import { isReactNative, makeSpace, makeBorderSize } from '~utils';
-import { getPopoverBoxShadow } from './popoverTokens';
+import {
+  isReactNative,
+  makeSpace,
+  makeBorderSize,
+  useTheme,
+  getPopupBoxShadowString,
+} from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
 const getPopoverContentWrapperStyles = ({
@@ -14,16 +19,16 @@ const getPopoverContentWrapperStyles = ({
   theme: Theme;
   styles: React.CSSProperties;
 }): CSSObject => {
+  const { colorScheme } = useTheme();
   return {
+    border: 'none',
     width: '100%',
     maxWidth: makeSpace(isMobile ? 288 : 328),
     position: isReactNative() ? 'absolute' : 'relative',
+    boxShadow: isReactNative() ? undefined : getPopupBoxShadowString(theme, colorScheme),
+    boxSizing: 'border-box',
     backgroundColor: theme.colors.popup.background.gray.moderate,
     borderRadius: makeBorderSize(theme.border.radius.large),
-    borderTopWidth: makeBorderSize(theme.border.width.thin),
-    borderTopColor: theme.colors.popup.border.gray.moderate,
-    borderTopStyle: 'solid',
-    boxShadow: isReactNative() ? undefined : getPopoverBoxShadow(theme),
     backdropFilter: isReactNative() ? undefined : `blur(${theme.backdropBlur.high}px)`,
     ...styles,
   };

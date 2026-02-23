@@ -1,45 +1,29 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import type { ColorSchemeNames } from '~tokens/theme';
+import type { Theme } from '~components/BladeProvider';
+import type { SurfaceBoxShadow } from '~utils/makeSurfaceStyles';
 
-/**
- * Represents a single shadow layer configuration
- * Used to create complex multi-layer shadows for popup components
- */
-export type ShadowLayer = {
-  /** Horizontal offset in pixels */
-  x: number;
-  /** Vertical offset in pixels */
-  y: number;
-  /** Blur radius in pixels */
-  blur: number;
-  /** Spread radius in pixels */
-  spread: number;
-  /** Color value (hex, rgb, rgba, hsla, etc.) */
-  color: string;
-  /** Whether this is an inset shadow */
-  inset: boolean;
+const getPopupShadows = (theme: Theme, colorScheme: ColorSchemeNames): SurfaceBoxShadow => {
+  const boxShadow = {
+    light: {
+      elevation: `${theme.elevation.midRaised}`,
+      border: `inset 0px 0px 0px 1px ${theme.colors.interactive.border.gray.disabled}`,
+      top: `inset 0px 1px 0px 0px ${theme.colors.surface.background.gray.intense}`,
+    },
+    dark: {
+      elevation: `${theme.elevation.midRaised}`,
+      border: `inset 0px 0px 0px 1px ${theme.colors.popup.border.gray.subtle}`,
+      top: `inset 0px 1px 0px 0px ${theme.colors.popup.border.gray.moderate}`,
+    },
+  };
+  return boxShadow[colorScheme];
 };
 
 /**
- * Converts an array of shadow layer objects into a CSS box-shadow string
- *
- * @param shadowLayers - Array of shadow layer configurations
- * @returns CSS box-shadow string with multiple layers joined by commas
- *
- * @example
- * ```ts
- * const layers = [
- *   { x: 0, y: 2, blur: 4, spread: 0, color: 'rgba(0,0,0,0.1)', inset: false },
- *   { x: 0, y: 0, blur: 0, spread: 1, color: 'rgba(255,255,255,0.5)', inset: true }
- * ];
- * const boxShadow = makePopupBoxShadow(layers);
- * // Result: "0px 2px 4px 0px rgba(0,0,0,0.1), inset 0px 0px 0px 1px rgba(255,255,255,0.5)"
- * ```
+ * Returns a single CSS box-shadow string combining border, elevation, and top inner shadow.
+ * Use when applying the full surface shadow to an element.
  */
-export const makePopupBoxShadow = (shadowLayers: ShadowLayer[]): string => {
-  return shadowLayers
-    .map((layer) => {
-      const inset = layer.inset ? 'inset ' : '';
-      return `${inset}${layer.x}px ${layer.y}px ${layer.blur}px ${layer.spread}px ${layer.color}`;
-    })
-    .join(', ');
+export const getPopupBoxShadowString = (theme: Theme, colorScheme: ColorSchemeNames): string => {
+  const { border, elevation, top } = getPopupShadows(theme, colorScheme);
+  return `${border}, ${elevation}, ${top}`;
 };
