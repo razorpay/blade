@@ -14,7 +14,7 @@ const TimePickerFooter = ({
 }: TimePickerFooterProps): React.ReactElement => {
   return (
     <Box display="flex" flexDirection="column">
-      <Divider />
+      <Divider width={`calc(100% - 4px)`} alignSelf="center" />
       <Box
         width="100%"
         display="flex"

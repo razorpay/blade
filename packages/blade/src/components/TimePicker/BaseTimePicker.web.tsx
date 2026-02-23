@@ -12,7 +12,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
 import { useIsMobile } from '~utils/useIsMobile';
-import { useTheme } from '~utils';
+import { useTheme, getPopupBoxShadowString } from '~utils';
 import { usePopup } from '~components/DatePicker/usePopup';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -52,6 +52,7 @@ const _BaseTimePicker = ({
   const isMobile = useIsMobile();
   const { theme } = useTheme();
   const titleId = useId('timepicker-title');
+  const { colorScheme } = useTheme();
 
   const {
     timeValue,
@@ -221,15 +222,14 @@ const _BaseTimePicker = ({
               {...makeAccessible({ labelledBy: titleId })}
             >
               <BaseBox
-                backgroundColor="popup.background.subtle"
-                borderColor="popup.border.subtle"
-                borderWidth="thin"
-                borderStyle="solid"
-                borderRadius="large"
+                borderRadius="medium"
                 overflow="hidden"
+                border="none"
                 style={{
                   ...animationStyles,
-                  boxShadow: `${theme.elevation.midRaised}`,
+                  background: theme.colors.popup.background.gray.moderate,
+                  boxShadow: getPopupBoxShadowString(theme, colorScheme),
+                  backdropFilter: `blur(${theme.backdropBlur.high}px)`,
                 }}
               >
                 {content}
