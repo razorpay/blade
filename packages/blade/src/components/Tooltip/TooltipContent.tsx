@@ -6,7 +6,7 @@ import { isReactNative, makeSize } from '~utils';
 import { size } from '~tokens/global';
 
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
-  ({ children, title, arrow, side, style, isVisible }, ref) => {
+  ({ children, title, arrow, side, style, isVisible, colorScheme }, ref) => {
     return (
       <TooltipContentWrapper
         position={isReactNative() ? 'absolute' : 'relative'}
@@ -19,6 +19,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
         styles={style}
         side={side}
         isVisible={isVisible}
+        colorScheme={colorScheme}
       >
         {title ? (
           <Text weight="semibold" size="medium" color="surface.text.staticWhite.normal">

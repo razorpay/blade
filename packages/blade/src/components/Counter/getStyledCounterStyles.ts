@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import { maxWidth, counterMinWidth } from './counterTokens';
+import { maxWidth } from './counterTokens';
 import type { StyledCounterProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { makeSize } from '~utils/makeSize';
@@ -14,8 +14,9 @@ const getStyledCounterStyles = ({
   backgroundColor: getIn(theme.colors, backgroundColor),
   borderRadius: makeBorderSize(theme.border.radius.max),
   maxWidth: makeSize(maxWidth[platform]),
-  minWidth: makeSize(counterMinWidth[size]),
   display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   flexWrap: 'nowrap',
 });
 

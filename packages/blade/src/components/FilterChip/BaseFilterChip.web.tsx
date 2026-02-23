@@ -75,9 +75,10 @@ const StyledFilterCloseButton = styled.button(({ theme }) => {
     backgroundColor: theme.colors.transparent,
     borderTopRightRadius: theme.border.radius.small,
     borderBottomRightRadius: theme.border.radius.small,
-    paddingLeft: makeSpace(theme.spacing[2]),
-    paddingRight: makeSpace(theme.spacing[3]),
+    paddingLeft: makeSpace(theme.spacing[2] + theme.spacing[1]),
+    paddingRight: makeSpace(theme.spacing[2] + theme.spacing[1]),
     justifyContent: 'center',
+    alignItems: 'center',
     ...getInteractiveFilterItemStyles({ theme }),
   };
 });

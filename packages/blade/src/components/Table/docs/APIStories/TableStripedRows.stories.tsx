@@ -10,6 +10,8 @@ import { Button } from '~components/Button';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { IconButton } from '~components/Button/IconButton';
+import { CopyIcon, TrashIcon } from '~components/Icons';
 
 export default {
   title: 'Components/Table/API',
@@ -284,3 +286,92 @@ export const TableStripedSelectionNoToolbarNoPagination: StoryFn<typeof TableCom
 
 TableStripedSelectionNoToolbarNoPagination.storyName =
   'TableStripedSelectionNoToolbarNoPagination';
+
+export const TableStripedHoverNoSelection: StoryFn<typeof TableComponent> = () => (
+  <Box
+    backgroundColor="surface.background.gray.moderate"
+    padding="spacing.8"
+    overflow="auto"
+    minHeight="400px"
+  >
+    <TableComponent
+      data={data}
+      showStripedRows
+      selectionType="multiple"
+      onSelectionChange={({ selectedIds }) => console.log('Selected:', selectedIds)}
+    >
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Payment ID</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+              <TableHeaderCell>Account</TableHeaderCell>
+              <TableHeaderCell>Date</TableHeaderCell>
+              <TableHeaderCell>Method</TableHeaderCell>
+              <TableHeaderCell>Status</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+          <TableBody>
+            {tableData.map((tableItem) => (
+              <TableRow
+                key={tableItem.id}
+                item={tableItem}
+                hoverActions={
+                  <>
+                    <IconButton
+                      accessibilityLabel="Copy"
+                      isHighlighted
+                      icon={CopyIcon}
+                      onClick={() => console.log('copy', tableItem)}
+                    />
+                    <IconButton
+                      accessibilityLabel="Delete"
+                      isHighlighted
+                      icon={TrashIcon}
+                      onClick={() => console.log('delete', tableItem)}
+                    />
+                  </>
+                }
+              >
+                <TableCell>
+                  <Code size="medium">{tableItem.paymentId}</Code>
+                </TableCell>
+                <TableCell>
+                  <Amount value={tableItem.amount} />
+                </TableCell>
+                <TableCell>{tableItem.account}</TableCell>
+                <TableCell>
+                  {tableItem.date?.toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  })}
+                </TableCell>
+                <TableCell>{tableItem.method}</TableCell>
+                <TableCell>
+                  <Badge
+                    size="medium"
+                    color={
+                      tableItem.status === 'Completed'
+                        ? 'positive'
+                        : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                            ? 'negative'
+                            : 'neutral'
+                    }
+                  >
+                    {tableItem.status}
+                  </Badge>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </TableComponent>
+  </Box>
+);
+
+TableStripedHoverNoSelection.storyName = 'TableStripedHoverWithSelection';
