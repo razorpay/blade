@@ -1,6 +1,7 @@
 import React from 'react';
 import { SelfMessageBubble } from './SelfMessageBubble.web';
 import { DefaultMessageBubble } from './DefaultMessageBubble.web';
+import { RollingText } from './RollingText.web';
 import type { ChatMessageProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -49,15 +50,24 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     (Array.isArray(children) && children.every((child) => typeof child === 'string')) ||
     isLoading;
 
+  const loadingContent =
+    isLoading && Array.isArray(loadingText) ? <RollingText texts={loadingText} /> : loadingText;
+
   const finalChildren = shouldWrapInText ? (
     <Text
-      color={isLoading ? 'surface.text.gray.muted' : 'surface.text.gray.normal'}
+      color={
+        isLoading
+          ? Array.isArray(loadingText)
+            ? 'feedback.text.positive.intense'
+            : 'surface.text.gray.muted'
+          : 'surface.text.gray.normal'
+      }
       weight="regular"
       variant="body"
       size="medium"
       wordBreak={wordBreak}
     >
-      {isLoading ? loadingText : getStringFromReactText(children as string | string[])}
+      {isLoading ? loadingContent : getStringFromReactText(children as string | string[])}
     </Text>
   ) : (
     (children as React.ReactElement)

@@ -38,6 +38,31 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
+      <Heading size="large">Rolling Loading Text</Heading>
+      <Sandbox showConsole>
+        {`
+        import { ChatMessage } from '@razorpay/blade/components';
+        import { RayIcon } from '@razorpay/blade/components';
+
+        function App() {
+          return (
+            <ChatMessage
+              isLoading
+              senderType="other"
+              loadingText={[
+                'Analyzing your request...',
+                'Fetching relevant details...',
+                'Preparing your response...',
+                'Almost there...',
+              ]}
+              leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+            />
+          )
+        }
+
+        export default App;
+      `}
+      </Sandbox>
     </StoryPageWrapper>
   );
 };
@@ -163,6 +188,27 @@ const ChatMessageLoadingTemplates: StoryFn<typeof ChatMessage> = () => {
 
 export const Loading = ChatMessageLoadingTemplates.bind({});
 Loading.storyName = 'Loading Chat Message';
+
+const ChatMessageRollingLoadingTextTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <ChatMessage
+        isLoading
+        senderType="other"
+        loadingText={[
+          'Analyzing your request...',
+          'Fetching relevant details...',
+          'Preparing your response...',
+          'Almost there...',
+        ]}
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+      />
+    </Box>
+  );
+};
+
+export const RollingLoadingText = ChatMessageRollingLoadingTextTemplate.bind({});
+RollingLoadingText.storyName = 'Rolling Loading Text';
 
 const ChatMessageErrorTemplates: StoryFn<typeof ChatMessage> = () => {
   return (

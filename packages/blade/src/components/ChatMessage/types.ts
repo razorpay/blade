@@ -57,8 +57,11 @@ type CommonChatMessageProps = {
   /**
    * loadingText prop is used to show loading text in chat message. it will show loading text below the chat message.
    * works only when senderType is other.
+   *
+   * When an array of strings is provided, the texts will animate as a rolling marquee,
+   * cycling through each string with a vertical slide transition.
    * */
-  loadingText?: string;
+  loadingText?: string | string[];
   /**
    * leading prop is used to show leading icon in chat message. it will show leading icon left side of chat message.
    * works only when senderType is other.
@@ -84,7 +87,7 @@ type SelfChatMessageProps = CommonChatMessageProps & {
   messageType?: 'default' | 'last';
   errorText?: string;
   isLoading?: boolean;
-  loadingText?: string;
+  loadingText?: string | string[];
   leading?: undefined;
 };
 
@@ -92,7 +95,7 @@ type DefaultChatMessageProps = CommonChatMessageProps & {
   senderType: 'self' | 'other';
   messageType?: 'default' | 'last';
   isLoading?: boolean;
-  loadingText?: string;
+  loadingText?: string | string[];
 };
 
 type ChatMessageProps = SelfChatMessageProps | DefaultChatMessageProps;

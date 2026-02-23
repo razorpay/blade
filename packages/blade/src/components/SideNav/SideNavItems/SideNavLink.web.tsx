@@ -102,7 +102,7 @@ const NavLinkIconTitle = ({
           <BaseText
             truncateAfterLines={1}
             color="currentColor"
-            fontWeight={isActive ? 'semibold' : 'medium'}
+            fontWeight={isActive ? 'semibold' : 'regular'}
             fontSize={100}
             lineHeight={100}
             as="p"

@@ -41,6 +41,7 @@ const StyledBaseButton = styled.button
     '&:hover': {
       backgroundColor: props.hoverBackgroundColor,
       boxShadow: props.hoverBoxShadow,
+      backgroundImage: 'none',
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {
@@ -51,6 +52,7 @@ const StyledBaseButton = styled.button
     '&:active': {
       backgroundColor: props.focusBackgroundColor,
       boxShadow: props.focusBoxShadow,
+      backgroundImage: 'none',
       ...(props.variant === 'tertiary' &&
         props.color === 'transparent' && {
           '&& [data-blade-component="svg-path"]': {
@@ -61,6 +63,7 @@ const StyledBaseButton = styled.button
     '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
       outline: `1px solid ${props.theme.colors.surface.background.primary.subtle}`,
+      backgroundImage: 'none',
       boxShadow: props.focusBoxShadow
         ? `0px 0px 0px 4px ${props.focusRingColor}, ${props.focusBoxShadow}`
         : `0px 0px 0px 4px ${props.focusRingColor}`,
