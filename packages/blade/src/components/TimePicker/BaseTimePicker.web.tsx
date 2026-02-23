@@ -4,7 +4,6 @@ import type { TimePickerProps } from './types';
 import { TimeInput } from './TimeInput.web';
 import { useTimePickerState } from './useTimePickerState';
 import { TimePickerContent } from './TimePickerContent';
-import { getTimePickerPopupBoxShadow } from './timePickerTokens';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
@@ -13,7 +12,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
 import { useIsMobile } from '~utils/useIsMobile';
-import { useTheme } from '~utils';
+import { useTheme, getPopupBoxShadowString } from '~utils';
 import { usePopup } from '~components/DatePicker/usePopup';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -53,6 +52,7 @@ const _BaseTimePicker = ({
   const isMobile = useIsMobile();
   const { theme } = useTheme();
   const titleId = useId('timepicker-title');
+  const { colorScheme } = useTheme();
 
   const {
     timeValue,
@@ -228,9 +228,7 @@ const _BaseTimePicker = ({
                 style={{
                   ...animationStyles,
                   background: theme.colors.popup.background.gray.moderate,
-                  boxShadow: `${theme.elevation.midRaised}, ${getTimePickerPopupBoxShadow(
-                    theme,
-                  )}, inset 0 1px 0 0 ${theme.colors.popup.border.gray.moderate}`,
+                  boxShadow: getPopupBoxShadowString(theme, colorScheme),
                   backdropFilter: `blur(${theme.backdropBlur.high}px)`,
                 }}
               >
