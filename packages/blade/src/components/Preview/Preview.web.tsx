@@ -36,36 +36,34 @@ const _PreviewHeader = ({
   if (!title) {
     return (
       <BaseBox
-        position="absolute"
-        top="spacing.0"
-        right="spacing.2"
         zIndex={componentZIndices.previewPanel}
         display="flex"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="flex-end"
         padding="spacing.4"
+        backgroundColor="transparent"
+        width="100%"
       >
-        <BaseBox backgroundColor="surface.background.gray.intense" borderRadius="medium">
+        <BaseBox
+          display="flex"
+          alignItems="center"
+          gap="spacing.3"
+          backgroundColor="transparent"
+          borderRadius="medium"
+        >
           <Button
             icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
             variant="tertiary"
             onClick={_onFullScreen}
             accessibilityLabel={isFullScreen ? 'Exit Full Screen' : 'Enter Full Screen'}
           />
+          {trailing}
         </BaseBox>
-        {trailing}
       </BaseBox>
     );
   }
   return (
-    <BaseBox
-      zIndex={componentZIndices.previewPanel}
-      position="absolute"
-      top="spacing.0"
-      left="spacing.0"
-      backgroundColor="surface.background.gray.intense"
-      width="100%"
-    >
+    <BaseBox zIndex={componentZIndices.previewPanel} backgroundColor="transparent" width="100%">
       <BaseBox
         display="flex"
         alignItems="center"
@@ -126,11 +124,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       display="flex"
       justifyContent={trailing ? 'space-between' : 'center'}
       width="100%"
-      backgroundColor="surface.background.gray.intense"
-      position="absolute"
-      bottom="spacing.0"
-      left="spacing.0"
-      right="spacing.0"
+      backgroundColor="transparent"
       padding="spacing.5"
       zIndex={componentZIndices.previewPanel}
     >
@@ -339,14 +333,23 @@ const Preview = ({
           centerOnInit={true}
         >
           {() => (
-            <BaseBox width="100%" height="100%" position="relative" overflow="visible">
-              {previewFooter}
+            <BaseBox
+              width="100%"
+              height="100%"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              overflow="visible"
+            >
               {previewHeader}
-              <ZoomContainer isDragEnabled={!isDragAndZoomDisabled} isDragging={isDragging}>
-                <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
-                  {previewBody}
-                </TransformComponent>
-              </ZoomContainer>
+              <BaseBox flex={1} overflow="hidden" position="relative" width="100%">
+                <ZoomContainer isDragEnabled={!isDragAndZoomDisabled} isDragging={isDragging}>
+                  <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
+                    {previewBody}
+                  </TransformComponent>
+                </ZoomContainer>
+              </BaseBox>
+              {previewFooter}
             </BaseBox>
           )}
         </TransformWrapper>
