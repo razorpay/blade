@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { makePopUpBoxShadow } from '~utils/makePopupBoxShadow';
+import { makePopupBoxShadow } from '~utils/makePopupBoxShadow';
 import type { ShadowLayer } from '~utils/makePopupBoxShadow';
 import type { Theme } from '~components/BladeProvider';
 
@@ -18,7 +18,7 @@ const getDatePickerPopupBoxShadow = (theme: Theme): string => {
       inset: true,
     },
   ];
-  return makePopUpBoxShadow(shadowLayers);
+  return makePopupBoxShadow(shadowLayers);
 };
 
 export { getDatePickerPopupBoxShadow };
