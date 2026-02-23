@@ -5,7 +5,6 @@ import { Document, Page as ReactPdfPage, pdfjs } from 'react-pdf';
 import { PreviewBody, PreviewHeader, Preview, PreviewFooter } from '../Preview';
 import type { PreviewProps } from '../types';
 import { Heading, Text } from '~components/Typography';
-import { Divider } from '~components/Divider';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -340,31 +339,3 @@ const PDFRenderer: StoryFn<typeof Preview> = () => {
 };
 export const PDFTemplate = PDFRenderer.bind({});
 PDFTemplate.storyName = 'With React PDF';
-
-const whatsappPreview = 'https://picsum.photos/300/600'; // Placeholder image
-
-const WhatsAppPreviewTemplate: StoryFn<typeof Preview> = () => {
-  return (
-    <Preview isDragAndZoomDisabled={true}>
-      <PreviewBody>
-        <Box>
-          <Text size="large" marginBottom="spacing.4" textAlign="center">
-            Preview of WhatsApp Message
-          </Text>
-          <Divider marginBottom="spacing.4" />
-          <img
-            src={whatsappPreview}
-            alt="WhatsApp Message Preview"
-            width="100%"
-            height="100%"
-            style={{ cursor: 'pointer' }}
-          />
-        </Box>
-      </PreviewBody>
-    </Preview>
-  );
-};
-
-export const WhatsAppPreview = WhatsAppPreviewTemplate.bind({});
-WhatsAppPreview.storyName = 'WhatsApp Preview';
-WhatsAppPreview.args = {};
