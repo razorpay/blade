@@ -8,6 +8,7 @@ import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { useResize } from '~utils/useResize';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 
 const StyledIndicatorWrapper = styled.div({
@@ -115,7 +116,7 @@ const TabNavIndicator = ({
     }
   }, [containerRef, theme.motion.duration.gentle, theme.colors.surface.background.primary.intense]);
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     void updatePosition();
   }, [updatePosition]);
 
