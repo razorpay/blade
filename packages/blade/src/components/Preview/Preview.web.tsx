@@ -45,7 +45,7 @@ const _PreviewHeader = ({
         justifyContent="space-between"
         padding="spacing.4"
       >
-        <BaseBox backgroundColor="surface.background.gray.moderate" borderRadius="medium">
+        <BaseBox backgroundColor="surface.background.gray.intense" borderRadius="medium">
           <Button
             icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
             variant="tertiary"
@@ -63,7 +63,7 @@ const _PreviewHeader = ({
       position="absolute"
       top="spacing.0"
       left="spacing.0"
-      backgroundColor="surface.background.gray.moderate"
+      backgroundColor="surface.background.gray.intense"
       width="100%"
     >
       <BaseBox
@@ -124,17 +124,15 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
   return (
     <BaseBox
       display="flex"
-      justifyContent="space-between"
+      justifyContent={trailing ? 'space-between' : 'center'}
       width="100%"
-      backgroundColor="surface.background.gray.moderate"
+      backgroundColor="surface.background.gray.intense"
       position="absolute"
       bottom="spacing.0"
       left="spacing.0"
       right="spacing.0"
       padding="spacing.5"
       zIndex={componentZIndices.previewPanel}
-      borderTopWidth="thin"
-      borderTopColor="surface.border.gray.muted"
     >
       <BaseBox
         padding="spacing.2"
@@ -227,7 +225,7 @@ const TransFormWrapperContainer = styled.div`
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.surface.background.gray.moderate};
+  background-color: transparent;
 `;
 const Preview = ({
   children,
