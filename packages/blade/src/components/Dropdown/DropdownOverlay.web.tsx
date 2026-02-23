@@ -10,7 +10,6 @@ import {
   useDismiss,
   useInteractions,
 } from '@floating-ui/react';
-import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
@@ -19,6 +18,8 @@ import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
 import { dropdownComponentIds } from './dropdownComponentIds';
+import { useTheme } from '~components/BladeProvider';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
@@ -118,30 +119,34 @@ const _DropdownOverlay = ({
 
   return (
     <FloatingPortal>
-      <OverlayContextReset>
-        <BaseBox
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref={refs.setFloating as any}
-          style={floatingStyles}
-          zIndex={zIndex}
-          display={isMounted ? 'flex' : 'none'}
-          {...getFloatingProps()}
-        >
-          <StyledDropdownOverlay
-            isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
-            colorScheme={colorScheme}
-            elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
-            style={{ ...styles }}
-            width={width ? width : '100%'}
-            minWidth={minWidth}
-            maxWidth={maxWidth}
-            {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
-            {...makeAnalyticsAttribute(dataAnalyticsProps)}
+      <TopNavOverlayThemeOverride>
+        <OverlayContextReset>
+          <BaseBox
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ref={refs.setFloating as any}
+            style={floatingStyles}
+            zIndex={zIndex}
+            display={isMounted ? 'flex' : 'none'}
+            {...getFloatingProps()}
           >
-            {children}
-          </StyledDropdownOverlay>
-        </BaseBox>
-      </OverlayContextReset>
+            <StyledDropdownOverlay
+              isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+              colorScheme={colorScheme}
+              elevation={
+                bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'
+              }
+              style={{ ...styles }}
+              width={width ? width : '100%'}
+              minWidth={minWidth}
+              maxWidth={maxWidth}
+              {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+              {...makeAnalyticsAttribute(dataAnalyticsProps)}
+            >
+              {children}
+            </StyledDropdownOverlay>
+          </BaseBox>
+        </OverlayContextReset>
+      </TopNavOverlayThemeOverride>
     </FloatingPortal>
   );
 };

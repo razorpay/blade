@@ -3,14 +3,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { TabNavContext } from './TabNavContext';
+import { TabNavIndicator } from './TabNavIndicator.web';
 import type { TabNavItemData, TabNavProps } from './types';
 import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
-import { Divider } from '~components/Divider';
-import { makeSize } from '~utils';
-import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BoxProps } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -29,24 +27,11 @@ const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
       {...makeAnalyticsAttribute(rest)}
     >
       {React.Children.map(children, (child, index) => {
-        return (
-          <>
-            {index > 0 ? (
-              <Divider
-                margin="auto"
-                variant="muted"
-                orientation="vertical"
-                height={makeSize(size[16])}
-              />
-            ) : null}
-            {React.cloneElement(child as React.ReactElement, {
-              __isInsideTabNavItems: true,
-              __index: index,
-            })}
-          </>
-        );
+        return React.cloneElement(child as React.ReactElement, {
+          __isInsideTabNavItems: true,
+          __index: index,
+        });
       })}
-      <Divider margin="auto" variant="muted" orientation="vertical" height={makeSize(size[16])} />
     </BaseBox>
   );
 };
@@ -57,6 +42,7 @@ const TabNav = ({
   ...rest
 }: TabNavProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
+  const itemsRowRef = React.useRef<HTMLDivElement>(null);
   const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
   const overflowingItems = controlledItems.filter(
@@ -107,7 +93,7 @@ const TabNav = ({
         display="flex"
         width="100%"
         alignItems="center"
-        alignSelf="end"
+        alignSelf="center"
         position="relative"
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
@@ -115,8 +101,15 @@ const TabNav = ({
         ref={ref}
       >
         <BaseBox display="flex" width="100%" position="relative">
-          <BaseBox display="flex" flexDirection="row" width="max-content">
+          <BaseBox
+            ref={itemsRowRef}
+            display="flex"
+            flexDirection="row"
+            width="max-content"
+            position="relative"
+          >
             {children({ items: _items, overflowingItems })}
+            <TabNavIndicator containerRef={itemsRowRef} />
           </BaseBox>
         </BaseBox>
       </BaseBox>
