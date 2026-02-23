@@ -38,7 +38,7 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
 
       [`.${STYLED_NAV_LINK}`]: {
         color: props.theme.colors.interactive.text.gray.normal,
-        backgroundColor: props.theme.colors.interactive.background.gray.highlighted,
+        backgroundColor: props.theme.colors.interactive.background.gray.default,
       },
     },
     [`.${STYLED_NAV_LINK}`]: {
@@ -63,11 +63,11 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
       transition: getNavItemTransition(props.theme),
       '&[aria-current]': {
         color: props.theme.colors.interactive.text.gray.subtle,
-        backgroundColor: props.theme.colors.interactive.background.gray.default,
+        backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
       },
       '&[aria-current]:hover': {
         color: props.theme.colors.interactive.text.gray.normal,
-        backgroundColor: props.theme.colors.interactive.background.gray.highlighted,
+        backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
       },
       '&:focus-visible': {
         ...getFocusRingStyles({ theme: props.theme }),
