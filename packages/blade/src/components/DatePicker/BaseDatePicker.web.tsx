@@ -597,12 +597,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                           background: theme.colors.popup.background.gray.moderate,
                           boxShadow: `${theme.elevation.midRaised}, ${getDatePickerPopupBoxShadow(
                             theme,
-                          )}`,
+                          )}, inset 0 1px 0 0 ${theme.colors.popup.border.gray.subtle}`,
                           backdropFilter: `blur(${theme.backdropBlur.high}px)`,
-                          borderTopColor: theme.colors.popup.border.gray.moderate,
-                          borderWidth: 'none',
-                          borderTopWidth: theme.border.width.thin,
-                          borderTopStyle: 'solid',
                         }}
                       >
                         {content}
