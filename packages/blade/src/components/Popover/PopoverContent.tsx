@@ -8,6 +8,7 @@ import { usePopoverContext } from './PopoverContext';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { useIsMobile } from '~utils/useIsMobile';
+import { useTheme } from '~components/BladeProvider';
 
 type PopoverHeaderProps = {
   title?: string;
@@ -68,6 +69,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
     const isMobile = useIsMobile();
+    const { colorScheme } = useTheme();
     return (
       <PopoverContentWrapper
         ref={ref as never}
@@ -75,6 +77,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         side={side}
         isVisible={isVisible}
         isMobile={isMobile}
+        colorScheme={colorScheme}
       >
         <BaseBox padding="spacing.5" display="flex" flexDirection="column" gap="spacing.5">
           <BaseBox display="flex" flexDirection="column" gap="spacing.2">

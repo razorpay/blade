@@ -1,25 +1,20 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
-import {
-  isReactNative,
-  makeSpace,
-  makeBorderSize,
-  useTheme,
-  getPopupBoxShadowString,
-} from '~utils';
+import { isReactNative, makeSpace, makeBorderSize, getPopupBoxShadowString } from '~utils';
+import type { ColorSchemeNames } from '~tokens/theme';
 import type { Theme } from '~components/BladeProvider';
 
 const getPopoverContentWrapperStyles = ({
   theme,
   styles,
   isMobile,
+  colorScheme,
 }: {
   isMobile: boolean;
   theme: Theme;
   styles: React.CSSProperties;
+  colorScheme: ColorSchemeNames;
 }): CSSObject => {
-  const { colorScheme } = useTheme();
   return {
     border: 'none',
     width: '100%',
