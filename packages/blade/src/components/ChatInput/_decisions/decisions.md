@@ -1,6 +1,6 @@
 # ChatInput
 
-ChatInput is an input component designed for AI chat interfaces. It combines a textarea, file upload, quoted message reference, ghost suggestion autocomplete, and a submit action into a single composable input. Think of it as a "prompt input" -- the primary way users compose and send messages in conversational AI experiences.
+ChatInput is an input component designed for AI chat interfaces. It combines a textarea, file upload, ghost suggestion autocomplete, and a submit action into a single composable input. Think of it as a "prompt input" -- the primary way users compose and send messages in conversational AI experiences.
 
 <img src="./chatinput-thumbnail.png" width="500px" alt="ChatInput component variants" />
 
@@ -34,12 +34,8 @@ import { ChatInput } from '@razorpay/blade/components';
     'Help me set up webhooks',
   ]}
   onSuggestionAccept={({ suggestion }) => acceptSuggestion(suggestion)}
-  // Note: this prop requires some clarification from design before finalizing the API
-  quote={{
-    text: 'POJPL0976Y',
-    errorText: 'PAN should be a 10-digit alphanumeric input. You have entered a wrong format.',
-    onDismiss: () => setQuote(null),
-  }}
+  validationState="error"
+  errorText="Something went wrong. Please try again."
 />;
 ```
 
@@ -66,14 +62,11 @@ import { ChatInput, ChatInputFilePreview, ChatInputQuote } from '@razorpay/blade
       <ChatInputFilePreview name="File_Name.pdf" size="1.3 MB" onRemove={() => removeFile(1)} />
     </>
   }
-  quote={
-    <ChatInputQuote onDismiss={() => setQuote(null)}>
-      <Text>POJPL0976Y</Text>
-      <Text color="feedback.text.negative.intense">
-        PAN should be a 10-digit alphanumeric input. You have entered a wrong format.
-      </Text>
-    </ChatInputQuote>
-  }
+  validationState="error"
+  onErrorDismiss={() => {
+    setValidationState('error');
+  }}
+  errorText="Something went wrong"
 />;
 ```
 
@@ -115,27 +108,6 @@ type ChatInputFilePreviewProps = {
 };
 ```
 
-#### ChatInputQuote
-
-```typescript
-type ChatInputQuoteProps = {
-  /**
-   * Content to render inside the quote card. Can be any React node.
-   */
-  children: React.ReactNode;
-
-  /**
-   * Callback fired when the dismiss (X) button on the quote is clicked
-   */
-  onDismiss?: () => void;
-
-  /**
-   * Test ID for automation testing
-   */
-  testID?: string;
-};
-```
-
 </details>
 
 ### Props
@@ -143,23 +115,6 @@ type ChatInputQuoteProps = {
 #### ChatInput
 
 ```typescript
-type ChatInputQuoteConfig = {
-  /**
-   * Text displayed in the quote section
-   */
-  text: string;
-
-  /**
-   * Optional error text displayed below the text in the quote
-   */
-  errorText?: string;
-
-  /**
-   * Callback fired when the dismiss button on the quote is clicked
-   */
-  onDismiss: () => void;
-};
-
 type ChatInputProps = {
   /**
    * Controlled value of the text input
@@ -254,10 +209,21 @@ type ChatInputProps = {
   onSuggestionAccept?: ({ suggestion }: { suggestion: string }) => void;
 
   /**
-   * Configuration for displaying a quoted message above the input.
-   * Renders a quote card with title, optional description, and a dismiss button.
+   * Indicates the validation state of the input.
+   * When set to 'error', the input border turns red and errorText is displayed below.
+   * @default 'none'
    */
-  quote?: ChatInputQuoteConfig;
+  validationState?: 'error' | 'none';
+
+  /**
+   * Error message displayed below the input when validationState is 'error'.
+   */
+  errorText?: string;
+
+  /**
+   * Callback fired when the user dismisses the error popup by clicking the close button.
+   */
+  onErrorDismiss?: () => void;
 
   /**
    * Accessibility label for the input. Required when no visible label is present.
@@ -302,27 +268,26 @@ const ChatWithFiles = () => {
 };
 ```
 
-### With Quoted Message
+### With Validation Error
 
-A quoted message renders above the text area with a dismiss button. Useful for replying to or referencing a specific message from the chat.
-
-<img src="./chatinput-quoted-message.png" width="500px" alt="ChatInput with quoted message" />
+When `validationState` is set to `'error'`, the input border turns red and `errorText` is displayed below the input. This is useful for surfacing submission errors or invalid input states.
 
 ```jsx
 import { ChatInput } from '@razorpay/blade/components';
 
-const ChatWithQuote = () => {
-  const [quote, setQuote] = useState({
-    text: 'POJPL0976Y',
-    errorText: 'PAN should be a 10-digit alphanumeric input. You have entered a wrong format.',
-    onDismiss: () => setQuote(null),
-  });
+const ChatWithError = () => {
+  const [validationState, setValidationState] = useState('none');
 
   return (
     <ChatInput
       placeholder="Ask a question..."
-      onSubmit={({ value }) => sendReply(value)}
-      quote={quote}
+      validationState={validationState}
+      errorText="Something went wrong. Please try again."
+      onErrorDismiss={() => setValidationState('none')}
+      onSubmit={({ value }) => {
+        const result = sendMessage(value);
+        if (!result.ok) setValidationState('error');
+      }}
     />
   );
 };
@@ -393,7 +358,7 @@ const ChatWithStop = () => {
 
 ### Full Featured
 
-Combining all features -- file upload, quoted message, ghost suggestion, and stop generation.
+Combining all features -- file upload, ghost suggestion, stop generation, and validation error.
 
 ```jsx
 import { ChatInput } from '@razorpay/blade/components';
@@ -402,8 +367,8 @@ const FullFeaturedChat = () => {
   const [text, setText] = useState('');
   const [files, setFiles] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [validationState, setValidationState] = useState('none');
   const abortRef = useRef(null);
-  const [quote, setQuote] = useState(null);
   const [suggestions, setSuggestions] = useState([
     'How do I integrate payment gateway?',
     'Show me recent transactions',
@@ -411,18 +376,18 @@ const FullFeaturedChat = () => {
   ]);
 
   const handleSubmit = async ({ value, fileList }) => {
+    setValidationState('none');
     const controller = new AbortController();
     abortRef.current = controller;
     setIsGenerating(true);
-    await sendMessage({
+    const result = await sendMessage({
       text: value,
       files: fileList,
-      quotedRef: quote,
       signal: controller.signal,
     });
+    if (!result.ok) setValidationState('error');
     setText('');
     setFiles([]);
-    setQuote(null);
     setSuggestions([]);
     setIsGenerating(false);
   };
@@ -449,15 +414,8 @@ const FullFeaturedChat = () => {
         setText(suggestion);
         setSuggestions([]);
       }}
-      quote={
-        quote
-          ? {
-              text: quote.text,
-              errorText: quote.errorText,
-              onDismiss: () => setQuote(null),
-            }
-          : undefined
-      }
+      validationState={validationState}
+      errorText="Something went wrong. Please try again."
     />
   );
 };
@@ -469,14 +427,14 @@ const FullFeaturedChat = () => {
   - `Enter` submits the message (fires `onSubmit`)
   - `Shift + Enter` inserts a new line in the textarea
   - `TAB` accepts the ghost suggestion when `suggestions` is present
-  - `Escape` dismisses the quote (if present) or clears the suggestion
+  - `Escape` clears the current ghost suggestion
   - Upload button and submit button are focusable and activatable via `Space`/`Enter`
 - **ARIA Attributes:**
   - The textarea uses `role="textbox"` with `aria-multiline="true"`
   - The submit button uses `aria-label="Submit"` (or equivalent)
   - The upload button uses `aria-label="Upload file"`
   - File preview cards include `aria-label` with the file name and a remove button with `aria-label="Remove {filename}"`
-  - The quote section uses `role="status"` with the dismiss button having `aria-label="Dismiss quote"`
+  - When `validationState` is `'error'`, the textarea gets `aria-invalid="true"` and `aria-describedby` points to the error text element
   - When `isGenerating` is true, the submit button's label changes to `aria-label="Stop generation"` to indicate the stop action
 - **Screen Reader:**
   - The `accessibilityLabel` prop is used as `aria-label` on the main input when no visible label is present
@@ -486,7 +444,6 @@ const FullFeaturedChat = () => {
 ## Open Questions
 
 - Should the textarea auto-resize as the user types (grow vertically up to a max height)? Or should it have a fixed height with scroll?
-- Should the `onSubmit` callback include some kind of `quote` reference so the consumer knows which message was being quoted at the time of submission?
 - What should happen when the user presses `TAB` and there is no suggestion? Should it behave as normal tab (move focus) or be a no-op?
 - ~~Should `isLoading` turn the submit button into a "stop" button that fires an `onStop` callback?~~ **Resolved:** Renamed to `isGenerating` + `onStop`. When `isGenerating` is true, the submit button becomes a stop button that fires `onStop`.
 
