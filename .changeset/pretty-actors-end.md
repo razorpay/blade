@@ -2,7 +2,7 @@
 '@razorpay/blade': minor
 ---
 
-# Blade Spark — Changelog
+# ✨ Blade Spark
 
 This document covers changes, deprecations, and notable additions introduced in the Blade Spark update.
 
